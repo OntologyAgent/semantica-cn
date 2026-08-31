@@ -4,7 +4,7 @@ FROM node:26-alpine@sha256:2d984a15c9b54fd0aeb608b8e0d0d83529eb34d2966db27a1fb4f
 WORKDIR /app
 COPY explorer/package*.json ./explorer/
 WORKDIR /app/explorer
-RUN npm ci
+RUN npm config set registry https://registry.npmmirror.com && npm ci
 
 COPY explorer/ ./
 RUN mkdir -p /app/semantica && npm run build
@@ -59,8 +59,8 @@ COPY --from=frontend-builder /app/semantica/static ./semantica/static
 # build-system.requires; installing it first and passing
 # --no-build-isolation makes pip reuse those hash-verified copies instead
 # of fetching its own.
-RUN pip install --no-cache-dir -r explorer-extra-py313.txt -r pep517-build.txt --require-hashes \
-    && pip install --no-cache-dir --no-deps --no-build-isolation . \
+RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple -r explorer-extra-py313.txt -r pep517-build.txt --require-hashes \
+    && pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple --no-deps --no-build-isolation . \
     && rm -f explorer-extra-py313.txt pep517-build.txt \
     && chown -R semantica:semantica /app
 

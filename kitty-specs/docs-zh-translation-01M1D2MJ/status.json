@@ -1,7 +1,7 @@
 {
-  "event_count": 5,
-  "last_event_id": "01M1D47GVSEFD442GGYE67KKDP",
-  "materialized_at": "2026-08-31T23:59:45.529232+00:00",
+  "event_count": 6,
+  "last_event_id": "01M1D47H5Q2V401DNRQZHJ22Y0",
+  "materialized_at": "2026-08-31T23:59:45.847378+00:00",
   "mission_number": "",
   "mission_slug": "docs-zh-translation-01M1D2MJ",
   "mission_type": "software-dev",
@@ -14,7 +14,7 @@
     "for_review": 0,
     "in_progress": 0,
     "in_review": 0,
-    "planned": 5
+    "planned": 6
   },
   "work_packages": {
     "WP01": {
@@ -51,6 +51,13 @@
       "lane": "planned",
       "last_event_id": "01M1D47GVSEFD442GGYE67KKDP",
       "last_transition_at": "2026-08-31T23:59:45.529232+00:00"
+    },
+    "WP06": {
+      "actor": "finalize-tasks",
+      "force_count": 0,
+      "lane": "planned",
+      "last_event_id": "01M1D47H5Q2V401DNRQZHJ22Y0",
+      "last_transition_at": "2026-08-31T23:59:45.847378+00:00"
     }
   }
 }

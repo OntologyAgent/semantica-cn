@@ -16,7 +16,7 @@ requirement_refs:
 tracker_refs: []
 planning_base_branch: feat/docs-zh-translation
 merge_target_branch: feat/docs-zh-translation
-branch_strategy: feature-branch
+branch_strategy: Planning artifacts for this mission were generated on feat/docs-zh-translation. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feat/docs-zh-translation unless the human explicitly redirects the landing branch.
 subtasks:
 - T023
 - T024

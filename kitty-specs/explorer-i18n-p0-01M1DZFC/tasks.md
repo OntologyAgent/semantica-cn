@@ -19,14 +19,14 @@
 | T009 | CONNECTION_STATUS_LABEL 渲染期化 + 首屏状态栏/metrics/启动卡 | WP02 |  | pending |
 | T010 | 首屏 Hero/预览面板/能力带全量入键（~40 节点） | WP02 |  | pending |
 | T011 | WorkspaceFallback + ErrorBoundary 文案（类组件 i18n.t 直调） | WP02 |  | pending |
-| T012 | P0 残留清点 + lint/build 自检 | WP02 |  | pending |
+| T012 | P0 残留清点 + 基准 sha 刷新（zh.json \_\_meta.source_version）+ lint/build 自检 | WP02 |  | pending |
 | T013 | ui_zh_status.py：资源扫描与键级 diff（missing/extra，排除 \_\_meta） | WP03 | [P] | pending |
 | T014 | CLI 与输出（表格/--json/退出码 0/1/2）对齐契约 | WP03 |  | pending |
 | T015 | 本期资源实跑自检 → fresh + missing=0 + extra=0 | WP03 |  | pending |
 | T016 | e2e 预置 localStorage 固定英文（addInitScript，≤5 行） | WP04 |  | pending |
 | T017 | npm run test:deterministic-e2e 全绿 | WP04 |  | pending |
 | T018 | 全套静态与单元门禁（lint/build/graph-store/graph-workspace/plugin-registry） | WP04 |  | pending |
-| T019 | 体积预算复核（NFR-002）+ ui_zh_status fresh 复核（FR-008）+ 验收表 | WP04 |  | pending |
+| T019 | 体积预算（NFR-002）+ ui_zh_status fresh（FR-008）+ quickstart §3 手动走查与 §4 术语抽查（NFR-001/NFR-003）+ 验收表 | WP04 |  | pending |
 
 ## WP01 — i18n 基础设施与语言开关（Foundation）
 
@@ -60,7 +60,7 @@
 - [ ] T009 CONNECTION_STATUS_LABEL 渲染期化 + 首屏状态栏/metrics/启动卡 (WP02)
 - [ ] T010 首屏 Hero/预览面板/能力带全量入键（~40 节点） (WP02)
 - [ ] T011 WorkspaceFallback + ErrorBoundary 文案（类组件 i18n.t 直调） (WP02)
-- [ ] T012 P0 残留清点 + lint/build 自检 (WP02)
+- [ ] T012 P0 残留清点 + 基准 sha 刷新（zh.json \_\_meta.source_version）+ lint/build 自检 (WP02)
 
 **Dependencies**: WP01
 **Parallel opportunities**: 与 WP03 并行（文件不相交）
@@ -85,15 +85,15 @@
 ## WP04 — e2e 英文预置与全套门禁回归（收尾）
 
 **Prompt**: `tasks/WP04-e2e-preset-regression-gates.md`
-**Goal**: e2e 固定英文继续全绿（FR-009），跑全套门禁完成集成验收（NFR-004/NFR-002/FR-008 复核）
+**Goal**: e2e 固定英文继续全绿（FR-009），跑全套门禁完成集成验收（NFR-004/NFR-002/FR-008 复核），并收口 quickstart §3 手动走查与 §4 术语抽查（成功标准 1-3、NFR-001/NFR-003 的验证位）
 **Priority**: P0（集成验收，必须最后）
-**Independent test**: 六条门禁命令全绿；e2e diff 仅预置行；体积增量 ≤50KB；ui_zh_status fresh
+**Independent test**: 六条门禁命令全绿；e2e diff 仅预置行；体积增量 ≤50KB；ui_zh_status fresh；§3 七项走查与 §4 术语抽查逐项有结果
 **Estimated prompt size**: ~180 lines
 
 - [ ] T016 e2e 预置 localStorage 固定英文（addInitScript，≤5 行） (WP04)
 - [ ] T017 npm run test:deterministic-e2e 全绿 (WP04)
 - [ ] T018 全套静态与单元门禁（lint/build/graph-store/graph-workspace/plugin-registry） (WP04)
-- [ ] T019 体积预算复核（NFR-002）+ ui_zh_status fresh 复核（FR-008）+ 验收表 (WP04)
+- [ ] T019 体积预算（NFR-002）+ ui_zh_status fresh（FR-008）+ quickstart §3 手动走查与 §4 术语抽查（NFR-001/NFR-003）+ 验收表 (WP04)
 
 **Dependencies**: WP01, WP02, WP03
 **Parallel opportunities**: 无（收尾集成位）
@@ -104,5 +104,10 @@
 - **MVP 路径**：WP01 单独可交付（基础设施落地、界面无变化、可合入待用）。
 - **推荐批次**：WP01 → (WP02 ∥ WP03) → WP04。
 - **实现命令**：`spec-kitty agent action implement WP01 --agent claude`（其余 WP 同理）。
-- **键位契约流**：WP01 定键 → WP02 消费键（越界补键需记录）→ WP03 校验键 → WP04 复核 fresh。
-- **spec 覆盖**：FR-001/FR-004 → WP02；FR-002/FR-003/FR-005/FR-006/FR-007 → WP01；FR-008 → WP03+WP04；FR-009 → WP04；NFR-001/003 随 WP01/WP02 的实现与术语规则落实；NFR-002/NFR-004 由 WP04 验收。
+- **键位契约流**：WP01 定键 → WP02 消费键（越界补键需记录，收尾时刷新基准 sha）→ WP03 校验键 → WP04 复核 fresh。
+- **计数口径（键数 vs 文案条数）**：spec/plan 估的"约 200-300 条文案"是含中英双语渲染与重复实例的字符串计数口径；本任务清单的"约 95 键 + 越界补键 6 键 ≈ 100 键"是去重后的键位口径。两者描述同一范围，不矛盾。
+- **设计内越界补键汇总（T002 键清单之外，供 mission review 逐项核验 en/zh 成对 + 理由记录）**：
+  - WP01-T005：`language.toggle`（LanguageToggle 的 aria-label）
+  - WP02-T011：`error.title`、`error.detail`、`error.detailMaxRetries`、`error.tryAgain`、`error.reloadApp`（ErrorBoundary 5 条文案）
+  - WP02-T012：对 WP01 owned 的 zh.json 做一次预期内越界编辑（仅 `__meta.source_version` 一行，随 en.json 定稿刷新）
+- **spec 覆盖**：FR-001/FR-004 → WP02；FR-002/FR-003/FR-005/FR-006/FR-007 → WP01；FR-008 → WP03+WP04；FR-009 → WP04；NFR-001/NFR-003 由 WP04 的 quickstart §3 走查与 §4 术语抽查验收（WP01/WP02 落实实现与术语规则）；NFR-002/NFR-004 由 WP04 验收。

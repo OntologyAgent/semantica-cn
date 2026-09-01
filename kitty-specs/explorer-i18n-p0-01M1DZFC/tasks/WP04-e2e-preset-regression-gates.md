@@ -45,7 +45,7 @@ If that command is unavailable, proceed as a careful frontend implementer：测�
 
 ## Objective
 
-让既有 Playwright e2e 在 i18n 改造后继续全绿（FR-009）：给测试加英文预置（对上游 e2e 文件的唯一允许改动，C-001），然后跑全套门禁（lint/build/四套测试/过期脚本）作为 mission 的集成验收（NFR-004），并复核体积预算（NFR-002）。本 WP 最后执行——WP01/WP02/WP03 的改动在你之前合入 lane 基线。
+让既有 Playwright e2e 在 i18n 改造后继续全绿（FR-009）：给测试加英文预置（对上游 e2e 文件的唯一允许改动，C-001），然后跑全套门禁（lint/build/四套测试/过期脚本）作为 mission 的集成验收（NFR-004），复核体积预算（NFR-002），并收口 quickstart §3 手动走查与 §4 术语抽查（成功标准 1-3、NFR-001/NFR-003 的验证位）。本 WP 最后执行——WP01/WP02/WP03 的改动在你之前合入 lane 基线。
 
 ## Context
 
@@ -54,7 +54,7 @@ If that command is unavailable, proceed as a careful frontend implementer：测�
 - 预置契约（`contracts/language-detection.md` §e2e 预置契约）：两种合法机制——导航 URL 带 `?lang=en`，或 `context.addInitScript` 预置 `localStorage["semantica.explorer.lang"]="en"`。**推荐后者**（addInitScript 天然先于应用代码执行，覆盖文件内所有导航）
 - 零侵入边界：你只动 `explorer/tests/deterministicExplorerRendering.e2e.ts` 一个上游文件，且只加预置相关行（预计 ≤5 行）；**不许**改测试断言、选择器或流程。PR 描述需显式说明此测试改动（spec Assumptions 已声明）
 - 门禁命令（全部在 `explorer/` 下）：`npm run lint`、`npm run build`、`npm run test:graph-store`、`npm run test:graph-workspace`、`npm run test:plugin-registry`、`npm run test:deterministic-e2e`；仓库根：`python tools/i18n/ui_zh_status.py`
-- quickstart 验收清单：`kitty-specs/explorer-i18n-p0-01M1DZFC/quickstart.md` §1/§2
+- quickstart 验收清单：`kitty-specs/explorer-i18n-p0-01M1DZFC/quickstart.md` §1–§4（§3 手动走查与 §4 术语抽查由你收口，成功标准 1-3 在此验证）
 
 ## Subtask Guidance
 
@@ -119,22 +119,34 @@ If that command is unavailable, proceed as a careful frontend implementer：测�
 **Validation**:
 - [ ] 五条命令全部退出码 0，输出摘要记入完成报告
 
-### T019: 体积预算与过期脚本复核（NFR-002/FR-008 验收）
+### T019: 体积预算、过期脚本、手动走查与术语复核（NFR-002/FR-008/NFR-001/NFR-003 验收 + 成功标准 1-3）
 
-**Purpose**: 量化门禁收口。
+**Purpose**: 量化门禁收口；quickstart §3 手动走查与 §4 术语抽查在此收口（成功标准 1-3 的验证位）。
 
 **Steps**:
 1. 体积（NFR-002，预算 gzip 增量 ≤ 50KB）：`npm run build` 后记录 `semantica/static/assets/*.js` 的 gzip 总量，与改造前基线对比（基线可由 `git stash` 后 build 一次获得，或直接采用 vite 输出里 i18n 相关 chunk 的尺寸估算；报告口径写清楚）。i18next+react-i18next 预期 ~25KB gzip + 资源 ~5-10KB，预算内。
-2. 过期脚本（FR-008）：仓库根 `python tools/i18n/ui_zh_status.py` 与 `--json`——期望 fresh、missing=0、extra=0、退出码 0。
-3. quickstart §1 静态门禁清单逐项打勾（就是 T017/T018 的命令，确认无遗漏）。
-4. 汇总一份验收表（命令 → 结果 → 对应 FR/NFR）写进完成报告，供 mission review 直接引用。
+2. 过期脚本（FR-008）：仓库根 `python tools/i18n/ui_zh_status.py` 与 `--json`——期望 fresh、missing=0、extra=0、退出码 0。这是 A1 修复后 source_version 链路的真实集成验证（WP02-T012 刷新的 sha 在此被 HEAD 口径的脚本检验）。
+3. **手动走查（quickstart §3，成功标准 1-3 的验证位）**：起服务（quickstart §3 的方式 A `npm run dev` + 后端，或方式 B 整包），逐项执行七项走查并记录结果：
+   - 走查 1：浏览器语言 zh → 首屏全中文（导航/首屏/页签/连接状态）
+   - 走查 2：开关切 EN → 即时变英文（NFR-001 度量位：文案更新无可感知延迟、无页面重载，记录定性结论）
+   - 走查 3：刷新保持（EN 刷新仍英文、zh 刷新仍中文）
+   - 走查 4：`?lang=en` 强制英文（优先于存储偏好）
+   - 走查 5：`<html lang>` 与标签页标题随语言变化（DevTools）
+   - 走查 6：浏览器语言 en + 清站点数据 → 与改造前完全一致
+   - 走查 7：断开后端 → 连接状态显示当前语言文案
+   执行方式：能开浏览器就人工走查；无显示环境用临时 Playwright 脚本驱动（脚本放 `/tmp`，**不落仓库**）。无法自动化的项标注"人工执行"并留待用户复核。
+4. **术语抽查（quickstart §4，NFR-003 验证位）**：zh 文案对照 `docs/zh/glossary.md` 核对——知识图谱、本体、Ontology Hub（保留英文）、溯源、实体消解、决策智能、工作区（禁"工作台/工作空间"），结果记入验收表。
+5. quickstart §1 静态门禁清单逐项打勾（就是 T017/T018 的命令，确认无遗漏）。
+6. 汇总一份验收表（命令 + 走查项 + 术语抽查 → 结果 → 对应 FR/NFR）写进完成报告，供 mission review 直接引用。
 
 **Files**: 无新改动（验证性子任务）
 
 **Validation**:
 - [ ] gzip 增量数字入报告且 ≤ 50KB
 - [ ] ui_zh_status fresh 双确认（表格 + JSON）
-- [ ] 验收表完整覆盖 FR-001…FR-009、NFR-001…NFR-004 的自动化可测部分
+- [ ] quickstart §3 七项走查逐项有结果记录；NFR-001（切换无感知延迟、无页面重载）有明确结论
+- [ ] §4 术语抽查逐词核过且入验收表
+- [ ] 验收表完整覆盖 FR-001…FR-009、NFR-001…NFR-004 的可测部分（自动化 + 走查）
 
 ## Test Strategy
 
@@ -146,6 +158,7 @@ If that command is unavailable, proceed as a careful frontend implementer：测�
 - [ ] e2e 仅含语言预置增量
 - [ ] 六条门禁命令全绿，结果入报告
 - [ ] 体积预算与 fresh 检查通过并量化记录
+- [ ] quickstart §3 七项走查与 §4 术语抽查逐项有结果、入验收表
 - [ ] 零侵入边界未破（diff 只有 e2e 预置行）
 
 ## Risks

@@ -146,19 +146,21 @@ If that command is unavailable, proceed as a careful frontend implementer: TypeS
 - [ ] 中文模式下人为触发渲染错误（临时抛错试验后删除）→ 错误面板中文；按钮可用
 - [ ] `npm run lint` 零错误
 
-### T012: P0 残留清点与门禁自检
+### T012: P0 残留清点、基准 sha 刷新与门禁自检
 
-**Purpose**: 确认 P0 范围零英文残留，本 WP 门禁绿。
+**Purpose**: 确认 P0 范围零英文残留；把 zh.json 的过期基准钉回**最终** en.json（A1 修复位）；本 WP 门禁绿。
 
 **Steps**:
 1. 清点：grep App.tsx 中剩余的 JSX 文本节点与字符串字面量，逐一分类——属 P0 范围者必须已入键；`aria-hidden` 装饰文本、纯数据（NSRP1/年份/数字）、`Semantica v2` 类品牌串可留。把清点结论写进完成报告（残留清单 + 豁免理由）。
 2. `document.title` 动态化核验：语言切到 zh → 标签页标题变 `知识探索器 · Semantica`，`<html lang>` 变 `zh-CN`（WP01 的 languageChanged 监听负责；你只验证联动生效）。
-3. 门禁：`cd explorer && npm run lint && npm run build` 全绿。
+3. **基准 sha 刷新（必做）**：至此 en.json 内容定稿（含 T011 补的 error.* 键）。执行 `git hash-object explorer/src/i18n/locales/en.json`，把 `explorer/src/i18n/locales/zh.json` 的 `__meta.source_version` 更新为该值。en.json 已变，过期基准必须跟随——不刷新则 WP03/WP04 的 fresh 门禁必然 false-fail。这是对 WP01 owned 文件的一次预期内越界编辑（仅 `__meta` 一行），完成报告记一行理由。
+4. 门禁：`cd explorer && npm run lint && npm run build` 全绿。
 
-**Files**: 无新改动（验证性子任务）
+**Files**: `explorer/src/i18n/locales/zh.json`（仅 `__meta.source_version` 一行）
 
 **Validation**:
 - [ ] 残留清点表写入完成报告
+- [ ] zh.json `__meta.source_version` == 当前 en.json 的 `git hash-object` 值
 - [ ] lint + build 全绿
 
 ## Test Strategy
@@ -171,6 +173,7 @@ If that command is unavailable, proceed as a careful frontend implementer: TypeS
 - [ ] P0 范围（导航/壳层/页签/连接状态/首屏/回退/错误边界）零英文残留（豁免项有记录）
 - [ ] 语言开关在头部可用，切换即时且不刷新
 - [ ] 英文模式下可见界面与改造前一致（e2e 锚点文案逐字未动）
+- [ ] zh.json `__meta.source_version` 已刷新至最终 en.json 的 blob sha
 - [ ] lint + build 全绿；越界改动（error.* 等补键）均有理由记录
 
 ## Risks

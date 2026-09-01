@@ -477,7 +477,7 @@ kg:
     default_validity: infinite
 ```
 
-- [Graph Store](../../reference/graph_store.md) — 把图持久化到 Neo4j、FalkorDB 或 Apache AGE。
+- [Graph Store](./graph_store.md) — 把图持久化到 Neo4j、FalkorDB 或 Apache AGE。
 - [Semantic Extract](./semantic_extract.md) — GraphBuilder 的实体与关系来源。
 - [Visualization](./visualization.md) — 交互式可视化知识图谱。
 - [Conflicts](./conflicts.md) — 冲突检测与消解。

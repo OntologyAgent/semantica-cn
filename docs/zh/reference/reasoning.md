@@ -475,5 +475,5 @@ step.confidence     # float
 
 - [Knowledge Graph](./kg.md) — 被推理的那张知识图谱。
 - [Ontology](./ontology.md) — 逻辑推理用的本体公理与 SHACL 约束。
-- [Triplet Store](../../reference/triplet_store.md) — 支撑 SPARQL 推理的 RDF 后端。
+- [Triplet Store](./triplet_store.md) — 支撑 SPARQL 推理的 RDF 后端。
 - [Context](../../reference/context.md) — 推理融入智能体决策智能。

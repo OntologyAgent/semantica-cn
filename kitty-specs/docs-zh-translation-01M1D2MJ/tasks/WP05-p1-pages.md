@@ -19,7 +19,8 @@ subtasks:
 - T020
 - T021
 - T022
-agent: claude
+agent: "claude"
+shell_pid: "38784"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -132,3 +133,7 @@ If that command is unavailable, proceed as a bilingual technical documentation c
 - 确认 changelog.md 是指路页而非部分翻译
 - 抽一篇（建议 storage-backends.md）对照英文版核对配置表完整性
 - 检查四篇 frontmatter sha 可复现
+
+## Activity Log
+
+- 2026-09-01T02:34:28Z – claude – shell_pid=38784 – Assigned agent via action command

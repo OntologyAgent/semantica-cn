@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect, useMemo, type CSSProperties } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 import { Check, Copy, Code2, Eye, ExternalLink, Image as ImageIcon } from "lucide-react";
 import { GRAPH_THEME } from "./graphTheme";
 import { isSafeUrl } from "./markdownUrlSafety";
@@ -16,6 +18,7 @@ export function MarkdownContentViewer({
   className,
   defaultMode = "preview",
 }: MarkdownContentViewerProps) {
+  const { t } = useTranslation();
   const [activeMode, setActiveMode] = useState<"preview" | "source">(defaultMode);
   const [copied, setCopied] = useState(false);
   // Track the content value for which the copied indicator is valid.
@@ -87,7 +90,7 @@ export function MarkdownContentViewer({
             style={{ ...tabBtnStyle, ...(activeMode === "preview" ? activeTabBtnStyle : {}) }}
           >
             <Eye size={12} style={{ marginRight: 5 }} />
-            Preview
+            {t("graph.markdown.preview")}
           </button>
           <button
             type="button"
@@ -97,21 +100,21 @@ export function MarkdownContentViewer({
             style={{ ...tabBtnStyle, ...(activeMode === "source" ? activeTabBtnStyle : {}) }}
           >
             <Code2 size={12} style={{ marginRight: 5 }} />
-            Source
+            {t("graph.markdown.source")}
           </button>
         </div>
 
         {hasContent && (
-          <button type="button" onClick={() => void handleCopy()} style={copyBtnStyle} title="Copy raw content">
+          <button type="button" onClick={() => void handleCopy()} style={copyBtnStyle} title={t("graph.markdown.copyTitle")}>
             {copied ? (
               <>
                 <Check size={12} color="#3fb950" style={{ marginRight: 4 }} />
-                <span style={{ color: "#3fb950", fontSize: 11 }}>Copied</span>
+                <span style={{ color: "#3fb950", fontSize: 11 }}>{t("graph.markdown.copied")}</span>
               </>
             ) : (
               <>
                 <Copy size={12} style={{ marginRight: 4 }} />
-                <span style={{ fontSize: 11 }}>Copy</span>
+                <span style={{ fontSize: 11 }}>{t("graph.markdown.copy")}</span>
               </>
             )}
           </button>
@@ -120,7 +123,7 @@ export function MarkdownContentViewer({
 
       <div style={viewerBodyStyle}>
         {!hasContent ? (
-          <div style={emptyTextStyle}>No content available for this node.</div>
+          <div style={emptyTextStyle}>{t("graph.markdown.empty")}</div>
         ) : activeMode === "source" ? (
           <pre style={sourcePreStyle}>
             <code style={sourceCodeStyle}>{rawContent}</code>
@@ -185,9 +188,9 @@ const MARKDOWN_COMPONENTS: Components = {
     );
   },
   img: ({ src, alt }) => (
-    <span style={imageBadgeStyle} title={src || "Image"}>
+    <span style={imageBadgeStyle} title={src || i18next.t("graph.markdown.imageTitle")}>
       <ImageIcon size={12} style={{ marginRight: 5 }} />
-      <span>Image: {alt || src || "unlabeled"}</span>
+      <span>{i18next.t("graph.markdown.imageBadge", { label: alt || src || i18next.t("graph.markdown.imageUnlabeled") })}</span>
     </span>
   ),
   h1: ({ children }) => <h1 style={h1Style}>{children}</h1>,

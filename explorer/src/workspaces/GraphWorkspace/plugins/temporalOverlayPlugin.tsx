@@ -1,14 +1,73 @@
 import type { CSSProperties } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import type { TFunction } from "i18next";
 
-import type { GraphPlugin } from "./types";
+import type { GraphPlugin, GraphPluginContext } from "./types";
 
 const TEMPORAL_PANEL_ID = "temporal-panel";
 
-function formatTemporalLabel(value: Date | null) {
+function formatTemporalLabel(value: Date | null, t: TFunction) {
   if (!value) {
-    return "No time selected";
+    return t("graph.temporalOverlay.noTimeSelected");
   }
   return `${value.getFullYear()}/${String(value.getMonth() + 1).padStart(2, "0")}`;
+}
+
+// Overlay chip body is a real component so its strings subscribe to
+// languageChanged — the host memoizes plugin overlay elements and would
+// otherwise pin translations at memo time.
+// eslint-disable-next-line react-refresh/only-export-components -- overlay chip stays beside its plugin definition
+function TemporalOverlayChip({
+  currentTime,
+  activeNodeCount,
+}: {
+  currentTime: Date;
+  activeNodeCount: number | null | undefined;
+}) {
+  const { t } = useTranslation();
+  return (
+    <div style={overlayChipStyle}>
+      <span style={overlayChipTitleStyle}>{t("graph.temporalOverlay.overlayChipTitle")}</span>
+      <span>{formatTemporalLabel(currentTime, t)}</span>
+      {typeof activeNodeCount === "number" ? (
+        <span style={overlayChipCountStyle}>
+          {t("graph.hud.activeCount", { count: activeNodeCount.toLocaleString() })}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+// Panel body is a real component so its strings subscribe to languageChanged
+// and refresh instantly — the panel descriptor itself is memoized by the host
+// (collectPluginPanels) and would otherwise pin translations at memo time.
+// eslint-disable-next-line react-refresh/only-export-components -- panel body stays beside its plugin definition
+function TemporalPanelContent({ temporal }: { temporal: ReturnType<GraphPluginContext["getTemporalState"]> }) {
+  const { t } = useTranslation();
+  return (
+    <div style={panelBodyStyle}>
+      <div style={panelEyebrowStyle}>{t("graph.temporalOverlay.eyebrow")}</div>
+      <div style={detailRowStyle}>
+        <span style={detailLabelStyle}>{t("graph.temporalOverlay.labelCurrent")}</span>
+        <span style={detailValueStyle}>{formatTemporalLabel(temporal?.currentTime ?? null, t)}</span>
+      </div>
+      <div style={detailRowStyle}>
+        <span style={detailLabelStyle}>{t("graph.temporalOverlay.labelBounds")}</span>
+        <span style={detailValueStyle}>
+          {(temporal?.minDate ?? "1970")} → {(temporal?.maxDate ?? "2030")}
+        </span>
+      </div>
+      <div style={detailRowStyle}>
+        <span style={detailLabelStyle}>{t("graph.temporalOverlay.labelActiveNodes")}</span>
+        <span style={detailValueStyle}>
+          {typeof temporal?.activeNodeCount === "number"
+            ? temporal.activeNodeCount.toLocaleString()
+            : t("graph.temporalOverlay.valueAll")}
+        </span>
+      </div>
+    </div>
+  );
 }
 
 export const temporalOverlayPlugin: GraphPlugin = {
@@ -32,38 +91,15 @@ export const temporalOverlayPlugin: GraphPlugin = {
       return null;
     }
 
-    const label = formatTemporalLabel(temporal.currentTime);
     return {
       id: "temporal-overlay-chip",
       layer: 1,
       order: 10,
       element: (
-        <div
-          style={{
-            position: "absolute",
-            left: 140,
-            bottom: 26,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            padding: "8px 12px",
-            borderRadius: 999,
-            border: "1px solid rgba(127, 208, 255, 0.18)",
-            background: "linear-gradient(135deg, rgba(6, 15, 27, 0.88), rgba(11, 22, 39, 0.76))",
-            boxShadow: "0 12px 30px rgba(0, 0, 0, 0.28)",
-            color: "#dce9f8",
-            fontSize: 11,
-            letterSpacing: "0.05em",
-            textTransform: "uppercase",
-            pointerEvents: "none",
-          }}
-        >
-          <span style={{ color: "#7fc6ff", fontWeight: 700 }}>Temporal</span>
-          <span>{label}</span>
-          {typeof temporal.activeNodeCount === "number" ? (
-            <span style={{ color: "#8ea4be" }}>{temporal.activeNodeCount.toLocaleString()} active</span>
-          ) : null}
-        </div>
+        <TemporalOverlayChip
+          currentTime={temporal.currentTime}
+          activeNodeCount={temporal.activeNodeCount}
+        />
       ),
     };
   },
@@ -75,35 +111,43 @@ export const temporalOverlayPlugin: GraphPlugin = {
     const temporal = context.getTemporalState();
     return {
       id: TEMPORAL_PANEL_ID,
-      title: "Temporal Context",
+      title: i18next.t("graph.temporalOverlay.panelTitle"),
       placement: "bottom",
       order: 30,
       defaultOpen: false,
       preferredWidth: 320,
       preferredHeight: 220,
-      content: (
-        <div style={panelBodyStyle}>
-          <div style={panelEyebrowStyle}>Current scrubber state</div>
-          <div style={detailRowStyle}>
-            <span style={detailLabelStyle}>Current</span>
-            <span style={detailValueStyle}>{formatTemporalLabel(temporal?.currentTime ?? null)}</span>
-          </div>
-          <div style={detailRowStyle}>
-            <span style={detailLabelStyle}>Bounds</span>
-            <span style={detailValueStyle}>
-              {(temporal?.minDate ?? "1970")} → {(temporal?.maxDate ?? "2030")}
-            </span>
-          </div>
-          <div style={detailRowStyle}>
-            <span style={detailLabelStyle}>Active nodes</span>
-            <span style={detailValueStyle}>
-              {typeof temporal?.activeNodeCount === "number" ? temporal.activeNodeCount.toLocaleString() : "All"}
-            </span>
-          </div>
-        </div>
-      ),
+      content: <TemporalPanelContent temporal={temporal} />,
     };
   },
+};
+
+const overlayChipStyle: CSSProperties = {
+  position: "absolute",
+  left: 140,
+  bottom: 26,
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 10,
+  padding: "8px 12px",
+  borderRadius: 999,
+  border: "1px solid rgba(127, 208, 255, 0.18)",
+  background: "linear-gradient(135deg, rgba(6, 15, 27, 0.88), rgba(11, 22, 39, 0.76))",
+  boxShadow: "0 12px 30px rgba(0, 0, 0, 0.28)",
+  color: "#dce9f8",
+  fontSize: 11,
+  letterSpacing: "0.05em",
+  textTransform: "uppercase",
+  pointerEvents: "none",
+};
+
+const overlayChipTitleStyle: CSSProperties = {
+  color: "#7fc6ff",
+  fontWeight: 700,
+};
+
+const overlayChipCountStyle: CSSProperties = {
+  color: "#8ea4be",
 };
 
 const panelBodyStyle: CSSProperties = {

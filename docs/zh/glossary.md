@@ -39,6 +39,7 @@ source_version: 271681c72c5c5395d328b1a64adb9de7ed8e8333
 | Decision | 决策 | 一等对象，含因果链与溯源 |
 | Entity | 实体 | |
 | Knowledge Graph (KG) | 知识图谱 | 见核心术语 |
+| Knowledge Explorer | 探索 | 产品功能名（2026-09 定名）：界面入口、标签页标题统一用"探索"，不再用"知识探索器" |
 | Relationship | 关系 | 带类型、置信度与溯源 |
 | Semantic | 语义 | |
 | Chunking | 分块 | 七种策略：recursive、semantic、entity-aware 等 |

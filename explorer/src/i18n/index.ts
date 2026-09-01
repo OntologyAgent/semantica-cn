@@ -84,7 +84,7 @@ export function syncDocumentLanguage(language: string | undefined): void {
   const active = language ?? i18next.language;
   if (active === 'zh') {
     document.documentElement.lang = 'zh-CN';
-    document.title = '知识探索器 · Semantica';
+    document.title = '探索 · Semantica';
   } else {
     document.documentElement.lang = 'en';
     document.title = 'Semantica Knowledge Explorer';

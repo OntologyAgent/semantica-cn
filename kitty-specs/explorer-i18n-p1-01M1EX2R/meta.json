@@ -1,0 +1,19 @@
+{
+  "baseline_merge_commit": "eb6aa4b5ebb5009e44cd310abe79212e395c6cbf",
+  "coordination_branch": "kitty/mission-explorer-i18n-p1-01M1EX2R",
+  "created_at": "2026-09-01T16:33:18.372051+00:00",
+  "flattened": false,
+  "friendly_name": "Explorer 中文界面 P1（探索工作区）",
+  "mission_id": "01M1EX2RH232D31F94XP8DDRCD",
+  "mission_number": 3,
+  "mission_slug": "explorer-i18n-p1-01M1EX2R",
+  "mission_type": "software-dev",
+  "pr_bound": true,
+  "purpose_context": "P0 已建立中英双语基础设施与全局框架文案；本轮将国际化推进到探索工作区内部：工具栏、搜索、图例枚举、时间轴、Inspector、加载与错误面板（约 290 条），并对 401 等高频后端错误增加前端中文包装提示（detail 原文保留）。API key 认证界面缺口另行立项，不在本 mission 范围。",
+  "purpose_tldr": "探索工作区（GraphWorkspace）内部界面文案全面中文化，沿用 P0 i18n 基础设施",
+  "slug": "explorer-i18n-p1-01M1EX2R",
+  "target_branch": "feature/explorer-i18n-p1",
+  "topology": "coord",
+  "vcs": "git",
+  "vcs_locked_at": "2026-09-01T16:53:29.411614+00:00"
+}

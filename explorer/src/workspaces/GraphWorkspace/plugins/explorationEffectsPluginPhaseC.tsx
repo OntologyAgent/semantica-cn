@@ -1,4 +1,7 @@
 import type { CSSProperties } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import type { TFunction } from "i18next";
 
 import type {
   GraphAnalyticsSnapshot,
@@ -6,74 +9,77 @@ import type {
   GraphEffectAvailability,
   GraphEffectToggle,
 } from "../types";
-import type { GraphPlugin } from "./types";
+import type en from "../../../i18n/locales/en.json";
+import type { GraphPlugin, GraphPluginContext } from "./types";
+
+type TranslationKey = keyof typeof en.translation;
 
 const EFFECTS_PANEL_ID = "effects-panel";
 
 type EffectRowConfig = {
   key: GraphEffectToggle;
-  label: string;
-  description: string;
+  labelKey: TranslationKey;
+  descriptionKey: TranslationKey;
 };
 
 const SCENE_EFFECT_ROWS: EffectRowConfig[] = [
   {
     key: "pathPulseEnabled",
-    label: "Path Pulse",
-    description: "Animated pulse on the active selected path.",
+    labelKey: "graph.effects.rowPathPulse.label",
+    descriptionKey: "graph.effects.rowPathPulse.description",
   },
   {
     key: "pathFlowEnabled",
-    label: "Path Flow",
-    description: "Directional flow accents along the active selected path.",
+    labelKey: "graph.effects.rowPathFlow.label",
+    descriptionKey: "graph.effects.rowPathFlow.description",
   },
   {
     key: "lensEnabled",
-    label: "Neighborhood Lens",
-    description: "Local emphasis around the hovered or selected node.",
+    labelKey: "graph.effects.rowLens.label",
+    descriptionKey: "graph.effects.rowLens.description",
   },
   {
     key: "temporalEmphasisEnabled",
-    label: "Temporal Emphasis",
-    description: "Subtle glow around temporally relevant nodes in the active time window.",
+    labelKey: "graph.effects.rowTemporalEmphasis.label",
+    descriptionKey: "graph.effects.rowTemporalEmphasis.description",
   },
   {
     key: "semanticRegionsEnabled",
-    label: "Semantic Regions",
-    description: "Quiet semantic hulls around the strongest visible topic clusters.",
+    labelKey: "graph.effects.rowSemanticRegions.label",
+    descriptionKey: "graph.effects.rowSemanticRegions.description",
   },
   {
     key: "contoursEnabled",
-    label: "Contours",
-    description: "Low-contrast density halos around the strongest visible anchors.",
+    labelKey: "graph.effects.rowContours.label",
+    descriptionKey: "graph.effects.rowContours.description",
   },
   {
     key: "edgeLabelsEnabled",
-    label: "Edge Labels",
-    description: "Draw the relationship type on graph edges. Off restores label-free edges on dense graphs.",
+    labelKey: "graph.effects.rowEdgeLabels.label",
+    descriptionKey: "graph.effects.rowEdgeLabels.description",
   },
   {
     key: "legendEnabled",
-    label: "Regions Summary",
-    description: "Keep the regions and signals summary visible in the Effects panel.",
+    labelKey: "graph.effects.rowRegionsSummary.label",
+    descriptionKey: "graph.effects.rowRegionsSummary.description",
   },
 ];
 
 const INTELLIGENCE_EFFECT_ROWS: EffectRowConfig[] = [
   {
     key: "pathfindingEnabled",
-    label: "Directed Pathfinding",
-    description: "Compare the traced path against a strict local directed shortest path.",
+    labelKey: "graph.effects.rowPathfinding.label",
+    descriptionKey: "graph.effects.rowPathfinding.description",
   },
   {
     key: "communitiesEnabled",
-    label: "Community Regions",
-    description: "Detect stable Louvain communities for orientation and scene grouping.",
+    labelKey: "graph.effects.rowCommunities.label",
+    descriptionKey: "graph.effects.rowCommunities.description",
   },
   {
     key: "centralityEnabled",
-    label: "Centrality Ranking",
-    description: "Rank the strongest graph anchors for labels, regions, and navigation.",
+    labelKey: "graph.effects.rowCentrality.label",
+    descriptionKey: "graph.effects.rowCentrality.description",
   },
 ];
 
@@ -92,10 +98,14 @@ const AVAILABILITY_KEYS: Record<GraphEffectToggle, keyof GraphDiagnosticsSnapsho
   diagnosticsEnabled: "diagnostics",
 };
 
-function renderAvailabilityText(availability: GraphEffectAvailability) {
+function renderAvailabilityText(availability: GraphEffectAvailability, t: TFunction) {
   if (availability.available) {
     if (typeof availability.visibleSegments === "number" && typeof availability.segmentCap === "number") {
-      return `${availability.reason} - ${availability.visibleSegments}/${availability.segmentCap} segments`;
+      return t("graph.effects.segmentsCountDash", {
+        reason: availability.reason,
+        count: availability.visibleSegments,
+        total: availability.segmentCap,
+      });
     }
     return availability.reason;
   }
@@ -146,15 +156,16 @@ function EffectToggleRow({
   availability: GraphEffectAvailability;
   onToggle: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <div style={toggleRowStyle}>
       <div style={{ minWidth: 0, flex: 1 }}>
         <div style={rowTitleStyle}>{label}</div>
         <div style={rowDescriptionStyle}>{description}</div>
-        <div style={rowMetaStyle}>{renderAvailabilityText(availability)}</div>
+        <div style={rowMetaStyle}>{renderAvailabilityText(availability, t)}</div>
       </div>
       <button type="button" onClick={onToggle} style={checked ? toggleButtonActiveStyle : toggleButtonStyle}>
-        {checked ? "On" : "Off"}
+        {checked ? t("graph.effects.toggleOn") : t("graph.effects.toggleOff")}
       </button>
     </div>
   );
@@ -163,6 +174,7 @@ function EffectToggleRow({
 function renderRegionsAndSignals(
   context: Parameters<NonNullable<GraphPlugin["renderPanel"]>>[0],
   analytics: GraphAnalyticsSnapshot | null,
+  t: TFunction,
 ) {
   const fallbackLegendItems = collectFallbackLegendItems(context);
   const semanticRegions = analytics?.semanticRegions.summaries ?? [];
@@ -171,14 +183,14 @@ function renderRegionsAndSignals(
   const directedPath = analytics?.directedPath ?? null;
 
   if (!semanticRegions.length && !communities.length && !centrality.length && !fallbackLegendItems.length && !directedPath) {
-    return <div style={emptyTextStyle}>Regions and intelligence summaries will populate when graph analytics are ready.</div>;
+    return <div style={emptyTextStyle}>{t("graph.effects.regionsEmpty")}</div>;
   }
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
       {semanticRegions.length ? (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={subsectionTitleStyle}>Semantic regions</div>
+          <div style={subsectionTitleStyle}>{t("graph.effects.subsectionSemanticRegions")}</div>
           {semanticRegions.map((region) => (
             <div key={region.semanticGroup} style={legendRowStyle}>
               <span
@@ -191,7 +203,10 @@ function renderRegionsAndSignals(
               <div style={{ minWidth: 0, flex: 1 }}>
                 <div style={rowTitleStyle}>{region.semanticGroup}</div>
                 <div style={rowMetaStyle}>
-                  {region.visibleNodeCount.toLocaleString()} visible / {region.nodeCount.toLocaleString()} total
+                  {t("graph.effects.regionCounts", {
+                    visible: region.visibleNodeCount.toLocaleString(),
+                    total: region.nodeCount.toLocaleString(),
+                  })}
                 </div>
               </div>
               <div style={signalBadgeStyle}>{region.anchorLabel}</div>
@@ -202,13 +217,17 @@ function renderRegionsAndSignals(
 
       {communities.length ? (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={subsectionTitleStyle}>Community anchors</div>
+          <div style={subsectionTitleStyle}>{t("graph.effects.subsectionCommunityAnchors")}</div>
           {communities.slice(0, 3).map((community) => (
             <div key={community.communityId} style={signalRowStyle}>
               <div style={{ minWidth: 0, flex: 1 }}>
                 <div style={rowTitleStyle}>{community.anchorLabel}</div>
                 <div style={rowMetaStyle}>
-                  Community {community.communityId} - {community.visibleNodeCount} visible / {community.nodeCount} total
+                  {t("graph.effects.communityCounts", {
+                    communityId: community.communityId,
+                    visible: community.visibleNodeCount,
+                    total: community.nodeCount,
+                  })}
                 </div>
               </div>
               <div style={signalBadgeStyle}>{community.dominantSemanticGroup}</div>
@@ -219,16 +238,19 @@ function renderRegionsAndSignals(
 
       {centrality.length ? (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={subsectionTitleStyle}>Centrality leaders</div>
+          <div style={subsectionTitleStyle}>{t("graph.effects.subsectionCentralityLeaders")}</div>
           {centrality.slice(0, 3).map((node) => (
             <div key={node.id} style={signalRowStyle}>
               <div style={{ minWidth: 0, flex: 1 }}>
                 <div style={rowTitleStyle}>{node.label}</div>
                 <div style={rowMetaStyle}>
-                  {node.semanticGroup} - score {node.score.toFixed(3)}
+                  {t("graph.effects.centralityScore", {
+                    group: node.semanticGroup,
+                    score: node.score.toFixed(3),
+                  })}
                 </div>
               </div>
-              <div style={signalBadgeStyle}>deg {node.degree.toFixed(3)}</div>
+              <div style={signalBadgeStyle}>{t("graph.effects.degreeBadge", { degree: node.degree.toFixed(3) })}</div>
             </div>
           ))}
         </div>
@@ -236,15 +258,18 @@ function renderRegionsAndSignals(
 
       {directedPath ? (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={subsectionTitleStyle}>Directed pathfinding</div>
+          <div style={subsectionTitleStyle}>{t("graph.effects.subsectionDirectedPathfinding")}</div>
           <div style={signalRowStyle}>
             <div style={{ minWidth: 0, flex: 1 }}>
-              <div style={rowTitleStyle}>{directedPath.ready ? "Local directed path ready" : "Waiting for path context"}</div>
+              <div style={rowTitleStyle}>
+                {directedPath.ready ? t("graph.effects.directedPathReady") : t("graph.effects.directedPathWaiting")}
+              </div>
               <div style={rowMetaStyle}>{directedPath.reason}</div>
             </div>
             {directedPath.ready ? (
               <div style={signalBadgeStyle}>
-                {directedPath.length} hops{directedPath.verifiedAgainstActivePath ? " - match" : ""}
+                {t("graph.effects.directedPathHops", { count: directedPath.length })}
+                {directedPath.verifiedAgainstActivePath ? t("graph.effects.directedPathMatchSuffix") : ""}
               </div>
             ) : null}
           </div>
@@ -253,7 +278,7 @@ function renderRegionsAndSignals(
 
       {!semanticRegions.length && !communities.length && !centrality.length && fallbackLegendItems.length ? (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={subsectionTitleStyle}>Fallback semantic legend</div>
+          <div style={subsectionTitleStyle}>{t("graph.effects.subsectionFallbackLegend")}</div>
           {fallbackLegendItems.map((item) => (
             <div key={item.group} style={legendRowStyle}>
               <span
@@ -265,10 +290,97 @@ function renderRegionsAndSignals(
               />
               <div style={{ minWidth: 0, flex: 1 }}>
                 <div style={rowTitleStyle}>{item.group}</div>
-                <div style={rowMetaStyle}>{item.count.toLocaleString()} nodes</div>
+                <div style={rowMetaStyle}>{t("graph.effects.legendNodeCount", { count: item.count.toLocaleString() })}</div>
               </div>
             </div>
           ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+// Panel body is a real component so its strings subscribe to languageChanged
+// and refresh instantly — the panel descriptor itself is memoized by the host
+// (collectPluginPanels) and would otherwise pin translations at memo time.
+// eslint-disable-next-line react-refresh/only-export-components -- panel body stays beside its plugin definition
+function EffectsPanelContent({
+  context,
+  effectsState,
+  diagnosticsSnapshot,
+  analyticsSnapshot,
+}: {
+  context: GraphPluginContext;
+  effectsState: ReturnType<GraphPluginContext["getEffectsState"]>;
+  diagnosticsSnapshot: ReturnType<GraphPluginContext["getDiagnosticsSnapshot"]>;
+  analyticsSnapshot: ReturnType<GraphPluginContext["getAnalyticsSnapshot"]>;
+}) {
+  const { t } = useTranslation();
+  const availability = diagnosticsSnapshot?.effectAvailability;
+  const showSignalsSection =
+    effectsState.legendEnabled
+    || effectsState.semanticRegionsEnabled
+    || effectsState.communitiesEnabled
+    || effectsState.centralityEnabled
+    || effectsState.pathfindingEnabled;
+
+  return (
+    <div style={panelBodyStyle}>
+      <div style={panelEyebrowStyle}>{t("graph.effects.eyebrow")}</div>
+
+      <div style={sectionStyle}>
+        <div style={sectionTitleStyle}>{t("graph.effects.sectionSceneEffects")}</div>
+        {SCENE_EFFECT_ROWS.map((row) => (
+          <EffectToggleRow
+            key={row.key}
+            label={t(row.labelKey)}
+            description={t(row.descriptionKey)}
+            checked={effectsState[row.key]}
+            availability={resolveAvailability(availability, row.key, effectsState[row.key])}
+            onToggle={() => context.dispatchAction({ type: "toggleEffect", effect: row.key })}
+          />
+        ))}
+      </div>
+
+      <div style={sectionStyle}>
+        <div style={sectionTitleStyle}>{t("graph.effects.sectionGraphIntelligence")}</div>
+        {INTELLIGENCE_EFFECT_ROWS.map((row) => (
+          <EffectToggleRow
+            key={row.key}
+            label={t(row.labelKey)}
+            description={t(row.descriptionKey)}
+            checked={effectsState[row.key]}
+            availability={resolveAvailability(availability, row.key, effectsState[row.key])}
+            onToggle={() => context.dispatchAction({ type: "toggleEffect", effect: row.key })}
+          />
+        ))}
+      </div>
+
+      {showSignalsSection ? (
+        <div style={sectionStyle}>
+          <div style={sectionTitleStyle}>{t("graph.effects.sectionRegionsAndSignals")}</div>
+          {renderRegionsAndSignals(context, analyticsSnapshot, t)}
+        </div>
+      ) : null}
+
+      {import.meta.env.DEV ? (
+        <div style={sectionStyle}>
+          <div style={sectionTitleStyle}>{t("graph.effects.sectionDiagnostics")}</div>
+          <EffectToggleRow
+            label={t("graph.effects.devDiagnosticsLabel")}
+            description={t("graph.effects.devDiagnosticsDescription")}
+            checked={effectsState.diagnosticsEnabled}
+            availability={resolveAvailability(availability, "diagnosticsEnabled", effectsState.diagnosticsEnabled)}
+            onToggle={() => context.dispatchAction({ type: "toggleEffect", effect: "diagnosticsEnabled" })}
+          />
+          {effectsState.diagnosticsEnabled && diagnosticsSnapshot ? (
+            <details style={detailsStyle}>
+              <summary style={summaryStyle}>{t("graph.effects.runtimeSnapshot")}</summary>
+              <pre style={diagnosticsPreStyle}>
+                {JSON.stringify({ diagnostics: diagnosticsSnapshot, analytics: analyticsSnapshot }, null, 2)}
+              </pre>
+            </details>
+          ) : null}
         </div>
       ) : null}
     </div>
@@ -298,82 +410,22 @@ export const explorationEffectsPluginPhaseC: GraphPlugin = {
     const effectsState = context.getEffectsState();
     const diagnosticsSnapshot = context.getDiagnosticsSnapshot();
     const analyticsSnapshot = context.getAnalyticsSnapshot();
-    const availability = diagnosticsSnapshot?.effectAvailability;
-    const showSignalsSection =
-      effectsState.legendEnabled
-      || effectsState.semanticRegionsEnabled
-      || effectsState.communitiesEnabled
-      || effectsState.centralityEnabled
-      || effectsState.pathfindingEnabled;
 
     return {
       id: EFFECTS_PANEL_ID,
-      title: "Effects",
+      title: i18next.t("graph.effects.panelTitle"),
       placement: "bottom",
       order: 8,
       defaultOpen: false,
       preferredWidth: 460,
       preferredHeight: 360,
       content: (
-        <div style={panelBodyStyle}>
-          <div style={panelEyebrowStyle}>Exploration effects</div>
-
-          <div style={sectionStyle}>
-            <div style={sectionTitleStyle}>Scene effects</div>
-            {SCENE_EFFECT_ROWS.map((row) => (
-              <EffectToggleRow
-                key={row.key}
-                label={row.label}
-                description={row.description}
-                checked={effectsState[row.key]}
-                availability={resolveAvailability(availability, row.key, effectsState[row.key])}
-                onToggle={() => context.dispatchAction({ type: "toggleEffect", effect: row.key })}
-              />
-            ))}
-          </div>
-
-          <div style={sectionStyle}>
-            <div style={sectionTitleStyle}>Graph intelligence</div>
-            {INTELLIGENCE_EFFECT_ROWS.map((row) => (
-              <EffectToggleRow
-                key={row.key}
-                label={row.label}
-                description={row.description}
-                checked={effectsState[row.key]}
-                availability={resolveAvailability(availability, row.key, effectsState[row.key])}
-                onToggle={() => context.dispatchAction({ type: "toggleEffect", effect: row.key })}
-              />
-            ))}
-          </div>
-
-          {showSignalsSection ? (
-            <div style={sectionStyle}>
-              <div style={sectionTitleStyle}>Regions and signals</div>
-              {renderRegionsAndSignals(context, analyticsSnapshot)}
-            </div>
-          ) : null}
-
-          {import.meta.env.DEV ? (
-            <div style={sectionStyle}>
-              <div style={sectionTitleStyle}>Diagnostics</div>
-              <EffectToggleRow
-                label="Dev Diagnostics"
-                description="Inspect plugin, interaction, and effect gating state."
-                checked={effectsState.diagnosticsEnabled}
-                availability={resolveAvailability(availability, "diagnosticsEnabled", effectsState.diagnosticsEnabled)}
-                onToggle={() => context.dispatchAction({ type: "toggleEffect", effect: "diagnosticsEnabled" })}
-              />
-              {effectsState.diagnosticsEnabled && diagnosticsSnapshot ? (
-                <details style={detailsStyle}>
-                  <summary style={summaryStyle}>Runtime snapshot</summary>
-                  <pre style={diagnosticsPreStyle}>
-                    {JSON.stringify({ diagnostics: diagnosticsSnapshot, analytics: analyticsSnapshot }, null, 2)}
-                  </pre>
-                </details>
-              ) : null}
-            </div>
-          ) : null}
-        </div>
+        <EffectsPanelContent
+          context={context}
+          effectsState={effectsState}
+          diagnosticsSnapshot={diagnosticsSnapshot}
+          analyticsSnapshot={analyticsSnapshot}
+        />
       ),
     };
   },

@@ -83,7 +83,9 @@ test("real Explorer loading path hydrates and renders API edge labels", async (t
     };
   });
   await installApiFixture(page);
-  await page.goto(BASE_URL);
+  // P1 (WP01): pin English so UI-text locators stay stable regardless of
+  // the viewer's navigator language (see src/i18n resolveInitialLanguage).
+  await page.goto(`${BASE_URL}?lang=en`);
   await page.getByRole("button", { name: /Open Semantica Explorer/ }).click();
 
   await page.locator("canvas").nth(0).waitFor({ state: "attached" });

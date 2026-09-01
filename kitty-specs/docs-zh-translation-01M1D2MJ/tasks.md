@@ -59,11 +59,11 @@
 **Independent test**: 对真实 docs/zh 运行输出合法 JSON；退出码语义正确；83 文件 ≤5s
 **Estimated prompt size**: ~400 lines
 
-- [ ] T005 实现 zh_status.py 扫描与 frontmatter 解析 (WP02)
-- [ ] T006 实现 git blob sha 比对与 fresh/stale/orphan 判定 (WP02)
-- [ ] T007 实现 CLI（--json/--root/--verbose）与退出码 0/1/2 (WP02)
-- [ ] T008 按 contracts/zh-status-cli.md 做行为自测（真实 docs/zh + 降级路径） (WP02)
-- [ ] T009 性能验证（≤5s）与 83 文件规模演练 (WP02)
+- [x] T005 实现 zh_status.py 扫描与 frontmatter 解析 (WP02)
+- [x] T006 实现 git blob sha 比对与 fresh/stale/orphan 判定 (WP02)
+- [x] T007 实现 CLI（--json/--root/--verbose）与退出码 0/1/2 (WP02)
+- [x] T008 按 contracts/zh-status-cli.md 做行为自测（真实 docs/zh + 降级路径） (WP02)
+- [x] T009 性能验证（≤5s）与 83 文件规模演练 (WP02)
 
 **Dependencies**: none
 **Parallel opportunities**: 与 WP01 并行

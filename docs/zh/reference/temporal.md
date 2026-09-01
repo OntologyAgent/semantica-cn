@@ -877,7 +877,7 @@ kg:
 ```
 
 - [Knowledge Graph Module](./kg.md) — 图构建核心、`GraphBuilder` 与图分析。
-- [Context Module](../../reference/context.md) — 决策时态窗口与 `find_active_nodes()`。
+- [Context Module](./context.md) — 决策时态窗口与 `find_active_nodes()`。
 - [Provenance](./provenance.md) — 与时态元数据一同盖戳的 W3C PROV-O 血缘。
 - [Export](./export.md) — 带时态注解的 OWL、Turtle、JSON-LD 与 Parquet 导出。
 

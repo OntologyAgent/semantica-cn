@@ -290,9 +290,9 @@ fig = visualize_temporal(temporal_data, output="interactive", method="timeline")
 semantica-explorer --graph my_graph.json
 ```
 
-完整功能集与 REST API 见 [Explorer 参考](../../reference/explorer.md)。
+完整功能集与 REST API 见 [Explorer 参考](./explorer.md)。
 
 - [Knowledge Graph](../../reference/kg.md) — 被可视化的图。
 - [Ontology](./ontology.md) — 可视化本体的类结构。
 - [Embeddings](../../reference/embeddings.md) — 生成此处可视化的嵌入。
-- [Explorer](../../reference/explorer.md) — 完整的交互式知识探索界面。
+- [Explorer](./explorer.md) — 完整的交互式知识探索界面。

@@ -508,4 +508,4 @@ stats = store.get_stats()
 - [KG Module](./kg.md) — 先建图，再持久化。
 - [Triplet Store](./triplet_store.md) — 支撑语义网和 SPARQL 查询的 RDF 三元组存储。
 - [Visualization](./visualization.md) — 可视化任意后端存储的图。
-- [Context](../../reference/context.md) — AgentContext 用 GraphStore 做记忆检索。
+- [Context](./context.md) — AgentContext 用 GraphStore 做记忆检索。

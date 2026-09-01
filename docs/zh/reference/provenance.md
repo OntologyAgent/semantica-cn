@@ -527,4 +527,4 @@ Semantica 的溯源追踪产出以下审计工件：
 - [Change Management](./change_management.md) — 版本控制与快照审计轨迹。
 - [Ingest](./ingest.md) — 溯源从摄取阶段就开始。
 - [Export](./export.md) — RDF 导出中携带溯源元数据。
-- [Context](../../reference/context.md) — 经 AgentContext 记录决策溯源。
+- [Context](./context.md) — 经 AgentContext 记录决策溯源。

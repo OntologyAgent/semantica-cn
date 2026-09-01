@@ -609,9 +609,9 @@ Knowledge Explorer 把距离智能直接嵌进浏览器面板：
   10× 缓存提升的前提是两次请求之间图未变化。节点持续写入的写重流水线里，缓存命中率会更低。读重的 Explorer 用 `force_refresh=False`（默认），批量流水线场景用 `force_refresh=True`。
 </Note>
 
-- [Context Module](../../reference/context.md) — `ContextGraph.get_neighbors()` 与邻近度混合检索。
+- [Context Module](./context.md) — `ContextGraph.get_neighbors()` 与邻近度混合检索。
 - [Knowledge Graph Module](./kg.md) — `NodeEmbedder`、`SimilarityCalculator` 与图分析。
 - [Visualization](./visualization.md) — 程序化距离热力图与自我模式图渲染。
-- [Explorer](../../reference/explorer.md) — 内置距离智能面板的 Knowledge Explorer。
+- [Explorer](./explorer.md) — 内置距离智能面板的 Knowledge Explorer。
 
 - [Distance Intelligence](https://github.com/semantica-agi/semantica/blob/main/cookbook/advanced/12_Distance_Intelligence.ipynb) — 语义邻域与距离矩阵 · 高级

@@ -17,7 +17,8 @@ subtasks:
 - T010
 - T011
 - T012
-agent: claude
+agent: "claude"
+shell_pid: "14272"
 history:
 - timestamp: '2026-09-01T09:51:16Z'
   action: created
@@ -186,3 +187,7 @@ If that command is unavailable, proceed as a careful frontend implementer: TypeS
 ## Reviewer Guidance
 
 核对：① grep 确认 App.tsx 中 P0 范围无内联英文残留；② e2e 锚点 `Open Semantica Explorer` 逐字未变；③ 模块常量重构未改变导航结构/图标/行为；④ ErrorBoundary 用 i18n.t 直调而非 hook；⑤ 越界补键 en/zh 成对出现。
+
+## Activity Log
+
+- 2026-09-01T13:09:35Z – claude – shell_pid=14272 – Assigned agent via action command

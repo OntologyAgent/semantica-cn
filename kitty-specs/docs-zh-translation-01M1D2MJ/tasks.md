@@ -108,11 +108,11 @@
 **Independent test**: 五篇产物存在、frontmatter 合规、changelog 仅指路一行、docs_check 不新增失败
 **Estimated prompt size**: ~400 lines
 
-- [ ] T018 翻译 docs/zh/faq.md (WP05)
-- [ ] T019 翻译 docs/zh/cli-setup.md (WP05)
-- [ ] T020 翻译 docs/zh/storage-backends.md (WP05)
-- [ ] T021 翻译 docs/zh/explorer-setup.md (WP05)
-- [ ] T022 编写 docs/zh/changelog.md 指路页 + WP05 自检 (WP05)
+- [x] T018 翻译 docs/zh/faq.md (WP05)
+- [x] T019 翻译 docs/zh/cli-setup.md (WP05)
+- [x] T020 翻译 docs/zh/storage-backends.md (WP05)
+- [x] T021 翻译 docs/zh/explorer-setup.md (WP05)
+- [x] T022 编写 docs/zh/changelog.md 指路页 + WP05 自检 (WP05)
 
 **Dependencies**: WP01, WP02
 **Parallel opportunities**: 与 WP03、WP04 并行

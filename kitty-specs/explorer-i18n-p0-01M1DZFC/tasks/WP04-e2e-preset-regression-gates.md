@@ -18,7 +18,8 @@ subtasks:
 - T017
 - T018
 - T019
-agent: claude
+agent: "claude"
+shell_pid: "51589"
 history:
 - timestamp: '2026-09-01T09:51:16Z'
   action: created
@@ -170,3 +171,7 @@ If that command is unavailable, proceed as a careful frontend implementer：测�
 ## Reviewer Guidance
 
 核对：① e2e diff 仅预置行；② 六条门禁的真实输出（不要采信转述）；③ 验收表与 spec FR/NFR 对得上；④ 体积口径可信（gzip、同一构建配置）。
+
+## Activity Log
+
+- 2026-09-01T14:01:49Z – claude – shell_pid=51589 – Assigned agent via action command

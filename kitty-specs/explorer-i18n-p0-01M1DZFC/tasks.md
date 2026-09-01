@@ -55,12 +55,12 @@
 **Independent test**: 中文模式下 P0 范围零英文残留；英文模式与改造前一致（e2e 锚点逐字未动）；lint/build 全绿
 **Estimated prompt size**: ~230 lines
 
-- [ ] T007 主导航 navItems 渲染期 t() 化 + 头部挂载 LanguageToggle + brand-pill title (WP02)
-- [ ] T008 7 处 WorkspaceShell title/subtitle/kicker/tabs 入键 (WP02)
-- [ ] T009 CONNECTION_STATUS_LABEL 渲染期化 + 首屏状态栏/metrics/启动卡 (WP02)
-- [ ] T010 首屏 Hero/预览面板/能力带全量入键（~40 节点） (WP02)
-- [ ] T011 WorkspaceFallback + ErrorBoundary 文案（类组件 i18n.t 直调） (WP02)
-- [ ] T012 P0 残留清点 + 基准 sha 刷新（zh.json \_\_meta.source_version）+ lint/build 自检 (WP02)
+- [x] T007 主导航 navItems 渲染期 t() 化 + 头部挂载 LanguageToggle + brand-pill title (WP02)
+- [x] T008 7 处 WorkspaceShell title/subtitle/kicker/tabs 入键 (WP02)
+- [x] T009 CONNECTION_STATUS_LABEL 渲染期化 + 首屏状态栏/metrics/启动卡 (WP02)
+- [x] T010 首屏 Hero/预览面板/能力带全量入键（~40 节点） (WP02)
+- [x] T011 WorkspaceFallback + ErrorBoundary 文案（类组件 i18n.t 直调） (WP02)
+- [x] T012 P0 残留清点 + 基准 sha 刷新（zh.json \_\_meta.source_version）+ lint/build 自检 (WP02)
 
 **Dependencies**: WP01
 **Parallel opportunities**: 与 WP03 并行（文件不相交）
@@ -74,9 +74,9 @@
 **Independent test**: `python tools/i18n/ui_zh_status.py` 对本期资源报告 fresh、missing=0、extra=0；退出码 0/1/2 语义正确
 **Estimated prompt size**: ~150 lines
 
-- [ ] T013 ui_zh_status.py：资源扫描与键级 diff（missing/extra，排除 \_\_meta） (WP03)
-- [ ] T014 CLI 与输出（表格/--json/退出码 0/1/2）对齐契约 (WP03)
-- [ ] T015 本期资源实跑自检 → fresh + missing=0 + extra=0 (WP03)
+- [x] T013 ui_zh_status.py：资源扫描与键级 diff（missing/extra，排除 \_\_meta） (WP03)
+- [x] T014 CLI 与输出（表格/--json/退出码 0/1/2）对齐契约 (WP03)
+- [x] T015 本期资源实跑自检 → fresh + missing=0 + extra=0 (WP03)
 
 **Dependencies**: WP01
 **Parallel opportunities**: 与 WP02 并行（只依赖 WP01）

@@ -19,7 +19,7 @@ subtasks:
 - T012
 - T013
 agent: "claude"
-shell_pid: "9623"
+shell_pid: "17870"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -149,3 +149,5 @@ If that command is unavailable, proceed as a bilingual technical documentation c
 ## Activity Log
 
 - 2026-09-01T02:06:35Z – claude – shell_pid=9623 – Assigned agent via action command
+- 2026-09-01T02:14:00Z – claude – shell_pid=9623 – 四篇译文落盘：zh_status 全 fresh（4/4 新页）；内链零死链（本批互链用 ./，未翻页回落 ../英文）；JSX 与英文源逐组件配平；docs_check 不新增失败（唯一 FAIL 仍为 Node 26 基线）
+- 2026-09-01T02:14:13Z – claude – shell_pid=17870 – Started review via action command

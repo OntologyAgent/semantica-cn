@@ -20,7 +20,8 @@ history:
   agent: claude
 agent_profile: python-pedro
 authoritative_surface: tools/i18n/
-create_intent: []
+create_intent:
+- tools/i18n/ui_zh_status.py
 execution_mode: code_change
 owned_files:
 - tools/i18n/ui_zh_status.py

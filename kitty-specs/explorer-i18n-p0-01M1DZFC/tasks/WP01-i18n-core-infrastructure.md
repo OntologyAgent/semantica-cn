@@ -26,7 +26,12 @@ history:
   agent: claude
 agent_profile: frontend-freddy
 authoritative_surface: explorer/src/i18n/
-create_intent: []
+create_intent:
+- explorer/src/i18n/index.ts
+- explorer/src/i18n/types.d.ts
+- explorer/src/i18n/LanguageToggle.tsx
+- explorer/src/i18n/locales/en.json
+- explorer/src/i18n/locales/zh.json
 execution_mode: code_change
 owned_files:
 - explorer/src/i18n/**

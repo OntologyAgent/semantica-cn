@@ -1,9 +1,62 @@
 import type { CSSProperties } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
-import type { GraphPlugin } from "./types";
+import type { GraphPlugin, GraphPluginContext } from "./types";
 
 const LEGEND_PANEL_ID = "legend-panel";
 const MAX_GROUPS = 8;
+
+// Panel body is a real component so its strings subscribe to languageChanged
+// and refresh instantly — the panel descriptor itself is memoized by the host
+// (collectPluginPanels) and would otherwise pin translations at memo time.
+// eslint-disable-next-line react-refresh/only-export-components -- panel body stays beside its plugin definition
+function LegendPanelContent({ context }: { context: GraphPluginContext }) {
+  const { t } = useTranslation();
+
+  const groups = new Map<string, { count: number; color: string }>();
+  context.graph.forEachNode((_nodeId, attrs) => {
+    const semanticGroup = String(attrs.semanticGroup || attrs.nodeType || "entity");
+    const color = String(attrs.baseColor || context.theme.palette.semantic[0]);
+    const current = groups.get(semanticGroup);
+    groups.set(semanticGroup, {
+      count: (current?.count ?? 0) + 1,
+      color,
+    });
+  });
+
+  const items = [...groups.entries()]
+    .map(([group, data]) => ({ group, ...data }))
+    .sort((left, right) => right.count - left.count)
+    .slice(0, MAX_GROUPS);
+
+  return (
+    <div style={panelBodyStyle}>
+      <div style={panelEyebrowStyle}>{t("graph.legend.semanticGroups")}</div>
+      {items.length ? (
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {items.map((item) => (
+            <div key={item.group} style={legendRowStyle}>
+              <span
+                style={{
+                  ...swatchStyle,
+                  background: item.color,
+                  boxShadow: `0 0 0 1px rgba(255,255,255,0.06), 0 0 18px ${item.color}44`,
+                }}
+              />
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div style={rowTitleStyle}>{item.group}</div>
+                <div style={rowMetaStyle}>{t("graph.legend.nodeCount", { count: item.count.toLocaleString() })}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div style={emptyTextStyle}>{t("graph.legend.empty")}</div>
+      )}
+    </div>
+  );
+}
 
 export const legendPlugin: GraphPlugin = {
   id: "legend",
@@ -25,56 +78,15 @@ export const legendPlugin: GraphPlugin = {
       return null;
     }
 
-    const groups = new Map<string, { count: number; color: string }>();
-    context.graph.forEachNode((_nodeId, attrs) => {
-      const semanticGroup = String(attrs.semanticGroup || attrs.nodeType || "entity");
-      const color = String(attrs.baseColor || context.theme.palette.semantic[0]);
-      const current = groups.get(semanticGroup);
-      groups.set(semanticGroup, {
-        count: (current?.count ?? 0) + 1,
-        color,
-      });
-    });
-
-    const items = [...groups.entries()]
-      .map(([group, data]) => ({ group, ...data }))
-      .sort((left, right) => right.count - left.count)
-      .slice(0, MAX_GROUPS);
-
     return {
       id: LEGEND_PANEL_ID,
-      title: "Legend",
+      title: i18next.t("graph.legend.panelTitle"),
       placement: "bottom",
       order: 10,
       defaultOpen: false,
       preferredWidth: 320,
       preferredHeight: 220,
-      content: (
-        <div style={panelBodyStyle}>
-          <div style={panelEyebrowStyle}>Semantic groups</div>
-          {items.length ? (
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {items.map((item) => (
-                <div key={item.group} style={legendRowStyle}>
-                  <span
-                    style={{
-                      ...swatchStyle,
-                      background: item.color,
-                      boxShadow: `0 0 0 1px rgba(255,255,255,0.06), 0 0 18px ${item.color}44`,
-                    }}
-                  />
-                  <div style={{ minWidth: 0, flex: 1 }}>
-                    <div style={rowTitleStyle}>{item.group}</div>
-                    <div style={rowMetaStyle}>{item.count.toLocaleString()} nodes</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div style={emptyTextStyle}>Legend will populate when the graph metadata is available.</div>
-          )}
-        </div>
-      ),
+      content: <LegendPanelContent context={context} />,
     };
   },
 };

@@ -18,11 +18,14 @@ import {
 } from "lucide-react";
 
 import type Graph from "graphology";
+import { useTranslation } from "react-i18next";
 import { batchMergeEdges, batchMergeNodes, graph } from "../../store/graphStore";
 import { logEvent } from "../../store/registryStore";
 import type { EdgeAttributes, NodeAttributes } from "../../store/graphStore";
 import { curveGroupForPair } from "../../store/edgePairKeys.js";
 import { InspectorPanel, MetricChip, SurfaceCard } from "../../ui/primitives";
+import { describeApiError, describeResponseError, type ApiErrorView } from "../../i18n/apiError";
+import type en from "../../i18n/locales/en.json";
 import { lazy, Suspense } from "react";
 import { SigmaSceneAdapter } from "./SigmaSceneAdapter";
 import { useLoadGraph, useReloadGraph } from "./useLoadGraph";
@@ -62,6 +65,10 @@ import type {
   GraphTemporalState,
   GraphViewMode,
 } from "./types";
+
+// Typed t() rejects plain string keys; constants that hold an i18n key use
+// this narrowed union (same pattern as App.tsx, P0).
+type TranslationKey = keyof typeof en.translation;
 
 type SearchResult = {
   node: {
@@ -124,8 +131,9 @@ type SemanticNeighborhoodResponse = {
 type LazyPluginRegistryEntry = {
   id: string;
   panelId: string;
-  label: string;
-  title: string;
+  /** i18n keys resolved at render time (module scope cannot call t()). */
+  labelKey: TranslationKey;
+  titleKey: TranslationKey;
   order: number;
   load: () => Promise<GraphPlugin>;
   shouldLoad: (context: {
@@ -162,13 +170,15 @@ const loadNeighborhoodPanelPlugin = () => import("./plugins/neighborhoodPanelPlu
 const loadTemporalOverlayPlugin = () => import("./plugins/temporalOverlayPlugin").then((module) => module.temporalOverlayPlugin);
 const EMPTY_PATH: string[] = [];
 const COMPACT_TOOLBAR_CLUSTER_IDS = new Set(["camera", "utility"]);
-const ENTITY_VISUAL_KEY: Array<{ shape: GraphEntityShapeVariant; label: string }> = [
-  { shape: "biomolecule", label: "Biomolecule" },
-  { shape: "condition", label: "Condition" },
-  { shape: "compound", label: "Compound" },
-  { shape: "process", label: "Process" },
-  { shape: "community", label: "Community" },
-  { shape: "entity", label: "Other" },
+// Legend labels are i18n keys (graph.legend.*) resolved at render time —
+// module scope cannot call t() (P0 navItems pattern: structure stays constant).
+const ENTITY_VISUAL_KEY: Array<{ shape: GraphEntityShapeVariant; labelKey: TranslationKey }> = [
+  { shape: "biomolecule", labelKey: "graph.legend.biomolecule" },
+  { shape: "condition", labelKey: "graph.legend.condition" },
+  { shape: "compound", labelKey: "graph.legend.compound" },
+  { shape: "process", labelKey: "graph.legend.process" },
+  { shape: "community", labelKey: "graph.legend.community" },
+  { shape: "entity", labelKey: "graph.legend.other" },
 ];
 const DEBUG_GRAPH_WORKSPACE = import.meta.env.DEV;
 
@@ -199,7 +209,9 @@ function useDebounce<T>(value: T, delay: number): T {
 }
 
 function iconForPluginToolbarItem(item: GraphPluginToolbarItem): ToolbarIconComponent {
-  const normalized = `${item.id} ${item.label}`.toLowerCase();
+  // Match on the stable item id (not the label): labels are i18n-resolved, so
+  // their text changes with the UI language and cannot key icon selection.
+  const normalized = item.id.toLowerCase();
   if (normalized.includes("neighbor")) {
     return Users;
   }
@@ -273,12 +285,13 @@ function ToolbarCluster({
 }
 
 function SegmentedModeControl({ items }: { items: GraphToolbarItem[] }) {
+  const { t } = useTranslation();
   if (!items.length) {
     return null;
   }
 
   return (
-    <div className="explore-mode-control" role="group" aria-label="Graph view mode">
+    <div className="explore-mode-control" role="group" aria-label={t("graph.toolbar.ariaViewMode")}>
       {items.map((item) => (
         <ToolbarButton key={item.id} item={item} className="explore-mode-segment" />
       ))}
@@ -308,6 +321,7 @@ function SearchCommandBar({
   const abortRef = useRef<AbortController | null>(null);
   const debounceRef = useRef<number | null>(null);
   const listboxId = useId();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (debounceRef.current !== null) {
@@ -417,18 +431,18 @@ function SearchCommandBar({
             closeSuggestions();
           }
         }}
-        placeholder="Search command, node, or concept"
-        aria-label="Search graph nodes"
+        placeholder={t("graph.search.placeholder")}
+        aria-label={t("graph.search.ariaInput")}
         aria-autocomplete="list"
         aria-controls={listboxId}
         aria-activedescendant={highlightedIndex >= 0 ? `${listboxId}-${highlightedIndex}` : undefined}
       />
-      <button type="submit" disabled={disabled} aria-label="Search for the current query">
-        Search
+      <button type="submit" disabled={disabled} aria-label={t("graph.search.ariaSubmit")}>
+        {t("graph.search.submit")}
       </button>
 
       {suggestionsOpen && suggestions.length > 0 ? (
-        <ul id={listboxId} role="listbox" className="explore-search-suggestions" aria-label="Search suggestions">
+        <ul id={listboxId} role="listbox" className="explore-search-suggestions" aria-label={t("graph.search.ariaSuggestions")}>
           {suggestions.map((result, index) => (
             <li
               key={result.node.id}
@@ -453,12 +467,13 @@ function SearchCommandBar({
 }
 
 function EntityVisualKey() {
+  const { t } = useTranslation();
   return (
-    <div className="explore-entity-key" aria-label="Node visual key">
+    <div className="explore-entity-key" aria-label={t("graph.legend.ariaKey")}>
       {ENTITY_VISUAL_KEY.map((item) => (
         <div key={item.shape} className="explore-entity-key-item">
           <span className="explore-entity-key-mark" data-shape={item.shape} />
-          <span>{item.label}</span>
+          <span>{t(item.labelKey)}</span>
         </div>
       ))}
     </div>
@@ -1279,6 +1294,7 @@ interface GraphWorkspaceProps {
 }
 
 export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: GraphWorkspaceProps = {}) {
+  const { t } = useTranslation();
   const [selectedNodeId, setSelectedNodeId] = useState("");
   const [focusedNodeId, setFocusedNodeId] = useState("");
   const [lastGroupedSelectedNodeId, setLastGroupedSelectedNodeId] = useState("");
@@ -1291,7 +1307,9 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
   const [collapsedNeighborhoodNodeIds, setCollapsedNeighborhoodNodeIds] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-  const [searchError, setSearchError] = useState("");
+  // Structured so the rendered block can show the localized wrapper line plus
+  // the backend `detail` verbatim in a smaller style (FR-003, apiError).
+  const [searchError, setSearchError] = useState<{ text: string; detail: string } | null>(null);
   const [predictionType, setPredictionType] = useState("");
   const [isRunningPredictions, setIsRunningPredictions] = useState(false);
   const [predictions, setPredictions] = useState<LinkPrediction[]>([]);
@@ -1398,12 +1416,12 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       nodesTotal: graphSummary.nodeCount,
       edgesLoaded: graphSummary.edgeCount,
       edgesTotal: graphSummary.edgeCount,
-      message: "Settling runtime layout",
+      message: t("graph.loading.settlingLayout"),
       showGraphBehind: true,
       layoutSource: graphSummary.layoutSource,
       layoutState: "bootstrapping",
     }));
-  }, []);
+  }, [t]);
 
   const {
     data: summary,
@@ -1419,7 +1437,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
   });
 
   const graphLoadErrorMessage = isGraphLoadError
-    ? (graphLoadError instanceof Error ? graphLoadError.message : "Unknown error while loading the graph.")
+    ? (graphLoadError instanceof Error ? graphLoadError.message : t("graph.load.unknownError"))
     : null;
 
   const handleRetryGraphLoad = useCallback(() => {
@@ -1592,7 +1610,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       return {
         kind: "none",
         resolvedNodeId: null,
-        reason: "Select a node to inspect in Focused mode.",
+        reason: t("graph.focused.selectFirst"),
       };
     }
 
@@ -1626,16 +1644,16 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       return {
         kind: "grouped",
         resolvedNodeId: null,
-        reason: "Focused mode is unavailable for this grouped selection.",
+        reason: t("graph.focused.unavailableGrouped"),
       };
     }
 
     return {
       kind: "unavailable",
       resolvedNodeId: null,
-      reason: "Selected item is not available in the current graph.",
+      reason: t("graph.focused.unavailableMissing"),
     };
-  }, []);
+  }, [t]);
 
   const focusedSelectionResolution = useMemo(
     () => resolveNodeIdForFocusedMode(selectedNodeId, pluginRuntimeRef.current?.displayGraph),
@@ -1728,7 +1746,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       setSelectedEdgeId("");
       setPathResult(null);
       setSearchResults([]);
-      setSearchError("");
+      setSearchError(null);
       return;
     }
 
@@ -1743,7 +1761,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     setSelectedEdgeId("");
     setPathResult(null);
     setSearchResults([]);
-    setSearchError("");
+    setSearchError(null);
     if (viewMode === "focused" && graph.hasNode(nextSelectedNodeId)) {
       setFocusedNodeId(nextSelectedNodeId);
       setIsLayoutRunning(false);
@@ -1776,7 +1794,10 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       setSearchResults([]);
       return;
     }
-    setSearchError("");
+    setSearchError(null);
+    // HTTP failures are wrapped via describeResponseError (localized wrapper
+    // + backend detail verbatim); transport failures fall back to the network view.
+    let httpErrorView: ApiErrorView | null = null;
     try {
       const response = await fetch("/api/graph/search", {
         method: "POST",
@@ -1784,18 +1805,22 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
         body: JSON.stringify({ query: searchQuery, limit: 8 }),
       });
       if (!response.ok) {
+        httpErrorView = await describeResponseError(response);
         throw new Error(`Search failed with status ${response.status}`);
       }
       const data = await response.json();
       setSearchResults(data.results || []);
-    } catch (searchFetchError) {
-      setSearchError(searchFetchError instanceof Error ? searchFetchError.message : "Search failed");
+    } catch {
+      const errorView = httpErrorView ?? describeApiError(undefined, null);
+      // ApiErrorView owns `wrapperKey: string` (WP01 file); the runtime values
+      // are always graph.errors.* keys, so a cast keeps typed t() happy.
+      setSearchError({ text: t(errorView.wrapperKey as TranslationKey), detail: errorView.detail });
     }
-  }, [searchQuery]);
+  }, [searchQuery, t]);
 
   const handleClearSearchResults = useCallback(() => {
     setSearchResults([]);
-    setSearchError("");
+    setSearchError(null);
   }, []);
 
   const handleRunPredictions = useCallback(async () => {
@@ -1988,7 +2013,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
         scores: EMPTY_DISTANCE_RECORD,
         count: 0,
         status: distanceMode === "semantic" ? "unavailable" : "idle",
-        error: distanceMode === "semantic" ? "Select a Full Graph node to load semantic distance." : null,
+        error: distanceMode === "semantic" ? t("graph.distance.selectFullGraphNode") : null,
       });
       return;
     }
@@ -2016,10 +2041,10 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
         }
         if (!response.ok) {
           throw new Error(response.status === 503
-            ? "Semantic similarity is unavailable for this graph."
+            ? t("graph.distance.semanticUnavailable")
             : response.status === 404
-              ? "Selected node was not found by the semantic distance API."
-            : `Semantic distance failed with status ${response.status}`);
+              ? t("graph.distance.semanticNotFound")
+            : t("graph.distance.semanticFailed", { status: response.status }));
         }
 
         const data: SemanticNeighborhoodResponse = await response.json();
@@ -2035,7 +2060,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
           scores,
           count: Object.keys(scores).length,
           status: Object.keys(scores).length > 0 ? "ready" : "unavailable",
-          error: Object.keys(scores).length > 0 ? null : "No semantic neighbors were returned for this node.",
+          error: Object.keys(scores).length > 0 ? null : t("graph.distance.noSemanticNeighbors"),
         });
       } catch (error) {
         if (cancelled) {
@@ -2046,7 +2071,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
           scores: EMPTY_DISTANCE_RECORD,
           count: 0,
           status: "error",
-          error: error instanceof Error ? error.message : "Semantic distance could not be loaded.",
+          error: error instanceof Error ? error.message : t("graph.distance.loadFailed"),
         });
       }
     };
@@ -2055,7 +2080,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     return () => {
       cancelled = true;
     };
-  }, [distanceAnchorNodeId, distanceMode]);
+  }, [distanceAnchorNodeId, distanceMode, t]);
 
   const distanceVisualState = useMemo<GraphDistanceVisualState>(() => {
     if (activeDistanceMode === "off") {
@@ -2094,7 +2119,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
         heatmapSaturationMode: undefined,
         semanticNeighborCount: 0,
         status: "unavailable",
-        error: "Distance intelligence is available in Full Graph mode.",
+        error: t("graph.distance.fullGraphOnly"),
       };
     }
 
@@ -2114,7 +2139,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
         heatmapSaturationMode: undefined,
         semanticNeighborCount: 0,
         status: "unavailable",
-        error: "Select a node to activate distance intelligence.",
+        error: t("graph.distance.selectNode"),
       };
     }
 
@@ -2173,6 +2198,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     heatmapRenderSnapshot,
     semanticDistanceState,
     structuralDistances,
+    t,
     viewMode,
   ]);
 
@@ -2297,8 +2323,8 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     if (!selectedNodeId || !graph.hasNode(selectedNodeId)) {
       if (viewMode === "grouped") {
         return displayState.groupedViewAvailable
-          ? "Communities compressed into grouped structure view"
-          : (displayState.groupedViewReason ?? "Grouped view is unavailable for the current graph");
+          ? t("graph.hud.focusedGroupedCompressed")
+          : (displayState.groupedViewReason ?? t("graph.hud.groupedUnavailable"));
       }
       return null;
     }
@@ -2306,19 +2332,22 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     const localNeighborCount = graph.neighbors(selectedNodeId).length;
     if (viewMode === "focused") {
       const visibleNeighbors = displayState.selectedVisibleNeighborIds.length || Math.min(localNeighborCount, 16);
-      return `${visibleNeighbors + 1} nodes in focused view`;
+      return t("graph.hud.focusedNodeCount", { count: visibleNeighbors + 1 });
     }
 
     if (viewMode === "grouped") {
-      return "Grouped structure view with direct community drill-in";
+      return t("graph.hud.groupedSummary");
     }
 
     if (displayState.selectedCollapsedNeighborIds.length > 0) {
-      return `${displayState.selectedVisibleNeighborIds.length} visible neighbors, ${displayState.selectedCollapsedNeighborIds.length} collapsed`;
+      return t("graph.hud.visibleCollapsed", {
+        visible: displayState.selectedVisibleNeighborIds.length,
+        collapsed: displayState.selectedCollapsedNeighborIds.length,
+      });
     }
 
-    return `${localNeighborCount} direct neighbors highlighted`;
-  }, [displayState, selectedNodeId, viewMode]);
+    return t("graph.hud.directNeighbors", { count: localNeighborCount });
+  }, [displayState, selectedNodeId, t, viewMode]);
   const graphSummary = summary as GraphLoadSummary | null;
   const selectedNodeState = useMemo(
     () => buildSelectedNodeState(selectedNodeId, displayState),
@@ -2343,8 +2372,8 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       {
         id: "exploration-effects",
         panelId: "effects-panel",
-        label: "Effects",
-        title: "Open exploration effects controls",
+        labelKey: "graph.dock.effects",
+        titleKey: "graph.dock.effectsTitle",
         order: 18,
         load: loadExplorationEffectsPlugin,
         shouldLoad: explorationEffectsShouldLoad,
@@ -2352,8 +2381,8 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       {
         id: "neighborhood-panel",
         panelId: "neighborhood-panel",
-        label: "Neighbors",
-        title: "Toggle neighborhood panel",
+        labelKey: "graph.dock.neighbors",
+        titleKey: "graph.dock.neighborsTitle",
         order: 30,
         load: loadNeighborhoodPanelPlugin,
         shouldLoad: neighborhoodPanelShouldLoad,
@@ -2361,8 +2390,8 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       {
         id: "temporal-overlay",
         panelId: "temporal-panel",
-        label: "Temporal",
-        title: "Toggle temporal context panel",
+        labelKey: "graph.dock.temporal",
+        titleKey: "graph.dock.temporalTitle",
         order: 40,
         load: loadTemporalOverlayPlugin,
         shouldLoad: temporalOverlayShouldLoad,
@@ -2650,13 +2679,13 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
   const pluginToolbarItems = useMemo<GraphPluginToolbarItem[]>(
     () => pluginRegistry.map((entry) => ({
       id: `${entry.id}-toggle`,
-      label: entry.label,
-      title: entry.title,
+      label: t(entry.labelKey),
+      title: t(entry.titleKey),
       active: pluginContext.isPanelOpen(entry.panelId),
       order: entry.order,
       onClick: () => pluginContext.dispatchAction({ type: "togglePanel", panelId: entry.panelId }),
     })),
-    [pluginContext, pluginRegistry],
+    [pluginContext, pluginRegistry, t],
   );
   const pluginPanels = useMemo(
     () => collectPluginPanels(activePlugins, pluginContext),
@@ -2671,12 +2700,12 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       .filter((entry) => pluginPanelState[entry.panelId] && !loadedPlugins[entry.id])
       .map((entry) => ({
         id: entry.panelId,
-        title: entry.label,
+        title: t(entry.labelKey),
         placement: "bottom" as const,
         order: entry.order,
-        content: <div style={pluginLoadingStyle}>Loading {entry.label.toLowerCase()}…</div>,
+        content: <div style={pluginLoadingStyle}>{t("graph.dock.loadingPanel", { panel: t(entry.labelKey).toLowerCase() })}</div>,
       })),
-    [loadedPlugins, pluginPanelState, pluginRegistry],
+    [loadedPlugins, pluginPanelState, pluginRegistry, t],
   );
   const dockPanels = [...pluginPanels, ...pendingDockPanels]
     .filter((panel) => panel.placement === "bottom" || panel.placement === "side")
@@ -2711,18 +2740,18 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     return [
       {
         id: "view-full",
-        label: "Full Graph",
-        title: "Return to the full graph context",
+        label: t("graph.mode.full"),
+        title: t("graph.mode.fullTitle"),
         icon: Layers3,
         active: viewMode === "full",
         onClick: () => requestViewMode("full"),
       },
       {
         id: "view-grouped",
-        label: "Grouped View",
+        label: t("graph.mode.grouped"),
         title: displayState.groupedViewAvailable
-          ? "Compress dense structure into detected communities"
-          : (displayState.groupedViewReason ?? "Grouped view is unavailable until communities can be detected"),
+          ? t("graph.mode.groupedTitle")
+          : (displayState.groupedViewReason ?? t("graph.mode.groupedUnavailableFallback")),
         icon: GitBranch,
         active: viewMode === "grouped",
         disabled: !displayState.groupedViewAvailable,
@@ -2730,10 +2759,10 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       },
       {
         id: "view-focused",
-        label: "Focused",
+        label: t("graph.mode.focused"),
         title: canActivateFocusedMode
-          ? "Inspect the selected node in a focused local graph"
-          : (focusedSelectionResolution.reason ?? "Focused mode is unavailable for the current selection"),
+          ? t("graph.mode.focusedTitle")
+          : (focusedSelectionResolution.reason ?? t("graph.mode.focusedUnavailableFallback")),
         icon: Focus,
         active: viewMode === "focused",
         disabled: viewMode !== "focused" && !canActivateFocusedMode,
@@ -2747,50 +2776,51 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     focusedSelectionResolution.reason,
     hasGraphContent,
     requestViewMode,
+    t,
     viewMode,
   ]);
 
   const cameraToolbarItems = useMemo<GraphToolbarItem[]>(() => [
     {
       id: "zoom-in",
-      label: "Zoom In",
-      title: "Zoom in (or scroll up on the canvas)",
-      ariaLabel: "Zoom in",
+      label: t("graph.toolbar.zoomIn"),
+      title: t("graph.toolbar.zoomInTitle"),
+      ariaLabel: t("graph.toolbar.zoomInAria"),
       icon: ZoomIn,
       compact: true,
       onClick: () => sceneRef.current?.zoomIn(),
     },
     {
       id: "zoom-out",
-      label: "Zoom Out",
-      title: "Zoom out (or scroll down on the canvas)",
-      ariaLabel: "Zoom out",
+      label: t("graph.toolbar.zoomOut"),
+      title: t("graph.toolbar.zoomOutTitle"),
+      ariaLabel: t("graph.toolbar.zoomOutAria"),
       icon: ZoomOut,
       compact: true,
       onClick: () => sceneRef.current?.zoomOut(),
     },
     {
       id: "fit-view",
-      label: "Fit",
-      title: "Reset the camera to fit the whole graph",
-      ariaLabel: "Fit view",
+      label: t("graph.toolbar.fit"),
+      title: t("graph.toolbar.fitTitle"),
+      ariaLabel: t("graph.toolbar.fitAria"),
       icon: Maximize2,
       compact: true,
       onClick: () => sceneRef.current?.fitView(),
     },
-  ], []);
+  ], [t]);
 
   const layoutToolbarItems = useMemo<GraphToolbarItem[]>(() => [
     {
       id: "layout-toggle",
-      label: isLayoutRunning ? "Pause" : "Run",
-      title: "Toggle the layout worker",
+      label: isLayoutRunning ? t("graph.toolbar.pause") : t("graph.toolbar.run"),
+      title: t("graph.toolbar.toggleLayoutTitle"),
       icon: isLayoutRunning ? Pause : Play,
       active: isLayoutRunning,
       disabled: showLoadingOverlay,
       onClick: () => setIsLayoutRunning((value) => !value),
     },
-  ], [isLayoutRunning, showLoadingOverlay]);
+  ], [isLayoutRunning, showLoadingOverlay, t]);
 
   const localToolbarItems = useMemo<GraphToolbarItem[]>(() => {
     if (!selectedNodeState) {
@@ -2800,22 +2830,22 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     return [
       {
         id: "collapse-neighborhood",
-        label: "Collapse",
-        title: "Hide lower-priority fanout around the selected node",
+        label: t("graph.toolbar.collapse"),
+        title: t("graph.toolbar.collapseTitle"),
         icon: Eye,
         disabled: !selectedNodeState.canCollapseNeighborhood || selectedNodeState.isNeighborhoodCollapsed,
         onClick: () => handlePluginAction({ type: "collapseNeighborhood" }),
       },
       {
         id: "expand-neighborhood",
-        label: "Expand",
-        title: "Restore the collapsed local neighborhood",
+        label: t("graph.toolbar.expand"),
+        title: t("graph.toolbar.expandTitle"),
         icon: Users,
         disabled: !selectedNodeState.isNeighborhoodCollapsed,
         onClick: () => handlePluginAction({ type: "expandNeighborhood" }),
       },
     ];
-  }, [handlePluginAction, selectedNodeState]);
+  }, [handlePluginAction, selectedNodeState, t]);
 
   const analysisToolbarItems = useMemo<GraphToolbarItem[]>(
     () => pluginToolbarItems.map((item) => ({
@@ -2832,15 +2862,15 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
   const utilityToolbarItems = useMemo<GraphToolbarItem[]>(() => [
     {
       id: "reload",
-      label: "Reload",
-      title: "Reload the graph data",
-      ariaLabel: "Reload graph data",
+      label: t("graph.toolbar.reload"),
+      title: t("graph.toolbar.reloadTitle"),
+      ariaLabel: t("graph.toolbar.reloadAria"),
       icon: RefreshCw,
       compact: true,
       disabled: showLoadingOverlay,
       onClick: reload,
     },
-  ], [reload, showLoadingOverlay]);
+  ], [reload, showLoadingOverlay, t]);
 
   const searchDisabled = showLoadingOverlay || !searchQuery.trim();
 
@@ -2852,10 +2882,12 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     return [
       {
         id: "ego-mode",
-        label: egoModeEnabled ? `Ego (${egoMaxHops}h)` : "Ego Mode",
+        label: egoModeEnabled
+          ? t("graph.toolbar.egoHops", { hops: egoMaxHops })
+          : t("graph.toolbar.egoMode"),
         title: egoModeEnabled
-          ? `Egocentric view: ${egoMaxHops} hops depth (click to toggle off)`
-          : "Show depth-of-field fading around the selected node",
+          ? t("graph.toolbar.egoTitleOn", { hops: egoMaxHops })
+          : t("graph.toolbar.egoTitle"),
         active: egoModeEnabled,
         onClick: () => {
           setEgoModeEnabled((v) => !v);
@@ -2865,10 +2897,10 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       },
       {
         id: "heatmap",
-        label: "Heatmap",
+        label: t("graph.toolbar.heatmap"),
         title: heatmapEnabled
-          ? "Distance heatmap active (click to toggle off)"
-          : "Color nodes by hop distance from selected node",
+          ? t("graph.toolbar.heatmapTitleOn")
+          : t("graph.toolbar.heatmapTitle"),
         active: heatmapEnabled,
         onClick: () => {
           setHeatmapEnabled((v) => !v);
@@ -2878,8 +2910,8 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       },
       {
         id: "dist-structural",
-        label: "Structural",
-        title: "Color edges by structural (hop) distance",
+        label: t("graph.toolbar.structural"),
+        title: t("graph.toolbar.structuralTitle"),
         active: distanceMode === "structural",
         onClick: () => {
           setEgoModeEnabled(false);
@@ -2889,8 +2921,8 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       },
       {
         id: "dist-semantic",
-        label: "Semantic",
-        title: "Color edges by semantic similarity to selected node",
+        label: t("graph.toolbar.semantic"),
+        title: t("graph.toolbar.semanticTitle"),
         active: distanceMode === "semantic",
         onClick: () => {
           setEgoModeEnabled(false);
@@ -2899,37 +2931,37 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
         },
       },
     ];
-  }, [distanceMode, egoMaxHops, egoModeEnabled, hasGraphContent, heatmapEnabled, selectedNodeId, viewMode]);
+  }, [distanceMode, egoMaxHops, egoModeEnabled, hasGraphContent, heatmapEnabled, selectedNodeId, t, viewMode]);
 
   const toolbarClusters = useMemo<GraphToolbarGroup[]>(() => [
     {
       id: "camera",
-      label: "Camera",
+      label: t("graph.toolbar.group.camera"),
       items: cameraToolbarItems,
     },
     {
       id: "layout",
-      label: "Layout",
+      label: t("graph.toolbar.group.layout"),
       items: layoutToolbarItems,
     },
     {
       id: "local-structure",
-      label: "Local",
+      label: t("graph.toolbar.group.local"),
       items: localToolbarItems,
     },
     {
       id: "distance",
-      label: "Distance",
+      label: t("graph.toolbar.group.distance"),
       items: distanceToolbarItems,
     },
     {
       id: "analysis",
-      label: "Analysis",
+      label: t("graph.toolbar.group.analysis"),
       items: analysisToolbarItems,
     },
     {
       id: "utility",
-      label: "Utility",
+      label: t("graph.toolbar.group.utility"),
       items: utilityToolbarItems,
     },
   ].filter((group) => group.items.length > 0), [
@@ -2938,6 +2970,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     distanceToolbarItems,
     layoutToolbarItems,
     localToolbarItems,
+    t,
     utilityToolbarItems,
   ]);
 
@@ -2975,33 +3008,36 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     if (rendered == null || rendered >= truth) {
       return truth.toLocaleString();
     }
-    return `${truth.toLocaleString()} (${rendered.toLocaleString()} shown)`;
+    return t("graph.distance.renderedCount", { truth: truth.toLocaleString(), shown: rendered.toLocaleString() });
   };
   const heatmapDistanceSummary = visibleDistanceCounts
     ? [
-      `${visibleDistanceCounts.anchor.toLocaleString()} anchor`,
-      `${formatRenderedCount(visibleDistanceCounts.oneHop, renderedHeatmapCounts?.oneHop)} 1-hop`,
-      `${formatRenderedCount(visibleDistanceCounts.twoHop, renderedHeatmapCounts?.twoHop)} 2-hop`,
-      `${formatRenderedCount(visibleDistanceCounts.threeHopPlus, renderedHeatmapCounts?.threeHopPlus)} 3+ hop`,
-      `${visibleDistanceCounts.outside.toLocaleString()} outside`,
-      distanceVisualState.heatmapSaturationMode === "sampled" ? "Sampled for readability" : "",
+      t("graph.distance.anchorCount", { count: visibleDistanceCounts.anchor.toLocaleString() }),
+      `${t("graph.distance.oneHop", { count: formatRenderedCount(visibleDistanceCounts.oneHop, renderedHeatmapCounts?.oneHop) })}`,
+      `${t("graph.distance.twoHop", { count: formatRenderedCount(visibleDistanceCounts.twoHop, renderedHeatmapCounts?.twoHop) })}`,
+      `${t("graph.distance.threeHopPlus", { count: formatRenderedCount(visibleDistanceCounts.threeHopPlus, renderedHeatmapCounts?.threeHopPlus) })}`,
+      t("graph.distance.outsideCount", { count: visibleDistanceCounts.outside.toLocaleString() }),
+      distanceVisualState.heatmapSaturationMode === "sampled" ? t("graph.distance.sampled") : "",
     ].filter(Boolean).join(" · ")
-    : `${distanceReachableCount.toLocaleString()} nodes within ${distanceVisualState.maxHops} hops`;
+    : t("graph.distance.withinHops", {
+      count: distanceReachableCount.toLocaleString(),
+      hops: distanceVisualState.maxHops,
+    });
   const heatmapRenderedSummary = distanceVisualState.mode === "heatmap" && renderedHeatmapCounts
     ? [
-      `${renderedHeatmapCounts.anchor.toLocaleString()} anchor shown`,
-      `${renderedHeatmapCounts.oneHop.toLocaleString()} 1-hop shown`,
-      `${renderedHeatmapCounts.twoHop.toLocaleString()} 2-hop shown`,
-      `${renderedHeatmapCounts.threeHopPlus.toLocaleString()} 3+ hop shown`,
+      t("graph.distance.anchorShown", { count: renderedHeatmapCounts.anchor.toLocaleString() }),
+      t("graph.distance.oneHopShown", { count: renderedHeatmapCounts.oneHop.toLocaleString() }),
+      t("graph.distance.twoHopShown", { count: renderedHeatmapCounts.twoHop.toLocaleString() }),
+      t("graph.distance.threeHopShown", { count: renderedHeatmapCounts.threeHopPlus.toLocaleString() }),
     ].join(" · ")
     : null;
   const distanceLegendItems = distanceVisualState.mode === "heatmap"
     ? [
-      { label: "Anchor", color: getDistanceBandColor(0) },
+      { label: t("graph.distance.legendAnchor"), color: getDistanceBandColor(0) },
       { label: "1", color: getDistanceBandColor(1) },
       { label: "2", color: getDistanceBandColor(2) },
       { label: "3", color: getDistanceBandColor(3) },
-      { label: "Outside", color: withAlpha(GRAPH_THEME.palette.overview.nodeMuted, 0.38) },
+      { label: t("graph.distance.legendOutside"), color: withAlpha(GRAPH_THEME.palette.overview.nodeMuted, 0.38) },
     ]
     : [
       { label: "0h", color: getDistanceBandColor(0) },
@@ -3026,10 +3062,10 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
                     <MetricChip>{getGraphLoadTitle(loadingProgress.phase)}</MetricChip>
                   ) : null}
                   {summary ? (
-                    <MetricChip>{summary.nodeCount.toLocaleString()} nodes · {summary.edgeCount.toLocaleString()} edges</MetricChip>
+                    <MetricChip>{t("graph.hud.nodesEdges", { nodes: summary.nodeCount.toLocaleString(), edges: summary.edgeCount.toLocaleString() })}</MetricChip>
                   ) : null}
                   {activeNodeCount !== null ? (
-                    <MetricChip tone="success">{activeNodeCount.toLocaleString()} active</MetricChip>
+                    <MetricChip tone="success">{t("graph.hud.activeCount", { count: activeNodeCount.toLocaleString() })}</MetricChip>
                   ) : null}
                   {focusedSummary ? <MetricChip tone="warm">{focusedSummary}</MetricChip> : null}
                 </div>
@@ -3061,7 +3097,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
 
               {egoModeEnabled && (
                 <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12, color: "#a0b4cc" }}>
-                  <span style={{ fontWeight: 600, color: "#79c0ff" }}>Ego depth:</span>
+                  <span style={{ fontWeight: 600, color: "#79c0ff" }}>{t("graph.hud.egoDepth")}</span>
                   <input
                     type="range"
                     min={1}
@@ -3069,9 +3105,11 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
                     value={egoMaxHops}
                     onChange={(e) => setEgoMaxHops(Number(e.target.value))}
                     style={{ width: 90, accentColor: "#79c0ff" }}
-                    title={`Ego depth: ${egoMaxHops} hops`}
+                    title={t("graph.hud.egoDepthTitle", { hops: egoMaxHops })}
                   />
-                  <span style={{ fontFamily: "monospace", color: "#e6f2ff" }}>{egoMaxHops} hop{egoMaxHops !== 1 ? "s" : ""}</span>
+                  <span style={{ fontFamily: "monospace", color: "#e6f2ff" }}>
+                    {t(egoMaxHops === 1 ? "graph.hud.hopCountOne" : "graph.hud.hopCountMany", { count: egoMaxHops })}
+                  </span>
                 </div>
               )}
 
@@ -3079,23 +3117,23 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
                 <div style={distanceStatusStripStyle}>
                   <div style={distanceStatusTitleStyle}>
                     <Activity size={14} aria-hidden />
-                    <span>Distance Intelligence</span>
+                    <span>{t("graph.distance.title")}</span>
                     <span style={distanceModeBadgeStyle}>{distanceVisualState.mode}</span>
                   </div>
                   <div style={distanceStatusMetaStyle}>
                     {distanceVisualState.anchorLabel ? (
-                      <span>Anchor: <strong>{distanceVisualState.anchorLabel}</strong></span>
+                      <span>{t("graph.distance.anchorLabel")} <strong>{distanceVisualState.anchorLabel}</strong></span>
                     ) : null}
                     {distanceVisualState.mode === "semantic" ? (
                       <span>
                         {distanceVisualState.status === "loading"
-                          ? "Loading semantic neighborhood..."
-                          : `${distanceVisualState.semanticNeighborCount ?? 0} semantic neighbors`}
+                          ? t("graph.distance.loadingSemantic")
+                          : t("graph.distance.semanticNeighborCount", { count: distanceVisualState.semanticNeighborCount ?? 0 })}
                       </span>
                     ) : distanceVisualState.mode === "heatmap" ? (
                       <span>{heatmapDistanceSummary}</span>
                     ) : (
-                      <span>{distanceReachableCount.toLocaleString()} nodes within {distanceVisualState.maxHops} hops</span>
+                      <span>{t("graph.distance.withinHops", { count: distanceReachableCount.toLocaleString(), hops: distanceVisualState.maxHops })}</span>
                     )}
                     {distanceVisualState.status === "unavailable" || distanceVisualState.status === "error" ? (
                       <span style={{ color: GRAPH_THEME.ui.control.dangerText }}>{distanceVisualState.error}</span>
@@ -3115,22 +3153,31 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
                 </div>
               ) : null}
 
-              {searchError ? <div style={{ color: "#ff7b72", fontSize: 12 }}>{searchError}</div> : null}
+              {searchError ? (
+                <div style={{ color: "#ff7b72", fontSize: 12 }}>
+                  <div>{searchError.text}</div>
+                  {searchError.detail ? (
+                    <div style={{ fontSize: 11, opacity: 0.85, marginTop: 2 }}>
+                      {t("graph.errors.detailPrefix")}: {searchError.detail}
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
 
               {searchResults.length ? (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
                     <span style={{ color: "#8b949e", fontSize: 12 }}>
-                      {searchResults.length} result{searchResults.length === 1 ? "" : "s"}
+                      {t(searchResults.length === 1 ? "graph.search.resultsOne" : "graph.search.resultsMany", { count: searchResults.length })}
                     </span>
                     <button
                       type="button"
                       onClick={handleClearSearchResults}
                       style={{ ...secondaryActionButtonStyle, minHeight: 26, padding: "4px 9px", gap: 5 }}
-                      aria-label="Dismiss search results"
+                      aria-label={t("graph.search.dismissAria")}
                     >
                       <X size={12} strokeWidth={2.4} />
-                      Dismiss
+                      {t("graph.search.dismiss")}
                     </button>
                   </div>
                   <div className="explore-search-results hud-scrollbar" style={searchResultsStripStyle}>
@@ -3156,7 +3203,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start" }}>
                     <div style={{ minWidth: 0 }}>
                       <div style={{ color: "rgba(127, 208, 255, 0.76)", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                        Relationship
+                        {t("graph.edge.title")}
                       </div>
                       <div style={{ color: "#f4f8ff", fontSize: 15, fontWeight: 700, marginTop: 6 }}>
                         {selectedEdgeState.edgeType}
@@ -3166,7 +3213,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
                       onClick={() => setSelectedEdgeId("")}
                       style={{ ...secondaryActionButtonStyle, minHeight: 30, padding: "6px 10px" }}
                     >
-                      Close
+                      {t("graph.edge.close")}
                     </button>
                   </div>
 
@@ -3181,23 +3228,23 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
                   </div>
 
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    <MetricChip tone="warm">weight {selectedEdgeState.weight.toFixed(2)}</MetricChip>
+                    <MetricChip tone="warm">{t("graph.edge.weight", { weight: selectedEdgeState.weight.toFixed(2) })}</MetricChip>
                     {selectedEdgeState.isAggregated ? (
                       <MetricChip tone="success">
-                        {selectedEdgeState.aggregateCount} bundled edge{selectedEdgeState.aggregateCount === 1 ? "" : "s"}
+                        {t(selectedEdgeState.aggregateCount === 1 ? "graph.edge.bundledOne" : "graph.edge.bundledMany", { count: selectedEdgeState.aggregateCount })}
                       </MetricChip>
                     ) : (
-                      <MetricChip>{selectedEdgeState.siblingCount} parallel lane{selectedEdgeState.siblingCount === 1 ? "" : "s"}</MetricChip>
+                      <MetricChip>{t(selectedEdgeState.siblingCount === 1 ? "graph.edge.parallelOne" : "graph.edge.parallelMany", { count: selectedEdgeState.siblingCount })}</MetricChip>
                     )}
-                    <MetricChip>{selectedEdgeState.familySize} family member{selectedEdgeState.familySize === 1 ? "" : "s"}</MetricChip>
+                    <MetricChip>{t(selectedEdgeState.familySize === 1 ? "graph.edge.familyOne" : "graph.edge.familyMany", { count: selectedEdgeState.familySize })}</MetricChip>
                     {selectedEdgeState.bundleKind ? (
-                      <MetricChip>{selectedEdgeState.bundleKind} bundle</MetricChip>
+                      <MetricChip>{t("graph.edge.bundle", { kind: selectedEdgeState.bundleKind })}</MetricChip>
                     ) : null}
                     {selectedEdgeState.dominantEdgeType ? (
                       <MetricChip>{selectedEdgeState.dominantEdgeType}</MetricChip>
                     ) : null}
                     {selectedEdgeState.provenanceCount > 0 ? (
-                      <MetricChip>{selectedEdgeState.provenanceCount} provenance fields</MetricChip>
+                      <MetricChip>{t("graph.edge.provenanceFields", { count: selectedEdgeState.provenanceCount })}</MetricChip>
                     ) : null}
                   </div>
 
@@ -3282,7 +3329,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
               ) : null}
 
               <div className="explore-scene-footer">
-                <Suspense fallback={<div style={timelineFallbackStyle}>Loading timeline…</div>}>
+                <Suspense fallback={<div style={timelineFallbackStyle}>{t("graph.loading.timeline")}</div>}>
                   <LazyTimelinePanel
                     onTimeChange={onTimeChange}
                     minDate={temporalBounds?.min ?? undefined}
@@ -3297,7 +3344,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
             <div className="explore-inspector-shell">
               <InspectorPanel open={layoutState.showInspector} className="explore-inspector-card">
                 <div className="explore-inspector-scroll hud-scrollbar">
-                  <Suspense fallback={<div style={inspectorFallbackStyle}>Loading inspector…</div>}>
+                  <Suspense fallback={<div style={inspectorFallbackStyle}>{t("graph.loading.inspector")}</div>}>
                     <LazyGraphInspectorPanel
                       nodeId={selectedNodeId}
                       inspectableNodeId={inspectableNodeId || null}

@@ -2,197 +2,98 @@
   "mission_slug": "explorer-i18n-p1-01M1EX2R",
   "mission_number": "",
   "mission_type": "software-dev",
-  "overall_verdict": "pass",
+  "overall_verdict": "pending",
   "criteria": [
     {
       "criterion_id": "FR-001",
-      "description": "探索工作区内部全部界面文案中英双语（搜索栏/工具栏/图例/时间轴/Inspector/加载与失败面板）",
+      "description": "Verify FR-001 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "WP02-WP04 抽取完成；en/zh 键同构 414=414（graph.* 段 307 键）；WP05-T016 tsc -b exit 0（INV-1）+ 孤儿键静态/动态前缀双扫描 0；WP05-T019 zh 全文走查：搜索栏/工具栏/图例/时间轴/Inspector/加载失败面板键全命中且全中文",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T016 + T019",
-      "verified_at": "2026-09-02",
-      "notes": "graph.* 307 键 = P1 新增抽取主体"
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     },
     {
       "criterion_id": "FR-002",
-      "description": "语言切换时工作区内部文案立即以目标语言重新显示，无需刷新页面",
+      "description": "Verify FR-002 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "面板 content/overlay chip 抽为真实组件经 useTranslation() 订阅（WP03/WP04 评审核对 memo 冻结处理）；宿主 memo 化的 pluginPanels/pluginOverlays 依赖状态引用，订阅触发重渲染；deterministic-e2e 强制 en 通过证明渲染管线完好；已知接受的限制：已开面板+切换语言+无后续状态变化时 title 有一个切换周期的滞后窗口（记录于 WP04/WP05 评审 note）",
-      "pass_fail": "pass",
-      "verified_by": "WP03/WP04 review + WP05-T018",
-      "verified_at": "2026-09-02",
-      "notes": "滞后窗口仅影响面板标题行，开面板即刷新"
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     },
     {
       "criterion_id": "FR-003",
-      "description": "401 等高频错误显示中文包装提示，后端 detail 原文保留可见",
+      "description": "Verify FR-003 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "WP01 apiError.ts 映射 401/403/404/5xx/网络错误到 graph.errors.* 中文包装，detail 经 graph.errors.detailPrefix（'后端返回'）拼接原文透传，不篡改不丢失；graph-workspace 套件 73 测试含错误包装断言全绿",
-      "pass_fail": "pass",
-      "verified_by": "WP01-T001~T003 + WP05-T018",
-      "verified_at": "2026-09-02",
-      "notes": "detail 原文保持英文（C-002）"
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     },
     {
       "criterion_id": "FR-004",
-      "description": "任一译文缺失时显示英文原文，不显示键名或空白（沿用 P0 回落机制）",
+      "description": "Verify FR-004 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "explorer/src/i18n/index.ts:99 fallbackLng:'en' 在本 mission 分支零改动；zh satisfies typeof en 构建期约束使缺译不可能进入产物；deterministic-e2e en 回退路径渲染一致",
-      "pass_fail": "pass",
-      "verified_by": "WP05 review（冻结面核查）",
-      "verified_at": "2026-09-02",
-      "notes": ""
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     },
     {
       "criterion_id": "FR-005",
-      "description": "中英文资源键集合一致；缺键在构建（类型检查）阶段失败",
+      "description": "Verify FR-005 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "types.d.ts CustomTypeOptions + zh.json satisfies typeof en 沿用 P0 机制；WP05-T016 npm run build（tsc -b）exit 0；独立脚本核验 en/zh 键集合双向 diff 为空（414 键）；TranslationKey 类型化引用（GraphWorkspace 两级/plugins 三级 import 路径）编译期把关",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T016",
-      "verified_at": "2026-09-02",
-      "notes": ""
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     },
     {
       "criterion_id": "FR-006",
-      "description": "页面语言属性与标签页标题随语言同步（P0 行为回归保持）",
+      "description": "Verify FR-006 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "P0 languageChanged 监听机制未动（i18n/index.ts 零改动）；deterministic-e2e 预置 en 通过，文档标题断言沿用 P0 基线",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T018 + review 冻结面核查",
-      "verified_at": "2026-09-02",
-      "notes": ""
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     },
     {
       "criterion_id": "FR-007",
-      "description": "图数据驱动值（节点/边 label、实体类型枚举值）不进文案资源、不参与翻译",
+      "description": "Verify FR-007 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "WP02-WP04 评审逐项核对：bundleKind/edgeType/nodeType/semanticGroup/node.label/形状枚举原值通道未动；distance_band 结构枚举原值不译，显示标签经 BAND_LABEL_KEYS 键映射（GraphInspectorPanel.tsx）解析为 graph.inspector.band* 四键；graphTheme entityShapes[].label 经全源码 grep 证实为死字符串（消费点只读 shapeKind/aspectRatio）记录豁免",
-      "pass_fail": "pass",
-      "verified_by": "WP04 review + WP05 review",
-      "verified_at": "2026-09-02",
-      "notes": "plugin.toolbarItems（死 API）与 availability.reason/detail（诊断数据通道）同款豁免有记录"
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     },
     {
       "criterion_id": "FR-008",
-      "description": "既有自动化测试（graph-store/graph-workspace/plugin-registry/deterministic-e2e）全部通过；e2e 英文预置行为不变",
+      "description": "Verify FR-008 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "WP05-T018 实测：graph-workspace 73 pass / plugin-registry 7 pass / graph-store 1 pass / deterministic-e2e 1 pass，fail 均为 0；e2e addInitScript/?lang= 英文预置行保持 WP01 定稿形态",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T018",
-      "verified_at": "2026-09-02",
-      "notes": ""
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     },
     {
       "criterion_id": "FR-009",
-      "description": "译文过期追踪脚本对本期产出报告 fresh",
+      "description": "Verify FR-009 is satisfied",
       "proof_type": "automated_test",
-      "evidence": "WP05-T017：source_version 刷新为暂存 en.json blob 756a1b9a；python tools/i18n/ui_zh_status.py 输出 fresh=1 stale=0 missing_keys=0 extra_keys=0，--json 同 fresh；脚本在本 mission 分支 0 改动（只运行不修改）",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T017",
-      "verified_at": "2026-09-02",
-      "notes": ""
-    },
-    {
-      "criterion_id": "NFR-001",
-      "description": "语言切换 1 秒内完成探索工作区范围全部文案更新，且不触发页面重载",
-      "proof_type": "automated_test",
-      "evidence": "切换走 react-i18next 订阅通道（同步重渲染，无网络/无重载）；deterministic-e2e 无重载断言框架沿用；P0 同架构实测 98ms 量级（P0 矩阵 FR-001 证据），P1 未引入异步路径",
-      "pass_fail": "pass",
-      "verified_by": "WP03/WP04 review（订阅架构核对）+ P0 基线证据",
-      "verified_at": "2026-09-02",
-      "notes": "面板 title 滞后窗口为接受的限制（见 FR-002 notes）"
-    },
-    {
-      "criterion_id": "NFR-002",
-      "description": "构建产物（gzip 计）相对改造前的体积增量 ≤ 30KB",
-      "proof_type": "automated_test",
-      "evidence": "WP05-T018 实测：locales 两文件相对 P1 基线（merge-base 2bdad107）gzip 增量 +9846 B（en +4682 / zh +5164），为上界口径；t() 包装代码 minified 后与原字面量近似持平；关键 bundle 与 WP04 对照一致（GraphWorkspace 283.47kB/gzip 83.94），主包 gzip +0.06KB",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T018",
-      "verified_at": "2026-09-02",
-      "notes": "30720 B 上限，实测上界 9846 B"
-    },
-    {
-      "criterion_id": "NFR-003",
-      "description": "P1 范围中文文案与术语表一致率 100%（含\"探索\"定名，禁用\"知识探索器\"）",
-      "proof_type": "automated_test",
-      "evidence": "WP05-T019：grep 复验 zh.json 违禁词 0（知识探索器/时序/探索器）；7 处术语修正落地（nav.explore.label、common.appTitle、welcome.kicker.text、welcome.cta.open → 探索系；graph.dock.temporal/temporalTitle、graph.temporalOverlay.panelTitle/overlayChipTitle → 时态系），与 docs/zh/glossary.md L42 探索、L60 时态图、L81 距离带一致；抽检 决策智能/距离带/距离智能/溯源/近中远档位 全部对表",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T019",
-      "verified_at": "2026-09-02",
-      "notes": "术语修正经 P0 遗留（探索器）、WP02 偏差（时序）两源归一"
-    },
-    {
-      "criterion_id": "NFR-004",
-      "description": "既有自动化测试全部通过；lint 与类型检查相对改造前零增量",
-      "proof_type": "automated_test",
-      "evidence": "WP05-T018：lint 74 problems（57 errors + 17 warnings）与改造前基线完全一致（stash 双向对比法在各 WP 评审确立，新增组件以 eslint-disable-next-line + 理由注释控制增量）；npm run build（tsc -b 严格模式）exit 0；四套测试全绿（同 FR-008 证据）",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T018 + WP02-WP04 review",
-      "verified_at": "2026-09-02",
-      "notes": ""
-    },
-    {
-      "criterion_id": "C-001",
-      "description": "零侵入边界：上游改动仅限探索工作区组件、i18n 资源与类型、既有测试定位器/预置行、依赖清单（预期零新增）",
-      "proof_type": "manual_review",
-      "evidence": "各 WP 评审 owned_files 纪律核查：WP05 commit 2fc7025f 仅含 explorer/src/i18n/locales/zh.json；WP02-WP04 改动集中于 explorer/src/workspaces/GraphWorkspace/** 与 locales；package.json/package-lock.json 除 P0 已引入的 i18next/react-i18next 外零新增（C-005 同证）",
-      "pass_fail": "pass",
-      "verified_by": "WP01-WP05 review",
-      "verified_at": "2026-09-02",
-      "notes": ""
-    },
-    {
-      "criterion_id": "C-002",
-      "description": "禁触区：Python 后端、静态入口 HTML、构建配置、其他工作区、认证流程；后端 detail 原文保持英文",
-      "proof_type": "manual_review",
-      "evidence": "mission 分支 diff 无 semantica/explorer/**、index.html、vite.config.ts、分析/决策/增强/管理/Ontology Hub 工作区改动；API key 认证界面未触碰（另行立项）；apiError.ts 仅包装显示层，detail 原文透传",
-      "pass_fail": "pass",
-      "verified_by": "WP05 review（冻结面核查）",
-      "verified_at": "2026-09-02",
-      "notes": ""
-    },
-    {
-      "criterion_id": "C-003",
-      "description": "语言状态经响应式机制传播到已渲染界面",
-      "proof_type": "manual_review",
-      "evidence": "全部新增 UI 经 useTranslation() 订阅；不可用 hook 的模块级组件（MarkdownViewer img 等）用 i18next.t() 直调并记录滞后限制；无可变模块全局变量传播语言状态；React Compiler 兼容（构建通过）",
-      "pass_fail": "pass",
-      "verified_by": "WP03/WP04 review",
-      "verified_at": "2026-09-02",
-      "notes": ""
-    },
-    {
-      "criterion_id": "C-004",
-      "description": "中文术语以 docs/zh/glossary.md 为唯一基准；产品名按术语表保留英文",
-      "proof_type": "manual_review",
-      "evidence": "WP05-T019 术语全量对表（NFR-003 同证）；Ontology Hub / Semantica Explorer 字标 / SPARQL / PROV-O / KG 按术语表保留；Semantica 探索 组合词符合 L42 定名规则",
-      "pass_fail": "pass",
-      "verified_by": "WP05-T019",
-      "verified_at": "2026-09-02",
-      "notes": ""
-    },
-    {
-      "criterion_id": "C-005",
-      "description": "本期不新增任何依赖",
-      "proof_type": "manual_review",
-      "evidence": "explorer/package.json 依赖区在本 mission 分支零改动（i18next/react-i18next 为 P0 已引入）；零新增依赖目标达成",
-      "pass_fail": "pass",
-      "verified_by": "WP05 review",
-      "verified_at": "2026-09-02",
-      "notes": ""
-    },
-    {
-      "criterion_id": "C-006",
-      "description": "图数据值不进文案资源文件（运行时数据与界面文案分离）",
-      "proof_type": "manual_review",
-      "evidence": "en.json/zh.json 全部键值为静态界面文案；无节点/边 label、枚举数据值入资源（FR-007 同证）；distance_band 显示标签经键映射间接翻译，原值不入资源",
-      "pass_fail": "pass",
-      "verified_by": "WP05 review",
-      "verified_at": "2026-09-02",
-      "notes": ""
+      "evidence": null,
+      "pass_fail": "pending",
+      "verified_by": null,
+      "verified_at": null,
+      "notes": "TODO: replace with a real acceptance criterion"
     }
-  ]
+  ],
+  "negative_invariants": []
 }

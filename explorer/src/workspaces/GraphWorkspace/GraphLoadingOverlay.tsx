@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 
 import { GRAPH_THEME, withAlpha } from "./graphTheme";
-import { GRAPH_LOAD_STAGE_SEQUENCE, createGraphLoadProgress, getGraphLoadStageLabel } from "./graphLoading";
-import type { GraphLoadProgress } from "./types";
+import { GRAPH_LOAD_STAGE_SEQUENCE, createGraphLoadProgress } from "./graphLoading";
+import type { GraphLoadPhase, GraphLoadProgress } from "./types";
+import type en from "../../i18n/locales/en.json";
+
+type TranslationKey = keyof typeof en.translation;
 
 const LOADING_OVERLAY_CSS = `
   .graph-stage-loader {
@@ -176,31 +181,81 @@ const LOADING_OVERLAY_CSS = `
   }
 `;
 
-function formatLayoutSource(source: GraphLoadProgress["layoutSource"]) {
+const GRAPH_LOAD_TITLE_KEY: Record<GraphLoadPhase, TranslationKey> = {
+  bootstrapping: "graph.loading.preparing",
+  fetching_nodes: "graph.loading.titleNodes",
+  fetching_edges: "graph.loading.titleEdges",
+  computing_styling: "graph.loading.titleStyling",
+  hydrating_scene: "graph.loading.titleScene",
+  stabilizing_layout: "graph.loading.titleStabilizing",
+  ready: "graph.loading.titleReady",
+};
+
+const GRAPH_LOAD_STEP_KEY: Record<Exclude<GraphLoadPhase, "ready">, TranslationKey> = {
+  bootstrapping: "graph.loading.stepPrepare",
+  fetching_nodes: "graph.loading.stepNodes",
+  fetching_edges: "graph.loading.stepEdges",
+  computing_styling: "graph.loading.stepStyling",
+  hydrating_scene: "graph.loading.stepScene",
+  stabilizing_layout: "graph.loading.stepLayout",
+};
+
+// The session hook bakes English `title`/`message` strings into
+// `GraphLoadProgress` (data channel, not owned here), so the overlay rebuilds
+// both from the structured phase/loaded/total fields at render time.
+function resolveLoadMessage(progress: GraphLoadProgress, t: TFunction): string {
+  switch (progress.phase) {
+    case "fetching_nodes": {
+      const loaded = (progress.loaded ?? 0).toLocaleString();
+      return progress.total
+        ? t("graph.loading.msgNodesOf", { loaded, total: progress.total.toLocaleString() })
+        : t("graph.loading.msgNodes", { loaded });
+    }
+    case "fetching_edges": {
+      const loaded = (progress.loaded ?? 0).toLocaleString();
+      return progress.total
+        ? t("graph.loading.msgEdgesOf", { loaded, total: progress.total.toLocaleString() })
+        : t("graph.loading.msgEdges", { loaded });
+    }
+    case "computing_styling":
+      return t("graph.loading.msgStyling");
+    case "hydrating_scene":
+      return t("graph.loading.msgHydrating");
+    case "stabilizing_layout":
+      return t("graph.loading.settlingLayout");
+    case "ready":
+      return t("graph.loading.titleReady");
+    case "bootstrapping":
+    default:
+      return t("graph.loading.preparing");
+  }
+}
+
+function formatLayoutSource(source: GraphLoadProgress["layoutSource"]): TranslationKey | null {
   switch (source) {
     case "provided":
-      return "Persisted layout";
+      return "graph.loading.layoutPersisted";
     case "carried":
-      return "Preserved layout";
+      return "graph.loading.layoutPreserved";
     case "runtime":
-      return "Runtime layout";
+      return "graph.loading.layoutRuntime";
     default:
       return null;
   }
 }
 
-function formatLayoutState(state: GraphLoadProgress["layoutState"]) {
+function formatLayoutState(state: GraphLoadProgress["layoutState"]): TranslationKey | null {
   switch (state) {
     case "bootstrapping":
-      return "Bootstrapping";
+      return "graph.loading.layoutStateBootstrapping";
     case "running":
-      return "Settling";
+      return "graph.loading.layoutStateSettling";
     case "interactive":
-      return "Interactive";
+      return "graph.loading.layoutStateInteractive";
     case "stabilized":
-      return "Stable";
+      return "graph.loading.layoutStateStable";
     case "failed":
-      return "Fallback";
+      return "graph.loading.layoutStateFallback";
     default:
       return null;
   }
@@ -232,6 +287,7 @@ export function GraphLoadingOverlay({
   error?: string | null;
   onRetry?: () => void;
 }) {
+  const { t } = useTranslation();
   const [renderVisible, setRenderVisible] = useState(visible);
   const [exiting, setExiting] = useState(false);
   const [displayProgress, setDisplayProgress] = useState<GraphLoadProgress>(
@@ -298,10 +354,10 @@ export function GraphLoadingOverlay({
             </div>
             <div style={{ minWidth: 0 }}>
               <div style={{ color: "#ffffff", fontSize: 20, fontWeight: 700, letterSpacing: "-0.03em", marginBottom: 6 }}>
-                Could not load the graph
+                {t("graph.loading.failedTitle")}
               </div>
               <div style={{ color: "#8fa8c6", fontSize: 13, lineHeight: 1.5 }}>
-                The Explorer API did not return graph data. Check that the backend is running and reachable, then try again.
+                {t("graph.loading.failedBody")}
               </div>
             </div>
           </div>
@@ -312,7 +368,7 @@ export function GraphLoadingOverlay({
             <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
               <button type="button" className="graph-stage-loader-retry" onClick={onRetry}>
                 <RefreshCw size={14} strokeWidth={2.2} aria-hidden />
-                Retry
+                {t("graph.loading.retry")}
               </button>
             </div>
           ) : null}
@@ -343,16 +399,19 @@ export function GraphLoadingOverlay({
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 14, marginBottom: 14 }}>
           <div style={{ minWidth: 0 }}>
             <div style={{ color: "#ffffff", fontSize: 20, fontWeight: 700, letterSpacing: "-0.03em", marginBottom: 6 }}>
-              {activeProgress.title}
+              {t(GRAPH_LOAD_TITLE_KEY[activeProgress.phase])}
             </div>
             <div style={{ color: "#8fa8c6", fontSize: 13, lineHeight: 1.5 }}>
-              {activeProgress.message}
+              {resolveLoadMessage(activeProgress, t)}
             </div>
           </div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
             <div className="graph-stage-loader-beacon" aria-hidden="true" />
             <div style={{ color: "#d7e9fb", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              Stage {activeProgress.stageIndex ?? 1}/{activeProgress.stageCount ?? GRAPH_LOAD_STAGE_SEQUENCE.length}
+              {t("graph.loading.stage", {
+                index: activeProgress.stageIndex ?? 1,
+                count: activeProgress.stageCount ?? GRAPH_LOAD_STAGE_SEQUENCE.length,
+              })}
             </div>
           </div>
         </div>
@@ -363,7 +422,7 @@ export function GraphLoadingOverlay({
             const state = index + 1 < current ? "done" : index + 1 === current ? "active" : "upcoming";
             return (
               <div key={phase} className="graph-stage-loader-step" data-state={state}>
-                {getGraphLoadStageLabel(phase)}
+                {t(GRAPH_LOAD_STEP_KEY[phase])}
               </div>
             );
           })}
@@ -372,13 +431,16 @@ export function GraphLoadingOverlay({
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "baseline", marginBottom: 8 }}>
           <div style={{ color: "#dce9f6", fontSize: 12, fontWeight: 600 }}>
             {activeProgress.progressKind === "determinate" && activeProgress.total
-              ? `${(activeProgress.loaded ?? 0).toLocaleString()} / ${activeProgress.total.toLocaleString()} in current stage`
-              : "Working through this stage"}
+              ? t("graph.loading.stageProgress", {
+                  loaded: (activeProgress.loaded ?? 0).toLocaleString(),
+                  total: activeProgress.total.toLocaleString(),
+                })
+              : t("graph.loading.stageWorking")}
           </div>
           <div style={{ color: "#90a8c5", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>
             {activeProgress.progressKind === "determinate" && determinateRatio !== null
               ? `${Math.round(determinateRatio * 100)}%`
-              : "Live"}
+              : t("graph.loading.live")}
           </div>
         </div>
 
@@ -390,17 +452,25 @@ export function GraphLoadingOverlay({
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 14 }}>
           <span style={loadingMetricStyle}>
-            {activeProgress.nodesLoaded.toLocaleString()}
-            {activeProgress.nodesTotal ? ` / ${activeProgress.nodesTotal.toLocaleString()}` : ""} nodes
+            {activeProgress.nodesTotal
+              ? t("graph.loading.metricNodesTotal", {
+                  loaded: activeProgress.nodesLoaded.toLocaleString(),
+                  total: activeProgress.nodesTotal.toLocaleString(),
+                })
+              : t("graph.loading.metricNodes", { count: activeProgress.nodesLoaded.toLocaleString() })}
           </span>
           <span style={loadingMetricStyle}>
-            {activeProgress.edgesLoaded.toLocaleString()}
-            {activeProgress.edgesTotal ? ` / ${activeProgress.edgesTotal.toLocaleString()}` : ""} relationships
+            {activeProgress.edgesTotal
+              ? t("graph.loading.metricRelationshipsTotal", {
+                  loaded: activeProgress.edgesLoaded.toLocaleString(),
+                  total: activeProgress.edgesTotal.toLocaleString(),
+                })
+              : t("graph.loading.metricRelationships", { count: activeProgress.edgesLoaded.toLocaleString() })}
           </span>
           {layoutSource ? (
             <span style={{ ...loadingMetricStyle, color: "#a9ddff", borderColor: withAlpha(GRAPH_THEME.palette.accent.hovered, 0.22) }}>
-              {layoutSource}
-              {layoutState ? ` · ${layoutState}` : ""}
+              {t(layoutSource)}
+              {layoutState ? ` · ${t(layoutState)}` : ""}
             </span>
           ) : null}
         </div>

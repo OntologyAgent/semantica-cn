@@ -4,7 +4,7 @@
   "flattened": false,
   "friendly_name": "Explorer 中文界面 P1（探索工作区）",
   "mission_id": "01M1EX2RH232D31F94XP8DDRCD",
-  "mission_number": null,
+  "mission_number": 3,
   "mission_slug": "explorer-i18n-p1-01M1EX2R",
   "mission_type": "software-dev",
   "pr_bound": true,

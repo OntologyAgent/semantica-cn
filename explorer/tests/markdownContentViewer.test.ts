@@ -2,8 +2,22 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import React from "react";
 import { renderToString } from "react-dom/server";
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import en from "../src/i18n/locales/en.json";
 
 (globalThis as any).React = React;
+
+// The viewer's chrome is translated through react-i18next; seed a synchronous
+// English instance before importing the component so SSR output carries the
+// en copy the assertions below match against.
+if (!i18next.isInitialized) {
+  i18next.use(initReactI18next).init({
+    lng: "en",
+    fallbackLng: "en",
+    resources: { en: { translation: en.translation } },
+  });
+}
 
 import { MarkdownContentViewer } from "../src/workspaces/GraphWorkspace/MarkdownContentViewer.tsx";
 import { isSafeUrl } from "../src/workspaces/GraphWorkspace/markdownUrlSafety.ts";

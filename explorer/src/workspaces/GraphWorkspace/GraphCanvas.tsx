@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useCallback, forwardRef, useImperativeHandle, useState, type ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import Sigma from "sigma";
 import FA2Layout from "graphology-layout-forceatlas2/worker";
 import { graph, type EdgeAttributes, type NodeAttributes } from "../../store/graphStore";
@@ -1288,6 +1289,7 @@ export const GraphCanvas = forwardRef<GraphCanvasHandle, GraphCanvasProps>(
     },
     ref,
   ) {
+    const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLCanvasElement>(null);
     const structureLayerCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -2664,7 +2666,7 @@ export const GraphCanvas = forwardRef<GraphCanvasHandle, GraphCanvasProps>(
               letterSpacing: "0.01em",
             }}
           >
-            Fit View
+            {t("graph.canvas.fitView")}
           </button>
         ) : null}
       </div>

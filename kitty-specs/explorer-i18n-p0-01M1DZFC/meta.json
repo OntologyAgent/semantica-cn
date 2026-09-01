@@ -7,6 +7,7 @@
   "mission_number": null,
   "mission_slug": "explorer-i18n-p0-01M1DZFC",
   "mission_type": "software-dev",
+  "pr_bound": true,
   "purpose_context": "Semantica 的 Web 客户端 Knowledge Explorer 目前全部界面文案为英文硬编码，中文用户使用门槛高。本 mission 落地 P0 阶段：新增中英语言资源与切换能力，覆盖主导航、首屏、子视图页签、连接状态、工作区壳层与错误提示等全局框架文案；术语与 docs/zh 术语表保持一致；为后续工作区正文的分批翻译建立可追踪的过期检查机制。",
   "purpose_tldr": "为 Knowledge Explorer 前端引入中英双语基础设施，让全局框架界面支持中文并与英文即时切换。",
   "slug": "explorer-i18n-p0-01M1DZFC",

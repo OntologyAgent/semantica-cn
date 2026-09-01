@@ -22,7 +22,8 @@ subtasks:
 - T024
 - T025
 - T026
-agent: claude
+agent: "claude"
+shell_pid: "49682"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -146,3 +147,7 @@ If that command is unavailable, proceed as a generalist finisher: this WP is the
 - 对照 plan.md 的 IC-05 检查 Skill 设计原则落实情况
 - 亲自跑一遍 `git diff upstream/main --name-only --diff-filter=M` 与 zh_status，不信完成备注
 - 检查 CLAUDE.md 的 diff 是否纯新增
+
+## Activity Log
+
+- 2026-09-01T02:47:56Z – claude – shell_pid=49682 – Assigned agent via action command

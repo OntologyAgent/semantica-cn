@@ -92,10 +92,10 @@
 **Independent test**: 四篇译文存在、frontmatter 合规、Mermaid 图策略一致、docs_check 不新增失败
 **Estimated prompt size**: ~450 lines
 
-- [ ] T014 翻译 docs/zh/concepts.md (WP04)
-- [ ] T015 翻译 docs/zh/architecture.md（含 Mermaid 图标签策略） (WP04)
-- [ ] T016 翻译 docs/zh/modules.md 与 choose-your-module.md（27 模块表） (WP04)
-- [ ] T017 WP04 自检（同 T013 标准） (WP04)
+- [x] T014 翻译 docs/zh/concepts.md (WP04)
+- [x] T015 翻译 docs/zh/architecture.md（含 Mermaid 图标签策略） (WP04)
+- [x] T016 翻译 docs/zh/modules.md 与 choose-your-module.md（27 模块表） (WP04)
+- [x] T017 WP04 自检（同 T013 标准） (WP04)
 
 **Dependencies**: WP01, WP02
 **Parallel opportunities**: 与 WP03、WP05 并行

@@ -12,7 +12,7 @@
 ## Technical Context
 
 **Language/Version**: TypeScript 5.9（strict + erasableSyntaxOnly）、React 19.2（启用 babel-plugin-react-compiler）、Vite 6、Node 18+
-**Primary Dependencies**: react-i18next + i18next（本次新增，须兼容 React 19）；既有 react、@tanstack/react-query、Sigma.js 3 不新增不动
+**Primary Dependencies**: `react-i18next@17.0.13` + `i18next@26.4.1`（本次新增；React Compiler 修复 ≥16.3.3 已含，见 research.md R1/R4）；既有 react、@tanstack/react-query、Sigma.js 3 不新增不动
 **Storage**: N/A（语言偏好存浏览器 localStorage，键 `semantica.explorer.lang`；无服务端存储）
 **Testing**: Node 内置 `node:test` + tsx（`explorer/tests/`）+ Playwright e2e；门禁命令 `npm run lint`、`npm run build`（tsc -b）、`npm run test:graph-store|graph-workspace|plugin-registry|deterministic-e2e`
 **Target Platform**: 现代浏览器（Chromium/Firefox/Safari 当前版）；开发环境 macOS 与 Linux（charter 部署约束）
@@ -86,7 +86,7 @@ tools/i18n/ui_zh_status.py       # 新增：译文过期追踪（仿 zh_status.p
 - **Relevant requirements**: FR-002、FR-003、FR-005、FR-006；C-003、C-005、C-006
 - **Affected surfaces**: `explorer/src/i18n/index.ts`、`explorer/src/i18n/locales/{en,zh}.json`、`explorer/src/i18n/types.d.ts`、`explorer/package.json`
 - **Sequencing/depends-on**: none（最优先）
-- **Risks**: React Compiler 下 locale 必须经 hook 订阅传播（useTranslation 内建）；`__meta` 键需与资源类型系统兼容（放在 namespace 同级，避免污染键空间）；i18next/react-i18next 版本须实测兼容 React 19
+- **Risks**: React Compiler 下 locale 必须经 hook 订阅传播（useTranslation 内建 useSyncExternalStore，已核实）；组件内禁直读 `i18n.language`/缓存 t 结果（research.md R4）；`__meta` 与 translation 同级、en 侧留空对象维持同构（R2）；键同构由 `satisfies`（zh 缺键）+ 追踪脚本 extra_keys（zh 多键）双向把关
 
 ### IC-02 — 语言开关与文档同步
 

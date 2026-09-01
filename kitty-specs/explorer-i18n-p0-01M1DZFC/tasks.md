@@ -36,12 +36,12 @@
 **Independent test**: `cd explorer && npm run lint && npm run build` 全绿；en/zh 键集合一致；界面（未接线部分）无可见变化
 **Estimated prompt size**: ~330 lines
 
-- [ ] T001 添加 i18next@26.4.1 + react-i18next@17.0.13 依赖并更新锁文件 (WP01)
-- [ ] T002 创建 locales/en.json + zh.json（完整 P0 键清单，约 95 键 + \_\_meta） (WP01)
-- [ ] T003 types.d.ts 全键类型化（CustomTypeOptions + zh satisfies typeof en） (WP01)
-- [ ] T004 index.ts 初始化：四级语言检测 + languageChanged 文档同步 (WP01)
-- [ ] T005 LanguageToggle.tsx 语言开关组件（changeLanguage + 持久化容错） (WP01)
-- [ ] T006 main.tsx 接线 + lint/build 验证 (WP01)
+- [x] T001 添加 i18next@26.4.1 + react-i18next@17.0.13 依赖并更新锁文件 (WP01)
+- [x] T002 创建 locales/en.json + zh.json（完整 P0 键清单，约 95 键 + \_\_meta） (WP01)
+- [x] T003 types.d.ts 全键类型化（CustomTypeOptions + zh satisfies typeof en） (WP01)
+- [x] T004 index.ts 初始化：四级语言检测 + languageChanged 文档同步 (WP01)
+- [x] T005 LanguageToggle.tsx 语言开关组件（changeLanguage + 持久化容错） (WP01)
+- [x] T006 main.tsx 接线 + lint/build 验证 (WP01)
 
 **Dependencies**: none
 **Parallel opportunities**: 无（串行第一棒）

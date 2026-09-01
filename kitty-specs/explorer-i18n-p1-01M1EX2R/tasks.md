@@ -62,9 +62,9 @@ Dependencies: WP01。Risks: 文件大，逐区块抽取防漏项；数据值严�
 **Priority**: High · **Independent test**: build + e2e 全绿
 **Prompt**: `tasks/WP03-canvas-loading-timeline.md` · ~320 lines
 
-- [ ] T009 GraphCanvas 抽取（WP03）
-- [ ] T010 加载覆盖层抽取 + apiError 接入（WP03）
-- [ ] T011 TimelinePanel 抽取（WP03）
+- [x] T009 GraphCanvas 抽取（WP03）
+- [x] T010 加载覆盖层抽取 + apiError 接入（WP03）
+- [x] T011 TimelinePanel 抽取（WP03）
 
 Dependencies: WP02。Risks: 失败面板是 401 场景主入口，detail 原文保留是验收重点（FR-003）。
 

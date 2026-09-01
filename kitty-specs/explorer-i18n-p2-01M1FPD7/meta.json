@@ -1,0 +1,15 @@
+{
+  "coordination_branch": "kitty/mission-explorer-i18n-p2-01M1FPD7",
+  "created_at": "2026-09-01T23:55:56.242271+00:00",
+  "flattened": false,
+  "friendly_name": "Explorer 中文界面 P2（剩余工作区全量）",
+  "mission_id": "01M1FPD7YHJ30GKNNB3HYRKYCZ",
+  "mission_number": null,
+  "mission_slug": "explorer-i18n-p2-01M1FPD7",
+  "mission_type": "software-dev",
+  "purpose_context": "P0 建立了 i18n 基础设施并覆盖全局框架，P1 覆盖了探索工作区。本 mission 覆盖剩余约 26 个文件、估计 850+ 条用户可见文案：推理引擎、SPARQL 查询、决策、导入导出、差异合并、实体消解、注册表、PROV-O 谱系、KG 概览、本体概要、Ontology Hub 全部页签、SKOS 词表。沿用 P0/P1 术语表（docs/zh/glossary.md）、英文回落机制与零侵入边界，零新增依赖。",
+  "purpose_tldr": "把 Explorer 剩余全部工作区（分析/决策/增强/管理/Ontology Hub/词表）的界面文案纳入 i18n，完成全站中文化收口。",
+  "slug": "explorer-i18n-p2-01M1FPD7",
+  "target_branch": "feature/explorer-i18n-p2",
+  "topology": "coord"
+}

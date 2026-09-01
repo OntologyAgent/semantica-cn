@@ -19,7 +19,8 @@ subtasks:
 - T020
 - T021
 - T022
-agent: claude
+agent: "claude"
+shell_pid: "48880"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -132,3 +133,10 @@ If that command is unavailable, proceed as a bilingual technical documentation c
 - 确认 changelog.md 是指路页而非部分翻译
 - 抽一篇（建议 storage-backends.md）对照英文版核对配置表完整性
 - 检查四篇 frontmatter sha 可复现
+
+## Activity Log
+
+- 2026-09-01T02:34:28Z – claude – shell_pid=38784 – Assigned agent via action command
+- 2026-09-01T02:45:54Z – claude – shell_pid=38784 – 5 zh pages translated (1038 insertions): faq, cli-setup, storage-backends, explorer-setup + changelog pointer. Self-checks passed: zh_status (5 fresh, 2 native stale by contract), JSX balance vs sources, union link scan across lanes c/d/e, anchor validation, terms per WP04 precedent, docs_check baseline unchanged.
+- 2026-09-01T02:46:56Z – claude – shell_pid=48880 – Started review via action command
+- 2026-09-01T02:47:42Z – user – shell_pid=48880 – Review passed. Diff = 8 files all Added (5 WP05 translations + 3 dependency products via lane merges), zero upstream modification. Verified: JSX component balance vs sources, table row parity (faq 24, cli-setup 14, storage-backends 22, explorer-setup 11), union link scan across lanes c/d/e, zh-heading anchors, zh_status 5 fresh + 2 contract-accepted native stale, docs_check baseline unchanged (pre-existing node 26.5.0 mintlify issue only). Security Warning semantics in explorer-setup preserved verbatim (v0.6.5 API key, X-API-Key, fail-closed 503, SEMANTICA_ALLOW_ANONYMOUS).

@@ -1,0 +1,194 @@
+{
+  "mission_slug": "docs-zh-translation-01M1D2MJ",
+  "mission_type": "software-dev",
+  "criteria": [
+    {
+      "criterion_id": "FR-001",
+      "description": "docs/zh/ 与 docs/ 英文版 1:1 同名镜像",
+      "proof_type": "automated_test",
+      "evidence": "docs/zh 共 15 篇（README、glossary、changelog 指路页 + 4+4+4 翻译页），全部与英文源同名对应",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-002",
+      "description": "P0 门面九篇完成翻译",
+      "proof_type": "automated_test",
+      "evidence": "index/quickstart/getting-started/installation/concepts/architecture/modules/choose-your-module/glossary 全部落盘，zh_status 全 fresh",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-003",
+      "description": "译文 frontmatter 含 source 与 source_version",
+      "proof_type": "automated_test",
+      "evidence": "抽查 quickstart.md frontmatter 四+二字段完整；zh_status 13 fresh = blob sha 与源一致",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-004",
+      "description": "glossary.md 冻结核心术语中英对照",
+      "proof_type": "code_review",
+      "evidence": "WP01 产物 glossary.md 含知识图谱/上下文图/决策智能/溯源/本体等术语，评审通过",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-005",
+      "description": "README.md 承载翻译规范",
+      "proof_type": "code_review",
+      "evidence": "WP01 产物 README.md（代码不翻、JSX 保留、链接回落、frontmatter 约定），评审通过",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-006",
+      "description": "zh_status.py 输出最新/过期/已删除三类清单",
+      "proof_type": "automated_test",
+      "evidence": "实测输出 fresh/stale/orphan 三态，15 条目含记录 sha 与当前 sha 对照",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-007",
+      "description": "zh_status.py 对缺失 docs/zh 给出提示而非 traceback",
+      "proof_type": "automated_test",
+      "evidence": "WP02 评审验证：--root 指向无 docs/zh 目录时输出友好提示",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-008",
+      "description": "全部译文通过 docs_check.py 且不修改该脚本",
+      "proof_type": "automated_test",
+      "evidence": "docs_check 基线不变（唯一 FAIL 为 mintlify node 26.5.0 既有环境问题，与译文无关）；docs_check.py 相对 upstream 无差异",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-009",
+      "description": "P1 高频四篇完成翻译",
+      "proof_type": "automated_test",
+      "evidence": "faq/cli-setup/storage-backends/explorer-setup 落盘（WP05，1038 行插入），zh_status 全 fresh",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-010",
+      "description": "changelog 指路页仅指向英文 changelog",
+      "proof_type": "code_review",
+      "evidence": "docs/zh/changelog.md 9 行指路页，不译正文（WP05 产物）",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "FR-011",
+      "description": "译文内链零死链：有中文链中文、无则链英文",
+      "proof_type": "automated_test",
+      "evidence": "并集链接扫描（lane c/d/e 的 docs/zh 全集）PASS：./ 目标全命中 zh 全集，../ 目标全命中 docs/",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "NFR-001",
+      "description": "零侵入：不修改任何上游已存在文件",
+      "proof_type": "automated_test",
+      "evidence": "git diff upstream/main --diff-filter=M 全仓仅 Dockerfile（mission 开始前 2026-08-31 22:15 的 fork 维护提交 514a6428，与本 mission 无关）；mission 相关路径 docs/ semantica/ tests/ explorer/ mcp/ integrations/ pyproject.toml docs_check.py 零 M/D",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "NFR-002",
+      "description": "zh_status.py 全量扫描 5 秒内",
+      "proof_type": "manual_qa",
+      "evidence": "实测运行瞬时完成（15 文件规模远低于 83 文件上限）",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "NFR-003",
+      "description": "术语一致性以 glossary 为准",
+      "proof_type": "automated_test",
+      "evidence": "抽检 3 术语 grep 全部译文：知识图谱 12 文件、溯源 11 文件、分块 9 文件，无分歧译法",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "NFR-004",
+      "description": "代码块标识符/命令/配置键与英文一致",
+      "proof_type": "automated_test",
+      "evidence": "JSX 与代码块对照校验 PASS：逐组件 <Comp>/</Comp> 数量与源相等，代码块除注释外原样",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "C-001",
+      "description": "不修改 docs.json/docs_check.py/.github/ 及上游既有文件",
+      "proof_type": "negative_invariant",
+      "evidence": "见 NI-001/NI-002",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "C-003",
+      "description": "Mintlify JSX 结构原样保留",
+      "proof_type": "automated_test",
+      "evidence": "五篇 P1 与四篇 P0 逐组件 JSX 计数与源一致",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    },
+    {
+      "criterion_id": "C-004",
+      "description": "P3 页面与 changelog 正文不翻译",
+      "proof_type": "negative_invariant",
+      "evidence": "见 NI-003",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z"
+    }
+  ],
+  "negative_invariants": [
+    {
+      "invariant_id": "NI-001",
+      "description": "上游核心文件（docs_check.py/README.md/docs.json/pyproject.toml）相对 upstream/main 零修改",
+      "verification_method": "custom_command",
+      "verification_command": "git diff upstream/main --quiet -- docs_check.py README.md docs/docs.json pyproject.toml",
+      "result": "confirmed_absent",
+      "evidence": "exit 0：四个文件与 upstream/main 完全一致"
+    },
+    {
+      "invariant_id": "NI-002",
+      "description": "mission 相关上游路径（docs/ semantica/ tests/ explorer/ mcp/ integrations/）零修改文件",
+      "verification_method": "custom_command",
+      "verification_command": "test -z \"$(git diff upstream/main --name-only --diff-filter=M -- docs/ semantica/ tests/ explorer/ mcp/ integrations/)\"",
+      "result": "confirmed_absent",
+      "evidence": "diff-filter=M 输出为空（全仓唯一 M 为 Dockerfile，mission 前既有提交 514a6428，不在 mission 路径范围）"
+    },
+    {
+      "invariant_id": "NI-003",
+      "description": "P3 页面（community*/governance/citation/contributing-guide/project-license）未出现在 docs/zh/",
+      "verification_method": "custom_command",
+      "verification_command": "! ls docs/zh/community*.md docs/zh/governance*.md docs/zh/citation*.md docs/zh/contributing-guide*.md docs/zh/project-license*.md >/dev/null 2>&1",
+      "result": "confirmed_absent",
+      "evidence": "docs/zh/ 仅含 P0/P1 规划页 + README/glossary/changelog 指路页，无任何 P3 文件"
+    }
+  ]
+}

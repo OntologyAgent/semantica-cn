@@ -16,7 +16,8 @@ subtasks:
 - T007
 - T008
 - T009
-agent: claude
+agent: "claude"
+shell_pid: "8420"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -148,3 +149,10 @@ If that command is unavailable, proceed as a careful Python implementer: stdlib-
 - 逐条比对 contracts/zh-status-cli.md：参数、退出码、JSON 字段名、行为规则
 - 确认无第三方 import；确认判定走 HEAD 而非工作区
 - 抽查 orphan 路径：把某译文的 source 指向不存在的英文文件，验证输出与退出码
+
+## Activity Log
+
+- 2026-09-01T01:52:30Z – claude – shell_pid=92059 – Assigned agent via action command
+- 2026-09-01T02:01:50Z – claude – shell_pid=92059 – zh_status.py 落盘：批量 ls-tree 单次取 sha；fresh/stale/orphan/missing_source_version 判定与 diff_stat 均经临时仓库演练；退出码 0/1/2 验证；83 文件 0.06s（预算 5s）；black+flake8 通过
+- 2026-09-01T02:05:58Z – claude – shell_pid=8420 – Started review via action command
+- 2026-09-01T02:06:31Z – user – shell_pid=8420 – 评审通过：仅新增 tools/i18n/zh_status.py；契约 10 项全符（参数/退出码/JSON schema/批量 ls-tree/只读/标准库）；四场景行为演练+0.06s 性能已在实现时验证

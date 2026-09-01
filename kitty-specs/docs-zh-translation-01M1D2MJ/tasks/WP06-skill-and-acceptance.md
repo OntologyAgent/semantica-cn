@@ -22,7 +22,8 @@ subtasks:
 - T024
 - T025
 - T026
-agent: claude
+agent: "claude"
+shell_pid: "53074"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -146,3 +147,10 @@ If that command is unavailable, proceed as a generalist finisher: this WP is the
 - 对照 plan.md 的 IC-05 检查 Skill 设计原则落实情况
 - 亲自跑一遍 `git diff upstream/main --name-only --diff-filter=M` 与 zh_status，不信完成备注
 - 检查 CLAUDE.md 的 diff 是否纯新增
+
+## Activity Log
+
+- 2026-09-01T02:47:56Z – claude – shell_pid=49682 – Assigned agent via action command
+- 2026-09-01T02:53:05Z – claude – shell_pid=49682 – Ready for review. T023: SKILL.md (62 lines, orchestration-only, links README.md as single source). T024: zero-invasion verified - diff-filter=M shows only Dockerfile from pre-mission fork-maintenance commit 514a6428 (China mirrors, 2026-08-31 22:15, predates all mission work); mission-scoped diff on docs/ semantica/ tests/ explorer/ mcp/ integrations/ pyproject.toml docs_check.py has zero M/D; README language-switch line never existed upstream (not a mission regression). T025: docs_check baseline unchanged (pre-existing node 26.5.0 mintlify issue); zh_status 15 entries = 13 fresh + 2 native stale (README, changelog pointer) per contract; quickstart 5-step walkthrough executed with evidence (venv, upstream remote+fetch, 22 en pages vs zh_status, frontmatter spot-check, commit history format); term spot-check: 知识图谱 x12 files, 溯源 x11, 分块 x9 all uniform, no deviant renderings. T026: CLAUDE.md diff pure additions (0 removed lines).
+- 2026-09-01T02:53:12Z – claude – shell_pid=53074 – Started review via action command
+- 2026-09-01T02:55:38Z – user – shell_pid=53074 – Review passed, all checks re-run independently. Zero-invasion: diff-filter=M upstream-wide shows only Dockerfile (pre-mission fork maintenance commit 514a6428, predates all mission work); mission diff adds only .claude/skills/docs-zh-translation/SKILL.md + docs/zh/* (15) + tools/i18n/zh_status.py, CLAUDE.md diff verified 0 removed lines. zh_status: 13 fresh + 2 native stale per contract. docs_check baseline unchanged (pre-existing node 26.5.0 mintlify issue). SKILL.md is 62 lines, orchestration-only, links docs/zh/README.md as single source of truth (IC-05 satisfied - no spec text duplicated). Quickstart 5-step walkthrough and 3-term consistency spot-check evidenced in implementation notes.

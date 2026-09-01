@@ -16,7 +16,8 @@ subtasks:
 - T007
 - T008
 - T009
-agent: claude
+agent: "claude"
+shell_pid: "92059"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -148,3 +149,7 @@ If that command is unavailable, proceed as a careful Python implementer: stdlib-
 - 逐条比对 contracts/zh-status-cli.md：参数、退出码、JSON 字段名、行为规则
 - 确认无第三方 import；确认判定走 HEAD 而非工作区
 - 抽查 orphan 路径：把某译文的 source 指向不存在的英文文件，验证输出与退出码
+
+## Activity Log
+
+- 2026-09-01T01:52:30Z – claude – shell_pid=92059 – Assigned agent via action command

@@ -69,6 +69,11 @@ test("real Explorer loading path hydrates and renders API edge labels", async (t
   t.after(() => browser.close());
   const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 
+  // Pin UI language to English so role-name locators stay deterministic regardless of browser locale.
+  await page.addInitScript(() => {
+    try { window.localStorage.setItem("semantica.explorer.lang", "en"); } catch { /* ignore */ }
+  });
+
   await page.addInitScript(() => {
     const captured = (window as Window & { __capturedCanvasText?: string[] }).__capturedCanvasText = [];
     const originalFillText = CanvasRenderingContext2D.prototype.fillText;

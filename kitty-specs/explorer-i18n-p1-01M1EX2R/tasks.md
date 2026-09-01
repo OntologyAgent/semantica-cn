@@ -74,7 +74,7 @@ Dependencies: WP02。Risks: 失败面板是 401 场景主入口，detail 原文�
 **Priority**: Medium · **Independent test**: build + e2e + plugin-registry 套件
 **Prompt**: `tasks/WP04-inspector-plugins-theme.md` · ~400 lines
 
-- [ ] T012 InspectorPanel 抽取（WP04）
+- [x] T012 InspectorPanel 抽取（WP04）
 - [ ] T013 explorationEffects 插件抽取（WP04）
 - [ ] T014 temporal/neighborhood/legend 插件抽取（WP04）
 - [ ] T015 MarkdownViewer + graphTheme（WP04）

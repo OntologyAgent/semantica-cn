@@ -1,6 +1,8 @@
 {
+  "accept_commit": "2975f93286283152d1b2a90f431eae49e9ddb38a",
   "acceptance_history": [
     {
+      "accept_commit": "2975f93286283152d1b2a90f431eae49e9ddb38a",
       "acceptance_mode": "pr",
       "accepted_at": "2026-09-01T03:07:30.158434+00:00",
       "accepted_by": "luofisher",

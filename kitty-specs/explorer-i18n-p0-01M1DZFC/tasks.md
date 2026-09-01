@@ -105,9 +105,10 @@
 - **推荐批次**：WP01 → (WP02 ∥ WP03) → WP04。
 - **实现命令**：`spec-kitty agent action implement WP01 --agent claude`（其余 WP 同理）。
 - **键位契约流**：WP01 定键 → WP02 消费键（越界补键需记录，收尾时刷新基准 sha）→ WP03 校验键 → WP04 复核 fresh。
-- **计数口径（键数 vs 文案条数）**：spec/plan 估的"约 200-300 条文案"是含中英双语渲染与重复实例的字符串计数口径；任务清单键位口径为去重后的键数——实际交付 **106 键**（清单约 95-100 + 越界补键 6）。两者描述同一范围，不矛盾。
+- **计数口径（键数 vs 文案条数）**：spec/plan 估的"约 200-300 条文案"是含中英双语渲染与重复实例的字符串计数口径；任务清单键位口径为去重后的键数——实际交付 **107 键**（清单约 95-100 + 越界补键 6 + 拆分净增 1）。两者描述同一范围，不矛盾。
 - **设计内越界补键汇总（T002 键清单之外，供 mission review 逐项核验 en/zh 成对 + 理由记录）**：
   - WP01-T005：`language.toggle`（LanguageToggle 的 aria-label）
   - WP01-T002/T011 联动：`error.boundary.title` / `error.boundary.detail` / `error.boundary.fatal` / `error.boundary.retry` / `error.boundary.reload`（ErrorBoundary 5 条文案；实现期在 WP01 一次性补入 en/zh，WP02 只消费）
-  - WP02-T012：对 WP01 owned 的 zh.json 做一次预期内越界编辑（仅 `__meta.source_version` 一行；若 en.json 未再变则为 no-op 校验）
+  - WP02-T010：`welcome.titleLine2` 拆为 `welcome.titleLine2Lead` + `welcome.titleLine2Accent`（原 JSX 高亮结构 `like a <span>living system.</span>` 的 span 在句中，单键纯文本无法承载；en/zh 成对拆分，英文渲染逐字一致）
+  - WP02-T012：对 WP01 owned 的 zh.json 做一次预期内越界编辑（仅 `__meta.source_version` 一行；因 T010 拆键 en.json 变为 `6e6cf42b…`，已实刷并复核一致）
 - **spec 覆盖**：FR-001/FR-004 → WP02；FR-002/FR-003/FR-005/FR-006/FR-007 → WP01；FR-008 → WP03+WP04；FR-009 → WP04；NFR-001/NFR-003 由 WP04 的 quickstart §3 走查与 §4 术语抽查验收（WP01/WP02 落实实现与术语规则）；NFR-002/NFR-004 由 WP04 验收。

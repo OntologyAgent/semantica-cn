@@ -16,7 +16,8 @@ subtasks:
 - T002
 - T003
 - T004
-agent: claude
+agent: "claude"
+shell_pid: "82409"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -153,3 +154,7 @@ If that command is unavailable, proceed with your best judgment as a knowledge-b
 - 对照 spec 的 Domain Language 表逐字核对 10 条核心译名
 - 确认 README 的 8 个规则块与 contracts（zh-status-cli.md）的退出码/参数描述一致
 - 确认 frontmatter source_version 命令真实可跑
+
+## Activity Log
+
+- 2026-09-01T01:43:41Z – claude – shell_pid=82409 – Assigned agent via action command

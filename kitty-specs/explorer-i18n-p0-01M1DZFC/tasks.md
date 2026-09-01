@@ -90,10 +90,10 @@
 **Independent test**: 六条门禁命令全绿；e2e diff 仅预置行；体积增量 ≤50KB；ui_zh_status fresh；§3 七项走查与 §4 术语抽查逐项有结果
 **Estimated prompt size**: ~180 lines
 
-- [ ] T016 e2e 预置 localStorage 固定英文（addInitScript，≤5 行） (WP04)
-- [ ] T017 npm run test:deterministic-e2e 全绿 (WP04)
-- [ ] T018 全套静态与单元门禁（lint/build/graph-store/graph-workspace/plugin-registry） (WP04)
-- [ ] T019 体积预算（NFR-002）+ ui_zh_status fresh（FR-008）+ quickstart §3 手动走查与 §4 术语抽查（NFR-001/NFR-003）+ 验收表 (WP04)
+- [x] T016 e2e 预置 localStorage 固定英文（addInitScript，≤5 行） (WP04)
+- [x] T017 npm run test:deterministic-e2e 全绿 (WP04)
+- [x] T018 全套静态与单元门禁（lint/build/graph-store/graph-workspace/plugin-registry） (WP04)
+- [x] T019 体积预算（NFR-002）+ ui_zh_status fresh（FR-008）+ quickstart §3 手动走查与 §4 术语抽查（NFR-001/NFR-003）+ 验收表 (WP04)
 
 **Dependencies**: WP01, WP02, WP03
 **Parallel opportunities**: 无（收尾集成位）

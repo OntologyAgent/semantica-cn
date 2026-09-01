@@ -376,6 +376,6 @@ for chunk in chunks:
 完整的流水线编排 API 见 [Pipeline 参考](./pipeline.md)。
 
 - [Parse](./parse.md) — 分块前先解析文档：产出章节和元数据。
-- [Embeddings](../../reference/embeddings.md) — 为向量检索和语义分块生成块嵌入。
-- [Semantic Extract](../../reference/semantic_extract.md) — 从单个块抽取实体和关系。
+- [Embeddings](./embeddings.md) — 为向量检索和语义分块生成块嵌入。
+- [Semantic Extract](./semantic_extract.md) — 从单个块抽取实体和关系。
 - [Pipeline](./pipeline.md) — 把切分集成为具名流水线步骤。

@@ -413,6 +413,6 @@ triplets      = trip.extract(text)
 | `llm` | 中 | API 计费 | 最高 | 支持（schema） |
 
 - [LLM 提供商](./llms.md) — 配置抽取用哪个 LLM。
-- [Knowledge Graph](../../reference/kg.md) — 用抽取出的实体和关系构建图。
+- [Knowledge Graph](./kg.md) — 用抽取出的实体和关系构建图。
 - [Parse](./parse.md) — 抽取前先解析文档。
 - [Deduplication](./deduplication.md) — 抽取后消解重复实体。

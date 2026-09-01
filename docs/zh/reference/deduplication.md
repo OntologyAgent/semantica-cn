@@ -437,6 +437,6 @@ result = calculate_similarity(entity_a, entity_b, method="drug_name")
 </Tabs>
 
 - [Conflicts](./conflicts.md) — 检测非重复实体之间的值冲突。
-- [Knowledge Graph](../../reference/kg.md) — GraphBuilder 构建过程中会使用去重。
+- [Knowledge Graph](./kg.md) — GraphBuilder 构建过程中会使用去重。
 - [Normalize](./normalize.md) — 去重前先规范实体名。
-- [Provenance](../../reference/provenance.md) — 追踪合并实体的谱系。
+- [Provenance](./provenance.md) — 追踪合并实体的谱系。

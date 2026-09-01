@@ -300,6 +300,6 @@ for source in sources:
 </Note>
 
 - [Ingest](./ingest.md) — 解析前先加载文件。
-- [Split](../../reference/split.md) — 把解析出的文本分块供嵌入与抽取。
+- [Split](./split.md) — 把解析出的文本分块供嵌入与抽取。
 - [Docling 集成](../../integrations/docling.md) — Docling 完整集成设置指南。
-- [Semantic Extract](../../reference/semantic_extract.md) — 从解析文本中抽取实体和关系。
+- [Semantic Extract](./semantic_extract.md) — 从解析文本中抽取实体和关系。

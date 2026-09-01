@@ -288,7 +288,7 @@ ontology_data = ingest_ontology("schema.jsonld")  # JSON-LD
   本体版本管理（`VersionManager`、`OntologyVersion`）已迁移到 `semantica.change_management`。请从那里导入：`from semantica.change_management import VersionManager`。
 </Note>
 
-- [Reasoning](../../reference/reasoning.md) — 对本体公理应用推理规则。
-- [Knowledge Graph](../../reference/kg.md) — 本体所建模的图。
+- [Reasoning](./reasoning.md) — 对本体公理应用推理规则。
+- [Knowledge Graph](./kg.md) — 本体所建模的图。
 - [Export](./export.md) — 以 RDF、OWL 或 JSON-LD 导出本体。
-- [Conflicts](../../reference/conflicts.md) — 检测本体约束违规。
+- [Conflicts](./conflicts.md) — 检测本体约束违规。

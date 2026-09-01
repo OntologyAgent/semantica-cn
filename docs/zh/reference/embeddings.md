@@ -1,6 +1,6 @@
 ---
 title: "嵌入模块（Embeddings）"
-description: "文本与图嵌入生成：FastEmbed、Sentence-Transformers、OpenAI、BGE，带池化策略与供应商无关的 API。"
+description: "文本与图嵌入生成：FastEmbed、Sentence-Transformers、OpenAI、BGE，带池化策略与提供商无关的 API。"
 source: reference/embeddings.md
 source_version: f62dc6e320f236147f0fedd4ceb5fba96e3a5c2d
 icon: "vector-square"
@@ -8,7 +8,7 @@ icon: "vector-square"
 
 **`semantica.embeddings`** 把文本和图结构转成**稠密向量表示**：
 
-- 供应商无关的 API：FastEmbed（默认，ONNX，无需 GPU）、Sentence-Transformers、OpenAI、BGE
+- 提供商无关的 API：FastEmbed（默认，ONNX，无需 GPU）、Sentence-Transformers、OpenAI、BGE
 - 驱动语义检索、实体消解、GraphRAG 检索和去重
 - `GraphEmbeddingManager` 为图数据库后端嵌入 KG 节点和边
 - 五种池化策略：Mean（默认）、Max、CLS、Attention、Hierarchical
@@ -31,11 +31,11 @@ Semantica 用嵌入做：
 
 | 类 | 职责 |
 | :--- | :--- |
-| `EmbeddingGenerator` | 供应商无关的主入口：负责分批与供应商选择 |
+| `EmbeddingGenerator` | 提供商无关的主入口：负责分批与提供商选择 |
 | `TextEmbedder` | 文本嵌入，自动批处理；默认用 FastEmbed |
 | `GraphEmbeddingManager` | 为 GraphRAG 和图数据库嵌入 KG 节点和边 |
 | `VectorEmbeddingManager` | 为向量数据库后端准备和格式化嵌入 |
-| `OpenAIStore` | OpenAI `text-embedding-3-small` / `text-embedding-3-large` 供应商 |
+| `OpenAIStore` | OpenAI `text-embedding-3-small` / `text-embedding-3-large` 提供商 |
 | `BGEStore` | 经 `sentence-transformers` 使用 BAAI/bge 模型 |
 | `FastEmbedStore` | ONNX 加速的本地嵌入：**不要求** CUDA |
 | `LlamaStore` | 占位实现：不可用于生产，不要用它做嵌入 |
@@ -43,14 +43,14 @@ Semantica 用嵌入做：
 
 ## 你能得到什么
 
-- **EmbeddingGenerator** — 主入口：供应商无关，自动跨所有后端分批。
+- **EmbeddingGenerator** — 主入口：提供商无关，自动跨所有后端分批。
 - **TextEmbedder** — 文本专用，自动分批并带进度跟踪。默认方法是 FastEmbed。
 - **GraphEmbeddingManager** — 图数据库的节点和边嵌入：Neo4j、NetworkX、FalkorDB。
 - **VectorEmbeddingManager** — 为 FAISS、Weaviate、Qdrant、Milvus 准备、归一化、格式化嵌入。
-- **供应商 Store** — `OpenAIStore`、`BGEStore`、`FastEmbedStore` 和 `ProviderStoreFactory`。
+- **提供商 Store** — `OpenAIStore`、`BGEStore`、`FastEmbedStore` 和 `ProviderStoreFactory`。
 - **池化策略** — Mean、Max、CLS、Attention、Hierarchical：控制 token 到向量的聚合方式。
 
-## 供应商配置
+## 提供商配置
 
 <Tabs>
   <Tab title="FastEmbed（默认）">
@@ -144,7 +144,7 @@ Semantica 用嵌入做：
   </Tab>
 </Tabs>
 
-检查环境中已安装哪些供应商：
+检查环境中已安装哪些提供商：
 
 ```python
 from semantica.embeddings import check_available_providers
@@ -178,7 +178,7 @@ print(f"Similarity: {score:.3f}")
   **索引和查询务必用同一个模型。**不同模型的向量不可比：它们处在不同的向量空间。换模型就要对整个语料重新嵌入。
 </Tip>
 
-构造后切换供应商：
+构造后切换提供商：
 
 ```python
 # Switch to a sentence-transformers model
@@ -191,7 +191,7 @@ generator.set_text_model("sentence_transformers", "BAAI/bge-large-en-v1.5")
 ## 上手步骤
 
 <Steps>
-  <Step title="安装并初始化供应商">
+  <Step title="安装并初始化提供商">
     ```python
     from semantica.embeddings import EmbeddingGenerator
 
@@ -238,7 +238,7 @@ generator.set_text_model("sentence_transformers", "BAAI/bge-large-en-v1.5")
 
 ## 支持的模型
 
-| 供应商 | 模型 | 维度 | 速度 | 最适合 |
+| 提供商 | 模型 | 维度 | 速度 | 最适合 |
 | :-------- | :----- | :--------- | :----- | :-------- |
 | `fastembed` | `BAAI/bge-small-en-v1.5` | 384 | 很快 | **默认**：针对 CPU 优化，**不要求** GPU |
 | `sentence_transformers` | `all-MiniLM-L6-v2` | 384 | 快 | 速度与质量的均衡 |
@@ -349,12 +349,12 @@ dim = embedder.get_embedding_dimension()
 </Warning>
 
 <Tip>
-  **回退嵌入没有语义。**FastEmbed 和 sentence-transformers 都加载失败时，TextEmbedder 会静默回退到 128 维 SHA-256 哈希嵌入。它确定性但不含语义。检查 `embedder.get_method()`：返回 `"fallback"` 就安装你想要的供应商。
+  **回退嵌入没有语义。**FastEmbed 和 sentence-transformers 都加载失败时，TextEmbedder 会静默回退到 128 维 SHA-256 哈希嵌入。它确定性但不含语义。检查 `embedder.get_method()`：返回 `"fallback"` 就安装你想要的提供商。
 </Tip>
 
-## 供应商 Store
+## 提供商 Store
 
-需要对单个后端做细粒度控制时，直接用供应商 store：
+需要对单个后端做细粒度控制时，直接用提供商 store：
 
 ```python
 from semantica.embeddings import (
@@ -535,7 +535,7 @@ combined = manager.batch_prepare([embeddings_a, embeddings_b], backend="qdrant")
     print(f"Shape: {embeddings.shape}")   # (3, 384)
     ```
   </Tab>
-  <Tab title="供应商对比">
+  <Tab title="提供商对比">
     ```python
     from semantica.embeddings import check_available_providers, EmbeddingGenerator
 

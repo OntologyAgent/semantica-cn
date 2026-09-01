@@ -320,7 +320,7 @@ chain = tracker.get_traceability_chain("apple_inc")
 </Warning>
 
 <Tip>
-  **与溯源联动。** `SourceTracker` 直接对接 [Provenance](../../reference/provenance.md) 模块的审计链。要解释一个消解后的值是怎么选出来的，溯源记录能给出完整链条。
+  **与溯源联动。** `SourceTracker` 直接对接 [Provenance](./provenance.md) 模块的审计链。要解释一个消解后的值是怎么选出来的，溯源记录能给出完整链条。
 </Tip>
 
 ## ConflictAnalyzer
@@ -455,5 +455,5 @@ class InvestigationStep:
 
 - [Deduplication](./deduplication.md) — 冲突检测前先消解重复实体。
 - [Ontology](./ontology.md) — 逻辑冲突用 SHACL 形状和本体公理判定。
-- [Provenance](../../reference/provenance.md) — 追踪每条冲突事实的来源。
-- [Knowledge Graph](../../reference/kg.md) — 被检测冲突的那张图。
+- [Provenance](./provenance.md) — 追踪每条冲突事实的来源。
+- [Knowledge Graph](./kg.md) — 被检测冲突的那张图。

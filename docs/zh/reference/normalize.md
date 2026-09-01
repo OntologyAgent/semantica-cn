@@ -583,5 +583,5 @@ normalized = normalize_text("Apple Inc.", method="expand_suffixes")
 
 - [Parse](./parse.md) — 规范化之前先解析文档。
 - [Split](./split.md) — 把规范化后的文本分块供嵌入。
-- [Deduplication](../../reference/deduplication.md) — 规范化之后消解重复实体。
+- [Deduplication](./deduplication.md) — 规范化之后消解重复实体。
 - [Pipeline](./pipeline.md) — 把规范化集成为具名流水线步骤。

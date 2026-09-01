@@ -1,7 +1,7 @@
 {
   "event_count": 42,
-  "last_event_id": "01M1DF1S9AS6EXDSADK4F0VXEQ",
-  "materialized_at": "2026-09-01T03:08:51.882739+00:00",
+  "last_event_id": "01M1DFHR02RMEQPDZP6MHA0707",
+  "materialized_at": "2026-09-01T03:17:34.850072+00:00",
   "mission_number": "1",
   "mission_slug": "docs-zh-translation-01M1D2MJ",
   "mission_type": "software-dev",
@@ -21,43 +21,43 @@
       "actor": "merge",
       "force_count": 0,
       "lane": "done",
-      "last_event_id": "01M1DF1JN494RHGE1D17HYKRB6",
-      "last_transition_at": "2026-09-01T03:08:45.092302+00:00"
+      "last_event_id": "01M1DFHMP0J3PNBB5M14XNJ5Q0",
+      "last_transition_at": "2026-09-01T03:17:31.456837+00:00"
     },
     "WP02": {
       "actor": "merge",
       "force_count": 0,
       "lane": "done",
-      "last_event_id": "01M1DF1MAEZ656VZ0CV9PNJFPV",
-      "last_transition_at": "2026-09-01T03:08:46.798370+00:00"
+      "last_event_id": "01M1DFHNCX40T2MVZ4TYV28AAV",
+      "last_transition_at": "2026-09-01T03:17:32.189286+00:00"
     },
     "WP03": {
       "actor": "merge",
       "force_count": 0,
       "lane": "done",
-      "last_event_id": "01M1DF1NW78CNWENP04P0E9VBX",
-      "last_transition_at": "2026-09-01T03:08:48.391495+00:00"
+      "last_event_id": "01M1DFHP1577C7HB2MMF1YDYTG",
+      "last_transition_at": "2026-09-01T03:17:32.837318+00:00"
     },
     "WP04": {
       "actor": "merge",
       "force_count": 0,
       "lane": "done",
-      "last_event_id": "01M1DF1Q1EFXP80SZS7NWQ9T1Y",
-      "last_transition_at": "2026-09-01T03:08:49.582473+00:00"
+      "last_event_id": "01M1DFHPP8HS1VNSW82XX0D86G",
+      "last_transition_at": "2026-09-01T03:17:33.512649+00:00"
     },
     "WP05": {
       "actor": "merge",
       "force_count": 0,
       "lane": "done",
-      "last_event_id": "01M1DF1RB9N8JHNQ5391A7EDT8",
-      "last_transition_at": "2026-09-01T03:08:50.921296+00:00"
+      "last_event_id": "01M1DFHQAACV3T8DHQ18CFVY1V",
+      "last_transition_at": "2026-09-01T03:17:34.154697+00:00"
     },
     "WP06": {
       "actor": "merge",
       "force_count": 0,
       "lane": "done",
-      "last_event_id": "01M1DF1S9AS6EXDSADK4F0VXEQ",
-      "last_transition_at": "2026-09-01T03:08:51.882739+00:00"
+      "last_event_id": "01M1DFHR02RMEQPDZP6MHA0707",
+      "last_transition_at": "2026-09-01T03:17:34.850072+00:00"
     }
   }
 }

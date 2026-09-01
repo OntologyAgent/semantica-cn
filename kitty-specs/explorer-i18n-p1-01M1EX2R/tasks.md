@@ -48,11 +48,11 @@ Dependencies: none。Risks: 包装函数必须容忍任意响应形态（非 JSO
 **Priority**: High · **Independent test**: `npm run build`（键同构）+ e2e "Zoom In" 锚点不变
 **Prompt**: `tasks/WP02-graphworkspace-main-extraction.md` · ~420 lines
 
-- [ ] T004 工具栏抽取（WP02）
-- [ ] T005 搜索栏抽取（WP02）
-- [ ] T006 图例枚举迁移（WP02）
-- [ ] T007 剩余主体文案（WP02）
-- [ ] T008 错误点接入 apiError（WP02）
+- [x] T004 工具栏抽取（WP02）
+- [x] T005 搜索栏抽取（WP02）
+- [x] T006 图例枚举迁移（WP02）
+- [x] T007 剩余主体文案（WP02）
+- [x] T008 错误点接入 apiError（WP02）
 
 Dependencies: WP01。Risks: 文件大，逐区块抽取防漏项；数据值严禁进资源（C-006）。
 

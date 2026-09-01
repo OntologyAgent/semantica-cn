@@ -20,6 +20,7 @@
   "accepted_at": "2026-09-01T03:07:38.456507+00:00",
   "accepted_by": "luofisher",
   "accepted_from_commit": "825c9494dd1df21f0b51079531dd5510c91473e5",
+  "baseline_merge_commit": "2f055e689865b5febccfeba66ea09e4574b9be16",
   "coordination_branch": "kitty/mission-docs-zh-translation-01M1D2MJ",
   "created_at": "2026-08-31T23:31:55.580954+00:00",
   "flattened": false,

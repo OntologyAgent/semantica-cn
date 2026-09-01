@@ -18,7 +18,8 @@ subtasks:
 - T011
 - T012
 - T013
-agent: claude
+agent: "claude"
+shell_pid: "9623"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -144,3 +145,7 @@ If that command is unavailable, proceed as a bilingual technical documentation c
 - 抽一段代码块与英文版 diff，确认命令未被动过
 - 核对四篇 frontmatter 的 sha 均可用 `git rev-parse` 复现
 - 读一篇译文全篇，检查是否有翻译腔与术语不一致
+
+## Activity Log
+
+- 2026-09-01T02:06:35Z – claude – shell_pid=9623 – Assigned agent via action command

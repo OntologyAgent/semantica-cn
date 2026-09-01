@@ -1,4 +1,5 @@
 {
+  "accept_commit": "e217b804cafcf577e91c8703c718be2b1ed26c02",
   "acceptance_history": [
     {
       "accept_commit": "83cb86cf18d864d6e36dea4a8f0e9f33f42dc025",
@@ -8,6 +9,7 @@
       "accepted_from_commit": "8b42843766eadbf2fb4a735df44f52b81fa8dbf1"
     },
     {
+      "accept_commit": "e217b804cafcf577e91c8703c718be2b1ed26c02",
       "acceptance_mode": "pr",
       "accepted_at": "2026-09-01T14:58:11.982469+00:00",
       "accepted_by": "luofisher",

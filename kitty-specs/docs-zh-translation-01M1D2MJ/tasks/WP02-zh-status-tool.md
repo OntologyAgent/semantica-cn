@@ -17,7 +17,7 @@ subtasks:
 - T008
 - T009
 agent: "claude"
-shell_pid: "92059"
+shell_pid: "8420"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -153,3 +153,5 @@ If that command is unavailable, proceed as a careful Python implementer: stdlib-
 ## Activity Log
 
 - 2026-09-01T01:52:30Z – claude – shell_pid=92059 – Assigned agent via action command
+- 2026-09-01T02:01:50Z – claude – shell_pid=92059 – zh_status.py 落盘：批量 ls-tree 单次取 sha；fresh/stale/orphan/missing_source_version 判定与 diff_stat 均经临时仓库演练；退出码 0/1/2 验证；83 文件 0.06s（预算 5s）；black+flake8 通过
+- 2026-09-01T02:05:58Z – claude – shell_pid=8420 – Started review via action command

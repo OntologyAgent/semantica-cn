@@ -19,7 +19,7 @@ subtasks:
 - T016
 - T017
 agent: "claude"
-shell_pid: "19871"
+shell_pid: "36741"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -131,3 +131,5 @@ If that command is unavailable, proceed as a bilingual technical documentation c
 ## Activity Log
 
 - 2026-09-01T02:16:15Z – claude – shell_pid=19871 – Assigned agent via action command
+- 2026-09-01T02:32:28Z – claude – shell_pid=19871 – 四篇 P0 批次2页面翻译完成（concepts/architecture/modules/choose-your-module，1727 行）。自检通过：zh_status 全 fresh、JSX 配平与英文源一致、死链扫描通过（跨 WP 链接按合并时并集解析）、docs_check 基线不变。
+- 2026-09-01T02:32:34Z – claude – shell_pid=36741 – Started review via action command

@@ -76,7 +76,7 @@ Dependencies: WP02。Risks: 失败面板是 401 场景主入口，detail 原文�
 
 - [x] T012 InspectorPanel 抽取（WP04）
 - [x] T013 explorationEffects 插件抽取（WP04）
-- [ ] T014 temporal/neighborhood/legend 插件抽取（WP04）
+- [x] T014 temporal/neighborhood/legend 插件抽取（WP04）
 - [ ] T015 MarkdownViewer + graphTheme（WP04）
 
 Dependencies: WP03。Risks: 插件文案经 plugin registry 渲染，确认 `t()` 在 lazy 组件内正常订阅语言切换。

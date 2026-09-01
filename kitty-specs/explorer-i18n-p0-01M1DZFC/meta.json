@@ -1,4 +1,16 @@
 {
+  "acceptance_history": [
+    {
+      "acceptance_mode": "pr",
+      "accepted_at": "2026-09-01T14:58:05.410301+00:00",
+      "accepted_by": "luofisher",
+      "accepted_from_commit": "8b42843766eadbf2fb4a735df44f52b81fa8dbf1"
+    }
+  ],
+  "acceptance_mode": "pr",
+  "accepted_at": "2026-09-01T14:58:05.410301+00:00",
+  "accepted_by": "luofisher",
+  "accepted_from_commit": "8b42843766eadbf2fb4a735df44f52b81fa8dbf1",
   "coordination_branch": "kitty/mission-explorer-i18n-p0-01M1DZFC",
   "created_at": "2026-09-01T07:55:55.227612+00:00",
   "flattened": false,

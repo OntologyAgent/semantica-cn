@@ -52,6 +52,8 @@ integrations/     智能体框架适配：agno/crewai/langchain/openclaw
 mcp/              MCP 服务器实现
 tests/            与包结构镜像的测试目录
 docs/             Mintlify 文档（英文，上游维护；中文翻译另建目录）
+docs/zh/          中文文档镜像：译文 + glossary 术语表 + README 翻译规范
+tools/i18n/       zh_status.py，中文译文过期追踪（git blob sha 基准）
 cookbook/         教程笔记本
 plugins/          编辑器插件、agents、hooks、skills
 deploy/           k8s/helm/gcp/azure/fly/railway/render 部署配置
@@ -107,6 +109,7 @@ npm run test:graph-store                    # 另有 graph-workspace / plugin-re
 
 # ── 文档 ──
 python docs_check.py                        # docs/ 一致性检查，文档 PR 前必跑
+python tools/i18n/zh_status.py              # 中文译文过期状态
 ```
 
 ## CI 与锁文件的坑
@@ -123,3 +126,10 @@ python docs_check.py                        # docs/ 一致性检查，文档 PR 
   ```
 
 - Explorer 后端 extra 按 Python 版本分别钉版（`.github/requirements/explorer-extra-py311.txt` 等），不能跨版本共用。
+
+## 中文文档翻译
+
+- 翻译规范单一事实源：`docs/zh/README.md`；术语统一查 `docs/zh/glossary.md`。
+- 上游同步（`git merge upstream/main`）之后先跑 `python tools/i18n/zh_status.py`，按 stale 清单逐篇重译并刷新 `source_version`。
+- 翻译流程入口：`.claude/skills/docs-zh-translation`（编排层，细节一律链接 README）。
+- 零侵入：只增改 `docs/zh/`、`tools/i18n/` 与该 Skill 目录，不动上游既有文件。

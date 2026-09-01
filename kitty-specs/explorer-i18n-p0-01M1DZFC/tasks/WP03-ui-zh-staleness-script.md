@@ -13,7 +13,8 @@ subtasks:
 - T013
 - T014
 - T015
-agent: claude
+agent: "claude"
+shell_pid: "14685"
 history:
 - timestamp: '2026-09-01T09:51:16Z'
   action: created
@@ -118,3 +119,8 @@ If that command is unavailable, proceed as a careful Python implementer: stdlib-
 ## Reviewer Guidance
 
 核对：① 与 contracts/ui-zh-status-cli.md 逐条对照（参数名、schema 字段、退出码）；② `__meta` 排除正确；③ 只读无副作用；④ 与 zh_status.py 风格/输出一致。
+
+## Activity Log
+
+- 2026-09-01T13:09:44Z – claude – shell_pid=14685 – Assigned agent via action command
+- 2026-09-01T13:40:40Z – claude – shell_pid=14685 – Ready for review

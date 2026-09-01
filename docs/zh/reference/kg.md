@@ -77,10 +77,10 @@ kg = builder.build({"entities": entities, "relationships": relationships})
 ## 时态知识图谱（v0.4.0+）
 
 <Info>
-  `BiTemporalFact`、`TemporalReasoningEngine`、Allen 区间代数和 `TemporalNormalizer` 的完整时态参考，见专门的[时态智能](../../reference/temporal.md)页面。本节只记录 KG 层的时态 API。
+  `BiTemporalFact`、`TemporalReasoningEngine`、Allen 区间代数和 `TemporalNormalizer` 的完整时态参考，见专门的[时态智能](./temporal.md)页面。本节只记录 KG 层的时态 API。
 </Info>
 
-时态技术栈总览见[时态智能](../../reference/temporal.md)页面。
+时态技术栈总览见[时态智能](./temporal.md)页面。
 
 ### 构建时态图
 
@@ -266,7 +266,7 @@ versioner.verify_checksum(past_kg)
 ```
 
 <Tip>
-  完整的类 API、领域示例（人事变动、政策演化、财务时间线）和配置选项，见[时态智能](../../reference/temporal.md)参考。
+  完整的类 API、领域示例（人事变动、政策演化、财务时间线）和配置选项，见[时态智能](./temporal.md)参考。
 </Tip>
 
 

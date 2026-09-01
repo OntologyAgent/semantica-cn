@@ -373,9 +373,9 @@ for chunk in chunks:
     print(f"  {len(entities)} entities in chunk starting at {chunk.start_index}")
 ```
 
-完整的流水线编排 API 见 [Pipeline 参考](../../reference/pipeline.md)。
+完整的流水线编排 API 见 [Pipeline 参考](./pipeline.md)。
 
 - [Parse](./parse.md) — 分块前先解析文档：产出章节和元数据。
 - [Embeddings](../../reference/embeddings.md) — 为向量检索和语义分块生成块嵌入。
 - [Semantic Extract](../../reference/semantic_extract.md) — 从单个块抽取实体和关系。
-- [Pipeline](../../reference/pipeline.md) — 把切分集成为具名流水线步骤。
+- [Pipeline](./pipeline.md) — 把切分集成为具名流水线步骤。

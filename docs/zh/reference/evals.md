@@ -62,5 +62,5 @@ print("Relation coverage: ", report["relation_completeness"]["relation_coverage"
 
 - [语义抽取](../../reference/semantic_extract.md) — 抽取模块。
 - [知识图谱](../../reference/kg.md) — 图质量评估。
-- [Pipeline](../../reference/pipeline.md) — 流水线性能指标。
+- [Pipeline](./pipeline.md) — 流水线性能指标。
 - [Ontology Evaluator](./ontology.md) — 本体质量指标现已可用。

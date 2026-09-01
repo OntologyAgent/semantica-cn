@@ -648,7 +648,7 @@ result = ingest_file("source_path", method="my_format")
 ```
 
 - [Parse](./parse.md) — 把原始来源解析成结构化文本和表格。
-- [Pipeline](../../reference/pipeline.md) — 把摄取编排为流水线的第一步。
+- [Pipeline](./pipeline.md) — 把摄取编排为流水线的第一步。
 - [Snowflake Integration](../../integrations/snowflake.md) — Snowflake 专属的配置与鉴权指南。
 - [Databricks Integration](../../integrations/databricks.md) — Databricks Unity Catalog 配置、鉴权与血缘指南。
 - [Provenance](./provenance.md) — 从摄取到推理全程追踪血缘。

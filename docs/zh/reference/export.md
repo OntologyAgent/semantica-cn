@@ -390,4 +390,4 @@ generate_report(data, "report.html",   format="html")
 - [Triplet Store](./triplet_store.md) — 把 RDF 导出存进可 SPARQL 查询的后端。
 - [Ontology](./ontology.md) — 导出 OWL 本体。
 - [Provenance](./provenance.md) — 在 RDF 导出里带上溯源元数据。
-- [Pipeline](../../reference/pipeline.md) — 把导出作为流水线最后一步。
+- [Pipeline](./pipeline.md) — 把导出作为流水线最后一步。

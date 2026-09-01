@@ -326,4 +326,4 @@ export SEMANTICA_SEED_MERGE_STRATEGY=seed_first
 - [Ingest](./ingest.md) — 在种子数据之外装载非结构化数据。
 - [Knowledge Graph](./kg.md) — 种子数据要填充的目标图。
 - [Deduplication](./deduplication.md) — 处理种子-抽取合并中的重复项。
-- [Pipeline](../../reference/pipeline.md) — 把种子装载作为命名流水线步骤。
+- [Pipeline](./pipeline.md) — 把种子装载作为命名流水线步骤。

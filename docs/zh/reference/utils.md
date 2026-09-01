@@ -223,4 +223,4 @@ config = read_json_file("config.json")
 ```
 
 - [Core](./core.md) — 内部使用 Utils 的框架编排层。
-- [Pipeline](../../reference/pipeline.md) — 用 ProgressTracker 做每步跟踪。
+- [Pipeline](./pipeline.md) — 用 ProgressTracker 做每步跟踪。

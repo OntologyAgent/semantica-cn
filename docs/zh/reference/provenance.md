@@ -524,7 +524,7 @@ Semantica 的溯源追踪产出以下审计工件：
   `ProvenanceManager` 不内置 Turtle 或 JSON-LD 序列化。需要 W3C PROV-O RDF 输出时，用 `entry.to_dict()` 和 `get_lineage()` 取回溯源数据，再用你偏好的 RDF 库序列化。
 </Note>
 
-- [Change Management](../../reference/change_management.md) — 版本控制与快照审计轨迹。
+- [Change Management](./change_management.md) — 版本控制与快照审计轨迹。
 - [Ingest](./ingest.md) — 溯源从摄取阶段就开始。
 - [Export](./export.md) — RDF 导出中携带溯源元数据。
 - [Context](../../reference/context.md) — 经 AgentContext 记录决策溯源。

@@ -228,7 +228,7 @@ result = build_knowledge_base(sources=["doc.pdf"], method="fast")
   只有在构建长运行应用（如 FastAPI 服务）——需要有序启动、健康检查和优雅关闭——时才用 `Semantica` 和 `LifecycleManager`。脚本和 notebook 直接用各个模块即可。
 </Tip>
 
-- [Pipeline](../../reference/pipeline.md) — 流水线执行与步骤编排。
+- [Pipeline](./pipeline.md) — 流水线执行与步骤编排。
 - [Utils](./utils.md) — Core 内部使用的共享工具集。
 - [入门指南](../getting-started.md) — 使用 Core 前先了解基础。
 - [LLMs](../../reference/llms.md) — 通过 ConfigManager 配置大语言模型(LLM)提供商。

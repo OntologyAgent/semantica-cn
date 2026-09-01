@@ -36,12 +36,12 @@
 **Independent test**: `cd explorer && npm run lint && npm run build` 全绿；en/zh 键集合一致；界面（未接线部分）无可见变化
 **Estimated prompt size**: ~330 lines
 
-- [ ] T001 添加 i18next@26.4.1 + react-i18next@17.0.13 依赖并更新锁文件 (WP01)
-- [ ] T002 创建 locales/en.json + zh.json（完整 P0 键清单，约 95 键 + \_\_meta） (WP01)
-- [ ] T003 types.d.ts 全键类型化（CustomTypeOptions + zh satisfies typeof en） (WP01)
-- [ ] T004 index.ts 初始化：四级语言检测 + languageChanged 文档同步 (WP01)
-- [ ] T005 LanguageToggle.tsx 语言开关组件（changeLanguage + 持久化容错） (WP01)
-- [ ] T006 main.tsx 接线 + lint/build 验证 (WP01)
+- [x] T001 添加 i18next@26.4.1 + react-i18next@17.0.13 依赖并更新锁文件 (WP01)
+- [x] T002 创建 locales/en.json + zh.json（完整 P0 键清单，约 95 键 + \_\_meta） (WP01)
+- [x] T003 types.d.ts 全键类型化（CustomTypeOptions + zh satisfies typeof en） (WP01)
+- [x] T004 index.ts 初始化：四级语言检测 + languageChanged 文档同步 (WP01)
+- [x] T005 LanguageToggle.tsx 语言开关组件（changeLanguage + 持久化容错） (WP01)
+- [x] T006 main.tsx 接线 + lint/build 验证 (WP01)
 
 **Dependencies**: none
 **Parallel opportunities**: 无（串行第一棒）
@@ -105,9 +105,9 @@
 - **推荐批次**：WP01 → (WP02 ∥ WP03) → WP04。
 - **实现命令**：`spec-kitty agent action implement WP01 --agent claude`（其余 WP 同理）。
 - **键位契约流**：WP01 定键 → WP02 消费键（越界补键需记录，收尾时刷新基准 sha）→ WP03 校验键 → WP04 复核 fresh。
-- **计数口径（键数 vs 文案条数）**：spec/plan 估的"约 200-300 条文案"是含中英双语渲染与重复实例的字符串计数口径；本任务清单的"约 95 键 + 越界补键 6 键 ≈ 100 键"是去重后的键位口径。两者描述同一范围，不矛盾。
+- **计数口径（键数 vs 文案条数）**：spec/plan 估的"约 200-300 条文案"是含中英双语渲染与重复实例的字符串计数口径；任务清单键位口径为去重后的键数——实际交付 **106 键**（清单约 95-100 + 越界补键 6）。两者描述同一范围，不矛盾。
 - **设计内越界补键汇总（T002 键清单之外，供 mission review 逐项核验 en/zh 成对 + 理由记录）**：
   - WP01-T005：`language.toggle`（LanguageToggle 的 aria-label）
-  - WP02-T011：`error.title`、`error.detail`、`error.detailMaxRetries`、`error.tryAgain`、`error.reloadApp`（ErrorBoundary 5 条文案）
-  - WP02-T012：对 WP01 owned 的 zh.json 做一次预期内越界编辑（仅 `__meta.source_version` 一行，随 en.json 定稿刷新）
+  - WP01-T002/T011 联动：`error.boundary.title` / `error.boundary.detail` / `error.boundary.fatal` / `error.boundary.retry` / `error.boundary.reload`（ErrorBoundary 5 条文案；实现期在 WP01 一次性补入 en/zh，WP02 只消费）
+  - WP02-T012：对 WP01 owned 的 zh.json 做一次预期内越界编辑（仅 `__meta.source_version` 一行；若 en.json 未再变则为 no-op 校验）
 - **spec 覆盖**：FR-001/FR-004 → WP02；FR-002/FR-003/FR-005/FR-006/FR-007 → WP01；FR-008 → WP03+WP04；FR-009 → WP04；NFR-001/NFR-003 由 WP04 的 quickstart §3 走查与 §4 术语抽查验收（WP01/WP02 落实实现与术语规则）；NFR-002/NFR-004 由 WP04 验收。

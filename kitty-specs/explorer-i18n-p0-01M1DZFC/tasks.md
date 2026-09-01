@@ -74,9 +74,9 @@
 **Independent test**: `python tools/i18n/ui_zh_status.py` 对本期资源报告 fresh、missing=0、extra=0；退出码 0/1/2 语义正确
 **Estimated prompt size**: ~150 lines
 
-- [ ] T013 ui_zh_status.py：资源扫描与键级 diff（missing/extra，排除 \_\_meta） (WP03)
-- [ ] T014 CLI 与输出（表格/--json/退出码 0/1/2）对齐契约 (WP03)
-- [ ] T015 本期资源实跑自检 → fresh + missing=0 + extra=0 (WP03)
+- [x] T013 ui_zh_status.py：资源扫描与键级 diff（missing/extra，排除 \_\_meta） (WP03)
+- [x] T014 CLI 与输出（表格/--json/退出码 0/1/2）对齐契约 (WP03)
+- [x] T015 本期资源实跑自检 → fresh + missing=0 + extra=0 (WP03)
 
 **Dependencies**: WP01
 **Parallel opportunities**: 与 WP02 并行（只依赖 WP01）

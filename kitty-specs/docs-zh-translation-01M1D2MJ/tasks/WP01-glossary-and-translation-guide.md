@@ -158,3 +158,4 @@ If that command is unavailable, proceed with your best judgment as a knowledge-b
 ## Activity Log
 
 - 2026-09-01T01:43:41Z – claude – shell_pid=82409 – Assigned agent via action command
+- 2026-09-01T01:52:10Z – claude – shell_pid=82409 – glossary+README 落盘；docs_check 9/10 pass，唯一 FAIL 为 Mintlify export 因本机 Node 26 过新（基线，与改动无关）；链接自洽

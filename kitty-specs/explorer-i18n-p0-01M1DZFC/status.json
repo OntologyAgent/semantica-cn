@@ -1,7 +1,7 @@
 {
-  "event_count": 12,
-  "last_event_id": "01M1EHDP3SNTFCJXT9AYMHBFZR",
-  "materialized_at": "2026-09-01T13:09:33.433180+00:00",
+  "event_count": 28,
+  "last_event_id": "01M1EQCSK307R0C2MR9BMB4SEG",
+  "materialized_at": "2026-09-01T14:53:55.684004+00:00",
   "mission_number": "",
   "mission_slug": "explorer-i18n-p0-01M1DZFC",
   "mission_type": "software-dev",
@@ -10,11 +10,11 @@
     "blocked": 0,
     "canceled": 0,
     "claimed": 0,
-    "done": 1,
+    "done": 4,
     "for_review": 0,
-    "in_progress": 1,
+    "in_progress": 0,
     "in_review": 0,
-    "planned": 2
+    "planned": 0
   },
   "work_packages": {
     "WP01": {
@@ -25,25 +25,25 @@
       "last_transition_at": "2026-09-01T13:06:28.700663+00:00"
     },
     "WP02": {
-      "actor": "claude",
+      "actor": "user",
       "force_count": 0,
-      "lane": "in_progress",
-      "last_event_id": "01M1EHDP3SNTFCJXT9AYMHBFZR",
-      "last_transition_at": "2026-09-01T13:09:33.433180+00:00"
+      "lane": "done",
+      "last_event_id": "01M1EMCEED57KNJTY7B9YKH65T",
+      "last_transition_at": "2026-09-01T14:01:18.541650+00:00"
     },
     "WP03": {
-      "actor": "finalize-tasks",
+      "actor": "user",
       "force_count": 0,
-      "lane": "planned",
-      "last_event_id": "01M1E6NPHPAZX4ZTREK63P4S7S",
-      "last_transition_at": "2026-09-01T10:01:41.686038+00:00"
+      "lane": "done",
+      "last_event_id": "01M1EKBCHG108ESTK2D861TS75",
+      "last_transition_at": "2026-09-01T13:43:15.248875+00:00"
     },
     "WP04": {
-      "actor": "finalize-tasks",
+      "actor": "user",
       "force_count": 0,
-      "lane": "planned",
-      "last_event_id": "01M1E6NQ44M1XDKZYAYCJC1DBH",
-      "last_transition_at": "2026-09-01T10:01:42.276389+00:00"
+      "lane": "done",
+      "last_event_id": "01M1EQCSK307R0C2MR9BMB4SEG",
+      "last_transition_at": "2026-09-01T14:53:55.684004+00:00"
     }
   }
 }

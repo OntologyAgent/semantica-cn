@@ -76,10 +76,10 @@
 **Independent test**: 四篇译文存在、frontmatter 合规、zh_status 全 fresh、docs_check 不新增失败
 **Estimated prompt size**: ~450 lines
 
-- [ ] T010 翻译 docs/zh/index.md (WP03)
-- [ ] T011 翻译 docs/zh/quickstart.md (WP03)
-- [ ] T012 翻译 docs/zh/getting-started.md 与 installation.md (WP03)
-- [ ] T013 WP03 自检：内链回落、JSX 平衡、zh_status 全 fresh、docs_check (WP03)
+- [x] T010 翻译 docs/zh/index.md (WP03)
+- [x] T011 翻译 docs/zh/quickstart.md (WP03)
+- [x] T012 翻译 docs/zh/getting-started.md 与 installation.md (WP03)
+- [x] T013 WP03 自检：内链回落、JSX 平衡、zh_status 全 fresh、docs_check (WP03)
 
 **Dependencies**: WP01, WP02
 **Parallel opportunities**: 与 WP04、WP05 并行（owned_files 无交集）

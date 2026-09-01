@@ -1,0 +1,40 @@
+{
+  "accept_commit": "e217b804cafcf577e91c8703c718be2b1ed26c02",
+  "acceptance_history": [
+    {
+      "accept_commit": "83cb86cf18d864d6e36dea4a8f0e9f33f42dc025",
+      "acceptance_mode": "pr",
+      "accepted_at": "2026-09-01T14:58:05.410301+00:00",
+      "accepted_by": "luofisher",
+      "accepted_from_commit": "8b42843766eadbf2fb4a735df44f52b81fa8dbf1"
+    },
+    {
+      "accept_commit": "e217b804cafcf577e91c8703c718be2b1ed26c02",
+      "acceptance_mode": "pr",
+      "accepted_at": "2026-09-01T14:58:11.982469+00:00",
+      "accepted_by": "luofisher",
+      "accepted_from_commit": "8fe2ec2e98d7b4713b3021a46c5a7476fbd916ee"
+    }
+  ],
+  "acceptance_mode": "pr",
+  "accepted_at": "2026-09-01T14:58:11.982469+00:00",
+  "accepted_by": "luofisher",
+  "accepted_from_commit": "8fe2ec2e98d7b4713b3021a46c5a7476fbd916ee",
+  "baseline_merge_commit": "f23dbcdf0dce34151522262358dc3a34f3dc3631",
+  "coordination_branch": "kitty/mission-explorer-i18n-p0-01M1DZFC",
+  "created_at": "2026-09-01T07:55:55.227612+00:00",
+  "flattened": false,
+  "friendly_name": "Explorer 中文界面 P0",
+  "mission_id": "01M1DZFCYQQK6A5AZEDW3QAS5E",
+  "mission_number": 2,
+  "mission_slug": "explorer-i18n-p0-01M1DZFC",
+  "mission_type": "software-dev",
+  "pr_bound": true,
+  "purpose_context": "Semantica 的 Web 客户端 Knowledge Explorer 目前全部界面文案为英文硬编码，中文用户使用门槛高。本 mission 落地 P0 阶段：新增中英语言资源与切换能力，覆盖主导航、首屏、子视图页签、连接状态、工作区壳层与错误提示等全局框架文案；术语与 docs/zh 术语表保持一致；为后续工作区正文的分批翻译建立可追踪的过期检查机制。",
+  "purpose_tldr": "为 Knowledge Explorer 前端引入中英双语基础设施，让全局框架界面支持中文并与英文即时切换。",
+  "slug": "explorer-i18n-p0-01M1DZFC",
+  "target_branch": "feature/explorer-i18n-p0",
+  "topology": "coord",
+  "vcs": "git",
+  "vcs_locked_at": "2026-09-01T11:01:54.474499+00:00"
+}

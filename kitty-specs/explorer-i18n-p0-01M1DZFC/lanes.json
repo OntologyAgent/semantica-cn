@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "mission_slug": "explorer-i18n-p0-01M1DZFC",
+  "mission_id": "01M1DZFCYQQK6A5AZEDW3QAS5E",
+  "mission_branch": "kitty/mission-explorer-i18n-p0-01M1DZFC",
+  "target_branch": "feature/explorer-i18n-p0",
+  "lanes": [
+    {
+      "lane_id": "lane-a",
+      "wp_ids": [
+        "WP01"
+      ],
+      "write_scope": [
+        "explorer/package-lock.json",
+        "explorer/package.json",
+        "explorer/src/i18n/**",
+        "explorer/src/main.tsx"
+      ],
+      "predicted_surfaces": [
+        "api",
+        "tracker-integration",
+        "workspace"
+      ],
+      "depends_on_lanes": [],
+      "parallel_group": 0
+    },
+    {
+      "lane_id": "lane-b",
+      "wp_ids": [
+        "WP02"
+      ],
+      "write_scope": [
+        "explorer/src/App.tsx",
+        "explorer/src/ErrorBoundary.tsx"
+      ],
+      "predicted_surfaces": [
+        "api",
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-a"
+      ],
+      "parallel_group": 1
+    },
+    {
+      "lane_id": "lane-c",
+      "wp_ids": [
+        "WP03"
+      ],
+      "write_scope": [
+        "tools/i18n/ui_zh_status.py"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [
+        "lane-a"
+      ],
+      "parallel_group": 1
+    },
+    {
+      "lane_id": "lane-d",
+      "wp_ids": [
+        "WP04"
+      ],
+      "write_scope": [
+        "explorer/tests/deterministicExplorerRendering.e2e.ts"
+      ],
+      "predicted_surfaces": [
+        "api",
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-a",
+        "lane-b",
+        "lane-c"
+      ],
+      "parallel_group": 2
+    }
+  ],
+  "computed_at": "2026-09-01T10:01:42.756485+00:00",
+  "computed_from": "dependency_graph+ownership",
+  "planning_artifact_wps": []
+}

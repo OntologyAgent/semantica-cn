@@ -125,10 +125,10 @@
 **Independent test**: Skill 文件就位且含 Do-This-First 段；`git diff upstream/main --diff-filter=M` 仅含 init 声明的脚手架文件；docs_check 全绿
 **Estimated prompt size**: ~300 lines
 
-- [ ] T023 编写 .claude/skills/docs-zh-translation/SKILL.md (WP06)
-- [ ] T024 零侵入验证与 init 伴生产物规整 (WP06)
-- [ ] T025 全局验收：docs_check 全绿、zh_status 全 fresh、quickstart 五步走查 (WP06)
-- [ ] T026 更新 CLAUDE.md：docs/zh 体系与 Skill 入口 (WP06)
+- [x] T023 编写 .claude/skills/docs-zh-translation/SKILL.md (WP06)
+- [x] T024 零侵入验证与 init 伴生产物规整 (WP06)
+- [x] T025 全局验收：docs_check 全绿、zh_status 全 fresh、quickstart 五步走查 (WP06)
+- [x] T026 更新 CLAUDE.md：docs/zh 体系与 Skill 入口 (WP06)
 
 **Dependencies**: WP01, WP02, WP03, WP04, WP05
 **Parallel opportunities**: none（收尾串行）

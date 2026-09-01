@@ -1,28 +1,28 @@
 {
-  "event_count": 8,
-  "last_event_id": "01M1EH80BYDH3PF2EK41NG30XF",
-  "materialized_at": "2026-09-01T13:06:27.326258+00:00",
+  "event_count": 9,
+  "last_event_id": "01M1EH814N7GMTAP6WCZ4GY48H",
+  "materialized_at": "2026-09-01T13:06:28.117799+00:00",
   "mission_number": "",
   "mission_slug": "explorer-i18n-p0-01M1DZFC",
   "mission_type": "software-dev",
   "summary": {
-    "approved": 0,
+    "approved": 1,
     "blocked": 0,
     "canceled": 0,
     "claimed": 0,
     "done": 0,
     "for_review": 0,
     "in_progress": 0,
-    "in_review": 1,
+    "in_review": 0,
     "planned": 3
   },
   "work_packages": {
     "WP01": {
       "actor": "user",
       "force_count": 0,
-      "lane": "in_review",
-      "last_event_id": "01M1EH80BYDH3PF2EK41NG30XF",
-      "last_transition_at": "2026-09-01T13:06:27.326258+00:00"
+      "lane": "approved",
+      "last_event_id": "01M1EH814N7GMTAP6WCZ4GY48H",
+      "last_transition_at": "2026-09-01T13:06:28.117799+00:00"
     },
     "WP02": {
       "actor": "finalize-tasks",

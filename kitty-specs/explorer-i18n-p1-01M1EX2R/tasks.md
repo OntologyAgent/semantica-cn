@@ -36,9 +36,9 @@
 **Priority**: High（先行） · **Independent test**: apiError 单元行为经 e2e/构建间接验证；e2e 全绿
 **Prompt**: `tasks/WP01-i18n-error-wrapper-foundation.md` · ~260 lines
 
-- [ ] T001 新建 apiError.ts 纯函数（WP01）
-- [ ] T002 locales 增补 graph.errors.* 键（WP01）
-- [ ] T003 e2e ?lang=en 预置（WP01）
+- [x] T001 新建 apiError.ts 纯函数（WP01）
+- [x] T002 locales 增补 graph.errors.* 键（WP01）
+- [x] T003 e2e ?lang=en 预置（WP01）
 
 Dependencies: none。Risks: 包装函数必须容忍任意响应形态（非 JSON body、空 detail）。
 

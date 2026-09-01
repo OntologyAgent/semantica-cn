@@ -558,7 +558,7 @@ for row in result.bindings:
     print(row)
 ```
 
-- [Export](../../reference/export.md) — 把知识图谱导出为 RDF 格式。
+- [Export](./export.md) — 把知识图谱导出为 RDF 格式。
 - [Ontology](./ontology.md) — 加载 OWL 本体并存为 RDF 三元组。
 - [Reasoning](./reasoning.md) — 基于 SPARQL 的属性链推理。
 - [Graph Store](./graph_store.md) — 面向 Cypher 查询的属性图替代方案。

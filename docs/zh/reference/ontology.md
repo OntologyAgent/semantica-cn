@@ -290,5 +290,5 @@ ontology_data = ingest_ontology("schema.jsonld")  # JSON-LD
 
 - [Reasoning](../../reference/reasoning.md) — 对本体公理应用推理规则。
 - [Knowledge Graph](../../reference/kg.md) — 本体所建模的图。
-- [Export](../../reference/export.md) — 以 RDF、OWL 或 JSON-LD 导出本体。
+- [Export](./export.md) — 以 RDF、OWL 或 JSON-LD 导出本体。
 - [Conflicts](../../reference/conflicts.md) — 检测本体约束违规。

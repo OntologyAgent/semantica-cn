@@ -299,7 +299,7 @@ for source in sources:
   Docling 是可选依赖。未安装 `docling` 时，`DoclingParser` 抛 `ImportError` 并附安装说明：`pip install docling`。`DocumentParser` 始终可用，无需任何 extra。
 </Note>
 
-- [Ingest](../../reference/ingest.md) — 解析前先加载文件。
+- [Ingest](./ingest.md) — 解析前先加载文件。
 - [Split](../../reference/split.md) — 把解析出的文本分块供嵌入与抽取。
 - [Docling 集成](../../integrations/docling.md) — Docling 完整集成设置指南。
 - [Semantic Extract](../../reference/semantic_extract.md) — 从解析文本中抽取实体和关系。

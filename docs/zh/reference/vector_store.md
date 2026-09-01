@@ -593,4 +593,4 @@ store.create_index(index_type="pq", metric="L2", m=8)
 - [Embeddings](./embeddings.md) — 生成存入这里的向量。
 - [Context](../../reference/context.md) — AgentContext 用 VectorStore 做记忆检索。
 - [Split](./split.md) — 嵌入和入库前先分块。
-- [Ingest](../../reference/ingest.md) — 嵌入和入库前先摄取文档。
+- [Ingest](./ingest.md) — 嵌入和入库前先摄取文档。

@@ -1,7 +1,7 @@
 {
-  "event_count": 24,
-  "last_event_id": "01M1EMD9TYP0PB7MVGP0K1J7WD",
-  "materialized_at": "2026-09-01T14:01:46.589817+00:00",
+  "event_count": 25,
+  "last_event_id": "01M1EQ6WE8D6XR3ACV3NXHEKY0",
+  "materialized_at": "2026-09-01T14:50:41.992353+00:00",
   "mission_number": "",
   "mission_slug": "explorer-i18n-p0-01M1DZFC",
   "mission_type": "software-dev",
@@ -11,8 +11,8 @@
     "canceled": 0,
     "claimed": 0,
     "done": 3,
-    "for_review": 0,
-    "in_progress": 1,
+    "for_review": 1,
+    "in_progress": 0,
     "in_review": 0,
     "planned": 0
   },
@@ -41,9 +41,9 @@
     "WP04": {
       "actor": "claude",
       "force_count": 0,
-      "lane": "in_progress",
-      "last_event_id": "01M1EMD9TYP0PB7MVGP0K1J7WD",
-      "last_transition_at": "2026-09-01T14:01:46.589817+00:00"
+      "lane": "for_review",
+      "last_event_id": "01M1EQ6WE8D6XR3ACV3NXHEKY0",
+      "last_transition_at": "2026-09-01T14:50:41.992353+00:00"
     }
   }
 }

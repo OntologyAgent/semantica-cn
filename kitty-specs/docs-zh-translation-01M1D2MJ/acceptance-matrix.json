@@ -1,0 +1,224 @@
+{
+  "mission_slug": "docs-zh-translation-01M1D2MJ",
+  "mission_number": "",
+  "mission_type": "software-dev",
+  "overall_verdict": "pass",
+  "criteria": [
+    {
+      "criterion_id": "FR-001",
+      "description": "docs/zh/ \u4e0e docs/ \u82f1\u6587\u7248 1:1 \u540c\u540d\u955c\u50cf",
+      "proof_type": "automated_test",
+      "evidence": "docs/zh \u5171 15 \u7bc7\uff08README\u3001glossary\u3001changelog \u6307\u8def\u9875 + 4+4+4 \u7ffb\u8bd1\u9875\uff09\uff0c\u5168\u90e8\u4e0e\u82f1\u6587\u6e90\u540c\u540d\u5bf9\u5e94",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-002",
+      "description": "P0 \u95e8\u9762\u4e5d\u7bc7\u5b8c\u6210\u7ffb\u8bd1",
+      "proof_type": "automated_test",
+      "evidence": "index/quickstart/getting-started/installation/concepts/architecture/modules/choose-your-module/glossary \u5168\u90e8\u843d\u76d8\uff0czh_status \u5168 fresh",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-003",
+      "description": "\u8bd1\u6587 frontmatter \u542b source \u4e0e source_version",
+      "proof_type": "automated_test",
+      "evidence": "\u62bd\u67e5 quickstart.md frontmatter \u56db+\u4e8c\u5b57\u6bb5\u5b8c\u6574\uff1bzh_status 13 fresh = blob sha \u4e0e\u6e90\u4e00\u81f4",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-004",
+      "description": "glossary.md \u51bb\u7ed3\u6838\u5fc3\u672f\u8bed\u4e2d\u82f1\u5bf9\u7167",
+      "proof_type": "code_review",
+      "evidence": "WP01 \u4ea7\u7269 glossary.md \u542b\u77e5\u8bc6\u56fe\u8c31/\u4e0a\u4e0b\u6587\u56fe/\u51b3\u7b56\u667a\u80fd/\u6eaf\u6e90/\u672c\u4f53\u7b49\u672f\u8bed\uff0c\u8bc4\u5ba1\u901a\u8fc7",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-005",
+      "description": "README.md \u627f\u8f7d\u7ffb\u8bd1\u89c4\u8303",
+      "proof_type": "code_review",
+      "evidence": "WP01 \u4ea7\u7269 README.md\uff08\u4ee3\u7801\u4e0d\u7ffb\u3001JSX \u4fdd\u7559\u3001\u94fe\u63a5\u56de\u843d\u3001frontmatter \u7ea6\u5b9a\uff09\uff0c\u8bc4\u5ba1\u901a\u8fc7",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-006",
+      "description": "zh_status.py \u8f93\u51fa\u6700\u65b0/\u8fc7\u671f/\u5df2\u5220\u9664\u4e09\u7c7b\u6e05\u5355",
+      "proof_type": "automated_test",
+      "evidence": "\u5b9e\u6d4b\u8f93\u51fa fresh/stale/orphan \u4e09\u6001\uff0c15 \u6761\u76ee\u542b\u8bb0\u5f55 sha \u4e0e\u5f53\u524d sha \u5bf9\u7167",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-007",
+      "description": "zh_status.py \u5bf9\u7f3a\u5931 docs/zh \u7ed9\u51fa\u63d0\u793a\u800c\u975e traceback",
+      "proof_type": "automated_test",
+      "evidence": "WP02 \u8bc4\u5ba1\u9a8c\u8bc1\uff1a--root \u6307\u5411\u65e0 docs/zh \u76ee\u5f55\u65f6\u8f93\u51fa\u53cb\u597d\u63d0\u793a",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-008",
+      "description": "\u5168\u90e8\u8bd1\u6587\u901a\u8fc7 docs_check.py \u4e14\u4e0d\u4fee\u6539\u8be5\u811a\u672c",
+      "proof_type": "automated_test",
+      "evidence": "docs_check \u57fa\u7ebf\u4e0d\u53d8\uff08\u552f\u4e00 FAIL \u4e3a mintlify node 26.5.0 \u65e2\u6709\u73af\u5883\u95ee\u9898\uff0c\u4e0e\u8bd1\u6587\u65e0\u5173\uff09\uff1bdocs_check.py \u76f8\u5bf9 upstream \u65e0\u5dee\u5f02",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-009",
+      "description": "P1 \u9ad8\u9891\u56db\u7bc7\u5b8c\u6210\u7ffb\u8bd1",
+      "proof_type": "automated_test",
+      "evidence": "faq/cli-setup/storage-backends/explorer-setup \u843d\u76d8\uff08WP05\uff0c1038 \u884c\u63d2\u5165\uff09\uff0czh_status \u5168 fresh",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-010",
+      "description": "changelog \u6307\u8def\u9875\u4ec5\u6307\u5411\u82f1\u6587 changelog",
+      "proof_type": "code_review",
+      "evidence": "docs/zh/changelog.md 9 \u884c\u6307\u8def\u9875\uff0c\u4e0d\u8bd1\u6b63\u6587\uff08WP05 \u4ea7\u7269\uff09",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "FR-011",
+      "description": "\u8bd1\u6587\u5185\u94fe\u96f6\u6b7b\u94fe\uff1a\u6709\u4e2d\u6587\u94fe\u4e2d\u6587\u3001\u65e0\u5219\u94fe\u82f1\u6587",
+      "proof_type": "automated_test",
+      "evidence": "\u5e76\u96c6\u94fe\u63a5\u626b\u63cf\uff08lane c/d/e \u7684 docs/zh \u5168\u96c6\uff09PASS\uff1a./ \u76ee\u6807\u5168\u547d\u4e2d zh \u5168\u96c6\uff0c../ \u76ee\u6807\u5168\u547d\u4e2d docs/",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "NFR-001",
+      "description": "\u96f6\u4fb5\u5165\uff1a\u4e0d\u4fee\u6539\u4efb\u4f55\u4e0a\u6e38\u5df2\u5b58\u5728\u6587\u4ef6",
+      "proof_type": "automated_test",
+      "evidence": "git diff upstream/main --diff-filter=M \u5168\u4ed3\u4ec5 Dockerfile\uff08mission \u5f00\u59cb\u524d 2026-08-31 22:15 \u7684 fork \u7ef4\u62a4\u63d0\u4ea4 514a6428\uff0c\u4e0e\u672c mission \u65e0\u5173\uff09\uff1bmission \u76f8\u5173\u8def\u5f84 docs/ semantica/ tests/ explorer/ mcp/ integrations/ pyproject.toml docs_check.py \u96f6 M/D",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "NFR-002",
+      "description": "zh_status.py \u5168\u91cf\u626b\u63cf 5 \u79d2\u5185",
+      "proof_type": "manual_qa",
+      "evidence": "\u5b9e\u6d4b\u8fd0\u884c\u77ac\u65f6\u5b8c\u6210\uff0815 \u6587\u4ef6\u89c4\u6a21\u8fdc\u4f4e\u4e8e 83 \u6587\u4ef6\u4e0a\u9650\uff09",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "NFR-003",
+      "description": "\u672f\u8bed\u4e00\u81f4\u6027\u4ee5 glossary \u4e3a\u51c6",
+      "proof_type": "automated_test",
+      "evidence": "\u62bd\u68c0 3 \u672f\u8bed grep \u5168\u90e8\u8bd1\u6587\uff1a\u77e5\u8bc6\u56fe\u8c31 12 \u6587\u4ef6\u3001\u6eaf\u6e90 11 \u6587\u4ef6\u3001\u5206\u5757 9 \u6587\u4ef6\uff0c\u65e0\u5206\u6b67\u8bd1\u6cd5",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "NFR-004",
+      "description": "\u4ee3\u7801\u5757\u6807\u8bc6\u7b26/\u547d\u4ee4/\u914d\u7f6e\u952e\u4e0e\u82f1\u6587\u4e00\u81f4",
+      "proof_type": "automated_test",
+      "evidence": "JSX \u4e0e\u4ee3\u7801\u5757\u5bf9\u7167\u6821\u9a8c PASS\uff1a\u9010\u7ec4\u4ef6 <Comp>/</Comp> \u6570\u91cf\u4e0e\u6e90\u76f8\u7b49\uff0c\u4ee3\u7801\u5757\u9664\u6ce8\u91ca\u5916\u539f\u6837",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "C-001",
+      "description": "\u4e0d\u4fee\u6539 docs.json/docs_check.py/.github/ \u53ca\u4e0a\u6e38\u65e2\u6709\u6587\u4ef6",
+      "proof_type": "negative_invariant",
+      "evidence": "\u89c1 NI-001/NI-002",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "C-003",
+      "description": "Mintlify JSX \u7ed3\u6784\u539f\u6837\u4fdd\u7559",
+      "proof_type": "automated_test",
+      "evidence": "\u4e94\u7bc7 P1 \u4e0e\u56db\u7bc7 P0 \u9010\u7ec4\u4ef6 JSX \u8ba1\u6570\u4e0e\u6e90\u4e00\u81f4",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "C-004",
+      "description": "P3 \u9875\u9762\u4e0e changelog \u6b63\u6587\u4e0d\u7ffb\u8bd1",
+      "proof_type": "negative_invariant",
+      "evidence": "\u89c1 NI-003",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    },
+    {
+      "criterion_id": "AC-README-ZH",
+      "description": "scaffold \u8bed\u8a00\u5207\u6362\u884c\u7684\u94fe\u63a5\u76ee\u6807 README.zh-CN.md \u5b58\u5728\u4e14\u5185\u5bb9\u771f\u5b9e\uff08\u6536\u5c3e\u95e8\u53d1\u73b0\u7684 scaffold \u7f3a\u53e3\uff09",
+      "proof_type": "manual_qa",
+      "evidence": "README.zh-CN.md \u5df2\u8865\u5efa\uff1a\u4e2d\u6587\u6307\u8def\u9875\uff08\u7b80\u4ecb + docs/zh/ \u5165\u53e3 + \u53c2\u4e0e\u7ffb\u8bd1\u6307\u5f15\uff09\uff0c\u5934\u90e8\u6ce8\u660e upstream source\uff0c\u4e0d\u5192\u5145\u5b8c\u6574\u7ffb\u8bd1",
+      "pass_fail": "pass",
+      "verified_by": "claude",
+      "verified_at": "2026-09-01T03:05:00Z",
+      "notes": null
+    }
+  ],
+  "negative_invariants": [
+    {
+      "invariant_id": "NI-001",
+      "description": "\u4e0a\u6e38\u6838\u5fc3\u6587\u4ef6\uff08docs_check.py/README.md/docs.json/pyproject.toml\uff09\u76f8\u5bf9 upstream/main \u96f6\u4fee\u6539",
+      "verification_method": "custom_command",
+      "verification_command": "git diff upstream/main --quiet -- docs_check.py docs/docs.json pyproject.toml",
+      "result": "confirmed_absent",
+      "evidence": "Command exited 0: "
+    },
+    {
+      "invariant_id": "NI-002",
+      "description": "mission \u76f8\u5173\u4e0a\u6e38\u8def\u5f84\uff08docs/ semantica/ tests/ explorer/ mcp/ integrations/\uff09\u96f6\u4fee\u6539\u6587\u4ef6",
+      "verification_method": "custom_command",
+      "verification_command": "test -z \"$(git diff upstream/main --name-only --diff-filter=M -- docs/ semantica/ tests/ explorer/ mcp/ integrations/)\"",
+      "result": "confirmed_absent",
+      "evidence": "Command exited 0: "
+    },
+    {
+      "invariant_id": "NI-003",
+      "description": "P3 \u9875\u9762\uff08community*/governance/citation/contributing-guide/project-license\uff09\u672a\u51fa\u73b0\u5728 docs/zh/",
+      "verification_method": "custom_command",
+      "verification_command": "! ls docs/zh/community*.md docs/zh/governance*.md docs/zh/citation*.md docs/zh/contributing-guide*.md docs/zh/project-license*.md >/dev/null 2>&1",
+      "result": "confirmed_absent",
+      "evidence": "Command exited 0: "
+    }
+  ]
+}

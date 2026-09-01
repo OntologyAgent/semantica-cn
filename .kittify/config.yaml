@@ -1,0 +1,12 @@
+project:
+  uuid: 75e92b4c-4ecc-4e29-9d8c-2e34d162b5f2
+  slug: semantica
+  node_id: f1d4523b53e2
+  build_id: 3f862d7a-2d89-527e-99db-769f34045359
+vcs:
+  type: git
+agents:
+  available:
+  - claude
+  auto_commit: true
+  lint_on_edit: false

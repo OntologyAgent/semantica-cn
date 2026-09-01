@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "mission_slug": "docs-zh-translation-01M1D2MJ",
+  "mission_id": "01M1D2MJ1WFJFBKV5A4DC34WP5",
+  "mission_branch": "kitty/mission-docs-zh-translation-01M1D2MJ",
+  "target_branch": "feat/docs-zh-translation",
+  "lanes": [
+    {
+      "lane_id": "lane-a",
+      "wp_ids": [
+        "WP01"
+      ],
+      "write_scope": [
+        "docs/zh/README.md",
+        "docs/zh/glossary.md"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [],
+      "parallel_group": 0
+    },
+    {
+      "lane_id": "lane-b",
+      "wp_ids": [
+        "WP02"
+      ],
+      "write_scope": [
+        "tools/i18n/**"
+      ],
+      "predicted_surfaces": [
+        "api",
+        "tracker-integration"
+      ],
+      "depends_on_lanes": [],
+      "parallel_group": 0
+    },
+    {
+      "lane_id": "lane-c",
+      "wp_ids": [
+        "WP03"
+      ],
+      "write_scope": [
+        "docs/zh/getting-started.md",
+        "docs/zh/index.md",
+        "docs/zh/installation.md",
+        "docs/zh/quickstart.md"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [
+        "lane-a",
+        "lane-b"
+      ],
+      "parallel_group": 1
+    },
+    {
+      "lane_id": "lane-d",
+      "wp_ids": [
+        "WP04"
+      ],
+      "write_scope": [
+        "docs/zh/architecture.md",
+        "docs/zh/choose-your-module.md",
+        "docs/zh/concepts.md",
+        "docs/zh/modules.md"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [
+        "lane-a",
+        "lane-b"
+      ],
+      "parallel_group": 1
+    },
+    {
+      "lane_id": "lane-e",
+      "wp_ids": [
+        "WP05"
+      ],
+      "write_scope": [
+        "docs/zh/changelog.md",
+        "docs/zh/cli-setup.md",
+        "docs/zh/explorer-setup.md",
+        "docs/zh/faq.md",
+        "docs/zh/storage-backends.md"
+      ],
+      "predicted_surfaces": [
+        "api",
+        "dashboard"
+      ],
+      "depends_on_lanes": [
+        "lane-a",
+        "lane-b"
+      ],
+      "parallel_group": 1
+    },
+    {
+      "lane_id": "lane-f",
+      "wp_ids": [
+        "WP06"
+      ],
+      "write_scope": [
+        ".claude/skills/docs-zh-translation/**",
+        "CLAUDE.md"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [
+        "lane-a",
+        "lane-b",
+        "lane-c",
+        "lane-d",
+        "lane-e"
+      ],
+      "parallel_group": 2
+    }
+  ],
+  "computed_at": "2026-08-31T23:59:46.078040+00:00",
+  "computed_from": "dependency_graph+ownership",
+  "planning_artifact_wps": []
+}

@@ -1,0 +1,40 @@
+{
+  "accept_commit": "32af1db95b781ceac6d4719858ef429cb9973530",
+  "acceptance_history": [
+    {
+      "accept_commit": "2975f93286283152d1b2a90f431eae49e9ddb38a",
+      "acceptance_mode": "pr",
+      "accepted_at": "2026-09-01T03:07:30.158434+00:00",
+      "accepted_by": "luofisher",
+      "accepted_from_commit": "e96816d58e71a97401bf6f947461caf75dd90b29"
+    },
+    {
+      "accept_commit": "32af1db95b781ceac6d4719858ef429cb9973530",
+      "acceptance_mode": "pr",
+      "accepted_at": "2026-09-01T03:07:38.456507+00:00",
+      "accepted_by": "luofisher",
+      "accepted_from_commit": "825c9494dd1df21f0b51079531dd5510c91473e5"
+    }
+  ],
+  "acceptance_mode": "pr",
+  "accepted_at": "2026-09-01T03:07:38.456507+00:00",
+  "accepted_by": "luofisher",
+  "accepted_from_commit": "825c9494dd1df21f0b51079531dd5510c91473e5",
+  "baseline_merge_commit": "2f055e689865b5febccfeba66ea09e4574b9be16",
+  "coordination_branch": "kitty/mission-docs-zh-translation-01M1D2MJ",
+  "created_at": "2026-08-31T23:31:55.580954+00:00",
+  "flattened": false,
+  "friendly_name": "Semantica 中文文档翻译",
+  "mission_id": "01M1D2MJ1WFJFBKV5A4DC34WP5",
+  "mission_number": 1,
+  "mission_slug": "docs-zh-translation-01M1D2MJ",
+  "mission_type": "software-dev",
+  "pr_bound": true,
+  "purpose_context": "Semantica 是上游 semantica-agi/semantica 的 fork，docs/ 下有 83 篇 Mintlify 英文文档且随上游持续演进。本 Mission 建立可持续维护的中文文档体系：P0 门面 9 篇、P1 高频约 10 篇、P2 reference 29 篇分层翻译，P3 社区类与 changelog 不翻；以 git blob sha 追踪英文源变动、驱动译文同步；全部产物为增量文件，不修改任何上游文件，保证与上游长期低冲突共存。",
+  "purpose_tldr": "将上游 Mintlify 英文文档分层翻译为 docs/zh/ 中文版，建立术语表、blob sha 过期追踪与翻译规范，零侵入上游文件",
+  "slug": "docs-zh-translation-01M1D2MJ",
+  "target_branch": "feat/docs-zh-translation",
+  "topology": "coord",
+  "vcs": "git",
+  "vcs_locked_at": "2026-09-01T01:43:38.494088+00:00"
+}

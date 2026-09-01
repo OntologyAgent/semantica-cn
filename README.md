@@ -1,3 +1,5 @@
+**English** | [中文](README.zh-CN.md)
+
 <div align="center">
 
 <img src="Semantica Logo.png" alt="Semantica" width="420"/>

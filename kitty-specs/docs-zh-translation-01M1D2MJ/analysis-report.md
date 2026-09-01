@@ -4,7 +4,7 @@ artifact_type: spec-kitty.analysis-report
 command: /spec-kitty.analyze
 mission_slug: docs-zh-translation-01M1D2MJ
 mission_id: 01M1D2MJ1WFJFBKV5A4DC34WP5
-generated_at: '2026-09-01T01:41:03.890530+00:00'
+generated_at: '2026-09-01T01:43:06.427189+00:00'
 analyzer_agent: claude
 input_artifacts:
   spec.md:
@@ -17,14 +17,14 @@ input_artifacts:
     path: /Users/luofisher/ToolsChain/semantica/kitty-specs/docs-zh-translation-01M1D2MJ/tasks.md
     sha256: 26b94d10d40f58ad3bdb48ed45a9a99b494dc2721180ce35050e15c5031c69c1
   charter:
-    path:
-    sha256:
+    path: /Users/luofisher/ToolsChain/semantica/.kittify/charter/charter.md
+    sha256: a5e01a009b82bb321c397f1f4d566511a1a4713370ab47480516eb838cffce67
 verdict: ready
 issue_counts:
-  low: 2
   medium: 3
-  critical: 0
+  low: 2
   high: 0
+  critical: 0
   info: 0
 findings:
 - id: C1

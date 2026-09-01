@@ -20,7 +20,8 @@ subtasks:
 - T017
 - T018
 - T019
-agent: claude
+agent: "claude"
+shell_pid: "30510"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -119,3 +120,9 @@ npm run test:deterministic-e2e
 ## Reviewer Guidance
 
 - 本 WP 自身即验收关：核对 T016-T019 每项证据（命令输出/走查记录）真实留存，不接受"应该没问题"。
+
+## Activity Log
+
+- 2026-09-01T18:40:35Z – claude – shell_pid=22827 – Implementation complete (commit 2fc7025f). T016: key parity 414=414, build INV-1, orphan-key triple scan 0. T017: source_version refreshed to 756a1b9a (staged en.json blob), ui_zh_status fresh (text+json, 0 missing/extra). T018: lint 74 baseline zero-delta, build green, 4 suites green (graph-workspace 73, plugin-registry 7, graph-store 1, deterministic-e2e 1), bundle gzip delta +9.8KB locales upper bound (NFR-002 ≤30KB). T019: zh full-text walkthrough clean, banned terms 0 (知识探索器/时序/探索器), glossary terms verified (探索/时态/距离带/距离智能/决策智能), data values untouched, en regression protected by deterministic-e2e; known limitation: panel/overlay titles via i18next.t() have a one-switch lag window (documented in WP04 review).
+- 2026-09-01T18:40:40Z – claude – shell_pid=30510 – Started review via action command
+- 2026-09-01T18:41:59Z – user – shell_pid=30510 – Review passed (8-item anti-pattern checklist): [1] Dead code N/A - WP05 adds no code, only zh.json value edits + source_version. [2] Synthetic-fixture N/A - no new tests; verification FRs evidenced by real command output. [3] Silent empty return N/A. [4] FR coverage PASS with live evidence: FR-009 ui_zh_status fresh (text+json, 0 missing/extra), FR-008 four suites green (73/7/1/1), FR-005 parity 414=414 + tsc INV-1, FR-004 fallbackLng:'en' untouched (index.ts:99) + error-wrapper tests green, NFR-002 gzip +9.8KB<=30KB, NFR-003 banned terms 0 (知识探索器/时序/探索器) + glossary verified, NFR-004 lint 74 baseline zero-delta. [5] Frozen surface PASS - commit 2fc7025f touches only owned zh.json; ui_zh_status.py 0 commits in mission branch. [6] Locked decision PASS - script run-not-modified honored; component-layer fixups routed through resources only. [7] Shared-file PASS with coordination note: locales co-edited by WP04 (lane-d) merged into lane-e BEFORE WP05 serial edits; no parallel writes. [8] Production fragility N/A. Orphan-key rescan: 0 across 307 graph.* keys (static+dynamic prefix scan). Known accepted limitation documented: panel/overlay title i18next.t() one-switch lag window.

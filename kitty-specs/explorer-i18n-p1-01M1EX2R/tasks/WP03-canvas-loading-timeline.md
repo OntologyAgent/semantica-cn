@@ -15,7 +15,8 @@ subtasks:
 - T009
 - T010
 - T011
-agent: claude
+agent: "claude"
+shell_pid: "96412"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -103,3 +104,10 @@ tags: []
 
 - 重点核 T010 的 detail 原样保留路径与空 detail 隐藏逻辑。
 - 核对画布数据渲染零改动（`git diff` 中不应出现 Sigma 场景/label 相关逻辑变化）。
+
+## Activity Log
+
+- 2026-09-01T17:28:37Z – claude – shell_pid=84623 – Assigned agent via action command
+- 2026-09-01T17:48:25Z – claude – shell_pid=84623 – Implemented per prompt: T009 GraphCanvas (single DOM string Fit View; ~28 diagnostics reason strings exempted as dev-gated availability snapshot data, render surface in WP04 plugins); T010 GraphLoadingOverlay full extraction + FR-003 fallback path (session hook throws pure Error message, Response unreachable -> error panel chrome fully localized with original message kept verbatim in detail section, hook untouched); T011 TimelinePanel 3 strings. +42 keys en/zh isomorphic. Validation: build green, lint 74 (=baseline), graph-workspace 73/73, deterministic-e2e 1/1, en verbatim-checked.
+- 2026-09-01T17:48:31Z – claude – shell_pid=96412 – Started review via action command
+- 2026-09-01T17:49:40Z – user – shell_pid=96412 – Review passed: (1) GraphCanvas diff is 3 lines (import/hook/Fit View) — Sigma scene, label and fillText logic untouched, deterministic-e2e green confirms canvas data assertions intact; (2) detail preserved verbatim: {error} rendered as-is in .graph-stage-loader-error-detail, no truncation/rewrite (FR-003); session hook untouched (useLoadGraph not in diff); (3) 401 handled via prompt-sanctioned fallback path since hook throws pure Error message (Response unreachable) — describeApiError/describeResponseError intentionally not wired (no structured info available; hook out of owned scope), recorded for mission review; (4) +42 keys en/zh isomorphic, en values machine-verified verbatim, placeholder parity OK; (5) zh terms follow glossary (关系/节点/边/时态/布局/回退); (6) build green, lint 74 = baseline zero delta, graph-workspace 73/73, e2e 1/1; (7) exemptions logged: CSS font-family strings, createGraphLoadProgress contract-required message field (no longer rendered), ~28 diagnostics reason strings (dev-gated availability snapshot, render surface in WP04 plugins). No blockers.

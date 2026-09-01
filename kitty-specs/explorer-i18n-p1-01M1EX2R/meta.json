@@ -12,5 +12,7 @@
   "purpose_tldr": "探索工作区（GraphWorkspace）内部界面文案全面中文化，沿用 P0 i18n 基础设施",
   "slug": "explorer-i18n-p1-01M1EX2R",
   "target_branch": "feature/explorer-i18n-p1",
-  "topology": "coord"
+  "topology": "coord",
+  "vcs": "git",
+  "vcs_locked_at": "2026-09-01T16:53:29.411614+00:00"
 }

@@ -16,7 +16,8 @@ subtasks:
 - T013
 - T014
 - T015
-agent: claude
+agent: "claude"
+shell_pid: "20395"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -113,3 +114,20 @@ tags: []
 - 抽查 Inspector 三区各 1 键 + 效果面板距离档位 1 键：en 原文一致、zh 符合 glossary（近/中/远）。
 - 确认 plugin registry 契约文件零改动。
 - 确认形状枚举值（结构标识符）未被翻译。
+
+## Activity Log
+
+- 2026-09-01T17:49:56Z – claude – shell_pid=97398 – Assigned agent via action command
+- 2026-09-01T18:26:50Z – claude – shell_pid=97398 – T012-T015 complete on lane-d. Inspector/effects A+C/temporal/neighborhood/legend/markdown chrome extracted. 103 new keys (effects 55, temporalOverlay 8, neighborhood 10, legend +4, markdown 9), en=zh=410 parity, placeholders match. Lint 74 baseline zero-delta; build ok; plugin-registry 7/7, graph-workspace 73/73 (fixed markdown SSR test by seeding i18next en), deterministic-e2e 1/1, graph-store 1/1. Commit 1f3d1fed.
+- 2026-09-01T18:27:18Z – claude – shell_pid=20395 – Started review via action command
+- 2026-09-01T18:30:26Z – user – shell_pid=20395 – Review passed (8-point anti-pattern check):
+1) Data values untranslated: node/edge labels, edgeType, semanticGroup, shape enums stay raw; caught during review - distance_band enum was interpolated raw into bandBadge ('2 hops . near'); fixed via BAND_LABEL_KEYS mapping -> t() with 4 new keys bandDirect/bandNear/bandMidRange/bandDistant (zh: 直连/近/中/远 per glossary 距离带三档).
+2) en values verbatim from source strings; zh follows glossary (特效/时序/邻域).
+3) No missed chrome: residual scan shows only exemptions - plugin.toolbarItems (dead API, no host consumer; toolbar renders pluginRegistry labelKey), availability.reason/detail diagnostic channel incl 'Waiting for graph runtime' fallback, markdown native title passthrough, arrow glyph.
+4) Plugin registry contract untouched: pluginRegistryPredicates.ts + plugins/types.ts zero diff.
+5) Shape enums untranslated: graphEntityShape.ts regexes/enums verbatim; graphTheme entityShapes[].label verified dead (consumers read shapeKind/aspectRatio only; ENTITY_VISUAL_KEY labelKey covers the visual-key UI).
+6) Locale parity en=zh=414, placeholders match (python check).
+7) No regression: build ok; lint 74 = baseline zero-delta (5 new react-refresh points from panel-body components suppressed inline with rationale, same class as baseline EffectToggleRow); graph-workspace 73/73 (markdown SSR test seeded with i18next en instance - minimal test delta, prompt assumed it had no en assertions but it did); plugin-registry 7/7; deterministic-e2e 1/1; graph-store 1/1.
+8) Memo-freeze handled: panel contents + overlay chips are real components (useTranslation subscribes, instant switch); panel titles use i18next.t direct call with a known staleness window (open panel + language switch + no subsequent state change) - recorded as accepted limitation, titles refresh on next panel open/state change.
+Reviewer Guidance: inspector 3-section spot checks pass (propertiesSection/candidateLinksSection/provenanceJson bilingual); distance-band key now passes; registry contract clean; enums untranslated.
+Commits: 1f3d1fed + band fix merged into lane integration 9796785c (lane-d unpushed, history intact).

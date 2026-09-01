@@ -19,7 +19,8 @@ subtasks:
 - T006
 - T007
 - T008
-agent: claude
+agent: "claude"
+shell_pid: "83974"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -134,3 +135,10 @@ const ENTITY_VISUAL_KEY = [ { shape: "biomolecule", labelKey: "graph.legend.biom
 - 抽查 5 个键：en 值与改造前原文逐字一致；zh 术语符合 glossary。
 - 确认 `ENTITY_VISUAL_KEY` 字段改名后无引用遗漏（tsc 会兜底）。
 - 确认数据值未进 locales（抽查 graph.* 键值无 ORG/PERSON 等数据枚举）。
+
+## Activity Log
+
+- 2026-09-01T17:01:36Z – claude – shell_pid=68463 – Assigned agent via action command
+- 2026-09-01T17:27:40Z – claude – shell_pid=68463 – GraphWorkspace.tsx full extraction: toolbar/search/legend/HUD/distance/edge/dock ~120 keys; en verbatim 44/44 mechanical check; build+lint(0 delta)+deterministic-e2e green; search error wired to describeResponseError (wrapper t() + detail verbatim); TranslationKey union for constants, wrapperKey cast at consumption (apiError.ts owned by WP01)
+- 2026-09-01T17:27:45Z – claude – shell_pid=83974 – Started review via action command
+- 2026-09-01T17:28:24Z – user – shell_pid=83974 – Review passed: en values verbatim (44/44 mechanical diff check); FR-007 data-value red line clean (no ORG/PERSON/bundleKind enums in locales); frozen surfaces untouched (e2e 4-line change is WP01's); 41 useMemo dep arrays include t; anti-pattern checklist 1-8 PASS; build + lint(74=baseline) + deterministic-e2e green

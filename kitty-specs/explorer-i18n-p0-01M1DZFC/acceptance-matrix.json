@@ -2,97 +2,97 @@
   "mission_slug": "explorer-i18n-p0-01M1DZFC",
   "mission_number": "",
   "mission_type": "software-dev",
-  "overall_verdict": "pending",
+  "overall_verdict": "pass",
   "criteria": [
     {
       "criterion_id": "FR-001",
-      "description": "Verify FR-001 is satisfied",
+      "description": "语言切换即时生效且无页面重载",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP04 quickstart §3 走查 2：headless Playwright 点击切换后 98ms 内 CTA 文案变英文，window 标记存活证明无重载；App 层全部文案经 useTranslation() 订阅渲染",
+      "pass_fail": "pass",
+      "verified_by": "WP04-T019",
+      "verified_at": "2026-09-01",
+      "notes": "NFR-001 同位验证：无可感知延迟"
     },
     {
       "criterion_id": "FR-002",
-      "description": "Verify FR-002 is satisfied",
+      "description": "语言偏好持久化（localStorage 读写均 try/catch 容错）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP04 quickstart §3 走查 3：EN 刷新仍英文、zh 刷新仍中文；走查 2 切换后 localStorage 写入 en；WP01-T004/T005 实现读写容错",
+      "pass_fail": "pass",
+      "verified_by": "WP04-T019",
+      "verified_at": "2026-09-01",
+      "notes": ""
     },
     {
       "criterion_id": "FR-003",
-      "description": "Verify FR-003 is satisfied",
+      "description": "首访语言检测（?lang= → localStorage → navigator zh* → en）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP04 quickstart §3 走查 1：zh 环境首屏全中文（导航/状态栏/CTA/标题/lang 属性）；走查 6：en 环境+清站点数据与改造前一致；走查 4：?lang=en 优先于存储偏好",
+      "pass_fail": "pass",
+      "verified_by": "WP04-T019",
+      "verified_at": "2026-09-01",
+      "notes": ""
     },
     {
       "criterion_id": "FR-004",
-      "description": "Verify FR-004 is satisfied",
+      "description": "P0 范围全部文案中英双语（导航/壳层/页签/连接状态/首屏/回退/错误边界）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "en/zh 键同构 107 键（脚本核验双向 diff 为空）；WP02 残留清点表 P0 范围零英文残留（品牌字标/纯数据豁免有记录）；§3 走查 1 中文模式 5 导航项+状态栏+CTA 全命中",
+      "pass_fail": "pass",
+      "verified_by": "WP02-T012 + WP04-T019",
+      "verified_at": "2026-09-01",
+      "notes": "越界补键 4 处见 tasks.md Execution Notes 汇总"
     },
     {
       "criterion_id": "FR-005",
-      "description": "Verify FR-005 is satisfied",
+      "description": "缺译回落英文（fallbackLng: 'en'）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP01-T004 配置 fallbackLng 'en'；zh satisfies typeof en 类型约束使缺译在构建期不可能发生（tsc -b exit 0）；§3 走查 6 英文回退路径渲染一致",
+      "pass_fail": "pass",
+      "verified_by": "WP01-T006 + WP04-T018",
+      "verified_at": "2026-09-01",
+      "notes": ""
     },
     {
       "criterion_id": "FR-006",
-      "description": "Verify FR-006 is satisfied",
+      "description": "en/zh 键同构，破坏同构时构建失败",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "types.d.ts CustomTypeOptions + zh.json satisfies typeof en；npm run build（tsc -b）exit 0；独立脚本核验 en/zh 键集合双向 diff 为空（107 键）",
+      "pass_fail": "pass",
+      "verified_by": "WP04-T018 + T019",
+      "verified_at": "2026-09-01",
+      "notes": ""
     },
     {
       "criterion_id": "FR-007",
-      "description": "Verify FR-007 is satisfied",
+      "description": "<html lang> 与 document.title 随语言同步",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP04 quickstart §3 走查 5：en → title 'Semantica Knowledge Explorer' + lang=en；zh → '知识探索器 · Semantica' + lang=zh-CN；languageChanged 监听驱动",
+      "pass_fail": "pass",
+      "verified_by": "WP04-T019",
+      "verified_at": "2026-09-01",
+      "notes": ""
     },
     {
       "criterion_id": "FR-008",
-      "description": "Verify FR-008 is satisfied",
+      "description": "译文过期追踪脚本 ui_zh_status.py（sha 钉版 + 键级 diff）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "python3 tools/i18n/ui_zh_status.py 表格+--json 双确认 exit 0：fresh=1 stale=0 missing=0 extra=0，recorded=current=6e6cf42b（HEAD 口径）；降级演练 7 例（WP03 验收）退出码 0/1/2 语义正确",
+      "pass_fail": "pass",
+      "verified_by": "WP03-T015 + WP04-T019",
+      "verified_at": "2026-09-01",
+      "notes": "source_version 链路 A1 修复后经 HEAD 口径真检验"
     },
     {
       "criterion_id": "FR-009",
-      "description": "Verify FR-009 is satisfied",
+      "description": "e2e 固定英文预置后继续全绿（上游测试文件仅 +5 行预置）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "deterministicExplorerRendering.e2e.ts 仅 +5 行 addInitScript 预置（diff 核验）；npm run test:deterministic-e2e 复跑 pass 1/fail 0，英文锚点 Open Semantica Explorer/Zoom In 全命中",
+      "pass_fail": "pass",
+      "verified_by": "WP04-T016/T017",
+      "verified_at": "2026-09-01",
+      "notes": ""
     }
   ],
   "negative_invariants": []

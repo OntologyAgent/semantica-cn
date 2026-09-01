@@ -12,5 +12,7 @@
   "purpose_tldr": "将上游 Mintlify 英文文档分层翻译为 docs/zh/ 中文版，建立术语表、blob sha 过期追踪与翻译规范，零侵入上游文件",
   "slug": "docs-zh-translation-01M1D2MJ",
   "target_branch": "feat/docs-zh-translation",
-  "topology": "coord"
+  "topology": "coord",
+  "vcs": "git",
+  "vcs_locked_at": "2026-09-01T01:43:38.494088+00:00"
 }

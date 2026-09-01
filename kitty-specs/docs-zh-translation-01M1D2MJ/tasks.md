@@ -43,10 +43,10 @@
 **Independent test**: glossary.md/README.md 存在且通过 docs_check.py；术语表覆盖 spec Domain Language 全部条目
 **Estimated prompt size**: ~300 lines
 
-- [ ] T001 建立 docs/zh/glossary.md 术语表（10 条核心术语 + 表结构 + frontmatter） (WP01)
-- [ ] T002 编写 docs/zh/README.md 翻译规范 (WP01)
-- [ ] T003 交叉核对 spec Domain Language 与 glossary，补齐遗漏术语 (WP01)
-- [ ] T004 验证 glossary/README 通过 docs_check.py 局部检查 (WP01)
+- [x] T001 建立 docs/zh/glossary.md 术语表（10 条核心术语 + 表结构 + frontmatter） (WP01)
+- [x] T002 编写 docs/zh/README.md 翻译规范 (WP01)
+- [x] T003 交叉核对 spec Domain Language 与 glossary，补齐遗漏术语 (WP01)
+- [x] T004 验证 glossary/README 通过 docs_check.py 局部检查 (WP01)
 
 **Dependencies**: none
 **Parallel opportunities**: 与 WP02 并行

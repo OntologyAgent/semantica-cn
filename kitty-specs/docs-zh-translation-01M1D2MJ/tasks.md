@@ -76,10 +76,10 @@
 **Independent test**: 四篇译文存在、frontmatter 合规、zh_status 全 fresh、docs_check 不新增失败
 **Estimated prompt size**: ~450 lines
 
-- [ ] T010 翻译 docs/zh/index.md (WP03)
-- [ ] T011 翻译 docs/zh/quickstart.md (WP03)
-- [ ] T012 翻译 docs/zh/getting-started.md 与 installation.md (WP03)
-- [ ] T013 WP03 自检：内链回落、JSX 平衡、zh_status 全 fresh、docs_check (WP03)
+- [x] T010 翻译 docs/zh/index.md (WP03)
+- [x] T011 翻译 docs/zh/quickstart.md (WP03)
+- [x] T012 翻译 docs/zh/getting-started.md 与 installation.md (WP03)
+- [x] T013 WP03 自检：内链回落、JSX 平衡、zh_status 全 fresh、docs_check (WP03)
 
 **Dependencies**: WP01, WP02
 **Parallel opportunities**: 与 WP04、WP05 并行（owned_files 无交集）
@@ -92,10 +92,10 @@
 **Independent test**: 四篇译文存在、frontmatter 合规、Mermaid 图策略一致、docs_check 不新增失败
 **Estimated prompt size**: ~450 lines
 
-- [ ] T014 翻译 docs/zh/concepts.md (WP04)
-- [ ] T015 翻译 docs/zh/architecture.md（含 Mermaid 图标签策略） (WP04)
-- [ ] T016 翻译 docs/zh/modules.md 与 choose-your-module.md（27 模块表） (WP04)
-- [ ] T017 WP04 自检（同 T013 标准） (WP04)
+- [x] T014 翻译 docs/zh/concepts.md (WP04)
+- [x] T015 翻译 docs/zh/architecture.md（含 Mermaid 图标签策略） (WP04)
+- [x] T016 翻译 docs/zh/modules.md 与 choose-your-module.md（27 模块表） (WP04)
+- [x] T017 WP04 自检（同 T013 标准） (WP04)
 
 **Dependencies**: WP01, WP02
 **Parallel opportunities**: 与 WP03、WP05 并行
@@ -108,11 +108,11 @@
 **Independent test**: 五篇产物存在、frontmatter 合规、changelog 仅指路一行、docs_check 不新增失败
 **Estimated prompt size**: ~400 lines
 
-- [ ] T018 翻译 docs/zh/faq.md (WP05)
-- [ ] T019 翻译 docs/zh/cli-setup.md (WP05)
-- [ ] T020 翻译 docs/zh/storage-backends.md (WP05)
-- [ ] T021 翻译 docs/zh/explorer-setup.md (WP05)
-- [ ] T022 编写 docs/zh/changelog.md 指路页 + WP05 自检 (WP05)
+- [x] T018 翻译 docs/zh/faq.md (WP05)
+- [x] T019 翻译 docs/zh/cli-setup.md (WP05)
+- [x] T020 翻译 docs/zh/storage-backends.md (WP05)
+- [x] T021 翻译 docs/zh/explorer-setup.md (WP05)
+- [x] T022 编写 docs/zh/changelog.md 指路页 + WP05 自检 (WP05)
 
 **Dependencies**: WP01, WP02
 **Parallel opportunities**: 与 WP03、WP04 并行

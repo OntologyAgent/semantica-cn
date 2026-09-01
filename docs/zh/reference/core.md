@@ -230,5 +230,5 @@ result = build_knowledge_base(sources=["doc.pdf"], method="fast")
 
 - [Pipeline](../../reference/pipeline.md) — 流水线执行与步骤编排。
 - [Utils](./utils.md) — Core 内部使用的共享工具集。
-- [入门指南](../../getting-started.md) — 使用 Core 前先了解基础。
+- [入门指南](../getting-started.md) — 使用 Core 前先了解基础。
 - [LLMs](../../reference/llms.md) — 通过 ConfigManager 配置大语言模型(LLM)提供商。

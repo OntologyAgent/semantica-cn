@@ -160,3 +160,4 @@ If that command is unavailable, proceed with your best judgment as a knowledge-b
 - 2026-09-01T01:43:41Z – claude – shell_pid=82409 – Assigned agent via action command
 - 2026-09-01T01:52:10Z – claude – shell_pid=82409 – glossary+README 落盘；docs_check 9/10 pass，唯一 FAIL 为 Mintlify export 因本机 Node 26 过新（基线，与改动无关）；链接自洽
 - 2026-09-01T02:04:33Z – claude – shell_pid=6715 – Started review via action command
+- 2026-09-01T02:05:37Z – user – shell_pid=6715 – 评审通过：仅新增 docs/zh/ 两文件（零上游修改）；核心术语 10/10；frontmatter 四字段齐全；内链无死链；docs_check 9/10（唯一 FAIL 为 Mintlify export 环境基线）

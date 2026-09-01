@@ -20,7 +20,7 @@ subtasks:
 - T021
 - T022
 agent: "claude"
-shell_pid: "38784"
+shell_pid: "48880"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -137,3 +137,5 @@ If that command is unavailable, proceed as a bilingual technical documentation c
 ## Activity Log
 
 - 2026-09-01T02:34:28Z – claude – shell_pid=38784 – Assigned agent via action command
+- 2026-09-01T02:45:54Z – claude – shell_pid=38784 – 5 zh pages translated (1038 insertions): faq, cli-setup, storage-backends, explorer-setup + changelog pointer. Self-checks passed: zh_status (5 fresh, 2 native stale by contract), JSX balance vs sources, union link scan across lanes c/d/e, anchor validation, terms per WP04 precedent, docs_check baseline unchanged.
+- 2026-09-01T02:46:56Z – claude – shell_pid=48880 – Started review via action command

@@ -18,7 +18,8 @@ subtasks:
 - T015
 - T016
 - T017
-agent: claude
+agent: "claude"
+shell_pid: "19871"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -126,3 +127,7 @@ If that command is unavailable, proceed as a bilingual technical documentation c
 - 打开 architecture.md 译文，确认每张 Mermaid 图节点标签结构未被改坏
 - 抽 5 行模块表与英文版逐列比对
 - 核对四篇 frontmatter sha 可复现
+
+## Activity Log
+
+- 2026-09-01T02:16:15Z – claude – shell_pid=19871 – Assigned agent via action command

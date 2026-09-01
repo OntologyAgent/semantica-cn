@@ -88,7 +88,7 @@ Dependencies: WP03。Risks: 插件文案经 plugin registry 渲染，确认 `t()
 **Prompt**: `tasks/WP05-resource-finalization-verification.md` · ~280 lines
 
 - [x] T016 键同构复核与走查（WP05）
-- [ ] T017 source_version 刷新（WP05）
+- [x] T017 source_version 刷新（WP05）
 - [ ] T018 测试全绿与零增量（WP05）
 - [ ] T019 双语走查与术语核对（WP05）
 

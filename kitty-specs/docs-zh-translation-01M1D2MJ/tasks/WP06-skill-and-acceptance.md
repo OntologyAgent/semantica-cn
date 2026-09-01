@@ -23,7 +23,7 @@ subtasks:
 - T025
 - T026
 agent: "claude"
-shell_pid: "49682"
+shell_pid: "53074"
 history:
 - timestamp: '2026-08-31T23:50:32Z'
   action: created
@@ -151,3 +151,5 @@ If that command is unavailable, proceed as a generalist finisher: this WP is the
 ## Activity Log
 
 - 2026-09-01T02:47:56Z – claude – shell_pid=49682 – Assigned agent via action command
+- 2026-09-01T02:53:05Z – claude – shell_pid=49682 – Ready for review. T023: SKILL.md (62 lines, orchestration-only, links README.md as single source). T024: zero-invasion verified - diff-filter=M shows only Dockerfile from pre-mission fork-maintenance commit 514a6428 (China mirrors, 2026-08-31 22:15, predates all mission work); mission-scoped diff on docs/ semantica/ tests/ explorer/ mcp/ integrations/ pyproject.toml docs_check.py has zero M/D; README language-switch line never existed upstream (not a mission regression). T025: docs_check baseline unchanged (pre-existing node 26.5.0 mintlify issue); zh_status 15 entries = 13 fresh + 2 native stale (README, changelog pointer) per contract; quickstart 5-step walkthrough executed with evidence (venv, upstream remote+fetch, 22 en pages vs zh_status, frontmatter spot-check, commit history format); term spot-check: 知识图谱 x12 files, 溯源 x11, 分块 x9 all uniform, no deviant renderings. T026: CLAUDE.md diff pure additions (0 removed lines).
+- 2026-09-01T02:53:12Z – claude – shell_pid=53074 – Started review via action command

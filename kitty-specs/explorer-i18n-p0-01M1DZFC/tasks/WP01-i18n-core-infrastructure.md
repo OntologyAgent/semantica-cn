@@ -19,7 +19,8 @@ subtasks:
 - T004
 - T005
 - T006
-agent: claude
+agent: "claude"
+shell_pid: "37250"
 history:
 - timestamp: '2026-09-01T09:51:16Z'
   action: created
@@ -272,3 +273,8 @@ If that command is unavailable, proceed as a careful frontend implementer: TypeS
 ## Reviewer Guidance
 
 核对：① en 值与 App.tsx 原文逐字一致（防"顺手润色"破坏 e2e 文案锚点）；② zh 术语对照 glossary；③ 检测顺序与契约一致且每步异常安全；④ 无 eager import 进入包顶层（main.tsx 的一行副作用导入是允许的入口接线）；⑤ `__meta` 不在 translation 键空间内。
+
+## Activity Log
+
+- 2026-09-01T11:01:57Z – claude – shell_pid=37250 – Assigned agent via action command
+- 2026-09-01T12:41:09Z – claude – shell_pid=37250 – Ready for review

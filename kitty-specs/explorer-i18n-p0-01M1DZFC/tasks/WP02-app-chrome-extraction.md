@@ -55,7 +55,7 @@ If that command is unavailable, proceed as a careful frontend implementer: TypeS
 - **React Compiler 已启用**（关键约束，详见 plan.md IC-03）：
   - `navItems`（App.tsx ~L87）、`CONNECTION_STATUS_LABEL`（~L79）是**导入期模块常量**，够不着 `t()`。改法：结构（id/icon）留常量，label/hint 改为渲染期经 `t()` 解析（组件内由 `useTranslation()` 的 `t` 现取，映射表只存键名）
   - 禁止在 memoized 回调里直读 `i18n.language` 或缓存 `t` 的结果
-- **ErrorBoundary 是类组件**：不能用 hook，直接 `import i18n from "./i18n"` 后调 `i18n.t("error.*")`。语言切换时已渲染的错误面板不热更新——可接受（错误面板是瞬态 UI），spec 已认可
+- **ErrorBoundary 是类组件**：不能用 hook，直接 `import i18n from "./i18n"` 后调 `i18n.t("error.boundary.*")`。语言切换时已渲染的错误面板不热更新——可接受（错误面板是瞬态 UI），spec 已认可
 - **e2e 锚点保护**：`explorer/tests/deterministicExplorerRendering.e2e.ts` 按 `/Open Semantica Explorer/` 与 `"Zoom In"` 定位。英文下 `welcome.cta.open` 必须逐字保持 `Open Semantica Explorer`（Zoom In 在 GraphWorkspace 内部，不在 P0 范围，勿动）
 - 布局事实（已核实）：7 处 `WorkspaceShell` 调用全部在 App.tsx 内（explore/analyze/decisions/enrich/ontology-hub/manage + 兜底分支）；工作区组件不自带壳层，**本 WP 不碰 `explorer/src/workspaces/**`**
 - 零侵入边界：只动 owned_files（App.tsx、ErrorBoundary.tsx）。`index.html`、`vite.config.ts`、Python 后端禁触
@@ -136,8 +136,8 @@ If that command is unavailable, proceed as a careful frontend implementer: TypeS
 
 **Steps**:
 1. `WorkspaceFallback`（~L1487）：`Loading workspace…` → `t("fallback.loading")`。它是函数组件，可 `useTranslation()`。
-2. `ErrorBoundary.tsx`（类组件）：`import i18n from "./i18n";`，render 中 5 处文案换 `i18n.t(...)`：`error.title`（Something went wrong in this view.）、`error.detail`（可重试分支长句）、`error.detailMaxRetries`（重试耗尽分支长句）、`error.tryAgain`（Try Again）、`error.reloadApp`（Reload Application）。
-3. **给 en/zh 同步补 5 个 error.\* 键**（WP01 清单未含，属你的一次预期内越界，完成报告记录理由一行）。en 值逐字取自现有文件。
+2. `ErrorBoundary.tsx`（类组件）：`import i18n from "./i18n";`，render 中 5 处文案换 `i18n.t(...)`，键**已由 WP01 交付，直接消费、勿重复补键**：`error.boundary.title`（Something went wrong in this view.）、`error.boundary.detail`（可重试分支长句）、`error.boundary.fatal`（重试耗尽分支长句）、`error.boundary.retry`（Try Again）、`error.boundary.reload`（Reload Application）。
+3. 上述 5 个 `error.boundary.*` 键在 WP01 实现时已越界补入 en/zh（en 值逐字取自现有文件原文），不在你的改动范围。
 4. console.error 的调试日志（`ErrorBoundary caught an error:`）是开发者日志，不翻译。
 
 **Files**: `explorer/src/App.tsx`、`explorer/src/ErrorBoundary.tsx`
@@ -153,7 +153,7 @@ If that command is unavailable, proceed as a careful frontend implementer: TypeS
 **Steps**:
 1. 清点：grep App.tsx 中剩余的 JSX 文本节点与字符串字面量，逐一分类——属 P0 范围者必须已入键；`aria-hidden` 装饰文本、纯数据（NSRP1/年份/数字）、`Semantica v2` 类品牌串可留。把清点结论写进完成报告（残留清单 + 豁免理由）。
 2. `document.title` 动态化核验：语言切到 zh → 标签页标题变 `知识探索器 · Semantica`，`<html lang>` 变 `zh-CN`（WP01 的 languageChanged 监听负责；你只验证联动生效）。
-3. **基准 sha 刷新（必做）**：至此 en.json 内容定稿（含 T011 补的 error.* 键）。执行 `git hash-object explorer/src/i18n/locales/en.json`，把 `explorer/src/i18n/locales/zh.json` 的 `__meta.source_version` 更新为该值。en.json 已变，过期基准必须跟随——不刷新则 WP03/WP04 的 fresh 门禁必然 false-fail。这是对 WP01 owned 文件的一次预期内越界编辑（仅 `__meta` 一行），完成报告记一行理由。
+3. **基准 sha 校验/刷新（必做）**：至此 en.json 内容定稿（error.boundary.* 键已由 WP01 交付；若你接线中又补了新键，en.json 才会真变）。执行 `git hash-object explorer/src/i18n/locales/en.json` 并与 `explorer/src/i18n/locales/zh.json` 的 `__meta.source_version` 比对：一致则记录"无需刷新"即可；不一致（你补过键）则把 `__meta.source_version` 更新为当前值——这是对 WP01 owned 文件的一次预期内越界编辑（仅 `__meta` 一行），完成报告记一行理由。不刷新则 WP03/WP04 的 fresh 门禁必然 false-fail。
 4. 门禁：`cd explorer && npm run lint && npm run build` 全绿。
 
 **Files**: `explorer/src/i18n/locales/zh.json`（仅 `__meta.source_version` 一行）
@@ -174,7 +174,7 @@ If that command is unavailable, proceed as a careful frontend implementer: TypeS
 - [ ] 语言开关在头部可用，切换即时且不刷新
 - [ ] 英文模式下可见界面与改造前一致（e2e 锚点文案逐字未动）
 - [ ] zh.json `__meta.source_version` 已刷新至最终 en.json 的 blob sha
-- [ ] lint + build 全绿；越界改动（error.* 等补键）均有理由记录
+- [ ] lint + build 全绿；`error.boundary.*` 5 键由 WP01 交付并正确消费；如另有补键均有理由记录
 
 ## Risks
 

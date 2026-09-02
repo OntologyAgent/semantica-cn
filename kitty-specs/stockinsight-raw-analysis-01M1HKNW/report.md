@@ -42,3 +42,7 @@
 **顺带修掉两个更深的合并 bug**（实战验证了最佳实践「先显式归一、去重后建图关二次合并」的必要性，已回写篇2/篇4）：
 - merge_entities 相似度分组只把同 id 的 99 条主实体记录并组 2 条，其余 97 条被 merged_ids 静默丢弃 → 改为按规范 id 折叠（字段并集）
 - GraphBuilder(merge_entities=True) 把 MiniMax Group Inc. 与上海稀宇科技有限公司（开曼主体 vs 境内 WFOE，不同实体）模糊并组顶掉规范名 → 干净输入传 False
+
+## 修复三：繁简归一（2026-09-03 用户指出 A類普通股/A类普通股）
+
+披露易公告（繁体）与新闻/研究（简体）同概念两副面孔，`canonical_id` 未做繁简转换导致 88 组/182 实体分裂。修复：canonical_id 接入 OpenCC t2s（opencc-python-reimplemented 0.1.7，缺失时告警降级）；折叠时繁简变体记入 `metadata.name_variants`（META_KEEP 白名单放行）留痕。重建后 **879 实体 / 1093 关系**，繁简残留 0，93 个实体带变体留痕，时态覆盖 96% 保持。教训已回写最佳实践篇2 3.3。

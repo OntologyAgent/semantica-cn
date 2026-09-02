@@ -22,7 +22,6 @@ import { useTranslation } from "react-i18next";
 import { batchMergeEdges, batchMergeNodes, graph } from "../../store/graphStore";
 import { logEvent } from "../../store/registryStore";
 import type { EdgeAttributes, NodeAttributes } from "../../store/graphStore";
-import { curveGroupForPair } from "../../store/edgePairKeys.js";
 import { InspectorPanel, MetricChip, SurfaceCard } from "../../ui/primitives";
 import { describeApiError, describeResponseError, type ApiErrorView } from "../../i18n/apiError";
 import type en from "../../i18n/locales/en.json";
@@ -45,6 +44,8 @@ import {
 import { explorationEffectsShouldLoad, neighborhoodPanelShouldLoad, temporalOverlayShouldLoad } from "./pluginRegistryPredicates";
 import { shouldFetchTemporalBounds, shouldFetchTemporalSnapshot } from "./temporalLifecyclePredicates";
 import { createTemporalSnapshotGuards, type TemporalSnapshotResponse } from "./temporalSnapshotGuards";
+import { SMALL_GRAPH_MAX_NODES } from "./smallGraphLayout";
+import { buildRealtimeEdgeAttributes } from "./realtimeGraphAttributes";
 import type { LinkPrediction, PathResponse } from "./GraphInspectorPanel";
 import type { GraphSceneHandle, GraphSceneRuntime } from "./scene";
 import type {
@@ -1071,46 +1072,10 @@ function buildRealtimeNodeAttributes(payload: {
   };
 }
 
-function buildRealtimeEdgeAttributes(payload: {
-  id: string;
-  familyId?: string;
-  source_id: string;
-  target_id: string;
-  type?: string;
-  weight?: number;
-  properties?: Record<string, unknown>;
-}): EdgeAttributes {
-  const properties = payload.properties || {};
-  const isInferred = Boolean(properties.inferred);
-  const isBidirectional = graph.hasDirectedEdge(payload.target_id, payload.source_id);
-  const baseColor = isInferred ? GRAPH_THEME.palette.accent.path : GRAPH_THEME.palette.muted.edgeStructure;
-
-  return {
-    edgeId: payload.id,
-    familyId: payload.familyId || payload.id,
-    sourceId: payload.source_id,
-    targetId: payload.target_id,
-    weight: Number(payload.weight ?? 1),
-    edgeType: payload.type || "related_to",
-    properties,
-    size: 1,
-    baseSize: 1,
-    color: baseColor,
-    baseColor,
-    mutedColor: GRAPH_THEME.palette.muted.edgeOverview,
-    visualPriority: isInferred ? 0.95 : 0.5,
-    isBidirectional,
-    edgeFamily: isInferred ? "path" : isBidirectional ? "bidirectional" : "line",
-    curveGroup: isBidirectional ? curveGroupForPair(payload.source_id, payload.target_id) : null,
-    type: "line",
-    edgeVariant: isInferred ? "pathSignal" : isBidirectional ? "bidirectionalCurve" : "directional",
-    arrowVisibilityPolicy: isInferred ? "always" : "contextual",
-    relationshipStrength: isInferred ? 0.95 : 0.52,
-    isParallelPair: false,
-    parallelIndex: 0,
-    parallelCount: 1,
-    familySize: 1,
-  };
+function synchronizeRealtimeSmallGraphEdges(isSmallGraph: boolean): void {
+  graph.forEachEdge((edgeId) => {
+    graph.setEdgeAttribute(edgeId, "isSmallGraph", isSmallGraph);
+  });
 }
 
 function buildSelectedNodeState(
@@ -1373,6 +1338,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
   const lastExternalFocusTokenRef = useRef<number | undefined>(undefined);
   const pluginRuntimeRef = useRef<GraphSceneRuntime | null>(null);
   const appliedGraphSummarySignatureRef = useRef<string | null>(null);
+  const smallGraphModeRef = useRef(false);
   const pluginInteractionStateRef = useRef<GraphInteractionState>({
     hoveredNodeId: null,
     selectedNodeId: "",
@@ -1400,6 +1366,12 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     }
 
     appliedGraphSummarySignatureRef.current = signature;
+    smallGraphModeRef.current = Boolean(
+      graphSummary.layoutReady
+      && !graphSummary.hasCoordinates
+      && graphSummary.nodeCount > 0
+      && graphSummary.nodeCount <= SMALL_GRAPH_MAX_NODES,
+    );
     setGraphReady(true);
     setGraphVersion((current) => current + 1);
     setIsLayoutRunning(!graphSummary.layoutReady);
@@ -1918,18 +1890,26 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
               attributes: buildRealtimeNodeAttributes(payload),
             },
           ]);
+          if (graph.order > SMALL_GRAPH_MAX_NODES) {
+            smallGraphModeRef.current = false;
+          }
+          synchronizeRealtimeSmallGraphEdges(smallGraphModeRef.current);
           logEvent("add-node", `Added node ${payload.label ?? payload.id}${payload.nodeType ? ` (${payload.nodeType})` : ""} via realtime ws`, { nodeId: payload.id, nodeType: payload.nodeType });
           setGraphVersion((current) => current + 1);
           sceneRef.current?.getRuntime()?.requestRender();
         }
         if (eventType === "ADD_EDGE") {
+          const isSmallGraph = smallGraphModeRef.current;
           batchMergeEdges([
             {
               id: String(payload.id),
               familyId: payload.familyId ? String(payload.familyId) : String(payload.id),
               source: payload.source_id,
               target: payload.target_id,
-              attributes: buildRealtimeEdgeAttributes(payload),
+              attributes: buildRealtimeEdgeAttributes(payload, {
+                isBidirectional: graph.hasDirectedEdge(payload.target_id, payload.source_id),
+                isSmallGraph,
+              }),
             },
           ]);
           logEvent("add-edge", `Added edge ${payload.edgeType ?? payload.id} (${payload.source_id} → ${payload.target_id}) via realtime ws`, { edgeId: payload.id, edgeType: payload.edgeType, source: payload.source_id, target: payload.target_id });

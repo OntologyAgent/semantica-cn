@@ -7,6 +7,7 @@
   "mission_number": null,
   "mission_slug": "stockinsight-raw-analysis-01M1HKNW",
   "mission_type": "software-dev",
+  "pr_bound": true,
   "purpose_context": "用户委托在最佳实践文档完成后，按其契约全量分析 StockInsight 00100 的原始数据（不遗漏）。产出遵循 PLAN.md 的 raw→std→final 契约与篇2 九阶段流水线；std 契约首次落地。",
   "purpose_tldr": "按新最佳实践的九阶段契约处理 stocks/00100/raw 全部 98 个文件：公告/新闻两域 LLM 抽取产出 std 批次，合并冲突去重后重建 final 图谱并入库",
   "slug": "stockinsight-raw-analysis-01M1HKNW",

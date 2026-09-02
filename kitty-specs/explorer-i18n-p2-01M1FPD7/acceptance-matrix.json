@@ -2,127 +2,127 @@
   "mission_slug": "explorer-i18n-p2-01M1FPD7",
   "mission_number": "",
   "mission_type": "software-dev",
-  "overall_verdict": "pending",
+  "overall_verdict": "pass",
   "criteria": [
     {
       "criterion_id": "FR-001",
-      "description": "Verify FR-001 is satisfied",
+      "description": "分析工作区全部界面文案中英双语（推理引擎页 + SPARQL 查询页）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP01 抽取 reasoning/sparql/decision 段；en/zh 键同构 932=932；build tsc strict exit 0；WP01 en 逐字断言全过（基线子串校验）",
+      "pass_fail": "pass",
+      "verified_by": "WP01 抽取 + WP08-T032 build",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-002",
-      "description": "Verify FR-002 is satisfied",
+      "description": "决策工作区全部界面文案中英双语（决策列表/过滤/空态/详情面板）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP01 decision.* 段抽取；键消费点脚本核验 unconsumed=[]；zh 走查术语对齐 glossary（决策智能）",
+      "pass_fail": "pass",
+      "verified_by": "WP01 抽取 + 消费点核验",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-003",
-      "description": "Verify FR-003 is satisfied",
+      "description": "增强工作区四页签全部界面文案中英双语（导入导出/差异合并/实体消解/注册表）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP02 enrich.* 段抽取；en 值逐字对齐基线源（79b07817 修正后复验）；WP02 en/zh 同构",
+      "pass_fail": "pass",
+      "verified_by": "WP02 抽取 + 逐字复验",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-004",
-      "description": "Verify FR-004 is satisfied",
+      "description": "管理工作区三页签全部界面文案中英双语（PROV-O 谱系/KG 概览/本体概要）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP03 lineage/kgOverview/ontologySummary 段抽取；build 绿；键同构；PROV-O 标准名保留",
+      "pass_fail": "pass",
+      "verified_by": "WP03 抽取 + WP08-T032 build",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-005",
-      "description": "Verify FR-005 is satisfied",
+      "description": "Ontology Hub 全部页签界面文案中英双语（9 页签含 SHACL 工作室/提案评审/SKOS 管理器）",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "WP04-06 ontologyHub.* 173 键；Hub 11 个 tsx 全部 useTranslation（reviewer 并集核验）；SHACL shapes/提案 diff/SKOS 概念条目保留为数据",
+      "pass_fail": "pass",
+      "verified_by": "WP04/05/06 抽取 + Hub 覆盖并集验证",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-006",
-      "description": "Verify FR-006 is satisfied",
+      "description": "语言切换时全部文案立即以目标语言重新显示，无需刷新",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "react-i18next useTranslation 订阅机制（P0 基础设施）；全部新组件走同机制；deterministic-e2e 真实加载路径渲染通过",
+      "pass_fail": "pass",
+      "verified_by": "WP08-T032 e2e + 机制复核",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-007",
-      "description": "Verify FR-007 is satisfied",
+      "description": "译文缺失时显示英文原文，不显示键名或空白",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "i18next fallbackLng='en' 既有机制零改动；en/zh 键集合同构 932=932，ui_zh_status missing_keys=0 extra_keys=0，回落路径实际不可达",
+      "pass_fail": "pass",
+      "verified_by": "WP08-T031 ui_zh_status",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-008",
-      "description": "Verify FR-008 is satisfied",
+      "description": "中英文资源键集合一致，缺键在构建期失败",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "zh.translation satisfies typeof en.translation 构建期校验（P0 机制）；WP08-T032 tsc -b exit 0；932 键同构脚本复验",
+      "pass_fail": "pass",
+      "verified_by": "WP08-T032 build + 同构断言",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-009",
-      "description": "Verify FR-009 is satisfied",
+      "description": "页面语言属性与标签页标题随语言同步",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "P0 LanguageToggle + languageChanged 同步 <html lang>/title 机制零改动；deterministic-e2e 锚点全绿无回归",
+      "pass_fail": "pass",
+      "verified_by": "WP08-T032 e2e 回归",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-010",
-      "description": "Verify FR-010 is satisfied",
+      "description": "数据驱动值（URI/枚举/文件名/节点边 label）不进入文案资源",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "C-004 全程执行：pref_label/URI/SHACL shapes/约束/violation message/提案 diff/示例 URL 保持数据；grep 复核 locales 无数据值泄漏；WP08-T033 终扫真实残留 0",
+      "pass_fail": "pass",
+      "verified_by": "WP08-T033 终扫 + 各 WP 数据红线核验",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-011",
-      "description": "Verify FR-011 is satisfied",
+      "description": "四套既有自动化测试全部通过；e2e 英文预置行为不变",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "graph-workspace 73/73、graph-store 1/1、plugin-registry 7/7、deterministic-e2e 1/1 全绿（原始输出核验）；e2e 锚点零调整",
+      "pass_fail": "pass",
+      "verified_by": "WP08-T032 四套测试",
+      "verified_at": "2026-09-02",
+      "notes": ""
     },
     {
       "criterion_id": "FR-012",
-      "description": "Verify FR-012 is satisfied",
+      "description": "译文过期追踪脚本对本期产出报告 fresh",
       "proof_type": "automated_test",
-      "evidence": null,
-      "pass_fail": "pending",
-      "verified_by": null,
-      "verified_at": null,
-      "notes": "TODO: replace with a real acceptance criterion"
+      "evidence": "python tools/i18n/ui_zh_status.py：fresh=1 stale=0 orphan=0 missing_keys=0 extra_keys=0；zh source_version b7c960de == HEAD en.json blob sha 双向核验",
+      "pass_fail": "pass",
+      "verified_by": "WP08-T031 ui_zh_status",
+      "verified_at": "2026-09-02",
+      "notes": ""
     }
   ],
   "negative_invariants": []

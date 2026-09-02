@@ -1,0 +1,15 @@
+{
+  "coordination_branch": "kitty/mission-ontology-modeling-bp-revision-01M1HFWN",
+  "created_at": "2026-09-02T16:40:30.087294+00:00",
+  "flattened": false,
+  "friendly_name": "本体建模最佳实践修订",
+  "mission_id": "01M1HFWN46G5EDZTKJR2H19B8T",
+  "mission_number": null,
+  "mission_slug": "ontology-modeling-bp-revision-01M1HFWN",
+  "mission_type": "research",
+  "purpose_context": "现有最佳实践文档部分内容源自 book/ 下两篇存在 OCR 识别错误的书稿，概念被带偏。本使命批判性重读书稿纠偏，与官方 docs、cookbook、examples 交叉比对补齐，最终交付 docs/best-practices/ 下一小组有序、相对独立、少互相引用的文档，读者可照着从零完成以 StockInsight 为案例的端到端本体建模。",
+  "purpose_tldr": "纠偏书稿识别错误，交叉比对官方文档/cookbook/examples，把本体建模最佳实践修订为以 StockInsight 为贯穿案例、步骤带可运行代码的端到端有序文档集",
+  "slug": "ontology-modeling-bp-revision-01M1HFWN",
+  "target_branch": "feature/ontology-modeling-bp-revision",
+  "topology": "coord"
+}

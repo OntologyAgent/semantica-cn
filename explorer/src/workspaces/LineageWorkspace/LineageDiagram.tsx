@@ -2,6 +2,7 @@
  * src/workspaces/LineageWorkspace/LineageDiagram.tsx
  */
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link2 } from "lucide-react";
 import { ReactFlow, Background, Controls } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
@@ -29,6 +30,7 @@ const THEME_CSS = `
 `;
 
 export function LineageDiagram() {
+  const { t } = useTranslation();
   const [nodes, setNodes] = useState<any[]>([]);
   const [edges, setEdges] = useState<any[]>([]);
   const [searchId, setSearchId] = useState("");
@@ -77,17 +79,17 @@ export function LineageDiagram() {
 
         if (!res.ok) {
           const text = await res.text();
-          throw new Error(`HTTP ${res.status}: API Route missing or failed. ${text.substring(0, 100)}`);
+          throw new Error(t("lineage.httpError", { status: res.status, detail: text.substring(0, 100) }));
         }
 
         const contentType = res.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
-          throw new Error("Backend returned non-JSON response (likely an HTML fallback).");
+          throw new Error(t("lineage.nonJsonResponse"));
         }
 
         const data = await res.json();
         if (res.status === 207) {
-          setError(data.message || "Warning: Partial success loading lineage.");
+          setError(data.message || t("lineage.partialSuccess"));
         }
 
         const counters: Record<string, number> = { "group_agent": 0, "group_activity": 0, "group_entity": 0 };
@@ -119,11 +121,12 @@ export function LineageDiagram() {
           setEdges(mappedEdges);
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load lineage.");
+        setError(err instanceof Error ? err.message : t("lineage.loadFailed"));
       }
     };
     void fetchLineage();
     return () => { ignore = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeId]);
 
   return (
@@ -132,25 +135,25 @@ export function LineageDiagram() {
 
       {/* Toolbar */}
       <div style={{ position: "absolute", top: 14, left: 14, right: 14, zIndex: 10, display: "flex", gap: 8, alignItems: "center", background: "rgba(4,10,18,0.88)", backdropFilter: "blur(14px)", padding: "8px 12px", borderRadius: 12, border: "1px solid rgba(74,163,255,0.16)", boxShadow: "0 4px 20px rgba(0,0,0,0.4)" }}>
-        <span className="ws-eyebrow" style={{ color: "var(--ws-accent, #4aa3ff)", marginRight: 4 }}>PROV-O Lineage</span>
+        <span className="ws-eyebrow" style={{ color: "var(--ws-accent, #4aa3ff)", marginRight: 4 }}>{t("lineage.eyebrow")}</span>
         <input
           className="ws-input"
           type="text"
-          placeholder="Enter Node ID…"
+          placeholder={t("lineage.searchPlaceholder")}
           value={searchId}
           onChange={(e) => setSearchId(e.target.value)}
           onKeyDown={(e) => { if (e.key === "Enter") setActiveId(searchId); }}
           style={{ width: 200, padding: "6px 10px", fontSize: 12 }}
         />
         <button className="ws-btn ws-btn--primary" style={{ padding: "6px 12px" }} onClick={() => setActiveId(searchId)}>
-          Trace
+          {t("lineage.trace")}
         </button>
         <div style={{ flex: 1 }} />
         <button className="ws-btn ws-btn--ghost" style={{ padding: "6px 12px", fontSize: 11 }} disabled={!activeId} onClick={() => void downloadReport("json")}>
-          Export JSON
+          {t("lineage.exportJson")}
         </button>
         <button className="ws-btn ws-btn--ghost" style={{ padding: "6px 12px", fontSize: 11 }} disabled={!activeId} onClick={() => void downloadReport("markdown")}>
-          Export MD
+          {t("lineage.exportMd")}
         </button>
       </div>
 
@@ -168,8 +171,8 @@ export function LineageDiagram() {
       ) : (
         <div className="ws-empty" style={{ height: "100%", paddingTop: 72 }}>
           <div className="ws-empty-icon"><Link2 size={36} color="var(--ws-accent)" /></div>
-          <div className="ws-empty-title">PROV-O Lineage Viewer</div>
-          <div className="ws-empty-body">Enter a Node ID in the toolbar above and click Trace to view its W3C PROV-O lineage diagram.</div>
+          <div className="ws-empty-title">{t("lineage.title")}</div>
+          <div className="ws-empty-body">{t("lineage.emptyBody")}</div>
         </div>
       )}
     </div>

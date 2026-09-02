@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import type en from "../../i18n/locales/en.json";
 import {
   AlertCircle,
   BookOpen,
@@ -44,16 +46,19 @@ const ENTITY_TYPE_COLORS: Record<string, string> = {
   unknown: "#6a7f97",
 };
 
-const ENTITY_TYPE_LABELS: Record<string, string> = {
-  class: "Class",
-  property: "Property",
-  individual: "Individual",
-  concept: "Concept",
-  scheme: "Scheme",
-  unknown: "Entity",
+type TranslationKey = keyof typeof en.translation;
+
+const ENTITY_TYPE_LABELS: Record<string, TranslationKey> = {
+  class: "ontologyHub.search.typeClass",
+  property: "ontologyHub.search.typeProperty",
+  individual: "ontologyHub.search.typeIndividual",
+  concept: "ontologyHub.search.typeConcept",
+  scheme: "ontologyHub.search.typeScheme",
+  unknown: "ontologyHub.search.typeUnknown",
 };
 
 function TypeBadge({ entityType }: { entityType: string }) {
+  const { t } = useTranslation();
   const color = ENTITY_TYPE_COLORS[entityType] || ENTITY_TYPE_COLORS.unknown;
   return (
     <span
@@ -70,7 +75,9 @@ function TypeBadge({ entityType }: { entityType: string }) {
         flexShrink: 0,
       }}
     >
-      {ENTITY_TYPE_LABELS[entityType] || entityType}
+      {ENTITY_TYPE_LABELS[entityType]
+        ? t(ENTITY_TYPE_LABELS[entityType])
+        : entityType}
     </span>
   );
 }
@@ -98,6 +105,7 @@ function ResultRow({
   selected: boolean;
   onSelect: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <div
       onClick={onSelect}
@@ -130,7 +138,7 @@ function ResultRow({
       )}
       {result.source_ontology && (
         <div style={{ color: "#5a7a9a", fontSize: 10 }}>
-          From: {result.source_ontology}
+          {t("ontologyHub.search.fromSource", { source: result.source_ontology })}
         </div>
       )}
     </div>
@@ -138,6 +146,7 @@ function ResultRow({
 }
 
 function CollapsibleList({ label, items }: { label: string; items: string[] }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   if (!items.length) return null;
   return (
@@ -159,7 +168,9 @@ function CollapsibleList({ label, items }: { label: string; items: string[] }) {
             </div>
           ))}
           {items.length > 12 && (
-            <span style={{ color: "#5a7a9a", fontSize: 10 }}>+{items.length - 12} more</span>
+            <span style={{ color: "#5a7a9a", fontSize: 10 }}>
+              {t("ontologyHub.search.moreCount", { total: items.length - 12 })}
+            </span>
           )}
         </div>
       )}
@@ -174,6 +185,7 @@ function DetailPanel({
   uri: string;
   onClose: () => void;
 }) {
+  const { t } = useTranslation();
   const [detail, setDetail] = useState<EntityDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -190,9 +202,10 @@ function DetailPanel({
     let ignore = false;
     fetch(`/api/ontology/entity/${encodeURIComponent(uri)}`)
       .then(async (r) => {
-        if (!r.ok) throw new Error("Not found");
+        if (!r.ok) throw new Error(t("ontologyHub.search.notFound"));
         const data = await r.json();
-        if (r.status === 207) setError(data.message || "Warning: Partial success loading entity.");
+        if (r.status === 207)
+          setError(data.message || t("ontologyHub.search.partialEntity"));
         return data;
       })
       .then((data) => {
@@ -205,6 +218,7 @@ function DetailPanel({
         if (!ignore) setLoading(false);
       });
     return () => { ignore = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uri]);
 
   return (
@@ -213,7 +227,7 @@ function DetailPanel({
         <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
           <BookOpen size={14} color="#d2a8ff" />
           <span style={{ color: "#ebf3ff", fontSize: 13, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-            Entity Detail
+            {t("ontologyHub.search.entityDetail")}
           </span>
         </div>
         <button onClick={onClose} style={closeDetailBtnStyle}>
@@ -249,7 +263,7 @@ function DetailPanel({
           </div>
 
           {detail.definition && (
-            <DetailSection label="Definition">
+            <DetailSection label={t("ontologyHub.search.labelDefinition")}>
               <p style={{ margin: 0, color: "#c6d4e3", fontSize: 13, lineHeight: 1.6 }}>
                 {detail.definition}
               </p>
@@ -257,20 +271,20 @@ function DetailPanel({
           )}
 
           {detail.instance_count > 0 && (
-            <DetailSection label="Instances">
+            <DetailSection label={t("ontologyHub.search.labelInstances")}>
               <span style={{ color: "#9ee8d7", fontSize: 14, fontWeight: 800 }}>
                 {detail.instance_count.toLocaleString()}
               </span>
             </DetailSection>
           )}
 
-          <CollapsibleList label="Superclasses / Broader" items={detail.superclasses} />
-          <CollapsibleList label="Subclasses / Narrower" items={detail.subclasses} />
-          <CollapsibleList label="Domain" items={detail.domain} />
-          <CollapsibleList label="Range" items={detail.range} />
+          <CollapsibleList label={t("ontologyHub.search.labelSuperclasses")} items={detail.superclasses} />
+          <CollapsibleList label={t("ontologyHub.search.labelSubclasses")} items={detail.subclasses} />
+          <CollapsibleList label={t("ontologyHub.search.labelDomain")} items={detail.domain} />
+          <CollapsibleList label={t("ontologyHub.search.labelRange")} items={detail.range} />
 
           {detail.source_ontology && (
-            <DetailSection label="Source Ontology">
+            <DetailSection label={t("ontologyHub.search.labelSourceOntology")}>
               <span style={{ color: "#c6d4e3", fontSize: 12, fontFamily: "monospace" }}>
                 {detail.source_ontology}
               </span>
@@ -284,7 +298,7 @@ function DetailPanel({
             style={openUriStyle}
           >
             <ExternalLink size={11} />
-            Open URI
+            {t("ontologyHub.search.openUri")}
           </a>
         </div>
       )}
@@ -308,6 +322,7 @@ function DetailSection({ label, children }: { label: string; children: React.Rea
 // ---------------------------------------------------------------------------
 
 export function OntologySearch() {
+  const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [entityType, setEntityType] = useState<string>("all");
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -350,7 +365,7 @@ export function OntologySearch() {
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search classes, properties, concepts…"
+            placeholder={t("ontologyHub.search.searchPlaceholder")}
             style={searchInputStyle}
           />
           {searching && <Loader2 size={13} color="#4aa3ff" style={{ animation: "spin 0.8s linear infinite", flexShrink: 0 }} />}
@@ -362,16 +377,20 @@ export function OntologySearch() {
         </div>
 
         <div style={typeFilterStyle}>
-          {(["all", "class", "property", "individual", "concept", "scheme"] as const).map((t) => (
+          {(["all", "class", "property", "individual", "concept", "scheme"] as const).map((ty) => (
             <button
-              key={t}
-              onClick={() => setEntityType(t)}
+              key={ty}
+              onClick={() => setEntityType(ty)}
               style={{
                 ...typeFilterBtnBase,
-                ...(entityType === t ? typeFilterBtnActive : typeFilterBtnIdle),
+                ...(entityType === ty ? typeFilterBtnActive : typeFilterBtnIdle),
               }}
             >
-              {t === "all" ? "All" : ENTITY_TYPE_LABELS[t] || t}
+              {ty === "all"
+                ? t("ontologyHub.search.typeAll")
+                : ENTITY_TYPE_LABELS[ty]
+                  ? t(ENTITY_TYPE_LABELS[ty])
+                  : ty}
             </button>
           ))}
         </div>
@@ -384,21 +403,23 @@ export function OntologySearch() {
             <div style={hintStyle}>
               <Search size={20} color="rgba(74,163,255,0.2)" />
               <span style={{ color: "#6a7f97", fontSize: 12, marginTop: 8 }}>
-                Type to search across all loaded ontologies
+                {t("ontologyHub.search.typeToSearch")}
               </span>
             </div>
           )}
 
           {query && results.length === 0 && !searching && (
             <div style={hintStyle}>
-              <span style={{ color: "#6a7f97", fontSize: 12 }}>No results for "{query}"</span>
+              <span style={{ color: "#6a7f97", fontSize: 12 }}>
+                {t("ontologyHub.search.noResults", { query })}
+              </span>
             </div>
           )}
 
           {results.length > 0 && (
             <div style={{ padding: "10px 12px", display: "flex", flexDirection: "column", gap: 6 }}>
               <div style={{ color: "#6a7f97", fontSize: 11, fontWeight: 700, marginBottom: 2 }}>
-                {results.length} result{results.length !== 1 ? "s" : ""}
+                {t("ontologyHub.search.resultsCount", { count: results.length })}
               </div>
               {results.map((r) => (
                 <ResultRow

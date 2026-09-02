@@ -5,8 +5,15 @@
  * perform one-click merges, and view merge history from the Registry.
  */
 import { useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { ScanSearch, GitMerge, X, ChevronDown, ChevronRight, Loader2 } from "lucide-react";
 import { logEvent, useRegistry } from "../../store/registryStore";
+import { describeApiError } from "../../i18n/apiError";
+import type en from "../../i18n/locales/en.json";
+
+// Typed t() rejects plain string keys; ApiErrorView's wrapperKey is widened
+// to `string` by design (P1), so assert at the consumption points.
+type TranslationKey = keyof typeof en.translation;
 
 interface DedupPair {
   a: { id: string; label: string; type: string };
@@ -80,6 +87,7 @@ function PairRow({
   onMerge: (primaryId: string, duplicateId: string) => Promise<void>;
   onDismiss: () => void;
 }) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const [merging, setMerging] = useState(false);
 
@@ -122,9 +130,9 @@ function PairRow({
             }}
           >
             {merging ? <Loader2 size={12} className="animate-spin" /> : <GitMerge size={12} />}
-            <span>Merge</span>
+            <span>{t("entityResolution.merge")}</span>
           </button>
-          <button onClick={onDismiss} style={iconBtnStyle} title="Dismiss">
+          <button onClick={onDismiss} style={iconBtnStyle} title={t("entityResolution.dismissTitle")}>
             <X size={13} />
           </button>
         </div>
@@ -134,12 +142,12 @@ function PairRow({
       {expanded ? (
         <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
           {[
-            { label: "Primary (keep)", entity: pair.a, accentColor: "#4aa3ff" },
-            { label: "Duplicate (remove)", entity: pair.b, accentColor: "#ff7b72" },
-          ].map(({ label, entity, accentColor }) => (
+            { labelKey: "entityResolution.keepLabel" as TranslationKey, entity: pair.a, accentColor: "#4aa3ff" },
+            { labelKey: "entityResolution.removeLabel" as TranslationKey, entity: pair.b, accentColor: "#ff7b72" },
+          ].map(({ labelKey, entity, accentColor }) => (
             <div key={entity.id} style={{ ...diffCardStyle, borderColor: `${accentColor}33` }}>
               <div style={{ color: accentColor, fontSize: 10, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 6 }}>
-                {label}
+                {t(labelKey)}
               </div>
               <div style={{ color: "#e6edf3", fontSize: 13, fontWeight: 600 }}>{entity.label || entity.id}</div>
               <div style={{ color: "#8b949e", fontSize: 11, marginTop: 3 }}>{entity.type}</div>
@@ -153,6 +161,7 @@ function PairRow({
 }
 
 export function EntityResolutionTab() {
+  const { t } = useTranslation();
   const [threshold, setThreshold] = useState(0.82);
   const [scanning, setScanning] = useState(false);
   const [pairs, setPairs] = useState<DedupPair[]>([]);
@@ -171,8 +180,9 @@ export function EntityResolutionTab() {
         body: JSON.stringify({ threshold }),
       });
       if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error((err as Record<string, string>).detail ?? `Scan failed (${res.status})`);
+        const body = await res.json().catch(() => null);
+        const view = describeApiError(res.status, body);
+        throw new Error(view.detail ? `${t(view.wrapperKey as TranslationKey)} ${t("graph.errors.detailPrefix")}: ${view.detail}` : t(view.wrapperKey as TranslationKey));
       }
       const data = await res.json();
       const rawDuplicates: RawDuplicateItem[] = Array.isArray(data.duplicates)
@@ -180,16 +190,17 @@ export function EntityResolutionTab() {
         : [];
       const parsed = parseDuplicates(rawDuplicates);
       setPairs(parsed);
+      // Registry summaries are call-time data strings (plan R3) — stay verbatim.
       logEvent("import", `Dedup scan found ${parsed.length} flagged pair${parsed.length !== 1 ? "s" : ""} (threshold ${threshold.toFixed(2)})`, {
         threshold,
         flagged: parsed.length,
       });
     } catch (err) {
-      setScanError(err instanceof Error ? err.message : "Scan failed");
+      setScanError(err instanceof Error ? err.message : t("entityResolution.scanFailed"));
     } finally {
       setScanning(false);
     }
-  }, [threshold]);
+  }, [threshold, t]);
 
   const handleMerge = useCallback(async (primaryId: string, duplicateId: string) => {
     setScanError("");
@@ -199,10 +210,14 @@ export function EntityResolutionTab() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ primary_id: primaryId, duplicate_ids: [duplicateId] }),
       });
-      if (!res.ok) throw new Error(`Merge failed (${res.status})`);
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        const view = describeApiError(res.status, body);
+        throw new Error(view.detail ? `${t(view.wrapperKey as TranslationKey)} ${t("graph.errors.detailPrefix")}: ${view.detail}` : t(view.wrapperKey as TranslationKey));
+      }
       const data = await res.json();
       if (res.status === 207) {
-        setScanError(data.message || "Warning: Partial merge.");
+        setScanError(data.message || t("entityResolution.partialMerge"));
       }
       logEvent("merge", `Merged ${duplicateId} → ${primaryId} · ${data.edges_updated ?? 0} edges redirected`, {
         primary: primaryId,
@@ -211,9 +226,9 @@ export function EntityResolutionTab() {
       });
       setPairs((prev) => prev.filter((p) => !(p.a.id === primaryId && p.b.id === duplicateId)));
     } catch (err) {
-      setScanError(err instanceof Error ? err.message : "Merge failed");
+      setScanError(err instanceof Error ? err.message : t("entityResolution.mergeFailed"));
     }
-  }, []);
+  }, [t]);
 
   const handleDismiss = useCallback((index: number) => {
     setPairs((prev) => prev.filter((_, i) => i !== index));
@@ -226,8 +241,8 @@ export function EntityResolutionTab() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <ScanSearch size={18} color="#f2b66d" />
           <div>
-            <div style={{ color: "#ebf3ff", fontSize: 16, fontWeight: 700 }}>Entity Resolution</div>
-            <div style={{ color: "#8b949e", fontSize: 12 }}>Detect and merge duplicate entities in the knowledge graph</div>
+            <div style={{ color: "#ebf3ff", fontSize: 16, fontWeight: 700 }}>{t("entityResolution.title")}</div>
+            <div style={{ color: "#8b949e", fontSize: 12 }}>{t("entityResolution.subtitle")}</div>
           </div>
         </div>
       </div>
@@ -237,7 +252,7 @@ export function EntityResolutionTab() {
         <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
           <div style={{ flex: 1, minWidth: 240 }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-              <label style={{ color: "#c6d4e3", fontSize: 12, fontWeight: 600 }}>Similarity Threshold</label>
+              <label style={{ color: "#c6d4e3", fontSize: 12, fontWeight: 600 }}>{t("entityResolution.thresholdLabel")}</label>
               <span style={{ color: "#f2b66d", fontSize: 12, fontWeight: 700 }}>{threshold.toFixed(2)}</span>
             </div>
             <input
@@ -250,8 +265,8 @@ export function EntityResolutionTab() {
               style={{ width: "100%", accentColor: "#f2b66d", cursor: "pointer" }}
             />
             <div style={{ display: "flex", justifyContent: "space-between", color: "#6a7f97", fontSize: 10, marginTop: 2 }}>
-              <span>More results (0.50)</span>
-              <span>Fewer, higher confidence (0.99)</span>
+              <span>{t("entityResolution.thresholdLow")}</span>
+              <span>{t("entityResolution.thresholdHigh")}</span>
             </div>
           </div>
           <button
@@ -260,7 +275,7 @@ export function EntityResolutionTab() {
             style={scanBtnStyle}
           >
             {scanning ? <Loader2 size={14} className="animate-spin" /> : <ScanSearch size={14} />}
-            <span>{scanning ? "Scanning…" : "Run Dedup Scan"}</span>
+            <span>{scanning ? t("entityResolution.scanning") : t("entityResolution.runScan")}</span>
           </button>
         </div>
         {scanError ? (
@@ -275,9 +290,9 @@ export function EntityResolutionTab() {
             <>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
                 <div style={{ color: "#8b949e", fontSize: 12, fontWeight: 600 }}>
-                  {pairs.length} flagged pair{pairs.length !== 1 ? "s" : ""}
+                  {t("entityResolution.flaggedPairs", { count: pairs.length })}
                 </div>
-                <button onClick={() => setPairs([])} style={clearAllBtnStyle}>Clear all</button>
+                <button onClick={() => setPairs([])} style={clearAllBtnStyle}>{t("entityResolution.clearAll")}</button>
               </div>
               {pairs.map((pair, index) => (
                 <PairRow
@@ -292,10 +307,10 @@ export function EntityResolutionTab() {
             <div style={emptyStateStyle}>
               <ScanSearch size={36} color="rgba(242,182,109,0.15)" />
               <div style={{ color: "#8b949e", fontSize: 14, marginTop: 12, fontWeight: 500 }}>
-                No flagged pairs
+                {t("entityResolution.emptyTitle")}
               </div>
               <div style={{ color: "#6a7f97", fontSize: 12, marginTop: 4, textAlign: "center", maxWidth: 280 }}>
-                Set a similarity threshold and run a dedup scan to detect potential duplicates.
+                {t("entityResolution.emptyBody")}
               </div>
             </div>
           )}
@@ -305,7 +320,7 @@ export function EntityResolutionTab() {
         {mergeHistory.length > 0 ? (
           <div style={historyPanelStyle}>
             <div style={{ color: "#8b949e", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 10 }}>
-              Merge History
+              {t("entityResolution.mergeHistory")}
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               {mergeHistory.map((entry) => (

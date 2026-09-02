@@ -1,9 +1,17 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { GitMerge, ArrowRight, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { logEvent } from "../../store/registryStore";
+import { describeApiError } from "../../i18n/apiError";
+import type en from "../../i18n/locales/en.json";
+
+// Typed t() rejects plain string keys; ApiErrorView's wrapperKey is widened
+// to `string` by design (P1), so assert at the consumption points.
+type TranslationKey = keyof typeof en.translation;
 
 interface FieldRow { label: string; primary: string; duplicate: string; differs: boolean }
 
+// Mock preview rows are demo data (FR-010): labels and values stay verbatim.
 const MOCK_FIELDS: FieldRow[] = [
   { label: "Name",     primary: "Sample Company Inc.", duplicate: "Sample Company",    differs: true  },
   { label: "Founded",  primary: "2004-05-12",          duplicate: "2004-05-12",        differs: false },
@@ -12,6 +20,7 @@ const MOCK_FIELDS: FieldRow[] = [
 ];
 
 export function DiffMergeWorkspace() {
+  const { t } = useTranslation();
   const [primaryId, setPrimaryId]   = useState("n-primary-1");
   const [duplicateId, setDuplicateId] = useState("n-dup-2");
   const [status, setStatus]   = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -29,16 +38,17 @@ export function DiffMergeWorkspace() {
       const data = await res.json();
       if (data.merged_into) {
         setStatus("success");
-        setMsg(`Merged → ${data.merged_into} · ${data.edges_updated ?? 0} edges redirected`);
+        setMsg(t("diffMerge.mergedOk", { id: data.merged_into, edges: data.edges_updated ?? 0 }));
         logEvent("merge", `Merged ${duplicateId} → ${data.merged_into} · ${data.edges_updated ?? 0} edges redirected`, {
           primary: data.merged_into, duplicate: duplicateId, edgesUpdated: data.edges_updated,
         });
       } else {
-        throw new Error(data.detail || "Unexpected response");
+        const view = describeApiError(res.status, data);
+        throw new Error(view.detail ? `${t(view.wrapperKey as TranslationKey)} ${t("graph.errors.detailPrefix")}: ${view.detail}` : t(view.wrapperKey as TranslationKey));
       }
     } catch (e: unknown) {
       setStatus("error");
-      setMsg(e instanceof Error ? e.message : "Merge failed");
+      setMsg(e instanceof Error ? e.message : t("diffMerge.mergeFailed"));
     }
   }
 
@@ -51,36 +61,36 @@ export function DiffMergeWorkspace() {
             <GitMerge size={20} />
           </div>
           <div>
-            <h2 className="ws-title" style={{ fontSize: 18 }}>Entity Diff &amp; Merge</h2>
-            <div className="ws-body" style={{ marginTop: 2 }}>Compare suspected duplicates side-by-side and reconcile them into a single canonical entity.</div>
+            <h2 className="ws-title" style={{ fontSize: 18 }}>{t("diffMerge.title")}</h2>
+            <div className="ws-body" style={{ marginTop: 2 }}>{t("diffMerge.subtitle")}</div>
           </div>
         </div>
 
         {/* ID inputs */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", gap: 12, alignItems: "end" }}>
           <div>
-            <label className="ws-label">Primary Node ID (keep)</label>
-            <input className="ws-input" value={primaryId} onChange={(e) => { setPrimaryId(e.target.value); setStatus("idle"); }} placeholder="e.g. n-primary-1" />
+            <label className="ws-label">{t("diffMerge.primaryLabel")}</label>
+            <input className="ws-input" value={primaryId} onChange={(e) => { setPrimaryId(e.target.value); setStatus("idle"); }} placeholder={t("diffMerge.primaryPlaceholder")} />
           </div>
           <div style={{ paddingBottom: 2, color: "var(--ws-text-dim)" }}>
             <ArrowRight size={18} />
           </div>
           <div>
-            <label className="ws-label">Duplicate Node ID (remove)</label>
-            <input className="ws-input" value={duplicateId} onChange={(e) => { setDuplicateId(e.target.value); setStatus("idle"); }} placeholder="e.g. n-dup-2" />
+            <label className="ws-label">{t("diffMerge.duplicateLabel")}</label>
+            <input className="ws-input" value={duplicateId} onChange={(e) => { setDuplicateId(e.target.value); setStatus("idle"); }} placeholder={t("diffMerge.duplicatePlaceholder")} />
           </div>
         </div>
 
         {/* Diff table */}
         <div className="ws-card" style={{ padding: 0, overflow: "hidden" }}>
           <div style={{ padding: "6px 16px", background: "rgba(242,182,109,0.06)", borderBottom: "1px solid rgba(242,182,109,0.15)", display: "flex", alignItems: "center", gap: 6 }}>
-            <span style={{ fontSize: 10, fontWeight: 700, color: "var(--ws-amber)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Sample preview</span>
-            <span style={{ fontSize: 11, color: "var(--ws-text-dim)" }}>— field comparison will load from the graph once the backend is connected</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: "var(--ws-amber)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{t("diffMerge.samplePreview")}</span>
+            <span style={{ fontSize: 11, color: "var(--ws-text-dim)" }}>{t("diffMerge.samplePreviewNote")}</span>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "140px 1fr 1fr", background: "rgba(0,0,0,0.28)", borderBottom: "1px solid var(--ws-border)" }}>
-            <div style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: "var(--ws-text-dim)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Field</div>
-            <div style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: "var(--ws-accent)", letterSpacing: "0.08em", textTransform: "uppercase", borderLeft: "1px solid var(--ws-border)" }}>Primary (keep)</div>
-            <div style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: "#fca5a5", letterSpacing: "0.08em", textTransform: "uppercase", borderLeft: "1px solid var(--ws-border)" }}>Duplicate (remove)</div>
+            <div style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: "var(--ws-text-dim)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{t("diffMerge.colField")}</div>
+            <div style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: "var(--ws-accent)", letterSpacing: "0.08em", textTransform: "uppercase", borderLeft: "1px solid var(--ws-border)" }}>{t("diffMerge.colPrimary")}</div>
+            <div style={{ padding: "10px 16px", fontSize: 11, fontWeight: 700, color: "#fca5a5", letterSpacing: "0.08em", textTransform: "uppercase", borderLeft: "1px solid var(--ws-border)" }}>{t("diffMerge.colDuplicate")}</div>
           </div>
           {MOCK_FIELDS.map((row) => (
             <div key={row.label} style={{ display: "grid", gridTemplateColumns: "140px 1fr 1fr", borderBottom: "1px solid rgba(74,163,255,0.06)", background: row.differs ? "rgba(242,182,109,0.03)" : "transparent" }}>
@@ -88,7 +98,7 @@ export function DiffMergeWorkspace() {
               <div style={{ padding: "12px 16px", fontSize: 13, color: "var(--ws-text)", borderLeft: "1px solid var(--ws-border)" }}>{row.primary}</div>
               <div style={{ padding: "12px 16px", fontSize: 13, color: row.differs ? "#fbbf24" : "var(--ws-text)", fontWeight: row.differs ? 700 : 400, borderLeft: "1px solid var(--ws-border)" }}>
                 {row.duplicate}
-                {row.differs && <span className="ws-pill ws-pill--amber" style={{ marginLeft: 8, fontSize: 9 }}>diff</span>}
+                {row.differs && <span className="ws-pill ws-pill--amber" style={{ marginLeft: 8, fontSize: 9 }}>{t("diffMerge.diffBadge")}</span>}
               </div>
             </div>
           ))}
@@ -112,7 +122,7 @@ export function DiffMergeWorkspace() {
             disabled={status === "loading" || !primaryId || !duplicateId}
             style={{ marginLeft: "auto" }}
           >
-            {status === "loading" ? <><Loader2 size={14} className="ws-spin" />Merging…</> : <><GitMerge size={14} />Confirm Merge</>}
+            {status === "loading" ? <><Loader2 size={14} className="ws-spin" />{t("diffMerge.merging")}</> : <><GitMerge size={14} />{t("diffMerge.confirmMerge")}</>}
           </button>
         </div>
       </div>

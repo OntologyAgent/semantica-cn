@@ -144,10 +144,10 @@ Dependencies: WP06。Risks: 若扫描发现 GraphWorkspace 内遗漏，属 P1 �
 **Priority**: High（发布门） · **Independent test**: quickstart §1-§7 全部通过
 **Prompt**: `tasks/WP08-resource-finalization-verification.md` · ~300 lines
 
-- [x] T031 source_version 刷新 + ui_zh_status fresh（WP08）
-- [x] T032 四套测试 + lint/build + gzip 实测（WP08）
-- [x] T033 残留终扫 + 术语核对（WP08）
-- [x] T034 双语走查 + 切换/回落验证（WP08）
+- [ ] T031 source_version 刷新 + ui_zh_status fresh（WP08）
+- [ ] T032 四套测试 + lint/build + gzip 实测（WP08）
+- [ ] T033 残留终扫 + 术语核对（WP08）
+- [ ] T034 双语走查 + 切换/回落验证（WP08）
 
 Dependencies: WP07。Risks: gzip 增量须实测确认 ≤60KB（NFR-002）；如超限需评估键压缩策略并记录。
 

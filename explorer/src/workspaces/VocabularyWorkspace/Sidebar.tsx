@@ -7,6 +7,7 @@
  * - Includes the import dropzone
  */
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useVocabularies, useConceptHierarchy } from './queries';
 import { ConceptTree } from './ConceptTree';
 import { ImportDropzone } from './ImportDropzone';
@@ -17,6 +18,7 @@ interface SidebarProps {
 }
 
 export function Sidebar({ onSelectConcept }: SidebarProps) {
+  const { t } = useTranslation();
   const { data: schemes = [], isLoading: schemesLoading } = useVocabularies();
   const [activeScheme, setActiveScheme] = useState<string | undefined>();
 
@@ -40,22 +42,22 @@ export function Sidebar({ onSelectConcept }: SidebarProps) {
         borderBottom: '1px solid rgba(88,166,255,0.15)',
       }}>
         <h2 style={{ fontSize: 18, color: '#c9d1d9', margin: '0 0 4px 0', fontWeight: 600 }}>
-          Ontology & Vocabulary
+          {t('vocabulary.title')}
         </h2>
         <p style={{ color: '#8b949e', fontSize: 13, margin: 0 }}>
           {schemes.length
-            ? `${schemes.length} vocabulary scheme${schemes.length > 1 ? 's' : ''}`
-            : 'No vocabularies loaded'}
+            ? t(schemes.length === 1 ? 'vocabulary.schemeCountOne' : 'vocabulary.schemeCountOther', { count: schemes.length })
+            : t('vocabulary.noVocabularies')}
         </p>
       </div>
 
       {/* Scheme selector */}
       <div style={{ padding: '12px 16px', borderBottom: '1px solid rgba(88,166,255,0.1)' }}>
         {schemesLoading ? (
-          <div style={{ color: '#8b949e', fontSize: 13 }}>Loading schemes…</div>
+          <div style={{ color: '#8b949e', fontSize: 13 }}>{t('vocabulary.loadingSchemes')}</div>
         ) : schemes.length === 0 ? (
           <div style={{ color: '#484f58', fontSize: 13, fontStyle: 'italic' }}>
-            No schemes found. Import a .ttl or .rdf file below.
+            {t('vocabulary.noSchemesFound')}
           </div>
         ) : (
           <select
@@ -85,13 +87,13 @@ export function Sidebar({ onSelectConcept }: SidebarProps) {
       }}>
         {treeLoading ? (
           <div style={{ padding: 20, color: '#8b949e', fontSize: 13, textAlign: 'center' }}>
-            Loading hierarchy…
+            {t('vocabulary.loadingHierarchy')}
           </div>
         ) : hierarchy.length === 0 ? (
           <div style={{ padding: 20, color: '#484f58', fontSize: 13, textAlign: 'center', fontStyle: 'italic' }}>
             {selectedSchemeUri
-              ? 'No concepts found in this scheme.'
-              : 'Select a scheme to browse concepts.'}
+              ? t('vocabulary.noConceptsInScheme')
+              : t('vocabulary.selectSchemeHint')}
           </div>
         ) : (
           <div style={{ flex: 1, overflow: 'hidden' }}>

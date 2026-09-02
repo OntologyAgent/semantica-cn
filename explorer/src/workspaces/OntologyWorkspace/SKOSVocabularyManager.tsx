@@ -8,6 +8,7 @@ import {
   Search,
   X,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface SKOSScheme {
   uri: string;
@@ -76,6 +77,7 @@ function ConceptDetailPanel({
   const [detail, setDetail] = useState<SKOSConceptDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { t } = useTranslation();
 
   const [prevUri, setPrevUri] = useState(uri);
   if (uri !== prevUri) {
@@ -89,9 +91,9 @@ function ConceptDetailPanel({
     let ignore = false;
     fetch(`/api/ontology/skos/concept/${encodeURIComponent(uri)}`)
       .then(async (r) => {
-        if (!r.ok) throw new Error("Concept not found");
+        if (!r.ok) throw new Error(t("ontologyHub.skos.conceptNotFound"));
         const data = await r.json();
-        if (r.status === 207) setError(data.message || "Warning: Partial success loading concept.");
+        if (r.status === 207) setError(data.message || t("ontologyHub.skos.loadConceptPartial"));
         return data;
       })
       .then((data) => {
@@ -106,7 +108,7 @@ function ConceptDetailPanel({
     return () => {
       ignore = true;
     };
-  }, [uri]);
+  }, [uri, t]);
 
   const renderUriList = (label: string, uris: string[]) => {
     if (!uris.length) return null;
@@ -133,7 +135,7 @@ function ConceptDetailPanel({
       <div style={detailHeaderStyle}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <BookOpen size={13} color="#9ee8d7" />
-          <span style={{ color: "#ebf3ff", fontSize: 13, fontWeight: 700 }}>Concept Detail</span>
+          <span style={{ color: "#ebf3ff", fontSize: 13, fontWeight: 700 }}>{t("ontologyHub.skos.conceptDetail")}</span>
         </div>
         <button onClick={onClose} style={iconBtnStyle}>
           <X size={14} />
@@ -177,7 +179,7 @@ function ConceptDetailPanel({
           </div>
 
           {detail.definition && (
-            <PropSection label="Definition">
+            <PropSection label={t("ontologyHub.skos.definition")}>
               <p style={{ margin: 0, color: "#c6d4e3", fontSize: 13, lineHeight: 1.6 }}>
                 {detail.definition}
               </p>
@@ -185,7 +187,7 @@ function ConceptDetailPanel({
           )}
 
           {detail.scope_note && (
-            <PropSection label="Scope Note">
+            <PropSection label={t("ontologyHub.skos.scopeNote")}>
               <p style={{ margin: 0, color: "#8fa8c6", fontSize: 12, lineHeight: 1.5 }}>
                 {detail.scope_note}
               </p>
@@ -193,23 +195,23 @@ function ConceptDetailPanel({
           )}
 
           {detail.editorial_note && (
-            <PropSection label="Editorial Note">
+            <PropSection label={t("ontologyHub.skos.editorialNote")}>
               <p style={{ margin: 0, color: "#8fa8c6", fontSize: 12, lineHeight: 1.5 }}>
                 {detail.editorial_note}
               </p>
             </PropSection>
           )}
 
-          {renderUriList("Broader", detail.broader)}
-          {renderUriList("Narrower", detail.narrower)}
-          {renderUriList("Related", detail.related)}
-          {renderUriList("Exact Match", detail.exact_match)}
-          {renderUriList("Close Match", detail.close_match)}
-          {renderUriList("Broad Match", detail.broad_match)}
-          {renderUriList("Narrow Match", detail.narrow_match)}
+          {renderUriList(t("ontologyHub.skos.broader"), detail.broader)}
+          {renderUriList(t("ontologyHub.skos.narrower"), detail.narrower)}
+          {renderUriList(t("ontologyHub.skos.related"), detail.related)}
+          {renderUriList(t("ontologyHub.skos.exactMatch"), detail.exact_match)}
+          {renderUriList(t("ontologyHub.skos.closeMatch"), detail.close_match)}
+          {renderUriList(t("ontologyHub.skos.broadMatch"), detail.broad_match)}
+          {renderUriList(t("ontologyHub.skos.narrowMatch"), detail.narrow_match)}
 
           {detail.scheme_uri && (
-            <PropSection label="Concept Scheme">
+            <PropSection label={t("ontologyHub.skos.conceptScheme")}>
               <span style={{ color: "#c6d4e3", fontSize: 11, fontFamily: "monospace", wordBreak: "break-all" }}>
                 {detail.scheme_uri}
               </span>
@@ -342,6 +344,7 @@ function SchemePanel({
   const [hierarchy, setHierarchy] = useState<ConceptNode[]>([]);
   const [loading, setLoading] = useState(expanded);
   const [error, setError] = useState("");
+  const { t } = useTranslation();
 
   const [prevExpanded, setPrevExpanded] = useState(expanded);
   const [prevSchemeUri, setPrevSchemeUri] = useState(scheme.uri);
@@ -364,7 +367,7 @@ function SchemePanel({
       .then(async (r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const data = await r.json();
-        if (r.status === 207 && !ignore) setError(data.message || "Warning: Partial success loading hierarchy.");
+        if (r.status === 207 && !ignore) setError(data.message || t("ontologyHub.skos.loadHierarchyPartial"));
         return data;
       })
       .then((data) => {
@@ -373,7 +376,7 @@ function SchemePanel({
       .catch((err) => {
         if (!ignore) {
           setHierarchy([]);
-          setError(err instanceof Error ? err.message : "Failed to load hierarchy.");
+          setError(err instanceof Error ? err.message : t("ontologyHub.skos.loadHierarchyFailed"));
         }
       })
       .finally(() => {
@@ -382,7 +385,7 @@ function SchemePanel({
     return () => {
       ignore = true;
     };
-  }, [scheme.uri, expanded]);
+  }, [scheme.uri, expanded, t]);
 
   const totalConcepts = countConcepts(hierarchy);
 
@@ -410,7 +413,7 @@ function SchemePanel({
           <span style={{ color: "#e6edf3", fontSize: 14, fontWeight: 700 }}>{scheme.title}</span>
         </div>
         <span style={{ color: "#6a7f97", fontSize: 11 }}>
-          {loading ? "…" : `${totalConcepts} concept${totalConcepts !== 1 ? "s" : ""}`}
+          {loading ? "…" : t(totalConcepts === 1 ? "ontologyHub.skos.conceptCountOne" : "ontologyHub.skos.conceptCountOther", { count: totalConcepts })}
         </span>
       </button>
 
@@ -420,11 +423,11 @@ function SchemePanel({
           {loading ? (
             <div style={{ padding: "10px 20px", display: "flex", alignItems: "center", gap: 8 }}>
               <Loader2 size={12} color="#4aa3ff" style={{ animation: "spin 0.8s linear infinite" }} />
-              <span style={{ color: "#6a7f97", fontSize: 12 }}>Loading concepts…</span>
+              <span style={{ color: "#6a7f97", fontSize: 12 }}>{t("ontologyHub.skos.loadingConcepts")}</span>
             </div>
           ) : displayedConcepts.length === 0 ? (
             <div style={{ padding: "8px 24px", color: "#6a7f97", fontSize: 12, fontStyle: "italic" }}>
-              {searchQuery ? "No matching concepts" : "No concepts in this scheme"}
+              {searchQuery ? t("ontologyHub.skos.noMatchingConcepts") : t("ontologyHub.skos.noConceptsInScheme")}
             </div>
           ) : (
             <div style={{ paddingTop: 2 }}>
@@ -454,6 +457,7 @@ interface Props {
 }
 
 export function SKOSVocabularyManager({ schemeUri }: Props) {
+  const { t } = useTranslation();
   const [schemes, setSchemes] = useState<SKOSScheme[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -463,15 +467,15 @@ export function SKOSVocabularyManager({ schemeUri }: Props) {
   useEffect(() => {
     fetch("/api/ontology/skos/schemes")
       .then(async (r) => {
-        if (!r.ok) throw new Error(`Failed to load schemes (${r.status})`);
+        if (!r.ok) throw new Error(t("ontologyHub.skos.loadSchemesFailedStatus", { status: r.status }));
         const data = await r.json();
-        if (r.status === 207) setError(data.message || "Warning: Partial success loading schemes.");
+        if (r.status === 207) setError(data.message || t("ontologyHub.skos.loadSchemesPartial"));
         return data;
       })
       .then(setSchemes)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [t]);
 
   const displayedSchemes = schemeUri
     ? schemes.filter((s) => s.uri === schemeUri)
@@ -487,7 +491,7 @@ export function SKOSVocabularyManager({ schemeUri }: Props) {
           <input
             value={searchQ}
             onChange={(e) => setSearchQ(e.target.value)}
-            placeholder="Search labels and definitions…"
+            placeholder={t("ontologyHub.skos.searchPlaceholder")}
             style={skosSearchInputStyle}
           />
           {searchQ && (
@@ -518,10 +522,10 @@ export function SKOSVocabularyManager({ schemeUri }: Props) {
             <div style={{ ...centerStyle, textAlign: "center", padding: 28 }}>
               <BookOpen size={28} color="rgba(158,232,215,0.15)" />
               <span style={{ color: "#8fa8c6", fontSize: 12, marginTop: 10 }}>
-                No SKOS concept schemes found
+                {t("ontologyHub.skos.noSchemes")}
               </span>
               <span style={{ color: "#6a7f97", fontSize: 11, marginTop: 4, maxWidth: 220 }}>
-                Import a SKOS vocabulary to browse concepts here
+                {t("ontologyHub.skos.noSchemesHint")}
               </span>
             </div>
           )}

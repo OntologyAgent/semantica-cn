@@ -1,15 +1,21 @@
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import Editor, { useMonaco } from "@monaco-editor/react";
 import { Play, Copy, Download, Table2, AlertCircle, FileCode2 } from "lucide-react";
+import type en from "../../i18n/locales/en.json";
 
-const TEMPLATES: { label: string; query: string }[] = [
-  { label: "All triples", query: "SELECT ?s ?p ?o\nWHERE {\n  ?s ?p ?o\n}\nLIMIT 20" },
-  { label: "Node types", query: "SELECT ?type (COUNT(?s) AS ?count)\nWHERE {\n  ?s a ?type\n}\nGROUP BY ?type\nORDER BY DESC(?count)" },
-  { label: "Outgoing edges", query: "SELECT ?predicate ?object\nWHERE {\n  <urn:node:example> ?predicate ?object\n}\nLIMIT 50" },
-  { label: "Path between", query: "SELECT ?mid ?p1 ?p2\nWHERE {\n  <urn:node:a> ?p1 ?mid .\n  ?mid ?p2 <urn:node:b>\n}\nLIMIT 20" },
+// Typed t() rejects plain string keys; template constants hold an i18n key.
+type TranslationKey = keyof typeof en.translation;
+
+const TEMPLATES: { labelKey: TranslationKey; query: string }[] = [
+  { labelKey: "sparql.template.allTriples", query: "SELECT ?s ?p ?o\nWHERE {\n  ?s ?p ?o\n}\nLIMIT 20" },
+  { labelKey: "sparql.template.nodeTypes", query: "SELECT ?type (COUNT(?s) AS ?count)\nWHERE {\n  ?s a ?type\n}\nGROUP BY ?type\nORDER BY DESC(?count)" },
+  { labelKey: "sparql.template.outgoingEdges", query: "SELECT ?predicate ?object\nWHERE {\n  <urn:node:example> ?predicate ?object\n}\nLIMIT 50" },
+  { labelKey: "sparql.template.pathBetween", query: "SELECT ?mid ?p1 ?p2\nWHERE {\n  <urn:node:a> ?p1 ?mid .\n  ?mid ?p2 <urn:node:b>\n}\nLIMIT 20" },
 ];
 
 export function SparqlWorkspace() {
+  const { t } = useTranslation();
   const monaco = useMonaco();
   const editorRef = useRef<unknown>(null);
   const [query, setQuery] = useState(TEMPLATES[0].query);
@@ -78,7 +84,8 @@ export function SparqlWorkspace() {
       }
       const data = await res.json();
       if (res.status === 207) {
-        data.error = data.message || "Warning: Partial success running query.";
+        // Backend `data.message` stays verbatim (C-002); fallback line is translated.
+        data.error = data.message || t("sparql.partialSuccess");
       }
 
       if (data.error && data.error_line && monaco && editorRef.current) {
@@ -95,7 +102,7 @@ export function SparqlWorkspace() {
       }
       setResult(data);
     } catch (e) {
-      const msg = e instanceof Error ? e.message : "Network error — could not reach the SPARQL endpoint.";
+      const msg = e instanceof Error ? e.message : t("sparql.networkError");
       setResult({ error: msg });
     } finally {
       setIsLoading(false);
@@ -133,20 +140,20 @@ export function SparqlWorkspace() {
         {/* ── Toolbar ── */}
         <div style={{ padding: "10px 16px", borderBottom: "1px solid var(--ws-border)", display: "flex", alignItems: "center", gap: 8, flexShrink: 0, background: "rgba(0,0,0,0.18)" }}>
           <div style={{ display: "flex", gap: 6, flex: 1, flexWrap: "wrap" }}>
-            <span className="ws-eyebrow" style={{ alignSelf: "center", marginRight: 4 }}>Templates:</span>
-            {TEMPLATES.map((t) => (
+            <span className="ws-eyebrow" style={{ alignSelf: "center", marginRight: 4 }}>{t("sparql.templatesLabel")}</span>
+            {TEMPLATES.map((tpl) => (
               <button
-                key={t.label}
+                key={tpl.labelKey}
                 className="ws-btn ws-btn--ghost"
                 style={{ padding: "4px 10px", fontSize: 11 }}
-                onClick={() => { setQuery(t.query); setResult(null); }}
+                onClick={() => { setQuery(tpl.query); setResult(null); }}
               >
-                {t.label}
+                {t(tpl.labelKey)}
               </button>
             ))}
           </div>
-          <button className="ws-btn ws-btn--ghost" style={{ padding: "6px 10px" }} onClick={handleCopyQuery} title="Copy query">
-            <Copy size={13} />{copyState ? "Copied!" : "Copy"}
+          <button className="ws-btn ws-btn--ghost" style={{ padding: "6px 10px" }} onClick={handleCopyQuery} title={t("sparql.copyTitle")}>
+            <Copy size={13} />{copyState ? t("sparql.copied") : t("sparql.copy")}
           </button>
           <button
             className="ws-btn ws-btn--primary"
@@ -155,8 +162,8 @@ export function SparqlWorkspace() {
             style={{ minWidth: 110, justifyContent: "center" }}
           >
             {isLoading
-              ? <><span className="ws-spin" style={{ display: "inline-block" }}><Play size={13} /></span>Running…</>
-              : <><Play size={13} />Run Query</>}
+              ? <><span className="ws-spin" style={{ display: "inline-block" }}><Play size={13} /></span>{t("sparql.running")}</>
+              : <><Play size={13} />{t("sparql.run")}</>}
           </button>
         </div>
 
@@ -193,12 +200,12 @@ export function SparqlWorkspace() {
             <div style={{ padding: "10px 16px", borderBottom: "1px solid var(--ws-border)", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 7, color: "var(--ws-text-muted)", fontSize: 13, fontWeight: 700 }}>
                 <Table2 size={14} />
-                Results
-                {result?.rows && <span className="ws-pill ws-pill--accent">{result.rows.length} rows</span>}
+                {t("sparql.results")}
+                {result?.rows && <span className="ws-pill ws-pill--accent">{t("sparql.rowsCount", { count: result.rows.length })}</span>}
               </div>
               {result?.rows && result.rows.length > 0 && (
                 <button className="ws-btn ws-btn--ghost" style={{ marginLeft: "auto", padding: "4px 10px", fontSize: 11 }} onClick={handleExportCSV}>
-                  <Download size={12} />Export CSV
+                  <Download size={12} />{t("sparql.exportCsv")}
                 </button>
               )}
             </div>
@@ -221,8 +228,8 @@ export function SparqlWorkspace() {
                 <div className="ws-animate-in" style={{ overflowX: "auto" }}>
                   {result.rows.length === 0 ? (
                     <div className="ws-empty">
-                      <div className="ws-empty-title">No results</div>
-                      <div className="ws-empty-body">The query returned 0 rows. Try a broader query or check your data.</div>
+                      <div className="ws-empty-title">{t("sparql.noResultsTitle")}</div>
+                      <div className="ws-empty-body">{t("sparql.noResultsBody")}</div>
                     </div>
                   ) : (
                     <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12, color: "var(--ws-text)" }}>
@@ -258,8 +265,8 @@ export function SparqlWorkspace() {
               {!result && !isLoading && (
                 <div className="ws-empty">
                   <div className="ws-empty-icon"><Table2 size={28} /></div>
-                  <div className="ws-empty-title">Run a query</div>
-                  <div className="ws-empty-body">Write SPARQL above or pick a template, then click Run Query to see results here.</div>
+                  <div className="ws-empty-title">{t("sparql.emptyTitle")}</div>
+                  <div className="ws-empty-body">{t("sparql.emptyBody")}</div>
                 </div>
               )}
             </div>

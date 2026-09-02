@@ -5,6 +5,7 @@
  * top-level concepts. Clicking a concept deep-links to the Vocabulary Browser.
  */
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { BookOpen, ChevronRight, ChevronDown, ExternalLink } from "lucide-react";
 import { useVocabularies, useConceptHierarchy } from "../VocabularyWorkspace/queries";
 import type { ConceptNode, VocabularyScheme } from "../VocabularyWorkspace/types";
@@ -84,6 +85,7 @@ function SchemePanel({
   scheme: VocabularyScheme;
   onSelectConcept: (concept: ConceptNode) => void;
 }) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(true);
   const { data: hierarchy = [], isLoading } = useConceptHierarchy(scheme.uri);
   const totalConcepts = countConcepts(hierarchy);
@@ -100,7 +102,7 @@ function SchemePanel({
           <span style={{ color: "#e6edf3", fontSize: 14, fontWeight: 700 }}>{scheme.label}</span>
         </div>
         <span style={{ color: "#6a7f97", fontSize: 11 }}>
-          {isLoading ? "…" : `${totalConcepts} concept${totalConcepts !== 1 ? "s" : ""}`}
+          {isLoading ? "…" : t("ontologySummary.conceptsCount", { count: totalConcepts })}
         </span>
       </button>
 
@@ -108,10 +110,10 @@ function SchemePanel({
       {expanded ? (
         <div style={{ paddingTop: 4, paddingBottom: 8 }}>
           {isLoading ? (
-            <div style={{ padding: "8px 24px", color: "#6a7f97", fontSize: 12 }}>Loading concepts…</div>
+            <div style={{ padding: "8px 24px", color: "#6a7f97", fontSize: 12 }}>{t("ontologySummary.loadingConcepts")}</div>
           ) : hierarchy.length === 0 ? (
             <div style={{ padding: "8px 24px", color: "#6a7f97", fontSize: 12, fontStyle: "italic" }}>
-              No concepts found in this scheme.
+              {t("ontologySummary.noConcepts")}
             </div>
           ) : (
             hierarchy.map((concept) => (
@@ -129,6 +131,7 @@ export function OntologySummaryTab({
 }: {
   onOpenVocabularyBrowser?: () => void;
 }) {
+  const { t } = useTranslation();
   const { data: schemes = [], isLoading } = useVocabularies();
   const [selectedConcept, setSelectedConcept] = useState<ConceptNode | null>(null);
 
@@ -139,18 +142,18 @@ export function OntologySummaryTab({
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <BookOpen size={18} color="#d2a8ff" />
           <div>
-            <div style={{ color: "#ebf3ff", fontSize: 16, fontWeight: 700 }}>Ontology Summary</div>
+            <div style={{ color: "#ebf3ff", fontSize: 16, fontWeight: 700 }}>{t("ontologySummary.title")}</div>
             <div style={{ color: "#8b949e", fontSize: 12 }}>
               {isLoading
-                ? "Loading schemes…"
-                : `${schemes.length} vocabulary scheme${schemes.length !== 1 ? "s" : ""} loaded`}
+                ? t("ontologySummary.loadingSchemes")
+                : t("ontologySummary.schemesCount", { count: schemes.length })}
             </div>
           </div>
         </div>
         {onOpenVocabularyBrowser ? (
           <button onClick={onOpenVocabularyBrowser} style={openBrowserBtnStyle}>
             <ExternalLink size={12} />
-            <span>Open Full Browser</span>
+            <span>{t("ontologySummary.openBrowser")}</span>
           </button>
         ) : null}
       </div>
@@ -167,9 +170,9 @@ export function OntologySummaryTab({
           ) : schemes.length === 0 ? (
             <div style={emptyStateStyle}>
               <BookOpen size={32} color="rgba(210,168,255,0.15)" />
-              <div style={{ color: "#8b949e", fontSize: 13, marginTop: 12 }}>No vocabulary schemes loaded</div>
+              <div style={{ color: "#8b949e", fontSize: 13, marginTop: 12 }}>{t("ontologySummary.noSchemes")}</div>
               <div style={{ color: "#6a7f97", fontSize: 12, marginTop: 4, textAlign: "center", maxWidth: 240 }}>
-                Import a .ttl or .rdf file via the Vocabulary Browser to see your ontology here.
+                {t("ontologySummary.noSchemesBody")}
               </div>
             </div>
           ) : (
@@ -186,7 +189,7 @@ export function OntologySummaryTab({
           <div style={detailPanelStyle}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
               <div style={{ color: "#d2a8ff", fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>
-                Concept Detail
+                {t("ontologySummary.conceptDetail")}
               </div>
               <button onClick={() => setSelectedConcept(null)} style={{ background: "transparent", border: "none", color: "#8b949e", cursor: "pointer", fontSize: 16 }}>×</button>
             </div>
@@ -195,7 +198,7 @@ export function OntologySummaryTab({
               {selectedConcept.pref_label}
             </h3>
             {selectedConcept.notation ? (
-              <div style={{ color: "#8b949e", fontSize: 12, marginBottom: 8 }}>Notation: {selectedConcept.notation}</div>
+              <div style={{ color: "#8b949e", fontSize: 12, marginBottom: 8 }}>{t("ontologySummary.notation", { notation: selectedConcept.notation })}</div>
             ) : null}
             <div style={{ color: "#6a7f97", fontSize: 11, fontFamily: "monospace", wordBreak: "break-all", marginBottom: 14 }}>
               {selectedConcept.uri}
@@ -203,14 +206,14 @@ export function OntologySummaryTab({
 
             {selectedConcept.description ? (
               <div style={detailSectionStyle}>
-                <div style={detailLabelStyle}>Description</div>
+                <div style={detailLabelStyle}>{t("ontologySummary.description")}</div>
                 <div style={{ color: "#c6d4e3", fontSize: 13, lineHeight: 1.6 }}>{selectedConcept.description}</div>
               </div>
             ) : null}
 
             {selectedConcept.alt_labels?.length ? (
               <div style={detailSectionStyle}>
-                <div style={detailLabelStyle}>Alternative Labels</div>
+                <div style={detailLabelStyle}>{t("ontologySummary.altLabels")}</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {selectedConcept.alt_labels.map((label) => (
                     <span key={label} style={altLabelChipStyle}>{label}</span>
@@ -221,7 +224,7 @@ export function OntologySummaryTab({
 
             {(selectedConcept.children?.length ?? 0) > 0 ? (
               <div style={detailSectionStyle}>
-                <div style={detailLabelStyle}>Narrower Concepts ({selectedConcept.children!.length})</div>
+                <div style={detailLabelStyle}>{t("ontologySummary.narrower", { total: selectedConcept.children!.length })}</div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   {selectedConcept.children!.slice(0, 8).map((child) => (
                     <div
@@ -233,7 +236,7 @@ export function OntologySummaryTab({
                     </div>
                   ))}
                   {selectedConcept.children!.length > 8 ? (
-                    <div style={{ color: "#6a7f97", fontSize: 11 }}>+{selectedConcept.children!.length - 8} more</div>
+                    <div style={{ color: "#6a7f97", fontSize: 11 }}>{t("ontologySummary.moreCount", { total: selectedConcept.children!.length - 8 })}</div>
                   ) : null}
                 </div>
               </div>

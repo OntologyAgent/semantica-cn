@@ -51,10 +51,10 @@
 **Priority**: High（链首） · **Independent test**: `npm run build`（键同构）+ 分析页 `?lang=zh` 无英文框架残留
 **Prompt**: `tasks/WP01-analysis-workspaces-extraction.md` · ~300 lines
 
-- [ ] T001 推理引擎页抽取（WP01）
-- [ ] T002 SPARQL 页抽取（WP01）
-- [ ] T003 决策页抽取（WP01）
-- [ ] T004 WP01 键段写入 en/zh + 键同构校验（WP01）
+- [x] T001 推理引擎页抽取（WP01）
+- [x] T002 SPARQL 页抽取（WP01）
+- [x] T003 决策页抽取（WP01）
+- [x] T004 WP01 键段写入 en/zh + 键同构校验（WP01）
 
 Dependencies: none。Risks: facts/rules 语法示例与 SPARQL 模板内容属数据/代码不译（FR-010），仅框架文案入键。
 

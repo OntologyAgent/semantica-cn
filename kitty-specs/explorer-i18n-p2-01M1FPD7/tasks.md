@@ -91,11 +91,11 @@ Dependencies: WP02。Risks: 节点/边类型枚举值（ORG/DATE/part_of）来�
 **Priority**: High · **Independent test**: `npm run build` + Hub 打开态 `?lang=zh` 走查
 **Prompt**: `tasks/WP04-ontology-hub-core-extraction.md` · ~340 lines
 
-- [ ] T014 Hub 壳层与 index 抽取（WP04）
-- [ ] T015 OntologyManager 抽取（WP04）
-- [ ] T016 OntologyLoader 抽取（WP04）
-- [ ] T017 OntologySearch 抽取（WP04）
-- [ ] T018 WP04 键段写入 en/zh + 键同构校验（WP04）
+- [x] T014 Hub 壳层与 index 抽取（WP04）
+- [x] T015 OntologyManager 抽取（WP04）
+- [x] T016 OntologyLoader 抽取（WP04）
+- [x] T017 OntologySearch 抽取（WP04）
+- [x] T018 WP04 键段写入 en/zh + 键同构校验（WP04）
 
 Dependencies: WP03。Risks: 文件大（Manager 930 行、Loader 913 行），逐区块抽取防漏项；本体 URI/类别过滤值（OWL/SKOS/INTERNAL/EXTERNAL 枚举值本身）不译。
 

@@ -22,7 +22,7 @@ history:
   action: created
   agent: claude
 agent_profile: frontend-freddy
-authoritative_surface: explorer/src/workspaces/ManageWorkspace/KGOverviewTab.tsx
+authoritative_surface: explorer/src/workspaces/ManageWorkspace/
 create_intent:
 - explorer/src/i18n/locales/en.json
 - explorer/src/i18n/locales/zh.json

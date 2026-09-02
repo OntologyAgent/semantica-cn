@@ -64,7 +64,7 @@ Dependencies: none。Risks: facts/rules 语法示例与 SPARQL 模板内容属�
 **Priority**: High · **Independent test**: `npm run build` + 增强页四页签 `?lang=zh` 走查
 **Prompt**: `tasks/WP02-enhance-workspaces-extraction.md` · ~300 lines
 
-- [ ] T005 导入导出抽取（WP02）
+- [x] T005 导入导出抽取（WP02）
 - [ ] T006 差异与合并抽取（WP02）
 - [ ] T007 实体消解抽取（WP02）
 - [ ] T008 注册表抽取（WP02）

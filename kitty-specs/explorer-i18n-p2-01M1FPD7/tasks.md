@@ -119,10 +119,10 @@ Dependencies: WP04。Risks: 表单校验错误提示量大且重复，优先共�
 **Priority**: High · **Independent test**: `npm run build` + 对应页签 `?lang=zh` 走查
 **Prompt**: `tasks/WP06-ontology-hub-studio-extraction.md` · ~300 lines
 
-- [ ] T024 ShaclStudio 抽取（WP06）
-- [ ] T025 ProposalReview 抽取（WP06）
-- [ ] T026 SKOSVocabularyManager 抽取（WP06）
-- [ ] T027 WP06 键段写入 en/zh + 键同构校验（WP06）
+- [x] T024 ShaclStudio 抽取（WP06）
+- [x] T025 ProposalReview 抽取（WP06）
+- [x] T026 SKOSVocabularyManager 抽取（WP06）
+- [x] T027 WP06 键段写入 en/zh + 键同构校验（WP06）
 
 Dependencies: WP05。Risks: SHACL 约束示例与 shapes 数据不译；提案 diff 内容属数据值。
 

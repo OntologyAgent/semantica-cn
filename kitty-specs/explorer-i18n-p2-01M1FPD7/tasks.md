@@ -132,9 +132,9 @@ Dependencies: WP05。Risks: SHACL 约束示例与 shapes 数据不译；提案 d
 **Priority**: Medium（收口清扫，须在其余抽取完成后执行） · **Independent test**: `npm run build` + 残留扫描结果记录
 **Prompt**: `tasks/WP07-vocabulary-sweep.md` · ~240 lines
 
-- [ ] T028 VocabularyWorkspace 五文件抽取（WP07）
-- [ ] T029 primitives 文案默认值清扫（WP07）
-- [ ] T030 全局残留英文扫描（WP07）
+- [x] T028 VocabularyWorkspace 五文件抽取（WP07）
+- [x] T029 primitives 文案默认值清扫（WP07）
+- [x] T030 全局残留英文扫描（WP07）
 
 Dependencies: WP06。Risks: 若扫描发现 GraphWorkspace 内遗漏，属 P1 回归，修复须单独记录并保持最小改动（IC-05 风险条款）。
 

@@ -16,7 +16,8 @@ subtasks:
 - T025
 - T026
 - T027
-agent: claude
+agent: "claude"
+shell_pid: "37455"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -127,3 +128,7 @@ tags: []
 ## Activity Log
 
 - 2026-09-02T00:00:00Z – claude – created
+- 2026-09-02T03:30:02Z – claude – shell_pid=22918 – Assigned agent via action command
+- 2026-09-02T03:53:05Z – claude – shell_pid=22918 – Ready for review: 3 studio surfaces extracted (shacl 22 + proposal 25 + skos 26 = 73 keys), build green, lint 73=baseline, en verbatim-verified, Hub 11 files now fully covered
+- 2026-09-02T03:53:47Z – claude – shell_pid=37455 – Started review via action command
+- 2026-09-02T03:55:42Z – user – shell_pid=37455 – Review passed: (1)Dead code N/A—73/73 keys have live t() consumers (script-verified unconsumed=[]), no new module; (2)Synthetic-fixture N/A—pure chrome extraction, spec mandates zero test coupling; (3)Silent empty return—no new except-return paths, baseline .catch patterns untouched; (4)FR-005/006/010 verified via build green + 71/73 en values verbatim-asserted (2 exempt keys conceptCountOne/Other manually verified equivalent to baseline template plural, renders 1 concept/N concepts) + en/zh isomorphic 910 keys; (5)Frozen surface—git diff empty for semantica/, index.html, vite.config.ts; (6)C-004 held—SHACL/SKOS/Turtle standard names retained, shapes data/constraint lists/violation messages/proposal diff content/pref_labels/URIs kept as data, only 73 chrome keys added; (7)locales shared-file ownership declared in serial-chain for_review note; (8)no new raise. lint 73=baseline zero delta. Hub coverage: all 11 OntologyWorkspace tsx components now import useTranslation—WP04/05/06 union complete.

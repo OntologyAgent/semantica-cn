@@ -16,7 +16,8 @@ subtasks:
 - T011
 - T012
 - T013
-agent: claude
+agent: "claude"
+shell_pid: "35233"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -122,3 +123,7 @@ tags: []
 ## Activity Log
 
 - 2026-09-02T00:00:00Z – claude – created
+- 2026-09-02T00:40:33Z – claude – shell_pid=26154 – Assigned agent via action command
+- 2026-09-02T00:55:44Z – claude – shell_pid=26154 – 三组件抽取完成：LineageDiagram 8 处框架文案+httpError 插值；KGOverviewTab statCards labelKey 化、双 fetch 路径错误/207 fallback 入键；OntologySummaryTab SchemePanel 接线、两组 count 复数、detail 面板标签入键。新增 47 键（lineage 11 + kgOverview 19 + ontologySummary 17），606 键双语同构。en 值 46/47 逐字过基线断言（1 例为复数三元切分白名单，人工核对重建一致）。build 绿、lint 73 持平零增量、grep 复扫零残留。
+- 2026-09-02T00:55:55Z – claude – shell_pid=35233 – Started review via action command
+- 2026-09-02T00:57:36Z – user – shell_pid=35233 – Review passed. 反模式清单：1 Dead code PASS（无新导出符号，TranslationKey 有 labelKey 消费点）2 Synthetic-fixture N/A（无单测要求）3 Silent return PASS（WP03 提交 cdd8f65d 零新增 catch-return）4 FR coverage PASS（FR-004 三组件 40+ 处接 t()；FR-006 全插值无拼接；FR-010 ORG/DATE/part_of 泄漏检查 0、scheme.label/pref_label/URI/notation/alt_labels 数据原样）5 Frozen surface PASS（semantica/explorer/、index.html、vite.config.ts diff 为空）6 Locked decision PASS（PROV-O zh 保留英文、KG 保留）7 Shared-file PASS（locales out-of-map 串行链保护，rationale 在 for_review note）8 Production fragility PASS（无新增 raise，throw 为既有路径换插值）。抽查 5 键 en 逐字吻合基线、zh 术语合 glossary（追溯/下位概念/词表体系）。build 绿、lint 73 持平、grep 复扫零残留。

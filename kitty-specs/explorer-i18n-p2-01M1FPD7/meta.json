@@ -12,5 +12,7 @@
   "purpose_tldr": "把 Explorer 剩余全部工作区（分析/决策/增强/管理/Ontology Hub/词表）的界面文案纳入 i18n，完成全站中文化收口。",
   "slug": "explorer-i18n-p2-01M1FPD7",
   "target_branch": "feature/explorer-i18n-p2",
-  "topology": "coord"
+  "topology": "coord",
+  "vcs": "git",
+  "vcs_locked_at": "2026-09-02T00:13:30.639958+00:00"
 }

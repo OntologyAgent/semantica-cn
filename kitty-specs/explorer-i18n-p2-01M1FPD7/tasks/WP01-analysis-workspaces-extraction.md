@@ -16,7 +16,8 @@ subtasks:
 - T002
 - T003
 - T004
-agent: claude
+agent: "claude"
+shell_pid: "16009"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -132,3 +133,7 @@ tags: []
 ## Activity Log
 
 - 2026-09-02T00:00:00Z – claude – created
+- 2026-09-02T00:13:33Z – claude – shell_pid=9020 – Assigned agent via action command
+- 2026-09-02T00:24:21Z – claude – shell_pid=9020 – Moved to for_review
+- 2026-09-02T00:24:40Z – claude – shell_pid=16009 – Started review via action command
+- 2026-09-02T00:25:27Z – user – shell_pid=16009 – Review passed: 68 keys added (reasoning/sparql/decision), en-zh isomorphic at 482, build green, lint 73 vs baseline 74 (zero delta), locales diff pure-additive (INV-4), data values verbatim (FR-010/C-001/C-002), locales out-of-map edit coordinated per WP rationale (serial chain)

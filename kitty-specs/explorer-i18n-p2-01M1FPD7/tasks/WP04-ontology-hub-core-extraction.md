@@ -17,7 +17,8 @@ subtasks:
 - T016
 - T017
 - T018
-agent: claude
+agent: "claude"
+shell_pid: "97400"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -136,3 +137,7 @@ tags: []
 ## Activity Log
 
 - 2026-09-02T00:00:00Z – claude – created
+- 2026-09-02T00:57:57Z – claude – shell_pid=36570 – Assigned agent via action command
+- 2026-09-02T02:48:55Z – claude – shell_pid=36570 – Ready for review: 116 ontologyHub.* keys (en+zh isomorphic) across Hub shell tabs + Manager/Loader/Search; build green, lint 73 zero-delta, en values verbatim-asserted vs baseline, frozen surface untouched
+- 2026-09-02T02:49:42Z – claude – shell_pid=97400 – Started review via action command
+- 2026-09-02T02:54:55Z – user – shell_pid=97400 – Review passed: 8-item anti-pattern checklist all PASS/N-A. 116 ontologyHub.shell/manager/loader/search keys en+zh isomorphic; build green; lint 73 zero-delta; en values verbatim-asserted vs baseline 116/116; frozen surface untouched; C-004 standards (OWL/SKOS/SHACL/RDF) preserved; locales serial-chain prefix established for WP05/06

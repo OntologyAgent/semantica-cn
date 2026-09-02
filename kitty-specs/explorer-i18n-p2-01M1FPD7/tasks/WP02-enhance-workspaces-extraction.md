@@ -17,7 +17,8 @@ subtasks:
 - T007
 - T008
 - T009
-agent: claude
+agent: "claude"
+shell_pid: "22887"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -138,3 +139,8 @@ tags: []
 ## Activity Log
 
 - 2026-09-02T00:00:00Z – claude – created
+- 2026-09-02T00:25:39Z – claude – shell_pid=16715 – Assigned agent via action command
+- 2026-09-02T00:25:47Z – claude – shell_pid=17132 – Assigned agent via action command
+- 2026-09-02T00:35:06Z – claude – shell_pid=17132 – Moved to for_review
+- 2026-09-02T00:35:10Z – claude – shell_pid=22887 – Started review via action command
+- 2026-09-02T00:40:08Z – user – shell_pid=22887 – Review passed. Anti-pattern checklist: 1-2 N/A (no new symbols/tests), 3-8 PASS. Full verbatim audit: all 75 baseline UI strings matched byte-exact in en.json after one rework commit (79b07817 fixed 25 paraphrased en values + source_version refresh; build green, lint 73 = baseline). FR-003 describeApiError wired at 4 fetch sites with backend detail verbatim; FR-006 OP_META/label arrays typed as TranslationKey (compile-time validated); FR-010 verified: .json/.csv pills, MOCK_FIELDS, logEvent summaries, backend error strings stay out of locales. locales are out-of-map edits protected by the serial WP chain (WP01→WP02→WP03), no parallel collision.

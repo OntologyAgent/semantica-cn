@@ -14,7 +14,8 @@ subtasks:
 - T028
 - T029
 - T030
-agent: claude
+agent: "claude"
+shell_pid: "47406"
 history:
 - timestamp: '2026-09-02T00:00:00Z'
   action: created
@@ -115,3 +116,7 @@ SKOS 词表工作区五个文件（共约 487 行）文案抽取为 `vocabulary.
 ## Activity Log
 
 - 2026-09-02T00:00:00Z – claude – created
+- 2026-09-02T03:56:12Z – claude – shell_pid=39067 – Assigned agent via action command
+- 2026-09-02T04:08:28Z – claude – shell_pid=39067 – Ready for review: vocabulary.* 22 keys extracted (Sidebar 9 / PropertyPanel 6 / ImportDropzone 7); T029 primitives audit: no hardcoded English defaults -> zero changes (C-001 held); T030 scan complete, 4 exempt hits (Turtle format options x2, example-URL placeholders x2) + zero hits elsewhere incl. P1 GraphWorkspace, full exempt list in commit 517bc6c1 message; build green, lint 73=baseline, en verbatim-asserted, locales isomorphic 932, shared-file ownership: locales en/zh also touched by prior WPs in serial chain.
+- 2026-09-02T04:08:43Z – claude – shell_pid=47406 – Started review via action command
+- 2026-09-02T04:09:47Z – user – shell_pid=47406 – Review passed: (1)Dead code N/A-22/22 vocabulary keys have live t() consumers (script-verified unconsumed=[]), no new module; (2)Synthetic-fixture N/A-pure chrome extraction, spec mandates zero test coupling; (3)Silent empty return-diff has zero new except/return paths (grep-verified); (4)FR-006/010 verified via build green + en verbatim-asserted (20/22 substring-checked, 2 plural-pair keys manually verified equivalent to baseline template concatenation: n===1 -> '1 vocabulary scheme', n!==1 -> 'N vocabulary schemes') + en/zh isomorphic 932; (5)Frozen surface-/git log on ui/primitives.tsx across WP is EMPTY (T029 audit found no hardcoded English defaults, zero changes per C-001), diff touches only owned VocabularyWorkspace files + declared locales; (6)C-004 held-Turtle/.ttl/.rdf format names, example URLs, pref_labels/URIs kept as data, SKOS kept English per glossary, zh terms follow WP06 skos section (下位概念/概念方案); (7)locales shared-file ownership declared in serial-chain for_review note; (8)no new raise. lint 73=baseline zero delta. T030 scan recorded in commit message: 4 exempt hits (Turtle format options x2 OntologyLoader:307/469, example-URL placeholders x2 OntologyLoader:261/590), zero fixes needed, P1 GraphWorkspace surface zero hits.

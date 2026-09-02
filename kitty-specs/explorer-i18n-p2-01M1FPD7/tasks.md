@@ -105,11 +105,11 @@ Dependencies: WP03。Risks: 文件大（Manager 930 行、Loader 913 行），�
 **Priority**: High · **Independent test**: `npm run build` + 对应页签 `?lang=zh` 走查
 **Prompt**: `tasks/WP05-ontology-hub-governance-extraction.md` · ~300 lines
 
-- [ ] T019 OntologyEditor 抽取（WP05）
-- [ ] T020 AlignmentsTab 抽取（WP05）
-- [ ] T021 VersionsTab 抽取（WP05）
-- [ ] T022 HealthTab 抽取（WP05）
-- [ ] T023 WP05 键段写入 en/zh + 键同构校验（WP05）
+- [x] T019 OntologyEditor 抽取（WP05）
+- [x] T020 AlignmentsTab 抽取（WP05）
+- [x] T021 VersionsTab 抽取（WP05）
+- [x] T022 HealthTab 抽取（WP05）
+- [x] T023 WP05 键段写入 en/zh + 键同构校验（WP05）
 
 Dependencies: WP04。Risks: 表单校验错误提示量大且重复，优先共用键；OWL/SHACL 术语保留。
 

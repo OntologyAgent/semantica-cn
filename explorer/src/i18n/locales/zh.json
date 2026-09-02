@@ -801,7 +801,6 @@
     "diffMerge.merging": "合并中…",
     "diffMerge.confirmMerge": "确认合并",
     "diffMerge.mergedOk": "已合并 → {{id}} · 重定向 {{edges}} 条边",
-    "diffMerge.unexpectedResponse": "响应异常",
     "diffMerge.mergeFailed": "合并失败",
     "entityResolution.title": "实体消解",
     "entityResolution.subtitle": "检测并合并知识图谱中的重复实体",
@@ -934,6 +933,6 @@
     "vocabulary.uploadFailed": "上传失败。请查看控制台。"
   },
   "__meta": {
-    "source_version": "b7c960de297af486bf8935296aa83065592c7558"
+    "source_version": "dd196d36c4fd11292fc6f32eb6fce8eb0cc1cde5"
   }
 }

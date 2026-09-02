@@ -827,7 +827,6 @@
     "diffMerge.merging": "Merging…",
     "diffMerge.confirmMerge": "Confirm Merge",
     "diffMerge.mergedOk": "Merged → {{id}} · {{edges}} edges redirected",
-    "diffMerge.unexpectedResponse": "Unexpected response",
     "diffMerge.mergeFailed": "Merge failed",
     "entityResolution.title": "Entity Resolution",
     "entityResolution.subtitle": "Detect and merge duplicate entities in the knowledge graph",

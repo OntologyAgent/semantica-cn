@@ -67,7 +67,7 @@ Dependencies: none。Risks: facts/rules 语法示例与 SPARQL 模板内容属�
 - [x] T005 导入导出抽取（WP02）
 - [x] T006 差异与合并抽取（WP02）
 - [x] T007 实体消解抽取（WP02）
-- [ ] T008 注册表抽取（WP02）
+- [x] T008 注册表抽取（WP02）
 - [ ] T009 WP02 键段写入 en/zh + 键同构校验（WP02）
 
 Dependencies: WP01。Risks: JSON/CSV 切换按钮属界面文案；拖放区支持格式（.json/.csv）为数据值；注册表审计 summary 按既定豁免并记录。

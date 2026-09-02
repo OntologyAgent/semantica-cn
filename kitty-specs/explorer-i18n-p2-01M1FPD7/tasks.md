@@ -78,10 +78,10 @@ Dependencies: WP01。Risks: JSON/CSV 切换按钮属界面文案；拖放区支�
 **Priority**: High · **Independent test**: `npm run build` + 管理页三页签 `?lang=zh` 走查
 **Prompt**: `tasks/WP03-manage-workspaces-extraction.md` · ~280 lines
 
-- [ ] T010 PROV-O 谱系抽取（WP03）
-- [ ] T011 KG 概览抽取（WP03）
-- [ ] T012 本体概要抽取（WP03）
-- [ ] T013 WP03 键段写入 en/zh + 键同构校验（WP03）
+- [x] T010 PROV-O 谱系抽取（WP03）
+- [x] T011 KG 概览抽取（WP03）
+- [x] T012 本体概要抽取（WP03）
+- [x] T013 WP03 键段写入 en/zh + 键同构校验（WP03）
 
 Dependencies: WP02。Risks: 节点/边类型枚举值（ORG/DATE/part_of）来自数据不译；PROV-O/Ontology Hub 标准名保留英文。
 

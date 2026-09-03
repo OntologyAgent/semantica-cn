@@ -3488,6 +3488,11 @@ const pluginDockContentStyle: React.CSSProperties = {
   border: `1px solid ${GRAPH_THEME.ui.surface.panelBorder}`,
   background: "rgba(255, 255, 255, 0.02)",
   padding: 14,
+  // Long panels (exploration effects has ~15 toggle rows plus summaries) must
+  // scroll inside their own container instead of pushing the scene layout /
+  // timeline below the fold with no scrollbar.
+  maxHeight: "42vh",
+  overflowY: "auto",
 };
 
 const pluginLoadingStyle: React.CSSProperties = {

@@ -1,0 +1,2 @@
+{"event": "started", "invocation_id": "01M1JNT46Z3YA1BZFW217XJRKW", "profile_id": "frontend-freddy", "action": "generate", "request_text": "\u4fee\u590d Explorer \u754c\u9762\u6f0f\u7ffb\u8bd1\u7684\u5185\u5bb9", "actor": "claude", "mode_of_work": "task_execution", "governance_context_hash": "398cc5809893f2e2", "governance_context_available": true, "started_at": "2026-09-03T03:43:14.055613+00:00"}
+{"event": "completed", "invocation_id": "01M1JNT46Z3YA1BZFW217XJRKW", "completed_at": "2026-09-03T03:50:00.494368+00:00", "outcome": "done", "closed_by": "agent"}

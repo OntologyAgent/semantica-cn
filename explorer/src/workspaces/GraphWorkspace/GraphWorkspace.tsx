@@ -1829,6 +1829,10 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
         source: inspectableNodeId,
         target: pathTargetId.trim(),
         algorithm: "dijkstra",
+        // Extraction-time edge direction (investor -[参与]-> event) rarely
+        // aligns with the queried entity order, so search undirected by
+        // default — otherwise cross-entity paths come back "not found".
+        directed: "false",
       });
       const response = await fetch(
         `/api/graph/path?${pathParams.toString()}`

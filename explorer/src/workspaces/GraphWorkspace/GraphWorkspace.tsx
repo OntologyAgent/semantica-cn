@@ -29,7 +29,7 @@ import { lazy, Suspense } from "react";
 import { SigmaSceneAdapter } from "./SigmaSceneAdapter";
 import { useLoadGraph, useReloadGraph } from "./useLoadGraph";
 import { GraphLoadingOverlay } from "./GraphLoadingOverlay";
-import { createGraphLoadProgress, getGraphLoadTitle } from "./graphLoading";
+import { createGraphLoadProgress, getGraphLoadTitleKey } from "./graphLoading";
 import { GRAPH_THEME, withAlpha } from "./graphTheme";
 import type { GraphEntityShapeVariant } from "./graphTheme";
 import { buildHeatmapRenderSnapshot, buildStructuralDistanceSnapshot, checkGroupedViewAvailability, getDistanceBandColor, resolveDisplayGraph, resolveDisplayStateSnapshot, resolveGroupedDisplayNodeId, resolveGroupedDisplayStateSnapshot, summarizeDistanceBuckets } from "./graphSceneState";
@@ -3043,7 +3043,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
               <div className="explore-toolbar">
                 <div className="explore-status-strip">
                   {(showLoadingOverlay || showSettlingStatus) && loadingProgress ? (
-                    <MetricChip>{getGraphLoadTitle(loadingProgress.phase)}</MetricChip>
+                    <MetricChip>{t(getGraphLoadTitleKey(loadingProgress.phase))}</MetricChip>
                   ) : null}
                   {summary ? (
                     <MetricChip>{t("graph.hud.nodesEdges", { nodes: summary.nodeCount.toLocaleString(), edges: summary.edgeCount.toLocaleString() })}</MetricChip>

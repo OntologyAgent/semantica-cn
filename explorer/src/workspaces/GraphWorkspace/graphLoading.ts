@@ -29,6 +29,36 @@ export function getGraphLoadTitle(phase: GraphLoadPhase): string {
   }
 }
 
+/** Translation keys mirroring getGraphLoadTitle, for i18n-aware renderers. */
+export type GraphLoadTitleKey =
+  | "graph.loading.preparing"
+  | "graph.loading.titleNodes"
+  | "graph.loading.titleEdges"
+  | "graph.loading.titleStyling"
+  | "graph.loading.titleScene"
+  | "graph.loading.titleStabilizing"
+  | "graph.loading.titleReady";
+
+export function getGraphLoadTitleKey(phase: GraphLoadPhase): GraphLoadTitleKey {
+  switch (phase) {
+    case "bootstrapping":
+      return "graph.loading.preparing";
+    case "fetching_nodes":
+      return "graph.loading.titleNodes";
+    case "fetching_edges":
+      return "graph.loading.titleEdges";
+    case "computing_styling":
+      return "graph.loading.titleStyling";
+    case "hydrating_scene":
+      return "graph.loading.titleScene";
+    case "stabilizing_layout":
+      return "graph.loading.titleStabilizing";
+    case "ready":
+    default:
+      return "graph.loading.titleReady";
+  }
+}
+
 export function getGraphLoadStageLabel(phase: Exclude<GraphLoadPhase, "ready">): string {
   switch (phase) {
     case "bootstrapping":

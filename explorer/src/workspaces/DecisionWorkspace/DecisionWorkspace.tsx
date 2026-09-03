@@ -37,6 +37,24 @@ interface ChainStep {
   [key: string]: unknown;
 }
 
+/**
+ * One decision record as returned by GET /api/decisions. The API returns the
+ * full record (scenario/reasoning/confidence/...) — render it, don't reduce
+ * decisions to id/category/outcome.
+ */
+interface DecisionItem {
+  decision_id: string;
+  category?: string;
+  outcome?: string;
+  scenario?: string;
+  reasoning?: string;
+  confidence?: number;
+  decision_maker?: string | null;
+  timestamp?: string;
+  // The list endpoint nests decision_maker here instead of a top-level field.
+  metadata?: { decision_maker?: string } & Record<string, unknown>;
+}
+
 const NODE_ACCENTS = ["#4aa3ff","#4cc38a","#f2b66d","#c084fc","#ff7b72","#38bdf8","#a78bfa"];
 
 function ChainNode({ step, index }: { step: ChainStep; index: number }) {
@@ -97,8 +115,8 @@ function CausalFlow({ chain, loading }: { chain: ChainStep[]; loading: boolean }
 
 export function DecisionWorkspace() {
   const { t } = useTranslation();
-  const [decisions, setDecisions] = useState<{ decision_id: string; category?: string; outcome?: string }[]>([]);
-  const [selected, setSelected] = useState<{ decision_id: string; category?: string; outcome?: string } | null>(null);
+  const [decisions, setDecisions] = useState<DecisionItem[]>([]);
+  const [selected, setSelected] = useState<DecisionItem | null>(null);
   const [chain, setChain] = useState<ChainStep[]>([]);
   const [chainLoading, setChainLoading] = useState(false);
   const [listLoading, setListLoading] = useState(true);
@@ -270,6 +288,39 @@ export function DecisionWorkspace() {
                 <span className="ws-pill ws-pill--mono">{selected.category}</span>
               )}
             </div>
+
+            {/* Decision summary — scenario/reasoning/attestation fields */}
+            {(selected.scenario || selected.reasoning) && (
+              <div className="ws-card" style={{ padding: 22, marginBottom: 16 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                  <div style={{ width: 8, height: 8, borderRadius: 999, background: "linear-gradient(135deg, var(--ws-accent), var(--ws-amber))", boxShadow: "0 0 10px rgba(74,163,255,0.4)" }} />
+                  <div style={{ color: "var(--ws-text)", fontSize: 14, fontWeight: 700 }}>{t("decision.summarySection")}</div>
+                </div>
+                {selected.scenario && (
+                  <div style={{ marginBottom: selected.reasoning ? 14 : 0 }}>
+                    <div className="ws-eyebrow" style={{ marginBottom: 6 }}>{t("decision.scenarioLabel")}</div>
+                    <div style={{ color: "var(--ws-text)", fontSize: 13, lineHeight: 1.6 }}>{selected.scenario}</div>
+                  </div>
+                )}
+                {selected.reasoning && (
+                  <div style={{ marginBottom: 14 }}>
+                    <div className="ws-eyebrow" style={{ marginBottom: 6 }}>{t("decision.reasoningLabel")}</div>
+                    <div style={{ color: "var(--ws-text)", fontSize: 13, lineHeight: 1.6, whiteSpace: "pre-wrap" }}>{selected.reasoning}</div>
+                  </div>
+                )}
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {typeof selected.confidence === "number" && (
+                    <span className="ws-pill ws-pill--mono">{t("decision.confidenceLabel")}: {(selected.confidence * 100).toFixed(0)}%</span>
+                  )}
+                  {(selected.decision_maker || selected.metadata?.decision_maker) && (
+                    <span className="ws-pill ws-pill--mono">{t("decision.decisionMakerLabel")}: {selected.decision_maker || selected.metadata?.decision_maker}</span>
+                  )}
+                  {selected.timestamp && (
+                    <span className="ws-pill ws-pill--mono">{t("decision.recordedAtLabel")}: {new Date(selected.timestamp).toLocaleString()}</span>
+                  )}
+                </div>
+              </div>
+            )}
 
             {/* Chain section */}
             <div className="ws-card" style={{ padding: 22 }}>

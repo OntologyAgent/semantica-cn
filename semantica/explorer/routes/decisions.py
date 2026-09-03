@@ -66,13 +66,14 @@ async def get_decision(
 @router.get("/{decision_id}/chain", response_model=CausalChainResponse)
 async def get_causal_chain(
     decision_id: str,
+    hops: int = Query(1, ge=1, le=5, description="Neighborhood depth. Decision anchors are direct ABOUT edges; deep hops blow up to the whole graph around hub entities."),
     session: GraphSession = Depends(get_session),
 ):
     node = await asyncio.to_thread(session.get_node, decision_id)
     if node is None:
         raise HTTPException(status_code=404, detail=f"Decision '{decision_id}' not found")
 
-    neighbors = await asyncio.to_thread(session.get_neighbors, decision_id, 5)
+    neighbors = await asyncio.to_thread(session.get_neighbors, decision_id, hops)
     chain = [
         {
             "id": neighbor.get("id"),

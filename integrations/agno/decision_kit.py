@@ -471,8 +471,43 @@ class AgnoDecisionKit(_ToolkitBase):  # type: ignore[misc]
             insights = self._ctx.get_context_insights()
             if not isinstance(insights, dict):
                 insights = {"raw": str(insights)}
-            insights["category_filter"] = category
-            return json.dumps(insights)
+
+            # get_context_insights embeds the full community analysis (every
+            # node id of every community). Handing that to an LLM blows the
+            # context window on any non-trivial graph (~192万 tokens on a
+            # 1000-node corpus graph), so keep only counts plus a sample and
+            # surface decision stats — the agent asked for a summary, not a
+            # graph dump.
+            graph_analysis = insights.get("graph_analysis") or {}
+            community_analysis = graph_analysis.get("community_analysis") or {}
+            raw_communities = community_analysis.get("communities")
+            if isinstance(raw_communities, list):
+                community_analysis = {
+                    **community_analysis,
+                    "communities": [
+                        {"size": len(c), "sample": c[:3]} if isinstance(c, list) else c
+                        for c in raw_communities[:8]
+                    ],
+                    "communities_truncated": len(raw_communities) > 8,
+                }
+
+            summary = {
+                "category_filter": category,
+                "decision_stats": insights.get("decision_stats", {}),
+                "memory_stats": {
+                    key: value
+                    for key, value in (insights.get("memory_stats") or {}).items()
+                    if isinstance(value, (int, float, str, bool))
+                },
+                "graph_analysis": {
+                    key: value
+                    for key, value in graph_analysis.items()
+                    if key != "community_analysis"
+                },
+                "community_analysis": community_analysis,
+                "advanced_features": insights.get("advanced_features", {}),
+            }
+            return json.dumps(summary, ensure_ascii=False)
         except Exception as exc:
             logger.warning("get_decision_summary failed: %s", exc)
             return json.dumps({"error": str(exc)})

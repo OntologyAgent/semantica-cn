@@ -4056,6 +4056,12 @@ class ContextGraph:
             # Community detection
             if "community_detector" in self.kg_components:
                 communities = self.kg_components["community_detector"].detect_communities(kg_graph)
+                # detect_communities returns networkx Louvain frozensets, which
+                # are not JSON-serializable — get_context_insights() feeds this
+                # straight into JSON tool responses (e.g. the Explorer
+                # get_decision_summary tool) and crashes on them. Normalize to
+                # sorted node-id lists while keeping membership intact.
+                communities = [sorted(community) for community in communities]
                 analysis["community_analysis"] = {
                     "communities": communities,
                     "num_communities": len(communities),

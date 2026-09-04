@@ -679,7 +679,22 @@ function buildEffectAvailability(
             available: false,
             reason: analytics?.semanticRegions.reason ?? "Waiting for semantic region summaries",
           }
-        : { enabled: true, available: true, reason: analytics.semanticRegions.reason };
+        : (() => {
+            // Mirror the renderer's minVisibleSamples gate: when even the
+            // largest semantic group sits below it, drawSemanticRegionsLayer
+            // filters every region out — report that instead of a false
+            // "Ready" while the canvas stays blank.
+            const summaries = analytics.semanticRegions.summaries;
+            const best = summaries.reduce((max, s) => Math.max(max, s.visibleNodeCount), 0);
+            const minSamples = GRAPH_THEME.effects.semanticRegions.minVisibleSamples;
+            return best < minSamples
+              ? {
+                  enabled: true,
+                  available: false,
+                  reason: `Largest visible semantic group has ${best} nodes — density envelope needs ≥ ${minSamples} per group`,
+                }
+              : { enabled: true, available: true, reason: analytics.semanticRegions.reason };
+          })();
 
   const contours = !effectsState.contoursEnabled
     ? { enabled: false, available: false, reason: "Disabled by toggle" }

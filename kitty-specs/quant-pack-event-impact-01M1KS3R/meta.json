@@ -7,6 +7,7 @@
   "mission_number": null,
   "mission_slug": "quant-pack-event-impact-01M1KS3R",
   "mission_type": "software-dev",
+  "pr_bound": true,
   "purpose_context": "用户提供 hk-quant-qlib/minimax_stock 标准数据包（160日行情、8期财务+三大报表、FRED宏观+港股指数+HIBOR/LPR/PMI），补齐 PLAN.md 待建的域3/4/5。目标不止入图：事件（公告/新闻，296个带日期Event实体）×价格×基准指数做事件研究法分析，产出按事件类型聚合的超额收益统计与单事件明细，接入决策回路。",
   "purpose_tldr": "接入 hk-quant-qlib 数据包三域（行情/基本面/宏观）入图，并建事件研究层：各类事件对股价的影响（超额收益）可查询，为决策供依据",
   "slug": "quant-pack-event-impact-01M1KS3R",

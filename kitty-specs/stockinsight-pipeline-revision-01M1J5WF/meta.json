@@ -1,0 +1,15 @@
+{
+  "coordination_branch": "kitty/mission-stockinsight-pipeline-revision-01M1J5WF",
+  "created_at": "2026-09-02T23:04:53.245924+00:00",
+  "flattened": false,
+  "friendly_name": "StockInsight 流水线最佳实践对齐修订",
+  "mission_id": "01M1J5WFQWP8Q69DA67R6KHS8S",
+  "mission_number": null,
+  "mission_slug": "stockinsight-pipeline-revision-01M1J5WF",
+  "mission_type": "software-dev",
+  "purpose_context": "实战审计发现三层偏差（88组繁简分裂、91条边挂指代假枢纽、无字段校验零审计）。本次以最佳实践篇3为基准逐条落地到三个处理脚本与PLAN.md：抽取源头由LLM完成语义判断，Pydantic硬校验拦截坏输出，抽样双模型审计四维审查；确定性代码只管机械转换与门禁。落地与方案冲突时调整落地形态，方案缺陷则回写修订篇3。交付含处理方式清单供逐环节确认语义判断无一处落在正则/字符串处理。",
+  "purpose_tldr": "按篇3成熟方案逐条落地：LLM源头条款抽取（指代消解+繁简归一）、Pydantic硬校验、抽样双模型审计，std schema升级后全量重跑96文件",
+  "slug": "stockinsight-pipeline-revision-01M1J5WF",
+  "target_branch": "feature/stockinsight-pipeline-revision",
+  "topology": "coord"
+}

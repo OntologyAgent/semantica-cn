@@ -6,6 +6,7 @@ import asyncio
 import json
 import logging
 import re
+import urllib.parse
 from typing import Any, Dict, List, Optional
 
 import networkx as nx
@@ -37,6 +38,22 @@ def _safe_content_disposition_filename(node_id: str, suffix: str) -> str:
     """
     sanitized = _UNSAFE_FILENAME_CHARS.sub("_", str(node_id))[:_MAX_FILENAME_ID_LEN]
     return f"{sanitized}{suffix}"
+
+
+def _content_disposition(node_id: str, suffix: str) -> str:
+    """Build a Content-Disposition header value that survives non-ASCII node ids.
+
+    The plain ``filename=`` attribute only allows latin-1; CJK node ids would
+    crash header encoding (starlette raises ValueError → 422). For those, add
+    an RFC 5987 ``filename*=`` fallback (percent-encoded UTF-8) and keep an
+    ASCII-only ``filename=`` for older clients. The sanitization rules from
+    :func:`_safe_content_disposition_filename` still apply to both.
+    """
+    filename = _safe_content_disposition_filename(node_id, suffix)
+    if filename.isascii():
+        return f'attachment; filename="{filename}"'
+    quoted = urllib.parse.quote(filename, safe="")
+    return f"attachment; filename=\"download{suffix}\"; filename*=UTF-8''{quoted}"
 
 _AGENT_TYPES = {"person", "organization", "system", "agent"}
 _ACTIVITY_TYPES = {"action", "event", "process", "activity", "decision", "publication"}
@@ -352,12 +369,12 @@ async def export_provenance_report(
         content = _render_markdown(report)
         return PlainTextResponse(
             content,
-            headers={"Content-Disposition": f'attachment; filename="{_safe_content_disposition_filename(node_id, "_provenance.md")}"'},
+            headers={"Content-Disposition": _content_disposition(node_id, "_provenance.md")},
         )
 
     content = json.dumps(report, indent=2, default=str)
     return Response(
         content=content,
         media_type="application/json",
-        headers={"Content-Disposition": f'attachment; filename="{_safe_content_disposition_filename(node_id, "_provenance.json")}"'},
+        headers={"Content-Disposition": _content_disposition(node_id, "_provenance.json")},
     )

@@ -23,12 +23,14 @@ const TEMPLATES: { labelKey: TranslationKey; facts: string; rule: string }[] = [
   {
     labelKey: "reasoning.template.geneDisease",
     facts: `expressed_in(BRCA1, Breast)\nmutated_in(BRCA1, Cancer)\nassociated_with(Breast, Cancer)`,
-    rule: `IF mutated_in(X, Cancer) AND expressed_in(X, Y) THEN risk_gene(X, Y)`,
+    // Variables must use the ?name form — Reasoner._match_pattern splits on
+    // (\?\w+), so a bare X would be treated as a literal argument.
+    rule: `IF mutated_in(?X, Cancer) AND expressed_in(?X, ?Y) THEN risk_gene(?X, ?Y)`,
   },
   {
     labelKey: "reasoning.template.pathwayActivation",
     facts: `activates(EGF, EGFR)\ndownstream_of(MAPK, EGFR)\ndownstream_of(AKT, EGFR)`,
-    rule: `IF activates(X, EGFR) AND downstream_of(Y, EGFR) THEN activates(X, Y)`,
+    rule: `IF activates(?X, EGFR) AND downstream_of(?Y, EGFR) THEN activates(?X, ?Y)`,
   },
 ];
 

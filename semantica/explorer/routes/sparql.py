@@ -19,6 +19,7 @@ Security contract
 
 import asyncio
 import re
+import urllib.parse
 from typing import Any, Dict, List, Optional, Tuple
 
 import rdflib
@@ -120,6 +121,19 @@ class SparqlResponse(BaseModel):
 NS = rdflib.Namespace("http://semantica.local/entity/")
 PROP = rdflib.Namespace("http://semantica.local/prop/")
 
+# SPARQL IRIREF forbids spaces (and a few other ASCII controls) while allowing
+# non-ASCII, so node ids like "MiniMax Group Inc." must be percent-encoded
+# (space → %20) at materialization time — otherwise the URI is unqueryable:
+# the raw form fails to parse and the %20 form matches nothing because the
+# stored string never went through decoding. Chinese characters are legal in
+# an IRI and are kept verbatim so existing ?p=prop/投资-style queries
+# keep working.
+_IRI_ILLEGAL = re.compile(r'[\s<>"{}|^`\\\x00-\x20]')
+
+
+def _iri_safe(value: str) -> str:
+    return _IRI_ILLEGAL.sub(lambda m: urllib.parse.quote(m.group(0)), str(value))
+
 
 def _build_rdflib_graph(session: GraphSession) -> rdflib.Graph:
     graph = rdflib.Graph()
@@ -149,9 +163,9 @@ def _build_rdflib_graph(session: GraphSession) -> rdflib.Graph:
         )
 
     for node in nodes:
-        subject = NS[str(node.get("id", ""))]
+        subject = NS[_iri_safe(node.get("id", ""))]
         node_type = node.get("type", "Entity")
-        graph.add((subject, rdflib.RDF.type, NS[node_type]))
+        graph.add((subject, rdflib.RDF.type, NS[_iri_safe(node_type)]))
 
         content = node.get("content", "")
         if content:
@@ -163,10 +177,10 @@ def _build_rdflib_graph(session: GraphSession) -> rdflib.Graph:
             graph.add((subject, PROP[key], rdflib.Literal(value)))
 
     for edge in edges:
-        source = NS[str(edge.get("source", ""))]
-        target = NS[str(edge.get("target", ""))]
+        source = NS[_iri_safe(edge.get("source", ""))]
+        target = NS[_iri_safe(edge.get("target", ""))]
         relationship = edge.get("type", "relatedTo")
-        graph.add((source, PROP[relationship], target))
+        graph.add((source, PROP[_iri_safe(relationship)], target))
 
     return graph
 

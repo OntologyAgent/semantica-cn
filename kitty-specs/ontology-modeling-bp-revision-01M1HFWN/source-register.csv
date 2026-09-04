@@ -1,0 +1,40 @@
+# Source Register: Master list of all research sources
+#
+# Column Definitions:
+# - source_id: Unique identifier (lowercase, no spaces)
+# - citation: Full citation (consistent APA-style adapted for repo artifacts)
+# - url: Direct link to source (repo-relative stable path)
+# - accessed_date: Date source was accessed (YYYY-MM-DD)
+# - relevance: high | medium | low (to primary research question)
+# - status: reviewed | pending | archived
+source_id,citation,url,accessed_date,relevance,status
+book-ch6-1,"《低门槛快速落地的本体建模工程化方法》第 6 章 6.1 适配全类型知识表征的本体建模预处理方法（重扫书稿）. docs/best-practices/book/.",docs/best-practices/book/ontology-modeling-ch6-1-preprocessing.md,2026-09-03,high,reviewed
+book-ch6-2,"《低门槛快速落地的本体建模工程化方法》第 6 章 6.2 AI 精准建模与专家可视化审核（重扫书稿）. docs/best-practices/book/.",docs/best-practices/book/ontology-modeling-ch6-2-modeling.md,2026-09-03,high,reviewed
+stockinsight-guide,"StockInsight 项目组. 股票投资知识图谱使用指南（基于 Semantica 官方文档）. projects/StockInsight/GUIDE.md.",projects/StockInsight/GUIDE.md,2026-09-03,high,reviewed
+stockinsight-plan,"StockInsight 项目组. StockInsight 个股分析数据方案. projects/StockInsight/PLAN.md.",projects/StockInsight/PLAN.md,2026-09-03,high,reviewed
+docs-concepts,"Semantica Contributors. Semantica Concepts. docs/concepts.md.",docs/concepts.md,2026-09-03,high,reviewed
+docs-quickstart,"Semantica Contributors. Semantica Quickstart. docs/quickstart.md.",docs/quickstart.md,2026-09-03,high,reviewed
+docs-architecture,"Semantica Contributors. Semantica Architecture. docs/architecture.md.",docs/architecture.md,2026-09-03,medium,reviewed
+docs-modules,"Semantica Contributors. Semantica Modules Overview. docs/modules.md.",docs/modules.md,2026-09-03,medium,reviewed
+docs-ontology-guide,"Semantica Contributors. Ontology Guide. docs/guides/ontology.md.",docs/guides/ontology.md,2026-09-03,high,reviewed
+docs-ontology-ref,"Semantica Contributors. Ontology Module Reference. docs/reference/ontology.md.",docs/reference/ontology.md,2026-09-03,high,reviewed
+docs-kg-ref,"Semantica Contributors. Knowledge Graph Module Reference. docs/reference/kg.md.",docs/reference/kg.md,2026-09-03,high,reviewed
+docs-extract-ref,"Semantica Contributors. Semantic Extraction Module Reference. docs/reference/semantic_extract.md.",docs/reference/semantic_extract.md,2026-09-03,high,reviewed
+docs-conflicts-ref,"Semantica Contributors. Conflicts Module Reference. docs/reference/conflicts.md.",docs/reference/conflicts.md,2026-09-03,high,reviewed
+docs-dedup-ref,"Semantica Contributors. Deduplication Module Reference. docs/reference/deduplication.md.",docs/reference/deduplication.md,2026-09-03,high,reviewed
+docs-reasoning-ref,"Semantica Contributors. Reasoning Module Reference. docs/reference/reasoning.md.",docs/reference/reasoning.md,2026-09-03,high,reviewed
+docs-provenance-ref,"Semantica Contributors. Provenance Module Reference. docs/reference/provenance.md.",docs/reference/provenance.md,2026-09-03,high,reviewed
+docs-context-ref,"Semantica Contributors. Context Module Reference. docs/reference/context.md.",docs/reference/context.md,2026-09-03,high,reviewed
+docs-export-ref,"Semantica Contributors. Export Module Reference. docs/reference/export.md.",docs/reference/export.md,2026-09-03,medium,reviewed
+cookbook-ontology,"Semantica Contributors. Ontology — cookbook introduction 14. cookbook/introduction/14_Ontology.ipynb.",cookbook/introduction/14_Ontology.ipynb,2026-09-03,high,reviewed
+cookbook-manual-ontology,"Semantica Contributors. Manual Ontology + Snowflake Mapping — cookbook advanced 13. cookbook/advanced/13_Manual_Ontology_Snowflake_Mapping.ipynb.",cookbook/advanced/13_Manual_Ontology_Snowflake_Mapping.ipynb,2026-09-03,high,reviewed
+cookbook-datalog,"Semantica Contributors. Datalog-Style Reasoning — cookbook advanced 14. cookbook/advanced/14_Datalog_Style_Reasoning.ipynb.",cookbook/advanced/14_Datalog_Style_Reasoning.ipynb,2026-09-03,high,reviewed
+cookbook-conflict,"Semantica Contributors. Conflict Detection and Resolution — cookbook introduction 17. cookbook/introduction/17_Conflict_Detection_and_Resolution.ipynb.",cookbook/introduction/17_Conflict_Detection_and_Resolution.ipynb,2026-09-03,high,reviewed
+cookbook-dedup,"Semantica Contributors. Deduplication — cookbook introduction 18. cookbook/introduction/18_Deduplication.ipynb.",cookbook/introduction/18_Deduplication.ipynb,2026-09-03,medium,reviewed
+cookbook-provenance,"Semantica Contributors. Provenance Tracking — cookbook introduction 22. cookbook/introduction/22_Provenance_Tracking.ipynb.",cookbook/introduction/22_Provenance_Tracking.ipynb,2026-09-03,high,reviewed
+cookbook-seed,"Semantica Contributors. Seed Data — cookbook introduction 25. cookbook/introduction/25_Seed_Data.ipynb.",cookbook/introduction/25_Seed_Data.ipynb,2026-09-03,medium,reviewed
+cookbook-temporal,"Semantica Contributors. Temporal Knowledge Graphs — cookbook advanced 10. cookbook/advanced/10_Temporal_Knowledge_Graphs.ipynb.",cookbook/advanced/10_Temporal_Knowledge_Graphs.ipynb,2026-09-03,medium,reviewed
+cookbook-multisource,"Semantica Contributors. Multi-Source Data Integration — cookbook advanced 06. cookbook/advanced/06_Multi_Source_Data_Integration.ipynb.",cookbook/advanced/06_Multi_Source_Data_Integration.ipynb,2026-09-03,medium,reviewed
+examples-capgap,"Semantica Contributors. Capability Gap Context Graphs end-to-end example. examples/capability_gap_context_graphs_example.py.",examples/capability_gap_context_graphs_example.py,2026-09-03,high,reviewed
+current-doc,"《本体建模工程化最佳实践：把业务知识沉淀为可复用的本体资产》（修订对象，审计标的）. docs/best-practices/.",docs/best-practices/本体建模最佳实践.md,2026-09-03,high,reviewed
+stockinsight-scripts,"StockInsight 项目组. 流水线脚本集（investment_pipeline.py 等 9 个）. projects/StockInsight/scripts/.",projects/StockInsight/scripts/investment_pipeline.py,2026-09-03,high,reviewed

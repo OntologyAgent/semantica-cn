@@ -29,7 +29,7 @@ import { lazy, Suspense } from "react";
 import { SigmaSceneAdapter } from "./SigmaSceneAdapter";
 import { useLoadGraph, useReloadGraph } from "./useLoadGraph";
 import { GraphLoadingOverlay } from "./GraphLoadingOverlay";
-import { createGraphLoadProgress, getGraphLoadTitle } from "./graphLoading";
+import { createGraphLoadProgress, getGraphLoadTitleKey } from "./graphLoading";
 import { GRAPH_THEME, withAlpha } from "./graphTheme";
 import type { GraphEntityShapeVariant } from "./graphTheme";
 import { buildHeatmapRenderSnapshot, buildStructuralDistanceSnapshot, checkGroupedViewAvailability, getDistanceBandColor, resolveDisplayGraph, resolveDisplayStateSnapshot, resolveGroupedDisplayNodeId, resolveGroupedDisplayStateSnapshot, summarizeDistanceBuckets } from "./graphSceneState";
@@ -1864,6 +1864,10 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
         source: inspectableNodeId,
         target: pathTargetId.trim(),
         algorithm: "dijkstra",
+        // Extraction-time edge direction (investor -[参与]-> event) rarely
+        // aligns with the queried entity order, so search undirected by
+        // default — otherwise cross-entity paths come back "not found".
+        directed: "false",
       });
       const response = await fetch(
         `/api/graph/path?${pathParams.toString()}`
@@ -3125,7 +3129,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
               <div className="explore-toolbar">
                 <div className="explore-status-strip">
                   {(showLoadingOverlay || showSettlingStatus) && loadingProgress ? (
-                    <MetricChip>{getGraphLoadTitle(loadingProgress.phase)}</MetricChip>
+                    <MetricChip>{t(getGraphLoadTitleKey(loadingProgress.phase))}</MetricChip>
                   ) : null}
                   {summary ? (
                     <MetricChip>{t("graph.hud.nodesEdges", { nodes: summary.nodeCount.toLocaleString(), edges: summary.edgeCount.toLocaleString() })}</MetricChip>
@@ -3572,6 +3576,11 @@ const pluginDockContentStyle: React.CSSProperties = {
   border: `1px solid ${GRAPH_THEME.ui.surface.panelBorder}`,
   background: "rgba(255, 255, 255, 0.02)",
   padding: 14,
+  // Long panels (exploration effects has ~15 toggle rows plus summaries) must
+  // scroll inside their own container instead of pushing the scene layout /
+  // timeline below the fold with no scrollbar.
+  maxHeight: "42vh",
+  overflowY: "auto",
 };
 
 const pluginLoadingStyle: React.CSSProperties = {

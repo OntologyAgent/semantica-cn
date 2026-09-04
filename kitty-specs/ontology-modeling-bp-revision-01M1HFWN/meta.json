@@ -1,0 +1,18 @@
+{
+  "coordination_branch": "kitty/mission-ontology-modeling-bp-revision-01M1HFWN",
+  "created_at": "2026-09-02T16:40:30.087294+00:00",
+  "flattened": false,
+  "friendly_name": "本体建模最佳实践修订",
+  "mission_id": "01M1HFWN46G5EDZTKJR2H19B8T",
+  "mission_number": null,
+  "mission_slug": "ontology-modeling-bp-revision-01M1HFWN",
+  "mission_type": "research",
+  "pr_bound": true,
+  "purpose_context": "现有最佳实践文档的早期版本基于存在扫描错误的书稿写成，部分内容被带偏；书稿现已重新扫描、错误内容已删除，内容可信。本使命以现存书稿为方法论权威依据逐条校正主文档，与官方 docs、cookbook、examples 交叉比对补齐，最终交付 docs/best-practices/ 下一小组有序、相对独立、少互相引用的文档，读者可照着从零完成以 StockInsight 为案例的端到端本体建模。",
+  "purpose_tldr": "以重新扫描的书稿为准绳校正主文档中被旧版讹误带偏的内容，交叉比对官方文档/cookbook/examples，把本体建模最佳实践修订为以 StockInsight 为贯穿案例、步骤带可运行代码的端到端有序文档集",
+  "slug": "ontology-modeling-bp-revision-01M1HFWN",
+  "source_description": "修订 docs/best-practices/本体建模最佳实践.md：以 book/ 两篇重新扫描的书稿（内容可信）为方法论权威依据校正主文档，与官方 docs（聚焦本体/建图相关模块）、cookbook、examples 交叉比对补充，以 projects/StockInsight 为贯穿案例，交付有序、相对独立的端到端文档集。书稿只读不改。",
+  "target_branch": "feature/ontology-modeling-bp-revision",
+  "topology": "coord",
+  "vcs": "git"
+}

@@ -8,6 +8,8 @@ import time
 from enum import Enum
 from typing import List, Optional
 
+import networkx as nx
+
 logger = logging.getLogger(__name__)
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -198,6 +200,32 @@ class _PathAlgorithm(str, Enum):
     dijkstra = "dijkstra"
 
 
+def _traversal_graph(graph_dict: dict) -> nx.DiGraph:
+    """Convert a ``build_graph_dict`` payload into a NetworkX digraph.
+
+    ``PathFinder`` resolves nodes via ``graph.has_node`` / ``node in graph``
+    and traverses via ``graph.neighbors`` — NetworkX semantics that a plain
+    ``{entities, relationships}`` dict does not satisfy (``in`` would test
+    the dict's top-level keys, so every node lookup reported "not found").
+    Edge ``weight`` is preserved for weighted (Dijkstra) traversal.
+    """
+    graph = nx.DiGraph()
+    for node in graph_dict.get("entities", []):
+        node_id = node.get("id")
+        if node_id is not None:
+            graph.add_node(node_id)
+    for edge in graph_dict.get("relationships", []):
+        source, target = edge.get("source"), edge.get("target")
+        if source is None or target is None:
+            continue
+        try:
+            weight = float(edge.get("weight", 1.0))
+        except (TypeError, ValueError):
+            weight = 1.0
+        graph.add_edge(source, target, weight=weight)
+    return graph
+
+
 
 
 async def _find_path_impl(
@@ -213,13 +241,14 @@ async def _find_path_impl(
         raise HTTPException(status_code=503, detail="PathFinder not available; KG extras may not be installed.")
 
     graph_dict = await asyncio.to_thread(session.build_graph_dict)
+    traversal = await asyncio.to_thread(_traversal_graph, graph_dict)
     path_fn = (
         path_finder.dijkstra_shortest_path
         if algorithm == _PathAlgorithm.dijkstra
         else path_finder.bfs_shortest_path
     )
     try:
-        result = await asyncio.to_thread(path_fn, graph_dict, source, target, directed=directed)
+        result = await asyncio.to_thread(path_fn, traversal, source, target, directed=directed)
     except Exception as exc:
         raise HTTPException(status_code=404, detail=f"No path found from '{source}' to '{target}': {exc}")
 
@@ -279,7 +308,7 @@ async def _find_path_impl(
             try:
                 k_paths = await asyncio.to_thread(
                     path_finder.find_k_shortest_paths,
-                    graph_dict, source, target, hop_count + 2, directed=directed
+                    traversal, source, target, hop_count + 2, directed=directed
                 )
                 alternative_path_count = max(0, len(k_paths) - 1)
             except Exception as exc:
@@ -473,7 +502,9 @@ async def distance_matrix(
                         else path_finder.bfs_shortest_path
                     )
                     graph_dict = await asyncio.to_thread(session.build_graph_dict)
-                    result = await asyncio.to_thread(path_fn, graph_dict, src, tgt)
+                    result = await asyncio.to_thread(
+                        path_fn, await asyncio.to_thread(_traversal_graph, graph_dict), src, tgt
+                    )
                     path_nodes = result.get("path", []) if isinstance(result, dict) else (result or [])
                     if path_nodes:
                         val = (

@@ -10,6 +10,42 @@ import type { MarkdownApplyResult } from "./markdownResourceClient";
 
 type TranslationKey = keyof typeof en.translation;
 
+/**
+ * Render the path interpretation sentence in the active locale.
+ *
+ * The backend's `interpretation` field is a pre-rendered English string
+ * (see routes/graph.py `_build_interpretation`), so rebuild it here from the
+ * structured fields instead; fall back to the backend string if fields are
+ * missing.
+ */
+function localizePathInterpretation(
+  t: (key: TranslationKey, opts?: Record<string, unknown>) => string,
+  result: PathResponse,
+): string {
+  let text: string;
+  if (result.distance_band === "direct") {
+    text = t("graph.inspector.pathInterpretationDirect");
+  } else if (result.distance_band === "near") {
+    text = t("graph.inspector.pathInterpretationNear", { count: Math.max(result.hop_count - 1, 0) });
+  } else if (result.distance_band === "mid-range") {
+    text = t("graph.inspector.pathInterpretationMidRange", { count: result.hop_count });
+  } else {
+    text = t("graph.inspector.pathInterpretationDistant", { count: result.hop_count });
+  }
+  if (result.bottleneck_node) {
+    text += t("graph.inspector.pathBottleneckSuffix", { node: result.bottleneck_node });
+  }
+  const decay = result.confidence_decay;
+  if (decay != null) {
+    if (decay > 0.7) text += t("graph.inspector.pathConfidenceHigh");
+    else if (decay > 0.4) text += t("graph.inspector.pathConfidenceModerate");
+    else text += t("graph.inspector.pathConfidenceLow");
+  } else {
+    text += ".";
+  }
+  return text;
+}
+
 // distance_band arrives as a structural enum; display labels resolve through
 // translation keys so the badge renders localized text (near/mid-range/distant).
 const BAND_LABEL_KEYS: Record<PathResponse["distance_band"], TranslationKey> = {
@@ -193,7 +229,9 @@ function PathDistanceIntelPanel({ result }: { result: PathResponse }) {
             lineHeight: 1.5,
           }}
         >
-          {result.interpretation}
+          {result.distance_band && result.hop_count != null
+            ? localizePathInterpretation(t, result)
+            : result.interpretation}
         </div>
       )}
     </div>

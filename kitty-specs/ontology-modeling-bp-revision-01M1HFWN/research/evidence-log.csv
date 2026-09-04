@@ -1,0 +1,55 @@
+# Evidence Log: Track all research findings with citations
+#
+# Column Definitions:
+# - evidence_id: Stable identifier for cross-referencing from findings.md (E-*)
+# - timestamp: When evidence was collected (ISO format)
+# - source_type: journal | conference | book | web | preprint | repo (repo = 仓库内代码/文档实证)
+# - citation: Full citation (repo-relative path + 精确位置)
+# - key_finding: Main takeaway from this source (1-2 sentences)
+# - confidence: high | medium | low (based on source quality and clarity)
+# - notes: Additional context, caveats, or methodological notes
+#
+# Validation: Citations must be non-empty; source_type extended with "repo" for in-repo artifacts
+evidence_id,timestamp,source_type,citation,key_finding,confidence,notes
+E-BK-01,2026-09-03T18:00:00,book,docs/best-practices/book/ontology-modeling-ch6-1-preprocessing.md > 6.1.1 > 图 6-1,重扫书稿 29 句话逐句清单为 7 类：2+7+3+1+5+4+7=29 句；每句有标准编号（如 1.1 定义数据属性、7.2 高效查本体数据）,high,重排 29 句话表的唯一权威依据；旧文档表枚举与它大面积不符
+E-BK-02,2026-09-03T18:00:00,book,docs/best-practices/book/ontology-modeling-ch6-1-preprocessing.md > 6.1.2,隐性知识萃取三维度：对象→SKOS/RDF/OWL、任务→OWL-S/SPARQL、规则→SWRL/OWL/ODRL；表 6-1 给 9 环节访谈示范,high,是「书稿目标标准」的出处；其中 OWL-S/ODRL/SWRL 在 Semantica 无实现（见 E-AU-T24）
+E-BK-03,2026-09-03T18:00:00,book,docs/best-practices/book/ontology-modeling-ch6-1-preprocessing.md > 6.1.3,建模准入四标准：描述清晰/逻辑正确/内容完备/极简表达；初审（建模工程师 Checklist）+复核（业务专家会议）双道防线；尺蠖案例演示测试–增强循环,high,现有文档第四章四铁律 P1–P4 与此逐条对应
+E-BK-04,2026-09-03T18:00:00,book,docs/best-practices/book/ontology-modeling-ch6-2-modeling.md > 6.2.1,AI 自动化建模输入三要素（29 句话+术语词典+Prompt 四段式）输出 Turtle 本体；表 6-2 大模型选型五维验证法,high,Prompt 四段式与五维选型法为通用方法论
+E-BK-05,2026-09-03T18:00:00,book,docs/best-practices/book/ontology-modeling-ch6-2-modeling.md > 6.2.2,双大模型协同：A 生成/B 审计、交叉互审→逻辑博弈→专家仲裁三步闭环；B 审计三维度（语法规范/逻辑一致/业务贴合）,high,「双模型协同」术语的权威定义出处；现有文档 5.2 的另一定义与之冲突（E-AU-F2）
+E-BK-06,2026-09-03T18:00:00,book,docs/best-practices/book/ontology-modeling-ch6-2-modeling.md > 6.2.3,可视化三步审查法（全局拓扑/局部语义/规则回溯）；四种 OWL 属性逻辑特征（函数/反函数/传递/逆）源自 Protégé 指南脚注②,high,四剑客是 OWL 推理机能力而非 Semantica 能力（E-AU-T19c）
+E-BK-07,2026-09-03T18:00:00,book,docs/best-practices/book/ontology-modeling-ch6-2-modeling.md > 6.2.4,场景化测试：专家黄金用例→AI 测试矩阵（边缘/异常/等价变异/压力）→验证回溯；失败归因三分类,high,现有文档 3.8 的方法论源头；失败修复回路在现有文档中缺失（E-AU-D38）
+E-AU-T01,2026-09-03T18:30:00,repo,semantica/semantic_extract/methods.py:2367 + _LAZY_EXPORTS 清单,`from semantica.semantic_extract import extract_triplets_llm` 实测 ImportError；该函数未进顶层导出，正确路径 semantica.semantic_extract.methods,high,现有文档 line 114/721 不可运行
+E-AU-T06,2026-09-03T18:30:00,repo,semantica/semantic_extract/coreference_resolver.py:92/249/541,EntityCoreferenceDetector 无 resolve 方法（只有 detect_entity_coreferences(text, mentions)）；resolve(text, entities=) 属于 CoreferenceResolver；返回 CoreferenceChain 列表,high,现有文档 line 157-158 类名/方法名张冠李戴
+E-AU-T07,2026-09-03T18:30:00,repo,semantica/deduplication/methods.py:302,merge_entities 签名为 (entities: List[Dict], method=...)；合法 method：keep_first/keep_last/keep_most_complete/keep_highest_confidence/merge_all/custom；无 prefer_prefLabel 无 groups 参数,high,现有文档 line 159-162 不可运行
+E-AU-T08,2026-09-03T18:30:00,repo,semantica/ontology/ontology_generator.py:116-131 + owl_generator.py:179,from_data→generate_ontology 只接受 entities/relationships 从数据推导本体；注入现成 classes/properties 的正确路径是规范 uri 键后直接喂 to_owl,high,结构性错误：现有文档 3.3/3.5 注入版链路不成立，需重设计
+E-AU-T09,2026-09-03T18:30:00,repo,semantica/ontology/engine.py:29,OntologyEngine() 默认构造 store=None，create_alignment 抛 ProcessingError；须先配置 TripletStore,high,现有文档 line 201-208 缺前置配置
+E-AU-T10,2026-09-03T18:30:00,repo,semantica/conflicts/methods.py:130-150,detect_conflicts 参数是 method（合法值 value/type/relationship/temporal/logical/entity），无 rule 参数无 attribute_range_conflict,high,现有文档 line 220 不可运行
+E-AU-T12,2026-09-03T18:30:00,repo,semantica/deduplication/methods.py:269-288,dedup_triplets(relationships) 返回重复对列表 List[Tuple[rel1, rel2]]，是检测不是清洗,high,现有文档 line 222/729 语义误解：把检测当清洗用
+E-AU-T16,2026-09-03T18:30:00,repo,semantica/ontology/competency_questions.py:125/161,validate_ontology 返回 dict 键为 total_questions/answerable/unanswerable/by_category（int 计数）；逐题状态在 manager.questions[i].answerable,high,现有文档附录 line 741 会 KeyError
+E-AU-T17,2026-09-03T18:30:00,repo,semantica/reasoning/reasoner.py:480/751,Reasoner 原生规则格式 IF...AND...THEN 属实；但 _parse_rule_definition 对不匹配规则静默生成永不触发的空条件规则而非报错,high,比现有文档 7.2 记载更隐蔽的坑，修订要写明
+E-AU-T18,2026-09-03T18:30:00,repo,semantica/kg/graph_builder.py:422,GraphBuilder.build(sources) 不接受 entities=/relationships= 关键字（应传 dict）；无 to_kg_dict 方法（build 本身返回 dict）,high,现有文档 line 377-378 双重错误
+E-AU-T19,2026-09-03T18:30:00,repo,semantica/ontology/engine.py:309-349 + 全库 grep,validate_graph(data_graph, shacl=None, ontology=None) 必须给其一且 data_graph 须 RDF 字符串/rdflib.Graph；全库无四种属性逻辑特征（FunctionalProperty 等）任何处理，to_shacl 也不生成,high,四剑客嫁接不成立：是 Protégé/OWL 推理机能力，Semantica 内应换 SHACL+GraphValidator 表述
+E-AU-T21,2026-09-03T18:30:00,repo,semantica/cli.py:3324 起,CLI 导出是 semantica export --format turtle --output graph.ttl；无 --rdf 选项,high,现有文档 line 483 写错
+E-AU-T24,2026-09-03T18:30:00,repo,semantica/ 全包 grep,无 SWRL、无 OWL-S、无 ODRL 任何实现,high,术语表把三者列为「标准」会误导读者以为受支持；须区分目标标准 vs 实际实现
+E-AU-F1,2026-09-03T18:30:00,repo,docs/best-practices/本体建模最佳实践.md:31-85 vs book ch6-1 图 6-1,现有 29 句话表与重扫书稿大面积不符：枚举数对不上、类目错归（42-46 实为第 5 类）、72/76 语义错配、53-56 标注原图裁切,high,「被旧版扫描带偏」的最直接证据；必须按 E-BK-01 重排
+E-AU-F2,2026-09-03T18:30:00,repo,docs/best-practices/本体建模最佳实践.md:564 vs 3.6/六/七,「双模型协同」一词两义：5.2 定义语义层+向量层，其余章节指生成者 LLM+审计者 LLM（书稿原义）,high,内部矛盾；统一为书稿原义，另一含义改名
+E-AU-D,2026-09-03T18:30:00,repo,docs/best-practices/本体建模最佳实践.md:89-488,九阶段契约缺口系统性存在：无变量级数据流、3.3 objects 与 3.4 facts 来源未定义、3.6 审计回路与 3.8 失败修复回路缺失、四铁律退回对应只给模块名,high,FR-010/011 的修订靶点
+E-AU-E,2026-09-03T18:30:00,repo,docs/best-practices/本体建模最佳实践.md:100/115/160-162/220/292-297/480,示例写死荔枝植保领域（pest_records.csv/荔枝蝽/霜疫霉病/:FrostBlight/农户权限）,high,FR-009 领域解耦与 FR-004 案例替换的靶点
+E-SI-01,2026-09-03T18:00:00,repo,projects/StockInsight/GUIDE.md L15-28 + scripts/investment_pipeline.py,已验证流水线 API 组合：FileIngestor/DocumentParser/NERExtractor(method=llm, provider=openai, base_url=智谱)/OntologyEngine(base_uri).from_data/GraphBuilder(merge_entities=True).build(dict)/ProvenanceManager.track_entity/RDFExporter/ParquetExporter/AgentContext.record_decision,high,文档代码示例的替代基准（全部实测跑通）
+E-SI-02,2026-09-03T18:00:00,repo,projects/StockInsight/scripts/build_full_graph.py:35-44 + investment_reasoning.py,冲突检测实测 detect_conflicts(graph) 可用（0.6.7）；resolve_conflicts(strategy=highest_confidence) 可用；Reasoner 事实/规则字符串格式与 Datalog 大写变量约定实测可用,high,0.6.7 实装行为；docs 0.5.0 未记载 detect_conflicts(kg)（E-DC-05 记载 modules.md 有此写法而 reference 无）
+E-SI-03,2026-09-03T18:00:00,repo,projects/StockInsight/PLAN.md L122-147,std 中间产物契约（7 字段 schema、metadata.source+domain 必带、追加不覆盖）与 raw→std→final 三级数据流目前只有定义未落地；final_graph.json 实为累计抽取图,high,案例引用时只能引已验证部分，规划部分须注明「规划中」
+E-SI-04,2026-09-03T18:00:00,repo,projects/StockInsight/GUIDE.md L70-144,15 条实测坑：provider 参数不被识别须用 provider=openai 字符串、智谱唯一可用端点、关系抽取无 rule 方法、Datalog 变量大写无?前缀、FalkorDB 字符串 ID 不落库、GraphBuilder 返回 dict 需转 networkx,high,坑清单直接进文档「已知边界」
+E-DC-01,2026-09-03T18:00:00,repo,docs/reference/semantic_extract.md,官方抽取输出 schema：Entity{text,type,confidence,start,end}；rel.extract(text, entities=) 需先 NER；方法回退链 method=[llm, pattern],high,阶段契约 3.2 输出约定的权威依据
+E-DC-02,2026-09-03T18:00:00,repo,docs/reference/conflicts.md,「Detect before you merge, not after」；ConflictDetector 仅实现 4 个检测方法，TEMPORAL/LOGICAL 未实现；credibility 默认 0.50 未注册则 credibility_weighted 等同 voting,high,3.4 阶段顺序铁律与能力边界依据
+E-DC-03,2026-09-03T18:00:00,repo,docs/reference/kg.md,GraphValidator 可传 schema（entity_types/relationship_types）做类型词汇校验——文档体系中「本体进 KG 构建」的唯一显式通道；GraphBuilder(merge_entities) 默认 False,high,3.7 建图校验的正确 API
+E-DC-04,2026-09-03T18:00:00,repo,docs/reference/pipeline.md + modules.md,官方推荐顺序 kg_construction = Ingest→Extract Entities→Extract Relations→Dedup→Resolve→Build Graph；「先规范化再去重」官方模板明示,high,九阶段顺序对齐官方链路的依据
+E-DC-05,2026-09-03T18:00:00,repo,docs/reference/*.md vs concepts/quickstart/modules,官方文档 11 处内部不一致（阶段数 5vs6、RuleType 枚举、DatalogEngine vs DatalogReasoner、get_entity_lineage、detect_conflicts、analyze_decision_influence、DocumentParser(ocr)、ml vs huggingface、provider 数、merge_duplicates 返回、merge_entities 语义）,high,裁定规则：reference 为准 + StockInsight 实测优先；进篇4
+E-DC-06,2026-09-03T18:00:00,repo,docs/quickstart.md 标注 0.5.0 vs projects/StockInsight .venv 实测 0.6.7,官方文档版本滞后于实装；凡文档与实测冲突以实测为准并注明版本,high,全文 API 表述的版本基准策略
+E-CB-01,2026-09-03T18:00:00,repo,cookbook/advanced/13_Manual_Ontology_Snowflake_Mapping.ipynb,本体即代码模式：Python dict 手写本体与代码同版本化；业务键派生稳定 ID；关联类物化+快捷边双轨；属性带完整 URI 防 SPARQL 前缀落空；OWL+SHACL 双工件门禁,high,5 个直接相关模式（C1-C6）来源
+E-CB-02,2026-09-03T18:00:00,repo,cookbook/introduction/14_Ontology.ipynb,数据驱动三件套 ClassInferrer/PropertyGenerator/OntologyOptimizer；CQ 验收前置（CompetencyQuestionsManager）；版本管理与标准本体复用（VersionManager/ReuseManager）,high,3.5 阶段的核心补充
+E-CB-03,2026-09-03T18:00:00,repo,cookbook/introduction/17 + 18 + 22,源可信度注册（SourceTracker）+逐字段冲突检测+双策略消解+人工调查指南；去重完整集=合并产物+孤立实体；审计级溯源四元组（source/source_location/source_quote/confidence）+invalidate 不删除,high,3.4/3.9 阶段的核心补充
+E-CB-04,2026-09-03T18:00:00,repo,cookbook/introduction/07 + 25 + advanced/02,span 映射建边（端点查映射表不猜位置）；消解后 merged_from 重映射端点；入图前 GraphValidator 门禁+DANGLING_EDGE 修复复检；种子先行 create_foundation_graph,high,3.1-3.3/3.7 阶段模式来源
+E-CB-05,2026-09-03T18:00:00,repo,cookbook/advanced/10 + 14,时态建模（点事件 timestamp/区间 valid_from-valid_to、enable_temporal）；Datalog 推理 RBAC 样板（KG 关系 dict 直接 add_fact、递归闭包、审计级解释）,high,间接相关模式的代表，延伸阅读
+E-CB-06,2026-09-03T18:00:00,repo,examples/capability_gap_context_graphs_example.py,单文件官方推荐编排样板：全模块串联（含 OntologyEvaluator、PipelineBuilder、EntityResolver(fuzzy)、multi_hop_query、export_rdf）,high,「官方怎么编排整条链」的参照
+E-SKIP-01,2026-09-03T18:00:00,repo,docs/guides/（graphrag/shacl-validation/context-graphs/decision-intelligence/export/provenance/distance-intelligence/graph-analytics 8 篇）,未整篇阅读，仅结构与 API 名抽查,low,局限性声明：如需逐句核对可补充
+E-BK-F,2026-09-03T18:00:00,book,docs/best-practices/book/ 两篇,书稿 7 处转写痕迹（同义反复句、6.1.3 标题漏极简表达、图 6-1 与 6.1.2 名称不一致、脚注①缺失、表 6-2 衍文、合取符号、文件切分）均不影响方法论主干,medium,引用书稿时避开这些点即可，不扩散

@@ -1066,9 +1066,39 @@ function buildFullGraphEdgeClassDiagnostics(
   const counts = createFullEdgeClassCounts();
 
   displayGraph.forEachEdge((edgeId) => {
-    const edgeClass = currentState.viewMode === "full"
-      ? getFullGraphEdgeClass(displayGraph, String(edgeId), currentState)
-      : "hidden";
+    if (currentState.viewMode !== "full") {
+      // In grouped/focused modes the full-graph edge classes don't apply.
+      // Counting every edge as "hidden" here used to report visibleEdges: 0
+      // while the renderer was actually drawing them (via the resolved
+      // visibility policy), so compute real visibility instead. Visible
+      // aggregated edges are cross-community by construction → "bridge".
+      const [src, tgt] = displayGraph.extremities(edgeId);
+      const state = resolveEdgeVisualState(
+        String(edgeId),
+        String(src),
+        String(tgt),
+        currentState.zoomTier,
+        currentState.hoveredNodeId,
+        currentState.selectedNodeId,
+        currentState.selectedEdgeId,
+        currentState.focusIds,
+        currentState.pathEdgeIds,
+        currentState.highlightedIncidentEdgeIds,
+      );
+      const style = resolveEdgeElementStyle(
+        GRAPH_THEME,
+        currentState.zoomTier,
+        state,
+        displayGraph.getEdgeAttributes(edgeId) as EdgeAttributes,
+        String(src),
+        String(tgt),
+        currentState.viewMode,
+        String(edgeId),
+      );
+      counts[style.hidden ? "hidden" : "bridge"] += 1;
+      return;
+    }
+    const edgeClass = getFullGraphEdgeClass(displayGraph, String(edgeId), currentState);
     counts[edgeClass] += 1;
   });
 

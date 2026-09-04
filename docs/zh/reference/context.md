@@ -2,7 +2,7 @@
 title: "上下文模块（Context）"
 description: "智能体上下文图、决策跟踪、因果链、先例搜索、政策执行与多跳 GraphRAG。"
 source: reference/context.md
-source_version: 24f0993584fb160848b2c35510a23b65dc342ae3
+source_version: 67c05b30c1197abf6c51c1508626ecb1a002f8f6
 icon: "brain"
 ---
 
@@ -27,6 +27,7 @@ icon: "brain"
 | `DecisionRecorder` | 记录决策，带嵌入、因果链和元数据 |
 | `PolicyEngine` | 政策管理：`add_policy()`、`check_compliance()`、`get_applicable_policies()` |
 | `CausalChainAnalyzer` | 追溯决策之间的相互影响：`get_causal_chain(decision_id)` |
+| `ErasureCoordinator` | 跨图、记忆和向量库擦除一个实体，返回可审计的 `ErasureReceipt` |
 
 
 ## 你能得到什么
@@ -622,6 +623,87 @@ count = memory.import_data(Path("memory_export/"), format="markdown")
 
 必需的 frontmatter 字段是 `id`、`created_at`、`updated_at`，以及 `type` 或 `kind` 二选一。可选元数据可在顶层编辑。导入会在改动记忆之前拒绝格式错误或重复的字段，重新导入未变化的文件是幂等的。记忆本地的 `entities` 和 `relationships` 会作为溯源保留，但 Markdown 导入不会把它们应用到 `ContextGraph`。请使用专用的导出目录：同名文件会被覆盖，但无关或过期的 Markdown 文件不会被自动删除。导出拒绝覆盖文件系统链接，使用原子文件替换；导入同样拒绝符号链接、Windows 目录联接和其他 Windows 重解析点。
 时间戳偏移量在 Markdown 里原样保留，只在比较时归一化为 UTC，因此带时区和不带时区的记录可以安全地一起查询。向量存储写入会推迟到内存导入提交之后；适配器同步尽力而为，失败会记日志。
+
+
+## ErasureCoordinator
+
+`ContextGraph.purge_node()` 的作用范围只有一张图：节点被移除、写入一条墓碑标记(tombstone)，但同样的内容可能仍以 `AgentMemory` 条目和向量库嵌入的形式存活。`ErasureCoordinator` 驱动跨所有已绑定存储的级联擦除，并返回一份擦除回执(`ErasureReceipt`)，逐项记录每个存储的报告结果。
+
+```python
+from semantica.context import AgentMemory, ContextGraph, ErasureCoordinator
+
+coordinator = ErasureCoordinator(graph=graph, memory=memory)
+
+receipt = coordinator.erase_entity(
+    "customer-4471",
+    reason="GDPR Art. 17 request #882",
+)
+
+if not receipt.complete:
+    # These stores may still hold the entity; handle them out of band.
+    print(receipt.incomplete_stores)
+```
+
+<Warning>
+务必检查回执——调用返回并不代表数据已经删除。FAISS、Milvus 和 Weaviate 没有提供删除方法，因此这些后端目前无法完成擦除；回执会如实报告 `unsupported`，而不是谎报一次它没有取得的成功。
+</Warning>
+
+### 构造参数
+
+| 参数 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| `graph` | `ContextGraph` | `None` | 任何暴露 `purge_node()` 的对象 |
+| `memory` | `AgentMemory` | `None` | 任何暴露 `find_by_entity()` 和 `batch_delete()` 的对象 |
+| `vector_store` | `VectorStore` | `memory.vector_store` | 持有按实体索引的嵌入的存储；传 `False` 可禁用该环节 |
+
+至少要绑定一个存储；未提供的存储会报告 `not_configured`，而不是被静默跳过。
+
+### 方法
+
+| 方法 | 返回 | 说明 |
+| :--- | :--- | :--- |
+| `erase_entity(entity_id, reason, at, vector_ids)` | `ErasureReceipt` | 从所有已绑定存储中擦除一个实体 |
+| `erase_entities(entity_ids, reason, at)` | `List[ErasureReceipt]` | 每个实体一份回执，按序返回；单个失败不会中断其余擦除 |
+
+### 存储状态
+
+| 状态 | 含义 |
+| :--- | :--- |
+| `erased` | 已触达，数据已移除。在向量环节上，它表示存储接受了针对给定 ID 的删除——各后端没有可移植的存在性检查，因此它并不代表实际删除的嵌入数量 |
+| `not_found` | 已触达，但没有该实体的数据 |
+| `not_configured` | 未绑定该存储——属正常情况，不算失败 |
+| `unsupported` | 该存储完全不支持删除；重试也不会有结果 |
+| `failed` | 已触达存储，但删除没有成功 |
+
+### ErasureReceipt
+
+| 成员 | 类型 | 说明 |
+| :--- | :--- | :--- |
+| `entity_id` | `str` | 请求擦除的实体 |
+| `reason` | `Optional[str]` | 记录在回执和图墓碑标记中 |
+| `erased_at` | `str` | ISO-8601 格式；与墓碑标记的 `purged_at` 一致 |
+| `stores` | `Dict[str, Dict]` | 各存储的结果，键为 `vectors`、`memory`、`graph` |
+| `complete` | `bool` | 任一存储报告 `unsupported` 或 `failed` 时为 `False` |
+| `incomplete_stores` | `List[str]` | 可能仍持有该实体数据的存储 |
+| `to_dict()` | `Dict` | 序列化后的回执，可安全持久化为审计记录 |
+
+```python
+receipt.to_dict()
+# {
+#   "entity_id": "customer-4471",
+#   "reason": "GDPR Art. 17 request #882",
+#   "erased_at": "2026-08-16T09:03:36.813220",
+#   "complete": False,
+#   "stores": {
+#     "vectors": {"status": "unsupported", "backend": "faiss",
+#                 "detail": "backend exposes no delete()/delete_vectors(); ..."},
+#     "memory":  {"status": "erased", "items": 14},
+#     "graph":   {"status": "erased", "nodes": 1, "edges": 3},
+#   },
+# }
+```
+
+擦除按由外向内的顺序执行——先向量、再记忆、最后是图。墓碑标记是擦除曾经发生的持久凭证，因此放在最后写入：级联中途崩溃会留下尚存的节点和一份不完整的回执，而不是一条声称多于实际发生情况的墓碑标记。某个存储抛出异常会被记录为 `failed`，其余存储仍会被擦除。对同一实体重复擦除，返回的回执会说明已无可删除的内容，而不会抛出异常。
 
 
 ## PolicyEngine

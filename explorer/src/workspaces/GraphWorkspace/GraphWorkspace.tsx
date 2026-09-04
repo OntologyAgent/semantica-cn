@@ -47,6 +47,12 @@ import { createTemporalSnapshotGuards, type TemporalSnapshotResponse } from "./t
 import { SMALL_GRAPH_MAX_NODES } from "./smallGraphLayout";
 import { buildRealtimeEdgeAttributes } from "./realtimeGraphAttributes";
 import type { LinkPrediction, PathResponse } from "./GraphInspectorPanel";
+import type { MarkdownApplyResult } from "./markdownResourceClient";
+import {
+  NodeMarkdownRefreshGuard,
+  buildNodeMarkdownAttributeUpdate,
+  readNodeMarkdownAttributeUpdate,
+} from "./nodeMarkdownSync";
 import type { GraphSceneHandle, GraphSceneRuntime } from "./scene";
 import type {
   GraphAnalyticsSnapshot,
@@ -1256,9 +1262,10 @@ function collectPluginOverlays(
 interface GraphWorkspaceProps {
   externalFocusNodeId?: string;
   externalFocusToken?: number;
+  onDirtyChange?: (dirty: boolean) => void;
 }
 
-export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: GraphWorkspaceProps = {}) {
+export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirtyChange }: GraphWorkspaceProps = {}) {
   const { t } = useTranslation();
   const [selectedNodeId, setSelectedNodeId] = useState("");
   const [focusedNodeId, setFocusedNodeId] = useState("");
@@ -1267,6 +1274,12 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
   const [isLayoutRunning, setIsLayoutRunning] = useState(false);
   const [graphReady, setGraphReady] = useState(false);
   const [graphVersion, setGraphVersion] = useState(0);
+  const [markdownDraftDirty, setMarkdownDraftDirty] = useState(false);
+  const markdownRefreshGuard = useMemo(() => new NodeMarkdownRefreshGuard(), []);
+  const handleMarkdownDirtyChange = useCallback((dirty: boolean) => {
+    setMarkdownDraftDirty(dirty);
+    onDirtyChange?.(dirty);
+  }, [onDirtyChange]);
   const [viewMode, setViewMode] = useState<GraphViewMode>("full");
   const [aggregationEnabled] = useState(true);
   const [collapsedNeighborhoodNodeIds, setCollapsedNeighborhoodNodeIds] = useState<string[]>([]);
@@ -1646,8 +1659,17 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       : null,
     [viewMode, aggregationEnabled, collapsedNeighborhoodNodeIds, graphVersion],
   );
+  const confirmDiscardMarkdownDraft = useCallback(() => {
+    if (!markdownDraftDirty) return true;
+    const discard = window.confirm(
+      "Discard the unapplied Markdown draft and leave this node?",
+    );
+    return discard;
+  }, [markdownDraftDirty]);
+
 
   const requestViewMode = useCallback((nextViewMode: GraphViewMode) => {
+    if (nextViewMode !== viewMode && !confirmDiscardMarkdownDraft()) return;
     if (nextViewMode === "focused") {
       const resolution = resolveNodeIdForFocusedMode(selectedNodeId, pluginRuntimeRef.current?.displayGraph);
       if (!resolution.resolvedNodeId) {
@@ -1700,6 +1722,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     ));
     setViewMode("full");
   }, [
+    confirmDiscardMarkdownDraft,
     aggregationEnabled,
     collapsedNeighborhoodNodeIds,
     focusedNodeId,
@@ -1710,9 +1733,11 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     lastGroupedSelectedNodeId,
     resolveNodeIdForFocusedMode,
     selectedNodeId,
+    viewMode,
   ]);
 
   const focusNode = useCallback((nodeId: string) => {
+    if (nodeId !== selectedNodeId && !confirmDiscardMarkdownDraft()) return;
     if (!nodeId) {
       setSelectedNodeId("");
       setSelectedEdgeId("");
@@ -1738,14 +1763,18 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
       setFocusedNodeId(nextSelectedNodeId);
       setIsLayoutRunning(false);
     }
-  }, [viewMode]);  // Note: ego/heatmap/distanceMode effects re-run automatically when selectedNodeId changes
+  }, [confirmDiscardMarkdownDraft, selectedNodeId, viewMode]);  // Note: ego/heatmap/distanceMode effects re-run automatically when selectedNodeId changes
 
   useEffect(() => {
     if (!externalFocusNodeId || externalFocusToken == null) return;
     if (lastExternalFocusTokenRef.current === externalFocusToken) return;
     if (!graphReady || !graph.hasNode(externalFocusNodeId)) return;
-
+    if (
+      externalFocusNodeId !== selectedNodeId
+      && !confirmDiscardMarkdownDraft()
+    ) return;
     lastExternalFocusTokenRef.current = externalFocusToken;
+
     // Set state directly instead of going through focusNode(), which captures
     // a stale viewMode in its closure. setViewMode is called first so the node
     // is visible in the full graph before the scene pans to it.
@@ -1755,7 +1784,13 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     window.setTimeout(() => {
       sceneRef.current?.focusNode(externalFocusNodeId);
     }, 0);
-  }, [externalFocusNodeId, externalFocusToken, graphReady]);
+  }, [
+    confirmDiscardMarkdownDraft,
+    externalFocusNodeId,
+    externalFocusToken,
+    graphReady,
+    selectedNodeId,
+  ]);
 
   const handleEdgeSelect = useCallback((edgeId: string) => {
     setSelectedEdgeId(edgeId);
@@ -1868,6 +1903,37 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     document.body.removeChild(anchor);
   }, [inspectableNodeId]);
 
+  const handleMarkdownApplied = useCallback((result: MarkdownApplyResult) => {
+    if (result.resource.kind !== "context-node") return;
+    if (!graph.hasNode(result.resource.id)) return;
+    const syncGeneration = markdownRefreshGuard.begin(result.resource.id);
+    const attributes = graph.getNodeAttributes(result.resource.id) as NodeAttributes;
+    graph.mergeNodeAttributes(
+      result.resource.id,
+      buildNodeMarkdownAttributeUpdate(
+        result.resource.id,
+        result.body,
+        attributes.properties ?? {},
+      ),
+    );
+    setGraphVersion((current) => current + 1);
+    sceneRef.current?.getRuntime()?.requestRender();
+
+    void readNodeMarkdownAttributeUpdate(result.resource.id)
+      .then((savedAttributes) => {
+        if (
+          !markdownRefreshGuard.isCurrent(result.resource.id, syncGeneration)
+          || !graph.hasNode(result.resource.id)
+        ) return;
+        graph.mergeNodeAttributes(result.resource.id, savedAttributes);
+        setGraphVersion((current) => current + 1);
+        sceneRef.current?.getRuntime()?.requestRender();
+      })
+      .catch((syncError) => {
+        console.error("[GraphWorkspace] applied node refresh failed", syncError);
+      });
+  }, [markdownRefreshGuard]);
+
   useEffect(() => {
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const socket = new WebSocket(`${protocol}//${window.location.host}/ws/graph-updates`);
@@ -1898,6 +1964,25 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
           setGraphVersion((current) => current + 1);
           sceneRef.current?.getRuntime()?.requestRender();
         }
+        if (eventType === "UPDATE_NODE" && payload?.id && graph.hasNode(payload.id)) {
+          markdownRefreshGuard.invalidate(payload.id);
+          const properties = payload.properties ?? {};
+          const current = graph.getNodeAttributes(payload.id) as NodeAttributes;
+          const content = typeof properties.content === "string" ? properties.content : "";
+          graph.mergeNodeAttributes(payload.id, {
+            ...buildNodeMarkdownAttributeUpdate(payload.id, content, properties),
+            nodeType: payload.type ?? current.nodeType,
+            valid_from: properties.valid_from ?? null,
+            valid_until: properties.valid_until ?? null,
+          });
+          logEvent(
+            "update-node",
+            `Updated node ${payload.id} via realtime ws`,
+            { nodeId: payload.id, nodeType: payload.type },
+          );
+          setGraphVersion((version) => version + 1);
+          sceneRef.current?.getRuntime()?.requestRender();
+        }
         if (eventType === "ADD_EDGE") {
           const isSmallGraph = smallGraphModeRef.current;
           batchMergeEdges([
@@ -1924,7 +2009,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
     return () => {
       socket.close();
     };
-  }, []);
+  }, [markdownRefreshGuard]);
 
   useEffect(() => {
     setCollapsedNeighborhoodNodeIds([]);
@@ -2198,28 +2283,29 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
   }, [collapsedNeighborhoodNodeIds, focusedNodeId, selectedNodeId, viewMode]);
   const structuralActivePath = structuralSelectedNodeId ? activePath : EMPTY_PATH;
   const structuralActivePathEdgeIds = structuralSelectedNodeId ? activePathEdgeIds : EMPTY_PATH;
-  const displayResult = useMemo(
-    () => (
-      viewMode === "grouped"
-        ? (groupedDisplayCandidate ?? resolveDisplayGraph("", EMPTY_PATH, EMPTY_PATH, "grouped", {
-            aggregationEnabled,
-            collapsedNeighborhoodNodeIds,
-          }))
-        : resolveDisplayGraph(structuralSelectedNodeId, structuralActivePath, structuralActivePathEdgeIds, viewMode, {
-            aggregationEnabled,
-            collapsedNeighborhoodNodeIds,
-          })
-    ),
-    [
-      aggregationEnabled,
-      collapsedNeighborhoodNodeIds,
-      groupedDisplayCandidate,
-      structuralActivePath,
-      structuralActivePathEdgeIds,
-      structuralSelectedNodeId,
-      viewMode,
-    ],
-  );
+  const displayResult = useMemo(() => {
+    // The displayed graph is an aggregated clone. Rebuild it after domain
+    // mutations so applied Markdown labels do not remain stale on the canvas.
+    void graphVersion;
+    return viewMode === "grouped"
+      ? (groupedDisplayCandidate ?? resolveDisplayGraph("", EMPTY_PATH, EMPTY_PATH, "grouped", {
+          aggregationEnabled,
+          collapsedNeighborhoodNodeIds,
+        }))
+      : resolveDisplayGraph(structuralSelectedNodeId, structuralActivePath, structuralActivePathEdgeIds, viewMode, {
+          aggregationEnabled,
+          collapsedNeighborhoodNodeIds,
+        });
+  }, [
+    aggregationEnabled,
+    collapsedNeighborhoodNodeIds,
+    graphVersion,
+    groupedDisplayCandidate,
+    structuralActivePath,
+    structuralActivePathEdgeIds,
+    structuralSelectedNodeId,
+    viewMode,
+  ]);
   const displayState = useMemo(
     () => (
       viewMode === "grouped"
@@ -3342,6 +3428,8 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken }: Grap
                       pathResult={pathResult}
                       onDownloadProvenance={(format) => void handleDownloadProvenance(format)}
                       onFocusNode={focusNode}
+                      onMarkdownApplied={handleMarkdownApplied}
+                      onMarkdownDirtyChange={handleMarkdownDirtyChange}
                     />
                   </Suspense>
                 </div>

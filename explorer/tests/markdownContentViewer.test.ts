@@ -6,7 +6,7 @@ import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import en from "../src/i18n/locales/en.json";
 
-(globalThis as any).React = React;
+(globalThis as typeof globalThis & { React: typeof React }).React = React;
 
 // The viewer's chrome is translated through react-i18next; seed a synchronous
 // English instance before importing the component so SSR output carries the
@@ -72,6 +72,29 @@ test("renders Preview mode with formatted Markdown elements and tabs", () => {
   assert.equal(html.includes("<strong>Bold Statement</strong>"), true);
   assert.equal(html.includes("Item A"), true);
   assert.equal(html.includes("Item B"), true);
+});
+
+test("stays read-only without a resource and exposes Edit for canonical resources", () => {
+  const readOnly = renderToString(React.createElement(MarkdownContentViewer, {
+    content: "Read-only body",
+  }));
+  const editable = renderToString(React.createElement(MarkdownContentViewer, {
+    content: "Editable body",
+    resource: { kind: "context-node", id: "node-1" },
+  }));
+
+  assert.equal(readOnly.includes(">Edit</button>"), false);
+  assert.equal(editable.includes(">Edit</button>"), true);
+});
+
+test("empty canonical resources still expose Edit", () => {
+  const html = renderToString(React.createElement(MarkdownContentViewer, {
+    content: "",
+    resource: { kind: "context-node", id: "empty-node" },
+  }));
+
+  assert.equal(html.includes("No content available for this node."), true);
+  assert.equal(html.includes(">Edit</button>"), true);
 });
 
 test("renders Source mode with exact unmodified text inside pre/code", () => {

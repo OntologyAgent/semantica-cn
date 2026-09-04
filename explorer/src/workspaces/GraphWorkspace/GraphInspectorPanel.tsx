@@ -6,6 +6,7 @@ import type en from "../../i18n/locales/en.json";
 import { GRAPH_THEME, withAlpha } from "./graphTheme";
 import type { GraphSelectedNodeKind } from "./types";
 import { MarkdownContentViewer } from "./MarkdownContentViewer";
+import type { MarkdownApplyResult } from "./markdownResourceClient";
 
 type TranslationKey = keyof typeof en.translation;
 
@@ -57,6 +58,8 @@ export interface GraphInspectorPanelProps {
   pathResult: PathResponse | null;
   onDownloadProvenance: (format: "json" | "markdown") => void;
   onFocusNode?: (nodeId: string) => void;
+  onMarkdownApplied?: (result: MarkdownApplyResult) => void;
+  onMarkdownDirtyChange?: (dirty: boolean) => void;
 }
 
 const PROVENANCE_KEYS = ["source", "source_url", "pmid", "pmids", "evidence", "provenance", "confidence"] as const;
@@ -327,6 +330,8 @@ export function GraphInspectorPanel({
   pathResult,
   onDownloadProvenance,
   onFocusNode,
+  onMarkdownApplied,
+  onMarkdownDirtyChange,
 }: GraphInspectorPanelProps) {
   const { t } = useTranslation();
   if (!nodeId) {
@@ -438,19 +443,18 @@ export function GraphInspectorPanel({
         </div>
       ) : null}
 
-      {/* Content Section — only rendered when the node carries actual content.
-           This matches the existing inspector convention: sections that have no
-           data for the current node are either hidden (temporal bounds) or closed
-           by default (Source Attribution, Properties).  Always showing an open
-           empty panel would add noise for every relationship/predicate node. */}
-      {nodeContent && (
-        <details className="node-panel-collapse" open>
-          <summary className="node-panel-summary">{t("graph.inspector.contentSection")}</summary>
-          <div className="node-panel-body" style={{ marginTop: 8 }}>
-            <MarkdownContentViewer content={nodeContent} />
-          </div>
-        </details>
-      )}
+      {/* Canonical nodes remain editable even when their current body is empty. */}
+      <details className="node-panel-collapse" open>
+        <summary className="node-panel-summary">{t("graph.inspector.contentSection")}</summary>
+        <div className="node-panel-body" style={{ marginTop: 8 }}>
+          <MarkdownContentViewer
+            content={nodeContent}
+            resource={{ kind: "context-node", id: effectiveNodeId }}
+            onApplied={onMarkdownApplied}
+            onDirtyChange={onMarkdownDirtyChange}
+          />
+        </div>
+      </details>
 
       {/* Actions */}
       <section style={sectionStyle}>

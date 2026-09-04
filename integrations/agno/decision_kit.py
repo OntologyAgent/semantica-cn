@@ -472,24 +472,46 @@ class AgnoDecisionKit(_ToolkitBase):  # type: ignore[misc]
             if not isinstance(insights, dict):
                 insights = {"raw": str(insights)}
 
-            # get_context_insights embeds the full community analysis (every
-            # node id of every community). Handing that to an LLM blows the
-            # context window on any non-trivial graph (~192万 tokens on a
-            # 1000-node corpus graph), so keep only counts plus a sample and
-            # surface decision stats — the agent asked for a summary, not a
-            # graph dump.
-            graph_analysis = insights.get("graph_analysis") or {}
-            community_analysis = graph_analysis.get("community_analysis") or {}
-            raw_communities = community_analysis.get("communities")
-            if isinstance(raw_communities, list):
-                community_analysis = {
-                    **community_analysis,
-                    "communities": [
-                        {"size": len(c), "sample": c[:3]} if isinstance(c, list) else c
-                        for c in raw_communities[:8]
-                    ],
-                    "communities_truncated": len(raw_communities) > 8,
+            # get_context_insights embeds whole-graph analysis payloads —
+            # node embeddings alone were 3.1M chars on a 1000-node graph,
+            # plus full centrality/connectivity tables and per-community
+            # node lists. Feeding any of that to an LLM blows the context
+            # window (~1.65M tokens observed). Apply a size gate to every
+            # field: anything over _SUMMARY_FIELD_LIMIT chars is replaced
+            # by a truncation stub instead of a per-key blacklist (upstream
+            # keeps adding large fields).
+            def _slim(value: Any, limit: int = 2000) -> Any:
+                text = json.dumps(value, ensure_ascii=False, default=str)
+                if len(text) <= limit:
+                    return value
+                stub: Dict[str, Any] = {
+                    "_truncated": True,
+                    "original_chars": len(text),
                 }
+                if isinstance(value, dict):
+                    stub["keys"] = list(value.keys())[:20]
+                elif isinstance(value, list):
+                    stub["length"] = len(value)
+                    stub["sample"] = value[:2]
+                return stub
+
+            graph_analysis = _slim(insights.get("graph_analysis") or {})
+            community_analysis = (
+                graph_analysis.get("community_analysis")
+                if isinstance(graph_analysis, dict)
+                else None
+            )
+            if isinstance(community_analysis, dict):
+                raw_communities = community_analysis.get("communities")
+                if isinstance(raw_communities, list):
+                    community_analysis = {
+                        **community_analysis,
+                        "communities": [
+                            {"size": len(c), "sample": c[:3]} if isinstance(c, list) else c
+                            for c in raw_communities[:8]
+                        ],
+                        "communities_truncated": len(raw_communities) > 8,
+                    }
 
             summary = {
                 "category_filter": category,
@@ -499,11 +521,7 @@ class AgnoDecisionKit(_ToolkitBase):  # type: ignore[misc]
                     for key, value in (insights.get("memory_stats") or {}).items()
                     if isinstance(value, (int, float, str, bool))
                 },
-                "graph_analysis": {
-                    key: value
-                    for key, value in graph_analysis.items()
-                    if key != "community_analysis"
-                },
+                "graph_analysis": graph_analysis,
                 "community_analysis": community_analysis,
                 "advanced_features": insights.get("advanced_features", {}),
             }

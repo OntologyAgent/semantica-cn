@@ -75,12 +75,43 @@ Mintlify 组件（`Card`、`Tabs`、`Steps`、`Accordion` 等，源文件中写�
 2. 缺条目：先补术语表，再翻译。
 3. 拿不准：保留英文原词，不硬造译名。
 4. 核心术语译名已冻结，不得更改。
+5. **首现标注**：关键概念和术语首次出现时用「中文（英文）」形式（如
+   知识图谱（Knowledge Graph）、嵌入（Embedding）、本体（Ontology）），
+   同一篇内再次出现可只写中文；纯代码标识符（`ingest`、`kg`）不标。
+   通用词（数据、配置、文件）不加英文标注。
 
 ## Mermaid 图策略
 
 - 图内自然语言节点标签可译，但必须保持 Mermaid 语法有效；拿不准就给标签加双引号。
 - 代码类标签（类名、函数名、模块名）保留英文。
 - 译后逐图目检语法结构未被破坏。
+
+## cookbook 翻译（cookbook_zh/）
+
+cookbook 的 Jupyter notebook 翻译放**平级目录** `cookbook_zh/`，镜像 `cookbook/` 的内部结构、文件同名：
+
+```
+cookbook/introduction/01_Welcome_to_Semantica.ipynb   ← 英文原文（不动）
+cookbook_zh/introduction/01_Welcome_to_Semantica.ipynb ← 中文译文
+```
+
+- **只翻译 Markdown 单元**；代码单元逐字符保留（含代码内注释可译，代码本体不译）。
+- 译文保持**未执行**状态，不携带运行输出。
+- Colab 徽章等链接保持指向英文原版。
+- **source_version 记在 notebook metadata**（notebook 无 frontmatter）：
+
+  ```json
+  "metadata": {
+    "zh_translation": {
+      "source": "introduction/01_Welcome_to_Semantica.ipynb",
+      "source_version": "<40 位 git blob sha，取法同 frontmatter 规范>",
+      "translated_at": "YYYY-MM-DD"
+    }
+  }
+  ```
+
+- `tools/i18n/zh_status.py` 已支持该目录（`DIR_PAIRS`），过期判定与 diff 指引和 docs/zh 相同。
+- 术语沿用本页与 [术语表](./glossary.md)。
 
 ## 验收命令
 

@@ -36,6 +36,13 @@ from typing import Any, Dict, List, Optional
 
 ZH_DIR = "docs/zh"
 SOURCE_DIR = "docs"
+# 译文目录 pairs:每项 (译文目录, 英文源目录, 文件 glob, source_version 读取方式)。
+# docs/zh 走 frontmatter;cookbook_zh 走 notebook metadata(自建约定,
+# 见 docs/zh/README.md「cookbook 翻译」一节)。
+DIR_PAIRS = [
+    ("docs/zh", "docs", "*.md", "frontmatter"),
+    ("cookbook_zh", "cookbook", "*.ipynb", "notebook"),
+]
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 FRONTMATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n?", re.DOTALL)
 
@@ -90,7 +97,9 @@ def parse_frontmatter(text: str) -> Dict[str, str]:
 
 
 def head_blobs(root: Path) -> Dict[str, str]:
-    """单次 ls-tree 取回 HEAD 中 docs/ 下全部文件的 blob sha。
+    """取回 HEAD 中全部英文源目录的 blob sha。
+
+    对 DIR_PAIRS 里每个英文源目录跑一次 ``git ls-tree -r`` 并合并。
 
     Args:
         root: 仓库根目录。
@@ -99,15 +108,16 @@ def head_blobs(root: Path) -> Dict[str, str]:
         相对仓库根的路径到 blob sha 的映射；HEAD 不可读（如空仓库）
         时返回空映射。
     """
-    out = run_git(root, "ls-tree", "-r", "HEAD", "--", SOURCE_DIR + "/")
     blobs: Dict[str, str] = {}
-    if out is None:
-        return blobs
-    for line in out.splitlines():
-        meta, _, path = line.partition("\t")
-        parts = meta.split()
-        if len(parts) == 3 and parts[1] == "blob":
-            blobs[path] = parts[2]
+    for _zh_dir, source_dir, _glob, _kind in DIR_PAIRS:
+        out = run_git(root, "ls-tree", "-r", "HEAD", "--", source_dir + "/")
+        if out is None:
+            continue
+        for line in out.splitlines():
+            meta, _, path = line.partition("\t")
+            parts = meta.split()
+            if len(parts) == 3 and parts[1] == "blob":
+                blobs[path] = parts[2]
     return blobs
 
 
@@ -133,8 +143,28 @@ def diff_stat(root: Path, old_sha: str, new_sha: str) -> str:
     return lines[-1] if lines else "no diff"
 
 
+def _meta_from_frontmatter(path: Path) -> Dict[str, str]:
+    try:
+        return parse_frontmatter(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError):
+        return {}
+
+
+def _meta_from_notebook(path: Path) -> Dict[str, str]:
+    """从 notebook metadata.zh_translation 读 source/source_version。"""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        zh = (data.get("metadata") or {}).get("zh_translation") or {}
+        return {
+            "source": str(zh.get("source", "")),
+            "source_version": str(zh.get("source_version", "")),
+        }
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return {}
+
+
 def scan(root: Path, verbose: bool) -> List[Dict[str, Any]]:
-    """扫描 docs/zh/ 全部译文并逐篇判定状态。
+    """扫描全部译文目录(docs/zh、cookbook_zh)并逐篇判定状态。
 
     Args:
         root: 仓库根目录。
@@ -146,36 +176,35 @@ def scan(root: Path, verbose: bool) -> List[Dict[str, Any]]:
     """
     blobs = head_blobs(root)
     entries: List[Dict[str, Any]] = []
-    for zh_path in sorted((root / ZH_DIR).rglob("*.md")):
-        rel = zh_path.relative_to(root).as_posix()
-        try:
-            meta = parse_frontmatter(zh_path.read_text(encoding="utf-8"))
-        except (OSError, UnicodeDecodeError):
-            meta = {}
-        source = meta.get("source")
-        recorded = meta.get("source_version")
-        current = blobs.get(f"{SOURCE_DIR}/{source}") if source else None
-        entry: Dict[str, Any] = {
-            "path": rel,
-            "source": source,
-            "status": "stale",
-            "recorded_source_sha": recorded or None,
-            "current_source_sha": current,
-        }
-        if not source or not recorded or not SHA_RE.match(recorded):
-            entry["reason"] = "missing_source_version"
-        elif current is None:
-            entry["status"] = "orphan"
-        elif current == recorded:
-            entry["status"] = "fresh"
-        if verbose and entry["status"] in ("stale", "orphan"):
-            if entry["status"] == "orphan":
-                entry["diff_stat"] = "source deleted in HEAD"
-            elif current and recorded and SHA_RE.match(recorded):
-                entry["diff_stat"] = diff_stat(root, recorded, current)
-            else:
-                entry["diff_stat"] = "unavailable (no valid recorded sha)"
-        entries.append(entry)
+    for zh_dir, source_dir, pattern, kind in DIR_PAIRS:
+        reader = _meta_from_frontmatter if kind == "frontmatter" else _meta_from_notebook
+        for zh_path in sorted((root / zh_dir).rglob(pattern)):
+            rel = zh_path.relative_to(root).as_posix()
+            meta = reader(zh_path)
+            source = meta.get("source")
+            recorded = meta.get("source_version")
+            current = blobs.get(f"{source_dir}/{source}") if source else None
+            entry: Dict[str, Any] = {
+                "path": rel,
+                "source": source,
+                "status": "stale",
+                "recorded_source_sha": recorded or None,
+                "current_source_sha": current,
+            }
+            if not source or not recorded or not SHA_RE.match(recorded):
+                entry["reason"] = "missing_source_version"
+            elif current is None:
+                entry["status"] = "orphan"
+            elif current == recorded:
+                entry["status"] = "fresh"
+            if verbose and entry["status"] in ("stale", "orphan"):
+                if entry["status"] == "orphan":
+                    entry["diff_stat"] = "source deleted in HEAD"
+                elif current and recorded and SHA_RE.match(recorded):
+                    entry["diff_stat"] = diff_stat(root, recorded, current)
+                else:
+                    entry["diff_stat"] = "unavailable (no valid recorded sha)"
+            entries.append(entry)
     return entries
 
 
@@ -240,9 +269,14 @@ def main(argv: Optional[List[str]] = None) -> int:
         )
         return 1
 
-    zh_root = root / ZH_DIR
-    if not zh_root.is_dir() or not any(zh_root.rglob("*.md")):
-        print(f"错误: {zh_root} 不存在或没有任何译文", file=sys.stderr)
+    # 环境检查:至少一个译文目录存在且非空。
+    existing = [
+        (root / zh_dir)
+        for zh_dir, _src, pattern, _kind in DIR_PAIRS
+        if (root / zh_dir).is_dir() and any((root / zh_dir).rglob(pattern))
+    ]
+    if not existing:
+        print("错误: 找不到任何译文目录(docs/zh、cookbook_zh)", file=sys.stderr)
         return 2
 
     entries = scan(root, verbose=args.verbose)

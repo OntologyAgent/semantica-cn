@@ -11,14 +11,14 @@
 llm_provider:
   provider: openai
   base_url: https://open.bigmodel.cn/api/paas/v4
-  api_key: 9c586fd7153747deb703b85615c80a3d.MnqVC6vSote1qxdV
+  api_key: YOUR_ZHIPU_API_KEY
   model: glm-5.3-flash
 
 # 嵌入模型: Embedding-3(与智谱知识库同款向量化模型)
 embedding_model:
   provider: openai
   base_url: https://open.bigmodel.cn/api/paas/v4
-  api_key: 9c586fd7153747deb703b85615c80a3d.MnqVC6vSote1qxdV
+  api_key: YOUR_ZHIPU_API_KEY
   model: embedding-3
   dimensions: 2048
 

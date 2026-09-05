@@ -2,7 +2,7 @@
 # Semantica 配置 —— 智谱 GLM 版
 # 模型文档: https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash
 # API Key : https://open.bigmodel.cn/usercenter/apikeys
-#           ↓↓↓  把下面的 <YOUR_ZHIPU_API_KEY> 换成你的 Key  ↓↓↓
+#           ↓↓↓  把下面的 YOUR_ZHIPU_API_KEY 换成你的 Key  ↓↓↓
 # ═══════════════════════════════════════════════════════════════
 
 # 大语言模型: GLM-5.3-Flash

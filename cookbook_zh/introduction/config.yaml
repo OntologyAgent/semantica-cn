@@ -1,0 +1,28 @@
+# ═══════════════════════════════════════════════════════════════
+# Semantica 配置 —— 智谱 GLM 版
+# 模型文档: https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash
+# API Key : https://open.bigmodel.cn/usercenter/apikeys
+#           ↓↓↓  把下面的 <YOUR_ZHIPU_API_KEY> 换成你的 Key  ↓↓↓
+# ═══════════════════════════════════════════════════════════════
+
+# 大语言模型: GLM-5.3-Flash
+#   · Model Code: glm-5.3-flash(1M 上下文,原生多模态,支持 Function Calling)
+#   · 通过 OpenAI 兼容协议接入智谱开放平台
+llm_provider:
+  provider: openai
+  base_url: https://open.bigmodel.cn/api/paas/v4
+  api_key: 9c586fd7153747deb703b85615c80a3d.MnqVC6vSote1qxdV
+  model: glm-5.3-flash
+
+# 嵌入模型: Embedding-3(与智谱知识库同款向量化模型)
+embedding_model:
+  provider: openai
+  base_url: https://open.bigmodel.cn/api/paas/v4
+  api_key: 9c586fd7153747deb703b85615c80a3d.MnqVC6vSote1qxdV
+  model: embedding-3
+  dimensions: 2048
+
+# 知识图谱
+knowledge_graph:
+  backend: networkx
+  temporal: true

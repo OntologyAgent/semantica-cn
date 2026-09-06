@@ -815,6 +815,13 @@ class Semantica:
             # Extract entities and relationships from results
             graph_sources = []
             for result in results:
+                # run_pipeline() wraps the pipeline's step output under
+                # "output"; the raw step result is what carries entities/
+                # relationships. Reading the top level only (the historical
+                # behavior) always yielded an empty graph because those keys
+                # live one level down.
+                if isinstance(result, dict) and isinstance(result.get("output"), dict):
+                    result = result["output"]
                 if isinstance(result, dict):
                     source_data = {}
                     if "entities" in result:

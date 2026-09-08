@@ -1658,7 +1658,11 @@ class TestStore:
         result = runner.invoke(cli_module.main, ["store", "migrate",
                                       "--from", "faiss", "--to", "qdrant"])
         assert result.exit_code != 0
-        assert "faiss, pgvector, sqlite" in result.output
+        # rich Error panel wraps long messages at the terminal width and the
+        # wrapped lines carry the panel border character, so strip borders and
+        # collapse whitespace before matching the backend list.
+        flattened = " ".join(result.output.replace("│", "").split())
+        assert "faiss, pgvector, sqlite" in flattened
 
     def _fake_migrate_store_module(self, source_items, stored, dest_configs=None):
         class _FakeBackendStore:

@@ -2,7 +2,7 @@
 title: "规范化模块（Normalize）"
 description: "文本清洗、实体规范化、日期归一化、数字转换、语言检测与编码修复：在抽取运行之前完成。"
 source: reference/normalize.md
-source_version: 965875e45feb6d89418697587771152dcc8fe5b5
+source_version: 4973eaebc93d3fd7e8ac12dc7478136579675193
 icon: "broom"
 ---
 

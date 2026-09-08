@@ -2,7 +2,7 @@
 title: "距离智能（Distance Intelligence）"
 description: "语义邻域、N×N 距离矩阵、自我模式探索、邻近度混合检索与嵌入缓存优化。"
 source: reference/distance.md
-source_version: 376bda3e195f3f20e6f3521625b0053b86bab7a3
+source_version: 1366e0fd6e8217ad7b18b409f41673b31b9347e5
 icon: "radar"
 ---
 

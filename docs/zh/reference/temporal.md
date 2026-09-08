@@ -2,7 +2,7 @@
 title: "时态智能（Temporal Intelligence）"
 description: "双时态事实、时点快照、Allen 区间代数、时态模式检测与自然语言时态解析，构建时间感知的知识图谱。"
 source: reference/temporal.md
-source_version: d4bd4fdd069922b46c935ee592b2d6bd8551a5f8
+source_version: f204d65d3ff7fdc588e5477e8f8fcd6af7587706
 icon: "clock"
 ---
 

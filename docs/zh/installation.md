@@ -2,7 +2,7 @@
 title: 安装
 description: 一分钟内装好 Semantica。
 source: installation.md
-source_version: f5adfeaefaa16da115b2340a8e96e9a107dfc75f
+source_version: c8dd48a466dcdea6126a4bd3fae29f15676a7ccb
 icon: "download"
 ---
 

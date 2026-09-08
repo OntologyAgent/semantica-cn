@@ -2,7 +2,7 @@
 title: "分块模块（Split）"
 description: "文本分块：递归、语义、实体感知、关系感知、结构化与滑动窗口等切分策略。"
 source: reference/split.md
-source_version: 2a6484505037f206c1c91b1ceab9c4dab49f3ec7
+source_version: 91d873069c545d9466e1964895f0bf88296bb853
 icon: "scissors"
 ---
 

@@ -2,7 +2,7 @@
 title: "推理模块（Reasoning）"
 description: "前向链接、Rete、演绎、溯因、SPARQL、Datalog 与时态推理，附可解释的推理路径。"
 source: reference/reasoning.md
-source_version: ee22e5227245e1695b14e684684789bc049a4461
+source_version: 7c539d72c462ea974937c6dc632a9e22b692ac66
 icon: "microchip"
 ---
 
@@ -314,7 +314,7 @@ all_facts = datalog.derive_all()
 
 # Query with variable pattern: variables start with uppercase or ?
 results = datalog.query("ancestor(alice, ?Z)")
-# → [{"Z": "bob"}, {"Z": "charlie"}, {"Z": "dave"}]
+# → 一组绑定字典: [{"Z": "bob"}, {"Z": "charlie"}, {"Z": "dave"}]（顺序不保证）
 
 # Clear and start over
 datalog.clear()

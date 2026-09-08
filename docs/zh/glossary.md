@@ -2,7 +2,7 @@
 title: 术语表
 description: Semantica 中文文档术语对照表——全部译文的译名权威源
 source: glossary.md
-source_version: 271681c72c5c5395d328b1a64adb9de7ed8e8333
+source_version: 00e8462784f000d8fc08ed4fc1032cfdf499e2ef
 ---
 
 # 术语表

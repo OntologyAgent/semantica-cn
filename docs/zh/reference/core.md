@@ -2,7 +2,7 @@
 title: "核心模块（Core）"
 description: "框架编排、生命周期管理、配置与插件系统。"
 source: reference/core.md
-source_version: f2cbd864bfa6493680a1740f28976e0bf2217a93
+source_version: 741327f5604ae5cfe28c9285d21347684b5a2961
 icon: "gear"
 ---
 

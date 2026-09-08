@@ -2,7 +2,7 @@
 title: "可视化模块（Visualization）"
 description: "知识图谱、本体、嵌入空间与时态数据的交互式及静态可视化。"
 source: reference/visualization.md
-source_version: a5d2f2c8ed1b1fa8353ccc1c5d9eb47f071874d9
+source_version: 4ae9f59f048e944c9017039c53242fdbb72a310e
 icon: "chart-bar"
 ---
 

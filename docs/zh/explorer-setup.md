@@ -2,7 +2,7 @@
 title: Explorer 配置
 description: 安装 Explorer extra，把 ContextGraph 存成 JSON，然后启动交互式浏览器面板。
 source: explorer-setup.md
-source_version: 4d8caa1fdbe88b0746f0947ef329a2774b316359
+source_version: b21e2a3fa40e70b289137783014d5618db3dd20e
 icon: "map"
 ---
 
@@ -111,7 +111,7 @@ Explorer 从磁盘上的 JSON 文件加载图。你需要先创建这个文件�
 </Steps>
 
 <Tip>
-  流水线已经产出图了？直接跳到第 2 步。唯一要求是文件经 `ContextGraph.save_to_file()` 保存。
+  流水线已经产出了保存好的图？可以直接跳到第 2 步，前提是文件经 `ContextGraph.save_to_file()` 保存。
 </Tip>
 
 

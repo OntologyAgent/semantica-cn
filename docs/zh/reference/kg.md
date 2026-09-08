@@ -2,7 +2,7 @@
 title: "知识图谱模块（KG）"
 description: "图构建、时态模型、图分析、相似度打分与结构化嵌入。"
 source: reference/kg.md
-source_version: 59bf42cb4b63d8f76e73743da2f4cb1163fa6382
+source_version: 31d80ed6f0aecac8675070fcd57faecea80b7332
 icon: "diagram-project"
 ---
 

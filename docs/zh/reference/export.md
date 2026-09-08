@@ -2,7 +2,7 @@
 title: "导出模块（Export）"
 description: "把知识图谱导出为 RDF、Parquet、LPG、ArangoDB AQL、CSV、GraphML、OWL、JSON-LD、Arrow 和向量格式。"
 source: reference/export.md
-source_version: eef19e941a4eaed063e00d49d55d8e870c81d11e
+source_version: 61bf9cd6f2f5c342dc01d23067204b90a368927c
 icon: "file-export"
 ---
 

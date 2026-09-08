@@ -2,7 +2,7 @@
 title: "变更管理模块（Change Management）"
 description: "面向知识图谱与本体的版本控制、SHA-256 校验和、差异分析、回滚与审计轨迹。"
 source: reference/change_management.md
-source_version: 61b118240e15b312b410dc03bf61ac41d608436d
+source_version: ad74a54e56e9e130a0c3f967cf77affe3415038b
 icon: "clock-rotate-left"
 ---
 

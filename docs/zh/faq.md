@@ -2,7 +2,7 @@
 title: 常见问题
 description: Semantica 常见问题：安装、功能、集成与故障排查。
 source: faq.md
-source_version: 9bcc87f0e858a9de77aff7e9c12b0e34fb634694
+source_version: c98fdf1cfda14c4e8b648f884e05f14cf765c7d7
 icon: "circle-question"
 ---
 
@@ -18,8 +18,8 @@ icon: "circle-question"
 | Python 版本？ | 3.8+（推荐 3.11+） |
 | 需要 API key 吗？ | 可选：模式抽取无需任何 key |
 | 兼容 LangChain / LlamaIndex 吗？ | 兼容：Semantica 是叠加层，不是替代品 |
-| 生产可用吗？ | 可以：1000+ 项测试，v0.5.0 带 12 项安全修复 |
-| 最新版本？ | **v0.6.7**（2026 年 8 月） |
+| 生产可用吗？ | 可以：1000+ 项测试，每个版本都随附安全修复（见 [CHANGELOG](https://github.com/semantica-agi/semantica/blob/main/CHANGELOG.md)） |
+| 最新版本？ | **v0.6.8**（2026 年 9 月） |
 | 支持本地 LLM 吗？ | 支持：经 LiteLLM 接 Ollama，气隙环境用 HuggingFaceLLM |
 
 
@@ -72,9 +72,9 @@ Semantica 解释的是模型*之外*的部分：用了什么上下文和数据�
 
 <Accordion title="最新版本是多少？" icon="star">
 
-**v0.5.0**：2026 年 5 月发布。
+**v0.6.8**：2026 年 9 月发布。
 
-亮点：本体中心(Ontology Hub)、距离智能(Distance Intelligence)、Parquet/XML 摄取、12 项安全修复、图探索器重设计、NER 网关修复。
+亮点：每个版本现已带密码学签名（SLSA 构建溯源 + Sigstore，补上 OpenSSF Scorecard 的 Signed-Releases 缺口）；FAISS/SQLiteVec/PgVector/Qdrant/Weaviate/Milvus 全线真实的向量枚举（`scan_vectors()`/`iter_vectors()`），让 `store migrate` 真正可用；Anthropic/Gemini/Ollama/DeepSeek/Novita 一等 LLM 提供商包装器；面向 CI 的本体质量门(quality gate)；以及 35 项正确性修复。0.6.x 系列还加入了一等 LangChain 与 CrewAI 支持、带确定性 IRI 的 Semantica RDF 词表。完整历史见 [CHANGELOG](https://github.com/semantica-agi/semantica/blob/main/CHANGELOG.md)。
 
 ```bash
 pip install --upgrade semantica
@@ -271,7 +271,7 @@ Groq、OpenAI、Anthropic、Google Gemini、Ollama（完全本地）、DeepSeek�
 
 <Accordion title="Semantica 生产可用吗？" icon="shield-check">
 
-可以。v0.5.0 带有：
+可以。每个版本都带有：
 
 - 1000+ 项通过测试，覆盖 Python 3.8–3.12
 - `PipelineValidator` 和 `FailureHandler`，带指数退避和可配置重试策略

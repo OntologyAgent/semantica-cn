@@ -2,7 +2,7 @@
 title: "Explorer 模块（Explorer）"
 description: "交互式 FastAPI 面板：知识图谱探索、本体管理与图分析。"
 source: reference/explorer.md
-source_version: d0415bdbf03f5ffd0a82dc8213b7727a5062c8d2
+source_version: b24c3a185d879799954250b93b49999f9add2bcb
 icon: "map"
 ---
 

@@ -2,7 +2,7 @@
 title: "溯源模块（Provenance）"
 description: "W3C PROV-O 谱系追踪、来源归属、防篡改校验和与跨模块审计轨迹。"
 source: reference/provenance.md
-source_version: fe94eb1640ee993a550b844be011369c9851362f
+source_version: edbc8026255b147c6ef2f26e88f97e081bbf2463
 icon: "link"
 ---
 

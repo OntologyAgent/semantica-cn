@@ -2,7 +2,7 @@
 title: "摄取模块（Ingest）"
 description: "从文件、Parquet、XML、网页、公共 API、订阅源、流、代码仓库、邮件和数据库统一摄取数据。"
 source: reference/ingest.md
-source_version: b2135a38ca537629b4c7db5a4db96b8b2ad0ec93
+source_version: bb750179c1b1de39b22a1d83b8d327f5d3a155a5
 icon: "database"
 ---
 

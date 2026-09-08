@@ -2,7 +2,7 @@
 title: "种子数据模块（Seed）"
 description: "从经过验证的结构化来源引导知识图谱：分类体系、参考表、产品目录和领域锚点。"
 source: reference/seed.md
-source_version: 2e65b21e41be672567fe589c58086162747f41f5
+source_version: 736c794957d1f74dad7820a5e4343529876bf0c1
 icon: "database"
 ---
 

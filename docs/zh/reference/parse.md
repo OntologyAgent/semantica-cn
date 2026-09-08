@@ -2,7 +2,7 @@
 title: "解析模块（Parse）"
 description: "文档解析与文本抽取：标准格式用 DocumentParser，复杂版面用 DoclingParser。"
 source: reference/parse.md
-source_version: 55ecf3b899b0895af29f5d518978b6b68a40ffde
+source_version: a0673253275c850e44b5819f91680a715652da7a
 icon: "file-lines"
 ---
 

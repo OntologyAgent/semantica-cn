@@ -2,7 +2,7 @@
 title: 架构
 description: 四层模块化架构，各组件可独立使用、职责清晰分离，且完全可扩展。
 source: architecture.md
-source_version: 25612793a7f18636e4ad9bfc7736e6f5f0603337
+source_version: e0f70fc52f2986197e337aa38033d948a7e19984
 icon: "building"
 ---
 

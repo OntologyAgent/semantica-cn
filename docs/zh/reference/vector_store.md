@@ -2,7 +2,7 @@
 title: "向量存储模块（Vector Store）"
 description: "FAISS、Pinecone、Weaviate、Qdrant、Milvus、PgVector 的统一接口，支持混合检索。"
 source: reference/vector_store.md
-source_version: ea2649091378057f5377df9eff8068d79580f5ea
+source_version: 2ca4b4555798b593e8db7d4cfc19daaa4af030a0
 icon: "database"
 ---
 
@@ -162,7 +162,7 @@ store.load("./my_store")   # restore from directory
   <Tab title="Pinecone">
 
 ```bash
-pip install "semantica[pinecone]"
+pip install "semantica[vectorstore-pinecone]"
 ```
 
 ```python
@@ -180,7 +180,7 @@ store = VectorStore(
   <Tab title="Weaviate">
 
 ```bash
-pip install "semantica[weaviate]"
+pip install "semantica[vectorstore-weaviate]"
 ```
 
 ```python
@@ -196,7 +196,7 @@ store = VectorStore(
   <Tab title="Qdrant">
 
 ```bash
-pip install "semantica[qdrant]"
+pip install "semantica[vectorstore-qdrant]"
 ```
 
 ```python
@@ -212,7 +212,7 @@ store = VectorStore(
   <Tab title="PgVector">
 
 ```bash
-pip install "semantica[pgvector]"
+pip install "semantica[vectorstore-pgvector]"
 ```
 
 ```python

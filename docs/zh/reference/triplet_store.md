@@ -2,7 +2,7 @@
 title: "三元组存储模块（Triplet Store）"
 description: "内嵌与服务器形态的 RDF 存储，支持 SPARQL 查询和批量加载。"
 source: reference/triplet_store.md
-source_version: ee5c24e6f96867ead1f80ec11f31aa186fc62107
+source_version: 5be8c35768a8a56ee8f4c90a366df7a3acb4850b
 icon: "table"
 ---
 

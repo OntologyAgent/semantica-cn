@@ -2,7 +2,7 @@
 title: "流水线模块（Pipeline）"
 description: "流水线 DSL：并行 worker、重试策略、失败处理与进度跟踪。"
 source: reference/pipeline.md
-source_version: de450ed24ec0c0ca735350c224a5ba9ff36b1faf
+source_version: 9fe33aab39d6b36ef0ac17fbcddf90f1733672b3
 icon: "gear"
 ---
 

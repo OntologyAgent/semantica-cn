@@ -2,7 +2,7 @@
 title: CLI 配置
 description: Semantica 的五个可执行文件：各自的作用、使用时机，以及如何确认它们正常工作。
 source: cli-setup.md
-source_version: 3abe4d904e14f0ff50e46e842fe0969539a443ec
+source_version: c401eeeca7663e96dd3be5b50acb4b2f45f0b444
 icon: "terminal"
 ---
 
@@ -20,7 +20,7 @@ pip install semantica
 | 命令 | 入口点 | 作用 |
 | :------- | :----------- | :------------ |
 | `semantica` | `semantica.cli:main` | 通用 CLI：流水线运行、抽取、图操作 |
-| `semantica-server` | `semantica.server:main` | FastAPI/uvicorn REST API 服务器，绑定 `0.0.0.0:8000` |
+| `semantica-server` | `semantica.server:main` | FastAPI/uvicorn REST API 服务器，默认绑定 `127.0.0.1:8000`（设 `SEMANTICA_HOST` 可覆盖） |
 | `semantica-worker` | `semantica.worker:main` | Semantica 部署的后台工作进程入口 |
 | `semantica-explorer` | `semantica.explorer:main` | 交互式浏览器面板，用于知识图谱探索 |
 | `semantica-mcp` | `semantica.mcp_server:main` | MCP 服务器（stdio），供 Claude Desktop、Cursor、Windsurf 等 MCP 客户端使用 |
@@ -52,7 +52,7 @@ python -c "import semantica; print(semantica.__version__)"
 ## 各命令的使用时机
 
 - **semantica** — 通用 CLI。适合在 shell 脚本或 CI 任务里做一次性流水线运行、实体抽取和图操作。
-- **semantica-server** — 启动 REST API 服务器，绑定 `0.0.0.0:8000`。当其他服务或应用需要经 HTTP 以编程方式访问 Semantica 时使用。
+- **semantica-server** — 启动 REST API 服务器，默认绑定 `127.0.0.1:8000`（设 `SEMANTICA_HOST` 可覆盖）。当其他服务或应用需要经 HTTP 以编程方式访问 Semantica 时使用。
 - **semantica-worker** — 后台任务处理器。当异步流水线执行需要脱离请求周期时，与 `semantica-server` 搭配运行。先启动服务器，再启动一个或多个指向同一后端的工作进程。
 - **semantica-explorer** — 启动浏览器面板，需要 `pip install semantica[explorer]`。用于交互式探索已保存的知识图谱。见 [Explorer 配置](./explorer-setup.md)。
 - **semantica-mcp** — 以 stdio 方式运行 MCP 服务器。在 MCP 客户端的设置文件里配置它，即可向 Claude Desktop、Cursor、Windsurf 或任何支持 MCP 的客户端暴露全部 12 个工具和 3 个资源。见 [MCP 服务器](../reference/mcp_server.md)。
@@ -63,7 +63,7 @@ python -c "import semantica; print(semantica.__version__)"
 <Tabs>
   <Tab title="REST 服务器">
     ```bash
-    # 在 0.0.0.0:8000 上启动 FastAPI + uvicorn
+    # 在 127.0.0.1:8000 上启动 FastAPI + uvicorn（设 SEMANTICA_HOST 可更改）
     semantica-server
     ```
 

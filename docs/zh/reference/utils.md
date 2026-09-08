@@ -2,7 +2,7 @@
 title: "工具模块（Utils）"
 description: "日志、校验、错误处理、进度跟踪与常用操作的共享工具集。"
 source: reference/utils.md
-source_version: f7e9778900f2e0d0e117bf4f2e4fa3bc6c6db90a
+source_version: 2386a956155b938905f718f68a1735b7cbd2fc8d
 icon: "wrench"
 ---
 

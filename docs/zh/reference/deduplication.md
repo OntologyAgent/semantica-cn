@@ -2,7 +2,7 @@
 title: "去重模块（Deduplication）"
 description: "实体去重：相似度打分、分块(blocking)、合并与基于聚类的批处理。"
 source: reference/deduplication.md
-source_version: bb514abd19ac1a76ab1b24216be522dde0ded674
+source_version: d69f92ce71454b98125abfa6f790abf34f5284ab
 icon: "copy"
 ---
 

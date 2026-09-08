@@ -2,7 +2,7 @@
 title: "图存储模块（Graph Store）"
 description: "Neo4j、FalkorDB、Apache AGE、Amazon Neptune 图数据库的统一接口。"
 source: reference/graph_store.md
-source_version: e14da6f64251b6d9c7947b961d34c45a0890b8c6
+source_version: 4c9b350a2be817053c6da4371b179d64be94931f
 icon: "server"
 ---
 

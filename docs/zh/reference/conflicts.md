@@ -2,7 +2,7 @@
 title: "冲突检测模块（Conflicts）"
 description: "多源冲突检测与消解：值、类型、时序和逻辑冲突，附调查指南。"
 source: reference/conflicts.md
-source_version: 977b1ded1f279baed0cf638732f9018f14a7c696
+source_version: b23cefe54bf5404f1ad25b381d2be1fef18c8d84
 icon: "triangle-exclamation"
 ---
 

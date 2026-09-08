@@ -2,7 +2,7 @@
 title: "语义抽取模块（Semantic Extract）"
 description: "命名实体识别(NER)、关系抽取、事件检测与三元组生成。"
 source: reference/semantic_extract.md
-source_version: 8f5a58dfbeac2c4f48748dff556394c9a2db63e1
+source_version: e8fbd9c080c510e296d91e24ace986c7966d7556
 icon: "magnifying-glass-chart"
 ---
 
@@ -192,6 +192,41 @@ trip = TripletExtractor(method=["llm", "pattern"])
 # Always returns results - guarantees non-empty extraction
 entities = ner.extract(text)
 ```
+
+### NER 合并策略
+
+`NERExtractor` 默认 `merge_strategy="fallback"`，方法列表保持为有序回退链。要让多个方法一起跑，请从下面的显式策略中选择：
+
+| 策略 | 行为 |
+| :--- | :--- |
+| `fallback` | 返回第一个非空的方法结果。 |
+| `union` | 保留任意方法的候选。同标签的边界变体会被对齐合并，不同标签的候选继续可用。 |
+| `consensus` | 要求偏移对齐的候选获得跨方法支持。`min_votes` 默认为 `2`。 |
+
+```python
+from semantica.semantic_extract import NERExtractor
+
+ner = NERExtractor(
+    method=["spacy", "huggingface"],
+    merge_strategy="consensus",
+    min_votes=2,
+    min_agreement=0.75,  # 可选的支持率要求
+    method_weights={"spacy": 0.8, "huggingface": 1.0},
+)
+entities = ner.extract(text)
+
+for entity in entities:
+    print(entity.metadata["supporting_methods"])
+    print(entity.metadata["vote_count"], entity.metadata["agreement"])
+```
+
+Consensus 的支持票按配置的全部参评方法计数，而不只统计产出了候选的方法——空结果或失败的方法算一张不支持票。当各方法覆盖面不同时，用 `eligible_methods=[...]` 收窄共识分母；互补型规则抽取器则用 `merge_strategy="union"`。`method_weights` 只用于在跨度完全一致、但跨标签打平的场合打破平局，绝不会把一个方法变成多张选票。
+
+合并后的实体 metadata 含 `supporting_methods`、`vote_count`、`eligible_method_count`、`agreement` 和逐方法的 `method_scores`。Consensus 把兼容的标签别名（如 `PER`/`PERSON`、`ORGANIZATION`/`ORG`）视为同一票；只有在最终跨度完全一致时才用方法权重、票数、置信度和稳定的标签顺序去解决跨标签冲突，不同跨度上的嵌套实体继续可用。`ml` 与 `spacy` 在投票和权重中视为同一后端，权重可互换（冲突值会被拒绝）。边界候选只在其跨度与该候选内已有每张选票的 IoU ≥ 0.5 时才一对一匹配；置信度相同的变体取更长跨度。提供商没给偏移量时，Semantica 先按全词匹配在文档中定位其实体文本再合并——这让重复出现的相同文本保持独立，也防止一个宽跨度冒充多次提及的选票。
+
+`ensemble_voting=True` 已废弃，迁移期映射为 `merge_strategy="union"`。需要方法间共识时用 `merge_strategy="consensus"`。
+
+与 `fallback` 不同，`union` 和 `consensus` 不会在配置方法全部空手而归后补注入 pattern 抽出的实体——在这两种策略下，空结果是有语义的。
 
 
 ## 极简上手

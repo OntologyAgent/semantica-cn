@@ -2,7 +2,7 @@
 title: "嵌入模块（Embeddings）"
 description: "文本与图嵌入生成：FastEmbed、Sentence-Transformers、OpenAI、BGE，带池化策略与提供商无关的 API。"
 source: reference/embeddings.md
-source_version: f62dc6e320f236147f0fedd4ceb5fba96e3a5c2d
+source_version: 5658be565695e8e98cdf3361027725657e4f2dac
 icon: "vector-square"
 ---
 

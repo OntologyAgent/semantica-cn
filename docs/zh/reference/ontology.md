@@ -2,7 +2,7 @@
 title: "本体模块（Ontology）"
 description: "自动化本体生成、SHACL 校验、OWL/RDF 导出、命名空间管理，以及基于 LLM 的本体生成。"
 source: reference/ontology.md
-source_version: 0aa87061f1e5b14f32395936a31108e3b4864f3a
+source_version: 5594e7de35899b1eb2e8b4b474be1ceb180f3214
 icon: "sitemap"
 ---
 
@@ -24,6 +24,7 @@ icon: "sitemap"
 | `LLMOntologyGenerator` | 复杂领域的 LLM 驱动本体生成 |
 | `SHACLGenerator` | 从本体或 KG 模式生成 SHACL 形状 |
 | `OntologyValidator` | 用 SHACL 形状校验任意图：返回 `SHACLValidationReport` |
+| `OntologyQualityGate` | 为 CI 运行确定性的本体/KG 质量检查 |
 | `OWLGenerator` | 把本体序列化为 Turtle、RDF/XML、JSON-LD |
 | `NamespaceManager` | IRI 生成、前缀管理与命名空间绑定 |
 | `OntologyEvaluator` | 覆盖率、完整度与粒度质量指标 |
@@ -83,8 +84,33 @@ engine.export_owl(ontology, "ontology.ttl", format="turtle")
 | :------ | :----------- |
 | `from_data(data)` | 对实体/关系数据运行 5 阶段流水线 |
 | `validate_graph(kg, ontology=...)` | 用生成的 SHACL 形状校验知识图谱 |
+| `quality_check(ontology, graph_data=...)` | 返回确定性的质量报告与 CI 友好的通过/失败结果 |
 | `export_owl(ontology, path, format)` | 序列化为 `"turtle"`、`"xml"` 或 `"json-ld"` |
 | `evaluate(ontology, kg)` | 计算覆盖率、完整度与粒度指标 |
+
+### 本体质量门(Quality Gate)
+
+在导出或部署前用质量门捕捉结构性问题，不引入任何运行时依赖：
+
+```python
+from semantica.ontology import ontology_quality_check
+
+report = ontology_quality_check(
+    ontology,
+    graph_data=kg,
+    thresholds={"min_coverage": 0.8},
+)
+
+if not report.passed:
+    for issue in report.issues:
+        print(issue.code, issue.message)
+```
+
+报告检查类/属性的覆盖率、孤立的模式元素、定义域和值域引用，以及未解析的 KG 关系端点。它输出机器可读的问题代码、严重级别、计数、指标和阈值失败项。第一版只报告发现，不自动修数据。
+
+### 阈值
+
+`min_coverage`（默认 `0.0`）设定 `coverage` 分数（类覆盖与属性覆盖的平均值，`0.0` 到 `1.0`）的下限，低于它质量门判失败。`max_errors`（默认 `0.0`）限制允许的 `error`/`critical` 级问题数量，超出即失败。`max_warnings`（默认 `None`）以同样方式限制 `warning` 级问题，`None` 表示仅 warning 永远不会让质量门失败。`fail_on_warnings` 是独立参数而非 `thresholds` 键，直接传给 `OntologyQualityGate(...)` 或 `.check(...)`；为 `True` 时，一条 warning 就会让质量门失败，无论 `max_warnings` 是多少。
 
 ## OntologyGenerator（5 阶段流水线）
 

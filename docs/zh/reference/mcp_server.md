@@ -2,13 +2,13 @@
 title: "MCP 服务器（MCP Server）"
 description: "模型上下文协议(MCP)服务器：把 Semantica 的全部能力暴露给 Claude Desktop、VS Code、Cursor 及任何支持 MCP 的工具。"
 source: reference/mcp_server.md
-source_version: 972995b46a07e6dabefb355ffef6a5f274897969
+source_version: 37f63429479fee4d129c0044b9e84de679e30a00
 icon: "plug"
 ---
 
 **`semantica.mcp_server`** 把 Semantica 的知识图谱、决策智能、语义抽取和推理能力以 [MCP（模型上下文协议，Model Context Protocol）](https://modelcontextprotocol.io)**服务器形式经 stdio 暴露**：
 
-- 暴露 12 个 MCP 工具：抽取实体、查询图、记录决策、运行推理、导出结果
+- 暴露 15 个 MCP 工具：抽取实体、查询图、记录决策、运行推理、导出结果
 - 启动后无需写 Python 代码：配置一次，任何支持 MCP 的客户端都能用
 - 兼容 Claude Desktop、Windsurf、Cline、Continue、VS Code、Roo Code、Cursor
 
@@ -42,7 +42,7 @@ python -m semantica.mcp_server
 
 ## 你能得到什么
 
-- **12 个 MCP 工具** — 抽取实体、抽取关系、记录决策、查询决策、查找先例、追溯因果链、添加实体、添加关系、运行分析、总结图、运行推理、导出图。
+- **15 个 MCP 工具** — 抽取实体、抽取关系、记录决策、查询决策、查找先例、追溯因果链、添加实体、添加关系、运行分析、总结图、运行推理、导出图、查询活动图、更新节点、归档节点。
 - **3 个可读资源** — 实时图 JSON（`semantica://graph/summary`）、决策列表和 schema/版本信息：任何 MCP 客户端都可读取。
 - **零基础设施** — 经 stdio 运行：无需服务器、无需端口、无需 Docker。在任何 MCP 客户端里一个配置块即可启用。
 - **持久化图** — 把 `SEMANTICA_KG_PATH` 指向已保存的图文件，服务器每次启动自动重新加载。
@@ -161,7 +161,7 @@ MCP 服务器包含在基础安装中：无需任何 extra。
 
 ## 工具
 
-MCP 服务器暴露 12 个工具，任何已连接的 AI 助手都可以调用：
+MCP 服务器暴露 15 个工具，任何已连接的 AI 助手都可以调用：
 
 | 工具 | 类别 | 说明 |
 | :---- | :-------- | :----------- |
@@ -175,6 +175,9 @@ MCP 服务器暴露 12 个工具，任何已连接的 AI 助手都可以调用�
 | `add_relationship` | 图操作 | 在两个节点之间添加有向边 |
 | `get_graph_summary` | 图操作 | 节点数、决策数、图状态 |
 | `get_graph_analytics` | 图操作 | PageRank 中心性与社区检测 |
+| `query_graph` | 图操作 | 取单个节点、遍历邻居，或按关键词搜索节点 |
+| `update_node` | 图操作 | 把属性合并进节点并持久化到 `SEMANTICA_KG_PATH` |
+| `delete_node` | 图操作 | 软删除（归档）节点并持久化到 `SEMANTICA_KG_PATH` |
 | `run_reasoning` | 推理 | 对事实前向链接 IF/THEN 规则 |
 | `export_graph` | 推理与导出 | 序列化图（`turtle`/`ttl`：RDF Turtle 别名、`nt`、`xml`、`json-ld`、`json`） |
 
@@ -385,6 +388,51 @@ MCP 服务器暴露 12 个工具，任何已连接的 AI 助手都可以调用�
 对当前图计算 PageRank 中心性和社区检测。返回按 PageRank 排序的头部节点、社区数量和整体节点/边计数。
 
 不接受输入参数。
+
+</Accordion>
+
+<Accordion title="query_graph" icon="magnifying-glass">
+
+以三种模式之一读取活动图，由 `mode` 决定：
+
+- `node` — 按 `node_id` 返回单个节点。
+- `neighbors`（默认）— 从 `node_id` 向外向内遍历至多 `depth` 跳（限 1-5，默认 1）。可选 `relationship_types` 过滤边类型；可选 `limit` 限制结果数。
+- `search` — 把 `query` 与每个节点的 id 和内容做关键词匹配。可选 `node_type` 限定扫描范围；`limit` 默认 50。
+
+**输入：**
+
+```json
+{ "mode": "neighbors", "node_id": "apple_inc", "depth": 2 }
+```
+
+</Accordion>
+
+<Accordion title="update_node" icon="pen">
+
+把一组属性合并进已有节点。变更先应用到内存，配置了 `SEMANTICA_KG_PATH` 时会写回该文件，重启后仍在。未配置路径时返回 `persisted: false`。
+
+**输入：**
+
+```json
+{
+  "node_id": "task_42",
+  "properties": { "status": "done", "note": "shipped in v0.6.7" }
+}
+```
+
+`node_id` 与非空 `properties` 对象必填。更新不存在的节点会报错。
+
+</Accordion>
+
+<Accordion title="delete_node" icon="box-archive">
+
+软删除节点：节点保留在图中供追溯历史，但被标记为 `status: "archived"`。配置了 `SEMANTICA_KG_PATH` 时持久化。
+
+**输入：**
+
+```json
+{ "node_id": "task_42" }
+```
 
 </Accordion>
 

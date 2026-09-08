@@ -2,7 +2,7 @@
 title: 选对模块
 description: 30 秒内把你的目标映射到正确的 Semantica 模块。
 source: choose-your-module.md
-source_version: 0a4a9d2cfaf56a4a31755458074f4ebf3455ab25
+source_version: a903135fc305e21e6fe5fd4ca43fcfa865ada67a
 icon: "compass"
 ---
 
@@ -228,7 +228,7 @@ icon: "compass"
   </Tab>
 
   <Tab title="MCP——Claude / Cursor">
-    在 Claude Desktop、Cursor、VS Code 或任何支持 MCP 的工具里使用 Semantica——配置完成后无需写 Python 代码。12 个工具立即可用。
+    在 Claude Desktop、Cursor、VS Code 或任何支持 MCP 的工具里使用 Semantica——配置完成后无需写 Python 代码。15 个工具可用。
 
     **第 1 步——安装：**
     ```bash

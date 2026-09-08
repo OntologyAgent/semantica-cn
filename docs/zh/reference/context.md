@@ -2,7 +2,7 @@
 title: "上下文模块（Context）"
 description: "智能体上下文图、决策跟踪、因果链、先例搜索、政策执行与多跳 GraphRAG。"
 source: reference/context.md
-source_version: 67c05b30c1197abf6c51c1508626ecb1a002f8f6
+source_version: 96be2fa3e913abb075c8bd48b0283b9be5d9e4c6
 icon: "brain"
 ---
 

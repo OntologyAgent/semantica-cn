@@ -2,7 +2,7 @@
 title: 核心概念
 description: Semantica 背后的基本理念：知识图谱、推理、溯源与时态智能。
 source: concepts.md
-source_version: e05564f56af87d57a4db982c7fd121fcdc4bda18
+source_version: d2ead7fa52cafd647ca5d8a0f6c8964483d4f825
 icon: "book-open"
 ---
 
@@ -40,18 +40,16 @@ Semantica 一切能力的基石。知识图谱用三种积木存储信息：
 扫描文本，找出并分类现实世界中的实体：
 
 ```python
-# Input: "Apple Inc. was founded by Steve Jobs in 1976 in Cupertino."
-{
-    "entities": [
-        {"text": "Apple Inc.",  "type": "ORGANIZATION", "confidence": 0.98},
-        {"text": "Steve Jobs",  "type": "PERSON",       "confidence": 0.99},
-        {"text": "1976",        "type": "DATE",         "confidence": 0.95},
-        {"text": "Cupertino",   "type": "LOCATION",     "confidence": 0.97}
-    ]
-}
+# "Apple Inc. was founded by Steve Jobs in 1976 in Cupertino."
+[
+    Entity(text="Apple Inc.", label="ORG",    start_char=0,  end_char=10, confidence=0.98),
+    Entity(text="Steve Jobs", label="PERSON", start_char=25, end_char=35, confidence=0.99),
+    Entity(text="1976",       label="DATE",   start_char=39, end_char=43, confidence=0.95),
+    Entity(text="Cupertino",  label="GPE",    start_char=47, end_char=56, confidence=0.97),
+]
 ```
 
-每个实体都带类型、置信度和指向源文档的链接。三种抽取方法可选：
+`NERExtractor(method=...).extract(text)` 返回一组 `Entity` 对象，每个都带 `label`、字符偏移（`start_char` / `end_char`）、`confidence` 分数，以及记录抽取方式的 `metadata` 字典。三种方法可选：
 
 | 方法 | 速度 | 准确率 | 要求 |
 | :------ | :----- | :-------- | :------------ |
@@ -64,15 +62,16 @@ Semantica 一切能力的基石。知识图谱用三种积木存储信息：
 找出实体之间如何关联：
 
 ```python
-{
-    "relationships": [
-        {"subject": "Steve Jobs", "predicate": "founded",    "object": "Apple Inc.", "confidence": 0.92},
-        {"subject": "Apple Inc.", "predicate": "located_in", "object": "Cupertino",  "confidence": 0.89}
-    ]
-}
+jobs  = Entity(text="Steve Jobs", label="PERSON", start_char=25, end_char=35)
+apple = Entity(text="Apple Inc.", label="ORG",    start_char=0,  end_char=10)
+
+[
+    Relation(subject=jobs,  predicate="founded",     object=apple, confidence=0.92),
+    Relation(subject=apple, predicate="located_in",  object=Entity(text="Cupertino", label="GPE", start_char=47, end_char=56), confidence=0.89),
+]
 ```
 
-关系可以通过规则、机器学习模型或 LLM 抽取——每种方式都产出带置信度和来源标注的类型化三元组(Triplet)。
+`RelationExtractor(method=...).extract(text, entities=entities)` 返回一组 `Relation` 对象：类型化的「主语-谓语-宾语」三元组（端点是 `Entity` 对象），带置信度分数与来源标注。抽取经模式规则、ML 模型或 LLM 运行。
 
 
 ## 知识图谱与向量库
@@ -96,9 +95,10 @@ Semantica 一切能力的基石。知识图谱用三种积木存储信息：
     ```python
     from semantica.kg import GraphBuilder, PathFinder
 
-    graph   = GraphBuilder(merge_entities=True).build(entities=entities, relationships=rels)
-    finder  = PathFinder()
-    path    = finder.dijkstra_shortest_path(graph, "Steve Jobs", "Tim Cook")
+    graph = GraphBuilder(merge_entities=True).build(
+        {"entities": entities, "relationships": rels}
+    )
+    path  = PathFinder().dijkstra_shortest_path(graph, "Steve Jobs", "Tim Cook")
     ```
   </Tab>
 
@@ -142,8 +142,14 @@ Semantica 一切能力的基石。知识图谱用三种积木存储信息：
     context = AgentContext(
         vector_store=VectorStore(backend="faiss", dimension=768),
         knowledge_graph=ContextGraph(advanced_analytics=True),
+        graph_expansion=True,
     )
-    result = context.query("Who founded Apple?", mode="graphrag")
+    # store() extracts entities and populates the graph + vector index
+    context.store([{"content": "Steve Jobs co-founded Apple Inc. in 1976."}])
+    # retrieve() blends vector similarity with graph traversal
+    results = context.retrieve("Who founded Apple?", use_graph=True, expand_graph=True)
+    for r in results:
+        print(r["score"], r["content"], r["source"])
     ```
   </Tab>
 </Tabs>
@@ -223,70 +229,70 @@ Inferred: Steve Jobs has a connection to Cupertino
     反复套用 IF/THEN 规则，直到推不出新事实。最适合告警系统、合规检查和触发式工作流。
 
     ```python
-    from semantica.reasoning import Reasoner, Rule, Fact, RuleType
+    from semantica.reasoning import Reasoner
 
     engine = Reasoner()
-    engine.add_fact(Fact(subject="Alice", predicate="is_a", obj="Manager"))
-    engine.add_rule(Rule(
-        rule_type=RuleType.FORWARD_CHAIN,
-        conditions=[{"subject": "?x", "predicate": "is_a", "object": "Manager"}],
-        conclusion={"subject": "?x", "predicate": "has_authority", "object": "true"}
-    ))
-    result = engine.infer()
+    engine.add_fact("Manager(Alice)")
+    engine.add_rule("IF Manager(?x) THEN HasAuthority(?x)")
+    results = engine.forward_chain()   # list of InferenceResult
+    for r in results:
+        print(r.conclusion)           # "HasAuthority(Alice)"
     ```
   </Tab>
   <Tab title="Rete 网络">
     大规则集的高效模式匹配：Rete 算法避免重复求值前置条件未变化的规则。最适合百万级事实上跑数千条规则。
 
     ```python
-    from semantica.reasoning import ReteEngine
+    from semantica.reasoning import ReteEngine, Rule, Fact
 
     engine = ReteEngine()
-    engine.load_rules("rules/domain_rules.json")
-    results = engine.run(kg)
+    engine.build_network([
+        Rule(rule_id="r1", name="manager_authority",
+             conditions=["Manager(?x)"], conclusion="HasAuthority(?x)"),
+    ])
+    engine.add_fact(Fact(fact_id="f1", predicate="Manager", arguments=["Alice"]))
+    matches = engine.match_patterns()
+    results = engine.execute_matches(matches)   # ["HasAuthority(?x)"]
     ```
   </Tab>
-  <Tab title="演绎与溯因">
-    **演绎(Deductive)**：从前提推出必然结论的经典三段论推理。
-
-    **溯因(Abductive)**：为观察到的证据推断最可能的解释。最适合诊断和调查类场景。
+  <Tab title="LLM 推理">
+    `GraphReasoner` 用 LLM 回答对知识图谱的开放式问题，返回扎根于图事实的自然语言回答。最适合固定规则预判不了的探索性、调查性问题。
 
     ```python
-    from semantica.reasoning import GraphReasoner
-
-    graph_reasoner = GraphReasoner(kg)
-    graph_reasoner.add_rule({"if": [{"subject": "?a", "predicate": "parent_of", "object": "?b"}], "then": {"subject": "?a", "predicate": "ancestor_of", "object": "?b"}})
-    inferences = graph_reasoner.infer(kg)
+    reasoner = GraphReasoner(provider="openai", model="gpt-4o-mini")
+    answer = reasoner.reason(kg, "Which suppliers are indirectly exposed to the Acme outage?")
     ```
   </Tab>
   <Tab title="Datalog (v0.4.0)">
     带不动点语义的递归 Horn 子句规则：能处理前向链表达不了的传递闭包和递归关系。
 
     ```python
-    from semantica.reasoning import DatalogReasoner, DatalogFact, DatalogRule
+    from semantica.reasoning import DatalogReasoner
 
     reasoner = DatalogReasoner()
-    reasoner.add_fact(DatalogFact("parent", ("alice", "bob")))
-    reasoner.add_rule(DatalogRule("ancestor(?X, ?Y) :- parent(?X, ?Y)."))
-    reasoner.evaluate()
-    results = reasoner.query("ancestor(alice, ?Z)")
+    reasoner.add_fact("parent(alice, bob)")
+    reasoner.add_fact("parent(bob, charlie)")
+    reasoner.add_rule("ancestor(X, Y) :- parent(X, Y).")
+    reasoner.add_rule("ancestor(X, Z) :- parent(X, Y), ancestor(Y, Z).")
+    reasoner.derive_all()
+    results = reasoner.query("ancestor(alice, ?Z)")   # {"Z": "bob"} and {"Z": "charlie"}, order not guaranteed
     ```
   </Tab>
   <Tab title="引擎对比">
 
-    | 引擎 | 说明 | 最适合 |
-    | :------ | :----------- | :-------- |
-    | 前向链 | 反复套用规则直到不动点 | 告警系统、合规检查 |
-    | Rete 网络 | 高效模式匹配 | 大规则集、高事实吞吐 |
-    | 演绎 | 经典三段论推理 | 数理与逻辑推断 |
-    | 溯因 | 最可能的解释 | 诊断、调查 |
-    | SPARQL | 基于查询的 RDF 推理 | 语义网、本体推理 |
-    | Datalog (v0.4.0) | 递归 Horn 子句规则 | 传递闭包、图可达性 |
+    | 引擎 | 类 | 最适合 |
+    | :------ | :----- | :-------- |
+    | 前向链 | `Reasoner` | 告警系统、合规检查 |
+    | Rete 网络 | `ReteEngine` | 大规则集、高事实吞吐 |
+    | SPARQL 扩展 | `SPARQLReasoner` | RDF 上的语义网、本体推理 |
+    | Datalog (v0.4.0) | `DatalogReasoner` | 传递闭包、图可达性 |
+    | 时态 | `TemporalReasoningEngine` | Allen 区间代数、时间感知推理 |
+    | 图上 LLM | `GraphReasoner` | 开放式、调查性问题 |
 
   </Tab>
 </Tabs>
 
-所有引擎都产出**可解释的推理路径**，而不是黑盒结论。每个推导事实都包含产生它的规则和前提。
+`Reasoner.forward_chain()` 返回的 `InferenceResult` 携带所用规则（`rule_used`）和触发前提，`ExplanationGenerator` 能把一条结果转成逐步的自然语言论证——这里的推理**不是**黑盒。
 
 
 ## 时态智能
@@ -315,11 +321,14 @@ snapshot = query_engine.query_at_time(kg, query="", at_time=datetime(2021, 6, 15
 ```python
 from semantica.kg import SimilarityCalculator
 
-calc   = SimilarityCalculator()
-scores = calc.calculate_similarity(entity_a, entity_b)
+calc = SimilarityCalculator(method="cosine")   # "cosine" | "euclidean" | "manhattan" | "correlation"
+# Similarity for every unique pair of node embeddings: {(node_a, node_b): score}
+pairs = calc.pairwise_similarity({"apple": vec_apple, "google": vec_google, "nest": vec_nest})
+# Or rank a set of embeddings by closeness to one query vector
+nearest = calc.find_most_similar(embeddings, query_embedding, top_k=10)
 ```
 
-**特性：**N×N 语义距离矩阵、ego 模式可视化、距离带分类（`near` / `mid` / `far`）、面向大图谱的嵌入缓存优化。
+**特性：**N×N 语义距离矩阵、ego 模式可视化、距离带分类（`direct` / `near` / `mid-range` / `distant`）、面向大图谱的嵌入缓存优化。
 
 [可视化模块](../reference/visualization.md)把距离矩阵渲染成交互式热力图和 ego 模式邻域图。[Explorer](../reference/explorer.md) 则把距离智能直接嵌进浏览器看板。
 
@@ -343,11 +352,11 @@ scores = calc.calculate_similarity(entity_a, entity_b)
     ```python
     from semantica.deduplication import DuplicateDetector, EntityMerger
 
-    detector = DuplicateDetector(similarity_threshold=0.85)
-    duplicates = detector.detect_duplicates(entities)
+    detector   = DuplicateDetector(similarity_threshold=0.85)
+    candidates = detector.detect_duplicates(entities)
 
     merger = EntityMerger()
-    deduplicated_entities = merger.merge_duplicates(entities)
+    operations = merger.merge_duplicates(entities, strategy="keep_most_complete")
     ```
   </Tab>
 </Tabs>
@@ -363,19 +372,21 @@ Semantica 里的每个事实都能回溯到：
 - 产生任何推断事实的**推理步骤**
 
 <Note>
-  这是兼容 W3C PROV-O 的血缘：适合要求审计轨迹的受监管行业（HIPAA、SOX、GDPR、FDA 21 CFR Part 11）。用 `RDFExporter(include_provenance=True)` 可把溯源内嵌进任意 RDF 导出。
+  这是兼容 W3C PROV-O 的血缘：适合要求审计轨迹的受监管行业（HIPAA、SOX、GDPR、FDA 21 CFR Part 11）。`ProvenanceManager.export_prov(format="turtle")` 把记录的血缘序列化为 PROV-O RDF。
 </Note>
 
 ```python
 from semantica.provenance import ProvenanceManager
 
-prov    = ProvenanceManager()
-lineage = prov.get_entity_lineage("apple_inc")
+prov = ProvenanceManager()
+prov.track_entity("apple_inc", source="report.pdf",
+                  metadata={"extractor": "NamedEntityRecognizer", "confidence": 0.98})
 
-print(f"Source:    {lineage.source_document}")
-print(f"Method:    {lineage.extraction_method}")
-print(f"Extracted: {lineage.timestamp}")
-print(f"Checksum:  {lineage.checksum}")
+record = prov.get_provenance("apple_inc")   # dict; use get_lineage() for the full chain
+print(record["source_document"])
+print(record["timestamp"])
+print(record["checksum"])
+print(record["metadata"])          # extractor, confidence, and any custom keys
 ```
 
 

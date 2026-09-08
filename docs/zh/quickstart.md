@@ -2,12 +2,12 @@
 title: 快速开始
 description: 5 分钟搭好你的第一个知识图谱，无需任何配置。
 source: quickstart.md
-source_version: d802dc5ef05d7f4ccfed8eb17e1521450eba4c64
+source_version: 541f29613c1e382dc9f061596742e2dcd59a04c6
 icon: "rocket"
 ---
 
 <Info>
-  **v0.5.0** — 本体中心、距离智能、Parquet 与 XML 摄取、12 项安全修复。<a href="https://github.com/semantica-agi/semantica/releases" style={{color:"#10B981",fontWeight:600,textDecoration:"none"}}>看看有什么新东西 →</a>
+  **v0.6.8**：带密码学签名的发布（SLSA 溯源 + Sigstore）、FAISS/Qdrant/Weaviate/Milvus 全线真实的向量枚举，以及 Anthropic/Gemini/Ollama/DeepSeek/Novita 一等 LLM 提供商包装器。<a href="https://github.com/semantica-agi/semantica/releases" style={{color:"#10B981",fontWeight:600,textDecoration:"none"}}>看看有什么新东西 →</a>
 </Info>
 
 本指南带你走通构建第一个知识图谱(Knowledge Graph)的端到端流水线。装好之后从这里开始。大语言模型(LLM)的 API key 是可选的：基于模式的抽取开箱即用。
@@ -37,7 +37,7 @@ pip install -e ".[dev]"
 
 ```bash
 python -c "import semantica; print(semantica.__version__)"
-# 0.5.0
+# 0.6.8
 ```
 
 
@@ -49,36 +49,19 @@ python -c "import semantica; print(semantica.__version__)"
 
 <Step title="摄取(Ingest)">
 
-从文件、目录、URL 或数据库加载文档。
+从文件或目录加载文档。本走查其余部分沿文件路径展开；其他来源在后面附上。
 
-<CodeGroup>
-
-```python File
+```python
 from semantica.ingest import FileIngestor
 
 ingestor = FileIngestor()
 sources  = ingestor.ingest("data/report.pdf")
-# Also accepts: .docx, .html, .json, .csv, .xlsx, .pptx, .parquet, .xml
+# Also accepts a directory, .docx, .html, .json, .csv, .xlsx, .pptx, .parquet, .xml
 ```
 
-```python Web
-from semantica.ingest import WebIngestor
-
-ingestor = WebIngestor(max_depth=2)
-sources  = ingestor.ingest("https://example.com/article")
-```
-
-```python Parquet / XML (v0.5.0)
-from semantica.ingest import ParquetIngestor, XMLIngestor
-
-# Single file or Hive-partitioned directory
-sources = ParquetIngestor().ingest("data/events.parquet")
-
-# XML with XSD schema validation
-sources = XMLIngestor(validate_xsd="schema.xsd").ingest("data/records/")
-```
-
-</CodeGroup>
+<Tip>
+  **其他来源。** `WebIngestor().ingest_url(url)` 返回 `WebContent`，其 `.text` 可以直接喂给抽取(Extract)步骤（无需解析）。`ParquetIngestor().ingest(path)` 和 `XMLIngestor().ingest(path, schema_path=...)` 返回的是结构化记录而非文档——用 `GraphBuilder().build({"entities": [...], "relationships": [...]})` 直接建图即可。
+</Tip>
 
 </Step>
 
@@ -90,22 +73,24 @@ sources = XMLIngestor(validate_xsd="schema.xsd").ingest("data/records/")
 from semantica.parse import DocumentParser
 
 parser = DocumentParser()
-parsed = parser.parse(sources[0])
+parsed = parser.parse(sources[0].path)   # parse() takes a path string
 
-print(parsed.text[:200])  # 提取出的文本
-print(parsed.metadata)    # 标题、作者、日期、来源
+print(parsed["full_text"][:200])   # 提取出的文本
+print(parsed["metadata"])          # 文档属性（字段随格式而异）
 ```
 
+`parse()` 返回 `dict`。每种格式都有 `full_text` 和 `metadata`；其余键取决于解析器（PDF 有 `pages`，DOCX 有 `tables` 和 `paragraphs`，`DoclingParser` 有 `tables`）。
+
 <Tip>
-  处理带表格、图表或多栏版面的 PDF 时，用 `DoclingParser`：它会做高级版面分析，在文本之外还返回结构化的表格数据。
+  处理带表格、图表或多栏版面的 PDF 时，用 `DoclingParser`（`pip install semantica[parse-docling]`）：它会做高级版面分析，在文本之外还返回结构化的表格数据。
 </Tip>
 
 ```python
 from semantica.parse import DoclingParser
 
 parser = DoclingParser()
-parsed = parser.parse(sources[0])
-print(parsed.tables)  # 结构化表格对象
+parsed = parser.parse(sources[0].path)
+print(parsed["tables"])   # 结构化表格数据
 ```
 
 </Step>
@@ -119,26 +104,28 @@ print(parsed.tables)  # 结构化表格对象
 ```python Pattern-based (fast, no API key)
 from semantica.semantic_extract import NERExtractor, RelationExtractor
 
-ner      = NERExtractor(method="pattern")
-entities = ner.extract(parsed)
-# Returns: [{"text": "Apple Inc.", "type": "ORGANIZATION", "confidence": 0.98}, ...]
+text = parsed["full_text"]
 
-rel           = RelationExtractor(method="rule")
-relationships = rel.extract(parsed, entities=entities)
-# Returns: [{"subject": "Steve Jobs", "predicate": "founded", "object": "Apple Inc."}, ...]
+ner      = NERExtractor(method="pattern")
+entities = ner.extract(text)
+# Returns: [Entity(text="Apple Inc.", label="ORG", start_char=0, end_char=10, confidence=0.7), ...]
+
+rel           = RelationExtractor(method="pattern")
+relationships = rel.extract(text, entities=entities)
+# Returns: [Relation(subject=Entity(...), predicate="founded_by", object=Entity(...), confidence=0.7), ...]
 ```
 
 ```python LLM-powered (higher accuracy)
 from semantica.semantic_extract import NERExtractor, RelationExtractor
-from semantica.llms import Groq
 
-llm = Groq(model="llama-3.3-70b-versatile")
+# Reads GROQ_API_KEY from the environment; provider/llm_model select the backend
+text = parsed["full_text"]
 
-ner           = NERExtractor(method="llm", llm_provider=llm)
-entities      = ner.extract(parsed)
+ner           = NERExtractor(method="llm", provider="groq", llm_model="llama-3.3-70b-versatile")
+entities      = ner.extract(text)
 
-rel           = RelationExtractor(method="llm", llm_provider=llm)
-relationships = rel.extract(parsed, entities=entities)
+rel           = RelationExtractor(method="llm", provider="groq", llm_model="llama-3.3-70b-versatile")
+relationships = rel.extract(text, entities=entities)
 ```
 
 </CodeGroup>
@@ -200,16 +187,17 @@ exporter.export(graph, file_path="graph.nt",     format="nt")
 from semantica.export import ParquetExporter
 
 exporter = ParquetExporter()
-exporter.export(graph, file_path="output/graph.parquet")
-# Writes nodes.parquet + edges.parquet: ready for Spark, BigQuery, Databricks
+exporter.export(graph, file_path="output/graph")
+# Dict input writes one file per key: output/graph_entities.parquet and
+# output/graph_relationships.parquet: ready for Spark, BigQuery, Databricks
 ```
 
 ```python ArangoDB
 from semantica.export import ArangoAQLExporter
 
 exporter = ArangoAQLExporter()
-aql      = exporter.export(graph)
-# Returns ready-to-run AQL INSERT statements
+exporter.export(graph, file_path="graph.aql")
+# Writes ready-to-run AQL INSERT statements to graph.aql
 ```
 
 </CodeGroup>
@@ -361,7 +349,8 @@ graph   = builder.build({"entities": entities, "relationships": relationships})
 # Retrieve full lineage for any entity
 sources = prov.get_all_sources("Apple Inc.")
 print(sources[0])
-# {"source": "data/report.pdf", "location": None, "timestamp": "...", "confidence": 0.98}
+# {"source": "data/report.pdf", "location": None, "timestamp": "...",
+#  "confidence": 1.0, "metadata": {"confidence": 0.98}}
 ```
 
 </Accordion>
@@ -375,31 +364,49 @@ print(sources[0])
 
 <Accordion title="抽取不到任何实体" icon="magnifying-glass">
 
-文档很可能是扫描图像，不是机器可读文本。启用 OCR：
+文档很可能是扫描图像，不是机器可读文本。`DocumentParser` 在 PDF 没有文本层时会告警；改用启用 OCR 的 `DoclingParser`：
 
 ```python
-from semantica.parse import DocumentParser
+from semantica.parse import DoclingParser   # pip install semantica[parse-docling]
 
-parser = DocumentParser(ocr=True)  # enables Tesseract OCR
-parsed = parser.parse(sources[0])
+parser = DoclingParser(enable_ocr=True)
+parsed = parser.parse(sources[0].path)
 ```
 
 </Accordion>
 
 <Accordion title="大规模语料处理缓慢" icon="gauge">
 
-开启并行处理和 GPU 加速：
+安装 GPU extras，让嵌入和 ML 推理跑在 CUDA 上：
 
 ```bash
 pip install semantica[gpu]
 ```
 
-```python
-from semantica.pipeline import Pipeline
+先扫描目录拿到路径（不读文件内容），再逐个处理文档，写入持久化图后端而不是内存图：
 
-pipeline = Pipeline(workers=8, batch_size=32)
-pipeline.run(sources)
+```python
+from semantica.ingest import FileIngestor
+from semantica.parse import DocumentParser
+from semantica.semantic_extract import NERExtractor, RelationExtractor
+from semantica.graph_store import GraphStore
+from semantica.kg import GraphBuilder
+
+ingestor = FileIngestor()
+parser   = DocumentParser()
+ner      = NERExtractor(method="pattern")
+rel      = RelationExtractor(method="pattern")
+store    = GraphStore(backend="neo4j", uri="bolt://localhost:7687",
+                      user="neo4j", password="password")
+builder  = GraphBuilder(merge_entities=True, graph_store=store)
+for info in ingestor.scan_directory("data/reports/", recursive=True):
+    text     = parser.parse(info["path"])["full_text"]   # one document loaded at a time
+    entities = ner.extract(text)
+    rels     = rel.extract(text, entities=entities)
+    builder.build({"entities": entities, "relationships": rels})
 ```
+
+要多步编排与可配置并行度，见 [Pipeline 指南](../guides/pipeline.md)。
 
 </Accordion>
 

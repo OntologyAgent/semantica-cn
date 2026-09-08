@@ -2,7 +2,7 @@
 title: 入门指南
 description: AI 的上下文与智能层：把原始数据变成可解释、可审计的知识图谱。
 source: getting-started.md
-source_version: 110fcc94a70074c16028eba023c32b40e66d6fe8
+source_version: fd00501e08262d0677b543051a82198e594c833a
 icon: "rocket"
 ---
 
@@ -44,7 +44,7 @@ icon: "rocket"
       验证安装：
       ```python
       import semantica
-      print(semantica.__version__)  # 0.6.7
+      print(semantica.__version__)  # 0.6.8
       ```
     </Check>
   </Step>
@@ -86,13 +86,13 @@ icon: "rocket"
     # 1. Ingest
     sources = FileIngestor().ingest("data/report.pdf")
 
-    # 2. Parse
-    parsed = DocumentParser().parse(sources[0])
+    # 2. Parse (extract_text returns a plain string for any supported format)
+    text = DocumentParser().extract_text(sources[0].path)
 
-    # 3. Extract
+    # 3. Extract (extractors take text, return Entity / Relation objects)
     ner           = NERExtractor(method="pattern")  # no API key needed
-    entities      = ner.extract(parsed)
-    relationships = RelationExtractor().extract(parsed, entities=entities)
+    entities      = ner.extract(text)
+    relationships = RelationExtractor(method="pattern").extract(text, entities=entities)
 
     # 4. Build
     graph = GraphBuilder(merge_entities=True).build(
@@ -146,22 +146,27 @@ icon: "rocket"
     context = AgentContext(
         vector_store=VectorStore(backend="faiss", dimension=768),
         knowledge_graph=ContextGraph(advanced_analytics=True),
+        graph_expansion=True,       # blend graph traversal into retrieval
+        max_expansion_hops=3,       # how far to walk from the seed nodes
     )
 
-    # Load your knowledge graph
-    context.load_graph("company_kg.json")
+    # store() runs extraction and populates both the vector index and the graph
+    context.store([
+        {"content": "Steve Wozniak co-founded Apple with Steve Jobs in 1976."},
+        {"content": "Tony Fadell led the iPod team at Apple, then founded Nest."},
+    ])
 
-    # Multi-hop GraphRAG query
-    result = context.query(
+    # GraphRAG retrieval: seed from vector matches, expand along graph edges
+    results = context.retrieve(
         "What companies were founded by people who worked at Apple?",
-        mode="graphrag",
-        reasoning=True,
+        use_graph=True,
+        expand_graph=True,
     )
-
-    # Every claim links back to a source node
-    for claim in result.claims:
-        print(f"{claim.text}  →  source: {claim.source_node}")
+    for r in results:
+        print(f"[{r['score']:.3f}]  {r['content'][:70]}  (source: {r['source']})")
     ```
+
+    每条结果携带 `content`、`score`、`source` 和 `metadata`。要有扎根的自然语言回答加可审计的遍历路径，用 `context.query_with_reasoning(query, llm_provider=...)`——它返回 `response`、`reasoning_path`、`sources` 和 `confidence`。
 
     **下一步：**[GraphRAG 概念 →](../concepts.md#graphrag)
   </Tab>
@@ -185,7 +190,7 @@ icon: "rocket"
     }
     ```
 
-    立即可用 12 个工具：抽取实体、查询图谱、记录决策、运行推理、导出结果。
+    立即可用 15 个工具：抽取实体、查询图谱、记录决策、运行推理、导出结果。
 
     **下一步：**[MCP 服务器参考 →](../reference/mcp_server.md)
   </Tab>

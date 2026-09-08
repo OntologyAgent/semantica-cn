@@ -2,7 +2,7 @@
 title: 模块
 description: Semantica 的每个模块都独立可用：只导入你需要的部分。
 source: modules.md
-source_version: 21bdb2e75cf2100d733e42803a8e72a69befab76
+source_version: 9c47f1cc335e7f9f001b70e2edba71003a3908cf
 icon: "puzzle-piece"
 ---
 
@@ -123,11 +123,11 @@ entities = ner.extract("Apple Inc. was founded by Steve Jobs.")
 rel = RelationExtractor(method="llm", llm_provider=llm)
 relationships = rel.extract(text, entities=entities)
 
-trip = TripletExtractor(method="llm", llm_provider=llm)
-triplets = trip.extract(text)
+trip = TripletExtractor(method="pattern")
+triplets = trip.extract(text)                                     # list[Triplet]
 ```
 
-**抽取方法：** `"pattern"`（无需 API key）、`"ml"`（本地模型）、`"llm"`（8 家受支持提供商任选）
+**抽取方法：** `"pattern"`（无需 API key）、`"ml"`（本地 spaCy 模型）、`"llm"`（9 家受支持提供商任选）
 
 **其他抽取器：** `CoreferenceResolver`, `EventDetector`, `SemanticAnalyzer`, `SemanticNetworkExtractor`
 
@@ -139,17 +139,17 @@ triplets = trip.extract(text)
 from semantica.kg import GraphBuilder, GraphAnalyzer, TemporalGraphQuery, SimilarityCalculator
 from datetime import datetime
 
-# 构建
+# 构建: build() takes a {"entities": ..., "relationships": ...} dict
 builder = GraphBuilder(merge_entities=True)
-kg = builder.build(entities=entities, relationships=relationships)
+kg = builder.build({"entities": entities, "relationships": relationships})
 
 # 时态图（v0.4.0）
 query_engine = TemporalGraphQuery(enable_temporal_reasoning=True)
 snapshot = query_engine.query_at_time(kg, query="", at_time=datetime(2021, 6, 15))
 
-# 语义相似度（v0.5.0）
-calc = SimilarityCalculator()
-scores = calc.calculate_similarity(entity_a, entity_b)
+# 语义相似度（v0.5.0）: operates on embedding vectors
+calc = SimilarityCalculator(method="cosine")
+score = calc.cosine_similarity(vec_a, vec_b)
 ```
 
 **可用图算法：** 中心度计算、社区检测、连通性分析、实体消解、链路预测、路径查找、相似度计算
@@ -177,19 +177,22 @@ shapes = shacl.generate(ontology)
 ```python
 from semantica.reasoning import Reasoner, DatalogReasoner
 
-# 基于规则的推理
+# 前向链接: facts and rules as predicate(args) / IF-THEN strings
 engine = Reasoner()
-engine.apply_transitivity("located_in")
-engine.apply_symmetry("knows")
-result = engine.infer()
+engine.add_fact("Manager(Alice)")
+engine.add_rule("IF Manager(?x) THEN HasAuthority(?x)")
+results = engine.forward_chain()          # list[InferenceResult] with .conclusion, .rule_used
 
 # Datalog：递归 Horn 子句规则（v0.4.0）
-datalog = DatalogEngine()
-datalog.add_rule("ancestor(X, Z) :- parent(X, Y), ancestor(Y, Z).")
-results = datalog.query("ancestor(alice, ?)")
+datalog = DatalogReasoner()
+datalog.add_fact("parent(tom, bob)")
+datalog.add_fact("parent(bob, ann)")
+datalog.add_rule("ancestor(X, Y) :- parent(X, Y).")
+datalog.derive_all()
+results = datalog.query("ancestor(tom, ?Z)")   # [{"Z": "bob"}, {"Z": "ann"}], order not guaranteed
 ```
 
-**引擎：** 前向链、Rete 网络、演绎、溯因、SPARQL、Datalog——全部产出可解释的推理路径
+**引擎：** `Reasoner`（前向/后向链）、`ReteEngine`、`SPARQLReasoner`、`DatalogReasoner`、`TemporalReasoningEngine`、`GraphReasoner`（LLM）——全部产出可解释的推理路径
 
 
 ## 存储
@@ -201,9 +204,9 @@ results = datalog.query("ancestor(alice, ?)")
 ```python
 from semantica.embeddings import EmbeddingGenerator
 
-generator  = EmbeddingGenerator(model="sentence-transformers")
-embeddings = generator.generate(["text1", "text2"])
-similarity = generator.similarity(embeddings[0], embeddings[1])
+generator  = EmbeddingGenerator()
+embeddings = generator.generate_embeddings(["text1", "text2"])   # np.ndarray
+similarity = generator.compare_embeddings(embeddings[0], embeddings[1])
 ```
 
 **支持的模型：** Sentence-Transformers、FastEmbed、OpenAI、BGE
@@ -217,12 +220,16 @@ similarity = generator.similarity(embeddings[0], embeddings[1])
 ```python
 from semantica.vector_store import VectorStore
 
-store   = VectorStore(backend="faiss", dimension=768)
-store.add_vectors(embeddings, ids)
-results = store.search(query_vector, top_k=10)
+store = VectorStore(backend="faiss", dimension=768)
+# Raw vectors
+ids     = store.store_vectors(embeddings)                 # returns generated ids
+hits    = store.search_vectors(query_vector, k=10)
+# Or store text and let the store embed it
+store.add_documents(["Apple was founded in 1976.", "Google was founded in 1998."])
+results = store.search("tech company founding dates", limit=10)
 ```
 
-**后端：** FAISS、Pinecone、Weaviate、Qdrant、Milvus、PgVector、内存版
+**后端：** FAISS、Pinecone、Weaviate、Qdrant、Milvus、PgVector、SQLite、内存版
 
 **检索模式：** 语义 top-k、混合（向量 + 关键词）、元数据过滤
 
@@ -234,8 +241,8 @@ results = store.search(query_vector, top_k=10)
 from semantica.graph_store import GraphStore
 
 store = GraphStore(backend="neo4j")
-store.add_nodes(entities)
-store.add_edges(relationships)
+store.add_nodes([{"id": "acme", "type": "Organization", "properties": {"name": "Acme"}}])
+store.add_edges([{"source": "alice", "target": "acme", "type": "works_for"}])
 results = store.query("MATCH (n)-[r]->(m) RETURN n, r, m")
 ```
 
@@ -248,9 +255,9 @@ results = store.query("MATCH (n)-[r]->(m) RETURN n, r, m")
 ```python
 from semantica.triplet_store import TripletStore
 
-store = TripletStore(backend="blazegraph")
-store.add_triplets(subject, predicate, obj)
-results = store.sparql("SELECT ?s ?p ?o WHERE { ?s ?p ?o }")
+store = TripletStore(backend="oxigraph")
+store.add_triplets(triplets)                 # list of Triplet objects (or add_triplet for one)
+results = store.execute_query("SELECT ?s ?p ?o WHERE { ?s ?p ?o }")
 ```
 
 **后端：** Oxigraph（嵌入式）、Blazegraph、Apache Jena、RDF4J
@@ -263,15 +270,17 @@ results = store.sparql("SELECT ?s ?p ?o WHERE { ?s ?p ?o }")
 检测、评分并合并跨来源的重复实体。
 
 ```python
-from semantica.deduplication import EntityResolver
+from semantica.deduplication import DuplicateDetector, EntityMerger
 
-resolver = EntityResolver()
-merged   = resolver.resolve(entities, strategy="semantic_v2")
+detector   = DuplicateDetector(similarity_threshold=0.85)
+candidates = detector.detect_duplicates(entities)
+merger     = EntityMerger()
+operations = merger.merge_duplicates(entities, strategy="keep_most_complete")
 ```
 
 **v2 策略**（`blocking_v2`, `hybrid_v2`, `semantic_v2`）比 v1 快至 7 倍。
 
-**组件：** `EntityResolver`, `DuplicateDetector`, `EntityMerger`, `SimilarityCalculator`, `ClusterBuilder`
+**组件：** `DuplicateDetector`, `EntityMerger`, `ClusterBuilder`, `MergeStrategyManager`
 
 **`DuplicateDetector` 选项：** `max_results`, `top_k_per_entity`, `min_similarity`, `sort_by`
 
@@ -280,14 +289,13 @@ merged   = resolver.resolve(entities, strategy="semantic_v2")
 检测并消解重叠知识来源之间的事实冲突。
 
 ```python
-from semantica.conflicts import ConflictDetector
+from semantica.conflicts import ConflictDetector, ConflictResolver
 
-detector  = ConflictDetector()
-conflicts = detector.detect_conflicts(kg)
-resolved  = detector.resolve(conflicts, strategy="most_recent")
+conflicts = ConflictDetector().detect_conflicts(entities)   # list of entity dicts
+resolved  = ConflictResolver().resolve_conflicts(conflicts, strategy="most_recent")
 ```
 
-**检测类型：** 值冲突、类型冲突、时态冲突、逻辑冲突
+**检测类型：** 值冲突、类型冲突、关系冲突、时态冲突、逻辑冲突
 
 **消解策略：** 新近优先、可信来源优先、多数表决、标记人工复核
 
@@ -330,7 +338,7 @@ precedents = context.find_precedents("model selection", limit=5)
 from semantica.provenance import ProvenanceManager
 
 manager = ProvenanceManager()
-manager.track_entity("entity_1", "document.pdf", "person")
+manager.track_entity("entity_1", source="document.pdf", metadata={"type": "person"})
 lineage = manager.get_lineage("entity_1")
 ```
 
@@ -366,8 +374,8 @@ RDFExporter().export(graph, file_path="graph.ttl", format="turtle")
 # 分析平台
 ParquetExporter().export(graph, file_path="output/graph.parquet")
 
-# ArangoDB
-aql = ArangoAQLExporter().export(graph)
+# ArangoDB: writes AQL INSERT statements to the given path
+ArangoAQLExporter().export(graph, file_path="graph.aql")
 ```
 
 **导出格式：** RDF（Turtle、JSON-LD、N-Triples、XML）、Parquet、ArangoDB AQL、CSV、OWL、Arrow、LPG、YAML、距离矩阵
@@ -430,7 +438,7 @@ llm = OpenAI(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"))
 llm = LiteLLM(model="anthropic/claude-opus-4-7", api_key=os.getenv("ANTHROPIC_API_KEY"))
 ```
 
-**支持的提供商：** OpenAI、Anthropic、Google Gemini、Groq、Ollama、DeepSeek、Novita AI、LiteLLM（一个接口接入 20+ 模型）
+**支持的提供商：** OpenAI、Anthropic、Google Gemini、Groq、Ollama、DeepSeek、Novita AI、HuggingFace，外加 LiteLLM（一个接口接入 100+ 模型）
 
 ### MCP 服务器
 
@@ -440,51 +448,47 @@ llm = LiteLLM(model="anthropic/claude-opus-4-7", api_key=os.getenv("ANTHROPIC_AP
 python -m semantica.mcp_server
 ```
 
-**集成：** Claude Desktop、VS Code、Cursor、Windsurf、Cline——暴露 12 个 MCP 工具
+**集成：** Claude Desktop、VS Code、Cursor、Windsurf、Cline。暴露 15 个 MCP 工具。
 
 ### 种子数据
 
 从经过验证的结构化来源引导知识图谱：定点参考数据、受控词表和领域锚点。
 
 ```python
-from semantica.seed import SeedManager
+from semantica.seed import SeedDataManager
 
-seed = SeedManager()
-seed.populate(kg, dataset="companies", count=100)
+seed = SeedDataManager()
+# Load trusted reference data from CSV / JSON / a database / an API
+seed_data = seed.load_from_csv("seed_data/industries.csv", entity_type="Industry")
 
-# 从文件或内置数据集加载领域种子
-seed.load_from_file("seed_data/industries.json")
-seed.inject(kg)   # 合并种子节点，不重复已有实体
+# Merge seed data with extraction output (seed values win on conflict by default)
+combined = seed.integrate_with_extracted(
+    {"entities": seed_data, "relationships": []},
+    {"entities": extracted_entities, "relationships": extracted_relationships},
+    merge_strategy="seed_first",
+)
 ```
 
 **用例：** 用已知实体锚定抽取、预填充本体类、生成确定性的测试图。
 
 ### 评估
 
-评估框架：度量 KG 质量、抽取准确率和流水线性能。
+为决策智能产出（决策记录、审计轨迹、推理文本）打分：一组确定性评估器与模型支撑的评估器，加一个小型运行框架。
 
 ```python
-from semantica.evals import KGEvaluator, ExtractionEvaluator, PipelineEvaluator, RegressionTracker
+from semantica.evals import evaluate, list_evaluators
 
-# KG 质量
-report = KGEvaluator().evaluate(kg, ontology=ontology)
-print(f"Completeness: {report.completeness:.2%}  Consistency: {report.consistency:.2%}")
+list_evaluators()
+# ['decision_scores', 'exact_match', 'keyword_check', 'length_range',
+#  'levenshtein', 'llm_as_judge', 'numeric_range', 'regex_match', 'rouge',
+#  'temporal_range']
 
-# 抽取准确率
-report = ExtractionEvaluator().evaluate_ner(predictions=extracted, gold_standard=annotated)
-print(f"Precision: {report.precision:.3f}  Recall: {report.recall:.3f}  F1: {report.f1:.3f}")
-
-# 流水线吞吐与延迟
-metrics = PipelineEvaluator().benchmark(pipeline, data="data/", bench_runs=5)
-print(f"Throughput: {metrics.docs_per_second:.1f} docs/sec")
-
-# 跨运行回归追踪
-tracker = RegressionTracker(db_path="eval_history.db")
-run_id  = tracker.record_run(pipeline_version="v1.2.0", metrics=metrics)
-diff    = tracker.compare(run_id, baseline_run_id="run_abc123")
+cases = [("apple", "aple"), ("night", "nacht")]
+summary = evaluate(cases, evaluators=["levenshtein"])
+print(summary.total, summary.passed, summary.pass_rate)
 ```
 
-**组件：** `KGEvaluator`, `ExtractionEvaluator`, `PipelineEvaluator`, `RegressionTracker`
+**公开 API：** `evaluate(cases, evaluators, config=None)`、`list_evaluators()`、`get_evaluator(name)`，以及 `EvalMetric` / `CaseResult` / `EvalSummary` 结果类型。详见[评估模块参考](../reference/evals.md)。
 
 ### Core
 
@@ -493,8 +497,7 @@ diff    = tracker.compare(run_id, baseline_run_id="run_abc123")
 ```python
 from semantica.core import Semantica, PluginRegistry, ConfigManager
 
-# 顶层编排器
-sem = Semantica(config_path="config.yaml")
+# ConfigManager loads a Config; Config.get() does dotted lookups
 sem.initialize()
 
 # 插件注册表：注册自定义组件
@@ -705,8 +708,8 @@ versioner.create_snapshot(kg, "2024-Q1", author="user@example.com", description=
 | [explorer](../reference/explorer.md) | 知识探索界面 | `semantica-explorer --graph <file>` |
 | [llms](../reference/llms.md) | LLM 提供商 | `Groq`, `OpenAI`, `create_provider` |
 | [mcp_server](../reference/mcp_server.md) | MCP stdio 服务器 | `python -m semantica.mcp_server` |
-| [seed](../reference/seed.md) | 从结构化来源引导 KG | `SeedManager` |
-| [evals](../reference/evals.md) | 质量评估 | `KGEvaluator`, `ExtractionEvaluator`, `PipelineEvaluator`, `RegressionTracker` |
+| [seed](../reference/seed.md) | 从结构化来源引导 KG | `SeedDataManager` |
+| [evals](../reference/evals.md) | 质量评估 | `evaluate`, `list_evaluators`, `EvalSummary` |
 | [core](../reference/core.md) | 基类与注册表 | `Semantica`, `ConfigManager`, `PluginRegistry`, `LifecycleManager` |
 | [utils](../reference/utils.md) | 共享工具 | `helpers`, `validators` |
 

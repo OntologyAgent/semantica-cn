@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
+import { buildGraphColorLegend } from "../graphColorLegend";
 import type { GraphPlugin, GraphPluginContext } from "./types";
 
 const LEGEND_PANEL_ID = "legend-panel";
@@ -14,19 +15,9 @@ const MAX_GROUPS = 8;
 function LegendPanelContent({ context }: { context: GraphPluginContext }) {
   const { t } = useTranslation();
 
-  const groups = new Map<string, { count: number; color: string }>();
-  context.graph.forEachNode((_nodeId, attrs) => {
-    const semanticGroup = String(attrs.semanticGroup || attrs.nodeType || "entity");
-    const color = String(attrs.baseColor || context.theme.palette.semantic[0]);
-    const current = groups.get(semanticGroup);
-    groups.set(semanticGroup, {
-      count: (current?.count ?? 0) + 1,
-      color,
-    });
-  });
-
-  const items = [...groups.entries()]
-    .map(([group, data]) => ({ group, ...data }))
+  // Data source mirrors the renderer's semantic coloring (upstream #1483):
+  // skips hidden nodes, keeps focused-clone interaction colors out of the key.
+  const items = buildGraphColorLegend(context.graph, context.theme)
     .sort((left, right) => right.count - left.count)
     .slice(0, MAX_GROUPS);
 
@@ -36,7 +27,7 @@ function LegendPanelContent({ context }: { context: GraphPluginContext }) {
       {items.length ? (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {items.map((item) => (
-            <div key={item.group} style={legendRowStyle}>
+            <div key={item.id} style={legendRowStyle}>
               <span
                 style={{
                   ...swatchStyle,

@@ -14,11 +14,15 @@ not. It *composes* the existing public APIs; nothing in ``context_graph.py`` or
 ``agent_memory.py`` changes, and ``ContextGraph`` keeps its graph-scope
 contract.
 
-The property that matters is honest partial reporting. Three vector backends
-(FAISS, Milvus, Weaviate) expose no delete at all, so erasure is genuinely not
-completable on them today. The receipt says ``unsupported`` for those rather
-than reporting a success it did not achieve -- a receipt that reads
-"graph: erased, memory: 14 erased, vectors: unsupported on faiss" is
+The property that matters is honest partial reporting. FAISS Flat indices now
+expose ``delete_vectors`` backed by native ``remove_ids``, so erasure is
+completable on them.  FAISS IVF indices explicitly reject deletion because
+their internal labels are not compacted after ``remove_ids``, which would
+desynchronize search results from the ``vector_ids`` mapping.  HNSW does not
+implement ``remove_ids`` at all.  Both IVF and HNSW report ``unsupported``.
+Milvus and Weaviate are also fully supported. The receipt says ``unsupported``
+rather than reporting a success it did not achieve -- a receipt that reads
+"graph: erased, memory: 14 erased, vectors: unsupported on faiss/hnsw" is
 actionable; a bare ``True`` is a compliance liability.
 
 Example:
@@ -29,18 +33,19 @@ Example:
     ...     "customer-4471", reason="GDPR Art. 17 request #882"
     ... )
     >>> receipt.complete
-    False
+    True
     >>> receipt.stores["vectors"]["status"]
-    'unsupported'
+    'not_configured'
 """
 
+import copy
 import inspect
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple, Union
 
 from ..utils.logging import get_logger
-from .context_graph import _normalize_temporal_input
+from .context_graph import normalize_temporal_input
 
 __all__ = [
     "ErasureCoordinator",
@@ -117,13 +122,21 @@ class ErasureReceipt:
         ]
 
     def to_dict(self) -> Dict[str, Any]:
-        """Serialize the receipt, deep-copying the per-store results."""
+        """Serialize the receipt, deep-copying the per-store results.
+
+        Each store result is copied recursively so the returned payload shares
+        no mutable objects with the live receipt: mutating
+        ``payload["stores"][name][...]`` (including nested dicts such as a
+        vector backend's ``backend_result``) cannot corrupt the audit record.
+        """
         return {
             "entity_id": self.entity_id,
             "reason": self.reason,
             "erased_at": self.erased_at,
             "complete": self.complete,
-            "stores": {name: dict(result) for name, result in self.stores.items()},
+            "stores": {
+                name: copy.deepcopy(result) for name, result in self.stores.items()
+            },
         }
 
 
@@ -368,8 +381,9 @@ class ErasureCoordinator:
 
         method_name, target = _vector_delete_capability(self.vector_store)
         if method_name is None:
-            # FAISS, Milvus and Weaviate expose no delete at all; FAISS in
-            # particular cannot remove from a flat index without a rebuild.
+            # FAISS HNSW does not implement remove_ids and FAISS IVF
+            # does not compact labels after remove_ids.  Only Flat indices
+            # currently support deletion via this code path.
             self.logger.warning(
                 "Vector backend %r exposes no delete; %d vector id(s) for %r "
                 "were not erased",
@@ -593,7 +607,7 @@ def _normalize_timestamp(at: Optional[Union[str, int, float, datetime]]) -> str:
     default path gets one timestamp for both records instead of two ``now()``
     calls separated by the length of the cascade.
     """
-    return _normalize_temporal_input(
+    return normalize_temporal_input(
         at if at is not None else datetime.now(timezone.utc)
     )
 

@@ -3,8 +3,22 @@ import test from "node:test";
 
 import { JSDOM } from "jsdom";
 import React from "react";
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import en from "../src/i18n/locales/en.json";
 
 (globalThis as typeof globalThis & { React: typeof React }).React = React;
+
+// The viewer and workspace chrome are translated through react-i18next; seed a
+// synchronous English instance before importing components so the assertions
+// below can match against the en copy (same pattern as markdownContentViewer.test.ts).
+if (!i18next.isInitialized) {
+  i18next.use(initReactI18next).init({
+    lng: "en",
+    fallbackLng: "en",
+    resources: { en: { translation: en.translation } },
+  });
+}
 const dom = new JSDOM("<!doctype html><html><body></body></html>", {
   url: "http://localhost",
 });

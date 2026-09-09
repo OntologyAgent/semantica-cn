@@ -472,7 +472,8 @@ class TestBackendMetadataFiltering(unittest.TestCase):
         mock_module.classes.query.Filter = mock_filter_cls
 
         with patch('semantica.vector_store.weaviate_store.WEAVIATE_AVAILABLE', True), \
-             patch('semantica.vector_store.weaviate_store.weaviate', mock_module):
+             patch('semantica.vector_store.weaviate_store.weaviate', mock_module), \
+             patch('weaviate.classes.query.Filter', mock_filter_cls):
 
             # Test exact match
             res = store._build_weaviate_filter({"dept": "eng"})

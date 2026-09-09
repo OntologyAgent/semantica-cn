@@ -208,7 +208,12 @@ def _traversal_graph(graph_dict: dict) -> nx.DiGraph:
     ``{entities, relationships}`` dict does not satisfy (``in`` would test
     the dict's top-level keys, so every node lookup reported "not found").
     Edge ``weight`` is preserved for weighted (Dijkstra) traversal.
+
+    A KG-backed session may hand us an actual NetworkX graph already; pass
+    it through unchanged.
     """
+    if isinstance(graph_dict, nx.Graph):
+        return graph_dict
     graph = nx.DiGraph()
     for node in graph_dict.get("entities", []):
         node_id = node.get("id")

@@ -91,12 +91,23 @@ def test_mutation_bridge_reinstalls_for_new_session_on_same_app(monkeypatch):
     assert [receiver for receiver, _ in received] == ["second"]
 
 
+def _all_route_paths(routes) -> set:
+    """Collect every route path, recursing into fastapi>=0.141 lazy _IncludedRouter entries."""
+    paths = set()
+    for route in routes:
+        if hasattr(route, "path"):
+            paths.add(route.path)
+        elif hasattr(route, "original_router"):
+            paths |= _all_route_paths(route.original_router.routes)
+    return paths
+
+
 def test_legacy_server_mounts_editable_markdown_routes(monkeypatch):
     monkeypatch.setenv("SEMANTICA_ALLOW_ANONYMOUS", "true")
 
     from semantica import server
 
-    paths = {route.path for route in server.app.routes}
+    paths = _all_route_paths(server.app.routes)
     assert "/api/markdown/{kind}/{resource_id:path}" in paths
     assert "/api/memories" in paths
     assert "/ws/graph-updates" in paths

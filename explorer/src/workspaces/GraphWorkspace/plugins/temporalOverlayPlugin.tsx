@@ -55,7 +55,7 @@ function TemporalPanelContent({ temporal }: { temporal: ReturnType<GraphPluginCo
       <div style={detailRowStyle}>
         <span style={detailLabelStyle}>{t("graph.temporalOverlay.labelBounds")}</span>
         <span style={detailValueStyle}>
-          {(temporal?.minDate ?? "1970")} → {(temporal?.maxDate ?? "2030")}
+          {(temporal?.minDate ?? "1970")} → {(temporal?.maxDate ?? "now")}
         </span>
       </div>
       <div style={detailRowStyle}>

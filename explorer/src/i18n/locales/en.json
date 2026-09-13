@@ -12,11 +12,9 @@
     "nav.manage.hint": "Lineage and governance tooling",
     "nav.ontologyHub.label": "Ontology Hub",
     "nav.ontologyHub.hint": "Schema governance, registry, and vocabulary management",
-
     "connection.checking": "Connecting…",
     "connection.online": "System Online",
     "connection.offline": "Backend Unreachable",
-
     "shell.explore.title": "Explore",
     "shell.explore.subtitle": "Browse the graph and switch views without leaving the workspace.",
     "shell.explore.kickerGraph": "Graph Studio",
@@ -37,7 +35,6 @@
     "shell.manage.title": "Manage",
     "shell.manage.subtitle": "Review provenance, lineage, ontology, and governance context.",
     "shell.manage.kicker": "Graph Governance",
-
     "tabs.explore.graph": "Semantica Explorer",
     "tabs.explore.vocabulary": "Vocabulary Browser",
     "tabs.analyze.reasoning": "Reasoning Playground",
@@ -49,10 +46,8 @@
     "tabs.manage.lineage": "PROV-O Lineage",
     "tabs.manage.kgOverview": "KG Overview",
     "tabs.manage.ontology": "Ontology Summary",
-
     "fallback.loading": "Loading workspace…",
     "common.appTitle": "Semantica Knowledge Explorer",
-
     "welcome.status.version": "Semantica v2 · Semantic Intelligence",
     "welcome.kicker.aria": "Product category",
     "welcome.kicker.text": "Knowledge Explorer",
@@ -106,15 +101,12 @@
     "welcome.capability.communities": "Grouped Communities",
     "welcome.capability.causalPath": "Trace Causal Path",
     "welcome.capability.provenanceDossier": "Provenance Dossier",
-
     "language.toggle": "Switch language",
-
     "error.boundary.title": "Something went wrong in this view.",
     "error.boundary.detail": "An unexpected problem occurred while rendering this workspace. Your data is safe, but this view cannot be displayed.",
     "error.boundary.fatal": "This view continues to encounter a critical error. Please switch to another workspace or reload the page to restore functionality.",
     "error.boundary.retry": "Try Again",
     "error.boundary.reload": "Reload Application",
-
     "graph.errors.unauthorized": "Authentication failed: the API key is invalid or missing.",
     "graph.errors.forbidden": "Access denied: this key lacks permission for the requested resource.",
     "graph.errors.notFound": "Resource not found.",
@@ -122,7 +114,6 @@
     "graph.errors.requestFailed": "Request failed.",
     "graph.errors.network": "Network error: the server could not be reached.",
     "graph.errors.detailPrefix": "Backend message",
-
     "graph.legend.panelTitle": "Legend",
     "graph.legend.semanticGroups": "Semantic groups",
     "graph.legend.nodeCount": "{{count}} nodes",
@@ -130,7 +121,6 @@
     "graph.legend.nodeColors": "Node colors",
     "graph.legend.nodeColorsHint": "Base semantic colors; selection, zoom, and distance effects can change node appearance.",
     "graph.legend.colorNodes": "{{group}}: {{count}} nodes",
-
     "graph.search.placeholder": "Search command, node, or concept",
     "graph.search.ariaInput": "Search graph nodes",
     "graph.search.submit": "Search",
@@ -140,7 +130,6 @@
     "graph.search.resultsMany": "{{count}} results",
     "graph.search.dismiss": "Dismiss",
     "graph.search.dismissAria": "Dismiss search results",
-
     "graph.toolbar.ariaViewMode": "Graph view mode",
     "graph.toolbar.zoomIn": "Zoom In",
     "graph.toolbar.zoomInTitle": "Zoom in (or scroll up on the canvas)",
@@ -178,16 +167,14 @@
     "graph.toolbar.group.distance": "Distance",
     "graph.toolbar.group.analysis": "Analysis",
     "graph.toolbar.group.utility": "Utility",
-
     "graph.mode.full": "Full Graph",
     "graph.mode.fullTitle": "Return to the full graph context",
     "graph.mode.grouped": "Grouped View",
     "graph.mode.groupedTitle": "Compress dense structure into detected communities",
     "graph.mode.groupedUnavailableFallback": "Grouped view is unavailable until communities can be detected",
-    "graph.mode.focused": "Focused",
+    "graph.mode.focused": "Focus",
     "graph.mode.focusedTitle": "Inspect the selected node in a focused local graph",
     "graph.mode.focusedUnavailableFallback": "Focused mode is unavailable for the current selection",
-
     "graph.dock.effects": "Effects",
     "graph.dock.effectsTitle": "Open exploration effects controls",
     "graph.dock.neighbors": "Neighbors",
@@ -195,7 +182,6 @@
     "graph.dock.temporal": "Temporal",
     "graph.dock.temporalTitle": "Toggle temporal context panel",
     "graph.dock.loadingPanel": "Loading {{panel}}…",
-
     "graph.hud.nodesEdges": "{{nodes}} nodes · {{edges}} edges",
     "graph.hud.activeCount": "{{count}} active",
     "graph.hud.focusedGroupedCompressed": "Communities compressed into grouped structure view",
@@ -208,7 +194,6 @@
     "graph.hud.egoDepthTitle": "Ego depth: {{hops}} hops",
     "graph.hud.hopCountOne": "{{count}} hop",
     "graph.hud.hopCountMany": "{{count}} hops",
-
     "graph.distance.title": "Distance Intelligence",
     "graph.distance.anchorLabel": "Anchor:",
     "graph.distance.anchorCount": "{{count}} anchor",
@@ -235,11 +220,9 @@
     "graph.distance.loadFailed": "Semantic distance could not be loaded.",
     "graph.distance.fullGraphOnly": "Distance intelligence is available in Full Graph mode.",
     "graph.distance.selectNode": "Select a node to activate distance intelligence.",
-
     "graph.focused.selectFirst": "Select a node to inspect in Focused mode.",
     "graph.focused.unavailableGrouped": "Focused mode is unavailable for this grouped selection.",
     "graph.focused.unavailableMissing": "Selected item is not available in the current graph.",
-
     "graph.edge.title": "Relationship",
     "graph.edge.close": "Close",
     "graph.edge.weight": "weight {{weight}}",
@@ -251,14 +234,11 @@
     "graph.edge.familyMany": "{{count}} family members",
     "graph.edge.bundle": "{{kind}} bundle",
     "graph.edge.provenanceFields": "{{count}} provenance fields",
-
     "graph.loading.settlingLayout": "Settling runtime layout",
     "graph.loading.timeline": "Loading timeline…",
     "graph.loading.inspector": "Loading inspector…",
     "graph.load.unknownError": "Unknown error while loading the graph.",
-
     "graph.canvas.fitView": "Fit View",
-
     "graph.loading.preparing": "Preparing graph session",
     "graph.loading.titleNodes": "Loading nodes",
     "graph.loading.titleEdges": "Loading relationships",
@@ -297,11 +277,9 @@
     "graph.loading.failedTitle": "Could not load the graph",
     "graph.loading.failedBody": "The Explorer API did not return graph data. Check that the backend is running and reachable, then try again.",
     "graph.loading.retry": "Retry",
-
     "graph.timeline.playEvolution": "Play Evolution",
     "graph.timeline.pauseEvolution": "Pause Evolution",
     "graph.timeline.scrubberLabel": "Temporal Scrubber · {{range}}",
-
     "graph.inspector.bandBadgeOne": "{{count}} hop · {{band}}",
     "graph.inspector.bandBadgeMany": "{{count}} hops · {{band}}",
     "graph.inspector.bandDirect": "direct",
@@ -329,8 +307,8 @@
     "graph.inspector.emptyPrompt": "Select a node on the graph to inspect its details.",
     "graph.inspector.selection": "SELECTION",
     "graph.inspector.notDirectlyInspectable": "Grouped selection",
-    "graph.inspector.activateFocusedHint": "Activate the focused view to inspect this group's canonical node.",
-    "graph.inspector.focusedUnavailableDefault": "The focused view is not available for this selection.",
+    "graph.inspector.activateFocusedHint": "Use Focus to resolve this grouped selection to its canonical node.",
+    "graph.inspector.focusedUnavailableDefault": "Focused mode is unavailable for the current selection.",
     "graph.inspector.groupedSelection": "Grouped selection",
     "graph.inspector.entityFallback": "Entity",
     "graph.inspector.groupedDisplayLevelNote": "Grouped display level",
@@ -358,7 +336,6 @@
     "graph.inspector.attributionEmpty": "No explicit attribution metadata was found on this node.",
     "graph.inspector.propertiesSection": "Properties",
     "graph.inspector.propertiesEmpty": "No additional properties are attached to this node.",
-
     "graph.effects.panelTitle": "Effects",
     "graph.effects.eyebrow": "Exploration effects",
     "graph.effects.sectionPathAndFocus": "Path and focus",
@@ -414,7 +391,6 @@
     "graph.effects.rowCommunities.description": "Detect stable Louvain communities for orientation and scene grouping.",
     "graph.effects.rowCentrality.label": "Centrality Ranking",
     "graph.effects.rowCentrality.description": "Rank the strongest graph anchors for labels, regions, and navigation.",
-
     "graph.temporalOverlay.panelTitle": "Temporal Context",
     "graph.temporalOverlay.eyebrow": "Current scrubber state",
     "graph.temporalOverlay.labelCurrent": "Current",
@@ -423,7 +399,6 @@
     "graph.temporalOverlay.valueAll": "All",
     "graph.temporalOverlay.noTimeSelected": "No time selected",
     "graph.temporalOverlay.overlayChipTitle": "Temporal",
-
     "graph.neighborhood.panelTitle": "Neighborhood",
     "graph.neighborhood.selectNodePrompt": "Select a node to inspect its local neighborhood.",
     "graph.neighborhood.directNeighborsInFullGraph": "{{count}} direct neighbors in the full graph",
@@ -434,7 +409,6 @@
     "graph.neighborhood.aggregatedBundlesMany": "{{count}} aggregated structural bundles visible.",
     "graph.neighborhood.noNeighbors": "No direct neighbors are available for this node.",
     "graph.neighborhood.metaDegree": "degree {{degree}}",
-
     "graph.markdown.preview": "Preview",
     "graph.markdown.source": "Source",
     "graph.markdown.copyTitle": "Copy raw content",
@@ -936,23 +910,23 @@
     "decision.decisionMakerLabel": "Decision maker",
     "decision.recordedAtLabel": "Recorded",
     "decision.causalChain": "Causal Chain",
-        "registry.op.updateNode": "Update Node",
-        "shell.explore.kickerMemory": "Memory Browser",
-        "shell.explore.subtitleMemory": "Browse and edit canonical AgentMemory documents.",
-        "ontologyHub.editor.relationshipDetails": "Relationship Details",
-        "ontologyHub.editor.ontologyDetails": "Ontology Details",
-        "ontologyHub.editor.externalDetails": "External Term Details",
-        "ontologyHub.editor.loading": "Loading ontology structure…",
-        "ontologyHub.editor.emptyGraph": "This ontology has no editable classes or properties.",
-        "ontologyHub.editor.readonly": "This term is read-only",
-        "graph.markdown.edit": "Edit",
-        "graph.markdown.loading": "Loading…",
-        "graph.markdown.cancel": "Cancel",
-        "graph.markdown.apply": "Apply",
-        "graph.markdown.applying": "Applying…",
-        "graph.markdown.makeChangeFirst": "Make a change before applying",
-        "graph.markdown.reloadLatest": "Reload latest",
-        "graph.markdown.sourceAria": "Markdown source",
+    "registry.op.updateNode": "Update Node",
+    "shell.explore.kickerMemory": "Memory Browser",
+    "shell.explore.subtitleMemory": "Browse and edit canonical AgentMemory documents.",
+    "ontologyHub.editor.relationshipDetails": "Relationship Details",
+    "ontologyHub.editor.ontologyDetails": "Ontology Details",
+    "ontologyHub.editor.externalDetails": "External Term Details",
+    "ontologyHub.editor.loading": "Loading ontology structure…",
+    "ontologyHub.editor.emptyGraph": "This ontology has no editable classes or properties.",
+    "ontologyHub.editor.readonly": "This term is read-only",
+    "graph.markdown.edit": "Edit",
+    "graph.markdown.loading": "Loading…",
+    "graph.markdown.cancel": "Cancel",
+    "graph.markdown.apply": "Apply",
+    "graph.markdown.applying": "Applying…",
+    "graph.markdown.makeChangeFirst": "Make a change before applying",
+    "graph.markdown.reloadLatest": "Reload latest",
+    "graph.markdown.sourceAria": "Markdown source",
     "decision.stepsCount_one": "{{count}} step",
     "decision.stepsCount_other": "{{count}} steps",
     "decision.noChainTitle": "No chain steps",
@@ -983,7 +957,8 @@
     "vocabulary.dropHere": "Drop here…",
     "vocabulary.importVocabulary": "Import Vocabulary",
     "vocabulary.formatHint": ".ttl or .rdf",
-    "vocabulary.uploadFailed": "Upload failed. Check console."
+    "vocabulary.uploadFailed": "Upload failed. Check console.",
+    "ontologyHub.editor.unownedEntity": "No registered ontology owns {{entity}}. Pick an ontology above to start editing."
   },
   "__meta": {}
 }

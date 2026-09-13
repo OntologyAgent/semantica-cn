@@ -22,6 +22,7 @@ import { LanguageToggle } from './i18n/LanguageToggle';
 import type en from './i18n/locales/en.json';
 import { ExploreWorkspaceTabs, type ExploreView } from './ExploreWorkspaceTabs';
 import { fetchAgentMemoryAvailability } from './explorerCapabilities';
+import { hasOntologyUrlState } from './workspaces/OntologyWorkspace/ontologyUrlState';
 
 type TranslationKey = keyof typeof en.translation;
 
@@ -103,15 +104,7 @@ const navItems: NavItem[] = [
 ];
 
 function readInitialWorkspace(): WorkspaceId {
-  try {
-    const params = new URLSearchParams(window.location.search);
-    if (params.has("ontologyTab") || params.has("ontologyEntity")) {
-      return "ontology-hub";
-    }
-  } catch {
-    // Default to the welcome screen when URL state is unavailable.
-  }
-  return "welcome";
+  return hasOntologyUrlState() ? 'ontology-hub' : 'welcome';
 }
 
 const shellStyles = `

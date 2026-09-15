@@ -57,7 +57,9 @@ WORKDIR /app
 # Build, and local Compose alike. Leaving the version unpinned means apt
 # always resolves to whatever trixie-security currently has, which is
 # guaranteed >= today's fixed version since security repos never regress.
-RUN apt-get update \
+# Mirror Debian repos via TUNA (deb.debian.org unreachable on CN networks)
+RUN sed -i 's|http://deb.debian.org|https://mirrors.tuna.tsinghua.edu.cn|g; s|http://security.debian.org|https://mirrors.tuna.tsinghua.edu.cn/debian-security|g' /etc/apt/sources.list.d/*.sources /etc/apt/sources.list 2>/dev/null || true \
+    && apt-get update \
     && apt-get install -y --no-install-recommends --only-upgrade \
         perl-base \
         libpcre2-8-0 \

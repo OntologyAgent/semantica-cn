@@ -32,6 +32,8 @@ import { GraphLoadingOverlay } from "./GraphLoadingOverlay";
 import { createGraphLoadProgress, getGraphLoadTitleKey } from "./graphLoading";
 import { GRAPH_THEME, withAlpha } from "./graphTheme";
 import { buildGraphColorLegend, type GraphColorLegendItem } from "./graphColorLegend";
+import { focusedUnavailableReasonText, groupedViewReasonText } from "./graphViewCopy";
+import { localGraphRequiresDraftConfirm } from "./localGraphTransition";
 import { buildHeatmapRenderSnapshot, buildStructuralDistanceSnapshot, checkGroupedViewAvailability, getDistanceBandColor, resolveDisplayGraph, resolveDisplayStateSnapshot, resolveGroupedDisplayNodeId, resolveGroupedDisplayStateSnapshot, summarizeDistanceBuckets } from "./graphSceneState";
 import {
   type GraphPlugin,
@@ -55,6 +57,7 @@ import {
 } from "./nodeMarkdownSync";
 import type { GraphSceneHandle, GraphSceneRuntime } from "./scene";
 import type {
+  FocusedUnavailableReason,
   GraphAnalyticsSnapshot,
   GraphDistanceVisualMode,
   GraphDistanceVisualState,
@@ -63,6 +66,7 @@ import type {
   GraphEffectToggle,
   GraphEffectsState,
   GraphInteractionState,
+  GraphLayoutViewMode,
   GraphLoadProgress,
   GraphLoadSummary,
   GraphRuntimeDiagnosticsSnapshot,
@@ -230,10 +234,12 @@ function ToolbarButton({
   item,
   compact = false,
   className = "",
+  toggle = false,
 }: {
   item: GraphToolbarItem;
   compact?: boolean;
   className?: string;
+  toggle?: boolean;
 }) {
   const isCompact = compact || item.compact;
   return (
@@ -242,6 +248,7 @@ function ToolbarButton({
       className={`explore-tool-button ${item.tone === "primary" ? "explore-tool-button-primary" : ""} ${className}`}
       data-active={item.active ? "true" : "false"}
       data-compact={isCompact ? "true" : "false"}
+      aria-pressed={toggle ? item.active === true : undefined}
       onClick={item.onClick}
       title={item.title}
       aria-label={item.ariaLabel ?? item.label}
@@ -290,7 +297,7 @@ function SegmentedModeControl({ items }: { items: GraphToolbarItem[] }) {
   return (
     <div className="explore-mode-control" role="group" aria-label={t("graph.toolbar.ariaViewMode")}>
       {items.map((item) => (
-        <ToolbarButton key={item.id} item={item} className="explore-mode-segment" />
+        <ToolbarButton key={item.id} item={item} className="explore-mode-segment" toggle />
       ))}
     </div>
   );
@@ -1109,7 +1116,7 @@ function buildSelectedNodeState(
 type FocusResolution = {
   kind: GraphSelectedNodeKind;
   resolvedNodeId: string | null;
-  reason: string | null;
+  reason: FocusedUnavailableReason | null;
 };
 
 function buildSelectedEdgeState(
@@ -1582,7 +1589,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
       return {
         kind: "none",
         resolvedNodeId: null,
-        reason: t("graph.focused.selectFirst"),
+        reason: { code: "no-selection" },
       };
     }
 
@@ -1616,16 +1623,16 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
       return {
         kind: "grouped",
         resolvedNodeId: null,
-        reason: t("graph.focused.unavailableGrouped"),
+        reason: { code: "grouped-unresolvable" },
       };
     }
 
     return {
       kind: "unavailable",
       resolvedNodeId: null,
-      reason: t("graph.focused.unavailableMissing"),
+      reason: { code: "not-in-graph" },
     };
-  }, [t]);
+  }, []);
 
   const focusedSelectionResolution = useMemo(
     () => resolveNodeIdForFocusedMode(selectedNodeId, pluginRuntimeRef.current?.displayGraph),
@@ -1655,20 +1662,32 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
   }, [markdownDraftDirty]);
 
 
-  const requestViewMode = useCallback((nextViewMode: GraphViewMode) => {
-    if (nextViewMode !== viewMode && !confirmDiscardMarkdownDraft()) return;
-    if (nextViewMode === "focused") {
-      const resolution = resolveNodeIdForFocusedMode(selectedNodeId, pluginRuntimeRef.current?.displayGraph);
-      if (!resolution.resolvedNodeId) {
-        return;
-      }
-
-      setFocusedNodeId(resolution.resolvedNodeId);
-      setSelectedNodeId(resolution.resolvedNodeId);
-      setViewMode("focused");
-      setIsLayoutRunning(false);
+  const enterLocalGraph = useCallback((nodeId: string) => {
+    const resolution = resolveNodeIdForFocusedMode(nodeId, pluginRuntimeRef.current?.displayGraph);
+    if (!resolution.resolvedNodeId) {
       return;
     }
+
+    const nextNodeId = resolution.resolvedNodeId;
+    const requiresDraftConfirm = localGraphRequiresDraftConfirm(viewMode, selectedNodeId, nextNodeId);
+    if (requiresDraftConfirm && !confirmDiscardMarkdownDraft()) {
+      return;
+    }
+
+    setFocusedNodeId(nextNodeId);
+    setSelectedNodeId(nextNodeId);
+    if (requiresDraftConfirm) {
+      setSelectedEdgeId("");
+      setPathResult(null);
+      setSearchResults([]);
+      setSearchError(null);
+    }
+    setViewMode("focused");
+    setIsLayoutRunning(false);
+  }, [confirmDiscardMarkdownDraft, resolveNodeIdForFocusedMode, selectedNodeId, viewMode]);
+
+  const setLayoutViewMode = useCallback((nextViewMode: GraphLayoutViewMode) => {
+    if (nextViewMode !== viewMode && !confirmDiscardMarkdownDraft()) return;
 
     if (nextViewMode === "grouped") {
       if (!groupedViewAvailable) {
@@ -1718,7 +1737,6 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
     groupedViewAvailable,
     groupedViewReason,
     lastGroupedSelectedNodeId,
-    resolveNodeIdForFocusedMode,
     selectedNodeId,
     viewMode,
   ]);
@@ -2386,7 +2404,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
       if (viewMode === "grouped") {
         return displayState.groupedViewAvailable
           ? t("graph.hud.focusedGroupedCompressed")
-          : (displayState.groupedViewReason ?? t("graph.hud.groupedUnavailable"));
+          : (groupedViewReasonText(displayState.groupedViewReason) ?? groupedViewReasonText({ code: "communities-undetected" }));
       }
       return null;
     }
@@ -2523,7 +2541,10 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
         focusNode(action.nodeId);
         return;
       case "setViewMode":
-        requestViewMode(action.viewMode);
+        setLayoutViewMode(action.viewMode);
+        return;
+      case "enterLocalGraph":
+        enterLocalGraph(action.nodeId);
         return;
       case "collapseNeighborhood":
         if (!selectedNodeId) {
@@ -2575,7 +2596,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
         setActiveDockPanelId((previous) => (previous === action.panelId ? null : previous));
         return;
     }
-  }, [focusNode, requestViewMode, selectedNodeId, setEffectToggle]);
+  }, [enterLocalGraph, focusNode, selectedNodeId, setEffectToggle, setLayoutViewMode]);
 
   const diagnosticsSnapshot = useMemo<GraphDiagnosticsSnapshot | null>(() => {
     if (!GRAPH_THEME.effects.diagnostics.enabledInDev || !graphDiagnosticsState) {
@@ -2806,38 +2827,47 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
         title: t("graph.mode.fullTitle"),
         icon: Layers3,
         active: viewMode === "full",
-        onClick: () => requestViewMode("full"),
+        onClick: () => setLayoutViewMode("full"),
       },
       {
         id: "view-grouped",
         label: t("graph.mode.grouped"),
         title: displayState.groupedViewAvailable
           ? t("graph.mode.groupedTitle")
-          : (displayState.groupedViewReason ?? t("graph.mode.groupedUnavailableFallback")),
+          : (groupedViewReasonText(displayState.groupedViewReason)
+            ?? groupedViewReasonText({ code: "communities-undetected" })
+            ?? undefined),
         icon: GitBranch,
         active: viewMode === "grouped",
         disabled: !displayState.groupedViewAvailable,
-        onClick: () => requestViewMode("grouped"),
+        onClick: () => setLayoutViewMode("grouped"),
       },
       {
         id: "view-focused",
         label: t("graph.mode.focused"),
         title: canActivateFocusedMode
           ? t("graph.mode.focusedTitle")
-          : (focusedSelectionResolution.reason ?? t("graph.mode.focusedUnavailableFallback")),
+          : (focusedUnavailableReasonText(focusedSelectionResolution.reason) ?? undefined),
         icon: Focus,
         active: viewMode === "focused",
         disabled: viewMode !== "focused" && !canActivateFocusedMode,
-        onClick: () => requestViewMode("focused"),
+        onClick: () => {
+          const nodeId = focusedSelectionResolution.resolvedNodeId;
+          if (nodeId) {
+            enterLocalGraph(nodeId);
+          }
+        },
       },
     ];
   }, [
     canActivateFocusedMode,
     displayState.groupedViewAvailable,
     displayState.groupedViewReason,
+    enterLocalGraph,
     focusedSelectionResolution.reason,
+    focusedSelectionResolution.resolvedNodeId,
     hasGraphContent,
-    requestViewMode,
+    setLayoutViewMode,
     t,
     viewMode,
   ]);

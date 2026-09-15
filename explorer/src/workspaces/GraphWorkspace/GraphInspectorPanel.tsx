@@ -4,7 +4,8 @@ import { Loader2 } from "lucide-react";
 import { graph } from "../../store/graphStore";
 import type en from "../../i18n/locales/en.json";
 import { GRAPH_THEME, withAlpha } from "./graphTheme";
-import type { GraphSelectedNodeKind } from "./types";
+import type { FocusedUnavailableReason, GraphSelectedNodeKind } from "./types";
+import { focusedUnavailableReasonText } from "./graphViewCopy";
 import { MarkdownContentViewer } from "./MarkdownContentViewer";
 import type { MarkdownApplyResult } from "./markdownResourceClient";
 
@@ -82,7 +83,7 @@ export interface GraphInspectorPanelProps {
   inspectableNodeId?: string | null;
   selectedNodeKind?: GraphSelectedNodeKind;
   canActivateFocused?: boolean;
-  focusedUnavailableReason?: string | null;
+  focusedUnavailableReason?: FocusedUnavailableReason | null;
   predictions: LinkPrediction[];
   predictionType: string;
   onPredictionTypeChange: (value: string) => void;
@@ -409,7 +410,7 @@ export function GraphInspectorPanel({
           <div style={{ color: GRAPH_THEME.ui.text.body, fontSize: 13, lineHeight: 1.6 }}>
             {canActivateFocused
               ? t("graph.inspector.activateFocusedHint")
-              : (focusedUnavailableReason ?? t("graph.inspector.focusedUnavailableDefault"))}
+              : focusedUnavailableReasonText(focusedUnavailableReason)}
           </div>
         </div>
       </aside>
@@ -460,7 +461,7 @@ export function GraphInspectorPanel({
             <div style={{ color: GRAPH_THEME.ui.text.body, fontSize: 13, lineHeight: 1.6 }}>
               {canActivateFocused
                 ? t("graph.inspector.canonicalNodeAvailable", { nodeId: effectiveNodeId })
-                : (focusedUnavailableReason ?? t("graph.inspector.focusedUnavailableDefault"))}
+                : focusedUnavailableReasonText(focusedUnavailableReason)}
             </div>
           </div>
         ) : null}

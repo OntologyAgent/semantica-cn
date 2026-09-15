@@ -958,7 +958,14 @@
     "vocabulary.importVocabulary": "Import Vocabulary",
     "vocabulary.formatHint": ".ttl or .rdf",
     "vocabulary.uploadFailed": "Upload failed. Check console.",
-    "ontologyHub.editor.unownedEntity": "No registered ontology owns {{entity}}. Pick an ontology above to start editing."
+    "ontologyHub.editor.unownedEntity": "No registered ontology owns {{entity}}. Pick an ontology above to start editing.",
+    "graph.grouped.reason.communities-undetected": "Grouped view is unavailable until communities can be detected.",
+    "graph.grouped.reason.community-nodes-missing": "Grouped view is unavailable because no community nodes could be created.",
+    "graph.grouped.reason.invalid-community-layout": "Grouped node {{nodeId}} has invalid coordinates.",
+    "graph.grouped.reason.missing-grouped-node": "Grouped edge {{edgeId}} references a missing grouped node.",
+    "graph.focused.reason.no-selection": "Select a node to inspect in Focused mode.",
+    "graph.focused.reason.grouped-unresolvable": "Focused mode is unavailable for this grouped selection.",
+    "graph.focused.reason.not-in-graph": "Selected item is not available in the current graph."
   },
   "__meta": {}
 }

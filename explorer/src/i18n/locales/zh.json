@@ -958,7 +958,14 @@
     "vocabulary.importVocabulary": "导入词表",
     "vocabulary.formatHint": ".ttl 或 .rdf",
     "vocabulary.uploadFailed": "上传失败。请查看控制台。",
-    "ontologyHub.editor.unownedEntity": "没有已注册的本体拥有 {{entity}}。请在上方选择一个本体开始编辑。"
+    "ontologyHub.editor.unownedEntity": "没有已注册的本体拥有 {{entity}}。请在上方选择一个本体开始编辑。",
+    "graph.grouped.reason.communities-undetected": "在能够检测出社区之前，分组视图不可用。",
+    "graph.grouped.reason.community-nodes-missing": "无法创建社区节点，分组视图不可用。",
+    "graph.grouped.reason.invalid-community-layout": "分组节点 {{nodeId}} 的坐标无效。",
+    "graph.grouped.reason.missing-grouped-node": "分组边 {{edgeId}} 引用了不存在的分组节点。",
+    "graph.focused.reason.no-selection": "请先选择一个节点，再在 Focus 模式中查看。",
+    "graph.focused.reason.grouped-unresolvable": "Focus 模式对该分组选择不可用。",
+    "graph.focused.reason.not-in-graph": "所选项在当前图中不可用。"
   },
   "__meta": {
     "source_version": "dd196d36c4fd11292fc6f32eb6fce8eb0cc1cde5"

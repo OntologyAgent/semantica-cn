@@ -2,7 +2,7 @@
 title: "评估模块（Evals）"
 description: "用确定性评估器与模型支撑的评估器加一个小型运行框架，为决策记录、审计轨迹和推理输出打分。"
 source: reference/evals.md
-source_version: a465bb684877b2950fc10c8d1b34962afd4e470c
+source_version: 5c59a3461c27d441e32dfd1e5407a24574b46a98
 icon: "chart-line"
 ---
 
@@ -22,15 +22,19 @@ icon: "chart-line"
 | 名称 | 类型 | 职责 |
 | :--- | :--- | :--- |
 | `evaluate(cases, evaluators, config=None, target_fn=None)` | 函数 | 对每个用例运行具名评估器，返回 `EvalSummary` |
+| `evaluate_repeated(cases, evaluators, config=None, target_fn=None, runs=10)` | 函数 | 对每个用例重复运行 `target_fn` 并聚合统计，返回 `RepeatedSummary` |
 | `list_evaluators()` | 函数 | 全部已注册评估器的排序名单 |
 | `get_evaluator(name)` | 函数 | 按名查找单个评估器函数 |
 | `EvalMetric` | dataclass（frozen） | 单个评估器的结果：`score`、`passed`、`meta` |
 | `CaseResult` | namedtuple | 单个用例的结果：`case_id`、`status`、`metrics`、`details` |
 | `EvalSummary` | dataclass | 跨用例聚合：`total`、`passed`、`failed`、`errors`、`pass_rate`、`cases` |
+| `SampleStats` | dataclass（frozen） | 单评估器在重复运行上的统计：`n`、`passes`、`errors`、`pass_rate`、`mean_score`、`stddev`、`any_passed`、`all_passed`、`objective_passed`、`samples` |
+| `RepeatedCaseResult` | dataclass（frozen） | 单个用例的重复运行结果：`case_id`、`verdict`、`stats` |
+| `RepeatedSummary` | dataclass | 跨重复采样用例的聚合：`runs`、`stable_pass`、`flaky`、`stable_fail`、`errors`、`cases` |
 
 ```python
 import semantica.evals as evals
-from semantica.evals import evaluate, list_evaluators, get_evaluator
+from semantica.evals import evaluate, evaluate_repeated, list_evaluators, get_evaluator
 ```
 
 ## 内置评估器
@@ -176,7 +180,37 @@ for case in summary.cases:
         print(metric.meta.get("reasons", {}))  # 逐子检查的失败原因
 ```
 
-`EvalMetric` 是 frozen 的（`score: float`、`passed: bool`、`meta: dict`）；`CaseResult` 是 namedtuple，`EvalSummary` 是普通 dataclass——三者都便于序列化，可记日志或做回归追踪。
+`EvalMetric`、`SampleStats`、`RepeatedCaseResult` 是 frozen dataclass（`score: float`、`passed: bool`、`meta: dict` 等）；`CaseResult` 是 namedtuple，两个 `*Summary` 类是普通 dataclass——全部都便于序列化，可记日志或做回归追踪。
+
+## 重复采样
+
+对不确定性的目标（LLM 支撑的抽取、agent 管线、基于采样的评审器）来说，单次判定说明不了什么。`evaluate_repeated` 会对每个用例把 `target_fn` 重跑 `n` 次，并按评估器聚合统计：
+
+```python
+from semantica.evals import evaluate_repeated
+
+summary = evaluate_repeated(
+    cases,                       # 必须是 dict 用例；见下
+    evaluators=["exact_match"],
+    target_fn=pipeline_run,      # 每次运行调用一次，产生新鲜的 `actual`
+    runs=10,
+)
+
+summary.runs            # 10
+summary.cases[0].verdict  # "stable_pass" | "flaky" | "stable_fail" | "error"
+summary.cases[0].stats["exact_match"].pass_rate   # 例如 0.8
+summary.cases[0].stats["exact_match"].stddev      # 例如 0.13
+```
+
+每个评估器的 `SampleStats` 携带 `n`、`passes`、`errors`、`pass_rate`（即 `passes / n`）、`mean_score`、`stddev`，以及派生布尔值 `any_passed`（实测 pass@n）和 `all_passed`（实测 pass^n）。判定汇总全部样本：每一轮都通过所有评估器为 `stable_pass`；全部未通过为 `stable_fail`；通过与未通过混杂为 `flaky`；某一轮出错为 `error`。
+
+前提与边界情况：
+
+- 每个用例可以是 dict 或 `(expected, actual)` 元组，与 `evaluate()` 一致。携带**非空**静态 `actual` 的用例没有可采样的东西；把它与 `runs > 1` 同用会抛 `ValueError`。`actual` 为 `None` 视同缺席，与 `evaluate()` 中一样回退到解析器。
+- `target_fn` 的异常与评估器失败会成为单轮错误样本，并把用例标记为 `error`；绝不会让整个运行崩溃。
+- 目标（objective）层与 `evaluate()` 中一样逐轮生效，同一个目标通过 `SampleStats.objective_passed` 把关聚合 `pass_rate`（例如 `{direction: maximize, threshold: 0.8}` 要求跨轮 80% 的通过率）。
+- 至少需要一个评估器，且评估器名必须唯一。
+- `runs` 必须 `>= 1`。
 
 ## 注意
 

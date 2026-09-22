@@ -2,7 +2,7 @@
 title: 模块
 description: Semantica 的每个模块都独立可用：只导入你需要的部分。
 source: modules.md
-source_version: 9c47f1cc335e7f9f001b70e2edba71003a3908cf
+source_version: 7ef5a6ad6986c20dd731b125a97b99817de955fc
 icon: "puzzle-piece"
 ---
 
@@ -488,7 +488,7 @@ summary = evaluate(cases, evaluators=["levenshtein"])
 print(summary.total, summary.passed, summary.pass_rate)
 ```
 
-**公开 API：** `evaluate(cases, evaluators, config=None)`、`list_evaluators()`、`get_evaluator(name)`，以及 `EvalMetric` / `CaseResult` / `EvalSummary` 结果类型。详见[评估模块参考](../reference/evals.md)。
+**公开 API：** `evaluate(cases, evaluators, config=None)`、`evaluate_repeated(cases, evaluators, config=None, target_fn=None, runs=10)`（对不确定性目标做重复采样）、`list_evaluators()`、`get_evaluator(name)`，以及 `EvalMetric` / `CaseResult` / `EvalSummary` / `SampleStats` / `RepeatedCaseResult` / `RepeatedSummary` 结果类型。详见[评估模块参考](../reference/evals.md)。
 
 ### Core
 

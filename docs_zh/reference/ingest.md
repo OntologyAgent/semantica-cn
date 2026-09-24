@@ -62,7 +62,7 @@ for f in files:
 ```
 
 <Tip>
-  **本地文件 `FileIngestor` 永远是最快的路径。**它按扩展名自动识别格式，自动处理 ZIP/TAR 归档，把内容读进 `.content` 字节或 `.text` 属性。只需要文件元数据时，传 `read_content=False`。
+  **本地文件 `FileIngestor` 永远是最快的路径。** 它按扩展名自动识别格式，自动处理 ZIP/TAR 归档，把内容读进 `.content` 字节或 `.text` 属性。只需要文件元数据时，传 `read_content=False`。
 </Tip>
 
 至于网页、数据库或流式来源，每个摄取器都暴露自己的类型化方法：
@@ -205,7 +205,7 @@ result = ingest("ontology.ttl")             # -> {"ontology": OntologyData}
     需要 `pyarrow`：`pip install pyarrow`。
 
     <Tip>
-      **结构化分析数据用 `ParquetIngestor`，不要用 `FileIngestor`。**Parquet 摄取会保留列类型（int、float、datetime），而 CSV 读取会丢失它们。用 `columns=["id", "text"]` 避免加载用不到的列，这一点对有几百列的宽表至关重要。
+      **结构化分析数据用 `ParquetIngestor`，不要用 `FileIngestor`。** Parquet 摄取会保留列类型（int、float、datetime），而 CSV 读取会丢失它们。用 `columns=["id", "text"]` 避免加载用不到的列，这一点对有几百列的宽表至关重要。
     </Tip>
 
     ### XMLIngestor
@@ -235,7 +235,7 @@ result = ingest("ontology.ttl")             # -> {"ontology": OntologyData}
     </Note>
 
     <Warning>
-      **`XMLIngestor` 默认就是 XXE 安全的。**不要用标准 `xml.etree.ElementTree` 预解析 XML 再交给 Semantica：它不防 XXE 攻击。`XMLIngestor` 用 lxml 且 `resolve_entities=False`，可安全解析不受信任的 XML。
+      **`XMLIngestor` 默认就是 XXE 安全的。** 不要用标准 `xml.etree.ElementTree` 预解析 XML 再交给 Semantica：它不防 XXE 攻击。`XMLIngestor` 用 lxml 且 `resolve_entities=False`，可安全解析不受信任的 XML。
     </Warning>
   </Tab>
   <Tab title="网页与订阅源">
@@ -424,7 +424,7 @@ result = ingest("ontology.ttl")             # -> {"ontology": OntologyData}
     需要 `sqlalchemy`：`pip install sqlalchemy`，外加你所用数据库的驱动。
 
     <Warning>
-      **`DBIngestor()` 的构造函数不收连接字符串。**把连接字符串作为第一个位置参数传给 `ingest_database()`、`execute_query()` 或 `export_table()`：不是传给 `DBIngestor()` 本身。
+      **`DBIngestor()` 的构造函数不收连接字符串。** 把连接字符串作为第一个位置参数传给 `ingest_database()`、`execute_query()` 或 `export_table()`：不是传给 `DBIngestor()` 本身。
     </Warning>
 
     ### SnowflakeIngestor

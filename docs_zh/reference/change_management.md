@@ -86,7 +86,7 @@ icon: "clock-rotate-left"
 </Steps>
 
 <Warning>
-  **破坏性操作前先打快照。**运行去重、冲突消解或合并操作前，先调 `manager.create_snapshot()`。也就是说，变更前必须有快照，`restore_snapshot()` 才有得回。
+  **破坏性操作前先打快照。** 运行去重、冲突消解或合并操作前，先调 `manager.create_snapshot()`。也就是说，变更前必须有快照，`restore_snapshot()` 才有得回。
 </Warning>
 
 ## TemporalVersionManager
@@ -234,7 +234,7 @@ print("Properties added: ", diff["properties_added"])
 </Warning>
 
 <Tip>
-  **生产环境用 `SQLiteVersionStorage`。**默认的内存存储在进程退出时丢失全部版本历史。给 `TemporalVersionManager` 传 `storage_path="versions.db"`，或显式创建 `SQLiteVersionStorage(db_path="versions.db")`。
+  **生产环境用 `SQLiteVersionStorage`。** 默认的内存存储在进程退出时丢失全部版本历史。给 `TemporalVersionManager` 传 `storage_path="versions.db"`，或显式创建 `SQLiteVersionStorage(db_path="versions.db")`。
 </Tip>
 
 ## 完整性校验

@@ -106,7 +106,7 @@ semantica-explorer --graph my_graph.json
 </Note>
 
 <Tip>
-  **CORS 来源经环境变量配置。**启动前把 `EXPLORER_CORS_ORIGINS` 设为逗号分隔的允许来源列表（如 `EXPLORER_CORS_ORIGINS="http://myapp.example.com"`）。
+  **CORS 来源经环境变量配置。** 启动前把 `EXPLORER_CORS_ORIGINS` 设为逗号分隔的允许来源列表（如 `EXPLORER_CORS_ORIGINS="http://myapp.example.com"`）。
 </Tip>
 
 ```bash
@@ -138,7 +138,7 @@ EXPLORER_CORS_ORIGINS="http://myapp.example.com" \
     - **距离矩阵**：`POST /api/graph/distance-matrix`
 
     <Warning>
-      **保存为 JSON 前先过滤大图。**CLI 会把整个 JSON 文件读进内存。超过 1 万节点的图，导出前先过滤出相关子图：力导向布局在超大图上会变得不可用。
+      **保存为 JSON 前先过滤大图。** CLI 会把整个 JSON 文件读进内存。超过 1 万节点的图，导出前先过滤出相关子图：力导向布局在超大图上会变得不可用。
     </Warning>
   </Tab>
   <Tab title="Ontology Hub">
@@ -162,7 +162,7 @@ EXPLORER_CORS_ORIGINS="http://myapp.example.com" \
     - **时态**：`GET /api/temporal/snapshot`、`GET /api/temporal/diff`、`GET /api/temporal/bounds`
 
     <Tip>
-      **用 `/api/analytics/validation` 检查图质量。**校验器能在把图交给下游流水线之前，检测出孤立节点、缺失类型和其他结构问题。
+      **用 `/api/analytics/validation` 检查图质量。** 校验器能在把图交给下游流水线之前，检测出孤立节点、缺失类型和其他结构问题。
     </Tip>
   </Tab>
   <Tab title="决策与溯源">
@@ -176,7 +176,7 @@ EXPLORER_CORS_ORIGINS="http://myapp.example.com" \
     - **注释**：`GET/POST /api/annotations`、`DELETE /api/annotations/{id}`
 
     <Tip>
-      **自动化用 REST API，探索用 Explorer 界面。**Explorer 的 REST 端点是稳定的程序化 API：接进脚本即可自动化批量注释、SPARQL 查询或导出。
+      **自动化用 REST API，探索用 Explorer 界面。** Explorer 的 REST 端点是稳定的程序化 API：接进脚本即可自动化批量注释、SPARQL 查询或导出。
     </Tip>
   </Tab>
 </Tabs>
@@ -360,7 +360,7 @@ WebSocket 消息 schema：
 WebSocket 广播的事件类型包括：`connection_ack`、`pong` 和 `graph_mutation`（经导入或增强添加/更新/删除节点或边时触发）。发送文本 `"ping"` 即可收到 `pong` 响应。
 
 <Warning>
-  **服务器重启后会话状态丢失。**没有自动保存。关停前先调 `POST /api/export`（body 为 `{"format": "json"}`）下载当前状态。
+  **服务器重启后会话状态丢失。** 没有自动保存。关停前先调 `POST /api/export`（body 为 `{"format": "json"}`）下载当前状态。
 </Warning>
 
 ## 性能

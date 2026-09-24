@@ -37,7 +37,7 @@ python -m semantica.mcp_server
 </Tip>
 
 <Warning>
-  **服务器经 stdio 通信：不要往 stdout 打日志。**stdout 是 JSON-RPC 消息的专用通道，一旦混进日志，客户端就会把日志误当协议消息来解析，整个通信就乱了。因此，任何指向 stdout 的 `print()` 或日志输出都是禁区：所有日志只写 `stderr`，详细程度用 `SEMANTICA_LOG_LEVEL` 环境变量控制。
+  **服务器经 stdio 通信：不要往 stdout 打日志。** stdout 是 JSON-RPC 消息的专用通道，一旦混进日志，客户端就会把日志误当协议消息来解析，整个通信就乱了。因此，任何指向 stdout 的 `print()` 或日志输出都是禁区：所有日志只写 `stderr`，详细程度用 `SEMANTICA_LOG_LEVEL` 环境变量控制。
 </Warning>
 
 ## 你能得到什么
@@ -152,11 +152,11 @@ MCP 服务器包含在基础安装中：无需任何 extra。
 | `SEMANTICA_LOG_LEVEL` | `WARNING` | 日志详细程度：`DEBUG`、`INFO`、`WARNING` |
 
 <Warning>
-  **不设置 `SEMANTICA_KG_PATH`，图就从空开始。**MCP 服务器在首次使用时创建全新的内存 `ContextGraph`。把 `SEMANTICA_KG_PATH` 指向之前保存的图文件，即可跨服务器重启恢复状态。不设置的话，进程退出时全部数据丢失。
+  **不设置 `SEMANTICA_KG_PATH`，图就从空开始。** MCP 服务器在首次使用时创建全新的内存 `ContextGraph`。把 `SEMANTICA_KG_PATH` 指向之前保存的图文件，即可跨服务器重启恢复状态。不设置的话，进程退出时全部数据丢失。
 </Warning>
 
 <Tip>
-  **排障时开启 DEBUG 日志。**在 MCP 客户端的 `env` 块里设 `SEMANTICA_LOG_LEVEL=DEBUG`，或直接运行 `python -m semantica.mcp_server` 查看 stderr 输出。
+  **排障时开启 DEBUG 日志。** 在 MCP 客户端的 `env` 块里设 `SEMANTICA_LOG_LEVEL=DEBUG`，或直接运行 `python -m semantica.mcp_server` 查看 stderr 输出。
 </Tip>
 
 ## 工具
@@ -301,7 +301,7 @@ MCP 服务器暴露 15 个工具，任何已连接的 AI 助手都可以调用�
 `max_results` 默认 `5`，最大 `50`。
 
 <Tip>
-  **高风险决策前先用 `find_precedents`。**该工具对全部已记录决策做混合相似度搜索。因此，任何重要决策路径开始时都值得调用它：可直接套用的历史推理会随之浮现，既减少重复劳动，也让智能体多次运行之间保持一致。
+  **高风险决策前先用 `find_precedents`。** 该工具对全部已记录决策做混合相似度搜索。因此，任何重要决策路径开始时都值得调用它：可直接套用的历史推理会随之浮现，既减少重复劳动，也让智能体多次运行之间保持一致。
 </Tip>
 
 </Accordion>

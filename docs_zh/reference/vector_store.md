@@ -304,7 +304,7 @@ fused = search.multi_source_search(query_vector, sources, k=10)
 ```
 
 <Tip>
-  **用 `HybridSearch(vector_store=store)` 避免每次传原始向量。**设了 `vector_store` 后，`search()` 自动从 store 拉取向量和元数据：你只需传 query 和过滤器。
+  **用 `HybridSearch(vector_store=store)` 避免每次传原始向量。** 设了 `vector_store` 后，`search()` 自动从 store 拉取向量和元数据：你只需传 query 和过滤器。
 </Tip>
 
 ## 元数据过滤
@@ -395,7 +395,7 @@ ns_manager.delete_namespace("tenant_a")
 ```
 
 <Tip>
-  **多租户应用用 `NamespaceManager`。**如果把所有租户的向量存进同一集合，查询时再靠元数据过滤，那么既慢，又可能因漏写过滤器而泄露数据。命名空间隔离既快（搜索空间更小）又安全（结构上彼此隔离）。
+  **多租户应用用 `NamespaceManager`。** 如果把所有租户的向量存进同一集合，查询时再靠元数据过滤，那么既慢，又可能因漏写过滤器而泄露数据。命名空间隔离既快（搜索空间更小）又安全（结构上彼此隔离）。
 </Tip>
 
 ## 批量操作
@@ -441,7 +441,7 @@ store2.load("./vector_store_backup")
 </Note>
 
 <Warning>
-  **inmemory 和 faiss 后端若不 `save()`，进程退出即丢数据。**添加向量后请调用 `store.save(path)`。云后端（Pinecone、Qdrant、Weaviate、Milvus、PgVector）会自动持久化。
+  **inmemory 和 faiss 后端若不 `save()`，进程退出即丢数据。** 添加向量后请调用 `store.save(path)`。云后端（Pinecone、Qdrant、Weaviate、Milvus、PgVector）会自动持久化。
 </Warning>
 
 ## MetadataStore

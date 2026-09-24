@@ -11,7 +11,7 @@ Semantica 提供统一的提供商(Provider)接口——无论是 Groq、OpenAI�
 
 `semantica.llms` 模块为对接大语言模型提供商提供了统一接口。你不必逐一学习各家 API——无论调用的是 Groq、OpenAI、Anthropic 还是本地 HuggingFace 模型，用的都是同一组方法（`.generate()`、`.generate_structured()`、`.generate_typed()`）。
 
-**提供商之间接口统一：**Semantica 中所有 LLM 提供商暴露的方法完全一致，因此从 OpenAI 换到 Anthropic，只需要改提供商的构造函数，应用代码一行不用动。
+**提供商之间接口统一：** Semantica 中所有 LLM 提供商暴露的方法完全一致，因此从 OpenAI 换到 Anthropic，只需要改提供商的构造函数，应用代码一行不用动。
 
 **提供商包装类与语义抽取的提供商字符串：**`semantica.llms` 里的类（`Groq`、`OpenAI`、`LiteLLM`、`HuggingFaceLLM`）是用于文本生成的 Python 对象；`semantica.semantic_extract` 模块则接受提供商名字符串来做实体与关系抽取。本指南对两种方式都有覆盖。
 

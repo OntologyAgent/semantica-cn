@@ -73,7 +73,7 @@ Semantica 用嵌入做：
     </Check>
 
     <Warning>
-      **FastEmbed 忽略 `device` 参数。**FastEmbed 走 ONNX Runtime，自己管理执行 provider：传 `device="cuda"` 无效。需要显式 GPU 控制时换 `method="sentence_transformers"`。
+      **FastEmbed 忽略 `device` 参数。** FastEmbed 走 ONNX Runtime，自己管理执行 provider：传 `device="cuda"` 无效。需要显式 GPU 控制时换 `method="sentence_transformers"`。
     </Warning>
   </Tab>
   <Tab title="Sentence-Transformers">
@@ -97,7 +97,7 @@ Semantica 用嵌入做：
     常用模型：`all-MiniLM-L6-v2`（快、小）、`all-mpnet-base-v2`（均衡）、`BAAI/bge-large-en-v1.5`（高精度）。
 
     <Warning>
-      **序列长度上限。**多数 sentence-transformers 模型上限 512 token，模型会静默截断超长部分。长文档用 `TextSplitter(method="hierarchical")` + `HierarchicalPooling`。
+      **序列长度上限。** 多数 sentence-transformers 模型上限 512 token，模型会静默截断超长部分。长文档用 `TextSplitter(method="hierarchical")` + `HierarchicalPooling`。
     </Warning>
   </Tab>
   <Tab title="BGE">
@@ -175,7 +175,7 @@ print(f"Similarity: {score:.3f}")
 ```
 
 <Tip>
-  **索引和查询务必用同一个模型。**不同模型的向量不可比——它们处在不同的向量空间。因此换模型就要对整个语料重新嵌入。
+  **索引和查询务必用同一个模型。** 不同模型的向量不可比——它们处在不同的向量空间。因此换模型就要对整个语料重新嵌入。
 </Tip>
 
 构造后切换提供商：
@@ -345,11 +345,11 @@ dim = embedder.get_embedding_dimension()
 - 大批次会在底层库内部先分块再处理，避免内存溢出(OOM)。
 
 <Warning>
-  **维度不匹配。**传给向量存储的维度必须与嵌入模型的输出完全一致。`BAAI/bge-small-en-v1.5` → 384、`all-MiniLM-L6-v2` → 384、`all-mpnet-base-v2` → 768、`BAAI/bge-large-en-v1.5` → 1024。建 store 前先用 `embedder.get_embedding_dimension()` 确认。
+  **维度不匹配。** 传给向量存储的维度必须与嵌入模型的输出完全一致。`BAAI/bge-small-en-v1.5` → 384、`all-MiniLM-L6-v2` → 384、`all-mpnet-base-v2` → 768、`BAAI/bge-large-en-v1.5` → 1024。建 store 前先用 `embedder.get_embedding_dimension()` 确认。
 </Warning>
 
 <Tip>
-  **回退嵌入没有语义。**FastEmbed 和 sentence-transformers 都加载失败时，TextEmbedder 会静默回退到 128 维 SHA-256 哈希嵌入。它确定性但不含语义。检查 `embedder.get_method()`：返回 `"fallback"` 就安装你想要的提供商。
+  **回退嵌入没有语义。** FastEmbed 和 sentence-transformers 都加载失败时，TextEmbedder 会静默回退到 128 维 SHA-256 哈希嵌入。它确定性但不含语义。检查 `embedder.get_method()`：返回 `"fallback"` 就安装你想要的提供商。
 </Tip>
 
 ## 提供商 Store

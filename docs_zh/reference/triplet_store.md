@@ -202,7 +202,7 @@ for row in result.bindings:
 </Tabs>
 
 <Tip>
-  **零基础设施的开发和本地持久化用 Oxigraph。**分布式生产部署则换 `backend=`，即可切到服务器形态的存储。
+  **零基础设施的开发和本地持久化用 Oxigraph。** 分布式生产部署则换 `backend=`，即可切到服务器形态的存储。
 </Tip>
 
 ## Triplet 对象
@@ -230,7 +230,7 @@ t = Triplet(
 | `metadata` | `dict` | `{}` | 任意元数据 |
 
 <Warning>
-  **`add_triplet()` 接受 `Triplet` 对象，不接受关键字参数。**用 `semantica.semantic_extract.types` 的 `Triplet(subject=..., predicate=..., object=...)` 构造后传对象：不要给 `add_triplet` 传 `subject=`、`predicate=`、`obj=`。
+  **`add_triplet()` 接受 `Triplet` 对象，不接受关键字参数。** 用 `semantica.semantic_extract.types` 的 `Triplet(subject=..., predicate=..., object=...)` 构造后传对象：不要给 `add_triplet` 传 `subject=`、`predicate=`、`obj=`。
 </Warning>
 
 ## TripletStore 方法
@@ -296,7 +296,7 @@ store.execute_query("""
 | `metadata` | `dict` | 查询、图作用域、缓存命中标志 |
 
 <Warning>
-  **`execute_query()` 返回 `QueryResult`，不是列表。**遍历 `result.bindings`，不要直接遍历 `result`。每个 binding 是变量名 → `{"value": ..., "type": ...}` 的 dict。
+  **`execute_query()` 返回 `QueryResult`，不是列表。** 遍历 `result.bindings`，不要直接遍历 `result`。每个 binding 是变量名 → `{"value": ..., "type": ...}` 的 dict。
 </Warning>
 
 ## SPARQL CONSTRUCT 模板
@@ -381,7 +381,7 @@ while True:
 ```
 
 <Warning>
-  **大 SPARQL 结果集务必分页。**对大存储跑 `SELECT * WHERE { ?s ?p ?o }` 会返回全部三元组。探索性查询一律带 `LIMIT` 和 `OFFSET`。不显式指定时，`QueryEngine` 会自动加 `LIMIT 1000`。
+  **大 SPARQL 结果集务必分页。** 对大存储跑 `SELECT * WHERE { ?s ?p ?o }` 会返回全部三元组。探索性查询一律带 `LIMIT` 和 `OFFSET`。不显式指定时，`QueryEngine` 会自动加 `LIMIT 1000`。
 </Warning>
 
 ## 命名图作用域
@@ -420,7 +420,7 @@ result = store.execute_query("""
 </Note>
 
 <Tip>
-  **用命名图隔离来源。**写入和 `execute_query()` 都传 `graph="http://example.org/source_A"`，存储和检索就都在同一作用域内。Oxigraph、Blazegraph、RDF4J 支持命名图查询作用域。
+  **用命名图隔离来源。** 写入和 `execute_query()` 都传 `graph="http://example.org/source_A"`，存储和检索就都在同一作用域内。Oxigraph、Blazegraph、RDF4J 支持命名图查询作用域。
 </Tip>
 
 ## 批量加载

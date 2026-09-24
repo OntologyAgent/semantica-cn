@@ -382,7 +382,7 @@ print(f"Enterprise data graph: {graph.stats()['node_count']} nodes")
 
 鉴权细节（Databricks 的 PAT 与 OAuth M2M 之别；Snowflake 的密码、密钥对与 OAuth 之别）、schema/catalog 内省和故障排查，见专门的 [Databricks 集成](../integrations/databricks.md)与 [Snowflake 集成](../integrations/snowflake.md)指南。
 
-> **安全提示：**生产代码里绝不硬编码凭证（`token`、`password`、`private_key`）；请通过环境变量（如 `DATABRICKS_TOKEN`、`SNOWFLAKE_PASSWORD`）或密钥管理服务传入。
+> **安全提示：** 生产代码里绝不硬编码凭证（`token`、`password`、`private_key`）；请通过环境变量（如 `DATABRICKS_TOKEN`、`SNOWFLAKE_PASSWORD`）或密钥管理服务传入。
 
 ## 数据源 7 — SAP OData
 
@@ -421,7 +421,7 @@ partner_texts = [
 - 每个出站请求（包括 OAuth2 令牌交换）都经过服务端请求伪造(SSRF)防护，因此用户提供的 SAP URL 永远到不了私有/回环/链路本地地址段。
 - 安装：`pip install 'semantica[ingest-sap]'`。
 
-> **安全提示：**绝不在代码里硬编码凭证（`client_secret`、`password`）；请通过环境变量（如 `SAP_CLIENT_SECRET`、`SAP_PASSWORD`）或密钥管理服务传入。
+> **安全提示：** 绝不在代码里硬编码凭证（`client_secret`、`password`）；请通过环境变量（如 `SAP_CLIENT_SECRET`、`SAP_PASSWORD`）或密钥管理服务传入。
 
 ## 整合全部五类数据源
 

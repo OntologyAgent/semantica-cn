@@ -35,7 +35,7 @@ icon: "database"
 - **版本管理** — 跨流水线运行追踪种子数据版本，并对比版本间差异。
 
 <Tip>
-  **何时用种子数据模块：**用结构化参考数据做引导，比如分类体系、用户名单、产品目录。装载抽取数据不应覆盖的不可变事实，例如 ISO 国家代码、标准本体术语。用确定性数据集保证测试可复现。用规范形式为实体消歧提供锚点。
+  **何时用种子数据模块：** 用结构化参考数据做引导，比如分类体系、用户名单、产品目录。装载抽取数据不应覆盖的不可变事实，例如 ISO 国家代码、标准本体术语。用确定性数据集保证测试可复现。用规范形式为实体消歧提供锚点。
 </Tip>
 
 ## 快速开始
@@ -97,7 +97,7 @@ icon: "database"
     ```
 
     <Warning>
-      **先装载种子数据，再装载抽取数据。**种子数据是你的地面真值(ground truth)：规范化、人工整理、已去重。先用 `create_foundation_graph()` 装载，再把抽取的实体合并上去。顺序反了，带噪的抽取数据就会覆盖可信的参考值。
+      **先装载种子数据，再装载抽取数据。** 种子数据是你的地面真值(ground truth)：规范化、人工整理、已去重。先用 `create_foundation_graph()` 装载，再把抽取的实体合并上去。顺序反了，带噪的抽取数据就会覆盖可信的参考值。
     </Warning>
   </Step>
 </Steps>
@@ -233,7 +233,7 @@ icon: "database"
 </Tabs>
 
 <Tip>
-  **参考数据用 `seed_first` 合并策略。**当种子数据承载的是权威事实（公司官方名称、规范分类 ID、员工记录）时，`merge_strategy="seed_first"` 保证这些值胜过抽取值。只有抽取数据可能比种子更新时，才用 `merge`。
+  **参考数据用 `seed_first` 合并策略。** 当种子数据承载的是权威事实（公司官方名称、规范分类 ID、员工记录）时，`merge_strategy="seed_first"` 保证这些值胜过抽取值。只有抽取数据可能比种子更新时，才用 `merge`。
 </Tip>
 
 ## 完整流水线示例
@@ -322,7 +322,7 @@ export SEMANTICA_SEED_MERGE_STRATEGY=seed_first
 ```
 
 <Tip>
-  **生产部署用 YAML 配置。**把来源路径硬编码进 Python 脚本，环境切换（dev → staging → prod）会很脆弱。在 `config.yaml` 的 `seed:` 键下声明来源，用 `SEMANTICA_SEED_DATA_DIR` 覆盖路径。这样同一份代码在每个环境都能跑。
+  **生产部署用 YAML 配置。** 把来源路径硬编码进 Python 脚本，环境切换（dev → staging → prod）会很脆弱。在 `config.yaml` 的 `seed:` 键下声明来源，用 `SEMANTICA_SEED_DATA_DIR` 覆盖路径。这样同一份代码在每个环境都能跑。
 </Tip>
 
 - [Ingest](./ingest.md) — 在种子数据之外装载非结构化数据。

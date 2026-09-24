@@ -19,7 +19,7 @@ Semantica 的核心，是在你现有的 AI 技术栈之上加一层**上下文�
 - **扩展层** — `PluginRegistry` 和 `MethodRegistry` 让你替换或增强任意组件——摄取器、抽取器、推理引擎、后端——而无需改动框架代码。
 
 <Warning>
-  **这是系统级可解释性，不是基础模型可解释性。**Semantica 不暴露、不重建、不解释 LLM/基础模型*内部*发生了什么——其内部推理或思维链对外部系统始终是不透明的。Semantica 解释的是模型*之外*的部分：输入的上下文和数据、产生的决策、它的溯源、相关的关系、适用的策略，以及完整的执行轨迹。一句话：Semantica 解释和审计的是 *AI 系统做了什么*，而不是基础模型私有的内部推理。
+  **这是系统级可解释性，不是基础模型可解释性。** Semantica 不暴露、不重建、不解释 LLM/基础模型*内部*发生了什么——其内部推理或思维链对外部系统始终是不透明的。Semantica 解释的是模型*之外*的部分：输入的上下文和数据、产生的决策、它的溯源、相关的关系、适用的策略，以及完整的执行轨迹。一句话：Semantica 解释和审计的是 *AI 系统做了什么*，而不是基础模型私有的内部推理。
 </Warning>
 
 ## 知识图谱
@@ -90,7 +90,7 @@ apple = Entity(text="Apple Inc.", label="ORG",    start_char=0,  end_char=10)
     | **冲突检测** | 两个来源对同一事实不一致时，Semantica 会把冲突标出来，并可进一步消解 |
     | **模式校验** | SHACL 校验会在违规数据污染结果之前把问题拦下 |
 
-    **适用场景：**需要结构化推理、溯源、合规或可解释性时。
+    **适用场景：** 需要结构化推理、溯源、合规或可解释性时。
 
     ```python
     from semantica.kg import GraphBuilder, PathFinder
@@ -112,7 +112,7 @@ apple = Entity(text="Apple Inc.", label="ORG",    start_char=0,  end_char=10)
     | **非结构化文本** | 直接作用于段落、句子和原始文档 |
     | **简单** | 无需设计模式：嵌入、建索引即可 |
 
-    **适用场景：**需要在大规模文本语料上做快速语义检索时。
+    **适用场景：** 需要在大规模文本语料上做快速语义检索时。
 
     ```python
     from semantica.vector_store import VectorStore
@@ -133,7 +133,7 @@ apple = Entity(text="Apple Inc.", label="ORG",    start_char=0,  end_char=10)
     | **上下文组装** | 把事实和关系组装起来，每条断言都带来源标注 |
     | **LLM 生成** | LLM 在取回的结构化上下文之上生成回答 |
 
-    **结果：**回答中的每条断言都链回具体的图节点——没有来自训练数据的幻觉，全程可审计。
+    **结果：** 回答中的每条断言都链回具体的图节点——没有来自训练数据的幻觉，全程可审计。
 
     ```python
     from semantica.context import AgentContext, ContextGraph
@@ -167,7 +167,7 @@ Semantica 在这些场景使用嵌入：
 - **GraphRAG 检索**：向量 + 图遍历的混合检索(Hybrid Search)
 - **距离智能**：任意节点集之间的 N×N 语义距离矩阵
 
-**支持的模型：**Sentence-Transformers、FastEmbed、OpenAI、BGE、Ollama 本地嵌入。
+**支持的模型：** Sentence-Transformers、FastEmbed、OpenAI、BGE、Ollama 本地嵌入。
 
 
 ## GraphRAG
@@ -192,7 +192,7 @@ GraphRAG 是图增强的检索增强生成(RAG)：它让 LLM 的回答扎根于�
 </Steps>
 
 <Tip>
-  **GraphRAG 消除了标准 RAG 的幻觉与可追溯性问题。**标准 RAG 检索文本块；GraphRAG 检索带类型化关系的结构化事实。图谱里从来没有的结构，LLM 编不出来。
+  **GraphRAG 消除了标准 RAG 的幻觉与可追溯性问题。** 标准 RAG 检索文本块；GraphRAG 检索带类型化关系的结构化事实。图谱里从来没有的结构，LLM 编不出来。
 </Tip>
 
 
@@ -311,9 +311,9 @@ query_engine = TemporalGraphQuery(enable_temporal_reasoning=True)
 snapshot = query_engine.query_at_time(kg, query="", at_time=datetime(2021, 6, 15))
 ```
 
-**支持特性：**Allen 区间代数（全部 13 种时态关系）、OWL-Time 导出、`recorded_at` 时间戳、时态溯源。
+**支持特性：** Allen 区间代数（全部 13 种时态关系）、OWL-Time 导出、`recorded_at` 时间戳、时态溯源。
 
-**常见用途：**追踪公司高管变动、政策演变、研究时间线、金融工具历史、监管合规窗口。
+**常见用途：** 追踪公司高管变动、政策演变、研究时间线、金融工具历史、监管合规窗口。
 
 
 ## 距离智能
@@ -330,7 +330,7 @@ pairs = calc.pairwise_similarity({"apple": vec_apple, "google": vec_google, "nes
 nearest = calc.find_most_similar(embeddings, query_embedding, top_k=10)
 ```
 
-**特性：**N×N 语义距离矩阵、ego 模式可视化、距离带分类（`direct` / `near` / `mid-range` / `distant`）、面向大图谱的嵌入缓存优化。
+**特性：** N×N 语义距离矩阵、ego 模式可视化、距离带分类（`direct` / `near` / `mid-range` / `distant`）、面向大图谱的嵌入缓存优化。
 
 [可视化模块](reference/visualization.md)把距离矩阵渲染成交互式热力图和 ego 模式邻域图。[Explorer](reference/explorer.md) 则把距离智能直接嵌进浏览器看板。
 
@@ -413,7 +413,7 @@ influence  = context.analyze_decision_influence(decision_id)
 ```
 
 <Tip>
-  **每个高风险决策之前，先用 `find_precedents()`。**对全部已记录决策做混合相似度检索，能浮出可能适用的历史推理——减少智能体各次运行之间的不一致，让组织真正从 AI 决策历史中学习。
+  **每个高风险决策之前，先用 `find_precedents()`。** 对全部已记录决策做混合相似度检索，能浮出可能适用的历史推理——减少智能体各次运行之间的不一致，让组织真正从 AI 决策历史中学习。
 </Tip>
 
 
@@ -468,7 +468,7 @@ Semantica 从一开始就为扩展而设计。任何组件——摄取器、抽�
           connection_string: "${DB_URL}"
     ```
 
-    **可用扩展点：**摄取器、解析器、规范化器、抽取器、推理引擎、导出格式、向量库后端、图库后端、可视化渲染器。
+    **可用扩展点：** 摄取器、解析器、规范化器、抽取器、推理引擎、导出格式、向量库后端、图库后端、可视化渲染器。
 
   </Accordion>
   <Accordion title="MethodRegistry：添加领域专属的图操作">

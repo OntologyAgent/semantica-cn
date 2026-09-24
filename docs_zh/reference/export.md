@@ -119,15 +119,15 @@ export_lpg(graph,  "import.cypher", method="cypher")
     ```
 
     <Warning>
-      **`export_to_rdf()` 返回字符串：不写文件。**要直接写盘，调用 `export()` 或 `export_knowledge_graph()`。
+      **`export_to_rdf()` 返回字符串：不写文件。** 要直接写盘，调用 `export()` 或 `export_knowledge_graph()`。
     </Warning>
 
     <Tip>
-      **检查用 `export_to_rdf()` + 字符串，生产用 `export()`。**在 notebook 或调试会话里，`export_to_rdf()` 方便快速查看；因此 CI 流程和写文件的流水线请用 `export()`，一次调用搞定。
+      **检查用 `export_to_rdf()` + 字符串，生产用 `export()`。** 在 notebook 或调试会话里，`export_to_rdf()` 方便快速查看；因此 CI 流程和写文件的流水线请用 `export()`，一次调用搞定。
     </Tip>
 
     <Tip>
-      **人类可读用 `turtle`，流式处理用 `ntriples`。**Turtle 紧凑可读，适合调试和分享。N-Triples（`.nt`）按行组织，一行一个三元组，因此可以放心地流式处理、拼接，再用标准 Unix 工具加工。
+      **人类可读用 `turtle`，流式处理用 `ntriples`。** Turtle 紧凑可读，适合调试和分享。N-Triples（`.nt`）按行组织，一行一个三元组，因此可以放心地流式处理、拼接，再用标准 Unix 工具加工。
     </Tip>
 
     **命名空间管理：**
@@ -185,7 +185,7 @@ export_lpg(graph,  "import.cypher", method="cypher")
     </Warning>
 
     <Tip>
-      **下游分析用 `ParquetExporter`。**Parquet 保留列类型（int、float、datetime），而 CSV 会丢失这些类型；Spark、BigQuery、Databricks 和 Snowflake 也都原生支持它。`compression="snappy"` 在速度和压缩率之间平衡最好。
+      **下游分析用 `ParquetExporter`。** Parquet 保留列类型（int、float、datetime），而 CSV 会丢失这些类型；Spark、BigQuery、Databricks 和 Snowflake 也都原生支持它。`compression="snappy"` 在速度和压缩率之间平衡最好。
     </Tip>
 
     需要 `pyarrow`：`pip install pyarrow`。模式是显式类型化的。
@@ -243,7 +243,7 @@ export_lpg(graph,  "import.cypher", method="cypher")
     `LPGExporter`、`ArangoAQLExporter` 和 `Neo4jCSVExporter` 按上文 YAML 导出器同样的规则解析 mapping 载荷：无法识别或格式不对的 mapping 一律拒绝，不会导出成一张空图。`Neo4jCSVExporter` 仍从图*对象*的 `nodes`/`entities` 和 `edges`/`relationships` 属性读取数据。
 
     <Warning>
-      **`ArangoAQLExporter.export()` 和 `LPGExporter.export()` 写文件并返回 `None`。**它们不返回 AQL/Cypher 字符串。需要字符串时，先写文件再读回来。
+      **`ArangoAQLExporter.export()` 和 `LPGExporter.export()` 写文件并返回 `None`。** 它们不返回 AQL/Cypher 字符串。需要字符串时，先写文件再读回来。
     </Warning>
   </Tab>
   <Tab title="可视化与 OWL">
@@ -316,7 +316,7 @@ export_lpg(graph,  "import.cypher", method="cypher")
     可用的 `include` 列：`source_id`、`source_type`、`target_id`、`target_type`、`hop_count`、`weighted_distance`、`semantic_similarity`、`distance_band`、`source_betweenness`、`target_betweenness`。
 
     <Warning>
-      **`DistanceExporter` 构造时必须传图。**实例化用 `DistanceExporter(graph)`，不是 `DistanceExporter()`。语义相似度列（`semantic_similarity`）要求图节点的 properties 里有嵌入(embedding)。
+      **`DistanceExporter` 构造时必须传图。** 实例化用 `DistanceExporter(graph)`，不是 `DistanceExporter()`。语义相似度列（`semantic_similarity`）要求图节点的 properties 里有嵌入(embedding)。
     </Warning>
 
     **ReportGenerator：**
@@ -384,7 +384,7 @@ generate_report(data, "report.html",   format="html")
 | `"html"` / `"markdown"` / `"json"` / `"text"` |: | `ReportGenerator` | `.html` / `.md` / `.json` / `.txt` | 分析报告 |
 
 <Tip>
-  **按消费方选导出格式。**Neo4j → `cypher`；ArangoDB → `aql`；Gephi/yEd → `graphml` 或 `gexf`；语义网工具 → `turtle` 或 `json-ld`；分析流水线 → `parquet`；零拷贝 IPC → `arrow`。
+  **按消费方选导出格式。** Neo4j → `cypher`；ArangoDB → `aql`；Gephi/yEd → `graphml` 或 `gexf`；语义网工具 → `turtle` 或 `json-ld`；分析流水线 → `parquet`；零拷贝 IPC → `arrow`。
 </Tip>
 
 - [Triplet Store](./triplet_store.md) — 把 RDF 导出存进可 SPARQL 查询的后端。

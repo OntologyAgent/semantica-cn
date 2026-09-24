@@ -438,7 +438,7 @@ for event in timeline:
 
 ## TemporalNormalizer — 自然语言时态解析
 
-把自然语言时态短语转成 `(valid_from, valid_until)` datetime 元组。**零 LLM 调用。**纯 regex + `dateutil.relativedelta`。
+把自然语言时态短语转成 `(valid_from, valid_until)` datetime 元组。**零 LLM 调用。** 纯 regex + `dateutil.relativedelta`。
 
 ```python
 from semantica.kg import TemporalNormalizer
@@ -549,7 +549,7 @@ start, end = norm.normalize("grant application window")
 
 从自然语言查询中提取时态意图，让下游检索能应用确定性的时态过滤。
 
-**两种模式：**仅 regex（无 LLM），或 LLM 辅助处理自由表述。
+**两种模式：** 仅 regex（无 LLM），或 LLM 辅助处理自由表述。
 
 ```python
 from semantica.kg import TemporalQueryRewriter

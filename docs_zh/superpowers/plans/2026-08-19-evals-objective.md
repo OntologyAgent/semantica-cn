@@ -7,7 +7,7 @@ source_version: 61a65dad79a0a24c50d7396c9e0b057a3383cdb9
 
 # semantica.evals 运行器的目标层(Objective Layer)——实现计划
 
-> **面向智能体工作者(agentic workers)：**必需子技能(REQUIRED SUB-SKILL)：使用 superpowers:subagent-driven-development（推荐）或 superpowers:executing-plans 逐任务实现本计划。各步骤使用复选框(`- [ ]`)语法进行跟踪。
+> **面向智能体工作者(agentic workers)：** 必需子技能(REQUIRED SUB-SKILL)：使用 superpowers:subagent-driven-development（推荐）或 superpowers:executing-plans 逐任务实现本计划。各步骤使用复选框(`- [ ]`)语法进行跟踪。
 
 **目标：** 为 `evaluate()` 运行器(runner)添加逐指标目标(objective)支持（方向 + 阈值(threshold)，或布尔期望(Boolean expectation)），覆盖评估器(evaluator)的默认通过判定(pass verdict)；未配置目标时保持向后兼容(backward-compatible)。
 

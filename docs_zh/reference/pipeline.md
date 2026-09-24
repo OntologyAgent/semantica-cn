@@ -87,7 +87,7 @@ icon: "gear"
     ```
 
     <Tip>
-      **生产运行前用 `PipelineValidator`。**它能捕获依赖环、缺失的步骤名和配错的连接——这些问题否则只会在运行中途才暴露。校验是瞬时完成的；等 30 分钟的抽取作业跑完才发现就晚了。
+      **生产运行前用 `PipelineValidator`。** 它能捕获依赖环、缺失的步骤名和配错的连接——这些问题否则只会在运行中途才暴露。校验是瞬时完成的；等 30 分钟的抽取作业跑完才发现就晚了。
     </Tip>
   </Step>
   <Step title="执行并检查结果">
@@ -130,7 +130,7 @@ result   = engine.execute_pipeline(pipeline, data="data/")
 ```
 
 <Tip>
-  **按负载类型设置 `workers=`。**I/O 密集步骤（网页抓取、数据库查询）用线程 worker，CPU 密集步骤（嵌入、OCR、大批量 NER）用进程 worker。池类型与步骤类型错配只会浪费资源，不会提速。
+  **按负载类型设置 `workers=`。** I/O 密集步骤（网页抓取、数据库查询）用线程 worker，CPU 密集步骤（嵌入、OCR、大批量 NER）用进程 worker。池类型与步骤类型错配只会浪费资源，不会提速。
 </Tip>
 
 ## 重试与错误处理
@@ -197,7 +197,7 @@ result   = engine.execute_pipeline(pipeline, data="data/")
 </Warning>
 
 <Warning>
-  **生产环境配置重试策略来兜住失败。**用 `handler.set_retry_policy("step_type", RetryPolicy(max_retries=3))` 让瞬态错误被重试而不是中断流水线。运行结束后检查 `result.errors`，找出并重跑重试耗尽的文档。
+  **生产环境配置重试策略来兜住失败。** 用 `handler.set_retry_policy("step_type", RetryPolicy(max_retries=3))` 让瞬态错误被重试而不是中断流水线。运行结束后检查 `result.errors`，找出并重跑重试耗尽的文档。
 </Warning>
 
 ## 进度跟踪

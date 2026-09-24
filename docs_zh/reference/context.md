@@ -271,7 +271,7 @@ icon: "brain"
 | `kg_algorithms` | `bool` | `True` | 增加路径查找和链接预测 |
 
 <Tip>
-  **设 `retention_days` 防止记忆膨胀。**默认 `30` 会自动修剪。合规攸关的智能体可能需要设 `retention_days=None`，再用 `export()` 显式归档。
+  **设 `retention_days` 防止记忆膨胀。** 默认 `30` 会自动修剪。合规攸关的智能体可能需要设 `retention_days=None`，再用 `export()` 显式归档。
 </Tip>
 
 <Tip>
@@ -296,7 +296,7 @@ icon: "brain"
 | `import_data(data, format)` | `int` | 从 JSON 或 dict 导入记忆 |
 
 <Tip>
-  **`retrieve()` 用的是 `max_results=`，不是 `top_k=`。**参数名是 `max_results`（默认 `5`）。传 `use_graph=True` 强制走 GraphRAG，传 `use_graph=False` 强制纯向量检索——无论有没有配置 `knowledge_graph`。
+  **`retrieve()` 用的是 `max_results=`，不是 `top_k=`。** 参数名是 `max_results`（默认 `5`）。传 `use_graph=True` 强制走 GraphRAG，传 `use_graph=False` 强制纯向量检索——无论有没有配置 `knowledge_graph`。
 </Tip>
 
 ### 对话方法
@@ -356,7 +356,7 @@ print("Sources used: {}".format(result["num_sources"]))
 </Warning>
 
 <Tip>
-  **每个重要决策之前都用 `find_precedents()`。**上下文模块就是这样防止智能体跨运行做出矛盾选择的。具体做法是把先例作为上下文呈现给 LLM："基于类似理由，我们之前选过 X。"
+  **每个重要决策之前都用 `find_precedents()`。** 上下文模块就是这样防止智能体跨运行做出矛盾选择的。具体做法是把先例作为上下文呈现给 LLM："基于类似理由，我们之前选过 X。"
 </Tip>
 
 ### 检查点方法
@@ -790,7 +790,7 @@ print("Links:   ", web["statistics"]["total_links"])
 ```
 
 <Warning>
-  **`EntityLinker.link_entities()` 链接的是两个实体 ID，不是列表。**调 `link_entities(entity1_id, entity2_id, link_type)` 在两个已知 ID 之间创建类型化边。要链接从文本抽取的实体，改用 `link(text, entities=[...])`。
+  **`EntityLinker.link_entities()` 链接的是两个实体 ID，不是列表。** 调 `link_entities(entity1_id, entity2_id, link_type)` 在两个已知 ID 之间创建类型化边。要链接从文本抽取的实体，改用 `link(text, entities=[...])`。
 </Warning>
 
 `link()` 返回的 `LinkedEntity` 字段：

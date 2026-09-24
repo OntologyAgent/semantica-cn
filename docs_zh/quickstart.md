@@ -43,7 +43,7 @@ python -c "import semantica; print(semantica.__version__)"
 
 ## 完整流水线
 
-<img src="/assets/img/diagrams/pipeline-flow.svg" alt="Semantica 端到端流水线：摄取 → 解析 → 规范化 → 抽取 → 构建知识图谱 → 质检 → 存储 → 交付" style={{ width: '100%', borderRadius: '10px', margin: '0 0 24px' }} />
+<img src="../docs/assets/img/diagrams/pipeline-flow.svg" alt="Semantica 端到端流水线：摄取 → 解析 → 规范化 → 抽取 → 构建知识图谱 → 质检 → 存储 → 交付" style={{ width: '100%', borderRadius: '10px', margin: '0 0 24px' }} />
 
 <Steps>
 

@@ -11,7 +11,7 @@ Semantica 围绕四层模块化架构构建。打个比方，它是一条四层�
 
 ## 四层架构
 
-<img src="/assets/img/diagrams/architecture-overview.svg" alt="Semantica 四层架构" style={{ width: '100%', borderRadius: '12px', margin: '16px 0 24px' }} />
+<img src="../docs/assets/img/diagrams/architecture-overview.svg" alt="Semantica 四层架构" style={{ width: '100%', borderRadius: '12px', margin: '16px 0 24px' }} />
 
 <Tabs>
 
@@ -86,7 +86,7 @@ Semantica 围绕四层模块化架构构建。打个比方，它是一条四层�
 
 每条流水线都走同一条线性路径：从原始数据到最终交付。
 
-<img src="/assets/img/diagrams/pipeline-flow.svg" alt="Semantica 8 步流水线：摄取 → 解析 → 规范化 → 抽取 → 构建 KG → 质检 → 存储 → 交付" style={{ width: '100%', borderRadius: '10px', margin: '16px 0 24px' }} />
+<img src="../docs/assets/img/diagrams/pipeline-flow.svg" alt="Semantica 8 步流水线：摄取 → 解析 → 规范化 → 抽取 → 构建 KG → 质检 → 存储 → 交付" style={{ width: '100%', borderRadius: '10px', margin: '16px 0 24px' }} />
 
 
 ## 模块地图

@@ -54,7 +54,7 @@ icon: "diagram-project"
   冲突检测(Conflict Detection)和高级实体消解(Entity Resolution)请配合 `semantica.conflicts` 和 `semantica.deduplication` 使用。
 </Tip>
 
-<img src="/assets/img/diagrams/kg-structure.svg" alt="Knowledge graph entity and relation structure: Person, Organization, Location, Date nodes with typed labeled edges" style={{ width: '100%', borderRadius: '12px', margin: '0 0 24px' }} />
+<img src="../../docs/assets/img/diagrams/kg-structure.svg" alt="Knowledge graph entity and relation structure: Person, Organization, Location, Date nodes with typed labeled edges" style={{ width: '100%', borderRadius: '12px', margin: '0 0 24px' }} />
 
 ## GraphBuilder
 

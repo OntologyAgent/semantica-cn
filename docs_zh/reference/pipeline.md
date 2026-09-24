@@ -42,7 +42,7 @@ icon: "gear"
   快速脚本和 notebook 用普通模块调用即可。凡是反复运行、大规模运行或生产环境的任务，用流水线。
 </Note>
 
-<img src="/assets/img/diagrams/pipeline-flow.svg" alt="Pipeline step sequence: Ingest → Parse → Normalize → Extract → Build KG → QA → Store → Deliver" style={{ width: '100%', borderRadius: '10px', margin: '0 0 24px' }} />
+<img src="../../docs/assets/img/diagrams/pipeline-flow.svg" alt="Pipeline step sequence: Ingest → Parse → Normalize → Extract → Build KG → QA → Store → Deliver" style={{ width: '100%', borderRadius: '10px', margin: '0 0 24px' }} />
 
 ## 快速开始
 

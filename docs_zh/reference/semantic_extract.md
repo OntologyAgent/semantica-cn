@@ -244,7 +244,7 @@ relationships = RelationExtractor(method="llm", llm_provider=llm).extract(text, 
 triplets      = TripletExtractor(method="llm", llm_provider=llm).extract(text)
 ```
 
-<img src="/assets/img/diagrams/extraction-pipeline.svg" alt="Semantic extraction pipeline: raw text fans into NER, Relation, and Coreference extractors, then merges into a Triplet Generator" style={{ width: '100%', borderRadius: '12px', margin: '0 0 24px' }} />
+<img src="../../docs/assets/img/diagrams/extraction-pipeline.svg" alt="Semantic extraction pipeline: raw text fans into NER, Relation, and Coreference extractors, then merges into a Triplet Generator" style={{ width: '100%', borderRadius: '12px', margin: '0 0 24px' }} />
 
 
 ## 抽取器方法

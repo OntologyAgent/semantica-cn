@@ -24,7 +24,7 @@ Semantica 的核心，是在你现有的 AI 技术栈之上加一层**上下文�
 
 ## 知识图谱
 
-<img src="/assets/img/diagrams/kg-structure.svg" alt="知识图谱的节点与边结构：实体（Person、Organization、Location、Date）及其类型化关系" style={{ width: '100%', borderRadius: '12px', margin: '0 0 20px' }} />
+<img src="../docs/assets/img/diagrams/kg-structure.svg" alt="知识图谱的节点与边结构：实体（Person、Organization、Location、Date）及其类型化关系" style={{ width: '100%', borderRadius: '12px', margin: '0 0 20px' }} />
 
 先用一句大白话点破：知识图谱就是把散落的事实连成一张关系网——节点是人、公司、事件，边是它们之间的关系。它是 Semantica 一切能力的基石，具体用三种积木存储信息：
 
@@ -174,7 +174,7 @@ Semantica 在这些场景使用嵌入：
 
 GraphRAG 是图增强的检索增强生成(RAG)：它让 LLM 的回答扎根于结构化知识图谱，而不只是原始文本块，从而提升回答质量。
 
-<img src="/assets/img/diagrams/graphrag-flow.svg" alt="GraphRAG 流程：用户查询 → 向量检索 + 图遍历 → 上下文构建 → LLM → 有根据的回答" style={{ width: '100%', borderRadius: '12px', margin: '16px 0 20px' }} />
+<img src="../docs/assets/img/diagrams/graphrag-flow.svg" alt="GraphRAG 流程：用户查询 → 向量检索 + 图遍历 → 上下文构建 → LLM → 有根据的回答" style={{ width: '100%', borderRadius: '12px', margin: '16px 0 20px' }} />
 
 <Steps>
   <Step title="用户提交查询">

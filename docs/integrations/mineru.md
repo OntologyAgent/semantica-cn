@@ -134,6 +134,44 @@ result = parser.parse("scanned_annual_report.pdf")
 Both return the same Semantica result structure, so switching between them is a one-line change.
 
 
+## Measured Benchmark
+
+Both parsers processed the same real-world corpus: a 13-page Chinese Wikipedia export of the *Fourier transform* article — dense inline and interline formulas (rendered as non-text objects), 9–10 tables including a large transform reference table, and embedded figures. Timings are first-run on an Apple-silicon Mac (`pipeline` backend, CPU).
+
+| | DoclingParser | MinerUParser |
+| :-- | :-- | :-- |
+| Time (first run, incl. model download/load) | 224 s | 445 s (264 s warm) |
+| Text characters extracted | 19,871 | 28,248 |
+| Inline formulas | **lost entirely** (blank gaps mid-sentence) | **recovered as LaTeX** (e.g. `$\hat{\pmb f}$`) |
+| Math cells inside tables | **empty** (formula columns blank) | **populated** via cell OCR (with noise) |
+| Table count | 9 | 9 |
+| Images | 0 (extraction error) | 21 (1 block + 20 inline, with paths and bboxes) |
+
+What this means in practice:
+
+- **Formulas are the decisive gap.** The same sentence came back from Docling as "生成的函数 称作原函数 的傅里叶变换" — symbols missing, semantics damaged — while MinerU returned "生成的函数 $\hat{\pmb f}$ 称作原函数 $\pmb f$ 的傅里叶变换". For math, physics, and quant-research PDFs this alone decides the choice.
+- **MinerU's math OCR is imperfect but present.** Integral signs came back garbled (`∫` read as `8`) and decimal numbering was misread (`10.1` → `101`). Noisy-but-present beats cleanly-absent for downstream KG use; the `vlm-*` backends improve on the `pipeline` results.
+- **Docling remains the right tool for clean, machine-readable, multi-format documents** — it is faster to a first result and lighter to install; its formula loss here is specific to formula-bearing PDFs.
+
+<Note>
+  Benchmark run with MinerU 2.x `pipeline` backend and docling 2.129 on macOS. Absolute timings vary by hardware; the qualitative gaps (formulas, table math cells) are structural.
+</Note>
+
+
+## Differences from Using MinerU Directly
+
+`MinerUParser` is a thin, defensive wrapper around `mineru.cli.common.do_parse` — the same entry point as the official CLI. What Semantica adds on top of the official package:
+
+- **Unified result schema** — one `dict` shape (`full_text`/`pages`/`tables`/`images`/`metadata`) shared with `DocumentParser` and `DoclingParser`, so parsers are interchangeable in pipelines.
+- **Structured tables without extra dependencies** — MinerU's table HTML is parsed into row arrays with the stdlib `HTMLParser` (pandas not required); both the rows and the raw HTML are returned.
+- **Signature filtering across MinerU point releases** — kwargs are filtered against the installed `do_parse` signature, and output files are located recursively, smoothing over 2.x layout/argument changes.
+- **Progress tracking and pipeline integration** — parsing stages report through `semantica`'s progress tracker, and the parser is reachable via the method registry (`method="mineru"`) and `parse_document_mineru()`.
+- **Optional-dependency ergonomics** — importing `semantica.parse` never fails when `mineru` is absent; placeholders raise actionable errors instead.
+- **Image metadata normalization** — block-level and inline images (Wikipedia-style PDFs embed formulas/figures as inline image spans) are surfaced with paths and bounding boxes.
+
+What stays identical to the official behavior: model selection and download (`MINERU_MODEL_SOURCE`), backends, `parse_method`, OCR languages, and output file formats.
+
+
 ## See Also
 
 - [Parse Module](../reference/parse) — Full DocumentParser, DoclingParser, and MinerUParser reference.

@@ -2,7 +2,7 @@
 title: "MinerU 集成"
 description: "MinerU 原生集成：高保真 PDF 解析——版面分析、公式识别、复杂表格，以及面向扫描件和中日韩文档的强 OCR。"
 source: integrations/mineru.md
-source_version: 71fbf34eae12371d68b3c4de60970a2185369704
+source_version: 423819c56a17be9b4a8515dab67e8882cf40edd2
 icon: "file-pdf"
 ---
 
@@ -134,6 +134,43 @@ result = parser.parse("scanned_annual_report.pdf")
 | **安装重量** | 较轻 | 较重（torch + 模型） |
 
 两者返回相同的 Semantica 结果结构，切换解析器只需改一行代码。
+
+## 实测基准
+
+两个解析器处理了同一份真实语料：中文维基百科《傅里叶变换》条目的 PDF 导出——13 页，行内与行间公式密集（以非文本对象渲染），含 9-10 个表格（内有一张大型变换对照表）和若干插图。耗时为 Apple 芯片 Mac 上的首次运行（`pipeline` 后端，CPU）。
+
+| | DoclingParser | MinerUParser |
+| :-- | :-- | :-- |
+| 耗时（首次，含模型下载/加载） | 224 秒 | 445 秒（热跑 264 秒） |
+| 抽取正文字符数 | 19,871 | 28,248 |
+| 行内公式 | **全部丢失**（句中留空白） | **还原为 LaTeX**（如 `$\hat{\pmb f}$`） |
+| 表格内的数学单元格 | **为空**（公式列空白） | **有内容**（逐格 OCR，带噪声） |
+| 表格数量 | 9 | 9 |
+| 图片 | 0（抽取报错） | 21（1 块级 + 20 行内，含路径和 bbox） |
+
+实际含义：
+
+- **公式是决定性差距。** 同一句话，Docling 返回「生成的函数 称作原函数 的傅里叶变换」——符号缺失、语义受损；MinerU 返回「生成的函数 $\hat{\pmb f}$ 称作原函数 $\pmb f$ 的傅里叶变换」。对数学、物理和量化研报类 PDF，这一项就足以定选型。
+- **MinerU 的数学 OCR 有噪声但在场。** 积分号 `∫` 被读成 `8`，小数编号 `10.1` 误读为 `101`。对下游建知识图谱而言，「有噪声但在场」好过「干净地缺失」；`vlm-*` 后端还能进一步改善 `pipeline` 的结果。
+- **面对干净、机器可读的多格式文档，Docling 仍是对的**——出首结果更快、安装更轻；本例中的公式丢失只在含公式的 PDF 上出现。
+
+<Note>
+  基准环境：MinerU 2.x `pipeline` 后端 + docling 2.129，macOS。绝对耗时因硬件而异；定性差距（公式、表格数学单元格）是结构性的。
+</Note>
+
+
+## 与直接使用官方 MinerU 的差异
+
+`MinerUParser` 是包在 `mineru.cli.common.do_parse`（与官方 CLI 相同的入口）外面的一层薄而防御性的封装。相对官方包本身，Semantica 增加了：
+
+- **统一结果结构**——与 `DocumentParser`、`DoclingParser` 共享同一套 `dict` 形状（`full_text`/`pages`/`tables`/`images`/`metadata`），流水线里解析器可互换。
+- **零额外依赖的结构化表格**——用标准库 `HTMLParser` 把 MinerU 的表格 HTML 解析成行数组（不需要 pandas）；行数组和原始 HTML 同时返回。
+- **跨 MinerU 小版本的签名过滤**——kwargs 按已安装 `do_parse` 的签名过滤，输出文件递归定位，抹平 2.x 的参数与目录布局变化。
+- **进度跟踪与流水线集成**——解析各阶段接入 `semantica` 进度跟踪；可通过方法注册表（`method="mineru"`）和 `parse_document_mineru()` 调用。
+- **可选依赖的优雅降级**——未安装 `mineru` 时导入 `semantica.parse` 永不失败；placeholder 类抛出带安装指引的错误。
+- **图片元数据规范化**——块级图片与行内图片（维基式 PDF 把公式和插图以行内图片 span 嵌在正文里）统一给出路径和 bbox。
+
+与官方行为保持一致的部分：模型选择与下载（`MINERU_MODEL_SOURCE`）、后端、`parse_method`、OCR 语言和输出文件格式。
 
 
 ## 延伸阅读

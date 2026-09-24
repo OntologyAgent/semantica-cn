@@ -18,7 +18,19 @@ Semantica 是知识图谱(Knowledge Graph)基础设施：把分散的原始数�
 - [术语表](docs_zh/glossary.md) — 中英对照的冻结术语
 - [翻译规范](docs_zh/README.md) — 贡献中文译文前必读
 
+- [MinerU 集成](docs_zh/integrations/mineru.md) — 扫描件、公式密集、中日韩 PDF 的解析（含与 DoclingParser 的实测对比）
+- [Docling 集成](docs_zh/integrations/docling.md) — 多格式复杂版面解析
+
 上游新增的页面会先保持英文原页链接，补译后自动切换为中文站内链接，全程无死链。
+
+## 与上游官方版本的差异
+
+本仓库是 [semantica-agi/semantica](https://github.com/semantica-agi/semantica) 的扩展 fork，在官方版本之上增加了两块能力，其余代码跟随上游：
+
+1. **MinerU PDF 解析器**（官方版本没有）——面向扫描件、公式密集和中日韩文档：行内公式还原为 LaTeX、表格数学单元格逐格 OCR、图片元数据规范化。安装 `pip install "semantica[parse-mineru]"`，用法见 [MinerU 集成指南](docs_zh/integrations/mineru.md)，其中附有与 DoclingParser 的同语料实测对比（13 页中文公式 PDF：行内公式 Docling 全丢、MinerU 全还原）。
+2. **全量中文文档**（`docs_zh/`）——覆盖 `docs/` 全部页面的中文镜像、冻结术语表与翻译规范，配套 `tools/i18n/zh_status.py` 新鲜度巡检。
+
+向官方版本贡献时，上述两块需要分别评审：MinerU 部分是自包含的（一个模块 + 注册点 + extra + 文档），中文文档零侵入上游文件。
 
 ## 参与翻译
 

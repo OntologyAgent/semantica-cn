@@ -1201,6 +1201,8 @@ Native plugin bundles for Claude Code, Cursor, Codex, Windsurf, Cline, Continue,
 
 MCP setup takes 30 seconds — see [MCP Server](#mcp-server) below.
 
+> **Fork additions beyond upstream [semantica-agi/semantica](https://github.com/semantica-agi/semantica):** the **MinerU PDF parser** — `MinerUParser` for scanned, formula-heavy, and CJK documents (LaTeX formula recovery, strong OCR; `pip install "semantica[parse-mineru]"`, [integration guide](docs/integrations/mineru.md), includes a measured benchmark against `DoclingParser`) — plus a **full Chinese documentation set** ([docs_zh/](docs_zh/index.md)) with a frozen EN↔ZH glossary. Everything else tracks upstream.
+
 <details>
 <summary><b>Full integrations matrix</b> (editors, MCP clients, REST clients, agentic frameworks)</summary>
 
@@ -1527,6 +1529,9 @@ pip install "semantica[all]"      # full bundled behavior with all extras
 ```bash
 # Granular Extras
 pip install "semantica[documents]"          # Document parsing (docx, openpyxl, lxml, beautifulsoup4)
+pip install "semantica[parse-pdf]"          # Default PDF parsing (pdfplumber)
+pip install "semantica[parse-docling]"      # DoclingParser: complex layouts, tables, OCR
+pip install "semantica[parse-mineru]"       # MinerUParser: scanned/formula-heavy/CJK PDFs (fork addition)
 pip install "semantica[embeddings-local]"   # Local embeddings (sentence-transformers, fastembed, onnxruntime)
 pip install "semantica[models-huggingface]" # HuggingFace models (transformers, torch)
 pip install "semantica[nlp-spacy]"          # spaCy NLP pipelines (spacy)

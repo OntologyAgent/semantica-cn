@@ -171,3 +171,7 @@ cookbook_zh/**/config.yaml
 
 # notebook 运行产出的图谱导出文件,可再生成
 cookbook_zh/**/knowledge_graph*.json
+
+# 本地工具与编辑器配置,不入库
+.zcodeignore
+.obsidian/

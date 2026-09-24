@@ -47,7 +47,7 @@ Loading data from external sources (files, databases, APIs, streams) into the pi
 Standardizing data into a consistent canonical form by converting dates to ISO format, canonicalizing entity names, fixing encoding issues, and stripping noise. Ensures downstream extraction works on clean, consistent text.
 
 **Parsing**
-Extracting structured text, layout, and metadata from unstructured or semi-structured documents (PDFs, Word files, HTML, PPTX). `DoclingParser` additionally handles multi-column layouts, merged-cell tables, and OCR.
+Extracting structured text, layout, and metadata from unstructured or semi-structured documents (PDFs, Word files, HTML, PPTX). `DoclingParser` additionally handles multi-column layouts, merged-cell tables, and OCR. `MinerUParser` additionally recognizes formulas (LaTeX) and handles scanned CJK documents.
 
 
 ## Artificial Intelligence

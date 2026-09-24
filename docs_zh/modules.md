@@ -2,7 +2,7 @@
 title: 模块
 description: Semantica 的每个模块都独立可用：只导入你需要的部分。
 source: modules.md
-source_version: 7ef5a6ad6986c20dd731b125a97b99817de955fc
+source_version: 35a106c39b80b6adaf695e18b1bd784a0ffe4675
 icon: "puzzle-piece"
 ---
 
@@ -76,9 +76,14 @@ parsed = parser.parse("document.pdf")   # {"full_text": ..., "metadata": ..., ..
 # Advanced parser (pip install semantica[parse-docling]): tables, OCR, layout
 parser = DoclingParser(export_format="markdown", enable_ocr=True)
 parsed = parser.parse("data/annual_report.pdf")   # dict with full_text, tables, pages
+
+# MinerU parser (pip install semantica[parse-mineru]): scanned PDFs, formulas, CJK OCR
+from semantica.parse import MinerUParser
+parser = MinerUParser(parse_method="auto", language="ch")
+parsed = parser.parse("data/scanned_report.pdf")  # same dict structure
 ```
 
-**可用解析器：** `DocumentParser`, `DoclingParser`, `CodeParser`, `CSVParser`, `DocxParser`, `EmailParser`, `ExcelParser`, `HTMLParser`, `ImageParser`, `JSONParser`, `MCPParser`, `MediaParser`, `PDFParser`, `PPTXParser`, `StructuredDataParser`, `WebParser`, `XMLParser`
+**可用解析器：** `DocumentParser`, `DoclingParser`, `MinerUParser`, `CodeParser`, `CSVParser`, `DocxParser`, `EmailParser`, `ExcelParser`, `HTMLParser`, `ImageParser`, `JSONParser`, `MCPParser`, `MediaParser`, `PDFParser`, `PPTXParser`, `StructuredDataParser`, `WebParser`, `XMLParser`
 
 ### 分块
 
@@ -720,7 +725,7 @@ versioner.create_snapshot(kg, "2024-Q1", author="user@example.com", description=
 | 模块 | 用途 | 关键类 |
 | :------ | :------- | :----------- |
 | [ingest](reference/ingest.md) | 数据摄取 | `FileIngestor`, `WebIngestor`, `ParquetIngestor`, `XMLIngestor` |
-| [parse](reference/parse.md) | 文档解析 | `DocumentParser`, `DoclingParser` |
+| [parse](reference/parse.md) | 文档解析 | `DocumentParser`, `DoclingParser`, `MinerUParser` |
 | [split](reference/split.md) | 文本分块 | `TextSplitter` |
 | [normalize](reference/normalize.md) | 数据清洗 | `TextNormalizer`, `EntityNormalizer`, `LanguageDetector` |
 | [semantic_extract](reference/semantic_extract.md) | NER 与关系抽取 | `NERExtractor`, `RelationExtractor`, `TripletExtractor`, `SemanticAnalyzer`, `SemanticNetworkExtractor`, `ExtractionValidator` |

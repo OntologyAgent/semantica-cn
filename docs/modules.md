@@ -76,9 +76,14 @@ parsed = parser.parse("document.pdf")   # {"full_text": ..., "metadata": ..., ..
 # Advanced parser (pip install semantica[parse-docling]): tables, OCR, layout
 parser = DoclingParser(export_format="markdown", enable_ocr=True)
 parsed = parser.parse("data/annual_report.pdf")   # dict with full_text, tables, pages
+
+# MinerU parser (pip install semantica[parse-mineru]): scanned PDFs, formulas, CJK OCR
+from semantica.parse import MinerUParser
+parser = MinerUParser(parse_method="auto", language="ch")
+parsed = parser.parse("data/scanned_report.pdf")  # same dict structure
 ```
 
-**Available parsers:** `DocumentParser`, `DoclingParser`, `CodeParser`, `CSVParser`, `DocxParser`, `EmailParser`, `ExcelParser`, `HTMLParser`, `ImageParser`, `JSONParser`, `MCPParser`, `MediaParser`, `PDFParser`, `PPTXParser`, `StructuredDataParser`, `WebParser`, `XMLParser`
+**Available parsers:** `DocumentParser`, `DoclingParser`, `MinerUParser`, `CodeParser`, `CSVParser`, `DocxParser`, `EmailParser`, `ExcelParser`, `HTMLParser`, `ImageParser`, `JSONParser`, `MCPParser`, `MediaParser`, `PDFParser`, `PPTXParser`, `StructuredDataParser`, `WebParser`, `XMLParser`
 
 ### Split
 
@@ -722,7 +727,7 @@ versioner.create_snapshot(kg, "2024-Q1", author="user@example.com", description=
 | Module | Purpose | Key Classes |
 | :------ | :------- | :----------- |
 | [ingest](/reference/ingest) | Data ingestion | `FileIngestor`, `WebIngestor`, `ParquetIngestor`, `XMLIngestor` |
-| [parse](/reference/parse) | Document parsing | `DocumentParser`, `DoclingParser` |
+| [parse](/reference/parse) | Document parsing | `DocumentParser`, `DoclingParser`, `MinerUParser` |
 | [split](/reference/split) | Text chunking | `TextSplitter` |
 | [normalize](/reference/normalize) | Data cleaning | `TextNormalizer`, `EntityNormalizer`, `LanguageDetector` |
 | [semantic_extract](/reference/semantic_extract) | NER & relation extraction | `NERExtractor`, `RelationExtractor`, `TripletExtractor`, `SemanticAnalyzer`, `SemanticNetworkExtractor`, `ExtractionValidator` |

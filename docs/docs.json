@@ -105,6 +105,7 @@
               "integrations/crewai",
               "integrations/langchain",
               "integrations/docling",
+              "integrations/mineru",
               "integrations/snowflake",
               "integrations/databricks",
               "integrations/bigquery",

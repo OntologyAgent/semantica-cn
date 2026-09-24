@@ -34,3 +34,8 @@ def test_all_bundles_include_parse_pdf():
 def test_all_bundle_extraction_finds_known_extra():
     """Control: the extraction reads the right block (parse-docling is in)."""
     assert "parse-docling" in _extras_in_all_bundles()
+
+
+def test_all_bundles_include_parse_mineru():
+    """An all-features install must include MinerU PDF parsing support."""
+    assert "parse-mineru" in _extras_in_all_bundles()

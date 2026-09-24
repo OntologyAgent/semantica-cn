@@ -112,6 +112,7 @@ documents = [
   "beautifulsoup4>=4.15.0"
 ]
 parse-docling = ["docling>=2.107.0"]
+parse-mineru = ["mineru[core]>=2.5,<3"]
 # pdfplumber powers the default PDFParser; not pulled in by any other extra.
 parse-pdf = ["pdfplumber>=0.10.0"]
 
@@ -284,7 +285,7 @@ explorer-lite = [
 # NOTE: there is no ``crewai`` extra to include here — see the comment above
 # the (removed) crewai entry under "Agentic Framework Integrations".
 all = [
-  "semantica[viz,media,infra,cloud,monitoring,watch,llm-all,models-huggingface,embeddings-local,nlp-spacy,documents,ingest-git,graph-embeddings,split-all,graph-all,tripletstore-oxigraph,vectorstore-all,parse-docling,parse-pdf,ingest-parquet,ingest-arrow,shacl,explorer,agno,langchain,google-adk]"
+  "semantica[viz,media,infra,cloud,monitoring,watch,llm-all,models-huggingface,embeddings-local,nlp-spacy,documents,ingest-git,graph-embeddings,split-all,graph-all,tripletstore-oxigraph,vectorstore-all,parse-docling,parse-mineru,parse-pdf,ingest-parquet,ingest-arrow,shacl,explorer,agno,langchain,google-adk]"
 ]
 
 # ---------------- DEVELOPMENT DEPENDENCIES (PEP 735) ----------------

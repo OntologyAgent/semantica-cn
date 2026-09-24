@@ -14,6 +14,7 @@ Document Parsing:
     - "docx": DOCX-focused parsing
     - "html": HTML-focused parsing
     - "docling": Docling-based parsing for enhanced table extraction (requires docling package)
+    - "mineru": MinerU-based parsing for complex PDFs, OCR, tables, and formulas (requires mineru package)
 
 Web Content Parsing:
     - "default": Default web parsing using WebParser
@@ -163,6 +164,7 @@ def parse_document(
             - "docx": DOCX-focused parsing
             - "html": HTML-focused parsing
             - "docling": Docling-based parsing for enhanced table extraction (requires docling package)
+    - "mineru": MinerU-based parsing for complex PDFs, OCR, tables, and formulas (requires mineru package)
         **kwargs: Additional options passed to DocumentParser
             - extract_text: Whether to extract text (default: True)
             - extract_tables: Whether to extract tables (default: True)
@@ -251,6 +253,58 @@ def parse_document_docling(
         raise
 
 
+def parse_document_mineru(
+    file_path: Union[str, Path],
+    file_type: Optional[str] = None,
+    **kwargs,
+) -> Dict[str, Any]:
+    """
+    Parse document using MinerU (convenience function).
+
+    This function uses MinerU for high-fidelity PDF parsing with layout
+    analysis, complex table recognition, formula (LaTeX) extraction, and
+    strong OCR for scanned documents. MinerU must be installed separately.
+
+    Args:
+        file_path: Path to document file (PDF, or image)
+        file_type: Document type (auto-detected if None)
+        **kwargs: Additional options passed to MinerUParser:
+            - backend: MinerU backend ("pipeline", "vlm-transformers", ...) (default: "pipeline")
+            - parse_method: "auto", "txt", or "ocr" (default: "auto")
+            - language: OCR language hint, e.g. "ch", "en" (default: None)
+            - extract_text: Whether to extract text (default: True)
+            - extract_tables: Whether to extract tables (default: True)
+            - extract_images: Whether to collect image metadata (default: False)
+            - export_format: Export format ("markdown", "html") (default: "markdown")
+            - output_dir: Directory to keep MinerU outputs (default: temp dir)
+
+    Returns:
+        dict: Parsed document data
+
+    Examples:
+        >>> from semantica.parse.methods import parse_document_mineru
+        >>> doc = parse_document_mineru("document.pdf")
+        >>> tables = parse_document_mineru("document.pdf", parse_method="ocr")
+    """
+    try:
+        from .mineru_parser import MinerUParser
+    except (ImportError, OSError):
+        raise ImportError(
+            "MinerU is not installed. Install it with: pip install \"mineru[core]\""
+        )
+
+    try:
+        config = parse_config.get_method_config("document")
+        config.update(kwargs)
+
+        parser = MinerUParser(**config)
+        return parser.parse(file_path, **kwargs)
+
+    except Exception as e:
+        logger.error(f"Failed to parse document with MinerU: {e}")
+        raise
+
+
 # Register Docling method
 try:
     from . import docling_parser  # noqa: F401
@@ -258,6 +312,16 @@ try:
     method_registry.register("document", "docling", parse_document_docling)
 except (ImportError, OSError):
     # Docling not available, skip registration
+    pass
+
+
+# Register MinerU method
+try:
+    from . import mineru_parser  # noqa: F401
+
+    method_registry.register("document", "mineru", parse_document_mineru)
+except (ImportError, OSError):
+    # MinerU not available, skip registration
     pass
 
 

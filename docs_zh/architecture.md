@@ -2,7 +2,7 @@
 title: 架构
 description: 四层模块化架构，各组件可独立使用、职责清晰分离，且完全可扩展。
 source: architecture.md
-source_version: e0f70fc52f2986197e337aa38033d948a7e19984
+source_version: d89194c212c12b7b9badb7f85987a9d06dcbd403
 icon: "building"
 ---
 
@@ -39,7 +39,7 @@ Semantica 围绕四层模块化架构构建。打个比方，它是一条四层�
 
 | 步骤 | 模块 | 作用 |
 | :---- | :------ | :------------ |
-| 解析 | `parse.DocumentParser` / `parse.DoclingParser` | 文本与版面抽取、表格检测 |
+| 解析 | `parse.DocumentParser` / `parse.DoclingParser` / `parse.MinerUParser` | 文本与版面抽取、表格检测、公式 OCR |
 | 规范化 | `normalize` | 规范形式、日期/名称标准化、编码修复 |
 | 抽取 | `semantic_extract` | 命名实体识别(NER)、关系抽取、事件检测、三元组(Triplet) |
 | 构建 | `kg.GraphBuilder` | 实体合并、边构建、图组装 |

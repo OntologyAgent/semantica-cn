@@ -11,6 +11,7 @@ Document Parsing:
     - PDF Parsing: pdfplumber integration (pdfplumber.PDF()) for text extraction, table extraction (pdfplumber.extract_tables()), image extraction, metadata extraction (title, author, dates via pdf.metadata), page-level processing (page iteration)
     - DOCX Parsing: python-docx integration (docx.Document()), paragraph extraction (document.paragraphs), table extraction (docx.table.Table), section/heading detection (paragraph.style), metadata extraction (core_properties), formatting extraction
     - Docling Parsing: Docling integration (DocumentConverter.convert()) for enhanced table extraction and document structure understanding, supports PDF, DOCX, PPTX, XLSX, HTML, images, markdown/HTML/JSON export formats, OCR support (optional dependency)
+    - MinerU Parsing: MinerU integration (do_parse()) for high-fidelity PDF parsing with layout analysis, complex tables, formulas (LaTeX), and strong OCR for scanned documents (optional dependency)
     - PPTX Parsing: python-pptx integration (pptx.Presentation()), slide extraction (presentation.slides), shape extraction, notes extraction, metadata extraction
     - Excel Parsing: openpyxl integration (openpyxl.load_workbook()), pandas integration (pandas.read_excel()), sheet iteration, cell value extraction, formula extraction, metadata extraction
     - HTML Parsing: BeautifulSoup integration (BeautifulSoup(html, 'html.parser')), text extraction (soup.get_text()), link extraction (find_all('a')), metadata extraction (meta tags), structure analysis
@@ -48,6 +49,7 @@ Format-Specific Parsers:
     - PDFParser: pdfplumber.PDF() for text/tables, page iteration (pdf.pages), metadata extraction
     - DOCXParser: docx.Document() for document loading, paragraph iteration, table extraction, core_properties access
     - DoclingParser: DocumentConverter.convert() for multi-format parsing with enhanced table extraction, supports PDF/DOCX/PPTX/XLSX/HTML/images, markdown/HTML/JSON export (optional dependency)
+    - MinerUParser: do_parse() for PDF parsing with layout analysis, formula recognition, and OCR (optional dependency)
     - PPTXParser: pptx.Presentation() for presentation loading, slide iteration, shape extraction
     - ExcelParser: openpyxl.load_workbook() for workbook loading, pandas.read_excel() for data extraction, sheet iteration
     - HTMLParser: BeautifulSoup() for HTML parsing, element traversal, metadata extraction
@@ -80,6 +82,7 @@ Main Classes:
     - DOCXParser: Word document parser with structure and metadata extraction
     - PPTXParser: PowerPoint parser with slide and notes extraction
     - DoclingParser: Docling-based parser for enhanced table extraction (optional, requires docling package)
+    - MinerUParser: MinerU-based parser for complex PDFs, OCR, tables, and formulas (optional, requires mineru package)
     - ExcelParser: Excel spreadsheet parser with multi-sheet support
     - HTMLParser: HTML document parser with metadata and link extraction
     - JSONParser: JSON data parser with nested structure handling
@@ -229,6 +232,65 @@ except (ImportError, OSError, AttributeError) as e:
                 error_msg += f"\n\nError: {import_error_msg}"
             error_msg += "\n\nInstall it with: pip install docling"
             raise ImportError(error_msg)
+# Try to import MinerUParser (optional dependency)
+MINERU_AVAILABLE = False
+MinerUParser = None
+MinerUMetadata = None
+MINERU_IMPORT_ERROR = None
+
+try:
+    # Import the module first to check MINERU_AVAILABLE
+    from . import mineru_parser
+    MINERU_AVAILABLE = getattr(mineru_parser, 'MINERU_AVAILABLE', False)
+    MINERU_IMPORT_ERROR = getattr(mineru_parser, 'MINERU_IMPORT_ERROR', None)
+
+    # Only import classes if mineru is available
+    if MINERU_AVAILABLE:
+        from .mineru_parser import MinerUParser, MinerUMetadata
+    else:
+        # Create placeholder classes that raise helpful errors
+        mineru_import_error_msg = MINERU_IMPORT_ERROR
+
+        class MinerUParser:
+            """Placeholder for MinerUParser when mineru is not available."""
+            def __init__(self, **config):
+                error_msg = "MinerUParser requires the 'mineru' package to be installed and working."
+                if mineru_import_error_msg:
+                    error_msg += f"\n\nError: {mineru_import_error_msg}"
+                error_msg += "\n\nInstall it with: pip install \"mineru[core]\""
+                raise ImportError(error_msg)
+
+        class MinerUMetadata:
+            """Placeholder for MinerUMetadata when mineru is not available."""
+            def __init__(self, **kwargs):
+                error_msg = "MinerUMetadata requires the 'mineru' package to be installed and working."
+                if mineru_import_error_msg:
+                    error_msg += f"\n\nError: {mineru_import_error_msg}"
+                error_msg += "\n\nInstall it with: pip install \"mineru[core]\""
+                raise ImportError(error_msg)
+except (ImportError, OSError, AttributeError) as e:
+    # If import fails, mineru is not available
+    MINERU_AVAILABLE = False
+    mineru_import_error_msg = str(e)
+    MINERU_IMPORT_ERROR = mineru_import_error_msg
+
+    class MinerUParser:
+        """Placeholder for MinerUParser when mineru is not available."""
+        def __init__(self, **config):
+            error_msg = "MinerUParser requires the 'mineru' package to be installed and working."
+            if mineru_import_error_msg:
+                error_msg += f"\n\nError: {mineru_import_error_msg}"
+            error_msg += "\n\nInstall it with: pip install \"mineru[core]\""
+            raise ImportError(error_msg)
+
+    class MinerUMetadata:
+        """Placeholder for MinerUMetadata when mineru is not available."""
+        def __init__(self, **kwargs):
+            error_msg = "MinerUMetadata requires the 'mineru' package to be installed and working."
+            if mineru_import_error_msg:
+                error_msg += f"\n\nError: {mineru_import_error_msg}"
+            error_msg += "\n\nInstall it with: pip install \"mineru[core]\""
+            raise ImportError(error_msg)
 from .registry import MethodRegistry, method_registry
 from .structured_data_parser import StructuredDataParser
 from .web_parser import HTMLContentParser, JavaScriptRenderer, WebParser
@@ -307,3 +369,4 @@ __all__ = [
 # Conditionally add DoclingParser to exports if available
 # Always add to __all__ so import doesn't fail, but classes will be None if not available
 __all__.extend(["DoclingParser", "DoclingMetadata"])
+__all__.extend(["MinerUParser", "MinerUMetadata"])

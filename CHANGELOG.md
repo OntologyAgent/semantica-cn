@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **MinerU PDF parser: `MinerUParser` for scanned, formula-heavy, and CJK documents**
+  - Wraps MinerU 2.x (`mineru.cli.common.do_parse`) into Semantica's standard parse result structure (`full_text`, `pages`, `tables`, `images`, `metadata`); kwargs are filtered against the installed signature, so point releases of MinerU 2.x stay compatible
+  - Table bodies are parsed from MinerU's HTML into row arrays with stdlib HTML parsing (no new runtime dependencies); per-page structure, LaTeX equations, and image metadata are extracted from `middle.json`; pass `output_dir=` to keep MinerU's markdown, JSONs, and images instead of a temp dir
+  - New `parse-mineru` extra (`mineru[core]>=2.5,<3`, included in `all`), `parse_document_mineru()` convenience function, and a `mineru` entry in the parse method registry
+  - Integration guide (`docs/integrations/mineru.md`) plus updates to the parse reference, quickstart, modules, choose-your-module, architecture, and glossary pages (with docs_zh mirrors)
+  - 12 new tests in `tests/parse/test_mineru_parser.py` (mocked `do_parse`; pass without mineru installed)
+
 ## [0.7.0] - 2026-09-22
 
 ### Added

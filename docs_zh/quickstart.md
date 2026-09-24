@@ -2,7 +2,7 @@
 title: 快速开始
 description: 5 分钟搭好你的第一个知识图谱，无需任何配置。
 source: quickstart.md
-source_version: 288fa313cb60b738b9f56e4c2cb520c06918fbd8
+source_version: 0b7f663c382439d688f8f5bed1c66e41bd27f63e
 icon: "rocket"
 ---
 
@@ -79,10 +79,10 @@ print(parsed["full_text"][:200])   # 提取出的文本
 print(parsed["metadata"])          # 文档属性（字段随格式而异）
 ```
 
-`parse()` 返回 `dict`。每种格式都有 `full_text` 和 `metadata`；其余键取决于解析器（PDF 有 `pages`，DOCX 有 `tables` 和 `paragraphs`，`DoclingParser` 有 `tables`）。
+`parse()` 返回 `dict`。每种格式都有 `full_text` 和 `metadata`；其余键取决于解析器（PDF 有 `pages`，DOCX 有 `tables` 和 `paragraphs`，`DoclingParser` 和 `MinerUParser` 有 `tables`）。
 
 <Tip>
-  处理带表格、图表或多栏版面的 PDF 时，用 `DoclingParser`（`pip install semantica[parse-docling]`）：它会做高级版面分析，在文本之外还返回结构化的表格数据。
+  处理带表格、图表或多栏版面的 PDF 时，用 `DoclingParser`（`pip install semantica[parse-docling]`）：它会做高级版面分析，在文本之外还返回结构化的表格数据。遇到扫描件、公式密集或中文 PDF，优先用 `MinerUParser`（`pip install semantica[parse-mineru]`）。
 </Tip>
 
 ```python
@@ -377,6 +377,15 @@ print(sources[0])
 from semantica.parse import DoclingParser   # pip install semantica[parse-docling]
 
 parser = DoclingParser(enable_ocr=True)
+parsed = parser.parse(sources[0].path)
+```
+
+扫描的中文文档也可以用 MinerU——它的 OCR 和版面模型专门针对中日韩文本训练过：
+
+```python
+from semantica.parse import MinerUParser   # pip install semantica[parse-mineru]
+
+parser = MinerUParser(parse_method="ocr", language="ch")
 parsed = parser.parse(sources[0].path)
 ```
 

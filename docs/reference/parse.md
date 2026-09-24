@@ -1,6 +1,6 @@
 ---
 title: "Parse Module"
-description: "Document parsing and text extraction: DocumentParser for standard formats and DoclingParser for complex layouts."
+description: "Document parsing and text extraction: DocumentParser for standard formats, DoclingParser for complex layouts, and MinerUParser for scanned, formula-heavy PDFs."
 icon: "file-lines"
 ---
 
@@ -8,7 +8,8 @@ icon: "file-lines"
 
 - `DocumentParser`: broad format support (PDF, DOCX, HTML, JSON, CSV, PPTX, XLSX), no extra dependencies
 - `DoclingParser`: complex layouts, merged-cell tables, multi-column PDFs, OCR (`pip install docling`)
-- Both return a consistent `dict` with `full_text`, `metadata`, `pages`, and `tables` keys
+- `MinerUParser`: layout analysis, formula recognition, and strong OCR for scanned PDFs (`pip install "mineru[core]"`)
+- All return a consistent `dict` with `full_text`, `metadata`, `pages`, and `tables` keys
 - `parse_batch()` processes multiple files in parallel with configurable error handling
 
 
@@ -38,6 +39,20 @@ from semantica.parse import DoclingParser
 parser = DoclingParser(export_format="markdown")
 result = parser.parse("document.pdf", extract_tables=True)
 print(result["tables"])  # Enhanced table extraction
+```
+
+For scanned, formula-heavy, or CJK-language PDFs, install MinerU instead:
+
+```bash
+pip install "mineru[core]"
+```
+
+```python
+from semantica.parse import MinerUParser
+
+parser = MinerUParser(parse_method="auto")
+result = parser.parse("scanned_report.pdf")
+print(result["full_text"])  # Layout-aware markdown with OCR
 ```
 
 ### First Document Parsing
@@ -112,6 +127,32 @@ print(f"Extracted {len(text)} characters from {metadata.get('page_count', 0)} pa
       Start with `DocumentParser`. Switch to `DoclingParser` only when you need better table extraction or encounter complex PDF layouts.
     </Tip>
   </Tab>
+  <Tab title="MinerUParser: Scanned & Formula-heavy PDFs">
+    Layout analysis, LaTeX formula recognition, and strong OCR (incl. CJK). Requires `pip install "mineru[core]"`; models download on first run.
+
+    | | |
+    | :-- | :-- |
+    | **Formats** | PDF, images |
+    | **Speed** | Slower (deep learning models; GPU recommended) |
+    | **Setup** | `pip install "mineru[core]"` |
+    | **Best for** | Scanned documents, formulas, complex tables, Chinese/Japanese/Korean PDFs |
+
+    ```python
+    from semantica.parse import MinerUParser
+
+    parser = MinerUParser(parse_method="auto", language="ch")
+    result = parser.parse("scanned_report.pdf", extract_tables=True)
+
+    for i, table in enumerate(result["tables"]):
+        print(f"Table {i+1}: {table['row_count']} rows (page {table['page_number']})")
+        for row in table["rows"][:3]:
+            print(" | ".join(row))
+    ```
+
+    <Tip>
+      Start with `DocumentParser`. Switch to `DoclingParser` for better table extraction, or to `MinerUParser` when documents are scanned, formula-heavy, or CJK-language.
+    </Tip>
+  </Tab>
   <Tab title="Batch Processing">
     Process multiple files in parallel with per-file error isolation.
 
@@ -146,6 +187,8 @@ print(f"Extracted {len(text)} characters from {metadata.get('page_count', 0)} pa
 | `DocumentParser` | Auto-detects format: delegates to format-specific parser (PDF, DOCX, HTML, JSON, CSV, ...) |
 | `DoclingParser` | Complex layouts, merged-cell tables, multi-column PDFs, and OCR (`pip install docling`) |
 | `DoclingMetadata` | Document metadata from Docling parsing |
+| `MinerUParser` | Layout analysis, formulas, and OCR for scanned PDFs (`pip install "mineru[core]"`) |
+| `MinerUMetadata` | Document metadata from MinerU parsing |
 | `PDFParser` | PDF text and metadata extraction |
 | `WebParser` | URL fetch + HTML parsing |
 | `EmailParser` | `.eml` / `.msg` email files with attachment extraction |
@@ -207,6 +250,48 @@ Use `DoclingParser` for:
 - Scanned documents with OCR
 - Academic papers and technical reports
 
+## MinerUParser
+
+Advanced parser using the MinerU backend: built for documents that defeat both text-layer extraction and lighter layout tools:
+
+```bash
+pip install "mineru[core]"
+```
+
+```python
+from semantica.parse import MinerUParser
+
+parser = MinerUParser(
+    backend="pipeline",            # "pipeline" | "vlm-transformers" | "vlm-sglang-engine"
+    parse_method="auto",           # "auto" | "txt" | "ocr"
+    language="ch",                 # OCR language hint (None = auto)
+    export_format="markdown"       # "markdown" | "html"
+)
+
+result = parser.parse(
+    "data/scanned_paper.pdf",
+    extract_tables=True,
+    extract_images=False,
+    extract_text=True
+)
+
+print(result["full_text"])    # Layout-aware markdown (formulas as LaTeX)
+print(result["tables"])       # Structured table data
+print(result["total_pages"])
+```
+
+Use `MinerUParser` for:
+
+- Scanned or image-only PDFs needing OCR
+- Scientific papers with formulas (exported as LaTeX)
+- Complex table structures and merged cells
+- Chinese, Japanese, and Korean documents
+- Multi-column layouts and reading-order reconstruction
+
+<Note>
+  MinerU downloads its models on first run (~1-2 GB). Set `MINERU_MODEL_SOURCE=modelscope` to download from ModelScope instead of HuggingFace. Pass `output_dir="..."` to keep the generated markdown, JSON, and extracted images instead of a temporary directory.
+</Note>
+
 ## OCR Support
 
 ```python
@@ -219,11 +304,19 @@ result = parser.parse("data/scanned_contract.pdf")
 print(result["full_text"])     # OCR-extracted text
 ```
 
+MinerU applies OCR through its `ocr` parse method, which also handles CJK text:
+
+```python
+parser = MinerUParser(parse_method="ocr", language="ch")
+result = parser.parse("data/scanned_contract.pdf")
+print(result["full_text"])     # OCR-extracted text
+```
+
 ## Supported Formats
 
 | Format | Extension | Parser Used | Notes |
 | :------ | :--------- | :----------- | :----- |
-| PDF | `.pdf` | `PDFParser` / `DoclingParser` | Text, tables, metadata; Docling adds OCR |
+| PDF | `.pdf` | `PDFParser` / `DoclingParser` / `MinerUParser` | Text, tables, metadata; Docling adds OCR; MinerU adds formulas and CJK OCR |
 | Word | `.docx` | Built-in | Text, headings, tables, metadata |
 | HTML | `.html`, `.htm` | `HTMLParser` / `WebParser` | `WebParser` fetches remote URLs |
 | Markdown | `.md` | Built-in | Preserves heading hierarchy |
@@ -294,10 +387,11 @@ for source in sources:
 ```
 
 <Note>
-  Docling is an optional dependency. If `docling` is not installed, `DoclingParser` raises an `ImportError` with installation instructions: `pip install docling`. `DocumentParser` is always available and requires no extras.
+  Docling and MinerU are optional dependencies. If `docling` is not installed, `DoclingParser` raises an `ImportError` with installation instructions: `pip install docling`; the same applies to `MinerUParser` (`pip install "mineru[core]"`). `DocumentParser` is always available and requires no extras.
 </Note>
 
 - [Ingest](/reference/ingest) — Load files before parsing.
 - [Split](/reference/split) — Chunk parsed text for embedding and extraction.
 - [Docling Integration](../integrations/docling) — Full Docling integration setup guide.
+- [MinerU Integration](../integrations/mineru) — Full MinerU integration setup guide.
 - [Semantic Extract](/reference/semantic_extract) — Extract entities and relations from parsed text.

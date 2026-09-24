@@ -2,7 +2,7 @@
 title: "解析模块（Parse）"
 description: "文档解析与文本抽取：标准格式用 DocumentParser，复杂版面用 DoclingParser。"
 source: reference/parse.md
-source_version: 166c207207c2e564fac79b66e8887a078f4ed3ba
+source_version: 3240a938515ce67ce1d9292b31be4865452adcab
 icon: "file-lines"
 ---
 
@@ -10,7 +10,8 @@ icon: "file-lines"
 
 - `DocumentParser`：广泛的格式支持（PDF、DOCX、HTML、JSON、CSV、PPTX、XLSX），零额外依赖
 - `DoclingParser`：复杂版面、合并单元格表格、多栏 PDF、OCR（`pip install docling`）
-- 两者都返回结构一致的 `dict`，含 `full_text`、`metadata`、`pages`、`tables` 键
+- `MinerUParser`：版面分析、公式识别，面向扫描 PDF 的强 OCR（`pip install "mineru[core]"`）
+- 三种解析器都返回结构一致的 `dict`，含 `full_text`、`metadata`、`pages`、`tables` 键
 - `parse_batch()` 并行处理多个文件，错误处理策略可配置
 
 
@@ -40,6 +41,20 @@ from semantica.parse import DoclingParser
 parser = DoclingParser(export_format="markdown")
 result = parser.parse("document.pdf", extract_tables=True)
 print(result["tables"])  # Enhanced table extraction
+```
+
+面对扫描件、公式密集或中日韩语言的 PDF，改用 MinerU：
+
+```bash
+pip install "mineru[core]"
+```
+
+```python
+from semantica.parse import MinerUParser
+
+parser = MinerUParser(parse_method="auto")
+result = parser.parse("scanned_report.pdf")
+print(result["full_text"])  # 版面感知的 markdown，OCR 已生效
 ```
 
 ### 解析第一个文档
@@ -114,6 +129,32 @@ print(f"Extracted {len(text)} characters from {metadata.get('page_count', 0)} pa
       先用 `DocumentParser`。只有需要更好的表格抽取、或遇到复杂 PDF 版面时再换 `DoclingParser`。
     </Tip>
   </Tab>
+  <Tab title="MinerUParser：扫描件与公式密集 PDF">
+    版面分析、LaTeX 公式识别、强 OCR（含中日韩）。需要 `pip install "mineru[core]"`；首次运行会下载模型。
+
+    | | |
+    | :-- | :-- |
+    | **格式** | PDF、图片 |
+    | **速度** | 较慢（深度学习模型，建议 GPU） |
+    | **安装** | `pip install "mineru[core]"` |
+    | **适用** | 扫描件、公式、复杂表格、中日韩文档 |
+
+    ```python
+    from semantica.parse import MinerUParser
+
+    parser = MinerUParser(parse_method="auto", language="ch")
+    result = parser.parse("scanned_report.pdf", extract_tables=True)
+
+    for i, table in enumerate(result["tables"]):
+        print(f"Table {i+1}: {table['row_count']} rows (page {table['page_number']})")
+        for row in table["rows"][:3]:
+            print(" | ".join(row))
+    ```
+
+    <Tip>
+      从 `DocumentParser` 起步；需要更好的表格抽取换 `DoclingParser`，遇到扫描件、公式或中日韩文档换 `MinerUParser`。
+    </Tip>
+  </Tab>
   <Tab title="批量处理">
     并行处理多个文件，单文件错误相互隔离。
 
@@ -148,6 +189,8 @@ print(f"Extracted {len(text)} characters from {metadata.get('page_count', 0)} pa
 | `DocumentParser` | 自动探测格式：分发给格式专属解析器（PDF、DOCX、HTML、JSON、CSV 等） |
 | `DoclingParser` | 复杂版面、合并单元格表格、多栏 PDF 与 OCR（`pip install docling`） |
 | `DoclingMetadata` | Docling 解析产出的文档元数据 |
+| `MinerUParser` | 面向扫描 PDF 的版面分析、公式识别与 OCR（`pip install "mineru[core]"`） |
+| `MinerUMetadata` | MinerU 解析产出的文档元数据 |
 | `PDFParser` | PDF 文本与元数据抽取 |
 | `WebParser` | URL 抓取 + HTML 解析 |
 | `EmailParser` | `.eml` / `.msg` 邮件文件，含附件抽取 |
@@ -209,6 +252,48 @@ if "pages" in result:         # Page-level content
 - 需要 OCR 的扫描件
 - 学术论文和技术报告
 
+## MinerUParser
+
+基于 MinerU 后端的高级解析器，专为文本层抽取和轻量版面工具都搞不定的文档而生：
+
+```bash
+pip install "mineru[core]"
+```
+
+```python
+from semantica.parse import MinerUParser
+
+parser = MinerUParser(
+    backend="pipeline",            # "pipeline" | "vlm-transformers" | "vlm-sglang-engine"
+    parse_method="auto",           # "auto" | "txt" | "ocr"
+    language="ch",                 # OCR 语言提示（None = 自动）
+    export_format="markdown"       # "markdown" | "html"
+)
+
+result = parser.parse(
+    "data/scanned_paper.pdf",
+    extract_tables=True,
+    extract_images=False,
+    extract_text=True
+)
+
+print(result["full_text"])    # 版面感知的 markdown（公式以 LaTeX 输出）
+print(result["tables"])       # 结构化表格数据
+print(result["total_pages"])
+```
+
+以下场景用 `MinerUParser`：
+
+- 需要 OCR 的扫描件或纯图像 PDF
+- 带公式的科研论文（公式导出为 LaTeX）
+- 复杂表格结构与合并单元格
+- 中文、日文、韩文文档
+- 多栏版面与阅读顺序重建
+
+<Note>
+  MinerU 首次运行会下载模型（约 1-2 GB）。设置 `MINERU_MODEL_SOURCE=modelscope` 可改从 ModelScope 下载（国内更稳）。传入 `output_dir="..."` 可以保留生成的 markdown、JSON 和抽取出的图片，否则写入临时目录。
+</Note>
+
 ## OCR 支持
 
 ```python
@@ -221,11 +306,19 @@ result = parser.parse("data/scanned_contract.pdf")
 print(result["full_text"])     # OCR-extracted text
 ```
 
+MinerU 通过 `ocr` 解析方法应用 OCR，对中日韩文本同样在行：
+
+```python
+parser = MinerUParser(parse_method="ocr", language="ch")
+result = parser.parse("data/scanned_contract.pdf")
+print(result["full_text"])     # OCR-extracted text
+```
+
 ## 支持的格式
 
 | 格式 | 扩展名 | 使用的解析器 | 说明 |
 | :------ | :--------- | :----------- | :----- |
-| PDF | `.pdf` | `PDFParser` / `DoclingParser` | 文本、表格、元数据；Docling 加持 OCR |
+| PDF | `.pdf` | `PDFParser` / `DoclingParser` / `MinerUParser` | 文本、表格、元数据；Docling 加持 OCR；MinerU 加持公式识别与中日韩 OCR |
 | Word | `.docx` | 内置 | 文本、标题、表格、元数据 |
 | HTML | `.html`、`.htm` | `HTMLParser` / `WebParser` | `WebParser` 可抓取远程 URL |
 | Markdown | `.md` | 内置 | 保留标题层级 |
@@ -296,10 +389,11 @@ for source in sources:
 ```
 
 <Note>
-  Docling 是可选依赖。未安装 `docling` 时，`DoclingParser` 抛 `ImportError` 并附安装说明：`pip install docling`。`DocumentParser` 始终可用，无需任何 extra。
+  Docling 和 MinerU 都是可选依赖。未安装 `docling` 时，`DoclingParser` 抛 `ImportError` 并附安装说明：`pip install docling`；`MinerUParser` 同理（`pip install "mineru[core]"`）。`DocumentParser` 始终可用，无需任何 extra。
 </Note>
 
 - [Ingest](./ingest.md) — 解析前先加载文件。
 - [Split](./split.md) — 把解析出的文本分块供嵌入与抽取。
 - [Docling 集成](../integrations/docling.md) — Docling 完整集成设置指南。
+- [MinerU 集成](../integrations/mineru.md) — MinerU 完整集成设置指南。
 - [Semantic Extract](./semantic_extract.md) — 从解析文本中抽取实体和关系。

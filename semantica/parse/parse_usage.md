@@ -223,6 +223,48 @@ tables = parser.extract_tables("data_sheet.pdf")
 metadata = parser.extract_metadata("document.pdf")
 ```
 
+### MinerU Parsing (Scanned PDFs, Formulas & CJK OCR)
+
+`MinerUParser` is a specialized parser for documents that defeat text-layer
+extraction: scanned pages, scientific papers with formulas, and Chinese,
+Japanese, or Korean PDFs. It requires the `mineru` package
+(`pip install "mineru[core]"`); models download automatically on first run.
+
+#### Basic Usage
+
+```python
+from semantica.parse import MinerUParser
+
+# Initialize MinerUParser
+parser = MinerUParser()
+
+# 1. Parse document (layout-aware markdown, formulas as LaTeX)
+result = parser.parse("scanned_report.pdf")
+print(f"Extracted Text: {result['full_text'][:200]}")
+
+# 2. Access extracted tables (rows parsed from MinerU's HTML bodies)
+for i, table in enumerate(result['tables']):
+    print(f"Table {i+1}: {table['row_count']} rows on page {table['page_number']}")
+
+# 3. Per-page structure and metadata
+print(f"Pages: {result['total_pages']}, backend: {result['metadata']['backend']}")
+```
+
+#### Advanced Configuration
+
+```python
+from semantica.parse import MinerUParser
+
+parser = MinerUParser(
+    backend="pipeline",      # "pipeline" (CPU) or "vlm-transformers" / "vlm-sglang-engine" (GPU, higher quality)
+    parse_method="ocr",      # "auto", "txt", or "ocr"
+    language="ch",           # OCR language hint
+    output_dir="out/mineru/" # Keep markdown, JSONs, and extracted images
+)
+
+result = parser.parse("scanned_contract.pdf")
+```
+
 ## Web Content Parsing
 
 ### HTML Content Parsing

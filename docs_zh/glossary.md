@@ -2,7 +2,7 @@
 title: 术语表
 description: Semantica 中文文档术语对照表——全部译文的译名权威源
 source: glossary.md
-source_version: 00e8462784f000d8fc08ed4fc1032cfdf499e2ef
+source_version: f1e2e9153b44e3fe45d19a2bcce3646114a5d74d
 ---
 
 # 术语表
@@ -45,7 +45,7 @@ source_version: 00e8462784f000d8fc08ed4fc1032cfdf499e2ef
 | Chunking | 分块 | 七种策略：recursive、semantic、entity-aware 等 |
 | Ingestion | 摄取 | 见核心术语 |
 | Normalization | 规范化 | |
-| Parsing | 解析 | |
+| Parsing | 解析 | `DoclingParser` 处理多栏版面与 OCR；`MinerUParser` 识别公式、处理中日韩扫描件 |
 | Abductive Reasoning | 溯因推理 | 六类推理引擎之一 |
 | Datalog | Datalog | 声明式逻辑语言，保留英文 |
 | GraphRAG | GraphRAG | 图增强 RAG，保留英文 |

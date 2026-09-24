@@ -84,10 +84,10 @@ print(parsed["metadata"])          # document properties (fields vary by format)
 
 `parse()` returns a `dict`. `full_text` and `metadata` are present for every
 format; other keys depend on the parser (`pages` for PDF, `tables` and
-`paragraphs` for DOCX, `tables` for `DoclingParser`).
+`paragraphs` for DOCX, `tables` for `DoclingParser` and `MinerUParser`).
 
 <Tip>
-  For PDFs with tables, charts, or multi-column layouts, use `DoclingParser` (`pip install semantica[parse-docling]`): it applies advanced layout analysis and returns structured table data alongside text.
+  For PDFs with tables, charts, or multi-column layouts, use `DoclingParser` (`pip install semantica[parse-docling]`): it applies advanced layout analysis and returns structured table data alongside text. For scanned, formula-heavy, or Chinese PDFs, prefer `MinerUParser` (`pip install semantica[parse-mineru]`).
 </Tip>
 
 ```python
@@ -382,6 +382,15 @@ The document likely contains scanned images rather than machine-readable text. `
 from semantica.parse import DoclingParser   # pip install semantica[parse-docling]
 
 parser = DoclingParser(enable_ocr=True)
+parsed = parser.parse(sources[0].path)
+```
+
+For scanned Chinese documents, MinerU is a strong alternative — its OCR and layout models are trained for CJK text:
+
+```python
+from semantica.parse import MinerUParser   # pip install semantica[parse-mineru]
+
+parser = MinerUParser(parse_method="ocr", language="ch")
 parsed = parser.parse(sources[0].path)
 ```
 

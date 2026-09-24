@@ -2,7 +2,7 @@
 title: 选对模块
 description: 30 秒内把你的目标映射到正确的 Semantica 模块。
 source: choose-your-module.md
-source_version: a903135fc305e21e6fe5fd4ca43fcfa865ada67a
+source_version: 86ad3da1b0e618549fae5fa69ac7374d520e2d51
 icon: "compass"
 ---
 
@@ -23,6 +23,7 @@ icon: "compass"
 | 从 SQL、Snowflake、Databricks、Kafka 或邮件摄取 | `ingest` | `DBIngestor`, `SnowflakeIngestor`, `DatabricksIngestor`, `StreamIngestor` |
 | 从文档抽取干净的文本和表格 | `parse` | `DocumentParser` |
 | 解析需要 OCR 或多栏版面的复杂 PDF | `parse` | `DoclingParser` |
+| 解析扫描件、公式密集或中文 PDF | `parse` | `MinerUParser` |
 | 为嵌入(Embedding)或检索增强生成(RAG)切分文本 | `split` | `TextSplitter` |
 | 规范化文本、日期、实体或编码 | `normalize` | `TextNormalizer`, `EntityNormalizer` |
 | 在文本中识别人名、机构、地名等命名实体 | `semantic_extract` | `NERExtractor` |

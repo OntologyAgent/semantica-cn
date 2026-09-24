@@ -37,7 +37,7 @@ Transforms raw text into structured, enriched documents ready for knowledge stor
 
 | Step | Module | What it does |
 | :---- | :------ | :------------ |
-| Parse | `parse.DocumentParser` / `parse.DoclingParser` | Text + layout extraction, table detection |
+| Parse | `parse.DocumentParser` / `parse.DoclingParser` / `parse.MinerUParser` | Text + layout extraction, table detection, formula OCR |
 | Normalize | `normalize` | Canonical forms, date/name standardization, encoding fix |
 | Extract | `semantic_extract` | NER, relation extraction, event detection, triplets |
 | Build | `kg.GraphBuilder` | Entity merging, edge construction, graph assembly |

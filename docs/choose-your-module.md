@@ -21,6 +21,7 @@ Find your goal below. The **Module** column is your import path; **Key class** i
 | Ingest from SQL, Snowflake, Databricks, Kafka, or email | `ingest` | `DBIngestor`, `SnowflakeIngestor`, `DatabricksIngestor`, `StreamIngestor` |
 | Extract clean text and tables from a document | `parse` | `DocumentParser` |
 | Parse complex PDFs with OCR or multi-column layout | `parse` | `DoclingParser` |
+| Parse scanned, formula-heavy, or Chinese PDFs | `parse` | `MinerUParser` |
 | Chunk text for embedding or RAG | `split` | `TextSplitter` |
 | Normalize text, dates, entities, or encodings | `normalize` | `TextNormalizer`, `EntityNormalizer` |
 | Find named entities (people, orgs, locations) in text | `semantic_extract` | `NERExtractor` |

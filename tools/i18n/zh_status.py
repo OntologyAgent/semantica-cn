@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""zh_status — 检查 docs/zh/ 译文相对英文源的新鲜度。
+"""zh_status — 检查 docs_zh/ 译文相对英文源的新鲜度。
 
 对比每篇译文 frontmatter 记录的 source_version（翻译时英文源的 git blob
 sha）与 HEAD 中该源文件当前的 blob sha，判定 fresh / stale / orphan：
@@ -20,7 +20,7 @@ sha）与 HEAD 中该源文件当前的 blob sha，判定 fresh / stale / orphan
 
     0  扫描完成（允许存在 stale/orphan，这是工具的正常产出）
     1  用法/环境错误（git 不可用、--root 非 git 仓库）
-    2  docs/zh/ 不存在或无任何译文
+    2  docs_zh/ 不存在或无任何译文
 """
 
 from __future__ import annotations
@@ -34,13 +34,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-ZH_DIR = "docs/zh"
+ZH_DIR = "docs_zh"
 SOURCE_DIR = "docs"
 # 译文目录 pairs:每项 (译文目录, 英文源目录, 文件 glob, source_version 读取方式)。
-# docs/zh 走 frontmatter;cookbook_zh 走 notebook metadata(自建约定,
-# 见 docs/zh/README.md「cookbook 翻译」一节)。
+# docs_zh 走 frontmatter;cookbook_zh 走 notebook metadata(自建约定,
+# 见 docs_zh/README.md「cookbook 翻译」一节)。
 DIR_PAIRS = [
-    ("docs/zh", "docs", "*.md", "frontmatter"),
+    ("docs_zh", "docs", "*.md", "frontmatter"),
     ("cookbook_zh", "cookbook", "*.ipynb", "notebook"),
 ]
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
@@ -164,7 +164,7 @@ def _meta_from_notebook(path: Path) -> Dict[str, str]:
 
 
 def scan(root: Path, verbose: bool) -> List[Dict[str, Any]]:
-    """扫描全部译文目录(docs/zh、cookbook_zh)并逐篇判定状态。
+    """扫描全部译文目录(docs_zh、cookbook_zh)并逐篇判定状态。
 
     Args:
         root: 仓库根目录。
@@ -191,7 +191,10 @@ def scan(root: Path, verbose: bool) -> List[Dict[str, Any]]:
                 "recorded_source_sha": recorded or None,
                 "current_source_sha": current,
             }
-            if not source or not recorded or not SHA_RE.match(recorded):
+            if recorded == "native":
+                # 自建页（规范见 docs_zh/README.md）：无英文对应源，视为常青
+                entry["status"] = "fresh"
+            elif not source or not recorded or not SHA_RE.match(recorded):
                 entry["reason"] = "missing_source_version"
             elif current is None:
                 entry["status"] = "orphan"
@@ -245,10 +248,10 @@ def main(argv: Optional[List[str]] = None) -> int:
         argv: 命令行参数；缺省取 sys.argv[1:]。
 
     Returns:
-        进程退出码：0 扫描完成，1 环境错误，2 docs/zh 缺失。
+        进程退出码：0 扫描完成，1 环境错误，2 docs_zh 缺失。
     """
     parser = argparse.ArgumentParser(
-        description="检查 docs/zh/ 译文相对英文源的新鲜度（fresh/stale/orphan）"
+        description="检查 docs_zh/ 译文相对英文源的新鲜度（fresh/stale/orphan）"
     )
     parser.add_argument("--json", action="store_true", help="输出机器可读 JSON")
     parser.add_argument("--root", default="./", help="仓库根目录（默认 ./）")
@@ -276,7 +279,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         if (root / zh_dir).is_dir() and any((root / zh_dir).rglob(pattern))
     ]
     if not existing:
-        print("错误: 找不到任何译文目录(docs/zh、cookbook_zh)", file=sys.stderr)
+        print("错误: 找不到任何译文目录(docs_zh、cookbook_zh)", file=sys.stderr)
         return 2
 
     entries = scan(root, verbose=args.verbose)

@@ -33,7 +33,7 @@ git fetch upstream && git merge upstream/main && git push origin main
 因此本地改动必须遵守一条纪律：**开闭原则——只扩展，不侵入**。
 
 - 新功能用新增文件、新增模块、子类、适配器落地，尽量不修改上游既有代码。侵入越少，合并 upstream 时的冲突越少。
-- 国际化和翻译工作另起炉灶：中文文档放进独立目录（如 `docs/zh/`），不覆盖英文原文；界面文案优先走新增的语言资源文件，不改上游字符串的原文。
+- 国际化和翻译工作另起炉灶：中文文档放进独立目录（如 `docs_zh/`），不覆盖英文原文；界面文案优先走新增的语言资源文件，不改上游字符串的原文。
 - `projects/` 是本地自建项目的数据目录，不提交，也不要把要提交的代码放进去。
 
 ## 技术栈
@@ -52,7 +52,7 @@ integrations/     智能体框架适配：agno/crewai/langchain/openclaw
 mcp/              MCP 服务器实现
 tests/            与包结构镜像的测试目录
 docs/             Mintlify 文档（英文，上游维护；中文翻译另建目录）
-docs/zh/          中文文档镜像：译文 + glossary 术语表 + README 翻译规范
+docs_zh/          中文文档镜像：译文 + glossary 术语表 + README 翻译规范
 tools/i18n/       zh_status.py，中文译文过期追踪（git blob sha 基准）
 cookbook/         教程笔记本
 plugins/          编辑器插件、agents、hooks、skills
@@ -129,7 +129,7 @@ python tools/i18n/zh_status.py              # 中文译文过期状态
 
 ## 中文文档翻译
 
-- 翻译规范单一事实源：`docs/zh/README.md`；术语统一查 `docs/zh/glossary.md`。
+- 翻译规范单一事实源：`docs_zh/README.md`；术语统一查 `docs_zh/glossary.md`。
 - 上游同步（`git merge upstream/main`）之后先跑 `python tools/i18n/zh_status.py`，按 stale 清单逐篇重译并刷新 `source_version`。
 - 翻译流程入口：`.claude/skills/docs-zh-translation`（编排层，细节一律链接 README）。
-- 零侵入：只增改 `docs/zh/`、`tools/i18n/` 与该 Skill 目录，不动上游既有文件。
+- 零侵入：只增改 `docs_zh/`、`tools/i18n/` 与该 Skill 目录，不动上游既有文件。

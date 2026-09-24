@@ -1,0 +1,654 @@
+---
+title: "摄取模块（Ingest）"
+description: "从文件、Parquet、XML、网页、公共 API、订阅源、流、代码仓库、邮件和数据库统一摄取数据。"
+source: reference/ingest.md
+source_version: c1e15b8e436acdd7bb019d5934f885cceb028eb1
+icon: "database"
+---
+
+**`semantica.ingest`** 是向 Semantica 装载数据的**统一入口**。简单说，外部数据不管来自哪里，都从这里进入 Semantica，再交给下游解析和抽取：
+
+- 15+ 个摄取适配器：文件、网页、SQL、Databricks、Snowflake、Kafka、MCP、Git 仓库、邮件
+- 基于 PyArrow 的 Parquet：支持列选择和分区数据集
+- 防 XML 外部实体注入(XXE) 的 lxml XML 解析，可选 XSD 模式校验
+- `ingest()` 统一分发器：从路径或 URL 自动识别来源类型
+- 每个摄取器返回自己的类型化对象（`FileObject`、`WebContent`、`TableData` 等）
+
+
+## 导出的类
+
+| 类 | 职责 |
+| :--- | :--- |
+| `FileIngestor` | PDF、DOCX、HTML、JSON、CSV、Excel、PPTX、ZIP/TAR：按扩展名自动识别类型 |
+| `CloudStorageIngestor` | AWS S3、Google Cloud Storage、Azure Blob Storage 的统一客户端 |
+| `WebIngestor` | 网页抓取与爬取：`ingest_url`、`crawl_sitemap`、`crawl_domain` |
+| `RESTIngestor` | 通用 REST API 摄取：支持请求头、参数、重试和分页 |
+| `PublicAPIIngestor` | 免鉴权公共 API 摄取：内置预配置示例和限速 |
+| `FeedIngestor` | RSS/Atom 订阅源摄取，经 `FeedMonitor` 实时监控 |
+| `StreamIngestor` | 从 Kafka、RabbitMQ、AWS Kinesis、Apache Pulsar 实时摄取 |
+| `RepoIngestor` | Git 仓库：源码文件、提交历史和元数据 |
+| `DBIngestor` | 经 SQLAlchemy 访问 SQL 数据库：表、视图和自定义查询 |
+| `SnowflakeIngestor` | Snowflake 数据仓库查询与表导出 |
+| `DatabricksIngestor` | Databricks Unity Catalog 元数据、Delta 表查询与血缘（Lineage） |
+| `SAPIngestor` | SAP OData 服务（S/4HANA Cloud、SuccessFactors、NetWeaver Gateway）：实体集发现与摄取，支持 v2/v4 分页 |
+| `ParquetIngestor` | Apache Parquet 文件与分区数据集，支持列选择 |
+| `ArrowIngestor` | Apache Arrow IPC 与 Feather 文件处理 |
+| `XMLIngestor` | XXE 安全的 XML 解析，可选 XSD 模式校验 |
+| `EmailIngestor` | IMAP/POP3 邮件摄取，支持附件提取 |
+| `OntologyIngestor` | OWL/RDF/Turtle 本体文件摄取 |
+| `MCPIngestor` | Model Context Protocol (MCP) 资源摄取 |
+| `ingest()` | 统一分发器：从路径或 URL 自动识别来源类型 |
+
+## 快速上手
+
+本地文件用 **`FileIngestor`**：它按扩展名**自动识别格式**，还能处理归档：
+
+```python
+from semantica.ingest import FileIngestor
+
+ingestor = FileIngestor()
+
+# Single file -> FileObject
+file_obj = ingestor.ingest_file("data/report.pdf")
+print(file_obj.name)       # "report.pdf"
+print(file_obj.file_type)  # "pdf"
+print(file_obj.text)       # decoded text content (property on FileObject)
+print(file_obj.size)       # bytes
+
+# Directory scan -> List[FileObject]
+files = ingestor.ingest_directory("data/", recursive=True)
+for f in files:
+    print(f.name, f.file_type, f.size)
+```
+
+<Tip>
+  **本地文件 `FileIngestor` 永远是最快的路径。**它按扩展名自动识别格式，自动处理 ZIP/TAR 归档，把内容读进 `.content` 字节或 `.text` 属性。只需要文件元数据时，传 `read_content=False`。
+</Tip>
+
+至于网页、数据库或流式来源，每个摄取器都暴露自己的类型化方法：
+
+```python
+# Web
+from semantica.ingest import WebIngestor
+wc = WebIngestor(delay=1.0, respect_robots=True).ingest_url("https://example.com")
+print(wc.title, wc.text)
+
+# Database: constructor takes no required args; pass connection_string to methods
+from semantica.ingest import DBIngestor
+db = DBIngestor()
+result = db.ingest_database("postgresql://user:pass@localhost/db")
+# result["tables"]["documents"]["rows"] contains the rows
+
+# Unified dispatcher: auto-detects source type
+from semantica.ingest import ingest
+result = ingest("data/report.pdf")          # -> {"files": [FileObject]}
+result = ingest("https://example.com")      # -> {"content": WebContent}
+result = ingest("data/events.parquet")      # -> {"data": ParquetData}
+result = ingest("ontology.ttl")             # -> {"ontology": OntologyData}
+```
+
+## 快速开始
+
+<Steps>
+  <Step title="摄取本地文件">
+    ```python
+    from semantica.ingest import FileIngestor
+
+    ingestor = FileIngestor()
+
+    # Single file: type auto-detected from extension
+    file_obj = ingestor.ingest_file("data/report.pdf")
+
+    # Recursive directory scan
+    files = ingestor.ingest_directory("data/", recursive=True)
+
+    # ingest() also works: routes to file or directory automatically
+    from semantica.ingest import ingest
+    result = ingest("data/report.pdf")   # {"files": [FileObject]}
+    ```
+  </Step>
+  <Step title="连接数据库">
+    ```python
+    from semantica.ingest import DBIngestor
+
+    ingestor = DBIngestor()
+
+    # Ingest all tables
+    result = ingestor.ingest_database(
+        "postgresql://user:pass@localhost/db",
+        include_tables=["documents"],
+    )
+    # result["tables"]["documents"]["rows"] contains the row dicts
+
+    # Run a custom query
+    rows = ingestor.execute_query(
+        "postgresql://user:pass@localhost/db",
+        "SELECT id, content, created_at FROM documents WHERE status = :s",
+        s="active",
+    )
+    ```
+  </Step>
+  <Step title="接入流水线">
+    ```python
+    from semantica.ingest import FileIngestor
+    from semantica.pipeline import PipelineBuilder, ExecutionEngine
+    from semantica.parse import DocumentParser
+    from semantica.semantic_extract import NERExtractor
+
+    ingestor  = FileIngestor()
+    parser    = DocumentParser()
+    extractor = NERExtractor(method="ml")
+
+    builder = PipelineBuilder()
+    builder.add_step("ingest",  "file_ingest",    handler=ingestor.ingest_file)
+    builder.add_step("parse",   "document_parse", handler=parser.parse)
+    builder.add_step("extract", "ner_extract",    handler=extractor.extract)
+    builder.connect_steps("ingest", "parse")
+    builder.connect_steps("parse",  "extract")
+
+    pipeline = builder.build("my_pipeline")
+    result   = ExecutionEngine().execute_pipeline(pipeline, data="data/report.pdf")
+    ```
+  </Step>
+</Steps>
+
+## 摄取器
+
+<Tabs>
+  <Tab title="文件">
+    ### FileIngestor
+
+    ```python
+    from semantica.ingest import FileIngestor
+
+    ingestor = FileIngestor()
+
+    # Single file
+    file_obj = ingestor.ingest_file("data/report.pdf")
+
+    # Directory: returns List[FileObject]
+    files = ingestor.ingest_directory("data/", recursive=True)
+
+    # ingest() dispatches to ingest_file or ingest_directory automatically
+    files = ingestor.ingest("data/")
+    ```
+
+    支持的格式：PDF、DOCX、TXT、HTML、JSON、CSV、Excel（XLSX/XLS）、PPTX、ZIP/TAR 归档。
+
+    <Note>
+      不支持 glob 模式（如 `"data/**/*.docx"`）。`ingest()` 只接受文件路径或目录路径。要按扩展名过滤目录内的文件，用 `ingest_directory()` 的 `pattern=` 过滤选项。
+    </Note>
+
+    ### ParquetIngestor
+
+    基于 PyArrow 的 Apache Parquet 摄取，包括 Hive 风格的分区数据集：
+
+    ```python
+    from semantica.ingest import ParquetIngestor
+
+    ingestor = ParquetIngestor()
+
+    # Single Parquet file -> ParquetData
+    data = ingestor.ingest_file("data/events.parquet")
+
+    # Partitioned directory (year=2024/month=01/...)
+    data = ingestor.ingest_directory("data/partitioned/")
+
+    # Load only specific columns: pass as kwarg
+    from semantica.ingest import ingest_parquet
+    data = ingest_parquet("data/events.parquet", columns=["id", "text", "timestamp"])
+
+    # Extract schema without loading data
+    schema = ingest_parquet("data/events.parquet", method="schema")
+    ```
+
+    需要 `pyarrow`：`pip install pyarrow`。
+
+    <Tip>
+      **结构化分析数据用 `ParquetIngestor`，不要用 `FileIngestor`。**Parquet 摄取会保留列类型（int、float、datetime），而 CSV 读取会丢失它们。用 `columns=["id", "text"]` 避免加载用不到的列，这一点对有几百列的宽表至关重要。
+    </Tip>
+
+    ### XMLIngestor
+
+    基于 lxml 的 XXE 安全摄取，可选模式校验：
+
+    ```python
+    from semantica.ingest import XMLIngestor
+
+    # Basic ingestion
+    ingestor = XMLIngestor()
+    data = ingestor.ingest_file("data/records.xml")
+
+    # With XSD validation: pass schema_path as kwarg
+    from semantica.ingest import ingest_xml
+    data = ingest_xml("data/records.xml", schema_path="schema.xsd")
+
+    # Validation report only
+    report = ingest_xml("data/feed.xml", method="validate", schema_path="schema.xsd")
+
+    # Directory scan
+    results = ingestor.ingest_directory("data/records/")
+    ```
+
+    <Note>
+      `XMLIngestor` 使用 lxml 且设置 `resolve_entities=False`，防止 XML 外部实体(XXE)注入攻击。
+    </Note>
+
+    <Warning>
+      **`XMLIngestor` 默认就是 XXE 安全的。**不要用标准 `xml.etree.ElementTree` 预解析 XML 再交给 Semantica：它不防 XXE 攻击。`XMLIngestor` 用 lxml 且 `resolve_entities=False`，可安全解析不受信任的 XML。
+    </Warning>
+  </Tab>
+  <Tab title="网页与订阅源">
+    ### WebIngestor
+
+    ```python
+    from semantica.ingest import WebIngestor
+
+    ingestor = WebIngestor(
+        delay=1.0,             # seconds between requests
+        respect_robots=True,   # honor robots.txt
+        timeout=30,
+    )
+
+    # Single URL -> WebContent
+    content = ingestor.ingest_url("https://example.com/about")
+    print(content.title)
+    print(content.text)
+    print(content.links)
+
+    # Sitemap crawl -> List[WebContent]
+    pages = ingestor.crawl_sitemap("https://example.com/sitemap.xml")
+
+    # Domain crawl -> List[WebContent]
+    pages = ingestor.crawl_domain("https://example.com", max_pages=50)
+    ```
+
+    需要 `beautifulsoup4`：`pip install beautifulsoup4`。
+
+    <Tip>
+      **网页爬取要限速。**`WebIngestor(delay=1.0, respect_robots=True)` 是负责任的默认值。不限速的话，目标服务器可能封禁你的请求，你也可能因此违反对方的服务条款。
+    </Tip>
+
+    ### PublicAPIIngestor
+
+    适用于不需要 key 或 token 的公共 REST 风格 API：
+
+    ```python
+    from semantica.ingest import PublicAPIIngestor, PublicAPIExamples, ingest_public_api
+
+    ingestor = PublicAPIIngestor(rate_limit_delay=1.0)
+
+    # Ingest any public endpoint
+    data = ingestor.ingest_public_api("https://jsonplaceholder.typicode.com/posts")
+
+    # Use a pre-configured example by name
+    data = ingestor.ingest_example("rest_countries_all")
+
+    # Check if endpoint is accessible without auth
+    detection = ingestor.detect_public_api("https://jsonplaceholder.typicode.com/posts")
+
+    # List available pre-configured examples
+    examples = PublicAPIExamples.list_examples()
+
+    # Convenience function
+    data = ingest_public_api("https://jsonplaceholder.typicode.com/posts")
+    ```
+
+    公共 API 摄取默认拒绝常见的鉴权请求头和查询参数。需要鉴权的 API 用 `RESTIngestor`。
+
+    ### FeedIngestor（RSS/Atom）
+
+    ```python
+    from semantica.ingest import FeedIngestor
+
+    ingestor = FeedIngestor()
+
+    # Ingest a feed -> FeedData
+    feed = ingestor.ingest_feed("https://feeds.example.com/rss")
+
+    # Discover feeds from a website
+    from semantica.ingest import ingest_feed
+    feeds = ingest_feed("https://example.com", method="discover")
+    ```
+
+    需要 `beautifulsoup4`：`pip install beautifulsoup4`。
+
+    ### RepoIngestor
+
+    摄取 Git 仓库：源码、提交历史和依赖图：
+
+    ```python
+    from semantica.ingest import RepoIngestor
+
+    ingestor = RepoIngestor(
+        branch="main",
+        file_types=[".py", ".md", ".yaml"],
+        include_commits=True,
+        commit_range="HEAD~100..HEAD",
+    )
+
+    result = ingestor.ingest_repository("https://github.com/org/repo")
+    result = ingestor.ingest_repository("/path/to/local/repo")
+    ```
+
+    需要 `GitPython`：`pip install gitpython`。
+
+    ### EmailIngestor
+
+    经 IMAP 或 POP3 摄取邮件，支持附件提取和会话(thread)分析：
+
+    ```python
+    from semantica.ingest import EmailIngestor
+    import os
+
+    ingestor = EmailIngestor(
+        protocol="imap",
+        host="imap.gmail.com",
+        port=993,
+        use_ssl=True,
+        username=os.getenv("EMAIL_USER"),
+        password=os.getenv("EMAIL_PASS"),
+        folder="INBOX",
+        attachment_types=[".pdf", ".docx", ".txt"],
+        include_thread_analysis=True,
+        max_emails=500,
+    )
+    emails = ingestor.ingest()
+    ```
+
+    需要 `beautifulsoup4`：`pip install beautifulsoup4`。
+  </Tab>
+  <Tab title="云存储">
+    ### CloudStorageIngestor
+
+    `CloudStorageIngestor` 是 AWS S3、Google Cloud Storage 和 Azure Blob Storage 的统一客户端：
+
+    ```python
+    from semantica.ingest import CloudStorageIngestor
+    import os
+
+    # AWS S3: list and download objects
+    ingestor = CloudStorageIngestor(
+        provider="s3",
+        access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+        secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
+        region="us-east-1",
+    )
+    objects = ingestor.list_objects("my-documents-bucket", prefix="reports/2024/")
+    content = ingestor.download_object("my-documents-bucket", "reports/2024/report.pdf")
+
+    # FileIngestor.ingest_cloud() wraps CloudStorageIngestor
+    from semantica.ingest import FileIngestor
+    files = FileIngestor().ingest_cloud(
+        provider="s3",
+        bucket="my-documents-bucket",
+        prefix="reports/2024/",
+        access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+        secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"),
+        region="us-east-1",
+    )
+    ```
+  </Tab>
+  <Tab title="数据库">
+    ### DBIngestor（SQL）
+
+    `DBIngestor` 的构造函数没有必填参数。把连接字符串传给各个方法：
+
+    ```python
+    from semantica.ingest import DBIngestor
+
+    ingestor = DBIngestor()
+
+    # Ingest entire database (all tables, or filtered)
+    result = ingestor.ingest_database(
+        "postgresql://user:pass@localhost/db",
+        include_tables=["documents"],
+    )
+    # result["schema"], result["tables"], result["total_tables"]
+
+    # Run a custom query -> List[Dict]
+    rows = ingestor.execute_query(
+        "postgresql://user:pass@localhost/db",
+        "SELECT id, content FROM documents WHERE status = :s",
+        s="active",
+    )
+
+    # Export a single table -> TableData
+    table = ingestor.export_table(
+        "postgresql://user:pass@localhost/db",
+        table_name="documents",
+        limit=1000,
+    )
+    ```
+
+    需要 `sqlalchemy`：`pip install sqlalchemy`，外加你所用数据库的驱动。
+
+    <Warning>
+      **`DBIngestor()` 的构造函数不收连接字符串。**把连接字符串作为第一个位置参数传给 `ingest_database()`、`execute_query()` 或 `export_table()`：不是传给 `DBIngestor()` 本身。
+    </Warning>
+
+    ### SnowflakeIngestor
+
+    ```python
+    from semantica.ingest import SnowflakeIngestor
+    import os
+
+    ingestor = SnowflakeIngestor(
+        account=os.getenv("SNOWFLAKE_ACCOUNT"),
+        user=os.getenv("SNOWFLAKE_USER"),
+        password=os.getenv("SNOWFLAKE_PASSWORD"),
+        warehouse="COMPUTE_WH",
+        database="ANALYTICS",
+        schema="PUBLIC",
+    )
+    result = ingestor.ingest_query("SELECT * FROM documents")
+    result = ingestor.ingest_table("documents")
+    ```
+
+    ### DatabricksIngestor
+
+    ```python
+    from semantica.ingest import DatabricksIngestor
+    import os
+
+    ingestor = DatabricksIngestor(
+        host=os.getenv("DATABRICKS_HOST"),
+        token=os.getenv("DATABRICKS_TOKEN"),
+        http_path=os.getenv("DATABRICKS_HTTP_PATH"),
+        catalog="main",
+        schema="default",
+    )
+    result = ingestor.ingest_query("SELECT * FROM documents")
+    result = ingestor.ingest_table("documents")
+    lineage = ingestor.get_table_lineage("documents")
+    ```
+  </Tab>
+  <Tab title="流">
+    ### StreamIngestor
+
+    从消息代理实时摄取：每个方法返回一个类型化的 processor：
+
+    ```python
+    from semantica.ingest import StreamIngestor
+
+    ingestor = StreamIngestor()
+
+    # Kafka -> KafkaProcessor
+    processor = ingestor.ingest_kafka(
+        topic="documents",
+        bootstrap_servers=["localhost:9092"],
+    )
+    processor.set_message_handler(lambda msg: print(msg))
+    processor.start_consuming()
+
+    # RabbitMQ -> RabbitMQProcessor
+    processor = ingestor.ingest_rabbitmq(
+        queue="document_queue",
+        connection_url="amqp://guest:guest@localhost/",
+    )
+
+    # AWS Kinesis -> KinesisProcessor
+    processor = ingestor.ingest_kinesis(
+        stream_name="documents-stream",
+        region="us-east-1",
+    )
+
+    # Apache Pulsar -> PulsarProcessor
+    processor = ingestor.ingest_pulsar(
+        topic="persistent://public/default/documents",
+        service_url="pulsar://localhost:6650",
+    )
+
+    # Start all processors at once
+    ingestor.start_streaming()
+    # Stop all processors
+    ingestor.stop_streaming()
+
+    # Monitor stream health
+    health = ingestor.monitor.check_health()
+    ```
+
+    流处理器需要对应的客户端库（kafka-python、pika、boto3、pulsar-client）。
+
+    <Warning>
+      **`StreamIngestor` 的方法要求已安装目标消息代理的客户端库。**`ingest_kafka` 需要 `kafka-python`，`ingest_rabbitmq` 需要 `pika`，`ingest_kinesis` 需要 `boto3`，`ingest_pulsar` 需要 `pulsar-client`。依赖缺失会在调用时抛 `ImportError`，而不是在导入时。
+    </Warning>
+  </Tab>
+</Tabs>
+
+## `ingest()` 统一分发器
+
+`ingest()` 从路径或 URL 自动识别来源类型，路由到对应的摄取器——也就是说，你只需给出路径或 URL，不用自己判断数据来自哪里。它返回一个 `Dict[str, Any]`，键取决于来源类型：
+
+```python
+from semantica.ingest import ingest
+
+# File
+result = ingest("report.pdf")               # {"files": [FileObject]}
+result = ingest("data/", source_type="file") # {"files": [FileObject, ...]}
+
+# Web
+result = ingest("https://example.com")       # {"content": WebContent}
+
+# Feed (auto-detected from URL pattern)
+result = ingest("https://example.com/feed.xml") # {"feeds": FeedData}
+
+# Parquet (auto-detected from .parquet extension)
+result = ingest("events.parquet")            # {"data": ParquetData}
+
+# XML (auto-detected from .xml extension)
+result = ingest("records.xml")               # {"xml": XMLIngestionData}
+
+# Ontology (auto-detected from .ttl/.owl/.rdf)
+result = ingest("ontology.ttl")              # {"ontology": OntologyData}
+
+# Database (auto-detected from connection string prefix)
+result = ingest("postgresql://user:pass@localhost/db") # {"data": ...}
+
+# Public API
+result = ingest(
+    "https://jsonplaceholder.typicode.com/posts",
+    source_type="public_api",
+)                                            # {"data": APIData}
+```
+
+### `ingest()` 参数
+
+| 参数 | 类型 | 默认值 | 说明 |
+| :--------- | :---- | :------- | :----------- |
+| `sources` | `str`、`Path` 或 `List` | **必填** | 文件路径、URL、目录或连接字符串 |
+| `source_type` | `str` | `None`（自动识别） | `"file"`、`"web"`、`"public_api"`、`"feed"`、`"stream"`、`"repo"`、`"email"`、`"db"`、`"parquet"`、`"xml"`、`"ontology"`、`"mcp"` |
+| `method` | `str` | `None` | 可选的方法覆盖，传给底层摄取器 |
+| `**kwargs` | | | 额外选项，转发给底层摄取器方法 |
+
+## FileObject 字段
+
+`FileIngestor` 返回 `FileObject` 实例：
+
+<Accordion title="FileObject 数据结构">
+
+```python
+from dataclasses import dataclass
+from datetime import datetime
+from typing import Any, Dict, Optional
+
+@dataclass
+class FileObject:
+    path:        str                    # absolute file path
+    name:        str                    # filename (e.g. "report.pdf")
+    size:        int                    # size in bytes
+    file_type:   str                    # detected type without dot (e.g. "pdf", "docx")
+    mime_type:   Optional[str]          # MIME type if detectable
+    content:     Optional[bytes]        # raw bytes (None if read_content=False)
+    metadata:    Dict[str, Any]         # extension, parent dir, is_supported, etc.
+    ingested_at: datetime               # ingestion timestamp
+
+    @property
+    def text(self) -> str:
+        """Decoded text from content bytes (UTF-8 with latin-1 fallback)."""
+        ...
+```
+
+要拿已摄取文件的文本，用 `.text` 属性：
+
+```python
+file_obj = FileIngestor().ingest_file("report.pdf")
+text = file_obj.text       # decoded string
+raw  = file_obj.content    # raw bytes
+```
+
+跳过内容读取（只扫描目录、不加载文件内容时很有用）：
+
+```python
+files = FileIngestor().ingest_directory("data/", recursive=True, read_content=False)
+```
+
+</Accordion>
+
+## OntologyIngestor
+
+把既有 OWL 或 RDF 本体（Ontology）文件作为结构化知识来源摄取进来：
+
+```python
+from semantica.ingest import OntologyIngestor
+
+ingestor = OntologyIngestor()
+
+data = ingestor.ingest_ontology("domain_ontology.owl", format="turtle")
+
+# Or using the convenience function
+from semantica.ingest import ingest_ontology
+data = ingest_ontology("domain_ontology.ttl")
+```
+
+## 自定义摄取器
+
+注册自定义摄取函数，加入完整注册表：
+
+```python
+from semantica.ingest.registry import method_registry
+from semantica.ingest import FileObject
+
+def my_ingestor(source, **kwargs):
+    # Return whatever your format produces
+    return FileObject(
+        path=source,
+        name=source,
+        size=0,
+        file_type="custom",
+        content=b"...",
+        metadata={},
+    )
+
+method_registry.register("file", "my_format", my_ingestor)
+
+# Now callable via the convenience function
+from semantica.ingest import ingest_file
+result = ingest_file("source_path", method="my_format")
+```
+
+- [Parse](./parse.md) — 把原始来源解析成结构化文本和表格。
+- [Pipeline](./pipeline.md) — 把摄取编排为流水线的第一步。
+- [Snowflake Integration](../integrations/snowflake.md) — Snowflake 专属的配置与鉴权指南。
+- [Databricks Integration](../integrations/databricks.md) — Databricks Unity Catalog 配置、鉴权与血缘指南。
+- [Provenance](./provenance.md) — 从摄取到推理全程追踪血缘。

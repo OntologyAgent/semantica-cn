@@ -34,6 +34,10 @@ pip install "mineru[core]"
   MinerU downloads its models on first run (~1-2 GB). Set `MINERU_MODEL_SOURCE=modelscope` to download from ModelScope instead of HuggingFace — useful in mainland China. The `pipeline` backend runs on CPU; the `vlm-*` backends are higher quality and benefit from a GPU.
 </Note>
 
+<Note>
+  macOS: the `pipeline` backend renders PDF pages in a process pool. If parsing fails with `BrokenProcessPool`, call `multiprocessing.set_start_method("spawn", force=True)` at the top of your entry script, before using `MinerUParser`.
+</Note>
+
 
 ## Basic Usage
 

@@ -472,6 +472,12 @@ class MinerUParser:
                     text = self._extract_block_text(block)
                     if text:
                         page_text_parts.append(text)
+                    if extract_images:
+                        for image_data in self._extract_inline_images(
+                            block, page_number, output_dir, persistent_output
+                        ):
+                            images.append(image_data)
+                            page_images.append(image_data)
 
             pages.append({
                 "page_number": page_number,
@@ -496,6 +502,17 @@ class MinerUParser:
                     parts.append(f"$${span['latex']}$$")
         return " ".join(parts).strip()
 
+    @staticmethod
+    def _find_table_html(node: Dict[str, Any]) -> str:
+        """Locate table HTML on any level (block, sub-block, line, or span)."""
+        if node.get("html"):
+            return node["html"]
+        for line in node.get("lines") or []:
+            for span in line.get("spans") or []:
+                if span.get("html"):
+                    return span["html"]
+        return ""
+
     def _extract_table_block(
         self,
         block: Dict[str, Any],
@@ -504,11 +521,11 @@ class MinerUParser:
         bbox: List[float],
     ) -> Optional[Dict[str, Any]]:
         """Extract one table block (HTML body parsed into rows)."""
-        html_body = block.get("html")
+        html_body = self._find_table_html(block)
         if not html_body:
             for sub in sub_blocks:
-                if sub.get("html"):
-                    html_body = sub["html"]
+                html_body = self._find_table_html(sub)
+                if html_body:
                     break
 
         rows = _html_table_to_rows(html_body or "")
@@ -546,6 +563,11 @@ class MinerUParser:
             if sub.get("image_path"):
                 image_path = sub["image_path"]
                 break
+            for line in sub.get("lines") or []:
+                for span in line.get("spans") or []:
+                    if span.get("image_path"):
+                        image_path = span["image_path"]
+                        break
 
         if not image_path:
             return None
@@ -561,3 +583,36 @@ class MinerUParser:
             "width": (bbox[2] - bbox[0]) if len(bbox) > 2 else 0,
             "height": (bbox[3] - bbox[1]) if len(bbox) > 3 else 0,
         }
+
+    def _extract_inline_images(
+        self,
+        block: Dict[str, Any],
+        page_number: int,
+        output_dir: Path,
+        persistent_output: bool,
+    ) -> List[Dict[str, Any]]:
+        """Collect inline images embedded in text/title/list blocks.
+
+        Wikipedia-style PDFs render inline formulas and small figures as
+        image spans inside ordinary text blocks, not as image blocks.
+        """
+        found: List[Dict[str, Any]] = []
+        for line in block.get("lines") or []:
+            for span in line.get("spans") or []:
+                image_path = span.get("image_path")
+                if not image_path:
+                    continue
+                sbbox = span.get("bbox") or [0, 0, 0, 0]
+                resolved = output_dir / image_path
+                found.append({
+                    "page_number": page_number,
+                    "image_path": str(resolved) if persistent_output and resolved.exists() else image_path,
+                    "inline": True,
+                    "x0": sbbox[0] if len(sbbox) > 0 else 0,
+                    "y0": sbbox[1] if len(sbbox) > 1 else 0,
+                    "x1": sbbox[2] if len(sbbox) > 2 else 0,
+                    "y1": sbbox[3] if len(sbbox) > 3 else 0,
+                    "width": (sbbox[2] - sbbox[0]) if len(sbbox) > 2 else 0,
+                    "height": (sbbox[3] - sbbox[1]) if len(sbbox) > 3 else 0,
+                })
+        return found

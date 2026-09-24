@@ -2,7 +2,7 @@
 title: "MinerU 集成"
 description: "MinerU 原生集成：高保真 PDF 解析——版面分析、公式识别、复杂表格，以及面向扫描件和中日韩文档的强 OCR。"
 source: integrations/mineru.md
-source_version: 075d8d3d8c659eb00f67e8884ec244e385de5ac7
+source_version: 71fbf34eae12371d68b3c4de60970a2185369704
 icon: "file-pdf"
 ---
 
@@ -34,6 +34,10 @@ pip install "mineru[core]"
 
 <Note>
   MinerU 首次运行会自动下载模型（约 1-2 GB）。设置 `MINERU_MODEL_SOURCE=modelscope` 可改从 ModelScope 下载——国内环境更稳。`pipeline` 后端 CPU 可跑；`vlm-*` 后端质量更高，建议配 GPU。
+</Note>
+
+<Note>
+  macOS：`pipeline` 后端用进程池渲染 PDF 页面。如果解析报 `BrokenProcessPool`，在入口脚本最上方、调用 `MinerUParser` 之前执行 `multiprocessing.set_start_method("spawn", force=True)`。
 </Note>
 
 

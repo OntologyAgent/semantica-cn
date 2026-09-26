@@ -1,17 +1,17 @@
 ---
 title: 大语言模型(LLM)集成
-description: 通过统一接口将 Semantica 连接到 Groq、OpenAI、Anthropic、HuggingFace、Novita AI 等 100 多家 LLM 提供商。
+description: 通过统一生成接口将 Semantica 连接到各生成式 LLM 提供商，并提供 TypeSafe Jev 的类型化决策接口。
 source: guides/llm-integrations.md
-source_version: 8b6fd62d565ade6c9c0ad75da0f755d44cba02a9
+source_version: 106297b3ca1b450c8128c897f7f2271a44cbd34b
 ---
 
-Semantica 提供统一的提供商(Provider)接口——无论是 Groq、OpenAI、Anthropic Claude、HuggingFace、Novita AI，还是经 LiteLLM 接入的另外 100 多家大语言模型(LLM)提供商，用的都是同一套 `.generate()`、`.generate_structured()` 和 `.generate_typed()` 方法。当你出于延迟、准确率、成本或数据驻留(Data Residency)的考虑需要更换提供商、又不想动应用代码时，就用它。
+Semantica 提供统一的生成接口——无论是 Groq、OpenAI、Anthropic Claude、HuggingFace、Novita AI，还是经 LiteLLM 接入的另外 100 多家大语言模型(LLM)提供商，用的都是同一套 `.generate()`、`.generate_structured()` 和 `.generate_typed()` 方法。此外，它还为 TypeSafe Jev 单独提供了一套决策专用接口——Jev 返回的是类型化的 Choice、Noul 与 Score 结果，并非文本生成。
 
 ## 什么是 LLM 集成？
 
-`semantica.llms` 模块为对接大语言模型提供商提供了统一接口。你不必逐一学习各家 API——无论调用的是 Groq、OpenAI、Anthropic 还是本地 HuggingFace 模型，用的都是同一组方法（`.generate()`、`.generate_structured()`、`.generate_typed()`）。
+`semantica.llms` 模块为对接大语言模型提供商提供了统一接口。你不必逐一学习各家生成式提供商的 API——无论调用的是 Groq、OpenAI、Anthropic 还是本地 HuggingFace 模型，用的都是同一组方法（`.generate()`、`.generate_structured()`、`.generate_typed()`）。TypeSafe Jev 是唯一的决策专用例外：它暴露的是 `.decide()`，因为它返回的是类型化决策而非生成的文本。
 
-**提供商之间接口统一：** Semantica 中所有 LLM 提供商暴露的方法完全一致，因此从 OpenAI 换到 Anthropic，只需要改提供商的构造函数，应用代码一行不用动。
+**生成式提供商之间接口统一：** Semantica 中的生成式 LLM 提供商暴露的方法完全一致，因此从 OpenAI 换到 Anthropic，只需要改提供商的构造函数，应用代码一行不用动。Jev 单独成体系，为的是它校准过的概率和严格的决策类型不会被压平成一次对话补全(chat completion)的应答。
 
 **提供商包装类与语义抽取的提供商字符串：**`semantica.llms` 里的类（`Groq`、`OpenAI`、`LiteLLM`、`HuggingFaceLLM`）是用于文本生成的 Python 对象；`semantica.semantic_extract` 模块则接受提供商名字符串来做实体与关系抽取。本指南对两种方式都有覆盖。
 
@@ -53,7 +53,7 @@ Semantica 提供统一的提供商(Provider)接口——无论是 Groq、OpenAI�
 - 可解释性要求逻辑透明、可按规则复现的任务
 
 <Info>
-  `semantica.llms` 中的提供商（`Groq`、`OpenAI`、`LiteLLM`、`HuggingFaceLLM`）用于文本生成和 `query_with_reasoning()`。要做结构化的实体与关系抽取，`semantica.semantic_extract` 接受提供商名字符串。两种模式这里都会讲到。
+  `semantica.llms` 中的生成式提供商（`Groq`、`OpenAI`、`LiteLLM`、`HuggingFaceLLM`）用于文本生成和 `query_with_reasoning()`。`Jev` 和 `AsyncJev` 只做决策，不能直接当作 `llm_provider=` 的值传入。要做结构化的实体与关系抽取，`semantica.semantic_extract` 接受提供商名字符串。
 </Info>
 
 ## 选择提供商
@@ -64,15 +64,15 @@ Semantica 提供统一的提供商(Provider)接口——无论是 Groq、OpenAI�
 
 **准确率** 在高风险决策里最要紧：临床禁忌核查、信贷委员会推理、法律文书分析。经 `LiteLLM` 调用的 Claude、GPT-4 等前沿模型推理能力最强。
 
-**数据驻留** 约束会直接排除云提供商——涉密或受 HIPAA 监管的工作负载就是如此。`HuggingFaceLLM` 加本地模型路径，或 `Ollama` 指向本地服务，都能实现完全无网络的气隙隔离(Air-Gapped)部署。
+**数据驻留(Data Residency)** 约束会直接排除云提供商——涉密或受 HIPAA 监管的工作负载就是如此。`HuggingFaceLLM` 加本地模型路径，或 `Ollama` 指向本地服务，都能实现完全无网络的气隙隔离(Air-Gapped)部署。
 
 **规模化成本** 更适合 Novita AI 这类高吞吐提供商——批量抽取流水线每小时处理成千上万份文档，按 token 计费的成本会迅速累积。
 
 统一接口意味着：你可以先用 Groq 追速度做原型，再用 Claude 验证准确率，最后为合规部署到 Azure OpenAI——应用代码一行不改。
 
-## 共享接口
+## 共享生成接口
 
-每个提供商都暴露同样的方法：
+每个生成式提供商都暴露同样的方法：
 
 ```python
 provider.generate(prompt: str, **kwargs) -> str
@@ -83,7 +83,103 @@ provider.is_available() -> bool
 
 `generate()` 返回纯字符串。`generate_structured()` 要求模型以 JSON 应答并返回解析结果——顶层是 JSON 对象时返回 `dict`，模型返回顶层 JSON 数组时返回 `list`。`generate_typed()` 接收一个 Pydantic 模型，用它校验模型输出，校验失败会把错误信息回填进提示词并重试，最多 `max_retries` 次——当下游代码需要保证结构形状、而不是碰运气的 JSON 时，就用它。`is_available()` 让你在正式调用前先做一次健康检查——重试逻辑和预热检查里很有用。
 
-也就是说，Semantica 中任何接受 LLM 的地方——`query_with_reasoning()`、语义抽取、自定义推理循环——都可以互换使用这些提供商。
+也就是说，Semantica 中任何接受生成式 LLM 的地方——`query_with_reasoning()`、语义抽取、自定义推理循环——都可以互换使用这些提供商。Jev 不在这一接口之列，因为它从不返回自由文本。
+
+## Jev — 面向低延迟路由的类型化决策
+
+**TypeSafe Jev** 是一个 System One 模型，对应用状态做类型化决策。当合法结果是事先已知的有界集合时，可以用它做路由、分类、二元判断或打分；任务需要解释、综合、开放式文本或多步推理时，请改用对话式 LLM。
+
+<Warning>
+  Jev 目前是实验性的抢先体验提供商。请锁定并测试部署所用的 SDK 版本，为你的领域选定置信度阈值，并为高影响决策保留人工或推理模型的升级路径。
+</Warning>
+
+<Warning>
+  TypeSafe SDK 0.7 的网络传输日志(wire logs)在 `DEBUG` 级别会输出完整的请求与响应体。`state` 可能包含金融、安全或个人数据，因此敏感部署中要把 `typesafe_sdk` 日志器保持在 `INFO` 或更高级别。把根日志器设为 `DEBUG` 同样可能暴露这些内容，除非给 SDK 日志器单独设置了更高的显式级别。
+</Warning>
+
+```python
+import logging
+
+logging.getLogger("typesafe_sdk").setLevel(logging.INFO)
+```
+
+在 Python 3.10 或更新版本上安装可选依赖：
+
+```bash
+pip install "semantica[llm-typesafe]"
+```
+
+设置 `TYPESAFE_API_KEY`，或显式传入 `api_key=`：
+
+```python
+from semantica.llms import Jev
+
+jev = Jev(model="jev-latest")  # reads TYPESAFE_API_KEY
+
+result = jev.decide(
+    state={
+        "amount_usd": 12_500,
+        "destination_country": "US",
+        "policy_flags": [],
+    },
+    question="How should this transaction be routed?",
+    kind="choice",
+    choices={
+        "approve": "All automatic-approval requirements are met.",
+        "escalate": "A person must review the transaction.",
+    },
+)
+
+print(result.value)          # "approve" or "escalate"
+print(result.confidence)     # routing certainty
+print(result.probabilities) # full Choice distribution
+print(result.request_id)     # retain for audit/support correlation
+```
+
+三种决策类型（Kind）的结果语义刻意各不相同：
+
+| Kind | 输入条件 | `result.value` | 置信度含义 |
+| :--- | :--- | :--- | :--- |
+| Choice | 选项标签，可附描述 | 被选中的标签 | SDK 提供的置信度 |
+| Noul | 可选的 `true` 与 `false` 描述 | 以 0.5 为界取布尔值 | `abs(2 * probability - 1)`；`result.probability` 保留"是"的原始概率 |
+| Score | 有序量规等级 | 概率加权数值分 | SDK 提供的置信度；完整分布与图例都会保留 |
+
+决策相关的推理、策略检查、升级与溯源(Provenance)都由 Semantica 负责。提供商不会悄悄调用兜底模型：
+
+```python
+from semantica.context import ContextGraph
+
+graph = ContextGraph()
+threshold = 0.85
+
+if result.confidence < threshold:
+    route = "human_review"  # or invoke a reasoning LLM in caller code
+else:
+    route = str(result.value)
+
+decision_id = graph.record_decision(
+    category="transaction_routing",
+    scenario="Route wire transfer after evidence and policy evaluation",
+    reasoning="Semantica policy checks completed before the Jev routing step.",
+    outcome=route,
+    confidence=result.confidence,
+    decision_maker="jev:{}".format(result.model),
+    metadata={"typesafe_jev": result.to_dict()},
+)
+```
+
+异步应用用 `AsyncJev`，参数与结果类型完全相同：
+
+```python
+from semantica.llms import AsyncJev
+
+async with AsyncJev() as jev:
+    result = await jev.decide(
+        state="The transaction was submitted from a known device.",
+        question="Does this transaction require manual review?",
+        kind="noul",
+    )
+```
 
 ## Groq — 面向实时智能体的快速推理
 
@@ -537,10 +633,10 @@ context.save("./classified_output/q4_analysis/")
 </Tab>
 
 <Tab title="安全 — SOC/事件响应">
-某 SOC 流水线在不同层级使用两家提供商：Groq 负责 500 毫秒以内的初始分诊，让分析师保持工作节奏；当 Tier 1 置信度低于升级阈值时，切换到 Anthropic Claude 做深度 ATT&CK 分析。提供商切换由程序判定——无需人工交接。
+某 SOC 流水线用 Semantica 采集告警与适用的响应手册(runbook)证据，用 Jev 做结果有界的 Tier 1 路由决策；当 Jev 不确定时，再交给 Anthropic Claude 做深度 ATT&CK 分析。升级策略留在调用方代码里，Jev 自己绝不会调用兜底模型。
 
 ```python
-from semantica.llms import Groq, LiteLLM
+from semantica.llms import Jev, LiteLLM
 from semantica.context import AgentContext, ContextGraph
 from semantica.vector_store import VectorStore
 
@@ -553,12 +649,13 @@ context = AgentContext(
     decision_tracking=True,
 )
 
-# Preload MITRE ATT&CK runbook knowledge
-context.store([
+# Preload MITRE ATT&CK runbook evidence
+runbook = [
     "T1087.002 (Domain Account Discovery): anomalous LDAP enumeration — isolate source host, reset service account passwords",
     "T1053.005 (Scheduled Task/Job): encoded PowerShell via wmiprvse.exe — collect task XML, check persistence keys, notify IR",
     "T1021.002 (SMB/Windows Admin Shares): PsExec lateral movement to DC — immediate host isolation, reset service accounts",
-])
+]
+context.store(runbook)
 
 alert = (
     "SIEM Alert: host ws-finance-03, user jsmith — scheduled task with base64-encoded PowerShell. "
@@ -566,17 +663,22 @@ alert = (
 )
 context.store(alert, metadata={"type": "alert", "severity": "high"})
 
-# Tier 1: fast triage with Groq — target < 500ms end-to-end
-fast_llm = Groq(model="llama-3.1-8b-instant", api_key="YOUR_GROQ_KEY")
-triage = context.query_with_reasoning(
-    "Is this alert a true positive? One sentence verdict and confidence.",
-    llm_provider=fast_llm,
-    max_results=5,
+# Tier 1: a bounded Jev decision over the alert and policy/runbook state
+fast_decider = Jev(model="jev-latest")  # reads TYPESAFE_API_KEY
+triage = fast_decider.decide(
+    state={"alert": alert, "applicable_runbook": runbook[1]},
+    question="How should the SOC route this alert?",
+    kind="choice",
+    choices={
+        "true_positive": "Evidence strongly matches malicious scheduled-task activity.",
+        "benign": "Evidence supports an authorized administrative action.",
+        "escalate": "Evidence is insufficient or conflicting; an analyst must review it.",
+    },
 )
-print("TRIAGE: {} (conf={:.0%})".format(triage["response"], triage["confidence"]))
+print("TRIAGE: {} (conf={:.0%})".format(triage.value, triage.confidence))
 
-# Tier 2: escalate to Claude for deep analysis if Tier 1 is uncertain
-if triage["confidence"] < 0.88:
+# Tier 2: caller-controlled escalation to Claude when Jev is uncertain
+if triage.value == "escalate" or triage.confidence < 0.88:
     deep_llm = LiteLLM(model="anthropic/claude-sonnet-5")
     deep = context.query_with_reasoning(
         "Full MITRE ATT&CK analysis of this alert: identify the attack chain, "
@@ -586,16 +688,24 @@ if triage["confidence"] < 0.88:
         max_hops=3,
     )
     print("DEEP ANALYSIS: {}".format(deep["response"]))
+    outcome = "escalated_tier2"
+    confidence = deep["confidence"]
+    reasoning = deep["reasoning_path"]
+else:
+    outcome = str(triage.value)
+    confidence = triage.confidence
+    reasoning = "Semantica evidence and runbook policy were evaluated before Jev routing."
 
-    context.record_decision(
-        category="escalation",
-        scenario="Scheduled task T1053.005 on ws-finance-03 — Tier 1 conf {:.0%}".format(triage["confidence"]),
-        reasoning=deep["reasoning_path"],
-        outcome="escalated_tier2",
-        confidence=deep["confidence"],
-        entities=["ws-finance-03", "jsmith", "T1053.005"],
-        decision_maker="soc_pipeline_v3",
-    )
+context.record_decision(
+    category="soc_triage",
+    scenario="Scheduled task T1053.005 on ws-finance-03 — Jev conf {:.0%}".format(triage.confidence),
+    reasoning=reasoning,
+    outcome=outcome,
+    confidence=confidence,
+    entities=["ws-finance-03", "jsmith", "T1053.005"],
+    decision_maker="jev:{}".format(triage.model),
+    cross_system_context={"typesafe_jev": triage.to_dict()},
+)
 ```
 
 </Tab>
@@ -715,6 +825,10 @@ for src in best["sources"]:
 **把 LLM 用在正则就能搞定的确定性模式匹配上。** 如果任务是抽取邮箱地址、电话号码或其他模式型实体，正则表达式比 LLM 更快、更便宜、更可靠。只有当上下文、歧义或领域知识会影响解读正确性时，才值得动用 LLM。
 
 **不校验结构化输出。** `generate_structured()` 返回解析后的 JSON（dict，或顶层数组时为 list），但 LLM 仍可能产出格式错误或不完整的结构。在下游使用之前，先对照预期 schema 校验结果——或者直接用 `generate_typed()`，它替你按 Pydantic 模型校验。
+
+**把 Noul 概率当作路由置信度。** Noul 返回的是"是"的概率，因此 `0.01` 和 `0.99` 都代表高度确定，`0.5` 才是最不确定。原始的"是"概率看 `result.probability`，Semantica 派生的路由确定性看 `result.confidence`。
+
+**在输出必须自我解释的场景使用 Jev。** Jev 只做有界的类型化决策，不生成推理文本。证据与策略上下文交给 Semantica 构建，需要解释时用推理型 LLM 或人工复核，并把两步都记入溯源。
 
 **换了提供商却不测试提示词表现。** 不同模型对同一提示词的反应不同。为 GPT-4 调优的提示词，换到 Llama 或 Claude 上可能效果很差。切换提供商时，要重新测试提示词，并按需调整 temperature、指令或示例。
 

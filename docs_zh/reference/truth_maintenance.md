@@ -2,7 +2,7 @@
 title: "真值维护(Truth Maintenance)"
 description: "针对固定非递归规则的、感知来源的逻辑撤回。"
 source: reference/truth_maintenance.md
-source_version: f7b0cb484b6a7e35454b6564357c3ad7cbedf27f
+source_version: 255a9cd5a765ef90da131a01b25c29e338b44830
 icon: "microchip"
 ---
 
@@ -141,6 +141,7 @@ assert delta.removed_facts == frozenset({
 
 ## 相关链接
 
+- [时态真值维护(Temporal Truth Maintenance)](./temporal_truth_maintenance.md) — 可选启用的图适配器：提供相互独立的有效时间/已知时间分片，支持事实过期与迟到的更正。
 - [Reasoning](./reasoning.md) — 本会话赖以构建的规则引擎，包括 `Rule` 的表示。
 - [Context](./context.md) — `TruthMaintenanceContextFilter` 消费不可变快照，按激活支持过滤检索到的上下文。
 - [Ontology](./ontology.md) — 本体公理与 SHACL 约束。

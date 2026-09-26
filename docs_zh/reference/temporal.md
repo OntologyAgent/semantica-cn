@@ -2,9 +2,11 @@
 title: "时态智能（Temporal Intelligence）"
 description: "双时态事实、时点快照、Allen 区间代数、时态模式检测与自然语言时态解析，构建时间感知的知识图谱。"
 source: reference/temporal.md
-source_version: 71718c8dd4ce2334f160f3dbbb74faca4ce98315
+source_version: 6800a25c81d65000b56449c6014fec153239acb4
 icon: "clock"
 ---
+
+规则推导的结论若需要跟随证据的过期与更正，参见[时态真值维护(Temporal Truth Maintenance)](./temporal_truth_maintenance.md)。这个可选启用的适配器使用相互独立的 `valid_at` 与 `known_at` 坐标，并把历史查询与实时推理状态分开。
 
 时态智能(Temporal Intelligence)让知识图谱(Knowledge Graph)完整理解"*何时*"。也就是说，它不只记录什么为真，还回答事实在现实世界何时为真、系统何时记录了它，以及事实如何随时间演变。
 

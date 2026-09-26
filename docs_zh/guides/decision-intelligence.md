@@ -2,7 +2,7 @@
 title: "决策智能"
 description: "Semantica 如何把 AI 智能体的决策作为一等知识图谱对象记录、存储、追踪并查询——带因果链、先例检索、策略执行与完整可解释性。"
 source: guides/decision-intelligence.md
-source_version: 1c8505cd7b967864b9ff3946897662cc8999a839
+source_version: c923947a731aab66917986f323b81ce6842da194
 icon: "scale-balanced"
 ---
 
@@ -317,6 +317,28 @@ print("Policy exception recorded:", exception_id)
 ```
 
 多级审批工作流用 `DecisionRecorder.record_approval_chain()`，并搭配图数据库后端（例如 Neo4j/FalkorDB）。本指南使用的内存 `ContextGraph` 示例不支持经 `execute_query()` 持久化审批链。
+
+## 记录决策时自动评分
+
+`DecisionRecorder`（以及 `AgentContext`——针对其 `graph_store` 决策追踪后端）可以在每次记录决策时自动运行 `semantica.evals` 评估器(evaluator)，并把结果存进 `Decision.metadata`。该功能需显式开启——构造时传入 `evaluators`/`eval_config` 即启用；不传的话，`record_decision()` 的行为与从前完全一致。
+
+```python
+from semantica.context import DecisionRecorder
+
+recorder = DecisionRecorder(
+    graph_store=graph,
+    evaluators=["decision_scores"],
+    eval_config={"decision_scores": {"policy_engine": engine, "policy_id": "cti_confidence_gate"}},
+)
+decision_id = recorder.record_decision(d, entities=[], source_documents=[])
+
+# d.metadata now also has:
+#   eval_score:   0.83   (mean score across configured evaluators)
+#   eval_passed:  False
+#   eval_details: {"decision_scores": {"score": ..., "passed": ..., "meta": {...}}}
+```
+
+评估器抛异常时，失败只会记入日志，决策仍会照常记录、只是不带 `eval_*` 元数据——出故障的评估器绝不会阻塞决策持久化。`AgentContext(..., decision_tracking=True, evaluators=[...], eval_config={...})` 会把同样的配置透传给它为 `graph_store` 后端构建的 `DecisionRecorder`；`context_graph` 后端目前还不运行评估器。
 
 ## 生成决策审计报告
 

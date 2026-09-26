@@ -148,6 +148,11 @@ if TYPE_CHECKING:
         SalesforceData,
         SalesforceIngestor,
     )
+    from .servicenow_ingestor import (
+        ServiceNowConnector,
+        ServiceNowData,
+        ServiceNowIngestor,
+    )
 
 from .config import IngestConfig, ingest_config
 from .file_ingestor import (
@@ -156,6 +161,7 @@ from .file_ingestor import (
     FileObject,
     FileTypeDetector,
 )
+from ..utils.exceptions import PartialIngestionWarning
 from .methods import (
     get_ingest_method,
     ingest,
@@ -240,6 +246,10 @@ _LAZY_EXPORTS: Dict[str, Tuple[str, str]] = {
     "SAPIngestor": (".sap_ingestor", "SAPIngestor"),
     "SAPODataEntity": (".sap_ingestor", "SAPODataEntity"),
     "SAPODataConnector": (".sap_ingestor", "SAPODataConnector"),
+    # ServiceNow Table API ingestion
+    "ServiceNowIngestor": (".servicenow_ingestor", "ServiceNowIngestor"),
+    "ServiceNowData": (".servicenow_ingestor", "ServiceNowData"),
+    "ServiceNowConnector": (".servicenow_ingestor", "ServiceNowConnector"),
     # Apache Airflow ingestion
     "AirflowIngestor": (".airflow_ingestor", "AirflowIngestor"),
     "AirflowData": (".airflow_ingestor", "AirflowData"),
@@ -265,6 +275,10 @@ _LAZY_EXPORTS: Dict[str, Tuple[str, str]] = {
     "RedshiftIngestor": (".redshift_ingestor", "RedshiftIngestor"),
     "RedshiftData": (".redshift_ingestor", "RedshiftData"),
     "RedshiftConnector": (".redshift_ingestor", "RedshiftConnector"),
+    # Cassandra ingestion
+    "CassandraIngestor": (".cassandra_ingestor", "CassandraIngestor"),
+    "CassandraData": (".cassandra_ingestor", "CassandraData"),
+    "CassandraConnector": (".cassandra_ingestor", "CassandraConnector"),
     # Power BI ingestion
     "PowerBIIngestor": (".powerbi_ingestor", "PowerBIIngestor"),
     "PowerBIData": (".powerbi_ingestor", "PowerBIData"),
@@ -328,6 +342,10 @@ _OPTIONAL_DEPENDENCY_MESSAGES = {
         "Redshift ingestion requires optional dependency 'redshift-connector'. "
         "Install it with: pip install 'semantica[db-redshift]'"
     ),
+    ".cassandra_ingestor": (
+        "Cassandra ingestion requires optional dependency 'cassandra-driver'. "
+        "Install it with: pip install 'semantica[db-cassandra]'"
+    ),
     ".bigquery_ingestor": (
         "BigQuery ingestion requires optional dependency 'google-cloud-bigquery'. "
         "Install it with: pip install 'semantica[db-bigquery]'"
@@ -337,7 +355,6 @@ _OPTIONAL_DEPENDENCY_MESSAGES = {
         "Install it with: pip install 'semantica[ingest-looker]'"
     ),
 }
-
 
 def __getattr__(name: str) -> Any:
     """Load optional ingestion backends only when callers request them."""
@@ -361,6 +378,7 @@ def __getattr__(name: str) -> Any:
                     "simple_salesforce",
                     "lxml",
                     "redshift_connector",
+                    "cassandra",
                     "google",
                     "looker_sdk",
                 )
@@ -414,6 +432,15 @@ def __getattr__(name: str) -> Any:
             if message:
                 raise ImportError(message)
 
+    if module_name == ".cassandra_ingestor" and name in {
+        "CassandraIngestor",
+        "CassandraConnector",
+    }:
+        if not getattr(module, "CASSANDRA_AVAILABLE", True):
+            message = _OPTIONAL_DEPENDENCY_MESSAGES.get(module_name)
+            if message:
+                raise ImportError(message)
+
     if module_name == ".bigquery_ingestor" and name in {
         "BigQueryIngestor",
         "BigQueryConnector",
@@ -443,6 +470,7 @@ __all__ = [
     "FileObject",
     "FileTypeDetector",
     "CloudStorageIngestor",
+    "PartialIngestionWarning",
     # Web ingestion
     "WebIngestor",
     "WebContent",
@@ -505,6 +533,10 @@ __all__ = [
     "SAPIngestor",
     "SAPODataEntity",
     "SAPODataConnector",
+    # ServiceNow Table API ingestion
+    "ServiceNowIngestor",
+    "ServiceNowData",
+    "ServiceNowConnector",
     # Apache Airflow ingestion
     "AirflowIngestor",
     "AirflowData",
@@ -530,6 +562,10 @@ __all__ = [
     "RedshiftIngestor",
     "RedshiftData",
     "RedshiftConnector",
+    # Cassandra ingestion
+    "CassandraIngestor",
+    "CassandraData",
+    "CassandraConnector",
     # Power BI ingestion
     "PowerBIIngestor",
     "PowerBIData",

@@ -27,7 +27,7 @@ icon: "database"
 | `WeaviateStore` | 云端或自托管，感知 schema |
 | `QdrantStore` | 云端或自托管，基于 payload 的过滤 |
 | `PineconeStore` | 托管云向量数据库：serverless 和 pod 两种模式 |
-| `MilvusStore` | 可扩展的自托管向量数据库 |
+| `MilvusStore` | 可扩展的向量数据库，支持 Milvus Lite、自托管服务器和 Zilliz Cloud |
 | `PgVectorStore` | PostgreSQL + `pgvector` 扩展：无需额外基础设施 |
 | `MetadataStore` | 独立的元数据索引与查询 |
 | `SearchRanker` | RRF 与加权平均的结果融合 |
@@ -233,7 +233,12 @@ store = VectorStore(
 pip install pymilvus
 ```
 
+你可以通过 `host`/`port` 连接自托管 Milvus 服务器，也可以通过 `uri`/`token` 连接 Milvus Lite、远程服务器或 Zilliz Cloud。
+
 ```python
+import os
+
+# 自托管服务器：host/port
 store = VectorStore(
     backend="milvus",
     dimension=768,
@@ -241,7 +246,43 @@ store = VectorStore(
     port=19530,
     collection_name="semantica"
 )
+
+# Milvus Lite：uri 为本地文件路径，无需运行服务器
+store = VectorStore(
+    backend="milvus",
+    dimension=768,
+    uri="./milvus.db",
+    collection_name="semantica"
+)
+
+# 远程服务器：uri 为服务器地址，可搭配 RBAC 的 user/password
+store = VectorStore(
+    backend="milvus",
+    dimension=768,
+    uri="http://milvus.example.com:19530",
+    user="root",
+    password=os.getenv("MILVUS_PASSWORD"),
+    collection_name="semantica"
+)
+
+# Zilliz Cloud：uri 为集群 endpoint，token 为 API key
+store = VectorStore(
+    backend="milvus",
+    dimension=768,
+    uri="https://<cluster>.zillizcloud.com",
+    token=os.getenv("ZILLIZ_API_KEY"),
+    collection_name="semantica"
+)
 ```
+
+| 参数 | 说明 |
+| :--- | :--- |
+| `host` / `port` | Milvus 服务器地址，默认 `localhost` / `19530`。设置 `uri` 时忽略。 |
+| `uri` | Milvus Lite 文件路径（如 `"./milvus.db"`）、服务器地址（如 `"http://localhost:19530"`）或 Zilliz Cloud endpoint。设置后优先于 `host`/`port`。 |
+| `token` | `uri` 连接使用的认证 token，例如 Zilliz Cloud API key。 |
+| `user` / `password` | RBAC 用户名和密码。`host`/`port` 和 `uri` 两种方式均会传递。 |
+
+Semantica 在记录连接日志前会移除 `uri` 中的凭据（userinfo 和查询参数），只保留 scheme、host、port 和路径。
 
   </Tab>
 </Tabs>
@@ -255,7 +296,7 @@ store = VectorStore(
 | `pinecone` | 云端 | 是 | 托管 | 托管云、serverless |
 | `weaviate` | 自托管 / 云端 | 可选 | 托管 | 富元数据过滤 |
 | `qdrant` | 自托管 / 云端 | 可选 | 托管 | 高性能过滤 |
-| `milvus` | 自托管 | 否 | 托管 | 大规模生产 |
+| `milvus` | 本地（Milvus Lite）/ 自托管 / 云端（Zilliz Cloud） | 可选 | 托管 | 大规模生产 |
 | `pgvector` | PostgreSQL | 否 | 托管 | Postgres 原生集成 |
 
 ## HybridSearch

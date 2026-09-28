@@ -73,6 +73,19 @@ SEMANTICA_KG_PATH=/data/threat_graph.json semantica-mcp
   不设置 `SEMANTICA_KG_PATH` 时，服务器进程一退出，图谱就会重置。凡是数据需要跨重启保留的会话，务必用绝对文件路径设置该变量。
 </Info>
 
+### 通过 `semantica mcp start` 启动
+
+`semantica` CLI 也提供 `semantica mcp start` 子命令。它在后台启动下文介绍的模块化 MCP 服务器，并记录进程 PID，之后可用 `semantica mcp stop` 停止。
+
+```bash
+semantica mcp start --transport stdio
+semantica mcp stop
+```
+
+<Warning>
+  `semantica mcp start` 只支持 `stdio` 传输方式（也是默认值）。传入 `--transport http` 时，命令会直接失败并报错 `HTTP transport is not supported (stdio only).`，不会启动任何服务器。`--port` 选项不起作用。
+</Warning>
+
 ## 连接 Claude Desktop
 
 编辑 Claude Desktop 的配置文件。macOS 上位于 `~/Library/Application Support/Claude/claude_desktop_config.json`，Windows 上位于 `%APPDATA%\Claude\claude_desktop_config.json`：
@@ -227,6 +240,35 @@ Claude 自动串联了六次工具调用：
 | `semantica://graph/summary` | 节点数、决策数、服务器状态 |
 | `semantica://decisions/list` | 最多最近 50 条已记录决策 |
 | `semantica://schema/info` | 服务器版本、能力、可用工具列表 |
+
+## 模块化服务器：22 个工具与 4 个资源
+
+Semantica 还附带一个模块化 MCP 服务器，由 `semantica mcp start` 启动（等价于 `python -m semantica_mcp.mcp.server`）。它同样只通过 `stdio` 通信，但提供更大的工具集：22 个工具和 4 个只读资源。
+
+| 分组 | 工具 |
+| :-- | :-- |
+| 抽取 | `extract_entities`、`extract_relations`、`extract_all` |
+| 决策智能 | `record_decision`、`query_decisions`、`find_precedents`、`get_causal_chain`、`analyze_decision_impact`、`link_decisions` |
+| 知识图谱 | `add_entity`、`add_relationship`、`search_graph`、`get_graph_summary`、`get_graph_analytics` |
+| 推理 | `run_reasoning`、`abductive_reasoning` |
+| 导出与溯源 | `export_graph`、`get_provenance` |
+| 语义检索 | `store_document`、`retrieve_context`、`update_document`、`remove_document` |
+
+除上表三个资源外，模块化服务器还提供 `semantica://ontology/schema`，返回完整的本体(Ontology) schema。
+
+**语义检索。** 需要让 AI 基于你自己的文档回答问题时，使用这组工具。
+
+- `store_document` 把文档切分成块、生成嵌入并存入向量库。文档以 `(source, version)` 为键。重复存储内容相同的文档不会产生任何变化。
+- `retrieve_context` 对自然语言查询生成嵌入，返回最相关的文本块及其分数和溯源信息，并附上知识图谱中的相关关系。`top_k` 默认为 5，最大为 10。
+- `update_document` 替换由 `(source, version)` 标识的已存储文档内容。找不到匹配文档时返回 `not_found`。
+- `remove_document` 从向量库中删除 `(source, version)` 下的全部文本块。
+
+```text
+1. store_document(content="<policy manual text>", source="policy_manual#page12", version="v2")
+2. retrieve_context(query="员工出差报销上限是多少？", top_k=3)
+3. update_document(content="<revised text>", source="policy_manual#page12", version="v2")
+4. remove_document(source="policy_manual#page12", version="v2")
+```
 
 ## 领域示例
 

@@ -3,6 +3,10 @@ name: Release
 on:
   push:
     tags: ['v*']
+  # Manual fallback: push events do not reliably create workflow runs on this
+  # repo, so releases are dispatched with --ref <tag>. GITHUB_REF then points
+  # at the tag, matching the push-triggered behaviour exactly.
+  workflow_dispatch:
 
 permissions:
   contents: read

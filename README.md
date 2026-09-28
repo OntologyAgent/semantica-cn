@@ -1,5 +1,7 @@
 **English** | [中文](README.zh-CN.md)
 
+> **Fork notice** — this is the community Chinese fork [OntologyAgent/semantica-cn](https://github.com/OntologyAgent/semantica-cn). It publishes the `semantica-cn` PyPI package built from the same code and versioned with upstream (`pip install semantica-cn` — choose it **or** the official `semantica`, not both). Upstream project: [semantica-agi/semantica](https://github.com/semantica-agi/semantica).
+
 <div align="center">
 
 <img src="Semantica Logo.png" alt="Semantica" width="420"/>

@@ -8205,7 +8205,7 @@ wheels = [
 ]
 
 [[package]]
-name = "semantica"
+name = "semantica-cn"
 version = "0.7.0"
 source = { editable = "." }
 dependencies = [
@@ -8701,12 +8701,12 @@ requires-dist = [
     { name = "scikit-learn", specifier = ">=1.7.2" },
     { name = "scipy", specifier = ">=1.13.1" },
     { name = "seaborn", marker = "extra == 'viz'", specifier = ">=0.13.2" },
-    { name = "semantica", extras = ["db-snowflake", "db-databricks", "db-salesforce", "db-redshift", "db-cassandra", "db-bigquery", "db-arrow"], marker = "extra == 'db-all'" },
-    { name = "semantica", extras = ["graph-neo4j", "graph-falkordb", "graph-amazon-neptune", "graph-apache-age", "graph-embeddings"], marker = "extra == 'graph-all'" },
-    { name = "semantica", extras = ["llm-openai", "llm-groq", "llm-gemini", "llm-anthropic", "llm-ollama", "llm-deepseek", "llm-novita", "llm-litellm", "llm-instructor", "llm-typesafe"], marker = "extra == 'llm-all'" },
-    { name = "semantica", extras = ["split-tiktoken", "split-community", "split-topic"], marker = "extra == 'split-all'" },
-    { name = "semantica", extras = ["vectorstore-qdrant", "vectorstore-weaviate", "vectorstore-pinecone", "vectorstore-milvus", "vectorstore-pgvector", "vectorstore-sqlite", "vectorstore-faiss"], marker = "extra == 'vectorstore-all'" },
-    { name = "semantica", extras = ["viz", "media", "infra", "cloud", "monitoring", "watch", "llm-all", "models-huggingface", "embeddings-local", "nlp-spacy", "documents", "ingest-git", "graph-embeddings", "split-all", "graph-all", "tripletstore-oxigraph", "vectorstore-all", "parse-docling", "parse-pdf", "ingest-parquet", "ingest-arrow", "shacl", "explorer", "agno", "langchain", "google-adk"], marker = "extra == 'all'" },
+    { name = "semantica-cn", extras = ["db-snowflake", "db-databricks", "db-salesforce", "db-redshift", "db-cassandra", "db-bigquery", "db-arrow"], marker = "extra == 'db-all'" },
+    { name = "semantica-cn", extras = ["graph-neo4j", "graph-falkordb", "graph-amazon-neptune", "graph-apache-age", "graph-embeddings"], marker = "extra == 'graph-all'" },
+    { name = "semantica-cn", extras = ["llm-openai", "llm-groq", "llm-gemini", "llm-anthropic", "llm-ollama", "llm-deepseek", "llm-novita", "llm-litellm", "llm-instructor", "llm-typesafe"], marker = "extra == 'llm-all'" },
+    { name = "semantica-cn", extras = ["split-tiktoken", "split-community", "split-topic"], marker = "extra == 'split-all'" },
+    { name = "semantica-cn", extras = ["vectorstore-qdrant", "vectorstore-weaviate", "vectorstore-pinecone", "vectorstore-milvus", "vectorstore-pgvector", "vectorstore-sqlite", "vectorstore-faiss"], marker = "extra == 'vectorstore-all'" },
+    { name = "semantica-cn", extras = ["viz", "media", "infra", "cloud", "monitoring", "watch", "llm-all", "models-huggingface", "embeddings-local", "nlp-spacy", "documents", "ingest-git", "graph-embeddings", "split-all", "graph-all", "tripletstore-oxigraph", "vectorstore-all", "parse-docling", "parse-pdf", "ingest-parquet", "ingest-arrow", "shacl", "explorer", "agno", "langchain", "google-adk"], marker = "extra == 'all'" },
     { name = "sentence-transformers", marker = "extra == 'embeddings-local'", specifier = ">=2.2.0" },
     { name = "simple-salesforce", marker = "extra == 'db-salesforce'", specifier = ">=1.12.0" },
     { name = "snowflake-connector-python", marker = "extra == 'db-snowflake'", specifier = ">=4.6.0" },

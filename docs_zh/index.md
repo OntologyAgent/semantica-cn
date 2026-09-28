@@ -5,6 +5,10 @@ source: index.md
 source_version: 615cc722c3afe7b6d17d44b89795378e0f30a07a
 ---
 
+<Note>
+  **关于中文版**：本站是社区 fork [OntologyAgent/semantica-cn](https://github.com/OntologyAgent/semantica-cn) 维护的 Semantica 中文文档。该 fork 同时在 PyPI 发布同源包 **`semantica-cn`**（`pip install semantica-cn`，与官方 `semantica` 包二选一安装）。官方仓库 [semantica-agi/semantica](https://github.com/semantica-agi/semantica) 保持不变，本站内容与其保持同步翻译。
+</Note>
+
 ```bash
 pip install semantica
 ```

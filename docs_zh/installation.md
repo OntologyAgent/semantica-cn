@@ -36,6 +36,17 @@ pip install semantica
 pip install semantica[all]
 ```
 
+<Note>
+  **社区中文包 `semantica-cn`**：本站所属的 fork [OntologyAgent/semantica-cn](https://github.com/OntologyAgent/semantica-cn) 发布了同源构建的 `semantica-cn` 包，版本跟随上游同步。中文用户可以直接安装：
+
+  ```bash
+  pip install semantica-cn          # 基础安装
+  pip install semantica-cn[all]     # 全部可选依赖
+  ```
+
+  安装后的 import 名和命令行工具仍然是 `semantica`（如 `import semantica`、`semantica-explorer`）。两种发行名对应同一个代码库，请在同一环境中二选一，不要同时安装。
+</Note>
+
 ### 验证
 
 ```bash

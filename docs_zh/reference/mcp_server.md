@@ -47,6 +47,7 @@ python -m semantica.mcp_server
 - **零基础设施** — 经 stdio 运行：无需服务器、无需端口、无需 Docker。在任何 MCP 客户端里一个配置块即可启用。
 - **持久化图** — 把 `SEMANTICA_KG_PATH` 指向已保存的图文件，服务器每次启动自动重新加载。
 - **决策智能** — 记录决策、经混合相似度搜索查找先例、跨智能体运行追溯因果链。
+- **模块化服务器** — `semantica mcp start` 启动的模块化服务器提供 22 个工具（含语义检索）和 4 个资源，详见下文“模块化服务器”一节。
 - **REST 替代方案** — 更偏好程序化访问的话，[Explorer](./explorer.md) 模块提供完整的 HTTP API 和浏览器面板。
 
 ## 安装
@@ -494,6 +495,89 @@ MCP 服务器暴露三个可读资源：
 | `semantica://graph/summary` | 图的高层统计信息 |
 | `semantica://decisions/list` | 全部已记录决策（最多 50 条） |
 | `semantica://schema/info` | 服务器版本和可用工具 |
+
+## 模块化服务器（`semantica mcp start`）
+
+`semantica mcp start` 启动的是模块化 MCP 服务器（`python -m semantica_mcp.mcp.server`），而不是 `semantica-mcp` 入口。它同样经 stdio 通信，暴露 **22 个工具**和 **4 个资源**。
+
+```bash
+semantica mcp start            # 默认 --transport stdio
+semantica mcp stop
+```
+
+<Warning>
+  `semantica mcp start` 只接受 `stdio` 传输方式。传入 `--transport http` 时，命令以错误 `HTTP transport is not supported (stdio only).` 退出，不会启动服务器。
+</Warning>
+
+### 工具（22 个）
+
+| 工具 | 类别 | 说明 |
+| :---- | :-------- | :----------- |
+| `extract_entities` | 抽取 | 命名实体识别：人物、地点、组织、概念 |
+| `extract_relations` | 抽取 | 关系抽取与 `(subject, predicate, object)` 三元组 |
+| `extract_all` | 抽取 | 完整流水线：NER、共指消解、关系、事件、三元组 |
+| `record_decision` | 决策智能 | 记录带上下文、置信度和因果链接的决策 |
+| `query_decisions` | 决策智能 | 按自然语言或结构化过滤条件查询决策 |
+| `find_precedents` | 决策智能 | 查找与场景相似的历史决策（混合相似度） |
+| `get_causal_chain` | 决策智能 | 从某条决策追溯上游/下游因果链 |
+| `analyze_decision_impact` | 决策智能 | 分析决策的下游影响 |
+| `link_decisions` | 决策智能 | 在两条决策之间建立因果关系（`CAUSED`、`INFLUENCED`、`PRECEDENT_FOR`） |
+| `add_entity` | 知识图谱 | 向图添加节点 |
+| `add_relationship` | 知识图谱 | 在两个实体之间添加有向边 |
+| `search_graph` | 知识图谱 | 按标签或 ID 子串搜索节点 |
+| `get_graph_summary` | 知识图谱 | 节点/边数量、决策数量、类型分布 |
+| `get_graph_analytics` | 知识图谱 | PageRank、介数、度中心性与社区检测 |
+| `run_reasoning` | 推理 | 对事实前向链接 IF/THEN 规则 |
+| `abductive_reasoning` | 推理 | 为观察结果生成可能的假设 |
+| `export_graph` | 导出与溯源 | 导出为 JSON、CSV、GraphML、Parquet、Turtle、N-Triples、RDF/XML、JSON-LD |
+| `get_provenance` | 导出与溯源 | 节点（`entity_id`）的审计历史与来源谱系 |
+| `store_document` | 语义检索 | 切分文档、生成嵌入并存储，以 `(source, version)` 为键；重复存储相同内容不产生变化 |
+| `retrieve_context` | 语义检索 | 对查询生成嵌入，返回最相关的文本块（含分数和溯源），并附上相关的知识图谱关系 |
+| `update_document` | 语义检索 | 替换由 `(source, version)` 标识的文档内容；无匹配时返回 `not_found` |
+| `remove_document` | 语义检索 | 删除 `(source, version)` 下的全部文本块 |
+
+### 语义检索
+
+需要让 AI 助手基于你存储的文档回答问题时，使用语义检索工具。每个文档由 `source`（溯源标识，如 `policy_manual_v2#page12`）和 `version`（默认 `v1`）共同标识。
+
+**`store_document` 输入：**
+
+```json
+{
+  "content": "Employees may claim up to 500 USD per night for lodging...",
+  "source": "policy_manual_v2#page12",
+  "version": "v2",
+  "authority": "official",
+  "project": "hr"
+}
+```
+
+**`retrieve_context` 输入：**
+
+```json
+{ "query": "What is the lodging limit for business travel?", "top_k": 3, "project": "hr" }
+```
+
+`top_k` 默认为 5，最大为 10。`project` 可选，用于只返回该命名空间下的文本块。
+
+**`remove_document` 输入：**
+
+```json
+{ "source": "policy_manual_v2#page12", "version": "v2" }
+```
+
+`update_document` 接收与 `store_document` 相同的字段。未提供的 `authority` 和 `project` 沿用已存储的值。
+
+### 资源（4 个）
+
+| URI | 说明 |
+| :--- | :----------- |
+| `semantica://graph/summary` | 实时节点/边数量与类型分布 |
+| `semantica://decisions/list` | 最近 50 条决策 |
+| `semantica://schema/info` | schema 版本、节点/边类型、工具名称 |
+| `semantica://ontology/schema` | 完整的本体 schema |
+
+## 相关文档
 
 - [Context](./context.md) — MCP 服务器所操作的 ContextGraph。
 - [Semantic Extract](./semantic_extract.md) — 为 MCP 工具提供支撑的 NER 与关系抽取。

@@ -20,7 +20,9 @@ def _extras_in_all_bundles():
     assert match, "pyproject.toml must define an aggregate 'all' extra"
 
     names = set()
-    for bundle in re.findall(r"semantica\[([^\]]+)\]", match.group(1)):
+    # The fork's distribution name is semantica-cn, so its self-referencing
+    # extras read "semantica-cn[...]"; upstream uses the bare "semantica[...]".
+    for bundle in re.findall(r"semantica(?:-cn)?\[([^\]]+)\]", match.group(1)):
         names.update(part.strip() for part in bundle.split(","))
     assert names, "'all' bundles must reference at least one extra"
     return names

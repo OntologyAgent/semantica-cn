@@ -227,6 +227,38 @@ for col in schema[:10]:
     print(f"{col['table_name']}.{col['column_name']} ({col['data_type']})")
 ```
 
+表之间已有主键和外键时，也可以跳过文本转换，用 [`RelationalSchemaMapper`](../reference/kg.md#relationalschemamapper) 把行直接映射成实体和关系，再交给 `GraphBuilder`。这同样适用于 `SnowflakeIngestor`、`DatabricksIngestor` 和 `PandasIngestor` 的结果：
+
+```python
+from semantica.kg import GraphBuilder, RelationalSchemaMapper
+
+conn = "postgresql://readonly:pass@cvedb.internal:5432/nvd"
+
+mapper = RelationalSchemaMapper(
+    entity_tables={
+        "cve_records": {"pk": "cve_id", "type": "Vulnerability"},
+        "products":    {"pk": "product_id", "type": "Product", "name": "product_name"},
+    },
+    foreign_keys=[
+        # cve_products is a junction table: rows become Vulnerability -> Product edges
+        {"table": "cve_products", "column": "cve_id",
+         "references": ("cve_records", "cve_id")},
+        {"table": "cve_products", "column": "product_id",
+         "references": ("products", "product_id"), "predicate": "affects"},
+    ],
+)
+
+mapped = mapper.map(
+    {
+        "cve_records":  db.execute_query(conn, "SELECT cve_id, description, cvss_v3_score FROM cve_records"),
+        "products":     db.execute_query(conn, "SELECT product_id, product_name, vendor FROM products"),
+        "cve_products": db.execute_query(conn, "SELECT cve_id, product_id FROM cve_products"),
+    },
+    source="nvd_postgres",
+)
+kg = GraphBuilder().build(sources=[mapped])
+```
+
 ## 数据源 4 — RSS 与 Atom 订阅源
 
 `ingest_feed()` 拉取 RSS 和 Atom 订阅源，返回一个携带 `FeedItem` 对象列表的 `FeedData` 对象。每个条目都以字符串形式暴露 `.title`、`.description` 和 `.published`——可以直接拼进文本，无需再转换：

@@ -21,6 +21,7 @@ icon: "diagram-project"
 | :--- | :--- |
 | `KnowledgeGraph` | 核心图数据结构：节点、边、属性、时态有效期 |
 | `GraphBuilder` | 从实体 + 关系构建图；传 `merge_entities=True` 启用去重 |
+| `RelationalSchemaMapper` | 把关系型/表格数据源的行映射为 `GraphBuilder` 和 `OntologyGenerator` 可直接消费的 `{"entities", "relationships"}` |
 | `GraphBuilderWithProvenance` | 包装 `GraphBuilder`，可选溯源跟踪；传 `provenance=True` 启用 |
 | `EntityResolver` | 图构建过程中的实体去重与合并 |
 | `GraphAnalyzer` | 统一分析入口：一次调用跑完中心性、社区检测和连通性 |
@@ -72,6 +73,81 @@ kg = builder.build({"entities": entities, "relationships": relationships})
 | :------ | :------- | :----------- |
 | `build(sources)` | `dict` | 从 dict、dict 列表或实体/关系对象列表构建图 |
 | `build_single_source(data)` | `dict` | 从单个数据源 dict 构建图 |
+
+## RelationalSchemaMapper
+
+**`RelationalSchemaMapper`** 把关系型或表格数据源的行，加上一份简短的模式说明，转换成 `GraphBuilder` 和 `OntologyGenerator` 消费的 `{"entities": [...], "relationships": [...]}` 结构。数据已经以行和列的形式存在（业务数据库、数据仓库、DataFrame）时使用它：无需把行拼成文本再交给大语言模型抽取，主键和外键直接决定图的结构。
+
+映射规则：
+
+- 实体表的每一行变成一个实体。实体 ID 为 `"<Type>:<pk>"`，其余列成为实体属性。同一行从两个记录系统摄取时得到相同的 ID，便于冲突检测。
+- 每个外键变成一条带类型的关系，从当前行的实体指向被引用的实体。
+- 联结表(junction table)不在 `entity_tables` 中、由恰好两个外键组成，只生成关系，不生成实体。关系从第一个外键指向第二个外键，联结表的其余列成为关系属性。
+- 每个实体和关系都记录来源：实体带扁平的 `source` 字段（`ConflictDetector` 读取它），实体和关系都带 `metadata: {"source", "table"}`，供溯源使用。
+
+```python
+from semantica.kg import GraphBuilder, RelationalSchemaMapper
+
+mapper = RelationalSchemaMapper(
+    entity_tables={
+        "CUSTOMERS": {"pk": "CUSTOMER_ID", "type": "Customer", "name": "NAME"},
+        "ORDERS":    {"pk": "ORDER_ID", "type": "Order"},
+        "PRODUCTS":  {"pk": "PRODUCT_ID", "type": "Product", "name": "TITLE"},
+    },
+    foreign_keys=[
+        {"table": "ORDERS", "column": "CUSTOMER_ID",
+         "references": ("CUSTOMERS", "CUSTOMER_ID"), "predicate": "placedBy"},
+        # ORDER_ITEMS is a junction table: two foreign keys, no entity
+        {"table": "ORDER_ITEMS", "column": "ORDER_ID",
+         "references": ("ORDERS", "ORDER_ID")},
+        {"table": "ORDER_ITEMS", "column": "PRODUCT_ID",
+         "references": ("PRODUCTS", "PRODUCT_ID"), "predicate": "contains"},
+    ],
+)
+
+mapped = mapper.map(
+    {"CUSTOMERS": customers, "ORDERS": orders,
+     "PRODUCTS": products, "ORDER_ITEMS": order_items},
+    source="snowflake_crm",
+)
+# mapped["entities"][0] -> {"id": "Customer:42", "type": "Customer", "name": "Acme",
+#                           ..., "source": "snowflake_crm",
+#                           "metadata": {"source": "snowflake_crm", "table": "CUSTOMERS"}}
+# Order -> Customer edges are typed "placedBy"; ORDER_ITEMS rows become Order -> Product "contains" edges
+
+kg = GraphBuilder().build(sources=[mapped])
+```
+
+### 构造参数
+
+| 参数 | 说明 |
+| :--- | :--- |
+| `entity_tables` | `{table: {"pk": 列名或列名列表, "type": 类名, "name": 列名（可选）}}`。`pk` 和 `type` 必填。`name` 指定用作实体显示名的列，默认使用主键值。 |
+| `foreign_keys` | 显式外键列表：`[{"table", "column", "references": (table, column), "predicate"（可选）}]`。`predicate` 默认为被引用表的表名。数据仓库中约束仅作参考或缺失时，用它补齐。 |
+| `schema` | 带 `foreign_keys` 键的模式 dict，例如 `DBIngestor.analyze_schema()` 的返回值（SQLAlchemy inspector 格式的外键）。只有没被显式外键覆盖的列才会使用这里的外键。约束未记录所属表时，按哪张已映射表包含该列来推断。 |
+
+外键必须引用目标实体表的完整主键，因为实体 ID 来自主键：
+
+- 显式外键引用非主键列、引用复合主键，或引用不在 `entity_tables` 中的表时，构造函数抛出 `ValueError`。
+- 来自 `schema` 的此类外键会被跳过并记录一条警告。
+
+### `map(tables, source)`
+
+`tables` 是 `{表名: 行}`，返回 `{"entities": [...], "relationships": [...]}`。每张表的行可以是：
+
+- 行 dict 列表，例如 `DBIngestor.execute_query()` 的返回值
+- 带 `.data` 或 `.rows` 的摄取结果（`SnowflakeIngestor`、`DatabricksIngestor`、`DBIngestor`）
+- 带 `.dataframe` 的结果（`PandasIngestor`）或 pandas `DataFrame`
+- `DBIngestor.ingest_database()["tables"]` 中的 `{"columns", "row_count", "rows"}` dict
+
+`source` 是写入每个实体和关系的来源标签。
+
+以下情况会抛出 `ValueError`：
+
+- 某张表不在 `entity_tables` 中，且外键数量不是两个。
+- 某列名与映射器自己设置的键冲突，例如实体表中的 `id`、`type`、`source`、`target`、`subject`、`object`、`metadata`。请在查询中给这些列起别名。
+
+主键为空的行会被跳过。外键值为空时不生成对应的关系。
 
 
 ## 时态知识图谱（v0.4.0+）

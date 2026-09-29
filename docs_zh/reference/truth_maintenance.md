@@ -2,7 +2,7 @@
 title: "真值维护(Truth Maintenance)"
 description: "针对固定非递归规则的、感知来源的逻辑撤回。"
 source: reference/truth_maintenance.md
-source_version: 255a9cd5a765ef90da131a01b25c29e338b44830
+source_version: 1d38c6f4f6f6a6df95b8eca49f3c19ac11b44d2c
 icon: "microchip"
 ---
 
@@ -119,6 +119,71 @@ assert delta.removed_facts == frozenset({
 
 所有只读视图（`facts`、`version`、`snapshot()`、`explain()`）都不改动会话状态。返回的快照对象（`MaintenanceDelta`、`FactExplanation`、`Derivation`、`TruthMaintenanceSnapshot`）都是带不可变集合的 frozen dataclass；修改调用方自有的规则或先前返回的结果，也动不了会话。
 
+### 检查点导出与恢复
+
+当应用需要在后续进程中恢复同一个逻辑会话时，使用 `to_checkpoint()` 与 `from_checkpoint()`。这两个方法是一道**序列化边界**，不是存储引擎。
+
+- `to_checkpoint()` 返回一个新的 JSON 兼容 `dict`，包含构造时捕获的固定规则、完整支持目录（含已撤回的支持）、激活支持 ID 和已提交的会话版本。它不保存派生事实和内部索引。
+- `from_checkpoint(payload)` 接收 `json.loads()` 的结果——不是 JSON 字符串、也不是文件路径——校验完整负载，重建派生事实、直接推导和依赖索引，只有在重建成功后才返回新会话。
+
+`snapshot()` 仍然是当前状态的只读查询视图。检查点则不同：它是一种**重启格式**，保存着序列化之后继续更新所需的支持 ID 绑定与元数（arity）约束。检查点里的 `session_version` 只是本地提交计数器，它并不授权复用旧的快照提供者身份、时态适配器历史或外部缓存。
+
+固定的 v1 模式（Schema）如下：
+
+```json
+{
+  "format_version": 1,
+  "session_version": 4,
+  "rules": [
+    {
+      "rule_id": "employment-eligibility",
+      "conditions": ["Employed(?x)"],
+      "conclusion": "Eligible(?x)"
+    }
+  ],
+  "support_catalog": [
+    {"support_id": "document-v1", "fact": "Employed(Alice)"},
+    {"support_id": "document-v2", "fact": "Employed(Alice)"}
+  ],
+  "active_support_ids": ["document-v2"]
+}
+```
+
+顶层与每条规则/目录记录的字段集都是精确匹配：缺失字段和未知字段一律拒绝。`format_version` 必须是整数 `1`；`session_version` 必须是非负整数。非空支持目录要求正版本号（它代表至少一次已提交更新）；空目录要求版本为零；非空目录且无激活支持则要求至少两次提交。规则与目录事实是语义值，因此非法原子、事实中出现变量、递归规则和元数冲突都会被拒绝——沿用构造与 `apply()` 同款的 `ValidationError`。不支持的未来格式同样被拒绝，且恢复绝不会返回一个只重建了一半的会话。
+
+JSON 存在哪里由应用自己决定。下面的最小示例只为演示 API；`Path.write_text()` **不**提供防崩溃的原子提交。如果丢失或写了一半的检查点不可接受，请改用原子文件替换或事务性数据库提交。
+
+```python
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+from semantica.reasoning import FactSupport, Rule, TruthMaintenanceSession
+
+session = TruthMaintenanceSession(rules=[
+    Rule("eligibility", "Eligibility", ["Employed(?x)"], "Eligible(?x)")
+])
+session.apply(assertions=[
+    FactSupport("doc-1", "Employed(Alice)"),
+    FactSupport("doc-2", "Employed(Alice)"),
+])
+saved_version = session.version
+with TemporaryDirectory() as directory:
+    path = Path(directory) / "checkpoint.json"
+    path.write_text(json.dumps(session.to_checkpoint()), encoding="utf-8")
+    del session
+    restored = TruthMaintenanceSession.from_checkpoint(
+        json.loads(path.read_text(encoding="utf-8"))
+    )
+    assert restored.version == saved_version
+    restored.apply(retractions=["doc-1"])
+    assert "Eligible(Alice)" in restored.facts
+    restored.apply(retractions=["doc-2"])
+    assert "Eligible(Alice)" not in restored.facts
+```
+
+恢复只覆盖最后一次成功导出并持久保存的检查点。在那之后提交的更新——包括执行成功但没有持久化落盘的更新——无法找回。格式非法的 JSON 文档会由应用自己的 `json.loads()` 抛出 `JSONDecodeError`；`from_checkpoint()` 校验解析出的结构化对象，对格式非法的检查点数据抛出 `ValidationError`。
+
 
 ## 成本模型
 
@@ -126,6 +191,8 @@ assert delta.removed_facts == frozenset({
 - 为了保证原子提交，每个*生效的* `apply()` 批次都要**暂存整份会话状态**（空批次或已应用过的批次是无操作，不做暂存）；会话还会在整个生命周期内把**支持目录保留在内存里**（包括已撤回的支持，因此 ID 始终保持绑定）。
 - **每次 `snapshot()` 调用都会再复制一份完整的已提交状态**（事实、激活支持、版本），因此 [`TruthMaintenanceContextFilter`](./context.md) 这类消费者每次过滤检索都要付一次全状态复制的代价。一次共享读取就够用时，别在紧循环里反复调用。
 - 更新时复制与支持目录的开销都是按批次计的全状态开销；别假设端到端延迟严格正比于受影响的子图。依赖性能之前，先实测。
+- **检查点负载随固定规则和完整历史支持目录增长**，而不只是激活支持。导出还要为目录与激活 ID 支付一次确定性排序的成本。
+- **恢复是一次完整重建**：它校验每一条目录记录、合并规则与目录的元数约束，并通过只重放激活支持来重建完整闭包和直接解释。连接（Join）匹配可能产生大量中间匹配项，内存随这些匹配项与被复制的候选状态增长，不承诺任何常数时间或仅按激活支持计的成本上界。
 
 
 ## 局限性

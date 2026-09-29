@@ -140,6 +140,7 @@ db-bigquery = ["google-cloud-bigquery>=3.0.0"]
 ingest-looker = ["looker-sdk>=24.0.0"]
 ingest-parquet = ["pyarrow>=24.0.0"]
 ingest-arrow = ["pyarrow>=24.0.0"]
+ingest-tableau = ["tableauserverclient>=0.25"]
 ingest-sap = ["requests>=2.28.0"]
 ingest-servicenow = ["requests>=2.28.0"]
 ingest-airflow = ["requests>=2.28.0"]
@@ -162,6 +163,11 @@ embeddings-local = [
 ]
 nlp-spacy = [
   "spacy>=3.4.0"
+]
+# LanguageDetector (semantica.normalize); without it every text is reported
+# as the default language.
+nlp-langdetect = [
+  "langdetect>=1.0.9"
 ]
 
 # ---- Graph Backends ----
@@ -294,7 +300,7 @@ explorer-lite = [
 # NOTE: there is no ``crewai`` extra to include here — see the comment above
 # the (removed) crewai entry under "Agentic Framework Integrations".
 all = [
-  "semantica-cn[viz,media,infra,cloud,monitoring,watch,llm-all,models-huggingface,embeddings-local,nlp-spacy,documents,ingest-git,graph-embeddings,split-all,graph-all,tripletstore-oxigraph,vectorstore-all,parse-docling,parse-mineru,parse-pdf,ingest-parquet,ingest-arrow,shacl,explorer,agno,langchain,google-adk]"
+  "semantica-cn[viz,media,infra,cloud,monitoring,watch,llm-all,models-huggingface,embeddings-local,nlp-spacy,nlp-langdetect,documents,ingest-git,graph-embeddings,split-all,graph-all,tripletstore-oxigraph,vectorstore-all,parse-docling,parse-pdf,ingest-parquet,ingest-arrow,shacl,explorer,agno,langchain,google-adk]"
 ]
 
 # ---------------- DEVELOPMENT DEPENDENCIES (PEP 735) ----------------

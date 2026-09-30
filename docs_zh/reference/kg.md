@@ -2,7 +2,7 @@
 title: "知识图谱模块（KG）"
 description: "图构建、时态模型、图分析、相似度打分与结构化嵌入。"
 source: reference/kg.md
-source_version: 22789d3a9ca042bcabe9f7f1acb7b1bccb148c9c
+source_version: c2d64608867ddc5c6bd2174140956ecbc69eb0c6
 icon: "diagram-project"
 ---
 
@@ -173,7 +173,7 @@ fields = fact.to_relationship_fields()
 `TemporalReasoningEngine` 确定性地实现**全部 13 种 Allen 关系**——无 LLM、无概率。说白了，它回答一个问题：任意两个时间段之间是哪种关系——先后、相接、重叠还是包含。具体来说，它只作用于 `TemporalInterval` 对象（不是普通 dict）：
 
 ```python
-from semantica.kg import (
+from semantica.reasoning import (
     TemporalReasoningEngine, TemporalInterval, IntervalRelation
 )
 from datetime import datetime, timezone
@@ -245,6 +245,9 @@ from semantica.kg import TemporalVersionManager
 versioner = TemporalVersionManager()
 
 # author and description are required for create_snapshot
+versioner.create_snapshot(kg, version_label="2023-Q4",
+                          author="user@example.com",
+                          description="Q4 2023 baseline")
 versioner.create_snapshot(kg, version_label="2024-Q1",
                           author="user@example.com",
                           description="Q1 2024 baseline")
@@ -313,7 +316,7 @@ for node_id in similar:
     closeness   = calculator.calculate_closeness_centrality(graph)
 
     # Get the top 10 most important nodes
-    top_nodes = calculator.get_top_nodes(pagerank, top_k=10)
+    top_nodes = pagerank["rankings"][:10]  # (node, score) pairs, highest first
     ```
 
     | 方法 | 最适合 |

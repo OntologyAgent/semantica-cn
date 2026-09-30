@@ -2,7 +2,7 @@
 title: "时态智能（Temporal Intelligence）"
 description: "双时态事实、时点快照、Allen 区间代数、时态模式检测与自然语言时态解析，构建时间感知的知识图谱。"
 source: reference/temporal.md
-source_version: 6800a25c81d65000b56449c6014fec153239acb4
+source_version: 38ff93bc98a5a9af14dd6f37f5d6aea58f691275
 icon: "clock"
 ---
 
@@ -354,8 +354,9 @@ cycles = detector.detect_temporal_patterns(
 Allen 区间代数(Allen Interval Algebra)回答的问题很直观：两段时间在时间轴上是什么关系——一先一后、部分重叠还是一包含一，总共 13 种。`TemporalReasoningEngine` 作用于 `TemporalInterval` 对象——冻结 dataclass，含 `start: datetime` 与 `end: datetime | TemporalBound`：
 
 ```python
-from semantica.kg import (
-    TemporalReasoningEngine, TemporalInterval, IntervalRelation, TemporalBound
+from semantica.kg import TemporalBound
+from semantica.reasoning import (
+    TemporalReasoningEngine, TemporalInterval, IntervalRelation
 )
 from datetime import datetime, timezone
 

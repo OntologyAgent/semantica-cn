@@ -12,6 +12,8 @@ tests/ingest/test_web_ingestor.py::test_ingest_url_happy
 tests/ingest/test_web_ingestor.py::test_sitemap_fallback_parsing
 tests/ingest/test_web_ingestor.py::test_sitemap_index_recursion
 tests/ingest/test_web_ingestor.py::test_sitemap_invalid_xml
+tests/integrations/agno/test_context_store.py::TestAgnoContextStoreUpsertNERAttributes::test_upsert_indexes_entity_label_as_type
+tests/integrations/agno/test_context_store.py::TestAgnoContextStoreUpsertNERAttributes::test_upsert_indexes_entity_text_not_repr
 tests/semantic_extract/test_extractors.py::TestExtractors::test_event_detector_batch_via_detect_events
 tests/semantic_extract/test_extractors.py::TestExtractors::test_ner_extraction_batch_via_extract_entities
 tests/semantic_extract/test_extractors.py::TestExtractors::test_relation_extraction_batch_via_extract_relations

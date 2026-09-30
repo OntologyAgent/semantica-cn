@@ -2,7 +2,7 @@
 title: "上下文模块（Context）"
 description: "智能体上下文图、决策跟踪、因果链、先例搜索、政策执行与多跳 GraphRAG。"
 source: reference/context.md
-source_version: af03997ba1044304d87eb76b4549a3843ec313dc
+source_version: 164a4128875aa1b01ca0dfccadbbff8a07627658
 icon: "brain"
 ---
 
@@ -214,7 +214,10 @@ icon: "brain"
     添加带版本的合规政策，每条决策在记录前都要先过一遍。
 
     ```python
+    from datetime import datetime
+
     from semantica.context import AgentContext, ContextGraph, PolicyEngine
+    from semantica.context.decision_models import Decision, Policy
     from semantica.vector_store import VectorStore
 
     context = AgentContext(
@@ -223,29 +226,41 @@ icon: "brain"
         decision_tracking=True,
     )
 
-    engine = PolicyEngine(knowledge_graph=context.knowledge_graph)
+    engine = PolicyEngine(graph_store=context.knowledge_graph)
 
-    engine.add_policy(
-        name="data_privacy",
+    engine.add_policy(Policy(
+        policy_id="data_privacy",
+        name="Data Privacy",
         description="No PII stored without user consent flag",
-        version="1.2",
-        effective_date="2024-01-01",
+        rules={"required_user_consent": True, "max_retention_days": 90},
         category="privacy",
-        rules={"requires_consent": True, "max_retention_days": 90},
+        version="1.2",
+        created_at=datetime(2024, 1, 1),
+        updated_at=datetime(2024, 1, 1),
+    ))
+
+    decision = Decision(
+        decision_id="dec_store_email",
+        category="data_storage",
+        scenario="Store user profile",
+        reasoning="User opted in to profile storage",
+        outcome="stored",
+        confidence=1.0,
+        timestamp=datetime.now(),
+        decision_maker="profile_agent",
+        metadata={"user_consent": True, "retention_days": 30},
     )
 
-    decision_data = {"action": "store_user_email", "user_consent": True}
-    result = engine.check_compliance(decision_data, policy_names=["data_privacy"])
-
-    if result["compliant"]:
+    if engine.check_compliance(decision, "data_privacy"):
         context.record_decision(
-            category="data_storage",
-            scenario="Store user profile",
-            outcome="stored",
-            confidence=1.0,
+            category=decision.category,
+            scenario=decision.scenario,
+            reasoning=decision.reasoning,
+            outcome=decision.outcome,
+            confidence=decision.confidence,
         )
     else:
-        print("Blocked by policy:", result["violations"])
+        print("Blocked by policy: data_privacy")
     ```
   </Tab>
 </Tabs>

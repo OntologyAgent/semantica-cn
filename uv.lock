@@ -8215,7 +8215,7 @@ wheels = [
 
 [[package]]
 name = "semantica-cn"
-version = "0.7.0"
+version = "0.7.0.post1"
 source = { editable = "." }
 dependencies = [
     { name = "chardet" },

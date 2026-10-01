@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 # Distribution name on PyPI. The import package stays `semantica` so code,
 # docs and CLI entry points written for upstream keep working unchanged.
 name = "semantica-cn"
-version = "0.7.0"
+version = "0.7.0.post1"
 description = "Community Chinese fork (semantica-cn) of Semantica — Graph-Native Infrastructure for Context and Accountable AI Systems: context graphs, decision intelligence, full provenance tracking, and explainable reasoning engines — every AI decision traceable, every output auditable."
 readme = "README.md"
 license = { text = "MIT" }

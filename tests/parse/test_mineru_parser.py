@@ -192,3 +192,140 @@ class TestMethodRegistration(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class _V4Span:
+    def __init__(self, content):
+        self.content = content
+
+
+class _V4TextBlock:
+    def __init__(self, btype, text, bbox=None):
+        self.type = btype
+        self.bbox = bbox
+        if isinstance(text, list):
+            self.content = [_V4Span(t) for t in text]
+        else:
+            self.content = text
+
+
+class _V4TableBlock:
+    def __init__(self, html, bbox=None):
+        self.type = "table"
+        self.bbox = bbox
+        self.content = [_V4TextBlock("table_body", html)]
+
+
+class _V4ImageBlock:
+    def __init__(self, image_path, bbox=None):
+        self.type = "image"
+        self.bbox = bbox
+        self.content = [_V4TextBlock("image_body", "") ]
+        self.content[0].image_path = image_path
+
+
+class _V4Page:
+    def __init__(self, page_idx, blocks):
+        self.page_idx = page_idx
+        self.blocks = blocks
+
+
+class _V4Result:
+    def __init__(self, pages, markdown="# Report\n\ncontent"):
+        self.pages = pages
+        self._markdown = markdown
+
+    def markdown(self):
+        return self._markdown
+
+
+def _fake_v4_result():
+    return _V4Result(pages=[
+        _V4Page(0, [
+            _V4TextBlock("doc_title", ["Quarterly Report"]),
+            _V4TextBlock("text", ["Revenue grew 20%."]),
+            _V4TableBlock("<table><tr><th>Item</th><th>Qty</th></tr>"
+                          "<tr><td>Widget</td><td>3</td></tr></table>"),
+            _V4ImageBlock("images/hash.jpg"),
+            _V4TextBlock("equation", "E=mc^2"),
+        ]),
+        _V4Page(1, []),
+    ])
+
+
+class TestMinerUParserV4(unittest.TestCase):
+    """MinerU >= 4 path: the public SDK parse() replaces do_parse."""
+
+    def setUp(self):
+        self.dummy_pdf = Path(tempfile.mkstemp(suffix=".pdf")[1])
+        self.dummy_pdf.write_bytes(b"%PDF-1.4 minimal")
+        self.available_patcher = patch(
+            "semantica.parse.mineru_parser.MINERU_AVAILABLE", True
+        )
+        self.version_patcher = patch(
+            "semantica.parse.mineru_parser.MINERU_API_VERSION", "v4"
+        )
+        self.available_patcher.start()
+        self.version_patcher.start()
+        self.parser = MinerUParser()
+
+    def tearDown(self):
+        patch.stopall()
+        self.dummy_pdf.unlink(missing_ok=True)
+
+    def test_parse_returns_semantica_dict(self):
+        captured = {}
+
+        def fake_parse(path, **kwargs):
+            captured.update(kwargs)
+            return _fake_v4_result()
+
+        with patch(
+            "semantica.parse.mineru_parser.mineru_parse", side_effect=fake_parse
+        ):
+            result = self.parser.parse(str(self.dummy_pdf))
+
+        # backend "pipeline" maps to the v4 "basic" tier; parse_method -> ocr_mode
+        self.assertEqual(captured.get("tier"), "basic")
+        self.assertEqual(captured.get("ocr_mode"), "auto")
+        self.assertEqual(result["full_text"], "# Report\n\ncontent")
+        self.assertEqual(result["total_pages"], 2)
+        self.assertEqual(result["metadata"]["page_count"], 2)
+
+    def test_vlm_backend_maps_to_standard_tier(self):
+        parser = MinerUParser(backend="vlm-transformers")
+        captured = {}
+
+        def fake_parse(path, **kwargs):
+            captured.update(kwargs)
+            return _fake_v4_result()
+
+        with patch(
+            "semantica.parse.mineru_parser.mineru_parse", side_effect=fake_parse
+        ):
+            parser.parse(str(self.dummy_pdf))
+
+        self.assertEqual(captured.get("tier"), "standard")
+
+    def test_tables_and_pages_extracted_from_v4_result(self):
+        with patch(
+            "semantica.parse.mineru_parser.mineru_parse",
+            return_value=_fake_v4_result(),
+        ):
+            tables = self.parser.extract_tables(str(self.dummy_pdf))
+
+        self.assertEqual(len(tables), 1)
+        self.assertEqual(tables[0]["rows"], [["Item", "Qty"], ["Widget", "3"]])
+        self.assertEqual(tables[0]["page_number"], 1)
+
+    def test_titles_and_equations_reach_page_structure(self):
+        with patch(
+            "semantica.parse.mineru_parser.mineru_parse",
+            return_value=_fake_v4_result(),
+        ):
+            result = self.parser.parse(str(self.dummy_pdf))
+
+        page_one = result["pages"][0]
+        self.assertIn("Quarterly Report", page_one["text"])
+        self.assertIn("Revenue grew 20%.", page_one["text"])
+        self.assertIn("$$E=mc^2$$", page_one["text"])

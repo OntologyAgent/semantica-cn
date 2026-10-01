@@ -119,7 +119,11 @@ documents = [
   "beautifulsoup4>=4.15.0"
 ]
 parse-docling = ["docling>=2.107.0"]
-parse-mineru = ["mineru[core]>=2.5,<3"]
+# MinerU 4 renamed the local-parsing extra (core -> torch) and replaced the
+# legacy do_parse CLI API. The parser supports both API generations at
+# runtime; the extra installs the 4.x line. Keep a manual "mineru[core]<3"
+# pin if you need the 2.x line instead.
+parse-mineru = ["mineru[torch]>=4.0,<5"]
 # pdfplumber powers the default PDFParser; not pulled in by any other extra.
 parse-pdf = ["pdfplumber>=0.10.0"]
 

@@ -45,19 +45,32 @@ from ..utils.exceptions import ProcessingError, ValidationError
 from ..utils.logging import get_logger
 from ..utils.progress_tracker import get_progress_tracker
 
-# Try to import mineru, handle gracefully if not available
+# Try to import mineru, handle gracefully if not available.
+# Two API generations are supported at runtime:
+#   v4: public SDK entry `mineru.parser.parse` (MinerU >= 4). The legacy
+#       `mineru.cli.common.do_parse` internal CLI helper no longer exists.
+#   v2: the `mineru.cli.common.do_parse` helper (MinerU 2.x line, still
+#       accepted for environments pinned there; 3.x is not supported).
 MINERU_AVAILABLE = False
 MINERU_IMPORT_ERROR = None
+MINERU_API_VERSION = None
 do_parse = None
+mineru_parse = None
 
 try:
-    from mineru.cli.common import do_parse
+    from mineru.parser import parse as mineru_parse
 
+    MINERU_API_VERSION = "v4"
     MINERU_AVAILABLE = True
-    MINERU_IMPORT_ERROR = None
-except (ImportError, OSError) as e:
-    MINERU_AVAILABLE = False
-    MINERU_IMPORT_ERROR = str(e)
+except (ImportError, OSError) as _v4_error:
+    try:
+        from mineru.cli.common import do_parse
+
+        MINERU_API_VERSION = "v2"
+        MINERU_AVAILABLE = True
+    except (ImportError, OSError) as _v2_error:
+        MINERU_AVAILABLE = False
+        MINERU_IMPORT_ERROR = str(_v4_error) or str(_v2_error)
 
 
 class _HTMLTableParser(HTMLParser):
@@ -373,8 +386,123 @@ class MinerUParser:
         )
         return result["tables"]
 
+    # MinerU >= 4 replaced backend names with quality tiers: pipeline models
+    # map to "basic" (small local models), VLM engines to "standard".
+    _V4_TIERS = ("flash", "basic", "standard", "advanced")
+
+    def _v4_tier(self) -> str:
+        backend = (self.backend or "pipeline").lower()
+        if backend in self._V4_TIERS:
+            return backend
+        if backend.startswith("vlm"):
+            return "standard"
+        return "basic"
+
+    def _run_v4_parse(self, file_path: Path, output_dir: Path) -> None:
+        """MinerU >= 4: call the public SDK and emit the markdown and
+        legacy-style middle.json files the downstream stages consume."""
+        if self.language:
+            self.logger.warning(
+                "MinerU >= 4 ignores the language hint at parse time; dropping language=%r",
+                self.language,
+            )
+        if self.export_format == "html":
+            self.logger.warning(
+                "MinerU >= 4 path exports markdown only; html export_format is ignored"
+            )
+
+        result = mineru_parse(
+            str(file_path),
+            tier=self._v4_tier(),
+            ocr_mode=self.parse_method or "auto",
+            image_analysis=True,
+        )
+
+        stem = file_path.stem
+        out_dir = Path(output_dir) / stem
+        out_dir.mkdir(parents=True, exist_ok=True)
+        (out_dir / f"{stem}.md").write_text(result.markdown(), encoding="utf-8")
+        (out_dir / f"{stem}_middle.json").write_text(
+            json.dumps(self._v4_to_legacy_middle(result), ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+    @staticmethod
+    def _v4_span_text(spans: Any) -> str:
+        """Join the text of a v4 inline-span list (spans carry .content)."""
+        parts = []
+        for span in spans or []:
+            content = getattr(span, "content", None)
+            if content:
+                parts.append(content)
+        return " ".join(parts).strip()
+
+    @classmethod
+    def _v4_block_text(cls, block: Any) -> str:
+        """Flatten a v4 block's text (inline spans, or nested children for
+        list/index containers)."""
+        content = getattr(block, "content", None)
+        if isinstance(content, list) and content and hasattr(content[0], "type"):
+            # list/index blocks nest child blocks; visual groups are handled
+            # by their own branch, so here we just flatten whatever text the
+            # children carry.
+            parts = []
+            for child in content:
+                text = cls._v4_block_text(child)
+                if text:
+                    parts.append(text)
+            return "\n".join(parts)
+        if isinstance(content, list):
+            return cls._v4_span_text(content)
+        return content if isinstance(content, str) else ""
+
+    def _v4_to_legacy_middle(self, result: Any) -> Dict[str, Any]:
+        """Convert a v4 ParseResult into the 2.x-style middle dict that
+        _extract_from_middle walks (pdf_info/para_blocks/lines/spans)."""
+        pdf_info: List[Dict[str, Any]] = []
+        for page in result.pages:
+            para_blocks: List[Dict[str, Any]] = []
+            for block in page.blocks:
+                btype = str(getattr(block, "type", ""))
+                entry: Dict[str, Any]
+                if btype in ("table", "chart"):
+                    body = next(
+                        (c for c in block.content if str(c.type) in ("table_body", "chart_body")),
+                        None,
+                    )
+                    html = getattr(body, "content", "") if body is not None else ""
+                    entry = {"type": "table", "blocks": [{"type": "table_body", "html": html or ""}]}
+                elif btype == "image":
+                    body = next((c for c in block.content if str(c.type) == "image_body"), None)
+                    entry = {
+                        "type": "image",
+                        "blocks": [{
+                            "type": "image_body",
+                            "image_path": (getattr(body, "image_path", None) or "") if body is not None else "",
+                        }],
+                    }
+                elif btype == "equation":
+                    latex = getattr(block, "content", "") or ""
+                    entry = {"type": "equation", "lines": [{"spans": [{"latex": latex}]}]}
+                else:
+                    text = self._v4_block_text(block)
+                    entry = {
+                        "type": "title" if "title" in btype else "text",
+                        "lines": [{"spans": [{"content": text}]}],
+                    }
+                bbox = getattr(block, "bbox", None)
+                if bbox is not None:
+                    entry["bbox"] = [float(v) for v in bbox]
+                para_blocks.append(entry)
+            pdf_info.append({"page_idx": page.page_idx, "para_blocks": para_blocks})
+        return {"pdf_info": pdf_info}
+
     def _run_do_parse(self, file_path: Path, output_dir: Path) -> None:
-        """Invoke MinerU's do_parse, filtering kwargs to the supported signature."""
+        """Invoke MinerU, filtering kwargs to the supported signature."""
+        if MINERU_API_VERSION == "v4":
+            self._run_v4_parse(file_path, output_dir)
+            return
+
         pdf_bytes = file_path.read_bytes()
         stem = file_path.stem
 

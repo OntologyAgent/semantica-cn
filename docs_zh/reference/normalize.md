@@ -2,7 +2,7 @@
 title: "规范化模块（Normalize）"
 description: "文本清洗、实体规范化、日期归一化、数字转换、语言检测与编码修复：在抽取运行之前完成。"
 source: reference/normalize.md
-source_version: e98489fb8ee4692a094780bd73200bad91c43483
+source_version: f2f9f4353336639d2cc0150eaf78bc867014faea
 icon: "broom"
 ---
 
@@ -405,6 +405,9 @@ utf8_text = handle_encoding(raw_bytes, operation="convert")
     currency_norm = CurrencyNormalizer()
     result = currency_norm.normalize_currency("$42.50")
     # → {"amount": 42.50, "currency": "USD", "original": "$42.50"}
+
+    result = currency_norm.normalize_currency("$5M")
+    # → {"amount": 5000000.0, "currency": "USD", "original": "$5M"}
     ```
   </Tab>
   <Tab title="Language & Encoding">

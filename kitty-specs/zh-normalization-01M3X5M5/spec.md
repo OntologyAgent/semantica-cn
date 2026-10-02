@@ -57,4 +57,5 @@
 ## 决策记录
 
 - 2026-10-02 用户提出 7 项路线图待办（本 mission 覆盖其中 ②）
+- 2026-10-02 **OCP 重构（用户裁决）**：T006 的 DateNormalizer 路由改写被否决，改为 `ZhDateNormalizer` 组合扩展（zh_date_parser.py 内，上游 DateNormalizer 零改动）；`method="cn_date"` 分发不变
 - 2026-10-02 用户提供 DeepSeek notebook 实测用例，FR-002 家族扩展：日期区间（…至/到…，返回 value+value_end）、仅年份、年度相对词（去年/明年等，锚定参考年 1 月 1 日）、数量偏移（前三个自然月，月按 30 天近似与 notebook 一致）。频率表达式（每季度→P3M）不入本 mission（非日期语义）

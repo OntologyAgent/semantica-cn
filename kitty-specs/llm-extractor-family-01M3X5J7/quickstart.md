@@ -10,14 +10,13 @@ git checkout feature/llm-extractor-family
 ## 五分钟用起来
 
 ```python
-from semantica.semantic_extract import NERExtractor, CoreferenceResolver
+from semantica.semantic_extract import NERExtractor, resolve_aliases_llm
 
-ner = NERExtractor(method="llm", provider="deepseek", llm_model="deepseek-flash",
+ner = NERExtractor(method="llm_prompt", provider="deepseek", llm_model="deepseek-flash",
                    api_key=KEY, prompt="只抽取医药政策里的公司全称与政策编号，输出宁缺毋滥")
 entities = ner.extract("……")
 
-coref = CoreferenceResolver()
-resolved = coref.resolve_aliases_llm(text, provider="deepseek", api_key=KEY)
+resolved = resolve_aliases_llm(text, provider="deepseek", api_key=KEY)
 ```
 
 ## 验证

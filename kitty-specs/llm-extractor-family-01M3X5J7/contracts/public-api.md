@@ -24,7 +24,7 @@ trip = TripletExtractor(method="llm_prompt", provider="deepseek", api_key=..., p
 - 实现为零侵入扩展（method_registry 注册 "llm_prompt"），上游源码零改动
 - EventDetector 经 NER/Relation 组合自动获得同能力
 
-## resolve_aliases_llm（CoreferenceResolver 新方法）
+## resolve_aliases_llm（prompt_extraction 模块级函数，零侵入扩展）
 
 ```python
 from semantica.semantic_extract import resolve_aliases_llm

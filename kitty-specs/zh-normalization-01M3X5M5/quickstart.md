@@ -13,7 +13,7 @@ git checkout feature/zh-normalization   # mission 分支
 ## 2. 五分钟用起来
 
 ```python
-from semantica.normalize import CJKSpacingNormalizer, ZhDateParser, DateNormalizer
+from semantica.normalize import CJKSpacingNormalizer, ZhDateParser, ZhDateNormalizer
 
 # CJK 空格
 CJKSpacingNormalizer().normalize("Semantica知识图谱，AI驱动决策")
@@ -23,8 +23,8 @@ CJKSpacingNormalizer().normalize("Semantica知识图谱，AI驱动决策")
 ZhDateParser().parse("2026年10月2日 14:30")["value"]
 # -> datetime(2026, 10, 2, 14, 30)
 
-# 既有入口直接吃中文
-DateNormalizer().normalize_date("2026年10月2日")
+# fork 扩展类直取中文（上游 DateNormalizer 零改动）
+ZhDateNormalizer().normalize_date("2026年10月2日")
 ```
 
 ## 3. 验证

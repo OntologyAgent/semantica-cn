@@ -34,12 +34,16 @@ p.parse("2025年")                      # -> {"value": datetime(2025,1,1), "fami
 p.parse("前三个自然月", reference=datetime(2025,1,1))  # -> 90 天前（relative_offset，月按 30 天近似）
 ```
 
-## DateNormalizer 路由（扩展点）
+## ZhDateNormalizer（组合扩展；2026-10-02 OCP 重构后形态）
 
 ```python
-DateNormalizer().normalize_date("2026年10月2日")   # 内部走 ZhDateParser，返回类型与既有路径一致
-DateNormalizer().normalize_date("2026-10-02")      # 原 dateutil 路径，行为零回改
+from semantica.normalize import ZhDateNormalizer
+
+ZhDateNormalizer().normalize_date("2026年10月2日")  # 中文命中走 ZhDateParser，ISO 输出
+ZhDateNormalizer().normalize_date("2026-10-02")     # 回退父类 dateutil，行为零回改
 ```
+
+上游 `DateNormalizer` 源码零改动（中文直取一律用 ZhDateNormalizer 或 `method="cn_date"`）。
 
 ## 注册表
 

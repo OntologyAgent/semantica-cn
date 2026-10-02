@@ -1,7 +1,7 @@
 {
-  "event_count": 9,
-  "last_event_id": "01M3XD8ZS43AXX6AKX362R1T42",
-  "materialized_at": "2026-10-02T04:17:05.316884+00:00",
+  "event_count": 10,
+  "last_event_id": "01M3XD9F7F6K7FJERBMXZ3EWGK",
+  "materialized_at": "2026-10-02T04:17:21.135248+00:00",
   "mission_number": "",
   "mission_slug": "llm-extractor-family-01M3X5J7",
   "mission_type": "software-dev",
@@ -11,18 +11,18 @@
     "canceled": 0,
     "claimed": 0,
     "done": 0,
-    "for_review": 2,
+    "for_review": 1,
     "in_progress": 0,
-    "in_review": 0,
+    "in_review": 1,
     "planned": 1
   },
   "work_packages": {
     "WP01": {
-      "actor": "python-pedro",
+      "actor": "user",
       "force_count": 0,
-      "lane": "for_review",
-      "last_event_id": "01M3XD51B6ZTD7XE8W1Q3ZS5A7",
-      "last_transition_at": "2026-10-02T04:14:55.846838+00:00"
+      "lane": "in_review",
+      "last_event_id": "01M3XD9F7F6K7FJERBMXZ3EWGK",
+      "last_transition_at": "2026-10-02T04:17:21.135248+00:00"
     },
     "WP02": {
       "actor": "python-pedro",

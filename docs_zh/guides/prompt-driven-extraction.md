@@ -2,7 +2,7 @@
 title: 提示词驱动的抽取
 description: 一个 prompt 参数控制五类 LLM 抽取——目的、方法、例子、输出要求全由提示词承载。
 source: guides/prompt-driven-extraction.md
-source_version: c64c1bbc110a031aeba110fd0029609c3348bb1e
+source_version: debcfcee92f4060c0b9276cf5f95d1847b6913e2
 icon: "sparkles"
 ---
 
@@ -19,7 +19,7 @@ prompt = """你是医药商业政策解析器。只抽取：
 - 甲方/乙方公司全称（ORG）
 - 政策编号与政策名称（POLICY）
 
-例子：「国药控股北京有限公司（以下简称"国药北京"）」→ 抽「国药控股北京有限公司」
+例子：「华跃控股北京有限公司（以下简称"华跃北京"）」→ 抽「华跃控股北京有限公司」
 
 输出要求：宁缺毋滥，confidence 低于 0.7 的不要。"""
 
@@ -44,7 +44,7 @@ triplets    = trip.extract(text, entities=entities, relations=relations)
 
 ## 别名消解（抽取前的指代归并）
 
-中文政策文本里「默沙东」「国药北京」这类简称会让抽取和建图碎片化。`resolve_aliases_llm` 在抽取前把别名归并成规范全称：
+中文政策文本里「岭川」「华跃北京」这类简称会让抽取和建图碎片化。`resolve_aliases_llm` 在抽取前把别名归并成规范全称：
 
 ```python
 from semantica.semantic_extract import CoreferenceResolver
@@ -56,11 +56,11 @@ result = coref.resolve_aliases_llm(
     # prompt=...,                 # 可整体替换默认映射指令
 )
 resolved_text = result["resolved_text"]
-result["mappings"]   # [{"alias": "默沙东", "canonical": "杭州默沙东制药有限公司", ...}]
+result["mappings"]   # [{"alias": "岭川", "canonical": "杭州岭川制药有限公司", ...}]
 result["skipped"]    # 被门槛拒掉的映射与原因
 ```
 
-**子串保护**：alias 出现位置落在任一规范名内部时跳过该次出现——「北京」不会误替换进「国药控股北京有限公司」，而「默沙东与…」这类独立出现正常替换。
+**子串保护**：alias 出现位置落在任一规范名内部时跳过该次出现——「北京」不会误替换进「华跃控股北京有限公司」，而「岭川与…」这类独立出现正常替换。
 
 ## 推荐流水线
 

@@ -8,7 +8,7 @@
 from semantica.semantic_extract import NERExtractor, RelationExtractor, TripletExtractor
 
 prompt = """你是医药商业政策解析器。只抽取：甲方/乙方公司全称、政策名称、产品通用名。
-例子：输入「国药控股北京有限公司（以下简称"国药北京"）」→ 抽「国药控股北京有限公司」（ORG）。
+例子：输入「华跃控股北京有限公司（以下简称"华跃北京"）」→ 抽「华跃控股北京有限公司」（ORG）。
 输出要求：宁缺毋滥，confidence 低于 0.7 的不要。"""
 
 ner = NERExtractor(method="llm", provider="deepseek", llm_model="deepseek-flash",

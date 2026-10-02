@@ -258,10 +258,11 @@ class CoreferenceResolver:
     ):
         """LLM 别名消解：识别简称/别名/指代 → 规范全称，并安全替换。
 
-        notebook 参考实现（2026-10-02）：映射按 alias 长度降序应用；只替换
-        独立出现的 alias（前后不是 CJK 汉字，防「北京」误伤「国药控股北京
-        有限公司」）；confidence 低于 min_confidence、alias==canonical 或
-        len(alias)<2 的映射跳过并记入 skipped。
+        映射按 alias 长度降序应用；规范名区间保护——alias 出现位置落在任一
+        canonical 内部时跳过该次出现（防「北京」误伤「华跃控股北京有限
+        公司」，同时不拦「岭川与…」类正常替换）；confidence 低于
+        min_confidence、alias==canonical 或 len(alias)<2 的映射跳过并记入
+        skipped。
 
         Args:
             text: 待消解文本
@@ -279,12 +280,12 @@ class CoreferenceResolver:
 
 只关注这几类：
 - 甲方/乙方 -> 具体公司名
-- 公司简称 -> 公司全称（如 默沙东 -> 杭州默沙东制药有限公司）
+- 公司简称 -> 公司全称（如 岭川 -> 杭州岭川制药有限公司）
 - 政策简称 -> 政策全称
 
 不要输出：地点（北京/杭州/中国）、日期、数字、产品规格。
 
-只输出 JSON：{"mappings": [{"alias": "默沙东", "canonical": "杭州默沙东制药有限公司", "confidence": 0.9}]}
+只输出 JSON：{"mappings": [{"alias": "岭川", "canonical": "杭州岭川制药有限公司", "confidence": 0.9}]}
 
 原文：
 """ + text
@@ -310,7 +311,7 @@ class CoreferenceResolver:
         applied, skipped = [], []
         result = text
         # 规范名保护：alias 出现位置若落在任一规范名（canonical）内部则跳过该次出现，
-        # 防「北京」误替换进「国药控股北京有限公司」；独立出现处正常替换。
+        # 防「北京」误替换进「华跃控股北京有限公司」；独立出现处正常替换。
         canonicals = sorted(
             {str(m.get("canonical", "")).strip() for m in raw if m.get("canonical")},
             key=len, reverse=True,

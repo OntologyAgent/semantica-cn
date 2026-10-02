@@ -23,7 +23,7 @@
 
 ## R3: 用户 notebook 参考实现（~/Downloads/main.md，2026-10-02 提供）
 
-- 指代消解：DeepSeek generate_structured → {"mappings":[{alias,canonical,confidence}]} → 安全替换：按 alias 长度降序、confidence≥0.85、alias 与 canonical 非空且不等、`(?<!CJK)alias(?!CJK)` 独立出现判定（防「北京」误伤「国药控股北京有限公司」）
+- 指代消解：DeepSeek generate_structured → {"mappings":[{alias,canonical,confidence}]} → 安全替换：按 alias 长度降序、confidence≥0.85、alias 与 canonical 非空且不等、`(?<!CJK)alias(?!CJK)` 独立出现判定（防「北京」误伤「华跃控股北京有限公司」）
 - 中文事件检测：整段中文指令 + JSON 输出 → generate_structured
 - 结论：两者本质都是「用户提示词替换默认指令」——正是本 mission 的统一入口；notebook 中的 API key 不得入库
 

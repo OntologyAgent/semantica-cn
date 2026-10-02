@@ -52,7 +52,7 @@ class TestPolicies(unittest.TestCase):
         # notebook 用例：NFKC 后 CJK 之间的噪声空格
         n = CJKSpacingNormalizer(policy="remove")
         self.assertEqual(n.normalize("知 识 图 谱"), "知识图谱")
-        self.assertEqual(n.normalize("杭 州默沙东"), "杭州默沙东")
+        self.assertEqual(n.normalize("杭 州岭川"), "杭州岭川")
 
     def test_add_does_not_touch_cjk_cjk(self):
         n = CJKSpacingNormalizer()

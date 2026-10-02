@@ -2,7 +2,7 @@
 title: 中文规范化
 description: CJK 空格与中文日期——semantica-cn fork 的中文增强规范化器。
 source: reference/zh-normalization.md
-source_version: 4b51c9034b01b84904085986a7a45e3baf9676e1
+source_version: 14ae40414c8cc85266d05096f2b8ea98527ef8bb
 icon: "languages"
 ---
 

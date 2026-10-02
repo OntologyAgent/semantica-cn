@@ -21,11 +21,11 @@ from semantica.semantic_extract.methods import (
 def _real_entities():
     from semantica.semantic_extract.types import Entity
 
-    return [Entity(text="国药控股北京有限公司", label="ORG", start_char=0, end_char=12, confidence=0.9)]
+    return [Entity(text="华跃控股北京有限公司", label="ORG", start_char=0, end_char=12, confidence=0.9)]
 
 
 CUSTOM = "你是医药政策解析器。只抽取公司全称与政策编号，宁缺毋滥。"
-TEXT = "国药控股北京有限公司与杭州默沙东制药有限公司签订2025年商业政策。"
+TEXT = "华跃控股北京有限公司与杭州岭川制药有限公司签订2025年商业政策。"
 UNIQUE = TEXT + "（用例隔离后缀%s）"
 
 
@@ -41,20 +41,20 @@ from semantica.semantic_extract.schemas import (
 
 def _entity_response():
     return EntitiesResponse(entities=[
-        EntityOut(text="国药控股北京有限公司", label="ORG", confidence=0.9),
+        EntityOut(text="华跃控股北京有限公司", label="ORG", confidence=0.9),
     ])
 
 
 def _relation_response():
     return RelationsResponse(relations=[
-        RelationOut(subject="国药控股北京有限公司", predicate="signs",
+        RelationOut(subject="华跃控股北京有限公司", predicate="signs",
                     object="2025年商业政策", confidence=0.9),
     ])
 
 
 def _triplet_response():
     return TripletsResponse(triplets=[
-        TripletOut(subject="国药控股北京有限公司", predicate="is_a", object="公司", confidence=0.9),
+        TripletOut(subject="华跃控股北京有限公司", predicate="is_a", object="公司", confidence=0.9),
     ])
 
 

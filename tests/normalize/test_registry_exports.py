@@ -68,10 +68,16 @@ class TestPipelineComposition(unittest.TestCase):
         result = ZhDateParser().parse(cleaned)
         self.assertEqual(result["value"], datetime(2026, 10, 2))
 
-    def test_default_date_route_chinese(self):
-        # 无需 method=：DateNormalizer 路由直接吃中文
-        normalized = methods.normalize_date("2026年10月2日")
-        self.assertTrue(str(normalized).startswith("2026-10-02"), normalized)
+    def test_chinese_date_entry_points(self):
+        # OCP：默认路径=上游 dateutil（无中文路由，中文输入回落相对处理器）。
+        # 中文入口是 method="cn_date" 或 ZhDateNormalizer 扩展类。
+        self.assertEqual(
+            methods.normalize_date("2026年10月2日", method="cn_date", format="date"),
+            "2026-10-02",
+        )
+        from semantica.normalize import ZhDateNormalizer
+
+        self.assertTrue(ZhDateNormalizer().normalize_date("2026年10月2日").startswith("2026-10-02"))
 
     def test_default_text_unchanged(self):
         # 默认文本路径不受注册影响

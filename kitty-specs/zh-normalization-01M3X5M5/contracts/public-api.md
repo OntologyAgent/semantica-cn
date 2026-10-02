@@ -29,6 +29,9 @@ p.parse("2026年10月2日")            # -> {"value": datetime(2026,10,2), "matc
 p.parse("10月2日")                   # -> year_inferred=True, value=当年
 p.parse("腊月初八")                   # -> {"value": None, "unsupported_matched": "腊月初八", ...}
 p.parse("hello")                     # -> None
+p.parse("2025年1月1日至2025年12月31日")  # -> {"value": datetime(2025,1,1), "value_end": datetime(2025,12,31), "family": "range", ...}
+p.parse("2025年")                      # -> {"value": datetime(2025,1,1), "family": "year_only", ...}
+p.parse("前三个自然月", reference=datetime(2025,1,1))  # -> 90 天前（relative_offset，月按 30 天近似）
 ```
 
 ## DateNormalizer 路由（扩展点）

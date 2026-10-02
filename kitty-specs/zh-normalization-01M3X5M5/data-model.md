@@ -28,7 +28,9 @@
 | matched_text | str | 命中时必填；原文命中的日期子串 |
 | family | str | "full" \| "no_year" \| "with_time" \| "han_numeral" \| "relative" |
 | year_inferred | bool | 无年份且按策略补当前年时为 True |
-| unsupported_matched | str | 不支持历法命中时携带原文子串（value 为 None）
+| unsupported_matched | str | 不支持历法命中时携带原文子串（value 为 None） |
+| value_end | datetime | 仅 family="range"：区间结束时间（value 为开始） |
+| unsupported_kind | str | 仅 unsupported：lunar \| republican |
 
 **不变量**:
 - parse 返回 None 且 unsupported_matched 为空 ⇔ 文本无中文日期模式

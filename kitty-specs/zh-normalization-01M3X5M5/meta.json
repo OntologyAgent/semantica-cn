@@ -10,5 +10,7 @@
   "purpose_tldr": "zh normalization",
   "slug": "zh-normalization-01M3X5M5",
   "target_branch": "feature/zh-normalization",
-  "topology": "single_branch"
+  "topology": "single_branch",
+  "vcs": "git",
+  "vcs_locked_at": "2026-10-02T02:18:10.649616+00:00"
 }

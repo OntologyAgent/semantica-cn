@@ -8,10 +8,14 @@ tracker_refs: []
 planning_base_branch: feature/zh-normalization
 merge_target_branch: feature/zh-normalization
 branch_strategy: Planning artifacts for this mission were generated on feature/zh-normalization. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/zh-normalization unless the human explicitly redirects the landing branch.
+base_branch: kitty/mission-zh-normalization-01M3X5M5
+base_commit: ce9bd8e6f333212f576c6f899b715f21ce0a2852
+created_at: '2026-10-02T02:18:11.229775+00:00'
 subtasks:
 - T001
 - T002
 - T003
+shell_pid: '42211'
 history: []
 agent_profile: python-pedro
 authoritative_surface: semantica/normalize/cjk_spacing.py

@@ -13,7 +13,6 @@ branch_strategy: Planning artifacts for this mission were generated on feature/l
 subtasks:
 - T006
 - T007
-shell_pid: '81050'
 history: []
 agent_profile: python-pedro
 authoritative_surface: docs_zh/integrations/mineru.md
@@ -24,6 +23,8 @@ owned_files:
 - README.zh-CN.md
 role: implementer
 tags: []
+agent: "python-pedro"
+shell_pid: "81050"
 ---
 
 # WP03 — 文档与收口
@@ -43,3 +44,7 @@ MinerU 4.0.10 支持说明 + 全量门禁。
 ```bash
 bash tools/nightly/run_gate.sh && echo GATE-OK
 ```
+
+## Activity Log
+
+- 2026-10-02T04:17:36Z – python-pedro – shell_pid=81050 – Assigned agent via action command

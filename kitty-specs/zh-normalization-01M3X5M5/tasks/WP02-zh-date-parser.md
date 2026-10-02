@@ -77,3 +77,4 @@ python -c "from semantica.normalize.zh_date_parser import ZhDateParser as P; pri
 ## Activity Log
 
 - 2026-10-02T02:21:06Z – python-pedro – shell_pid=43968 – Assigned agent via action command
+- 2026-10-02T03:32:17Z – python-pedro – shell_pid=43968 – 36/36 tests green; notebook families (range/year-only/year-relative/anchored offsets) absorbed

@@ -9,15 +9,11 @@ tracker_refs: []
 planning_base_branch: feature/zh-normalization
 merge_target_branch: feature/zh-normalization
 branch_strategy: Planning artifacts for this mission were generated on feature/zh-normalization. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/zh-normalization unless the human explicitly redirects the landing branch.
-base_branch: kitty/mission-zh-normalization-01M3X5M5
-base_commit: ce9bd8e6f333212f576c6f899b715f21ce0a2852
-created_at: '2026-10-02T02:21:02.295788+00:00'
 subtasks:
 - T004
 - T005
 - T006
 - T007
-shell_pid: '43968'
 history: []
 agent_profile: python-pedro
 authoritative_surface: semantica/normalize/zh_date_parser.py
@@ -32,6 +28,8 @@ owned_files:
 - tests/normalize/test_date_normalizer.py
 role: implementer
 tags: []
+agent: "python-pedro"
+shell_pid: "43968"
 ---
 
 # WP02 — 中文日期解析器
@@ -75,3 +73,7 @@ uv run --frozen pytest tests/normalize/test_zh_date_parser.py tests/normalize/te
 python -c "from semantica.normalize.zh_date_parser import ZhDateParser as P; print(P().parse('2026年10月2日 14:30'))"
 # value == datetime(2026,10,2,14,30)
 ```
+
+## Activity Log
+
+- 2026-10-02T02:21:06Z – python-pedro – shell_pid=43968 – Assigned agent via action command

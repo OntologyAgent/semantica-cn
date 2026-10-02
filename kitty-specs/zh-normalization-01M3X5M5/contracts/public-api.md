@@ -44,8 +44,12 @@ DateNormalizer().normalize_date("2026-10-02")      # 原 dateutil 路径，行�
 ## 注册表
 
 ```python
-method_registry.register("text", "cjk_spacing", CJKSpacingNormalizer().normalize)
-method_registry.register("date", "zh_date", lambda s, **kw: (ZhDateParser().parse(s) or {}).get("value"))
+# 包导入时已自动注册（semantica/normalize/__init__.py）：
+#   method_registry.register("text", "cjk_spacing", _cjk_spacing_method)
+#   method_registry.register("date", "cn_date", _cn_date_method)
+# 分发用法：
+methods.normalize_text("Semantica知识图谱", method="cjk_spacing")      # -> "Semantica 知识图谱"
+methods.normalize_date("2026年10月2日", method="cn_date", format="date")  # -> "2026-10-02"
 ```
 
 **兼容性约束**: 两个新类从 `semantica.normalize.__init__` 导出；不修改任何既有公共签名；失败语义遵循 FR-004（不抛异常中断流水线）。

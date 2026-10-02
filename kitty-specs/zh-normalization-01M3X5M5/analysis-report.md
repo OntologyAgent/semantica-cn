@@ -4,18 +4,18 @@ artifact_type: spec-kitty.analysis-report
 command: /spec-kitty.analyze
 mission_slug: zh-normalization-01M3X5M5
 mission_id: 01M3X5M5MBTGRTS6PKBTEV86EC
-generated_at: '2026-10-02T10:17:43.926331+08:00'
+generated_at: '2026-10-02T11:35:27.617346+08:00'
 analyzer_agent: python-pedro
 input_artifacts:
   spec.md:
     path: kitty-specs/zh-normalization-01M3X5M5/spec.md
-    sha256: 927a6428e84ff56ff6c2f749b06742a147a78eaaf00f5b1322ea90f146022c41
+    sha256: fdcc917c8026fa549970708de0e9ca396f73eeef6343c32efa78d3e5cc36449b
   plan.md:
     path: kitty-specs/zh-normalization-01M3X5M5/plan.md
     sha256: e1e9f195b9a91d05f2810628e8ab60a2843e9be8fc73f7f3a0498aa8f351db21
   tasks.md:
     path: kitty-specs/zh-normalization-01M3X5M5/tasks.md
-    sha256: 7ef9d6d6ad599a18f3fb475fc65c2a17b18a19f0708c00377c19d06b58e2730f
+    sha256: 1ad605e489526cf3d75150ac0880bc92fe89f74ddc3bd02c781cea694990380f
   charter:
     path: .kittify/charter/charter.md
     sha256: a5e01a009b82bb321c397f1f4d566511a1a4713370ab47480516eb838cffce67
@@ -24,6 +24,8 @@ issue_counts:
   medium: 0
   low: 1
 ---
+
+
 
 # Analysis Report: zh-normalization 实现前分析
 
@@ -59,3 +61,10 @@ issue_counts:
 ## 结论
 
 无阻塞性发现；一处契约澄清（normalize_date 返回 str）已并入 A1，实现按此执行。
+
+## A5: 增量分析（2026-10-02 第二次，notebook 家族吸收后）
+
+- WP01 增补：remove 策略折叠 CJK↔CJK 空格（lookahead 消除交替空格重叠），add/preserve 保持 pangu 语义
+- WP02 家族扩展后 retainer：区间家族引入 value_end 字段；年度相对词锚定参考年 1 月 1 日；数量偏移月按 30 天近似（与 notebook 一致，契约已注明）
+- WP03 注册名将采用 notebook 约定 "cn_date"（而非契约初稿的 zh_date），契约随 WP03 一并修正
+- 结论：ready，无新增阻塞

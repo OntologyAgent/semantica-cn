@@ -50,3 +50,4 @@ uv run --frozen pytest tests/semantic_extract/test_coref_llm.py -q
 
 - 2026-10-02T04:05:30Z – python-pedro – shell_pid=79740 – Assigned agent via action command
 - 2026-10-02T04:17:06Z – python-pedro – shell_pid=79740 – 7/7 green; protection semantics superior to notebook rule
+- 2026-10-02T04:17:28Z – user – shell_pid=79740 – Self-review: 7/7 green; canonical-span protection verified

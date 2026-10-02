@@ -1,7 +1,7 @@
 {
-  "event_count": 2,
-  "last_event_id": "01M3XCJMEHZ1Y4TKVEKVM5S4KN",
-  "materialized_at": "2026-10-02T04:04:52.817846+00:00",
+  "event_count": 3,
+  "last_event_id": "01M3XCJNJX9GHSHJZQWHNAQDNB",
+  "materialized_at": "2026-10-02T04:04:53.981635+00:00",
   "mission_number": "",
   "mission_slug": "llm-extractor-family-01M3X5J7",
   "mission_type": "software-dev",
@@ -14,7 +14,7 @@
     "for_review": 0,
     "in_progress": 0,
     "in_review": 0,
-    "planned": 2
+    "planned": 3
   },
   "work_packages": {
     "WP01": {
@@ -30,6 +30,13 @@
       "lane": "planned",
       "last_event_id": "01M3XCJMEHZ1Y4TKVEKVM5S4KN",
       "last_transition_at": "2026-10-02T04:04:52.817846+00:00"
+    },
+    "WP03": {
+      "actor": "finalize-tasks",
+      "force_count": 0,
+      "lane": "planned",
+      "last_event_id": "01M3XCJNJX9GHSHJZQWHNAQDNB",
+      "last_transition_at": "2026-10-02T04:04:53.981635+00:00"
     }
   }
 }

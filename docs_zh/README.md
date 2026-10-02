@@ -25,7 +25,14 @@ source_version: native
 | P3 低频 | community*、governance、citation、contributing-guide、project-license、superpowers/ | 翻译，允许滞后 |
 | changelog | docs/changelog.md | 只做指路页，正文不翻 |
 
-日常巡检以 `tools/i18n/zh_status.py` 为准：stale 即同步，orphan 人工决定去留。`docs/best-practices/` 的源文件未入库（`.git/info/exclude` 本地排除），其译文稳定显示 orphan，属预期。
+日常巡检以 `tools/i18n/zh_status.py` 为准：stale 即同步，orphan 人工决定去留。
+
+### fork 原生页面（无英文源，zh_status 显示 orphan 属预期）
+
+- [中文规范化](reference/zh-normalization.md) — CJK 空格三策略 + 中文日期家族（`cn_date` / `cjk_spacing` 方法分发）
+- [提示词驱动的抽取](guides/prompt-driven-extraction.md) — `prompt` 参数贯穿五类 LLM 抽取 + `resolve_aliases_llm` 别名消解
+- best-practices/ 本体建模系列（既有）
+- cookbook_zh 原生示例：`introduction/15_Chinese_Normalization.ipynb`、`introduction/16_Prompt_Driven_Extraction.ipynb`、`introduction/10b_Graph_Metrics.ipynb``docs/best-practices/` 的源文件未入库（`.git/info/exclude` 本地排除），其译文稳定显示 orphan，属预期。
 
 ## 译文 frontmatter
 

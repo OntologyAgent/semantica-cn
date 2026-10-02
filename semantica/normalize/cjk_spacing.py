@@ -54,8 +54,9 @@ _CJK_IDEOGRAPH = (
     "\uf900-\ufaff"  # Compatibility Ideographs
 )
 
-# Western side: ASCII letters and digits only. Other scripts are out of scope.
-_WESTERN = "A-Za-z0-9"
+# Western side: ASCII letters/digits plus common symbols that cling to CJK
+# in finance text ($5M、¥100、50%off) — spacing rules treat them as Western.
+_WESTERN = "A-Za-z0-9$%\\u00a5\\u20ac\\u00a3+#&*=<>/"
 
 # Patterns are compiled once per direction; each is a pair (pattern, template)
 # applied in order. A boundary exists only where a Western char and a CJK

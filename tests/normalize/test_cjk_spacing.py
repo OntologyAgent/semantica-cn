@@ -58,6 +58,14 @@ class TestPolicies(unittest.TestCase):
         n = CJKSpacingNormalizer()
         self.assertEqual(n.normalize("知 识"), "知 识")
 
+    def test_currency_symbols_count_as_western(self):
+        # notebook 实测：金融符号紧贴 CJK 的边界同样处理
+        n = CJKSpacingNormalizer()
+        self.assertEqual(n.normalize("支付$5M到账"), "支付 $5M 到账")
+        r = CJKSpacingNormalizer(policy="remove")
+        self.assertEqual(r.normalize("支付 $5M 到账"), "支付$5M到账")
+        self.assertEqual(r.normalize("利润 50%增长"), "利润50%增长")
+
     def test_round_trip_add_then_remove(self):
         add = CJKSpacingNormalizer()
         remove = CJKSpacingNormalizer(policy="remove")

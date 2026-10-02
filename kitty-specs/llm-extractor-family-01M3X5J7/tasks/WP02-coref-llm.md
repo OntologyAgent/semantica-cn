@@ -8,13 +8,9 @@ tracker_refs: []
 planning_base_branch: feature/llm-extractor-family
 merge_target_branch: feature/llm-extractor-family
 branch_strategy: Planning artifacts for this mission were generated on feature/llm-extractor-family. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/llm-extractor-family unless the human explicitly redirects the landing branch.
-base_branch: kitty/mission-llm-extractor-family-01M3X5J7
-base_commit: 70d4da7e68b82729669d76fe60f65e772a6ba7aa
-created_at: '2026-10-02T04:05:26.808192+00:00'
 subtasks:
 - T004
 - T005
-shell_pid: '79740'
 history: []
 agent_profile: python-pedro
 authoritative_surface: semantica/semantic_extract/coreference_resolver.py
@@ -26,6 +22,8 @@ owned_files:
 - tests/semantic_extract/test_coref_llm.py
 role: implementer
 tags: []
+agent: "python-pedro"
+shell_pid: "79740"
 ---
 
 # WP02 — LLM 别名消解
@@ -47,3 +45,7 @@ CoreferenceResolver 新增 `resolve_aliases_llm(text, provider="openai", llm_mod
 ```bash
 uv run --frozen pytest tests/semantic_extract/test_coref_llm.py -q
 ```
+
+## Activity Log
+
+- 2026-10-02T04:05:30Z – python-pedro – shell_pid=79740 – Assigned agent via action command

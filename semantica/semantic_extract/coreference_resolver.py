@@ -246,6 +246,124 @@ class CoreferenceResolver:
             )
             raise
 
+    def resolve_aliases_llm(
+        self,
+        text: str,
+        provider: str = "openai",
+        llm_model=None,
+        api_key=None,
+        min_confidence: float = 0.85,
+        prompt=None,
+        **options,
+    ):
+        """LLM 别名消解：识别简称/别名/指代 → 规范全称，并安全替换。
+
+        notebook 参考实现（2026-10-02）：映射按 alias 长度降序应用；只替换
+        独立出现的 alias（前后不是 CJK 汉字，防「北京」误伤「国药控股北京
+        有限公司」）；confidence 低于 min_confidence、alias==canonical 或
+        len(alias)<2 的映射跳过并记入 skipped。
+
+        Args:
+            text: 待消解文本
+            provider / llm_model / api_key: LLM provider 配置
+            min_confidence: 映射置信度门槛（默认 0.85）
+            prompt: 整体替换默认映射指令（与抽取器 prompt 入口同语义）
+
+        Returns:
+            {"resolved_text": str, "mappings": [...applied...], "skipped": [...{mapping, reason}...]}
+        """
+        import os
+        import re as _re
+
+        default_prompt = """找出下面文本里的「简称/别名/指代」及其规范全称。
+
+只关注这几类：
+- 甲方/乙方 -> 具体公司名
+- 公司简称 -> 公司全称（如 默沙东 -> 杭州默沙东制药有限公司）
+- 政策简称 -> 政策全称
+
+不要输出：地点（北京/杭州/中国）、日期、数字、产品规格。
+
+只输出 JSON：{"mappings": [{"alias": "默沙东", "canonical": "杭州默沙东制药有限公司", "confidence": 0.9}]}
+
+原文：
+""" + text
+
+        instruction = prompt if prompt else default_prompt
+
+        provider_kwargs = dict(options)
+        if api_key:
+            provider_kwargs["api_key"] = api_key
+        elif not provider_kwargs.get("api_key"):
+            env_key = os.getenv(f"{provider.upper()}_API_KEY")
+            if env_key:
+                provider_kwargs["api_key"] = env_key
+        if llm_model:
+            provider_kwargs["model"] = llm_model
+
+        from .providers import create_provider
+
+        llm = create_provider(provider, **provider_kwargs)
+        data = llm.generate_structured(instruction)
+        raw = data.get("mappings", []) if isinstance(data, dict) else []
+
+        applied, skipped = [], []
+        result = text
+        # 规范名保护：alias 出现位置若落在任一规范名（canonical）内部则跳过该次出现，
+        # 防「北京」误替换进「国药控股北京有限公司」；独立出现处正常替换。
+        canonicals = sorted(
+            {str(m.get("canonical", "")).strip() for m in raw if m.get("canonical")},
+            key=len, reverse=True,
+        )
+
+        def _protected_spans(haystack):
+            spans = []
+            for name in canonicals:
+                if not name:
+                    continue
+                start = haystack.find(name)
+                while start != -1:
+                    spans.append((start, start + len(name)))
+                    start = haystack.find(name, start + 1)
+            return spans
+
+        for m in sorted(raw, key=lambda x: -len(str(x.get("alias", "")))):
+            alias = str(m.get("alias", "")).strip()
+            canonical = str(m.get("canonical", "")).strip()
+            try:
+                conf = float(m.get("confidence", 0) or 0)
+            except (TypeError, ValueError):
+                conf = 0.0
+            if conf < min_confidence:
+                skipped.append({"mapping": m, "reason": f"confidence {conf} < {min_confidence}"})
+                continue
+            if not alias or not canonical or alias == canonical or len(alias) < 2:
+                skipped.append({"mapping": m, "reason": "empty/self/short alias"})
+                continue
+            if alias not in result:
+                skipped.append({"mapping": m, "reason": "alias not present in text"})
+                continue
+            protected = _protected_spans(result)
+            pieces, cursor, replaced_any = [], 0, False
+            start = result.find(alias)
+            while start != -1:
+                end = start + len(alias)
+                inside = any(ps < start and end < pe for ps, pe in protected)
+                if not inside:
+                    pieces.append(result[cursor:start])
+                    pieces.append(canonical)
+                    cursor = end
+                    replaced_any = True
+                start = result.find(alias, end)
+            pieces.append(result[cursor:])
+            if replaced_any:
+                result = "".join(pieces)
+                applied.append({"alias": alias, "canonical": canonical, "confidence": conf})
+            else:
+                skipped.append({"mapping": m, "reason": "only protected occurrences"})
+
+        return {"resolved_text": result, "mappings": applied, "skipped": skipped}
+
     def resolve(
         self,
         text: Union[str, List[str], List[Dict[str, Any]]],

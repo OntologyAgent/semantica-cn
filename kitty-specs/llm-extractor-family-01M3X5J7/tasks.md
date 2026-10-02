@@ -53,8 +53,8 @@
 **Independent test**: `bash tools/nightly/run_gate.sh` exit 0
 **Estimated prompt size**: ~80 lines
 
-- [ ] T006 MinerU 4.0.10 文档 (WP03)
-- [ ] T007 门禁 + quickstart 走查 (WP03)
+- [x] T006 MinerU 4.0.10 文档 (WP03)
+- [x] T007 门禁 + quickstart 走查 (WP03)
 
 **Dependencies**: WP01、WP02
 **Risks**: 无

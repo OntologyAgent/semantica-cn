@@ -1,7 +1,7 @@
 {
-  "event_count": 5,
-  "last_event_id": "01M3X6F946RV0MVYS2HY184K9M",
-  "materialized_at": "2026-10-02T02:18:11.462198+00:00",
+  "event_count": 6,
+  "last_event_id": "01M3X6KWF51STR8VS7KX24N825",
+  "materialized_at": "2026-10-02T02:20:42.341201+00:00",
   "mission_number": "",
   "mission_slug": "zh-normalization-01M3X5M5",
   "mission_type": "software-dev",
@@ -11,8 +11,8 @@
     "canceled": 0,
     "claimed": 0,
     "done": 0,
-    "for_review": 0,
-    "in_progress": 1,
+    "for_review": 1,
+    "in_progress": 0,
     "in_review": 0,
     "planned": 2
   },
@@ -20,9 +20,9 @@
     "WP01": {
       "actor": "python-pedro",
       "force_count": 0,
-      "lane": "in_progress",
-      "last_event_id": "01M3X6F946RV0MVYS2HY184K9M",
-      "last_transition_at": "2026-10-02T02:18:11.462198+00:00"
+      "lane": "for_review",
+      "last_event_id": "01M3X6KWF51STR8VS7KX24N825",
+      "last_transition_at": "2026-10-02T02:20:42.341201+00:00"
     },
     "WP02": {
       "actor": "finalize-tasks",

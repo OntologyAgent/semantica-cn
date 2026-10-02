@@ -60,9 +60,9 @@
 **Independent test**: `bash tools/nightly/run_gate.sh` exit 0；quickstart §3 走查通过
 **Estimated prompt size**: ~120 lines
 
-- [ ] T008 method_registry 注册 + __init__ 公共导出 (WP03)
-- [ ] T009 test_integration.py 扩展：组合流水线 + 单独调用 (WP03)
-- [ ] T010 全量门禁 + quickstart §3 走查收口 (WP03)
+- [x] T008 method_registry 注册 + __init__ 公共导出 (WP03)
+- [x] T009 test_integration.py 扩展：组合流水线 + 单独调用 (WP03)
+- [x] T010 全量门禁 + quickstart §3 走查收口 (WP03)
 
 **Dependencies**: WP01、WP02
 **Parallel opportunities**: T008 与 T009 可并行

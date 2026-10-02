@@ -8,9 +8,13 @@ tracker_refs: []
 planning_base_branch: feature/llm-extractor-family
 merge_target_branch: feature/llm-extractor-family
 branch_strategy: Planning artifacts for this mission were generated on feature/llm-extractor-family. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/llm-extractor-family unless the human explicitly redirects the landing branch.
+base_branch: kitty/mission-llm-extractor-family-01M3X5J7
+base_commit: 70d4da7e68b82729669d76fe60f65e772a6ba7aa
+created_at: '2026-10-02T04:05:26.808192+00:00'
 subtasks:
 - T004
 - T005
+shell_pid: '79740'
 history: []
 agent_profile: python-pedro
 authoritative_surface: semantica/semantic_extract/coreference_resolver.py

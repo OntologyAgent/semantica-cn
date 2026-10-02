@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "mission_slug": "zh-normalization-01M3X5M5",
+  "mission_id": "01M3X5M5MBTGRTS6PKBTEV86EC",
+  "mission_branch": "kitty/mission-zh-normalization-01M3X5M5",
+  "target_branch": "feature/zh-normalization",
+  "lanes": [
+    {
+      "lane_id": "lane-a",
+      "wp_ids": [
+        "WP01"
+      ],
+      "write_scope": [
+        "semantica/normalize/cjk_spacing.py",
+        "tests/normalize/test_cjk_spacing.py"
+      ],
+      "predicted_surfaces": [
+        "api",
+        "legacy-cleanup"
+      ],
+      "depends_on_lanes": [],
+      "parallel_group": 0
+    },
+    {
+      "lane_id": "lane-b",
+      "wp_ids": [
+        "WP02"
+      ],
+      "write_scope": [
+        "semantica/normalize/date_normalizer.py",
+        "semantica/normalize/zh_date_parser.py",
+        "tests/normalize/test_date_normalizer.py",
+        "tests/normalize/test_zh_date_parser.py"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [],
+      "parallel_group": 0
+    },
+    {
+      "lane_id": "lane-c",
+      "wp_ids": [
+        "WP03"
+      ],
+      "write_scope": [
+        "semantica/normalize/__init__.py",
+        "semantica/normalize/registry.py",
+        "tests/normalize/test_integration.py"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [
+        "lane-a",
+        "lane-b"
+      ],
+      "parallel_group": 1
+    }
+  ],
+  "computed_at": "2026-10-02T02:15:42.725462+00:00",
+  "computed_from": "dependency_graph+ownership",
+  "planning_artifact_wps": []
+}

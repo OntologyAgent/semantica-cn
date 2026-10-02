@@ -15,7 +15,6 @@ subtasks:
 - T008
 - T009
 - T010
-shell_pid: '77199'
 history: []
 agent_profile: python-pedro
 authoritative_surface: semantica/normalize/
@@ -27,6 +26,8 @@ owned_files:
 - tests/normalize/test_integration.py
 role: implementer
 tags: []
+agent: "python-pedro"
+shell_pid: "77199"
 ---
 
 # WP03 — 注册与集成验收
@@ -68,3 +69,7 @@ tags: []
 bash tools/nightly/run_gate.sh && echo GATE-OK
 python -c "from semantica.normalize import CJKSpacingNormalizer, ZhDateParser, DateNormalizer; print('exports ok')"
 ```
+
+## Activity Log
+
+- 2026-10-02T03:36:00Z – python-pedro – shell_pid=77199 – Assigned agent via action command

@@ -3,14 +3,12 @@
   "flattened": false,
   "friendly_name": "zh normalization",
   "mission_id": "01M3X5M5MBTGRTS6PKBTEV86EC",
-  "mission_number": null,
+  "mission_number": 5,
   "mission_slug": "zh-normalization-01M3X5M5",
   "mission_type": "software-dev",
   "purpose_context": "This mission advances zh normalization on main so stakeholders can track the work from mission creation onward.",
   "purpose_tldr": "zh normalization",
   "slug": "zh-normalization-01M3X5M5",
   "target_branch": "feature/zh-normalization",
-  "topology": "single_branch",
-  "vcs": "git",
-  "vcs_locked_at": "2026-10-02T02:18:10.649616+00:00"
+  "topology": "single_branch"
 }

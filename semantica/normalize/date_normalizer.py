@@ -38,6 +38,10 @@ from ..utils.exceptions import ProcessingError, ValidationError
 from ..utils.logging import get_logger
 from ..utils.progress_tracker import get_progress_tracker
 
+# Chinese Gregorian date hint: any CJK date character or relative token.
+# Routing is exclusive-on-hit with fallback preserved (see normalize_date).
+_ZH_DATE_HINT = re.compile(r"[年月日号时]|今天|明天|昨天|前天|后天|大前天|大后天|下周")
+
 # Optional imports for date parsing
 try:
     from dateutil import parser as date_parser
@@ -130,17 +134,31 @@ class DateNormalizer:
 
         # Parse date input
         if isinstance(date_input, str):
-            try:
-                if HAS_DATEUTIL and date_parser:
-                    dt = date_parser.parse(date_input)
-                else:
-                    # Fallback to basic parsing
-                    dt = datetime.fromisoformat(date_input.replace("Z", "+00:00"))
-            except Exception:
-                # Try relative date processing
-                dt = self.relative_date_processor.process_relative_expression(
-                    date_input
-                )
+            dt = None
+            if _ZH_DATE_HINT.search(date_input):
+                # Chinese Gregorian expressions are routed to ZhDateParser
+                # exclusively (dateutil cannot read them); on a miss or an
+                # invalid value we still fall through to the legacy path so
+                # existing behaviour is unchanged.
+                from .zh_date_parser import ZhDateParser
+
+                zh_result = ZhDateParser(
+                    no_year_policy=self.config.get("zh_no_year_policy", "current_year")
+                ).parse(date_input)
+                if zh_result is not None and zh_result.get("value") is not None:
+                    dt = zh_result["value"]
+            if dt is None:
+                try:
+                    if HAS_DATEUTIL and date_parser:
+                        dt = date_parser.parse(date_input)
+                    else:
+                        # Fallback to basic parsing
+                        dt = datetime.fromisoformat(date_input.replace("Z", "+00:00"))
+                except Exception:
+                    # Try relative date processing
+                    dt = self.relative_date_processor.process_relative_expression(
+                        date_input
+                    )
         elif isinstance(date_input, datetime):
             dt = date_input
         else:

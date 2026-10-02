@@ -168,6 +168,8 @@ from .number_normalizer import (
     UnitConverter,
 )
 from .registry import MethodRegistry, method_registry
+from .cjk_spacing import CJKSpacingNormalizer
+from .zh_date_parser import ZhDateParser
 from .text_cleaner import TextCleaner
 from .text_normalizer import (
     SpecialCharacterProcessor,
@@ -177,6 +179,9 @@ from .text_normalizer import (
 )
 
 __all__ = [
+    # Chinese (CJK) normalization
+    "CJKSpacingNormalizer",
+    "ZhDateParser",
     # Text normalization
     "TextNormalizer",
     "UnicodeNormalizer",
@@ -233,3 +238,39 @@ __all__ = [
     "NormalizeConfig",
     "normalize_config",
 ]
+
+
+# -- 中文规范化注册（franchise: method= 分发入口） ---------------------------
+# 注册后可用：
+#   normalize_text(text, method="cjk_spacing", policy="remove")
+#   normalize_date("2026年10月2日", method="cn_date")
+# 与 registry 的自定义方法约定一致；失败语义遵循各自模块（不抛内容异常）。
+
+
+def _cjk_spacing_method(text, **kwargs):
+    return CJKSpacingNormalizer(**kwargs).normalize(text)
+
+
+def _cn_date_method(date_input, format="ISO8601", timezone="UTC", **kwargs):
+    from datetime import datetime as _dt
+
+    result = ZhDateParser(
+        no_year_policy=kwargs.pop("no_year_policy", "current_year")
+    ).parse(str(date_input), reference=kwargs.pop("reference", None))
+    if result is None or result.get("value") is None:
+        raise ValueError(
+            "cn_date: no parsable Chinese date in %r (unsupported calendars "
+            "return None; check unsupported_matched)" % (date_input,)
+        )
+    value = result["value"]
+    if format == "date":
+        return value.date().isoformat()
+    if format == "ISO8601":
+        return value.isoformat()
+    return value.strftime(format)
+
+
+if "cjk_spacing" not in (method_registry.list_all("text") or {}):
+    method_registry.register("text", "cjk_spacing", _cjk_spacing_method)
+if "cn_date" not in (method_registry.list_all("date") or {}):
+    method_registry.register("date", "cn_date", _cn_date_method)

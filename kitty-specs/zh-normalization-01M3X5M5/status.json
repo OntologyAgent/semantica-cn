@@ -1,16 +1,16 @@
 {
-  "event_count": 18,
-  "last_event_id": "01M3XB06GC0MMCGZQWCRKZE7KS",
-  "materialized_at": "2026-10-02T03:37:20.140229+00:00",
-  "mission_number": "",
+  "event_count": 19,
+  "last_event_id": "01M3XB0W71NVBHTCP1YDKHJBWZ",
+  "materialized_at": "2026-10-02T03:37:42.369687+00:00",
+  "mission_number": "5",
   "mission_slug": "zh-normalization-01M3X5M5",
   "mission_type": "software-dev",
   "summary": {
-    "approved": 3,
+    "approved": 2,
     "blocked": 0,
     "canceled": 0,
     "claimed": 0,
-    "done": 0,
+    "done": 1,
     "for_review": 0,
     "in_progress": 0,
     "in_review": 0,
@@ -18,11 +18,11 @@
   },
   "work_packages": {
     "WP01": {
-      "actor": "user",
+      "actor": "merge",
       "force_count": 0,
-      "lane": "approved",
-      "last_event_id": "01M3XAV8DX71JGXEMKVSG2XT1Y",
-      "last_transition_at": "2026-10-02T03:34:38.269778+00:00"
+      "lane": "done",
+      "last_event_id": "01M3XB0W71NVBHTCP1YDKHJBWZ",
+      "last_transition_at": "2026-10-02T03:37:42.369687+00:00"
     },
     "WP02": {
       "actor": "user",

@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "mission_slug": "llm-extractor-family-01M3X5J7",
+  "mission_id": "01M3X5J7RPB6JQG1Q86235NGNH",
+  "mission_branch": "kitty/mission-llm-extractor-family-01M3X5J7",
+  "target_branch": "feature/llm-extractor-family",
+  "lanes": [
+    {
+      "lane_id": "lane-a",
+      "wp_ids": [
+        "WP01"
+      ],
+      "write_scope": [
+        "semantica/semantic_extract/methods.py",
+        "semantica/semantic_extract/ner_extractor.py",
+        "semantica/semantic_extract/relation_extractor.py",
+        "semantica/semantic_extract/triplet_extractor.py",
+        "tests/semantic_extract/test_prompt_entry.py"
+      ],
+      "predicted_surfaces": [],
+      "depends_on_lanes": [],
+      "parallel_group": 0
+    },
+    {
+      "lane_id": "lane-b",
+      "wp_ids": [
+        "WP02"
+      ],
+      "write_scope": [
+        "semantica/semantic_extract/coreference_resolver.py",
+        "tests/semantic_extract/test_coref_llm.py"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [],
+      "parallel_group": 0
+    },
+    {
+      "lane_id": "lane-c",
+      "wp_ids": [
+        "WP03"
+      ],
+      "write_scope": [
+        "README.zh-CN.md",
+        "docs_zh/integrations/mineru.md"
+      ],
+      "predicted_surfaces": [
+        "api"
+      ],
+      "depends_on_lanes": [
+        "lane-a",
+        "lane-b"
+      ],
+      "parallel_group": 1
+    }
+  ],
+  "computed_at": "2026-10-02T04:04:54.928299+00:00",
+  "computed_from": "dependency_graph+ownership",
+  "planning_artifact_wps": []
+}

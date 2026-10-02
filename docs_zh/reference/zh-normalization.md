@@ -2,7 +2,7 @@
 title: 中文规范化
 description: CJK 空格与中文日期——semantica-cn fork 的中文增强规范化器。
 source: reference/zh-normalization.md
-source_version: 8929bdb9a37cb4ceaff68746b15fb2187e12cb31
+source_version: cfd0097029a9647615dc5e67eb6c29d6cbac5ef3
 icon: "languages"
 ---
 
@@ -34,6 +34,16 @@ t = CJKSpacingNormalizer(policy="remove").normalize(t)
 ```
 
 细节：`normalize_detailed(text)` 返回 `{normalized, boundaries_adjusted, policy}`；纯西文输入 byte-identical；全角标点默认不与西文加空格（避免 `Semantica！` 的过度修正）；NBSP 透传。
+
+**Markdown 语法完整保留**（`preserve_markdown=True` 默认开，按 CommonMark 语义）：
+
+- 围栏代码块（``` / ~~~）与缩进代码块（≥4 空格）内容整段原样
+- 行内代码 span（\`…\`）内容原样
+- 行首块级标记（`#{1,6}` 标题、`>` 引用、`-`/`*`/`+`/`1.` 列表）后的空格保留——`## 折扣政策` 不会被吃成 `##折扣政策`，`split_by_heading` / `find("## N. …")` 不受影响
+- 强调标记与内容之间不插/删空格：add 不会把 `**加粗**` 改成 `** 加粗 **`（会破坏渲染）；`**加粗 术语**` 的标记结构原样、内容照常归一
+- 链接 `[文本](url)` 不受影响
+- `*` `#` `>` 在 Markdown 语境下不参与 CJK 边界判定（行中如 `版本#号` 随之不动，属可接受代价）
+- `preserve_markdown=False` 恢复逐字符处理（旧行为）
 
 ## 中文日期解析 `ZhDateParser`
 

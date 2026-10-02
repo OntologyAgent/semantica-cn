@@ -147,5 +147,64 @@ class TestDetailedOutput(unittest.TestCase):
             CJKSpacingNormalizer().normalize(123)
 
 
+class TestMarkdownPreservation(unittest.TestCase):
+    """CommonMark 语法完整保留（用户 2026-10-02 需求：不只是行首标记）。"""
+
+    MD = (
+        "## 3. 折扣政策\n"
+        "正文知 识 图 谱，支付 $5M，于 2026年10月2日 生效。\n"
+        "> 引用：结算 以 自然月 计\n"
+        "- 列表 项\n"
+        "1. 编号 项\n"
+        "    indented code 知 识\n"
+        "```\n"
+        "fenced code 知 识 块\n"
+        "```\n"
+        "行内代码 `npm install 知 识` 完成。**加粗 术语** 与 *斜体 术语*。\n"
+        "详见 [文本链接](https://example.com/a)。\n"
+    )
+
+    def setUp(self):
+        self.rm = CJKSpacingNormalizer(policy="remove")
+        self.add = CJKSpacingNormalizer()
+
+    def test_block_markers_keep_required_space(self):
+        out = self.rm.normalize(self.MD)
+        self.assertIn("## 3. 折扣政策", out)     # split_by_heading / find 兼容
+        self.assertIn("> 引用：结算以自然月计", out)
+        self.assertIn("- 列表项", out)
+        self.assertIn("1. 编号项", out)
+
+    def test_code_blocks_and_spans_untouched(self):
+        out = self.rm.normalize(self.MD)
+        self.assertIn("    indented code 知 识", out)   # 缩进代码块（≥4 空格）
+        self.assertIn("fenced code 知 识 块", out)      # 围栏内容
+        self.assertIn("`npm install 知 识`", out)       # 行内代码 span
+
+    def test_emphasis_syntax_preserved_content_normalized(self):
+        out = self.rm.normalize(self.MD)
+        self.assertIn("**加粗术语**", out)               # 标记结构原样，正文归一
+        self.assertIn("*斜体术语*", out)
+
+    def test_prose_normalized(self):
+        out = self.rm.normalize(self.MD)
+        self.assertIn("正文知识图谱，支付$5M，于2026年10月2日生效。", out)
+
+    def test_links_untouched(self):
+        out = self.rm.normalize(self.MD)
+        self.assertIn("[文本链接](https://example.com/a)", out)
+
+    def test_add_policy_does_not_break_emphasis(self):
+        self.assertEqual(self.add.normalize("**加粗**内容"), "**加粗**内容")
+
+    def test_switch_off_restores_old_behavior(self):
+        old = CJKSpacingNormalizer(policy="remove", preserve_markdown=False)
+        self.assertEqual(old.normalize("## 折扣政策"), "##折扣政策")
+
+    def test_markdown_mode_idempotent(self):
+        once = self.rm.normalize(self.MD)
+        self.assertEqual(self.rm.normalize(once), once)
+
+
 if __name__ == "__main__":
     unittest.main()

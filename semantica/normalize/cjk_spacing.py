@@ -78,6 +78,20 @@ _REMOVE_PATTERNS = (
 # Fast-path check: anything CJK-ish at all (ideographs or fullwidth space)?
 _NEEDS_WORK = re.compile("[%s\u3000]" % _CJK_IDEOGRAPH)
 
+# Markdown 防护（CommonMark 语义）：默认 preserve_markdown=True 时，
+# 1) 围栏代码块（``` / ~~~）与缩进代码块（≥4 空格）整行原样；
+# 2) 行内代码 span（`…`）内容原样；
+# 3) 行首块级标记（#{1,6} 标题、> 引用、-/*/+/1. 列表）后的空格保留；
+# 4) 强调与标记符号 * # > 视为非边界字符——add 不会把 **加粗** 改成
+#    ** 加粗 **（破坏强调），remove 不会吃掉 ## 标题 / > 引用的空格。
+#    行中同样的符号（如 "版本#号"）随之不参与 CJK 边界，属可接受代价。
+_MD_BLOCK_MARKER = re.compile(r"^(\s{0,3}(?:#{1,6}|>+|-|\*|\+|\d+[.\)]))(\s+)")
+_MD_FENCE = re.compile(r"^\s{0,3}(`{3,}|~{3,})")
+_MD_INDENTED_CODE = re.compile(r"^    \S")
+_MD_INLINE_CODE = re.compile(r"(`+)(.+?)\1")
+_MD_MASK = {"*": "\x00", "#": "\x01", ">": "\x02"}
+_MD_UNMASK = {v: k for k, v in _MD_MASK.items()}
+
 _VALID_POLICIES = ("add", "remove", "preserve")
 
 
@@ -96,11 +110,15 @@ class CJKSpacingNormalizer:
     unchanged (byte-identical).
     """
 
-    def __init__(self, policy: str = "add", **config: Any) -> None:
+    def __init__(self, policy: str = "add", preserve_markdown: bool = True,
+                 **config: Any) -> None:
         """Initialize with a spacing policy.
 
         Args:
             policy: One of "add", "remove", "preserve" (default "add").
+            preserve_markdown: 若为 True（默认），行首块级标记（#{1,6} 标题、
+              > 引用、-/*/+ 与 "1." 列表）后的空格不被 remove 吃掉，围栏代
+              码块（``` / ~~~）内容整段原样。设为 False 恢复逐字符处理。
             **config: Reserved for future options; unknown keys are ignored.
 
         Raises:
@@ -112,6 +130,7 @@ class CJKSpacingNormalizer:
                 "policy must be one of %s, got %r" % (", ".join(_VALID_POLICIES), policy)
             )
         self.policy = policy
+        self.preserve_markdown = preserve_markdown
         self.config = config
 
     def normalize(self, text: str) -> str:
@@ -134,10 +153,17 @@ class CJKSpacingNormalizer:
         if not text or not _NEEDS_WORK.search(text):
             return {"normalized": text, "boundaries_adjusted": 0, "policy": self.policy}
 
-        # Fullwidth space unification happens in every policy first; it is
-        # not counted as a boundary adjustment (it is a separate rule).
-        working = text.replace("\u3000", " ")
+        if self.preserve_markdown:
+            working, adjusted = self._apply_markdown_aware(text)
+        else:
+            working, adjusted = self._apply_plain(text)
 
+        return {"normalized": working, "boundaries_adjusted": adjusted, "policy": self.policy}
+
+    def _apply_plain(self, text: str):
+        """逐字符整体处理（preserve_markdown=False 的旧行为）。"""
+        # 全角空格归一在任何策略下先执行（不计入边界数）。
+        working = text.replace("\u3000", " ")
         adjusted = 0
         if self.policy == "add":
             for pattern, template in _ADD_PATTERNS:
@@ -147,5 +173,50 @@ class CJKSpacingNormalizer:
             for pattern, template in _REMOVE_PATTERNS:
                 adjusted += len(pattern.findall(working))
                 working = pattern.sub(template, working)
+        return working, adjusted
 
-        return {"normalized": working, "boundaries_adjusted": adjusted, "policy": self.policy}
+    def _apply_markdown_aware(self, text: str):
+        """按行处理，完整保留 Markdown 语法（见 _MD_* 常量注释）。"""
+        out_lines = []
+        adjusted = 0
+        in_fence = False
+        for line in text.split("\n"):
+            if _MD_FENCE.match(line):
+                in_fence = not in_fence
+                out_lines.append(line)
+                continue
+            if in_fence or _MD_INDENTED_CODE.match(line):
+                out_lines.append(line)          # 代码内容不动（含 U+3000）
+                continue
+            line = line.replace("\u3000", " ")
+            marker = _MD_BLOCK_MARKER.match(line)
+            if marker:
+                prefix, rest = line[:marker.end(1)], line[marker.end(1):]
+                out_lines.append(prefix + self._process_prose(rest))
+                adjusted += self._last_adjusted
+            else:
+                out_lines.append(self._process_prose(line))
+                adjusted += self._last_adjusted
+        return "\n".join(out_lines), adjusted
+
+    def _process_prose(self, segment: str) -> str:
+        """处理正文段：行内代码 span 原样，其余部分对 * # > 掩码后归一。"""
+        parts = []
+        cursor = 0
+        self._last_adjusted = 0
+        for m in _MD_INLINE_CODE.finditer(segment):
+            head = segment[cursor:m.start()]
+            parts.append(self._normalize_masked(head))
+            parts.append(m.group(0))            # 行内代码原样
+            cursor = m.end()
+        parts.append(self._normalize_masked(segment[cursor:]))
+        return "".join(parts)
+
+    def _normalize_masked(self, prose: str) -> str:
+        for char, sentinel in _MD_MASK.items():
+            prose = prose.replace(char, sentinel)
+        processed, n = self._apply_plain(prose)
+        self._last_adjusted = (getattr(self, "_last_adjusted", 0)) + n
+        for sentinel, char in _MD_UNMASK.items():
+            processed = processed.replace(sentinel, char)
+        return processed

@@ -9,6 +9,6 @@
   "purpose_context": "This mission advances llm extractor family on main so stakeholders can track the work from mission creation onward.",
   "purpose_tldr": "llm extractor family",
   "slug": "llm-extractor-family-01M3X5J7",
-  "target_branch": "main",
+  "target_branch": "feature/llm-extractor-family",
   "topology": "single_branch"
 }

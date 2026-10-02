@@ -143,7 +143,7 @@ class NumberNormalizer:
             'b': 1_000_000_000,
             't': 1_000_000_000_000
         }
-        
+
         if cleaned and cleaned[-1].lower() in suffix_map:
             last_char = cleaned[-1].lower()
             try:
@@ -595,15 +595,18 @@ class CurrencyNormalizer:
         Parse a numeric string into a float, applying magnitude suffixes.
 
         Args:
-            amount_str: Numeric string, optionally ending in a K/M/B
-                magnitude suffix (e.g., "5", "2.5M", "100k")
+            amount_str: Numeric string, optionally ending in a K/M/B or MM
+                magnitude suffix (e.g., "5", "2.5M", "100k", "5MM")
 
         Returns:
             float: Parsed amount, or None if the string isn't a valid number
         """
         amount_str = amount_str.strip()
         multiplier = 1
-        if amount_str and amount_str[-1].lower() in self.magnitude_suffixes:
+        if len(amount_str) >= 2 and amount_str[-2:].lower() == "mm":
+            multiplier = self.magnitude_suffixes["m"]
+            amount_str = amount_str[:-2]
+        elif amount_str and amount_str[-1].lower() in self.magnitude_suffixes:
             multiplier = self.magnitude_suffixes[amount_str[-1].lower()]
             amount_str = amount_str[:-1]
         try:
@@ -675,11 +678,11 @@ class CurrencyNormalizer:
             )
             if digits_match and trailing_char != ".":
                 amount_str = digits_match.group().replace(",", "")
-                # Only a k/m/b directly after the number counts as a magnitude
+                # Only a k/m/b or mm directly after the number counts as a magnitude
                 # suffix, so stray letters elsewhere (e.g. "ruby 100") aren't
                 # mistaken for one.
                 suffix_match = re.match(
-                    r"\s*([kKmMbB])(?![A-Za-z])",
+                    r"\s*([mM]{2}|[kKmMbB])(?![A-Za-z0-9])",
                     currency_input[digits_match.end() :],
                 )
                 if suffix_match:

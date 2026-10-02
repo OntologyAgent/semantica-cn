@@ -6,7 +6,7 @@
 
 Semantica 是知识图谱(Knowledge Graph)基础设施：把分散的原始数据加工成一张可查询、可审计的图，充当 LLM 应用底下的确定性基础设施层。
 
-本仓库是上游 [semantica-agi/semantica](https://github.com/semantica-agi/semantica) 的中文文档 fork，同时以 **`semantica-cn`** 为名在 PyPI 发布同源 Python 包（`pip install semantica-cn`，与官方 `semantica` 包二选一安装，不要同时装）。完整的项目介绍、安装方式与功能清单以 [英文 README](README.md) 为准。
+本仓库是上游 [semantica-agi/semantica](https://github.com/semantica-agi/semantica) 的中文文档 fork，同时以 **`semantica-cn`** 为名在 PyPI 发布同源 Python 包（`pip install semantica-cn`，与官方 `semantica` 包二选一安装，不要同时装）。完整的项目介绍、安装方式与功能清单以 [英文 README](README.md) 为准。fork 的 MinerU 解析器额外支持最新版 MinerU 4.x（官方仍钉 2.x）。
 
 ## 中文文档
 

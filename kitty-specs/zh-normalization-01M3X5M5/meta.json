@@ -9,6 +9,6 @@
   "purpose_context": "This mission advances zh normalization on main so stakeholders can track the work from mission creation onward.",
   "purpose_tldr": "zh normalization",
   "slug": "zh-normalization-01M3X5M5",
-  "target_branch": "main",
+  "target_branch": "feature/zh-normalization",
   "topology": "single_branch"
 }

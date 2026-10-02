@@ -39,8 +39,8 @@
 **Independent test**: `uv run --frozen pytest tests/semantic_extract/test_coref_llm.py -q` 全绿
 **Estimated prompt size**: ~130 lines
 
-- [ ] T004 resolve_aliases_llm 实现 (WP02)
-- [ ] T005 mock 测试 (WP02)
+- [x] T004 resolve_aliases_llm 实现 (WP02)
+- [x] T005 mock 测试 (WP02)
 
 **Dependencies**: none（独立于 WP01）
 **Risks**: 子串误替换（独立出现判定兜底）；幻觉映射（门槛+skipped 记录）

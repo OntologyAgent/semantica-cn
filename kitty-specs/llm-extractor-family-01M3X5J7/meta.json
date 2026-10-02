@@ -10,5 +10,7 @@
   "purpose_tldr": "llm extractor family",
   "slug": "llm-extractor-family-01M3X5J7",
   "target_branch": "feature/llm-extractor-family",
-  "topology": "single_branch"
+  "topology": "single_branch",
+  "vcs": "git",
+  "vcs_locked_at": "2026-10-02T04:05:18.474903+00:00"
 }

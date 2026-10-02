@@ -4,6 +4,37 @@ artifact_type: spec-kitty.analysis-report
 command: /spec-kitty.analyze
 mission_slug: zh-normalization-01M3X5M5
 mission_id: 01M3X5M5MBTGRTS6PKBTEV86EC
+generated_at: '2026-10-02T03:35:53.511659+00:00'
+analyzer_agent: unknown
+input_artifacts:
+  spec.md:
+    path: /Users/luofisher/ToolsChain/semantica-cn/kitty-specs/zh-normalization-01M3X5M5/spec.md
+    sha256: fdcc917c8026fa549970708de0e9ca396f73eeef6343c32efa78d3e5cc36449b
+  plan.md:
+    path: /Users/luofisher/ToolsChain/semantica-cn/kitty-specs/zh-normalization-01M3X5M5/plan.md
+    sha256: e1e9f195b9a91d05f2810628e8ab60a2843e9be8fc73f7f3a0498aa8f351db21
+  tasks.md:
+    path: /Users/luofisher/ToolsChain/semantica-cn/kitty-specs/zh-normalization-01M3X5M5/tasks.md
+    sha256: 7ef9d6d6ad599a18f3fb475fc65c2a17b18a19f0708c00377c19d06b58e2730f
+  charter:
+    path: /Users/luofisher/ToolsChain/semantica-cn/.kittify/charter/charter.md
+    sha256: a5e01a009b82bb321c397f1f4d566511a1a4713370ab47480516eb838cffce67
+verdict: unknown
+issue_counts:
+  low:
+  info:
+  critical:
+  medium:
+  high:
+findings: []
+---
+
+---
+schema_version: 1
+artifact_type: spec-kitty.analysis-report
+command: /spec-kitty.analyze
+mission_slug: zh-normalization-01M3X5M5
+mission_id: 01M3X5M5MBTGRTS6PKBTEV86EC
 generated_at: '2026-10-02T11:35:27.617346+08:00'
 analyzer_agent: python-pedro
 input_artifacts:

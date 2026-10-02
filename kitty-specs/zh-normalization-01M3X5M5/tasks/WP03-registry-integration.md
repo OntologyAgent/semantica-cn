@@ -74,3 +74,4 @@ python -c "from semantica.normalize import CJKSpacingNormalizer, ZhDateParser, D
 
 - 2026-10-02T03:36:00Z – python-pedro – shell_pid=77199 – Assigned agent via action command
 - 2026-10-02T03:37:16Z – python-pedro – shell_pid=77199 – 10/10 registry/dispatch/composition tests
+- 2026-10-02T03:37:21Z – user – shell_pid=77199 – Self-review: dispatch verified, exports in __all__, default paths untouched

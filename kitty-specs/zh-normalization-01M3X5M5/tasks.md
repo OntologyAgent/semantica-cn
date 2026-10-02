@@ -27,9 +27,9 @@
 **Independent test**: `uv run --frozen pytest tests/normalize/test_cjk_spacing.py -q` 全绿；`normalize(normalize(x)) == normalize(x)` 对全部测试样例成立
 **Estimated prompt size**: ~150 lines
 
-- [ ] T001 cjk_spacing.py：Unicode 字符类判定 + 三策略幂等实现 + U+3000 归一 (WP01)
-- [ ] T002 normalize_detailed 计数路径 + 纯西文 byte-identical 保障 (WP01)
-- [ ] T003 test_cjk_spacing.py：幂等性/三策略/R2 边界样例/全角标点不过度修正 (WP01)
+- [x] T001 cjk_spacing.py：Unicode 字符类判定 + 三策略幂等实现 + U+3000 归一 (WP01)
+- [x] T002 normalize_detailed 计数路径 + 纯西文 byte-identical 保障 (WP01)
+- [x] T003 test_cjk_spacing.py：幂等性/三策略/R2 边界样例/全角标点不过度修正 (WP01)
 
 **Dependencies**: none
 **Parallel opportunities**: 无（WP02 可并行开发但 WP03 依赖两者）

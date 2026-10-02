@@ -43,10 +43,10 @@
 **Independent test**: `uv run --frozen pytest tests/normalize/test_zh_date_parser.py tests/normalize/test_date_normalizer.py -q` 全绿；既有英文用例零回改
 **Estimated prompt size**: ~180 lines
 
-- [ ] T004 zh_date_parser.py：R3 格式家族正则集 + 汉字数字转换 (WP02)
-- [ ] T005 no_year_policy 配置 + 非法日期拒绝 + 不支持历法保留计数 (WP02)
-- [ ] T006 DateNormalizer 路由扩展：中文模式独占，未命中回退 (WP02)
-- [ ] T007 test_zh_date_parser.py + test_date_normalizer.py 中文与回退用例 (WP02)
+- [x] T004 zh_date_parser.py：R3 格式家族正则集 + 汉字数字转换 (WP02)
+- [x] T005 no_year_policy 配置 + 非法日期拒绝 + 不支持历法保留计数 (WP02)
+- [x] T006 DateNormalizer 路由扩展：中文模式独占，未命中回退 (WP02)
+- [x] T007 test_zh_date_parser.py + test_date_normalizer.py 中文与回退用例 (WP02)
 
 **Dependencies**: none（独立于 WP01）
 **Parallel opportunities**: 与 WP01 并行

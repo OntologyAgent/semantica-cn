@@ -1252,11 +1252,7 @@ def extract_entities_llm(
         model = kwargs.pop("llm_model")
     
     # Check cache
-    # 用户自定义提示词（整体替换默认指令体；None=官方默认行为）
-    custom_prompt = kwargs.pop("prompt", None)
-
     cache_params = {
-        "prompt": custom_prompt,
         "provider": provider,
         "model": model,
         "max_text_length": max_text_length,
@@ -1377,14 +1373,6 @@ Instructions:
 
 Text to extract from:
 {text}"""
-
-        if custom_prompt:
-            prompt = f"""            {custom_prompt}
-
-            Return ONLY a JSON object with an "entities" key: a flat list of entities, each with "text", "label" and "confidence".
-
-            Text to extract from:
-            {text}"""
         
         # Use typed generation with Pydantic schema
         result_obj = llm.generate_typed(prompt, schema=EntitiesResponse, **kwargs)
@@ -2005,11 +1993,7 @@ def extract_relations_llm(
         model = kwargs.pop("llm_model")
     
     # Check cache
-    # 用户自定义提示词（整体替换默认指令体；None=官方默认行为）
-    custom_prompt = kwargs.pop("prompt", None)
-
     cache_params = {
-        "prompt": custom_prompt,
         "provider": provider,
         "model": model,
         "max_text_length": max_text_length,
@@ -2156,15 +2140,6 @@ Instructions:
 Text to extract from:
 {text}
 Entities found in text: {entities_str}"""
-
-        if custom_prompt:
-            prompt = f"""            {custom_prompt}
-
-            Return ONLY a JSON object with a "relations" key: a list of relations, each with "subject", "predicate", "object" and optional "confidence".
-
-            Text to extract from:
-            {text}
-            Entities found in text: {entities_str}"""
     else:
         # ── Temporal-extended prompt ─────────────────────────────────────────
         prompt = f"""Extract relations between entities from the provided text, along with temporal validity information for each relation.
@@ -2224,15 +2199,6 @@ Instructions:
 Text to extract from:
 {text}
 Entities found in text: {entities_str}"""
-
-        if custom_prompt:
-            prompt = f"""            {custom_prompt}
-
-            Return ONLY a JSON object with a "relations" key: a list of relations, each with "subject", "predicate", "object" and optional "confidence".
-
-            Text to extract from:
-            {text}
-            Entities found in text: {entities_str}"""
 
     try:
         # Use typed generation with Pydantic schema
@@ -2736,11 +2702,7 @@ def extract_triplets_llm(
         model = kwargs.pop("llm_model")
     
     # Check cache
-    # 用户自定义提示词（整体替换默认指令体；None=官方默认行为）
-    custom_prompt = kwargs.pop("prompt", None)
-
     cache_params = {
-        "prompt": custom_prompt,
         "provider": provider,
         "model": model,
         "max_text_length": max_text_length,
@@ -2858,14 +2820,6 @@ Instructions:
 
 Text to extract from:
 {text}"""
-
-    if custom_prompt:
-        prompt = f"""        {custom_prompt}
-
-        Return ONLY a JSON object with a "triplets" key: a list of triplets, each with "subject", "predicate", "object" and optional "confidence".
-
-        Text to extract from:
-        {text}"""
 
     try:
         # Use typed generation with Pydantic schema

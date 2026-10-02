@@ -330,3 +330,43 @@ class ZhDateParser:
             ZhDateParser.rejected_count += 1
             return dict(base, value=None)
         return dict(base, value=reference.replace(hour=hour, minute=minute, second=0, microsecond=0))
+
+
+# -- fork 扩展：中文路由的 DateNormalizer（继承，不改上游） -------------------
+
+_ZH_HINT = re.compile(r"[年月日号时]|今天|明天|昨天|前天|后天|大前天|大后天|下周")
+
+
+class ZhDateNormalizer:
+    """带中文路由的日期规范化器（组合扩展，零侵入上游 DateNormalizer）。
+
+    输入含汉字日期提示时先走 :class:`ZhDateParser`；未命中或无提示回退
+    上游 :class:`~semantica.normalize.date_normalizer.DateNormalizer`
+    （dateutil 路径，英文行为零变化）。输出形态与父类一致（ISO 字符串）。
+    """
+
+    def __init__(self, no_year_policy: str = "current_year", **config):
+        from .date_normalizer import DateNormalizer
+
+        self._fallback = DateNormalizer(**config)
+        self._parser = ZhDateParser(no_year_policy=no_year_policy)
+
+    def normalize_date(self, date_input, format: str = "ISO8601", timezone: str = "UTC", **options):
+        value = None
+        if isinstance(date_input, str) and _ZH_HINT.search(date_input):
+            result = self._parser.parse(date_input)
+            if result is not None and result.get("value") is not None:
+                value = result["value"]
+        if value is None:
+            return self._fallback.normalize_date(
+                date_input, format=format, timezone=timezone, **options)
+        dt = value
+        if timezone != "UTC":
+            dt = self._fallback.timezone_normalizer.normalize_timezone(dt, timezone)
+        else:
+            dt = self._fallback.timezone_normalizer.convert_to_utc(dt)
+        if format == "ISO8601":
+            return dt.isoformat()
+        if format == "date":
+            return dt.date().isoformat()
+        return dt.strftime(format)

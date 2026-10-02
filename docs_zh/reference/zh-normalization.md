@@ -2,7 +2,7 @@
 title: 中文规范化
 description: CJK 空格与中文日期——semantica-cn fork 的中文增强规范化器。
 source: reference/zh-normalization.md
-source_version: 14ae40414c8cc85266d05096f2b8ea98527ef8bb
+source_version: 8929bdb9a37cb4ceaff68746b15fb2187e12cb31
 icon: "languages"
 ---
 
@@ -75,13 +75,13 @@ methods.normalize_date("2026年10月2日", method="cn_date", format="date")     
 
 `cn_date` 无可解析模式时抛 `ValueError`（不静默返回原文）。
 
-`DateNormalizer` 也已内置路由——输入含汉字日期特征时自动走中文解析，否则维持 dateutil 原路径（英文行为零变化）：
+需要 `DateNormalizer` 直取中文时用 fork 扩展类 `ZhDateNormalizer`（组合实现，上游 `DateNormalizer` 源码零改动）——输入含汉字日期特征时先走中文解析，未命中回退父类 dateutil 路径：
 
 ```python
-from semantica.normalize import DateNormalizer
+from semantica.normalize import ZhDateNormalizer
 
-DateNormalizer().normalize_date("2026年10月2日")   # -> "2026-10-02T00:00:00+00:00"
-DateNormalizer().normalize_date("2023-01-15")      # 原路径不变
+ZhDateNormalizer().normalize_date("2026年10月2日")   # -> "2026-10-02T00:00:00+00:00"
+ZhDateNormalizer().normalize_date("2023-01-15")      # 回退父类，行为不变
 ```
 
 ## 边界速查

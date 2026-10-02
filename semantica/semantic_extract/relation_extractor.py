@@ -407,7 +407,6 @@ class RelationExtractor:
                         method_options["provider"] = all_options.get(
                             "provider", "openai"
                         )
-                        method_options["prompt"] = all_options.get("prompt")
                         method_options["model"] = all_options.get(
                             "llm_model", all_options.get("model")
                         )

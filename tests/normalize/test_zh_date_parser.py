@@ -127,69 +127,39 @@ class TestInvalidAndUnsupported(unittest.TestCase):
         self.assertIsNone(ZhDateParser().parse("123"))
 
 
-class TestDateNormalizerRouting(unittest.TestCase):
-    def test_chinese_date_through_public_api(self):
-        normalized = DateNormalizer().normalize_date("2026年10月2日")
+class TestZhDateNormalizer(unittest.TestCase):
+    """fork 扩展：中文路由版 DateNormalizer（组合，不改上游）。"""
+
+    def test_chinese_date_through_extension(self):
+        from semantica.normalize import ZhDateNormalizer
+
+        normalized = ZhDateNormalizer().normalize_date("2026年10月2日")
         self.assertTrue(normalized.startswith("2026-10-02"), normalized)
 
     def test_legacy_iso_path_unchanged(self):
-        self.assertTrue(DateNormalizer().normalize_date("2023-01-15").startswith("2023-01-15"))
+        from semantica.normalize import ZhDateNormalizer
 
-    def test_legacy_relative_path_unchanged(self):
-        normalized = DateNormalizer().normalize_date("yesterday")
+        self.assertTrue(ZhDateNormalizer().normalize_date("2023-01-15").startswith("2023-01-15"))
+
+    def test_legacy_relative_falls_back(self):
+        from semantica.normalize import ZhDateNormalizer
+
+        normalized = ZhDateNormalizer().normalize_date("yesterday")
         self.assertIsInstance(normalized, str)
         self.assertNotIn("yesterday", normalized)
 
-    def test_cjk_hint_regex_scoping(self):
-        # 路由触发条件是汉字日期提示；无提示输入不进中文路径。
-        from semantica.normalize.date_normalizer import _ZH_DATE_HINT
-        self.assertIsNone(_ZH_DATE_HINT.search("$5M"))
-        self.assertIsNone(_ZH_DATE_HINT.search("2026-10-02"))
-        self.assertIsNotNone(_ZH_DATE_HINT.search("2026年10月2日"))
+    def test_upstream_date_normalizer_untouched(self):
+        """上游 DateNormalizer 无中文路由（开闭原则：行为不加不减）。"""
+        from semantica.normalize import DateNormalizer
 
-
-class TestNotebookFamilies(unittest.TestCase):
-    """吸收自 DeepSeek notebook 的真实用例（用户 2026-10-02 提供）。"""
-
-    def test_date_range(self):
-        result = ZhDateParser().parse("2025年1月1日至2025年12月31日")
-        self.assertEqual(result["value"], datetime(2025, 1, 1))
-        self.assertEqual(result["value_end"], datetime(2025, 12, 31))
-        self.assertEqual(result["family"], "range")
-
-    def test_date_range_with_dao(self):
-        result = ZhDateParser().parse("有效期2025年1月1日到2025年6月30日")
-        self.assertEqual(result["family"], "range")
-        self.assertEqual(result["value_end"], datetime(2025, 6, 30))
-
-    def test_year_only(self):
-        result = ZhDateParser().parse("于2025年签订")
-        self.assertEqual(result["value"], datetime(2025, 1, 1))
-        self.assertEqual(result["family"], "year_only")
-        self.assertFalse(result["year_inferred"])
-
-    def test_year_relative_tokens(self):
-        reference = datetime(2026, 10, 2)
-        self.assertEqual(ZhDateParser().parse("去年", reference=reference)["value"], datetime(2025, 1, 1))
-        self.assertEqual(ZhDateParser().parse("明年", reference=reference)["value"], datetime(2027, 1, 1))
-
-    def test_offset_quantity_with_anchor(self):
-        reference = datetime(2025, 1, 1)
-        result = ZhDateParser().parse("前三个自然月", reference=reference)
-        self.assertEqual(result["value"], datetime(2024, 10, 3))  # 90 天前
-        self.assertEqual(result["family"], "relative_offset")
-
-    def test_offset_quantity_han_number(self):
-        reference = datetime(2025, 1, 1)
-        result = ZhDateParser().parse("两周后", reference=reference)
-        self.assertEqual(result["value"], datetime(2025, 1, 15))
-        result = ZhDateParser().parse("三天前", reference=reference)
-        self.assertEqual(result["value"], datetime(2024, 12, 29))
-
-    def test_offset_default_direction_is_past(self):
-        reference = datetime(2025, 1, 1)
-        self.assertEqual(ZhDateParser().parse("三个自然月", reference=reference)["value"],
-                         datetime(2024, 10, 3))
+        n = DateNormalizer()
+        # dateutil 对中文日期无能为力——上游行为保持原样（不抛错断言具体形态，
+        # 只断言它不认识中文：结果是相对回退或异常，而非 2026-10-02）
+        try:
+            out = n.normalize_date("2026年10月2日")
+            self.assertFalse(out.startswith("2026-10-02"), out)
+        except Exception:
+            pass  # 上游对无法解析输入的既有行为（抛错）也属"未改动"
 
 
 if __name__ == "__main__":

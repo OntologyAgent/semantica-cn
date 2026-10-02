@@ -111,6 +111,11 @@ _LAZY_EXPORTS: Dict[str, Tuple[str, str]] = {
     "SchemaValidator": (".schema_validator", "SchemaValidator"),
     # Providers
     "BaseProvider": (".providers", "BaseProvider"),
+    # fork 扩展（零侵入）：提示词驱动抽取 + 别名消解
+    "extract_entities_llm_prompt": (".prompt_extraction", "extract_entities_llm_prompt"),
+    "extract_relations_llm_prompt": (".prompt_extraction", "extract_relations_llm_prompt"),
+    "extract_triplets_llm_prompt": (".prompt_extraction", "extract_triplets_llm_prompt"),
+    "resolve_aliases_llm": (".prompt_extraction", "resolve_aliases_llm"),
     "OpenAIProvider": (".providers", "OpenAIProvider"),
     "GeminiProvider": (".providers", "GeminiProvider"),
     "GroqProvider": (".providers", "GroqProvider"),
@@ -138,6 +143,10 @@ _LAZY_EXPORTS: Dict[str, Tuple[str, str]] = {
     "get_triplet_method": (".methods", "get_triplet_method"),
     "configure_cache": (".methods", "configure_cache"),
 }
+
+
+# fork 扩展注册（零侵入）：导入即向 method_registry 注册 "llm_prompt"
+from . import prompt_extraction as _prompt_extraction  # noqa: F401,E402
 
 
 def __getattr__(name: str) -> Any:
@@ -233,4 +242,9 @@ __all__ = [
     "get_entity_method",
     "get_relation_method",
     "get_triplet_method",
+    # fork 扩展
+    "extract_entities_llm_prompt",
+    "extract_relations_llm_prompt",
+    "extract_triplets_llm_prompt",
+    "resolve_aliases_llm",
 ]

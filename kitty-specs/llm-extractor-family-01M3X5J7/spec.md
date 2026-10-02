@@ -73,3 +73,4 @@ semantica 的语义抽取层（`semantica/semantic_extract/`）当前以规则/�
 
 - 2026-10-02 用户提出 7 项路线图待办（本 mission 覆盖其中 ③–⑦ 与 ①），要求统一「自定义提示词 + 约束主题方向/类型」能力
 - 2026-10-02 用户澄清（提供 DeepSeek notebook 后）：抽取约束不做分项体系，**只要提示词入口**——目的、方法、例子、输出要求等全部经一个 prompt 参数灌入；FR-001 已按此改写
+- 2026-10-02 **用户执行开闭原则裁决**：初版直接修改了上游 extract_*_llm / 三个 Extractor / CoreferenceResolver 源码，被否决。重构为纯扩展：`semantica/semantic_extract/prompt_extraction.py` 经官方 method_registry 注册 `"llm_prompt"` 方法 + provider 包装注入提示词 + 委托期旁路上游缓存（其键不含 prompt）；`resolve_aliases_llm` 为模块级函数。上游六文件零改动（测试守卫固化）。zh 侧同理：`ZhDateNormalizer` 组合扩展替代 DateNormalizer 路由改写

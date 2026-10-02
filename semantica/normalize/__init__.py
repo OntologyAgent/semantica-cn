@@ -169,7 +169,7 @@ from .number_normalizer import (
 )
 from .registry import MethodRegistry, method_registry
 from .cjk_spacing import CJKSpacingNormalizer
-from .zh_date_parser import ZhDateParser
+from .zh_date_parser import ZhDateParser, ZhDateNormalizer
 from .text_cleaner import TextCleaner
 from .text_normalizer import (
     SpecialCharacterProcessor,
@@ -182,6 +182,7 @@ __all__ = [
     # Chinese (CJK) normalization
     "CJKSpacingNormalizer",
     "ZhDateParser",
+    "ZhDateNormalizer",
     # Text normalization
     "TextNormalizer",
     "UnicodeNormalizer",

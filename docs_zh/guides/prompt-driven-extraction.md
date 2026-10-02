@@ -2,7 +2,7 @@
 title: 提示词驱动的抽取
 description: 一个 prompt 参数控制五类 LLM 抽取——目的、方法、例子、输出要求全由提示词承载。
 source: guides/prompt-driven-extraction.md
-source_version: debcfcee92f4060c0b9276cf5f95d1847b6913e2
+source_version: 6430bda76ee40df375e07427c56c2b3d31b97dc5
 icon: "sparkles"
 ---
 
@@ -23,8 +23,8 @@ prompt = """你是医药商业政策解析器。只抽取：
 
 输出要求：宁缺毋滥，confidence 低于 0.7 的不要。"""
 
-common = dict(method="llm", provider="deepseek", llm_model="deepseek-flash",
-              api_key=KEY, prompt=prompt)
+common = dict(method="llm_prompt", provider="deepseek", llm_model="deepseek-flash",
+              api_key=KEY, prompt=prompt)   # method 换名即启用，官方 "llm" 行为零变化
 
 ner  = NERExtractor(**common)
 rel  = RelationExtractor(**common)
@@ -35,9 +35,14 @@ relations   = rel.extract_relations(text, entities)
 triplets    = trip.extract(text, entities=entities, relations=relations)
 ```
 
+> **零侵入设计**：本能力是 fork 扩展模块（`semantica/semantic_extract/prompt_extraction.py`），
+> 通过官方 `method_registry` 注册新方法名 `"llm_prompt"` 实现——上游 `extract_*_llm`、
+> 三个 Extractor 类与 `CoreferenceResolver` 源码零改动。代价：prompt 模式不共享上游
+> 结果缓存（上游缓存键不含 prompt，复用会串结果），重复调用会重打 LLM。
+
 **语义**：
 
-- `prompt=None`（缺省）＝官方默认行为，**零变化**
+- `prompt=None`（缺省）＝退回官方默认行为，**零变化**
 - 非空时替换默认指令体；框架自动附加两样东西——schema 守卫尾（一行输出结构提示）与原文注入。输出仍走 pydantic schema 校验，解析失败路径与默认一致
 - 相同文本不同 prompt **不共享缓存**
 - `EventDetector` 由 NER/Relation 组合派生，prompt 经底层链路自动生效
@@ -47,10 +52,9 @@ triplets    = trip.extract(text, entities=entities, relations=relations)
 中文政策文本里「岭川」「华跃北京」这类简称会让抽取和建图碎片化。`resolve_aliases_llm` 在抽取前把别名归并成规范全称：
 
 ```python
-from semantica.semantic_extract import CoreferenceResolver
+from semantica.semantic_extract import resolve_aliases_llm
 
-coref = CoreferenceResolver()
-result = coref.resolve_aliases_llm(
+result = resolve_aliases_llm(
     text, provider="deepseek", api_key=KEY,
     min_confidence=0.85,          # 映射置信度门槛，防幻觉
     # prompt=...,                 # 可整体替换默认映射指令

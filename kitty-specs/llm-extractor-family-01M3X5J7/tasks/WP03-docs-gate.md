@@ -13,6 +13,7 @@ branch_strategy: Planning artifacts for this mission were generated on feature/l
 subtasks:
 - T006
 - T007
+shell_pid: '81050'
 history: []
 agent_profile: python-pedro
 authoritative_surface: docs_zh/integrations/mineru.md

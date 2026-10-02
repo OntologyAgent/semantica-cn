@@ -8,6 +8,10 @@ icon: "file-pdf"
 
 > 解析扫描件、公式密集和中日韩 PDF：输出版面感知的 markdown，公式转 LaTeX，表格返回结构化数据。
 
+<Note>
+  **本 fork 支持 MinerU 4.x（当前最新 4.0.10）**：导入时自动探测 API 代际——MinerU ≥ 4 走公开 SDK（`mineru.parse`），2.x 仍走 `do_parse` 路径。`semantica-cn[parse-mineru]` 安装 `mineru[torch]>=4.0,<5`（4.x 的本地解析 extra）；backend 映射到质量档位（pipeline→basic、vlm-*→standard，也可直接传 flash/basic/standard/advanced）。官方 semantica 仍钉 2.x。
+</Note>
+
 
 ## 概述
 

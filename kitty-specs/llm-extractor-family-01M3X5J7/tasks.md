@@ -24,9 +24,9 @@
 **Independent test**: `uv run --frozen pytest tests/semantic_extract/test_prompt_entry.py -q` 全绿
 **Estimated prompt size**: ~140 lines
 
-- [ ] T001 methods.py 四个提示词点 (WP01)
-- [ ] T002 三个 extractor 透传 (WP01)
-- [ ] T003 mock 测试 (WP01)
+- [x] T001 methods.py 四个提示词点 (WP01)
+- [x] T002 三个 extractor 透传 (WP01)
+- [x] T003 mock 测试 (WP01)
 
 **Dependencies**: none
 **Risks**: 缓存键漏纳 prompt；守卫尾与用户 prompt 的输出要求冲突

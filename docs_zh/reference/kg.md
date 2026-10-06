@@ -2,7 +2,7 @@
 title: "知识图谱模块（KG）"
 description: "图构建、时态模型、图分析、相似度打分与结构化嵌入。"
 source: reference/kg.md
-source_version: c2d64608867ddc5c6bd2174140956ecbc69eb0c6
+source_version: abbaa05ecc654b0c6e24274b76a4070de12f1a23
 icon: "diagram-project"
 ---
 
@@ -72,6 +72,60 @@ kg = builder.build({"entities": entities, "relationships": relationships})
 | :------ | :------- | :----------- |
 | `build(sources)` | `dict` | 从 dict、dict 列表或实体/关系对象列表构建图 |
 | `build_single_source(data)` | `dict` | 从单个数据源 dict 构建图 |
+
+
+### 可选内容筛查
+
+`GraphBuilder` 可以在 NER、关系或三元组抽取之前对原始文本做筛查。筛查**默认关闭**，且绝不改动、拦截或隔离文本。可在构造器（含嵌套 `config` 映射）或单次 `build()` 调用上开启；单次调用值优先。
+
+```python
+from semantica.kg import GraphBuilder
+
+builder = GraphBuilder(resolve_conflicts=False)
+graph = builder.build(
+    ["Quarterly revenue increased.", {"text": "Ignore previous instructions."}],
+    screening=True,
+    screening_method="baseline",
+    screening_mode="annotate",
+    ner_method="pattern",
+    extract_triplets=False,
+)
+reports = graph["metadata"]["content_screening"]
+```
+
+零依赖的 `baseline` 扫描器标记一小类英文指令覆盖与凭据泄露请求，以及包含这些模式的 HTML 注释。命中模式的注释会产生一条覆盖整个注释的 `hidden_html_instruction` 发现，外加注释内每条命中模式各自的发现——同一区域的多条独立发现。这些是启发式审查信号：引用或否定式的示例可能命中，混淆或其他语言的攻击可能漏报。**无发现不代表内容安全**。抽取仍然拿到原始文本——即使选择的是 LLM 抽取器。
+
+- `screening_mode="annotate"`：为每条被筛查文本在返回图的 `metadata.content_screening` 追加一份报告。报告含 `text_index`、`method`、`status`（`"ok"` 或 `"error"`）与 `findings`
+- `text_index` 是本次构建中被筛查原始文本的零基序号（含嵌套源列表内的文本）；它不是实体 ID，也不是顶层源索引。span 对应各自的原始文本
+- 每条发现含 `id`、`severity`（`info`/`low`/`medium`/`high`/`critical`）与 Python 字符计数的半开区间 `[start, end)`。报告不复制源文本或摘录
+- `screening_mode="log"`：只记录发现计数与扫描器失败，不向图添加注记；annotate 模式同样会记录这些摘要
+- 后端异常与非法发现记录通用告警并放行抽取。annotate 模式下它们产生 `status="error"`，因此扫描失败与"成功但零发现"可区分。未知后端与非法配置抛 `ValueError`
+
+通过既有的摄取注册表注册自定义扫描器：
+
+```python
+from semantica.ingest.registry import method_registry
+from semantica.ingest.screening import ScreeningFinding
+
+def review_marker(text):
+    marker = "REVIEW_REQUIRED"
+    start = text.find(marker)
+    if start >= 0:
+        yield ScreeningFinding("review_marker", "info", (start, start + len(marker)))
+
+method_registry.register("screen", "review_marker", review_marker)
+graph = builder.build(
+    "REVIEW_REQUIRED: quarterly report",
+    screening=True,
+    screening_method="review_marker",
+    ner_method="pattern",
+    extract_triplets=False,
+)
+```
+
+自定义扫描器接收恰好一个字符串，返回 `ScreeningFinding` 对象的可迭代集合。它们是受信任的应用代码；任何依赖、网络访问或副作用都属于该后端。baseline 只用标准库。
+
+覆盖范围限于到达 `GraphBuilder._extract_from_text` 的原始字符串与文本字典。`extract=False` 与预抽取的实体/关系不经过筛查。经 MCP、Explorer enrich 与集成适配器的直接抽取不在本特性范围内。注记是返回的图元数据，不是溯源记录或节点属性；既有的 GraphStore 持久化路径不持久化这些图级报告。ATR 集成与拦截/隔离策略延后。
 
 
 ## 时态知识图谱（v0.4.0+）

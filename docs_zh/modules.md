@@ -501,8 +501,8 @@ from semantica.evals import evaluate, list_evaluators
 
 list_evaluators()
 # ['decision_scores', 'exact_match', 'keyword_check', 'length_range',
-#  'levenshtein', 'llm_as_judge', 'numeric_range', 'regex_match', 'rouge',
-#  'temporal_range']
+#  'levenshtein', 'llm_as_judge', 'normalized_exact_match', 'numeric_range',
+#  'regex_match', 'rouge', 'temporal_range', 'token_f1']
 
 cases = [("apple", "aple"), ("night", "nacht")]
 summary = evaluate(cases, evaluators=["levenshtein"])

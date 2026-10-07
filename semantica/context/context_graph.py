@@ -3145,8 +3145,12 @@ class ContextGraph:
                 self.logger.warning(f"Audit trail callback failed for node {node.node_id}: {e}")
         return True
     
-    def _add_internal_edge(self, edge: ContextEdge) -> bool:
-        """Internal method to add an edge."""
+    def _add_internal_edge(self, edge: ContextEdge, unique_type: bool = False) -> bool:
+        """Internal method to add an edge.
+
+        With ``unique_type=True`` the edge is skipped when the source already has
+        an edge of the same type to the same target.
+        """
         if edge.source_id is None or edge.target_id is None:
             self.logger.warning("Skipping internal edge with invalid endpoints: %r", edge)
             return False
@@ -3154,6 +3158,11 @@ class ContextGraph:
             # Edge identity is content-derived, so an existing edge_id means this
             # exact edge is already stored; re-adding it is a no-op (issue #922).
             if edge.edge_id in self._edge_index:
+                return False
+            if unique_type and any(
+                e.target_id == edge.target_id and e.edge_type == edge.edge_type
+                for e in self._adjacency.get(edge.source_id, [])
+            ):
                 return False
 
             # Ensure nodes exist
@@ -3903,9 +3912,14 @@ class ContextGraph:
             relationship_type: Type of relationship (CAUSED, INFLUENCED, PRECEDENT_FOR)
 
         Returns:
-            True when the edge was added; False when it was skipped because a
-            decision ID is unknown or a node is not a decision (logged as a
-            warning so callers no longer mistake the skip for success).
+            True when a new causal edge was inserted.
+            False when the operation was skipped without inserting an edge:
+              - source or target decision ID is not present in the graph;
+              - source or target node exists but is not a decision node;
+              - an equivalent causal relationship (same source, target, and
+                normalized relationship type) already exists.
+            Skipped operations are logged at WARNING level. Invalid
+            relationship types raise ValueError instead of returning False.
         """
         # Normalize so callers may use either vocabulary's spelling
         # ("causes" from CausalChainAnalyzer, or "CAUSED" from this module's
@@ -3945,7 +3959,16 @@ class ContextGraph:
             weight=1.0,
             metadata={"recorded_at": datetime.utcnow().isoformat()},
         )
-        self._add_internal_edge(edge)
+        # edge_id includes recorded_at, so the same causal link recorded twice
+        # gets a new id; compare (target, type) instead.
+        if not self._add_internal_edge(edge, unique_type=True):
+            self.logger.warning(
+                "Causal relationship %s -[%s]-> %s already exists; skipping",
+                source_decision_id,
+                relationship_type,
+                target_decision_id,
+            )
+            return False
         return True
 
     def get_causal_chain(

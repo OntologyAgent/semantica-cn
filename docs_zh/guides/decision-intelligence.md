@@ -2,7 +2,7 @@
 title: "决策智能"
 description: "Semantica 如何把 AI 智能体的决策作为一等知识图谱对象记录、存储、追踪并查询——带因果链、先例检索、策略执行与完整可解释性。"
 source: guides/decision-intelligence.md
-source_version: c923947a731aab66917986f323b81ce6842da194
+source_version: 21da97de34b1b1313721538e570b083866a353a3
 icon: "scale-balanced"
 ---
 
@@ -120,7 +120,7 @@ d = Decision(
 )
 ```
 
-要把这样构造的决策真正存进图，把它的字段作为关键字参数传给 `ContextGraph.add_decision()`——当你想在必填字段之外再传 `valid_from`/`valid_until` 或额外元数据字段时，这是 `record_decision()` 之外的另一条路：
+要把这样构造的决策真正存进图，把它的字段作为关键字参数传给 `ContextGraph.add_decision()`——当你想在必填字段之外再传 `valid_from`/`valid_until` 或额外元数据字段时，这是 `record_decision()` 之外的另一条路（两种形式同样被完整索引）：
 
 ```python
 decision_id = graph.add_decision(
@@ -137,9 +137,9 @@ decision_id = graph.add_decision(
 )
 ```
 
-<Warning>
-只能给 `add_decision()` 传关键字参数，不要传预构建的 `Decision` 对象。`add_decision(Decision(...))` 会直接存节点，跳过 `record_decision()` 执行的索引步骤——于是这条决策对 `find_precedents()`、`get_causal_chain()` 和 `get_decision_insights()` 不可见，而且对它调用 `trace_decision_causality()` 会抛 `ValueError`。上面的关键字参数形式没有这个问题——它内部委托给 `record_decision()`。注意，与 `record_decision()` 一样，它总是自己生成 `decision_id`（从调用返回值拿到）；没有办法强行指定 ID。
-</Warning>
+<Info>
+`add_decision()` 也接受预构建的 `Decision` 对象：`graph.add_decision(Decision(...))`。两种形式的索引方式相同，决策一经添加就对 `find_precedents()`、`get_decision_insights()`、`analyze_decision_influence()` 与 `trace_decision_causality()` 可见。对象形式保留你在其上设置的 `decision_id`；关键字形式与 `record_decision()` 一样自己生成 `decision_id` 并返回。`Decision.metadata` 中的条目会存到节点上，但不能覆盖决策自身字段（如 `category`、`confidence`）。
+</Info>
 
 ## 决策之前先搜先例
 
@@ -283,12 +283,7 @@ d = Decision(
 )
 
 if engine.check_compliance(d, "cti_confidence_gate"):
-    # 以关键字参数传字段，不要传 Decision 对象本身——见上文
-    # 的警告。add_decision() 会自己生成 decision_id。
-    decision_id = graph.add_decision(
-        category=d.category, scenario=d.scenario, reasoning=d.reasoning,
-        outcome=d.outcome, confidence=d.confidence, decision_maker=d.decision_maker,
-    )
+    decision_id = graph.add_decision(d)
     engine.record_policy_application(decision_id, "cti_confidence_gate", "1.0")
     print("Decision recorded — policy compliant.")
 else:

@@ -2,7 +2,7 @@
 title: "Explorer 模块（Explorer）"
 description: "交互式 FastAPI 面板：知识图谱探索、本体管理与图分析。"
 source: reference/explorer.md
-source_version: eb56c545245181890623b2ba8d9802248031df8b
+source_version: b00a577b2518c254a0be169e64c3b6d53ce9670a
 icon: "map"
 ---
 
@@ -102,16 +102,17 @@ semantica-explorer --graph my_graph.json
 | `--no-browser` | | 关闭 | 跳过自动打开浏览器标签页 |
 
 <Note>
-  CLI 没有认证、CORS 或日志级别旗标。CORS 允许的来源经 `EXPLORER_CORS_ORIGINS` 环境变量配置（逗号分隔，默认 `http://localhost:5173,http://127.0.0.1:5173`）。
+  CLI 没有认证、CORS 或日志级别旗标。HTTP CORS 与 WebSocket 握手（`/ws/graph-updates`）的允许来源经 `ALLOWED_ORIGINS` 环境变量配置（逗号分隔）；`EXPLORER_CORS_ORIGINS` 仍作为旧别名支持。
+
+  未显式设置环境变量而直接启动 `semantica-explorer` 时，服务器自动放行 `localhost` 与 `127.0.0.1`（配置的 `--port`，默认 `8000`），外加本地前端开发来源（`http://localhost:5173,http://127.0.0.1:5173`）。
 </Note>
 
 <Tip>
-  **CORS 来源经环境变量配置。** 启动前把 `EXPLORER_CORS_ORIGINS` 设为逗号分隔的允许来源列表（如 `EXPLORER_CORS_ORIGINS="http://myapp.example.com"`）。
-</Tip>
+  **来源经环境变量配置。** 要为 REST API CORS 与 WebSocket 实时图更新（`/ws/graph-updates`）放行外部或自定义浏览器来源，启动前把 `ALLOWED_ORIGINS`（或 `EXPLORER_CORS_ORIGINS`）设为逗号分隔的允许来源列表（如 `ALLOWED_ORIGINS="http://myapp.example.com"`）。显式设置后只放行指定的来源。</Tip>
 
 ```bash
 # Full example
-EXPLORER_CORS_ORIGINS="http://myapp.example.com" \
+ALLOWED_ORIGINS="http://myapp.example.com" \
   semantica-explorer --graph my_graph.json --host 0.0.0.0 --port 8080 --no-browser
 ```
 

@@ -2,7 +2,7 @@
 title: Explorer 配置
 description: 安装 Explorer extra，把 ContextGraph 存成 JSON，然后启动交互式浏览器面板。
 source: explorer-setup.md
-source_version: b21e2a3fa40e70b289137783014d5618db3dd20e
+source_version: 08d405320dbbc7d3eca5e5d84bb59ce140b21024
 icon: "map"
 ---
 
@@ -166,6 +166,10 @@ semantica-explorer --graph my_graph.json --no-browser
 <Warning>
   `--host 0.0.0.0` 会让 Explorer 在所有网络接口上可达。自 v0.6.5 起，Explorer API 要求配置 `SEMANTICA_API_KEY`（以 `X-API-Key` 请求头发送）；未配置时默认拒绝访问并返回 `503`。只有显式设置 `SEMANTICA_ALLOW_ANONYMOUS=true`，才可能匿名访问。请只在可信的私有网络上这样使用。
 </Warning>
+
+<Tip>
+  **CORS 与 WebSocket Origins：** `semantica-explorer` 自动放行来自 `localhost` 和 `127.0.0.1`（配置的 `--port` 端口，以及 Vite 开发端口 `5173`）的浏览器连接。要为 HTTP CORS 与 `/ws/graph-updates` WebSocket 连接放行外部浏览器来源或自定义域名，设置 `ALLOWED_ORIGINS` 环境变量（如 `ALLOWED_ORIGINS="https://explorer.example.com"`）。不在白名单里的来源会让 WebSocket 握手以 HTTP 403 失败；把该来源加进 `ALLOWED_ORIGINS` 即可解决自定义或外部客户端的问题。`EXPLORER_CORS_ORIGINS` 仍作为旧别名支持。
+</Tip>
 
 
 ## 浏览器访问

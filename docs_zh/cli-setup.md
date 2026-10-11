@@ -2,7 +2,7 @@
 title: CLI 配置
 description: Semantica 的五个可执行文件：各自的作用、使用时机，以及如何确认它们正常工作。
 source: cli-setup.md
-source_version: c401eeeca7663e96dd3be5b50acb4b2f45f0b444
+source_version: 44d6617c542d75fefb1f586a1af6f3073ac0f56c
 icon: "terminal"
 ---
 
@@ -152,7 +152,7 @@ python -c "import semantica; print(semantica.__version__)"
 
 | 变量 | 默认值 | 说明 |
 | :-------- | :------- | :----------- |
-| `SEMANTICA_CORS_ORIGINS` | `http://localhost:5173,http://127.0.0.1:5173` | 允许的 CORS 来源，逗号分隔 |
+| `SEMANTICA_CORS_ORIGINS` | `http://localhost:5173,http://127.0.0.1:5173,http://localhost:8000,http://127.0.0.1:8000` | 逗号分隔的 CORS 与 WebSocket 允许来源。默认值覆盖 Vite 开发服务器与服务器自身端口，因此在 `127.0.0.1:8000` 打开的浏览器也能建立 WebSocket；设置后替换默认值 |
 
 除上述变量外，这些命令不读取其他环境变量。
 

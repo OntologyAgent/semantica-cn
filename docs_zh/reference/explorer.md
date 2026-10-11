@@ -2,7 +2,7 @@
 title: "Explorer 模块（Explorer）"
 description: "交互式 FastAPI 面板：知识图谱探索、本体管理与图分析。"
 source: reference/explorer.md
-source_version: b00a577b2518c254a0be169e64c3b6d53ce9670a
+source_version: e1197e29e1cf63372ee878ce86dcc8056b7ec7ec
 icon: "map"
 ---
 
@@ -104,7 +104,9 @@ semantica-explorer --graph my_graph.json
 <Note>
   CLI 没有认证、CORS 或日志级别旗标。HTTP CORS 与 WebSocket 握手（`/ws/graph-updates`）的允许来源经 `ALLOWED_ORIGINS` 环境变量配置（逗号分隔）；`EXPLORER_CORS_ORIGINS` 仍作为旧别名支持。
 
-  未显式设置环境变量而直接启动 `semantica-explorer` 时，服务器自动放行 `localhost` 与 `127.0.0.1`（配置的 `--port`，默认 `8000`），外加本地前端开发来源（`http://localhost:5173,http://127.0.0.1:5173`）。
+  未显式设置环境变量而直接启动 `semantica-explorer` 时，服务器自动放行 `localhost` 与 `127.0.0.1`（配置的 `--port`，默认 `8000`），外加本地前端开发来源（`http://localhost:5173,http://127.0.0.1:5173`）。当 `--host` 不是回环地址时，`http://<host>:<port>` 同样放行，IPv6 主机加方括号（`http://[fe80::1]:<port>`）。`--port 0` 时端口由操作系统在启动后才分配，不会追加端口来源；需把它包含进 `ALLOWED_ORIGINS`。
+
+  不经 CLI 时，`create_app()` 对所有调用方（模块级 `app`、Docker 镜像与编程式使用）使用同一默认：`localhost` 与 `127.0.0.1` 的 5173、8000 两个端口——无论应用实际服务在哪个端口。这些来源仅限本机，端点仍由 API key 保护。设置 `ALLOWED_ORIGINS` 可替换默认。
 </Note>
 
 <Tip>

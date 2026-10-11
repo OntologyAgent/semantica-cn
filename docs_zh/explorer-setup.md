@@ -2,7 +2,7 @@
 title: Explorer 配置
 description: 安装 Explorer extra，把 ContextGraph 存成 JSON，然后启动交互式浏览器面板。
 source: explorer-setup.md
-source_version: 08d405320dbbc7d3eca5e5d84bb59ce140b21024
+source_version: c2a2753679d26abad43c87f6e4bd1d2b02c6a0af
 icon: "map"
 ---
 
@@ -168,7 +168,7 @@ semantica-explorer --graph my_graph.json --no-browser
 </Warning>
 
 <Tip>
-  **CORS 与 WebSocket Origins：** `semantica-explorer` 自动放行来自 `localhost` 和 `127.0.0.1`（配置的 `--port` 端口，以及 Vite 开发端口 `5173`）的浏览器连接。要为 HTTP CORS 与 `/ws/graph-updates` WebSocket 连接放行外部浏览器来源或自定义域名，设置 `ALLOWED_ORIGINS` 环境变量（如 `ALLOWED_ORIGINS="https://explorer.example.com"`）。不在白名单里的来源会让 WebSocket 握手以 HTTP 403 失败；把该来源加进 `ALLOWED_ORIGINS` 即可解决自定义或外部客户端的问题。`EXPLORER_CORS_ORIGINS` 仍作为旧别名支持。
+  **CORS 与 WebSocket Origins：** `semantica-explorer` 自动放行来自 `localhost` 和 `127.0.0.1`（配置的 `--port` 端口，以及 Vite 开发端口 `5173`）的浏览器连接。当 `--host` 不是回环地址时，`http://<host>:<port>` 也会被放行——在 Explorer 服务地址上打开的浏览器因此可以连接；IPv6 主机按浏览器的写法加方括号（`--host fe80::1` 放行 `http://[fe80::1]:<port>`）。`--port 0` 时端口由操作系统在启动后才分配，因此不会追加端口来源：需把它包含进 `ALLOWED_ORIGINS`。要为 HTTP CORS 与 `/ws/graph-updates` WebSocket 连接放行外部浏览器来源或自定义域名，设置 `ALLOWED_ORIGINS` 环境变量（如 `ALLOWED_ORIGINS="https://explorer.example.com"`）。不在白名单里的来源会让 WebSocket 握手以 HTTP 403 失败；把该来源加进 `ALLOWED_ORIGINS` 即可解决自定义或外部客户端的问题。`EXPLORER_CORS_ORIGINS` 仍作为旧别名支持。
 </Tip>
 
 

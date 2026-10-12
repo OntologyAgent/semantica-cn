@@ -28,6 +28,8 @@ import type en from "../../i18n/locales/en.json";
 import { lazy, Suspense } from "react";
 import { SigmaSceneAdapter } from "./SigmaSceneAdapter";
 import { useLoadGraph, useReloadGraph } from "./useLoadGraph";
+import { EdgeReasoningBlock } from "./EdgeReasoningBlock";
+import { EDGE_REASONING_KEYS } from "./edgeReasoningKeys";
 import { GraphLoadingOverlay } from "./GraphLoadingOverlay";
 import { createGraphLoadProgress, getGraphLoadTitleKey } from "./graphLoading";
 import { GRAPH_THEME, withAlpha } from "./graphTheme";
@@ -2437,6 +2439,15 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
     () => buildSelectedEdgeState(selectedEdgeId, displayResult.graph),
     [displayResult.graph, selectedEdgeId, summary?.nodeCount, summary?.edgeCount],
   );
+  // Reasoning flags get a dedicated block; keep them out of the generic grid.
+  const selectedEdgeVisibleProps = useMemo(
+    () => selectedEdgeState
+      ? Object.entries(selectedEdgeState.properties)
+        .filter(([key]) => !(EDGE_REASONING_KEYS as readonly string[]).includes(key))
+        .slice(0, 4)
+      : [],
+    [selectedEdgeState],
+  );
   const temporalState = useMemo(
     () => ({
       currentTime: scrubberTime,
@@ -3340,9 +3351,11 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
                     ) : null}
                   </div>
 
-                  {Object.keys(selectedEdgeState.properties).length ? (
+                  <EdgeReasoningBlock properties={selectedEdgeState.properties} />
+
+                  {selectedEdgeVisibleProps.length ? (
                     <div style={selectedEdgePropertyGridStyle}>
-                      {Object.entries(selectedEdgeState.properties).slice(0, 4).map(([key, value]) => (
+                      {selectedEdgeVisibleProps.map(([key, value]) => (
                         <div key={key} style={selectedEdgePropertyCardStyle}>
                           <div style={{ color: "rgba(127, 208, 255, 0.68)", fontSize: 10, letterSpacing: "0.06em", textTransform: "uppercase" }}>
                             {key}

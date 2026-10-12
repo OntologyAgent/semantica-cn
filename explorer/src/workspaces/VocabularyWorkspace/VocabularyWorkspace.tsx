@@ -9,6 +9,7 @@
 import { useState } from 'react';
 import { Sidebar } from './Sidebar';
 import { PropertyPanel } from './PropertyPanel';
+import { useConceptDetail } from './queries';
 import type { ConceptNode } from './types';
 
 const THEME_CSS = `
@@ -43,6 +44,9 @@ const THEME_CSS = `
 
 export function VocabularyWorkspace() {
   const [selectedConcept, setSelectedConcept] = useState<ConceptNode | null>(null);
+  // Fills definition/scope note for ontology-loaded concepts; the hierarchy
+  // payload only carries `description` for vocabulary-imported ones.
+  const conceptDetail = useConceptDetail(selectedConcept?.uri);
 
   return (
     <div className="vocab-workspace">
@@ -61,7 +65,7 @@ export function VocabularyWorkspace() {
 
         <div className="vocab-main-content" style={{ padding: 32 }}>
           <div className="vocab-detail-glass">
-            <PropertyPanel concept={selectedConcept} />
+            <PropertyPanel concept={selectedConcept} detail={conceptDetail.data} />
           </div>
         </div>
       </div>

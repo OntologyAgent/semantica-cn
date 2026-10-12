@@ -2,16 +2,18 @@
  * src/workspaces/VocabularyWorkspace/PropertyPanel.tsx
  *
  * Detail panel for a selected SKOS concept — shows preferred label,
- * URI, alt labels, and description.
+ * URI, definition, scope note, alt labels, and narrower concepts.
  */
 import { useTranslation } from 'react-i18next';
-import type { ConceptNode } from './types';
+import type { ConceptNode, ConceptDetail } from './types';
 
 interface PropertyPanelProps {
   concept: ConceptNode | null;
+  /** Payload from GET /api/ontology/skos/concept/{uri}; fills definition/scope note for ontology-loaded concepts. */
+  detail?: ConceptDetail | null;
 }
 
-export function PropertyPanel({ concept }: PropertyPanelProps) {
+export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
   const { t } = useTranslation();
   if (!concept) {
     return (
@@ -30,6 +32,11 @@ export function PropertyPanel({ concept }: PropertyPanelProps) {
       </div>
     );
   }
+
+  // Detail endpoint first, hierarchy description as fallback — ontology-load
+  // and vocabulary-import store the definition under different keys.
+  const definition = detail?.definition || concept.description || null;
+  const scopeNote = detail?.scope_note || null;
 
   return (
     <div style={{ padding: 28, overflowY: 'auto', height: '100%' }}>
@@ -60,6 +67,36 @@ export function PropertyPanel({ concept }: PropertyPanelProps) {
       }}>
         {concept.uri}
       </div>
+
+      {/* Definition */}
+      {definition ? (
+        <section style={{ marginBottom: 24 }}>
+          <h4 style={{
+            color: '#8b949e', fontSize: 12, textTransform: 'uppercase',
+            letterSpacing: '0.08em', marginBottom: 10,
+          }}>
+            {t('vocabulary.definition')}
+          </h4>
+          <p style={{ margin: 0, color: '#c9d1d9', fontSize: 14, lineHeight: 1.6 }}>
+            {definition}
+          </p>
+        </section>
+      ) : null}
+
+      {/* Scope Note */}
+      {scopeNote ? (
+        <section style={{ marginBottom: 24 }}>
+          <h4 style={{
+            color: '#8b949e', fontSize: 12, textTransform: 'uppercase',
+            letterSpacing: '0.08em', marginBottom: 10,
+          }}>
+            {t('vocabulary.scopeNote')}
+          </h4>
+          <p style={{ margin: 0, color: '#c9d1d9', fontSize: 14, lineHeight: 1.6, fontStyle: 'italic' }}>
+            {scopeNote}
+          </p>
+        </section>
+      ) : null}
 
       {/* Alt Labels */}
       {concept.alt_labels && concept.alt_labels.length > 0 && (

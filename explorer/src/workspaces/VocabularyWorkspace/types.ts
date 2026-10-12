@@ -15,6 +15,15 @@ export interface ConceptNode {
   children?: ConceptNode[] | null;
 }
 
+// Subset of the backend SKOSConceptDetail payload
+// (GET /api/ontology/skos/concept/{uri}) consumed by the detail panel.
+export interface ConceptDetail {
+  uri: string;
+  pref_label: string;
+  definition?: string | null;
+  scope_note?: string | null;
+}
+
 export interface ImportResponse {
   status: string;
   filename?: string | null;

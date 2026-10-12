@@ -235,6 +235,10 @@
     "graph.edge.familyMany": "{{count}} 个同族成员",
     "graph.edge.bundle": "{{kind}} 捆绑",
     "graph.edge.provenanceFields": "{{count}} 个溯源字段",
+    "graph.edge.inferred": "推理边",
+    "graph.edge.reasoningMode": "推理模式：{{mode}}",
+    "graph.edge.inferredFrom": "推理依据",
+    "graph.edge.rules": "规则",
     "graph.loading.settlingLayout": "正在稳定布局",
     "graph.loading.timeline": "正在加载时间轴…",
     "graph.loading.inspector": "正在加载检查器…",
@@ -950,6 +954,8 @@
     "vocabulary.noConceptHint": "点击树中的概念查看其属性。",
     "vocabulary.skosConcept": "SKOS 概念",
     "vocabulary.altLabels": "替代标签",
+    "vocabulary.definition": "定义",
+    "vocabulary.scopeNote": "范围注释",
     "vocabulary.narrowerConcepts": "下位概念",
     "vocabulary.leafConcept": "末级概念——没有更细分的下位概念。",
     "vocabulary.uploadingFile": "正在上传 {{name}}…",
@@ -969,6 +975,6 @@
     "graph.focused.reason.not-in-graph": "所选项在当前图中不可用。"
   },
   "__meta": {
-    "source_version": "264bd9549549907af7bb3403e9a68e7531e17d75"
+    "source_version": "29a05b90d2373f73a6e84cec7fdacf1e5522e4f3"
   }
 }

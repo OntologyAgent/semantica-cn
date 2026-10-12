@@ -95,6 +95,40 @@ test("hides the definition and scope-note sections when both sources are empty",
   assert.equal(html.includes("vocabulary.scopeNote"), false, "scope-note header must not render without content");
 });
 
+// ─── Synonym visibility: alt_labels merge across the two import paths ────────
+// ontology-load: hierarchy alt_labels is empty (prefixed skos:altLabel key is
+// not mapped there) while the detail endpoint returns them — detail must win.
+test("uses detail alt_labels when hierarchy alt_labels is empty", () => {
+  const detail: ConceptDetail = {
+    uri: "http://example.org/ns#Demo",
+    pref_label: "Demo Concept",
+    definition: null,
+    scope_note: null,
+    alt_labels: ["中华人民共和国"],
+  };
+  const html = renderToString(React.createElement(PropertyPanel, {
+    concept: concept({ alt_labels: [] }),
+    detail,
+  }));
+  assert.equal(html.includes("中华人民共和国"), true);
+});
+
+// vocabulary-import: hierarchy carries the alt_labels — still shown.
+test("keeps hierarchy alt_labels when detail has none", () => {
+  const detail: ConceptDetail = {
+    uri: "http://example.org/ns#Demo",
+    pref_label: "Demo Concept",
+    definition: null,
+    scope_note: null,
+    alt_labels: null,
+  };
+  const html = renderToString(React.createElement(PropertyPanel, {
+    concept: concept({ alt_labels: ["关联企业"] }),
+    detail,
+  }));
+  assert.equal(html.includes("关联企业"), true);
+});
+
 // ─── fetchConceptDetail contract: URI encoding ───────────────────────────────
 // SKOS URIs routinely contain '#' (and '/'); unencoded, '#' truncates the
 // request path at the fragment. The fetch must percent-encode the whole URI.

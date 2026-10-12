@@ -6,21 +6,53 @@
  * - Shows the concept hierarchy tree for the active scheme
  * - Includes the import dropzone
  */
-import { useState } from 'react';
+import { useMemo, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useVocabularies, useConceptHierarchy } from './queries';
+import { useVocabularies, useConceptHierarchy, useConceptTypes } from './queries';
 import { ConceptTree } from './ConceptTree';
 import { ImportDropzone } from './ImportDropzone';
 import type { ConceptNode, VocabularyScheme } from './types';
+import {
+  filterConceptTree,
+  TERM_TYPE_COLORS,
+  TERM_TYPE_LABEL_KEYS,
+  TERM_TYPE_ORDER,
+  type TermTypeValue,
+} from './termType';
 
 interface SidebarProps {
   onSelectConcept: (concept: ConceptNode) => void;
+}
+
+function TypeFilterChip({
+  active, color, onClick, children,
+}: {
+  active: boolean;
+  color?: string;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  const tone = active ? (color ?? '#79c0ff') : '#8b949e';
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        padding: '3px 10px', borderRadius: 999, fontSize: 12, cursor: 'pointer',
+        color: tone, background: active ? `${tone}1f` : 'transparent',
+        border: `1px solid ${active ? `${tone}66` : 'rgba(139,148,158,0.3)'}`,
+      }}
+    >
+      {children}
+    </button>
+  );
 }
 
 export function Sidebar({ onSelectConcept }: SidebarProps) {
   const { t } = useTranslation();
   const { data: schemes = [], isLoading: schemesLoading } = useVocabularies();
   const [activeScheme, setActiveScheme] = useState<string | undefined>();
+  const [typeFilter, setTypeFilter] = useState<TermTypeValue | null>(null);
+  const { data: typeByUri = {} } = useConceptTypes();
 
   // Auto-select first scheme
   const selectedSchemeUri = activeScheme ?? schemes[0]?.uri;
@@ -29,6 +61,25 @@ export function Sidebar({ onSelectConcept }: SidebarProps) {
     data: hierarchy = [],
     isLoading: treeLoading,
   } = useConceptHierarchy(selectedSchemeUri);
+
+  // 过滤器只在树上真的有类型数据时出现（数据侧未写 notation 前不显示死 UI）。
+  const presentTypes = useMemo(() => {
+    const present = new Set<TermTypeValue>();
+    const walk = (nodes: ConceptNode[]) => {
+      for (const node of nodes) {
+        const value = typeByUri[node.uri];
+        if (value) present.add(value);
+        if (node.children) walk(node.children);
+      }
+    };
+    walk(hierarchy);
+    return TERM_TYPE_ORDER.filter((type) => present.has(type));
+  }, [hierarchy, typeByUri]);
+
+  const visibleTree = useMemo(
+    () => filterConceptTree(hierarchy, typeFilter, typeByUri),
+    [hierarchy, typeFilter, typeByUri],
+  );
 
   return (
     <div style={{
@@ -81,6 +132,28 @@ export function Sidebar({ onSelectConcept }: SidebarProps) {
         )}
       </div>
 
+      {/* Type filter — only when the tree carries type data */}
+      {presentTypes.length > 0 ? (
+        <div style={{
+          display: 'flex', gap: 6, flexWrap: 'wrap',
+          padding: '10px 16px', borderBottom: '1px solid rgba(88,166,255,0.1)',
+        }}>
+          <TypeFilterChip active={typeFilter === null} onClick={() => setTypeFilter(null)}>
+            {t('vocabulary.filterAll')}
+          </TypeFilterChip>
+          {presentTypes.map((type) => (
+            <TypeFilterChip
+              key={type}
+              active={typeFilter === type}
+              color={TERM_TYPE_COLORS[type]}
+              onClick={() => setTypeFilter(type)}
+            >
+              {t(TERM_TYPE_LABEL_KEYS[type])}
+            </TypeFilterChip>
+          ))}
+        </div>
+      ) : null}
+
       {/* Concept Tree */}
       <div style={{
         flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column',
@@ -95,9 +168,13 @@ export function Sidebar({ onSelectConcept }: SidebarProps) {
               ? t('vocabulary.noConceptsInScheme')
               : t('vocabulary.selectSchemeHint')}
           </div>
+        ) : visibleTree.length === 0 ? (
+          <div style={{ padding: 20, color: '#484f58', fontSize: 13, textAlign: 'center', fontStyle: 'italic' }}>
+            {t('vocabulary.noTypeMatches')}
+          </div>
         ) : (
           <div style={{ flex: 1, overflow: 'hidden' }}>
-            <ConceptTree data={hierarchy} onSelectConcept={onSelectConcept} />
+            <ConceptTree data={visibleTree} onSelectConcept={onSelectConcept} typeByUri={typeByUri} />
           </div>
         )}
       </div>

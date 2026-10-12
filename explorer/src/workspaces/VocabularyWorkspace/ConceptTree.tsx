@@ -9,13 +9,17 @@ import { Tree } from 'react-arborist';
 import type { NodeRendererProps } from 'react-arborist';
 import { ChevronRight, ChevronDown, Folder, FileText } from 'lucide-react';
 import type { ConceptNode } from './types';
+import { TermTypeBadge } from './TermTypeBadge';
+import type { TermTypeValue } from './termType';
 
 interface ConceptTreeProps {
   data: ConceptNode[];
   onSelectConcept: (concept: ConceptNode) => void;
+  /** uri→归一词条类型（来自图节点 notation）；无类型数据的词表不传或传空映射。 */
+  typeByUri?: Readonly<Partial<Record<string, TermTypeValue>>>;
 }
 
-export const ConceptTree: React.FC<ConceptTreeProps> = ({ data, onSelectConcept }) => {
+export const ConceptTree: React.FC<ConceptTreeProps> = ({ data, onSelectConcept, typeByUri }) => {
   return (
     <div style={{
       height: '100%', width: '100%',
@@ -88,6 +92,8 @@ export const ConceptTree: React.FC<ConceptTreeProps> = ({ data, onSelectConcept 
               }}>
                 {node.data.pref_label}
               </span>
+
+              <TermTypeBadge value={typeByUri?.[node.data.uri]} />
             </div>
           );
         }}

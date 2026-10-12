@@ -20,6 +20,7 @@ export interface ConceptNode {
 export interface ConceptDetail {
   uri: string;
   pref_label: string;
+  alt_labels?: string[] | null;
   definition?: string | null;
   scope_note?: string | null;
 }

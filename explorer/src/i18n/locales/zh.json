@@ -959,7 +959,12 @@
     "vocabulary.skosConcept": "SKOS 概念",
     "vocabulary.altLabels": "替代标签",
     "vocabulary.definition": "定义",
-    "vocabulary.scopeNote": "范围注释",
+    "vocabulary.scopeNote": "语境",
+    "vocabulary.filterAll": "全部",
+    "vocabulary.noTypeMatches": "该类型下暂无词条。",
+    "vocabulary.termType.class": "类",
+    "vocabulary.termType.property": "属性",
+    "vocabulary.termType.individual": "个体",
     "vocabulary.narrowerConcepts": "下位概念",
     "vocabulary.leafConcept": "末级概念——没有更细分的下位概念。",
     "vocabulary.uploadingFile": "正在上传 {{name}}…",
@@ -979,6 +984,6 @@
     "graph.focused.reason.not-in-graph": "所选项在当前图中不可用。"
   },
   "__meta": {
-    "source_version": "29a05b90d2373f73a6e84cec7fdacf1e5522e4f3"
+    "source_version": "e3c60b0f5653853a3c4a34a59d1233ce3b295df6"
   }
 }

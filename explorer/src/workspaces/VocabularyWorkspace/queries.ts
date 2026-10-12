@@ -1,6 +1,7 @@
 // queries.ts
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import type { VocabularyScheme, ConceptNode, ConceptDetail, ImportResponse } from './types';
+import { buildTypeByUri, type GraphNodeSnapshot } from './termType';
 
 const fetchSchemes = async (): Promise<VocabularyScheme[]> => {
   const res = await fetch('/api/vocabulary/schemes');
@@ -55,6 +56,24 @@ export const useConceptDetail = (uri: string | undefined) => {
     queryKey: ['conceptDetail', uri],
     queryFn: () => fetchConceptDetail(uri!),
     enabled: !!uri,
+    retry: false,
+  });
+};
+
+// 词条类型走图节点全量属性（含前缀键 skos:notation）——hierarchy 端点只读
+// 不带前缀的 notation 键，ontology-load 的词表在那儿恒为 null。
+const fetchConceptNodes = async (): Promise<GraphNodeSnapshot[]> => {
+  const res = await fetch(`/api/graph/nodes?type=${encodeURIComponent('skos:Concept')}&limit=5000`);
+  if (!res.ok) throw new Error('Failed to fetch concept nodes');
+  const body = await res.json();
+  return body.nodes ?? [];
+};
+
+export const useConceptTypes = () => {
+  return useQuery({
+    queryKey: ['conceptTypes'],
+    queryFn: fetchConceptNodes,
+    select: buildTypeByUri,
     retry: false,
   });
 };

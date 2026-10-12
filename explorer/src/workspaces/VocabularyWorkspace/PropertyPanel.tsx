@@ -37,6 +37,9 @@ export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
   // and vocabulary-import store the definition under different keys.
   const definition = detail?.definition || concept.description || null;
   const scopeNote = detail?.scope_note || null;
+  // Same regime for synonyms: hierarchy alt_labels is empty on the
+  // ontology-load path, the detail payload carries them there.
+  const altLabels = detail?.alt_labels?.length ? detail.alt_labels : concept.alt_labels;
 
   return (
     <div style={{ padding: 28, overflowY: 'auto', height: '100%' }}>
@@ -83,23 +86,32 @@ export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
         </section>
       ) : null}
 
-      {/* Scope Note */}
+      {/* Scope Note — 「语境」徽标行：徽标 + 左边线引注块，与定义段视觉区分 */}
       {scopeNote ? (
         <section style={{ marginBottom: 24 }}>
-          <h4 style={{
-            color: '#8b949e', fontSize: 12, textTransform: 'uppercase',
-            letterSpacing: '0.08em', marginBottom: 10,
+          <div style={{ marginBottom: 10 }}>
+            <span style={{
+              display: 'inline-block', padding: '2px 10px', borderRadius: 999,
+              fontSize: 11, fontWeight: 600, letterSpacing: '0.05em',
+              color: '#79c0ff', background: 'rgba(121,192,255,0.1)',
+              border: '1px solid rgba(121,192,255,0.3)',
+                textTransform: 'uppercase',
+            }}>
+              {t('vocabulary.scopeNote')}
+            </span>
+          </div>
+          <p style={{
+            margin: 0, color: '#c9d1d9', fontSize: 13, lineHeight: 1.6,
+            fontStyle: 'italic', paddingLeft: 10,
+            borderLeft: '2px solid rgba(121,192,255,0.35)',
           }}>
-            {t('vocabulary.scopeNote')}
-          </h4>
-          <p style={{ margin: 0, color: '#c9d1d9', fontSize: 14, lineHeight: 1.6, fontStyle: 'italic' }}>
             {scopeNote}
           </p>
         </section>
       ) : null}
 
       {/* Alt Labels */}
-      {concept.alt_labels && concept.alt_labels.length > 0 && (
+      {altLabels && altLabels.length > 0 && (
         <section style={{ marginBottom: 24 }}>
           <h4 style={{
             color: '#8b949e', fontSize: 12, textTransform: 'uppercase',
@@ -108,7 +120,7 @@ export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
             {t('vocabulary.altLabels')}
           </h4>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            {concept.alt_labels.map((lbl, i) => (
+            {altLabels.map((lbl, i) => (
               <span key={i} style={{
                 background: '#21262d', color: '#c9d1d9',
                 padding: '4px 10px', borderRadius: 4, fontSize: 13,

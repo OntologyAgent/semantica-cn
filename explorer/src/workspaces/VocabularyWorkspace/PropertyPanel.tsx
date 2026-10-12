@@ -6,6 +6,7 @@
  */
 import { useTranslation } from 'react-i18next';
 import type { ConceptNode, ConceptDetail } from './types';
+import { parseDefinitionMarkers } from './definitionMarkers';
 
 interface PropertyPanelProps {
   concept: ConceptNode | null;
@@ -36,7 +37,10 @@ export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
   // Detail endpoint first, hierarchy description as fallback — ontology-load
   // and vocabulary-import store the definition under different keys.
   const definition = detail?.definition || concept.description || null;
-  const scopeNote = detail?.scope_note || null;
+  // 数据侧把〖谓词〗〖签名〗〖特征〗〖语境〗内嵌进定义文本；解析后正文干净，
+  // 结构进徽标行，语境注记并入语境通道。
+  const parsed = definition ? parseDefinitionMarkers(definition) : null;
+  const scopeNote = parsed?.context || detail?.scope_note || null;
   const editorialNote = detail?.editorial_note || null;
   // Same regime for synonyms: hierarchy alt_labels is empty on the
   // ontology-load path, the detail payload carries them there.
@@ -72,7 +76,7 @@ export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
         {concept.uri}
       </div>
 
-      {/* Definition */}
+      {/* Definition — 正文 + 结构化标记（谓词名/签名/特征），不内联糊排 */}
       {definition ? (
         <section style={{ marginBottom: 24 }}>
           <h4 style={{
@@ -81,9 +85,53 @@ export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
           }}>
             {t('vocabulary.definition')}
           </h4>
-          <p style={{ margin: 0, color: '#c9d1d9', fontSize: 14, lineHeight: 1.6 }}>
-            {definition}
-          </p>
+          {parsed?.text ? (
+            <p style={{ margin: 0, color: '#c9d1d9', fontSize: 14, lineHeight: 1.6 }}>
+              {parsed.text}
+            </p>
+          ) : null}
+          {parsed && (parsed.predicate || parsed.signature || parsed.features.length > 0 || parsed.others.length > 0) ? (
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 10 }}>
+              {parsed.predicate ? (
+                <span style={{
+                  padding: '2px 8px', borderRadius: 4, fontSize: 12,
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: '#d2a8ff', background: 'rgba(210,168,255,0.08)',
+                  border: '1px solid rgba(210,168,255,0.3)',
+                }}>
+                  {parsed.predicate}
+                </span>
+              ) : null}
+              {parsed.signature ? (
+                <span style={{
+                  padding: '2px 8px', borderRadius: 4, fontSize: 12,
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: '#79c0ff', background: 'rgba(121,192,255,0.08)',
+                  border: '1px solid rgba(121,192,255,0.25)',
+                }}>
+                  {parsed.signature}
+                </span>
+              ) : null}
+              {parsed.features.map((feature) => (
+                <span key={feature} style={{
+                  padding: '2px 8px', borderRadius: 4, fontSize: 12,
+                  color: '#e3b341', background: 'rgba(227,179,65,0.08)',
+                  border: '1px solid rgba(227,179,65,0.3)',
+                }}>
+                  {feature}
+                </span>
+              ))}
+              {parsed.others.map((other) => (
+                <span key={other} style={{
+                  padding: '2px 8px', borderRadius: 4, fontSize: 12,
+                  color: '#8b949e', background: 'rgba(139,148,158,0.08)',
+                  border: '1px solid rgba(139,148,158,0.3)',
+                }}>
+                  {other}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </section>
       ) : null}
 

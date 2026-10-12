@@ -23,6 +23,7 @@ export interface ConceptDetail {
   alt_labels?: string[] | null;
   definition?: string | null;
   scope_note?: string | null;
+  editorial_note?: string | null;
 }
 
 export interface ImportResponse {

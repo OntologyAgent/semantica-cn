@@ -960,6 +960,7 @@
     "vocabulary.altLabels": "替代标签",
     "vocabulary.definition": "定义",
     "vocabulary.scopeNote": "语境",
+    "vocabulary.editorialNote": "来源",
     "vocabulary.filterAll": "全部",
     "vocabulary.noTypeMatches": "该类型下暂无词条。",
     "vocabulary.termType.class": "类",
@@ -984,6 +985,6 @@
     "graph.focused.reason.not-in-graph": "所选项在当前图中不可用。"
   },
   "__meta": {
-    "source_version": "e3c60b0f5653853a3c4a34a59d1233ce3b295df6"
+    "source_version": "81f7c7271523106c1b076697774c9be0fd55d6a7"
   }
 }

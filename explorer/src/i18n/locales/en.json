@@ -960,6 +960,7 @@
     "vocabulary.altLabels": "Alternative Labels",
     "vocabulary.definition": "Definition",
     "vocabulary.scopeNote": "Scope Note",
+    "vocabulary.editorialNote": "Source",
     "vocabulary.filterAll": "All",
     "vocabulary.noTypeMatches": "No entries of this type.",
     "vocabulary.termType.class": "Class",

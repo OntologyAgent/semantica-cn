@@ -37,6 +37,7 @@ export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
   // and vocabulary-import store the definition under different keys.
   const definition = detail?.definition || concept.description || null;
   const scopeNote = detail?.scope_note || null;
+  const editorialNote = detail?.editorial_note || null;
   // Same regime for synonyms: hierarchy alt_labels is empty on the
   // ontology-load path, the detail payload carries them there.
   const altLabels = detail?.alt_labels?.length ? detail.alt_labels : concept.alt_labels;
@@ -106,6 +107,27 @@ export function PropertyPanel({ concept, detail }: PropertyPanelProps) {
             borderLeft: '2px solid rgba(121,192,255,0.35)',
           }}>
             {scopeNote}
+          </p>
+        </section>
+      ) : null}
+      {editorialNote ? (
+        <section style={{ marginBottom: 24 }}>
+          <div style={{ marginBottom: 10 }}>
+            <span style={{
+              display: 'inline-block', padding: '2px 10px', borderRadius: 999,
+              fontSize: 11, fontWeight: 600, letterSpacing: '0.05em',
+              color: '#e3b341', background: 'rgba(227,179,65,0.1)',
+              border: '1px solid rgba(227,179,65,0.3)',
+                textTransform: 'uppercase',
+            }}>
+              {t('vocabulary.editorialNote')}
+            </span>
+          </div>
+          <p style={{
+            margin: 0, color: '#8b949e', fontSize: 12, lineHeight: 1.6,
+            paddingLeft: 10,
+          }}>
+            {editorialNote}
           </p>
         </section>
       ) : null}

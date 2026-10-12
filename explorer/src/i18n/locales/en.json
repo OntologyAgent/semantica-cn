@@ -36,6 +36,7 @@
     "shell.manage.subtitle": "Review provenance, lineage, ontology, and governance context.",
     "shell.manage.kicker": "Graph Governance",
     "tabs.explore.graph": "Semantica Explorer",
+    "tabs.explore.memories": "Memories",
     "tabs.explore.vocabulary": "Vocabulary Browser",
     "tabs.analyze.reasoning": "Reasoning Playground",
     "tabs.analyze.sparql": "SPARQL Querying",

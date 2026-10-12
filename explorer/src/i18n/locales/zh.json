@@ -10,7 +10,7 @@
     "nav.enrich.hint": "导入、导出与合并工作流",
     "nav.manage.label": "管理",
     "nav.manage.hint": "谱系与治理工具",
-    "nav.ontologyHub.label": "Ontology Hub",
+    "nav.ontologyHub.label": "本体中心",
     "nav.ontologyHub.hint": "模式治理、注册表与词表管理",
     "connection.checking": "连接中……",
     "connection.online": "系统在线",
@@ -29,13 +29,14 @@
     "shell.enrich.title": "增强",
     "shell.enrich.subtitle": "导入、导出、调和并审计图谱实体。",
     "shell.enrich.kicker": "知识审计",
-    "shell.ontologyHub.title": "Ontology Hub",
+    "shell.ontologyHub.title": "本体中心",
     "shell.ontologyHub.subtitle": "加载、浏览、编辑并治理本体与词表。",
     "shell.ontologyHub.kicker": "模式治理",
     "shell.manage.title": "管理",
     "shell.manage.subtitle": "审阅溯源、谱系、本体与治理上下文。",
     "shell.manage.kicker": "图谱治理",
-    "tabs.explore.graph": "Semantica Explorer",
+    "tabs.explore.graph": "Semantica 探索器",
+    "tabs.explore.memories": "记忆浏览器",
     "tabs.explore.vocabulary": "词表浏览器",
     "tabs.analyze.reasoning": "推理演练场",
     "tabs.analyze.sparql": "SPARQL 查询",
@@ -58,7 +59,7 @@
     "welcome.cta.open": "打开 Semantica 探索",
     "welcome.cta.reasoning": "运行推理",
     "welcome.preview.aria": "知识图谱预览",
-    "welcome.preview.tab": "Semantica Explorer",
+    "welcome.preview.tab": "Semantica 探索器",
     "welcome.command.label": "搜索命令、节点或概念",
     "welcome.command.meta": "距离热力图 · 聚焦视图 · 因果路径",
     "welcome.dossier.kicker": "实体档案",
@@ -82,7 +83,7 @@
     "welcome.section.aria": "工作区",
     "welcome.section.title": "工作区",
     "welcome.card.primary.eyebrow": "主工作区",
-    "welcome.card.primary.title": "Semantica Explorer",
+    "welcome.card.primary.title": "Semantica 探索器",
     "welcome.card.primary.desc": "完整图谱、社区分组、聚焦邻域与距离智能——尽在同一画布。",
     "welcome.card.vocabulary.label": "词表",
     "welcome.card.vocabulary.desc": "概念体系与术语",
@@ -968,6 +969,6 @@
     "graph.focused.reason.not-in-graph": "所选项在当前图中不可用。"
   },
   "__meta": {
-    "source_version": "dd196d36c4fd11292fc6f32eb6fce8eb0cc1cde5"
+    "source_version": "264bd9549549907af7bb3403e9a68e7531e17d75"
   }
 }

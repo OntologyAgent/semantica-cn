@@ -15,6 +15,28 @@ treats(Metformin, Diabetes)`;
 const SAMPLE_RULE = `IF inhibits(Metformin, mTOR) AND causes(mTOR, Neurodegeneration) THEN candidate(Metformin, Alzheimer's)`;
 
 const TEMPLATES: { labelKey: TranslationKey; facts: string; rule: string }[] = [
+  // ── 国药返利合同模板（真实数据；谓词须 ASCII 开头，参数可中文）──
+  {
+    labelKey: "reasoning.template.groupIncludes",
+    facts: `belongs_to(AstraZeneca PLC, 阿斯利康集团)\nbelongs_to(阿斯利康制药有限公司, 阿斯利康集团)\nbelongs_to(阿斯利康（无锡）贸易有限公司, 阿斯利康集团)`,
+    rule: `IF belongs_to(?x, ?g) THEN includes(?g, ?x)`,
+  },
+  {
+    labelKey: "reasoning.template.controlChain",
+    facts: `controls(AstraZeneca PLC, 阿斯利康制药有限公司)\ncontrols(阿斯利康制药有限公司, 供应链公司甲)`,
+    rule: `IF controls(?x, ?y) AND controls(?y, ?z) THEN controls(?x, ?z)`,
+  },
+  {
+    labelKey: "reasoning.template.coControl",
+    facts: `controls(AstraZeneca PLC, 阿斯利康（无锡）贸易有限公司)\ncontrols(AstraZeneca PLC, 阿斯利康医药（上海）有限公司)`,
+    rule: `IF controls(?z, ?x) AND controls(?z, ?y) THEN related_to(?x, ?y)`,
+  },
+  {
+    labelKey: "reasoning.template.majorityHolding",
+    facts: `pct_holds(测试基金, 阿斯利康（无锡）贸易有限公司, 55)\npct_holds(小基金, 阿斯利康（无锡）贸易有限公司, 30)\nge(55, 50)`,
+    rule: `IF pct_holds(?a, ?b, ?v) AND ge(?v, 50) THEN controls(?a, ?b)`,
+  },
+  // ── 上游自带示例（生物医学）──
   {
     labelKey: "reasoning.template.drugCandidate",
     facts: `inhibits(Metformin, mTOR)\ncauses(mTOR, Neurodegeneration)\ntreats(Metformin, Diabetes)`,

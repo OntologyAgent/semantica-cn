@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-10-13T03:56:08.870485+00:00",
+  "flattened": false,
+  "friendly_name": "graph layer switch",
+  "mission_id": "01M4SPEHS52KH8BKTSQ8MQMVM2",
+  "mission_number": null,
+  "mission_slug": "graph-layer-switch-01M4SPEH",
+  "mission_type": "software-dev",
+  "purpose_context": "This mission advances graph layer switch on main so stakeholders can track the work from mission creation onward.",
+  "purpose_tldr": "graph layer switch",
+  "slug": "graph-layer-switch-01M4SPEH",
+  "target_branch": "main",
+  "topology": "single_branch"
+}

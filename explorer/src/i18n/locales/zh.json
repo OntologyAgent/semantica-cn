@@ -176,6 +176,14 @@
     "graph.mode.focused": "Focus",
     "graph.mode.focusedTitle": "在聚焦的局部图中查看选中节点",
     "graph.mode.focusedUnavailableFallback": "当前选中项无法启用聚焦模式",
+    "graph.layer.all": "全部",
+    "graph.layer.allTitle": "显示全部图层节点（实例、本体、规则库）",
+    "graph.layer.business": "业务",
+    "graph.layer.businessTitle": "实例节点与业务谓词边",
+    "graph.layer.ontology": "本体",
+    "graph.layer.ontologyTitle": "类、属性与模式签名边",
+    "graph.layer.inferred": "推理边",
+    "graph.layer.inferredTitle": "显示推理产出的边；关闭后只看合同明文事实",
     "graph.dock.effects": "特效",
     "graph.dock.effectsTitle": "打开探索特效控制面板",
     "graph.dock.neighbors": "邻居",
@@ -985,6 +993,6 @@
     "graph.focused.reason.not-in-graph": "所选项在当前图中不可用。"
   },
   "__meta": {
-    "source_version": "81f7c7271523106c1b076697774c9be0fd55d6a7"
+    "source_version": "7b6d6856feb1901bf7355228b44d7bbc910dbe16"
   }
 }

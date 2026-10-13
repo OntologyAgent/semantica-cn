@@ -50,6 +50,7 @@ import { shouldFetchTemporalBounds, shouldFetchTemporalSnapshot } from "./tempor
 import { createTemporalSnapshotGuards, type TemporalSnapshotResponse } from "./temporalSnapshotGuards";
 import { SMALL_GRAPH_MAX_NODES } from "./smallGraphLayout";
 import { buildRealtimeEdgeAttributes } from "./realtimeGraphAttributes";
+import { applyLayerFilter, graphHasLayerData, nodeVisibleInPreset, type LayerPreset } from "./graphLayers";
 import type { LinkPrediction, PathResponse } from "./GraphInspectorPanel";
 import type { MarkdownApplyResult } from "./markdownResourceClient";
 import {
@@ -301,6 +302,83 @@ function SegmentedModeControl({ items }: { items: GraphToolbarItem[] }) {
       {items.map((item) => (
         <ToolbarButton key={item.id} item={item} className="explore-mode-segment" toggle />
       ))}
+    </div>
+  );
+}
+
+function LayerFilterChip({
+  active,
+  title,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  title?: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  const tone = active ? "#79c0ff" : "#8b949e";
+  return (
+    <button
+      type="button"
+      title={title}
+      onClick={onClick}
+      style={{
+        padding: "3px 10px",
+        borderRadius: 999,
+        fontSize: 12,
+        cursor: "pointer",
+        color: tone,
+        background: active ? `${tone}1f` : "transparent",
+        border: `1px solid ${active ? `${tone}66` : "rgba(139,148,158,0.3)"}`,
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
+function LayerFilterGroup({
+  preset,
+  inferredEdgesEnabled,
+  onPresetChange,
+  onInferredToggle,
+}: {
+  preset: LayerPreset;
+  inferredEdgesEnabled: boolean;
+  onPresetChange: (preset: LayerPreset) => void;
+  onInferredToggle: (enabled: boolean) => void;
+}) {
+  const { t } = useTranslation();
+  const presets: Array<{ id: LayerPreset; label: string; title: string }> = [
+    { id: "all", label: t("graph.layer.all"), title: t("graph.layer.allTitle") },
+    { id: "business", label: t("graph.layer.business"), title: t("graph.layer.businessTitle") },
+    { id: "ontology", label: t("graph.layer.ontology"), title: t("graph.layer.ontologyTitle") },
+  ];
+  return (
+    <div
+      role="group"
+      aria-label={t("graph.layer.all")}
+      style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}
+    >
+      {presets.map((entry) => (
+        <LayerFilterChip
+          key={entry.id}
+          active={preset === entry.id}
+          title={entry.title}
+          onClick={() => onPresetChange(entry.id)}
+        >
+          {entry.label}
+        </LayerFilterChip>
+      ))}
+      <span aria-hidden style={{ width: 1, height: 16, background: "rgba(139,148,158,0.3)" }} />
+      <LayerFilterChip
+        active={inferredEdgesEnabled}
+        title={t("graph.layer.inferredTitle")}
+        onClick={() => onInferredToggle(!inferredEdgesEnabled)}
+      >
+        {t("graph.layer.inferred")}
+      </LayerFilterChip>
     </div>
   );
 }
@@ -1277,6 +1355,8 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
     onDirtyChange?.(dirty);
   }, [onDirtyChange]);
   const [viewMode, setViewMode] = useState<GraphViewMode>("full");
+  const [layerPreset, setLayerPreset] = useState<LayerPreset>("all");
+  const [inferredEdgesEnabled, setInferredEdgesEnabled] = useState(true);
   const [aggregationEnabled] = useState(true);
   const [collapsedNeighborhoodNodeIds, setCollapsedNeighborhoodNodeIds] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -2298,7 +2378,7 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
     // The displayed graph is an aggregated clone. Rebuild it after domain
     // mutations so applied Markdown labels do not remain stale on the canvas.
     void graphVersion;
-    return viewMode === "grouped"
+    const result = viewMode === "grouped"
       ? (groupedDisplayCandidate ?? resolveDisplayGraph("", EMPTY_PATH, EMPTY_PATH, "grouped", {
           aggregationEnabled,
           collapsedNeighborhoodNodeIds,
@@ -2307,16 +2387,29 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
           aggregationEnabled,
           collapsedNeighborhoodNodeIds,
         });
+    // Layer switching applies to the full view only; graphs without layer
+    // data bypass the filter entirely (applyLayerFilter returns null).
+    if (viewMode !== "full") {
+      return result;
+    }
+    const layeredGraph = applyLayerFilter(result.graph, layerPreset, inferredEdgesEnabled);
+    return layeredGraph ? { ...result, graph: layeredGraph } : result;
   }, [
     aggregationEnabled,
     collapsedNeighborhoodNodeIds,
     graphVersion,
     groupedDisplayCandidate,
+    inferredEdgesEnabled,
+    layerPreset,
     structuralActivePath,
     structuralActivePathEdgeIds,
     structuralSelectedNodeId,
     viewMode,
   ]);
+  const layersAvailable = useMemo(
+    () => viewMode === "full" && graphHasLayerData(displayResult.graph),
+    [displayResult.graph, viewMode],
+  );
   const colorLegendItems = useMemo(() => {
     // Store mutations can preserve graph identity while changing its attributes.
     void graphVersion;
@@ -3184,6 +3277,24 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
                     }}
                   />
                   <SegmentedModeControl items={viewModeItems} />
+                  {layersAvailable ? (
+                    <LayerFilterGroup
+                      preset={layerPreset}
+                      inferredEdgesEnabled={inferredEdgesEnabled}
+                      onPresetChange={(nextPreset) => {
+                        setLayerPreset(nextPreset);
+                        // A preset can drop the selected node; clear the
+                        // selection synchronously so panels never reference a
+                        // node the new preset hides.
+                        setSelectedNodeId((currentSelectedNodeId) => (
+                          currentSelectedNodeId && nodeVisibleInPreset(graph, currentSelectedNodeId, nextPreset)
+                            ? currentSelectedNodeId
+                            : ""
+                        ));
+                      }}
+                      onInferredToggle={setInferredEdgesEnabled}
+                    />
+                  ) : null}
                   <div className="explore-toolbelt">
                     {toolbarClusters.map((group) => (
                       <ToolbarCluster

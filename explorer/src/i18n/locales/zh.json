@@ -672,6 +672,18 @@
     "ontologyHub.shell.tabAlignments": "对齐",
     "ontologyHub.shell.tabHealth": "健康",
     "ontologyHub.shell.tabShacl": "SHACL",
+    "ontologyHub.shell.tabSchema": "类与属性",
+    "ontologyHub.schema.loading": "模式加载中……",
+    "ontologyHub.schema.empty": "未找到类或属性——请先加载本体。",
+    "ontologyHub.schema.treeTitle": "类层级",
+    "ontologyHub.schema.propertiesTitle": "属性签名（{{count}}）",
+    "ontologyHub.schema.filteredTitle": "引用该类的属性（{{count}}）",
+    "ontologyHub.schema.clearFilter": "显示全部",
+    "ontologyHub.schema.fieldDomain": "定义域",
+    "ontologyHub.schema.fieldRange": "值域",
+    "ontologyHub.schema.fieldInverse": "逆属性",
+    "ontologyHub.schema.fieldNotation": "规则库使用的 ASCII 标识",
+    "ontologyHub.schema.fieldComment": "注释",
     "ontologyHub.manager.confirmRemove": "确定从注册表中移除“{{name}}”吗？",
     "ontologyHub.manager.disabled": "已停用",
     "ontologyHub.manager.statClasses": "类",
@@ -993,6 +1005,6 @@
     "graph.focused.reason.not-in-graph": "所选项在当前图中不可用。"
   },
   "__meta": {
-    "source_version": "7b6d6856feb1901bf7355228b44d7bbc910dbe16"
+    "source_version": "5873aa59422b92ee035bffad0b975bff5fde11ae"
   }
 }

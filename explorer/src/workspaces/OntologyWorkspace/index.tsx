@@ -5,6 +5,7 @@ import {
   GitMerge,
   HeartPulse,
   Layers,
+  ListTree,
   Shield,
   Sliders,
 } from "lucide-react";
@@ -13,6 +14,7 @@ import { AlignmentsTab } from "./AlignmentsTab";
 import { HealthTab } from "./HealthTab";
 import { OntologyManager } from "./OntologyManager";
 import { OntologyEditor } from "./OntologyEditor";
+import { SchemaTab } from "./SchemaTab";
 import { ShaclStudio } from "./ShaclStudio";
 import { VersionsTab } from "./VersionsTab";
 import { readOntologyUrlState, writeEntitySelection, writeTab } from "./ontologyUrlState";
@@ -23,7 +25,8 @@ export type OntologyHubTab =
   | "versions"
   | "alignments"
   | "health"
-  | "shacl";
+  | "shacl"
+  | "schema";
 
 type TranslationKey = keyof typeof en.translation;
 
@@ -33,6 +36,7 @@ const TABS: {
   icon: typeof GitMerge;
 }[] = [
   { id: "registry", labelKey: "ontologyHub.shell.tabRegistry", icon: BookMarked },
+  { id: "schema", labelKey: "ontologyHub.shell.tabSchema", icon: ListTree },
   { id: "editor", labelKey: "ontologyHub.shell.tabEditor", icon: Sliders },
   { id: "versions", labelKey: "ontologyHub.shell.tabVersions", icon: Layers },
   { id: "alignments", labelKey: "ontologyHub.shell.tabAlignments", icon: GitMerge },
@@ -73,6 +77,8 @@ export function OntologyWorkspace({ onJumpToGraphNode }: OntologyWorkspaceProps)
     switch (activeTab) {
       case "registry":
         return <OntologyManager />;
+      case "schema":
+        return <SchemaTab />;
       case "editor":
         return <OntologyEditor />;
       case "versions":

@@ -41,6 +41,7 @@ from typing import Any, Dict, List, Optional, Union
 
 import rdflib
 from rdflib import RDF, RDFS, OWL, Dataset, Graph
+from rdflib.namespace import SKOS
 
 from ..utils.exceptions import ProcessingError, ValidationError
 from ..utils.logging import get_logger
@@ -319,12 +320,12 @@ class OntologyIngestor:
                         "type": "class"
                     }
                     
-                    # Add label/comment
-                    label = graph.value(s, RDFS.label)
+                    # Add label/comment; SKOS-style TTLs use skos:prefLabel
+                    label = graph.value(s, RDFS.label) or graph.value(s, SKOS.prefLabel)
                     if label:
                         cls_def["label"] = str(label)
-                        cls_def["name"] = str(label) # Prefer label as name if available? Or keep URI fragment? 
-                        # Keeping local name from URI is safer for internal IDs, label for display. 
+                        cls_def["name"] = str(label) # Prefer label as name if available? Or keep URI fragment?
+                        # Keeping local name from URI is safer for internal IDs, label for display.
                         # But Semantica seems to use "name" for the identifier in some examples.
                         # Let's keep name as local name or label if simple.
                     
@@ -377,7 +378,7 @@ class OntologyIngestor:
             "type": prop_type
         }
         
-        label = graph.value(subject, RDFS.label)
+        label = graph.value(subject, RDFS.label) or graph.value(subject, SKOS.prefLabel)
         if label:
             prop_def["label"] = str(label)
             

@@ -681,12 +681,14 @@ def _convert_ontology_to_graph(ontology_dict: Dict[str, Any]) -> Tuple[List[Dict
     # Add class nodes
     for cls in ontology_dict.get("classes", []):
         cls_uri = cls.get("uri", f"temp:class:{uuid.uuid4().hex[:12]}")
+        cls_label = cls.get("label", cls.get("name", ""))
         node = {
             "id": cls_uri,
             "type": "owl:Class",
             "content": cls.get("name", cls.get("label", "")),
             "properties": {
-                "rdfs:label": cls.get("label", cls.get("name", "")),
+                "rdfs:label": cls_label,
+                "skos:prefLabel": cls_label,
                 "rdfs:comment": cls.get("description", ""),
                 "uri": cls_uri,
                 "scheme_uri": ontology_uri,
@@ -712,12 +714,14 @@ def _convert_ontology_to_graph(ontology_dict: Dict[str, Any]) -> Tuple[List[Dict
             "datatype": "owl:DatatypeProperty",
             "annotation": "owl:AnnotationProperty",
         }.get(str(prop.get("type", "object")).lower(), "owl:ObjectProperty")
+        prop_label = prop.get("label", prop.get("name", ""))
         node = {
             "id": prop_uri,
             "type": property_type,
             "content": prop.get("name", prop.get("label", "")),
             "properties": {
-                "rdfs:label": prop.get("label", prop.get("name", "")),
+                "rdfs:label": prop_label,
+                "skos:prefLabel": prop_label,
                 "rdfs:comment": prop.get("description", ""),
                 "uri": prop_uri,
                 "scheme_uri": ontology_uri,

@@ -881,6 +881,9 @@
     "reasoning.template.geneDisease": "基因 → 疾病",
     "reasoning.template.pathwayActivation": "通路激活",
     "reasoning.factsLabel": "事实",
+    "reasoning.pullFacts": "从图取事实",
+    "reasoning.pullingFacts": "拉取中……",
+    "reasoning.noBusinessFacts": "当前图没有业务层边。",
     "reasoning.factsHelpPrefix": "每行一条事实，使用",
     "reasoning.factsHelpSuffix": "语法",
     "reasoning.rulesLabel": "规则",
@@ -1005,6 +1008,6 @@
     "graph.focused.reason.not-in-graph": "所选项在当前图中不可用。"
   },
   "__meta": {
-    "source_version": "5873aa59422b92ee035bffad0b975bff5fde11ae"
+    "source_version": "af14ea0e6b4550c42cf3e3246db281a01cdb1172"
   }
 }

@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { BrainCircuit, Play, RotateCcw, CheckCircle2, AlertCircle, Zap, GitBranch, Info } from "lucide-react";
 import { describeApiError } from "../i18n/apiError";
+import { businessEdgesToFacts } from "./GraphWorkspace/graphFacts";
 import type en from "../i18n/locales/en.json";
 
 // Typed t() rejects plain string keys; template constants hold an i18n key.
@@ -69,7 +70,34 @@ export function ReasoningWorkspace() {
     mutated?: boolean;
   } | null>(null);
   const [isRunning, setIsRunning] = useState(false);
+  const [isPullingFacts, setIsPullingFacts] = useState(false);
   const [error, setError] = useState("");
+
+  async function handlePullFacts() {
+    setIsPullingFacts(true);
+    setError("");
+    try {
+      const [nodesResponse, edgesResponse] = await Promise.all([
+        fetch("/api/graph/nodes?limit=5000"),
+        fetch("/api/graph/edges?limit=5000"),
+      ]);
+      if (!nodesResponse.ok || !edgesResponse.ok) {
+        throw new Error(`graph fetch failed (${nodesResponse.status}/${edgesResponse.status})`);
+      }
+      const nodesData = await nodesResponse.json();
+      const edgesData = await edgesResponse.json();
+      const factLines = businessEdgesToFacts(nodesData.nodes ?? [], edgesData.edges ?? []);
+      if (factLines.length === 0) {
+        setError(t("reasoning.noBusinessFacts"));
+        return;
+      }
+      setFacts(factLines.join("\n"));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : t("reasoning.failed"));
+    } finally {
+      setIsPullingFacts(false);
+    }
+  }
 
   async function handleRun() {
     setIsRunning(true);
@@ -149,7 +177,17 @@ export function ReasoningWorkspace() {
         {/* Input area */}
         <div className="ws-scroll ws-padded" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div>
-            <label className="ws-label">{t("reasoning.factsLabel")}</label>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+              <label className="ws-label">{t("reasoning.factsLabel")}</label>
+              <button
+                className="ws-btn ws-btn--ghost"
+                style={{ padding: "4px 10px", fontSize: 11 }}
+                disabled={isPullingFacts}
+                onClick={() => void handlePullFacts()}
+              >
+                {isPullingFacts ? t("reasoning.pullingFacts") : t("reasoning.pullFacts")}
+              </button>
+            </div>
             <div className="ws-body" style={{ marginBottom: 8 }}>{t("reasoning.factsHelpPrefix")} <code style={{ color: "var(--ws-accent)", fontSize: 11 }}>predicate(subject, object)</code> {t("reasoning.factsHelpSuffix")}</div>
             <textarea
               className="ws-textarea"

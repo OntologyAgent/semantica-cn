@@ -21,15 +21,36 @@ _ALLOWED_EXTENSIONS = frozenset({".ttl", ".rdf", ".owl", ".xml", ".jsonld", ".js
 
 def _concept_summary(node: dict, scheme_uri: Optional[str] = None, parent_uri: Optional[str] = None) -> ConceptSummary:
     properties = node.get("properties", {})
-    alt_labels = properties.get("alt_labels") or []
+    # Ontology-load stores prefixed SKOS keys (skos:definition, …) while the
+    # vocabulary-import path writes bare ones; read bare first, fall back to
+    # the prefixed spelling so both ingestion paths render (mirrors the
+    # concept-detail endpoint).
+    alt_labels = (
+        properties.get("alt_labels")
+        or properties.get("skos:altLabel")
+        or []
+    )
     if isinstance(alt_labels, str):
         alt_labels = [alt_labels]
     return ConceptSummary(
         uri=node.get("id", ""),
-        pref_label=properties.get("pref_label") or properties.get("content", node.get("content", node.get("id", ""))),
+        pref_label=(
+            properties.get("pref_label")
+            or properties.get("skos:prefLabel")
+            or properties.get("content")
+            or node.get("content", node.get("id", ""))
+        ),
         alt_labels=list(alt_labels),
-        description=properties.get("description"),
-        notation=properties.get("notation"),
+        description=(
+            properties.get("description")
+            if properties.get("description") is not None
+            else properties.get("skos:definition")
+        ),
+        notation=(
+            properties.get("notation")
+            if properties.get("notation") is not None
+            else properties.get("skos:notation")
+        ),
         scheme_uri=scheme_uri,
         parent_uri=parent_uri,
     )

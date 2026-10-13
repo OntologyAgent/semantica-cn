@@ -87,6 +87,55 @@ def _token_is_variable(token: str) -> bool:
     return token.startswith("?")
 
 
+# Builtin predicates evaluate against accumulated bindings instead of
+# matching facts; comparison failures (non-numeric, unbound) fail the
+# antecedent. not_equal compares numerically when both sides parse as
+# floats so "50" and "50.0" are treated equal.
+_BUILTIN_PREDICATES = frozenset({"not_equal", "ge", "le", "gt", "lt"})
+
+
+def _as_float(value: str) -> Optional[float]:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _evaluate_builtin_antecedent(
+    pattern: Tuple[str, List[str]],
+    bindings: Dict[str, str],
+) -> Optional[Dict[str, str]]:
+    predicate, args = pattern
+    resolved: List[str] = []
+    for arg in args:
+        if _token_is_variable(arg):
+            bound = bindings.get(arg)
+            if bound is None:
+                return None
+            resolved.append(bound)
+        else:
+            resolved.append(arg)
+    if len(resolved) != 2:
+        return None
+
+    if predicate == "not_equal":
+        left_num, right_num = _as_float(resolved[0]), _as_float(resolved[1])
+        if left_num is not None and right_num is not None:
+            return bindings if left_num != right_num else None
+        return bindings if resolved[0] != resolved[1] else None
+
+    left_num, right_num = _as_float(resolved[0]), _as_float(resolved[1])
+    if left_num is None or right_num is None:
+        return None
+    comparisons = {
+        "ge": left_num >= right_num,
+        "le": left_num <= right_num,
+        "gt": left_num > right_num,
+        "lt": left_num < right_num,
+    }
+    return bindings if comparisons[predicate] else None
+
+
 def _match_pattern(pattern: Tuple[str, List[str]], fact: Tuple[str, List[str]], bindings: Dict[str, str]) -> Optional[Dict[str, str]]:
     pattern_predicate, pattern_args = pattern
     fact_predicate, fact_args = fact
@@ -126,6 +175,11 @@ def _run_fallback_reasoner(facts: List[str], rules: List[str]) -> List[str]:
         for antecedent in antecedents:
             next_bindings: List[Dict[str, str]] = []
             for bindings in bindings_list:
+                if antecedent[0].lower() in _BUILTIN_PREDICATES:
+                    evaluated = _evaluate_builtin_antecedent(antecedent, bindings)
+                    if evaluated is not None:
+                        next_bindings.append(evaluated)
+                    continue
                 for fact in parsed_facts:
                     matched = _match_pattern(antecedent, fact, bindings)
                     if matched is not None:

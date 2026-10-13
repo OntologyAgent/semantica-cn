@@ -3123,26 +3123,45 @@ class ContextGraph:
             return datetime.now()
 
     def _add_internal_node(self, node: ContextNode) -> bool:
-        """Internal method to add a node."""
+        """Internal method to add a node.
+
+        Re-adding a node under an existing id merges: stored scalars (content,
+        node_type, temporal windows when not re-supplied) are kept and the new
+        properties fold into both dicts. Mounted context graphs and
+        ontology-load injections share the az: URI id space; merge semantics
+        keep each side's attributes instead of clobbering whichever landed
+        first.
+        """
         if node.node_id is None or (isinstance(node.node_id, str) and not node.node_id.strip()):
             self.logger.warning("Skipping internal node with invalid id: %r", node)
             return False
         with self._lock:
-            self.nodes[node.node_id] = node
-            # Handle edge case where node_type might be None or not a string
-            if hasattr(node, 'node_type') and isinstance(node.node_type, str):
-                self.node_type_index[node.node_type].add(node.node_id)
+            existing = self.nodes.get(node.node_id)
+            if existing is not None:
+                existing.metadata.update(node.metadata)
+                existing.properties.update(node.properties)
+                if node.valid_from is not None:
+                    existing.valid_from = node.valid_from
+                if node.valid_until is not None:
+                    existing.valid_until = node.valid_until
+                stored = existing
             else:
-                # Use 'unknown' as fallback for invalid node_type
-                self.node_type_index['unknown'].add(node.node_id)
+                self.nodes[node.node_id] = node
+                stored = node
+                # Handle edge case where node_type might be None or not a string
+                if hasattr(node, 'node_type') and isinstance(node.node_type, str):
+                    self.node_type_index[node.node_type].add(node.node_id)
+                else:
+                    # Use 'unknown' as fallback for invalid node_type
+                    self.node_type_index['unknown'].add(node.node_id)
 
         if getattr(self, "mutation_callback", None) and not getattr(
             self, "_suspend_mutation_callback", False
         ):
             try:
-                self.mutation_callback("ADD_NODE", node.node_id, node.to_dict())
+                self.mutation_callback("ADD_NODE", stored.node_id, stored.to_dict())
             except Exception as e:
-                self.logger.warning(f"Audit trail callback failed for node {node.node_id}: {e}")
+                self.logger.warning(f"Audit trail callback failed for node {stored.node_id}: {e}")
         return True
     
     def _add_internal_edge(self, edge: ContextEdge, unique_type: bool = False) -> bool:

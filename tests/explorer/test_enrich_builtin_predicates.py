@@ -3,7 +3,7 @@
 The reasoning playground's fallback reasoner matched antecedents only
 against facts, so builtin predicates like ``not_equal(?x, Y)`` and
 ``ge(?v, 50)`` silently dropped every rule that used them — numeric rules
-from the sinopharm rule library never fired. Builtin predicates evaluate
+from the rule library never fired. Builtin predicates evaluate
 against the accumulated bindings instead: pass (keep the bindings) or fail
 (drop them); unresolvable or non-numeric arguments fail the antecedent.
 """

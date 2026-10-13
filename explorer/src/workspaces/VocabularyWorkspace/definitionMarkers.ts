@@ -2,7 +2,7 @@
  * definitionMarkers.ts — 把数据侧内嵌在 skos:definition 里的结构化标记
  * 解析出来，正文保持干净。
  *
- * 标记形态（sinopharm 词表约定）：
+ * 标记形态（数据侧词表约定）：
  *   〖谓词 ascii名〗     — 英文谓词名（az:asciiId 的镜像）
  *   〖A → B〗           — 值域签名（domain → range）
  *   〖传递〗〖对称〗…    — OWL 特征词

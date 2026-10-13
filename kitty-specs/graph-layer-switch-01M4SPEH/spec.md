@@ -5,7 +5,7 @@
 - **Mission ID:** 01M4SPEHS52KH8BKTSQ8MQMVM2
 - **Type:** software-dev / single_branch
 - **Op:** spec-kitty invocation 01M4SPDZBD169S4MKEVEP5TFGF (frontend-freddy)
-- **Origin:** sinopharm-rebate 单实例统一视图方案 P0-2（用户裁决 2026-10-13）
+- **Origin:** 数据侧单实例统一视图方案 P0-2（用户裁决 2026-10-13）
 
 ## Overview
 

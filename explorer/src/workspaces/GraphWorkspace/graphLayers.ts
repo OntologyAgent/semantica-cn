@@ -3,14 +3,14 @@ import type Graph from "graphology";
 /**
  * Layer switching for the unified single-instance graph view.
  *
- * Data contract (sinopharm panorama export, 10g):
+ * Data contract (unified panorama export):
  * - node.properties.layer ∈ {instance, class, property, rules}
  * - edge.properties.layer ∈ {business, schema, inferred}
  *
  * Layerless nodes/edges (ontology-load injections that have not merged with a
  * mounted node sharing the same az: URI) stay hidden while the graph carries
  * any layer data; graphs without layer data bypass filtering entirely so
- * non-sinopharm datasets render exactly as before.
+ * plain datasets render exactly as before.
  */
 
 export type LayerPreset = "all" | "business" | "ontology";

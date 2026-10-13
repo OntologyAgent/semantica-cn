@@ -1,6 +1,6 @@
 """Node id-merge semantics for ContextGraph (fork extension).
 
-The sinopharm pipeline mounts a panorama context.json whose node ids share the
+The data-side pipeline mounts a panorama context.json whose node ids share the
 az: URI namespace with nodes injected via /api/ontology/load. Re-adding a node
 under an existing id must MERGE properties (keep what is there, fold in what is
 new) instead of replacing the stored node — otherwise whichever side lands

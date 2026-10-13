@@ -135,6 +135,15 @@ def _iri_safe(value: str) -> str:
     return _IRI_ILLEGAL.sub(lambda m: urllib.parse.quote(m.group(0)), str(value))
 
 
+def _node_uri(node_id: str):
+    """Node ids that already are http(s) URIs (az: URIs from the unified
+    id space) pass through unwrapped; everything else keeps the entity
+    namespace wrapper for backward compatibility."""
+    if str(node_id).startswith(("http://", "https://")):
+        return rdflib.URIRef(_iri_safe(node_id))
+    return NS[_iri_safe(node_id)]
+
+
 def _build_rdflib_graph(session: GraphSession) -> rdflib.Graph:
     graph = rdflib.Graph()
     graph.bind("ent", NS)
@@ -163,7 +172,7 @@ def _build_rdflib_graph(session: GraphSession) -> rdflib.Graph:
         )
 
     for node in nodes:
-        subject = NS[_iri_safe(node.get("id", ""))]
+        subject = _node_uri(node.get("id", ""))
         node_type = node.get("type", "Entity")
         graph.add((subject, rdflib.RDF.type, NS[_iri_safe(node_type)]))
 
@@ -177,8 +186,8 @@ def _build_rdflib_graph(session: GraphSession) -> rdflib.Graph:
             graph.add((subject, PROP[key], rdflib.Literal(value)))
 
     for edge in edges:
-        source = NS[_iri_safe(edge.get("source", ""))]
-        target = NS[_iri_safe(edge.get("target", ""))]
+        source = _node_uri(edge.get("source", ""))
+        target = _node_uri(edge.get("target", ""))
         relationship = edge.get("type", "relatedTo")
         graph.add((source, PROP[_iri_safe(relationship)], target))
 

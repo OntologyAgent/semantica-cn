@@ -360,7 +360,9 @@ class NamingConventions:
 
     def _to_pascal_case(self, name: str) -> str:
         """Convert to PascalCase."""
-        words = re.findall(r"[a-zA-Z0-9]+", name)
+        # \w minus underscore keeps CJK names intact (they have no case to
+        # fold); ASCII-only harvesting reduced them to the "Entity" fallback.
+        words = re.findall(r"[^\W_]+", name, re.UNICODE)
         if not words:
             return "Entity"
         return "".join(word.capitalize() for word in words)

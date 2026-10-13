@@ -423,8 +423,9 @@ def split_by_sentences(
 
 def _split_sentences_regex(text: str) -> List[str]:
     """Fallback regex-based sentence splitting."""
-    # Simple sentence splitting
-    sentences = re.split(r"(?<=[.!?])\s+", text)
+    # ASCII terminators require trailing whitespace (keeps "3.14" intact);
+    # CJK terminators 。！？； bind tight with no whitespace after them.
+    sentences = re.split(r"(?<=[.!?])\s+|(?<=[。！？；])", text)
     return [s.strip() for s in sentences if s.strip()]
 
 

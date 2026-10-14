@@ -3276,25 +3276,38 @@ export function GraphWorkspace({ externalFocusNodeId, externalFocusToken, onDirt
                       focusNode(result.node.id);
                     }}
                   />
-                  <SegmentedModeControl items={viewModeItems} />
-                  {layersAvailable ? (
-                    <LayerFilterGroup
-                      preset={layerPreset}
-                      inferredEdgesEnabled={inferredEdgesEnabled}
-                      onPresetChange={(nextPreset) => {
-                        setLayerPreset(nextPreset);
-                        // A preset can drop the selected node; clear the
-                        // selection synchronously so panels never reference a
-                        // node the new preset hides.
-                        setSelectedNodeId((currentSelectedNodeId) => (
-                          currentSelectedNodeId && nodeVisibleInPreset(graph, currentSelectedNodeId, nextPreset)
-                            ? currentSelectedNodeId
-                            : ""
-                        ));
-                      }}
-                      onInferredToggle={setInferredEdgesEnabled}
-                    />
-                  ) : null}
+                  {/* The bar is a 3-column grid (search | mode control |
+                      toolbelt); the layer group rides the middle column so
+                      it never becomes a stray 4th grid item. */}
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      minWidth: 0,
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <SegmentedModeControl items={viewModeItems} />
+                    {layersAvailable ? (
+                      <LayerFilterGroup
+                        preset={layerPreset}
+                        inferredEdgesEnabled={inferredEdgesEnabled}
+                        onPresetChange={(nextPreset) => {
+                          setLayerPreset(nextPreset);
+                          // A preset can drop the selected node; clear the
+                          // selection synchronously so panels never reference a
+                          // node the new preset hides.
+                          setSelectedNodeId((currentSelectedNodeId) => (
+                            currentSelectedNodeId && nodeVisibleInPreset(graph, currentSelectedNodeId, nextPreset)
+                              ? currentSelectedNodeId
+                              : ""
+                          ));
+                        }}
+                        onInferredToggle={setInferredEdgesEnabled}
+                      />
+                    ) : null}
+                  </div>
                   <div className="explore-toolbelt">
                     {toolbarClusters.map((group) => (
                       <ToolbarCluster

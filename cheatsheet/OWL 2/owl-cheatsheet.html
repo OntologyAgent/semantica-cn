@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 8 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OW<em>L</em>2</div>
+    <div class="title-block">
+      <div class="title-cn">Web 本体语言 2 · 规范速查</div>
+      <div class="title-en">OWL 2 — OVERVIEW · MINDSET SWITCHES FIRST</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;04</div>
+    <div class="meta">W3C / OWL 2 / 2009·2012</div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · RDF 之上的本体语言</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">OWL 2 在 RDF 上加本体表达:类构造子造类,属性特征加语义,公理说话,推理机按剖面算账。先开两大思维开关——开放世界、无唯一名。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="43.4mm" viewBox="0 0 118 43.4">
+      <rect x="0.25" y="1.0" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="6.25" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">语言定位</text>
+      <text x="32" y="6.25" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">RDF 之上加本体表达 · 六份文档</text>
+      <text x="116.5" y="6.25" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">开放世界</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.9" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.7 12.9,11.1 15.1,11.1" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.3" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.55" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">构件</text>
+      <text x="32" y="17.55" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">类构造子十二式 · 属性特征七标签</text>
+      <text x="116.5" y="17.55" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">造类的兵器</text>
+      <line x1="14" y1="21.2" x2="14" y2="23.2" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.0 12.9,22.400000000000002 15.1,22.400000000000002" fill="#C9BFAC"/>
+      <rect x="0.25" y="23.6" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="28.85" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">公理与推理</text>
+      <text x="32" y="28.85" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">公理总清单 · 三剖面 · 复杂度</text>
+      <text x="116.5" y="28.85" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">表达力换效率</text>
+      <line x1="14" y1="32.5" x2="14" y2="34.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,35.300000000000004 12.9,33.7 15.1,33.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="34.900000000000006" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="40.150000000000006" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">思维与实践</text>
+      <text x="32" y="40.150000000000006" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">两大开关 · 语法 · 工具 · 坑</text>
+      <text x="116.5" y="40.150000000000006" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">先开开关再写</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>开放世界假设 + 无唯一名假设——不切这两个开关,OWL 的每条结论都显得反直觉。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 构件 → 公理 → 推理 → 实践。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">家族地图 · 六份文档撑起一门语言</span>
+    <span class="sec-sub">PART 1 · DOCUMENT FAMILY</span>
+  </div>
+  <p class="desc">OWL 2 于 <b>2009-10-27</b> 成为一套 W3C Recommendation,<b>2012-12-11</b> 发布第二版(技术内容不变)。它在 RDFS 之上补齐了逻辑武器:交集并集补集、量词、基数、属性特征、键、属性链。</p>
+  <table>
+    <tr><th>文档</th><th>内容</th></tr>
+    <tr class="hl"><td><span class="k">Structural Spec / Functional Syntax</span></td><td>核心:结构、公理、函数式语法(本文主线)</td></tr>
+    <tr><td><span class="k">Mapping to RDF Graphs</span></td><td>与 RDF 三元组互转的规则</td></tr>
+    <tr><td><span class="k">Direct Semantics</span></td><td>DL 语义:对结构的直读模型论</td></tr>
+    <tr><td><span class="k">RDF-Based Semantics</span></td><td>对 RDF 图的语义(OWL 2 Full,不可判定)</td></tr>
+    <tr><td><span class="k">Conformance</span></td><td>一致性:DL/Full、语法限制</td></tr>
+    <tr><td><span class="k">Profiles</span></td><td>三个子语言:EL / QL / RL(见 §14)</td></tr>
+    <tr><td><span class="k">Primer / Quick Reference / New Features</span></td><td>入门、速查、与 1.1 的新旧对照</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT · 两种语义</span>
+    <b>Direct Semantics</b>:把本体读成描述逻辑,可判定、推理机的主战场(OWL 2 DL)。<b>RDF-Based Semantics</b>:直接在 RDF 图上解释,表达力最大但<b>不可判定</b>(OWL 2 Full)。同一份文档,两种读法,先想清楚站哪边。
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">开放世界 + 无唯一名 · 两大思维开关</span>
+    <span class="sec-sub">PART 1 · TWO MINDSET SWITCHES</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>开放世界假设 <span>OWA</span></h4>
+      <ul>
+        <li>没写的≠没有——查不到 only C 的反例,不算违反</li>
+        <li>推不出「完整」:要闭合,显式写 <span class="code">oneOf</span> / <span class="code">maxCardinality 0</span></li>
+        <li>「为什么推理机没推出」的第一答案:知识不全,或需显式闭包</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>无唯一名假设 <span>no UNA</span></h4>
+      <ul>
+        <li>两个 IRI 默认<b>可能</b>是同一个体</li>
+        <li>要确认不同,写 <span class="code">DifferentIndividuals</span></li>
+        <li>要合并,写 <span class="code">SameIndividual</span>;函数属性、键都会参与个体合并推理</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warn">
+    <span class="tag">典型翻车</span>
+    「给了 maxCardinality 1 和两个不同的值,怎么不报错?」——因为推理机不知道那两个值不同!补 <span class="code">DifferentIndividuals(a b)</span> 或改用函数属性+枚举,矛盾才浮出水面。
+  </div>
+  <div class="sub">想要闭世界 · 四种显式闭合手段</div>
+  <table>
+    <tr><th>手段</th><th>闭合什么</th></tr>
+    <tr><td><span class="code">ObjectOneOf(a b c)</span></td><td>枚举:这个类的个体只有这几个</td></tr>
+    <tr><td><span class="code">maxCardinality 0</span></td><td>显式禁止某属性取值</td></tr>
+    <tr><td><span class="code">DifferentIndividuals</span></td><td>声明「这几个名字确指不同个体」</td></tr>
+    <tr><td>SHACL(PL.07) closed shapes</td><td>数据级校验的闭合,不动本体语义</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;1/8</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 8 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OW<em>L</em>2</div>
+    <div class="title-block">
+      <div class="title-cn">Web 本体语言 2 · 规范速查</div>
+      <div class="title-en">OWL 2 — LADDER &amp; CLASS CONSTRUCTORS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;04</div>
+    <div class="meta">W3C / OWL 2 / 2009·2012</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">语言全貌 · 一张图看表达力阶梯</span>
+    <span class="sec-sub">PART 2 · EXPRESSIVITY LADDER</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="96mm" height="52mm" viewBox="0 0 96 52">
+      <rect x="2" y="3" width="92" height="8" fill="none" stroke="#C9BFAC" stroke-width="0.3" stroke-dasharray="2 1.2"/>
+      <text x="48" y="8.4" font-family="JetBrainsMono" font-size="2.6" fill="#7d7466" text-anchor="middle">OWL 2 Full · RDF-Based Semantics · 不可判定</text>
+      <rect x="2" y="15" width="92" height="10" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="48" y="21.6" font-family="JetBrainsMono" font-size="3.2" fill="#F6F1E7" text-anchor="middle" font-weight="700">OWL 2 DL · Direct Semantics · N2EXPTIME</text>
+      <rect x="2" y="29" width="29" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="16.5" y="35.1" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle" font-weight="700">EL</text>
+      <rect x="34" y="29" width="29" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="48.5" y="35.1" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle" font-weight="700">QL</text>
+      <rect x="66" y="29" width="28" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="80" y="35.1" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle" font-weight="700">RL</text>
+      <text x="16.5" y="44" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">生物本体 · PTIME</text>
+      <text x="48.5" y="44" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">数据库查询 · NLogSpace</text>
+      <text x="80" y="44" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">规则引擎 · PTIME</text>
+      <text x="48" y="50.5" font-family="JetBrainsMono" font-size="2.3" fill="#7d7466" text-anchor="middle">三剖面都是 DL 的语法子集,彼此互不包含</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">从下往上读:剖面用表达力换效率;OWL 2 DL 全量开火但推理贵;OWL 2 Full 只属于理论家。工程上先问一句话——<b>这个推理,多快的机器、多大的数据?</b></div>
+    </div>
+  </div>
+  <div class="sub">OWL 2 相对 OWL 1 的新装备</div>
+  <table>
+    <tr><th>装备</th><th>一句话</th></tr>
+    <tr><td><span class="k">属性链</span></td><td>chain of properties 蕴含第三条——规则形状,仍可判定</td></tr>
+    <tr><td><span class="k">HasKey</span></td><td>类级键,键值相同者推理为同一体</td></tr>
+    <tr><td><span class="k">限定基数</span></td><td>基数可指定值的类(<span class="code">min 2 hasParent Person</span>)</td></tr>
+    <tr><td><span class="k">Self 限制</span></td><td>「p 指自己」入表达式</td></tr>
+    <tr><td><span class="k">非对称 / 反自反</span></td><td>属性方向性特征补全</td></tr>
+    <tr><td><span class="k"> richer 数据类型</span></td><td>owl:rational/real、构面收窄值空间</td></tr>
+    <tr><td><span class="k">注释体系</span></td><td>本体/实体级注解正式化,可自定义注解属性</td></tr>
+    <tr><td><span class="k">三剖面</span></td><td>EL / QL / RL,表达力换效率的官方菜单</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">OWL 2 vs OWL 1</span>
+    OWL 1 DL ≈ SHOIN(D),OWL 2 DL ≈ <b>SROIQ(D)</b>——多出的 R(链)、O(名)、I(逆)、Q(限定基数)正是上表的主干。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">类构造子 · 造类的十二般兵器</span>
+    <span class="sec-sub">PART 2 · CLASS CONSTRUCTORS</span>
+  </div>
+  <table>
+    <tr><th>构造子</th><th>Functional Syntax</th><th>Turtle 缩写</th><th>读法</th></tr>
+    <tr><td><span class="k">交集</span></td><td><span class="code">ObjectIntersectionOf(C D)</span></td><td><span class="code">C ∩ D</span>(RDFS 语义可推)</td><td>既 C 且 D</td></tr>
+    <tr><td><span class="k">并集</span></td><td><span class="code">ObjectUnionOf(C D)</span></td><td>—</td><td>C 或 D</td></tr>
+    <tr><td><span class="k">补集</span></td><td><span class="code">ObjectComplementOf(C)</span></td><td>—</td><td>非 C</td></tr>
+    <tr class="hl"><td><span class="k">存在量词</span></td><td><span class="code">ObjectSomeValuesFrom(p C)</span></td><td><span class="code">[p some C]</span>*</td><td>至少一个 p 是 C</td></tr>
+    <tr class="hl"><td><span class="k">全称量词</span></td><td><span class="code">ObjectAllValuesFrom(p C)</span></td><td><span class="code">[p only C]</span>*</td><td>所有 p 都是 C(对没有 p 的个体也成立!)</td></tr>
+    <tr><td><span class="k">具体值</span></td><td><span class="code">ObjectHasValue(p a)</span></td><td><span class="code">[p value a]</span>*</td><td>p 恰为个体 a</td></tr>
+    <tr><td><span class="k">自指</span></td><td><span class="code">ObjectHasSelf(p)</span></td><td>—</td><td>p 指向自己</td></tr>
+    <tr><td><span class="k">枚举</span></td><td><span class="code">ObjectOneOf(a b c)</span></td><td>—</td><td>只能是这几个个体</td></tr>
+    <tr><td><span class="k">基数(限定)</span></td><td><span class="code">ObjectMinCardinality(n p C)</span> / Max / Exact</td><td><span class="code">[p some/min/max n C]</span>*</td><td>p 到 C 的值至少/至多/恰好 n 个</td></tr>
+    <tr><td><span class="k">数据版</span></td><td><span class="code">DataSomeValuesFrom(dp dr)</span> 等</td><td>—</td><td>同上,作用于数据属性</td></tr>
+    <tr><td><span class="k">数据范围限制</span></td><td><span class="code">DatatypeRestriction(dt facet v)</span></td><td>—</td><td>如 xsd:pattern、minInclusive</td></tr>
+    <tr><td><span class="k">顶/底</span></td><td><span class="code">owl:Thing / owl:Nothing</span></td><td>—</td><td>全集 / 空集</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">* Turtle 缩写</span>
+    方括号写法是社区惯用的 Manchester-ish 简写,<b>不是</b> Turtle 语法本身——Turtle 里要写成 <span class="code">owl:Restriction</span> 节点(见 §05 实例)。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;2/8</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 8 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OW<em>L</em>2</div>
+    <div class="title-block">
+      <div class="title-cn">Web 本体语言 2 · 规范速查</div>
+      <div class="title-en">OWL 2 — PROPERTY FEATURES &amp; CHAINS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;04</div>
+    <div class="meta">W3C / OWL 2 / 2009·2012</div>
+  </div>
+</header>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">全称量词的陷阱 · 空集也是「都」</span>
+    <span class="sec-sub">PART 2 · UNIVERSAL QUANTIFIER TRAP</span>
+  </div>
+  <div class="def">
+    <span class="lbl">逻辑事实</span>
+    「所有 p 都是 C」对<b>没有任何 p 的个体同样成立</b>——空集上的全称命题恒真。想让「必须至少有一个」,全称要与存在量词联用,或直接用基数 <span class="code">min 1</span>。
+  </div>
+  <div class="sub">Turtle 里限制的真实长相(标准 Restriction 节点)</div>
+  <div class="codeblock"><span class="iri">:Pizza</span> <span class="iri">rdfs:subClassOf</span>
+  [ <span class="iri">owl:onProperty</span> <span class="iri">:hasTopping</span> ; <span class="iri">owl:someValuesFrom</span> <span class="iri">:TomatoTopping</span> ] ,  <span class="cm"># 必须有番茄</span>
+  [ <span class="iri">owl:onProperty</span> <span class="iri">:hasBase</span> ; <span class="iri">owl:allValuesFrom</span> <span class="iri">:ThinBase</span> ] ,          <span class="cm"># 只许薄底</span>
+  [ <span class="iri">owl:onProperty</span> <span class="iri">:hasTopping</span> ; <span class="iri">owl:minQualifiedCardinality</span> <span class="iri">"3"</span>^^<span class="iri">xsd:nonNegativeInteger</span> ;
+    <span class="iri">owl:onClass</span> <span class="iri">:Topping</span> ] .                                           <span class="cm"># 配料至少三种</span></div>
+  <div class="note">
+    <span class="tag">限定 vs 非限定</span>
+    <span class="code">minCardinality</span> 只数个数,<span class="code">minQualifiedCardinality</span> 还要求值的类型——限定位是 OWL 2 新增,建模时优先用它,信息量翻倍。
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">属性特征 · 七个标签一张表</span>
+    <span class="sec-sub">PART 2 · PROPERTY CHARACTERISTICS</span>
+  </div>
+  <table>
+    <tr><th>特征</th><th>Functional Syntax</th><th>语义</th><th>备注</th></tr>
+    <tr><td><span class="k">传递</span></td><td><span class="code">TransitiveObjectProperty(p)</span></td><td>p(x,y) ∧ p(y,z) → p(x,z)</td><td>祖先关系、部件包含</td></tr>
+    <tr><td><span class="k">对称</span></td><td><span class="code">SymmetricObjectProperty(p)</span></td><td>p(x,y) → p(y,x)</td><td>婚姻、邻居</td></tr>
+    <tr><td><span class="k">非对称</span></td><td><span class="code">AsymmetricObjectProperty(p)</span></td><td>p(x,y) → ¬p(y,x)</td><td>强于反自反;须简单属性</td></tr>
+    <tr><td><span class="k">自反</span></td><td><span class="code">ReflexiveObjectProperty(p)</span></td><td>全域个体 p(x,x)</td><td>注意是「全域自反」</td></tr>
+    <tr><td><span class="k">反自反</span></td><td><span class="code">IrreflexiveObjectProperty(p)</span></td><td>¬p(x,x)</td><td>父子、大于;须简单属性</td></tr>
+    <tr><td><span class="k">函数</span></td><td><span class="code">FunctionalObjectProperty(p)</span></td><td>p(x,y) ∧ p(x,z) → y=z</td><td>生日;数据属性同理</td></tr>
+    <tr class="hl"><td><span class="k">反函数</span></td><td><span class="code">InverseFunctionalObjectProperty(p)</span></td><td>p(y,x) ∧ p(z,x) → y=z</td><td>社保号——值定主语,天然的「键」</td></tr>
+  </table>
+  <div class="note warn">
+    <span class="tag">简单属性(simple)限制</span>
+    参与非对称、反自反、不相交、<b>基数限制</b>的属性必须是「简单属性」——不能处在属性链或传递闭包的圈里。这条全局限制正是可判定性的门票;违反即本体语法非法。
+  </div>
+  <div class="sub">特征选型 · 常见关系该贴什么标签</div>
+  <table>
+    <tr><th>关系</th><th>建议特征</th><th>理由</th></tr>
+    <tr><td><span class="code">:ancestorOf</span></td><td>Transitive</td><td>传递关系原型</td></tr>
+    <tr><td><span class="code">:spouseOf</span></td><td>Symmetric + Irreflexive</td><td>互为夫妻,不自己娶自己</td></tr>
+    <tr><td><span class="code">:parentOf</span></td><td>Asymmetric + Irreflexive</td><td>方向不可逆</td></tr>
+    <tr><td><span class="code">:birthMother</span></td><td>Functional</td><td>唯一性由事实保证</td></tr>
+    <tr><td><span class="code">:ssn</span></td><td>InverseFunctional(数据属性亦可)</td><td>值定人,天然键</td></tr>
+    <tr><td><span class="code">:partOf</span></td><td>视模型:传递 + 可选链</td><td>链 <span class="code">partOf ∘ locatedIn ⊑ partOf</span> 常配对出现</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;3/8</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 8 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OW<em>L</em>2</div>
+    <div class="title-block">
+      <div class="title-cn">Web 本体语言 2 · 规范速查</div>
+      <div class="title-en">OWL 2 — AXIOMS: CLASS, PROPERTY, DATATYPE</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;04</div>
+    <div class="meta">W3C / OWL 2 / 2009·2012</div>
+  </div>
+</header>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">属性链与键 · OWL 2 的两件新兵</span>
+    <span class="sec-sub">PART 2 · PROPERTY CHAINS & KEYS</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 属性链:两条属性首尾相接,推出第三条(规则形状!可判定)</span>
+<span class="kw">SubObjectPropertyOf</span>(
+  <span class="kw">ObjectPropertyChain</span>( <span class="iri">:hasMother</span> <span class="iri">:hasSister</span> )
+  <span class="iri">:hasAunt</span> )
+<span class="cm"># 读法:有母亲 m,且 m 有姐妹 s,则 s 是姨母</span>
+
+<span class="cm"># 键:同一键值(这里是身份证号)必属同一个人</span>
+<span class="kw">HasKey</span>( <span class="iri">:Person</span> <span class="iri">:ssn</span> )
+<span class="cm"># 语义:若两人 ssn 相同 → SameIndividual;注意键的推理只在「有名字的个体」间生效</span></div>
+  <div class="note">
+    <span class="tag">链 vs SWRL</span>
+    属性链是「如果…则…」最安全的一种:留在 DL 内、可判定、主流推理机全支持。需要变量比较、函数、否定判断的规则,才轮到 SWRL(PL.05)或规则引擎(剖面 RL)。
+  </div>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">逆向属性 · 双向都写还是写一边</span>
+    <span class="sec-sub">PART 2 · INVERSE PROPERTIES</span>
+  </div>
+  <div class="codeblock"><span class="kw">InverseObjectProperties</span>( <span class="iri">:hasPart</span> <span class="iri">:partOf</span> )
+<span class="cm"># 声明后写一边即可,另一边由推理补全——两处都写是冗余,漏写一边才有信息</span></div>
+  <div class="note">
+    <span class="tag">Top / Bottom</span>
+    <span class="code">owl:topObjectProperty</span>(万物皆连)、<span class="code">owl:bottomObjectProperty</span>(无人相连)、数据侧同款。bottom 与任何属性不相交,常用来「宣布不可能」。
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">公理总清单 · 类侧与个体侧</span>
+    <span class="sec-sub">PART 3 · AXIOMS: CLASS SIDE</span>
+  </div>
+  <div class="sub">类公理</div>
+  <table>
+    <tr><th>公理</th><th>Functional Syntax</th><th>读法</th></tr>
+    <tr><td><span class="k">子类</span></td><td><span class="code">SubClassOf(C D)</span></td><td>C 的实例都在 D 里</td></tr>
+    <tr><td><span class="k">等价</span></td><td><span class="code">EquivalentClasses(C D E)</span></td><td>互为子类(双向、可多条)</td></tr>
+    <tr><td><span class="k">不相交</span></td><td><span class="code">DisjointClasses(C D E)</span></td><td>两两无公共实例</td></tr>
+    <tr><td><span class="k">不相交并</span></td><td><span class="code">DisjointUnion(C D E)</span></td><td>C = D ⊔ E 且三者互斥(枚举类的标准写法)</td></tr>
+    <tr><td><span class="k">注解公理</span></td><td><span class="code">AnnotationAssertion(rdfs:label C "…")</span></td><td>挂元数据,Direct Semantics 不解释</td></tr>
+  </table>
+  <div class="codeblock"><span class="cm"># 枚举类的教科书写法:患者 = 男患者 ⊔ 女患者,且互斥</span>
+<span class="kw">DisjointUnion</span>( <span class="iri">:Patient</span> <span class="iri">:ManPatient</span> <span class="iri">:WomanPatient</span> )
+<span class="cm"># 等价于 EquivalentClasses + DisjointClasses 双公理,少写一半还防漏</span></div>
+  <div class="sub">个体断言(ABox)</div>
+  <table>
+    <tr><th>断言</th><th>Functional Syntax</th><th>读法</th></tr>
+    <tr><td><span class="k">类型</span></td><td><span class="code">ClassAssertion(C a)</span></td><td>a 是 C 的实例</td></tr>
+    <tr><td><span class="k">对象/数据属性</span></td><td><span class="code">ObjectPropertyAssertion(p a b)</span></td><td>a p b</td></tr>
+    <tr><td><span class="k">同一</span></td><td><span class="code">SameIndividual(a b)</span></td><td>a、b 是同一个体(OWA 下不同名≠不同体!)</td></tr>
+    <tr><td><span class="k">不同</span></td><td><span class="code">DifferentIndividuals(a b)</span></td><td>a、b 确为两个个体</td></tr>
+    <tr><td><span class="k">否定断言</span></td><td><span class="code">NegativeObjectPropertyAssertion(p a b)</span></td><td>明确声明「a 不 p b」</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">提示</span>
+    只有写进公理的东西推理机才知道。<span class="code">DifferentIndividuals</span> 不写,两个 IRI 就<b>可能</b>是同一个体——开放世界里,名字不唯一。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;4/8</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 5 / 8 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OW<em>L</em>2</div>
+    <div class="title-block">
+      <div class="title-cn">Web 本体语言 2 · 规范速查</div>
+      <div class="title-en">OWL 2 — AXIOMS, DATATYPES &amp; PUNNING</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;04</div>
+    <div class="meta">W3C / OWL 2 / 2009·2012</div>
+  </div>
+</header>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">公理总清单 · 属性侧</span>
+    <span class="sec-sub">PART 3 · AXIOMS: PROPERTY SIDE</span>
+  </div>
+  <table>
+    <tr><th>公理</th><th>Functional Syntax</th><th>读法</th></tr>
+    <tr><td><span class="k">子属性/链</span></td><td><span class="code">SubObjectPropertyOf(p q)</span> / <span class="code">(chain)</span></td><td>p ⊑ q;链式见 §08</td></tr>
+    <tr><td><span class="k">等价属性</span></td><td><span class="code">EquivalentObjectProperties(p q)</span></td><td>互为子属性</td></tr>
+    <tr><td><span class="k">逆属性</span></td><td><span class="code">InverseObjectProperties(p q)</span></td><td>p = q⁻¹</td></tr>
+    <tr><td><span class="k">定义域/值域</span></td><td><span class="code">ObjectPropertyDomain(p C)</span> / Range</td><td>与 RDFS 不同:<b>逻辑上强制</b>,违反可致不一致</td></tr>
+    <tr><td><span class="k">不相交属性</span></td><td><span class="code">DisjointObjectProperties(p q r)</span></td><td>同一对个体不能同时 p 又 q</td></tr>
+    <tr><td><span class="k">特征声明</span></td><td><span class="code">Functional/Transitive/…Property(p)</span></td><td>见 §07 全表</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">OWL 2 与 RDFS 的 domain/range 分野</span>
+    RDFS 的 domain/range 只会<b>补类型</b>(引 PL.02);OWL 2 DL 里它们是逻辑公理——数据违反可推出矛盾(如个体既属 C 又属 ¬C),推理机报「不一致」。同一个词,两种强度,加载模式说了算。
+  </div>
+  <div class="codeblock"><span class="cm"># 同一声明,两种后果</span>
+<span class="kw">ObjectPropertyDomain</span>( <span class="iri">:hasAuthor</span> <span class="iri">:Book</span> )   <span class="cm"># OWL 2 DL:hasAuthor 的主语必是 Book</span>
+<span class="iri">:hasAuthor</span> <span class="iri">rdfs:domain</span> <span class="iri">:Book</span> .              <span class="cm"># RDFS 模式:主语被推成 Book,永不报错</span>
+<span class="cm"># 数据::robot :hasAuthor :alice 且 :alice owl:differentFrom 任何 Book 实例</span>
+<span class="cm"># → OWL DL 模式:本体不一致;RDFS 模式::robot a :Book,岁月静好</span></div>
+</section>
+
+<!-- 12 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">12</span><span class="sec-title">数据类型与面 · 值空间的边界</span>
+    <span class="sec-sub">PART 3 · DATATYPES & FACETS</span>
+  </div>
+  <table>
+    <tr><th>内容</th><th>清单</th></tr>
+    <tr><td><span class="k">XSD 全家</span></td><td>xsd:string/integer/decimal/float/double/boolean/dateTime 等二十余种</td></tr>
+    <tr><td><span class="k">RDF 侧</span></td><td>rdf:XMLLiteral(引 PL.01)</td></tr>
+    <tr><td><span class="k">OWL 特供</span></td><td><span class="code">owl:real</span> / <span class="code">owl:rational</span>;字面量 <span class="code">"1"^^owl:rational</span></td></tr>
+    <tr><td><span class="k">构面 facets</span></td><td>length / minLength|maxLength / pattern / min|maxInclusive / min|maxExclusive / totalDigits / fractionDigits</td></tr>
+  </table>
+  <div class="codeblock"><span class="cm"># 「成年年龄」:整数且 ≥ 18 —— 用构面收紧值空间</span>
+<span class="kw">SubClassOf</span>( <span class="iri">:Adult</span>
+  <span class="kw">DataSomeValuesFrom</span>( <span class="iri">:age</span>
+    <span class="kw">DatatypeRestriction</span>( <span class="kw">xsd:integer</span> <span class="kw">xsd:minInclusive</span> <span class="iri">"18"</span>^^<span class="kw">xsd:integer</span> ) ) )</div>
+  <div class="note">
+    <span class="tag">剖面的差别</span>
+    RL 禁 owl:real / owl:rational;QL 只认一个精简清单。数据类型用错档位,本体就「越档」了——发布前用剖面校验器过一遍。
+  </div>
+</section>
+
+<!-- 13 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">13</span><span class="sec-title">注解与 punning · 元数据的合法身份</span>
+    <span class="sec-sub">PART 3 · ANNOTATIONS & PUNNING</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>注解 <span>annotations</span></h4>
+      <ul>
+        <li><span class="code">rdfs:label</span>、<span class="code">rdfs:comment</span>、<span class="code">owl:versionInfo</span>…挂在本体、类、属性、个体上</li>
+        <li>Direct Semantics <b>不解释注解</b>——它们不影响推理,错了也不报不一致</li>
+        <li>要严格化元数据(如版本溯源),配 PROV-O(PL.11)</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>Punning <span>一名多角</span></h4>
+      <ul>
+        <li>OWL 2 DL 允许同一 IRI 在不同公理里当<b>类</b>又当<b>个体</b>(受限的多态)</li>
+        <li>例::Dog 既是一个类,又是「狗类」这个分类学概念个体</li>
+        <li>元建模的合法姿势,OWL 1 里要靠『0001』式歪招</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;5/8</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 6 / 8 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OW<em>L</em>2</div>
+    <div class="title-block">
+      <div class="title-cn">Web 本体语言 2 · 规范速查</div>
+      <div class="title-en">OWL 2 — PROFILES &amp; COMPLEXITY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;04</div>
+    <div class="meta">W3C / OWL 2 / 2009·2012</div>
+  </div>
+</header>
+
+<!-- 14 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">14</span><span class="sec-title">三剖面 · 用表达力换效率</span>
+    <span class="sec-sub">PART 4 · THREE PROFILES</span>
+  </div>
+  <table>
+    <tr><th>剖面</th><th>为谁而生</th><th>复杂度(一致性等)</th><th>拿掉了什么</th></tr>
+    <tr class="hl"><td><span class="k">OWL 2 EL</span></td><td>超大规模术语表(SNOMED CT 级生物本体)</td><td>PTIME-complete</td><td>全称量词、并/补、基数、枚举(多个体)、属性特征大半;保留存在量词、链、传递</td></tr>
+    <tr><td><span class="k">OWL 2 QL</span></td><td>大数据量、查询为主(DL-Lite;改写 SQL 打关系库)</td><td>NLogSpace-complete;查询改写 AC0</td><td>子类位的存在量词、Self、HasValue、枚举、全称、基数、属性链、函数/传递属性、键、SameIndividual</td></tr>
+    <tr><td><span class="k">OWL 2 RL</span></td><td>规则引擎 / 三元组库上的可扩展推理(DLP 谱系)</td><td>PTIME-complete</td><td>只禁 DisjointUnion 与 ReflexiveObjectProperty,其余按位置设限(基数只许 0/1);附完整 RL/RDF 规则集</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">互相之间</span>
+    三者都是 OWL 2 DL 的语法子集,但<b>彼此互不包含</b>(EL 有链,QL 有逆,RL 有负断言……)。选型先定任务:建模大术语表选 EL,库上查询选 QL,已有规则引擎选 RL。
+  </div>
+  <div class="sub">每个剖面留了什么、丢了什么 · 抽样对照</div>
+  <table>
+    <tr><th>构造/特征</th><th>EL</th><th>QL</th><th>RL</th></tr>
+    <tr><td><span class="k">存在量词 someValuesFrom</span></td><td class="yes">留(主力)</td><td>仅 superclass 位</td><td class="yes">留(受限)</td></tr>
+    <tr><td><span class="k">全称 allValuesFrom</span></td><td class="no">丢</td><td class="no">丢</td><td class="yes">留(受限)</td></tr>
+    <tr><td><span class="k">并/补/枚举</span></td><td class="no">丢</td><td class="no">丢</td><td>限定位</td></tr>
+    <tr><td><span class="k">属性链 / 传递</span></td><td class="yes">留</td><td class="no">丢</td><td class="no">丢(链)</td></tr>
+    <tr><td><span class="k">逆属性</span></td><td class="no">丢</td><td class="yes">留</td><td class="yes">留(受限)</td></tr>
+    <tr><td><span class="k">基数</span></td><td class="no">丢</td><td class="no">丢</td><td>仅 0/1</td></tr>
+    <tr><td><span class="k">负属性断言 / 不相交属性</span></td><td class="no">丢</td><td>不相交留</td><td class="yes">留</td></tr>
+    <tr><td><span class="k">键 HasKey</span></td><td class="yes">留</td><td class="no">丢</td><td class="no">丢</td></tr>
+  </table>
+</section>
+
+<!-- 15 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">15</span><span class="sec-title">复杂度全景 · 推理的价目表</span>
+    <span class="sec-sub">PART 4 · COMPLEXITY LANDSCAPE</span>
+  </div>
+  <table>
+    <tr><th>语言</th><th>一致性/包含/实例检查(分类复杂度)</th><th>合取查询回答</th></tr>
+    <tr class="hl"><td><span class="k">OWL 2 DL</span>(Direct Semantics)</td><td>N2EXPTIME-complete</td><td>可判定性尚开放(数据复杂度 NP-hard 起)</td></tr>
+    <tr><td><span class="k">OWL 2 Full</span>(RDF-Based Semantics)</td><td><b>不可判定</b></td><td>同上</td></tr>
+    <tr><td><span class="k">OWL 2 EL</span></td><td>PTIME-complete</td><td>分类复杂度 EXPTIME</td></tr>
+    <tr><td><span class="k">OWL 2 QL</span></td><td>NLogSpace-complete</td><td>NP-complete(合并)</td></tr>
+    <tr><td><span class="k">OWL 2 RL</span></td><td>PTIME-complete</td><td>NP-complete(合并)</td></tr>
+    <tr><td><span class="k">OWL 1 DL</span></td><td>NEXPTIME-complete</td><td>—</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">读表姿势</span>
+    理论复杂度是「最坏情形」,好的优化器(增量大小的本体)日常飞快;但架构选型时,请把它当<b>信用上限</b>而不是性能承诺。
+  </div>
+  <div class="note">
+    <span class="tag">对应哪门 DL</span>
+    OWL 2 DL 在描述逻辑谱系里约等于 <b>SROIQ(D)</b>(S=传递属性,H=子类,O=枚举,I=逆,N=基数,ROIQ 为 OWL 2 扩展,D=数据类型);OWL 1 DL 是 SHOIN(D)。看论文里的黑体缩写,对号入座。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;6/8</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 7 / 8 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OW<em>L</em>2</div>
+    <div class="title-block">
+      <div class="title-cn">Web 本体语言 2 · 规范速查</div>
+      <div class="title-en">OWL 2 — SYNTAX, REASONING TASKS, FIRST AID</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;04</div>
+    <div class="meta">W3C / OWL 2 / 2009·2012</div>
+  </div>
+</header>
+
+<!-- 16 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">16</span><span class="sec-title">推理任务五件套 · 推理机到底在算什么</span>
+    <span class="sec-sub">PART 4 · FIVE REASONING TASKS</span>
+  </div>
+  <table>
+    <tr><th>任务</th><th>问的问题</th><th>失败形态</th></tr>
+    <tr><td><span class="k">一致性</span></td><td>整本本体有没有矛盾?</td><td>inconsistent ontology</td></tr>
+    <tr><td><span class="k">可满足性</span></td><td>这个类可能有实例吗?</td><td>unsatisfiable class(常见于 domain 滥用)</td></tr>
+    <tr><td><span class="k">包含</span></td><td>C ⊑ D 吗?</td><td>层级树重排</td></tr>
+    <tr><td><span class="k">实例检查</span></td><td>a 是 C 吗?</td><td>类型补全</td></tr>
+    <tr><td><span class="k">实现</span></td><td>a 在最具体的哪个类?</td><td>个体精确归位</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">一致 != 正确</span>
+    推理机只担保「逻辑上没矛盾」,不担保「业务上没错」——垃圾公理可以完美自洽。校验数据结构请配 SHACL(PL.07),两者是互补不是替代。
+  </div>
+</section>
+
+<!-- 17 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">17</span><span class="sec-title">不一致急救流程 · 推理机报错之后</span>
+    <span class="sec-sub">PART 4 · INCONSISTENCY FIRST AID</span>
+  </div>
+  <ol class="check">
+    <li>先定位本体还是数据:只加载 TBox 跑一致性——TBox 干净就查 ABox 断言。</li>
+    <li>二分公理:注释掉一半再跑,迭代逼近肇事公理(Protégé 的 explain 功能可自动做)。</li>
+    <li>常见肇事者:domain/range 滥用、缺 DifferentIndividuals 的基数冲突、把校验需求错写进 OWL。</li>
+    <li>修完跑剖面校验:确定本体仍在目标剖面(EL/QL/RL)内,再上线。</li>
+  </ol>
+</section>
+
+<!-- 18 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">18</span><span class="sec-title">同一本体的两种写法 · Turtle vs Functional</span>
+    <span class="sec-sub">PART 5 · TURTLE VS FUNCTIONAL</span>
+  </div>
+  <div class="codeblock"><span class="cm"># ============ Turtle(工具生态常用) ============</span>
+<span class="kw">@prefix</span> <span class="iri">owl:</span> &lt;<span class="iri">http://www.w3.org/2002/07/owl#</span>&gt; .
+<span class="kw">@prefix</span> <span class="iri">:</span>     &lt;<span class="iri">http://example.org/onto#</span>&gt; .
+
+<span class="iri">:Dog</span> <span class="kw">a</span> <span class="iri">owl:Class</span> ;
+    <span class="iri">rdfs:subClassOf</span>
+      [ <span class="kw">a</span> <span class="iri">owl:Restriction</span> ;
+        <span class="iri">owl:onProperty</span> <span class="iri">:hasPart</span> ;
+        <span class="iri">owl:someValuesFrom</span> <span class="iri">:Bone</span> ] ,          <span class="cm"># 有骨头</span>
+      [ <span class="kw">a</span> <span class="iri">owl:Restriction</span> ;
+        <span class="iri">owl:onProperty</span> <span class="iri">:hasParent</span> ;
+        <span class="iri">owl:maxQualifiedCardinality</span> <span class="iri">"1"</span>^^<span class="iri">xsd:nonNegativeInteger</span> ;
+        <span class="iri">owl:onClass</span> <span class="iri">:Dog</span> ] .                   <span class="cm"># 至多一个狗爸爸</span>
+
+<span class="iri">:hasPart</span> <span class="kw">a</span> <span class="iri">owl:TransitiveProperty</span> .
+<span class="iri">:Dog</span> <span class="iri">owl:disjointWith</span> <span class="iri">:Cat</span> .
+<span class="iri">:rex</span> <span class="kw">a</span> <span class="iri">:Dog</span> ; <span class="iri">:hasPart</span> <span class="iri">:rexTail</span> .</div>
+  <div class="codeblock"><span class="cm"># ==== Functional-Style Syntax(规范原文/论文常用) ====</span>
+<span class="kw">SubClassOf</span>( <span class="iri">:Dog</span> <span class="kw">ObjectSomeValuesFrom</span>( <span class="iri">:hasPart</span> <span class="iri">:Bone</span> ) )
+<span class="kw">SubClassOf</span>( <span class="iri">:Dog</span> <span class="kw">ObjectMaxCardinality</span>( <span class="iri">1</span> <span class="iri">:hasParent</span> <span class="iri">:Dog</span> ) )
+<span class="kw">TransitiveObjectProperty</span>( <span class="iri">:hasPart</span> )
+<span class="kw">DisjointClasses</span>( <span class="iri">:Dog</span> <span class="iri">:Cat</span> )
+<span class="kw">ClassAssertion</span>( <span class="iri">:Dog</span> <span class="iri">:rex</span> )
+<span class="kw">ObjectPropertyAssertion</span>( <span class="iri">:hasPart</span> <span class="iri">:rex</span> <span class="iri">:rexTail</span> )
+<span class="kw">SubObjectPropertyOf</span>( <span class="kw">ObjectPropertyChain</span>( <span class="iri">:hasMother</span> <span class="iri">:hasSister</span> ) <span class="iri">:hasAunt</span> )
+<span class="kw">HasKey</span>( <span class="iri">:Person</span> <span class="iri">:ssn</span> )
+<span class="kw">SubClassOf</span>( <span class="iri">:Cat</span> <span class="kw">ObjectUnionOf</span>( <span class="iri">:HouseCat</span> <span class="iri">:WildCat</span> ) )
+<span class="kw">DifferentIndividuals</span>( <span class="iri">:rex</span> <span class="iri">:whiskers</span> )
+<span class="kw">NegativeObjectPropertyAssertion</span>( <span class="iri">:eats</span> <span class="iri">:rex</span> <span class="iri">:whiskers</span> )</div>
+  <div class="note">
+    <span class="tag">读法</span>
+    两行一对照:Restriction 节点 = 构造子;<span class="code">rdfs:subClassOf</span> = SubClassOf。规范与论文用 Functional,数据交换用 Turtle/RDF 映射——两边无损互转。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;7/8</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 8 / 8 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OW<em>L</em>2</div>
+    <div class="title-block">
+      <div class="title-cn">Web 本体语言 2 · 规范速查</div>
+      <div class="title-en">OWL 2 — MANAGEMENT, TOOLING &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;04</div>
+    <div class="meta">W3C / OWL 2 / 2009·2012</div>
+  </div>
+</header>
+
+<!-- 19 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">19</span><span class="sec-title">本体的自我管理 · 版本、导入与弃用</span>
+    <span class="sec-sub">PART 5 · ONTOLOGY MANAGEMENT</span>
+  </div>
+  <table>
+    <tr><th>机制</th><th>词汇/写法</th><th>用途</th></tr>
+    <tr><td><span class="k">本体头</span></td><td><span class="code">owl:Ontology</span> + <span class="code">owl:versionIRI</span></td><td>本体的 IRIs;version IRI 标识特定版本</td></tr>
+    <tr><td><span class="k">版本关系</span></td><td><span class="code">owl:backwardCompatibleWith / incompatibleWith / priorVersion</span></td><td>版本链;兼容性承诺</td></tr>
+    <tr><td><span class="k">导入</span></td><td><span class="code">owl:imports</span></td><td>引另一本体的全部公理;Direct Semantics 按导入闭包解释</td></tr>
+    <tr><td><span class="k">弃用</span></td><td><span class="code">owl:deprecated</span></td><td>标记弃用实体(布尔注解)</td></tr>
+    <tr><td><span class="k">自描述注解</span></td><td><span class="code">owl:AnnotationProperty</span> / <span class="code">owl:versionInfo</span> / <span class="code">owl:priorVersion</span></td><td>注解体系本身可扩展</td></tr>
+  </table>
+  <div class="note warn">
+    <span class="tag">imports 不是 include</span>
+    导入是<b>公理并集</b>:对方改版,你的推理结果跟着变。生产环境钉住 version IRI 导入,别用 latest——PL.02 讲过的「原地覆盖」是分布式推理的定时炸弹。
+  </div>
+  <div class="codeblock"><span class="cm"># 本体头的标准写法</span>
+&lt;<span class="iri">http://example.org/onto/1.0</span>&gt; <span class="kw">a</span> <span class="iri">owl:Ontology</span> ;
+    <span class="iri">owl:versionIRI</span> &lt;<span class="iri">http://example.org/onto/1.0</span>&gt; ;
+    <span class="iri">owl:imports</span> &lt;<span class="iri">http://www.w3.org/2004/02/skos/core</span>&gt; ;
+    <span class="iri">owl:priorVersion</span> &lt;<span class="iri">http://example.org/onto/0.9</span>&gt; ;
+    <span class="iri">rdfs:label</span> <span class="iri">"领域本体 v1.0"@zh-CN</span> .</div>
+</section>
+
+<!-- 20 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">20</span><span class="sec-title">工具速览 · 推理机从哪进</span>
+    <span class="sec-sub">PART 5 · TOOLING</span>
+  </div>
+  <table>
+    <tr><th>工具</th><th>路线</th></tr>
+    <tr><td><span class="k">Protégé</span></td><td>事实标准编辑器;explain、剖面校验、本体可视化</td></tr>
+    <tr><td><span class="k">HermiT / Openllet(Pellet)</span></td><td>Tableau 全量 DL 推理机,支持 SWRL</td></tr>
+    <tr><td><span class="k">ELK</span></td><td>EL 剖面专用,超大术语表秒级分类</td></tr>
+    <tr><td><span class="k">Jena rules / GraphDB / RDFox</span></td><td>RL 谱系:规则引擎/三元组库上的可扩展推理</td></tr>
+    <tr><td><span class="k">OWL API (Java)</span></td><td>读写 Functional/Turtle/RDF 三形态的库底座</td></tr>
+  </table>
+</section>
+
+<!-- 21 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">21</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 5 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>全称量词对「没有 p 的个体」恒真——要「必须有」,用 <span class="code">min 1</span> 或与 someValuesFrom 联用。</li>
+    <li>没写 <span class="code">DifferentIndividuals</span>,两个 IRI 可能是同一个人——基数冲突不报错,多半是缺不同声明。</li>
+    <li>domain/range 在 OWL 2 DL 里是硬公理,违反即不一致——RDFS 的「补类型」直觉在这里会害你。</li>
+    <li>非对称/反自反/不相交/基数参与者必须是<b>简单属性</b>——挂过链或传递的属性越界即语法非法。</li>
+    <li>hasKey 只在有名字的个体间触发推理,别当数据库唯一约束用;真校验去 SHACL。</li>
+    <li>OWA 下「闭世界式」需求要显式闭合:<span class="code">oneOf</span>、<span class="code">max 0</span>、<span class="code">differentFrom</span>。</li>
+    <li>选剖面先选任务:大术语表 EL、库上查询 QL、规则引擎 RL;剖面互不包含,别幻想通吃。</li>
+    <li>owl:imports 是公理并集,对方改版你遭殃——钉 version IRI。</li>
+    <li>注解不参与 Direct Semantics:标签写错不报错,发布前人工过。</li>
+    <li>复杂度是上限不是承诺:DL 推理在病态本体上指数爆炸,大 ABox 优先考虑 QL/RL 路线。</li>
+    <li>punning 有度:同一 IRI 的多角色要服务同一叙事,否则读本体的人比推理机先崩溃。</li>
+    <li>空表达式与 owl:Thing 滥用:把 owl:Thing 写进限制位、或造出必然为空的类,推理机轻则告警重则 unsatisfiable。</li>
+    <li>构面 facet 只能收紧已知类型:pattern 配 string、minInclusive 配数值——张冠李戴即越出数据类型词表。</li>
+    <li>DL 模式与 Full 模式混读:文档同时被两种语义解释,团队讨论先统一「今天在哪个语义里说话」。</li>
+    <li>发布前跑剖面校验器:表达力悄悄越档(多用了一个基数),下游 QL/RL 工具直接拒载。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;8/8</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

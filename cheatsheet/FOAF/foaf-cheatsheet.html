@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FO<em>A</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">人物词表 · 规范速查</div>
+      <div class="title-en">FOAF — PEOPLE, AGENTS &amp; PROFILE DOCUMENTS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;13</div>
+    <div class="meta">FOAF PROJECT / V0.99 / 2014</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 描述「人」的第一套词表</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">FOAF(Friend of a Friend)是描述人、组织及其社会关系的词表:名字邮箱头像、认识谁、属于哪个组、做了哪些东西。命名空间 <span class="code">foaf:</span> = <span class="code">http://xmlns.com/foaf/0.1/</span>。四层结构:</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">行动者</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Agent · 人 / 组织 / 群组 / 账号</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">一切的根</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">身份标识</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">mbox · homepage · 相当于主键的 IFP</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">认人不认名</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">关系网络</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">knows 认识 · member 隶属 · made 作品</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">图就是这样长出来的</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">档案文档</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">PersonalProfileDocument · primaryTopic</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">「我」的出处</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>认人不靠名字靠标识——mbox 这类「反向函数」属性两个人填了同一个值,推理机就判同一人。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 类与身份 → 关系与文档 → 融合与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 社区词表的活化石</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">FOAF 从 2000 年做到今天,是语义网最早破圈的应用词表。它<b>不是 W3C 标准</b>——由 FOAF 项目(Dan Brickley、Libby Miller)以开源社区方式维护,当前版本 0.99「Paddington Edition」(2014-01-14),但命名空间固定在 <span class="code">0.1/</span> 不随版本变。</p>
+  <table>
+    <tr><th>制度</th><th>说明</th></tr>
+    <tr><td><span class="k">术语状态制</span></td><td>每个词带状态:<span class="yes">stable</span> → 可放心用;testing → 可用会微调;<span class="no">archaic</span> → 别再新增(如 firstName / lastName,换 givenName / familyName)</td></tr>
+    <tr><td><span class="k">引用姿势</span></td><td>写 <span class="code">foaf:</span> = xmlns.com/foaf/0.1/,别把 0.99 写进 URI;版本只在 spec 文档层面</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">类层级 · 一切皆行动者</span>
+    <span class="sec-sub">PART 1 · CLASS TREE</span>
+  </div>
+  <p class="desc">树的根是 <span class="code">foaf:Agent</span>——「会做事的东西」,人、组织、群组甚至软件都算。</p>
+  <table>
+    <tr><th>类</th><th>一句话</th></tr>
+    <tr class="hl"><td><span class="k">foaf:Agent</span></td><td>一切行动者的根:人、组织、群组、软件</td></tr>
+    <tr><td><span class="k">foaf:Person</span></td><td>人(在世与否、真实虚构皆可);Agent 的子类</td></tr>
+    <tr><td><span class="k">foaf:Organization</span></td><td>公司、社团等建制化群体</td></tr>
+    <tr><td><span class="k">foaf:Group</span></td><td>行动者的集合,自身也是 Agent(可用 foaf:member 列成员)</td></tr>
+    <tr><td><span class="k">foaf:Document</span></td><td>广义文档;与 Organization、Project 不相交</td></tr>
+    <tr><td><span class="k">foaf:Image</span></td><td>Document 的子类——图片也是文档</td></tr>
+    <tr><td><span class="k">foaf:OnlineAccount</span></td><td>网络服务账号(子类:聊天/购物/游戏账号)</td></tr>
+    <tr><td><span class="k">foaf:PersonalProfileDocument</span></td><td>「个人档案文档」:maker 和 primaryTopic 都是同一个人</td></tr>
+    <tr><td><span class="k">foaf:Project</span></td><td>集体事业;与 Document、Person 不相交</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 13 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FO<em>A</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">人物词表 · 规范速查</div>
+      <div class="title-en">FOAF — IDENTITY, RELATIONS &amp; DOCUMENTS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;13</div>
+    <div class="meta">FOAF PROJECT / V0.99 / 2014</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">身份标识 · 带「主键」性质的属性</span>
+    <span class="sec-sub">PART 2 · IDENTITY PROPERTIES</span>
+  </div>
+  <p class="desc">名字可以重复,标识不行。FOAF 给一批属性标了<b>反向函数(IFP)</b>:两个 Agent 在该属性上取值相同,推理机即判为同一实体。</p>
+  <table>
+    <tr><th>属性</th><th>用途</th><th>性质</th></tr>
+    <tr class="hl"><td><span class="code">foaf:mbox</span></td><td>个人邮箱(mailto: URI)</td><td class="yes">IFP · 认同一个人的主键</td></tr>
+    <tr><td><span class="code">foaf:mbox_sha1sum</span></td><td>邮箱 URI 的 SHA1——隐私版 mbox,同样能认人</td><td class="yes">IFP</td></tr>
+    <tr><td><span class="code">foaf:homepage</span></td><td>主页</td><td class="yes">IFP</td></tr>
+    <tr><td><span class="code">foaf:weblog</span> · <span class="code">foaf:openid</span></td><td>博客 / OpenID</td><td class="yes">IFP</td></tr>
+    <tr><td><span class="code">foaf:name</span> / <span class="code">givenName</span> / <span class="code">familyName</span> / <span class="code">nick</span></td><td>姓名拆分与昵称</td><td class="no">无 IFP——名字不当主键</td></tr>
+    <tr><td><span class="code">foaf:gender</span> · <span class="code">foaf:birthday</span> · <span class="code">foaf:age</span></td><td>人口学字段</td><td class="no">gender 为函数属性</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">IFP 家族</span>
+    除上表外,logo、jabberID、aimChatID 等 IM 账号也是 IFP。共同点:<b>值由本人独占</b>——所以同值即可同人。这条语义在合并数据源时威力巨大,见 §07。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">社交与组织 · 图从哪长出来</span>
+    <span class="sec-sub">PART 2 · SOCIAL &amp; GROUPS</span>
+  </div>
+  <p class="desc">关系属性把孤立的人物节点连成图:</p>
+  <table>
+    <tr><th>属性</th><th>连什么</th><th>备注</th></tr>
+    <tr class="hl"><td><span class="code">foaf:knows</span></td><td>Person → Person</td><td>domain/range 都是 Person;隐含「有一定双向互动」,方向从书写者视角定</td></tr>
+    <tr><td><span class="code">foaf:member</span></td><td>Group → Agent</td><td>群组列成员;成员本身也可以是 Group</td></tr>
+    <tr><td><span class="code">foaf:made</span> / <span class="code">foaf:maker</span></td><td>Agent ↔ 造物</td><td>一对互逆:做了什么 / 谁做的</td></tr>
+    <tr><td><span class="code">foaf:depiction</span> / <span class="code">foaf:img</span></td><td>Thing → Image</td><td>img 是 depiction 的子属性(限 Person)</td></tr>
+    <tr><td><span class="code">foaf:account</span></td><td>Agent → OnlineAccount</td><td>配 accountName / accountServiceHomepage 描述账号</td></tr>
+    <tr><td><span class="code">foaf:interest</span> · <span class="code">foaf:currentProject</span></td><td>Agent → 主题 / 项目</td><td>兴趣指向「关于该主题的 Document」</td></tr>
+    <tr><td><span class="code">foaf:workplaceHomepage</span></td><td>Person → Document</td><td>雇主主页;另有 schoolHomepage</td></tr>
+  </table>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">文档三件套 · 名字从哪来</span>
+    <span class="sec-sub">PART 2 · DOCUMENT MACHINERY</span>
+  </div>
+  <p class="desc">「文档」与「主题」的关系是 FOAF 最精巧的部分:一条 subPropertyOf 链把主页、档案页、一般页面串起来。</p>
+  <div class="def">
+    <span class="lbl">CHAIN · homepage ⊑ isPrimaryTopicOf ⊑ page</span>
+    <span class="code">page</span>:这份文档<b>谈到</b>它;<span class="code">isPrimaryTopicOf</span>:这份文档<b>主要谈</b>它;<span class="code">homepage</span>:既是主页、又主要谈它、还由它独占——三重身份一步到位。
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>三对互逆 <span>写一边得另一边</span></h4>
+      <ul>
+        <li>primaryTopic ↔ isPrimaryTopicOf:文档的主主题 / 主题的主文档</li>
+        <li>maker ↔ made:造物者 / 造物</li>
+        <li>depiction ↔ depicts:被描绘 / 描绘</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>PersonalProfileDocument <span>自我声明的闭环</span></h4>
+      <ul>
+        <li>定义:maker 和 primaryTopic 是同一个人的 Document</li>
+        <li>「这份档案是我写的、写的是我」——档案可信度的形式化根基(WebID 档案即此形态)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 13 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FO<em>A</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">人物词表 · 规范速查</div>
+      <div class="title-en">FOAF — MERGING, A WORKED PROFILE &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;13</div>
+    <div class="meta">FOAF PROJECT / V0.99 / 2014</div>
+  </div>
+</header>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">IFP 的杀伤力 · 合并数据源</span>
+    <span class="sec-sub">PART 3 · MERGING BY IFP</span>
+  </div>
+  <p class="desc">IFP 是 FOAF 在图谱融合里真正的杀手锏:两个数据源各自描述「张三」,只要 <span class="code">mbox</span> 相同,OWL 推理直接产出 <span class="code">owl:sameAs</span>,两张人物卡自动合并。</p>
+  <div class="codeblock"><span class="cm"># 数据源 A(公司通讯录)          # 数据源 B(社区 wiki)</span>
+ex:a_103 foaf:mbox &lt;mailto:zx@ex.com&gt; .   wiki:p_7 foaf:mbox &lt;mailto:zx@ex.com&gt; .
+ex:a_103 foaf:name "张三" .               wiki:p_7 foaf:nick "zx" .
+
+<span class="cm"># 推理机(mbox 为 IFP)⇒</span>
+ex:a_103 <span class="kw">owl:sameAs</span> wiki:p_7 .   <span class="cm"># 两卡合一,名字与昵称落到同一实体</span></div>
+  <div class="note warn">
+    <span class="tag">双刃剑</span>
+    IFP 合并是<b>语义级自动合并</b>——错配一个旧邮箱就会把两个人焊死成一人,而且推理结论难以拆开。生产环境先对 IFP 值做质量校验,再开推理。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">一份个人档案 · Turtle</span>
+    <span class="sec-sub">PART 3 · A WORKED PROFILE</span>
+  </div>
+  <div class="codeblock"><span class="iri">&lt;http://ex.com/~zx/foaf.ttl&gt;</span> <span class="kw">a</span> foaf:PersonalProfileDocument ;
+    foaf:maker <span class="iri">ex:zx</span> ;               <span class="cm"># 我写的</span>
+    foaf:primaryTopic <span class="iri">ex:zx</span> .          <span class="cm"># 写的是我 —— 闭环成立</span>
+
+<span class="iri">ex:zx</span> <span class="kw">a</span> foaf:Person ;
+    foaf:name <span class="iri">"张三"</span> ;
+    foaf:givenName <span class="iri">"三"</span> ; foaf:familyName <span class="iri">"张"</span> ;
+    foaf:mbox &lt;mailto:zx@ex.com&gt; ;        <span class="cm"># 主键,慎改</span>
+    foaf:homepage &lt;http://ex.com/~zx/&gt; ;
+    foaf:workplaceHomepage &lt;http://ex.com/&gt; ;
+    foaf:knows <span class="iri">ex:李四</span> , <span class="iri">dbpedia:Wang_Anshi</span> ;
+    foaf:account ex:zx_github ;
+    foaf:interest &lt;https://www.w3.org/2001/sw/&gt; .
+
+<span class="iri">ex:zx_github</span> <span class="kw">a</span> foaf:OnlineAccount ;
+    foaf:accountName <span class="iri">"zx"</span> .</div>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>mbox 一旦发布别换:</b>它是 IFP 主键——换邮箱等于换身份,历史数据的 sameAs 全部失效;邮箱不想公开就用 mbox_sha1sum。</li>
+    <li><b>knows 不对称:</b>我写 knows 你,推不出你知道我;要双向就写两条。</li>
+    <li><b>archaic 词别新增:</b>firstName / lastName / surname 已弃,统一 givenName / familyName。</li>
+    <li><b>img ⊑ depiction:</b>给人物配头像写 img(更具体),给一般事物写 depiction。</li>
+    <li><b>Disjoint 别踩:</b>Person∩Project、Document∩Organization 等互不相交——把公司同时写成 Organization 和 Project 会判不一致。</li>
+    <li><b>主页链写对的层级:</b>个人主页写 homepage(自动得到 page 与 isPrimaryTopicOf),别倒过来只写 page。</li>
+    <li><b>Group 自身是 Agent:</b>可以把 Group 当关系的主语(made / account 都合法);列出成员用 member。</li>
+    <li><b>与 schema.org 对接:</b>schema.org:Person 与 foaf:Person 语义对应,跨词表映射用 owl:equivalentClass 声明,别两套属性混写同一份档案。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 13 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

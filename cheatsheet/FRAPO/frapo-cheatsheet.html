@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FRA<em>P</em>O</div>
+    <div class="title-block">
+      <div class="title-cn">经费与项目词表 · 规范速查</div>
+      <div class="title-en">FRAPO — FUNDING, PROJECTS &amp; FINANCIAL ENTITIES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;17</div>
+    <div class="meta">SPAR / FRAPO / V1.2</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 经费、项目与合同的一套账</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">FRAPO(Funding, Research Administration and Projects Ontology)是 SPAR 本体家族里管「钱与项目」的一员:资助从哪来、项目怎么立、合同怎么签、预算怎么花。命名空间 <span class="code">frapo:</span> = <span class="code">http://purl.org/spar/frapo</span>。四层结构:</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">资助与项目</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Funding · FundingProgramme · Project</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">从申请到结项</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">合同与金融</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Contract · Account · Budget · Expenditure</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">FinancialEntity 下</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">资源与产出</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Equipment · Service · InfrastructureEntity</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">项目的家当</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">SPAR 家族</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">FaBiO 文档 · SCoRO 贡献 · PSO 状态 · PRO 角色</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">分工不打架</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>钱、项目、合同、家当四本账互通——资助落在项目上,项目签合同、设账户、买设备,一切金融实体都归 FinancialEntity。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 类版图 → 关系属性 → 实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · SPAR 家族的账房先生</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">FRAPO 由牛津大学 David Shotton 创建(Silvio Peroni、Sebastian Barzaghi 参与),OWL 2 DL 写成,<b>CERIF 兼容</b>——欧盟科研信息系统(CRIS)的数据模型能直接对上。v1.2.0(issued 2017-09-04,近年仍有修订),CC BY 4.0。</p>
+  <table>
+    <tr><th>要点</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="k">体量</span></td><td>101 个类 + 49 个对象属性 + 78 个数据属性</td></tr>
+    <tr><td><span class="k">imports FOAF</span></td><td>人与组织直接用 foaf:Person / foaf:Organization——项目参与者不另起炉灶</td></tr>
+    <tr><td><span class="k">适用面</span></td><td>科研资助(CRIS)之外,建筑、教育类项目也能描述;注册于 FAIRsharing,有 DOI</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">类版图 · FinancialEntity 说了算</span>
+    <span class="sec-sub">PART 1 · CLASS MAP</span>
+  </div>
+  <p class="desc">金融侧的根是 <span class="code">frapo:FinancialEntity</span>——账户、合同、预算、支出全是它的子孙。项目侧则<b>直接借用 foaf:Project</b>,FRAPO 不另造项目类。</p>
+  <table>
+    <tr><th>类</th><th>一句话</th></tr>
+    <tr class="hl"><td><span class="k">frapo:Contract</span></td><td>合同;四个细分:ConsortiumAgreement(联合体)· ConsultancyAgreement(咨询)· EmploymentContract(雇佣)· ServiceContract(服务)</td></tr>
+    <tr><td><span class="k">frapo:Account</span></td><td>管钱的户头:为专门目的设的账户(如设备账户)</td></tr>
+    <tr><td><span class="k">frapo:Budget 族</span></td><td>Budget · ProjectBudget · BudgetCategory(自带 17 个现成类目个体,如 travel-and-subsistence-costs)· BudgetedAmount · Expenditure</td></tr>
+    <tr><td><span class="k">frapo:Funding 族</span></td><td>Funding · FundingProgramme(资助计划)· FundingApplication(申请)· AvailableFunds</td></tr>
+    <tr><td><span class="k">资源与设施</span></td><td>InfrastructureEntity · Equipment · Service(含 ComputationalService)· MaterialOutput</td></tr>
+    <tr><td><span class="k">foaf:Project</span></td><td>项目本身从 FOAF 借用——FRAPO 管它的经费与行政,不管它的定义</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 17 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FRA<em>P</em>O</div>
+    <div class="title-block">
+      <div class="title-cn">经费与项目词表 · 规范速查</div>
+      <div class="title-en">FRAPO — CONTRACTS, RELATIONS &amp; THE SPAR FAMILY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;17</div>
+    <div class="meta">SPAR / FRAPO / V1.2</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">关系属性 · 一套「账目动词」</span>
+    <span class="sec-sub">PART 2 · RELATIONS &amp; DATA PROPERTIES</span>
+  </div>
+  <p class="desc">FRAPO 的对象属性读起来就是账房动词:</p>
+  <table>
+    <tr><th>属性</th><th>连什么</th></tr>
+    <tr class="hl"><td><span class="code">funds / isFundedBy</span></td><td>资助方 → 项目;配 providesFractionOfTotalFunding 表出资比例</td></tr>
+    <tr><td><span class="code">isAwardedBy / awards</span></td><td>申请被谁授予</td></tr>
+    <tr><td><span class="code">employs / isEmployedBy</span> · <span class="code">owns / isOwnedBy</span></td><td>雇与有——人员、设备各归其主</td></tr>
+    <tr><td><span class="code">submits / isSubmittedBy</span> · <span class="code">appliesFor</span> · <span class="code">evaluates</span></td><td>申请流程三件套:提交、申请、评审</td></tr>
+    <tr><td><span class="code">isManufacturedBy / manufactures</span> · <span class="code">isPurchasedBy</span> · <span class="code">hasDispatchDate</span> · <span class="code">hasPurchaseOrderNumber</span></td><td>设备采购链路:谁造、谁买、何时发运、订单号</td></tr>
+    <tr><td><span class="code">collaboratesWith</span> · <span class="code">hasOutput / isOutputOf</span></td><td>合作与产出</td></tr>
+    <tr><td><span class="code">hasMonetaryValue / hasCurrency / hasCost</span></td><td>金额、币种、成本</td></tr>
+    <tr><td><span class="code">hasGrantNumber · hasApplicationDeadline · hasStartDate / hasEndDate</span></td><td>项目与申请的行政字段</td></tr>
+  </table>
+  <div class="sub">一份合同的完整描述</div>
+  <div class="codeblock"><span class="iri">ex:joint-research-agreement</span> <span class="kw">a</span> frapo:ConsortiumAgreement ;
+    frapo:hasMonetaryValue <span class="iri">"800000"</span> ;
+    frapo:hasCurrency      <span class="iri">"CNY"</span> ;
+    frapo:hasStartDate     <span class="iri">"2026-01-01"</span> ;
+    frapo:hasEndDate       <span class="iri">"2027-12-31"</span> ;
+    frapo:isPurchasedBy    ex:甲方大学 .          <span class="cm"># 谁出的这份钱</span></div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">SPAR 家族 · 分工不打架</span>
+    <span class="sec-sub">PART 2 · THE SPAR FAMILY</span>
+  </div>
+  <p class="desc">FRAPO 刻意不重复造词——文档、贡献、状态都指到家族兄弟头上:</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>四兄弟 <span>各管一摊</span></h4>
+      <ul>
+        <li>FaBiO:出版文档(申请书、报告、论文)——FRAPO 不含文档类</li>
+        <li>SCoRO:贡献与角色(contributions / roles)</li>
+        <li>PSO:发布状态(published / draft…)配 StatusInTime</li>
+        <li>PRO:pro:RoleInTime——「谁在何时担任什么角色」</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>对外 <span>imports 与对接</span></h4>
+      <ul>
+        <li>imports FOAF:Person / Group / Organization 直接用</li>
+        <li>兼容 DC terms、schema.org、SKOS 等外部词表</li>
+        <li>CERIF 对齐:科研管理系统的数据模型可直接映射</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sub">SPAR 家族速览 · 引用前认准前缀</div>
+  <div class="chips">
+    <span class="chip hot"><span class="cn">frapo</span><span class="en">经费 · 项目 · 合同 · 预算(本卡)</span></span>
+    <span class="chip"><span class="cn">fabio</span><span class="en">申请书 / 报告 / 期刊论文等出版文档</span></span>
+    <span class="chip"><span class="cn">scoro</span><span class="en">贡献描述:谁做了什么贡献</span></span>
+    <span class="chip"><span class="cn">pso</span><span class="en">发布状态:draft / published / withdrawn</span></span>
+    <span class="chip"><span class="cn">pro</span><span class="en">RoleInTime:角色与任职时段</span></span>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 17 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FRA<em>P</em>O</div>
+    <div class="title-block">
+      <div class="title-cn">经费与项目词表 · 规范速查</div>
+      <div class="title-en">FRAPO — A WORKED RECORD &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;17</div>
+    <div class="meta">SPAR / FRAPO / V1.2</div>
+  </div>
+</header>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">一条资助记录 · Turtle</span>
+    <span class="sec-sub">PART 3 · A WORKED RECORD</span>
+  </div>
+  <div class="codeblock"><span class="iri">ex:kg-infra-project</span> <span class="kw">a</span> foaf:Project ;
+    foaf:name <span class="iri">"知识图谱基础设施专项"</span> ;
+    frapo:hasAcronym <span class="iri">"KG-INFRA"</span> ;
+    frapo:hasStartDate <span class="iri">"2026-01-01"</span> ;
+    frapo:hasEndDate   <span class="iri">"2027-12-31"</span> ;
+    frapo:isFundedBy   <span class="iri">ex:科技基金委</span> ;
+    frapo:hasGrantNumber <span class="iri">"GRANT-2026-0042"</span> .
+
+<span class="iri">ex:资助决定</span> <span class="kw">a</span> frapo:Funding ;
+    frapo:isAwardedBy ex:科技基金委 ;
+    frapo:hasMonetaryValue <span class="iri">"12000000"</span> ;
+    frapo:hasCurrency      <span class="iri">"CNY"</span> .
+
+<span class="iri">ex:联合体合同</span> <span class="kw">a</span> frapo:ConsortiumAgreement ;
+    frapo:hasCost <span class="iri">"800000"</span> ;
+    frapo:hasBudgetCategory frapo:travel-and-subsistence-costs .   <span class="cm"># 现成类目个体</span>
+
+<span class="iri">ex:项目预算</span> <span class="kw">a</span> frapo:ProjectBudget ;
+    frapo:hasBudgetCategory frapo:travel-and-subsistence-costs ;
+    frapo:hasCost <span class="iri">"150000"</span> .</div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">配套阅读 · 跨卡协作</span>
+    <span class="sec-sub">PART 4 · CROSS-REFS</span>
+  </div>
+  <div class="note">
+    <span class="tag">本系列里的搭档</span>
+    项目参与者用 FOAF(PL.13);合同的法律语义看 LKIF norm 模块(PL.16);金额单位用 QUDT(PL.15);项目周期用 OWL-Time(PL.12);元数据字段就是本卡的 dcterms——五张卡拼出一条完整的科研经费链。
+  </div>
+</section>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>没有 frapo:ResearchProject:</b>项目类就是 foaf:Project——别自造 frapo: 项目类,破坏与 CRIS 的映射。</li>
+    <li><b>没有 frapo:Fund:</b>「一笔资助」用 frapo:Funding,「可用资金」用 AvailableFunds,「计划」用 FundingProgramme。</li>
+    <li><b>命名空间选对:</b>规范页面同时出现 purl.org/cerif/frapo 与 purl.org/spar/frapo——首选后者(spar 系家族标准前缀)。</li>
+    <li><b>文档去 FaBiO 找:</b>申请书、结项报告、论文的类都在 FaBiO;FRAPO 只管钱和行政,别在 frapo: 下自造文档类。</li>
+    <li><b>合同细类只有四种:</b>Consortium / Consultancy / Employment / Service——金融衍生品合同不在 FRAPO,金融行业建模上 FIBO。</li>
+    <li><b>specifiesExpediture 是词表原始拼写</b>(Expenditure 拼成了 Expediture)——引用时保持原样,否则查不到。</li>
+    <li><b>角色描述别硬编码:</b>「项目负责人」用 PRO 的 pro:RoleInTime + SCoRO 贡献关系表达,不要给 Person 加子类。</li>
+    <li><b>预算类目有现成个体:</b>BudgetCategory 下 17 个类目(差旅、设备、人力…)先用再自造,保证跨项目可汇总。</li>
+    <li><b>金额与币种分开:</b>hasMonetaryValue 配 hasCurrency,别合并成一个字符串——汇率换算与跨项目汇总都靠两个字段。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 17 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

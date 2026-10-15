@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.2 · 规范速查</div>
+      <div class="title-en">RDF 1.2 — OVERVIEW · THE BIG EVOLUTION</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;06</div>
+    <div class="meta">W3C / RDF 1.2 / CR 2026</div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 十二年来最大一次进化</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">RDF 1.2 的三件新事:三元词项让句子可被引用,方向性标签给文字方向上户口,版本声明让解析器知道规则。1.1 的模型与语法全部保留,旧数据原样合法。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="55.2mm" viewBox="0 0 118 55.2">
+      <rect x="0.25" y="1.0" width="27.5" height="11.0" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="7.5" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">RDF 1.1 底座</text>
+      <text x="32" y="7.5" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">三元组 · 图 · 数据集 · 六种语法</text>
+      <text x="116.5" y="7.5" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">全部保留</text>
+      <line x1="14" y1="12.4" x2="14" y2="14.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,15.2 12.9,13.6 15.1,13.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="15.4" width="27.5" height="11.0" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="21.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">三元词项</text>
+      <text x="32" y="21.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">引用「这句话」· 给句子一个身份</text>
+      <text x="116.5" y="21.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">见 §04</text>
+      <line x1="14" y1="26.799999999999997" x2="14" y2="28.799999999999997" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,29.599999999999998 12.9,28.0 15.1,28.0" fill="#C9BFAC"/>
+      <rect x="0.25" y="29.8" width="27.5" height="11.0" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="36.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">方向与版本</text>
+      <text x="32" y="36.3" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">dir 语言标签 · 版本声明</text>
+      <text x="116.5" y="36.3" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">见 §05–07</text>
+      <line x1="14" y1="41.199999999999996" x2="14" y2="43.199999999999996" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,44.0 12.9,42.4 15.1,42.4" fill="#C9BFAC"/>
+      <rect x="0.25" y="44.2" width="27.5" height="11.0" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="50.7" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">采用与生态</text>
+      <text x="32" y="50.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">迁移对照 · SPARQL 1.2 · 支持度</text>
+      <text x="116.5" y="50.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">见 §08–11</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>四件新特性全部向后兼容——旧数据原样合法,新能力按需启用。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 三元词项 → 方向与版本 → 采用与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · RDF 十二年来最大一次进化</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">RDF 1.1 发布十二年后的换代:吸收整个 <b>RDF-star</b> 社区方案(三元组当宾语),补上双向文字的方向,给文件加上版本声明。由 RDF &amp; SPARQL 工作组推进,配套 SPARQL 1.2 同步演进。</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>为什么是现在 <span>MOTIVATION</span></h4>
+      <ul>
+        <li>溯源与置信度标注是图数据库的头号刚需,RDF-star 社区方案已跑了多年</li>
+        <li>RTL 文字(希伯来/阿拉伯)在 1.1 里无处声明方向,渲染端各自猜</li>
+        <li>多语法共存需要显式的版本握手</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>原则 <span>COMPATIBILITY</span></h4>
+      <ul>
+        <li>所有 1.2 语法向后兼容 1.1——老文件零改动</li>
+        <li>新特性按需启用,声明版本才生效</li>
+        <li>抽象语法只加不改:RDF 术语仍是 IRI/字面量/空白节点(三元词项是字面量之外的第四类「词项」)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="def">
+    <span class="lbl">STATUS · 检索于 2026-10</span>
+    RDF 1.2 Concepts 处于 <b>W3C Candidate Recommendation Snapshot(2026-04-07)</b>,尚未成为 Recommendation;Turtle 1.2 当时为 Working Draft(2026-10-07)。整个 1.2 家族共 <b>11 份 RDF 文档 + 12 份 SPARQL 1.2 文档</b>。引用前请再核一次最新状态——这套卡标注的就是当时的进度。
+  </div>
+  <table>
+    <tr><th>家族文档</th><th>说明</th></tr>
+    <tr><td><span class="k">Concepts / Semantics / Schema</span></td><td>模型、语义、词表——1.1 三件的 1.2 版</td></tr>
+    <tr><td><span class="k">Turtle / TriG / N-Triples / N-Quads / XML</span></td><td>五件语法全家桶的 1.2 版,向后兼容 1.1</td></tr>
+    <tr><td><span class="k">Primer / What's New / Interoperability</span></td><td>入门、新特性导读、互操作说明</td></tr>
+    <tr><td><span class="k">SPARQL 1.2 全家</span></td><td>Query/Update/Protocol/结果格式等十二件同步升级</td></tr>
+  </table>
+  <div class="sub">词汇层的增与留</div>
+  <table>
+    <tr><th>术语</th><th>状态</th></tr>
+    <tr class="hl"><td><span class="code">rdf:reifies</span></td><td class="yes">新增</td><td>连接 reifier 与三元词项</td></tr>
+    <tr class="hl"><td><span class="code">rdf:dirLangString</span></td><td class="yes">新增</td><td>带 base direction 的语言标注字面量类型</td></tr>
+    <tr><td><span class="code">rdf:langString / rdf:HTML / rdf:XMLLiteral</span></td><td>沿用</td><td>语义与 1.1 一致</td></tr>
+    <tr><td><span class="code">rdf:Statement 四件套</span></td><td>沿用(继续边缘)</td><td>新项目改走三元词项</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">四大新特性 · 一页总览</span>
+    <span class="sec-sub">PART 1 · FOUR FEATURES</span>
+  </div>
+  <table>
+    <tr><th>特性</th><th>一句话</th><th>细节</th></tr>
+    <tr class="hl"><td><span class="k">三元词项 triple terms</span></td><td>RDF 三元组可以坐进另一条三元组的宾语位——RDF-star 正式转正</td><td>§04–05</td></tr>
+    <tr><td><span class="k">方向性语言标签</span></td><td>字面量可带 base direction(ltr/rtl),新类型 <span class="code">rdf:dirLangString</span></td><td>§06</td></tr>
+    <tr><td><span class="k">版本声明</span></td><td><span class="code">VERSION "1.2"</span> 指令 + HTTP 媒体类型参数</td><td>§07</td></tr>
+    <tr><td><span class="k">语言标签大小写合一</span></td><td><span class="code">"chat"@fr</span> 与 <span class="code">"chat"@FR</span> 现在是<b>同一个字面量</b></td><td>§08</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">两档一致性与 RDF 1.1 的关系</span>
+    1.2 定义 <b>Full</b>(允许三元词项)与 <b>Basic / "1.2-basic"</b>(不含)两档;HTTP 版本标签有 <span class="code">1.2</span>、<span class="code">1.2-basic</span>、<span class="code">1.1</span> 三种。所有 1.2 语法<b>向后兼容 1.1</b>——老文件照跑,新特性按需开。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 06 · P.&thinsp;1/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.2 · 规范速查</div>
+      <div class="title-en">RDF 1.2 — TRIPLE TERMS &amp; DIRECTION</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;06</div>
+    <div class="meta">W3C / RDF 1.2 / CR 2026</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">三元词项 · 给「这句话」一个身份</span>
+    <span class="sec-sub">PART 2 · TRIPLE TERMS</span>
+  </div>
+  <p class="desc">「谁在什么时候说了 `爱丽丝任职某公司` 这句话」——信息本身是一条三元组,要对它再说话,1.1 里只能靠具体化四件套或 Reification 私货。1.2 直接让三元组坐进宾语位。</p>
+  <div class="fig-wrap">
+    <svg width="92mm" height="44mm" viewBox="0 0 92 44">
+      <!-- reifier -->
+      <rect x="2" y="4" width="18" height="8" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="11" y="9.4" font-family="JetBrainsMono" font-size="3.0" fill="#1C2430" text-anchor="middle" font-weight="700">reifier</text>
+      <!-- rdf:reifies arrow -->
+      <line x1="20" y1="8" x2="36" y2="8" stroke="#B23A26" stroke-width="0.5"/>
+      <polygon points="36,8 32.8,6.7 32.8,9.3" fill="#B23A26"/>
+      <text x="28" y="5.6" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" text-anchor="middle" font-weight="700">rdf:reifies</text>
+      <!-- triple term box -->
+      <rect x="37" y="2" width="53" height="12" fill="#F6F1E7" stroke="#B23A26" stroke-width="0.6" stroke-dasharray="2 1"/>
+      <text x="63.5" y="9.4" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" text-anchor="middle" font-weight="700">triple term: e38 jobTitle "Designer"</text>
+      <!-- asserted triple below -->
+      <rect x="2" y="24" width="18" height="8" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="11" y="29.4" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle" font-weight="700">reifier</text>
+      <line x1="20" y1="28" x2="36" y2="28" stroke="#7d7466" stroke-width="0.4"/>
+      <rect x="37" y="22" width="49" height="12" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="61.5" y="29.4" font-family="JetBrainsMono" font-size="2.9" fill="#F6F1E7" text-anchor="middle" font-weight="700">asserted triple(同时成立)</text>
+      <text x="44" y="41" font-family="JetBrainsMono" font-size="2.3" fill="#7d7466" text-anchor="middle">上:仅引用不成立 · 下:asserted + 引用,即 triple annotation</text>
+      <text x="44" y="21" font-family="JetBrainsMono" font-size="2.2" fill="#33506E" text-anchor="middle">三元词项内部是「透明」的:里面的术语照常指称</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>三元词项</b>(triple term):一条三元组作为宾语出现,但<b>不因此成立</b>——它是可被谈论的「命题」。</div>
+      <div class="t-note"><b>具体化三元组</b>(reifying triple):主语(reifier)经 <span class="code">rdf:reifies</span> 指向三元词项。当词项恰好等于一条已断言的三元组,这个模式叫 <b>triple annotation</b>——最常见用途:给断言挂出处、时间、置信度。</div>
+    </div>
+  </div>
+  <div class="codeblock"><span class="cm"># 全写形式:<<( … )>> 是三元词项,rdf:reifies 普通地写在谓语位</span>
+<span class="iri">_:anno</span> <span class="iri">rdf:reifies</span> &lt;&lt;( <span class="iri">:e38</span> <span class="iri">:jobTitle</span> <span class="iri">"Designer"</span> )&gt;&gt; .
+<span class="iri">_:anno</span> <span class="iri">:accordingTo</span> <span class="iri">:hrDept</span> ; <span class="iri">:asOf</span> <span class="iri">"2026-01-01"</span> .
+
+<span class="cm"># 糖一:<< s p o >> = 断言该三元组 + 生成匿名 reifier 指向它</span>
+&lt;&lt; <span class="iri">:e38</span> <span class="iri">:jobTitle</span> <span class="iri">"Designer"</span> &gt;&gt; <span class="iri">:accordingTo</span> <span class="iri">:employee22</span> .
+
+<span class="cm"># 糖二:~ 命名 reifier;{| |} 注解块 = 断言 + 具体化 + 挂属性,三合一</span>
+<span class="iri">:alice</span> <span class="iri">:name</span> <span class="iri">"Alice"</span> <span class="kw">~</span> <span class="iri">:t1</span> {| <span class="iri">:statedBy</span> <span class="iri">:bob</span> ; <span class="iri">:confidence</span> <span class="kw">0.9</span> |} .
+
+<span class="cm"># 溯源实战:同一句 proposition,两路人马各自背书</span>
+<span class="kw">VERSION</span> <span class="iri">"1.2"</span>
+<span class="iri">:drugX</span> <span class="iri">:treats</span> <span class="iri">:diseaseY</span> <span class="kw">~</span> <span class="iri">:claimA</span> {| <span class="iri">:source</span> <span class="iri">:paper2024</span> |} .
+<span class="iri">:drugX</span> <span class="iri">:treats</span> <span class="iri">:diseaseY</span> <span class="kw">~</span> <span class="iri">:claimB</span> {| <span class="iri">:source</span> <span class="iri">:registry</span> ; <span class="iri">:asOf</span> <span class="iri">"2026-06-01"</span> |} .
+<span class="cm"># 两个 reifier 指向同一命题——多人背书,互不干扰</span></div>
+  <div class="chips">
+    <div class="chip"><span class="cn">2019–2021</span><span class="en">RDF-star 社区草案与 CG 报告</span></div>
+    <div class="chip"><span class="cn">2023</span><span class="en">RDF &amp; SPARQL WG 接手标准化</span></div>
+    <div class="chip hot"><span class="cn">2026</span><span class="en">RDF 1.2 CR,三元词项转正</span></div>
+  </div>
+  <div class="sub">triple annotation 的四大用武之地</div>
+  <table>
+    <tr><th>场景</th><th>挂在 reifier 上的是什么</th></tr>
+    <tr><td><span class="k">溯源</span></td><td>来源、发布者、检索时间(与 PROV-O 互补:PROV 管过程,annotation 管单条断言)</td></tr>
+    <tr><td><span class="k">置信度</span></td><td>分数、证据强度、多源投票结果</td></tr>
+    <tr><td><span class="k">时间有效性</span></td><td>生效区间——事实会过期,断言不该被覆盖</td></tr>
+    <tr><td><span class="k">观点分歧</span></td><td>同一命题,多方各持立场,谁也不覆盖谁</td></tr>
+  </table>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">方向的语义 · 透明性与同一性</span>
+    <span class="sec-sub">SEMANTICS OF << >></span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>透明性 <span>transparent</span></h4>
+      <ul>
+        <li>三元词项里的术语照常指称自己的资源</li>
+        <li>查询时可以「看穿」词项匹配内部三元组</li>
+        <li>对比:1.1 具体化四件套只是四个普通节点,毫无透明性</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>同一性 <span>identity</span></h4>
+      <ul>
+        <li>三元词项按三元组逐项相等判定同一</li>
+        <li>同一命题可以有<b>多个</b> reifier(多人背书)</li>
+        <li>一个 reifier 也可具体化多条命题——比 RDF-star 草案更灵活</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">与老具体化的关系</span>
+    <span class="code">rdf:Statement / subject / predicate / object</span>(引 PL.01 §13)仍有效但继续边缘:三元词项才是 1.2 的正路。SPARQL 1.2 同步获得查询三元词项的能力。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 06 · P.&thinsp;2/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.2 · 规范速查</div>
+      <div class="title-en">RDF 1.2 — DIRECTIONAL TAGS &amp; VERSIONS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;06</div>
+    <div class="meta">W3C / RDF 1.2 / CR 2026</div>
+  </div>
+</header>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">方向性语言标签 · 文字的方向有了户口</span>
+    <span class="sec-sub">PART 2 · DIRECTIONAL LANGTAGS</span>
+  </div>
+  <p class="desc">希伯来、阿拉伯、波斯文在混排环境里必须声明书写方向。1.2 给语言标注字面量加第三个部件:<b>base direction</b>,类型升级为 <span class="code">rdf:dirLangString</span>。</p>
+  <div class="codeblock"><span class="cm"># Turtle 1.2:语言标签后接 -- 方向,只许 ltr / rtl</span>
+<span class="iri">"HTML היא שפת סימון."</span><span class="kw">@he--rtl</span> .
+<span class="iri">"That Seventies Show"</span><span class="kw">@en-us--ltr</span> .
+
+<span class="cm"># 没写方向的语言标签仍是 rdf:langString,行为与 1.1 一致</span>
+<span class="iri">"chat"</span><span class="kw">@fr</span> .</div>
+  <table>
+    <tr><th>字面量形态</th><th>类型</th><th>部件</th></tr>
+    <tr><td><span class="k">简单串</span></td><td><span class="code">xsd:string</span></td><td>词法形式</td></tr>
+    <tr><td><span class="k">语言标注</span></td><td><span class="code">rdf:langString</span></td><td>词法形式 + 语言标签</td></tr>
+    <tr class="hl"><td><span class="k">方向性语言标注</span></td><td><span class="code">rdf:dirLangString</span></td><td>词法形式 + 语言标签 + base direction</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">方向是元数据,不是内容</span>
+    base direction 由<b>渲染端</b>消费:数据模型只负责携带,不参与字符串比较——同词法同标签、方向不同的两个字面量是否「相等」,以规范的定义为准,使用前查 Concepts 细则。双向文字算法(BiDi)本身是 Unicode 的事,别在数据层硬排。
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">版本声明 · 告诉解析器「我是谁」</span>
+    <span class="sec-sub">PART 3 · VERSION DECLARATION</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 文档内:SPARQL 风格(无点)或老风格(有点),二选一</span>
+<span class="kw">VERSION</span> <span class="iri">"1.2"</span>
+<span class="iri">:s</span> <span class="iri">:p</span> <span class="iri">"نص عربي"</span><span class="kw">@ar--rtl</span> .
+
+<span class="cm"># HTTP 头:内容协商时声明</span>
+<span class="cm">Content-Type: text/turtle; version=1.2</span></div>
+  <table>
+    <tr><th>标签</th><th>含义</th></tr>
+    <tr><td><span class="code">"1.2"</span></td><td>完整 1.2(可用三元词项、方向标签)</td></tr>
+    <tr><td><span class="code">"1.2-basic"</span></td><td>1.2 但不含三元词项</td></tr>
+    <tr><td><span class="code">"1.1"</span></td><td>声明兼容 1.1(规范建议别再标)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">提示而非强制</span>
+    规范明说版本指令只是 <b>hint</b>;但用到方向标签或三元词项时<b>必须</b>声明版本,否则不构成合法的 1.2 文档。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">1.1 → 1.2 迁移对照 · 变与不变</span>
+    <span class="sec-sub">PART 3 · MIGRATION 1.1 → 1.2</span>
+  </div>
+  <table>
+    <tr><th>事项</th><th>RDF 1.1</th><th>RDF 1.2</th></tr>
+    <tr class="hl"><td><span class="k">三元组当宾语</span></td><td class="no">无(仅具体化四件套)</td><td class="yes">三元词项 + rdf:reifies</td></tr>
+    <tr><td><span class="k">语言标签大小写</span></td><td>"chat"@fr 与 "chat"@FR 是<b>两个</b>字面量</td><td class="yes">ASCII 大小写不敏感——<b>同一个</b>字面量</td></tr>
+    <tr><td><span class="k">文字方向</span></td><td class="no">无处安放</td><td class="yes">base direction + rdf:dirLangString</td></tr>
+    <tr><td><span class="k">版本声明</span></td><td class="no">无</td><td class="yes">VERSION 指令 / HTTP 参数</td></tr>
+    <tr><td><span class="k">既有一切语法</span></td><td colspan="2">Turtle/TriG/N-Triples/N-Quads 全部向后兼容,1.1 文件即合法 1.2 文件</td></tr>
+  </table>
+  <div class="note warn">
+    <span class="tag">大小写合一的连锁反应</span>
+    1.1 里 <span class="code">"x"@EN</span> 与 <span class="code">"x"@en</span> 去重时是两条(引 PL.01 §18);1.2 里它们天生合一——依赖大小写区分的旧数据迁移时要清一遍,查询端的 lang 函数行为也随之统一。
+  </div>
+  <div class="sub">升级清单 · 1.1 仓库存量怎么动</div>
+  <ol class="check">
+    <li><b>审计语言标签</b>:全库扫一遍标签大小写与子标签(zh vs zh-CN),统一规范写法——1.2 下不再有侥幸。</li>
+    <li><b>盘点双向文字</b>:哪些字面量需要方向?补 --ltr/--rtl,渲染端同步读取。</li>
+    <li><b>决定档位</b>:上游只认 Basic 就别急着用三元词项;能用 PROV-O 表达的溯源,先不迁移。</li>
+    <li><b>加 VERSION</b>:写新特性的文件全部带上版本声明;HTTP 出口补 media type 参数。</li>
+    <li><b>回归测试</b>:用 1.1 语料喂 1.2 解析器,确认零差异;再用最小 1.2 样例验证工具链。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 06 · P.&thinsp;3/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.2 · 规范速查</div>
+      <div class="title-en">RDF 1.2 — MIGRATION, ECOSYSTEM &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;06</div>
+    <div class="meta">W3C / RDF 1.2 / CR 2026</div>
+  </div>
+</header>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">SPARQL 1.2 呼应 · 十二份文档一起走</span>
+    <span class="sec-sub">PART 4 · SPARQL 1.2 ECOSYSTEM</span>
+  </div>
+  <div class="chips">
+    <div class="chip hot"><span class="cn">Query / Update</span><span class="en">查询与更新主件</span></div>
+    <div class="chip"><span class="cn">Protocol / Graph Store</span><span class="en">HTTP 协议族</span></div>
+    <div class="chip"><span class="cn">Results</span><span class="en">JSON · CSV/TSV · XML</span></div>
+    <div class="chip"><span class="cn">Federated / Service</span><span class="en">联邦查询</span></div>
+    <div class="chip"><span class="cn">Entailment</span><span class="en">蕴含档位</span></div>
+    <div class="chip"><span class="cn">Concepts / What's New</span><span class="en">导读</span></div>
+  </div>
+  <div class="note">
+    <span class="tag">三元词项进查询</span>
+    SPARQL 1.2 让模式里能匹配三元词项——「找出所有对 X 断言有过表态的人」从字符串 gymnastics 变成一行 triple pattern。查询 1.2 数据集仍可用 property path(引 PL.01)。
+  </div>
+  <div class="def">
+    <span class="lbl">进度怎么盯</span>
+    Concepts 的 CR 页写明:转 REC 的前提是 <b>RDF 1.2 Semantics + 至少一份具体语法</b>各自过完实现报告(exit criteria);Concepts 本身「不被软件直接实现」。盯状态就盯 Semantics 和 Turtle/N-Triples 这几份。
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>状态先看清:截至 2026-10,Concepts 在 <b>CR</b>、语法件在 <b>WD</b>——生产系统引用前先查最新进度,别把草案当标准。</li>
+    <li>用三元词项或方向标签,文档<b>必须</b>声明版本(<span class="code">VERSION "1.2"</span> 或 HTTP 参数)。</li>
+    <li><code>&lt;&lt; s p o &gt;&gt;</code> 是「断言 + 具体化」的糖;<code>&lt;&lt;( s p o )&gt;&gt;</code> 只引用不断言——两者差一个括号,语义天差地别。</li>
+    <li>一个命题可挂多个 reifier、一个 reifier 可背书多条命题——别按「一一对应」建模背书关系。</li>
+    <li>方向标签只有 ltr / rtl 两值,默认无方向;只有真有双向混排问题才用,否则平添比较负担。</li>
+    <li>语言标签大小写合一后,1.1 时代按大小写区分的索引、去重逻辑要重审。</li>
+    <li>Basic 档(1.2-basic)不收三元词项——下游只认 Basic 时,新特性数据要降级交换。</li>
+    <li>老具体化四件套与新三元词项是两套体系,同一份图里别混用表达同一件事。</li>
+    <li>工具支持仍在铺开:升级解析器/图库前,先用 1.2 特性的最小样例做冒烟测试。</li>
+    <li>向后兼容是承诺:1.1 老文件不用改——迁移压力只在你决定用新特性那一刻才出现。</li>
+  </ol>
+</section>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">支持度现状 · 什么时候敢上生产</span>
+    <span class="sec-sub">PART 4 · ADOPTION STATUS</span>
+  </div>
+  <table>
+    <tr><th>环节</th><th>现状判断</th></tr>
+    <tr><td><span class="k">标准进度</span></td><td>Concepts CR(2026-04);语法件 WD——离 REC 还差实现报告</td></tr>
+    <tr><td><span class="k">解析器</span></td><td>Jena / rdflib 等已有 RDF-star 试验分支,1.2 正式支持随标准落地跟进</td></tr>
+    <tr><td><span class="k">图库</span></td><td>三元词项存储是数据库层改动,各家的进度差会很大——选型时单独验证</td></tr>
+    <tr><td><span class="k">稳妥策略</span></td><td>溯源需求当下用 PROV-O 限定修饰(PL.11 §07)顶住,三元词项落地后平滑迁移</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">延伸阅读</span>
+    家族里的入门件:What's in RDF 1.2(新旧对照)、RDF 1.2 Primer(示例驱动)、Interoperability(与 1.1 的兼容细则,GitHub 编辑稿)。三份读完,迁移决策基本可以做掉。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 06 · P.&thinsp;4/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

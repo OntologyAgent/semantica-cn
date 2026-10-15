@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">L<em>K</em>IF</div>
+    <div class="title-block">
+      <div class="title-cn">法律知识词表 · 规范速查</div>
+      <div class="title-en">LKIF CORE — LEGAL KNOWLEDGE INTERCHANGE FORMAT</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;16</div>
+    <div class="meta">ESTRELLA / LKIF-CORE / V1.1</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 法律概念的一套积木</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">LKIF Core(Legal Knowledge Interchange Format Core)是欧洲 ESTRELLA 项目产出的法律领域本体库:15 个模块,从「部分与整体」一路铺到「规范、权利与法律渊源」。三族结构:</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">基础底座</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">top · mereology · time · place · process</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">常识层</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">社会行动</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">action · role · legal-action · legal-role</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">谁在做什么</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">法律表达</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">expression · norm · rules · modification</text>
+      <text x="116.5" y="29.8" font-size="1.9" fill="#7d7466" text-anchor="end" font-family="JetBrainsMono">法律层</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">集成入口</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">lkif-core.owl · lkif-extended.owl</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">按需取用</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>法律规范是「说出来的」——先有命题与陈述(expression),再被资格化为规范(norm),配规则(rules)与时效(modification)。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 三族模块 → 表达与规范 → 规则与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 一个项目,一份遗产</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">LKIF Core 是欧盟 FP6 项目 <b>ESTRELLA</b> 的交付物(D1.1):v1.0(2007-02)→ v1.1(2008-07),此后<b>停止演进</b>。2026 年 2 月仓库转 CC BY 4.0 许可并补了 Turtle 版(RDF/XML 已弃用)。</p>
+  <table>
+    <tr><th>要点</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="k">命名空间</span></td><td><span class="code">http://www.estrellaproject.org/LKIF-Core/&lt;module&gt;.owl</span>(15 模块各一个文件)</td></tr>
+    <tr><td><span class="k">⚠ 官网已易主</span></td><td>estrellaproject.org 域名已被第三方接管、原站消失——本体文件请从 GitHub 镜像(RinkeHoekstra/lkif-core)获取</td></tr>
+    <tr><td><span class="k">后继者</span></td><td>规则层面看 LegalRuleML(OASIS);法律文档结构看 MetaLex/CEN——LKIF 与它们是互补不是竞争</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">模块地图 · 15 块积木</span>
+    <span class="sec-sub">PART 1 · MODULE MAP</span>
+  </div>
+  <div class="sub">基础底座 · 常识层</div>
+  <div class="chips">
+    <span class="chip"><span class="cn">top</span><span class="en">顶层本体,承自 LRI-Core、低承诺度</span></span>
+    <span class="chip"><span class="cn">mereology</span><span class="en">部分-整体:part-of / component-of / membership</span></span>
+    <span class="chip"><span class="cn">time</span><span class="en">Allen(1984)时间理论的 OWL DL 实现</span></span>
+    <span class="chip"><span class="cn">place</span><span class="en">相对位置理论(Donnelly 2005)部分实现</span></span>
+    <span class="chip"><span class="cn">process</span><span class="en">变化与因果过程、参与者角色</span></span>
+  </div>
+  <div class="sub">社会行动 · 谁在做什么</div>
+  <div class="chips">
+    <span class="chip"><span class="cn">action</span><span class="en">行动 = 行动者执行的过程;Action · Agent · Power</span></span>
+    <span class="chip"><span class="cn">role</span><span class="en">角色类型学:Social_Role · Organisation_Role;plays 关系</span></span>
+    <span class="chip"><span class="cn">legal-action</span><span class="en">公共行为、公共机构、法人 / 自然人</span></span>
+    <span class="chip"><span class="cn">legal-role</span><span class="en">法律职业与法律角色</span></span>
+  </div>
+  <div class="sub">法律表达 · 本卡的正面</div>
+  <div class="chips">
+    <span class="chip hot"><span class="cn">expression</span><span class="en">命题、陈述、资格化——规范的基座(见 §04)</span></span>
+    <span class="chip hot"><span class="cn">norm</span><span class="en">规范 = 资格化;法律渊源;权利与权力类型学(见 §05)</span></span>
+    <span class="chip"><span class="cn">rules</span><span class="en">LKIF 规则语法与论证角色(见 §07)</span></span>
+    <span class="chip"><span class="cn">modification</span><span class="en">生效 / 失效区间与修改类型(见 §07)</span></span>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 16 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">L<em>K</em>IF</div>
+    <div class="title-block">
+      <div class="title-cn">法律知识词表 · 规范速查</div>
+      <div class="title-en">LKIF CORE — EXPRESSION, NORM, ACTION &amp; ROLE</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;16</div>
+    <div class="meta">ESTRELLA / LKIF-CORE / V1.1</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">表达层 · 规范之前先有话</span>
+    <span class="sec-sub">PART 2 · EXPRESSION MODULE</span>
+  </div>
+  <p class="desc">LKIF 的关键设计:<b>规范不是凭空出现的,它是「被资格化的表达」</b>。expression 模块先搭好语言的层:</p>
+  <table>
+    <tr><th>类</th><th>一句话</th></tr>
+    <tr><td><span class="k">Proposition</span></td><td>命题——可真可假的内容本身</td></tr>
+    <tr><td><span class="k">Propositional_Attitude</span></td><td>命题态度:相信、意图……(谁对它持什么态度)</td></tr>
+    <tr><td><span class="k">Evaluative_Proposition</span></td><td>评价性命题:带价值判断的断言</td></tr>
+    <tr><td><span class="k">Qualification / Qualified</span></td><td>资格化:给事物贴上定性标签——norm 模块直接踩在这个机制上</td></tr>
+    <tr><td><span class="k">Expression · Communicated_Attitude</span></td><td>表达出来的内容与「说出来」这一传播行为;Medium 是媒介</td></tr>
+  </table>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">规范层 · 资格化 + 权利类型学</span>
+    <span class="sec-sub">PART 2 · NORM MODULE</span>
+  </div>
+  <p class="desc">norm 模块把规范定义为「资格化的表达」,再铺开三组概念——义务禁止、霍菲尔德式权利、法律渊源:</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>规范与遵守 <span>义务侧</span></h4>
+      <ul>
+        <li>Norm · Normatively_Qualified——被规范作用的对象</li>
+        <li>Obligation / Permission / Prohibition——义务、许可、禁止</li>
+        <li>Allowed / Disallowed(及 Strictly 变体、Allowed_And_Disallowed 冲突态)</li>
+        <li>Belief_In_Violation · Observation_of_Violation——违规的「 believed / observed」两条记录线</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>权利类型学 <span>霍菲尔德式</span></h4>
+      <ul>
+        <li>Obligative_Right(请求权)· Liberty_Right(自由权)</li>
+        <li>Permissive_Right · Exclusionary_Right · Liability_Right · Potestative_Right</li>
+        <li>权力:Hohfeldian_Power · Enabling_Power · Declarative_Power · Immunity</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sub">法律渊源 · 从成文法到软法</div>
+  <div class="chips">
+    <span class="chip"><span class="cn">成文</span><span class="en">Statute · Code · Regulation · Decree · Directive · Resolution · Proclamation</span></span>
+    <span class="chip"><span class="cn">不成文</span><span class="en">Custom · Customary_Law · Legal_Doctrine</span></span>
+    <span class="chip"><span class="cn">判例</span><span class="en">Precedent · Mandatory_Precedent · Persuasive_Precedent</span></span>
+    <span class="chip"><span class="cn">国际</span><span class="en">Treaty · International_Agreement(含 Non-binding)· Soft_Law</span></span>
+    <span class="chip hot"><span class="cn">Contract</span><span class="en">合同在 norm 模块里也是一种法律渊源</span></span>
+  </div>
+  <div class="note">
+    <span class="tag">关系属性</span>
+    allows / allowed_by、commands / commanded_by、disallows / disallowed_by 三对互逆;规范之间有 normatively_comparable / equivalent_or_better / strictly_better 一族排序关系——「此规范优于彼规范」也是可推理的。
+  </div>
+  <div class="sub">规范排序 · normatively_* 一族</div>
+  <table>
+    <tr><th>关系</th><th>含义(A ? B)</th></tr>
+    <tr><td><span class="code">normatively_comparable</span></td><td>两者在同一评价尺度上,可以比较</td></tr>
+    <tr><td><span class="code">normatively_equivalent_or_better / _or_worse</span></td><td>不劣于 / 不优于</td></tr>
+    <tr><td><span class="code">normatively_strictly_better / _strictly_worse</span></td><td>严格优于 / 严格劣于</td></tr>
+    <tr><td><span class="code">normatively_not_equivalent</span></td><td>不可互换</td></tr>
+  </table>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">行动与角色 · 权力是关键词</span>
+    <span class="sec-sub">PART 2 · ACTION &amp; ROLE</span>
+  </div>
+  <p class="desc">action 模块把行动定义为「行动者执行的过程」,并给出法律里最值钱的那个词:<span class="code">Power</span>。role 模块用 <span class="code">plays</span> 把实体和它扮演的角色分开——「张三」与「法官」是两回事。</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>action <span>行动词表</span></h4>
+      <ul>
+        <li>Action · Agent——行动与行动者</li>
+        <li>Act_of_Law · Decision · Assignment · Delegation · Mandate · Transaction</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>role <span>角色词表</span></h4>
+      <ul>
+        <li>Role · Epistemic_Role · Function · Social_Role · Organisation_Role</li>
+        <li>实体「扮演」角色:不把职业写进人的类,而是用 plays 关联</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 16 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">L<em>K</em>IF</div>
+    <div class="title-block">
+      <div class="title-cn">法律知识词表 · 规范速查</div>
+      <div class="title-en">LKIF CORE — RULES, MODIFICATION &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;16</div>
+    <div class="meta">ESTRELLA / LKIF-CORE / V1.1</div>
+  </div>
+</header>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">规则与时效 · 让法律可推理</span>
+    <span class="sec-sub">PART 3 · RULES &amp; MODIFICATION</span>
+  </div>
+  <p class="desc">两个框架模块负责「动」起来:<span class="code">rules</span>(lkif-rules)定义规则语法与论证角色,为 LKIF Rules RDF 语法服务,并给 AIF、Carneades 等论证框架留了扩展位;<span class="code">modification</span> 给法律条文加上时间轴——生效 / 失效区间(efficacy / in-force)与修改类型学。</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>rules <span>推理入口</span></h4>
+      <ul>
+        <li>规则 = 前件 → 后件,挂论证角色</li>
+        <li>与第 05 节的 norm 概念对接:「违反规范」是可推导的结论</li>
+        <li>复杂论证框架(AIF / Carneades)可在此基础上扩展</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>modification <span>时间轴</span></h4>
+      <ul>
+        <li>法条的 efficacy 区间:「从何时起有效」</li>
+        <li>in-force 区间:「此刻是否现行」</li>
+        <li>修改类型学:修订 / 废止 / 新增各成一类</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">配套</span>
+    法律文档的结构化(条款编号、层级)不在 LKIF 里——看 MetaLex/CEN;两个项目在历史上互相兼容。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">示例 · 规范这样编码</span>
+    <span class="sec-sub">PART 3 · A WORKED NORM</span>
+  </div>
+  <p class="desc">「禁止路边停车」一条法律知识,用 norm 与 expression 两模块的已核实词汇编码:</p>
+  <div class="codeblock"><span class="iri">ex:禁停条款</span> <span class="kw">a</span> lkif-norm:Norm ;
+    lkif-norm:disallows <span class="iri">ex:路边停车</span> .      <span class="cm"># 规范禁止该行为资格</span>
+
+<span class="iri">ex:路边停车</span> <span class="kw">a</span> lkif-expression:Qualification .  <span class="cm"># 行为被资格化</span>
+
+<span class="iri">ex:罚单记录</span> <span class="kw">a</span> lkif-norm:Belief_In_Violation .  <span class="cm"># 违规的信念记录线</span></div>
+  <div class="note">
+    <span class="tag">读法</span>
+    条款(Norm)用 disallows 指向被资格化的行为;真被开了罚单,再记一条 Belief_In_Violation——「规范存在」与「违规被认定」是两个层面。
+  </div>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>官网域名已易主:</b>estrellaproject.org 现在是无关站点——本体文件一律从 GitHub 镜像(RinkeHoekstra/lkif-core)取,优先 .ttl。</li>
+    <li><b>2008 年后停更:</b>v1.1 是终点;新项目做法律规则先评估 LegalRuleML,LKIF 更适合当「法律概念参考层」。</li>
+    <li><b>norm 类名以 norm.owl 原文为准:</b>Obligation、Hohfeldian_Power、Liability_Right 这些拼写带下划线大写,别按惯例改成小驼峰。</li>
+    <li><b>top 层承诺度高:</b>继承自 LRI-Core,引入整个 top 会带入大量你未必想要的公理——只要 norm / action 时可考虑裁剪导入。</li>
+    <li><b>15 模块可拆用:</b>lkif-core.owl 是集成入口,不需要法律层时 mereology / time 可单独复用。</li>
+    <li><b>与政策词表分工:</b>ODRL(PL.09)管「许可与义务的政策表达」,LKIF 管「法律概念与法律推理」——合同里的义务描述可两者配合。</li>
+    <li><b>合同建模的分工:</b>合同作为法律渊源在 lkif norm 模块(Contract 类);经费项目的合同实体在 FRAPO(PL.17);金融衍生合同另看 FIBO。</li>
+    <li><b>Spacetime 模块已成历史:</b>v1.0.2 起移除,别按老文档 import。</li>
+    <li><b>规范排序是一族六条:</b>normatively_comparable / equivalent_or_better / worse / strictly_better / strictly_worse / not_equivalent——表达「法条优劣」按语义选,别全用 comparable。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 16 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">QU<em>D</em>T</div>
+    <div class="title-block">
+      <div class="title-cn">数量单位词表 · 规范速查</div>
+      <div class="title-en">QUDT — QUANTITIES, UNITS, DIMENSIONS &amp; TYPES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;15</div>
+    <div class="meta">QUDT.ORG / V3.X / 2025</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 给「带单位的数值」立户口</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">QUDT(Quantities, Units, Dimensions and Types)是单位与量类的事实标准词表:测量写成结构化的 Quantity,数千个单位挂在 <span class="code">unit:</span> 词表,量类用 7+1 维量纲向量判亲缘,换算只靠乘数与偏移两个数字。四层结构:</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">三件套模式</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Quantity = 数值 + 单位</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">量的标准挂法</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">单位词表</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">unit: · CamelCase 命名 · UCUM 码桥接</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">数千个单位</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">量类与量纲</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">QuantityKind · 7+1 维量纲向量</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">可通约的判据</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">换算</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">conversionMultiplier / Offset</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">乘或乘再加</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>同一个量允许多套单位——换算不靠聪明,只靠每个单位自带的 conversionMultiplier / conversionOffset,机械且无歧义。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 数据模型 → 单位与量类 → 实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 工程界的单位百科</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">QUDT 由非营利组织 QUDT.org 维护,词表源头是 NIST 指南(SP 811)、BIPM SI 手册与国际计量词汇(VIM)。版本分两代:老 2.1 仍被广泛引用,现行 3.x 系列按版本发布图(<span class="code">qudt.org/3.1.4/qudt-all</span> 这样的 URI)。</p>
+  <table>
+    <tr><th>要点</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="k">双轨建模</span></td><td>同一套词表提供 OWL 与 SHACL 两种 schema——选一种就用到底,别混引两套定义</td></tr>
+    <tr><td><span class="k">命名空间</span></td><td><span class="code">qudt:</span>(schema)· <span class="code">unit:</span>(单位)· <span class="code">quantitykind:</span>(量类)· <span class="code">qkdv:</span>(量纲向量)· <span class="code">sou:</span>(单位制)· <span class="code">soqk:</span>(量类制)</td></tr>
+    <tr><td><span class="k">工具</span></td><td>官方 SPARQL endpoint(qudt.org/fuseki)与 GraphQL 引擎;GitHub qudt-public-repo,CC BY 4.0</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">数据模型 · 三件套与两种写法</span>
+    <span class="sec-sub">PART 2 · THE QUANTITY PATTERN</span>
+  </div>
+  <p class="desc">核心模式叫 Quantity Triad:一个 <span class="code">qudt:Quantity</span> 回答「测什么(量类)、值多少、什么单位」。简单场景一条龙,要多套单位就把「值 + 单位」拆成 <span class="code">qudt:QuantityValue</span> 节点。</p>
+  <div class="codeblock"><span class="cm"># 简单写法:值和单位直接挂在 Quantity 上</span>
+ex:温控器读数 <span class="kw">a</span> qudt:Quantity ;
+    qudt:hasQuantityKind quantitykind:ThermodynamicTemperature ;
+    qudt:hasUnit <span class="iri">unit:DEG_F</span> ;
+    qudt:value <span class="iri">"72.0"^^xsd:float</span> .
+
+<span class="cm"># 多套单位写法:同一量,单位各表</span>
+ex:温控器读数 qudt:quantityValue <span class="iri">ex:读数_华氏</span> , <span class="iri">ex:读数_开氏</span> .
+ex:读数_华氏 <span class="kw">a</span> qudt:QuantityValue ; qudt:hasUnit <span class="iri">unit:DEG_F</span> ; qudt:value <span class="iri">"72.0"^^xsd:float</span> .
+ex:读数_开氏 <span class="kw">a</span> qudt:QuantityValue ; qudt:hasUnit <span class="iri">unit:K</span>    ; qudt:value <span class="iri">"295.37"^^xsd:float</span> .</div>
+  <table>
+    <tr><th>构件</th><th>一句话</th></tr>
+    <tr><td><span class="k">qudt:Quantity</span></td><td>一次「量了什么」的完整陈述</td></tr>
+    <tr><td><span class="k">qudt:QuantityValue</span></td><td>值 + 单位的封装节点,可一量多值</td></tr>
+    <tr><td><span class="k">qudt:Unit</span></td><td>单位个体(unit: 词表);每个单位至少关联一个量类</td></tr>
+    <tr><td><span class="k">qudt:QuantityKind</span></td><td>量类:回答「这测的是什么的量」(长度、热力学温度、力……)</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 15 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">QU<em>D</em>T</div>
+    <div class="title-block">
+      <div class="title-cn">数量单位词表 · 规范速查</div>
+      <div class="title-en">QUDT — UNITS, CONVERSION, QUANTITY KINDS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;15</div>
+    <div class="meta">QUDT.ORG / V3.X / 2025</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">单位词表 · 命名就是语法</span>
+    <span class="sec-sub">PART 2 · UNIT VOCABULARY</span>
+  </div>
+  <p class="desc"><span class="code">unit:</span> 里的 IRI 按固定拼法生成,读 IRI 就知道单位长相——这是 QUDT 最省心的设计,也是最容易写错的地方:</p>
+  <table>
+    <tr><th>拼法</th><th>例子</th><th>读法</th></tr>
+    <tr class="hl"><td><span class="k">基本单位</span></td><td><span class="code">unit:M</span> · <span class="code">unit:SEC</span> · <span class="code">unit:KiloGM</span> · <span class="code">unit:A</span></td><td>米、秒、千克、安培——大小写敏感,千克就是这么拼</td></tr>
+    <tr><td><span class="k">前缀缩放</span></td><td><span class="code">unit:CentiM</span> · <span class="code">unit:KiloN</span> · <span class="code">unit:MilliGRAY</span></td><td>前缀词拼在基础单位前:厘米、千牛、毫戈瑞</td></tr>
+    <tr><td><span class="k">组合单位</span></td><td><span class="code">unit:KiloGM-M-PER-SEC2</span> · <span class="code">unit:W-PER-M2-K4</span></td><td>连字符拼接,PER 表「每」,数字表幂:kg·m/s²、W/(m²·K⁴)</td></tr>
+    <tr><td><span class="k">机器可读码</span></td><td><span class="code">qudt:ucumCode</span></td><td>桥接 UCUM 编码体系(医疗等领域的单位标识)</td></tr>
+  </table>
+  <div class="note warn">
+    <span class="tag">DEPRECATED</span>
+    词表里有少量弃用单位,查询时先 <span class="code">FILTER NOT EXISTS { ?u qudt:deprecated true }</span> 过滤,别把弃用个体写进数据。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">换算 · 乘数与偏移两个数</span>
+    <span class="sec-sub">PART 2 · CONVERSION</span>
+  </div>
+  <p class="desc">每个单位自带两个换算参数,全部换算都是机械算术:</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>conversionMultiplier <span>乘数</span></h4>
+      <ul>
+        <li>换到 SI 对应单位要乘的数:inch = 0.0254 m</li>
+        <li>前缀单位同理:CentiM = 0.01 × M</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>conversionOffset <span>偏移</span></h4>
+      <ul>
+        <li>温度这类「有零点偏移」的单位才需要:换算 = 乘以乘数再加偏移</li>
+        <li>只有偏移的单位另配 SN(科学计数)孪生属性</li>
+      </ul>
+    </div>
+  </div>
+  <p class="desc">前缀与基础单位的关系在 schema 里有正式建模:<span class="code">qudt:Prefix</span>(分 DecimalPrefix / BinaryPrefix 二子类)通过 <span class="code">qudt:prefix</span> 挂到缩放单位上,缩放单位用 <span class="code">qudt:scalingOf</span> 指回基础单位——所以 <span class="code">unit:CentiM</span> 不是手工录的,是「centi × m」推导出来的。</p>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">量类与量纲 · 可通约的判据</span>
+    <span class="sec-sub">PART 3 · QUANTITY KINDS</span>
+  </div>
+  <p class="desc">「米和英寸能换,米和秒不能」——判据由量纲向量给出。每个量类(<span class="code">qudt:QuantityKind</span>)带一条 <span class="code">qudt:hasDimensionVector</span>:按 SI 七基本维加无量纲,固定顺序 <b>A E L I M H T D</b>(物质量、电流、长度、发光强度、质量、温度、时间、无量纲)。</p>
+  <table>
+    <tr><th>量类</th><th>量纲向量</th><th>读法</th></tr>
+    <tr class="hl"><td><span class="code">qkdv:A0E0L1I0M1H0T-2D0</span></td><td>长度¹ · 质量¹ · 时间⁻²</td><td>力(Force)——N = kg·m/s²</td></tr>
+    <tr><td><span class="code">qkdv:A0E0L2I0M1H0T-2D0</span></td><td>长度² · 质量¹ · 时间⁻²</td><td>扭矩与能量<b>共用</b>这条向量</td></tr>
+    <tr><td><span class="code">qkdv:A0E0L0I0M0H0T0D1</span></td><td>全零 + D1</td><td>无量纲(TemperatureRatio 等)</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">THE TRAP · 同量纲 ≠ 可互换</span>
+    扭矩和能量量纲相同,物理意义完全不同——量纲相同只是<b>必要条件</b>。可通约还要有精选的 <span class="code">qudt:specializationOf</span>(特化,如 ThermalEnergy → Energy)或 <span class="code">qudt:exactMatch</span> 链接背书。换算前查这两条边,别只比向量。
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">单位制与边界情形</span>
+    <span class="sec-sub">PART 3 · SYSTEMS & EDGES</span>
+  </div>
+  <p class="desc">单位聚成单位制(<span class="code">qudt:SystemOfUnits</span>,如 sou: 的 SI / CGS / 英制),量类聚成量类制(<span class="code">qudt:SystemOfQuantityKinds</span>);单位与量类各用 <span class="code">applicable*</span> 属性互通——一个单位适用于哪些量类、一个量类适用哪些单位。</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>无量纲 <span>Dimensionless</span></h4>
+      <ul>
+        <li>量纲向量全零、D 位为 1</li>
+        <li>百分比、比率、计数(CountingUnit)都在此列</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>无向量量类 <span>极少数</span></h4>
+      <ul>
+        <li>极少量类(如 VisionThresholds,仅约 7 个)没有任何量纲向量</li>
+        <li>「无向量」≠「无量纲」——两类别混</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 15 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">QU<em>D</em>T</div>
+    <div class="title-block">
+      <div class="title-cn">数量单位词表 · 规范速查</div>
+      <div class="title-en">QUDT — ECOSYSTEM &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;15</div>
+    <div class="meta">QUDT.ORG / V3.X / 2025</div>
+  </div>
+</header>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">生态 · 谁在跟它配合</span>
+    <span class="sec-sub">PART 4 · ECOSYSTEM</span>
+  </div>
+  <table>
+    <tr><th>场景</th><th>怎么配合</th></tr>
+    <tr class="hl"><td><span class="k">观测与传感</span></td><td>SOSA/SSN 观测结果的取值结构可直接用 QUDT 三件套承载,量类对齐物理意义</td></tr>
+    <tr><td><span class="k">工程与 BIM</span></td><td>设备参数、材料属性的单位表达;组合单位与量纲校验是主战场</td></tr>
+    <tr><td><span class="k">同类词表</span></td><td>OM(units of measure ontology)是常见替代——选型看生态与粒度;QUDT 胜在单位覆盖与工程化工具链</td></tr>
+    <tr><td><span class="k">检索</span></td><td>官方 SPARQL endpoint(http://www.qudt.org/fuseki)可查单位、量类、换算参数</td></tr>
+  </table>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>单位 IRI 大小写敏感:</b>KiloGM 就是 KiloGM——写成 KILOGM、kilogm、Kilogram 都不是合法个体;拿不准就查 unit: 词表,别手拼。</li>
+    <li><b>别拿字符串挂单位:</b>"72 °F" 这种字面量把数值和单位焊死在文本里,换算、检索、校验全废——用三件套结构。</li>
+    <li><b>同量纲 ≠ 可换算:</b>扭矩与能量量纲相同但物理无关;换算前认 specializationOf / exactMatch,别只比量纲向量。</li>
+    <li><b>温度换算带偏移:</b>°F ↔ K 是「乘加」不是「纯乘」——conversionOffset 别漏,否则零点全错。</li>
+    <li><b>查询单位先滤弃用:</b>qudt:deprecated 为 true 的个体还在词表里,别捞进新数据。</li>
+    <li><b>OWL / SHACL 双轨选一套:</b>两套 schema 描述同一词表,混引定义会打架;all-in-one 图按建模方式二选一。</li>
+    <li><b>版本引用带 URI:</b>2.1 与 3.x 的图 URI 不同,复现实验注明版本(如 qudt.org/3.1.4/qudt-all)。</li>
+    <li><b>无向量 ≠ 无量纲:</b>极少数「无向量」量类(约 7 个)是词表留白,与全零向量的无量纲类是两回事。</li>
+  </ol>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">查询速查 · 官方端点怎么问</span>
+    <span class="sec-sub">PART 4 · SPARQL RECIPES</span>
+  </div>
+  <p class="desc">官方 SPARQL endpoint:<span class="code">http://www.qudt.org/fuseki</span>。两条最常用的问法:</p>
+  <div class="codeblock"><span class="cm"># 某量类下的全部现行单位(带换算乘数)</span>
+<span class="kw">SELECT</span> ?u ?multiplier <span class="kw">WHERE</span> {
+  ?u <span class="kw">a</span> qudt:Unit ;
+     qudt:hasQuantityKind quantitykind:Length ;
+     qudt:conversionMultiplier ?multiplier .
+  <span class="kw">FILTER NOT EXISTS</span> { ?u qudt:deprecated <span class="iri">true</span> }
+}
+
+<span class="cm"># 前缀单位的根与倍率:顺 scalingOf 找基础单位</span>
+<span class="kw">SELECT</span> ?base ?multiplier <span class="kw">WHERE</span> {
+  <span class="iri">unit:CentiM</span> qudt:scalingOf ?base ;
+              qudt:conversionMultiplier ?multiplier .
+}</div>
+  <div class="note">
+    <span class="tag">GraphQL</span>
+    官网同时提供 GraphQL 引擎——前端取单位详情时比 SPARQL 更省事。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 15 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

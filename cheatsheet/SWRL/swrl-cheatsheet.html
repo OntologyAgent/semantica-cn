@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>W</em>RL</div>
+    <div class="title-block">
+      <div class="title-cn">语义网规则语言 · 规范速查</div>
+      <div class="title-en">SWRL — OVERVIEW · OWL MEETS HORN RULES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;05</div>
+    <div class="meta">W3C / SWRL / 2004</div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · OWL 缺的那一块</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">SWRL = OWL + Horn 规则:本体管分类与层级,规则管跨类的 if-then;代价是推理可能不可判定,所以支持度是选型关键。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="55.2mm" viewBox="0 0 118 55.2">
+      <rect x="0.25" y="1.0" width="27.5" height="11.0" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="8.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">OWL 底座</text>
+      <text x="32" y="8.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">本体说「是什么」· 描述逻辑</text>
+      <text x="116.5" y="8.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">分类与层级</text>
+      <line x1="14" y1="12.4" x2="14" y2="14.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,15.2 12.9,13.6 15.1,13.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="15.4" width="27.5" height="11.0" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="22.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">规则层</text>
+      <text x="32" y="22.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">body → head · Horn 子句</text>
+      <text x="116.5" y="22.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">合取蕴含</text>
+      <line x1="14" y1="26.799999999999997" x2="14" y2="28.799999999999997" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,29.599999999999998 12.9,28.0 15.1,28.0" fill="#C9BFAC"/>
+      <rect x="0.25" y="29.8" width="27.5" height="11.0" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="37.1" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">构件</text>
+      <text x="32" y="37.2" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">原子七类 · swrlb: 内置谓词</text>
+      <text x="116.5" y="37.2" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">变量须安全</text>
+      <line x1="14" y1="41.199999999999996" x2="14" y2="43.199999999999996" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,44.0 12.9,42.4 15.1,42.4" fill="#C9BFAC"/>
+      <rect x="0.25" y="44.2" width="27.5" height="11.0" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="51.5" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">代价 · 生态</text>
+      <text x="32" y="51.6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">可判定性换表达力</text>
+      <text x="116.5" y="51.6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">推理机子集支持</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>规则 = 原子的合取(前件)蕴含原子的合取(后件),变量全称量化。</div>
+      <div class="t-note">四层各管一摊:底座给词汇,规则给推断,构件给写法,生态给边界。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 构件 → 内置与代价 → 生态与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · OWL 缺的那一块</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">OWL 描述「世界长什么样」,是名词性的公理;SWRL 描述「从已知能推出什么」,是动词性的规则。OWL 2 属性链补了一点,但带变量比较、函数计算的任意条件规则,仍然非 SWRL 不可。</p>
+  <table>
+    <tr><th>层</th><th>管什么</th><th>一句例子</th></tr>
+    <tr><td><span class="k">RDF</span></td><td>事实(三元组)</td><td>阿司匹林片 · 有适应症 · 解热镇痛</td></tr>
+    <tr><td><span class="k">RDFS</span></td><td>类与属性的层级</td><td>处方药 ⊑ 药品</td></tr>
+    <tr><td><span class="k">OWL</span></td><td>逻辑公理(交并补、基数、限制)</td><td>药品 ⊑ 至少 1 个 适应症</td></tr>
+    <tr class="hl"><td><span class="k">SWRL</span></td><td>条件规则(如果…则…)</td><td>有适应症 ∧ 该适应症属禁忌 → 需警示</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">STATUS · 先看清身份</span>
+    SWRL 全称 <b>Semantic Web Rule Language</b>,2004-05-21 以 <b>W3C Member Submission</b>(会员提案)发布——提交方是加拿大国家研究委员会、Network Inference、斯坦福大学。<b>它不是 W3C Recommendation</b>,W3C 明说「发布不代表背书」。它把 OWL DL/Lite 与 Datalog RuleML 揉在一起:拿 OWL 的词汇当砖,按规则语言的形状盖房。
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">规则长什么样 · body → head</span>
+    <span class="sec-sub">PART 1 · RULE ANATOMY</span>
+  </div>
+  <p class="desc">一条 SWRL 规则就是一次「如果…那么…」的蕴涵(implication):左半是前提(body / antecedent),右半是结论(head / consequent)。两边各自是若干原子的合取(conjunction),全都成立才推得出。</p>
+  <div class="codeblock"><span class="cm"># 人读形式:parent(?x,?y) ∧ brother(?y,?z) ⇒ uncle(?x,?z)</span>
+
+<span class="cm"># 规范的抽象语法:Implies( Antecedent(…) Consequent(…) )</span>
+<span class="kw">Implies</span>( <span class="kw">Antecedent</span>( <span class="iri">:药品</span>(?d) <span class="iri">:有适应症</span>(?d,?i) <span class="iri">:禁忌症</span>(?i) )
+         <span class="kw">Consequent</span>( <span class="iri">:需警示</span>(?d) ) )</div>
+  <div class="note">
+    <span class="tag">规范细节</span>
+    两个边界值:<b>空前提</b>视为恒真(true),<b>空结论</b>视为恒假(false)。变量全称量化,作用域限于单条规则——同名的 <span class="code">?d</span> 出了这条规则就不再相干。
+  </div>
+  <div class="sub">XML 具体语法 · ruleml:imp 一条规则的真身</div>
+  <div class="codeblock">&lt;<span class="iri">ruleml:imp</span>&gt;
+  &lt;<span class="iri">ruleml:_rlab</span> <span class="kw">ruleml:href</span>=<span class="iri">"http://example.org/#r1"</span>/&gt;
+  &lt;<span class="iri">ruleml:_body</span>&gt;
+    &lt;<span class="iri">swrlx:classAtom</span>&gt; … &lt;/<span class="iri">swrlx:classAtom</span>&gt;   <span class="cm"># 每个原子一个元素</span>
+    &lt;<span class="iri">swrlx:individualPropertyAtom</span> <span class="kw">swrlx:property</span>=<span class="iri">"…"</span>&gt; …
+  &lt;/<span class="iri">ruleml:_body</span>&gt;
+  &lt;<span class="iri">ruleml:_head</span>&gt; … &lt;/<span class="iri">ruleml:_head</span>&gt;
+&lt;/<span class="iri">ruleml:imp</span>&gt;</div>
+  <div class="note">
+    <span class="tag">与 Datalog 的关系</span>
+    SWRL 是 Horn 子句形状,与 Datalog 同构——但函数、常量全部换成 OWL 词汇,推理机也换成 DL 推理机+规则前端的组合。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 05 · P.&thinsp;1/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>W</em>RL</div>
+    <div class="title-block">
+      <div class="title-cn">语义网规则语言 · 规范速查</div>
+      <div class="title-en">SWRL — ATOMS, VARIABLES &amp; SAFETY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;05</div>
+    <div class="meta">W3C / SWRL / 2004</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">原子七类 · 规则的最小构件</span>
+    <span class="sec-sub">PART 2 · SEVEN ATOMS</span>
+  </div>
+  <p class="desc">原子(atom)是规则的砖。XML 具体语法里它们是 <span class="code">swrlx:</span> 元素,Protégé 里显示的就是这些名字。</p>
+  <table>
+    <tr><th>原子</th><th>写法</th><th>含义</th></tr>
+    <tr><td><span class="k">类原子</span> <span class="code">classAtom</span></td><td><span class="code">C(?x)</span></td><td>?x 是类 C 的实例</td></tr>
+    <tr><td><span class="k">数据范围原子</span> <span class="code">datarangeAtom</span></td><td><span class="code">D(?x)</span></td><td>?x 落在数据范围 D 内(整型、字符串等)</td></tr>
+    <tr><td><span class="k">个体属性原子</span> <span class="code">individualPropertyAtom</span></td><td><span class="code">P(?x, ?y)</span></td><td>对象属性 P 把个体 ?x 连到个体 ?y</td></tr>
+    <tr><td><span class="k">数据属性原子</span> <span class="code">datavaluedPropertyAtom</span></td><td><span class="code">D(?x, lit)</span></td><td>数据属性 D 把 ?x 连到一个字面量</td></tr>
+    <tr><td><span class="k">同一原子</span> <span class="code">sameIndividualAtom</span></td><td><span class="code">sameAs(?x,?y)</span></td><td>?x 与 ?y 是同一个个体的两种叫法</td></tr>
+    <tr><td><span class="k">不同原子</span> <span class="code">differentIndividualsAtom</span></td><td><span class="code">differentFrom(?x,?y)</span></td><td>?x 与 ?y 是两个不同的个体</td></tr>
+    <tr><td><span class="k">内置原子</span> <span class="code">builtinAtom</span></td><td><span class="code">builtIn(r, …)</span></td><td>内置关系 r 对参数成立(比较、算术等)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">TWO NOTES</span>
+    ① 规范明说 <span class="code">sameAs</span> / <span class="code">differentFrom</span> 是<b>语法糖</b>(syntactic sugar),不增加表达力,只是让规则好读。<br>
+    ② <b>内置谓词</b>(built-in)挂在 <span class="code">swrlb:</span> 前缀下(下一页全表)。规范对元数很松——不要求固定 arity,元数给错不算语法错误,只是该原子「不可满足」。
+  </div>
+  <div class="sub">七类原子 · 抽象写法一网打尽</div>
+  <div class="codeblock"><span class="iri">:成人</span>(<span class="kw">?p</span>)                          <span class="cm"># 类原子:年龄属性推断出的实例也认</span>
+<span class="iri">:及格分数</span>(<span class="kw">?g</span>)                      <span class="cm"># 数据范围原子:?g 落在自定义数据范围</span>
+<span class="iri">:选修了</span>(<span class="kw">?s</span>, <span class="kw">?c</span>)                   <span class="cm"># 个体属性原子:人 连 课程</span>
+<span class="iri">:年龄</span>(<span class="kw">?p</span>, <span class="kw">?n</span>)                     <span class="cm"># 数据属性原子:人 连 数值</span>
+<span class="kw">sameAs</span>(<span class="kw">?a</span>, <span class="kw">?b</span>)                    <span class="cm"># 同一原子:语法糖</span>
+<span class="kw">differentFrom</span>(<span class="kw">?a</span>, <span class="kw">?b</span>)             <span class="cm"># 不同原子:语法糖,却常是规则关键前提</span>
+<span class="kw">swrlb:greaterThan</span>(<span class="kw">?n</span>, <span class="kw">18</span>)          <span class="cm"># 内置原子:比较发生在推理解算时</span></div>
+  <div class="note">
+    <span class="tag">变量只有 ?x 一种写法</span>
+    变量是规则的灵魂:同一变量在同一条规则内处处同值,跨规则无记忆。要「或」怎么办?拆成多条规则——SWRL 的 head 是合取,不是析取。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">变量与安全条件</span>
+    <span class="sec-sub">PART 2 · VARIABLES & SAFETY</span>
+  </div>
+  <div class="def">
+    <span class="lbl">SAFETY CONDITION · 规范原文</span>
+    "only variables that occur in the antecedent of a rule may occur in the consequent"<br>
+    —— 只有出现在<b>前提</b>里的变量,才允许出现在<b>结论</b>里。
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>为什么需要 <span>WHY</span></h4>
+      <ul>
+        <li>结论里冒出前提没提的变量,机器不知道绑给谁</li>
+        <li>是凭空造新个体,还是对所有人都成立?语义失控</li>
+        <li>安全条件把规则钉死在「从已知推新知」</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>代价有多大 <span>NOT MUCH</span></h4>
+      <ul>
+        <li>规范论证:安全条件<b>不损失表达力</b></li>
+        <li>「存在新个体」可由 OWL 的 someValuesFrom 表达</li>
+        <li>不满足的规则,通行叫法:不安全规则(unsafe)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 05 · P.&thinsp;2/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>W</em>RL</div>
+    <div class="title-block">
+      <div class="title-cn">语义网规则语言 · 规范速查</div>
+      <div class="title-en">SWRL — BUILT-INS &amp; DECIDABILITY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;05</div>
+    <div class="meta">W3C / SWRL / 2004</div>
+  </div>
+</header>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">内置谓词 · swrlb: 七大门派</span>
+    <span class="sec-sub">PART 3 · BUILT-INS</span>
+  </div>
+  <p class="desc">命名空间 <span class="code">http://www.w3.org/2003/11/swrlb</span>,大量借用 XQuery/XPath 函数库。</p>
+  <table>
+    <tr><th>门派</th><th>代表</th></tr>
+    <tr><td><span class="k">比较</span></td><td><span class="code">equal notEqual lessThan lessThanOrEqual greaterThan greaterThanOrEqual</span></td></tr>
+    <tr><td><span class="k">数学</span></td><td><span class="code">add subtract multiply divide integerDivide mod pow abs ceiling floor round sin cos tan</span></td></tr>
+    <tr><td><span class="k">布尔</span></td><td><span class="code">booleanNot</span></td></tr>
+    <tr><td><span class="k">字符串</span></td><td><span class="code">stringConcat stringEqualIgnoreCase substring stringLength upperCase lowerCase contains startsWith matches replace tokenize</span></td></tr>
+    <tr><td><span class="k">日期时间</span></td><td><span class="code">dateTime date time yearMonthDuration addDayTimeDurations subtractDates</span></td></tr>
+    <tr><td><span class="k">URI</span></td><td><span class="code">resolveURI anyURI</span></td></tr>
+    <tr><td><span class="k">列表</span></td><td><span class="code">listConcat listIntersection listSubtraction member length first rest sublist empty</span></td></tr>
+  </table>
+  <div class="note warn">
+    <span class="tag">列表门派的坑</span>
+    规范明说:列表类 built-in 在 OWL DL / OWL Lite 里<b>不可用</b>——RDF 式列表只有在 OWL Full 里才被当成个体对待。
+  </div>
+  <div class="sub">内置组合实战 · 字符串 + 数值</div>
+  <div class="codeblock"><span class="cm"># 邮箱在 example.org 域、且工号大于 1000 的,是资深员工</span>
+<span class="iri">:员工</span>(<span class="kw">?e</span>) ∧ <span class="iri">:邮箱</span>(<span class="kw">?e</span>,<span class="kw">?m</span>) ∧ <span class="iri">:工号</span>(<span class="kw">?e</span>,<span class="kw">?no</span>)
+  ∧ <span class="kw">swrlb:contains</span>(<span class="kw">?m</span>, <span class="iri">"@example.org"</span>)
+  ∧ <span class="kw">swrlb:greaterThan</span>(<span class="kw">?no</span>, <span class="kw">1000</span>)
+  → <span class="iri">:资深员工</span>(<span class="kw">?e</span>)</div>
+  <div class="note">
+    <span class="tag">内建的「方向性」</span>
+    built-in 是<b>关系判断</b>不是赋值语句——<span class="code">swrlb:add(?z,?x,?y)</span> 在 ?z 未绑定时可当「求和」用,三个都已知时就是「验算」。能不能反推,取决于内置的定义与推理机实现。
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">属性原子只有二元 · 多条件怎么写</span>
+    <span class="sec-sub">PART 3 · BINARY ONLY</span>
+  </div>
+  <p class="desc">SWRL 属性原子只能连两项,<span class="code">P(?x, ?y)</span>,没有三元、四元。碰上「谁向谁付了多少」这种三段式,得先把事件本身变成一个个体(具体化,reification),再往它身上挂二元属性。</p>
+  <div class="codeblock"><span class="cm"># 把「这笔支付」建成个体 ?pay,挂三个二元属性,再接数值比较</span>
+<span class="iri">:支付记录</span>(<span class="kw">?pay</span>) ∧ <span class="iri">:付款方</span>(<span class="kw">?pay</span>,<span class="kw">?c</span>) ∧ <span class="iri">:收款方</span>(<span class="kw">?pay</span>,<span class="kw">?p</span>) ∧ <span class="iri">:金额</span>(<span class="kw">?pay</span>,<span class="kw">?amt</span>)
+  ∧ <span class="kw">swrlb:greaterThan</span>(<span class="kw">?amt</span>, 10000)  →  <span class="iri">:需披露</span>(<span class="kw">?c</span>, <span class="kw">?p</span>)</div>
+  <div class="note">
+    <span class="tag">别拿规则当子类用</span>
+    <span class="code">Student(?x) ⇒ Person(?x)</span> 这类规则与 <span class="code">SubClassOf(Student Person)</span> 等价——留给 OWL 推理机,别浪费 SWRL。规则真正的主场是「要跨属性组合、要比大小、要拼字符串」的情形。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">可判定性 · SWRL 最大的代价</span>
+    <span class="sec-sub">PART 3 · DECIDABILITY</span>
+  </div>
+  <div class="def">
+    <span class="lbl">规范原文</span>
+    "OWL DL becomes undecidable when extended in this way as rules can be used to simulate role value maps."<br>
+    —— 这样一扩展,OWL DL 就<b>不可判定</b>了:规则能拿来模拟「角色值映射」(role value map)。
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>问题 <span>UNDECIDABLE</span></h4>
+      <ul>
+        <li>OWL DL 本来可判定:推理一定跑得完、给得出确定答案</li>
+        <li>加上规则就失守:理论上可能永远算不完</li>
+        <li>根子在于规则表达力太强,能搭出已知会破坏可判定性的构造</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>对策 <span>DL-SAFE</span></h4>
+      <ul>
+        <li>变量只能绑定到<b>显式命名的个体</b>(named individual)</li>
+        <li>不许绑定推理过程中凭空生成的匿名个体</li>
+        <li>切断「本体造个体 → 规则再推」的循环,恢复可判定</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">实践含义</span>
+    这条限制叫 <b>DL-safe rules</b>(DL 安全规则),由 Motik 等人在 2005 年提出,正是为了把 SWRL 拉回可判定的地面。主流推理机实现的基本都是这个子集,而不是 SWRL 全集——你写的规则能不能跑,取决于推理机认不认。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 05 · P.&thinsp;3/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>W</em>RL</div>
+    <div class="title-block">
+      <div class="title-cn">语义网规则语言 · 规范速查</div>
+      <div class="title-en">SWRL — ECOSYSTEM, SUPPORT &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;05</div>
+    <div class="meta">W3C / SWRL / 2004</div>
+  </div>
+</header>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">分工 · OWL / 链 / SWRL / SPARQL</span>
+    <span class="sec-sub">PART 4 · DIVISION OF LABOR</span>
+  </div>
+  <table>
+    <tr><th>工具</th><th>干什么</th><th>产生新知识?</th></tr>
+    <tr><td><span class="k">OWL 公理</span></td><td>描述静态结构(类、属性、限制)</td><td class="yes">会 · 推理机演绎</td></tr>
+    <tr><td><span class="k">OWL 2 属性链</span></td><td>「连走两步推出第三条」的规则形状</td><td class="yes">会 · 稳在可判定区间</td></tr>
+    <tr><td><span class="k">SWRL</span></td><td>带内置函数的任意条件规则</td><td class="yes">会 · 需 DL-safe 护栏</td></tr>
+    <tr><td><span class="k">SPARQL</span></td><td>查询检索(CONSTRUCT/INSERT 除外)</td><td class="no">不会 · 只读为主</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">一句话</span>
+    能用属性链写的(PL.04 §08),优先属性链;真正落到 SWRL 的是链写不出的那类:要内置函数、要判断「两个个体不同」、要跨多个属性组合的条件规则。
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">推理机支持度 · 谁真的在跑 SWRL</span>
+    <span class="sec-sub">PART 4 · ENGINE SUPPORT</span>
+  </div>
+  <table>
+    <tr><th>工具</th><th>路线</th></tr>
+    <tr><td><span class="k">Pellet / Openllet</span></td><td>Tableau;支持 DL-safe SWRL 及内置谓词</td></tr>
+    <tr><td><span class="k">Protégé SWRLTab</span></td><td>背后是 Drools 规则引擎</td></tr>
+    <tr><td><span class="k">HermiT</span></td><td>Tableau;SWRL 支持有限</td></tr>
+    <tr><td><span class="k">Jena Rules / RDFox</span></td><td>自有规则语法(Datalog 谱系),<b>不是</b> SWRL</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">碎</span>
+    同一条规则,换个引擎行为可能就不一样——这是 SWRL 论文里常见、工程里少用的原因之一。写之前先锁定目标引擎。
+  </div>
+</section>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>身份先记住:Member Submission 不是 W3C 标准——项目文档里别说「W3C 推荐的 SWRL」。</li>
+    <li>能写成属性链的,别用 SWRL——保住可判定性,也保住工具兼容。</li>
+    <li>结论里不许出现前提没绑定的变量——安全条件,越界即规则作废。</li>
+    <li>没有「否定即失败」:写不出「如果不知道 P,则…」这种话。</li>
+    <li>规则是单调的:只增不减,推出来的结论撤不回去。</li>
+    <li>小心规则爆炸:不谨慎的规则配上开放世界,能推出海量结论。</li>
+    <li>没有优先级、没有异常处理——不像业务规则引擎那样能排先后。</li>
+    <li>swrlb 列表类内置在 DL/Lite 里不可用,用了就是 Full。</li>
+    <li>换推理机可能换结果:DL-safe 支持度参差,上线前务必实测。</li>
+    <li>规则标注与 URI 不携带语义——别指望给规则挂 meta 就能影响推理。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 05 · P.&thinsp;4/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

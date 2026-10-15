@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+/* ===== sheet ===== */
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+/* ===== header ===== */
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+/* ===== section ===== */
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+/* ===== 图 + 说明 ===== */
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+/* ===== 表格 ===== */
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+/* ===== 定义框 / 提示条 ===== */
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+/* ===== 小节标题 ===== */
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+/* ===== 术语 chip ===== */
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+/* ===== 清单 ===== */
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+/* ===== 代码块 ===== */
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+/* ===== 对照双格 ===== */
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+/* ===== footer ===== */
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">PROV-<em>O</em></div>
+    <div class="title-block">
+      <div class="title-cn">溯源本体 · 规范速查</div>
+      <div class="title-en">PROV-O — THE PROV ONTOLOGY, ENTITIES &amp; ACTIVITIES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;11</div>
+    <div class="meta">W3C / PROV-O / 2013</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">定位 · PROV 家族里的本体</span>
+    <span class="sec-sub">WHY PROV-O</span>
+  </div>
+  <p class="desc">「这份数据从哪来、谁在什么时候加工过它」——溯源(provenance)问题。W3C 的 PROV 家族给了一整套答案:概念模型定词汇,本体做 RDF 化,记法定序列化,约束定推理。</p>
+  <table>
+    <tr><th>文档</th><th>角色</th><th>形态</th></tr>
+    <tr><td><span class="k">PROV-DM</span></td><td>概念数据模型:实体/活动/代理与影响关系</td><td>术语字典(abstract)</td></tr>
+    <tr class="hl"><td><span class="k">PROV-O</span></td><td>把 DM 映射成 OWL 2 本体,RDF 三元组可直接落库</td><td>本文速查对象</td></tr>
+    <tr><td><span class="k">PROV-N</span></td><td>函数式文本记法:<span class="code">wasGeneratedBy(e2,a1)</span></td><td>序列化语法</td></tr>
+    <tr><td><span class="k">PROV-CONSTRAINTS</span></td><td>约束与推理规则:等价、有效性判定</td><td>形式化规则</td></tr>
+    <tr><td><span class="k">PROV-AQ / PROV-LINKS</span></td><td>溯源的访问查询 / 跨文档链接</td><td>外围配套</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT</span>
+    PROV-O(The PROV Ontology),<b>W3C Recommendation,2013-04-30</b>。所有词汇收在命名空间 <b><span class="code">prov:</span> = <span class="code">http://www.w3.org/ns/prov#</span></b> 下,本体以 <b>OWL 2 DL</b> 表达——既是 schema 也是可直接断言的实例词汇。
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">核心三角 · Entity–Activity–Agent</span>
+    <span class="sec-sub">STARTING POINT</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="72mm" height="56mm" viewBox="0 0 72 56">
+      <!-- nodes -->
+      <rect x="26" y="4" width="20" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="36" y="9.6" font-family="JetBrainsMono" font-size="3.6" fill="#1C2430" text-anchor="middle" font-weight="700">Activity</text>
+      <rect x="2" y="40" width="17" height="9" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="10.5" y="45.6" font-family="JetBrainsMono" font-size="3.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">Entity</text>
+      <rect x="53" y="40" width="17" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="61.5" y="45.6" font-family="JetBrainsMono" font-size="3.6" fill="#1C2430" text-anchor="middle" font-weight="700">Agent</text>
+      <!-- used: A -> E -->
+      <line x1="27" y1="13.5" x2="13.5" y2="39" stroke="#B23A26" stroke-width="0.5"/>
+      <polygon points="13.5,39 15.1,35.4 11.9,36.4" fill="#B23A26"/>
+      <text x="13.2" y="24" font-family="JetBrainsMono" font-size="2.9" fill="#B23A26" text-anchor="middle" font-weight="700">used</text>
+      <!-- wasGeneratedBy: E -> A -->
+      <line x1="17.5" y1="39.5" x2="29.5" y2="14" stroke="#33506E" stroke-width="0.45" stroke-dasharray="1.6 1.2"/>
+      <polygon points="29.5,14 26.6,16.2 29.9,17.2" fill="#33506E"/>
+      <text x="27.5" y="29.5" font-family="JetBrainsMono" font-size="2.7" fill="#33506E" text-anchor="middle">wasGeneratedBy</text>
+      <!-- wasAssociatedWith: A -> Ag -->
+      <line x1="45.5" y1="13.5" x2="58.5" y2="39" stroke="#1C2430" stroke-width="0.45"/>
+      <polygon points="58.5,39 57.3,35.3 54.4,37.8" fill="#1C2430"/>
+      <text x="58.6" y="24" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle">wasAssociatedWith</text>
+      <!-- wasAttributedTo: E -> Ag -->
+      <line x1="19.5" y1="44.5" x2="52" y2="44.5" stroke="#1C2430" stroke-width="0.45"/>
+      <polygon points="52,44.5 48.6,43.2 48.6,45.8" fill="#1C2430"/>
+      <text x="36" y="42.6" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle">wasAttributedTo</text>
+      <!-- self loops -->
+      <path d="M 4,49 q 6,4 12,0" fill="none" stroke="#7d7466" stroke-width="0.4" stroke-dasharray="1.2 1"/>
+      <text x="10.5" y="54.6" font-family="JetBrainsMono" font-size="2.4" fill="#7d7466" text-anchor="middle">wasDerivedFrom</text>
+      <path d="M 28,3.6 q 8,-3.2 16,0" fill="none" stroke="#7d7466" stroke-width="0.4" stroke-dasharray="1.2 1"/>
+      <text x="47.5" y="4.6" font-family="JetBrainsMono" font-size="2.4" fill="#7d7466" text-anchor="start">wasInformedBy</text>
+      <path d="M 55,49 q 6,4 12,0" fill="none" stroke="#7d7466" stroke-width="0.4" stroke-dasharray="1.2 1"/>
+      <text x="61.5" y="54.6" font-family="JetBrainsMono" font-size="2.4" fill="#7d7466" text-anchor="middle">actedOnBehalfOf</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">实体被活动<b>使用</b>与<b>产出</b>,代理为活动<b>担责</b>,实体向代理<b>归属</b>——一条链读完:<span class="code">报告 wasGeneratedBy 编译 · 编译 used 草稿 · 编译 wasAssociatedWith 机器人 · 报告 wasAttributedTo 实验室</span>。</div>
+      <div class="t-note">虚线自环是三类「同类关系」:实体⇒实体、活动⇒活动、代理⇒代理。属性名读起来就是主语到宾语的陈述句,方向照着读即可。</div>
+    </div>
+  </div>
+  <table>
+    <tr><th>起点属性</th><th>domain → range</th><th>一句话</th></tr>
+    <tr><td><span class="code">prov:used</span></td><td>Activity → Entity</td><td>使用之始(Usage 是"开始用")</td></tr>
+    <tr><td><span class="code">prov:wasGeneratedBy</span></td><td>Entity → Activity</td><td>产出之成(Generation 是"生成完成")</td></tr>
+    <tr><td><span class="code">prov:wasDerivedFrom</span></td><td>Entity → Entity</td><td>新实体由旧实体变换/更新而来</td></tr>
+    <tr><td><span class="code">prov:wasAttributedTo</span></td><td>Entity → Agent</td><td>把实体归属给代理</td></tr>
+    <tr><td><span class="code">prov:wasAssociatedWith</span></td><td>Activity → Agent</td><td>活动指派责任给代理</td></tr>
+    <tr><td><span class="code">prov:actedOnBehalfOf</span></td><td>Agent → Agent</td><td>代理代表另一代理行事(委托)</td></tr>
+    <tr><td><span class="code">prov:wasInformedBy</span></td><td>Activity → Activity</td><td>活动间经由交换实体间接通信</td></tr>
+    <tr><td><span class="code">prov:startedAtTime / endedAtTime</span></td><td>Activity → xsd:dateTime</td><td>数据属性,活动的起/止时刻</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">实体演化 · 一个东西的多种身份</span>
+    <span class="sec-sub">ENTITY EVOLUTION</span>
+  </div>
+  <p class="desc">同一「东西」随时间演进,每个阶段是不同的 Entity——报告的 v1 与 v2 是两个实体,而「贝多芬第五交响曲」与「它的乐谱抄本」是同一事物的两种表述。五个关系负责把它们串起来。</p>
+  <table>
+    <tr><th>属性</th><th>domain → range</th><th>何时用</th></tr>
+    <tr><td><span class="code">prov:specializationOf</span></td><td>Entity → Entity</td><td>更具体的特化:同一事物的某个视图/版本</td></tr>
+    <tr><td><span class="code">prov:alternateOf</span></td><td>Entity → Entity</td><td>同一事物的两种表述,可互相替代</td></tr>
+    <tr><td><span class="code">prov:wasRevisionOf</span></td><td>Entity → Entity</td><td>修订关系:改了内容,仍是"它"的下一版</td></tr>
+    <tr><td><span class="code">prov:wasQuotedFrom</span></td><td>Entity → Entity</td><td>引用:这段话摘自那份原文</td></tr>
+    <tr><td><span class="code">prov:hadPrimarySource</span></td><td>Entity → Entity</td><td>多跳派生追到头的原始来源</td></tr>
+    <tr><td><span class="code">prov:wasInvalidatedBy</span></td><td>Entity → Activity</td><td>实体因活动失效(不再"有效",非删除)</td></tr>
+    <tr><td><span class="code">prov:generatedAtTime / invalidatedAtTime</span></td><td>Entity → xsd:dateTime</td><td>实体诞生与失效的时刻(数据属性)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">规范细节</span>
+    属性有子属性链:<span class="code">specializationOf</span> ⊑ <span class="code">alternateOf</span>。特化必然是替身,替身未必是特化——"报告 v2"特化自"这份报告",而中文版报告与英文版报告互为替身、谁也不比谁特化。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 11 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">PROV-<em>O</em></div>
+    <div class="title-block">
+      <div class="title-cn">溯源本体 · 规范速查</div>
+      <div class="title-en">PROV-O — EXPANDED TERMS &amp; A WORKED EXAMPLE</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;11</div>
+    <div class="meta">W3C / PROV-O / 2013</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">扩展类 · 给三大类补充常见身份</span>
+    <span class="sec-sub">EXPANDED CLASSES</span>
+  </div>
+  <p class="desc">起点三类是骨架,扩展类给骨架穿上日常的衣服——人、组织、软件、集合、位置,全部仍是 Entity / Agent 的子类,不引入新模型。</p>
+  <table>
+    <tr><th>类</th><th>是什么</th><th>典型用法</th></tr>
+    <tr><td><span class="code">prov:Collection</span></td><td>实体的集合</td><td><span class="code">hadMember</span> 逐个挂成员(Collection → Entity)</td></tr>
+    <tr><td><span class="code">prov:EmptyCollection</span></td><td>空集合</td><td>Collection 的子类,显式表达"无成员"</td></tr>
+    <tr><td><span class="code">prov:Bundle</span></td><td>装溯源断言的实体</td><td>溯源包本身也是实体,可整体引用、再被溯源</td></tr>
+    <tr><td><span class="code">prov:Person / Organization</span></td><td>Agent 的两种具象</td><td>自然人 / 机构</td></tr>
+    <tr class="hl"><td><span class="code">prov:SoftwareAgent</span></td><td>软件形态的代理</td><td>流水线每一步的"执行者"都该是它</td></tr>
+    <tr><td><span class="code">prov:Location</span></td><td>位置</td><td><span class="code">atLocation</span> 挂到活动/实体/代理上</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">工程判断</span>
+    自动化系统里别把脚本写成 Activity 的属性——建一个 <span class="code">SoftwareAgent</span>,用 <span class="code">wasAssociatedWith</span> 挂给活动。将来追责、重跑、审计,都有实体可指。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">其余动词 · 启停、影响与表示</span>
+    <span class="sec-sub">MORE PREDICATES</span>
+  </div>
+  <table>
+    <tr><th>属性</th><th>domain → range</th><th>一句话</th></tr>
+    <tr><td><span class="code">prov:wasStartedBy</span></td><td>Activity → Entity</td><td>被某实体触发启动</td></tr>
+    <tr><td><span class="code">prov:wasEndedBy</span></td><td>Activity → Entity</td><td>被某实体触发终止</td></tr>
+    <tr><td><span class="code">prov:influenced / wasInfluencedBy</span></td><td>任意 → 任意</td><td>最泛的影响关系,能用具体的就别用它</td></tr>
+    <tr><td><span class="code">prov:generated / invalidated</span></td><td>Activity → Entity</td><td>上一页两个属性的正式反向(读起来更顺的场合)</td></tr>
+    <tr><td><span class="code">prov:atLocation</span></td><td>Activity / Entity / Agent / 瞬时事件 → Location</td><td>发生在哪</td></tr>
+    <tr><td><span class="code">prov:value</span></td><td>Entity → 字面量</td><td>实体的"直接表示"(如某时刻的读数)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">反向三对</span>
+    规范只正式声明三对 <span class="code">owl:inverseOf</span>:<span class="code">influenced ⇄ wasInfluencedBy</span>、<span class="code">generated ⇄ wasGeneratedBy</span>、<span class="code">invalidated ⇄ wasInvalidatedBy</span>。<span class="code">used</span> 没有正式反向——查询时自己写 property path。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">一条完整的溯源链 · Turtle</span>
+    <span class="sec-sub">WORKED EXAMPLE</span>
+  </div>
+  <p class="desc">发布场景:草稿 v1 经 ETL 机器人编译成报告 v2。每个角色各就各位,时间齐备,关联关系带细节节点。</p>
+  <div class="codeblock"><span class="cm">@prefix</span> <span class="kw">prov:</span> <<span class="iri">http://www.w3.org/ns/prov#</span>> .
+<span class="cm">@prefix</span> <span class="kw">xsd:</span>  <<span class="iri">http://www.w3.org/2001/XMLSchema#</span>> .
+<span class="cm">@prefix</span> <span class="kw">:</span>     <<span class="iri">http://example.com/audit#</span>> .
+
+<span class="iri">:report-v2</span> <span class="kw">a</span> <span class="iri">prov:Entity</span> ;                 <span class="cm"># 产出物</span>
+    <span class="kw">prov:wasGeneratedBy</span> <span class="iri">:compile</span> ;        <span class="cm"># 实体 ← 活动</span>
+    <span class="kw">prov:wasDerivedFrom</span> <span class="iri">:draft-v1</span> ;        <span class="cm"># 实体 ← 实体</span>
+    <span class="kw">prov:wasAttributedTo</span>  <span class="iri">:lab</span> ;            <span class="cm"># 实体 ← 代理</span>
+    <span class="kw">prov:generatedAtTime</span> <span class="iri">"2026-10-14T09:30:00+08:00"</span>^^<span class="kw">xsd:dateTime</span> .
+
+<span class="iri">:compile</span> <span class="kw">a</span> <span class="iri">prov:Activity</span> ;                <span class="cm"># 加工活动</span>
+    <span class="kw">prov:used</span> <span class="iri">:draft-v1</span> ;                   <span class="cm"># 活动 → 实体</span>
+    <span class="kw">prov:wasAssociatedWith</span> <span class="iri">:etl-bot</span> ;      <span class="cm"># 活动 → 代理</span>
+    <span class="kw">prov:startedAtTime</span> <span class="iri">"2026-10-14T09:00:00+08:00"</span>^^<span class="kw">xsd:dateTime</span> ;
+    <span class="kw">prov:endedAtTime</span>   <span class="iri">"2026-10-14T09:30:00+08:00"</span>^^<span class="kw">xsd:dateTime</span> ;
+    <span class="kw">prov:qualifiedAssociation</span> [            <span class="cm"># 给关系一个"细节节点"</span>
+        <span class="kw">a</span> <span class="iri">prov:Association</span> ;
+        <span class="kw">prov:agent</span>   <span class="iri">:etl-bot</span> ;
+        <span class="kw">prov:hadRole</span> <span class="iri">:transformer</span> ] .      <span class="cm"># 角色是资源,不是字符串</span>
+
+<span class="iri">:etl-bot</span> <span class="kw">a</span> <span class="iri">prov:SoftwareAgent</span> .           <span class="cm"># 软件也是代理</span>
+<span class="iri">:lab</span>     <span class="kw">a</span> <span class="iri">prov:Organization</span> .</div>
+  <div class="codeblock"><span class="cm">// 同一条链的 PROV-N 写法 —— PROV-DM 的函数式记法,起止时间走位置参数</span>
+<span class="kw">document</span>
+  <span class="kw">prefix</span> <span class="iri">:</span> <<span class="iri">http://example.com/audit#</span>>
+  <span class="kw">entity</span>(<span class="iri">:draft-v1</span>)  <span class="kw">entity</span>(<span class="iri">:report-v2</span>)
+  <span class="kw">activity</span>(<span class="iri">:compile</span>, <span class="iri">2026-10-14T09:00:00+08:00</span>, <span class="iri">2026-10-14T09:30:00+08:00</span>)
+  <span class="kw">used</span>(<span class="iri">:compile</span>, <span class="iri">:draft-v1</span>, -)
+  <span class="kw">wasGeneratedBy</span>(<span class="iri">:report-v2</span>, <span class="iri">:compile</span>, -)
+  <span class="kw">wasDerivedFrom</span>(<span class="iri">:report-v2</span>, <span class="iri">:draft-v1</span>)
+  <span class="kw">wasAttributedTo</span>(<span class="iri">:report-v2</span>, <span class="iri">:lab</span>)
+  <span class="kw">wasAssociatedWith</span>(<span class="iri">:compile</span>, <span class="iri">:etl-bot</span>, -)
+  <span class="kw">agent</span>(<span class="iri">:etl-bot</span>, [<span class="kw">prov:type</span>=<span class="iri">"prov:SoftwareAgent"</span>])  <span class="kw">agent</span>(<span class="iri">:lab</span>, [<span class="kw">prov:type</span>=<span class="iri">"prov:Organization"</span>])
+<span class="kw">endDocument</span></div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 11 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">PROV-<em>O</em></div>
+    <div class="title-block">
+      <div class="title-cn">溯源本体 · 规范速查</div>
+      <div class="title-en">PROV-O — QUALIFICATION, INFLUENCE &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;11</div>
+    <div class="meta">W3C / PROV-O / 2013</div>
+  </div>
+</header>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">限定修饰模式 · 给二元关系加细节</span>
+    <span class="sec-sub">QUALIFICATION</span>
+  </div>
+  <p class="desc">RDF 的边只有两个端点,"何时用、以何角色、凭何计划"挂不上去。限定修饰的解法:给这层关系一个独立节点——二元说「用了」,限定说「在 t 时刻、以转换角色、按某计划用」。</p>
+  <div class="fig-wrap">
+    <svg width="78mm" height="32mm" viewBox="0 0 78 32">
+      <!-- left: binary -->
+      <rect x="2" y="11" width="17" height="8" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="10.5" y="16.2" font-family="JetBrainsMono" font-size="3.1" fill="#1C2430" text-anchor="middle" font-weight="700">Activity</text>
+      <rect x="36" y="11" width="15" height="8" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="43.5" y="16.2" font-family="JetBrainsMono" font-size="3.1" fill="#1C2430" text-anchor="middle" font-weight="700">Entity</text>
+      <line x1="19.5" y1="15" x2="35" y2="15" stroke="#7d7466" stroke-width="0.5"/>
+      <polygon points="35,15 32,13.8 32,16.2" fill="#7d7466"/>
+      <text x="27" y="12.6" font-family="JetBrainsMono" font-size="2.8" fill="#7d7466" text-anchor="middle">used</text>
+      <text x="27.5" y="25.5" font-family="JetBrainsMono" font-size="2.5" fill="#7d7466" text-anchor="middle">二元 · 一句话</text>
+      <!-- divider -->
+      <line x1="57" y1="2" x2="57" y2="30" stroke="#C9BFAC" stroke-width="0.25"/>
+      <!-- right: qualified -->
+      <rect x="61" y="3" width="16" height="8" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="69" y="8.2" font-family="JetBrainsMono" font-size="3.1" fill="#1C2430" text-anchor="middle" font-weight="700">Activity</text>
+      <rect x="61" y="21" width="16" height="8" fill="#B23A26" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="69" y="26.2" font-family="JetBrainsMono" font-size="3.1" fill="#F6F1E7" text-anchor="middle" font-weight="700">Usage</text>
+      <line x1="69" y1="11" x2="69" y2="20.2" stroke="#B23A26" stroke-width="0.5"/>
+      <polygon points="69,20.2 67.9,17.4 70.1,17.4" fill="#B23A26"/>
+      <rect x="60.4" y="13.9" width="17.2" height="3.2" fill="#F6F1E7"/>
+      <text x="69" y="16.3" font-family="JetBrainsMono" font-size="2.1" fill="#B23A26" text-anchor="middle" font-weight="700">qualifiedUsage</text>
+      <text x="68" y="31.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="middle">hadRole · atTime</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">升级规则:<span class="code">qualifiedX</span> 都是对应二元属性的<b>子属性</b>,range 是固定的限定类;细节(<span class="code">hadRole</span>、<span class="code">atTime</span>、<span class="code">hadPlan</span>…)全部挂在限定类节点上。</div>
+    </div>
+  </div>
+  <table>
+    <tr><th>二元属性</th><th>限定属性</th><th>限定类</th><th>引用属性</th></tr>
+    <tr><td><span class="code">used</span></td><td><span class="code">qualifiedUsage</span></td><td>Usage</td><td><span class="code">entity</span></td></tr>
+    <tr><td><span class="code">wasGeneratedBy</span></td><td><span class="code">qualifiedGeneration</span></td><td>Generation</td><td><span class="code">activity</span></td></tr>
+    <tr><td><span class="code">wasDerivedFrom</span></td><td><span class="code">qualifiedDerivation</span></td><td>Derivation</td><td><span class="code">entity</span></td></tr>
+    <tr><td><span class="code">wasStartedBy</span></td><td><span class="code">qualifiedStart</span></td><td>Start</td><td><span class="code">entity</span></td></tr>
+    <tr><td><span class="code">wasEndedBy</span></td><td><span class="code">qualifiedEnd</span></td><td>End</td><td><span class="code">entity</span></td></tr>
+    <tr><td><span class="code">wasInvalidatedBy</span></td><td><span class="code">qualifiedInvalidation</span></td><td>Invalidation</td><td><span class="code">activity</span></td></tr>
+    <tr><td><span class="code">wasInformedBy</span></td><td><span class="code">qualifiedCommunication</span></td><td>Communication</td><td><span class="code">activity</span></td></tr>
+    <tr class="hl"><td><span class="code">wasAssociatedWith</span></td><td><span class="code">qualifiedAssociation</span></td><td>Association</td><td><span class="code">agent</span> + hadPlan/hadRole</td></tr>
+    <tr><td><span class="code">wasAttributedTo</span></td><td><span class="code">qualifiedAttribution</span></td><td>Attribution</td><td><span class="code">agent</span></td></tr>
+    <tr><td><span class="code">actedOnBehalfOf</span></td><td><span class="code">qualifiedDelegation</span></td><td>Delegation</td><td><span class="code">agent</span> + hadActivity</td></tr>
+    <tr><td><span class="code">hadPrimarySource</span></td><td><span class="code">qualifiedPrimarySource</span></td><td>PrimarySource</td><td><span class="code">entity</span></td></tr>
+    <tr><td><span class="code">wasQuotedFrom</span></td><td><span class="code">qualifiedQuotation</span></td><td>Quotation</td><td><span class="code">entity</span></td></tr>
+    <tr><td><span class="code">wasRevisionOf</span></td><td><span class="code">qualifiedRevision</span></td><td>Revision</td><td><span class="code">entity</span></td></tr>
+    <tr><td><span class="code">wasInfluencedBy</span></td><td><span class="code">qualifiedInfluence</span></td><td>Influence</td><td><span class="code">influencer</span></td></tr>
+  </table>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">影响的统一理论 · 一切皆 Influence</span>
+    <span class="sec-sub">INFLUENCE HIERARCHY</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="96mm" height="39mm" viewBox="0 0 96 39">
+      <rect x="38" y="1" width="20" height="7.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="48" y="6.1" font-family="JetBrainsMono" font-size="3.2" fill="#F6F1E7" text-anchor="middle" font-weight="700">Influence</text>
+      <!-- three branches -->
+      <rect x="3" y="13" width="26" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="16" y="17.7" font-family="JetBrainsMono" font-size="2.5" fill="#1C2430" text-anchor="middle" font-weight="700">EntityInfluence</text>
+      <rect x="35" y="13" width="26" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="48" y="17.7" font-family="JetBrainsMono" font-size="2.5" fill="#1C2430" text-anchor="middle" font-weight="700">ActivityInfluence</text>
+      <rect x="67" y="13" width="26" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="80" y="17.7" font-family="JetBrainsMono" font-size="2.5" fill="#1C2430" text-anchor="middle" font-weight="700">AgentInfluence</text>
+      <line x1="43" y1="8.5" x2="16" y2="13" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="48" y1="8.5" x2="48" y2="13" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="53" y1="8.5" x2="80" y2="13" stroke="#1C2430" stroke-width="0.35"/>
+      <!-- citing property labels -->
+      <text x="16" y="22.8" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" text-anchor="middle" font-weight="700">entity</text>
+      <text x="48" y="22.8" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" text-anchor="middle" font-weight="700">activity</text>
+      <text x="80" y="22.8" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" text-anchor="middle" font-weight="700">agent</text>
+      <!-- leaf classes -->
+      <text x="16" y="26.8" font-family="JetBrainsMono" font-size="2.0" fill="#3a4351" text-anchor="middle">Usage · Derivation</text>
+      <text x="16" y="29.9" font-family="JetBrainsMono" font-size="2.0" fill="#3a4351" text-anchor="middle">Start · End</text>
+      <text x="16" y="33.0" font-family="JetBrainsMono" font-size="2.0" fill="#3a4351" text-anchor="middle">PrimarySource</text>
+      <text x="16" y="36.1" font-family="JetBrainsMono" font-size="2.0" fill="#3a4351" text-anchor="middle">Quotation · Revision</text>
+      <text x="48" y="26.8" font-family="JetBrainsMono" font-size="2.0" fill="#3a4351" text-anchor="middle">Generation · Communication</text>
+      <text x="48" y="29.9" font-family="JetBrainsMono" font-size="2.0" fill="#3a4351" text-anchor="middle">Invalidation</text>
+      <text x="80" y="26.8" font-family="JetBrainsMono" font-size="2.0" fill="#3a4351" text-anchor="middle">Attribution · Association</text>
+      <text x="80" y="29.9" font-family="JetBrainsMono" font-size="2.0" fill="#3a4351" text-anchor="middle">Delegation</text>
+      <text x="48" y="38.4" font-family="JetBrainsMono" font-size="2.0" fill="#7d7466" text-anchor="middle">Plan · Role 挂在 Association 上 · 裸 Influence 用 influencer</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">限定类按「影响源是什么」分三支,每支用固定的<b>引用属性</b>指回影响源:<span class="code">entity</span>、<span class="code">activity</span>、<span class="code">agent</span>;拿不准影响源类型时用裸 <span class="code">Influence</span> + <span class="code">influencer</span>。</div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">规范建议</span>
+    <span class="code">wasInfluencedBy</span> 太泛,规范明说:能用更具体的子属性就用子属性;同理,别只断言裸 <span class="code">Influence</span> 类型——信息量太低,查询方还要猜。
+  </div>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>qualified 与二元<b>双写</b>:<span class="code">qualifiedX</span> 虽是二元的子属性,但只写限定,不识该模式的工具就漏读;两写都留最稳。</li>
+    <li><span class="code">prov:wasUsedBy</span> 不存在:<span class="code">used</span> 没有正式反向,查询用 property path 或退到 <span class="code">wasInfluencedBy</span>。</li>
+    <li>Role / Plan 是<b>资源</b>不是字符串:角色建 IRI(<span class="code">:transformer</span>),别塞字面量。</li>
+    <li>时间一律 <span class="code">xsd:dateTime</span> 且带时区——不然跨系统排序没有意义。</li>
+    <li>开放世界:查不到 <span class="code">wasDerivedFrom</span> 不等于没派生——溯源查询是找证据,不是证没有。</li>
+    <li>别人的溯源包整体当 <span class="code">Bundle</span> 引用,别拆散混进自己的图——断言的出处就断了。</li>
+    <li>失效(<span class="code">wasInvalidatedBy</span>)不是删除:实体仍在图里,只是过了有效期。</li>
+    <li>属性方向别背反:主语是"结果方"才用 <span class="code">was*</span> 系列;<span class="code">used</span> 的主语永远是活动。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 11 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">TIM<em>E</em></div>
+    <div class="title-block">
+      <div class="title-cn">OWL 时间本体 · 规范速查</div>
+      <div class="title-en">OWL-TIME — TIME ONTOLOGY, THE TOTAL PICTURE</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;12</div>
+    <div class="meta">W3C / OWL-TIME / 2017·CRD</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 给万物挂上时间</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">OWL-Time 给任何资源挂时间:用 <span class="code">time:hasTime</span> 连到一个时间实体——时点或时段。位置有时限直报和拆件两种报法,时长同理;两个时段之间有 15 条 Allen 关系。先看四层怎么咬合。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">挂接</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">time:hasTime · 一条边通向时间实体</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">宽松起步</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">两个实体</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Instant 时点 · Interval 时段</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">二分 · 不重叠</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">位置与时长</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">XSD 直报 · 拆件描述 · TRS 参照系</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">两种报法</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">区间代数</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Allen 15 关系 · 成对互逆</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">只在时段之间</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>一切时间实体二分——Instant 零长度,Interval 有长度,ProperInterval 再排除零长,关系代数只在 ProperInterval 上玩。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 两个实体 → 位置与时长 → 区间代数 → 实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 一份本体,两段人生</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">OWL-Time 把「时间点、时间段、历法、参照系」做成一份 OWL 本体,命名空间 <span class="code">time:</span> = <span class="code">http://www.w3.org/2006/time#</span>。源头是 Hobbs &amp; Pan 2006 年的本体,2017 年与 OGC 联合重写后成为 W3C Recommendation,现行修订是 2022 年的 CRD 草案。</p>
+  <table>
+    <tr><th>节点</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="k">W3C Recommendation</span></td><td>2017-10-19 发布;同版亦为 OGC 16-071r2</td></tr>
+    <tr><td><span class="k">CRD 修订版</span></td><td>2022-11-15 Candidate Recommendation Draft(OGC 16-071r3)——本卡按此版核对</td></tr>
+    <tr><td><span class="k">编辑</span></td><td>Simon Cox(CSIRO)、Chris Little(Met Office)</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">STATUS · 检索于 2026-10</span>
+    在途规范——CRD 仍未转正。引用时注明「OWL-Time, W3C Rec 2017 / CRD 2022」,别只写年份。
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">类层级 · 两个实体撑起全部</span>
+    <span class="sec-sub">PART 1 · CLASS TREE</span>
+  </div>
+  <p class="desc">全部 18 个类挂在 <span class="code">time:TemporalEntity</span> 之下,而它只有两个子类——这是整份本体的承重墙。</p>
+  <table>
+    <tr><th>类</th><th>一句话</th></tr>
+    <tr class="hl"><td><span class="k">time:TemporalEntity</span></td><td>一切时间实体 = Instant ⊔ Interval(两子类,无第三)</td></tr>
+    <tr><td><span class="k">time:Instant</span></td><td>零长度的时间点:「2026-10-15T09:30:00+08:00」那一刻</td></tr>
+    <tr><td><span class="k">time:Interval</span></td><td>有长度的时段(含零长的退化情形)</td></tr>
+    <tr><td><span class="k">time:ProperInterval</span></td><td>非零长的「正经」时段,<b>与 Instant 声明不相交</b>——关系代数的舞台</td></tr>
+    <tr><td><span class="k">time:DateTimeInterval</span></td><td>起止都能用日期时间表达的时段</td></tr>
+  </table>
+  <div class="sub">支撑类 · 位置、时长与参照系</div>
+  <div class="chips">
+    <span class="chip"><span class="cn">位置</span><span class="en">TemporalPosition · TimePosition · GeneralDateTimeDescription · DateTimeDescription</span></span>
+    <span class="chip"><span class="cn">时长</span><span class="en">TemporalDuration · Duration · GeneralDurationDescription · DurationDescription · TemporalUnit</span></span>
+    <span class="chip hot"><span class="cn">支架</span><span class="en">DayOfWeek · MonthOfYear · TimeZone · TRS</span></span>
+  </div>
+  <div class="note">
+    <span class="tag">WHY PROPER</span>
+    Allen 关系的定义(如「相接」meets)在零长时段上会退化出悖论。所以本体把关系属性全部锁死在 <b>ProperInterval</b>——先声明它和 Instant 不相交,再让 15 条关系只准连时段对时段。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 12 · P.&thinsp;1/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">TIM<em>E</em></div>
+    <div class="title-block">
+      <div class="title-cn">OWL 时间本体 · 规范速查</div>
+      <div class="title-en">OWL-TIME — ATTACHING TIME, POSITIONS &amp; DURATIONS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;12</div>
+    <div class="meta">W3C / OWL-TIME / 2017·CRD</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">挂时间 · hasTime 一条边</span>
+    <span class="sec-sub">PART 2 · ATTACHING TIME</span>
+  </div>
+  <p class="desc">任何资源用 <span class="code">time:hasTime</span> 连到时间实体即可。最常见的完整写法:事件 → 时段 → 起点终点 + 时长。</p>
+  <div class="codeblock"><span class="iri">ex:停机</span> <span class="kw">a</span> ex:事件 ;
+    time:hasTime <span class="iri">ex:停机时段</span> .
+
+<span class="iri">ex:停机时段</span> <span class="kw">a</span> time:ProperInterval ;
+    time:hasBeginning <span class="iri">ex:停机起点</span> ;   <span class="cm"># Instant</span>
+    time:hasEnd     <span class="iri">ex:停机终点</span> ;   <span class="cm"># Instant</span>
+    time:hasDuration <span class="iri">ex:停机历时</span> .   <span class="cm"># Duration</span>
+
+<span class="iri">ex:停机起点</span> <span class="kw">a</span> time:Instant ;
+    time:inXSDDateTimeStamp <span class="iri">"2026-10-15T09:30:00+08:00"^^xsd:dateTimeStamp</span> .
+
+<span class="iri">ex:停机历时</span> <span class="kw">a</span> time:Duration ;
+    time:numericDuration <span class="iri">2.5</span> ;
+    time:unitType        time:unitHour .</div>
+  <div class="note">
+    <span class="tag">偷懒写法</span>
+    起止明确的时段可一步到位:<span class="code">time:hasTime</span> 直接连一个 <span class="code">time:DateTimeInterval</span>,用 <span class="code">time:hasBeginning/hasEnd</span> 各挂一个 XSD 字面量 Instant——大多数业务到这就够了。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">位置与时长 · 直报或拆件</span>
+    <span class="sec-sub">PART 2 · POSITIONS &amp; DURATIONS</span>
+  </div>
+  <p class="desc">时间「在哪」和「多长」各有两种报法:<b>直报</b>——一个 XSD 原子值搞定;<b>拆件</b>——年月日时分秒各占一条,可携带历法与精度。</p>
+  <table>
+    <tr><th>对象</th><th>直报(XSD 原子)</th><th>拆件(描述类)</th></tr>
+    <tr class="hl"><td><span class="k">时点位置</span></td><td><span class="code">inXSDDate</span> / <span class="code">inXSDDateTimeStamp</span> / <span class="code">inXSDgYear</span> / <span class="code">inXSDgYearMonth</span></td><td><span class="code">inDateTime</span> → DateTimeDescription(year / month / day / hour… 各一条)</td></tr>
+    <tr><td><span class="k">时长</span></td><td><span class="code">hasXSDDuration</span>(xsd:duration 字面量)</td><td><span class="code">hasDurationDescription</span> → DurationDescription(years / months / days…)</td></tr>
+    <tr><td><span class="k">数值时长</span></td><td colspan="2"><span class="code">hasDuration</span> → Duration(<span class="code">numericDuration</span> + <span class="code">unitType</span>,二者 exactly 1)</td></tr>
+  </table>
+  <div class="owa">
+    <div class="cell a">
+      <h4>弃用清单 <span>别再写</span></h4>
+      <ul>
+        <li><span class="code">time:inXSDDateTime</span> → 换 inXSDDateTimeStamp</li>
+        <li><span class="code">time:xsdDateTime</span>(属性)→ 一并弃用</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>单位个体 <span>unitType 的取值</span></h4>
+      <ul>
+        <li>unitSecond · unitMinute · unitHour · unitDay · unitWeek · unitMonth · unitYear</li>
+        <li>历史向:unitDecade · unitCentury · unitMillenium(双 n,规范原文拼写)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">星期与月份</span>
+    星期个体 <span class="code">time:Sunday…Saturday</span> 配 <span class="code">dayOfWeek</span>;十二个月在独立命名空间 <span class="code">greg:</span>(如 greg:January)配 <span class="code">monthOfYear</span>。星期/月份/单位的成员资格都是<b>开放集</b>,可以自己补。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">参照系 · 谁说了算</span>
+    <span class="sec-sub">PART 2 · TRS &amp; TIME ZONE</span>
+  </div>
+  <p class="desc">拆件报法必须回答「按哪套历法」:这就是 TRS(Temporal Reference System)。规范用 <span class="code">hasTRS</span> 挂参照系,并声明它为<b>函数属性</b>——一个描述只许一个参照系。</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>格里高利世界 <span>默认</span></h4>
+      <ul>
+        <li>DateTimeDescription / DurationDescription 把 hasTRS 固定为 ISO-8601 格里高利参照</li>
+        <li>日常业务写拆件,不用管 TRS——已经替你钉死</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>走出格里高利 <span>General 系</span></h4>
+      <ul>
+        <li>GeneralDateTimeDescription / GeneralDurationDescription 放开 TRS,可挂农历、地质年代表等自定义参照</li>
+        <li>配套数据类型 <span class="code">generalDay / generalMonth / generalYear</span>:放宽的字符串形态,容纳非公历日子</li>
+        <li>TimePosition 二选一:numericPosition(数值)或 nominalPosition(名义,如「三叠纪」)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">时区</span>
+    <span class="code">time:timeZone</span> 指向 <span class="code">time:TimeZone</span>——规范只给一个「占位类」,成员留白给 IANA tz 这类外部词表填充。别在本体里重定义时区,连过去即可。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 12 · P.&thinsp;2/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">TIM<em>E</em></div>
+    <div class="title-block">
+      <div class="title-cn">OWL 时间本体 · 规范速查</div>
+      <div class="title-en">OWL-TIME — THE ALLEN INTERVAL ALGEBRA</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;12</div>
+    <div class="meta">W3C / OWL-TIME / 2017·CRD</div>
+  </div>
+</header>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">区间代数 · Allen 十五关系</span>
+    <span class="sec-sub">PART 3 · INTERVAL RELATIONS</span>
+  </div>
+  <p class="desc">两个「正经时段」之间只有有限的相对位置,Allen(1983)穷举成 13 种,OWL-Time 加上 equals 与 disjoint 扩成 15 条属性——全部只在 ProperInterval 之间,且成对互逆。</p>
+  <table>
+    <tr><th>关系</th><th>含义(A ? B)</th><th>互逆</th></tr>
+    <tr><td><span class="code">intervalBefore</span></td><td>A 整体早于 B</td><td>intervalAfter</td></tr>
+    <tr><td><span class="code">intervalMeets</span></td><td>A 结束即 B 开始(首尾相接)</td><td>intervalMetBy</td></tr>
+    <tr><td><span class="code">intervalOverlaps</span></td><td>A 先开始、跨越 B 的起点重叠</td><td>intervalOverlappedBy</td></tr>
+    <tr><td><span class="code">intervalStarts</span></td><td>A 是 B 的开头一段</td><td>intervalStartedBy</td></tr>
+    <tr><td><span class="code">intervalDuring</span></td><td>A 完全落在 B 之内</td><td>intervalContains</td></tr>
+    <tr><td><span class="code">intervalFinishes</span></td><td>A 是 B 的收尾一段</td><td>intervalFinishedBy</td></tr>
+    <tr><td><span class="code">intervalEquals</span></td><td>起止完全相同</td><td>(自身)</td></tr>
+    <tr><td><span class="code">intervalDisjoint</span></td><td>没有任何重叠</td><td>(对称)</td></tr>
+    <tr><td><span class="code">intervalIn</span></td><td>A 在 B 内(starts / during / finishes 的统称)</td><td>—(contains 的宽版)</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT · 层级顺带推理</span>
+    <b>intervalBefore</b> 同时是 <b>before</b> 和 <b>intervalDisjoint</b> 的子属性——说「A 先于 B」,自动得到「A 早于 B(点的先后)」和「A 与 B 不相交」。<b>intervalStarts / intervalFinishes ⊑ intervalIn</b>;<b>intervalEquals 与 intervalIn 不相交</b>。写细关系,宽关系免费到账。
+  </div>
+  <div class="fig-wrap">
+    <svg width="96mm" height="25.5mm" viewBox="0 0 96 25.5">
+      <text x="1" y="3.9" font-family="JetBrainsMono" font-size="2.0" fill="#1C2430">before</text>
+      <rect x="16" y="2.2" width="18" height="2.2" fill="#B23A26"/>
+      <rect x="40" y="2.2" width="18" height="2.2" fill="#fff" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="1" y="8.7" font-family="JetBrainsMono" font-size="2.0" fill="#1C2430">meets</text>
+      <rect x="16" y="7.0" width="20" height="2.2" fill="#B23A26"/>
+      <rect x="36" y="7.0" width="20" height="2.2" fill="#fff" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="1" y="13.5" font-family="JetBrainsMono" font-size="2.0" fill="#1C2430">overlaps</text>
+      <rect x="16" y="11.8" width="28" height="2.2" fill="#B23A26"/>
+      <rect x="30" y="11.8" width="28" height="2.2" fill="none" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="1" y="18.3" font-family="JetBrainsMono" font-size="2.0" fill="#1C2430">during</text>
+      <rect x="16" y="16.6" width="42" height="2.2" fill="#fff" stroke="#1C2430" stroke-width="0.4"/>
+      <rect x="28" y="16.6" width="16" height="2.2" fill="#B23A26"/>
+      <text x="1" y="23.1" font-family="JetBrainsMono" font-size="2.0" fill="#1C2430">equals</text>
+      <rect x="16" y="21.4" width="34" height="2.2" fill="#B23A26"/>
+      <rect x="17.2" y="21.4" width="34" height="2.2" fill="none" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="62" y="3.9" font-family="JetBrainsMono" font-size="1.8" fill="#7d7466">A 整体在前</text>
+      <text x="62" y="8.7" font-family="JetBrainsMono" font-size="1.8" fill="#7d7466">首尾相接</text>
+      <text x="62" y="13.5" font-family="JetBrainsMono" font-size="1.8" fill="#7d7466">跨过 B 的起点</text>
+      <text x="62" y="18.3" font-family="JetBrainsMono" font-size="1.8" fill="#7d7466">A 落在 B 内</text>
+      <text x="62" y="23.1" font-family="JetBrainsMono" font-size="1.8" fill="#7d7466">起止全同</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">五个代表:整段先后、首尾相接、跨点重叠、内含、全等——其余关系都是这五种加上互逆的排列组合(meets 的镜像叫 metBy,during 的反向叫 contains)。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">推理钩子 · 本体埋了哪些机关</span>
+    <span class="sec-sub">PART 3 · AXIOM HOOKS</span>
+  </div>
+  <p class="desc">OWL-Time 的推理收益集中在几条声明上,写数据时顺着它们走,推理机才有的放矢。</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>结构机关 <span>锁死的</span></h4>
+      <ul>
+        <li>TemporalEntity = Instant ⊔ Interval——任何时间实体非点即段</li>
+        <li>ProperInterval 与 Instant 不相交</li>
+        <li>Duration:numericDuration、unitType 各 exactly 1</li>
+        <li>TimePosition:numericPosition / nominalPosition 恰选其一</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>联动机关 <span>送结论的</span></h4>
+      <ul>
+        <li>before ↔ after 等 15 组互逆:一条边反向免费</li>
+        <li>hasTRS 是函数属性:同一描述不会有两个参照系</li>
+        <li>子属性层级:before 家族、in 家族顺带上卷</li>
+        <li>DayOfWeek / MonthOfYear / TemporalUnit 成员开放,可自补个体</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 12 · P.&thinsp;3/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">TIM<em>E</em></div>
+    <div class="title-block">
+      <div class="title-cn">OWL 时间本体 · 规范速查</div>
+      <div class="title-en">OWL-TIME — PITFALLS &amp; ECOSYSTEM</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;12</div>
+    <div class="meta">W3C / OWL-TIME / 2017·CRD</div>
+  </div>
+</header>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>先选实体再选属性:</b>瞬时事件挂 Instant + inXSDDateTimeStamp;有跨度的才造 ProperInterval——把零长事件塞进 Allen 关系会直接和不相交公理打架。</li>
+    <li><b>弃用的两个名字别再写:</b>inXSDDateTime、xsdDateTime 已标 owl:DeprecatedProperty,一律换 inXSDDateTimeStamp(带时区)或 inXSDDate。</li>
+    <li><b>Allen 只在时段对时段:</b>15 条 interval* 属性的 domain/range 都是 ProperInterval——拿 Instant 当主语推理机不认。</li>
+    <li><b>直报优先:</b>能写 inXSDDate / hasXSDDuration 就别拆件;拆件(DateTimeDescription)留给「要精度标注、要非公历、要逐件校验」的场景。</li>
+    <li><b>非公历别硬写:</b>农历生日、地质年代走 General 系 + 自定义 TRS + generalDay/generalMonth/generalYear,别把农历日期硬塞进 XSD。</li>
+    <li><b>时区连词表别自造:</b>TimeZone 是占位类,连 IANA tz 个体;单位、星期、月份同理——先找规范个体。</li>
+    <li><b>挂时间一律 hasTime:</b>别自造 begunAt / endedAt;下游工具只认 time:hasTime 这一个通用入口。</li>
+    <li><b>引用注明版本:</b>2017 Rec 与 2022 CRD 术语有增删(如 inXSDDateTimeStamp、intervalIn、unitMillenium 都是后加的),在途规范引用带检索日期。</li>
+  </ol>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">生态 · 谁在跟它配合</span>
+    <span class="sec-sub">PART 4 · ECOSYSTEM</span>
+  </div>
+  <table>
+    <tr><th>场景</th><th>怎么配合</th></tr>
+    <tr class="hl"><td><span class="k">与字面量派分工</span></td><td>事件只需要「何时发生」→ XSD 日期字面量足够;要区间代数、历法独立、拆件精度 → 上 OWL-Time</td></tr>
+    <tr><td><span class="k">DCAT 数据集</span></td><td>数据集的时间覆盖常用 dcterms:temporal → DCTERMS PeriodOfTime;要表达精确起止再用 time:hasBeginning / hasEnd</td></tr>
+    <tr><td><span class="k">传感与观测</span></td><td>SSN/SOSA 系观测结果的时间语义由 OWL-Time 类承接,观测窗口天然是 Interval</td></tr>
+    <tr><td><span class="k">校验</span></td><td>结构约束(numericDuration exactly 1、ProperInterval 不连 Instant)可写成 SHACL 形状,发布数据前先过一遍</td></tr>
+  </table>
+  <div class="sub">属性选型速查</div>
+  <table>
+    <tr><th>要说什么</th><th>用哪个</th></tr>
+    <tr><td>某事发生在某一刻</td><td><span class="code">time:hasTime</span> → Instant + <span class="code">inXSDDateTimeStamp</span></td></tr>
+    <tr><td>某事持续了一段</td><td>→ ProperInterval + hasBeginning / hasEnd</td></tr>
+    <tr><td>持续多久</td><td><span class="code">hasXSDDuration</span>(直报)或 hasDuration → Duration</td></tr>
+    <tr><td>两段的先后 / 相接 / 重叠</td><td>interval* 十五关系(限 ProperInterval)</td></tr>
+    <tr><td>非公历日期</td><td>General 系 + 自定义 TRS + general* 数据类型</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">配套阅读</span>
+    词表底座见 PL.02 RDFS;区间/时点若只需字面量比对,回 PL.01 的 XSD 数据类型;地理空间配 DCTERMS 的 spatial(PL.14)。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 12 · P.&thinsp;4/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SHA<em>C</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 约束语言 · 规范速查</div>
+      <div class="title-en">SHACL — OVERVIEW · DATA GRAPH MEETS SHAPES GRAPH</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;07</div>
+    <div class="meta">W3C / SHACL / 2017</div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 数据图遇上形状图</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">SHACL 给 RDF 数据上「合同」:数据图归数据图,形状图归形状图,引擎拿组件约束逐节点比对,产出机器可读的验证报告。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="55.2mm" viewBox="0 0 118 55.2">
+      <rect x="0.25" y="1.0" width="27.5" height="11.0" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="7.5" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">两张图</text>
+      <text x="32" y="7.5" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">数据图 + 形状图,各写各的</text>
+      <text x="116.5" y="7.5" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">解耦</text>
+      <line x1="14" y1="12.4" x2="14" y2="14.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,15.2 12.9,13.6 15.1,13.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="15.4" width="27.5" height="11.0" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="21.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">形状</text>
+      <text x="32" y="21.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">节点形状 · 属性形状 · target 圈人</text>
+      <text x="116.5" y="21.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">组件全表见 §04</text>
+      <line x1="14" y1="26.799999999999997" x2="14" y2="28.799999999999997" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,29.599999999999998 12.9,28.0 15.1,28.0" fill="#C9BFAC"/>
+      <rect x="0.25" y="29.8" width="27.5" height="11.0" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="36.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">校验</text>
+      <text x="32" y="36.3" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">组件约束 → 引擎比对 → 报告</text>
+      <text x="116.5" y="36.3" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">conforms + 违规列表</text>
+      <line x1="14" y1="41.199999999999996" x2="14" y2="43.199999999999996" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,44.0 12.9,42.4 15.1,42.4" fill="#C9BFAC"/>
+      <rect x="0.25" y="44.2" width="27.5" height="11.0" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="50.7" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">扩展与元层</text>
+      <text x="32" y="50.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">SPARQL 自定义约束 · SHACL 校验自身</text>
+      <text x="116.5" y="50.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">表达力兜底</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>两张图解耦:数据不动,换形状即换验收标准。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 组件与示例 → 报告 → 扩展 → 实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 给 RDF 数据上「合同」</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">开放世界的 RDF 缺一样东西:约束。Shapes Constraint Language(SHACL,读作「shackle」)用一份 RDF 写的「形状图」去校验另一份「数据图」,输出结构化报告——通过、警告、不通过,条条有据。</p>
+  <div class="def">
+    <span class="lbl">KEY POINT</span>
+    SHACL 1.0,<b>W3C Recommendation 2017-07-20</b>。语法就是 RDF(shapes graph 本身是合法 RDF 图);校验期间两份图都必须保持不可变。命名空间 <b><span class="code">sh:</span> = <span class="code">http://www.w3.org/ns/shacl#</span></b>。与 OWL 的分野一句话:<b>OWL 是推理,SHACL 是校验</b>——违反约束报错,而不是默默推出新类型。
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>SHACL 管 <span>VALIDATION</span></h4>
+      <ul>
+        <li>数据长什么样才合格:必填、类型、取值范围、基数</li>
+        <li>封闭世界检查:<span class="code">sh:closed</span> 说「除此之外不许有」</li>
+        <li>输出机器可读的验证报告</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>SHACL 不管 <span>OUT OF SCOPE</span></h4>
+      <ul>
+        <li>推断新事实(那是 RDFS/OWL 的活,PL.02/PL.04)</li>
+        <li>限定词表内容管理(那是 SKOS 的活,PL.03)</li>
+        <li>「为什么这么建模」——它只验收,不指导</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sub">校验时机 · 一份形状图,四处上岗</div>
+  <div class="chips">
+    <div class="chip hot"><span class="cn">入库前</span><span class="en">图库校验档拦截</span></div>
+    <div class="chip"><span class="cn">ETL 管道</span><span class="en">批次抽检出报告</span></div>
+    <div class="chip"><span class="cn">发布前</span><span class="en">CI 里跑 pySHACL</span></div>
+    <div class="chip"><span class="cn">API 网关</span><span class="en">写入请求即校验</span></div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">结构模型 · 节点形状与属性形状</span>
+    <span class="sec-sub">PART 1 · STRUCTURAL MODEL</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="88mm" height="46mm" viewBox="0 0 88 46">
+      <rect x="2" y="2" width="34" height="12" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="19" y="9.6" font-family="JetBrainsMono" font-size="3.0" fill="#F6F1E7" text-anchor="middle" font-weight="700">NodeShape 节点形状</text>
+      <text x="19" y="19.5" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">约束焦点节点本身</text>
+      <text x="19" y="23" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">无 sh:path</text>
+      <rect x="52" y="2" width="34" height="12" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="69" y="9.6" font-family="JetBrainsMono" font-size="3.0" fill="#1C2430" text-anchor="middle" font-weight="700">PropertyShape 属性形状</text>
+      <text x="69" y="19.5" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">恰好一个 sh:path</text>
+      <text x="69" y="23" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">约束沿路径够到的值节点</text>
+      <line x1="36" y1="8" x2="52" y2="8" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="44" y="6" font-family="JetBrainsMono" font-size="2.2" fill="#B23A26" text-anchor="middle" font-weight="700">sh:property</text>
+      <text x="44" y="12.5" font-family="JetBrainsMono" font-size="2.1" fill="#7d7466" text-anchor="middle">两类互斥</text>
+      <rect x="2" y="30" width="84" height="14" fill="none" stroke="#C9BFAC" stroke-width="0.3" stroke-dasharray="2 1.2"/>
+      <text x="44" y="35" font-family="JetBrainsMono" font-size="2.4" fill="#33506E" text-anchor="middle">目标四件套:targetNode · targetClass · targetSubjectsOf · targetObjectsOf</text>
+      <text x="44" y="41" font-family="JetBrainsMono" font-size="2.3" fill="#7d7466" text-anchor="middle">+ 隐式目标:形状同时是 rdfs:Class 时,自动瞄准该类的全部实例</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>焦点节点</b>(focus node)由目标选出;<b>值节点</b>(value nodes)是焦点节点沿 <span class="code">sh:path</span> 走到的节点。节点形状的值节点就是焦点节点自己。</div>
+      <div class="t-note">两类形状<b>互斥</b>:有 <span class="code">sh:path</span> 的就是属性形状,没有的就是节点形状——别混着用。</div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">path 不只是 IRI</span>
+    <span class="code">sh:path</span> 接受 SPARQL 属性路径:序列 <span class="code">(ex:parent ex:parent)</span>、反向 <span class="code">[ sh:inversePath ex:parent ]</span>、交替 <span class="code">sh:alternativePath</span>——校验祖孙、反向引用一行搞定。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 07 · P.&thinsp;1/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SHA<em>C</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 约束语言 · 规范速查</div>
+      <div class="title-en">SHACL — THE CORE COMPONENT CATALOG</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;07</div>
+    <div class="meta">W3C / SHACL / 2017</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">约束组件全表 · SHACL Core 的弹药库</span>
+    <span class="sec-sub">PART 2 · CORE COMPONENTS</span>
+  </div>
+  <table>
+    <tr><th>组</th><th>组件</th><th>一句话</th></tr>
+    <tr><td rowspan="3"><span class="k">值类型</span></td><td><span class="code">sh:class</span></td><td>值是某类的实例(RDFS 语义下连同继承)</td></tr>
+    <tr><td><span class="code">sh:datatype</span></td><td>值的数据类型(xsd:string、xsd:integer…)</td></tr>
+    <tr><td><span class="code">sh:nodeKind</span></td><td>值是 IRI / BlankNode / Literal / BlankNodeOrIRI…</td></tr>
+    <tr><td rowspan="2"><span class="k">基数</span></td><td><span class="code">sh:minCount / sh:maxCount</span></td><td>值节点个数下限/上限(仅属性形状)</td></tr>
+    <tr><td><span class="code">sh:qualifiedValueShape</span> + Min/MaxCount</td><td>满足某形状的值至少/至多几个(如「至少一个收件人」)</td></tr>
+    <tr><td rowspan="2"><span class="k">数值范围</span></td><td><span class="code">sh:minExclusive / minInclusive</span></td><td>下界(开/闭)</td></tr>
+    <tr><td><span class="code">sh:maxExclusive / maxInclusive</span></td><td>上界(开/闭)</td></tr>
+    <tr><td rowspan="4"><span class="k">字符串</span></td><td><span class="code">sh:minLength / maxLength</span></td><td>长度上下限</td></tr>
+    <tr><td><span class="code">sh:pattern</span> + <span class="code">sh:flags</span></td><td>正则(XPath 正则,flags 可加 i 大小写不敏感)</td></tr>
+    <tr><td><span class="code">sh:languageIn</span></td><td>语言标签白名单([ "zh", "en" ])</td></tr>
+    <tr><td><span class="code">sh:uniqueLang</span></td><td>同一语言标签至多一个值(true)</td></tr>
+    <tr><td rowspan="4"><span class="k">属性对</span></td><td><span class="code">sh:equals</span></td><td>与另一属性的值完全相同</td></tr>
+    <tr><td><span class="code">sh:disjoint</span></td><td>与另一属性无公共值</td></tr>
+    <tr><td><span class="code">sh:lessThan / lessThanOrEquals</span></td><td>本属性值严格小于(≤)另一属性值——startDate &lt; endDate</td></tr>
+  </table>
+  <table>
+    <tr><th>组</th><th>组件</th><th>一句话</th></tr>
+    <tr><td rowspan="4"><span class="k">逻辑组合</span></td><td><span class="code">sh:not [shape]</span></td><td>值节点不满足该形状</td></tr>
+    <tr><td><span class="code">sh:and / sh:or</span></td><td>形状列表全满足 / 至少一个</td></tr>
+    <tr><td><span class="code">sh:xone</span></td><td>恰好满足其一(异或)——「二选一必填」神器</td></tr>
+    <tr><td><span class="code">sh:hasValue</span></td><td>值里必须含某个特定值</td></tr>
+    <tr><td rowspan="2"><span class="k">形状引用</span></td><td><span class="code">sh:node [shape]</span></td><td>值节点整体满足另一节点形状(嵌套复用)</td></tr>
+    <tr><td><span class="code">sh:property</span></td><td>挂子属性形状</td></tr>
+    <tr><td rowspan="2"><span class="k">封闭</span></td><td><span class="code">sh:closed true</span></td><td>除声明过的属性外不许有其他谓语</td></tr>
+    <tr><td><span class="code">sh:ignoredProperties</span></td><td>closed 的豁免名单(rdf:type 常在此)</td></tr>
+    <tr><td><span class="k">枚举</span></td><td><span class="code">sh:in ( "低" "中" "高" )</span></td><td>值必须在列表内</td></tr>
+  </table>
+  <div class="sub">经典组合 · 三条最高频的形状</div>
+  <div class="codeblock"><span class="cm"># 1. 必填且唯一且是字符串</span>
+[ <span class="kw">sh:path</span> <span class="iri">foaf:name</span> ; <span class="kw">sh:datatype</span> <span class="iri">xsd:string</span> ;
+  <span class="kw">sh:minCount</span> <span class="kw">1</span> ; <span class="kw">sh:maxCount</span> <span class="kw">1</span> ]
+
+<span class="cm"># 2. 多语言名:每个标签至多一个,语言限定中英</span>
+[ <span class="kw">sh:path</span> <span class="iri">rdfs:label</span> ; <span class="kw">sh:uniqueLang</span> <span class="kw">true</span> ;
+  <span class="kw">sh:languageIn</span> ( <span class="iri">"zh"</span> <span class="iri">"en"</span> ) ]
+
+<span class="cm"># 3. 受控字段:枚举 + 模式</span>
+[ <span class="kw">sh:path</span> <span class="iri">:status</span> ; <span class="kw">sh:in</span> ( <span class="iri">"draft"</span> <span class="iri">"published"</span> <span class="iri">"retracted"</span> ) ]
+[ <span class="kw">sh:path</span> <span class="iri">:orcid</span> ; <span class="kw">sh:pattern</span> <span class="iri">"[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]"</span> ]</div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 07 · P.&thinsp;2/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SHA<em>C</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 约束语言 · 规范速查</div>
+      <div class="title-en">SHACL — A WORKED EXAMPLE &amp; THE REPORT</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;07</div>
+    <div class="meta">W3C / SHACL / 2017</div>
+  </div>
+</header>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">一份完整形状图 · Turtle</span>
+    <span class="sec-sub">PART 2 · A COMPLETE SHAPES GRAPH</span>
+  </div>
+  <div class="codeblock"><span class="kw">@prefix</span> <span class="iri">sh:</span> &lt;<span class="iri">http://www.w3.org/ns/shacl#</span>&gt; .
+<span class="kw">@prefix</span> <span class="iri">:</span>     &lt;<span class="iri">http://example.org/shapes#</span>&gt; .
+
+<span class="iri">:PersonShape</span> <span class="kw">a</span> <span class="iri">sh:NodeShape</span> ;
+    <span class="kw">sh:targetClass</span> <span class="iri">:Person</span> ;            <span class="cm"># 瞄准所有 Person 实例</span>
+    <span class="kw">sh:closed</span> <span class="kw">true</span> ;                    <span class="cm"># 未声明属性一律违规</span>
+    <span class="kw">sh:ignoredProperties</span> ( <span class="iri">rdf:type</span> ) ;
+    <span class="kw">sh:property</span> [                       <span class="cm"># 属性形状:内联匿名节点</span>
+        <span class="kw">sh:path</span> <span class="iri">foaf:name</span> ;
+        <span class="kw">sh:datatype</span> <span class="iri">xsd:string</span> ;
+        <span class="kw">sh:minCount</span> <span class="kw">1</span> ; <span class="kw">sh:maxCount</span> <span class="kw">1</span> ;
+        <span class="kw">sh:minLength</span> <span class="kw">1</span> ] ;
+    <span class="kw">sh:property</span> [
+        <span class="kw">sh:path</span> <span class="iri">:age</span> ;
+        <span class="kw">sh:datatype</span> <span class="iri">xsd:integer</span> ;
+        <span class="kw">sh:minInclusive</span> <span class="kw">0</span> ; <span class="kw">sh:maxInclusive</span> <span class="kw">150</span> ;
+        <span class="kw">sh:maxCount</span> <span class="kw">1</span> ] ;
+    <span class="kw">sh:property</span> [
+        <span class="kw">sh:path</span> <span class="iri">:knows</span> ;
+        <span class="kw">sh:class</span> <span class="iri">:Person</span> ] ;            <span class="cm"># 只能认识 Person</span>
+    <span class="kw">sh:xone</span> (                            <span class="cm"># 二选一:邮箱或电话至少一项</span>
+        [ <span class="kw">sh:property</span> [ <span class="kw">sh:path</span> <span class="iri">:email</span> ; <span class="kw">sh:minCount</span> <span class="kw">1</span> ] ]
+        [ <span class="kw">sh:property</span> [ <span class="kw">sh:path</span> <span class="iri">:phone</span> ; <span class="kw">sh:minCount</span> <span class="kw">1</span> ] ] ) .
+
+<span class="cm"># 数据图里 :alice 少了 name 且 age=200 → 两条 violation</span></div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">验证报告 · 机器可读的验收单</span>
+    <span class="sec-sub">PART 2 · VALIDATION REPORT</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 校验输出:一份报告图</span>
+[] <span class="kw">a</span> <span class="iri">sh:ValidationReport</span> ;
+    <span class="iri">sh:conforms</span> <span class="kw">false</span> ;                <span class="cm"># 总开关:有没有任何违规</span>
+    <span class="iri">sh:result</span> [
+        <span class="kw">a</span> <span class="iri">sh:ValidationResult</span> ;
+        <span class="iri">sh:focusNode</span> <span class="iri">:alice</span> ;           <span class="cm"># 谁违规</span>
+        <span class="iri">sh:resultPath</span> <span class="iri">foaf:name</span> ;       <span class="cm"># 哪条路径</span>
+        <span class="iri">sh:value</span> <span class="iri">"zh"^^xsd:integer</span> ;    <span class="cm"># 什么值</span>
+        <span class="iri">sh:resultSeverity</span> <span class="iri">sh:Violation</span> ; <span class="cm"># 多严重</span>
+        <span class="iri">sh:sourceConstraintComponent</span> <span class="iri">sh:DatatypeConstraintComponent</span> ;
+        <span class="iri">sh:sourceShape</span> <span class="iri">:PersonShape-name</span> ;
+        <span class="iri">sh:resultMessage</span> <span class="iri">"必须是字符串"</span> ] .</div>
+  <div class="chips">
+    <div class="chip hot"><span class="cn">Violation</span><span class="en">默认严重级</span></div>
+    <div class="chip"><span class="cn">Warning</span><span class="en">提醒不拦截</span></div>
+    <div class="chip"><span class="cn">Info</span><span class="en">纯提示</span></div>
+  </div>
+  <div class="sub">ValidationResult 字段 · 必选与可选</div>
+  <table>
+    <tr><th>必选</th><th>可选</th></tr>
+    <tr><td><span class="code">sh:focusNode</span> · <span class="code">sh:resultSeverity</span> · <span class="code">sh:sourceConstraintComponent</span></td>
+        <td><span class="code">sh:value</span> · <span class="code">sh:resultPath</span> · <span class="code">sh:sourceShape</span> · <span class="code">sh:resultMessage</span> · <span class="code">sh:detail</span>(嵌套结果)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">严重级可调</span>
+    约束上挂 <span class="code">sh:severity sh:Warning</span> 就把某条规则降级为警告——同一份形状图,入库校验用全 Violation,数据清洗用 Warning+Info 全开。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 07 · P.&thinsp;3/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SHA<em>C</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 约束语言 · 规范速查</div>
+      <div class="title-en">SHACL — SPARQL EXTENSION &amp; META-SHAPES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;07</div>
+    <div class="meta">W3C / SHACL / 2017</div>
+  </div>
+</header>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">SHACL-SPARQL · 表达力不够就写查询</span>
+    <span class="sec-sub">PART 3 · SHACL-SPARQL</span>
+  </div>
+  <p class="desc">Core 组件覆盖不到的约束,用 SPARQL 写。Core 实现必须忽略 <span class="code">sh:sparql</span>——用它就要认准带 SPARQL 引擎的校验器。</p>
+  <div class="codeblock"><span class="cm"># 自定义约束:国家必须出现在维基数据里(示意)</span>
+<span class="iri">ex:CountryShape</span> <span class="kw">a</span> <span class="iri">sh:NodeShape</span> ;
+    <span class="kw">sh:targetObjectsOf</span> <span class="iri">:inCountry</span> ;
+    <span class="kw">sh:sparql</span> [
+        <span class="kw">sh:message</span> <span class="iri">"国家需要 instance of (Q5) 声明"</span> ;
+        <span class="kw">sh:select</span> <span class="iri">"""
+            SELECT $this
+            WHERE { FILTER NOT EXISTS { $this wdt:P31 wd:Q3624078 } }
+        """</span> ] .
+
+<span class="cm"># 预绑定变量:$this = 焦点节点;路径约束另有 $path / $value</span></div>
+  <table>
+    <tr><th>扩展机制</th><th>说明</th></tr>
+    <tr><td><span class="k">SPARQL 约束</span></td><td><span class="code">sh:sparql</span> + SELECT(报违规)或 ASK(报通过)</td></tr>
+    <tr><td><span class="k">自定义组件</span></td><td><span class="code">sh:parameter</span> 声明参数 + <span class="code">sh:labelTemplate</span> + 验证器——造自己的「组件」给别人用</td></tr>
+    <tr><td><span class="k">SPARQL 目标</span></td><td><span class="code">sh:targetSPARQL</span>:用 SELECT 自己选焦点节点</td></tr>
+  </table>
+  <div class="sub">qualified 的经典用法 · 披萨规则</div>
+  <div class="codeblock"><span class="cm"># 一份披萨:至少一个非素菜配料(qualified 只数「满足形状」的值)</span>
+<span class="iri">:PizzaShape</span> <span class="kw">sh:property</span> [
+    <span class="kw">sh:path</span> <span class="iri">:hasTopping</span> ;
+    <span class="kw">sh:qualifiedValueShape</span> [
+        <span class="kw">sh:not</span> [ <span class="kw">sh:class</span> <span class="iri">:VegetarianTopping</span> ] ] ;
+    <span class="kw">sh:qualifiedMinCount</span> <span class="kw">1</span> ] .</div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">SHACL-SHACL · 用 SHACL 校验 SHACL</span>
+    <span class="sec-sub">PART 3 · SHACL-SHACL</span>
+  </div>
+  <p class="desc">规范附录自带一份「元形状」:校验你的形状图本身写得对不对——组件误用、类型乱挂都逃不掉。</p>
+  <div class="def">
+    <span class="lbl">实用结论</span>
+    上线前把形状图过一遍 SHACL-SHACL:<span class="code">sh:shapesGraphWellFormed</span> 为 true 才算语法健康。形状写错不是数据错,错误会更隐蔽——这一步别省。
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>形状图 <span>shapes graph</span></h4>
+      <ul>
+        <li>RDF 图,内容是形状与约束</li>
+        <li>校验期间不可变</li>
+        <li>可复用、可导入、可组合</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>数据图 <span>data graph</span></h4>
+      <ul>
+        <li>被校验的对象</li>
+        <li>校验期间不可变</li>
+        <li>与形状图可以是同一张图(不推荐混)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 07 · P.&thinsp;4/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 5 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SHA<em>C</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 约束语言 · 规范速查</div>
+      <div class="title-en">SHACL — PITFALLS &amp; TOOLING</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;07</div>
+    <div class="meta">W3C / SHACL / 2017</div>
+  </div>
+</header>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>sh:class 看的是 <b>rdf:type 的传递语义</b>(RDFS 下连同子类),sh:datatype 是严格词法比对——「看着像」不等于「校得过」。</li>
+    <li>字面量 "5" 与 5 不是一回事:数据类型没对上,<span class="code">sh:minInclusive</span> 直接违规——先统一数据类型再上形状。</li>
+    <li>节点形状与属性形状<b>互斥</b>:加了 sh:path 就变属性形状,minCount 只在属性形状里有效。</li>
+    <li>sh:closed 是按<b>谓语</b>封闭:路径里没声明的谓语一律违规——rdf:type 记得进 ignoredProperties。</li>
+    <li>递归形状(sh:node 自我引用形成环)的行为规范未定义——设计形状层级时避免循环引用。</li>
+    <li>sh:xone 是「恰好一个」,sh:or 是「至少一个」——「二选一必填」用 xone,用 or 会放过全选。</li>
+    <li>合格性是逐值判定的:一条约束违规生成一条 result,别指望报告里自动聚合。</li>
+    <li>校验期间图必须不可变:边校验边改数据的管线是未定义行为,先出报告再动数据。</li>
+    <li>OWL 公理不参与 SHACL 校验——想让 sh:class 认子类,校验器得开 RDFS 推理档,或显式补类型。</li>
+    <li>形状图与数据图分开存放:混在一张图里,校验目标会把形状也「验证」一遍。</li>
+  </ol>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">工具速览 · 校验从哪进</span>
+    <span class="sec-sub">PART 4 · TOOLING</span>
+  </div>
+  <table>
+    <tr><th>工具</th><th>路线</th></tr>
+    <tr><td><span class="k">pySHACL (Python)</span></td><td>rdflib 生态标配,Core + 尽量 SPARQL 扩展,CLI 友好</td></tr>
+    <tr><td><span class="k">TopBraid / Composer</span></td><td>SHACL 诞生地,编辑校验一体化</td></tr>
+    <tr><td><span class="k">Jena SHACL / RDFLib</span></td><td>Java 生态管线内嵌校验</td></tr>
+    <tr><td><span class="k">SHACL Playground</span></td><td>浏览器里在线试形状,教学演示利器</td></tr>
+    <tr><td><span class="k">GraphDB / Stardog</span></td><td>图库内置校验档位,入库前拦截</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">与 OWL 的组合拳</span>
+    常见管线:OWL 推理(补类型、消歧)→ SHACL 校验(拦垃圾)。两者按此顺序各司其职——顺序反了,推理会「修好」本该报错的违规。
+  </div>
+  <div class="sub">三个随抄随用的模板</div>
+  <div class="codeblock"><span class="cm"># 模板 A:封闭实体(配合 ignoredProperties 放行系统谓语)</span>
+<span class="iri">:BookShape</span> <span class="kw">sh:closed</span> <span class="kw">true</span> ; <span class="kw">sh:ignoredProperties</span> ( <span class="iri">rdf:type</span> <span class="iri">rdfs:label</span> ) .
+
+<span class="cm"># 模板 B:条件必填(不是书,就必须有 DOI)——xone 双分支惯用法</span>
+<span class="iri">:PubShape</span> <span class="kw">sh:xone</span> (
+    [ <span class="kw">sh:property</span> [ <span class="kw">sh:path</span> <span class="iri">rdf:type</span> ; <span class="kw">sh:hasValue</span> <span class="iri">:Book</span> ] ]
+    [ <span class="kw">sh:property</span> [ <span class="kw">sh:path</span> <span class="iri">:doi</span> ; <span class="kw">sh:minCount</span> <span class="kw">1</span> ] ] )
+
+<span class="cm"># 模板 C:引用完整性(关系值整体过另一形状)</span>
+<span class="kw">sh:property</span> [ <span class="kw">sh:path</span> <span class="iri">:author</span> ; <span class="kw">sh:node</span> <span class="iri">:PersonShape</span> ] .</div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 07 · P.&thinsp;5/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

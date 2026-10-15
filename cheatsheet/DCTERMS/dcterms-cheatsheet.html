@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">D<em>C</em></div>
+    <div class="title-block">
+      <div class="title-cn">都柏林核心词表 · 规范速查</div>
+      <div class="title-en">DCTERMS — RESOURCE METADATA, THE FACT STANDARD</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;14</div>
+    <div class="meta">DCMI / DC TERMS / 2020</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 描述资源的通用身份证</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">DCTERMS(Dublin Core Metadata Terms)是描述资源元数据的事实标准:文献、数据集、档案,「这东西叫什么、谁做的、何时发布、许可是什么」。命名空间 <span class="code">dcterms:</span> = <span class="code">http://purl.org/dc/terms/</span>。三层结构:</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">15 个老元素</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">title / creator / date / subject…</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">1995 起家</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">细化词</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">issued ⊑ date · hasPart ⊑ relation…</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">写细粗查</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">类与编码</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Agent · LicenseDocument · W3CDTF</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">取值的框</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">生态</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">DCAT 数据集目录 · PROV 溯源</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">事实标准</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>几乎每个细化词都是老元素的 subPropertyOf——写细词,粗粒度查询自动命中,两端都省心。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 三层词表 → 实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · DCMI 的三层词表</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">现行为 DCMI Recommendation(2020-01-20),同时是 ISO 15836-1/-2。RDF 词表分布在四个命名空间,引用时认清:</p>
+  <table>
+    <tr><th>命名空间</th><th>装什么</th></tr>
+    <tr class="hl"><td><span class="code">purl.org/dc/terms/</span>(dcterms:)</td><td>主力:全部 15 老元素(2008 年镜像进来)+ 全部细化词 + 类与编码方案</td></tr>
+    <tr><td><span class="code">purl.org/dc/elements/1.1/</span>(dc11:)</td><td>1990 年代末的 15 个老 URI,与新命名空间并存——别再新增引用</td></tr>
+    <tr><td><span class="code">purl.org/dc/dcmitype/</span></td><td>DCMI Type 词表:Collection、Dataset、Event、Image、Text…(资源的体裁分类)</td></tr>
+    <tr><td><span class="code">purl.org/dc/dcam/</span></td><td>DCAM 抽象模型词汇(描述词表本身的词)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">老元素身世</span>
+    1995 年俄亥俄州都柏林定了 15 个元素;2000 年开 /elements/1.1/ 命名空间;2008 年整套镜像进 /terms/——如今 dcterms:title 与 dc11:title 同义,新数据一律用 dcterms:。
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">15 个老元素 · 分三组记</span>
+    <span class="sec-sub">PART 2 · THE CLASSIC FIFTEEN</span>
+  </div>
+  <p class="desc">经典记法按「回答哪个问题」分三组:</p>
+  <table>
+    <tr><th>组</th><th>元素</th><th>回答什么</th></tr>
+    <tr><td><span class="k">内容</span></td><td><span class="code">title · subject · description · type · source · relation · coverage</span></td><td>它是什么、讲什么、和谁有关</td></tr>
+    <tr><td><span class="k">知识产权</span></td><td><span class="code">creator · publisher · contributor · rights</span></td><td>谁写的、谁发的、谁出了力、权限归谁</td></tr>
+    <tr><td><span class="k">实例</span></td><td><span class="code">date · format · identifier · language</span></td><td>何时、什么形态、如何找到</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT</span>
+    组别只是记忆术——15 个元素都是<b>平铺的属性</b>,没有形式化的分组公理;分组帮人选词,不帮机器推理。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 14 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">D<em>C</em></div>
+    <div class="title-block">
+      <div class="title-cn">都柏林核心词表 · 规范速查</div>
+      <div class="title-en">DCTERMS — REFINEMENTS, CLASSES &amp; ENCODINGS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;14</div>
+    <div class="meta">DCMI / DC TERMS / 2020</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">细化词 · 全是 subPropertyOf</span>
+    <span class="sec-sub">PART 2 · REFINEMENTS LAYER</span>
+  </div>
+  <p class="desc">细化词(refinements)让「宽词可选、细词可用」:每个细化词都是某个老元素的 subPropertyOf——写 <span class="code">dcterms:issued</span>,查 <span class="code">dcterms:date</span> 的人照样命中。</p>
+  <table>
+    <tr><th>挂靠</th><th>细化词(→ 都是左列的子属性)</th></tr>
+    <tr class="hl"><td><span class="k">date</span></td><td>issued · created · modified · valid · available · dateAccepted · dateCopyrighted · dateSubmitted</td></tr>
+    <tr><td><span class="k">relation</span></td><td>hasPart / isPartOf · hasVersion / isVersionOf · hasFormat / isFormatOf · references / isReferencedBy · replaces / isReplacedBy · requires / isRequiredBy · conformsTo</td></tr>
+    <tr><td><span class="k">coverage</span></td><td>spatial(空间覆盖)· temporal(时间覆盖)</td></tr>
+    <tr><td><span class="k">description</span></td><td>abstract(摘要)· tableOfContents(目录)</td></tr>
+    <tr><td><span class="k">title / identifier / format / rights / audience</span></td><td>alternative(副题)· bibliographicCitation(引文格式)· extent / medium(篇幅 / 载体)· accessRights / license(许可)· educationLevel / mediator(受众细化)</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">INVERSES · 逆对成对记</span>
+    relation 家族的细化词几乎都成对:hasPart ↔ isPartOf、replaces ↔ isReplacedBy、requires ↔ isRequiredBy、references ↔ isReferencedBy、hasVersion ↔ isVersionOf、hasFormat ↔ isFormatOf。方向写反,含义就反——发布端选「从我这看出去」的方向,查询端两条都试。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">类与编码方案 · 取值的框</span>
+    <span class="sec-sub">PART 2 · CLASSES &amp; ENCODING SCHEMES</span>
+  </div>
+  <p class="desc">细化词的取值可以用类约束、用编码方案定格:</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>常用类 <span>dcterms: 里的</span></h4>
+      <ul>
+        <li>Agent · AgentClass —— creator / contributor / publisher 的取值身份</li>
+        <li>LicenseDocument · RightsStatement —— license / rights 的取值</li>
+        <li>PeriodOfTime · Location · Jurisdiction —— temporal / spatial 的取值</li>
+        <li>ProvenanceStatement · Standard · Frequency · LinguisticSystem</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>编码方案 <span>声明「值按什么规范写」</span></h4>
+      <ul>
+        <li><b>W3CDTF</b>:ISO 8601 子集——「2026-10-15」「2026-10」「2026」皆合法,范围用「/」(端点可空)</li>
+        <li>ISO639-2 / RFC5646 —— 语言</li>
+        <li>URI / Point / Box / Period —— 标识与空间</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">取值形态</span>
+    同一属性可挂字面量或资源:creator 既可写字符串字面量,也可指向一个 foaf:Person / dcterms:Agent——要可点、可合、可溯源,就写资源。
+  </div>
+  <div class="sub">常用词 → 取值速查</div>
+  <table>
+    <tr><th>属性</th><th>取值写法</th><th>配的类 / 方案</th></tr>
+    <tr><td><span class="code">dcterms:creator / contributor</span></td><td>资源 URI(人或机构)</td><td>dcterms:Agent,可与 foaf:Person 对接</td></tr>
+    <tr><td><span class="code">dcterms:issued / modified</span></td><td>"2026-10-15" 字面量</td><td>W3CDTF(ISO 8601 子集)</td></tr>
+    <tr><td><span class="code">dcterms:license</span></td><td>许可文档 URI</td><td>dcterms:LicenseDocument(CC 等)</td></tr>
+    <tr><td><span class="code">dcterms:temporal</span></td><td>资源 URI(时间段)</td><td>dcterms:PeriodOfTime,起止配 time: 类</td></tr>
+    <tr><td><span class="code">dcterms:spatial</span></td><td>资源 URI(地点 / 辖区)</td><td>dcterms:Location / Jurisdiction</td></tr>
+    <tr><td><span class="code">dcterms:subject</span></td><td>受控词表 URI</td><td>LCSH / MeSH 等,别写自由文本</td></tr>
+    <tr><td><span class="code">dcterms:type</span></td><td>体裁 URI</td><td>dcmitype: Dataset / Text / Image…</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 14 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">D<em>C</em></div>
+    <div class="title-block">
+      <div class="title-cn">都柏林核心词表 · 规范速查</div>
+      <div class="title-en">DCTERMS — A WORKED RECORD, ECOSYSTEM &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;14</div>
+    <div class="meta">DCMI / DC TERMS / 2020</div>
+  </div>
+</header>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">一份文献记录 · Turtle</span>
+    <span class="sec-sub">PART 3 · A WORKED RECORD</span>
+  </div>
+  <div class="codeblock"><span class="iri">ex:report-2026</span> <span class="kw">a</span> &lt;http://purl.org/dc/dcmitype/Text&gt; ;
+    dcterms:title   <span class="iri">"2026 年度知识图谱基础设施报告"</span> ;
+    dcterms:alternative <span class="iri">"KG Infra Annual Report"</span> ;
+    dcterms:creator  ex:zx ;                    <span class="cm"># 指向 Agent,别只写字符串</span>
+    dcterms:publisher ex:press ;
+    dcterms:issued   <span class="iri">"2026-10-15"</span> ;            <span class="cm"># ⊑ date,按 W3CDTF 写</span>
+    dcterms:subject  &lt;https://id.nlm.nih.gov/mesh/D000001&gt; ;
+    dcterms:language &lt;http://id.loc.gov/vocabulary/iso639-2/zho&gt; ;
+    dcterms:isPartOf ex:reports-series ;        <span class="cm"># ⊑ relation</span>
+    dcterms:license  &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;  <span class="cm"># ⊑ rights</span>
+    dcterms:abstract <span class="iri">"全文摘要……"</span> .</div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">生态 · 谁在跟它配合</span>
+    <span class="sec-sub">PART 3 · ECOSYSTEM</span>
+  </div>
+  <table>
+    <tr><th>场景</th><th>怎么配合</th></tr>
+    <tr class="hl"><td><span class="k">DCAT 数据集目录</span></td><td>数据集的 title / publisher / issued / license / temporal 全套借用 dcterms——DCAT 管目录骨架,元数据槽位基本是 DCTERMS</td></tr>
+    <tr><td><span class="k">PROV-O 溯源</span></td><td>dcterms:creator / provenance 给顶层索引,细粒度生成链交给 prov:Entity / Activity——两套互不替代</td></tr>
+    <tr><td><span class="k">Web 存档与图书馆</span></td><td>OAI-PMH 收获、机构库存档、数码馆藏——老元素 15 项就是为它们设计的</td></tr>
+    <tr><td><span class="k">schema.org 对接</span></td><td>schema:name / schema:datePublished 等与 dcterms 大范围对齐——两套之间映射成本低</td></tr>
+  </table>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>新数据一律 dcterms:</b>dc11: 老 URI 与 dcterms: 同义并存,但混引会让「同一属性两个名字」污染查询;存量数据迁移时做一次映射。</li>
+    <li><b>细化词写细不写粗:</b>发布日期写 issued 而非 date——子属性语义更准,粗查询又不丢。</li>
+    <li><b>relation 方向别写反:</b>章节写 isPartOf 系列(指向整体);整书写 hasPart 系列(指向章节)——六个逆对全按「从我这看出去」选。</li>
+    <li><b>date 家族按 W3CDTF 写:</b>「2026」「2026-10」这种部分精度合法,别自己发明格式;范围用「2020/2024」。</li>
+    <li><b>creator ≠ publisher ≠ contributor:</b>创作、出版、贡献力量三选一,混写会让署名与引文系统归错人。</li>
+    <li><b>license ⊑ rights:</b>有具体许可写 license;accessRights 管访问权限(如「仅内网」),两者不是一回事。</li>
+    <li><b>coverage 拆空间与时间:</b>分别用 spatial / temporal,取值配 Location 或 PeriodOfTime,别把日期塞进 coverage。</li>
+    <li><b>体裁用 dcmitype:</b>「这是数据集还是文本」写 dcmitype:Dataset / Text,与 dcterms:type 配合使用。</li>
+    <li><b>source 与 references 别混:</b>source 表「衍生自什么」(同时 ⊑ dc11:source 与 relation),references 表「引用了哪篇」——语义不同,选错方向元数据就失真。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 14 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

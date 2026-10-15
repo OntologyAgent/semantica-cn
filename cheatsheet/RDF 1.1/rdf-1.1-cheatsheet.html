@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 7 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.1 · 规范速查</div>
+      <div class="title-en">RDF 1.1 — OVERVIEW · MODEL &amp; FAMILY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;01</div>
+    <div class="meta">W3C / RDF 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 一套模型,四层结构</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">RDF 1.1 = 一套数据模型 + 一组序列化语法 + 一层形式语义。先看四层怎么咬合,再逐个拆零件——从最简单的名字(IRI)开始,到图,到推理。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="56mm" viewBox="0 0 118 56">
+      <rect x="0.25" y="1" width="27.5" height="11" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="8.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">词汇 · 点</text>
+      <text x="32" y="8.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">IRI 名字 · 字面量 值 · bnode 无名</text>
+      <text x="116.5" y="8.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">谓语只许 IRI</text>
+      <line x1="14" y1="12.4" x2="14" y2="14.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,15.2 12.9,13.6 15.1,13.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="15" width="27.5" height="11" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="22.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">模型 · 图</text>
+      <text x="32" y="22.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">triple → graph → dataset</text>
+      <text x="116.5" y="22.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">集合 · 去重 · 无序</text>
+      <line x1="14" y1="26.4" x2="14" y2="28.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,29.2 12.9,27.6 15.1,27.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="29" width="27.5" height="11" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="36.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">语法 · 文件</text>
+      <text x="32" y="36.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Turtle·N-Triples·TriG·N-Quads·RDF/XML·JSON-LD</text>
+      <text x="116.5" y="36.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">糖只在这层</text>
+      <line x1="14" y1="40.4" x2="14" y2="42.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,43.2 12.9,41.6 15.1,41.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="43" width="27.5" height="11" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="50.3" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">语义 · 推理</text>
+      <text x="32" y="50.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">简单 → RDF → RDFS → OWL(PL.04)</text>
+      <text x="116.5" y="50.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">机械规则 · 无 LLM</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>文件层允许糖——相对 IRI、前缀缩写、<span class="code">a</span>;解析后图层只剩全名。</div>
+      <div class="t-note">四层各有一份规范负责:concepts 管模型与词汇,语法文档各管写法,Semantics 管推理。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 词汇 → 图与语义 → 语法 → 实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 文档家族与三件大事</span>
+    <span class="sec-sub">PART 1 · THE RDF 1.1 FAMILY</span>
+  </div>
+  <p class="desc">RDF 是万维网上的最小数据模型:一切皆三元组。1.1 版把原本分散的文档族整成一套同日发布的推荐标准——模型只有一份(concepts),语法各管一摊,彼此可互转。</p>
+  <table>
+    <tr><th>文档</th><th>管什么</th><th>状态</th></tr>
+    <tr class="hl"><td><span class="k">Concepts &amp; Abstract Syntax</span></td><td>数据模型:三元组、图、术语、数据集</td><td>核心规范</td></tr>
+    <tr><td><span class="k">Turtle</span></td><td>人读写的文本语法</td><td>REC · text/turtle</td></tr>
+    <tr><td><span class="k">N-Triples</span></td><td>逐行三元组,机器友好</td><td>REC · application/n-triples</td></tr>
+    <tr><td><span class="k">TriG</span></td><td>Turtle 的数据集扩展(带命名图)</td><td>REC · application/trig</td></tr>
+    <tr><td><span class="k">N-Quads</span></td><td>N-Triples + 图名,一行四元组</td><td>REC · application/n-quads</td></tr>
+    <tr><td><span class="k">XML Syntax</span></td><td>XML 交换语法</td><td>REC · application/rdf+xml</td></tr>
+    <tr><td><span class="k">Semantics</span></td><td>模型论语义与推理规则</td><td>REC</td></tr>
+    <tr><td><span class="k">RDF Schema 1.1</span></td><td>类与属性的词汇(rdfs:,见 PL.02)</td><td>REC</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT</span>
+    全家族于 <b>2014-02-25</b> 同日成为 W3C Recommendation。1.1 相对 1.0 的三件大事:<b>UTF-8 一统天下</b>(不再 ASCII/latin1);<b>Turtle、N-Triples 升为正式推荐标准</b>;<b>数据集(多图)写进核心规范</b>。所有文档共用一个抽象语法,互转无损。
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">数据模型 · 三元组与图</span>
+    <span class="sec-sub">PART 2 · ABSTRACT SYNTAX</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="96mm" height="36mm" viewBox="0 0 96 36">
+      <text x="48" y="5" font-family="JetBrainsMono" font-size="2.5" fill="#7d7466" text-anchor="middle">triple = (s, p, o) · graph = 三元组的集合</text>
+      <rect x="2" y="14" width="20" height="10" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="12" y="20.4" font-family="JetBrainsMono" font-size="3.4" fill="#F6F1E7" text-anchor="middle" font-weight="700">subject</text>
+      <rect x="38" y="14" width="22" height="10" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="49" y="20.4" font-family="JetBrainsMono" font-size="3.4" fill="#1C2430" text-anchor="middle" font-weight="700">predicate</text>
+      <rect x="76" y="14" width="18" height="10" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="85" y="20.4" font-family="JetBrainsMono" font-size="3.4" fill="#1C2430" text-anchor="middle" font-weight="700">object</text>
+      <line x1="22" y1="19" x2="37" y2="19" stroke="#1C2430" stroke-width="0.5"/>
+      <polygon points="37,19 33.8,17.7 33.8,20.3" fill="#1C2430"/>
+      <line x1="60" y1="19" x2="75" y2="19" stroke="#1C2430" stroke-width="0.5"/>
+      <polygon points="75,19 71.8,17.7 71.8,20.3" fill="#1C2430"/>
+      <text x="12" y="32" font-family="JetBrainsMono" font-size="2.3" fill="#B23A26" text-anchor="middle" font-weight="700">IRI ∨ bnode</text>
+      <text x="49" y="32" font-family="JetBrainsMono" font-size="2.3" fill="#B23A26" text-anchor="middle" font-weight="700">IRI(仅此一种)</text>
+      <text x="85" y="32" font-family="JetBrainsMono" font-size="2.2" fill="#B23A26" text-anchor="middle" font-weight="700">IRI·literal·bnode</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">三个位置各有准入门槛:谓语位置<b>只允许 IRI</b>。IRI、字面量、空白节点统称 RDF 术语(RDF terms),规范明说它们「彼此不同且可区分」。</div>
+      <div class="t-note">图是<b>集合</b>不是列表——重复三元组自动去重;图的真值只取决于它包含哪些三元组,与书写顺序无关。</div>
+      <div class="t-note">一条三元组就是一个「句子」;一张图是一袋句子。图与图之间没有主从,只有包含(A 的图可以是 B 的子图)。</div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">WHY TRIPLES</span>
+    三元组是最小的「句子」:主-谓-宾。任何复杂结构都能拆成一袋句子——这条约束换来了无限的可拼接性:谁的图里都能引用谁的 IRI,不需要 schema 协商,不需要改表。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 01 · P.&thinsp;1/7</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 7 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.1 · 规范速查</div>
+      <div class="title-en">RDF 1.1 — TERMS: IRI, BNODE, LITERAL</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;01</div>
+    <div class="meta">W3C / RDF 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">词汇三兄弟 · IRI / 字面量 / 空白节点</span>
+    <span class="sec-sub">PART 2 · RDF TERMS</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>IRI <span>国际化资源标识符</span></h4>
+      <ul>
+        <li><b>长相</b>:一段像网址的字符串,如 <span class="code">&lt;http://xmlns.com/foaf/0.1/Person&gt;</span>、<span class="code">&lt;urn:isbn:0451450523&gt;</span>。它是<b>名字</b>,不是地址——所指的东西可以根本不在网上。</li>
+        <li><b>必须绝对</b>(指抽象语法,即入库后图里的形态)=自带全名:写 <span class="code">&lt;https://ex.com/onto/Company&gt;</span>,不写 <span class="code">onto/Company</span>。图要搬运、合并,名字到哪儿都得指同一个东西。</li>
+        <li>相对 IRI 只是<b>具体语法的糖</b>(Turtle 等文件格式):<span class="code">&lt;onto/Company&gt;</span> 依 <span class="code">@base</span> 拼接成全名才入库——同 HTML 的 <span class="code">&lt;img src="logo.png"&gt;</span>,写短名,工具补全。</li>
+        <li>相等 = 简单字符串比较,<b>禁止额外规范化</b>(坑见下)。</li>
+        <li>fragment(<span class="code">#Concept</span>)= 文档内的词条名:<span class="code">…/skos/core#Concept</span> 即「SKOS 词表里的 Concept 词条」,像楼址+门牌;带不带 fragment,是两个不同的 IRI。</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>空白节点 <span>blank node</span></h4>
+      <ul>
+        <li>没有全局身份的节点,<b>只为「存在」而存在</b></li>
+        <li>标签(_:b1)是文档局部作用域,<b>不持久、不可移植</b>,不属于抽象语法</li>
+        <li>两张图是否「同一张」看同构:存在双射把 bnode 对 bnode、IRI 和字面量原样对齐</li>
+        <li>要跨文档引用?Skolem 化:把 bnode 换成专属 IRI</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">IRI 相等的坑</span>
+    比较只做字符级对照——大小写差异、多余百分号编码、<span class="code">:80</span>、<span class="code">/./</span>、<span class="code">/../</span>、Punycode 主机名,统统算<b>不同的 IRI</b>。互操作建议:小写 scheme/主机、去掉无谓编码、路径规范化、NFC。
+  </div>
+  <div class="note">
+    <span class="tag">术语怎么选</span>
+    能指认的事物(现实或抽象)→ <b>IRI</b>;不关心身份、只关心「有这么个东西」→ <b>bnode</b>;写进句子的值 → <b>字面量</b>。谓语永远是 IRI——谓语本身就是需要被定义、被复用的词汇,这也是词表(vocabulary)存在的意义。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">字面量 · 三成分与两种相等</span>
+    <span class="sec-sub">PART 2 · LITERALS</span>
+  </div>
+  <p class="desc">字面量 = (词法形式, 数据类型 IRI, 语言标签?)。语言标签只允许配 <span class="code">rdf:langString</span> 一个类型,且必须非空、符合 BCP 47。</p>
+  <table>
+    <tr><th>形态</th><th>构成</th><th>示例</th></tr>
+    <tr><td><span class="k">简单字面量</span></td><td>无标签无类型的糖,<b>就是 xsd:string</b></td><td><span class="code">"abc"</span></td></tr>
+    <tr><td><span class="k">语言标注串</span></td><td>语言标签 + rdf:langString</td><td><span class="code">"猫"@zh-CN</span></td></tr>
+    <tr><td><span class="k">类型化字面量</span></td><td>datatype IRI 指定值空间</td><td><span class="code">"42"^^xsd:integer</span></td></tr>
+    <tr><td><span class="k">病态类型</span></td><td>词法不在类型的词法空间内——<b>语法合法,语义不一致</b>,实现必须接受</td><td><span class="code">"abc"^^xsd:integer</span></td></tr>
+    <tr><td><span class="k">非规范类型</span></td><td>rdf:HTML / rdf:XMLLiteral:值是解析后的 DOM 片段,不保证所有实现认</td><td><span class="code">"&lt;b&gt;x&lt;/b&gt;"^^rdf:HTML</span></td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">TERM EQUALITY vs VALUE EQUALITY</span>
+    词项相等:三成分<b>逐字符一致</b>——<span class="code">"1"^^xsd:integer</span> 与 <span class="code">"01"^^xsd:integer</span> 词项不同,值相同。值相等:经「词法→值」映射后落在值空间同一点。查询里的 FILTER 用值比较,去重合并用词项比较——混用是经典 bug 源。
+  </div>
+  <div class="sub">同一个字面量 · 三种语法的写法</div>
+  <table>
+    <tr><th>抽象字面量</th><th>Turtle</th><th>N-Triples</th><th>JSON-LD</th></tr>
+    <tr><td>简单串</td><td><span class="code">"abc"</span></td><td><span class="code">"abc"</span></td><td><span class="code">"abc"</span></td></tr>
+    <tr><td>语言标注串</td><td><span class="code">"猫"@zh-CN</span></td><td><span class="code">"猫"@zh-CN</span></td><td><span class="code">{"@value":"猫","@language":"zh-CN"}</span></td></tr>
+    <tr><td>类型化</td><td><span class="code">42</span>(缩写)</td><td><span class="code">"42"^^&lt;xsd#integer&gt;</span>(全 IRI)</td><td><span class="code">42</span>(数字自动映射)</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 02 · P.&thinsp;2/7</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 7 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.1 · 规范速查</div>
+      <div class="title-en">RDF 1.1 — GRAPH, DATASET &amp; SEMANTICS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;01</div>
+    <div class="meta">W3C / RDF 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">XSD 数据类型 · 字面量背后的值空间</span>
+    <span class="sec-sub">PART 2 · XSD DATATYPES</span>
+  </div>
+  <table>
+    <tr><th>类型</th><th>词法示例</th><th>备注</th></tr>
+    <tr><td><span class="code">xsd:string</span></td><td><span class="code">"abc"</span></td><td>1.1 起简单字面量即此类型</td></tr>
+    <tr><td><span class="code">xsd:boolean</span></td><td><span class="code">true / false / 1 / 0</span></td><td>Turtle 缩写只认 true/false</td></tr>
+    <tr><td><span class="code">xsd:integer</span></td><td><span class="code">-5</span></td><td>下有 int/long/short/byte 整数阶梯</td></tr>
+    <tr><td><span class="code">xsd:decimal / xsd:double</span></td><td><span class="code">-5.0 / 4.2E9</span></td><td>精确十进制 / IEEE 双精度浮点</td></tr>
+    <tr><td><span class="code">xsd:date / xsd:time</span></td><td><span class="code">2026-10-15 / 09:30:00</span></td><td>可带时区 Z 或 ±hh:mm</td></tr>
+    <tr><td><span class="code">xsd:dateTime</span></td><td><span class="code">2026-10-15T09:30:00+08:00</span></td><td>溯源/事件时间的事实标准</td></tr>
+    <tr><td><span class="code">xsd:duration</span></td><td><span class="code">P1Y2MT3H</span></td><td>ISO 8601 时长</td></tr>
+    <tr><td><span class="code">xsd:anyURI / xsd:QName</span></td><td><span class="code">http://… / ex:name</span></td><td>标识符类</td></tr>
+    <tr><td><span class="code">xsd:hexBinary / xsd:base64Binary</span></td><td><span class="code">0A3F / aGVsbG8=</span></td><td>二进制承载</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">谁负责解释</span>
+    XSD 类型本体由 XML Schema 定义,RDF 只借用其词法/值空间。数据类型 IRI 是开放集:任何人都能定义新 datatype,不认识它的实现按<b>病态处理但照常存储</b>——类型未知不等于数据非法。
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">数据集 · 默认图与命名图</span>
+    <span class="sec-sub">PART 2 · GRAPH & DATASET</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="80mm" height="42mm" viewBox="0 0 80 42">
+      <rect x="2" y="2" width="76" height="38" fill="none" stroke="#C9BFAC" stroke-width="0.3" stroke-dasharray="2 1.2"/>
+      <text x="4" y="6.2" font-family="JetBrainsMono" font-size="2.5" fill="#7d7466">RDF dataset</text>
+      <rect x="5" y="9" width="32" height="27" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="21" y="14" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle" font-weight="700">default graph</text>
+      <text x="21" y="20" font-family="JetBrainsMono" font-size="2.2" fill="#3a4351" text-anchor="middle">唯一 · 无名</text>
+      <text x="21" y="24.5" font-family="JetBrainsMono" font-size="2.2" fill="#3a4351" text-anchor="middle">允许为空</text>
+      <text x="21" y="31" font-family="JetBrainsMono" font-size="2.2" fill="#B23A26" text-anchor="middle" font-weight="700">SPARQL 查询的起点</text>
+      <rect x="44" y="9" width="31" height="12" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="59.5" y="14" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">:g1 → graph</text>
+      <text x="59.5" y="18.6" font-family="JetBrainsMono" font-size="2.1" fill="#F6F1E7" text-anchor="middle">name · graph 二元组</text>
+      <rect x="44" y="24" width="31" height="12" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="59.5" y="29" font-family="JetBrainsMono" font-size="2.6" fill="#1C2430" text-anchor="middle" font-weight="700">:g2 → graph</text>
+      <text x="59.5" y="33.6" font-family="JetBrainsMono" font-size="2.1" fill="#3a4351" text-anchor="middle">名字可以是 IRI 或 bnode</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">数据集 = 恰一个<b>默认图</b>(可空)+ 若干「(图名, 图)」对。三元组自己不分家,分家靠装进哪个图。</div>
+      <div class="t-note">空白节点可以<b>横跨多张图</b>共享;图名「不要求指称那张图」——配对是语法行为,不是语义命名。</div>
+      <div class="t-note">给查询引擎喂数据集时若它只收单图,默认取<b>默认图</b>;SPARQL 1.1 的 GRAPH 关键字在命名图之间切换。</div>
+    </div>
+  </div>
+  <div class="note warn">
+    <span class="tag">规范 vs SPARQL</span>
+    本规范允许空白节点当图名;SPARQL 1.1 只认 IRI。跨系统交换带 bnode 图名的数据集,先 <b>Skolem 化</b>。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">语义一瞥 · 相等、蕴含与病态</span>
+    <span class="sec-sub">PART 2 · SEMANTICS GLANCE</span>
+  </div>
+  <table>
+    <tr><th>概念</th><th>一句话</th></tr>
+    <tr><td><span class="k">图同构</span></td><td>存在双射:bnode↔bnode,IRI 与字面量原样对齐,三元组一一对应——这是「同一张图」的判据</td></tr>
+    <tr><td><span class="k">简单蕴含</span></td><td>G 蕴含 H ≈ H 的某同构是 G 的子图——最弱的推理,不需要任何 schema 知识</td></tr>
+    <tr><td><span class="k">RDF 蕴含</span></td><td>加上 rdf:_n↔rdfs:member 等少量公理后的推理(细则在 Semantics 文档)</td></tr>
+    <tr><td><span class="k">RDFS 蕴含</span></td><td>类/属性层级、domain/range 全部生效(见 PL.02 的推理规则)</td></tr>
+    <tr><td><span class="k">病态字面量</span></td><td>词法不在类型的词法空间:图合法、语义不一致;实现<b>必须</b>照单全收,不许悄悄改写</td></tr>
+    <tr><td><span class="k">图合并</span></td><td>多图并成一张 = 三元组集合并集;同名 bnode 在合并后视为同一节点——合并前想清楚 bnode 归属</td></tr>
+    <tr><td><span class="k">数据集的语义</span></td><td>规范<b>刻意不定义</b>命名图的形式语义(只给了语法);理论讨论见 WG Note《On Semantics of RDF Datasets》</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 03 · P.&thinsp;3/7</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 7 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.1 · 规范速查</div>
+      <div class="title-en">RDF 1.1 — SYNTAXES · TURTLE</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;01</div>
+    <div class="meta">W3C / RDF 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">Turtle · 语法要素全表</span>
+    <span class="sec-sub">PART 3 · TURTLE SYNTAX</span>
+  </div>
+  <table>
+    <tr><th>语法</th><th>写法</th><th>作用</th></tr>
+    <tr><td><span class="k">前缀声明</span></td><td><span class="code">@prefix ex: &lt;…&gt; .</span> / <span class="code">PREFIX ex: &lt;…&gt;</span></td><td>两种写法等价;带 @ 的区分大小写且结尾必须有点</td></tr>
+    <tr><td><span class="k">基 IRI</span></td><td><span class="code">@base &lt;…&gt; .</span> / <span class="code">BASE &lt;…&gt;</span></td><td>相对 IRI 的解析基准,可被覆盖</td></tr>
+    <tr><td><span class="k">谓语列表</span></td><td><span class="code">;</span></td><td>主语不变,连写多组「谓语 宾语」</td></tr>
+    <tr><td><span class="k">宾语列表</span></td><td><span class="code">,</span></td><td>主谓不变,连写多个宾语</td></tr>
+    <tr><td><span class="k">类型关键词</span></td><td><span class="code">a</span></td><td>谓语位置上 = rdf:type</td></tr>
+    <tr><td><span class="k">匿名空白节点</span></td><td><span class="code">[ foaf:name "Bob" ]</span></td><td>方括号内直接挂属性,节点本身不命名</td></tr>
+    <tr><td><span class="k">具名空白节点</span></td><td><span class="code">_:alice</span></td><td>文档内标签,跨文档无意义</td></tr>
+    <tr><td><span class="k">集合</span></td><td><span class="code">( "a" "b" )</span> · 空集 <span class="code">()</span></td><td>糖:展开成 rdf:first/rest 链,空集是 rdf:nil</td></tr>
+    <tr><td><span class="k">数值缩写</span></td><td><span class="code">-5</span> / <span class="code">-5.0</span> / <span class="code">4.2E9</span></td><td>xsd:integer / decimal / double</td></tr>
+    <tr><td><span class="k">布尔缩写</span></td><td><span class="code">true</span> / <span class="code">false</span></td><td>xsd:boolean,区分大小写</td></tr>
+    <tr><td><span class="k">字符串引号</span></td><td><span class="code">"…"</span> <span class="code">'…'</span> <span class="code">"""…"""</span> <span class="code">'''…'''</span></td><td>长引号可跨行、可内嵌引号</td></tr>
+    <tr><td><span class="k">语言标签</span></td><td><span class="code">"Hi"@en</span> <span class="code">"Salut"@fr-be</span></td><td>BCP 47,rdf:langString</td></tr>
+    <tr><td><span class="k">数据类型</span></td><td><span class="code">"42"^^xsd:integer</span></td><td>^^ 接 IRI 或前缀名</td></tr>
+    <tr><td><span class="k">转义</span></td><td><span class="code">\t \n \" \\ \uXXXX \UXXXXXXXX</span></td><td>本地名里另有保留字符转义 <span class="code">wgs:lat\-long</span></td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">1.0 → 1.1 的语法增量</span>
+    引进了 SPARQL 的三件套:单引号与两个长引号形式;本地名允许前导数字(<span class="code">ex:7tm</span>)和非结尾的点(<span class="code">ex:first.name</span>);PREFIX/BASE 无点写法。另有 Turtle-in-HTML(<span class="code">&lt;script type="text/turtle"&gt;</span>)。
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">一段用尽全部特性的 Turtle</span>
+    <span class="sec-sub">PART 3 · TURTLE IN ACTION</span>
+  </div>
+  <div class="codeblock"><span class="kw">@prefix</span> <span class="iri">foaf:</span> &lt;<span class="iri">http://xmlns.com/foaf/0.1/</span>&gt; .
+<span class="kw">@prefix</span> <span class="iri">:</span>      &lt;<span class="iri">http://example.org/</span>&gt; .
+<span class="kw">@base</span> &lt;<span class="iri">http://example.org/docs/</span>&gt; .
+
+&lt;<span class="iri">#report</span>&gt; <span class="kw">a</span> <span class="iri">foaf:Document</span> ;              <span class="cm"># 相对 IRI 按 @base 解析</span>
+    <span class="iri">foaf:name</span> <span class="iri">"年度报告"@zh-CN</span> , <span class="iri">"Annual Report"@en</span> ;   <span class="cm"># 宾语列表 + 语言标签</span>
+    <span class="iri">foaf:maker</span> [ <span class="iri">foaf:name</span> <span class="iri">"Fisher"</span> ; <span class="iri">foaf:age</span> <span class="kw">30</span> ] ;  <span class="cm"># 匿名空白节点</span>
+    <span class="iri">:keywords</span> ( <span class="iri">"kg"</span> <span class="iri">"rdf"</span> <span class="iri">"owl"</span> ) ;   <span class="cm"># 集合 → rdf:first/rest 链</span>
+    <span class="iri">:pages</span> <span class="kw">42</span> ; <span class="iri">:verified</span> <span class="kw">true</span> ; <span class="iri">:rating</span> <span class="kw">4.2E1</span> ;  <span class="cm"># 三种数值/布尔缩写</span>
+    <span class="iri">:note</span> <span class="iri">"""可跨行的
+长文本"""</span> ;                        <span class="cm"># 长引号</span>
+    <span class="iri">:homepage</span> &lt;<span class="iri">http://example.org/</span>&gt; .  <span class="cm"># 绝对 IRI,不吃 @base</span></div>
+  <div class="note">
+    <span class="tag">读法</span>
+    展开规则只有三条:<span class="code">;</span> 复制主语,<span class="code">,</span> 复制主谓,<span class="code">()</span> 生成 first/rest 链。任何 Turtle 都能机械还原成 N-Triples——拿不准语法糖展开了什么,先翻成 N-Triples 看。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 04 · P.&thinsp;4/7</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 5 / 7 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.1 · 规范速查</div>
+      <div class="title-en">RDF 1.1 — SYNTAXES · N-FAMILY, RDF/XML</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;01</div>
+    <div class="meta">W3C / RDF 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">机器友好一家子 · N-Triples / N-Quads / TriG</span>
+    <span class="sec-sub">PART 3 · N-TRIPLES FAMILY</span>
+  </div>
+  <table>
+    <tr><th>语法</th><th>一行</th><th>能力</th></tr>
+    <tr><td><span class="k">N-Triples</span> <span class="code">.nt</span></td><td><span class="code">&lt;s&gt; &lt;p&gt; &lt;o&gt; .</span></td><td>Turtle 的逐行子集:无前缀、无缩写、单一引号形式;1.1 起 UTF-8(1.0 是 ASCII)</td></tr>
+    <tr><td><span class="k">N-Quads</span> <span class="code">.nq</span></td><td><span class="code">&lt;s&gt; &lt;p&gt; &lt;o&gt; &lt;g&gt; .</span></td><td>N-Triples + 第四个位置:图名;省略图名即落入默认图</td></tr>
+    <tr><td><span class="k">TriG</span> <span class="code">.trig</span></td><td><span class="code">:g1 { :s :p :o }</span></td><td>Turtle 全部语法 + 花括号命名图;花括号外 = 默认图</td></tr>
+  </table>
+  <div class="codeblock"><span class="cm"># N-Triples:一行一个三元组,. 收尾,# 是注释</span>
+&lt;<span class="iri">http://example.org/s</span>&gt; &lt;<span class="iri">http://example.org/p</span>&gt; <span class="iri">"o"@zh</span> .
+<span class="iri">_:b1</span> &lt;<span class="iri">http://example.org/p</span>&gt; <span class="iri">"1"</span>^^&lt;<span class="iri">http://www.w3.org/2001/XMLSchema#integer</span>&gt; .
+
+<span class="cm"># N-Quads:第四列是图名(可省)</span>
+&lt;<span class="iri">http://example.org/s</span>&gt; &lt;<span class="iri">http://example.org/p</span>&gt; &lt;<span class="iri">http://example.org/o</span>&gt; &lt;<span class="iri">http://example.org/g1</span>&gt; .
+
+<span class="cm"># TriG:Turtle + 花括号命名图</span>
+<span class="kw">@prefix</span> <span class="iri">:</span> &lt;<span class="iri">http://example.org/</span>&gt; .
+<span class="iri">:meta</span> <span class="iri">:says</span> <span class="iri">"写在默认图"</span> .
+<span class="iri">:g1</span> { <span class="iri">:alice</span> <span class="iri">:knows</span> <span class="iri">:bob</span> . <span class="iri">_:w</span> <span class="iri">:hides</span> <span class="iri">"here"</span> }</div>
+  <div class="note">
+    <span class="tag">规范细节</span>
+    N-Triples 有<b>规范形(canonical form)</b>:每处恰一个空格、无注释、HEX 大写、禁用转义(字符串内仅 5 种必转)。做 diff、哈希、签名前先转规范形。三种格式都是 Turtle 的子集——拿 Turtle 解析器读三者,语义不变。
+  </div>
+</section>
+
+<!-- 12 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">12</span><span class="sec-title">RDF/XML · 老牌交换语法</span>
+    <span class="sec-sub">PART 3 · RDF/XML</span>
+  </div>
+  <div class="codeblock">&lt;<span class="iri">rdf:RDF</span> <span class="kw">xmlns:rdf</span>=<span class="iri">"http://www.w3.org/1999/02/22-rdf-syntax-ns#"</span>
+         <span class="kw">xmlns:foaf</span>=<span class="iri">"http://xmlns.com/foaf/0.1/"</span>&gt;
+  &lt;<span class="iri">foaf:Person</span> <span class="kw">rdf:about</span>=<span class="iri">"#alice"</span>&gt;          <span class="cm"># 元素名 = 类型,about = 主语</span>
+    &lt;<span class="iri">foaf:name</span>&gt;Alice&lt;/<span class="iri">foaf:name</span>&gt;           <span class="cm"># 子元素 = 谓语,正文 = 宾语</span>
+    &lt;<span class="iri">foaf:knows</span> <span class="kw">rdf:resource</span>=<span class="iri">"#bob"</span>/&gt;      <span class="cm"># resource 指向另一个 IRI</span>
+    &lt;<span class="iri">foaf:duck</span> <span class="kw">rdf:nodeID</span>=<span class="iri">"w"</span>/&gt;            <span class="cm"># 指向本文档内的空白节点</span>
+  &lt;/<span class="iri">foaf:Person</span>&gt;
+  &lt;<span class="iri">foaf:Person</span> <span class="kw">rdf:ID</span>=<span class="iri">"bob"</span>&gt; <span class="cm"># 相当于 about="#bob"</span>
+    &lt;<span class="iri">foaf:name</span> <span class="kw">rdf:parseType</span>=<span class="iri">"Literal"</span>&gt;&lt;b&gt;x&lt;/b&gt;&lt;/<span class="iri">foaf:name</span>&gt; <span class="cm"># 正文当 XML 字面量</span>
+  &lt;/<span class="iri">foaf:Person</span>&gt;
+&lt;/<span class="iri">rdf:RDF</span>&gt;</div>
+  <table>
+    <tr><th>核心属性/机制</th><th>作用</th></tr>
+    <tr><td><span class="code">rdf:about / rdf:ID / rdf:nodeID</span></td><td>主语三入口:绝对或相对 IRI / 基于基 IRI 的简写 / 空白节点标签</td></tr>
+    <tr><td><span class="code">rdf:resource / rdf:datatype</span></td><td>属性元素的宾语改指 IRI / 字面量定类型</td></tr>
+    <tr><td><span class="code">rdf:parseType</span></td><td><span class="code">"Resource"</span> 嵌套匿名节点 · <span class="code">"Literal"</span> XML 字面量 · <span class="code">"Collection"</span> 闭合列表</td></tr>
+    <tr><td><span class="code">rdf:li / rdf:_n</span></td><td>容器成员:<span class="code">rdf:li</span> 是 XML 里的写法,解析后展开成 <span class="code">rdf:_1, _2…</span></td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 05 · P.&thinsp;5/7</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 6 / 7 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.1 · 规范速查</div>
+      <div class="title-en">RDF 1.1 — SYNTAXES · RDF VOCAB, JSON-LD</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;01</div>
+    <div class="meta">W3C / RDF 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 13 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">13</span><span class="sec-title">rdf: 命名空间 · 核心词汇总表</span>
+    <span class="sec-sub">PART 3 · RDF VOCAB</span>
+  </div>
+  <p class="desc">命名空间 <span class="code">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span>。定义散在 RDFS 1.1 与 Concepts 两处,这里按用途归拢。</p>
+  <div class="sub">类型系统</div>
+  <table>
+    <tr><th>术语</th><th>定义</th></tr>
+    <tr><td><span class="code">rdf:type</span></td><td>声明「资源是某类的实例」;domain rdfs:Resource,range rdfs:Class</td></tr>
+    <tr><td><span class="code">rdf:Property</span></td><td>「属性」这一类资源的类</td></tr>
+    <tr><td><span class="code">rdf:langString / rdf:HTML / rdf:XMLLiteral</span></td><td>语言标注串 / HTML 片段 / XML 片段;后两个非规范,值是 DOM 片段</td></tr>
+  </table>
+  <div class="sub">具体化 · 说到「这句话」本身</div>
+  <table>
+    <tr><th>术语</th><th>定义</th></tr>
+    <tr><td><span class="code">rdf:Statement</span></td><td>「陈述」的类:某次三元组使用所对应的事物,不是三元组类型本身</td></tr>
+    <tr><td><span class="code">rdf:subject / rdf:predicate / rdf:object</span></td><td>从 Statement 指回三元组的三个成员;domain 都是 rdf:Statement</td></tr>
+  </table>
+  <div class="sub">容器(开放)与列表(封闭)</div>
+  <table>
+    <tr><th>术语</th><th>定义</th></tr>
+    <tr><td><span class="code">rdf:Bag / rdf:Seq / rdf:Alt</span></td><td>无序袋 / 有序列 / 备选;形式上三者同构,区别只在约定</td></tr>
+    <tr><td><span class="code">rdf:_1, rdf:_2 …</span></td><td>容器成员属性;都是 rdfs:member 的子属性;Alt 约定 _1 是默认项</td></tr>
+    <tr><td><span class="code">rdf:List / rdf:first / rdf:rest / rdf:nil</span></td><td>链表:首元素 / 余表 / 空表;rest 的 range 是 rdf:List,nil 是 List 的实例</td></tr>
+    <tr><td><span class="code">rdf:value</span></td><td>结构化值的「主值」槽位;规范明说它本身没有语义</td></tr>
+  </table>
+  <div class="note warn">
+    <span class="tag">两个提醒</span>
+    ① 具体化(reification)只提供「说到这句话」的词汇,不含「这句话为真」的承诺,推理机不会自动联通。② 容器不封闭:别人可以给你的 Bag 再加 _4;要封闭性用 rdf:List。
+  </div>
+</section>
+
+<!-- 14 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">14</span><span class="sec-title">JSON-LD 速写 · 给 Web API 的那扇门</span>
+    <span class="sec-sub">PART 3 · JSON-LD</span>
+  </div>
+  <p class="desc">RDF 1.1 家族把 JSON-LD 列为正式成员:JSON 文档 + 上下文(<span class="code">@context</span>)映射成 IRI,就成了 RDF 图。</p>
+  <div class="codeblock">{
+  <span class="kw">"@context"</span>: { <span class="iri">"name"</span>: <span class="iri">"http://xmlns.com/foaf/0.1/name"</span>,
+               <span class="iri">"knows"</span>:  {<span class="iri">"@id"</span>: <span class="iri">"http://xmlns.com/foaf/0.1/knows"</span>,
+                           <span class="iri">"@type"</span>: <span class="iri">"@id"</span>} },
+  <span class="kw">"@id"</span>:     <span class="iri">"http://example.org/#alice"</span>,
+  <span class="kw">"@type"</span>:   <span class="iri">"http://xmlns.com/foaf/0.1/Person"</span>,
+  <span class="iri">"name"</span>:    <span class="iri">"Alice"</span>,
+  <span class="iri">"knows"</span>:   <span class="iri">"http://example.org/#bob"</span> }</div>
+  <div class="chips">
+    <div class="chip hot"><span class="cn">JSON-LD</span><span class="en">@context @id @type @value @language</span></div>
+    <div class="chip"><span class="cn">RDFa</span><span class="en">HTML 属性内嵌三元组</span></div>
+    <div class="chip"><span class="cn">Turtle-in-HTML</span><span class="en">&lt;script type="text/turtle"&gt;</span></div>
+    <div class="chip"><span class="cn">1.0 → 1.1</span><span class="en">JSON-LD 1.1 于 2020 年成为 REC</span></div>
+  </div>
+  <div class="note">
+    <span class="tag">三大操作</span>
+    <b>expand</b>(IRI 全展开)、<b>compact</b>(按 context 压短)、<b>frame</b>(按模板整形输出)。展开后就是纯 RDF 的 JSON 形态——先 expand 再比对,是与图库对账最稳的一步。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 06 · P.&thinsp;6/7</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 7 / 7 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">R<em>D</em>F</div>
+    <div class="title-block">
+      <div class="title-cn">资源描述框架 1.1 · 规范速查</div>
+      <div class="title-en">RDF 1.1 — INTEROP, TOOLING &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;01</div>
+    <div class="meta">W3C / RDF 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 15 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">15</span><span class="sec-title">交换备忘 · 媒体类型与场景选择</span>
+    <span class="sec-sub">PART 4 · MEDIA TYPES</span>
+  </div>
+  <table>
+    <tr><th>语法</th><th>媒体类型</th><th>扩展名</th><th>何时用</th></tr>
+    <tr><td><span class="k">Turtle</span></td><td><span class="code">text/turtle</span>(恒 UTF-8)</td><td><span class="code">.ttl</span></td><td>人写、人读、版本管理</td></tr>
+    <tr><td><span class="k">N-Triples</span></td><td><span class="code">application/n-triples</span></td><td><span class="code">.nt</span></td><td>逐行流式处理、逐条导入</td></tr>
+    <tr><td><span class="k">N-Quads</span></td><td><span class="code">application/n-quads</span></td><td><span class="code">.nq</span></td><td>多图导出、图级溯源打包</td></tr>
+    <tr><td><span class="k">TriG</span></td><td><span class="code">application/trig</span></td><td><span class="code">.trig</span></td><td>数据集的人读形式</td></tr>
+    <tr><td><span class="k">RDF/XML</span></td><td><span class="code">application/rdf+xml</span></td><td><span class="code">.rdf .owl</span></td><td>遗留系统、XML 生态对接</td></tr>
+    <tr><td><span class="k">JSON-LD</span></td><td><span class="code">application/ld+json</span></td><td><span class="code">.jsonld</span></td><td>Web API、前端消费</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">识别 IRI</span>
+    每种语法都有正式的格式识别 IRI(如 <span class="code">http://www.w3.org/ns/formats/N-Triples</span>),内容协商时用它声明自己。
+  </div>
+</section>
+
+<!-- 16 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">16</span><span class="sec-title">互操作细节 · IRI 卫生与 Skolem 化</span>
+    <span class="sec-sub">PART 4 · INTEROP</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>IRI 非规范形态 <span>发出去之前消灭它们</span></h4>
+      <ul>
+        <li>大写 scheme / 主机名</li>
+        <li>多余的百分号编码、小写 HEX</li>
+        <li>显式 <span class="code">:80</span> / 空路径</li>
+        <li><span class="code">/./</span> 与 <span class="code">/../</span> 未消解</li>
+        <li>非 NFC 字符、Punycode 主机</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>Skolem 化 <span>bnode → IRI</span></h4>
+      <ul>
+        <li>把空白节点换成数据集内唯一的生成 IRI</li>
+        <li>约定用 <span class="code">/.well-known/genid/</span> 路径或 <span class="code">urn:uuid:</span>,表明「这不是真资源」</li>
+        <li>换完之后,跨文档引用、去重、图合并都有据可依</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">17</span><span class="sec-title">工具速览 · 解析与校验从哪进</span>
+    <span class="sec-sub">PART 4 · TOOLING</span>
+  </div>
+  <table>
+    <tr><th>工具</th><th>路线</th></tr>
+    <tr><td><span class="k">Apache Jena / riot</span></td><td>Java 全家桶:全语法解析、校验、规范形输出</td></tr>
+    <tr><td><span class="k">rdflib (Python)</span></td><td>Python 生态标配:解析、序列化、SPARQL 一条龙</td></tr>
+    <tr><td><span class="k">raptor / rapper</span></td><td>C 家族轻量解析器,命令行批处理利器</td></tr>
+    <tr><td><span class="k">JSON-LD processors</span></td><td>各语言均有实现,展开/压缩/框架三操作</td></tr>
+  </table>
+</section>
+
+<!-- 18 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">18</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>空白节点标签<b>不是标识符</b>:换一份文档就换了含义;要跨文档引用一律 Skolem 化成 IRI。</li>
+    <li>IRI 比较禁止规范化:<span class="code">…#A</span> 与 <span class="code">…#a</span>、<span class="code">%7E</span> 与 <span class="code">~</span> 都是不同资源;发 IRI 前先自规范。</li>
+    <li>词项相等 ≠ 值相等:<span class="code">"1"^^xsd:integer</span> 与 <span class="code">"01"^^xsd:integer</span> 去重时是两条。</li>
+    <li>语言标签统一小写:值层面大小写无意义,但词项相等逐字符比对——<span class="code">"x"@EN</span> 与 <span class="code">"x"@en</span> 是两条。</li>
+    <li>图名不指称图:别把「图 IRI」当资源描述的主语,除非你另外声明它指什么。</li>
+    <li><span class="code">rdf:li</span> 只活在 RDF/XML 里,解析后变 <span class="code">rdf:_n</span>;Turtle/SPARQL 里写它无效。</li>
+    <li>容器开放、列表封闭:允许别人补成员用 Bag/Seq,数据结构定死用 List。</li>
+    <li>rdf:HTML / rdf:XMLLiteral 非规范:跨库可能不识别,交换场景慎用。</li>
+    <li>N-Triples ⊂ Turtle ⊂ TriG 的方向记牢:解析器往大兼容,反向不成立。</li>
+    <li>fragment 的语义跟着媒体类型走:同一 IRI 在 HTML 视图和 RDF 视图里指向的东西要约定一致。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 07 · P.&thinsp;7/7</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

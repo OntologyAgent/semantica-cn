@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">RD<em>F</em>S</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 词表描述语言 1.1 · 规范速查</div>
+      <div class="title-en">RDF SCHEMA 1.1 — OVERVIEW · VOCAB ON TOP OF RDF</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;02</div>
+    <div class="meta">W3C / RDFS 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 给 RDF 装上词表</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">RDFS = 给 RDF 的一袋句子装上词表:类有层级、属性有链、domain/range 定位置,推理规则把隐含的三元组免费拉出来。先看四层怎么咬合,再逐个拆零件。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="56mm" viewBox="0 0 118 56">
+      <rect x="0.25" y="1" width="27.5" height="11" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="8.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">RDF 底座</text>
+      <text x="32" y="8.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">三元组成句 · 图是集合</text>
+      <text x="116.5" y="8.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">模型不变</text>
+      <line x1="14" y1="12.4" x2="14" y2="14.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,15.2 12.9,13.6 15.1,13.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="15" width="27.5" height="11" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="22.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">类词汇</text>
+      <text x="32" y="22.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Resource 为根 · subClassOf 树</text>
+      <text x="116.5" y="22.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">定义而非校验</text>
+      <line x1="14" y1="26.4" x2="14" y2="28.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,29.2 12.9,27.6 15.1,27.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="29" width="27.5" height="11" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="36.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">属性词汇</text>
+      <text x="32" y="36.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">九个属性 · subPropertyOf 链</text>
+      <text x="116.5" y="36.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">谓语词汇全在这</text>
+      <line x1="14" y1="40.4" x2="14" y2="42.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,43.2 12.9,41.6 15.1,41.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="43" width="27.5" height="11" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="50.3" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">推理 · 实践</text>
+      <text x="32" y="50.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">规则拉出闭包 · 五步造词表</text>
+      <text x="116.5" y="50.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">机械规则 · 无 LLM</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>词表即数据——类、属性、规则全是可查询的 RDF 三元组。</div>
+      <div class="t-note">四层各管一摊:类词汇管分类,属性词汇管关系,推理规则管闭包,实践层管怎么用。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 类与属性 → 推理 → 建模实践 → 边界与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 给 RDF 的一袋句子装上词表</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">RDF 只说「主谓宾」,不解释词与词的关系。RDFS 补上最小的一层语义:<b>类与子类</b>、<b>属性与子属性</b>、<b>定义域与值域</b>、<b>人读的注释</b>——够推理机干活,又不至于把人埋进逻辑。</p>
+  <div class="def">
+    <span class="lbl">KEY POINT</span>
+    RDF Schema 1.1,<b>W3C Recommendation 2014-02-25</b>,是 2004 年版的编辑性修订——技术内容原封未动,只为并入 RDF 1.1 文档族,标题从「RDF Vocabulary Description Language 1.0」改回朴素的名字。命名空间 <b><span class="code">rdfs:</span> = <span class="code">http://www.w3.org/2000/01/rdf-schema#</span></b>。
+  </div>
+  <table>
+    <tr><th>能力</th><th>词汇</th><th>一句话</th></tr>
+    <tr><td><span class="k">分类</span></td><td><span class="code">rdfs:Class</span> + <span class="code">rdf:type</span> + <span class="code">rdfs:subClassOf</span></td><td>声明类、挂实例、建类层级</td></tr>
+    <tr><td><span class="k">属性层级</span></td><td><span class="code">rdf:Property</span> + <span class="code">rdfs:subPropertyOf</span></td><td>属性的「属于」链</td></tr>
+    <tr><td><span class="k">用法声明</span></td><td><span class="code">rdfs:domain</span> / <span class="code">rdfs:range</span></td><td>这个属性的主语/宾语该是什么</td></tr>
+    <tr><td><span class="k">注释</span></td><td><span class="code">rdfs:label</span> / <span class="code">rdfs:comment</span> / <span class="code">rdfs:seeAlso</span> / <span class="code">rdfs:isDefinedBy</span></td><td>给人看的说明书</td></tr>
+    <tr><td><span class="k">容器</span></td><td><span class="code">rdfs:Container</span> / <span class="code">rdfs:member</span></td><td>开放成员的骨架(实体在 rdf:)</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">类的世界 · 一棵以 Resource 为根的树</span>
+    <span class="sec-sub">PART 1 · THE CLASS TREE</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="100mm" height="58mm" viewBox="0 0 100 58">
+      <rect x="40" y="2" width="20" height="7" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="50" y="6.9" font-family="JetBrainsMono" font-size="2.9" fill="#F6F1E7" text-anchor="middle" font-weight="700">Resource</text>
+      <rect x="8" y="16" width="18" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="17" y="20.9" font-family="JetBrainsMono" font-size="2.8" fill="#1C2430" text-anchor="middle" font-weight="700">Literal</text>
+      <rect x="42" y="16" width="16" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="50" y="20.9" font-family="JetBrainsMono" font-size="2.8" fill="#1C2430" text-anchor="middle" font-weight="700">Class</text>
+      <rect x="74" y="16" width="20" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="84" y="20.9" font-family="JetBrainsMono" font-size="2.6" fill="#1C2430" text-anchor="middle" font-weight="700">rdf:Property</text>
+      <rect x="8" y="31" width="18" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="17" y="35.9" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle" font-weight="700">Container</text>
+      <rect x="42" y="31" width="16" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="50" y="35.9" font-family="JetBrainsMono" font-size="2.7" fill="#1C2430" text-anchor="middle" font-weight="700">Datatype</text>
+      <rect x="68" y="31" width="30" height="7" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="83" y="35.9" font-family="JetBrainsMono" font-size="2.0" fill="#1C2430" text-anchor="middle" font-weight="700">ContainerMembershipProp</text>
+      <rect x="4" y="46" width="26" height="7" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="17" y="50.9" font-family="JetBrainsMono" font-size="2.4" fill="#1C2430" text-anchor="middle">Bag · Seq · Alt</text>
+      <line x1="45" y1="9" x2="19" y2="16" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="50" y1="9" x2="50" y2="16" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="55" y1="9" x2="82" y2="16" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="44" y1="9" x2="17" y2="31" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="50" y1="23" x2="50" y2="31" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="84" y1="23" x2="83" y2="31" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="17" y1="38" x2="17" y2="46" stroke="#1C2430" stroke-width="0.35"/>
+      <line x1="42" y1="34" x2="27" y2="21" stroke="#33506E" stroke-width="0.45" stroke-dasharray="1.6 1.2"/>
+      <polygon points="27,21 29.4,23.2 30.2,20.1" fill="#33506E"/>
+      <text x="62" y="46" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">每个 Datatype 实例都是 Literal 的子类</text>
+      <text x="55" y="56.5" font-family="JetBrainsMono" font-size="2.1" fill="#7d7466" text-anchor="middle">Class 自指合法:既是自己的实例也是自己的子类</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">一切皆 <b>Resource</b>;字面量也是资源(Literal ⊑ Resource),但它们只出现在宾语位置。类是资源的类(<b>Class</b>),而 Class 自己也是自己的实例——自指在这里是合法的。</div>
+      <div class="t-note">虚线是 RDFS 最漂亮的机关:<b>每个数据类型都是 Literal 的子类</b>——xsd:integer、rdf:langString 全部挂在这条线上,类型系统由此统一。</div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">没画进图里的</span>
+    <span class="code">rdfs:Datatype</span> 的双重身份(既是 Class 的实例又是其子类)、<span class="code">rdfs:ContainerMembershipProperty</span> 的双重身份(⊑ rdf:Property,实例是 rdf:_n)——「类同时当自己的元层」是 RDFS 建模的常用技巧。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 02 · P.&thinsp;1/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">RD<em>F</em>S</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 词表描述语言 1.1 · 规范速查</div>
+      <div class="title-en">RDF SCHEMA 1.1 — PROPERTIES, DOMAIN/RANGE &amp; CLASSES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;02</div>
+    <div class="meta">W3C / RDFS 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">属性词汇 · 全部九个</span>
+    <span class="sec-sub">PART 2 · PROPERTY VOCAB</span>
+  </div>
+  <table>
+    <tr><th>属性</th><th>domain → range</th><th>语义</th></tr>
+    <tr class="hl"><td><span class="code">rdfs:subClassOf</span></td><td>Class → Class</td><td>传递;类层级的主干,可多继承,环 = 同一类</td></tr>
+    <tr class="hl"><td><span class="code">rdfs:subPropertyOf</span></td><td>Property → Property</td><td>传递;子属性出现处,超属性结论随之成立</td></tr>
+    <tr><td><span class="code">rdfs:domain</span></td><td>Property → Class</td><td>用此属性的主语 ∈ 该类;<b>多条声明取交集</b></td></tr>
+    <tr><td><span class="code">rdfs:range</span></td><td>Property → Class</td><td>用此属性的宾语 ∈ 该类;<b>多条声明取交集</b></td></tr>
+    <tr><td><span class="code">rdfs:member</span></td><td>Resource → Resource</td><td>一切容器成员属性的祖先</td></tr>
+    <tr><td><span class="code">rdfs:label</span></td><td>Resource → Literal</td><td>人读名;配语言标签做多语言</td></tr>
+    <tr><td><span class="code">rdfs:comment</span></td><td>Resource → Literal</td><td>人读描述;同样可多语言</td></tr>
+    <tr><td><span class="code">rdfs:seeAlso</span></td><td>Resource → Resource</td><td>「可能还有更多信息」,宽松;不要求可取回</td></tr>
+    <tr><td><span class="code">rdfs:isDefinedBy</span></td><td>Resource → Resource</td><td>「定义它的资源」(词表本体);seeAlso 的子属性</td></tr>
+  </table>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">domain / range 的真实语义 · 定义而非校验</span>
+    <span class="sec-sub">PART 2 · DOMAIN & RANGE</span>
+  </div>
+  <div class="def">
+    <span class="lbl">规范语义</span>
+    <span class="code">P rdfs:domain C</span> 意思是:凡用 P 做谓语的主语,<b>推出</b>它是 C 的实例。宾语同理走 range。多条 domain/range 声明——主语/宾语属于<b>所有</b>这些类(交集)。
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>它做什么 <span>INFERENCE</span></h4>
+      <ul>
+        <li>看到 <span class="code">:Tom :chase :Jerry</span> + domain(:chase)=Cat,就<b>补出</b> <span class="code">:Tom a :Cat</span></li>
+        <li>从没见过的事实也能推:数据不全时反而有用</li>
+        <li>违反声明不报错——只会推出「它也是这个类」</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>它不做什么 <span>NOT VALIDATION</span></h4>
+      <ul>
+        <li>不是完整性约束,写了错误数据不会失败</li>
+        <li>给不出「属性只在某类局部有此限制」——那是 OWL 的 restriction</li>
+        <li>想校验,请去 SHACL(PL.07);想表达复杂约束,去 OWL(PL.04)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warn">
+    <span class="tag">经典误用</span>
+    「我给 :hasWings 声明 domain :Bird,这样填错的人会报错」——不会。错误数据安静地通过,还多出一个「错误的主语 ∈ Bird」的推断。domain/range 的正确用法是<b>声明你希望推理机知道的事实</b>,不是设卡。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">类速查表 · 一行一类</span>
+    <span class="sec-sub">PART 2 · CLASS QUICK REF</span>
+  </div>
+  <table>
+    <tr><th>类</th><th>是什么</th><th>备注</th></tr>
+    <tr><td><span class="code">rdfs:Resource</span></td><td>一切资源的根类</td><td>所有其他类都是它的子类</td></tr>
+    <tr><td><span class="code">rdfs:Class</span></td><td>「类」的类</td><td>自己的实例也是自己的子类</td></tr>
+    <tr><td><span class="code">rdfs:Literal</span></td><td>字面量类(串、数…)</td><td>Resource 的子类;只出现在宾语位</td></tr>
+    <tr><td><span class="code">rdfs:Datatype</span></td><td>「数据类型」的类</td><td>既是 Class 的实例又是其子类;每个实例 ⊑ Literal</td></tr>
+    <tr><td><span class="code">rdfs:Container</span></td><td>开放容器的抽象父类</td><td>Bag / Seq / Alt 都 ⊑ 它</td></tr>
+    <tr><td><span class="code">rdfs:ContainerMembershipProperty</span></td><td>rdf:_n 的类</td><td>⊑ rdf:Property;每个实例都是 member 的子属性</td></tr>
+    <tr><td><span class="code">rdfs:Datatype 一族</span></td><td>rdf:langString / rdf:HTML / rdf:XMLLiteral</td><td>后两个非规范(引 PL.01 §13)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">列表在哪</span>
+    链表词汇 <span class="code">rdf:List / first / rest / nil</span> 挂在 rdf: 命名空间(引 PL.01),RDFS 只负责容器的抽象父类。集合封闭性靠 rdf:List,不归 rdfs: 管。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 02 · P.&thinsp;2/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">RD<em>F</em>S</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 词表描述语言 1.1 · 规范速查</div>
+      <div class="title-en">RDF SCHEMA 1.1 — THE INFERENCE RULES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;02</div>
+    <div class="meta">W3C / RDFS 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">推理规则 · RDFS 闭包从哪来</span>
+    <span class="sec-sub">PART 3 · INFERENCE RULES</span>
+  </div>
+  <table>
+    <tr><th>规则</th><th>形式</th><th>效果</th></tr>
+    <tr><td><span class="k">子类传递</span></td><td>A ⊑ B ∧ B ⊑ C ⟹ A ⊑ C</td><td>层级逐级上溯</td></tr>
+    <tr><td><span class="k">子类实例</span></td><td>x a A ∧ A ⊑ B ⟹ x a B</td><td>实例沿类链上浮</td></tr>
+    <tr><td><span class="k">子属性传递</span></td><td>p ⊑ q ∧ q ⊑ r ⟹ p ⊑ r</td><td>属性链上溯</td></tr>
+    <tr><td><span class="k">子属性结论</span></td><td>x p y ∧ p ⊑ q ⟹ x q y</td><td>用子属性即得超属性事实</td></tr>
+    <tr><td><span class="k">domain 推型</span></td><td>x p y ∧ p domain C ⟹ x a C</td><td>主语获得类型</td></tr>
+    <tr><td><span class="k">range 推型</span></td><td>x p y ∧ p range C ⟹ y a C</td><td>宾语获得类型</td></tr>
+    <tr><td><span class="k">成员归并</span></td><td>C rdf:_n x ⟹ C rdfs:member x</td><td>容器成员归到 member</td></tr>
+  </table>
+  <div class="codeblock"><span class="cm"># 你写的</span>
+<span class="iri">:Cat</span>  <span class="kw">rdfs:subClassOf</span> <span class="iri">:Animal</span> .
+<span class="iri">:chase</span> <span class="kw">rdfs:domain</span> <span class="iri">:Cat</span> ; <span class="kw">rdfs:range</span> <span class="iri">:Mouse</span> .
+<span class="iri">:Tom</span> <span class="kw">a</span> <span class="iri">:Cat</span> ; <span class="iri">:chase</span> <span class="iri">:Jerry</span> .
+
+<span class="cm"># 推理机补出的(RDFS 蕴含)</span>
+<span class="iri">:Tom</span> <span class="kw">a</span> <span class="iri">:Animal</span> .    <span class="cm"># 实例沿子类链上浮</span>
+<span class="iri">:Tom</span> <span class="kw">a</span> <span class="iri">:Cat</span> .        <span class="cm"># domain 推型(这里恰好已写)</span>
+<span class="iri">:Jerry</span> <span class="kw">a</span> <span class="iri">:Mouse</span> .   <span class="cm"># range 推型</span></div>
+  <div class="sub">官方规则 · rdfs1–rdfs13(RDF 1.1 Semantics §9.2.1)</div>
+  <table>
+    <tr><th>规则</th><th>前提</th><th>结论</th></tr>
+    <tr><td><span class="code">rdfs1</span></td><td><span class="code">aaa ∈ D</span>(已识别的类型 IRI)</td><td><span class="code">aaa rdf:type rdfs:Datatype</span></td></tr>
+    <tr><td><span class="code">rdfs2</span></td><td><span class="code">aaa rdfs:domain xxx</span> · <span class="code">yyy aaa zzz</span></td><td><span class="code">yyy rdf:type xxx</span></td></tr>
+    <tr><td><span class="code">rdfs3</span></td><td><span class="code">aaa rdfs:range xxx</span> · <span class="code">yyy aaa zzz</span></td><td><span class="code">zzz rdf:type xxx</span></td></tr>
+    <tr><td><span class="code">rdfs4a / 4b</span></td><td><span class="code">xxx aaa yyy</span></td><td>主语/宾语 <span class="code">rdf:type rdfs:Resource</span></td></tr>
+    <tr><td><span class="code">rdfs5 / rdfs11</span></td><td>subPropertyOf / subClassOf 两段链</td><td>传递闭包一跳补全</td></tr>
+    <tr><td><span class="code">rdfs6 / rdfs10</span></td><td><span class="code">xxx rdf:type rdf:Property / rdfs:Class</span></td><td>自反:<span class="code">xxx ⊑ xxx</span></td></tr>
+    <tr><td><span class="code">rdfs7</span></td><td><span class="code">aaa ⊑ bbb</span> · <span class="code">xxx aaa yyy</span></td><td><span class="code">xxx bbb yyy</span></td></tr>
+    <tr><td><span class="code">rdfs8</span></td><td><span class="code">xxx rdf:type rdfs:Class</span></td><td><span class="code">xxx rdfs:subClassOf rdfs:Resource</span></td></tr>
+    <tr><td><span class="code">rdfs9</span></td><td><span class="code">xxx ⊑ yyy</span> · <span class="code">zzz rdf:type xxx</span></td><td><span class="code">zzz rdf:type yyy</span></td></tr>
+    <tr><td><span class="code">rdfs12</span></td><td><span class="code">xxx rdf:type ContainerMembershipProperty</span></td><td><span class="code">xxx rdfs:subPropertyOf rdfs:member</span></td></tr>
+    <tr><td><span class="code">rdfs13</span></td><td><span class="code">xxx rdf:type rdfs:Datatype</span></td><td><span class="code">xxx rdfs:subClassOf rdfs:Literal</span></td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">细则与完备性</span>
+    规则应用穷尽即得 RDFS 闭包,多项式复杂度可判。两点深水区:①普通 RDF 语法下规则集<b>不完备</b>(字面量不能当主语),换「广义 RDF」才完备——工程实现都走广义;②数据类型(D-entailment)没有统一语法判据,<span class="code">"25.0"^^xsd:decimal</span> 与 <span class="code">"25"^^xsd:integer</span> 同值这类事要靠类型自身的词法映射。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 02 · P.&thinsp;3/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">RD<em>F</em>S</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 词表描述语言 1.1 · 规范速查</div>
+      <div class="title-en">RDF SCHEMA 1.1 — MODELING IN PRACTICE</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;02</div>
+    <div class="meta">W3C / RDFS 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">建模惯用法 · 词表的自描述</span>
+    <span class="sec-sub">PART 4 · MODELING IDIOMS</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 一个自描述词表的骨架:每个词汇带 label / comment / isDefinedBy</span>
+<span class="iri">:Drug</span> <span class="kw">a</span> <span class="iri">rdfs:Class</span> ;
+    <span class="kw">rdfs:label</span> <span class="iri">"药物"@zh-CN</span>, <span class="iri">"Drug"@en</span> ;        <span class="cm"># 多语言:每种语言一条</span>
+    <span class="kw">rdfs:comment</span> <span class="iri">"用于预防、治疗、诊断的物质。"@zh-CN</span> ;
+    <span class="kw">rdfs:subClassOf</span> <span class="iri">:MedicinalProduct</span> .
+
+<span class="iri">:hasIndication</span> <span class="kw">a</span> <span class="iri">rdf:Property</span> ;
+    <span class="kw">rdfs:label</span> <span class="iri">"有适应症"@zh-CN</span> ;
+    <span class="kw">rdfs:domain</span> <span class="iri">:Drug</span> ;
+    <span class="kw">rdfs:range</span> <span class="iri">:Disease</span> ;
+    <span class="kw">rdfs:isDefinedBy</span> &lt;<span class="iri">http://example.org/vocab/</span>&gt; .  <span class="cm"># 指回词表本体</span></div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>label vs comment <span>用法分界</span></h4>
+      <ul>
+        <li>label:一个名字,短,图例/界面直接显示</li>
+        <li>comment:一段解释,长,悬停提示/文档页用</li>
+        <li>两者都吃语言标签,别只写默认语言</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>seeAlso vs isDefinedBy <span>宽与严</span></h4>
+      <ul>
+        <li>seeAlso:随便指,相关材料皆可</li>
+        <li>isDefinedBy:指「定义我的词表文档」,是它的子属性</li>
+        <li>词汇术语一律挂 isDefinedBy,引用资料用 seeAlso</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">容器与具体化 · RDFS 提供的模型支架</span>
+    <span class="sec-sub">PART 4 · CONTAINERS & REIF.</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>容器家族 <span>open containers</span></h4>
+      <ul>
+        <li>Bag 无序 / Seq 有序 / Alt 备选,形式上同构,全凭约定</li>
+        <li>成员资格:rdf:_1, _2…,都是 rdfs:member 的子属性</li>
+        <li>开放性:任何人可补 _n;要封闭请用 rdf:List</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>具体化 <span>reification · 非规范</span></h4>
+      <ul>
+        <li>rdf:Statement + subject/predicate/object 四件套,把「这句话」变成资源</li>
+        <li>同一个三元组可以有多个 Statement 实例——具体化不提供同一性</li>
+        <li>1.1 里这一节已标为非规范;做溯源请走 PROV-O(PL.11)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">词表设计工作流 · 五步一份词表</span>
+    <span class="sec-sub">PART 4 · VOCAB WORKFLOW</span>
+  </div>
+  <ol class="check">
+    <li><b>起名</b>:词表 IRI 用自己的域名定死,路径语义化(<span class="code">…/vocab/1.0/</span>),定了就别改——IRI 是承诺,改名即断链。</li>
+    <li><b>排类层级</b>:subClassOf 从宽到窄;层深尽量不超过四,多继承可以有,环不可以有。</li>
+    <li><b>挂属性</b>:每条属性给恰好一个 domain 和一个 range——多条声明取交集,想清楚了再写第二个。</li>
+    <li><b>注释齐全</b>:label + comment 双语起步,isDefinedBy 指回词表;这三样是词表的「说明书页」。</li>
+    <li><b>发布</b>:词表 IRI 内容协商返回 HTML(给人)与 Turtle(给机器);改版走新 IRI 或声明版本关系,别原地覆盖。</li>
+  </ol>
+</section>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">站在别人的词表上 · 常用外部词汇</span>
+    <span class="sec-sub">PART 4 · EXTERNAL VOCABS</span>
+  </div>
+  <div class="chips">
+    <div class="chip hot"><span class="cn">rdfs</span><span class="en">本文</span></div>
+    <div class="chip"><span class="cn">SKOS</span><span class="en">概念体系 · PL.03</span></div>
+    <div class="chip"><span class="cn">DCTERMS</span><span class="en">文献元数据 · 频率/许可/出处</span></div>
+    <div class="chip"><span class="cn">FOAF</span><span class="en">人与组织</span></div>
+    <div class="chip"><span class="cn">OWL-Time</span><span class="en">时间区间/时刻</span></div>
+    <div class="chip"><span class="cn">PROV-O</span><span class="en">溯源 · PL.11</span></div>
+    <div class="chip"><span class="cn">schema.org</span><span class="en">网页语义/SEO</span></div>
+  </div>
+  <div class="note">
+    <span class="tag">复用优先</span>
+    先找现成词表,找不到再自建;自建的类用 <span class="code">rdfs:seeAlso</span> 挂向近义的外部类,别急着 <span class="code">owl:equivalentClass</span>——等价承诺是要推理机兑现的。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 02 · P.&thinsp;4/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 5 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">RD<em>F</em>S</div>
+    <div class="title-block">
+      <div class="title-cn">RDF 词表描述语言 1.1 · 规范速查</div>
+      <div class="title-en">RDF SCHEMA 1.1 — BOUNDARY, PITFALLS &amp; TOOLING</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;02</div>
+    <div class="meta">W3C / RDFS 1.1 / 2014</div>
+  </div>
+</header>
+
+<!-- 12 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">12</span><span class="sec-title">RDFS 不做什么 · 能力边界清单</span>
+    <span class="sec-sub">PART 5 · CAPABILITY BOUNDARY</span>
+  </div>
+  <table>
+    <tr><th>想要的能力</th><th>RDFS 给吗</th><th>去哪找</th></tr>
+    <tr><td>类与属性层级、domain/range</td><td class="yes">给</td><td>本体(本文)</td></tr>
+    <tr><td>数据校验、报错</td><td class="no">不给</td><td>SHACL(PL.07)</td></tr>
+    <tr><td>类局部的属性限制(x 是 A 时其 p 值…)</td><td class="no">不给</td><td>OWL restriction(PL.04)</td></tr>
+    <tr><td>基数、互斥、存在量词</td><td class="no">不给</td><td>OWL 2(PL.04)</td></tr>
+    <tr><td>键、函数式属性</td><td class="no">不给</td><td>OWL 2</td></tr>
+    <tr><td>属性的传递/对称声明</td><td class="no">不给</td><td>OWL 2(仅 subClassOf/subPropertyOf 自带传递)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">规范自己的话</span>
+    「RDF Schema 提供描述机制,但不说应用该怎么用」——它是词表语言,不是规则引擎,更不是校验器。这份克制正是它能被所有推理机支持的原因。
+  </div>
+</section>
+
+<!-- 13 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">13</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 5 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>domain/range 是<b>推理燃料不是护栏</b>:填错数据不报错,反而推出荒唐类型——声明前问自己「我真的想推出这个吗」。</li>
+    <li>多条 domain/range 取<b>交集</b>:想表达「或」,要么造一个并类,要么上 OWL 的 unionOf。</li>
+    <li>subClassOf / subPropertyOf <b>传递</b>:层级画环了,环上全体划等号——建模后先跑一次环检测。</li>
+    <li>查询容器别只写 rdfs:member:<span class="code">rdf:_n</span> 才是实际写的谓词,member 是它们的归并。</li>
+    <li>label/comment 一词一语言一条:只有默认语言的词表,换语言界面就得返工。</li>
+    <li>词汇术语挂 isDefinedBy(精确),随手引用才用 seeAlso(宽松)。</li>
+    <li>字面量只做宾语:RDF 语法不允许字面量当主语或谓语,分类对象请给 IRI。</li>
+    <li>RDFS 推理是开放世界的:没有 domain 声明 ≠ 没有 domain;查「为什么推出这个」要看闭包。</li>
+    <li>想校验结构,别拿 domain/range 硬上:SHACL 的 PropertyShape 才是干这个的。</li>
+    <li>具体化四件套是老古董:非规范、无同一性、推理不联通——新项目一律 PROV-O。</li>
+  </ol>
+</section>
+
+<!-- 14 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">14</span><span class="sec-title">工具速览 · RDFS 推理从哪进</span>
+    <span class="sec-sub">PART 5 · TOOLING</span>
+  </div>
+  <table>
+    <tr><th>工具</th><th>路线</th></tr>
+    <tr><td><span class="k">Apache Jena</span></td><td>InfModel / 规则推理机,RDFS 闭包开箱即用</td></tr>
+    <tr><td><span class="k">rdflib (Python)</span></td><td>内置 RDFS 闭包插件,脚本化批量推理</td></tr>
+    <tr><td><span class="k">GraphDB / Virtuoso</span></td><td>图库内置 RDFS entailment 档位,加载时选档</td></tr>
+    <tr><td><span class="k">Protégé + 推理机</span></td><td>HermiT / Pellet 走 OWL 路线,向下兼容 RDFS 层</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 02 · P.&thinsp;5/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

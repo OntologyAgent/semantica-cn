@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SPARQ<em>L</em></div>
+    <div class="title-block">
+      <div class="title-cn">RDF 查询语言 1.1 · 规范速查</div>
+      <div class="title-en">SPARQL 1.1 — OVERVIEW · ONE LANGUAGE, ELEVEN DOCS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;10</div>
+    <div class="meta">W3C / SPARQL 1.1 / 2013</div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · RDF 的查询语言</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">SPARQL:一条查询五段式,WHERE 里图模式组合出匹配,引擎按数据集求值,经协议返回结果;Update 让它读写对等。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="43.4mm" viewBox="0 0 118 43.4">
+      <rect x="0.25" y="1.0" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="6.25" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">查询骨架</text>
+      <text x="32" y="6.25" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">PREFIX · SELECT · WHERE · 修饰 · 后处理</text>
+      <text x="116.5" y="6.25" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">五段式</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.9" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.7 12.9,11.1 15.1,11.1" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.3" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.55" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">图模式</text>
+      <text x="32" y="17.55" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">基本图 · FILTER · OPTIONAL · UNION</text>
+      <text x="116.5" y="17.55" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">WHERE 的内功</text>
+      <line x1="14" y1="21.2" x2="14" y2="23.2" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.0 12.9,22.400000000000002 15.1,22.400000000000002" fill="#C9BFAC"/>
+      <rect x="0.25" y="23.6" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="28.85" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">执行</text>
+      <text x="32" y="28.85" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">数据集 · 协议 · Update · 联邦 SERVICE</text>
+      <text x="116.5" y="28.85" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">不止查询</text>
+      <line x1="14" y1="32.5" x2="14" y2="34.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,35.300000000000004 12.9,33.7 15.1,33.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="34.900000000000006" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="40.150000000000006" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">语义与远方</text>
+      <text x="32" y="40.150000000000006" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">蕴含档位开推理 · SPARQL 1.2 下一站</text>
+      <text x="116.5" y="40.150000000000006" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">确定性规则</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>图模式是内功:一切查询都是基本图模式 + 算子的组合。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 查询核心 → 修饰与函数 → 执行与更新 → 生态与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">家族地图 · 一次发布十一份推荐标准</span>
+    <span class="sec-sub">PART 1 · THE DOCUMENT FAMILY</span>
+  </div>
+  <p class="desc">SPARQL 之于 RDF,如 SQL 之于关系库。1.1 版于 <b>2013-03-21</b> 同日发布十一份 W3C Recommendation——查询只是入口,更新、协议、联邦、蕴含全套齐备。</p>
+  <table>
+    <tr><th>文档</th><th>管什么</th></tr>
+    <tr class="hl"><td><span class="k">Query Language</span></td><td>查询语言本体(本文主线)</td></tr>
+    <tr><td><span class="k">Update</span></td><td>增删改语言(§11)</td></tr>
+    <tr><td><span class="k">Protocol</span></td><td>HTTP 绑定:query / update 参数</td></tr>
+    <tr><td><span class="k">Graph Store HTTP Protocol</span></td><td>REST 式图管理(GET/PUT/POST/DELETE 整图)</td></tr>
+    <tr><td><span class="k">Results JSON / CSV-TSV / XML</span></td><td>三种结果序列化(XML 是 1.0 第二版)</td></tr>
+    <tr><td><span class="k">Federated Query</span></td><td>SERVICE 跨端查询</td></tr>
+    <tr><td><span class="k">Service Description</span></td><td>端点自描述(能力、数据集)</td></tr>
+    <tr><td><span class="k">Entailment Regimes</span></td><td>RDFS/OWL 蕴含下的查询语义</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">查询骨架 · 一条查询的五段式</span>
+    <span class="sec-sub">PART 1 · QUERY ANATOMY</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="92mm" height="50mm" viewBox="0 0 92 50">
+      <rect x="2" y="2" width="88" height="8" fill="none" stroke="#C9BFAC" stroke-width="0.3" stroke-dasharray="2 1.2"/>
+      <text x="46" y="7.4" font-family="JetBrainsMono" font-size="2.5" fill="#7d7466" text-anchor="middle">① 序言:PREFIX / BASE</text>
+      <rect x="2" y="13" width="88" height="8" fill="none" stroke="#C9BFAC" stroke-width="0.3" stroke-dasharray="2 1.2"/>
+      <text x="46" y="18.4" font-family="JetBrainsMono" font-size="2.5" fill="#7d7466" text-anchor="middle">② 数据集:FROM / FROM NAMED(可省,用端点默认)</text>
+      <rect x="2" y="24" width="88" height="8" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="46" y="29.4" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">③ WHERE { 图模式 } — 匹配发生在这里</text>
+      <rect x="2" y="35" width="88" height="7" fill="none" stroke="#C9BFAC" stroke-width="0.3" stroke-dasharray="2 1.2"/>
+      <text x="46" y="40" font-family="JetBrainsMono" font-size="2.4" fill="#7d7466" text-anchor="middle">④ 解的修饰:GROUP BY · HAVING · ORDER BY · 投影 · OFFSET/LIMIT</text>
+      <text x="46" y="48.5" font-family="JetBrainsMono" font-size="2.5" fill="#33506E" text-anchor="middle">⑤ 结果形态:SELECT · CONSTRUCT · ASK · DESCRIBE</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note">五种查询形态:SELECT 出变量表;CONSTRUCT 出<b>图</b>(模板重组);ASK 出真假;DESCRIBE 出关于某资源的子图(<b>由实现自定</b>——可移植性差的根源)。</div>
+    </div>
+  </div>
+  <div class="codeblock"><span class="cm"># 骨架示例:谁在 2026 年发表过含 "kg" 的论文</span>
+<span class="kw">PREFIX</span> <span class="iri">ex:</span> &lt;<span class="iri">http://example.org/</span>&gt;
+<span class="kw">SELECT</span> <span class="kw">DISTINCT</span> ?author ?title
+<span class="kw">WHERE</span> {
+  ?paper <span class="kw">a</span> <span class="iri">ex:Paper</span> ;
+         <span class="iri">ex:title</span> ?title ;
+         <span class="iri">ex:author</span> ?author .
+  <span class="kw">FILTER</span>(<span class="kw">CONTAINS</span>(<span class="kw">LCASE</span>(?title), <span class="iri">"kg"</span>))
+  ?paper <span class="iri">ex:published</span> ?date .
+  <span class="kw">FILTER</span>(<span class="kw">YEAR</span>(?date) = <span class="kw">2026</span>)
+}
+<span class="kw">ORDER BY</span> <span class="kw">DESC</span>(?date) <span class="kw">LIMIT</span> <span class="kw">20</span></div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 10 · P.&thinsp;1/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SPARQ<em>L</em></div>
+    <div class="title-block">
+      <div class="title-cn">RDF 查询语言 1.1 · 规范速查</div>
+      <div class="title-en">SPARQL 1.1 — GRAPH PATTERNS &amp; PROPERTY PATHS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;10</div>
+    <div class="meta">W3C / SPARQL 1.1 / 2013</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">图模式算子 · 组合的基本功</span>
+    <span class="sec-sub">PART 2 · GRAPH PATTERN ALGEBRA</span>
+  </div>
+  <table>
+    <tr><th>算子</th><th>写法</th><th>语义要点</th></tr>
+    <tr><td><span class="k">基础图模式</span></td><td>三元组序列</td><td>同组内共享变量,全部匹配</td></tr>
+    <tr><td><span class="k">并</span></td><td><span class="code">{ P1 } UNION { P2 }</span></td><td>两模式解集取并——各自独立求值</td></tr>
+    <tr><td><span class="k">可选</span></td><td><span class="code">OPTIONAL { P }</span></td><td>左外连接:匹配不上留空变量;配 <span class="code">BOUND(?v)</span> 判空</td></tr>
+    <tr><td><span class="k">过滤</span></td><td><span class="code">FILTER(expr)</span></td><td>只作用于<b>所在组</b>;EXISTS / NOT EXISTS 内可引用组内变量</td></tr>
+    <tr><td><span class="k">差</span></td><td><span class="code">MINUS { P }</span></td><td>减去可兼容的解——见下一节,与 NOT EXISTS 有别</td></tr>
+    <tr><td><span class="k">绑定</span></td><td><span class="code">BIND(expr AS ?v)</span></td><td>表达式赋值;不能覆盖已有变量</td></tr>
+    <tr><td><span class="k">内联值表</span></td><td><span class="code">VALUES ?x { a b }</span></td><td>解集硬编码;可 JOIN 进模式</td></tr>
+    <tr><td><span class="k">子查询</span></td><td><span class="code">{ SELECT … WHERE {…} }</span></td><td>先内后外;内层先做完修饰再 join</td></tr>
+  </table>
+  <div class="codeblock"><span class="cm"># OPTIONAL + 聚合:有人没邮箱也要出现在报表里</span>
+<span class="kw">SELECT</span> ?person (<span class="kw">COUNT</span>(?mail) <span class="kw">AS</span> ?mails)
+<span class="kw">WHERE</span> {
+  ?person <span class="kw">a</span> <span class="iri">foaf:Person</span> .
+  <span class="kw">OPTIONAL</span> { ?person <span class="iri">foaf:mbox</span> ?mail }
+}
+<span class="kw">GROUP BY</span> ?person</div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">MINUS vs NOT EXISTS · 一字千金的差别</span>
+    <span class="sec-sub">PART 2 · MINUS VS NOT EXISTS</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 谁没有邮箱 —— 两种写法</span>
+<span class="cm"># ① MINUS:对「已有解」做集合减法</span>
+<span class="kw">SELECT</span> ?p <span class="kw">WHERE</span> { ?p <span class="kw">a</span> <span class="iri">foaf:Person</span>
+  <span class="kw">MINUS</span> { ?p <span class="iri">foaf:mbox</span> ?m } }
+<span class="cm"># ② NOT EXISTS:逐解判定,内层是过滤器</span>
+<span class="kw">SELECT</span> ?p <span class="kw">WHERE</span> { ?p <span class="kw">a</span> <span class="iri">foaf:Person</span>
+  <span class="kw">FILTER</span>(<span class="kw">NOT EXISTS</span> { ?p <span class="iri">foaf:mbox</span> ?m }) }</div>
+  <div class="note warn">
+    <span class="tag">差别在哪</span>
+    MINUS 按<b>共享变量</b>相减:两模式没有共享变量时,MINUS 减不掉任何东西(全保留);NOT EXISTS 是逐解相关子查询,永远按内层模式判定。性能上 MINUS 常更优,语义上 NOT EXISTS 更直观——两边都要懂。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">属性路径 · 把递归写进谓语位</span>
+    <span class="sec-sub">PART 2 · PROPERTY PATHS</span>
+  </div>
+  <table>
+    <tr><th>路径</th><th>写法</th><th>语义</th></tr>
+    <tr><td><span class="k">谓词</span></td><td><span class="code">iri</span></td><td>一步</td></tr>
+    <tr><td><span class="k">反向</span></td><td><span class="code">^iri</span></td><td>倒着走(被引用)</td></tr>
+    <tr><td><span class="k">序列</span></td><td><span class="code">p1 / p2</span></td><td>先…后…</td></tr>
+    <tr><td><span class="k">可选其一</span></td><td><span class="code">p1 | p2</span></td><td>二者任一</td></tr>
+    <tr class="hl"><td><span class="k">零或多</span></td><td><span class="code">p*</span></td><td>含零步——自己到自己恒真</td></tr>
+    <tr class="hl"><td><span class="k">一或多</span></td><td><span class="code">p+</span></td><td>传递闭包——找所有后代就靠它</td></tr>
+    <tr><td><span class="k">零或一</span></td><td><span class="code">p?</span></td><td>可有可无</td></tr>
+    <tr><td><span class="k">取反集</span></td><td><span class="code">!(p1|p2)</span> · <span class="code">!^p</span></td><td>除了这些谓词</td></tr>
+    <tr><td><span class="k">分组</span></td><td><span class="code">(p1/p2)*</span></td><td>括号控优先级</td></tr>
+  </table>
+  <div class="codeblock"><span class="cm"># 组织架构树:找 ?boss 的全部下属(传递闭包)</span>
+?employee <span class="iri">ex:reportsTo</span>+ ?boss .
+<span class="cm"># 引用网:别人的引用别人的引用……但不经过自引</span>
+?src (<span class="iri">cito:cites</span> / <span class="iri">cito:cites</span>) ?dst .
+<span class="cm"># 反向一步 + 正向闭包混合</span>
+?paper ^<span class="iri">ex:cites</span>/(<span class="iri">ex:author</span>)? ?who</div>
+  <div class="note">
+    <span class="tag">路径与 DISTINCT</span>
+    p* / p+ 的解集按<b>路径存在性</b>给出节点对,多条路径只出一对;但 `*` 含零步,常与显式条件配合使用。复杂路径的执行代价因实现而异,大图上先 EXPLAIN。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 10 · P.&thinsp;2/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SPARQ<em>L</em></div>
+    <div class="title-block">
+      <div class="title-cn">RDF 查询语言 1.1 · 规范速查</div>
+      <div class="title-en">SPARQL 1.1 — AGGREGATES, FUNCTIONS, DATASETS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;10</div>
+    <div class="meta">W3C / SPARQL 1.1 / 2013</div>
+  </div>
+</header>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">聚合与分组 · 七个函数包打报表</span>
+    <span class="sec-sub">PART 3 · AGGREGATES & GROUPING</span>
+  </div>
+  <table>
+    <tr><th>聚合</th><th>作用</th><th>备注</th></tr>
+    <tr><td><span class="code">COUNT(*) / COUNT(?v) / COUNT(DISTINCT ?v)</span></td><td>计数</td><td>* 数解,?v 数非空值</td></tr>
+    <tr><td><span class="code">SUM / AVG / MIN / MAX</span></td><td>求和均值极值</td><td>数值型字面量</td></tr>
+    <tr><td><span class="code">GROUP_CONCAT(?v ; separator=", ")</span></td><td>串接</td><td><b>顺序不保证</b>——要排序先在子查询里 ORDER BY</td></tr>
+    <tr><td><span class="code">SAMPLE(?v)</span></td><td>任意取一个</td><td>哪由实现定,别当确定性用</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">投影纪律</span>
+    GROUP BY 之后,SELECT 里只能出现分组变量与聚合——「非聚合裸变量」直接报错,这是 SPARQL 对 SQL 用户的第一个下马威。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">函数总表 · FILTER 里的全部武器</span>
+    <span class="sec-sub">PART 3 · FUNCTION CATALOG</span>
+  </div>
+  <div class="sub">函数式形式与术语判断</div>
+  <table>
+    <tr><td><span class="code">BOUND(?v) · IF(c,t,e) · COALESCE(…)</span></td><td>判空 · 三元 · 首个非错</td><td><span class="code">EXISTS / NOT EXISTS</span></td><td>子模式存在性</td></tr>
+    <tr><td><span class="code">sameTerm(a,b) · RDFterm-equal</span></td><td>词项相等/一般相等</td><td><span class="code">IN(…) / NOT IN(…)</span></td><td>成员判断</td></tr>
+    <tr><td><span class="code">isIRI isBlank isLiteral isNumeric</span></td><td>术语类型四问</td><td><span class="code">str lang datatype</span></td><td>拆字面量三件套</td></tr>
+    <tr><td><span class="code">IRI(s) · BNODE() · STRDT · STRLANG</span></td><td>构造术语</td><td><span class="code">UUID() / STRUUID()</span></td><td>生成唯一标识</td></tr>
+  </table>
+  <div class="sub">字符串</div>
+  <table>
+    <tr><td><span class="code">STRLEN SUBSTR UCASE LCASE</span></td><td><span class="code">STRSTARTS STRENDS CONTAINS</span></td><td><span class="code">STRBEFORE STRAFTER</span></td><td><span class="code">CONCAT ENCODE_FOR_URI</span></td></tr>
+    <tr><td><span class="code">langMatches(lang(?l),"zh")</span></td><td><span class="code">REGEX(s,p[,f])</span></td><td><span class="code">REPLACE(s,p,r[,f])</span></td><td colspan="2">正则用 XPath 语法,flags 里 "i" 最常用</td></tr>
+  </table>
+  <div class="sub">数值 · 日期 · 哈希</div>
+  <table>
+    <tr><td><span class="code">abs round ceil floor RAND</span></td><td><span class="code">now year month day hours minutes seconds timezone tz</span></td><td><span class="code">MD5 SHA1 SHA256 SHA384 SHA512</span></td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">错误语义</span>
+    类型不匹配的 FILTER 表达式<b>报错即排除该解</b>——COALESCE 的价值正在于此:给可能出错的链兜底。布尔有效值规则(EBV)决定非布尔表达式怎么变真值,边界情形见规范 §11.2。
+  </div>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">数据集与命名图 · 一次查多张图</span>
+    <span class="sec-sub">PART 3 · DATASETS & NAMED GRAPHS</span>
+  </div>
+  <div class="codeblock"><span class="cm"># FROM 定默认图,FROM NAMED 挂命名图</span>
+<span class="kw">SELECT</span> ?who ?g
+<span class="kw">FROM</span> &lt;<span class="iri">http://example.org/default</span>&gt;
+<span class="kw">FROM NAMED</span> &lt;<span class="iri">http://example.org/graph:alice</span>&gt;
+<span class="kw">FROM NAMED</span> &lt;<span class="iri">http://example.org/graph:bob</span>&gt;
+<span class="kw">WHERE</span> { <span class="kw">GRAPH</span> ?g { ?s <span class="iri">foaf:knows</span> ?who } }
+
+<span class="cm"># 不写 FROM:用端点默认配置;GRAPH ?g 遍历所有命名图</span>
+<span class="kw">SELECT</span> ?g ?s <span class="kw">WHERE</span> { <span class="kw">GRAPH</span> ?g { ?s ?p ?o } }</div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>两组关键词 <span>scope</span></h4>
+      <ul>
+        <li><span class="code">FROM / FROM NAMED</span>:组成查询数据集——不匹配的图被排除在考虑之外</li>
+        <li><span class="code">GRAPH ?g { … }</span>:在命名图内匹配;变量 ?g 绑定图名</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>与 RDF 1.1 数据集 <span>差异</span></h4>
+      <ul>
+        <li>SPARQL 的图名<b>只许 IRI</b>,RDF 1.1 允许 bnode(引 PL.01 §07)——先 Skolem 化</li>
+        <li>端点默认数据集由实现决定:查之前先看 Service Description</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">为什么要有命名图</span>
+    溯源分账、多版本共存、权限隔离——都靠「哪条三元组属于哪张图」。SPARQL Update 与 Graph Store 协议同样按图操作。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 10 · P.&thinsp;3/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SPARQ<em>L</em></div>
+    <div class="title-block">
+      <div class="title-cn">RDF 查询语言 1.1 · 规范速查</div>
+      <div class="title-en">SPARQL 1.1 — ENTAILMENT, UPDATE &amp; PROTOCOL</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;10</div>
+    <div class="meta">W3C / SPARQL 1.1 / 2013</div>
+  </div>
+</header>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">蕴含档位 · 查询时推理开几档</span>
+    <span class="sec-sub">PART 4 · ENTAILMENT LEVELS</span>
+  </div>
+  <table>
+    <tr><th>档位</th><th>查询语义</th></tr>
+    <tr><td><span class="k">simple</span></td><td>纯子图匹配,无推理(默认)</td></tr>
+    <tr><td><span class="k">RDFS</span></td><td>类/属性层级、domain/range 全部生效(引 PL.02)</td></tr>
+    <tr><td><span class="k">OWL-Direct / OWL-RDF-Based</span></td><td>OWL 公理参与匹配;Direct 限 DL 子集,推理开销大</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">开档要谨慎</span>
+    蕴含档让结果集暴涨(层级上浮全进来),且各端点支持的档位不同——先查 Service Description,按需在请求头里声明档位。
+  </div>
+</section>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">Update · 全部八类操作</span>
+    <span class="sec-sub">PART 4 · UPDATE</span>
+  </div>
+  <table>
+    <tr><th>类</th><th>操作</th><th>一句话</th></tr>
+    <tr rowspan="2"><td><span class="k">图更新</span></td><td><span class="code">INSERT DATA {…}</span> / <span class="code">DELETE DATA {…}</span></td><td>按字面三元组增删(不允许变量)</td></tr>
+    <tr><td></td><td><span class="code">DELETE {…} INSERT {…} WHERE {…}</span></td><td>按模式删旧插新——变量来自 WHERE</td></tr>
+    <tr><td rowspan="2"><span class="k">图管理</span></td><td><span class="code">LOAD &lt;iri&gt; [INTO GRAPH &lt;g&gt;]</span></td><td>远程拉图入库([ SILENT ] 吞错)</td></tr>
+    <tr><td><span class="code">CLEAR GRAPH &lt;g&gt;</span> / DEFAULT / NAMED / ALL</td><td>清空图内容</td></tr>
+    <tr><td></td><td><span class="code">CREATE / DROP GRAPH &lt;g&gt;</span></td><td>建图 / 连图带定义删掉</td></tr>
+    <tr><td><span class="k">图搬运</span></td><td><span class="code">COPY / MOVE / ADD</span> [SILENT] FROM→TO</td><td>整图复制/搬移/并入(目标原图被替换或保留语义见规范)</td></tr>
+  </table>
+  <div class="codeblock"><span class="cm"># 归档:把 2025 图的旧论文移进 archive 图</span>
+<span class="kw">DELETE</span> { <span class="kw">GRAPH</span> <span class="iri">:papers2025</span> { ?p ?o ?v } }
+<span class="kw">INSERT</span> { <span class="kw">GRAPH</span> <span class="iri">:archive</span>   { ?p ?o ?v } }
+<span class="kw">WHERE</span>  { <span class="kw">GRAPH</span> <span class="iri">:papers2025</span> { ?p <span class="iri">ex:year</span> <span class="iri">"2025"</span>^^<span class="iri">xsd:gYear</span> ; ?o ?v } } ;
+
+<span class="kw">COPY</span> <span class="kw">SILENT</span> <span class="iri">:staging</span> <span class="kw">TO</span> <span class="iri">:production</span> .</div>
+  <div class="note">
+    <span class="tag">Graph Store HTTP Protocol</span>
+    不写 SPARQL 也能管图:HTTP PUT/POST/DELETE/GET 直接对 <span class="code">?graph=</span> 或 <span class="code">graph=</span> 参数代表的整图操作——ETL 脚本最爱。
+  </div>
+</section>
+
+<!-- 12 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">12</span><span class="sec-title">协议与结果格式 · HTTP 面孔</span>
+    <span class="sec-sub">PART 4 · PROTOCOL & RESULTS</span>
+  </div>
+  <table>
+    <tr><th>操作</th><th>HTTP 形态</th></tr>
+    <tr><td><span class="k">query</span></td><td>GET/POST(form)到端点;Accept 协商结果格式</td></tr>
+    <tr><td><span class="k">update</span></td><td>POST(form)到 update 端点——规范要求 update 走 POST</td></tr>
+    <tr><td><span class="k">结果格式</span></td><td><span class="code">application/sparql-results+json</span> · <span class="code">+xml</span> · <span class="code">text/csv</span> · <span class="code">text/tab-separated-values</span>;CONSTRUCT/DESCRIBE 出 RDF 序列化(Turtle 等)</td></tr>
+  </table>
+  <div class="codeblock"><span class="cm"># Service Description:端点自我介绍(GET 端点根,内容协商)</span>
+&lt;&gt; <span class="kw">a</span> <span class="iri">sd:Service</span> ;
+    <span class="iri">sd:endpoint</span> &lt;<span class="iri">http://example.org/sparql/</span>&gt; ;
+    <span class="iri">sd:supportedLanguage</span> <span class="iri">sd:SPARQL11Query</span>, <span class="iri">sd:SPARQL11Update</span> ;
+    <span class="iri">sd:defaultEntailmentRegime</span> <span class="iri">rdfs:RDFS</span> .</div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 10 · P.&thinsp;4/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 5 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SPARQ<em>L</em></div>
+    <div class="title-block">
+      <div class="title-cn">RDF 查询语言 1.1 · 规范速查</div>
+      <div class="title-en">SPARQL 1.1 — FEDERATION, NEXT &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;10</div>
+    <div class="meta">W3C / SPARQL 1.1 / 2013</div>
+  </div>
+</header>
+
+<!-- 13 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">13</span><span class="sec-title">联邦查询 · SERVICE 与分布式 joins</span>
+    <span class="sec-sub">PART 5 · FEDERATED QUERY</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 把 Wikidata 的片段拉进本地模式</span>
+<span class="kw">SELECT</span> ?label ?country <span class="kw">WHERE</span> {
+  <span class="iri">:alice</span> <span class="iri">foaf:based_near</span> ?city .
+  <span class="kw">SERVICE</span> &lt;<span class="iri">https://query.wikidata.org/sparql</span>&gt; {
+    ?city <span class="iri">rdfs:label</span> ?label .
+    ?city <span class="iri">wdt:P17</span> ?country .
+    <span class="kw">FILTER</span>(<span class="kw">LANG</span>(?label) = <span class="iri">"zh"</span>)
+  }
+}</div>
+  <div class="note warn">
+    <span class="tag">联邦的代价</span>
+    SERVICE 是黑盒:过滤下推靠各端点自觉,慢查询是常态。把可下推的 FILTER 写进 SERVICE 块内部、必要时用 VALUES 预绑关键变量,能省一个数量级。
+  </div>
+</section>
+
+<!-- 14 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">14</span><span class="sec-title">SPARQL 1.2 · 下一站</span>
+    <span class="sec-sub">PART 5 · SPARQL 1.2 NEXT</span>
+  </div>
+  <div class="note">
+    <span class="tag">正在路上(检索于 2026-10)</span>
+    SPARQL 1.2 由同一工作组推进(十二份文档,引 PL.06 §02):核心看点是与 RDF 1.2 对齐——三元词项可进查询模式、方向性语言标签的函数支持、Canonical SPARQL(规范化查询形)。本文的 1.1 内容全部是其子集。
+  </div>
+</section>
+
+<!-- 15 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">15</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 5 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>OPTIONAL 里套 FILTER:过滤留在 OPTIONAL 组<b>内部</b>才按预期工作,挪到外层语义就变。</li>
+    <li>MINUS 无共享变量 = 白减;该用 NOT EXISTS 的场景别图省事。</li>
+    <li>GROUP BY 后 SELECT 只许分组变量与聚合——裸变量直接报错。</li>
+    <li>GROUP_CONCAT 顺序不保证:要有序,先子查询排序再聚合。</li>
+    <li>OFFSET 翻页必须配 ORDER BY,否则页与页会重叠漏数据。</li>
+    <li>p* 恒含零步(自己到自己),要「严格后代」用 p+。</li>
+    <li>DESCRIBE 的子图范围由实现自定——跨端点结果不可比,生产查询写 SELECT。</li>
+    <li>字面量比较认类型:"5" ≠ 5;数值过滤前先 FILTER(datatype) 或统一类型。</li>
+    <li>语言标注串比较用 langMatches(lang(?v),"zh"),直接 = "zh" 会漏掉 zh-CN。</li>
+    <li>Update 默认无事务保证(端点自行决定):大批改动拆批 + 校验,别指望回滚。</li>
+    <li>SERVICE 里写死大模式:下推过滤、VALUES 预绑,否则联邦查询慢出天际。</li>
+    <li>空 WHERE / 空模式在 update 里是合法边界(全图操作),手滑写空的 DELETE WHERE = 清库。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 10 · P.&thinsp;5/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

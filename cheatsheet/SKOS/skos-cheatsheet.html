@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>K</em>OS</div>
+    <div class="title-block">
+      <div class="title-cn">知识组织系统 · 规范速查</div>
+      <div class="title-en">SKOS — OVERVIEW · KOS ON RDF</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;03</div>
+    <div class="meta">W3C / SKOS / 2009</div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 把图书馆的功夫搬上 RDF</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">SKOS 把叙词表、分类法的功夫搬上 RDF:概念当资源,标签说话,关系排结构,映射连外界。全卡结构 = 本图。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="43.4mm" viewBox="0 0 118 43.4">
+      <rect x="0.25" y="1.0" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="6.25" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">方案与概念</text>
+      <text x="32" y="6.25" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">ConceptScheme · Concept · hasTopConcept</text>
+      <text x="116.5" y="6.25" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">三个类起步</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.9" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.7 12.9,11.1 15.1,11.1" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.3" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.55" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">标注</text>
+      <text x="32" y="17.55" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">prefLabel / altLabel / hiddenLabel + note 网</text>
+      <text x="116.5" y="17.55" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">让概念开口说话</text>
+      <line x1="14" y1="21.2" x2="14" y2="23.2" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.0 12.9,22.400000000000002 15.1,22.400000000000002" fill="#C9BFAC"/>
+      <rect x="0.25" y="23.6" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="28.85" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">语义关系</text>
+      <text x="32" y="28.85" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">broader / narrower / related</text>
+      <text x="116.5" y="28.85" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">层级与关联</text>
+      <line x1="14" y1="32.5" x2="14" y2="34.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,35.300000000000004 12.9,33.7 15.1,33.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="34.900000000000006" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="40.150000000000006" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">映射与集合</text>
+      <text x="32" y="40.150000000000006" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">五种 match 对齐 · Collection 组袋</text>
+      <text x="116.5" y="40.150000000000006" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">跨词表的桥</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>一切围绕 Concept:方案装概念,标签说人话,关系排结构,映射连外界。</div>
+      <div class="t-note">改标签前先背三约束;跨体系对齐前先选对 match。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 把图书馆的功夫搬上 RDF</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">叙词表、分类法、标题表——图书情报界积攒了一个世纪的受控词汇,SKOS(Simple Knowledge Organization System)给它们一个 RDF 形状:概念用 <span class="code">skos:Concept</span>,体系用 <span class="code">skos:ConceptScheme</span>,层级用 broader/narrower,跨体系对齐用五种 match。</p>
+  <div class="def">
+    <span class="lbl">KEY POINT</span>
+    SKOS,<b>W3C Recommendation 2009-08-18</b>,命名空间 <b><span class="code">skos:</span> = <span class="code">http://www.w3.org/2004/02/skos/core#</span></b>。整个数据模型定义为 <b>OWL Full 本体</b>——不设形式一致性判据,违反约束的判定交给「是否导致逻辑矛盾」。RDFS 给世界分类,SKOS 给世界<b>整理概念</b>:一个东西可以既是 <span class="code">owl:Class</span> 又是 <span class="code">skos:Concept</span>,两者并不冲突。
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">三个类 · 体系、概念、集合</span>
+    <span class="sec-sub">PART 1 · THREE CLASSES</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="84mm" height="46mm" viewBox="0 0 84 46">
+      <rect x="28" y="2" width="28" height="9" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="42" y="7.9" font-family="JetBrainsMono" font-size="3.2" fill="#F6F1E7" text-anchor="middle" font-weight="700">ConceptScheme</text>
+      <rect x="8" y="24" width="22" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="19" y="29.9" font-family="JetBrainsMono" font-size="3.1" fill="#1C2430" text-anchor="middle" font-weight="700">Concept</text>
+      <rect x="56" y="24" width="24" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="68" y="29.9" font-family="JetBrainsMono" font-size="3.1" fill="#1C2430" text-anchor="middle" font-weight="700">Collection</text>
+      <line x1="33" y1="11" x2="21" y2="24" stroke="#B23A26" stroke-width="0.5"/>
+      <text x="20" y="15" font-family="JetBrainsMono" font-size="2.3" fill="#B23A26" font-weight="700" text-anchor="end">topConceptOf</text>
+      <line x1="51" y1="11" x2="63" y2="24" stroke="#7d7466" stroke-width="0.4" stroke-dasharray="1.5 1.1"/>
+      <text x="70" y="17.5" font-family="JetBrainsMono" font-size="2.3" fill="#7d7466" text-anchor="middle">无直接关系</text>
+      <rect x="54" y="39" width="28" height="6" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="68" y="43.4" font-family="JetBrainsMono" font-size="2.4" fill="#1C2430" text-anchor="middle">OrderedCollection</text>
+      <line x1="68" y1="33" x2="68" y2="39" stroke="#1C2430" stroke-width="0.35"/>
+      <text x="42" y="44.5" font-family="JetBrainsMono" font-size="2.3" fill="#33506E" text-anchor="middle">member / memberList</text>
+      <line x1="30" y1="30" x2="55" y2="34" stroke="#B23A26" stroke-width="0.45"/>
+      <text x="42" y="35.6" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" text-anchor="middle" font-weight="700">⟂ ⟂ ⟂</text>
+      <text x="36" y="41" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">三类两两不相交(S9 · S37)</text>
+      <text x="19" y="36.8" font-family="JetBrainsMono" font-size="2.2" fill="#3a4351" text-anchor="middle">思想单元</text>
+      <text x="68" y="21" font-size="2.2" font-family="JetBrainsMono" fill="#3a4351" text-anchor="middle">概念组袋</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>ConceptScheme</b> 是概念的聚合体:一份叙词表、一套分类法。<span class="code">hasTopConcept</span> 从体系指到顶层概念,<span class="code">topConceptOf</span> 反向且同时是 <span class="code">inScheme</span> 的子属性。</div>
+      <div class="t-note"><b>Collection</b> 是「概念组袋」——把一组概念挂个名(如「乳制品」),但<b>它不是概念</b>:对集合写 broader 会直接造成逻辑矛盾。</div>
+      <div class="t-note">三类两两不相交是 SKOS 少数的硬约束——比起 owl 一家,SKOS 的「法律」很少,但这条是真的。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">体系外视野 · SKOS 对应哪一类活儿</span>
+    <span class="sec-sub">PART 1 · KOS LANDSCAPE</span>
+  </div>
+  <table>
+    <tr><th>传统体系</th><th>特征</th><th>SKOS 对应</th></tr>
+    <tr><td><span class="k">受控词表</span></td><td>一个术语指向唯一概念</td><td>ConceptScheme + prefLabel/altLabel</td></tr>
+    <tr><td><span class="k">分类法 taxonomy</span></td><td>树形层级为主</td><td>broader / narrower</td></tr>
+    <tr><td><span class="k">叙词表 thesaurus</span></td><td>层级 + 关联 + 用/代/属/分/参</td><td>SKOS 全家桶(alt = 用/代,related = 参)</td></tr>
+    <tr><td><span class="k">分类编码 classification</span></td><td>字母数字编码体系(如 DDC)</td><td>notation</td></tr>
+    <tr><td><span class="k">规范文档 authority file</span></td><td>人名地名的规范形式</td><td>prefLabel + exactMatch</td></tr>
+  </table>
+  <div class="sub">世界级词表 · 都已是 SKOS 或有 SKOS 镜像</div>
+  <table>
+    <tr><th>词表</th><th>领域</th><th>规模感受</th></tr>
+    <tr><td><span class="k">EuroVoc</span></td><td>欧盟多语言主题词表</td><td>二十余种语言,数万概念——多语言 SKOS 的标杆</td></tr>
+    <tr><td><span class="k">MeSH</span></td><td>医学主题词</td><td>医学检索的事实标准,有 RDF 化镜像</td></tr>
+    <tr><td><span class="k">LCSH</span></td><td>美国国会图书馆标题表</td><td>最大规模图书馆标题表之一,id.loc.gov 直接发 RDF</td></tr>
+    <tr><td><span class="k">AGROVOC</span></td><td>农业叙词表</td><td>FAO 维护,SKOS 发布的教科书案例</td></tr>
+    <tr><td><span class="k">GB/T 中文叙词表</span></td><td>中文领域词表</td><td>国内叙词表工程多以 SKOS 为交换格式</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 03 · P.&thinsp;1/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>K</em>OS</div>
+    <div class="title-block">
+      <div class="title-cn">知识组织系统 · 规范速查</div>
+      <div class="title-en">SKOS — LABELING: PREF/ALT/HIDDEN, NOTES, XL</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;03</div>
+    <div class="meta">W3C / SKOS / 2009</div>
+  </div>
+</header>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">标注词汇 · 让概念开口说话</span>
+    <span class="sec-sub">PART 2 · LABELING VOCAB</span>
+  </div>
+  <table>
+    <tr><th>属性</th><th>角色</th><th>约束</th></tr>
+    <tr class="hl"><td><span class="code">skos:prefLabel</span></td><td>首选标签——界面显示用它</td><td><b>每个语言标签至多一个</b>(S14);与 alt/hidden 互斥(S13)</td></tr>
+    <tr><td><span class="code">skos:altLabel</span></td><td>替代标签——同义词、别名、旧称</td><td>「用/代」里的「代」</td></tr>
+    <tr><td><span class="code">skos:hiddenLabel</span></td><td>隐藏标签——只给搜索索引看,不显示</td><td>拼写变体、错拼兜底</td></tr>
+    <tr><td><span class="code">skos:notation</span></td><td>符号编码——DDC 分类号、术语代码</td><td>约定用<b>类型化字面量</b>;同体系内唯一是约定不是硬约束</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">三个都 ⊑ rdfs:label</span>
+    pref/alt/hidden 都是 <span class="code">rdfs:label</span> 的子属性,值域是普通字面量。语言标签<b>不是硬性要求</b>(S14 只约束「同一标签至多一条」),但跨语言检索全靠它——实践中一律补齐。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">文档属性 · 一张 note 网撑起说明书</span>
+    <span class="sec-sub">PART 2 · DOCUMENTATION NOTES</span>
+  </div>
+  <table>
+    <tr><th>属性</th><th>写什么</th></tr>
+    <tr class="hl"><td><span class="code">skos:note</span></td><td>总note;下面六个都是它的子属性,语义细分</td></tr>
+    <tr><td><span class="code">skos:definition</span></td><td>正式定义——概念的「官方解释」</td></tr>
+    <tr><td><span class="code">skos:scopeNote</span></td><td>范围说明——收录什么、排除什么</td></tr>
+    <tr><td><span class="code">skos:example</span></td><td>用例</td></tr>
+    <tr><td><span class="code">skos:historyNote</span></td><td>历史沿革(概念的演变)</td></tr>
+    <tr><td><span class="code">skos:editorialNote</span></td><td>编者注(给后续编辑者的便条)</td></tr>
+    <tr><td><span class="code">skos:changeNote</span></td><td>变更记录(这次改了什么)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">全都无 domain / range</span>
+    文档属性刻意不加约束——note 可以挂概念、挂体系、挂集合。想让 note 结构化(如带出处、带作者),别硬塞字面量,看 SKOS-XL 的思路把 note 升级成资源,或直接用 PROV-O(PL.11)。
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">标签三约束 · 写数据前背下来</span>
+    <span class="sec-sub">PART 2 · LABEL CONSTRAINTS</span>
+  </div>
+  <div class="def">
+    <span class="lbl">S13 · S14 · 原文要义</span>
+    ① pref / alt / hidden <b>两两互斥</b>:同一资源上,同一个字符串不能既是 prefLabel 又是 altLabel。② <b>每个语言标签至多一条 prefLabel</b>:"color"@en 与 "colour"@en-GB 可以共存——en、en-GB 是不同标签。③ 有 alt 没 pref <b>不算错</b>,但不建议。
+  </div>
+  <div class="chips">
+    <div class="chip hot"><span class="cn">每语言一 pref</span><span class="en">S14</span></div>
+    <div class="chip hot"><span class="cn">三属性互斥</span><span class="en">S13</span></div>
+    <div class="chip"><span class="cn">alt 可独立存在</span><span class="en">consistent</span></div>
+    <div class="chip"><span class="cn">notation 用类型化字面量</span><span class="en">convention</span></div>
+  </div>
+  <div class="sub">多语言词表的三层标签策略</div>
+  <table>
+    <tr><th>层</th><th>放什么</th><th>例</th></tr>
+    <tr><td><span class="k">prefLabel × N 语言</span></td><td>每种官方语言恰好一个规范名</td><td><span class="code">"动物"@zh-CN</span> + <span class="code">"Animal"@en</span></td></tr>
+    <tr><td><span class="k">altLabel × 任意</span></td><td>同语言内的同义词、俗称、新旧译名</td><td><span class="code">" biologist 俗称"@zh</span></td></tr>
+    <tr><td><span class="k">hiddenLabel</span></td><td>检索兜底:繁简、错拼、旧码</td><td><span class="code">"動物"@zh-CN</span></td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">语言标签纪律</span>
+    <span class="code">zh</span>、<span class="code">zh-CN</span>、<span class="code">zh-TW</span> 是三个不同标签,各算各的「每语言一条」——词表开工前先定语言标签清单,全员照写,否则每语言一 pref 的约束形同虚设。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">SKOS-XL · 把标签升级成资源</span>
+    <span class="sec-sub">PART 2 · SKOS-XL</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>为什么要 XL <span>label as resource</span></h4>
+      <ul>
+        <li>普通标签是字面量——查不了「谁在用这个词形」</li>
+        <li>XL 把标签变成 <span class="code">skosxl:Label</span> 资源:可挂出处、版本、语料统计</li>
+        <li>同一词形被多概念共用时,有了统一的「词形节点」</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>怎么用 <span>Appendix B</span></h4>
+      <ul>
+        <li><span class="code">skosxl:prefLabel / altLabel / hiddenLabel</span>:值是 Label 资源而非字面量</li>
+        <li>与 SKOS 核心标注并存,共同约束照搬(每语言一 pref 等)</li>
+        <li>机器互操作注意:很多工具只认核心标注,XL 数据要回落导出</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 03 · P.&thinsp;2/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>K</em>OS</div>
+    <div class="title-block">
+      <div class="title-cn">知识组织系统 · 规范速查</div>
+      <div class="title-en">SKOS — RELATIONS, MAPPINGS &amp; COLLECTIONS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;03</div>
+    <div class="meta">W3C / SKOS / 2009</div>
+  </div>
+</header>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">语义关系 · 层级与关联的完整矩阵</span>
+    <span class="sec-sub">PART 3 · SEMANTIC RELATIONS</span>
+  </div>
+  <table>
+    <tr><th>属性</th><th>方向性</th><th>要点</th></tr>
+    <tr><td><span class="code">skos:semanticRelation</span></td><td>—</td><td>所有语义关系的祖先;domain = range = skos:Concept</td></tr>
+    <tr class="hl"><td><span class="code">skos:broader</span></td><td>⟷ narrower(互逆)</td><td><b>不传递</b>——只断言直接上级;⊑ broaderTransitive</td></tr>
+    <tr><td><span class="code">skos:narrower</span></td><td>⟷</td><td>broader 的正式反向(owl:inverseOf)</td></tr>
+    <tr><td><span class="code">skos:related</span></td><td>对称</td><td>横向关联;<b>不传递</b>;与 broaderTransitive <b>不相容</b>(S27)</td></tr>
+    <tr><td><span class="code">skos:broaderTransitive / narrowerTransitive</span></td><td>互逆</td><td>传递;约定<b>只用于推理不当断言</b>——查询时展开,落盘时少写</td></tr>
+    <tr><td><span class="code">skos:hasTopConcept / topConceptOf</span></td><td>互逆</td><td>体系 ↔ 顶层概念;topConceptOf ⊑ inScheme</td></tr>
+    <tr><td><span class="code">skos:inScheme</span></td><td>—</td><td>概念属于哪些体系;一个概念可属多个体系</td></tr>
+  </table>
+  <div class="note warn">
+    <span class="tag">S27 的后果</span>
+    related 与 broaderTransitive 不相容:x related y 且 x(传递地)y,图即矛盾。直白的层级别写 related,横向的联想别进 broader 链——叙词表的「属分」与「参」在 SKOS 里真的互斥。
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">映射词汇 · 跨体系对齐的五种 match</span>
+    <span class="sec-sub">PART 3 · MAPPING VOCAB</span>
+  </div>
+  <table>
+    <tr><th>属性</th><th>对称</th><th>传递</th><th>何时用</th></tr>
+    <tr class="hl"><td><span class="code">skos:exactMatch</span></td><td class="yes">是</td><td class="yes">是</td><td>两概念可互换使用(跨体系「同一个」)</td></tr>
+    <tr><td><span class="code">skos:closeMatch</span></td><td class="yes">是</td><td class="no">刻意不</td><td>明显相关但不可互换;不传递是为防「连锁误传」</td></tr>
+    <tr><td><span class="code">skos:broadMatch</span></td><td>⟷ narrowMatch</td><td>—</td><td>对方概念是本概念的上位(⊑ broader)</td></tr>
+    <tr><td><span class="code">skos:narrowMatch</span></td><td>⟷</td><td>—</td><td>broadMatch 的正式反向</td></tr>
+    <tr><td><span class="code">skos:relatedMatch</span></td><td class="yes">是</td><td>—</td><td>横向相关(⊑ related)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">子属性链的推理后果</span>
+    五个 match 都是 <span class="code">mappingRelation</span> 的子属性,而 mappingRelation ⊑ semanticRelation——断言一条 match,自动推出对应语义关系与 Concept 类型。exactMatch 与 broadMatch/relatedMatch 不相容(S46)。
+  </div>
+  <div class="sub">映射实战五步</div>
+  <ol class="check">
+    <li><b>拉候选</b>:标签相似度 + 结构相似度(各自的 broader 邻域)双路召回,人工只看短名单。</li>
+    <li><b>对定义</b>:比 <span class="code">definition</span> 和 <span class="code">scopeNote</span>,不看名字看范围——收录边界不同就别 exact。</li>
+    <li><b>定级别</b>:可互换 → exact;方向明确 → broad/narrow;沾边 → related;拿不准 → close。</li>
+    <li><b>记出处</b>:映射本身是一条断言,配 <span class="code">dcterms:source</span> 或 PROV-O(PL.11)记录谁、何时、凭什么。</li>
+    <li><b>留维护钩子</b>:词表会改版——映射挂版本化的概念 IRI,别挂会漂移的标签。</li>
+  </ol>
+</section>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">集合 · 不是概念的「组袋」</span>
+    <span class="sec-sub">PART 3 · COLLECTIONS</span>
+  </div>
+  <table>
+    <tr><th>机制</th><th>说明</th></tr>
+    <tr><td><span class="code">skos:Collection</span></td><td>命名的概念组(如「乳制品」「不善飞行的鸟」);与 Concept / ConceptScheme 均不相交</td></tr>
+    <tr><td><span class="code">skos:member</span></td><td>domain Collection,range = Concept ∪ Collection——集合可以套集合</td></tr>
+    <tr><td><span class="code">skos:OrderedCollection</span></td><td>有序变体;memberList(range rdf:List)是<b>函数属性</b>,且蕴含每个成员的 member</td></tr>
+    <tr><td><span class="k">语义关系禁区</span></td><td>集合上写 broader/related 会矛盾——关系的 domain/range 是 Concept,集合不是</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 03 · P.&thinsp;3/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>K</em>OS</div>
+    <div class="title-block">
+      <div class="title-cn">知识组织系统 · 规范速查</div>
+      <div class="title-en">SKOS — A WORKED VOCABULARY &amp; RECIPES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;03</div>
+    <div class="meta">W3C / SKOS / 2009</div>
+  </div>
+</header>
+
+<!-- 12 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">12</span><span class="sec-title">一份小叙词表 · Turtle</span>
+    <span class="sec-sub">PART 4 · A WORKED EXAMPLE</span>
+  </div>
+  <div class="codeblock"><span class="kw">@prefix</span> <span class="iri">skos:</span> &lt;<span class="iri">http://www.w3.org/2004/02/skos/core#</span>&gt; .
+<span class="kw">@prefix</span> <span class="iri">:</span>     &lt;<span class="iri">http://example.org/thes/</span>&gt; .
+
+<span class="iri">:animalThes</span> <span class="kw">a</span> <span class="iri">skos:ConceptScheme</span> ;
+    <span class="kw">skos:hasTopConcept</span> <span class="iri">:animal</span> .
+
+<span class="iri">:animal</span> <span class="kw">a</span> <span class="iri">skos:Concept</span> ;
+    <span class="kw">skos:prefLabel</span> <span class="iri">"动物"@zh-CN</span>, <span class="iri">"Animal"@en</span> ;   <span class="cm"># 每语言一条首选</span>
+    <span class="kw">skos:altLabel</span> <span class="iri">"生物界成员"@zh-CN</span> ;
+    <span class="kw">skos:hiddenLabel</span> <span class="iri">"動物"@zh-CN</span> ;              <span class="cm"># 繁体进搜索不显示</span>
+    <span class="kw">skos:notation</span> <span class="iri">"A-01"</span>^^<span class="kw">:NCode</span> ;
+    <span class="kw">skos:definition</span> <span class="iri">"多细胞真核生命体的统称。"@zh-CN</span> ;
+    <span class="kw">skos:scopeNote</span> <span class="iri">"不含病毒等非细胞生命。"@zh-CN</span> ;
+    <span class="kw">skos:topConceptOf</span> <span class="iri">:animalThes</span> ;
+    <span class="kw">skos:narrower</span> <span class="iri">:mammal</span> .
+
+<span class="iri">:mammal</span> <span class="kw">a</span> <span class="iri">skos:Concept</span> ;
+    <span class="kw">skos:prefLabel</span> <span class="iri">"哺乳动物"@zh-CN</span> ;
+    <span class="kw">skos:broader</span> <span class="iri">:animal</span> ;                     <span class="cm"># 只写直接上级</span>
+    <span class="kw">skos:inScheme</span> <span class="iri">:animalThes</span> .
+
+<span class="iri">:flightlessGroup</span> <span class="kw">a</span> <span class="iri">skos:Collection</span> ;
+    <span class="kw">skos:prefLabel</span> <span class="iri">"不善飞行的鸟"@zh-CN</span> ;
+    <span class="kw">skos:member</span> <span class="iri">:penguin</span>, <span class="iri">:ostrich</span> .
+
+<span class="iri">:bird</span> <span class="kw">a</span> <span class="iri">skos:Concept</span> ; <span class="kw">skos:broader</span> <span class="iri">:animal</span> ;
+    <span class="kw">skos:exactMatch</span> &lt;<span class="iri">http://dbpedia.org/resource/Bird</span>&gt; .</div>
+</section>
+
+<!-- 13 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">13</span><span class="sec-title">与 RDFS / OWL 共存 · 分工不打架</span>
+    <span class="sec-sub">PART 4 · WITH RDFS/OWL</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>什么归 SKOS <span>terms</span></h4>
+      <ul>
+        <li>整理「人们怎么说」:概念、别名、层级、跨表映射</li>
+        <li>叙词表、分类法、标题表的 RDF 化</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>什么归 RDFS / OWL <span>logic</span></h4>
+      <ul>
+        <li>形式类与属性:实例判定、限制、推理</li>
+        <li>一个 IRI 同时是 Concept 和 Class 是合法的,但要想清楚两边各答什么问题</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">工程取向</span>
+    领域本体(是什么)走 RDFS/OWL;术语体系(怎么叫)走 SKOS;两者用 annotation 或 seeAlso 桥接,别用推理硬绑。
+  </div>
+</section>
+
+<!-- 14 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">14</span><span class="sec-title">SPARQL 查询速查 · 词表的日常问法</span>
+    <span class="sec-sub">PART 4 · SPARQL RECIPES</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 1. 体系里的顶层概念</span>
+<span class="kw">SELECT</span> ?top <span class="kw">WHERE</span> { &lt;<span class="iri">…/thes/animalThes</span>&gt; <span class="iri">skos:hasTopConcept</span> ?top }
+
+<span class="cm"># 2. 概念的全部后代(展开传递链——别在数据里存它)</span>
+<span class="kw">SELECT</span> ?desc <span class="kw">WHERE</span> { ?desc (<span class="iri">skos:broader</span>|<span class="iri">skos:broadMatch</span>)+ &lt;<span class="iri">…/thes/animal</span>&gt; }
+
+<span class="cm"># 3. 搜索:pref 搜不到时落到 alt / hidden</span>
+<span class="kw">SELECT</span> ?c ?pref <span class="kw">WHERE</span> {
+  ?c (<span class="iri">skos:prefLabel</span>|<span class="iri">skos:altLabel</span>|<span class="iri">skos:hiddenLabel</span>) ?hit .
+  <span class="kw">FILTER</span>(<span class="kw">langMatches</span>(<span class="kw">lang</span>(?hit), <span class="iri">"zh"</span>))
+  ?c <span class="iri">skos:prefLabel</span> ?pref . <span class="kw">FILTER</span>(<span class="kw">lang</span>(?pref) = <span class="iri">"zh-CN"</span>)
+}
+
+<span class="cm"># 4. 跨体系对齐:两套词表的重叠地带</span>
+<span class="kw">SELECT</span> ?a ?b <span class="kw">WHERE</span> {
+  ?a <span class="iri">skos:exactMatch</span>|<span class="iri">skos:closeMatch</span> ?b .
+  ?a <span class="iri">skos:inScheme</span> &lt;<span class="iri">…/thes/a</span>&gt; . ?b <span class="iri">skos:inScheme</span> &lt;<span class="iri">…/thes/b</span>&gt;
+}</div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 03 · P.&thinsp;4/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 5 / 5 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">S<em>K</em>OS</div>
+    <div class="title-block">
+      <div class="title-cn">知识组织系统 · 规范速查</div>
+      <div class="title-en">SKOS — FORMAL CONSTRAINTS, PITFALLS &amp; TOOLING</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;03</div>
+    <div class="meta">W3C / SKOS / 2009</div>
+  </div>
+</header>
+
+<!-- 15 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">15</span><span class="sec-title">形式约束清单 · SKOS 少数几条硬法</span>
+    <span class="sec-sub">PART 5 · FORMAL CONSTRAINTS</span>
+  </div>
+  <table>
+    <tr><th>编号</th><th>约束</th></tr>
+    <tr><td><span class="code">S9</span></td><td><span class="code">ConceptScheme</span> 与 <span class="code">Concept</span> 不相交</td></tr>
+    <tr><td><span class="code">S13</span></td><td>prefLabel / altLabel / hiddenLabel 两两不相交</td></tr>
+    <tr><td><span class="code">S14</span></td><td>每个语言标签至多一条 prefLabel</td></tr>
+    <tr><td><span class="code">S27</span></td><td><span class="code">related</span> 与 <span class="code">broaderTransitive</span>(连带 narrowerTransitive)不相容</td></tr>
+    <tr><td><span class="code">S37</span></td><td><span class="code">Collection</span> 与 Concept、ConceptScheme 均不相交</td></tr>
+    <tr><td><span class="code">S46</span></td><td><span class="code">exactMatch</span> 与 broadMatch、relatedMatch 不相容</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">判定的口径</span>
+    这些约束的违反定义为「导致逻辑矛盾」——用带 OWL 推理的引擎能查出来;普通 RDF 存储不会拦你,入库前自查或用 SKOS 校验工具。
+  </div>
+</section>
+
+<!-- 16 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">16</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 5 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>broader <b>不传递</b>:要「所有后代」查询时展开 broaderTransitive(+ 路径),别在数据里手写传递链。</li>
+    <li>Transitive 系按约定<b>只推不断言</b>:落盘写传递闭包既冗余又容易过期。</li>
+    <li>prefLabel 每语言一条——双语同义词请分流到 altLabel,别塞两个 pref。</li>
+    <li>同一字符串不能同占 pref 与 alt(S13):改首选时记得把旧 alt 删掉。</li>
+    <li>层级走层级、联想走 related:同一对概念两条都写,若闭包相连即矛盾(S27)。</li>
+    <li>Collection 不是 Concept:对集合写 broader/related 直接矛盾(S37 + 关系的 domain/range)。</li>
+    <li>exactMatch 传递、closeMatch 刻意不传递——「大概像」的断言连成链会放大错误,规范替你踩了刹车。</li>
+    <li>映射要留出处:SKOS 不替你管 provenance,映射断言请配 PROV-O(PL.11)或至少 dcterms:source。</li>
+    <li>notation 同体系唯一是<b>约定</b>:入库查重自己做,规范不拦。</li>
+    <li>SKOS 本体在 OWL Full:推理机选档要小心,别在 OWL DL 严格模式下硬加载。</li>
+  </ol>
+</section>
+
+<!-- 17 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">17</span><span class="sec-title">工具速览 · 词表工程从哪进</span>
+    <span class="sec-sub">PART 5 · TOOLING</span>
+  </div>
+  <table>
+    <tr><th>工具</th><th>路线</th></tr>
+    <tr><td><span class="k">Skosify</span></td><td>RDF/SKOS 校验、迁移、清理的脚本工具</td></tr>
+    <tr><td><span class="k">Protégé SKOS 插件</span></td><td>本体编辑器里直接维护概念树</td></tr>
+    <tr><td><span class="k">VocBench / PoolParty</span></td><td>团队协同的词表管理平台</td></tr>
+    <tr><td><span class="k">SKOS Play!</span></td><td>在线渲染对齐表 / 概念树,汇报利器</td></tr>
+    <tr><td><span class="k">Jena / rdflib + SPARQL</span></td><td>通用解析与查询,层级展开靠 property path</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 03 · P.&thinsp;5/5</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

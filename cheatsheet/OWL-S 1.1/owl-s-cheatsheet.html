@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OWL-<em>S</em></div>
+    <div class="title-block">
+      <div class="title-cn">语义 Web 服务标记 · 规范速查</div>
+      <div class="title-en">OWL-S — OVERVIEW · SERVICE &amp; ITS THREE DOSSIERS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;08</div>
+    <div class="meta">W3C / OWL-S 1.1 / 2004</div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 一个服务,三份档案</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">OWL-S 用一份本体描述服务:Profile 负责被发现,ProcessModel 负责被理解,Grounding 负责被执行。先看三个问题怎么分给三份档案,再逐层拆。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="55.2mm" viewBox="0 0 118 55.2">
+      <rect x="0.25" y="1.0" width="27.5" height="11.0" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="8.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">Service 顶点</text>
+      <text x="32" y="8.4" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">一个服务,三份档案的聚合点</text>
+      <text x="116.5" y="8.4" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">owl-s:Service</text>
+      <line x1="14" y1="12.4" x2="14" y2="14.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,15.2 12.9,13.6 15.1,13.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="15.4" width="27.5" height="11.0" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="22.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">Profile</text>
+      <text x="32" y="22.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">是什么 · 给谁 · 怎么用</text>
+      <text x="116.5" y="22.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">广告与发现</text>
+      <line x1="14" y1="26.799999999999997" x2="14" y2="28.799999999999997" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,29.599999999999998 12.9,28.0 15.1,28.0" fill="#C9BFAC"/>
+      <rect x="0.25" y="29.8" width="27.5" height="11.0" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="37.1" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">ProcessModel</text>
+      <text x="32" y="37.2" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">原子/复合过程 · IOPE · 编排</text>
+      <text x="116.5" y="37.2" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">怎么跑</text>
+      <line x1="14" y1="41.199999999999996" x2="14" y2="43.199999999999996" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,44.0 12.9,42.4 15.1,42.4" fill="#C9BFAC"/>
+      <rect x="0.25" y="44.2" width="27.5" height="11.0" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="51.5" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">Grounding</text>
+      <text x="32" y="51.6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">映射到 WSDL 才能真调</text>
+      <text x="116.5" y="51.6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">怎么调</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>发现看 Profile,编排看 Process,调用看 Grounding——三份档案各答一个问题。</div>
+      <div class="t-note">过程模型是重心:IOPE 四大件 + 九件控制构造,撑起全部流程表达。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 三档案 → 过程模型细节 → 落地与遗产。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 让机器看懂「服务」</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">OWL-S(Semantic Markup for Web Services,前身 DAML-S)用本体给 Web 服务写三份「档案」:能干什么、怎么运转、怎么调用——让服务发现、编排、调用全部自动化。它是后来一切语义服务描述的思想源头。</p>
+  <div class="def">
+    <span class="lbl">STATUS · 身份先看清</span>
+    OWL-S 1.1,<b>W3C Member Submission 2004-11-22</b>(法国电信、马里兰大学 MIND 实验室、NIST、斯坦福等九家联合提交)——<b>不是 W3C Recommendation</b>。规范文本位于 w3.org/Submission/,发布即定稿,此后没有 W3C 主导的后续版本。
+  </div>
+  <table>
+    <tr><th>上层模块</th><th>回答的问题</th><th>用途</th></tr>
+    <tr class="hl"><td><span class="k">ServiceProfile</span></td><td>这个服务能提供什么?</td><td>广告与发现</td></tr>
+    <tr class="hl"><td><span class="k">ServiceModel</span></td><td>它怎么运转?</td><td>过程建模、编排、仿真</td></tr>
+    <tr class="hl"><td><span class="k">ServiceGrounding</span></td><td>怎么跟它交互?</td><td>协议、消息格式、序列化</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">Service · 一个服务,三份档案</span>
+    <span class="sec-sub">PART 1 · THE TOP CLASS</span>
+  </div>
+  <div class="fig-wrap">
+    <svg width="92mm" height="48mm" viewBox="0 0 92 48">
+      <rect x="34" y="2" width="24" height="9" fill="#B23A26" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="46" y="8" font-family="JetBrainsMono" font-size="3.2" fill="#F6F1E7" text-anchor="middle" font-weight="700">Service</text>
+      <rect x="2" y="26" width="26" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="15" y="32" font-family="JetBrainsMono" font-size="2.9" fill="#1C2430" text-anchor="middle" font-weight="700">ServiceProfile</text>
+      <rect x="33" y="26" width="26" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="46" y="32" font-family="JetBrainsMono" font-size="2.9" fill="#1C2430" text-anchor="middle" font-weight="700">ServiceModel</text>
+      <rect x="64" y="26" width="26" height="9" fill="#fff" stroke="#1C2430" stroke-width="0.5"/>
+      <text x="77" y="32" font-family="JetBrainsMono" font-size="2.9" fill="#1C2430" text-anchor="middle" font-weight="700">ServiceGrounding</text>
+      <line x1="40" y1="11" x2="15" y2="26" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="20" y="18" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" font-weight="700">presents</text>
+      <line x1="46" y1="11" x2="46" y2="26" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="50" y="19" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" font-weight="700">describedBy</text>
+      <line x1="52" y1="11" x2="77" y2="26" stroke="#1C2430" stroke-width="0.45"/>
+      <text x="70" y="18" font-family="JetBrainsMono" font-size="2.4" fill="#B23A26" font-weight="700">supports</text>
+      <text x="15" y="41" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">发现用 · 数量不限</text>
+      <text x="46" y="41" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">至多一个模型</text>
+      <text x="77" y="41" font-family="JetBrainsMono" font-size="2.2" fill="#7d7466" text-anchor="middle">一个 grounding 只属于一个服务</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><span class="code">Service</span> 是枢纽类:每个已发布服务一个实例,经 <span class="code">presents / describedBy / supports</span> 挂上三份档案;profile 侧有反向属性 <span class="code">presentedBy</span>。</div>
+      <div class="t-note">基数规矩:<b>模型至多一个</b>;grounding 必须唯一归属;profile 和 grounding 数量上不封顶。</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 08 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OWL-<em>S</em></div>
+    <div class="title-block">
+      <div class="title-cn">语义 Web 服务标记 · 规范速查</div>
+      <div class="title-en">OWL-S — PROFILE, PROCESS MODEL &amp; IOPE</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;08</div>
+    <div class="meta">W3C / OWL-S 1.1 / 2004</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">Profile · 给服务写「招聘启事」</span>
+    <span class="sec-sub">PART 2 · PROFILE</span>
+  </div>
+  <table>
+    <tr><th>描述块</th><th>内容</th></tr>
+    <tr><td><span class="k">提供方信息</span></td><td>联系人、服务名、联系方式</td></tr>
+    <tr class="hl"><td><span class="k">功能描述</span></td><td><b>IOPE</b>:Inputs / Outputs / Preconditions / Effects——发现与匹配的核心</td></tr>
+    <tr><td><span class="k">属性</span></td><td><span class="code">serviceParameter</span>(技术参数)· <span class="code">serviceCategory</span> · <span class="code">serviceClassification</span>(挂 UNSPSC 等分类)· <span class="code">serviceProduct</span></td></tr>
+    <tr><td><span class="k">分类字段</span></td><td><span class="code">categoryName</span> · <span class="code">taxonomy</span> · <span class="code">value</span> · <span class="code">code</span></td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">匹配怎么发生</span>
+    发现引擎比对「请求的 IOPE」与「广告的 IOPE」:输入类型可供给、输出类型是子集、前置条件可满足、效果可接受——四级过滤,从粗到细。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">Process 三兄弟 · 过程模型的骨架</span>
+    <span class="sec-sub">PART 2 · PROCESS MODEL</span>
+  </div>
+  <table>
+    <tr><th>类</th><th>性质</th><th>关系</th></tr>
+    <tr class="hl"><td><span class="k">AtomicProcess</span></td><td>单步、<b>可直接调用</b>、必须有 grounding</td><td>Simple 的 realizedBy</td></tr>
+    <tr><td><span class="k">SimpleProcess</span></td><td>抽象描述,<b>不可调用</b>、无 grounding</td><td>expandsTo 展开 → Composite;realizedBy 落地 → Atomic</td></tr>
+    <tr><td><span class="k">CompositeProcess</span></td><td>由控制构造组装的复合流程</td><td>恰好一个 <span class="code">composedOf</span>(range ControlConstruct)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">Perform 与 Produce</span>
+    复合流程里的每一步是 <span class="code">Perform</span> 实例(调用某个原子/简单过程);<span class="code">Produce</span> 负责在流程中途向复合过程「发」输出。步骤之间怎么传值,见 §09 的 Binding。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">IOPE · 服务描述的四大件</span>
+    <span class="sec-sub">PART 2 · IOPE</span>
+  </div>
+  <table>
+    <tr><th>件</th><th>属性</th><th>含义</th></tr>
+    <tr><td><span class="k">Input</span></td><td><span class="code">hasInput</span></td><td>调用前必须给的东西</td></tr>
+    <tr><td><span class="k">Output</span></td><td><span class="code">hasOutput</span></td><td>服务产出的东西</td></tr>
+    <tr><td><span class="k">Precondition</span></td><td><span class="code">hasPrecondition</span></td><td>调用成立的先决条件(如「信用卡有效」)</td></tr>
+    <tr><td><span class="k">Effect</span></td><td><span class="code">hasResult</span></td><td>执行后世界状态的改变(如「订单已创建」)</td></tr>
+  </table>
+  <div class="owa">
+    <div class="cell a">
+      <h4>参数类 <span>Parameter</span></h4>
+      <ul>
+        <li>Parameter ⊑ <span class="code">swrl:Variable</span>(直接挂上规则语言)</li>
+        <li>四子类两两不相交:Input / Output / Local / ResultVar</li>
+        <li>类型经 <span class="code">parameterType</span>(至少一条 IRI)</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>Result 的细化 <span>conditional</span></h4>
+      <ul>
+        <li><span class="code">inCondition</span>:在什么条件下</li>
+        <li><span class="code">withOutput / hasEffect</span>:有何输出与效果</li>
+        <li>「条件结果」——同一个服务,不同情形不同后效</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">控制构造 · 流程编排九件套</span>
+    <span class="sec-sub">PART 2 · CONTROL CONSTRUCTS</span>
+  </div>
+  <table>
+    <tr><th>构造</th><th>语义</th></tr>
+    <tr><td><span class="code">Sequence</span></td><td>顺序执行</td></tr>
+    <tr><td><span class="code">Split</span></td><td>并发全开,不等彼此</td></tr>
+    <tr><td><span class="code">Split-Join</span></td><td>并发 + 屏障同步(全部完成才继续)</td></tr>
+    <tr><td><span class="code">Any-Order</span></td><td>都要执行,顺序随意</td></tr>
+    <tr><td><span class="code">Choice</span></td><td>多选一执行</td></tr>
+    <tr><td><span class="code">If-Then-Else</span></td><td><span class="code">ifCondition / then / else</span></td></tr>
+    <tr><td><span class="code">Iterate</span></td><td>抽象迭代(不落地)</td></tr>
+    <tr><td><span class="code">Repeat-While / Repeat-Until</span></td><td>条件循环(<span class="code">whileCondition / untilCondition</span> + 循环体)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">表达式哪来</span>
+    条件与效果是 <span class="code">Expression</span>(<span class="code">expressionLanguage</span> + <span class="code">expressionBody</span>):KIF/PDDL 用字符串字面量,SWRL/RDF/DRS 用 XML 字面量——语言开放,塞什么逻辑随你。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 08 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OWL-<em>S</em></div>
+    <div class="title-block">
+      <div class="title-cn">语义 Web 服务标记 · 规范速查</div>
+      <div class="title-en">OWL-S — GROUNDING, DATAFLOW &amp; LEGACY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;08</div>
+    <div class="meta">W3C / OWL-S 1.1 / 2004</div>
+  </div>
+</header>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">Grounding · 从本体落到 WSDL</span>
+    <span class="sec-sub">PART 3 · GROUNDING</span>
+  </div>
+  <p class="desc">OWL-S 1.1 的 grounding 以 <b>WSDL 1.1</b> 为落点:抽象过程映射到具体操作。</p>
+  <table>
+    <tr><th>OWL-S 侧</th><th>WSDL 侧</th></tr>
+    <tr><td><span class="k">AtomicProcess</span></td><td>operation(request-response / one-way / notification;复合过程另用 solicit-response)</td></tr>
+    <tr><td><span class="k">Input / Output</span></td><td>message parts</td></tr>
+    <tr><td><span class="k">OWL 类型</span></td><td>abstract types</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">扩展点</span>
+    WSDL 侧用 <span class="code">owl-s-parameter</span> 与 <span class="code">owl-s-process</span> 两个扩展属性回指 OWL-S 实体——双向导航,机器可沿任一侧进入另一侧。
+  </div>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">数据流 · 步骤之间怎么传值</span>
+    <span class="sec-sub">PART 3 · DATAFLOW</span>
+  </div>
+  <div class="codeblock"><span class="cm"># Perform 的输入来自哪里:hasDataFrom → Binding</span>
+<span class="kw">Binding</span>( <span class="kw">toParam</span>: 目标参数
+         <span class="kw">valueSource</span>: <span class="kw">ValueOf</span>( <span class="kw">theVar</span>: 上一步Perform / TheParentPerform ) )
+<span class="cm"># 或直接给常量:valueData / 声明类型:valueType / 函数加工:valueFunction</span>
+
+<span class="cm"># 特殊变量 TheParentPerform:指向「整个复合过程」的 Perform,取全局参数用</span></div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>取值来源 <span>valueSource</span></h4>
+      <ul>
+        <li>前一步 Perform 的输出(<span class="code">ValueOf</span> + <span class="code">fromProcess</span>)</li>
+        <li>复合过程自身的参数(<span class="code">TheParentPerform</span>)</li>
+        <li>常量 <span class="code">valueData</span></li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>本地变量 <span>Local</span></h4>
+      <ul>
+        <li>过程中间态存 <span class="code">Local</span> 参数</li>
+        <li>与 Input/Output/ResultVar 互不相交</li>
+        <li>流程内部的「草稿纸」</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">遗产与现状 · 读完 OWL-S 再看今天</span>
+    <span class="sec-sub">PART 3 · LEGACY & TODAY</span>
+  </div>
+  <ol class="check">
+    <li>OWL-S 是 Member Submission,2004 年后 W3C 层面没有续作——新项目不要直接落地它,读它为了懂问题。</li>
+    <li>它的三段式(Profile/Model/Grounding)思想活在今天的 OpenAPI/OpenAPI+ Linked Data 混合方案、WSMO 与 microservices 契约里。</li>
+    <li>IOPE 四件套仍是服务语义描述的最佳词汇表——任何服务目录设计都值得抄这份结构。</li>
+    <li>要自动化服务发现,现代实践多以知识图谱存服务元数据(RDF 描述加 SKOS 分类),协议层交给 OpenAPI。</li>
+    <li>历史本体文件在 daml.org/services/owl-s/,引用时用 Submission 版 IRI,别链接失效镜像。</li>
+  </ol>
+</section>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">术语速查 · 一张表记住全部名字</span>
+    <span class="sec-sub">PART 3 · VOCAB QUICK REF</span>
+  </div>
+  <table>
+    <tr><th>术语</th><th>一句话</th></tr>
+    <tr><td><span class="k">Service</span></td><td>顶点类,三份档案的聚合点</td></tr>
+    <tr><td><span class="k">ServiceProfile</span></td><td>「招聘启事」:是什么、给谁、怎么用——发现与匹配用它</td></tr>
+    <tr><td><span class="k">ServiceProcessModel</span></td><td>「怎么跑」:过程模型的容器</td></tr>
+    <tr><td><span class="k">ServiceGrounding</span></td><td>「怎么调」:映射到 WSDL 的消息</td></tr>
+    <tr><td><span class="k">Atomic / Simple / Composite Process</span></td><td>过程三兄弟:可直接调 / 抽象声明 / 可分解编排</td></tr>
+    <tr><td><span class="k">Input · Output · Precondition · Effect</span></td><td>IOPE 四大件:输入、输出、前置条件、效果</td></tr>
+    <tr><td><span class="k">ControlConstruct</span></td><td>编排九件套:Sequence / Split / Choice / If-Then-Else……</td></tr>
+    <tr><td><span class="k">Perform</span></td><td>复合过程里调用一个步骤(并收绑定)</td></tr>
+    <tr><td><span class="k">ValueOf</span></td><td>从别的步骤的输出取值,串起数据流</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 08 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

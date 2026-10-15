@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OD<em>R</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">权利表达语言 2.2 · 规范速查</div>
+      <div class="title-en">ODRL 2.2 — OVERVIEW · POLICY, RULE, ASSET, PARTY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;09</div>
+    <div class="meta">W3C / ODRL / 2018</div>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 把「许可条款」写成数据</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">ODRL 把许可条款写成数据:政策里放规则,规则作用在资产的行动上,约束与冲突策略管边界;给 Web 的形态就是 JSON-LD。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="55.2mm" viewBox="0 0 118 55.2">
+      <rect x="0.25" y="1.0" width="27.5" height="11.0" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="7.5" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">政策 · Policy</text>
+      <text x="32" y="7.5" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Set / Offer / Agreement</text>
+      <text x="116.5" y="7.5" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">姿态三种</text>
+      <line x1="14" y1="12.4" x2="14" y2="14.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,15.2 12.9,13.6 15.1,13.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="15.4" width="27.5" height="11.0" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="21.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">规则 · Rule</text>
+      <text x="32" y="21.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">permission / prohibition / duty</text>
+      <text x="116.5" y="21.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">允许·禁止·义务</text>
+      <line x1="14" y1="26.799999999999997" x2="14" y2="28.799999999999997" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,29.599999999999998 12.9,28.0 15.1,28.0" fill="#C9BFAC"/>
+      <rect x="0.25" y="29.8" width="27.5" height="11.0" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="36.3" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">零件</text>
+      <text x="32" y="36.3" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Asset 资产 · Party 当事人 · Action 动作</text>
+      <text x="116.5" y="36.3" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">constraint 上条件</text>
+      <line x1="14" y1="41.199999999999996" x2="14" y2="43.199999999999996" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,44.0 12.9,42.4 15.1,42.4" fill="#C9BFAC"/>
+      <rect x="0.25" y="44.2" width="27.5" height="11.0" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="50.7" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">落地</text>
+      <text x="32" y="50.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">冲突策略 · 违约路径 · JSON-LD 形态</text>
+      <text x="116.5" y="50.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">用词表先报备</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>一条规则 = 当事人对资产的一项行动,外加约束与违约后果。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 规则细节 → 完整形态 → 生态与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 把「许可条款」写成数据</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">数据能看、能用、能转发吗?给谁看?要署名吗?付费吗?ODRL(Open Digital Rights Language)用一份机器可读的政策(Policy)回答这些——权利、义务、约束全部结构化,授权链路可以自动执行。</p>
+  <div class="def">
+    <span class="lbl">KEY POINT</span>
+    ODRL 2.2 信息模型与 Common Vocabulary 两份文档同为 <b>W3C Recommendation 2018-02-15</b>(POE 工作组)。命名空间 <b><span class="code">odrl:</span> = <span class="code">http://www.w3.org/ns/odrl/2/</span></b>;JSON-LD 场景用 context <span class="code">http://www.w3.org/ns/odrl.jsonld</span>。核心剖面标识:<span class="code">http://www.w3.org/ns/odrl/2/core</span>。
+  </div>
+  <table>
+    <tr><th>核心类</th><th>是什么</th><th>子类</th></tr>
+    <tr class="hl"><td><span class="code">odrl:Policy</span></td><td>政策容器,规则的唯一入口</td><td>Set(默认)/ Offer(要约)/ Agreement(合约)</td></tr>
+    <tr><td><span class="code">odrl:Asset</span></td><td>被规制的对象(数据、内容、服务)</td><td>AssetCollection</td></tr>
+    <tr><td><span class="code">odrl:Party</span></td><td>人或组织:签发者、被授权者……</td><td>PartyCollection</td></tr>
+    <tr><td><span class="code">odrl:Rule</span></td><td>抽象规则;子类<b>彼此不相交</b></td><td>Permission / Prohibition / Duty</td></tr>
+    <tr><td><span class="code">odrl:Action / Constraint</span></td><td>动作与约束;LogicalConstraint 组合约束</td><td>—</td></tr>
+  </table>
+  <div class="sub">与邻居们划界 · 谁管哪一层</div>
+  <table>
+    <tr><th>标准</th><th>管的层</th></tr>
+    <tr><td><span class="k">ODRL</span></td><td>使用政策:许可/禁止/义务/约束(本文)</td></tr>
+    <tr><td><span class="k">SKOS</span></td><td>概念组织:词表、层级、映射(PL.03)</td></tr>
+    <tr><td><span class="k">SHACL</span></td><td>结构校验:数据形状(PL.07)</td></tr>
+    <tr><td><span class="k">PROV-O</span></td><td>过程溯源:谁在哪一步碰过它(PL.11)</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">典型部署</span>
+    数据市场里四件套齐上:SKOS 编目录、PROV-O 记过程、SHACL 验入库、ODRL 控使用——一份政策跟一个资产 IRI,机器读得懂,律师也读得懂。
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">三种政策 · Set / Offer / Agreement</span>
+    <span class="sec-sub">PART 1 · THREE POLICY TYPES</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>规则侧 <span>Rules</span></h4>
+      <ul>
+        <li><b>Permission</b>:允许做什么——必须有 <span class="code">target</span>,可挂 duty(先决义务)</li>
+        <li><b>Prohibition</b>:禁止做什么——违规可挂 remedy(补救)</li>
+        <li><b>Duty</b>:必须履行的动作——违约可挂 consequence(后果)</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>政策侧 <span>Policy subclasses</span></h4>
+      <ul>
+        <li><b>Set</b>:默认;只是规则的集合,无法律角色</li>
+        <li><b>Offer</b>:要约——assigner 已定,等对方接受</li>
+        <li><b>Agreement</b>:合约——assigner 与 assignee 都已落定</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warn">
+    <span class="tag">名字的陷阱</span>
+    <span class="code">obligation</span> 是 <b>Policy 上的属性</b>(把 Duty 挂为义务),不是类;类是 Duty。而 Permission 上的 <span class="code">duty</span> 属性语义是「行使该许可的<b>先决条件</b>」——先付费,才能播放。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 09 · P.&thinsp;1/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OD<em>R</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">权利表达语言 2.2 · 规范速查</div>
+      <div class="title-en">ODRL 2.2 — ACTIONS, CONSTRAINTS &amp; CONFLICTS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;09</div>
+    <div class="meta">W3C / ODRL / 2018</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">Action 词汇 · 规范只定义两个,其余靠词表</span>
+    <span class="sec-sub">PART 2 · ACTION VOCAB</span>
+  </div>
+  <p class="desc">信息模型顶层只定义 <span class="code">odrl:use</span>(使用,兜底动作)与 <span class="code">odrl:transfer</span>(转让所有权);Common Vocabulary 给出通用动作集(规范正文示例中出现):</p>
+  <div class="chips">
+    <div class="chip"><span class="cn">play</span><span class="en">播放</span></div>
+    <div class="chip"><span class="cn">display</span><span class="en">展示</span></div>
+    <div class="chip"><span class="cn">print</span><span class="en">打印</span></div>
+    <div class="chip"><span class="cn">distribute</span><span class="en">分发</span></div>
+    <div class="chip"><span class="cn">reproduce</span><span class="en">复制</span></div>
+    <div class="chip"><span class="cn">index</span><span class="en">索引</span></div>
+    <div class="chip"><span class="cn">stream</span><span class="en">流式</span></div>
+    <div class="chip"><span class="cn">attribute</span><span class="en">署名</span></div>
+    <div class="chip"><span class="cn">compensate</span><span class="en">付酬</span></div>
+    <div class="chip"><span class="cn">anonymize</span><span class="en">匿名化</span></div>
+    <div class="chip"><span class="cn">delete</span><span class="en">删除</span></div>
+    <div class="chip"><span class="cn">acceptTracking</span><span class="en">接受追踪</span></div>
+    <div class="chip"><span class="cn">reviewPolicy</span><span class="en">查看政策</span></div>
+  </div>
+  <div class="note">
+    <span class="tag">扩展动作</span>
+    自定义 Action 用 <span class="code">includedIn</span>(收窄到已知动作,机器可下推)或 <span class="code">implies</span>(蕴含声明)。行业词表另有大动作集——用谁的词表,Policy 里声明谁的 profile。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">Constraint · 给动作上条件的标准件</span>
+    <span class="sec-sub">PART 2 · CONSTRAINTS</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 结构三件套:leftOperand + operator + rightOperand(或引用)</span>
+[ <span class="kw">odrl:leftOperand</span>  <span class="iri">odrl:dateTime</span> ;
+  <span class="kw">odrl:operator</span>    <span class="iri">odrl:lteq</span> ;
+  <span class="kw">odrl:rightOperand</span> <span class="iri">"2026-12-31"</span>^^<span class="kw">xsd:date</span> ] .
+
+<span class="cm"># 付费额度带单位</span>
+[ <span class="kw">odrl:leftOperand</span> <span class="iri">odrl:payAmount</span> ;
+  <span class="kw">odrl:operator</span> <span class="iri">odrl:lteq</span> ;
+  <span class="kw">odrl:rightOperand</span> <span class="iri">"5.0"</span> ; <span class="kw">odrl:unit</span> <span class="iri">"EUR"</span> ] .</div>
+  <table>
+    <tr><th>件</th><th>说明</th></tr>
+    <tr><td><span class="k">leftOperand</span></td><td>约束什么:dateTime、count、payAmount、event、media、resolution…(外部词表可加,如 foaf:age)</td></tr>
+    <tr><td><span class="k">operator</span></td><td>规范示例出现:eq / lt / lteq / gt;完整集以 Common Vocabulary 为准</td></tr>
+    <tr><td><span class="k">rightOperand / …Reference</span></td><td>字面量 / 指向外部资源的 IRI——二者恰选其一</td></tr>
+    <tr><td><span class="k">unit / dataType / status</span></td><td>单位、数据类型、状态(可选用)</td></tr>
+  </table>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">LogicalConstraint · 组合约束</span>
+    <span class="sec-sub">PART 2 · LOGICAL CONSTRAINTS</span>
+  </div>
+  <div class="codeblock"><span class="cm"># 四选其组合:只能「和水」或「和果汁」一起用,不可单独使用(示例场景)</span>
+[ <span class="kw">odrl:and</span>    ( … ) ]   <span class="cm"># 全部成立</span>
+[ <span class="kw">odrl:or</span>     ( … ) ]   <span class="cm"># 任一成立</span>
+[ <span class="kw">odrl:xone</span>   ( … ) ]   <span class="cm"># 恰好其一</span>
+[ <span class="kw">odrl:andSequence</span> ( … ) ] <span class="cm"># 依序全部成立(顺序有意义,列表保序)</span></div>
+  <div class="note">
+    <span class="tag">顺序有语义</span>
+    <span class="code">andSequence</span> 用 RDF 列表(@list)承载——校验器<b>必须</b>保序。要表达「先注册后下载」,用它而不是 and。
+  </div>
+</section>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">冲突策略 · 两条规则打架听谁的</span>
+    <span class="sec-sub">PART 2 · CONFLICT STRATEGY</span>
+  </div>
+  <table>
+    <tr><th><span class="code">odrl:conflict</span></th><th>语义</th></tr>
+    <tr><td><span class="code">odrl:perm</span></td><td>许可优先——冲突时 Permission 赢</td></tr>
+    <tr><td><span class="code">odrl:prohibit</span></td><td>禁止优先——冲突时 Prohibition 赢</td></tr>
+    <tr class="hl"><td><span class="code">odrl:invalid</span></td><td><b>默认值</b>:有冲突,整份 Policy 作废</td></tr>
+  </table>
+  <div class="note warn">
+    <span class="tag">默认最严</span>
+    不写 conflict 等于 invalid——任何冲突让整份政策无效。稳妥的政策都会显式声明策略;多值冲突同样按 invalid 处理。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">违约路径 · consequence 与 remedy</span>
+    <span class="sec-sub">PART 2 · BREACH PATHS</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>Duty 违约 <span>consequence</span></h4>
+      <ul>
+        <li>Duty 未履行 → 追加<b>新的 Duty</b>(滞纳金、补救动作)</li>
+        <li>consequence 上<b>不得再挂</b> consequence——链条只有一层</li>
+        <li>Permission 上的 duty 是先决,履行了才可行使</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>Prohibition 违禁 <span>remedy</span></h4>
+      <ul>
+        <li>触犯禁令 → 挂 remedy 指定的补救 Duty</li>
+        <li>remedy 不得指向带 consequence 的 Duty</li>
+        <li>补救完成,违规才算了结</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">履行语义</span>
+    Duty 的定义是「行使某 Action 的义务」——它自己带 action、constraint、assignee,本质是一条自足的小规则。设计政策时先画「履行/违约」两条分支,再翻成 ODRL。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 09 · P.&thinsp;2/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OD<em>R</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">权利表达语言 2.2 · 规范速查</div>
+      <div class="title-en">ODRL 2.2 — PARTIES, A FULL POLICY &amp; JSON-LD</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;09</div>
+    <div class="meta">W3C / ODRL / 2018</div>
+  </div>
+</header>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">当事人与继承 · Party 细节与 inheritFrom</span>
+    <span class="sec-sub">PART 3 · PARTY & INHERITANCE</span>
+  </div>
+  <table>
+    <tr><th>机制</th><th>说明</th></tr>
+    <tr><td><span class="k">assigner / assignee</span></td><td>签发方 / 被授予方;是抽象 <span class="code">_function_</span> 的子属性</td></tr>
+    <tr><td><span class="k">attributedParty / responsibleParty</span></td><td>归功方 / 责任方(函数角色的其他子属性)</td></tr>
+    <tr><td><span class="k">PartyCollection + partOf</span></td><td>成组授权:对集合的规则惠及成员</td></tr>
+    <tr><td><span class="k">AssetCollection + refinement</span></td><td>动态集合:用约束圈定范围(如「所有标注 X 的记录」)</td></tr>
+    <tr><td><span class="k">inheritFrom</span></td><td>政策继承:子政策沿用父政策的规则,可加不可减</td></tr>
+    <tr><td><span class="k">hasPolicy</span></td><td>Asset/Party 反向指回「管我的政策」</td></tr>
+  </table>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">JSON-LD 形态 · 同一份政策给 Web</span>
+    <span class="sec-sub">PART 3 · JSON-LD FORM</span>
+  </div>
+  <p class="desc">ODRL 的 JSON-LD context 官方托管在 <span class="code">http://www.w3.org/ns/odrl.jsonld</span>——同一政策,API 世界读 JSON,图谱世界读 RDF,零转换成本。</p>
+  <div class="codeblock">{
+  <span class="kw">"@context"</span>: <span class="iri">http://www.w3.org/ns/odrl.jsonld</span>,
+  <span class="kw">"@type"</span>: <span class="iri">Offer</span>,
+  <span class="kw">uid</span>: <span class="iri">http://example.org/policy:42</span>,
+  <span class="kw">permission</span>: [{
+    <span class="kw">assigner</span>: <span class="iri">http://example.org/org:42</span>,
+    <span class="kw">target</span>: <span class="iri">http://example.com/asset:77</span>,
+    <span class="kw">action</span>: <span class="iri">display</span>,
+    <span class="kw">constraint</span>: [{
+      <span class="kw">leftOperand</span>: <span class="iri">dateTime</span>,
+      <span class="kw">operator</span>: <span class="iri">lteq</span>,
+      <span class="kw">rightOperand</span>: { <span class="iri">@value</span>: <span class="iri">"2026-12-31"</span>, <span class="iri">@type</span>: <span class="iri">xsd:date</span> }
+    }]
+  }]
+}</div>
+  <div class="note">
+    <span class="tag">双形态纪律</span>
+    同一政策的 Turtle 与 JSON-LD 两种写法必须指向同一 uid——两处各改各的,是 ODRL 落地最常见的事故源。
+  </div>
+</section>
+
+<!-- 11 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11</span><span class="sec-title">Profile 机制 · 用别人的词表先报备</span>
+    <span class="sec-sub">PART 3 · PROFILE MECHANISM</span>
+  </div>
+  <table>
+    <tr><th>规则</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="code">odrl:profile</span></td><td>政策用了核心之外的术语,<b>必须</b>声明 profile IRI——处理方遇到不认识的 profile 应当<b>停止处理</b></td></tr>
+    <tr><td><span class="k">扩展途径</span></td><td>新 Policy/Rule 子类;relation/function/operand 的子属性;Action 用 includedIn/implies 挂树;新增 LeftOperand、Operator、ConflictTerm 实例</td></tr>
+    <tr><td><span class="k">Core 剖面</span></td><td>只用核心词汇时可不声明;核心标识 <span class="code">…/odrl/2/core</span></td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">硬性项盘点</span>
+    Policy 必须有 uid 与至少一条规则(permission/prohibition/obligation 三选一以上);Rule 必须有 action;Permission 必须有 target;右操作数二选一必填。缺一件,政策不合法。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 09 · P.&thinsp;3/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 4 / 4 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OD<em>R</em>L</div>
+    <div class="title-block">
+      <div class="title-cn">权利表达语言 2.2 · 规范速查</div>
+      <div class="title-en">ODRL 2.2 — PROFILES &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;09</div>
+    <div class="meta">W3C / ODRL / 2018</div>
+  </div>
+</header>
+
+<!-- 12 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">12</span><span class="sec-title">一份完整政策 · Turtle</span>
+    <span class="sec-sub">PART 4 · A FULL POLICY</span>
+  </div>
+  <div class="codeblock"><span class="kw">@prefix</span> <span class="iri">odrl:</span> &lt;<span class="iri">http://www.w3.org/ns/odrl/2/</span>&gt; .
+
+&lt;<span class="iri">http://example.org/policy:1010</span>&gt; <span class="kw">a</span> <span class="iri">odrl:Offer</span> ;
+    <span class="iri">odrl:uid</span> &lt;<span class="iri">http://example.org/policy:1010</span>&gt; ;   <span class="cm"># 必备:政策唯一 IRI</span>
+    <span class="iri">odrl:profile</span> &lt;<span class="iri">http://example.org/profile/media</span>&gt; ;
+    <span class="iri">odrl:permission</span> [                              <span class="cm"># 允许</span>
+        <span class="iri">odrl:assigner</span> <span class="iri">:publisher</span> ;
+        <span class="iri">odrl:target</span> &lt;<span class="iri">http://example.com/asset:9898</span>&gt; ;  <span class="cm"># 对象</span>
+        <span class="iri">odrl:action</span> <span class="iri">odrl:display</span> ;
+        <span class="iri">odrl:constraint</span> [                          <span class="cm"># 一周之内</span>
+            <span class="iri">odrl:leftOperand</span> <span class="iri">odrl:dateTime</span> ;
+            <span class="iri">odrl:operator</span> <span class="iri">odrl:lteq</span> ;
+            <span class="iri">odrl:rightOperand</span> <span class="iri">"2026-12-31"</span> ] ] ;
+    <span class="iri">odrl:permission</span> [
+        <span class="iri">odrl:assigner</span> <span class="iri">:publisher</span> ;
+        <span class="iri">odrl:target</span> &lt;<span class="iri">http://example.com/asset:9898</span>&gt; ;
+        <span class="iri">odrl:action</span> <span class="iri">odrl:distribute</span> ;
+        <span class="iri">odrl:duty</span> [                                <span class="cm"># 先决义务:分发了就要付酬 + 署名</span>
+            <span class="kw">odrl:action</span> <span class="iri">odrl:compensate</span> ;
+            <span class="iri">odrl:constraint</span> [ <span class="iri">odrl:leftOperand</span> <span class="iri">odrl:payAmount</span> ;
+                              <span class="iri">odrl:operator</span> <span class="iri">odrl:lteq</span> ;
+                              <span class="iri">odrl:rightOperand</span> <span class="iri">"5.0"</span> ;
+                              <span class="iri">odrl:unit</span> <span class="iri">"EUR"</span> ] ] ] ;
+    <span class="iri">odrl:prohibition</span> [                             <span class="cm"># 禁止</span>
+        <span class="iri">odrl:target</span> &lt;<span class="iri">http://example.com/asset:9898</span>&gt; ;
+        <span class="iri">odrl:action</span> <span class="iri">odrl:modify</span> ] .</div>
+</section>
+
+<!-- 13 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">13</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li>obligation 是属性不是类——「义务」的类叫 Duty,挂接用 <span class="code">odrl:obligation</span>。</li>
+    <li>Permission 上的 duty 是<b>先决义务</b>,不是并列义务;并列的义务各起一条 Permission/Duty。</li>
+    <li>consequence 只有一层:违约后果的后果没法表达,重排政策结构。</li>
+    <li>remedy 不得指向带 consequence 的 Duty——规范原文禁令。</li>
+    <li>默认 conflict=invalid:政策里有一条冲突,整份作废——显式声明冲突策略。</li>
+    <li>规则子类彼此不相交:一条规则不能既是 Permission 又是 Prohibition。</li>
+    <li>用了 Common Vocabulary 之外的动作/操作数,声明 profile——否则合规处理器按规范应拒收。</li>
+    <li>andSequence 保序靠 RDF 列表:序列化器不支持 @list 时会静默丢序。</li>
+    <li>uid 是政策唯一标识(必备);资产与当事人 uid 是 SHOULD——多系统对接前补齐。</li>
+    <li>ODRL 表达「政策」不执行「政策」:执行要在数据管线里另做(引擎比对动作与约束)。</li>
+    <li>与 CC 许可互转没有官方映射:Creative Commons 条款有自有表达,转换要人工核对语义。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 09 · P.&thinsp;4/4</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

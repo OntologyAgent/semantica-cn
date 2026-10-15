@@ -3,7 +3,6 @@ tests/explorer/test_ontology_subissue3.py::test_shacl_validate_detects_missing_r
 tests/explorer/test_ontology_subissue3.py::test_shacl_validate_surfaces_warning_severity_results
 tests/export/test_distance_exporter.py::test_hop_distance_no_warning_when_kg_unavailable
 tests/export/test_owl_exporter_generator_schema.py::test_a_name_with_a_space_still_mints_a_valid_iri
-tests/ingest/test_feed_ingestor.py::test_ingest_feed_errors
 tests/ingest/test_ingestors.py::TestFeedIngestor::test_ingest_feed
 tests/ingest/test_ingestors.py::TestUnifiedIngest::test_ingest_web_dispatch
 tests/ingest/test_ingestors.py::TestWebIngestor::test_ingest_url
@@ -11,7 +10,6 @@ tests/ingest/test_optional_imports.py::test_public_api_ingestion_falls_back_with
 tests/ingest/test_web_ingestor.py::test_ingest_url_happy
 tests/ingest/test_web_ingestor.py::test_sitemap_fallback_parsing
 tests/ingest/test_web_ingestor.py::test_sitemap_index_recursion
-tests/ingest/test_web_ingestor.py::test_sitemap_invalid_xml
 tests/integrations/agno/test_context_store.py::TestAgnoContextStoreUpsertNERAttributes::test_upsert_indexes_entity_label_as_type
 tests/integrations/agno/test_context_store.py::TestAgnoContextStoreUpsertNERAttributes::test_upsert_indexes_entity_text_not_repr
 tests/semantic_extract/test_cache_backends.py::test_zero_ttl_expires_immediately_on_both_backends

@@ -2,7 +2,7 @@
 title: "pgvector 向量库"
 description: "PostgreSQL + pgvector 扩展：余弦、L2、内积相似度检索，带 IVFFlat 与 HNSW 索引。"
 source: vector_stores/pgvector.md
-source_version: 8382e42a0cfe238ded292cc8e6a7db0912be2c94
+source_version: 9af77b089122f718e7b3e1bd2903963ea04882dd
 icon: "database"
 ---
 
@@ -163,10 +163,11 @@ results = store.search(
 ### 更新与删除
 
 ```python
-# Update vectors and metadata
+# Update vectors and metadata.
+# Returns the ids the UPDATE matched. Missing ids are omitted.
 new_vectors = [np.random.rand(768).astype(np.float32)]
 new_metadata = [{"updated": True}]
-store.update(["vec_0"], new_vectors, new_metadata)
+updated_ids = store.update(["vec_0"], new_vectors, new_metadata)
 
 # Update metadata only
 store.update(["vec_0"], metadata=[{"tag": "updated"}])

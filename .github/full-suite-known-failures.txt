@@ -98,7 +98,6 @@ tests/ingest/test_repo_ingestor_security.py::TestIsReservedNAT64Regression::test
 tests/integrations/agno/test_context_store.py::TestAgnoContextStoreUpsertNERAttributes::test_upsert_indexes_entity_label_as_type
 tests/integrations/agno/test_context_store.py::TestAgnoContextStoreUpsertNERAttributes::test_upsert_indexes_entity_text_not_repr
 tests/semantic_extract/test_cache_backends.py::test_zero_ttl_expires_immediately_on_both_backends  # windows-only
-tests/vector_store/test_vector_store.py::test_backend_mirroring_and_save
 
 # --- Integration tests outside the two dedicated integration directories ------
 # These carry the `integration` marker but live outside tests/integrations/

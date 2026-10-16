@@ -4,6 +4,8 @@ import sys
 import textwrap
 from pathlib import Path
 
+import pytest
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -70,6 +72,9 @@ print(PublicAPIIngestor.__name__, RESTIngestor.__name__, callable(ingest_public_
 
 
 def test_public_api_ingestion_falls_back_without_defusedxml() -> None:
+    # Needs the optional documents extra; skip rather than fail on a
+    # core install.
+    pytest.importorskip("lxml")
     result = _run_python_with_blocked_modules(
         """
 from unittest.mock import MagicMock, patch

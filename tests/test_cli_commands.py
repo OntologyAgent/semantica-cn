@@ -2695,21 +2695,47 @@ class TestPipeline:
         result = runner.invoke(cli_module.main, ["pipeline", "init", "--dry-run"])
         _ok(result)
 
-    def test_init_creates_file(self, runner, monkeypatch):
-        fake_pl = _fake_module(
-            PipelineTemplateManager=lambda: MagicMock(scaffold=lambda t: "steps: []\n"),
-        )
-        monkeypatch.setitem(__import__("sys").modules, "semantica.pipeline", fake_pl)
-        with runner.isolated_filesystem():
-            result = runner.invoke(cli_module.main, ["pipeline", "init",
-                                          "--template", "rag", "--output", "pl.yaml"])
-            _ok(result)
-            assert os.path.exists("pl.yaml")
+    def test_init_templates_match_the_manager(self, runner):
+        # The CLI hardcoded five template names the manager has never registered,
+        # so every `pipeline init` would have reached "Template not found" once the
+        # wrapper called the real API. Keep the two lists in step.
+        from semantica.pipeline import PipelineTemplateManager
 
-    def test_init_template_choices(self, runner):
+        manager = PipelineTemplateManager()
+        assert cli_module._PIPELINE_TEMPLATES == manager.list_templates()
+
+    def test_init_creates_a_loadable_pipeline(self, runner):
+        with runner.isolated_filesystem():
+            result = runner.invoke(
+                cli_module.main,
+                ["pipeline", "init", "--template", "rag_pipeline",
+                 "--output", "pl.yaml"],
+            )
+            _ok(result)
+            pipeline = cli_module._load_pipeline_file("pl.yaml")
+        assert [s.name for s in pipeline.steps] == [
+            "ingest", "chunk", "embed", "store_vectors",
+        ]
+
+    def test_init_writes_the_pipeline_not_a_placeholder(self, runner):
+        # The old ImportError path silently wrote "# Pipeline template: X\nsteps: []".
+        with runner.isolated_filesystem():
+            result = runner.invoke(
+                cli_module.main,
+                ["pipeline", "init", "--output", "pl.yaml"],
+            )
+            _ok(result)
+            text = open("pl.yaml").read()
+        assert "steps: []" not in text
+        assert "type: ingest" in text
+
+    def test_init_help_offers_only_real_templates(self, runner):
         result = runner.invoke(cli_module.main, ["pipeline", "init", "--help"])
-        for t in ["ingest-extract-kg", "rag", "ontology-build", "decision-track", "full"]:
-            assert t in result.output
+        _ok(result)
+        for gone in ["ingest-extract-kg", "decision-track", "ontology-build"]:
+            assert gone not in result.output
+        for real in ["document_processing", "rag_pipeline"]:
+            assert real in result.output
 
     def test_validate_requires_file(self, runner):
         result = runner.invoke(cli_module.main, ["pipeline", "validate"])
@@ -2718,6 +2744,54 @@ class TestPipeline:
     def test_validate_nonexistent_file_fails(self, runner):
         result = runner.invoke(cli_module.main, ["pipeline", "validate", "no_such.yaml"])
         assert result.exit_code != 0
+
+    def test_validate_reads_the_file_instead_of_the_path(self, runner):
+        # Regression: validate() was handed the *path string*. A str has no steps,
+        # so it type-checked nothing and reported valid for any input.
+        with runner.isolated_filesystem():
+            with open("pl.yaml", "w") as f:
+                f.write("steps:\n  - name: a\n    type: ingest\n")
+            result = runner.invoke(
+                cli_module.main,
+                ["pipeline", "validate", "pl.yaml", "--json"],
+            )
+        _ok(result)
+        payload = json.loads([
+            line for line in result.output.splitlines() if line.startswith("{")
+        ][-1])
+        assert payload["valid"] is True
+        assert payload["pipeline"] == "pl.yaml"
+        # The loader leaves handlers off, and the validator says so.
+        assert any("no handler" in w for w in payload["warnings"])
+
+    def test_validate_reports_a_missing_dependency(self, runner):
+        # Before the fix this exact file was reported valid, because it was never
+        # loaded.
+        with runner.isolated_filesystem():
+            with open("pl.yaml", "w") as f:
+                f.write(
+                    "steps:\n"
+                    "  - name: a\n"
+                    "    type: ingest\n"
+                    "    dependencies: [nope]\n"
+                )
+            result = runner.invoke(
+                cli_module.main,
+                ["pipeline", "validate", "pl.yaml"],
+            )
+        assert result.exit_code != 0
+        assert "Missing dependency 'nope'" in _flatten(result.output)
+
+    def test_validate_rejects_a_file_that_is_not_a_pipeline(self, runner):
+        with runner.isolated_filesystem():
+            with open("pl.yaml", "w") as f:
+                f.write("just a string\n")
+            result = runner.invoke(
+                cli_module.main,
+                ["pipeline", "validate", "pl.yaml"],
+            )
+        assert result.exit_code != 0
+        assert "not a pipeline definition" in _flatten(result.output)
 
     def test_run_dry_run(self, runner):
         with runner.isolated_filesystem():
@@ -2730,22 +2804,110 @@ class TestPipeline:
         result = runner.invoke(cli_module.main, ["pipeline", "run"])
         assert result.exit_code != 0
 
-    def test_status_exits_0(self, runner):
-        with patch("builtins.__import__", side_effect=lambda n, *a, **k: (
-            (_ for _ in ()).throw(ImportError(n))
-            if "pipeline" in n else __import__(n, *a, **k)
-        )):
-            result = runner.invoke(cli_module.main, ["pipeline", "status"])
+    def test_run_refuses_steps_that_have_no_handler(self, runner):
+        # A pipeline loaded from a file can never carry handlers, and
+        # _execute_step() returns its input untouched when handler is None, so
+        # executing would report success having done nothing.
+        with runner.isolated_filesystem():
+            with open("pl.yaml", "w") as f:
+                f.write("steps:\n  - name: ingest\n    type: ingest\n")
+            result = runner.invoke(
+                cli_module.main,
+                ["pipeline", "run", "pl.yaml"],
+            )
         assert result.exit_code != 0
+        flat = _flatten(result.output)
+        assert "no handler" in flat
+        assert "ingest" in flat
+
+    def test_run_executes_a_pipeline_with_handlers(self, runner, monkeypatch):
+        # The wiring itself: execute_pipeline() has to receive the loaded Pipeline,
+        # and --parallel has to land on pipeline.config, the only place the engine
+        # reads parallelism from.
+        from semantica.pipeline import PipelineBuilder
+
+        builder = PipelineBuilder()
+        builder.register_step_handler("ingest", lambda data, **kw: data)
+        builder.add_step("ingest", "ingest")
+        handled = builder.build()
+
+        seen = {}
+
+        class _Engine:
+            def __init__(self, config=None):
+                seen["config"] = config
+
+            def execute_pipeline(self, pipeline, **options):
+                seen["pipeline"] = pipeline
+                return _fake_module(
+                    success=True,
+                    errors=[],
+                    metadata={"pipeline_id": pipeline.name, "execution_time": 0.5},
+                )
+
+        monkeypatch.setattr(cli_module, "_load_pipeline_file", lambda path: handled)
+        monkeypatch.setitem(__import__("sys").modules, "semantica.pipeline",
+                            _fake_module(ExecutionEngine=_Engine))
+        with runner.isolated_filesystem():
+            with open("pl.yaml", "w") as f:
+                f.write("steps: []\n")
+            result = runner.invoke(
+                cli_module.main,
+                ["pipeline", "run", "pl.yaml", "--parallel", "7"],
+            )
+        _ok(result)
+        assert seen["pipeline"] is handled
+        assert seen["pipeline"].config["parallelism"] == 7
+        assert "Pipeline completed" in _flatten(result.output)
+
+    def test_run_reports_a_failed_pipeline(self, runner, monkeypatch):
+        from semantica.pipeline import PipelineBuilder
+
+        builder = PipelineBuilder()
+        builder.register_step_handler("ingest", lambda data, **kw: data)
+        builder.add_step("ingest", "ingest")
+        handled = builder.build()
+
+        class _Engine:
+            def __init__(self, config=None):
+                pass
+
+            def execute_pipeline(self, pipeline, **options):
+                return _fake_module(success=False, errors=["boom"], metadata={})
+
+        monkeypatch.setattr(cli_module, "_load_pipeline_file", lambda path: handled)
+        monkeypatch.setitem(__import__("sys").modules, "semantica.pipeline",
+                            _fake_module(ExecutionEngine=_Engine))
+        with runner.isolated_filesystem():
+            with open("pl.yaml", "w") as f:
+                f.write("steps: []\n")
+            result = runner.invoke(cli_module.main, ["pipeline", "run", "pl.yaml"])
+        assert result.exit_code != 0
+        assert "boom" in _flatten(result.output)
+
+    def test_run_rejects_watch(self, runner):
+        with runner.isolated_filesystem():
+            with open("pl.yaml", "w") as f:
+                f.write("steps:\n  - name: ingest\n    type: ingest\n")
+            result = runner.invoke(
+                cli_module.main,
+                ["pipeline", "run", "pl.yaml", "--watch"],
+            )
+        assert result.exit_code != 0
+        assert "--watch" in _flatten(result.output)
+
+    def test_status_reports_it_cannot_observe_another_process(self, runner):
+        # The engine keeps pipeline status in memory, so a separate `pipeline run`
+        # process is not observable from here.
+        result = runner.invoke(cli_module.main, ["pipeline", "status"])
+        assert result.exit_code != 0
+        assert "no source of truth" in _flatten(result.output)
         assert "Traceback" not in result.output
 
-    def test_stop_exits_cleanly_on_import_error(self, runner):
-        with patch("builtins.__import__", side_effect=lambda n, *a, **k: (
-            (_ for _ in ()).throw(ImportError(n))
-            if "pipeline" in n else __import__(n, *a, **k)
-        )):
-            result = runner.invoke(cli_module.main, ["pipeline", "stop"])
+    def test_stop_reports_it_cannot_reach_another_process(self, runner):
+        result = runner.invoke(cli_module.main, ["pipeline", "stop"])
         assert result.exit_code != 0
+        assert "nothing to stop" in _flatten(result.output)
         assert "Traceback" not in result.output
 
 

@@ -2,6 +2,7 @@
 import sys
 import os
 import unittest
+import pytest
 import numpy as np
 
 # Add project root to path
@@ -11,6 +12,9 @@ from semantica.embeddings import TextEmbedder, EmbeddingGenerator
 
 class TestEmbeddingProviders(unittest.TestCase):
     def test_sentence_transformers_default(self):
+        # Needs the optional embeddings-local extra; skip rather than fail on a
+        # core install.
+        pytest.importorskip("sentence_transformers")
         print("\nTesting Sentence Transformers (Default)...")
         embedder = TextEmbedder(method="sentence_transformers")
         text = "This is a test sentence."

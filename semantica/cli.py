@@ -4851,14 +4851,42 @@ _viz_command("analytics", "visualize_analytics", "Render centrality and communit
 # ─── Orchestration ────────────────────────────────────────────────────────────
 
 
+# Must stay in step with PipelineTemplateManager.list_templates(). The CLI used to
+# offer five names the manager has never registered, so every `pipeline init`
+# reached "Template not found" once the wrapper called the real API. Pinned by
+# tests/test_cli_commands.py::TestPipeline::test_init_templates_match_the_manager.
 _PIPELINE_TEMPLATES = [
-    "ingest-extract-kg", "rag", "ontology-build", "decision-track", "full",
+    "document_processing", "rag_pipeline", "kg_construction", "ontology_generation",
 ]
+
+
+def _load_pipeline_file(path: str) -> Any:
+    """Load a pipeline config file into a ``Pipeline`` object.
+
+    Accepts YAML, or JSON (which ``yaml.safe_load`` parses as a subset). Step
+    handlers are process-local and are never restored from a file, so every step
+    of a loaded pipeline has ``handler is None`` — see
+    ``PipelineSerializer.deserialize_pipeline``.
+    """
+    try:
+        from .pipeline import PipelineSerializer
+    except ImportError as exc:
+        raise click.ClickException(f"Pipeline module not available: {exc}") from exc
+    try:
+        payload = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+    except yaml.YAMLError as exc:
+        raise click.ClickException(f"Could not parse {path} as YAML: {exc}") from exc
+    if not isinstance(payload, dict):
+        raise click.ClickException(
+            f"{path} is not a pipeline definition: expected a mapping with a "
+            f"'steps' list, got {type(payload).__name__}."
+        )
+    return PipelineSerializer().deserialize_pipeline(payload)
 
 
 @pipeline.command("init")
 @click.option("--template", type=click.Choice(_PIPELINE_TEMPLATES),
-              default="ingest-extract-kg", show_default=True)
+              default="document_processing", show_default=True)
 @click.option("--output", default="pipeline.yaml", show_default=True, type=click.Path())
 @click.option("--dry-run", "local_dry", is_flag=True, default=False)
 @click.pass_obj
@@ -4867,7 +4895,7 @@ def pipeline_init(cli_ctx: CLIContext, template: str, output: str, local_dry: bo
 
     \b
     Example:
-      semantica pipeline init --template ingest-extract-kg --output pipeline.yaml
+      semantica pipeline init --template document_processing --output pipeline.yaml
     """
     cli_ctx = _require_ctx(cli_ctx)
 
@@ -4876,12 +4904,18 @@ def pipeline_init(cli_ctx: CLIContext, template: str, output: str, local_dry: bo
             _dry(cli_ctx, "init pipeline", template=template, output=output)
             return
         try:
-            from .pipeline import PipelineTemplateManager
-            mgr = PipelineTemplateManager()
-            content = mgr.scaffold(template)
-        except ImportError:
-            content = f"# Pipeline template: {template}\nsteps: []\n"
-        Path(output).write_text(content, encoding="utf-8")
+            from .pipeline import PipelineSerializer, PipelineTemplateManager
+        except ImportError as exc:
+            raise click.ClickException(f"Pipeline module not available: {exc}") from exc
+        builder = PipelineTemplateManager().create_pipeline_from_template(template)
+        # serialize_pipeline(..., format="yaml") returns the dict form rather than
+        # a YAML string, so the dump happens here.
+        payload = PipelineSerializer().serialize_pipeline(
+            builder.build(), format="yaml",
+        )
+        Path(output).write_text(
+            yaml.safe_dump(payload, sort_keys=False), encoding="utf-8",
+        )
         _ok(cli_ctx, f"Created {output} from template '{template}'")
 
     _run_with_error_handling(_action)
@@ -4896,16 +4930,36 @@ def pipeline_validate(cli_ctx: CLIContext, pipeline_file: str, local_json: bool)
     cli_ctx = _require_ctx(cli_ctx)
 
     def _action() -> None:
+        pipeline = _load_pipeline_file(pipeline_file)
         try:
             from .pipeline import PipelineValidator
-            v = PipelineValidator()
-            result = v.validate(pipeline_file)
         except ImportError as exc:
             raise click.ClickException(f"Pipeline module not available: {exc}") from exc
+        # The old wrapper passed the file path straight to validate(). A str has no
+        # steps, so it type-checked nothing and reported valid for any input.
+        result = PipelineValidator().validate(pipeline)
+        errors = [str(e) for e in (getattr(result, "errors", None) or [])]
+        warnings_found = [str(w) for w in (getattr(result, "warnings", None) or [])]
         if _is_json(cli_ctx, local_json):
-            _jecho(result if isinstance(result, dict) else {"valid": bool(result)})
+            _jecho({
+                "valid": bool(getattr(result, "valid", False)),
+                "errors": errors,
+                "warnings": warnings_found,
+                "pipeline": pipeline_file,
+            })
+        elif not getattr(result, "valid", False):
+            for err in errors:
+                _warn(cli_ctx, err)
+            raise click.ClickException(
+                f"Pipeline config invalid: {pipeline_file} "
+                f"({len(errors)} error(s), {len(warnings_found)} warning(s))"
+            )
         else:
-            _ok(cli_ctx, f"Pipeline config valid: {pipeline_file}")
+            _ok(
+                cli_ctx,
+                f"Pipeline config valid: {pipeline_file} "
+                f"({len(warnings_found)} warning(s))",
+            )
 
     _run_with_error_handling(_action)
 
@@ -4934,16 +4988,52 @@ def pipeline_run(cli_ctx: CLIContext, pipeline_file: str, parallel: int,
         if _is_dry(cli_ctx, local_dry):
             _dry(cli_ctx, "run pipeline", file=pipeline_file, parallel=parallel)
             return
+        if watch:
+            raise click.ClickException(
+                "--watch has no implementation in the execution engine yet; "
+                "re-run the pipeline after each change instead."
+            )
+        pipeline = _load_pipeline_file(pipeline_file)
+        # _execute_step() returns its input untouched when step.handler is None, so
+        # an all-unhandled pipeline "succeeds" having done nothing. Refuse instead
+        # of reporting a green no-op.
+        unhandled = [
+            step.name for step in pipeline.steps
+            if getattr(step, "handler", None) is None
+        ]
+        if unhandled:
+            raise click.ClickException(
+                f"Cannot execute {pipeline_file}: {len(unhandled)} step(s) have no "
+                f"handler ({', '.join(unhandled)}). Step handlers are Python "
+                "callables and are never restored from a config file, so the engine "
+                "would pass data through every step and still report success. "
+                "Register them with PipelineBuilder.register_step_handler() and run "
+                "the pipeline in Python, or use `semantica pipeline validate` to "
+                "check the config."
+            )
+        # --parallel and --incremental have no run-level switch in the engine:
+        # parallelism is read from pipeline.config and delta mode is per step.
+        pipeline.config["parallelism"] = parallel
+        if incremental:
+            for step in pipeline.steps:
+                step.delta_mode = True
         try:
             from .pipeline import ExecutionEngine
-            engine = ExecutionEngine(config=cli_ctx.config.to_dict())
-            result = engine.run(
-                pipeline_file, workers=parallel,
-                incremental=incremental, watch=watch,
-            )
         except ImportError as exc:
             raise click.ClickException(f"Pipeline module not available: {exc}") from exc
-        _ok(cli_ctx, f"Pipeline completed: {result}")
+        engine = ExecutionEngine(config=cli_ctx.config.to_dict())
+        result = engine.execute_pipeline(pipeline)
+        if not result.success:
+            errors = [str(e) for e in (result.errors or [])]
+            raise click.ClickException(
+                f"Pipeline failed: {'; '.join(errors) if errors else 'no error detail'}"
+            )
+        elapsed = result.metadata.get("execution_time")
+        pipeline_id = result.metadata.get("pipeline_id", pipeline.name)
+        summary = f"Pipeline completed: {pipeline_id}"
+        if isinstance(elapsed, (int, float)):
+            summary += f" in {elapsed:.2f}s"
+        _ok(cli_ctx, summary)
 
     _run_with_error_handling(_action)
 
@@ -4956,16 +5046,16 @@ def pipeline_status(cli_ctx: CLIContext, local_json: bool) -> None:
     cli_ctx = _require_ctx(cli_ctx)
 
     def _action() -> None:
-        try:
-            from .pipeline import ExecutionEngine
-            engine = ExecutionEngine(config=cli_ctx.config.to_dict())
-            result = engine.status()
-        except ImportError as exc:
-            raise click.ClickException(f"Pipeline module not available: {exc}") from exc
-        if _is_json(cli_ctx, local_json):
-            _jecho(result if isinstance(result, dict) else {"status": str(result)})
-        else:
-            _pprint(cli_ctx, result)
+        # ExecutionEngine.pipeline_status is an in-memory dict and
+        # get_pipeline_status() only reads it, so a pipeline started by another
+        # process is invisible here. There is no id to accept either: ids are
+        # pipeline.name and are never persisted.
+        raise click.ClickException(
+            "`pipeline status` has no source of truth: the execution engine keeps "
+            "pipeline status in memory, so a pipeline started by a separate "
+            "`semantica pipeline run` process cannot be observed from here. Track it "
+            "in the process that called ExecutionEngine.execute_pipeline() instead."
+        )
 
     _run_with_error_handling(_action)
 
@@ -4977,13 +5067,17 @@ def pipeline_stop(cli_ctx: CLIContext) -> None:
     cli_ctx = _require_ctx(cli_ctx)
 
     def _action() -> None:
-        try:
-            from .pipeline import ExecutionEngine
-            engine = ExecutionEngine(config=cli_ctx.config.to_dict())
-            engine.stop()
-        except ImportError as exc:
-            raise click.ClickException(f"Pipeline module not available: {exc}") from exc
-        _ok(cli_ctx, "Pipeline stopped.")
+        # stop_pipeline() does set a flag the run loop honours (execution_engine.py
+        # :273 and :320), but it takes a pipeline id and that flag lives on the
+        # engine instance doing the stopping, so it cannot reach a pipeline owned by
+        # another process.
+        raise click.ClickException(
+            "`pipeline stop` has nothing to stop: the execution engine tracks running "
+            "pipelines in memory only, so a pipeline started by a separate "
+            "`semantica pipeline run` process is not reachable from here. Call "
+            "ExecutionEngine.stop_pipeline(pipeline_id) in the process running the "
+            "pipeline instead."
+        )
 
     _run_with_error_handling(_action)
 

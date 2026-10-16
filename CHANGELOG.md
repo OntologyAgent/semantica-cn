@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **The `semantica pipeline` command group called APIs that do not exist** (fixes #2012) by @nilaymallikk
+  - `init`, `run`, `status` and `stop` all raised `AttributeError` before doing any work, calling `PipelineTemplateManager.scaffold()` and `ExecutionEngine.run()` / `.status()` / `.stop()`, none of which exist. `validate` reported `Pipeline config valid` for every input, including a file with a missing dependency, because it was handed the file *path string* where `PipelineValidator.validate()` expects a `Pipeline` — a `str` has no steps to complain about
+  - `init` now calls `create_pipeline_from_template()` and serialises the built `Pipeline` to the output file. Its `--template` choices and default were five names the manager has never registered, so each one would have reached `Template not found` next; they are the four real templates now, pinned against `PipelineTemplateManager.list_templates()` by a test
+  - `validate` and `run` both load the file through a new shared `_load_pipeline_file()` helper. `run` hands the `Pipeline` to `execute_pipeline()`, maps `--parallel` onto `pipeline.config["parallelism"]` and `--incremental` onto per-step delta mode, and refuses a pipeline whose steps have no handler instead of reporting success for a run that did nothing — a file-loaded pipeline can never carry handlers, so every step would pass data straight through. `--watch` has no engine implementation and now says so
+  - `status` and `stop` explain that the engine keeps pipelines in an in-memory dict, so neither can observe a pipeline owned by another process
+
 - **`semantica backup create` reported success for an archive with no store data** (fixes #1820) by @costajohnt
   - With no file-based `graph_db` / `vector_store` / `triplet_store` path in the config, `backup create` wrote a manifest with `"files": []` and exited 0. It now fails with an error that points to `semantica backup info`, before asking for a passphrase or confirmation and before writing anything.
 

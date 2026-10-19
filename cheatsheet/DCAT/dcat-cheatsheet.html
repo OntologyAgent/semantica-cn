@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+<!-- ================= SHEET 1 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">D<em>C</em>AT</div>
+    <div class="title-block">
+      <div class="title-cn">数据目录词表 · 规范速查</div>
+      <div class="title-en">DCAT 3 — DATA CATALOG VOCABULARY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;22</div>
+    <div class="meta">W3C / DCAT 3 / 2024</div>
+  </div>
+</header>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 给数据集发身份证</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">DCAT(Data Catalog Vocabulary)是数据目录词表:把「数据集、发布形态、数据服务、目录」写成 RDF,让目录之间能联合检索。DCAT 3(W3C Rec 2024-08-22)现行,命名空间 <span class="code">dcat:</span> = <span class="code">http://www.w3.org/ns/dcat#</span>。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">四级嵌套</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Catalog → Dataset → Distribution</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">目录的骨架</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">数据服务</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">DataService:API 也是目录条目</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">DCAT 2 引入</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">复用优先</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">dcterms · foaf · prov · skos 直接取用</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">不自造词</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">画像生态</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">DCAT-AP(欧盟)· 数据空间主流格式</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">加约束不加词</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>DCAT 只造骨架词,元数据字段几乎全靠复用——title/publisher/license 取自 dcterms,联系人与主页取自 foaf。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 核心类 → 关键属性 → 画像与实操。</div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">核心类 · 四级嵌套与两个扩展点</span>
+    <span class="sec-sub">PART 2 · CORE CLASSES</span>
+  </div>
+  <table>
+    <tr><th>类</th><th>一句话</th></tr>
+    <tr class="hl"><td><span class="k">dcat:Catalog</span></td><td>curated 的资源集合;自己是 Dataset 的子类——目录也能被收录</td></tr>
+    <tr><td><span class="k">dcat:Dataset</span></td><td>单一 Agent 发布 / 维护的数据集合(概念实体,经 Distribution 落地)</td></tr>
+    <tr><td><span class="k">dcat:Distribution</span></td><td>数据集的一种可获取形态:可下载文件、API 端点、落地页</td></tr>
+    <tr><td><span class="k">dcat:DataService</span></td><td>可访问数据集 / 数据处理功能的 API 服务(DCAT 2 引入)</td></tr>
+    <tr><td><span class="k">dcat:Resource</span></td><td>Dataset / DataService / Catalog 的公共父类——扩展点,不直接实例化</td></tr>
+    <tr><td><span class="k">dcat:Relationship</span></td><td>带角色的限定关系(dcterms:relation + dcat:hadRole),经 qualifiedRelation 挂接</td></tr>
+    <tr><td><span class="k">dcat:DatasetSeries</span></td><td>数据集系列(DCAT 3 新增);CatalogRecord 是收录登记的元数据</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">嵌套读法</span>
+    目录列数据集(dcat:dataset)、数据集连发布形态(dcat:distribution)——三层各司其职:目录管收录,数据集管「是什么」,发布形态管「怎么拿」。
+  </div>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">关键属性 · 复用优先的实践</span>
+    <span class="sec-sub">PART 2 · KEY PROPERTIES</span>
+  </div>
+  <table>
+    <tr><th>属性</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="code">dcat:distribution / dcat:dataset / dcat:service</span></td><td>三条骨架关系:dataset ⊑ dcterms:hasPart——层级直接进 dcterms 体系</td></tr>
+    <tr><td><span class="code">dcat:downloadURL / accessURL</span></td><td>直接下载地址 vs 访问入口(端点、落地页)——二选一或并存</td></tr>
+    <tr><td><span class="code">dcat:mediaType</span></td><td>发布形态的 IANA 媒体类型(text/csv 等)</td></tr>
+    <tr><td><span class="code">dcat:theme</span></td><td>主题分类(⊑ dcterms:subject);DCAT 3 放开了 range——主题不再自动是 skos:Concept</td></tr>
+    <tr><td><span class="code">dcterms:publisher / license / issued…</span></td><td>DCAT <b>没有</b> dcat:publisher——发布者、许可、日期全部复用 dcterms,取值推荐 foaf:Agent</td></tr>
+    <tr><td><span class="code">dcat:landingPage</span></td><td>⊑ foaf:page——落地页也是页面家族的一员</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT · 复用优先</span>
+    DCAT 的设计纪律:<b>外部词表已有的词不自造</b>。dcterms 管元数据字段,foaf 管人和主页,prov 管溯源,skos 管主题,time / vCard / ODRL / SPDX 各取所需——这套复用策略本身就是建模课。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 22 · P.&thinsp;1/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+<!-- ================= SHEET 2 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">D<em>C</em>AT</div>
+    <div class="title-block">
+      <div class="title-cn">数据目录词表 · 规范速查</div>
+      <div class="title-en">DCAT 3 — DATA CATALOG VOCABULARY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;22</div>
+    <div class="meta">W3C / DCAT 3 / 2024</div>
+  </div>
+</header>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">画像与生态 · 一套词表多种约束</span>
+    <span class="sec-sub">PART 3 · PROFILES &amp; ECOSYSTEM</span>
+  </div>
+  <table>
+    <tr><th>生态位</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="k">政府开放数据</span></td><td>出身:data.gov / data.gov.uk 的目录需求;各国门户的事实格式</td></tr>
+    <tr><td><span class="k">DCAT-AP</span></td><td>欧盟应用画像:加基数约束与受控词表——欧洲数据空间(STDS)的数据描述底座</td></tr>
+    <tr><td><span class="k">数据空间</span></td><td>IDS / Gaia-X 等数据空间 initiative 用 DCAT 系描述数据资产与连接器</td></tr>
+    <tr><td><span class="k">科学数据</span></td><td>仓库与期刊间的数据集描述;与 PROV-O 组合记录数据谱系</td></tr>
+  </table>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>没有 dcat:publisher:</b>发布者写 dcterms:publisher,取值推荐 foaf:Agent——别找 dcat: 前缀。</li>
+    <li><b>Dataset 与 Distribution 分开:</b>「是什么」挂在 Dataset,「怎么下载」挂 Distribution——把下载 URL 写到 Dataset 上是常见错。</li>
+    <li><b>accessURL ≠ downloadURL:</b>端点 / 落地页用 accessURL,直链文件才用 downloadURL。</li>
+    <li><b>theme 不再强制 skos:Concept:</b>DCAT 3 放开 range——主题值用受控词表仍是好习惯,但不再是形式约束。</li>
+    <li><b>DataService 也是目录条目:</b>API 不是「数据集的附件」,而是与 Dataset 平级的 dcat:service。</li>
+    <li><b>版本选择:</b>DCAT 3 supersede DCAT 2 但不使其 obsolete——存量数据不必迁移,新项目用 3。</li>
+    <li><b>画像先于自由发挥:</b>欧盟场景对齐 DCAT-AP;自建画像时「加约束不加词」。</li>
+    <li><b>目录里可以再放目录:</b>Catalog 是 Dataset 的子类,嵌套目录是合法形态——联邦检索的基础。</li>
+  </ol>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">一条目录记录 · Turtle</span>
+    <span class="sec-sub">PART 4 · A WORKED RECORD</span>
+  </div>
+  <div class="codeblock"><span class="iri">&lt;http://data.ex.com/catalog/kg&gt;</span> <span class="kw">a</span> dcat:Catalog ;
+    dcterms:title  <span class="iri">"知识图谱数据目录"</span> ;
+    dcat:dataset   <span class="iri">ex:dataset-entities</span> , <span class="iri">ex:dataset-triples</span> .
+
+<span class="iri">ex:dataset-entities</span> <span class="kw">a</span> dcat:Dataset ;
+    dcterms:title  <span class="iri">"实体主数据"</span> ;
+    dcterms:publisher <span class="iri">ex:org</span> ;            <span class="cm"># 复用 dcterms,没有 dcat:publisher</span>
+    dcterms:issued <span class="iri">"2026-10-15"</span> ;
+    dcterms:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
+    dcat:distribution <span class="iri">ex:dist-entities-csv</span> .
+
+<span class="iri">ex:dist-entities-csv</span> <span class="kw">a</span> dcat:Distribution ;
+    dcat:downloadURL &lt;https://data.ex.com/entities.csv&gt; ;
+    dcat:mediaType   <span class="iri">"text/csv"</span> .</div>
+  <div class="note">
+    <span class="tag">读法</span>
+    三层各就各位:目录(dataset)收录数据集(dataset)、数据集挂发布形态(distribution)、发布形态带下载地址与媒体类型——每个「是什么 / 怎么拿」都有明确落点。
+  </div>
+</section>
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 22 · P.&thinsp;2/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>

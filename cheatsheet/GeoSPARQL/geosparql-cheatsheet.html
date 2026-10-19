@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">G<em>E</em>O</div>
+    <div class="title-block">
+      <div class="title-cn">地理空间查询 · 规范速查</div>
+      <div class="title-en">GEOSPARQL 1.1 — GEOSPATIAL DATA IN RDF</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;21</div>
+    <div class="meta">OGC / GEOSPARQL / 1.1</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · RDF 里的地理空间</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">GeoSPARQL 是 OGC 的地理空间标准:给 RDF 加上几何类、空间属性与拓扑查询函数。命名空间:<span class="code">geo:</span> = <span class="code">http://www.opengis.net/ont/geosparql#</span>,函数 <span class="code">geof:</span> = <span class="code">…/def/function/geosparql/</span>。四层结构:</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">核心三件</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">SpatialObject · Feature · Geometry</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">geo: 本体</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">几何层级</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">sf:Point / LineString / Polygon / Multi*</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">sf: 前缀</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">编码</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">geo:wktLiteral(WKT 文本几何)</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">geo: 数据类型</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">查询函数</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">geof: SF · Egenhofer · RCC8 拓扑族</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">SPARQL 扩展</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>要素与几何分离——同一个 Feature 可以挂多个 Geometry(不同精度、不同坐标参照)。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 核心词汇 → 查询函数 → 示例与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · OGC 的地理 SPARQL</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <table>
+    <tr><th>要点</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="k">标准与版本</span></td><td>OGC 标准:GeoSPARQL 1.0(2012)→ <b>1.1 现行</b>(OGC 22-047r1),活跃维护(GitHub opengeospatial/ogc-geosparql)</td></tr>
+    <tr><td><span class="k">两个组成</span></td><td>RDF 词表(要素、几何、空间参照)+ SPARQL 扩展函数(拓扑关系与空间计算)</td></tr>
+    <tr><td><span class="k">理论底座</span></td><td>几何分类来自 OGC Simple Features(ISO 19125);另含 Egenhofer 与 RCC8 两套定性拓扑关系词表</td></tr>
+    <tr><td><span class="k">三库支持</span></td><td>Jena · Stardog · GraphDB 原生支持;Virtuoso 经扩展;RDFLib 有第三方库</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">核心词汇 · 要素与几何分离</span>
+    <span class="sec-sub">PART 2 · CORE VOCABULARY</span>
+  </div>
+  <table>
+    <tr><th>geo: 类</th><th>一句话</th></tr>
+    <tr class="hl"><td><span class="k">geo:SpatialObject</span></td><td>一切空间对象的根——Feature 与 Geometry 的父类</td></tr>
+    <tr><td><span class="k">geo:Feature</span></td><td>有空间表述的现实世界事物:一栋楼、一段管线、一个行政区</td></tr>
+    <tr><td><span class="k">geo:Geometry</span></td><td>几何形状本身;含 isEmpty / dimension 等几何属性</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT · 要素 ≠ 几何</span>
+    同一个要素可挂多个几何:不同精度、不同坐标参照系(CRS)、不同时点。<span class="code">hasDefaultGeometry</span> 指定「官方」几何。
+  </div>
+  <div class="sub">sf: 几何类层级 · Simple Features(ISO 19125)</div>
+  <div class="chips">
+    <span class="chip"><span class="cn">一维</span><span class="en">sf:Curve · sf:LineString · sf:LinearRing</span></span>
+    <span class="chip"><span class="cn">二维</span><span class="en">sf:Surface · sf:Polygon</span></span>
+    <span class="chip"><span class="cn">集合</span><span class="en">sf:MultiPoint · MultiCurve · MultiLineString · MultiSurface · MultiPolygon · GeometryCollection</span></span>
+    <span class="chip hot"><span class="cn">零维</span><span class="en">sf:Point</span></span>
+  </div>
+  <div class="note">
+    <span class="tag">几何挂接</span>
+    要素经 <span class="code">geo:hasGeometry</span> / <span class="code">hasDefaultGeometry</span> 连到几何;几何经 <span class="code">geo:asWKT</span> 给出 WKT 文本形态(数据类型 <span class="code">geo:wktLiteral</span>)。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 21 · P.&thinsp;1/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">G<em>E</em>O</div>
+    <div class="title-block">
+      <div class="title-cn">地理空间查询 · 规范速查</div>
+      <div class="title-en">GEOSPARQL — QUERY FUNCTIONS &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;21</div>
+    <div class="meta">OGC / GEOSPARQL / 1.1</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">查询函数 · 三套拓扑一族计算</span>
+    <span class="sec-sub">PART 2 · SPARQL FUNCTIONS</span>
+  </div>
+  <table>
+    <tr><th>函数族</th><th>代表</th><th>语义</th></tr>
+    <tr class="hl"><td><span class="k">Simple Features</span></td><td><span class="code">geof:sfEquals · sfDisjoint · sfIntersects · sfTouches · sfCrosses · sfWithin · sfContains · sfOverlaps</span></td><td>八种基本拓扑关系,最常用</td></tr>
+    <tr><td><span class="k">Egenhofer / RCC8</span></td><td><span class="code">geof:ehEquals · geof:rcc8ec…</span></td><td>更细粒度的定性拓扑词表,按领域选用</td></tr>
+    <tr><td><span class="k">非拓扑计算</span></td><td><span class="code">geof:distance · geof:buffer · geof:convexHull · geof:intersection</span></td><td>距离、缓冲区、凸包、几何运算</td></tr>
+    <tr><td><span class="k">空间聚合</span></td><td><span class="code">geof:aggUnion 等</span></td><td>GROUP BY 里聚合几何</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT</span>
+    三套拓扑词表语义粒度不同:SF 八种够用就别上 RCC8——结论要能被下游读懂。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">一条地理查询 · SPARQL</span>
+    <span class="sec-sub">PART 2 · A WORKED QUERY</span>
+  </div>
+  <div class="codeblock"><span class="kw">SELECT</span> ?feature ?wkt <span class="kw">WHERE</span> {
+  ?feature <span class="kw">a</span> geo:Feature ;
+           geo:hasGeometry ?geom .
+  ?geom    geo:asWKT ?wkt .
+  <span class="kw">FILTER</span>(geof:sfIntersects(?wkt,
+      <span class="iri">"POLYGON((116.3 39.8, 116.6 39.8, 116.6 40.1, 116.3 40.1, 116.3 39.8))"</span>^^geo:wktLiteral))
+}</div>
+  <div class="note">
+    <span class="tag">读法</span>
+    找出与给定多边形相交的所有要素:hasGeometry 找几何、asWKT 取形态、geof:sfIntersects 做拓扑判断——三步就是 GeoSPARQL 的全部骨架。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>几何类前缀是 sf::</b>sf:Polygon 才对——geo: 是核心本体前缀,别写成 geo:Polygon。</li>
+    <li><b>wktLiteral 带 CRS 前缀:</b>默认 CRS84(经纬度);其他坐标参照系要在字面量开头声明 CRS URI。</li>
+    <li><b>要素与几何分开建模:</b>属性挂 Feature,形状挂 Geometry——多精度、多时点几何可共存。</li>
+    <li><b>多几何要素认默认几何:</b>hasDefaultGeometry 是「官方」形状,拓扑判断默认用它。</li>
+    <li><b>三套拓扑词表别混用:</b>SF / Egenhofer / RCC8 粒度不同——下游能读懂哪套就用哪套。</li>
+    <li><b>大面数据先粗筛:</b>先 bounding box 过滤再算精确拓扑,全表 sfIntersects 会拖垮查询。</li>
+    <li><b>CRS 一致才可比较:</b>两个几何坐标系不同,先变换再比——直接比较结果未定义。</li>
+    <li><b>时空成对:</b>与 OWL-Time(PL.12)组合——geo: 管哪里,time: 管何时,观测类数据两维都要。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 21 · P.&thinsp;2/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

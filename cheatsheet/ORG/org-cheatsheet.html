@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+<!-- ================= SHEET 1 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OR<em>G</em></div>
+    <div class="title-block">
+      <div class="title-cn">组织本体 · 规范速查</div>
+      <div class="title-en">ORG — THE ORGANIZATION ONTOLOGY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;24</div>
+    <div class="meta">W3C / ORG / 2014</div>
+  </div>
+</header>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 组织与角色的三套机制</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">ORG 是 W3C 的组织本体(2014 Rec,Dave Reynolds / 政府关联数据工作组):把「谁属于哪个组织、担任什么角色、向谁汇报」写成 RDF。命名空间 <span class="code">org:</span> = <span class="code">http://www.w3.org/ns/org#</span>。最精巧处:<b>成员关系给了三种可选机制</b>。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">组织谱系</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Organization · FormalOrganization · Unit</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">⊆ foaf:Agent</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">成员三机制</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">memberOf 直连 · Membership 再化 · Post 岗位</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">按需选一</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">角色与汇报</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Role 是概念 · reportsTo 汇报线 · roleProperty 桥</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">分类中立</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">站点与变更</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">hasSite 地址 · ChangeEvent 基于 PROV-O</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">历史可溯</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>组织本体刻意「分类中立」——不定组织类型表、不定角色表,把分类留给上层画像;自己只管结构关系。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 类与成员机制 → 角色与汇报 → 实操。</div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">组织谱系 · 一切皆 Agent</span>
+    <span class="sec-sub">PART 2 · CLASSES</span>
+  </div>
+  <table>
+    <tr><th>类</th><th>一句话</th></tr>
+    <tr class="hl"><td><span class="k">org:Organization</span></td><td>因共同目的组织起来的人群集合;自身可作 Agent 行动;⊆ foaf:Agent,≡ foaf:Organization</td></tr>
+    <tr><td><span class="k">org:FormalOrganization</span></td><td>被外部(尤其法律)承认的正式组织:公司、慈善体、政府、教会</td></tr>
+    <tr><td><span class="k">org:OrganizationalUnit</span></td><td>部门 / 单元:只存在于更大组织内部,本身不是法人</td></tr>
+    <tr><td><span class="k">org:Role</span></td><td>抽象角色(skos:Concept 的子类)——「CTO」是概念,任职才是实例</td></tr>
+    <tr><td><span class="k">org:Membership</span></td><td>再化的成员关系节点:人 + 组织 + 角色 + 时段,可挂薪资合同等注记</td></tr>
+    <tr><td><span class="k">org:Post</span></td><td>岗位:独立于任职者存在的位置——可空缺、可多人共任、甚至可当组织用</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">与 FOAF 的关系</span>
+    org:Organization ⊑ foaf:Agent 且 ≡ foaf:Organization;org:hasMember ≡ foaf:member——组织本体直接站在人物词表肩上(见 PL.13)。
+  </div>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">成员三机制 · 按表达需求选</span>
+    <span class="sec-sub">PART 2 · THREE MEMBERSHIP MECHANISMS</span>
+  </div>
+  <p class="desc">同一句「张三是 ACME 的 CTO」,ORG 给了三种粒度递进的写法:</p>
+  <div class="codeblock"><span class="cm"># ① 直连:够用就最简</span>
+ex:张三 org:memberOf ex:ACME .
+
+<span class="cm"># ② 再化:要带角色与时段</span>
+ex:张三 org:memberOf ex:ACME .
+[] <span class="kw">a</span> org:Membership ;
+   org:member ex:张三 ; org:organization ex:ACME ;
+   org:role ex:CTO ; org:memberDuring <span class="iri">"2024-01.."</span> .
+
+<span class="cm"># ③ 岗位制:岗位独立于人存在</span>
+ex:ACME org:hasPost ex:cto-post .
+ex:cto-post org:heldBy ex:张三 .</div>
+  <div class="note">
+    <span class="tag">roleProperty 桥</span>
+    可以给 Role 声明专用子属性(如 eg:ctoOf ⊑ org:memberOf),再由 org:roleProperty 桥接——闭合规则自动生成直连三元组。三机制可并存,蕴含规则保证互通。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 24 · P.&thinsp;1/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+<!-- ================= SHEET 2 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">OR<em>G</em></div>
+    <div class="title-block">
+      <div class="title-cn">组织本体 · 规范速查</div>
+      <div class="title-en">ORG — THE ORGANIZATION ONTOLOGY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;24</div>
+    <div class="meta">W3C / ORG / 2014</div>
+  </div>
+</header>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">汇报线 · 站点 · 变更历史</span>
+    <span class="sec-sub">PART 2 · REPORTING, SITES &amp; CHANGE</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>汇报线 <span>reportsTo</span></h4>
+      <ul>
+        <li>人与人都行、岗位与岗位也行——组织架构图两种画法都覆盖</li>
+        <li>实线汇报与虚线(dotted line)皆可表达</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>站点 <span>hasSite / siteOf</span></h4>
+      <ul>
+        <li>组织 ↔ 地点的关联;hasPrimarySite / hasRegisteredSite 细分</li>
+        <li>地址建议用 vCard 表达(range 开放)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">变更历史</span>
+    org:ChangeEvent 基于 PROV-O(PL.11)构建:合并、拆分、更名都可写成带时间的变更事件——组织主数据的「户口簿」。
+  </div>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">一份组织档案 · Turtle</span>
+    <span class="sec-sub">PART 4 · A WORKED PROFILE</span>
+  </div>
+  <div class="codeblock"><span class="iri">ex:acme</span> <span class="kw">a</span> org:FormalOrganization ;
+    org:hasSubOrganization <span class="iri">ex:acme-rd</span> .          <span class="cm"># 研发单元(非法人)</span>
+
+<span class="iri">ex:acme-rd</span> <span class="kw">a</span> org:OrganizationalUnit ;
+    org:unitOf ex:acme ;
+    org:hasSite <span class="iri">ex:site-shanghai</span> .
+
+[] <span class="kw">a</span> org:Membership ;
+    org:member <span class="iri">ex:张三</span> ; org:organization <span class="iri">ex:acme</span> ;
+    org:role <span class="iri">ex:cto-role</span> ; org:memberDuring <span class="iri">"2024-01-01/.."</span> .
+
+<span class="iri">ex:cto-post</span> <span class="kw">a</span> org:Post ;
+    org:postIn ex:acme ;
+    org:heldBy <span class="iri">ex:张三</span> .                    <span class="cm"># 岗位与人分离</span>
+
+<span class="iri">ex:张三</span> org:reportsTo <span class="iri">ex:ceo</span> .              <span class="cm"># 汇报线</span></div>
+  <div class="note">
+    <span class="tag">读法</span>
+    三机制同框:直连 memberOf、再化 Membership(带角色与时段)、岗位 Post——一张架构图需要的全部关系。
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>分类中立是刻意的:</b>ORG 不带组织类型表、不带角色表——行业分类(上市 / 国企 / 部委)由上层画像补,别指望 org: 自带。</li>
+    <li><b>三种机制别混用同一事实:</b>同一任职既写直连又建 Membership 节点会双份——蕴含规则互通,选一种主笔。</li>
+    <li><b>Post 可以空缺:</b>岗位存在不等于有人在任——空缺岗位恰恰是编制管理的好表达。</li>
+    <li><b>Unit 不是法人:</b>OrganizationalUnit 只是组织内单元,对外签约要用 FormalOrganization。</li>
+    <li><b>reportsTo 覆盖虚线汇报:</b>矩阵组织的双线汇报直接多写一条 reportsTo。</li>
+    <li><b>与 FOAF / FIBO 的咬合:</b>人用 foaf:Person;金融机构本体见 FIBO(PL.18)的 BE 域——法人谱系可直接对齐。</li>
+    <li><b>角色是 skos:Concept:</b>角色表可以用 SKOS 方案管理(PL.03)——概念、层级、多语标签全套现成。</li>
+    <li><b>地址用 vCard:</b>org:siteAddress 的取值建议 vCard——与联系人词表保持一致。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 24 · P.&thinsp;2/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>

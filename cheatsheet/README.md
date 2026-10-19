@@ -1,6 +1,6 @@
 # Semantic Web Cheatsheets · 语义网规范速查系列
 
-一套统一设计的语义网规范速查卡:17 张卡覆盖从数据模型、本体语言到领域词表的完整技术栈。每张卡固定 **176 × 250 mm** 版面、「Measured Graph」视觉体系(暖纸 #F6F1E7 · 墨 #1C2430 · 朱红 #B23A26 · 蓝 #33506E),**总分结构**——第 01 节永远是这张卡自己的地图。
+一套统一设计的语义网规范速查卡:24 张卡覆盖从数据模型、本体语言到领域词表的完整技术栈。每张卡固定 **176 × 250 mm** 版面、「Measured Graph」视觉体系(暖纸 #F6F1E7 · 墨 #1C2430 · 朱红 #B23A26 · 蓝 #33506E),**总分结构**——第 01 节永远是这张卡自己的地图。
 
 设计哲学见 [design-philosophy.md](design-philosophy.md)。
 
@@ -40,7 +40,9 @@
 | PL.07 | [SHACL 1.0](SHACL%201.0/shacl-cheatsheet.html) | 5 | 形状校验:约束组件、验证报告,闭世界合同 |
 | PL.09 | [ODRL 2.2](ODRL%202.2/odrl-cheatsheet.html) | 4 | 许可政策:permission / duty / constraint 写成数据 |
 
-### 领域词表
+### 通用基础设施词表
+
+跨领域的基础构件——不绑定任何行业,任何知识图谱都可能用到。
 
 | 编号 | 卡片 | 页 | 一句话 |
 |---|---|---|---|
@@ -50,8 +52,20 @@
 | PL.13 | [FOAF](FOAF/foaf-cheatsheet.html) | 3 | 人物词表:IFP 身份标识、档案文档 |
 | PL.14 | [DCTERMS](DCTERMS/dcterms-cheatsheet.html) | 3 | 都柏林核心:15 老元素 + 细化词层级 |
 | PL.15 | [QUDT](QUDT/qudt-cheatsheet.html) | 3 | 单位与量类:三件套模式、量纲向量、换算 |
-| PL.16 | [LKIF Core](LKIF/lkif-cheatsheet.html) | 3 | 法律知识:规范、霍菲尔德权利、法律渊源 |
-| PL.17 | [FRAPO](FRAPO/frapo-cheatsheet.html) | 3 | 经费与项目:资助、合同、预算(FRapo = Funding, Research Administration and Projects Ontology) |
+| PL.22 | [DCAT 3](DCAT/dcat-cheatsheet.html) | 2 | 数据目录:Catalog → Dataset → Distribution、复用优先 |
+| PL.23 | [SSN/SOSA](SSN-SOSA/ssn-sosa-cheatsheet.html) | 2 | 传感观测:观测五件套、SOSA 轻量核 + SSN 推理层 |
+| PL.24 | [ORG](ORG/org-cheatsheet.html) | 2 | 组织本体:成员三机制、reportsTo、变更历史 |
+
+### 行业与领域本体
+
+| 编号 | 卡片 | 页 | 一句话 |
+|---|---|---|---|
+| PL.16 | [LKIF Core](LKIF/lkif-cheatsheet.html) | 3 | 法律:规范、霍菲尔德权利、法律渊源 |
+| PL.17 | [FRAPO](FRAPO/frapo-cheatsheet.html) | 3 | 科研管理:资助、合同、预算(FRapo = Funding, Research Administration and Projects Ontology) |
+| PL.18 | [FIBO](FIBO/fibo-cheatsheet.html) | 3 | 金融本体:11 域、证券衍生贷款、OMG 标准(MIT 许可) |
+| PL.19 | [BIOMED](BIOMED/biomed-cheatsheet.html) | 3 | 生物医学全景:SNOMED CT、OBO 家族、LOINC / RxNorm 映射 |
+| PL.20 | [EPCIS 2.0](EPCIS/epcis-cheatsheet.html) | 2 | 供应链事件:四维四类型、CBV 词表、JSON-LD |
+| PL.21 | [GeoSPARQL 1.1](GeoSPARQL/geosparql-cheatsheet.html) | 2 | 地理空间:要素与几何分离、sf: 层级、拓扑函数 |
 
 ### 服务
 

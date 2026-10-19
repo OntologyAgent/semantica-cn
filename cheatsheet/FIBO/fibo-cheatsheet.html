@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FI<em>B</em>O</div>
+    <div class="title-block">
+      <div class="title-cn">金融本体 · 规范速查</div>
+      <div class="title-en">FIBO — FINANCIAL INDUSTRY BUSINESS ONTOLOGY</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;18</div>
+    <div class="meta">EDMC / OMG / QUARTERLY</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 金融业务的共识概念库</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">FIBO(Financial Industry Business Ontology)把金融行业的共识概念——机构、合同、证券、衍生品、贷款、指数——写成 OWL 本体:EDM Council 托管,OMG 标准化,贡献者含 Bloomberg、Citi、Goldman Sachs 等。四层结构:</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">定位</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">金融共识概念库 · OWL · OMG 标准</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">行业共识</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">十一个域</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">FND 底座 · BE/FBC · SEC/DER · LOAN…</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">季度发布</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">发布物</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">本体 · 词表 · 数据字典 · schema.org 映射</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">多格式</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">治理</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">EDMC 托管 · 开源社区 · MIT 许可</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">2014 首发</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>概念 = 行业共识的标准化编码——定义写一次,全行业对齐;扩展走新建子类,不改共识定义。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 域地图 → 数据模式 → 治理与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 三重身份</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">FIBO 有三重身份:EDM Council 的旗舰项目、OMG 的正式标准、GitHub 上的开源社区工程。2014 年首发,2020 年 1 月起转为开放社区流程。</p>
+  <table>
+    <tr><th>要点</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="k">技术与许可</span></td><td>OWL(描述逻辑)写成;<b>MIT 许可</b>——可商用、可内嵌;贡献需 DCO 签署</td></tr>
+    <tr><td><span class="k">发布节奏</span></td><td>各域团队持续开发,<b>每季度正式发布</b>;引用时注明季度版本</td></tr>
+    <tr><td><span class="k">双版本</span></td><td>Dev(开发版)/ Prod(生产版)两条装载线;另有 TBoxOnly(纯模式,不含参照数据)</td></tr>
+    <tr><td><span class="k">概念来源</span></td><td>行业共识的标准化:概念定义是成员机构共识,别私改——扩展走新建子类</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">域地图 · 十一个域一张表</span>
+    <span class="sec-sub">PART 1 · DOMAIN MAP</span>
+  </div>
+  <table>
+    <tr><th>域</th><th>全称</th><th>管什么</th></tr>
+    <tr class="hl"><td><span class="k">FND</span></td><td>Foundations</td><td>底座:人、组织、地点、合同等全 FIBO 通用概念</td></tr>
+    <tr><td><span class="k">BE</span></td><td>Business Entities</td><td>商业实体:治理、互操作、监管申报所需的实体概念</td></tr>
+    <tr><td><span class="k">BP</span></td><td>Business Process</td><td>业务流程:证券发行与交易工作流等时间性过程</td></tr>
+    <tr><td><span class="k">CAE</span></td><td>Corporate Actions &amp; Events</td><td>公司行为:证券存续期内改变参照信息的事件</td></tr>
+    <tr><td><span class="k">DER</span></td><td>Derivatives</td><td>衍生品:期权、期货、远期、互换的共同概念</td></tr>
+    <tr><td><span class="k">FBC</span></td><td>Financial Business &amp; Commerce</td><td>金融业务横切面:产品服务、中介、注册与监管、金融工具</td></tr>
+    <tr><td><span class="k">IND</span></td><td>Indices &amp; Indicators</td><td>指数与指标:经济指标、外汇、利率、股/债/信用指数</td></tr>
+    <tr><td><span class="k">LOAN</span></td><td>Loan</td><td>贷款合同:商业、小微、车贷、学贷、房贷(含 HMDA)</td></tr>
+    <tr><td><span class="k">MD</span></td><td>Market Data</td><td>市场数据:价格、收益率等时变概念(历史/现时/预测)</td></tr>
+    <tr><td><span class="k">SEC</span></td><td>Securities</td><td>证券:分类、识别、发行、登记;股票与债务工具</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">依赖方向</span>
+    一切域都站在 FND 之上;跨域引用自底向上——先 FND 的「组织 / 合同」,再谈 SEC 的「证券」。裁剪引入时别倒置。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 18 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FI<em>B</em>O</div>
+    <div class="title-block">
+      <div class="title-cn">金融本体 · 规范速查</div>
+      <div class="title-en">FIBO — FOUNDATIONS, ENTITIES &amp; INSTRUMENTS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;18</div>
+    <div class="meta">EDMC / OMG / QUARTERLY</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">FND 底座 · 全FIBO的承重墙</span>
+    <span class="sec-sub">PART 2 · FOUNDATIONS</span>
+  </div>
+  <p class="desc">FND 定义全 FIBO 通用概念:<b>人、组织、地点、合同</b>,以及关系、日期时间、数量等支撑件。任何域的展开都从这些词起手。</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>合同族 <span>金融的地基</span></h4>
+      <ul>
+        <li>合同是「承诺的自愿安排」——贷款、互换、衍生品合同全是它的子类</li>
+        <li>缔约方(相关方角色)与合同条款分离建模</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>组织与身份 <span>角色分离</span></h4>
+      <ul>
+        <li>组织、法人身份、角色分开建模——同一机构可扮演多重角色</li>
+        <li>人 / 组织 / 地点都有独立谱系,配关系属性连接</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">为什么重要</span>
+    上层域(SEC 的证券、LOAN 的贷款)的每个概念,拆到底都是 FND 的「合同 + 相关方 + 条款」组合。读懂 FND,其余域是填表。日期时间与数量结构亦在 FND——与 OWL-Time(PL.12)、QUDT(PL.15)互补。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">机构与金融业务 · BE / FBC / IND / MD</span>
+    <span class="sec-sub">PART 2 · ENTITIES &amp; BUSINESS</span>
+  </div>
+  <p class="desc">谁来经营、经营什么、跟着什么走:</p>
+  <table>
+    <tr><th>域</th><th>概念面</th></tr>
+    <tr class="hl"><td><span class="k">BE 实体</span></td><td>法人实体谱系、公司结构、所有权与控制——监管申报与数据治理的实体主数据</td></tr>
+    <tr><td><span class="k">FBC 业务</span></td><td>金融产品与服务、中介机构、注册与监管机构、金融市场、金融工具的公共面</td></tr>
+    <tr><td><span class="k">IND 指标</span></td><td>经济指标、外汇、利率、股票 / 债券 / 信用指数——基准利率是其上的一类</td></tr>
+    <tr><td><span class="k">MD 市场数据</span></td><td>时变概念:历史 / 现时 / 预测的价格与收益率,含债务与资产池分析</td></tr>
+    <tr><td><span class="k">BE × FBC 交叉</span></td><td>法人实体(BE)在金融业务(FBC)里扮演中介、注册人、监管者——同一实体、多重角色</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">建模要点</span>
+    机构(instrument 的发行人、持有人)与工具本身分开——BE 答「是谁」,FBC 答「做什么」,MD 答「表现如何」。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">证券 · 衍生 · 贷款 · 公司行为</span>
+    <span class="sec-sub">PART 2 · SECURITIES, DERIVATIVES, LOANS</span>
+  </div>
+  <p class="desc">工具侧的四个重头域:</p>
+  <table>
+    <tr><th>域</th><th>概念面</th></tr>
+    <tr class="hl"><td><span class="k">SEC 证券</span></td><td>证券的分类、识别、发行与登记;股票与债务工具谱系</td></tr>
+    <tr><td><span class="k">DER 衍生</span></td><td>期权、期货、远期、互换等衍生工具的共同概念</td></tr>
+    <tr><td><span class="k">CAE 公司行为</span></td><td>证券存续期内改变参照信息的事件:分红、拆股、要约……</td></tr>
+    <tr><td><span class="k">LOAN 贷款</span></td><td>贷款合同族:商业、小微、车贷、学贷、房贷;含美国 HMDA 申报细节</td></tr>
+    <tr><td><span class="k">MD × SEC 组合</span></td><td>同一证券的发行条款(SEC)与日频市价(MD)分开建模——静态定义与动态数据互不污染</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">组合观</span>
+    一个「可交易债」= FND 合同 + SEC 发行登记 + MD 市价曲线;一个「利率互换」= DER 概念 + IND 基准利率。域之间靠 FND 的公共词连接。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 18 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">FI<em>B</em>O</div>
+    <div class="title-block">
+      <div class="title-cn">金融本体 · 规范速查</div>
+      <div class="title-en">FIBO — RELEASES, GOVERNANCE &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;18</div>
+    <div class="meta">EDMC / OMG / QUARTERLY</div>
+  </div>
+</header>
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">发布物 · 装载哪一份</span>
+    <span class="sec-sub">PART 3 · RELEASES</span>
+  </div>
+  <table>
+    <tr><th>装载文件</th><th>内容</th><th>给谁用</th></tr>
+    <tr class="hl"><td><span class="code">AboutFIBOProd.rdf</span></td><td>生产版全集</td><td>生产环境直接载</td></tr>
+    <tr><td><span class="code">AboutFIBOProd-TBoxOnly.rdf</span></td><td>仅模式(TBox),不含参照数据个体</td><td>只想要类与层级的应用</td></tr>
+    <tr><td><span class="code">AboutFIBODev.rdf</span></td><td>开发版全集</td><td>跟踪最新概念,接受变动</td></tr>
+    <tr><td><span class="code">AboutFIBOProd-IncludingReferenceData.rdf</span></td><td>生产版 + 参照数据(币种、国家、交易日历等个体)</td><td>要开箱即用实例的场景</td></tr>
+    <tr><td><span class="code">MetadataFIBO.rdf</span></td><td>元数据文件(本体自身的信息),配合 catalog_v001.xml 供 Protégé 解析</td><td>工具链入口</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">查看器</span>
+    spec.edmcouncil.org/fibo/ontology 提供在线 Viewer——写数据前先在 Viewer 里确认概念的最新定义与所属域。
+  </div>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">治理与生态 · 谁在维护</span>
+    <span class="sec-sub">PART 3 · GOVERNANCE</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>治理 <span>怎么改</span></h4>
+      <ul>
+        <li>EDM Council 托管,OMG 标准化</li>
+        <li>GitHub 开源流程:议题讨论 + DCO 签署提交</li>
+        <li>季度正式发布,Release Notes 逐条可溯</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>贡献者 <span>谁背书</span></h4>
+      <ul>
+        <li>Bloomberg · Citi · Credit Suisse · Deutsche Bank · Goldman Sachs · Mizuho · Nordea · State Street · Wells Fargo</li>
+        <li>监管与统计:美联储堪萨斯城分行 · OFR · BEA · BLS · Census · CFTC · Statistics Canada</li>
+        <li>BIAN(银行架构)等行业协会</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">衍生品</span>
+    官方还发布词表(Vocabulary)、数据字典(Data Dictionary)与 schema.org 映射——同一套概念的不同形态,按消费者习惯取用。
+  </div>
+</section>
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>Dev / Prod 别混载:</b>Dev 版概念会动,生产装载一律用 Prod;跟踪新概念才订 Dev。</li>
+    <li><b>TBoxOnly 没有个体:</b>要币种、国家、日历等参照实例,装载 IncludingReferenceData 版。</li>
+    <li><b>引用带季度版本:</b>季度滚动发布,概念定义会演进——对外交换注明「FIBO 20XXQn」。</li>
+    <li><b>共识定义不可私改:</b>行业共识是 FIBO 的价值本体——业务差异走新建子类,或向社区提议题。</li>
+    <li><b>MIT 许可:</b>可商用、可内嵌分发;贡献回社区需 DCO 签署。</li>
+    <li><b>从 FND 起读:</b>上层域的合同、相关方、条款全靠 FND——跳过 FND 直接读 SEC 会处处悬空。</li>
+    <li><b>概念层与消息层分工:</b>FIBO 是概念本体,交易报文走 FIX 等消息协议——别拿它定义线上格式。</li>
+    <li><b>对接 schema.org:</b>官方提供 schema.org 映射衍生品——面向 Web 暴露时先映射再发布。</li>
+    <li><b>币种与测量:</b>FND 自带 Currency 与数量结构;精确测量值可与 QUDT(PL.15)并用——币种是分类,单位是测量。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 18 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

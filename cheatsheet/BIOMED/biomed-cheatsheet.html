@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">M<em>E</em>D</div>
+    <div class="title-block">
+      <div class="title-cn">生物医学词表全景 · 规范速查</div>
+      <div class="title-en">BIOMED — SNOMED CT, OBO &amp; CLINICAL VOCABULARIES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;19</div>
+    <div class="meta">SNOMED INT'L · OBO / MULTI</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 三股力量一张图</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">生物医学是词表最密集的领域。本卡把三股力量放进一张图——临床术语巨頭、开源本体联盟、政府与公益维护的观测药品词表——再看清它们靠映射协作。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">临床术语</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">SNOMED CT · 35万+ 概念 · EL++</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">会员制许可</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">开源联盟</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">OBO Foundry · GO / ChEBI / HPO / MONDO</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">开放许可</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">观测与药品</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">LOINC 检验 · RxNorm 药品 · ICD-11 分类</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">政府 / 公益维护</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">集成与互操作</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">UMLS 集成 · FHIR RDF · OMOP CDM</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">映射不是合并</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>临床叙事用 SNOMED CT,检验用 LOINC,药品用 RxNorm,统计上报用 ICD——各管一段,靠映射协作。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 三股力量 → 映射协作 → 生态与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · 三股力量与许可门槛</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <table>
+    <tr><th>力量</th><th>维护方</th><th>许可</th></tr>
+    <tr class="hl"><td><span class="k">SNOMED CT</span></td><td>SNOMED International(伦敦非营利,30+ 成员国)</td><td>会员制 / affiliate;最不发达国家免费;研究评估免费;美国经 NLM 永久许可免费取英西核心内容</td></tr>
+    <tr><td><span class="k">OBO Foundry</span></td><td>社区联盟(操作委员会 + 编辑 / 技术 / 推广工作组)</td><td>开放许可为第一原则</td></tr>
+    <tr><td><span class="k">LOINC</span></td><td>Regenstrief Institute(公益)</td><td>开放,免费使用</td></tr>
+    <tr><td><span class="k">RxNorm · UMLS</span></td><td>美国 NLM</td><td>美国政府产物,免费分发</td></tr>
+    <tr><td><span class="k">ICD-11</span></td><td>世界卫生组织(WHO)</td><td>2022-01 生效</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">第一道门</span>
+    生产使用前先确认辖区许可路径——SNOMED 的许可即门槛,其余几家基本开放。
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">SNOMED CT · 临床术语全集</span>
+    <span class="sec-sub">PART 2 · CLINICAL TERMINOLOGY</span>
+  </div>
+  <p class="desc">SNOMED CT 是全球最全面的临床术语集:1999 年由 SNOMED RT 与英国 Read Codes 合并而成,2002 年首发,现由 SNOMED International 维护。国际版 <b>35 万+ 概念、约 136 万条关系</b>(2020-01 版)。</p>
+  <div class="owa">
+    <div class="cell a">
+      <h4>四组件 <span>结构</span></h4>
+      <ul>
+        <li>概念:每个概念一个全称 FSN(唯一,带语义标签)、一个首选名 PT、零到多个同义词</li>
+        <li>关系:概念—关系—概念的三元组;is-a 多重继承(急性阑尾炎可有三十六个祖先)</li>
+        <li>参考集:跨标准映射、子集等附加信息</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>概念模型 <span>EL++ 子集</span></h4>
+      <ul>
+        <li>描述逻辑取 EL++:只合取、存在限制、角色层级——无析取与否定</li>
+        <li>具名属性:is-a · laterality · finding site · causative agent · associated morphology · part of</li>
+        <li>概念分 primitive(仅必要条件)与 sufficiently defined(等价定义可推理)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">顶层层级</span>
+    Clinical finding · Procedure · Organism · Body structure · Substance · Pharmaceutical/biologic product · Observable entity · Situation · Qualifier value 等——概念通常归属单一层级。
+  </div>
+  <div class="note">
+    <span class="tag">后组配</span>
+    未建模的概念用组合语法现场表达:「热水导致的左食指三度烧伤」= 三度烧伤 × 左食指 × 热水致因——表达力换一致性。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 19 · P.&thinsp;1/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">M<em>E</em>D</div>
+    <div class="title-block">
+      <div class="title-cn">生物医学词表全景 · 规范速查</div>
+      <div class="title-en">BIOMED — THE OBO FOUNDRY &amp; OBSERVATION VOCABULARIES</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;19</div>
+    <div class="meta">SNOMED INT'L · OBO / MULTI</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">OBO Foundry · 开源本体联盟</span>
+    <span class="sec-sub">PART 2 · OPEN BIOLOGICAL ONTOLOGIES</span>
+  </div>
+  <p class="desc">OBO Foundry 是生物医学开放本体的联盟:一套共同原则(开放许可、统一格式、关系规范 RO、正交性),两百余家成员本体按原则治理。</p>
+  <table>
+    <tr><th>旗舰本体</th><th>覆盖</th></tr>
+    <tr class="hl"><td><span class="k">GO</span></td><td>基因本体:基因产物的功能、过程、定位——家族中最大的本体</td></tr>
+    <tr><td><span class="k">ChEBI</span></td><td>化学实体:药物、代谢物、小分子的分类与角色</td></tr>
+    <tr><td><span class="k">HPO</span></td><td>人类表型:疾病表型词表,罕见病诊断的支柱</td></tr>
+    <tr><td><span class="k">MONDO</span></td><td>疾病本体:整合 OMIM、Orphanet、DO 等多源疾病定义</td></tr>
+    <tr><td><span class="k">UBERON</span></td><td>跨物种解剖学:把人、鼠、鱼…的解剖词接在同一树上</td></tr>
+    <tr><td><span class="k">CL · PR · SO</span></td><td>细胞、蛋白、序列特征</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">公共语法</span>
+    RO(Relations Ontology)是家族公共关系词表——「part of」「realizes」这类跨本体关系都从 RO 取,保证跨本体推理一致。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">观测与药品 · 两家专门词表</span>
+    <span class="sec-sub">PART 2 · LOINC &amp; RxNorm</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>LOINC <span>Regenstrief Institute</span></h4>
+      <ul>
+        <li>检验与临床观测的通用编码:血糖值、血压、心率……</li>
+        <li>十万级词条;每个观测 = 成分 + 属性 + 时间 + 系统 + 标尺</li>
+        <li>2017 年起与 SNOMED International 协作:为 LOINC 组件造 SNOMED 词,并产出 SNOMED 表达式</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>RxNorm <span>美国 NLM</span></h4>
+      <ul>
+        <li>药品规范名与规范配方:临床药物信息的「中立名」</li>
+        <li>连接各商业药库的桥——经 RxNorm interoperable,药单可互换</li>
+        <li>免费分发,经 UMLS 提供</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">ICD-11 提醒</span>
+    ICD 是 WHO 的统计分类——上报与流行病学用它;临床细节表达用 SNOMED。分类与本体不是一类东西。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">映射与互操作 · 协作方式</span>
+    <span class="sec-sub">PART 3 · MAPPING &amp; INTEROP</span>
+  </div>
+  <table>
+    <tr><th>映射</th><th>形态</th></tr>
+    <tr class="hl"><td><span class="k">SNOMED ↔ ICD-9/10/O-3/10-AM</span></td><td>cross-map 参考集:临床表达 → 统计编码,用于上报</td></tr>
+    <tr><td><span class="k">SNOMED ↔ LOINC</span></td><td>2017 年起协作:SNOMED 为 LOINC 组件造词,并以 SNOMED 表达式承载 LOINC 含义</td></tr>
+    <tr><td><span class="k">SNOMED ↔ MedDRA</span></td><td>2021 年联合发布两版药物警戒映射</td></tr>
+    <tr><td><span class="k">MONDO 内部</span></td><td>整合 OMIM / Orphanet / DO 等疾病源——OBO 侧的疾病枢纽</td></tr>
+    <tr><td><span class="k">UMLS 集成</span></td><td>NLM Metathesaurus 把上百词表编入同一集成库——美国生态的枢纽</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT · 映射不是合并</span>
+    cross-map 与参考集保留各词表的语境差异(临床表达 ≠ 统计编码 ≠ 药物警戒术语)。用映射对齐,<b>不要</b>用 <span class="code">owl:sameAs</span> 把不同词表的条目焊死。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 19 · P.&thinsp;2/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 3 / 3 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">M<em>E</em>D</div>
+    <div class="title-block">
+      <div class="title-cn">生物医学词表全景 · 规范速查</div>
+      <div class="title-en">BIOMED — MAPPING, ECOSYSTEM &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;19</div>
+    <div class="meta">SNOMED INT'L · OBO / MULTI</div>
+  </div>
+</header>
+
+
+
+<!-- 07 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07</span><span class="sec-title">生态 · 数据与互操作形态</span>
+    <span class="sec-sub">PART 3 · ECOSYSTEM</span>
+  </div>
+  <table>
+    <tr><th>形态</th><th>定位</th></tr>
+    <tr class="hl"><td><span class="k">OMOP CDM(OHDSI)</span></td><td>观察性研究的关系数据模型 + Athena 词表服务——真实世界证据研究的主流底座</td></tr>
+    <tr><td><span class="k">FHIR RDF</span></td><td>HL7 FHIR 的 RDF 形态:临床互操作消息的本体化出口</td></tr>
+    <tr><td><span class="k">免费子集</span></td><td>DICOM 免费子集(7,314 码)· Global Patient Set(21,782 概念,2019-09 发布)——无许可环境下的起步包</td></tr>
+    <tr><td><span class="k">UMLS</span></td><td>上百词表的集成库,美国区 SNOMED 核心内容经它免费分发</td></tr>
+  </table>
+</section>
+
+<!-- 08 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>SNOMED 生产使用先过许可:</b>会员国 / affiliate / LDC 免费 / 美国经 NLM 免费——路径不同,先确认你站在哪条上。</li>
+    <li><b>EL++ 没有析取与否定:</b>「非 X」类表达靠后组配或参考集,别在推理里期待补全。</li>
+    <li><b>FSN 不上界面:</b>全称带语义标签,是权威定义;界面显示用 PT(首选名)。</li>
+    <li><b>primitive 概念只给必要条件:</b>「已定义」概念才参与等价推理——写数据前分清两种。</li>
+    <li><b>跨词表用 cross-map,不用 sameAs:</b>映射保留语境差异;焊死会让临床细节永久丢失。</li>
+    <li><b>ICD 是统计分类:</b>上报用 ICD,叙事用 SNOMED——两类词表别互相替代。</li>
+    <li><b>疾病枢纽用 MONDO:</b>多源疾病定义已整合,别再自造疾病词表。</li>
+    <li><b>引用带版本:</b>SNOMED 国际版按月更新;OBO 各本体独立版本——交换数据注明版本与日期。</li>
+  </ol>
+</section>
+
+
+<!-- 09 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09</span><span class="sec-title">常用组合速查</span>
+    <span class="sec-sub">PART 4 · RECIPES</span>
+  </div>
+  <table>
+    <tr><th>要描述什么</th><th>用哪家</th></tr>
+    <tr><td><span class="k">临床症状 / 手术 / 发现</span></td><td>SNOMED CT(Clinical finding / Procedure 层级)</td></tr>
+    <tr><td><span class="k">检验项目与结果</span></td><td>LOINC(项目)+ SNOMED(结果细节)</td></tr>
+    <tr><td><span class="k">临床用药</span></td><td>RxNorm(规范名)→ 对接各商业药库</td></tr>
+    <tr><td><span class="k">疾病定义与整合</span></td><td>MONDO(疾病枢纽)· HPO(表型维度)</td></tr>
+    <tr><td><span class="k">基因功能 / 化学实体</span></td><td>GO · ChEBI(OBO 家族)</td></tr>
+    <tr><td><span class="k">解剖部位</span></td><td>UBERON(跨物种)· CL(细胞)</td></tr>
+    <tr><td><span class="k">统计上报</span></td><td>ICD-11(WHO)</td></tr>
+  </table>
+</section>
+
+<!-- 10 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10</span><span class="sec-title">工具与入口 · 从哪进</span>
+    <span class="sec-sub">PART 4 · TOOLING</span>
+  </div>
+  <table>
+    <tr><th>入口</th><th>用途</th></tr>
+    <tr class="hl"><td><span class="k">BioPortal</span></td><td>生物医学本体总门户:检索、版本、对比都在线</td></tr>
+    <tr><td><span class="k">OLS (EBI)</span></td><td>OBO 家族的在线词表服务,带 API</td></tr>
+    <tr><td><span class="k">SNOMED 浏览器</span></td><td>官方概念浏览器,逐概念看 FSN / 关系 / 参考</td></tr>
+    <tr><td><span class="k">UMLS Metathesaurus</span></td><td>上百词表的集成库与映射,美国区 SNOMED 经它分发</td></tr>
+    <tr><td><span class="k">Athena (OHDSI)</span></td><td>OMOP 词表族的下载与版本选择工具</td></tr>
+    <tr><td><span class="k">LOINC Search / RELMA</span></td><td>LOINC 检索与本地映射工具</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 19 · P.&thinsp;3/3</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+<!-- ================= SHEET 1 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SO<em>S</em>A</div>
+    <div class="title-block">
+      <div class="title-cn">传感观测本体 · 规范速查</div>
+      <div class="title-en">SSN / SOSA — SENSORS, OBSERVATIONS, ACTUATORS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;23</div>
+    <div class="meta">W3C / SSN-SOSA / 2017</div>
+  </div>
+</header>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 让传感器说 RDF</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">SSN/SOSA 是 W3C 的传感观测本体(2017 Rec,与 OGC 联合产出):一份规范两层词表——<b>SOSA</b> 轻量核给人和小系统用,<b>SSN</b> 推理层给机器用。命名空间 <span class="code">sosa:</span> = <span class="code">http://www.w3.org/ns/sosa/</span>。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">观测五件</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Sensor · Observation · Result · Property · FOI</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">SOSA 核心</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">执行与采样</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Actuator · Sampling · Sampler · Platform</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">不止观测</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">双层设计</text>
+      <text x="32" y="29.8" font-size="2.4" fill="#3a4351" font-family="JetBrainsMono">SOSA 轻量核 → SSN 推理层(ALRIN(D))</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">垂直分层</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">对齐</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">O&amp;M(ISO 19156)· PROV · DUL 各有对齐模块</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">W3C × OGC</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>观测是一次「活动」——传感器按流程对兴趣要素的属性求值产生结果;时间分 resultTime(做完)与 phenomenonTime(现象发生)。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → SOSA 核心 → 双层设计 → 生态与实操。</div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">SOSA 核心 · 观测五件套</span>
+    <span class="sec-sub">PART 2 · SOSA CORE</span>
+  </div>
+  <p class="desc">一次观测的完整闭环:传感器(Sensor)按流程(Procedure)对兴趣要素(FeatureOfInterest)的被观测属性(ObservableProperty)求值,产出结果(Result)。</p>
+  <table>
+    <tr><th>类 / 属性</th><th>一句话</th></tr>
+    <tr class="hl"><td><span class="k">sosa:Sensor</span></td><td>执行观测流程的设备、人乃至仿真软件(ssn:System 的子类)</td></tr>
+    <tr><td><span class="k">sosa:Observation</span></td><td>观测「活动」本身——按流程估计 / 计算属性值的行为</td></tr>
+    <tr><td><span class="k">sosa:observes / observedProperty</span></td><td>传感器能测的属性 / 本次观测测的属性</td></tr>
+    <tr><td><span class="k">sosa:hasFeatureOfInterest</span></td><td>兴趣要素:被测的对象(可以是 Sample)</td></tr>
+    <tr><td><span class="k">sosa:hasResult / hasSimpleResult</span></td><td>结果节点 / 简单值(「32 °C」直接写)</td></tr>
+    <tr><td><span class="k">sosa:resultTime · phenomenonTime</span></td><td>做完的时间 vs 现象发生的时间——两个时间分开记</td></tr>
+  </table>
+  <div class="def">
+    <span class="lbl">KEY POINT · 两个时间</span>
+    resultTime 是<b>观测活动完成</b>的时刻;phenomenonTime 是<b>被测现象发生</b>的时刻——水质采样前者是化验完成日,后者是取样日。混用是观测数据最常见的错。
+  </div>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">不止观测 · 执行与采样</span>
+    <span class="sec-sub">PART 2 · ACTUATION &amp; SAMPLING</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>执行 <span>Actuator</span></h4>
+      <ul>
+        <li>执行流程改变世界状态:开阀、调温、下发指令</li>
+        <li>hasResult 产出 Actuation 记录</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>采样 <span>Sampler</span></h4>
+      <ul>
+        <li>Sampling 造出 Sample——「能代表兴趣要素的那份」</li>
+        <li>水样、岩芯、切片都是 Sample;对样本的观测继承对母体的意义</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">Platform 承载</span>
+    <span class="code">sosa:Platform</span> 承载传感器 / 执行器 / 采样器乃至其他平台——气象站、卫星、浮标都是一个 Platform。
+  </div>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 23 · P.&thinsp;1/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+<!-- ================= SHEET 2 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">SO<em>S</em>A</div>
+    <div class="title-block">
+      <div class="title-cn">传感观测本体 · 规范速查</div>
+      <div class="title-en">SSN / SOSA — SENSORS, OBSERVATIONS, ACTUATORS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;23</div>
+    <div class="meta">W3C / SSN-SOSA / 2017</div>
+  </div>
+</header>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">双层设计 · 轻量核与推理层</span>
+    <span class="sec-sub">PART 3 · TWO VOCABULARIES</span>
+  </div>
+  <p class="desc">一份规范、两个词表,按消费方选层:</p>
+  <table>
+    <tr><th>层</th><th>给谁</th><th>形态</th></tr>
+    <tr class="hl"><td>SOSA</td><td>Web 开发者 · 公民科学 · IoT</td><td>轻量自包含;用 schema.org 式的 domainIncludes / rangeIncludes 注解,推理承诺低(ALI(D))</td></tr>
+    <tr><td>SSN</td><td>推理与系统建模</td><td>imports SOSA 并扩展:系统能力、组成、溯源(ALRIN(D));SOSA 永不反向 import——垂直分层单向向上</td></tr>
+  </table>
+  <div class="note">
+    <span class="tag">与 O&M 的对齐</span>
+    规范自带 O&M(ISO 19156)对齐模块:O&M 偏用户侧但只给抽象类,SSN/SOSA 把它落到 RDF;与 PROV、DUL 的对齐模块亦有提供。OGC 与 W3C 联合产出——一份规范两边认。
+  </div>
+</section>
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">一条观测 · Turtle</span>
+    <span class="sec-sub">PART 4 · A WORKED OBSERVATION</span>
+  </div>
+  <div class="codeblock"><span class="iri">ex:obs-42</span> <span class="kw">a</span> sosa:Observation ;
+    sosa:madeBySensor        <span class="iri">ex:temp-sensor-7</span> ;
+    sosa:hasFeatureOfInterest <span class="iri">ex:room-101</span> ;
+    sosa:observedProperty    <span class="iri">ex:室温</span> ;
+    sosa:resultTime          <span class="iri">"2026-10-15T09:00:00+08:00"</span>^^xsd:dateTime ;
+    sosa:phenomenonTime      <span class="iri">"2026-10-15T08:59:30+08:00"</span>^^xsd:dateTime ;
+    sosa:hasSimpleResult     <span class="iri">"24.6 °C"</span> .</div>
+  <div class="note">
+    <span class="tag">读法</span>
+    五件套齐活:传感器、兴趣要素、被测属性、两个时间、简单结果——「08:59:30 实际达到、09:00:00 完成读取」在数据里是两个时刻。
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>观测是活动不是数据点:</b>Observation 建模为「行为」;结果挂在 hasResult 上——把数值直接塞进 Observation 是常见错。</li>
+    <li><b>两个时间别混:</b>resultTime(做完)与 phenomenonTime(现象发生)分开记——采样后隔周化验的场景里二者差一周。</li>
+    <li><b>Sample 也是 FeatureOfInterest:</b>对水样的观测,兴趣要素是水样(Sample),推理自动带回母体(河)。</li>
+    <li><b>SOSA 推理承诺低:</b>用 domainIncludes 注解而非严格 range——轻量是特性;要严格推理上 SSN 层。</li>
+    <li><b>Procedure 是可复用流程:</b>观测方法、化验规程写成 Procedure 个体,被多次执行引用——别把流程写死在事件里。</li>
+    <li><b>与 O&M / SensorML 分工:</b>SensorML 偏提供者描述;SSN/SOSA 管语义互操作——规范自带对齐模块。</li>
+    <li><b>时间用 OWL-Time(PL.12):</b>phenomenonTime 的取值类型即 time:TemporalEntity——period 用区间,不用字符串。</li>
+    <li><b>SOSA / SSN 前缀别混引:</b>同一概念两套 IRI(SSN 对 SOSA 加公理)——数据统一用 sosa:,要推理再切 ssn:。</li>
+    <li><b>量类接 QUDT(PL.15):</b>observedProperty 指向 QUDT 量类,结果单位用 QUDT 单位——温度是热力学温度不是「摄氏度字符串」。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 23 · P.&thinsp;2/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>

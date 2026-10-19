@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family:'BigShoulders'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/BigShoulders-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Regular.ttf'); font-weight:400; }
+@font-face { font-family:'JetBrainsMono'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/JetBrainsMono-Bold.ttf'); font-weight:700; }
+@font-face { font-family:'InstrumentSans'; src:url('file:///Users/luofisher/.claude/skills/canvas-design/canvas-fonts/InstrumentSans-Regular.ttf'); font-weight:400; }
+
+@page { size: 176mm 250mm; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:176mm; }
+body {
+  font-family:'Hiragino Sans GB','Instrument Sans',sans-serif;
+  background:#F6F1E7; color:#1C2430;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+:root{ --ink:#1C2430; --red:#B23A26; --blue:#33506E; --gray:#7d7466; --hair:#C9BFAC; }
+.mono{ font-family:'JetBrainsMono',monospace; }
+
+.sheet{
+  height:249.8mm; padding:6.5mm 7mm 5.5mm 7mm;
+  display:flex; flex-direction:column;
+  break-inside:avoid; break-after:page;
+}
+.sheet:last-child{ break-after:auto; }
+
+header{ display:flex; align-items:flex-end; justify-content:space-between; border-bottom:0.55mm solid var(--ink); padding-bottom:2mm; }
+.brand{ display:flex; align-items:flex-end; gap:4mm; }
+.rdf{ font-family:'BigShoulders',sans-serif; font-weight:700; font-size:21mm; line-height:.78; letter-spacing:-.02em; color:var(--ink); }
+.rdf em{ font-style:normal; color:var(--red); }
+.title-block{ padding-bottom:.8mm; }
+.title-cn{ font-size:4.3mm; font-weight:600; letter-spacing:.1em; white-space:nowrap; }
+.title-en{ font-family:'JetBrainsMono'; font-size:2.15mm; letter-spacing:.12em; color:var(--gray); margin-top:1mm; }
+.plate{ text-align:right; padding-bottom:.6mm; }
+.plate .no{ font-family:'JetBrainsMono'; font-weight:700; font-size:3.2mm; color:var(--red); }
+.plate .meta{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.08em; margin-top:.8mm; }
+
+section{ border-bottom:0.18mm solid var(--hair); page-break-inside:avoid; }
+.sec-head{ display:flex; align-items:baseline; gap:2.5mm; margin:.9mm 0 .7mm 0; }
+.sec-num{ font-family:'JetBrainsMono'; font-weight:700; font-size:2.6mm; color:var(--red); }
+.sec-title{ font-size:3.4mm; font-weight:600; letter-spacing:.1em; }
+.sec-sub{ font-family:'JetBrainsMono'; font-size:1.9mm; color:var(--gray); letter-spacing:.05em; margin-left:auto; }
+p.desc{ font-size:2.4mm; line-height:1.45; color:#3a4351; padding-bottom:.7mm; }
+p.desc .code, td .code, .note .code, .def .code, .owa .code{
+  font-family:'JetBrainsMono'; font-size:1.95mm; color:var(--blue);
+}
+
+.fig-wrap{ display:flex; gap:4mm; align-items:center; padding-bottom:1.1mm; }
+.fig-wrap svg{ flex:0 0 auto; }
+.fig-notes{ flex:1; display:flex; flex-direction:column; gap:1.2mm; }
+.t-note{ font-size:2.35mm; line-height:1.45; color:#3a4351; }
+
+table{ width:100%; border-collapse:collapse; margin-bottom:.9mm; font-size:2.3mm; }
+th{ text-align:left; font-size:2.05mm; font-weight:600; letter-spacing:.05em; color:var(--ink);
+    padding:.6mm 1.6mm; border-bottom:0.4mm solid var(--ink); }
+td{ padding:.5mm 1.6mm; border-bottom:0.14mm solid var(--hair); color:#3a4351; vertical-align:top; line-height:1.32; }
+tr:last-child td{ border-bottom:none; }
+.yes{ color:var(--red); font-weight:700; }
+.no{ color:var(--gray); font-weight:700; }
+tr.hl td{ background:rgba(178,58,38,.06); }
+td .k{ color:var(--ink); font-weight:600; }
+
+.def{
+  border-left:0.7mm solid var(--red); background:rgba(178,58,38,.05);
+  padding:.85mm 2mm; margin-bottom:1mm; font-size:2.35mm; line-height:1.38; color:#3a4351;
+}
+.def .lbl{ font-family:'JetBrainsMono'; font-size:1.75mm; font-weight:700; color:var(--red); letter-spacing:.14em; display:block; margin-bottom:.5mm; }
+.def b{ color:var(--ink); }
+.note{ border:0.16mm dashed var(--hair); padding:.85mm 2mm; font-size:2.25mm; line-height:1.38; color:#3a4351; margin-bottom:1mm; }
+.note b{ color:var(--ink); }
+.note.warn{ border-color:var(--red); }
+.note .tag{ font-family:'JetBrainsMono'; font-size:1.7mm; font-weight:700; color:var(--gray); letter-spacing:.12em; display:block; margin-bottom:.5mm; }
+.note.warn .tag{ color:var(--red); }
+
+.sub{ font-size:2.6mm; font-weight:700; color:var(--ink); letter-spacing:.03em;
+  margin:1.1mm 0 .7mm; padding-bottom:.5mm; border-bottom:0.14mm solid var(--hair); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:1mm; margin-bottom:1.1mm; }
+.chip{ border:0.16mm solid var(--hair); background:#fff; padding:.6mm 1.6mm;
+  font-size:2.25mm; display:flex; align-items:baseline; gap:1mm; }
+.chip .cn{ font-weight:600; color:var(--ink); }
+.chip .en{ font-family:'JetBrainsMono'; font-size:1.85mm; color:var(--blue); }
+.chip.hot{ border-color:var(--red); }
+.chip.hot .en{ color:var(--red); }
+
+ol.check{ list-style:none; counter-reset:c; }
+ol.check li{ counter-increment:c; font-size:2.3mm; line-height:1.45; color:#3a4351;
+  padding:.75mm 0 .75mm 6mm; position:relative; border-bottom:0.14mm solid var(--hair); }
+ol.check li:last-child{ border-bottom:none; }
+ol.check li::before{ content:counter(c,decimal-leading-zero);
+  font-family:'JetBrainsMono'; font-weight:700; font-size:1.8mm; color:var(--red);
+  position:absolute; left:0; top:.95mm; }
+
+.codeblock{ background:#1C2430; color:#E8E2D2; font-family:'JetBrainsMono';
+  font-size:2.05mm; line-height:1.4; padding:1.6mm 2.6mm; margin-bottom:1.1mm; white-space:pre; }
+.codeblock .cm{ color:#7E8AA0; }
+.codeblock .iri{ color:#8FB4D9; }
+.codeblock .kw{ color:#D9A46A; }
+
+.owa{ display:flex; padding-bottom:.9mm; }
+.owa .cell{ flex:1; }
+.owa .cell + .cell{ border-left:0.18mm solid var(--hair); padding-left:3.2mm; }
+.owa .cell:first-child{ padding-right:3.2mm; }
+.owa h4{ font-size:2.5mm; font-weight:700; letter-spacing:.05em; margin-bottom:.7mm; }
+.owa h4 span{ font-family:'JetBrainsMono'; font-size:1.8mm; color:var(--gray); font-weight:400; letter-spacing:.04em; }
+.owa .cell.a h4{ color:var(--red); }
+.owa .cell.b h4{ color:var(--blue); }
+.owa ul{ list-style:none; }
+.owa li{ font-size:2.2mm; line-height:1.4; color:#3a4351; padding-left:2.8mm; position:relative; margin-bottom:.25mm; }
+.owa li::before{ content:'—'; position:absolute; left:0; color:var(--hair); }
+
+footer{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; border-top:0.55mm solid var(--ink); padding-top:1.5mm; }
+footer .mono{ font-size:1.9mm; letter-spacing:.1em; color:var(--gray); }
+footer .rule{ flex:1; margin:0 4mm; border-top:0.14mm solid var(--hair); }
+.ticks{ display:flex; gap:1mm; }
+.ticks i{ width:.8mm; height:2.2mm; background:var(--ink); display:block; }
+.ticks i.r{ background:var(--red); }
+</style>
+</head>
+<body>
+
+<!-- ================= SHEET 1 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">EPC<em>I</em>S</div>
+    <div class="title-block">
+      <div class="title-cn">供应链事件标准 · 规范速查</div>
+      <div class="title-en">EPCIS 2.0 + CBV 2.0 — SUPPLY CHAIN VISIBILITY EVENTS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;20</div>
+    <div class="meta">GS1 / EPCIS 2.0 / 2022</div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01</span><span class="sec-title">总览 · 让伙伴共享「发生了什么」</span>
+    <span class="sec-sub">PART 1 · OVERVIEW</span>
+  </div>
+  <p class="desc">EPCIS 是 GS1 的供应链可见性事件标准:贸易伙伴把「何物、何时、何地、何因」写成结构化事件互相共享。2.0 版(2022-06 与 CBV 2.0 同批批准)带来 JSON-LD 绑定与关联事件。</p>
+  <div class="fig-wrap">
+    <svg width="118mm" height="44.4mm" viewBox="0 0 118 44.4">
+      <rect x="0.25" y="1" width="27.5" height="8.5" fill="#B23A26" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="5.9" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">事件四维</text>
+      <text x="32" y="6" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">What · When · Where · Why</text>
+      <text x="116.5" y="6" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">缺一不完整</text>
+      <line x1="14" y1="9.9" x2="14" y2="11.6" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,12.4 12.9,10.8 15.1,10.8" fill="#C9BFAC"/>
+      <rect x="0.25" y="12.9" width="27.5" height="8.5" fill="#33506E" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="17.8" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">四类事件</text>
+      <text x="32" y="17.9" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">Object · Aggregation · Transformation · Association</text>
+      <text x="116.5" y="17.9" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">可见性事件</text>
+      <line x1="14" y1="21.8" x2="14" y2="23.5" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,24.3 12.9,22.7 15.1,22.7" fill="#C9BFAC"/>
+      <rect x="0.25" y="24.8" width="27.5" height="8.5" fill="#1C2430" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="29.7" font-family="JetBrainsMono" font-size="2.6" fill="#F6F1E7" text-anchor="middle" font-weight="700">CBV 伴词</text>
+      <text x="32" y="29.8" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">bizStep 业务步骤 · disposition 处置状态</text>
+      <text x="116.5" y="29.8" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">GS1 出品</text>
+      <line x1="14" y1="33.7" x2="14" y2="35.4" stroke="#C9BFAC" stroke-width="0.5"/>
+      <polygon points="14,36.2 12.9,34.6 15.1,34.6" fill="#C9BFAC"/>
+      <rect x="0.25" y="36.7" width="27.5" height="8.5" fill="#F6F1E7" stroke="#1C2430" stroke-width="0.4"/>
+      <text x="14" y="41.6" font-family="JetBrainsMono" font-size="2.6" fill="#B23A26" text-anchor="middle" font-weight="700">语法绑定</text>
+      <text x="32" y="41.7" font-family="JetBrainsMono" font-size="2.4" fill="#3a4351">XML · JSON · JSON-LD(2.0 新增)</text>
+      <text x="116.5" y="41.7" font-family="JetBrainsMono" font-size="1.9" fill="#7d7466" text-anchor="end">官方 context</text>
+    </svg>
+    <div class="fig-notes">
+      <div class="t-note"><b>主线:</b>每个事件都是一条可共享的业务事实——四维齐备,伙伴才能还原现场。</div>
+      <div class="t-note">本卡结构 = 本图:概览 → 事件模型 → 标识与词表 → 示例与实操。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02</span><span class="sec-title">定位 · GS1 的可见性层</span>
+    <span class="sec-sub">PART 1 · POSITION</span>
+  </div>
+  <p class="desc">EPCIS 2.0 与 CBV 2.0 由 GS1 于 2022 年 6 月批准发布,演进自 EPCIS 1.x;JSON-LD 语法用官方 context(ref.gs1.org 的 epcis-context.jsonld)定义。它不规定系统怎么建,只规定<b>事件怎么共享</b>。</p>
+  <table>
+    <tr><th>要点</th><th>说明</th></tr>
+    <tr class="hl"><td><span class="k">只管事件语义</span></td><td>库存系统、WMS 各建各的;跨组织交换的「发生了什么」用 EPCIS 表达</td></tr>
+    <tr><td><span class="k">CBV 伴词</span></td><td>Core Business Vocabulary:给 bizStep(业务步骤)、disposition(处置状态)等字段提供 GS1 共享取值——亦双标发布为 ISO/IEC 19988:2024(Edition 3)</td></tr>
+    <tr><td><span class="k">自定义词</span></td><td>CBV 没有的取值可以自定义——挂自己的命名空间,别混用 GS1 前缀</td></tr>
+    <tr><td><span class="k">三语法同权</span></td><td>XML(1.x 继承)· JSON · JSON-LD 表达同一事件模型,互转无损</td></tr>
+  </table>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03</span><span class="sec-title">事件模型 · 四维与四类型</span>
+    <span class="sec-sub">PART 2 · EVENT MODEL</span>
+  </div>
+  <p class="desc">每个事件回答四个问题——<b>何物、何时、何地、何因</b>:</p>
+  <table>
+    <tr><th>维度</th><th>字段</th><th>内容</th></tr>
+    <tr><td><span class="k">What 何物</span></td><td><span class="code">epcList · quantityList · childEPCs · input/outputEPCList</span></td><td>事件涉及的对象(单品 / 批量 / 转换前后)</td></tr>
+    <tr><td><span class="k">When 何时</span></td><td><span class="code">eventTime · eventTimeZoneOffset · recordTime</span></td><td>业务发生时间(带时区)与系统记录时间——两者不同</td></tr>
+    <tr><td><span class="k">Where 何地</span></td><td><span class="code">readPoint · bizLocation</span></td><td>采集点(物理读取位置)与业务地点(业务归属位置)</td></tr>
+    <tr><td><span class="k">Why 何因</span></td><td><span class="code">bizStep · disposition</span></td><td>业务步骤(发货、验收…)与处置状态(在途、可售…)</td></tr>
+  </table>
+  <div class="sub">四类事件 · 各管一种「发生了什么」</div>
+  <table>
+    <tr><th>事件类型</th><th>回答</th></tr>
+    <tr class="hl"><td><span class="k">ObjectEvent</span></td><td>观测:对象在采集点被看到 / 状态改变(commissioned · observed · added · removed · decommissioned)</td></tr>
+    <tr><td><span class="k">AggregationEvent</span></td><td>物理装箱拆箱:对象加入 / 离开某个父层级(单品→箱→托盘)</td></tr>
+    <tr><td><span class="k">TransformationEvent</span></td><td>加工转换:输入对象变成输出对象(原料→成品、改包装)</td></tr>
+    <tr><td><span class="k">AssociationEvent</span></td><td>关联:对象与标识 / 固定位置建立或解除关联——<b>不暗示</b>物理包含</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 20 · P.&thinsp;1/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+<!-- ================= SHEET 2 / 2 ================= -->
+<div class="sheet">
+
+<header>
+  <div class="brand">
+    <div class="rdf">EPC<em>I</em>S</div>
+    <div class="title-block">
+      <div class="title-cn">供应链事件标准 · 规范速查</div>
+      <div class="title-en">EPCIS 2.0 — IDENTIFIERS, CBV &amp; PITFALLS</div>
+    </div>
+  </div>
+  <div class="plate">
+    <div class="no">PL.&nbsp;20</div>
+    <div class="meta">GS1 / EPCIS 2.0 / 2022</div>
+  </div>
+</header>
+
+<!-- 04 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04</span><span class="sec-title">标识与词表 · 事件的主角们</span>
+    <span class="sec-sub">PART 2 · IDENTIFIERS &amp; CBV</span>
+  </div>
+  <div class="owa">
+    <div class="cell a">
+      <h4>GS1 标识体系 <span>对象的身份</span></h4>
+      <ul>
+        <li>GTIN 品类 · SGTIN 单品(序列化)</li>
+        <li>SSCC 物流单元(箱 / 托盘)</li>
+        <li>GLN 位置 · SGLN 序列化位置</li>
+        <li>2.0 亦接受 GS1 Digital Link URI 与其他标识</li>
+      </ul>
+    </div>
+    <div class="cell b">
+      <h4>CBV 共享词表 <span>为什么这么做</span></h4>
+      <ul>
+        <li>bizStep:shipping · receiving · commissioning…</li>
+        <li>disposition:in_transit · sellable_not_accessible…</li>
+        <li>source / destination type:单据两端角色</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <span class="tag">个体 vs 批量</span>
+    单品级用 SGTIN、批次级用 LGTIN 形态——同一 GTIN 的不同颗粒度,选错会让下游追踪断链。
+  </div>
+</section>
+
+<!-- 05 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05</span><span class="sec-title">一条事件 · JSON-LD 示意</span>
+    <span class="sec-sub">PART 2 · A WORKED EVENT</span>
+  </div>
+  <div class="codeblock">{
+  <span class="kw">"type"</span>: <span class="iri">"ObjectEvent"</span>,
+  <span class="kw">"action"</span>: <span class="iri">"OBSERVE"</span>,
+  <span class="kw">"eventTime"</span>: <span class="iri">"2026-10-15T09:00:00+08:00"</span>,
+  <span class="kw">"eventTimeZoneOffset"</span>: <span class="iri">"+08:00"</span>,
+  <span class="kw">"bizStep"</span>: <span class="iri">"cbv:bizstep-shipping"</span>,
+  <span class="kw">"disposition"</span>: <span class="iri">"cbv:disp-in-transit"</span>,
+  <span class="kw">"epcList"</span>: [<span class="iri">"urn:epc:id:sgtin:0614141.107346.2017"</span>],
+  <span class="kw">"bizLocation"</span>: { <span class="kw">"id"</span>: <span class="iri">"urn:epc:id:sgln:0614141.00729.20"</span> }
+}</div>
+  <div class="note">
+    <span class="tag">读法</span>
+    「09:00 在出货口读到这箱货,此后状态为在途」——一条事件就是一个业务事实;官方 epcis-context.jsonld 给出全部字段到词表的映射。
+  </div>
+</section>
+
+<!-- 06 -->
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06</span><span class="sec-title">实操坑清单</span>
+    <span class="sec-sub">PART 4 · PITFALLS</span>
+  </div>
+  <ol class="check">
+    <li><b>eventTime ≠ recordTime:</b>前者是业务发生时间,后者是系统写入时间——补录历史事件时两者可以差很远。</li>
+    <li><b>Association ≠ 装箱:</b>关联事件(如传感器贴上箱体)不用 AggregationEvent——物理包含语义才归它。</li>
+    <li><b>readPoint ≠ bizLocation:</b>读卡器位置与业务归属位置是两个字段,混用会让追溯报告错位。</li>
+    <li><b>自定义词挂自己的命名空间:</b>CBV 取值不够用时自建 bizStep,别把自造词塞进 GS1 前缀。</li>
+    <li><b>修正历史不删事件:</b>错误用 errorDeclaration 声明,原事件保留——审计链就是事件链。</li>
+    <li><b>单品 / 批次选对颗粒:</b>SGTIN(单品)与 LGTIN(批次)混用会让「这一件」的追踪断掉。</li>
+    <li><b>JSON-LD 用官方 context:</b>epcis-context.jsonld 定义字段到词表的映射——自造 context 会破坏互换。</li>
+    <li><b>1.x → 2.0 平滑:</b>XML 绑定仍在;新系统直接选 JSON-LD,老系统按节奏迁。</li>
+  </ol>
+</section>
+
+<footer>
+  <div class="ticks"><i></i><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i></div>
+  <div class="rule"></div>
+  <span class="mono">FISHER · SEMANTIC WEB SERIES · SHEET 20 · P.&thinsp;2/2</span>
+  <div class="rule"></div>
+  <div class="ticks"><i></i><i class="r"></i><i></i><i></i><i class="r"></i><i></i><i></i><i></i></div>
+</footer>
+</div>
+
+</body>
+</html>

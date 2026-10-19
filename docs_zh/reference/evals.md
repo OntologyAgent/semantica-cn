@@ -44,8 +44,8 @@ from semantica.evals import evaluate, evaluate_repeated, list_evaluators, get_ev
 ```python
 >>> list_evaluators()
 ['decision_scores', 'exact_match', 'keyword_check', 'length_range',
- 'levenshtein', 'llm_as_judge', 'numeric_range', 'regex_match', 'rouge',
- 'temporal_range']
+ 'levenshtein', 'llm_as_judge', 'normalized_exact_match', 'numeric_range',
+ 'regex_match', 'rouge', 'temporal_range', 'token_f1']
 ```
 
 | 名称 | 通过条件 | 相关 `config` 键 |
@@ -58,8 +58,21 @@ from semantica.evals import evaluate, evaluate_repeated, list_evaluators, get_ev
 | `length_range` | `min <= len(actual) <= max` | `min`（默认 0）、`max`（必填） |
 | `levenshtein` | 归一化相似度 `>= threshold` | `threshold`（默认 0.8） |
 | `rouge` | ROUGE-1 F1 `> 0` 且 `>= threshold` | `threshold`（默认 0.0） |
+| `token_f1` | SQuAD 归一化后与最佳 gold 的词元 F1 `> 0` 且 `>= threshold` | `threshold`（默认 0.0） |
+| `normalized_exact_match` | SQuAD 归一化后的 `actual` 与任一 gold 完全相等 | 无 |
 | `llm_as_judge` | 调用方提供的 `judge_fn(actual, expected)` 返回真值 | `judge_fn`（必填，可调用） |
 | `decision_scores` | 对 `Decision` 的全部已配置子检查通过 | 见下 |
+
+`token_f1` 与 `normalized_exact_match` 是问答类评估器，采用 SQuAD 的答案归一化：转小写、删除标点（因此 `U.S.` 与 `US` 视为同一词元）、去掉冠词 a/an/the、合并空白。`expected` 可以是单个 gold 字符串，也可以是可接受 gold 的列表；分数取所有 gold 中的最佳匹配。`token_f1` 的 `score` 始终是原始 F1，`meta` 中带 `f1` 和 `best_gold`。这两个指标与 HotPotQA、MuSiQue 等数据集公开基线的报告口径一致。
+
+```python
+from semantica.evals import evaluate
+
+# (expected, actual)：expected 可以是 gold 列表
+cases = [(["Paris", "Paris, France"], "Paris.")]
+summary = evaluate(cases, evaluators=["token_f1", "normalized_exact_match"])
+print(summary.pass_rate)  # 1.0：归一化后 "Paris." 等于 "paris"
+```
 
 无法执行的评估器（坏正则、解析不了的日期时间、缺 `judge_fn`）不抛异常，而是返回 `meta` 里带 `"error"` 键的 `EvalMetric`。需要数值边界的评估器（`numeric_range`、`length_range`）在缺边界时返回带 `"reason"` 键的失败 metric——既不抛异常也不设 `"error"`。
 
@@ -211,6 +224,76 @@ summary.cases[0].stats["exact_match"].stddev      # 例如 0.13
 - 目标（objective）层与 `evaluate()` 中一样逐轮生效，同一个目标通过 `SampleStats.objective_passed` 把关聚合 `pass_rate`（例如 `{direction: maximize, threshold: 0.8}` 要求跨轮 80% 的通过率）。
 - 至少需要一个评估器，且评估器名必须唯一。
 - `runs` 必须 `>= 1`。
+
+## 记忆系统基准测试
+
+`python -m semantica.benchmarks` 是一个第一阶段（phase 1）的基准测试框架：在问答数据集上运行多个记忆系统，并统一用 `semantica.evals` 打分，因此它给出的数字与 `evaluate()` 的含义相同。它是带适配器的运行框架，不是排行榜。除一个手写的冒烟测试集外不附带任何数据集，也不会联网下载数据。
+
+### 运行
+
+离线样例无需额外安装：
+
+```bash
+python -m semantica.benchmarks list
+python -m semantica.benchmarks run --dataset sample --system lexical --system semantica
+```
+
+体积较大的数据集需要你自行获取，再用 `--data NAME=PATH` 指向本地文件：
+
+```bash
+python -m semantica.benchmarks run \
+  --dataset hotpotqa --data hotpotqa=/path/to/hotpot_dev_distractor_v1.json \
+  --system lexical --limit 200 --markdown report.md
+```
+
+`run` 的常用选项：
+
+| 选项 | 作用 |
+| :--- | :--- |
+| `--dataset NAME` | 要运行的数据集，可重复传入 |
+| `--system NAME` | 要运行的系统，可重复传入；传 `all` 运行全部已注册系统 |
+| `--data NAME=PATH` | 非内置数据集（`hotpotqa`、`musique`、`locomo`）的本地文件路径 |
+| `--limit N` | 每个数据集最多运行的用例数 |
+| `--metric NAME` | 主指标，默认 `token_f1`。名称会对照评估器注册表校验，拼写错误直接报错 |
+| `--markdown PATH` / `--json PATH` | 把报告写成 Markdown 或 JSON |
+| `--predictions` | 在 JSON 输出中包含逐用例预测 |
+| `--strict` | 后端不可用时让运行失败，而不是跳过该系统 |
+
+报告中主指标旁边总是附带 `normalized_exact_match`。
+
+### 数据集
+
+| 名称 | 格式 | 范围 | 许可证 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| `sample` | 内置，6 个问题 | `per_case` | CC0-1.0 | 手写，用于冒烟测试 |
+| `hotpotqa` | 官方 JSON 或 HF 导出 | `per_case` | CC BY-SA 4.0 | distractor 设置 |
+| `musique` | JSONL | `per_case` | CC BY 4.0 | answerable 划分 |
+| `locomo` | `locomo10.json` | `corpus` | CC BY-NC 4.0 | **仅限非商业用途**，仅提供适配器 |
+
+HotPotQA 的代码仓库是 Apache-2.0，但数据集本身是 CC BY-SA 4.0；框架只读取数据文件，因此适用数据集条款。LoCoMo 的许可证为非商业，所以它不在默认集合中，数据也不随仓库分发。你需要用 `--data locomo=PATH` 指向自己的副本。
+
+### 范围：`per_case` 与 `corpus`
+
+两者的区别在于谁拥有记忆：
+
+- `per_case`：每个问题自带段落。系统在回答前被重置，只摄入该问题的段落。这是阅读理解，HotPotQA 与 MuSiQue 衡量的就是这一点。
+- `corpus`：所有段落只摄入一次，之后所有问题查询同一个长期记忆。LoCoMo 衡量的是这种设置，这也是评判记忆系统真正应采用的设置。
+
+混淆两者会美化结果：每个问题都重建一次检索索引的系统，在 `per_case` 上可能表现很好，但实际上没有任何记忆。
+
+### 系统
+
+| 名称 | 实现 | 可用性 |
+| :--- | :--- | :--- |
+| `lexical` | 仓库内置的 BM25 + 句子选取 | 始终可用 |
+| `semantica` | `semantica.context.AgentMemory` | 始终可用 |
+| `mem0` | `mem0` | 需要安装该包 |
+| `graphiti` | `graphiti-core` + 已配置的客户端 | 需要该包和客户端 |
+| `cognee` | `cognee` | 需要安装该包 |
+
+导入框架时不会导入任何第三方 SDK。缺少后端的系统会被记为跳过，其余系统照常运行。传入 `--strict` 时，缺少后端会让运行失败，适合 CI 使用。
+
+所有系统默认使用同一个无依赖的抽取式阅读器：选出与问题词重叠最多的句子。这样系统之间唯一的差异就是检索层。这也是样例数据集的精确匹配列为零的原因：预测是整句，而不是简短答案。
 
 ## 注意
 

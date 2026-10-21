@@ -2,7 +2,7 @@
 title: "LLM 模块（LLMs）"
 description: "生成式大语言模型(LLM)提供商，外加 TypeSafe Jev 类型化决策。"
 source: reference/llms.md
-source_version: acf7d04c7de58c432d5b86f18f8a95c0e0dd9ee3
+source_version: 4b5817b94a69bd7cbd0037387cceb8810b0c706b
 icon: "microchip"
 ---
 
@@ -255,7 +255,7 @@ llm = Groq(api_key=os.getenv("GROQ_API_KEY"), model="llama-3.1-8b-instant")
 
 ## TypeSafe Jev
 
-`Jev` 与 `AsyncJev` 封装官方 `typesafe-sdk` 的 System One 客户端，是仅决策(decision-only)的提供商：两个类都不实现 `generate()`、`generate_structured()` 或 `generate_typed()`，也都不能作为 `llm_provider=` 参数传给生成式抽取器或推理器。
+`Jev` 与 `AsyncJev` 封装官方 `typesafe-sdk` 的 System One 客户端，是仅决策(decision-only)的提供商：两个类都不实现 `generate()`、`generate_structured()` 或 `generate_typed()`，也不能顶替任何生成式提供商——既不能作为推理查询的 `llm_provider=` 参数，也不能作为抽取器的 `provider=`。
 
 <Warning>
   Jev 目前处于实验性的抢先体验阶段。`llm-typesafe` extra 当前支持经过审阅的 TypeSafe SDK 0.7 API，要求 Python 3.10 或更高版本。由于该 SDK 是可选依赖且带保护性导入，Semantica 基础安装仍然兼容 Python 3.9。
@@ -493,19 +493,31 @@ llm = OpenAI(
 
 ## 在抽取器中使用生成式提供商
 
-抽取器接受生成式提供商作为 `llm_provider=`。Jev 返回的是决策而非生成的文本，因此在这里不被接受：
+抽取器不接受提供商实例，而是自行按关键字配置构造一个：`provider` 指定后端（默认 `"openai"`），`llm_model` 选模型，`api_key` 省略时从对应的 `<PROVIDER>_API_KEY` 环境变量读取。`llm_provider=` 在这里不会被读取：它经由 `**config` 进入提供商工厂，最终只存进所构造提供商的 `config` 映射，没有任何代码会消费它——实例从未充当抽取器的提供商，抽取器实际面向的是 `provider=` 指定的后端（省略时为 `"openai"` 默认值）。Jev 在这里同样不可用，因为它返回的是决策而非生成的文本：
 
 ```python
 import os
-from semantica.semantic_extract import NERExtractor, RelationExtractor, TripletExtractor
-from semantica.llms import Groq
+from semantica.semantic_extract import (
+    NERExtractor,
+    RelationExtractor,
+    TripletExtractor,
+)
 
-llm = Groq(model="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY"))
+llm_config = {
+    "method": "llm",
+    "provider": "groq",
+    "api_key": os.environ["GROQ_API_KEY"],
+    "llm_model": "llama-3.3-70b-versatile",
+}
 
-ner  = NERExtractor(method="llm",      llm_provider=llm, max_retries=3)
-rel  = RelationExtractor(method="llm", llm_provider=llm)
-trip = TripletExtractor(method="llm",  llm_provider=llm)
+ner  = NERExtractor(**llm_config, max_retries=3)
+rel  = RelationExtractor(**llm_config)
+trip = TripletExtractor(**llm_config)
 ```
+
+<Note>
+  用 `llm_model`，别用 `model`。两个名字都能配置抽取器自身的 LLM 调用（`llm_model` 优先），但 `TripletExtractor` 在传给其内部构建的实体、关系抽取器的配置里会把 `model` 剥掉——因为在那里这个关键字是 spaCy/HuggingFace 的模型名。于是只写 `model` 时它只到达三元组阶段，内部两个阶段拿不到任何 LLM 模型：它们以显式 `model=None` 构造，覆盖了提供商自身的默认值。`llm_model` 三个阶段全部生效。
+</Note>
 
 ## 提供商对比
 
@@ -553,10 +565,15 @@ trip = TripletExtractor(method="llm",  llm_provider=llm)
 ```python
 import os
 from semantica.semantic_extract import NERExtractor
-from semantica.llms import Groq
 
-llm = Groq(model="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY"))
-ner = NERExtractor(method="llm", llm_provider=llm, max_retries=3)
+# 自动重试限流与瞬时错误
+extractor = NERExtractor(
+    method="llm",
+    provider="groq",
+    api_key=os.environ["GROQ_API_KEY"],
+    llm_model="llama-3.3-70b-versatile",
+    max_retries=3,     # 失败请求自动重试
+)
 
 # Process multiple texts with automatic retries
 texts = ["Document 1 text...", "Document 2 text...", "Document 3 text..."]

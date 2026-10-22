@@ -2,3 +2,8 @@
 # optional-dependency tests on their backends, which fixed the last 50
 # environment-dependent failures in our local gate. Full suite: 9508
 # passed, 0 failed.
+# 2026-10-19: order-dependent flaky, reproduced on pure upstream/main at
+# 0a2731c8 (1 failed / 9749 passed full-suite run there too). Passes in
+# isolation and within tests/parse/; some test outside the directory
+# mutates the global warning filter. Upstream issue, not fork-caused.
+tests/parse/test_image_parser.py::TestImageParserLimits::test_opening_leaves_global_warning_filters_alone

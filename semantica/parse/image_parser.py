@@ -63,8 +63,9 @@ FORMAT_ALIASES = {"JPG": "JPEG", "TIF": "TIFF", "MPO": "JPEG"}
 
 DEFAULT_MAX_FILE_SIZE = 50 * 1024 * 1024  # bytes
 
-# Image modes Pillow's PNG encoder can write.
-PNG_MODES = frozenset({"1", "L", "LA", "I", "I;16", "I;16B", "P", "RGB", "RGBA"})
+# Image modes Pillow's PNG encoder can write. 32-bit "I" is not one of them:
+# Pillow 13 no longer clips it to 16 bits on save, so it is converted first.
+PNG_MODES = frozenset({"1", "L", "LA", "I;16", "I;16B", "P", "RGB", "RGBA"})
 
 # Pillow's own default for Image.MAX_IMAGE_PIXELS, used when an application
 # has set that to None to disable Pillow's check.
@@ -653,7 +654,9 @@ class ImageParser:
                 # .gif reach the TIFF or GIF encoder.
                 output_path = file_path.parent / f"{file_path.stem}_preprocessed.png"
                 # PNG can't store modes such as CMYK (JPEG) or YCbCr.
-                if img.mode not in PNG_MODES:
+                if img.mode == "I":
+                    img = img.convert("I;16")
+                elif img.mode not in PNG_MODES:
                     img = img.convert("RGB")
                 img.save(output_path, format="PNG")
 

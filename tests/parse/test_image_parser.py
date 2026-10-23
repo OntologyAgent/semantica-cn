@@ -170,6 +170,19 @@ class TestImageParserLimits(unittest.TestCase):
         with Image.open(output) as out:
             self.assertEqual((out.format, out.mode), ("PNG", "RGB"))
 
+    def test_preprocess_32bit_grayscale_without_grayscale(self):
+        # Pillow 13 refuses to write 32-bit "I" images as PNG, so a 32-bit
+        # grayscale TIFF must be converted to 16 bits first.
+        path = self.dir / "depth.tiff"
+        Image.new("I", (8, 8), 70000).save(path, format="TIFF")
+        parser = ImageParser(allowed_formats=["TIFF"])
+        output = parser.preprocess_image(
+            path, grayscale=False, enhance_contrast=False
+        )
+        with Image.open(output) as out:
+            self.assertEqual((out.format, out.mode), ("PNG", "I;16"))
+            self.assertEqual(out.getpixel((0, 0)), 65535)
+
     def _fake_tesseract(self):
         fake = MagicMock()
         fake.image_to_string.return_value = "hello"

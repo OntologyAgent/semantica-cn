@@ -223,8 +223,8 @@ monitoring = [
   "prometheus-client>=0.14.0",
   "opentelemetry-api>=1.30.0,<2.0.0",
   "opentelemetry-sdk>=1.30.0,<2.0.0",
-  "opentelemetry-semantic-conventions>=0.58b0,<0.65",
-  "opentelemetry-instrumentation>=0.62b1,<0.65"
+  "opentelemetry-semantic-conventions>=0.58b0,<0.67",
+  "opentelemetry-instrumentation>=0.62b1,<0.67"
 ]
 
 # ---- Visualization ----
@@ -351,7 +351,18 @@ include = ["semantica*", "integrations*", "semantica_mcp*"]
 # The connector only uses WebApplicationClient (prepare_authorization_request,
 # parse_request_uri_response, prepare_request_body, prepare_refresh_body),
 # which is unchanged in 4.0.0. Drop this once the connector lifts its cap.
-override-dependencies = ["oauthlib>=4.0.0"]
+#
+# fastembed (latest 0.9.0) caps pillow<13.0, but 28 Pillow advisories (#2067)
+# are fixed only in 13.0.0. fastembed only calls Image.open/new/fromarray and
+# Image.Resampling; its fromarray(uint8, mode="RGB") calls keep the dtype, so
+# Pillow 13's fromarray change does not affect them. Pillow 13 needs Python
+# 3.11+, so 3.10 stays on 12.x. Drop this once fastembed lifts its cap
+# (qdrant/fastembed#830).
+override-dependencies = [
+  "oauthlib>=4.0.0",
+  "pillow>=13.0.0; python_version >= '3.11'",
+  "pillow>=12.2.0; python_version < '3.11'",
+]
 
 [tool.black]
 line-length = 88

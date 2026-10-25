@@ -1422,9 +1422,9 @@ fastapi==0.141.1 \
     # via
     #   semantica (pyproject.toml)
     #   google-adk
-fastembed==0.8.0 \
-    --hash=sha256:40bee672657574a1009e35ec50030a55f2b426842cb011845379817641bbbbd0 \
-    --hash=sha256:75966edfa8b006ee78514c726bd7f6a50721dadc89305279052be9db72fd53e8
+fastembed==0.9.1 \
+    --hash=sha256:8b4b2881ea85a4d36e8f284466671437b3fed869c33cdc71d6f6c48ddff115c7 \
+    --hash=sha256:95042ac7f685bda6697861066d49f8b119fbde8b75ed5162bbb7e84e2dad0e1d
     # via semantica (pyproject.toml)
 fastjsonschema==2.22.2 \
     --hash=sha256:0fb3915616adac85ccfdd737d26be1089845d2019819505b42d39888458f74d4 \
@@ -1510,9 +1510,9 @@ fastuuid==0.14.0 \
     --hash=sha256:f54d5b36c56a2d5e1a31e73b950b28a0d83eb0c37b91d10408875a5a29494bad \
     --hash=sha256:f74631b8322d2780ebcf2d2d75d58045c3e9378625ec51865fe0b5620800c39d
     # via litellm
-filelock==3.32.5 \
-    --hash=sha256:142cd9fa77a872c5e78c62329a0d15278fadc686eb89e760017968961a4fd6b2 \
-    --hash=sha256:f6a6a28f743f9b95ce19db5abe0f376f75eb56517dff21e1a4751e2657d3e83d
+filelock==4.2.4 \
+    --hash=sha256:301241438c57936ef93f4243a94f2559022268bfcf9b375a9a72eb0f8db8358e \
+    --hash=sha256:c6d8663535e1650ee430507b4ffbac7b464dd64b7647ea0112a9f406499d163d
     # via
     #   huggingface-hub
     #   python-discovery
@@ -3829,9 +3829,9 @@ nbclient==0.11.0 \
     --hash=sha256:04a134a5b087f2c5887f228aca155db50169b8cd9334dee6942c8e927e56081a \
     --hash=sha256:ef7fa0d59d6e1d41103933d8a445a18d5de860ca6b613b87b8574accdb3c2895
     # via nbconvert
-nbconvert==7.17.1 \
-    --hash=sha256:34d0d0a7e73ce3cbab6c5aae8f4f468797280b01fd8bd2ca746da8569eddd7d2 \
-    --hash=sha256:aa85c087b435e7bf1ffd03319f658e285f2b89eccab33bc1ba7025495ab3e7c8
+nbconvert==7.17.2 \
+    --hash=sha256:344a218e8595117ce37396ed025d994f146d076226ebac59255a2fa085ab24d8 \
+    --hash=sha256:6a143c11c00bf831604da4b1be4347d36ea52367057eb920135d69bc2862fed2
     # via
     #   jupyter
     #   jupyter-server
@@ -4489,7 +4489,6 @@ pillow==13.0.0 \
     --hash=sha256:ff3fe9eb621fbb9db4c4be33ab946f6bac5f98ab50ca8d3260503653656c961b \
     --hash=sha256:ffea6b2986a797c84b6d1d27d4f43e0b83c73fc16281a930891cd237cf0d08fe
     # via
-    #   --override (workspace)
     #   semantica (pyproject.toml)
     #   docling-core
     #   docling-ibm-models
@@ -6218,9 +6217,9 @@ sentence-transformers==6.0.1 \
     # via
     #   semantica (pyproject.toml)
     #   bertopic
-setuptools==84.0.0 \
-    --hash=sha256:51a52592b3b99e102b609654876bd65f19f999935166d1352678931132b0c670 \
-    --hash=sha256:f4695c21257f0d9b537ec2692c941d02ee143b7cc1276941349a546573b2ef73
+setuptools==84.2.1 \
+    --hash=sha256:3ff8b3b5492a0aa66960f4419365a86b84e013070d4313e4d4a6894f5d64d6bc \
+    --hash=sha256:ca140b45d5325a9478f880e351484f62fef15f336462e449ca0c03c873d589c2
     # via
     #   spacy
     #   thinc
@@ -7264,9 +7263,9 @@ vine==5.1.0 \
     #   amqp
     #   celery
     #   kombu
-virtualenv==21.14.12 \
-    --hash=sha256:7820aeaef23f1f59a96458edfc7f9d3deac937155718de15f1c9a64471e15551 \
-    --hash=sha256:bbcfb78e36c22ad70c6917c4aecb5e63477d3c138e9f88c946f320e31859c76a
+virtualenv==21.14.13 \
+    --hash=sha256:5fbb04138a4861580b78ba9110d529a26bc48fcc93c8ec36bc0202eeed96a788 \
+    --hash=sha256:de5307ba4b9a0001d9c8ea02832d38f63ca432880f416c1bface61c4323fd905
     # via pre-commit
 wasabi==1.1.3 \
     --hash=sha256:4bb3008f003809db0c3e28b4daf20906ea871a2bb43f9914197d540f4f2e0878 \

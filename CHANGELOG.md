@@ -21,7 +21,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `semantica.kg.RelationalSchemaMapper` maps rows from a relational source (`DBIngestor`, `SnowflakeIngestor`, `DatabricksIngestor`, `PandasIngestor`, a DataFrame or plain row dicts) to the `{"entities", "relationships"}` shape `GraphBuilder` and `OntologyGenerator` consume: entity tables become entities keyed by primary key, foreign keys become typed relationships, junction tables become relationships only
   - Every entity and relationship is tagged with the `source` it came from so `ConflictDetector` can key credibility on it. New `tests/kg/test_schema_mapper.py`
 
+### Changed
+
+- **Breaking: Python 3.10 is no longer supported. Semantica now requires Python 3.11–3.13** (closes #2067)
+  - **Why**: Python 3.10 reached end of life on 2026-10-01, and Pillow 13.0.0 requires Python 3.11. Pillow 13 fixes 41 advisories against Pillow 12.3.0, several of them critical (for example GHSA-v9pv-5gc8-w2m6 and GHSA-5x8w-8jj5-q52h, where opening a crafted image can lead to code execution). No Pillow 12.x release carries those fixes, so a 3.10 install could not be made safe. Pillow is required by matplotlib, docling, pdfplumber, python-pptx and other dependencies, so it could not simply be removed either
+  - **Who is affected**: anyone installing or running Semantica on Python 3.10, about 10% of downloads in September–October 2026. Python 3.11, 3.12 and 3.13 are unaffected
+  - **What happens on 3.10**: `requires-python` is now `>=3.11,<3.14`, so `pip install semantica` on 3.10 installs the last release that supports it, 0.7.x, and gets no further updates. Pinning a newer version on 3.10 fails with "requires a different Python". Existing 3.10 installs keep working but stay on Pillow 12.x, which carries these advisories
+  - **Migration**: move to Python 3.11 or newer (3.13 is what the Docker image uses), then upgrade: `pip install --upgrade semantica`. No Semantica API changes; code that ran on 3.10 runs unchanged
+  - **Dependency changes**: core `pillow>=13.0.0` (was `>=12.2.0`); `embeddings-local` now needs `fastembed>=0.9.1` and `explorer-lite` needs `streamlit>=1.66.1`, the first releases that accept Pillow 13. The `[tool.uv]` Pillow override and the `--no-deps` / `--disable-pip` CI workarounds it needed are gone
+  - **Policy**: classifiers, the Install Matrix (3.11–3.13 on Ubuntu/macOS/Windows), `semantica doctor` (`MIN_PYTHON = (3, 11)`), the Dockerfile and `tests/test_python_support_policy.py` all agree on the new floor. `uv.lock` drops its 3.10-only resolutions (about 1,700 lines net)
+  - **Security**: closes the 13 Pillow Dependabot alerts (including #392 and #425) and the 3 Python 3.10 filelock alerts. The 28 Pillow and 3 filelock acceptances are removed from `osv-scanner.toml` and `SECURITY.md`
+
 ### Fixed
+
+- **TOML config files were silently ignored on Python 3.11+**
+  - `GraphStoreConfig`, `TripletStoreConfig` and `VectorStoreConfig` loaded `.toml` files with the `tomli` backport, which Semantica never declared and which is usually absent on 3.11+. The `ImportError` was caught, logged and the file's settings dropped. With 3.11 as the floor, all four config classes (including `VisualizationConfig`, which had a two-level fallback) use the stdlib `tomllib`. New `tests/test_toml_config_loading.py`
 
 - **LLM provenance recorded the constructor's model, so a per-call `model=` was misattributed** (fixes #2051) by @faresrafat3
   - `_track_llm_call()` resolved the model from `self.model`, the value the wrapper was constructed with, so a call that passed its own `model=` was recorded under a model the request never used. The recorded entry now names the model the call actually used: a per-call `model=` wins, and a call that passes none keeps the constructor's model

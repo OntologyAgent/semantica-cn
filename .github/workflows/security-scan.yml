@@ -104,10 +104,8 @@ jobs:
           # Install the pinned dependency set FIRST so pip-audit scans
           # Semantica's exact CI/release dependency tree (requirements-ci.txt
           # is generated from pyproject.toml extras, so this covers the
-          # project's real deps). --no-deps because the file's pillow 13
-          # override conflicts with fastembed's declared pillow<13.0; every
-          # transitive dep is hash-pinned in it.
-          pip install -r requirements-ci.txt --require-hashes --no-deps
+          # project's real deps).
+          pip install -r requirements-ci.txt --require-hashes
           # Tooling AFTER the pinned set: installing it first would let the
           # pinned requirements overwrite the tooling's own transitive deps.
           pip install -r .github/requirements/pip-audit.txt --require-hashes
@@ -136,11 +134,7 @@ jobs:
           # that file would leave a disclosed vulnerability in
           # open-ontologies-lite, or in any package unique to its
           # resolution, unable to fail this gate.
-          # --disable-pip: pip-audit otherwise re-resolves the file with pip,
-          # which rejects its pillow 13 override (fastembed declares
-          # pillow<13.0). The file is fully hash-pinned, so the versions are
-          # read as-is.
-          pip-audit -r requirements-ci.txt --disable-pip --format=json --output=pip-audit-base.json || true
+          pip-audit -r requirements-ci.txt --format=json --output=pip-audit-base.json || true
           pip-audit -r .github/requirements/open-ontologies-extra.txt --format=json --output=pip-audit-open-ontologies.json || true
 
           # Guard 1: fail loudly if pip-audit exited before writing a report

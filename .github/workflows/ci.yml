@@ -145,11 +145,7 @@ jobs:
           pytest -q tests/explorer/test_explorer_deterministic_rendering_e2e.py
       - name: Install pinned Python dependencies
         run: |
-          # --no-deps: requirements-ci.txt carries pillow 13 through the
-          # [tool.uv] override-dependencies entry, which fastembed's declared
-          # pillow<13.0 rejects, so pip's resolver refuses the set. Every
-          # transitive dep is already hash-pinned in the file.
-          pip install -r requirements-ci.txt --require-hashes --no-deps
+          pip install -r requirements-ci.txt --require-hashes
       # The steps around this one each cover a slice: the reasoning suite above,
       # the two integration directories at the end of the job. Everything else
       # under tests/ has no gate at all, so a regression there is only found by

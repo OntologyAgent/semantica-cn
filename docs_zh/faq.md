@@ -2,7 +2,7 @@
 title: 常见问题
 description: Semantica 常见问题：安装、功能、集成与故障排查。
 source: faq.md
-source_version: 64615c573fcc8209b06e46f360b8ea1ca0f3b667
+source_version: 3ce3a71f37abd9b0a9f76ac4f698afec08180f76
 icon: "circle-question"
 ---
 
@@ -15,7 +15,7 @@ icon: "circle-question"
 | 问题 | 回答 |
 | :-------- | :------ |
 | 许可证？ | MIT：永久免费，没有付费墙功能 |
-| Python 版本？ | 3.10+（推荐 3.11+） |
+| Python 版本？ | 3.11–3.13（3.10 支持止于 0.8.0） |
 | 需要 API key 吗？ | 可选：模式抽取无需任何 key |
 | 兼容 LangChain / LlamaIndex 吗？ | 兼容：Semantica 是叠加层，不是替代品 |
 | 生产可用吗？ | 可以：1000+ 项测试，每个版本都随附安全修复（见 [CHANGELOG](https://github.com/semantica-agi/semantica/blob/main/CHANGELOG.md)） |
@@ -101,7 +101,9 @@ pip install semantica
 
 <Accordion title="需要什么 Python 版本？" icon="python">
 
-Python **3.10 或更高**（支持 3.10–3.13）。推荐 Python 3.11+，性能和兼容性最好。
+Python **3.11 或更高**（支持 3.11–3.13）。
+
+Python 3.10 的支持止于 **0.8.0**：3.10 于 2026 年 10 月到达生命周期终点，而修复了 12.x 系列未涵盖的安全通告的 Pillow 13 要求 3.11。在 Python 3.10 上，`pip install semantica` 会安装最后一个支持它的版本（0.7.x），该版本不再更新。要持续获得修复，请升级到 Python 3.11 或更新版本。
 
 </Accordion>
 
@@ -121,7 +123,7 @@ pip install --upgrade semantica
 
 | 要求 | 最低 | 推荐 |
 | :----------- | :------- | :----------- |
-| Python | 3.10 | 3.11+ |
+| Python | 3.11 | 3.11–3.13 |
 | 内存 | 4 GB | 16 GB+ |
 | 存储 | 2 GB | 20 GB+ |
 | GPU | 可选 | 嵌入和 ML 模型用 CUDA |
@@ -273,7 +275,7 @@ Groq、OpenAI、Anthropic、Google Gemini、Ollama（完全本地）、DeepSeek�
 
 可以。每个版本都带有：
 
-- 1000+ 项测试全部通过，每周还在 Python 3.10–3.13 上验证安装
+- 1000+ 项测试全部通过，每周还在 Python 3.11–3.13 上验证安装
 - `PipelineValidator` 和 `FailureHandler`，带指数退避和可配置重试策略
 - 覆盖所有模块的 W3C PROV-O 溯源追踪
 - 带 SHA-256 校验和与完整审计轨迹的变更管理

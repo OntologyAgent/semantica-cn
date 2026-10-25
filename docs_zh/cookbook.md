@@ -2,7 +2,7 @@
 title: Cookbook
 description: 交互式 Jupyter notebook，覆盖从你的第一个知识图谱到生产级 GraphRAG 系统的全过程。
 source: cookbook.md
-source_version: 7445c9d638dad612e736bab10b00aed71da5e32c
+source_version: 0bacc662319e910cbe0da8934780dc35d145909a
 icon: "flask"
 ---
 
@@ -14,7 +14,7 @@ icon: "flask"
 </Tip>
 
 <Note>
-  前置要求：Python 3.10+、Jupyter，以及你所用大语言模型(LLM)提供商的 API key。
+  前置要求：Python 3.11+、Jupyter，以及你所用大语言模型(LLM)提供商的 API key。
 </Note>
 
 

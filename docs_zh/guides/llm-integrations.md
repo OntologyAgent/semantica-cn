@@ -2,7 +2,7 @@
 title: 大语言模型(LLM)集成
 description: 通过统一生成接口将 Semantica 连接到各生成式 LLM 提供商，并提供 TypeSafe Jev 的类型化决策接口。
 source: guides/llm-integrations.md
-source_version: 106297b3ca1b450c8128c897f7f2271a44cbd34b
+source_version: 651819d89ddf11e35be650b7261eb3effdcf5789
 ---
 
 Semantica 提供统一的生成接口——无论是 Groq、OpenAI、Anthropic Claude、HuggingFace、Novita AI，还是经 LiteLLM 接入的另外 100 多家大语言模型(LLM)提供商，用的都是同一套 `.generate()`、`.generate_structured()` 和 `.generate_typed()` 方法。此外，它还为 TypeSafe Jev 单独提供了一套决策专用接口——Jev 返回的是类型化的 Choice、Noul 与 Score 结果，并非文本生成。
@@ -103,7 +103,7 @@ import logging
 logging.getLogger("typesafe_sdk").setLevel(logging.INFO)
 ```
 
-在 Python 3.10 或更新版本上安装可选依赖：
+安装可选依赖（Python 3.11 或更高版本，与 Semantica 本体一致）：
 
 ```bash
 pip install "semantica[llm-typesafe]"

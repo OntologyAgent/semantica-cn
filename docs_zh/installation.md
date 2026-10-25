@@ -2,7 +2,7 @@
 title: 安装
 description: 一分钟内装好 Semantica。
 source: installation.md
-source_version: 5e434d894d25771912509a751cacf594dde6b809
+source_version: 3635a54e8ebb27ac6dbb89e2e02c02fc8ca182c4
 icon: "download"
 ---
 
@@ -11,14 +11,14 @@ icon: "download"
 </Check>
 
 <Note>
-  需要 Python 3.10 或更高版本（支持 3.10–3.13），推荐 Python 3.11+。
+  需要 Python 3.11 或更高版本（支持 3.11–3.13）。Python 3.10 的支持止于 0.8.0；在 3.10 上 pip 会安装最后一个支持它的版本（0.7.x）。
 </Note>
 
 ## 系统要求
 
 | 组件 | 最低要求 | 推荐配置 |
 | :--------- | :------- | :----------- |
-| Python | 3.10 | 3.11+ |
+| Python | 3.11 | 3.11–3.13 |
 | 操作系统 | Windows / Linux / Mac | Linux / Mac |
 | 内存 | 4 GB | 16 GB+ |
 | 存储 | 2 GB | 20 GB+（模型和数据） |

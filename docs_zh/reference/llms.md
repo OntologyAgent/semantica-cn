@@ -2,7 +2,7 @@
 title: "LLM 模块（LLMs）"
 description: "生成式大语言模型(LLM)提供商，外加 TypeSafe Jev 类型化决策。"
 source: reference/llms.md
-source_version: 4b5817b94a69bd7cbd0037387cceb8810b0c706b
+source_version: ccf5f23f6098eb9631648ef29ccc48046b73aba1
 icon: "microchip"
 ---
 
@@ -258,7 +258,7 @@ llm = Groq(api_key=os.getenv("GROQ_API_KEY"), model="llama-3.1-8b-instant")
 `Jev` 与 `AsyncJev` 封装官方 `typesafe-sdk` 的 System One 客户端，是仅决策(decision-only)的提供商：两个类都不实现 `generate()`、`generate_structured()` 或 `generate_typed()`，也不能顶替任何生成式提供商——既不能作为推理查询的 `llm_provider=` 参数，也不能作为抽取器的 `provider=`。
 
 <Warning>
-  Jev 目前处于实验性的抢先体验阶段。`llm-typesafe` extra 当前支持经过审阅的 TypeSafe SDK 0.7 API，要求 Python 3.10 或更高版本。由于该 SDK 是可选依赖且带保护性导入，Semantica 基础安装仍然兼容 Python 3.9。
+  Jev 目前处于实验性的抢先体验阶段。`llm-typesafe` extra 当前支持经过审阅的 TypeSafe SDK 0.7 API，与 Semantica 本体一样要求 Python 3.11 或更高版本。该 SDK 是可选依赖且带保护性导入，基础安装并不依赖它。
 </Warning>
 
 <Warning>

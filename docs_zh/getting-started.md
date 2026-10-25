@@ -2,7 +2,7 @@
 title: 入门指南
 description: AI 的上下文与智能层：把原始数据变成可解释、可审计的知识图谱。
 source: getting-started.md
-source_version: 845dcc2ead6d4d1bce4c14f63451517048869713
+source_version: 561b23ef253baa3f09e4340502c0aacdbf0e201c
 icon: "rocket"
 ---
 
@@ -44,7 +44,7 @@ icon: "rocket"
       验证安装：
       ```python
       import semantica
-      print(semantica.__version__)  # 0.7.0
+      print(semantica.__version__)  # 0.8.0
       ```
     </Check>
   </Step>

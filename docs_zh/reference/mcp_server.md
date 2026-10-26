@@ -2,7 +2,7 @@
 title: "MCP 服务器（MCP Server）"
 description: "模型上下文协议(MCP)服务器：把 Semantica 的全部能力暴露给 Claude Desktop、VS Code、Cursor 及任何支持 MCP 的工具。"
 source: reference/mcp_server.md
-source_version: 954aff70b0077f18ec8d799dfc513083127e8991
+source_version: 4cb9d73a9f9cfe4f42b95d79b2f2dd6bbcacc6bf
 icon: "plug"
 ---
 
@@ -170,7 +170,7 @@ MCP 服务器暴露 15 个工具，任何已连接的 AI 助手都可以调用�
 | `record_decision` | 决策智能 | 保存一条带推理过程和结果的决策 |
 | `query_decisions` | 决策智能 | 按自然语言或类别搜索已记录的决策 |
 | `find_precedents` | 决策智能 | 对历史决策做混合相似度搜索 |
-| `get_causal_chain` | 决策智能 | 追溯上游/下游因果链 |
+| `get_causal_chain` | 决策智能 | 追溯上游/下游/双向因果链 |
 | `add_entity` | 图操作 | 向活动图添加节点 |
 | `add_relationship` | 图操作 | 在两个节点之间添加有向边 |
 | `get_graph_summary` | 图操作 | 节点数、决策数、图状态 |
@@ -308,7 +308,7 @@ MCP 服务器暴露 15 个工具，任何已连接的 AI 助手都可以调用�
 
 <Accordion title="get_causal_chain" icon="diagram-project">
 
-从某条决策向上游或下游追溯因果链。
+从某条决策向上游、下游或双向追溯因果链。
 
 **输入：**
 
@@ -316,7 +316,7 @@ MCP 服务器暴露 15 个工具，任何已连接的 AI 助手都可以调用�
 { "decision_id": "dec_a1b2c3", "direction": "downstream", "max_depth": 5 }
 ```
 
-`direction` 接受 `"upstream"` 或 `"downstream"`（默认 `"downstream"`）。
+`direction` 接受 `"upstream"`、`"downstream"` 或 `"both"`（默认 `"downstream"`）。取 `"both"` 时，结果先列原因（最远的在前）、再列影响（最近的在前）；每个决策只出现一次，并携带 `metadata.causal_direction`。
 `max_depth` 默认 `5`，最大 `20`。
 
 </Accordion>

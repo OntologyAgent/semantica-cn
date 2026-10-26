@@ -2,7 +2,7 @@
 title: "模型上下文协议(MCP)服务器"
 description: "将 Semantica 的知识图谱、决策智能与推理能力接入 Claude Desktop、Windsurf、VS Code、Cline 及任何兼容 MCP 的 AI 客户端。"
 source: guides/mcp-server.md
-source_version: db22256acb7e9a0e01b6ea866d4003fae8bdb811
+source_version: c6b227c1faa6497a4c71463b7f3677cdf6af58f0
 icon: "plug"
 ---
 
@@ -144,7 +144,7 @@ docker run --rm -i \
 
 **图谱实时查询与编辑。** `query_graph` 无需导出即可读取图谱：获取单个节点、沿邻居遍历至多五跳，或按关键词搜索节点。`update_node` 把属性(Property)合并到已有节点上（比如把任务节点标记为 `done`）；`delete_node` 归档不再追踪的节点。设置了 `SEMANTICA_KG_PATH` 时，`update_node` 和 `delete_node` 会把修改写回该文件，重启后依然保留。
 
-**决策智能。** `record_decision` 把决策写成带溯源(Provenance)的节点，附上置信度分数、推理过程和决策者身份。`query_decisions` 按查询或类别检索历史决策。`find_precedents` 用语义相似度找出最相似的历史决策。`get_causal_chain` 沿上游或下游追踪决策因果。
+**决策智能。** `record_decision` 把决策写成带溯源(Provenance)的节点，附上置信度分数、推理过程和决策者身份。`query_decisions` 按查询或类别检索历史决策。`find_precedents` 用语义相似度找出最相似的历史决策。`get_causal_chain` 沿上游、下游或双向追踪决策因果。
 
 **推理。** `run_reasoning` 对一组事实应用前向链式 IF/THEN 规则，返回推导出的结论。
 

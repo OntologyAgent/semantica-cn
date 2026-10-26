@@ -23,14 +23,17 @@ class TestSameIdNodeMerge:
         assert merged.get("rdfs:comment") == "政策类"
         assert merged.get("skos:prefLabel") == "Policy"
 
-    def test_readd_keeps_existing_content_and_type(self):
+    def test_readd_last_write_wins_for_scalars(self):
+        # Auto-created endpoint stubs must yield to a later typed add — the
+        # upstream temporal-trace fixture relies on exactly that ordering.
         graph = ContextGraph()
-        graph.add_node("az:Policy", "class", content="政策")
-        graph.add_node("az:Policy", "entity", content="az:Policy")
+        graph.add_edge("az:Stub", "az:Other", edge_type="RELATED")
+        assert graph.nodes["az:Stub"].node_type == "entity"
+        graph.add_node("az:Stub", "decision", content="决定")
 
-        node = graph.nodes["az:Policy"]
-        assert node.content == "政策"
-        assert node.node_type == "class"
+        node = graph.nodes["az:Stub"]
+        assert node.node_type == "decision"
+        assert node.content == "决定"
 
     def test_readd_returns_true_so_batch_counts_stay_stable(self):
         graph = ContextGraph()

@@ -3126,12 +3126,14 @@ class ContextGraph:
     def _add_internal_node(self, node: ContextNode) -> bool:
         """Internal method to add a node.
 
-        Re-adding a node under an existing id merges: stored scalars (content,
-        node_type, temporal windows when not re-supplied) are kept and the new
-        properties fold into both dicts. Mounted context graphs and
-        ontology-load injections share the az: URI id space; merge semantics
-        keep each side's attributes instead of clobbering whichever landed
-        first.
+        Re-adding a node under an existing id merges: scalars follow
+        last-write-wins (node_type/content — an auto-created endpoint stub
+        must yield to a later typed add, mirroring upstream replace
+        semantics), properties and metadata union with the new values winning
+        per key, and temporal windows only move when the new add supplies
+        them. Mounted context graphs and ontology-load injections share the
+        az: URI id space; merge semantics keep each side's attributes instead
+        of clobbering whichever landed first.
         """
         if node.node_id is None or (isinstance(node.node_id, str) and not node.node_id.strip()):
             self.logger.warning("Skipping internal node with invalid id: %r", node)
@@ -3139,6 +3141,8 @@ class ContextGraph:
         with self._lock:
             existing = self.nodes.get(node.node_id)
             if existing is not None:
+                existing.node_type = node.node_type
+                existing.content = node.content
                 existing.metadata.update(node.metadata)
                 existing.properties.update(node.properties)
                 if node.valid_from is not None:
@@ -3149,12 +3153,12 @@ class ContextGraph:
             else:
                 self.nodes[node.node_id] = node
                 stored = node
-                # Handle edge case where node_type might be None or not a string
-                if hasattr(node, 'node_type') and isinstance(node.node_type, str):
-                    self.node_type_index[node.node_type].add(node.node_id)
-                else:
-                    # Use 'unknown' as fallback for invalid node_type
-                    self.node_type_index['unknown'].add(node.node_id)
+            # Handle edge case where node_type might be None or not a string
+            if hasattr(stored, 'node_type') and isinstance(stored.node_type, str):
+                self.node_type_index[stored.node_type].add(stored.node_id)
+            else:
+                # Use 'unknown' as fallback for invalid node_type
+                self.node_type_index['unknown'].add(stored.node_id)
 
         if getattr(self, "mutation_callback", None) and not getattr(
             self, "_suspend_mutation_callback", False

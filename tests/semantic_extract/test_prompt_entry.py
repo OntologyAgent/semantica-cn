@@ -111,9 +111,10 @@ class TestUpstreamUntouched(unittest.TestCase):
     def test_upstream_source_has_no_fork_edits(self):
         """开闭原则守卫：六个上游文件相对上游基线零改动。
 
-        基线锚点跟随上游演进前移：上游 drop Python 3.10（0.8.0，合并于
-        981a9151）合法改写了这些文件，旧锚点 254e358f 会把上游自身的演进
-        误判为 fork 侵入。锚点 = 每次涉及这六个文件的上游合并点。
+        基线锚点跟随上游演进前移：上游 drop Python 3.10（0.8.0，981a9151）与
+        source_timezone 修复（#2108，05dc7cce）合法改写了这些文件，旧锚点
+        会把上游自身的演进误判为 fork 侵入。锚点 = 每次涉及这六个文件的
+        上游合并点。
         """
         for rel in ("semantica/semantic_extract/methods.py",
                     "semantica/semantic_extract/ner_extractor.py",
@@ -122,7 +123,7 @@ class TestUpstreamUntouched(unittest.TestCase):
                     "semantica/semantic_extract/coreference_resolver.py",
                     "semantica/normalize/date_normalizer.py"):
             out = subprocess.run(
-                ["git", "diff", "981a9151", "--", rel], cwd=REPO,
+                ["git", "diff", "05dc7cce", "--", rel], cwd=REPO,
                 capture_output=True, text=True).stdout
             self.assertEqual(out.strip(), "", f"{rel} 相对上游基线被改动：\n{out[:300]}")
 

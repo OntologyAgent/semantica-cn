@@ -2,7 +2,7 @@
 title: 溯源与审计轨迹
 description: Semantica 如何用符合 W3C PROV-O 的记录追踪每个实体、关系、分块和属性的来源与血缘——带 SHA-256 完整性校验和与 SQLite 持久化，为国防、制药、银行和安全合规提供跨模块审计轨迹。
 source: guides/provenance.md
-source_version: ee460eeedc477bc34c63a132defdfa0e76c9c6d7
+source_version: d477d16bf4ac98a9a11f1726b59f4f198f6cf537
 icon: "file-certificate"
 ---
 
@@ -243,16 +243,14 @@ Full version chain (oldest → newest):
 完整性校验对监管合规和取证分析至关重要。把完整性检查纳入每一次合规审计：
 
 ```python
-from semantica.provenance.integrity import compute_checksum
+from semantica.provenance.integrity import verify_checksum
 
 raw_entries = prov.trace_lineage("cve-2024-3400")
 
 print("Integrity check:")
 for e in raw_entries:
-    stored   = e.checksum
-    computed = compute_checksum(e)
-    status   = "OK" if stored == computed else "TAMPERED"
-    print(f"  [{status}] {e.entity_id[:50]}  {(stored or '')[:16]}...")
+    status   = "OK" if verify_checksum(e) else "TAMPERED"
+    print(f"  [{status}] {e.entity_id[:50]}  {(e.checksum or '')[:16]}...")
 ```
 
 ```text
@@ -335,7 +333,7 @@ Unique sources   : 12
 
 **在低价值场景滥用溯源。** 为每个中间计算或临时变量记录溯源，只会增加存储开销而没有合规收益。把溯源追踪聚焦在有法律、监管或业务意义的实体、关系和属性上。
 
-**忘记校验完整性校验和。** 密码学完整性校验只有在你真的去检查时才有效。把定期的 `compute_checksum()` 校验纳入审计工作流和事件响应流程。
+**忘记校验完整性校验和。** 密码学完整性校验只有在你真的去检查时才有效。把定期的 `verify_checksum()` 校验纳入审计工作流和事件响应流程。
 
 **混用溯源粒度。** 有的实体在文档层级追踪、有的在句子层级追踪，会产生不一致的审计轨迹。为每类数据和每个处理工作流建立一致的粒度标准。
 
@@ -426,7 +424,7 @@ SOC 威胁情报平台追踪每个 CVE 的完整历程：从首次 NVD 摄取，
 ```python
 from semantica.provenance import ProvenanceManager
 from semantica.provenance.schemas import SourceReference
-from semantica.provenance.integrity import compute_checksum
+from semantica.provenance.integrity import verify_checksum
 
 prov = ProvenanceManager(storage_path="soc_provenance.db")
 
@@ -468,7 +466,7 @@ print(f"Update count    : {lineage['entity_count']} records")
 # Integrity check before relying on the record for a patch decision
 entries = prov.trace_lineage("cve-2023-44487")
 for e in entries:
-    ok = compute_checksum(e) == e.checksum
+    ok = verify_checksum(e)
     print(f"  [{('OK' if ok else 'TAMPERED')}] {e.timestamp[:19]}  source={e.source_document}")
 ```
 
@@ -483,7 +481,7 @@ for e in entries:
 ```python
 from semantica.provenance import ProvenanceManager
 from semantica.provenance.schemas import SourceReference
-from semantica.provenance.integrity import compute_checksum
+from semantica.provenance.integrity import verify_checksum
 
 prov = ProvenanceManager(storage_path="clinical_provenance.db")
 
@@ -536,7 +534,7 @@ for entry in lineage["lineage_chain"]:
 # Integrity verification (21 CFR Part 11 requirement)
 entries = prov.trace_lineage("VE_primary_BNT162b2_C4591001")
 for e in entries:
-    status = "OK" if compute_checksum(e) == e.checksum else "TAMPERED"
+    status = "OK" if verify_checksum(e) else "TAMPERED"
     print(f"  Integrity [{status}]: {e.entity_id}")
 
 stats = prov.get_statistics()

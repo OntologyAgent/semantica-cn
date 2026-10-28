@@ -2,7 +2,7 @@
 title: "溯源模块（Provenance）"
 description: "W3C PROV-O 血缘追踪、来源归属、防篡改校验和与跨模块审计轨迹。"
 source: reference/provenance.md
-source_version: e8f4ae51446baa45922c9b5865d0521e4ad7c40c
+source_version: ade9182cd9be125d89c595603dd61f68e4db6e63
 icon: "link"
 ---
 
@@ -351,7 +351,9 @@ if not is_valid:
     raise RuntimeError("Provenance record has been tampered with.")
 ```
 
-校验和覆盖 `entity_id`、`entity_type`、`activity_id`、`source_document`、`timestamp` 和 `confidence`。
+校验和覆盖 `entity_type`、`activity_id`、agent、`source_document`、`timestamp`、`confidence`、血缘链接（`parent_entity_id`、`previous_version_id`、`derived_from_id`、`used_entities`）、`previous_checksum` 与失效字段。`entity_id` 被刻意排除，归档重命名不会打断链条。
+
+用 `verify_checksum(entry)` 比较，不要写 `compute_checksum(entry) == entry.checksum`。`compute_checksum()` 永远返回当前（v2）编码，而编码变更前写入的行携带 v1 摘要；`verify_checksum()` 按每行写入时的编码逐行校验。
 
 <Tip>
   **任何合规导出前先跑 `verify_checksum(entry)`。** 直接传 `trace_lineage()` 返回的 `ProvenanceEntry` 对象。存储的校验和若已对不上，导出进行前先抛错。
@@ -393,6 +395,8 @@ input_data = {"entity_id": "cabo_pulmo", "value": 463.0, "source": "DOI:10.1371/
 chain = create_translation_chain(input_data, [axiom], prov_manager=manager)
 print(chain.confidence)  # 0.92
 ```
+
+传入 `prov_manager` 且溯源记录写入失败时，`apply()` 会抛出 `ProvenanceRecordingError`（来自 `semantica.utils`），而不是返回一条未记录的结果，`create_translation_chain()` 会让该错误继续向上传播。要尽力而为就传 `require_provenance=False`：调用正常返回，结果携带 `provenance_recorded`（`bool`）与 `provenance_error`（`str` 或 `None`），调用方据此可见记录是否写成功。
 
 ## 与 GraphBuilder 集成
 

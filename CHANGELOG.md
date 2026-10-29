@@ -34,6 +34,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **`DomainOntologies` advertised legal, research and cybersecurity templates that did not exist** (fixes #1819) by @pkupt
+  - `get_domain_template("legal")`, `("research")` and `("cybersecurity")` returned a bare `None`, which surfaced in caller code as `AttributeError: 'NoneType' object has no attribute 'get'`. The three templates are now registered, in the same small hand-written style as `healthcare` and `finance`.
+  - `get_domain_template` still returns `None` for an unregistered domain, but now logs a warning listing the available domains so the miss is visible. New `tests/ontology/test_domain_ontologies.py`
+
+- **`tornado` was pinned at 6.5.10, which the audit job now flags three times** (fixes #2135) by @pkupt
+  - `CVE-2026-115927`, `CVE-2026-116577` and `CVE-2026-116578` all resolve to `tornado==6.5.10`, and they are the only findings left in `requirements-ci.txt`. Because `security-scan` is a required check, they failed every pull request's run, and the scheduled scan on `main` failed for the same three
+  - `requirements-ci.txt` and `uv.lock` now carry `tornado==6.6`, the first release with fixes for all three. Nothing else in either file moves: both were re-resolved with the committed pins as constraints, and the two CI freshness gates (`uv pip compile` against `requirements-ci.txt`, `uv lock --check`) pass unchanged
+
 - **Provenance checksums were not injective: two records that differed only in where a field boundary fell hashed the same** (fixes #2136) by @pkupt
   - `compute_checksum()` pasted the 16 hashed fields together with nothing between them, so `{"entity_type": "ab", "activity_id": "c"}` and `{"entity_type": "a", "activity_id": "bc"}` produced the same digest, and a row rewritten across a field boundary still passed `verify_checksum()` and `verify_chain()`. `used_entities` had the same hole once joined: `["a,b"]` and `["a", "b"]` collided
   - The v2 encoding writes a `prov-v2\0` header, then every value as a 1-byte type tag, a 4-byte big-endian length and the UTF-8 bytes; lists carry an element count and each element is length-prefixed in turn, so a boundary cannot move. It also settles a divergence v1 left open: a `None` field hashed as `''` through the dict path but as `'None'` through the dataclass path, so one record could hash two ways
@@ -69,6 +77,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - The ContextGraph path now builds a time-eligible causal adjacency once per call, using the same `_CAUSAL_TRAVERSAL_TYPES` union as `get_causal_chain`, so a wide temporal graph is no longer O(V*E). The `recorded_at` cutoff, depth limit, result order and `causal_distance` metadata are unchanged.
   - Edges recorded with the analyzer vocabulary (`causes`, `influences`, `leads_to`, `supports`) are now visible, matching `ContextGraph.get_causal_chain()`. This affects the in-memory graph path; the Cypher path keeps its existing canonical-only filter.
 
+- **Cypher causal traversals ignored alias edge types on external graph stores** (fixes #2151) by @Tong-bit-art
+  - `CausalChainAnalyzer.get_causal_chain()` and `trace_at_time()` built their Cypher relationship pattern from a hardcoded canonical-only list, so edges written with `causes` / `influences` / `leads_to` / `supports` were invisible on Neo4j, FalkorDB, AGE and Neptune even though the in-memory path traversed them. Both paths now use a shared `_causal_rel_pattern` built from `_CAUSAL_TRAVERSAL_TYPES`, including the lowercase spellings `add_edge()` can store. New `tests/context/test_causal_analyzer_cypher_vocabulary.py` pins the generated queries for both methods and directions.
+
 - **`semantica pipeline validate` reported a partly malformed file valid, and `--json` had no structured result** (fixes #2026) by @ALDRIN121
   - `PipelineBuilder.build_pipeline()` keeps a step only when both `name` and `type` are truthy, so a half-written step was dropped before the validator saw it and the file was reported valid. `_load_pipeline_file()` now checks every entry while the index is still known and rejects the file, naming the offending one (`steps[1] ('broken') is missing a non-empty 'type'`). A step that is not a mapping used to reach `dict()` inside `deserialize_pipeline()` and surface as `dictionary update sequence element #0 has length 1; 2 is required`; it is now reported as `steps[0] is not a mapping (got str)`. `pipeline run` loads through the same helper, so it no longer executes a pipeline that is silently missing a step
   - `validate --json` now always emits `{valid, errors, warnings, pipeline}` on stdout — including when the loader or the builder inside it rejects the file, which previously fell through to the generic `{"error": ...}` envelope on stderr. When the builder raises, its `Pipeline validation failed: [...]` message is split back into one string per error instead of one repr
@@ -101,6 +112,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `POST /api/graph/distance-matrix` mirrored one `src`→`tgt` result into both matrix cells, reporting the reverse direction as reachable on a directed graph. Each direction is now searched independently, so the matrix may be asymmetric and `unreachable_pairs` lists the specific ordered pairs that have no path
   - Undirected traversal (`directed=false`) can walk a stored edge backwards; `total_weight` costed those hops against the directed view and fell back to the default `1.0`, and `resolve_path_edge_ids` scanned only outgoing adjacency so the hop contributed no id. Both now resolve reverse hops, and the reported edge is the lowest-weight parallel edge — the one the path is costed against
   - `POST /api/graph/distance-matrix` rebuilt the whole graph once per node pair; it is now built once per request
+
+- **`semantica provenance` commands ignored the persisted provenance DB** (fixes #1810) by @pkupt
+  - Every subcommand built `ProvenanceManager(config=...)` with no storage path, so `audit`, `verify-chain`, `check`, `lineage`, `descendants` and `export` read a fresh in-memory store and reported nothing, and `invalidate` failed with "no provenance entry found". `SEMANTICA_PROVENANCE_DB` was read only by the Explorer.
+  - The CLI now resolves its store as: configured `provenance.storage_path`, then `SEMANTICA_PROVENANCE_DB`, then `EXPLORER_PROVENANCE_DB`, then in-memory. The env lookup lives in one place, `semantica.provenance.storage_path_from_env()`, which the Explorer also uses, so the two agree on one database.
+  - `ProvenanceManager()` itself still ignores the env vars, so library callers and the module-level trackers keep their explicit or in-memory storage.
 
 ### Security
 

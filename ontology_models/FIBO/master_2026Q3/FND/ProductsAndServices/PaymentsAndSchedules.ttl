@@ -1,0 +1,168 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-pas-psch: a owl:Ontology ;
+    rdfs:label "Payments and Schedules Ontology",
+        "付款与计划表本体（Payments and Schedules Ontology）"@zh ;
+    dcterms:abstract "This ontology defines basic concepts such as payment, payee, payer, and payment schedule, extending the scheduling concepts from the Dates and Times module, among others." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义付款、付款计划表（payment schedule）及其日期与金额结构，是贷款还款、债券付息建模的基础。"@zh ;
+    owl:imports fibo-fnd-acc-cur:,
+        fibo-fnd-agr-agr:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20250701/ProductsAndServices/PaymentsAndSchedules/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20150801/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FND 1.1 RTF report to replace MoneyAmount with MonetaryAmount.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20160201/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified per the FIBO 2.0 RFC to make hasPaymentAmount a child of hasMonetaryAmount and move hasObligation and isObligationOf to Agreements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20181001/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190901/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified to revise payments to better support loan requirements and eliminate duplication of concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified to eliminate remaining circular references.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210201/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified to fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20211201/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified to clean up the definition and augment the restrictions on payment obligation to include the payee.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220301/ProductsAndServices/PaymentsAndSchedules.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/ProductsAndServices/PaymentsAndSchedules.rdf version of this ontology was modified to normalize properties related to payment obligations (DER-55).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250401/ProductsAndServices/PaymentsAndSchedules.rdf version of the ontology was modified to replace hasConstituent with hasMember for better semantic consistency (FND-396)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-fnd-pas-psch:PaymentEvent a owl:Class ;
+    rdfs:label "payment event",
+        "支付事件（payment event）"@zh ;
+    rdfs:comment "涉及为履行义务而交付货币的事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pas-psch:PaymentObligation ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pas-psch:Payment ;
+            owl:onProperty fibo-fnd-rel-rel:involves ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-pas-pas:TransactionEvent ;
+    skos:definition "an event that involves delivery of money in fulfillment of an obligation" .
+
+fibo-fnd-pas-psch:fulfillsObligation a owl:ObjectProperty ;
+    rdfs:label "fulfills obligation",
+        "履行义务（fulfills obligation）"@zh ;
+    rdfs:comment "满足某项请求权、债务或其他义务的支付要求。"@zh ;
+    rdfs:domain fibo-fnd-pas-psch:Payment ;
+    rdfs:range fibo-fnd-pas-psch:PaymentObligation ;
+    skos:definition "satisfies a requirement for payment of some claim, debt, or other obligation" .
+
+fibo-fnd-pas-psch:hasPaymentSchedule a owl:ObjectProperty ;
+    rdfs:label "has payment schedule",
+        "具有支付进度表（has payment schedule）"@zh ;
+    rdfs:comment "指明履行义务的进度表。"@zh ;
+    rdfs:range fibo-fnd-pas-psch:PaymentSchedule ;
+    rdfs:subPropertyOf fibo-fnd-dt-fd:hasSchedule ;
+    skos:definition "specifies the schedule for fulfillment of an obligation" .
+
+fibo-fnd-pas-psch:Payee a owl:Class ;
+    rdfs:label "payee",
+        "收款人（payee）"@zh ;
+    rdfs:comment "债务应支付给的一方，或汇票、本票、支票的指定受款人，或收到或将收到付款的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-fnd-pas-psch:PaymentObligation ] ],
+        fibo-fnd-agr-agr:Obligee ;
+    skos:definition "a party to whom a debt should be paid, or to whose order a bill of exchange, note, or check is made payable, or who receives or will receive a payment from a payer in partial or complete fulfillment of an obligation" .
+
+fibo-fnd-pas-psch:Payer a owl:Class ;
+    rdfs:label "payer",
+        "付款人（payer）"@zh ;
+    rdfs:comment "支付账单或费用、或为部分或全部履行义务而向收款人付款的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-pas-psch:PaymentObligation ;
+            owl:onProperty fibo-fnd-agr-agr:hasObligation ],
+        fibo-fnd-agr-agr:Obligor ;
+    skos:definition "a party who pays a bill or fees, or who makes payments to a payee in partial or complete fulfillment of an obligation" .
+
+fibo-fnd-pas-psch:PaymentSchedule a owl:Class ;
+    rdfs:label "payment schedule",
+        "支付进度表（payment schedule）"@zh ;
+    rdfs:comment "为履行义务而交付货币的进度表。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fnd-pas-psch:Payment ],
+        fibo-fnd-dt-fd:Schedule ;
+    skos:definition "schedule for delivery of money in fulfillment of an obligation" ;
+    skos:example "Examples include coupon payment, loan payment, and interest payment schedules, among others." .
+
+fibo-fnd-pas-psch:hasPaymentAmount a owl:ObjectProperty ;
+    rdfs:label "has payment amount",
+        "具有支付金额（has payment amount）"@zh ;
+    rdfs:comment "指明支付所涉及的货币金额。"@zh ;
+    rdfs:domain fibo-fnd-pas-psch:Payment ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "specifies the amount of money involved in a payment" .
+
+fibo-fnd-pas-psch:Payment a owl:Class ;
+    rdfs:label "payment",
+        "支付（payment）"@zh ;
+    rdfs:comment "为履行义务（如清偿请求权或债务）而交付货币。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-psch:hasPaymentAmount ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+        fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "delivery of money in fulfillment of an obligation, such as to satisfy a claim or debt" .
+
+fibo-fnd-pas-psch:PaymentObligation a owl:Class ;
+    rdfs:label "payment obligation",
+        "支付义务（payment obligation）"@zh ;
+    rdfs:comment "按合同所载条款支付一定金额的可法律强制执行的责任。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-agr:isObligationOf ;
+            owl:someValuesFrom fibo-fnd-pas-psch:Payer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-agr-ctr:Contract ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-fnd-pas-psch:Payee ],
+        fibo-fnd-agr-agr:Commitment,
+        fibo-fnd-law-lcap:Duty ;
+    skos:definition "legally enforceable duty to pay a sum of money according to the terms stated in a contract" ;
+    skos:example "the duty of a borrower to repay a loan, related to the legal right of a lender to enforce payment" .
+

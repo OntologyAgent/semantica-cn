@@ -1,0 +1,96 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ei-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/MetadataINDEconomicIndicators/> .
+@prefix fibo-ind-fx-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/MetadataINDForeignExchange/> .
+@prefix fibo-ind-ind-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/MetadataINDIndicators/> .
+@prefix fibo-ind-ir-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MetadataINDInterestRates/> .
+@prefix fibo-ind-mkt-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/MarketIndices/MetadataINDMarketIndices/> .
+@prefix fibo-ind-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/MetadataIND/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-ind-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the FIBO Indices and Indicators (IND) Domain",
+        "IND 域元数据（Metadata for the IND Domain）"@zh ;
+    dcterms:abstract "This ontology provides metadata about the FIBO Indices and Indicators (IND) Domain, which covers market indices and reference rates including economic indicators, foreign exchange, interest rates, and other benchmarks." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2014-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2014-2026 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明指标与指数（IND）域由五个模块构成：指标、经济指标、利率、外汇、市场指数。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        fibo-ind-ei-mod:,
+        fibo-ind-fx-mod:,
+        fibo-ind-ind-mod:,
+        fibo-ind-ir-mod:,
+        fibo-ind-mkt-mod:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/IND/20260401/MetadataIND/> ;
+    cmns-av:copyright "Copyright (c) 2014-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2014-2026 Object Management Group" .
+
+fibo-ind-mod:INDDomain a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "indices and indicators module" ;
+    dcterms:abstract "The FIBO Indices and Indicators (IND) Domain covers market indices and reference rates including economic indicators, foreign exchange, interest rates, and other benchmarks. The ontologies cover quoted interest rates, economic measures such as employment rates, and quoted indices required to support baskets of securities, including specific kinds of securities in share indices or bond indices, as well as credit indices." ;
+    dcterms:contributor "88 Solutions",
+        "Adaptive Analytics, Inc.",
+        "Bank of New York Mellon",
+        "Bloomberg LP",
+        "Bureau of Economic Analysis (BEA, US Department of Commerce)",
+        "Bureau of Labor Statistics (BLS, US Department of Commerce)",
+        "Census Bureau (US Department of Commerce)",
+        "Citigroup",
+        "Dassault Systemes/No Magic",
+        "Deutsche Bank",
+        "Federal Reserve Bank of Kansas City",
+        "Federated Knowledge, LLC",
+        "HP Enterprise / Mphasis",
+        "Intuitive Technology Partners, Inc.",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Nordea Bank AB",
+        "Office of Financial Research (OFR), U.S. Department of the Treasury",
+        "Pinnacle Bank (Morgan Hill, California)",
+        "State Street Bank and Trust",
+        "Statistics Canada",
+        "Tahoe Blue Ltd",
+        "Thematix Partners, LLC",
+        "Wells Fargo Bank, N. A.",
+        "agnos.ai UK Ltd" ;
+    dcterms:creator "https://wiki.edmcouncil.org/display/IND/FIBO+-+FCT+-+Indices+and+Indicators+Home"^^xsd:anyURI ;
+    dcterms:hasPart fibo-ind-ei-mod:EconomicIndicatorsModule,
+        fibo-ind-fx-mod:ForeignExchangeModule,
+        fibo-ind-ind-mod:IndicatorsModule,
+        fibo-ind-ir-mod:InterestRatesModule,
+        fibo-ind-mkt-mod:MarketIndicesModule ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2014-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2014-2026 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    dcterms:title "FIBO IND Domain",
+        "Financial Industry Business Ontology (FIBO) Indices and Indicators (IND) Domain" ;
+    rdfs:seeAlso <https://www.edmcouncil.org/fibo/> ;
+    skos:altLabel "Indices and Indicators (IND)" ;
+    cmns-av:copyright "Copyright (c) 2014-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2014-2026 Object Management Group" .
+

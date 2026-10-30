@@ -1,0 +1,33 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-derx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/MetadataMDDerivativesTemporal/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-derx-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Market Data (MD) DerivativesTemporal Module",
+        "MD 衍生品时序模块元数据（Metadata for the MD Derivatives Temporal Module）"@zh ;
+    dcterms:abstract "This module covers time-dependent concepts related to derivative instruments, such as the various derivatives-related greeks and other analytics." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-03-31T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明衍生品时序（Derivatives Temporal）模块由期货时序、场内期权时序两个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/MD/20230301/DerivativesTemporal/MetadataMDDerivativesTemporal/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc." .
+
+fibo-md-derx-mod:DerivativesTemporalModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "derivatives temporal module" ;
+    dcterms:abstract "This module covers time-dependent concepts related to derivative instruments, such as the various derivatives-related greeks and other analytics." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/ETOptionsTemporal/>,
+        <https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/FuturesTemporal/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO MD Derivatives Temporal Module",
+        "Financial Industry Business Ontology (FIBO) Market Data (MD) Derivatives Temporal Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc." .
+

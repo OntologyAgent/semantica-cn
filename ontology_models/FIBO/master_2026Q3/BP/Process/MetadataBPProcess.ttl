@@ -1,0 +1,32 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-prc-mod: <https://spec.edmcouncil.org/fibo/ontology/BP/Process/MetadataBPProcess/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-prc-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Business Process (BP) Process Module",
+        "BP 流程模块元数据（Metadata for the BP Process Module）"@zh ;
+    dcterms:abstract "This module contains ontologies of Process concepts including concepts common to a range of business processes, along with basic financial context concepts." ;
+    dcterms:issued "2018-03-01T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-30T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明流程（Process）模块由金融语境与流程本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BP/20230201/Process/MetadataBPProcess/> ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+
+fibo-bp-prc-mod:ProcessModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "process module" ;
+    dcterms:abstract "This module contains ontologies of Process concepts including concepts common to a range of business processes, along with basic financial context concepts." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/BP/Process/FinancialContextAndProcess/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO BP Process Module",
+        "Financial Industry Business Ontology (FIBO) Business Process (BP) Process Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+

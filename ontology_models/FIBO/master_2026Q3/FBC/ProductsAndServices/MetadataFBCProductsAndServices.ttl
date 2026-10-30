@@ -1,0 +1,35 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-pas-mod: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/MetadataFBCProductsAndServices/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-pas-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Financial Business and Commerce(FBC) Products and Services Module",
+        "FBC 产品与服务模块元数据（Metadata for the FBC Products and Services Module）"@zh ;
+    dcterms:abstract "The FBC Products and Services module extends the FND Products and Services module via ontologies defining financial products, financial services, financial service providers, and product catalogs as well as customer/client accounts." ;
+    dcterms:issued "2015-08-13T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-06-27T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明产品与服务（Products and Services）模块由金融产品与服务、客户与账户两个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20230601/ProductsAndServices/MetadataFBCProductsAndServices/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+
+fibo-fbc-pas-mod:FBCProductsAndServicesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "products and services module" ;
+    dcterms:abstract "The products and services module extends the FND Products and Services module via ontologies defining financial products, financial services, financial service providers, and product catalogs as well as customer/client accounts." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FBC Products and Services Module",
+        "Financial Industry Business Ontology (FIBO) Financial Business and Commerce (FBC) Products and Services Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+

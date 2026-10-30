@@ -1,0 +1,60 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-arr: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-arr-arr: a owl:Ontology ;
+    rdfs:label "Arrangements Ontology",
+        "安排本体（Arrangements Ontology）"@zh ;
+    dcterms:abstract "This ontology defines abstract structural concepts, extending the Commons concept of an arrangement to represent schemes." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "本本体定义抽象结构概念，扩展 Commons 的安排（arrangement）概念以表示各种方案（scheme）。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-dsg: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20231101/Arrangements/Arrangements/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20140801/Arrangements/Arrangements.rdf version of this ontology was introduced as a part of the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/. It was further revised in the FTF in advance of the Long Beach meeting to promote Collection to the top level in the hierarchy, resulting in https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Arrangements/Arrangements/.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Arrangements/Arrangements.rdf version of this ontology was revised as a part of the issue resolutions identified in the FIBO FND 1.2 RTF report to add a definition for a structured collection.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20170201/Arrangements/Arrangements.rdf version of this ontology was revised for the FIBO 2.0 RFC report to add a general definition for scheme, add dated collection, and add mappings to LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Arrangements/Arrangements.rdf version of this ontology was revised to loosen the range on hasObservedDateTime such that it can be used more generally.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190201/Arrangements/Arrangements.rdf version of this ontology was revised to loosen the restriction on hasObservedDateTime so that it can be used with the new CombinedDateTime datatype (in FinancialDates, which is not imported herein to avoid circular dependencies), with finer granularity than seconds as appropriate for trades, for example.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190401/Arrangements/Arrangements.rdf version of this ontology was revised to eliminate duplication with concepts in LCC for classes including arrangement, collection, code element, code set, etc to simplify the hierarchy and usage for FIBO users.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/Arrangements/Arrangements.rdf version of this ontology was revised to move the concepts of a dated collection and dated collection constituent to Financial Dates in order to improve usability and simplify reasoning and make definitions ISO 704 compliant.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200701/Arrangements/Arrangements.rdf version of this ontology was revised to add a restriction to structured collection pointing to the arrangement used to organize that collection, and to revise the definition accordingly.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210901/Arrangements/Arrangements.rdf version of this ontology was revised to address hygiene issues with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/Arrangements/Arrangements.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230201/Arrangements/Arrangements.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Arrangements/Arrangements.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2014-2023 EDM Council, Inc.",
+        "Copyright (c) 2014-2023 Object Management Group, Inc." .
+
+fibo-fnd-arr-arr:hasCollectionSize a owl:DatatypeProperty ;
+    rdfs:label "has collection size",
+        "具有集合大小（has collection size）"@zh ;
+    rdfs:comment "指示给定集合中元素的数量。"@zh ;
+    rdfs:range xsd:nonNegativeInteger ;
+    skos:definition "indicates the number of elements in a given collection" .
+
+cmns-cds:CodeSet a owl:Class ;
+    rdfs:subClassOf fibo-fnd-arr-arr:Scheme .
+
+fibo-fnd-arr-arr:Scheme a owl:Class ;
+    rdfs:label "scheme",
+        "方案（scheme）"@zh ;
+    rdfs:comment "用于组织信息的结构或方式，如蓝图、模式、编号系统、组织结构、度量系统、计划、分类法或组织信息的语言。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-dsg:defines ],
+        cmns-col:Arrangement ;
+    skos:definition "structure or means of organizing information such as a blueprint, schema, numbering system, organization structure, measurement system, plan, taxonomy, or language for organizing information" .
+

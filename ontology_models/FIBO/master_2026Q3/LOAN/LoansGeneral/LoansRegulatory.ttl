@@ -1,0 +1,279 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-law-cor: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-app: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanApplications/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-loan-ln-reg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoansRegulatory/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-ln-reg:BorrowerDataProtectionRequirement a owl:Class ;
+    rdfs:label "borrower data protection requirement"@en,
+        "借款人数据保护要求（borrower data protection requirement）"@zh ;
+    rdfs:comment "关于借款人个人数据如何保存与使用的监管要求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-loan-ln-reg:ConsumerCreditReferenceAgency ],
+        fibo-loan-ln-reg:DataProtectionRequirement .
+
+fibo-loan-ln-reg:BorrowerDisclosureRequirement a owl:Class ;
+    rdfs:label "borrower disclosure requirement"@en,
+        "借款人披露要求（borrower disclosure requirement）"@zh ;
+    rdfs:comment "要求贷款人向借款人或潜在借款人披露信息的监管要求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:confers ;
+            owl:someValuesFrom fibo-loan-ln-reg:ProductDisclosureRight ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-loan-ln-app:BorrowerAssessment ],
+        fibo-loan-ln-reg:DisclosureRequirement .
+
+fibo-loan-ln-reg:LenderRight a owl:Class ;
+    rdfs:label "lender right"@en,
+        "贷款人权利（lender right）"@zh ;
+    rdfs:comment "保护贷款人免受损失的权利。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:LegalRight ;
+    skos:definition "Rights on the lender to protect them against loss. furthe rNtoes: Logically, considering the two parties, they both have protecxtion mechanisms. so while the lender has protecxtion mechanisms through mortgage insurance, and the consumer has protextion mechanisms such as good faith estimates. also the agencies (see Consumer Protection Agency), an instance of which is the CFPB in the US (just set up). Lender rights are: - expressed in the Contract Consumer protection develops becaues the contract is written by the potential Lender. So the rights are introcued to rectify the imbalance between the two parties. Same goes for insurance. consumer protection laws (governe dby the relevant consumer protection agency. So the lender protexts itself as it writes th contract AND does the things it needs to do to protext itself, but on the approval process, and with later instruments such as insurance. Interestingly., it is the Borrower who pays for this by paying for credit reports etc. So the borrower protects itself by other mechanisms. Caveat emptor - displaced by regulation (the buyer is protected by regulation). Uberimae Fidae - in the utmost good faith. Mortgage Insurance is an additional means of mitigating the risk, that the lended may have., so if the information assessed is not accurate, or if the borrower's situation changes for the worse. then the risk rating may go down. So the Mortgage Insurance is a further strategy which mitigates any shortfall in the Lender Righrs that you may have - ie someone guarantees. In the US you can also avoid that by having paid a deposit. PIMI: Principal, Interst and Morgage Insurance. So the Borrower pays towards the MI, esxcept if they have paid a given amount as deposit. there are 2 types of MI: 1. protects the lender in the event of borrower degault 2. Insurance for \"Incapacity to pay the mortage\" (these can be bought off the shelf - can combine health, unemployment etc.). - this is the Borrower mitigating their own risk. Prevents foreclosure. Similar to general sickness etc. Where the lender charges for MI, the cost is passed onto the Borrower. e.g. if there is a % valuation (e.g. 70% in Aus, 80% in US for example) then no insurance is required."@en .
+
+fibo-loan-ln-reg:RegB a owl:Class ;
+    rdfs:label "reg b"@en,
+        "B 条例（reg b）"@zh ;
+    rdfs:comment "美国关于《平等信贷机会法》的条例，涉及披露的电子化送达。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:ConsumerCreditEqualTreatmentRequirement,
+        fibo-loan-ln-reg:DisclosureRequirement ;
+    skos:definition "US regulation concerning \"Equal credit opportunity act\" Electronic delivery of disclosures"@en ;
+    cmns-av:explanatoryNote "Timing and delivery of electronic disclosures. Applications must have equal opportunity to follow. All applications for credit to be evaluated equally and not discriminiated against. This is disclosures about the Borrower."@en .
+
+fibo-loan-ln-reg:RegZ a owl:Class ;
+    rdfs:label "reg z"@en,
+        "Z 条例（reg z）"@zh ;
+    rdfs:comment "美联储《诚实借贷法》条例，规定披露电子化送达的统一标准。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:ProductDisclosureRequirement ;
+    skos:definition "US Fed regulation \"Truth in Lending Act\" uniform standards for electronic delivery of disclosures"@en ;
+    cmns-av:explanatoryNote "Creditors may delivery disclosures electronic if they obtain consumer's consent. Also relate to international, and foreign languages. This is disclosures about the Product."@en .
+
+fibo-loan-ln-reg:RightOfCreditRecordCorrection a owl:Class ;
+    rdfs:label "right of credit record correction"@en,
+        "信用记录更正权（right of credit record correction）"@zh ;
+    rdfs:comment "要求更正信用记录的权利。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:CreditReferenceAgencyRequirements ;
+    skos:definition "The right to have a credit record corrected."@en .
+
+fibo-loan-ln-reg:requirementActReference a owl:DatatypeProperty ;
+    rdfs:label "requirement act reference"@en,
+        "要求法案引用（requirement act reference）"@zh ;
+    rdfs:comment "该监管要求所依据的法案引用。"@zh ;
+    rdfs:domain fibo-loan-ln-reg:LoanRegulatoryRequirement ;
+    rdfs:range xsd:string .
+
+fibo-loan-ln-reg:requirementSectionAndParagraph a owl:DatatypeProperty ;
+    rdfs:label "requirement section and paragraph"@en,
+        "要求条款与段落（requirement section and paragraph）"@zh ;
+    rdfs:comment "该监管要求所在的条款与段落。"@zh ;
+    rdfs:domain fibo-loan-ln-reg:LoanRegulatoryRequirement ;
+    rdfs:range xsd:string .
+
+fibo-loan-ln-reg: a owl:Ontology ;
+    rdfs:label "Loans Regulatory Ontology"@en,
+        "贷款监管本体（Loans Regulatory Ontology）"@zh ;
+    dcterms:abstract "This ontology contains concepts relating to regulatory requirements around loans, including disclosure rights and a small number of regulation-specific concepts. These include definitions of rights conferred on borrowers under consumer protection law, rights to equal treatment and the like." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义贷款监管相关概念：监管分类与报告要求。"@zh ;
+    owl:imports fibo-fnd-agr-ctr:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-law-cor:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-loan-ln-app:,
+        fibo-loan-ln-ln:,
+        cmns-av:,
+        cmns-org:,
+        cmns-rga: ;
+    owl:versionIRI fibo-loan-ln-reg: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc." .
+
+fibo-loan-ln-reg:ConsumerCreditEqualTreatmentRequirement a owl:Class ;
+    rdfs:label "consumer credit equal treatment requirement"@en,
+        "消费信贷公平对待要求（consumer credit equal treatment requirement）"@zh ;
+    rdfs:comment "要求贷款人在信贷业务中公平对待借款人的监管要求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:confers ;
+            owl:someValuesFrom fibo-loan-ln-reg:EqualTreatmentRight ],
+        fibo-loan-ln-reg:ConsumerCreditRequirement .
+
+fibo-loan-ln-reg:ConsumerCreditProtectionLaw a owl:Class ;
+    rdfs:label "consumer credit protection law"@en,
+        "消费信贷保护法（consumer credit protection law）"@zh ;
+    rdfs:comment "保护消费信贷借款人的法律。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:ConsumerProtectionLaw .
+
+fibo-loan-ln-reg:ConsumerCreditReferenceAgency a owl:Class ;
+    rdfs:label "consumer credit reference agency"@en,
+        "消费信贷征信机构（consumer credit reference agency）"@zh ;
+    rdfs:comment "收集并提供消费者信用信息的机构，其可披露内容受各辖区法规约束。"@zh ;
+    rdfs:subClassOf cmns-org:FormalOrganization ;
+    skos:definition "Applicable regulations: vary by jurisdiciton. for example, only being allowed ot divulge actual judgements against a party, but not things that are not substantiated by judgements. For example, slow payments which are not covered by some judgement against the party. There will be different regulatory requirments about: 1. What the CR Agency can hold 2. Who they can divulge it to 3. What information they must provide the borrower at his/her request Some of the third thing there is covered in the EU the Data Protection Directive and local acts that implement this."@en .
+
+fibo-loan-ln-reg:ConsumerProtectionLaw a owl:Class ;
+    rdfs:label "consumer protection law"@en,
+        "消费者保护法（consumer protection law）"@zh ;
+    rdfs:comment "保护消费者权益的法律。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-cor:StatuteLaw .
+
+fibo-loan-ln-reg:CreditReferenceAgencyRequirements a owl:Class ;
+    rdfs:label "credit reference agency requirements"@en,
+        "征信机构要求（credit reference agency requirements）"@zh ;
+    rdfs:comment "除数据保护外、规制征信机构可为与不可为的要求。"@zh ;
+    skos:definition "REquirements other than data protection, governing what a credit reference agency can or cannot do."@en ;
+    skos:editorialNote "Example might include legislation about whether a consumer can be given a bad rating for no good reason; must presumably be some audit requirements about how ratings are arrived at (llogically - no one knows of this; may be addressed simply by the indivbidual's right to see what's said. Additional right (not in DP): The right to have something struck from the record of the individual. - see sub term here (Right Or Credit Record Correction). Question: are there additional regulations, rights around not being badly assessed, or is the right of correction (and the access to knowledge) all that there is? May also be rights under common law about the information provided to the agencies."@en .
+
+fibo-loan-ln-reg:DataProtectionRequirement a owl:Class ;
+    rdfs:label "data protection requirement"@en,
+        "数据保护要求（data protection requirement）"@zh ;
+    rdfs:comment "规定个人数据如何保存的要求，如欧盟数据保护指令（数据归个人所有）。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:LegalObligation ;
+    skos:definition "Requirements defining how data about individuals is held. Example is the EU DA directive and laws, which make the data the property of the individual that data is about. Covers - what information i sheld - who information can be divulged to. - the individual's rights in respect of that information Privacy regulations cover most of this. EU defines \"Personal Data\" and \"Sensitive Personal Data\". For credit reference agencies the latter would be covered. More detail about whether they can divulge facts which are not subject to formal judgements etc."@en .
+
+fibo-loan-ln-reg:EqualTreatmentRight a owl:Class ;
+    rdfs:label "equal treatment right"@en,
+        "公平对待权（equal treatment right）"@zh ;
+    rdfs:comment "在法律下获得公平对待的权利。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:BorrowerRight ;
+    skos:definition "The right to equal treatment under the law."@en .
+
+fibo-loan-ln-reg:GoodFaithEstimate a owl:Class ;
+    rdfs:label "good faith estimate"@en,
+        "诚信估价单（good faith estimate）"@zh ;
+    rdfs:comment "贷款人就贷款结清（提前终止）的成本与影响所作的说明（GFE）。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:LoanProductRepresentations ;
+    skos:definition "GFE - representation by the lender on the costs and implications of settlement (early termination) of the loan."@en ;
+    cmns-av:explanatoryNote "Provided in a timely way. Also associated with cooling off periods"@en .
+
+fibo-loan-ln-reg:InformationRight a owl:Class ;
+    rdfs:label "information right"@en,
+        "知情权（information right）"@zh ;
+    rdfs:comment "在某情境中获得某项信息的权利，如购买产品时的充分公平披露权。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:BorrowerRight ;
+    skos:definition "The right to some information in some context, for example when purchasing some product. The right to full and fair disclosure of"@en .
+
+fibo-loan-ln-reg:ProductDisclosureRequirement a owl:Class ;
+    rdfs:label "product disclosure requirement"@en,
+        "产品披露要求（product disclosure requirement）"@zh ;
+    rdfs:comment "规制对产品可作出何种陈述（就其影响消费者而言）的要求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-loan-ln-reg:LoanProductRepresentations ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-loan-ln-reg:GoodFaithEstimate ],
+        fibo-loan-ln-reg:DisclosureRequirement ;
+    skos:definition "A requirement governing what representations can be made about a product, as it affects the consumer."@en ;
+    cmns-av:explanatoryNote "There are also rules which encompass limitations on how you might attach loans and liens to principle dwellings, e.g. when or whether you can foreclose on someone's principal dwelling with impunity; what rights the consumer has - this last will be a separate kind of regulation."@en .
+
+fibo-loan-ln-reg:ProductDisclosureRight a owl:Class ;
+    rdfs:label "product disclosure right"@en,
+        "产品知情权（product disclosure right）"@zh ;
+    rdfs:comment "在购买产品时获得产品信息的权利。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:InformationRight ;
+    skos:definition "The right to information about products at the point of purchasing these."@en ;
+    cmns-av:explanatoryNote "Includes retail, insurance and financial product disclosures"@en .
+
+fibo-loan-ln-reg:administeredBy a owl:ObjectProperty ;
+    rdfs:label "administered by"@en,
+        "由……管理（administered by）"@zh ;
+    rdfs:comment "标识负责管理某事物的机构。"@zh ;
+    rdfs:domain fibo-loan-ln-reg:LoanRegulatoryRequirement ;
+    rdfs:range cmns-rga:RegulatoryAgency .
+
+fibo-loan-ln-reg:overseenBy a owl:ObjectProperty ;
+    rdfs:label "overseen by"@en,
+        "由……监督（overseen by）"@zh ;
+    rdfs:comment "标识负责监督某事物的机构。"@zh ;
+    rdfs:domain fibo-loan-ln-reg:ConsumerCreditRequirement ;
+    rdfs:range fibo-loan-ln-reg:ConsumerProtectionAgency .
+
+fibo-loan-ln-reg:BorrowerRight a owl:Class ;
+    rdfs:label "borrower right"@en,
+        "借款人权利（borrower right）"@zh ;
+    rdfs:comment "借款人在借贷关系中享有的权利。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:ConsumerRight ;
+    cmns-av:explanatoryNote "example the right not to have a home reposessed. Example: RESPA Real Estate Setetlement Procedures Act (promulgated by HUD to govern real estate practices and disclosures Provisions of good faith estimate (GFE) of loan settlement costs. GFE would be when you apply - you get a GFE back from the lender telling you what it would cost if you close the loan."@en .
+
+fibo-loan-ln-reg:ConsumerProtectionAgency a owl:Class ;
+    rdfs:label "consumer protection agency"@en,
+        "消费者保护机构（consumer protection agency）"@zh ;
+    rdfs:comment "在某辖区负责消费者保护监管的机构。"@zh ;
+    rdfs:subClassOf cmns-rga:RegulatoryAgency ;
+    skos:definition "Some agency tasked with regulating consumer protection in some jurisdiction."@en ;
+    cmns-av:explanatoryNote "Note that this is consumer protection, and not other regulatory requirements such as systemic risk. an instance of this is the Consumer Financial Protection Bureau in the US. This is wide rthan just lending, but also covers lender rights."@en .
+
+fibo-loan-ln-reg:ConsumerRight a owl:Class ;
+    rdfs:label "consumer right"@en,
+        "消费者权利（consumer right）"@zh ;
+    rdfs:comment "消费者依法享有的权利。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:LegalRight .
+
+fibo-loan-ln-reg:LoanProductRepresentations a owl:Class ;
+    rdfs:label "loan product representations"@en,
+        "贷款产品说明（loan product representations）"@zh ;
+    rdfs:comment "关于贷款产品及其对借款人适当性的陈述。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:Representation ;
+    skos:definition "Representations about the loan product and the appropriateness of this for the borrower."@en ;
+    cmns-av:explanatoryNote "Covers responsible lending, consumer credit laws. See Aus Consumer Creti; US Reg Z and so on. In detail, this will include things like the representations about rates of interest, what people can or can't say when offering a product to a customer. Reg Z: Promoting the informed use of consumer credit by .. implictions and cost Also right to cancel a lien on a consumer's dwelling."@en .
+
+fibo-loan-ln-reg:ConsumerCreditRequirement a owl:Class ;
+    rdfs:label "consumer credit requirement"@en,
+        "消费信贷要求（consumer credit requirement）"@zh ;
+    rdfs:comment "对贷款人如何对待贷款申请所设定的要求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-reg:overseenBy ;
+            owl:someValuesFrom fibo-loan-ln-reg:ConsumerProtectionAgency ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:confers ;
+            owl:someValuesFrom fibo-loan-ln-reg:ConsumerRight ],
+        fibo-fnd-law-lcap:LegalObligation ;
+    skos:definition "Requirement set out on the lender about how they must treat the appliction to a loan"@en ;
+    cmns-av:explanatoryNote "e..g being able to see and challenge information about them held by the credit agency or lender. e.g. can't publish opinions only facts, etc."@en .
+
+fibo-loan-ln-reg:DisclosureRequirement a owl:Class ;
+    rdfs:label "disclosure requirement"@en,
+        "披露要求（disclosure requirement）"@zh ;
+    rdfs:comment "向借款人或潜在借款人披露的要求，包括所持有信息的披露与产品条款的披露两类。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-reg:ConsumerCreditRequirement ;
+    skos:definition "Requirement for disclosure to borrowers or potential borrowers. There are two kinds of disclosure requirement: 1. Disclosure about the information held on the borrower 2. Disclsure about the product."@en .
+
+fibo-loan-ln-reg:LoanRegulatoryRequirement a owl:Class ;
+    rdfs:label "loan regulatory requirement"@en,
+        "贷款监管要求（loan regulatory requirement）"@zh ;
+    rdfs:comment "由消费信贷法或其他立法在法规中定义的监管要求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:regulates ;
+            owl:someValuesFrom fibo-loan-ln-ln:Loan ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-reg:administeredBy ;
+            owl:someValuesFrom cmns-rga:RegulatoryAgency ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
+            owl:someValuesFrom fibo-loan-ln-reg:ConsumerCreditProtectionLaw ],
+        fibo-fnd-law-lcap:LegalObligation ;
+    skos:definition "A regulatory requirement defined in regulations by a comsumer credit act or other legislation."@en ;
+    cmns-av:explanatoryNote "Presence of a loan regulatory requirement associated with a loan indicates that the loan is regulated by the UK Consumer credit act or the equivalent in continental Europe."@en .
+

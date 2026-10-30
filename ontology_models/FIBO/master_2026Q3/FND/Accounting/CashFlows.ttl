@@ -1,0 +1,104 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-acc-csf: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CashFlows/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-acc-csf:CashFlowStructure a owl:Class ;
+    rdfs:label "cash flow structure",
+        "现金流结构（cash flow structure）"@zh ;
+    rdfs:comment "与一个或多个现金流相关的结构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-fd:Schedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-csf:TriggeringEvent ;
+            owl:onProperty cmns-doc:specifies ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fnd-acc-csf:CashFlow ],
+        fibo-fnd-dt-fd:DatedStructuredCollection ;
+    skos:definition "the structure related to one or more cash flows" ;
+    cmns-av:explanatoryNote "Cash flow structures may involve not only cash flows, but the kind of schedule, historic payments, projected payments, a link or links to the relevant contract(s) or account(s), and possibly some triggering event." .
+
+fibo-fnd-acc-csf: a owl:Ontology ;
+    rdfs:label "CashFlows Ontology",
+        "现金流本体（Cash Flows Ontology）"@zh,
+        "现金流本体（CashFlows Ontology）"@zh ;
+    dcterms:abstract "This ontology defines cash flow concepts for use in defining other FIBO ontology elements." ;
+    dcterms:license """Copyright (c) 2025 EDM Council, Inc.
+Copyright (c) 2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "本本体定义现金流概念，供定义其他 FIBO 本体元素时使用。"@zh ;
+    owl:imports fibo-fnd-acc-cur:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-doc: ;
+    owl:versionIRI fibo-fnd-acc-csf: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2025 EDM Council, Inc.",
+        "Copyright (c) 2025 Object Management Group, Inc." .
+
+fibo-fnd-acc-csf:CashFlow a owl:Class ;
+    rdfs:label "cash flow",
+        "现金流（cash flow）"@zh ;
+    rdfs:comment "资金从某来源到某去向的流动。"@zh ;
+    rdfs:seeAlso <https://fastercapital.com/content/Transaction-Date--Transaction-Date-vs--Value-Date--Understanding-the-Timeline-of-Your-Money.html#Introduction-to-Transaction-Dates-and-Value-Dates> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-acc-csf:hasSourceOfMoney ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-acc-csf:hasTargetOfMoney ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-dt-fd:DatedCollectionConstituent ;
+    skos:definition "the movement of money from some source to some sink" ;
+    cmns-av:explanatoryNote "From the perspective of an individual investor, the transaction date is the day when the investor's order is executed in the market. However, the process doesn't end there. The value date, on the other hand, is when the transaction actually settles, meaning when the buyer receives the securities and the seller gets the money. This lag between the transaction and value dates is known as the settlement period, which can vary depending on the type of security involved.",
+        "One of the primary concepts in value dating is the 'value date', which is the date on which the funds from a transaction are considered available for use. This date can be influenced by various factors, including the type of transaction, the currencies involved, and the policies of the financial institutions handling the transaction. For instance, in international transactions, the value date might be delayed due to the time required for currency conversion and cross-border fund transfers." .
+
+fibo-fnd-acc-csf:TriggeringEvent a owl:Class ;
+    rdfs:label "triggering event"@en,
+        "触发事件（triggering event）"@zh ;
+    rdfs:comment "与信用违约互换的某些方面相关或触发这些方面的事件。"@zh ;
+    rdfs:subClassOf fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "event that relates to or triggers some aspect of a credit default swap"@en ;
+    cmns-av:explanatoryNote "A triggering event is typically a credit event, but could be anything that happens in the marketplace. For example, a weather-specific contract could be triggered by a hurricane - which wouldn't be considered a credit event per se."@en .
+
+fibo-fnd-acc-csf:hasSourceOfMoney a owl:ObjectProperty ;
+    rdfs:label "has source of funds",
+        "具有资金来源（has source of funds）"@zh ;
+    rdfs:comment "指某笔资金的来源。"@zh ;
+    rdfs:subPropertyOf cmns-doc:refersTo ;
+    skos:definition "refers to the origin of some amount of money" ;
+    skos:example "Typical sources include accounts, payments, etc." .
+
+fibo-fnd-acc-csf:hasTargetOfMoney a owl:ObjectProperty ;
+    rdfs:label "has target of funds",
+        "具有资金去向（has target of funds）"@zh ;
+    rdfs:comment "指某笔资金的去向。"@zh ;
+    rdfs:subPropertyOf cmns-doc:refersTo ;
+    skos:definition "refers to the sink for some amount of money" .
+

@@ -1,0 +1,227 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-cur: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CurrencyContracts/> .
+@prefix fibo-der-drc-ff: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/FuturesAndForwards/> .
+@prefix fibo-der-drc-opt: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-fx-fx: <https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-drc-cur: a owl:Ontology ;
+    rdfs:label "Currency Contracts Ontology"@en,
+        "外汇合约本体（Currency Contracts Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts common to currency spot contracts and foreign exchange derivatives (forwards, options and swaps)." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义以外汇为标的的衍生品合约：外汇远期、货币互换等。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-der-drc-bsc:,
+        fibo-der-drc-ff:,
+        fibo-der-drc-opt:,
+        fibo-der-drc-swp:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-utl-av:,
+        fibo-ind-fx-fx:,
+        cmns-av:,
+        cmns-col:,
+        cmns-qtu:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20251201/DerivativesContracts/CurrencyContracts/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/20210701/DerivativesContracts/CurrencyContracts/ version of this ontology was modified to reflect the addition of the concept of a rates swap and the corresponding rate-based leg to the Swaps ontology, as well as the concept of a spot forward currency swap, to facilitate mapping to the CFI standard.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220301/DerivativesContracts/CurrencyContracts.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate, and to move the definition of an underlier and the related property, has underlier, to financial instruments so that these concepts are also available for use in relation to pool-backed securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/DerivativesContracts/CurrencyContracts.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231201/DerivativesContracts/CurrencyContracts.rdf version of this ontology was modified to simplify the currency derivative class hierarchy (DER-126).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240101/DerivativesContracts/CurrencyContracts.rdf version of this ontology was modified to eliminate a reference to a deprecated property.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240101/DerivativesContracts/CurrencyContracts.rdf version of this ontology was modified to move properties related to buying and selling currency to a higher level in the ontology, to be available on all currency instruments (DER-143).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240801/DerivativesContracts/CurrencyContracts.rdf version of this ontology was modified to simplify and refine definitions related to underliers (DER-112).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/DerivativesContracts/CurrencyContracts.rdf version of this ontology was modified to add foreign exchange master agreement and the related netting provision (DER-55a).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250501/DerivativesContracts/CurrencyContracts.rdf version of this ontology was modified to clean up long time deprecated items (FND-399)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc." .
+
+fibo-der-drc-cur:CurrencyForwardOutright a owl:Class ;
+    rdfs:label "currency forward outright"@en,
+        "直接货币远期（currency forward outright）"@zh ;
+    rdfs:comment "外汇市场上的远期合约，锁定实体在未来某日必须买入或卖出某一货币的价格。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasPart ;
+            owl:someValuesFrom fibo-der-drc-cur:CurrencySwap ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasPart ;
+            owl:someValuesFrom fibo-der-drc-cur:CurrencySpotContract ],
+        fibo-der-drc-cur:CurrencyForward ;
+    skos:definition "forward contract in a foreign exchange market that locks in the price at which an entity must buy or sell a currency on a future date"@en ;
+    cmns-av:explanatoryNote "The holders of a currency forward are obligated to buy or sell the currency at a specified price, at a specified quantity and on a specified future date. These contracts cannot be transferred. Jan 10 Review Notes Outright Forward is the term for the professional markets. Spot + Swap where Swap is 2 simultaneous transactions."@en ;
+    cmns-av:synonym "forward outright"@en,
+        "outright forward currency transaction"@en .
+
+fibo-der-drc-cur:CurrencySpotForwardSwap a owl:Class ;
+    rdfs:label "currency spot forward swap"@en,
+        "货币即期远期互换（currency spot forward swap）"@zh ;
+    rdfs:comment "双方按约定固定汇率进行两种货币交换的外汇协议：a）在即期结算日交换；b）在远期日反向交换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasLeg ;
+            owl:someValuesFrom fibo-der-drc-cur:CurrencySpotContract ],
+        fibo-der-drc-cur:CurrencySwap ;
+    skos:definition "foreign exchange agreement between two parties involving an exchange of two currencies at agreed fixed rates: a) on the spot settlement date and b) a reverse exchange on a later specified date"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15"@en .
+
+fibo-der-drc-cur:CurrencyVolatilityOption a owl:Class ;
+    rdfs:label "currency volatility option"@en,
+        "货币波动率期权（currency volatility option）"@zh ;
+    rdfs:comment "标的资产基于某一外汇汇率波动率的货币期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-ind-fx-fx:CurrencySpotVolatility ] ],
+        fibo-der-drc-cur:CurrencyOption ;
+    skos:definition "currency option whose underlying asset is based on the volatility of a foreign exchange rate"@en .
+
+fibo-der-drc-cur:ForeignExchangeMasterAgreement a owl:Class ;
+    rdfs:label "foreign exchange master agreement"@en,
+        "外汇主协议（foreign exchange master agreement）"@zh ;
+    rdfs:comment "旨在反映市场最佳实践、为外汇市场参与者提供标准协议的产品专用主协议。"@zh ;
+    rdfs:seeAlso <https://www.newyorkfed.org/medialibrary/microsites/fxc/files/guidefx.pdf> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-der-drc-cur:ForeignExchangeSettlementNettingProvision ],
+        fibo-fnd-agr-ctr:MasterAgreement ;
+    skos:definition "product-specific master agreement intended to reflect best market practice and to provide a standard agreement for participants in the foreign exchange markets"@en ;
+    cmns-av:explanatoryNote "The Foreign Exchange Committee of the Federal Reserve Bank of New York has approved and authorized publication of the Foreign Exchange and Options Master Agreement to cover foreign exchange spot and forward transactions as well as currency options."@en,
+        "The International Foreign Exchange Master Agreement (IFEMA) was published jointly by the British Bankers' Association and The Foreign Exchange Committee of the Federal Reserve Bank of New York in 1993 (an amended version was published in 1995). Foreign exchange settlement netting provisions are specified in such master agreements."@en ;
+    cmns-av:synonym "FX master agreement" .
+
+fibo-der-drc-ff:CurrencyFuture a owl:Class ;
+    rdfs:subClassOf fibo-der-drc-cur:CurrencyDerivative .
+
+fibo-der-drc-cur:CurrencyOption a owl:Class ;
+    rdfs:label "currency option"@en,
+        "货币期权（currency option）"@zh ;
+    rdfs:comment "赋予买方（持有人）在规定期间内按指定汇率买入或卖出货币的权利（而非义务）的期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasStrikeRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:ExchangeRate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                    owl:onClass fibo-ind-fx-fx:CurrencySpotBuyRate ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ] ],
+        fibo-der-drc-cur:CurrencyDerivative,
+        fibo-der-drc-opt:VanillaOption ;
+    skos:definition "option giving the buyer (holder) the right, but not the obligation, to buy or sell currency at a specified exchange rate during a specified period of time"@en ;
+    cmns-av:abbreviation "FX option"@en ;
+    cmns-av:explanatoryNote "For this right, a premium is paid to the broker, which will vary depending on the number of contracts purchased. Currency options are one of the best ways for corporations or individuals to hedge against adverse movements in exchange rates. Investors can hedge against foreign currency risk by purchasing a currency option put or call. For example, assume that an investor believes that the USD/EUR rate is going to increase from 0.80 to 0.90 (meaning that it will become more expensive for a European investor to buy U.S dollars). In this case, the investor would want to buy a call option on USD/EUR so that he or she could stand to gain from an increase in the exchange rate (or the USD rise)."@en ;
+    cmns-av:synonym "foreign exchange option"@en,
+        "forex option"@en .
+
+fibo-der-drc-cur:ForeignExchangeSettlementNettingProvision a owl:Class ;
+    rdfs:label "foreign exchange settlement netting provision"@en,
+        "外汇结算净额条款（foreign exchange settlement netting provision）"@zh ;
+    rdfs:comment "外汇合约特有的结算净额条款。"@zh ;
+    rdfs:seeAlso <https://www.newyorkfed.org/medialibrary/microsites/fxc/files/guidefx.pdf> ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:SettlementNettingProvision ;
+    skos:definition "settlement netting provision that is specific to foreign exchange contracts"@en ;
+    cmns-av:explanatoryNote "Foreign exchange settlement netting, if between two counterparties, which is also referred to as bilateral settlement netting in this case, can take one of two forms, payment netting or novation netting. Often, one of these two methods will be found in combination with close-out netting in master agreements between trading counterparties. Close-out netting, as distinct from payment or novation netting, provides for contract liquidation procedures in the event that one of the parties defaults under a contract or become bankrupt. Payment and novation netting describe the day-to-day processes of calculating and paying net amounts."@en ;
+    cmns-av:synonym "FX settlement netting provision" .
+
+fibo-der-drc-cur:hasForwardExchangeRate a owl:ObjectProperty ;
+    rdfs:label "has forward exchange rate"@en,
+        "具有远期汇率（has forward exchange rate）"@zh ;
+    rdfs:comment "远期合约中规定的两种货币之间的汇率。"@zh ;
+    rdfs:domain fibo-der-drc-cur:CurrencyForward ;
+    rdfs:range fibo-fnd-acc-cur:ExchangeRate ;
+    rdfs:subPropertyOf cmns-qtu:hasQuantityValue ;
+    skos:definition "rate of exchange between two currencies as specified in a forward contract"@en .
+
+fibo-der-drc-cur:hasSpotExchangeRate a owl:ObjectProperty ;
+    rdfs:label "has spot exchange rate"@en,
+        "具有即期汇率（has spot exchange rate）"@zh ;
+    rdfs:comment "由特定来源在某一日期和时间报出的两种货币之间的汇率，通常用于即期合约。"@zh ;
+    rdfs:range fibo-ind-fx-fx:QuotedExchangeRate ;
+    rdfs:subPropertyOf fibo-ind-fx-fx:hasQuotedExchangeRate ;
+    skos:definition "rate of exchange between two currencies as specified as of some date and time as quoted by a specific source, typically for a spot contract"@en .
+
+fibo-der-drc-cur:CurrencySpotContract a owl:Class ;
+    rdfs:label "currency spot contract"@en,
+        "货币即期合约（currency spot contract）"@zh ;
+    rdfs:comment "即时交割的外汇合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-cur:hasSpotExchangeRate ;
+            owl:someValuesFrom fibo-ind-fx-fx:QuotedExchangeRate ],
+        fibo-fbc-fi-fi:CurrencyInstrument,
+        fibo-fbc-fi-fi:SpotContract ;
+    skos:definition "foreign-exchange contract for immediate delivery"@en ;
+    cmns-av:explanatoryNote "Spot rates represent the price that a buyer expects to pay for a foreign currency in another currency at the time of the quote. Though the spot exchange rate is said to be settled immediately, the globally accepted settlement cycle for foreign-exchange contracts is two days. Foreign-exchange contracts are therefore settled on the second day after the day the deal is made."@en ;
+    cmns-av:synonym "foreign exchange spot contract"@en .
+
+fibo-der-drc-cur:CurrencySwap a owl:Class ;
+    rdfs:label "currency swap"@en,
+        "货币互换（currency swap）"@zh ;
+    rdfs:comment "双方将一种货币的给定金额交换为另一种货币、用于即期交割或远期交割的外汇协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasLeg ;
+            owl:someValuesFrom fibo-der-drc-cur:CurrencyForward ],
+        fibo-der-drc-cur:CurrencyDerivative,
+        fibo-der-drc-swp:Swap ;
+    skos:definition "foreign exchange agreement between two parties to exchange a given amount of one currency for another currency for spot delivery or for forward delivery at an agreed rate after a specified period of time"@en ;
+    skos:note "In the case of a 'forward-forward' swap, both legs will be of type CurrencyFoward."@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15"@en .
+
+fibo-der-drc-cur:CurrencyForward a owl:Class ;
+    rdfs:label "currency forward"@en,
+        "货币远期（currency forward）"@zh ;
+    rdfs:comment "在未来约定日期交付并结算一种货币的给定金额、以换取另一货币给定金额的协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-cur:hasForwardExchangeRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:ExchangeRate ],
+        fibo-der-drc-cur:CurrencyDerivative,
+        fibo-der-drc-ff:Forward ;
+    skos:definition "agreement to deliver and settle a given amount of money in one currency, in exchange for a given amount in another currency, at an agreed date in the future and at an agreed rate of exchange"@en ;
+    cmns-av:synonym "FX forward"@en,
+        "foreign exchange forward"@en .
+
+fibo-der-drc-cur:CurrencyDerivative a owl:Class ;
+    rdfs:label "currency derivative"@en,
+        "货币衍生品（currency derivative）"@zh ;
+    rdfs:comment "以约定汇率交付并结算一种货币的给定金额、以换取另一货币给定金额的协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-ind-fx-fx:hasExchangeRateQuotationSource ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-fct-mkt:Exchange ) ] ],
+        fibo-fbc-fi-fi:CurrencyInstrument,
+        fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "agreement to deliver and settle a given amount of money in one currency, in exchange for a given amount in another currency at an agreed rate of exchange"@en ;
+    cmns-av:abbreviation "FX derivative"@en ;
+    cmns-av:synonym "foreign exchange derivative"@en,
+        "forex derivative"@en .
+

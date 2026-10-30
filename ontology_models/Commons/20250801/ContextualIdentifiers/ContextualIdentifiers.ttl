@@ -1,0 +1,64 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-cxtid: a owl:Ontology ;
+    rdfs:label "Commons Contextual Identifiers Ontology",
+        "Commons 上下文标识符本体（Commons Contextual Identifiers Ontology）"@zh ;
+    dct:abstract "The contextual identifiers ontology defines commonly used concepts for describing more complex identifiers, including those that apply for some period of time as well as those that are structured and include other codes or identifiers." ;
+    dct:contributor "Elisa Kendall, Thematix Partners LLC",
+        "Evan Wallace, U.S. National Institute of Standards and Technology (NIST)" ;
+    dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义在特定上下文或情境中使用的标识符。"@zh ;
+    owl:imports cmns-av:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-id: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20221101/ContextualIdentifiers/> ;
+    skos:changeNote "https://www.omg.org/spec/Commons/20220501/ContextualIdentifiers.rdf version of this ontology was modified to add a ContextualIdentificationScheme and require a ContextualIdentifier to have context (COMMONS-26)." ;
+    cmns-av:copyright "Copyright (c) 2022 Object Management Group, Inc.",
+        "Copyright (c) 2022 Thematix Partners LLC" .
+
+cmns-cxtid:ContextualIdentificationScheme a owl:Class ;
+    rdfs:label "contextual identification scheme" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom cmns-cxtdsg:Context ],
+        cmns-id:IdentificationScheme ;
+    skos:definition "identification scheme that applies within one or more contexts" .
+
+cmns-cxtid:ContextualIdentifier a owl:Class ;
+    rdfs:label "contextual identifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom cmns-cxtdsg:Context ],
+        cmns-cxtdsg:ContextualDesignation,
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters uniquely identifying that with which it is associated, within a specified context" ;
+    skos:note "The context within which an identifier is unique may be limited to a given data source, registry or jurisdiction, or may be designed to be globally unique such as a legal entity identifier issued by a registrar authorized by the Global LEI Foundation. Such identifiers may have other features associated with them, such as the date they were originally issued, and information related to registration, validation, recency, and so forth." .
+
+cmns-cxtid:StructuredIdentifier a owl:Class ;
+    rdfs:label "structured identifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-id:Identifier ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-cds:CodeElement ;
+            owl:onProperty cmns-col:comprises ],
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters uniquely identifying that with which it is associated, that includes other codes or identifiers, or that is constructed from other notions" ;
+    skos:example "A vehicle identification number (VIN) includes a world-wide manufacturer identifier, a vehicle description (i.e., make, model), check digits, the year, plant and a specific vehicle number.",
+        "An international security identification number (ISIN) includes a country code and the national security identification number (NSIN), as defined in ISO 6166." ;
+    skos:note "Many structured identifiers can be validated using a regular expression, such as a social security number in the United States." .
+

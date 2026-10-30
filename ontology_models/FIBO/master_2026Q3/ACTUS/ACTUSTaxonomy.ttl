@@ -1,0 +1,524 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-actus-acv: <https://spec.edmcouncil.org/fibo/ontology/ACTUS/ACTUSTaxonomy/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix mvf: <https://www.omg.org/spec/MVF/MultipleVocabularyFacility/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-actus-acv: a owl:Ontology ;
+    rdfs:label "ACTUS Controlled Vocabulary",
+        "ACTUS 受控词汇本体（ACTUS Controlled Vocabulary）"@zh ;
+    dcterms:abstract "This ontology represents the ACTUS taxonomy as a controlled vocabulary." ;
+    dcterms:license """Copyright (c) 2024-2026 ACTUS Financial Research Foundation
+Copyright (c) 2024-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2024-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:source "https://www.actusfrf.org"^^xsd:anyURI ;
+    rdfs:comment "收录 ACTUS 标准合约类型（如本金摊还型年金合约 PAM、到期一次偿还合约 NAM）的受控词汇。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-dsg:,
+        cmns-txt:,
+        mvf: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/ACTUS/20261001/ACTUSTaxonomy/> ;
+    skos:note "This version of the ACTUS taxonomy corresponds to the ACTUS 1.1 version of the taxonomy. It is derived from a combination of the online taxonomy available at https://www.actusfrf.org/taxonomy, and the JSON version defined in the ACTUS GitHub repository at https://github.com/actusfrf/actus-dictionary. Note that the taxonomy is slightly ahead of the JSON in terms of revision status as of the Q3 2026 release of FIBO." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2024-2025 Object Management Group, Inc.",
+        "Copyright (c) 2024-2026 ACTUS Financial Research Foundation",
+        "Copyright (c) 2024-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-actus-acv:ACTUSContractType-Annuity a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - annuity" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to contracts whose principal is paid fully at the initial exchange date and principal plus interest is repaid periodically in constant amounts until maturity" ;
+    fibo-actus-acv:hasCoverageDescription "Classical level payment mortgages, leasing contracts etc." ;
+    cmns-dsg:hasDescription "Principal payment fully at IED and interest plus principal repaid periodically in constant amounts till MD. If variable rate, total amount for interest and principal is recalculated to be fully matured at MD." ;
+    cmns-dsg:hasTextualName "Annuity" ;
+    cmns-txt:hasTextValue "ANN" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-BondWithWarrant a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - bond with warrant" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to bonds with attached warrants" ;
+    fibo-actus-acv:hasCoverageDescription "Warrants." ;
+    cmns-dsg:hasDescription "Bonds with a warrant. If option is exercised, underlying bond continues to exist." ;
+    cmns-dsg:hasTextualName "Warrant" ;
+    cmns-txt:hasTextValue "BNDWR" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Options .
+
+fibo-actus-acv:ACTUSContractType-BoundaryControlledSwitch a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - boundary controlled switch" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to derivative contracts with subcontract legs which can be activated (knocked in) or extinguished (knocked out) when the underlying asset price reaches a specified value" ;
+    fibo-actus-acv:hasCoverageDescription "Knock-in and Knock-out barrier options with a single boundary. Bonus contracts with payout when underlying asset price remains above or below a specified level for specified period." ;
+    cmns-dsg:hasDescription "A boundary controlled switch is a derivative contract with subcontract legs which can be activated (knocked in) or extinguished (knocked out) when the underlying asset price reaches a specified value. The underlying asset may be a stock, index, or exchange-traded fund. Boundary controlled switch contracts with a single boundary are currently defined." ;
+    cmns-dsg:hasTextualName "Boundary Controlled Switch" ;
+    cmns-txt:hasTextValue "BCS" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Options .
+
+fibo-actus-acv:ACTUSContractType-CallMoney a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - call money" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to loans that are rolled over as long as they are not called" ;
+    fibo-actus-acv:hasCoverageDescription "Interbank loans with call features." ;
+    cmns-dsg:hasDescription "Loans that are rolled over as long as they are not called. Once called it has to be paid back after the stipulated notice period." ;
+    cmns-dsg:hasTextualName "Call Money" ;
+    cmns-txt:hasTextValue "CLM" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-CapFloorOption a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - cap floor option" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to interest rate options expressed with a maximum or minimum interest rate" ;
+    fibo-actus-acv:hasCoverageDescription "Cap and floor options." ;
+    cmns-dsg:hasDescription "Interest rate option expressed in a maximum or minimum interest rate." ;
+    cmns-dsg:hasTextualName "Cap Floors" ;
+    cmns-txt:hasTextValue "CAPFL" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Options .
+
+fibo-actus-acv:ACTUSContractType-Cash a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - cash" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to cash or cash equivalent positions" ;
+    fibo-actus-acv:hasCoverageDescription "Cash, deposits at central bank" ;
+    cmns-dsg:hasDescription "Cash or cash equivalent position" ;
+    cmns-dsg:hasTextualName "Cash" ;
+    cmns-txt:hasTextValue "CSH" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-Collateral a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - collateral" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to relationships between collateral, an obligee and a debtor, covering the exposure from the debtor with the collateral" ;
+    fibo-actus-acv:hasCoverageDescription "Mortgages include a collateral contract. Any coverage with financial or physical collateral." ;
+    cmns-dsg:hasDescription "Collateral creates a relationship between a collateral an obligee and a debtor, covering the exposure from the debtor with the collateral." ;
+    cmns-dsg:hasTextualName "Collateral" ;
+    cmns-txt:hasTextValue "CEC" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-CreditEnhancement .
+
+fibo-actus-acv:ACTUSContractType-Commodity a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - commodity" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to movements of commodities such as oil, gas or even houses that can serve as underlyings of commodity futures, guarantees or simply asset positions" ;
+    fibo-actus-acv:hasCoverageDescription "Oil, gas, electricity, houses etc." ;
+    cmns-dsg:hasDescription "This is not a financial contract in its propper sense. However it tracks movements of commodities such as oil, gas or even houses. Such commodities can serve as underlyings of commodity futures, guarantees or simply asset positions." ;
+    cmns-dsg:hasTextualName "Commodity" ;
+    cmns-txt:hasTextValue "COM" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-ExchangeTraded .
+
+fibo-actus-acv:ACTUSContractType-ConvertibleNote a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - convertible note" ;
+    skos:definition "cashflow classifier that applies to bonds with a call or put option" ;
+    fibo-actus-acv:hasCoverageDescription "Callable and puttable bonds or loans." ;
+    cmns-dsg:hasDescription "Bonds with a call or put option. If option is exercised, underlying bond ceases to exist." ;
+    cmns-dsg:hasTextualName "Convertible Note" ;
+    cmns-txt:hasTextValue "BNDCP" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Options .
+
+fibo-actus-acv:ACTUSContractType-CreditDefaultSwap a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - credit default swap" ;
+    skos:definition "cashflow classifier that applies to contracts for which a payment is triggered if one or more of the underlying counterparties defaults" ;
+    fibo-actus-acv:hasCoverageDescription "All sorts of credit default swaps." ;
+    cmns-dsg:hasDescription "A payment is triggered if one or more of the underlying counterparties defaults." ;
+    cmns-dsg:hasTextualName "Credit Default Swap" ;
+    cmns-txt:hasTextValue "CDSWP" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Securitization .
+
+fibo-actus-acv:ACTUSContractType-CreditLinkedNote a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - credit linked note" ;
+    skos:definition "cashflow classifier that applies to securities with an embedded credit default swap, linking the credit risk of a reference entity to the note's performance" ;
+    cmns-dsg:hasDescription "A credit linked note is a security with an embedded CDSWP" ;
+    cmns-dsg:hasTextualName "Credit Linked Note" ;
+    cmns-txt:hasTextValue "CLNTE" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Securitization .
+
+fibo-actus-acv:ACTUSContractType-ExoticAnnuity a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - exotic annuity" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to contracts whose principal is paid fully at the initial exchange date and principal plus interest payments may include step ups in principal and/or interest until maturity" ;
+    fibo-actus-acv:hasCoverageDescription "A special version of this kind are teaser rate loans and mortgages with annuity features." ;
+    cmns-dsg:hasDescription "Exotic version of ANN. However step ups with respect to (i) Principal, (ii) Interest rates are possible. Highly flexible to match totally irregular principal payments. Principal can also be paid out in steps." ;
+    cmns-dsg:hasTextualName "Exotic Annuity" ;
+    cmns-txt:hasTextValue "ANX" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-ExoticLinearAmortizer a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - exotic linear amortizer" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to contracts whose principal is typically, but not always, paid fully at the initial exchange date and where the principal is typically repaid in equal amounts until a step change or maturity, with interest payments decreasing accordingly until a step change in the interest amount" ;
+    fibo-actus-acv:hasCoverageDescription "A special version of this kind are teaser rate loans and mortgages." ;
+    cmns-dsg:hasDescription "Exotic version of LAM. However step ups with respect to (i) Principal, (ii) Interest rates are possible. Highly flexible to match totally irregular principal payments. Principal can also be paid out in steps." ;
+    cmns-dsg:hasTextualName "Exotic Linear Amortizer" ;
+    cmns-txt:hasTextValue "LAX" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-ExoticNegativeAmortizer a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - exotic negative amortizer" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to negative amortizing contracts but allowing step ups in principal and interest" ;
+    fibo-actus-acv:hasCoverageDescription "A special version of this kind are teaser rate loans and mortgages with a variable maturity date." ;
+    cmns-dsg:hasDescription "Exotic version of NAM. However step ups with respect to (i) Principal, (ii) Interest rates are possible. Highly flexible to match totally irregular principal payments. Principal can also be paid out in steps." ;
+    cmns-dsg:hasTextualName "Exotic Negative Amortizer" ;
+    cmns-txt:hasTextValue "NAX" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-ExoticOption a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - exotic option" ;
+    skos:definition "cashflow classifier that applies to exotic options" ;
+    fibo-actus-acv:hasCoverageDescription "Knock-in and Knock-out, Barrier, Ladder, Rainbow options etc." ;
+    cmns-dsg:hasDescription "As of current, most of the exotic options which were popular before 2008 are out of favor and factually irrelevant. Which of the exotic options will be implemented will depend on the real relevance in the future." ;
+    cmns-dsg:hasTextualName "EXOTi" ;
+    cmns-txt:hasTextValue "EXOTi" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Options .
+
+fibo-actus-acv:ACTUSContractType-ForeignExchangeOutright a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - foreign exchange outright" ;
+    skos:definition "cashflow classifier that applies to agreements where two parties agree to exchange fixed cash flows in different currencies at a specified future date" ;
+    fibo-actus-acv:hasCoverageDescription "Any FX-outright transaction at a future date. This is also the underlying of FX-options and FX futures." ;
+    cmns-dsg:hasDescription "Two parties agree to exchange two fixed cash flows in different currencies at a certain point in time in future." ;
+    cmns-dsg:hasTextualName "Foreign Ex-change Outright" ;
+    cmns-txt:hasTextValue "FXOUT" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Symmetric .
+
+fibo-actus-acv:ACTUSContractType-Future a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - future" ;
+    skos:definition "cashflow classifier that applies to futures" ;
+    fibo-actus-acv:hasCoverageDescription "Standard interest rate, FX, stock and commodity futures." ;
+    cmns-dsg:hasDescription "Keeps track of value changes for any basic CT as underlying (PAM, ANN etc. but also FXOUT, STK, COM). Handles margining calls." ;
+    cmns-dsg:hasTextualName "Future" ;
+    cmns-txt:hasTextValue "FUTUR" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Symmetric .
+
+fibo-actus-acv:ACTUSContractType-Guarantee a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - guarantee" ;
+    skos:definition "cashflow classifier that applies to credit enhancements that create a relationship between a guarantor, an obligee and a debtor, moving the exposure from the debtor to the guarantor" ;
+    fibo-actus-acv:hasCoverageDescription "Personal guarantee. Government guarantee. Underlyings of CDO's." ;
+    cmns-dsg:hasDescription "Guarantee creates a relationship between a guarantor, an obligee and a debtor, moving the exposure from the debtor to the guarantor." ;
+    cmns-dsg:hasTextualName "Guarantee" ;
+    cmns-txt:hasTextValue "CEG" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-CreditEnhancement .
+
+fibo-actus-acv:ACTUSContractType-LinearAmortizer a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - linear amortizer" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to contracts whose principal is paid fully at the initial exchange date and where the principal is repaid in equal amounts until maturity, with interest payments decreasing accordingly" ;
+    fibo-actus-acv:hasCoverageDescription "Many amortizing loans." ;
+    cmns-dsg:hasDescription "Principal payment fully at IED. Principal repaid periodically in constant amounts till MD. Interest gets reduced accordingly. If variable rate, only interest payment is recalculated. Fixed and variable rates." ;
+    cmns-dsg:hasTextualName "Linear Amortizer" ;
+    cmns-txt:hasTextValue "LAM" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-Margining a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - margining" ;
+    skos:definition "cashflow classifier that applies to margin contracts that traces the value changes and the different margin categories like inital and variation margin" ;
+    fibo-actus-acv:hasCoverageDescription "Margin contracts as applied in central depositories for any underlying or portfolio of underlying instruments." ;
+    cmns-dsg:hasDescription "A Margining contract traces the value changes and the different margin categories like inital and variation margin." ;
+    cmns-dsg:hasTextualName "Margining" ;
+    cmns-txt:hasTextValue "MAR" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-CreditEnhancement .
+
+fibo-actus-acv:ACTUSContractType-NegativeAmortizer a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - negative amortizer" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to contracts whose principal is paid fully at the initial exchange date and principal plus interest is repaid periodically in constant amounts until maturity, however, when resetting the rate, the total payment (principal plus interest remains constant) thus the maturity changes" ;
+    fibo-actus-acv:hasCoverageDescription "Special class of ARMs (adjustable rate mortgages), certain other loans, with payment caps." ;
+    cmns-dsg:hasDescription "Similar as ANN. However when resetting rate, total amount (interest plus principal) stay constant. MD shifts. Only variable rates." ;
+    cmns-dsg:hasTextualName "Negative Amortizer" ;
+    cmns-txt:hasTextValue "NAM" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-Option a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - option" ;
+    skos:definition "cashflow classifier that calculates straight option pay-off for any basic contract as underlying (PAM, ANN etc.) but also SWAPS, FXOUT, STK and COM" ;
+    fibo-actus-acv:hasCoverageDescription "European, American and Bermudan options with Interest rate, FX and stock futures as underlying instruments." ;
+    cmns-dsg:hasDescription "Calculates straight option pay-off for any basic CT as underlying (PAM, ANN etc.) but also SWAPS, FXOUT, STK and COM. Single, periodic and continuous strike is supported." ;
+    cmns-dsg:hasTextualName "Option" ;
+    cmns-txt:hasTextValue "OPTNS" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Options .
+
+fibo-actus-acv:ACTUSContractType-PerpetualBond a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - perpetual bond" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to bonds without any maturity date" ;
+    fibo-actus-acv:hasCoverageDescription "Consoles, war loans." ;
+    cmns-dsg:hasDescription "Bonds without any maturity date. Interest is paid into eternity if is not terminated." ;
+    cmns-dsg:hasTextualName "Perpetual Bonds" ;
+    cmns-txt:hasTextValue "PBN" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-PlainVanillaSwap a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - plain vanilla swap" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to swaps where the underlyings are always two identical PAM's however with one leg fixed and the other variable" ;
+    fibo-actus-acv:hasCoverageDescription "More than 90% of all interest rate swaps follow this simple pattern." ;
+    cmns-dsg:hasDescription "Plain vanilla swaps where the underlyings are always two identical PAM's however with one leg fixed and the other variable." ;
+    cmns-dsg:hasTextualName "Plain Vanilla Swap" ;
+    cmns-txt:hasTextValue "SWPPV" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Symmetric .
+
+fibo-actus-acv:ACTUSContractType-PrincipalAtMaturity a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - principal at maturity" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to contracts whose principal is paid fully at the initial exchange date and repaid at maturity" ;
+    fibo-actus-acv:hasCoverageDescription "all kinds of bonds, term deposits, bullet loans, and so forth" ;
+    cmns-dsg:hasDescription "Principal payment fully at Initial Exchange Date (IED) and repaid at Maturity Date (MD). Fixed and variable rates." ;
+    cmns-dsg:hasTextualName "Principal at Maturity" ;
+    cmns-txt:hasTextValue "PAM" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:ACTUSContractType-RepurchaseAgreement a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - repurchase agreement" ;
+    skos:definition "cashflow classifier that applies to contracts that control and manage the sale and repurchase of assets on the books" ;
+    fibo-actus-acv:hasCoverageDescription "Classical repo and reverse repo agreements." ;
+    cmns-dsg:hasDescription "A Repo contract controls and manages the sale and repurchase of assets on the books." ;
+    cmns-dsg:hasTextualName "Repurchase Agreement" ;
+    cmns-txt:hasTextValue "REP" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-CreditEnhancement .
+
+fibo-actus-acv:ACTUSContractType-SecuritizationCreditRisk a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - securitization credit risk" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to securitization contracts ranked according to credit default" ;
+    fibo-actus-acv:hasCoverageDescription "CDO's" ;
+    cmns-dsg:hasDescription "Securitiazion contracts where contracs are ranked according to credit default. The lower ranked tranches are hit by the first defaults. Only when the lowest tranches are wiped out, the next higher tranch is hit." ;
+    cmns-dsg:hasTextualName "Securitization Credit Risk" ;
+    cmns-txt:hasTextValue "SCRCR" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Securitization .
+
+fibo-actus-acv:ACTUSContractType-SecuritizationMarketRisk a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - securitization market risk" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to securitization contracts where all underlying contracts are treated equally" ;
+    skos:note "The buyer of a tranche gets a part of the cash-flows." ;
+    fibo-actus-acv:hasCoverageDescription "ABS's, MBS's of all sorts. Could be a simple tranche or more complex tranch like interest only and principal only." ;
+    cmns-dsg:hasDescription "Securitization contracts where all underlying contracts are treated equal. The buyer of a tranche gets a part of the cash-flows." ;
+    cmns-dsg:hasTextualName "Securitization Market Risk" ;
+    cmns-txt:hasTextValue "SCRMR" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Securitization .
+
+fibo-actus-acv:ACTUSContractType-Stock a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - stock" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to equity instruments representing ownership in a company, that is bought at a certain amount (normally market price), then follows an index" ;
+    fibo-actus-acv:hasCoverageDescription "All straight stocks." ;
+    cmns-dsg:hasDescription "Any instrument which is bought at a certain amount (market price normally) and then follows an index." ;
+    cmns-dsg:hasTextualName "Stock" ;
+    cmns-txt:hasTextValue "STK" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-ExchangeTraded .
+
+fibo-actus-acv:ACTUSContractType-Swap a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - swap" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to derivative contracts where two parties exchange contracts" ;
+    fibo-actus-acv:hasCoverageDescription "All kind of swaps. The variety is defined by the underlying CT's which often are PAM and ANN in all its flavors. With each new basic CT the variety rises." ;
+    cmns-dsg:hasDescription "Exchange of two basic CT's (PAM, ANN etc.). Normally one is fixed, the other variable. However all variants possible including different currencies for cross currency swaps, basic swaps or even different principal exchange programs." ;
+    cmns-dsg:hasTextualName "Swap" ;
+    cmns-txt:hasTextValue "SWAPS" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Symmetric .
+
+fibo-actus-acv:ACTUSContractType-TotalReturnSwap a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - total return swap" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to swaps in which one party makes payments based on a set rate, either fixed or variable, while the other party makes payments based on the return of an underlying asset, which includes both the income it generates and any capital gains" ;
+    cmns-dsg:hasDescription "A total return swap is a swap agreement in which one party makes payments based on a set rate, either fixed or variable, while the other party makes payments based on the return of an underlying asset, which includes both the income it generates and any capital gains." ;
+    cmns-dsg:hasTextualName "Total Return Swap" ;
+    cmns-txt:hasTextValue "TRSWP" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-Securitization .
+
+fibo-actus-acv:ACTUSContractType-UndefinedMaturityProfile a owl:NamedIndividual,
+        fibo-actus-acv:ACTUSContractType ;
+    rdfs:label "ACTUS contract type - undefined maturity profile" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow classifier that applies to contracts whose principal may be paid in and out at any point in time without prefixed schedule" ;
+    fibo-actus-acv:hasCoverageDescription "Saving products of all kind, current accounts. In some countries even variable rate mortgages can be represented with this contract type." ;
+    cmns-dsg:hasDescription "Principal paid in and out at any point in time without prefixed schedule. Interest calculated on outstanding and capitalized periodically. Needs link to a behavioral function describing expected flows." ;
+    cmns-dsg:hasTextualName "Undefined Maturity Profile" ;
+    cmns-txt:hasTextValue "UMP" ;
+    mvf:hasNarrowerEntry fibo-actus-acv:AlgorithmicContractCategory-FixedIncome .
+
+fibo-actus-acv:hasCoverageDescription a owl:DatatypeProperty ;
+    rdfs:label "has coverage description",
+        "具有覆盖范围描述（has coverage description）"@zh ;
+    rdfs:comment "描述该分类符所适用的合同范围。"@zh ;
+    rdfs:subPropertyOf cmns-dsg:hasDescription ;
+    skos:definition "describes the range of contracts that the classifier applies to" .
+
+fibo-actus-acv:AlgorithmicContractCategory-ExchangeTraded a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractCategory ;
+    rdfs:label "algorithmic contract category - exchange traded" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow category that applies to basic contracts processed as members of the exchange traded class" ;
+    cmns-txt:hasTextValue "Exchange Traded" .
+
+fibo-actus-acv:AlgorithmicContractFamily-Basic a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractFamily ;
+    rdfs:label "algorithmic contract family - basic" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    owl:differentFrom fibo-actus-acv:AlgorithmicContractFamily-Combined,
+        fibo-actus-acv:AlgorithmicContractFamily-CreditEnhancement ;
+    skos:definition "contract family classifier that applies to single (simple) contracts" ;
+    cmns-av:explanatoryNote "Basic, or atomic contracts include those individual contracts that have schedules associated with them, i.e., that have traditional maturity dates and future cash flows, or that represent demand deposits, i.e., accounts that have no structured maturity term, whose cash flows or amounts depend on counterparty behavior, as well as other assets such as stocks. Such contracts and related assets are typically bilateral." ;
+    cmns-txt:hasTextValue "Basic" .
+
+fibo-actus-acv:AlgorithmicContractFamily-Combined a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractFamily ;
+    rdfs:label "algorithmic contract family - combined" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    owl:differentFrom fibo-actus-acv:AlgorithmicContractFamily-Basic,
+        fibo-actus-acv:AlgorithmicContractFamily-CreditEnhancement ;
+    skos:definition "contract family classifier that applies to combined (complex, derived) contracts, such as derivatives" ;
+    cmns-txt:hasTextValue "Combined" .
+
+fibo-actus-acv:AlgorithmicContractFamily-CreditEnhancement a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractFamily ;
+    rdfs:label "algorithmic contract family - credit enhancement" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    owl:differentFrom fibo-actus-acv:AlgorithmicContractFamily-Basic,
+        fibo-actus-acv:AlgorithmicContractFamily-Combined ;
+    skos:definition "contract family classifier that applies to agreements that are related to other agreements or accounts, and provide credit support to existing contracts" ;
+    cmns-txt:hasTextValue "Credit Enhancement" .
+
+fibo-actus-acv:AlgorithmicContractFamily a owl:Class ;
+    rdfs:label "algorithmic contract family",
+        "算法合同族（algorithmic contract family）"@zh ;
+    rdfs:comment "基于共同特征对合同类型集合（如信贷协议、金融工具或相关合同）的分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-actus-acv:AlgorithmicContractTypesClassificationScheme ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-actus-acv:AlgorithmicContractTypesClassificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        cmns-cls:Classifier,
+        mvf:VocabularyEntry ;
+    skos:definition "classifier for a collection of types of contracts, such as credit agreements, financial instruments, or related kinds of contracts, based on their common characteristics from an ACTUS perspective" .
+
+fibo-actus-acv:AlgorithmicContractCategory-CreditEnhancement a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractCategory ;
+    rdfs:label "algorithmic contract category - credit enhancement" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow category that applies to basic contracts processed as members of the credit enhancement class" ;
+    cmns-txt:hasTextValue "Credit Enhancement" .
+
+fibo-actus-acv:AlgorithmicContractCategory-Symmetric a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractCategory ;
+    rdfs:label "algorithmic contract category - symmetric" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow category that applies to combined contracts processed as members of the symmetric class" ;
+    cmns-txt:hasTextValue "Symmetric" .
+
+fibo-actus-acv:AlgorithmicContractCategory-Securitization a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractCategory ;
+    rdfs:label "algorithmic contract category - securitization" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow category that applies to combined contracts processed as members of the securitization class" ;
+    cmns-txt:hasTextValue "Securitization" .
+
+fibo-actus-acv:AlgorithmicContractCategory a owl:Class ;
+    rdfs:label "algorithmic contract category",
+        "算法合同类别（algorithmic contract category）"@zh ;
+    rdfs:comment "在 ACTUS 现金流族内、对一组信贷协议、金融工具或相关合同所产生现金流的分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-actus-acv:AlgorithmicContractTypesClassificationScheme ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-actus-acv:AlgorithmicContractTypesClassificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        cmns-cls:Classifier,
+        mvf:VocabularyEntry ;
+    skos:definition "classifier for the cashflows generated by a group of credit agreements, financial instruments, or related contracts, within an ACTUS cashflow family, based on their more specific, common characteristics" .
+
+fibo-actus-acv:AlgorithmicContractCategory-Options a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractCategory ;
+    rdfs:label "algorithmic contract category - options" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow category that applies to combined contracts processed as members of the options class" ;
+    cmns-txt:hasTextValue "Options" .
+
+fibo-actus-acv:AlgorithmicContractTypesClassificationScheme a [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-actus-acv:ACTUSContractType ],
+        owl:NamedIndividual,
+        cmns-cls:ClassificationScheme,
+        cmns-cds:CodeSet,
+        mvf:Vocabulary ;
+    rdfs:label "Algorithmic Contract Types classification scheme" ;
+    skos:definition "classification scheme and controlled vocabulary behind the ACTUS modeling paradigm, in which standardized Contract Types (CTs) are the granular building blocks of the financial world" ;
+    cmns-av:abbreviation "ACTUS classification scheme" ;
+    cmns-av:adaptedFrom "https://www.actusfrf.org/methodology"^^xsd:anyURI .
+
+fibo-actus-acv:AlgorithmicContractCategory-FixedIncome a owl:NamedIndividual,
+        fibo-actus-acv:AlgorithmicContractCategory ;
+    rdfs:label "algorithmic contract category - fixed income" ;
+    dcterms:source "https://www.actusfrf.org/taxonomy" ;
+    skos:definition "cashflow category that applies to basic contracts processed as members of the fixed-income class" ;
+    cmns-txt:hasTextValue "Fixed Income" .
+
+fibo-actus-acv:ACTUSContractType a owl:Class ;
+    rdfs:label "ACTUS contract type",
+        "ACTUS 合同类型（ACTUS contract type）"@zh ;
+    rdfs:comment "对算法能力的分类符，即据以基于条款生成信贷协议、金融工具或相关合同现金流的规则。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-actus-acv:AlgorithmicContractTypesClassificationScheme ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-actus-acv:AlgorithmicContractTypesClassificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty fibo-actus-acv:hasCoverageDescription ],
+        cmns-cls:Classifier,
+        mvf:VocabularyEntry ;
+    skos:definition "classifier for an algorithmic capability, i.e., the rules, from which the cashflows for a credit agreement, financial instrument or related contract, based on their characteristics, can be analyzed" ;
+    cmns-av:explanatoryNote "Cashflows in ACTUS are classified as basic, combined / derivatives, or credit enhancement, and then each of these areas breaks down into a number of subclassifications." ;
+    cmns-txt:hasTextValue "CT" .
+

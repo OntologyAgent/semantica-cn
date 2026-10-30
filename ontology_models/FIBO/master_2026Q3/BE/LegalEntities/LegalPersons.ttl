@@ -1,0 +1,242 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-fnd-aap-ppl: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-le-lp: a owl:Ontology ;
+    rdfs:label "Legal Persons Ontology",
+        "法律主体本体（Legal Persons Ontology）"@zh ;
+    dcterms:abstract "This ontology defines legal personhood concepts. A legal person as defined here is any natural person or organization which is capable of accruing liability on its own part." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义法律主体（legal person）与法定实体（legal entity）的核心概念：能持有权利义务、可起诉与被诉的主体。"@zh ;
+    owl:imports fibo-fnd-aap-ppl:,
+        fibo-fnd-agr-agr:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rga:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20251201/LegalEntities/LegalPersons/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20131101/LegalEntities/LegalPersons.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20160201/LegalEntities/LegalPersons.rdf version of this ontology was modified per the FIBO 2.0 RFC to normalize restrictions on business license.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/LegalEntities/LegalPersons.rdf version of this ontology was modified to rationalize natural person and legally capable person in a new concept, namely legally competent natural person, simplify / merge the legal person and formal organization class hierarchies, and correct certain definitions, including power of attorney.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20181201/LegalEntities/LegalPersons.rdf version of this ontology was modified to move business objective to FND to enable higher level reuse.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190401/LegalEntities/LegalPersons.rdf version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190901/LegalEntities/LegalPersons.rdf version of this ontology was modified to clarify the definition of legal person.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200101/LegalEntities/LegalPersons.rdf version of this ontology was modified to move the concept of a signatory and related properties to the executives ontology for better semantic integration.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200601/LegalEntities/LegalPersons.rdf version of this ontology was modified to augment the definition of a contract party to be a legal person.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20201101/LegalEntities/LegalPersons.rdf version of this ontology was modified to eliminate references to external dictionary sites that no longer resolve.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210101/LegalEntities/LegalPersons.rdf version of this ontology was modified to make legal person a subclass of independent party rather than autonomous agent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210401/LegalEntities/LegalPersons.rdf version of this ontology was modified to fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20211201/LegalEntities/LegalPersons.rdf version of this ontology was modified to incorporate the concept of employment, required to support regulatory reporting, and add the concept of a special purpose vehicle.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220101/LegalEntities/LegalPersons.rdf version of this ontology was modified to address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/LegalEntities/LegalPersons.rdf version of this ontology was modified to add the definition of a variable interest entity and eliminate or loosen restrictions that are unnecessarily burdensome on FIBO users, such as that a legal person has liability capacity, which is true by definition but would never be realized when mapped to any data source.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20221201/LegalEntities/LegalPersons.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/LegalEntities/LegalPersons.rdf version of the ontology was modified to move the property, 'is conferred on' from Relations to the Legal Capacity ontology.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/LegalEntities/LegalPersons.rdf version of the ontology was modified to add a French label to special purpose vehicle.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230401/LegalEntities/LegalPersons.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20240101/LegalEntities/LegalPersons.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250301/LegalEntities/LegalPersons.rdf version of the ontology was modified to add a property for intended liquidation date, which may apply to a temporary entity such as an SPV (SEC-200).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250801/LegalEntities/LegalPersons.rdf version of the ontology was modified to remove deprecations that reflect changes made in Commons v1.2 (FBC-399)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-be-le-lp:BusinessLicense a owl:Class ;
+    rdfs:label "business license",
+        "营业执照（business license）"@zh ;
+    rdfs:comment "允许持有人在某管辖区内、在某段时期内经营业务或从事特定职业的许可。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isRecognizedIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:BusinessEntity ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-law-lcap:License ;
+    skos:definition "license that allows the holder to conduct business or carry out a specific profession within some jurisdiction for some period of time" .
+
+fibo-be-le-lp:CharteredLegalPerson a owl:Class ;
+    rdfs:label "chartered legal person",
+        "特许法律主体（chartered legal person）"@zh ;
+    rdfs:comment "由皇家特许状或法令设立的法律主体。"@zh ;
+    rdfs:subClassOf cmns-org:LegalEntity ;
+    skos:definition "a legal person created by a royal charter or decree" ;
+    skos:example "Anything with 'Royal Institute' in the name. Also universities are generally set up by royal charter in a monarchy or principality, (often pre-dating any Privy Council i.e. directly be the monarch in the case of older universities). The Bank of England and the British Broadcasting Council (BBC) are also incorporated through Royal Charter." ;
+    cmns-av:explanatoryNote "In a monarchy or principality, the monarch typically vests the power to create such bodies, in an entity called (for example) the Privy Council." .
+
+fibo-be-le-lp:PowerOfAttorney a owl:Class ;
+    rdfs:label "power of attorney",
+        "授权委托书（power of attorney）"@zh ;
+    rdfs:comment "一方（委托人）授予另一方（代理人）代表委托人实施特定行为的法律授权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fnd-agr-ctr:hasEffectiveDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-law-lcap:isConferredOn ;
+            owl:someValuesFrom fibo-be-le-lp:LegallyCompetentNaturalPerson ],
+        fibo-fnd-law-lcap:LegalCapacity ;
+    skos:definition "legal authorization given by one party (the principal) to another (the agent or attorney-in-fact) to perform certain acts on the principal's behalf" ;
+    cmns-av:explanatoryNote "The appointment can be effective immediately or if the principal is unable to make decisions or perform certain actions on their own. It may be a (1) general power of attorney that authorizes the agent to act generally on behalf of the principal, such as to transfer funds from one account to another, pay debts, make investments, and so forth, or (2) limited to a specific act or situation, such as for management of an individual's finances in a single account, such as a brokerage account, or for management of healthcare. Decisions made and actions taken by an attorney in fact (within the scope of his or her authority) are legally binding on the principal." .
+
+fibo-be-le-lp:PublicPurpose a owl:Class ;
+    rdfs:label "public purpose",
+        "公共宗旨（public purpose）"@zh ;
+    rdfs:comment "反映普遍认为为全民共享、旨在惠及全体公众之价值观的目标。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Objective ;
+    skos:definition "objective that reflects values generally thought to be shared by and that is intended to benefit the populace as a whole" ;
+    cmns-av:synonym "public interest" .
+
+fibo-be-le-lp:ReligiousObjective a owl:Class ;
+    rdfs:label "religious objective",
+        "宗教目标（religious objective）"@zh ;
+    rdfs:comment "反映组织宗教宗旨的非营利目标。"@zh ;
+    rdfs:subClassOf fibo-be-le-lp:NotForProfitObjective ;
+    skos:definition "not-for-profit objective that reflects the religious goals of an organization" .
+
+fibo-be-le-lp:SpecialPurposeVehicle a owl:Class ;
+    rdfs:label "special purpose vehicle"@en-US,
+        "fonds commun de placement"@fr-FR,
+        "特殊目的载体（SpecialPurposeVehicle）"@zh ;
+    rdfs:comment "为实现狭窄、特定且常为临时性目标而设立的法律实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-be-le-lp:hasIntendedLiquidationDate ],
+        cmns-org:LegalEntity ;
+    skos:definition "legal entity created to fulfill narrow, specific, and frequently temporary objectives"@en ;
+    cmns-av:abbreviation "SPE"@en,
+        "SPV"@en ;
+    cmns-av:explanatoryNote "A special purpose vehicle (SPV), also known as a special purpose entity (SPE), refers to a legal entity, typically a limited company or partnership, created to isolate a parent company from financial risk, including bankruptcy."@en ;
+    cmns-av:synonym "special purpose entity"@en .
+
+fibo-be-le-lp:StatutoryBody a owl:Class ;
+    rdfs:label "statutory body",
+        "法定机构（statutory body）"@zh ;
+    rdfs:comment "由政府设立、在某活动领域内审查证据并作出裁决的法律实体。"@zh ;
+    rdfs:subClassOf cmns-org:LegalEntity ;
+    skos:definition "legal entity established by a government to consider evidence and make judgements in some field of activity" .
+
+fibo-be-le-lp:VariableInterestEntity a owl:Class ;
+    rdfs:label "variable interest entity"@en,
+        "可变利益实体（variable interest entity）"@zh ;
+    rdfs:comment "股东通过私人合同有权获得某具名公司一定比例利润的法律实体。"@zh ;
+    rdfs:subClassOf cmns-org:LegalEntity ;
+    skos:definition "legal entity whose shareholders are entitled to a percentage of a named company's profits via a private contract"@en ;
+    cmns-av:abbreviation "VIE"@en ;
+    cmns-av:explanatoryNote "Variable interest entity (VIE) is a term used by the Financial Accounting Standards Board (FASB) to refer to a legal entity with certain characteristics such that a public company with a financial interest in the entity is subject to certain financial reporting requirements. Examples include certain Chinese companies, such as Alibaba, that leverage VIEs to gain access to foreign capital that would otherwise not be available due to Chinese government regulations."@en ;
+    cmns-av:synonym "shell company"@en .
+
+fibo-be-le-lp:BusinessEntity a owl:Class ;
+    rdfs:label "business entity",
+        "企业实体（business entity）"@zh ;
+    rdfs:comment "按商法设立和管理、以从事商业活动的实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-law-lcap:License ;
+            owl:onProperty fibo-fnd-rel-rel:holds ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-gao-obj:BusinessObjective ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
+        cmns-org:FormalOrganization ;
+    skos:definition "entity that is formed and administered as per commercial law in order to engage in business activities" ;
+    cmns-av:explanatoryNote "There are many types of business entities defined in the legal systems of various countries. These include corporations, cooperatives, partnerships, sole proprietorships, sole traders, limited liability companies, certain trusts and trust companies, and so forth. The rules vary by country and by state or province. Some of the more widely recognized types in the US, UK, and EU are defined in FIBO, by region. However, the regulations governing particular types of entity, even those described as roughly equivalent, differ from jurisdiction to jurisdiction." .
+
+fibo-be-le-lp:LegallyCompetentNaturalPerson a owl:Class ;
+    rdfs:label "legally competent natural person",
+        "具有法律行为能力的自然人（legally competent natural person）"@zh ;
+    rdfs:comment "在相关情形下被认为有能力订立合同、开展业务或参与其他通常产生法律义务之活动的人。"@zh ;
+    rdfs:subClassOf fibo-fnd-aap-ppl:Person,
+        cmns-org:LegalPerson ;
+    owl:disjointWith fibo-fnd-aap-ppl:IncapacitatedAdult ;
+    skos:definition "person who is considered competent, under the circumstances, to enter into a contract, conduct business, or participate in other activities that generally require the mental ability to understand problems and make decisions on his or her own behalf" ;
+    cmns-av:explanatoryNote "The definition of mental competence, and potentially of the age of majority, is a function of the situation and law in a given jurisdiction." .
+
+fibo-be-le-lp:NotForProfitObjective a owl:Class ;
+    rdfs:label "not for profit objective",
+        "非营利目标（not for profit objective）"@zh ;
+    rdfs:comment "反映组织慈善、教育、宗教、人道、公共服务或其他非营利宗旨的目标。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Objective ;
+    owl:disjointWith fibo-be-le-lp:ProfitObjective ;
+    skos:definition "objective that reflects the charitable, educational, religious, humanitarian, public services, or other not for profit goals of an organization" ;
+    cmns-av:explanatoryNote "The objective of all business activities is not to earn profits for its owners. All of the money earned by or donated to a not for profit organization is used in pursuing the organization's objectives." ;
+    cmns-av:synonym "nonprofit objective" .
+
+fibo-be-le-lp:ProfitObjective a owl:Class ;
+    rdfs:label "profit objective",
+        "盈利目标（profit objective）"@zh ;
+    rdfs:comment "反映对财务利益之追求的目标，该利益在业务收入超过支出时得以实现。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:BusinessObjective ;
+    skos:definition "objective that reflects pursuit of a financial benefit that may be realized when the amount of revenue gained from a business activity exceeds the expenses, costs and taxes needed to sustain that activity" ;
+    cmns-av:explanatoryNote "Any profit that is gained goes to the business's owners, who may or may not decide to spend it on the business." ;
+    cmns-av:synonym "for profit objective",
+        "profit motive" .
+
+fibo-be-le-lp:hasIntendedLiquidationDate a owl:ObjectProperty ;
+    rdfs:label "has intended liquidation date"@en,
+        "具有预定清算日期（has intended liquidation date）"@zh ;
+    rdfs:comment "将协议、合同或法律实体关联到其预定出售的日期。"@zh ;
+    rdfs:range cmns-dt:Date ;
+    rdfs:subPropertyOf fibo-fnd-arr-doc:hasTerminationDate ;
+    skos:definition "links an agreement, contract, or legal entity to a date on which it is scheduled to be sold"@en .
+
+cmns-org:LegalPerson a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isRecognizedIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ] .
+
+cmns-rga:isRecognizedIn a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( cmns-org:LegalPerson fibo-fnd-agr-agr:Agreement ) ] .
+
+cmns-org:LegalEntity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-rga:isOrganizedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:example """Examples of eligible legal entities include, without limitation:
+- all financial intermediaries;
+- banks and finance companies;
+- all entities that issue equity, debt or other securities for other capital structures;
+- all entities listed on an exchange;
+- all entities that trade stock or debt, investment vehicles, including mutual funds, pension funds and alternative investment vehicles constituted as corporate entities or collective investment agreements (including umbrella funds as well as funds under an umbrella structure, hedge funds, private equity funds, etc.);
+- all entities under the purview of a financial regulator and their affiliates, subsidiaries and holding companies;
+- counterparties to financial transactions.""" .
+

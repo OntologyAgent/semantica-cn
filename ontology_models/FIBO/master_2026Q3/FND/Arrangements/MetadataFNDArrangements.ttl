@@ -1,0 +1,41 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/MetadataFNDArrangements/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-arr-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Arrangements Module",
+        "FND 安排模块元数据（Metadata for the FND Arrangements Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Arrangements Module." ;
+    dcterms:issued "2021-03-29T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-03-31T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明安排（Arrangements）模块的构成：安排、分类方案、标识符与索引、文档、生命周期、评估、评级、报告八个本体。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Arrangements/MetadataFNDArrangements/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+
+fibo-fnd-arr-mod:ArrangementsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "arrangements module" ;
+    dcterms:abstract "This module contains ontologies that define abstract concepts, structures and schemata, such as identifiers and identification schemes, indices and indexing schemes, codes and coding schemes, and classification strategies." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FND Arrangements Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Arrangements Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+

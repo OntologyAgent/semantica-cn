@@ -1,0 +1,810 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ind-ind: <https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/> .
+@prefix fibo-ind-ir-ir: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/InterestRates/> .
+@prefix fibo-md-dbtx-aly: <https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/DebtAnalytics/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-dbt-mbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/> .
+@prefix fibo-sec-dbt-pbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/> .
+@prefix fibo-sec-sec-pls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-dbtx-aly:BondEquivalentYield a owl:Class ;
+    rdfs:label "bond equivalent yield"@en,
+        "债券等价收益率（bond equivalent yield）"@zh ;
+    rdfs:comment "按与另一债券收益率等价基准确定的收益率，用于真实比较不同债务工具的价格。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-md-dbtx-aly:EquivalentYieldCalculationMethod ],
+        fibo-md-dbtx-aly:RelativelyDefinedDebtInstrumentYield ;
+    skos:definition "Yield determined on an equivalent basis to the yield of another bond. This is used to be able to realistically compare prices between debt instruments across different markets."@en ;
+    cmns-av:explanatoryNote "For example when comparing Treasury with Corp it's called a Corp Bond Equivalent Yield; when comparing other kinds of yields this would be labelled differently. Treasury bills typically in discount rates - that's one of the ways you would compare TB or MM or RePo to BEQ - by changing the day count. Detailed implementation of this: This term refers to the type of bond that it is equivalent to, that is the type of bond whose yield is normally determined according to the yield calculation method that is used in determining this Bond Equivalent Yield figure. The type of bond in this instance is defined in relation to the market on which that bond trades, for example the US Corporate Bond Market."@en .
+
+fibo-md-dbtx-aly:CreditSpread a owl:Class ;
+    rdfs:label "credit spread"@en,
+        "信用利差（credit spread）"@zh ;
+    rdfs:comment "反映投资者从信用风险较高的证券相对信用风险较低证券所能获得的额外净收益的收益率利差。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-ind-ir-ir:ReferenceInterestRate ],
+        fibo-fbc-fi-ip:YieldSpread ;
+    skos:definition "yield spread that reflects the additional net yield an investor can earn from a security with more credit risk relative to one with less credit risk"@en ;
+    cmns-av:explanatoryNote "The credit spread of a particular security is often quoted in relation to the yield on a credit risk-free benchmark security or reference rate. Further Notes There are several measures of credit spread, including Z-spread and option-adjusted spread. Old definition (Algo) The spread between the credit rating of something and its maturity. THis is now defined as a different term pending further review with Algorithmics. Update from SMER. difference between risk free price (price of govt bond) and the price of this security. (matches Wikipedia definition above) i.e. price of this credit versus the price of a (near) risk free credit. The latter is a reference security with low risk such as a Treasury Bond. Is this between prices or between yields? can be expressed as either wrt price or yield, and this is detemined by context for different markets. Try and get a list. This is more generic - the meaning is not that it is speciufically wrt yield as such. Debt Price Spread is in context of price, whereas this is more generic."@en .
+
+fibo-md-dbtx-aly:CurrentYieldCalculationMethod a owl:Class ;
+    rdfs:label "current yield calculation method"@en,
+        "当期收益率计算法（current yield calculation method）"@zh ;
+    rdfs:comment "利息支付额与净价之比。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fbc-fi-ip:CleanPrice ],
+        fibo-md-dbtx-aly:YieldCalculationMethod ;
+    skos:definition "The ratio of the interest payment amount to the clean price."@en ;
+    cmns-av:explanatoryNote "This is a kind of yield that applies to debt instruments only as it relates to the clean price. It differs from the simple yield in that simple yield relates to the actual price paid for the bond, which on will differ from the clean price by the amount of accrued interest."@en .
+
+fibo-md-dbtx-aly:DebtYieldToAverageLife a owl:Class ;
+    rdfs:label "debt yield to average life"@en,
+        "平均期限收益率（debt yield to average life）"@zh ;
+    rdfs:comment "以债券平均期限替代最终到期日计算所得的收益率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasOutlookPeriod ;
+            owl:someValuesFrom fibo-sec-dbt-pbs:WeightedAverageLife ],
+        fibo-md-dbtx-aly:DebtInstrumentYield ;
+    skos:definition "The yield achieved by substituting a bond's average life for the issue's final maturity date."@en ;
+    skos:editorialNote "Assume from this that there is also a Yield to Equivalent Life. Some sources have these as the same term, whereas we have separated them."@en .
+
+fibo-md-dbtx-aly:DebtYieldToEquivalentLife a owl:Class ;
+    rdfs:label "debt yield to equivalent life"@en,
+        "等价期限收益率（debt yield to equivalent life）"@zh ;
+    rdfs:comment "以债券等价期限替代最终到期日计算所得的收益率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasOutlookPeriod ;
+            owl:someValuesFrom fibo-md-dbtx-aly:EquivalentLifeAnalytic ],
+        fibo-md-dbtx-aly:DebtInstrumentYield ;
+    skos:definition "The yield achieved by substituting a bond's equivalent life for the issue's final maturity date."@en ;
+    skos:editorialNote "Some sources have Average Life and Equivalent Life as the same term, whereas we have separated them."@en .
+
+fibo-md-dbtx-aly:DebtYieldToMaturity a owl:Class ;
+    rdfs:label "debt yield to maturity"@en,
+        "到期收益率（debt yield to maturity）"@zh ;
+    rdfs:comment "投资者以当前全价购入债券并持有至到期（假设所有票息按该收益率再投资）可获得的内部收益率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasOutlookPeriod ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-fbc-dae-dbt:hasOriginalTimeToMaturity ;
+                    owl:someValuesFrom cmns-dt:ExplicitDuration ] ],
+        fibo-md-dbtx-aly:DebtInstrumentYield ;
+    skos:definition "The internal rate of return an investor would achieve if he or she purchased that bond at its current dirty price, and held it to maturity, assuming all coupon and principal payments are received as scheduled."@en .
+
+fibo-md-dbtx-aly:DebtYieldToNextCall a owl:Class ;
+    rdfs:label "debt yield to next call"@en,
+        "至下一赎回日收益率（debt yield to next call）"@zh ;
+    rdfs:comment "债券到下一个可能赎回日的收益率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasOutlookPeriod ;
+            owl:someValuesFrom fibo-md-dbtx-aly:NextCall ],
+        fibo-md-dbtx-aly:DebtInstrumentYield ;
+    skos:definition "The yield of a bond to the next possible call date."@en .
+
+fibo-md-dbtx-aly:DebtYieldToWorst a owl:Class ;
+    rdfs:label "debt yield to worst"@en,
+        "最差收益率（debt yield to worst）"@zh ;
+    rdfs:comment "按该工具可能被赎回的最坏情形计算的收益率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasOutlookPeriod ;
+            owl:someValuesFrom fibo-md-dbtx-aly:WorstCall ],
+        fibo-md-dbtx-aly:DebtInstrumentYield ;
+    skos:definition "Yield to the worst case of when the instrument might be called."@en .
+
+fibo-md-dbtx-aly:DiscountedInstrumentYield a owl:Class ;
+    rdfs:label "discounted instrument yield"@en,
+        "贴现工具收益率（discounted instrument yield）"@zh ;
+    rdfs:comment "贴现工具的报价收益率：贴现额与面值之比，再除以以年计（不足一年按分数计）的到期期限。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:DebtInstrumentYield ;
+    skos:definition "Yield quoted for a discount instrument. This is the ratio of the discount to the face value, divided by the period to maturity as a fraction of a year."@en ;
+    cmns-av:usageNote "Applies to Debt only."@en .
+
+fibo-md-dbtx-aly:EffectiveDuration a owl:Class ;
+    rdfs:label "effective duration"@en,
+        "有效久期（effective duration）"@zh ;
+    rdfs:comment "考虑现金流随利率变化而调整的久期度量。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:DurationAnalytic .
+
+fibo-md-dbtx-aly:EffectiveYield a owl:Class ;
+    rdfs:label "effective yield"@en,
+        "有效收益率（effective yield）"@zh ;
+    rdfs:comment "考虑复利影响的实际收益率。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:DebtInstrumentYield ;
+    skos:editorialNote "The difference between this and Native yield is as per note: Native yield relates to price quotation context; Effective Yild is in relation to portfolio analytics. Recall: every analytic formula relates to the set of cash flows, so there are assumptions underlying each of these, For example the assumption that Y is constant, which it isn't (because there is a curve, which may be convex not linear (is that right?). So you can compare rate or return between what I see and what the market has out there. In the US market: a Y which is calculated using Monto Carlo method simulation. relationship facts to add: Relation to method / formula (e.g. Monte Carlo), and the method used to determine the actual figure for the MC method. eff Y for single instrument: E Y for bonds without calls and stuff. Variation in this: whether we look at a whole set of bonds YTM quoted by Bmb would be the YTM quoted according to whatever the market is - = the NAtive Yield. SO: Publicly quoted more: choose another adjective."@en .
+
+fibo-md-dbtx-aly:FFIECDown300PrepaySpeed a owl:Class ;
+    rdfs:label "f f i e c down 300 prepay speed"@en,
+        "FFIEC 降 300 提前偿付速度（f f i e c down 300 prepay speed）"@zh ;
+    rdfs:comment "「降 300」情景下用于基础抵押品现金流计算的公共证券协会（PSA）速度。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-pbs:PrepaymentSpeed ;
+    skos:definition "Public Securities Association (PSA) speed used for the underlying collateral for cash-flow calculations in the \"down 300\" scenario."@en ;
+    skos:editorialNote "Detailed parameters to follow, but basically these three PSA terms are differentiated by the fact that they reference 3 different prepayment models, so each of these will refer to a sub-type of the term \"Loan Pool Prepayment Model\". For now the semantics are defined only in this written definition. Add model variants and terms in a future version."@en .
+
+fibo-md-dbtx-aly:FFIECUp300PrepaySpeed a owl:Class ;
+    rdfs:label "f f i e c up 300 prepay speed"@en,
+        "FFIEC 升 300 提前偿付速度（f f i e c up 300 prepay speed）"@zh ;
+    rdfs:comment "「升 300」情景下用于基础抵押品现金流计算的公共证券协会（PSA）速度。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-pbs:PrepaymentSpeed ;
+    skos:definition "Public Securities Association (PSA) speed used for the underlying collateral for cash-flow calculations in the \"up 300\" scenario."@en ;
+    skos:editorialNote "Detailed parameters to follow, but basically these three PSA terms are differentiated by the fact that they reference 3 different prepayment models, so each of these will refer to a sub-type of the term \"Loan Pool Prepayment Model\". For now the semantics are defined only in this written definition. Add model variants and terms in a future version."@en .
+
+fibo-md-dbtx-aly:ImpliedForwardRate a owl:Class ;
+    rdfs:label "implied forward rate"@en,
+        "隐含远期利率（implied forward rate）"@zh ;
+    rdfs:comment "由即期利率结构隐含的远期利率。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:InterestRate .
+
+fibo-md-dbtx-aly:InternallyDeterminedPriceSpread a owl:Class ;
+    rdfs:label "internally determined price spread"@en,
+        "内部确定价格利差（internally determined price spread）"@zh ;
+    rdfs:comment "组织内部根据自有交易台可得信息确定的利差。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:DebtPriceSpread ;
+    skos:definition "The spread determined internally within the organisation from information available at their own trading desks. Further Notes Internal prices within a bank would be determined by surveying their own traders. So e.g. corporate desk trades these 30 bonds, get the daily spreads on those at the end of the day and calculate the price. The traders determine the pricing during the based on market movements. (this is all for OTC traded bonds, not exchange traded bonds)."@en .
+
+fibo-md-dbtx-aly:JapaneseCompoundYieldCalculationMethod a owl:Class ;
+    rdfs:label "japanese compound yield calculation method"@en,
+        "日本复利收益率计算法（japanese compound yield calculation method）"@zh ;
+    rdfs:comment "日本市场使用的复利收益率计算方法。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:YieldCalculationMethod ;
+    skos:definition "No definition in selection list."@en .
+
+fibo-md-dbtx-aly:JapaneseSimpleYieldCalculationMethod a owl:Class ;
+    rdfs:label "japanese simple yield calculation method"@en,
+        "日本单利收益率计算法（japanese simple yield calculation method）"@zh ;
+    rdfs:comment "日本市场使用的单利收益率计算方法。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:YieldCalculationMethod ;
+    skos:definition "No definition.Term put here from memory. 02 Dec changed from Japanese Yield to Japanese Simple Yield. note hat Japanese Compound yield also here (from FIBIM or anothe rlist, added 25 nov with the rest)."@en .
+
+fibo-md-dbtx-aly:KeyRateDuration a owl:Class ;
+    rdfs:label "key rate duration"@en,
+        "关键利率久期（key rate duration）"@zh ;
+    rdfs:comment "证券价格对特定期限利率变化的敏感度度量。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:DurationAnalytic .
+
+fibo-md-dbtx-aly:MaturityEquivalentPSA a owl:Class ;
+    rdfs:label "maturity equivalent p s a"@en,
+        "到期等价 PSA（maturity equivalent p s a）"@zh ;
+    rdfs:comment "产生与 CMO、ABS 或 MBS 所计算平均期限相同之平均期限的提前偿付速度。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-pbs:PrepaymentSpeed ;
+    skos:definition "Prepayment speed that results in the same average life as that computed for the Collateralized Mortgage Obligation (CMO), Asset Backed Securities (ABS) or Mortgage Backed Securities (MBS) using the Maturity Prepay Model."@en ;
+    skos:editorialNote "Detailed parameters to follow, but basically these three PSA terms are differentiated by the fact that they reference 3 different prepayment models, so each of these will refer to a sub-type of the term \"Loan Pool Prepayment Model\". For now the semantics are defined only in this written definition. Add model variants and terms in a future version."@en .
+
+fibo-md-dbtx-aly:NativeYield a owl:Class ;
+    rdfs:label "native yield"@en,
+        "本地收益率（native yield）"@zh ;
+    rdfs:comment "按该证券交易市场的默认收益率计算方法确定的证券收益率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-md-dbtx-aly:NativeYieldCalculationMethod ],
+        fibo-md-dbtx-aly:RelativelyDefinedDebtInstrumentYield ;
+    skos:definition "The yield of the security as determined using the Yield Calculation Method that is the default for the market that the security is traded in."@en ;
+    cmns-av:explanatoryNote "conventional yield for that security type and geo location, ie. would be in relation too"@en .
+
+fibo-md-dbtx-aly:OptionAdjustedYield a owl:Class ;
+    rdfs:label "option adjusted yield"@en,
+        "期权调整收益率（option adjusted yield）"@zh ;
+    rdfs:comment "以利差形式表示、基于不同利率路径计算的期权调整收益率（OAS）。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:DebtInstrumentYield ;
+    skos:definition "NB specified as a spread. synonym: OAS Based on different Int Rate paths. There are different OAS models just like there are different Yield methods. Also would make reference to the Yield Curve - but these are parameters that go into that model. Limit this model at the point where it distinguishes the difference between things - we are not in a position to mathematically model the things themselves, just capture the basic facts."@en .
+
+fibo-md-dbtx-aly:PoolPaydownRate a owl:Class ;
+    rdfs:label "pool paydown rate"@en,
+        "池清偿速度（pool paydown rate）"@zh ;
+    rdfs:comment "池清偿的速度，基于观测因子（CPR、SMM 等），不同证券计量方式不同。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-fnd-acc-cur:hasRateValue ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-md-dbtx-aly:PoolFactor ],
+        cmns-qtu:Ratio ;
+    skos:definition "The rate at which the pool is paying down. This is based on observed factor. CPR, SMM, etc. etc. Measured differently for different kinds of security. CBO might have a prepayment rate for example if the underlying bond is callable. with a non agency mortgge dela, defualts will effect this. so for instance there is principal is no lnger inthe pool because the mortgagee defaults. With agency these are not taken out in the case of default but for non agency these mortgages are removed from the pool if and when a mortgagee defualts."@en .
+
+fibo-md-dbtx-aly:PriceValueOfBasisPoint a owl:Class ;
+    rdfs:label "price value of basis point"@en,
+        "基点价格值（price value of basis point）"@zh ;
+    rdfs:comment "收益率变动一个基点时价格的敏感度，定义为收益率变动 1 个基点时的价格差。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-md-dbtx-aly:DebtInstrumentYield ],
+        fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ;
+    skos:definition "Sensitivity of the price for one basis point change in yield, defined as the difference in price given 1 bp change in yield."@en ;
+    cmns-av:abbreviation "PVBP"@en ;
+    cmns-av:explanatoryNote "Price value of Basis Point Definition: The difference in price given 1 bp change in yield. This is like Duration but normalized to 1 basis point. Synonym DV01"@en .
+
+fibo-md-dbtx-aly:RussianYieldCalculationMethod a owl:Class ;
+    rdfs:label "russian yield calculation method"@en,
+        "俄罗斯收益率计算法（russian yield calculation method）"@zh ;
+    rdfs:comment "俄罗斯市场用于确定收益率的方法，基于数学基础不同的有效收益率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:hasFormula ;
+            owl:someValuesFrom fibo-md-dbtx-aly:RussianYieldFormula ],
+        fibo-md-dbtx-aly:YieldCalculationMethod ;
+    skos:definition "The method used in determining Yield in the Russian markets. This is based on an effective yield with fundamentally different math. To give an example of the use of a different \"yield type\", we have Russia, which trades based on an effective yield. The price-yield math is fundamentally different. Notes Origin:Fidessa Uses a trade space and effective yield formula. MAy have same day types but different math."@en .
+
+fibo-md-dbtx-aly:SimpleYieldCalculationMethod a owl:Class ;
+    rdfs:label "simple yield calculation method"@en,
+        "简单收益率计算法（simple yield calculation method）"@zh ;
+    rdfs:comment "以百分比表示的年回报率：回报除以投入再乘以 100。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fbc-fi-ip:DirtyPrice ],
+        fibo-md-dbtx-aly:YieldCalculationMethod ;
+    skos:definition "The annual rate of return expressed as a percentage. This is the return divided by the outlay and multiplied by 100 to express the figure as a percentage."@en ;
+    cmns-av:explanatoryNote "This is yield in its simplest sense, expressed as a percentage of return to outlay. As such, this is the same way that yield is determined for any investments, not just financial instruments or debt investments."@en .
+
+fibo-md-dbtx-aly:SpanishYieldCalculationMethod a owl:Class ;
+    rdfs:label "spanish yield calculation method"@en,
+        "西班牙收益率计算法（spanish yield calculation method）"@zh ;
+    rdfs:comment "西班牙公司债市场用于确定年收益率的方法。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:YieldCalculationMethod ;
+    skos:definition "The method used in determining annual yield in Spanish corporate bonds."@en .
+
+fibo-md-dbtx-aly:USCorporateBondYieldCalculationMethod a owl:Class ;
+    rdfs:label "u s corporate bond yield calculation method"@en,
+        "美国公司债收益率计算法（u s corporate bond yield calculation method）"@zh ;
+    rdfs:comment "采用 30/360 计息惯例和半年复利的收益率计算方法。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:hasFormula ;
+            owl:someValuesFrom fibo-md-dbtx-aly:ICMAYieldFormula ],
+        fibo-md-dbtx-aly:YieldCalculationMethod ;
+    skos:definition "This has 30/360 and semi-annual compounding."@en .
+
+fibo-md-dbtx-aly:USTreasuryYieldCalculationMethod a owl:Class ;
+    rdfs:label "u s treasury yield calculation method"@en,
+        "美国国债收益率计算法（u s treasury yield calculation method）"@zh ;
+    rdfs:comment "美国国债市场使用的收益率计算方法。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:hasFormula ;
+            owl:someValuesFrom fibo-md-dbtx-aly:ICMAYieldFormula ],
+        fibo-md-dbtx-aly:YieldCalculationMethod .
+
+fibo-md-dbtx-aly:WallStreetYieldCalculationMethod a owl:Class ;
+    rdfs:label "wall street yield calculation method"@en,
+        "华尔街收益率计算法（wall street yield calculation method）"@zh ;
+    rdfs:comment "华尔街通行的收益率计算方法。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:hasFormula ;
+            owl:someValuesFrom fibo-md-dbtx-aly:ICMAYieldFormula ],
+        fibo-md-dbtx-aly:YieldCalculationMethod ;
+    skos:definition "No definition.Term put here from memory."@en .
+
+fibo-md-dbtx-aly:WeightedAverageTimeToReceiptOfCashflows a owl:Class ;
+    rdfs:label "weighted average time to receipt of cashflows"@en,
+        "现金流收取加权平均时间（weighted average time to receipt of cashflows）"@zh ;
+    rdfs:comment "某工具现金流收取的加权平均时间。"@zh ;
+    rdfs:subClassOf fibo-fnd-utl-alx:Formula ;
+    skos:definition "The weighted average time to the receipt of cashflows for an instrument."@en ;
+    skos:editorialNote "A formal definition is needed for this. The name is almost self defining, but only to those who already know what this means. In particular we should define how the weighted average is weighted, and what this means, along with a formula for calculating this at the most generic level (cashflow, time, without assumptions about particular types of instrument)."@en .
+
+fibo-md-dbtx-aly:YieldToNextPut a owl:Class ;
+    rdfs:label "yield to next put"@en,
+        "至下一回售日收益率（yield to next put）"@zh ;
+    rdfs:comment "到下一个可回售日的收益率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasOutlookPeriod ;
+            owl:someValuesFrom fibo-md-dbtx-aly:NextPut ],
+        fibo-md-dbtx-aly:DebtInstrumentYield .
+
+fibo-md-dbtx-aly:decimalPlaces a owl:DatatypeProperty ;
+    rdfs:label "decimal places"@en,
+        "小数位数（decimal places）"@zh ;
+    rdfs:comment "因子值公布所用的小数位数。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:PoolFactor ;
+    rdfs:range xsd:integer ;
+    skos:definition "The number of decimal places used in the publication of the factor value."@en .
+
+fibo-md-dbtx-aly:defaultRateValue a owl:ObjectProperty ;
+    rdfs:label "default rate value"@en,
+        "默认利率值（default rate value）"@zh ;
+    rdfs:comment "默认的利率值。"@zh ;
+    rdfs:domain fibo-sec-dbt-pbs:DefaultRate ;
+    rdfs:range cmns-qtu:Percentage .
+
+fibo-md-dbtx-aly:equivalentLifeValue a owl:ObjectProperty ;
+    rdfs:label "equivalent life value"@en,
+        "等价期限值（equivalent life value）"@zh ;
+    rdfs:comment "所述日期的等价期限（以年计）。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:EquivalentLifeAnalytic ;
+    rdfs:range cmns-dt:Duration ;
+    skos:definition "The Equivalent Life in years at the stated date."@en .
+
+fibo-md-dbtx-aly:isAggregateOf a owl:ObjectProperty ;
+    rdfs:label "is aggregate of"@en,
+        "是……的汇总（is aggregate of）"@zh ;
+    rdfs:comment "标识该汇总值所对应的组成部分。"@zh ;
+    rdfs:domain fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ;
+    rdfs:range fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure .
+
+fibo-md-dbtx-aly:isCompounded a owl:DatatypeProperty ;
+    rdfs:label "is compounded"@en,
+        "复利（is compounded）"@zh ;
+    rdfs:comment "表明收益率是否按复利计算（用于债务工具或贷款等收益与利息支付相关的情形）。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:DebtInstrumentYield ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Definition needed Moved from Yield - assume this can only be about debt instrument or loan / debt yields i..e where the income relates to interest payments. ."@en .
+
+fibo-md-dbtx-aly:modifiedDurationValue a owl:ObjectProperty ;
+    rdfs:label "modified duration value"@en,
+        "修正久期值（modified duration value）"@zh ;
+    rdfs:comment "以年计的修正久期。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:ModifiedDurationAnalytic ;
+    rdfs:range cmns-dt:Duration ;
+    skos:definition "The Modified Duration in Years."@en .
+
+fibo-md-dbtx-aly:priceIsTraded a owl:DatatypeProperty ;
+    rdfs:label "price is traded"@en,
+        "价格成交（price is traded）"@zh ;
+    rdfs:comment "该证券在所述期间内以价格成交。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:ExchangeTradedBondPrice ;
+    rdfs:range xsd:boolean ;
+    skos:definition "The highest valuation over the period specified. Notes from Equity review, may apply to Debt also: this can be regarded as a derived price. See also note in LowPrice Difference: different rules used. May be based on trade OR quote price Analytic or Price?? this is a derived type but with a much simpler rule."@en .
+
+fibo-md-dbtx-aly:priceQuotedExDividend a owl:DatatypeProperty ;
+    rdfs:label "price quoted ex dividend"@en,
+        "除息报价（price quoted ex dividend）"@zh ;
+    rdfs:comment "表明收益率是否基于除息报价；债券除息交易指在付息日前某段时期内成交。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:DebtInstrumentYield ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether or not the yield is based on a price which is quoted ex-dividend. When a bond is said to trade ex-dividend it means that there is a period of time prior to each coupon payment during which a bond purchaser does not receive custody of the next coupon. That payment is made to the previous bond holder and accrued interest is therefore negative during the ex-dividend period."@en .
+
+fibo-md-dbtx-aly:quotedExDividend a owl:DatatypeProperty ;
+    rdfs:label "quoted ex dividend"@en,
+        "除息报价（quoted ex dividend）"@zh ;
+    rdfs:comment "表明价格是否为除息报价。"@zh ;
+    rdfs:domain fibo-fbc-fi-ip:SecurityPrice ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether or not the price is quoted ex-dividend. When a bond is said to trade ex-dividend it means that there is a period of time prior to each coupon payment during which a bond purchaser does not receive custody of the next coupon. That payment is made to the previous bond holder and accrued interest is therefore negative during the ex-dividend period."@en .
+
+fibo-md-dbtx-aly:roundingConvention a owl:DatatypeProperty ;
+    rdfs:label "rounding convention"@en,
+        "舍入惯例（rounding convention）"@zh ;
+    rdfs:comment "计算方法中使用的舍入惯例。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:YieldCalculationMethod ;
+    rdfs:range xsd:string ;
+    skos:definition "The rounding convention used in the calculation method."@en .
+
+fibo-sec-dbt-pbs:WeightedAverageLifeAtIssue a owl:Class ;
+    rdfs:label "average life at issue"@en ;
+    rdfs:subClassOf fibo-sec-dbt-pbs:WeightedAverageLife ;
+    skos:definition "The Average Life analytic at the time the security was issued."@en .
+
+fibo-md-dbtx-aly: a owl:Ontology ;
+    rdfs:label "Debt Analytics Ontology"@en,
+        "债务分析本体（Debt Analytics Ontology）"@zh ;
+    dcterms:abstract "This ontology covers an extensive range of analytical measures for debt instruments and pools of debt instruments. These cover the well-known concepts of convexity, duration and life, as well as weighted average loan ages and maturities, prepayments speeds etc. for debt pools. Most of the widely referenced variants of these are included, for example modified duration. Some yield related concepts (e.g. for equivalent yield) are also included. Debt pricing and yields are intimately related, and this ontology sets out the basic concepts of debt price, including different ways in which debt and bod prices are described and calculated, as well as a range of different kinds of yield (simple yield, Wall Street Yield, Japanese Yield and so on). The pricing terms are supported by a range of trading and exchange related concepts that are used to differentiate different kinds of debt price, for example last, high and low exchange prices." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义债券收益率、利差等债务工具分析指标及其时间序列。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-ip:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ind-ind:,
+        fibo-ind-ir-ir:,
+        fibo-sec-dbt-bnd:,
+        fibo-sec-dbt-dbti:,
+        fibo-sec-dbt-mbs:,
+        fibo-sec-dbt-pbs:,
+        fibo-sec-sec-pls:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-qtu: ;
+    owl:versionIRI fibo-md-dbtx-aly: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc." .
+
+fibo-md-dbtx-aly:DebtConvexityAnalytic a owl:Class ;
+    rdfs:label "debt convexity analytic"@en,
+        "债务凸性分析（debt convexity analytic）"@zh ;
+    rdfs:comment "证券价格对其收益率的二阶导数除以证券价格；当价格上升幅度大于收益率下降所暗示的幅度时呈正凸性。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-md-dbtx-aly:DebtInstrumentYield ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-ind-ind-ind:MarketSpread ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:isRateOfChangeOf ;
+            owl:someValuesFrom fibo-md-dbtx-aly:DurationAnalytic ],
+        fibo-fnd-dt-fd:DatedCollectionConstituent ;
+    skos:definition "The second derivative of a security's price with respect to its yield, divided by the security's price. A security exhibits positive convexity when its price rises more for a downward move in its yield than its price declines for an equal upward move in its yield. Further notes: A measure of the change in price for a given change in Modified Duration. This always (necessarily) refers to Modified Duration. This is used as another risk measurement. Numerator is always (a) duration - either MacCaulays or Modified. Always rate of change of (one of the) Duration against some other parameter. The other paramater can be characterised as a Yield (it may be the Price, but that has a relationship to the Yield in any case). REVIEW: Inconsistency in the above - is it always necessarily Modified Duration that is referred to, or \"any\" Duration measure (Macaulays and.or Modified)? notes 9 Dec A measure of the sensitivity of the price with reference to interest rates. This is normally determined with reference to maturity, but since there are different maturity dates, this figure gives an estimate of the equitvalent if you had a homogenous portfolio, i.e. this is an estimate based on a pure equivalent, homogenous portfolio. Convexity of instrument versus portfolio. Sees instrument in terms of the set of cashflows. The term Convexity can be applied either to a bond or to a portfolio. More notes: When you get Convexit in MD, it will tell you what Duration it is refrfering to, along with Redemption Date (logically). Also if there is Option Adjusted Yield, there is a third set of analytics. What are they? i.e. OA Convexity, Duration Yield and the rest. Conclusions: Agreed to revisit this in OTC."@en .
+
+fibo-md-dbtx-aly:DebtPriceSpread a owl:Class ;
+    rdfs:label "debt price spread"@en,
+        "债务价格利差（debt price spread）"@zh ;
+    rdfs:comment "某证券价格与作为参照的另一证券公允价值之差，用于定价比较。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-fi-ip:SecurityPrice ],
+        fibo-ind-ind-ind:MarketSpread ;
+    skos:definition "The difference between the [what?] of a security and the fair price value of a different security which is used as a point of reference. The spread is used to determine the price of the instrument. (draft definition)"@en ;
+    skos:editorialNote "This was \"Spread\" in the Debt pricing reviews, however that word has at least 2 other uses (spread between equity bid and offer prices; spread for derivatives). Detailed notes from Debt Pricing Review session 5 Aug: Identify what the spread is in relation to e.g. LIBOR. ALSO If fixed of floating. So if it's a FRN, For a fixed rate bond, it's priced off the on-the-run, e.g. a 30 year bond is priced as a spread wrt a 30 year treasury bond. So e..g spread would be something like 10bp+the value of the 30 year on the run Treasury. On the Run: definition needed. Also class of Thing and where this should go."@en .
+
+fibo-md-dbtx-aly:EquivalentYieldCalculationMethod a owl:Class ;
+    rdfs:label "equivalent yield calculation method"@en,
+        "等价收益率计算法（equivalent yield calculation method）"@zh ;
+    rdfs:comment "按等价基准计算收益率的方法。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:RelativeYieldCalculationMethod .
+
+fibo-md-dbtx-aly:ExchangeTradedBondPrice a owl:Class ;
+    rdfs:label "exchange traded bond price"@en,
+        "交易所交易债券价格（exchange traded bond price）"@zh ;
+    rdfs:comment "在交易所交易的债券的价格。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-ip:SecurityPrice ;
+    owl:disjointWith fibo-md-dbtx-aly:OTCBondMarketPrice .
+
+fibo-md-dbtx-aly:LoanPoolPrepaymentModel a owl:Class ;
+    rdfs:label "loan pool prepayment model"@en,
+        "贷款池提前偿付模型（loan pool prepayment model）"@zh ;
+    rdfs:comment "个贷池（如抵押贷款池或贷款池）中贷款提前偿付的模型。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-md-dbtx-aly:LoanPrepaymentFormula ],
+        fibo-fnd-utl-alx:Formula ;
+    skos:definition "Model of the prepayments of loans in a pool of individual loans, such as a mortgage pool or loan pool."@en ;
+    cmns-av:explanatoryNote "This model captures the parameters that may influence the prepayment of loans or mortgages and relates these mathematically."@en .
+
+fibo-md-dbtx-aly:LoanPrepaymentFormula a owl:Class ;
+    rdfs:label "loan prepayment formula"@en,
+        "贷款提前偿付公式（loan prepayment formula）"@zh ;
+    rdfs:comment "体现贷款池提前偿付速度模型的公式。"@zh ;
+    rdfs:subClassOf fibo-fnd-utl-alx:Formula ;
+    skos:definition "The formula which embodies the model for loan pool prepayment speed."@en ;
+    skos:editorialNote "From SMER sessions: This is a model. Includes other factors such as homogeniety. To model this more completely we need to identify the parameters that go in to this formula. Among these is the above homogeneity measure - need to know how that is measured and in what terms it is expressed, e.g. as a percentage, with reference to some mean or standard deviation and so on. Also some of the parameters used in this model would presumably make reference to standard mathematical model constructs such as normal distribution, variaous deviation measures, Chi squared and so on. These are not presently in the semantics model, but can be modeled semantically if required. This would not however be a mathematical model - we only need to identify these and show meaningful relationships (not mathematical relationships) between them."@en .
+
+fibo-md-dbtx-aly:ModifiedDurationAnalytic a owl:Class ;
+    rdfs:label "modified duration analytic"@en,
+        "修正久期分析（modified duration analytic）"@zh ;
+    rdfs:comment "给定收益率变化下证券价格的百分比变化；修正久期越高，风险越高。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-md-dbtx-aly:MacCaulaysDurationAnalytic ],
+        fibo-md-dbtx-aly:DurationAnalytic ;
+    owl:disjointWith fibo-md-dbtx-aly:MacCaulaysDurationAnalytic ;
+    skos:definition "The percentage price change of a security for a given change in yield. The higher the modified duration of a security, the higher its risk. Ad/ModDuration = [duration / {1 + (IRR/M)}]; where IRR is the internal rate of return and M is the number of compounding periods per year."@en ;
+    cmns-av:explanatoryNote "The higher the MD the greater the change in price for a given change in yield."@en .
+
+fibo-md-dbtx-aly:NextCall a owl:Class ;
+    rdfs:label "next call"@en,
+        "下一赎回（next call）"@zh ;
+    rdfs:comment "截至当前时点该次发行的下一次赎回。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasDate ;
+            owl:someValuesFrom fibo-md-dbtx-aly:NextCallDate ],
+        fibo-sec-dbt-dbti:CallEvent ;
+    skos:definition "The next call of the issue, as at the current time."@en .
+
+fibo-md-dbtx-aly:NextCallDate a owl:Class ;
+    rdfs:label "next call date"@en,
+        "下一赎回日（next call date）"@zh ;
+    rdfs:comment "自当前日期起该次发行可被赎回的下一日期。"@zh ;
+    rdfs:subClassOf cmns-dt:Date ;
+    skos:definition "The next date on which the issue can be called, from the present date."@en .
+
+fibo-md-dbtx-aly:NextPut a owl:Class ;
+    rdfs:label "next put"@en,
+        "下一回售（next put）"@zh ;
+    rdfs:comment "截至当前时点该次发行的下一个可回售日。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-dbti:PutEvent ;
+    skos:definition "The next available put date for the issue, as at the current time."@en .
+
+fibo-md-dbtx-aly:PartialCallsEstimationModel a owl:Class ;
+    rdfs:label "partial calls estimation model"@en,
+        "部分赎回估计模型（partial calls estimation model）"@zh ;
+    rdfs:comment "估计提前部分赎回的模型。"@zh ;
+    rdfs:subClassOf fibo-fnd-utl-alx:Formula ;
+    skos:definition "A model of how the early partial calls are estimated."@en .
+
+fibo-md-dbtx-aly:RussianYieldFormula a owl:Class ;
+    rdfs:label "russian yield formula"@en,
+        "俄罗斯收益率公式（russian yield formula）"@zh ;
+    rdfs:comment "基于与其他市场不同之有效收益率的收益率公式。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:YieldCalculationFormula ;
+    skos:definition "This is based on a different Effective Yield than on another market."@en .
+
+fibo-md-dbtx-aly:WorstCall a owl:Class ;
+    rdfs:label "worst call"@en,
+        "最差赎回（worst call）"@zh ;
+    rdfs:comment "就工具可能被赎回的时间而言代表最坏情形的赎回事件。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-dbti:CallEvent ;
+    skos:definition "call event representing the worst case with respect to when the instrument might be called"@en ;
+    skos:editorialNote "Note that the actual date associated with an occurrence of a worst call event might be calculated or explicit."@en,
+        "We should refine what we mean by worst here - soonest, or most distant?"@en .
+
+fibo-md-dbtx-aly:calculationFollowing a owl:ObjectProperty ;
+    rdfs:label "calculation following"@en,
+        "按……计算（calculation following）"@zh ;
+    rdfs:comment "标识计算所遵循的方法或惯例。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:DebtInstrumentYield ;
+    rdfs:range fibo-md-dbtx-aly:YieldCalculationMethod .
+
+fibo-md-dbtx-aly:determinesMarketPriceForDebt a owl:ObjectProperty ;
+    rdfs:label "determines market price for debt"@en,
+        "确定债务市场价（determines market price for debt）"@zh ;
+    rdfs:comment "确定债务工具的市场价格。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:DebtSecuritiesMarketMaker ;
+    rdfs:range fibo-md-dbtx-aly:OTCBondMarketPrice .
+
+fibo-md-dbtx-aly:hasAnalytic a owl:ObjectProperty ;
+    rdfs:label "has analytic"@en,
+        "具有分析度量（has analytic）"@zh ;
+    rdfs:comment "标识某事物的分析度量。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:DebtPool ;
+    rdfs:range fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure .
+
+fibo-md-dbtx-aly:hasDefaultRate a owl:ObjectProperty ;
+    rdfs:label "has default rate"@en,
+        "具有默认利率（has default rate）"@zh ;
+    rdfs:comment "标识默认利率。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:DebtPool ;
+    rdfs:range fibo-sec-dbt-pbs:DefaultRate .
+
+fibo-md-dbtx-aly:hasFactor a owl:ObjectProperty ;
+    rdfs:label "has factor"@en,
+        "具有因子（has factor）"@zh ;
+    rdfs:comment "标识与另一数或量相乘得到给定数或表达式的数或量。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:DebtPool ;
+    rdfs:range fibo-md-dbtx-aly:PoolFactor .
+
+fibo-md-dbtx-aly:hasMeasure a owl:ObjectProperty ;
+    rdfs:label "has measure"@en,
+        "具有度量（has measure）"@zh ;
+    rdfs:comment "标识某事物的度量。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:DebtPool ;
+    rdfs:range fibo-sec-dbt-pbs:PrepaymentSpeed .
+
+fibo-md-dbtx-aly:hasWac a owl:ObjectProperty ;
+    rdfs:label "has wac"@en,
+        "具有加权平均票息（has wac）"@zh ;
+    rdfs:comment "标识加权平均票息率（WAC）。"@zh ;
+    rdfs:domain fibo-sec-dbt-mbs:MortgageBackedSecurity ;
+    rdfs:range fibo-sec-dbt-pbs:WeightedAverageCoupon .
+
+fibo-md-dbtx-aly:hasYield a owl:ObjectProperty ;
+    rdfs:label "has yield"@en,
+        "具有收益率（has yield）"@zh ;
+    rdfs:comment "标识某事物的收益率。"@zh ;
+    rdfs:domain fibo-sec-dbt-dbti:TradableDebtInstrument ;
+    rdfs:range fibo-md-dbtx-aly:DebtInstrumentYield .
+
+fibo-md-dbtx-aly:isDefaultMethodFor a owl:ObjectProperty ;
+    rdfs:label "is default method for"@en,
+        "是……的默认方法（is default method for）"@zh ;
+    rdfs:comment "标识该方法作为默认所适用的市场。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:NativeYieldCalculationMethod ;
+    rdfs:range fibo-sec-dbt-dbti:TradableDebtInstrument .
+
+fibo-md-dbtx-aly:isRateOfChangeOf a owl:ObjectProperty ;
+    rdfs:label "is rate of change of"@en,
+        "是……的变化率（is rate of change of）"@zh ;
+    rdfs:comment "标识该变化率所针对的对象。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:DebtConvexityAnalytic ;
+    rdfs:range fibo-md-dbtx-aly:DurationAnalytic .
+
+fibo-sec-dbt-mbs:MortgageBackedSecurity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasWac ;
+            owl:someValuesFrom fibo-sec-dbt-pbs:WeightedAverageCoupon ] .
+
+fibo-md-dbtx-aly:DebtSecuritiesMarketMaker a owl:Class ;
+    rdfs:label "debt securities market maker"@en,
+        "债务证券做市商（debt securities market maker）"@zh ;
+    rdfs:comment "在给定市场中担任做市商角色的参与者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:determinesMarketPriceForDebt ;
+            owl:someValuesFrom fibo-md-dbtx-aly:OTCBondMarketPrice ],
+        cmns-org:ServiceProvider ;
+    skos:definition "An actor which has the role of Market Maker in a given market."@en .
+
+fibo-md-dbtx-aly:EquivalentLifeAnalytic a owl:Class ;
+    rdfs:label "equivalent life analytic"@en,
+        "等价期限分析（equivalent life analytic）"@zh ;
+    rdfs:comment "等价期限的分析度量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:BondWithPartialCall ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-md-dbtx-aly:PartialCallsEstimationModel ],
+        fibo-md-dbtx-aly:LifeAnalytic ;
+    owl:disjointWith fibo-sec-dbt-pbs:WeightedAverageLife .
+
+fibo-md-dbtx-aly:MacCaulaysDurationAnalytic a owl:Class ;
+    rdfs:label "MacCaulays Duration Analytic"@en,
+        "麦考利久期分析（MacCaulays Duration Analytic）"@zh ;
+    rdfs:comment "麦考利久期的分析度量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fbc-fi-ip:InternalRateOfReturn ],
+        fibo-md-dbtx-aly:DurationAnalytic .
+
+fibo-md-dbtx-aly:NativeYieldCalculationMethod a owl:Class ;
+    rdfs:label "native yield calculation method"@en,
+        "本地收益率计算法（native yield calculation method）"@zh ;
+    rdfs:comment "该证券市场通行的计算方法惯例。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:isDefaultMethodFor ;
+            owl:someValuesFrom fibo-sec-dbt-dbti:TradableDebtInstrument ],
+        fibo-md-dbtx-aly:RelativeYieldCalculationMethod ;
+    skos:definition "The convention used in the marketplace for that security."@en .
+
+fibo-md-dbtx-aly:RelativeYieldCalculationMethod a owl:Class ;
+    rdfs:label "relative yield calculation method"@en,
+        "相对收益率计算法（relative yield calculation method）"@zh ;
+    rdfs:comment "以相对基准计算收益率的方法。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:YieldCalculationMethod .
+
+fibo-md-dbtx-aly:RelativelyDefinedDebtInstrumentYield a owl:Class ;
+    rdfs:label "relatively defined debt instrument yield"@en,
+        "相对定义的债务工具收益率（relatively defined debt instrument yield）"@zh ;
+    rdfs:comment "以相对基准定义的债务工具收益率。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:DebtInstrumentYield .
+
+fibo-md-dbtx-aly:ICMAYieldFormula a owl:Class ;
+    rdfs:label "i c m a yield formula"@en,
+        "ICMA 收益率公式（i c m a yield formula）"@zh ;
+    rdfs:comment "国际资本市场协会（ICMA，原 ISMA）规定的固定利率债券收益率确定方法。"@zh ;
+    rdfs:subClassOf fibo-md-dbtx-aly:YieldCalculationFormula ;
+    skos:definition "The calculation method specified by ICMA (formerly ISMA) for determination of yield for fixed-rate bonds."@en ;
+    cmns-av:explanatoryNote "This basic formula is used across many markets, including the US and most of Europe. While individual markets may have different flavors (French round their bonds to 5 decimals, UK Gilts have ex-div), the formula is still the same. This would be the formula used by \"Wall Street Yield\", \"US Treasury Yield\", \"Corporate Bond Yield\" etc. Notes Origin:Fidessa"@en .
+
+fibo-md-dbtx-aly:LifeAnalytic a owl:Class ;
+    rdfs:label "life analytic"@en,
+        "期限分析（life analytic）"@zh ;
+    rdfs:comment "对证券期限的某种度量，而非实际到期时间本身；为基于适当参数计算的导出数值。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ;
+    skos:definition "Some measure of the life of a security, other than the actual time to maturity itself. This is a derived figure, based on certain parameters as appropriate to that type of instrument, to give a figure that is equivalent to and similar to the basic maturity of the instrument, for the purposes of analysing that security."@en .
+
+fibo-md-dbtx-aly:OTCBondMarketPrice a owl:Class ;
+    rdfs:label "o t c bond market price"@en,
+        "场外债券市场价（o t c bond market price）"@zh ;
+    rdfs:comment "场外交易债券的市场价格。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-ip:hasPricingSource ;
+            owl:someValuesFrom fibo-md-dbtx-aly:DebtSecuritiesMarketMaker ],
+        fibo-fbc-fi-ip:SecurityPrice ;
+    skos:definition "The price determined for the marketplace for a bond which is traded over the counter."@en ;
+    skos:editorialNote "Review comment: Must include Attribution. This is in the model in the form of tha Market Maker (an actor in the activity of secondary market trading for OTC-traded debt)."@en .
+
+fibo-md-dbtx-aly:YieldCalculationFormula a owl:Class ;
+    rdfs:label "yield calculation formula"@en,
+        "收益率计算公式（yield calculation formula）"@zh ;
+    rdfs:comment "用于确定收益率的公式。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-md-dbtx-aly:DebtInstrumentYield ],
+        fibo-fnd-utl-alx:Formula ;
+    skos:definition "The formula used in determining the Yield."@en ;
+    cmns-av:explanatoryNote "The subject of this Formula is the Yield. The formula has an expression which can be defined either in tectual terms or by further local extension of the term \"Formula Expression\" to define the parameters used."@en .
+
+fibo-sec-dbt-dbti:TradableDebtInstrument a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasYield ;
+            owl:someValuesFrom fibo-md-dbtx-aly:DebtInstrumentYield ] .
+
+fibo-md-dbtx-aly:PoolFactor a owl:Class ;
+    rdfs:label "pool factor"@en,
+        "池因子（pool factor）"@zh ;
+    rdfs:comment "原始池中仍未清偿的比例，为小于 1 的数，以百分比表示。"@zh ;
+    rdfs:subClassOf cmns-qtu:Percentage ;
+    skos:definition "How much of the original pool is still outstanding. This is a number below one. Expressed as percentage."@en ;
+    cmns-av:explanatoryNote "Would multiply the factor by the starting value of the pool. This determines how much it is paying down. Would take the form of a 10 digit decimal factor showing how much of the pool is outstanding. You get Factor information every month or so which includes the WAM figure (and the WALA and WAC). The rate can be derived from this. that would be the rate at which the pool is paying down. These all come from the issuer."@en .
+
+fibo-sec-sec-pls:DebtPool a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasAnalytic ;
+            owl:someValuesFrom fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasFactor ;
+            owl:someValuesFrom fibo-md-dbtx-aly:PoolFactor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasMeasure ;
+            owl:someValuesFrom fibo-sec-dbt-pbs:PrepaymentSpeed ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasDefaultRate ;
+            owl:someValuesFrom fibo-sec-dbt-pbs:DefaultRate ] .
+
+fibo-sec-dbt-pbs:PrepaymentSpeed a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-md-dbtx-aly:LoanPoolPrepaymentModel ] ;
+    skos:editorialNote "This is a model. Includes other factors such as homogeniety. Earlier notes: Same as Payment. Curtailment. Paydown is normally scheduled payments of the mortgage. Prepayment is when someone pays off the mortgage early I may send in 1500 when my monthly amount is 1000 a month. So the 500 is a prepayment. Scheduled principal payment. More notes 25 nov: Also factor in changes to the pool constituents where this is allowed for that kind of MBS. So we make estimates of how face value will will change. face value won't change but the underlying value of the Pf changes, so eg. the current mortgage factor. Model update note June 2010: Detailed types of \"Prepayment Speed\" analytic received from thomson Reuters, now modeled as sub types of this term. So term origin is PSA by extension, since this is the common super class of 3 specific prepayment speed analytic types defined by PSA. PSA stands for Public Securities Association. Type: PSA gives this as numeric, however definitions imply percentage, so defined as dated percentage for now. Many data models use numbers which are interpreted later as percentages so this may be the case here."@en .
+
+fibo-md-dbtx-aly:DurationAnalytic a owl:Class ;
+    rdfs:label "duration analytic"@en,
+        "久期分析（duration analytic）"@zh ;
+    rdfs:comment "收到全部付款的加权平均时间。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-md-dbtx-aly:DebtInstrumentYield ],
+        fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ;
+    skos:definition "Weighted average time to receipt of all the payments."@en ;
+    skos:editorialNote "Duration in general is a measure of % price change for a given change in yield. See definition from BMB The duration on a traditional bond will be much shorter than the duration relative to the maturity. Duration is the first derivative of the curve between Price and Yield. There are multiple types of duration, all of which are variants of this. So Duration is the first derivative and the different type of duration measure are different ways of measuring this, for example a \"quick and dirty\" measure of duration or one which."@en .
+
+fibo-md-dbtx-aly:hasOutlookPeriod a owl:ObjectProperty ;
+    rdfs:label "has outlook period"@en,
+        "具有展望期（has outlook period）"@zh ;
+    rdfs:comment "标识展望所覆盖的期间。"@zh ;
+    rdfs:domain fibo-md-dbtx-aly:DebtInstrumentYield ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( fibo-md-dbtx-aly:LifeAnalytic [ a owl:Restriction ;
+                        owl:onProperty fibo-fbc-dae-dbt:hasOriginalTimeToMaturity ;
+                        owl:someValuesFrom cmns-dt:ExplicitDuration ] fibo-sec-dbt-dbti:PrescriptiveEvent fibo-sec-dbt-dbti:RedemptionEvent ) ] .
+
+fibo-md-dbtx-aly:YieldCalculationMethod a owl:Class ;
+    rdfs:label "yield calculation method"@en,
+        "收益率计算方法（yield calculation method）"@zh ;
+    rdfs:comment "计算收益率的方法，包括计算公式及特定的天数计算惯例与复利方式。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-qtu:Variable ;
+            owl:onProperty cmns-qtu:hasArgument ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:hasFormula ;
+            owl:someValuesFrom fibo-md-dbtx-aly:YieldCalculationFormula ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ;
+            owl:onProperty fibo-fbc-dae-dbt:hasCompoundingFrequency ],
+        fibo-fnd-utl-alx:Formula ;
+    skos:definition "The method by which the yield is calculated. This includes a formula for calculation and a specific day count convention and compounding. You would apply this calculation method on top of the underlying terms and conditions, do for example the holiday calenders and so on, are used in these formulae. For final cash flow: Japanese yield will round down accrued interest. Add: The actual underlying math. Wall Street uses the same ICMA formula."@en ;
+    skos:editorialNote "Initial reviewer notes 18 Nov: this uses the combination of the day count and the compounding gives you the name of the yield calculation method. Names are associated with algorithms. What yield you use to determining the present value. These are typically defined in a prospectus (for exchange traded) or Info Memorandum if it's traded in an OTC market. where it also defines the method itself. Action: look at some prospecti or get this from a vendor. Additional features 25 nov: Question - maybe Holiday calendar? Also date roll rules and roll back rules. These all apply. YC feeds in to Yield itself."@en .
+
+fibo-md-dbtx-aly:DebtInstrumentYield a owl:Class ;
+    rdfs:label "debt instrument yield"@en,
+        "债务工具收益率（debt instrument yield）"@zh ;
+    rdfs:comment "按所述价格计算的债务工具回报。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:calculationFollowing ;
+            owl:someValuesFrom fibo-md-dbtx-aly:YieldCalculationMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fbc-fi-ip:SecurityPrice ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasOutlookPeriod ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-md-dbtx-aly:LifeAnalytic [ a owl:Restriction ;
+                                owl:onProperty fibo-fbc-dae-dbt:hasOriginalTimeToMaturity ;
+                                owl:someValuesFrom cmns-dt:ExplicitDuration ] fibo-sec-dbt-dbti:PrescriptiveEvent fibo-sec-dbt-dbti:RedemptionEvent ) ] ],
+        fibo-fbc-fi-ip:Yield ;
+    skos:definition "The return on the debt instrument at the stated price."@en ;
+    cmns-av:explanatoryNote "Yield has a relationship to the price."@en .
+

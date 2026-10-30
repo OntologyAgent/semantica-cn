@@ -1,0 +1,295 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-eeuj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-be-ge-eeuj: a owl:Ontology ;
+    rdfs:label "Eastern Europe Government Entities and Jurisdictions Ontology",
+        "东欧政府实体与法域本体（Eastern Europe Government Entities and Jurisdictions Ontology）"@zh ;
+    dcterms:abstract "This ontology provides government entities and jurisdictions for countries that are defined as being part of Eastern Europe in the U.N. M49 codes, primarily those that are considered independent countries in ISO 3166, or are important from a banking perspective." ;
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录东欧各国（波兰、捷克、匈牙利等）的政体、政府与法域个体。"@zh ;
+    owl:imports fibo-be-ge-ge:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga:,
+        lcc-3166-1: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20251101/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/BE/20200801/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to address hygiene issues with diacritical marks that are language-specific.",
+        "The http://www.omg.org/spec/EDMC-FIBO/BE/20210201/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to replace a dead link.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to address a typo (BE-245)." ;
+    skos:scopeNote "The initial version of this ontology reflects the national level only." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+
+fibo-be-ge-eeuj:BelarusianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Беларускае ўтварэнне"@be,
+        "Belarusian entity"@en,
+        "Белорусское предприятие"@ru ;
+    skos:definition "sovereign state and polity that is Belarus" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Belarus ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfTheRepublicOfBelarus .
+
+fibo-be-ge-eeuj:BulgarianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Българско образувание"@bg,
+        "Bulgarian entity"@en ;
+    skos:definition "sovereign state and polity that is Bulgaria" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Bulgaria ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfTheRepublicOfBulgaria .
+
+fibo-be-ge-eeuj:CzechEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Český subjekt"@cs,
+        "Czech entity"@en ;
+    skos:definition "sovereign state and polity that is Czechia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Czechia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfTheCzechRepublic .
+
+fibo-be-ge-eeuj:HungarianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Hungarian entity"@en,
+        "Magyar entitás"@hu ;
+    skos:definition "sovereign state and polity that is Hungary" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Hungary ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfHungary .
+
+fibo-be-ge-eeuj:MoldovanEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Moldovan entity"@en,
+        "Entitate moldovenească"@ro ;
+    skos:definition "sovereign state and polity that is Moldova" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Moldova ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfTheRepublicOfMoldova .
+
+fibo-be-ge-eeuj:PolishEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Polish entity"@en,
+        "Podmiot polski"@pl ;
+    skos:definition "sovereign state and polity that is Poland" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Poland ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfTheRepublicOfPoland .
+
+fibo-be-ge-eeuj:RomanianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Romanian entity"@en,
+        "Entitate românească"@ro ;
+    skos:definition "sovereign state and polity that is Romania" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Romania ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfRomania .
+
+fibo-be-ge-eeuj:RussianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:FederatedSovereignty ;
+    rdfs:label "Russian entity"@en,
+        "Российское предприятие"@ru ;
+    skos:definition "federated sovereignty and polity that is the Russian Federation" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:RussianFederation ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfTheRussianFederation .
+
+fibo-be-ge-eeuj:SlovakEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Slovak entity"@en,
+        "Slovenský subjekt"@sk ;
+    skos:definition "sovereign state and polity that is Slovakia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Slovakia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfTheSlovakRepublic .
+
+fibo-be-ge-eeuj:UkranianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Ukrainian entity"@en,
+        "Українське утворення"@uk ;
+    skos:definition "sovereign state and polity that is Ukraine" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Ukraine ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-eeuj:GovernmentOfUkraine .
+
+fibo-be-ge-eeuj:JurisdictionOfBelarus a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "юрысдыкцыя Беларусі"@be,
+        "jurisdiction of Belarus"@en,
+        "юрисдикция Беларуси"@ru ;
+    skos:definition "jurisdiction of the judiciary of Belarus, consisting of the Supreme Court and specialized courts such as the Constitutional Court, which deals with specific issues related to constitutional and business law" ;
+    cmns-rga:hasReach lcc-3166-1:Belarus ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfTheRepublicOfBelarus .
+
+fibo-be-ge-eeuj:JurisdictionOfBulgaria a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "юрисдикция на България"@bg,
+        "jurisdiction of Bulgaria"@en ;
+    skos:definition "jurisdiction of the judiciary of Bulgaria, a civil law legal system under the Ministry of Justice, including the Supreme Administrative Court and the Supreme Court of Cassation, which are the highest courts of appeal and oversee the application of laws in subordinate courts" ;
+    cmns-rga:hasReach lcc-3166-1:Bulgaria ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfTheRepublicOfBulgaria .
+
+fibo-be-ge-eeuj:JurisdictionOfCzechia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdikce česka"@cs,
+        "jurisdiction of Czechia"@en ;
+    skos:definition "jurisdiction of the judiciary of the Czech Republic, a civil law system grounded in the Constitution of the Czech Republic, including the Constitutional Court, Supreme Court, and Supreme Administrative Court, as well as district and county courts that are divided into civil, criminal, and administrative branches" ;
+    cmns-rga:hasReach lcc-3166-1:Czechia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfTheCzechRepublic .
+
+fibo-be-ge-eeuj:JurisdictionOfHungary a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Hungary"@en,
+        "Magyarország joghatósága"@hu ;
+    skos:definition "jurisdiction of the judiciary of Hungary, a civil law system based primarily on German that is divided between courts with regular civil and criminal jurisdiction and administrative courts, including local courts, regional appellate courts, and the supreme court" ;
+    cmns-rga:hasReach lcc-3166-1:Hungary ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfHungary .
+
+fibo-be-ge-eeuj:JurisdictionOfMoldova a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Moldova"@en,
+        "jurisdicția Moldovei"@ro ;
+    skos:definition "jurisdiction of the judiciary of Moldova, which is the system of courts that interprets and applies the law in Moldova, including an independent Constitutional Court" ;
+    cmns-rga:hasReach lcc-3166-1:Moldova ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfTheRepublicOfMoldova .
+
+fibo-be-ge-eeuj:JurisdictionOfPoland a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Poland"@en,
+        "jurysdykcja Polski"@pl ;
+    skos:definition "jurisdiction of the judiciary of Poland, a four-tier court system composed of the Supreme Court, the Supreme Administrative Court, Common Courts (District, Regional, Appellate) and the Military Court" ;
+    cmns-rga:hasReach lcc-3166-1:Poland ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfTheRepublicOfPoland .
+
+fibo-be-ge-eeuj:JurisdictionOfRomania a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Romania"@en,
+        "jurisdicția României"@ro ;
+    skos:definition "jurisdiction of the judiciary of Romania, a civil law system influenced by the French system that is a hierarchical system of courts with the High Court of Cassation and Justice being the supreme court of Romania, and includes courts of appeal, county courts and local courts" ;
+    cmns-rga:hasReach lcc-3166-1:Romania ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfRomania .
+
+fibo-be-ge-eeuj:JurisdictionOfRussianFederation a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Russian Federation"@en,
+        "юрисдикция Российской Федерации"@ru ;
+    skos:definition "jurisdiction of the judiciary of Russian Federation, which is the system of courts that interprets and applies the law in the Russian Federation, including Constitutional Court, Supreme Court and lower federal courts, whose judges are appointed by the Federation Council on the recommendation of the President" ;
+    cmns-rga:hasReach lcc-3166-1:RussianFederation ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfTheRussianFederation .
+
+fibo-be-ge-eeuj:JurisdictionOfSlovakia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Slovakia"@en,
+        "jurisdikcia Slovenska"@sk ;
+    skos:definition "jurisdiction of the judiciary of the Slovak Republic, which is the system of courts that interprets and applies the law in Slovakia, whose highest judicial body is the Constitutional Court of Slovakia, which rules on constitutional issues" ;
+    cmns-rga:hasReach lcc-3166-1:Slovakia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfTheSlovakRepublic .
+
+fibo-be-ge-eeuj:JurisdictionOfUkraine a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Ukraine"@en,
+        "юрисдикція України"@uk ;
+    skos:definition "jurisdiction of the judiciary of Ukraine, which is the system of courts that interprets and applies the law in Ukraine, including the Supreme Court of Ukraine, which is the highest judicial body in the system of courts of general jurisdiction in Ukraine" ;
+    cmns-rga:hasReach lcc-3166-1:Ukraine ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-eeuj:GovernmentOfUkraine .
+
+fibo-be-ge-eeuj:GovernmentOfHungary a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of Hungary"@en,
+        "Magyarország kormánya"@hu ;
+    rdfs:seeAlso <https://www.kormany.hu/en/> ;
+    skos:definition "unitary, dominant-party, parliamentary republic, bordering Slovakia to the north, Ukraine to the northeast, Romania to the east and southeast, Serbia to the south, Croatia and Slovenia to the southwest, and Austria to the west" ;
+    cmns-rga:governs lcc-3166-1:Hungary ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfHungary .
+
+fibo-be-ge-eeuj:GovernmentOfRomania a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of Romania"@en,
+        "Guvernul României"@ro ;
+    rdfs:seeAlso <https://www.gov.ro/en/> ;
+    skos:definition "unitary, semi-presidential republic at the crossroads of Central, Eastern, and Southeastern Europe, bordering Bulgaria to the south, Ukraine to the north, Hungary to the west, Serbia to the southwest, and Moldova to the east" ;
+    cmns-rga:governs lcc-3166-1:Romania ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfRomania .
+
+fibo-be-ge-eeuj:GovernmentOfTheCzechRepublic a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Vláda České republiky"@cs,
+        "Government of the Czech Republic"@en ;
+    rdfs:seeAlso <https://www.vlada.cz/en/> ;
+    skos:definition "unitary, parliamentary, constitutional republic and multi-party, representative democracy, with the president as head of state and prime minister as head of government, that is a landlocked country in Central Europe bordered by Austria to the south, Germany to the west, Poland to the northeast and Slovakia to the southeast" ;
+    cmns-rga:governs lcc-3166-1:Czechia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfCzechia .
+
+fibo-be-ge-eeuj:GovernmentOfTheRepublicOfBelarus a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Урад Рэспублікі Беларусь"@be,
+        "Government of the Republic of Belarus"@en,
+        "Правительство Республики Беларусь"@ru ;
+    rdfs:seeAlso <https://www.bundeskanzleramt.gv.at/en.html> ;
+    skos:definition "unitary presidential republic, a landlocked country in Eastern Europe bordered by Russia to the northeast, Ukraine to the south, Poland to the west, and Lithuania and Latvia to the northwest" ;
+    cmns-rga:governs lcc-3166-1:Belarus ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfBelarus .
+
+fibo-be-ge-eeuj:GovernmentOfTheRepublicOfBulgaria a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Правителство на Република България"@bg,
+        "Government of the Republic of Bulgaria"@en ;
+    rdfs:seeAlso <https://gov.bg/> ;
+    skos:definition "unitary parliamentary democracy where the prime minister is the head of government, located in Southeastern Europe bordered by Romania to the north, Serbia and North Macedonia to the west, Greece and Turkey to the south, and the Black Sea to the east" ;
+    cmns-rga:governs lcc-3166-1:Bulgaria ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfBulgaria .
+
+fibo-be-ge-eeuj:GovernmentOfTheRepublicOfMoldova a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Moldova"@en,
+        "Guvernul Republicii Moldova"@ro ;
+    rdfs:seeAlso <https://gov.md/en/> ;
+    skos:definition "unitary parliamentary constitutional republic that is a landlocked country in Eastern Europe, bordered by Romania to the west and Ukraine to the north, east, and south" ;
+    cmns-rga:governs lcc-3166-1:Moldova ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfMoldova .
+
+fibo-be-ge-eeuj:GovernmentOfTheRepublicOfPoland a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Poland"@en,
+        "Rząd Rzeczpospolita Polska"@pl ;
+    rdfs:seeAlso <https://www.gov.pl/> ;
+    skos:definition "unitary, semi-presidential, constitutional, and representative democratic republic located in Central Europe and bordered by the Baltic Sea, Lithuania, and Russia's Kaliningrad Oblast to the north, Belarus and Ukraine to the east, Slovakia and the Czech Republic to the south, and Germany to the west" ;
+    cmns-rga:governs lcc-3166-1:Poland ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfPoland .
+
+fibo-be-ge-eeuj:GovernmentOfTheRussianFederation a owl:NamedIndividual,
+        fibo-be-ge-ge:FederalGovernment ;
+    rdfs:label "Government of the Russian Federation"@en,
+        "Правительство Российской Федерации"@ru ;
+    rdfs:seeAlso <http://government.ru/en/> ;
+    skos:definition "federal, dominant-party and semi-presidential constitutional republic located in Eastern Europe and Northern Asia" ;
+    cmns-rga:governs lcc-3166-1:RussianFederation ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfRussianFederation .
+
+fibo-be-ge-eeuj:GovernmentOfTheSlovakRepublic a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Slovak Republic"@en,
+        "Vláda Slovenskej republiky"@sk ;
+    rdfs:seeAlso <https://www.vlada.gov.sk/government-of-the-slovak-republic/> ;
+    skos:definition "unitary, parliamentary democratic republic that is a landlocked country in Central Europe, bordered by Poland to the north, Ukraine to the east, Hungary to the south, Austria to the southwest, and Czech Republic to the northwest" ;
+    cmns-rga:governs lcc-3166-1:Slovakia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfSlovakia .
+
+fibo-be-ge-eeuj:GovernmentOfUkraine a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of Ukraine"@en,
+        "Уряд України"@uk ;
+    rdfs:seeAlso <https://www.president.gov.ua/en/> ;
+    skos:definition "unitary, mixed semi-parliamentary and semi-presidential, constitutional republic located in Eastern Europe, bordered by Russia to the north-east; Belarus to the north; Poland, Slovakia and Hungary to the west; and Romania, Moldova, and the Black Sea to the south" ;
+    cmns-rga:governs lcc-3166-1:Ukraine ;
+    cmns-rga:hasJurisdiction fibo-be-ge-eeuj:JurisdictionOfUkraine .
+

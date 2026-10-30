@@ -1,0 +1,135 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-arr: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> .
+@prefix fibo-fnd-arr-id: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-arr-id: a owl:Ontology ;
+    rdfs:label "Identifiers and Indices Ontology",
+        "标识符与索引本体（Identifiers and Indices Ontology）"@zh ;
+    dcterms:abstract "This ontology defines abstract concepts for representation of indices and indexing schemes, as well as reusable identifiers, for reuse in other ontologies." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "本本体定义表示索引与索引方案以及可复用标识符的抽象概念，供其他本体复用。"@zh ;
+    owl:imports fibo-fnd-arr-arr:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-cxtid:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-id: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20240101/Arrangements/IdentifiersAndIndices/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20140801/Arrangements/IdentifiersAndIndices.rdf version of this ontology was introduced as a part of the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/. It was further revised in the FTF in advance of the Long Beach meeting to promote Collection to the top level in the hierarchy, resulting in https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Arrangements/Arrangements/.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Arrangements/IdentifiersAndIndices.rdf version of this ontology was revised for the FIBO 2.0 RFC to incorporate mappings to LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Arrangements/IdentifiersAndIndices.rdf version of this ontology was revised to replace hasDefinition with isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190701/Arrangements/IdentifiersAndIndices.rdf version of this ontology was revised to eliminate duplication of concepts with LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/Arrangements/IdentifiersAndIndices.rdf version of this ontology was revised to add the concept of a time-constrained, reassignable identifier as well as the concept of a composite identifier.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20211101/Arrangements/IdentifiersAndIndices.rdf version of this ontology was revised loosen a constraint on composite identifier and add regular expression annotations to support ordered constituents.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220401/Arrangements/IdentifiersAndIndices.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Arrangements/IdentifiersAndIndices.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Arrangements/IdentifiersAndIndices.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231201/Arrangements/IdentifiersAndIndices.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2014-2024 EDM Council, Inc.",
+        "Copyright (c) 2014-2024 Object Management Group, Inc." .
+
+fibo-fnd-arr-id:ReassignableIdentifier a owl:Class ;
+    rdfs:label "reassignable identifier",
+        "可重分配标识符（reassignable identifier）"@zh ;
+    rdfs:comment "在给定时间段内唯一标识某物、并可在不同时间点重新用于标识其他事物的标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty fibo-fnd-arr-id:hasAssignmentTerminationDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty fibo-fnd-arr-id:hasInitialAssignmentDate ],
+        cmns-id:Identifier ;
+    skos:definition "identifier that uniquely identifies something for a given time period, and that may be reused to identify something else at a different point in time" ;
+    skos:example "ticker symbol, vehicle license number, such as a vanity plate that can be reassigned and moved from one car to another" ;
+    cmns-av:explanatoryNote "If no assignment termination date is provided, the identifier is considered to be assigned and valid. If there is no initial assignment date, then the identifier is assumed to be assigned up until the termination date, if any." .
+
+fibo-fnd-arr-id:constructRegex a owl:AnnotationProperty ;
+    rdfs:label "construct regex",
+        "构造正则表达式（construct regex）"@zh ;
+    rdfs:comment "指示如何由各组成部分拼出给定字符串。"@zh ;
+    rdfs:range xsd:string ;
+    skos:definition "indicates how to compose the supplied character string from its components" .
+
+fibo-fnd-arr-id:parseRegex a owl:AnnotationProperty ;
+    rdfs:label "parse regex",
+        "解析正则表达式（parse regex）"@zh ;
+    rdfs:comment "指示如何将给定字符串拆解为其组成部分。"@zh ;
+    rdfs:range xsd:string ;
+    skos:definition "indicates how to deconstruct the supplied character string into its components" .
+
+cmns-cxtid:StructuredIdentifier a owl:Class ;
+    skos:example "For a fictional business identifier, the rule used to parse a composite identifier might be fibo-fnd-arr-id:parseRegex \"RA([0-9]{6})-([0-9A-Z]*)\", and fibo-fnd-arr-id:constructRegex \"$1-$2\", where RA represents a text value corresponding to the registration authority for the business identifier." ;
+    skos:note "Use parseRegex and constructRegex annotation properties to express the rules for deconstructing and composing the actual composite identifiers from their constituent parts as appropriate." .
+
+cmns-id:IdentificationScheme a owl:Class ;
+    rdfs:subClassOf fibo-fnd-arr-arr:Scheme .
+
+fibo-fnd-arr-id:IndexingScheme a owl:Class ;
+    rdfs:label "indexing scheme",
+        "索引方案（indexing scheme）"@zh ;
+    rdfs:comment "对值、数据、信息或知识进行索引的体系。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-fnd-arr-id:Index ],
+        fibo-fnd-arr-arr:Scheme ;
+    skos:definition "system for indexing values, data, information, or knowledge" .
+
+fibo-fnd-arr-id:hasAssignmentTerminationDate a owl:DatatypeProperty ;
+    rdfs:label "has assignment termination date",
+        "具有分配终止日期（has assignment termination date）"@zh ;
+    rdfs:comment "标识符解除与某资源分配关系的日期。"@zh ;
+    rdfs:range cmns-dt:CombinedDateTime ;
+    rdfs:subPropertyOf cmns-dt:hasObservedDateTime ;
+    skos:definition "the date on which an identifier is released from its assignment to some resource" .
+
+fibo-fnd-arr-id:hasInitialAssignmentDate a owl:DatatypeProperty ;
+    rdfs:label "has initial assignment date",
+        "具有初始分配日期（has initial assignment date）"@zh ;
+    rdfs:comment "标识符首次分配给某资源的日期。"@zh ;
+    rdfs:range cmns-dt:CombinedDateTime ;
+    rdfs:subPropertyOf cmns-dt:hasObservedDateTime ;
+    skos:definition "the date on which an identifier is first assigned to some resource" .
+
+fibo-fnd-arr-id:isIndexTo a owl:ObjectProperty ;
+    rdfs:label "is index to",
+        "是…的索引（is index to）"@zh ;
+    rdfs:comment "索引所指的对象。"@zh ;
+    rdfs:domain fibo-fnd-arr-id:Index ;
+    rdfs:subPropertyOf cmns-doc:refersTo ;
+    skos:definition "that to which the index refers" .
+
+fibo-fnd-arr-id:Index a owl:Class ;
+    rdfs:label "index",
+        "索引（index）"@zh ;
+    rdfs:comment "从大量值、数据、信息或知识中派生并指向其中的间接快捷方式。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-arr-id:IndexingScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-arr-id:isIndexTo ],
+        cmns-doc:Reference ;
+    skos:definition "indirect shortcut derived from and pointing into, a greater volume of values, data, information or knowledge" ;
+    fibo-fnd-utl-av:definitionOrigin "http://en.wikipedia.org/wiki/Index"^^xsd:anyURI .
+

@@ -1,0 +1,143 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-lang: <https://www.omg.org/spec/Commons/Languages/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-lang: a owl:Ontology ;
+    rdfs:label "Commons Languages Ontology",
+        "Commons 语言本体（Commons Languages Ontology）"@zh ;
+    dct:abstract "This ontology, based at a very high level on ISO 639 as well as the language element of the Language Tag specified in BCP 47 (RFC 4646, RFC 4647), defines the concept of a language, and covers natural and engineered languages. It is provided in Commons as a bridge between a number of OMG ontologies, including the API4KP ontologies, the ontology associated with the Distributed Ontology, Model, and Specification Language (DOL) specification, the Languages, Countries, and Codes (LCC) specification and ontologies, and the Multiple Vocabulary Facility (MVF) ontologies, among others, and was derived from the original LCC Language Representation ontology. The model aligns with the latest ISO 639 revisions, which were formerly part of ISO-639-4, and with definitions in other ISO terminology and thesauri standards." ;
+    dct:contributor "Elisa Kendall, Thematix Partners LLC",
+        "Pete Rivett, Federated Knowledge LLC" ;
+    dct:issued "2025-07-24T18:00:00"^^xsd:dateTime ;
+    dct:license """Copyright (c) 2015-2025 Adaptive Analytics, Inc.
+		Copyright (c) 2015-2025 Object Management Group, Inc.
+		Copyright (c) 2015-2025 Thematix Partners LLC
+		Copyright (c) 2015-2017 Unisys
+		Copyright (c) 2019-2025 agnos.ai UK Ltd.
+		Copyright (c) 2022-2025 Federated Knowledge LLC
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dct:references dct:,
+        skos:,
+        "BCP 47, Tags for Identifying Languages, see http://tools.ietf.org/html/bcp47",
+        "ISO 639 Code for individual languages and language groups, Second edition, 2023-11" ;
+    dct:title "Commons Languages Ontology" ;
+    rdfs:comment "定义语言、语言标签及其相关概念。"@zh ;
+    owl:imports cmns-av:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dsg:,
+        cmns-id: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20250801/Languages/> ;
+    cmns-av:copyright "Copyright (c) 2015-2017 Unisys",
+        "Copyright (c) 2015-2019 Adaptive, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc.",
+        "Copyright (c) 2015-2025 Thematix Partners LLC",
+        "Copyright (c) 2019-2025 agnos.ai UK Ltd." .
+
+cmns-lang:ConstructedLanguage a owl:Class ;
+    rdfs:label "constructed language" ;
+    rdfs:subClassOf cmns-lang:HumanLanguage ;
+    owl:disjointWith cmns-lang:FormalLanguage ;
+    skos:definition "individual language whose rules are explicitly established prior to its use" ;
+    skos:note "Constructed languages do not include reconstructed languages, computer programming languages, mark-up languages or similar formal languages.",
+        "Some constructed languages are based on one or several natural languages and are therefore not 'artificial'." ;
+    cmns-av:adaptedFrom "ISO 639 Code for individual languages and language groups, Second edition, 2023-11, clause 3.3.2" .
+
+cmns-lang:NaturalLanguage a owl:Class ;
+    rdfs:label "natural language" ;
+    rdfs:subClassOf cmns-lang:HumanLanguage ;
+    skos:definition "individual language which is or was in active use in a language community, passed on from one generation of speakers to the next" ;
+    skos:example "Bambara, English, Haitian Creole, Latin, LIBRAS (Língua Brasileira de Sinais/Brazilian Sign Language)" ;
+    cmns-av:adaptedFrom "ISO 639 Code for individual languages and language groups, Second edition, 2023-11, clause 3.3.1" .
+
+cmns-lang:ScriptIdentifier a owl:Class ;
+    rdfs:label "script identifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom cmns-lang:Script ],
+        cmns-cds:CodeElement,
+        cmns-id:Identifier ;
+    skos:definition "string of characters assigned to represent a script unequivocally" ;
+    cmns-av:adaptedFrom "ISO 639 Code for individual languages and language groups, Second edition, 2023-11, clause 3.7.10" ;
+    cmns-av:synonym "script symbol" .
+
+cmns-lang:hasLanguage a owl:ObjectProperty ;
+    rdfs:label "has language" ;
+    rdfs:range cmns-lang:Language ;
+    rdfs:subPropertyOf cmns-cxtdsg:uses ;
+    skos:definition "is expressed in or uses a given language in some context" .
+
+cmns-lang:FormalLanguage a owl:Class ;
+    rdfs:label "formal language" ;
+    rdfs:subClassOf cmns-lang:Language ;
+    skos:definition "language comprised of a set of finite-length strings (i.e., a body of words) constructed from a finite alphabet, following a set of methods of combining them (called a grammar), governed by precise syntactic rules" ;
+    cmns-av:adaptedFrom "Mateescu, A., Salomaa, A. (1997). Formal Languages: an Introduction and a Synopsis. In: Rozenberg, G., Salomaa, A. (eds) Handbook of Formal Languages. Springer, Berlin, Heidelberg. https://doi.org/10.1007/978-3-642-59136-5_1",
+        "https://mathworld.wolfram.com/FormalLanguage.html" .
+
+cmns-lang:LanguageIdentifier a owl:Class ;
+    rdfs:label "language identifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom cmns-lang:Language ],
+        cmns-cds:CodeElement,
+        cmns-id:Identifier ;
+    skos:definition "string of characters assigned to an individual language or a language group for the purpose of identifying it unequivocally" ;
+    skos:scopeNote "In the ISO 639 language code, the string of characters consists of a string of letters." ;
+    cmns-av:adaptedFrom "ISO 639 Code for individual languages and language groups, Second edition, 2023-11, clause 3.7.10" ;
+    cmns-av:synonym "language symbol" .
+
+cmns-lang:Script a owl:Class ;
+    rdfs:label "script" ;
+    rdfs:subClassOf cmns-col:Collection ;
+    skos:definition "comprehensive set of graphic characters used for the written form of one or more individual languages" ;
+    skos:example "Cyrillic, Hiragana" ;
+    skos:note "A script, as opposed to an arbitrary subset of characters, is defined in distinction to other scripts; in general, readers of one script can be unable to read the glyphs of another script easily, even where there is a historical relation between them. ISO 639 language identifiers may be combined with script identifiers from ISO 15924 (e.g., BCP 47)." ;
+    cmns-av:adaptedFrom "ISO 639 Code for individual languages and language groups, Second edition, 2023-11, clause 3.6.2" .
+
+cmns-lang:HumanLanguage a owl:Class ;
+    rdfs:label "human language" ;
+    rdfs:subClassOf cmns-lang:Language ;
+    skos:definition "language that may be used to express or communicate meaning or a message between humans" ;
+    skos:note "Human language was originally developed for, and mainly used in, direct communication between humans. Today its use is increasingly supported by information and communication technologies (ICTs)." ;
+    cmns-av:adaptedFrom "ISO 639 Code for individual languages and language groups, Second edition, 2023-11" .
+
+cmns-lang:Language a owl:Class ;
+    rdfs:label "language" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-dsg:hasTextualName ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-lang:LanguageIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dsg:Name ;
+            owl:onProperty cmns-dsg:hasName ],
+        cmns-col:Arrangement ;
+    skos:definition "systematic use of sounds, visual-spatial signs, characters or other written symbols or signs that can be combined to express or communicate meaning, understood by a community" ;
+    cmns-av:adaptedFrom "ISO 639 Code for individual languages and language groups, Second edition, 2023-11, clause 3.1.1" .
+

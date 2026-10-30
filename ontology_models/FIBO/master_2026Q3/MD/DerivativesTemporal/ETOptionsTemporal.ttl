@@ -1,0 +1,104 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-opt: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ind-ind: <https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/> .
+@prefix fibo-md-derx-eto: <https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/ETOptionsTemporal/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-md-derx-eto:Delta a owl:Class ;
+    rdfs:label "delta"@en,
+        "德尔塔（delta）"@zh ;
+    rdfs:comment "期权价值对标的价格的一阶导数（或持仓上的对应值）。"@zh ;
+    rdfs:subClassOf fibo-md-derx-eto:OptionsGreek ;
+    skos:definition "First derivative of option value with respect to theoretical price is a delta (or on a position). Theoretical price"@en ;
+    cmns-av:explanatoryNote "Delta tells you what options to buy to get the equivalent price sensitivity to the underlying. How many at that price to get that hedge. So for example an at the money option has a delta of 50. Units"@en .
+
+fibo-md-derx-eto:OptionDailySettlementPrice a owl:Class ;
+    rdfs:label "option daily settlement price"@en,
+        "期权每日结算价（option daily settlement price）"@zh ;
+    rdfs:comment "交易时段结束时的官方价格，由期权清算公司确定，用于计算账户权益变动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-fct-pub:hasPublisher ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fct-mkt:DesignatedContractMarket fibo-der-drc-bsc:DerivativesClearingOrganization ) ] ],
+        fibo-fbc-fi-ip:ClosingPrice,
+        fibo-fbc-fi-ip:SecurityPrice ;
+    skos:definition "The official price at the end of a trading session. This price is established by The Options Clearing Corporation and is used to determine changes in account equity, margin requirements, and for other purposes."@en .
+
+fibo-md-derx-eto:OptionsTheta a owl:Class ;
+    rdfs:label "options theta"@en,
+        "期权西塔（options theta）"@zh ;
+    rdfs:comment "期权理论价值对到期时间单位变化之变化率的度量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-md-derx-eto:OptionTheoreticalValue ],
+        fibo-md-derx-eto:OptionsGreek ;
+    skos:definition "A measure of the rate of change in an option's theoretical value for a one-unit change in time to the option's expiration date. Action: add terms that define or influence this."@en .
+
+fibo-md-derx-eto:OptionsVega a owl:Class ;
+    rdfs:label "options vega"@en,
+        "期权维加（options vega）"@zh ;
+    rdfs:comment "期权理论价值对波动率假设单位变化之变化率的度量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-md-derx-eto:OptionTheoreticalValue ],
+        fibo-md-derx-eto:OptionsGreek ;
+    skos:definition "A measure of the rate of change in an option's theoretical value for a one-unit change in the volatility assumption. Action: add terms that define or influence this."@en .
+
+fibo-md-derx-eto: a owl:Ontology ;
+    rdfs:label "Exchange-Traded Options Temporal"@en,
+        "场内期权时序本体（Exchange-Traded Options Temporal Ontology）"@zh ;
+    dcterms:abstract "Exchange traded options date and time dependent terms such as pricing and other analytics, including greeks (deltas, thetas etc.)" ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义交易所交易期权的行情时间序列数据。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-der-drc-bsc:,
+        fibo-der-drc-opt:,
+        fibo-fbc-fi-ip:,
+        fibo-fbc-fct-mkt:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ind-ind:,
+        cmns-av:,
+        cmns-doc: ;
+    owl:versionIRI fibo-md-derx-eto: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc." .
+
+fibo-md-derx-eto:OptionTheoreticalValue a owl:Class ;
+    rdfs:label "option theoretical value"@en,
+        "期权理论价值（option theoretical value）"@zh ;
+    rdfs:comment "由期权定价模型确定的期权公允价值。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fbc-fi-ip:PricingModel ],
+        fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "fair value of the option as determined by an option pricing model"@en ;
+    cmns-av:explanatoryNote "The pricing model (such as the Black-Scholes model) takes into account current values such as implied volatility, the price of the underlying, the strike price, and time to expiration to determine what an option should be worth. Each of the input values fluctuate, which means theoretical price will also be a fluctuating value."@en .
+
+fibo-md-derx-eto:OptionsGreek a owl:Class ;
+    rdfs:label "options greek"@en,
+        "期权希腊字母（options greek）"@zh ;
+    rdfs:comment "表示期权价格对其价值所依赖的标的参数变化之敏感度的量。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-ip:PriceAnalytic ;
+    skos:definition "quantity representing the sensitivity of the price of an option or options to a change in underlying parameters on which the value depends"@en .
+

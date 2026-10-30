@@ -1,0 +1,105 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-txn-mkt: <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/MarketTransactions/> .
+@prefix fibo-fnd-txn-rea: <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/REATransactions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-fnd-txn-mkt:MarketTransactionInvoicingTerms a owl:Class ;
+    rdfs:label "market transaction invoicing terms"@en,
+        "市场交易开票条款（market transaction invoicing terms）"@zh ;
+    rdfs:comment "市场交易的开票条款。"@zh ;
+    rdfs:subClassOf fibo-fnd-txn-rea:EconomicContractTermsSet .
+
+fibo-fnd-txn-mkt: a owl:Ontology ;
+    rdfs:label "Market Transactions Ontology"@en,
+        "市场交易本体（Market Transactions Ontology）"@zh ;
+    dcterms:abstract """Defines the concepts for market transactions in general, on any kind of marketplace. 
+		This ontology is not used directly in FIBO content but provides the conceptual underpinnings for securities market transactions.""" ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义各类市场上一般市场交易的概念，为证券市场交易提供概念基础。"@zh ;
+    owl:imports fibo-fnd-agr-ctr:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-txn-rea:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga: ;
+    owl:versionIRI fibo-fnd-txn-mkt: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Informative ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc." .
+
+fibo-fnd-txn-mkt:TransactionPrincipal a owl:Class ;
+    rdfs:label "transaction principal"@en,
+        "交易委托方（transaction principal）"@zh ;
+    rdfs:comment "交易中的委托方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-rea:transactsWith ;
+            owl:someValuesFrom fibo-fnd-txn-mkt:TransactionCounterparty ],
+        fibo-fnd-agr-ctr:ContractPrincipal,
+        fibo-fnd-txn-rea:TransactionParty .
+
+fibo-fnd-txn-mkt:consideration a owl:ObjectProperty ;
+    rdfs:label "consideration"@en,
+        "对价（consideration）"@zh ;
+    rdfs:comment "交易中作为交换提供的对价。"@zh ;
+    rdfs:domain fibo-fnd-txn-mkt:MarketTransaction ;
+    rdfs:range fibo-fnd-txn-rea:EconomicResource ;
+    rdfs:subPropertyOf fibo-fnd-txn-rea:subject .
+
+fibo-fnd-txn-mkt:paymentTerms a owl:ObjectProperty ;
+    rdfs:label "payment terms"@en,
+        "支付条款（payment terms）"@zh ;
+    rdfs:comment "关于付款方式的条款。"@zh ;
+    rdfs:domain fibo-fnd-txn-mkt:MarketTransaction ;
+    rdfs:range fibo-fnd-txn-mkt:MarketTransactionPaymentTerms ;
+    rdfs:subPropertyOf fibo-fnd-txn-rea:transactedUnder .
+
+fibo-fnd-txn-mkt:MarketTransaction a owl:Class ;
+    rdfs:label "market transaction"@en,
+        "市场交易（market transaction）"@zh ;
+    rdfs:comment "定义以某种对价换取某种可转让物品供应的交易；市场交易有委托方和对手方，不是对称的。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-mkt:paymentTerms ;
+            owl:someValuesFrom fibo-fnd-txn-mkt:MarketTransactionPaymentTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-mkt:consideration ;
+            owl:someValuesFrom fibo-fnd-txn-rea:EconomicResource ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
+            owl:someValuesFrom fibo-fnd-txn-mkt:TransactionPrincipal ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
+            owl:someValuesFrom fibo-fnd-txn-mkt:TransactionCounterparty ],
+        fibo-fnd-txn-rea:EconomicTransaction ;
+    skos:definition "Any transaction which defines a supply of some negotiable item in return for some Consideration. The Market Transaction has a Principal and a Counterparty, i.e. it is not symmetrical."@en .
+
+fibo-fnd-txn-mkt:MarketTransactionPaymentTerms a owl:Class ;
+    rdfs:label "market transaction payment terms"@en,
+        "市场交易支付条款（market transaction payment terms）"@zh ;
+    rdfs:comment "市场交易的支付条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-fnd-pas-psch:Payment ],
+        fibo-fnd-txn-rea:EconomicContractTermsSet .
+
+fibo-fnd-txn-mkt:TransactionCounterparty a owl:Class ;
+    rdfs:label "transaction counterparty"@en,
+        "交易对手方（transaction counterparty）"@zh ;
+    rdfs:comment "交易中的对手方。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:Counterparty,
+        fibo-fnd-txn-rea:TransactionParty .
+

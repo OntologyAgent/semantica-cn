@@ -1,0 +1,53 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-org-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/MetadataFNDOrganizations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-org-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Organizations Module",
+        "FND 组织模块元数据（Metadata for the FND Organizations Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Organizations Module." ;
+    dcterms:issued "2020-02-24T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+		Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2025-12-12T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明组织（Organizations）模块由正式组织本体构成，及版本信息。"@zh ;
+    owl:imports <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/>,
+        fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20251201/Organizations/MetadataFNDOrganizations/> ;
+    cmns-av:copyright "Copyright (c) 2017-2025 EDM Council, Inc.",
+        "Copyright (c) 2017-2025 Object Management Group, Inc." .
+
+fibo-fnd-org-mod:OrganizationsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "organizations module" ;
+    dcterms:abstract "This module includes an ontology defining formal organizations, extending OMG's Commons Ontology Library Organizations ontology to cover employment. It is purposefully underspecified to facilitate mapping to other organization ontologies and taxonomies, such as aspects of BMM or BPMN, organization from a records management (RMS) perspective, other standards and internal corporate ontologies." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/> ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+		Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:title "FIBO FND Organizations Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Organizations Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2017-2025 EDM Council, Inc.",
+        "Copyright (c) 2017-2025 Object Management Group, Inc." .
+

@@ -1,0 +1,35 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-fnd-utl-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/MetadataFNDUtilities/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-utl-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Utilities Module",
+        "FND 工具模块元数据（Metadata for the FND Utilities Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Utilities Module." ;
+    dcterms:issued "2020-08-28T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-06T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明工具（Utilities）模块由分析本体与 FIBO 标注词汇表构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Utilities/MetadataFNDUtilities/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+
+fibo-fnd-utl-mod:UtilitiesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "utilities module" ;
+    dcterms:abstract "The utilities module includes ontologies that provide metadata and other basic concepts to be used in other ontologies." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/>,
+        fibo-fnd-utl-av: ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FND Utilities Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Utilities Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+

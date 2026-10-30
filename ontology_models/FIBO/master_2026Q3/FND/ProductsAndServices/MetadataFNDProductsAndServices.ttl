@@ -1,0 +1,35 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-pas-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/MetadataFNDProductsAndServices/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-pas-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Products and Services Module",
+        "FND 产品与服务模块元数据（Metadata for the FND Products and Services Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Products and Services Module." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-20T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明产品与服务（Products and Services）模块由产品与服务、付款与计划表两个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20230101/ProductsAndServices/MetadataFNDProductsAndServices/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+
+fibo-fnd-pas-mod:ProductsAndServicesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "products and services module" ;
+    dcterms:abstract "This module includes ontologies defining concepts such as buyers, sellers, customers, clients, products and services generally, as well as very high-level relationships between them." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FND Products and Services Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Products and Services Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+

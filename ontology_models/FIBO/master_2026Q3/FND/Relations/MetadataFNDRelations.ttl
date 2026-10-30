@@ -1,0 +1,34 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-rel-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/MetadataFNDRelations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-rel-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Relations Module",
+        "FND 关系模块元数据（Metadata for the FND Relations Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Relations Module." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-20T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明关系（Relations）模块由关系本体构成——这是 FIBO 最底层的基础本体，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Relations/MetadataFNDRelations/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+
+fibo-fnd-rel-mod:RelationsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "relations module" ;
+    dcterms:abstract "This module contains an ontology defining a number of reusable relationships. These are used, refined or restricted to define relationships among more specific concepts in other FIBO ontologies. Some of these relationships stand in for relationships which are defined in external standards ontologies." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FND Relations Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Relations Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+

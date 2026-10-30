@@ -1,0 +1,172 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-pty-pty: a owl:Ontology ;
+    rdfs:label "Parties Ontology",
+        "参与方本体（Parties Ontology）"@zh ;
+    dcterms:abstract "This ontology extends the Commons Parties and Situations ontology with identifiers for party roles and very general tax identifiers." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "本本体扩展 Commons 参与方与情境本体，增加参与方角色的标识符和通用的税务标识符。"@zh ;
+    owl:imports fibo-fnd-plc-adr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-pts:,
+        cmns-rga:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Parties/Parties/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/FND/20130801/Parties/Parties.rdf version of the ontology was was modified per the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/.",
+        "The http://www.omg.org/spec/EDMC-FIBO/FND/20141101/Parties/Parties.rdf version of this ontology was revised as a part of the issue resolutions identified in the FIBO FND 1.1 RTF report to add a parent of hasDate to date properties.",
+        "The http://www.omg.org/spec/EDMC-FIBO/FND/20160201/Parties/Parties.rdf version of this ontology was revised as a part of the FIBO 2.0 RFC to introduce disjointness axioms to aid users in understanding.",
+        """The http://www.omg.org/spec/FIBO/Foundations/20130601/Roles/Parties.owl version of the ontology was revised in advance of the September 2013 New Brunswick, NJ meeting, as follows:
+	(1) to use slash style URI/IRIss (also called 303 URIs, vs. hash style) as required to support server side processing 
+	(2) to use version-independent IRIs for all definitions internally as opposed to version-specific IRIs
+	(3) to change the file suffix from .owl to .rdf to increase usability in RDF tools
+	(4) to use 4-level abbreviations and corresponding namespace prefixes for all FIBO ontologies, reflecting a family/specification/module/ontology structure
+	(5) to incorporate changes to the specification metadata to support documentation at the family, specification, module, and ontology level, similar to the abbreviations.
+	(6) to combine Parties, Party Roles, and Roles in a single, new, Parties module, combine Parties and Party Roles into a single ontology, and add an inverse for the hasParty property.""",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Parties/Parties.rdf version of this ontology was revised to add semantics to the definition of independent party, making it a direct subclass of autonomous agent (rather than inferred only) and making person and organization direct subclasses (rather than inferred only).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190101/Parties/Parties.rdf version of this ontology was revised to add a relationship directly between parties and a party identifier and rename (migrate) the hasDefinition property to isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190701/Parties/Parties.rdf version of this ontology was revised to eliminate duplication with the concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/Parties/Parties.rdf version of this ontology was extended to support more complex situations involving parties in various roles, loosen the restriction on party in role with respect to commencement date, and to eliminate the redundant union in the definition of independent party.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200601/Parties/Parties.rdf version of this ontology was extended to rename 'hasPrimaryParty' to 'hasActiveParty' to be more consistent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200701/Parties/Parties.rdf version of this ontology was extended to align the properties holds and isHeldBy with the lattice to improve ownership-related reasoning.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200901/Parties/Parties.rdf version of this ontology was extended to add the concepts of tax identifier and tax identification scheme.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20201101/Parties/Parties.rdf version of this ontology was revised to make hasRelatedPartyInRole symmetric and move hasMailingAddress from people to this ontology.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210301/Parties/Parties.rdf version of this ontology was revised to add the two remaining property chains to complete the lattice, from independent party to thing via the situation, to simplify the class hierarchy for improved understanding, data mapping and alignment, and to add the notion of a contextual name (i.e., a name for someone, some place or something that applies for some period of time in some context).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210601/Parties/Parties.rdf version of this ontology was revised to address hygiene issues with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/Parties/Parties.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Parties/Parties.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Parties/Parties.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231101/Parties/Parties.rdf version of the ontology was modified extensively to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240101/Parties/Parties.rdf version of the ontology was modified to correct a wrong prefix on hasRole.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240501/Parties/Parties.rdf version of the ontology was modified to eliminate elements that have been deprecated for several quarters (FND-386).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20241101/Parties/Parties.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-fnd-pty-pty:TaxIdentifier a owl:Class ;
+    rdfs:label "tax identifier",
+        "税务标识符（tax identifier）"@zh ;
+    rdfs:comment "分配给纳税人的标识符，使政府组织能够向其征收强制性财政收费和其他税费，以资助政府支出和各项公共开支。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pty-pty:TaxIdentificationScheme ;
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-pts:Party ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        cmns-id:Identifier ;
+    skos:definition "identifier assigned to a taxpayer that enables compulsory financial charges and other levies to be imposed on the taxpayer by a governmental organization in order to fund government spending and various public expenditures" ;
+    cmns-av:adaptedFrom "https://www.oecd-ilibrary.org/taxation/standard-for-automatic-exchange-of-financial-account-information-in-tax-matters-second-edition_9789264267992-en"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Tax identifiers are used for various tax-related purposes in the United States and in other countries under the Common Reporting Standard (CRS)." .
+
+fibo-fnd-rel-rel:holds a owl:ObjectProperty ;
+    rdfs:subPropertyOf cmns-pts:directlyAffects .
+
+fibo-fnd-rel-rel:isHeldBy a owl:ObjectProperty ;
+    rdfs:subPropertyOf cmns-pts:experiencesWith .
+
+cmns-cxtdsg:ContextualName a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:Party ;
+            owl:onProperty cmns-dsg:isNameOf ],
+        cmns-dsg:Name .
+
+fibo-fnd-pty-pty:PartyRoleIdentifier a owl:Class ;
+    rdfs:label "party role identifier",
+        "参与方角色标识符（party role identifier）"@zh ;
+    rdfs:comment "基于参与方在某种情境中所扮演的特定角色，能够唯一标识该参与方的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pty-pty:PartyRoleIdentificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pty-pty:PartyRoleIdentificationScheme ;
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-pts:PartyRole ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters, capable of uniquely identifying a party based on a specific role that they play in some context" .
+
+fibo-fnd-pty-pty:TaxIdentificationScheme a owl:Class ;
+    rdfs:label "tax identification scheme",
+        "税务识别方案（tax identification scheme）"@zh ;
+    rdfs:comment "在某司法辖区用于识别纳税人的识别方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        cmns-id:IdentificationScheme ;
+    skos:definition "identification scheme used to identify taxpayers in some jurisdiction" ;
+    cmns-av:adaptedFrom "https://www.oecd-ilibrary.org/taxation/standard-for-automatic-exchange-of-financial-account-information-in-tax-matters-second-edition_9789264267992-en"^^xsd:anyURI .
+
+fibo-fnd-pty-pty:hasMailingAddress a owl:ObjectProperty ;
+    rdfs:label "has mailing address",
+        "具有邮寄地址（has mailing address）"@zh ;
+    rdfs:comment "标识独立参与方可以接收信件和包裹等通信的实体地址。"@zh ;
+    rdfs:domain cmns-pts:Party ;
+    rdfs:range fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf fibo-fnd-plc-adr:hasAddress ;
+    skos:definition "identifies a physical address where an independent party can receive communications, including letters and packages" .
+
+fibo-fnd-pty-pty:PartyRoleIdentificationScheme a owl:Class ;
+    rdfs:label "party role identification scheme",
+        "参与方角色识别方案（party role identification scheme）"@zh ;
+    rdfs:comment "为参与方所扮演角色分配标识符的系统。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fnd-pty-pty:PartyRoleIdentifier ],
+        cmns-id:IdentificationScheme ;
+    skos:definition "system for allocating identifiers to roles that parties play" .
+
+cmns-pts:Party a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
+            owl:onProperty fibo-fnd-plc-adr:hasAddress ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
+            owl:onProperty fibo-fnd-pty-pty:hasMailingAddress ] ;
+    owl:disjointWith cmns-rlcmp:Role ;
+    cmns-av:synonym "independent party" .
+

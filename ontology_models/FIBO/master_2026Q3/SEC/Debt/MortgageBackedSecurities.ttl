@@ -1,0 +1,422 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-bp-iss-dbti: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-reln-mtg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/> .
+@prefix fibo-sec-dbt-abs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-dbt-mbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/> .
+@prefix fibo-sec-dbt-pbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/> .
+@prefix fibo-sec-fund-fund: <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/Funds/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix fibo-sec-sec-pls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-dbt-abs:HomeEquityLineOfCreditPool a owl:Class ;
+    owl:disjointWith fibo-sec-dbt-mbs:MortgagePool .
+
+fibo-sec-dbt-mbs:AgencyMBSIssuer a owl:Class ;
+    rdfs:label "agency m b s issuer"@en,
+        "机构抵押支持证券发行人（agency MBS issuer）"@zh ;
+    rdfs:comment "过手型 MBS 的发行人为机构发行人，即专门为发行此类工具而设立的某种机构。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:GovernmentMortgageAgency,
+        fibo-sec-dbt-mbs:MBSIssuer ;
+    skos:definition "The issuer of the pass through MBS is an Agency issuer. This is identified as being some kind of agency that is set up specifically to issue these instruments."@en .
+
+fibo-sec-dbt-mbs:AgencyMBSPool a owl:Class ;
+    rdfs:label "agency m b s pool"@en,
+        "机构抵押支持证券池（agency MBS pool）"@zh ;
+    rdfs:comment "由一组机构 MBS 工具组成的池投资。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MBSPool ;
+    skos:definition "A pool investment consisting of a collection of Agency MBS instruments."@en ;
+    cmns-av:explanatoryNote "This pool may be used as the underlying for an agency CMO. Non agency CMOs do not exist."@en .
+
+fibo-sec-dbt-mbs:CommercialMBS a owl:Class ;
+    rdfs:label "commercial m b s"@en,
+        "商业抵押支持证券（commercial MBS）"@zh ;
+    rdfs:comment "由商业房地产抵押贷款池支持的抵押支持证券。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgageBackedSecurity ;
+    owl:disjointWith fibo-sec-dbt-mbs:ResidentialMBS .
+
+fibo-sec-dbt-mbs:FHLMC-GoldPool a owl:Class ;
+    rdfs:label "FHLMC Gold pool"@en,
+        "房地美金牌池（FHLMC Gold pool）"@zh ;
+    rdfs:comment "联邦住房贷款抵押公司（FHLMC，房地美）金牌计划的抵押贷款池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-sec-dbt-mbs:FHLMC-Pool a owl:Class ;
+    rdfs:label "FHLMC pool"@en,
+        "房地美池（FHLMC pool）"@zh ;
+    rdfs:comment "联邦住房贷款抵押公司（FHLMC，房地美）的抵押贷款池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-sec-dbt-mbs:FNMA-Pool a owl:Class ;
+    rdfs:label "FNMA pool"@en,
+        "房利美池（FNMA pool）"@zh ;
+    rdfs:comment "联邦国民抵押贷款协会（FNMA，房利美）的抵押贷款池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-sec-dbt-mbs:GNMA-IIPool a owl:Class ;
+    rdfs:label "GNMA-II pool"@en,
+        "吉利美二号池（GNMA-II pool）"@zh ;
+    rdfs:comment "政府国民抵押贷款协会（GNMA，吉利美）二号计划的抵押贷款池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-sec-dbt-mbs:GNMA-PlatinumPool a owl:Class ;
+    rdfs:label "GNMA Platinum pool"@en,
+        "吉利美白金池（GNMA Platinum pool）"@zh ;
+    rdfs:comment "政府国民抵押贷款协会（GNMA，吉利美）白金计划的抵押贷款池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-sec-dbt-mbs:GNMA-iPool a owl:Class ;
+    rdfs:label "GNMA-i pool"@en,
+        "吉利美一号池（GNMA-I pool）"@zh ;
+    rdfs:comment "政府国民抵押贷款协会（GNMA，吉利美）一号计划的抵押贷款池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-sec-dbt-mbs:IssuedAndSecuritizedAgencyMortagePool a owl:Class ;
+    rdfs:label "issued and securitized agency mortage pool"@en,
+        "已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool）"@zh ;
+    rdfs:comment "已作为机构抵押支持证券一部分证券化的机构抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:Issued ],
+        fibo-sec-dbt-mbs:AgencyMortgagePool ;
+    skos:definition "An agency mortgage pool which has been securitized as part of an agency Mortgage Backed Security."@en .
+
+fibo-sec-dbt-mbs:IssuedAndSecuritizedNonAgencyMortgagePool a owl:Class ;
+    rdfs:label "issued and securitized non agency mortgage pool"@en,
+        "已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool）"@zh ;
+    rdfs:comment "已作为分档型抵押支持证券一部分证券化的非机构抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:Issued ],
+        fibo-sec-dbt-mbs:NonAgencyMortgagePool ;
+    skos:definition "A non agency mortgage pool which has been securitized as part of a tranched Mortgage Backed Security."@en .
+
+fibo-sec-dbt-mbs:NonAgencyMBSIssuer a owl:Class ;
+    rdfs:label "non agency m b s issuer"@en,
+        "非机构抵押支持证券发行人（non-agency MBS issuer）"@zh ;
+    rdfs:comment "MBS 证券的非机构发行人，其身份可以是银行或专业（非机构）抵押贷款公司。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fbc-fct-fse:Bank fibo-sec-dbt-mbs:SpecialistMortgageIssuer ) ],
+        fibo-sec-dbt-mbs:MBSIssuer ;
+    skos:definition "A party which is a non agency issuer of MBS securities. The identity of this party may be a bank or a specialist (non agency) mortgage company. Term origin:MBS PoC Reviews"@en .
+
+fibo-sec-dbt-mbs:Pass-throughPool a owl:Class ;
+    rdfs:label "pass-through pool"@en,
+        "过手池（pass-through pool）"@zh ;
+    rdfs:comment "现金流直接过手给投资者的抵押贷款池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgagePool ;
+    skos:editorialNote "REVIEW: These are all Pass-through so not clear why this term is here. Term originates with Cutter SME review but seems redundant. If not, this would be non mutually exclusive with agency pool. In general, agency MBS pools are pass through and non agency are tranched, but this reflects a business necessity not a logical necessity."@en .
+
+fibo-sec-dbt-mbs:PassThroughMBSDealProspectus a owl:Class ;
+    rdfs:label "pass through m b s deal prospectus"@en,
+        "过手型抵押支持证券交易招募说明书（pass-through MBS deal prospectus）"@zh ;
+    rdfs:comment "机构过手型抵押支持证券发行的书面招募说明书。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgageBackedSecurityOfferingProspectus ;
+    skos:definition "The written prospectus for an agency, pass through issue of Mortgage Backed Securities"@en .
+
+fibo-sec-dbt-mbs:PassThroughMBSInstrument a owl:Class ;
+    rdfs:label "pass through m b s instrument"@en,
+        "过手型抵押支持证券工具（pass-through MBS instrument）"@zh ;
+    rdfs:comment "标的资产池现金流通过赎回付款方式过手给投资者的证券。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-mbs:hasNote ;
+            owl:someValuesFrom fibo-sec-dbt-mbs:PassThroughMBSInstrumentNote ],
+        fibo-sec-dbt-mbs:MortgageBackedSecurity ;
+    skos:definition "A security in which the cash flows from the underlying asset pool are passed through to the investor by way of redemption payments."@en .
+
+fibo-sec-dbt-mbs:PassThroughMBSIssueUnderwriter a owl:Class ;
+    rdfs:label "pass through m b s issue underwriter"@en,
+        "过手型抵押支持证券发行承销商（pass-through MBS issue underwriter）"@zh ;
+    rdfs:comment "同意买入投资者未认购之任何凭证的一方。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-iss:SecurityUnderwriter ;
+    skos:definition "The party which agrees to buy any certificates that are not bought by investors Term origin:MBS PoC Reviews"@en .
+
+fibo-sec-dbt-mbs:RealEstateMortgageInvestmentConduit a owl:Class ;
+    rdfs:label "real estate mortgage investment conduit"@en,
+        "房地产抵押贷款投资管道（real estate mortgage investment conduit）"@zh ;
+    rdfs:comment "将抵押贷款汇聚成池并发行抵押支持证券的特殊目的载体（REMIC）。"@zh ;
+    rdfs:seeAlso <https://www.investopedia.com/terms/r/real-estate-mortgage-investment-conduit-remic.asp> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-dbt-mbs:MortgagePool ;
+            owl:onProperty fibo-fnd-oac-own:owns ],
+        fibo-be-le-lp:SpecialPurposeVehicle ;
+    skos:definition "special purpose vehicle that pools mortgage loans together and issues mortgage-backed securities"@en ;
+    cmns-av:abbreviation "REMIC"@en ;
+    cmns-av:explanatoryNote "A real estate mortgage investment conduit may be organized as a partnership, a trust, a corporation, or an association and is exempt from federal taxes."@en .
+
+fibo-sec-dbt-mbs:SBA-Pool a owl:Class ;
+    rdfs:label "SBA pool"@en,
+        "小企业管理局池（SBA pool）"@zh ;
+    rdfs:comment "由美国小企业管理局（SBA）担保贷款组成的池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgagePool ;
+    skos:editorialNote "Unknown pool type, from Cutter SME reviews; other pool types listed under Agency are from or validated by AdeptAdvisory SME review."@en .
+
+fibo-sec-dbt-mbs:denomination.1 a owl:ObjectProperty ;
+    rdfs:label "denomination"@en,
+        "票面金额（denomination）"@zh ;
+    rdfs:comment "票据计价的货币金额，例如 500 美元面额的票据。"@zh ;
+    rdfs:domain fibo-sec-dbt-mbs:PassThroughMBSInstrumentNote ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "The currency amount in which the Note is denominated, for example $500 notes. This term added by symmettry with MBS Tranche Note. needs to be reviewed and validated."@en .
+
+fibo-sec-dbt-mbs:isSliceOf a owl:ObjectProperty ;
+    rdfs:label "is slice of"@en,
+        "是……的切片（is slice of）"@zh ;
+    rdfs:comment "表明某一持有是某一分档的切片。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:PromissoryNote ;
+    rdfs:range fibo-sec-dbt-mbs:MortgageBackedSecurity ;
+    rdfs:subPropertyOf cmns-col:isPartOf ;
+    owl:inverseOf fibo-sec-dbt-mbs:hasNote .
+
+fibo-sec-dbt-mbs:prime a owl:DatatypeProperty ;
+    rdfs:label "prime"@en,
+        "是否优质（prime）"@zh ;
+    rdfs:comment "表明该抵押贷款池是否被标识为优质（Prime）贷款池。"@zh ;
+    rdfs:domain fibo-sec-dbt-mbs:ResidentialMBS ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the mortage pool is identified as Prime or not."@en .
+
+fibo-sec-dbt-mbs: a owl:Ontology ;
+    rdfs:label "Mortgage-backed Securities Ontology"@en,
+        "抵押贷款支持证券本体（Mortgage-backed Securities Ontology）"@zh ;
+    dcterms:abstract "Mortgage backed securities are like asset backed securities except that the underlying loan pool is a pool of mortgage loans." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义抵押贷款支持证券（MBS）：以抵押贷款池为支持的证券。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-be-le-lp:,
+        fibo-bp-iss-dbti:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-fse:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-loan-reln-mtg:,
+        fibo-sec-dbt-abs:,
+        fibo-sec-dbt-dbti:,
+        fibo-sec-dbt-pbs:,
+        fibo-sec-fund-fund:,
+        fibo-sec-sec-pls:,
+        fibo-sec-sec-iss:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-org:,
+        cmns-rlcmp: ;
+    owl:versionIRI fibo-sec-dbt-mbs: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc." .
+
+fibo-sec-dbt-mbs:MBSPool a owl:Class ;
+    rdfs:label "m b s pool"@en,
+        "抵押支持证券池（MBS pool）"@zh ;
+    rdfs:comment "由一组 MBS 工具组成的池投资。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-pls:DebtPool ;
+    skos:definition "A pool investment consisting of a collection of MBS instruments."@en .
+
+fibo-sec-dbt-mbs:MortgageBackedSecurityOfferingProspectus a owl:Class ;
+    rdfs:label "mortgage-backed security offering prospectus"@en,
+        "抵押支持证券发行招募说明书（mortgage-backed security offering prospectus）"@zh ;
+    rdfs:comment "描述抵押支持证券发行条款及所含各工具的招募说明书。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-iss:Prospectus ;
+    skos:definition "Prospectus describing the terms of the issue and each of the instruments included in the mortgage backed security issue. Term origin:SMER"@en .
+
+fibo-sec-dbt-mbs:PassThroughMBSDeal a owl:Class ;
+    rdfs:label "pass through m b s deal"@en,
+        "过手型抵押支持证券交易（pass-through MBS deal）"@zh ;
+    rdfs:comment "池中付款直接过手给投资者的抵押支持证券工具的一次发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-mbs:isAlso ;
+            owl:someValuesFrom fibo-sec-dbt-mbs:AgencyMBSDeal ],
+        fibo-sec-dbt-dbti:DebtOffering ;
+    skos:definition "An issue of Mortgage Backed Security instruments in which payments on the pool are passed through to investors"@en ;
+    skos:editorialNote "The cashflows from interest and principal payments on the mortgages in the underlying pool are passed on to investors, usually with the deduction of fees in for them of a reduction in a mumber of percentage points or a monetary amount. Modeling note: Thinking about this further, and after more PoC reviews, it seems to me that we should simply define two kinds of Deal which are Tranched and Pass Thtrough, just below the level of Pool Backed Securities Deal. Investigaiton of various SMOs and REMICs and the like suggests that the original PoC term duality shown here (Tranched = Non Agency; Pass Through = Agency) is too simplistic."@en .
+
+fibo-sec-dbt-mbs:PayingAgent a owl:Class ;
+    rdfs:label "paying agent"@en,
+        "付款代理（paying agent）"@zh ;
+    rdfs:comment "代表发行人向证券持有人付款的代理机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-mbs:responsibleFor ;
+            owl:someValuesFrom fibo-fnd-pas-psch:Payment ] .
+
+fibo-sec-dbt-mbs:PrivateLabelMBSDeal a owl:Class ;
+    rdfs:label "private label m b s deal"@en,
+        "私募品牌抵押支持证券交易（private label MBS deal）"@zh ;
+    rdfs:comment "由私人机构（而非政府机构）发行的抵押支持证券的一次发行。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-dbti:DebtOffering .
+
+fibo-sec-dbt-mbs:isAlso a owl:ObjectProperty ;
+    rdfs:label "is also"@en,
+        "同时是（is also）"@zh ;
+    rdfs:comment "表明某分档同时属于另一类型。"@zh ;
+    rdfs:domain fibo-sec-dbt-mbs:PassThroughMBSDeal ;
+    rdfs:range fibo-sec-dbt-mbs:AgencyMBSDeal .
+
+fibo-sec-dbt-mbs:responsibleFor a owl:ObjectProperty ;
+    rdfs:label "responsible for"@en,
+        "负责（responsible for）"@zh ;
+    rdfs:comment "表明某一方对某一发行、池或工具负有责任。"@zh ;
+    rdfs:domain fibo-sec-dbt-mbs:PayingAgent ;
+    rdfs:range fibo-fnd-pas-psch:Payment .
+
+fibo-sec-dbt-mbs:AgencyMBSDeal a owl:Class ;
+    rdfs:label "agency m b s deal"@en,
+        "机构抵押支持证券交易（agency MBS deal）"@zh ;
+    rdfs:comment "由政府机构持有的抵押贷款池支持的证券的一次发行。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-dbti:DebtOffering ;
+    owl:disjointWith fibo-sec-dbt-mbs:PrivateLabelMBSDeal ;
+    skos:definition "An issue of securities backed by pools of mortgages held by government agencies."@en ;
+    cmns-av:explanatoryNote "These are Ginnie Mae, Freddie Mac and Fannie Mae (for the US). Of these agencies, GNMA (Ginnie Mae) issues mortgages in its own right (Investorwords differs on this). Fannie Mae and Freddie Mac purchase mortgages. Those mortgages are issued by banks. Before one of these agencies purchases a mortgage, there are certain criteria that have to be met. These are specified in terms of, for example, the balance of the mortgage, limits to credit ratings."@en .
+
+fibo-sec-dbt-mbs:GovernmentMortgageAgency a owl:Class ;
+    rdfs:label "government mortgage agency"@en,
+        "政府抵押贷款机构（government mortgage agency）"@zh ;
+    rdfs:comment "由政府为发行抵押贷款（证券）之目的而设立的机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom cmns-org:LegalEntity ],
+        fibo-be-fct-fct:FunctionalEntity ;
+    skos:definition "An agency set up by a government for the purpose of issuing mortgages."@en ;
+    skos:scopeNote "There are three such agencies in the United States: FNMA, GNMA and FHLMC (Fannie Mae, Ginnie Mae and Freddie Mac respectively), and there may be others outside of the US."@en .
+
+fibo-sec-dbt-mbs:NonAgencyMortgagePool a owl:Class ;
+    rdfs:label "non agency mortgage pool"@en,
+        "非机构抵押贷款池（non-agency mortgage pool）"@zh ;
+    rdfs:comment "由非机构抵押贷款组成的池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgagePool .
+
+fibo-sec-dbt-mbs:PassThroughMBSInstrumentNote a owl:Class ;
+    rdfs:label "pass through m b s instrument note"@en,
+        "过手型抵押支持证券工具票据（pass-through MBS instrument note）"@zh ;
+    rdfs:comment "过手型工具中的单张票据。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:PromissoryNote ;
+    skos:definition "An individual note of a pass through instrument."@en .
+
+fibo-sec-dbt-mbs:ResidentialMBS a owl:Class ;
+    rdfs:label "residential m b s"@en,
+        "住宅抵押支持证券（residential MBS）"@zh ;
+    rdfs:comment "由住宅抵押贷款池支持的信托凭证（债券）。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgageBackedSecurity ;
+    skos:definition "Residential Mortgage-Backed Securities, which are trust certificates (bonds) backed by a pool of residential mortgage loans."@en ;
+    cmns-av:explanatoryNote "Notes from CESR: They are issued by banks and backed by an underlying pool of residential mortgages. There can be some distinctions between prime RMBS and sub-prime/non-conforming RMBS although there is no consensus about what constitutes a sub-prime/non-conforming mortgage in Europe."@en .
+
+fibo-sec-dbt-mbs:SpecialistMortgageIssuer a owl:Class ;
+    rdfs:label "specialist mortgage issuer"@en,
+        "专业抵押贷款发行人（specialist mortgage issuer）"@zh ;
+    rdfs:comment "专门从事面向公众发行抵押贷款业务的商业组织。"@zh ;
+    rdfs:subClassOf fibo-be-fct-fct:FunctionalBusinessEntity ;
+    skos:definition "A business organization that specialises in and exists for the issuance of mortgages to the general public."@en ;
+    skos:editorialNote "Possibly add: Building Society. these exist in the UK (though almost extinct) but have not come up in US-based reviews of the model. Also known as Friendly Societies. There may be analogous organisations in other parts of the world, e.g. South America??"@en .
+
+fibo-sec-dbt-mbs:hasNote a owl:ObjectProperty ;
+    rdfs:label "has note"@en,
+        "具有票据（has note）"@zh ;
+    rdfs:comment "将分档或发行与其中的单张票据关联起来。"@zh ;
+    rdfs:domain fibo-sec-dbt-mbs:MortgageBackedSecurity ;
+    rdfs:range fibo-fbc-fi-fi:PromissoryNote ;
+    rdfs:subPropertyOf cmns-col:hasPart .
+
+fibo-sec-dbt-mbs:MBSIssuer a owl:Class ;
+    rdfs:label "m b s issuer"@en,
+        "抵押支持证券发行人（MBS issuer）"@zh ;
+    rdfs:comment "抵押支持证券的发行人。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-sec-dbt-mbs:GovernmentMortgageAgency fibo-fbc-fct-fse:Bank fibo-sec-dbt-mbs:SpecialistMortgageIssuer ) ],
+        fibo-fbc-fi-fi:Issuer ;
+    skos:definition "The issuer of a Mortgage Backed Security."@en ;
+    cmns-av:explanatoryNote "This can be an agency that exists for this purpose or it may be the issuer of the original mortgages in the pool."@en .
+
+fibo-sec-dbt-mbs:MortgageBackedSecurity a owl:Class ;
+    rdfs:label "mortgage-backed security"@en,
+        "抵押支持证券（mortgage-backed security）"@zh ;
+    rdfs:comment "代表对抵押贷款池（最常见为住宅房产抵押贷款）现金流请求权的债务凭证。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom fibo-sec-dbt-mbs:MBSIssuer ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isCharacterizedBy ;
+            owl:someValuesFrom fibo-sec-dbt-pbs:WeightedAverageRemainingTerm ],
+        fibo-sec-dbt-pbs:PoolBackedSecurity ;
+    skos:definition "debt obligations that represent claims to the cash flows from pools of mortgage loans, most commonly on residential property"@en ;
+    cmns-av:abbreviation "MBS"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of Financial Instruments (CFI code), Fourth edition, 2019-10-01." ;
+    cmns-av:explanatoryNote "Mortgage loans are purchased from banks, mortgage companies and other originators, and then assembled into pools by a governmental, quasigovernmental or private entity. The entity then issues securities that represent claims on the principal and interest payments made by borrowers on the loans in the pool, a process known as securitization." .
+
+fibo-sec-dbt-mbs:MortgagePool a owl:Class ;
+    rdfs:label "mortgage pool"@en,
+        "抵押贷款池（mortgage pool）"@zh ;
+    rdfs:comment "由信托持有、作为发行抵押支持证券之抵押品的贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-loan-reln-mtg:LoanSecuredByRealEstate ],
+        fibo-sec-sec-pls:DebtPool ;
+    skos:definition "loan pool consisting of mortgages that are held in trust as collateral for the issuance of a mortgage-backed security"@en ;
+    skos:editorialNote "Analytics review session notes: Dated facts (for non agency mortgage pools): Aggregate of : Scheduled payments (% and $) Payments Prepayments (% and $ notional) Default amounts (statistics: Prepayments: (start at 0 and ramp up and then level off (why?)) SMM basic measure monthly Basis CPR C? Prepayment Rate based on SMM annualised PSA based on CPR takes the COR and applies a curve to the rate of prepayments on the model. (%) e.g. 100% PSA is applied to model. 200% PSA implies x%CPR per month Tries to reflect how prepayments in a pool will accelerate and then burn out. This reflects the nature of a mortgage pool, elgl why people will prepay, refinance, address selection and so on i.e. local economy facts. so those will drop out of the pool and you are left with those who will not. that's why it levels off. So who originates these figures? Is it measured ongoing?: No . Used to determine a pricing speed when marketing the security to investors. So this is part of the primary market / issuance where there is marketing. These are the estimated figures as they will be at issue. PSA may also be used as triggers. 100 - 400% PSA band - if you go outside that band, may change payment behaviour of those classes. Defaults: measures or rate of default CDR conditional default rate (annual) MDR Monhtly default rate - like CPR = Rate over time. - both defined as Rates. (%) Figures are originated by the servicer of the debt pool. Each serviceer will have their own formats but will do info on prepayments, llosses, detauls on specific loans and so on."@en,
+        """The class Mortgage Pool originally had a property 'pool type' referring to a selection list of textual stylings of pool types. Those are now replaced with actual sub types of mortgage pool. Here are the original notes and definition that went with the enumerated list of pool types: 
+
+The type of pool for a pool backed security. Each of these pool types represents pools of mortgages that have conformed to certain standards (that change periodically) that make them "conforming" -- such as mortgage balance under a certain threshold, creditworthiness, loan-to-value, etc.
+
+Further Notes:
+Non Agency signifies a tranched security, for which there will also be a Tranche Type for the security tranche itself. All other pool types are Agency pool types. 
+
+List Populated from Cutter document Page 5. 
+
+Additional terms from Adept Advistory:
+Under Agency mortgages, basically you have various types of pools under the various agencies. You have:
+-GNMA-I
+-GNMA-II
+-GNMA Platinum
+-FNMA 
+-FHLMC
+-FHLMC Gold
+As far as definitions:The simple definition is that each of these pool types represents pools of mortgages that have conformed to certain standards (that change periodically) that make them "conforming" -- such as mortgage balance under a certain threshold, creditworthiness, loan-to-value, etc. Also, GNMA is explicitly backed by the US government, while FNMA and FHLMC are only implicitly backed by the US government. Perhaps there needs to be some research done on the parameters for what makes a loan conforming or not. 
+
+Consensus:Review."""@en .
+
+fibo-sec-dbt-mbs:AgencyMortgagePool a owl:Class ;
+    rdfs:label "agency mortgage pool"@en,
+        "机构抵押贷款池（agency mortgage pool）"@zh ;
+    rdfs:comment "由机构抵押贷款组成的池。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgagePool ;
+    owl:disjointWith fibo-sec-dbt-mbs:NonAgencyMortgagePool ;
+    skos:definition "A pool of agency mortgages."@en .
+

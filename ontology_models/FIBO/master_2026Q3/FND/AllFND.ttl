@@ -1,0 +1,108 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-aap-ppl: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> .
+@prefix fibo-fnd-acc-4217: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-all: <https://spec.edmcouncil.org/fibo/ontology/FND/AllFND/> .
+@prefix fibo-fnd-arr-arr: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-arr-cls: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-arr-id: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-arr-rep: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/> .
+@prefix fibo-fnd-arr-rt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-law-cor: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-oac-ctl: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Control/> .
+@prefix fibo-fnd-oac-oac: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/OwnershipAndControl/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-org-fm: <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/FormalOrganizations/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-plc-rp: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/RealProperty/> .
+@prefix fibo-fnd-plc-vrt: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-all: a owl:Ontology ;
+    rdfs:label "all FND",
+        "FND 域总入口（All FND）"@zh ;
+    dcterms:abstract """The Foundations (FND) domain includes ontologies that define general purpose concepts required to support other FIBO domains. These include concepts and relationships about people, organizations, places, and most importantly, contracts that are essential to domains such as Business Entities (BE), Financial Business and Commerce (FBC), Indices and Indicators (IND), and Securities (SEC). 
+
+The scope of the definitions provided in FND is limited to coverage of exactly those concepts needed by other FIBO domain areas. They may be useful for other domains, such as insurance, but are intentionally underspecified to avoid unintended consequences and thus do not provide exhaustive coverage for any concept contained herein. However, Foundations is designed for growth over time. The expectation is that as additional foundational knowledge is needed to define concepts in other FIBO domain areas, additional ontologies and/or concepts will be integrated into Foundations as required.""" ;
+    dcterms:issued "2017-12-28T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2017-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2017-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-07-07T18:00:00"^^xsd:dateTime ;
+    dcterms:title "FIBO FND Domain",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Domain" ;
+    rdfs:comment "聚合基础（Foundations，FND）域的全部生产本体，一次导入即可获得 FIBO 全部基础概念（协议、合同、参与方、日期、所有权等），是依赖 FND 全域时的标准入口。"@zh ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    owl:imports fibo-fnd-acc-cur:,
+        fibo-fnd-acc-4217:,
+        fibo-fnd-aap-ppl:,
+        fibo-fnd-agr-agr:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-arr:,
+        fibo-fnd-arr-asmt:,
+        fibo-fnd-arr-cls:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-arr-id:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-arr-rt:,
+        fibo-fnd-arr-rep:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-law-cor:,
+        fibo-fnd-org-fm:,
+        fibo-fnd-oac-ctl:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-oac-oac:,
+        fibo-fnd-pty-pty:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-plc-rp:,
+        fibo-fnd-plc-vrt:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20260701/AllFND/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/AllFND.rdf version of this ontology was modified to incorporate the recently released assessments and ratings ontologies.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190601/AllFND.rdf version of this ontology was modified to eliminate the unused legitimate organizations ontology, thereby simplifying the overal organization hierarchy, eliminate duplication with LCC, and merge countries with locations.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/AllFND.rdf version of this ontology was modified to merge goals with objectives.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20201101/AllFND.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary and to eliminate unnecessary imports statements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/AllFND.rdf version of the ontology was modified to add an ontology for real property (LOAN-168).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20241001/AllFND.rdf version of the ontology was modified to eliminate the now redundant Roles and Quantities and Units ontologies (FND-386).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/AllFND.rdf version of the ontology was modified to eliminate the now redundant Jurisdictions and Organizations ontologies (FND-399) and to reuse concepts from the Commons 1.3 sites and facilities ontology (FND-401).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20251201/AllFND.rdf version of the ontology was modified to eliminate the now redundant Agents ontology (FND-411) and to reflect migration of concepts from accounting equity to ownership in FND (FND-409)." ;
+    cmns-av:copyright "Copyright (c) 2017-2025 Object Management Group, Inc.",
+        "Copyright (c) 2017-2026 EDM Association dba EDM Council, Inc." ;
+    cmns-av:explanatoryNote "The 'all' FND ontology is provided for convenience for FIBO users. It imports all of the Production (Released) ontologies that comprise the FIBO Foundations (FND) domain, and can be loaded directly in tools such as Protege with the expectation that all of the accompanying content will be loaded." .
+

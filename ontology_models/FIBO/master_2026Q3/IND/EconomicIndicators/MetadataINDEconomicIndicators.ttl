@@ -1,0 +1,59 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ei-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/MetadataINDEconomicIndicators/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-ind-ei-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Indices and Indicators (IND) Economic Indicators Module",
+        "IND 经济指标模块元数据（Metadata for the IND Economic Indicators Module）"@zh ;
+    dcterms:abstract "The economic indicators module includes ontologies defining concepts to do with published economic indicators. These give some indication of the state of some economy. Indicators of this type are usually published by governments or government agencies, or by international agencies or agencies of countries other than the ones reported on. Examples include Gross Domestic Product (GDP) and unemployment rates." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-02-06T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明经济指标（Economic Indicators）模块由经济指标本体及美国、加拿大经济指标个体本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/IND/20230201/EconomicIndicators/MetadataINDEconomicIndicators/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+
+fibo-ind-ei-mod:EconomicIndicatorsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "economic indicators module" ;
+    dcterms:abstract "The economic indicators module includes ontologies defining concepts to do with published economic indicators. These give some indication of the state of some economy. Indicators of this type are usually published by governments or goernment agencies, or by international agencies or agencies of countries other than the ones reported on. Examples include Gross Domestic Product (GDP) and unemployment rates." ;
+    dcterms:contributor "88 Solutions",
+        "Adaptive, Inc.",
+        "Bank of New York Mellon",
+        "Bloomberg LP",
+        "Bureau of Economic Analysis (BEA, US Department of Commerce)",
+        "Bureau of Labor Statistics (BLS, US Department of Commerce)",
+        "Census Bureau (US Department of Commerce)",
+        "Citigroup",
+        "Dassault Systemes/No Magic",
+        "Deutsche Bank",
+        "Federal Reserve Bank of Kansas City",
+        "HP Enterprise / Mphasis",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Nordea Bank AB",
+        "Office of Financial Research (OFR), U.S. Department of the Treasury",
+        "Pinnacle Bank (Morgan Hill, California)",
+        "State Street Bank and Trust",
+        "Statistics Canada",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo Bank, N. A.",
+        "agnos.ai UK Ltd" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/>,
+        <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/NorthAmericanIndicators/CAEconomicIndicators/>,
+        <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO IND Economic Indicators Module",
+        "Financial Industry Business Ontology (FIBO) Indices and Indicators (IND) Economic Indicators Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+

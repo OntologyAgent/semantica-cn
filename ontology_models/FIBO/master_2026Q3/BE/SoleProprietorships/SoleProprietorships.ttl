@@ -1,0 +1,88 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-be-sps-sps: <https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/SoleProprietorships/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-oac-oac: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/OwnershipAndControl/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-sps-sps: a owl:Ontology ;
+    rdfs:label "Sole Proprietorships Ontology",
+        "独资经营本体（Sole Proprietorships Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the fundamental concepts for representing sole proprietorships -- i.e., organizations that are owned by an individual that is responsible for the liabilities of the organization." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义由单一自然人拥有和经营的独资企业形态。"@zh ;
+    owl:imports fibo-be-le-lp:,
+        fibo-be-oac-opty:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-oac-oac:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-org:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/SoleProprietorships/SoleProprietorships/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20160201/SoleProprietorships/SoleProprietorships.rdf version of this ontology was modified per the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/SoleProprietorships/SoleProprietorships.rdf version of this ontology was modified to use natural person rather than legally capable person.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20181101/SoleProprietorships/SoleProprietorships.rdf version of this ontology was modified to eliminate a redundant subclass relationship, enhance ownership relations, and revise definitions to be ISO 704 compliant.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200601/SoleProprietorships/SoleProprietorships.rdf version of this ontology was modified to eliminate unnecessary references to external sources.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210301/SoleProprietorships/SoleProprietorships.rdf version of this ontology was modified to make sole proprietorship a subclass of legal person.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220101/SoleProprietorships/SoleProprietorships.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/SoleProprietorships/SoleProprietorships.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20240101/SoleProprietorships/SoleProprietorships.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-be-sps-sps:SoleProprietor a owl:Class ;
+    rdfs:label "sole proprietor",
+        "独资经营者（sole proprietor）"@zh ;
+    rdfs:comment "拥有某企业、享有该企业全部利润、并与该企业被视为单一实体（非法人）的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-fnd-oac-oac:ownsAndControls ;
+                    owl:someValuesFrom fibo-be-sps-sps:SoleProprietorship ] ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-opty:hasInvestmentEntity ;
+            owl:someValuesFrom fibo-be-sps-sps:SoleProprietorship ],
+        fibo-be-oac-opty:EntityOwner ;
+    skos:definition "party that owns a business, has the rights to all profits from that business and is considered a single entity (unincorporated) together with that business for tax and liability purposes" ;
+    cmns-av:explanatoryNote "A sole proprietor has unlimited liability with respect to any business debts." ;
+    cmns-av:synonym "sole owner",
+        "sole trader" .
+
+fibo-be-sps-sps:SoleProprietorship a owl:Class ;
+    rdfs:label "sole proprietorship",
+        "独资企业（sole proprietorship）"@zh ;
+    rdfs:comment "由单人拥有的非法人企业。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
+            owl:someValuesFrom fibo-fnd-law-lcap:LiabilityCapacity ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty fibo-fnd-oac-oac:isOwnedAndControlledBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-be-le-lp:BusinessEntity,
+        cmns-org:LegalPerson ;
+    skos:definition "unincorporated business owned by a single person" .
+

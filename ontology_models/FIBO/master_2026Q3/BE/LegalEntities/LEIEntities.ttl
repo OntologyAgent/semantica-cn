@@ -1,0 +1,426 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-le-lei: a owl:Ontology ;
+    rdfs:label "Legal Entity Identifier (LEI) Entities Ontology",
+        "LEI 法人实体本体（Legal Entity Identifier Entities Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts around contractually capable business entities. The terms defined here are those which are relevant to the Legal Entity Identifier (LEI) work. The term known as legal entity in that work is identified as a formal organization which is recognized in some jurisdiction as being capable of incurring some liability, whether or not is a legal person as understood by the legal community. This is labeled as contractually capable entity, to avoid confusion with the accepted legal term for Legal Entity. Such entities are recognized as requiring an LEI, but the identifier itself is allocated to the formal organization which is recognized as being contractually capable." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义持有全球法人识别编码（LEI）的法人实体，对接 ISO 17442 标准的 LEI 体系。"@zh ;
+    owl:imports fibo-be-le-fbo:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        cmns-txt: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/LegalEntities/LEIEntities/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20131101/LegalEntities/LEIEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20150201/LegalEntities/LEIEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.1 RTF report. Changes include deprecation of the MunicipalEntity, Sovereign, and SupranationalEntity classes and making them equivalent to classes in the Government Entities ontology.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20160801/LegalEntities/LEIEntities.rdf version of this ontology was modified to incorporate LEIEligibleEntity and LEIRegisteredEntity, as well as add restrictions in support of the ISO 17442 LEI effort and related changes to the GLEIF Common Data Format for the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/LegalEntities/LEIEntities.rdf version of this ontology was modified to deprecate LEIEligibleEntity as a part of a simplification strategy for the organizational class hierarchy, to support GLEIF LEI Level 2 ownership relationships, and eliminate a circular dependency with government entities by removing elements that had been deprecated for the last several FIBO revisions (municipal entity, sovereign, and supranational entity).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190301/LegalEntities/LEIEntities.rdf version of this ontology was revised to replace hasDefinition with isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190701/LegalEntities/LEIEntities.rdf version of this ontology was revised to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190901/LegalEntities/LEIEntities.rdf version of this ontology was revised to eliminate duplication with concepts in LCC and to correct the parent of relationship record.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200301/LegalEntities/LEIEntities.rdf version of this ontology was revised to clean up circular definitions and augment it to incorporate the Text datatype and structure names, including eliminating redundant restrictions on LegalEntity.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210601/LegalEntities/LEIEntities.rdf version of this ontology was revised to reflect the move of some organization-specific concepts from BE to FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210901/LegalEntities/LEIEntities.rdf version of this ontology was revised to change the restriction on EntityLegalForm from identifies to denotes, in line with the definition of a code as opposed to an identifier, given the nature of an entity legal form.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20211001/LegalEntities/LEIEntities.rdf version of this ontology was revised to address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/LegalEntities/LEIEntities.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/LegalEntities/LEIEntities.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/LegalEntities/LEIEntities.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20240101/LegalEntities/LEIEntities.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-be-le-lei:AccountingPeriod a owl:NamedIndividual,
+        fibo-be-le-lei:RelationshipPeriodQualifier ;
+    rdfs:label "accounting period" ;
+    skos:definition "qualifier indicating that the relationship period reflects the period of time covered by the most recent validation documents from an accounting perspective for this relationship" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:ContractuallyCapableEntity a owl:Class ;
+    rdfs:label "contractually capable entity",
+        "具有缔约能力的实体（contractually capable entity）"@zh ;
+    rdfs:comment "对金融交易之履行承担法律或财务责任、或在其管辖区具有缔约法律权利的唯一实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-org:LegalEntity ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-pts:AgentRole ;
+    skos:definition "a unique entity that is legally or financially responsible for the performance of financial transactions, or has the legal right in its jurisdiction to enter independently into legal contracts, regardless of whether it is incorporated or constituted in some other way (e.g. trust, partnership, contractual). This excludes natural persons, but includes governmental organizations and supranationals." ;
+    cmns-av:adaptedFrom "ISO 17442" .
+
+fibo-be-le-lei:DocumentFilingPeriod a owl:NamedIndividual,
+        fibo-be-le-lei:RelationshipPeriodQualifier ;
+    rdfs:label "document filing period" ;
+    skos:definition "a qualifier indicating that the relationship period reflects the validity period for any regulatory filing, accounting document, other document demonstrating the relationship's validity" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:GenerallyAcceptedAccountingPrinciples a owl:NamedIndividual,
+        fibo-be-le-lei:AccountingFramework ;
+    rdfs:label "Generally Accepted Accounting Principles" ;
+    rdfs:seeAlso <https://www.fasb.org/home> ;
+    skos:definition "an accounting framework developed by the US Financial Accounting Standards Board (FASB)" ;
+    cmns-av:abbreviation "GAAP",
+        "US GAAP" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:ISO17442-CodeSet a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifierScheme ;
+    rdfs:label "ISO 17442 code set" ;
+    skos:definition "the set of legal entity identifiers that comprise the ISO 17442 legal entity identifier specification" ;
+    cmns-av:synonym "GLEIF LEI CDF v2.1 legal entity identifier (LEI) code set" .
+
+fibo-be-le-lei:ISO20275-CodeSet a owl:NamedIndividual,
+        fibo-be-le-lei:EntityLegalFormScheme ;
+    rdfs:label "ISO 20275 code set" ;
+    skos:definition "the set of entity legal form identifiers that comprise the ISO 20275 entity legal form specification" ;
+    cmns-av:synonym "entity legal form (ELF) code set" .
+
+fibo-be-le-lei:InternationalFinancialReportingStandard a owl:NamedIndividual,
+        fibo-be-le-lei:AccountingFramework ;
+    rdfs:label "International Financial Reporting Standard" ;
+    rdfs:seeAlso <https://www.ifrs.org/> ;
+    skos:definition "an accounting framework developed by the International Accounting Standards Board (IASB)" ;
+    cmns-av:abbreviation "IFRS" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:LEIRegisteredEntity a owl:Class ;
+    rdfs:label "LEI registered entity",
+        "LEI 注册实体（LEI registered entity）"@zh ;
+    rdfs:comment "已注册并以法律实体标识符（LEI）标识的法律主体。"@zh ;
+    rdfs:subClassOf cmns-org:LegalPerson ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ] ;
+    skos:definition "a legal person that has registered for and is identified by a legal entity identifier" ;
+    cmns-av:explanatoryNote "Note that the GLEIF data includes multiple LEIs for some entities due to corporate actions or other situations. The duplicates are typically archived after some period of time, but in order to reflect the reality in the data, the restriction is modeled as someValuesFrom rather than exactly 1 LEI for a given entity." .
+
+fibo-be-le-lei:OtherAccountingFramework a owl:NamedIndividual,
+        fibo-be-le-lei:AccountingFramework ;
+    rdfs:label "other accounting framework" ;
+    rdfs:seeAlso <https://www.ifrs.org/> ;
+    skos:definition "an accounting framework of unstated origin (other than IFRS or US GAAP)" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:RelationshipRecord a owl:Class ;
+    rdfs:label "relationship record",
+        "关系记录（relationship record）"@zh ;
+    rdfs:comment "描述法律实体之间关系的记录。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-be-le-lei:isQuantifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-le-lei:RelationshipQualifier ;
+            owl:onProperty fibo-fnd-agr-ctr:isQualifiedBy ],
+        cmns-col:Constituent ;
+    skos:definition "a record describing relationships between legal entities" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:hasOwnershipPercentage a owl:DatatypeProperty ;
+    rdfs:label "has ownership percentage",
+        "具有所有权百分比（has ownership percentage）"@zh ;
+    rdfs:comment "拥有实体在被拥有实体中拥有的所有权权益百分比（如已知）。"@zh ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf fibo-be-le-lei:isQuantifiedBy ;
+    skos:definition "the percentage ownership interest in the owned entity owned by owning entity, if known" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-be-le-lei:isConsolidationOf a owl:ObjectProperty ;
+    rdfs:label "is consolidation of",
+        "是……的合并对象（is consolidation of）"@zh ;
+    rdfs:comment "从 ISO 17442 角度标识被视为「起始节点」或被合并实体的实体。"@zh ;
+    rdfs:range cmns-org:LegalEntity ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "indicates the entity considered the 'start node' or consolidated entity from an ISO 17442 perspective" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:isDirectlyConsolidatedBy a owl:ObjectProperty ;
+    rdfs:label "is directly consolidated by",
+        "由……直接合并（is directly consolidated by）"@zh ;
+    rdfs:comment "标识「末端节点」（母公司）对「起始节点」（子公司）的会计进行直接完全合并。"@zh ;
+    rdfs:range cmns-org:LegalEntity ;
+    rdfs:subPropertyOf fibo-be-le-lei:isConsolidatedBy ;
+    skos:definition "indicates that the entity considered the 'end node' or consolidating entity (parent) fully consolidates the accounting of the 'start node' (child) per the accounting rules specified, and is the closest consolidating entity to that child in any applicable ownership hierarchy" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:isInternationalBranchOf a owl:ObjectProperty ;
+    rdfs:label "is an international branch of",
+        "是……的国际分支（is an international branch of）"@zh ;
+    rdfs:comment "标识「起始节点」（子公司）是「末端节点」（母公司）的国际分支。"@zh ;
+    rdfs:range cmns-org:LegalEntity ;
+    rdfs:subPropertyOf fibo-be-le-lei:isConsolidatedBy ;
+    skos:definition "indicates that the entity considered the 'start node' or consolidated entity (child) is an international subsidiary of the 'end node' (parent) in the jurisdiction of the child" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:isUltimatelyConsolidatedBy a owl:ObjectProperty ;
+    rdfs:label "is ultimately consolidated by",
+        "由……最终合并（is ultimately consolidated by）"@zh ;
+    rdfs:comment "标识「末端节点」（母公司）对「起始节点」（子公司）的会计进行最终完全合并。"@zh ;
+    rdfs:range cmns-org:LegalEntity ;
+    rdfs:subPropertyOf fibo-be-le-lei:isConsolidatedBy ;
+    skos:definition "indicates that the entity considered the 'end node' or consolidating entity (parent) fully consolidates the accounting of the 'start node' (child) per the accounting rules specified, and is the most distant consolidating entity to that child in any applicable ownership hierarchy" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+cmns-org:OrganizationName a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-txt:Text ;
+            owl:onProperty fibo-be-le-lei:hasTransliteratedName ] .
+
+fibo-be-le-lei:EntityLegalFormIdentifier a owl:Class ;
+    rdfs:label "entity legal form identifier",
+        "实体法律形式标识符（entity legal form identifier）"@zh ;
+    rdfs:comment "按 ISO 20275 定义表示实体法律形式的代码。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-be-le-lei:EntityLegalFormScheme ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lei:EntityLegalForm ;
+            owl:onProperty cmns-dsg:denotes ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cds:CodeElement ;
+    skos:definition "code that denotes an entity legal form as defined in ISO 20275" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/code-lists/iso-20275-entity-legal-forms-code-list"^^xsd:anyURI,
+        "https://www.iso.org/obp/ui/#iso:std:iso:20275:ed-1:v1:en"^^xsd:anyURI .
+
+fibo-be-le-lei:RelationshipStatusActive a owl:NamedIndividual,
+        fibo-be-le-lei:RelationshipStatus ;
+    rdfs:label "relationship status - active" ;
+    skos:definition "status indicating that as of the last report or update, the reporting legal entity reported that it is legally registered and/or operating, and that the relationship detailed in this relationship record is still valid" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:RelationshipStatusInactive a owl:NamedIndividual,
+        fibo-be-le-lei:RelationshipStatus ;
+    rdfs:label "relationship status - inactive" ;
+    skos:definition "status indicating that it has been determined that the relationship ended, e.g. because entity that reported this relationship is no longer legally registered and/or operating; or the relationship is no longer valid for other reasons" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:hasLegalAddress a owl:ObjectProperty ;
+    rdfs:label "has legal address",
+        "具有法定地址（has legal address）"@zh ;
+    rdfs:comment "标识实体在其设立管辖区内用于注册目的的法定地址。"@zh ;
+    rdfs:domain cmns-org:LegalEntity ;
+    rdfs:range fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:subPropertyOf fibo-be-le-fbo:hasRegisteredAddress ;
+    skos:definition "indicates the legal address for the entity, in the jurisdiction in which the entity is established, used for registration purposes with respect to obtaining an LEI" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-be-le-lei:hasLegalForm a owl:ObjectProperty ;
+    rdfs:label "has legal form",
+        "具有法律形式（has legal form）"@zh ;
+    rdfs:comment "标识在给定管辖区内从法律或监管角度定义的实体性质。"@zh ;
+    rdfs:domain cmns-org:LegalEntity ;
+    rdfs:range fibo-be-le-lei:EntityLegalForm ;
+    rdfs:subPropertyOf cmns-cls:isClassifiedBy ;
+    skos:definition "indicates the nature of the entity as defined from a legal or regulatory perspective in a given jurisdiction" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI,
+        "https://www.iso.org/obp/ui/#iso:std:iso:20275:ed-1:v1:en"^^xsd:anyURI .
+
+fibo-be-le-lei:hasLegalFormAbbreviation a owl:DatatypeProperty ;
+    rdfs:label "has legal form abbreviation",
+        "具有法律形式缩写（has legal form abbreviation）"@zh ;
+    rdfs:comment "实体在其注册管辖区所定义法律形式的精确缩写，如 LLC、LLP、Ltd、PLC、Corp。"@zh ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "the precise abbreviation for the entity legal form as defined in the jurisdiction in which it is registered, for example LLC, LLP, Ltd, PLC, Corp." .
+
+fibo-be-le-lei:hasTransliteratedLegalFormAbbreviation a owl:DatatypeProperty ;
+    rdfs:label "has transliterated legal form abbreviation",
+        "具有转写法律形式缩写（has transliterated legal form abbreviation）"@zh ;
+    rdfs:comment "实体法律形式缩写的转写（即拉丁化或罗马化 ASCII）表示。"@zh ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "a transliterated (i.e., in Latin or Romanized ASCII) representation of the abbreviation for the entity legal form" .
+
+fibo-be-le-lei:LegalEntityIdentifierScheme a owl:Class ;
+    rdfs:label "legal entity identifier scheme",
+        "法律实体标识符方案（legal entity identifier scheme）"@zh ;
+    rdfs:comment "规定无歧义 LEI 方案之要素、以标识与任何金融交易相关的法律实体的方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ],
+        cmns-org:OrganizationIdentificationScheme ;
+    skos:definition "a scheme that specifies the elements of an unambiguous legal entity identifier (LEI) scheme to identify the legal entities relevant to any financial transaction" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI,
+        "https://www.iso.org/standard/59771.html"^^xsd:anyURI .
+
+fibo-be-le-lei:RelationshipPeriodQualifier a owl:Class ;
+    rdfs:label "relationship period qualifier",
+        "关系期间限定符（relationship period qualifier）"@zh ;
+    rdfs:comment "对报告期间某方面加以限定的分类符，如该日期区间反映的是会计期间或文件申报期间。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "a classifier that qualifies something about the reporting period specified, such as that the date period reflects an accounting or document filing period" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:RelationshipQualifier a owl:Class ;
+    rdfs:label "relationship qualifier",
+        "关系限定符（relationship qualifier）"@zh ;
+    rdfs:comment "对报告期间内合并实体之间关系的某方面加以限定的分类符，如所用会计框架。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "a classifier that qualifies something about the relationship between consolidated entities during the reporting period, such as the accounting framework used" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:RelationshipStatus a owl:Class ;
+    rdfs:label "relationship status",
+        "关系状态（relationship status）"@zh ;
+    rdfs:comment "指明报告期间内合并实体之间关系状态（活跃或不活跃）的分类符。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:oneOf ( fibo-be-le-lei:RelationshipStatusActive fibo-be-le-lei:RelationshipStatusInactive ) ] ;
+    skos:definition "a classifier that specifies the status of the relationship between consolidated entities during the reporting period (active or inactive)" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:hasTransliteratedName a owl:DatatypeProperty ;
+    rdfs:label "has transliterated name",
+        "具有转写名称（has transliterated name）"@zh ;
+    rdfs:comment "实体名称的转写（即拉丁化或罗马化 ASCII）表示。"@zh ;
+    rdfs:subPropertyOf cmns-dsg:hasTextualName ;
+    skos:definition "a transliterated (i.e., in Latin or Romanized ASCII) representation of a name for the entity" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-be-le-lei:isQuantifiedBy a owl:DatatypeProperty ;
+    rdfs:label "is quantified by",
+        "由……量化（is quantified by）"@zh ;
+    rdfs:comment "表明某事物受某个比率或其他统计值限定或以之为条件。"@zh ;
+    rdfs:range xsd:decimal ;
+    skos:definition "indicates that something is limited to or conditional due to some rate or other statistical value" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:AccountingFramework a owl:Class ;
+    rdfs:label "accounting framework",
+        "会计框架（accounting framework）"@zh ;
+    rdfs:comment "用于计量、确认、列报和披露实体财务信息的框架，包括政策、方法、规则和流程。"@zh ;
+    rdfs:subClassOf fibo-be-le-lei:RelationshipQualifier ;
+    skos:definition "framework, including policies, methods, rules, and processes, used to measure, recognize, present, and disclose the information appearing in an entity's financial statements, and, from a legal ownership perspective, that is applied for accounting consolidation determination" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+fibo-be-le-lei:EntityLegalForm a owl:Class ;
+    rdfs:label "entity legal form",
+        "实体法律形式（entity legal form）"@zh ;
+    rdfs:comment "从法律或监管角度表明实体在其注册管辖区内之性质的法律实体分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-txt:Text ;
+            owl:onProperty fibo-be-le-lei:hasTransliteratedLegalFormAbbreviation ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-txt:Text ;
+            owl:onProperty fibo-be-le-lei:hasLegalFormAbbreviation ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-be-le-lei:EntityLegalFormScheme ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-txt:Text ;
+            owl:onProperty cmns-dsg:hasTextualName ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-txt:Text ;
+            owl:onProperty fibo-be-le-lei:hasTransliteratedName ],
+        cmns-cls:Classifier ;
+    skos:definition "a classifier for a legal entity that indicates the nature of that entity as defined from a legal or regulatory perspective, in the jurisdiction in which it was established" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI,
+        "https://www.iso.org/obp/ui/#iso:std:iso:20275:ed-1:v1:en"^^xsd:anyURI .
+
+fibo-be-le-lei:EntityLegalFormScheme a owl:Class ;
+    rdfs:label "entity legal form scheme",
+        "实体法律形式方案（entity legal form scheme）"@zh ;
+    rdfs:comment "规定实体法律形式代码之要素的方案，如 ISO 20275 所定义。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-be-le-lei:EntityLegalFormIdentifier ],
+        cmns-cls:ClassificationScheme,
+        cmns-cds:CodeSet ;
+    skos:definition "scheme that specifies the elements of the codes for entity legal forms, such as those that are sanctioned in a given jurisdiction as defined in ISO 20725" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/code-lists/iso-20275-entity-legal-forms-code-list"^^xsd:anyURI,
+        "https://www.iso.org/obp/ui/#iso:std:iso:20275:ed-1:v1:en"^^xsd:anyURI .
+
+fibo-be-le-lei:LegalEntityIdentifier a owl:Class ;
+    rdfs:label "legal entity identifier",
+        "法律实体标识符（legal entity identifier）"@zh ;
+    rdfs:comment "按 ISO 17442 定义唯一标识法律主体的组织标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifierScheme ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-org:LegalPerson ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-org:OrganizationIdentifier ;
+    skos:definition "an organization identifier that uniquely identifies a legal person as defined in ISO 17442" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI,
+        "https://www.iso.org/standard/59771.html"^^xsd:anyURI .
+
+fibo-be-le-lei:isConsolidatedBy a owl:ObjectProperty ;
+    rdfs:label "is consolidated by",
+        "由……合并（is consolidated by）"@zh ;
+    rdfs:comment "从 ISO 17442 角度标识被视为「末端节点」或合并实体（母公司）的实体。"@zh ;
+    rdfs:range cmns-org:LegalEntity ;
+    skos:definition "indicates the entity considered the 'end node' or consolidating entity (parent) from an ISO 17442 perspective" ;
+    cmns-av:adaptedFrom "GLEIF Level 2 Relationship Record (RR) Common Data Format (CDF), see https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format#" .
+
+cmns-org:LegalPerson a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-le-lei:LegalEntityIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ] .
+
+cmns-org:LegalEntity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-le-lei:EntityLegalForm ;
+            owl:onProperty fibo-be-le-lei:hasLegalForm ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:ConventionalStreetAddress ;
+            owl:onProperty fibo-be-le-lei:hasLegalAddress ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+

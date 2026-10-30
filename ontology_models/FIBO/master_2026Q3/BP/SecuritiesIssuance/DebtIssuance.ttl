@@ -1,0 +1,387 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-iss-dbti: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/> .
+@prefix fibo-bp-iss-muni: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MuniIssuance/> .
+@prefix fibo-bp-iss-pmbs: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/PrivateLabelMBSIssuance/> .
+@prefix fibo-bp-iss-prc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/> .
+@prefix fibo-der-drc-raw: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-dbt-pbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix fibo-sec-sec-pls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-iss-dbti:ABSSecuritizationProcess a owl:Class ;
+    rdfs:label "a b s securitization process"@en,
+        "ABS 证券化流程（a b s securitization process）"@zh ;
+    rdfs:comment "资产支持证券的证券化过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcess .
+
+fibo-bp-iss-dbti:AdvancedRefunding a owl:Class ;
+    rdfs:label "advance refunding"@en,
+        "提前再融资（advance refunding）"@zh ;
+    rdfs:comment "以低于存量债券利率发行新债券进行再融资的债券发行。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:RefundingPurpose ;
+    skos:definition "refunding in which bond issuance in which new bonds are sold at a lower rate than outstanding ones"@en ;
+    cmns-av:explanatoryNote "The proceeds are then invested, and when the older bonds become callable they are paid off with the invested proceeds."@en .
+
+fibo-bp-iss-dbti:BondOfferingWithWarrant a owl:Class ;
+    rdfs:label "bond offering with warrant"@en,
+        "附认股权证债券发行（bond offering with warrant）"@zh ;
+    rdfs:comment "发行中附带回股权证的债券发行（ISO 10962 CFI：与一份或多份认股权证一起发行的债券）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-der-drc-raw:TraditionalWarrant fibo-sec-dbt-bnd:Bond ) ] ],
+        fibo-bp-iss-dbti:BondOffering ;
+    owl:disjointWith fibo-bp-iss-dbti:MediumTermNoteOffering ;
+    skos:definition "a bond offering where the issue includes a warrant; Further notes: ISO 10962 CFI definition is A bond that is issued together with one or more warrant(s) attached as part of the offer, the warrant(s) granting the holder the right to purchase a designated security, often the common stock of the issuer of the debt, at a specified price. Review notes: This need not be any specific type of bond. The warrant is used as a sweetener to encourage people to subscribe to a new bond issue. The Bond and the Warrant trade together as a unit (called \"Bond Unit\")."@en .
+
+fibo-bp-iss-dbti:CDOSecuritizationProcess a owl:Class ;
+    rdfs:label "c d o securitization process"@en,
+        "CDO 证券化流程（c d o securitization process）"@zh ;
+    rdfs:comment "债务担保凭证的证券化过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:DebtSecuritizationProcess .
+
+fibo-bp-iss-dbti:CompletedDebtsPool a owl:Class ;
+    rdfs:label "completed debts pool"@en,
+        "已完成债务池（completed debts pool）"@zh ;
+    rdfs:comment "内容已定稿、可用于发行的债务池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:InIssuance ],
+        fibo-sec-sec-pls:DebtPool .
+
+fibo-bp-iss-dbti:CreditCardPoolCreationProcess a owl:Class ;
+    rdfs:label "credit card pool creation process"@en,
+        "信用卡池创建流程（credit card pool creation process）"@zh ;
+    rdfs:comment "创建信用卡应收款资产池的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:RetailAssetPoolCreationProcess .
+
+fibo-bp-iss-dbti:DebtInstrumentPoolCreationProcess a owl:Class ;
+    rdfs:label "debt instrument pool creation process"@en,
+        "债务工具池创建流程（debt instrument pool creation process）"@zh ;
+    rdfs:comment "创建债务工具池的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:AssetPoolCreationProcess .
+
+fibo-bp-iss-dbti:HomeEquityLineOfCreditPoolCreationProcess a owl:Class ;
+    rdfs:label "home equity line of credit pool creation process"@en,
+        "房屋净值信用额度池创建流程（home equity line of credit pool creation process）"@zh ;
+    rdfs:comment "创建房屋净值信用额度（HELOC）资产池的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:RetailAssetPoolCreationProcess .
+
+fibo-bp-iss-dbti:InAssemblyDebtsPool a owl:Class ;
+    rdfs:label "in assembly debts pool"@en,
+        "组建中债务池（in assembly debts pool）"@zh ;
+    rdfs:comment "尚在组建、内容未定的债务池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:InAssembly ],
+        fibo-sec-sec-pls:DebtPool .
+
+fibo-bp-iss-dbti:IssuanceProcessActivity a owl:Class ;
+    rdfs:label "issuance process activity"@en,
+        "发行流程活动（issuance process activity）"@zh ;
+    rdfs:comment "证券发行流程中的一项活动。"@zh ;
+    skos:definition "An activity within the process of securities issuance."@en .
+
+fibo-bp-iss-dbti:Issued a owl:Class ;
+    rdfs:label "issued"@en,
+        "发布日期（issued）"@zh ;
+    rdfs:subClassOf fibo-bp-iss-pmbs:PoolLifecycleStateSelection .
+
+fibo-bp-iss-dbti:LoanPoolCreationProcess a owl:Class ;
+    rdfs:label "loan pool creation process"@en,
+        "贷款池创建流程（loan pool creation process）"@zh ;
+    rdfs:comment "创建贷款资产池的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:RetailAssetPoolCreationProcess .
+
+fibo-bp-iss-dbti:MTNRegistration a owl:Class ;
+    rdfs:label "m t n registration"@en,
+        "MTN 注册（m t n registration）"@zh ;
+    rdfs:comment "中期票据发行计划在相关机构的注册。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-bp-iss-dbti:MediumTermNoteIssuanceProgramme ],
+        fibo-bp-iss-muni:Registration .
+
+fibo-bp-iss-dbti:MuniIssueUnderwriter a owl:Class ;
+    rdfs:label "muni issue underwriter"@en,
+        "市政债发行承销商（muni issue underwriter）"@zh ;
+    rdfs:comment "同意买入投资者未认购之全部债券的参与方。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-iss:SecurityUnderwriter ;
+    skos:definition "The party which agrees to buy any certificates that are not bought by investors Term origin:DTCC"@en .
+
+fibo-bp-iss-dbti:NewMoneyPurpose a owl:Class ;
+    rdfs:label "new money purpose"@en,
+        "新增资金目的（new money purpose）"@zh ;
+    rdfs:comment "为新项目或新用途筹集资金而发行证券。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:DebtIssuancePurpose ;
+    skos:definition "securities issued to raise funds for a new project or purpose"@en .
+
+fibo-bp-iss-dbti:NotYetIssuedDebtsPool a owl:Class ;
+    rdfs:label "not yet issued debts pool"@en,
+        "未发行债务池（not yet issued debts pool）"@zh ;
+    rdfs:comment "已组建但尚未发行的债务池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:NotYetIssued ],
+        fibo-sec-sec-pls:DebtPool .
+
+fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcessActor a owl:Class ;
+    rdfs:label "pool backed security securitization process actor"@en,
+        "池支持证券证券化流程参与者（pool backed security securitization process actor）"@zh ;
+    rdfs:comment "池支持证券证券化流程中的参与者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-bp-iss-prc:IssuanceProcessActivity ],
+        fibo-bp-iss-dbti:SecuritizationProcessActor .
+
+fibo-bp-iss-dbti:RemarketingPurpose a owl:Class ;
+    rdfs:label "remarketing purpose"@en,
+        "再营销目的（remarketing purpose）"@zh ;
+    rdfs:comment "将原持有人回售的证券重新向公众销售的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:DebtIssuancePurpose ;
+    skos:definition "the process of reselling securities to the public that have been tendered for purchase by the previous owners thereof"@en .
+
+fibo-bp-iss-dbti:announces a owl:ObjectProperty ;
+    rdfs:label "announces"@en,
+        "公告（announces）"@zh ;
+    rdfs:comment "该公告所涉及的一只或多只证券的发行。"@zh ;
+    skos:definition "The issue of one or more securities that the announcement pertains to."@en .
+
+fibo-bp-iss-dbti:hasOriginalIssueDiscount a owl:ObjectProperty ;
+    rdfs:label "has original issue discount"@en,
+        "具有原始发行折让（has original issue discount）"@zh ;
+    rdfs:comment "债券或其他债务工具发行时相对于面值的折让。"@zh ;
+    rdfs:domain fibo-bp-iss-dbti:BondOffering ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "discount from par value at the time a bond or other debt instrument is issued"@en ;
+    cmns-av:explanatoryNote "The OID is the difference between the stated redemption price at maturity and the actual issue price."@en .
+
+fibo-bp-iss-dbti:isBankQualified a owl:DatatypeProperty ;
+    rdfs:label "is bank qualified"@en,
+        "银行合格（is bank qualified）"@zh ;
+    rdfs:comment "发行人在合理预期其在该发行日历年内的发行不超过规定额度时，给予公共目的债券发行的指定。"@zh ;
+    rdfs:domain fibo-bp-iss-dbti:BondOffering ;
+    rdfs:range xsd:boolean ;
+    skos:definition "designation given to a public purpose bond offering by the issuer if it reasonably expects to issue in the calendar year of such offering no more than $10 million par amount of bonds of the type required to be included in making such calculation under the Internal Revenue Code.  When purchased by a commercial bank for its portfolio, the bank may receive an 80% tax deduction for the interest cost of carry for the issue.  A bond that is bank qualified is also known as a qualified tax-exempt obligation."@en .
+
+fibo-bp-iss-dbti:resultsIn a owl:ObjectProperty ;
+    rdfs:label "results in"@en,
+        "导致（results in）"@zh ;
+    rdfs:comment "产生某个结果。"@zh ;
+    rdfs:range fibo-bp-iss-pmbs:PotentialTranchedIssueUnderwriter .
+
+fibo-bp-iss-dbti:underwriterTakedownAmount a owl:ObjectProperty ;
+    rdfs:label "underwriter takedown amount"@en,
+        "承销商承销金额（underwriter takedown amount）"@zh ;
+    rdfs:comment "承销商经手的证券承销金额（将记入 DTC）。"@zh ;
+    rdfs:domain fibo-bp-iss-dbti:UnderwriterTakedownForDebt ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "Takedown amount of the security handled by the underwriter(that will be brought into DTC)."@en .
+
+fibo-bp-iss-dbti: a owl:Ontology ;
+    rdfs:label "Debt Issuance Ontology"@en,
+        "债务发行本体（Debt Issuance Ontology）"@zh ;
+    dcterms:abstract "General issuance process for issuance of debt instruments. Forms the basis for more detailed issuance processes such as MBS issuance and municipal bonds issue." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义债券等债务工具的发行流程与参与方。"@zh ;
+    owl:imports fibo-bp-iss-prc:,
+        fibo-bp-iss-muni:,
+        fibo-bp-iss-pmbs:,
+        fibo-der-drc-raw:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-sec-dbt-bnd:,
+        fibo-sec-dbt-dbti:,
+        fibo-sec-dbt-pbs:,
+        fibo-sec-sec-pls:,
+        fibo-sec-sec-iss:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-qtu: ;
+    owl:versionIRI fibo-bp-iss-dbti: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+
+fibo-bp-iss-dbti:BondIssuanceProgramme a owl:Class ;
+    rdfs:label "bond issuance programme"@en,
+        "债券发行计划（bond issuance programme）"@zh ;
+    rdfs:comment "一种债务发行计划，实体可不时按基础招募说明书载明的条款发行债券。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-bp-iss-dbti:BondOffering ],
+        fibo-bp-iss-dbti:DebtIssuanceProgramme ;
+    skos:definition "a debt issuance programe under which an entity may, from time to time, issue bonds under the terms and conditions specified in the base prospectus for that programme"@en .
+
+fibo-bp-iss-dbti:DebtIssuanceProcessInformation a owl:Class ;
+    rdfs:label "debt issuance process information"@en,
+        "债务发行流程信息（debt issuance process information）"@zh ;
+    rdfs:comment "债务证券发行特有的信息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-dbti:hasDebtIssuancePurpose ;
+            owl:someValuesFrom fibo-bp-iss-dbti:DebtIssuancePurpose ],
+        fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ;
+    skos:definition "information specific to the issuance of a debt security"@en .
+
+fibo-bp-iss-dbti:DebtIssuanceProgramme a owl:Class ;
+    rdfs:label "debt issuance programme"@en,
+        "债务发行计划（debt issuance programme）"@zh ;
+    rdfs:comment "一段时间内的一系列债务证券发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-dbt-dbti:DebtOffering ],
+        fibo-bp-iss-prc:IssuanceProgramme ;
+    skos:definition "a series of debt security issuances over time"@en .
+
+fibo-bp-iss-dbti:InAssembly a owl:Class ;
+    rdfs:label "in assembly"@en,
+        "组建中（in assembly）"@zh ;
+    rdfs:comment "池或发行处于组建阶段的状态。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-pmbs:PoolLifecycleStateSelection .
+
+fibo-bp-iss-dbti:InIssuance a owl:Class ;
+    rdfs:label "in issuance"@en,
+        "发行中（in issuance）"@zh ;
+    rdfs:comment "池或证券处于发行阶段的状态。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-pmbs:PoolLifecycleStateSelection .
+
+fibo-bp-iss-dbti:MediumTermNoteIssuanceProgramme a owl:Class ;
+    rdfs:label "medium term note issuance programme"@en,
+        "中期票据发行计划（medium term note issuance programme）"@zh ;
+    rdfs:comment "一系列中期票据发行的计划；在其余条款向相关机构注册后再确定到期日的一组发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-bp-iss-dbti:MediumTermNoteOffering ],
+        fibo-bp-iss-dbti:BondIssuanceProgramme ;
+    skos:definition "a program of offerings of medium term notes; a set of issues where the maturity is defined after the rest of the terms have been registered with some authority; these are registered up front so that then the company wants to borrow more money they don't have to go through the registration period but have the facility up front to issue another security."@en .
+
+fibo-bp-iss-dbti:NotYetIssued a owl:Class ;
+    rdfs:label "not yet issued"@en,
+        "尚未发行（not yet issued）"@zh ;
+    rdfs:comment "池或证券尚未进入发行阶段的状态。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-pmbs:PoolLifecycleStateSelection .
+
+fibo-bp-iss-dbti:RefundingPurpose a owl:Class ;
+    rdfs:label "refunding purpose"@en,
+        "再融资目的（refunding purpose）"@zh ;
+    rdfs:comment "发行人通过发行新债券对存量债券进行再融资的程序。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:DebtIssuancePurpose ;
+    skos:definition "a procedure whereby an issuer refinances outstanding bonds by issuing new bonds"@en .
+
+fibo-bp-iss-dbti:SecuritizationProcessActor a owl:Class ;
+    rdfs:label "securitization process actor"@en,
+        "证券化流程参与者（securitization process actor）"@zh ;
+    rdfs:comment "证券化流程中的参与者。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecuritiesIssuanceProcessActor .
+
+fibo-bp-iss-dbti:UnderwriterTakedownForDebt a owl:Class ;
+    rdfs:label "underwriter takedown for debt"@en,
+        "承销商承销量（债务）（underwriter takedown for debt）"@zh ;
+    rdfs:comment "承销商经手的债务证券承销数量信息（将记入 DTC）。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:UnderwriterTakedown ;
+    skos:definition "information on takedown quantity of the debt security handled by the underwriter (that will be brought into DTC)"@en .
+
+fibo-bp-iss-dbti:hasDebtIssuancePurpose a owl:ObjectProperty ;
+    rdfs:label "has debt issuance purpose"@en,
+        "具有债务发行目的（has debt issuance purpose）"@zh ;
+    rdfs:comment "标识债务证券发行的目的。"@zh ;
+    rdfs:domain fibo-bp-iss-dbti:DebtIssuanceProcessInformation ;
+    rdfs:range fibo-bp-iss-dbti:DebtIssuancePurpose .
+
+fibo-bp-iss-dbti:AssetPoolCreationProcess a owl:Class ;
+    rdfs:label "asset pool creation process"@en,
+        "资产池创建流程（asset pool creation process）"@zh ;
+    rdfs:comment "创建资产池的过程，资产池随后可作为证券发行的基础资产。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:precedes ;
+            owl:someValuesFrom fibo-bp-iss-dbti:DebtSecuritizationProcess ] .
+
+fibo-bp-iss-dbti:MediumTermNoteOffering a owl:Class ;
+    rdfs:label "medium term note offering"@en,
+        "中期票据发行（medium term note offering）"@zh ;
+    rdfs:comment "中期票据的单次发行。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:BondOffering .
+
+fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcess a owl:Class ;
+    rdfs:label "pool backed security securitization process"@en,
+        "池支持证券证券化流程（pool backed security securitization process）"@zh ;
+    rdfs:comment "以资产池为基础发行证券的证券化过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:DebtSecuritizationProcess .
+
+fibo-sec-dbt-dbti:DebtOffering a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-dbt-dbti:TradableDebtInstrument ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
+            owl:someValuesFrom fibo-sec-sec-iss:Prospectus ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fbc-pas-fpas:hasOfferingAmount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-sec-iss:isUnderwrittenBy ;
+            owl:someValuesFrom fibo-sec-sec-iss:SecurityUnderwriter ] .
+
+fibo-bp-iss-dbti:DebtSecuritizationProcess a owl:Class ;
+    rdfs:label "debt securitization process"@en,
+        "债务证券化流程（debt securitization process）"@zh ;
+    rdfs:comment "将债务资产打包证券化的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecuritiesIssuanceProcess ;
+    owl:disjointWith fibo-bp-iss-muni:DebtAuctionProcess,
+        fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-dbti:RetailAssetPoolCreationProcess a owl:Class ;
+    rdfs:label "retail asset pool creation process"@en,
+        "零售资产池创建流程（retail asset pool creation process）"@zh ;
+    rdfs:comment "创建资产池的过程，资产池随后可用作以其为基础资产之证券的发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isProducedBy ;
+            owl:someValuesFrom fibo-sec-sec-pls:DebtPool ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:precedes ;
+            owl:someValuesFrom fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcess ],
+        fibo-bp-iss-dbti:AssetPoolCreationProcess ;
+    skos:definition "The process by which pools of assets are created. These may then be used in the issue of securities based on those asset pools as underlying."@en .
+
+fibo-bp-iss-dbti:BondOffering a owl:Class ;
+    rdfs:label "bond offering"@en,
+        "债券发行（bond offering）"@zh ;
+    rdfs:comment "作为发行计划全部或一部分的一只或多只债券的债务发行。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-dbti:DebtOffering ;
+    skos:definition "a debt offering of one or more bonds, as all or part of an issuance programme"@en .
+
+fibo-bp-iss-dbti:DebtIssuancePurpose a owl:Class ;
+    rdfs:label "debt issuance purpose"@en,
+        "债务发行目的（debt issuance purpose）"@zh ;
+    rdfs:comment "债务证券发行的目的；在某些情形下也规定须遵循的流程。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Objective ;
+    skos:definition "purpose for the issuance of a debt security; also defines processes to be followed in some instances"@en .
+

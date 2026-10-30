@@ -1,0 +1,51 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/MetadataBEGovernmentEntities/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-ge-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Business Entities (BE) Government Entities Module",
+        "BE 政府实体模块元数据（Metadata for the BE Government Entities Module）"@zh ;
+    dcterms:abstract "The government entities module includes ontologies describing polities, government entities and their relations." ;
+    dcterms:issued "2021-06-28T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-27T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明政府实体（Government Entities）模块的构成：政府实体核心本体加上全球各区域（亚洲五区、欧洲六区、拉美两区、北美四区）的政府实体与法域参考本体。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/MetadataBEGovernmentEntities/> ;
+    cmns-av:copyright "Copyright (c) 2021-2023 EDM Council, Inc.",
+        "Copyright (c) 2021-2023 Object Management Group, Inc." .
+
+fibo-be-ge-mod:GovernmentEntitiesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "government entities module" ;
+    dcterms:abstract "The government entities module includes ontologies describing polities, government entities and their relations." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/EasternAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/SoutheasternAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/SouthernAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/SouthAmericanGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO BE Government Entities Module",
+        "Financial Industry Business Ontology (FIBO) Business Entities (BE) Government Entities Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2021-2023 EDM Council, Inc.",
+        "Copyright (c) 2021-2023 Object Management Group, Inc." .
+

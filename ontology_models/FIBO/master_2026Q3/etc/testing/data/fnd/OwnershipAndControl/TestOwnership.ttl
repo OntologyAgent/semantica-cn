@@ -1,0 +1,66 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-tst-fnd-ctl: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/TestControl/> .
+@prefix fibo-tst-fnd-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/TestOwnership/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-tst-fnd-own: a owl:Ontology ;
+    rdfs:label "Financial Industry Business Ontology (FIBO) Test Ownership Ontology" ;
+    dcterms:abstract "This ontology defines a set of ownership situations to test their underlying relations." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Thematix Partners LLC" ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    owl:imports <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/TestFormalOrganizations/>,
+        fibo-fnd-oac-own:,
+        fibo-tst-fnd-ctl:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20240101/OwnershipAndControl/TestOwnership/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20210401/OwnershipAndControl/TestOwnership.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        """This version of the ontology was revised in advance of the September 2013 New Brunswick, NJ meeting, as follows:
+   (1) to use slash style URI/IRIss (also called 303 URIs, vs. hash style) as required to support server side processing 
+   (2) to use version-independent IRIs for all definitions internally as opposed to version-specific IRIs
+   (3) to change the file suffix from .owl to .rdf to increase usability in RDF tools
+   (4) to use 4-level abbreviations and corresponding namespace prefixes for all FIBO ontologies, reflecting a family/specification/module/ontology structure
+   (5) to incorporate changes to the specification metadata to support documentation at the family, specification, module, and ontology level, similar to the abbreviations
+   (6) to move the ontology from the Utilities module to an independent TemporalRelations module
+   (7) to revise a number of definitions, per discussion with various stakeholders.
+   (8) to augment the definitions to include entity names from Business Entities.""" ;
+    skos:historyNote """This version of the FIBO Foundations Specification was revised primarily to reflect comments received at the March 2013 OMG Technical Meeting in Reston and reflected in the Errata discussed at the June 2013 OMG Technical Meeting in Berlin. 
+
+Revisions to FIBO Foundations are managed per the process outlined in the Policies and Procedures for OMG standards, with the intent to maintain backwards compatibility in the ontologies to the degree possible.
+  
+The RDF/XML serialized OWL for the Foundations ODM/OWL ontologies have been checked for syntactic errors and logical consistency with Protege 4 (http://protege.stanford.edu/), HermiT 1.3.7 (http://www.hermit-reasoner.com/) and Pellet 2.2 (http://clarkparsia.com/pellet/).""" ;
+    cmns-av:copyright "Copyright (c) 2013-2024 EDM Council, Inc.",
+        "Copyright (c) 2013-2024 Object Management Group, Inc." .
+
+fibo-tst-fnd-own:LatticeOwnershipRelation a owl:NamedIndividual,
+        fibo-fnd-oac-own:Ownership ;
+    fibo-fnd-oac-own:hasOwnedThing fibo-tst-fnd-own:GoodBankOwnedByBigBankPIR ;
+    fibo-fnd-oac-own:hasOwningParty fibo-tst-fnd-own:BigBankOwnsGoodBankPIR .
+
+fibo-tst-fnd-ctl:CaliforniaBankPartyInRole a owl:NamedIndividual ;
+    fibo-fnd-oac-own:ownsAsset fibo-tst-fnd-ctl:SecuritiesIncPartyInRole ;
+    cmns-av:explanatoryNote "associative ownership relation" .
+
+fibo-tst-fnd-ctl:SecuritiesIncPartyInRole a owl:NamedIndividual ;
+    fibo-fnd-oac-own:isOwnedAsset fibo-tst-fnd-ctl:CaliforniaBankPartyInRole ;
+    cmns-av:explanatoryNote "associative ownership relation" .
+
+fibo-tst-fnd-own:BigBankOwnsGoodBankPIR a owl:NamedIndividual,
+        fibo-fnd-oac-own:Owner ;
+    cmns-rlcmp:isPlayedBy <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/TestFormalOrganizations/BigBank> .
+
+fibo-tst-fnd-own:GoodBankOwnedByBigBankPIR a owl:NamedIndividual,
+        cmns-pts:PartyRole ;
+    cmns-rlcmp:isPlayedBy <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/TestFormalOrganizations/GoodBank> .
+

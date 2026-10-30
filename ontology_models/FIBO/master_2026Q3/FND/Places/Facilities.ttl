@@ -1,0 +1,86 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix cmns-sfc: <https://www.omg.org/spec/Commons/SitesAndFacilities/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-plc-fac: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Facilities/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-plc-fac: a owl:Ontology ;
+    rdfs:label "Facilities Ontology",
+        "设施本体（Facilities Ontology）"@zh ;
+    dcterms:abstract "This ontology provides scaffolding for use in describing concepts related to facilities, both virtual and physical, including physical sites that provide various facilities." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+		Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "本本体为描述设施相关概念提供脚手架，包括虚拟设施和实体设施，以及提供各种设施的实体场所。"@zh ;
+    owl:imports fibo-fnd-plc-adr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-org:,
+        cmns-rlcmp:,
+        cmns-sfc: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20251201/Places/Facilities/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/FND/20141101/Places/Facilities.rdf version of this ontology was modified for the FIBO 2.0 RFC to integrate it with LCC.",
+        "The http://www.omg.org/spec/EDMC-FIBO/FND/20180801/Places/Facilities.rdf version of this ontology was modified to eliminate deprecated elements.",
+        "The http://www.omg.org/spec/EDMC-FIBO/FND/20190901/Places/Facilities.rdf version of this ontology was modified to eliminate circular and ambiguous definitions, and simplify the ontology by merging physical site with site.",
+        "The http://www.omg.org/spec/EDMC-FIBO/FND/20210101/Places/Facilities.rdf version of this ontology was modified to allow a facility to exist at some location that has an address without requiring it to be situated at some site to simplify usage in cases where the site and facility have 100 percent overlap and are not tracked independently.",
+        "The http://www.omg.org/spec/EDMC-FIBO/FND/20220101/Places/Facilities.rdf version of this ontology was modified to address hygiene issues with respect to text formatting.",
+        "The http://www.omg.org/spec/EDMC-FIBO/FND/20220701/Places/Facilities.rdf version of this ontology was modified to allow a facility to be anything rather than a role.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20221201/Places/Facilities.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Places/Facilities.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Places/Facilities.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240101/Places/Facilities.rdf version of this ontology was modified to integrate with the new real property ontology (LOAN-168).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20241001/Places/Facilities.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Places/Facilities.rdf version of the ontology was modified to eliminate long deprecated elements (FND-399), and to reuse concepts from the Commons 1.3 sites and facilities ontology (FND-401). Note that this ontology will be eliminated in its entirety sometime after the Q3 2026 release of FIBO given that all of its content has been deprecated.",
+        "This ontology was added to Foundations in advance of the December 2014 Long Beach meeting in support of the SEC specification." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-fnd-plc-fac:Facility a owl:Class ;
+    rdfs:label "设施（Facility）"@zh ;
+    rdfs:comment "可供使用的建筑、设备或服务。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass cmns-sfc:Facility .
+
+fibo-fnd-plc-fac:Site a owl:Class ;
+    rdfs:label "场所（Site）"@zh ;
+    rdfs:comment "具有特定位置的实体场地。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass cmns-sfc:Site .
+
+fibo-fnd-plc-fac:Venue a owl:Class ;
+    rdfs:label "场馆（Venue）"@zh ;
+    rdfs:comment "举办活动或交易的具体场所。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass cmns-sfc:Venue .
+
+fibo-fnd-plc-fac:isSituatedAt a owl:ObjectProperty ;
+    rdfs:label "位于（isSituatedAt）"@zh ;
+    rdfs:comment "指示某事物所处的位置。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentProperty cmns-sfc:isSituatedAt .
+
+fibo-fnd-plc-fac:situates a owl:ObjectProperty ;
+    rdfs:label "安置（situates）"@zh ;
+    rdfs:comment "标识某事物所处的地点、环境或情境。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentProperty cmns-sfc:situates .
+

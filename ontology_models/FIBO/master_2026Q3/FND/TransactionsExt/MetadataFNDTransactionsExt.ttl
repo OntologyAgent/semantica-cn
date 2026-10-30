@@ -1,0 +1,36 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-txn-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/MetadataFNDTransactionsExt/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-txn-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) TransactionsExt Module",
+        "FND 交易扩展模块元数据（Metadata for the FND Transactions Extended Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Transactions Module." ;
+    dcterms:issued "2021-12-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-20T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明交易扩展（Transactions Extended）模块由 REA 交易、市场交易、证券交易三个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20230101/TransactionsExt/MetadataFNDTransactionsExt/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc." .
+
+fibo-fnd-txn-mod:TransactionsExtModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "transactions ext module" ;
+    dcterms:abstract "This module contains ontologies of Transaction concepts based on the Resource, Events Agents (REA) ontology for transactions." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/MarketTransactions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/REATransactions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/SecuritiesTransactions/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FND Transactions Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Transactions Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    skos:editorialNote "The content in this module is original conceptual content and does not extend any other module. Some of the concepts represented conceptually in this module have been replaced by partial representations of some transaction concepts in the Products and Services module, sometimes using different labels for similar or equivalent concepts. Much of the content in this module will still be referred to in other FIBO domains, and care is needed in determining whether to replace these references to something in Products and Services versus when to bring forward more of the content in this module." ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc." .
+

@@ -1,0 +1,308 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-arr-id: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-sec-id: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix lcc-cr: <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-sec-id: a owl:Ontology ;
+    rdfs:label "Securities Identification Ontology",
+        "证券识别本体（Securities Identification Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts required to identify securities, including a number of well-known securities identifiers and related schemes, registries, and registration authorities." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义证券标识符（ISIN、CUSIP、SEDOL 等）及其编码方案的结构。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-arr-id:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-cxtid:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-ra:,
+        lcc-cr: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20250301/Securities/SecuritiesIdentification/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/FND/20180801/Securities/SecuritiesIdentification.rdf version of this ontology was modified to use the hasCoverageArea property rather than hasJurisdiction for coverage of national numbering agencies, and eliminate redundant subclass relationships for two of the schemes defined herein.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20181101/Securities/SecuritiesIdentification/ version of this ontology was modified to correct several logic issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190601/Securities/SecuritiesIdentification/ version of this ontology was modified to add the concept of a ticker symbol and rename (migrate) the hasDefinition property to isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190701/Securities/SecuritiesIdentification/ version of this ontology was modified to restructure the concept of a listing and augment it with a number of relevant characteristics.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20191201/Securities/SecuritiesIdentification/ version of this ontology was modified to correct the target of a ticker symbol, which identifies a listing not a listed security, refine the restriction on financial instrument identifier to say that it identifies an instrument or listing, normalize definitions to be ISO 704 compliant, eliminate duplication of concepts in LCC, and merge countries with locations in FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200401/Securities/SecuritiesIdentification/ version of this ontology was modified to make a ticker symbol reassignable and address circular or ambiguous definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200901/Securities/SecuritiesIdentification.rdf version of this ontology was revised to eliminate confusion between listed security and listing (which caused reasoning issues).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20201201/Securities/SecuritiesIdentification.rdf version of this ontology was revised to leverage the notion of a composite identifier and address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20220801/Securities/SecuritiesIdentification.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Securities/SecuritiesIdentification.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230301/Securities/SecuritiesIdentification.rdf version of this ontology was modified to clarify the definition of ticker symbol (SEC-196).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240401/Securities/SecuritiesIdentification.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." .
+
+fibo-sec-sec-id:InternationalSecuritiesIdentificationNumberingScheme a owl:Class ;
+    rdfs:label "international securities identification numbering scheme",
+        "国际证券识别编码方案（international securities identification numbering scheme）"@zh ;
+    rdfs:comment "按 ISO 6166 定义的国际证券识别码（ISIN）结构和应用的正式定义。"@zh ;
+    rdfs:seeAlso <http://www.iso.org/iso/catalogue_detail?csnumber=44811> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ],
+        fibo-sec-sec-id:SecurityIdentificationScheme ;
+    skos:definition "formal definition of the structure and application of a ISINs as defined in ISO 6166" ;
+    cmns-av:abbreviation "ISIN scheme" .
+
+fibo-sec-sec-id:ListedSecurityIdentifier a owl:Class ;
+    rdfs:label "listed security identifier",
+        "上市证券标识符（listed security identifier）"@zh ;
+    rdfs:comment "在公共领域发布、并在上市文件及其他相关出版物中引用的证券标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-sec-sec-lst:ListedSecurity ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-sec-sec-id:SecurityIdentificationScheme ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredIn ;
+            owl:someValuesFrom fibo-sec-sec-id:SecurityRegistry ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom fibo-fbc-fct-mkt:Exchange ],
+        fibo-sec-sec-id:SecurityIdentifier ;
+    skos:definition "security identifier issued in the public domain and referred to in listings and other relevant publications" .
+
+fibo-sec-sec-id:TickerSymbol a owl:Class ;
+    rdfs:label "ticker symbol",
+        "行情代码（ticker symbol）"@zh ;
+    rdfs:comment "在某一交易所内对特定金融工具或挂牌唯一的、可重新分配的短字符串标识符。"@zh ;
+    rdfs:seeAlso <https://www.investopedia.com/terms/t/tickersymbol.asp>,
+        <https://www.omg.org/spec/FIGI> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-sec-sec-lst:ListedSecurity fibo-sec-sec-lst:Listing ) ] ],
+        fibo-fnd-arr-id:ReassignableIdentifier ;
+    skos:definition "reassignable identifier of relatively short character string length that is unique within an exchange for a particular financial instrument or listing for that instrument" ;
+    cmns-av:explanatoryNote "Every listed security has at least one unique ticker symbol, facilitating the vast array of trade orders that flow through the financial markets every day. However, in some countries this relationship may be indirect, through the listing, rather than direct, as is the case in the United States. In the US, the relationship between a ticker symbol and the listed security is one-to-one. This is not, however, the case in Singapore, where there may be unique ticker symbols for the same security based on the lot size. Some well-known ticker symbols are commonly used by multiple exchanges for the same instrument, such as 'IBM', though exchanges attempt to coordinate to limit duplication." ;
+    cmns-av:usageNote "Ticker symbols are reusable, assigned to a given instrument by an exchange for some period of time." .
+
+fibo-sec-sec-id:FinancialInstrumentIdentificationScheme a owl:Class ;
+    rdfs:label "financial instrument identification scheme",
+        "金融工具标识方案（financial instrument identification scheme）"@zh ;
+    rdfs:comment "对某一特定金融工具标识符集的结构和应用的正式定义。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fbc-fi-fi:FinancialInstrumentIdentifier ],
+        cmns-id:IdentificationScheme ;
+    skos:definition "formal definition of the structure and application of a particular set of financial instrument identifiers" .
+
+fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber a owl:Class ;
+    rdfs:label "international securities identification number",
+        "国际证券识别码（international securities identification number）"@zh ;
+    rdfs:comment "按 ISO 6166《证券及相关金融工具——国际证券识别编码》规定定义的证券标识符（ISIN）。"@zh ;
+    rdfs:seeAlso <http://www.iso.org/iso/catalogue_detail?csnumber=44811> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass lcc-cr:Alpha2Code ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-sec-sec-id:SecurityIdentifier,
+        cmns-cxtid:StructuredIdentifier ;
+    skos:definition "security identifier that is defined as specified in ISO 6166, Securities and related financial instruments -- International securities identification numbering system (ISIN)" ;
+    cmns-av:abbreviation "ISIN" ;
+    cmns-av:explanatoryNote "ISINs consist of two alphabetic characters, which are the ISO 3166-1 alpha-2 code for the issuing country, nine alpha-numeric characters (the National Securities Identifying Number, or NSIN, which identifies the security, padded as necessary with leading zeros), and one numerical check digit. The ISIN is specified as a class of identifiers because although there is a scheme associated with the structure of an ISIN, there are many country-specific variations issued by national numbering agencies." .
+
+fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistry a owl:Class ;
+    rdfs:label "National Securities Identifying Number registry",
+        "国家证券识别号码登记册（National Securities Identifying Number registry）"@zh ;
+    rdfs:comment "国家编号机构用于管理其登记的金融工具标识符及相关信息的登记册。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-sec-sec-id:NationalSecurityIdentificationScheme ;
+            owl:onProperty cmns-cls:isCharacterizedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalNumberingAgency ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistryEntry ],
+        fibo-sec-sec-id:SecurityRegistry ;
+    skos:definition "registry used by a national numbering agency to manage the financial instrument identifiers and related information that it registers" ;
+    cmns-av:abbreviation "NSIN registry" .
+
+fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistryEntry a owl:Class ;
+    rdfs:label "national numbering agency registry entry",
+        "国家编号机构登记册条目（national numbering agency registry entry）"@zh ;
+    rdfs:comment "国家证券识别号码登记册中的条目。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber ],
+        fibo-sec-sec-id:SecurityRegistryEntry ;
+    skos:definition "entry in a National Securities Identifying Number registry" .
+
+fibo-sec-sec-id:ProprietarySecurityIdentificationScheme a owl:Class ;
+    rdfs:label "proprietary security identification scheme",
+        "专有证券标识方案（proprietary security identification scheme）"@zh ;
+    rdfs:comment "由商业机构发布的证券标识方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-sec-sec-id:ProprietarySecurityIdentifier ],
+        fibo-sec-sec-id:SecurityIdentificationScheme ;
+    skos:definition "security identification scheme published by a commercial entity" ;
+    cmns-av:explanatoryNote "Proprietary schemes may be unique to an exchange or data provider, for example." .
+
+fibo-sec-sec-id:ProprietarySecurityIdentifier a owl:Class ;
+    rdfs:label "proprietary security identifier",
+        "专有证券标识符（proprietary security identifier）"@zh ;
+    rdfs:comment "由商业机构提供的标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-sec-sec-id:ProprietarySecurityIdentificationScheme ],
+        fibo-sec-sec-id:SecurityIdentifier ;
+    skos:definition "identifier supplied by a commercial entity" .
+
+fibo-sec-sec-lst:Listing a owl:Class ;
+    rdfs:subClassOf fibo-sec-sec-id:SecurityRegistryEntry .
+
+fibo-sec-sec-id:NationalNumberingAgency a owl:Class ;
+    rdfs:label "national numbering agency",
+        "国家编号机构（national numbering agency）"@zh ;
+    rdfs:comment "负责按照 ISO 6166 标准发行和管理国家证券识别号码的注册机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-ra:registers ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-loc:hasCoverageArea ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:issues ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:manages ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistry ],
+        cmns-ra:RegistrationAuthority ;
+    skos:definition "registration authority responsible for issuing and managing National Securities Identifying Numbers for securities in accordance with the ISO 6166 standard in some jurisdiction (typically that of a country)" ;
+    cmns-av:abbreviation "NNA" .
+
+fibo-sec-sec-id:NationalSecurityIdentificationScheme a owl:Class ;
+    rdfs:label "national security identification scheme",
+        "国家证券标识方案（national security identification scheme）"@zh ;
+    rdfs:comment "规定国家证券识别号码（NSIN）格式和结构、由国家层面代表相关机构发布的证券标识方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        fibo-sec-sec-id:SecurityIdentificationScheme ;
+    skos:definition "security identification scheme, defining the format and structure of a National Securities Identifying Number (NSIN), published nationally on behalf of a country" ;
+    cmns-av:explanatoryNote "generally incorporated into the ISIN scheme as well" .
+
+fibo-sec-sec-id:SecurityRegistry a owl:Class ;
+    rdfs:label "security registry",
+        "证券登记册（security registry）"@zh ;
+    rdfs:comment "用于管理证券标识符及相关信息的登记册。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-sec-sec-id:SecurityIdentificationScheme ;
+            owl:onProperty cmns-cls:isCharacterizedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom cmns-ra:RegistrationAuthority ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-sec-id:SecurityRegistryEntry ],
+        cmns-ra:Registry ;
+    skos:definition "registry used to manage security identifiers and related information" ;
+    cmns-av:explanatoryNote "Securities registries may be managed by an exchange, clearing house, custodian, bank, or other financial services provider." .
+
+fibo-sec-sec-id:SecurityRegistryEntry a owl:Class ;
+    rdfs:label "security registry entry",
+        "证券登记册条目（security registry entry）"@zh ;
+    rdfs:comment "证券登记册中某一证券的记录。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-sec-id:SecurityIdentifier ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-sec-lst:RegisteredSecurity ],
+        cmns-ra:RegistryEntry ;
+    skos:definition "record for a security in a securities registry" .
+
+fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber a owl:Class ;
+    rdfs:label "National Securities Identifying Number",
+        "国家证券识别号码（National Securities Identifying Number）"@zh ;
+    rdfs:comment "由国家编号机构按 ISO 6166 标准分配的、用于标识可互换证券的通用九位字母数字代码（NSIN）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalSecurityIdentificationScheme ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalNumberingAgency ],
+        fibo-sec-sec-id:SecurityIdentifier ;
+    skos:definition "generic, nine-digit alpha numeric code which identifies a fungible security, assigned by a national numbering agency under the ISO 6166 standard" ;
+    cmns-av:abbreviation "NSIN" .
+
+fibo-sec-sec-id:SecurityIdentificationScheme a owl:Class ;
+    rdfs:label "security identification scheme",
+        "证券标识方案（security identification scheme）"@zh ;
+    rdfs:comment "对某一特定证券标识符集的结构和应用的正式定义。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-sec-sec-id:SecurityIdentifier ],
+        fibo-sec-sec-id:FinancialInstrumentIdentificationScheme,
+        cmns-ra:RegistrationScheme ;
+    skos:definition "formal definition of the structure and application of a particular set of securities identifiers" .
+
+fibo-sec-sec-id:SecurityIdentifier a owl:Class ;
+    rdfs:label "security identifier",
+        "证券标识符（security identifier）"@zh ;
+    rdfs:comment "任何用于标识证券的公开可用标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-sec-sec-id:SecurityIdentificationScheme ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-fbc-fi-fi:FinancialInstrumentIdentifier ;
+    skos:definition "any publicly available identifier that is used to identify a security" .
+

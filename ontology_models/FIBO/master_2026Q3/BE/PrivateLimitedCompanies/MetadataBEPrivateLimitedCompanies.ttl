@@ -1,0 +1,34 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-plc-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/MetadataBEPrivateLimitedCompanies/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-plc-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Business Entities (BE) Private Limited Companies Module",
+        "BE 私人有限公司模块元数据（Metadata for the BE Private Limited Companies Module）"@zh ;
+    dcterms:abstract "The private limited companies module defines business entities that are hybrid in nature, having certain characteristics of both a corporation and a partnership or sole proprietorship." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-27T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明私人有限公司（Private Limited Companies）模块由私人有限公司本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20230101/PrivateLimitedCompanies/MetadataBEPrivateLimitedCompanies/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+
+fibo-be-plc-mod:PrivateLimitedCompaniesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "private limited companies module" ;
+    dcterms:abstract "The private limited companies module defines business entities that are hybrid in nature, having certain characteristics of both a corporation and a partnership or sole proprietorship." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO BE Private Limited Companies Module",
+        "Financial Industry Business Ontology (FIBO) Business Entities (BE) Private Limited Companies Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+

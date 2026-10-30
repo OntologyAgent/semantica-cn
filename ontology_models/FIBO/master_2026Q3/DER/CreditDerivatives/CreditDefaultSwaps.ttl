@@ -1,0 +1,392 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-der-cr-cds: <https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/CreditDefaultSwaps/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-fbc-dae-cre: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fbc-fi-stl: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-mkt-bas: <https://spec.edmcouncil.org/fibo/ontology/IND/MarketIndices/BasketIndices/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-cr-cds: a owl:Ontology ;
+    rdfs:label "Credit Default Swaps Ontology"@en,
+        "信用违约互换本体（Credit Default Swaps Ontology）"@zh ;
+    dcterms:abstract "Credit default swaps are financial instruments that allow the transfer of credit risk among market participants, potentially facilitating greater efficiency in the pricing and distribution/offset of credit risk. They are bilateral contracts in which one party (the protection seller) agrees to provide payment(s) to the other party (the protection buyer) should a credit event occur against the underlying. The underlier for a CDS may be a specified debt (the reference obligation), a specific debt issuer (reference entity), in which case the credit events involving the entity is what triggers the payment, a basket of reference entities and/or reference obligations, or a credit index (reference index). This ontology defines the concept of a basic credit default swap as well as more specific kinds of CDS and specifies related details." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义信用违约互换（CDS）：保护买方与卖方、参考实体、信用事件与结算方式。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-der-drc-bsc:,
+        fibo-der-drc-swp:,
+        fibo-fbc-dae-cre:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-ip:,
+        fibo-fbc-fi-stl:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-ind-mkt-bas:,
+        cmns-av:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-pts: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20250801/CreditDerivatives/CreditDefaultSwaps/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20221201/CreditDerivatives/CreditDefaultSwaps.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/CreditDerivatives/CreditDefaultSwaps.rdf version of this ontology was modified to move the property, 'is conferred on' to the Legal Capacity ontology and to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/CreditDerivatives/CreditDefaultSwaps.rdf version of this ontology was modified to add the concept of a credit default swap index.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231001/CreditDerivatives/CreditDefaultSwaps.rdf version of this ontology was modified to move the nominal for auction market from CDS to the pricing ontology (its IRI was that of the instrument pricing ontology but it was mistakenly in the CDS ontology) and simplify the definition (DER-140).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231101/CreditDerivatives/CreditDefaultSwaps.rdf version of the ontology was modified to eliminate a subproperty relationship between the contract price and notional amount, which may not be appropriate (DER-127), and to replace concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231201/CreditDerivatives/CreditDefaultSwaps.rdf version of the ontology was modified to replace additional concepts from FIBO FND with their counterparts in the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240101/CreditDerivatives/CreditDefaultSwaps.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/CreditDerivatives/CreditDefaultSwaps.rdf version of the ontology was modified to replace hasConstituent with hasMember for better semantic consistency (FND-396) and to correct a label on has scheduled termination date (SEC-200)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-der-cr-cds:AssetBackedCreditDefaultSwap a owl:Class ;
+    rdfs:label "asset-backed credit default swap"@en,
+        "资产支持信用违约互换（asset-backed credit default swap）"@zh ;
+    rdfs:comment "标的参考债务为资产支持证券（而非公司信用）的信用违约互换。"@zh ;
+    rdfs:subClassOf fibo-der-cr-cds:CreditDefaultSwap ;
+    skos:definition "credit default swap whose underlying reference obligation is an asset-backed security rather than corporate credit"@en ;
+    cmns-av:abbreviation "ABCDS"@en ;
+    cmns-av:explanatoryNote "In the case of an ABCDS, the buyer receives protection for defaults on asset-backed securities or tranches of securities, rather than protecting against the default of a particular issuer. Asset-backed securities are securities backed by a pool of loans or receivables, such as auto loans, home equity loans or credit cards loans."@en .
+
+fibo-der-cr-cds:BasketCreditDefaultSwap a owl:Class ;
+    rdfs:label "basket credit default swap"@en,
+        "篮子信用违约互换（basket credit default swap）"@zh ;
+    rdfs:comment "参考一组为特定场外衍生品交易约定的定制化合成资产组合的信用违约互换。"@zh ;
+    rdfs:subClassOf fibo-der-cr-cds:MultiNameCreditDefaultSwap ;
+    skos:definition "credit default swap that references a bespoke, synthetic portfolio of underlying assets whose components have been agreed to for a specific OTC derivative by the parties to the transaction"@en ;
+    cmns-av:adaptedFrom "Draft paper on Credit Default Swaps from the Federal Reserve Board, available at https://www.federalreserve.gov/econres/feds/files/2022023pap.pdf",
+        "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" .
+
+fibo-der-cr-cds:ContingentCreditDefaultSwap a owl:Class ;
+    rdfs:label "contingent credit default swap"@en,
+        "或有信用违约互换（contingent credit default swap）"@zh ;
+    rdfs:comment "需要额外触发事件才能生效的信用违约互换。"@zh ;
+    rdfs:subClassOf fibo-der-cr-cds:CreditDefaultSwap ;
+    skos:definition "credit default swap in which an additional triggering event is required"@en ;
+    cmns-av:abbreviation "CCDS"@en ;
+    cmns-av:explanatoryNote "In a contingent credit default swap, the trigger requires both a credit event (as in a traditional credit default swap) and another specified event. The additional specified event is usually a significant movement in an index covering equities, commodities, interest rates, or some other overall measure of the economy or relevant industry."@en .
+
+fibo-der-cr-cds:CreditDefaultSwapIndex a owl:Class ;
+    rdfs:label "credit default swap index"@en,
+        "信用违约互换指数（credit default swap index）"@zh ;
+    rdfs:comment "标的参考债务为信用违约互换工具的指数。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-der-cr-cds:BasketOfCreditDefaultSwaps ],
+        fibo-ind-mkt-bas:ReferenceIndex ;
+    skos:definition "index whose underlying reference obligations are credit default swap instruments"@en .
+
+fibo-der-cr-cds:CreditEventNotice a owl:Class ;
+    rdfs:label "credit event notice"@en,
+        "信用事件通知（credit event notice）"@zh ;
+    rdfs:comment "声明触发事件已发生的不可撤销书面或口头通知。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-der-cr-cds:TriggeringEvent ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-der-cr-cds:NotifyingParty ],
+        cmns-doc:Notice ;
+    skos:definition "irrevocable written or verbal notice that states that a triggering event has occurred"@en ;
+    cmns-av:explanatoryNote "Notices of certain kinds of credit events are required as a condition of a credit default swap. Such notices are sent from a notifying party (either the buyer or the seller) to the counterparty. They provide information that assists the contract parties in determining whether a triggering credit event has occurred."@en .
+
+fibo-der-cr-cds:IndexCreditDefaultSwap a owl:Class ;
+    rdfs:label "index credit default swap"@en,
+        "指数信用违约互换（index credit default swap）"@zh ;
+    rdfs:comment "参考一族标准化信用衍生品指数的信用违约互换，其标的参考实体为一组既定实体篮子。"@zh ;
+    rdfs:subClassOf fibo-der-cr-cds:MultiNameCreditDefaultSwap ;
+    skos:definition "credit default swap that references a family of standardized credit derivative indices, where the underlying reference entities are a defined basket of credit from a particular geographic region (e.g. Asia, North America, Europe), and/or credit rating level (e.g. emerging markets, high yield, investment grade)"@en ;
+    cmns-av:adaptedFrom "Draft paper on Credit Default Swaps from the Federal Reserve Board, available at https://www.federalreserve.gov/econres/feds/files/2022023pap.pdf",
+        "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" ;
+    cmns-av:explanatoryNote "Credit default indices trade in standard maturities, and the reference entities are typically the most liquid; the reference portfolio is reassessed periodically to maintain this."@en .
+
+fibo-der-cr-cds:IndexTrancheCreditDefaultSwap a owl:Class ;
+    rdfs:label "index tranche credit default swap"@en,
+        "指数分档信用违约互换（index tranche credit default swap）"@zh ;
+    rdfs:comment "参考基于信用指数的合成债务抵押债券（CDO）的信用违约互换，每一档参考不同的损失区间。"@zh ;
+    rdfs:subClassOf fibo-der-cr-cds:MultiNameCreditDefaultSwap ;
+    skos:definition "credit default swap that references a synthetic collateralized debt obligation (CDO) based on a credit index where each tranche references a different segment of the loss distribution of the underlying index"@en ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" ;
+    cmns-av:explanatoryNote "Each tranche has a different priority of claims on the principal and interest flows from the collateral pool, and is traditionally portioned into rising levels of seniority."@en .
+
+fibo-der-cr-cds:LoanCreditDefaultSwap a owl:Class ;
+    rdfs:label "loan credit default swap"@en,
+        "贷款信用违约互换（loan credit default swap）"@zh ;
+    rdfs:comment "标的参考债务严格限于银团担保贷款（而非任何类型公司债务）的信用违约互换。"@zh ;
+    rdfs:subClassOf fibo-der-cr-cds:CreditDefaultSwap ;
+    skos:definition "credit default swap whose underlying reference obligation is limited strictly to syndicated secured loans, rather than any type of corporate debt"@en ;
+    cmns-av:abbreviation "LCDS"@en .
+
+fibo-der-cr-cds:SingleNameCreditDefaultSwap a owl:Class ;
+    rdfs:label "single name credit default swap"@en,
+        "单名信用违约互换（single name credit default swap）"@zh ;
+    rdfs:comment "标的风险为单一参考债务或单一参考实体（如公司或主权借款人）的信用违约互换。"@zh ;
+    rdfs:subClassOf fibo-der-cr-cds:CreditDefaultSwap ;
+    skos:definition "credit default swap whose underlying risk is a single reference obligation, or a single reference entity, such as a corporation or a sovereign borrower"@en ;
+    cmns-av:adaptedFrom "Draft paper on Credit Default Swaps from the Federal Reserve Board, available at https://www.federalreserve.gov/econres/feds/files/2022023pap.pdf",
+        "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" .
+
+fibo-fbc-dae-cre:ObligationSpecificCreditEvent a owl:Class ;
+    rdfs:subClassOf fibo-der-cr-cds:TriggeringEvent .
+
+fibo-fbc-fi-stl:PhysicalSettlementTerms a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-cr-cds:EscrowAgent ;
+            owl:onProperty cmns-doc:specifies ] .
+
+fibo-der-cr-cds:BasketOfCreditDefaultSwaps a owl:Class ;
+    rdfs:label "basket of credit default swaps"@en,
+        "信用违约互换篮子（basket of credit default swaps）"@zh ;
+    rdfs:comment "参考债务为信用违约互换工具的篮子。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-der-cr-cds:CreditDefaultSwap ],
+        fibo-fbc-pas-fpas:WeightedBasket,
+        fibo-fnd-dt-fd:DatedStructuredCollection ;
+    skos:definition "basket of reference obligations are credit default swap instruments"@en ;
+    cmns-av:explanatoryNote "Note that the CDS Index is broken down into tranches depending on different types of credits, for example, investment grade and high yield. Tranches are defined by attachment and detachment points for the index loss distribution. It means that when default events occur the lower-level tranches absorb the loss up to the detachment point, before moving to the next senior tranche."@en .
+
+fibo-der-cr-cds:DeliverableObligationBuyer a owl:Class ;
+    rdfs:label "deliverable obligation buyer"@en,
+        "可交割债务买方（deliverable obligation buyer）"@zh ;
+    rdfs:comment "在触发事件发生时（视事件和合约而定）有义务购买可交割债务（资产）的合约方。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractParty,
+        fibo-fnd-pas-pas:Buyer ;
+    skos:definition "contract party that is obliged to purchase a deliverable obligation (asset) if a triggering event occurs, depending on the event and the contract"@en .
+
+fibo-der-cr-cds:DeliverableObligationSeller a owl:Class ;
+    rdfs:label "deliverable obligation seller"@en,
+        "可交割债务卖方（deliverable obligation seller）"@zh ;
+    rdfs:comment "在触发事件发生时（视事件和合约而定）有义务出售可交割债务（资产）的合约方。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractParty,
+        fibo-fnd-pas-pas:Seller ;
+    skos:definition "contract party that is obliged to sell a deliverable obligation (asset) if a triggering event occurs, depending on the event and the contract"@en .
+
+fibo-der-cr-cds:EscrowAgent a owl:Class ;
+    rdfs:label "escrow agent"@en,
+        "托管代理人（escrow agent）"@zh ;
+    rdfs:comment "在资产或资金按合约条款从一方正式转移给另一方之前代为持有的第三方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:holds ;
+            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligation ],
+        fibo-fbc-pas-fpas:RegisteredAgent,
+        fibo-fnd-agr-ctr:ContractThirdParty ;
+    skos:definition "third party that holds an asset or funds before they are formally transferred from one party to another party, per the terms of a contract, within some specified time period and/or when a triggering event occurs"@en ;
+    cmns-av:explanatoryNote "Use of an escrow agent is one possible mechanism that may be used in some cases, as specified in a credit default swap contract, for delivery purposes."@en .
+
+fibo-der-cr-cds:NotifyingParty a owl:Class ;
+    rdfs:label "notifying party"@en,
+        "通知方（notifying party）"@zh ;
+    rdfs:comment "负责发出一份或多份正式通知、表明与给定合约相关的事件已经发生的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fnd-agr-ctr:ContractParty fibo-fnd-agr-ctr:ContractThirdParty ) ],
+        cmns-pts:PartyRole ;
+    skos:definition "party responsible for issuing one or more formal notices indicating that an event that is relevant to a given contract has taken place"@en ;
+    cmns-av:explanatoryNote "The notifying party is the party that notifies the other party when a credit or other triggering event has occurred by means of a credit event notice. If more than one party is referenced as being the notifying party then either party may notify the other of such an occurrence."@en .
+
+fibo-der-cr-cds:SettlementAuction a owl:Class ;
+    rdfs:label "settlement auction"@en,
+        "结算拍卖（settlement auction）"@zh ;
+    rdfs:comment "针对一组既定可交割债务独立管理的合成拍卖程序，用于确定可用于结算的最终参考价格。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-stl:SettlementEvent ;
+    skos:definition "independently administered synthetic auction process on a set of defined deliverable obligations that sets the reference final price that can be used to facilitate cash settlement of all covered transactions following a credit event"@en ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" .
+
+fibo-der-cr-cds:allowsSubstitution a owl:DatatypeProperty ;
+    rdfs:label "allows substitution"@en,
+        "是否允许替换（allows substitution）"@zh ;
+    rdfs:comment "表明是否可以用其他债务替换指定的可交割债务。"@zh ;
+    rdfs:domain fibo-der-cr-cds:CreditProtectionTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether it is possible to substitute other obligations in place of the specified deliverable obligation"@en .
+
+fibo-der-cr-cds:hasContractPrice a owl:ObjectProperty ;
+    rdfs:label "has contract price"@en,
+        "具有合约价格（has contract price）"@zh ;
+    rdfs:comment "规定买方购买信用违约互换合约的预定价格。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryPrice ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "specifies a predetermined price at which the buyer purchases the credit default swap contract"@en .
+
+fibo-der-cr-cds:hasMinimumQuotationAmount a owl:ObjectProperty ;
+    rdfs:label "has minimum quotation amount"@en,
+        "具有最低报价金额（has minimum quotation amount）"@zh ;
+    rdfs:comment "指明报价所针对的参考债务未偿本金余额的最低预期门槛金额。"@zh ;
+    rdfs:domain fibo-fbc-fi-stl:CashSettlementTerms ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "indicates a minimum intended threshold amount of outstanding principal balance of the reference obligation for which the quote should be obtained"@en .
+
+fibo-der-cr-cds:hasQuotationMethod a owl:ObjectProperty ;
+    rdfs:label "has quotation method"@en,
+        "具有报价方法（has quotation method）"@zh ;
+    rdfs:comment "指明在确定参考债务市场价值时向银行和/或交易商请求的报价性质。"@zh ;
+    rdfs:domain fibo-fbc-fi-stl:CashSettlementTerms ;
+    rdfs:range fibo-der-cr-cds:CashSettlementMethod ;
+    rdfs:subPropertyOf fibo-fbc-fi-ip:hasPriceDeterminationMethod ;
+    skos:definition "indicates the nature of the pricing quotations to be requested from banks and/or dealers when determining the market value of the reference obligation for purposes of cash settlement"@en .
+
+fibo-der-cr-cds:hasScheduledTerminationDate a owl:ObjectProperty ;
+    rdfs:label "has scheduled termination date"@en,
+        "具有预定终止日（has scheduled termination date）"@zh ;
+    rdfs:comment "双方约定的信用保护到期日期。"@zh ;
+    rdfs:domain fibo-der-cr-cds:CreditProtectionTerms ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf fibo-fnd-arr-doc:hasTerminationDate ;
+    skos:definition "date on which credit protection is due to expire as agreed by both parties"@en .
+
+fibo-der-cr-cds:CashSettlementMethod a owl:Class ;
+    rdfs:label "cash settlement method"@en,
+        "现金结算方法（cash settlement method）"@zh ;
+    rdfs:comment "计算或以其他方式确定合约最终参考价格的策略。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-ip:PriceDeterminationMethod ;
+    skos:definition "strategy for calculating or otherwise establishing a reference final price for the contract"@en ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" ;
+    cmns-av:explanatoryNote "The method may include an independently administered synthetic auction process that sets the reference final price."@en .
+
+fibo-der-cr-cds:DeliverableObligation a owl:Class ;
+    rdfs:label "deliverable asset"@en,
+        "可交割资产（deliverable asset）"@zh ;
+    rdfs:comment "在信用违约互换结算过程中必须交付的资产。"@zh ;
+    rdfs:subClassOf fibo-fnd-oac-own:Asset ;
+    skos:definition "asset that must be delivered as a part of the process of settling a credit default swap"@en ;
+    cmns-av:explanatoryNote "If the reference obligation is a bond, the deliverable asset (obligation) may be a different bond. If it is a loan, the deliverable asset may involve assigment of a loan."@en .
+
+fibo-fbc-fi-stl:CashSettlementTerms a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-bsc:ValuationTerms ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-der-cr-cds:hasMinimumQuotationAmount ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-cr-cds:CashSettlementMethod ;
+            owl:onProperty fibo-der-cr-cds:hasQuotationMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-ip:hasPricingSource ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-pas-fpas:Dealer fibo-fbc-fi-ip:PricingModel fibo-fbc-fct-mkt:Exchange fibo-fbc-fi-ip:CompositeMarket ) ] ] ;
+    cmns-av:explanatoryNote "Note that the valuation determined via the appraisal of the underlying asset may include a quotation that is either an upper limit to the outstanding principal balance of the reference obligation for which the quote should be obtained, or a floating rate payer calculation amount."@en .
+
+fibo-der-cr-cds:CreditProtectionTerms a owl:Class ;
+    rdfs:label "credit protection terms"@en,
+        "信用保护条款（credit protection terms）"@zh ;
+    rdfs:comment "规定触发事件及与结算相关条件的法律条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-der-cr-cds:allowsSubstitution ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-der-cr-cds:hasScheduledTerminationDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasSeller ;
+            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligationSeller ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:specifies ;
+            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
+            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligationBuyer ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:specifies ;
+            owl:someValuesFrom fibo-der-cr-cds:TriggeringEvent ],
+        fibo-der-drc-bsc:DerivativeTerms ;
+    skos:definition "legal terms that define triggering events and associated conditions related to settlement"@en ;
+    cmns-av:explanatoryNote "Note that there may be additional payment schedules or a more complex calculation formula required depending on the terms of the contract."@en ;
+    cmns-av:synonym "contingent leg"@en .
+
+fibo-der-cr-cds:MultiNameCreditDefaultSwap a owl:Class ;
+    rdfs:label "multi-name credit default swap"@en,
+        "多名信用违约互换（multi-name credit default swap）"@zh ;
+    rdfs:comment "参考不止一个债务或借款人的信用违约互换。"@zh ;
+    rdfs:subClassOf fibo-der-cr-cds:CreditDefaultSwap ;
+    skos:definition "credit default swap that references more than one obligation or borrower"@en ;
+    cmns-av:adaptedFrom "Draft paper on Credit Default Swaps from the Federal Reserve Board, available at https://www.federalreserve.gov/econres/feds/files/2022023pap.pdf",
+        "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" ;
+    cmns-av:explanatoryNote "For instance, a multiname contract could be written to cover defaults in a reference portfolio (such as in the case of a basket credit default swap) or, as has been increasingly common over the past couple of decades,be based on an index of commonly negotiated single-name CDS. The latter are generally called CDS indexes."@en ;
+    cmns-av:synonym "multiname credit default swap" .
+
+fibo-der-cr-cds:TriggeringEvent a owl:Class ;
+    rdfs:label "triggering event"@en,
+        "触发事件（triggering event）"@zh ;
+    rdfs:comment "与信用违约互换的某些方面相关或触发这些方面的事件。"@zh ;
+    rdfs:subClassOf fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "event that relates to or triggers some aspect of a credit default swap"@en ;
+    cmns-av:explanatoryNote "A triggering event is typically a credit event, but could be anything that happens in the marketplace. For example, a weather-specific contract could be triggered by a hurricane - which wouldn't be considered a credit event per se."@en .
+
+fibo-der-cr-cds:CreditDefaultSwap a owl:Class ;
+    rdfs:label "credit default swap"@en,
+        "信用违约互换（credit default swap）"@zh ;
+    rdfs:comment "双边合约：一方（保护卖方）同意在信用事件发生时向另一方（保护买方）支付款项。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-cr-cds:SettlementAuction ;
+            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:specifies ;
+            owl:someValuesFrom fibo-der-cr-cds:TriggeringEvent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-cr-cds:hasContractPrice ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-der-cr-cds:CreditProtectionTerms ],
+        fibo-der-drc-bsc:CreditDerivative,
+        fibo-der-drc-swp:Swap ;
+    skos:definition "bilateral contract in which one party (protection seller) agrees to provide payment to the other party (protection buyer) should a credit event occur against the underlying, which could be a specified debt (the reference obligation), a specific debt issuer (reference entity), a basket of reference entities and/or reference obligations, or a credit index (reference index)"@en ;
+    cmns-av:abbreviation "CDS"@en ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" ;
+    cmns-av:explanatoryNote "According to a 2022 working paper from the Federal Reserve, \"credit default swaps (CDS) are, by far, the most common type of credit derivative. They are financial instruments that allow the transfer of credit risk among market participants, potentially facilitating greater efficiency in the pricing and distribution of credit risk. In its most basic form, a CDS is a contract where a 'protection buyer' agrees to make periodic payments (the CDS 'spread' or premium) over a predetermined number of years (the maturity or term of the CDS) to a 'protection seller' in exchange for a payment from the protection seller in the event of default by a 'reference entity.' CDS premiums tend to be paid quarterly and are set as a percentage of the total amount of protection bought (the 'notional amount' of the contract). CDS maturities generally range from one to ten years, with the five-year maturity being particularly common.\" See https://www.federalreserve.gov/econres/feds/files/2022023pap.pdf for more detail."@en,
+        "Note that the effective date of the contract indicates the starting date of the credit protection defined therein."@en .
+

@@ -1,0 +1,89 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-cr-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/MetadataDERCreditDerivatives/> .
+@prefix fibo-der-drc-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/MetadataDERDerivativesContracts/> .
+@prefix fibo-der-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/MetadataDER/> .
+@prefix fibo-der-rat-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/MetadataDERRateDerivatives/> .
+@prefix fibo-der-sbd-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/MetadataDERSecurityBasedDerivatives/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the FIBO Derivatives (DER) Domain",
+        "DER 域元数据（Metadata for the DER Domain）"@zh ;
+    dcterms:abstract "The Derivatives (DER) Domain covers many of the concepts that are common to derivative instruments, including but not limited to options, futures, forwards, swaps, and a wide range of other derivatives. This ontology provides metadata about the Derivatives Domain and its contents." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2018-2026 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明衍生品（DER）域由四个模块构成：衍生品合约、利率衍生品、信用衍生品、证券类衍生品。"@zh ;
+    owl:imports fibo-der-cr-mod:,
+        fibo-der-drc-mod:,
+        fibo-der-rat-mod:,
+        fibo-der-sbd-mod:,
+        fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20260401/MetadataDER/> ;
+    cmns-av:copyright "Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2018-2026 Object Management Group" .
+
+fibo-der-mod:DERDomain a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "derivatives domain" ;
+    dcterms:abstract "The Derivatives (DER) Domain covers many of the concepts that are common to derivative instruments, including but not limited to options, futures, forwards, swaps, and a wide range of other derivatives." ;
+    dcterms:contributor "Adaptive Analytics, Inc.",
+        "Bloomberg LP",
+        "Citigroup",
+        "Commodities Futures Trading Commission (CFTC)",
+        "Credit Suisse",
+        "Deutsche Bank",
+        "Exprentis",
+        "Federated Knowledge, LLC",
+        "Intuitive Technology Partners, Inc.",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Mizuho Financial Group, Inc.",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Quarule",
+        "State Street Bank and Trust",
+        "Tahoe Blue Ltd",
+        "Thematix Partners, LLC",
+        "Wells Fargo Bank, N.A.",
+        "Working Ontologist",
+        "agnos.ai" ;
+    dcterms:creator "https://wiki.edmcouncil.org/display/DER/FIBO+-+FCT+-+Derivatives+Home"^^xsd:anyURI ;
+    dcterms:hasPart fibo-der-cr-mod:CreditDerivativesModule,
+        fibo-der-drc-mod:DerivativesContractsModule,
+        fibo-der-rat-mod:RateDerivativesModule,
+        fibo-der-sbd-mod:SecurityBasedDerivativesModule ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2018-2026 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    dcterms:title "FIBO DER Domain",
+        "Financial Industry Business Ontology (FIBO) Derivatives (DER) Domain" ;
+    rdfs:seeAlso <https://www.edmcouncil.org/fibo/> ;
+    skos:altLabel "Derivatives (DER)" ;
+    cmns-av:copyright "Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2018-2026 Object Management Group" .
+

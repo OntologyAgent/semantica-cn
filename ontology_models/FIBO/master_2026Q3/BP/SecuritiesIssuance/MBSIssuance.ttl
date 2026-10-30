@@ -1,0 +1,46 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-iss-dbti: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/> .
+@prefix fibo-bp-iss-doc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/> .
+@prefix fibo-bp-iss-mbs: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MBSIssuance/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-iss-mbs:MBSSecuritizationProcess a owl:Class ;
+    rdfs:label "m b s securitization process",
+        "MBS 证券化流程（m b s securitization process）"@zh ;
+    rdfs:comment "抵押贷款支持证券的证券化过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcess .
+
+fibo-bp-iss-mbs:ProspectusPart a owl:Class ;
+    rdfs:label "prospectus part",
+        "招募说明书部分（prospectus part）"@zh ;
+    rdfs:comment "证券发行招募说明书的一个部分或章节。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractualElement ;
+    skos:definition "A part or section of a prospectus for a securities issue." ;
+    cmns-av:explanatoryNote "This may for example be a termsheet, information about tranche breakdown and so on. These are defined as separate information entities in as far as each of these has some specific individual relationship to some other information deliverable, such as a draft of each part which is defined in separate process activities but becomes part of the whole prospectus. Term origin:MBS PoC Reviews" .
+
+fibo-bp-iss-mbs:includesDetailsAbout a owl:ObjectProperty ;
+    rdfs:label "includes details about",
+        "包含……的细节（includes details about）"@zh ;
+    rdfs:comment "标识某文件所包含细节所关涉的对象。"@zh .
+
+fibo-bp-iss-mbs: a owl:Ontology ;
+    rdfs:label "MBSIssuance",
+        "MBS 发行本体（MBS Issuance Ontology）"@zh ;
+    dcterms:abstract "Ontology of the overall process of issuing mortgage backed securities. These are the process elements that are common to different kinds of MBS issuance (agency and private label)." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义抵押贷款支持证券（MBS）发行的通用流程：资产池组建、分层与发售。"@zh ;
+    owl:imports fibo-bp-iss-dbti:,
+        fibo-bp-iss-doc:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI fibo-bp-iss-mbs: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+

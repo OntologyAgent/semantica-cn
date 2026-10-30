@@ -1,0 +1,143 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-txn-mkt: <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/MarketTransactions/> .
+@prefix fibo-fnd-txn-rea: <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/REATransactions/> .
+@prefix fibo-fnd-txn-sec: <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/SecuritiesTransactions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-txn-sec:offsetForWIIssueDate a owl:DatatypeProperty ;
+    rdfs:label "offset for w i issue date"@en,
+        "预发行发行日偏移（offset for w i issue date）"@zh ;
+    rdfs:comment "用于由给定预发行（WI）发行日计算实际结算日；若发行日未知，它确定自发行日起算的天数。"@zh ;
+    rdfs:domain fibo-fnd-txn-sec:WhenIssuedTransaction ;
+    rdfs:range xsd:integer ;
+    skos:definition "Used to calculate actual settlement date from given WI issue date. If issue date is unknwn, this determines how many days form the issue date it's going to settle."@en .
+
+fibo-fnd-txn-sec: a owl:Ontology ;
+    rdfs:label "Securities Transactions Ontology"@en,
+        "证券交易本体（Securities Transactions Ontology）"@zh ;
+    dcterms:abstract "Describes the basic concepts for securities transactions, as an extension of market transactions more generally. Incudes types of securities transactions, parties to the transaction, settlement and the covering contract for the transaction. This ontology would form the basis for more detailed securities transaction concepts that would ideally be derived from the FIX standard." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义证券买卖交易：订单、成交、结算指令等。"@zh ;
+    owl:imports fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-txn-mkt:,
+        fibo-fnd-txn-rea:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga: ;
+    owl:versionIRI fibo-fnd-txn-sec: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Informative ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc." .
+
+fibo-fnd-txn-sec:FinancialPrimaryMarketTransaction a owl:Class ;
+    rdfs:label "financial primary market transaction"@en,
+        "金融一级市场交易（financial primary market transaction）"@zh ;
+    rdfs:comment "在一级市场上进行的金融交易。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-sec:follows ;
+            owl:someValuesFrom fibo-fnd-txn-sec:SettlementProcess ],
+        fibo-fnd-txn-mkt:MarketTransaction,
+        fibo-fnd-txn-rea:ContractualTransaction .
+
+fibo-fnd-txn-sec:SecuritiesTransactionCounterparty a owl:Class ;
+    rdfs:label "securities transaction counterparty"@en,
+        "证券交易对手方（securities transaction counterparty）"@zh ;
+    rdfs:comment "证券交易中的对手方。"@zh ;
+    rdfs:subClassOf fibo-fnd-txn-mkt:TransactionCounterparty .
+
+fibo-fnd-txn-sec:SecuritiesTransactionPrincipal a owl:Class ;
+    rdfs:label "securities transaction principal"@en,
+        "证券交易主当事方（securities transaction principal）"@zh ;
+    rdfs:comment "证券交易中的主当事方。"@zh ;
+    rdfs:subClassOf fibo-fnd-txn-mkt:TransactionPrincipal .
+
+fibo-fnd-txn-sec:WhenIssuedTransaction a owl:Class ;
+    rdfs:label "when issued transaction"@en,
+        "预发行交易（when issued transaction）"@zh ;
+    rdfs:comment "在证券正式交易之前进行的证券买卖。"@zh ;
+    rdfs:subClassOf fibo-fnd-txn-sec:FinancialSecuritiesSecondaryMarketTransaction ;
+    skos:definition "Trading in securities ahead of them being traded."@en .
+
+fibo-fnd-txn-sec:follows a owl:ObjectProperty ;
+    rdfs:label "follows"@en,
+        "遵循（follows）"@zh ;
+    rdfs:comment "按……进行。"@zh ;
+    rdfs:domain fibo-fnd-txn-sec:FinancialPrimaryMarketTransaction ;
+    rdfs:range fibo-fnd-txn-sec:SettlementProcess ;
+    rdfs:subPropertyOf fibo-fnd-txn-rea:transactionEventFollowsBusinessProcess .
+
+fibo-fnd-txn-sec:governs a owl:ObjectProperty ;
+    rdfs:label "governs"@en,
+        "管辖（governs）"@zh ;
+    rdfs:comment "对……拥有并行使权力。"@zh ;
+    rdfs:domain fibo-fnd-txn-sec:SecuritiesTransactionContract ;
+    rdfs:range fibo-fnd-txn-sec:FinancialSecuritiesSecondaryMarketTransaction ;
+    rdfs:subPropertyOf cmns-rga:governs ;
+    owl:inverseOf fibo-fnd-txn-sec:embodies .
+
+fibo-fnd-txn-sec:SettlementProcess a owl:Class ;
+    rdfs:label "settlement process"@en,
+        "结算过程（settlement process）"@zh ;
+    rdfs:comment "完成交易交收的过程。"@zh .
+
+fibo-fnd-txn-sec:embodies a owl:ObjectProperty ;
+    rdfs:label "embodies"@en,
+        "体现（embodies）"@zh ;
+    rdfs:comment "是……的表达，赋予……以具体形式。"@zh ;
+    rdfs:domain fibo-fnd-txn-sec:FinancialSecuritiesSecondaryMarketTransaction ;
+    rdfs:range fibo-fnd-txn-sec:SecuritiesTransactionContract ;
+    rdfs:subPropertyOf fibo-fnd-txn-rea:transactionEmbodiesEconomicAgreement .
+
+fibo-fnd-txn-sec:SecuritiesTransactionContract a owl:Class ;
+    rdfs:label "securities transaction contract"@en,
+        "证券交易合同（securities transaction contract）"@zh ;
+    rdfs:comment "治理二级市场证券交易的合同（书面或默示）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-sec:governs ;
+            owl:someValuesFrom fibo-fnd-txn-sec:FinancialSecuritiesSecondaryMarketTransaction ],
+        fibo-fnd-txn-rea:EconomicContract ;
+    skos:definition "The contract (written or implied) which governs the transaction of securities in the secondary Market."@en ;
+    skos:editorialNote "This is in line with the REA Ontology in which all Transactions are embodied in some Contract, whether written or implied. forms part of future \"Transaction\" model to be reviewed, but is ancestral to Options contract and transactions model."@en .
+
+fibo-fnd-txn-sec:FinancialSecuritiesSecondaryMarketTransaction a owl:Class ;
+    rdfs:label "financial securities secondary market transaction"@en,
+        "金融证券二级市场交易（financial securities secondary market transaction）"@zh ;
+    rdfs:comment "以某种可流通证券换取某种对价的交易。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-sec:embodies ;
+            owl:someValuesFrom fibo-fnd-txn-sec:SecuritiesTransactionContract ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
+            owl:someValuesFrom fibo-fnd-txn-sec:SecuritiesTransactionCounterparty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-mkt:consideration ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-acc-cur:AmountOfMoney <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Security> ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-rea:subject ;
+            owl:someValuesFrom <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Security> ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
+            owl:someValuesFrom fibo-fnd-txn-sec:SecuritiesTransactionPrincipal ],
+        fibo-fnd-txn-mkt:MarketTransaction,
+        fibo-fnd-txn-rea:ContractualTransaction ;
+    skos:definition "A Transaction in which some negotiable security is provided in exchange for some Consideration."@en .
+

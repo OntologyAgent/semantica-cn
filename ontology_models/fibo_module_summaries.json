@@ -1,0 +1,1608 @@
+{
+ "FND/Accounting/CashFlows": {
+  "name_zh": "现金流本体（Cash Flows Ontology）",
+  "summary_zh": "定义现金流（cash flow）的概念结构：现金的流入与流出、预计现金流与实际现金流、现金流金额等，用于财务分析与会计报表场景。"
+ },
+ "FND/Accounting/CurrencyAmount": {
+  "name_zh": "货币金额本体（Currency Amount Ontology）",
+  "summary_zh": "定义「金额＋币种」的货币金额（currency amount）表示，是 FIBO 中表达价格、债务金额、付款额等一切带币种数值的基础构件。",
+  "overview_zh": "定义货币金额（currency amount）的统一表示：「数值＋币种」的组合结构，是 FIBO 表达一切金额（价格、本金、付款、估值）的基础构件。\n\n**在体系中的位置**：FND（基础）域会计模块的核心本体，处于全库最底层——凡涉及钱的概念都引用它。\n\n**上下游关系**：上游依赖 FND 关系与度量相关概念；下游配套 ISO 4217 货币代码本体提供币种取值，被 FBC 定价、LOAN 贷款、SEC 债务等几乎所有模块引用。\n\n**与相近概念的差别**：货币金额≠数字——同一数值配上不同币种是不同金额；与现金流的差别——金额是静态数值，现金流是金额随时间的流动。"
+ },
+ "FND/Accounting/ISO4217-CurrencyCodes": {
+  "name_zh": "ISO 4217 货币代码本体（ISO 4217-1 Currency Codes Ontology）",
+  "summary_zh": "收录 ISO 4217-1 标准的全部货币代码个体（如 USD、CNY、EUR），为货币金额提供标准化的币种取值。",
+  "kind": "individuals"
+ },
+ "FND/AgentsAndPeople/People": {
+  "name_zh": "人员本体（People Ontology）",
+  "summary_zh": "定义自然人（person）的核心属性：姓名、出生日期、国籍、身份标识与联系方式，为雇员、客户、签署人等角色提供「人」的基础模型。",
+  "overview_zh": "定义自然人（person）的核心属性：姓名、出生日期、国籍、身份标识、联系方式与家庭/社会关系。\n\n**在体系中的位置**：FND 代理人与人员模块的核心，是雇员、客户、签署人、高管等一切「人」角色的基础。\n\n**上下游关系**：上游依赖 FND 参与方与关系本体；下游被 BE 高管、FBC 客户、LOAN 借款人等引用。\n\n**与相近概念的差别**：自然人≠法律主体——自然人是生物学意义上的人，法律主体是能持有权利义务的主体（含法人）；人≠参与方——人只有进入某个业务关系（签约、任职）才成为参与方。"
+ },
+ "FND/Agreements/Agreements": {
+  "name_zh": "协议本体（Agreements Ontology）",
+  "summary_zh": "定义两个或以上参与方之间协议（agreement）的通用概念：协议的当事方、条款、生效与终止，是合同等一切契约性安排的上位模型。"
+ },
+ "FND/Agreements/Contracts": {
+  "name_zh": "合同本体（Contracts Ontology）",
+  "summary_zh": "在协议之上定义具有法律约束力的合同（contract）：合同当事方、合同条款、义务与权利，是金融工具与交易合同建模的基石。",
+  "overview_zh": "定义具有法律约束力的合同（contract）：合同当事方、合同条款、权利与义务、合同的订立与终止。\n\n**在体系中的位置**：FND 协议模块的核心之一，上承协议本体，是金融工具、贷款、衍生品合约等一切契约性概念的直接上游。\n\n**上下游关系**：上游继承协议本体并依赖法律能力、参与方本体；下游被 FBC 金融工具、LOAN 贷款、DER 衍生品、SEC 证券等全库引用——几乎所有金融业务最终都是一份合同。\n\n**与相近概念的差别**：合同≠协议——协议是双方意思一致的安排（未必有法律强制力），合同是有法律约束力的协议；合同≠文档——合同是法律关系本身，合同文本只是它的书面载体（见文档本体）。"
+ },
+ "FND/AllFND": {
+  "name_zh": "FND 域总入口（All FND）",
+  "summary_zh": "聚合基础（Foundations，FND）域的全部生产本体，一次导入即可获得 FIBO 全部基础概念（协议、合同、参与方、日期、所有权等），是依赖 FND 全域时的标准入口。"
+ },
+ "FND/AllFND-NorthAmerica": {
+  "name_zh": "FND 域北美扩展入口（All FND, North America）",
+  "summary_zh": "聚合 FND 域中北美地区的扩展内容（美国邮政服务地址及其参考个体），与 AllFND 配合使用以覆盖北美地址场景。"
+ },
+ "FND/Arrangements/Arrangements": {
+  "name_zh": "安排本体（Arrangements Ontology）",
+  "summary_zh": "定义「安排」（arrangement）这一抽象概念：把若干事物按某种结构组织起来的方式，是分类方案、标识方案、生命周期等概念的上位基础。"
+ },
+ "FND/Arrangements/Assessments": {
+  "name_zh": "评估本体（Assessments Ontology）",
+  "summary_zh": "定义评估活动、评估结果与评估方的通用结构，为信用评级、风险打分等判断性活动提供基础模型。",
+  "overview_zh": "定义评估（assessment）活动、评估结果与评估方的通用结构：谁、依据什么、对什么给出了判断。\n\n**在体系中的位置**：FND 安排模块的配套本体，是评级、估值等判断性活动的上位模型。\n\n**上下游关系**：上游依赖安排与参与方本体；下游被评级本体（FND）和信用评级（FBC）引用。\n\n**与相近概念的差别**：评估≠评级——评估是泛指一切判断活动（含一次性的），评级是按标准量表给出的等级化评估；评估结果是意见，不是客观事实。"
+ },
+ "FND/Arrangements/ClassificationSchemes": {
+  "name_zh": "分类方案本体（Classification Schemes Ontology）",
+  "summary_zh": "定义分类方案（classification scheme）、类别及「将事物归入类别」的关系，支撑证券分类、行业分类等具体分类体系。"
+ },
+ "FND/Arrangements/Documents": {
+  "name_zh": "文档本体（Documents Ontology）",
+  "summary_zh": "定义文档、文档类型及文档与其所记载内容的关系，为合同文本、募集说明书等法律文书建模。"
+ },
+ "FND/Arrangements/IdentifiersAndIndices": {
+  "name_zh": "标识符与索引本体（Identifiers and Indices Ontology）",
+  "summary_zh": "定义标识符（identifier）、标识方案与索引（index）的基本结构，是 ISIN、LEI、CUSIP 等编码体系建模的基础。"
+ },
+ "FND/Arrangements/Lifecycles": {
+  "name_zh": "生命周期本体（Lifecycles Ontology）",
+  "summary_zh": "定义生命周期、生命周期阶段与状态转移，用于描述合同、金融工具、机构从创设到终止的演化过程。",
+  "overview_zh": "定义生命周期（lifecycle）、生命周期阶段（stage）与状态转移：描述对象从创设到终止的演化路径。\n\n**在体系中的位置**：FND 安排模块的配套本体，为合同、金融工具、机构的「状态机」建模。\n\n**上下游关系**：上游依赖安排与日期本体；下游被贷款事件、证券发行流程、企业行动等需要描述阶段演化的本体引用。\n\n**与相近概念的差别**：生命周期≠业务流程——生命周期描述一个对象自身的状态变化（草稿→生效→到期），流程（BP 域）描述多方协作的业务步骤。"
+ },
+ "FND/Arrangements/Ratings": {
+  "name_zh": "评级本体（Ratings Ontology）",
+  "summary_zh": "定义评级（rating）、评级量表与评级方的通用结构，是信用评级等具体评级体系的基础。",
+  "overview_zh": "定义评级（rating）、评级量表（rating scale）与评级方的通用结构。\n\n**在体系中的位置**：FND 安排模块的配套本体，是 FBC 信用评级的直接上游。\n\n**上下游关系**：上游继承评估本体；下游被 FBC 信用评级、IND 指标等引用。\n\n**与相近概念的差别**：评级是「按量表打等级」的评估——AAA、BBB 是量表取值；与分类的差别——分类把事物归入类别体系，评级给出的是有序等级。"
+ },
+ "FND/Arrangements/Reporting": {
+  "name_zh": "报告本体（Reporting Ontology）",
+  "summary_zh": "定义报告、报告方与报告内容的关系，支撑监管报告、财务报告等报送场景。",
+  "overview_zh": "定义报告（report）、报告方与报告内容的关系：谁向谁、就什么、按什么要求提交报告。\n\n**在体系中的位置**：FND 安排模块的配套本体，支撑监管报告、财务报告等报送场景。\n\n**上下游关系**：上游依赖安排、文档与参与方本体；下游被贷款监管（HMDA 报告）、监管报送建模引用。\n\n**与相近概念的差别**：报告≠文档——报告是「报送行为及其产物」的整体，文档只是载体；报告通常有法定格式与期限要求。"
+ },
+ "FND/DatesAndTimes/BusinessDates": {
+  "name_zh": "营业日期本体（Business Dates Ontology）",
+  "summary_zh": "定义营业日、营业日历与日期调整规则（如顺延约定），支撑金融合同中的营业日计算。"
+ },
+ "FND/DatesAndTimes/FinancialDates": {
+  "name_zh": "金融日期本体（Financial Dates Ontology）",
+  "summary_zh": "定义金融语境下的日期与期间概念：结算日、付息日、到期日、日计数基准等。",
+  "overview_zh": "定义金融语境下的日期与期间：结算日、付息日、到期日、日计数基准（day count basis，如 30/360、ACT/365）等。\n\n**在体系中的位置**：FND 日期与时间模块的核心，金融合同一切日期条款的基础。\n\n**上下游关系**：上游依赖 OMG 通用日期时间本体与 FND 关系本体；下游被付款计划表、债务、衍生品等所有含日期条款的本体引用。\n\n**与相近概念的差别**：金融日期≠日历日期——金融日期带有业务含义与计算规则（如利息按什么基准算天数）；与营业日期的差别——营业日期解决「哪天开门」，金融日期解决「哪天发生什么事、怎么算」。"
+ },
+ "FND/DatesAndTimes/Occurrences": {
+  "name_zh": "事件与发生本体（Occurrences Ontology）",
+  "summary_zh": "定义「发生」（occurrence）、事件与触发条件，用于表达企业行动、信用事件等「发生了什么」。",
+  "overview_zh": "定义「发生」（occurrence）、事件（event）与触发条件：表达「某时某地发生了什么」。\n\n**在体系中的位置**：FND 日期与时间模块中处理「事件」的本体，是企业行动、信用事件、贷款事件的共同上游。\n\n**上下游关系**：上游依赖日期与参与方本体；下游被 CAE 企业行动、FBC 信用事件、LOAN 贷款事件引用。\n\n**与相近概念的差别**：事件≠状态——事件是时间点上的发生（违约了），状态是持续的处境（处于违约中）；与流程的差别——流程是一系列预定步骤，事件是单次发生。"
+ },
+ "FND/GoalsAndObjectives/Objectives": {
+  "name_zh": "目标本体（Objectives Ontology）",
+  "summary_zh": "定义目标（objective）及其与组织、计划的关系，用于表达机构的经营目标与投资目标。",
+  "overview_zh": "定义目标（objective）及其与组织、计划的关系：机构设定的经营目标、投资目标、合规目标。\n\n**在体系中的位置**：FND 目标模块的唯一本体，为战略与意图建模。\n\n**上下游关系**：上游依赖组织与安排本体；下游被基金（投资目标）、企业治理等场景引用。\n\n**与相近概念的差别**：目标≠约束——目标是追求的方向（收益最大化），约束是必须遵守的限制（投资比例上限）；目标可度量程度各异，本本体不强制量化。"
+ },
+ "FND/Law/LegalCapacity": {
+  "name_zh": "法律能力本体（Legal Capacity Ontology）",
+  "summary_zh": "定义法律能力、缔约能力、签章权等概念，刻画主体从事法律行为的资格。",
+  "overview_zh": "定义法律能力（legal capacity）：缔约能力、签章权、代表权等主体从事法律行为的资格。\n\n**在体系中的位置**：FND 法律模块的两个本体之一，与法律核心本体互补。\n\n**上下游关系**：上游依赖法律核心与参与方本体；下游被合同（签约主体须有缔约能力）、BE 法律实体引用。\n\n**与相近概念的差别**：法律能力≠权利——能力是「有没有资格做」（如未成年人缔约能力受限），权利是「可以做什么」；签章权是组织授予个人的代表资格。"
+ },
+ "FND/Law/LegalCore": {
+  "name_zh": "法律核心本体（Legal Core Ontology）",
+  "summary_zh": "定义法域（jurisdiction）、法律、法规等核心法律概念，为监管主体与适用法律建模。"
+ },
+ "FND/Organizations/FormalOrganizations": {
+  "name_zh": "正式组织本体（Formal Organizations Ontology）",
+  "summary_zh": "定义正式组织、组织成员与组织内部角色，是公司、政府机构等组织形态建模的基础。",
+  "overview_zh": "定义正式组织（formal organization）、组织成员与组织内部角色：有明确宗旨、结构和成员规则的团体。\n\n**在体系中的位置**：FND 组织模块的核心，是 BE 公司、政府机构、FBC 金融服务机构等一切组织概念的上游。\n\n**上下游关系**：上游依赖参与方与关系本体；下游被 BE、FBC 各组织类本体大量继承。\n\n**与相近概念的差别**：正式组织≠法人——正式组织是社会学概念（有结构的团体），法人是法律概念（有独立人格）；一个非法人部门也可以是正式组织；组织≠参与方——组织只有进入业务关系才是参与方。"
+ },
+ "FND/OwnershipAndControl/Control": {
+  "name_zh": "控制本体（Control Ontology）",
+  "summary_zh": "定义「控制」关系：控制方、被控制方与控制程度，用于公司治理与合并报表判断。",
+  "overview_zh": "定义「控制」（control）关系本身：控制方、被控制方、控制程度与控制权来源。\n\n**在体系中的位置**：FND 所有权与控制模块的三件套之一（控制、所有权、所有权与控制综合）。\n\n**上下游关系**：上游依赖关系与参与方本体；下游被 BE 公司控制、合并报表判断引用。\n\n**与相近概念的差别**：控制≠所有权——51% 股权通常带来控制，但通过协议安排无多数股权也可控制；与管理权的差别——控制是股东层面的支配力，管理是经营层面的执行权。"
+ },
+ "FND/OwnershipAndControl/Ownership": {
+  "name_zh": "所有权本体（Ownership Ontology）",
+  "summary_zh": "定义「拥有」关系：所有者、被拥有资产及所有权份额。",
+  "overview_zh": "定义「拥有」（ownership）关系本身：所有者、被拥有资产、所有权份额与取得方式。\n\n**在体系中的位置**：FND 所有权与控制模块的三件套之一。\n\n**上下游关系**：上游依赖关系与参与方本体；下游被 BE 公司所有权、不动产、证券化资产归属引用。\n\n**与相近概念的差别**：所有权≠占有——占有是实际控制着东西，所有权是法律上的归属（寄存物品时保管人占有但不拥有）；与受益权的差别——信托中受托人拥有名义所有权，受益人享有受益权。"
+ },
+ "FND/OwnershipAndControl/OwnershipAndControl": {
+  "name_zh": "所有权与控制本体（Ownership and Control Ontology）",
+  "summary_zh": "综合所有权与控制关系，刻画「谁拥有、谁控制」的基本格局。"
+ },
+ "FND/Parties/Parties": {
+  "name_zh": "参与方本体（Parties Ontology）",
+  "summary_zh": "定义参与方（party）、独立主体（autonomous agent）与「角色扮演」（party in role），是 FIBO 全库使用最广的基础本体之一。"
+ },
+ "FND/Places/Addresses": {
+  "name_zh": "地址本体（Addresses Ontology）",
+  "summary_zh": "定义邮政地址及其组成部分，为机构注册地、通讯地址建模。",
+  "overview_zh": "定义邮政地址（postal address）及其组成部分：街道、城市、邮编、国家。\n\n**在体系中的位置**：FND 地点模块的基础本体，机构注册地、通讯地址的标准模型。\n\n**上下游关系**：上游依赖地点与指称相关概念；下游被美国邮政地址本体特化，被 BE、FBC、LOAN 引用（注册地、抵押物地址）。\n\n**与相近概念的差别**：地址≠地点——地点是空间位置本身，地址是指代地点的文字结构；与虚拟地点的差别——一个物理、一个电子。"
+ },
+ "FND/Places/NorthAmerica/USPostalServiceAddresses": {
+  "name_zh": "美国邮政地址本体（U.S. Postal Service Addresses Ontology）",
+  "summary_zh": "定义符合美国邮政服务（USPS）规范的地址结构：街道、城市、州与邮编。",
+  "overview_zh": "定义符合美国邮政服务（USPS）规范的地址结构：街道、城市、州缩写、ZIP 邮编。\n\n**在体系中的位置**：FND 地点模块的北美特化本体。\n\n**上下游关系**：上游继承地址本体；下游配套的地址个体本体提供美国州等参考数据。\n\n**与相近概念的差别**：与通用地址本体的差别——固化了美国特有的结构（州、ZIP 码格式），便于与美国数据对接。"
+ },
+ "FND/Places/NorthAmerica/USPostalServiceAddressesIndividuals": {
+  "name_zh": "美国邮政地址个体本体（U.S. Postal Service Addresses Individuals Ontology）",
+  "summary_zh": "收录美国州、地区等地址参考数据个体，供美国地址建模时引用。",
+  "kind": "individuals"
+ },
+ "FND/Places/RealProperty": {
+  "name_zh": "不动产本体（Real Property Ontology）",
+  "summary_zh": "定义不动产（real property）及其与地点、所有权的关系，支撑抵押贷款与房地产金融。",
+  "overview_zh": "定义不动产（real property）：土地及附着其上的建筑物，及其与地点、所有权的关系。\n\n**在体系中的位置**：FND 地点模块中与金融最相关的本体，支撑抵押贷款、房地产金融。\n\n**上下游关系**：上游依赖地点、地址与所有权本体；下游被 LOAN 抵押贷款（抵押物）、房地产贷款各本体引用。\n\n**与相近概念的差别**：不动产≠房产本身——不动产强调「土地＋附着物＋权利束」的法律概念；与动产的差别——能否移动、登记制度不同。"
+ },
+ "FND/Places/VirtualPlaces": {
+  "name_zh": "虚拟地点本体（Virtual Places Ontology）",
+  "summary_zh": "定义网站、电子邮箱等虚拟地点概念，补充物理地点之外的「场所」表达。"
+ },
+ "FND/ProductsAndServices/PaymentsAndSchedules": {
+  "name_zh": "付款与计划表本体（Payments and Schedules Ontology）",
+  "summary_zh": "定义付款、付款计划表（payment schedule）及其日期与金额结构，是贷款还款、债券付息建模的基础。",
+  "overview_zh": "定义付款（payment）与付款计划表（payment schedule）：一系列按日期与金额安排的付款义务。\n\n**在体系中的位置**：FND 产品与服务模块的两个核心之一，是贷款还款表、债券付息表、租金计划的基础。\n\n**上下游关系**：上游依赖货币金额与金融日期本体；下游被 LOAN、SEC 债务、衍生品现金流引用。\n\n**与相近概念的差别**：计划表≠实际付款——计划表是约定的付款安排（应付），付款是实际发生的资金转移（实付）；逾期分析就是两者对照。"
+ },
+ "FND/ProductsAndServices/ProductsAndServices": {
+  "name_zh": "产品与服务本体（Products and Services Ontology）",
+  "summary_zh": "定义产品、服务及其提供者与客户的通用关系。",
+  "overview_zh": "定义产品（product）与服务（service）的通用概念：提供方、客户、产品特征与服务协议。\n\n**在体系中的位置**：FND 产品与服务模块的基础本体，是 FBC 金融产品与服务的直接上游。\n\n**上下游关系**：上游依赖参与方与协议本体；下游被 FBC 金融产品与服务本体特化到金融领域。\n\n**与相近概念的差别**：产品≠服务——产品是可交付的标的（可以是一项安排），服务是持续提供的行为；本本体是领域无关的，金融特性在 FBC 层加入。"
+ },
+ "FND/Relations/Relations": {
+  "name_zh": "关系本体（Relations Ontology）",
+  "summary_zh": "FIBO 最底层的基础本体，定义参考（reference）、分类（classify）等通用关系与抽象概念，全库普遍依赖。",
+  "overview_zh": "FIBO 最底层的基础本体：定义参考（reference）、分类（classify）、包含等通用关系与抽象概念，几乎不依赖任何其他 FIBO 本体。\n\n**在体系中的位置**：全库的「地基」——所有域的所有本体最终都追溯到它，这保证了概念体系的统一。\n\n**上下游关系**：上游仅依赖 OMG Commons 基础本体；下游被 FND 全部模块进而被全库引用。\n\n**与相近概念的差别**：它不定义业务概念，只定义「概念之间如何关联」的元概念；与标注词汇表的差别——标注词汇表管「本体自身的元数据」，关系本体管「业务概念之间的关系」。"
+ },
+ "FND/TransactionsExt/MarketTransactions": {
+  "name_zh": "市场交易本体（Market Transactions Ontology）",
+  "summary_zh": "定义市场上发生的交易（market transaction）：买卖双方、价格与数量。"
+ },
+ "FND/TransactionsExt/REATransactions": {
+  "name_zh": "REA 交易本体（REA Transactions Ontology）",
+  "summary_zh": "基于资源—事件—代理（REA）会计模型定义交易的经济资源交换结构。",
+  "overview_zh": "基于 REA（资源—事件—代理，Resource-Event-Agent）会计模型定义交易：经济资源的交换由事件驱动、在代理之间发生。\n\n**在体系中的位置**：FND 交易扩展模块的三个本体之一，提供会计视角的交易模型。\n\n**上下游关系**：上游依赖参与方与关系本体；下游为需要从会计本质刻画交易的场景提供框架。\n\n**与相近概念的差别**：REA 模型强调「给予与获取的对偶」（duality）——每笔交易既有付出也有获得；与市场交易本体的差别——REA 是会计理论视角，市场交易是业务操作视角。"
+ },
+ "FND/TransactionsExt/SecuritiesTransactions": {
+  "name_zh": "证券交易本体（Securities Transactions Ontology）",
+  "summary_zh": "定义证券买卖交易：订单、成交、结算指令等。",
+  "overview_zh": "定义证券买卖交易：订单、成交（execution）、结算指令及其参与方。\n\n**在体系中的位置**：FND 交易扩展模块中专为证券领域特化的本体。\n\n**上下游关系**：上游继承市场交易本体并引用 SEC 证券、FBC 结算概念；下游服务交易记录与清算建模。\n\n**与相近概念的差别**：交易≠结算——交易是达成买卖，结算是履约交割（见 FBC 结算本体）；与市场交易的差别——增加了证券特有的订单与成交结构。"
+ },
+ "FND/Utilities/Analytics": {
+  "name_zh": "分析本体（Analytics Ontology）",
+  "summary_zh": "定义分析工具、度量与比率的通用概念，支撑指标与模型的表达。",
+  "overview_zh": "定义分析相关的通用概念：度量（measure）、比率（ratio）、分析工具与模型。\n\n**在体系中的位置**：FND 工具模块的两个本体之一，为指标与模型表达提供支撑。\n\n**上下游关系**：上游依赖关系与度量概念；下游被 IND 指标、MD 债务分析等本体引用。\n\n**与相近概念的差别**：与指标本体的差别——分析本体提供「度量怎么构成」的通用机制，指标本体（IND）定义「度量什么」的业务指标。"
+ },
+ "FND/Utilities/AnnotationVocabulary": {
+  "name_zh": "FIBO 标注词汇表（FIBO Annotation Vocabulary）",
+  "summary_zh": "定义 FIBO 专用的标注属性（如释义来源、成熟度等级），用于本体自身的元数据标注。"
+ },
+ "BE/AllBE": {
+  "name_zh": "BE 域总入口（All Business Entities Domain）",
+  "summary_zh": "聚合商业实体（Business Entities，BE）域的全部生产本体：法律实体、公司、合伙、信托、所有权与控制权、政府实体等，一次导入即获得 BE 域完整模型。"
+ },
+ "BE/AllBE-Europe": {
+  "name_zh": "BE 域欧洲扩展入口（All BE, European Extension）",
+  "summary_zh": "聚合 BE 域中欧洲法域的扩展本体（欧盟及欧洲各区域政府实体与法域个体），与 AllBE 配合用于欧洲场景。"
+ },
+ "BE/AllBE-NorthAmerica": {
+  "name_zh": "BE 域北美扩展入口（All BE, North American Extension）",
+  "summary_zh": "聚合 BE 域中北美法域的扩展本体（美国、加拿大、墨西哥、加勒比地区政府实体与法域个体）。"
+ },
+ "BE/AllBE-ReferenceIndividuals": {
+  "name_zh": "BE 域参考个体入口（All BE, Reference Individuals）",
+  "summary_zh": "聚合 BE 域的全部参考数据个体本体（全球各法域的政体、政府与法域实例），供需要完整参考数据的应用加载。"
+ },
+ "BE/FunctionalEntities/FunctionalEntities": {
+  "name_zh": "功能实体本体（Functional Entities Ontology）",
+  "summary_zh": "定义「功能实体」：按其在商业中承担的功能（而非法律形式）刻画的实体，是出版方、登记机构等功能性主体的基础。",
+  "overview_zh": "定义「功能实体」：按其在商业活动中承担的功能（而非法律形式）刻画的实体，如登记机构、出版方、市场运营方。\n\n**在体系中的位置**：BE 域功能实体模块的核心，与「法律实体」视角互补，构成 BE 域的两条主线之一。\n\n**上下游关系**：上游依赖 FND 的组织与参与方本体；下游被出版方本体以及 FBC 的功能实体各本体扩展——金融服务实体、市场、监管机构本质上都是按功能刻画的实体。\n\n**与相近概念的差别**：与法律主体（Legal Person）的差别在于划分维度不同：法律主体按法律人格划分，功能实体按商业功能划分；同一家银行既是法律主体，也是功能实体。"
+ },
+ "BE/FunctionalEntities/Publishers": {
+  "name_zh": "出版方本体（Publishers Ontology）",
+  "summary_zh": "定义出版方及其出版物，用于标识金融信息与文档的发布来源。",
+  "overview_zh": "定义出版方（publisher）及其出版物，用于标识金融信息与文档的发布来源。\n\n**在体系中的位置**：BE 功能实体模块的配套本体，是功能实体的一个具体化。\n\n**上下游关系**：上游依赖功能实体本体；下游被需要标注发布来源的场景引用，如文档、市场数据、指数发布。\n\n**与相近概念的差别**：出版方是「谁发布了它」这个功能角色，与文档本体（FND/Arrangements/Documents）建模的内容本身相区分——一个是主体，一个是载体。"
+ },
+ "BE/GovernmentEntities/GovernmentEntities": {
+  "name_zh": "政府实体本体（Government Entities Ontology）",
+  "summary_zh": "定义政府、政体（polity）、法域（jurisdiction）及政府实体的核心概念，是各区域政府实体本体的共同基础。",
+  "overview_zh": "定义政府（government）、政体（polity）与法域（jurisdiction）的核心概念：政体是具有主权的政治实体，政府是其行政机关，法域是其法律效力的适用范围。\n\n**在体系中的位置**：BE 政府实体模块的根基，全球 17 个区域政府实体与法域本体全部建立在它之上。\n\n**上下游关系**：上游依赖 FND 的法律核心、正式组织、地点本体；下游是各区域政府实体个体本体，以及 FBC、LOAN 等需要表达监管法域、注册地的本体。\n\n**与相近概念的差别**：政体、政府、法域三者常被混用但含义不同——国家是政体，国务院/政府内阁是政府，「适用中国法律」指的是法域；与 FND/Law/LegalCore 的法域概念衔接并落到具体国家。"
+ },
+ "BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "中亚政府实体与法域本体（Central Asia Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录中亚地区各国（如哈萨克斯坦等）的政体、政府与法域个体，用于确定实体注册或监管所属的法域。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/AsianJurisdiction/EasternAsiaGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "东亚政府实体与法域本体（Eastern Asia Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录东亚地区各国（中国、日本、韩国等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/AsianJurisdiction/SoutheasternAsiaGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "东南亚政府实体与法域本体（Southeastern Asia Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录东南亚地区各国（新加坡、马来西亚、泰国等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/AsianJurisdiction/SouthernAsiaGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "南亚政府实体与法域本体（Southern Asia Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录南亚地区各国（印度、巴基斯坦等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "西亚政府实体与法域本体（Western Asia Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录西亚地区各国（沙特阿拉伯、阿联酋等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "欧盟政府实体与法域本体（EU Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录欧盟层面的政体、机构与法域个体（欧盟本身及其超国家机构）。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "东欧政府实体与法域本体（Eastern Europe Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录东欧各国（波兰、捷克、匈牙利等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "北欧政府实体与法域本体（Northern Europe Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录北欧各国（瑞典、挪威、丹麦等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "南欧政府实体与法域本体（Southern Europe Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录南欧各国（意大利、西班牙、希腊等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "英国政府实体与法域本体（UK Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录大不列颠及北爱尔兰联合王国的政体、政府与法域个体（英格兰、苏格兰、威尔士、北爱尔兰）。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "西欧政府实体与法域本体（Western Europe Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录西欧各国（法国、德国、荷兰等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "中美洲政府实体与法域本体（Central American Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录中美洲各国（巴拿马、哥斯达黎加等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/LatinAmericanJurisdiction/SouthAmericanGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "南美洲政府实体与法域本体（South American Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录南美洲各国（巴西、阿根廷等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "加拿大政府实体与法域本体（Canadian Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录加拿大的政体、联邦与省政府、法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "加勒比政府实体与法域本体（Caribbean Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录加勒比地区各国与属地（开曼群岛、百慕大等）的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "墨西哥政府实体与法域本体（Mexican Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录墨西哥的政体、政府与法域个体。",
+  "kind": "individuals"
+ },
+ "BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions": {
+  "name_zh": "美国政府实体与法域本体（US Government Entities and Jurisdictions Ontology）",
+  "summary_zh": "收录美国的政体、联邦与各州政府、法域个体，是北美金融建模最常用的法域参考数据。",
+  "kind": "individuals"
+ },
+ "BE/LegalEntities/CorporateBodies": {
+  "name_zh": "法人团体本体（Corporate Bodies Ontology）",
+  "summary_zh": "定义依法设立、具有独立法律人格的法人团体（corporate body），是股份有限公司等具体法人类型的上位概念。",
+  "overview_zh": "定义法人团体（corporate body）：依法设立、具有独立法律人格的组织，是股份有限公司等具体法人类型的上位概念。\n\n**在体系中的位置**：BE 法律实体模块的中间层，上承法律主体，下接公司、私人有限公司等具体形态。\n\n**上下游关系**：上游依赖法律主体与 FND 组织本体；下游被公司本体及各类具体法人形态本体继承。\n\n**与相近概念的差别**：与法律主体的差别——法律主体包括自然人和法人，法人团体仅指组织型法人；与正式商业组织的差别——法人团体强调法律人格，可以是非营利组织，正式商业组织强调营利目的。"
+ },
+ "BE/LegalEntities/FormalBusinessOrganizations": {
+  "name_zh": "正式商业组织本体（Formal Business Organizations Ontology）",
+  "summary_zh": "定义以营利为目的、依法注册的正式商业组织，连接法律实体与其商业功能。",
+  "overview_zh": "定义正式商业组织：以营利为目的、依法注册并持续经营的组织。\n\n**在体系中的位置**：BE 法律实体模块中连接「法律形式」与「商业功能」的一层。\n\n**上下游关系**：上游依赖法人团体、法律主体与 FND 正式组织本体；下游被公司、合伙等具体商业组织形态引用。\n\n**与相近概念的差别**：与法人团体的差别——法人团体强调独立法律人格，正式商业组织强调商业经营目的；一个非营利法人团体是前者但不是后者。"
+ },
+ "BE/LegalEntities/LEIEntities": {
+  "name_zh": "LEI 法人实体本体（Legal Entity Identifier Entities Ontology）",
+  "summary_zh": "定义持有全球法人识别编码（LEI）的法人实体，对接 ISO 17442 标准的 LEI 体系。",
+  "overview_zh": "定义持有全球法人识别编码（LEI，ISO 17442）的法人实体，对接 GLEIF（全球法人识别编码基金会）的 LEI 体系。\n\n**在体系中的位置**：BE 法律实体模块中负责「实体身份识别」的本体，是监管报送与交易对手识别的基础。\n\n**上下游关系**：上游依赖法律主体与 FND 标识符本体；下游被需要 LEI 标识的监管报告、交易对手档案等场景引用。\n\n**与相近概念的差别**：LEI 实体强调「被 LEI 标识」这一身份属性，区别于一般法人概念——LEI 是金融监管语境下法人的「身份证号」，只有参与受监管金融交易的实体才需要。"
+ },
+ "BE/LegalEntities/LegalPersons": {
+  "name_zh": "法律主体本体（Legal Persons Ontology）",
+  "summary_zh": "定义法律主体（legal person）与法定实体（legal entity）的核心概念：能持有权利义务、可起诉与被诉的主体。",
+  "overview_zh": "定义法律主体（legal person）与法定实体（legal entity）：能够持有权利与义务、可以起诉与被诉的主体。\n\n**在体系中的位置**：BE 法律实体模块的根基，是法人团体、公司、LEI 实体等一切「实体」概念的上位抽象。\n\n**上下游关系**：上游依赖 FND 的法律能力、正式组织、参与方本体；下游被 BE 全部法律实体本体以及全库需要「实体」概念的模块引用。\n\n**与相近概念的差别**：法律主体不等于自然人——自然人在 FND/AgentsAndPeople/People 建模；法律主体是法律拟制的「人」，包括自然人和法人两类。"
+ },
+ "BE/OwnershipAndControl/ControlParties": {
+  "name_zh": "控制方本体（Control Parties Ontology）",
+  "summary_zh": "定义处于控制关系中的各方角色：控制方、被控制方、实际控制人等。",
+  "overview_zh": "定义控制关系中的各方角色：控制方、被控制方、实际控制人等。\n\n**在体系中的位置**：BE 所有权与控制权模块中「控制」线索的角色层，与所有权方本体平行。\n\n**上下游关系**：上游依赖 FND 的控制与参与方本体；下游被公司控制本体扩展为公司层面的具体控制角色。\n\n**与相近概念的差别**：控制不等于拥有——通过协议、表决权安排也可以实现控制，控制方未必是多数股东；这正是它与所有权方角色的核心差别。"
+ },
+ "BE/OwnershipAndControl/CorporateControl": {
+  "name_zh": "公司控制本体（Corporate Control Ontology）",
+  "summary_zh": "定义公司层面的控制关系：控股股东、多数/少数控制、表决权控制等。",
+  "overview_zh": "定义公司层面的控制关系：控股股东、表决权控制、多数控制与少数控制等。\n\n**在体系中的位置**：BE 所有权与控制权模块中落在「公司」上的控制本体。\n\n**上下游关系**：上游依赖控制方角色本体与 FND 控制本体；下游支撑受益所有权分析、合并报表判断与监管披露。\n\n**与相近概念的差别**：与公司所有权本体互补——一个回答「谁说了算」，一个回答「谁拥有份额」；拥有 30% 股份但掌握董事会多数的一方是控制方而非多数所有者。"
+ },
+ "BE/OwnershipAndControl/CorporateOwnership": {
+  "name_zh": "公司所有权本体（Corporate Ownership Ontology）",
+  "summary_zh": "定义公司层面的所有权关系：股东、股份持有与受益所有权。",
+  "overview_zh": "定义公司层面的所有权关系：股东、股份持有与受益所有权。\n\n**在体系中的位置**：BE 所有权与控制权模块中落在「公司」上的所有权本体。\n\n**上下游关系**：上游依赖所有权方角色本体与 FND 所有权本体；下游被 SEC、FBC 中涉及股东结构的建模引用。\n\n**与相近概念的差别**：受益所有权不等于名义持有——登记在册的股东可能只是代持人，真正享有经济利益的是受益所有人，这是反洗钱监管关注的重点。"
+ },
+ "BE/OwnershipAndControl/Executives": {
+  "name_zh": "高管本体（Executives Ontology）",
+  "summary_zh": "定义公司高管（executive）、董事会成员及其职务角色，刻画「谁在管理公司」。",
+  "overview_zh": "定义公司高管（executive）、董事会成员及其职务角色，刻画「谁在管理公司」。\n\n**在体系中的位置**：BE 所有权与控制权模块中关于「人」的角色本体。\n\n**上下游关系**：上游依赖 FND 人员与正式组织本体；下游被 EXMP 示例（如道指公司高管）和公司治理分析引用。\n\n**与相近概念的差别**：高管是组织内的角色（party in role），不是自然人本身——同一个人可以同时是高管、股东和董事；与所有权/控制角色的差别在于高管是经营者而非所有者。"
+ },
+ "BE/OwnershipAndControl/OwnershipParties": {
+  "name_zh": "所有权方本体（Ownership Parties Ontology）",
+  "summary_zh": "定义所有权关系中的各方角色：所有者、受益所有人、名义持有人等。",
+  "overview_zh": "定义所有权关系中的各方角色：所有者、受益所有人、名义持有人等。\n\n**在体系中的位置**：BE 所有权与控制权模块中「所有权」线索的角色层，与控制方本体平行。\n\n**上下游关系**：上游依赖 FND 所有权与参与方本体；下游被公司所有权本体扩展。\n\n**与相近概念的差别**：受益所有人与名义持有人的区分是核心——名义持有人只是登记在册，受益所有人才享有实际经济利益；这套区分直接服务反洗钱与透明度监管。"
+ },
+ "BE/Partnerships/Partnerships": {
+  "name_zh": "合伙本体（Partnerships Ontology）",
+  "summary_zh": "定义合伙企业及普通合伙、有限合伙等形态，刻画合伙人之间的权利义务。",
+  "overview_zh": "定义合伙企业（partnership）及普通合伙、有限合伙等形态，刻画合伙人之间的权利义务。\n\n**在体系中的位置**：BE 域法律实体形态本体之一，与公司、信托、独资经营并列。\n\n**上下游关系**：上游依赖 BE 法律实体与 FND 协议、参与方本体；下游被私募基金结构（GP/LP 架构）等建模引用。\n\n**与相近概念的差别**：与公司的差别——普通合伙人承担无限连带责任，且合伙在多数法域不具有完全独立的法人资格；与信托的差别——合伙是共同经营关系，信托是财产委托关系。"
+ },
+ "BE/PrivateLimitedCompanies/PrivateLimitedCompanies": {
+  "name_zh": "私人有限公司本体（Private Limited Companies Ontology）",
+  "summary_zh": "定义私人有限公司（private limited company）这类不公开募股的有限责任公司形态。",
+  "overview_zh": "定义私人有限公司（private limited company）：不公开募股、股权转让受限的有限责任公司形态。\n\n**在体系中的位置**：BE 域法律实体形态本体之一，是公司本体的重要子类分支。\n\n**上下游关系**：上游依赖公司与法人团体本体；下游被各国公司形态建模引用。\n\n**与相近概念的差别**：与公众公司的差别——不能向公众募股、股份转让通常受限；与合伙的差别——股东承担有限责任且公司具有独立法人资格。"
+ },
+ "BE/SoleProprietorships/SoleProprietorships": {
+  "name_zh": "独资经营本体（Sole Proprietorships Ontology）",
+  "summary_zh": "定义由单一自然人拥有和经营的独资企业形态。",
+  "overview_zh": "定义独资经营（sole proprietorship）：由单一自然人拥有并经营的企业形态。\n\n**在体系中的位置**：BE 域法律实体形态本体之一，是最简单的商业组织形式。\n\n**上下游关系**：上游依赖 BE 法律实体与 FND 人员、组织本体；下游较少，主要用于小微企业与个体经营建模。\n\n**与相近概念的差别**：与公司、合伙的根本差别——独资经营没有独立法人资格，业主对企业债务承担无限责任，企业与业主个人在法律上不完全分离。"
+ },
+ "BE/Trusts/Trusts": {
+  "name_zh": "信托本体（Trusts Ontology）",
+  "summary_zh": "定义信托（trust）及委托人、受托人与受益人之间的信托关系。",
+  "overview_zh": "定义信托（trust）及委托人（settlor）、受托人（trustee）、受益人（beneficiary）三方信托关系。\n\n**在体系中的位置**：BE 域法律安排形态本体之一，与公司、合伙并列。\n\n**上下游关系**：上游依赖 BE 法律实体与 FND 协议、参与方、所有权本体；下游被基金结构、资产证券化（SPV 信托）等建模引用。\n\n**与相近概念的差别**：信托是财产委托管理关系而非经营组织——受托人持有并管理财产，受益人享有利益；与基金的差别——基金可以采用信托结构设立，但基金强调集合投资功能，信托强调财产隔离与受托责任。"
+ },
+ "FBC/AllFBC": {
+  "name_zh": "FBC 域总入口（All FBC）",
+  "summary_zh": "聚合金融商业与贸易（Financial Business and Commerce，FBC）域的全部生产本体：金融工具、金融市场、金融服务机构、监管机构、金融产品与服务、债务与担保等，一次导入即获得 FBC 域完整模型。"
+ },
+ "FBC/AllFBC-Europe": {
+  "name_zh": "FBC 域欧洲扩展入口（All FBC, European Extension）",
+  "summary_zh": "聚合 FBC 域中欧洲法域的扩展本体（欧盟金融服务实体、欧盟监管机构、欧洲市场参考个体等），与 AllFBC 配合用于欧洲场景。"
+ },
+ "FBC/AllFBC-EuropeAndNorthAmerica": {
+  "name_zh": "FBC 域欧洲与北美扩展合并入口（All FBC, European and North American Extension）",
+  "summary_zh": "同时引入 FBC 域的欧洲扩展与北美扩展，便于业务横跨两大法域的应用一次加载全部区域性内容。"
+ },
+ "FBC/AllFBC-NorthAmerica": {
+  "name_zh": "FBC 域北美扩展入口（All FBC, North American Extension）",
+  "summary_zh": "聚合 FBC 域中北美法域的扩展本体（美国与加拿大的金融服务实体、监管机构及受控词汇等）。"
+ },
+ "FBC/AllFBC-NorthAmericanExamples": {
+  "name_zh": "FBC 域北美示例入口（All FBC, North American Examples）",
+  "summary_zh": "聚合面向北美市场的示例个体本体（如美国市场与交易所示例），供演示、教学与测试使用，不属于生产参考数据。"
+ },
+ "FBC/AllFBC-ReferenceIndividuals": {
+  "name_zh": "FBC 域参考个体入口（All FBC, Reference Individuals）",
+  "summary_zh": "聚合 FBC 域全部参考数据个体本体（商业中心、市场、监管机构、金融机构等实例），供需要完整参考数据的应用加载。"
+ },
+ "FBC/AllFBC-ReferenceMarkets": {
+  "name_zh": "FBC 域参考市场入口（All FBC, Reference Markets）",
+  "summary_zh": "聚合全球主要金融市场的参考个体（市场、商业中心及其个体数据），用于需要市场主数据的场景。"
+ },
+ "FBC/DebtAndEquities/CreditEvents": {
+  "name_zh": "信用事件本体（Credit Events Ontology）",
+  "summary_zh": "定义信用事件（credit event）：破产、拒付、重组等会触发信用衍生品结算的事件类型。",
+  "overview_zh": "定义信用事件（credit event）：破产、拒付（failure to pay）、债务重组、加速到期等表明债务人信用恶化的事件类型。\n\n**在体系中的位置**：FBC 债务与权益模块中负责「信用出了什么事」的本体，是信用衍生品结算的触发依据。\n\n**上下游关系**：上游依赖 FND 事件与发生本体和债务本体；下游被 DER 信用违约互换本体引用（CDS 以信用事件为赔付触发条件）。\n\n**与相近概念的差别**：信用事件≠企业行动——信用事件关乎偿付能力恶化，企业行动（分红、拆股）是正常公司治理行为；信用事件≠信用评级下调——评级是第三方评估，事件是客观发生的法律事实。"
+ },
+ "FBC/DebtAndEquities/CreditRatings": {
+  "name_zh": "信用评级本体（Credit Ratings Ontology）",
+  "summary_zh": "定义信用评级、评级机构与评级结果，刻画债务人与债务工具的信用水平。",
+  "overview_zh": "定义信用评级（credit rating）、评级机构（如穆迪、标普）与评级结果，刻画债务人或债务工具的信用水平。\n\n**在体系中的位置**：FBC 债务与权益模块中负责「信用好不好」的本体。\n\n**上下游关系**：上游依赖 FND 评级与评估本体；下游被贷款监管、债券、衍生品（参考实体评级）等本体引用。\n\n**与相近概念的差别**：评级是第三方机构的主观评估（意见），与客观发生的信用事件相区分；与内部信用评分的差别——本本体侧重公开评级机构给出的等级。"
+ },
+ "FBC/DebtAndEquities/Debt": {
+  "name_zh": "债务本体（Debt Ontology）",
+  "summary_zh": "定义债务（debt）与债权债务关系的核心概念：借款人、贷款人、本金与利息义务。",
+  "overview_zh": "定义债务（debt）与债权债务关系的核心概念：借款人、贷款人、本金、利息义务与偿还安排。\n\n**在体系中的位置**：FBC 债务与权益模块的根基，是债券、贷款、衍生品信用概念的共同上游。\n\n**上下游关系**：上游依赖 FND 合同、货币金额、付款与计划表本体；下游被 SEC 债务工具、LOAN 贷款、DER 信用衍生品等大量本体引用。\n\n**与相近概念的差别**：债务是「欠钱的义务」这一法律关系，区别于债务工具（可交易的债权凭证）——一笔贷款是债务，把它证券化后的债券才是工具；与担保的差别——担保是为债务增信的从属安排。"
+ },
+ "FBC/DebtAndEquities/Guaranty": {
+  "name_zh": "担保本体（Guaranty Ontology）",
+  "summary_zh": "定义担保（guaranty）：担保人、被担保债务与担保范围。",
+  "overview_zh": "定义担保（guaranty）：担保人承诺在债务人违约时代为偿付的安排，含担保范围与担保方式。\n\n**在体系中的位置**：FBC 债务与权益模块中负责「信用增级」的本体。\n\n**上下游关系**：上游依赖债务与 FND 合同本体；下游被贷款、债券发行引用（母公司担保、政府担保）。\n\n**与相近概念的差别**：担保≠抵押——担保是第三人的信用承诺（人的担保），抵押是以特定财产作偿（物的担保，见 LOAN 抵押贷款）；担保≠保险——担保是从属于主债务的法律安排。"
+ },
+ "FBC/FinancialInstruments/FinancialInstruments": {
+  "name_zh": "金融工具本体（Financial Instruments Ontology）",
+  "summary_zh": "FIBO 核心本体之一，定义金融工具（financial instrument）的通用概念：可交易、代表某种权利义务的合同工具，是证券、衍生品等具体工具的共同基础。",
+  "overview_zh": "定义金融工具（financial instrument）的通用概念：可交易、代表某种权利义务的合同工具，是 FIBO 最核心的本体之一。\n\n**在体系中的位置**：FBC 金融工具模块的核心，上承 FND 合同，下接 SEC 证券、DER 衍生品、LOAN 贷款等一切具体工具。\n\n**上下游关系**：上游依赖 FND 合同与协议本体；下游被 SEC、DER、LOAN、IND 各域广泛引用，是全库被依赖最多的本体之一。\n\n**与相近概念的差别**：金融工具≠金融产品——工具是可交易的合约凭证，产品是金融机构打包提供的服务组合（见金融产品与服务本体）；工具也≠资产——工具强调合同属性。"
+ },
+ "FBC/FinancialInstruments/InstrumentPricing": {
+  "name_zh": "工具定价本体（Instrument Pricing Ontology）",
+  "summary_zh": "定义金融工具的价格、报价与估值概念。",
+  "overview_zh": "定义金融工具的价格（price）、报价（quote）与估值（valuation）相关概念。\n\n**在体系中的位置**：FBC 金融工具模块的配套本体，与结算本体并列。\n\n**上下游关系**：上游依赖金融工具、货币金额与 IND 指标本体；下游被 MD 市场数据各时序本体引用（时序数据就是价格的历史记录）。\n\n**与相近概念的差别**：价格≠价值——价格是市场成交或报价的数值，估值是模型推算的理论价值；本本体两者都覆盖但侧重市场报价结构。"
+ },
+ "FBC/FinancialInstruments/Settlement": {
+  "name_zh": "结算本体（Settlement Ontology）",
+  "summary_zh": "定义交易结算（settlement）：券款对付、结算日期与结算方式。",
+  "overview_zh": "定义交易结算（settlement）：券款对付（DVP）、结算日期、结算方式与结算参与方。\n\n**在体系中的位置**：FBC 金融工具模块的配套本体，覆盖交易生命周期的最后环节。\n\n**上下游关系**：上游依赖金融工具、金融日期与付款计划表本体；下游被证券交易、清算机构建模引用。\n\n**与相近概念的差别**：结算≠交易——交易是达成买卖协议，结算是协议的实际履行（交钱交券）；T+1、T+2 等表述的就是成交到结算的间隔。"
+ },
+ "FBC/FunctionalEntities/BusinessCenters": {
+  "name_zh": "商业中心本体（Business Centers Ontology）",
+  "summary_zh": "定义金融中心、商业中心等功能性地点概念，用于确定市场所在地与营业日历。",
+  "overview_zh": "定义商业中心（business center）：金融中心、商业中心等功能性地点概念，用于确定市场所在地与营业日历。\n\n**在体系中的位置**：FBC 功能实体模块中处理「金融活动发生在哪里」的本体。\n\n**上下游关系**：上游依赖 BE 功能实体与 FND 地点本体；下游配套的商业中心个体本体提供全球主要金融中心实例，市场本体用商业中心定位。\n\n**与相近概念的差别**：商业中心≠法域——商业中心是市场功能意义上的地点（如「伦敦市场」），法域是法律效力范围；一个商业中心可能跨多个法域。"
+ },
+ "FBC/FunctionalEntities/BusinessCentersIndividuals": {
+  "name_zh": "商业中心个体本体（Business Centers Individuals）",
+  "summary_zh": "收录全球主要商业中心（如纽约、伦敦、东京）的参考个体。",
+  "kind": "individuals"
+ },
+ "FBC/FunctionalEntities/BusinessRegistries": {
+  "name_zh": "商业登记机构本体（Business Registries Ontology）",
+  "summary_zh": "定义商业登记机构（如公司注册处）及其登记职能。",
+  "overview_zh": "定义商业登记机构（business registry）：负责企业注册登记的机构（如州务卿办公室、公司注册处）及其登记职能。\n\n**在体系中的位置**：FBC 功能实体模块中处理「企业在哪里登记」的本体。\n\n**上下游关系**：上游依赖 BE 功能实体与登记主管机构相关概念；下游配套商事登记主管机关本体及其个体数据。\n\n**与相近概念的差别**：登记机构≠监管机构——登记机构负责「记录主体存在」（发照注册），监管机构负责「监督行为合规」；与 LEI 登记的差别——LEI 是身份编码登记，商业登记是法人设立登记。"
+ },
+ "FBC/FunctionalEntities/CommercialRegistrationAuthorities": {
+  "name_zh": "商事登记主管机关本体（Commercial Registration Authorities Ontology）",
+  "summary_zh": "定义负责商事登记的主管机关及其维护的登记记录。",
+  "kind": "individuals",
+  "overview_zh": "定义负责商事登记的主管机关及其维护的登记记录，并收录各地登记机关的参考个体。\n\n**在体系中的位置**：FBC 功能实体模块的参考数据型本体。\n\n**上下游关系**：上游依赖商业登记机构本体；下游为需要核验企业注册信息的应用提供实例数据。\n\n**与相近概念的差别**：与商业登记机构本体的差别——后者定义概念结构，本本体偏重登记记录（registration）本身及具体机关实例；与监管机构本体的分工同上。"
+ },
+ "FBC/FunctionalEntities/EuropeanEntities/EUFinancialServicesEntities": {
+  "name_zh": "欧盟金融服务实体本体（EU Financial Services Entities Ontology）",
+  "summary_zh": "定义欧盟法域下的金融服务机构类型与个体。",
+  "overview_zh": "定义欧盟法域下的金融服务机构类型与个体（如欧盟层面的银行、投资机构类别）。\n\n**在体系中的位置**：FBC 功能实体模块的欧洲区域扩展，与北美扩展（美国、加拿大金融服务实体）平行。\n\n**上下游关系**：上游继承金融服务实体本体并依赖 BE 欧盟法域个体；下游配套的欧洲个体本体提供具体机构实例。\n\n**与相近概念的差别**：与美国金融服务实体本体的差别——监管框架不同：欧盟以牌照指令（如 MiFID）划分机构类型，美国以注册类型划分，两者机构分类不可直接对应。"
+ },
+ "FBC/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies": {
+  "name_zh": "欧盟监管机构本体（EU Regulatory Agencies Ontology）",
+  "summary_zh": "收录欧盟层面的金融监管机构个体（如欧洲央行、欧洲证券和市场管理局 ESMA）。",
+  "overview_zh": "收录欧盟层面的金融监管机构个体：欧洲央行（ECB）、欧洲证券和市场管理局（ESMA）、欧洲银行管理局（EBA）等。\n\n**在体系中的位置**：FBC 功能实体模块的欧洲区域扩展，是监管机构本体的欧盟实例层。\n\n**上下游关系**：上游依赖监管机构本体与 BE 欧盟法域个体；下游为欧洲监管归属判断提供实例。\n\n**与相近概念的差别**：与美国监管机构本体的差别——欧盟是「超国家机构＋成员国机构」双层监管，美国是「联邦＋州」双层，机构设置逻辑不同。"
+ },
+ "FBC/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals": {
+  "name_zh": "欧洲金融服务实体个体本体（European Financial Services Entities Individuals Ontology）",
+  "summary_zh": "收录欧洲各国金融服务机构与市场的参考个体。",
+  "kind": "individuals"
+ },
+ "FBC/FunctionalEntities/FinancialServicesEntities": {
+  "name_zh": "金融服务实体本体（Financial Services Entities Ontology）",
+  "summary_zh": "FBC 域核心本体，定义金融服务机构（银行、券商、保险公司、资管机构等）的功能分类体系。",
+  "overview_zh": "定义金融服务机构（financial services entity）的功能分类体系：银行、券商、保险公司、资管机构、清算所等，是 FBC 域的核心本体。\n\n**在体系中的位置**：FBC 功能实体模块的中心，欧美各区域扩展本体（美国、加拿大、欧盟金融服务实体）都继承它。\n\n**上下游关系**：上游依赖 BE 功能实体、FND 正式组织与产品服务本体；下游被金融产品与服务、客户与账户及全部区域扩展本体引用。\n\n**与相近概念的差别**：按「功能」而非「法律形式」分类——同一家公司可以同时是银行和券商（功能叠加）；与 BE 法律实体的差别——法律实体回答「它是什么组织」，本本体回答「它干什么业务」。"
+ },
+ "FBC/FunctionalEntities/InternationalRegistriesAndAuthorities": {
+  "name_zh": "国际登记与主管机构本体（International Registries and Authorities Ontology）",
+  "summary_zh": "收录国际性登记机构与主管当局的参考个体。",
+  "overview_zh": "收录国际性登记机构与主管当局的参考个体（如国际证券识别编码机构等跨国组织）。\n\n**在体系中的位置**：FBC 功能实体模块的参考数据本体，覆盖不属于单一国家的机构。\n\n**上下游关系**：上游依赖商业登记与监管机构概念；下游为跨境业务提供机构实例。\n\n**与相近概念的差别**：与各国登记/监管机构本体的差别——收录范围是跨国与超国家机构，不是某国国内机构。"
+ },
+ "FBC/FunctionalEntities/Markets": {
+  "name_zh": "市场本体（Markets Ontology）",
+  "summary_zh": "定义金融市场（market）：交易所、场外市场及其功能。",
+  "overview_zh": "定义金融市场（market）：交易所（exchange）、场外市场（OTC）及其功能与参与方。\n\n**在体系中的位置**：FBC 功能实体模块的核心之一，市场个体本体（8000 余个实例）以此为基础。\n\n**上下游关系**：上游依赖 BE 功能实体、商业中心与 FND 地点本体；下游被 SEC 证券上市、IND 市场指数、MD 行情数据引用。\n\n**与相近概念的差别**：市场≠交易所——交易所是有组织的集中市场，市场还包括场外交易网络；市场≠商业中心——商业中心是地理功能概念，市场是交易机制概念。"
+ },
+ "FBC/FunctionalEntities/MarketsIndividuals": {
+  "name_zh": "市场个体本体（Markets Individuals）",
+  "summary_zh": "收录全球主要金融市场的参考个体。",
+  "kind": "individuals"
+ },
+ "FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities": {
+  "name_zh": "加拿大金融服务实体本体（Canadian Financial Services Entities Ontology）",
+  "summary_zh": "定义加拿大法域下的金融服务机构类型与个体。",
+  "overview_zh": "定义加拿大法域下的金融服务机构类型与个体。\n\n**在体系中的位置**：FBC 功能实体模块的北美扩展之一，与美国金融服务实体本体平行。\n\n**上下游关系**：上游继承金融服务实体本体并依赖 BE 加拿大法域个体；下游为加拿大机构建模提供类型。\n\n**与相近概念的差别**：与美国体系的差别——加拿大金融业由联邦特许银行主导、省级监管证券，机构类型体系比美国简单集中。"
+ },
+ "FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies": {
+  "name_zh": "加拿大监管机构本体（Canadian Regulatory Agencies Ontology）",
+  "summary_zh": "收录加拿大金融监管机构个体（如加拿大金融机构监管署 OSFI）。",
+  "overview_zh": "收录加拿大金融监管机构个体：加拿大金融机构监管署（OSFI）、加拿大银行（央行）等。\n\n**在体系中的位置**：FBC 功能实体模块的北美扩展，监管机构本体的加拿大实例层。\n\n**上下游关系**：上游依赖监管机构本体与 BE 加拿大法域个体；下游为加拿大监管归属判断提供实例。\n\n**与相近概念的差别**：与美国监管机构本体的差别——加拿大银行监管集中在联邦层面（OSFI），证券监管分散在各省，没有全国统一的证监会。"
+ },
+ "FBC/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntities": {
+  "name_zh": "美国金融服务实体本体（US Financial Services Entities Ontology）",
+  "summary_zh": "定义美国法域下的金融服务机构类型与个体。",
+  "overview_zh": "定义美国法域下的金融服务机构类型与个体（国民银行、州立银行、注册投资顾问等）。\n\n**在体系中的位置**：FBC 功能实体模块的北美扩展，美国体系的核心参考。\n\n**上下游关系**：上游继承金融服务实体本体并依赖 BE 美国法域个体；下游被美国监管与 NIC 受控词汇配套使用。\n\n**与相近概念的差别**：与欧盟体系的差别——美国实行双轨银行制度（联邦/州立）与功能监管，机构类型按注册与监管关系划分，颗粒度比欧盟牌照体系更细。"
+ },
+ "FBC/FunctionalEntities/NorthAmericanEntities/USNationalInformationCenterControlledVocabularies": {
+  "name_zh": "美国国家信息中心受控词汇本体（US NIC Controlled Vocabularies Ontology）",
+  "summary_zh": "收录美联储国家信息中心（NIC）用于描述金融机构属性的受控词汇个体。",
+  "overview_zh": "收录美联储国家信息中心（NIC）用于描述金融机构属性的受控词汇个体（机构类型、活动代码等）。\n\n**在体系中的位置**：FBC 功能实体模块的美国参考数据本体。\n\n**上下游关系**：上游依赖美国金融服务实体与监管机构本体；下游为对接美联储 NIC 数据库（机构主数据）的应用提供标准取值。\n\n**与相近概念的差别**：受控词汇是「标准取值清单」，区别于定义概念结构的本体——它服务数据对接而非概念推理。"
+ },
+ "FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies": {
+  "name_zh": "美国监管机构本体（US Regulatory Agencies Ontology）",
+  "summary_zh": "收录美国金融监管机构个体（如美联储、证监会 SEC、货币监理署 OCC）。",
+  "overview_zh": "收录美国金融监管机构个体：美联储（Fed）、证监会（SEC）、货币监理署（OCC）、联邦存款保险公司（FDIC）、商品期货交易委员会（CFTC）等。\n\n**在体系中的位置**：FBC 功能实体模块的北美扩展，监管机构本体的美国实例层。\n\n**上下游关系**：上游依赖监管机构本体与 BE 美国法域个体；下游为美国监管归属判断与合规建模提供实例。\n\n**与相近概念的差别**：与欧盟监管机构的差别——美国按「功能分业」设置多家机构（银行、证券、期货分管），各机构管辖范围有交叉，这是美式监管的典型特征。"
+ },
+ "FBC/FunctionalEntities/RegulatoryAgencies": {
+  "name_zh": "监管机构本体（Regulatory Agencies Ontology）",
+  "summary_zh": "定义金融监管机构（regulatory agency）及其监管职能的通用概念。",
+  "overview_zh": "定义金融监管机构（regulatory agency）及其监管职能、管辖范围的通用概念。\n\n**在体系中的位置**：FBC 功能实体模块的核心之一，美国、加拿大、欧盟监管机构个体本体都以它为基础。\n\n**上下游关系**：上游依赖 BE 功能实体、政府实体与 FND 法律本体；下游被各区域监管机构本体及合规相关建模引用。\n\n**与相近概念的差别**：监管机构≠登记机构——监管负责持续监督合规，登记负责主体注册；监管机构≠政府本身——它是政府设立的专门职能机构。"
+ },
+ "FBC/ProductsAndServices/ClientsAndAccounts": {
+  "name_zh": "客户与账户本体（Clients and Accounts Ontology）",
+  "summary_zh": "定义金融机构的客户、账户及账户持有关系。",
+  "overview_zh": "定义金融机构的客户（client）、账户（account）及账户持有关系：开户、账户类型、账户服务方。\n\n**在体系中的位置**：FBC 产品与服务模块的两个核心本体之一。\n\n**上下游关系**：上游依赖金融服务实体、FND 参与方与协议本体；下游被 LOAN（贷款账户）、卡账户等具体业务本体引用。\n\n**与相近概念的差别**：客户≠账户持有人——客户是与机构有业务关系的主体，账户是服务的载体，一个客户可以有多个账户，联名账户有多个持有人。"
+ },
+ "FBC/ProductsAndServices/FinancialProductsAndServices": {
+  "name_zh": "金融产品与服务本体（Financial Products and Services Ontology）",
+  "summary_zh": "定义金融产品（financial product）与金融服务（financial service）及其提供、购买关系。",
+  "overview_zh": "定义金融产品（financial product）与金融服务（financial service）：机构向客户提供的产品目录、条款模板与服务协议。\n\n**在体系中的位置**：FBC 产品与服务模块的核心，连接「机构供给」与「客户需求」。\n\n**上下游关系**：上游依赖金融服务实体与 FND 产品服务本体；下游被 LOAN 贷款产品、卡账户等具体产品本体引用。\n\n**与相近概念的差别**：产品≠金融工具——产品是机构设计的服务组合（如「三年期定额房贷」），工具是据此签订的可交易合约；同一产品可以衍生出无数笔具体合约。"
+ },
+ "SEC/AllSEC": {
+  "name_zh": "SEC 域总入口（All SEC）",
+  "summary_zh": "聚合证券（Securities，SEC）域的全部生产本体：债券、股票、基金、证券化产品、证券识别、分类、发行、上市与限制等，一次导入即获得 SEC 域完整模型。"
+ },
+ "SEC/AllSEC-Europe": {
+  "name_zh": "SEC 域欧洲扩展入口（All SEC, European Extension）",
+  "summary_zh": "聚合 SEC 域中欧洲法域的扩展本体（欧盟证券发行与交易限制）。"
+ },
+ "SEC/AllSEC-NorthAmerica": {
+  "name_zh": "SEC 域北美扩展入口（All SEC, North American Extension）",
+  "summary_zh": "聚合 SEC 域中北美法域的扩展本体（美国证券发行与转售限制）。"
+ },
+ "SEC/AllSEC-ReferenceIndividuals": {
+  "name_zh": "SEC 域参考个体入口（All SEC, Reference Individuals）",
+  "summary_zh": "聚合 SEC 域全部参考数据个体本体（CFI 分类、证券识别方案等参考数据），供需要完整参考数据的应用加载。"
+ },
+ "SEC/Debt/AssetBackedSecurities": {
+  "name_zh": "资产支持证券本体（Asset-backed Securities Ontology）",
+  "summary_zh": "定义以资产池（如贷款、应收账款）为支持的资产支持证券（ABS）。",
+  "overview_zh": "定义资产支持证券（ABS）：以贷款、应收账款、租赁等资产池为支持发行的证券。\n\n**在体系中的位置**：SEC 债务模块中证券化产品的主要品种之一。\n\n**上下游关系**：上游继承池支持证券本体；下游与 MBS、CDO 并列构成证券化产品谱系。\n\n**与相近概念的差别**：ABS 与 MBS 的差别在底层资产——ABS 以非抵押贷款（车贷、信用卡应收）为主，MBS 以住房/商业抵押贷款为主；与 CDO 的差别——CDO 底层是债务工具（债券、贷款份额）。"
+ },
+ "SEC/Debt/Bonds": {
+  "name_zh": "债券本体（Bonds Ontology）",
+  "summary_zh": "定义债券（bond）：期限、票面利率、付息方式与偿还结构。",
+  "overview_zh": "定义债券（bond）：期限、票面利率（coupon）、付息方式、到期偿还与赎回条款。\n\n**在体系中的位置**：SEC 债务模块的核心，最典型的一类债务工具。\n\n**上下游关系**：上游继承债务工具本体并依赖参数化计划表（摊还结构）；下游被各类具体债券（市政债、可转换债）引用。\n\n**与相近概念的差别**：债券≠票据（note）——主要是期限划分（票据通常较短），本质相同；债券≠贷款——债券是标准化可交易的，有票面利率与市场价格的联动关系。"
+ },
+ "SEC/Debt/CollateralizedDebtObligations": {
+  "name_zh": "担保债务凭证本体（Collateralized Debt Obligations Ontology）",
+  "summary_zh": "定义担保债务凭证（CDO）：以债务资产池分层发行的证券。",
+  "overview_zh": "定义担保债务凭证（CDO）：以债券、贷款份额等债务资产池为支持、按优先级/夹层/股权档分层发行的证券。\n\n**在体系中的位置**：SEC 债务模块中证券化产品的品种之一。\n\n**上下游关系**：上游继承池支持证券本体；下游被合成 CDO 本体扩展。\n\n**与相近概念的差别**：与 ABS/MBS 的差别在底层资产（债务工具）与分层复杂度——CDO 的档级结构与瀑布式偿付规则（waterfall）更复杂；与合成 CDO 的差别——合成型不持有真实资产。"
+ },
+ "SEC/Debt/DebtInstruments": {
+  "name_zh": "债务工具本体（Debt Instruments Ontology）",
+  "summary_zh": "定义债务工具（debt instrument）的通用概念：可交易的债权凭证，是债券、票据等的上位模型。",
+  "overview_zh": "定义债务工具（debt instrument）的通用概念：可交易的债权凭证，承诺还本付息。\n\n**在体系中的位置**：SEC 债务模块的根基，债券、票据、资产证券化产品的共同上游。\n\n**上下游关系**：上游继承 FBC 金融工具并依赖 FBC 债务本体；下游被 SEC 债务模块全部本体引用。\n\n**与相近概念的差别**：债务工具≠债务——债务是欠款的法律关系，债务工具是把这种关系做成可交易凭证；与贷款的差别——债务工具面向资本市场可流通，贷款是双边安排。"
+ },
+ "SEC/Debt/DistributedLoans": {
+  "name_zh": "分销贷款本体（Distributed Loans Ontology）",
+  "summary_zh": "定义银团贷款等被分销给多个持有人持有的贷款。",
+  "overview_zh": "定义分销贷款（distributed loan）：银团贷款等由牵头行分销给多个持有人的贷款。\n\n**在体系中的位置**：SEC 债务模块的品种本体之一，连接贷款市场与资本市场。\n\n**上下游关系**：上游继承债务工具并依赖 LOAN 贷款本体；下游服务银团贷款交易与贷款转让建模。\n\n**与相近概念的差别**：分销贷款≠普通贷款——普通贷款是双边关系不可流通，分销贷款被切成份额在机构间转让；与债券的差别——仍是贷款法律形式，不是证券（多数法域）。"
+ },
+ "SEC/Debt/ExerciseConventions": {
+  "name_zh": "行权惯例本体（Exercise Conventions Ontology）",
+  "summary_zh": "定义债务工具中嵌入期权的行权惯例：美式、欧式、百慕大式。",
+  "overview_zh": "定义债务工具中嵌入期权的行权惯例：美式（随时可行权）、欧式（到期行权）、百慕大式（特定日期可行权）。\n\n**在体系中的位置**：SEC 债务模块的构件本体，服务可赎回债、可回售债等含权工具。\n\n**上下游关系**：上游依赖 DER 期权概念与 FND 日期本体；下游被债券及结构化工具引用。\n\n**与相近概念的差别**：行权惯例是「什么时候可以行权」的规则约定，区别于行权行为本身；三种惯例的差别在行权时间窗口的宽窄。"
+ },
+ "SEC/Debt/MortgageBackedSecurities": {
+  "name_zh": "抵押贷款支持证券本体（Mortgage-backed Securities Ontology）",
+  "summary_zh": "定义抵押贷款支持证券（MBS）：以抵押贷款池为支持的证券。",
+  "overview_zh": "定义抵押贷款支持证券（MBS）：以住房或商业抵押贷款池为支持、按过手或分层结构发行的证券。\n\n**在体系中的位置**：SEC 债务模块中证券化产品的主要品种之一。\n\n**上下游关系**：上游继承池支持证券本体并依赖 LOAN 抵押贷款（底层资产）；下游关联 BP 的 MBS 发行流程与机构/私人品牌分类。\n\n**与相近概念的差别**：与 ABS 的差别在底层资产是抵押贷款；机构 MBS 有政府担保、私人品牌 MBS 靠结构增信——提前还款风险（prepayment）是 MBS 特有的核心风险。"
+ },
+ "SEC/Debt/PoolBackedSecurities": {
+  "name_zh": "池支持证券本体（Pool-backed Securities Ontology）",
+  "summary_zh": "定义以资产池为支持的证券的通用结构：资产池、分层（tranche）与过手安排。",
+  "overview_zh": "定义以资产池为支持的证券的通用结构：资产池、分层（tranche）、过手（pass-through）安排。\n\n**在体系中的位置**：SEC 债务模块中资产证券化的框架本体，ABS、MBS、CDO 的共同上游。\n\n**上下游关系**：上游继承债务工具并依赖证券池本体；下游被资产支持证券、抵押贷款支持证券、担保债务凭证特化。\n\n**与相近概念的差别**：池支持证券≠普通债券——偿付来源是资产池现金流而非发行人信用；分层机制使不同档（tranche）承担不同风险，这是普通债券没有的结构。"
+ },
+ "SEC/Debt/SyntheticCDOs": {
+  "name_zh": "合成 CDO 本体（Synthetic CDOs Ontology）",
+  "summary_zh": "定义以信用衍生品（而非实际债务资产）构建风险敞口的合成型担保债务凭证。",
+  "overview_zh": "定义合成型担保债务凭证（synthetic CDO）：不持有真实债务资产，而是通过信用违约互换（CDS）构建风险敞口的 CDO。\n\n**在体系中的位置**：SEC 债务模块中 CDO 的衍生形态。\n\n**上下游关系**：上游继承 CDO 本体并依赖 DER 信用违约互换；下游服务结构化信用产品建模。\n\n**与相近概念的差别**：与现金型 CDO 的根本差别——现金型持有真实债券/贷款，合成型只通过 CDS「模拟」资产池的信用表现，也因此可以做空信用、放大风险敞口（2008 年危机的关键工具）。"
+ },
+ "SEC/Debt/TradedShortTermDebt": {
+  "name_zh": "短期交易债务本体（Traded Short-Term Debt Ontology）",
+  "summary_zh": "定义货币市场工具等短期可交易债务：商业票据、国库券等。",
+  "overview_zh": "定义短期可交易债务工具（货币市场工具）：国库券（T-bill）、商业票据（CP）、存单（CD）等，期限通常在一年以内。\n\n**在体系中的位置**：SEC 债务模块的品种本体之一。\n\n**上下游关系**：上游继承债务工具本体；下游服务货币市场与流动性管理建模。\n\n**与相近概念的差别**：与债券的差别——期限短、多以贴现方式发行（无票面利率）、信用风险与利率风险都低；货币市场工具是「类现金」资产。"
+ },
+ "SEC/Equities/DepositaryReceipts": {
+  "name_zh": "存托凭证本体（Depositary Receipts Ontology）",
+  "summary_zh": "定义存托凭证（DR，如 ADR、GDR）：代表境外公司股票的可交易凭证。",
+  "overview_zh": "定义存托凭证（depositary receipt，DR）：由存托银行发行、代表境外公司股票的可交易凭证，如美国存托凭证（ADR）、全球存托凭证（GDR）。\n\n**在体系中的位置**：SEC 权益模块的品种本体之一，解决跨境持股问题。\n\n**上下游关系**：上游继承股权工具本体并依赖 BE 跨境实体概念；下游服务跨境投资建模。\n\n**与相近概念的差别**：存托凭证≠股票本身——它是存托银行发行的「代表凭证」，底层股票由银行托管在境外；持有人享有经济权益但表决权行使受存托协议约束。"
+ },
+ "SEC/Equities/EquityCFIClassificationIndividuals": {
+  "name_zh": "股票 CFI 分类个体本体（Equities CFI Classification Individuals Ontology）",
+  "summary_zh": "收录 ISO 10962 金融工具分类（CFI）中股票类别的参考个体（普通股、优先股等类别代码）。",
+  "kind": "individuals",
+  "overview_zh": "收录 ISO 10962 金融工具分类（CFI）中股票类别的参考个体（普通股、优先股等类别代码），并含少量配套类定义。\n\n**在体系中的位置**：SEC 权益模块的参考数据层。\n\n**上下游关系**：上游依赖证券分类与股权工具本体；下游为按 CFI 标准标注股票数据提供取值。\n\n**与相近概念的差别**：CFI 代码是六位字母的分类编码（如 ESVUFR），区别于标识证券个体的 ISIN；与其他 CFI 分类（债务、衍生品）是平行分支。"
+ },
+ "SEC/Equities/EquityInstruments": {
+  "name_zh": "股权工具本体（Equity Instruments Ontology）",
+  "summary_zh": "定义股票等股权工具：普通股、优先股及其附带的权利。",
+  "overview_zh": "定义股权工具（equity instrument）：普通股、优先股及其附带的权利（表决权、分红权、剩余索取权）。\n\n**在体系中的位置**：SEC 权益模块的核心，股票类证券的概念基础。\n\n**上下游关系**：上游继承 FBC 金融工具并依赖 BE 公司所有权概念；下游被存托凭证、股指示例、股票 CFI 分类引用。\n\n**与相近概念的差别**：股权≠债权——股权是所有权份额（无到期、无固定回报），债权是固定偿付承诺；普通股与优先股的差别在表决权与分红/清偿顺序的取舍。"
+ },
+ "SEC/Funds/CollectiveInvestmentVehicles": {
+  "name_zh": "集合投资工具本体（Collective Investment Vehicles Ontology）",
+  "summary_zh": "定义集合投资工具（CIV）：汇集多投资者资金共同投资的载体，是基金的上位概念。",
+  "overview_zh": "定义集合投资工具（collective investment vehicle，CIV）：汇集众多投资者资金、按既定策略共同投资的载体。\n\n**在体系中的位置**：SEC 基金模块的基础本体，基金、养老金计划的上位概念。\n\n**上下游关系**：上游依赖 FBC 金融工具与 BE 法律实体本体；下游被基金、养老金计划特化。\n\n**与相近概念的差别**：CIV 强调「集合投资」的功能结构，与法律形式无关（可以是公司型、契约型、信托型）；与直接投资的差别——投资者买的是份额，底层资产由管理人统一运作。"
+ },
+ "SEC/Funds/Funds": {
+  "name_zh": "基金本体（Funds Ontology）",
+  "summary_zh": "定义投资基金（fund）：基金份额、净值与管理结构。",
+  "overview_zh": "定义投资基金（fund）：基金份额、净值（NAV）、管理人与托管人结构、申购赎回。\n\n**在体系中的位置**：SEC 基金模块的核心。\n\n**上下游关系**：上游继承集合投资工具本体；下游关联 MD 基金时序（净值序列）与各类具体基金形态。\n\n**与相近概念的差别**：基金≠股票——基金份额代表对组合资产的受益权，股票代表对公司的所有权；开放式与封闭式的差别在份额是否可赎回、是否固定。"
+ },
+ "SEC/Funds/PensionPlans": {
+  "name_zh": "养老金计划本体（Pension Plans Ontology）",
+  "summary_zh": "定义养老金计划（pension plan）：确定缴费型（DC）与确定给付型（DB）等形态。",
+  "overview_zh": "定义养老金计划（pension plan）：确定缴费型（DC）与确定给付型（DB）等形态，及其发起人、受托管理与受益规则。\n\n**在体系中的位置**：SEC 基金模块的品种本体之一。\n\n**上下游关系**：上游继承集合投资工具并依赖 BE 雇主雇员概念；下游服务养老金资产管理建模。\n\n**与相近概念的差别**：DC 与 DB 的差别——DC 型（如 401(k)）缴费确定、收益不确定，风险在个人；DB 型承诺确定给付，风险在雇主；与普通基金的差别——养老金有税收优惠与领取限制。"
+ },
+ "SEC/Securities/Baskets": {
+  "name_zh": "篮子本体（Baskets Ontology）",
+  "summary_zh": "定义证券篮子（basket）：作为整体交易或定价的一组证券。",
+  "overview_zh": "定义证券篮子（basket）：作为整体交易、定价或参照的一组证券。\n\n**在体系中的位置**：SEC 证券模块的基础构件本体。\n\n**上下游关系**：上游依赖证券与集合概念；下游被篮子指数（IND）、ETF 申赎篮子建模引用。\n\n**与相近概念的差别**：篮子≠池——篮子是参照/交易单位（如指数成分、ETF 申购清单），池是证券化的现金流来源；篮子≠组合（portfolio）——篮子是标准化清单，组合是持有人实际持仓。"
+ },
+ "SEC/Securities/EuropeanSecurities/EUSecuritiesRestrictions": {
+  "name_zh": "欧盟证券限制本体（EU Securities Restrictions Ontology）",
+  "summary_zh": "定义欧盟法域下的证券发行与交易限制。",
+  "overview_zh": "定义欧盟法域下的证券发行与交易限制：招股说明书指令要求、合格投资者规则等。\n\n**在体系中的位置**：SEC 证券模块的欧洲区域扩展，与美国限制本体平行。\n\n**上下游关系**：上游继承证券限制本体并依赖 BE 欧盟法域；下游服务欧洲合规判断。\n\n**与相近概念的差别**：与美国限制的差别——欧盟以指令/条例统一成员国规则（如 Prospectus Regulation），美国以联邦证券法＋SEC 规则为主，限制结构与豁免条件不同。"
+ },
+ "SEC/Securities/NorthAmericanSecurities/USSecuritiesRestrictions": {
+  "name_zh": "美国证券限制本体（US Securities Restrictions Ontology）",
+  "summary_zh": "定义美国证券法下的发行与转售限制（如 Rule 144、Regulation S）。",
+  "overview_zh": "定义美国证券法下的发行与转售限制：Rule 144 限售股规则、Regulation S 境外发行豁免等。\n\n**在体系中的位置**：SEC 证券模块的北美区域扩展。\n\n**上下游关系**：上游继承证券限制本体并依赖 BE 美国法域；下游服务美国合规判断。\n\n**与相近概念的差别**：Rule 144 限制「受限证券」的公开转售（锁定期、数量上限），Reg S 规范境外发行不得回流美国——一个是境内转售规则，一个是境外发行安全港。"
+ },
+ "SEC/Securities/ParametricSchedules": {
+  "name_zh": "参数化计划表本体（Parametric Schedules Ontology）",
+  "summary_zh": "定义由参数驱动的日期与金额计划表（如分期偿还表、付息表）。",
+  "overview_zh": "定义参数化计划表：由参数（起息日、频率、偿还规则）驱动生成的日期与金额计划表，如分期偿还表、付息表。\n\n**在体系中的位置**：SEC 证券模块的基础构件本体。\n\n**上下游关系**：上游依赖 FND 付款与计划表、金融日期本体；下游被债券（摊还结构）、结构化产品引用。\n\n**与相近概念的差别**：参数化计划表≠静态付款表——它是由规则生成的「模板」，代入参数即可展开成具体日期金额序列，这是结构化产品条款机器可读化的关键。"
+ },
+ "SEC/Securities/Pools": {
+  "name_zh": "证券池本体（Securities Pools Ontology）",
+  "summary_zh": "定义证券池（pool）：归集起来作为证券化基础的一组资产。",
+  "overview_zh": "定义证券池（pool）：归集起来作为证券化基础的一组资产（贷款、应收账款）。\n\n**在体系中的位置**：SEC 证券模块中支撑资产证券化的本体。\n\n**上下游关系**：上游依赖 FND 安排与集合概念；下游被池支持证券、MBS、ABS 引用。\n\n**与相近概念的差别**：池≠篮子——池是证券化的底层资产组合（产生现金流），篮子是为交易或定价组合的一组证券（参照物）；池的资产通常是贷款而非证券。"
+ },
+ "SEC/Securities/SecuritiesClassification": {
+  "name_zh": "证券分类本体（Securities Classification Ontology）",
+  "summary_zh": "定义证券分类方案：按 CFI 代码、按资产类别等对证券归类。",
+  "overview_zh": "定义证券分类方案：按 ISO 10962 金融工具分类（CFI）、按资产类别等对证券归类的体系。\n\n**在体系中的位置**：SEC 证券模块的基础本体之一。\n\n**上下游关系**：上游依赖 FND 分类方案本体；下游配套的股票 CFI 分类个体提供标准取值。\n\n**与相近概念的差别**：分类≠识别——分类回答「它属于哪一类」（CFI 第六位字母），识别回答「它是哪一个」（ISIN）；与本体类的差别——本体类是逻辑定义，分类方案是行业惯例体系。"
+ },
+ "SEC/Securities/SecuritiesIdentification": {
+  "name_zh": "证券识别本体（Securities Identification Ontology）",
+  "summary_zh": "定义证券标识符（ISIN、CUSIP、SEDOL 等）及其编码方案的结构。",
+  "overview_zh": "定义证券标识符体系：国际证券识别编码（ISIN）、CUSIP、SEDOL 等编码的结构与分配机制。\n\n**在体系中的位置**：SEC 证券模块的基础本体之一，是证券「身份证」的概念层。\n\n**上下游关系**：上游依赖 FND 标识符与索引本体；下游配套的个体本体提供各编码方案实例，全库涉及证券引用的地方都用它。\n\n**与相近概念的差别**：证券标识≠ LEI——证券标识符标识「发行的证券」，LEI 标识「发行实体」；同一家公司有多只证券（多个 ISIN）但只有一个 LEI。"
+ },
+ "SEC/Securities/SecuritiesIdentificationIndividuals": {
+  "name_zh": "证券识别个体本体（Securities Identification Individuals Ontology）",
+  "summary_zh": "收录证券标识方案的参考个体（如 ISIN、CUSIP 编码方案本身）。",
+  "kind": "individuals",
+  "overview_zh": "收录证券标识方案的参考个体（ISIN、CUSIP、SEDOL 等编码方案本身），并含少量配套类定义。\n\n**在体系中的位置**：SEC 证券模块的参考数据层，为「用哪套编码标识证券」提供标准取值。\n\n**上下游关系**：上游依赖证券识别本体（提供标识符的概念结构）与各编码体系的官方方案；下游为按标准方案标注证券标识数据的应用提供实例。\n\n**与相近概念的差别**：标识方案≠标识符——方案是编码体系本身（如 ISIN 这套规则），标识符是按方案分配的具体代码（如 US0378331005）；与股票 CFI 分类个体的差别——CFI 用于分类，标识方案用于唯一识别。"
+ },
+ "SEC/Securities/SecuritiesIssuance": {
+  "name_zh": "证券发行本体（Securities Issuance Ontology）",
+  "summary_zh": "定义证券发行（issuance）：发行人、发行条款与发行结果。",
+  "overview_zh": "定义证券发行（issuance）：发行人、发行条款（规模、价格、日期）与发行结果。\n\n**在体系中的位置**：SEC 证券模块的核心之一，建模发行的「结果与条款」。\n\n**上下游关系**：上游依赖证券、BE 发行人概念与 FND 日期本体；下游与 BP 发行流程本体互补（一静一动），被上市本体衔接。\n\n**与相近概念的差别**：发行≠上市——发行是把证券卖给投资者（一级市场），上市是让证券能在交易所挂牌（二级市场准入）；一次发行可以不上市，上市必须先发行。"
+ },
+ "SEC/Securities/SecuritiesListings": {
+  "name_zh": "证券上市本体（Securities Listings Ontology）",
+  "summary_zh": "定义证券在交易所上市（listing）及其上市状态。",
+  "overview_zh": "定义证券在交易所的上市（listing）：上市市场、上市日期、上市状态与退市。\n\n**在体系中的位置**：SEC 证券模块的核心之一，连接证券与市场。\n\n**上下游关系**：上游依赖证券与 FBC 市场本体；下游服务行情归属、交易权限判断。\n\n**与相近概念的差别**：上市≠交易——上市是获得挂牌资格，交易是日常的买卖行为；一只证券可以在多个市场上市（交叉上市）。"
+ },
+ "SEC/Securities/SecuritiesRestrictions": {
+  "name_zh": "证券限制本体（Securities Restrictions Ontology）",
+  "summary_zh": "定义证券发行与转让限制的通用概念，是各法域具体限制本体的基础。",
+  "overview_zh": "定义证券发行与转让限制的通用概念：锁定期、合格投资者限制、转售限制。\n\n**在体系中的位置**：SEC 证券模块的合规基础本体，欧盟与美国限制本体都继承它。\n\n**上下游关系**：上游依赖证券与 FND 法律本体；下游被 EU、US 区域限制本体特化。\n\n**与相近概念的差别**：限制≠禁令——限制是条件性的（满足条件即可交易），禁令是完全禁止；限制的来源可以是法律（法定）也可以是合同（约定）。"
+ },
+ "DER/AllDER": {
+  "name_zh": "DER 域总入口（All DER）",
+  "summary_zh": "聚合衍生品（Derivatives，DER）域的全部生产本体：期权、期货与远期、互换、信用衍生品、利率衍生品、结构化工具与主协议等，一次导入即获得 DER 域完整模型。"
+ },
+ "DER/AllDER-ReferenceIndividuals": {
+  "name_zh": "DER 域参考个体入口（All DER, Reference Individuals）",
+  "summary_zh": "聚合衍生品域的参考数据个体本体（标准化互换合约约定等实例）。"
+ },
+ "DER/CreditDerivatives/CreditDefaultSwaps": {
+  "name_zh": "信用违约互换本体（Credit Default Swaps Ontology）",
+  "summary_zh": "定义信用违约互换（CDS）：保护买方与卖方、参考实体、信用事件与结算方式。",
+  "overview_zh": "定义信用违约互换（credit default swap，CDS）：保护买方向保护卖方定期付费，一旦参考实体发生信用事件即获得赔付的合约。\n\n**在体系中的位置**：DER 信用衍生品模块的核心本体。\n\n**上下游关系**：上游继承衍生品基础与互换概念，并依赖 FBC 信用事件本体（定义触发条件）；下游关联合成 CDO（用 CDS 构建风险敞口）。\n\n**与相近概念的差别**：CDS 像「债券违约保险」但在法律上是衍生品而非保险——买方无需实际持有参考实体的债务；与担保的差别——担保依附于具体债务合同，CDS 是独立可交易的合约。"
+ },
+ "DER/DerivativesContracts/CommoditiesContracts": {
+  "name_zh": "大宗商品合约本体（Commodities Contracts Ontology）",
+  "summary_zh": "定义以大宗商品（能源、金属、农产品等）为标的的衍生品合约。",
+  "overview_zh": "定义以大宗商品（能源、金属、农产品等）为标的的衍生品合约。\n\n**在体系中的位置**：衍生品合约模块中按标的资产特化的本体之一。\n\n**上下游关系**：上游继承衍生品基础、期货与远期本体；下游服务商品市场的套保与交易建模。\n\n**与相近概念的差别**：与金融标的衍生品的差别——商品合约常涉及实物交割、仓储与品质规格，这是金融合约没有的问题。"
+ },
+ "DER/DerivativesContracts/CurrencyContracts": {
+  "name_zh": "外汇合约本体（Currency Contracts Ontology）",
+  "summary_zh": "定义以外汇为标的的衍生品合约：外汇远期、货币互换等。",
+  "overview_zh": "定义以外汇为标的的衍生品合约：外汇远期、货币互换、外汇期权等。\n\n**在体系中的位置**：衍生品合约模块中按标的资产特化的本体之一。\n\n**上下游关系**：上游继承衍生品基础、期货与远期、互换本体及 IND 外汇本体（提供汇率与货币对概念）；下游服务外汇风险管理建模。\n\n**与相近概念的差别**：与利率衍生品的差别——标的是两种货币的兑换关系而非利率水平；货币互换与利率互换的差别——货币互换通常涉及本金的期初期末交换。"
+ },
+ "DER/DerivativesContracts/DerivativesBasics": {
+  "name_zh": "衍生品基础本体（Derivatives Basics Ontology）",
+  "summary_zh": "定义衍生品合约（derivatives contract）的核心概念：标的资产、行权、到期等，是 DER 域的根基。",
+  "overview_zh": "定义衍生品合约（derivatives contract）的核心概念：标的资产（underlying）、行权、到期、交割方式等，是整个 DER 域的概念根基。\n\n**在体系中的位置**：DER（衍生品）域衍生品合约模块的基础本体，期权、期货、互换等所有具体衍生品本体都继承它。\n\n**上下游关系**：上游依赖 FBC 金融工具、FND 合同与日期本体；下游被 DER 域全部本体及 MD 衍生品时序本体引用。\n\n**与相近概念的差别**：衍生品区别于现货工具的关键在于「价值派生自标的资产」——债券、股票是原生工具，衍生品是基于它们的合约；与结构化工具的差别——结构化工具强调多成分组合，衍生品强调价值派生关系。"
+ },
+ "DER/DerivativesContracts/DerivativesMasterAgreements": {
+  "name_zh": "衍生品主协议本体（Derivatives Master Agreements Ontology）",
+  "summary_zh": "定义 ISDA 主协议等场外衍生品主协议（master agreement）及其条款结构。",
+  "overview_zh": "定义场外衍生品主协议（master agreement）：以 ISDA 主协议为代表，约定交易双方全部场外交易的通用条款（违约、终止、净额结算、担保）。\n\n**在体系中的位置**：衍生品合约模块中处理「交易关系法律框架」的本体。\n\n**上下游关系**：上游依赖 FND 合同与法律本体；下游被各类场外衍生品（互换、远期）引用——具体的每笔交易确认书都挂在主协议之下。\n\n**与相近概念的差别**：主协议≠交易合约——主协议约定双方所有交易的共同规则，单笔交易的经济条款由交易确认书（confirmation）约定，两者配合构成完整的场外衍生品法律结构。"
+ },
+ "DER/DerivativesContracts/ExoticOptions": {
+  "name_zh": "奇异期权本体（Exotic Options Ontology）",
+  "summary_zh": "定义障碍期权、亚式期权等非标准化（奇异）期权。",
+  "overview_zh": "定义奇异期权（exotic option）：条款非标准化的期权，如障碍期权、亚式期权、百慕大期权等。\n\n**在体系中的位置**：衍生品合约模块中期权本体的扩展。\n\n**上下游关系**：上游继承期权本体；下游主要服务于场外结构化产品设计。\n\n**与相近概念的差别**：与普通（香草，vanilla）期权的差别——行权条件依赖路径、障碍触发或平均价格等复杂机制，定价与风险特征完全不同。"
+ },
+ "DER/DerivativesContracts/FuturesAndForwards": {
+  "name_zh": "期货与远期本体（Futures and Forwards Ontology）",
+  "summary_zh": "定义期货（futures）与远期（forwards）合约：标准化与非标准化的远期交割安排。",
+  "overview_zh": "定义期货（futures）与远期（forwards）合约：约定未来某时以约定价格交割标的资产，双方互负义务。\n\n**在体系中的位置**：衍生品合约模块的四大基础结构本体之一。\n\n**上下游关系**：上游继承衍生品基础本体；下游被大宗商品、外汇、利率等按标的特化的合约本体引用，MD 期货时序本体提供其行情数据。\n\n**与相近概念的差别**：期货与远期的核心差别——期货在交易所标准化交易、每日盯市结算，远期是场外定制、到期一次结算；与期权的差别——双方都有交割义务而非单方权利。"
+ },
+ "DER/DerivativesContracts/Options": {
+  "name_zh": "期权本体（Options Ontology）",
+  "summary_zh": "定义期权（option）：买方权利、行权价、到期日、看涨与看跌等核心结构。",
+  "overview_zh": "定义期权（option）：赋予买方在未来以约定价格买入（看涨）或卖出（看跌）标的资产权利的合约，含行权价、到期日、美式/欧式等核心结构。\n\n**在体系中的位置**：衍生品合约模块的四大基础结构本体之一（期权、期货远期、互换、权证）。\n\n**上下游关系**：上游继承衍生品基础本体；下游被奇异期权、场内期权时序（MD）及各类嵌入期权的工具（可转换债、权证）引用。\n\n**与相近概念的差别**：期权是「权利而非义务」——买方可以不行权，这与期货/远期（双方都有交割义务）是根本差别；与权证的差别——权证由发行人发行、期限更长，期权多在交易所标准化交易。"
+ },
+ "DER/DerivativesContracts/RightsAndWarrants": {
+  "name_zh": "权利与权证本体（Rights and Warrants Ontology）",
+  "summary_zh": "定义认股权证（warrant）、配股权（rights）等赋予持有人购买权利的证券。",
+  "overview_zh": "定义认股权证（warrant）与配股权（rights）：赋予持有人按约定价格认购证券的权利的凭证。\n\n**在体系中的位置**：衍生品合约模块的四大基础结构本体之一。\n\n**上下游关系**：上游继承衍生品基础与期权本体；下游关联 SEC 股权工具（权证常依附于股票或债券发行）。\n\n**与相近概念的差别**：与期权的差别——权证由公司或发行人发行、行权会稀释股本、期限长，期权多为交易所标准化合约、行权不涉及新股发行；配股权则是面向现有股东的短期认购权。"
+ },
+ "DER/DerivativesContracts/StructuredInstruments": {
+  "name_zh": "结构化工具本体（Structured Instruments Ontology）",
+  "summary_zh": "定义结构化金融工具：由多个成分组合而成、现金流结构定制的工具。",
+  "overview_zh": "定义结构化金融工具：由多个成分（如债券＋期权）组合而成、现金流结构定制的工具，如保本票据、可转换债券的混合特征部分。\n\n**在体系中的位置**：衍生品合约模块中处理「组合结构」的本体。\n\n**上下游关系**：上游继承衍生品基础本体并引用 SEC 债务工具；下游服务结构化产品设计、风险分解分析。\n\n**与相近概念的差别**：与普通衍生品的差别——结构化工具是「打包组合」，一个工具内嵌多种成分；与证券化产品（ABS/MBS）的差别——证券化以资产池现金流为基础，结构化工具以衍生策略组合为基础。"
+ },
+ "DER/DerivativesContracts/Swaps": {
+  "name_zh": "互换本体（Swaps Ontology）",
+  "summary_zh": "定义互换（swap）合约的通用结构：互换腿（swap leg）、现金流交换与名义本金。",
+  "overview_zh": "定义互换（swap）合约的通用结构：两个或多个互换腿（swap leg）之间按约定公式交换现金流，含名义本金、支付日程等。\n\n**在体系中的位置**：衍生品合约模块的四大基础结构本体之一，是利率互换、股权互换、信用违约互换的共同基础。\n\n**上下游关系**：上游继承衍生品基础本体；下游被利率互换（DER/RateDerivatives）、股权互换（DER/SecurityBasedDerivatives）、信用违约互换（DER/CreditDerivatives）特化；互换个体本体提供标准市场约定实例。\n\n**与相近概念的差别**：互换是「现金流交换」而非一次性买卖——这是它与期货、期权的本质差别；与债券的差别——债券交换的是本金与利息，互换通常只交换利息差额，名义本金不交割。"
+ },
+ "DER/DerivativesContracts/SwapsIndividuals": {
+  "name_zh": "互换个体本体（Swaps Individuals Ontology）",
+  "summary_zh": "收录标准化互换合约的参考个体（如标准利率互换的市场约定）。",
+  "kind": "individuals"
+ },
+ "DER/RateDerivatives/IRSwaps": {
+  "name_zh": "利率互换本体（Interest Rate Swaps Ontology）",
+  "summary_zh": "定义利率互换（IRS）：固定利率与浮动利率现金流的交换结构。",
+  "overview_zh": "定义利率互换（interest rate swap，IRS）：交换固定利率与浮动利率现金流的合约，含名义本金、浮动利率基准、重置日程等。\n\n**在体系中的位置**：DER 利率衍生品模块的核心，是市场上交易量最大的场外衍生品之一。\n\n**上下游关系**：上游继承互换与利率衍生品本体；下游关联 IND 参考利率（浮动端基准）与 EXMP、MD 中的示例和行情数据。\n\n**与相近概念的差别**：与货币互换的差别——利率互换是同一货币内的固定换浮动，不交换本金；与债券的差别——IRS 只是现金流交换合约，不代表债权债务关系本身。"
+ },
+ "DER/RateDerivatives/RateDerivatives": {
+  "name_zh": "利率衍生品本体（Rate Derivatives Ontology）",
+  "summary_zh": "定义以利率为标的的衍生品的通用概念。",
+  "overview_zh": "定义以利率为标的的衍生品的通用概念：利率期货、利率期权、利率互换的共同特征。\n\n**在体系中的位置**：DER 利率衍生品模块的基础本体。\n\n**上下游关系**：上游继承衍生品基础本体并依赖 IND 利率本体（提供利率结构）；下游被利率互换本体及各类利率衍生品特化。\n\n**与相近概念的差别**：利率衍生品以「利率水平」为标的，区别于以证券价格为标的的证券类衍生品和以信用事件为标的的信用衍生品。"
+ },
+ "DER/SecurityBasedDerivatives/EquitySwaps": {
+  "name_zh": "股权互换本体（Equity Swaps Ontology）",
+  "summary_zh": "定义股权互换（equity swap）：以股票或股指收益与利率现金流交换的合约。",
+  "overview_zh": "定义股权互换（equity swap）：一方支付股票或股指的收益（涨跌加分红），另一方支付利率现金流的合约。\n\n**在体系中的位置**：DER 证券类衍生品模块的核心本体。\n\n**上下游关系**：上游继承互换与证券类衍生品本体；下游服务股权收益风险转移、合成持股等建模。\n\n**与相近概念的差别**：与利率互换的差别——一条腿的现金流来自股权收益而非利率；与直接持股的差别——获得股权经济收益但不拥有股票、没有表决权。"
+ },
+ "DER/SecurityBasedDerivatives/SecurityBasedDerivatives": {
+  "name_zh": "证券类衍生品本体（Security-Based Derivatives Ontology）",
+  "summary_zh": "定义以单个证券或证券组合为标的的衍生品。",
+  "overview_zh": "定义以单个证券或证券组合（股票、债券、指数）为标的的衍生品。\n\n**在体系中的位置**：DER 证券类衍生品模块的基础本体。\n\n**上下游关系**：上游继承衍生品基础本体并引用 SEC 证券本体（提供标的）；下游被股权互换本体特化。\n\n**与相近概念的差别**：与利率、信用衍生品的差别在于标的类型——标的是证券的市场价格而非利率或信用事件。"
+ },
+ "LOAN/AllLOAN": {
+  "name_zh": "LOAN 域总入口（All LOAN）",
+  "summary_zh": "聚合贷款（Loans，LOAN）域的全部生产本体：贷款通用概念、贷款申请与事件、各类具体贷款（商业、消费、学生、绿色、船舶、抵押贷款等），一次导入即获得 LOAN 域完整模型。"
+ },
+ "LOAN/LoansGeneral/LoanApplications": {
+  "name_zh": "贷款申请本体（Loan Applications Ontology）",
+  "summary_zh": "定义贷款申请、申请人与审批流程的概念。",
+  "overview_zh": "定义贷款申请（loan application）：申请人、申请金额、审批流程与审批结果。\n\n**在体系中的位置**：LOAN 贷款通用模块中覆盖贷款生命周期的「贷前」环节。\n\n**上下游关系**：上游依赖贷款、FND 文档与参与方本体；下游与贷款事件（审批通过/拒绝）衔接。\n\n**与相近概念的差别**：申请≠合同——申请是借款意向与资料提交，审批通过并签约后才形成贷款合同；与贷款产品的差别——产品是机构的条款模板，申请是客户按模板提出的个案。"
+ },
+ "LOAN/LoansGeneral/LoanEvents": {
+  "name_zh": "贷款事件本体（Loan Events Ontology）",
+  "summary_zh": "定义贷款生命周期中的事件：放款、逾期、违约、核销等。",
+  "overview_zh": "定义贷款生命周期中的事件：放款、还款、逾期、违约、重组、核销。\n\n**在体系中的位置**：LOAN 贷款通用模块中覆盖贷款「存续期动态」的本体。\n\n**上下游关系**：上游依赖贷款与 FND 事件本体；下游支撑贷款监控、风险预警建模。\n\n**与相近概念的差别**：贷款事件≠贷款状态——事件是时间点上的发生（某月逾期），状态是持续的处境（处于逾期中，见生命周期概念）；违约事件达到严重程度可能构成信用事件（FBC）。"
+ },
+ "LOAN/LoansGeneral/Loans": {
+  "name_zh": "贷款本体（Loans Ontology）",
+  "summary_zh": "LOAN 域核心本体，定义贷款（loan）的通用结构：借款人、贷款人、本金、利率与还款安排。",
+  "overview_zh": "定义贷款（loan）的通用结构：借款人、贷款人、本金、利率、还款安排与贷款状态，是 LOAN 域的核心本体。\n\n**在体系中的位置**：LOAN 贷款通用模块的中心，各类具体贷款（商业、消费、抵押、学生等）的共同上游。\n\n**上下游关系**：上游依赖 FBC 债务、FND 合同与付款计划表本体；下游被贷款通用模块其余本体（申请、事件、监管）和全部具体贷款本体引用。\n\n**与相近概念的差别**：贷款≠债务工具——贷款是双边的债权债务关系（通常不可转让），债券等债务工具是可交易的证券化凭证；贷款≠授信额度——额度是可动用的上限，贷款是已发生的提款。"
+ },
+ "LOAN/LoansGeneral/LoansRegulatory": {
+  "name_zh": "贷款监管本体（Loans Regulatory Ontology）",
+  "summary_zh": "定义贷款监管相关概念：监管分类与报告要求。",
+  "overview_zh": "定义贷款监管相关概念：监管分类、资本与报告要求（如贷款分类、披露义务）。\n\n**在体系中的位置**：LOAN 贷款通用模块的合规配套本体。\n\n**上下游关系**：上游依赖贷款与 FND 报告本体；下游被 HMDA 覆盖抵押贷款等具体监管场景引用。\n\n**与相近概念的差别**：与贷款本体的差别——贷款本体建模业务结构，本本体建模监管视角的分类与报送要求；与 HMDA 本体的差别——HMDA 是美国特定法案的具体落地。"
+ },
+ "LOAN/LoansGeneral/MetadataLOANLoansGeneral": {
+  "name_zh": "LOAN 贷款通用模块元数据（Metadata for the LOAN Loans General Module）",
+  "summary_zh": "声明贷款通用（Loans General）模块由贷款、贷款申请、贷款事件、贷款监管四个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "LOAN/LoansSpecific/CardAccounts": {
+  "name_zh": "卡账户本体（Card Accounts Ontology）",
+  "summary_zh": "定义信用卡、借记卡账户及其信贷特征。",
+  "overview_zh": "定义信用卡、借记卡账户及其信贷特征：信用额度、循环余额、最低还款。\n\n**在体系中的位置**：LOAN 具体贷款模块的品种本体之一。\n\n**上下游关系**：上游依赖贷款与 FBC 客户账户本体；下游服务零售信贷建模。\n\n**与相近概念的差别**：卡账户≠普通消费贷款——信用卡是循环授信（随借随还、额度循环），消费贷款是一次放款分期偿还；卡账户同时兼具支付工具与信贷工具双重属性。"
+ },
+ "LOAN/LoansSpecific/CommercialLoans": {
+  "name_zh": "商业贷款本体（Commercial Loans Ontology）",
+  "summary_zh": "定义面向企业的商业贷款。",
+  "overview_zh": "定义面向企业的商业贷款（commercial loan）：营运资金贷款、设备融资等。\n\n**在体系中的位置**：LOAN 具体贷款模块的品种本体之一。\n\n**上下游关系**：上游继承贷款本体并依赖 BE 商业实体；下游服务公司信贷建模。\n\n**与相近概念的差别**：与消费贷款的差别——借款主体是企业而非个人，审批看经营状况而非个人信用；与银团贷款（SEC 分销贷款）的差别——商业贷款通常单一贷款人，银团贷款多家分销。"
+ },
+ "LOAN/LoansSpecific/ConsumerLoans": {
+  "name_zh": "消费贷款本体（Consumer Loans Ontology）",
+  "summary_zh": "定义面向个人消费者的贷款。",
+  "overview_zh": "定义面向个人消费者的贷款（consumer loan）：个人信用贷款、耐用消费品分期等。\n\n**在体系中的位置**：LOAN 具体贷款模块的品种本体之一。\n\n**上下游关系**：上游继承贷款本体并依赖 FND 人员本体；下游服务零售信贷建模。\n\n**与相近概念的差别**：与商业贷款的差别——借款主体是自然人；与抵押贷款的差别——消费贷款多为无抵押信用贷款，金额小、期限短；与学生贷款的差别——用途不限于教育。"
+ },
+ "LOAN/LoansSpecific/GreenLoans": {
+  "name_zh": "绿色贷款本体（Green Loans Ontology）",
+  "summary_zh": "定义符合绿色融资原则（资金投向环保项目）的绿色贷款。",
+  "overview_zh": "定义绿色贷款（green loan）：资金用途符合绿色融资原则（投向环保、节能、清洁能源项目）的贷款。\n\n**在体系中的位置**：LOAN 具体贷款模块的品种本体之一，反映可持续金融实践。\n\n**上下游关系**：上游继承贷款本体；下游服务 ESG 与绿色金融报送建模。\n\n**与相近概念的差别**：绿色贷款的「绿色」是资金用途属性而非贷款结构属性——其还款结构可以是任何品种；与可持续发展挂钩贷款（SLL）的差别——绿色贷款看资金用途，SLL 看借款人可持续绩效目标。"
+ },
+ "LOAN/LoansSpecific/LoanProducts": {
+  "name_zh": "贷款产品本体（Loan Products Ontology）",
+  "summary_zh": "定义金融机构提供的贷款产品及其条款模板。",
+  "overview_zh": "定义贷款产品（loan product）：金融机构设计的贷款条款模板（利率类型、期限、还款方式），客户按产品申请贷款。\n\n**在体系中的位置**：LOAN 具体贷款模块中连接「机构供给」与「具体贷款」的本体。\n\n**上下游关系**：上游依赖贷款与 FBC 金融产品与服务本体；下游被各品种贷款引用。\n\n**与相近概念的差别**：产品≠贷款——产品是标准化的条款模板，贷款是按模板签订的个案合同；一款产品对应成千上万笔贷款。"
+ },
+ "LOAN/LoansSpecific/MarineFinance": {
+  "name_zh": "船舶融资本体（Marine Finance Ontology）",
+  "summary_zh": "定义船舶等海运资产融资的贷款结构。",
+  "overview_zh": "定义船舶融资（marine finance）：以船舶等海运资产为对象或抵押的贷款结构。\n\n**在体系中的位置**：LOAN 具体贷款模块的品种本体之一，属于资产融资。\n\n**上下游关系**：上游继承贷款本体并引入船舶资产概念；下游服务航运金融建模。\n\n**与相近概念的差别**：与抵押贷款的差别——抵押物是可移动的船舶而非不动产，涉及船舶登记、海事留置权等特殊制度；与普通商业贷款的差别——有特定资产支持。"
+ },
+ "LOAN/LoansSpecific/StudentLoans": {
+  "name_zh": "学生贷款本体（Student Loans Ontology）",
+  "summary_zh": "定义用于教育支出的学生贷款。",
+  "overview_zh": "定义学生贷款（student loan）：用于支付教育费用、通常享有宽限期（在校期间不需还款）的贷款。\n\n**在体系中的位置**：LOAN 具体贷款模块的品种本体之一。\n\n**上下游关系**：上游继承消费贷款与贷款本体；下游服务教育金融建模。\n\n**与相近概念的差别**：与普通消费贷款的差别——有入学宽限期、还款常与毕业挂钩，且在美国多有政府担保背景；与绿色贷款一样，「学生」是用途与政策属性而非结构属性。"
+ },
+ "LOAN/MetadataLOAN": {
+  "name_zh": "LOAN 域元数据（Metadata for the LOAN Domain）",
+  "summary_zh": "声明贷款（LOAN）域由三个模块构成：贷款通用、具体贷款、房地产贷款。",
+  "kind": "metadata"
+ },
+ "LOAN/RealEstateLoans/ConstructionLoans": {
+  "name_zh": "建筑贷款本体（Construction Loans Ontology）",
+  "summary_zh": "定义用于房地产建设、按工程进度阶段性放款的建筑贷款。",
+  "overview_zh": "定义建筑贷款（construction loan）：用于房地产建设、按工程进度阶段性放款的贷款。\n\n**在体系中的位置**：LOAN 房地产贷款模块的品种本体之一。\n\n**上下游关系**：上游继承抵押贷款本体；下游与抵押贷款衔接（建成后常转为长期按揭，即「建转贷」）。\n\n**与相近概念的差别**：与普通抵押贷款的差别——放款方式不同（按进度分批而非一次性），风险形态不同（建设风险＋市场风险），期限短。"
+ },
+ "LOAN/RealEstateLoans/HomeMortgageDisclosureActCoveredMortgages": {
+  "name_zh": "HMDA 覆盖抵押贷款本体（HMDA Covered Mortgages Ontology）",
+  "summary_zh": "定义受美国《住房抵押贷款披露法》（HMDA）报告要求约束的抵押贷款。",
+  "overview_zh": "定义受美国《住房抵押贷款披露法》（HMDA）报告要求约束的抵押贷款及其报送数据字段。\n\n**在体系中的位置**：LOAN 房地产贷款模块的合规特化本体。\n\n**上下游关系**：上游继承抵押贷款本体并依赖贷款监管、FND 报告本体；下游服务 HMDA 数据报送与公平信贷分析。\n\n**与相近概念的差别**：这是「监管标签」类本体——同一笔贷款在业务上是普通抵押贷款，在监管上是否属于 HMDA 覆盖范围决定其报送义务；与贷款监管本体的差别——本本体落到具体法案。"
+ },
+ "LOAN/RealEstateLoans/MortgageOrigination": {
+  "name_zh": "抵押贷款发放本体（Mortgage Origination Ontology）",
+  "summary_zh": "定义抵押贷款的发起与发放流程。",
+  "overview_zh": "定义抵押贷款的发起与发放（origination）流程：获客、核保（underwriting）、审批、放款。\n\n**在体系中的位置**：LOAN 房地产贷款模块中覆盖「贷前流程」的本体。\n\n**上下游关系**：上游依赖抵押贷款、贷款申请与 BP 流程概念；下游产生的贷款进入存续期管理或被出售证券化。\n\n**与相近概念的差别**：发起≠服务（servicing）——发起是贷款诞生环节，服务是放款后的收息管账环节；与贷款申请本体的差别——申请看客户视角，发放看机构操作全流程。"
+ },
+ "LOAN/RealEstateLoans/Mortgages": {
+  "name_zh": "抵押贷款本体（Mortgages Ontology）",
+  "summary_zh": "定义以不动产为抵押的贷款：抵押物、抵押登记与止赎。",
+  "overview_zh": "定义抵押贷款（mortgage）：以不动产为抵押担保的贷款，含抵押物、抵押登记与止赎（foreclosure）机制。\n\n**在体系中的位置**：LOAN 房地产贷款模块的核心，建筑贷款、HMDA 抵押贷款的基础。\n\n**上下游关系**：上游继承贷款本体并依赖 FND 不动产本体；下游被抵押贷款发放、MBS（抵押池的底层资产）引用。\n\n**与相近概念的差别**：抵押≠担保——抵押是以特定财产作偿（物的担保），担保是第三人信用承诺；抵押贷款≠按揭产品的差别——按揭是抵押贷款在住房场景的具体产品形态。"
+ },
+ "IND/AllIND": {
+  "name_zh": "IND 域总入口（All IND）",
+  "summary_zh": "聚合指标与指数（Indices and Indicators，IND）域的全部生产本体：指标、利率、外汇、市场指数与经济指标等，一次导入即获得 IND 域完整模型。"
+ },
+ "IND/AllIND-NorthAmerica": {
+  "name_zh": "IND 域北美扩展入口（All IND, North American Extension）",
+  "summary_zh": "聚合 IND 域中北美地区的扩展本体（美国、加拿大经济指标个体）。"
+ },
+ "IND/AllIND-ReferenceRates": {
+  "name_zh": "IND 域参考利率入口（All IND, Reference Rates）",
+  "summary_zh": "聚合市场常用参考利率的个体本体（各期限基准及发布机构），供需要利率主数据的场景加载。"
+ },
+ "IND/EconomicIndicators/EconomicIndicators": {
+  "name_zh": "经济指标本体（Economic Indicators Ontology）",
+  "summary_zh": "定义宏观经济指标（GDP、CPI、失业率等）的通用结构：发布机构、发布频率与数值。",
+  "overview_zh": "定义宏观经济指标：国内生产总值（GDP）、消费者价格指数（CPI）、失业率等的通用结构（发布机构、频率、数值）。\n\n**在体系中的位置**：IND 经济指标模块的核心，美国、加拿大经济指标个体本体以它为基础。\n\n**上下游关系**：上游继承指标本体；下游被美加两国指标个体本体及宏观分析应用引用。\n\n**与相近概念的差别**：经济指标≠利率——经济指标描述宏观运行状况（统计口径），利率是资金价格（市场或政策口径）；与指数的差别——经济指标是原始统计量，指数是加工合成量。"
+ },
+ "IND/EconomicIndicators/NorthAmericanIndicators/CAEconomicIndicators": {
+  "name_zh": "加拿大经济指标本体（Canadian Economic Indicators Ontology）",
+  "summary_zh": "收录加拿大官方发布的经济指标个体。",
+  "overview_zh": "收录加拿大官方发布的经济指标个体，含发布机构与频率。\n\n**在体系中的位置**：IND 经济指标模块的加拿大参考数据层，与美国个体本体平行。\n\n**上下游关系**：上游依赖经济指标本体与 BE 加拿大法域；下游为加拿大宏观分析提供实例。\n\n**与相近概念的差别**：同美国经济指标本体——统计体系与发布机构不同。"
+ },
+ "IND/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators": {
+  "name_zh": "美国经济指标本体（US Economic Indicators Ontology）",
+  "summary_zh": "收录美国官方发布的经济指标个体（如非农就业、CPI、GDP 系列）。",
+  "overview_zh": "收录美国官方发布的经济指标个体：非农就业、CPI 系列、GDP 系列等，含发布机构与频率。\n\n**在体系中的位置**：IND 经济指标模块的美国参考数据层。\n\n**上下游关系**：上游依赖经济指标本体与 BE 美国法域；下游为宏观分析、利率情景建模提供实例。\n\n**与相近概念的差别**：与加拿大经济指标本体的差别——发布机构与统计体系不同（美国 BLS/BEA vs 加拿大统计局），同名指标口径也可能不同。"
+ },
+ "IND/ForeignExchange/ForeignExchange": {
+  "name_zh": "外汇本体（Foreign Exchange Ontology）",
+  "summary_zh": "定义外汇、汇率（exchange rate）与货币对的概念。",
+  "overview_zh": "定义外汇（foreign exchange）与汇率（exchange rate）：货币对（currency pair）、直接/间接标价、即期与远期汇率。\n\n**在体系中的位置**：IND 外汇模块的核心，是外汇衍生品（DER）与跨境金额换算的基础。\n\n**上下游关系**：上游继承指标本体并依赖 FND 货币金额；下游被 DER 外汇合约、跨境交易建模引用。\n\n**与相近概念的差别**：汇率≠货币——货币是计价单位（见 ISO 4217 个体），汇率是两种货币之间的比价，本质上是一种特殊的指标。"
+ },
+ "IND/Indicators/Indicators": {
+  "name_zh": "指标本体（Indicators Ontology）",
+  "summary_zh": "定义「指标」（indicator）的通用概念：对某现象的可度量表示，是经济指标、利率等的上位模型。",
+  "overview_zh": "定义「指标」（indicator）的通用概念：对某种现象的可度量表示，含发布机构、发布频率、修订机制等。\n\n**在体系中的位置**：IND（指标与指数）域的基础本体，经济指标、利率、汇率、市场指数的共同上游。\n\n**上下游关系**：上游依赖 FND 分析与安排本体；下游被 IND 域全部模块引用。\n\n**与相近概念的差别**：指标≠指数——指标是单一的经济量度（如 CPI），指数是按规则加权合成的一篮子数值（如标普 500）；与分析本体的差别——分析本体提供度量机制，本本体定义业务指标。"
+ },
+ "IND/InterestRates/CommonInterestRates": {
+  "name_zh": "常用利率本体（Common Interest Rates Ontology）",
+  "summary_zh": "收录市场常用参考利率个体（如各期限基准、政策利率）。",
+  "kind": "individuals"
+ },
+ "IND/InterestRates/InterestRates": {
+  "name_zh": "利率本体（Interest Rates Ontology）",
+  "summary_zh": "定义利率（interest rate）的结构：基准利率、利差、期限与重置机制。",
+  "overview_zh": "定义利率（interest rate）的结构：基准利率、利差（spread）、期限、重置机制、浮动利率的确定方式。\n\n**在体系中的位置**：IND 利率模块的核心，贷款、债券、利率衍生品的利率条款都基于它。\n\n**上下游关系**：上游继承指标本体；下游被 LOAN 贷款、SEC 债券、DER 利率衍生品广泛引用；常用利率个体本体提供市场基准实例。\n\n**与相近概念的差别**：利率≠收益率——利率是合同约定的资金价格，收益率（yield）是投资回报的市场度量；基准利率≠合同利率——合同利率＝基准＋利差。"
+ },
+ "IND/InterestRates/MarketDataProviders": {
+  "name_zh": "市场数据提供商本体（Market Data Providers Ontology）",
+  "summary_zh": "定义市场数据提供商（交易所、资讯商等）及其发布的数据。",
+  "kind": "individuals"
+ },
+ "IND/MarketIndices/BasketIndices": {
+  "name_zh": "篮子指数本体（Basket Indices Ontology）",
+  "summary_zh": "定义以一篮子成分为基础的指数：成分、权重与计算方法。",
+  "overview_zh": "定义以一篮子成分为基础的指数（basket index）：成分、权重、计算方法与维护规则。\n\n**在体系中的位置**：IND 市场指数模块的核心，股指示例（如道琼斯）以此为基础。\n\n**上下游关系**：上游继承指标本体并引用 SEC 篮子本体；下游服务指数基金、衍生品标的建模。\n\n**与相近概念的差别**：指数≠指标——指数是按既定规则对一篮子成分加权计算的合成数值，可投资可复制；指标是单一统计量，不可直接投资。"
+ },
+ "BP/Process/FinancialContextAndProcess": {
+  "name_zh": "金融语境与流程本体（Financial Context and Process Ontology）",
+  "summary_zh": "定义金融业务语境下的流程、阶段与参与者，是证券发行等具体业务流程本体的基础。",
+  "overview_zh": "定义金融业务语境下的流程（process）、流程阶段与参与者，提供描述「业务如何一步步推进」的通用框架。\n\n**在体系中的位置**：BP（业务流程）域流程模块的核心本体，是证券发行各流程本体的共同基础。\n\n**上下游关系**：上游依赖 FND 的参与方、安排、日期本体；下游被 BP 证券发行模块的全部本体（IPO、债务、MBS、市政债发行）继承。\n\n**与相近概念的差别**：BP 域建模的是「过程」——事情按什么步骤发生，与建模「物」的本体（证券、金融工具）互补；与 FND 生命周期本体的差别——生命周期描述一个对象自身的状态演化，流程描述多方协作的业务步骤。"
+ },
+ "BP/SecuritiesIssuance/AgencyMBSIssuance": {
+  "name_zh": "机构 MBS 发行本体（Agency MBS Issuance Ontology）",
+  "summary_zh": "定义机构抵押贷款支持证券（agency MBS，如房利美、房地美发行）的发行流程。",
+  "overview_zh": "定义机构抵押贷款支持证券（agency MBS）的发行流程：由政府支持机构（如房利美、房地美）收购贷款、组建资产池并发行。\n\n**在体系中的位置**：BP 证券发行模块中 MBS 发行的两个子类之一。\n\n**上下游关系**：上游继承 MBS 发行本体；下游关联 SEC 抵押贷款支持证券本体。\n\n**与相近概念的差别**：与私人品牌 MBS 发行的差别——发行主体是政府支持机构，证券带有机构担保，信用风险结构完全不同；这是美国住房金融体系的特有分类。"
+ },
+ "BP/SecuritiesIssuance/DebtIssuance": {
+  "name_zh": "债务发行本体（Debt Issuance Ontology）",
+  "summary_zh": "定义债券等债务工具的发行流程与参与方。",
+  "overview_zh": "定义债券等债务工具的发行流程：承销团组建、簿记建档、定价与分配。\n\n**在体系中的位置**：BP 证券发行模块的品种特化本体之一。\n\n**上下游关系**：上游继承发行流程本体；下游关联 SEC/Debt 各债务工具本体（发行的对象）。\n\n**与相近概念的差别**：与 IPO 发行的差别——债务发行以利率定价和承销团簿记为中心，IPO 以股权估值和路演为中心；与 MBS 发行的差别——普通债务发行没有资产池组建环节。"
+ },
+ "BP/SecuritiesIssuance/EquitiesIPOIssuance": {
+  "name_zh": "股票首次公开发行本体（Equities IPO Issuance Ontology）",
+  "summary_zh": "定义首次公开发行（IPO）的流程、阶段与参与方。",
+  "overview_zh": "定义首次公开发行（IPO）的流程：改制辅导、监管审核、路演询价、定价配售与上市。\n\n**在体系中的位置**：BP 证券发行模块的品种特化本体之一。\n\n**上下游关系**：上游继承发行流程本体；下游关联 SEC/Equities 股权工具与 SEC 证券上市本体。\n\n**与相近概念的差别**：IPO 特指「首次」公开募股，区别于增发（secondary offering）；与债务发行的差别——IPO 涉及股权估值、路演询价，且结果直接关联交易所上市。"
+ },
+ "BP/SecuritiesIssuance/IssuanceDocuments": {
+  "name_zh": "发行文件本体（Issuance Documents Ontology）",
+  "summary_zh": "定义证券发行过程中使用的法律文件：募集说明书、条款清单等。",
+  "overview_zh": "定义证券发行过程中使用的法律文件：募集说明书（prospectus）、条款清单（term sheet）、发行公告等。\n\n**在体系中的位置**：BP 证券发行模块的文书配套本体。\n\n**上下游关系**：上游依赖 FND 文档本体与发行流程本体；下游被各品种发行本体引用（每种发行都有其必备文件）。\n\n**与相近概念的差别**：与 FND/Arrangements/Documents 的差别——FND 定义文档的通用概念，本本体专指证券发行场景的具体文书类型及其在流程中的作用。"
+ },
+ "BP/SecuritiesIssuance/IssuanceProcess": {
+  "name_zh": "发行流程本体（Issuance Process Ontology）",
+  "summary_zh": "定义证券发行的通用流程框架：从筹划、定价到配售的各阶段。",
+  "overview_zh": "定义证券发行的通用流程框架：从筹划、监管申报、定价到配售的各阶段及其参与方。\n\n**在体系中的位置**：BP 证券发行模块的框架本体，各品种发行本体（债务、IPO、MBS、市政债）都在它的基础上特化。\n\n**上下游关系**：上游依赖金融语境与流程本体及 SEC 证券发行本体；下游被各品种发行流程本体继承。\n\n**与相近概念的差别**：与 SEC/Securities/SecuritiesIssuance 的差别——SEC 本体建模发行的「结果与条款」（发行了什么、条件如何），本本体建模发行的「过程」（怎么走流程）；一静一动，互相引用。"
+ },
+ "BP/SecuritiesIssuance/MBSIssuance": {
+  "name_zh": "MBS 发行本体（MBS Issuance Ontology）",
+  "summary_zh": "定义抵押贷款支持证券（MBS）发行的通用流程：资产池组建、分层与发售。",
+  "overview_zh": "定义抵押贷款支持证券（MBS）发行的通用流程：贷款资产池组建、信用增级、分层与发售。\n\n**在体系中的位置**：BP 证券发行模块的品种特化本体，是机构 MBS 与私人品牌 MBS 两个更具体本体的共同基础。\n\n**上下游关系**：上游继承发行流程本体；下游被机构 MBS 发行与私人品牌 MBS 发行本体继承，并关联 SEC/Debt/MortgageBackedSecurities。\n\n**与相近概念的差别**：与普通债务发行的差别——MBS 发行多了「资产池」环节，现金流来自底层贷款而非发行人经营；机构与私人品牌两类子流程的差别在发行主体与担保机制。"
+ },
+ "BP/SecuritiesIssuance/MuniIssuance": {
+  "name_zh": "市政债发行本体（Municipal Issuance Ontology）",
+  "summary_zh": "定义美国市政债券（municipal bond）的发行流程。",
+  "overview_zh": "定义美国市政债券（municipal bond）的发行流程：州或地方政府为公共项目融资的发行安排。\n\n**在体系中的位置**：BP 证券发行模块的品种特化本体之一。\n\n**上下游关系**：上游继承发行流程本体与债务发行本体；下游关联 SEC 债务工具与 BE 政府实体本体。\n\n**与相近概念的差别**：与公司债发行的差别——发行人是政府实体，债券通常享受免税待遇，且分为一般责任债（GO）与收入债（revenue bond）两种信用结构。"
+ },
+ "BP/SecuritiesIssuance/PrivateLabelMBSIssuance": {
+  "name_zh": "私人品牌 MBS 发行本体（Private Label MBS Issuance Ontology）",
+  "summary_zh": "定义私人机构（非政府机构）发行抵押贷款支持证券的流程。",
+  "overview_zh": "定义私人品牌抵押贷款支持证券（private label MBS）的发行流程：由私人金融机构（非政府机构）组建贷款池并发行。\n\n**在体系中的位置**：BP 证券发行模块中 MBS 发行的两个子类之一。\n\n**上下游关系**：上游继承 MBS 发行本体；下游关联 SEC 抵押贷款支持证券与担保债务凭证本体。\n\n**与相近概念的差别**：与机构 MBS 发行的差别——没有机构担保，需要依靠分层、超额抵押等信用增级手段，2008 年金融危机中出问题的主要是这类。"
+ },
+ "CAE/AllCAE": {
+  "name_zh": "CAE 域总入口（All CAE）",
+  "summary_zh": "聚合企业行动事件（Corporate Action Events，CAE）域的全部本体：企业行动概念、证券相关企业行动及 GLEIF、ISO 15022 两套标准的事件代码个体。"
+ },
+ "CAE/CorporateEvents/CorporateActions": {
+  "name_zh": "企业行动本体（Corporate Actions Ontology）",
+  "summary_zh": "定义企业行动（corporate action）：上市公司发起的、影响股东或证券的事件，如分红、拆股、并购。",
+  "overview_zh": "定义企业行动（corporate action）：由上市公司发起的、影响股东或证券的事件，如分红、拆股、并购、要约收购。\n\n**在体系中的位置**：CAE（企业行动事件）域的核心本体，是证券相关企业行动与两套标准代码个体（GLEIF、ISO 15022）的共同基础。\n\n**上下游关系**：上游依赖 FND 的事件与发生本体和 SEC 证券本体；下游被证券相关企业行动本体特化，并被 GLEIF、ISO 15022 个体本体给出标准代码。\n\n**与相近概念的差别**：企业行动是「发生在证券身上的事件」，区别于证券本身；强制性（如并股）与自愿性（如要约）是重要分类轴；与信用事件的差别——信用事件关乎偿付能力，企业行动是公司治理行为。"
+ },
+ "CAE/CorporateEvents/GLEIF-CorporateActionIndividuals": {
+  "name_zh": "GLEIF 企业行动个体本体（GLEIF Corporate Action Individuals Ontology）",
+  "summary_zh": "收录全球法人识别编码基金会（GLEIF）企业行动代码体系中的参考个体。",
+  "kind": "individuals",
+  "overview_zh": "收录 GLEIF（全球法人识别编码基金会）企业行动代码体系中的参考个体，并含少量配套类定义。\n\n**在体系中的位置**：CAE 域的参考数据层，为企业行动提供 GLEIF 标准的事件类型取值。\n\n**上下游关系**：上游依赖企业行动本体与 LCC 代码体系；下游被需要按 GLEIF 标准标注企业行动数据的应用使用。\n\n**与相近概念的差别**：与 ISO 15022 企业行动个体本体的差别——代码来源标准不同：GLEIF 代码服务于 LEI 体系，ISO 15022 代码服务于证券报文，两者覆盖面与粒度不同。"
+ },
+ "CAE/CorporateEvents/ISO15022-CorporateActionIndividuals": {
+  "name_zh": "ISO 15022 企业行动个体本体（ISO 15022 Corporate Action Individuals Ontology）",
+  "summary_zh": "收录 ISO 15022 证券报文标准中的企业行动事件类型个体。",
+  "kind": "individuals"
+ },
+ "CAE/CorporateEvents/SecurityRelatedCorporateActions": {
+  "name_zh": "证券相关企业行动本体（Security-related Corporate Actions Ontology）",
+  "summary_zh": "定义直接改变证券条款或数量的企业行动：拆股、并股、换股、权证行使等。",
+  "overview_zh": "定义直接改变证券条款或数量的企业行动：拆股、并股、换股、权证行使、证券赎回等。\n\n**在体系中的位置**：CAE 域中企业行动本体的子集特化。\n\n**上下游关系**：上游继承企业行动本体；下游关联 SEC 证券与 DER 权证相关本体。\n\n**与相近概念的差别**：是企业行动的一个子类——专指影响证券本身形态的行动，区别于纯分配类行动（如现金分红不改变证券条款）。"
+ },
+ "EXMP/LegalEntities/DowJonesIndustrialAverageCompanies": {
+  "name_zh": "道指成分公司示例（Dow Jones Industrial Average Companies）",
+  "summary_zh": "收录道琼斯工业平均指数成分股公司的示例个体，供演示与测试。",
+  "kind": "individuals"
+ },
+ "EXMP/LegalEntities/DowJonesIndustrialAverageExecutives": {
+  "name_zh": "美国公司高管示例（US Example Executives）",
+  "summary_zh": "收录道指成分公司高管的示例个体。",
+  "kind": "individuals"
+ },
+ "EXMP/LegalEntities/FinancialInstitutionExamples": {
+  "name_zh": "金融机构示例（Financial Institution Examples）",
+  "summary_zh": "收录典型金融机构的示例个体。",
+  "kind": "individuals"
+ },
+ "EXMP/LegalEntities/MarketsAndExchangesExamples": {
+  "name_zh": "美国市场与交易所示例（US Markets and Exchanges Individuals）",
+  "summary_zh": "收录美国主要交易所与市场的示例个体。",
+  "kind": "individuals"
+ },
+ "EXMP/Securities/EquitiesExamples": {
+  "name_zh": "股票示例个体本体（Equities Example Individuals Ontology）",
+  "summary_zh": "收录典型股票（上市公司普通股）的示例个体。",
+  "kind": "individuals"
+ },
+ "EXMP/Securities/EquityIndexExamples": {
+  "name_zh": "股指示例个体本体（Equity Index Example Individuals Ontology）",
+  "summary_zh": "收录股票指数（如道琼斯工业平均指数）的示例个体。",
+  "kind": "individuals"
+ },
+ "EXMP/Securities/IRSwapExamples": {
+  "name_zh": "利率互换示例个体本体（Interest Rate Swap Example Individuals Ontology）",
+  "summary_zh": "收录利率互换合约的示例个体。",
+  "kind": "individuals"
+ },
+ "MD/CIVTemporal/FundsTemporal": {
+  "name_zh": "基金时序本体（Funds Temporal Ontology）",
+  "summary_zh": "定义基金净值等随时间变化的市场数据的时间序列表示。",
+  "overview_zh": "定义基金净值（NAV）、份额规模等随时间变化的时间序列数据。\n\n**在体系中的位置**：MD 集合投资工具时序模块的核心。\n\n**上下游关系**：上游依赖 SEC 基金与集合投资工具本体；下游服务基金评价与申赎分析。\n\n**与相近概念的差别**：基金净值≠股票价格——净值是按组合资产估值计算的账面价值（通常每日一次），股票价格是连续竞价形成的市场价格；ETF 两者都有。"
+ },
+ "MD/DebtTemporal/DebtAnalytics": {
+  "name_zh": "债务分析本体（Debt Analytics Ontology）",
+  "summary_zh": "定义债券收益率、利差等债务工具分析指标及其时间序列。",
+  "overview_zh": "定义债务工具分析指标及其时间序列：收益率（yield）、利差（spread）、久期（duration）等随时间的变化。\n\n**在体系中的位置**：MD 债务时序模块的核心，把债券分析从「单点数值」扩展为「历史轨迹」。\n\n**上下游关系**：上游依赖 SEC 债务工具、IND 利率与 FND 分析本体；下游服务固收分析与风险建模。\n\n**与相近概念的差别**：收益率≠利率——利率是合同约定的付息水平，收益率是按市场价格推算的回报度量；分析指标≠行情价格——指标是从价格与条款推算的派生量。"
+ },
+ "MD/DerivativesTemporal/ETOptionsTemporal": {
+  "name_zh": "场内期权时序本体（Exchange-Traded Options Temporal Ontology）",
+  "summary_zh": "定义交易所交易期权的行情时间序列数据。",
+  "overview_zh": "定义交易所交易期权（ET option）行情：权利金报价、隐含波动率、行权价序列等时间序列数据。\n\n**在体系中的位置**：MD 衍生品时序模块的两个本体之一。\n\n**上下游关系**：上游依赖 DER 期权本体；下游服务期权定价与波动率分析。\n\n**与相近概念的差别**：期权行情比期货多了「行权价×到期日」两个维度，同一标的对应一整个期权链（option chain）而非单一合约。"
+ },
+ "MD/DerivativesTemporal/FuturesTemporal": {
+  "name_zh": "期货时序本体（Futures Temporal Ontology）",
+  "summary_zh": "定义期货合约行情（价格、持仓量）的时间序列数据。",
+  "overview_zh": "定义期货合约行情（结算价、持仓量、成交量）的时间序列数据。\n\n**在体系中的位置**：MD 衍生品时序模块的两个本体之一。\n\n**上下游关系**：上游依赖 DER 期货与远期本体；下游服务期货行情分析、保证金计算建模。\n\n**与相近概念的差别**：期货行情特有的字段是持仓量（open interest，未平仓合约数），这是股票、期权行情没有的维度。"
+ },
+ "MD/TemporalCore/SecurityCreditStatuses": {
+  "name_zh": "证券信用状态时序本体（Security Credit Statuses Ontology）",
+  "summary_zh": "定义证券信用状态（如评级变化）随时间的表示。",
+  "overview_zh": "定义证券信用状态（如评级变化、违约状态）随时间变化的表示。\n\n**在体系中的位置**：MD 时序核心模块的两个本体之一，与交易状态时序平行。\n\n**上下游关系**：上游依赖 SEC 证券、FBC 信用评级与信用事件本体；下游服务信用监测与风险分析。\n\n**与相近概念的差别**：信用状态≠信用评级——评级是机构给出的等级意见，信用状态是综合的信用处境（含违约事实）；与信用事件的差别——事件是时点发生，状态是期间持续。"
+ },
+ "MD/TemporalCore/SecurityTradingStatuses": {
+  "name_zh": "证券交易状态时序本体（Security Trading Statuses Ontology）",
+  "summary_zh": "定义证券交易状态（正常、停牌等）随时间的表示。",
+  "overview_zh": "定义证券交易状态（正常交易、停牌、暂停、恢复）随时间变化的表示。\n\n**在体系中的位置**：MD（市场数据）域时序核心模块的两个本体之一，是「证券状态的时间序列」框架。\n\n**上下游关系**：上游依赖 SEC 证券与 FND 日期本体；下游为行情监控、合规检查提供状态轨迹。\n\n**与相近概念的差别**：交易状态≠信用状态——前者是市场交易层面（能否买卖），后者是信用层面（是否违约）；与静态状态字段的差别——本本体强调状态随时间的变化轨迹。"
+ },
+ "ACTUS/ACTUSContractTermMapping": {
+  "name_zh": "ACTUS 合约条款映射本体（ACTUS Contract Term Mapping Ontology）",
+  "summary_zh": "把 ACTUS 算法合约标准中的合约条款映射到 FIBO 概念，实现两套模型的互操作。"
+ },
+ "ACTUS/ACTUSContractTerms": {
+  "name_zh": "ACTUS 合约条款本体（ACTUS Contract Terms Ontology）",
+  "summary_zh": "定义 ACTUS（算法合约类型统一标准）中的合约条款要素。",
+  "overview_zh": "定义 ACTUS（算法合约类型统一标准，Algorithmic Contract Types Unified Standards）中金融合约的标准条款要素：名义本金、利率、各类日期安排等机器可计算的参数。\n\n**在体系中的位置**：属于 ACTUS 对接域，是 FIBO 与 ACTUS 标准接轨的三件套之一（合约条款、条款映射、受控词汇）。\n\n**上下游关系**：上游依赖 FND 的协议、合同、金融日期、货币金额等基础本体；下游由 ACTUS 合约条款映射本体引用，把条款对接到 FIBO 概念体系。\n\n**与相近概念的差别**：FND/Agreements/Contracts 建模的是通用合同结构（当事方、条款、义务），而本本体建模的是让合约现金流可以被算法精确计算的参数集——一个面向法律语义，一个面向计算。"
+ },
+ "ACTUS/ACTUSTaxonomy": {
+  "name_zh": "ACTUS 受控词汇本体（ACTUS Controlled Vocabulary）",
+  "summary_zh": "收录 ACTUS 标准合约类型（如本金摊还型年金合约 PAM、到期一次偿还合约 NAM）的受控词汇。",
+  "overview_zh": "收录 ACTUS 标准合约类型的受控词汇个体，如本金摊还型年金合约（PAM）、到期一次偿还合约（NAM）等。\n\n**在体系中的位置**：ACTUS 对接域的词汇层，为合约分类提供标准类型取值。\n\n**上下游关系**：依赖 ACTUS 合约条款本体与 FND 基础本体；被需要按 ACTUS 类型标注合约的应用使用。\n\n**与相近概念的差别**：与 ACTUS 合约条款本体分工不同——后者定义条款参数的结构，本本体只提供合约类型的枚举清单；与 FIBO 自身的贷款、债券分类是两套并存的标准，通过映射本体衔接。"
+ },
+ "AboutFIBODev": {
+  "name_zh": "FIBO 开发版总入口（About FIBO Development）",
+  "summary_zh": "聚合 FIBO 开发版（Development）的全部本体，含尚未正式发布、处于 provisional 状态的内容，供本体开发与评审使用。"
+ },
+ "AboutFIBODev-TBoxOnly": {
+  "name_zh": "FIBO 开发版总入口·仅术语层（About FIBO Development, TBox Only）",
+  "summary_zh": "仅聚合开发版中的术语层（TBox，即类与属性定义），不含参考数据个体（ABox），加载更快，适合只做概念建模的场景。"
+ },
+ "AboutFIBOProd": {
+  "name_zh": "FIBO 生产版总入口（About FIBO Production）",
+  "summary_zh": "聚合 FIBO 生产版（Production）的全部正式发布本体，是应用系统使用 FIBO 的标准入口。"
+ },
+ "AboutFIBOProd-TBoxOnly": {
+  "name_zh": "FIBO 生产版总入口·仅术语层（About FIBO Production, TBox Only）",
+  "summary_zh": "仅聚合生产版中的术语层（TBox），不含参考数据个体，适合只关心概念体系的生产应用。"
+ },
+ "AboutFIBOProd-IncludingReferenceData": {
+  "name_zh": "FIBO 生产版总入口·含参考数据（About FIBO Production, Including Reference Data）",
+  "summary_zh": "在生产版基础上额外包含全部参考数据个体（国家代码、市场个体、监管机构等），是内容最全、加载最重的入口。"
+ },
+ "_external": {
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/": {
+   "name_zh": "OMG 通用标注词汇表（OMG Commons Annotation Vocabulary）",
+   "summary_zh": "OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。"
+  },
+  "https://www.omg.org/spec/LCC/Countries/ISO3166-2-SubdivisionCodes/": {
+   "name_zh": "LCC ISO 3166-2 子分区代码总集（ISO 3166-2 Subdivision Codes）",
+   "summary_zh": "OMG 国家语言代码库（LCC）中 ISO 3166-2 国家/地区子分区代码的总集本体，按国家拆分为各子文件。"
+  },
+  "https://www.omg.org/spec/LCC/Countries/UN-M49-RegionCodes/": {
+   "name_zh": "LCC 联合国 M49 区域代码（UN-M49 Region Codes）",
+   "summary_zh": "LCC 中联合国 M49 标准的地理区域代码个体（如东亚、西欧等区域编码）。"
+  },
+  "https://www.omg.org/spec/Commons/Classifiers/": {
+   "name_zh": "OMG 通用分类器本体（OMG Commons Classifiers）",
+   "summary_zh": "OMG 通用本体库（Commons）中的分类器本体，定义分类方案、类别与归类关系的通用概念，FIBO 的分类建模建立在其上。"
+  },
+  "https://www.omg.org/spec/Commons/CodesAndCodeSets/": {
+   "name_zh": "OMG 通用代码与代码集本体（OMG Commons Codes and Code Sets）",
+   "summary_zh": "Commons 库中的代码本体，定义代码、代码集及其维护方的通用概念，是 ISO 4217、ISO 3166 等编码体系建模的基础。"
+  },
+  "https://www.omg.org/spec/Commons/Collections/": {
+   "name_zh": "OMG 通用集合本体（OMG Commons Collections）",
+   "summary_zh": "Commons 库中的集合本体，定义集合、成员等通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/ContextualDesignators/": {
+   "name_zh": "OMG 通用语境指称本体（OMG Commons Contextual Designators）",
+   "summary_zh": "Commons 库中的语境指称本体，定义「在某个语境下指代某物的名称/符号」，是地址、账户号码等语境相关标识的基础。"
+  },
+  "https://www.omg.org/spec/Commons/DatesAndTimes/": {
+   "name_zh": "OMG 通用日期与时间本体（OMG Commons Dates and Times）",
+   "summary_zh": "Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。"
+  },
+  "https://www.omg.org/spec/Commons/Designators/": {
+   "name_zh": "OMG 通用指称符本体（OMG Commons Designators）",
+   "summary_zh": "Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/Documents/": {
+   "name_zh": "OMG 通用文档本体（OMG Commons Documents）",
+   "summary_zh": "Commons 库中的文档本体，定义文档及其组成部分的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/Identifiers/": {
+   "name_zh": "OMG 通用标识符本体（OMG Commons Identifiers）",
+   "summary_zh": "Commons 库中的标识符本体，定义标识符及其编码方案的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/Locations/": {
+   "name_zh": "OMG 通用位置本体（OMG Commons Locations）",
+   "summary_zh": "Commons 库中的位置本体，定义地理位置、地点的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/Organizations/": {
+   "name_zh": "OMG 通用组织本体（OMG Commons Organizations）",
+   "summary_zh": "Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/": {
+   "name_zh": "OMG 通用参与方与情境本体（OMG Commons Parties and Situations）",
+   "summary_zh": "Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。"
+  },
+  "https://www.omg.org/spec/Commons/QuantitiesAndUnits/": {
+   "name_zh": "OMG 通用量与单位本体（OMG Commons Quantities and Units）",
+   "summary_zh": "Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。"
+  },
+  "https://www.omg.org/spec/Commons/RegistrationAuthorities/": {
+   "name_zh": "OMG 通用登记主管机构本体（OMG Commons Registration Authorities）",
+   "summary_zh": "Commons 库中的登记主管机构本体，定义负责登记注册的主管机构及其登记行为的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/RegulatoryAgencies/": {
+   "name_zh": "OMG 通用监管机构本体（OMG Commons Regulatory Agencies）",
+   "summary_zh": "Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/": {
+   "name_zh": "OMG 通用角色与构成本体（OMG Commons Roles and Compositions）",
+   "summary_zh": "Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/SitesAndFacilities/": {
+   "name_zh": "OMG 通用场所与设施本体（OMG Commons Sites and Facilities）",
+   "summary_zh": "Commons 库中的场所与设施本体，定义物理场所、设施及其位置的通用概念。"
+  },
+  "https://www.omg.org/spec/LCC/Countries/CountryRepresentation/": {
+   "name_zh": "LCC 国家表示本体（LCC Country Representation）",
+   "summary_zh": "OMG 国家语言代码库（LCC）中的国家表示本体，定义国家、国家标识等概念，是 ISO 3166 各国代码个体的类定义来源。"
+  },
+  "https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/": {
+   "name_zh": "LCC ISO 3166-1 国家代码（ISO 3166-1 Country Codes）",
+   "summary_zh": "LCC 中 ISO 3166-1 标准的国家/地区代码个体集（如 CN、US、MX），供法域与地址建模引用。"
+  },
+  "https://www.omg.org/spec/Commons/BusinessAuthorizations/": {
+   "name_zh": "OMG 通用商业授权本体（OMG Commons Business Authorizations）",
+   "summary_zh": "OMG 通用本体库（Commons）中的商业授权本体，定义授权、签章与代理权限的通用概念。"
+  },
+  "https://www.omg.org/spec/Commons/ContextualIdentifiers/": {
+   "name_zh": "OMG 通用语境标识符本体（OMG Commons Contextual Identifiers）",
+   "summary_zh": "Commons 库中的语境标识符本体，定义在特定语境下唯一标识事物的标识符结构，是地址、账户类标识的基础。"
+  },
+  "https://www.omg.org/spec/Commons/TextDatatype/": {
+   "name_zh": "OMG 通用文本数据类型（OMG Commons Text Datatype）",
+   "summary_zh": "Commons 库中的文本数据类型定义，提供带语言标记的文本等基础数据类型。"
+  },
+  "https://www.omg.org/spec/MVF/MultipleVocabularyFacility/": {
+   "name_zh": "OMG 多词汇设施（OMG Multiple Vocabulary Facility，MVF）",
+   "summary_zh": "OMG 的多词汇设施规范本体，提供词汇表与概念映射的元模型，供 ACTUS 等外部词汇与 FIBO 概念对接使用。"
+  }
+ },
+ "_external_pattern": {
+  "ISO3166-2-SubdivisionCodes-": {
+   "name_zh": "LCC ISO 3166-2 子分区代码·{cc}（ISO 3166-2 Subdivision Codes for {cc_name}）",
+   "summary_zh": "LCC 中 ISO 3166-2 标准下{cc_name}的省/州级行政区代码个体集。"
+  }
+ },
+ "_missing": {
+  "BE/AllBE-NorthAmericanExamples": {
+   "name_zh": "BE 域北美示例入口（All BE, North American Examples）",
+   "summary_zh": "FIBO 上游在聚合文件中引用了该本体（BE 域北美示例个体的入口），但当前版本仓库中并未包含对应文件，属于上游已声明、尚未随本版本发布的内容。"
+  }
+ },
+ "_lcc_countries": {
+  "AD": "安道尔",
+  "AG": "安提瓜和巴布达",
+  "AL": "阿尔巴尼亚",
+  "AS": "美属萨摩亚",
+  "AT": "奥地利",
+  "BA": "波斯尼亚和黑塞哥维那",
+  "BB": "巴巴多斯",
+  "BE": "比利时",
+  "BG": "保加利亚",
+  "BQ": "荷兰加勒比区",
+  "BS": "巴哈马",
+  "BY": "白俄罗斯",
+  "BZ": "伯利兹",
+  "CA": "加拿大",
+  "CH": "瑞士",
+  "CR": "哥斯达黎加",
+  "CU": "古巴",
+  "CZ": "捷克",
+  "DE": "德国",
+  "DK": "丹麦",
+  "DM": "多米尼克",
+  "DO": "多米尼加共和国",
+  "EE": "爱沙尼亚",
+  "ES": "西班牙",
+  "FI": "芬兰",
+  "FR": "法国",
+  "GB": "英国",
+  "GD": "格林纳达",
+  "GG": "根西岛",
+  "GL": "格陵兰",
+  "GP": "瓜德罗普",
+  "GR": "希腊",
+  "GT": "危地马拉",
+  "HN": "洪都拉斯",
+  "HR": "克罗地亚",
+  "HT": "海地",
+  "HU": "匈牙利",
+  "IE": "爱尔兰",
+  "IS": "冰岛",
+  "IT": "意大利",
+  "KN": "圣基茨和尼维斯",
+  "KY": "开曼群岛",
+  "LC": "圣卢西亚",
+  "LI": "列支敦士登",
+  "LT": "立陶宛",
+  "LU": "卢森堡",
+  "LV": "拉脱维亚",
+  "MC": "摩纳哥",
+  "MD": "摩尔多瓦",
+  "ME": "黑山",
+  "MF": "法属圣马丁",
+  "MK": "北马其顿",
+  "MP": "北马里亚纳群岛",
+  "MT": "马耳他",
+  "MX": "墨西哥",
+  "NI": "尼加拉瓜",
+  "NL": "荷兰",
+  "NO": "挪威",
+  "PA": "巴拿马",
+  "PL": "波兰",
+  "PM": "圣皮埃尔和密克隆",
+  "PT": "葡萄牙",
+  "RO": "罗马尼亚",
+  "RS": "塞尔维亚",
+  "RU": "俄罗斯",
+  "SE": "瑞典",
+  "SI": "斯洛文尼亚",
+  "SJ": "斯瓦尔巴和扬马延",
+  "SK": "斯洛伐克",
+  "SM": "圣马力诺",
+  "SV": "萨尔瓦多",
+  "TC": "特克斯和凯科斯群岛",
+  "TT": "特立尼达和多巴哥",
+  "UA": "乌克兰",
+  "UM": "美国本土外小岛屿",
+  "US": "美国",
+  "VC": "圣文森特和格林纳丁斯",
+  "VG": "英属维尔京群岛",
+  "VI": "美属维尔京群岛"
+ },
+ "MetadataFIBO": {
+  "name_zh": "FIBO 全库元数据清单（Metadata for FIBO）",
+  "summary_zh": "FIBO 的最高层清单文件：声明整个 FIBO 由 12 个域（BE、FBC、FND、SEC、DER、LOAN、IND、BP、CAE、MD、EXMP、ACTUS）构成，并携带全库的版本、版权与许可信息，是发布管理意义上的「总目录」。",
+  "kind": "metadata"
+ },
+ "ACTUS/MetadataACTUS": {
+  "name_zh": "ACTUS 域元数据（Metadata for the ACTUS Domain）",
+  "summary_zh": "声明 ACTUS 域的构成（合约条款、条款映射、受控词汇三个本体）及版本信息。ACTUS 域把算法合约类型统一标准接入 FIBO。",
+  "kind": "metadata"
+ },
+ "BE/MetadataBE": {
+  "name_zh": "BE 域元数据（Metadata for the BE Domain）",
+  "summary_zh": "声明商业实体（BE）域由 8 个模块构成：功能实体、政府实体、法律实体、所有权与控制权、合伙、私人有限公司、独资经营、信托。目录下另有公司（Corporations）模块的清单文件，但未被本清单列入构成，属于上游预留模块。",
+  "kind": "metadata"
+ },
+ "BE/Corporations/MetadataBECorporations": {
+  "name_zh": "BE 公司模块元数据（Metadata for the BE Corporations Module）",
+  "summary_zh": "声明公司（Corporations）模块由公司本体构成，及版本信息。注意：BE 域清单（MetadataBE）当前未将该模块列入构成（hasPart），属于上游预留模块。",
+  "kind": "metadata"
+ },
+ "BE/FunctionalEntities/MetadataBEFunctionalEntities": {
+  "name_zh": "BE 功能实体模块元数据（Metadata for the BE Functional Entities Module）",
+  "summary_zh": "声明功能实体（Functional Entities）模块由功能实体本体与出版方本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "BE/GovernmentEntities/MetadataBEGovernmentEntities": {
+  "name_zh": "BE 政府实体模块元数据（Metadata for the BE Government Entities Module）",
+  "summary_zh": "声明政府实体（Government Entities）模块的构成：政府实体核心本体加上全球各区域（亚洲五区、欧洲六区、拉美两区、北美四区）的政府实体与法域参考本体。",
+  "kind": "metadata"
+ },
+ "BE/LegalEntities/MetadataBELegalEntities": {
+  "name_zh": "BE 法律实体模块元数据（Metadata for the BE Legal Entities Module）",
+  "summary_zh": "声明法律实体（Legal Entities）模块由法律主体、法人团体、正式商业组织、LEI 法人实体四个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "BE/OwnershipAndControl/MetadataBEOwnershipAndControl": {
+  "name_zh": "BE 所有权与控制权模块元数据（Metadata for the BE Ownership and Control Module）",
+  "summary_zh": "声明所有权与控制权（Ownership and Control）模块由公司所有权、公司控制、所有权方、控制方、高管五个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "BE/Partnerships/MetadataBEPartnerships": {
+  "name_zh": "BE 合伙模块元数据（Metadata for the BE Partnerships Module）",
+  "summary_zh": "声明合伙（Partnerships）模块由合伙本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "BE/PrivateLimitedCompanies/MetadataBEPrivateLimitedCompanies": {
+  "name_zh": "BE 私人有限公司模块元数据（Metadata for the BE Private Limited Companies Module）",
+  "summary_zh": "声明私人有限公司（Private Limited Companies）模块由私人有限公司本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "BE/SoleProprietorships/MetadataBESoleProprietorships": {
+  "name_zh": "BE 独资经营模块元数据（Metadata for the BE Sole Proprietorships Module）",
+  "summary_zh": "声明独资经营（Sole Proprietorships）模块由独资经营本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "BE/Trusts/MetadataBETrusts": {
+  "name_zh": "BE 信托模块元数据（Metadata for the BE Trusts Module）",
+  "summary_zh": "声明信托（Trusts）模块由信托本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "BP/MetadataBP": {
+  "name_zh": "BP 域元数据（Metadata for the BP Domain）",
+  "summary_zh": "声明业务流程（Business Process，BP）域由两个模块构成：金融语境与流程、证券发行。",
+  "kind": "metadata"
+ },
+ "BP/Process/MetadataBPProcess": {
+  "name_zh": "BP 流程模块元数据（Metadata for the BP Process Module）",
+  "summary_zh": "声明流程（Process）模块由金融语境与流程本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "BP/SecuritiesIssuance/MetadataBPSecuritiesIssuance": {
+  "name_zh": "BP 证券发行模块元数据（Metadata for the BP Securities Issuance Module）",
+  "summary_zh": "声明证券发行（Securities Issuance）模块的构成：发行流程、发行文件、债务发行、IPO 发行、MBS 发行（机构/私人品牌）、市政债发行等本体。",
+  "kind": "metadata"
+ },
+ "CAE/MetadataCAE": {
+  "name_zh": "CAE 域元数据（Metadata for the CAE Domain）",
+  "summary_zh": "声明企业行动事件（CAE）域由企业事件（Corporate Events）一个模块构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "CAE/CorporateEvents/MetadataCAECorporateEvents": {
+  "name_zh": "CAE 企业事件模块元数据（Metadata for the CAE Corporate Events Module）",
+  "summary_zh": "声明企业事件（Corporate Events）模块的构成：企业行动本体、证券相关企业行动本体，以及 GLEIF 与 ISO 15022 两套企业行动代码个体本体。",
+  "kind": "metadata"
+ },
+ "DER/MetadataDER": {
+  "name_zh": "DER 域元数据（Metadata for the DER Domain）",
+  "summary_zh": "声明衍生品（DER）域由四个模块构成：衍生品合约、利率衍生品、信用衍生品、证券类衍生品。",
+  "kind": "metadata"
+ },
+ "DER/CreditDerivatives/MetadataDERCreditDerivatives": {
+  "name_zh": "DER 信用衍生品模块元数据（Metadata for the DER Credit Derivatives Module）",
+  "summary_zh": "声明信用衍生品（Credit Derivatives）模块由信用违约互换本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "DER/DerivativesContracts/MetadataDERDerivativesContracts": {
+  "name_zh": "DER 衍生品合约模块元数据（Metadata for the DER Derivatives Contracts Module）",
+  "summary_zh": "声明衍生品合约（Derivatives Contracts）模块的构成：衍生品基础、期权、奇异期权、期货与远期、互换、权利与权证、大宗商品合约、外汇合约、结构化工具、主协议及互换个体等本体。",
+  "kind": "metadata"
+ },
+ "DER/RateDerivatives/MetadataDERRateDerivatives": {
+  "name_zh": "DER 利率衍生品模块元数据（Metadata for the DER Rate Derivatives Module）",
+  "summary_zh": "声明利率衍生品（Rate Derivatives）模块由利率衍生品本体与利率互换本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "DER/SecurityBasedDerivatives/MetadataDERSecurityBasedDerivatives": {
+  "name_zh": "DER 证券类衍生品模块元数据（Metadata for the DER Security-Based Derivatives Module）",
+  "summary_zh": "声明证券类衍生品（Security-Based Derivatives）模块由证券类衍生品本体与股权互换本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "EXMP/MetadataEXMP": {
+  "name_zh": "EXMP 域元数据（Metadata for the EXMP Domain）",
+  "summary_zh": "声明示例（Examples，EXMP）域由两个模块构成：法律实体示例、证券示例。该域内容仅用于演示与测试，不属于生产模型。",
+  "kind": "metadata"
+ },
+ "EXMP/LegalEntities/MetadataEXMPLegalEntities": {
+  "name_zh": "EXMP 法律实体示例模块元数据（Metadata for the EXMP Legal Entities Module）",
+  "summary_zh": "声明法律实体示例模块的构成：道指成分公司、公司高管、金融机构、市场与交易所等示例个体本体。",
+  "kind": "metadata"
+ },
+ "EXMP/Securities/MetadataEXMPSecurities": {
+  "name_zh": "EXMP 证券示例模块元数据（Metadata for the EXMP Securities Module）",
+  "summary_zh": "声明证券示例模块的构成：股票示例、股指示例、利率互换示例三个个体本体。",
+  "kind": "metadata"
+ },
+ "FBC/MetadataFBC": {
+  "name_zh": "FBC 域元数据（Metadata for the FBC Domain）",
+  "summary_zh": "声明金融商业与贸易（FBC）域由四个模块构成：债务与权益、金融工具、功能实体、产品与服务。",
+  "kind": "metadata"
+ },
+ "FBC/DebtAndEquities/MetadataFBCDebtAndEquities": {
+  "name_zh": "FBC 债务与权益模块元数据（Metadata for the FBC Debt and Equities Module）",
+  "summary_zh": "声明债务与权益（Debt and Equities）模块由债务、担保、信用评级、信用事件四个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FBC/FinancialInstruments/MetadataFBCFinancialInstruments": {
+  "name_zh": "FBC 金融工具模块元数据（Metadata for the FBC Financial Instruments Module）",
+  "summary_zh": "声明金融工具（Financial Instruments）模块由金融工具、工具定价、结算三个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FBC/FunctionalEntities/MetadataFBCFunctionalEntities": {
+  "name_zh": "FBC 功能实体模块元数据（Metadata for the FBC Functional Entities Module）",
+  "summary_zh": "声明功能实体（Functional Entities）模块的构成：金融服务实体、市场、监管机构、商业登记、商业中心及欧美区域扩展、各国参考个体等本体。",
+  "kind": "metadata"
+ },
+ "FBC/ProductsAndServices/MetadataFBCProductsAndServices": {
+  "name_zh": "FBC 产品与服务模块元数据（Metadata for the FBC Products and Services Module）",
+  "summary_zh": "声明产品与服务（Products and Services）模块由金融产品与服务、客户与账户两个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/MetadataFND": {
+  "name_zh": "FND 域元数据（Metadata for the FND Domain）",
+  "summary_zh": "声明基础（Foundations，FND）域由 15 个模块构成：会计、代理人与人员、协议、安排、日期与时间、目标、法律、组织、所有权与控制、参与方、地点、产品与服务、关系、交易扩展、工具。",
+  "kind": "metadata"
+ },
+ "FND/Accounting/MetadataFNDAccounting": {
+  "name_zh": "FND 会计模块元数据（Metadata for the FND Accounting Module）",
+  "summary_zh": "声明会计（Accounting）模块由货币金额、现金流、ISO 4217 货币代码三个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/AgentsAndPeople/MetadataFNDAgentsAndPeople": {
+  "name_zh": "FND 代理人与人员模块元数据（Metadata for the FND Agents and People Module）",
+  "summary_zh": "声明代理人与人员（Agents and People）模块由人员本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/Agreements/MetadataFNDAgreements": {
+  "name_zh": "FND 协议模块元数据（Metadata for the FND Agreements Module）",
+  "summary_zh": "声明协议（Agreements）模块由协议本体与合同本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/Arrangements/MetadataFNDArrangements": {
+  "name_zh": "FND 安排模块元数据（Metadata for the FND Arrangements Module）",
+  "summary_zh": "声明安排（Arrangements）模块的构成：安排、分类方案、标识符与索引、文档、生命周期、评估、评级、报告八个本体。",
+  "kind": "metadata"
+ },
+ "FND/DatesAndTimes/MetadataFNDDatesAndTimes": {
+  "name_zh": "FND 日期与时间模块元数据（Metadata for the FND Dates and Times Module）",
+  "summary_zh": "声明日期与时间（Dates and Times）模块由金融日期、营业日期、事件与发生三个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/GoalsAndObjectives/MetadataFNDGoalsAndObjectives": {
+  "name_zh": "FND 目标模块元数据（Metadata for the FND Goals and Objectives Module）",
+  "summary_zh": "声明目标（Goals and Objectives）模块由目标本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/Law/MetadataFNDLaw": {
+  "name_zh": "FND 法律模块元数据（Metadata for the FND Law Module）",
+  "summary_zh": "声明法律（Law）模块由法律核心本体与法律能力本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/Organizations/MetadataFNDOrganizations": {
+  "name_zh": "FND 组织模块元数据（Metadata for the FND Organizations Module）",
+  "summary_zh": "声明组织（Organizations）模块由正式组织本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/OwnershipAndControl/MetadataFNDOwnershipAndControl": {
+  "name_zh": "FND 所有权与控制模块元数据（Metadata for the FND Ownership and Control Module）",
+  "summary_zh": "声明所有权与控制（Ownership and Control）模块由所有权、控制、所有权与控制三个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/Parties/MetadataFNDParties": {
+  "name_zh": "FND 参与方模块元数据（Metadata for the FND Parties Module）",
+  "summary_zh": "声明参与方（Parties）模块由参与方本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/Places/MetadataFNDPlaces": {
+  "name_zh": "FND 地点模块元数据（Metadata for the FND Places Module）",
+  "summary_zh": "声明地点（Places）模块的构成：地址、虚拟地点、不动产及美国邮政地址（含个体）等本体。",
+  "kind": "metadata"
+ },
+ "FND/ProductsAndServices/MetadataFNDProductsAndServices": {
+  "name_zh": "FND 产品与服务模块元数据（Metadata for the FND Products and Services Module）",
+  "summary_zh": "声明产品与服务（Products and Services）模块由产品与服务、付款与计划表两个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/Relations/MetadataFNDRelations": {
+  "name_zh": "FND 关系模块元数据（Metadata for the FND Relations Module）",
+  "summary_zh": "声明关系（Relations）模块由关系本体构成——这是 FIBO 最底层的基础本体，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/TransactionsExt/MetadataFNDTransactionsExt": {
+  "name_zh": "FND 交易扩展模块元数据（Metadata for the FND Transactions Extended Module）",
+  "summary_zh": "声明交易扩展（Transactions Extended）模块由 REA 交易、市场交易、证券交易三个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "FND/Utilities/MetadataFNDUtilities": {
+  "name_zh": "FND 工具模块元数据（Metadata for the FND Utilities Module）",
+  "summary_zh": "声明工具（Utilities）模块由分析本体与 FIBO 标注词汇表构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "IND/MetadataIND": {
+  "name_zh": "IND 域元数据（Metadata for the IND Domain）",
+  "summary_zh": "声明指标与指数（IND）域由五个模块构成：指标、经济指标、利率、外汇、市场指数。",
+  "kind": "metadata"
+ },
+ "IND/EconomicIndicators/MetadataINDEconomicIndicators": {
+  "name_zh": "IND 经济指标模块元数据（Metadata for the IND Economic Indicators Module）",
+  "summary_zh": "声明经济指标（Economic Indicators）模块由经济指标本体及美国、加拿大经济指标个体本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "IND/ForeignExchange/MetadataINDForeignExchange": {
+  "name_zh": "IND 外汇模块元数据（Metadata for the IND Foreign Exchange Module）",
+  "summary_zh": "声明外汇（Foreign Exchange）模块由外汇本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "IND/Indicators/MetadataINDIndicators": {
+  "name_zh": "IND 指标模块元数据（Metadata for the IND Indicators Module）",
+  "summary_zh": "声明指标（Indicators）模块由指标本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "IND/InterestRates/MetadataINDInterestRates": {
+  "name_zh": "IND 利率模块元数据（Metadata for the IND Interest Rates Module）",
+  "summary_zh": "声明利率（Interest Rates）模块由利率、常用利率、市场数据提供商三个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "IND/MarketIndices/MetadataINDMarketIndices": {
+  "name_zh": "IND 市场指数模块元数据（Metadata for the IND Market Indices Module）",
+  "summary_zh": "声明市场指数（Market Indices）模块由篮子指数本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "LOAN/LoansSpecific/MetadataLOANLoansSpecific": {
+  "name_zh": "LOAN 具体贷款模块元数据（Metadata for the LOAN Loans Specific Module）",
+  "summary_zh": "声明具体贷款（Loans Specific）模块的构成：卡账户、商业贷款、消费贷款、学生贷款、绿色贷款、船舶融资、贷款产品七个本体。",
+  "kind": "metadata"
+ },
+ "LOAN/RealEstateLoans/MetadataLOANRealEstateLoans": {
+  "name_zh": "LOAN 房地产贷款模块元数据（Metadata for the LOAN Real Estate Loans Module）",
+  "summary_zh": "声明房地产贷款（Real Estate Loans）模块由抵押贷款、抵押贷款发放、建筑贷款、HMDA 覆盖抵押贷款四个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "MD/MetadataMD": {
+  "name_zh": "MD 域元数据（Metadata for the MD Domain）",
+  "summary_zh": "声明市场数据（Market Data，MD）域由四个模块构成：时序核心、债务时序、衍生品时序、集合投资工具时序。",
+  "kind": "metadata"
+ },
+ "MD/CIVTemporal/MetadataMDCIVTemporal": {
+  "name_zh": "MD 集合投资工具时序模块元数据（Metadata for the MD CIV Temporal Module）",
+  "summary_zh": "声明集合投资工具时序（CIV Temporal）模块由基金时序本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "MD/DebtTemporal/MetadataMDDebtTemporal": {
+  "name_zh": "MD 债务时序模块元数据（Metadata for the MD Debt Temporal Module）",
+  "summary_zh": "声明债务时序（Debt Temporal）模块由债务分析本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "MD/DerivativesTemporal/MetadataMDDerivativesTemporal": {
+  "name_zh": "MD 衍生品时序模块元数据（Metadata for the MD Derivatives Temporal Module）",
+  "summary_zh": "声明衍生品时序（Derivatives Temporal）模块由期货时序、场内期权时序两个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "MD/TemporalCore/MetadataMDTemporalCore": {
+  "name_zh": "MD 时序核心模块元数据（Metadata for the MD Temporal Core Module）",
+  "summary_zh": "声明时序核心（Temporal Core）模块由证券信用状态时序、证券交易状态时序两个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "SEC/MetadataSEC": {
+  "name_zh": "SEC 域元数据（Metadata for the SEC Domain）",
+  "summary_zh": "声明证券（SEC）域由四个模块构成：证券、债务、权益、基金。",
+  "kind": "metadata"
+ },
+ "SEC/Debt/MetadataSECDebt": {
+  "name_zh": "SEC 债务模块元数据（Metadata for the SEC Debt Module）",
+  "summary_zh": "声明债务（Debt）模块的构成：债务工具、债券、短期交易债务、行权惯例、分销贷款、池支持证券、资产支持证券、抵押贷款支持证券、担保债务凭证、合成 CDO 十个本体。",
+  "kind": "metadata"
+ },
+ "SEC/Equities/MetadataSECEquities": {
+  "name_zh": "SEC 权益模块元数据（Metadata for the SEC Equities Module）",
+  "summary_zh": "声明权益（Equities）模块由股权工具、存托凭证、股票 CFI 分类个体三个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "SEC/Funds/MetadataSECFunds": {
+  "name_zh": "SEC 基金模块元数据（Metadata for the SEC Funds Module）",
+  "summary_zh": "声明基金（Funds）模块由基金、集合投资工具、养老金计划三个本体构成，及版本信息。",
+  "kind": "metadata"
+ },
+ "SEC/Securities/MetadataSECSecurities": {
+  "name_zh": "SEC 证券模块元数据（Metadata for the SEC Securities Module）",
+  "summary_zh": "声明证券（Securities）模块的构成：证券识别（含个体）、证券分类、证券发行、证券上市、证券限制、参数化计划表、池、篮子及欧美区域限制扩展等本体。",
+  "kind": "metadata"
+ },
+ "BE/Corporations/Corporations": {
+  "overview_zh": "定义公司（corporation）这一法律实体形态：股份制、依法注册、具有独立法人资格的商业组织，及其注册与股份结构相关概念。\n\n**在体系中的位置**：BE（商业实体）域公司模块的核心本体，处于「法律实体」层。\n\n**上下游关系**：上游继承 BE/LegalEntities 的法人团体、正式商业组织以及 FND 的组织、法律本体；下游被 BE 所有权与控制权各本体以及 FBC、SEC 引用（发行人、上市公司通常就是公司）。\n\n**与相近概念的差别**：与私人有限公司、合伙、信托并列，是股份制且可公开募资的法人形态；与正式商业组织的差别在于后者泛指一切以营利为目的的注册组织，公司只是其中一类。",
+  "name_zh": "公司本体（Corporations Ontology）",
+  "summary_zh": "定义公司（corporation）这一法律实体形态：股份制、依法注册、具有独立法人资格的商业组织，及其注册与股份结构相关概念。"
+ },
+ "SEC/Securities/SecurityAssets": {
+  "overview_zh": "定义作为资产持有的证券：证券在投资组合语境下的资产属性（持仓、市值、资产类别）。\n\n**在体系中的位置**：SEC 证券模块中连接「证券」与「资产管理」视角的本体。\n\n**上下游关系**：上游依赖证券与 FND 所有权、货币金额本体；下游服务持仓、估值与绩效分析建模。\n\n**与相近概念的差别**：证券≠证券资产——证券是工具本身的定义（条款），证券资产是「某人持有的若干单位该证券」这一持仓事实；同一只债券作为发行条款和作为持仓是两个视角。",
+  "name_zh": "证券资产本体（Security Assets Ontology）",
+  "summary_zh": "定义作为资产持有的证券：证券在投资组合语境下的资产属性（持仓、市值、资产类别）。"
+ }
+}

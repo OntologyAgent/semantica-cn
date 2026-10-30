@@ -1,0 +1,103 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-aap-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/MetadataFNDAgentsAndPeople/> .
+@prefix fibo-fnd-acc-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/MetadataFNDAccounting/> .
+@prefix fibo-fnd-agr-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/MetadataFNDAgreements/> .
+@prefix fibo-fnd-arr-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/MetadataFNDArrangements/> .
+@prefix fibo-fnd-dt-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/MetadataFNDDatesAndTimes/> .
+@prefix fibo-fnd-gao-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/MetadataFNDGoalsAndObjectives/> .
+@prefix fibo-fnd-law-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/MetadataFNDLaw/> .
+@prefix fibo-fnd-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/MetadataFND/> .
+@prefix fibo-fnd-oac-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/MetadataFNDOwnershipAndControl/> .
+@prefix fibo-fnd-org-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/MetadataFNDOrganizations/> .
+@prefix fibo-fnd-pas-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/MetadataFNDProductsAndServices/> .
+@prefix fibo-fnd-plc-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/MetadataFNDPlaces/> .
+@prefix fibo-fnd-pty-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/MetadataFNDParties/> .
+@prefix fibo-fnd-rel-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/MetadataFNDRelations/> .
+@prefix fibo-fnd-txn-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/MetadataFNDTransactionsExt/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-fnd-utl-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/MetadataFNDUtilities/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the FIBO Foundations (FND) Domain",
+        "FND 域元数据（Metadata for the FND Domain）"@zh ;
+    dcterms:abstract "This ontology provides metadata about the FIBO Foundations (FND) domain area, which defines general purpose concepts supporting other domain areas of FIBO. The primary focus of Foundations is on agreements and contracts, their legal underpinnings, and related constructs." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2026 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明基础（Foundations，FND）域由 15 个模块构成：会计、代理人与人员、协议、安排、日期与时间、目标、法律、组织、所有权与控制、参与方、地点、产品与服务、关系、交易扩展、工具。"@zh ;
+    owl:imports fibo-fnd-acc-mod:,
+        fibo-fnd-aap-mod:,
+        fibo-fnd-agr-mod:,
+        fibo-fnd-arr-mod:,
+        fibo-fnd-dt-mod:,
+        fibo-fnd-gao-mod:,
+        fibo-fnd-law-mod:,
+        fibo-fnd-org-mod:,
+        fibo-fnd-oac-mod:,
+        fibo-fnd-pty-mod:,
+        fibo-fnd-plc-mod:,
+        fibo-fnd-pas-mod:,
+        fibo-fnd-rel-mod:,
+        fibo-fnd-txn-mod:,
+        fibo-fnd-utl-av:,
+        fibo-fnd-utl-mod:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20241101/MetadataFND/> ;
+    cmns-av:copyright "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2013-2026 Object Management Group" .
+
+fibo-fnd-mod:FNDDomain a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "foundations domain" ;
+    dcterms:abstract """The Foundations (FND) domain includes ontologies that define general purpose concepts required to support other FIBO domains. These include concepts and relationships about people, organizations, places, and most importantly, contracts that are essential to many aspects of financial services.
+
+The scope of the definitions provided in FND is limited to coverage of exactly those concepts needed by other FIBO domain areas. They may be useful for other domains, such as insurance, but are intentionally underspecified to avoid unintended consequences and thus do not provide exhaustive coverage for any concept contained herein. However, Foundations is designed for growth over time. The expectation is that as additional foundational knowledge is needed to define concepts in other FIBO domain areas, additional ontologies and/or concepts will be integrated into Foundations.""" ;
+    dcterms:creator "https://wiki.edmcouncil.org/display/FND/FIBO+-+FCT+-+Foundations+Home"^^xsd:anyURI ;
+    dcterms:hasPart fibo-fnd-acc-mod:AccountingModule,
+        fibo-fnd-aap-mod:AgentsAndPeopleModule,
+        fibo-fnd-agr-mod:AgreementsModule,
+        fibo-fnd-arr-mod:ArrangementsModule,
+        fibo-fnd-dt-mod:DatesAndTimesModule,
+        fibo-fnd-gao-mod:GoalsAndObjectivesModule,
+        fibo-fnd-law-mod:LawModule,
+        fibo-fnd-org-mod:OrganizationsModule,
+        fibo-fnd-oac-mod:OwnershipAndControlModule,
+        fibo-fnd-pty-mod:PartiesModule,
+        fibo-fnd-plc-mod:PlacesModule,
+        fibo-fnd-pas-mod:ProductsAndServicesModule,
+        fibo-fnd-rel-mod:RelationsModule,
+        fibo-fnd-txn-mod:TransactionsExtModule,
+        fibo-fnd-utl-mod:UtilitiesModule ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2026 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    dcterms:title "FIBO FND Domain",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Domain" ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    skos:altLabel "Foundations (FND)" ;
+    cmns-av:copyright "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2013-2026 Object Management Group" .
+

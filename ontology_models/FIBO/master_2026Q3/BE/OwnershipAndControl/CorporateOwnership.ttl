@@ -1,0 +1,180 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-oac-cown: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateOwnership/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-oac-cown: a owl:Ontology ;
+    rdfs:label "Corporate Ownership Ontology",
+        "公司所有权本体（Corporate Ownership Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts relating to corporation-specific ownership. Roles are defined in terms of the ownership enjoyed by the party, and are the specific examples of these concepts as they apply to companies incorporated by the issuance of shares." ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义公司层面的所有权关系：股东、股份持有与受益所有权。"@zh ;
+    owl:imports <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/>,
+        fibo-be-le-lp:,
+        fibo-be-oac-opty:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-ra:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20260701/OwnershipAndControl/CorporateOwnership/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20131101/OwnershipAndControl/CorporateOwnership.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20160201/OwnershipAndControl/CorporateOwnership.rdf version of this ontology was modified per the FIBO 2.0 RFC to reference shareholders' equity in the definition of a shareholder.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/OwnershipAndControl/CorporateOwnership.rdf version of this ontology was modified to generalize the definition of beneficial owner rather than limiting it to shareholding and eliminate a duplicate restriction on shareholder.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190201/OwnershipAndControl/CorporateOwnership.rdf version of this ontology was modified to modify the inheritance hierarchy for beneficial owner to replace owner with controlling party as one of its parent classes.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200601/OwnershipAndControl/CorporateOwnership.rdf version of this ontology was modified to replace isEquityHeldBy with its parent, isHeldBy, eliminate redundant classes that were not used anywhere, and clean up a few definitions to be less ambiguous, not circular, and to conform with ISO 704.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200901/OwnershipAndControl/CorporateOwnership.rdf version of this ontology was revised to simplify the contract party hierarchy and add concepts related to beneficial ownership.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20201201/OwnershipAndControl/CorporateOwnership.rdf version of this ontology was revised to eliminate references to external dictionary sites that no longer resolve.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210101/OwnershipAndControl/CorporateOwnership.rdf version of this ontology was revised to incorporate the latest insights into how control relations should integrate with the control situation.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210401/OwnershipAndControl/CorporateOwnership.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/OwnershipAndControl/CorporateOwnership.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20240101/OwnershipAndControl/CorporateOwnership.rdf version of the ontology was modified to align the concept of beneficial ownership with the broader ownership pattern (SEC-202).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250701/OwnershipAndControl/CorporateOwnership.rdf version of the ontology was modified to clarify the differences between a shareholding, purchase lot, and tax lot (SEC-200).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250801/OwnershipAndControl/CorporateOwnership.rdf version of the ontology was modified to eliminate unused references (FND-411) and to reflect migration of concepts from accounting equity to ownership in FND (FND-409)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-be-oac-cown:BeneficialOwnership a owl:Class ;
+    rdfs:label "beneficial ownership",
+        "受益所有权（beneficial ownership）"@zh ;
+    rdfs:comment "将享有所有权利益（如获得收入）的参与方与名义所有权可能在他人名下之事物相关联的情形。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( cmns-ra:RegistrationAuthority cmns-ra:Registrar ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:hasOwningParty ;
+            owl:someValuesFrom fibo-be-oac-cown:BeneficialOwner ],
+        fibo-fnd-oac-own:Ownership ;
+    skos:definition "situation linking party that enjoys the benefits of ownership (such as receipt of income) of something even though its ownership (title) may be in the name of another party (called a nominee or registered owner) to the asset that they own" ;
+    cmns-av:explanatoryNote "Beneficial ownership may be shared among a group of individuals. If a beneficial owner acquires a position of more than 5 percent in the United States, it must file Schedule 13D or 13G under Section 12 of the Securities Exchange Act of 1934." .
+
+fibo-be-oac-cown:PurchaseLot a owl:Class ;
+    rdfs:label "purchase lot",
+        "购入批（purchase lot）"@zh ;
+    rdfs:comment "在给定日期以特定价格一次性买入的一批证券或其他金融资产。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-be-oac-cown:consistsOfNumberOfUnits ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-oac-own:FinancialAsset ;
+    skos:definition "financial asset that is a block of securities or other financial assets bought in one transaction on a given date at a specific price" ;
+    skos:example "Buying 100 shares of Apple on Jan 10 at $150/share is one purchase lot; buying 50 more shares on Mar 15 at $160/share is another purchase lot." ;
+    cmns-av:explanatoryNote "Purchase lot is typically used as a trading term by brokers and portfolio managers to describe how holdings are grouped." .
+
+fibo-be-oac-cown:Shareholder a owl:Class ;
+    rdfs:label "shareholder",
+        "股东（shareholder）"@zh ;
+    rdfs:comment "拥有某资产股份、并以投资换取相应权利与责任的参与方。"@zh ;
+    rdfs:subClassOf fibo-be-oac-opty:ConstitutionalOwner,
+        fibo-fnd-agr-ctr:Counterparty ;
+    skos:definition "party that owns shares in and has rights and responsibilities with respect to some asset, provided in exchange for investment" ;
+    cmns-av:explanatoryNote "The shares represent an ownership interest in a corporation, mutual fund, or partnership, or a unit of ownership in a structured product, such as a real estate investment trust." ;
+    cmns-av:synonym "stockholder"@en-US .
+
+fibo-be-oac-cown:Shareholding a owl:Class ;
+    rdfs:label "shareholding",
+        "持股（shareholding）"@zh ;
+    rdfs:comment "以赋予财务权利和治理特权的股份所代表的对公司股权的所有权权益。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-be-oac-cown:consistsOfNumberOfUnits ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-oac-own:FinancialAsset ;
+    skos:definition "ownership interest in the equity of a company, represented by shares that confer financial rights and governance privileges" ;
+    cmns-av:explanatoryNote "Shareholding refers to the total ownership a party has in some organization, and determines voting power, dividend entitlement, and exposure to risk." .
+
+fibo-be-oac-cown:TaxLot a owl:Class ;
+    rdfs:label "tax lot",
+        "税务批（tax lot）"@zh ;
+    rdfs:comment "为税务申报目的具有独立成本基础的一批证券或其他金融资产。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-be-oac-cown:consistsOfNumberOfUnits ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-oac-own:FinancialAsset ;
+    skos:definition "financial asset that is a block of securities or other financial assets with a distinct cost basis for tax reporting purposes" ;
+    cmns-av:explanatoryNote """Tax lots reflect how shares or other assets are tracked for capital gains and may be adjusted by events including:
+- reinvested dividends (creates very small, new tax lots);
+- stock splits or mergers (adjusts basis, may create fractional lots);
+- Wash sale rules (can change which lots are recognized).
+When an investor sells, they select which tax lot to sell (specific ID, FIFO, etc.), which determines realized gain or loss.""" .
+
+fibo-be-oac-cown:hasBeneficialOwner a owl:ObjectProperty ;
+    rdfs:label "has beneficial owner",
+        "具有受益所有人（has beneficial owner）"@zh ;
+    rdfs:comment "标识在受益所有权情形中保留其所拥资产之权利的参与方。"@zh ;
+    rdfs:domain fibo-fnd-oac-own:Asset ;
+    rdfs:range fibo-be-oac-cown:BeneficialOwner ;
+    rdfs:subPropertyOf fibo-fnd-oac-own:isAssetOf ;
+    skos:definition "indicates the party that retains rights in the asset they own in a beneficial ownership situation" .
+
+fibo-be-oac-cown:isBeneficialOwnerOf a owl:ObjectProperty ;
+    rdfs:label "is beneficial owner of",
+        "是……的受益所有人（is beneficial owner of）"@zh ;
+    rdfs:comment "标识受益所有人在受益所有权情形中持有权利（通常为表决权、管理权等）的资产。"@zh ;
+    rdfs:domain fibo-be-oac-cown:BeneficialOwner ;
+    rdfs:range fibo-fnd-oac-own:Asset ;
+    rdfs:subPropertyOf fibo-fnd-oac-own:ownsAsset ;
+    owl:inverseOf fibo-be-oac-cown:hasBeneficialOwner ;
+    skos:definition "indicates an asset in which the beneficial owner holds rights (typically voting rights, management rights, etc.) in a beneficial ownership situation" .
+
+fibo-be-oac-cown:BeneficialOwner a owl:Class ;
+    rdfs:label "beneficial owner",
+        "受益所有人（beneficial owner）"@zh ;
+    rdfs:comment "即使某物的所有权（名义）可能登记在他人名下，仍享有其所有权利益（如获得收入）的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-cown:isBeneficialOwnerOf ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-oac-own:Owner ;
+    skos:definition "party that enjoys the benefits of ownership (such as receipt of income) of something even though its ownership (title) may be in the name of another party (called a nominee or registered owner)" ;
+    cmns-av:adaptedFrom "https://en.wikipedia.org/wiki/Beneficial_ownership#Financial_Action_Task_Force_on_Money_Laundering_(FATF)"^^xsd:anyURI,
+        "https://www.fincen.gov/resources/statutes-regulations/guidance/guidance-obtaining-and-retaining-beneficial-ownership"^^xsd:anyURI,
+        "https://www.ncua.gov/regulation-supervision/letters-credit-unions-other-guidance/beneficial-ownership-requirements-legal-entity-customers-overview"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "From World Bank Report: In identifying the beneficial owner, the focus should be on two factors: the control exercised and the benefit derived. Control of a corporate vehicle will always depend on context, as control can be exercised in many different ways, including through ownership, contractually or informally.",
+        "The Financial Action Task Force on Money Laundering (FATF) refers to a 'beneficial owner' as the natural person(s) who ultimately owns or controls a legal entity and/or the natural person on whose behalf a transaction is being conducted. It also includes those persons who exercise ultimate effective control over a legal person or arrangement.",
+        "The National Credit Union Administration (NCUA) defines a 'beneficial owner' as (1) a single individual with significant responsibility to control, manage or direct a legal entity customer, or (2) each individual, if any, who, directly or indirectly, through any contract, arrangement, understanding, relationship or otherwise, owns 25 percent or more of the equity interests of a legal entity customer; if a trust owns directly or indirectly, through any contract, arrangement, understanding, relationship or otherwise, 25 percent or more of the equity interests of a legal entity customer, the beneficial owner is the trustee.",
+        "Use of a nominee (who may be an agent, custodian, or a trustee) does not change the position regarding tax reporting and tax liability, and the beneficial owner remains responsible." .
+
+fibo-be-oac-cown:consistsOfNumberOfUnits a owl:DatatypeProperty ;
+    rdfs:label "consists of number of units"@en,
+        "由……单位组成（consists of number of units）"@zh ;
+    rdfs:comment "标识……的单位数量。"@zh ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "indicates the number of units of"@en ;
+    cmns-av:explanatoryNote "This property indicates the number of units (e.g., shares, fund units) of the asset held in a shareholding or position, for example." .
+

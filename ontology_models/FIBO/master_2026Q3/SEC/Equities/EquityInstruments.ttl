@@ -1,0 +1,1092 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-oac-cown: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateOwnership/> .
+@prefix fibo-be-ptr-ptr: <https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ir-ir: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/InterestRates/> .
+@prefix fibo-sec-eq-eq: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-eq-eq: a owl:Ontology ;
+    rdfs:label "Equity Instruments Ontology"@en,
+        "股权工具本体（Equity Instruments Ontology）"@zh ;
+    dcterms:abstract "Core terms are those fundamental to all equity instruments. This ontology also distinguishes between privately held and publicly traded equity instruments, and defines a number of related concepts, such as voting rights." ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义股票等股权工具：普通股、优先股及其附带的权利。"@zh ;
+    owl:imports fibo-be-le-cb:,
+        fibo-be-le-lp:,
+        fibo-be-oac-cown:,
+        fibo-be-ptr-ptr:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fi-ip:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-agr:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ir-ir:,
+        fibo-sec-sec-iss:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-qtu:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20260701/Equities/EquityInstruments/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/SEC/20180801/Equities/EquityInstruments.rdf version of this ontology was revised to replace 'publicly-traded share' with 'exchange-specific share', which is the more commonly used designation and corresponds better with the intended semantics of this concept, to merge in concepts that were formerly in a separate ShareTerms ontology, and eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190901/Equities/EquityInstruments.rdf version of this ontology was revised to refine the definition of listed share, update definitions to remove leading articles, add missing properties and restrictions, revise the definition of dividend.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20191201/Equities/EquityInstruments.rdf version of this ontology was revised to refine the definition of share to include a restriction for hasSharesOutstanding, eliminate duplication of concepts in LCC, and add the concept of an equity issuer.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200301/Equities/EquityInstruments.rdf version of this ontology was revised to incorporate additional features required to map the CFI classification scheme to equity instruments, including features specific to preferred shares.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200801/Equities/EquityInstruments.rdf version of this ontology was revised to incorporate a property allowing representation of the share class, streamline the representation of voting rights and payment form, clean up ambiguous definitions, and eliminate redundant restrictions related to security form.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20201201/Equities/EquityInstruments.rdf version of this ontology was revised to add concepts covering additional features of preferred shares, move the two exhaustive CFI-specific classes to the Equity CFI individuals ontology, rename EquityIssuer to ShareIssuer to be clearer about the intent, and add the concept of a price per share.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210301/Equities/EquityInstruments.rdf version of this ontology was revised to rename ownership related properties for consistent alignment with the ownership situational pattern and to move properties / restrictions that define how many shares have been issued from the issuer to the share.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210601/Equities/EquityInstruments.rdf version of this ontology was revised to revise the definition of dividend to explicitly state that it reflects the announced commitment of a specific dividend rather than a more general policy.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210701/Equities/EquityInstruments.rdf version of this ontology was revised to reflect the move of hasMaturityDate from FinancialInstruments to Debt in FBC and eliminate named individuals for specifying voting rights, which caused issues for some tools.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20220101/Equities/EquityInstruments.rdf version of this ontology was revised to deprecate the notion of a securities restriction specific to a limited partnership fund unit, which required import of unnecessary content and would not be used in practice.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20220301/Equities/EquityInstruments.rdf version of this ontology was revised to clean up deprecated elements, most of which had been in the ontology for awhile.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20220501/Equities/EquityInstruments.rdf version of this ontology was revised to address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20220801/Equities/EquityInstruments.rdf version of this ontology was revised to add the notion of a VIE share and integrate dividend distribution method with strategy.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20221001/Equities/EquityInstruments.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Equities/EquityInstruments.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230301/Equities/EquityInstruments.rdf version of this ontology was modified to clarify a restriction on perpetual preferred share, add extendible preferred share, and add the CFI definition for limited partnership unit.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230601/Equities/EquityInstruments.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20231201/Equities/EquityInstruments.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380) and to clean up details related to regular schedules (FBC-317).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240301/Equities/EquityInstruments.rdf version of the ontology was modified to add a link to the formula used to calculate an adjustable rate dividend and loosen some constraints to make the ontology more useful in cases where one could have information about a preferred share, such as having an adjustable rate dividend, but not necessarily having the details (SEC-138).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240401/Equities/EquityInstruments.rdf version of the ontology was modified to add a property for the number of available shares, required for MiFID reporting (SEC-97).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240701/Equities/EquityInstruments.rdf version of the ontology was modified to reconcile shareholding with equity position (BE-254), and make other small changes such as renaming has floating shares to has floating stock (SEC-200).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20250901/Equities/EquityInstruments.rdf version of the ontology was modified to merge details from the old corporations ontology into corporate bodies for consistency and useability (BE-259).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20251001/Equities/EquityInstruments.rdf version of the ontology was modified to clean up older deprecations (FND-399).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20251201/Equities/EquityInstruments.rdf version of the ontology was modified to reflect migration of concepts from accounting equity to ownership in FND (FND-409)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-sec-eq-eq:ConvertibleCommonShare a owl:Class ;
+    rdfs:label "convertible common share",
+        "可转换普通股（convertible common share）"@zh ;
+    rdfs:comment "可转换为另一证券的普通股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:CommonShare,
+        fibo-sec-sec-iss:ConvertibleSecurity ;
+    skos:definition "common share that is convertible into another security" .
+
+fibo-sec-eq-eq:ConvertiblePreferredShare a owl:Class ;
+    rdfs:label "convertible preferred share",
+        "可转换优先股（convertible preferred share）"@zh ;
+    rdfs:comment "包含持有人可在预定日期后将股份转换为固定数量普通股之选择权的优先股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:PreferredShare,
+        fibo-sec-sec-iss:ConvertibleSecurity ;
+    skos:definition "preferred share that includes an option for the holder to convert the shares into a fixed number of common shares after a predetermined date" ;
+    cmns-av:explanatoryNote "Most convertible preferred stock is exchanged at the request of the shareholder, but sometimes there is a provision that allows the company, or issuer, to force conversion. The value of a convertible preferred stock is ultimately based on the performance of the common stock." .
+
+fibo-sec-eq-eq:DistributionByCashPayment a owl:NamedIndividual,
+        fibo-sec-eq-eq:DividendDistributionMethod ;
+    rdfs:label "distribution by payment" ;
+    skos:definition "distribution method involving payment of cash to the shareholder" .
+
+fibo-sec-eq-eq:DistributionByReinvestment a owl:NamedIndividual,
+        fibo-sec-eq-eq:DividendDistributionMethod ;
+    rdfs:label "distribution by reinvestment" ;
+    skos:definition "distribution method involving automatic reinvestment of shareholders' dividends in additional, potentially fractional, shares in the same asset" .
+
+fibo-sec-eq-eq:EnhancedVotingShare a owl:Class ;
+    rdfs:label "enhanced voting share"@en,
+        "增强表决权股（enhanced voting share）"@zh ;
+    rdfs:comment "每股享有超过一票表决权的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ;
+            owl:someValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:decimal ;
+                    owl:withRestrictions ( [ xsd:minExclusive 1.0 ] ) ] ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share that confers more than one vote per share"@en .
+
+fibo-sec-eq-eq:EquityPosition a owl:Class ;
+    rdfs:label "equity position"@en,
+        "股票头寸（equity position）"@zh ;
+    rdfs:comment "在权益工具中的头寸。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-oac-cown:Shareholder ;
+            owl:onProperty fibo-fnd-oac-own:hasOwningParty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
+            owl:someValuesFrom fibo-be-oac-cown:Shareholding ],
+        [ a owl:Restriction ;
+            owl:onClass [ a owl:Class ;
+                    owl:unionOf ( fibo-be-oac-cown:Shareholder fibo-sec-eq-eq:Custodian ) ] ;
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-pas-fpas:Position ;
+    skos:definition "position in an equity instrument"@en .
+
+fibo-sec-eq-eq:ExchangeablePreferredShare a owl:Class ;
+    rdfs:label "exchangeable preferred share",
+        "可交换优先股（exchangeable preferred share）"@zh ;
+    rdfs:comment "可交换为另一发行人证券的优先股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "preferred share that may be exchanged for a security of another issuer" .
+
+fibo-sec-eq-eq:ExtendablePreferredShare a owl:Class ;
+    rdfs:label "extendable preferred share",
+        "可展期优先股（extendable preferred share）"@zh ;
+    rdfs:comment "赎回日可由发行人或持有人选择延长的优先股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "preferred share whose redemption date can be extended at the issuer or holder option" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en ;
+    cmns-av:explanatoryNote "An extendable preferred share may be redeemed at the option of the issuer and/or of the shareholder with an extendable redemption (meturity) date." ;
+    cmns-av:synonym "extendible preferred share" .
+
+fibo-sec-eq-eq:FullyPaidShare a owl:Class ;
+    rdfs:label "fully paid share"@en,
+        "缴足股（fully paid share）"@zh ;
+    rdfs:comment "付款状态表明股东无需就股份价值再向公司缴付任何款项的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-eq-eq:FullyPaidShareStatus ;
+            owl:onProperty fibo-sec-eq-eq:hasSharePaymentStatus ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share whose payment status indicates that no additional money is owed to the company by shareholders on the value of the shares"@en .
+
+fibo-sec-eq-eq:HardRetractablePreferredShare a owl:Class ;
+    rdfs:label "hard retractable preferred share",
+        "硬回售优先股（hard retractable preferred share）"@zh ;
+    rdfs:comment "回售价值必须以现金支付的可回售优先股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:RetractablePreferredShare ;
+    owl:disjointWith fibo-sec-eq-eq:SoftRetractablePreferredShare ;
+    skos:definition "retractable preferred share whose retraction value must be paid in cash" .
+
+fibo-sec-eq-eq:LimitedPartnershipUnit a owl:Class ;
+    rdfs:label "limited partnership unit"@en,
+        "有限合伙份额（limited partnership unit）"@zh ;
+    rdfs:comment "有限合伙中的份额：除一名或多名普通合伙人（GP）外，还有一名或多名承担有限责任的有限合伙人（LP）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-be-ptr-ptr:LimitedPartnership ] ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share in a form of partnership similar to a general partnership, except that in addition to one or more general partners (GPs), there are one or more limited partners (LPs)"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en ;
+    cmns-av:explanatoryNote "Like shareholders in a corporation, the LPs have limited liability, i.e., they are only liable on debts incurred by the firm to the extent of their registered investment and they have no management authority. The GPs pay the LPs the equivalent of a dividend on their investment, the nature and extent of which is usually defined in the partnership agreement."@en .
+
+fibo-sec-eq-eq:NilPaidShare a owl:Class ;
+    rdfs:label "nil paid share"@en,
+        "未缴股款股份（nil paid share）"@zh ;
+    rdfs:comment "付款状态表明公司尚未收到股份任何市值款项的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-eq-eq:NilPaidShareStatus ;
+            owl:onProperty fibo-sec-eq-eq:hasSharePaymentStatus ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share whose payment status indicates that none of the market value has been received by the company for the shares"@en .
+
+fibo-sec-eq-eq:NonCumulativePreferredShare a owl:Class ;
+    rdfs:label "non-cumulative preferred share",
+        "非累积优先股（non-cumulative preferred share）"@zh ;
+    rdfs:comment "股息不予递延的优先股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:PreferredShare ;
+    owl:disjointWith fibo-sec-eq-eq:CumulativePreferredShare ;
+    skos:definition "preferred share whose dividend payments are not carried forward" .
+
+fibo-sec-eq-eq:NonParticipatingPreferredShare a owl:Class ;
+    rdfs:label "non-participating preferred share",
+        "非参与优先股（non-participating preferred share）"@zh ;
+    rdfs:comment "不属于参与优先股的优先股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:PreferredShare ;
+    owl:disjointWith fibo-sec-eq-eq:ParticipatingPreferredShare ;
+    skos:definition "preferred share that is not a participating preferred share" .
+
+fibo-sec-eq-eq:NonVotingShare a owl:Class ;
+    rdfs:label "non-voting share"@en,
+        "无表决权股（non-voting share）"@zh ;
+    rdfs:comment "不享有表决权的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 0.0 ;
+            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share that has no voting right"@en .
+
+fibo-sec-eq-eq:PartiallyPaidShare a owl:Class ;
+    rdfs:label "partially paid share"@en,
+        "部分缴足股（partially paid share）"@zh ;
+    rdfs:comment "付款状态表明公司仅收到股份部分市值款项的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-eq-eq:PartiallyPaidShareStatus ;
+            owl:onProperty fibo-sec-eq-eq:hasSharePaymentStatus ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share whose payment status indicates that only a portion of the market value has been received by the company for the shares"@en .
+
+fibo-sec-eq-eq:PerpetualPreferredShare a owl:Class ;
+    rdfs:label "perpetual preferred share",
+        "永续优先股（perpetual preferred share）"@zh ;
+    rdfs:comment "无固定到期日的优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fbc-dae-dbt:hasMaturityDate ],
+        fibo-sec-eq-eq:PreferredShare ;
+    owl:disjointWith fibo-sec-eq-eq:PreferredShareWithFixedMaturityDate ;
+    skos:definition "preferred share that has no fixed maturity date" .
+
+fibo-sec-eq-eq:PrecedenceRight a owl:Class ;
+    rdfs:label "precedence right",
+        "优先受偿权（precedence right）"@zh ;
+    rdfs:comment "使股东就特定预定股息支付优先于其他股东、并在公司清算时先行受偿的权利。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:ContractualRight ;
+    skos:definition "right that give the shareholder higher priority with respect to certain pre-defined dividend payments over other shareholders and that pay out first in the case of liquidation" .
+
+fibo-sec-eq-eq:PreferredShareWithAdjustableRateDividend a owl:Class ;
+    rdfs:label "preferred share with adjustable rate dividend",
+        "可调整利率股息优先股（preferred share with adjustable rate dividend）"@zh ;
+    rdfs:comment "股息率随某一基准利率变动的优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:AdjustableRateDividend ;
+            owl:onProperty fibo-sec-eq-eq:hasDividend ],
+        fibo-sec-eq-eq:PreferredShare ;
+    owl:disjointWith fibo-sec-eq-eq:PreferredShareWithFixedRateDividend ;
+    skos:definition "preferred share whose dividend rate varies according to some benchmark" .
+
+fibo-sec-eq-eq:PreferredShareWithAuctionRateDividend a owl:Class ;
+    rdfs:label "preferred share with auction rate dividend",
+        "拍卖利率股息优先股（preferred share with auction rate dividend）"@zh ;
+    rdfs:comment "股息率通过拍卖（如荷兰式拍卖）定期重置的优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:AuctionRateDividend ;
+            owl:onProperty fibo-sec-eq-eq:hasDividend ],
+        fibo-sec-eq-eq:PreferredShare ;
+    owl:disjointWith fibo-sec-eq-eq:PreferredShareWithFixedRateDividend ;
+    skos:definition "preferred share whose dividend rate is periodically reset through an auction, such as a Dutch auction" .
+
+fibo-sec-eq-eq:PricePerShare a owl:Class ;
+    rdfs:label "price per share",
+        "每股价格（price per share）"@zh ;
+    rdfs:comment "某一证券在某一时点的单股价格。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-acc-cur:isPriceFor ;
+            owl:someValuesFrom fibo-sec-eq-eq:Share ],
+        fibo-fbc-fi-ip:SecurityPrice,
+        fibo-fnd-acc-cur:UnitPrice ;
+    skos:definition "price for one share of a given security at some point in time" ;
+    cmns-av:abbreviation "PPS" ;
+    cmns-av:synonym "share price" .
+
+fibo-sec-eq-eq:PrivatelyHeldShare a owl:Class ;
+    rdfs:label "privately held share"@en,
+        "私人持有股份（privately held share）"@zh ;
+    rdfs:comment "代表对非公开交易实体之所有权的股份。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:Share ;
+    owl:disjointWith fibo-sec-eq-eq:ListedShare ;
+    skos:definition "share in a security that signifies ownership in an entity that is not publicly traded"@en ;
+    cmns-av:explanatoryNote "Privately owned companies include family-owned businesses, sole proprietorships and the vast majority of small and medium-sized businesses. These companies are often too small for an initial public offering (IPO) due, for example to a small market capitalization and/or low trading volume, and fulfill their financing requirements in other ways, including through smaller offerings." .
+
+fibo-sec-eq-eq:QualifiedDividend a owl:Class ;
+    rdfs:label "qualified dividend",
+        "合资格股息（qualified dividend）"@zh ;
+    rdfs:comment "适用低于普通（不合资格）股息所得税率的资本利得税率的股息。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:Dividend ;
+    skos:definition "dividend that falls under capital gains tax rates that are lower than the income tax rates on unqualified (ordinary) dividends" .
+
+fibo-sec-eq-eq:RedeemablePreferredShareWithExtendableMaturityDate a owl:Class ;
+    rdfs:label "redeemable preferred share with extendable maturity date",
+        "到期日可延长的可赎回优先股（redeemable preferred share with extendable maturity date）"@zh ;
+    rdfs:comment "有固定到期日、且发行人可选择延长到期日的可赎回优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-sec-eq-eq:hasExtendableMaturityDate ],
+        fibo-sec-eq-eq:PreferredShareWithFixedMaturityDate,
+        fibo-sec-eq-eq:RedeemablePreferredShare ;
+    skos:definition "redeemable preferred share with a fixed maturity date whose issuer has the option to extend the maturity date" .
+
+fibo-sec-eq-eq:RedeemablePreferredShareWithExtendableRedemptionDate a owl:Class ;
+    rdfs:label "redeemable preferred share with extendable redemption date",
+        "赎回日可延长的可赎回优先股（redeemable preferred share with extendable redemption date）"@zh ;
+    rdfs:comment "赎回日可以修改的可赎回优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasExtensionProvision ;
+            owl:someValuesFrom fibo-sec-eq-eq:EquityRedemptionProvisionWithExtendableRedemptionDate ],
+        fibo-sec-eq-eq:RedeemablePreferredShare ;
+    skos:definition "redeemable preferred share whose redemption date can be modified" ;
+    cmns-av:synonym "extendible preferred share" .
+
+fibo-sec-eq-eq:RestrictedShare a owl:Class ;
+    rdfs:label "restricted share"@en,
+        "受限股份（restricted share）"@zh ;
+    rdfs:comment "其所有权/转让/出售受特殊条件（包括特定国家限制）约束的股份。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:Share ;
+    owl:disjointWith fibo-sec-eq-eq:UnrestrictedShare ;
+    skos:definition "share whose ownership/transfer/sale is subject to special conditions including country-specific restrictions"@en .
+
+fibo-sec-eq-eq:RestrictedVotingShare a owl:Class ;
+    rdfs:label "restricted voting share"@en,
+        "受限表决权股（restricted voting share）"@zh ;
+    rdfs:comment "每股享有不足一票表决权的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ;
+            owl:someValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:decimal ;
+                    owl:withRestrictions ( [ xsd:maxExclusive 1.0 ] ) ] ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share that confers less than one vote per share"@en .
+
+fibo-sec-eq-eq:RetractablePreferredShareWithExtendableMaturityDate a owl:Class ;
+    rdfs:label "retractable preferred share with extendable maturity date",
+        "到期日可延长的可回售优先股（retractable preferred share with extendable maturity date）"@zh ;
+    rdfs:comment "有固定到期日、且发行人和/或持有人可选择延长到期日的可回售优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-sec-eq-eq:hasExtendableMaturityDate ],
+        [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-sec-eq-eq:hasExtendableMaturityDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasExtensionProvision ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:ExtensionProvision ],
+        fibo-sec-eq-eq:PreferredShareWithFixedMaturityDate,
+        fibo-sec-eq-eq:RetractablePreferredShare ;
+    skos:definition "retractable preferred share with a fixed maturity date whose issuer and/or holders have the option to extend the maturity date" .
+
+fibo-sec-eq-eq:RetractablePreferredShareWithExtendableRedemptionDate a owl:Class ;
+    rdfs:label "retractable preferred share with extendable redemption date",
+        "赎回日可延长的可回售优先股（retractable preferred share with extendable redemption date）"@zh ;
+    rdfs:comment "赎回日可以修改的可回售优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasExtensionProvision ;
+            owl:someValuesFrom fibo-sec-eq-eq:EquityRedemptionProvisionWithExtendableRedemptionDate ],
+        fibo-sec-eq-eq:RetractablePreferredShare ;
+    skos:definition "retractable preferred share whose redemption date can be modified" ;
+    cmns-av:synonym "extendible preferred share" .
+
+fibo-sec-eq-eq:ShareIssuer a owl:Class ;
+    rdfs:label "share issuer",
+        "股份发行人（share issuer）"@zh ;
+    rdfs:comment "发行代表对某事物所有权权益之证券的发行人。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:issues ;
+            owl:someValuesFrom fibo-sec-eq-eq:Share ],
+        fibo-fbc-fi-fi:Issuer ;
+    skos:definition "issuer of securities that represent an ownership interest in something" ;
+    cmns-av:explanatoryNote "This includes shares that represent equity ownership in a corporation, or ownership in a mutual fund, or an interest in a general or limited partnership, or ownership in a structured product, such as a real estate investment trust." .
+
+fibo-sec-eq-eq:ShareYield a owl:Class ;
+    rdfs:label "share yield"@en,
+        "股息率（share yield）"@zh ;
+    rdfs:comment "每股年化股息除以每股（当前）价格的比率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-sec-eq-eq:OrdinaryDividend fibo-fbc-fi-ip:SecurityPrice ) ] ],
+        fibo-fbc-fi-ip:Yield ;
+    skos:definition "ratio of the annualized dividend per share divided by the (current) price per share"@en ;
+    cmns-av:synonym "dividend yield"@en,
+        "dividend-price ratio"@en .
+
+fibo-sec-eq-eq:SingleVotingShare a owl:Class ;
+    rdfs:label "single voting share"@en,
+        "单一表决权股（single voting share）"@zh ;
+    rdfs:comment "每股享有一票表决权的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue 1.0 ;
+            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share that has the right to exactly one vote"@en .
+
+fibo-sec-eq-eq:SpecialDividend a owl:Class ;
+    rdfs:label "special dividend",
+        "特别股息（special dividend）"@zh ;
+    rdfs:comment "一次性向股东支付的股息。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:Dividend ;
+    skos:definition "dividend that is paid to shareholders on a one-time basis" ;
+    cmns-av:usageNote "Special dividends may be included in a dividend schedule as an ad-hoc entry, since they still need to be tracked based on the date of issuance."@en .
+
+fibo-sec-eq-eq:VariableInterestEntityShare a owl:Class ;
+    rdfs:label "variable interest entity share"@en-US,
+        "可变利益实体份额（VariableInterestEntityShare）"@zh ;
+    rdfs:comment "证明持有对公司一定比例利润之合同权利所有权的份额。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-be-le-lp:VariableInterestEntity ] ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share that certifies ownership of a contractual right to a percentage of a company's profits" ;
+    cmns-av:explanatoryNote "Unlike a traditional stock certificate, the VIE share provides a legal proprietary interest in a completely separate company's assets, sometimes referred to as a shell company. The contractual right certified by the VIE share is derived from a contract between (1) the company named on the VIE share and (2) the shell company. In other words, VIE shareholders only have a traditional stock certificate in the completely separate shell company, which is entitled to a percentage of the named company's profits via a private contract." ;
+    cmns-av:synonym "VIE share"@en-GB .
+
+fibo-sec-eq-eq:VotingRight a owl:Class ;
+    rdfs:label "voting right",
+        "表决权（voting right）"@zh ;
+    rdfs:comment "规定股东表决权利（如选举董事、选举外部审计师、就公司事项表决）的合同权利。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:WrittenContract ],
+        fibo-fnd-law-lcap:ContractualRight ;
+    skos:definition "contractual right that specifies shareholder voting entitlements, such as to elect directors, elect outside auditors, and vote on matters of corporate policy" ;
+    cmns-av:explanatoryNote "Voting may involve decisions on issuing securities, initiating stock splits, and making substantial changes in the corporation's operations. Note that a given share may not have voting rights, in which case the number of votes per share would be zero." .
+
+fibo-sec-eq-eq:hasDividendDeclarationDate a owl:ObjectProperty ;
+    rdfs:label "has declaration date",
+        "具有宣派日（has declaration date）"@zh ;
+    rdfs:comment "指明机构宣布预期支付股息的日期，包括股息金额、除息日等信息。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Share ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate ;
+    skos:definition "indicates a date on which an organization states that a dividend payment may be anticipated, including the the dividend amount and the ex-dividend and payment dates" ;
+    cmns-av:synonym "has announcement date" .
+
+fibo-sec-eq-eq:hasExDividendDate a owl:ObjectProperty ;
+    rdfs:label "has ex-dividend date",
+        "具有除息日（has ex-dividend date）"@zh ;
+    rdfs:comment "指明股票「除息」的日期，通常在向登记股东支付股息前约三周。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Share ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate ;
+    skos:definition "indicates a date on which a stock 'goes ex-dividend', typically about three weeks before the dividend is paid to shareholders of record" ;
+    cmns-av:adaptedFrom "https://www.investor.gov/introduction-investing/investing-basics/glossary/ex-dividend-dates-when-are-you-entitled-stock-and"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Once the company sets the record date, the ex-dividend date is set based on stock exchange rules. If you purchase a stock on its ex-dividend date or after, you will not receive the next dividend payment.",
+        "Shares listed on the New York Stock Exchange go ex-dividend four business days prior to the record date." ;
+    cmns-av:synonym "has ex-date",
+        "has expected dividend date" .
+
+fibo-sec-eq-eq:hasRecordDate a owl:ObjectProperty ;
+    rdfs:label "has record date",
+        "具有股权登记日（has record date）"@zh ;
+    rdfs:comment "指明发行人核查某方是否在规定时点登记于公司股东名册的日期。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Share ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate ;
+    skos:definition "indicates the date on which the issuer checks to determine whether a party was on the company's books as a shareholder when required (i.e., they must have been on the books prior to the ex-dividend date), to identify who is eligible to receive the next dividend" ;
+    cmns-av:adaptedFrom "https://www.investor.gov/introduction-investing/investing-basics/glossary/ex-dividend-dates-when-are-you-entitled-stock-and"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Companies also use this date to determine who is sent proxy statements, financial reports, and other information." ;
+    cmns-av:synonym "has date of record" .
+
+fibo-be-oac-cown:Shareholding a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom fibo-sec-eq-eq:Share ] .
+
+fibo-sec-eq-eq:AdjustableRateDividend a owl:Class ;
+    rdfs:label "adjustable rate dividend",
+        "可调整利率股息（adjustable rate dividend）"@zh ;
+    rdfs:comment "随基准利率变动的股息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-ind-ir-ir:InterestRateBenchmark ;
+            owl:onProperty cmns-qtu:hasQuantityKind ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:hasAdjustableDividendRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:PercentageMonetaryAmount ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-qtu:describesActualExpression ],
+        fibo-sec-eq-eq:PreferredDividend ;
+    skos:definition "dividend that varies with a benchmark" ;
+    cmns-av:explanatoryNote "The value of the dividend from the preferred share is set by a predetermined formula to move with rates, and because of this flexibility preferred prices are often more stable then fixed-rate preferred stocks." .
+
+fibo-sec-eq-eq:AuctionRateDividend a owl:Class ;
+    rdfs:label "auction rate dividend",
+        "拍卖利率股息（auction rate dividend）"@zh ;
+    rdfs:comment "利率通过拍卖定期重置（通常每 7、14、28 或 35 天）的优先股股息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:hasAdjustableDividendRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:PercentageMonetaryAmount ],
+        fibo-sec-eq-eq:PreferredDividend ;
+    skos:definition "preferred share dividend whose rate is periodically reset through an auction, typically every 7, 14, 28, or 35 days" .
+
+fibo-sec-eq-eq:CumulativePreferredShare a owl:Class ;
+    rdfs:label "cumulative preferred share",
+        "累积优先股（cumulative preferred share）"@zh ;
+    rdfs:comment "股息如未按时支付则累积递延至日后支付的优先股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "preferred share whose dividends, if not paid on time, accumulate until paid out" ;
+    cmns-av:explanatoryNote "These dividends have precedence over ordinary dividends which cannot be paid until any cumulative dividend obligations have been paid. Dividends are typically deferred due to insufficient earnings or other business reasons." .
+
+fibo-sec-eq-eq:Custodian a owl:Class ;
+    rdfs:label "custodian",
+        "托管人（custodian）"@zh ;
+    rdfs:comment "为客户保管证券的金融机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:holds ;
+            owl:someValuesFrom fibo-sec-eq-eq:Share ],
+        fibo-fbc-fct-fse:FinancialInstitution,
+        fibo-fbc-pas-fpas:ThirdPartyAgent ;
+    skos:definition "financial institution that holds customers' securities for safekeeping"@en ;
+    cmns-av:adaptedFrom "https://www.investopedia.com/terms/c/custodian.asp"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The custodian may hold stocks or other assets in electronic or physical form for mutual funds, individuals, and organizational clients." .
+
+fibo-sec-eq-eq:DividendSchedule a owl:Class ;
+    rdfs:label "dividend schedule",
+        "股息支付计划表（dividend schedule）"@zh ;
+    rdfs:comment "指明股息到期应付日期的付款计划表。"@zh ;
+    rdfs:subClassOf fibo-fnd-dt-fd:RegularSchedule,
+        fibo-fnd-pas-psch:PaymentSchedule ;
+    skos:definition "payment schedule indicating the dates on which dividends are due to be paid" .
+
+fibo-sec-eq-eq:EquityConversionTerms a owl:Class ;
+    rdfs:label "equity conversion terms",
+        "股权转换条款（equity conversion terms）"@zh ;
+    rdfs:comment "规定股份转换为其他证券之细节的转换条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:specifiesConversionDate ;
+            owl:someValuesFrom cmns-dt:Date ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-sec-iss:specifiesConversionInto ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-sec-sec-iss:ConversionTerms ;
+    skos:definition "conversion terms specifying the details regarding conversion of shares into other securities" .
+
+fibo-sec-eq-eq:FixedRateDividend a owl:Class ;
+    rdfs:label "fixed rate dividend",
+        "固定利率股息（fixed rate dividend）"@zh ;
+    rdfs:comment "按股份名义价值（及任何溢价）提供固定年度回报的股息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:hasFixedDividendRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:PercentageMonetaryAmount ],
+        fibo-sec-eq-eq:PreferredDividend ;
+    skos:definition "dividend that provides a specified annual return on the nominal value (and any premium) paid on shares" ;
+    cmns-av:explanatoryNote "In other words, the return is not variable depending on whether or not the company makes a profit. Annual dividends are calculated as a percentage of the par value, which is the price of the preferred stock at the time it was issued. Most preferred shares have fixed rate dividends." .
+
+fibo-sec-eq-eq:ListedShare a owl:Class ;
+    rdfs:label "listed share"@en,
+        "上市股份（listed share）"@zh ;
+    rdfs:comment "在至少一个平台挂牌的股份。"@zh ;
+    rdfs:seeAlso <https://www.investopedia.com/terms/l/listedsecurity.asp> ;
+    rdfs:subClassOf fibo-sec-eq-eq:Share,
+        fibo-sec-sec-lst:ListedSecurity ;
+    skos:definition "share that is listed on at least one platform"@en ;
+    cmns-av:explanatoryNote "Listing requirements vary by exchange and include minimum stockholder's equity, a minimum share price and a minimum number of shareholders. Exchanges have listing requirements to ensure that only high quality securities are traded on them and to uphold the exchange's reputation among investors."@en .
+
+fibo-sec-eq-eq:NilPaidShareStatus a owl:NamedIndividual,
+        fibo-sec-eq-eq:SharePaymentStatus ;
+    rdfs:label "nil paid share status" ;
+    owl:differentFrom fibo-sec-eq-eq:FullyPaidShareStatus,
+        fibo-sec-eq-eq:PartiallyPaidShareStatus ;
+    skos:definition "status indicating that none of the market value has been received by the company for the shares" ;
+    skos:example "Unpaid shares may be issued, for example, for convenience by a start-up company." .
+
+fibo-sec-eq-eq:ParticipatingPreferredShare a owl:Class ;
+    rdfs:label "participating preferred share",
+        "参与优先股（participating preferred share）"@zh ;
+    rdfs:comment "除支付约定股息外，还赋予持有人与普通股股东分享额外收益之权利的优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:OrdinaryDividend ;
+            owl:onProperty fibo-sec-eq-eq:hasDividend ],
+        fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "preferred share that, in addition to paying a stipulated dividend, gives the holder the right to participate with common share holders in additional distributions of earnings under specified conditions" ;
+    cmns-av:explanatoryNote "Participating preferred shares are rare, typically only issued when needed to attract investors." .
+
+fibo-sec-eq-eq:SoftRetractablePreferredShare a owl:Class ;
+    rdfs:label "soft retractable preferred share",
+        "软回售优先股（soft retractable preferred share）"@zh ;
+    rdfs:comment "回售价值可由发行人选择以现金或等值发行人普通股支付的可回售优先股。"@zh ;
+    rdfs:subClassOf fibo-sec-eq-eq:RetractablePreferredShare ;
+    skos:definition "retractable preferred share whose retraction value may be paid in cash or in an equal value of common stock of the issuer, at the option of the issuer" .
+
+fibo-sec-eq-eq:UnrestrictedShare a owl:Class ;
+    rdfs:label "unrestricted share"@en,
+        "非受限股份（unrestricted share）"@zh ;
+    rdfs:comment "其所有权/转让/出售不受特殊条件（包括特定国家限制）约束的股份。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:NegotiableSecurity,
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share whose ownership/transfer/sale is not subject to special conditions including country-specific restrictions"@en .
+
+fibo-sec-eq-eq:confersOwnershipOf a owl:ObjectProperty ;
+    rdfs:label "confers ownership of",
+        "授予……的所有权（confers ownership of）"@zh ;
+    rdfs:comment "表明某凭证或分档授予对某一资产或现金流的权利。"@zh ;
+    rdfs:domain fibo-fnd-agr-ctr:Contract ;
+    rdfs:subPropertyOf fibo-fnd-rel-rel:confers ;
+    skos:definition "grants ownership via contract"@en .
+
+fibo-sec-eq-eq:hasAvailableShares a owl:DatatypeProperty ;
+    rdfs:label "has available shares"@en,
+        "具有可交易股份数（has available shares）"@zh ;
+    rdfs:comment "指明流通股数量减去受限股份后的数量，即可供交易的股份数。"@zh ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "indicates the number of shares outstanding less those shares that are restricted, i.e., those that are available for trading"@en .
+
+fibo-sec-eq-eq:hasDistributionMethod a owl:ObjectProperty ;
+    rdfs:label "has distribution method",
+        "具有分配方式（has distribution method）"@zh ;
+    rdfs:comment "指明股息支付的分配方式。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Dividend ;
+    rdfs:range fibo-sec-eq-eq:DividendDistributionMethod ;
+    rdfs:subPropertyOf fibo-fnd-gao-obj:hasStrategy ;
+    skos:definition "indicates the method by which dividend payments are to be distributed" .
+
+fibo-sec-eq-eq:hasDividendGracePeriod a owl:ObjectProperty ;
+    rdfs:label "has dividend grace period",
+        "具有股息宽限期（has dividend grace period）"@zh ;
+    rdfs:comment "指明股息到期应付后、发行人受罚之前的时间段。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:PreferredDividend ;
+    rdfs:range cmns-dt:Duration ;
+    rdfs:subPropertyOf cmns-dt:hasDuration ;
+    skos:definition "indicates a period of time after a dividend payment becomes due, before the issuer is subject to penalties" .
+
+fibo-sec-eq-eq:hasEarliestRedemptionDate a owl:ObjectProperty ;
+    rdfs:label "has earliest redemption date",
+        "具有最早赎回日（has earliest redemption date）"@zh ;
+    rdfs:comment "指明股份可赎回的最早日期或其后日期。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:EquityRedemptionProvision ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate ;
+    skos:definition "indicates a date on or after which a stock can be redeemed" .
+
+fibo-sec-eq-eq:hasFloatingStock a owl:DatatypeProperty ;
+    rdfs:label "has floating stock"@en,
+        "具有流通股数量（has floating stock）"@zh ;
+    rdfs:comment "指明可供交易的股份数量，即流通股减去内部人持有股份后的数量。"@zh ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "indicates the number of shares that are available for trading, i.e., the number of shares outstanding less closely held shares (those held by insiders) and restricted shares"@en ;
+    cmns-av:explanatoryNote "A relatively small float results in higher volatility, as a large purchase or sell order will have significant influence on the value of the stock."@en .
+
+fibo-sec-eq-eq:hasMinimumRedemptionPrice a owl:ObjectProperty ;
+    rdfs:label "has minimum redemption price",
+        "具有最低赎回价格（has minimum redemption price）"@zh ;
+    rdfs:comment "指明股份可赎回的最低市场价格门槛。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:EquityRedemptionProvision ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "indicates the lowest market price above which a share may be redeemed" .
+
+fibo-sec-eq-eq:hasRedemptionPremium a owl:ObjectProperty ;
+    rdfs:label "has redemption premium",
+        "具有赎回溢价（has redemption premium）"@zh ;
+    rdfs:comment "指明为赎回股份须支付的超过市场价格的每股溢价（如有）。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:EquityRedemptionProvision ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryPrice ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "indicates the premium price per share over the market price, if any, that must be paid in order to redeem the stock" .
+
+fibo-sec-eq-eq:hasShareClass a owl:DatatypeProperty ;
+    rdfs:label "has share class"@en,
+        "具有股类（has share class）"@zh ;
+    rdfs:comment "指明股份所属的类别，通常按表决权等特权区分。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Share ;
+    rdfs:range xsd:string ;
+    skos:definition "indicates the class to which the share belongs, typically differentiated by privileges, such as voting rights"@en ;
+    cmns-av:explanatoryNote "Classes of shares, including shares in a mutual fund, are designated by name or a character (letter), such as A, B, C, etc. In the case of a mutual fund, different classes of shares may incur different fees and expenses."@en .
+
+fibo-sec-eq-eq:hasSharesIssued a owl:DatatypeProperty ;
+    rdfs:label "has shares issued"@en,
+        "具有已发行股份数（has shares issued）"@zh ;
+    rdfs:comment "指明股东实际持有的股份（即流通股）加库存股的总数。"@zh ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "indicates the actual number of shares held by shareholders (i.e., shares outstanding) and treasury shares"@en .
+
+fibo-sec-eq-eq:hasSharesOutstanding a owl:DatatypeProperty ;
+    rdfs:label "has shares outstanding"@en,
+        "具有流通股数（has shares outstanding）"@zh ;
+    rdfs:comment "指明当前由股东持有的股份数量，包括散户投资者、机构投资者和内部人持有的股份。"@zh ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "indicates the number of shares currently held by shareholders, including those held by retail investors, institutional investors and insiders, and typically available for trading"@en ;
+    cmns-av:explanatoryNote "The number of outstanding shares is used in calculating key metrics such as a company's market capitalization, as well as its earnings per share (EPS) and cash flow per share (CFPS)."@en .
+
+fibo-sec-eq-eq:hasTreasuryShares a owl:DatatypeProperty ;
+    rdfs:label "has treasury shares"@en,
+        "具有库存股数（has treasury shares）"@zh ;
+    rdfs:comment "指明已发行但未流通的股份数量，包括曾在市场上流通但已被公司回购的股份。"@zh ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "indicates the number of shares issued but not outstanding, including those that were available in the market at one time but have been repurchased by the company"@en .
+
+fibo-sec-eq-eq:hasVotingRestriction a owl:DatatypeProperty ;
+    rdfs:label "has voting restriction"@en,
+        "具有表决权限制（has voting restriction）"@zh ;
+    rdfs:comment "规定对表决权的限制（如有）。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Share ;
+    rdfs:range xsd:string ;
+    skos:definition "specifies restrictions on voting rights, if any" ;
+    cmns-av:explanatoryNote "Such restrictions may apply regardless of the number of votes per share." .
+
+fibo-sec-eq-eq:isRedeemableAtIssuerOption a owl:DatatypeProperty ;
+    rdfs:label "is redeemable at issuer option",
+        "发行人是否可赎回（is redeemable at issuer option）"@zh ;
+    rdfs:comment "表明发行人是否有权发起回购，类似于赎回特征。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:RedemptionProvision ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the issuer has the option of initiating the buy-back, similar to a call feature" .
+
+fibo-sec-eq-eq:isRedeemableAtShareholderOption a owl:DatatypeProperty ;
+    rdfs:label "is redeemable at shareholder option",
+        "股东是否可回售（is redeemable at shareholder option）"@zh ;
+    rdfs:comment "表明股东是否有权发起回售，类似于回售特征。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:RedemptionProvision ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the shareholder has the option of initiating the buy-back, similar to a put feature" .
+
+fibo-sec-eq-eq:isSeniorTo a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "is senior to",
+        "优先于（is senior to）"@zh ;
+    rdfs:comment "表明给定股份（股类）优先级别高于相关股份，即持有人对公司资产和收益享有更高请求权。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Share ;
+    rdfs:range fibo-sec-eq-eq:Share ;
+    skos:definition "indicates that a given share (share class) has higher seniority than the related share, meaning that it gives the holder a higher claim on the assets of the issuer" .
+
+fibo-sec-eq-eq:specifiesConversionDate a owl:ObjectProperty ;
+    rdfs:label "specifies conversion date",
+        "规定转换日（specifies conversion date）"@zh ;
+    rdfs:comment "指明可以发生转换的日期或其后日期。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:EquityConversionTerms ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "indicates the date on which, or after which, conversion may occur" .
+
+fibo-sec-eq-eq:CommonShare a owl:Class ;
+    rdfs:label "common share"@en-US,
+        "普通股（CommonShare）"@zh ;
+    rdfs:comment "表示公司所有权单位、并代表对公司部分资产和收益的请求权的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:OrdinaryDividend ;
+            owl:onProperty fibo-sec-eq-eq:hasDividend ],
+        fibo-sec-eq-eq:Share ;
+    owl:disjointWith fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "share that signifies a unit of ownership in a corporation and represents a claim on part of the corporation's assets and earnings" ;
+    cmns-av:explanatoryNote "In the event that the corporation is liquidated, claims of secured and unsecured creditors and owners of bonds and preferred shares take precedence over claims of common share holders." ;
+    cmns-av:synonym "ordinary share"@en-GB .
+
+fibo-sec-eq-eq:EquityRedemptionProvisionWithExtendableRedemptionDate a owl:Class ;
+    rdfs:label "equity redemption provision with extendable redemption date"@en,
+        "赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date）"@zh ;
+    rdfs:comment "允许将赎回日修改至原定日期之后的股权赎回条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-sec-eq-eq:hasExtendableRedemptionDate ],
+        fibo-sec-eq-eq:EquityRedemptionProvision ;
+    skos:definition "equity redemption provision that allows modification of the redemption date beyond the original specified date"@en .
+
+fibo-sec-eq-eq:PartiallyPaidShareStatus a owl:NamedIndividual,
+        fibo-sec-eq-eq:SharePaymentStatus ;
+    rdfs:label "partially paid share status" ;
+    owl:differentFrom fibo-sec-eq-eq:FullyPaidShareStatus ;
+    skos:definition "status indicating that only a portion of the market value has been received by the company for the shares" ;
+    cmns-av:explanatoryNote "In the case of partially paid shares, the shareholder is still required to pay the remaining amount to the company. Typically, partially paid shares are only issued to a shareholder if there are compelling business reasons to do so." .
+
+fibo-sec-eq-eq:PreferredShareWithFixedRateDividend a owl:Class ;
+    rdfs:label "preferred share with fixed rate dividend",
+        "固定利率股息优先股（preferred share with fixed rate dividend）"@zh ;
+    rdfs:comment "股息既定（通常按招募说明书条款确定）的优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:FixedRateDividend ;
+            owl:onProperty fibo-sec-eq-eq:hasDividend ],
+        fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "preferred share whose dividends are set, typically according to the terms of the prospectus" .
+
+fibo-sec-eq-eq:RedeemablePreferredShare a owl:Class ;
+    rdfs:label "redeemable preferred share",
+        "可赎回优先股（redeemable preferred share）"@zh ;
+    rdfs:comment "赋予发行人在规定条件下赎回股份之权利的优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasRedemptionProvision ;
+            owl:someValuesFrom fibo-sec-eq-eq:EquityRedemptionProvision ],
+        fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "preferred share that gives the issuer the right to redeem the stock under specified conditions" .
+
+fibo-sec-eq-eq:hasAdjustableDividendRate a owl:ObjectProperty ;
+    rdfs:label "has adjustable dividend rate",
+        "具有可调整股息率（has adjustable dividend rate）"@zh ;
+    rdfs:comment "指明可变股息率，通常在招募说明书中规定为基于基准的公式或经拍卖确定。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:PreferredDividend ;
+    rdfs:range fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+    rdfs:subPropertyOf cmns-qtu:hasQuantityValue ;
+    skos:definition "indicates a variable dividend rate, typically specified in the prospectus as a formula based on a benchmark or set at auction" .
+
+fibo-sec-eq-eq:hasExtendableRedemptionDate a owl:DatatypeProperty ;
+    rdfs:label "has extendable redemption date",
+        "是否具有可延长赎回日（has extendable redemption date）"@zh ;
+    rdfs:comment "表明有指定赎回日的可赎回股份的发行人和/或持有人是否可选择延长该日期。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:EquityRedemptionProvision ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the issuer and/or holders of redeemable shares with a specified redemption date have the option to extend that date" .
+
+fibo-sec-eq-eq:hasFixedDividendRate a owl:ObjectProperty ;
+    rdfs:label "has fixed dividend rate",
+        "具有固定股息率（has fixed dividend rate）"@zh ;
+    rdfs:comment "指明优先股的预定固定股息率，通常在招募说明书中规定。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:PreferredDividend ;
+    rdfs:range fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+    rdfs:subPropertyOf cmns-qtu:hasQuantityValue ;
+    skos:definition "indicates a pre-arranged fixed dividend rate, typically specified in the prospectus, for a preferred share" .
+
+fibo-sec-eq-eq:FullyPaidShareStatus a owl:NamedIndividual,
+        fibo-sec-eq-eq:SharePaymentStatus ;
+    rdfs:label "fully paid share status" ;
+    skos:definition "status indicating that no additional money is owed to the company by shareholders on the value of the shares" .
+
+fibo-sec-eq-eq:PreferredShareWithFixedMaturityDate a owl:Class ;
+    rdfs:label "preferred share with fixed maturity date",
+        "固定到期日优先股（preferred share with fixed maturity date）"@zh ;
+    rdfs:comment "到期日既定（通常按招募说明书条款确定）的优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fbc-dae-dbt:hasMaturityDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "preferred share whose maturity date is set, typically according to the terms of the prospectus" .
+
+fibo-sec-eq-eq:hasExtendableMaturityDate a owl:DatatypeProperty ;
+    rdfs:label "has extendable maturity date",
+        "是否具有可延长到期日（has extendable maturity date）"@zh ;
+    rdfs:comment "表明有固定到期日的可赎回股份的发行人和/或持有人是否可选择延长到期日。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:PreferredShare ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the issuer and/or holders of redeemable shares with a fixed maturity date have the option to extend the maturity date" .
+
+fibo-sec-eq-eq:DividendDistributionMethod a owl:Class ;
+    rdfs:label "dividend distribution method",
+        "股息分配方式（dividend distribution method）"@zh ;
+    rdfs:comment "向股东提供股息的惯例。"@zh ;
+    rdfs:subClassOf fibo-fnd-dt-bd:Convention,
+        fibo-fnd-gao-obj:Strategy ;
+    skos:definition "convention by which dividends are provided to shareholders" ;
+    cmns-av:explanatoryNote "Distribution may be by payment of a monetary amount or by reinvestment, as specified by the board of directors at the time a decision to issue a dividend is made." .
+
+fibo-sec-eq-eq:OrdinaryDividend a owl:Class ;
+    rdfs:label "ordinary dividend",
+        "普通股息（ordinary dividend）"@zh ;
+    rdfs:comment "定期向股东支付的股息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fnd-pas-psch:hasPaymentAmount ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-sec-eq-eq:Dividend ;
+    skos:definition "dividend that is paid to shareholders periodically" ;
+    cmns-av:explanatoryNote "Most dividends are considered ordinary, unless they are specifically designated as qualified dividends.",
+        "Note that the terms related to ordinary dividend payment are typically specified in the context of a board resolution rather than contractually." .
+
+fibo-sec-eq-eq:RetractablePreferredShare a owl:Class ;
+    rdfs:label "retractable preferred share",
+        "可回售优先股（retractable preferred share）"@zh ;
+    rdfs:comment "赋予所有人（股东）在规定条件下要求赎回股份之权利的优先股。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasRedemptionProvision ;
+            owl:someValuesFrom fibo-sec-eq-eq:EquityRedemptionProvision ],
+        fibo-sec-eq-eq:PreferredShare ;
+    skos:definition "preferred share that gives the owner (shareholder) the right to redeem the stock under specified conditions" ;
+    cmns-av:explanatoryNote "When retractable preferred shares reach maturity, the shareholder has the right to sell them back to the stock issuer at the price stated on the agreement. In some cases, the issuer can force the shareholder to sell, and may have the option of exchanging retractable preferred shares for common shares instead of cash." .
+
+fibo-sec-eq-eq:hasSharePaymentStatus a owl:ObjectProperty ;
+    rdfs:label "has share payment status"@en,
+        "具有股份缴款状态（has share payment status）"@zh ;
+    rdfs:comment "指明已发行股份的缴款状态。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Share ;
+    rdfs:range fibo-sec-eq-eq:SharePaymentStatus ;
+    rdfs:subPropertyOf cmns-cls:isClassifiedBy ;
+    skos:definition "indicates the payment status for shares issued"@en .
+
+fibo-sec-eq-eq:SharePaymentStatus a owl:Class ;
+    rdfs:label "share payment status",
+        "股份缴款状态（share payment status）"@zh ;
+    rdfs:comment "规定已发行股份总体缴款状态的分类器。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-sec-eq-eq:Share ],
+        fibo-fnd-arr-lif:LifecycleStatus ;
+    skos:definition "classifier that specifies the overall payment status for shares issued" ;
+    cmns-av:explanatoryNote "When a company issues shares upon incorporation or through an initial or secondary issuance, shareholders are required to pay a set amount for those shares. Once the company has received the full amount from shareholders, the shares become fully paid shares." .
+
+fibo-sec-eq-eq:confersNumberOfVotesPerShare a owl:DatatypeProperty ;
+    rdfs:label "number of votes per share"@en,
+        "每股表决票数（number of votes per share）"@zh ;
+    rdfs:comment "按每股基准授予股东表决权的票数。"@zh ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "grants the right to vote on a per share basis to the shareholder"@en ;
+    cmns-av:explanatoryNote "A given share may have zero, fractional, one, or more votes per share, depending on the contract."@en .
+
+fibo-sec-eq-eq:Dividend a owl:Class ;
+    rdfs:label "dividend",
+        "股息（dividend）"@zh ;
+    rdfs:comment "宣布按证券类别按比例向股东分配部分收益的承诺。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:DividendSchedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fnd-pas-psch:hasPaymentAmount ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:DividendDistributionMethod ;
+            owl:onProperty fibo-sec-eq-eq:hasDistributionMethod ],
+        fibo-fnd-agr-agr:Commitment ;
+    skos:definition "announced commitment to make a specific distribution of a portion of earnings to shareholders, prorated by class of security" ;
+    cmns-av:explanatoryNote "The amount and timing of payment is set by the board of directors, typically quarterly. Dividends may be paid in the form of money, shares, scrip, or on rare occasion, property." .
+
+fibo-sec-eq-eq:hasDividend a owl:ObjectProperty ;
+    rdfs:label "has dividend",
+        "具有股息（has dividend）"@zh ;
+    rdfs:comment "将股份与适用于该股份或该股份可能支付的股息关联起来。"@zh ;
+    rdfs:domain fibo-sec-eq-eq:Share ;
+    rdfs:range fibo-sec-eq-eq:Dividend ;
+    rdfs:subPropertyOf cmns-cls:isClassifiedBy ;
+    skos:definition "relates a share to a dividend that applies to that share, or that the share may pay" .
+
+fibo-sec-eq-eq:EquityRedemptionProvision a owl:Class ;
+    rdfs:label "equity redemption provision"@en,
+        "股权赎回条款（equity redemption provision）"@zh ;
+    rdfs:comment "规定发行人或股东可赎回股份之条件的赎回条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
+            owl:onProperty fibo-sec-eq-eq:hasMinimumRedemptionPrice ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-sec-eq-eq:hasExtendableRedemptionDate ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-sec-eq-eq:isRedeemableAtShareholderOption ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-sec-eq-eq:isRedeemableAtIssuerOption ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
+            owl:onProperty fibo-sec-eq-eq:hasRedemptionPremium ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-sec-eq-eq:hasEarliestRedemptionDate ],
+        fibo-fbc-fi-fi:RedemptionProvision ;
+    skos:definition "redemption provision that specifies the conditions under which the issuer or shareholder may redeem the shares"@en .
+
+fibo-sec-eq-eq:PreferredDividend a owl:Class ;
+    rdfs:label "preferred dividend",
+        "优先股息（preferred dividend）"@zh ;
+    rdfs:comment "向股东分配部分收益的承诺，类似于股息，但通常金额和支付计划固定。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Duration ;
+            owl:onProperty fibo-sec-eq-eq:hasDividendGracePeriod ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+            owl:onProperty fibo-sec-eq-eq:hasFixedDividendRate ],
+        fibo-sec-eq-eq:Dividend ;
+    skos:definition "commitment to distribute a portion of earnings to shareholders, similar to a dividend but often with a fixed payment amount and schedule" .
+
+fibo-sec-eq-eq:PreferredShare a owl:Class ;
+    rdfs:label "preferred share",
+        "优先股（preferred share）"@zh ;
+    rdfs:comment "按约定利率支付股息、并在股息支付和公司资产清算方面优先于普通股的股份。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:hasDividend ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-sec-eq-eq:OrdinaryDividend fibo-sec-eq-eq:PreferredDividend ) ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fbc-dae-dbt:hasMaturityDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:isSeniorTo ;
+            owl:someValuesFrom fibo-sec-eq-eq:CommonShare ],
+        fibo-sec-eq-eq:Share ;
+    skos:definition "share that pays dividends at a specified rate and has preference over common shares in the payment of dividends and liquidation of corporate assets" ;
+    cmns-av:synonym "preference share" .
+
+fibo-sec-eq-eq:Share a owl:Class ;
+    rdfs:label "share"@en,
+        "股份（share）"@zh ;
+    rdfs:comment "表示公司股权所有权单位、共同基金所有权单位、或合伙中权益的金融工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ;
+            owl:someValuesFrom xsd:decimal ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasAvailableShares ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:hasSharePaymentStatus ;
+            owl:someValuesFrom fibo-sec-eq-eq:SharePaymentStatus ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasTreasuryShares ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasSharesIssued ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-sec-eq-eq:hasShareClass ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasFloatingStock ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasSharesOutstanding ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-le-cb:hasSharesAuthorized ;
+            owl:someValuesFrom xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-sec-eq-eq:hasVotingRestriction ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:confersOwnershipOf ;
+            owl:someValuesFrom fibo-fnd-oac-own:ShareholdersEquity ],
+        fibo-fbc-fi-fi:EquityInstrument ;
+    skos:definition "financial instrument that signifies a unit of equity ownership in a corporation, or a unit of ownership in a mutual fund, or interest in a general or limited partnership, or a unit of ownership in a structured product, such as a real estate investment trust"@en .
+

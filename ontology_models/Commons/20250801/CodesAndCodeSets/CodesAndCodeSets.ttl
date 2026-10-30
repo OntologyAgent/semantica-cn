@@ -1,0 +1,53 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-cds: a owl:Ontology ;
+    rdfs:label "Commons Codes and Code Sets Ontology",
+        "Commons 代码与代码集本体（Commons Codes and Code Sets Ontology）"@zh ;
+    dct:abstract "This ontology defines commonly used concepts for describing codes, including standardized codes such as ISO language, country, and other code sets, the North American Industry Classification System (NAICS) codes, and custom code sets that many organizations develop for various purposes, derived from the patterns specified in ISO 11179-3, Metadata Registries." ;
+    dct:contributor "Elisa Kendall, Thematix Partners LLC",
+        "Pete Rivett, agnos.ai U.K. Ltd" ;
+    dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义代码、代码集、编码方案及其标识方式。"@zh ;
+    owl:imports cmns-av:,
+        cmns-col:,
+        cmns-dsg: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20221101/CodesAndCodeSets/> ;
+    skos:changeNote "The https://www.omg.org/spec/Commons/20220501/CodesAndCodeSets.rdf version of this ontology was modified to make CodeSet a subclass of Arrangement (COMMONS-19) and to add a note to code set for clarity (COMMONS-26)." ;
+    skos:note "The codes and code sets ontology conforms with the OWL 2 DL semantics, and is outside of OWL 2 RL due to (1) imported axioms from the designations ontology, and (2) the inclusion of a local some values constraint. The latter could be removed as needed to support OWL RL rule-based applications that cannot be extended to support it.",
+        "This ontology was originally designed for use in the OMG Languages, Countries and Codes (LCC) specification as part of the broader LanguageRepresentation ontology. The concepts have also been used in the Financial Industry Business Ontology (FIBO) for representing currency codes, market identifiers (MIC codes), codes for corporate actions, and so forth." ;
+    cmns-av:copyright "Copyright (c) 2014-2022 EDM Council, Inc.",
+        "Copyright (c) 2014-2022 Thematix Partners LLC",
+        "Copyright (c) 2021-2022 agnos.ai U.K. Ltd",
+        "Copyright (c) 2022 Object Management Group, Inc." .
+
+cmns-cds:CodeElement a owl:Class ;
+    rdfs:label "code element" ;
+    dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:someValuesFrom cmns-cds:CodeSet ],
+        cmns-dsg:Designation ;
+    skos:definition "sequence of characters denoting something for some purpose, within a specified context, according to some rule set" ;
+    skos:example "An example of a code set that has multiple versions are the International Statistical Classification of Diseases and Related Health Problems (ICD) codes such as ICD-9, ICD-10, and so forth, that specify the same codes across multiple versions." ;
+    skos:note "Note that codes may be included in multiple code lists, especially in cases where there are multiple versions of those code lists. ICD-9 and ICD-10 are examples of code sets that specify, in some cases, the same codes, but across different versions of those code sets." .
+
+cmns-cds:CodeSet a owl:Class ;
+    rdfs:label "code set" ;
+    dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-cds:CodeElement ;
+            owl:onProperty cmns-col:hasMember ],
+        cmns-col:Arrangement,
+        cmns-col:Collection ;
+    skos:definition "system of alpha-numeric symbols, or combinations of symbols, that stand for specified values in some context" ;
+    skos:note "Note that a given code set will typically include a finite and known list of codes. Code sets may also be versioned. ICD-9 and ICD-10 are examples of code sets that specify, in some cases, the same codes, but across different versions of those code sets." ;
+    cmns-av:synonym "coding scheme" .
+

@@ -1,0 +1,584 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ei-ei: <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/> .
+@prefix fibo-ind-fx-fx: <https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/> .
+@prefix fibo-ind-ind-ind: <https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/> .
+@prefix fibo-ind-mkt-bas: <https://spec.edmcouncil.org/fibo/ontology/IND/MarketIndices/BasketIndices/> .
+@prefix fibo-sec-sec-bsk: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-drc-swp: a owl:Ontology ;
+    rdfs:label "Swaps Ontology",
+        "互换本体（Swaps Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts specific to swap contracts, including relevant trading organizations, data repositories, and intermediaries." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义互换（swap）合约的通用结构：互换腿（swap leg）、现金流交换与名义本金。"@zh ;
+    owl:imports fibo-der-drc-bsc:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ei-ei:,
+        fibo-ind-fx-fx:,
+        fibo-ind-ind-ind:,
+        fibo-ind-mkt-bas:,
+        fibo-sec-sec-bsk:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-pts:,
+        cmns-qtu:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20250301/DerivativesContracts/Swaps/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20180801/DerivativesContracts/Swaps/ version of this ontology was modified to refine the concept of a unique swap identifier (USI).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20190201/DerivativesContracts/Swaps/ version of this ontology was modified to eliminate duplication of concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20200201/DerivativesContracts/Swaps/ version of this ontology was modified to eliminate the property 'hasPaymentSchedule' from this ontology in favor of the equivalent property with the same name from FND, adding concepts related to statistical swaps, and revising definitions to be ISO 704 compliant.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20200901/DerivativesContracts/Swaps/ version of this ontology was modified to integrate return swaps and connect swap legs to the swap they comprise, as appropriate, simplify the contract party hierarchy, add basic fixed and floating legs as higher level concepts common to many swaps, and eliminate ambiguity in definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20201201/DerivativesContracts/Swaps/ version of this ontology was modified to move the property 'exchanges' to FND given that it could be applied more generally than with respect to swaps only, facilitate the elimination of the property 'mayBeTradedIn', which was only used in one place and was redundant with the concept of a ListedSecurity / Listing in SEC, and move two properties, hasPayingParty and hasReceivingParty to DerivativesBasics to facilitate wider use.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210301/DerivativesContracts/Swaps/ version of this ontology was modified to move swap execution facility to the markets ontology in FBC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210701/DerivativesContracts/Swaps/ version of this ontology was modified to add the concept of a rates swap and the corresponding rate-based leg to facilitate mapping to the CFI standard.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220201/DerivativesContracts/Swaps/ version of this ontology was modified to address text formatting issues identified through hygiene testing.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220801/DerivativesContracts/Swaps/ version of this ontology was modified to make a total return swap a kind of credit derivative.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20221001/DerivativesContracts/Swaps.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, to move the definition of an underlier and the related property, has underlier, to financial instruments so that these concepts are also available for use in relation to pool-backed securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/DerivativesContracts/Swaps.rdf version of the ontology was modified to tease out the distinction between the nominal and notional amount, which were confused and augment the definition of notional for swaps to properly reflect variations from the CFI (DER-127), and replace concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231201/DerivativesContracts/Swaps.rdf version of the ontology was modified to replace additional concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1 (FND-380) and to revise definitions related to swap leg-specific events (FBC-317).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240101/DerivativesContracts/Swaps.rdf version of the ontology was modified to clarify the definition of swap and swap leg, and better integrate the related details (DER-113).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20241001/DerivativesContracts/Swaps.rdf version of this ontology was modified to simplify and refine definitions related to underliers (DER-112)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-der-drc-swp:BasisSwap a owl:Class ;
+    rdfs:label "basis swap",
+        "基差互换（basis swap）"@zh ;
+    rdfs:comment "支付流参考不同基准的互换。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:RatesSwap ;
+    skos:definition "swap in which payment streams are referenced to different bases" ;
+    cmns-av:explanatoryNote "A basis swap can have two legs of the same tenor but different indices, e.g., 3 month LIBOR vs. 3 month TIBOR. The difference in this case is not driven by different interest rate periods but from different markets, i.e., the difference in efficiency between the two markets. The objective is to hedge against basis risk which is the difference in price between two markets. See also forward swap, as a means for controlling interest rate." .
+
+fibo-der-drc-swp:CorrelationLeg a owl:Class ;
+    rdfs:label "correlation leg"@en,
+        "相关性腿（correlation leg）"@zh ;
+    rdfs:comment "相关性互换的浮动腿，支付金额基于一组标的产品价格的观察平均相关性。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:isLegOf ;
+            owl:someValuesFrom fibo-der-drc-swp:CorrelationSwap ],
+        fibo-der-drc-swp:PerformanceBasedVariableLeg ;
+    skos:definition "floating leg of a correlation swap that pays an amount based on the observed average correlation of the prices of a collection of underlying products"@en .
+
+fibo-der-drc-swp:ExcessReturnSwap a owl:Class ;
+    rdfs:label "excess return swap"@en,
+        "超额回报互换（excess return swap）"@zh ;
+    rdfs:comment "回报互换的一种：指数水平变动等于主要由各成分价格变化产生的回报。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:IndexReturnSwap ;
+    skos:definition "return swap in which the change in the level of the index will be equal to the returns generated primarily by the changes in price of each of the contracts that comprise the index"@en ;
+    cmns-av:adaptedFrom "ISDA Disclosure Annex for Commodity Derivative Transactions. See https://globalmarkets.bnpparibas.com/gm/features/docs/dfdisclosures/ISDA_Commodity_Derivatives_Disclosure_Annex_04_2013.pdf"@en .
+
+fibo-der-drc-swp:MajorSwapParticipant a owl:Class ;
+    rdfs:label "major swap participant",
+        "主要互换参与者（major swap participant）"@zh ;
+    rdfs:comment "在任何主要互换类别中持有大量头寸的金融服务提供商。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution ;
+    skos:definition "financial service provider that maintains a substantial position in swaps for any of the major swap categories" ;
+    cmns-av:abbreviation "MSP" ;
+    cmns-av:adaptedFrom "http://www.cftc.gov/IndustryOversight/Intermediaries/index.htm"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "This excludes positions held for hedging or mitigating commercial risk and positions maintained by an employee benefit plan for the primary purpose of hedging or mitigating any risk directly associated with the operation of the plan." .
+
+fibo-der-drc-swp:RealizedVariableLeg a owl:Class ;
+    rdfs:label "realized variable leg",
+        "已实现浮动腿（realized variable leg）"@zh ;
+    rdfs:comment "付款在到期时一次性净额结算（而非定期支付）的基于业绩的互换腿。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:PerformanceBasedVariableLeg ;
+    skos:definition "performance-based leg wherein the payment is netted at maturity rather than periodically" ;
+    cmns-av:explanatoryNote "In this case there is a single payment at maturity/settlement and so there is no stream of cashflows either way. The other leg of these swaps is implied, and is simply the strike price." .
+
+fibo-der-drc-swp:SimpleReturnLeg a owl:Class ;
+    rdfs:label "simple return leg"@en,
+        "简单回报腿（simple return leg）"@zh ;
+    rdfs:comment "严格基于标的资产所产生收益、不含升值、减值、资本利得和任何费用的回报腿。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:ReturnLeg ;
+    skos:definition "return leg based strictly on the income generated by the underlying asset, excluding appreciation, decrease in value, capital gains, and fees on any increase in value"@en ;
+    cmns-av:explanatoryNote "Payments may include interest payments on a debt instrument or the dividends on an equity, for example."@en .
+
+fibo-der-drc-swp:StrikeLeg a owl:Class ;
+    rdfs:label "strike leg"@en,
+        "执行腿（strike leg）"@zh ;
+    rdfs:comment "规定在执行时报出的固定金额（即「执行额」）的互换腿。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:FixedLeg ;
+    skos:definition "swap leg that specifies a fixed amount, 'the strike', quoted at the time of execution"@en ;
+    cmns-av:explanatoryNote "The fixed amount may be with respect to some variable or a monetary amount. The realization of a strike leg is not a cashflow per se, but a netting out against the terms defined in the other leg of a statistical swap."@en .
+
+fibo-der-drc-swp:SwapDataRepository a owl:Class ;
+    rdfs:label "swap data repository",
+        "互换数据存库机构（swap data repository）"@zh ;
+    rdfs:comment "为互换数据报告和记录保存提供集中设施的金融服务提供商。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "financial service provider that provides a central facility for swap data reporting and recordkeeping" ;
+    cmns-av:abbreviation "SDR" ;
+    cmns-av:adaptedFrom "http://www.cftc.gov/IndustryOversight/DataRepositories/index.htm"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Swap data repositories ('SDRs') are new entities created by the Dodd-Frank Wall Street Reform and Consumer Protection Act ('Dodd-Frank Act') in order to provide a central facility for swap data reporting and recordkeeping. Under the Dodd- Frank Act, all swaps, whether cleared or uncleared, are required to be reported to registered SDRs. The Dodd-Frank Act added new Section 21 to the Commodity Exchange Act ('CEA'), governing registration and regulation of SDRs and establishing registration requirements and core duties and responsibilities for SDRs." .
+
+fibo-der-drc-swp:SwapDealer a owl:Class ;
+    rdfs:label "swap dealer",
+        "互换交易商（swap dealer）"@zh ;
+    rdfs:comment "经营互换、为互换做市、并在日常业务中经常与交易对手订立互换的非存款性机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution,
+        fibo-fbc-pas-fpas:Dealer ;
+    skos:definition "non-depository institution such as one that deals in swaps, makes a market in swaps, regularly enters into swaps with counterparties as an ordinary course of business for its own account, and engages in any activity causing the person to be commonly known in the trade as a dealer/market maker in swaps" ;
+    cmns-av:abbreviation "SD" ;
+    cmns-av:adaptedFrom "http://www.cftc.gov/IndustryOversight/Intermediaries/index.htm"^^xsd:anyURI .
+
+fibo-der-drc-swp:SwapLegEvent a owl:Class ;
+    rdfs:label "swap leg event",
+        "互换腿事件（swap leg event）"@zh ;
+    rdfs:comment "适用于互换某一腿的互换生命周期事件，如付款或利率重置事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-der-drc-swp:SwapLeg ],
+        fibo-der-drc-swp:SwapLifecycleEvent ;
+    skos:definition "swap lifecycle event, such as a payment or rate reset event, that applies to one leg of a swap" .
+
+fibo-der-drc-swp:TotalReturnSwap a owl:Class ;
+    rdfs:label "total return swap"@en,
+        "总回报互换（total return swap）"@zh ;
+    rdfs:comment "卖方同意向另一方支付标的资产价值变动乘以约定名义金额的回报互换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasReturnLeg ;
+            owl:someValuesFrom fibo-der-drc-swp:TotalReturnLeg ],
+        fibo-der-drc-bsc:CreditDerivative,
+        fibo-der-drc-swp:ReturnSwap ;
+    skos:definition "return swap where the seller agrees to pay the other party the difference in value of some underlying asset multiplied by an agreed-upon notional value should the asset value increase between specified periods of time"@en ;
+    skos:example "For example the parties may enter into a two year agreement where every three months they compare the value of the Barclays Capital Aggregate Bond Index to its value three months previously. If the agreed upon notional was US $10,000,000 and the value increased 0.04%, or 4 basis points (bps), the seller would pay the buyer US $4,000. If, after another three months, the value decreased by 3bps, the buyer would pay the seller US $3,000. As part of the agreement, the buyer may also make an additional payment each period to the seller based on a floating rate index multiplied by the notional value."@en ;
+    cmns-av:adaptedFrom "CFTC Data Dictionary. See https://www.cftc.gov/MarketReports/SwapsReports/DataDictionary/index.htm"@en,
+        "ISDA Disclosure Annex for Commodity Derivative Transactions. See https://globalmarkets.bnpparibas.com/gm/features/docs/dfdisclosures/ISDA_Commodity_Derivatives_Disclosure_Annex_04_2013.pdf"@en ;
+    cmns-av:explanatoryNote "In a total return swap that is index-based, the change in the level of the index will be equal to the returns generated by the change in price of each of the contracts that comprise the index plus a return based upon interest earned on any cash collateral posted upon the purchase of the contracts comprising the index."@en,
+        "In exchange, the other party, the buyer of the credit risk, agrees to pay the difference in value of the specified asset multiplied by the notional value should that value decrease between the same specified periods of time. Total return swaps often appear in asset classes other than the credit asset class; however, for the purpose of the CFTC Swaps Report, all total return swaps are counted only in the credit asset class."@en .
+
+fibo-der-drc-swp:CorrelationSwap a owl:Class ;
+    rdfs:label "correlation swap"@en,
+        "相关性互换（correlation swap）"@zh ;
+    rdfs:comment "一种场外统计衍生品，用于对冲一组标的产品价格观察平均相关性相关的风险。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:StatisticalSwap ;
+    skos:definition "over-the-counter statistical derivative that allows one to hedge risks associated with the observed average correlation of a collection of underlying products"@en ;
+    cmns-av:explanatoryNote "Each product that can act as the underlier on which the correlation is based has periodically observable prices, such as a commodity, exchange rate, interest rate, or stock index. Correlation trading is a strategy in which the investor receives exposure to the average correlation of an index." .
+
+fibo-der-drc-swp:DispersionLeg a owl:Class ;
+    rdfs:label "dispersion leg"@en,
+        "离散度腿（dispersion leg）"@zh ;
+    rdfs:comment "离散度互换的浮动腿，支付金额基于标的产品价格变动的已实现离散度。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:isLegOf ;
+            owl:someValuesFrom fibo-der-drc-swp:DispersionSwap ],
+        fibo-der-drc-swp:PerformanceBasedVariableLeg ;
+    skos:definition "floating leg of a dispersion swap that pays an amount based on the realized dispersion of the price changes of the underlying product" ;
+    cmns-av:explanatoryNote "Underlying assets may include, for example, exchange rates, interest rates, or the price of an index."@en ;
+    cmns-av:synonym "variance leg"@en .
+
+fibo-der-drc-swp:DispersionSwap a owl:Class ;
+    rdfs:label "dispersion swap"@en,
+        "离散度互换（dispersion swap）"@zh ;
+    rdfs:comment "用于对冲标的资产价格变动幅度的统计衍生品。"@zh ;
+    rdfs:seeAlso <https://www.sk3w.co/documents/volatility_trading.pdf> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:DispersionLeg ;
+            owl:onProperty fibo-der-drc-swp:hasLeg ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-swp:StatisticalSwap ;
+    skos:definition "statistical derivative used to hedge on the magnitude of a price movement of an underlying asset"@en ;
+    cmns-av:explanatoryNote "A variance swap is an instrument that allows investors to trade future realized (or historical) volatility against current implied volatility.",
+        "Some strategies involve selling a variance swap on an index and buying the variance swaps on the individual constituents; this particular kind of spread trade is called a variance dispersion trade." ;
+    cmns-av:synonym "variance swap"@en .
+
+fibo-der-drc-swp:FixedPaymentLeg a owl:Class ;
+    rdfs:label "fixed payment leg",
+        "固定支付腿（fixed payment leg）"@zh ;
+    rdfs:comment "规定按固定年利率计算的付款计划相关合同条款的互换腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-psch:hasPaymentSchedule ;
+            owl:someValuesFrom fibo-fnd-pas-psch:PaymentSchedule ],
+        fibo-der-drc-swp:SwapLeg ;
+    skos:definition "swap leg that specifies contractual terms associated with a schedule of payments for any swap calculated by reference to a fixed annual rate" ;
+    cmns-av:synonym "fixed payment stream terms",
+        "funding leg" ;
+    cmns-av:usageNote "Payments may be fixed or variable, which is independent from the function of the leg (payments, return etc.). The schedule may be expressed in one of two ways: as an explicit schedule of dates or as a formula for determining payment dates in advance (taking into account for example roll rules for non working days)." .
+
+fibo-der-drc-swp:IndexReturnSwap a owl:Class ;
+    rdfs:label "index return swap"@en,
+        "指数回报互换（index return swap）"@zh ;
+    rdfs:comment "付款基于向互换卖方支付的费用以及基于指数水平变动的浮动参考价格的回报互换。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:ReturnSwap ;
+    skos:definition "return swap in which payments are based on a fee paid to the seller of the swap and on a floating reference price based on changes in the level of an index from an initial level to a level observed on some valuation date(s)"@en ;
+    cmns-av:adaptedFrom "ISDA Disclosure Annex for Commodity Derivative Transactions. See https://globalmarkets.bnpparibas.com/gm/features/docs/dfdisclosures/ISDA_Commodity_Derivatives_Disclosure_Annex_04_2013.pdf"@en ;
+    cmns-av:explanatoryNote "Payments to the parties may be made either on a periodic basis or on termination of the transaction. One party will receive a payment based upon the change in the level of the index between two valuation dates (multiplied by the notional amount of the swap), as modified by the fee paid to the seller of the swap. If the level of the index increases, the buyer of the swap will be entitled to a payment based on this performance, as such payment may be reduced (or negated) by the fee paid to the seller of the swap. If the level of the index decreases, the seller of the swap will be entitled to a payment based on this performance, as such payment may be increased by the fee paid to the seller of the swap."@en .
+
+fibo-der-drc-swp:RateBasedLeg a owl:Class ;
+    rdfs:label "rate-based leg"@en,
+        "利率类腿（rate-based leg）"@zh ;
+    rdfs:comment "基于浮动利率、浮动通胀率或固定利率的利率类互换腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-sec-sec-bsk:BasketOfIndices fibo-ind-ind-ind:MarketRate fibo-ind-ei-ei:EconomicIndicator fibo-ind-fx-fx:QuotedExchangeRate ) ] ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:isLegOf ;
+            owl:someValuesFrom fibo-der-drc-swp:RatesSwap ],
+        fibo-der-drc-swp:SwapLeg ;
+    skos:definition "swap leg of a rate-based swap based on a floating interest, floating inflation or fixed interest rate"@en .
+
+fibo-der-drc-swp:SwapConfirmation a owl:Class ;
+    rdfs:label "swap confirmation",
+        "互换确认书（swap confirmation）"@zh ;
+    rdfs:comment "将双方整体交易中与生命周期事件相关的具体条款和条件成文化的正式确认书。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:someValuesFrom fibo-der-drc-swp:SwapParty ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-der-drc-swp:SwapConfirmation ;
+            owl:onProperty fibo-fnd-agr-ctr:supersedes ],
+        fibo-der-drc-swp:SwapLifecycleEvent,
+        fibo-fnd-pas-pas:TransactionConfirmation ;
+    skos:definition "formal confirmation that codifies the terms and conditions specific to a lifecycle event with respect to the overall transaction between the parties" .
+
+fibo-der-drc-swp:SwapLifecycleEventIdentifier a owl:Class ;
+    rdfs:label "swap lifecycle event identifier",
+        "互换生命周期事件标识符（swap lifecycle event identifier）"@zh ;
+    rdfs:comment "唯一标识互换生命周期中特定事件的标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:SwapLifecycleEvent ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-id:Identifier ;
+    skos:definition "identifier that uniquely identifies a specific event in the lifecycle of a swap" .
+
+fibo-der-drc-swp:SwapPayingParty a owl:Class ;
+    rdfs:label "swap paying party",
+        "互换付款方（swap paying party）"@zh ;
+    rdfs:comment "按合约规定为交易某一腿负责付款的互换方。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:PayingParty,
+        fibo-der-drc-swp:SwapParty ;
+    skos:definition "swap party responsible for making payments for a given leg of the transaction as defined in the contract" .
+
+fibo-der-drc-swp:SwapReceivingParty a owl:Class ;
+    rdfs:label "swap receiving party",
+        "互换收款方（swap receiving party）"@zh ;
+    rdfs:comment "按合约规定收取交易某一腿款项的互换方。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:ReceivingParty,
+        fibo-der-drc-swp:SwapParty ;
+    skos:definition "swap party that receives payments for a given leg of the transaction as defined in the contract" .
+
+fibo-der-drc-swp:TotalReturnLeg a owl:Class ;
+    rdfs:label "total return leg"@en,
+        "总回报腿（total return leg）"@zh ;
+    rdfs:comment "基于标的资产所产生收益以及任何升值、减值、资本利得和费用的回报腿。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:ReturnLeg ;
+    skos:definition "return leg based on the income generated by the underlying asset as well as any appreciation, decrease in value, capital gains, and fees on any increase in value"@en ;
+    cmns-av:explanatoryNote "This is distinguished from the more general Return Leg by the addition of increase or decrease in the value of the underlying asset."@en .
+
+fibo-der-drc-swp:hasFundingLeg a owl:ObjectProperty ;
+    rdfs:label "has funding leg"@en,
+        "具有融资腿（has funding leg）"@zh ;
+    rdfs:comment "指明回报互换中规定固定支付率（通常基于基准、也可能为固定利率）的一腿。"@zh ;
+    rdfs:domain fibo-der-drc-swp:ReturnSwap ;
+    rdfs:subPropertyOf fibo-der-drc-swp:hasLeg ;
+    skos:definition "indicates the leg of a return swap that specifies a set payment rate, typically benchmark based but possibly a fixed rate" .
+
+fibo-der-drc-swp:hasSwapIdentifier a owl:ObjectProperty ;
+    rdfs:label "has swap identifier",
+        "具有互换标识符（has swap identifier）"@zh ;
+    rdfs:comment "将互换生命周期事件与该互换的标识符关联起来。"@zh ;
+    rdfs:range fibo-fbc-fi-fi:FinancialInstrumentIdentifier ;
+    rdfs:subPropertyOf cmns-doc:refersTo ;
+    skos:definition "relates a swap lifecycle event to the identifier for the swap" .
+
+fibo-der-drc-swp:FixedLeg a owl:Class ;
+    rdfs:label "fixed leg",
+        "固定腿（fixed leg）"@zh ;
+    rdfs:comment "付款方有义务在互换期限内按固定年利率或固定金额不定期付款的互换腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-pas-psch:PaymentSchedule ;
+            owl:onProperty fibo-fnd-pas-psch:hasPaymentSchedule ],
+        fibo-der-drc-swp:SwapLeg ;
+    owl:disjointWith fibo-der-drc-swp:FloatingLeg ;
+    skos:definition "swap leg whose paying party is obligated to make payments from time to time over the term of a swap calculated by reference to a fixed annual rate or consisting of at least one payment of a fixed amount" ;
+    cmns-av:adaptedFrom "2006 ISDA Definitions"@en,
+        "ISDA Disclosure Annex for Commodity Derivative Transactions. See https://globalmarkets.bnpparibas.com/gm/features/docs/dfdisclosures/ISDA_Commodity_Derivatives_Disclosure_Annex_04_2013.pdf"@en .
+
+fibo-der-drc-swp:RatesSwap a owl:Class ;
+    rdfs:label "rates swap",
+        "利率互换（rates swap）"@zh ;
+    rdfs:comment "两个交易对手约定在协议期间的规定日期、基于指定名义本金和利率互相支付现金流的互换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:RateBasedLeg ;
+            owl:onProperty fibo-der-drc-swp:hasLeg ;
+            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-swp:Swap ;
+    skos:definition "swap in two counterparties each agree to pay the other cash flows on defined dates during an agreed period, based on a specified notional amount and a floating interest, floating inflation or fixed interest rate" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15" .
+
+fibo-der-drc-swp:SwapTerms a owl:Class ;
+    rdfs:label "swap terms",
+        "互换条款（swap terms）"@zh ;
+    rdfs:comment "互换交易的法律合同条款。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:DerivativeTerms ;
+    skos:definition "legal contractual terms of a swap transaction" .
+
+fibo-der-drc-swp:UniqueSwapIdentifier a owl:Class ;
+    rdfs:label "unique swap identifier",
+        "唯一互换标识符（unique swap identifier）"@zh ;
+    rdfs:comment "用于记录保存和互换数据报告的互换标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:Swap ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-fi-fi:FinancialInstrumentIdentifier ;
+    skos:definition "identifier for a swap that is used in recordkeeping and swap data reporting" ;
+    cmns-av:abbreviation "USI" ;
+    cmns-av:adaptedFrom "CFTC Data Management Branch 'Unique Swap Identifier (USI) Data Standard', October 1, 2012, usidatastandards100112.pdf" .
+
+fibo-der-drc-swp:hasReturnLeg a owl:ObjectProperty ;
+    rdfs:label "has return leg"@en,
+        "具有回报腿（has return leg）"@zh ;
+    rdfs:comment "指明回报互换中支付基于标的资产回报的一腿。"@zh ;
+    rdfs:domain fibo-der-drc-swp:ReturnSwap ;
+    rdfs:range fibo-der-drc-swp:ReturnLeg ;
+    rdfs:subPropertyOf fibo-der-drc-swp:hasLeg ;
+    skos:definition "indicates the leg of a return swap whose payments are based on the return of an underlying asset" .
+
+fibo-der-drc-swp:FloatingLeg a owl:Class ;
+    rdfs:label "floating leg",
+        "浮动腿（floating leg）"@zh ;
+    rdfs:comment "付款方有义务在互换期限内按某一浮动利率不定期付款的互换腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-pas-psch:PaymentSchedule ;
+            owl:onProperty fibo-fnd-pas-psch:hasPaymentSchedule ],
+        fibo-der-drc-swp:SwapLeg ;
+    skos:definition "swap leg whose paying party is obligated to make payments from time to time over the term of a swap calculated by reference to some variable rate, calculated based on the change in value of some underlying asset, or consisting of at least one payment of some floating amount" ;
+    cmns-av:adaptedFrom "2006 ISDA Definitions"@en,
+        "ISDA Disclosure Annex for Commodity Derivative Transactions. See https://globalmarkets.bnpparibas.com/gm/features/docs/dfdisclosures/ISDA_Commodity_Derivatives_Disclosure_Annex_04_2013.pdf"@en .
+
+fibo-der-drc-swp:StatisticalSwap a owl:Class ;
+    rdfs:label "statistical swap",
+        "统计互换（statistical swap）"@zh ;
+    rdfs:comment "支付取决于标的业绩某种统计度量的互换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasLeg ;
+            owl:someValuesFrom fibo-der-drc-swp:PerformanceBasedVariableLeg ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-swp:FixedLeg ;
+            owl:onProperty fibo-der-drc-swp:hasLeg ],
+        fibo-der-drc-swp:Swap ;
+    skos:definition "swap that depends on some statistical measure of the performance of the underlier" .
+
+fibo-der-drc-swp:SwapLifecycleEvent a owl:Class ;
+    rdfs:label "swap lifecycle event",
+        "互换生命周期事件（swap lifecycle event）"@zh ;
+    rdfs:comment "互换生命周期内发生的事件，整体事件集包括发行人、前台、中台、后台各自特有的事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-der-drc-swp:Swap ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:UniqueSwapIdentifier ;
+            owl:onProperty fibo-der-drc-swp:hasSwapIdentifier ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:SwapLifecycleEventIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-der-drc-swp:SwapParty ],
+        fibo-fnd-arr-lif:LifecycleEvent ;
+    skos:definition "event that occurs during the lifecycle of a swap, where the overall set of events includes those specific to the issuer, front office, middle office, and/or back office processes" .
+
+fibo-der-drc-swp:PerformanceBasedVariableLeg a owl:Class ;
+    rdfs:label "performance-based variable leg",
+        "基于业绩的浮动腿（performance-based variable leg）"@zh ;
+    rdfs:comment "支付取决于标的业绩某种统计度量的互换浮动腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:isLegOf ;
+            owl:someValuesFrom fibo-der-drc-swp:StatisticalSwap ],
+        fibo-der-drc-swp:FloatingLeg ;
+    skos:definition "floating leg of a swap that depends on some statistical measure of the performance of the underlier" .
+
+fibo-der-drc-swp:ReturnLeg a owl:Class ;
+    rdfs:label "return leg"@en,
+        "回报腿（return leg）"@zh ;
+    rdfs:comment "支付标的所产生收益的互换腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-oac-own:TangibleAsset [ a owl:Restriction ;
+                                owl:onProperty cmns-rlcmp:isPlayedBy ;
+                                owl:someValuesFrom fibo-ind-mkt-bas:ReferenceIndex ] ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:isLegOf ;
+            owl:someValuesFrom fibo-der-drc-swp:ReturnSwap ],
+        fibo-der-drc-swp:FloatingLeg ;
+    skos:definition "leg of a swap in which the income generated by some underlier is paid"@en ;
+    cmns-av:explanatoryNote "The return, including income from a tangible asset, the constituents of an index, or a notional/specified amount of some asset (e.g. number of shares, amount of a commodity, etc.), may be limited to the dividend or interest amounts on the underlying (simple return), or total return including capital gains and/or the appreciation or decrease in value of the asset (or index constituents)."@en .
+
+fibo-der-drc-swp:ReturnSwap a owl:Class ;
+    rdfs:label "return swap"@en,
+        "回报互换（return swap）"@zh ;
+    rdfs:comment "其中一腿（回报腿）基于某一标的所产生收益的互换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasReturnLeg ;
+            owl:someValuesFrom fibo-der-drc-swp:ReturnLeg ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasFundingLeg ;
+            owl:someValuesFrom fibo-der-drc-swp:FixedPaymentLeg ],
+        fibo-der-drc-swp:Swap ;
+    skos:definition "swap in which one leg, the return leg, is based on income generated from some underlier"@en .
+
+fibo-der-drc-swp:SwapParty a owl:Class ;
+    rdfs:label "swap party",
+        "互换方（swap party）"@zh ;
+    rdfs:comment "互换的一方，因此也是体现该交易的合约的法定当事方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-der-drc-swp:Swap ] ],
+        fibo-fnd-agr-ctr:ContractParty ;
+    skos:definition "party to a swap and therefore a legal party to the contract that embodies that transaction" .
+
+fibo-der-drc-swp:isLegOf a owl:ObjectProperty ;
+    rdfs:label "is leg of",
+        "是……的腿（is leg of）"@zh ;
+    rdfs:comment "将互换腿与包含该腿的互换关联起来。"@zh ;
+    rdfs:domain fibo-der-drc-swp:SwapLeg ;
+    rdfs:range fibo-der-drc-swp:Swap ;
+    rdfs:subPropertyOf cmns-col:isIncludedIn ;
+    owl:inverseOf fibo-der-drc-swp:hasLeg ;
+    skos:definition "relates a swap leg to the to the swap that includes it" .
+
+fibo-der-drc-swp:hasLeg a owl:ObjectProperty ;
+    rdfs:label "has leg",
+        "具有腿（has leg）"@zh ;
+    rdfs:comment "将互换合约与构成该互换的一腿关联起来。"@zh ;
+    rdfs:domain fibo-der-drc-swp:Swap ;
+    rdfs:range fibo-der-drc-swp:SwapLeg ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasContractualElement ;
+    skos:definition "relates a swap contract to a leg that is part of that swap" .
+
+fibo-der-drc-swp:SwapLeg a owl:Class ;
+    rdfs:label "swap leg",
+        "互换腿（swap leg）"@zh ;
+    rdfs:comment "规定互换某一组成部分的现金流要求（如利息支付、票息支付等）及履约承诺的条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:SwapPayingParty ;
+            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fnd-agr-ctr:hasEffectiveDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fbc-fi-fi:isDenominatedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:SwapReceivingParty ;
+            owl:onProperty fibo-fnd-pas-pas:hasSeller ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fnd-arr-doc:hasTerminationDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:isLegOf ;
+            owl:someValuesFrom fibo-der-drc-swp:Swap ],
+        [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+                        owl:onProperty fibo-fnd-acc-cur:hasNotionalAmount ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
+                        owl:onClass cmns-qtu:ScalarQuantityValue ;
+                        owl:onProperty cmns-qtu:hasQuantityValue ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ],
+        fibo-der-drc-bsc:CashflowTerms,
+        fibo-der-drc-swp:SwapTerms ;
+    skos:definition "terms defining and the commitment to fulfill cashflow requirements (e.g., interest payments, coupon payments, etc.) for a component of a swap" ;
+    cmns-av:explanatoryNote "A one-leg financing swap (also known as a single-leg financing swap) is a type of financial derivative, typically used by institutional investors or corporations, in which one party makes a series of fixed or floating payments to another party in exchange for a single upfront cash payment or financing.",
+        "A three-leg financial swap is a more complex type of swap agreement where three different payment streams (or 'legs') are involved, as opposed to the traditional two-leg swaps (like fixed-for-floating interest rate swaps). This structure can be useful for sophisticated risk management or hedging strategies, particularly when exposure to multiple interest rates or currencies is desired.",
+        "A two-leg financial swap is the most common type of swap agreement, where two counterparties exchange cash flows or obligations based on different financial variables. Each leg represents a stream of payments or flows tied to specific terms, such as fixed or floating interest rates, currencies, or commodities. The classic example of a two-leg swap is the interest rate swap, where one party pays a fixed interest rate while the other pays a floating interest rate.",
+        "For some swaps this may be a commitment to net up the difference between a strike and an outcome, rather than to make a series of cashflows over time. For credit default swaps there are conditional commitments, contingent on the occurrence of a credit event.",
+        "In most cases, a swap has two legs, one expressing the obligations of the seller and one expressing the obligations of the buyer. However, it is possible to represent more complex swaps, with one, three or more legs. The legs can be almost anything but usually one leg involves cash flows based on a notional principal amount that both parties agree to." .
+
+fibo-der-drc-swp:Swap a owl:Class ;
+    rdfs:label "swap",
+        "互换（swap）"@zh ;
+    rdfs:comment "交易对手约定交换来自两种不同金融工具的周期性现金流或负债流的衍生工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-der-drc-swp:SwapTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:exchanges ;
+            owl:someValuesFrom fibo-der-drc-swp:SwapLeg ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-swp:UniqueSwapIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:someValuesFrom fibo-der-drc-swp:SwapParty ],
+        fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "derivative instrument whereby counterparties agree to exchange periodic streams of cash flows or liabilities from two different financial instruments with each other" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15" ;
+    cmns-av:explanatoryNote "The notional amount, effective date and termination date are some of the properties that each swap leg has that are taken from the swap contract.",
+        "The underlying instruments can be almost anything, representing various asset classes, but most swaps involve cash flows (streams of payments or other commitments over time) based on a notional principal amount that both parties agree to.",
+        "Usually, the principal does not change hands. Each cash flow comprises one leg of the swap. One cash flow is generally fixed, while the other is variable, that is, based on a a benchmark interest rate, floating currency exchange rate or index price." .
+

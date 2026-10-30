@@ -1,0 +1,392 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-pts: a owl:Ontology ;
+    rdfs:label "Commons Parties and Situations Ontology",
+        "Commons 参与方与情境本体（Commons Parties and Situations Ontology）"@zh ;
+    dct:abstract "This ontology defines the high-level concepts of parties and the roles they play in various situations." ;
+    dct:contributor "Dean Allemang, Working Ontologist",
+        "Elisa Kendall, Thematix Partners LLC" ;
+    dct:license """Copyright (c) 2020-2025 EDM Council, Inc.
+		Copyright (c) 2020-2025 Thematix Partners LLC
+		Copyright (c) 2020-2025 Working Ontologist LLC
+		Copyright (c) 2022-2025 Object Management Group, Inc.
+		Copyright (c) 2022-2025 Pistoia Alliance, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义参与方、角色、情境以及它们之间关系的高层概念，是 FIBO 等多领域的上层本体。"@zh ;
+    owl:imports cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20250801/PartiesAndSituations/> ;
+    skos:changeNote "The https://www.omg.org/spec/Commons/20230801/PartiesAndSituations.rdf version of the ontology was modified to add missing inverses needed to integrate the authorization pattern (COMMONS13-38)." ;
+    skos:note "This ontology was originally designed for use in the Financial Industry Business Ontology (FIBO) for representing complex relationships between parties, such as employment, ownership and control. It has since been extended based on usage in other projects, such as the Pistoia Alliance Identification of Medicinal Products (IDMP) ontology project." ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Thematix Partners LLC",
+        "Copyright (c) 2020-2025 Working Ontologist LLC",
+        "Copyright (c) 2022-2025 Object Management Group, Inc.",
+        "Copyright (c) 2022-2025 Pistoia Alliance, Inc." ;
+    cmns-av:usageNote "Note that inference with respect to property chains, which this ontology makes extensive use of, requires a knowledge graph solution that understands these chains, or requires running a reasoner outside of the graph database and asserting the inferences in order to make use of them." .
+
+cmns-pts:SoftwareAgent a owl:Class ;
+    rdfs:label "software agent",
+        "软件智能体（software agent）"@zh ;
+    dct:source "ISO/IEC TR 29119-11:2020(en), Software and systems engineering - Software testing - Part 11: Guidelines on the testing of AI-based systems, clause 3.1.73" ;
+    rdfs:comment "感知环境并采取行动以最大化实现其目标的数字实体。"@zh ;
+    rdfs:subClassOf cmns-pts:Agent ;
+    owl:disjointWith cmns-pts:Party ;
+    skos:definition "digital entity that perceives its environment and takes actions that maximize its chance of successfully achieving its goals" .
+
+cmns-pts:actsOn a owl:ObjectProperty ;
+    rdfs:label "acts on",
+        "对…采取行动（acts on）"@zh ;
+    rdfs:comment "将情境中的行为者与其在特定情形下影响的承受者关联起来。"@zh ;
+    owl:inverseOf cmns-pts:isAffectedBy ;
+    owl:propertyChainAxiom ( cmns-pts:actsIn cmns-pts:hasUndergoer ) ;
+    skos:definition "relates an actor in a given situation to the undergoer that they affect under the circumstances" .
+
+cmns-pts:directlyAffects a owl:ObjectProperty ;
+    rdfs:label "directly affects",
+        "直接影响（directly affects）"@zh ;
+    rdfs:comment "将情境中的行为者与其在特定情形下直接影响的事物（或参与方）关联起来。"@zh ;
+    owl:inverseOf cmns-pts:experiencesWith ;
+    owl:propertyChainAxiom ( cmns-pts:actsIn cmns-pts:hasUndergoer cmns-rlcmp:isPlayedBy ) ;
+    skos:definition "relates an actor in a given situation to the thing (or party) that they impact under the circumstances" .
+
+cmns-pts:hasActiveParty a owl:ObjectProperty ;
+    rdfs:label "has active party",
+        "具有主动参与方（has active party）"@zh ;
+    rdfs:comment "将情境关联到以主要（施事）角色行动的个人或组织。"@zh ;
+    owl:inverseOf cmns-pts:playsActivePartyIn ;
+    owl:propertyChainAxiom ( cmns-pts:hasActor cmns-rlcmp:isPlayedBy ) ;
+    skos:definition "relates a situation to the person or organization acting in a primary (agentive) role" .
+
+cmns-pts:hasActiveRole a owl:ObjectProperty ;
+    rdfs:label "has active role",
+        "具有主动角色（has active role）"@zh ;
+    rdfs:comment "将情境关联到以主要（施事）角色行动的事物。"@zh ;
+    owl:inverseOf cmns-pts:playsActiveRoleIn ;
+    owl:propertyChainAxiom ( cmns-pts:hasSubjectRole cmns-rlcmp:isPlayedBy ) ;
+    skos:definition "relates a situation to something that is acting in a primary (agentive) role" .
+
+cmns-pts:hasRelatedPartyRole a owl:ObjectProperty ;
+    rdfs:label "has related party role",
+        "具有相关参与方角色（has related party role）"@zh ;
+    rdfs:comment "将扮演某一具体角色的参与方直接关联到扮演相同或另一角色的另一参与方。"@zh ;
+    rdfs:domain cmns-pts:PartyRole ;
+    rdfs:range cmns-pts:PartyRole ;
+    rdfs:subPropertyOf cmns-rlcmp:hasRole ;
+    skos:definition "relates a party acting in a specific role directly to another party acting in the same or another role" ;
+    cmns-av:usageNote "This property is intended as an abstract property, whose subproperties may or may not be symmetric, but could be inverses of one another." .
+
+cmns-pts:isAPartyTo a owl:ObjectProperty ;
+    rdfs:label "is a party to",
+        "是…的参与方（is a party to）"@zh ;
+    rdfs:comment "识别参与方所关联的协议、合同、政策、规章、情境或其他安排。"@zh ;
+    rdfs:domain cmns-pts:Party ;
+    owl:inverseOf cmns-pts:hasParty ;
+    skos:definition "identifies an agreement, contract, policy, regulation, situation, or other arrangement that a party is associated with" .
+
+cmns-pts:isExperiencedBy a owl:ObjectProperty ;
+    rdfs:label "is experienced by",
+        "被…经历（is experienced by）"@zh ;
+    rdfs:comment "将情境关联到直接参与或受其影响的事物。"@zh ;
+    owl:inverseOf cmns-pts:experiences ;
+    owl:propertyChainAxiom ( cmns-pts:hasUndergoer cmns-rlcmp:isPlayedBy ) ;
+    skos:definition "relates a situation to something that is directly involved in or affected by it" .
+
+cmns-pts:isRealizedIn a owl:ObjectProperty ;
+    rdfs:label "is realized in",
+        "在…中实现（is realized in）"@zh ;
+    rdfs:comment "将情境或组成关联到被特定关系或情境影响或作为其次要参数的事物。"@zh ;
+    owl:inverseOf cmns-pts:realizes ;
+    owl:propertyChainAxiom ( cmns-pts:hasObjectRole cmns-rlcmp:isPlayedBy ) ;
+    skos:definition "relates a situation or constituency to something that is affected by, or is a secondary argument to in a specific role with respect to a given relation or situation" .
+
+cmns-pts:playsActiveRoleThatAffects a owl:ObjectProperty ;
+    rdfs:label "plays active role that affects",
+        "扮演影响…的主动角色（plays active role that affects）"@zh ;
+    rdfs:comment "将个人或组织关联到其在特定情形下产生影响的承受者。"@zh ;
+    owl:inverseOf cmns-pts:isDirectlyAffectedBy ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole cmns-pts:actsIn cmns-pts:hasUndergoer ) ;
+    skos:definition "relates a person or organization to an undergoer they have an impact on under the circumstances" .
+
+cmns-pts:playsActiveRoleThatDirectlyAffects a owl:ObjectProperty ;
+    rdfs:label "plays active role that directly affects",
+        "扮演直接影响…的主动角色（plays active role that directly affects）"@zh ;
+    rdfs:comment "将个人或组织关联到其在特定情形下直接影响的事物。"@zh ;
+    owl:inverseOf cmns-pts:experiencesDirectly ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole cmns-pts:actsIn cmns-pts:hasUndergoer cmns-rlcmp:isPlayedBy ) ;
+    skos:definition "relates a person or organization to something they have a direct impact on under the circumstances" .
+
+cmns-pts:AgentRole a owl:Class ;
+    rdfs:label "agent role",
+        "智能体角色（agent role）"@zh ;
+    rdfs:comment "任何智能体所扮演的角色。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:Agent ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        cmns-rlcmp:Role ;
+    skos:definition "role played by any agent" .
+
+cmns-pts:experiences a owl:ObjectProperty ;
+    rdfs:label "experiences",
+        "经历（experiences）"@zh ;
+    rdfs:comment "将某事物与以某种方式影响它的情境关联起来。"@zh ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole cmns-pts:undergoes ) ;
+    skos:definition "relates something to a situation that affects them in some way" .
+
+cmns-pts:experiencesDirectly a owl:ObjectProperty ;
+    rdfs:label "experiences directly",
+        "直接经历（experiences directly）"@zh ;
+    rdfs:comment "将某事物直接关联到驱动涉及该事物的情境的参与方。"@zh ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole cmns-pts:undergoes cmns-pts:hasActor cmns-rlcmp:isPlayedBy ) ;
+    skos:definition "relates something directly to a party that drives a situation involving it" .
+
+cmns-pts:experiencesWith a owl:ObjectProperty ;
+    rdfs:label "experiences with",
+        "与…共同经历（experiences with）"@zh ;
+    rdfs:comment "将某事物关联到驱动涉及该事物的情境的行为者。"@zh ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole cmns-pts:undergoes cmns-pts:hasActor ) ;
+    skos:definition "relates something to an actor that drives a situation involving it" .
+
+cmns-pts:hasParty a owl:ObjectProperty ;
+    rdfs:label "has party",
+        "具有参与方（has party）"@zh ;
+    rdfs:comment "识别与协议、合同、政策、规章、情境或其他安排相关联的参与方。"@zh ;
+    rdfs:range cmns-pts:Party ;
+    skos:definition "identifies a party associated with an agreement, contract, policy, regulation, situation, or other arrangement" .
+
+cmns-pts:hasPartyRole a owl:ObjectProperty ;
+    rdfs:label "has party role",
+        "具有参与方角色（has party role）"@zh ;
+    rdfs:comment "识别某个人或组织在与情境、协议、合同、政策、规章、活动或其他关系相关的方面所扮演的具体角色。"@zh ;
+    rdfs:range cmns-pts:PartyRole ;
+    rdfs:subPropertyOf cmns-rlcmp:hasRole ;
+    skos:definition "identifies a specific role played by some person or organization as related to a situation, agreement, contract, policy, regulation, activity or other relationship" .
+
+cmns-pts:holdsDuring a owl:ObjectProperty ;
+    rdfs:label "holds during",
+        "在…期间保持（holds during）"@zh ;
+    rdfs:comment "指示某事物为真的日期时间段。"@zh ;
+    rdfs:range cmns-dt:DatePeriod ;
+    rdfs:subPropertyOf cmns-cxtdsg:hasApplicablePeriod ;
+    skos:definition "indicates a date period during which something is true" .
+
+cmns-pts:isAffectedBy a owl:ObjectProperty ;
+    rdfs:label "is affected by",
+        "受…影响（is affected by）"@zh ;
+    rdfs:comment "将情境中的承受者关联到在特定情形下对其产生影响的行为者。"@zh ;
+    owl:propertyChainAxiom ( cmns-pts:undergoes cmns-pts:hasActor ) ;
+    skos:definition "relates an undergoer in a given situation to the actor that has an impact on them under the circumstances" .
+
+cmns-pts:isDirectlyAffectedBy a owl:ObjectProperty ;
+    rdfs:label "is directly affected by",
+        "直接受…影响（is directly affected by）"@zh ;
+    rdfs:comment "将情境中的承受者关联到在特定情形下对其产生直接影响的人或组织。"@zh ;
+    owl:propertyChainAxiom ( cmns-pts:undergoes cmns-pts:hasActor cmns-rlcmp:isPlayedBy ) ;
+    skos:definition "relates an undergoer in a given situation to the person or organization that has an impact on them under the circumstances" .
+
+cmns-pts:playsActivePartyIn a owl:ObjectProperty ;
+    rdfs:label "plays active party in",
+        "在…中扮演主动参与方（plays active party in）"@zh ;
+    rdfs:comment "将个人或组织关联到其直接参与的情境。"@zh ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole cmns-pts:actsIn ) ;
+    skos:definition "relates a person or organization to a situation that they are directly involved in" .
+
+cmns-pts:playsActiveRoleIn a owl:ObjectProperty ;
+    rdfs:label "plays active role in",
+        "在…中扮演主动角色（plays active role in）"@zh ;
+    rdfs:comment "将某事物关联到其直接参与的情境。"@zh ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole cmns-pts:isSubjectRoleIn ) ;
+    skos:definition "relates something to a situation that it is directly involved in" .
+
+cmns-pts:realizes a owl:ObjectProperty ;
+    rdfs:label "realizes",
+        "实现（realizes）"@zh ;
+    rdfs:comment "将某事物关联到其扮演的角色为次要角色的情境或组成，例如经历者或被动参与者。"@zh ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole cmns-pts:isObjectRoleIn ) ;
+    skos:definition "relates something to a situation or constituency in which the role they play is secondary, such as an experiencer or passive participant" .
+
+cmns-pts:Actor a owl:Class ;
+    rdfs:label "actor",
+        "行为者（actor）"@zh ;
+    rdfs:comment "参与方之间关系中的主要执行者，即做出某事、导致某事发生或以其他方式在关系中扮演施事角色的参与方。"@zh ;
+    rdfs:subClassOf cmns-pts:PartyRole ;
+    skos:definition "primary performer in a relationship between parties, i.e., the party that does something, causes something to happen, or otherwise plays an agentive role in the relationship" ;
+    skos:example "Examples include owner, controlling party, beneficiary, guarantor, partner in a partnership, shareholder, etc." ;
+    cmns-av:adaptedFrom "ISO 14813-1:2015(en), Intelligent transport systems - Reference model architecture(s) for the ITS sector - Part 1: ITS service domains, service groups and services, clause 3.1",
+        "ISO 23234:2021(en), Buildings and civil engineering works - Security - Planning of security measures in the built environment, clause 3.4",
+        "ISO/TR 21965:2019(en), Information and documentation - Records management in enterprise architecture, clause 3.2.1" ;
+    cmns-av:explanatoryNote "The concept of actor here is in a more linguistic sense, from core semantic theories reflecting actor/undergoer/null roles of an argument in an expression." .
+
+cmns-pts:Undergoer a owl:Class ;
+    rdfs:label "undergoer",
+        "承受者（undergoer）"@zh ;
+    rdfs:comment "在情境中扮演客体或接受者角色的事物（或参与方），即被情境影响的对象，或扮演被动接受者/受事角色的实体。"@zh ;
+    rdfs:subClassOf cmns-rlcmp:Role ;
+    skos:definition "something that plays the role of the object or recipient in a situation, i.e., the thing (or party) that the situation impacts, affects, or that otherwise plays a passive recipient / patient or thematic role" ;
+    skos:example "Examples include something that is owned or controlled." .
+
+cmns-pts:isObjectRoleIn a owl:ObjectProperty ;
+    rdfs:label "is object role in",
+        "是…中的客体角色（is object role in）"@zh ;
+    rdfs:comment "指示该角色为次要角色的情境，例如经历者或被动参与者。"@zh ;
+    rdfs:domain cmns-rlcmp:Role ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( cmns-rlcmp:Composition cmns-pts:Situation ) ] ;
+    rdfs:subPropertyOf cmns-rlcmp:isRoleIn ;
+    owl:inverseOf cmns-pts:hasObjectRole ;
+    skos:definition "indicates a situation in which the role is secondary, such as an experiencer or passive participant" .
+
+cmns-pts:isSubjectRoleIn a owl:ObjectProperty ;
+    rdfs:label "is subject role in",
+        "是…中的主体角色（is subject role in）"@zh ;
+    rdfs:comment "指示该角色为主要主题的情境。"@zh ;
+    rdfs:domain cmns-rlcmp:Role ;
+    rdfs:range cmns-pts:Situation ;
+    rdfs:subPropertyOf cmns-rlcmp:isRoleIn ;
+    owl:inverseOf cmns-pts:hasSubjectRole ;
+    skos:definition "indicates a situation in which the role is the primary topic" .
+
+cmns-pts:Agent a owl:Class ;
+    rdfs:label "agent",
+        "智能体（agent）"@zh ;
+    rdfs:comment "能够适应环境并与之交互的自主事物。"@zh ;
+    rdfs:seeAlso "http://www.jamesodell.com/WhatIsAnAgent.pdf"^^xsd:anyURI,
+        "http://www.jamesodell.com/WhyShouldWeCareAboutAgents.pdf"^^xsd:anyURI ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-cxtdsg:ContextualName ;
+            owl:onProperty cmns-dsg:hasName ] ;
+    owl:disjointWith cmns-rlcmp:Role ;
+    skos:definition "something autonomous that can adapt to and interact with its environment" ;
+    skos:note "Agents can be human beings, organizations, software agents, robots and living things other than plants. They are defined as having the following three important properties: autonomy, interactive behavior, and adaptability. (1) Autonomy - an agent is capable of acting without direct external intervention. This includes software or other agents that have some degree of control over their internal state and can act based on their own experiences. They can also possess their own set of internal responsibilities and capabilities that enable them to act without any external choreography. This definition excludes agents that act on on behalf of (or as a proxy for) some person or thing (see AgentRole). (2) Interactive behavior - they are capable of exchanging communicating with other things in their environment. This includes, in the case of software agents, messages that can support requests for services and other kinds of resources, as well as event detection and notification. They can be synchronous or asynchronous in nature. The interaction can also be conversational in nature, such as negotiating contracts, marketplace-style bidding, or simply making a query. (3) Adaptability - an agent is capable of responding to other agents and/or its environment. Agents can react to communications and events and then respond appropriately. Software agents can be designed to make difficult decisions and even modify their behavior based on their experiences. In other words, they can learn and evolve.",
+        "Note that this does not necessarily imply that an agent is free to act as it sees fit, without constraint. Rather, an agent in the sense meant here is something which may or may not be subject to controls and constraints but is self-actualizing in its behavior in response to any such constraints." ;
+    cmns-av:directSource "http://www.omg.org/techprocess/meetings/schedule/AMP.html"^^xsd:anyURI .
+
+cmns-pts:Party a owl:Class ;
+    rdfs:label "party",
+        "参与方（party）"@zh ;
+    rdfs:comment "个人或组织。"@zh ;
+    rdfs:subClassOf cmns-pts:Agent ;
+    skos:definition "person or organization" .
+
+cmns-pts:PartyRole a owl:Class ;
+    rdfs:label "party role",
+        "参与方角色（party role）"@zh ;
+    rdfs:comment "由组织或个人扮演的、可能具有时间边界的角色。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DatePeriod ;
+            owl:onProperty cmns-cxtdsg:hasApplicablePeriod ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:Party ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        cmns-pts:AgentRole ;
+    skos:definition "role played by an organization or individual that may be time bound" ;
+    skos:example "Examples include organization member, employee, issuer, owner, partner in a partnership, shareholder, and so forth." ;
+    skos:note "Note that there may be cases where the identity of the party playing the role is not known, as well as cases where in some situation, such as ownership, there may be more than one party playing the role of owner." ;
+    skos:scopeNote "The concept of a party role is used in contexts in which one would call someone a 'party to something', such as party to a contract or to a transaction, a supplier, buyer, customer, student, employee, and so forth. More specific roles such as those that are performed in the context of some activity or process are actors in that situation." ;
+    cmns-av:adaptedFrom "ISO 14813-1:2015(en), Intelligent transport systems - Reference model architecture(s) for the ITS sector - Part 1: ITS service domains, service groups and services, clause 3.1",
+        "ISO 23234:2021(en), Buildings and civil engineering works - Security - Planning of security measures in the built environment, clause 3.4" .
+
+cmns-pts:hasObjectRole a owl:ObjectProperty ;
+    rdfs:label "has object role",
+        "具有客体角色（has object role）"@zh ;
+    rdfs:comment "识别被特定关系或情境影响，或在该关系中充当次要参数的人或事物。"@zh ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( cmns-rlcmp:Composition cmns-pts:Situation ) ] ;
+    rdfs:range cmns-rlcmp:Role ;
+    rdfs:subPropertyOf cmns-rlcmp:hasRole ;
+    skos:definition "identifies a person or thing that is affected by, or is a secondary argument in a specific role with respect to a given relation or situation" .
+
+cmns-pts:hasSubjectRole a owl:ObjectProperty ;
+    rdfs:label "has subject role",
+        "具有主体角色（has subject role）"@zh ;
+    rdfs:comment "识别在特定情境中是讨论、描述、处理对象或主要主题的人或事物。"@zh ;
+    rdfs:domain cmns-pts:Situation ;
+    rdfs:range cmns-rlcmp:Role ;
+    rdfs:subPropertyOf cmns-rlcmp:hasRole ;
+    skos:definition "identifies the person or thing that is being discussed, described, dealt with, or is the main topic in a specific role with respect to a given situation" .
+
+cmns-pts:actsIn a owl:ObjectProperty ;
+    rdfs:label "acts in",
+        "在…中行动（acts in）"@zh ;
+    rdfs:comment "指出行为者扮演主要角色的情境。"@zh ;
+    rdfs:domain cmns-pts:Actor ;
+    rdfs:range cmns-pts:Situation ;
+    rdfs:subPropertyOf cmns-pts:isSubjectRoleIn ;
+    owl:inverseOf cmns-pts:hasActor ;
+    skos:definition "indicates a situation in which the actor plays a primary role" .
+
+cmns-pts:undergoes a owl:ObjectProperty ;
+    rdfs:label "undergoes",
+        "承受（undergoes）"@zh ;
+    rdfs:comment "指示承受者所经历的情境。"@zh ;
+    rdfs:domain cmns-pts:Undergoer ;
+    rdfs:range cmns-pts:Situation ;
+    rdfs:subPropertyOf cmns-pts:isObjectRoleIn ;
+    owl:inverseOf cmns-pts:hasUndergoer ;
+    skos:definition "indicates a situation that the undergoer experiences" .
+
+cmns-pts:hasActor a owl:ObjectProperty ;
+    rdfs:label "has actor",
+        "具有行为者（has actor）"@zh ;
+    rdfs:comment "识别在特定情境中扮演特定角色并起主要作用的参与方。"@zh ;
+    rdfs:domain cmns-pts:Situation ;
+    rdfs:range cmns-pts:Actor ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole,
+        cmns-pts:hasSubjectRole ;
+    skos:definition "identifies the primary party acting in a specific role with respect to a given situation" .
+
+cmns-pts:hasUndergoer a owl:ObjectProperty ;
+    rdfs:label "has undergoer",
+        "具有承受者（has undergoer）"@zh ;
+    rdfs:comment "识别给定情境中作为经历者、被动或其他客体角色的实体。"@zh ;
+    rdfs:domain cmns-pts:Situation ;
+    rdfs:range cmns-pts:Undergoer ;
+    rdfs:subPropertyOf cmns-pts:hasObjectRole ;
+    skos:definition "identifies an experiencer / passive or other object role in a given situation" .
+
+cmns-pts:Situation a owl:Class ;
+    rdfs:label "situation",
+        "情境（situation）"@zh ;
+    rdfs:comment "在一段时间内相对稳定的场景、状态或关系。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasSubjectRole ;
+            owl:someValuesFrom cmns-rlcmp:Role ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rlcmp:Role ;
+            owl:onProperty cmns-pts:hasObjectRole ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DatePeriod ;
+            owl:onProperty cmns-pts:holdsDuring ] ;
+    skos:definition "setting, state of being, or relationship that is relatively stable for some period of time" ;
+    skos:example "Examples include ownership, control, possession, affiliation, beneficial ownership, employment, and other similar situations." ;
+    skos:note "From a usage perspective, situations are essentially reified relations, sometimes called mediating relationships." .
+

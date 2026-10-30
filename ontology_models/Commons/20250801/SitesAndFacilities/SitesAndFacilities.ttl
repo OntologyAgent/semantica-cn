@@ -1,0 +1,132 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-sfc: <https://www.omg.org/spec/Commons/SitesAndFacilities/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-sfc: a owl:Ontology ;
+    rdfs:label "Commons Sites and Facilities Ontology",
+        "Commons 场所与设施本体（Commons Sites and Facilities Ontology）"@zh ;
+    dct:abstract "This ontology provides high-level concepts related to facilities, both virtual and physical, including sites that provide the context for various facilities." ;
+    dct:contributor "Elisa Kendall, Thematix Partners LLC" ;
+    dct:license """Copyright (c) 2011-2025 Thematix Partners LLC
+		Copyright (c) 2013-2025 EDM Council, Inc.
+		Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dct:title "Commons Sites and Facilities Ontology" ;
+    rdfs:comment "定义场所、设施、地址及其关系。"@zh ;
+    owl:imports cmns-av:,
+        cmns-cxtdsg:,
+        cmns-cxtid:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-rga: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20250801/Facilities/> ;
+    skos:note "This ontology was derived, in part, from the Financial Industry Business Ontology (FIBO) and tested extensively on the Pistoia Alliance Identification of Medicinal Products Ontology (IDMP-O) project, among others." ;
+    cmns-av:copyright "Copyright (c) 2011-2025 Thematix Partners LLC",
+        "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+cmns-sfc:TractIdentifier a owl:Class ;
+    rdfs:label "tract identifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-sfc:TractOfLand ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        cmns-cxtid:ContextualIdentifier ;
+    skos:definition "unique identifier for a parcel issued for use in some jurisdiction" .
+
+cmns-sfc:Venue a owl:Class ;
+    rdfs:label "venue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-cxtdsg:Context ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        cmns-sfc:Site ;
+    skos:definition "site where something happens, described in the context of an event, activity, or something else that occurs there" .
+
+cmns-org:Capability a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-sfc:Facility ;
+            owl:onProperty cmns-sfc:isEnabledBy ] .
+
+cmns-sfc:isEnabledBy a owl:ObjectProperty ;
+    rdfs:label "is enabled by" ;
+    owl:inverseOf cmns-sfc:enables ;
+    skos:definition "indicates something that occurs or functions efficiently due to" .
+
+cmns-sfc:situates a owl:ObjectProperty ;
+    rdfs:label "situates" ;
+    owl:inverseOf cmns-sfc:isSituatedAt ;
+    skos:definition "indicates the place, setting, or context in which something is placed" .
+
+cmns-sfc:Facility a owl:Class ;
+    rdfs:label "facility" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-sfc:Site ;
+            owl:onProperty cmns-sfc:isSituatedAt ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass [ a owl:Class ;
+                    owl:unionOf ( cmns-org:Capability cmns-org:Service ) ] ;
+            owl:onProperty cmns-sfc:enables ] ;
+    skos:definition "something established to serve a particular purpose, make some course of action or operation easier, or provide some capability or service" ;
+    cmns-av:explanatoryNote "A facility may be concrete (as in a manufacturing facility) or abstract. Concrete facilities may be permanent, semi-permanent, or temporary structures, providing one or more capabilities at a given site. A single site may include multiple facilities and a given facility may span multiple sites." .
+
+cmns-sfc:Site a owl:Class ;
+    rdfs:label "site" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-sfc:TractOfLand ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-sfc:Facility ;
+            owl:onProperty cmns-sfc:situates ],
+        cmns-cxtdsg:Context ;
+    skos:definition "place, setting, or context in which something, such as a facility, is situated" ;
+    skos:example "Example facilities that may situated at some site include structures and buildings, an archeological dig, the landing location for an aircraft or spacecraft, and the site of a wound. A given site may accommodate multiple facilities." ;
+    cmns-av:explanatoryNote "A physical site has certain characteristics that contribute to the context it provides, including area, shape, accessibility, and in the case of a geographic site, landforms, soil and ground conditions, climate, and so forth." .
+
+cmns-sfc:TractOfLand a owl:Class ;
+    rdfs:label "tract of land"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-loc:isSubregionOf ;
+            owl:someValuesFrom cmns-loc:GeographicRegion ],
+        cmns-loc:GeographicRegion ;
+    skos:definition "geographic region that is a contiguous parcel or area of land within a larger region on the surface of the earth, typically defined by its boundaries as described in a deed, survey, or legal document"@en ;
+    cmns-av:explanatoryNote "In some cases, such as in the case of unimproved land that may be owned by a government but without improvements, there may not be an address."@en,
+        "Such a description typically includes a detailed, quantitative specification for that region specified using a prescribed coordinate and/or mapping system and/or a narrative description, such as 'metes and bounds', which provides a qualitative, but less precise, legal description of the location. The system(s) used to describe the tract are specified in local, regional, and national law."@en .
+
+cmns-sfc:enables a owl:ObjectProperty ;
+    rdfs:label "enables" ;
+    skos:definition "creates an environment or situation where something can occur or function efficiently" .
+
+cmns-sfc:isSituatedAt a owl:ObjectProperty ;
+    rdfs:label "is situated at" ;
+    skos:definition "is placed at" ;
+    cmns-av:explanatoryNote "Something may be situated at some site, or in some setting, situation, or context." .
+

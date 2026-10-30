@@ -1,0 +1,557 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-spc-cns: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/> .
+@prefix fibo-loan-spc-crd: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-spc-crd: a owl:Ontology ;
+    rdfs:label "Card Accounts Ontology",
+        "卡账户本体（Card Accounts Ontology）"@zh ;
+    dcterms:abstract "This ontology defines revolving credit account-related concepts that are specific to credit and debit cards. Note that it does not differentiate between consumer and commercial/corporate cards and is capable of representing either." ;
+    dcterms:license """2020-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义信用卡、借记卡账户及其信贷特征。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-pas-caa:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-loan-spc-cns:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-cds:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/LOAN/20250301/LoansSpecific/CardAccounts/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20230601/LoansSpecific/CardAccounts.rdf version of this ontology was modified to add a distinction between consumer and commercial credit card agreements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20230701/LoansSpecific/CardAccounts.rdf version of this ontology was modified to make consumer credit card agreement a subclass of unsecured consumer loan.",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20230901/LoansSpecific/CardAccounts.rdf version of the ontology was modified to replace concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20231201/LoansSpecific/CardAccounts.rdf version of the ontology was modified to replace additional concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20240101/LoansSpecific/CardAccounts.rdf version of the ontology was modified to improve the class hierarchy for credit card agreement.",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20241001/LoansSpecific/CardAccounts.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20250301/LoansSpecific/CardAccounts.rdf version of the ontology was modified to replace references to the now deprecated hasTag property in Relations with its equivalent in OMG Commons (FND-412)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 Object Management Group, Inc.",
+        "Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-loan-spc-crd:AmericanExpressNetwork a owl:NamedIndividual,
+        fibo-loan-spc-crd:CreditCardNetwork ;
+    rdfs:label "American Express network" ;
+    skos:definition "credit card network and card issuer that both issues credit cards and processes payments for cards bearing its logo, as well as offering cardholder benefits like travel insurance" .
+
+fibo-loan-spc-crd:CardAuthenticationValue a owl:Class ;
+    rdfs:label "card authentication value",
+        "卡认证值（card authentication value）"@zh ;
+    rdfs:comment "专用于 JCB 支付卡的卡验证值。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:MagneticStripeVerificationCodeValue ;
+    skos:definition "card verification value specifically for JCB payment cards" ;
+    cmns-av:abbreviation "CAV" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:CardAuthenticationValue2 a owl:Class ;
+    rdfs:label "card authentication value 2",
+        "卡认证值 2（card authentication value 2）"@zh ;
+    rdfs:comment "专用于 JCB 支付卡的卡验证值。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:ThreeDigitVerificationCodeValue ;
+    skos:definition "card verification value specifically for JCB payment cards" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI ;
+    cmns-av:synonym "CAV2" .
+
+fibo-loan-spc-crd:CardIdentificationNumber a owl:Class ;
+    rdfs:label "card identification number",
+        "卡识别码（card identification number）"@zh ;
+    rdfs:comment "专用于美国运通和 Discover 支付卡的卡验证值。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:ThreeDigitVerificationCodeValue ;
+    skos:definition "card verification value specifically for American Express and Discover payment cards" ;
+    cmns-av:abbreviation "CID" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:CardSecurityCode a owl:Class ;
+    rdfs:label "card security code",
+        "卡安全码（card security code）"@zh ;
+    rdfs:comment "专用于美国运通支付卡的卡验证值。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:MagneticStripeVerificationCodeValue ;
+    skos:definition "card verification value specifically for American Express payment cards" ;
+    cmns-av:abbreviation "CSC" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:CardValidationCode a owl:Class ;
+    rdfs:label "card validation code",
+        "卡验证码（card validation code）"@zh ;
+    rdfs:comment "专用于万事达支付卡的卡验证码。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:MagneticStripeVerificationCodeValue ;
+    skos:definition "card verification code specifically for Mastercard payment cards" ;
+    cmns-av:abbreviation "PAN CVC" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:CardValidationCode2 a owl:Class ;
+    rdfs:label "card validation code 2",
+        "卡验证码 2（card validation code 2）"@zh ;
+    rdfs:comment "专用于万事达支付卡的卡验证值。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:ThreeDigitVerificationCodeValue ;
+    skos:definition "card verification value specifically for Mastercard payment cards" ;
+    cmns-av:abbreviation "PAN CVC2" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:CardVerificationValue a owl:Class ;
+    rdfs:label "card verification value",
+        "卡验证值（card verification value）"@zh ;
+    rdfs:comment "专用于 Visa 和 Discover 支付卡的卡验证值。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:MagneticStripeVerificationCodeValue ;
+    skos:definition "card verification value specifically for Visa and Discover payment cards" ;
+    cmns-av:abbreviation "CVV" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:CardVerificationValue2 a owl:Class ;
+    rdfs:label "card verification value 2",
+        "卡验证值 2（card verification value 2）"@zh ;
+    rdfs:comment "专用于 Visa 支付卡的卡验证值。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:ThreeDigitVerificationCodeValue ;
+    skos:definition "card verification value specifically for Visa payment cards" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI ;
+    cmns-av:synonym "CVV2" .
+
+fibo-loan-spc-crd:CommercialCreditCardAgreement a owl:Class ;
+    rdfs:label "commercial credit card agreement",
+        "商业信用卡协议（commercial credit card agreement）"@zh ;
+    rdfs:comment "向正式组织（如小企业、中型企业、政府机构）发行或与其联名发行的信用卡的协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasBorrower ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom cmns-org:FormalOrganization ] ],
+        fibo-loan-spc-crd:CreditCardAgreement ;
+    skos:definition "credit card agreement for a card issued to, or in conjunction with, a formal organization, such as a small business, middle market business, local, state, or national government, or large corporation" ;
+    cmns-av:adaptedFrom "https://www.fdic.gov/regulations/examinations/credit_card/pdf_version/ch2.pdf"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Corporate card programs come in more than one form to serve different business needs. In general, they are contractual agreements between a sponsoring entity and a financial institution, in which the financial institution issues corporate cards to select employees of the sponsoring company." ;
+    cmns-av:synonym "corporate credit card agreement" .
+
+fibo-loan-spc-crd:ConsumerCreditCardAgreement a owl:Class ;
+    rdfs:label "consumer credit card agreement",
+        "消费者信用卡协议（consumer credit card agreement）"@zh ;
+    rdfs:comment "为家庭、家属或其他个人支出而发行、由借款人使用信用卡支取的信用卡协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasBorrower ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Consumer ],
+        fibo-loan-spc-crd:CreditCardAgreement,
+        fibo-loan-spc-cns:UnsecuredConsumerLoan ;
+    skos:definition "credit card agreement for a card issued for household, family, or other personal expenditures that is accessed by a borrower's use of a credit card" ;
+    cmns-av:adaptedFrom "https://www.law.cornell.edu/cfr/text/12/228.12"^^xsd:anyURI .
+
+fibo-loan-spc-crd:DiscoverNetwork a owl:NamedIndividual,
+        fibo-loan-spc-crd:CreditCardNetwork ;
+    rdfs:label "Discover network" ;
+    skos:definition "credit card network and card issuer offering benefits like secondary rental car collision insurance" .
+
+fibo-loan-spc-crd:JCBNetwork a owl:NamedIndividual,
+        fibo-loan-spc-crd:CreditCardNetwork ;
+    rdfs:label "JCB network" ;
+    skos:definition "credit card network based in Japan, with coverage throughout Asia, with strategic partners worldwide" ;
+    cmns-av:explanatoryNote "JCB Co., Ltd., (formerly Japan Credit Bureau) is a credit card company based in Tokyo, Japan. As of 2020, it operates in 23 countries with over 130 million customers. In the United States, it is not a primary credit card network but has an association with the Discover Network to enable use of JCB cards." .
+
+fibo-loan-spc-crd:MastercardNetwork a owl:NamedIndividual,
+        fibo-loan-spc-crd:CreditCardNetwork ;
+    rdfs:label "Mastercard network" ;
+    skos:definition "credit card network that has its own suite of card protections and benefits, such as identity theft protection and extended warranties" .
+
+fibo-loan-spc-crd:SmartCard a owl:Class ;
+    rdfs:label "smart card",
+        "智能卡（smart card）"@zh ;
+    rdfs:comment "内嵌集成电路的支付卡。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:PaymentCard ;
+    skos:definition "payment card that has integrated circuits embedded within it" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The circuits, also referred to as the 'chip,' contain payment card data including but not limited to data equivalent to the magnetic-stripe data." .
+
+fibo-loan-spc-crd:VisaNetwork a owl:NamedIndividual,
+        fibo-loan-spc-crd:CreditCardNetwork ;
+    rdfs:label "Visa network" ;
+    skos:definition "credit card network that oversees the Visa Signature benefits associated with certain credit cards, such as premium rental car privileges and hotel perks" .
+
+fibo-loan-spc-crd:CardExpirationDate a owl:Class ;
+    rdfs:label "card expiration date",
+        "卡有效期（card expiration date）"@zh ;
+    rdfs:comment "给定支付卡的到期日期。"@zh ;
+    rdfs:subClassOf cmns-dt:ExplicitDate ;
+    skos:definition "date on which a given payment card expires" .
+
+fibo-loan-spc-crd:hasCardVerificationCode a owl:ObjectProperty ;
+    rdfs:label "has card verification code",
+        "具有卡验证码（has card verification code）"@zh ;
+    rdfs:comment "将信用卡关联到 (1) 磁条数据或 (2) 用于保护数据完整性并限制篡改的印刷安全特征。"@zh ;
+    rdfs:domain fibo-loan-spc-crd:PaymentCard ;
+    rdfs:range fibo-loan-spc-crd:CardVerificationCodeValue ;
+    skos:definition "links a credit card to either: (1) magnetic-stripe data, or (2) printed security features that are used to protect data integrity and limit alteration, counterfeiting and fraud generally" .
+
+fibo-loan-spc-crd:hasPrimaryAccountNumber a owl:ObjectProperty ;
+    rdfs:label "has primary account number",
+        "具有主账户号（has primary account number）"@zh ;
+    rdfs:comment "指明卡面上显示的账户号。"@zh ;
+    rdfs:domain fibo-loan-spc-crd:PaymentCard ;
+    rdfs:range fibo-loan-spc-crd:PrimaryCardAccountNumber ;
+    skos:definition "specifies the account number displayed on the face of the card" ;
+    skos:editorialNote "modeled independently of 'identifies' in order to circumvent circular reasoning challenges" .
+
+fibo-loan-spc-crd:usesCurrency a owl:ObjectProperty ;
+    rdfs:label "uses currency",
+        "使用货币（uses currency）"@zh ;
+    rdfs:comment "标识信用卡产品所定义的货币。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf cmns-cxtdsg:uses ;
+    skos:definition "indicates the currency defined for the credit card product" .
+
+fibo-loan-spc-crd:CreditCardProduct a owl:Class ;
+    rdfs:label "credit card product",
+        "信用卡产品（credit card product）"@zh ;
+    rdfs:comment "允许持卡人凭信用购买货物或服务的卡产品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCardAccount ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-loan-spc-crd:CreditCardNetwork ;
+            owl:onProperty fibo-loan-spc-crd:hasCreditCardNetwork ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCard ],
+        fibo-loan-spc-crd:CardProduct ;
+    skos:definition "card product allowing the holder to purchase goods or services on credit" .
+
+fibo-loan-spc-crd:DebitCard a owl:Class ;
+    rdfs:label "debit card",
+        "借记卡（debit card）"@zh ;
+    rdfs:comment "由金融服务提供商发行、使持卡人能够动用活期存款账户资金的支付卡。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:DebitCardProduct ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-loan-spc-crd:DebitCardAccount ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-loan-spc-crd:PaymentCard ;
+    skos:definition "payment card issued by a financial service provider that enables the cardholder to access funds in a demand deposit account" .
+
+fibo-loan-spc-crd:DebitCardAccount a owl:Class ;
+    rdfs:label "debit card account",
+        "借记卡账户（debit card account）"@zh ;
+    rdfs:comment "以一张或多张借记卡为载体的卡账户。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isSignifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:DebitCard ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:someValuesFrom fibo-loan-spc-crd:DebitCardProduct ],
+        fibo-loan-spc-crd:CardAccount ;
+    skos:definition "card account that is represented by a one or more debit cards" .
+
+fibo-loan-spc-crd:DebitCardProduct a owl:Class ;
+    rdfs:label "debit card product",
+        "借记卡产品（debit card product）"@zh ;
+    rdfs:comment "通常由存款机构提供、允许持卡人在消费时向另一账户电子转账的卡产品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-loan-spc-crd:DebitCard ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:DebitCardAccount ],
+        fibo-loan-spc-crd:CardProduct ;
+    skos:definition "card product card typically provided by a depository institution allowing the holder to transfer money electronically to another account when making a purchase" .
+
+fibo-loan-spc-crd:IssuingFinancialInstitution a owl:Class ;
+    rdfs:label "issuing financial institution",
+        "发卡金融机构（issuing financial institution）"@zh ;
+    rdfs:comment "发行支付卡、或履行/促成/支持发卡服务的发行人及金融服务提供商。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:Issuer,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "issuer and financial services provider that issues payment cards or performs, facilitates, or supports issuing services including but not limited to issuing banks and issuing processors" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI ;
+    cmns-av:synonym "issuing bank" .
+
+fibo-loan-spc-crd:PaymentCardAgreement a owl:Class ;
+    rdfs:label "payment card agreement",
+        "支付卡协议（payment card agreement）"@zh ;
+    rdfs:comment "规定发行人向持卡人提供支付卡之条款与条件的账户专用信贷协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:someValuesFrom fibo-loan-spc-crd:IssuingFinancialInstitution ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:someValuesFrom fibo-loan-spc-crd:Cardholder ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:PaymentCard ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
+        fibo-fbc-dae-dbt:CreditAgreement,
+        fibo-fbc-pas-caa:AccountSpecificServiceAgreement ;
+    skos:definition "account-specific credit agreement that specifies the terms and conditions under which the payment card is offered to the cardholder by the issuer" .
+
+fibo-loan-spc-crd:hasCreditCardNetwork a owl:ObjectProperty ;
+    rdfs:label "has credit card network",
+        "具有信用卡网络（has credit card network）"@zh ;
+    rdfs:comment "标识信用卡产品的底层网络。"@zh ;
+    rdfs:range fibo-loan-spc-crd:CreditCardNetwork ;
+    rdfs:subPropertyOf cmns-cls:isClassifiedBy ;
+    skos:definition "indicates the underlying network for credit card product" .
+
+fibo-loan-spc-crd:Cardholder a owl:Class ;
+    rdfs:label "cardholder",
+        "持卡人（cardholder）"@zh ;
+    rdfs:comment "获发支付卡的账户持有人。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-fnd-oac-own:owns ;
+                    owl:someValuesFrom fibo-loan-spc-crd:CardAccount ] ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-loan-spc-crd:CardAccount ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:holds ;
+            owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
+        fibo-fbc-pas-caa:CustomerAccountHolder ;
+    skos:definition "account holder to whom a payment card is issued" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:CreditCard a owl:Class ;
+    rdfs:label "credit card",
+        "信用卡（credit card）"@zh ;
+    rdfs:comment "由金融服务提供商发行、使持卡人能够借入资金的卡。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCardProduct ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-loan-spc-crd:CreditCardAccount ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-loan-spc-crd:PaymentCard ;
+    skos:definition "card issued by a financial service provider that enables the cardholder to borrow funds" ;
+    cmns-av:adaptedFrom "https://www.fdic.gov/regulations/examinations/credit_card/pdf_version/ch2.pdf"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "In its non-physical form, a credit card represents a payment mechanism which facilitates both consumer and commercial business transactions, including purchases and cash advances. A credit card generally operates as a substitute for cash or a check and most often provides an unsecured revolving line of credit. The borrower is required to pay at least part of the card's outstanding balance each billing cycle, depending on the terms as set forth in the cardholder agreement. As the debt reduces, the available credit increases for accounts in good standing. These complex financial arrangements have ever-shifting terms and prices. A charge card differs from a credit card in that the charge card must be paid in full each month.",
+        "In physical form, a credit card traditionally is a thin, rectangular plastic card. The front of the card contains a series of numbers that are representative of various items such as the applicable network, bank, and account.",
+        "Issuance of credit cards has the condition that the cardholder will pay back the original, borrowed amount plus any additional agreed-upon charges. The credit company provider may also grant a line of credit (LOC) to the cardholder which allows the holder to borrow money in the form of a cash advance. The issuer pre-sets borrowing limits which have a basis on the individual's credit rating." .
+
+fibo-loan-spc-crd:CreditCardAccount a owl:Class ;
+    rdfs:label "credit card account",
+        "信用卡账户（credit card account）"@zh ;
+    rdfs:comment "条款与条件由以信用卡为载体的信用卡协议定义的卡账户。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-caa:hasPaymentDueDate ;
+            owl:someValuesFrom fibo-fbc-pas-caa:PaymentDueDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCardProduct ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCardAgreement ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isSignifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCard ],
+        fibo-fbc-pas-caa:LoanOrCreditAccount,
+        fibo-loan-spc-crd:CardAccount ;
+    skos:definition "card account whose terms and conditions are defined in a credit card agreement that is represented by a credit card" .
+
+fibo-loan-spc-crd:CreditCardAgreement a owl:Class ;
+    rdfs:label "credit card agreement",
+        "信用卡协议（credit card agreement）"@zh ;
+    rdfs:comment "规定发行人向持卡人提供信用卡之条款与条件的账户专用信贷安排。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasBorrower ;
+            owl:someValuesFrom fibo-loan-spc-crd:Cardholder ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCardAccount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCard ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasLender ;
+            owl:someValuesFrom fibo-loan-spc-crd:IssuingFinancialInstitution ],
+        fibo-fbc-dae-dbt:CommittedCreditFacility,
+        fibo-loan-spc-crd:PaymentCardAgreement ;
+    skos:definition "account-specific credit facility that specifies the terms and conditions under which the credit card is offered to the cardholder by the issuer" .
+
+fibo-loan-spc-crd:PrimaryCardAccountNumber a owl:Class ;
+    rdfs:label "primary card account number",
+        "主卡账户号（primary card account number）"@zh ;
+    rdfs:comment "压印在银行卡或支付卡上、并编码于磁条中的 14 或 16 位复合标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-loan-spc-crd:CardAccount ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-pas-caa:AccountIdentifier ;
+    skos:definition "composite identifier of 14 or 16 digits embossed on a bank or payment card and encoded in the card's magnetic strip" ;
+    cmns-av:abbreviation "PAN" ;
+    cmns-av:explanatoryNote "The PAN identifies the issuer of the card and the account including part of the account number, and contains a check digit that verifies the authenticity of the embossed account number." ;
+    cmns-av:synonym "primary account number" .
+
+fibo-loan-spc-crd:CardProduct a owl:Class ;
+    rdfs:label "card product",
+        "卡产品（card product）"@zh ;
+    rdfs:comment "涉及发行信用卡、借记卡或其他支付卡的金融产品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-loc:CountrySubdivision ;
+            owl:onProperty cmns-loc:hasSubdivision ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-loc:Country ;
+            owl:onProperty cmns-loc:hasCountry ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-crd:CreditCardNetwork ;
+            owl:onProperty fibo-loan-spc-crd:hasCreditCardNetwork ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-loan-spc-crd:usesCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
+        fibo-fbc-pas-fpas:FinancialProduct ;
+    skos:definition "financial product involving the issuance of credit, debit, or other payment cards" .
+
+fibo-loan-spc-crd:CardVerificationCodeValue a owl:Class ;
+    rdfs:label "card verification code or value",
+        "卡验证码或验证值（card verification code or value）"@zh ;
+    rdfs:comment "指 (1) 磁条数据或 (2) 印刷安全特征的代码，用于保护数据完整性并限制篡改。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-loan-spc-crd:PaymentCard ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cds:CodeElement ;
+    skos:definition "code that specifies either (1) magnetic-stripe data, or (2) printed security features that are used to protect data integrity and limit alteration, counterfeiting and fraud generally" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:MagneticStripeVerificationCodeValue a owl:Class ;
+    rdfs:label "magnetic stripe verification code or value",
+        "磁条验证码或验证值（magnetic stripe verification code or value）"@zh ;
+    rdfs:comment "卡磁条上的验证码，采用安全加密过程保护磁条数据完整性并可揭示篡改。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:CardVerificationCodeValue ;
+    skos:definition "card verification code on a card's magnetic stripe that uses secure cryptographic processes to protect data integrity on the stripe, and reveals any alteration or counterfeiting" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:ThreeDigitVerificationCodeValue a owl:Class ;
+    rdfs:label "three-digit verification code or value",
+        "三位验证码或验证值（three-digit verification code or value）"@zh ;
+    rdfs:comment "印在卡背面签名栏区域最右三位数字的卡验证码。"@zh ;
+    rdfs:subClassOf fibo-loan-spc-crd:CardVerificationCodeValue ;
+    skos:definition "card verification code that is the rightmost three-digit value printed in the signature panel area on the back of the card" ;
+    cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
+
+fibo-loan-spc-crd:CreditCardNetwork a owl:Class ;
+    rdfs:label "credit card network",
+        "信用卡网络（credit card network）"@zh ;
+    rdfs:comment "对授权、处理信用卡交易并设定其条款、以及在购物者、商户与机构之间划转支付的网络的分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-loan-spc-crd:CardProduct ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
+        cmns-cls:Classifier ;
+    skos:definition "classifier for the network that authorizes, processes, and sets the terms of credit card transactions, as well as transfers payments between shoppers, merchants, and their banks" ;
+    skos:example "Mastercard, Visa, American Express, Discover" .
+
+fibo-loan-spc-crd:PaymentCard a owl:Class ;
+    rdfs:label "payment card",
+        "支付卡（payment card）"@zh ;
+    rdfs:comment "由金融服务提供商发行的法律凭证，使持卡人能够动用其指定银行账户中的资金或获得信用。"@zh ;
+    rdfs:seeAlso <https://www.irs.gov/payments/payment-card-transactions-faqs> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-loan-spc-crd:CardExpirationDate ;
+            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
+            owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-loan-spc-crd:CardVerificationCodeValue ;
+            owl:onProperty fibo-loan-spc-crd:hasCardVerificationCode ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-loan-spc-crd:PrimaryCardAccountNumber ;
+            owl:onProperty fibo-loan-spc-crd:hasPrimaryAccountNumber ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-doc:LegalDocument ;
+    skos:definition "legal document issued by a financial services provider that enables the cardholder to access the funds in the customer's designated bank accounts, or through a credit account and make payments by electronic funds transfer and access automated teller machines (ATMs)" ;
+    cmns-av:explanatoryNote "For purposes of Payment Card Industry Data Security Standard (PCI DSS), a payment card is any payment card/device that bears the logo of the founding members of PCI SSC, which are American Express, Discover Financial Services, JCB International, MasterCard, or Visa, Inc.",
+        "The term payment card includes credit cards, debit cards, and stored-value cards, as well as payment through any distinctive marks of a payment card (such as a credit card number). A payment card is issued under an agreement that provides standards and mechanisms for settling the transactions between a merchant acquiring bank or similar entity and the providers who accept the cards as payment." .
+
+fibo-loan-spc-crd:CardAccount a owl:Class ;
+    rdfs:label "card account",
+        "卡账户（card account）"@zh ;
+    rdfs:comment "条款与条件由以支付卡为载体的卡协议定义的账户。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:CustomerAccount ;
+            owl:onProperty fibo-fbc-pas-caa:isLinkedToAccount ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-loan-spc-crd:PaymentCardAgreement ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-caa:hasPrimaryAccountHolder ;
+            owl:someValuesFrom fibo-loan-spc-crd:Cardholder ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:someValuesFrom fibo-loan-spc-crd:CardProduct ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isSignifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:PaymentCard ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:PrimaryCardAccountNumber ],
+        fibo-fbc-pas-caa:CustomerAccount ;
+    skos:definition "account whose terms and conditions are defined in a card agreement that is represented by a payment card" .
+

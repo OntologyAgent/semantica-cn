@@ -1,0 +1,1395 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-be-oac-cctl: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateControl/> .
+@prefix fibo-be-oac-cpty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-be-plc-plc: <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> .
+@prefix fibo-be-ptr-ptr: <https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/> .
+@prefix fibo-be-tr-tr: <https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/> .
+@prefix fibo-fbc-fct-bci: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/> .
+@prefix fibo-fbc-fct-breg: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> .
+@prefix fibo-fbc-fct-cra: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/CommercialRegistrationAuthorities/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2-ca: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-CA/> .
+@prefix lcc-3166-2-us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://rdf.gleif.org/L1/L-213800D1EI4B9WTWWD28-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "London Stock Exchange plc. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier Global LEI Index registry entry for London Stock Exchange plc." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2013-09-13T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-213800WAVVOPS85N2205> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-04-30T10:59:21.827000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-09-18T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-213800D1EI4B9WTWWD28> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-213800D1EI4B9WTWWD28> .
+
+<https://rdf.gleif.org/L1/L-222100T6ICDIY8V4VX70-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "LuxCSD S.A. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier Global LEI Index registry entry for LuxCSD S.A." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2014-06-03T01:45:01.523000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-213800WAVVOPS85N2205> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-01-20T10:57:59.257000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-03-17T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-222100T6ICDIY8V4VX70> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-222100T6ICDIY8V4VX70> .
+
+<https://rdf.gleif.org/L1/L-506700D369548LQDC335-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "SIX Financial Information AG legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for SIX Financial Information AG" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2019-06-17T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-506700LOLO7M6V0E4247> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-06-12T15:09:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-07-15T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-506700D369548LQDC335> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-506700D369548LQDC335> .
+
+<https://rdf.gleif.org/L1/L-5299000J2N45DDNE4Y28-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann GmbH & Co. KG legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann GmbH & Co. KG" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2013-04-03T13:47:18+02:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-213800WAVVOPS85N2205> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-03-19T17:04:56+01:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-04-14T10:44:35+02:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-5299000J2N45DDNE4Y28> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-5299000J2N45DDNE4Y28> .
+
+<https://rdf.gleif.org/L1/L-529900T8BM49AURSDO55-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Ubisecure Oy legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for Ubisecure Oy" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2016-08-04T11:00:36"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-529900T8BM49AURSDO55> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-06-09T15:12:35"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-06-28T18:34:06"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-529900T8BM49AURSDO55> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-529900T8BM49AURSDO55> .
+
+<https://rdf.gleif.org/L1/L-529900ZMNQFCPP762W05-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "SIX Group AG legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for SIX Group AG" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2013-12-09T09:40:03+01:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5299000J2N45DDNE4Y28> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-12-10T01:01:15+01:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-02-07T00:00:00+01:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-529900ZMNQFCPP762W05> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-529900ZMNQFCPP762W05> .
+
+<https://rdf.gleif.org/L1/L-5493000F4ZO33MV32P92-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Intercontinental Exchange legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for Intercontinental Exchange" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2013-12-10T03:07:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-11-19T16:44:35"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-11-22T15:21:34"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-5493000F4ZO33MV32P92> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-5493000F4ZO33MV32P92> .
+
+<https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Bloomberg Finance L.P. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for Bloomberg Finance L.P." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-12-06T20:55:22"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-01-05T14:20:40"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-01-25T16:50:02"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> .
+
+<https://rdf.gleif.org/L1/L-549300561UZND4C7B569-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Thomson Reuters Corporation legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for Thomson Reuters Corporation" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2013-03-01T16:35:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-10-31T16:23:14"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-11-14T18:00:33"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-549300561UZND4C7B569> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-549300561UZND4C7B569> .
+
+<https://rdf.gleif.org/L1/L-5493006SPIZKPPCPBB70-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "BSDR LLC legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for BSDR LLC" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2014-05-16T01:31:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-01-05T14:20:40.283000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-01-16T12:17:04.161000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-5493006SPIZKPPCPBB70> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-5493006SPIZKPPCPBB70> .
+
+<https://rdf.gleif.org/L1/L-549300B56MD0ZC402L06-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Bloomberg L.P. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier Global LEI Index registry entry for Bloomberg L.P." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-12-06T21:00:04"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-01-05T14:20:38"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-01-25T16:50:01"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-549300B56MD0ZC402L06> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-549300B56MD0ZC402L06> .
+
+<https://rdf.gleif.org/L1/L-549300CBNW05DILT6870-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Euroclear SA/NV legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier Global LEI Index registry entry for Euroclear SA/NV" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2014-01-07T03:04:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-213800WAVVOPS85N2205> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-03-02T12:06:57.180000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-04-28T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-549300CBNW05DILT6870> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-549300CBNW05DILT6870> .
+
+<https://rdf.gleif.org/L1/L-549300H9ZM7RDBM87W85-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "DTCC Data Repository (U.S) LLC legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for DTCC Data Repository (U.S) LLC" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2013-08-26T18:40:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-03-16T12:11:33.448000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-03-24T19:21:54.118000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-549300H9ZM7RDBM87W85> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-549300H9ZM7RDBM87W85> .
+
+<https://rdf.gleif.org/L1/L-549300HBJLRO8YFMI370-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "DTC legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for The Depository Trust & Clearing Corporation" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2017-12-29T15:32:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-03-16T12:11:35"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-03-24T19:21:54"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelEntitySuppliedOnly ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-549300HBJLRO8YFMI370> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-549300HBJLRO8YFMI370> .
+
+<https://rdf.gleif.org/L1/L-549300KE78SX8RVDNO58-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "ICE Trade Vault, LLC legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for ICE Trade Vault, LLC" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2013-09-25T03:02:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-11-11T13:56:56.904000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-11-15T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-549300KE78SX8RVDNO58> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-549300KE78SX8RVDNO58> .
+
+<https://rdf.gleif.org/L1/L-549300OL514RA0SXJJ44-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Clearstream Banking S.A. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier Global LEI Index registry entry for Clearstream Banking S.A." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2015-01-09T22:33:24.097000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-213800WAVVOPS85N2205> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-04-22T13:20:07.243000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-06-07T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-549300OL514RA0SXJJ44> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-549300OL514RA0SXJJ44> .
+
+<https://rdf.gleif.org/L1/L-EVK05KS7XY1DEII3R011-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Business Entity Data (BED) B.V. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier Global LEI Index registry entry for Business Entity Data (BED) B.V." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-06-06T15:54:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-213800WAVVOPS85N2205> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2024-12-16T17:06:10.993000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2024-06-27T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-EVK05KS7XY1DEII3R011> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-EVK05KS7XY1DEII3R011> .
+
+<https://rdf.gleif.org/L1/L-MLDY5N6PZ58ZE60QU102-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "The Depository Trust & Clearing Corporation legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for The Depository Trust & Clearing Corporation" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-06-06T15:50:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-03-16T12:11:35"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-03-24T19:21:58"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-MLDY5N6PZ58ZE60QU102> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-MLDY5N6PZ58ZE60QU102> .
+
+<https://rdf.gleif.org/L1/L-SNZ2OJLFK8MNNCLQOF39-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Chicago Mercantile Exchange, Inc. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for Chicago Mercantile Exchange, Inc." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-06-06T15:53:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-10-27T20:06:28.028000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-11-09T00:00:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-SNZ2OJLFK8MNNCLQOF39> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-SNZ2OJLFK8MNNCLQOF39> .
+
+<https://rdf.gleif.org/L1/L-TF1LXM1YNB81WKUH5G19-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "BGC Partners, Inc. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for BGC Partners, Inc." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-06-06T15:55:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-05-08T15:17:29.611000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-07-29T13:52:24.968000"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-TF1LXM1YNB81WKUH5G19> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-TF1LXM1YNB81WKUH5G19> .
+
+<https://rdf.gleif.org/L1/L-Y6X4K52KMJMZE7I7MY94-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "S&P Global legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for S&P Global, Inc." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-06-06T15:51:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2012-06-06T15:51:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-01-31T09:26:57"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-Y6X4K52KMJMZE7I7MY94> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-Y6X4K52KMJMZE7I7MY94> .
+
+fibo-fbc-fct-cra:BGCPartnersIncBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "BGC Partners, Inc. business entity identifier" ;
+    skos:definition "Delaware Division of Corporations business entity identifier for BGC Partners, Inc." ;
+    cmns-dsg:hasTag "3051512" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BGCPartnersInc-US-DE .
+
+fibo-fbc-fct-cra:BloombergBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "Bloomberg L.P. business entity identifier" ;
+    skos:definition "Delaware Division of Corporations business entity identifier for Bloomberg L.P." ;
+    cmns-dsg:hasTag "2110234" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BloombergLP-US-DE .
+
+fibo-fbc-fct-cra:BloombergFinanceBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "Bloomberg Finance L.P. business entity identifier" ;
+    skos:definition "Delaware Division of Corporations business entity identifier for Bloomberg Finance L.P." ;
+    cmns-dsg:hasTag "4348344" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BloombergFinanceLP-US-DE .
+
+fibo-fbc-fct-cra:Clearstream a owl:NamedIndividual,
+        fibo-be-fct-pub:Publisher,
+        fibo-fbc-fct-fse:CentralCounterpartyClearingHouse,
+        fibo-fbc-fct-fse:CentralSecuritiesDepository,
+        fibo-fbc-fct-fse:ClearingBank,
+        cmns-ra:RegistrationAuthority ;
+    rdfs:label "Clearstream Banking" ;
+    rdfs:seeAlso <http://www.clearstream.com/clearstream-en/about-clearstream> ;
+    skos:definition "Clearstream functional entity, which is an international central securities depository (ICSD) based in Luxembourg, providing post-trade infrastructure and securities services for the international market and 56 domestic markets worldwide" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:ClearstreamBankingSA .
+
+fibo-fbc-fct-cra:DTCCDataRepositoryOwnership a owl:NamedIndividual,
+        fibo-be-oac-opty:DirectConsolidation ;
+    rdfs:label "DTCC Data Repository ownership" ;
+    skos:definition "entity ownership context for the DTCC Data Repository, a wholly owned subsidiary of the Depository Trust & Clearing Corporation" ;
+    fibo-be-le-lei:hasOwnershipPercentage 100.0 ;
+    fibo-be-oac-opty:hasOwnedEntity fibo-fbc-fct-cra:DTCCDataRepositoryLLC-US-NY ;
+    fibo-be-oac-opty:hasOwningEntity fibo-fbc-fct-cra:DTCC-US-DE ;
+    fibo-fnd-agr-ctr:isQualifiedBy fibo-be-le-lei:GenerallyAcceptedAccountingPrinciples .
+
+fibo-fbc-fct-cra:Euroclear a owl:NamedIndividual,
+        fibo-be-fct-pub:Publisher,
+        fibo-fbc-fct-fse:CentralCounterpartyClearingHouse,
+        fibo-fbc-fct-fse:CentralSecuritiesDepository,
+        fibo-fbc-fct-fse:ClearingBank,
+        cmns-ra:RegistrationAuthority ;
+    rdfs:label "Euroclear" ;
+    rdfs:seeAlso <https://www.euroclear.com/en.html> ;
+    skos:definition "Euroclear functional entity, which is a global clearing house, central securities depository, and custodian that specializes in the settlement of securities transactions as well as the safekeeping and asset servicing of these securities" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:EuroclearSANV .
+
+fibo-fbc-fct-cra:EuroclearHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Euroclear SA/NV headquarters address" ;
+    skos:definition "headquarters address for Euroclear SA/NV" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Boulevard du Roi Albert II 1"@fr ;
+    fibo-fnd-plc-adr:hasAddressLine2 "Saint-Josse-ten-Noode" ;
+    fibo-fnd-plc-adr:hasPostalCode "1210" ;
+    cmns-loc:hasCountry lcc-3166-1:Belgium ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Brussels .
+
+fibo-fbc-fct-cra:EuroclearLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Euroclear SA/NV legal address" ;
+    skos:definition "legal address for Euroclear SA/NV" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Boulevard du Roi Albert II 1"@fr ;
+    fibo-fnd-plc-adr:hasAddressLine2 "Saint-Josse-ten-Noode" ;
+    fibo-fnd-plc-adr:hasPostalCode "1210" ;
+    cmns-loc:hasCountry lcc-3166-1:Belgium ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Brussels .
+
+fibo-fbc-fct-cra:GlobalLEIIndex a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistry ;
+    rdfs:label "Global LEI Index" ;
+    rdfs:seeAlso <https://www.gleif.org/en/lei-data/global-lei-index> ;
+    skos:definition "Global LEI Index registry, which contains historical and current LEI records including related reference data in one authoritative, central repository" .
+
+fibo-fbc-fct-cra:ICEBenchmarkAdministration a owl:NamedIndividual,
+        fibo-be-ge-ge:Instrumentality ;
+    rdfs:label "ICE Benchmark Administration" ;
+    skos:definition "ICE Benchmark Administration Limited (IBA) was established in July 2013 following an announcement by the Hogg Tendering Advisory Committee, an independent committee set up by the UK government to select the new administrator for the London Interbank Offered Rate (LIBOR)." ;
+    fibo-fnd-utl-av:definitionOrigin <https://www.theice.com/iba.jhtml> ;
+    cmns-av:abbreviation "IBA" ;
+    cmns-org:isManagedBy fibo-fbc-fct-cra:IntercontinentalExchange .
+
+fibo-fbc-fct-cra:IntercontinentalExchangeBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "Intercontinental Exchange, Inc. business entity identifier" ;
+    skos:definition "Delaware Division of Corporations business entity identifier for Intercontinental Exchange, Inc." ;
+    cmns-dsg:hasTag "5298907" ;
+    cmns-id:identifies fibo-fbc-fct-cra:IntercontinentalExchangeInc-US-DE .
+
+fibo-fbc-fct-cra:LondonStockExchange a owl:NamedIndividual,
+        fibo-be-fct-pub:Publisher,
+        fibo-fbc-pas-fpas:FinancialServiceProvider,
+        cmns-ra:RegistrationAuthority ;
+    rdfs:label "London Stock Exchange" ;
+    rdfs:seeAlso <http://www.londonstockexchange.com/home/homepage.htm> ;
+    skos:definition "London Stock Exchange functional entity, which is a global business and financial information services and news provider, a securities exchange, and the SEDOL code issuer and registration authority" ;
+    cmns-av:abbreviation "LSE" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:LondonStockExchangePlc .
+
+fibo-fbc-fct-cra:SIXFinancialInformationAsLocalOperatingUnit a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LocalOperatingUnit ;
+    rdfs:label "SIX Financial Information" ;
+    skos:definition "SIX Financial Information functional entity that is an LEI Local Operating Unit (LOU) registrar" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:SIXFinancialInformationAG .
+
+fibo-fbc-fct-cra:SPGlobal a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    rdfs:label "S&P Global" ;
+    skos:definition "S&P Global functional entity that is a global data, research, benchmark, and analytics provider, including S&P Dow Jones Indices, S&P Global Platts (commodities and energy market data), S&P Global Ratings, and S&P Global Market Intelligence (which manages CUSIP Global Services) divisions" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:SPGlobalInc-US-NY .
+
+fibo-fbc-fct-cra:SPGlobalBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "S&P Global Inc. business entity identifier" ;
+    skos:definition "New York Division of Corporations business entity identifier for S&P Global Inc." ;
+    cmns-dsg:hasTag "99979" ;
+    cmns-id:identifies fibo-fbc-fct-cra:SPGlobalInc-US-NY .
+
+fibo-fbc-fct-cra:ThomsonReuters a owl:NamedIndividual,
+        fibo-be-fct-pub:Publisher,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    rdfs:label "Thomson Reuters" ;
+    skos:definition "Thomson Reuters functional entity, which is a global business and financial information services and news provider" ;
+    cmns-av:explanatoryNote "Note that in 2018, the market data subsidiary of Thomson Reuters became Refinitiv, which then sold a 55% stake to Blackstone Group LP in August 2018. In October 2019, Blackstone and Thomson Reuters announced the sale of the company to London Stock Exchange Group. LSEG completed the USD $27 billion purchase from the two previous owners in late January 2021, and Refinitiv is now a subsidiary of LSEG. The well-known financial instrument identifier called a 'RIC code' has been a Refinitiv branded code since its founding." ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:ThomsonReutersCorporation .
+
+fibo-fbc-fct-cra: a owl:Ontology ;
+    rdfs:label "Commercial Registration Authorities Ontology",
+        "商事登记主管机关本体（Commercial Registration Authorities Ontology）"@zh ;
+    dcterms:abstract "This ontology specifies definitions for a number of organizations that provide broad based data services, including registration services, such as market data providers, instrument identifier issuers, organizations that provide exchanges in multiple countries, and the like. It is not intended to be exhaustive, but covers the primary LOUs for LEI issuance among others. Note that this ontology only provides reference data, no additional semantics." ;
+    dcterms:license """Copyright (c) 2017-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2017-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义负责商事登记的主管机关及其维护的登记记录。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-be-ge-ge:,
+        fibo-be-le-cb:,
+        fibo-be-le-fbo:,
+        fibo-be-le-lei:,
+        fibo-be-oac-cpty:,
+        fibo-be-oac-cctl:,
+        fibo-be-oac-opty:,
+        fibo-be-ptr-ptr:,
+        fibo-be-plc-plc:,
+        fibo-be-tr-tr:,
+        fibo-fbc-fct-bci:,
+        fibo-fbc-fct-breg:,
+        fibo-fbc-fct-fse:,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/>,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-ra:,
+        cmns-rlcmp:,
+        lcc-3166-1:,
+        lcc-3166-2-ca:,
+        lcc-3166-2-us: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20260701/FunctionalEntities/CommercialRegistrationAuthorities/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was added via the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to reflect revisions to the GLEIF LEI representation for validation level.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190101/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to normalize a few labels and definitions, revise GLEIF LEI registration data, eliminate duplication of concepts in LCC, simplify addresses, and merge countries with locations in FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200301/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200701/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was revised to update the LEI URIs to the new form published by the GLEIF on data.world.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20201201/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was revised to make incorporation and registration dates explicit and to replace references to the legacy LCC UnitedStates country representation with UnitedStatesOfAmerica.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210301/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was revised to improve the representation of some of the LEI data.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20211201/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to refine and streamline the definitions of some service providers (SEC-205).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20251001/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to merge details from the old corporations ontology into corporate bodies for consistency and useability (BE-259).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20251002/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntitiesIndividuals.rdf version of the ontology was renamed to improve clarity, moved from the North American jurisdiction-level to the Functional Entities module, augmented with additional international organizations, and better aligned with the GLEIF LEI repository for broader FIBO usage (FND-407).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20260601/FunctionalEntities/FunctionalEntities/CommercialRegistrationAuthorities.rdf version of the ontology was modified to replace references to the now deprecated hasTag property in Relations with its equivalent in OMG Commons (FND-412)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2017-2025 Object Management Group, Inc.",
+        "Copyright (c) 2017-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fbc-fct-cra:BGCPartnersIncDateEstablished a owl:NamedIndividual,
+        cmns-dt:Date ;
+    rdfs:label "BGC Partners, Inc. date established" ;
+    skos:definition "date that BGC Partners, Inc. was incorporated with the Delaware Division of Corporations" ;
+    cmns-dt:hasDateValue "1999-06-03" .
+
+fibo-fbc-fct-cra:BGCPartnersIncHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "BGC Partners, Inc. headquarters address" ;
+    skos:definition "registered address identified as the headquarters address for BGC Partners, Inc." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "55 Water Street" ;
+    fibo-fnd-plc-adr:hasPostalCode "10041" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:New_York ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-fbc-fct-cra:BSDRBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "BSDR LLC business entity identifier" ;
+    skos:definition "Delaware Division of Corporations business entity identifier for BSDR LLC" ;
+    cmns-dsg:hasTag "5202500" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BSDRLLC-US-DE .
+
+fibo-fbc-fct-cra:BSDRDateEstablished a owl:NamedIndividual,
+        cmns-dt:Date ;
+    rdfs:label "BSDR date established" ;
+    skos:definition "date that BSDR LLC was established" ;
+    cmns-dt:hasDateValue "2012-08-22" .
+
+fibo-fbc-fct-cra:BSDRHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "BSDR LLC headquarters address" ;
+    skos:definition "headquarters address for BSDR LLC" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "731 Lexington Avenue" ;
+    fibo-fnd-plc-adr:hasPostalCode "10022" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:New_York ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-fbc-fct-cra:BloombergDateEstablished a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "Bloomberg date established" ;
+    skos:definition "date that Bloomberg L.P. was established" ;
+    cmns-dt:hasDateValue "1986-12-09" .
+
+fibo-fbc-fct-cra:BloombergFinanceDateEstablished a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "Bloomberg Finance L.P. date established" ;
+    skos:definition "date that Bloomberg Finance L.P. was established" ;
+    cmns-dt:hasDateValue "2007-06-05" .
+
+fibo-fbc-fct-cra:BloombergFinanceLP a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    rdfs:label "Bloomberg Finance L.P." ;
+    skos:definition "Bloomberg Finance L.P. functional entity, which is the professional services and financial data management part of the Bloomberg organization" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:BloombergFinanceLP-US-DE .
+
+fibo-fbc-fct-cra:BloombergFinanceOwnership a owl:NamedIndividual,
+        fibo-be-oac-opty:DirectConsolidation ;
+    rdfs:label "Bloomberg Finance ownership" ;
+    skos:definition "entity ownership context for Bloomberg Finance, a wholly owned subsidiary of Bloomberg L.P." ;
+    fibo-be-le-lei:hasOwnershipPercentage 100.0 ;
+    fibo-be-oac-opty:hasOwnedEntity fibo-fbc-fct-cra:BloombergFinanceLP-US-DE ;
+    fibo-be-oac-opty:hasOwningEntity fibo-fbc-fct-cra:BloombergLP-US-DE ;
+    fibo-fnd-agr-ctr:isQualifiedBy fibo-be-le-lei:GenerallyAcceptedAccountingPrinciples .
+
+fibo-fbc-fct-cra:BusinessEntityDataHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Business Entity Data (BED) B.V. headquarters address" ;
+    skos:definition "headquarters address for Business Entity Data (BED) B.V." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Bernhardplein 200"@nl ;
+    fibo-fnd-plc-adr:hasPostalCode "1097 JB" ;
+    cmns-loc:hasCountry lcc-3166-1:Netherlands ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Amsterdam .
+
+fibo-fbc-fct-cra:BusinessEntityDataLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Business Entity Data (BED) B.V. legal address" ;
+    skos:definition "legal address for Business Entity Data (BED) B.V." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Prins Bernhardplein 200" ;
+    fibo-fnd-plc-adr:hasPostalCode "1097 JB" ;
+    cmns-loc:hasCountry lcc-3166-1:Netherlands ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Amsterdam .
+
+fibo-fbc-fct-cra:ChicagoMercantileExchangeBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "Chicago Mercantile Exchange (CME) business entity identifier" ;
+    skos:definition "Delaware Division of Corporations business entity identifier for Chicago Mercantile Exchange, Inc." ;
+    cmns-dsg:hasTag "3151025" ;
+    cmns-id:identifies fibo-fbc-fct-cra:ChicagoMercantileExchangeInc-US-DE .
+
+fibo-fbc-fct-cra:ChicagoMercantileExchangeDateEstablished a owl:NamedIndividual,
+        cmns-dt:Date ;
+    rdfs:label "Chicago Mercantile Exchange (CME) date established" ;
+    skos:definition "date that Chicago Mercantile Exchange (CME) was established as a Delaware Corporation" ;
+    cmns-dt:hasDateValue "1999-12-30" .
+
+fibo-fbc-fct-cra:ChicagoMercantileExchangeHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "Chicago Mercantile Exchange (CME) headquarters address" ;
+    skos:definition "headquarters address for Chicago Mercantile Exchange (CME)" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "20 South Wacker Drive" ;
+    fibo-fnd-plc-adr:hasPostalCode "60606" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Chicago ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:Illinois .
+
+fibo-fbc-fct-cra:DTCCDataRepositoryBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "business entity identifier for DTCC Data Repository (U.S) LLC" ;
+    skos:definition "New York State Division of Corporations business entity identifier for DTCC Data Repository (U.S.) LLC" ;
+    cmns-dsg:hasTag "4156912" ;
+    cmns-id:identifies fibo-fbc-fct-cra:DTCCDataRepositoryLLC-US-NY .
+
+fibo-fbc-fct-cra:DTCCDataRepositoryDateEstablished a owl:NamedIndividual,
+        cmns-dt:Date ;
+    rdfs:label "DTCC Data Repository (U.S) LLC date established" ;
+    skos:definition "date that DTCC Data Repository (U.S) LLC was established" ;
+    cmns-dt:hasDateValue "2011-10-24" .
+
+fibo-fbc-fct-cra:DTCCDataRepositoryHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "DTCC Data Repository (U.S) LLC headquarters address" ;
+    skos:definition "headquarters address for DTCC Data Repository (U.S) LLC" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "55 Water Street" ;
+    fibo-fnd-plc-adr:hasPostalCode "10041" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:New_York ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-fbc-fct-cra:DTCCHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "The Depository Trust & Clearing Corporation headquarters address" ;
+    skos:definition "headquarters address for the The Depository Trust & Clearing Corporation" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "570 Washington Boulevard" ;
+    fibo-fnd-plc-adr:hasPostalCode "07310" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Jersey_City ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewJersey .
+
+fibo-fbc-fct-cra:DTCCLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "The Depository Trust & Clearing Corporation legal address" ;
+    skos:definition "legal address for the The Depository Trust & Clearing Corporation" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "C/O General Counsel" ;
+    fibo-fnd-plc-adr:hasAddressLine2 "55 Water Street" ;
+    fibo-fnd-plc-adr:hasAddressLine3 "19th Floor" ;
+    fibo-fnd-plc-adr:hasPostalCode "10041" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:New_York ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-fbc-fct-cra:DepositoryTrustCompany a owl:NamedIndividual,
+        fibo-fbc-fct-fse:CentralCounterpartyClearingHouse,
+        fibo-fbc-fct-fse:CentralSecuritiesDepository,
+        cmns-ra:RegistrationAuthority ;
+    rdfs:label "Depository Trust Company" ;
+    rdfs:seeAlso <http://www.dtcc.com/about/businesses-and-subsidiaries/dtc.aspx> ;
+    skos:definition "central counterparty clearing house (CCP), securities depository, and registration authority (RA) functional entity for The Depository Trust Company" ;
+    cmns-av:abbreviation "DTC" ;
+    cmns-av:explanatoryNote """DTCC's subsidiary, The Depository Trust Company (DTC), established in 1973, was created to reduce costs and provide clearing and settlement efficiencies by immobilizing securities and making 'book-entry' changes to ownership of the securities.
+
+DTC brings efficiency to the securities industry by retaining custody of more than 3.5 million securities issues valued at US$37.2 trillion, including securities issued in the US and more than 131 countries and territories.""" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:DTC-US-NY .
+
+fibo-fbc-fct-cra:DepositoryTrustCompanyOwnership a owl:NamedIndividual,
+        fibo-be-oac-opty:DirectConsolidation ;
+    rdfs:label "Depository Trust Company ownership" ;
+    skos:definition "entity ownership context for the Depository Trust Company, a wholly owned subsidiary of the Depository Trust & Clearing Corporation" ;
+    fibo-be-le-lei:hasOwnershipPercentage 100.0 ;
+    fibo-be-oac-opty:hasOwnedEntity fibo-fbc-fct-cra:DTC-US-NY ;
+    fibo-be-oac-opty:hasOwningEntity fibo-fbc-fct-cra:DTCC-US-DE ;
+    fibo-fnd-agr-ctr:isQualifiedBy fibo-be-le-lei:GenerallyAcceptedAccountingPrinciples .
+
+fibo-fbc-fct-cra:GlobalMarketsEntityIdentifierRegistry a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistry ;
+    rdfs:label "Global Markets Entity Identifier registry" ;
+    rdfs:seeAlso <https://www.gmeiutility.org/> ;
+    skos:definition "Global Markets Entity Identifier (GMEI) registry. The GMEI utility is a pre-Local Operating Unit of the Global Legal Entity Identifier System (GLEIS)." ;
+    cmns-av:abbreviation "GMEI registry" .
+
+fibo-fbc-fct-cra:ICETradeVaultLLCBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "business entity identifier for ICE Trade Vault, LLC" ;
+    skos:definition "Delaware Division of Corporations business entity identifier for ICE Trade Vault, LLC" ;
+    cmns-dsg:hasTag "4960384" ;
+    cmns-id:identifies fibo-fbc-fct-cra:ICETradeVaultLLC-US-DE .
+
+fibo-fbc-fct-cra:ICETradeVaultLLCDateEstablished a owl:NamedIndividual,
+        cmns-dt:Date ;
+    rdfs:label "ICE Trade Vault, LLC date established" ;
+    skos:definition "date that ICE Trade Vault, LLC was established" ;
+    cmns-dt:hasDateValue "2011-03-28" .
+
+fibo-fbc-fct-cra:ICETradeVaultLLCHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "ICE Trade Vault, LLC headquarters address" ;
+    skos:definition "headquarters address for ICE Trade Vault, LLC" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "5660 New Northside Drive" ;
+    fibo-fnd-plc-adr:hasPostalCode "30328" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Atlanta ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:Georgia .
+
+fibo-fbc-fct-cra:IntercontinentalExchangeDateEstablished a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "Intercontinental Exchange date established" ;
+    skos:definition "date that Intercontinental Exchange was established" ;
+    cmns-dt:hasDateValue "2000-05-11" .
+
+fibo-fbc-fct-cra:IntercontinentalExchangeDateRegistered a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "Intercontinental Exchange date registered" ;
+    skos:definition "date that Intercontinental Exchange, Inc. was registered as a legal entity with the Delaware Division of Corporations" ;
+    cmns-dt:hasDateValue "2013-03-06" .
+
+fibo-fbc-fct-cra:IntercontinentalExchangeHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Intercontinental Exchange headquarters address" ;
+    skos:definition "headquarters address for Intercontinental Exchange, Inc." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "5660 New Northside Drive NW" ;
+    fibo-fnd-plc-adr:hasAddressLine2 "3rd Floor" ;
+    fibo-fnd-plc-adr:hasPostalCode "30328" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Atlanta ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:Georgia .
+
+fibo-fbc-fct-cra:LondonStockExchangeAsLocalOperatingUnit a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LocalOperatingUnit ;
+    rdfs:label "London Stock Exchange as local operating unit" ;
+    rdfs:seeAlso <http://www.londonstockexchange.com/home/homepage.htm> ;
+    skos:definition "London Stock Exchange functional entity that is an LEI Local Operating Unit (LOU) registrar" ;
+    cmns-org:manages fibo-fbc-fct-cra:LondonStockExchangeUnaVistaRegistry ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:LondonStockExchangePlc .
+
+fibo-fbc-fct-cra:LondonStockExchangeHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "London Stock Exchange plc. headquarters address" ;
+    skos:definition "headquarters address for London Stock Exchange plc." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "10 Paternoster Square" ;
+    fibo-fnd-plc-adr:hasPostalCode "EC4M 7LS" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:London .
+
+fibo-fbc-fct-cra:LondonStockExchangeLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "London Stock Exchange plc. legal address" ;
+    skos:definition "legal address for London Stock Exchange plc." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "10 Paternoster Square" ;
+    fibo-fnd-plc-adr:hasPostalCode "EC4M 7LS" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:London .
+
+fibo-fbc-fct-cra:LondonStockExchangeUnaVistaRegistry a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistry ;
+    rdfs:label "London Stock Exchange UnaVista Registry" ;
+    rdfs:seeAlso <https://www.lseg.com/LEI> ;
+    skos:definition "UnaVista registry service provided by the London Stock Exchange supporting LEI registration" .
+
+fibo-fbc-fct-cra:LuxCSD a owl:NamedIndividual,
+        fibo-fbc-fct-fse:CentralSecuritiesDepository ;
+    rdfs:label "Lux CSD" ;
+    rdfs:seeAlso <http://www.luxcsd.com/luxcsd-en/> ;
+    skos:definition "Lux CSD functional entity, which provides Luxembourg's financial community with issuing and central bank settlement as well as custody services for a wide range of securities including investment funds" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:LuxCSDSA .
+
+fibo-fbc-fct-cra:LuxCSDLEIRegistry a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistry ;
+    rdfs:label "Lux CSD LEI Registry" ;
+    rdfs:seeAlso <http://www.luxcsd.com/luxcsd-en/products-and-services/luxembourg-lei-service> ;
+    skos:definition "LuxCDS LEI registry; LuxCSD has been issuing ISO 17442:2012 compliant LEIs with the prefix 2221 since September 2014" .
+
+fibo-fbc-fct-cra:SIXFinancialInformation a owl:NamedIndividual,
+        fibo-be-fct-pub:Publisher,
+        fibo-fbc-pas-fpas:FinancialServiceProvider,
+        cmns-ra:RegistrationAuthority ;
+    rdfs:label "SIX Financial Information" ;
+    skos:definition "SIX Financial Information functional entity, which provides market data gathered from the world's major trading venues directly and in real-time, and is the Valoren issuer and registration authority as well as the national numbering agency (NNA) for Switzerland, Belgium, and Liechtenstein, and the former TELEKURS ID financial instrument identifier issuer and registration authority" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:SIXFinancialInformationAG .
+
+fibo-fbc-fct-cra:SIXGroup a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    rdfs:label "SIX Group" ;
+    skos:definition "SIX Group functional entity, which offers exchange services, financial information and banking services with the aim of increasing efficiency, quality and innovative capacity along the entire Swiss banking value chain" ;
+    cmns-av:abbreviation "SIX" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:SIXGroupAG .
+
+fibo-fbc-fct-cra:SPGlobalDateEstablished a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "S&P Global date established" ;
+    skos:definition "date that S&P Global was established" ;
+    cmns-av:explanatoryNote "The data established reflects the historical establishment of McGraw-Hill Publishing Company, Inc., including intermediate name and ownership changes." ;
+    cmns-dt:hasDateValue "1925-12-29" .
+
+fibo-fbc-fct-cra:SPGlobalHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "S&P Global headquarters address" ;
+    skos:definition "headquarters address for S&P Global, as represented in the New York Division of Corporations repository" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "55 Water Street" ;
+    fibo-fnd-plc-adr:hasPostalCode "10041" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:New_York ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-fbc-fct-cra:ThomsonReutersDateEstablished a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "Thomson Reuters date established" ;
+    skos:definition "date that Thomson Reuters was established" ;
+    cmns-av:explanatoryNote "The data established reflects the date that the Thomson Corporation merged with (purchased) the Reuters Group" ;
+    cmns-dt:hasDateValue "2008-04-17" .
+
+fibo-fbc-fct-cra:ThomsonReutersHeadquartersAddress-CA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Thomson Reuters Corporation Canadian headquarters address" ;
+    skos:definition "Canadian headquarters address for Thomson Reuters Corporation" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Bay Adelaide Centre" ;
+    fibo-fnd-plc-adr:hasAddressLine2 "333 Bay Street" ;
+    fibo-fnd-plc-adr:hasAddressLine3 "Suite 400" ;
+    fibo-fnd-plc-adr:hasPostalCode "M5H 2R2" ;
+    cmns-loc:hasCountry lcc-3166-1:Canada ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Toronto ;
+    cmns-loc:hasSubdivision lcc-3166-2-ca:Ontario .
+
+fibo-fbc-fct-cra:ThomsonReutersHeadquartersAddress-US a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Thomson Reuters headquarters address" ;
+    skos:definition "headquarters address for Thomson Reuters Corporation" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "3 Times Square" ;
+    fibo-fnd-plc-adr:hasPostalCode "10036" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:New_York ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-fbc-fct-cra:ThomsonReutersLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Thomson Reuters legal domicile address" ;
+    skos:definition "Canadian legal domicile address for Thomson Reuters" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Bay Adelaide Centre" ;
+    fibo-fnd-plc-adr:hasAddressLine2 "333 Bay Street" ;
+    fibo-fnd-plc-adr:hasAddressLine3 "Suite 400" ;
+    fibo-fnd-plc-adr:hasPostalCode "M5H 2R2" ;
+    cmns-loc:hasCountry lcc-3166-1:Canada ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Toronto ;
+    cmns-loc:hasSubdivision lcc-3166-2-ca:Ontario .
+
+fibo-fbc-fct-cra:UBIsecureOyDateEstablished a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "Ubisecure Oy date established" ;
+    skos:definition "date that Ubisecure Oy was established" ;
+    cmns-dt:hasDateValue "2002-02-14" .
+
+fibo-fbc-fct-cra:UBIsecureOyHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Ubisecure Oy headquarters address" ;
+    skos:definition "headquarters address for Ubisecure Oy" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Tekniikantie 14" ;
+    fibo-fnd-plc-adr:hasPostalCode "02150" ;
+    cmns-loc:hasCountry lcc-3166-1:Finland ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Espoo ;
+    cmns-loc:hasSubdivision <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-FI/FI-18-Subdivision> .
+
+fibo-fbc-fct-cra:UbisecureAsLocalOperatingUnit a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LocalOperatingUnit ;
+    rdfs:label "Ubisecure Oy as local operating unit" ;
+    skos:definition "Ubisecure Oy functional entity that is a legal entity identifier (LEI) local operating unit (LOU) registrar" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:UBIsecureOy-FI .
+
+fibo-fbc-fct-cra:WMDatenserviceEntityIdentifierRegistry a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistry ;
+    rdfs:label "WM Datenservice Registry" ;
+    skos:definition "WM Datenservice LEI registry" .
+
+<https://rdf.gleif.org/L1/L-213800D1EI4B9WTWWD28> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "London Stock Exchange plc. legal entity identifier" ;
+    skos:definition "legal entity identifier for London Stock Exchange plc." ;
+    cmns-dsg:hasTag "213800D1EI4B9WTWWD28" ;
+    cmns-id:identifies fibo-fbc-fct-cra:LondonStockExchangePlc ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:LondonStockExchangeAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-222100T6ICDIY8V4VX70> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "LuxCSD S.A. legal entity identifier" ;
+    skos:definition "legal entity identifier for LuxCSD S.A." ;
+    cmns-dsg:hasTag "222100T6ICDIY8V4VX70" ;
+    cmns-id:identifies fibo-fbc-fct-cra:LuxCSDSA ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:LuxCSDAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-506700D369548LQDC335> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "SIX Financial Information AG legal entity identifier" ;
+    skos:definition "legal entity identifier for SIX Financial Information AG" ;
+    cmns-dsg:hasTag "506700D369548LQDC335" ;
+    cmns-id:identifies fibo-fbc-fct-cra:SIXFinancialInformationAG ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmann .
+
+<https://rdf.gleif.org/L1/L-529900ZMNQFCPP762W05> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "SIX Group AG legal entity identifier" ;
+    skos:definition "legal entity identifier for SIX Group AG" ;
+    cmns-dsg:hasTag "529900ZMNQFCPP762W05" ;
+    cmns-id:identifies fibo-fbc-fct-cra:SIXGroupAG ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmann .
+
+<https://rdf.gleif.org/L1/L-5493000F4ZO33MV32P92> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Intercontinental Exchange legal entity identifier" ;
+    skos:definition "legal entity identifier for Intercontinental Exchange" ;
+    cmns-dsg:hasTag "5493000F4ZO33MV32P92" ;
+    cmns-id:identifies fibo-fbc-fct-cra:IntercontinentalExchangeInc-US-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-549300561UZND4C7B569> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Thomson Reuters Corporation legal entity identifier" ;
+    skos:definition "legal entity identifier for Thomson Reuters Corporation" ;
+    cmns-dsg:hasTag "549300561UZND4C7B569" ;
+    cmns-id:identifies fibo-fbc-fct-cra:ThomsonReutersCorporation ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-5493006SPIZKPPCPBB70> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "BSDR LLC legal entity identifier" ;
+    skos:definition "legal entity identifier for BSDR LLC" ;
+    cmns-dsg:hasTag "5493006SPIZKPPCPBB70" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BSDRLLC-US-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-549300B56MD0ZC402L06> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Bloomberg L.P. legal entity identifier" ;
+    skos:definition "legal entity identifier for Bloomberg L.P." ;
+    cmns-dsg:hasTag "549300B56MD0ZC402L06" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BloombergLP-US-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-549300CBNW05DILT6870> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Euroclear SA/NV legal entity identifier" ;
+    skos:definition "legal entity identifier for Euroclear SA/NV" ;
+    cmns-dsg:hasTag "549300CBNW05DILT6870" ;
+    cmns-id:identifies fibo-fbc-fct-cra:EuroclearSANV ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BusinessEntityData .
+
+<https://rdf.gleif.org/L1/L-549300H9ZM7RDBM87W85> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "DTCC Data Repository (U.S) LLC legal entity identifier" ;
+    skos:definition "legal entity identifier for DTCC Data Repository (U.S) LLC" ;
+    cmns-dsg:hasTag "549300H9ZM7RDBM87W85" ;
+    cmns-id:identifies fibo-fbc-fct-cra:DTCCDataRepositoryLLC-US-NY ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-549300HBJLRO8YFMI370> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "The Depository Trust Company legal entity identifier" ;
+    skos:definition "legal entity identifier for The Depository Trust Company" ;
+    cmns-dsg:hasTag "MLDY5N6PZ58ZE60QU102" ;
+    cmns-id:identifies fibo-fbc-fct-cra:DTC-US-NY ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-549300KE78SX8RVDNO58> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "ICE Trade Vault, LLC legal entity identifier" ;
+    skos:definition "legal entity identifier for ICE Trade Vault, LLC" ;
+    cmns-dsg:hasTag "549300KE78SX8RVDNO58" ;
+    cmns-id:identifies fibo-fbc-fct-cra:ICETradeVaultLLC-US-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-549300OL514RA0SXJJ44> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Clearstream Banking S.A. legal entity identifier" ;
+    skos:definition "legal entity identifier for Clearstream Banking S.A." ;
+    cmns-dsg:hasTag "549300OL514RA0SXJJ44" ;
+    cmns-id:identifies fibo-fbc-fct-cra:ClearstreamBankingSA ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:LuxCSDAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-EVK05KS7XY1DEII3R011> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Business Entity Data (BED) B.V. legal entity identifier" ;
+    skos:definition "legal entity identifier for Business Entity Data (BED) B.V." ;
+    cmns-dsg:hasTag "EVK05KS7XY1DEII3R011" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BusinessEntityData-NL ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BusinessEntityData .
+
+<https://rdf.gleif.org/L1/L-MLDY5N6PZ58ZE60QU102> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "The Depository Trust & Clearing Corporation legal entity identifier" ;
+    skos:definition "legal entity identifier for The Depository Trust & Clearing Corporation" ;
+    cmns-dsg:hasTag "MLDY5N6PZ58ZE60QU102" ;
+    cmns-id:identifies fibo-fbc-fct-cra:DTCC-US-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-SNZ2OJLFK8MNNCLQOF39> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Chicago Mercantile Exchange, Inc. legal entity identifier" ;
+    skos:definition "legal entity identifier for Chicago Mercantile Exchange, Inc." ;
+    cmns-dsg:hasTag "SNZ2OJLFK8MNNCLQOF39" ;
+    cmns-id:identifies fibo-fbc-fct-cra:ChicagoMercantileExchangeInc-US-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-TF1LXM1YNB81WKUH5G19> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "BGC Partners, Inc. legal entity identifier" ;
+    skos:definition "legal entity identifier for BGC Partners, Inc." ;
+    cmns-dsg:hasTag "TF1LXM1YNB81WKUH5G19" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BGCPartnersInc-US-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+<https://rdf.gleif.org/L1/L-Y6X4K52KMJMZE7I7MY94> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "S&P Global, Inc. legal entity identifier" ;
+    skos:definition "legal entity identifier for S&P Global, Inc." ;
+    cmns-dsg:hasTag "Y6X4K52KMJMZE7I7MY94" ;
+    cmns-id:identifies fibo-fbc-fct-cra:SPGlobalInc-US-NY ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+
+fibo-fbc-fct-cra:BGCPartnersInc-US-DE a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "BGC Partners, Inc. US-DE" ;
+    skos:definition "legal entity that is a Delaware Corporation" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:BGCPartnersIncHeadquartersAddress ;
+    fibo-fbc-fct-breg:hasPriorLegalName "Cantor Fitzgerald" ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:BGCPartnersIncDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "BGC Partners, Inc. US-DE" .
+
+fibo-fbc-fct-cra:BSDRLLC-US-DE a owl:NamedIndividual,
+        fibo-be-plc-plc:PrivateCompanyWithLimitedLiability ;
+    rdfs:label "BSDR LLC US-DE" ;
+    rdfs:seeAlso <http://www.bloombergsdr.com/> ;
+    skos:definition "BSDR LLC legal entity that is a Delaware Limited Liability Company" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:BSDRHeadquartersAddress ;
+    fibo-be-oac-cctl:hasDomesticUltimateParent fibo-fbc-fct-cra:BloombergLP ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:BSDRDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "BSDR LLC" ;
+    cmns-id:isIdentifiedBy fibo-fbc-fct-cra:BSDRBusinessEntityIdentifier .
+
+fibo-fbc-fct-cra:BloombergHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Bloomberg headquarters address" ;
+    skos:definition "headquarters address for Bloomberg L.P." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "731 Lexington Avenue" ;
+    fibo-fnd-plc-adr:hasPostalCode "10022" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:New_York ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-fbc-fct-cra:BloombergLP a owl:NamedIndividual,
+        fibo-be-fct-pub:MarketDataProvider,
+        fibo-fbc-pas-fpas:FinancialServiceProvider,
+        cmns-ra:RegistrationAuthority ;
+    rdfs:label "Bloomberg L.P." ;
+    skos:definition "Bloomberg L.P. functional entity, which is a global business and financial information services and news provider as well as a FIGI registration authority" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:BloombergLP-US-DE .
+
+fibo-fbc-fct-cra:BusinessEntityData-NL a owl:NamedIndividual,
+        fibo-be-le-cb:PrivatelyHeldCompany ;
+    rdfs:label "Business Entity Data (BED) B.V. NL" ;
+    skos:definition "Business Entity Data (BED) B.V. legal entity that is a privately held company in the Netherlands" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:BusinessEntityDataHeadquartersAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:BusinessEntityDataLegalAddress ;
+    fibo-be-le-lei:hasLegalFormAbbreviation "Besloten Vennootschap"@nl ;
+    fibo-be-oac-cctl:hasGlobalUltimateParent fibo-fbc-fct-cra:DepositoryTrustAndClearingCorporation ;
+    fibo-fnd-rel-rel:hasLegalName "Business Entity Data (BED) B.V." .
+
+fibo-fbc-fct-cra:ChicagoMercantileExchangeInc-US-DE a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "Chicago Mercantile Exchange, Inc. US-DE" ;
+    rdfs:seeAlso <http://www.cmegroup.com/company/cme.html> ;
+    skos:definition "Chicago Mercantile Exchange legal entity that is a Delaware Corporation" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:ChicagoMercantileExchangeHeadquartersAddress ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:ChicagoMercantileExchangeDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "Chicago Mercantile Exchange, Inc." ;
+    cmns-id:isIdentifiedBy fibo-fbc-fct-cra:ChicagoMercantileExchangeBusinessEntityIdentifier .
+
+fibo-fbc-fct-cra:ClearstreamBankingSA a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "Clearstream Banking S.A." ;
+    rdfs:seeAlso <https://www.euroclear.com/about/en/ourgovernancestructure.html> ;
+    skos:definition "Euroclear legal entity that provides post-trade infrastructure and securities services in Europe and internationally" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:ClearstreamBankingHeadquartersAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:ClearstreamBankingLegalAddress ;
+    fibo-be-le-lei:hasLegalFormAbbreviation "Societe Anonyme" ;
+    fibo-be-oac-cctl:hasSubsidiary fibo-fbc-fct-cra:LuxCSD ;
+    fibo-fbc-fct-breg:hasPriorLegalName "Cedel Bank S.A." ;
+    fibo-fnd-rel-rel:hasLegalName "Clearstream Banking S.A." ;
+    cmns-av:explanatoryNote "The company offers asset services, cash and banking services, connectivity, global securities financing, investment fund services, issuance, IT solutions, settlement, and market coverage services. It also provides post-trade infrastructure services for the German securities industry; and manages, safe keeps, and administers the securities that it holds on behalf of its customers. Clearstream Banking S.A was formerly known as Cedel Bank S.A. and changed its name to Clearstream Banking S.A. in March 2002. The company was founded in 1970 and is based in Luxembourg." .
+
+fibo-fbc-fct-cra:DTCHeadquartersAndLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "DTC headquarters and legal address" ;
+    skos:definition "headquarters and legal address for The Depository Trust Company" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "55 Water Street" ;
+    fibo-fnd-plc-adr:hasPostalCode "10041" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:New_York ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-fbc-fct-cra:EuroclearSANV a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "Euroclear SA/NV" ;
+    rdfs:seeAlso <https://www.euroclear.com/en/about/our-structure.html> ;
+    skos:definition "Euroclear legal entity that is the parent company of the international and national central securities depositories ((I)CSDs) of the Euroclear group of companies; it owns the group's shared securities processing platforms and delivers a range of services to the group's depositories" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:ClearstreamBankingHeadquartersAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:ClearstreamBankingLegalAddress ;
+    fibo-be-le-lei:hasLegalFormAbbreviation "Societe Anonyme/Naamloze Vennootschap" ;
+    fibo-fnd-rel-rel:hasLegalName "Euroclear SA/NV" .
+
+fibo-fbc-fct-cra:HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmannGmbHAndCoKG-DE a owl:NamedIndividual,
+        fibo-be-le-cb:PrivatelyHeldCompany ;
+    rdfs:label "Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann GmbH & Co. KG" ;
+    rdfs:seeAlso <https://www.wmgruppe.de/index.php> ;
+    skos:definition "Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann GmbH & Co. KG legal entity that is a privately held company in Germany" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:WMGruppeHeadquartersAndLegalAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:WMGruppeHeadquartersAndLegalAddress ;
+    fibo-be-le-lei:hasLegalFormAbbreviation "Gesellschaft mit beschränkter Haftung & Compagnie Kommanditgesellschaft"@de ;
+    fibo-fbc-fct-breg:hasTradingOrOperationalName "WM Gruppe" ;
+    fibo-fnd-rel-rel:hasLegalName "Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann GmbH & Co. KG"@de .
+
+fibo-fbc-fct-cra:ICETradeVaultLLC-US-DE a owl:NamedIndividual,
+        fibo-be-plc-plc:PrivateCompanyWithLimitedLiability ;
+    rdfs:label "ICE Trade Vault, LLC US-DE" ;
+    rdfs:seeAlso <https://www.icetradevault.com/> ;
+    skos:definition "ICE Trade Vault, LLC legal entity that is a Delaware Limited Liability Company" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:ICETradeVaultLLCHeadquartersAddress ;
+    fibo-be-oac-cctl:hasDomesticUltimateParent fibo-fbc-fct-cra:IntercontinentalExchange ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:ICETradeVaultLLCDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "ICE Trade Vault, LLC" ;
+    cmns-id:isIdentifiedBy fibo-fbc-fct-cra:ICETradeVaultLLCBusinessEntityIdentifier .
+
+fibo-fbc-fct-cra:IntercontinentalExchange a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    rdfs:label "Intercontinental Exchange" ;
+    rdfs:seeAlso <http://www.theice.com/> ;
+    skos:definition "Intercontinental Exchange functional entity, which owns exchanges for financial and commodity markets, and operates 23 regulated exchanges and marketplaces" ;
+    cmns-av:abbreviation "ICE" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:IntercontinentalExchangeInc-US-DE .
+
+fibo-fbc-fct-cra:LuxCSDAsLocalOperatingUnit a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LocalOperatingUnit ;
+    rdfs:label "Lux CSD" ;
+    rdfs:seeAlso <http://www.luxcsd.com/luxcsd-en/> ;
+    skos:definition "Lux CSD functional entity that is an LEI Local Operating Unit (LOU) registrar" ;
+    cmns-org:manages fibo-fbc-fct-cra:LuxCSDLEIRegistry ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:LuxCSDSA .
+
+fibo-fbc-fct-cra:SIXGroupAG a owl:NamedIndividual,
+        fibo-be-le-cb:Corporation ;
+    rdfs:label "SIX Group AG" ;
+    rdfs:seeAlso <https://www.six-group.com/en/home.html> ;
+    skos:definition "SIX Group AG legal entity" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:SIXGroupAGHeadquartersAddress ;
+    fibo-be-le-lei:hasLegalFormAbbreviation "Public Limited Company" ;
+    fibo-be-oac-cctl:hasSubsidiary fibo-fbc-fct-cra:SIXFinancialInformation ;
+    fibo-fbc-fct-breg:hasTradingOrOperationalName "SIX Group Ltd",
+        "SIX Group SA" ;
+    fibo-fnd-rel-rel:hasLegalName "SIX Group AG" ;
+    cmns-av:explanatoryNote "The company name SIX is an abbreviation and stands for Swiss Infrastructure and Exchange." .
+
+fibo-fbc-fct-cra:SIXGroupAGHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "SIX Group AG headquarters address" ;
+    skos:definition "headquarters address for SIX Group AG" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Hardturmstrasse 201" ;
+    fibo-fnd-plc-adr:hasPostalCode "8005" ;
+    cmns-loc:hasCountry lcc-3166-1:Switzerland ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Zurich .
+
+fibo-fbc-fct-cra:ThomsonReutersCorporation a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "Thomson Reuters Corporation" ;
+    rdfs:seeAlso <https://www.thomsonreuters.com/en.html> ;
+    skos:definition "Thomson Reuters legal entity, founded in Toronto with operating headquarters in New York that is both a Canadian and U.S. entity listed on both the Toronto Stock Exchange and New York Stock Exchange" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:ThomsonReutersHeadquartersAddress-CA,
+        fibo-fbc-fct-cra:ThomsonReutersHeadquartersAddress-US ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:ThomsonReutersLegalAddress ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:ThomsonReutersDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "Thomson Reuters Corporation",
+        "Thomson Reuters PLC" .
+
+fibo-fbc-fct-cra:UBIsecureOy-FI a owl:NamedIndividual,
+        fibo-be-plc-plc:PrivateLimitedCompany ;
+    rdfs:label "Ubisecure Oy FI" ;
+    skos:definition "Ubisecure Oy FI legal entity that is a Finnish private limited company" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:UBIsecureOyHeadquartersAddress ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:UBIsecureOyDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "Ubisecure Oy" .
+
+fibo-fbc-fct-cra:WMGruppeHeadquartersAndLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann (WM Gruppe) headquarters address" ;
+    skos:definition "headquarters and legal address for Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann (WM Gruppe)" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Duesseldorfer Strasse 16" ;
+    fibo-fnd-plc-adr:hasPostalCode "60329" ;
+    cmns-loc:hasCountry lcc-3166-1:Germany ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Frankfurt .
+
+<https://rdf.gleif.org/L1/L-5299000J2N45DDNE4Y28> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann GmbH & Co. KG legal entity identifier" ;
+    skos:definition "legal entity identifier for Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann GmbH & Co. KG" ;
+    cmns-dsg:hasTag "5299000J2N45DDNE4Y28" ;
+    cmns-id:identifies fibo-fbc-fct-cra:HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmannGmbHAndCoKG-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmann .
+
+<https://rdf.gleif.org/L1/L-529900T8BM49AURSDO55> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Ubisecure Oy legal entity identifier" ;
+    skos:definition "legal entity identifier for Ubisecure Oy" ;
+    cmns-dsg:hasTag "529900T8BM49AURSDO55" ;
+    cmns-id:identifies fibo-fbc-fct-cra:UBIsecureOy-FI ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:UbisecureAsLocalOperatingUnit .
+
+fibo-fbc-fct-cra:BusinessEntityData a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LocalOperatingUnit ;
+    rdfs:label "Business Entity Data (BED) B.V." ;
+    rdfs:seeAlso <https://www.gmeiutility.org/> ;
+    skos:definition "Business Entity Data (BED) B.V." ;
+    cmns-av:explanatoryNote "wholly-owned subsidiary of DTCC that owns and operates the Global Market Entity Identifier Utility (GMEI) legal entity identifier (LEI) solution in the federated Global LEI system (GLEIS)" ;
+    cmns-org:manages fibo-fbc-fct-cra:GlobalMarketsEntityIdentifierRegistry ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:BusinessEntityData-NL .
+
+fibo-fbc-fct-cra:ClearstreamBankingHeadquartersAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Clearstream Banking S.A. headquarters address" ;
+    skos:definition "headquarters address for Clearstream Banking S.A." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "42, Avenue J.F. Kennedy" ;
+    fibo-fnd-plc-adr:hasPostalCode "L-1855" ;
+    cmns-loc:hasCountry lcc-3166-1:Luxembourg ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Luxembourg .
+
+fibo-fbc-fct-cra:ClearstreamBankingLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Clearstream Banking S.A. legal address" ;
+    skos:definition "legal address for Clearstream Banking S.A." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "42, Avenue J.F. Kennedy" ;
+    fibo-fnd-plc-adr:hasPostalCode "L-1855" ;
+    cmns-loc:hasCountry lcc-3166-1:Luxembourg ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Luxembourg .
+
+fibo-fbc-fct-cra:DTC-US-NY a owl:NamedIndividual,
+        fibo-be-tr-tr:Trust ;
+    rdfs:label "The Depository Trust Company US-NY" ;
+    rdfs:isDefinedBy fibo-fbc-fct-cra: ;
+    skos:definition "Depository Trust Company legal entity that is a limited-purpose trust company under New York State banking law" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:DTCHeadquartersAndLegalAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:DTCHeadquartersAndLegalAddress ;
+    fibo-be-oac-cctl:hasDomesticUltimateParent fibo-fbc-fct-cra:DepositoryTrustAndClearingCorporation ;
+    fibo-be-oac-opty:hasDirectOwnership fibo-fbc-fct-cra:DepositoryTrustCompanyOwnership ;
+    fibo-be-oac-opty:hasDirectOwningEntity fibo-fbc-fct-cra:DTCC-US-DE ;
+    fibo-fnd-rel-rel:hasLegalName "Depository Trust Company" .
+
+fibo-fbc-fct-cra:DTCCDataRepositoryLLC-US-NY a owl:NamedIndividual,
+        fibo-be-plc-plc:PrivateCompanyWithLimitedLiability ;
+    rdfs:label "DTCC Data Repository (U.S) LLC US-NY" ;
+    rdfs:seeAlso <http://www.dtcc.com/about/businesses-and-subsidiaries/ddr-us> ;
+    skos:definition "DTCC Data Repository (U.S) LLC legal entity that is a New York Limited Liability Company" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:DTCCDataRepositoryHeadquartersAddress ;
+    fibo-be-oac-cctl:hasDomesticUltimateParent fibo-fbc-fct-cra:DepositoryTrustAndClearingCorporation ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:DTCCDataRepositoryDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "DTCC Data Repository (U.S) LLC" ;
+    cmns-id:isIdentifiedBy fibo-fbc-fct-cra:DTCCDataRepositoryBusinessEntityIdentifier .
+
+fibo-fbc-fct-cra:DepositoryTrustAndClearingCorporation a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    rdfs:label "The Depository Trust & Clearing Corporation" ;
+    rdfs:seeAlso <http://www.dtcc.com/about/businesses-and-subsidiaries> ;
+    skos:definition "Depository Trust & Clearing Corporation" ;
+    cmns-av:abbreviation "DTCC" ;
+    cmns-av:explanatoryNote "DTCC is a global financial services organization focused on developing solutions to secure today's marketplace, while shaping the future of our industry, whose mission includes risk mitigation, creation of market efficiencies, and cost reduction. They are a large financial services holding company, developing trade repositories and building global capabilities across the spectrum of asset classes." ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:DTCC-US-DE .
+
+fibo-fbc-fct-cra:HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmann a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LocalOperatingUnit ;
+    rdfs:label "Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann" ;
+    rdfs:seeAlso <https://www.wm-leiportal.org/?lang=en> ;
+    skos:definition "subdivision of Herausgebergemeinschaft Wertpapier-Mitteilungen Keppler, Lehmann that operates the WM Datenservice, Europe's largest registry for the Legal Entity Identifier (LEI)" ;
+    cmns-org:manages fibo-fbc-fct-cra:WMDatenserviceEntityIdentifierRegistry ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmannGmbHAndCoKG-DE .
+
+fibo-fbc-fct-cra:IntercontinentalExchangeInc-US-DE a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "Intercontinental Exchange, Inc. US-DE" ;
+    rdfs:seeAlso <http://www.theice.com/> ;
+    skos:definition "Intercontinental Exchange legal entity that is a Delaware Corporation" ;
+    fibo-be-le-cb:hasDateOfRegistration fibo-fbc-fct-cra:IntercontinentalExchangeDateRegistered ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:IntercontinentalExchangeHeadquartersAddress ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:IntercontinentalExchangeDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "Intercontinental Exchange, Inc." .
+
+fibo-fbc-fct-cra:LondonStockExchangePlc a owl:NamedIndividual,
+        fibo-be-le-cb:Corporation ;
+    rdfs:label "London Stock Exchange plc." ;
+    rdfs:seeAlso <http://www.londonstockexchange.com/home/homepage.htm> ;
+    skos:definition "London Stock Exchange plc. legal entity" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:LondonStockExchangeHeadquartersAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:LondonStockExchangeLegalAddress ;
+    fibo-be-le-lei:hasLegalFormAbbreviation "Public Limited Company" ;
+    fibo-fnd-rel-rel:hasLegalName "London Stock Exchange plc." .
+
+fibo-fbc-fct-cra:LuxCSDSA a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "LuxCSD S.A." ;
+    rdfs:seeAlso <http://www.luxcsd.com/luxcsd-en/> ;
+    skos:definition "Lux CSD legal entity" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:ClearstreamBankingHeadquartersAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:ClearstreamBankingLegalAddress ;
+    fibo-be-le-lei:hasLegalFormAbbreviation "Societe Anonyme" ;
+    fibo-fnd-rel-rel:hasLegalName "LuxCSD S.A." ;
+    cmns-av:explanatoryNote "The European Central Bank (ECB) approved LuxCSD for its Securities Settlement System (SSS)." .
+
+fibo-fbc-fct-cra:SIXFinancialInformationAG a owl:NamedIndividual,
+        fibo-be-le-cb:Corporation ;
+    rdfs:label "SIX Financial Information AG" ;
+    rdfs:seeAlso <https://www.six-group.com/en/home.html> ;
+    skos:definition "SIX Financial Information AG legal entity" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:SIXGroupAGHeadquartersAddress ;
+    fibo-be-le-lei:hasLegalFormAbbreviation "Public Limited Company" ;
+    fibo-be-oac-cctl:hasGlobalUltimateParent fibo-fbc-fct-cra:SIXGroup ;
+    fibo-fbc-fct-breg:hasPriorLegalName "Telekurs AG",
+        "Telekurs Holding AG",
+        "Telekurs Holding Ltd.",
+        "Telekurs Holding SA",
+        "Telekurs Ltd",
+        "Telekurs SA" ;
+    fibo-fbc-fct-breg:hasTradingOrOperationalName "SIX Financial Information Ltd",
+        "SIX SIX Financial Information SA" ;
+    fibo-fnd-rel-rel:hasLegalName "SIX Financial Information AG" ;
+    cmns-av:explanatoryNote "The company name SIX is an abbreviation and stands for Swiss Infrastructure and Exchange." .
+
+fibo-fbc-fct-cra:SPGlobalInc-US-NY a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "S&P Global Inc. US-NY" ;
+    rdfs:seeAlso <http://www.spglobal.com/> ;
+    skos:definition "S&P Global legal entity that is a New York Domestic Business Corporation" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:SPGlobalHeadquartersAddress ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:SPGlobalDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "S&P Global Inc." ;
+    fibo-fnd-rel-rel:wasFormerlyKnownAs "McGraw Hill Financial, Inc.",
+        "The McGraw-Hill Companies, Inc." .
+
+fibo-fbc-fct-cra:BloombergFinanceLP-US-DE a owl:NamedIndividual,
+        fibo-be-ptr-ptr:LimitedPartnership ;
+    rdfs:label "Bloomberg Finance L.P. US-DE" ;
+    rdfs:seeAlso <http://www.bloomberg.com/> ;
+    skos:definition "Bloomberg Finance L.P. legal entity that is a Delaware Limited Partnership" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:BloombergHeadquartersAddress ;
+    fibo-be-oac-cctl:hasDomesticUltimateParent fibo-fbc-fct-cra:BloombergLP ;
+    fibo-be-oac-opty:hasDirectOwnership fibo-fbc-fct-cra:BloombergFinanceOwnership ;
+    fibo-be-oac-opty:hasDirectOwningEntity fibo-fbc-fct-cra:BloombergLP-US-DE ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:BloombergFinanceDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "Bloomberg Finance L.P." .
+
+fibo-fbc-fct-cra:BloombergLP-US-DE a owl:NamedIndividual,
+        fibo-be-ptr-ptr:LimitedPartnership ;
+    rdfs:label "Bloomberg L.P. US-DE" ;
+    rdfs:seeAlso <http://www.bloomberg.com/> ;
+    skos:definition "Bloomberg L.P. legal entity that is a Delaware Limited Partnership" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:BloombergHeadquartersAddress ;
+    fibo-be-oac-cctl:hasSubsidiary fibo-fbc-fct-cra:BloombergFinanceLP ;
+    fibo-fbc-fct-fse:hasDateEstablished fibo-fbc-fct-cra:BloombergDateEstablished ;
+    fibo-fnd-rel-rel:hasLegalName "Bloomberg L.P." .
+
+fibo-fbc-fct-cra:DTCC-US-DE a owl:NamedIndividual,
+        fibo-be-le-cb:StockCorporation ;
+    rdfs:label "DTCC US-DE" ;
+    skos:definition "The Depository Trust & Clearing Corporation (DTCC) legal entity that is a Delaware corporation" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-cra:DTCCHeadquartersAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-fbc-fct-cra:DTCCLegalAddress ;
+    fibo-be-oac-cctl:hasSubsidiary fibo-fbc-fct-cra:BusinessEntityData,
+        fibo-fbc-fct-cra:DepositoryTrustCompany ;
+    fibo-fnd-rel-rel:hasLegalName "DTCC INC." .
+
+fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LocalOperatingUnit ;
+    rdfs:label "Bloomberg Finance L.P. as local operating unit" ;
+    skos:definition "Bloomberg Finance L.P. functional entity that is a legal entity identifier (LEI) local operating unit (LOU) registrar" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:BloombergFinanceLP-US-DE .
+
+<https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Bloomberg Finance LP legal entity identifier" ;
+    skos:definition "legal entity identifier for Bloomberg Finance LP" ;
+    cmns-dsg:hasTag "5493001KJTIIGC8Y1R12" ;
+    cmns-id:identifies fibo-fbc-fct-cra:BloombergFinanceLP-US-DE ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:BloombergFinanceLPAsLocalOperatingUnit .
+

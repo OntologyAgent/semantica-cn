@@ -1,0 +1,34 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-cr-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/MetadataDERCreditDerivatives/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-cr-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Derivatives (DER) Credit Derivatives Module",
+        "DER 信用衍生品模块元数据（Metadata for the DER Credit Derivatives Module）"@zh ;
+    dcterms:abstract "The credit derivatives module covers derivatives that allow either the lender or borrower to transfer the credit risk, or risk of default, to another party other than the lender or debtholder." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-02-03T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明信用衍生品（Credit Derivatives）模块由信用违约互换本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20230201/CreditDerivatives/MetadataDERCreditDerivatives/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.",
+        "Copyright (c) 2018-2023 Object Management Group, Inc." .
+
+fibo-der-cr-mod:CreditDerivativesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "credit derivatives module" ;
+    dcterms:abstract "The credit derivatives module covers derivatives that allow either the lender or borrower to transfer the credit risk, or risk of default, to another party other than the lender or debtholder." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/CreditDefaultSwaps/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO DER Credit Derivatives Module",
+        "Financial Industry Business Ontology (FIBO) Derivatives (DER) Credit Derivatives Module" ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.",
+        "Copyright (c) 2018-2023 Object Management Group, Inc." .
+

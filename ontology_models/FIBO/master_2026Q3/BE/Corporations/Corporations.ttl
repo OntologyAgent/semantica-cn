@@ -1,0 +1,122 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-corp-corp: <https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/Corporations/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-corp-corp: a owl:Ontology ;
+    rdfs:label "Corporations Ontology",
+        "公司本体（Corporations Ontology）"@zh ;
+    dcterms:abstract "This ontology originally defined the fundamental concepts for companies incorporated by the issuance of shares. Terms defined in this ontology are those which are applicable to all such entities. Many of these concepts form the basis of the relationships of ownership and control which obtain between entities of this type." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义公司（corporation）这一法律实体形态：股份制、依法注册、具有独立法人资格的商业组织，及其注册与股份结构相关概念。"@zh ;
+    owl:imports fibo-be-le-cb:,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/>,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        <https://www.omg.org/spec/Commons/DatesAndTimes/>,
+        <https://www.omg.org/spec/Commons/Designators/>,
+        <https://www.omg.org/spec/Commons/Identifiers/>,
+        <https://www.omg.org/spec/Commons/Organizations/>,
+        <https://www.omg.org/spec/Commons/RegulatoryAgencies/> ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20251001/Corporations/Corporations/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20131101/Corporations/Corporations.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20160201/Corporations/Corporations.rdf version of this ontology was modified per the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180901/Corporations/Corporations.rdf version of this ontology was modified per the FIBO 2.0 RFC to generalize certain unions where they were no longer required.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190101/Corporations/Corporations.rdf version of this ontology was modified to reflect moving hasObjective to FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190401/Corporations/Corporations.rdf version of this ontology was modified to replace hasDefinition with isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190701/Corporations/Corporations.rdf version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190901/Corporations/Corporations.rdf version of this ontology was modified to eliminate duplication of concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200201/Corporations/Corporations.rdf version of this ontology was modified to eliminate references to external dictionary sites that no longer resolve, eliminate circular and ambiguous definitions and make incorporation date and registration date explicit dates.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210301/Corporations/Corporations.rdf version of this ontology was modified to reflect the move of some organization-specific concepts from BE to FND and to clean up typos.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20211201/Corporations/Corporations.rdf version of this ontology was modified to address text formatting hygiene issues and eliminate a dead link.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/Corporations/Corporations.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary and revise definitions to be ISO 704 compliant as needed.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/Corporations/Corporations.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/Corporations/Corporations.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250301/Corporations/Corporations.rdf version of the ontology was modified to merge all constructs that were originally in this ontology with corporate bodies under legal entities for consistency and useability (BE-259)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-be-corp-corp:BoardAgreement a owl:Class ;
+    rdfs:label "董事会协议（BoardAgreement）"@zh ;
+    rdfs:comment "组织董事会成员之间正式的、具有法律约束力的协议。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-be-le-cb:BoardAgreement .
+
+fibo-be-corp-corp:JointStockCompany a owl:Class ;
+    rdfs:label "合股公司（JointStockCompany）"@zh ;
+    rdfs:comment "营利性、非法人企业，兼有公司与合伙的特征，所有权权益以股份表示。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-be-le-cb:JointStockCompany .
+
+fibo-be-corp-corp:PrivatelyHeldCompany a owl:Class ;
+    rdfs:label "私人持股公司（PrivatelyHeldCompany）"@zh ;
+    rdfs:comment "已发行股份全部由家族或少数投资者团体持有、公众无法购买的公司。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-be-le-cb:PrivatelyHeldCompany .
+
+fibo-be-corp-corp:PubliclyHeldCompany a owl:Class ;
+    rdfs:label "公众持股公司（PubliclyHeldCompany）"@zh ;
+    rdfs:comment "股份公开交易并持有的公司。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-be-le-cb:PubliclyHeldCompany .
+
+fibo-be-corp-corp:RegistrationIdentifier a owl:Class ;
+    rdfs:label "注册标识符（RegistrationIdentifier）"@zh ;
+    rdfs:comment "组织注册时（通常在其组建所在管辖区）官方分配的标识符。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-be-le-cb:RegistrationIdentifier .
+
+fibo-be-corp-corp:RegistrationIdentifierScheme a owl:Class ;
+    rdfs:label "注册标识符方案（RegistrationIdentifierScheme）"@zh ;
+    rdfs:comment "按签发注册机构规定注册标识符的方案。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-be-le-cb:RegistrationIdentifierScheme .
+
+fibo-be-corp-corp:ReligiousCorporation a owl:Class ;
+    rdfs:label "宗教公司（ReligiousCorporation）"@zh ;
+    rdfs:comment "目标特定于某套基本信仰与实践的非营利公司。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-be-le-cb:ReligiousCorporation .
+
+fibo-be-corp-corp:hasDateOfIncorporation a owl:ObjectProperty ;
+    rdfs:label "具有注册成立日期（hasDateOfIncorporation）"@zh ;
+    rdfs:comment "标识申报文件中所载的正式注册成立日期。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentProperty fibo-be-le-cb:hasDateOfIncorporation .
+
+fibo-be-corp-corp:hasDateOfRegistration a owl:ObjectProperty ;
+    rdfs:label "具有登记日期（hasDateOfRegistration）"@zh ;
+    rdfs:comment "标识公司为监管和/或税务目的在某管辖区登记的日期。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentProperty fibo-be-le-cb:hasDateOfRegistration .
+
+fibo-be-corp-corp:hasIssuedCapital a owl:ObjectProperty ;
+    rdfs:label "具有已发行资本（hasIssuedCapital）"@zh ;
+    rdfs:comment "标识股东所持全部股份的总价值。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentProperty fibo-be-le-cb:hasIssuedCapital .
+
+fibo-be-corp-corp:hasSharesAuthorized a owl:DatatypeProperty ;
+    rdfs:label "具有授权股份数（hasSharesAuthorized）"@zh ;
+    rdfs:comment "标识董事会确定的可发行股份的最大数量。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentProperty fibo-be-le-cb:hasSharesAuthorized .
+

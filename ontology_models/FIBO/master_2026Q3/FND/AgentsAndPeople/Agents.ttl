@@ -1,0 +1,57 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-aap-agt: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-aap-agt: a owl:Ontology ;
+    rdfs:label "Agents Ontology",
+        "智能体本体（Agents Ontology）"@zh ;
+    dcterms:abstract "This ontology extends the Commons 1.1 Parties and Situations ontology to define defines the concept of a software system, which may or may not be autonomous. Other concepts that were originally defined in this ontology have been replaced with their corresponding concepts in Commons." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+		Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "本本体扩展 Commons 1.1 参与方与情境本体，定义软件系统的概念，该系统可能是也可能不是自主的。原本在此定义的其他概念已被 Commons 中的对应概念取代。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20260701/AgentsAndPeople/Agents/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20130801/AgentsAndPeople/Agents.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20141101/AgentsAndPeople/Agents.rdf version of this ontology was modified to support the FIBO 2.0 RFC, primarily with respect to equivalence relationships to LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/AgentsAndPeople/Agents.rdf version of this ontology was modified to loosen the range restriction on hasName to rdfs:Literal, facilitating multi-lingual name representation.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190301/AgentsAndPeople/Agents.rdf version of this ontology was modified to eliminate duplication with concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/AgentsAndPeople/Agents.rdf version of this ontology was modified to add a custom datatype for text values (which might be either xsd:string or rdf:langString) and use that in the restriction on hasName on autonomous agent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210601/AgentsAndPeople/Agents.rdf version of this ontology was modified to add notes on the custom Text datatype indicating that it is outside the RL profile and that if someone wants to use this ontology with OWL 2 RL rules they might want to comment this out / eliminate it where it is used.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210901/AgentsAndPeople/Agents.rdf version of this ontology was modified to address hygiene issues with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/AgentsAndPeople/Agents.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/AgentsAndPeople/Agents.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/AgentsAndPeople/Agents.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231101/AgentsAndPeople/Agents.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240101/AgentsAndPeople/Agents.rdf version of the ontology was modified to eliminate elements that have been deprecated for several quarters (FND-386).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20241101/AgentsAndPeople/Agents.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/AgentsAndPeople/Agents.rdf version of the ontology was modified to deprecate the concept of automated system, since it is only used in one place and is not well defined, thus allowing elimination of this ontology to simplify FND for better usability (FND-411).",
+        """The https://spec.edmcouncil.org/fibo/ontology/Foundations/20130601/AgentsAndPeople/Agents.owl version of the ontology was revised in advance of the September 2013 New Brunswick, NJ meeting, as follows:
+		(1) to use slash style URI/IRIs (also called 303 URIs, vs. hash style) as required to support server side processing 
+		(2) to use version-independent IRIs for all definitions internally as opposed to version-specific IRIs
+		(3) to change the file suffix from .owl to .rdf to increase usability in RDF tools
+		(4) to use 4-level abbreviations and corresponding namespace prefixes for all FIBO ontologies, reflecting a family/specification/module/ontology structure
+		(5) to incorporate changes to the specification metadata to support documentation at the family, specification, module, and ontology level, similar to the abbreviations.""" ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-fnd-aap-agt:AutomatedSystem a owl:Class ;
+    rdfs:label "自动化系统（automated system）"@zh ;
+    rdfs:comment "自动执行任务的系统。"@zh ;
+    owl:deprecated true ;
+    skos:note "This class was replaced with a class by the same name in mortgage origination, which is the only place it was used in FIBO, in July 2026. It and the ontology will be elminated by the Q2 2027 release. It is retained until then strictly for backwards compatibility for our users. No equivalent class reference is provided to limit dependencies on this ontology." .
+

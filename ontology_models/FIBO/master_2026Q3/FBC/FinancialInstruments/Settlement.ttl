@@ -1,0 +1,215 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fbc-fi-stl: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fi-stl: a owl:Ontology ;
+    rdfs:label "Settlement Ontology"@en,
+        "结算本体（Settlement Ontology）"@zh ;
+    dcterms:abstract "This ontology defines high-level concepts for settlement that are applicable across FIBO domain areas, such as for loans, securities, and derivatives." ;
+    dcterms:license """Copyright (c) 2018-2025 EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义交易结算（settlement）：券款对付、结算日期与结算方式。"@zh ;
+    owl:imports fibo-fbc-fi-ip:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-doc:,
+        cmns-qtu: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FinancialInstruments/Settlement/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20221001/FinancialInstruments/Settlement.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FinancialInstruments/Settlement.rdf version of this ontology was revised to integrate the notion of a value assessment with a settlement event and to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FinancialInstruments/Settlement.rdf version of this ontology was revised to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/FinancialInstruments/Settlement.rdf version of this ontology was revised to better integrate settlement with the overall lifecycle of a contract (FBC-317)",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240201/FinancialInstruments/Settlement.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." .
+
+fibo-fbc-fi-stl:CashSettlementTerms a owl:Class ;
+    rdfs:label "cash settlement terms"@en,
+        "现金结算条款（cash settlement terms）"@zh ;
+    rdfs:comment "以现金方式结算的合同承诺。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-stl:hasSettlementAmount ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fi-stl:DeliveryInCash ;
+            owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fi-ip:SecurityPrice ;
+            owl:onProperty fibo-fnd-acc-cur:hasPrice ],
+        fibo-fbc-pas-fpas:SettlementTerms ;
+    skos:definition "contractual commitment to settle in cash" ;
+    cmns-av:explanatoryNote "Note that the security price represents a price per share or per lot, whereas the settlement amount represents a total." .
+
+fibo-fbc-fi-stl:ElectAtExerciseMethod a owl:NamedIndividual,
+        fibo-fbc-fi-stl:DeliveryMethod ;
+    rdfs:label "elect at exercise method"@en ;
+    skos:definition "commitment to determine the delivery strategy at the time of exercise"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-fbc-fi-stl:NonDeliverableMethod a owl:NamedIndividual,
+        fibo-fbc-fi-stl:DeliveryMethod ;
+    rdfs:label "non-deliverable method"@en ;
+    skos:definition "commitment with respect to synthetic options on foreign exchange forwards that are based on non-convertible or thinly traded currencies"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-fbc-fi-stl:PhysicalSettlementTerms a owl:Class ;
+    rdfs:label "physical settlement terms"@en,
+        "实物结算条款（physical settlement terms）"@zh ;
+    rdfs:comment "承诺在指定交割日交付实际标的资产，而非现金。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fi-stl:PhysicalDeliveryMethod ;
+            owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ],
+        fibo-fbc-pas-fpas:SettlementTerms ;
+    skos:definition "commitment to deliver the actual underlying asset on the specified delivery date, rather than cash"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en ;
+    cmns-av:explanatoryNote "If you sell a gold futures contract of say 100 troy ounces then you have to deliver real gold to the buyer on the mutually agreed date. Most derivatives are not actually exercised, but are traded out before their delivery date. However, physical delivery still occurs with some trades: it is most common with commodities, but can also occur with other financial instruments."@en .
+
+fibo-fbc-fi-stl:SettlementEvent a owl:Class ;
+    rdfs:label "settlement event"@en,
+        "结算事件（settlement event）"@zh ;
+    rdfs:comment "完成交易或其一部分的具体事件，包括但不限于完成账务处理、交换对价等。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fi-ip:SecurityPrice ;
+            owl:onProperty fibo-fnd-acc-cur:hasPrice ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fi-stl:Settlement ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-asmt:ValueAssessment ;
+            owl:onProperty fibo-fnd-rel-rel:involves ],
+        fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence ;
+    skos:definition "specific event involving the finalization a transaction or portion thereof, including but not limited to finalizing accounting, exchanging consideration, and/or legally recording documents, as applicable" .
+
+fibo-fbc-fi-stl:hasPreferredSettlementCurrency a owl:ObjectProperty ;
+    rdfs:label "has preferred settlement currency",
+        "具有首选结算货币（has preferred settlement currency）"@zh ;
+    rdfs:comment "指明结算所用的首选货币。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasCurrency ;
+    skos:definition "indicates the preferred currency for settlement purposes" ;
+    cmns-av:explanatoryNote "This property should only be used in cases where the settlement currency is distinct from the currency in which the instrument is denominated." .
+
+fibo-fbc-fi-stl:isFractionalEligible a owl:DatatypeProperty ;
+    rdfs:label "is fractional eligible",
+        "是否允许零碎份额（is fractional eligible）"@zh ;
+    rdfs:comment "表明该证券是否可以包含零碎份额或零碎数量。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the security can contain fractional share/amounts" .
+
+fibo-fbc-fi-stl:isFullyAutomatedSecuritiesTransferApplicable a owl:DatatypeProperty ;
+    rdfs:label "is fully automated securities transfer applicable",
+        "是否适用全自动证券过户（is fully automated securities transfer applicable）"@zh ;
+    rdfs:comment "表明该证券是否作为 FAST（全自动证券过户）计划的一部分由过户代理机构持有。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the security is to be held at the transfer agent as part of the FAST (Fully Automated Securities Transfer) program" ;
+    cmns-av:abbreviation "is FAST applicable" ;
+    cmns-av:explanatoryNote "The Fast Automated Securities Transfer Program (FAST) is a contract between DTC (and its subsidiaries) and transfer agents whereby FAST agents act as custodians for DTC." .
+
+fibo-fbc-fi-stl:DeliveryInCash a owl:NamedIndividual,
+        fibo-fbc-fi-stl:DeliveryMethod ;
+    rdfs:label "delivery in cash" ;
+    skos:definition "commitment to deliver an amount of money at the earliest available date as per settlement convention" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-fbc-fi-stl:PhysicalDeliveryMethod a owl:NamedIndividual,
+        fibo-fbc-fi-stl:DeliveryMethod ;
+    rdfs:label "physical delivery method"@en ;
+    skos:definition "commitment to settle an obligation through the receipt or delivery of the actual underlying instrument(s) or other asset, such as a commodity, instead of through cash settlement"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-fbc-fi-stl:SettlementConvention a owl:Class ;
+    rdfs:label "settlement convention",
+        "结算惯例（settlement convention）"@zh ;
+    rdfs:comment "在证券或工具交易结算过程中，用于（根据既定结算日）确定截止日期的惯例。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasNumericValue ;
+            owl:someValuesFrom xsd:positiveInteger ],
+        fibo-fnd-dt-bd:Convention ;
+    skos:definition "convention employed to determine the closing date (from the stated settlement date) in the process of settling a transaction on which securities or interests in securities are delivered, usually against (in simultaneous exchange for) payment of some consideration" ;
+    cmns-av:explanatoryNote "This is often stated in the form 'T+n' where n is the number of business days from the specified settlement date (T)." .
+
+fibo-fbc-fi-stl:hasSettlementAmount a owl:ObjectProperty ;
+    rdfs:label "has settlement amount"@en,
+        "具有结算金额（has settlement amount）"@zh ;
+    rdfs:comment "指明现金结算所需的货币金额。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "indicates the monetary amount required for cash settlement" .
+
+fibo-fbc-fi-stl:Settlement a owl:Class ;
+    rdfs:label "settlement"@en,
+        "结算（settlement）"@zh ;
+    rdfs:comment "完成交易的行为，包括但不限于完成账务处理、交换对价以及依法登记文件等。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:ContractLifecycleEvent ;
+    skos:definition "act of finalizing a transaction, including but not limited to finalizing accounting, exchanging consideration, and/or legally recording documents, as applicable" .
+
+fibo-fbc-fi-stl:hasDeliveryMethod a owl:ObjectProperty ;
+    rdfs:label "has settlement method"@en,
+        "具有结算方式（has settlement method）"@zh ;
+    rdfs:comment "从交割角度规定结算策略。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range fibo-fbc-fi-stl:DeliveryMethod ;
+    rdfs:subPropertyOf fibo-fnd-gao-obj:hasStrategy ;
+    skos:definition "specifies the strategy for settlement from a delivery perspective" .
+
+fibo-fbc-fi-stl:DeliveryMethod a owl:Class,
+        fibo-fnd-agr-ctr:ContractualCommitment ;
+    rdfs:label "delivery method"@en,
+        "交割方式（delivery method）"@zh ;
+    rdfs:comment "按合同结算条款转让商品、货币、证券、现金或其他工具的方式与承诺。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:DistributionStrategy ;
+    skos:definition "method and commitment to transfer a commodity, currency, security, cash or another instrument as defined in the settlement terms of the contract" .
+
+fibo-fbc-pas-fpas:SettlementTerms a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ;
+            owl:someValuesFrom fibo-fbc-fi-stl:DeliveryMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-fi-stl:Settlement ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:specifies ;
+            owl:someValuesFrom fibo-fbc-fi-stl:SettlementConvention ] .
+

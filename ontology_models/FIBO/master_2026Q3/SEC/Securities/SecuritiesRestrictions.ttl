@@ -1,0 +1,194 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-law-cor: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix fibo-sec-sec-rst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesRestrictions/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-sec-rst: a owl:Ontology ;
+    rdfs:label "Securities Restrictions Ontology",
+        "证券限制本体（Securities Restrictions Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the concepts related to restrictions on finanicial instruments, securities and listings." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义证券发行与转让限制的通用概念，是各法域具体限制本体的基础。"@zh ;
+    owl:imports fibo-be-le-lp:,
+        fibo-be-oac-opty:,
+        fibo-fbc-fi-fi:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-law-cor:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20250301/Securities/SecuritiesRestrictions/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/SEC/20180801/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to simplify the hierarchy with respect to regulatory requirements and eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20180901/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to reflect the change in representation of a listing.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20191201/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to eliminate duplication of concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200201/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to eliminate an unused ontology import and to augment the information associated with references needed to define depositary receipts.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210401/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20211201/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Securities/SecuritiesRestrictions.rdf version of this ontology was modified to move the property, 'is conferred on' to the Legal Capacity ontology and to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230301/Securities/SecuritiesRestrictions.rdf version of this ontology was revised to reuse the representation of institutions based on their definitions in the law.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230401/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20231101/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240101/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to add a definition for institutional investor and move jurisdiction-specific definitions to new ontologies for those jurisdictions (SEC-113).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240601/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to eliminate elements that have been deprecated over 6 months (FND-386).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20241101/Securities/SecuritiesRestrictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." .
+
+fibo-sec-sec-rst:ContractualRestriction a owl:Class ;
+    rdfs:label "contractual restriction",
+        "合同限制（contractual restriction）"@zh ;
+    rdfs:comment "在工具本身条款中规定、对证券持有人或发行人施加限制的合同条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-agr-ctr:Contract ;
+            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ],
+        fibo-fnd-agr-ctr:ContractualCommitment,
+        fibo-sec-sec-rst:SecuritiesRestriction ;
+    skos:definition "contract terms setting out restrictions on either the holder or the issuer of the security, as specified in the terms of the instrument itself" .
+
+fibo-sec-sec-rst:InstitutionalInvestor a owl:Class ;
+    rdfs:label "institutional investor",
+        "机构投资者（institutional investor）"@zh ;
+    rdfs:comment "汇集资金购买证券、不动产和其他投资资产或发放贷款的投资者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-org:LegalEntity ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        fibo-be-oac-opty:Investor ;
+    owl:disjointWith fibo-sec-sec-rst:IndividualInvestor ;
+    skos:definition "investor that pools money to purchase securities, real property, and other investment assets or originates loans" ;
+    cmns-av:explanatoryNote "Institutional investors typically buy, sell, and manage stocks, bonds, and other investment securities on behalf of its clients, customers, members, or shareholders. These include endowment funds, commercial banks, mutual funds, hedge funds, pension funds, and insurance companies. Institutional investors are able to invest in riskier securities and ventures than average investors because they are more sophisticated with respect to their investment methodologies." .
+
+fibo-sec-sec-rst:InvestorsDomicileRestriction a owl:Class ;
+    rdfs:label "investors' domicile restriction",
+        "投资者住所地限制（investors' domicile restriction）"@zh ;
+    rdfs:comment "规定证券持有人住所地要求的法律持有限制。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-rst:LegalHoldingRestriction ;
+    skos:definition "legal holding restriction that specifies where holders of a security may be domiciled" .
+
+fibo-sec-sec-rst:QualifiedInvestorRestriction a owl:Class ;
+    rdfs:label "qualified investor restriction",
+        "合格投资者限制（qualified investor restriction）"@zh ;
+    rdfs:comment "为特定目的定义合格投资者概念、并规定仅合格投资者可持有该证券的法律持有限制。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:DatePeriod ;
+            owl:onProperty fibo-sec-sec-rst:hasHoldingPeriod ],
+        fibo-sec-sec-rst:LegalHoldingRestriction ;
+    skos:definition "legal holding restriction that defines the concept of a qualified investor for a given purpose and specifies that only such qualified investors may hold the security" ;
+    cmns-av:explanatoryNote "If a holding period is not defined, then the period for which the restriction applies is indefinite." .
+
+fibo-sec-sec-rst:TradingRestriction a owl:Class ;
+    rdfs:label "trading restriction",
+        "交易限制（trading restriction）"@zh ;
+    rdfs:comment "以某种方式限制交易的限制，通常概述于条款清单或其他文件中，包括但不限于转让限制。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-rst:SecuritiesRestriction ;
+    skos:definition "restriction that limits trading in some manner, typically summarized on term sheets or in other documentation, including but not limited to restrictions on day trading" .
+
+fibo-fbc-fi-fi:FinancialInstrument a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-sec-rst:SecuritiesRestriction ;
+            owl:onProperty fibo-sec-sec-rst:hasRestriction ] .
+
+fibo-sec-sec-lst:Listing a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-sec-rst:SecuritiesRestriction ;
+            owl:onProperty fibo-sec-sec-rst:hasRestriction ] .
+
+fibo-sec-sec-rst:IndividualInvestor a owl:Class ;
+    rdfs:label "individual investor",
+        "个人投资者（individual investor）"@zh ;
+    rdfs:comment "作为自然人（而非组织）的投资者，从法律角度看可能是也可能不是合格投资者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        fibo-be-oac-opty:Investor ;
+    skos:definition "investor that is a person, rather than an organization, who may or may not be considered a qualified investor from a legal perspective" .
+
+fibo-sec-sec-rst:SecuritiesRegulation a owl:Class ;
+    rdfs:label "securities regulation",
+        "证券法规（securities regulation）"@zh ;
+    rdfs:comment "在法律中成文化、专门针对证券和投资的法规。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
+            owl:someValuesFrom fibo-fnd-law-cor:StatuteLaw ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-sec-rst:SecuritiesRestriction ;
+            owl:onProperty cmns-dsg:defines ],
+        fibo-fnd-law-lcap:Regulation ;
+    skos:definition "regulation codified in law specific to securities and investments" .
+
+fibo-sec-sec-rst:hasHoldingPeriod a owl:ObjectProperty ;
+    rdfs:label "has holding period",
+        "具有持有期（has holding period）"@zh ;
+    rdfs:comment "标识适用于某一金融资产的持有期。"@zh ;
+    rdfs:range cmns-dt:DatePeriod ;
+    rdfs:subPropertyOf cmns-dt:hasDatePeriod ;
+    skos:definition "identifies a holding period applicable to some financial asset" .
+
+fibo-sec-sec-rst:LegalHoldingRestriction a owl:Class ;
+    rdfs:label "legal holding restriction",
+        "法律持有限制（legal holding restriction）"@zh ;
+    rdfs:comment "适用于持有证券的证券限制。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-rst:SecuritiesRestriction ;
+    skos:definition "security restriction applicable to holding the security" .
+
+fibo-sec-sec-rst:hasRestriction a owl:ObjectProperty ;
+    rdfs:label "has restriction",
+        "具有限制（has restriction）"@zh ;
+    rdfs:comment "标识适用于给定金融工具或挂牌的限制。"@zh ;
+    rdfs:range fibo-sec-sec-rst:SecuritiesRestriction ;
+    rdfs:subPropertyOf cmns-doc:specifies ;
+    skos:definition "identifies a restriction applicable to a given financial instrument or listing" .
+
+fibo-sec-sec-rst:SecuritiesRestriction a owl:Class ;
+    rdfs:label "securities restriction",
+        "证券限制（securities restriction）"@zh ;
+    rdfs:comment "依法律或合同规定、适用于金融工具或挂牌的法定义务。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-sec-sec-lst:Listing ) ] ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-law-cor:StatuteLaw fibo-sec-sec-rst:SecuritiesRegulation fibo-fnd-agr-ctr:Contract ) ] ;
+            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ],
+        fibo-fnd-law-lcap:LegalObligation ;
+    skos:definition "legal obligation that is applicable to a financial instrument or listing as mandated in a law or by contract" .
+

@@ -1,0 +1,256 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-oac-cctl: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateControl/> .
+@prefix fibo-be-oac-cown: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateOwnership/> .
+@prefix fibo-be-oac-cpty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-fnd-oac-ctl: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Control/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-be-oac-cctl: a owl:Ontology ;
+    rdfs:label "Corporate Control Ontology",
+        "公司控制本体（Corporate Control Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts relating to corporation-specific control. These concepts are based on the general types of control (both de facto control and controlling interests), as defined in the ControlParties ontology, and are the specific examples of these concepts as they apply to companies incorporated by the issuance of shares." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+		Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义公司层面的控制关系：控股股东、多数/少数控制、表决权控制等。"@zh ;
+    owl:imports fibo-be-le-fbo:,
+        fibo-be-oac-cpty:,
+        fibo-be-oac-cown:,
+        fibo-be-oac-opty:,
+        fibo-fnd-oac-ctl:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/OwnershipAndControl/CorporateControl/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20131101/OwnershipAndControl/CorporateControl.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20160201/OwnershipAndControl/CorporateControl.rdf version of this ontology was modified per the FIBO 2.0 RFC to add missing definitions and labels, eliminate references to BusinessFacingTypes, replace min 1 QCRs with someValuesFrom, address other hygiene issues, and limit the burden of certain restrictions, such as those on stock corporation, for typical applications.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/OwnershipAndControl/CorporateControl.rdf version of this ontology was modified as a part of a simplification strategy for the organizational class hierarchy and to correct reasoning anomalies.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190101/OwnershipAndControl/CorporateControl.rdf version of this ontology was revised to allow any legal entity to participate in control relations rather than limiting control to a stock corporation, and simplifying others such that any party can be a significant shareholder, for example, rather than limiting this role to a legal entity.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200501/OwnershipAndControl/CorporateControl.rdf version of this ontology was revised to further clean up definitions related to control via ownership of shares, which only applies to corporations and some partnerships, and revise and extend the definition of affiliation.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200601/OwnershipAndControl/CorporateControl.rdf version of the ontology was modified to simplify control concepts and relations.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20201201/OwnershipAndControl/CorporateControl.rdf version of the ontology was modified to incorporate the latest insights into how control relations should integrate with the control situation.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210401/OwnershipAndControl/CorporateControl.rdf version of the ontology was modified to address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/OwnershipAndControl/CorporateControl.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/OwnershipAndControl/CorporateControl.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20240101/OwnershipAndControl/CorporateControl.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-be-oac-cctl:Affiliation a owl:Class ;
+    rdfs:label "affiliation",
+        "关联关系（affiliation）"@zh ;
+    rdfs:comment "受控方在某段时期内与控制方相关联的情形。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasUndergoer ;
+            owl:someValuesFrom fibo-be-oac-cctl:ControlledAffiliate ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasActor ;
+            owl:someValuesFrom fibo-be-oac-cctl:ControllingAffiliate ],
+        fibo-fnd-oac-ctl:Control ;
+    skos:definition "situation in which a controlled party is affiliated with a controlling party for some period of time" .
+
+fibo-be-oac-cctl:JointVenturePartner a owl:Class ;
+    rdfs:label "joint venture partner",
+        "合资伙伴（joint venture partner）"@zh ;
+    rdfs:comment "在共同控制下分担某实体的资本、技术、人力资源、风险与收益的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:isControllingPartyOf ;
+            owl:someValuesFrom fibo-be-le-fbo:JointVenture ],
+        fibo-be-oac-cpty:EntityControllingParty ;
+    skos:definition "party that shares capital, technology, human resources, risks, and benefits of an entity under shared control" .
+
+fibo-be-oac-cctl:hasAffiliate a owl:ObjectProperty ;
+    rdfs:label "has affiliate",
+        "具有关联方（has affiliate）"@zh ;
+    rdfs:comment "具有一个直接或通过一个或多个中间方间接控制该公司、被其控制或与其同受控制的参与方。"@zh ;
+    rdfs:domain cmns-org:LegalEntity ;
+    rdfs:range fibo-be-oac-cctl:Affiliate ;
+    rdfs:subPropertyOf fibo-fnd-oac-ctl:isControlledPartyOf ;
+    skos:definition "has a party which directly, or indirectly through one or more intermediaries, controls, or is controlled by, or is under common control with the company" .
+
+fibo-be-oac-cctl:hasDomesticUltimateParent a owl:ObjectProperty ;
+    rdfs:label "has domestic ultimate parent",
+        "具有境内最终母公司（has domestic ultimate parent）"@zh ;
+    rdfs:comment "将组织关联到在其注册成立国或管辖区内被认定为其最终母公司的组织（如有）。"@zh ;
+    rdfs:range fibo-be-oac-cctl:DomesticUltimateParent ;
+    rdfs:subPropertyOf fibo-be-oac-cpty:hasMajorityControllingParty ;
+    skos:definition "relates an organization to another recognized as its ultimate parent, within its country or jurisdiction of incorporation, if it has one" ;
+    skos:editorialNote "In the case of companies that are subsidiaries of another company that itself has a parent, this identifies the organization at the top of the hierarchy of organizations in the country of registration. Adapted from consensus definition of Ultimate Parent, now that this is split into national and global parent." ;
+    cmns-av:adaptedFrom "consensus definition of ultimate parent, with the split between domestic and global parent" .
+
+fibo-be-oac-cctl:hasGlobalUltimateParent a owl:ObjectProperty ;
+    rdfs:label "has global ultimate parent",
+        "具有全球最终母公司（has global ultimate parent）"@zh ;
+    rdfs:comment "将组织关联到被认定为其最终母公司的组织（如有）。"@zh ;
+    rdfs:range fibo-be-oac-cctl:GlobalUltimateParent ;
+    rdfs:subPropertyOf fibo-be-oac-cpty:hasMajorityControllingParty ;
+    skos:definition "relates an organization to another recognized as its ultimate parent, if it has one" ;
+    skos:editorialNote "In the case of companies that are subsidiaries of another company that itself has a parent, this identifies the organization at the top of the hierarchy, world-wide. Adapted from consensus definition of Ultimate Parent, now that this is split into national and global parent." ;
+    cmns-av:adaptedFrom "consensus definition of ultimate parent, with the split between domestic and global parent" .
+
+fibo-be-oac-cctl:hasSubsidiary a owl:ObjectProperty ;
+    rdfs:label "has subsidiary",
+        "具有子公司（has subsidiary）"@zh ;
+    rdfs:comment "将法律实体关联到其至少拥有 50% 的另一组织。"@zh ;
+    rdfs:domain cmns-org:LegalEntity ;
+    rdfs:range fibo-be-oac-cctl:Subsidiary ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole fibo-be-oac-cctl:isParentCompanyOf ) ;
+    skos:definition "relates a legal entity to another organization that it owns at least 50 percent of" .
+
+fibo-be-oac-cctl:isWhollyOwnedBy a owl:ObjectProperty ;
+    rdfs:label "is wholly owned by",
+        "由……全资拥有（is wholly owned by）"@zh ;
+    rdfs:comment "将法律实体关联到对其拥有 100% 所有权与控制权的参与方。"@zh ;
+    rdfs:domain cmns-org:LegalEntity ;
+    rdfs:range fibo-be-oac-cctl:TotalControllingInterestParty ;
+    owl:propertyChainAxiom ( cmns-rlcmp:playsRole fibo-be-oac-cctl:isSubsidiaryOf ) ;
+    skos:definition "relates a legal entity to a party that has 100 percent ownership and control over it" .
+
+fibo-be-oac-cctl:DomesticUltimateParent a owl:Class ;
+    rdfs:label "domestic ultimate parent",
+        "境内最终母公司（domestic ultimate parent）"@zh ;
+    rdfs:comment "在注册成立国或管辖区内被认定为某组织最终母公司的参与方。"@zh ;
+    rdfs:subClassOf fibo-be-oac-cctl:TotalControllingInterestParty ;
+    skos:definition "party that is recognized as the ultimate parent of a given organization within the country or jurisdiction of incorporation or organization" .
+
+fibo-be-oac-cctl:GlobalUltimateParent a owl:Class ;
+    rdfs:label "global ultimate parent",
+        "全球最终母公司（global ultimate parent）"@zh ;
+    rdfs:comment "在全球范围内被认定为某组织最终母公司的参与方。"@zh ;
+    rdfs:subClassOf fibo-be-oac-cctl:TotalControllingInterestParty ;
+    skos:definition "party that is recognized as the ultimate parent of a given organization world-wide" .
+
+fibo-be-oac-cctl:SignificantShareholder a owl:Class ;
+    rdfs:label "significant shareholder",
+        "重要股东（significant shareholder）"@zh ;
+    rdfs:comment "拥有某组织低于 50% 但高于某门槛的重要表决权股份的参与方。"@zh ;
+    rdfs:subClassOf fibo-be-oac-cctl:VotingShareholder ;
+    skos:definition "party that owns a significant voting stake in an organization that is less than 50 percent but greater than some threshold" ;
+    cmns-av:explanatoryNote "Note that the concept of significance varies depending on the jurisdiction, and particularly with respect to reporting requirements. For example, in some cases, three (3) percent ownership of any class or series of shares is considered significant, and in others it means more than five or ten percent of the total combined voting power across all classes of securities." .
+
+fibo-be-oac-cctl:VotingShareholder a owl:Class ;
+    rdfs:label "voting shareholder",
+        "表决权股东（voting shareholder）"@zh ;
+    rdfs:comment "股份赋予其在公司选举中表决权（含在年度或特别会议上选举董事的权利）的股东。"@zh ;
+    rdfs:subClassOf fibo-be-oac-cpty:DeJureControllingInterestParty,
+        fibo-be-oac-cown:Shareholder ;
+    skos:definition "shareholder whose shares confer the right to vote in corporate elections, including the right to elect directors at annual or special meetings, and to express their views to corporate management and directors on significant issues that may affect the value of those shares" .
+
+fibo-be-oac-cctl:isControllingAffiliateOf a owl:ObjectProperty ;
+    rdfs:label "is controlling affiliate of",
+        "是……的控制性关联方（is controlling affiliate of）"@zh ;
+    rdfs:comment "直接或通过一个或多个中间方间接控制。"@zh ;
+    rdfs:domain fibo-be-oac-cctl:ControllingAffiliate ;
+    rdfs:range fibo-be-oac-cctl:ControlledAffiliate ;
+    rdfs:subPropertyOf fibo-be-oac-cctl:isAffiliateOf,
+        cmns-pts:actsOn ;
+    owl:inverseOf fibo-be-oac-cctl:hasControllingAffiliate ;
+    skos:definition "controls directly, or indirectly through one or more intermediaries" .
+
+fibo-be-oac-cctl:isParentCompanyOf a owl:ObjectProperty ;
+    rdfs:label "is parent company of",
+        "是……的母公司（is parent company of）"@zh ;
+    rdfs:comment "标识其至少拥有 50% 的受控关联方。"@zh ;
+    rdfs:domain fibo-be-oac-cctl:ControllingAffiliate ;
+    rdfs:range fibo-be-oac-cctl:Subsidiary ;
+    rdfs:subPropertyOf fibo-be-oac-cctl:isControllingAffiliateOf ;
+    owl:inverseOf fibo-be-oac-cctl:isSubsidiaryOf ;
+    skos:definition "indicates a controlled affiliate that it owns at least 50 percent of" .
+
+fibo-be-oac-cctl:hasControllingAffiliate a owl:ObjectProperty ;
+    rdfs:label "has controlling affiliate",
+        "具有控制性关联方（has controlling affiliate）"@zh ;
+    rdfs:comment "被一个直接或通过一个或多个中间方间接控制它的参与方所控制。"@zh ;
+    rdfs:domain fibo-be-oac-cctl:ControlledAffiliate ;
+    rdfs:range fibo-be-oac-cctl:ControllingAffiliate ;
+    rdfs:subPropertyOf fibo-be-oac-cctl:isAffiliateOf,
+        cmns-pts:isAffectedBy ;
+    skos:definition "is directly, or indirectly through one or more intermediaries, controlled by" .
+
+fibo-be-oac-cctl:isSubsidiaryOf a owl:ObjectProperty ;
+    rdfs:label "is subsidiary of",
+        "是……的子公司（is subsidiary of）"@zh ;
+    rdfs:comment "被……直接或通过一个或多个中间方间接控制并至少拥有 50%。"@zh ;
+    rdfs:domain fibo-be-oac-cctl:Subsidiary ;
+    rdfs:range fibo-be-oac-cctl:ControllingAffiliate ;
+    rdfs:subPropertyOf fibo-be-oac-cctl:hasControllingAffiliate ;
+    skos:definition "is controlled directly, or indirectly through one or more intermediaries and owned at least 50 percent by" .
+
+fibo-be-oac-cctl:Subsidiary a owl:Class ;
+    rdfs:label "subsidiary",
+        "子公司（subsidiary）"@zh ;
+    rdfs:comment "被另一法律实体全部或多数拥有并控制的法律实体。"@zh ;
+    rdfs:subClassOf fibo-be-oac-cctl:ControlledAffiliate ;
+    skos:definition "legal entity that is entirely or majority owned and controlled by another legal entity" ;
+    cmns-av:explanatoryNote "A subsidiary is a separate, distinct legal entity from its parent company(ies) for the purposes of taxation, regulatory compliance, and with respect to liability." .
+
+fibo-be-oac-cctl:TotalControllingInterestParty a owl:Class ;
+    rdfs:label "total controlling interest party",
+        "完全控制权益方（total controlling interest party）"@zh ;
+    rdfs:comment "拥有某法律实体 100% 表决权股份的表决权股东。"@zh ;
+    rdfs:subClassOf fibo-be-oac-cpty:TotalOwner,
+        fibo-be-oac-cctl:SignificantShareholder ;
+    skos:definition "voting shareholder that owns 100 percent of the voting shares in some legal entity" ;
+    cmns-av:explanatoryNote "By virtue of holding 100 percent of the share ownership, the total controlling interest company also holds 100 percent of the controlling equity, if there is a difference. Therefore, it is both a total owner and a total controlling party." ;
+    cmns-av:synonym "parent company" .
+
+fibo-be-oac-cctl:isAffiliateOf a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "is affiliate of",
+        "是……的关联方（is affiliate of）"@zh ;
+    rdfs:comment "将直接或通过一个或多个中间方间接控制、被控制或同受控制的参与方关联到另一参与方。"@zh ;
+    rdfs:domain fibo-be-oac-cctl:Affiliate ;
+    rdfs:range fibo-be-oac-cctl:Affiliate ;
+    skos:definition "relates a party which directly, or indirectly through one or more intermediaries, controls, or is controlled by, or is under common control by another party to that party" .
+
+fibo-be-oac-cctl:ControlledAffiliate a owl:Class ;
+    rdfs:label "controlled affiliate",
+        "受控关联方（controlled affiliate）"@zh ;
+    rdfs:comment "关联关系情形中的受控方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-org:LegalEntity ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        fibo-be-oac-cpty:ControlledParty,
+        fibo-be-oac-cctl:Affiliate ;
+    skos:definition "controlled party in an affiliation situation" .
+
+fibo-be-oac-cctl:ControllingAffiliate a owl:Class ;
+    rdfs:label "controlling affiliate",
+        "控制性关联方（controlling affiliate）"@zh ;
+    rdfs:comment "关联关系情形中的控制方。"@zh ;
+    rdfs:subClassOf fibo-be-oac-cpty:MajorityControllingParty,
+        fibo-be-oac-cctl:Affiliate ;
+    skos:definition "controlling party in an affiliation situation" .
+
+fibo-be-oac-cctl:Affiliate a owl:Class ;
+    rdfs:label "affiliate",
+        "关联方（affiliate）"@zh ;
+    rdfs:comment "与某法律实体相关联（直接或通过一个或多个中间方间接）、控制该实体、被其控制或与其同受控制的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-cctl:isAffiliateOf ;
+            owl:someValuesFrom fibo-be-oac-cctl:Affiliate ],
+        cmns-pts:PartyRole ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( fibo-be-oac-cpty:MajorityControllingParty fibo-be-oac-cpty:ControlledParty ) ] ;
+    skos:definition "party that is related to a legal entity, directly, or indirectly through one or more intermediaries, and controls, or is controlled by, or is under common control with that entity, typically determined by the degree of ownership" .
+

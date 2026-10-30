@@ -1,0 +1,489 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-crt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditRatings/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-arr-rep: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-app: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanApplications/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-ln-app:AutomaticUnderwriting a owl:NamedIndividual,
+        fibo-loan-ln-app:UnderwritingAutomation ;
+    rdfs:label "automatic underwriting" ;
+    skos:definition "underwriting was performed using an automated underwriting system" .
+
+fibo-loan-ln-app:CreditRiskAssessment a owl:Class ;
+    rdfs:label "credit risk assessment",
+        "信用风险评估（credit risk assessment）"@zh ;
+    rdfs:comment "聚焦于确定潜在借款人偿还贷款之可能性的风险评估。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-app:usesFactor ;
+            owl:someValuesFrom fibo-loan-ln-ln:CombinedLoanToValueRatio ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:hasInput ;
+            owl:someValuesFrom fibo-loan-ln-app:PreApprovalRequest ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:hasInput ;
+            owl:someValuesFrom fibo-loan-ln-app:PublicRecord ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-app:usesFactor ;
+            owl:someValuesFrom fibo-loan-ln-app:TotalDebtExpenseRatio ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:hasOutput ;
+            owl:someValuesFrom fibo-loan-ln-app:UnderwritingDecision ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-app:usesFactor ;
+            owl:someValuesFrom fibo-loan-ln-app:AllBorrowersMonthlyIncome ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-loan-ln-ln:Loan ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-app:usesFactor ;
+            owl:someValuesFrom fibo-loan-ln-app:BorrowerMonthlyIncome ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:hasInput ;
+            owl:someValuesFrom fibo-loan-ln-app:PreApprovalContract ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:hasInput ;
+            owl:someValuesFrom fibo-fbc-dae-crt:CreditReport ],
+        fibo-fnd-arr-asmt:AssessmentActivity ;
+    skos:definition "risk assessment that focuses on determining the likelihood of a potential borrower repaying a loan" ;
+    cmns-av:usageNote "If the risk assessment is based on one of the automated underwriting sytems, then the underwriting automation category is 'automated'. This dependency could be automated (as it were)." .
+
+fibo-loan-ln-app:DenialReason-CreditApplicationIncomplete a owl:NamedIndividual ;
+    rdfs:label "credit application incomplete" ;
+    skos:definition "The application was denied because the credit application was not complete." .
+
+fibo-loan-ln-app:DenialReason-InsufficientCash a owl:NamedIndividual ;
+    rdfs:label "insufficient cash" ;
+    skos:definition "The application was denied due to insufficient down payment, or cash available to pay closing costs." .
+
+fibo-loan-ln-app:DenialReason-InsufficientCollateralValue a owl:NamedIndividual ;
+    rdfs:label "insufficient collateral value" ;
+    skos:definition "The application was denied because the value or type of collateral was not sufficient." .
+
+fibo-loan-ln-app:DenialReason-InsufficientCreditHistory a owl:NamedIndividual ;
+    rdfs:label "insufficient credit history" ;
+    skos:definition "The application was denied because the credit history was too limited, unacceptable, or not at sufficient standing." .
+
+fibo-loan-ln-app:DenialReason-InsufficientEmploymentHistory a owl:NamedIndividual ;
+    rdfs:label "insufficient employment history" ;
+    skos:definition "The application was denied because the employment is irregular, unknown, or not sufficient." .
+
+fibo-loan-ln-app:DenialReason-InsufficientIncome a owl:NamedIndividual ;
+    rdfs:label "insufficient income" ;
+    skos:definition "The application was denied because the debt to income ratio is too high." .
+
+fibo-loan-ln-app:DenialReason-MortgageInsuranceDenied a owl:NamedIndividual ;
+    rdfs:label "mortgage insurance denied" ;
+    skos:definition "The application was denied because necessary mortgage insurance was denied." .
+
+fibo-loan-ln-app:DenialReason-UnverifiableInformation a owl:NamedIndividual ;
+    rdfs:label "unverifiable information" ;
+    skos:definition "The application was denied because qualification information such as income, employment, credit, or residence) was not verifiable." .
+
+fibo-loan-ln-app:LoanApplicationAtAgreementStage a owl:Class ;
+    rdfs:label "loan application at agreement stage"@en,
+        "协议阶段的贷款申请（loan application at agreement stage）"@zh ;
+    rdfs:comment "处于协议阶段的贷款申请。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-app:LoanApplicationStatus .
+
+fibo-loan-ln-app:LoanApplicationAtDisbursementStage a owl:Class ;
+    rdfs:label "loan application at disbursement stage"@en,
+        "放款阶段的贷款申请（loan application at disbursement stage）"@zh ;
+    rdfs:comment "处于放款阶段的贷款申请。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-app:LoanApplicationStatus .
+
+fibo-loan-ln-app:LoanAtApplicationStage a owl:Class ;
+    rdfs:label "loan at application stage"@en,
+        "申请阶段的贷款（loan at application stage）"@zh ;
+    rdfs:comment "处于申请阶段的贷款。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-app:LoanApplicationStatus .
+
+fibo-loan-ln-app:ManualUnderwriting a owl:NamedIndividual,
+        fibo-loan-ln-app:UnderwritingAutomation ;
+    rdfs:label "manual underwriting" ;
+    skos:definition "underwriting was performed manually" .
+
+fibo-loan-ln-app:PublicRecordCategory-BankruptcyRecord a owl:NamedIndividual,
+        fibo-loan-ln-app:PublicRecordCategory ;
+    rdfs:label "bankruptcy record" .
+
+fibo-loan-ln-app:PublicRecordCategory-CivilOrJudgementRecord a owl:NamedIndividual,
+        fibo-loan-ln-app:PublicRecordCategory ;
+    rdfs:label "civil or judgement record" .
+
+fibo-loan-ln-app:PublicRecordCategory-ForeclosureRecord a owl:NamedIndividual,
+        fibo-loan-ln-app:PublicRecordCategory ;
+    rdfs:label "foreclosure record" .
+
+fibo-loan-ln-app:PublicRecordCategory-GarnishmentRecord a owl:NamedIndividual,
+        fibo-loan-ln-app:PublicRecordCategory ;
+    rdfs:label "garnishment record" .
+
+fibo-loan-ln-app:PublicRecordCategory-LienRecord a owl:NamedIndividual,
+        fibo-loan-ln-app:PublicRecordCategory ;
+    rdfs:label "lien record" .
+
+fibo-loan-ln-app:PublicRecordCategory-MaritalRecord a owl:NamedIndividual,
+        fibo-loan-ln-app:PublicRecordCategory ;
+    rdfs:label "marital record" .
+
+fibo-loan-ln-app:PublicRecordCategory-PersonalPropertyRecord a owl:NamedIndividual,
+        fibo-loan-ln-app:PublicRecordCategory ;
+    rdfs:label "personal property record" .
+
+fibo-loan-ln-app:PublicRecordCategory-RealEstate a owl:NamedIndividual,
+        fibo-loan-ln-app:PublicRecordCategory ;
+    rdfs:label "real estate record" .
+
+fibo-loan-ln-app:UnderwritingDecision-Approve a owl:NamedIndividual,
+        fibo-loan-ln-app:UnderwritingDecision ;
+    rdfs:label "approve" .
+
+fibo-loan-ln-app:UnderwritingDecision-Deny a owl:NamedIndividual,
+        fibo-loan-ln-app:UnderwritingDecision ;
+    rdfs:label "deny" .
+
+fibo-loan-ln-app:UnderwritingDecision-Eligible a owl:NamedIndividual,
+        fibo-loan-ln-app:UnderwritingDecision ;
+    rdfs:label "eligible" .
+
+fibo-loan-ln-app:UnderwritingDecision-Ineligible a owl:NamedIndividual,
+        fibo-loan-ln-app:UnderwritingDecision ;
+    rdfs:label "ineligible" .
+
+fibo-loan-ln-app:UnderwritingDecision-Refer a owl:NamedIndividual,
+        fibo-loan-ln-app:UnderwritingDecision ;
+    rdfs:label "refer" .
+
+fibo-loan-ln-app:UnderwritingDecision-UnableToDetermine a owl:NamedIndividual,
+        fibo-loan-ln-app:UnderwritingDecision ;
+    rdfs:label "unable to determine" .
+
+fibo-loan-ln-app:hasApplicationPhase a owl:ObjectProperty ;
+    rdfs:label "has application phase"@en,
+        "具有申请阶段（has application phase）"@zh ;
+    rdfs:comment "该贷款申请在申请生命周期中所处的阶段。"@zh ;
+    rdfs:domain fibo-loan-ln-app:LoanApplication ;
+    rdfs:range fibo-loan-ln-app:LoanApplicationPhase ;
+    rdfs:subPropertyOf fibo-fnd-arr-lif:hasStage ;
+    skos:definition "The phase within the application lifecycle, that this Loan Application is at,"@en .
+
+fibo-loan-ln-app:hasGrossIncome a owl:ObjectProperty ;
+    rdfs:label "has gross income"@en,
+        "具有总收入（has gross income）"@zh ;
+    rdfs:comment "标识借款人的个人总收入。"@zh ;
+    rdfs:domain fibo-loan-ln-app:BorrowerAssessment ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "indicates the personal gross income of the borrower"@en .
+
+fibo-loan-ln-app:hasIntendedLoanPurpose a owl:DatatypeProperty ;
+    rdfs:label "has intended loan purpose"@en,
+        "具有拟定贷款用途（has intended loan purpose）"@zh ;
+    rdfs:comment "标识贷款资金的拟定用途。"@zh ;
+    rdfs:domain fibo-loan-ln-app:LoanApplication ;
+    rdfs:range xsd:string ;
+    skos:definition "indicates the purpose to which the loaned funds are to be put"@en .
+
+fibo-loan-ln-app:hasOriginalLoanDebtToIncomeRatio a owl:DatatypeProperty ;
+    rdfs:label "has original loan debt-to-income ratio"@en,
+        "具有原始贷款债务收入比（has original loan debt-to-income ratio）"@zh ;
+    rdfs:comment "标识贷款发放时的债务收入比（DTI），按合并收入计。"@zh ;
+    rdfs:domain fibo-loan-ln-app:BorrowerAssessment ;
+    rdfs:range xsd:decimal ;
+    skos:definition "indicates the debt-to-income (DTI) ratio at the time when the loan was advanced; for combined income"@en .
+
+fibo-loan-ln-app: a owl:Ontology ;
+    rdfs:label "Loan Applications Ontology"@en,
+        "贷款申请本体（Loan Applications Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts for the loan application process, along with kinds of loan application and the parties thereto. Another major thread of this ontology is credit risk assessment at the highest level, which includes security agreements, pre-approvals, and credit reports." ;
+    dcterms:license """Copyright (c) 2016-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义贷款申请、申请人与审批流程的概念。"@zh ;
+    owl:imports fibo-fbc-dae-crt:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-pas-caa:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-asmt:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-arr-rep:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-pts: ;
+    owl:versionIRI fibo-loan-ln-app: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2016-2025 Object Management Group, Inc.",
+        "Copyright (c) 2016-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-loan-ln-app:IncomeVerificationReport a owl:Class ;
+    rdfs:label "income verification report"@en,
+        "收入核实报告（income verification report）"@zh ;
+    rdfs:comment "提供核实借款人收入所用方法及支持文件的报告。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-asmt:AssessmentReport ;
+    skos:definition "report providing the methodology and supporting documentation used to verify the borrower's income"@en .
+
+fibo-loan-ln-app:IndividualPersonCreditRating a owl:Class ;
+    rdfs:label "individual person credit rating"@en,
+        "个人信用评级（individual person credit rating）"@zh ;
+    rdfs:comment "提供对个人信用状况之意见的信用评级。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-crt:CreditRating ;
+    skos:definition "credit rating that provides an opinion of the creditworthiness of a person"@en .
+
+fibo-loan-ln-app:LoanApplicationPhase a owl:Class ;
+    rdfs:label "loan application phase"@en,
+        "贷款申请阶段（loan application phase）"@zh ;
+    rdfs:comment "贷款申请所处的阶段。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStage .
+
+fibo-loan-ln-app:PreApprovalContract a owl:Class ;
+    rdfs:label "pre-approval contract",
+        "预批准合同（pre-approval contract）"@zh ;
+    rdfs:comment "当特定条件满足（如找到合适房产、信用状况不变）时提供贷款的书面承诺。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasInterestRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:InterestRate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-app:hasApprovedAmount ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+        fibo-fnd-agr-ctr:WrittenContract ;
+    skos:definition "written commitment to lend when specified conditions are met, such as finding suitable property, and unchanged creditworthiness" ;
+    cmns-av:explanatoryNote "A commitment from a lender to a borrower to extend a home purchase loan up to a certain amount, and subject to certain non-credit related conditions.  This commitment is entered into after a comprehensive analysis of the credit worthiness of the borrower is carried out.",
+        "This may also include limits on the region where to purchase." .
+
+fibo-loan-ln-app:PreApprovalRequest a owl:Class ;
+    rdfs:label "pre-approval request",
+        "预批准请求（pre-approval request）"@zh ;
+    rdfs:comment "潜在借款人请求贷款人承诺为其预批准不超过指定金额贷款的请求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasBorrower ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Borrower ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-app:hasRequestedAmount ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+        fibo-fnd-arr-rep:RequestActivity ;
+    skos:definition "request from a potential borrower that a lender commit to pre-approving the borrower for a loan of up to a specified amount of money" ;
+    cmns-av:explanatoryNote "This may also include limits on the region where to purchase." .
+
+fibo-loan-ln-app:PublicRecord a owl:Class ;
+    rdfs:label "public record",
+        "公开记录（public record）"@zh ;
+    rdfs:comment "可从法院或其他政府机构公开获取的、关于某参与方所涉行动的记录。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-ln-app:PublicRecordCategory ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-doc:LegalDocument ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:Account ;
+            owl:onProperty cmns-doc:refersTo ],
+        cmns-doc:Record ;
+    skos:definition "record about an action involving a party that is publicly available from a court or other government agency" ;
+    cmns-av:explanatoryNote "This can include court actions such as bankruptcy and foreclosure, as well as liens and other events that have been recorded." .
+
+fibo-loan-ln-app:hasApplicationDate a owl:ObjectProperty ;
+    rdfs:label "has application date"@en,
+        "具有申请日期（has application date）"@zh ;
+    rdfs:comment "申请签署并提交的日期。"@zh ;
+    rdfs:domain fibo-loan-ln-app:LoanApplication ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf fibo-fnd-arr-rep:hasRequestDate ;
+    skos:definition "date on which an application was signed and submitted"@en .
+
+fibo-loan-ln-app:hasApprovedAmount a owl:ObjectProperty ;
+    rdfs:label "has approved amount",
+        "具有批准金额（has approved amount）"@zh ;
+    rdfs:comment "将某事物（如贷款）关联到批准的资金金额。"@zh ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "relates something, e.g. a loan, to the amount of funds approved" .
+
+fibo-loan-ln-app:hasRequestedAmount a owl:ObjectProperty ;
+    rdfs:label "has requested amount",
+        "具有申请金额（has requested amount）"@zh ;
+    rdfs:comment "将某事物（如贷款申请）关联到所申请的资金金额。"@zh ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "relates something, e.g. a request for a loan, to the amount of funds requested" .
+
+fibo-loan-ln-app:isPreApprovalRequested a owl:DatatypeProperty ;
+    rdfs:label "is pre-approval requested"@en,
+        "已申请预批准（is pre-approval requested）"@zh ;
+    rdfs:comment "表明是否已随贷款申请一并申请预批准。"@zh ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether a pre-approval has been requested, in conjunction with a loan application"@en .
+
+fibo-loan-ln-app:AllBorrowersMonthlyIncome a owl:Class ;
+    rdfs:label "all borrowers' monthly income",
+        "全体借款人月收入（all borrowers' monthly income）"@zh ;
+    rdfs:comment "贷款全部借款人的月度合格收入总额。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-loan-ln-app:BorrowerMonthlyIncome ],
+        fibo-fnd-acc-cur:MonetaryAmount,
+        fibo-fnd-oac-own:Income ;
+    skos:definition "total monthly qualifying income for all borrowers on the loan" ;
+    cmns-av:usageNote "This should be computed from the income of the individual borrowers." .
+
+fibo-loan-ln-app:BorrowerAssessment a owl:Class ;
+    rdfs:label "borrower assessment"@en,
+        "借款人评估（borrower assessment）"@zh ;
+    rdfs:comment "详述借款人及其与贷款申请可能相关的信用历史的评估报告。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-app:IncomeVerificationReport ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-app:IndividualPersonCreditRating ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Borrower ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-asmt:hasDateOfAssessment ;
+            owl:someValuesFrom cmns-dt:ExplicitDate ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:PaymentHistory ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-loan-ln-app:LoanApplication ],
+        fibo-fnd-arr-asmt:AssessmentReport ;
+    skos:definition "assessment report detailing information about the borrower and their credit history that may be relevant to the loan application"@en ;
+    cmns-av:explanatoryNote "Includes credit rating information. Ongoing assessment reports both good and bad credit rating information. In the US, by regulation, lender is required to respot person's payment history on a monthly basis. This is the basis on which peope's score is changed. So the lender's reporting to the credit bureau may affect that person's credit rating. this may give rise to credit disputes. Also there is a scenario where the borrower may contact the lender and ask for some change. For student loans, they can apply for a deferment payment based on change in circumstances e.g. if losing job, or becoming disabled, then there are specific programs which they can apply for. can defer paymen for a time, and if proven eligible (e.g. also if in military, being deployed), then if they subbut the relevant document, they approve and change their repayment term, perhaps temporarily and then revert to the previously agreed terms. This results from the borrower contacting the lender."@en .
+
+fibo-loan-ln-app:TotalDebtExpenseRatio a owl:Class ;
+    rdfs:label "total debt expense ratio",
+        "总债务支出比（total debt expense ratio）"@zh ;
+    rdfs:comment "全体借款人全部月度债务偿付（含拟议支出）与其收入之比。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+    skos:definition "ratio of all monthly debt payments of all borrowers, including proposed expenses, with respect to the income of the borrowers as relied upon to make a credit decision" ;
+    cmns-av:synonym "back end ratio" .
+
+fibo-loan-ln-app:UnderwritingAutomation a owl:Class ;
+    rdfs:label "underwriting automation",
+        "核保自动化（underwriting automation）"@zh ;
+    rdfs:comment "表明贷款是人工核保还是通过自动核保系统核保的分类符。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier indicating whether a loan was underwritten manually or using an automated underwriting system" .
+
+fibo-loan-ln-app:BorrowerMonthlyIncome a owl:Class ;
+    rdfs:label "borrower monthly income",
+        "借款人月收入（borrower monthly income）"@zh ;
+    rdfs:comment "潜在借款人的月度合格收入总额。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Borrower ],
+        fibo-fnd-acc-cur:MonetaryAmount,
+        fibo-fnd-oac-own:Income ;
+    skos:definition "total monthly qualifying income of a potential borrower" .
+
+fibo-loan-ln-app:LoanApplicationStatus a owl:Class ;
+    rdfs:label "loan application status"@en,
+        "贷款申请状态（loan application status）"@zh ;
+    rdfs:comment "贷款申请的状态。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStatus .
+
+fibo-loan-ln-app:LoanApplication a owl:Class ;
+    rdfs:label "loan application",
+        "贷款申请（loan application）"@zh ;
+    rdfs:comment "潜在借款人向潜在贷款人提出的借款请求，包含用于决定是否批准贷款的信息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-loan-ln-app:TotalDebtExpenseRatio ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:LoanToValueRatio ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-loan-ln-app:AllBorrowersMonthlyIncome ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-rep:isSubmittedBy ;
+            owl:someValuesFrom fibo-fnd-arr-rep:Requester ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fnd-dt-fd:hasDateReceived ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-loan-ln-app:hasApplicationDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:CombinedLoanToValueRatio ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-loan-ln-app:BorrowerMonthlyIncome ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-app:isPreApprovalRequested ;
+            owl:someValuesFrom xsd:boolean ],
+        cmns-doc:Document ;
+    skos:definition "request by a potential borrower to a potential lender to borrow money containing information used to decide whether to grant the loan" ;
+    skos:scopeNote "The request typicaly includes most, if not all, of the information used to decide whether to grant the loan." .
+
+fibo-loan-ln-app:usesFactor a owl:ObjectProperty ;
+    rdfs:label "uses factor"@en,
+        "使用因子（uses factor）"@zh ;
+    rdfs:comment "将（如）风险评估关联到评估中作为因子使用的事物。"@zh ;
+    rdfs:subPropertyOf fibo-fbc-dae-dbt:isBasedOn ;
+    skos:definition "relates e.g. a risk assessment to something used as a factor to make the assessment"@en ;
+    cmns-av:explanatoryNote "There is intentionally no range for this property, so as not to limit what can be used as a factor. Often it will be a measure such as borrower monthly income. Thus, having a class called Factor seems unhelpful." .
+
+fibo-loan-ln-app:UnderwritingDecision a owl:Class ;
+    rdfs:label "underwriting decision",
+        "核保决定（underwriting decision）"@zh ;
+    rdfs:comment "由人工或自动核保系统确定的贷款批准建议分类符。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier providing a loan approval recommendation determined either manually or by an automated underwriting system" ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-ln-app:PublicRecordCategory a owl:Class ;
+    rdfs:label "public record category",
+        "公开记录类别（public record category）"@zh ;
+    rdfs:comment "与贷款申请相关的公开记录分类符，如税务留置、工资扣押、止赎。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier of public records relevant to a loan application, e.g. tax lien, wage garnishment, foreclosure" .
+

@@ -1,0 +1,516 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-cae-ce-act: <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/CorporateActions/> .
+@prefix fibo-cae-ce-srca: <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/SecurityRelatedCorporateActions/> .
+@prefix fibo-fbc-dae-cre: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-temx-trs: <https://spec.edmcouncil.org/fibo/ontology/MD/TemporalCore/SecurityTradingStatuses/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-eq-eq: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-cae-ce-srca:BondDefaultAction a owl:Class ;
+    rdfs:label "bond default event"@en,
+        "债券违约事件（bond default event）"@zh ;
+    rdfs:comment "表明发行人未能履行债券协议中定义为违约事件之义务、且未予补救的公司行动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:Bond ],
+        fibo-cae-ce-act:MandatoryCorporateAction,
+        fibo-fbc-dae-cre:ObligationDefault ;
+    skos:definition "corporate action which indicates a failure by the issuer to perform obligations defined as default events under the bond agreement and that have not been remedied"@en .
+
+fibo-cae-ce-srca:BonusIssue a owl:Class ;
+    rdfs:label "bonus issue"@en,
+        "红股发行（bonus issue）"@zh ;
+    rdfs:comment "发行人按持有比例向证券持有人免费赠予额外资产的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action in which security holders are awarded additional assets free of payment from the issuer in proportion to their holding"@en ;
+    cmns-av:explanatoryNote "There are different taxation rules for the bonus issue compared to the dividend. There could also be a difference in the ranking of the shares that are given to what the holder already holds. Dividends are paid from current profits and bonus may be from accumulated reserves of the company. A scrip issue is the issue of new shares at no charge pro rata to the holder of existing shares."@en ;
+    cmns-av:synonym "capitalisation issue"@en,
+        "scrip issue"@en .
+
+fibo-cae-ce-srca:BonusRightsIssue a owl:Class ;
+    rdfs:label "bonus rights issue"@en,
+        "红利认股权发行（bonus rights issue）"@zh ;
+    rdfs:comment "将认股权免费授予相关股份持有人的配股发行。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-srca:IntermediateSecuritiesDistribution ;
+    skos:definition "A Rights Issue in which the rights are given to the holders of the referenced shares for free."@en ;
+    cmns-av:explanatoryNote "Rights = right to buy shares at a specified price. May be given the right for nothing (Bonus Rights Issue) or you may be offered to purchase that right at a subscription price (which you take up or don't). Bonus Rights Issue: given the option for free. May exercise at the Exercise Price."@en .
+
+fibo-cae-ce-srca:BonusSharePlanDistribution a owl:Class ;
+    rdfs:label "bonus share plan distribution"@en,
+        "红股计划分配（bonus share plan distribution）"@zh ;
+    rdfs:comment "从公司股本溢价储备中发行股份、视为资本分配而非收益发放的事件。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-srca:CapitalDistribution ;
+    skos:definition "Event in which shares are issued from the Share Premium Reserve of the company and are considered as a capital distribution rather than a disbursement of income, with different tax implications. SWIFT Definition (adapted above) \"Typically found in Australia, shares are issued from the Share Premium Reserve of the company and are considered as a capital distribution rather than a disbursement of income, with different tax implications.\" To be researches further. There are certainly Share Plans in Australia, where you can take a dividend as shares. Thewse would be in the nature of Bonus Shares. They are a tradeoff from cash dividends. Other terms to model: A \"Scheme of Arrangment\" - does this change the capital reserves or is it just another word for restructure. An arrangement with the company's debtors, and coule potentially change the capital base by converting the debt to shares (see other diagram note with these in)."@en .
+
+fibo-cae-ce-srca:CallOnIntermediateSecurities a owl:Class ;
+    rdfs:label "call on intermediate securities"@en,
+        "对中介证券的催缴（call on intermediate securities）"@zh ;
+    rdfs:comment "对未缴款证券或中介证券分配产生的中介证券进行催缴或行权的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryWithChoiceCorporateAction ;
+    skos:definition "corporate action that involves a call or exercise on nil paid securities or intermediate securities resulting from an intermediate securities distribution (RHDI)"@en ;
+    cmns-av:explanatoryNote "This code is used for the second event, when an intermediate securities' issue (rights/coupons) is composed of two events, the first event being the distribution of intermediate securities."@en .
+
+fibo-cae-ce-srca:CancellationOfShares a owl:Class ;
+    rdfs:label "cancellation of shares"@en,
+        "股份注销（cancellation of shares）"@zh ;
+    rdfs:comment "股份的注销，仅适用于未公开发行的股份（即库存股）。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction ;
+    skos:definition "The cancellation of shares. Further Notes Only possible with shares not publicly issued i.e. treasury shares"@en .
+
+fibo-cae-ce-srca:CapitalGainsDistribution a owl:Class ;
+    rdfs:label "capital gains distribution"@en,
+        "资本利得分配（capital gains distribution）"@zh ;
+    rdfs:comment "将出售公司资产所得利润分配给股东的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:VoluntaryCorporateAction ;
+    skos:definition "corporate action that distributes profits resulting from the sale of company assets to shareholders"@en ;
+    skos:example "Shareholders of Mutual Funds, Unit Trusts, or SICAVs are recipients of capital gains distributions which are often reinvested in additional shares of the fund"@en .
+
+fibo-cae-ce-srca:CashDividendAction a owl:Class ;
+    rdfs:label "cash dividend action"@en,
+        "现金股息行动（cash dividend action）"@zh ;
+    rdfs:comment "按持股比例向股东分配现金的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action that distributes cash to shareholders in proportion to their equity holding"@en ;
+    cmns-av:explanatoryNote "Ordinary dividends are typically recurring and regular. The shareholder must take cash, and may be offered a choice of currency."@en .
+
+fibo-cae-ce-srca:ChangeOfSecurityTradingStatusEvent a owl:Class ;
+    rdfs:label "change of security trading status event"@en,
+        "证券交易状态变更事件（change of security trading status event）"@zh ;
+    rdfs:comment "可交易证券的交易状态发生变化的事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-md-temx-trs:SecurityTradingStatus ],
+        fibo-cae-ce-srca:CorporateChangeOfStatusEvent ;
+    skos:definition "An event in which the trading status of a tradable security changes."@en .
+
+fibo-cae-ce-srca:ChangeToSmallestNegotiableUnit a owl:Class ;
+    rdfs:label "change to smallest negotiable unit"@en,
+        "最小可交易单位变更（change to smallest negotiable unit）"@zh ;
+    rdfs:comment "修改股份最小可交易单位以获得新的可交易单位（SWIFT：SMAL）。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction ;
+    skos:definition "Modification of the smallest negotiable unit of shares in order to obtain a new negotiable unit. SWIFT:SMAL"@en .
+
+fibo-cae-ce-srca:ConversionAction a owl:Class ;
+    rdfs:label "conversion action"@en,
+        "转换行动（conversion action）"@zh ;
+    rdfs:comment "将证券（通常为可转换债券或优先股）转换为另一形式证券（通常为普通股）的公司行动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-cae-ce-srca:convertsFrom ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-cae-ce-srca:convertsTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-cae-ce-act:VoluntaryCorporateAction ;
+    skos:definition "corporate action involving conversion of securities (generally convertible bonds or preferred shares) into another form of securities (usually common shares) at a pre-stated price/ratio"@en .
+
+fibo-cae-ce-srca:ConversionSuspensionAction a owl:Class ;
+    rdfs:label "conversion suspension action"@en,
+        "转换暂停行动（conversion suspension action）"@zh ;
+    rdfs:comment "暂停证券转换，通常在会议召开前数周（SWIFT：SCOP）。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction ;
+    skos:definition "Suspension of conversion of securities, generally a couple of weeks before a meeting takes place. SWIFT = SCOP"@en .
+
+fibo-cae-ce-srca:CorporateActionPaymentObligation a owl:Class ;
+    rdfs:label "corporate action payment obligation"@en,
+        "公司行动付款义务（corporate action payment obligation）"@zh ;
+    rdfs:comment "公司行动情境中支付款项的义务。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-srca:CorporateActionObligation .
+
+fibo-cae-ce-srca:CorporateActionSecuritiesDeliveryObligation a owl:Class ;
+    rdfs:label "corporate action securities delivery obligation"@en,
+        "公司行动证券交付义务（corporate action securities delivery obligation）"@zh ;
+    rdfs:comment "公司行动情境中交付某证券的义务；现金对价与证券对价均可表示为合同义务。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-srca:CorporateActionObligation ;
+    skos:definition "Some obligation to deliver some security in the thr context of corporate actions. All cash proceeds and security proceeds can be represented a s acontractual obligation. Where does that obligation arise? Usually in the Contract itself - but there may be other answers to this. Defines what has to be delivered. or paid. Entitlement meanwhile is a calculation based on the Contract."@en .
+
+fibo-cae-ce-srca:CouponStrip a owl:Class ;
+    rdfs:label "coupon strip"@en,
+        "息票剥离（coupon strip）"@zh ;
+    rdfs:comment "将未来付息日的利息息票与授予持有人本金权利的证券本金分离的过程。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:Bond ],
+        fibo-cae-ce-act:CorporateAction ;
+    skos:definition "Coupon stripping is the process whereby interest coupons for future payment dates are separated from the security corpus that entitles the holder to the principal repayment."@en .
+
+fibo-cae-ce-srca:DecreaseInValueAction a owl:Class ;
+    rdfs:label "decrease in value action"@en,
+        "减值行动（decrease in value action）"@zh ;
+    rdfs:comment "导致股份面值或基金资产价值减少的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action resulting in a reduction of face value of a share or the value of fund assets"@en ;
+    cmns-av:explanatoryNote "The number of circulating shares/units remains unchanged. This event may include a cash pay out to holders."@en .
+
+fibo-cae-ce-srca:DividendOptionAction a owl:Class ;
+    rdfs:label "dividend option action"@en,
+        "股息选择权行动（dividend option action）"@zh ;
+    rdfs:comment "向股东分配股息、股东可选择收取形式的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryWithChoiceCorporateAction ;
+    skos:definition "corporate action that involves distribution of a dividend to shareholders with a choice of benefit to receive"@en ;
+    cmns-av:explanatoryNote "Shareholders may choose to receive shares or cash. A dividend option action is distinguished from reinvestment (DRIP) as, like a cash dividend, the company creates new share capital in exchange for the dividend rather than investing the dividend in the market."@en .
+
+fibo-cae-ce-srca:DividendReinvestmentAction a owl:Class ;
+    rdfs:label "dividend reinvestment action"@en,
+        "股息再投资行动（dividend reinvestment action）"@zh ;
+    rdfs:comment "持有人可保留现金或将现金再投资为发行公司额外股票的股息支付行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryWithChoiceCorporateAction ;
+    skos:definition "corporate action that involves a dividend payment whereby holders can keep cash or have the cash reinvested into additional shares in the issuing company"@en ;
+    cmns-av:explanatoryNote "Dividend reinvestment is distinguished from a cash dividend in that the issuer invests the dividend in the market rather than creating new share capital in exchange for the dividend."@en .
+
+fibo-cae-ce-srca:Drawing a owl:Class ;
+    rdfs:label "drawing"@en,
+        "抽签赎回（drawing）"@zh ;
+    rdfs:comment "在证券预定最终到期日前部分赎回。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "Redemption in part before the scheduled final maturity date of a security."@en ;
+    cmns-av:explanatoryNote "Notification in advance of this happening."@en .
+
+fibo-cae-ce-srca:FormalOffer a owl:Class ;
+    rdfs:label "formal offer"@en,
+        "正式要约（formal offer）"@zh ;
+    rdfs:comment "向持有人、潜在持有人或其他利益相关方发出的、达成对参与方具有或将具有法律约束力之交易的要约。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:VoluntaryCorporateAction ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( fibo-cae-ce-srca:DutchAuction fibo-cae-ce-srca:ExchangeAction fibo-cae-ce-srca:RepurchaseOffer fibo-cae-ce-srca:TenderOffer ) ] ;
+    skos:definition "corporate action involving an offer to a holder, potential holder, or other intersted party, to enter into a trade which is or would be legally binding on the part of the party making the offer (the offeror)."@en .
+
+fibo-cae-ce-srca:FullCallEarlyRedemptionAction a owl:Class ;
+    rdfs:label "full call early redemption action"@en,
+        "全额提前赎回行动（full call early redemption action）"@zh ;
+    rdfs:comment "在到期前对某次发行的全部流通证券进行赎回的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action that involves redemption of an entire issue outstanding of securities prior to maturity"@en ;
+    skos:example "Examples securities that may be subject to a full call/early redemption include bonds, preferred equity, funds, that may be redeemed by the issuer or its agent before final maturity."@en .
+
+fibo-cae-ce-srca:InterestPaymentInKind a owl:Class ;
+    rdfs:label "interest payment in kind"@en,
+        "实物付息（interest payment in kind）"@zh ;
+    rdfs:comment "以现金以外的任何形式向计息资产持有人分配的利息支付（SWIFT：PINK）。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-srca:InterestPaymentAction ;
+    skos:definition "Interest payment, in any kind except cash, distributed to holders of an interest bearing asset. SWIFT = PINK"@en .
+
+fibo-cae-ce-srca:InterestPaymentWithPrincipal a owl:Class ;
+    rdfs:label "interest payment with principal"@en,
+        "附本金付息（interest payment with principal）"@zh ;
+    rdfs:comment "除利息支付外，同时支付计息资产部分本金的付款（SWIFT：PRII）。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-srca:InterestPaymentAction ;
+    skos:definition "A payment of a portion of the principal of an interest bearing asset, in addition to the interest payment. SWIFT = PRII"@en .
+
+fibo-cae-ce-srca:InterestRateAdjustment a owl:Class ;
+    rdfs:label "interest rate adjustment"@en,
+        "利率调整（interest rate adjustment）"@zh ;
+    rdfs:comment "浮动或可调利率证券票面利率的预定调整。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:VariableCouponBond ],
+        fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "Scheduled change to the coupon rate for a floating or adjustable rate security."@en ;
+    cmns-av:explanatoryNote "The SWIFT definition as given defines the notification of the interest rate change, not the adjustment. Adjusted to describe the event. REVIEW: Is this really an action? Usually consider that it's expected. Given definition was for the announcement. SWIFT full definition \"Announcement of the current coupon rate for a floating or adjustable rate security.\""@en .
+
+fibo-cae-ce-srca:ListingStatusDelistingMessage a owl:Class ;
+    rdfs:label "listing status delisting message"@en,
+        "退市消息（listing status delisting message）"@zh ;
+    rdfs:comment "证券不再符合交易所上市要求、被从正式报价板移除的消息。"@zh ;
+    rdfs:subClassOf cmns-doc:Notice ;
+    skos:definition "Security is no longer able to comply with the listing requirements of a stock exchange and is removed from official board quotation."@en .
+
+fibo-cae-ce-srca:OddLotOffer a owl:Class ;
+    rdfs:label "odd lot offer"@en,
+        "零股要约（odd lot offer）"@zh ;
+    rdfs:comment "发行人向零股持有人发出的要约：可按市价进行免佣交易、卖出零股或买入凑整。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:VoluntaryCorporateAction ;
+    skos:definition "Offer by issuer to allow holders of an odd lot of a security to order a commission-free transaction at market price, to sell the odd lot, or to buy an amount of shares which will bring the position to a round lot (board lot). SWIFT = ODLT"@en .
+
+fibo-cae-ce-srca:PariPassuAction a owl:Class ;
+    rdfs:label "pari-passu action"@en,
+        "同等权益行动（pari-passu action）"@zh ;
+    rdfs:comment "不同特征的证券在各方面变得完全相同（同等权益）时发生的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action that occurs when securities with different characteristics become identical in all respects"@en ;
+    cmns-av:explanatoryNote "A pari-passu event includes cases, for example, when shares with different entitlements to dividend or voting rights become equivalent through assimilation or pari-passu. Such an event may be scheduled in advance, for example, when shares resulting from a bonus may become fungible after a pre-set period of time, or may result from outside events, for example, merger, reorganisation, issue of supplementary tranches, etc."@en,
+        "The term, pari-passu, means 'at the same rate or on an equal footing', and in finance is used to describe situations where two or more assets, securities, creditors, or obligations are equally managed without preference. An example of pari-passu occurs during bankruptcy proceedings: When the court reaches a verdict, the court regards all creditors equally, and the trustee will repay them the same fractional amount as other creditors and at the same time."@en ;
+    cmns-av:synonym "assimilation"@en .
+
+fibo-cae-ce-srca:PartialRedemptionWithReductionOfNominalValueAction a owl:Class ;
+    rdfs:label "partial redemption with reduction of nominal value action"@en,
+        "部分赎回并削减面值行动（partial redemption with reduction of nominal value action）"@zh ;
+    rdfs:comment "在预定最终到期日前部分赎回证券并削减其面值的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction ;
+    skos:definition "corporate action that involves redemption of securities in part before their scheduled final maturity date with reduction of the nominal value of the securities"@en ;
+    cmns-av:explanatoryNote "The outstanding amount of securities will be reduced proportionally. May be mandatory or voluntary."@en .
+
+fibo-cae-ce-srca:PartialRedemptionWithoutReductionOfNominalValueAction a owl:Class ;
+    rdfs:label "partial redemption without reduction of nominal value action"@en,
+        "部分赎回不削减面值行动（partial redemption without reduction of nominal value action）"@zh ;
+    rdfs:comment "在预定最终到期日前部分赎回证券但不削减面值的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction ;
+    skos:definition "corporate action that involves redemption of securities in part before their scheduled final maturity date with no reduction in nominal value"@en ;
+    cmns-av:explanatoryNote "This is commonly done by pool factor reduction. May be mandatory or voluntary."@en .
+
+fibo-cae-ce-srca:PostMergerSecuritiesExchange a owl:Class ;
+    rdfs:label "post-merger securities exchange"@en,
+        "合并后证券交换（post-merger securities exchange）"@zh ;
+    rdfs:comment "因两家或多家公司合并、由发行人发起的流通证券交换（可包括期权）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-cae-ce-srca:convertsFrom ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-cae-ce-srca:convertsTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-cae-ce-act:CorporateAction ;
+    skos:definition "corporate action that involves the exchange of outstanding securities, initiated by the issuer which may include options, as the result of two or more companies combining assets, that is, an external, third party company"@en ;
+    cmns-av:explanatoryNote "This is an action as a result of the merger, not the merger itself, and may be mandatory or voluntary. Cash payments may accompany share exchange."@en .
+
+fibo-cae-ce-srca:PutRedemptionAction a owl:Class ;
+    rdfs:label "put redemption action"@en,
+        "回售赎回行动（put redemption action）"@zh ;
+    rdfs:comment "持有人按发行条款选择提前赎回证券、不削减面值的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:VoluntaryCorporateAction ;
+    skos:definition "corporate action involving early redemption of a security at the election of the holder subject to the terms and condition of the issue with no reduction in nominal value"@en .
+
+fibo-cae-ce-srca:RedemptionAtMaturityAction a owl:Class ;
+    rdfs:label "redemption at maturity action"@en,
+        "到期赎回行动（redemption at maturity action）"@zh ;
+    rdfs:comment "在最终到期日对某次发行的全部流通证券进行赎回的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action that involves redemption of an entire issue outstanding of securities at final maturity"@en .
+
+fibo-cae-ce-srca:RedenominationAction a owl:Class ;
+    rdfs:label "redenomination action"@en,
+        "重新计值行动（redenomination action）"@zh ;
+    rdfs:comment "重新表述证券计值单位（货币和/或面值）的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action by which the unit (currency and/or nominal) of a security is restated"@en ;
+    cmns-av:explanatoryNote "For example, the nominal/par value of security in a national currency is restated in another currency."@en .
+
+fibo-cae-ce-srca:ReverseStockSplit a owl:Class ;
+    rdfs:label "reverse stock split"@en,
+        "并股（reverse stock split）"@zh ;
+    rdfs:comment "在不改变股东权益或总市值的情况下减少公司流通股数量的公司行动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-eq-eq:Share ],
+        fibo-cae-ce-act:MandatoryCorporateAction ;
+    owl:disjointWith fibo-cae-ce-srca:StockSplit ;
+    skos:definition "corporate action involving a decrease in a company's number of outstanding equities without any change in the shareholder's equity or the aggregate market value at the time of the split"@en ;
+    cmns-av:explanatoryNote "Equity price and nominal value are increased accordingly."@en ;
+    cmns-av:synonym "change in nominal value"@en .
+
+fibo-cae-ce-srca:RightsExerciseEvent a owl:Class ;
+    rdfs:label "rights exercise event"@en,
+        "权利行权事件（rights exercise event）"@zh ;
+    rdfs:comment "行使购买股份之权利的事件，属持有人一方的行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction ;
+    skos:definition "Exercising the right to purchase the shares. Furhter Notes: This is an action on the part of the holder. SWIFT: Call/exercise on nil-paid securities/rights resulting from a rights distribution (RHDI) (To be used for the second event in case rights issue is dealt with in 2 events, first event being the RHDI)."@en ;
+    cmns-av:explanatoryNote "There is a rights trading period overlaps with rights subscriptiuon period (you can trade the rights) Rights exercise period - expiry date. Some time after the expiry the new shares are distributed. This is the distribution."@en .
+
+fibo-cae-ce-srca:SharesPremiumDividendAction a owl:Class ;
+    rdfs:label "shares premium dividend action"@en,
+        "股本溢价股息行动（shares premium dividend action）"@zh ;
+    rdfs:comment "从股本溢价储备中向股东支付现金的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryWithChoiceCorporateAction ;
+    skos:definition "corporate action that pays shareholders an amount in cash issued from the shares premium reserve"@en ;
+    cmns-av:explanatoryNote "It is similar to a dividend but with different tax implications."@en .
+
+fibo-cae-ce-srca:StockDividendAction a owl:Class ;
+    rdfs:label "stock dividend action"@en,
+        "股票股息行动（stock dividend action）"@zh ;
+    rdfs:comment "以发行公司股票形式向股东分配股息的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action that involves distribution of a dividend to shareholders in the form of equities of the issuing corporation"@en .
+
+fibo-cae-ce-srca:TradingStatusActiveMessage a owl:Class ;
+    rdfs:label "trading status active message"@en,
+        "交易状态活跃消息（trading status active message）"@zh ;
+    rdfs:comment "证券交易已开始、或在暂停后恢复交易的消息。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-srca:TradingStatusMessage ;
+    skos:definition "Trading in security has commenced or security has been re-activated after a supsension in trading."@en .
+
+fibo-cae-ce-srca:TradingStatusSuspendedMessage a owl:Class ;
+    rdfs:label "trading status suspended message"@en,
+        "交易状态暂停消息（trading status suspended message）"@zh ;
+    rdfs:comment "证券交易已被暂停的消息。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-srca:TradingStatusMessage ;
+    skos:definition "Trading in the security has been suspended."@en .
+
+fibo-cae-ce-srca:WarrantExerciseAction a owl:Class ;
+    rdfs:label "warrant exercise action"@en,
+        "认股权证行权行动（warrant exercise action）"@zh ;
+    rdfs:comment "向持有人提供按预定价格买入（认购权证）或卖出（认沽权证）特定数量股票、现金或商品之选择权的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction ;
+    skos:definition "corporate action that offers holders the option to buy (call warrant) or to sell (put warrant) a specific amount of stock, cash, or commodity, at a predetermined price, during a predetermined period of time (which usually corresponds to the life of the issue)"@en ;
+    cmns-av:explanatoryNote "Note that participation by the warrant holder may be mandatory or voluntary and may involve a choice in the mandatory case."@en .
+
+fibo-cae-ce-srca:WorthlessSecurityAction a owl:Class ;
+    rdfs:label "worthless security action"@en,
+        "无价值证券行动（worthless security action）"@zh ;
+    rdfs:comment "涉及将无价值证券核销的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action that involves booking out of valueless securities"@en .
+
+fibo-fbc-dae-cre:MaturityExtension a owl:Class ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction .
+
+fibo-cae-ce-srca: a owl:Ontology ;
+    rdfs:label "Security-related Corporate Actions Ontology"@en,
+        "证券相关企业行动本体（Security-related Corporate Actions Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the kinds of income and corporate action events covered by ISO 15022 and other standards, including recent extensions to those standards. Scope has been limited to security-related events and actions, and excludes most notification and meetings related events." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义直接改变证券条款或数量的企业行动：拆股、并股、换股、权证行使等。"@zh ;
+    owl:imports fibo-cae-ce-act:,
+        fibo-fbc-dae-cre:,
+        fibo-fbc-fi-fi:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-utl-av:,
+        fibo-md-temx-trs:,
+        fibo-sec-dbt-bnd:,
+        fibo-sec-eq-eq:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-doc: ;
+    owl:versionIRI fibo-cae-ce-srca: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2016-2023 EDM Council, Inc." .
+
+fibo-cae-ce-srca:CapitalDistribution a owl:Class ;
+    rdfs:label "capital distribution"@en,
+        "资本分配（capital distribution）"@zh ;
+    rdfs:comment "从发行人资本账户向股东支付现金的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:VoluntaryCorporateAction ;
+    skos:definition "corporate action that pays shareholders an amount in cash issued from the issuer's capital account"@en ;
+    cmns-av:explanatoryNote "This action does not result in a reduction of the face value of a share or in a change to the number of shares in circulation."@en .
+
+fibo-cae-ce-srca:CorporateChangeOfStatusEvent a owl:Class ;
+    rdfs:label "corporate change of status event"@en,
+        "公司状态变更事件（corporate change of status event）"@zh ;
+    rdfs:comment "某证券状态的某种变更。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction,
+        fibo-fnd-arr-lif:LifecycleEvent ;
+    skos:definition "Some change to the status of some security."@en ;
+    cmns-av:explanatoryNote "This is generally described by a corporate event message. For example, change in trading status, listing status."@en .
+
+fibo-cae-ce-srca:DutchAuction a owl:Class ;
+    rdfs:label "dutch auction"@en,
+        "荷兰式拍卖（dutch auction）"@zh ;
+    rdfs:comment "由希望收购某证券的参与方发起的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:VoluntaryCorporateAction ;
+    skos:definition "corporate action by a party wishing to acquire a security"@en ;
+    cmns-av:explanatoryNote "Holders of the security are invited to make an offer to sell, within a specific price range. The acquiring party will buy from the holder with lowest offer."@en .
+
+fibo-cae-ce-srca:ExchangeAction a owl:Class ;
+    rdfs:label "exchange action"@en,
+        "交换行动（exchange action）"@zh ;
+    rdfs:comment "以持仓换取其他证券和/或现金的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction ;
+    skos:definition "corporate action that reflects an exchange of holdings for other securities and/or cash"@en ;
+    cmns-av:explanatoryNote "The exchange can be either mandatory or voluntary involving the exchange of outstanding securities for different securities and/or cash. For example, 'exchange offer', 'capital reorganisation' or 'funds separation'."@en .
+
+fibo-cae-ce-srca:IntermediateSecuritiesDistribution a owl:Class ;
+    rdfs:label "intermediate securities distribution"@en,
+        "中介证券分配（intermediate securities distribution）"@zh ;
+    rdfs:comment "分配中介证券或赋予持有人参与未来事件之权利的特权的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action involving the distribution of intermediate securities or privilege that gives the holder the right to take part in a future event"@en ;
+    cmns-av:synonym "rights distribution"@en .
+
+fibo-cae-ce-srca:RepurchaseOffer a owl:Class ;
+    rdfs:label "repurchase offer"@en,
+        "回购要约（repurchase offer）"@zh ;
+    rdfs:comment "发行公司向现有股东发出的回购股权或可转换为股权之其他证券的要约。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:VoluntaryCorporateAction ;
+    skos:definition "corporate action in which an offer is made to existing shareholders by the issuing company to repurchase equity or other securities convertible into equity"@en ;
+    cmns-av:explanatoryNote "The objective of the offer is to reduce the number of outstanding equities."@en ;
+    cmns-av:synonym "issuer bid"@en,
+        "reverse rights"@en .
+
+fibo-cae-ce-srca:StockSplit a owl:Class ;
+    rdfs:label "stock split"@en,
+        "拆股（stock split）"@zh ;
+    rdfs:comment "在不改变股东权益或总市值的情况下增加公司流通股数量的公司行动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-eq-eq:Share ],
+        fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action involving an increase in a corporation's number of outstanding equities without any change in the shareholder's equity or the aggregate market value at the time of the split"@en ;
+    cmns-av:explanatoryNote "Equity price and nominal value are reduced accordingly."@en ;
+    cmns-av:synonym "change in nominal value"@en,
+        "subdivision"@en .
+
+fibo-cae-ce-srca:TenderOffer a owl:Class ;
+    rdfs:label "tender offer"@en,
+        "要约收购（tender offer）"@zh ;
+    rdfs:comment "通常由第三方向股东发出的、请求其出售（投标）或交换所持股票的要约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-eq-eq:Share ],
+        fibo-cae-ce-act:VoluntaryCorporateAction ;
+    skos:definition "corporate action involving an offer made to shareholders, normally by a third party, requesting them to sell (tender) or exchange their equities"@en ;
+    cmns-av:synonym "acquisition"@en,
+        "buyback"@en,
+        "purchase offer"@en,
+        "takeover"@en .
+
+fibo-cae-ce-srca:CorporateActionObligation a owl:Class ;
+    rdfs:label "corporate action obligation"@en,
+        "公司行动义务（corporate action obligation）"@zh ;
+    rdfs:comment "与持有某证券相关的义务。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:CorporateAction,
+        fibo-fnd-law-lcap:Duty ;
+    skos:definition "An obligation related to the holding of a Security."@en ;
+    cmns-av:explanatoryNote "Delivery of a security. Not defining direction at this level of the model - one party may have an obligation to deliver security or to pay; other party may have an obligation to deliver or to pay. Or there may be just one."@en .
+
+fibo-cae-ce-srca:InterestPaymentAction a owl:Class ;
+    rdfs:label "interest payment action"@en,
+        "付息行动（interest payment action）"@zh ;
+    rdfs:comment "向计息资产持有人分配定期利息的公司行动。"@zh ;
+    rdfs:subClassOf fibo-cae-ce-act:MandatoryCorporateAction ;
+    skos:definition "corporate action that involves distribution of a regular interest payment to holders of an interest-bearing asset"@en ;
+    skos:editorialNote "Further notes: Are there options on the Holder? Yes, you can opt to be paid in a certain currency. It is not always defined in the security terms. So if the Terms in the Security terms sheet gives you an option, there is a choice for the Holder at this point. Such choices would include: - Currency - Pay in Kind (\"Spinoff\" or PiK - see PiK corporate Action) Could be mandatory. If there were an option then the letter announcing it would require a response. This is usually stated in the message. Is there a message even if there is no option? Yes. Usually have to generate the events artificially as the Servicing organization. you can't rely on a feed or message coming in but because it is part of the security contract the above has to generate at the expected time, and arrange the payments. Q: That is the point at there was a choice you would expect to see a message, or end up still having to generate it but with the choices. A: The ones with Choices come as announcements and don't ave to be generated by the Service. Older definitin (re-scoped now: An Event in which a payment occurs. Anything can have a payment event. If a thing hits a pay date, whether it's voluntary or mandatory, that's a payment event. Divide into: Securities Cash Combination Payment or Distribution? Are these exclusive? Take an event that's always a combination of options, and an option is a combination of payouts. Generates transactions - determine what txns happen when a customer chooses that option. Distribution / delivery: generic concept Payment - implis cash distribution. So payment is specialization of distribution."@en .
+
+fibo-cae-ce-srca:TradingStatusMessage a owl:Class ;
+    rdfs:label "trading status message"@en,
+        "交易状态消息（trading status message）"@zh ;
+    rdfs:comment "关于交易状态的消息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-md-temx-trs:SecurityTradingStatus ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        cmns-doc:Notice ;
+    skos:definition "A message about trading status."@en ;
+    cmns-av:explanatoryNote "There are a number of such messages. Events v Status: See e.g. Active: this relates to one state OR two transitions (transition from pre-issuance to Trading, or from Suspended to Trading)."@en .
+
+fibo-cae-ce-srca:convertsFrom a owl:ObjectProperty ;
+    rdfs:label "converts from"@en,
+        "转换自（converts from）"@zh ;
+    rdfs:comment "标识转换前的证券。"@zh ;
+    rdfs:domain fibo-cae-ce-act:CorporateAction ;
+    rdfs:range fibo-fbc-fi-fi:Security .
+
+fibo-cae-ce-srca:convertsTo a owl:ObjectProperty ;
+    rdfs:label "converts to"@en,
+        "转换为（converts to）"@zh ;
+    rdfs:comment "标识转换后的证券。"@zh ;
+    rdfs:domain fibo-cae-ce-act:CorporateAction ;
+    rdfs:range fibo-fbc-fi-fi:Security .
+

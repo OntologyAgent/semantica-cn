@@ -1,0 +1,458 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix cmns-sfc: <https://www.omg.org/spec/Commons/SitesAndFacilities/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-loan-spc-com: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/> .
+@prefix fibo-loan-spc-grn: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-spc-grn: a owl:Ontology ;
+    rdfs:label "Green Loans Ontology"@en,
+        "绿色贷款本体（Green Loans Ontology）"@zh ;
+    dcterms:abstract "The green loans ontology defines concepts specific to loans made available exclusively to finance or refinance, in whole or in part, new and/or existing eligible 'green projects'. Examples include loans whose purpose involves renewable energy, energy efficiency, climate change adaptation and green buildings that meet regional, national or internationally recognized standards or certifications." ;
+    dcterms:license """Copyright (c) 2024-2025 EDM Council, Inc.
+Copyright (c) 2024-2025 FIUTUR
+Copyright (c) 2024-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义符合绿色融资原则（资金投向环保项目）的绿色贷款。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-fbc-dae-dbt:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        fibo-loan-ln-ln:,
+        fibo-loan-spc-com:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-cxtid:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-qtu:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        cmns-sfc: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/LOAN/20251201/LoansSpecific/GreenLoans/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20250301/LoansSpecific/GreenLoans.rdf version of the ontology was modified to reuse concepts from the Commons 1.3 sites and facilities ontology (FND-401)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2024-2025 EDM Council, Inc.",
+        "Copyright (c) 2024-2025 FIUTUR",
+        "Copyright (c) 2024-2025 Object Management Group, Inc." .
+
+fibo-loan-spc-grn:GreenLoan a owl:Class ;
+    rdfs:label "green loan"@en,
+        "绿色贷款（green loan）"@zh ;
+    rdfs:comment "专门用于为绿色项目融资或再融资的信贷协议和/或或有融资安排（如保函额度、担保额度或信用证）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:MilestoneSchedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
+            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:DisclosureProvision ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-loan-spc-grn:GreenProjectUseOfProceedsProvision ],
+        fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically ;
+    skos:definition "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) made available exclusively to finance, re-finance or guarantee, in whole or in part, new and/or existing eligible green projects that are aligned to the four core components of the Green Loan Principles (GLP)"@en ;
+    skos:example "Example categories of eligibility contained in the LMA's Green Loan Principles (GLP) include loans designed to facilitate renewable energy, energy efficiency, climate change adaptation and green buildings that meet regional, national or internationally recognised standards or certifications."@en ;
+    cmns-av:adaptedFrom "https://www.addleshawgoddard.com/en/insights/insights-briefings/2020/financial-services/green-loans-and-sustainability-linked-loans-what-is-the-difference/"@en,
+        "https://www.lsta.org/content/sustainable-lending-glossary-of-terms/"@en .
+
+fibo-loan-spc-grn:SustainabilityLinkedLoan a owl:Class ;
+    rdfs:label "sustainability-linked loan"@en,
+        "可持续挂钩贷款（sustainability-linked loan）"@zh ;
+    rdfs:comment "其经济特征可随借款人可持续绩效目标达成情况而变化的信贷协议和/或或有融资安排。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityBusinessStrategy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:DisclosureProvision ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
+            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:MilestoneSchedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
+        fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically,
+        fibo-loan-spc-com:CommercialLoan ;
+    skos:definition "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) for which the economic characteristics can vary depending on whether the borrower achieves ambitious, material and quantifiable predetermined sustainability performance objectives aligned with Sustainability-Linked Loan Principles (SSLP)"@en ;
+    skos:example "The use of proceeds in relation to a SLL is not a determinant in its categorisation and, in most instances, SLLs will be used for general corporate purposes. Instead, SLLs look to support a borrower in improving its sustainability performance."@en ;
+    cmns-av:abbreviation "SLL"@en ;
+    cmns-av:adaptedFrom "https://www.addleshawgoddard.com/en/insights/insights-briefings/2020/financial-services/green-loans-and-sustainability-linked-loans-what-is-the-difference/"@en,
+        "https://www.lsta.org/content/sustainable-lending-glossary-of-terms/"@en ;
+    cmns-av:explanatoryNote "A borrower's sustainability performance is measured using sustainability performance targets (SPTs), which include key performance indicators, external ratings and/or equivalent metrics that measure improvements in the borrower's sustainability profile."@en .
+
+fibo-loan-spc-grn:SustainabilityStructuringAgent a owl:Class ;
+    rdfs:label "sustainability structuring agent"@en,
+        "可持续结构设计行（sustainability structuring agent）"@zh ;
+    rdfs:comment "受委任帮助设计、实施和监测银团绿色贷款可持续方面安排的金融机构。"@zh ;
+    rdfs:subClassOf fibo-be-fct-fct:SyndicateMember ;
+    skos:definition "financial institution appointed to help design, implement, and monitor the sustainability aspects of a syndicated green loan"@en ;
+    cmns-av:explanatoryNote "This role is typically present in sustainability-linked loans (SLLs) or green loans, which tie the loan's terms to the borrower's environmental, social, and governance (ESG) performance. The sustainability structuring agent's role is crucial in ensuring that the loan's sustainability metrics align with both the borrower's goals and the expectations of the participating lenders."@en .
+
+fibo-loan-spc-grn:TransitionLoan a owl:Class ;
+    rdfs:label "transition loan"@en,
+        "转型贷款（transition loan）"@zh ;
+    rdfs:comment "旨在帮助企业或组织支持其长期脱碳或可持续转型的信贷协议和/或或有融资安排。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:DisclosureProvision ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:MilestoneSchedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
+            owl:someValuesFrom fibo-loan-spc-grn:TransitionStrategy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-loan-spc-grn:TransitionUseOfProceedsProvision ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
+            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
+        fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically,
+        fibo-loan-spc-com:CommercialLoan ;
+    skos:definition "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) designed to help a business or organization shift from carbon-intensive or environmentally harmful practices to more sustainable and environmentally friendly operations"@en ;
+    cmns-av:explanatoryNote "Transition loans are part of the broader sustainable finance market and are specifically tailored for companies in industries that are not inherently green but are committed to adopting practices that align with a low-carbon or sustainable economy."@en,
+        "Transition loans are structured to assist companies in reducing greenhouse gas (GHG) emissions, improving energy efficiency, adopting renewable energy sources, or meeting other sustainability targets aligned with climate transition goals. They support initiatives such as retrofitting fossil fuel-based systems, decarbonizing supply chains, or adopting cleaner production methods. Transition loans align with emerging Climate Transition Finance principles (developed by groups such as the International Capital Market Association, ICMA). Borrowers are expected to demonstrate that the loan aligns with long-term, science-based climate goals, such as those outlined in the Paris Agreement (e.g., limiting global warming to well below 2°C)."@en .
+
+fibo-loan-spc-grn:EnvironmentalProgram a owl:Class ;
+    rdfs:label "environmental program",
+        "环境计划（environmental program）"@zh ;
+    rdfs:comment "旨在改善环境可持续性、减少生态损害或应对环境挑战的大规模倡议、活动或投资。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:EnvironmentalProject ;
+            owl:onProperty cmns-col:hasMember ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isCharacterizedBy ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
+        fibo-fnd-gao-obj:Program ;
+    skos:definition "broad scale initiative, activity, or investment aimed at improving environmental sustainability, reducing ecological harm, or addressing environmental challenges" ;
+    cmns-av:explanatoryNote "Key characteristics of an environmental or sustainability program include achieving measurable positive environmental outcomes, and aligning with broader sustainability goals, such as those outlined in international frameworks (e.g., the United Nations Sustainable Development Goals (SDGs), Paris Agreement). Large scale environmental programs may consist of a number of projects aimed at addressing specific requirements that support the broader challenges outlined under the program." .
+
+fibo-loan-spc-grn:GreenProject a owl:Class ;
+    rdfs:label "green project",
+        "绿色项目（green project）"@zh ;
+    rdfs:comment "通过应对气候变化、保护自然资源、减少污染或促进可持续发展而贡献于环境可持续性的项目。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom fibo-loan-spc-grn:GreenProjectUseOfProceedsProvision ],
+        fibo-loan-spc-grn:EnvironmentalProject ;
+    skos:definition "project that contributes to environmental sustainability by addressing climate change, conserving natural resources, reducing pollution, or promoting ecological balance" ;
+    skos:example "Examples include: renewable energy projects (e.g., solar, wind, hydroelectric power), green buildings certified by recognized standards (e.g., LEED, BREEAM), sustainable water and wastewater management systems, pollution reduction technologies and systems, sustainable forestry and agriculture initiatives, circular economy projects, such as recycling or waste-to-energy facilities, low-carbon transportation infrastructure (e.g., electric vehicle charging stations, public transit projects), and the like."@en ;
+    cmns-av:adaptedFrom "https://www.prince2.com/usa/blog/project-vs-programme"^^xsd:anyURI,
+        "Loan Market Association (LMA) Green Loan Principles, available at https://www.icmagroup.org/assets/documents/Regulatory/Green-Bonds/LMA_Green_Loan_Principles_Booklet-220318.pdf.",
+        "https://www.lma.eu.com/application/files/8916/9755/2443/Green_Loan_Principles_23_February_2023.pdf"@en ;
+    cmns-av:explanatoryNote "Green projects must align with established green finance principles, such as the Green Loan Principles (GLP) issued by the Loan Market Association (LMA), or other recognized sustainability frameworks."@en,
+        "The borrower must demonstrate that the project meets predefined eligibility criteria for green financing. These criteria are usually aligned with the taxonomy or standards set forth by the Green Loan Principles, the EU Taxonomy for Sustainable Activities, or other regional or international guidelines."@en,
+        "To qualify as a green project within a green loan: (a) the project must meet use-of-proceeds requirements, meaning that funds must be exclusively allocated to activities that qualify as green, (b) the borrower must establish clear processes for evaluating and selecting eligible projects, (c) there must be transparency in how funds are managed and allocated, often verified through audits or certifications, and (d) the borrower must report regularly on the environmental impact of the project, typically through measurable metrics (e.g., tons of CO₂ avoided, energy saved)."@en .
+
+fibo-loan-spc-grn:ObservedIndicatorValue a owl:Class ;
+    rdfs:label "observed indicator value"@en,
+        "观测指标值（observed indicator value）"@zh ;
+    rdfs:comment "在特定日期时间对关键绩效指标的观测（测量）值。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasQuantityValue ;
+            owl:someValuesFrom cmns-qtu:ScalarQuantityValue ],
+        fibo-fnd-dt-fd:DatedCollectionConstituent ;
+    skos:definition "observation (measurement) of a key performance indicator measured at specific date and time"@en .
+
+fibo-loan-spc-grn:ObservedIndicatorValueStructure a owl:Class ;
+    rdfs:label "observed indicator value structure"@en,
+        "观测指标值结构（observed indicator value structure）"@zh ;
+    rdfs:comment "某关键绩效指标在指定时间窗口内观测值的集合。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-loan-spc-grn:ObservedIndicatorValue ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasDatePeriod ;
+            owl:someValuesFrom fibo-fnd-dt-fd:CalculationPeriod ],
+        fibo-fnd-dt-fd:DatedStructuredCollection ;
+    skos:definition "collection of observations for some key performance indicator measured over a specified window of time"@en .
+
+fibo-loan-spc-grn:SustainabilityBusinessStrategy a owl:Class ;
+    rdfs:label "sustainability business strategy"@en,
+        "可持续业务战略（sustainability business strategy）"@zh ;
+    rdfs:comment "从环境、社会和/或治理（ESG）视角实现可持续相关特定业务目标的战略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:SustainabilityPerformanceTarget ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isCharacterizedBy ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityBusinessObjective ],
+        fibo-fnd-gao-obj:BusinessStrategy ;
+    skos:definition "strategy for achieving specific business objectives related to sustainability (from an environmental and/or social and/or governance (ESG) perspective)"@en ;
+    cmns-av:adaptedFrom "https://www.lsta.org/content/sustainability-linked-loan-principles-sllp/"@en ;
+    cmns-av:explanatoryNote "An SLL borrower should clearly communicate to its lender(s) its rationale for the selection of its KPI(s) (i.e. relevance, materiality, whether it is core to the borrower's overall business) and the motivation for the SPT(s) (i.e. ambition level, benchmarking approach and how the borrower intends to reach such SPTs). Borrowers are encouraged to position this information within the context of their overarching objectives, sustainability strategy, policy, sustainability commitments and/or processes relating to sustainability."@en,
+        "SLLs aim to support a borrower's efforts in improving its sustainability profile over the term of the loan. They do so by aligning loan terms to the borrower's performance, which is measured using one or more sustainability KPIs that can be internal and/or external. The KPIs must be material to the borrower's core sustainability and business strategy, and address relevant ESG challenges of its industry sector."@en .
+
+fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicatorIdentifier a owl:Class ;
+    rdfs:label "sustainability key performance indicator identifier"@en,
+        "可持续关键绩效指标标识符（sustainability key performance indicator identifier）"@zh ;
+    rdfs:comment "唯一标识特定可持续相关关键绩效指标的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
+        cmns-cxtid:ContextualIdentifier ;
+    skos:definition "sequence of characters uniquely identifying a specific sustainability-related key performance indicator" .
+
+fibo-loan-spc-grn:SustainabilityPerformanceTargetIdentifier a owl:Class ;
+    rdfs:label "sustainability performance target identifier"@en,
+        "可持续绩效目标标识符（sustainability performance target identifier）"@zh ;
+    rdfs:comment "唯一标识特定可持续相关绩效目标的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityPerformanceTarget ],
+        cmns-cxtid:ContextualIdentifier ;
+    skos:definition "sequence of characters uniquely identifying a specific sustainability-related performance target" .
+
+fibo-loan-spc-grn:TargetIndicatorValue a owl:Class ;
+    rdfs:label "target indicator value"@en,
+        "目标指标值（target indicator value）"@zh ;
+    rdfs:comment "关键绩效指标在特定日期时间的目标值。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasQuantityValue ;
+            owl:someValuesFrom cmns-qtu:ScalarQuantityValue ],
+        fibo-fnd-dt-fd:DatedCollectionConstituent ;
+    skos:definition "target value for a key performance indicator as of a specific date and time"@en .
+
+fibo-loan-spc-grn:TransitionProject a owl:Class ;
+    rdfs:label "transition project",
+        "转型项目（transition project）"@zh ;
+    rdfs:comment "支持行业层面减少环境影响的广泛努力的项目。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom fibo-loan-spc-grn:TransitionUseOfProceedsProvision ],
+        fibo-loan-spc-grn:EnvironmentalProject ;
+    skos:definition "project that supports broad, sector-specific efforts to reduce environmental impact" ;
+    cmns-av:explanatoryNote "Borrowers must demonstrate a credible transition plan, which include: (a) clear sustainability performance targets (SPTs), (b) alignment with recognized climate goals and frameworks (e.g., the Science Based Targets initiative, SBTi), and (c) transparency in reporting progress and outcomes. Third-party verification or certification of the transition plan and its alignment with best practices is often required."@en,
+        "Green loans focus on funding projects with direct and measurable environmental benefits (e.g., solar farms, green buildings). Transition loans are for broader initiatives aimed at improving sustainability in traditionally carbon-intensive sectors."@en,
+        "Sustainability-Linked Loans (SLLs): Transition loans share similarities with SLLs, as both tie terms (such as interest rates) to achieving predefined sustainability goals. However, transition loans are specifically framed within the context of long-term decarbonization or sustainability transitions."@en .
+
+fibo-loan-spc-grn:TransitionStrategy a owl:Class ;
+    rdfs:label "transition strategy"@en,
+        "转型战略（transition strategy）"@zh ;
+    rdfs:comment "在长期脱碳或可持续转型背景下实现可持续相关特定业务目标的战略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityPerformanceTarget ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityBusinessObjective ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isCharacterizedBy ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
+        fibo-fnd-gao-obj:BusinessStrategy ;
+    skos:definition "strategy for achieving specific business objectives related to sustainability in the context of long-term decarbonization or sustainability transitions"@en ;
+    cmns-av:explanatoryNote "Note that although there are similarities with sustainability business strategies, they are not the same. KPIs and SPTs may, however, be defined similarly for a given project."@en .
+
+fibo-loan-spc-grn:hasAssessmentBoundary a owl:ObjectProperty ;
+    rdfs:label "has assessment boundary",
+        "具有评估边界（has assessment boundary）"@zh ;
+    rdfs:comment "标识环境或可持续项目的范围、界限与情境。"@zh ;
+    rdfs:range fibo-loan-spc-grn:AssessmentBoundary ;
+    rdfs:subPropertyOf cmns-cxtdsg:isApplicableIn ;
+    skos:definition "indicates the scope, limits, and context for an environmental or sustainability project" .
+
+fibo-loan-spc-grn:hasSpatialBoundary a owl:ObjectProperty ;
+    rdfs:label "has spatial boundary",
+        "具有空间边界（has spatial boundary）"@zh ;
+    rdfs:comment "指明环境或可持续评估所涵盖的地理区域，可为特定场所、设施、区域或全球。"@zh ;
+    rdfs:range cmns-loc:GeographicRegion ;
+    rdfs:subPropertyOf cmns-loc:hasRegion ;
+    skos:definition "specifies a geographic region included in an environmental or sustainability assessment, which may cover a specific site, facility, region, or the global operations of a company or project" .
+
+fibo-loan-spc-grn:AssessmentBoundary a owl:Class ;
+    rdfs:label "assessment boundary",
+        "评估边界（assessment boundary）"@zh ;
+    rdfs:comment "用于确定环境影响评估、分析或计量之纳入与排除范围的界限与标准。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-sfc:Site ;
+            owl:onProperty fibo-fnd-rel-rel:involves ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-sfc:Facility ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-spc-grn:hasSpatialBoundary ;
+            owl:someValuesFrom cmns-loc:GeographicRegion ],
+        cmns-cxtdsg:Context,
+        cmns-doc:Specification ;
+    skos:definition "defined scope, limits, and criteria used to determine what is included or excluded in an evaluation, analysis, or measurement of environmental impacts, sustainability performance, or related objectives" ;
+    cmns-av:explanatoryNote """The assessment boundary ensures consistency, transparency, and focus by specifying the parameters for the evaluation. It includes: (1) the scope of assessment, (2) the relevant spacial boundaries, (3) the time period(s) over which the assessment is to be conducted, (4) organizational boundaries - which parts of an organization or project are included in the evaluation, (5) impact categories - which environmental or sustainability impacts are included, (6) lifecycle boundaries - which stages of the lifecycle are included, (7) exclusions - specific elements, processes, or impacts that are excluded from the assessment and justification for these exclusions, and (8) stakeholder boundaries - the extent to which external stakeholders or externalities (e.g., indirect social impacts) are considered.
+		
+		- The scope statement specifies which aspects, activities, processes, or entities are included in the evaluation. For example, in a greenhouse gas (GHG) emissions assessment, the boundary might cover Scope 1 (direct emissions), Scope 2 (indirect emissions from energy use), and Scope 3 (upstream and downstream emissions in the value chain).
+		
+		- The spatial boundaries cover the geographic region(s) relevant for the assessment, including but not limited to a specific site, facility, region, or global operations of a company or project.
+		
+		- The relevant timeframe may be a single year, the entire lifecycle of a product, or a specific project phase.
+		
+		- Organizational boundaries may include a parent company, subsidiaries, joint ventures, or specific divisions based on control, ownership, or influence.
+		
+		- Impact may include carbon emissions, energy use, water consumption, biodiversity impact, and waste generation.
+		
+		- Lifecycle boundaries may cover product or process evaluations (e.g., Life Cycle Assessment or LCA). If so, the boundary defines which stages of the lifecycle are included: Cradle-to-Grave: Includes all stages, from raw material extraction to disposal, Cradle-to-Gate: Covers stages up to the point where the product leaves the manufacturing facility. or Gate-to-Gate: Focuses on a specific segment of the lifecycle, such as manufacturing processes, for example.
+		
+		- Small, immaterial emissions sources might be excluded if their impact is negligible.
+		
+		- Stakeholder boundaries with respect to a given sustainability evaluation might include impacts on local communities or supply chain partners.""" .
+
+fibo-loan-spc-grn:GreenProjectUseOfProceedsProvision a owl:Class ;
+    rdfs:label "green project use of proceeds provision",
+        "绿色项目募集资金用途条款（green project use of proceeds provision）"@zh ;
+    dcterms:source "Loan Market Association (LMA) Green Loan Principles, available at https://www.icmagroup.org/assets/documents/Regulatory/Green-Bonds/LMA_Green_Loan_Principles_Booklet-220318.pdf." ;
+    rdfs:comment "规定融资所得资金专用于绿色项目的募集资金用途条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-loan-spc-grn:GreenProject ],
+        fibo-fnd-agr-ctr:UseOfProceedsProvision ;
+    skos:definition "use of proceeds provision specifying that funds obtained through financing, such as through a credit agreement, offering, warrant, or other instrument are intended to be used for Green Projects (including other related and supporting expenditures, including research and development)" ;
+    cmns-av:explanatoryNote """All designated Green Projects should provide clear environmental benefits, which will be assessed, and where feasible, quantified, measured and reported by the borrower, per requirements outlined in the LMA Green Loan Principles (GLP). Where funds are to be used, in whole or part, for refinancing, it is recommended that borrowers provide an estimate of the share of financing versus refinancing. Where appropriate, they should also clarify which investments or project portfolios may be refinanced, and, to the extent relevant, the expected look-back period for refinanced Green Projects. A green loan may take the form of one or more tranches of a loan facility. In such cases, the green tranche(s) must be clearly designated, with proceeds of the green tranche(s) credited to a separate account or tracked by the borrower in an appropriate manner. 
+		
+		The GLP explicitly recognise several broad categories of eligibility for Green Projects with the objective of addressing key areas of environmental concern such as climate change, natural resources depletion, loss of biodiversity, and air, water and soil pollution. This non-exhaustive list, set out in Appendix 1, is intended to capture the most usual types of projects supported, and expected to be supported, by the green loan market. However, it is recognised that definitions of green and green projects may vary depending on sector and geography""" .
+
+fibo-loan-spc-grn:SustainabilityBusinessObjective a owl:Class ;
+    rdfs:label "sustainability business objective"@en,
+        "可持续业务目标（sustainability business objective）"@zh ;
+    rdfs:comment "与改善企业可持续状况相关的目标。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:BusinessObjective ;
+    skos:definition "objective related to improving the sustainability profile of the business"@en ;
+    cmns-av:adaptedFrom "https://www.lsta.org/content/sustainability-linked-loan-principles-sllp/"@en ;
+    cmns-av:explanatoryNote "The borrower of an SLL should clearly communicate to its lenders its sustainability objective(s) and how such objectives align with its proposed sustainability performance targets (SPTs)."@en .
+
+fibo-loan-spc-grn:TransitionUseOfProceedsProvision a owl:Class ;
+    rdfs:label "transition use of proceeds provision",
+        "转型募集资金用途条款（transition use of proceeds provision）"@zh ;
+    rdfs:comment "规定融资所得资金用于转型目的的募集资金用途条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-loan-spc-grn:TransitionProject ],
+        fibo-fnd-agr-ctr:UseOfProceedsProvision ;
+    skos:definition "use of proceeds provision specifying that funds obtained through financing, such as through a credit agreement, offering, warrant, or other instrument are intended to be used to fund specific projects, investments, or operational changes that support a company's transition toward sustainability" .
+
+fibo-loan-spc-grn:EnvironmentalProject a owl:Class ;
+    rdfs:label "environmental project",
+        "环境项目（environmental project）"@zh ;
+    rdfs:comment "旨在改善环境可持续性、减少生态损害或应对环境挑战的具体倡议、活动或投资。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:MilestoneSchedule ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isCharacterizedBy ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:EnvironmentalProgram ;
+            owl:onProperty cmns-col:isMemberOf ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:AssessmentBoundary ;
+            owl:onProperty fibo-loan-spc-grn:hasAssessmentBoundary ],
+        fibo-fnd-gao-obj:Project ;
+    skos:definition "specific initiative, activity, or investment aimed at improving environmental sustainability, reducing ecological harm, or addressing environmental challenges" ;
+    cmns-av:explanatoryNote "Key characteristics of an environmental or sustainability project include achieving measurable positive environmental outcomes, and aligning with broader sustainability goals, such as those outlined in international frameworks (e.g., the United Nations Sustainable Development Goals (SDGs), Paris Agreement).",
+        "Such projects are designed to align with environmental goals, such as mitigating climate change, conserving natural resources, protecting biodiversity, and promoting a circular economy." .
+
+fibo-loan-spc-grn:SustainabilityPerformanceTarget a owl:Class ;
+    rdfs:label "sustainability performance target"@en,
+        "可持续绩效目标（sustainability performance target）"@zh ;
+    rdfs:comment "用于校准借款人就某关键绩效指标之达成水平的一组定量目标值。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasDatePeriod ;
+            owl:someValuesFrom fibo-fnd-dt-fd:CalculationPeriod ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:SustainabilityPerformanceTargetIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:isCalculatedViaMethodology ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-loan-spc-grn:TargetIndicatorValue ],
+        fibo-fnd-dt-fd:DatedStructuredCollection ;
+    skos:definition "collection of quantitative target values used to calibrate the level of achievement a borrower makes with respect to a key performance indicator, by date, including, but not limited to, the methodology used to calculate its value at any point over the lifetime of a loan"@en ;
+    cmns-av:abbreviation "SPT"@en ;
+    cmns-av:adaptedFrom "https://www.lsta.org/content/sustainability-linked-loan-principles-sllp/"@en ;
+    cmns-av:explanatoryNote "An SLL borrower should clearly communicate to its lenders its rationale for the selection of its KPI(s) (i.e. relevance, materiality, whether it is core to the borrower’s overall business) and the motivation for the SPT(s) (i.e. ambition level, benchmarking approach and how the borrower intends to reach such SPTs). Borrowers are encouraged to position this information within the context of their overarching objectives, sustainability strategy, policy, sustainability commitments and/or processes relating to sustainability."@en,
+        "The process for calibration of the SPT(s) per KPI is key to the structuring of SLLs, since it will be the expression of the level of ambition the borrower is ready to commit to. The SPTs must be set in good faith and remain relevant (so long as they apply) and ambitious throughout the life of the loan."@en .
+
+fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator a owl:Class ;
+    rdfs:label "sustainability key performance indicator"@en,
+        "可持续关键绩效指标（sustainability key performance indicator）"@zh ;
+    rdfs:comment "可持续领域特定的可测绩效指标。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:ObservedIndicatorValueStructure ;
+            owl:onProperty fibo-fnd-utl-alx:hasObservedValue ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicatorIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:SustainabilityPerformanceTarget ;
+            owl:onProperty fibo-fnd-utl-alx:hasTargetValue ],
+        fibo-fnd-utl-alx:KeyPerformanceIndicator ;
+    skos:definition "measurable performance indicator that is sustainability specific"@en ;
+    cmns-av:adaptedFrom "https://www.lsta.org/content/sustainability-linked-loan-principles-sllp/"@en ;
+    cmns-av:explanatoryNote "A sustainability KPI must be: (a) relevant, core and material to the borrower's overall business, and of high strategic significance to the borrower's current and/or future operations; (b) measurable or quantifiable on a consistent methodological basis; and (c) able to be benchmarked (i.e. as much as possible using an external reference or definitions to facilitate the assessment of the SPT's level of ambition). A clear definition of the KPI(s) should be provided by the borrower and should include the applicable scope or parameters, as well as the calculation methodology, a definition of a baseline and be benchmarked against an industry standard and/or industry peers where feasible."@en .
+

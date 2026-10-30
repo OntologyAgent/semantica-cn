@@ -1,0 +1,67 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-caj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-cbj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CaribbeanGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-mxj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-usj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-bena-all: <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-NorthAmerica/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bena-all: a owl:Ontology ;
+    rdfs:label "Business Entities Domain, North American Extension",
+        "BE 域北美扩展入口（All BE, North American Extension）"@zh ;
+    dcterms:abstract """This ontology provides metadata about the FIBO Business Entities (BE) Domain, which covers defines business concepts that are used for data governance, interoperability, and in regulatory reporting about business entities.
+
+The business scope of the BE ontologies covers a range of business and legal entities that are considered by financial industry firms, regulators and other industry participants to be of relevance in the financial services domain, including:
+ - Legal entities generally
+ - Corporate structure, ownership and control, including primary executive roles for businesses,
+ - Functional entities such as governments and government entities, non-governmental organizations, international organizations, not-for-profit organization, etc.
+ - Concepts specific to corporations, partnerships, private limited companies, sole proprietorships, and trusts.""" ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Bloomberg LP",
+        "Citigroup",
+        "Credit Suisse",
+        "Deutsche Bank",
+        "EDM Council, Inc.",
+        "Exprentis",
+        "Federated Knowledge LLC",
+        "Hypercube Ltd.",
+        "John F. Gemski",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Pinnacle Bank (Morgan Hill, California)",
+        "State Street Bank and Trust",
+        "Statistics Canada",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo",
+        "Working Ontologist",
+        "agnos.ai UK Ltd." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2018-2025 EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2025-05-27T18:00:00"^^xsd:dateTime ;
+    dcterms:title "EDMC Financial Industry Business Ontology (FIBO) Business Entities (BE) Domain, North American Extension" ;
+    rdfs:comment "聚合 BE 域中北美法域的扩展本体（美国、加拿大、墨西哥、加勒比地区政府实体与法域个体）。"@zh ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    owl:imports <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE/>,
+        fibo-be-ge-caj:,
+        fibo-be-ge-cbj:,
+        fibo-be-ge-mxj:,
+        fibo-be-ge-usj:,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/AllFND-NorthAmerica/> ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250501/AllBE-NorthAmerica/> ;
+    cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." ;
+    cmns-av:explanatoryNote "The 'all' ontology for BE (North American Extension) is provided for convenience for FIBO users.  This ontology does not add new assertions, but imports most of the Production (Released) ontologies that comprise the FIBO Business Entities (BE) domain, including all of FND but excluding individuals for European governments and jurisdictions, and the related LCC region-specific ontologies. Note that the U.N. M49 Codes do not distinguish North and South America, and thus this ontology defines North America as the landmass north of the Panama-Colombia border (Northern America and Central America from an M49 code perspective), and the islands of the Caribbean (also identified as the Caribbean in the M49 subregion codes).  North American government entities and jurisdictions are provided for a subset of these countries and regions in FIBO 2.0, with the anticipation that additional entities will be added over time." .
+

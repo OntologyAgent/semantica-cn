@@ -1,0 +1,1771 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-ge-euj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-oac-cown: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateOwnership/> .
+@prefix fibo-be-oac-exec: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-fi-stl: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-arr-rt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Ratings/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-law-cor: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-plc-rp: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/RealProperty/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ind-ind: <https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/> .
+@prefix fibo-sec-eq-eq: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/> .
+@prefix fibo-sec-fund-civ: <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/CollectiveInvestmentVehicles/> .
+@prefix fibo-sec-fund-fund: <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/Funds/> .
+@prefix fibo-sec-sec-cls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix fibo-sec-sec-pls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/> .
+@prefix fibo-sec-sec-rst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesRestrictions/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-fund-civ:AccumulatingShareClass a owl:Class ;
+    rdfs:label "accumulating share class"@en,
+        "累积股类（accumulating share class）"@zh ;
+    rdfs:comment "不提供分红再投资选择、收益累积于份额净值中的股类。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundShareClassUnit ;
+    owl:disjointWith fibo-sec-fund-civ:DistributingShareClass ;
+    skos:definition "A share class in which there is no option to reinvest."@en ;
+    cmns-av:explanatoryNote "This fact would be determined by the fund unit having a specific Fund Distribution Policy of Accumulating."@en .
+
+fibo-sec-fund-civ:CommonShareInFund a owl:Class ;
+    rdfs:label "common share in fund"@en,
+        "基金普通份额（common share in fund）"@zh ;
+    rdfs:comment "基金中被归类为普通股类的份额单位。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundShareClassUnit ;
+    owl:disjointWith fibo-sec-fund-civ:PreferredShareInFund ;
+    skos:definition "A share unit in a fund, which is classified as a Common Share class."@en ;
+    cmns-av:explanatoryNote "SR Review session notes: US: Closed and open ended funds may have common and preferred shares."@en .
+
+fibo-sec-fund-civ:CurrencyStrategy a owl:Class ;
+    rdfs:label "currency strategy"@en,
+        "货币策略（currency strategy）"@zh ;
+    rdfs:comment "基于货币的投资策略。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    skos:definition "Strategy which is currency based."@en .
+
+fibo-sec-fund-civ:EquityFund a owl:Class ;
+    rdfs:label "equity fund"@en,
+        "股票基金（equity fund）"@zh ;
+    rdfs:comment "至少 85% 投资于股票的基金。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-fund-civ:EquityPortfolio ],
+        fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    skos:definition "A fund which invests in at least 85% shares."@en .
+
+fibo-sec-fund-civ:FondsCommunDePlacement a owl:Class ;
+    rdfs:label "fonds commun de placement"@fr-FR,
+        "共同投资基金（FondsCommunDePlacement）"@zh ;
+    rdfs:comment "开放式集合投资基金，是基金管理人与投资者之间设立的合同形式，而非独立法律实体（法国 FCP）。"@zh ;
+    rdfs:seeAlso <https://iclg.com/practice-areas/public-investment-funds-laws-and-regulations/france>,
+        <https://www.alfi.lu/en-gb/understandinginvesting/post/which-structure-to-choose>,
+        <https://www.ubp.com/en/glossary-risk-management/glossary-legal-compliance/fcp> ;
+    rdfs:subClassOf fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    skos:definition "open-ended collective investment fund, which is a contractual form set up between the fund manager and investors and not a separate legal entity"@en ;
+    skos:note "An FCP is similar to a unit trust in the UK. FCPs are not investment companies, but more like open partnerships. They can be set up as a single fund or as an umbrella fund with multiple sub-funds, typically issued in the French-speaking countries of Europe."@en ;
+    cmns-av:abbreviation "FCP"@en .
+
+fibo-sec-fund-civ:FundAccountant a owl:Class ;
+    rdfs:label "fund accountant"@en,
+        "基金会计（fund accountant）"@zh ;
+    rdfs:comment "负责记录基金资产和负债账目的一方，计算交易价格、基金资产净值（NAV）等。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundsProcessingParty ;
+    skos:definition "The party that keeps accounting records of the available assets and liabilities of the Fund. It calculates dealing prices, the Net Asset Value (NAV) of the Fund, and may provide fund performance and tax data. Can be subcontracted by the FundAdministrator."@en .
+
+fibo-sec-fund-civ:FundClassificationScheme a owl:Class ;
+    rdfs:label "fund classification scheme"@en,
+        "基金分类方案（fund classification scheme）"@zh ;
+    rdfs:comment "按资产类别对基金进行分类的公开方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundClassification ],
+        cmns-cls:ClassificationScheme ;
+    skos:definition "A published scheme for the category of a fund according to the asset class."@en .
+
+fibo-sec-fund-civ:FundDistributionPolicy a owl:Class ;
+    rdfs:label "fund distribution policy"@en,
+        "基金分配政策（fund distribution policy）"@zh ;
+    rdfs:comment "表明基金分配总体策略或限制的政策。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:Policy ;
+    skos:definition "policy indicating the overall strategy or limitations on distribution for the fund"@en ;
+    cmns-av:explanatoryNote "Note that individual classes of Fund Unit also have specific distribution polcies as they effect that class of unit. This class is for terms with wording of the form: \" ... whether or not it is possible to hold shares ...\" for a given parameter."@en .
+
+fibo-sec-fund-civ:FundDividendPolicy a owl:Class ;
+    rdfs:label "fund dividend policy"@en,
+        "基金股息政策（fund dividend policy）"@zh ;
+    rdfs:comment "关于股息预期分配的条款。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundCashDistributionPolicy ;
+    skos:definition "Terms for the expected distributions of dividends."@en .
+
+fibo-sec-fund-civ:FundsCashDistribution a owl:Class ;
+    rdfs:label "funds cash distribution"@en,
+        "基金现金分配（funds cash distribution）"@zh ;
+    rdfs:comment "应计收益定期分配给投资者的方式。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundUnitDistributionMethod ;
+    skos:definition "Accrued income is distributed periodically to the investor."@en .
+
+fibo-sec-fund-civ:FundsProcessing a owl:Class ;
+    rdfs:label "funds processing"@en,
+        "基金处理（funds processing）"@zh ;
+    rdfs:comment "管理和处理基金、发行基金单位等的业务语境，基金相关各方即在此语境中定义。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStage ;
+    skos:definition "The context of managing and processing funds, issuing funds units etc. This is the context in which the different parties involved in a fund are defined as parties."@en .
+
+fibo-sec-fund-civ:IncomeAccumulation a owl:Class ;
+    rdfs:label "income accumulation"@en,
+        "收益累积（income accumulation）"@zh ;
+    rdfs:comment "应计收益不予分配，而是继续反映在单位/份额价格中的方式。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundUnitDistributionMethod ;
+    skos:definition "Accrued income is not distributed and instead remains reflected within the unit/share price."@en .
+
+fibo-sec-fund-civ:JurisdictionStrategy a owl:Class ;
+    rdfs:label "jurisdiction strategy"@en,
+        "司法管辖区策略（jurisdiction strategy）"@zh ;
+    rdfs:comment "基于司法管辖区的投资策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    skos:definition "Strategy which is jurisdiction based."@en .
+
+fibo-sec-fund-civ:KeyInvestorInformationDocument a owl:Class ;
+    rdfs:label "key investor information document",
+        "关键投资者信息文件（key investor information document）"@zh ;
+    rdfs:comment "为投资者提供关键信息的简短文件，汇总招募说明书内容以便投资者理解（KIID）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundUnit ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-be-ge-euj:EuropeanUnionJurisdiction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        fibo-sec-sec-iss:OfferingDocument ;
+    skos:definition "short document that provides critical information for investors, summarizing content derived from a prospectus such that it can be understood by investors without reference to other documents, as required by law in the European Union" ;
+    cmns-av:abbreviation "KIID" ;
+    cmns-av:adaptedFrom "https://eur-lex.europa.eu/eli/dir/2009/65/2020-01-07"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Key investor information shall include appropriate information about the essential characteristics of the UCITS concerned, which is to be provided to investors so that they are reasonably able to understand the nature and the risks of the investment product that is being offered to them and, consequently, to take investment decisions on an informed basis." .
+
+fibo-sec-fund-civ:NoteFundShare a owl:Class ;
+    rdfs:label "note fund share",
+        "票据基金份额（note fund share）"@zh ;
+    rdfs:comment "在基金以公司形式组建时，发行票据而非传统权益的基金中的投资权益。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:isPartOf ;
+            owl:someValuesFrom fibo-sec-fund-civ:NoteFund ],
+        fibo-sec-fund-fund:FundUnit ;
+    skos:definition "investment interest in a fund that issues notes rather than traditional equity, in cases where the fund is structured as a company" ;
+    cmns-av:explanatoryNote "A note fund share refers to an equity or debt-linked interest in a corporate fund vehicle that issues notes." .
+
+fibo-sec-fund-civ:NoteFundUnit a owl:Class ;
+    rdfs:label "note fund unit",
+        "票据基金单位（note fund unit）"@zh ;
+    rdfs:comment "在基金以信托、合伙或单位信托形式组建时，发行票据而非传统权益的基金中的投资权益。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:isPartOf ;
+            owl:someValuesFrom fibo-sec-fund-civ:NoteFund ],
+        fibo-sec-fund-fund:FundUnit ;
+    skos:definition "investment interest in a fund that issues notes rather than traditional equity, in cases where the fund is structured as a trust, partnership, or unitized fund" ;
+    cmns-av:explanatoryNote "A note fund unit refers to a non-equity interest in a fund that issues rated notes and is organized as a unit trust or limited partnership." .
+
+fibo-sec-fund-civ:PrivateEquityHolding a owl:Class ;
+    rdfs:label "private equity holding"@en,
+        "私募股权持有（private equity holding）"@zh ;
+    rdfs:comment "对私募股权的持有。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-eq-eq:PrivatelyHeldShare ],
+        fibo-fnd-oac-own:Portfolio ;
+    skos:definition "A holding of private equity."@en .
+
+fibo-sec-fund-civ:RealEstateHolding a owl:Class ;
+    rdfs:label "real estate holding"@en,
+        "房地产持有（real estate holding）"@zh ;
+    rdfs:comment "由个人、组织或实体为投资、运营或战略目的拥有或控制的房地产有形资产。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fnd-plc-rp:RealEstate ],
+        fibo-fnd-oac-own:Portfolio ;
+    skos:definition "tangible asset consisting of real estate that is owned or controlled by an individual, organization, or entity for investment, operational, or strategic purposes"@en .
+
+fibo-sec-fund-civ:SICAF a owl:Class ;
+    rdfs:label "s i c a f"@en,
+        "法国固定资本投资公司（SICAF）"@zh ;
+    rdfs:comment "法国的一种基金载体形式，资本固定的投资公司。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    skos:definition "A French fund vehicle type. Designation and definition needed."@en .
+
+fibo-sec-fund-civ:SICAV a owl:Class ;
+    rdfs:label "s i c a v"@en,
+        "可变资本投资公司（SICAV）"@zh ;
+    rdfs:comment "法国及欧洲大陆常见的开放式投资公司形式，资本可变的集合投资公司。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    skos:definition "Societe Collective a Capital Variable"@en .
+
+fibo-sec-fund-civ:SectorStrategy a owl:Class ;
+    rdfs:label "sector strategy"@en,
+        "行业策略（sector strategy）"@zh ;
+    rdfs:comment "基于行业板块的投资策略。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    skos:definition "Strategy which is sector based."@en .
+
+fibo-sec-fund-civ:accountingYearEndDate a owl:ObjectProperty ;
+    rdfs:label "accounting year end date"@en,
+        "会计年度截止日（accounting year end date）"@zh ;
+    rdfs:comment "基金会计年度的最后一天。"@zh ;
+    rdfs:range fibo-fnd-dt-bd:DayOfMonth ;
+    skos:definition "Last day of the accounting year for the fund."@en .
+
+fibo-sec-fund-civ:additionalRestrictions a owl:DatatypeProperty ;
+    rdfs:label "additional restrictions"@en,
+        "附加限制（additional restrictions）"@zh ;
+    rdfs:comment "关于该策略及其所指机构的其他限制或处理信息。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:OrganizationStrategy ;
+    rdfs:range xsd:string ;
+    skos:definition "Other restrictions or treatment information in respect of this strategy and the organization to which it refers."@en .
+
+fibo-sec-fund-civ:authorizedCountry a owl:ObjectProperty ;
+    rdfs:label "authorized country"@en,
+        "获准销售国（authorized country）"@zh ;
+    rdfs:comment "获准在该国销售基金的国家。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingGeneralTerms ;
+    rdfs:range cmns-loc:Country ;
+    skos:definition "Country in which it is authorised to commercialise the fund."@en .
+
+fibo-sec-fund-civ:backEndLoadApplicable a owl:DatatypeProperty ;
+    rdfs:label "back end load applicable"@en,
+        "是否适用后端收费（back end load applicable）"@zh ;
+    rdfs:comment "该类别的赎回指令是否可收取退出费用（如或有递延销售费 CDSC）。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingGeneralTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether an exit charge, eg, CDSC, on redemption orders for this class can be applied."@en .
+
+fibo-sec-fund-civ:benchmarkWeight a owl:ObjectProperty ;
+    rdfs:label "benchmark weight"@en,
+        "基准权重（benchmark weight）"@zh ;
+    rdfs:comment "工具在组合基准中的权重。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:PortfolioBenchmark ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "Instrument weighting in the benchmark for the portfolio."@en .
+
+fibo-sec-fund-civ:blacklisted a owl:DatatypeProperty ;
+    rdfs:label "blacklisted"@en,
+        "是否列入黑名单（blacklisted）"@zh ;
+    rdfs:comment "该策略是否将所指商业实体列入黑名单：若是，则该策略禁止投资于该实体。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:OrganizationStrategy ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether or not the strategy in framed so as to include the referenced business entity as being blacklisted. If yes, the strategy prevents investment in securities issued by that organization."@en .
+
+fibo-sec-fund-civ:clearFundsRequired a owl:DatatypeProperty ;
+    rdfs:label "clear funds required"@en,
+        "是否需要资金到账（clear funds required）"@zh ;
+    rdfs:comment "执行申购指令前是否要求资金已清算到账。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether cleared funds may be required before a subscription order can be executed."@en .
+
+fibo-sec-fund-civ:couponPaymentDate a owl:ObjectProperty ;
+    rdfs:label "coupon payment date"@en,
+        "票息支付日（coupon payment date）"@zh ;
+    rdfs:comment "票息分配给债券单位持有人的日期。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundCouponPolicy ;
+    rdfs:range fibo-fnd-dt-bd:DayOfMonth ;
+    skos:definition "The date at which the coupon is distributed to the bond unit holder."@en .
+
+fibo-sec-fund-civ:dealingFrequencyDescription a owl:DatatypeProperty ;
+    rdfs:label "dealing frequency description"@en,
+        "交易频率描述（dealing frequency description）"@zh ;
+    rdfs:comment "对申购和赎回执行频率的文字描述。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingTerms ;
+    rdfs:range xsd:string ;
+    skos:definition "Description of frequency at which the subscriptions and redemptions are done."@en .
+
+fibo-sec-fund-civ:declarationChannel a owl:DatatypeProperty ;
+    rdfs:label "declaration channel"@en,
+        "公告渠道（declaration channel）"@zh ;
+    rdfs:comment "资产净值公布的渠道，例如报纸。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:NetAssetValueCalculationMethod ;
+    rdfs:range xsd:string ;
+    skos:definition "Means of the net asset value publication, eg, a newspaper."@en .
+
+fibo-sec-fund-civ:distributionWithReinvestment a owl:DatatypeProperty ;
+    rdfs:label "distribution with reinvestment"@en,
+        "分配并再投资（distribution with reinvestment）"@zh ;
+    rdfs:comment "可以持有这样一类份额：应计收益先予分配，然后自动再投资于额外单位/份额。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundReinvestmentPolicy,
+        fibo-sec-fund-civ:FundUnitDistributionPolicy ;
+    rdfs:range xsd:boolean ;
+    skos:definition "It is possible to hold shares for which the accrued income is distributed, but then reinvested automatically in additional units/shares allocated to the investor."@en .
+
+fibo-sec-fund-civ:dualFund a owl:DatatypeProperty ;
+    rdfs:label "dual fund"@en,
+        "是否双价基金（dual fund）"@zh ;
+    rdfs:comment "该基金是否有两个价格。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingGeneralTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the fund has two prices."@en .
+
+fibo-sec-fund-civ:endOfFiscalYear a owl:ObjectProperty ;
+    rdfs:label "end of fiscal year"@en,
+        "财年截止日（end of fiscal year）"@zh ;
+    rdfs:comment "每年结账并确定损益的日期（月和日）。"@zh ;
+    rdfs:range fibo-fnd-dt-bd:DayOfMonth ;
+    skos:definition "Day and month on any given year at which the books are closed and profit and loss is determined."@en .
+
+fibo-sec-fund-civ:exCouponDate a owl:ObjectProperty ;
+    rdfs:label "ex coupon date"@en,
+        "除息日（ex coupon date）"@zh ;
+    rdfs:comment "票息从资产净值（NAV）中扣除的日期。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundCouponPolicy ;
+    rdfs:range fibo-fnd-dt-bd:DayOfMonth ;
+    skos:definition "The date at which the coupon is substracted from the NAV"@en .
+
+fibo-sec-fund-civ:firstAccountingYearEndDate a owl:DatatypeProperty ;
+    rdfs:label "first accounting year end date"@en,
+        "首个会计年度截止日（first accounting year end date）"@zh ;
+    rdfs:comment "基金第一个会计年度的最后一天。"@zh ;
+    skos:definition "Last day of the first accounting year for the fund."@en .
+
+fibo-sec-fund-civ:firstNAVCalculationDate a owl:DatatypeProperty ;
+    rdfs:label "first n a v calculation date"@en,
+        "首次资产净值计算日（first NAV calculation date）"@zh ;
+    rdfs:comment "首次计算资产净值（NAV）的日期。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    skos:definition "The first date of NAV calculation"@en .
+
+fibo-sec-fund-civ:frontEndLoadApplicable a owl:DatatypeProperty ;
+    rdfs:label "front end load applicable"@en,
+        "是否适用前端收费（front end load applicable）"@zh ;
+    rdfs:comment "该类别的申购指令是否可收取前端费用。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether a front end charge on subscription orders for this class can be applied."@en .
+
+fibo-sec-fund-civ:fundClassTypeIdentifier a owl:DatatypeProperty ;
+    rdfs:label "fund class type identifier"@en,
+        "基金类别类型标识符（fund class type identifier）"@zh ;
+    rdfs:comment "基金单位类别的文字标识，用于唯一标识某一基金单位类别及其特征。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundUnit ;
+    rdfs:range xsd:string ;
+    skos:definition "A textual identification of the class of fund units. This is used to uniquely identify a particular class of fund units, and thereby identify features of this type of unit within the fund."@en .
+
+fibo-sec-fund-civ:hasIssueDate a owl:ObjectProperty ;
+    rdfs:label "has issue date"@en,
+        "具有设立日（has issue date）"@zh ;
+    rdfs:comment "首次资产净值计算和业绩计算开始的日期（同成立日）。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundUnit ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "Date of first NAV calculation and start of performance calculations (same as launch date)"@en .
+
+fibo-sec-fund-civ:hasPortfolio a owl:ObjectProperty ;
+    rdfs:label "has portfolio"@en,
+        "具有组合（has portfolio）"@zh ;
+    rdfs:comment "指明基金的投资组合。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundPortfolio .
+
+fibo-sec-fund-civ:hasTradableUnit a owl:ObjectProperty ;
+    rdfs:label "has tradable unit"@en,
+        "具有可交易单位（has tradable unit）"@zh ;
+    rdfs:comment "指明基金的可交易单位。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-fund:FundUnit .
+
+fibo-sec-fund-civ:historicPricingIndicator a owl:DatatypeProperty ;
+    rdfs:label "historic pricing indicator"@en,
+        "历史定价标志（historic pricing indicator）"@zh ;
+    rdfs:comment "表明价格是历史价还是远期价。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:NetAssetValueCalculationMethod ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Indicates whether the price is historic or forward."@en .
+
+fibo-sec-fund-civ:holderMayReinvest a owl:DatatypeProperty ;
+    rdfs:label "holder may reinvest"@en,
+        "持有人可否再投资（holder may reinvest）"@zh ;
+    rdfs:comment "持有人是否可以将股息再投资于该基金。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:DistributingShareClass ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether or not the holder may reinvest dividends in the fund."@en .
+
+fibo-sec-fund-civ:holdingTransferable a owl:DatatypeProperty ;
+    rdfs:label "holding transferable"@en,
+        "持有可否转让（holding transferable）"@zh ;
+    rdfs:comment "注册投资者是否可以将其部分或全部持有转让给第三方。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingGeneralTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether registered investors are able to transfer some or all of their holdings to third parties."@en .
+
+fibo-sec-fund-civ:inceptionDate a owl:ObjectProperty ;
+    rdfs:label "inception date"@en,
+        "核准设立日（inception date）"@zh ;
+    rdfs:comment "在原产国获得核准的日期。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "Authorization date in the country of origin."@en .
+
+fibo-sec-fund-civ:inceptionDate.1 a owl:ObjectProperty ;
+    rdfs:label "inception date"@en,
+        "核准设立日（inception date）"@zh ;
+    rdfs:comment "在原产国获得核准的日期。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundShareClassUnit ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "Authorization date in the country of origin. Further Notes See definition in Inception Date for Fund. Separate fact exists here. Same definition used. EFAMA Review notes: Inception Date exists as soon as there is a prospectus, so it is a fact about a Share Class even if the share class is never formally issued or offered to the public. Legal structure exists even if something is not launched. Editor question: Review stated this was a fact about Share Class; confirm this fact does not apply to Bond and Note units, or was the term Share Class being used to mean all three? Meanwhile I have put the term \"Issue Date\" as a fact about all Fund Unit, as this is given a sa separate term in the EFAMA DD spreadsheet. MAy come clearer in the next version of that."@en .
+
+fibo-sec-fund-civ:includeRelatedFirms a owl:DatatypeProperty ;
+    rdfs:label "include related firms"@en,
+        "是否包含关联公司（include related firms）"@zh ;
+    rdfs:comment "该策略是否包含与所指机构存在某种关联的公司。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:OrganizationStrategy ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether or not the strategy includes firms which are related in some way to the referenced organization."@en .
+
+fibo-sec-fund-civ:inclusion a owl:DatatypeProperty ;
+    rdfs:label "inclusion"@en,
+        "是否纳入（inclusion）"@zh ;
+    rdfs:comment "所指策略是否被纳入；若为否，则该描述指将所述内容排除于组合之外。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the referred strategy is included. No means this description refers to the exclusion of what is described, from the portfolio."@en .
+
+fibo-sec-fund-civ:initialApplicationForm a owl:ObjectProperty ;
+    rdfs:label "initial application form"@en,
+        "首次申请表（initial application form）"@zh ;
+    rdfs:comment "投资者首次申购的纸质申请表。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    skos:definition "Physical application form for the initial subscription by the investor."@en .
+
+fibo-sec-fund-civ:investmentFocus a owl:DatatypeProperty ;
+    rdfs:label "investment focus"@en,
+        "投资重点（investment focus）"@zh ;
+    rdfs:comment "关于基金主要投资领域的信息（例如德国股票市场）。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:PortfolioInvestmentStrategy ;
+    rdfs:range xsd:string ;
+    skos:definition "The information about the area the fund is mostly invested into (for example stock market in Germany)."@en .
+
+fibo-sec-fund-civ:isUnitHolder a owl:ObjectProperty ;
+    rdfs:label "is unit holder"@en,
+        "是单位持有人（is unit holder）"@zh ;
+    rdfs:comment "表明某方是基金单位的持有人。"@zh ;
+    rdfs:domain fibo-be-oac-opty:Investor ;
+    rdfs:range fibo-sec-fund-fund:FundUnit .
+
+fibo-sec-fund-civ:issuePrice a owl:ObjectProperty ;
+    rdfs:label "issue price"@en,
+        "发行价格（issue price）"@zh ;
+    rdfs:comment "基金单位首次发行的价格。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundUnit ;
+    rdfs:range fibo-fnd-acc-cur:Price ;
+    skos:definition "The price at which the Fund Unit was first issued."@en .
+
+fibo-sec-fund-civ:launchDate a owl:DatatypeProperty ;
+    rdfs:label "launch date"@en,
+        "成立日（launch date）"@zh ;
+    rdfs:comment "首次资产净值计算和业绩计算开始的日期。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    skos:definition "Date of first NAV calculation and start of performance calculations"@en .
+
+fibo-sec-fund-civ:limitedSharesAreIssued a owl:DatatypeProperty ;
+    rdfs:label "limited shares are issued"@en,
+        "是否限量发行份额（limited shares are issued）"@zh ;
+    rdfs:comment "该基金是否可以发行新份额，这决定其为封闭式还是开放式基金。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundShareClassUnit ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether or not new shares can be issued in the fund. This is what makes it a closed end or open end fund."@en .
+
+fibo-sec-fund-civ:mainFundOrderDesk a owl:DatatypeProperty ;
+    rdfs:label "main fund order desk"@en,
+        "是否主基金下单台（main fund order desk）"@zh ;
+    rdfs:comment "该基金下单台是否为基金指定的接收指令的主要实体。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the fund order desk is the principal entity appointed by the fund to which orders should be submitted."@en .
+
+fibo-sec-fund-civ:maximumDeviation a owl:ObjectProperty ;
+    rdfs:label "maximum deviation"@en,
+        "最大偏离度（maximum deviation）"@zh ;
+    rdfs:comment "允许偏离基准的最大幅度。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:PortfolioBenchmark ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "Maximum allowable deviation from the benchmark."@en .
+
+fibo-sec-fund-civ:maximumInvestmentAmount a owl:ObjectProperty ;
+    rdfs:label "maximum investment amount"@en,
+        "最大投资金额（maximum investment amount）"@zh ;
+    rdfs:comment "在指定策略中可投资的最大金额。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "Maximum amount that may be invested in the specified strategy."@en .
+
+fibo-sec-fund-civ:maximumInvestmentPercentage a owl:ObjectProperty ;
+    rdfs:label "maximum investment percentage"@en,
+        "最大投资比例（maximum investment percentage）"@zh ;
+    rdfs:comment "在指定策略中可投资的最大百分比。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "Maximum percentage that may be invested in the specified strategy."@en .
+
+fibo-sec-fund-civ:maximumPurchasingFee a owl:ObjectProperty ;
+    rdfs:label "maximum purchasing fee"@en,
+        "最高申购费（maximum purchasing fee）"@zh ;
+    rdfs:comment "购买基金份额时应付的最高百分比或固定金额费用。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fbc-pas-caa:Fee ;
+    skos:definition "Maximum percentage or fixed amount of money due when purchasing fund shares Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:maximumRedemptionAmount a owl:ObjectProperty ;
+    rdfs:label "maximum redemption amount"@en,
+        "最大赎回金额（maximum redemption amount）"@zh ;
+    rdfs:comment "以金额表示的可卖出证券最大数量。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "Maximum quantity of securities, expressed as an amount that can be sold."@en .
+
+fibo-sec-fund-civ:maximumRedemptionFee a owl:ObjectProperty ;
+    rdfs:label "maximum redemption fee"@en,
+        "最高赎回费（maximum redemption fee）"@zh ;
+    rdfs:comment "赎回基金份额时应付的最高百分比或固定金额费用。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fbc-pas-caa:Fee ;
+    skos:definition "Maximum percentage or fixed amount of money due when redeeming fund shares Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:maximumRedemptionPercentage a owl:ObjectProperty ;
+    rdfs:label "maximum redemption percentage"@en,
+        "最大赎回比例（maximum redemption percentage）"@zh ;
+    rdfs:comment "以百分比表示的可卖出证券最大数量。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "Maximum quantity of securities, expressed as a percentage that can be sold."@en .
+
+fibo-sec-fund-civ:maximumRedemptionUnits a owl:DatatypeProperty ;
+    rdfs:label "maximum redemption units"@en,
+        "最大赎回单位数（maximum redemption units）"@zh ;
+    rdfs:comment "单一交易日可赎回的最大份额/单位数量。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    rdfs:range xsd:integer ;
+    skos:definition "Maximum number of shares/units that may be redeemed on a single dealing day."@en .
+
+fibo-sec-fund-civ:mayAlsoBe a owl:ObjectProperty ;
+    rdfs:label "may also be"@en,
+        "也可以是（may also be）"@zh ;
+    rdfs:comment "表明某角色也可由另一方担任，例如单位发行人可以是基金管理机构（债券单位除外）。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundAdministrator ;
+    rdfs:range fibo-sec-fund-civ:UnitIssuer ;
+    skos:definition "The unit issuer would be the fund administrator (except when it is a Bond)."@en .
+
+fibo-sec-fund-civ:minimumDeviation a owl:ObjectProperty ;
+    rdfs:label "minimum deviation"@en,
+        "最小偏离度（minimum deviation）"@zh ;
+    rdfs:comment "允许偏离基准的最小幅度。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:PortfolioBenchmark ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "Minimum allowable deviation from the benchmark."@en .
+
+fibo-sec-fund-civ:minimumHoldingPeriod a owl:ObjectProperty ;
+    rdfs:label "minimum holding period"@en,
+        "最短持有期（minimum holding period）"@zh ;
+    rdfs:comment "单位/份额发行后必须持有、方允许赎回的天数。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingGeneralTerms ;
+    rdfs:range cmns-dt:Duration ;
+    skos:definition "Period, in days, during which the units/shares must be held following their issue before redemption will be permitted."@en .
+
+fibo-sec-fund-civ:minimumInitialSubscriptionAmount a owl:ObjectProperty ;
+    rdfs:label "minimum initial subscription amount"@en,
+        "最低首次申购金额（minimum initial subscription amount）"@zh ;
+    rdfs:comment "最低首次申购价值。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "Minimum initial subscription value."@en .
+
+fibo-sec-fund-civ:minimumInitialSubscriptionUnits a owl:DatatypeProperty ;
+    rdfs:label "minimum initial subscription units"@en,
+        "最低首次申购单位数（minimum initial subscription units）"@zh ;
+    rdfs:comment "首次必须购买的最低单位/份额数量。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum initial number of units/shares that must be purchased."@en .
+
+fibo-sec-fund-civ:minimumInvestmentAmount a owl:ObjectProperty ;
+    rdfs:label "minimum investment amount"@en,
+        "最低投资金额（minimum investment amount）"@zh ;
+    rdfs:comment "在指定策略中必须投资的最低金额。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "Minimum amount that has to be invested in the specified strategy."@en .
+
+fibo-sec-fund-civ:minimumInvestmentPercentage a owl:ObjectProperty ;
+    rdfs:label "minimum investment percentage"@en,
+        "最低投资比例（minimum investment percentage）"@zh ;
+    rdfs:comment "在指定策略中必须投资的最低百分比。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "Minimum percentage that has to be invested in the specified strategy."@en .
+
+fibo-sec-fund-civ:minimumRatingRestriction a owl:ObjectProperty ;
+    rdfs:label "minimum rating restriction"@en,
+        "最低评级限制（minimum rating restriction）"@zh ;
+    rdfs:comment "可投资证券的最低评级要求。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:InvestmentRestriction ;
+    rdfs:range fibo-fnd-arr-rt:RatingScore ;
+    skos:definition "The minimum rating of securities to be invested in."@en .
+
+fibo-sec-fund-civ:minimumRemainingHoldingAmount a owl:ObjectProperty ;
+    rdfs:label "minimum remaining holding amount"@en,
+        "最低留存持有金额（minimum remaining holding amount）"@zh ;
+    rdfs:comment "为避免自动赎回而必须留存的单位/份额最低价值。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingGeneralTerms ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "Minimum value of units/shares that must be retained to avoid automatic redemption."@en .
+
+fibo-sec-fund-civ:minimumRemainingHoldingUnits a owl:DatatypeProperty ;
+    rdfs:label "minimum remaining holding units"@en,
+        "最低留存持有单位数（minimum remaining holding units）"@zh ;
+    rdfs:comment "为避免自动赎回而必须留存的最低单位/份额数量。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingGeneralTerms ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum number of units/shares that must be retained to avoid automatic redemption."@en .
+
+fibo-sec-fund-civ:minimumSubscriptionAmount a owl:ObjectProperty ;
+    rdfs:label "minimum subscription amount"@en,
+        "最低申购金额（minimum subscription amount）"@zh ;
+    rdfs:comment "现有投资者的最低申购价值。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "Minimum subscription value for existing investors."@en .
+
+fibo-sec-fund-civ:minimumSubscriptionUnits a owl:DatatypeProperty ;
+    rdfs:label "minimum subscription units"@en,
+        "最低申购单位数（minimum subscription units）"@zh ;
+    rdfs:comment "现有投资者必须购买的最低单位/份额数量。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum number of units/shares that must be purchased by existing investors."@en .
+
+fibo-sec-fund-civ:name a owl:DatatypeProperty ;
+    rdfs:label "name"@en,
+        "名称（name）"@zh ;
+    rdfs:comment "以语言表达式对某事物的指称。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range xsd:string ;
+    skos:definition "Name of the investment fund."@en .
+
+fibo-sec-fund-civ:name.1 a owl:DatatypeProperty ;
+    rdfs:label "name"@en,
+        "名称（name）"@zh ;
+    rdfs:comment "以语言表达式对某事物的指称。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolioInvestmentPolicy ;
+    rdfs:range xsd:string ;
+    skos:definition "Name given to the defined strategy."@en .
+
+fibo-sec-fund-civ:percentageInvested a owl:ObjectProperty ;
+    rdfs:label "percentage invested"@en,
+        "投资比例（percentage invested）"@zh ;
+    rdfs:comment "任一给定时间应投资的资金百分比。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:InvestmentRestriction ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "The percentage of funds that is to be invested at any given time."@en .
+
+fibo-sec-fund-civ:performanceFee a owl:ObjectProperty ;
+    rdfs:label "performance fee"@en,
+        "业绩报酬（performance fee）"@zh ;
+    rdfs:comment "为实现预定超额收益目标而支付的费用。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fbc-pas-caa:Fee ;
+    skos:definition "Fees paid for the achivements of predefined outperformance objectives Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:physicalDocumentRequired a owl:DatatypeProperty ;
+    rdfs:label "physical document required"@en,
+        "是否需要纸质文件（physical document required）"@zh ;
+    rdfs:comment "是否必须通过主基金下单台提交纸质表格。"@zh ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether a phsyical form is required through the main fund order desk. Yes: A phsyical form is required through the main fund order desk. No: A phsyical form is not required through the main fund order desk."@en .
+
+fibo-sec-fund-civ:processingCountry a owl:ObjectProperty ;
+    rdfs:label "processing country"@en,
+        "处理所在国（processing country）"@zh ;
+    rdfs:comment "该处理特性所适用的国家。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingTerms ;
+    rdfs:range cmns-loc:Country ;
+    skos:definition "Country in which the processing characteristic applies."@en .
+
+fibo-sec-fund-civ:productGroupDescription a owl:DatatypeProperty ;
+    rdfs:label "product group description"@en,
+        "产品组描述（product group description）"@zh ;
+    rdfs:comment "公司对一组基金的特定描述。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range xsd:string ;
+    skos:definition "Company specific description of a group of funds."@en .
+
+fibo-sec-fund-civ:purchasingFee a owl:ObjectProperty ;
+    rdfs:label "purchasing fee"@en,
+        "申购费（purchasing fee）"@zh ;
+    rdfs:comment "购买基金份额时应付的实际百分比或固定金额费用。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fbc-pas-caa:Fee ;
+    skos:definition "Actual percentage or fixed amount of money due when purchasing fund shares Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:redemptionCutoffDateTime a owl:ObjectProperty ;
+    rdfs:label "redemption cutoff date time"@en,
+        "赎回截止时间（redemption cutoff date time）"@zh ;
+    rdfs:comment "可以提交赎回指令的最后日期/时间。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    rdfs:range cmns-dt:DateTime ;
+    skos:definition "Last date/time at which an order to redeem can be given."@en .
+
+fibo-sec-fund-civ:redemptionCycleInBusinessDays a owl:DatatypeProperty ;
+    rdfs:label "redemption cycle in business days"@en,
+        "赎回周期（营业日）（redemption cycle in business days）"@zh ;
+    rdfs:comment "自赎回指令定价日（T）起算、主基金下单台受理指令应完成结算的最后营业日。"@zh ;
+    rdfs:domain fibo-fbc-fi-stl:SettlementConvention ;
+    rdfs:range xsd:integer ;
+    skos:definition "The last business day following the day on which a redemption order is priced (T) by which settlement will be due for orders placed with the main Fund Order Desk. Alternatively, if proceeds will be paid following receipt of written renunciation, the last business day following receipt of the relevant renunciation documentation by the main Fund Order Desk (R) by which the proceeds will be sent."@en .
+
+fibo-sec-fund-civ:redemptionDealingFrequency a owl:ObjectProperty ;
+    rdfs:label "redemption dealing frequency"@en,
+        "赎回交易频率（redemption dealing frequency）"@zh ;
+    rdfs:comment "赎回执行的频率。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    rdfs:range fibo-fnd-dt-fd:RecurrenceInterval ;
+    skos:definition "Frequency at which the redemptions are done."@en .
+
+fibo-sec-fund-civ:redemptionFee a owl:ObjectProperty ;
+    rdfs:label "redemption fee"@en,
+        "赎回费（redemption fee）"@zh ;
+    rdfs:comment "赎回基金份额时应付的实际百分比或固定金额费用。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fbc-pas-caa:Fee ;
+    skos:definition "Actual percentage or fixed amount of money due when redeeming fund shares Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:redemptionForm a owl:ObjectProperty ;
+    rdfs:label "redemption form"@en,
+        "赎回申请表（redemption form）"@zh ;
+    rdfs:comment "投资者赎回单位/份额的纸质书面指令/弃权表格。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    skos:definition "Physical written instruction/renunciation form for redemption of units/shares by the investor."@en .
+
+fibo-sec-fund-civ:redemptionInAmountAllowed a owl:DatatypeProperty ;
+    rdfs:label "redemption in amount allowed"@en,
+        "是否允许按金额赎回（redemption in amount allowed）"@zh ;
+    rdfs:comment "是否允许按金额赎回。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether redemptions in amount are allowed."@en .
+
+fibo-sec-fund-civ:redemptionPeriod a owl:ObjectProperty ;
+    rdfs:label "redemption period"@en,
+        "赎回期（redemption period）"@zh ;
+    rdfs:comment "可以赎回单位/份额的特定期间，例如某些保本基金的赎回期。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    rdfs:range cmns-dt:DatePeriod ;
+    skos:definition "Specific period, eg, for some guaranteed funds, during which the units/shares may be redeemed."@en .
+
+fibo-sec-fund-civ:registrationDate a owl:DatatypeProperty ;
+    rdfs:label "registration date"@en,
+        "注册日期（registration date）"@zh ;
+    rdfs:comment "基金在原产国以外国家获得法律核准的日期。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    skos:definition "The date at which the fund is legally approved in a country other than the country of origin."@en .
+
+fibo-sec-fund-civ:reinvestmentFrequency a owl:ObjectProperty ;
+    rdfs:label "reinvestment frequency"@en,
+        "再投资频率（reinvestment frequency）"@zh ;
+    rdfs:comment "对采取再投资分配方式的单位，再投资发生的频率。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundReinvestmentPolicy ;
+    rdfs:range fibo-fnd-dt-fd:RecurrenceInterval ;
+    skos:definition "For units where there is Reinvestment distribution, the frequency with which the reinvestment takes place (this will be the same or less frequently than the Dividend Payment Frequency), otherwise this fact does not apply."@en .
+
+fibo-sec-fund-civ:signatureRequired a owl:DatatypeProperty ;
+    rdfs:label "signature required"@en,
+        "是否需要签名（signature required）"@zh ;
+    rdfs:comment "是否必须通过主基金下单台提交附有投资者亲笔签名的纸质表格。"@zh ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether a phsyical form with the investor's written signature is required through the main fund order desk. Yes:A phsyical form with the investor's written signature is required through the main fund order desk."@en .
+
+fibo-sec-fund-civ:statedDistributionFee a owl:ObjectProperty ;
+    rdfs:label "stated distribution fee"@en,
+        "列明分销费（stated distribution fee）"@zh ;
+    rdfs:comment "在招募说明书中列明的分销费用。"@zh ;
+    rdfs:domain fibo-sec-sec-iss:Prospectus ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount .
+
+fibo-sec-fund-civ:statedInvestmentAim a owl:DatatypeProperty ;
+    rdfs:label "stated investment aim"@en,
+        "列明投资目标（stated investment aim）"@zh ;
+    rdfs:comment "以文字表述的基金目标，例如超越某一基准。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundInvestmentObjective ;
+    rdfs:range xsd:string ;
+    skos:definition "The stated aim of the Fund in words, e.g outperfom a given benchmark."@en .
+
+fibo-sec-fund-civ:statedManagementFee a owl:ObjectProperty ;
+    rdfs:label "stated management fee"@en,
+        "列明管理费（stated management fee）"@zh ;
+    rdfs:comment "在招募说明书中列明的管理费用，可为货币金额或百分比。"@zh ;
+    rdfs:domain fibo-sec-sec-iss:Prospectus ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "The fee that is stated in the Prospectus as being what is to be charged for management. Further notes: Can be monetary amount or a percentage or a combination. Action: simple type is wrong."@en .
+
+fibo-sec-fund-civ:statedObjective a owl:DatatypeProperty ;
+    rdfs:label "stated objective"@en,
+        "列明目标（stated objective）"@zh ;
+    rdfs:comment "以文字表述的基金目标。"@zh ;
+    rdfs:domain fibo-sec-sec-iss:Prospectus ;
+    rdfs:range xsd:string ;
+    skos:definition "The stated objective of the fund, in words."@en .
+
+fibo-sec-fund-civ:subscriptionCutoffDateTime a owl:ObjectProperty ;
+    rdfs:label "subscription cutoff date time"@en,
+        "申购截止时间（subscription cutoff date time）"@zh ;
+    rdfs:comment "可以提交申购指令的最后日期/时间。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range cmns-dt:DateTime ;
+    skos:definition "Last date/time at which an order to subscribe can be given."@en .
+
+fibo-sec-fund-civ:subscriptionDealingFrequency a owl:ObjectProperty ;
+    rdfs:label "subscription dealing frequency"@en,
+        "申购交易频率（subscription dealing frequency）"@zh ;
+    rdfs:comment "申购执行的频率。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fnd-dt-fd:RecurrenceInterval ;
+    skos:definition "Frequency at which the subscriptions are done."@en .
+
+fibo-sec-fund-civ:subscriptionPeriod a owl:ObjectProperty ;
+    rdfs:label "subscription period"@en,
+        "认购期间（subscription period）"@zh ;
+    rdfs:comment "证券可被认购的期间。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range cmns-dt:DatePeriod ;
+    skos:definition "Specific period, eg, for some guaranteed funds, during which the units/shares may be subscribed to."@en .
+
+fibo-sec-fund-civ:subscriptionsInAmountAllowed a owl:DatatypeProperty ;
+    rdfs:label "subscriptions in amount allowed"@en,
+        "是否允许按金额申购（subscriptions in amount allowed）"@zh ;
+    rdfs:comment "是否允许按金额申购。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether subscriptions in amount are allowed."@en .
+
+fibo-sec-fund-civ:subsequentApplicationForm a owl:ObjectProperty ;
+    rdfs:label "subsequent application form"@en,
+        "后续申请表（subsequent application form）"@zh ;
+    rdfs:comment "同一投资者后续投资的纸质申请表。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    skos:definition "Physical application form for subsequent investments by the same investor."@en .
+
+fibo-sec-fund-civ:switchingChargeable a owl:DatatypeProperty ;
+    rdfs:label "switching chargeable"@en,
+        "是否收取转换费（switching chargeable）"@zh ;
+    rdfs:comment "同一伞形基金下子基金之间转换是否可收取转换费。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingGeneralTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether a switching charge for changing between sub-funds of the same umbrella can be applied."@en .
+
+fibo-sec-fund-civ:switchingFee a owl:ObjectProperty ;
+    rdfs:label "switching fee"@en,
+        "转换费（switching fee）"@zh ;
+    rdfs:comment "转换至另一基金时应付的实际百分比或固定金额费用。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:range fibo-fbc-pas-caa:Fee ;
+    skos:definition "Actual percentage or fixed amount of money due when switching to another fund. Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:trackingError a owl:ObjectProperty ;
+    rdfs:label "tracking error"@en,
+        "跟踪误差（tracking error）"@zh ;
+    rdfs:comment "组合回报与基准回报之间差异的度量。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:InvestmentRestriction ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "See RiskFactors narrative in EFAMA DD"@en .
+
+fibo-sec-fund-civ:typeOfSecurities a owl:DatatypeProperty ;
+    rdfs:label "type of securities"@en,
+        "证券类型（type of securities）"@zh ;
+    rdfs:comment "可投资的证券或其他持有资产的类型。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:InvestmentRestriction ;
+    rdfs:range xsd:string ;
+    skos:definition "The type of securities or other holdings that may be invested in."@en .
+
+fibo-sec-fund-civ:valuationFrequency a owl:ObjectProperty ;
+    rdfs:label "valuation frequency"@en,
+        "估值频率（valuation frequency）"@zh ;
+    rdfs:comment "资产净值计算的频率。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:NetAssetValueCalculationMethod ;
+    rdfs:range fibo-fnd-dt-fd:RecurrenceInterval ;
+    skos:definition "Frequency of the net asset value calculation."@en .
+
+fibo-sec-fund-civ:valuationFrequencyTextualDescription a owl:DatatypeProperty ;
+    rdfs:label "valuation frequency textual description"@en,
+        "估值频率文字描述（valuation frequency textual description）"@zh ;
+    rdfs:comment "对资产净值计算频率的文字描述。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:NetAssetValueCalculationMethod ;
+    rdfs:range xsd:string ;
+    skos:definition "Description of the frequency of the net asset value calculation."@en .
+
+fibo-sec-fund-civ:valueAtRisk a owl:ObjectProperty ;
+    rdfs:label "value at risk"@en,
+        "风险价值（value at risk）"@zh ;
+    rdfs:comment "对基金（而非组合）在给定置信水平下潜在损失的度量（VaR）。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:InvestmentRestriction ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "See RiskClassification_NameOf in EFAMA DD Applies to Fund not Portfolio."@en .
+
+fibo-sec-fund-fund:FundContract a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundLegalFormDocumentation ] ;
+    cmns-av:explanatoryNote "From ISO FIBIM \"Umbrella Fund\" narrative: In securities, a collective investment scheme that has a contractual or a corporate form. When it has a contractual form, a fund is constituted under either the law of contract or under the trust law and thus it is not a legal entity. In its corporate form, a fund is a legal entity and is structured as a company."@en .
+
+fibo-sec-fund-civ: a owl:Ontology ;
+    rdfs:label "Collective Investment Vehicles Ontology"@en,
+        "集合投资工具本体（Collective Investment Vehicles Ontology）"@zh ;
+    dcterms:abstract "Reference data terms and non time dependent facts about funds and CIVs." ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义集合投资工具（CIV）：汇集多投资者资金共同投资的载体，是基金的上位概念。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-be-ge-euj:,
+        fibo-be-le-cb:,
+        fibo-be-le-fbo:,
+        fibo-be-le-lp:,
+        fibo-be-oac-cown:,
+        fibo-be-oac-exec:,
+        fibo-be-oac-opty:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fi-stl:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-pas-caa:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-arr-rt:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-law-cor:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-plc-rp:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ind-ind:,
+        fibo-sec-eq-eq:,
+        fibo-sec-fund-fund:,
+        fibo-sec-sec-pls:,
+        fibo-sec-sec-cls:,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/>,
+        fibo-sec-sec-iss:,
+        fibo-sec-sec-rst:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-qtu:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> ;
+    owl:versionIRI fibo-sec-fund-civ: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group, Inc.",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-sec-fund-civ:AssetClassStrategy a owl:Class ;
+    rdfs:label "asset class strategy"@en,
+        "资产类别策略（asset class strategy）"@zh ;
+    rdfs:comment "基于资产类别的投资策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:identifiesAssetTypesBy ;
+            owl:someValuesFrom fibo-sec-sec-cls:FinancialInstrumentClassifier ],
+        fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    skos:definition "Strategy which is asset class based."@en ;
+    cmns-av:explanatoryNote "EFAMA: The type of securities or other holdings that may be invested in. FIBIM: Strategy which is asset class based. Can implement this in terms of a classification of those things. Wording implies this is a policy."@en .
+
+fibo-sec-fund-civ:EquityPortfolio a owl:Class ;
+    rdfs:label "equity portfolio"@en,
+        "股票组合（equity portfolio）"@zh ;
+    rdfs:comment "至少 85% 敞口为股票的投资组合。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-be-oac-cown:Shareholding ],
+        fibo-sec-fund-civ:FundPortfolio ;
+    skos:definition "A portfolio which has at least 85% exposure to shares."@en .
+
+fibo-sec-fund-civ:FundBondClassUnit a owl:Class ;
+    rdfs:label "fund bond class unit"@en,
+        "基金债券类单位（fund bond class unit）"@zh ;
+    rdfs:comment "以对该基金之债权形式存在的基金单位。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasExpectedCoupon ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundBondUnitCoupon ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundUnitDistributionPolicy ],
+        fibo-sec-fund-fund:FundUnit ;
+    skos:definition "A fund unit which takes the form of debt in that fund."@en ;
+    cmns-av:explanatoryNote "From EFAMA Review: called denominations e.g. issued in $5000 pieces. You cannot buy fractional amounts in a bond."@en .
+
+fibo-sec-fund-civ:FundClassification a owl:Class ;
+    rdfs:label "fund classification"@en,
+        "基金分类（fund classification）"@zh ;
+    rdfs:comment "按资产类别对基金进行的分类，是用于对基金归类的公开代码。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-sec-sec-pls:CollectiveInvestmentVehicle ],
+        cmns-cls:Classifier ;
+    skos:definition "The category of the fund according to the asset class. This is a published code by which the Fund is classified. Further notes: Could be EFCF codes. This is the way in which \"Type of fund\" is articulated."@en .
+
+fibo-sec-fund-civ:FundLegalFormDocumentation a owl:Class ;
+    rdfs:label "fund legal form documentation"@en,
+        "基金法律形式文件（fund legal form documentation）"@zh ;
+    rdfs:comment "依合同法设立的基金的章程或组织文件，以合同形式体现。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-cor:Constitution ;
+    skos:definition "For a fund which is constituted under the law of contract, the constitution or articles that define the fund. These are embodied in a Contract."@en ;
+    cmns-av:explanatoryNote "From ISO FIBIM \"Umbrella Fund\" narrative: In securities, a collective investment scheme that has a contractual or a corporate form. When it has a contractual form, a fund is constituted under either the law of contract or under the trust law and thus it is not a legal entity. In its corporate form, a fund is a legal entity and is structured as a company."@en .
+
+fibo-sec-fund-civ:FundOrderDesk a owl:Class ;
+    rdfs:label "fund order desk"@en,
+        "基金下单台（fund order desk）"@zh ;
+    rdfs:comment "基金下单台账户的一方，负责接收投资者申购赎回指令。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom cmns-org:LegalEntity ],
+        fibo-fbc-pas-caa:AccountProvider ;
+    skos:definition "The Fund Order Desk is a party to the Fund Order Desk Account."@en ;
+    skos:editorialNote "This party would presumably be identified as the Fund Management Company in terms of what legal entity fulcils this role? to be determined at further review."@en .
+
+fibo-sec-fund-civ:FundRedemptionRestriction a owl:Class ;
+    rdfs:label "fund redemption restriction"@en,
+        "基金赎回限制（fund redemption restriction）"@zh ;
+    rdfs:comment "对投资者赎回基金单位施加的限制。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-rst:SecuritiesRestriction .
+
+fibo-sec-fund-civ:PreferredShareInFund a owl:Class ;
+    rdfs:label "preferred share in fund"@en,
+        "基金优先份额（preferred share in fund）"@zh ;
+    rdfs:comment "基金中被归类为优先股类的份额单位。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundShareClassUnit .
+
+fibo-sec-fund-civ:administeredBy a owl:ObjectProperty ;
+    rdfs:label "administered by"@en,
+        "由……管理（administered by）"@zh ;
+    rdfs:comment "标识负责管理某事物的机构。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-fund:FundAdministrator ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:fundHasRelatedParty .
+
+fibo-sec-fund-civ:advisedBy a owl:ObjectProperty ;
+    rdfs:label "advised by"@en,
+        "由……担任顾问（advised by）"@zh ;
+    rdfs:comment "指明为基金提供投资顾问服务的一方。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-fbc-fct-fse:RegisteredInvestmentAdvisor ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:fundHasRelatedParty .
+
+fibo-sec-fund-civ:assessedAgainst a owl:ObjectProperty ;
+    rdfs:label "assessed against"@en,
+        "对照……评估（assessed against）"@zh ;
+    rdfs:comment "指明用于评估组合表现的基准。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolio ;
+    rdfs:range fibo-sec-fund-civ:PortfolioBenchmark .
+
+fibo-sec-fund-civ:definedInRelationTo a owl:ObjectProperty ;
+    rdfs:label "defined in relation to"@en,
+        "相对于……定义（defined in relation to）"@zh ;
+    rdfs:comment "表明某术语是相对于另一事物定义的。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:OrganizationStrategy ;
+    rdfs:range fibo-be-le-cb:Corporation .
+
+fibo-sec-fund-civ:definesAllocations a owl:ObjectProperty ;
+    rdfs:label "defines allocations"@en,
+        "规定配置（defines allocations）"@zh ;
+    rdfs:comment "规定组合资产的配置方式。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolioInvestmentPolicy ;
+    rdfs:range fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    rdfs:subPropertyOf cmns-dsg:defines .
+
+fibo-sec-fund-civ:definesBenchmark a owl:ObjectProperty ;
+    rdfs:label "defines benchmark"@en,
+        "规定基准（defines benchmark）"@zh ;
+    rdfs:comment "规定组合所用的基准。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:PortfolioBenchmark ;
+    rdfs:range fibo-ind-ind-ind:MarketRate .
+
+fibo-sec-fund-civ:definesMainFundOrderDeskAccount a owl:ObjectProperty ;
+    rdfs:label "defines main fund order desk account"@en,
+        "规定主基金下单台账户（defines main fund order desk account）"@zh ;
+    rdfs:comment "规定基金的主要下单台账户。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingTerms ;
+    rdfs:range fibo-sec-fund-civ:FundsProcessingAccount .
+
+fibo-sec-fund-civ:distributedBy a owl:ObjectProperty ;
+    rdfs:label "distributed by"@en,
+        "由……分销（distributed by）"@zh ;
+    rdfs:comment "指明分销基金的一方。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundDistributor ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:fundHasRelatedParty .
+
+fibo-sec-fund-civ:hasAdditionalInformation a owl:ObjectProperty ;
+    rdfs:label "has additional information"@en,
+        "具有附加信息（has additional information）"@zh ;
+    rdfs:comment "指明基金的附加信息。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:OtherInvestmentFundInformation .
+
+fibo-sec-fund-civ:hasAdditionalRedemptionRestrictions a owl:ObjectProperty ;
+    rdfs:label "has additional redemption restrictions"@en,
+        "具有附加赎回限制（has additional redemption restrictions）"@zh ;
+    rdfs:comment "指明基金的附加赎回限制。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundRedemptionTerms ;
+    rdfs:range fibo-sec-fund-civ:ReferToFundOrderDesk .
+
+fibo-sec-fund-civ:hasAuditor a owl:ObjectProperty ;
+    rdfs:label "has auditor"@en,
+        "具有审计师（has auditor）"@zh ;
+    rdfs:comment "指明基金的审计师。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-be-oac-exec:ExternalAuditor ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:fundHasRelatedParty .
+
+fibo-sec-fund-civ:hasDataProvider a owl:ObjectProperty ;
+    rdfs:label "has data provider"@en,
+        "具有数据提供方（has data provider）"@zh ;
+    rdfs:comment "指明作为数据提供方并对所提供信息承担法律责任的机构。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-be-fct-pub:MarketDataProvider ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:fundHasRelatedParty ;
+    skos:definition "has an organization which is the data provider and is legally responsible for the information provided"@en .
+
+fibo-sec-fund-civ:hasDefaultSettlementConvention a owl:ObjectProperty ;
+    rdfs:label "has default settlement convention"@en,
+        "具有默认结算惯例（has default settlement convention）"@zh ;
+    rdfs:comment "指明基金交易的默认结算惯例。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundProcessingTerms ;
+    rdfs:range fibo-fbc-fi-stl:SettlementConvention .
+
+fibo-sec-fund-civ:hasDepository a owl:ObjectProperty ;
+    rdfs:label "has depository"@en,
+        "具有存管人（has depository）"@zh ;
+    rdfs:comment "指明基金的存管人。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundDepositary ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:fundHasRelatedParty .
+
+fibo-sec-fund-civ:hasDetails a owl:ObjectProperty ;
+    rdfs:label "has details"@en,
+        "具有明细（has details）"@zh ;
+    rdfs:comment "关于投资基金组成部分资产净值计算的信息。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundUnit ;
+    rdfs:range fibo-sec-fund-civ:NetAssetValueCalculationMethod ;
+    skos:definition "Information on the net asset value calculation of the investment fund component."@en .
+
+fibo-sec-fund-civ:hasExpectedCoupon a owl:ObjectProperty ;
+    rdfs:label "has expected coupon"@en,
+        "具有预期票息（has expected coupon）"@zh ;
+    rdfs:comment "指明预期的票息分配。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundBondClassUnit ;
+    rdfs:range fibo-sec-fund-civ:FundBondUnitCoupon .
+
+fibo-sec-fund-civ:hasFundPolicy a owl:ObjectProperty ;
+    rdfs:label "has fund policy"@en,
+        "具有基金政策（has fund policy）"@zh ;
+    rdfs:comment "关于投资金额、限制等的总体政策，不同于详细的组合政策。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundInvestmentPolicy ;
+    skos:definition "Overall policy for amounts invested, limitations etc. Not the same as the detailed Portfolio policy."@en .
+
+fibo-sec-fund-civ:hasIntendedRiskLevel a owl:ObjectProperty ;
+    rdfs:label "has intended risk level"@en,
+        "具有预期风险级别（has intended risk level）"@zh ;
+    rdfs:comment "指明基金的预期风险级别。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundInvestmentObjective ;
+    rdfs:range fibo-sec-fund-civ:RiskLevel .
+
+fibo-sec-fund-civ:hasInvestmentStrategy a owl:ObjectProperty ;
+    rdfs:label "strategy"@en,
+        "战略（strategy）"@zh ;
+    rdfs:comment "指导决策并协调行动与计划以追求某意向的高层途径。"@zh ;
+    rdfs:domain fibo-fnd-oac-own:Portfolio ;
+    rdfs:range fibo-sec-fund-civ:InvestmentStrategy .
+
+fibo-sec-fund-civ:hasManagementCompany a owl:ObjectProperty ;
+    rdfs:label "has management company"@en,
+        "具有管理公司（has management company）"@zh ;
+    rdfs:comment "指明基金的管理公司。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-fund:FundManager ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:fundHasRelatedParty .
+
+fibo-sec-fund-civ:hasPolicyTerms a owl:ObjectProperty ;
+    rdfs:label "has policy terms"@en,
+        "具有政策条款（has policy terms）"@zh ;
+    rdfs:comment "指明基金的政策条款。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundBondUnitCoupon ;
+    rdfs:range fibo-sec-fund-civ:FundCouponPolicy .
+
+fibo-sec-fund-civ:hasRelatedTerms a owl:ObjectProperty ;
+    rdfs:label "has related terms"@en,
+        "具有相关条款（has related terms）"@zh ;
+    rdfs:comment "指明相关的条款。"@zh ;
+    rdfs:range fibo-fnd-agr-ctr:ContractualElement .
+
+fibo-sec-fund-civ:hasSubscriptionTerms a owl:ObjectProperty ;
+    rdfs:label "has subscription terms"@en,
+        "具有申购条款（has subscription terms）"@zh ;
+    rdfs:comment "指明基金的申购条款。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundSubscriptionTerms ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:hasRelatedFundTerms .
+
+fibo-sec-fund-civ:hasTransferAgent a owl:ObjectProperty ;
+    rdfs:label "has transfer agent"@en,
+        "具有过户代理（has transfer agent）"@zh ;
+    rdfs:comment "标识过户代理。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundTransferAgent ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:fundHasRelatedParty .
+
+fibo-sec-fund-civ:identifiesAssetTypesBy a owl:ObjectProperty ;
+    rdfs:label "identifies asset types by"@en,
+        "以……标识资产类型（identifies asset types by）"@zh ;
+    rdfs:comment "指明用于标识资产类型的分类方式。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:AssetClassStrategy ;
+    rdfs:range fibo-sec-sec-cls:FinancialInstrumentClassifier .
+
+fibo-sec-fund-civ:implementsFundPolicy a owl:ObjectProperty ;
+    rdfs:label "implements fund policy"@en,
+        "实施基金政策（implements fund policy）"@zh ;
+    rdfs:comment "表明某一策略实施某一基金政策。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolio ;
+    rdfs:range fibo-sec-fund-civ:FundPortfolioInvestmentPolicy .
+
+fibo-sec-fund-civ:isCalculatedIn a owl:ObjectProperty ;
+    rdfs:label "is calculated in"@en,
+        "以……计算（is calculated in）"@zh ;
+    rdfs:comment "指明资产净值等数值计算所用的货币或单位。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:NetAssetValueCalculationMethod ;
+    rdfs:range fibo-fnd-acc-cur:Currency .
+
+fibo-sec-fund-civ:outlines a owl:ObjectProperty ;
+    rdfs:label "outlines"@en,
+        "概述（outlines）"@zh ;
+    rdfs:comment "表明某文件概述某一事项。"@zh ;
+    rdfs:domain fibo-sec-sec-iss:Prospectus ;
+    rdfs:range fibo-sec-fund-civ:FundInvestmentObjective ;
+    owl:inverseOf fibo-sec-fund-civ:statedIn .
+
+fibo-sec-fund-civ:providesDepositaryServiceFor a owl:ObjectProperty ;
+    rdfs:label "provides depositary service for"@en,
+        "为……提供存管服务（provides depositary service for）"@zh ;
+    rdfs:comment "指明存管人为某一基金提供存管服务。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundDepositary ;
+    rdfs:range fibo-sec-fund-fund:FundUnit .
+
+fibo-sec-fund-civ:stipulatesBenchmark a owl:ObjectProperty ;
+    rdfs:label "stipulates benchmark"@en,
+        "规定基准（stipulates benchmark）"@zh ;
+    rdfs:comment "规定组合业绩评价所用的基准。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundInvestmentPolicy ;
+    rdfs:range fibo-ind-ind-ind:MarketRate .
+
+fibo-sec-fund-civ:supervisedBy a owl:ObjectProperty ;
+    rdfs:label "supervised by"@en,
+        "由……监管（supervised by）"@zh ;
+    rdfs:comment "指明监管基金的机构。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundSupervisoryAuthority .
+
+fibo-sec-fund-civ:DistributingShareClass a owl:Class ;
+    rdfs:label "distributing share class"@en,
+        "分红股类（distributing share class）"@zh ;
+    rdfs:comment "将收益定期分配给份额持有人的股类。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundShareClassUnit .
+
+fibo-sec-fund-civ:FundCashDistributionPolicy a owl:Class ;
+    rdfs:label "fund cash distribution policy"@en,
+        "基金现金分配政策（fund cash distribution policy）"@zh ;
+    rdfs:comment "在基金单位分配政策为「现金」而非「再投资」时，关于现金股息或票据分配的政策。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundUnitDistributionPolicy ;
+    skos:definition "Policy for distribution of cash dividends or notes in the event that the fund units have a distribution policy of \"Cash\" rather than \"Reinvestment\"."@en .
+
+fibo-sec-fund-civ:FundDistributor a owl:Class ;
+    rdfs:label "fund distributor"@en,
+        "基金分销商（fund distributor）"@zh ;
+    rdfs:comment "投资者通过其购买基金份额的实体，可基于全权委托、咨询或仅执行交易的方式。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundsProcessingParty ;
+    skos:definition "an entity through which a fund may be bought by or for an investor. This may be on a discretionary or advisory basis, or as an execution-only service. Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:FundReinvestmentPolicy a owl:Class ;
+    rdfs:label "fund reinvestment policy"@en,
+        "基金再投资政策（fund reinvestment policy）"@zh ;
+    rdfs:comment "关于基金单位收益预期再投资的条款。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundUnitDistributionPolicy ;
+    skos:definition "Terms for the expected reinvestment of profits on fund units."@en .
+
+fibo-sec-fund-civ:FundSupervisoryAuthority a owl:Class ;
+    rdfs:label "fund supervisory authority"@en,
+        "基金监管机构（fund supervisory authority）"@zh ;
+    rdfs:comment "监管基金或基金行业的一方。"@zh ;
+    rdfs:subClassOf cmns-pts:PartyRole ;
+    skos:definition "party that supervises the fund or fund industry"@en .
+
+fibo-sec-fund-civ:FundTransferAgent a owl:Class ;
+    rdfs:label "fund transfer agent"@en,
+        "基金过户代理人（fund transfer agent）"@zh ;
+    rdfs:comment "代表基金执行申购、赎回和转换指令的实体。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundsProcessingParty ;
+    skos:definition "An entity that undertakes the execution of subscription, redemption and switch orders on behalf of a fund. Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:FundsProcessingAccount a owl:Class ;
+    rdfs:label "funds processing account"@en,
+        "基金处理账户（funds processing account）"@zh ;
+    rdfs:comment "专门用于基金处理的账户，按 FIBIM 定义是两个实体之间的业务关系。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundOrderDesk ],
+        fibo-fbc-pas-caa:Account ;
+    skos:definition "An account used specifically in the processing of funds. Like all accounts this is (per FIBIM definition) a business relationship between two entities; one entity is the account owner, the other entity is the account servicer. Please refer to Financial global model for treatment of accounts relationships in this model."@en ;
+    cmns-av:explanatoryNote "Derived from FIBIM definition for \"Account\", which is: \"Business relationship between two entities; one entity is the account owner, the other entity is the account servicer.\" this corresponds to the Global Terms definition for Account."@en .
+
+fibo-sec-fund-civ:InvestmentStrategy a owl:Class ;
+    rdfs:label "investment strategy"@en,
+        "投资策略（investment strategy）"@zh ;
+    rdfs:comment "为实现特定投资目标而制定的计划、方法或一系列策略安排。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
+            owl:someValuesFrom fibo-fnd-gao-obj:InvestmentObjective ],
+        fibo-fnd-gao-obj:BusinessStrategy ;
+    skos:definition "plan, method, or series of maneuvers or stratagems for obtaining a specific investment goal"@en .
+
+fibo-sec-fund-civ:NoteFund a owl:Class ;
+    rdfs:label "note fund",
+        "票据基金（note fund）"@zh ;
+    rdfs:comment "向投资者发行债务工具（票据）而非（或同时发行）传统权益的集合投资工具。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-pls:ManagedInvestment ;
+    skos:definition "pooled investment vehicle that issues debt instruments (notes) to investors rather than (or in addition to) traditional equity interests" ;
+    cmns-av:explanatoryNote "The notes issued by a note fund are typically privately rated by agencies like KBRA, DBRS, or Moody's, tranched into senior and junior classes, and linked to underlying assets such as private loans, credit instruments, or structured products. Note funds are designed to optimize regulatory capital treatment, especially for insurance companies, by offering rated debt instead of equity." .
+
+fibo-sec-fund-civ:OtherInvestmentFundInformation a owl:Class ;
+    rdfs:label "other investment fund information"@en,
+        "其他投资基金信息（other investment fund information）"@zh ;
+    rdfs:comment "不属于招募说明书、但对理解基金很重要的信息。"@zh ;
+    rdfs:subClassOf cmns-doc:Document ;
+    skos:definition "Things which are not part of the prospectus but are important if you want to understand the fund."@en ;
+    skos:editorialNote "See terms in EFAMA spreadsheet. These are properties of the fund but are not legally binding. Author follow-up note: I have managed to find a \"home\" for disposition for most of the entries that are in the spreadsheet. It is not clear which of the spreadsheet terms are indended to come under the general heading in this class. The first place I would look is in the terms I have defined as \"Fund Processing Terms\", which are defined as formal, legal contractual terms. If any of those are not legally binding on some party, then this is where they belong instead."@en .
+
+fibo-sec-fund-civ:ReferToFundOrderDesk a owl:Class ;
+    rdfs:label "refer to fund order desk"@en,
+        "须洽基金下单台（refer to fund order desk）"@zh ;
+    rdfs:comment "要求投资者在赎回基金前先与基金下单台联系的限制。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundRedemptionRestriction ;
+    skos:definition "Restriction requiring an investor to refer to the fund order desk prior to redeeming a fund."@en ;
+    skos:editorialNote "While it's unclear from original data models, it's likely that this restriction is actually to learn from the fund order desk of any other individual kinds of restriction that will apply. This is itself treated as a kind of restriction here."@en .
+
+fibo-sec-fund-civ:RiskLevel a owl:Class ;
+    rdfs:label "risk level"@en,
+        "风险级别（risk level）"@zh ;
+    rdfs:comment "对基金或投资组合风险程度的度量。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier .
+
+fibo-sec-fund-civ:UnitIssuer a owl:Class ;
+    rdfs:label "unit issuer"@en,
+        "单位发行人（unit issuer）"@zh ;
+    rdfs:comment "发行基金单位的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom fibo-be-le-cb:Corporation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:issues ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundUnit ],
+        fibo-sec-fund-civ:FundsProcessingParty ;
+    skos:definition "The party which issues the Fund Unit."@en .
+
+fibo-sec-fund-civ:hasFundProcessingTerms a owl:ObjectProperty ;
+    rdfs:label "has fund processing terms"@en,
+        "具有基金处理条款（has fund processing terms）"@zh ;
+    rdfs:comment "指明基金的处理条款。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundUnit ;
+    rdfs:range fibo-sec-fund-civ:FundProcessingTerms ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasContractualElement .
+
+fibo-sec-fund-civ:hasRelatedFundTerms a owl:ObjectProperty ;
+    rdfs:label "has related fund terms"@en,
+        "具有相关基金条款（has related fund terms）"@zh ;
+    rdfs:comment "指明基金的相关条款。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundProcessingTerms ;
+    rdfs:subPropertyOf fibo-sec-fund-civ:hasRelatedTerms .
+
+fibo-sec-fund-civ:statedIn a owl:ObjectProperty ;
+    rdfs:label "stated in"@en,
+        "列明于（stated in）"@zh ;
+    rdfs:comment "指明某信息列明于某一文件。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundInvestmentObjective ;
+    rdfs:range fibo-sec-sec-iss:Prospectus .
+
+fibo-sec-fund-civ:FundBondUnitCoupon a owl:Class ;
+    rdfs:label "fund bond unit coupon"@en,
+        "基金债券单位票息（fund bond unit coupon）"@zh ;
+    rdfs:comment "向基金债券单位持有人支付的固定票息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasPolicyTerms ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundCouponPolicy ],
+        fibo-fnd-acc-cur:InterestRate ;
+    skos:definition "A fixed coupon paid out to holders of the Fund Bond Unit."@en .
+
+fibo-sec-fund-civ:FundDepositary a owl:Class ;
+    rdfs:label "fund depositary"@en,
+        "基金存管人（fund depositary）"@zh ;
+    rdfs:comment "持有并保管基金所持资产的一方，还负责组合符合法定比例等合规事项。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:providesDepositaryServiceFor ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundUnit ],
+        fibo-sec-fund-civ:FundsProcessingParty ;
+    skos:definition "The party that holds and safeguards holdings owned by a fund. It is also responsible for compliance of the portfolio with legal ratios etc."@en ;
+    cmns-av:explanatoryNote "The depository may delegate custody to another entity (custodian). Definition origin:EFAMA DD"@en .
+
+fibo-sec-fund-civ:FundInvestmentPolicy a owl:Class ;
+    rdfs:label "fund investment policy"@en,
+        "基金投资政策（fund investment policy）"@zh ;
+    rdfs:comment "基金为实现既定目标而实施的政策。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-ind-ind-ind:MarketRate ;
+            owl:onProperty fibo-sec-fund-civ:stipulatesBenchmark ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-sec-fund-civ:PortfolioInvestmentStrategy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-sec-fund-civ:InvestmentRestriction ],
+        fibo-fnd-law-lcap:Policy ;
+    skos:definition "policy that the fund implements in order to achieve the stated fund objectives"@en ;
+    cmns-av:explanatoryNote "EFAMA Note: Model distinguishes between strategy (what you intend to invest in) and portfolio structure (what is held). This semantics matches the EFAMA DD \"Fund Investment Policy\" No stated definition in EFAMA DD (\"Further discussion required\")."@en .
+
+fibo-sec-fund-civ:FundCouponPolicy a owl:Class ;
+    rdfs:label "fund coupon policy"@en,
+        "基金票息政策（fund coupon policy）"@zh ;
+    rdfs:comment "关于债券单位票息预期分配的条款。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundCashDistributionPolicy ;
+    skos:definition "Terms for the expected distribution of bond unit coupons."@en .
+
+fibo-sec-fund-civ:FundPortfolioInvestmentPolicy a owl:Class ;
+    rdfs:label "fund portfolio investment policy"@en,
+        "基金组合投资政策（fund portfolio investment policy）"@zh ;
+    rdfs:comment "为实现既定投资策略和目标而制定的组合配置政策。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:definesAllocations ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-sec-fund-civ:PortfolioInvestmentStrategy ],
+        fibo-fnd-law-lcap:Policy ;
+    skos:definition "policy with respect to allocation of the portfolio that is designed to meet the stated investment strategy and goals"@en ;
+    cmns-av:explanatoryNote "ISO FIBIM: Rough allocation of the portfolio."@en .
+
+fibo-sec-fund-civ:FundUnitDistributionMethod a owl:Class ;
+    rdfs:label "fund unit distribution method"@en,
+        "基金单位分配方式（fund unit distribution method）"@zh ;
+    rdfs:comment "基金的常规分配政策方式。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:DistributionStrategy ;
+    skos:definition "The normal distribution policy for funds."@en .
+
+fibo-sec-fund-civ:OrganizationStrategy a owl:Class ;
+    rdfs:label "organization strategy"@en,
+        "机构策略（organization strategy）"@zh ;
+    rdfs:comment "基于特定机构的投资策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:definedInRelationTo ;
+            owl:someValuesFrom fibo-be-le-cb:Corporation ],
+        fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ;
+    skos:definition "Strategy which is organization based."@en .
+
+fibo-sec-fund-civ:PortfolioInvestmentStrategy a owl:Class ;
+    rdfs:label "portfolio investment strategy"@en,
+        "组合投资策略（portfolio investment strategy）"@zh ;
+    rdfs:comment "组合管理人试图实现基金目标的方式。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundPortfolioInvestmentLimitations ],
+        fibo-sec-fund-civ:InvestmentStrategy ;
+    skos:definition "The manner in which the portfolio manager tries to reach the funds objectives."@en ;
+    cmns-av:explanatoryNote "Describes how you get there. E.g fully invested v not fully invested. MB Note: The terms labeled \"Strategy\" in EFAMA and in FIBIM are more like dictionary definition of policy, while \"How you get there\" is a dictionary definition of Strategy. Therefore original labels may be reversed from dictionary definition of the global semantics these are derived from."@en .
+
+fibo-sec-fund-civ:FundInvestmentObjective a owl:Class ;
+    rdfs:label "fund investment objective"@en,
+        "基金投资目标（fund investment objective）"@zh ;
+    rdfs:comment "基金的目标，例如超越某一基准。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:statedIn ;
+            owl:someValuesFrom fibo-sec-sec-iss:Prospectus ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasIntendedRiskLevel ;
+            owl:someValuesFrom fibo-sec-fund-civ:RiskLevel ],
+        fibo-fnd-gao-obj:InvestmentObjective ;
+    skos:definition "The aim of a Fund e.g outperfom a given benchmark."@en ;
+    skos:editorialNote "This could be broken down into other terms that can be itemised here, that are not in the EFAMA DD explicitly. Examples may include: - Risk level - Return - Exposure to different markets"@en .
+
+fibo-sec-fund-civ:FundPortfolio a owl:Class ;
+    rdfs:label "fund portfolio"@en,
+        "基金组合（fund portfolio）"@zh ;
+    rdfs:comment "包含若干金融工具以及一种或多种货币现金头寸、并归属于某一基金的账户。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasInvestmentStrategy ;
+            owl:someValuesFrom fibo-sec-fund-civ:PortfolioInvestmentStrategy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fnd-oac-own:Portfolio ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:implementsFundPolicy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundPortfolioInvestmentPolicy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
+            owl:someValuesFrom fibo-fbc-pas-caa:Balance ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:assessedAgainst ;
+            owl:someValuesFrom fibo-sec-fund-civ:PortfolioBenchmark ],
+        fibo-fnd-oac-own:Portfolio ;
+    skos:definition "An account containing a number of financial instruments along with cash positions in one or more currencies and belonging to a Fund"@en .
+
+fibo-sec-fund-civ:FundUnitDistributionPolicy a owl:Class ;
+    rdfs:label "fund unit distribution policy"@en,
+        "基金单位分配政策（fund unit distribution policy）"@zh ;
+    rdfs:comment "与基金单位相关的政策，例如收益是分配给投资者还是留存于基金中，以及如何处理。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundUnitDistributionMethod ],
+        fibo-fnd-law-lcap:Policy ;
+    skos:definition "policy relating to the unit, e.g. if income is paid out or retained in the fund and how this is treated, including distribution policy details for dividends and coupons."@en .
+
+fibo-sec-fund-civ:FundShareClassUnit a owl:Class ;
+    rdfs:label "fund share class unit"@en,
+        "基金股类单位（fund share class unit）"@zh ;
+    rdfs:comment "购买投资池一部分的法律结构，由投资者类型、最低投资额等多种特征定义。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundUnitDistributionPolicy ],
+        fibo-sec-fund-fund:FundUnit ;
+    skos:definition "The legal structure in which you can purchase part of an investment pool, defined by a variety of characteristics like investor type, minimum size of investment, distribution type, fee and currency. A fund unit which gives the holder an equity stake in the fund."@en ;
+    cmns-av:explanatoryNote "From review sessions: Theoretically you can buy a fraction of a share in a fund. This would depend on the legal structure of the fund, e.g. a minimum investment. There is always a distribution plan."@en .
+
+fibo-sec-fund-civ:PortfolioBenchmark a owl:Class ;
+    rdfs:label "portfolio benchmark"@en,
+        "组合基准（portfolio benchmark）"@zh ;
+    rdfs:comment "用于评价组合表现的证券或其他价格基准。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundPortfolio ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:definesBenchmark ;
+            owl:someValuesFrom fibo-ind-ind-ind:MarketRate ],
+        cmns-qtu:Measure ;
+    skos:definition "Security or other price against which the performance of the portfolio is evaluated."@en .
+
+fibo-sec-fund-civ:FundsProcessingParty a owl:Class ;
+    rdfs:label "funds processing party"@en,
+        "基金处理参与方（funds processing party）"@zh ;
+    rdfs:comment "参与基金处理的一方。"@zh ;
+    rdfs:subClassOf cmns-pts:PartyRole ;
+    skos:definition "party involved in the processing of funds"@en .
+
+fibo-sec-fund-civ:InvestmentRestriction a owl:Class ;
+    rdfs:label "fund investment restrictions set"@en,
+        "基金投资限制集（fund investment restrictions set）"@zh ;
+    rdfs:comment "适用于基金整体的限制（如风险因素），用于判断该基金是否适合某类投资者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:isPartOf ;
+            owl:someValuesFrom fibo-sec-sec-iss:Prospectus ],
+        fibo-sec-sec-rst:SecuritiesRestriction ;
+    skos:definition "Limitations that apply to the fund as a whole, such as risk factors. these are used to determine whether the fund is appropriate for a given type of investor to invest in."@en ;
+    cmns-av:explanatoryNote "These are defined by the overall Fund investment policy. Not the same as the detailed policies for investing in percentages of this or that."@en .
+
+fibo-sec-fund-civ:NetAssetValueCalculationMethod a owl:Class ;
+    rdfs:label "net asset value calculation method"@en,
+        "资产净值计算方法（net asset value calculation method）"@zh ;
+    rdfs:comment "计算投资基金/基金类别资产净值（NAV）的参数。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:isCalculatedIn ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+        cmns-qtu:Expression ;
+    skos:definition "Parameters for the calculation of the net asset value for an investment fund/fund class."@en ;
+    skos:editorialNote "These terms were in the ISO FIBIM model but correspond to some details in the EFAMA DD."@en .
+
+fibo-sec-sec-iss:Prospectus a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:outlines ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundInvestmentObjective ] ;
+    skos:editorialNote "EFAMA Review description for this: The fund is issued with a prospectus; there is material in the prospectus that is binding; material that is expected but not binding, and information that may or may not be in the prospectus or a given fund."@en ;
+    cmns-av:explanatoryNote "This document includes facts about the fund investment objective, investment focus and other details of the fund. Some of this information becomes binding on the fund once it is issued, while other information is guidelines only." .
+
+fibo-sec-fund-civ:FundProcessingGeneralTerms a owl:Class ;
+    rdfs:label "fund processing general terms"@en,
+        "基金处理一般条款（fund processing general terms）"@zh ;
+    rdfs:comment "基金一般处理的正式条款，规定投资者和基金可以或不可以做什么。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:FundProcessingTerms ;
+    skos:definition "Formal terms for general processing of the fund. These set out what the investor and the fund may or may not do."@en .
+
+fibo-sec-fund-civ:fundHasRelatedParty a owl:ObjectProperty ;
+    rdfs:label "fund has related party"@en,
+        "基金具有相关方（fund has related party）"@zh ;
+    rdfs:comment "指明与基金相关联的一方。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-sec-fund-civ:FundsProcessingParty .
+
+fibo-sec-fund-civ:FundRedemptionTerms a owl:Class ;
+    rdfs:label "fund redemption terms"@en,
+        "基金赎回条款（fund redemption terms）"@zh ;
+    rdfs:comment "基金单位赎回的正式条款，规定投资者和基金可以或不可以做什么。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasAdditionalRedemptionRestrictions ;
+            owl:someValuesFrom fibo-sec-fund-civ:ReferToFundOrderDesk ],
+        fibo-sec-fund-civ:FundProcessingTerms ;
+    skos:definition "Formal terms for redemption of units in the fund. These set out what the investor and the fund may or may not do."@en .
+
+fibo-sec-fund-civ:FundProcessingTerms a owl:Class ;
+    rdfs:label "fund processing terms"@en,
+        "基金处理条款（fund processing terms）"@zh ;
+    rdfs:comment "基金处理的正式条款，规定投资者和基金可以或不可以做什么，包括赎回和申购条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasDefaultSettlementConvention ;
+            owl:someValuesFrom fibo-fbc-fi-stl:SettlementConvention ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:definesMainFundOrderDeskAccount ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundsProcessingAccount ],
+        fibo-fnd-agr-ctr:ContractualCommitment ;
+    skos:definition "Formal terms for processing of the fund. These set out what the investor and the fund may or may not do. These include terms for redemption and subscription processing as well as general processing terms. ISO FIBIM definition: Processing characteristics linked to the instrument, ie, not to the market."@en ;
+    cmns-av:explanatoryNote "These include Fund Subscription Terms, Fund Redemption Terms. and terms which relate to general processing and restrictions or otherwise on the holder. FPP notes: FPP presentation identifies many of these terms under the heading of Valuation Dealing characteristics. May need to revise which goes where in line with FPP. See also terms under NAV Valuation Calculation Method. Others of these terms appear in FPP under Instrument Restrictions. These cover the subscription, redemption and holding amounts and units and minimum holding period."@en .
+
+fibo-sec-fund-civ:FundPortfolioInvestmentLimitations a owl:Class ;
+    rdfs:label "fund portfolio investment limitations"@en,
+        "基金组合投资限制（fund portfolio investment limitations）"@zh ;
+    rdfs:comment "关于组合应如何配置以实现既定投资目标的详细政策，构成详细策略的基础。"@zh ;
+    rdfs:subClassOf fibo-sec-fund-civ:InvestmentRestriction ;
+    skos:definition "Detailed Policy on approximately how the portfolio is to be allocated to achieve the stated investment goals. This underpins the detailed strategy of how to achieve this."@en ;
+    cmns-av:explanatoryNote "Defined as \"Strategy\" in FIBIM and elsewhere. WG11: Rough allocation of the portfolio."@en .
+
+fibo-sec-fund-fund:FundUnit a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasDetails ;
+            owl:someValuesFrom fibo-sec-fund-civ:NetAssetValueCalculationMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasFundProcessingTerms ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundRedemptionTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasFundProcessingTerms ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundProcessingGeneralTerms ] ;
+    cmns-av:explanatoryNote "If it is a closed fund, you can still trade the units. You trade back with the fund. Not with a counterparty. Therefore this is a tradable contract, though it may not necessarily be a transferable contract."@en .
+
+fibo-sec-fund-civ:FundSubscriptionTerms a owl:Class ;
+    rdfs:label "fund subscription terms"@en,
+        "基金申购条款（fund subscription terms）"@zh ;
+    rdfs:comment "基金的申购条款，规定投资者和基金在申购环节可以或不可以做什么。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundUnit ],
+        fibo-sec-fund-civ:FundProcessingTerms ;
+    skos:definition "Subscription terms for the fund. Further notes: ISO FIBIM, EFAMA DD and FPP combine terms for subscription, redemption and general holding requirements. These have been separated here as they are different kinds of term, but this can be reviewed. Subscription Terms are identified as terms of the fund and not the fund unit, since terms for how you might subscribe can't be binding one someone who has not yet subscribed."@en .
+
+fibo-sec-sec-pls:CollectiveInvestmentVehicle a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasManagementCompany ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundManager ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:supervisedBy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundSupervisoryAuthority ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasTransferAgent ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundTransferAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasDataProvider ;
+            owl:someValuesFrom fibo-be-fct-pub:MarketDataProvider ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:distributedBy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundDistributor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasAdditionalInformation ;
+            owl:someValuesFrom fibo-sec-fund-civ:OtherInvestmentFundInformation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasDepository ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundDepositary ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:advisedBy ;
+            owl:someValuesFrom fibo-fbc-fct-fse:RegisteredInvestmentAdvisor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasSubscriptionTerms ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundSubscriptionTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:fundHasRelatedParty ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundsProcessingParty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasAuditor ;
+            owl:someValuesFrom fibo-be-oac-exec:ExternalAuditor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom fibo-sec-fund-civ:UnitIssuer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundUnitDistributionMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:administeredBy ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundAdministrator ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasRelatedFundTerms ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundProcessingTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasFundPolicy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundInvestmentPolicy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDescribedBy ;
+            owl:someValuesFrom fibo-sec-sec-iss:Prospectus ] ;
+    cmns-av:explanatoryNote "From EFAMA DD: The word fund can refer to either an investment pool, umbrella or share class, and is commonly refered to as a collective investment vehicle (can have ISIN or not). The meaning here is for the investment pool (of which an Umbrella fund is also one such) and not to the share class."@en .
+

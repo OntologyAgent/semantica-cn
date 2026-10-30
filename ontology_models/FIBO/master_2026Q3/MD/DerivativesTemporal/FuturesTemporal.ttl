@@ -1,0 +1,103 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-der-fut: <https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/FuturesTemporal/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-der-fut:FuturesClosingPrice a owl:Class ;
+    rdfs:label "futures closing price"@en,
+        "期货收盘价（futures closing price）"@zh ;
+    rdfs:comment "期货在交易时段结束时的价格。"@zh ;
+    rdfs:subClassOf fibo-md-der-fut:ExchangeFuturesPrice .
+
+fibo-md-der-fut:FuturesDailySettlementPrice a owl:Class ;
+    rdfs:label "futures daily settlement price"@en,
+        "期货每日结算价（futures daily settlement price）"@zh ;
+    rdfs:comment "期货每日的结算价格。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-ip:SecurityPrice ;
+    skos:definition "Review whether this exists"@en .
+
+fibo-md-der-fut:FuturesTheta a owl:Class ;
+    rdfs:label "futures theta"@en,
+        "期货西塔（futures theta）"@zh ;
+    rdfs:comment "期货价值对到期时间单位变化之变化率的度量。"@zh ;
+    rdfs:subClassOf fibo-md-der-fut:FuturesGreek .
+
+fibo-md-der-fut:FuturesVega a owl:Class ;
+    rdfs:label "futures vega"@en,
+        "期货维加（futures vega）"@zh ;
+    rdfs:comment "期货价值对波动率假设单位变化之变化率的度量。"@zh ;
+    rdfs:subClassOf fibo-md-der-fut:FuturesGreek .
+
+fibo-md-der-fut:InitialMargin a owl:Class ;
+    rdfs:label "initial margin"@en,
+        "初始保证金（initial margin）"@zh ;
+    rdfs:comment "作为诚信押金存入、以保证期货合同将得到履行的货币或证券。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
+            owl:someValuesFrom fibo-md-der-fut:FuturesTradingAccountHolder ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ;
+            owl:someValuesFrom cmns-dt:ExplicitDate ],
+        fibo-fnd-oac-own:Asset ;
+    skos:definition "money or securities put up as a good faith deposit assuring that a future contract will be fulfilled"@en ;
+    cmns-av:explanatoryNote "When you open a futures contract, the futures exchange will state a minimum amount of money that you must deposit into your account. This original deposit of money is called the initial margin. When your contract is liquidated, you will be refunded the initial margin plus or minus any gains or losses that occur over the span of the futures contract. In other words, the amount in your margin account changes daily as the market fluctuates in relation to your futures contract. The minimum-level margin is determined by the futures exchange and is usually 5% to 10% of the futures contract. These predetermined initial margin amounts are continuously under review: at times of high market volatility, initial margin requirements can be raised."@en ;
+    cmns-av:synonym "security deposit"@en .
+
+fibo-md-der-fut:MinimumMargin a owl:Class ;
+    rdfs:label "minimum margin"@en,
+        "最低保证金（minimum margin）"@zh ;
+    rdfs:comment "账户在需要补充之前可降至的最低金额。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ;
+            owl:someValuesFrom cmns-dt:ExplicitDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
+            owl:someValuesFrom fibo-md-der-fut:FuturesTradingAccountHolder ],
+        fibo-fnd-oac-own:Asset ;
+    skos:definition "The lowest amount an account can reach before needing to be replenished."@en .
+
+fibo-md-der-fut: a owl:Ontology ;
+    rdfs:label "Futures Temporal Ontology"@en,
+        "期货时序本体（Futures Temporal Ontology）"@zh ;
+    dcterms:abstract "Exchange traded futures date and time dependent terms such as prices and margining. Also covers greeks (thetas etc.)" ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义期货合约行情（价格、持仓量）的时间序列数据。"@zh ;
+    owl:imports fibo-fbc-fi-ip:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-dt: ;
+    owl:versionIRI fibo-md-der-fut: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+
+fibo-md-der-fut:ExchangeFuturesPrice a owl:Class ;
+    rdfs:label "exchange futures price"@en,
+        "交易所期货价格（exchange futures price）"@zh ;
+    rdfs:comment "交易所确定的期货价格。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-ip:SecurityPrice .
+
+fibo-md-der-fut:FuturesGreek a owl:Class ;
+    rdfs:label "futures greek"@en,
+        "期货希腊字母（futures greek）"@zh ;
+    rdfs:comment "表示期货价格对其价值所依赖的标的参数变化之敏感度的量。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-ip:PriceAnalytic ;
+    skos:definition "quantity representing the sensitivity of the price of a future or futures to a change in underlying parameters on which the value depends"@en .
+
+fibo-md-der-fut:FuturesTradingAccountHolder a owl:Class ;
+    rdfs:label "futures trading account holder"@en,
+        "期货交易账户持有人（futures trading account holder）"@zh ;
+    rdfs:comment "在衍生品交易所开立期货交易账户的参与方；开户时存入的款项称为保证金。"@zh ;
+    skos:definition "A party who has an account for futures trading at a derivatives exchange. Further notes: The trader opens an account with a given amount known as a margin."@en .
+

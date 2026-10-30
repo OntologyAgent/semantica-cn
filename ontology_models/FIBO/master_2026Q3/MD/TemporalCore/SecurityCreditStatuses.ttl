@@ -1,0 +1,91 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-temx-crs: <https://spec.edmcouncil.org/fibo/ontology/MD/TemporalCore/SecurityCreditStatuses/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-temx-crs:CreditOK a owl:Class ;
+    rdfs:label "credit o k"@en,
+        "信用正常（credit o k）"@zh ;
+    rdfs:comment "未违约。"@zh ;
+    rdfs:subClassOf fibo-md-temx-crs:SecurityCreditStatus ;
+    skos:definition "Not defaulted."@en .
+
+fibo-md-temx-crs:InDefault a owl:Class ;
+    rdfs:label "in default"@en,
+        "违约（in default）"@zh ;
+    rdfs:comment "发行人未能支付其合同义务所要求的款项。"@zh ;
+    rdfs:subClassOf fibo-md-temx-crs:SecurityCreditStatus ;
+    skos:definition "The issuer has failed to pay somthing that they are contractually obliged to pay."@en ;
+    skos:editorialNote "(review 7 Oct 09) Does this exist as a term? This is a characteristic of the instrument not the rating. Because it's in default you can expect the rating to drop. Applies to instrument not to debtor. So a company may have 3 bond issues and may be defualt on only one. 14 Oct: Degrees of defaults e.g. tranche not paying interest due to losses on the underlying portrfolio; tranches being used to pay down more senior tranches."@en .
+
+fibo-md-temx-crs:acceleratedPrincipalPaymentsExpected a owl:DatatypeProperty ;
+    rdfs:label "accelerated principal payments expected"@en,
+        "预期加速本金偿付（accelerated principal payments expected）"@zh ;
+    rdfs:comment "是否预期加速偿付本金。"@zh ;
+    rdfs:domain fibo-md-temx-crs:SecurityCashflowStatus ;
+    rdfs:range xsd:boolean .
+
+fibo-md-temx-crs:interestPaymentsExpected a owl:DatatypeProperty ;
+    rdfs:label "interest payments expected"@en,
+        "预期付息（interest payments expected）"@zh ;
+    rdfs:comment "是否预期支付利息。"@zh ;
+    rdfs:domain fibo-md-temx-crs:SecurityCashflowStatus ;
+    rdfs:range xsd:boolean .
+
+fibo-md-temx-crs:principalPaymentsExpected a owl:DatatypeProperty ;
+    rdfs:label "principal payments expected"@en,
+        "预期本金偿付（principal payments expected）"@zh ;
+    rdfs:comment "是否预期偿付本金。"@zh ;
+    rdfs:domain fibo-md-temx-crs:SecurityCashflowStatus ;
+    rdfs:range xsd:boolean .
+
+fibo-md-temx-crs: a owl:Ontology ;
+    rdfs:label "SecurityCreditStatuses"@en,
+        "证券信用状态时序本体（Security Credit Statuses Ontology）"@zh ;
+    dcterms:abstract """This ontology extends the credit status ontology to define credit status concepts that are specific to issued securities. These include cashflow status and the basic credit statuses of being OK or in default. 
+		Note that in application data models these concepts would be represented as one or more selectable code lists or enumerations.""" ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义证券信用状态（如评级变化）随时间的表示。"@zh ;
+    owl:imports fibo-fbc-fi-fi:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg: ;
+    owl:versionIRI fibo-md-temx-crs: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc." .
+
+fibo-md-temx-crs:SecurityCashflowStatus a owl:Class ;
+    rdfs:label "security cashflow status"@en,
+        "证券现金流状态（security cashflow status）"@zh ;
+    rdfs:comment "证券应付给持有人的现金流的状态。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStatus ;
+    owl:disjointWith fibo-md-temx-crs:SecurityCreditStatus ;
+    skos:definition "The status of the cashflow due to the holder from the security."@en ;
+    skos:editorialNote "Specialize this for preferred stocks, debt tranches and so on."@en .
+
+fibo-md-temx-crs:SecurityCreditStatus a owl:Class ;
+    rdfs:label "security credit status"@en,
+        "证券信用状态（security credit status）"@zh ;
+    rdfs:comment "证券在信用方面的状态。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-fnd-arr-lif:LifecycleStatus .
+

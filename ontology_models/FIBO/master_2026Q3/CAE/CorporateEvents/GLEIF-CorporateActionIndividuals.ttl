@@ -1,0 +1,232 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-cae-ce-GLEIF: <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/GLEIF-CorporateActionIndividuals/> .
+@prefix fibo-cae-ce-act: <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/CorporateActions/> .
+@prefix fibo-fbc-dae-cre: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-cae-ce-GLEIF:ABSORPTION a owl:NamedIndividual,
+        fibo-cae-ce-act:MergerAcquisition ;
+    rdfs:label "ABSORPTION"@en ;
+    skos:definition "GLEIF classifier for corporate actions that is a kind of merger where there is a combination of two or more companies into an existing company"@en ;
+    skos:note "In the case of absorption, only one company survives and all others lose their identity."@en ;
+    cmns-dsg:hasTag "ABSORPTION" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:ACQUISITION_BRANCH a owl:NamedIndividual,
+        fibo-cae-ce-act:MergerAcquisition ;
+    rdfs:label "ACQUISITION_BRANCH"@en ;
+    skos:definition "GLEIF classifier for corporate actions where the acquiring legal entity purchases an international branch entity"@en ;
+    cmns-dsg:hasTag "ACQUISITION_BRANCH" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:BANKRUPTCY a owl:NamedIndividual,
+        fibo-cae-ce-act:BusinessStrategyClassifier,
+        fibo-fbc-dae-cre:Bankruptcy ;
+    rdfs:label "BANKRUPTCY"@en ;
+    skos:definition "GLEIF classifier for corporate actions in which the status of a legal entity is that it is unable to pay creditors"@en ;
+    skos:note "Bankruptcy usually involves a formal court ruling. Securities may become valueless (event completed)."@en ;
+    cmns-dsg:hasTag "BANKRUPTCY" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:BREAKUP a owl:NamedIndividual,
+        fibo-cae-ce-act:Divestiture ;
+    rdfs:label "BREAKUP"@en ;
+    skos:definition "GLEIF classifier for corporate actions in which a single company splits into two or more independent, separately-run companies"@en ;
+    skos:note "Regulators also can mandate break-ups of companies for anti-trust reasons."@en ;
+    cmns-dsg:hasTag "BREAKUP" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:CHANGE_HQ_ADDRESS a owl:NamedIndividual,
+        fibo-cae-ce-act:OrganizationAddressChange ;
+    rdfs:label "CHANGE_HQ_ADDRESS"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a notification of a change in the headquarters address of the legal entity"@en ;
+    cmns-dsg:hasTag "CHANGE_HQ_ADDRESS" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:CHANGE_LEGAL_ADDRESS a owl:NamedIndividual,
+        fibo-cae-ce-act:OrganizationAddressChange ;
+    rdfs:label "CHANGE_LEGAL_ADDRESS"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a notification of a change in the legal address of the legal entity"@en ;
+    cmns-dsg:hasTag "CHANGE_LEGAL_ADDRESS" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:CHANGE_LEGAL_FORM a owl:NamedIndividual,
+        fibo-cae-ce-act:LegalFormChange ;
+    rdfs:label "CHANGE_LEGAL_FORM"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a notification of a change in the legal form of the legal entity"@en ;
+    cmns-dsg:hasTag "CHANGE_LEGAL_FORM" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:CHANGE_LEGAL_NAME a owl:NamedIndividual,
+        fibo-cae-ce-act:OrganizationNameChange ;
+    rdfs:label "CHANGE_LEGAL_NAME"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a notification of a change in the legal name of the legal entity"@en ;
+    cmns-dsg:hasTag "CHANGE_LEGAL_NAME" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:CHANGE_OTHER_NAMES a owl:NamedIndividual,
+        fibo-cae-ce-act:OrganizationNameChange ;
+    rdfs:label "CHANGE_OTHER_NAMES"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a notification of a change in the trade- or doing business name of the legal entity"@en ;
+    cmns-dsg:hasTag "CHANGE_OTHER_NAMES" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:ComplexLegalFormGroup a owl:NamedIndividual,
+        fibo-cae-ce-GLEIF:ActionGroup ;
+    rdfs:label "complex legal form group"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a more complex legal entity event including change of the legal entity status triggered by change of the legal form"@en ;
+    cmns-dsg:hasTag "COMPLEX_CHANGE_LEGAL_FORM" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:DEMERGER a owl:NamedIndividual,
+        fibo-cae-ce-act:Divestiture ;
+    rdfs:label "DEMERGER"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a distribution of securities issued by another legal entity"@en ;
+    skos:note "The distributed securities may either be of a newly created or of an existing legal entity. For example, spin-off, demerger, unbundling, divestment."@en ;
+    cmns-dsg:hasTag "DEMERGER" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:DISSOLUTION a owl:NamedIndividual,
+        fibo-cae-ce-act:BusinessStrategyClassifier,
+        fibo-fbc-dae-cre:EntitySpecificCreditEvent ;
+    rdfs:label "DISSOLUTION"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving (i) A voluntary termination of operations, (ii) a general assignment for the benefit of the legal entity's creditors or (iii) any other liquidation, dissolution or winding up of the legal entity (excluding a Liquidity Event), whether voluntary or involuntary (event completed)"@en ;
+    cmns-dsg:hasTag "DISSOLUTION" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:INSOLVENCY a owl:NamedIndividual,
+        fibo-cae-ce-act:BusinessStrategyClassifier,
+        fibo-fbc-dae-cre:EntitySpecificCreditEvent ;
+    rdfs:label "INSOLVENCY"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving the entry of a decree or order by a court or agency or supervisory authority having jurisdiction in the premises the appointment of a trustee-in-bankruptcy or similar official for such party in any insolvency, readjustment of debt, marshalling of assets and liabilities, or similar proceedings, or for the winding up or liquidation of their respective affairs (event completed)"@en ;
+    cmns-dsg:hasTag "INSOLVENCY" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:LIQUIDATION a owl:NamedIndividual,
+        fibo-cae-ce-act:BusinessStrategyClassifier,
+        fibo-cae-ce-act:Liquidation,
+        fibo-fbc-dae-cre:EntitySpecificCreditEvent ;
+    rdfs:label "LIQUIDATION"@en ;
+    skos:definition "GLEIF classifier for corporate actions consisting of distribution of cash, assets, or both"@en ;
+    skos:note "Debt may be paid in order of priority based on preferred claims to assets specified by the security (event completed)."@en ;
+    cmns-dsg:hasTag "LIQUIDATION" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:LegalFormNameGroup a owl:NamedIndividual,
+        fibo-cae-ce-GLEIF:ActionGroup ;
+    rdfs:label "legal form and name group"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a change in the legal form, name, or other information such as an address change for an organization"@en ;
+    cmns-dsg:hasTag "CHANGE_LEGAL_FORM_AND_NAME" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:MERGERS_AND_ACQUISITIONS a owl:NamedIndividual,
+        fibo-cae-ce-act:MergerAcquisition ;
+    rdfs:label "MERGERS_AND_ACQUISITIONS"@en ;
+    skos:definition "GLEIF classifier for corporate actions in which a single company splits into two or more independent, separately-run companies"@en ;
+    skos:note "Regulators also can mandate break-ups of companies for anti-trust reasons."@en ;
+    cmns-dsg:hasTag "MERGERS_AND_ACQUISITIONS" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:ReverseTakeoverGroup a owl:NamedIndividual,
+        fibo-cae-ce-GLEIF:ActionGroup ;
+    rdfs:label "reverse takeover group"@en ;
+    skos:definition "GLEIF classifier for corporate actions that are part of a reverse takeover event"@en ;
+    cmns-dsg:hasTag "REVERSE_TAKEOVER" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:SPINOFF a owl:NamedIndividual,
+        fibo-cae-ce-act:SpinOff ;
+    rdfs:label "SPINOFF"@en ;
+    skos:definition "GLEIF classifier for corporate actions where the shareholders of the original entity are compensated for the value loss of the original entity via shares of the new entity or via dividend"@en ;
+    cmns-dsg:hasTag "SPINOFF" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:StandaloneGroup a owl:NamedIndividual,
+        fibo-cae-ce-GLEIF:ActionGroup ;
+    rdfs:label "standalone group"@en ;
+    skos:definition "GLEIF classifier for corporate actions that are single, standalone events rather than a combination of multiple events"@en ;
+    cmns-dsg:hasTag "STANDALONE" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:TRANSFORMATION_BRANCH_TO_SUBSIDIARY a owl:NamedIndividual,
+        fibo-cae-ce-act:MergerAcquisition ;
+    rdfs:label "TRANSFORMATION_BRANCH_TO_SUBSIDIARY"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving the transfer of all of the assets and liabilities of an International Branch to the new subsidiary entity in exchange for the transfer of securities representing the capital of the subsidiary entity receiving the transfer"@en ;
+    cmns-dsg:hasTag "TRANSFORMATION_BRANCH_TO_SUBSIDIARY" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:TRANSFORMATION_SUBSIDIARY_TO_BRANCH a owl:NamedIndividual,
+        fibo-cae-ce-act:MergerAcquisition ;
+    rdfs:label "TRANSFORMATION_SUBSIDIARY_TO_BRANCH"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving the transfer of all of the assets and liabilities of a subsidiary to an International Branch entity in exchange for the transfer of securities representing the capital of the International Branch entity receiving the transfer"@en ;
+    cmns-dsg:hasTag "TRANSFORMATION_SUBSIDIARY_TO_BRANCH" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:TRANSFORMATION_UMBRELLA_TO_STANDALONE a owl:NamedIndividual,
+        fibo-cae-ce-act:LegalFormChange ;
+    rdfs:label "TRANSFORMATION_UMBRELLA_TO_STANDALONE"@en ;
+    skos:definition "GLEIF classifier for corporate actions involving a notification of a change in the legal form from a Fund legal entity structure with one or more than one sub-funds/compartments to a Fund legal entity structure without sub-funds/compartments"@en ;
+    cmns-dsg:hasTag "TRANSFORMATION_UMBRELLA_TO_STANDALONE" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF:VOLUNTARY_ARRANGEMENT a owl:NamedIndividual,
+        fibo-cae-ce-act:BusinessStrategyClassifier,
+        fibo-fbc-dae-cre:EntitySpecificCreditEvent ;
+    rdfs:label "VOLUNTARY_ARRANGEMENT"@en ;
+    skos:definition "GLEIF classifier for corporate actions consisting of a procedure that allows a legal entity to settle debts by paying only a proportion of the amount that it owes to creditors or to come to some other arrangement with its creditors over the payment of its debts (event completed)"@en ;
+    cmns-dsg:hasTag "VOLUNTARY_ARRANGEMENT" ;
+    cmns-dsg:isDefinedIn fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme .
+
+fibo-cae-ce-GLEIF: a owl:Ontology ;
+    rdfs:label "GLEIF Corporate Action Individuals Ontology"@en,
+        "GLEIF 企业行动个体本体（GLEIF Corporate Action Individuals Ontology）"@zh ;
+    dcterms:abstract "This ontology includes the codes for corporate action events as specified in GLEIF LEI Common Data Format (CDF) schema, as of 4 March 2021." ;
+    dcterms:license """Copyright (c) 2022-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2022-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录全球法人识别编码基金会（GLEIF）企业行动代码体系中的参考个体。"@zh ;
+    owl:imports fibo-cae-ce-act:,
+        fibo-fbc-dae-cre:,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-dsg: ;
+    owl:versionIRI fibo-cae-ce-GLEIF: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2022-2025 Object Management Group, Inc.",
+        "Copyright (c) 2022-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-cae-ce-GLEIF:ActionGroup a owl:Class ;
+    rdfs:label "action group"@en,
+        "行动组（action group）"@zh ;
+    rdfs:comment "按 GLEIF 特定分组对公司行动进行区分的分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-cae-ce-act:Action ],
+        cmns-cls:Classifier ;
+    skos:definition "classifier that differentiates corporate actions based on a GLEIF specific grouping"@en .
+
+fibo-cae-ce-GLEIF:GLEIF-CorporateActionClassificationScheme a owl:NamedIndividual,
+        fibo-cae-ce-act:ActionClassificationScheme ;
+    rdfs:label "GLEIF corporate action classification scheme" ;
+    rdfs:seeAlso <https://www.gleif.org/content/2-about-lei/6-common-data-file-format/1-upcoming-versions/2021-03-04_lei-cdf-v3-1.xsd> ;
+    skos:definition "scheme for classifying corporate actions according to the GLEIF LEI Common Data Format (CDF) schema" .
+

@@ -1,0 +1,800 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-iss-ambs: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/AgencyMBSIssuance/> .
+@prefix fibo-bp-iss-dbti: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/> .
+@prefix fibo-bp-iss-doc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/> .
+@prefix fibo-bp-iss-mbs: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MBSIssuance/> .
+@prefix fibo-bp-iss-pmbs: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/PrivateLabelMBSIssuance/> .
+@prefix fibo-bp-iss-prc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-arr-rep: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-txn-sec: <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/SecuritiesTransactions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-loan-reln-mtg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-dbt-cdo: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/CollateralizedDebtObligations/> .
+@prefix fibo-sec-dbt-mbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/> .
+@prefix fibo-sec-dbt-pbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-iss-pmbs:IdentifyUnderwriter a owl:Class ;
+    rdfs:label "identify underwriter"@en,
+        "确定承销商（identify underwriter）"@zh ;
+    rdfs:comment "确定本次发行的承销商。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-dbti:resultsIn ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:PotentialTranchedIssueUnderwriter ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:Investor a owl:Class ;
+    rdfs:label "investor"@en,
+        "投资者（investor）"@zh ;
+    rdfs:comment "通过投资拥有某组织一定份额的参与方。"@zh .
+
+fibo-bp-iss-pmbs:MBSSecuritizationEnd a owl:Class ;
+    rdfs:label "m b s securitization end"@en,
+        "MBS 证券化结束（m b s securitization end）"@zh ;
+    rdfs:comment "MBS 证券化流程的结束节点。"@zh .
+
+fibo-bp-iss-pmbs:NonAgencyPoolCreationProcess a owl:Class ;
+    rdfs:label "non agency pool creation process"@en,
+        "非机构池创建流程（non agency pool creation process）"@zh ;
+    rdfs:comment "私募（非机构）抵押贷款池的创建过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:RetailAssetPoolCreationProcess .
+
+fibo-bp-iss-pmbs:NonAgencyPoolCreationStart a owl:Class ;
+    rdfs:label "non agency pool creation start"@en,
+        "非机构池创建开始（non agency pool creation start）"@zh ;
+    rdfs:comment "非机构抵押贷款池创建流程的起始节点。"@zh .
+
+fibo-bp-iss-pmbs:PoolLifecycleStateSelection a owl:Class ;
+    rdfs:label "PoolLifecycleStateSelection"@en,
+        "池生命周期状态选择（PoolLifecycleStateSelection）"@zh ;
+    rdfs:comment "对抵押贷款池生命周期状态的选择。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStage .
+
+fibo-bp-iss-pmbs:PoolReadyForIssue a owl:Class ;
+    rdfs:label "pool ready for issue"@en,
+        "池可发行（pool ready for issue）"@zh ;
+    rdfs:comment "抵押贷款池已具备发行条件的状态。"@zh ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( fibo-bp-iss-pmbs:FinalizePoolContent fibo-bp-iss-pmbs:IdentifyConformingMortgage ) ] .
+
+fibo-bp-iss-pmbs:PotentialMBSInvestor a owl:Class ;
+    rdfs:label "potential m b s investor"@en,
+        "潜在 MBS 投资者（potential m b s investor）"@zh ;
+    rdfs:comment "可能成为 MBS 发行投资者的参与方。"@zh .
+
+fibo-bp-iss-pmbs:PotentialNonAgencyMBSIssuer a owl:Class ;
+    rdfs:label "potential non agency m b s issuer"@en,
+        "潜在非机构 MBS 发行人（potential non agency m b s issuer）"@zh ;
+    rdfs:comment "将成为分层 MBS 发行发行方的实体，是发行中大多数活动的主要行为体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:AssessPoolSuitabilityForIssuance ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:AssessRatings ],
+        fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcessActor ;
+    skos:definition "The entity which will become the issuing party for the Tranched MBS Issue. This entity is the principal actor in most of the activities involved in the issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:RatingsSuitableForIssue a owl:Class ;
+    rdfs:label "ratings suitable for issue"@en,
+        "评级适合发行（ratings suitable for issue）"@zh ;
+    rdfs:comment "评级结果满足发行要求的状态。"@zh ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( fibo-bp-iss-pmbs:DrawUpOfferingMemorandum fibo-bp-iss-pmbs:DrawUpTrancheTermsheets ) ] .
+
+fibo-bp-iss-pmbs:RegisterSecurity a owl:Class ;
+    rdfs:label "register security"@en,
+        "注册证券（register security）"@zh ;
+    rdfs:comment "交易完成后将证券在注册机构正式注册。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity ;
+    skos:definition "After the deal is closed the security is formally registered with some registraton authority This is the \"official\" bit - there is not a separate \"Issue\" activity which is official ?????"@en .
+
+fibo-bp-iss-pmbs:TranchedMBSSecuritizationProcess a owl:Class ;
+    rdfs:label "tranched m b s securitization process"@en,
+        "分层 MBS 证券化流程（tranched m b s securitization process）"@zh ;
+    rdfs:comment "分层抵押贷款支持证券的证券化过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-mbs:MBSSecuritizationProcess .
+
+fibo-bp-iss-pmbs:denominationIncrement a owl:ObjectProperty ;
+    rdfs:label "denomination increment"@en,
+        "面额增量（denomination increment）"@zh ;
+    rdfs:comment "票据面额的增量。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TrancheNotesParameters ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount .
+
+fibo-bp-iss-pmbs:hasContent a owl:ObjectProperty ;
+    rdfs:label "has content"@en,
+        "具有内容（has content）"@zh ;
+    rdfs:comment "标识某事物所包含的内容。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TranchedMBSProspectusOutline ;
+    rdfs:range fibo-bp-iss-pmbs:DraftTrancheStructure ;
+    rdfs:subPropertyOf cmns-col:hasPart .
+
+fibo-bp-iss-pmbs:hasPrimaryHolder a owl:ObjectProperty ;
+    rdfs:label "has primary holder"@en,
+        "具有主要持有人（has primary holder）"@zh ;
+    rdfs:comment "标识某事物的主要持有人。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    rdfs:range fibo-bp-iss-pmbs:PrimaryInvestor .
+
+fibo-bp-iss-pmbs:hasPrincipalParty a owl:ObjectProperty ;
+    rdfs:label "has principal party"@en,
+        "具有主当事方（has principal party）"@zh ;
+    rdfs:comment "标识合同的主要或主当事方。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TranchedMBSDealTransaction ;
+    rdfs:range fibo-sec-dbt-mbs:NonAgencyMBSIssuer .
+
+fibo-bp-iss-pmbs:identifierIssuedBy a owl:ObjectProperty ;
+    rdfs:label "identifier issued by"@en,
+        "标识符由……签发（identifier issued by）"@zh ;
+    rdfs:comment "标识签发该标识符的机构。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    rdfs:range fibo-bp-iss-prc:PrimaryIdentifierIssuer .
+
+fibo-bp-iss-pmbs:minimumDenomination a owl:ObjectProperty ;
+    rdfs:label "minimum denomination"@en,
+        "最小面额（minimum denomination）"@zh ;
+    rdfs:comment "允许的最小面额。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TrancheNotesParameters ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount .
+
+fibo-bp-iss-pmbs: a owl:Ontology ;
+    rdfs:label "PrivateLabelMBSIssuance"@en,
+        "私人品牌 MBS 发行本体（Private Label MBS Issuance Ontology）"@zh ;
+    dcterms:abstract "Process ontology for the process of issuance (securitization) of mortgage backed securities by commercial institutions rather than by government agencies." ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义私人机构（非政府机构）发行抵押贷款支持证券的流程。"@zh ;
+    owl:imports fibo-bp-iss-ambs:,
+        fibo-bp-iss-dbti:,
+        fibo-bp-iss-doc:,
+        fibo-bp-iss-prc:,
+        fibo-bp-iss-mbs:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-arr-rep:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-rel-rel:,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/REATransactions/>,
+        fibo-fnd-txn-sec:,
+        fibo-fnd-utl-av:,
+        fibo-loan-ln-ln:,
+        fibo-loan-reln-mtg:,
+        fibo-sec-dbt-bnd:,
+        fibo-sec-dbt-cdo:,
+        fibo-sec-dbt-mbs:,
+        fibo-sec-dbt-pbs:,
+        fibo-sec-sec-iss:,
+        cmns-av:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-pts: ;
+    owl:versionIRI fibo-bp-iss-pmbs: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-bp-iss-pmbs:AssessRatings a owl:Class ;
+    rdfs:label "assess ratings"@en,
+        "评估评级（assess ratings）"@zh ;
+    rdfs:comment "对分层证券可获得的评级进行评估。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:BrokerDealer a owl:Class ;
+    rdfs:label "broker dealer"@en,
+        "经纪自营商（broker dealer）"@zh ;
+    rdfs:comment "可能成为本次发行主要投资者的实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:commitsTo ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:GetCommitmentFromInvestors ] ;
+    skos:definition "An entity which may become a primary investor in the issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:DefineNotesParameters a owl:Class ;
+    rdfs:label "define notes parameters"@en,
+        "定义票据参数（define notes parameters）"@zh ;
+    rdfs:comment "定义票据的面额等参数。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:resultsIn.1 ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:DraftTrancheNotesParameters ],
+        fibo-bp-iss-prc:IssuanceProcessActivity ;
+    skos:definition "the denom of the notes"@en .
+
+fibo-bp-iss-pmbs:DefinePoolCharacteristics a owl:Class ;
+    rdfs:label "define pool characteristics"@en,
+        "定义池特征（define pool characteristics）"@zh ;
+    rdfs:comment "确定抵押贷款池的特征。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:isDefiningOf ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:NotYetIssuedNonAgencyMortgagePool ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:DraftTrancheStructure a owl:Class ;
+    rdfs:label "draft tranche structure"@en,
+        "起草分层结构（draft tranche structure）"@zh ;
+    rdfs:comment "起草定义分层发行中各分层及其相互关系的信息集。"@zh ;
+    rdfs:subClassOf cmns-doc:Document ;
+    skos:definition "Draft of set of information defining the tranches in the tranched issue and how these relate to one another. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:DrawUpOfferingMemorandum a owl:Class ;
+    rdfs:label "draw up offering memorandum"@en,
+        "拟定发行备忘录（draw up offering memorandum）"@zh ;
+    rdfs:comment "拟定载明未来发行基本信息、供潜在投资者参考的发行备忘录。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:FinalizeProspectus a owl:Class ;
+    rdfs:label "finalize prospectus"@en,
+        "定稿招募说明书（finalize prospectus）"@zh ;
+    rdfs:comment "最终确定发行的招募说明书。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:resultsIn.2 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TranchedMBSDealProspectus ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:MarketIssueToPrimaryInvestors a owl:Class ;
+    rdfs:label "market issue to primary investors"@en,
+        "向主要投资者营销发行（market issue to primary investors）"@zh ;
+    rdfs:comment "面向主要投资者对本次发行进行营销。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:hasResource.1 ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:TranchedOfferingMemorandum ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:NonAgencyPoolCreationEnd a owl:Class ;
+    rdfs:label "non agency pool creation end"@en,
+        "非机构池创建结束（non agency pool creation end）"@zh ;
+    rdfs:comment "非机构抵押贷款池创建流程的结束节点。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:flow ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:MBSSecuritizationStart ] .
+
+fibo-bp-iss-pmbs:NumberingAgency a owl:Class ;
+    rdfs:label "numbering agency"@en,
+        "编号机构（numbering agency）"@zh ;
+    rdfs:comment "为证券提供主要证券标识符的机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:allocatesIdentifier ;
+            owl:someValuesFrom fibo-bp-iss-ambs:AllocatePrimaryIdentifier ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:allocatesIdentifier ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:AllocatePrimaryIdentifier ],
+        fibo-bp-iss-prc:SecuritiesIssuanceProcessActor ;
+    skos:definition "The agency which will provide the primary securitiy identifier for the security. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:PotentialTranchedIssueUnderwriter a owl:Class ;
+    rdfs:label "potential tranched issue underwriter"@en,
+        "潜在分层发行承销商（potential tranched issue underwriter）"@zh ;
+    rdfs:comment "将成为分层 MBS 发行承销商的实体。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:PotentialUnderwriter ;
+    skos:definition "The entity which will become the underwriter for the tranched MBS issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:RatingsAgency a owl:Class ;
+    rdfs:label "ratings agency"@en,
+        "评级机构（ratings agency）"@zh ;
+    rdfs:comment "为发行提供评级的机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:allocatesRatings ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:AllocateRatings ] .
+
+fibo-bp-iss-pmbs:TranchedMBSDealSettlement a owl:Class ;
+    rdfs:label "tranched m b s deal settlement"@en,
+        "分层 MBS 交易结算（tranched m b s deal settlement）"@zh ;
+    rdfs:comment "分层 MBS 交易的结算。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:decomposesInto ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:TranchedMBSPrimaryDealTransactionSettlementProcess ] .
+
+fibo-bp-iss-pmbs:addsTo a owl:ObjectProperty ;
+    rdfs:label "adds to"@en,
+        "添加到（adds to）"@zh ;
+    rdfs:comment "将某物添加到另一事物。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:PurchaseMortgageIntoPool ;
+    rdfs:range fibo-bp-iss-pmbs:InAssemblyMortgagePool .
+
+fibo-bp-iss-pmbs:allocatesIdentifier a owl:ObjectProperty ;
+    rdfs:label "allocates identifier"@en,
+        "分配标识符（allocates identifier）"@zh ;
+    rdfs:comment "为某事物分配标识符。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:NumberingAgency ;
+    rdfs:range fibo-bp-iss-pmbs:AllocatePrimaryIdentifier .
+
+fibo-bp-iss-pmbs:allocatesRatings a owl:ObjectProperty ;
+    rdfs:label "allocates ratings"@en,
+        "分配评级（allocates ratings）"@zh ;
+    rdfs:comment "为证券分配评级。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:RatingsAgency ;
+    rdfs:range fibo-bp-iss-pmbs:AllocateRatings .
+
+fibo-bp-iss-pmbs:commitmentBasedOn a owl:ObjectProperty ;
+    rdfs:label "commitment based on"@en,
+        "基于……的承诺（commitment based on）"@zh ;
+    rdfs:comment "标识承诺所依据的事物。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:GetCommitmentFromInvestors ;
+    rdfs:range fibo-bp-iss-pmbs:TranchedDraftProspectus .
+
+fibo-bp-iss-pmbs:commitsTo a owl:ObjectProperty ;
+    rdfs:label "commits to"@en,
+        "承诺（commits to）"@zh ;
+    rdfs:comment "对某事物作出承诺。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:BrokerDealer ;
+    rdfs:range fibo-bp-iss-pmbs:GetCommitmentFromInvestors .
+
+fibo-bp-iss-pmbs:decomposesInto a owl:ObjectProperty ;
+    rdfs:label "decomposes into"@en,
+        "分解为（decomposes into）"@zh ;
+    rdfs:comment "将整体分解为若干部分。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TranchedMBSDealSettlement ;
+    rdfs:range fibo-bp-iss-pmbs:TranchedMBSPrimaryDealTransactionSettlementProcess .
+
+fibo-bp-iss-pmbs:finalizes.1 a owl:ObjectProperty ;
+    rdfs:label "finalizes"@en,
+        "定稿（finalizes）"@zh ;
+    rdfs:comment "最终确定某事物。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:FinalizePoolContent ;
+    rdfs:range fibo-bp-iss-pmbs:InIssuanceNonAgencyMortgagePool .
+
+fibo-bp-iss-pmbs:flow a owl:ObjectProperty ;
+    rdfs:label "flow"@en,
+        "流转（flow）"@zh ;
+    rdfs:comment "流程中的流转关系。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:NonAgencyPoolCreationEnd ;
+    rdfs:range fibo-bp-iss-pmbs:MBSSecuritizationStart .
+
+fibo-bp-iss-pmbs:hasContent.1 a owl:ObjectProperty ;
+    rdfs:label "has content"@en,
+        "具有内容（has content）"@zh ;
+    rdfs:comment "标识某事物所包含的内容。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TranchedMBSProspectusOutline ;
+    rdfs:range fibo-bp-iss-pmbs:DraftTrancheTermsheet ;
+    rdfs:subPropertyOf cmns-col:hasPart .
+
+fibo-bp-iss-pmbs:hasCounterparty a owl:ObjectProperty ;
+    rdfs:label "has counterparty"@en,
+        "具有交易对手（has counterparty）"@zh ;
+    rdfs:comment "标识合同的当事方，通常不是合同主当事方。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TranchedMBSDealTransaction ;
+    rdfs:range fibo-bp-iss-pmbs:PrimaryInvestor .
+
+fibo-bp-iss-pmbs:hasResource a owl:ObjectProperty ;
+    rdfs:label "has resource"@en,
+        "具有资源（has resource）"@zh ;
+    rdfs:comment "标识某过程或活动所使用的资源。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:GetCommitmentFromInvestors ;
+    rdfs:range fibo-bp-iss-pmbs:DraftTrancheNotesParameters .
+
+fibo-bp-iss-pmbs:hasResource.1 a owl:ObjectProperty ;
+    rdfs:label "has resource"@en,
+        "具有资源（has resource）"@zh ;
+    rdfs:comment "标识某过程或活动所使用的资源。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:MarketIssueToPrimaryInvestors ;
+    rdfs:range fibo-bp-iss-pmbs:TranchedOfferingMemorandum .
+
+fibo-bp-iss-pmbs:hasResource.2 a owl:ObjectProperty ;
+    rdfs:label "has resource"@en,
+        "具有资源（has resource）"@zh ;
+    rdfs:comment "标识某过程或活动所使用的资源。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:GetCommitmentFromInvestors ;
+    rdfs:range fibo-bp-iss-pmbs:DraftTrancheNotesParameters .
+
+fibo-bp-iss-pmbs:hasTrustee a owl:ObjectProperty ;
+    rdfs:label "has trustee"@en,
+        "具有受托人（has trustee）"@zh ;
+    rdfs:comment "将信托关联到具名受托人。"@zh ;
+    rdfs:domain fibo-sec-dbt-mbs:NonAgencyMortgagePool ;
+    rdfs:range fibo-bp-iss-pmbs:PoolTrustee .
+
+fibo-bp-iss-pmbs:includesDetailsAbout a owl:ObjectProperty ;
+    rdfs:label "includes details about"@en,
+        "包含……的细节（includes details about）"@zh ;
+    rdfs:comment "标识某文件所包含细节所关涉的对象。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TranchedOfferingMemorandum ;
+    rdfs:range fibo-bp-iss-pmbs:TrancheStructureAndTermsheet .
+
+fibo-bp-iss-pmbs:includesDetailsAbout.1 a owl:ObjectProperty ;
+    rdfs:label "includes details about"@en,
+        "包含……的细节（includes details about）"@zh ;
+    rdfs:comment "标识某文件所包含细节所关涉的对象。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TranchedOfferingMemorandum ;
+    rdfs:range fibo-bp-iss-pmbs:IndividualTrancheDefinitions .
+
+fibo-bp-iss-pmbs:isAssessmentOf a owl:ObjectProperty ;
+    rdfs:label "is assessment of"@en,
+        "是……的评估（is assessment of）"@zh ;
+    rdfs:comment "标识评估所针对的对象。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:AssessPoolSuitabilityForIssuance ;
+    rdfs:range fibo-bp-iss-pmbs:InAssemblyMortgagePool .
+
+fibo-bp-iss-pmbs:isDefiningOf a owl:ObjectProperty ;
+    rdfs:label "isDefiningOf"@en,
+        "是……的定义（isDefiningOf）"@zh ;
+    rdfs:comment "标识该定义所针对的对象。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:DefinePoolCharacteristics ;
+    rdfs:range fibo-bp-iss-pmbs:NotYetIssuedNonAgencyMortgagePool .
+
+fibo-bp-iss-pmbs:isIssueOf a owl:ObjectProperty ;
+    rdfs:label "is issue of"@en,
+        "是……的发行（is issue of）"@zh ;
+    rdfs:comment "标识发行所对应的证券或池。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:MakeSecuritiesAvailableInMarket ;
+    rdfs:range fibo-sec-dbt-cdo:TranchedMBSDeal .
+
+fibo-bp-iss-pmbs:isPurchaseOf a owl:ObjectProperty ;
+    rdfs:label "is purchase of"@en,
+        "是……的购买（is purchase of）"@zh ;
+    rdfs:comment "标识购买行为所针对的资产。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:PurchaseMortgageIntoPool ;
+    rdfs:range fibo-loan-reln-mtg:LoanSecuredByRealEstate .
+
+fibo-bp-iss-pmbs:maximumAmount a owl:ObjectProperty ;
+    rdfs:label "maximum amount"@en,
+        "最大金额（maximum amount）"@zh ;
+    rdfs:comment "允许的最大金额。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TrancheNotesParameters ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "This has not been seen - incliuded as it's implicit but we might want to get rid of this. ACTION: Look at example prospectus document, mark up against this model; if this item is not seen, we could remove it"@en .
+
+fibo-bp-iss-pmbs:mayBecome a owl:ObjectProperty ;
+    rdfs:label "may become"@en,
+        "可能成为（may become）"@zh ;
+    rdfs:comment "标识某事物在流程中可能转变成的角色或状态。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:PoolTrustee ;
+    rdfs:range fibo-sec-sec-iss:SecurityUnderwriter .
+
+fibo-bp-iss-pmbs:mayIncludeDetailsAbout a owl:ObjectProperty ;
+    rdfs:label "may include details about"@en,
+        "可能包含……的细节（may include details about）"@zh ;
+    rdfs:comment "标识某文件可能包含细节所关涉的对象。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:TranchedOfferingMemorandum ;
+    rdfs:range fibo-bp-iss-pmbs:DraftTrancheNotesParameters .
+
+fibo-bp-iss-pmbs:refersTo a owl:ObjectProperty ;
+    rdfs:label "refers to"@en,
+        "引用（refers to）"@zh ;
+    rdfs:comment "将……作为信息或解释来源加以引用。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:IdentifyConformingMortgage ;
+    rdfs:range fibo-loan-reln-mtg:LoanSecuredByRealEstate .
+
+fibo-bp-iss-pmbs:requires a owl:ObjectProperty ;
+    rdfs:label "requires"@en,
+        "要求（requires）"@zh ;
+    rdfs:comment "标识某活动或状态所要求的前提。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:DrawUpTrancheTermsheets ;
+    rdfs:range fibo-sec-dbt-mbs:NonAgencyMortgagePool .
+
+fibo-bp-iss-pmbs:requires.1 a owl:ObjectProperty ;
+    rdfs:label "requires"@en,
+        "要求（requires）"@zh ;
+    rdfs:comment "标识某活动或状态所要求的前提。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:MakeSecuritiesAvailableInMarket ;
+    rdfs:range fibo-sec-dbt-cdo:TranchedMBSDealProspectus .
+
+fibo-bp-iss-pmbs:resultsIn a owl:ObjectProperty ;
+    rdfs:label "results in"@en,
+        "导致（results in）"@zh ;
+    rdfs:comment "产生某个结果。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:CloseDeal ;
+    rdfs:range fibo-bp-iss-pmbs:TranchedMBSDealTransaction .
+
+fibo-bp-iss-pmbs:resultsIn.1 a owl:ObjectProperty ;
+    rdfs:label "results in"@en,
+        "导致（results in）"@zh ;
+    rdfs:comment "产生某个结果。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:DefineNotesParameters ;
+    rdfs:range fibo-bp-iss-pmbs:DraftTrancheNotesParameters .
+
+fibo-bp-iss-pmbs:resultsIn.2 a owl:ObjectProperty ;
+    rdfs:label "results in"@en,
+        "导致（results in）"@zh ;
+    rdfs:comment "产生某个结果。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:FinalizeProspectus ;
+    rdfs:range fibo-sec-dbt-cdo:TranchedMBSDealProspectus .
+
+fibo-bp-iss-pmbs:resultsInPublicationOf a owl:ObjectProperty ;
+    rdfs:label "results in publication of"@en,
+        "导致发布（results in publication of）"@zh ;
+    rdfs:comment "其结果是某文件的发布。"@zh ;
+    rdfs:domain fibo-bp-iss-pmbs:CloseDeal ;
+    rdfs:range fibo-bp-iss-pmbs:RemittanceReport .
+
+fibo-bp-iss-pmbs:AllocatePrimaryIdentifier a owl:Class ;
+    rdfs:label "allocate primary identifier"@en,
+        "分配主标识符（allocate primary identifier）"@zh ;
+    rdfs:comment "为证券分配主要标识符。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:AllocateRatings a owl:Class ;
+    rdfs:label "allocate ratings"@en,
+        "分配评级（allocate ratings）"@zh ;
+    rdfs:comment "为各分层证券确定评级。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:AssessPoolSuitabilityForIssuance a owl:Class ;
+    rdfs:label "assess pool suitability for issuance"@en,
+        "评估池的发行适用性（assess pool suitability for issuance）"@zh ;
+    rdfs:comment "评估抵押贷款池是否适合用于发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:isAssessmentOf ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:InAssemblyMortgagePool ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:CloseDeal a owl:Class ;
+    rdfs:label "close deal"@en,
+        "完成交易（close deal）"@zh ;
+    rdfs:comment "完成本次发行交易。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:resultsInPublicationOf ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:RemittanceReport ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:resultsIn ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:TranchedMBSDealTransaction ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:DraftTrancheTermsheet a owl:Class ;
+    rdfs:label "draft tranche termsheet"@en,
+        "起草分层条款清单（draft tranche termsheet）"@zh ;
+    rdfs:comment "起草定义分层发行中某一分层的信息集，将成为该分层的条款清单。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:TermSheet ;
+    skos:definition "Draft of set of information defining one tranche of a tranched issue. This will become the termsheet of an individual tranche within that issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:DrawUpTrancheTermsheets a owl:Class ;
+    rdfs:label "draw up tranche termsheets"@en,
+        "拟定各分层条款清单（draw up tranche termsheets）"@zh ;
+    rdfs:comment "拟定分层发行中各分层的条款清单。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:requires ;
+            owl:someValuesFrom fibo-sec-dbt-mbs:NonAgencyMortgagePool ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:FinalizePoolContent a owl:Class ;
+    rdfs:label "finalize pool content"@en,
+        "定稿池内容（finalize pool content）"@zh ;
+    rdfs:comment "最终确定抵押贷款池的构成内容。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:finalizes.1 ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:InIssuanceNonAgencyMortgagePool ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:IdentifyConformingMortgage a owl:Class ;
+    rdfs:label "identify conforming mortgage"@en,
+        "识别合格抵押贷款（identify conforming mortgage）"@zh ;
+    rdfs:comment "识别符合该发行人总体要求的抵押贷款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:refersTo ;
+            owl:someValuesFrom fibo-loan-reln-mtg:LoanSecuredByRealEstate ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:InIssuanceNonAgencyMortgagePool a owl:Class ;
+    rdfs:label "in issuance non agency mortgage pool"@en,
+        "发行中非机构抵押贷款池（in issuance non agency mortgage pool）"@zh ;
+    rdfs:comment "正在发行过程中的非机构抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:InIssuance ],
+        fibo-sec-dbt-mbs:NonAgencyMortgagePool .
+
+fibo-bp-iss-pmbs:IndividualTrancheDefinitions a owl:Class ;
+    rdfs:label "individual tranche definitions"@en,
+        "各分层定义（individual tranche definitions）"@zh ;
+    rdfs:comment "标识分层发行中单个分层之条款的信息类别（实际为一份条款清单中针对各分层的条款信息集）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:CouponPaymentTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:BondAmortizationPaymentTerms ],
+        fibo-bp-iss-pmbs:TranchedMBSIssueProspectusPart,
+        fibo-fnd-agr-ctr:TermSheet ;
+    skos:definition "In reality there is one termsheet that has sets of information for the terms for each Tranche. This class of information identifies the terms of one tranche, but it does not exist as a separate document in its own right. Further Notes ? We may need to firm up the relationship between the individual tranche termsheet and the information about the relationships among these (some of which are quite complex) and the terms that are common to more than one tranche. In practice these may be separate sections of one document. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:MBSSecuritizationStart a owl:Class ;
+    rdfs:label "m b s securitization start"@en,
+        "MBS 证券化开始（m b s securitization start）"@zh ;
+    rdfs:comment "MBS 证券化流程的起始节点。"@zh .
+
+fibo-bp-iss-pmbs:MakeSecuritiesAvailableInMarket a owl:Class ;
+    rdfs:label "make securities available in market"@en,
+        "使证券进入市场（make securities available in market）"@zh ;
+    rdfs:comment "使所发行证券可在市场上获得（结构化融资市场较小，主要通过定向营销）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:requires.1 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TranchedMBSDealProspectus ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:isIssueOf ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TranchedMBSDeal ],
+        fibo-bp-iss-prc:IssuanceProcessActivity ;
+    skos:definition "What happens here? e.g. notices / marketing (phone calls) Structured Finance: There's not really notices in the newspaper, it's a very small market and it's all based on relationships so there's no public notice. So you would get an email from the sales person at the bank who has just closed the deal and is now selling these (this bank is the broker/dealer who bought it?) There's not really much of a secondary market - the initial investors would often hold on to these. There is something around Bloomberg - you can go there and see what's available, if someone has a number of notes from a iven tranche, that they are willing to sell. So there's no transpoarency (!!) Sales would be OTC but less transparent e.g. if you look up a normal OTC stock, you would be able to see more of this information, than in these (non Agency) MBS issues and other SF. DOES THIS APPLY IN ALL MBS??."@en .
+
+fibo-bp-iss-pmbs:NotYetIssuedNonAgencyMortgagePool a owl:Class ;
+    rdfs:label "not yet issued non agency mortgage pool"@en,
+        "未发行非机构抵押贷款池（not yet issued non agency mortgage pool）"@zh ;
+    rdfs:comment "已组建但尚未发行的非机构抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:NotYetIssued ],
+        fibo-sec-dbt-mbs:NonAgencyMortgagePool .
+
+fibo-bp-iss-pmbs:PurchaseMortgageIntoPool a owl:Class ;
+    rdfs:label "purchase mortgage into pool"@en,
+        "购入抵押贷款入池（purchase mortgage into pool）"@zh ;
+    rdfs:comment "购入抵押贷款并将其纳入资产池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:addsTo ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:InAssemblyMortgagePool ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:isPurchaseOf ;
+            owl:someValuesFrom fibo-loan-reln-mtg:LoanSecuredByRealEstate ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:RemittanceReport a owl:Class ;
+    rdfs:label "remittance report"@en,
+        "汇款报告（remittance report）"@zh ;
+    rdfs:comment "包含关于本次交易的特定有限信息集的报告。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-rep:Report ;
+    skos:definition "Report containing a specific and limited set of information about the Deal. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:TrancheStructureAndTermsheet a owl:Class ;
+    rdfs:label "tranche structure and termsheet"@en,
+        "分层结构与条款清单（tranche structure and termsheet）"@zh ;
+    rdfs:comment "定义 MBS 结构的一份清单。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-pmbs:TranchedMBSIssueProspectusPart ;
+    skos:definition "One sheet defining the MBS structure."@en,
+        "The termsheet with the terms for individual tranches is a separate component, known as the Tranche Termsheet or Individual Tranche Definitions. These may in practice be in one sheet or document deliverable but is a set of termsheets defining the terms for the set of tranches. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:TranchedDraftProspectus a owl:Class ;
+    rdfs:label "tranched draft prospectus"@en,
+        "分层招募说明书草案（tranched draft prospectus）"@zh ;
+    rdfs:comment "发行实体在营销发行前确定的分层 MBS 发行招募说明书草案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:precedes ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TranchedMBSDealProspectus ],
+        fibo-bp-iss-doc:PreliminaryProspectus ;
+    skos:definition "The draft prospectus for a tranched Mortgage Backed Securities issue, as determined by the issuing entity prior to marketing the issue. Certain terms in the draft prospectus will be finalized later in the issuance process to become the actual Prospectus. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:TranchedMBSProspectusOutline a owl:Class ;
+    rdfs:label "tranched m b s prospectus outline"@en,
+        "分层 MBS 招募说明书大纲（tranched m b s prospectus outline）"@zh ;
+    rdfs:comment "分层招募说明书的大纲，提供可能分层及其特征的初步表示。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:hasContent.1 ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:DraftTrancheTermsheet ],
+        fibo-bp-iss-doc:PreliminaryProspectus ;
+    skos:definition "An outline of the tranched prospectus, provind an intial representation of the possible tranches and their features. Term origin:MBS PoC Reviews"@en .
+
+fibo-sec-dbt-cdo:TranchedMBSInstrument a owl:Class .
+
+fibo-bp-iss-pmbs:PoolTrustee a owl:Class ;
+    rdfs:label "pool trustee"@en,
+        "池受托人（pool trustee）"@zh ;
+    rdfs:comment "为资产池担任受托人的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:mayBecome ;
+            owl:someValuesFrom fibo-sec-sec-iss:SecurityUnderwriter ],
+        cmns-pts:PartyRole .
+
+fibo-bp-iss-pmbs:PrimaryInvestor a owl:Class ;
+    rdfs:label "primary investor"@en,
+        "主要投资者（primary investor）"@zh ;
+    rdfs:comment "通过购买本次发行的部分分层而成为主要投资者的参与方。"@zh ;
+    skos:definition "A party which becomes the primary investor in the issue, by purchasing some of the tranches of the issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:TrancheNotesParameters a owl:Class ;
+    rdfs:label "tranche notes parameters"@en,
+        "分层票据参数（tranche notes parameters）"@zh ;
+    rdfs:comment "定义某一分层票据细分（面额及该分层中可购金额）的一组信息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-bp-iss-pmbs:maximumAmount ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MBSTrancheNote ],
+        fibo-bp-iss-pmbs:TranchedMBSIssueProspectusPart ;
+    skos:definition "One set of information defining the notes breakdown of one tranche. Covers denominations and amounts that you can byu of the instrument in this tranche. Q: Is this really defined in the prospectus? A: yes The prospectus lists the characteristics including e.g. \"The notes will be sold in denominations of X AND Increuemtns of Y e.g. $250 000 incremented by $1000. Parameters include: Denominations Minimum amounts what else? Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:TranchedMBSIssueProspectusPart a owl:Class ;
+    rdfs:label "tranched m b s issue prospectus part"@en,
+        "分层 MBS 发行招募说明书部分（tranched m b s issue prospectus part）"@zh ;
+    rdfs:comment "分层 MBS 发行招募说明书的一个部分或章节。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-mbs:ProspectusPart ;
+    skos:definition "A part or section of a prospectus for a tranched mortgage backed securities issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:TranchedMBSPrimaryDealTransactionSettlementProcess a owl:Class ;
+    rdfs:label "tranched m b s primary deal transaction settlement process"@en,
+        "分层 MBS 一级交易结算流程（tranched m b s primary deal transaction settlement process）"@zh ;
+    rdfs:comment "一级交易完成结算的过程。"@zh ;
+    rdfs:subClassOf fibo-fnd-txn-sec:SettlementProcess ;
+    skos:definition "The process by which the primary deal transaction is settled. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:InAssemblyMortgagePool a owl:Class ;
+    rdfs:label "in assembly mortgage pool"@en,
+        "组建中抵押贷款池（in assembly mortgage pool）"@zh ;
+    rdfs:comment "尚在组建、内容未定的抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:InAssembly ],
+        fibo-sec-dbt-mbs:NonAgencyMortgagePool .
+
+fibo-bp-iss-pmbs:TranchedMBSDealTransaction a owl:Class ;
+    rdfs:label "tranched m b s deal transaction"@en,
+        "分层 MBS 交易（tranched m b s deal transaction）"@zh ;
+    rdfs:comment "据以向主要投资者发行 MBS 的交易。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:hasCounterparty ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:PrimaryInvestor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-sec:follows ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:TranchedMBSPrimaryDealTransactionSettlementProcess ],
+        fibo-fnd-txn-sec:FinancialPrimaryMarketTransaction ;
+    skos:definition "The deal transaction by which the MBS Issue is issued to primary investors. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-pmbs:GetCommitmentFromInvestors a owl:Class ;
+    rdfs:label "get commitment from investors"@en,
+        "获得投资者承诺（get commitment from investors）"@zh ;
+    rdfs:comment "取得投资者认购本次发行的承诺。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:hasResource ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:DraftTrancheNotesParameters ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:hasResource.2 ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:DraftTrancheNotesParameters ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:commitmentBasedOn ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:TranchedDraftProspectus ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-pmbs:TranchedOfferingMemorandum a owl:Class ;
+    rdfs:label "tranched offering memorandum"@en,
+        "分层发行备忘录（tranched offering memorandum）"@zh ;
+    rdfs:comment "发行备忘录，包含或附上构成本次发行的两个或多个分层的条款及分层结构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:includesDetailsAbout ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:TrancheStructureAndTermsheet ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-bp-iss-pmbs:DraftTrancheNotesParameters ;
+            owl:onProperty fibo-bp-iss-pmbs:mayIncludeDetailsAbout ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:includesDetailsAbout.1 ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:IndividualTrancheDefinitions ],
+        fibo-sec-sec-iss:OfferingDocument ;
+    skos:definition "The Offering Memorandum will include or attach the terms for two or more individual tranches that will make up the issue, and the structure of the tranches, including how they will relate to one another (priorities and so on). Term origin:MBS PoC Reviews"@en,
+        "The offering memorandum for a tranched MBS issue, setting out basic information about a future issue, for the information of prospective investors and their agents."@en .
+
+fibo-sec-dbt-mbs:NonAgencyMortgagePool a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:hasTrustee ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:PoolTrustee ] .
+
+fibo-bp-iss-pmbs:DraftTrancheNotesParameters a owl:Class ;
+    rdfs:label "draft tranche notes parameters"@en,
+        "起草分层票据参数（draft tranche notes parameters）"@zh ;
+    rdfs:comment "起草定义某一分层票据细分（面额及可购金额）的信息集。"@zh ;
+    rdfs:subClassOf cmns-doc:Document ;
+    skos:definition "Draft of set of information defining the notes breakdown of one tranche. covers denominations and amounts that you can byu of the instrument in this tranche. Term origin:MBS PoC Reviews"@en .
+

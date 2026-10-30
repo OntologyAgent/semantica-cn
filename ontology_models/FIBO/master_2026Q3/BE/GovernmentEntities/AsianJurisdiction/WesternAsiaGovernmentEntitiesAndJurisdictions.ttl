@@ -1,0 +1,440 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-wasj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-be-ge-wasj: a owl:Ontology ;
+    rdfs:label "Western Asia Government Entities and Jurisdictions Ontology",
+        "西亚政府实体与法域本体（Western Asia Government Entities and Jurisdictions Ontology）"@zh ;
+    dcterms:abstract "This ontology provides government entities and jurisdictions for countries that are defined as being part of Western Asia in the U.N. M49 codes, primarily those that are considered independent countries in ISO 3166, or are important from a banking perspective." ;
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录西亚地区各国（沙特阿拉伯、阿联酋等）的政体、政府与法域个体。"@zh ;
+    owl:imports fibo-be-ge-ge:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga:,
+        lcc-3166-1: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20210401/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to correct spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20231101/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    skos:scopeNote "The initial version of this ontology reflects the national level only." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+
+fibo-be-ge-wasj:SovereignStateOfGeorgia a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "sovereign state of Georgia" ;
+    skos:definition "sovereign state and polity that is Georgia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Georgia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfGeorgia .
+
+fibo-be-ge-wasj:StateOfArmenia a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "state of Armenia" ;
+    skos:definition "sovereign state and polity that is Armenia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Armenia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheRepublicOfArmenia .
+
+fibo-be-ge-wasj:StateOfAzerbaijan a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "state of Azerbaijan" ;
+    skos:definition "sovereign state and polity that is Azerbaijan" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Azerbaijan ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheRepublicOfAzerbaijan .
+
+fibo-be-ge-wasj:StateOfBahrain a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "state of Bahrain" ;
+    skos:definition "sovereign state and polity that is Bahrain" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Bahrain ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheKingdomOfBahrain .
+
+fibo-be-ge-wasj:StateOfCyprus a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "state of Cyprus" ;
+    skos:definition "sovereign state and polity that is Cyprus" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Cyprus ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheRepublicOfCyprus .
+
+fibo-be-ge-wasj:StateOfIraq a owl:NamedIndividual,
+        fibo-be-ge-ge:FederatedSovereignty ;
+    rdfs:label "state of Iraq" ;
+    skos:definition "federated sovereignty and polity that is Iraq" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Iraq ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheRepublicOfIraq .
+
+fibo-be-ge-wasj:StateOfIsrael a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Israel" ;
+    skos:definition "sovereign state and polity that is Israel" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Israel ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheStateOfIsrael .
+
+fibo-be-ge-wasj:StateOfJordan a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "state of Jordan" ;
+    skos:definition "sovereign state and polity that is Jordan" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Jordan ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheHashemiteKingdomOfJordan .
+
+fibo-be-ge-wasj:StateOfKuwait a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Kuwait" ;
+    skos:definition "sovereign state and polity that is Kuwait" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Kuwait ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheStateOfKuwait .
+
+fibo-be-ge-wasj:StateOfLebanon a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Lebanon" ;
+    skos:definition "sovereign state and polity that is Lebanon" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Lebanon ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheLebaneseRepublic .
+
+fibo-be-ge-wasj:StateOfOman a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Oman" ;
+    skos:definition "sovereign state and polity that is Oman" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Oman ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheSultanateOfOman .
+
+fibo-be-ge-wasj:StateOfPalestine a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Palestine" ;
+    skos:definition "sovereign state and polity that is Palestine" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Palestine ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheStateOfPalestine .
+
+fibo-be-ge-wasj:StateOfQatar a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Qatar" ;
+    skos:definition "sovereign state and polity that is Qatar" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Qatar ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheStateOfQatar .
+
+fibo-be-ge-wasj:StateOfSaudiArabia a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Saudi Arabia" ;
+    skos:definition "sovereign state and polity that is Saudi Arabia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:SaudiArabia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheKingdomOfSaudiArabia .
+
+fibo-be-ge-wasj:StateOfSyria a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Syria" ;
+    skos:definition "sovereign state and polity that is Syria" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:SyrianArabRepublic ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheSyrianArabRepublic .
+
+fibo-be-ge-wasj:StateOfTurkey a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Turkey" ;
+    skos:definition "sovereign state and polity that is Turkey" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Turkey ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheRepublicOfTurkey .
+
+fibo-be-ge-wasj:StateOfUnitedArabEmirates a owl:NamedIndividual,
+        fibo-be-ge-ge:FederatedSovereignty ;
+    rdfs:label "State of United Arab Emirates" ;
+    skos:definition "federated sovereignty and polity that is the United Arab Emirates" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:UnitedArabEmirates ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheUnitedArabEmirates .
+
+fibo-be-ge-wasj:StateOfYemen a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "State of Yemen" ;
+    skos:definition "sovereign state and polity that is Yemen" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Yemen ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-wasj:GovernmentOfTheRepublicOfYemen .
+
+fibo-be-ge-wasj:JurisdictionOfGeorgia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Georgia" ;
+    skos:definition "jurisdiction of the judiciary of Georgia, which is the system of courts that interprets and applies the law in Georgia" ;
+    cmns-rga:hasReach lcc-3166-1:Georgia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfGeorgia .
+
+fibo-be-ge-wasj:JurisdictionOfTheHashemiteKingdomOfJordan a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Hashemite Kingdom of Jordan" ;
+    skos:definition "jurisdiction of the judiciary of Jordan, which is the system of courts that interprets and applies the law in Jordan" ;
+    cmns-rga:hasReach lcc-3166-1:Jordan ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheHashemiteKingdomOfJordan .
+
+fibo-be-ge-wasj:JurisdictionOfTheKingdomOfBahrain a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Kingdom of Bahrain" ;
+    skos:definition "jurisdiction of the judiciary of Bahrain, which is the system of courts that interprets and applies the law in Bahrain" ;
+    cmns-rga:hasReach lcc-3166-1:Bahrain ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheKingdomOfBahrain .
+
+fibo-be-ge-wasj:JurisdictionOfTheKingdomOfSaudiArabia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Kingdom of Saudi Arabia" ;
+    skos:definition "jurisdiction of the judiciary of Saudi Arabia, which is the system of courts that interprets and applies the law in Saudi Arabia" ;
+    cmns-rga:hasReach lcc-3166-1:SaudiArabia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheKingdomOfSaudiArabia .
+
+fibo-be-ge-wasj:JurisdictionOfTheLebaneseRepublic a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Lebanese Republic" ;
+    skos:definition "jurisdiction of the judiciary of Lebanon, which is the system of courts that interprets and applies the law in Lebanon" ;
+    cmns-rga:hasReach lcc-3166-1:Lebanon ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheLebaneseRepublic .
+
+fibo-be-ge-wasj:JurisdictionOfTheRepublicOfArmenia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Republic of Armenia" ;
+    skos:definition "jurisdiction of the judiciary of Armenia, which is the system of courts that interprets and applies the law in Armenia" ;
+    cmns-rga:hasReach lcc-3166-1:Armenia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheRepublicOfArmenia .
+
+fibo-be-ge-wasj:JurisdictionOfTheRepublicOfAzerbaijan a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Republic of Azerbaijan" ;
+    skos:definition "jurisdiction of the judiciary of Azerbaijan, which is the system of courts that interprets and applies the law in Azerbaijan" ;
+    cmns-rga:hasReach lcc-3166-1:Azerbaijan ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheRepublicOfAzerbaijan .
+
+fibo-be-ge-wasj:JurisdictionOfTheRepublicOfCyprus a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Republic of Cyprus" ;
+    skos:definition "jurisdiction of the judiciary of Cyprus, which is the system of courts that interprets and applies the law in Cyprus" ;
+    cmns-rga:hasReach lcc-3166-1:Cyprus ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheRepublicOfCyprus .
+
+fibo-be-ge-wasj:JurisdictionOfTheRepublicOfIraq a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Republic of Iraq" ;
+    skos:definition "jurisdiction of the judiciary of Iraq, which is the system of courts that interprets and applies the law in Iraq" ;
+    cmns-rga:hasReach lcc-3166-1:Iraq ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheRepublicOfIraq .
+
+fibo-be-ge-wasj:JurisdictionOfTheRepublicOfTurkey a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Republic of Turkey" ;
+    skos:definition "jurisdiction of the judiciary of Turkey, which is the system of courts, including the Constitutional Court, Council of State, High Court of Appeals, and lower courts, that interprets and applies the law in Turkey" ;
+    cmns-rga:hasReach lcc-3166-1:Turkey ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheRepublicOfTurkey .
+
+fibo-be-ge-wasj:JurisdictionOfTheRepublicOfYemen a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Republic of Yemen" ;
+    skos:definition "jurisdiction of the judiciary of Yemen, which is the system of courts that interprets and applies the law in Yemen" ;
+    cmns-rga:hasReach lcc-3166-1:Yemen ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheRepublicOfYemen .
+
+fibo-be-ge-wasj:JurisdictionOfTheStateOfIsrael a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the State of Israel" ;
+    skos:definition "jurisdiction of the judiciary of Israel, which is the three-tiered system of courts, including the Supreme Court of Israel, that interprets and applies the law in Israel" ;
+    cmns-rga:hasReach lcc-3166-1:Israel ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheStateOfIsrael .
+
+fibo-be-ge-wasj:JurisdictionOfTheStateOfKuwait a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the State of Kuwait" ;
+    skos:definition "jurisdiction of the judiciary of Kuwait, which is the system of courts that interprets and applies the law in Kuwait" ;
+    cmns-rga:hasReach lcc-3166-1:Kuwait ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheStateOfKuwait .
+
+fibo-be-ge-wasj:JurisdictionOfTheStateOfPalestine a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the State of Palestine" ;
+    skos:definition "jurisdiction of the judiciary of Palestine, which is the system of courts that interprets and applies the law in Palestine" ;
+    cmns-rga:hasReach lcc-3166-1:Palestine ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheStateOfPalestine .
+
+fibo-be-ge-wasj:JurisdictionOfTheStateOfQatar a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the State of Qatar" ;
+    skos:definition "jurisdiction of the judiciary of Qatar, which is the system of courts that interprets and applies the law in Qatar" ;
+    cmns-rga:hasReach lcc-3166-1:Qatar ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheStateOfQatar .
+
+fibo-be-ge-wasj:JurisdictionOfTheSultanateOfOman a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Sultanate of Oman" ;
+    skos:definition "jurisdiction of the judiciary of Oman, which is the system of courts that interprets and applies the law in Oman" ;
+    cmns-rga:hasReach lcc-3166-1:Oman ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheSultanateOfOman .
+
+fibo-be-ge-wasj:JurisdictionOfTheSyrianArabRepublic a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Syrian Arab Republic" ;
+    skos:definition "jurisdiction of the judiciary of Syria, which is the system of courts that interprets and applies the law in Syria" ;
+    cmns-rga:hasReach lcc-3166-1:SyrianArabRepublic ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheSyrianArabRepublic .
+
+fibo-be-ge-wasj:JurisdictionOfTheUnitedArabEmirates a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the United Arab Emirates" ;
+    rdfs:seeAlso <http://ejustice.gov.ae/> ;
+    skos:definition "jurisdiction of the judiciary of United Arab Emirates, which is the system of courts, including the Federal Supreme Court of the United Arab Emirates and other lower courts, that interprets and applies the law in United Arab Emirates" ;
+    cmns-rga:hasReach lcc-3166-1:UnitedArabEmirates ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-wasj:GovernmentOfTheUnitedArabEmirates .
+
+fibo-be-ge-wasj:GovernmentOfGeorgia a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of Georgia"@en,
+        "საქართველო"@ka ;
+    skos:definition "unitary parliamentary constitutional republic in Western Asia, bounded to the west by the Black Sea, to the north and east by Russia, to the south by Turkey and Armenia, and to the southeast by Azerbaijan" ;
+    cmns-rga:governs lcc-3166-1:Georgia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfGeorgia .
+
+fibo-be-ge-wasj:GovernmentOfTheHashemiteKingdomOfJordan a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "المملكة الأردنية الهاشمية"@ar,
+        "Government of the Hashemite Kingdom of Jordan"@en ;
+    skos:definition "unitary parliamentary constitutional monarchy in Western Asia, located on the East Bank of the Jordan River, bordered by Saudi Arabia, Iraq, Syria, Israel and Palestine (West Bank)" ;
+    cmns-rga:governs lcc-3166-1:Jordan ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheHashemiteKingdomOfJordan .
+
+fibo-be-ge-wasj:GovernmentOfTheKingdomOfBahrain a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "مملكة البحرين"@ar,
+        "Government of the Kingdom of Bahrain"@en ;
+    skos:definition "unitary constitutional monarchy in Western Asia, comprising a small archipelago made up of 70 natural islands and an additional 33 artificial islands, centered around Bahrain Island, between the Qatari peninsula and the north eastern coast of Saudi Arabia" ;
+    cmns-rga:governs lcc-3166-1:Bahrain ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheKingdomOfBahrain .
+
+fibo-be-ge-wasj:GovernmentOfTheKingdomOfSaudiArabia a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "ٱلْمَمْلَكَة ٱلْعَرَبِيَّة ٱلسَّعُوْدِيَّة"@ar,
+        "Government of the Kingdom of Saudi Arabia"@en ;
+    skos:definition "unitary Islamic absolute monarchy in Western Asia, located on the Arabian Peninsula and bordered by Jordan and Iraq to the north, Kuwait to the northeast, Qatar, Bahrain, and the United Arab Emirates to the east, Oman to the southeast and Yemen to the south" ;
+    cmns-rga:governs lcc-3166-1:SaudiArabia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheKingdomOfSaudiArabia .
+
+fibo-be-ge-wasj:GovernmentOfTheLebaneseRepublic a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "ٱلْجُمْهُورِيَّةُ ٱللُّبْنَانِيَّةُ"@ar,
+        "Government of the Lebanese Republic"@en ;
+    skos:definition "unitary parliamentary confessionalist constitutional republic in Western Asia, bordered by Syria to the north and east and Israel to the south" ;
+    cmns-rga:governs lcc-3166-1:Lebanon ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheLebaneseRepublic .
+
+fibo-be-ge-wasj:GovernmentOfTheRepublicOfArmenia a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Armenia"@en,
+        "Հայաստանի Հանրապետություն"@hy ;
+    skos:definition "unitary parliamentary democratic republic in Western Asia, bordered by Turkey to the west, Georgia to the north, the Lachin corridor under a Russian peacekeeping force, and Azerbaijan to the east, and Iran and the Azerbaijani exclave of Nakhchivan to the south" ;
+    cmns-rga:governs lcc-3166-1:Armenia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheRepublicOfArmenia .
+
+fibo-be-ge-wasj:GovernmentOfTheRepublicOfAzerbaijan a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Azərbaycan Respublikası"@az,
+        "Government of the Republic of Azerbaijan"@en ;
+    skos:definition "unitary semi-presidential republic in Western Asia, bounded by the Caspian Sea to the east, the Russian republic of Dagestan to the north, Georgia to the northwest, Armenia and Turkey to the west, and Iran to the south" ;
+    cmns-rga:governs lcc-3166-1:Azerbaijan ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheRepublicOfAzerbaijan .
+
+fibo-be-ge-wasj:GovernmentOfTheRepublicOfCyprus a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Κυπριακή Δημοκρατία"@el,
+        "Government of the Republic of Cyprus"@en,
+        "Kıbrıs Cumhuriyeti"@tr ;
+    skos:definition "unitary presidential constitutional republic in Western Asia, an island nation in the eastern Mediterranean Sea located south of Turkey, west of Syria, northwest of Lebanon, Israel and Palestine, north of Egypt, and southeast of Greece" ;
+    cmns-rga:governs lcc-3166-1:Cyprus ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheRepublicOfCyprus .
+
+fibo-be-ge-wasj:GovernmentOfTheRepublicOfIraq a owl:NamedIndividual,
+        fibo-be-ge-ge:FederalGovernment ;
+    rdfs:label "جمهورية العراق"@ar,
+        "Government of the Republic of Iraq"@en,
+        "کۆماری عێراق"@ku ;
+    skos:definition "federal parliamentary constitutional republic in Western Asia, bordered by Turkey to the north, Iran to the east, Kuwait to the southeast, Saudi Arabia to the south, Jordan to the southwest and Syria to the west" ;
+    cmns-rga:governs lcc-3166-1:Iraq ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheRepublicOfIraq .
+
+fibo-be-ge-wasj:GovernmentOfTheRepublicOfTurkey a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Turkey"@en,
+        "Türkiye Cumhuriyeti"@tr ;
+    skos:definition "unitary presidential constitutional republic in Western Asia, bordered by Greece and Bulgaria to the northwest, the Black Sea to the north, Georgia to the northeast, Armenia, Azerbaijan, and Iran to the east, Iraq to the southeast, Syria and the Mediterranean Sea to the south, and the Aegean Sea to the west" ;
+    cmns-rga:governs lcc-3166-1:Turkey ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheRepublicOfTurkey .
+
+fibo-be-ge-wasj:GovernmentOfTheRepublicOfYemen a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "ٱلْجُمْهُورِيَّةُ ٱلْيَمَنِيَّةُ"@ar,
+        "Government of the Republic of Yemen"@en ;
+    skos:definition "unitary presidential constitutional republic (de jure) and unitary provisional government (de facto) in Western Asia located at the southern end of the Arabian Peninsula" ;
+    cmns-rga:governs lcc-3166-1:Yemen ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheRepublicOfYemen .
+
+fibo-be-ge-wasj:GovernmentOfTheStateOfIsrael a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "إسرائيل"@ar,
+        "Government of the State of Israel"@en,
+        "יִשְׂרָאֵל"@he ;
+    skos:definition "unitary parliamentary constitutional republic in Western Asia, bordering Lebanon to the north, Syria to the northeast, Jordan on the east, the Palestinian territories of the West Bank and the Gaza Strip to the east and west, respectively, and Egypt to the southwest" ;
+    cmns-rga:governs lcc-3166-1:Israel ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheStateOfIsrael .
+
+fibo-be-ge-wasj:GovernmentOfTheStateOfKuwait a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "دولة الكويت"@ar,
+        "Government of the State of Kuwait"@en ;
+    skos:definition "unitary constitutional monarchy in Western Asia, located at the tip of the Persian Gulf, bordering Iraq to the north and Saudi Arabia to the south" ;
+    cmns-rga:governs lcc-3166-1:Kuwait ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheStateOfKuwait .
+
+fibo-be-ge-wasj:GovernmentOfTheStateOfPalestine a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "دولة فلسطين"@ar,
+        "Government of the State of Palestine"@en ;
+    skos:definition "unitary semi-presidential republic that is a de jure sovereign state in Western Asia claiming the West Bank (bordering Israel and Jordan) and Gaza Strip (bordering Israel and Egypt)" ;
+    cmns-rga:governs lcc-3166-1:Palestine ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheStateOfPalestine .
+
+fibo-be-ge-wasj:GovernmentOfTheStateOfQatar a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "دولة قطر"@ar,
+        "Government of the State of Qatar"@en ;
+    skos:definition "unitary semi-constitutional monarchy in Western Asia, occupying the small Qatar Peninsula on the northeastern coast of the Arabian Peninsula and bordered by Saudi Arabia to the south" ;
+    cmns-rga:governs lcc-3166-1:Qatar ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheStateOfQatar .
+
+fibo-be-ge-wasj:GovernmentOfTheSultanateOfOman a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "سلطنة عُمان"@ar,
+        "Government of the Sultanate of Oman"@en ;
+    skos:definition "unitary absolute monarchy located on the southeastern coast of the Arabian Peninsula in Western Asia, bordered by the United Arab Emirates to the northwest, Saudi Arabia to the west, and Yemen to the southwest, and sharing marine borders with Iran and Pakistan" ;
+    cmns-rga:governs lcc-3166-1:Oman ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheSultanateOfOman .
+
+fibo-be-ge-wasj:GovernmentOfTheSyrianArabRepublic a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "ٱلْجُمْهُورِيَّةُ ٱلْعَرَبِيَّةُ ٱلسُّورِيَّةُ"@ar,
+        "Government of the Syrian Arab Republic"@en ;
+    skos:definition "unitary dominant-party semi-presidential Ba'athist republic bordering Lebanon to the southwest, the Mediterranean Sea to the west, Turkey to the north, Iraq to the east, Jordan to the south, and Israel to the southwest" ;
+    cmns-rga:governs lcc-3166-1:SyrianArabRepublic ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheSyrianArabRepublic .
+
+fibo-be-ge-wasj:GovernmentOfTheUnitedArabEmirates a owl:NamedIndividual,
+        fibo-be-ge-ge:FederalGovernment ;
+    rdfs:label "الإمارات العربية المتحدة"@ar,
+        "Government of the United Arab Emirates"@en ;
+    skos:definition "federal constitutional elective monarchy located at the eastern end of the Arabian Peninsula, bordering Oman and Saudi Arabia, with maritime borders in the Persian Gulf with Qatar and Iran" ;
+    cmns-rga:governs lcc-3166-1:UnitedArabEmirates ;
+    cmns-rga:hasJurisdiction fibo-be-ge-wasj:JurisdictionOfTheUnitedArabEmirates .
+

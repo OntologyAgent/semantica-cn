@@ -1,0 +1,562 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ei-ei: <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/> .
+@prefix fibo-ind-fx-fx: <https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/> .
+@prefix fibo-ind-ind-ind: <https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/> .
+@prefix fibo-ind-ir-ir: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/InterestRates/> .
+@prefix fibo-sec-sec-bsk: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-drc-bsc: a owl:Ontology ;
+    rdfs:label "Derivatives Basics Ontology",
+        "衍生品基础本体（Derivatives Basics Ontology）"@zh ;
+    dcterms:abstract "This ontology defines basic terminology common to derivative and over-the-counter (OTC) contracts." ;
+    dcterms:license """Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义衍生品合约（derivatives contract）的核心概念：标的资产、行权、到期等，是 DER 域的根基。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fi-ip:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-agr:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-asmt:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ei-ei:,
+        fibo-ind-fx-fx:,
+        fibo-ind-ind-ind:,
+        fibo-ind-ir-ir:,
+        fibo-sec-sec-bsk:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-cxtid:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-org:,
+        cmns-qtu:,
+        cmns-ra:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20260601/DerivativesContracts/DerivativesBasics/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20180801/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to eliminate duplication with concepts in LCC and eliminate a redundant subclass declaration in observable value.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20200401/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to loosen the domain of the hasUnderlier property, which could be either an instrument or leg, refine the definition of Underlier and hasUnderlier based on recent work on swaps, add the definition of a contract for difference (CFD), simplify the contract party hierarchy where the subclasses of contract party do not add semantics, add the concepts of underlying asset valuation and calculation agent, which are needed for various derivatives (moved from forwards) and eliminate the language related to transactions as well as the distinction between an OTC contract and exchange-traded contract / listed security, given how blurry the lines are today, across derivatives.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20201201/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to eliminate hasThirdParty as a superproperty of hasCalculationAgent, which led to unintended reasoning consequences, added concepts and properties specific to settlement and valuation required for futures, forwards, and options, and moved general properties from forwards and swaps up to derivatives basics.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210301/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to replace hasContractSize with hasLotSize.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210501/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to move designated contract market to the markets ontology in FBC and eliminate the notion of NonPhysicalUnderlier, which was determined to add unnecessary overhead.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210801/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to address text formatting issues identified via hygiene testing.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220801/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to add the concept of a credit derivative, modify the notion of an underlying asset valuation to be a kind of value assessment, and modify the concept of valuation terms to be a subclass of derivative terms.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20221001/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, and to move the definition of an underlier and the related property, has underlier, to financial instruments so that these concepts are also available for use in relation to pool-backed securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/DerivativesContracts/DerivativesBasics.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231101/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to extend the definition of has notional amount, covering the variations allowed by the ISO CFI standard (DER-127) and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231201/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380) and to eliminate a redundant restriction on derivative instrument (GitHub-2028).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240901/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to support details of ISO 4914, Financial services - Unique Product Identifier (UPI), (DER-146), and refine definitions related to underliers (DER-112).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250201/DerivativesContracts/DerivativesBasics.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to further simplify and clarify definitions related to rate derivatives (DER-90).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250401/DerivativesContracts/DerivativesBasics.rdf version of this ontology was modified to move calculation agent up to financial instruments (DER-55) and to eliminate certain constructs that are redundant and will never be materialized to reduce the number of nodes required for various contract-related constructs (FND-391).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250501/DerivativesContracts/DerivativesBasics.rdf version of the ontology was modified to move a number of properties that appear to be needed on several kinds of derivatives to this ontology for better reusability (DER-151).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250701/DerivativesContracts/DerivativesBasics.rdf version of the ontology was modified to eliminate deprecated constructs that have been deprecated for a year or more (FND-407)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 Object Management Group, Inc.",
+        "Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-der-drc-bsc:ContractForDifference a owl:Class ;
+    rdfs:label "contract for difference"@en,
+        "差价合约（contract for difference）"@zh ;
+    rdfs:comment "现金结算的衍生品：双方同意在合约到期时交换标的当前价值与合约价值之间的差额。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "cash-settled derivative where the parties agree to exchange on the maturity of the contract the difference between the current value of the underlying asset and the initial value of that asset when the contract is initiated"@en ;
+    skos:example "For example, suppose the initial price of share XYZ is $100 and a CFD for 1000 shares is exchanged. Both the buyer and seller must post some margin. If the price goes to $105, then the buyer gets $5,000 from the seller. If the price goes to $95, the buyer pays the seller $5,000. This contract avoids ownership of the stock and all the associated transactions issues (like stamp taxes). The contract also allows for leverage (typically 10:1) because the margin that must be posted is only a fraction of the value of the underlying asset."@en ;
+    cmns-av:abbreviation "CFD"@en ;
+    cmns-av:adaptedFrom "https://www.nasdaq.com/glossary/c/contract-for-difference"^^xsd:anyURI,
+        "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code" ;
+    cmns-av:explanatoryNote "These contracts can also be on the difference of two assets' prices. They can also be on the difference of a single asset of different maturities (like a bond or futures contracts)."@en ;
+    cmns-av:synonym "spread trading"@en .
+
+fibo-der-drc-bsc:CreditDerivative a owl:Class ;
+    rdfs:label "credit derivative"@en,
+        "信用衍生品（credit derivative）"@zh ;
+    rdfs:comment "一种衍生工具：私人持有、可转让的双边合约，在场外（OTC）由债权/债务关系中的双方交易。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "derivative instrument that is a privately held, negotiable bilateral contract traded over-the-counter (OTC) between two parties in a creditor/debtor relationship, enabling the creditor to effectively transfer some or all of the risk of a debtor defaulting to a third party"@en ;
+    skos:example "Examples include credit default swaps (CDS), collateralized debt obligations (CDO), total return swaps, and credit spread options and forwards."@en ;
+    cmns-av:explanatoryNote "The third party accepts the risk in return for payment, known as the premium."@en .
+
+fibo-der-drc-bsc:DerivativeSettlementTerms a owl:Class ;
+    rdfs:label "derivative settlement terms",
+        "衍生品结算条款（derivative settlement terms）"@zh ;
+    rdfs:comment "规定结算时应交付何物、何时交付、交付给谁以及在何种条件下交付等细节的结算条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-der-drc-bsc:hasAdditionalCosts ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
+            owl:onProperty fibo-der-drc-bsc:hasUnderlyingAssetPrice ],
+        fibo-der-drc-bsc:DerivativeTerms,
+        fibo-fbc-pas-fpas:SettlementTerms ;
+    skos:definition "settlement terms specifying additional details with respect to what is to be delivered when, to whom, under what conditions at the time of settlement" .
+
+fibo-der-drc-bsc:DerivativesClearingOrganization a owl:Class ;
+    rdfs:label "derivatives clearing organization",
+        "衍生品清算组织（derivatives clearing organization）"@zh ;
+    rdfs:comment "使各方能够以清算组织（DCO）的信用替代交易对手信用的清算所。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:ClearingHouse ;
+    skos:definition "clearing house that enables parties to substitute the credit of the DCO for the credit of the parties" ;
+    cmns-av:abbreviation "DCO" ;
+    cmns-av:adaptedFrom "http://www.cftc.gov/IndustryOversight/ClearingOrganizations/index.htm"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Substitution may be done through contract novation, for example. A derivatives clearing organization (DCO) also arranges or provides, on a multilateral basis, for the settlement or netting of obligations, or otherwise provides clearing services or arrangements that mutualize or transfer credit risk among participants." .
+
+fibo-der-drc-bsc:EconomicRateBasedDerivative a owl:Class ;
+    rdfs:label "economic rate-based derivative",
+        "经济指标型衍生品（economic rate-based derivative）"@zh ;
+    rdfs:comment "标的为某一经济指标的比率类衍生品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-ind-ei-ei:EconomicIndicator ] ],
+        fibo-der-drc-bsc:RateBasedDerivative ;
+    skos:definition "rate-based derivative whose underlier is some economic indicator" .
+
+fibo-der-drc-bsc:ForwardRateAgreement a owl:Class ;
+    rdfs:label "forward rate agreement"@en,
+        "远期利率协议（forward rate agreement）"@zh ;
+    rdfs:comment "就未来某一日期的名义本金交换利率承诺的协议。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:InterestRateDerivative ;
+    skos:definition "agreement to exchange an interest rate commitment on a notional amount at a future date"@en ;
+    cmns-av:abbreviation "FRA"@en ;
+    cmns-av:explanatoryNote "The FRA determines the rates to be used along with the termination date and notional value. FRAs are cash-settled with the payment based on the net difference between the interest rate of the contract and the floating rate in the market called the reference rate. The notional amount is not exchanged, but rather a cash amount based on the rate differentials and the notional value of the contract."@en .
+
+fibo-der-drc-bsc:IntroducingBroker a owl:Class ;
+    rdfs:label "introducing broker",
+        "介绍经纪商（introducing broker）"@zh ;
+    rdfs:comment "招揽或接受在交易所交易或受其规则约束的衍生品订单的经纪商。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution,
+        fibo-fbc-pas-fpas:Broker ;
+    skos:definition "broker that solicits or accepts orders for derivatives that are traded on or subject to the rules of an exchange" ;
+    cmns-av:abbreviation "IB" ;
+    cmns-av:adaptedFrom "http://www.cftc.gov/IndustryOversight/Intermediaries/index.htm"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Introducing brokers do not accept money, securities, or property (or extend credit in lieu thereof) to margin, guarantee, or secure any trades or contracts that result or may result." .
+
+fibo-der-drc-bsc:ParametricCashflowTerms a owl:Class ;
+    rdfs:label "parametric cashflow terms",
+        "参数化现金流条款（parametric cashflow terms）"@zh ;
+    rdfs:comment "按照数学公式定义的一组现金流的条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:hasFormula ;
+            owl:someValuesFrom fibo-der-drc-bsc:CashflowFormula ],
+        fibo-der-drc-bsc:CashflowTerms ;
+    skos:definition "terms for a set of cashflows defined according to a mathematical formula" .
+
+fibo-der-drc-bsc:PayingParty a owl:Class ;
+    rdfs:label "paying party",
+        "付款方（paying party）"@zh ;
+    rdfs:comment "负责支付合约所规定交易款项的一方。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractParty,
+        fibo-fnd-pas-psch:Payer,
+        fibo-fnd-pas-pas:Buyer ;
+    skos:definition "party responsible for making payments in a transaction specified in a contract" .
+
+fibo-der-drc-bsc:ReceivingParty a owl:Class ;
+    rdfs:label "receiving counterparty",
+        "收款对手方（receiving counterparty）"@zh ;
+    rdfs:comment "收取合约所规定交易款项的一方。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractParty,
+        fibo-fnd-pas-psch:Payee,
+        fibo-fnd-pas-pas:Seller ;
+    skos:definition "party that receives payments in a transaction specified in a contract" .
+
+fibo-der-drc-bsc:UniqueProductIdentifierRegistryEntry a owl:Class ;
+    rdfs:label "unique product identifier registry entry",
+        "唯一产品标识符登记册条目（unique product identifier registry entry）"@zh ;
+    rdfs:comment "唯一产品标识符（UPI）登记册中的条目。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-der-drc-bsc:UniqueProductIdentifierReferenceDataLibrary ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-der-drc-bsc:UniqueProductIdentifier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-der-drc-bsc:OverTheCounterDerivativeInstrument ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
+        cmns-ra:RegistryEntry ;
+    skos:definition "entry in a unique product identifier registry" ;
+    cmns-av:explanatoryNote "The Reference Data Library (RDL) is a set of reference data elements, together with their values, which is properly organized and maintained by the UPI service provider. The library associates UPI codes with the values of the reference data elements characterizing the product. Each entry in the library (the registry entry) contains a minimum number of elements as defined in the ISO standard, and may be extended by the service provider." .
+
+fibo-der-drc-bsc:hasAccretingNotionalAmount a owl:ObjectProperty ;
+    rdfs:label "has accreting notional amount"@en,
+        "具有递增名义本金（has accreting notional amount）"@zh ;
+    rdfs:comment "表明名义本金在合约存续期内递增。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasNotionalAmount ;
+    skos:definition "indicates that the notional amount increases through the life of the contract" ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019-10, clause 6.8.2" .
+
+fibo-der-drc-bsc:hasAmortizingNotionalAmount a owl:ObjectProperty ;
+    rdfs:label "has amortizing notional amount"@en,
+        "具有递减名义本金（has amortizing notional amount）"@zh ;
+    rdfs:comment "表明名义本金在合约存续期内递减。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasNotionalAmount ;
+    skos:definition "indicates that the notional amount decreases through the life of the contract" ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019-10, clause 6.8.2" .
+
+fibo-der-drc-bsc:hasConstantNotionalAmount a owl:ObjectProperty ;
+    rdfs:label "has constant notional amount"@en,
+        "具有固定名义本金（has constant notional amount）"@zh ;
+    rdfs:comment "表明名义本金在合约存续期内保持不变。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasNotionalAmount ;
+    skos:definition "indicates that the notional amount is constant through the life of the contract" ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019-10, clause 6.8.2" .
+
+fibo-der-drc-bsc:hasCustomNotionalAmount a owl:ObjectProperty ;
+    rdfs:label "has custom notional amount"@en,
+        "具有定制名义本金（has custom notional amount）"@zh ;
+    rdfs:comment "表明名义本金按名义本金阶梯计划表定制。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasNotionalAmount ;
+    skos:definition "indicates that the notional amount is customized per a notional step schedule" ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019-10, clause 6.8.2" .
+
+fibo-der-drc-bsc:hasFirstDeliveryDate a owl:ObjectProperty ;
+    rdfs:label "has first delivery date"@en,
+        "具有首个交割日（has first delivery date）"@zh ;
+    rdfs:comment "规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的首个日期。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate,
+        cmns-dt:hasStartDate ;
+    skos:definition "specifies the initial date in a range of dates by which the underlying asset (or some portion thereof) must be delivered in order for the terms of the contract to be fulfilled"@en .
+
+fibo-der-drc-bsc:hasFirstNoticeDate a owl:ObjectProperty ;
+    rdfs:label "has first notice date"@en,
+        "具有首个通知日（has first notice date）"@zh ;
+    rdfs:comment "规定可以发出交割通知的首个日期。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate,
+        cmns-dt:hasStartDate ;
+    skos:definition "specifies the initial date on which a delivery notice can be issued"@en .
+
+fibo-der-drc-bsc:hasLastDeliveryDate a owl:ObjectProperty ;
+    rdfs:label "has last delivery date"@en,
+        "具有最后交割日（has last delivery date）"@zh ;
+    rdfs:comment "规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的最后日期。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasEndDate,
+        cmns-dt:hasExplicitDate ;
+    skos:definition "specifies the final date in a range of dates by which the underlying asset (or some portion thereof) must be delivered in order for the terms of the contract to be fulfilled"@en .
+
+fibo-der-drc-bsc:hasLastNoticeDate a owl:ObjectProperty ;
+    rdfs:label "has last notice date"@en,
+        "具有最后通知日（has last notice date）"@zh ;
+    rdfs:comment "规定可以发出交割通知的最后日期。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasEndDate,
+        cmns-dt:hasExplicitDate ;
+    skos:definition "specifies the final date on which a delivery notice can be issued"@en .
+
+fibo-der-drc-bsc:hasTickValue a owl:ObjectProperty ;
+    rdfs:label "has tick value"@en,
+        "具有最小变动价位价值（has tick value）"@zh ;
+    rdfs:comment "指明一个最小变动价位（即合约最小价格变动）的现金价值。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:DerivativeInstrument ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "indicates the cash value of one tick, i.e., the minimum price change of the contract"@en .
+
+fibo-der-drc-bsc:CashflowExpression a owl:Class ;
+    rdfs:label "cashflow expression",
+        "现金流表达式（cashflow expression）"@zh ;
+    rdfs:comment "规定作为现金流公式组成部分的现金流计算的表达式。"@zh ;
+    rdfs:subClassOf cmns-qtu:Expression ;
+    skos:definition "expression that specifies a calculation of a cash flow as a component of a cashflow formula" .
+
+fibo-der-drc-bsc:CashflowFormula a owl:Class ;
+    rdfs:label "cashflow formula",
+        "现金流公式（cashflow formula）"@zh ;
+    rdfs:comment "用于确定衍生工具现金流的公式。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasExpression ;
+            owl:someValuesFrom fibo-der-drc-bsc:CashflowExpression ],
+        fibo-fnd-utl-alx:Formula ;
+    skos:definition "formula for determining cashflows for a derivative instrument" .
+
+fibo-der-drc-bsc:CashflowTerms a owl:Class ;
+    rdfs:label "cashflow terms",
+        "现金流条款（cashflow terms）"@zh ;
+    rdfs:comment "列明合约一方承诺支付的现金流结构的条款。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:DerivativeTerms,
+        fibo-fbc-dae-dbt:DebtTerms ;
+    skos:definition "terms setting out a cashflow structure of payments committed to by one party to a contract" ;
+    skos:editorialNote "Swap cashflows are known as Swapstreams and are the terms for payment to and from either party. These are defined in swap transaction messages and represent the terms of the contract implied by that transaction. Options (Nordea reviews): Cashflows are defined as Payouts. This is not the same as a model of a cashflow which is a consequence of applying some legal term for payment of interest or principal, but is a commitment expressed in purely cashflow terms. Review this though. Payout terms include: Values - values can only go up or down; Static values are defined for limits and the like. i.e. Constraints (and direction) - this covers caps and floors - these are read upward or downward Conditionality Formula relations (Input and Output): - these are values - these may have a cap or a floor on them also - these also may have Multiplication - there is also fixed margin - may have addition or substraction between these Linearity in covered in the above Timing / expiry Observaton (not terms): Probability Sensitivity" .
+
+fibo-der-drc-bsc:InterestRateDerivative a owl:Class ;
+    rdfs:label "interest rate derivative",
+        "利率衍生品（interest rate derivative）"@zh ;
+    rdfs:comment "标的为利率的比率类衍生品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-ind-ir-ir:ReferenceInterestRate ] ],
+        fibo-der-drc-bsc:RateBasedDerivative ;
+    skos:definition "rate-based derivative whose underlier is an interest rate" ;
+    skos:example "For example, interest rate derivative strategies are the simultaneous trading of two or more rate contracts in which two counterparties agree to exchange interest rate cash flows on defined dates during an agreed period, based on a specified notional amount, from a fixed rate to a floating rate, floating to fixed, fixed to fixed, or floating to floating." ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth edition, 2019-10" .
+
+fibo-der-drc-bsc:ObservableValue a owl:Class ;
+    rdfs:label "observable value",
+        "可观察值（observable value）"@zh ;
+    rdfs:comment "对某一可辨识且可取得证据的事物之值的规范。"@zh ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Fair_value> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fbc-fi-fi:hasValueExpressedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-bsc:specifiesValueOf ;
+            owl:someValuesFrom owl:Thing ],
+        cmns-doc:Specification ;
+    skos:definition "specification for the value for something discernible and for which evidence can be obtained" ;
+    cmns-av:explanatoryNote "Derivatives, such as certain exotics, can be based on values ascribed to virtually anything, including weather. Typically, however, an observable value refers to something that can be readily observed in the marketplace, such as a quoted rate (e.g., interest rate, exchange rate), index value, commodity price, stock price, economic indicator, or something similar as of some point in time." .
+
+fibo-der-drc-bsc:OverTheCounterInstrument a owl:Class ;
+    rdfs:label "over-the-counter instrument",
+        "场外工具（over-the-counter instrument）"@zh ;
+    rdfs:comment "未在有组织交易所挂牌的金融工具和双边合约。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:FinancialInstrument ;
+    owl:disjointWith fibo-sec-sec-lst:ListedSecurity ;
+    skos:definition "financial instrument and bilateral contract that is not listed on an organized exchange" ;
+    cmns-av:abbreviation "OTC instrument" .
+
+fibo-der-drc-bsc:UnderlyingAssetValuation a owl:Class ;
+    rdfs:label "underlying asset valuation"@en,
+        "标的资产评估（underlying asset valuation）"@zh ;
+    rdfs:comment "对衍生品标的资产进行价值估计的评估活动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Underlier ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fi-fi:CalculationAgent ;
+            owl:onProperty fibo-fbc-fi-fi:hasCalculationAgent ],
+        fibo-fnd-arr-asmt:ValueAssessment ;
+    skos:definition "assessment activity to estimate the value of an underlying asset of a derivative"@en .
+
+fibo-der-drc-bsc:UniqueProductIdentifierReferenceDataLibrary a owl:NamedIndividual,
+        cmns-ra:Registry ;
+    rdfs:label "unique product identifier reference data library" ;
+    skos:definition "set of data comprised of reference data elements with specific values that together describe the product" ;
+    cmns-org:isManagedBy fibo-der-drc-bsc:UniqueProductIdentifierServiceProvider .
+
+fibo-der-drc-bsc:hasAdditionalCosts a owl:ObjectProperty ;
+    rdfs:label "has additional costs"@en,
+        "具有附加成本（has additional costs）"@zh ;
+    rdfs:comment "指明交割时必须支付的成本，如前期费用、经纪佣金等。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "indicates costs, such as up front costs, brokerage fees and the like, that must be paid on delivery"@en .
+
+fibo-der-drc-bsc:hasSettlementTerms a owl:ObjectProperty ;
+    rdfs:label "has settlement terms"@en,
+        "具有结算条款（has settlement terms）"@zh ;
+    rdfs:comment "将衍生品与结算过程特有的合同条款关联起来。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:DerivativeInstrument ;
+    rdfs:range fibo-fbc-pas-fpas:SettlementTerms ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasContractualElement ;
+    skos:definition "relates a derivative to contractual terms specific to the settlement process" .
+
+fibo-der-drc-bsc:hasUnderlyingAssetPrice a owl:ObjectProperty ;
+    rdfs:label "has underlying asset price",
+        "具有标的资产价格（has underlying asset price）"@zh ;
+    rdfs:comment "规定合约所基于之物的价格。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryPrice ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "specifies a price for something on which the contract is based" .
+
+fibo-der-drc-bsc:hasValuationTerms a owl:ObjectProperty ;
+    rdfs:label "has valuation terms"@en,
+        "具有估值条款（has valuation terms）"@zh ;
+    rdfs:comment "将衍生品与标的资产估值特有的合同条款关联起来。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:DerivativeInstrument ;
+    rdfs:range fibo-der-drc-bsc:ValuationTerms ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasContractualElement ;
+    skos:definition "relates a derivative to contractual terms specific to valuation of the underlying asset(s)" .
+
+fibo-der-drc-bsc:specifiesValueOf a owl:ObjectProperty ;
+    rdfs:label "specifies value of"@en,
+        "规定……的价值（specifies value of）"@zh ;
+    rdfs:comment "将衍生品与标的资产估值特有的合同条款关联起来。"@zh ;
+    rdfs:subPropertyOf cmns-cxtdsg:appliesTo,
+        cmns-doc:specifies ;
+    skos:definition "relates a derivative to contractual terms specific to valuation of the underlying asset(s)" .
+
+fibo-der-drc-bsc:OverTheCounterDerivativeInstrument a owl:Class ;
+    rdfs:label "over-the-counter derivative instrument",
+        "场外衍生工具（over-the-counter derivative instrument）"@zh ;
+    dcterms:source "ISO 4914:2021(en), Financial services - Unique product identifier (UPI)" ;
+    rdfs:comment "未在有组织交易所挂牌的衍生工具。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:OverTheCounterInstrument,
+        fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "derivative instrument that is not listed on an organized exchange" ;
+    skos:note "ISO 4914 defines an OTC derivative instrument as a financial instrument that is, or would be, identified by an ISIN with the prefix 'EZ' or 'ZZ'. Details regarding how the prefix of an ISIN is determined can be found in ISO 6166:2020, Annex A." ;
+    cmns-av:abbreviation "OTC derivative instrument" .
+
+fibo-der-drc-bsc:RateBasedDerivative a owl:Class ;
+    rdfs:label "rate-based derivative",
+        "比率类衍生品（rate-based derivative）"@zh ;
+    rdfs:comment "持有人有权（视工具性质可能无义务）进入标的比率类合约的衍生工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                    owl:onClass [ a owl:Class ;
+                            owl:unionOf ( fibo-sec-sec-bsk:BasketOfIndices fibo-ind-ind-ind:MarketRate fibo-ind-ei-ei:EconomicIndicator fibo-ind-fx-fx:QuotedExchangeRate ) ] ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ] ],
+        fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "derivative instrument where the holder has the right but may not have the obligation, depending on the nature of the instrument, to enter into the underlying contract, or pay or receive payment related to the underlying financial rate (or rate contract) on a specified future date based on a specified future rate and term" ;
+    skos:example "Examples of rate-based derivatives include interest rate swaps, forward rate agreements (FRAs), and interest rate options such as caps, floors, and collars." ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth edition, 2019-10" ;
+    cmns-av:explanatoryNote "Rate-based derivatives derive their value from movements in some rate, e.g, an interest rate, market rate, economic indicator, statistical measure calculated over some collection of indices, rather than from traditional assets like stocks or commodities. They are commonly used by institutions to manage risks associated with interest rate fluctuations." .
+
+fibo-der-drc-bsc:UniqueProductIdentifier a owl:Class ;
+    rdfs:label "unique product identifier",
+        "唯一产品标识符（unique product identifier）"@zh ;
+    dcterms:source "ISO 4914:2021(en), Financial services - Unique product identifier (UPI)" ;
+    rdfs:comment "唯一标识应向交易数据库报告的场外衍生品产品的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom fibo-der-drc-bsc:UniqueProductIdentifierServiceProvider ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-bsc:OverTheCounterDerivativeInstrument ;
+            owl:onProperty cmns-id:identifies ],
+        fibo-fbc-fi-fi:FinancialInstrumentIdentifier,
+        cmns-cxtid:StructuredIdentifier ;
+    skos:definition "sequence of characters uniquely identifying an OTC derivative product that is reportable to a trade repository" ;
+    skos:scopeNote """At a minimum, the UPI code is applicable to OTC derivative instruments falling under the following categories of the Classification of Financial Instruments (ISO 10962):
+		- Swaps (S)
+		- Forwards (J)
+		- Non-listed and complex listed options (H)
+		- Others (miscellaneous) (M)""" ;
+    cmns-av:abbreviation "UPI" ;
+    cmns-av:explanatoryNote """The UPI code consists of 12 alphanumeric characters decomposed as follows:
+		- the two-character prefix 'QZ'
+		- nine alphanumeric characters (upper case A-Z and 0-9 only, excluding the vowel characters (A, E, I, O, U) and the character Y) without separators or special characters
+		- one alphanumeric check character (A-Z and 0-9 only, excluding the vowel characters (A, E, I, O, U) and the character Y), calculated using the method specified in Annex C of the specification document.""" .
+
+fibo-der-drc-bsc:UniqueProductIdentifierServiceProvider a owl:Class ;
+    rdfs:label "unique product identifier service provider",
+        "唯一产品标识符服务提供商（unique product identifier service provider）"@zh ;
+    dcterms:source "ISO 4914:2021(en), Financial services - Unique product identifier (UPI)" ;
+    rdfs:comment "由金融监管机构组成的外部机构指定、负责分配 UPI 并运营 UPI 参考数据库的组织。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-bsc:UniqueProductIdentifier ;
+            owl:onProperty cmns-ra:registers ],
+        cmns-ra:RegistrationAuthority ;
+    skos:definition "organization designated by an external body of financial regulators to assign UPIs and operate a UPI reference data library" ;
+    skos:scopeNote "At the time of publication of the ISO 4914 standard, there was only one such provider, the Regulatory Oversight Committee, confirmed by the Financial Stability Board as the International Governance Body for globally harmonised identifiers used to track OTC derivatives transactions." ;
+    cmns-av:abbreviation "UPI service provider" .
+
+fibo-der-drc-bsc:ValuationTerms a owl:Class ;
+    rdfs:label "valuation terms",
+        "估值条款（valuation terms）"@zh ;
+    rdfs:comment "标的资产估值特有的合同条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:involves ;
+            owl:someValuesFrom fibo-der-drc-bsc:UnderlyingAssetValuation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-asmt:hasDateOfAssessment ;
+            owl:someValuesFrom cmns-dt:ExplicitDate ],
+        fibo-der-drc-bsc:DerivativeTerms ;
+    skos:definition "contract terms specific to valuation of the underlying asset(s)" .
+
+fibo-fbc-fi-fi:Underlier a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-fnd-pas-pas:Commodity fibo-fbc-pas-fpas:Basket fibo-ind-ind-ind:MarketRate fibo-ind-ei-ei:EconomicIndicator fibo-der-drc-bsc:ObservableValue fibo-ind-fx-fx:QuotedExchangeRate ) ] ] .
+
+fibo-der-drc-bsc:DerivativeTerms a owl:Class ;
+    rdfs:label "derivative terms",
+        "衍生品条款（derivative terms）"@zh ;
+    rdfs:comment "衍生品合约特有的合同条款，包括双方之间支付和交付的相关条款。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractualCommitment ;
+    skos:definition "contractual terms specific to derivative contracts, including terms related to payments and delivery between parties" .
+
+fibo-fbc-fi-fi:DerivativeInstrument a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:ScalarQuantityValue ;
+            owl:onProperty cmns-qtu:hasQuantityValue ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Underlier ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-bsc:hasSettlementTerms ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-bsc:hasValuationTerms ;
+            owl:someValuesFrom fibo-der-drc-bsc:ValuationTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
+            owl:someValuesFrom cmns-dt:Date ] ;
+    cmns-av:usageNote "Note that the quantity value associated with the derivative represents the quantity of the underlier. The price of the underlier is included in settlement terms." .
+

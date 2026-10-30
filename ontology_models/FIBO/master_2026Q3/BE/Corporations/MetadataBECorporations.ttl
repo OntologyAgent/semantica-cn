@@ -1,0 +1,34 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-corp-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/MetadataBECorporations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-corp-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Business Entities (BE) Corporations Module",
+        "BE 公司模块元数据（Metadata for the BE Corporations Module）"@zh ;
+    dcterms:abstract "The corporations module includes ontologies describing the essential features of companies incorporated through the issuance of shares." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-24T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明公司（Corporations）模块由公司本体构成，及版本信息。注意：BE 域清单（MetadataBE）当前未将该模块列入构成（hasPart），属于上游预留模块。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20230101/Corporations/MetadataBECorporations/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+
+fibo-be-corp-mod:CorporationsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "corporations module" ;
+    dcterms:abstract "The corporations module includes ontologies describing the essential features of companies incorporated through the issuance of shares." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/BE/Corporations/Corporations/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO BE Corporations Module",
+        "Financial Industry Business Ontology (FIBO) Business Entities (BE) Corporations Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+

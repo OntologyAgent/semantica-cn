@@ -1,0 +1,97 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-der-drc-swpind: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/> .
+@prefix fibo-fbc-fct-cra: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/CommercialRegistrationAuthorities/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fct-usjrga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-der-drc-swpind:BloombergSDR a owl:NamedIndividual,
+        fibo-der-drc-swp:SwapDataRepository ;
+    rdfs:label "Bloomberg SDR" ;
+    rdfs:isDefinedBy fibo-der-drc-swpind: ;
+    skos:definition "swap data repository that receives, validates, maintains, and provides regulator-authorized access to derivatives transaction data submitted under jurisdiction-specific reporting rules, and operates as a registered SDR service within the Bloomberg group of entities" ;
+    cmns-av:abbreviation "BSDR" ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-usjrga:CommoditiesFuturesAndDerivativesRegulator ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:BSDRLLC-US-DE .
+
+fibo-der-drc-swpind:ChicagoMercantileExchange a owl:NamedIndividual,
+        fibo-der-drc-swp:SwapDataRepository,
+        fibo-fbc-fct-fse:SelfRegulatingOrganization,
+        fibo-fbc-fct-mkt:DesignatedContractMarket ;
+    rdfs:label "Chicago Mercantile Exchange" ;
+    rdfs:isDefinedBy fibo-der-drc-swpind: ;
+    skos:definition "financial derivatives exchange that offers centralized, regulated trading of futures and options contracts across multiple asset classes and forms part of CME Group" ;
+    skos:note "Chicago Mercantile Exchange was founded in 1898, formerly the Chicago Butter and Egg Board. CME (1) provides a marketplace for standardized futures and options, (2) operates under CME rules as a Designated Contract Market, (3) supports trading in interest rates, equity indexes, energy, agriculture, FX, metals, and cryptocurrency products, and (4) functions as one of the four major exchanges within CME Group. It has been part of CME Group since 2007." ;
+    cmns-av:abbreviation "CME" ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-usjrga:CommoditiesFuturesAndDerivativesRegulator ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:ChicagoMercantileExchangeInc-US-DE .
+
+fibo-der-drc-swpind:DTCCDataRepository a owl:NamedIndividual,
+        fibo-der-drc-swp:SwapDataRepository ;
+    rdfs:label "DTCC Data Repository" ;
+    rdfs:isDefinedBy fibo-der-drc-swpind: ;
+    skos:definition "swap data repository that receives, validates, maintains, and provides regulated access to derivatives transaction data for reporting entities under U.S. and global derivatives market regulations, and operates as a registered SDR subsidiary of the Depository Trust & Clearing Corporation" ;
+    skos:note "DDR is part of DTCC's Global Trade Repository architecture and supports multi-jurisdictional derivatives reporting mandates (e.g., Dodd-Frank, EMIR, ASIC, MAS, HKMA, JFSA). It (1) receives and validates derivatives trade data from reporting counterparties, (2) maintains a centralized, regulator-accessible record of reported transactions, (3) provides data access to authorized regulators, and (4) operates under registration and oversight of relevant authorities (e.g., CFTC, MAS, JFSA, ESMA depending on jurisdiction). DDR operates multiple jurisdiction-specific legal entities, provides reconciliation and lifecycle event processing, offers public aggregate reporting, and integrates with DTCC's Global Trade Repository (GTR) service." ;
+    cmns-av:abbreviation "DDR" ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-usjrga:CommoditiesFuturesAndDerivativesRegulator ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:DTCCDataRepositoryLLC-US-NY .
+
+fibo-der-drc-swpind:ICETradeVault a owl:NamedIndividual,
+        fibo-der-drc-swp:SwapDataRepository ;
+    rdfs:label "ICE Trade Vault" ;
+    rdfs:isDefinedBy fibo-der-drc-swpind: ;
+    skos:definition "swap data repository that collects, validates, stores, and provides regulated access to derivatives transaction data for reporting entities under jurisdiction-specific derivatives reporting rules, and operates as a registered SDR service within Intercontinental Exchange (ICE)" ;
+    skos:note "ICE Trade Vault is part of ICE's broader market infrastructure ecosystem and supports derivatives reporting mandates under Dodd-Frank, EMIR, and other jurisdictional regimes. It (1) receives and validates derivatives trade data from reporting counterparties, (2) maintains a centralized, regulator-accessible record of reported transactions and lifecycle events, (3) provides data access to authorized regulators and public aggregate reporting, and (4) operates under registration and oversight of relevant authorities (e.g., CFTC, ESMA, MAS, depending on jurisdiction). ICE Trade Vault offers multi-asset class reporting (e.g., credit, interest rate, FX, commodity derivatives, integrates with ICE's clearing and trading infrastructure, and provides reconciliation and data quality tools." ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-usjrga:CommoditiesFuturesAndDerivativesRegulator ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:ICETradeVaultLLC-US-DE .
+
+fibo-der-drc-swpind: a owl:Ontology ;
+    rdfs:label "Swaps Individuals Ontology",
+        "互换个体本体（Swaps Individuals Ontology）"@zh ;
+    dcterms:abstract """This ontology specifies indiividuals that represent well-known swaps repositories and intermediaries. Related definitions for the corresponding legal entities can be found in the FBC Commercial Registration Authorities ontology. 
+		
+Note that this ontology is not intended to be exhaustive, but is designed for expansion as FIBO use cases or user requirements dictate.""" ;
+    dcterms:license """Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录标准化互换合约的参考个体（如标准利率互换的市场约定）。"@zh ;
+    owl:imports fibo-der-drc-swp:,
+        fibo-fbc-fct-cra:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-fct-usjrga:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-ra:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20260601/DerivativesContracts/SwapsIndividuals/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20200301/DerivativesContracts/SwapsIndividuals.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20200701/DerivativesContracts/SwapsIndividuals.rdf version of this ontology was revised to update the LEI URIs to the new form published by the GLEIF on data.world.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20201201/DerivativesContracts/SwapsIndividuals.rdf version of this ontology was revised to move designated contract market to the markets ontology in FBC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20201201/DerivativesContracts/SwapsIndividuals.rdf version of this ontology was revised to replace references to the legacy LCC UnitedStates country representation with UnitedStatesOfAmerica.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210701/DerivativesContracts/SwapsIndividuals.rdf version of this ontology was revised to clean up the LEI data and individual definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20211201/DerivativesContracts/SwapsIndividuals.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/DerivativesContracts/SwapsIndividuals.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/DerivativesContracts/SwapsIndividuals.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240101/DerivativesContracts/SwapsIndividuals.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/DerivativesContracts/SwapsIndividuals.rdf version of the ontology was modified to merge details from the old corporations ontology into corporate bodies for consistency and useability (BE-259).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20251201/DerivativesContracts/SwapsIndividuals.rdf version of the ontology was modified to reflect the migration of registration authorities to the Functional Entities module in FBC and better align with the GLEIF LEI model (FND-407)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2018-2025 Object Management Group, Inc.",
+        "Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc." .
+

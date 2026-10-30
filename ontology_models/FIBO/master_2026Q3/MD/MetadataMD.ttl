@@ -1,0 +1,66 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-civx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/CIVTemporal/MetadataMDCIVTemporal/> .
+@prefix fibo-md-dbtx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/MetadataMDDebtTemporal/> .
+@prefix fibo-md-derx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/MetadataMDDerivativesTemporal/> .
+@prefix fibo-md-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/MetadataMD/> .
+@prefix fibo-md-temx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/TemporalCore/MetadataMDTemporalCore/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the FIBO Market Data (MD) Domain",
+        "MD 域元数据（Metadata for the MD Domain）"@zh ;
+    dcterms:abstract """The Market Data (MD) domain contains ontologies that represent temporally variant concepts for financial instruments, loans and funds. As such this domain covers the concepts represented in market data, such as prices, yields and analytics for debt and for pools of assets.
+		
+		Note that the ontologies included in the MD domain are considered provisional and have not undergone serious review or integration with other parts of FIBO as of Q1 2026.""" ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明市场数据（Market Data，MD）域由四个模块构成：时序核心、债务时序、衍生品时序、集合投资工具时序。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        fibo-md-civx-mod:,
+        fibo-md-dbtx-mod:,
+        fibo-md-derx-mod:,
+        fibo-md-temx-mod:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/MD/20260401/MetadataMD/> ;
+    cmns-av:copyright "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-md-mod:MDDomain a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "market data domain" ;
+    dcterms:abstract """The Market Data (MD) domain contains ontologies that represent temporally variant concepts for financial instruments, loans and funds. As such this domain covers the concepts represented in market data, such as prices, yields and analytics for debt and for pools of assets.
+		
+		Note that the ontologies included in the MD domain are considered provisional and have not undergone serious review or integration with other parts of FIBO as of Q1 2026.""" ;
+    dcterms:hasPart fibo-md-civx-mod:CIVTemporalModule,
+        fibo-md-dbtx-mod:DebtTemporalModule,
+        fibo-md-derx-mod:DerivativesTemporalModule,
+        fibo-md-temx-mod:TemporalCoreModule ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    dcterms:title "Financial Industry Business Ontology (FIBO) Market Data (MD) Domain" ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    skos:altLabel "Market Data (MD)" ;
+    cmns-av:copyright "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+

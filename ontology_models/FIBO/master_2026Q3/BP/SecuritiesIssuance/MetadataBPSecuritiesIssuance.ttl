@@ -1,0 +1,39 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-iss-mod: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MetadataBPSecuritiesIssuance/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-iss-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Business Process (BP) Securities Issuance Module",
+        "BP 证券发行模块元数据（Metadata for the BP Securities Issuance Module）"@zh ;
+    dcterms:abstract "This module contains ontologies of securities issuance process concepts, both for processes common to all securities issuance and variants for common types of equity and debt issuance such as auction and syndication." ;
+    dcterms:issued "2018-03-01T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-30T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明证券发行（Securities Issuance）模块的构成：发行流程、发行文件、债务发行、IPO 发行、MBS 发行（机构/私人品牌）、市政债发行等本体。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BP/20230201/SecuritiesIssuance/MetadataBPSecuritiesIssuance/> ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+
+fibo-bp-iss-mod:SecuritiesIssuanceModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "securities issuance module" ;
+    dcterms:abstract "This module contains ontologies of securities issuance process concepts, both for processes common to all securities issuance and variants for common types of equity and debt issuance such as auction and syndication." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/AgencyMBSIssuance/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/EquitiesIPOIssuance/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MBSIssuance/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MuniIssuance/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/PrivateLabelMBSIssuance/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO BP Securities Issuance Module",
+        "Financial Industry Business Ontology (FIBO) Business Process (BP) Securities Issuance Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+

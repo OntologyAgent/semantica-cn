@@ -1,0 +1,80 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-fnd-mod: <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/MetadataSECFunds/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-fnd-mod: a owl:Ontology ;
+    rdfs:label "Metadata SEC Funds Module",
+        "SEC 基金模块元数据（Metadata for the SEC Funds Module）"@zh ;
+    dcterms:abstract "This module contains ontologies of funds concepts covering fund structure, definition and involved parties, along with concepts for tradable fund units." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-10-07T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明基金（Funds）模块由基金、集合投资工具、养老金计划三个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20261001/Funds/MetadataSECFunds/> ;
+    cmns-av:copyright "Copyright (c) 2020-2025 Object Management Group, Inc.",
+        "Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-sec-fnd-mod:FundsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "funds module" ;
+    dcterms:abstract "This module contains ontologies of funds concepts covering fund structure, definition and involved parties, along with concepts for tradable fund units." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "BIAN",
+        "Bloomberg LP",
+        "Citigroup",
+        "Credit Suisse",
+        "Dassault Systemes / No Magic",
+        "Deutsche Bank",
+        "Exprentis",
+        "Federated Knowledge LLC",
+        "Goldman Sachs",
+        "HP Enterprise / Mphasis",
+        "Intuitive Technology Partners Inc.",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Mizuho",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "ProBanker Simulations, LLC",
+        "Quarule",
+        "State Street Bank and Trust",
+        "Statistics Canada",
+        "T. Rowe Price",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo Bank, N.A.",
+        "agnos.ai U.K. Ltd" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/CollectiveInvestmentVehicles/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/Funds/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/PensionPlans/> ;
+    dcterms:license """Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:title "EDMC Financial Industry Business Ontology (FIBO) Securities (SEC) Domain Funds Module",
+        "FIBO SEC Funds Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2020-2025 Object Management Group, Inc.",
+        "Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc." .
+

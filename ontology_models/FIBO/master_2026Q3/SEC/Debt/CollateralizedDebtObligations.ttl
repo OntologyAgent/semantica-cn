@@ -1,0 +1,1131 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-cr-cds: <https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/CreditDefaultSwaps/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-sec-dbt-abs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-dbt-cdo: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/CollateralizedDebtObligations/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-dbt-mbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/> .
+@prefix fibo-sec-dbt-pbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/> .
+@prefix fibo-sec-dbt-syn: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/SyntheticCDOs/> .
+@prefix fibo-sec-fund-fund: <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/Funds/> .
+@prefix fibo-sec-sec-pls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-dbt-cdo:ABSCDODeal a owl:Class ;
+    rdfs:label "a b s c d o deal"@en,
+        "资产支持证券担保债务凭证交易（ABS CDO deal）"@zh ;
+    rdfs:comment "资产支持证券担保债务凭证（ABS CDO）票据的一次发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-sec-dbt-cdo:CDOPool fibo-sec-dbt-cdo:CashABSPool ) ] ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    skos:definition "An issue of Asset Backed Security CDO notes."@en .
+
+fibo-sec-dbt-cdo:ABSCDOInstrument a owl:Class ;
+    rdfs:label "a b s c d o instrument"@en,
+        "资产支持证券担保债务凭证工具（ABS CDO instrument）"@zh ;
+    rdfs:comment "标的资产池为资产支持证券（ABS）的担保债务凭证。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CashCDOTranche ;
+    skos:definition "CDO where the underlying asset pool is ABS."@en .
+
+fibo-sec-dbt-cdo:AgencyStickyJumpZ a owl:Class ;
+    rdfs:label "agency sticky jump z"@en,
+        "机构粘性跳转 Z 分档（agency sticky jump Z）"@zh ;
+    rdfs:comment "「粘性」跳转 Z 分档：一旦触发即保持跳转 Z 分档的付款优先级，直至清偿完毕。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyJumpZTranche ;
+    skos:definition "\"Sticky\" Jump Z tranches maintain the payment priority of a Jump Z tranche until they are retired."@en .
+
+fibo-sec-dbt-cdo:ArbitrageCDO a owl:Class ;
+    rdfs:label "arbitrage c d o"@en,
+        "套利型担保债务凭证（arbitrage CDO）"@zh ;
+    rdfs:comment "套利型 CDO/CLO/CBO：由公司、管道机构或特殊目的载体（SPV）购入参考资产，旨在重新打包后出售。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:hasCDOOriginationObjective ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:ArbitrageCdoObjective ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    skos:definition "Arbitrage CDO/CLO/CBO - the reference assets are bought by a firm or conduit or SPV (Special Purpose Vehicle) with a view to repackage them and sell them on as the structured product."@en ;
+    skos:editorialNote "Arbitrage deals are motivated by the opportunity to add value by repackaging collateral into tranches. This is the same motivation for most CMOs. In finance, the law of one price suggests that the securities of a CDO should have the same market value as its underlying collateral. In practice, this is often not the case. Accordingly, a CDO can represent a theoretical arbitrage. april 28 note: Does this have meaning for Cash CDO? Are these always? Arbitrage is there to exploit market inefficiencies. Would there not be some arbitrage exploited in the CDO. The definition here implies cash CDO only. not cler to reviewers what the ditinctio nis and whether these are mutually excluive. On eview is that the arb CDO has cash inflorws different to cash outflows, e.g. 9.5% v 9% with the 50bp taken as fees. So that might be Arb CDO. There is another type we hav emissed: like an arb CDO where there is instead a spread between in/out as above, you have instead a MArket Value CDO, where its base don the market value of the deal. Not clear how you are supposed to realized that value. you are supposed to realize the xxxx of securities .Seen both referred to. So is arb a risk management tool."@en .
+
+fibo-sec-dbt-cdo:BalanceSheetCDO a owl:Class ;
+    rdfs:label "balance sheet c d o"@en,
+        "资产负债表型担保债务凭证（balance sheet CDO）"@zh ;
+    rdfs:comment "资产负债表型 CDO/CLO/CBO：其组合的参考资产取自某一公司的资产负债表。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:hasCDOOriginationObjective ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:BalanceSheetCDOObjective ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    skos:definition "Balance Sheet CDO/CLO/CBO - the reference assets for the SDO portfolio are taken from a company/firm's balance sheet."@en ;
+    skos:editorialNote "With a balance sheet deal, the sponsoring organization is a bank or other institution that holds - or anticipates acquiring - loans or debt that it wants to remove from its balance sheet. Similar to a traditional ABS, the CDO is a vehicle for it to do so. Balance Sheet CDO = Funded CDO. This is about whether or not ther is actual borrowing or lending underpinning the CDO. Does this have meaning in the context of synthetic CDO? It has meaning in the context of a sythetic CDO because you can constructt hat from a unifirm funding and use the CDSs to break up and creat the manyt risks. Derive the funds from a uniform source using CDSs. So that would be on Balance Sheet CDO. April 28 notes does Balance sheet CDPO have any meaning fo rCash =CDO? No. cash CDOs would have to have a balance sheet impact, so this distinction between Balance sheet and Arbittrrage only has meaning for Synthetics."@en .
+
+fibo-sec-dbt-cdo:CDOSquaredDeal a owl:Class ;
+    rdfs:label "c d o squared deal"@en,
+        "双层担保债务凭证交易（CDO squared deal）"@zh ;
+    rdfs:comment "双层 CDO（CDO Squared）票据的一次发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CDOPool ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    skos:definition "An issue of CDO Squared notes."@en .
+
+fibo-sec-dbt-cdo:CDOSquaredInstrument a owl:Class ;
+    rdfs:label "c d o squared instrument"@en,
+        "双层担保债务凭证工具（CDO squared instrument）"@zh ;
+    rdfs:comment "标的资产池为其他 CDO 的担保债务凭证。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+    skos:definition "CDOs where the underlying asset pool is CDOs."@en .
+
+fibo-sec-dbt-cdo:CMODeal a owl:Class ;
+    rdfs:label "c m o deal"@en,
+        "抵押担保债券交易（CMO deal）"@zh ;
+    rdfs:comment "抵押担保债券（CMO）的一次发行。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-dbti:DebtOffering ;
+    skos:definition "An issue of Collateralized mortgaged Obligations."@en .
+
+fibo-sec-dbt-cdo:CashflowCDO a owl:Class ;
+    rdfs:label "cashflow c d o"@en,
+        "现金流型担保债务凭证（cashflow CDO）"@zh ;
+    rdfs:comment "类似于 CMO：抵押品产生的现金流用于向投资者支付本金和利息；若现金流不足则按约定处理。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:structure.2 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CashflowStructure ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    owl:disjointWith fibo-sec-dbt-cdo:MarketValueCDO ;
+    skos:definition "A cash-flow CDO is analogous to a CMO. Cash flows from collateral are used to pay principal and interest to investors. If such cash flows prove inadequate, principal and interest is paid to tranches according to seniority. At any point in time, all immediate obligations to a given tranch are met before any payments are made to less senior tranches."@en ;
+    cmns-av:explanatoryNote "There are some cases where \"triggers\" can come into effect to cause the payments to be distributed in other ways. For example, if the CDO fails its senior overcollateralization (OC) trigger, it may cause extra cash to be diverted to the senior tranches' principal in order to bring the deal back into compliance with the OC test."@en .
+
+fibo-sec-dbt-cdo:CollateralizedBondObligation a owl:Class ;
+    rdfs:label "collateralized bond obligation"@en,
+        "担保债券凭证（collateralized bond obligation）"@zh ;
+    rdfs:comment "以投资级债券为标的资产、由高收益或垃圾债券应收款支持的结构化债务证券。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-sec-dbt-abs:BondPool ],
+        fibo-sec-dbt-cdo:CashCDOTranche ;
+    owl:disjointWith fibo-sec-dbt-cdo:AgencyCMO,
+        fibo-sec-dbt-cdo:CollateralizedLoanObligationOffering ;
+    skos:definition "structured debt security that has investment-grade bonds as its underlying assets backed by the receivables on high-yield or junk bonds"@en ;
+    cmns-av:abbreviation "CBO"@en ;
+    cmns-av:explanatoryNote "A multitranche debt structure similar in some respects to a collateralized mortgage obligation (CMO) structure. Typically low-rated bonds rather than mortgages serve as the collateral. The organization creating and promoting the structure usually holds the underlying equity and may also collect a fee. Junk bonds are typically not investment grade, but because they pool several types of credit quality bonds together, they offer enough diversification to be \"investment grade.\" For example high yield [emerging market] CBO which consists of a portfolio of different high yield [emerging market] bonds. Investopedia: Similar in structure to a collateralized mortgage obligation (CMO), but different in that CBOs represent different levels of credit risk, not different maturities. Defoinition Origin:Investopedia"@en .
+
+fibo-sec-dbt-cdo:HybridCDO a owl:Class ;
+    rdfs:label "hybrid c d o"@en,
+        "混合型担保债务凭证（hybrid CDO）"@zh ;
+    rdfs:comment "兼具现金型和合成型 CDO 特征的 CDO，即同时具有现金型分档和合成标的资产分档的 CDO。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-sec-dbt-cdo:CashCDOTranche fibo-sec-dbt-syn:SyntheticCDOTranche ) ] ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    skos:definition "A CDO which combines features both of the cash and synthetic CDO. This is a CDO with tranches of cash and tranches of synthetic underlying assets. Further notes: So for example an issiue of $550 million may have $500 million in an asset pool and an additional $50 million created via a synthetic asset."@en .
+
+fibo-sec-dbt-cdo:IOette a owl:Class ;
+    rdfs:label "i oette"@en,
+        "小仅付息分档（IOette）"@zh ;
+    rdfs:comment "一种仅付息（IO）分档的变体。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyIOTranche ;
+    skos:definition "REVIEW: Is this a kind of IO Tranche."@en .
+
+fibo-sec-dbt-cdo:InverseFloaterTranche a owl:Class ;
+    rdfs:label "inverse floater tranche"@en,
+        "反向浮动分档（inverse floater tranche）"@zh ;
+    rdfs:comment "票息与参考利率反向变动的分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:FloaterTranche ;
+    owl:disjointWith fibo-sec-dbt-cdo:RegularFloaterTranche,
+        fibo-sec-dbt-cdo:SuperFloaterTranche .
+
+fibo-sec-dbt-cdo:ManagedCDO a owl:Class ;
+    rdfs:label "managed c d o"@en,
+        "管理型担保债务凭证（managed CDO）"@zh ;
+    rdfs:comment "参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的 CDO。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:managementStyle.1 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:ManagedManagementStyle ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:ManagedCDOPortfolio ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MBSInstrumentSlice ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    owl:disjointWith fibo-sec-dbt-cdo:StaticCDO ;
+    skos:definition "A CDO where the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit."@en .
+
+fibo-sec-dbt-cdo:NonAgencyIOTranche a owl:Class ;
+    rdfs:label "non agency i o tranche"@en,
+        "非机构仅付息分档（non-agency IO tranche）"@zh ;
+    rdfs:comment "仅支付利息的分档（Interest Only），即该分档只付息。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "Interest Only tranche, meaning that this tranche will only pay interest."@en .
+
+fibo-sec-dbt-cdo:NonAgencyPOTranche a owl:Class ;
+    rdfs:label "non agency p o tranche"@en,
+        "非机构仅付本分档（non-agency PO tranche）"@zh ;
+    rdfs:comment "仅支付本金的分档（Principal Only）。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "Principal Only tranche. This tranche will only pay principal."@en .
+
+fibo-sec-dbt-cdo:NonAgencyStickyJumpZTranche a owl:Class ;
+    rdfs:label "non agency sticky jump z tranche"@en,
+        "非机构粘性跳转 Z 分档（non-agency sticky jump Z tranche）"@zh ;
+    rdfs:comment "「粘性」跳转 Z 分档：一旦触发即保持跳转 Z 分档的付款优先级，直至清偿完毕。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:NonAgencyJumpZTranche ;
+    skos:definition "\"Sticky\" Jump Z tranches maintain the payment priority of a Jump Z tranche until they are retired."@en .
+
+fibo-sec-dbt-cdo:PAC-ZTranche a owl:Class ;
+    rdfs:label "p a c- z tranche"@en,
+        "计划摊销 Z 分档（PAC-Z tranche）"@zh ;
+    rdfs:comment "同时为 Z 分档的计划摊销档（PAC）分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyZTranche,
+        fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    skos:definition "Planned Amortization Class tranche which is also a Z tranche, that is Definition needed."@en ;
+    skos:editorialNote "Assume this is a PAC tranche that is a Z Tranche."@en .
+
+fibo-sec-dbt-cdo:PACPOTranche a owl:Class ;
+    rdfs:label "p a c p o tranche"@en,
+        "计划摊销仅付本分档（PAC PO tranche）"@zh ;
+    rdfs:comment "计划摊销档（PAC）中的仅付本金分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyPOTranche,
+        fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    skos:definition "Planned Amortization Class principal only tranche."@en .
+
+fibo-sec-dbt-cdo:ResidualTranche a owl:Class ;
+    rdfs:label "residual tranche"@en,
+        "剩余分档（residual tranche）"@zh ;
+    rdfs:comment "收取其他分档受偿后剩余现金流的分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "Unknown Further notes: Verify whether Residual Tranche and Support Tranche are meant to be in the same list of types as PAC etc. i.e. can a tranche not be PAC and Residual? this looks suspicioulsy like two semantics."@en .
+
+fibo-sec-dbt-cdo:StaticCDOPortfolio a owl:Class ;
+    rdfs:label "static c d o portfolio"@en,
+        "静态担保债务凭证组合（static CDO portfolio）"@zh ;
+    rdfs:comment "抵押品在 CDO 存续期内固定不变的组合：参考资产购入后，在产品期限内保持不动。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOPortfolio ;
+    skos:definition "A portfolio where collateral of the CDO is fixed through the life of the CDO. The reference assets are bought and then are kept untouched for the term of the product."@en ;
+    skos:editorialNote "There are cases where badly performing assets may be sold off. These are not modeled at present and it's possible that a third type of CDO may be indicated where the portfolio manager has certain capabilities."@en .
+
+fibo-sec-dbt-cdo:SuperPOTranche a owl:Class ;
+    rdfs:label "super p o tranche"@en,
+        "超级仅付本分档（super PO tranche）"@zh ;
+    rdfs:comment "仅支付本金的分档（Principal Only）的一种特殊形式。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyPOTranche ;
+    skos:definition "Principal Only tranche. This tranche will only pay principal. Not clear how this is distinct from generic PO."@en .
+
+fibo-sec-dbt-cdo:SupportTranche a owl:Class ;
+    rdfs:label "support tranche"@en,
+        "支持分档（support tranche）"@zh ;
+    rdfs:comment "为计划摊销档（PAC）分档提供付款支持的分档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:PAC-2Class ] ;
+    skos:definition "A tranche which provides payment support to a PAC Tranche."@en ;
+    cmns-av:explanatoryNote "PAC tranches have priority over the other tranches in the deal, which are then referred to as the support or companion tranches."@en .
+
+fibo-sec-dbt-cdo:TruePSObjective a owl:Class ;
+    rdfs:label "true p s objective"@en,
+        "真实出售目标（true sale objective）"@zh ;
+    rdfs:comment "以实现资产真实出售为目的的发起目标。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOOriginationObjective .
+
+fibo-sec-dbt-cdo:confersOwnershipOf a owl:ObjectProperty ;
+    rdfs:label "confers ownership of"@en,
+        "授予……的所有权（confers ownership of）"@zh ;
+    rdfs:comment "表明某凭证或分档授予对某一资产或现金流的权利。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:SubordinatedCDOEquity .
+
+fibo-sec-dbt-cdo:denomination a owl:ObjectProperty ;
+    rdfs:label "denomination"@en,
+        "票面金额（denomination）"@zh ;
+    rdfs:comment "票据计价的货币金额，例如 500 美元面额的票据。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:MBSTrancheNote ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "The currency amount in which the Note is denominated, for example $500 notes."@en .
+
+fibo-sec-dbt-cdo:isCash a owl:DatatypeProperty ;
+    rdfs:label "is cash"@en,
+        "是否现金型（is cash）"@zh ;
+    rdfs:comment "表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the CDO has an underlying pool of real assets. If yes, the CDO has an underlying pool of real assets. If no, the CDO has a synthetic pool of underlying assets."@en .
+
+fibo-sec-dbt-cdo:isCash.1 a owl:DatatypeProperty ;
+    rdfs:label "is cash"@en,
+        "是否现金型（is cash）"@zh ;
+    rdfs:comment "表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CashCDOTranche ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the CDO has an underlying pool of real assets. This is yes: the CDO has an underlying pool of real assets,"@en .
+
+fibo-sec-dbt-cdo:managementStyle a owl:ObjectProperty ;
+    rdfs:label "has deal management style"@en,
+        "具有交易管理风格（has deal management style）"@zh ;
+    rdfs:comment "表明 CDO 是静态还是管理型，即 CDO 管理人是否可在存续期内调整参考组合。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+    rdfs:range fibo-sec-dbt-cdo:CDOManagementStyle ;
+    skos:definition "Whether the CDO is static or managed. This refers to whether or not the CDO manager may make changes to the reference portfolio during the life of the security. Further notes: If it is static, collateral is fixed through the life of the CDO. The reference assets are bought and then are kept untouched for the term of the product.If it is managed, the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit."@en .
+
+fibo-sec-dbt-cdo:origination.2 a owl:ObjectProperty ;
+    rdfs:label "has origination objective"@en,
+        "具有发起目标（has origination objective）"@zh ;
+    rdfs:comment "指明发行的发起目标或动机。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+    rdfs:range fibo-sec-dbt-cdo:CDOOriginationObjective .
+
+fibo-sec-dbt-cdo:seniority a owl:ObjectProperty ;
+    rdfs:label "seniority"@en,
+        "优先级别（seniority）"@zh ;
+    rdfs:comment "界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+    rdfs:range fibo-sec-dbt-cdo:CDOTrancheSenioritySelection ;
+    skos:definition "The seniority which defines this tranche. This is the precedence order for scheduled payments. Further notes: Tranches are categorized as senior, mezzanine, and subordinated/equity, according to their degree of credit risk. If there are defaults or the CDO's collateral otherwise underperforms, scheduled payments to senior tranches take precedence over those of mezzanine tranches, and scheduled payments to mezzanine tranches take precedence over those to subordinated/equity tranches. Senior and mezzanine tranches are typically rated, with the former receiving ratings of A to AAA and the latter receiving ratings of B to BBB. The ratings reflect both the credit quality of underlying collateral as well as how much protection a given tranch is afforded by tranches that are subordinate to it."@en .
+
+fibo-sec-dbt-cdo:seniority.1 a owl:DatatypeProperty ;
+    rdfs:label "seniority"@en,
+        "优先级别（seniority）"@zh ;
+    rdfs:comment "界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:MezzanineCDOTranche ;
+    skos:definition "The seniority which defines this tranche. This is the precedence order for scheduled payments. This is Mezzanine, meaning the tranche between senior and subordinated."@en .
+
+fibo-sec-dbt-cdo:seniority.2 a owl:DatatypeProperty ;
+    rdfs:label "seniority"@en,
+        "优先级别（seniority）"@zh ;
+    rdfs:comment "界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:SeniorCDOTranche ;
+    skos:definition "The seniority which defines this tranche. This is the precedence order for scheduled payments. This is defined as Senior, i.e. this is the most senior tranche of the CDO issue."@en .
+
+fibo-sec-dbt-cdo:seniority.3 a owl:DatatypeProperty ;
+    rdfs:label "seniority"@en,
+        "优先级别（seniority）"@zh ;
+    rdfs:comment "界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:SubordinatedCDOEquity ;
+    skos:definition "The seniority which defines this tranche. This is the precedence order for scheduled payments. This is subordinated (also known as equity) and is the most junior tranche in the CDO issue."@en .
+
+fibo-sec-dbt-cdo:seniority.4 a owl:DatatypeProperty ;
+    rdfs:label "seniority"@en,
+        "优先级别（seniority）"@zh ;
+    rdfs:comment "界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:SuperSeniorCDOTranche ;
+    skos:definition "The seniority which defines this tranche. This is the precedence order for scheduled payments. This is defined as Senior, i.e. this is the most senior tranche of the CDO issue."@en .
+
+fibo-sec-dbt-cdo:structure a owl:ObjectProperty ;
+    rdfs:label "has structure type"@en,
+        "具有结构类型（has structure type）"@zh ;
+    rdfs:comment "指明 CDO 的资金来源类型，即现金流型或市值型。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+    rdfs:range fibo-sec-dbt-cdo:CDOCashflowTreatmentStructure ;
+    skos:definition "The source of funds for the CDO. This is either cashflow or market value."@en .
+
+fibo-sec-dbt-mbs:PassThroughMBSDeal a owl:Class ;
+    owl:disjointWith fibo-sec-dbt-cdo:TranchedMBSDeal .
+
+fibo-sec-dbt-mbs:PassThroughMBSDealProspectus a owl:Class ;
+    owl:disjointWith fibo-sec-dbt-cdo:TranchedMBSDealProspectus .
+
+fibo-sec-dbt-mbs:PassThroughMBSInstrument a owl:Class ;
+    owl:disjointWith fibo-sec-dbt-cdo:TranchedMBSInstrument .
+
+fibo-sec-dbt-cdo: a owl:Ontology ;
+    rdfs:label "Collateralized Debt Obligations Ontology"@en,
+        "担保债务凭证本体（Collateralized Debt Obligations Ontology）"@zh ;
+    dcterms:abstract "Collateralized debt obligations are tranched debt instruments based on pools of debt instruments, and those pools may have different management styles and objectives. Generally includes an equity tranche. This ontology also covers CDO squared." ;
+    dcterms:license """Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义担保债务凭证（CDO）：以债务资产池分层发行的证券。"@zh ;
+    owl:imports <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/>,
+        fibo-der-cr-cds:,
+        fibo-fbc-fi-fi:,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/>,
+        fibo-fnd-acc-cur:,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/>,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-utl-av:,
+        fibo-loan-ln-ln:,
+        fibo-sec-dbt-abs:,
+        fibo-sec-dbt-bnd:,
+        fibo-sec-dbt-dbti:,
+        fibo-sec-dbt-mbs:,
+        fibo-sec-dbt-pbs:,
+        fibo-sec-dbt-syn:,
+        fibo-sec-fund-fund:,
+        fibo-sec-sec-pls:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI fibo-sec-dbt-cdo: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2015-2025 Object Management Group, Inc.",
+        "Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-sec-dbt-cdo:AgencyIOTranche a owl:Class ;
+    rdfs:label "agency i o tranche"@en,
+        "机构仅付息分档（agency IO tranche）"@zh ;
+    rdfs:comment "机构产品中仅支付利息的分档（Interest Only）。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyCMO ;
+    owl:disjointWith fibo-sec-dbt-cdo:AgencyPOTranche .
+
+fibo-sec-dbt-cdo:AgencyRegularJumpZ a owl:Class ;
+    rdfs:label "agency regular jump z"@en,
+        "机构常规跳转 Z 分档（agency regular jump Z）"@zh ;
+    rdfs:comment "常规（非粘性）跳转 Z 分档：仅在触发事件持续期间维持变更后的状态，触发事件解除后恢复原有付款状态。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:revertsOn ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:JumpZTriggerEventReversal ],
+        fibo-sec-dbt-cdo:AgencyJumpZTranche ;
+    skos:definition "Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed."@en .
+
+fibo-sec-dbt-cdo:ArbitrageCdoObjective a owl:Class ;
+    rdfs:label "arbitrage cdo objective"@en,
+        "套利型目标（arbitrage CDO objective）"@zh ;
+    rdfs:comment "目标是套利：通过将资产重新打包为不同分档来增加价值。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOOriginationObjective ;
+    skos:definition "The objective is arbitrage, whereby the motivation is to add value by repackaging assets into tranches."@en .
+
+fibo-sec-dbt-cdo:BalanceSheetCDOObjective a owl:Class ;
+    rdfs:label "balance sheet c d o objective"@en,
+        "资产负债表型目标（balance sheet CDO objective）"@zh ;
+    rdfs:comment "目标是创建担保债务凭证以将资产移出发起人的资产负债表。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOOriginationObjective ;
+    skos:definition "The objective is that the CDO is created to move assets off the originator balance sheet."@en .
+
+fibo-sec-dbt-cdo:CDOTrancheSenioritySelection a owl:Class ;
+    rdfs:label "CDOTrancheSenioritySelection"@en,
+        "担保债务凭证分档优先级选择（CDOTrancheSenioritySelection）"@zh ;
+    rdfs:comment "CDO 发行中某一档的优先级别。"@zh ;
+    skos:definition "The seniority of a tranche of a CDO issue."@en .
+
+fibo-sec-dbt-cdo:CashABSPool a owl:Class ;
+    rdfs:label "cash a b s pool"@en,
+        "现金型资产支持证券池（cash ABS pool）"@zh ;
+    rdfs:comment "由一组现金型 ABS 工具组成的池投资。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-pls:DebtPool ;
+    skos:definition "A pool investment consisting of a collection of cash ABS instruments."@en .
+
+fibo-sec-dbt-cdo:CashCDO a owl:Class ;
+    rdfs:label "cash c d o"@en,
+        "现金型担保债务凭证（cash CDO）"@zh ;
+    rdfs:comment "标的资产组合由发行人实际持有的 CDO。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:issues ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CashCDOTranche ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    owl:disjointWith fibo-sec-dbt-syn:SyntheticCDO ;
+    skos:definition "A CDO which has an uderlying portfolio of assets which are held by the issuer."@en .
+
+fibo-sec-dbt-cdo:CashflowStructure a owl:Class ;
+    rdfs:label "cashflow structure"@en,
+        "现金流结构（cashflow structure）"@zh ;
+    rdfs:comment "CDO 的资金来源为现金流，即抵押品产生的现金流用于向投资者支付本金和利息。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOCashflowTreatmentStructure ;
+    skos:definition "The source of funds for the CDO is cashflow. this means that cash flows from collateral are used to pay principal and interest to investors."@en .
+
+fibo-sec-dbt-cdo:CollateralizedLoanObligationOffering a owl:Class ;
+    rdfs:label "collateralized loan obligation offering"@en,
+        "担保贷款凭证发行（collateralized loan obligation offering）"@zh ;
+    rdfs:comment "担保贷款凭证（CLO）的一次发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:LoanPool ],
+        fibo-sec-dbt-dbti:DebtOffering ;
+    owl:disjointWith fibo-sec-dbt-cdo:AgencyCMO ;
+    cmns-av:abbreviation "CLO offering"@en .
+
+fibo-sec-dbt-cdo:LoanPool a owl:Class ;
+    rdfs:label "loan pool"@en,
+        "贷款池（loan pool）"@zh ;
+    rdfs:comment "成分为贷款的债务池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-loan-ln-ln:Loan ],
+        fibo-sec-sec-pls:DebtPool ;
+    skos:definition "debt pool whose consituents are loans"@en .
+
+fibo-sec-dbt-cdo:ManagedCDOPortfolio a owl:Class ;
+    rdfs:label "managed c d o portfolio"@en,
+        "管理型担保债务凭证组合（managed CDO portfolio）"@zh ;
+    rdfs:comment "参考资产购入后（组合逐步建成），CDO 管理人可酌情调整的组合。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOPortfolio ;
+    skos:definition "A portfolio where the reference assets of the CDO are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit."@en .
+
+fibo-sec-dbt-cdo:ManagedManagementStyle a owl:Class ;
+    rdfs:label "managed management style"@en,
+        "管理型管理风格（managed management style）"@zh ;
+    rdfs:comment "由管理人主动调整参考资产组合的管理方式。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOManagementStyle .
+
+fibo-sec-dbt-cdo:MarketValueCDO a owl:Class ;
+    rdfs:label "market value c d o"@en,
+        "市值型担保债务凭证（market value CDO）"@zh ;
+    rdfs:comment "以偿付能力取决于抵押品市场价值（而非仅现金流）的 CDO。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:structure.2 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MarketValueStructure ],
+        fibo-sec-dbt-cdo:CDODeal .
+
+fibo-sec-dbt-cdo:MarketValueStructure a owl:Class ;
+    rdfs:label "market value structure"@en,
+        "市值结构（market value structure）"@zh ;
+    rdfs:comment "CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOCashflowTreatmentStructure .
+
+fibo-sec-dbt-cdo:NonAgencyRegularJumpZTranche a owl:Class ;
+    rdfs:label "non agency regular jump z tranche"@en,
+        "非机构常规跳转 Z 分档（non-agency regular jump Z tranche）"@zh ;
+    rdfs:comment "常规（非粘性）跳转 Z 分档：仅在触发事件持续期间维持变更后的状态，触发事件解除后恢复原有付款状态。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:reverts ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:JumpZTriggerEventReversal ],
+        fibo-sec-dbt-cdo:NonAgencyJumpZTranche ;
+    skos:definition "Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed."@en .
+
+fibo-sec-dbt-cdo:NonAgencyZTranche a owl:Class ;
+    rdfs:label "non agency z tranche"@en,
+        "非机构 Z 分档（non-agency Z tranche）"@zh ;
+    rdfs:comment "在其他分档存续期间不接收付款的分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "A tranche that does not receive payments while other tranches remain."@en ;
+    skos:editorialNote "These tranches are credited for interest that would have been received and that interest is accrued to the Z tranche. Once all other tranches have been paid, the holders of the Z tranche receive payments. Types of Z Tranche: A Jump Z tranche is like a Z tranche but if there is some sort of trigger event reached then the holders of the Jump Z tranche will begin to receive payments. \"Sticky\" Jump Z tranches maintain this payment priority until they are retired, while regular, non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed. Review note: These are currently separate entries - they should be entries for types of Z Tranche. Add new list and move these to there."@en .
+
+fibo-sec-dbt-cdo:PAC-1Class a owl:Class ;
+    rdfs:label "p a c-1 class"@en,
+        "计划摊销一档（PAC-1 class）"@zh ;
+    rdfs:comment "计划摊销档（PAC）分档，PAC-1 是优先级最高的计划摊销档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-dbt-cdo:PAC-2Class ;
+            owl:onProperty fibo-sec-dbt-cdo:takesPrepaymentAfter ],
+        fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    skos:definition "Planned Amortization Class tranche. PAC-1 is the most senior Planned Amortization Class tranche."@en ;
+    cmns-av:explanatoryNote "Principal payment must follow a certain schedule. These tranches have priority over the other tranches in the deal, which are then referred to as the support or companion tranches."@en .
+
+fibo-sec-dbt-cdo:RegularFloaterTranche a owl:Class ;
+    rdfs:label "regular floater tranche"@en,
+        "常规浮动分档（regular floater tranche）"@zh ;
+    rdfs:comment "与某一指数加利差挂钩的分档，利差加在指数之上。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:FloaterTranche ;
+    owl:disjointWith fibo-sec-dbt-cdo:SuperFloaterTranche ;
+    skos:definition "A floater tranche is a tranche that is keyed to an index and a spread. The spread is added to the index."@en ;
+    cmns-av:explanatoryNote "For example, 3 month LIBOR +50 -- meaning that the coupon would be whatever the 3 month LIBOR is plus 50 basis points. This is not a continuously updated number, rather it resets at specified intervals."@en .
+
+fibo-sec-dbt-cdo:SeniorMBSTranche a owl:Class ;
+    rdfs:label "senior m b s tranche"@en,
+        "优先抵押支持证券分档（senior MBS tranche）"@zh ;
+    rdfs:comment "MBS 发行中优先级最高的分档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:seniorTo ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MezzanineMBSTranche ],
+        fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model."@en .
+
+fibo-sec-dbt-cdo:StaticCDO a owl:Class ;
+    rdfs:label "static c d o"@en,
+        "静态担保债务凭证（static CDO）"@zh ;
+    rdfs:comment "抵押品在 CDO 存续期内固定不变的 CDO：参考资产购入后，在产品期限内不再调整。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:managementStyle.1 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:StaticManagementStyle ],
+        fibo-sec-dbt-cdo:CDODeal ;
+    skos:definition "A CDO where collateral is fixed through the life of the CDO. The reference assets are bought and then are kept untouched for the term of the product."@en ;
+    cmns-av:explanatoryNote "Investors can assess the various tranches of the CDO with full knowledge of what the collateral will be. The primary risk they face is credit risk. A deal that starts off managed can become static if the performance is too poor. Also, some deals are static but allow managers to sell out poorly performing assets subject to certain conditions, but do not allow purchase of new assets, so are semi-static."@en .
+
+fibo-sec-dbt-cdo:StaticManagementStyle a owl:Class ;
+    rdfs:label "static management style"@en,
+        "静态管理风格（static management style）"@zh ;
+    rdfs:comment "参考资产组合在存续期内保持固定的管理方式。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CDOManagementStyle .
+
+fibo-sec-dbt-cdo:TACTranche a owl:Class ;
+    rdfs:label "t a c tranche"@en,
+        "目标摊销档（TAC tranche）"@zh ;
+    rdfs:comment "目标摊销档（TAC）：与 PAC 分档相关，具有针对特定提前偿付速度（称为定价速度）的付款计划表。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:specifies.1 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TACTrancheAmortizationSchedule ],
+        fibo-sec-dbt-cdo:AgencyCMO,
+        fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "Targeted Amortization Class. This is related to a PAC tranche and has a payment schedule geared towards a specified prepayment speed (called the pricing speed). Agency CMO"@en ;
+    skos:editorialNote "The main difference between TAC and PAC is that the PAC schedule remains under a certain prepayment range (such as 50-150 PSA) while the TAC tranche is geared from the outset at a specified prepayment speed (such as 150 PSA). Math note: Originally specified in PSAin the examples. What is PSA? Review how we have modeled \"Payment Speed\" as a concept."@en .
+
+fibo-sec-dbt-cdo:TranchedMBSDealProspectus a owl:Class ;
+    rdfs:label "tranched m b s deal prospectus"@en,
+        "分档型抵押支持证券交易招募说明书（tranched MBS deal prospectus）"@zh ;
+    rdfs:comment "分档型 MBS 发行的招募说明书。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgageBackedSecurityOfferingProspectus .
+
+fibo-sec-dbt-cdo:isAlso.1 a owl:ObjectProperty ;
+    rdfs:label "is also"@en,
+        "同时是（is also）"@zh ;
+    rdfs:comment "表明某分档同时属于另一类型。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:TranchedMBSDeal ;
+    rdfs:range fibo-sec-dbt-mbs:PrivateLabelMBSDeal .
+
+fibo-sec-dbt-cdo:issues a owl:ObjectProperty ;
+    rdfs:label "issues"@en,
+        "发行（issues）"@zh ;
+    rdfs:comment "正式使某事物可得。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CashCDO ;
+    rdfs:range fibo-sec-dbt-cdo:CashCDOTranche .
+
+fibo-sec-dbt-cdo:providesPrepaymentSupportFor a owl:ObjectProperty ;
+    rdfs:label "provides prepayment support for"@en,
+        "为……提供提前偿付支持（provides prepayment support for）"@zh ;
+    rdfs:comment "表明某分档为另一特定分档吸收提前偿付变动。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    rdfs:range fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    rdfs:subPropertyOf fibo-sec-dbt-cdo:providesPrepaymentSupport ;
+    owl:inverseOf fibo-sec-dbt-cdo:supportedBy .
+
+fibo-sec-dbt-cdo:ratedAtIssue a owl:ObjectProperty ;
+    rdfs:label "rated at issue"@en,
+        "发行时评级（rated at issue）"@zh ;
+    rdfs:comment "分档在发行时所获得的评级。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:MezzanineCDOTranche ;
+    rdfs:range fibo-sec-dbt-cdo:TrancheRatingAtIssue .
+
+fibo-sec-dbt-cdo:ratedAtIssue.1 a owl:ObjectProperty ;
+    rdfs:label "rated at issue"@en,
+        "发行时评级（rated at issue）"@zh ;
+    rdfs:comment "分档在发行时所获得的评级。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:SeniorCDOTranche ;
+    rdfs:range fibo-sec-dbt-cdo:TrancheRatingAtIssue .
+
+fibo-sec-dbt-cdo:reverts a owl:ObjectProperty ;
+    rdfs:label "reverts"@en,
+        "恢复（reverts）"@zh ;
+    rdfs:comment "表明触发事件解除后该分档恢复原有付款状态。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:NonAgencyRegularJumpZTranche ;
+    rdfs:range fibo-sec-dbt-cdo:JumpZTriggerEventReversal .
+
+fibo-sec-dbt-cdo:revertsOn a owl:ObjectProperty ;
+    rdfs:label "reverts on"@en,
+        "于……时恢复（reverts on）"@zh ;
+    rdfs:comment "指明使该分档恢复原有付款状态的事件。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:AgencyRegularJumpZ ;
+    rdfs:range fibo-sec-dbt-cdo:JumpZTriggerEventReversal .
+
+fibo-sec-dbt-cdo:specifies a owl:ObjectProperty ;
+    rdfs:label "specifies"@en,
+        "规定（specifies）"@zh ;
+    rdfs:comment "清晰而确定地提及、命名或陈述某事物。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    rdfs:range fibo-sec-dbt-cdo:PACTrancheAmortizationSchedule .
+
+fibo-sec-dbt-cdo:specifies.1 a owl:ObjectProperty ;
+    rdfs:label "specifies"@en,
+        "规定（specifies）"@zh ;
+    rdfs:comment "清晰而确定地提及、命名或陈述某事物。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:TACTranche ;
+    rdfs:range fibo-sec-dbt-cdo:TACTrancheAmortizationSchedule .
+
+fibo-sec-dbt-cdo:specifiesReverseTrigger a owl:ObjectProperty ;
+    rdfs:label "specifies reverse trigger"@en,
+        "规定反向触发（specifies reverse trigger）"@zh ;
+    rdfs:comment "规定使分档恢复原有状态的反向触发事件。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:JumpZTriggerEventReversal ;
+    rdfs:range fibo-sec-dbt-cdo:JumpZTriggerEvent .
+
+fibo-sec-dbt-cdo:takesPrepaymentAfter a owl:ObjectProperty ;
+    rdfs:label "takes prepayment after"@en,
+        "在……之后承担提前偿付（takes prepayment after）"@zh ;
+    rdfs:comment "表明某分档在另一分档之后承担提前偿付现金流。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:PAC-1Class ;
+    rdfs:range fibo-sec-dbt-cdo:PAC-2Class ;
+    rdfs:subPropertyOf fibo-sec-dbt-cdo:supportedBy .
+
+fibo-sec-dbt-cdo:takesPrepaymentAfter.1 a owl:ObjectProperty ;
+    rdfs:label "takes prepayment after"@en,
+        "在……之后承担提前偿付（takes prepayment after）"@zh ;
+    rdfs:comment "表明某分档在另一分档之后承担提前偿付现金流。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:PAC-2Class ;
+    rdfs:range fibo-sec-dbt-cdo:PAC-3Class ;
+    rdfs:subPropertyOf fibo-sec-dbt-cdo:supportedBy .
+
+fibo-sec-dbt-pbs:AssetBackedSecurity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:hasTrancheType ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TrancheType ] ;
+    owl:disjointWith fibo-sec-dbt-mbs:MortgageBackedSecurity .
+
+fibo-sec-dbt-cdo:AgencyJumpTranche a owl:Class ;
+    rdfs:label "agency jump tranche"@en,
+        "机构跳转分档（agency jump tranche）"@zh ;
+    rdfs:comment "机构产品中的一种分档：当某种触发事件达成时，该分档持有人开始收到付款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:specifiesTrigger ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:JumpZTriggerEvent ],
+        fibo-sec-dbt-cdo:AgencyCMO ;
+    skos:definition "A tranche where if there is some sort of trigger event reached then the holders of the tranche will begin to receive payments."@en .
+
+fibo-sec-dbt-cdo:AgencyJumpZTranche a owl:Class ;
+    rdfs:label "agency jump z tranche"@en,
+        "机构跳转 Z 分档（agency jump Z tranche）"@zh ;
+    rdfs:comment "类似于 Z 分档，但当某种触发事件达成时，跳转 Z 分档持有人开始收到付款。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyJumpTranche,
+        fibo-sec-dbt-cdo:AgencyZTranche ;
+    skos:definition "A Jump Z tranche is like a Z tranche but if there is some sort of trigger event reached then the holders of the Jump Z tranche will begin to receive payments. Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed."@en .
+
+fibo-sec-dbt-cdo:AgencyZTranche a owl:Class ;
+    rdfs:label "agency z tranche"@en,
+        "机构 Z 分档（agency Z tranche）"@zh ;
+    rdfs:comment "在其他分档存续期间不接收付款的分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyCMO ;
+    skos:definition "A tranche that does not receive payments while other tranches remain."@en .
+
+fibo-sec-dbt-cdo:CDOPool a owl:Class ;
+    rdfs:label "c d o pool"@en,
+        "担保债务凭证池（CDO pool）"@zh ;
+    rdfs:comment "由 CDO 证券组成的池，双层 CDO（CDO Squared）的标的就是 CDO 工具池。"@zh ;
+    rdfs:subClassOf fibo-sec-sec-pls:DebtPool ;
+    skos:definition "A pool of CDO securities. The underlying of the CDO Squared is a pool of CDO instruments."@en .
+
+fibo-sec-dbt-cdo:CDOPortfolioManager a owl:Class ;
+    rdfs:label "c d o portfolio manager"@en,
+        "担保债务凭证组合管理人（CDO portfolio manager）"@zh ;
+    rdfs:comment "管理型 CDO 或套利型 CDO 的组合管理人（亦称资产管理人）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:manages ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolio ],
+        cmns-pts:PartyRole ;
+    skos:definition "The portfolio manager for a managed CDO or arbitrage CDO (also called an asset manager). This assumes that the role is the same in both cases."@en .
+
+fibo-sec-dbt-cdo:MBSInstrumentSlice a owl:Class ;
+    rdfs:label "m b s instrument slice"@en,
+        "抵押支持证券工具切片（MBS instrument slice）"@zh ;
+    rdfs:comment "对某一档中单独一片或数片的持有。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-sec-dbt-cdo:MBSTrancheNote fibo-sec-dbt-mbs:PassThroughMBSInstrumentNote ) ] ],
+        fibo-fnd-oac-own:Portfolio ;
+    skos:definition "A holding of an individual slice or slices of a tranche."@en ;
+    cmns-av:explanatoryNote "These may be held in different notes, with different denominations. Tranche slice in this sense is only relevant in the context of something like a CDO or analogous things such as CBO."@en .
+
+fibo-sec-dbt-cdo:NonAgencyJumpTranche a owl:Class ;
+    rdfs:label "non agency jump tranche"@en,
+        "非机构跳转分档（non-agency jump tranche）"@zh ;
+    rdfs:comment "当某种触发事件达成时，该分档持有人开始收到付款的分档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:specifiesTrigger ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:JumpZTriggerEvent ],
+        fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "A tranche where if there is some sort of trigger event reached then the holders of the tranche will begin to receive payments."@en .
+
+fibo-sec-dbt-cdo:NonAgencyJumpZTranche a owl:Class ;
+    rdfs:label "non agency jump z tranche"@en,
+        "非机构跳转 Z 分档（non-agency jump Z tranche）"@zh ;
+    rdfs:comment "类似于 Z 分档，但当某种触发事件达成时，跳转 Z 分档持有人开始收到付款。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:NonAgencyJumpTranche,
+        fibo-sec-dbt-cdo:NonAgencyZTranche ;
+    skos:definition "A Jump Z tranche is like a Z tranche but if there is some sort of trigger event reached then the holders of the Jump Z tranche will begin to receive payments. Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed."@en .
+
+fibo-sec-dbt-cdo:PAC-3Class a owl:Class ;
+    rdfs:label "p a c-3 class"@en,
+        "计划摊销三档（PAC-3 class）"@zh ;
+    rdfs:comment "计划摊销档（PAC）分档，具有计划付款的补充支持档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    skos:definition "Planned Amortization Class tranche. Additional support tranche with scheduled payments."@en ;
+    cmns-av:explanatoryNote "Principal payment must follow a certain schedule. These tranches have priority over the other tranches in the deal, which are then referred to as the support or companion tranches. See PAC-2 for explanation. If you continue, and create another support tranche that also has scheduled payments, that would become the PAC-3 bond."@en .
+
+fibo-sec-dbt-cdo:PACTrancheAmortizationSchedule a owl:Class ;
+    rdfs:label "p a c tranche amortization schedule"@en,
+        "计划摊销档摊销计划表（PAC tranche amortization schedule）"@zh ;
+    rdfs:comment "计划摊销档（PAC）分档的本金摊销计划表。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-bnd:RedemptionSchedule .
+
+fibo-sec-dbt-cdo:SubordinatedMBSTranche a owl:Class ;
+    rdfs:label "subordinated m b s tranche"@en,
+        "次级抵押支持证券分档（subordinated MBS tranche）"@zh ;
+    rdfs:comment "MBS 发行中优先级最低的分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model."@en .
+
+fibo-sec-dbt-cdo:SuperFloaterTranche a owl:Class ;
+    rdfs:label "super floater tranche"@en,
+        "超级浮动分档（super floater tranche）"@zh ;
+    rdfs:comment "票息杠杆放大浮动利率变动的分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:FloaterTranche .
+
+fibo-sec-dbt-cdo:SuperSeniorCDOTranche a owl:Class ;
+    rdfs:label "super senior c d o tranche"@en,
+        "超优先担保债务凭证分档（super senior CDO tranche）"@zh ;
+    rdfs:comment "位于 CDO 发行最顶端的分档。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+    skos:definition "A tranche at the very top of a CDO Issue."@en .
+
+fibo-sec-dbt-cdo:TACTrancheAmortizationSchedule a owl:Class ;
+    rdfs:label "t a c tranche amortization schedule"@en,
+        "目标摊销档摊销计划表（TAC tranche amortization schedule）"@zh ;
+    rdfs:comment "目标摊销档（TAC）分档的本金摊销计划表。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-bnd:RedemptionSchedule .
+
+fibo-sec-dbt-cdo:TranchedMBSDeal a owl:Class ;
+    rdfs:label "tranched m b s deal"@en,
+        "分档型抵押支持证券交易（tranched MBS deal）"@zh ;
+    rdfs:comment "分档型 MBS 的一次发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:isAlso.1 ;
+            owl:someValuesFrom fibo-sec-dbt-mbs:PrivateLabelMBSDeal ],
+        fibo-sec-dbt-dbti:DebtOffering .
+
+fibo-sec-dbt-cdo:TriggerEvent a owl:Class ;
+    rdfs:label "trigger event"@en,
+        "触发事件（trigger event）"@zh ;
+    rdfs:comment "某一数值越过某一阈值的事件，或其他类型的业务事件。"@zh ;
+    skos:definition "Any event where some value passes some threashold. Or some other type of business event. This is not restricted to \"trigger\" in the sense of a value passing a threshold. Can also be an seen such as a CDO manager going into bankruptcy."@en .
+
+fibo-sec-dbt-cdo:cashflowPrecedence a owl:ObjectProperty ;
+    rdfs:label "cashflow precedence"@en,
+        "现金流优先顺序（cashflow precedence）"@zh ;
+    rdfs:comment "指明各分档获得现金流的先后次序。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    rdfs:range fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    owl:inverseOf fibo-sec-dbt-cdo:providesCreditSupportTo .
+
+fibo-sec-dbt-cdo:hasCDOOriginationObjective a owl:ObjectProperty ;
+    rdfs:label "has c d o origination objective"@en,
+        "具有担保债务凭证发起目标（has CDO origination objective）"@zh ;
+    rdfs:comment "指明 CDO 发行的发起目标或动机。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CDODeal ;
+    rdfs:range fibo-sec-dbt-cdo:CDOOriginationObjective .
+
+fibo-sec-dbt-cdo:hasTrancheType a owl:ObjectProperty ;
+    rdfs:label "has tranche type"@en,
+        "具有分档类型（has tranche type）"@zh ;
+    rdfs:comment "指明分档的类型。"@zh ;
+    rdfs:domain fibo-sec-dbt-pbs:StructuredFinanceInstrument ;
+    rdfs:range fibo-sec-dbt-cdo:TrancheType .
+
+fibo-sec-dbt-cdo:managementStyle.1 a owl:ObjectProperty ;
+    rdfs:label "management style"@en,
+        "管理风格（management style）"@zh ;
+    rdfs:comment "参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的管理方式。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CDODeal ;
+    rdfs:range fibo-sec-dbt-cdo:CDOManagementStyle ;
+    skos:definition "A CDO where the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit."@en .
+
+fibo-sec-dbt-cdo:providesCreditSupportTo a owl:ObjectProperty ;
+    rdfs:label "provides credit support to"@en,
+        "为……提供信用支持（provides credit support to）"@zh ;
+    rdfs:comment "表明某分档为另一分档提供信用增进。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    rdfs:range fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    rdfs:subPropertyOf fibo-sec-dbt-dbti:isSubordinatedTo .
+
+fibo-sec-dbt-cdo:providesPrepaymentSupport a owl:ObjectProperty ;
+    rdfs:label "provides prepayment support"@en,
+        "提供提前偿付支持（provides prepayment support）"@zh ;
+    rdfs:comment "表明某分档吸收提前偿付变动以保护其他分档。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:AgencyCMO ;
+    rdfs:range fibo-sec-dbt-cdo:AgencyCMO .
+
+fibo-sec-dbt-cdo:seniorTo a owl:ObjectProperty ;
+    rdfs:label "senior to"@en,
+        "优先于（senior to）"@zh ;
+    rdfs:comment "表明某一分档在受偿顺序上优先于另一分档。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:MezzanineMBSTranche,
+        fibo-sec-dbt-cdo:SeniorMBSTranche ;
+    rdfs:range fibo-sec-dbt-cdo:MezzanineMBSTranche,
+        fibo-sec-dbt-cdo:SubordinatedMBSTranche ;
+    rdfs:subPropertyOf fibo-sec-dbt-cdo:cashflowPrecedence ;
+    skos:definition "Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model."@en .
+
+fibo-sec-dbt-cdo:specifiesTrigger a owl:ObjectProperty ;
+    rdfs:label "specifies trigger"@en,
+        "规定触发（specifies trigger）"@zh ;
+    rdfs:comment "规定一旦发生时使跳转 Z 持有人开始接收付款的事件。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:AgencyJumpTranche,
+        fibo-sec-dbt-cdo:NonAgencyJumpTranche ;
+    rdfs:range fibo-sec-dbt-cdo:JumpZTriggerEvent ;
+    skos:definition "The event which, when it takes place, causes the Jump Z holders to begin receiving payments."@en .
+
+fibo-sec-dbt-cdo:structure.2 a owl:ObjectProperty ;
+    rdfs:label "structure"@en,
+        "结构（structure）"@zh ;
+    rdfs:comment "CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:CDODeal ;
+    rdfs:range fibo-sec-dbt-cdo:CDOCashflowTreatmentStructure ;
+    skos:definition "The source of funds for the CDO is market value. This means that principal and interest payments to investors come from both collateral cash flows as well as sales of collateral."@en .
+
+fibo-sec-dbt-cdo:AgencyPOTranche a owl:Class ;
+    rdfs:label "agency p o tranche"@en,
+        "机构仅付本分档（agency PO tranche）"@zh ;
+    rdfs:comment "仅支付本金的分档（Principal Only）。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:AgencyCMO ;
+    skos:definition "Principal Only tranche. This tranche will only pay principal."@en .
+
+fibo-sec-dbt-cdo:FloaterTranche a owl:Class ;
+    rdfs:label "floater tranche"@en,
+        "浮动分档（floater tranche）"@zh ;
+    rdfs:comment "与某一指数加利差挂钩的分档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-fd:hasRecurrenceInterval ;
+            owl:someValuesFrom fibo-fnd-dt-bd:DayOfMonth ],
+        fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "A floater tranche is a tranche that is keyed to an index and a spread."@en ;
+    cmns-av:explanatoryNote "For example, 3 month LIBOR +50 -- meaning that the coupon would be whatever the 3 month LIBOR is plus 50 basis points. This is not a continuously updated number, rather it resets at specified intervals."@en .
+
+fibo-sec-dbt-cdo:MBSTrancheNote a owl:Class ;
+    rdfs:label "m b s tranche note"@en,
+        "抵押支持证券分档票据（MBS tranche note）"@zh ;
+    rdfs:comment "某一档中的单张票据。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:PromissoryNote ;
+    skos:definition "An individual note of a tranche."@en ;
+    cmns-av:explanatoryNote "A Tranche is made up of e.g. $500m in notes and so on. These may be in different notes, with different denominations. Analytics that would apply to the Tranche would by implication apply to each slice of the tranche."@en .
+
+fibo-sec-dbt-cdo:MezzanineCDOTranche a owl:Class ;
+    rdfs:label "mezzanine c d o tranche"@en,
+        "夹层担保债务凭证分档（mezzanine CDO tranche）"@zh ;
+    rdfs:comment "介于优先档与次级档之间的分档，CDO 夹层档的评级通常为 B 至 BBB。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:ratedAtIssue ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TrancheRatingAtIssue ],
+        fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+    skos:definition "The tranche between senior and subordinated. Mezzanine tranches of a CDO issue are typically rated B to BBB."@en ;
+    cmns-av:explanatoryNote "If there are defaults or the CDO's collateral otherwise underperforms, scheduled payments to mezzanine tranches take precedence over those to subordinated/equity tranches."@en .
+
+fibo-sec-dbt-cdo:MezzanineMBSTranche a owl:Class ;
+    rdfs:label "mezzanine m b s tranche"@en,
+        "夹层抵押支持证券分档（mezzanine MBS tranche）"@zh ;
+    rdfs:comment "MBS 发行中优先级居中的夹层分档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:seniorTo ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:SubordinatedMBSTranche ],
+        fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+    skos:definition "Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model."@en .
+
+fibo-sec-dbt-cdo:SeniorCDOTranche a owl:Class ;
+    rdfs:label "senior c d o tranche"@en,
+        "优先担保债务凭证分档（senior CDO tranche）"@zh ;
+    rdfs:comment "CDO 发行中优先级最高的分档，评级通常为 A 至 AAA；若发生违约或抵押品表现不佳，计划付款优先保障该档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:ratedAtIssue.1 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TrancheRatingAtIssue ],
+        fibo-sec-dbt-cdo:CollateralizedDebtObligation,
+        fibo-sec-dbt-pbs:Tranche ;
+    skos:definition "The most senior tranche of the CDO issue. Typically rated A to AAA. If there are defaults or the CDO's collateral otherwise underperforms, scheduled payments to senior tranches take precedence over those of mezzanine tranches."@en .
+
+fibo-sec-dbt-cdo:SubordinatedCDOEquity a owl:Class ;
+    rdfs:label "subordinated c d o equity"@en,
+        "次级担保债务凭证权益档（subordinated CDO equity）"@zh ;
+    rdfs:comment "次级（亦称权益）CDO 分档是 CDO 发行中最末尾的分档，违约或抵押品表现不佳时最先承担损失。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:Security ;
+    skos:definition "The subordinated (also known as equity) CDO tranche is the most junior tranche in the CDO issue. If there are defaults or the CDO's collateral otherwise underperforms, scheduled payments to senior and mezzanine tranches take precedence over those to subordinated/equity tranches."@en ;
+    cmns-av:explanatoryNote "This is not a tranche of the debt in the CDO but an equity interest in the pool of underlying. There is a very bottom piece, not a tranche, but rather called the preferred shares (or just pref shares, or equity) that is the very bottom most layer in a CDO and is also referred to as the \"first loss piece\" since, like equity in a corporation, losses are incurred here before any of the actual bond holders take losses. This isn't a tranche"@en .
+
+fibo-sec-dbt-cdo:TrancheType a owl:Class ;
+    rdfs:label "tranche type"@en,
+        "分档类型（tranche type）"@zh ;
+    rdfs:comment "指明分档的类型。"@zh ;
+    skos:definition "the type of tranche in a tranched MBS security"@en .
+
+fibo-sec-dbt-cdo:CDOCashflowTreatmentStructure a owl:Class ;
+    rdfs:label "c d o cashflow treatment structure"@en,
+        "担保债务凭证现金流处理结构（CDO cashflow treatment structure）"@zh ;
+    rdfs:comment "担保债务凭证（CDO）中现金流的处理方式。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Strategy ;
+    skos:definition "The way in which cash flows are handled in a CDO."@en .
+
+fibo-sec-dbt-cdo:CDOManagementStyle a owl:Class ;
+    rdfs:label "c d o management style"@en,
+        "担保债务凭证管理风格（CDO management style）"@zh ;
+    rdfs:comment "CDO 存续期内参考资产的管理方式。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Strategy ;
+    skos:definition "The manner in which reference assets are managed during the life of a CDO."@en .
+
+fibo-sec-dbt-cdo:CDOPortfolio a owl:Class ;
+    rdfs:label "c d o portfolio"@en,
+        "担保债务凭证组合（CDO portfolio）"@zh ;
+    rdfs:comment "持有 CDO 参考资产的组合。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MBSInstrumentSlice ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolioManager ],
+        fibo-fnd-oac-own:Portfolio ;
+    skos:definition "A portfolio in which the reference assets of the CDO are held."@en .
+
+fibo-sec-dbt-cdo:PAC-2Class a owl:Class ;
+    rdfs:label "p a c-2 class"@en,
+        "计划摊销二档（PAC-2 class）"@zh ;
+    rdfs:comment "计划摊销档（PAC）分档，PAC-2 指具有类似 PAC 债券之计划付款结构的支持档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-dbt-cdo:PAC-3Class ;
+            owl:onProperty fibo-sec-dbt-cdo:takesPrepaymentAfter.1 ],
+        fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    skos:definition "Planned Amortization Class tranche. PAC-2 refers to a support tranche that is given a scheduled payment structure like a PAC bond."@en ;
+    cmns-av:explanatoryNote "Principal payment must follow a certain schedule. These tranches have priority over the other tranches in the deal, which are then referred to as the support or companion tranches. For example, let's say you have a deal with a PAC tranche and a support tranche (i.e., a tranche that is a support tranche and is therefore subordinate to the PAC tranche) that has a scheduled payment structure like you did with the PAC bond. That support bond then is called the PAC-2 bond. If you continue, and create another support tranche that also has scheduled payments, that would become the PAC-3 bond."@en .
+
+fibo-sec-dbt-cdo:TrancheRatingAtIssue a owl:Class ;
+    rdfs:label "tranche rating at issue"@en,
+        "分档发行时评级（tranche rating at issue）"@zh ;
+    rdfs:comment "证券某一档在发行时的评级。"@zh ;
+    skos:definition "The rating at issue of a tranche of a security. Note this is under review"@en ;
+    skos:editorialNote "In the case of CDOs, senior and mezzanine tranches of a CDO issue are typically rated, with the former receiving ratings of A to AAA and the latter receiving ratings of B to BBB. The ratings reflect both the credit quality of underlying collateral as well as how much protection a given tranch is afforded by tranches that are subordinate to it. Review note: Remove this it's no different from an instrument."@en .
+
+fibo-sec-dbt-cdo:supportedBy a owl:ObjectProperty ;
+    rdfs:label "supported by"@en,
+        "由……支持（supported by）"@zh ;
+    rdfs:comment "表明某分档由另一分档提供付款支持。"@zh ;
+    rdfs:domain fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+    rdfs:range fibo-sec-dbt-cdo:PlannedAmortizationClassBond .
+
+fibo-sec-dbt-cdo:CDOOriginationObjective a owl:Class ;
+    rdfs:label "c d o origination objective"@en,
+        "担保债务凭证发起目标（CDO origination objective）"@zh ;
+    rdfs:comment "CDO 发行背后的缘起或动机。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Objective ;
+    skos:definition "The origin or motivation behind a CDO issue."@en .
+
+fibo-sec-dbt-cdo:JumpZTriggerEvent a owl:Class ;
+    rdfs:label "jump z trigger event"@en,
+        "跳转 Z 触发事件（jump Z trigger event）"@zh ;
+    rdfs:comment "触发跳转 Z 分档生效的事件。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-cdo:TriggerEvent ;
+    skos:definition "The event which triggers the Jump Z"@en ;
+    cmns-av:explanatoryNote "If this trigger event is reached then the holders of the Jump Z tranche will begin to receive payments. Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed. The event may be a market event or an event relating to the deal."@en .
+
+fibo-sec-dbt-cdo:JumpZTriggerEventReversal a owl:Class ;
+    rdfs:label "jump z trigger event reversal"@en,
+        "跳转 Z 触发事件解除（jump z trigger event reversal）"@zh ;
+    rdfs:comment "触发跳转 Z 分档之事件的解除。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:specifiesReverseTrigger ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:JumpZTriggerEvent ],
+        fibo-sec-dbt-cdo:TriggerEvent ;
+    skos:definition "The reversal of the event which triggers the Jump Z"@en .
+
+fibo-sec-dbt-cdo:CashCDOTranche a owl:Class ;
+    rdfs:label "cash c d o tranche"@en,
+        "现金型担保债务凭证分档（cash CDO tranche）"@zh ;
+    rdfs:comment "现金型 CDO 的一个分档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:isPartOf ;
+            owl:someValuesFrom fibo-sec-sec-pls:DebtPool ],
+        fibo-sec-dbt-cdo:CollateralizedDebtObligation,
+        fibo-sec-dbt-pbs:Tranche ;
+    owl:disjointWith fibo-sec-dbt-pbs:AssetBackedSecurity,
+        fibo-sec-dbt-syn:SyntheticCDOTranche .
+
+fibo-sec-dbt-cdo:AgencyCMO a owl:Class ;
+    rdfs:label "agency c m o"@en,
+        "机构抵押担保债券（agency CMO）"@zh ;
+    rdfs:comment "由政府机构发行或担保的抵押担保债券（CMO）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:hasTrancheType ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TrancheType ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:providesPrepaymentSupport ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:AgencyCMO ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-dbt-mbs:AgencyMBSPool ],
+        fibo-sec-dbt-dbti:DebtOffering ;
+    skos:editorialNote "Definition for the property 'has tranche type' which is now a restriction: The type of tranche for the CMO. Many different structures are used in practice, including stable PAC bonds or risky IOs and POs. There are floaters and inverse floaters. There are also Z-bonds, which are analogous to zero-coupon bonds."@en .
+
+fibo-sec-dbt-cdo:CollateralizedDebtObligation a owl:Class ;
+    rdfs:label "collateralized debt obligation"@en,
+        "担保债务凭证（collateralized debt obligation）"@zh ;
+    rdfs:comment "由公司贷款和抵押支持证券等固定收益资产组合构建的结构化金融产品，由特殊目的载体发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-dbt-cdo:CollateralizedDebtObligation ;
+            owl:onProperty fibo-sec-dbt-dbti:isSubordinatedTo ],
+        fibo-sec-dbt-pbs:StructuredFinanceInstrument ;
+    skos:definition "structured finance constructed from a portfolio of fixed income assets including corporate loans and mortgage backed securities. A special purpose vehicle (SPV) issues notes to investors in order to raise funds that are invested in a portfolio of those fixed income assets, held by the SPV as collateral for the notes. Further notes: Collateralized Debt Obligation, for example, ABS CDO which consists of a portfolio of different ABS bonds, and the payments to the holders of these trust certificates are derived from the cash flows of the ABS bonds. This CDO instrument is part of a CDO issue, consisting of individual CDO instruments of a given seniority. Often referred to as tranches and slices (Investopedia). Investopedia: Similar in structure to a collateralized mortgage obligation (CMO) or collateralized bond obligation (CBO), CDOs are unique in that they represent different types of debt and credit risk. In the case of CDOs, these different types of debt are often referred to as 'tranches' or 'slices'. Each slice has a different maturity and risk associated with it. The higher the risk, the more the CDO pays. Further details: Collateralized Debt obligations are securitized interests in pools of - generally non-mortgage - assets. Assets - called collateral - usually comprise loans or debt instruments. A CDO may be called a collateralized loan obligation (CLO) or collateralized bond obligation (CBO) if it holds only loans or bonds, respectively. Investors bear the credit risk of the collateral. Multiple tranches of securities are issued by the CDO, offering investors various maturity and credit risk characteristics."@en ;
+    cmns-av:abbreviation "CDO"@en .
+
+fibo-sec-dbt-cdo:PlannedAmortizationClassBond a owl:Class ;
+    rdfs:label "planned amortization class bond"@en,
+        "计划摊销档债券（planned amortization class bond）"@zh ;
+    rdfs:comment "本金支付必须遵循特定计划表的分档（PAC）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+            owl:onProperty fibo-sec-dbt-cdo:supportedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+            owl:onProperty fibo-sec-dbt-cdo:providesPrepaymentSupportFor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:specifies ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:PACTrancheAmortizationSchedule ],
+        fibo-sec-dbt-cdo:AgencyCMO ;
+    skos:definition "Planned Amortization Class tranche.This is a tranche where the principal payment must follow a certain schedule."@en ;
+    cmns-av:explanatoryNote "These tranches have priority over the other tranches in the deal, which are then referred to as the support or companion tranches. There are usually several PAC tranches created. PAC-1, PAC-2, PAC-3 -- this requires some more explanation. PAC-2 refers to a support tranche that is given a scheduled payment structure like a PAC bond. For example, let's say you have a deal with a PAC tranche and a support tranche (i.e., a tranche that is a support tranche and is therefore subordinate to the PAC tranche) that has a scheduled payment structure like you did with the PAC bond. That support bond then is called the PAC-2 bond. If you continue, and create another support tranche that also has scheduled payments, that would become the PAC-3 bond. Prospectus will cover each class. Prospectus is at the level of an issue."@en .
+
+fibo-sec-dbt-cdo:CDODeal a owl:Class ;
+    rdfs:label "c d o deal"@en,
+        "担保债务凭证交易（CDO deal）"@zh ;
+    rdfs:comment "作为面向市场发行的一部分、一组 CDO 分档的一次发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MezzanineCDOTranche ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolio ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolioManager ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CollateralizedDebtObligation ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:SeniorCDOTranche ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:SubordinatedCDOEquity ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:SuperSeniorCDOTranche ],
+        fibo-sec-dbt-dbti:DebtOffering ;
+    skos:definition "An Issue of a set of CDO tranches as part of an offering to the market."@en ;
+    cmns-av:explanatoryNote "Multiple tranches of securities are issued by the CDO issue (usually referred to simply as the CDO), offering investors various maturity and credit risk characteristics. Note that it is in the sense of CDO as an issue that one might say that a CDO \"has tranches\". The CDO as an individual instrument (labelled CDO in this model) does not have tranches but is itself a member of one or another tranche."@en .
+
+fibo-sec-dbt-cdo:TranchedMBSInstrument a owl:Class ;
+    rdfs:label "tranched m b s instrument"@en,
+        "分档型抵押支持证券工具（tranched MBS instrument）"@zh ;
+    rdfs:comment "分档型 MBS 的工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+            owl:onProperty fibo-sec-dbt-cdo:cashflowPrecedence ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-mbs:hasNote ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MBSTrancheNote ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-dbt-cdo:TranchedMBSInstrument ;
+            owl:onProperty fibo-sec-dbt-cdo:providesCreditSupportTo ],
+        fibo-sec-dbt-mbs:MortgageBackedSecurity .
+

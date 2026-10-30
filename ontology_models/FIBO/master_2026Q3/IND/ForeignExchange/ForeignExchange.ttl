@@ -1,0 +1,238 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-fx-fx: <https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/> .
+@prefix fibo-ind-ind-ind: <https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-ind-fx-fx: a owl:Ontology ;
+    rdfs:label "Foreign Exchange Ontology",
+        "外汇本体（Foreign Exchange Ontology）"@zh ;
+    dcterms:abstract "This ontology provides the parameters for foreign exchange rates, covering spot and forward rates, as well as foreign exchange spot rate volatilities." ;
+    dcterms:license """Copyright (c) 2014-2025 EDM Council, Inc.
+Copyright (c) 2014-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义外汇、汇率（exchange rate）与货币对的概念。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-dt-fd:,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>,
+        fibo-fnd-utl-av:,
+        fibo-ind-ind-ind:,
+        cmns-av:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-qtu: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/IND/20250701/ForeignExchange/ForeignExchange/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/IND/20140601/ForeignExchange/ForeignExchange.rdf version of this ontology was modified per the issue resolutions identified in the FIBO IND 1.0 FTF 1 report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20150501/ForeignExchange/ForeignExchange.rdf version of this ontology was modified per the issue resolutions identified in the FIBO IND 1.0 FTF 2 report, namely, to take advantage of content added via the FIBO FND 1.1 with respect to higher-level concepts of Rate, ExchangeRate, and InterestRate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20160801/ForeignExchange/ForeignExchange.rdf version of this ontology was modified per the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20180801/ForeignExchange/ForeignExchange.rdf version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20190901/ForeignExchange/ForeignExchange.rdf version of this ontology was modified to eliminate unnecessary references, some of which had incorrect datatypes, rename FxSpotVolatility to CurrencySpotVolatility and improve its definition and related volatility definitions more generally.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20210301/ForeignExchange/ForeignExchange.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20230201/ForeignExchange/ForeignExchange.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20230301/ForeignExchange/ForeignExchange.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20231201/ForeignExchange/ForeignExchange.rdf version of this ontology was modified to add the source for a quoted exchange rate (DER-143).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20240801/ForeignExchange/ForeignExchange.rdf version of the ontology was modified to replace hasConstituent with hasMember for better semantic consistency (FND-396)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2014-2025 EDM Council, Inc.",
+        "Copyright (c) 2014-2025 Object Management Group, Inc." .
+
+fibo-ind-fx-fx:CurrencyConversionService a owl:Class ;
+    rdfs:label "currency conversion service",
+        "货币兑换服务（currency conversion service）"@zh ;
+    rdfs:comment "将一国或一组国家的货币兑换为另一货币的外汇服务，通常（但非总是）作为某笔交易的对价。"@zh ;
+    rdfs:subClassOf fibo-ind-fx-fx:ForeignExchangeService ;
+    skos:definition "foreign exchange service involving the conversion of currency of one country or group of countries for another, typically, but not always, as a counter transaction" ;
+    cmns-av:explanatoryNote "A currency exchange service may be provided by a stand-alone business or may be part of the services offered by a bank or other financial institution. The currency exchange profits from its services either through adjusting the exchange rate or taking a commission." .
+
+fibo-ind-fx-fx:CurrencyForwardRateVolatility a owl:Class ;
+    rdfs:label "currency forward rate volatility",
+        "货币远期汇率波动率（currency forward rate volatility）"@zh ;
+    rdfs:comment "基于汇率一系列预测值的汇率波动度量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-ind-fx-fx:CurrencyForwardRate ;
+            owl:onProperty fibo-ind-ind-ind:isVolatilityOf ],
+        fibo-ind-fx-fx:ExchangeRateVolatility,
+        fibo-ind-ind-ind:ImpliedVolatility ;
+    skos:definition "measure of exchange rate fluctuation based on a range of projected values for exchange rates" .
+
+fibo-ind-fx-fx:CurrencySpotBuyRate a owl:Class ;
+    rdfs:label "currency spot buy rate",
+        "货币即期买入价（currency spot buy rate）"@zh ;
+    rdfs:comment "报告来源观测到的指示性即期买入市场汇率。"@zh ;
+    rdfs:subClassOf fibo-ind-fx-fx:CurrencySpotRate ;
+    skos:definition "indicative spot buying market rate as observed by the reporting source" .
+
+fibo-ind-fx-fx:CurrencySpotMidRate a owl:Class ;
+    rdfs:label "currency spot mid rate",
+        "货币即期中间价（currency spot mid rate）"@zh ;
+    rdfs:comment "报告来源观测到的指示性中间市场汇率（即期买入与卖出的均值）。"@zh ;
+    rdfs:subClassOf fibo-ind-fx-fx:CurrencySpotRate ;
+    skos:definition "indicative middle market (mean of spot buying and selling) rate as observed by the reporting source" .
+
+fibo-ind-fx-fx:CurrencySpotSellRate a owl:Class ;
+    rdfs:label "currency spot sell rate",
+        "货币即期卖出价（currency spot sell rate）"@zh ;
+    rdfs:comment "报告来源观测到的指示性即期卖出市场汇率。"@zh ;
+    rdfs:subClassOf fibo-ind-fx-fx:CurrencySpotRate ;
+    skos:definition "indicative spot selling market rate as observed by the reporting source" .
+
+fibo-ind-fx-fx:CurrencySpotVolatility a owl:Class ;
+    rdfs:label "currency spot volatility",
+        "货币即期波动率（currency spot volatility）"@zh ;
+    rdfs:comment "基于汇率一系列历史实际值的汇率波动度量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-ind-fx-fx:CurrencySpotRate ;
+            owl:onProperty fibo-ind-ind-ind:isVolatilityOf ],
+        fibo-ind-fx-fx:ExchangeRateVolatility,
+        fibo-ind-ind-ind:HistoricalVolatility ;
+    skos:definition "measure of exchange rate fluctuation based on a range of past actual values for exchange rates" .
+
+fibo-ind-fx-fx:InternationalElectronicFundsTransferService a owl:Class ;
+    rdfs:label "international electronic funds transfer service",
+        "国际电子资金转账服务（international electronic funds transfer service）"@zh ;
+    rdfs:comment "涉及跨境资金转移、可能同时涉及货币兑换的电子资金转账（EFT）服务。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:ElectronicFundsTransferService,
+        fibo-ind-fx-fx:ForeignExchangeService ;
+    skos:definition "electronic funds transfer (EFT) service involving the transfer of funds across national borders, that may also involve currency conversion" ;
+    cmns-av:synonym "international wire transfer" .
+
+fibo-ind-fx-fx:hasQuotationBlockAmountBasis a owl:ObjectProperty ;
+    rdfs:label "has quotation block amount basis",
+        "具有报价金额基准（has quotation block amount basis）"@zh ;
+    rdfs:comment "标识适用所述即期汇率的交易中将被兑换的交易货币金额。"@zh ;
+    rdfs:domain fibo-ind-fx-fx:QuotedExchangeRate ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "indicates the amount of the dealt currency which would be exchanged in a trade for which the stated spot rate applies" .
+
+fibo-ind-fx-fx:hasQuotationSettlementBasis a owl:ObjectProperty ;
+    rdfs:label "has quotation settlement basis",
+        "具有报价结算基准（has quotation settlement basis）"@zh ;
+    rdfs:comment "标识适用所述即期汇率的交易的结算周期。"@zh ;
+    rdfs:domain fibo-ind-fx-fx:QuotedExchangeRate ;
+    rdfs:range cmns-dt:Duration ;
+    rdfs:subPropertyOf cmns-dt:hasDuration ;
+    skos:definition "indicates the settlement period for a trade for which the stated spot rate applies" .
+
+fibo-ind-fx-fx:hasQuotedExchangeRate a owl:ObjectProperty ;
+    rdfs:label "has quoted exchange rate"@en,
+        "具有报价汇率（has quoted exchange rate）"@zh ;
+    rdfs:comment "特定来源在某日期时间所报的两种货币之间的汇率。"@zh ;
+    rdfs:range fibo-ind-fx-fx:QuotedExchangeRate ;
+    rdfs:subPropertyOf cmns-qtu:hasQuantityValue ;
+    skos:definition "rate of exchange between two currencies as specified as of some date and time as quoted by a specific source"@en .
+
+fibo-ind-fx-fx:isPremiumOn a owl:ObjectProperty ;
+    rdfs:label "is premium on",
+        "是……的升水（is premium on）"@zh ;
+    rdfs:comment "以相对于该货币对即期汇率的升水表示的汇率。"@zh ;
+    rdfs:domain fibo-ind-fx-fx:CurrencyForwardRate ;
+    rdfs:range fibo-ind-fx-fx:QuotedExchangeRate ;
+    skos:definition "an exchange rate expressed as a premium on the spot rate for the currency pair" .
+
+fibo-ind-fx-fx:ExchangeRateStructure a owl:Class ;
+    rdfs:label "exchange rate structure",
+        "汇率结构（exchange rate structure）"@zh ;
+    rdfs:comment "报价或预测汇率的结构化集合，可据以构造波动率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fnd-acc-cur:ExchangeRate ],
+        fibo-fnd-dt-fd:DatedStructuredCollection ;
+    skos:definition "structured collection of quoted or projected exchange rates, such that volatility may be constructed for the structure" .
+
+fibo-ind-fx-fx:hasExchangeRateQuotationSource a owl:ObjectProperty ;
+    rdfs:label "has exchange rate quotation source"@en,
+        "具有汇率报价来源（has exchange rate quotation source）"@zh ;
+    rdfs:comment "标识报价汇率的来源。"@zh ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-fct-mkt:Exchange ) ] ;
+    rdfs:subPropertyOf cmns-doc:refersTo ;
+    skos:definition "indicates the origin of a quoted exchange rate"@en .
+
+fibo-ind-fx-fx:hasQuoteCurrency a owl:ObjectProperty ;
+    rdfs:label "has quote currency",
+        "具有报价货币（has quote currency）"@zh ;
+    rdfs:comment "标识汇率中的报价货币；该货币的 R 单位代表一单位基准货币。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasDealtCurrency ;
+    skos:definition "indicates the quote currency in an exchange rate; R units of this currency represent one unit of the base currency" .
+
+fibo-ind-fx-fx:CurrencyForwardRate a owl:Class ;
+    rdfs:label "currency forward rate",
+        "货币远期汇率（currency forward rate）"@zh ;
+    rdfs:comment "两种货币之间在未来某时点结算的汇率，以相对于即期汇率的升水表示。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:Date ;
+            owl:onProperty fibo-fbc-pas-fpas:hasSettlementDate ],
+        fibo-ind-fx-fx:QuotedExchangeRate ;
+    skos:definition "rate of exchange between two currencies for settlement at some future point in time, expressed as a premium on the spot rate" .
+
+fibo-ind-fx-fx:ExchangeRateVolatility a owl:Class ;
+    rdfs:label "exchange rate volatility",
+        "汇率波动率（exchange rate volatility）"@zh ;
+    rdfs:comment "一种货币兑换另一货币之汇率的变化率的统计度量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-ind-fx-fx:ExchangeRateStructure ],
+        fibo-ind-ind-ind:Volatility ;
+    skos:definition "statistical measure of the rate of change in the rate at which one currency can be exchanged for another" ;
+    cmns-av:usageNote "Volatility is modeled here using a structured collection, comprised of a series of individual exchange rates (either projected or prior quoted rates), dates, and the source for those rates for some overall period of time" .
+
+fibo-ind-fx-fx:ForeignExchangeService a owl:Class ;
+    rdfs:label "foreign exchange service",
+        "外汇服务（foreign exchange service）"@zh ;
+    rdfs:comment "涉及货币兑换、货币转换以及跨国资金转移的金融服务。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "financial service involving the exchange of one currency for another, conversion of one currency for another, and transfer of money from one country to another whereby currency conversion is required" .
+
+fibo-ind-fx-fx:CurrencySpotRate a owl:Class ;
+    rdfs:label "currency spot rate",
+        "货币即期汇率（currency spot rate）"@zh ;
+    rdfs:comment "一种货币可立即交割兑换为另一种货币的汇率。"@zh ;
+    rdfs:subClassOf fibo-ind-fx-fx:QuotedExchangeRate ;
+    skos:definition "rate at which one currency may be exchanged for another for immediate delivery" ;
+    cmns-av:explanatoryNote "Spot rates represent the prices buyers pay in one currency to purchase a second currency. Although the spot exchange rate is for delivery on the earliest value date, the standard settlement date for most spot transactions is two business days after the transaction date." .
+
+fibo-ind-fx-fx:QuotedExchangeRate a owl:Class ;
+    rdfs:label "quoted exchange rate",
+        "报价汇率（quoted exchange rate）"@zh ;
+    rdfs:comment "在特定时点、针对以另一（基准）货币报价的给定金额货币所报的汇率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-ind-fx-fx:hasExchangeRateQuotationSource ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-fct-mkt:Exchange ) ] ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-ind-fx-fx:hasQuoteCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-acc-cur:ExchangeRate,
+        fibo-ind-ind-ind:MarketRate ;
+    skos:definition "exchange rate quoted at a specific point in time, for a given block amount of currency as quoted against another (base) currency" ;
+    cmns-av:explanatoryNote "An exchange rate of R represents a rate of R units of the quoted currency to 1 unit of the base currency." .
+

@@ -1,0 +1,442 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-iss-ambs: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/AgencyMBSIssuance/> .
+@prefix fibo-bp-iss-dbti: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/> .
+@prefix fibo-bp-iss-doc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/> .
+@prefix fibo-bp-iss-mbs: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MBSIssuance/> .
+@prefix fibo-bp-iss-pmbs: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/PrivateLabelMBSIssuance/> .
+@prefix fibo-bp-iss-prc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/> .
+@prefix fibo-fbc-dae-crt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditRatings/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-reln-mtg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-dbt-mbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/> .
+@prefix fibo-sec-dbt-pbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-iss-ambs:AgencyMortgagePoolCreationProcess a owl:Class ;
+    rdfs:label "agency mortgage pool creation process"@en,
+        "机构抵押贷款池创建流程（agency mortgage pool creation process）"@zh ;
+    rdfs:comment "机构发行方为证券化而创建抵押贷款池的过程。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasStartDate ;
+            owl:someValuesFrom cmns-dt:Date ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasEndDate ;
+            owl:someValuesFrom cmns-dt:Date ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:precedes ;
+            owl:someValuesFrom fibo-bp-iss-ambs:PassThroughMBSSecuritizationProcess ],
+        fibo-bp-iss-dbti:RetailAssetPoolCreationProcess ;
+    owl:disjointWith fibo-bp-iss-pmbs:NonAgencyPoolCreationProcess .
+
+fibo-bp-iss-ambs:AllocatePrimaryIdentifier a owl:Class ;
+    rdfs:label "allocate primary identifier"@en,
+        "分配主标识符（allocate primary identifier）"@zh ;
+    rdfs:comment "为证券分配主要标识符。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:DraftPassThroughTermsheet a owl:Class ;
+    rdfs:label "draft pass through termsheet"@en,
+        "起草过手证券条款清单（draft pass through termsheet）"@zh ;
+    rdfs:comment "起草定义过手证券条款的信息集，最终将成为该工具的合同条款。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:TermSheet ;
+    skos:definition "Draft of set of information defining the pass thorugh security terms. These will eventually become the contractual terms of the instrument. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-ambs:DrawUpOfferingMemorandum a owl:Class ;
+    rdfs:label "draw up offering memorandum"@en,
+        "拟定发行备忘录（draw up offering memorandum）"@zh ;
+    rdfs:comment "拟定载明未来发行基本信息、供潜在投资者参考的发行备忘录。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:DrawUpTermsheet a owl:Class ;
+    rdfs:label "draw up termsheet"@en,
+        "拟定条款清单（draw up termsheet）"@zh ;
+    rdfs:comment "拟定载明发行条款的条款清单。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:FinalizeProspectus a owl:Class ;
+    rdfs:label "finalize prospectus"@en,
+        "定稿招募说明书（finalize prospectus）"@zh ;
+    rdfs:comment "最终确定发行的招募说明书。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:InAssemblyAgencyMortgagePool a owl:Class ;
+    rdfs:label "in assembly agency mortgage pool"@en,
+        "组建中机构抵押贷款池（in assembly agency mortgage pool）"@zh ;
+    rdfs:comment "尚在组建、内容未定的机构抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:InAssembly ],
+        fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-bp-iss-ambs:InIssuanceAgencyMortgagePool a owl:Class ;
+    rdfs:label "in issuance agency mortgage pool"@en,
+        "发行中机构抵押贷款池（in issuance agency mortgage pool）"@zh ;
+    rdfs:comment "正在发行过程中的机构抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:InIssuance ],
+        fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-bp-iss-ambs:MakeSecuritiesAvailabeInMarket a owl:Class ;
+    rdfs:label "make securities availabe in market"@en,
+        "使证券进入市场（make securities availabe in market）"@zh ;
+    rdfs:comment "使所发行证券可在市场上获得。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:PassThroughOfferingMemorandum a owl:Class ;
+    rdfs:label "pass through offering memorandum"@en,
+        "过手发行备忘录（pass through offering memorandum）"@zh ;
+    rdfs:comment "过手 MBS 发行的发行备忘录，载明未来发行的基本信息，供潜在投资者参考。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-mbs:includesDetailsAbout ;
+            owl:someValuesFrom fibo-bp-iss-ambs:PassThroughMBSFinalTermsheet ],
+        fibo-sec-sec-iss:OfferingDocument ;
+    skos:definition "The offering memorandum for a pass through MBS issue, setting out basic information about a future issue, for the information of prospective investors and their agents. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-ambs:RegisterSecurity a owl:Class ;
+    rdfs:label "register security"@en,
+        "注册证券（register security）"@zh ;
+    rdfs:comment "交易完成后将证券在注册机构正式注册。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:SuitableForIssue a owl:Class ;
+    rdfs:label "suitable for issue"@en,
+        "适合发行（suitable for issue）"@zh ;
+    rdfs:comment "经评估适合用于发行的状态。"@zh .
+
+fibo-bp-iss-ambs:allocatesIdentifier a owl:ObjectProperty ;
+    rdfs:label "allocates identifier",
+        "分配标识符（allocates identifier）"@zh ;
+    rdfs:comment "为某事物分配标识符。"@zh .
+
+fibo-bp-iss-ambs:maximumLoanBalance a owl:ObjectProperty ;
+    rdfs:label "maximum loan balance"@en,
+        "最大贷款余额（maximum loan balance）"@zh ;
+    rdfs:comment "入池贷款允许的最大余额。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:PoolConformanceCriteria ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount .
+
+fibo-bp-iss-ambs:minimumRating a owl:ObjectProperty ;
+    rdfs:label "minimum rating"@en,
+        "最低评级（minimum rating）"@zh ;
+    rdfs:comment "入池或发行所要求的最低评级。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:PoolConformanceCriteria ;
+    rdfs:range fibo-fbc-dae-crt:InvestmentCreditRating .
+
+fibo-bp-iss-ambs: a owl:Ontology ;
+    rdfs:label "AgencyMBSIssuance"@en,
+        "机构 MBS 发行本体（Agency MBS Issuance Ontology）"@zh ;
+    dcterms:abstract "Process ontology for the process of issuance (securitization) of mortgage backed securities by government agencies. Based on US government agency MBS issuance process." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义机构抵押贷款支持证券（agency MBS，如房利美、房地美发行）的发行流程。"@zh ;
+    owl:imports fibo-bp-iss-dbti:,
+        fibo-bp-iss-doc:,
+        fibo-bp-iss-prc:,
+        fibo-bp-iss-mbs:,
+        fibo-bp-iss-pmbs:,
+        fibo-fbc-dae-crt:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-lif:,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/>,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-loan-reln-mtg:,
+        fibo-sec-dbt-bnd:,
+        fibo-sec-dbt-mbs:,
+        fibo-sec-dbt-pbs:,
+        fibo-sec-sec-iss:,
+        cmns-av:,
+        cmns-dt:,
+        cmns-doc: ;
+    owl:versionIRI fibo-bp-iss-ambs: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+
+fibo-bp-iss-ambs:AssessPoolSuitablilityForIssuance a owl:Class ;
+    rdfs:label "assess pool suitablility for issuance"@en,
+        "评估池的发行适用性（assess pool suitablility for issuance）"@zh ;
+    rdfs:comment "评估抵押贷款池是否适合用于发行。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:DefineMortgagePool a owl:Class ;
+    rdfs:label "define mortgage pool"@en,
+        "定义抵押贷款池（define mortgage pool）"@zh ;
+    rdfs:comment "确定抵押贷款池的构成标准与内容。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:isDefiningOf ;
+            owl:someValuesFrom fibo-bp-iss-ambs:NotYetIssuedAgencyMortgagePool ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:IdentifyUnderwriter a owl:Class ;
+    rdfs:label "identify underwriter"@en,
+        "确定承销商（identify underwriter）"@zh ;
+    rdfs:comment "确定本次发行的承销商。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:resultsInAppointmentOf ;
+            owl:someValuesFrom fibo-bp-iss-ambs:PotentialPassThroughIssuanceUnderwriter ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:MarketIssue a owl:Class ;
+    rdfs:label "market issue"@en,
+        "营销发行（market issue）"@zh ;
+    rdfs:comment "对本次发行进行市场营销。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:hasResource ;
+            owl:someValuesFrom fibo-bp-iss-ambs:PassThroughMBSDraftProspectus ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:PassThroughIssueProspectusPart a owl:Class ;
+    rdfs:label "pass through issue prospectus part"@en,
+        "过手发行招募说明书部分（pass through issue prospectus part）"@zh ;
+    rdfs:comment "过手 MBS 发行招募说明书的一个部分或章节。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-mbs:ProspectusPart ;
+    skos:definition "A part or section of a prospectus for a pass through MBS issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-ambs:PassThroughMBSFinalProspectus a owl:Class ;
+    rdfs:label "pass through m b s final prospectus"@en,
+        "过手 MBS 最终招募说明书（pass through m b s final prospectus）"@zh ;
+    rdfs:comment "过手 MBS 发行的最终招募说明书。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-mbs:MortgageBackedSecurityOfferingProspectus ;
+    skos:definition "Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-ambs:PassThroughMBSFinalTermsheet a owl:Class ;
+    rdfs:label "pass through m b s final termsheet"@en,
+        "过手 MBS 最终条款清单（pass through m b s final termsheet）"@zh ;
+    rdfs:comment "过手 MBS 发行的最终条款清单，定义 MBS 合同本身的条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:CouponPaymentTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:BondAmortizationPaymentTerms ],
+        fibo-bp-iss-ambs:PassThroughIssueProspectusPart,
+        fibo-fnd-agr-ctr:TermSheet ;
+    skos:definition "The final termsheet for the pass through MBS issue. This defines the terms for the MBS contract itself. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-ambs:PassThroughMBSSecuritizationProcess a owl:Class ;
+    rdfs:label "pass through m b s securitization process"@en,
+        "过手 MBS 证券化流程（pass through m b s securitization process）"@zh ;
+    rdfs:comment "过手型抵押贷款支持证券的证券化过程。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasEndDate ;
+            owl:someValuesFrom cmns-dt:Date ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasStartDate ;
+            owl:someValuesFrom cmns-dt:Date ],
+        fibo-bp-iss-mbs:MBSSecuritizationProcess ;
+    owl:disjointWith fibo-bp-iss-pmbs:TranchedMBSSecuritizationProcess .
+
+fibo-bp-iss-ambs:adds a owl:ObjectProperty ;
+    rdfs:label "adds"@en,
+        "添加（adds）"@zh ;
+    rdfs:comment "将某物加入另一事物。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:PotentialAgencyMBSIssuer ;
+    rdfs:range fibo-bp-iss-ambs:AddMortgageToPool .
+
+fibo-bp-iss-ambs:addsToPool a owl:ObjectProperty ;
+    rdfs:label "adds to pool"@en,
+        "加入池中（adds to pool）"@zh ;
+    rdfs:comment "将某资产加入资产池。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:AddMortgageToPool ;
+    rdfs:range fibo-loan-reln-mtg:LoanSecuredByRealEstate .
+
+fibo-bp-iss-ambs:definesCriteriaFor a owl:ObjectProperty ;
+    rdfs:label "defines criteria for"@en,
+        "为……定义标准（defines criteria for）"@zh ;
+    rdfs:comment "为某事物定义标准。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:PoolConformanceCriteria ;
+    rdfs:range fibo-bp-iss-ambs:NotYetIssuedAgencyMortgagePool .
+
+fibo-bp-iss-ambs:finalizes a owl:ObjectProperty ;
+    rdfs:label "finalizes"@en,
+        "定稿（finalizes）"@zh ;
+    rdfs:comment "最终确定某事物。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:PotentialAgencyMBSIssuer ;
+    rdfs:range fibo-bp-iss-ambs:FinalizePoolContent .
+
+fibo-bp-iss-ambs:hasResource a owl:ObjectProperty ;
+    rdfs:label "has resource"@en,
+        "具有资源（has resource）"@zh ;
+    rdfs:comment "标识某过程或活动所使用的资源。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:MarketIssue ;
+    rdfs:range fibo-bp-iss-ambs:PassThroughMBSDraftProspectus .
+
+fibo-bp-iss-ambs:identifies a owl:ObjectProperty ;
+    rdfs:label "identifies"@en,
+        "标识（identifies）"@zh ;
+    rdfs:comment "在某情境内识别或确立身份。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:PotentialAgencyMBSIssuer ;
+    rdfs:range fibo-bp-iss-ambs:IdentifyConformingMortgage .
+
+fibo-bp-iss-ambs:isAssessmentOf a owl:ObjectProperty ;
+    rdfs:label "is assessment of"@en,
+        "是……的评估（is assessment of）"@zh ;
+    rdfs:comment "标识评估所针对的对象。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:ClassifyMortgage ;
+    rdfs:range fibo-loan-reln-mtg:LoanSecuredByRealEstate .
+
+fibo-bp-iss-ambs:isDefiningOf a owl:ObjectProperty ;
+    rdfs:label "is defining of"@en,
+        "是……的定义（is defining of）"@zh ;
+    rdfs:comment "标识该定义所针对的对象。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:DefineMortgagePool ;
+    rdfs:range fibo-bp-iss-ambs:NotYetIssuedAgencyMortgagePool .
+
+fibo-bp-iss-ambs:purchase a owl:ObjectProperty ;
+    rdfs:label "purchase"@en,
+        "购买（purchase）"@zh ;
+    rdfs:comment "购入某项资产。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:AcquireMortgage ;
+    rdfs:range fibo-loan-reln-mtg:LoanSecuredByRealEstate .
+
+fibo-bp-iss-ambs:purchases a owl:ObjectProperty ;
+    rdfs:label "purchases"@en,
+        "购入（purchases）"@zh ;
+    rdfs:comment "购买某项资产。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:PotentialAgencyMBSIssuer ;
+    rdfs:range fibo-bp-iss-ambs:AcquireMortgage .
+
+fibo-bp-iss-ambs:resultsInAppointmentOf a owl:ObjectProperty ;
+    rdfs:label "results in appointment of"@en,
+        "导致任命（results in appointment of）"@zh ;
+    rdfs:comment "其结果是任命某参与方担任某角色。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:IdentifyUnderwriter ;
+    rdfs:range fibo-bp-iss-ambs:PotentialPassThroughIssuanceUnderwriter .
+
+fibo-bp-iss-ambs:validates a owl:ObjectProperty ;
+    rdfs:label "validates"@en,
+        "验证（validates）"@zh ;
+    rdfs:comment "核验某事物是否符合要求。"@zh ;
+    rdfs:domain fibo-bp-iss-ambs:PotentialAgencyMBSIssuer ;
+    rdfs:range fibo-bp-iss-ambs:ValidateConformance .
+
+fibo-bp-iss-ambs:ClassifyMortgage a owl:Class ;
+    rdfs:label "classify mortgage"@en,
+        "分类抵押贷款（classify mortgage）"@zh ;
+    rdfs:comment "按类别对抵押贷款进行归类。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:isAssessmentOf ;
+            owl:someValuesFrom fibo-loan-reln-mtg:LoanSecuredByRealEstate ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:FinalizePoolContent a owl:Class ;
+    rdfs:label "finalize pool content"@en,
+        "定稿池内容（finalize pool content）"@zh ;
+    rdfs:comment "最终确定抵押贷款池的构成内容。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:IdentifyConformingMortgage a owl:Class ;
+    rdfs:label "identify conforming mortgage"@en,
+        "识别合格抵押贷款（identify conforming mortgage）"@zh ;
+    rdfs:comment "识别符合该发行人总体要求的抵押贷款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-loan-reln-mtg:LoanSecuredByRealEstate ],
+        fibo-bp-iss-prc:IssuanceProcessActivity ;
+    skos:definition "Identify mortgage conforming to overall requirements for this issuer."@en ;
+    cmns-av:explanatoryNote "This does not relate to the criteria for belonging to an individual, defined mortgage pool but conforms to the requirements of the issuing organization overall. This is for Agency pools. For non-agency, the equivalent of this step is carried out at pool level with a clause to reject the mortgage."@en .
+
+fibo-bp-iss-ambs:PassThroughMBSDraftProspectus a owl:Class ;
+    rdfs:label "pass through m b s draft prospectus"@en,
+        "过手 MBS 招募说明书草案（pass through m b s draft prospectus）"@zh ;
+    rdfs:comment "发行机构在营销发行前确定的过手抵押贷款支持证券发行招募说明书草案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:precedes ;
+            owl:someValuesFrom fibo-bp-iss-ambs:PassThroughMBSFinalProspectus ],
+        fibo-bp-iss-doc:PreliminaryProspectus ;
+    skos:definition "The draft prospectus for a pass through Mortgage Backed Securities issue, as determined by the issuing agency prior to marketing the issue. Certain terms in the draft prospectus will be finalized later in the issuance process to become the actual Prospectus. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-ambs:PotentialPassThroughIssuanceUnderwriter a owl:Class ;
+    rdfs:label "potential pass through issuance underwriter"@en,
+        "潜在过手发行承销商（potential pass through issuance underwriter）"@zh ;
+    rdfs:comment "将成为过手 MBS 发行承销商的实体。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:PotentialUnderwriter ;
+    skos:definition "The entity which will become the underwriter for the pass through MBS issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-ambs:ValidateConformance a owl:Class ;
+    rdfs:label "validate conformance"@en,
+        "验证合格性（validate conformance）"@zh ;
+    rdfs:comment "自动验证抵押贷款是否符合其拟入池的要求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-bp-iss-ambs:PoolConformanceCriteria ],
+        fibo-bp-iss-prc:IssuanceProcessActivity ;
+    skos:definition "The mortgage is automatically validated for conformance to the requirements of the pool in which it is to be included."@en ;
+    skos:editorialNote "From review comment 6 Oct: box called validate conformance automatic eg max loan balance"@en .
+
+fibo-bp-iss-ambs:AcquireMortgage a owl:Class ;
+    rdfs:label "acquire mortgage"@en,
+        "获取抵押贷款（acquire mortgage）"@zh ;
+    rdfs:comment "购入或以其他方式取得抵押贷款，作为入池资产。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:purchase ;
+            owl:someValuesFrom fibo-loan-reln-mtg:LoanSecuredByRealEstate ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:AddMortgageToPool a owl:Class ;
+    rdfs:label "add mortgage to pool"@en,
+        "将抵押贷款加入池中（add mortgage to pool）"@zh ;
+    rdfs:comment "把一笔抵押贷款加入抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:addsToPool ;
+            owl:someValuesFrom fibo-loan-reln-mtg:LoanSecuredByRealEstate ],
+        fibo-bp-iss-prc:IssuanceProcessActivity .
+
+fibo-bp-iss-ambs:NotYetIssuedAgencyMortgagePool a owl:Class ;
+    rdfs:label "not yet issued agency mortgage pool"@en,
+        "未发行机构抵押贷款池（not yet issued agency mortgage pool）"@zh ;
+    rdfs:comment "已组建但尚未发行的机构抵押贷款池。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-bp-iss-dbti:NotYetIssued ],
+        fibo-sec-dbt-mbs:AgencyMortgagePool .
+
+fibo-bp-iss-ambs:PoolConformanceCriteria a owl:Class ;
+    rdfs:label "pool conformance criteria"@en,
+        "池合格标准（pool conformance criteria）"@zh ;
+    rdfs:comment "抵押贷款须满足方可入池的标准。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:definesCriteriaFor ;
+            owl:someValuesFrom fibo-bp-iss-ambs:NotYetIssuedAgencyMortgagePool ] .
+
+fibo-bp-iss-ambs:PotentialAgencyMBSIssuer a owl:Class ;
+    rdfs:label "potential agency m b s issuer"@en,
+        "潜在机构 MBS 发行人（potential agency m b s issuer）"@zh ;
+    rdfs:comment "将成为过手 MBS 发行发行方的实体，是发行中大多数活动的主要行为体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:purchases ;
+            owl:someValuesFrom fibo-bp-iss-ambs:AcquireMortgage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-bp-iss-ambs:AssessPoolSuitablilityForIssuance ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:adds ;
+            owl:someValuesFrom fibo-bp-iss-ambs:AddMortgageToPool ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-bp-iss-ambs:ClassifyMortgage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:identifies ;
+            owl:someValuesFrom fibo-bp-iss-ambs:IdentifyConformingMortgage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:finalizes ;
+            owl:someValuesFrom fibo-bp-iss-ambs:FinalizePoolContent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:validates ;
+            owl:someValuesFrom fibo-bp-iss-ambs:ValidateConformance ],
+        fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcessActor ;
+    skos:definition "The entity which will become the issuing party for the pass through MBS Issue. This entity is the principal actor in most of the activities involved in the issue. Term origin:MBS PoC Reviews"@en .
+

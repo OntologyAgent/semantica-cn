@@ -1,0 +1,89 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fct-bc: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCenters/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-bc: a owl:Ontology ;
+    rdfs:label "Business Centers Ontology",
+        "商业中心本体（Business Centers Ontology）"@zh ;
+    dcterms:abstract "This ontology refines the notion of a business center for reference in defining markets and exchanges, clearing houses, and other functional entities as appropriate. The ontology covers the concept of an FpML business center (excluding those that are business day adjustments), with a focus on a physical place where business is transacted, where relevant." ;
+    dcterms:license """Copyright (c) 2018-2025 EDM Council, Inc.
+		Copyright (c) 2018-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义金融中心、商业中心等功能性地点概念，用于确定市场所在地与营业日历。"@zh ;
+    owl:imports fibo-fnd-dt-bd:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-loc: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/BusinessCenters/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180901/FunctionalEntities/BusinessCenters.rdf version of this ontology was revised to eliminate duplication with concepts in LCC and to merge countries with locations.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200301/FunctionalEntities/BusinessCenters.rdf version of this ontology was revised to eliminate circular imports and make definitions ISO 704 compliant.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200901/FunctionalEntities/BusinessCenters.rdf version of this ontology was revised to address text formatting issues uncovered by hygiene testing.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220801/FunctionalEntities/BusinessCenters.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FunctionalEntities/BusinessCenters.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FunctionalEntities/BusinessCenters.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." .
+
+fibo-fbc-fct-bc:BusinessCenterCode a owl:Class ;
+    rdfs:label "business center code",
+        "商业中心代码（business center code）"@zh ;
+    rdfs:comment "用于表示开展商业活动的都会区域的代码。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom cmns-loc:BusinessCenter ],
+        cmns-loc:GeographicRegionIdentifier ;
+    skos:definition "code used to denote a metropolitan area where business is conducted" ;
+    cmns-av:adaptedFrom "http://www.fpml.org/coding-scheme/business-center"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The codes for business centers and municipalities defined herein are largely those identified either as FpML business centers or are locations where there is an exchange, as noted in the ISO 10962 MIC code standard." .
+
+fibo-fbc-fct-bc:BusinessCenterCodeScheme a owl:Class ;
+    rdfs:label "business center code set",
+        "商业中心代码集（business center code set）"@zh ;
+    rdfs:comment "用于定义城市或商业中心代码集合的编码方案。"@zh ;
+    rdfs:subClassOf cmns-cds:CodeSet ;
+    skos:definition "coding scheme used to define a set of codes for municipalities or business centers" ;
+    cmns-av:adaptedFrom "http://www.fpml.org/coding-scheme/business-center"^^xsd:anyURI .
+
+fibo-fbc-fct-bc:BusinessDayAdjustmentCode a owl:Class ;
+    rdfs:label "business day adjustment code",
+        "营业日调整代码（business day adjustment code）"@zh ;
+    rdfs:comment "用于表示当某日恰逢某城市或商业中心的周末或节假日时如何处理之惯例的代码。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-dt-bd:BusinessDayConvention ],
+        cmns-cds:CodeElement ;
+    skos:definition "code used to denote a convention for specifying what happens when a date falls on a day that is weekend or holiday in some municipality or business center" ;
+    cmns-av:adaptedFrom "http://www.fpml.org/coding-scheme/business-center"^^xsd:anyURI .
+
+cmns-loc:Municipality a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:isPartOf ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ] .
+
+cmns-loc:BusinessCenter a owl:Class ;
+    cmns-av:adaptedFrom "http://www.fpml.org/coding-scheme/business-center"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Note that business centers, as defined in FpML, are intended for use in specifying the business calendar used by that municipality, or by certain organizations located in that municipality." .
+

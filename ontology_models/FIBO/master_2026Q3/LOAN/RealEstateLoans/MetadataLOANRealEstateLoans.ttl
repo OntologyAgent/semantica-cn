@@ -1,0 +1,47 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-reln-mod: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MetadataLOANRealEstateLoans/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-reln-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Loans (LOAN) Real Estate Loans Module",
+        "LOAN 房地产贷款模块元数据（Metadata for the LOAN Real Estate Loans Module）"@zh ;
+    dcterms:abstract "This module contains ontologies defining concepts that apply to loans related to land and anything permanently attached to it, whether natural or man-made, including but not limited to construction loans." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2024-10-19T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明房地产贷款（Real Estate Loans）模块由抵押贷款、抵押贷款发放、建筑贷款、HMDA 覆盖抵押贷款四个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/LOAN/20241001/RealEstateLoans/MetadataLOANRealEstateLoans/> ;
+    cmns-av:copyright "Copyright (c) 2018-2024 EDM Council, Inc.",
+        "Copyright (c) 2018-2024 Object Management Group, Inc." .
+
+fibo-loan-reln-mod:RealEstateLoansModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "real estate loans module" ;
+    dcterms:abstract "This module contains ontologies defining concepts that apply to related to land and anything permanently attached to it, whether natural or man-made, including but not limited to construction loans." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Federated Knowledge LLC",
+        "Hypercube Ltd.",
+        "John F. Gemski",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Semantic Arts, Inc.",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo",
+        "agnos.ai U.K. Ltd" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/ConstructionLoans/>,
+        <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/HomeMortgageDisclosureActCoveredMortgages/>,
+        <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MortgageOrigination/>,
+        <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO LOAN Real Estate Loans Module",
+        "Financial Industry Business Ontology (FIBO) Loans (LOAN) Real Estate Loans Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2018-2024 EDM Council, Inc.",
+        "Copyright (c) 2018-2024 Object Management Group, Inc." .
+

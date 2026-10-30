@@ -1,0 +1,36 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fi-mod: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/MetadataFBCFinancialInstruments/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fi-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Financial Business and Commerce(FBC) Financial Instruments Module",
+        "FBC 金融工具模块元数据（Metadata for the FBC Financial Instruments Module）"@zh ;
+    dcterms:abstract "The financial instruments module includes ontologies defining general purpose financial instruments, i.e., agreements, contracts, notes, equities, options, debt instruments, and so forth, some of which may be negotiable." ;
+    dcterms:issued "2015-08-13T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-30T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明金融工具（Financial Instruments）模块由金融工具、工具定价、结算三个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FinancialInstruments/MetadataFBCFinancialInstruments/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+
+fibo-fbc-fi-mod:FinancialInstrumentsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "financial instruments module" ;
+    dcterms:abstract "The financial instruments module includes ontologies defining general purpose financial instruments, i.e., agreements, contracts, notes, equities, options, debt instruments, and so forth, some of which may be negotiable." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/Settlement/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FBC Financial Instruments Module",
+        "Financial Industry Business Ontology (FIBO) Financial Business and Commerce (FBC) Financial Instruments Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+

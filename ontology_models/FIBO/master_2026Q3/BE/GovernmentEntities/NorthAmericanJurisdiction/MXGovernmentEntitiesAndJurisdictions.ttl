@@ -1,0 +1,104 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-mxj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2-mx: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-MX/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-be-ge-mxj:MexicanEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:FederatedSovereignty ;
+    rdfs:label "Mexican entity" ;
+    rdfs:isDefinedBy fibo-be-ge-mxj: ;
+    rdfs:seeAlso <http://www.gob.mx/> ;
+    skos:definition "federated sovereignty and polity that is Mexico" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Mexico ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-mx:Aguascalientes,
+        lcc-3166-2-mx:BajaCalifornia,
+        lcc-3166-2-mx:BajaCaliforniaSur,
+        lcc-3166-2-mx:Campeche,
+        lcc-3166-2-mx:Chiapas,
+        lcc-3166-2-mx:Chihuahua,
+        lcc-3166-2-mx:CiudadDeMexico,
+        lcc-3166-2-mx:CoahuilaDeZaragoza,
+        lcc-3166-2-mx:Colima,
+        lcc-3166-2-mx:Durango,
+        lcc-3166-2-mx:Guanajuato,
+        lcc-3166-2-mx:Guerrero,
+        lcc-3166-2-mx:Hidalgo,
+        lcc-3166-2-mx:Jalisco,
+        lcc-3166-2-mx:Mexico,
+        lcc-3166-2-mx:MichoacanDeOcampo,
+        lcc-3166-2-mx:Morelos,
+        lcc-3166-2-mx:Nayarit,
+        lcc-3166-2-mx:NuevoLeon,
+        lcc-3166-2-mx:Oaxaca,
+        lcc-3166-2-mx:Puebla,
+        lcc-3166-2-mx:Queretaro,
+        lcc-3166-2-mx:QuintanaRoo,
+        lcc-3166-2-mx:SanLuisPotosi,
+        lcc-3166-2-mx:Sinaloa,
+        lcc-3166-2-mx:Sonora,
+        lcc-3166-2-mx:Tabasco,
+        lcc-3166-2-mx:Tamaulipas,
+        lcc-3166-2-mx:Tlaxcala,
+        lcc-3166-2-mx:VeracruzDeIgnacioDeLaLlave,
+        lcc-3166-2-mx:Yucatan,
+        lcc-3166-2-mx:Zacatecas ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-mxj:FederalGovernmentOfMexico .
+
+fibo-be-ge-mxj:MexicanJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Mexican jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-mxj: ;
+    rdfs:seeAlso <https://www.scjn.gob.mx/> ;
+    skos:definition "jurisdiction of the Supreme Court of Justice of the Nation, including the system of courts that interprets and applies the law at the federal level in Mexico" ;
+    cmns-av:explanatoryNote "The Supreme Court of Justice of the Nation (SCJN) is the Mexican institution serving as the country's federal high court and the spearhead organisation for the judiciary of the Mexican Federal Government. It consists of eleven magistrates, known as ministers of the court, one of whom is designated the court's president." ;
+    cmns-rga:hasReach lcc-3166-1:Mexico ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-mxj:FederalGovernmentOfMexico .
+
+fibo-be-ge-mxj:FederalGovernmentOfMexico a owl:NamedIndividual,
+        fibo-be-ge-ge:FederalGovernment ;
+    rdfs:label "Federal Government of Mexico"@en,
+        "Gobierno Federal de México"@es-MX ;
+    rdfs:isDefinedBy fibo-be-ge-mxj: ;
+    rdfs:seeAlso <http://www.gob.mx/> ;
+    skos:definition "federal presidential constitutional republic with shared sovereignty over the republic with the governments of the 31 individual Mexican states, which functions per the Constitution of the United Mexican States" ;
+    cmns-av:synonym "Gobierno de la República"@es-MX ;
+    cmns-rga:governs lcc-3166-1:Mexico ;
+    cmns-rga:hasJurisdiction fibo-be-ge-mxj:MexicanJurisdiction .
+
+fibo-be-ge-mxj: a owl:Ontology ;
+    rdfs:label "Mexican Government Entities and Jurisdictions Ontology",
+        "墨西哥政府实体与法域本体（Mexican Government Entities and Jurisdictions Ontology）"@zh ;
+    dcterms:abstract "This ontology provides the set of basic federal government, provincial, and territory level entities and jurisdictions." ;
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录墨西哥的政体、政府与法域个体。"@zh ;
+    owl:imports fibo-be-ge-ge:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga:,
+        lcc-3166-1:,
+        lcc-3166-2-mx: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/BE/20200701/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to replace 'hasPartialSovereigntyOver' with 'hasSharedSovereigntyOver'.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210201/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/GovernmentEntities/NorthAmericanJurisdiction/MXGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+

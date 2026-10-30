@@ -1,0 +1,35 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/MetadataBEFunctionalEntities/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-fct-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Business Entities (BE) Functional Entities Module",
+        "BE 功能实体模块元数据（Metadata for the BE Functional Entities Module）"@zh ;
+    dcterms:abstract "The functional entities module includes ontologies describing entities that are defined according to their function, as opposed to their form, such as businesses, service providers, and publishers." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-27T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明功能实体（Functional Entities）模块由功能实体本体与出版方本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20230101/FunctionalEntities/MetadataBEFunctionalEntities/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+
+fibo-be-fct-mod:FunctionalEntitiesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "functional entities module" ;
+    dcterms:abstract "The functional entities module includes ontologies describing entities that are defined according to their function, as opposed to their form, such as businesses, service providers, and publishers." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO BE Functional Entities Module",
+        "Financial Industry Business Ontology (FIBO) Business Entities (BE) Functional Entities Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+

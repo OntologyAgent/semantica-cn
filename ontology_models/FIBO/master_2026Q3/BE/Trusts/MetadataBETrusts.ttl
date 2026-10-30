@@ -1,0 +1,34 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-tr-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/MetadataBETrusts/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-tr-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Business Entities (BE) Trusts Module",
+        "BE 信托模块元数据（Metadata for the BE Trusts Module）"@zh ;
+    dcterms:abstract "The trusts module defines types of trusts as formally constituted organizations with specific parties as set down in law for trusts (trustor, trustee and beneficiary), each of these being signatories to a trust agreement." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-27T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明信托（Trusts）模块由信托本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20230101/Trusts/MetadataBETrusts/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+
+fibo-be-tr-mod:TrustsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "trusts module" ;
+    dcterms:abstract "The trusts module defines types of trusts as formally constituted organizations with specific parties as set down in law for trusts (trustor, trustee and beneficiary), each of these being signatories to a trust agreement." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/BE/Trusts/Trusts/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO BE Trusts Module",
+        "Financial Industry Business Ontology (FIBO) Business Entities (BE) Trusts Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+

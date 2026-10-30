@@ -1,0 +1,293 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-rel-rel: a owl:Ontology ;
+    rdfs:label "Relations Ontology",
+        "关系本体（Relations Ontology）"@zh ;
+    dcterms:abstract "This ontology defines a set of general purpose relations for use in other FIBO ontology elements. These include a number of properties required for reuse across the foundations and business entities models." ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "FIBO 最底层的基础本体，定义参考（reference）、分类（classify）等通用关系与抽象概念，全库普遍依赖。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        cmns-txt: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20260701/Relations/Relations/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/FND/20170201/Relations/Relations.rdf version of this ontology was modified per the FIBO 2.0 RFC to include additional properties and the linkage to LCC.",
+        """The http://www.omg.org/spec/FIBO/Foundations/20130601/Relations/Relations.owl version of the ontology submitted with the FIBO FND RFC, was revised in advance of the September 2013 New Brunswick, NJ meeting, as follows:
+	(1) to use slash style URI/IRIss (also called 303 URIs, vs. hash style) as required to support server side processing 
+	(2) to use version-independent IRIs for all definitions internally as opposed to version-specific IRIs
+	(3) to change the file suffix from .owl to .rdf to increase usability in RDF tools
+	(4) to use 4-level abbreviations and corresponding namespace prefixes for all FIBO ontologies, reflecting a family/specification/module/ontology structure
+	(5) to incorporate changes to the specification metadata to support documentation at the family, specification, module, and ontology level, similar to the abbreviations
+	(6) to move the ontology from the Utilities module to an independent Relations module
+	(7) to revise a number of definitions, per discussion with various stakeholders.
+	(8) to augment the definitions to include entity names from Business Entities.""",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20130801/Relations/Relations.rdf version of this ontology was revised to add the appliesTo object property in support of the IND RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20140501/Relations/Relations.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/. It was further revised in FTF 2 resulting in https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Relations/Relations/.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Relations/Relations.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FND 1.2 RTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Relations/Relations.rdf version of this ontology was modified to incorporate evaluates and isEvaluatedBy, and to loosen constraints on hasName properties to allow multi-lingual names.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190301/Relations/Relations.rdf version of this ontology was modified to loosen constraints on properties using xsd:dateTime in their range to allow for more flexible representation, and to add properties including produces, isProducedBy.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190501/Relations/Relations.rdf version of this ontology was modified to rename (migrate) the hasDefinition property to isDefinedIn.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190701/Relations/Relations.rdf version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190901/Relations/Relations.rdf version of this ontology was modified to eliminate duplication with concepts in LCC and remove the unused hasDispositionDate property, whose semantics were unclear at best.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200301/Relations/Relations.rdf version of this ontology was modified to move hasAcquisitionDate to Financial Dates to improve usability and simplify reasoning, to eliminate circular definitions, to deprecate cmns-dsg;hasTag in favor of the simpler LCC property of the same name, to loosen domain restrictions on some properties which were too narrowly specified, and to add two new properties, describes and isDescribedBy, which are more appropriate for certain cases where we were using characterizes and isCharacterizedBy.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200901/Relations/Relations.rdf version of this ontology was modified to move the property 'exchanges' to FND given that it could be applied more generally than with respect to swaps only.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20201201/Relations/Relations.rdf version of this ontology was modified to clean up references to external dictionaries that don't meet FIBO policies, eliminate ambiguity where possible, eliminate the superproperties of produces and is produced by, whose semantics are different from their parent properties, and improve ISO 704 compliance of definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210201/Relations/Relations.rdf version of this ontology was modified to add Reference as a superclass of Name and use the hasTextValue property as the superproperty of certain data properties.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210601/Relations/Relations.rdf version of this ontology was modified to remove the deprecated hasTag property.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220401/Relations/Relations.rdf version of this ontology was modified to address hygiene issues with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/Relations/Relations.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Relations/Relations.rdf version of this ontology was modified to move the property, 'is conferred on' to the Legal Capacity ontology and to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Relations/Relations.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231201/Relations/Relations.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240101/Relations/Relations.rdf version of the ontology was modified to eliminate elements that have been deprecated for several quarters (FND-386).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20241101/Relations/Relations.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Relations/Relations.rdf version of the ontology was modified to eliminate elements that have been deprecated for more than 3 quarters (FND-399).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20251201/Relations/Relations.rdf version of the ontology was modified to deprecate duplicate properties, including some that are now available in Commons (FND-412)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group, Inc.",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fnd-rel-rel:Referent a owl:Class ;
+    rdfs:label "referent",
+        "指涉对象（referent）"@zh ;
+    rdfs:comment "另一概念所代表、例证、象征或以其他方式提及的事物。"@zh ;
+    skos:definition "something that another concept stands for, exemplifies, symbolizes, or otherwise mentions" .
+
+fibo-fnd-rel-rel:embodies a owl:ObjectProperty ;
+    rdfs:label "embodies",
+        "体现（embodies）"@zh ;
+    rdfs:comment "是……的表达，赋予……以具体形式。"@zh ;
+    skos:definition "is an expression of, gives a tangible or visible form to (an idea, quality, or feeling), makes concrete and perceptible" .
+
+fibo-fnd-rel-rel:exchanges a owl:ObjectProperty ;
+    rdfs:label "exchanges",
+        "交换（exchanges）"@zh ;
+    rdfs:comment "以某物换取他物。"@zh ;
+    skos:definition "gives something in return something else" .
+
+fibo-fnd-rel-rel:hasAlias a owl:DatatypeProperty ;
+    rdfs:label "has alias",
+        "具有别名（has alias）"@zh ;
+    rdfs:comment "标识某事物为人所知的替代名称。"@zh ;
+    rdfs:subPropertyOf cmns-dsg:hasTextualName ;
+    skos:definition "indicates an alternate name of by which something is known" .
+
+fibo-fnd-rel-rel:hasCommonName a owl:DatatypeProperty ;
+    rdfs:label "has common name",
+        "具有通用名（has common name）"@zh ;
+    rdfs:comment "标识某事物常被称呼的名称，不涉及任何正式用法或结构。"@zh ;
+    rdfs:subPropertyOf cmns-dsg:hasTextualName ;
+    skos:definition "indicates a name by which something is frequently referred, without reference to any formal usage or structure" .
+
+fibo-fnd-rel-rel:hasDesignation a owl:ObjectProperty ;
+    rdfs:label "具有指称（hasDesignation）"@zh ;
+    rdfs:comment "标识某事物的指称。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentProperty cmns-rlcmp:hasRole .
+
+fibo-fnd-rel-rel:hasLegalName a owl:DatatypeProperty ;
+    rdfs:label "has legal name",
+        "具有法定名称（has legal name）"@zh ;
+    rdfs:comment "指明在法律通信中指称参与方所用的名称。"@zh ;
+    rdfs:subPropertyOf fibo-fnd-rel-rel:hasFormalName ;
+    skos:definition "specifies the name used to refer to a party in legal communications" .
+
+fibo-fnd-rel-rel:hasTag a owl:DatatypeProperty ;
+    rdfs:label "具有标签（hasTag）"@zh ;
+    rdfs:comment "关联与某事物指称对应的唯一字母数字组合。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentProperty cmns-dsg:hasTag .
+
+fibo-fnd-rel-rel:involves a owl:ObjectProperty ;
+    rdfs:label "involves",
+        "涉及（involves）"@zh ;
+    rdfs:comment "（情形或事件）将（某事物）作为必要部分或结果包含。"@zh ;
+    skos:definition "(of a situation or event) includes (something) as a necessary part or result" .
+
+fibo-fnd-rel-rel:isCausedBy a owl:ObjectProperty ;
+    rdfs:label "is caused by",
+        "由……导致（is caused by）"@zh ;
+    rdfs:comment "事件（果）与另一事件（因）之间的关系，前者被理解为后者的推论。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:causes ;
+    skos:definition "is the relationship between an event (the effect) and a second event (the cause), where the first event is understood as a consequence of the second; also, the relationship between a set of factors (causes) and a phenomenon (the effect)" .
+
+fibo-fnd-rel-rel:isControlledBy a owl:ObjectProperty ;
+    rdfs:label "is controlled by",
+        "受……控制（is controlled by）"@zh ;
+    rdfs:comment "被……影响、管理或指挥。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:controls ;
+    skos:definition "is influenced, managed, or directed by" .
+
+fibo-fnd-rel-rel:isEvaluatedBy a owl:ObjectProperty ;
+    rdfs:label "is evaluated by",
+        "由……评估（is evaluated by）"@zh ;
+    rdfs:comment "由……查明或确定。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:evaluates ;
+    skos:definition "is ascertained or determined by" .
+
+fibo-fnd-rel-rel:isExemplifiedBy a owl:ObjectProperty ;
+    rdfs:label "is exemplified by",
+        "由……例证（is exemplified by）"@zh ;
+    rdfs:comment "由……使之具体化或实现。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:exemplifies ;
+    skos:definition "is made concrete or is realized by" .
+
+fibo-fnd-rel-rel:isGeneratedBy a owl:ObjectProperty ;
+    rdfs:label "is generated by",
+        "由……生成（is generated by）"@zh ;
+    rdfs:comment "标识通过某方程、逻辑或规则产生某事物的参与方或事物。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:generates ;
+    skos:definition "identifies some party or something that produces something via some equation, logic, or rules" .
+
+fibo-fnd-rel-rel:isHeldBy a owl:ObjectProperty ;
+    rdfs:label "is held by",
+        "由……持有（is held by）"@zh ;
+    rdfs:comment "标识占有并至少部分控制某事物的参与方，无论所有权归属。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:holds ;
+    skos:definition "indicates the party that possesses and has at least partial control of something, regardless of ownership" .
+
+fibo-fnd-rel-rel:isProducedBy a owl:ObjectProperty ;
+    rdfs:label "is produced by",
+        "由……生产（is produced by）"@zh ;
+    rdfs:comment "标识通过某生产过程制造、生产或以其他方式创造某事物的生产者。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:produces ;
+    skos:definition "identifies the producer that fabricates, manufactures or otherwise creates something through some production process" .
+
+fibo-fnd-rel-rel:issues a owl:ObjectProperty ;
+    rdfs:label "issues",
+        "发行（issues）"@zh ;
+    rdfs:comment "正式使某事物可得。"@zh ;
+    rdfs:subPropertyOf cmns-org:provides ;
+    owl:inverseOf fibo-fnd-rel-rel:isIssuedBy ;
+    skos:definition "officially makes something available" .
+
+fibo-fnd-rel-rel:mandates a owl:ObjectProperty ;
+    rdfs:label "mandates",
+        "授权要求（mandates）"@zh ;
+    rdfs:comment "将某事物关联到要求它的承诺、合同、法律、义务、要求、规章或类似概念。"@zh ;
+    rdfs:subPropertyOf fibo-fnd-rel-rel:confers ;
+    owl:inverseOf fibo-fnd-rel-rel:isMandatedBy ;
+    skos:definition "relates something to a commitment, contract, law, obligation, requirement, regulation, or similar concept that requires it" .
+
+fibo-fnd-rel-rel:wasFormerlyKnownAs a owl:DatatypeProperty ;
+    rdfs:label "was formerly known as",
+        "曾用名（was formerly known as）"@zh ;
+    rdfs:comment "标识某事物过去为人所知的名称。"@zh ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "indicates a name by which something was known in the past" .
+
+cmns-cxtdsg:isApplicableIn a owl:ObjectProperty ;
+    cmns-av:explanatoryNote "The context may include the setting in which something is defined, expressed, or represented." .
+
+cmns-dsg:isSignifiedBy a owl:ObjectProperty ;
+    cmns-av:explanatoryNote "'is signified by' relates a concept to some textual or other symbol which is intended to convey the sense of that concept or to some form of words that sets out the meaning of that concept." .
+
+fibo-fnd-rel-rel:causes a owl:ObjectProperty ;
+    rdfs:label "causes",
+        "导致（causes）"@zh ;
+    rdfs:comment "事件或事件集或因素（因）与另一事件、现象、情形或结果（果）之间的关系，果被理解为因的推论。"@zh ;
+    skos:definition "relationship between an event or set of events or factors (the cause) and a second event, phenomenon, situation, or result (the effect), where the second event or outcome is understood as a consequence of the first" .
+
+fibo-fnd-rel-rel:controls a owl:ObjectProperty ;
+    rdfs:label "controls",
+        "控制（controls）"@zh ;
+    rdfs:comment "对……行使权力或影响力。"@zh ;
+    skos:definition "exercises authority or influence over" .
+
+fibo-fnd-rel-rel:evaluates a owl:ObjectProperty ;
+    rdfs:label "evaluates",
+        "评估（evaluates）"@zh ;
+    rdfs:comment "评定某人或某事物的性质、质量或能力。"@zh ;
+    rdfs:subPropertyOf cmns-cxtdsg:appliesTo ;
+    skos:definition "assesses the nature, quality, or ability of someone or something" .
+
+fibo-fnd-rel-rel:exemplifies a owl:ObjectProperty ;
+    rdfs:label "exemplifies",
+        "例证（exemplifies）"@zh ;
+    rdfs:comment "是……的具体实现或实例。"@zh ;
+    skos:definition "is a concrete realization or example of" ;
+    cmns-av:adaptedFrom "http://www.merriam-webster.com/dictionary/exemplify"^^xsd:anyURI .
+
+fibo-fnd-rel-rel:generates a owl:ObjectProperty ;
+    rdfs:label "generates",
+        "生成（generates）"@zh ;
+    rdfs:comment "通过应用一个或多个数学或逻辑步骤或规则产生。"@zh ;
+    skos:definition "produces through the application of one or more mathematical or logical steps or rules" .
+
+fibo-fnd-rel-rel:hasFormalName a owl:DatatypeProperty ;
+    rdfs:label "has formal name",
+        "具有正式名称（has formal name）"@zh ;
+    rdfs:comment "标识某事物在官方目的或情境中为人所知的名称，或其结构使之称谓始终一致。"@zh ;
+    rdfs:subPropertyOf cmns-dsg:hasTextualName ;
+    skos:definition "indicates a name by which something is known for some official purpose or context, or which is structured in some way such as to always follow the same format regardless of usage" .
+
+fibo-fnd-rel-rel:holds a owl:ObjectProperty ;
+    rdfs:label "holds",
+        "持有（holds）"@zh ;
+    rdfs:comment "参与方与其占有、或对其实施某种所有权或控制、或可自主支配的事物之间的关系。"@zh ;
+    skos:definition "is the relationship between a party and something it possesses, or over which it exercises some ownership or control or has at its discretion the ability to dispose of it as it sees fit" .
+
+fibo-fnd-rel-rel:isConferredBy a owl:ObjectProperty ;
+    rdfs:label "is conferred by",
+        "由……授予（is conferred by）"@zh ;
+    rdfs:comment "权利或义务与赋予该权利或义务的载体（如协议或合同）之间的关系。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:confers ;
+    skos:definition "a relationship between a right or obligation and the vehicle, such as an agreement or contract, that vests (or confers) said right or obligation" ;
+    cmns-av:explanatoryNote "This property should be read as describing some legal power or duty, some commitment or some social construct being conferred as a result of some social construct such as an agreement or some legal authority. These concepts, which would describe the kind of thing of which this is a property, and the kinds of thing in terms of which this property is framed, are outside the scope of this model and so are not shown." .
+
+fibo-fnd-rel-rel:isIssuedBy a owl:ObjectProperty ;
+    rdfs:label "is issued by",
+        "由……发行（is issued by）"@zh ;
+    rdfs:comment "标识负责流通、分发或发布某事物的功能实体或参与方。"@zh ;
+    rdfs:subPropertyOf cmns-org:isProvidedBy ;
+    skos:definition "indicates a functional entity or party responsible for circulating, distributing, or publishing something" .
+
+fibo-fnd-rel-rel:isMandatedBy a owl:ObjectProperty ;
+    rdfs:label "is mandated by",
+        "由……授权要求（is mandated by）"@zh ;
+    rdfs:comment "将责任、能力或行为关联到要求它的事物。"@zh ;
+    rdfs:subPropertyOf fibo-fnd-rel-rel:isConferredBy ;
+    skos:definition "relates a responsibility, capacity, or action to that which requires it" .
+
+fibo-fnd-rel-rel:produces a owl:ObjectProperty ;
+    rdfs:label "produces",
+        "生产（produces）"@zh ;
+    rdfs:comment "通过加工、制造或生产过程创造。"@zh ;
+    skos:definition "creates through a fabrication, manufacturing or production process" .
+
+fibo-fnd-rel-rel:confers a owl:ObjectProperty ;
+    rdfs:label "confers",
+        "授予（confers）"@zh ;
+    rdfs:comment "凭借某种权力授予或赋予。"@zh ;
+    skos:definition "grants or bestows by virtue of some authority" ;
+    cmns-av:explanatoryNote "This property should be read as describing the conferral of some legal power or duty, some commitment or some social construct, and is a property of some social construct such as an agreement or some legal authority. These concepts, which would describe the kind of thing of which this is a property, and the kinds of thing in terms of which this property is framed, are outside the scope of this mode land so are not shown." ;
+    cmns-av:synonym "invests with" .
+

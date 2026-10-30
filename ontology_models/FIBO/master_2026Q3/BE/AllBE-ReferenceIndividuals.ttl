@@ -1,0 +1,66 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-beref-all: <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-ReferenceIndividuals/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-beref-all: a owl:Ontology ;
+    rdfs:label "Business Entities Domain, Reference Individuals",
+        "BE 域参考个体入口（All BE, Reference Individuals）"@zh ;
+    dcterms:abstract """This ontology provides metadata about the FIBO Business Entities (BE) Domain, which covers defines business concepts that are used for data governance, interoperability, and in regulatory reporting about business entities.
+
+The business scope of the BE ontologies covers a range of business and legal entities that are considered by financial industry firms, regulators and other industry participants to be of relevance in the financial services domain, including:
+ - Legal entities generally
+ - Corporate structure, ownership and control, including primary executive roles for businesses,
+ - Functional entities such as governments and government entities, non-governmental organizations, international organizations, not-for-profit organization, etc.
+ - Concepts specific to corporations, partnerships, private limited companies, sole proprietorships, and trusts.""" ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Bloomberg LP",
+        "Citigroup",
+        "Credit Suisse",
+        "Deutsche Bank",
+        "EDM Council, Inc.",
+        "Exprentis",
+        "Federated Knowledge LLC",
+        "Hypercube Ltd.",
+        "John F. Gemski",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Pinnacle Bank (Morgan Hill, California)",
+        "State Street Bank and Trust",
+        "Statistics Canada",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo",
+        "Working Ontologist",
+        "agnos.ai UK Ltd." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2018-2025 EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2025-05-27T18:00:00"^^xsd:dateTime ;
+    dcterms:title "EDMC Financial Industry Business Ontology (FIBO) Business Entities (BE) Domain, Reference Individuals" ;
+    rdfs:comment "聚合 BE 域的全部参考数据个体本体（全球各法域的政体、政府与法域实例），供需要完整参考数据的应用加载。"@zh ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    owl:imports <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-Europe/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-NorthAmerica/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/CentralAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/EasternAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/SoutheasternAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/SouthernAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/CentralAmericanGovernmentEntitiesAndJurisdictions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/SouthAmericanGovernmentEntitiesAndJurisdictions/> ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250501/AllBE-ReferenceIndividuals/> ;
+    cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." ;
+    cmns-av:explanatoryNote "The 'all' ontology for BE (Reference Individuals) is provided for convenience for FIBO users. This ontology does not add new assertions, but imports all of the Production (Released) ontologies that comprise the FIBO Business Entities (BE) domain, including all of FND, and all of the individual entities and jurisdictions in FIBO production." .
+

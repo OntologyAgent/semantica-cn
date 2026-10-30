@@ -1,0 +1,67 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-dbt-mod: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MetadataSECDebt/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-dbt-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Securities (SEC) Debt Module",
+        "SEC 债务模块元数据（Metadata for the SEC Debt Module）"@zh ;
+    dcterms:abstract "The SEC Debt Module covers content specific to debt instruments, including but not limited to bonds and asset-backed securities. This ontology provides metadata about the Debt module and its contents." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2024-11-15T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明债务（Debt）模块的构成：债务工具、债券、短期交易债务、行权惯例、分销贷款、池支持证券、资产支持证券、抵押贷款支持证券、担保债务凭证、合成 CDO 十个本体。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20241101/Debt/MetadataSECDebt/> ;
+    cmns-av:copyright "Copyright (c) 2018-2024 EDM Council, Inc.",
+        "Copyright (c) 2018-2024 Object Management Group, Inc." .
+
+fibo-sec-dbt-mod:DebtModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "debt module" ;
+    dcterms:abstract "This module defines debt securities contracts both cash and synthetic, such as bonds, structured finance instruments, short term or money market instruments, and other contracts characterized by the holding of some debt of the issuer or primary party by the holder or counterparty." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "BIAN",
+        "Bloomberg LP",
+        "Citigroup",
+        "Credit Suisse",
+        "Dassault Systemes / No Magic",
+        "Deutsche Bank",
+        "Exprentis",
+        "Federated Knowledge LLC",
+        "Goldman Sachs",
+        "HP Enterprise / Mphasis",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Mizuho",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "ProBanker Simulations, LLC",
+        "Quarule",
+        "State Street Bank and Trust",
+        "Statistics Canada",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo",
+        "agnos.ai U.K. Ltd" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/CollateralizedDebtObligations/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DistributedLoans/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/ExerciseConventions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/SyntheticCDOs/>,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO SEC Debt Module",
+        "Financial Industry Business Ontology (FIBO) Securities and Equities (SEC) Debt Module" ;
+    rdfs:seeAlso <https://www.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2018-2024 EDM Council, Inc.",
+        "Copyright (c) 2018-2024 Object Management Group, Inc." .
+

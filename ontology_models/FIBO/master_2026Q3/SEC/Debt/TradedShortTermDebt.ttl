@@ -1,0 +1,171 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-gty: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-dbt-tstd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-dbt-tstd: a owl:Ontology ;
+    rdfs:label "Traded Short-Term Debt Ontology"@en,
+        "短期交易债务本体（Traded Short-Term Debt Ontology）"@zh ;
+    dcterms:abstract "This ontology defines a number of basic, traded short-term debt instruments, many of which are considered money market instruments that may be freely traded." ;
+    dcterms:license """Copyright (c) 2018-2025 EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义货币市场工具等短期可交易债务：商业票据、国库券等。"@zh ;
+    owl:imports fibo-fbc-dae-gty:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-pas-caa:,
+        fibo-fnd-agr-agr:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-sec-dbt-dbti:,
+        cmns-av:,
+        cmns-dt:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20240101/Debt/TradedShortTermDebt/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190901/Debt/TradedShortTermDebt.rdf version of this ontology was modified to eliminate a circular definition.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210201/Debt/TradedShortTermDebt.rdf version of this ontology was modified to clarify the definition of bill of exchange.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210901/Debt/TradedShortTermDebt.rdf version of this ontology was modified to remove the subclass relationship with respect to fixed income from bankers' acceptance, make bill of exchange a subclass of money market instrument and fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20211201/Debt/TradedShortTermDebt.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Debt/TradedShortTermDebt.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230301/Debt/TradedShortTermDebt.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240101/Debt/TradedShortTermDebt.rdf version of this ontology was modified to eliminate certain constructs that are redundant and will never be materialized to reduce the number of nodes required for various contract-related constructs (FND-391)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." .
+
+fibo-sec-dbt-tstd:BankersAcceptance a owl:Class ;
+    rdfs:label "bankers' acceptance"@en,
+        "银行承兑汇票（bankers' acceptance）"@zh ;
+    rdfs:comment "由银行担保并兑付的短期债务工具，用作大额交易中相对安全的支付形式。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-dbti:ParValue ;
+            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtMaturity ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-gty:hasGuarantor ;
+            owl:someValuesFrom fibo-fbc-fct-fse:Bank ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-dbti:AtADiscount ;
+            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtIssue ],
+        fibo-sec-dbt-tstd:BillOfExchange ;
+    skos:definition "short-term debt instrument that is guaranteed and paid by a bank and used as a relatively safe form of payment for large transactions"@en ;
+    cmns-av:explanatoryNote "Considered negotiable instruments with features of a time draft, bankers' acceptances are created by the drawer and provide the bearer with the right to the amount noted on the face of the acceptance on the specified date. Unlike traditional checks, bankers' acceptances function based on the creditworthiness of the banking institution instead of the individual or business acting as the drawer. Additionally, the drawer must provide the funds necessary to support the bankers' acceptance, eliminating the risk associated with insufficient funds on the part of the drawer."@en .
+
+fibo-sec-dbt-tstd:CommercialPaper a owl:Class ;
+    rdfs:label "commercial paper"@en,
+        "商业票据（commercial paper）"@zh ;
+    rdfs:comment "通常由银行、公司或外国政府发行、用于筹措资金满足短期债务需要的无担保短期债务工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-dbti:ParValue ;
+            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtMaturity ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-dbti:AtADiscount ;
+            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtIssue ],
+        fibo-sec-dbt-tstd:MoneyMarketInstrument ;
+    skos:definition "an unsecured short-term debt instrument typically issued by a bank, corporation, or foreign government to obtain funds to meet short-term debt obligations, such as accounts receivable, inventories, or payroll, backed only by an issuing bank or company promise to pay the face amount on the maturity date specified on the note"@en ;
+    cmns-av:explanatoryNote "Commercial paper has a very-short to short maturity period (usually, 2 to 30 days, and rarely more than 270 days)."@en .
+
+fibo-sec-dbt-tstd:EurodollarDeposit a owl:Class ;
+    rdfs:label "eurodollar deposit"@en,
+        "欧洲美元存款（eurodollar deposit）"@zh ;
+    rdfs:comment "在联邦储备管辖范围之外以美元发行、存放于美国境外银行的固定利率存单。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-caa:CertificateOfDeposit ;
+    skos:definition "a certificate of deposit with a fixed interest rate issued in U.S. dollars outside the jurisdiction of the Federal Reserve, held at banks outside of the United States, including branches of U.S. banks located outside of the U.S."@en ;
+    cmns-av:explanatoryNote "A bank in Japan or Singapore may accept dollar deposits, but these are still called Eurodollar deposits. The market also includes other currencies, so there are Eurosterling, Euroyen, Euroswiss, etc. Eurocurrency is the general term for any currency deposited in bank branches outside countries where it is the national currency."@en .
+
+fibo-sec-dbt-tstd:RepurchaseAgreement a owl:Class ;
+    rdfs:label "repurchase agreement"@en,
+        "回购协议（repurchase agreement）"@zh ;
+    rdfs:comment "双方之间的协议：一方按指定价格向另一方出让证券，并承诺在日后按约定价格购回。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Duration ;
+            owl:onProperty cmns-dt:hasDuration ],
+        fibo-sec-dbt-tstd:MoneyMarketInstrument ;
+    skos:definition "agreement between two parties whereby one party lends the other a security at a specified price with a commitment to take the security back at a later date for another specified price"@en ;
+    cmns-av:abbreviation "REPO"@en ;
+    cmns-av:explanatoryNote "Most repos are overnight transactions, with the sale taking place one day and being reversed the next day. Long-term repos - called term repos - can extend for a month or more. Usually, repos are for a fixed period of time, but open-ended deals are also possible. Reverse repo is a term used to describe the opposite side of a repo transaction. The party who sells and later repurchases a security is said to perform a repo. The other party - who purchases and later resells the security - is said to perform a reverse repo. While a repo functions like the sale and subsequent repurchase of a security, but the legal reality and the economic effect is that of a secured loan. This is a loan as the original owner retains the rights to the cashflows of the underlying security. Economically, the party purchasing the security makes funds available to the seller and holds the security as collateral. If the repurchased security pays a dividend, coupon or partial redemptions during the repo, the funds are returned to the original owner. The difference between the sale and repurchase prices paid for the security represent interest on the loan. Indeed, repos are quoted as interest rates. A repo always pays interest at maturity, i.e. there are no periodic interest payments."@en .
+
+fibo-sec-dbt-tstd:Drawee a owl:Class ;
+    rdfs:label "drawee",
+        "付款人（drawee）"@zh ;
+    rdfs:comment "被要求向收款人支付汇票所载金额的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-sec-dbt-tstd:BillOfExchange ] ],
+        fibo-fnd-pas-psch:Payer ;
+    skos:definition "party that is required to pay the amount stated on the bill of exchange to the payee" .
+
+fibo-sec-dbt-tstd:Drawer a owl:Class ;
+    rdfs:label "drawer",
+        "出票人（drawer）"@zh ;
+    rdfs:comment "就汇票要求付款人向第三方或自己付款的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-sec-dbt-tstd:BillOfExchange ] ],
+        fibo-fnd-agr-agr:Obligee ;
+    skos:definition "party that requires a drawee to pay either a third party or themselves with respect to a bill of exchange" .
+
+fibo-sec-dbt-tstd:BillOfExchange a owl:Class ;
+    rdfs:label "bill of exchange"@en,
+        "汇票（bill of exchange）"@zh ;
+    rdfs:comment "一种短期可转让金融票据，由一人（货物卖方）向另一人（买方）签发书面付款指令。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fct-fse:FinancialInstitution ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-sec-dbt-tstd:Drawee ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-pas-psch:Payee ;
+            owl:onProperty cmns-pts:hasPartyRole ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-sec-dbt-tstd:Drawer ],
+        fibo-sec-dbt-tstd:MoneyMarketInstrument ;
+    skos:definition "short-term negotiable financial instrument consisting of an order in writing addressed by one person (the seller of goods) to another (the buyer), requiring the latter to pay a fixed amount of money on demand (a sight draft) or on a predetermined date (a time draft)"@en ;
+    cmns-av:explanatoryNote "A bill of exchange is a written agreement between two parties - the buyer and the seller - used primarily in international trade. The buyer or seller typically employs a bank to issue the bill of exchange due to the risks involved with international transactions. Bills of exchange can be transferred by endorsement, much like a check. They can also require the buyer to pay a third party - a bank - in the event that the buyer fails to make good on his agreement with the seller."@en ;
+    cmns-av:synonym "bank draft"@en,
+        "draft"@en .
+
+fibo-sec-dbt-tstd:MoneyMarketInstrument a owl:Class ;
+    rdfs:label "money market instrument"@en,
+        "货币市场工具（money market instrument）"@zh ;
+    rdfs:comment "赋予所有者在指定日期无条件收取既定固定金额之权利的短期债务证券。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-dbti:FixedIncomeSecurity ;
+    skos:definition "a short-term debt security that gives the owner the unconditional right to receive a stated, fixed sum of money on a specified date"@en ;
+    cmns-av:adaptedFrom "https://stats.oecd.org/glossary/detail.asp?ID=6073"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "These instruments usually are traded at a discount in organized markets; the discount is dependent upon the interest rate and the time remaining to maturity. Included are such instruments as treasury bills, commercial and financial paper, bankers' acceptances, negotiable certificates of deposit (with original maturities of one year or less), and short-term notes issued under note issuance facilities."@en .
+

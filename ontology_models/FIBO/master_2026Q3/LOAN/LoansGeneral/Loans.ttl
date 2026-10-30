@@ -1,0 +1,546 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-dae-gty: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-dae-dbt:InterestPaymentTerms a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDuration ;
+            owl:onProperty fibo-loan-ln-ln:hasFirstRateChangeTerm ] .
+
+fibo-loan-ln-ln: a owl:Ontology ;
+    rdfs:label "Loans Ontology",
+        "贷款本体（Loans Ontology）"@zh ;
+    dcterms:abstract "This ontology is the top-level, and most fundamental ontology for the LOAN module, extending the Debt ontology to define concepts common to all loans. It includes the primary obligations to fund the loan and to pay it back according to payment schedules. Kinds of loans covered in this ontology include open and closed end, secured and unsecured." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "LOAN 域核心本体，定义贷款（loan）的通用结构：借款人、贷款人、本金、利率与还款安排。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fbc-dae-gty:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-pas-caa:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-agr:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-asmt:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-qtu:,
+        cmns-ra: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/LOAN/20251201/LoansGeneral/Loans/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20220601/LoansGeneral/Loans.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20230201/LoansGeneral/Loans.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20230301/LoansGeneral/Loans.rdf version of this ontology was modified to eliminate a subproperty relationship between the principal and notional amount, which may not be appropriate (DER-127) and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20231201/LoansGeneral/Loans.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20240101/LoansGeneral/Loans.rdf version of this ontology was modified to move certain terms athat are general debt schedule terms to the Debt ontology (FBC-317).",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20240301/LoansGeneral/Loans.rdf version of this ontology was modified to correct the distinction between amortization schedule and loan payment schedule and move security agreement to the debt ontology (LOAN-168) and eliminate elements that have been deprecated for more than six months (FND-386).",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20241101/LoansGeneral/Loans.rdf version of this ontology was modified to move the property 'has credit limit' to FBC as needed to define certain credit facilities (FBC-324).",
+        "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20250301/LoansGeneral/Loans.rdf version of this ontology was modified to clean up older deprecations (FND-399)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-loan-ln-ln:CollateralizedLoan a owl:Class ;
+    rdfs:label "collateralized loan"@en,
+        "抵押贷款（collateralized loan）"@zh ;
+    rdfs:comment "以借款人提供的现金或其他可接受抵押品（不动产、证券或其他资产）作担保的担保贷款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isPrimaryContractFor ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:CollateralAgreement ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Collateral ],
+        fibo-loan-ln-ln:SecuredLoan ;
+    skos:definition "secured loan that is secured with cash or other acceptable collateral (real property, securities or other assets) provided by the borrower as specified in the collateral agreement"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019."@en .
+
+fibo-loan-ln-ln:Comaker a owl:Class ;
+    rdfs:label "co-maker",
+        "共同签署人（co-maker）"@zh ;
+    rdfs:comment "在借款人本票上共同签署、提供额外担保并可能改善债务质量的参与方。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractThirdParty ;
+    skos:definition "party that signs a borrower's promissory note, providing additional security and potentially improving the quality of the debt" ;
+    cmns-av:explanatoryNote "Differences between a co-maker and co-borrower include: (1) a co-maker is not listed on the title of the asset to which the loan applies, (2) a co-maker does not have any legal ownership rights to the asset, and (3) the co-maker does not make regular payments on the loan unless the primary borrower(s) fails to do so.",
+        "The co-maker's liability is similar to that of an endorser or guarantor, but with additional risk/exposure, as they can be compelled to honor the debt much sooner and regardless of whether certain conditions are met." ;
+    cmns-av:synonym "comaker",
+        "cosigner" .
+
+fibo-loan-ln-ln:CombinedLoanToValueRatio a owl:Class ;
+    rdfs:label "combined loan-to-value ratio",
+        "合并贷款价值比（combined loan-to-value ratio）"@zh ;
+    rdfs:comment "以资产作担保的全部债务总额与该资产评估价值之比。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:AppraisedValue ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-loan-ln-ln:TotalOutstandingPrincipal ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Appraisal ],
+        fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+    skos:definition "ratio of the total amount of debt that is secured by the asset(s) and the appraised value of the asset(s) securing the financing" ;
+    cmns-av:explanatoryNote "This is particularly important for secondary loans, or for refinancing that combines outstanding loans against a given asset. Lenders use this ratio to evaluate the risk of extending a loan to a borrower(s) in cases where multiple loans are involved." .
+
+fibo-loan-ln-ln:FeeSimpleOwnershipInterest a owl:NamedIndividual,
+        fibo-loan-ln-ln:OwnershipInterest ;
+    rdfs:label "fee-simple ownership interest" ;
+    skos:definition "classification indicating the most common type of ownership, covering an indefinite ownership period and the freedom to transfer said ownership as desired" ;
+    cmns-av:explanatoryNote "Fee simple is the term used to represent the maximum ownership interest in real property that is allowed under the law. It can be referred to as 'complete ownership'.",
+        "The asset may still be subject to government regulations such as property taxes, and the owner can place voluntary encumbrances on the real estate including its use as collateral for a loan. In the case of a mortgage, fee simple can be contrasted with lease ownership, in which case the owners have complete access to the land, but they do not own it. Owners of single-family residences typically have fee simple ownership, but condo and many townhouse owners do not, as they own their individual unit but not the land on which the development is built." ;
+    cmns-av:synonym "complete ownership" .
+
+fibo-loan-ln-ln:FractionalOwnershipInterest a owl:NamedIndividual,
+        fibo-loan-ln-ln:OwnershipInterest ;
+    rdfs:label "fractional ownership interest" ;
+    skos:definition "classification indicating that several parties may share in, and mitigate the risk of, ownership of a high-value tangible asset" .
+
+fibo-loan-ln-ln:GuaranteedLoan a owl:Class ;
+    rdfs:label "guaranteed loan"@en,
+        "担保贷款（guaranteed loan）"@zh ;
+    rdfs:comment "本金与利息的偿付由担保作保的贷款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-dae-gty:Guaranty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-gty:hasGuarantor ;
+            owl:someValuesFrom fibo-fbc-dae-gty:Guarantor ],
+        fibo-loan-ln-ln:SecuredLoan ;
+    skos:definition "loan that is secured with respect to repayment of principal and interest by guaranty"@en ;
+    cmns-av:explanatoryNote "A loan guarantee is a promise by one party to assume the debt obligation of a borrower if that borrower defaults. A guarantee can be limited or unlimited, making the guarantor liable for only a portion or all of the debt."@en,
+        "In the U.S., the term 'guaranteed loan' typically refers to a loan that is backed by a federal agency, such as the Department of Veterans Affairs or the Small Business Administration. Student loans may be guaranteed by the Student Loan Marketing Association."@en .
+
+fibo-loan-ln-ln:LoanToValueRatio a owl:Class ;
+    rdfs:label "loan-to-value ratio",
+        "贷款价值比（loan-to-value ratio）"@zh ;
+    rdfs:comment "贷款本金与担保融资之资产评估价值之比，以百分比表示。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Principal ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Appraisal ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:AppraisedValue ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
+        fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+    skos:definition "ratio, expressed as a percentage, between the principal amount of the loan and the appraised value of the asset securing the financing" ;
+    cmns-av:abbreviation "LTV" .
+
+fibo-loan-ln-ln:OpenEndCredit a owl:Class ;
+    rdfs:label "open-end credit",
+        "开放式信贷（open-end credit）"@zh ;
+    rdfs:comment "可在约定信用额度内随时支取和偿还、并就支取部分计息的信贷协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fbc-dae-dbt:hasCreditLimit ],
+        fibo-fbc-dae-dbt:CreditAgreement ;
+    owl:disjointWith fibo-loan-ln-ln:ClosedEndCredit ;
+    skos:definition "credit agreement that may be extended up to an agreed credit limit and paid down at any time within the period of the line, if any, and on which interest is charged only on the outstanding balance" ;
+    skos:example "Credit card and overdraft lines of credit are among the most widely used forms of open-end credit." ;
+    cmns-av:explanatoryNote "There is a credit limit most of the time, with exceptions including reverse mortgages with tenure payment. The borrower has the option of paying off the outstanding balance, without penalty, or making installment payments." ;
+    cmns-av:synonym "charge account credit",
+        "revolving credit" .
+
+fibo-loan-ln-ln:PrepaymentTerms a owl:Class ;
+    rdfs:label "pre-payment terms"@en,
+        "提前还款条款（pre-payment terms）"@zh ;
+    rdfs:comment "与贷款到期前还款相关的本金偿付条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-ln:hasPrePaymentPenaltyTerm ;
+            owl:someValuesFrom cmns-dt:ExplicitDuration ],
+        fibo-fbc-dae-dbt:PrincipalRepaymentTerms ;
+    skos:definition "principal repayment terms related to payment of the loan prior to maturity"@en ;
+    cmns-av:explanatoryNote "Prepayment may or may not involve refinancing with the same lender. Prepayment terms include any prepayment penalty period, penalty amount and whether or not there is provision for waiver of the penalty, and any conditions related to making additional payments or payments over and above the expected installment payment over the lifetime of the loan."@en .
+
+fibo-loan-ln-ln:PrimaryLienPosition a owl:NamedIndividual,
+        fibo-loan-ln-ln:LenderLienPosition ;
+    rdfs:label "primary lien position" ;
+    skos:definition "first position in the order of seniority in which the law recognizes lenders' claims against a property"@en ;
+    cmns-av:synonym "primary lien priority" .
+
+fibo-loan-ln-ln:SubordinateLienPosition a owl:NamedIndividual,
+        fibo-loan-ln-ln:LenderLienPosition ;
+    rdfs:label "subordinate lien position" ;
+    skos:definition "secondary or lower position in the order of seniority in which the law recognizes lenders' claims against a property"@en .
+
+fibo-loan-ln-ln:UnsecuredLoan a owl:Class ;
+    rdfs:label "unsecured loan",
+        "信用贷款（unsecured loan）"@zh ;
+    rdfs:comment "基于借款人信用历史或声誉而发放的贷款。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-ln:Loan ;
+    owl:disjointWith fibo-loan-ln-ln:SecuredLoan ;
+    skos:definition "loan granted based on the strength of the borrower's credit history or reputation in the community" .
+
+fibo-loan-ln-ln:hasScheduledUnpaidBalance a owl:ObjectProperty ;
+    rdfs:label "has scheduled unpaid balance",
+        "具有计划未偿余额（has scheduled unpaid balance）"@zh ;
+    rdfs:comment "标识按合同条款完成计划还款后应有的余额。"@zh ;
+    rdfs:range fibo-fbc-pas-caa:Balance ;
+    rdfs:subPropertyOf fibo-fbc-pas-caa:hasBalance ;
+    skos:definition "indicates what the balance should be after a scheduled payment is made according to contract terms" .
+
+fibo-loan-ln-ln:isAssumable a owl:DatatypeProperty ;
+    rdfs:label "is assumable"@en,
+        "可承接（is assumable）"@zh ;
+    rdfs:comment "表明另一借款人是否可承接本贷款的还款。"@zh ;
+    rdfs:domain fibo-loan-ln-ln:Loan ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether or not another borrower may assume the payments on this loan"@en .
+
+fibo-fbc-dae-dbt:PrincipalRepaymentTerms a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-loan-ln-ln:isInitiallyPayable ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-loan-ln-ln:hasBalloonPayment ] .
+
+fibo-fbc-dae-dbt:SecurityAgreement a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-ln-ln:LenderLienPosition ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-ln-ln:OwnershipInterest ] .
+
+fibo-loan-ln-ln:ClosedEndCredit a owl:Class ;
+    rdfs:label "closed-end credit",
+        "封闭式信贷（closed-end credit）"@zh ;
+    rdfs:comment "贷款结清、资金全额发放后本金不得再增加的信贷协议。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-dbt:CreditAgreement ;
+    skos:definition "credit agreement in which the loan principal cannot be increased after funds are dispersed in full when the loan closes" ;
+    cmns-av:explanatoryNote "The loan may require regular payments that pay down principal periodically, or it may require the full payment of principal at maturity." .
+
+fibo-loan-ln-ln:LoanPaymentSchedule a owl:Class ;
+    rdfs:label "loan payment schedule",
+        "贷款还款进度表（loan payment schedule）"@zh ;
+    rdfs:comment "与特定贷款账户关联的定期或显式（临时）还款进度表。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-loan-ln-ln:LoanSpecificCustomerAccount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasAnticipatedNumberOfPayments ;
+            owl:someValuesFrom xsd:positiveInteger ],
+        fibo-fnd-pas-psch:PaymentSchedule ;
+    skos:definition "regular or explicit (ad hoc) payment schedule associated with a given loan-specific account" ;
+    cmns-av:explanatoryNote "Loan payment schedules may or may not be amortization schedules, i.e., they may or may not include principal." .
+
+fibo-loan-ln-ln:TotalOutstandingPrincipal a owl:Class ;
+    rdfs:label "total outstanding principal",
+        "未偿本金总额（total outstanding principal）"@zh ;
+    rdfs:comment "以该房产作担保的全部贷款的本金余额。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-dbt:Principal ;
+    skos:definition "the principal balance of all loans secured by the property" .
+
+fibo-loan-ln-ln:hasBalloonPayment a owl:DatatypeProperty ;
+    rdfs:label "has balloon payment"@en,
+        "具有期末大额还款（has balloon payment）"@zh ;
+    rdfs:comment "表明合同条款是否包含在贷款期末一次性偿还全部未偿本金。"@zh ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the contractual terms include or would have included repayment of the outstanding principal sum at the end of a loan period, prior to which only partial or no payments were made on the principal"@en .
+
+fibo-loan-ln-ln:hasFirstRateChangeTerm a owl:ObjectProperty ;
+    rdfs:label "has first rate change term",
+        "具有首次利率变动期限（has first rate change term）"@zh ;
+    rdfs:comment "指明发放后利率不得变动的月数。"@zh ;
+    rdfs:subPropertyOf cmns-dt:hasDuration ;
+    skos:definition "specifies a period of time in months after origination during which the interest rate cannot change" ;
+    cmns-av:usageNote "This normally applies to a variable rate loan. It may also apply to step up/step down loans that are fixed rate but whose rate changes after a pre-determined number of months." .
+
+fibo-loan-ln-ln:hasIndividualPayment a owl:ObjectProperty ;
+    rdfs:label "has individual payment",
+        "具有单笔付款（has individual payment）"@zh ;
+    rdfs:comment "将本金、利息及其他相关款项的单笔实际支付关联到账户的整体还款历史。"@zh ;
+    rdfs:domain fibo-loan-ln-ln:PaymentHistory ;
+    rdfs:range fibo-loan-ln-ln:IndividualPaymentTransaction ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "links an actual payment of principal, interest, and other related amounts to the overall payment history for an account" .
+
+fibo-loan-ln-ln:hasLoanBalance a owl:ObjectProperty ;
+    rdfs:label "has loan balance",
+        "具有贷款余额（has loan balance）"@zh ;
+    rdfs:comment "标识截至某日期的贷款本金余额。"@zh ;
+    rdfs:subPropertyOf fibo-fbc-dae-dbt:hasOutstandingAmount,
+        fibo-fbc-pas-caa:hasBalance ;
+    skos:definition "indicates the balance with respect to the principal on the loan as of some date" .
+
+fibo-loan-ln-ln:hasNegativeAmortization a owl:DatatypeProperty ;
+    rdfs:label "has negative amortization"@en,
+        "具有负摊销（has negative amortization）"@zh ;
+    rdfs:comment "表明合同条款是否允许将未付利息计入未偿本金余额。"@zh ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the contractual terms include or would have included a feature that allows unpaid interest to be added to the balance of unpaid principal"@en .
+
+fibo-loan-ln-ln:hasPaymentHistory a owl:ObjectProperty ;
+    rdfs:label "has payment history",
+        "具有还款历史（has payment history）"@zh ;
+    rdfs:comment "将信贷协议、贷款或承诺关联到借款人截至某时点的还款历史。"@zh ;
+    rdfs:range fibo-loan-ln-ln:PaymentHistory ;
+    rdfs:subPropertyOf fibo-fnd-arr-doc:hasRecord ;
+    skos:definition "relates a credit agreement, loan, or commitment to any history of payments that have been made by the borrower up to the point that payment history is requested" .
+
+fibo-loan-ln-ln:hasPrePaymentPenaltyTerm a owl:ObjectProperty ;
+    rdfs:label "has pre-payment penalty term",
+        "具有提前还款罚则期限（has pre-payment penalty term）"@zh ;
+    rdfs:comment "将贷款关联到一个期限（月），超过该期限后不再收取提前还款罚金。"@zh ;
+    rdfs:subPropertyOf cmns-dt:hasDuration ;
+    skos:definition "relates a loan to a period of time in months after which there is no prepayment penalty" ;
+    cmns-av:usageNote "A value of zero means no prepayment penalty; this avoids need for a separate boolean property about whether there is a prepayment penalty" .
+
+fibo-loan-ln-ln:hasPrincipalAmount a owl:ObjectProperty ;
+    rdfs:label "has principal amount"@en,
+        "具有本金金额（has principal amount）"@zh ;
+    rdfs:comment "标识到期时或之前须偿还的贷款名义金额。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fbc-dae-dbt:hasPrincipal,
+        fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "indicates the nominal amount of the loan that must be paid at or before maturity"@en .
+
+fibo-loan-ln-ln:hasTotalClosingCosts a owl:ObjectProperty ;
+    rdfs:label "has total closing costs",
+        "具有总结清费用（has total closing costs）"@zh ;
+    rdfs:comment "标识房地产交易结清（产权转移）时支付的总费用。"@zh ;
+    rdfs:subPropertyOf fibo-loan-ln-ln:hasCost ;
+    skos:definition "indicates the total the amount paid at the closing of a real estate transaction, i.e., at the time when the title to the property is conveyed (transferred) to the buyer" ;
+    cmns-av:explanatoryNote "Closing costs may be incurred by either the buyer or the seller, and may include fees paid by either or both parties for the preparation and recording of documents, title service costs, such as for title search and insurance (typically paid by the seller, depending on the jurisdiction), other recording costs, other document or transaction stamps or taxes, brokerage commissions, survey, appraisal, inspection and other such fees, home warranties, private mortgage insurance (PMI), and so forth." .
+
+fibo-loan-ln-ln:hasTotalPointsAndFees a owl:ObjectProperty ;
+    rdfs:label "has total points and fees",
+        "具有总点数与费用（has total points and fees）"@zh ;
+    rdfs:comment "标识贷款人以点数形式收取的预付利息及费用，作为提高贷款利率的替代。"@zh ;
+    rdfs:subPropertyOf fibo-loan-ln-ln:hasCost ;
+    skos:definition "indicates a form of pre-paid interest, charged by the lender as an alternative to charging a higher rate of interest on the mortgage loan" ;
+    cmns-av:explanatoryNote "One point equals one percent of the loan principal, and usually reduces the interest rate by 1/8 percent (0.125)" .
+
+fibo-loan-ln-ln:isInitiallyPayable a owl:DatatypeProperty ;
+    rdfs:label "is initially payable"@en,
+        "初始应付对象（is initially payable）"@zh ;
+    rdfs:comment "表明本贷款所生义务最初应付给该金融机构（申请情形则为应付对象）。"@zh ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the obligation arising from the covered loan was, or in the case of an application, would have been initially payable to the financial institution"@en .
+
+fibo-loan-ln-ln:isInterestOnly a owl:DatatypeProperty ;
+    rdfs:label "is interest only"@en,
+        "仅付息（is interest only）"@zh ;
+    rdfs:comment "表明合同条款是否包含仅付息的还款方式。"@zh ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether the contractual terms include or would have included interest only payments"@en .
+
+fibo-loan-ln-ln:isServicedBy a owl:ObjectProperty ;
+    rdfs:label "is performed by",
+        "由……服务（is performed by）"@zh ;
+    rdfs:comment "将贷款关联到为其提供服务的金融服务提供商。"@zh ;
+    rdfs:range fibo-loan-ln-ln:Servicer ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "relates a loan to the financial service provider that services it" .
+
+fibo-loan-ln-ln:IndividualPaymentTransaction a owl:Class ;
+    rdfs:label "individual payment transaction"@en,
+        "单笔付款交易（individual payment transaction）"@zh ;
+    rdfs:comment "为履行债务义务而实际支付本金、利息、费用或其他相关款项的单笔交易。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-caa:IndividualTransaction,
+        fibo-fnd-pas-psch:Payment ;
+    skos:definition "actual payment of principal, interest, fees, or other related amounts towards fulfillment of a debt obligation"@en .
+
+fibo-loan-ln-ln:hasCost a owl:ObjectProperty ;
+    rdfs:label "has cost",
+        "具有成本（has cost）"@zh ;
+    rdfs:comment "应付的本金、利息、费用或其他开支金额。"@zh ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "has amount payable for principal, interest, fees or other expenses" ;
+    cmns-av:explanatoryNote "This can entail adding up other prices and/or fees (e.g. 4 units * a unit price)" .
+
+fibo-loan-ln-ln:LoanSpecificCustomerAccount a owl:Class ;
+    rdfs:label "loan-specific customer account",
+        "贷款专用客户账户（loan-specific customer account）"@zh ;
+    rdfs:comment "借款人持有的、与特定贷款关联的账户。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:LoanPaymentSchedule ;
+            owl:onProperty fibo-fnd-pas-psch:hasPaymentSchedule ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:relatesTo ;
+            owl:someValuesFrom fibo-loan-ln-ln:Loan ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-dae-dbt:Lender fibo-loan-ln-ln:Servicer ) ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:Balance ;
+            owl:onProperty fibo-loan-ln-ln:hasLoanBalance ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:PaymentHistory ;
+            owl:onProperty fibo-loan-ln-ln:hasPaymentHistory ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Borrower ],
+        fibo-fbc-pas-caa:CustomerAccount,
+        fibo-fbc-pas-caa:LoanOrCreditAccount ;
+    skos:definition "account held by the borrower associated with a specific loan" .
+
+fibo-loan-ln-ln:OwnershipInterest a owl:Class ;
+    rdfs:label "ownership interest",
+        "所有权益（ownership interest）"@zh ;
+    rdfs:comment "表明申请人或借款人对贷款抵押资产的所有权或租赁权益性质的分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fnd-oac-own:Ownership ],
+        cmns-cls:Classifier ;
+    skos:definition "classifier indicating the nature of the applicant's or borrower's ownership or leasehold interest in an asset used as collateral for the loan" ;
+    cmns-av:usageNote "Note that there are a number of variations for ownership interest that represent 'corner cases', including jurisdiction-specific variants, which can be added as needed for specific applications." .
+
+fibo-loan-ln-ln:PaymentHistory a owl:Class ;
+    rdfs:label "payment history",
+        "还款历史（payment history）"@zh ;
+    rdfs:comment "借款人为履行还款义务向贷款人或服务机构实际支付本金、利息及其他相关款项的记录。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-caa:appliesToAccount ;
+            owl:someValuesFrom fibo-loan-ln-ln:LoanSpecificCustomerAccount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-ln:hasIndividualPayment ;
+            owl:someValuesFrom fibo-loan-ln-ln:IndividualPaymentTransaction ],
+        fibo-fbc-pas-caa:TransactionRecord ;
+    skos:definition "record of actual payments of principal, interest, and other related amounts made by a borrower to a lender or servicer in order to fulfill their re-payment obligation" .
+
+fibo-loan-ln-ln:SecuredLoan a owl:Class ;
+    rdfs:label "secured loan",
+        "担保贷款（secured loan）"@zh ;
+    rdfs:comment "借款人通过担保协议以某项资产作抵押、或通过第三方担保作保的贷款。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:onProperty cmns-col:comprises ;
+                        owl:someValuesFrom fibo-fbc-dae-dbt:SecurityAgreement ] [ a owl:Restriction ;
+                        owl:onProperty cmns-col:comprises ;
+                        owl:someValuesFrom fibo-fbc-dae-gty:Guaranty ] ) ],
+        fibo-loan-ln-ln:Loan ;
+    skos:definition "loan in which the borrower pledges some asset via a security agreement as collateral for the loan, or that is secured via third-party guarantee" .
+
+fibo-loan-ln-ln:Servicer a owl:Class ;
+    rdfs:label "servicer",
+        "服务机构（servicer）"@zh ;
+    rdfs:comment "为资产池提供收款、管理等服务的机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialServiceProvider,
+        fibo-fnd-agr-ctr:ContractThirdParty ;
+    skos:definition "party that collects principal and interest payments on behalf of the lender" ;
+    cmns-av:explanatoryNote "In cases where a loan has been securitized, the servicer is also responsible for forwarding payments to investors, filing reports with credit-rating agencies and investors, and so forth." .
+
+fibo-loan-ln-ln:LenderLienPosition a owl:Class ;
+    rdfs:label "lender lien position",
+        "贷款人留置顺位（lender lien position）"@zh ;
+    rdfs:comment "表明贷款人对贷款抵押资产是否拥有第一留置权的分类符。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier indicating whether the lender has the primary lien position with respect to an asset used as collateral for the loan" .
+
+fibo-loan-ln-ln:Loan a owl:Class ;
+    rdfs:label "loan",
+        "贷款（loan）"@zh ;
+    rdfs:comment "一方向另一方（或多方）提供货币或信用、并约定借款将获偿还的债务工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-loan-ln-ln:hasTotalClosingCosts ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-gty:Guarantor ;
+            owl:onProperty fibo-fbc-dae-gty:hasGuarantor ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:ContractThirdParty ;
+            owl:onProperty fibo-fnd-agr-ctr:hasThirdParty ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:LenderLienPosition ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-ln:hasPrincipalAmount ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fbc-dae-dbt:hasMaturityDate ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:Servicer ;
+            owl:onProperty fibo-loan-ln-ln:isServicedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-loan-ln-ln:hasTotalPointsAndFees ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:LoanSpecificCustomerAccount ;
+            owl:onProperty fibo-fbc-pas-caa:hasCorrespondingAccount ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-loan-ln-ln:hasNegativeAmortization ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-loan-ln-ln:isInterestOnly ],
+        fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically,
+        fibo-fbc-fi-fi:DebtInstrument ;
+    skos:definition "debt instrument whereby one party extends money or credit to another party (or parties) with the understanding that the borrowed money will be repaid according to the terms of the contract" .
+

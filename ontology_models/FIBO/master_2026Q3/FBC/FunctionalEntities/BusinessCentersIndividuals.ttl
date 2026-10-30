@@ -1,0 +1,4002 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fct-bc: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCenters/> .
+@prefix fibo-fbc-fct-bci: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-bci: a owl:Ontology ;
+    rdfs:label "Business Centers Individuals",
+        "商业中心个体本体（Business Centers Individuals）"@zh ;
+    dcterms:abstract """This ontology includes individuals representing the set of international business centers corresponding to those identified in FpML as well as additional municipalities called out in the ISO 10383 Codes for exchanges and market identification (MIC) standard.
+		This set of business centers is current with respect to the FpML published XML data as of Q2 2023 and additional municipalities included in the MIC codes as of Q1 2026. Note that we have deviated from the standard FIBO naming convention of strict use of camel case to add underscores in certain city names for readability purposes.""" ;
+    dcterms:license """Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group
+Copyright (c) 2018-2026 Thematix Partners LLC
+Copyright (c) 2020-2022 agnos.ai, UK Ltd.
+Copyright (c) 2023-2026 Federated Knowledge, LLC
+Copyright (c) 2025-2026 Intuitive Technology Partners, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录全球主要商业中心（如纽约、伦敦、东京）的参考个体。"@zh ;
+    owl:imports fibo-fbc-fct-bc:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-loc:,
+        lcc-3166-1: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20261001/FunctionalEntities/BusinessCentersIndividuals/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180901/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to support revisions of the MIC codes as of December 2018.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20181201/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to replace Swaziland with Eswatini, which was revised by the LCC 1.1 RTF to reflect the change to the country name per the U.N.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190401/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add municipalities required for the ISO revision to the MIC codes as of September 2019.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190901/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add municipalities required for the ISO revision to the MIC codes as of September 2019.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20191201/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to merge countries with locations in FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200301/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add municipalities required for the ISO revision to the MIC codes as of June 2020, replace the relations hasTag property with the equivalent lcc-lr version, and replace skos:definition on reference individuals with dct:description.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200601/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add municipalities required for the ISO revision to the MIC codes as of November 2020, and add Municipalities for 4 important Swiss financial cities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20201101/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add municipalities required for the ISO revision to the MIC codes as of March 2021.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210301/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add municipalities required for the ISO revision to the MIC codes as of September 2021.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210901/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add municipalities required for the ISO revision to the MIC codes as of March 2022.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220301/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add municipalities required for the ISO revision to the MIC codes as of June 2022.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220601/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to address text formatting issues uncovered by hygiene testing.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220801/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to equate Almaty and Alma-ata, which are the same city (Alma-ata is the old name, no longer in use).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220901/FunctionalEntities/BusinessCentersIndividuals/ version of this ontology was modified to add a number of new municipalities that were included in the December 2022 MIC codes.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20221201/FunctionalEntities/BusinessCentersIndividuals.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to update the business centers per the latest revision of the FpML business centers (November 2022) and latest municipalities per the June 2023 ISO 10383 MIC code update from ISO.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230601/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to update the business centers per the latest revision of the municipalities per the March 2024 ISO 10383 MIC code update from ISO.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240301/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to update the business centers per the latest revision of the municipalities per the June 2024 ISO 10383 MIC code update from ISO.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240601/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to update the business centers per the latest revision of the municipalities per the December 2024 ISO 10383 MIC code update from ISO.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20241201/FunctionalEntities/BusinessCentersIndividuals.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389) and to add new business centers for Q1 2025 (FBC-326).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to update the business centers per the latest revision of the municipalities per the June 2025 ISO 10383 MIC code update from ISO.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250601/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to update the business centers per the latest revision of the municipalities per the September 2025 ISO 10383 MIC code update from ISO.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20251001/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to update the business centers per the latest revision of the municipalities per the March 2026 ISO 10383 MIC code update from ISO.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20260401/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to update the business centers per the latest revision of the municipalities per the June 2026 ISO 10383 MIC code update from ISO.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20260601/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was modified to replace references to the now deprecated hasTag property in Relations with its equivalent in OMG Commons (FND-412).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20260701/FunctionalEntities/BusinessCentersIndividuals.rdf version of this ontology was updated with the business centers from the September 2026 ISO 10383 MIC code update (FBC-345)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2018-2025 Object Management Group",
+        "Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2018-2026 Thematix Partners LLC",
+        "Copyright (c) 2020-2022 agnos.ai, UK Ltd.",
+        "Copyright (c) 2023-2026 Federated Knowledge, LLC",
+        "Copyright (c) 2025-2026 Intuitive Technology Partners, Inc." .
+
+fibo-fbc-fct-bci:AEAB a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessDayAdjustmentCode ;
+    rdfs:label "AEAB" ;
+    dcterms:description "the FpML business center code for Abu Dhabi, Business Day (as defined in 2021 ISDA Definitions Section 2.1.9 (ii))" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AEAB" ;
+    cmns-id:identifies fibo-fbc-fct-bci:AbuDhabiBusinessDay .
+
+fibo-fbc-fct-bci:AEAD a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessDayAdjustmentCode ;
+    rdfs:label "AEAD" ;
+    dcterms:description "the FpML business center code for Abu Dhabi, Settlement Day (as defined in 2021 ISDA Definitions Section 2.1.9 (i))" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AEAD" ;
+    cmns-id:identifies fibo-fbc-fct-bci:AbuDhabiSettlementDay .
+
+fibo-fbc-fct-bci:AEDU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AEDU" ;
+    dcterms:description "the FpML business center code for Dubai, United Arab Emirates" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AEDU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Dubai .
+
+fibo-fbc-fct-bci:AMYE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AMYE" ;
+    dcterms:description "the FpML business center code for Yerevan, Armenia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AMYE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Yerevan .
+
+fibo-fbc-fct-bci:AOLU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AOLU" ;
+    dcterms:description "the FpML business center code for Luanda, Angola" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AOLU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Luanda .
+
+fibo-fbc-fct-bci:ARBA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ARBA" ;
+    dcterms:description "the FpML business center code for Buenos Aires, Argentina" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ARBA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Buenos_Aires .
+
+fibo-fbc-fct-bci:ATVI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ATVI" ;
+    dcterms:description "the FpML business center code for Vienna, Austria" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ATVI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Vienna .
+
+fibo-fbc-fct-bci:AUAD a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AUAD" ;
+    dcterms:description "the FpML business center code for Adelaide, Australia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AUAD" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Adelaide .
+
+fibo-fbc-fct-bci:AUBR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AUBR" ;
+    dcterms:description "the FpML business center code for Brisbane, Australia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AUBR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Brisbane .
+
+fibo-fbc-fct-bci:AUCA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AUCA" ;
+    dcterms:description "the FpML business center code for Canberra, Australia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AUCA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Canberra .
+
+fibo-fbc-fct-bci:AUDA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AUDA" ;
+    dcterms:description "the FpML business center code for Darwin, Australia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AUDA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Darwin .
+
+fibo-fbc-fct-bci:AUME a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AUME" ;
+    dcterms:description "the FpML business center code for Melbourne, Australia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AUME" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Melbourne .
+
+fibo-fbc-fct-bci:AUPE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AUPE" ;
+    dcterms:description "the FpML business center code for Perth, Australia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AUPE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Perth .
+
+fibo-fbc-fct-bci:AUSY a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AUSY" ;
+    dcterms:description "the FpML business center code for Sydney, Australia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AUSY" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Sydney .
+
+fibo-fbc-fct-bci:AZBA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "AZBA" ;
+    dcterms:description "the FpML business center code for Baku, Azerbaijan" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "AZBA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Baku .
+
+fibo-fbc-fct-bci:Aabenraa a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Aabenraa" ;
+    cmns-col:isPartOf lcc-3166-1:Denmark .
+
+fibo-fbc-fct-bci:Aalborg a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Aalborg" ;
+    cmns-col:isPartOf lcc-3166-1:Denmark .
+
+fibo-fbc-fct-bci:Aichi a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Aichi" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Alberta a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Alberta" ;
+    cmns-col:isPartOf lcc-3166-1:Canada .
+
+fibo-fbc-fct-bci:Antananarivo a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Antananarivo" ;
+    cmns-col:isPartOf lcc-3166-1:Madagascar .
+
+fibo-fbc-fct-bci:Antwerpen a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Antwerpen" ;
+    cmns-col:isPartOf lcc-3166-1:Belgium .
+
+fibo-fbc-fct-bci:Astana a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Astana" ;
+    cmns-col:isPartOf lcc-3166-1:Kazakhstan .
+
+fibo-fbc-fct-bci:Asuncion a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Asuncion" ;
+    cmns-col:isPartOf lcc-3166-1:Paraguay .
+
+fibo-fbc-fct-bci:Atlanta a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Atlanta" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Aylesbury a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Aylesbury" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland .
+
+fibo-fbc-fct-bci:BBBR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BBBR" ;
+    dcterms:description "the FpML business center code for Bridgetown, Barbados" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BBBR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Bridgetown .
+
+fibo-fbc-fct-bci:BDDH a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BDDH" ;
+    dcterms:description "the FpML business center code for Dhaka, Bangladesh" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BDDH" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Dhaka .
+
+fibo-fbc-fct-bci:BEBR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BEBR" ;
+    dcterms:description "the FpML business center code for Brussels, Belgium" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BEBR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Brussels .
+
+fibo-fbc-fct-bci:BGSO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BGSO" ;
+    dcterms:description "the FpML business center code for Sofia, Bulgaria" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BGSO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Sofia .
+
+fibo-fbc-fct-bci:BHMA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BHMA" ;
+    dcterms:description "the FpML business center code for Manama, Bahrain" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BHMA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Manama .
+
+fibo-fbc-fct-bci:BMHA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BMHA" ;
+    dcterms:description "the FpML business center code for Hamilton, Bermuda" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BMHA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Hamilton .
+
+fibo-fbc-fct-bci:BNBS a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BNBS" ;
+    dcterms:description "the FpML business center code for Bandar Seri Begawan, Brunei" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BNBS" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Bandar_Seri_Begawan .
+
+fibo-fbc-fct-bci:BOLP a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BOLP" ;
+    dcterms:description "the FpML business center code for La Paz, Bolivia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BOLP" ;
+    cmns-id:identifies fibo-fbc-fct-bci:La_Paz .
+
+fibo-fbc-fct-bci:BRBD a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessDayAdjustmentCode ;
+    rdfs:label "BRBD" ;
+    dcterms:description "the FpML business center code for Brazil Business Day" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BRBD" ;
+    cmns-id:identifies fibo-fbc-fct-bci:BrazilBusinessDay .
+
+fibo-fbc-fct-bci:BRBR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BRBR" ;
+    dcterms:description "the FpML business center code for Brasilia, Brazil" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BRBR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Brasilia .
+
+fibo-fbc-fct-bci:BRRJ a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BRRJ" ;
+    dcterms:description "the FpML business center code for Rio de Janeiro, Brazil" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BRRJ" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Rio_de_Janeiro .
+
+fibo-fbc-fct-bci:BRSP a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BRSP" ;
+    dcterms:description "the FpML business center code for Sao Paulo, Brazil" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BRSP" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Sao_Paulo .
+
+fibo-fbc-fct-bci:BSNA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BSNA" ;
+    dcterms:description "the FpML business center code for Nassau, Bahamas" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BSNA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Nassau .
+
+fibo-fbc-fct-bci:BWGA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BWGA" ;
+    dcterms:description "the FpML business center code for Gaborone, Botswana" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BWGA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Gaborone .
+
+fibo-fbc-fct-bci:BYMI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "BYMI" ;
+    dcterms:description "the FpML business center code for Minsk, Belarus" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "BYMI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Minsk .
+
+fibo-fbc-fct-bci:Banja_Luka a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Banja Luka" ;
+    cmns-col:isPartOf lcc-3166-1:BosniaAndHerzegovina .
+
+fibo-fbc-fct-bci:Basseterre a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Basseterre" ;
+    cmns-col:isPartOf lcc-3166-1:SaintKittsAndNevis .
+
+fibo-fbc-fct-bci:Bedminster a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bedminster" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Bergamo a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bergamo" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Bergen a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bergen" ;
+    cmns-col:isPartOf lcc-3166-1:Norway .
+
+fibo-fbc-fct-bci:Berlin a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Berlin" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Bermuda a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bermuda" ;
+    cmns-col:isPartOf lcc-3166-1:Bermuda .
+
+fibo-fbc-fct-bci:Berne a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Berne" ;
+    cmns-col:isPartOf lcc-3166-1:Switzerland .
+
+fibo-fbc-fct-bci:Biella a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Biella" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Bilbao a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bilbao" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Birkirkara a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Birkirkara" ;
+    cmns-col:isPartOf lcc-3166-1:Malta .
+
+fibo-fbc-fct-bci:Bishkek a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bishkek" ;
+    cmns-col:isPartOf lcc-3166-1:Kyrgyzstan .
+
+fibo-fbc-fct-bci:Blantyre a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Blantyre" ;
+    cmns-col:isPartOf lcc-3166-1:Malawi .
+
+fibo-fbc-fct-bci:Boca_Raton a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Boca Raton" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Bologna a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bologna" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Boulogne_Billancourt a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Boulogne Billancourt" ;
+    cmns-col:isPartOf lcc-3166-1:France .
+
+fibo-fbc-fct-bci:Bradford a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bradford" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland .
+
+fibo-fbc-fct-bci:Bremen a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bremen" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Brno a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Brno" ;
+    cmns-col:isPartOf lcc-3166-1:Czechia .
+
+fibo-fbc-fct-bci:Bryanston_Sandton a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Bryanston, Sandton" ;
+    cmns-col:isPartOf lcc-3166-1:SouthAfrica .
+
+fibo-fbc-fct-bci:Budaors a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Budaors" ;
+    cmns-col:isPartOf lcc-3166-1:Hungary .
+
+fibo-fbc-fct-bci:CACL a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CACL" ;
+    dcterms:description "the FpML business center code for Calgary, Canada" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CACL" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Calgary .
+
+fibo-fbc-fct-bci:CAFR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CAFR" ;
+    dcterms:description "the FpML business center code for Fredericton, Canada" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CAFR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Fredericton .
+
+fibo-fbc-fct-bci:CAMO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CAMO" ;
+    dcterms:description "the FpML business center code for Montreal, Canada" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CAMO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Montreal .
+
+fibo-fbc-fct-bci:CAOT a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CAOT" ;
+    dcterms:description "the FpML business center code for Ottawa, Canada" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CAOT" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Ottawa .
+
+fibo-fbc-fct-bci:CATO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CATO" ;
+    dcterms:description "the FpML business center code for Toronto, Canada" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CATO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Toronto .
+
+fibo-fbc-fct-bci:CAVA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CAVA" ;
+    dcterms:description "the FpML business center code for Vancouver, Canada" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CAVA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Vancouver .
+
+fibo-fbc-fct-bci:CAWI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CAWI" ;
+    dcterms:description "the FpML business center code for Winnipeg, Canada" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CAWI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Winnipeg .
+
+fibo-fbc-fct-bci:CHBA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CHBA" ;
+    dcterms:description "the FpML business center code for Basel, Switzerland" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CHBA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Basel .
+
+fibo-fbc-fct-bci:CHGE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CHGE" ;
+    dcterms:description "the FpML business center code for Geneva, Switzerland" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CHGE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Geneva .
+
+fibo-fbc-fct-bci:CHZU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CHZU" ;
+    dcterms:description "the FpML business center code for Zurich, Switzerland" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CHZU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Zurich .
+
+fibo-fbc-fct-bci:CIAB a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CIAB" ;
+    dcterms:description "the FpML business center code for Abidjan, Cote d'Ivoire" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CIAB" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Abidjan .
+
+fibo-fbc-fct-bci:CLSA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CLSA" ;
+    dcterms:description "the FpML business center code for Santiago, Chile" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CLSA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Santiago .
+
+fibo-fbc-fct-bci:CMYA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CMYA" ;
+    dcterms:description "the FpML business center code for Yaounde, Cameroon" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CMYA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Yaounde .
+
+fibo-fbc-fct-bci:CNBE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CNBE" ;
+    dcterms:description "the FpML business center code for Beijing, China" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CNBE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Beijing .
+
+fibo-fbc-fct-bci:CNSH a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CNSH" ;
+    dcterms:description "the FpML business center code for Shanghai, China" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CNSH" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Shanghai .
+
+fibo-fbc-fct-bci:COBO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "COBO" ;
+    dcterms:description "the FpML business center code for Bogota, Colombia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "COBO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Bogota .
+
+fibo-fbc-fct-bci:CRSJ a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CRSJ" ;
+    dcterms:description "the FpML business center code for San Jose, Costa Rica" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CRSJ" ;
+    cmns-id:identifies fibo-fbc-fct-bci:San_Jose .
+
+fibo-fbc-fct-bci:CWWI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CWWI" ;
+    dcterms:description "the FpML business center code for Willemstad, Curacao" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CWWI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Willemstad .
+
+fibo-fbc-fct-bci:CYNI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CYNI" ;
+    dcterms:description "the FpML business center code for Nicosia, Cyprus" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CYNI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Nicosia .
+
+fibo-fbc-fct-bci:CZPR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "CZPR" ;
+    dcterms:description "the FpML business center code for Prague, Czech Republic" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "CZPR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Prague .
+
+fibo-fbc-fct-bci:Calcutta a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Calcutta" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Cape_Town a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Cape Town" ;
+    cmns-col:isPartOf lcc-3166-1:SouthAfrica .
+
+fibo-fbc-fct-bci:Chatham a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Chatham" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Chisinau a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Chisinau" ;
+    cmns-col:isPartOf lcc-3166-1:Moldova .
+
+fibo-fbc-fct-bci:Chittagong a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Chittagong" ;
+    cmns-col:isPartOf lcc-3166-1:Bangladesh .
+
+fibo-fbc-fct-bci:Chiyoda-ku a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Chiyoda-ku" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Cluj_Napoca a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Cluj Napoca" ;
+    cmns-col:isPartOf lcc-3166-1:Romania .
+
+fibo-fbc-fct-bci:Cordoba a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Cordoba" ;
+    cmns-col:isPartOf lcc-3166-1:Argentina .
+
+fibo-fbc-fct-bci:Corrientes a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Corrientes" ;
+    cmns-col:isPartOf lcc-3166-1:Argentina .
+
+fibo-fbc-fct-bci:Curitiba a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Curitiba" ;
+    cmns-col:isPartOf lcc-3166-1:Brazil .
+
+fibo-fbc-fct-bci:DECO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DECO" ;
+    dcterms:description "the FpML business center code for Cologne, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DECO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Cologne .
+
+fibo-fbc-fct-bci:DEDU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DEDU" ;
+    dcterms:description "the FpML business center code for Dusseldorf, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DEDU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Dusseldorf .
+
+fibo-fbc-fct-bci:DEFR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DEFR" ;
+    dcterms:description "the FpML business center code for Frankfurt, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DEFR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Frankfurt .
+
+fibo-fbc-fct-bci:DEHA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DEHA" ;
+    dcterms:description "the FpML business center code for Hannover, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DEHA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Hannover .
+
+fibo-fbc-fct-bci:DEHH a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DEHH" ;
+    dcterms:description "the FpML business center code for Hamburg, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DEHH" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Hamburg .
+
+fibo-fbc-fct-bci:DELE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DELE" ;
+    dcterms:description "the FpML business center code for Leipzig, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DELE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Leipzig .
+
+fibo-fbc-fct-bci:DEMA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DEMA" ;
+    dcterms:description "the FpML business center code for Mainz, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DEMA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Mainz .
+
+fibo-fbc-fct-bci:DEMU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DEMU" ;
+    dcterms:description "the FpML business center code for Munich, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DEMU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Munich .
+
+fibo-fbc-fct-bci:DEST a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DEST" ;
+    dcterms:description "the FpML business center code for Stuttgart, Germany" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DEST" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Stuttgart .
+
+fibo-fbc-fct-bci:DKCO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DKCO" ;
+    dcterms:description "the FpML business center code for Copenhagen, Denmark" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DKCO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Copenhagen .
+
+fibo-fbc-fct-bci:DOSD a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DOSD" ;
+    dcterms:description "the FpML business center code for Santo Domingo, Dominican Republic" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DOSD" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Santo_Domingo .
+
+fibo-fbc-fct-bci:DZAL a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "DZAL" ;
+    dcterms:description "the FpML business center code for Algiers, Algeria" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "DZAL" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Algiers .
+
+fibo-fbc-fct-bci:Dalian a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Dalian" ;
+    cmns-col:isPartOf lcc-3166-1:China .
+
+fibo-fbc-fct-bci:Dallas a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Dallas" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Damascus a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Damascus" ;
+    cmns-col:isPartOf lcc-3166-1:SyrianArabRepublic .
+
+fibo-fbc-fct-bci:Dnipropetrovsk a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Dnipropetrovsk" ;
+    cmns-col:isPartOf lcc-3166-1:Ukraine .
+
+fibo-fbc-fct-bci:Douala a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Douala" ;
+    cmns-col:isPartOf lcc-3166-1:Cameroon .
+
+fibo-fbc-fct-bci:Downers_Grove a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Downers Grove" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:ECGU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ECGU" ;
+    dcterms:description "the FpML business center code for Guayaquil, Ecuador" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ECGU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Guayaquil .
+
+fibo-fbc-fct-bci:EETA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "EETA" ;
+    dcterms:description "the FpML business center code for Tallinn, Estonia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "EETA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Tallinn .
+
+fibo-fbc-fct-bci:EGCA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "EGCA" ;
+    dcterms:description "the FpML business center code for Cairo, Egypt" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "EGCA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Cairo .
+
+fibo-fbc-fct-bci:ESAS a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessDayAdjustmentCode ;
+    rdfs:label "ESAS" ;
+    dcterms:description "the FpML business center code for ESAS Settlement Day (as defined in 2006 ISDA Definitions Section 7.1 and Supplement Number 15 to the 2000 ISDA Definitions)" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ESAS" ;
+    cmns-id:identifies fibo-fbc-fct-bci:ESASSettlementDay .
+
+fibo-fbc-fct-bci:ESBA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ESBA" ;
+    dcterms:description "the FpML business center code for Barcelona, Spain" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ESBA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Barcelona .
+
+fibo-fbc-fct-bci:ESMA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ESMA" ;
+    dcterms:description "the FpML business center code for Madrid, Spain" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ESMA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Madrid .
+
+fibo-fbc-fct-bci:ESSS a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ESSS" ;
+    dcterms:description "the FpML business center code for San Sebastian, Spain" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ESSS" ;
+    cmns-id:identifies fibo-fbc-fct-bci:San_Sebastian .
+
+fibo-fbc-fct-bci:ETAA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ETAA" ;
+    dcterms:description "the FpML business center code for Addis Ababa, Ethiopia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ETAA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Addis_Ababa .
+
+fibo-fbc-fct-bci:EUTA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessDayAdjustmentCode ;
+    rdfs:label "EUTA" ;
+    dcterms:description "the FpML business center code for TARGET Settlement Day" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "EUTA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:TARGETSettlementDay .
+
+fibo-fbc-fct-bci:Ebene a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Ebene" ;
+    cmns-col:isPartOf lcc-3166-1:Mauritius .
+
+fibo-fbc-fct-bci:Eden_Island a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Eden Island" ;
+    cmns-col:isPartOf lcc-3166-1:Seychelles .
+
+fibo-fbc-fct-bci:Ekaterinburg a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Ekaterinburg" ;
+    cmns-col:isPartOf lcc-3166-1:RussianFederation .
+
+fibo-fbc-fct-bci:El_Salvador a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "El Salvador" ;
+    cmns-col:isPartOf lcc-3166-1:ElSalvador .
+
+fibo-fbc-fct-bci:Esch-sur-alzette a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Esch-sur-alzette" ;
+    cmns-col:isPartOf lcc-3166-1:Luxembourg .
+
+fibo-fbc-fct-bci:Eschborn a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Eschborn" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Espirito_Santo a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Espirito Santo" ;
+    cmns-col:isPartOf lcc-3166-1:Brazil .
+
+fibo-fbc-fct-bci:Espoo a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Espoo" ;
+    cmns-col:isPartOf lcc-3166-1:Finland .
+
+fibo-fbc-fct-bci:FIHE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "FIHE" ;
+    dcterms:description "the FpML business center code for Helsinki, Finland" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "FIHE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Helsinki .
+
+fibo-fbc-fct-bci:FRPA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "FRPA" ;
+    dcterms:description "the FpML business center code for Paris, France" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "FRPA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Paris .
+
+fibo-fbc-fct-bci:Fiac a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Fiac" ;
+    cmns-col:isPartOf lcc-3166-1:France .
+
+fibo-fbc-fct-bci:Firenze a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Firenze" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Florence a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Florence" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Fukuoka a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Fukuoka" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:GBED a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GBED" ;
+    dcterms:description "the FpML business center code for Edinburgh, Scotland" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GBED" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Edinburgh .
+
+fibo-fbc-fct-bci:GBLO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GBLO" ;
+    dcterms:description "the FpML business center code for London, United Kingdom" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GBLO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:London .
+
+fibo-fbc-fct-bci:GETB a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GETB" ;
+    dcterms:description "the FpML business center code for Tbilisi, Georgia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GETB" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Tbilisi .
+
+fibo-fbc-fct-bci:GGSP a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GGSP" ;
+    dcterms:description "the FpML business center code for Saint Peter Port, Guernsey" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GGSP" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Saint_Peter_Port .
+
+fibo-fbc-fct-bci:GHAC a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GHAC" ;
+    dcterms:description "the FpML business center code for Accra, Ghana" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GHAC" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Accra .
+
+fibo-fbc-fct-bci:GMBA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GMBA" ;
+    dcterms:description "the FpML business center code for Banjul, Gambia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GMBA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Banjul .
+
+fibo-fbc-fct-bci:GNCO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GNCO" ;
+    dcterms:description "the FpML business center code for Conakry, Guinea" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GNCO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Conakry .
+
+fibo-fbc-fct-bci:GRAT a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GRAT" ;
+    dcterms:description "the FpML business center code for Athens, Greece" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GRAT" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Athens .
+
+fibo-fbc-fct-bci:GUGC a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "GUGC" ;
+    dcterms:description "the FpML business center code for Guatemala City, Guatemala" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "GUGC" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Guatemala_City .
+
+fibo-fbc-fct-bci:Gandhinagar a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Gandhinagar" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Genova a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Genova" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Georgetown a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Georgetown" ;
+    cmns-col:isPartOf lcc-3166-1:Guyana .
+
+fibo-fbc-fct-bci:Gibraltar a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Gibraltar" ;
+    cmns-col:isPartOf lcc-3166-1:Gibraltar .
+
+fibo-fbc-fct-bci:Gift_City a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Gift City" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Glenview a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Glenview" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Great_Neck a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Great Neck" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Greenwich a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Greenwich" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Grindsted a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Grindsted" ;
+    cmns-col:isPartOf lcc-3166-1:Denmark .
+
+fibo-fbc-fct-bci:Guangzhou a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Guangzhou" ;
+    cmns-col:isPartOf lcc-3166-1:China .
+
+fibo-fbc-fct-bci:Guaynabo a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Guaynabo" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Guildford a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Guildford" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland .
+
+fibo-fbc-fct-bci:HKHK a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "HKHK" ;
+    dcterms:description "the FpML business center code for Hong Kong, Hong Kong" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "HKHK" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Hong_Kong .
+
+fibo-fbc-fct-bci:HNTE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "HNTE" ;
+    dcterms:description "the FpML business center code for Tegucigalpa, Honduras" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "HNTE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Tegucigalpa .
+
+fibo-fbc-fct-bci:HRZA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "HRZA" ;
+    dcterms:description "the FpML business center code for Zagreb, Republic of Croatia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "HRZA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Zagreb .
+
+fibo-fbc-fct-bci:HUBU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "HUBU" ;
+    dcterms:description "the FpML business center code for Budapest, Hungary" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "HUBU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Budapest .
+
+fibo-fbc-fct-bci:Hiroshima a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Hiroshima" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Ho_Chi_Minh_City a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Ho Chi Minh City" ;
+    cmns-col:isPartOf lcc-3166-1:VietNam .
+
+fibo-fbc-fct-bci:Horsens a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Horsens" ;
+    cmns-col:isPartOf lcc-3166-1:Denmark .
+
+fibo-fbc-fct-bci:Hove a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Hove" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland .
+
+fibo-fbc-fct-bci:Hradec_Kralove a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Hradec Kralove" ;
+    cmns-col:isPartOf lcc-3166-1:Czechia .
+
+fibo-fbc-fct-bci:IDJA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "IDJA" ;
+    dcterms:description "the FpML business center code for Jakarta, Indonesia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "IDJA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Jakarta .
+
+fibo-fbc-fct-bci:IEDU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "IEDU" ;
+    dcterms:description "the FpML business center code for Dublin, Ireland" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "IEDU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Dublin .
+
+fibo-fbc-fct-bci:ILJE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ILJE" ;
+    dcterms:description "the FpML business center code for Jerusalem, Israel" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ILJE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Jerusalem .
+
+fibo-fbc-fct-bci:ILTA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ILTA" ;
+    dcterms:description "the FpML business center code for Tel Aviv, Israel" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ILTA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Tel_Aviv .
+
+fibo-fbc-fct-bci:INAH a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "INAH" ;
+    dcterms:description "the FpML business center code for Ahmedabad, India" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "INAH" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Ahmedabad .
+
+fibo-fbc-fct-bci:INBA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "INBA" ;
+    dcterms:description "the FpML business center code for Bangalore, India" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "INBA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Bangalore .
+
+fibo-fbc-fct-bci:INCH a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "INCH" ;
+    dcterms:description "the FpML business center code for Chennai, India" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "INCH" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Chennai .
+
+fibo-fbc-fct-bci:INHY a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "INHY" ;
+    dcterms:description "the FpML business center code for Hyderabad, India" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "INHY" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Hyderabad .
+
+fibo-fbc-fct-bci:INKO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "INKO" ;
+    dcterms:description "the FpML business center code for Kolkata, India" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "INKO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Kolkata .
+
+fibo-fbc-fct-bci:INMU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "INMU" ;
+    dcterms:description "the FpML business center code for Mumbai, India" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "INMU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Mumbai .
+
+fibo-fbc-fct-bci:INND a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "INND" ;
+    dcterms:description "the FpML business center code for New Delhi, India" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "INND" ;
+    cmns-id:identifies fibo-fbc-fct-bci:New_Delhi .
+
+fibo-fbc-fct-bci:IQBA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "IQBA" ;
+    dcterms:description "the FpML business center code for Baghdad, Iraq" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "IQBA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Baghdad .
+
+fibo-fbc-fct-bci:IRTE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "IRTE" ;
+    dcterms:description "the FpML business center code for Teheran, Iran" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "IRTE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Teheran .
+
+fibo-fbc-fct-bci:ISRE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ISRE" ;
+    dcterms:description "the FpML business center code for Reykjavik, Iceland" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ISRE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Reykjavik .
+
+fibo-fbc-fct-bci:ITMI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ITMI" ;
+    dcterms:description "the FpML business center code for Milan, Italy" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ITMI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Milan .
+
+fibo-fbc-fct-bci:ITRO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ITRO" ;
+    dcterms:description "the FpML business center code for Rome, Italy" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ITRO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Rome .
+
+fibo-fbc-fct-bci:ITTU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ITTU" ;
+    dcterms:description "the FpML business center code for Turin, Italy" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ITTU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Turin .
+
+fibo-fbc-fct-bci:Indore_Madhya_Pradesh a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Indore Madhya Pradesh" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Islamabad a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Islamabad" ;
+    cmns-col:isPartOf lcc-3166-1:Pakistan .
+
+fibo-fbc-fct-bci:Izmir a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Izmir" ;
+    cmns-col:isPartOf lcc-3166-1:Turkey .
+
+fibo-fbc-fct-bci:JESH a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "JESH" ;
+    dcterms:description "the FpML business center code for St. Helier, Channel Islands, Jersey" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "JESH" ;
+    cmns-id:identifies fibo-fbc-fct-bci:St._Helier .
+
+fibo-fbc-fct-bci:JMKI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "JMKI" ;
+    dcterms:description "the FpML business center code for Kingston, Jamaica" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "JMKI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Kingston .
+
+fibo-fbc-fct-bci:JOAM a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "JOAM" ;
+    dcterms:description "the FpML business center code for Amman, Jordan" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "JOAM" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Amman .
+
+fibo-fbc-fct-bci:JPTO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "JPTO" ;
+    dcterms:description "the FpML business center code for Tokyo, Japan" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "JPTO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Tokyo .
+
+fibo-fbc-fct-bci:Jaen a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Jaen" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Jersey_City a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Jersey City" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:KENA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "KENA" ;
+    dcterms:description "the FpML business center code for Nairobi, Kenya" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "KENA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Nairobi .
+
+fibo-fbc-fct-bci:KHPP a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "KHPP" ;
+    dcterms:description "the FpML business center code for Phnom Penh, Cambodia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "KHPP" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Phnom_Penh .
+
+fibo-fbc-fct-bci:KRSE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "KRSE" ;
+    dcterms:description "the FpML business center code for Seoul, Republic of Korea" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "KRSE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Seoul .
+
+fibo-fbc-fct-bci:KWKC a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "KWKC" ;
+    dcterms:description "the FpML business center code for Kuwait City, Kuwait" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "KWKC" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Kuwait_City .
+
+fibo-fbc-fct-bci:KYGE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "KYGE" ;
+    dcterms:description "the FpML business center code for George Town, Cayman Islands" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "KYGE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:George_Town .
+
+fibo-fbc-fct-bci:KZAL a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "KZAL" ;
+    dcterms:description "the FpML business center code for Almaty, Kazakhstan" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "KZAL" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Almaty .
+
+fibo-fbc-fct-bci:Kansas_City a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kansas City" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Kharkov a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kharkov" ;
+    cmns-col:isPartOf lcc-3166-1:Ukraine .
+
+fibo-fbc-fct-bci:Khartoum a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Khartoum" ;
+    cmns-col:isPartOf lcc-3166-1:Sudan .
+
+fibo-fbc-fct-bci:Kiel a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kiel" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Kigali a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kigali" ;
+    cmns-col:isPartOf lcc-3166-1:Rwanda .
+
+fibo-fbc-fct-bci:Kingstown a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kingstown" ;
+    cmns-col:isPartOf lcc-3166-1:SaintVincentAndTheGrenadines .
+
+fibo-fbc-fct-bci:Klagenfurt_Am_Woerthersee a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Klagenfurt Am Woerthersee" ;
+    cmns-col:isPartOf lcc-3166-1:Austria .
+
+fibo-fbc-fct-bci:Kobe a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kobe" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Kongsvinger a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kongsvinger" ;
+    cmns-col:isPartOf lcc-3166-1:Norway .
+
+fibo-fbc-fct-bci:Krakow a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Krakow" ;
+    cmns-col:isPartOf lcc-3166-1:Poland .
+
+fibo-fbc-fct-bci:Kyiv a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kyiv" ;
+    owl:sameAs fibo-fbc-fct-bci:Kiev ;
+    cmns-col:isPartOf lcc-3166-1:Ukraine .
+
+fibo-fbc-fct-bci:Kyoto a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Kyoto" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:LAVI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "LAVI" ;
+    dcterms:description "the FpML business center code for Vientiane, Laos" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "LAVI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Vientiane .
+
+fibo-fbc-fct-bci:LBBE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "LBBE" ;
+    dcterms:description "the FpML business center code for Beirut, Lebanon" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "LBBE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Beirut .
+
+fibo-fbc-fct-bci:LKCO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "LKCO" ;
+    dcterms:description "the FpML business center code for Colombo, Sri Lanka" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "LKCO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Colombo .
+
+fibo-fbc-fct-bci:LULU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "LULU" ;
+    dcterms:description "the FpML business center code for Luxembourg, Luxembourg" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "LULU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Luxembourg .
+
+fibo-fbc-fct-bci:LVRI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "LVRI" ;
+    dcterms:description "the FpML business center code for Riga, Latvia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "LVRI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Riga .
+
+fibo-fbc-fct-bci:Lahore a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Lahore" ;
+    cmns-col:isPartOf lcc-3166-1:Pakistan .
+
+fibo-fbc-fct-bci:Lane_Cove a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Lane Cove" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Lao a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Lao" ;
+    cmns-col:isPartOf lcc-3166-1:LaoPeoplesDemocraticRepublic .
+
+fibo-fbc-fct-bci:Larnaca a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Larnaca" ;
+    cmns-col:isPartOf lcc-3166-1:Cyprus .
+
+fibo-fbc-fct-bci:Lenexa a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Lenexa" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Leuven a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Leuven" ;
+    cmns-col:isPartOf lcc-3166-1:Belgium .
+
+fibo-fbc-fct-bci:Limassol a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Limassol" ;
+    cmns-col:isPartOf lcc-3166-1:Cyprus .
+
+fibo-fbc-fct-bci:Linz a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Linz" ;
+    cmns-col:isPartOf lcc-3166-1:Austria .
+
+fibo-fbc-fct-bci:Litchfield a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Litchfield" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Luzern a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Luzern" ;
+    cmns-col:isPartOf lcc-3166-1:Switzerland .
+
+fibo-fbc-fct-bci:MACA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MACA" ;
+    dcterms:description "the FpML business center code for Casablanca, Morocco" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MACA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Casablanca .
+
+fibo-fbc-fct-bci:MARA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MARA" ;
+    dcterms:description "the FpML business center code for Rabat, Morocco" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MARA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Rabat .
+
+fibo-fbc-fct-bci:MCMO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MCMO" ;
+    dcterms:description "the FpML business center code for Monaco, Monaco" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MCMO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Monaco .
+
+fibo-fbc-fct-bci:MNUB a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MNUB" ;
+    dcterms:description "the FpML business center code for Ulan Bator, Mongolia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MNUB" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Ulan_Bator .
+
+fibo-fbc-fct-bci:MOMA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MOMA" ;
+    dcterms:description "the FpML business center code for Macau, Macao" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MOMA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Macau .
+
+fibo-fbc-fct-bci:MTVA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MTVA" ;
+    dcterms:description "the FpML business center code for Valletta, Malta" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MTVA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Valletta .
+
+fibo-fbc-fct-bci:MUPL a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MUPL" ;
+    dcterms:description "the FpML business center code for Port Louis, Mauritius" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MUPL" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Port_Louis .
+
+fibo-fbc-fct-bci:MVMA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MVMA" ;
+    dcterms:description "the FpML business center code for Male, Maldives" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MVMA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Male .
+
+fibo-fbc-fct-bci:MWLI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MWLI" ;
+    dcterms:description "the FpML business center code for Lilongwe, Malawi" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MWLI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Lilongwe .
+
+fibo-fbc-fct-bci:MXMC a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MXMC" ;
+    dcterms:description "the FpML business center code for Mexico City, Mexico" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MXMC" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Mexico_City .
+
+fibo-fbc-fct-bci:MYKL a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MYKL" ;
+    dcterms:description "the FpML business center code for Kuala Lumpur, Malaysia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MYKL" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Kuala_Lumpur .
+
+fibo-fbc-fct-bci:MYLA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MYLA" ;
+    dcterms:description "the FpML business center code for Labuan, Malaysia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MYLA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Labuan .
+
+fibo-fbc-fct-bci:MZMA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "MZMA" ;
+    dcterms:description "the FpML business center code for Maputo, Mozambique" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "MZMA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Maputo .
+
+fibo-fbc-fct-bci:Madras a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Madras" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Makati_City a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Makati City" ;
+    cmns-col:isPartOf lcc-3166-1:Philippines .
+
+fibo-fbc-fct-bci:Managua a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Managua" ;
+    cmns-col:isPartOf lcc-3166-1:Nicaragua .
+
+fibo-fbc-fct-bci:Maringa a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Maringa" ;
+    cmns-col:isPartOf lcc-3166-1:Brazil .
+
+fibo-fbc-fct-bci:Mbabane a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Mbabane" ;
+    cmns-col:isPartOf lcc-3166-1:Eswatini .
+
+fibo-fbc-fct-bci:Mendoza a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Mendoza" ;
+    cmns-col:isPartOf lcc-3166-1:Argentina .
+
+fibo-fbc-fct-bci:Miami a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Miami" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Milton_Keynes a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Milton Keynes" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland .
+
+fibo-fbc-fct-bci:Montenegro a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Montenegro" ;
+    cmns-col:isPartOf lcc-3166-1:Montenegro .
+
+fibo-fbc-fct-bci:Moorpark a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Moorpark" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Mount_Pleasant a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Mount Pleasant" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:NAWI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NAWI" ;
+    dcterms:description "the FpML business center code for Windhoek, Namibia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NAWI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Windhoek .
+
+fibo-fbc-fct-bci:NGAB a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NGAB" ;
+    dcterms:description "the FpML business center code for Abuja, Nigeria" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NGAB" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Abuja .
+
+fibo-fbc-fct-bci:NGLA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NGLA" ;
+    dcterms:description "the FpML business center code for Lagos, Nigeria" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NGLA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Lagos .
+
+fibo-fbc-fct-bci:NLAM a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NLAM" ;
+    dcterms:description "the FpML business center code for Amsterdam, Netherlands" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NLAM" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Amsterdam .
+
+fibo-fbc-fct-bci:NLRO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NLRO" ;
+    dcterms:description "the FpML business center code for Rotterdam, Netherlands" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NLRO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Rotterdam .
+
+fibo-fbc-fct-bci:NOOS a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NOOS" ;
+    dcterms:description "the FpML business center code for Oslo, Norway" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NOOS" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Oslo .
+
+fibo-fbc-fct-bci:NPKA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NPKA" ;
+    dcterms:description "the FpML business center code for Kathmandu, Nepal" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NPKA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Kathmandu .
+
+fibo-fbc-fct-bci:NYFD a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessDayAdjustmentCode ;
+    rdfs:label "NYFD" ;
+    dcterms:description "the FpML business center code for New York Fed Business Day (as defined in 2006 ISDA Definitions Section 1.9 and 2000 ISDA Definitions Section 1.9)" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NYFD" ;
+    cmns-id:identifies fibo-fbc-fct-bci:NewYorkFederalReserveBusinessDay .
+
+fibo-fbc-fct-bci:NYSE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessDayAdjustmentCode ;
+    rdfs:label "NYSE" ;
+    dcterms:description "the FpML business center code for New York Stock Exchange Business Day (as defined in 2006 ISDA Definitions Section 1.10 and 2000 ISDA Definitions Section 1.10)" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NYSE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:NewYorkStockExchangeBusinessDay .
+
+fibo-fbc-fct-bci:NZAU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NZAU" ;
+    dcterms:description "the FpML business center code for Auckland, New Zealand" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NZAU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Auckland .
+
+fibo-fbc-fct-bci:NZWE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "NZWE" ;
+    dcterms:description "the FpML business center code for Wellington, New Zealand" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "NZWE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Wellington .
+
+fibo-fbc-fct-bci:Nablus a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Nablus" ;
+    cmns-col:isPartOf lcc-3166-1:Palestine .
+
+fibo-fbc-fct-bci:Nacka a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Nacka" ;
+    cmns-col:isPartOf lcc-3166-1:Sweden .
+
+fibo-fbc-fct-bci:Nagoya a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Nagoya" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Narberth a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Narberth" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Nasau a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Nasau" ;
+    cmns-col:isPartOf lcc-3166-1:Bahamas .
+
+fibo-fbc-fct-bci:Newcastle a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Newcastle" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Nigita a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Nigita" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Nizhniy_Novgorod a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Nizhniy Novgorod" ;
+    cmns-col:isPartOf lcc-3166-1:RussianFederation .
+
+fibo-fbc-fct-bci:North_Bergen a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "North Bergen" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:North_Sydney a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "North Sydney" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Novosibirsk a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Novosibirsk" ;
+    cmns-col:isPartOf lcc-3166-1:RussianFederation .
+
+fibo-fbc-fct-bci:Nyon a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Nyon" ;
+    cmns-col:isPartOf lcc-3166-1:Switzerland .
+
+fibo-fbc-fct-bci:OMMU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "OMMU" ;
+    dcterms:description "the FpML business center code for Muscat, Oman" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "OMMU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Muscat .
+
+fibo-fbc-fct-bci:Odessa a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Odessa" ;
+    cmns-col:isPartOf lcc-3166-1:Ukraine .
+
+fibo-fbc-fct-bci:Oldenburg a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Oldenburg" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Osaka a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Osaka" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Oststeinbek a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Oststeinbek" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:PAPC a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "PAPC" ;
+    dcterms:description "the FpML business center code for Panama City, Panama" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "PAPC" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Panama_City .
+
+fibo-fbc-fct-bci:PELI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "PELI" ;
+    dcterms:description "the FpML business center code for Lima, Peru" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "PELI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Lima .
+
+fibo-fbc-fct-bci:PHMA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "PHMA" ;
+    dcterms:description "the FpML business center code for Manila, Philippines" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "PHMA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Manila .
+
+fibo-fbc-fct-bci:PHMK a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "PHMK" ;
+    dcterms:description "the FpML business center code for Makati, Philippines" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "PHMK" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Makati .
+
+fibo-fbc-fct-bci:PKKA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "PKKA" ;
+    dcterms:description "the FpML business center code for Karachi, Pakistan" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "PKKA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Karachi .
+
+fibo-fbc-fct-bci:PLWA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "PLWA" ;
+    dcterms:description "the FpML business center code for Warsaw, Poland" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "PLWA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Warsaw .
+
+fibo-fbc-fct-bci:PRSJ a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "PRSJ" ;
+    dcterms:description "the FpML business center code for San Juan, Puerto Rico" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "PRSJ" ;
+    cmns-id:identifies fibo-fbc-fct-bci:San_Juan .
+
+fibo-fbc-fct-bci:PTLI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "PTLI" ;
+    dcterms:description "the FpML business center code for Lisbon, Portugal" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "PTLI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Lisbon .
+
+fibo-fbc-fct-bci:Padova a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Padova" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Palma_De_Mallorca a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Palma De Mallorca" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Pasig_City a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Pasig City" ;
+    cmns-col:isPartOf lcc-3166-1:Philippines .
+
+fibo-fbc-fct-bci:Philadelphia a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Philadelphia" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Phoenix a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Phoenix" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Podgorica a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Podgorica" ;
+    cmns-col:isPartOf lcc-3166-1:Montenegro .
+
+fibo-fbc-fct-bci:Polokwane a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Polokwane" ;
+    cmns-col:isPartOf lcc-3166-1:SouthAfrica .
+
+fibo-fbc-fct-bci:Port_Moresby a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Port Moresby" ;
+    cmns-col:isPartOf lcc-3166-1:PapuaNewGuinea .
+
+fibo-fbc-fct-bci:Port_Vila a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Port Vila" ;
+    cmns-col:isPartOf lcc-3166-1:Vanuatu .
+
+fibo-fbc-fct-bci:Porto a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Porto" ;
+    cmns-col:isPartOf lcc-3166-1:Portugal .
+
+fibo-fbc-fct-bci:Praia a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Praia" ;
+    cmns-col:isPartOf lcc-3166-1:CaboVerde .
+
+fibo-fbc-fct-bci:Princeton a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Princeton" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Purchase a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Purchase" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:QADO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "QADO" ;
+    dcterms:description "the FpML business center code for Doha, Qatar" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "QADO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Doha .
+
+fibo-fbc-fct-bci:Quito a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Quito" ;
+    cmns-col:isPartOf lcc-3166-1:Ecuador .
+
+fibo-fbc-fct-bci:ROBU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ROBU" ;
+    dcterms:description "the FpML business center code for Bucharest, Romania" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ROBU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Bucharest .
+
+fibo-fbc-fct-bci:RSBE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "RSBE" ;
+    dcterms:description "the FpML business center code for Belgrade, Serbia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "RSBE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Belgrade .
+
+fibo-fbc-fct-bci:RUMO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "RUMO" ;
+    dcterms:description "the FpML business center code for Moscow, Russian Federation" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "RUMO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Moscow .
+
+fibo-fbc-fct-bci:Randers a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Randers" ;
+    cmns-col:isPartOf lcc-3166-1:Denmark .
+
+fibo-fbc-fct-bci:Red_Bank a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Red Bank" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Regensburg a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Regensburg" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Reggio_Emilia a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Reggio Emilia" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Rodgau a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Rodgau" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Rosario a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Rosario" ;
+    cmns-col:isPartOf lcc-3166-1:Argentina .
+
+fibo-fbc-fct-bci:Rostov a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Rostov" ;
+    cmns-col:isPartOf lcc-3166-1:RussianFederation .
+
+fibo-fbc-fct-bci:S-hertogenbosch a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "S-hertogenbosch" ;
+    cmns-col:isPartOf lcc-3166-1:Netherlands .
+
+fibo-fbc-fct-bci:SAAB a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SAAB" ;
+    dcterms:description "the FpML business center code for Abha, Saudi Arabia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SAAB" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Abha .
+
+fibo-fbc-fct-bci:SAJE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SAJE" ;
+    dcterms:description "the FpML business center code for Jeddah, Saudi Arabia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SAJE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Jeddah .
+
+fibo-fbc-fct-bci:SARI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SARI" ;
+    dcterms:description "the FpML business center code for Riyadh, Saudi Arabia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SARI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Riyadh .
+
+fibo-fbc-fct-bci:SEST a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SEST" ;
+    dcterms:description "the FpML business center code for Stockholm, Sweden" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SEST" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Stockholm .
+
+fibo-fbc-fct-bci:SGSI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SGSI" ;
+    dcterms:description "the FpML business center code for Singapore, Singapore" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SGSI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Singapore .
+
+fibo-fbc-fct-bci:SILJ a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SILJ" ;
+    dcterms:description "the FpML business center code for Ljubljana, Slovenia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SILJ" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Ljubljana .
+
+fibo-fbc-fct-bci:SKBR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SKBR" ;
+    dcterms:description "the FpML business center code for Bratislava, Slovakia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SKBR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Bratislava .
+
+fibo-fbc-fct-bci:SLFR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SLFR" ;
+    dcterms:description "the FpML business center code for Freetown, Sierra Leone" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SLFR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Freetown .
+
+fibo-fbc-fct-bci:SNDA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SNDA" ;
+    dcterms:description "the FpML business center code for Dakar, Senegal" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SNDA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Dakar .
+
+fibo-fbc-fct-bci:SVSS a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "SVSS" ;
+    dcterms:description "the FpML business center code for San Salvador, El Salvador" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "SVSS" ;
+    cmns-id:identifies fibo-fbc-fct-bci:San_Salvador .
+
+fibo-fbc-fct-bci:Sabadell a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Sabadell" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Saint_Petersburg a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Saint Petersburg" ;
+    cmns-col:isPartOf lcc-3166-1:RussianFederation .
+
+fibo-fbc-fct-bci:Salzburg a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Salzburg" ;
+    cmns-col:isPartOf lcc-3166-1:Austria .
+
+fibo-fbc-fct-bci:Samara a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Samara" ;
+    cmns-col:isPartOf lcc-3166-1:RussianFederation .
+
+fibo-fbc-fct-bci:San_Carlos a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "San Carlos" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:San_Pedro_Sula a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "San Pedro Sula" ;
+    cmns-col:isPartOf lcc-3166-1:Honduras .
+
+fibo-fbc-fct-bci:Santa_Fe a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Santa Fe" ;
+    cmns-col:isPartOf lcc-3166-1:Argentina .
+
+fibo-fbc-fct-bci:Santander a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Santander" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Sapporo a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Sapporo" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Sarajevo a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Sarajevo" ;
+    cmns-col:isPartOf lcc-3166-1:BosniaAndHerzegovina .
+
+fibo-fbc-fct-bci:Schwerin a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Schwerin" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Scottsdale a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Scottsdale" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Sea_Girt a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Sea Girt" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Shenzhen a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Shenzhen" ;
+    cmns-col:isPartOf lcc-3166-1:China .
+
+fibo-fbc-fct-bci:Shimonoseki a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Shimonoseki" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Sibiu a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Sibiu" ;
+    cmns-col:isPartOf lcc-3166-1:Romania .
+
+fibo-fbc-fct-bci:Silkeborg a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Silkeborg" ;
+    cmns-col:isPartOf lcc-3166-1:Denmark .
+
+fibo-fbc-fct-bci:Skopje a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Skopje" ;
+    cmns-col:isPartOf lcc-3166-1:NorthMacedonia .
+
+fibo-fbc-fct-bci:Sliema a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Sliema" ;
+    cmns-col:isPartOf lcc-3166-1:Malta .
+
+fibo-fbc-fct-bci:Split a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Split" ;
+    cmns-col:isPartOf lcc-3166-1:Croatia .
+
+fibo-fbc-fct-bci:St_Albans a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "St. Albans" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland .
+
+fibo-fbc-fct-bci:St_John a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "St. John" ;
+    cmns-col:isPartOf lcc-3166-1:AntiguaAndBarbuda .
+
+fibo-fbc-fct-bci:Stamford a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Stamford" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Summit a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Summit" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Surabaya a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Surabaya" ;
+    cmns-col:isPartOf lcc-3166-1:Indonesia .
+
+fibo-fbc-fct-bci:Suva a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Suva" ;
+    cmns-col:isPartOf lcc-3166-1:Fiji .
+
+fibo-fbc-fct-bci:THBA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "THBA" ;
+    dcterms:description "the FpML business center code for Bangkok, Thailand" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "THBA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Bangkok .
+
+fibo-fbc-fct-bci:TNTU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "TNTU" ;
+    dcterms:description "the FpML business center code for Tunis, Tunisia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "TNTU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Tunis .
+
+fibo-fbc-fct-bci:TRAN a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "TRAN" ;
+    dcterms:description "the FpML business center code for Ankara, Turkey" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "TRAN" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Ankara .
+
+fibo-fbc-fct-bci:TRIS a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "TRIS" ;
+    dcterms:description "the FpML business center code for Istanbul, Turkey" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "TRIS" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Istanbul .
+
+fibo-fbc-fct-bci:TTPS a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "TTPS" ;
+    dcterms:description "the FpML business center code for Port of Spain, Trinidad and Tobago" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "TTPS" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Port_of_Spain .
+
+fibo-fbc-fct-bci:TWTA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "TWTA" ;
+    dcterms:description "the FpML business center code for Taipei, Taiwan" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "TWTA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Taipei .
+
+fibo-fbc-fct-bci:TZDA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "TZDA" ;
+    dcterms:description "the FpML business center code for Dar es Salaam, Tanzania" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "TZDA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Dar_es_Salaam .
+
+fibo-fbc-fct-bci:TZDO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "TZDO" ;
+    dcterms:description "the FpML business center code for Dodoma, Tanzania" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "TZDO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Dodoma .
+
+fibo-fbc-fct-bci:Taiwan a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Taiwan" ;
+    cmns-col:isPartOf lcc-3166-1:Taiwan .
+
+fibo-fbc-fct-bci:The_Hague a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "The Hague" ;
+    cmns-col:isPartOf lcc-3166-1:Netherlands .
+
+fibo-fbc-fct-bci:The_Woodlands a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "The Woodlands" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Tirana a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Tirana" ;
+    cmns-col:isPartOf lcc-3166-1:Albania .
+
+fibo-fbc-fct-bci:Torshavn a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Torshavn" ;
+    cmns-col:isPartOf lcc-3166-1:FaroeIslands .
+
+fibo-fbc-fct-bci:Tortola a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Tortola" ;
+    cmns-col:isPartOf lcc-3166-1:VirginIslandsBritish .
+
+fibo-fbc-fct-bci:Triesen a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Triesen" ;
+    cmns-col:isPartOf lcc-3166-1:Liechtenstein .
+
+fibo-fbc-fct-bci:Tripoli a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Tripoli" ;
+    cmns-col:isPartOf lcc-3166-1:Libya .
+
+fibo-fbc-fct-bci:Tromso a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Tromso" ;
+    cmns-col:isPartOf lcc-3166-1:Norway .
+
+fibo-fbc-fct-bci:Trondheim a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Trondheim" ;
+    cmns-col:isPartOf lcc-3166-1:Norway .
+
+fibo-fbc-fct-bci:Tucuman a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Tucuman" ;
+    cmns-col:isPartOf lcc-3166-1:Argentina .
+
+fibo-fbc-fct-bci:UAKI a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "UAKI" ;
+    dcterms:description "the FpML business center code for Kiev, Ukraine" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "UAKI" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Kiev .
+
+fibo-fbc-fct-bci:UGKA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "UGKA" ;
+    dcterms:description "the FpML business center code for Kampala, Uganda" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "UGKA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Kampala .
+
+fibo-fbc-fct-bci:USBO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USBO" ;
+    dcterms:description "the FpML business center code for Boston, Massachusetts, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USBO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Boston .
+
+fibo-fbc-fct-bci:USCH a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USCH" ;
+    dcterms:description "the FpML business center code for Chicago, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USCH" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Chicago .
+
+fibo-fbc-fct-bci:USCR a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USCR" ;
+    dcterms:description "the FpML business center code for Charlotte, North Carolina, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USCR" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Charlotte .
+
+fibo-fbc-fct-bci:USDC a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USDC" ;
+    dcterms:description "the FpML business center code for Washington, District of Columbia, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USDC" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Washington .
+
+fibo-fbc-fct-bci:USDN a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USDN" ;
+    dcterms:description "the FpML business center code for Denver, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USDN" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Denver .
+
+fibo-fbc-fct-bci:USDT a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USDT" ;
+    dcterms:description "the FpML business center code for Detroit, Michigan, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USDT" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Detroit .
+
+fibo-fbc-fct-bci:USGS a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessDayAdjustmentCode ;
+    rdfs:label "USGS" ;
+    dcterms:description "the FpML business center code for U.S. Government Securities Business Day (as defined in 2006 ISDA Definitions Section 1.11 and 2000 ISDA Definitions Section 1.11)" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USGS" ;
+    cmns-id:identifies fibo-fbc-fct-bci:USGovernmentSecuritiesBusinessDay .
+
+fibo-fbc-fct-bci:USHL a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USHL" ;
+    dcterms:description "the FpML business center code for Honolulu, Hawaii, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USHL" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Honolulu .
+
+fibo-fbc-fct-bci:USHO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USHO" ;
+    dcterms:description "the FpML business center code for Houston, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USHO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Houston .
+
+fibo-fbc-fct-bci:USLA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USLA" ;
+    dcterms:description "the FpML business center code for Los Angeles, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USLA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Los_Angeles .
+
+fibo-fbc-fct-bci:USMB a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USMB" ;
+    dcterms:description "the FpML business center code for Mobile, Alabama, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USMB" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Mobile .
+
+fibo-fbc-fct-bci:USMN a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USMN" ;
+    dcterms:description "the FpML business center code for Minneapolis, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USMN" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Minneapolis .
+
+fibo-fbc-fct-bci:USNY a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USNY" ;
+    dcterms:description "the FpML business center code for New York, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USNY" ;
+    cmns-id:identifies fibo-fbc-fct-bci:New_York .
+
+fibo-fbc-fct-bci:USPO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USPO" ;
+    dcterms:description "the FpML business center code for Portland, Oregon, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USPO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Portland .
+
+fibo-fbc-fct-bci:USSA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USSA" ;
+    dcterms:description "the FpML business center code for Sacramento, California, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USSA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Sacramento .
+
+fibo-fbc-fct-bci:USSE a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USSE" ;
+    dcterms:description "the FpML business center code for Seattle, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USSE" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Seattle .
+
+fibo-fbc-fct-bci:USSF a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USSF" ;
+    dcterms:description "the FpML business center code for San Francisco, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USSF" ;
+    cmns-id:identifies fibo-fbc-fct-bci:San_Francisco .
+
+fibo-fbc-fct-bci:USWT a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "USWT" ;
+    dcterms:description "the FpML business center code for Wichita, United States" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "USWT" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Wichita .
+
+fibo-fbc-fct-bci:UYMO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "UYMO" ;
+    dcterms:description "the FpML business center code for Montevideo, Uruguay" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "UYMO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Montevideo .
+
+fibo-fbc-fct-bci:UZTA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "UZTA" ;
+    dcterms:description "the FpML business center code for Tashkent, Uzbekistan" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "UZTA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Tashkent .
+
+fibo-fbc-fct-bci:Unterschleisshem a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Unterschleisshem" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Utrecht a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Utrecht" ;
+    cmns-col:isPartOf lcc-3166-1:Netherlands .
+
+fibo-fbc-fct-bci:VECA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "VECA" ;
+    dcterms:description "the FpML business center code for Caracas, Venezuela" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "VECA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Caracas .
+
+fibo-fbc-fct-bci:VGRT a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "VGRT" ;
+    dcterms:description "the FpML business center code for Road Town, Virgin Islands (British)" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "VGRT" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Road_Town .
+
+fibo-fbc-fct-bci:VNHA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "VNHA" ;
+    dcterms:description "the FpML business center code for Hanoi, Vietnam" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "VNHA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Hanoi .
+
+fibo-fbc-fct-bci:VNHC a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "VNHC" ;
+    dcterms:description "the FpML business center code for Ho Chi Minh (formerly Saigon), Vietnam" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "VNHC" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Ho_Chi_Minh__formerly_Saigon_ .
+
+fibo-fbc-fct-bci:Vaduz a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Vaduz" ;
+    cmns-col:isPartOf lcc-3166-1:Liechtenstein .
+
+fibo-fbc-fct-bci:Valencia a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Valencia" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Valparaiso a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Valparaiso" ;
+    cmns-col:isPartOf lcc-3166-1:Chile .
+
+fibo-fbc-fct-bci:Varazdin a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Varazdin" ;
+    cmns-col:isPartOf lcc-3166-1:Croatia .
+
+fibo-fbc-fct-bci:Victoria a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Victoria" ;
+    cmns-col:isPartOf lcc-3166-1:Seychelles .
+
+fibo-fbc-fct-bci:Victoria_Falls a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Victoria Falls" ;
+    cmns-col:isPartOf lcc-3166-1:Zimbabwe .
+
+fibo-fbc-fct-bci:Vilnius a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Vilnius" ;
+    cmns-col:isPartOf lcc-3166-1:Lithuania .
+
+fibo-fbc-fct-bci:Vladivostok a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Vladivostok" ;
+    cmns-col:isPartOf lcc-3166-1:RussianFederation .
+
+fibo-fbc-fct-bci:Washington_New_York a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Washington, New York" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Wilmette a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Wilmette" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Wilmington a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Wilmington" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Winter_Park a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Winter Park" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Wroclaw a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Wroclaw" ;
+    cmns-col:isPartOf lcc-3166-1:Poland .
+
+fibo-fbc-fct-bci:Wuxi a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Wuxi" ;
+    cmns-col:isPartOf lcc-3166-1:China .
+
+fibo-fbc-fct-bci:YEAD a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "YEAD" ;
+    dcterms:description "the FpML business center code for Aden, Yemen" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "YEAD" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Aden .
+
+fibo-fbc-fct-bci:ZAJO a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ZAJO" ;
+    dcterms:description "the FpML business center code for Johannesburg, South Africa" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ZAJO" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Johannesburg .
+
+fibo-fbc-fct-bci:ZMLU a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ZMLU" ;
+    dcterms:description "the FpML business center code for Lusaka, Zambia" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ZMLU" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Lusaka .
+
+fibo-fbc-fct-bci:ZWHA a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCode ;
+    rdfs:label "ZWHA" ;
+    dcterms:description "the FpML business center code for Harare, Zimbabwe" ;
+    cmns-col:isMemberOf fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme ;
+    cmns-dsg:hasTag "ZWHA" ;
+    cmns-id:identifies fibo-fbc-fct-bci:Harare .
+
+fibo-fbc-fct-bci:Zaragoza a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Zaragoza" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Zhengzhou a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Zhengzhou" ;
+    cmns-col:isPartOf lcc-3166-1:China .
+
+fibo-fbc-fct-bci:Zilina a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Zilina" ;
+    cmns-col:isPartOf lcc-3166-1:Slovakia .
+
+fibo-fbc-fct-bci:Zug a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Zug" ;
+    cmns-col:isPartOf lcc-3166-1:Switzerland .
+
+fibo-fbc-fct-bci:Abha a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Abha" ;
+    dcterms:description "the international business center of Abha" ;
+    cmns-col:isPartOf lcc-3166-1:SaudiArabia .
+
+fibo-fbc-fct-bci:Abidjan a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Abidjan" ;
+    dcterms:description "the international business center of Abidjan" ;
+    cmns-col:isPartOf lcc-3166-1:CoteDIvoire .
+
+fibo-fbc-fct-bci:AbuDhabiBusinessDay a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "Abu Dhabi business day" ;
+    dcterms:description "the business day adjustment convention for Abu Dhabi" ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:Abu_Dhabi .
+
+fibo-fbc-fct-bci:AbuDhabiSettlementDay a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "Abu Dhabi settlement day" ;
+    dcterms:description "the settlement day adjustment convention for Abu Dhabi" ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:Abu_Dhabi .
+
+fibo-fbc-fct-bci:Abuja a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Abuja" ;
+    dcterms:description "the international business center of Abuja" ;
+    cmns-col:isPartOf lcc-3166-1:Nigeria .
+
+fibo-fbc-fct-bci:Accra a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Accra" ;
+    dcterms:description "the international business center of Accra" ;
+    cmns-col:isPartOf lcc-3166-1:Ghana .
+
+fibo-fbc-fct-bci:Addis_Ababa a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Addis Ababa" ;
+    dcterms:description "the international business center of Addis Ababa" ;
+    cmns-col:isPartOf lcc-3166-1:Ethiopia .
+
+fibo-fbc-fct-bci:Adelaide a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Adelaide" ;
+    dcterms:description "the international business center of Adelaide" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Aden a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Aden" ;
+    dcterms:description "the international business center of Aden" ;
+    cmns-col:isPartOf lcc-3166-1:Yemen .
+
+fibo-fbc-fct-bci:Ahmedabad a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Ahmedabad" ;
+    dcterms:description "the international business center of Ahmedabad" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Algiers a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Algiers" ;
+    dcterms:description "the international business center of Algiers" ;
+    cmns-col:isPartOf lcc-3166-1:Algeria .
+
+fibo-fbc-fct-bci:Almaty a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Almaty" ;
+    dcterms:description "the international business center of Almaty" ;
+    cmns-col:isPartOf lcc-3166-1:Kazakhstan .
+
+fibo-fbc-fct-bci:Amman a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Amman" ;
+    dcterms:description "the international business center of Amman" ;
+    cmns-col:isPartOf lcc-3166-1:Jordan .
+
+fibo-fbc-fct-bci:Ankara a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Ankara" ;
+    dcterms:description "the international business center of Ankara" ;
+    cmns-col:isPartOf lcc-3166-1:Turkey .
+
+fibo-fbc-fct-bci:Auckland a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Auckland" ;
+    dcterms:description "the international business center of Auckland" ;
+    cmns-col:isPartOf lcc-3166-1:NewZealand .
+
+fibo-fbc-fct-bci:Baghdad a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Baghdad" ;
+    dcterms:description "the international business center of Baghdad" ;
+    cmns-col:isPartOf lcc-3166-1:Iraq .
+
+fibo-fbc-fct-bci:Baku a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Baku" ;
+    dcterms:description "the international business center of Baku" ;
+    cmns-col:isPartOf lcc-3166-1:Azerbaijan .
+
+fibo-fbc-fct-bci:Bandar_Seri_Begawan a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Bandar Seri Begawan" ;
+    dcterms:description "the international business center of Bandar Seri Begawan" ;
+    cmns-col:isPartOf lcc-3166-1:BruneiDarussalam .
+
+fibo-fbc-fct-bci:Bangalore a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Bangalore" ;
+    dcterms:description "the international business center of Bangalore" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Bangkok a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Bangkok" ;
+    dcterms:description "the international business center of Bangkok" ;
+    cmns-col:isPartOf lcc-3166-1:Thailand .
+
+fibo-fbc-fct-bci:Banjul a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Banjul" ;
+    dcterms:description "the international business center of Banjul" ;
+    cmns-col:isPartOf lcc-3166-1:Gambia .
+
+fibo-fbc-fct-bci:Barcelona a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Barcelona" ;
+    dcterms:description "the international business center of Barcelona" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Basel a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Basel" ;
+    dcterms:description "the international business center of Basel" ;
+    cmns-col:isPartOf lcc-3166-1:Switzerland .
+
+fibo-fbc-fct-bci:Beijing a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Beijing" ;
+    dcterms:description "the international business center of Beijing" ;
+    cmns-col:isPartOf lcc-3166-1:China .
+
+fibo-fbc-fct-bci:Beirut a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Beirut" ;
+    dcterms:description "the international business center of Beirut" ;
+    cmns-col:isPartOf lcc-3166-1:Lebanon .
+
+fibo-fbc-fct-bci:Belgrade a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Belgrade" ;
+    dcterms:description "the international business center of Belgrade" ;
+    cmns-col:isPartOf lcc-3166-1:Serbia .
+
+fibo-fbc-fct-bci:Bogota a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Bogota" ;
+    dcterms:description "the international business center of Bogota" ;
+    cmns-col:isPartOf lcc-3166-1:Colombia .
+
+fibo-fbc-fct-bci:Boston a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Boston" ;
+    dcterms:description "the international business center of Boston" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Bratislava a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Bratislava" ;
+    dcterms:description "the international business center of Bratislava" ;
+    cmns-col:isPartOf lcc-3166-1:Slovakia .
+
+fibo-fbc-fct-bci:BrazilBusinessDay a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "Brazil Business Day" ;
+    dcterms:description "the business day adjustment convention for the Brazil Business Day. This means a business day in any of Sao Paulo, Rio de Janeiro or Brasilia not otherwise declared as a financial market holiday by the Bolsa de Mercadorias & Futuros (BM&F)" ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:Brasilia,
+        fibo-fbc-fct-bci:Rio_de_Janeiro,
+        fibo-fbc-fct-bci:Sao_Paulo .
+
+fibo-fbc-fct-bci:Bridgetown a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Bridgetown" ;
+    dcterms:description "the international business center of Bridgetown" ;
+    cmns-col:isPartOf lcc-3166-1:Barbados .
+
+fibo-fbc-fct-bci:Brisbane a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Brisbane" ;
+    dcterms:description "the international business center of Brisbane" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Bucharest a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Bucharest" ;
+    dcterms:description "the international business center of Bucharest" ;
+    cmns-col:isPartOf lcc-3166-1:Romania .
+
+fibo-fbc-fct-bci:Budapest a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Budapest" ;
+    dcterms:description "the international business center of Budapest" ;
+    cmns-col:isPartOf lcc-3166-1:Hungary .
+
+fibo-fbc-fct-bci:Buenos_Aires a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Buenos Aires" ;
+    dcterms:description "the international business center of Buenos Aires" ;
+    cmns-col:isPartOf lcc-3166-1:Argentina .
+
+fibo-fbc-fct-bci:Cairo a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Cairo" ;
+    dcterms:description "the international business center of Cairo" ;
+    cmns-col:isPartOf lcc-3166-1:Egypt .
+
+fibo-fbc-fct-bci:Calgary a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Calgary" ;
+    dcterms:description "the international business center of Calgary" ;
+    cmns-col:isPartOf lcc-3166-1:Canada .
+
+fibo-fbc-fct-bci:Canberra a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Canberra" ;
+    dcterms:description "the international business center of Canberra" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Caracas a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Caracas" ;
+    dcterms:description "the international business center of Caracas" ;
+    cmns-col:isPartOf lcc-3166-1:Venezuela .
+
+fibo-fbc-fct-bci:Casablanca a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Casablanca" ;
+    dcterms:description "the international business center of Casablanca" ;
+    cmns-col:isPartOf lcc-3166-1:Morocco .
+
+fibo-fbc-fct-bci:Charlotte a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Charlotte" ;
+    dcterms:description "the international business center of Charlotte" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Chennai a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Chennai" ;
+    dcterms:description "the international business center of Chennai" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Chicago a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Chicago" ;
+    dcterms:description "the international business center of Chicago" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Cologne a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Cologne" ;
+    dcterms:description "the international business center of Cologne" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Colombo a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Colombo" ;
+    dcterms:description "the international business center of Colombo" ;
+    cmns-col:isPartOf lcc-3166-1:SriLanka .
+
+fibo-fbc-fct-bci:Conakry a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Conakry" ;
+    dcterms:description "the international business center of Conakry" ;
+    cmns-col:isPartOf lcc-3166-1:Guinea .
+
+fibo-fbc-fct-bci:Copenhagen a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Copenhagen" ;
+    dcterms:description "the international business center of Copenhagen" ;
+    cmns-col:isPartOf lcc-3166-1:Denmark .
+
+fibo-fbc-fct-bci:Dakar a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Dakar" ;
+    dcterms:description "the international business center of Dakar" ;
+    cmns-col:isPartOf lcc-3166-1:Senegal .
+
+fibo-fbc-fct-bci:Dar_es_Salaam a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Dar es Salaam" ;
+    dcterms:description "the international business center of Dar es Salaam" ;
+    cmns-col:isPartOf lcc-3166-1:Tanzania .
+
+fibo-fbc-fct-bci:Darwin a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Darwin" ;
+    dcterms:description "the international business center of Darwin" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Denver a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Denver" ;
+    dcterms:description "the international business center of Denver" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Detroit a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Detroit" ;
+    dcterms:description "the international business center of Detroit" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Dhaka a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Dhaka" ;
+    dcterms:description "the international business center of Dhaka" ;
+    cmns-col:isPartOf lcc-3166-1:Bangladesh .
+
+fibo-fbc-fct-bci:Dodoma a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Dodoma" ;
+    dcterms:description "the international business center of Dodoma" ;
+    cmns-col:isPartOf lcc-3166-1:Tanzania .
+
+fibo-fbc-fct-bci:Doha a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Doha" ;
+    dcterms:description "the international business center of Doha" ;
+    cmns-col:isPartOf lcc-3166-1:Qatar .
+
+fibo-fbc-fct-bci:Dubai a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Dubai" ;
+    dcterms:description "the international business center of Dubai" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedArabEmirates .
+
+fibo-fbc-fct-bci:Dusseldorf a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Dusseldorf" ;
+    dcterms:description "the international business center of Dusseldorf" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:ESASSettlementDay a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "ESAS Settlement Day" ;
+    dcterms:description "the business day adjustment convention for the ESAS Settlement Day (as defined in 2006 ISDA Definitions Section 7.1 and Supplement Number 15 to the 2000 ISDA Definitions)" ;
+    cmns-av:explanatoryNote "ESAS is the Reserve Bank of New Zealand's Exchange Settlement Account System which is used by banks and other approved financial institutions to settle their obligations on a Real-Time Gross Settlement (RTGS) basis." ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:Wellington .
+
+fibo-fbc-fct-bci:Edinburgh a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Edinburgh" ;
+    dcterms:description "the international business center of Edinburgh" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland .
+
+fibo-fbc-fct-bci:Fredericton a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Fredericton" ;
+    dcterms:description "the international business center of Fredericton" ;
+    cmns-col:isPartOf lcc-3166-1:Canada .
+
+fibo-fbc-fct-bci:Freetown a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Freetown" ;
+    dcterms:description "the international business center of Freetown" ;
+    cmns-col:isPartOf lcc-3166-1:SierraLeone .
+
+fibo-fbc-fct-bci:Gaborone a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Gaborone" ;
+    dcterms:description "the international business center of Gaborone" ;
+    cmns-col:isPartOf lcc-3166-1:Botswana .
+
+fibo-fbc-fct-bci:Geneva a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Geneva" ;
+    dcterms:description "the international business center of Geneva" ;
+    cmns-col:isPartOf lcc-3166-1:Switzerland .
+
+fibo-fbc-fct-bci:George_Town a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "George Town" ;
+    dcterms:description "the international business center of George Town" ;
+    cmns-col:isPartOf lcc-3166-1:CaymanIslands .
+
+fibo-fbc-fct-bci:Guatemala_City a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Guatemala City" ;
+    dcterms:description "the international business center of Guatemala City" ;
+    cmns-col:isPartOf lcc-3166-1:Guatemala .
+
+fibo-fbc-fct-bci:Guayaquil a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Guayaquil" ;
+    dcterms:description "the international business center of Guayaquil" ;
+    cmns-col:isPartOf lcc-3166-1:Ecuador .
+
+fibo-fbc-fct-bci:Hamburg a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Hamburg" ;
+    dcterms:description "the international business center of Hamburg" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Hamilton a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Hamilton" ;
+    dcterms:description "the international business center of Hamilton" ;
+    cmns-col:isPartOf lcc-3166-1:Bermuda .
+
+fibo-fbc-fct-bci:Hannover a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Hannover" ;
+    dcterms:description "the international business center of Hannover" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Hanoi a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Hanoi" ;
+    dcterms:description "the international business center of Hanoi" ;
+    cmns-col:isPartOf lcc-3166-1:VietNam .
+
+fibo-fbc-fct-bci:Harare a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Harare" ;
+    dcterms:description "the international business center of Harare" ;
+    cmns-col:isPartOf lcc-3166-1:Zimbabwe .
+
+fibo-fbc-fct-bci:Ho_Chi_Minh__formerly_Saigon_ a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Ho Chi Minh (formerly Saigon)" ;
+    dcterms:description "the international business center of Ho Chi Minh (formerly Saigon)" ;
+    cmns-col:isPartOf lcc-3166-1:VietNam .
+
+fibo-fbc-fct-bci:Hong_Kong a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Hong Kong" ;
+    dcterms:description "the international business center of Hong Kong" ;
+    cmns-col:isPartOf lcc-3166-1:HongKong .
+
+fibo-fbc-fct-bci:Honolulu a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Honolulu" ;
+    dcterms:description "the international business center of Honolulu" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Houston a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Houston" ;
+    dcterms:description "the international business center of Houston" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Hyderabad a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Hyderabad" ;
+    dcterms:description "the international business center of Hyderabad" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Istanbul a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Istanbul" ;
+    dcterms:description "the international business center of Istanbul" ;
+    cmns-col:isPartOf lcc-3166-1:Turkey .
+
+fibo-fbc-fct-bci:Jakarta a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Jakarta" ;
+    dcterms:description "the international business center of Jakarta" ;
+    cmns-col:isPartOf lcc-3166-1:Indonesia .
+
+fibo-fbc-fct-bci:Jeddah a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Jeddah" ;
+    dcterms:description "the international business center of Jeddah" ;
+    cmns-col:isPartOf lcc-3166-1:SaudiArabia .
+
+fibo-fbc-fct-bci:Jerusalem a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Jerusalem" ;
+    dcterms:description "the international business center of Jerusalem" ;
+    cmns-col:isPartOf lcc-3166-1:Israel .
+
+fibo-fbc-fct-bci:Johannesburg a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Johannesburg" ;
+    dcterms:description "the international business center of Johannesburg" ;
+    cmns-col:isPartOf lcc-3166-1:SouthAfrica .
+
+fibo-fbc-fct-bci:Kampala a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Kampala" ;
+    dcterms:description "the international business center of Kampala" ;
+    cmns-col:isPartOf lcc-3166-1:Uganda .
+
+fibo-fbc-fct-bci:Karachi a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Karachi" ;
+    dcterms:description "the international business center of Karachi" ;
+    cmns-col:isPartOf lcc-3166-1:Pakistan .
+
+fibo-fbc-fct-bci:Kathmandu a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Kathmandu" ;
+    dcterms:description "the international business center of Kathmandu" ;
+    cmns-col:isPartOf lcc-3166-1:Nepal .
+
+fibo-fbc-fct-bci:Kingston a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Kingston" ;
+    dcterms:description "the international business center of Kingston" ;
+    cmns-col:isPartOf lcc-3166-1:Jamaica .
+
+fibo-fbc-fct-bci:Kolkata a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Kolkata" ;
+    dcterms:description "the international business center of Kolkata" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Kuala_Lumpur a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Kuala Lumpur" ;
+    dcterms:description "the international business center of Kuala Lumpur" ;
+    cmns-col:isPartOf lcc-3166-1:Malaysia .
+
+fibo-fbc-fct-bci:Kuwait_City a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Kuwait City" ;
+    dcterms:description "the international business center of Kuwait City" ;
+    cmns-col:isPartOf lcc-3166-1:Kuwait .
+
+fibo-fbc-fct-bci:L-imsida a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "L-Imsida",
+        "L-imsida" ;
+    owl:sameAs fibo-fbc-fct-bci:L-imsida ;
+    cmns-col:isPartOf lcc-3166-1:Malta .
+
+fibo-fbc-fct-bci:La_Paz a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "La Paz" ;
+    dcterms:description "the international business center of La Paz" ;
+    cmns-col:isPartOf lcc-3166-1:Bolivia .
+
+fibo-fbc-fct-bci:Labuan a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Labuan" ;
+    dcterms:description "the international business center of Labuan" ;
+    cmns-col:isPartOf lcc-3166-1:Malaysia .
+
+fibo-fbc-fct-bci:Lagos a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Lagos" ;
+    dcterms:description "the international business center of Lagos" ;
+    cmns-col:isPartOf lcc-3166-1:Nigeria .
+
+fibo-fbc-fct-bci:Leipzig a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Leipzig" ;
+    dcterms:description "the international business center of Leipzig" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Lilongwe a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Lilongwe" ;
+    dcterms:description "the international business center of Lilongwe" ;
+    cmns-col:isPartOf lcc-3166-1:Malawi .
+
+fibo-fbc-fct-bci:Lima a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Lima" ;
+    dcterms:description "the international business center of Lima" ;
+    cmns-col:isPartOf lcc-3166-1:Peru .
+
+fibo-fbc-fct-bci:Ljubljana a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Ljubljana" ;
+    dcterms:description "the international business center of Ljubljana" ;
+    cmns-col:isPartOf lcc-3166-1:Slovenia .
+
+fibo-fbc-fct-bci:London a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "London" ;
+    dcterms:description "the international business center of London" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland .
+
+fibo-fbc-fct-bci:Los_Angeles a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Los Angeles" ;
+    dcterms:description "the international business center of Los Angeles" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Luanda a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Luanda" ;
+    dcterms:description "the international business center of Luanda" ;
+    cmns-col:isPartOf lcc-3166-1:Angola .
+
+fibo-fbc-fct-bci:Lusaka a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Lusaka" ;
+    dcterms:description "the international business center of Lusaka" ;
+    cmns-col:isPartOf lcc-3166-1:Zambia .
+
+fibo-fbc-fct-bci:Macau a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Macau" ;
+    dcterms:description "the international business center of Macau" ;
+    cmns-col:isPartOf lcc-3166-1:Macao .
+
+fibo-fbc-fct-bci:Mainz a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Mainz" ;
+    dcterms:description "the international business center of Mainz" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Makati a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Makati" ;
+    dcterms:description "the international business center of Makati" ;
+    cmns-col:isPartOf lcc-3166-1:Philippines .
+
+fibo-fbc-fct-bci:Male a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Male" ;
+    dcterms:description "the international business center of Male" ;
+    cmns-col:isPartOf lcc-3166-1:Maldives .
+
+fibo-fbc-fct-bci:Manama a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Manama" ;
+    dcterms:description "the international business center of Manama" ;
+    cmns-col:isPartOf lcc-3166-1:Bahrain .
+
+fibo-fbc-fct-bci:Manila a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Manila" ;
+    dcterms:description "the international business center of Manila" ;
+    cmns-col:isPartOf lcc-3166-1:Philippines .
+
+fibo-fbc-fct-bci:Maputo a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Maputo" ;
+    dcterms:description "the international business center of Maputo" ;
+    cmns-col:isPartOf lcc-3166-1:Mozambique .
+
+fibo-fbc-fct-bci:Melbourne a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Melbourne" ;
+    dcterms:description "the international business center of Melbourne" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Mexico_City a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Mexico City" ;
+    dcterms:description "the international business center of Mexico City" ;
+    cmns-col:isPartOf lcc-3166-1:Mexico .
+
+fibo-fbc-fct-bci:Milan a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Milan" ;
+    dcterms:description "the international business center of Milan" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Minneapolis a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Minneapolis" ;
+    dcterms:description "the international business center of Minneapolis" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Minsk a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Minsk" ;
+    dcterms:description "the international business center of Minsk" ;
+    cmns-col:isPartOf lcc-3166-1:Belarus .
+
+fibo-fbc-fct-bci:Mobile a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Mobile" ;
+    dcterms:description "the international business center of Mobile" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Monaco a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Monaco" ;
+    dcterms:description "the international business center of Monaco" ;
+    cmns-col:isPartOf lcc-3166-1:Monaco .
+
+fibo-fbc-fct-bci:Montevideo a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Montevideo" ;
+    dcterms:description "the international business center of Montevideo" ;
+    cmns-col:isPartOf lcc-3166-1:Uruguay .
+
+fibo-fbc-fct-bci:Montreal a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Montreal" ;
+    dcterms:description "the international business center of Montreal" ;
+    cmns-col:isPartOf lcc-3166-1:Canada .
+
+fibo-fbc-fct-bci:Moscow a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Moscow" ;
+    dcterms:description "the international business center of Moscow" ;
+    cmns-col:isPartOf lcc-3166-1:RussianFederation .
+
+fibo-fbc-fct-bci:Mumbai a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Mumbai" ;
+    dcterms:description "the international business center of Mumbai" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Munich a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Munich" ;
+    dcterms:description "the international business center of Munich" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Muscat a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Muscat" ;
+    dcterms:description "the international business center of Muscat" ;
+    cmns-col:isPartOf lcc-3166-1:Oman .
+
+fibo-fbc-fct-bci:Nairobi a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Nairobi" ;
+    dcterms:description "the international business center of Nairobi" ;
+    cmns-col:isPartOf lcc-3166-1:Kenya .
+
+fibo-fbc-fct-bci:Nassau a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Nassau" ;
+    dcterms:description "the international business center of Nassau" ;
+    cmns-col:isPartOf lcc-3166-1:Bahamas .
+
+fibo-fbc-fct-bci:NewYorkFederalReserveBusinessDay a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "New York Federal Reserve Business Day" ;
+    dcterms:description "the business day adjustment convention for the New York Fed" ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:New_York .
+
+fibo-fbc-fct-bci:NewYorkStockExchangeBusinessDay a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "New York Stock Exchange Business Day" ;
+    dcterms:description "the business day adjustment convention for the New York Stock Exchange" ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:New_York .
+
+fibo-fbc-fct-bci:New_Delhi a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "New Delhi" ;
+    dcterms:description "the international business center of New Delhi" ;
+    cmns-col:isPartOf lcc-3166-1:India .
+
+fibo-fbc-fct-bci:Nicosia a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Nicosia" ;
+    dcterms:description "the international business center of Nicosia" ;
+    cmns-col:isPartOf lcc-3166-1:Cyprus .
+
+fibo-fbc-fct-bci:Oslo a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Oslo" ;
+    dcterms:description "the international business center of Oslo" ;
+    cmns-col:isPartOf lcc-3166-1:Norway .
+
+fibo-fbc-fct-bci:Ottawa a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Ottawa" ;
+    dcterms:description "the international business center of Ottawa" ;
+    cmns-col:isPartOf lcc-3166-1:Canada .
+
+fibo-fbc-fct-bci:Panama_City a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Panama City" ;
+    dcterms:description "the international business center of Panama City" ;
+    cmns-col:isPartOf lcc-3166-1:Panama .
+
+fibo-fbc-fct-bci:Perth a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Perth" ;
+    dcterms:description "the international business center of Perth" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:Phnom_Penh a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Phnom Penh" ;
+    dcterms:description "the international business center of Phnom Penh" ;
+    cmns-col:isPartOf lcc-3166-1:Cambodia .
+
+fibo-fbc-fct-bci:Port_Louis a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Port Louis" ;
+    dcterms:description "the international business center of Port Louis" ;
+    cmns-col:isPartOf lcc-3166-1:Mauritius .
+
+fibo-fbc-fct-bci:Port_of_Spain a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Port of Spain" ;
+    dcterms:description "the international business center of Port of Spain" ;
+    cmns-col:isPartOf lcc-3166-1:TrinidadAndTobago .
+
+fibo-fbc-fct-bci:Portland a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Portland" ;
+    dcterms:description "the international business center of Portland" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Prague a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Prague" ;
+    dcterms:description "the international business center of Prague" ;
+    cmns-col:isPartOf lcc-3166-1:Czechia .
+
+fibo-fbc-fct-bci:Rabat a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Rabat" ;
+    dcterms:description "the international business center of Rabat" ;
+    cmns-col:isPartOf lcc-3166-1:Morocco .
+
+fibo-fbc-fct-bci:Reykjavik a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Reykjavik" ;
+    dcterms:description "the international business center of Reykjavik" ;
+    cmns-col:isPartOf lcc-3166-1:Iceland .
+
+fibo-fbc-fct-bci:Riga a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Riga" ;
+    dcterms:description "the international business center of Riga" ;
+    cmns-col:isPartOf lcc-3166-1:Latvia .
+
+fibo-fbc-fct-bci:Riyadh a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Riyadh" ;
+    dcterms:description "the international business center of Riyadh" ;
+    cmns-col:isPartOf lcc-3166-1:SaudiArabia .
+
+fibo-fbc-fct-bci:Road_Town a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Road Town" ;
+    dcterms:description "the international business center of Road Town" ;
+    cmns-col:isPartOf lcc-3166-1:VirginIslandsBritish .
+
+fibo-fbc-fct-bci:Rotterdam a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Rotterdam" ;
+    dcterms:description "the international business center of Rotterdam" ;
+    cmns-col:isPartOf lcc-3166-1:Netherlands .
+
+fibo-fbc-fct-bci:Sacramento a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Sacramento" ;
+    dcterms:description "the international business center of Sacramento" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Saint_Peter_Port a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Saint Peter Port" ;
+    dcterms:description "the international business center of Saint Peter Port" ;
+    cmns-col:isPartOf lcc-3166-1:Guernsey .
+
+fibo-fbc-fct-bci:San_Francisco a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "San Francisco" ;
+    dcterms:description "the international business center of San Francisco" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:San_Jose a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "San Jose" ;
+    dcterms:description "the international business center of San Jose" ;
+    cmns-col:isPartOf lcc-3166-1:CostaRica .
+
+fibo-fbc-fct-bci:San_Juan a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "San Juan" ;
+    dcterms:description "the international business center of San Juan" ;
+    cmns-col:isPartOf lcc-3166-1:PuertoRico .
+
+fibo-fbc-fct-bci:San_Salvador a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "San Salvador" ;
+    dcterms:description "the international business center of San Salvador" ;
+    cmns-col:isPartOf lcc-3166-1:ElSalvador .
+
+fibo-fbc-fct-bci:San_Sebastian a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "San Sebastian" ;
+    dcterms:description "the international business center of San Sebastian" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Santiago a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Santiago" ;
+    dcterms:description "the international business center of Santiago" ;
+    cmns-col:isPartOf lcc-3166-1:Chile .
+
+fibo-fbc-fct-bci:Santo_Domingo a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Santo Domingo" ;
+    dcterms:description "the international business center of Santo Domingo" ;
+    cmns-col:isPartOf lcc-3166-1:DominicanRepublic .
+
+fibo-fbc-fct-bci:Seattle a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Seattle" ;
+    dcterms:description "the international business center of Seattle" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Seoul a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Seoul" ;
+    dcterms:description "the international business center of Seoul" ;
+    cmns-col:isPartOf lcc-3166-1:KoreaRepublicOf .
+
+fibo-fbc-fct-bci:Shanghai a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Shanghai" ;
+    dcterms:description "the international business center of Shanghai" ;
+    cmns-col:isPartOf lcc-3166-1:China .
+
+fibo-fbc-fct-bci:Singapore a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Singapore" ;
+    dcterms:description "the international business center of Singapore" ;
+    cmns-col:isPartOf lcc-3166-1:Singapore .
+
+fibo-fbc-fct-bci:Sofia a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Sofia" ;
+    dcterms:description "the international business center of Sofia" ;
+    cmns-col:isPartOf lcc-3166-1:Bulgaria .
+
+fibo-fbc-fct-bci:St._Helier a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "St. Helier" ;
+    dcterms:description "the international business center of St. Helier" ;
+    cmns-col:isPartOf lcc-3166-1:Jersey .
+
+fibo-fbc-fct-bci:Stockholm a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Stockholm" ;
+    dcterms:description "the international business center of Stockholm" ;
+    cmns-col:isPartOf lcc-3166-1:Sweden .
+
+fibo-fbc-fct-bci:Stuttgart a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Stuttgart" ;
+    dcterms:description "the international business center of Stuttgart" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Sydney a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Sydney" ;
+    dcterms:description "the international business center of Sydney" ;
+    cmns-col:isPartOf lcc-3166-1:Australia .
+
+fibo-fbc-fct-bci:TARGETSettlementDay a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "TARGET Settlement Day" ;
+    dcterms:description "the business day adjustment convention for the TARGET (euro 'Business Center')" ;
+    cmns-av:explanatoryNote "TARGET, which stands for the Trans-European Automated Real-time Gross settlement adjustment Express Transfer system, is the real-time gross settlement (RTGS) system for the euro. TARGET operating days are the settlement days for the financial markets in euro, as well as foreign exchange transactions involving the euro." ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:Amsterdam,
+        fibo-fbc-fct-bci:Athens,
+        fibo-fbc-fct-bci:Brussels,
+        fibo-fbc-fct-bci:Dublin,
+        fibo-fbc-fct-bci:Frankfurt,
+        fibo-fbc-fct-bci:Helsinki,
+        fibo-fbc-fct-bci:Lisbon,
+        fibo-fbc-fct-bci:Luxembourg,
+        fibo-fbc-fct-bci:Madrid,
+        fibo-fbc-fct-bci:Paris,
+        fibo-fbc-fct-bci:Rome,
+        fibo-fbc-fct-bci:Vienna .
+
+fibo-fbc-fct-bci:Taipei a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Taipei" ;
+    dcterms:description "the international business center of Taipei" ;
+    cmns-col:isPartOf lcc-3166-1:Taiwan .
+
+fibo-fbc-fct-bci:Tallinn a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Tallinn" ;
+    dcterms:description "the international business center of Tallinn" ;
+    cmns-col:isPartOf lcc-3166-1:Estonia .
+
+fibo-fbc-fct-bci:Tashkent a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Tashkent" ;
+    dcterms:description "the international business center of Tashkent" ;
+    cmns-col:isPartOf lcc-3166-1:Uzbekistan .
+
+fibo-fbc-fct-bci:Tbilisi a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Tbilisi" ;
+    dcterms:description "the international business center of Tbilisi" ;
+    cmns-col:isPartOf lcc-3166-1:Georgia .
+
+fibo-fbc-fct-bci:Tegucigalpa a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Tegucigalpa" ;
+    dcterms:description "the international business center of Tegucigalpa" ;
+    cmns-col:isPartOf lcc-3166-1:Honduras .
+
+fibo-fbc-fct-bci:Teheran a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Teheran" ;
+    dcterms:description "the international business center of Teheran" ;
+    cmns-col:isPartOf lcc-3166-1:Iran .
+
+fibo-fbc-fct-bci:Tel_Aviv a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Tel Aviv" ;
+    dcterms:description "the international business center of Tel Aviv" ;
+    cmns-col:isPartOf lcc-3166-1:Israel .
+
+fibo-fbc-fct-bci:Tokyo a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Tokyo" ;
+    dcterms:description "the international business center of Tokyo" ;
+    cmns-col:isPartOf lcc-3166-1:Japan .
+
+fibo-fbc-fct-bci:Toronto a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Toronto" ;
+    dcterms:description "the international business center of Toronto" ;
+    cmns-col:isPartOf lcc-3166-1:Canada .
+
+fibo-fbc-fct-bci:Tunis a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Tunis" ;
+    dcterms:description "the international business center of Tunis" ;
+    cmns-col:isPartOf lcc-3166-1:Tunisia .
+
+fibo-fbc-fct-bci:Turin a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Turin" ;
+    dcterms:description "the international business center of Turin" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:USGovernmentSecuritiesBusinessDay a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "U.S. Government Securities Business Day" ;
+    dcterms:description "the business day adjustment convention for U.S. Government Securities" ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:Washington .
+
+fibo-fbc-fct-bci:Ulan_Bator a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Ulan Bator" ;
+    dcterms:description "the international business center of Ulan Bator" ;
+    cmns-col:isPartOf lcc-3166-1:Mongolia .
+
+fibo-fbc-fct-bci:Valletta a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Valletta" ;
+    dcterms:description "the international business center of Valletta" ;
+    cmns-col:isPartOf lcc-3166-1:Malta .
+
+fibo-fbc-fct-bci:Vancouver a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Vancouver" ;
+    dcterms:description "the international business center of Vancouver" ;
+    cmns-col:isPartOf lcc-3166-1:Canada .
+
+fibo-fbc-fct-bci:Vientiane a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Vientiane" ;
+    dcterms:description "the international business center of Vientiane" ;
+    cmns-col:isPartOf lcc-3166-1:LaoPeoplesDemocraticRepublic .
+
+fibo-fbc-fct-bci:Warsaw a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Warsaw" ;
+    dcterms:description "the international business center of Warsaw" ;
+    cmns-col:isPartOf lcc-3166-1:Poland .
+
+fibo-fbc-fct-bci:Wichita a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Wichita" ;
+    dcterms:description "the international business center of Wichita" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Willemstad a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Willemstad" ;
+    dcterms:description "the international business center of Willemstad" ;
+    cmns-col:isPartOf lcc-3166-1:Curacao .
+
+fibo-fbc-fct-bci:Windhoek a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Windhoek" ;
+    dcterms:description "the international business center of Windhoek" ;
+    cmns-col:isPartOf lcc-3166-1:Namibia .
+
+fibo-fbc-fct-bci:Winnipeg a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Winnipeg" ;
+    dcterms:description "the international business center of Winnipeg" ;
+    cmns-col:isPartOf lcc-3166-1:Canada .
+
+fibo-fbc-fct-bci:Yaounde a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Yaounde" ;
+    dcterms:description "the international business center of Yaounde" ;
+    cmns-col:isPartOf lcc-3166-1:Cameroon .
+
+fibo-fbc-fct-bci:Yerevan a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Yerevan" ;
+    dcterms:description "the international business center of Yerevan" ;
+    cmns-col:isPartOf lcc-3166-1:Armenia .
+
+fibo-fbc-fct-bci:Zagreb a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Zagreb" ;
+    dcterms:description "the international business center of Zagreb" ;
+    cmns-col:isPartOf lcc-3166-1:Croatia .
+
+fibo-fbc-fct-bci:Zurich a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Zurich" ;
+    dcterms:description "the international business center of Zurich" ;
+    cmns-col:isPartOf lcc-3166-1:Switzerland .
+
+fibo-fbc-fct-bci:Abu_Dhabi a owl:NamedIndividual,
+        cmns-loc:Municipality ;
+    rdfs:label "Abu Dhabi" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedArabEmirates .
+
+fibo-fbc-fct-bci:Amsterdam a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Amsterdam" ;
+    dcterms:description "the international business center of Amsterdam" ;
+    cmns-col:isPartOf lcc-3166-1:Netherlands .
+
+fibo-fbc-fct-bci:Athens a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Athens" ;
+    dcterms:description "the international business center of Athens" ;
+    cmns-col:isPartOf lcc-3166-1:Greece .
+
+fibo-fbc-fct-bci:Brasilia a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Brasilia" ;
+    dcterms:description "the international business center of Brasilia" ;
+    cmns-col:isPartOf lcc-3166-1:Brazil .
+
+fibo-fbc-fct-bci:Brussels a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Brussels" ;
+    dcterms:description "the international business center of Brussels" ;
+    cmns-col:isPartOf lcc-3166-1:Belgium .
+
+fibo-fbc-fct-bci:Dublin a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Dublin" ;
+    dcterms:description "the international business center of Dublin" ;
+    cmns-col:isPartOf lcc-3166-1:Ireland .
+
+fibo-fbc-fct-bci:Frankfurt a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Frankfurt" ;
+    dcterms:description "the international business center of Frankfurt" ;
+    cmns-col:isPartOf lcc-3166-1:Germany .
+
+fibo-fbc-fct-bci:Helsinki a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Helsinki" ;
+    dcterms:description "the international business center of Helsinki" ;
+    cmns-col:isPartOf lcc-3166-1:Finland .
+
+fibo-fbc-fct-bci:Kiev a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Kiev" ;
+    dcterms:description "the international business center of Kiev" ;
+    cmns-col:isPartOf lcc-3166-1:Ukraine .
+
+fibo-fbc-fct-bci:Lisbon a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Lisbon" ;
+    dcterms:description "the international business center of Lisbon" ;
+    cmns-col:isPartOf lcc-3166-1:Portugal .
+
+fibo-fbc-fct-bci:Luxembourg a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Luxembourg" ;
+    dcterms:description "the international business center of Luxembourg" ;
+    cmns-col:isPartOf lcc-3166-1:Luxembourg .
+
+fibo-fbc-fct-bci:Madrid a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Madrid" ;
+    dcterms:description "the international business center of Madrid" ;
+    cmns-col:isPartOf lcc-3166-1:Spain .
+
+fibo-fbc-fct-bci:Paris a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Paris" ;
+    dcterms:description "the international business center of Paris" ;
+    cmns-col:isPartOf lcc-3166-1:France .
+
+fibo-fbc-fct-bci:Rio_de_Janeiro a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Rio de Janeiro" ;
+    dcterms:description "the international business center of Rio de Janeiro" ;
+    cmns-col:isPartOf lcc-3166-1:Brazil .
+
+fibo-fbc-fct-bci:Rome a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Rome" ;
+    dcterms:description "the international business center of Rome" ;
+    cmns-col:isPartOf lcc-3166-1:Italy .
+
+fibo-fbc-fct-bci:Sao_Paulo a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Sao Paulo" ;
+    dcterms:description "the international business center of Sao Paulo" ;
+    cmns-col:isPartOf lcc-3166-1:Brazil .
+
+fibo-fbc-fct-bci:Vienna a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Vienna" ;
+    dcterms:description "the international business center of Vienna" ;
+    cmns-col:isPartOf lcc-3166-1:Austria .
+
+fibo-fbc-fct-bci:Washington a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Washington" ;
+    dcterms:description "the international business center of Washington" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:Wellington a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "Wellington" ;
+    dcterms:description "the international business center of Wellington" ;
+    cmns-col:isPartOf lcc-3166-1:NewZealand .
+
+fibo-fbc-fct-bci:New_York a owl:NamedIndividual,
+        cmns-loc:BusinessCenter ;
+    rdfs:label "New York" ;
+    dcterms:description "the international business center of New York" ;
+    cmns-col:isPartOf lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-fbc-fct-bci:FpMLBusinessCenterCodeScheme a owl:NamedIndividual,
+        fibo-fbc-fct-bc:BusinessCenterCodeScheme ;
+    rdfs:label "FpML Business Center Code Scheme" ;
+    dcterms:description "the coding scheme used to define a set of codes for municipalities, or business centers, or business day adjustments for FpML" ;
+    cmns-av:adaptedFrom "http://www.fpml.org/coding-scheme/business-center"^^xsd:anyURI .
+

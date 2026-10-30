@@ -1,0 +1,831 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-iss-dbti: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/> .
+@prefix fibo-bp-iss-doc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/> .
+@prefix fibo-bp-iss-muni: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MuniIssuance/> .
+@prefix fibo-bp-iss-prc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/> .
+@prefix fibo-bp-prc-fcp: <https://spec.edmcouncil.org/fibo/ontology/BP/Process/FinancialContextAndProcess/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-iss-muni:DebtAuctionProcess a owl:Class ;
+    rdfs:label "debt auction process"@en,
+        "债务拍卖流程（debt auction process）"@zh ;
+    rdfs:comment "以拍卖方式发行债务证券的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecuritiesIssuanceProcess ;
+    owl:disjointWith fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:DebtUnderwritingClosing a owl:Class ;
+    rdfs:label "debt underwriting closing"@en,
+        "债务承销收尾（debt underwriting closing）"@zh ;
+    rdfs:comment "债务承销发行的收尾环节。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:refersTo ;
+            owl:someValuesFrom fibo-bp-iss-dbti:UnderwriterTakedownForDebt ],
+        fibo-bp-iss-muni:UnderwritingIssuanceClosing .
+
+fibo-bp-iss-muni:EquityDemutualizationProcess a owl:Class ;
+    rdfs:label "equity demutualization process"@en,
+        "股权去互助化流程（equity demutualization process）"@zh ;
+    rdfs:comment "互助组织转变为股份制公司的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecuritiesIssuanceProcess .
+
+fibo-bp-iss-muni:EquityIPOProcess a owl:Class ;
+    rdfs:label "equity i p o process"@en,
+        "股票 IPO 流程（equity i p o process）"@zh ;
+    rdfs:comment "股票首次公开发行的流程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-muni:RegisteredSecurityIssuanceProcess .
+
+fibo-bp-iss-muni:PrivatePlacement a owl:Class ;
+    rdfs:label "private placement"@en,
+        "私募配售（private placement）"@zh ;
+    rdfs:comment "向特定投资者非公开销售证券的发行方式。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecuritiesIssuanceProcess .
+
+fibo-bp-iss-muni:SecuritiesUnderwritingIssuance a owl:Class ;
+    rdfs:label "securities underwriting issuance"@en,
+        "证券承销发行（securities underwriting issuance）"@zh ;
+    rdfs:comment "作为证券发行方式的承销。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-bp-iss-muni:SecuritiesIssuanceContext ;
+    skos:definition "Underwriting, as a method of Securities Issuance."@en .
+
+fibo-bp-iss-muni:UnderwritingProcessActor a owl:Class ;
+    rdfs:label "underwriting process actor"@en,
+        "承销流程参与者（underwriting process actor）"@zh ;
+    rdfs:comment "DTCC 承销流程或任何其他承销流程中的参与者。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-bp-iss-muni:Correspondent fibo-bp-iss-muni:DTCCMember ) ],
+        cmns-pts:PartyRole ;
+    skos:definition "any actor within the DTCC Underwriting Process or any other Underwriting Process. Note: At present all these Actors (e.g. Underwriter) are defined simply as Process Actors and not as specializations of this type of Actor. Therefore this Actor is a Union of all of those."@en .
+
+fibo-bp-iss-muni:actualClosingDate a owl:ObjectProperty ;
+    rdfs:label "actual closing date"@en,
+        "实际截止日（actual closing date）"@zh ;
+    rdfs:comment "证券承销商完成收尾的日期。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssuanceClosing ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "The date in which closing has been done for the underwriter of a security."@en .
+
+fibo-bp-iss-muni:announcementComments a owl:DatatypeProperty ;
+    rdfs:label "announcement comments"@en,
+        "公告备注（announcement comments）"@zh ;
+    rdfs:comment "对发行目的、资金来源等的自由文本描述。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:AnnounceSecuritiesIssue ;
+    rdfs:range xsd:string ;
+    skos:definition "Free form description of Purpose of Issue, Source of funds etc."@en .
+
+fibo-bp-iss-muni:disseminationDecisionDateAndTime a owl:ObjectProperty ;
+    rdfs:label "dissemination decision date and time"@en,
+        "信息分发决定日期时间（dissemination decision date and time）"@zh ;
+    rdfs:comment "信息分发承销商作出信息分发决定的日期时间。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:Dissemination ;
+    rdfs:range cmns-dt:DateTime ;
+    skos:definition "Date and Time when the Dissemination Underwriter made the Decision about Dissemination."@en .
+
+fibo-bp-iss-muni:formalAwardDateAndTime a owl:ObjectProperty ;
+    rdfs:label "formal award date and time"@en,
+        "正式授标日期时间（formal award date and time）"@zh ;
+    rdfs:comment "发行人正式接受竞标（竞争性发行）或签署债券购买协议（协议发行）的日期时间。"@zh ;
+    rdfs:domain fibo-sec-dbt-dbti:DebtOffering ;
+    rdfs:range cmns-dt:DateTime ;
+    skos:definition "Date and time the issuer formally accepts a bid for Competitive Issues or, the Date and Time the Bond Purchase Agreement is executed for Negotiated Issues. Time Zone: Include in date/time data or add a term for it?"@en .
+
+fibo-bp-iss-muni:givesRiseTo a owl:ObjectProperty ;
+    rdfs:label "gives rise to",
+        "引起（gives rise to）"@zh ;
+    rdfs:comment "导致某事物的产生。"@zh .
+
+fibo-bp-iss-muni:hasIssuanceGuarantor a owl:ObjectProperty ;
+    rdfs:label "has issuance guarantor",
+        "具有发行担保人（has issuance guarantor）"@zh ;
+    rdfs:comment "标识发行担保人。"@zh .
+
+fibo-bp-iss-muni:hasPotentialIssuer a owl:ObjectProperty ;
+    rdfs:label "has potential issuer",
+        "具有潜在发行人（has potential issuer）"@zh ;
+    rdfs:comment "标识潜在的发行人。"@zh .
+
+fibo-bp-iss-muni:issuanceSettlementDate a owl:ObjectProperty ;
+    rdfs:label "issuance settlement date"@en,
+        "发行结算日（issuance settlement date）"@zh ;
+    rdfs:comment "初始发行交易的结算日。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssuanceSettlement ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "Settlement date for the initial Issuance transaction."@en .
+
+fibo-bp-iss-muni:maximumOverAllotmentPercentage a owl:ObjectProperty ;
+    rdfs:label "maximum over allotment percentage"@en,
+        "最大超额配售百分比（maximum over allotment percentage）"@zh ;
+    rdfs:comment "超额配售选择权可用的百分比。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssueOverAllotmentTerms ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "The percentage that is available as part of providing the over-allotment option."@en .
+
+fibo-bp-iss-muni:maximumOverAllotmentShares a owl:DatatypeProperty ;
+    rdfs:label "maximum over allotment shares"@en,
+        "最大超额配售股数（maximum over allotment shares）"@zh ;
+    rdfs:comment "超额配售选择权可用的最大股数。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssueOverAllotmentTerms ;
+    rdfs:range xsd:integer ;
+    skos:definition "The maximum amount of shares that are available as part of providing the over-allotment option."@en .
+
+fibo-bp-iss-muni:offeringRequestor a owl:ObjectProperty ;
+    rdfs:label "offering requestor",
+        "发行请求方（offering requestor）"@zh ;
+    rdfs:comment "发起发行请求的参与方。"@zh .
+
+fibo-bp-iss-muni:overAllotmentAvailable a owl:DatatypeProperty ;
+    rdfs:label "over allotment available"@en,
+        "可超额配售（over allotment available）"@zh ;
+    rdfs:comment "该证券是否提供超额配售选择权。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssueOverAllotmentTerms ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether an over-allotment option is available for the security."@en .
+
+fibo-bp-iss-muni:overAllotmentExpiryPeriodDays a owl:DatatypeProperty ;
+    rdfs:label "over allotment expiry period days"@en,
+        "超额配售到期天数（over allotment expiry period days）"@zh ;
+    rdfs:comment "初始发行截止后超额配售选择权到期的日历天数。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssueOverAllotmentTerms ;
+    rdfs:range xsd:integer ;
+    skos:definition "Number of calendar days after the closing of initial offering for expiry of over-allotment option."@en .
+
+fibo-bp-iss-muni:saleMethod a owl:DatatypeProperty ;
+    rdfs:label "sale method"@en,
+        "销售方式（sale method）"@zh ;
+    rdfs:comment "证券的销售方式。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:MuniDebtOffering ;
+    rdfs:range xsd:string ;
+    skos:definition "Sale Method of the security."@en .
+
+fibo-bp-iss-muni:subscriber.1 a owl:ObjectProperty ;
+    rdfs:label "subscriber",
+        "认购人（subscriber）"@zh ;
+    rdfs:comment "认购发行证券的参与方。"@zh .
+
+fibo-bp-iss-muni:subscribesTo a owl:ObjectProperty ;
+    rdfs:label "subscribes to"@en,
+        "认购（subscribes to）"@zh ;
+    rdfs:comment "认购人响应营销/招募说明书草案，表达兴趣并获配股份或债务单位。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:Subscriber ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    skos:definition "Subscriber responds to marketing / draft propspectus, indicates interest and is allocated shares / debt units based on interest."@en .
+
+fibo-bp-iss-muni:subscribesTo.1 a owl:ObjectProperty ;
+    rdfs:label "subscribes to"@en,
+        "认购（subscribes to）"@zh ;
+    rdfs:comment "认购人响应营销/招募说明书草案，表达兴趣并获配股份或债务单位。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:Subscriber ;
+    rdfs:range fibo-bp-iss-prc:SecuritiesIssuanceProcess .
+
+fibo-bp-iss-muni: a owl:Ontology ;
+    rdfs:label "MuniIssuance"@en,
+        "市政债发行本体（Municipal Issuance Ontology）"@zh ;
+    dcterms:abstract "Ontology for the process in which municipal bonds are issued." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义美国市政债券（municipal bond）的发行流程。"@zh ;
+    owl:imports fibo-bp-prc-fcp:,
+        fibo-bp-iss-dbti:,
+        fibo-bp-iss-doc:,
+        fibo-bp-iss-prc:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-agr:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-utl-av:,
+        fibo-sec-dbt-dbti:,
+        fibo-sec-sec-iss:,
+        cmns-av:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-pts:,
+        cmns-qtu:,
+        cmns-rga:,
+        cmns-rlcmp: ;
+    owl:versionIRI fibo-bp-iss-muni: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2024 EDM Council, Inc." .
+
+fibo-bp-iss-muni:Correspondent a owl:Class ;
+    rdfs:label "correspondent"@en,
+        "代理行（correspondent）"@zh ;
+    rdfs:comment "不是 DTC 直接成员的银行、券商或其他金融机构，依靠 DTC 直接参与者履行其 DTC 职能。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:participatesIn ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ],
+        fibo-bp-iss-muni:MuniIssuanceProcessParticipant,
+        fibo-fnd-agr-ctr:ContractThirdParty ;
+    skos:definition "A bank, brokerage or other financial institution that is not a direct DTC member. Correspondents rely on direct DTC Participants to perform their DTC settlement services"@en .
+
+fibo-bp-iss-muni:DTCCMember a owl:Class ;
+    rdfs:label "d t c c member"@en,
+        "DTCC 成员（d t c c member）"@zh ;
+    rdfs:comment "作为 DTCC 成员的公司，可在发行模型中扮演多种角色。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:participatesIn ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ],
+        fibo-bp-iss-muni:MuniIssuanceProcessParticipant ;
+    skos:definition "A firm which is a member of DTCC. Note: this Actor may perform any of the Roles described elsewhere in this Issuance model, i.e. the DTCC Member may also be any of the Actors defined. REVIEW: does this apply to ALL the defined Actor types?"@en .
+
+fibo-bp-iss-muni:DebtIssueOverAllotmentTerms a owl:Class ;
+    rdfs:label "debt issue over allotment terms"@en,
+        "债务发行超额配售条款（debt issue over allotment terms）"@zh ;
+    rdfs:comment "债务证券发行数量变更的条款。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-muni:IssueOverAllotmentTerms ;
+    skos:definition "Terms for Change to an Issue Amount for Debt securities"@en .
+
+fibo-bp-iss-muni:DisseminationUnderwriter a owl:Class ;
+    rdfs:label "dissemination underwriter"@en,
+        "信息分发承销商（dissemination underwriter）"@zh ;
+    rdfs:comment "负责信息分发的承销商。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:makesDecisionOn ;
+            owl:someValuesFrom fibo-bp-iss-muni:Dissemination ],
+        fibo-bp-iss-muni:PotentialMuniUnderwriter .
+
+fibo-bp-iss-muni:EquityUnderwritingIssuanceProcess a owl:Class ;
+    rdfs:label "equity underwriting issuance process"@en,
+        "股票承销发行流程（equity underwriting issuance process）"@zh ;
+    rdfs:comment "以承销方式发行股票的流程。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-muni:RegisteredSecurityIssuanceProcess .
+
+fibo-bp-iss-muni:IssuanceCreditingParticipant a owl:Class ;
+    rdfs:label "issuance crediting participant"@en,
+        "发行贷记参与者（issuance crediting participant）"@zh ;
+    rdfs:comment "在发行收尾中被贷记头寸的参与者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:isCreditingParticipant ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:IssuanceProcessParticipant a owl:Class ;
+    rdfs:label "issuance process participant"@en,
+        "发行流程参与者（issuance process participant）"@zh ;
+    rdfs:comment "发行流程中的参与者。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-muni:ProcessParticipant .
+
+fibo-bp-iss-muni:IssuanceSettlement a owl:Class ;
+    rdfs:label "issuance settlement"@en,
+        "发行结算（issuance settlement）"@zh ;
+    rdfs:comment "发行交易的资金与证券交收。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:IssuanceProcessActivity .
+
+fibo-bp-iss-muni:MuniDebtOffering a owl:Class ;
+    rdfs:label "muni debt offering"@en,
+        "市政债发行（muni debt offering）"@zh ;
+    rdfs:comment "将市政债务证券提供发行的流程步骤。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-dbti:DebtOffering ;
+    skos:definition "The process step of offering a Municipal Debt security for issue."@en .
+
+fibo-bp-iss-muni:ProcessParticipant a owl:Class ;
+    rdfs:label "process participant"@en,
+        "流程参与者（process participant）"@zh ;
+    rdfs:comment "业务流程中的参与者。"@zh ;
+    rdfs:subClassOf cmns-pts:PartyRole .
+
+fibo-bp-iss-muni:SecuritiesIssuanceContext a owl:Class ;
+    rdfs:label "securities issuance context"@en,
+        "证券发行情境（securities issuance context）"@zh ;
+    rdfs:comment "证券发行活动发生的情境。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-bp-prc-fcp:PrimaryMarket .
+
+fibo-bp-iss-muni:UnderwritingProcessActivity a owl:Class ;
+    rdfs:label "underwriting process activity"@en,
+        "承销流程活动（underwriting process activity）"@zh ;
+    rdfs:comment "承销流程中的一项活动。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:IssuanceProcessActivity .
+
+fibo-bp-iss-muni:advises a owl:ObjectProperty ;
+    rdfs:label "advises"@en,
+        "提供咨询（advises）"@zh ;
+    rdfs:comment "向……提供建议或指导。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssuanceFinancialAdvisor ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:announcesIssueOf a owl:ObjectProperty ;
+    rdfs:label "announces issue of"@en,
+        "公告……的发行（announces issue of）"@zh ;
+    rdfs:comment "公告某证券的发行。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:AnnounceSecuritiesIssue ;
+    rdfs:range fibo-fbc-fi-fi:Security .
+
+fibo-bp-iss-muni:facililtatesRemarketing a owl:ObjectProperty ;
+    rdfs:label "facililtates remarketing"@en,
+        "促成再营销（facililtates remarketing）"@zh ;
+    rdfs:comment "为证券的再营销提供便利。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:RemarketingAgent ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:facilitatesPayment a owl:ObjectProperty ;
+    rdfs:label "facilitates payment"@en,
+        "促成付款（facilitates payment）"@zh ;
+    rdfs:comment "为付款提供便利。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:PayingAgent ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:facilitatesTransfer a owl:ObjectProperty ;
+    rdfs:label "facilitates transfer"@en,
+        "促成过户（facilitates transfer）"@zh ;
+    rdfs:comment "为证券过户提供便利。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:TransferAgent ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:hasAgent a owl:ObjectProperty ;
+    rdfs:label "has agent"@en,
+        "具有代理（has agent）"@zh ;
+    rdfs:comment "标识担任代理的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:IssuanceAgent .
+
+fibo-bp-iss-muni:hasBondCounsel a owl:ObjectProperty ;
+    rdfs:label "has bond counsel"@en,
+        "具有债券律师（has bond counsel）"@zh ;
+    rdfs:comment "标识担任债券律师的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:DebtUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:BondCounsel .
+
+fibo-bp-iss-muni:hasFinancialAdvisor a owl:ObjectProperty ;
+    rdfs:label "has financial advisor"@en,
+        "具有财务顾问（has financial advisor）"@zh ;
+    rdfs:comment "标识担任财务顾问的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:IssuanceFinancialAdvisor .
+
+fibo-bp-iss-muni:hasIssuerCounsel a owl:ObjectProperty ;
+    rdfs:label "has issuer counsel"@en,
+        "具有发行人律师（has issuer counsel）"@zh ;
+    rdfs:comment "标识发行人律师。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:IssuerCounsel .
+
+fibo-bp-iss-muni:hasObligor a owl:ObjectProperty ;
+    rdfs:label "has obligor"@en,
+        "具有义务人（has obligor）"@zh ;
+    rdfs:comment "标识承担偿付义务的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:Obligor .
+
+fibo-bp-iss-muni:hasPayingAgent a owl:ObjectProperty ;
+    rdfs:label "has paying agent"@en,
+        "具有付款代理（has paying agent）"@zh ;
+    rdfs:comment "标识付款代理。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:PayingAgent .
+
+fibo-bp-iss-muni:hasPrinter a owl:ObjectProperty ;
+    rdfs:label "has printer"@en,
+        "具有印刷商（has printer）"@zh ;
+    rdfs:comment "标识负责印制的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:IssuancePrinter .
+
+fibo-bp-iss-muni:hasRemarketingAgent a owl:ObjectProperty ;
+    rdfs:label "has remarketing agent"@en,
+        "具有再营销代理（has remarketing agent）"@zh ;
+    rdfs:comment "标识再营销代理。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:RemarketingAgent .
+
+fibo-bp-iss-muni:hasServicer a owl:ObjectProperty ;
+    rdfs:label "has servicer"@en,
+        "具有服务机构（has servicer）"@zh ;
+    rdfs:comment "标识服务机构。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:Servicer .
+
+fibo-bp-iss-muni:hasSubscriber a owl:ObjectProperty ;
+    rdfs:label "has subscriber"@en,
+        "具有认购人（has subscriber）"@zh ;
+    rdfs:comment "标识认购人。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-prc:Subscriber .
+
+fibo-bp-iss-muni:hasTransferAgent a owl:ObjectProperty ;
+    rdfs:label "has transfer agent"@en,
+        "具有过户代理（has transfer agent）"@zh ;
+    rdfs:comment "标识过户代理。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:TransferAgent .
+
+fibo-bp-iss-muni:hasTrustee a owl:ObjectProperty ;
+    rdfs:label "has trustee"@en,
+        "具有受托人（has trustee）"@zh ;
+    rdfs:comment "将信托关联到具名受托人。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:Trustee .
+
+fibo-bp-iss-muni:includesStep a owl:ObjectProperty ;
+    rdfs:label "includes step"@en,
+        "包含步骤（includes step）"@zh ;
+    rdfs:comment "标识流程所包含的步骤。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:RegisteredSecurityIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:Registration .
+
+fibo-bp-iss-muni:isAgentIn a owl:ObjectProperty ;
+    rdfs:label "is agent in"@en,
+        "是……中的代理（is agent in）"@zh ;
+    rdfs:comment "标识某参与方担任代理的情境。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssuanceAgent ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:isBondCounsel a owl:ObjectProperty ;
+    rdfs:label "is bond counsel"@en,
+        "是债券律师（is bond counsel）"@zh ;
+    rdfs:comment "标识担任债券律师的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:BondCounsel ;
+    rdfs:range fibo-bp-iss-muni:DebtUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:isCreditingParticipant a owl:ObjectProperty ;
+    rdfs:label "is crediting participant"@en,
+        "是贷记参与者（is crediting participant）"@zh ;
+    rdfs:comment "标识被贷记头寸的参与者。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssuanceCreditingParticipant ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:isIssuerCounsel a owl:ObjectProperty ;
+    rdfs:label "is issuer counsel"@en,
+        "是发行人律师（is issuer counsel）"@zh ;
+    rdfs:comment "标识发行人律师。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssuerCounsel ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:isTrustee a owl:ObjectProperty ;
+    rdfs:label "is trustee"@en,
+        "是受托人（is trustee）"@zh ;
+    rdfs:comment "标识担任受托人的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:Trustee ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:makesDecisionOn a owl:ObjectProperty ;
+    rdfs:label "makes decision on"@en,
+        "就……作出决定（makes decision on）"@zh ;
+    rdfs:comment "标识决定所针对的事项。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:DisseminationUnderwriter ;
+    rdfs:range fibo-bp-iss-muni:Dissemination .
+
+fibo-bp-iss-muni:maximumOverAllotmentAmount a owl:ObjectProperty ;
+    rdfs:label "maximum over allotment amount"@en,
+        "最大超额配售金额（maximum over allotment amount）"@zh ;
+    rdfs:comment "超额配售选择权可用的最大金额。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:DebtIssueOverAllotmentTerms,
+        fibo-bp-iss-muni:IssueOverAllotmentTerms ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "The maximum amount that is available as part of providing the over-allotment option."@en .
+
+fibo-bp-iss-muni:obligorTo a owl:ObjectProperty ;
+    rdfs:label "obligor to"@en,
+        "对……负有义务（obligor to）"@zh ;
+    rdfs:comment "标识义务所指向的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:Obligor ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:prints a owl:ObjectProperty ;
+    rdfs:label "prints"@en,
+        "印制（prints）"@zh ;
+    rdfs:comment "印制发行文件。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:IssuancePrinter ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:produces a owl:ObjectProperty ;
+    rdfs:label "produces"@en,
+        "生产（produces）"@zh ;
+    rdfs:comment "通过加工、制造或生产过程创造。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-prc:UnderwritingProcessDetails .
+
+fibo-bp-iss-muni:registeredUnder a owl:ObjectProperty ;
+    rdfs:label "registered under"@en,
+        "注册于（registered under）"@zh ;
+    rdfs:comment "标识注册所依据的法规或机构。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:Registration ;
+    rdfs:range cmns-rga:Jurisdiction .
+
+fibo-bp-iss-muni:requestedBy a owl:ObjectProperty ;
+    rdfs:label "requested by"@en,
+        "由……请求（requested by）"@zh ;
+    rdfs:comment "标识发起请求的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:UnderwritingIssuanceRequestor .
+
+fibo-bp-iss-muni:requests a owl:ObjectProperty ;
+    rdfs:label "requests"@en,
+        "请求（requests）"@zh ;
+    rdfs:comment "索要某事物。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:UnderwritingIssuanceRequestor ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:services a owl:ObjectProperty ;
+    rdfs:label "services"@en,
+        "服务（services）"@zh ;
+    rdfs:comment "为某资产或池提供服务。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:Servicer ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:step a owl:ObjectProperty ;
+    rdfs:label "step"@en,
+        "步骤（step）"@zh ;
+    rdfs:comment "流程中的一个步骤。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:DebtUnderwritingIssuanceProcess ;
+    rdfs:range fibo-sec-dbt-dbti:DebtOffering .
+
+fibo-bp-iss-muni:underwrites a owl:ObjectProperty ;
+    rdfs:label "underwrites"@en,
+        "承销（underwrites）"@zh ;
+    rdfs:comment "对发行进行承销。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:PotentialMuniUnderwriter ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:underwrittenBy a owl:ObjectProperty ;
+    rdfs:label "underwritten by"@en,
+        "由……承销（underwritten by）"@zh ;
+    rdfs:comment "标识承销该发行的承销商。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    rdfs:range fibo-bp-iss-muni:PotentialMuniUnderwriter .
+
+fibo-bp-iss-muni:AnnounceSecuritiesIssue a owl:Class ;
+    rdfs:label "announce securities issue"@en,
+        "公告证券发行（announce securities issue）"@zh ;
+    rdfs:comment "对证券发行进行公告。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-dbti:announces ;
+            owl:someValuesFrom fibo-sec-sec-iss:SecuritiesOffering ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:announcesIssueOf ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ] .
+
+fibo-bp-iss-muni:IssuanceClosing a owl:Class ;
+    rdfs:label "issuance closing"@en,
+        "发行收尾（issuance closing）"@zh ;
+    rdfs:comment "在结算日向 DTC 参与者账户贷记新发行头寸的过程，整体收尾过程还包括其他步骤。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-dbti:IssuanceProcessActivity ;
+    skos:definition "The process of crediting the DTC participant account on settlement date with the position for the new issue. The overall closing process includes the exchange of funds that happens outside of DTC."@en .
+
+fibo-bp-iss-muni:UnderwritingIssuanceClosing a owl:Class ;
+    rdfs:label "underwriting issuance closing"@en,
+        "承销发行收尾（underwriting issuance closing）"@zh ;
+    rdfs:comment "承销发行的收尾环节。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:refersTo ;
+            owl:someValuesFrom fibo-bp-iss-prc:UnderwriterTakedown ],
+        fibo-bp-iss-muni:IssuanceClosing .
+
+fibo-bp-iss-muni:participatesIn a owl:ObjectProperty ;
+    rdfs:label "participates in"@en,
+        "参与（participates in）"@zh ;
+    rdfs:comment "标识参与某流程或活动。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:MuniIssuanceProcessParticipant ;
+    rdfs:range fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:refersTo a owl:ObjectProperty ;
+    rdfs:label "refers to"@en,
+        "引用（refers to）"@zh ;
+    rdfs:comment "将……作为信息或解释来源加以引用。"@zh ;
+    rdfs:domain fibo-bp-iss-muni:UnderwritingIssuanceClosing ;
+    rdfs:range fibo-bp-iss-prc:UnderwriterTakedown .
+
+fibo-bp-iss-muni:BondCounsel a owl:Class ;
+    rdfs:label "bond counsel"@en,
+        "债券律师（bond counsel）"@zh ;
+    rdfs:comment "就债券发行的法律问题提供意见的律师事务所。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:isBondCounsel ;
+            owl:someValuesFrom fibo-bp-iss-muni:DebtUnderwritingIssuanceProcess ],
+        fibo-fnd-agr-ctr:ContractThirdParty .
+
+fibo-bp-iss-muni:Dissemination a owl:Class ;
+    rdfs:label "dissemination"@en,
+        "信息分发（dissemination）"@zh ;
+    rdfs:comment "将发行相关信息向市场分发的活动。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-muni:UnderwritingProcessActivity .
+
+fibo-bp-iss-muni:IssuanceFinancialAdvisor a owl:Class ;
+    rdfs:label "issuance financial advisor"@en,
+        "发行财务顾问（issuance financial advisor）"@zh ;
+    rdfs:comment "为发行提供财务顾问服务的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:advises ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:IssuancePrinter a owl:Class ;
+    rdfs:label "issuance printer"@en,
+        "发行印刷商（issuance printer）"@zh ;
+    rdfs:comment "负责印制发行文件的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:prints ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:IssuerCounsel a owl:Class ;
+    rdfs:label "issuer counsel"@en,
+        "发行人律师（issuer counsel）"@zh ;
+    rdfs:comment "为发行人提供法律意见的律师事务所。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:isIssuerCounsel ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:MuniIssuanceProcessParticipant a owl:Class ;
+    rdfs:label "muni issuance process participant"@en,
+        "市政发行流程参与者（muni issuance process participant）"@zh ;
+    rdfs:comment "市政债发行流程中的参与者。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-muni:IssuanceProcessParticipant .
+
+fibo-bp-iss-muni:Obligor a owl:Class ;
+    rdfs:label "obligor"@en,
+        "义务人（obligor）"@zh ;
+    rdfs:comment "根据法律或协议有义务偿还债务、付款、做某事或不做某事的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:obligorTo ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:PayingAgent a owl:Class ;
+    rdfs:label "paying agent"@en,
+        "付款代理（paying agent）"@zh ;
+    rdfs:comment "代表发行人向证券持有人付款的代理机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:facilitatesPayment ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ],
+        fibo-bp-iss-muni:IssuanceAgent .
+
+fibo-bp-iss-muni:RegisteredSecurityIssuanceProcess a owl:Class ;
+    rdfs:label "registered security issuance process"@en,
+        "注册制证券发行流程（registered security issuance process）"@zh ;
+    rdfs:comment "以注册方式发行证券的流程。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:includesStep ;
+            owl:someValuesFrom fibo-bp-iss-muni:Registration ],
+        fibo-bp-iss-prc:SecuritiesIssuanceProcess .
+
+fibo-bp-iss-muni:Registration a owl:Class ;
+    rdfs:label "registration"@en,
+        "注册（registration）"@zh ;
+    rdfs:comment "向监管机构办理发行注册的行为。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:registeredUnder ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        fibo-bp-iss-dbti:IssuanceProcessActivity .
+
+fibo-bp-iss-muni:RemarketingAgent a owl:Class ;
+    rdfs:label "remarketing agent"@en,
+        "再营销代理（remarketing agent）"@zh ;
+    rdfs:comment "负责将回售证券重新销售的代理机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:facililtatesRemarketing ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:Servicer a owl:Class ;
+    rdfs:label "servicer"@en,
+        "服务机构（servicer）"@zh ;
+    rdfs:comment "为资产池提供收款、管理等服务的机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:services ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:TransferAgent a owl:Class ;
+    rdfs:label "transfer agent"@en,
+        "过户代理（transfer agent）"@zh ;
+    rdfs:comment "负责证券登记与过户的代理机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:facilitatesTransfer ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ],
+        fibo-bp-iss-muni:IssuanceAgent .
+
+fibo-bp-iss-muni:Trustee a owl:Class ;
+    rdfs:label "trustee"@en,
+        "受托人（trustee）"@zh ;
+    rdfs:comment "为他人利益持有并管理资产的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:isTrustee ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:UnderwritingIssuanceRequestor a owl:Class ;
+    rdfs:label "underwriting issuance requestor"@en,
+        "承销发行请求方（underwriting issuance requestor）"@zh ;
+    rdfs:comment "发起承销发行请求的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:requests ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ],
+        fibo-bp-iss-prc:PotentialIssuer .
+
+fibo-bp-iss-muni:DebtUnderwritingIssuanceProcess a owl:Class ;
+    rdfs:label "debt underwriting issuance process"@en,
+        "债务承销发行流程（debt underwriting issuance process）"@zh ;
+    rdfs:comment "以承销方式发行债务证券的流程。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasBondCounsel ;
+            owl:someValuesFrom fibo-bp-iss-muni:BondCounsel ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:step ;
+            owl:someValuesFrom fibo-sec-dbt-dbti:DebtOffering ],
+        fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ;
+    owl:disjointWith fibo-bp-iss-muni:EquityUnderwritingIssuanceProcess .
+
+fibo-bp-iss-muni:PotentialMuniUnderwriter a owl:Class ;
+    rdfs:label "potential muni underwriter"@en,
+        "潜在市政债承销商（potential muni underwriter）"@zh ;
+    rdfs:comment "证券发行人与投资公众之间的中介，可为 DTC 参与者或代理行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:underwrites ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ],
+        fibo-bp-iss-prc:PotentialUnderwriter ;
+    skos:definition "An intermediary between an issuer of a security and the investing public. An underwriter can either be DTC Participant or Correspondent who would clear the underwriting deal using the Crediting Participant."@en .
+
+fibo-bp-iss-muni:IssuanceAgent a owl:Class ;
+    rdfs:label "issuance agent"@en,
+        "发行代理（issuance agent）"@zh ;
+    rdfs:comment "在发行过程中担任代理的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:isAgentIn ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ] .
+
+fibo-bp-iss-muni:IssueOverAllotmentTerms a owl:Class ;
+    rdfs:label "issue over allotment terms"@en,
+        "发行超额配售条款（issue over allotment terms）"@zh ;
+    rdfs:comment "发行数量变更条款：承销协议中允许承销团成员额外购买证券的条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-bp-iss-muni:maximumOverAllotmentAmount ],
+        fibo-bp-iss-doc:OfferingDocumentTerms ;
+    skos:definition "Terms for Change to an Issue Amount. A provision in an underwriting agreement, which allows members of the underwriting syndicate to purchase additional shares at the original price."@en ;
+    cmns-av:explanatoryNote "Also known as a green shoe. Note that this set of terms does not refer to over-allotment as change to a the total issue amount issued to an individual investor. That would require separate but similar terms. FIBIM has \"Over Allotment Amount\" as an individual term."@en .
+
+fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess a owl:Class ;
+    rdfs:label "securities underwriting issuance process"@en,
+        "证券承销发行流程（securities underwriting issuance process）"@zh ;
+    rdfs:comment "由承销辛迪加将债务工具承销并推向市场的过程。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasTransferAgent ;
+            owl:someValuesFrom fibo-bp-iss-muni:TransferAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasAgent ;
+            owl:someValuesFrom fibo-bp-iss-muni:IssuanceAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasObligor ;
+            owl:someValuesFrom fibo-bp-iss-muni:Obligor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasRemarketingAgent ;
+            owl:someValuesFrom fibo-bp-iss-muni:RemarketingAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasPrinter ;
+            owl:someValuesFrom fibo-bp-iss-muni:IssuancePrinter ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:produces ;
+            owl:someValuesFrom fibo-bp-iss-prc:UnderwritingProcessDetails ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasServicer ;
+            owl:someValuesFrom fibo-bp-iss-muni:Servicer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:requestedBy ;
+            owl:someValuesFrom fibo-bp-iss-muni:UnderwritingIssuanceRequestor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasFinancialAdvisor ;
+            owl:someValuesFrom fibo-bp-iss-muni:IssuanceFinancialAdvisor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasIssuerCounsel ;
+            owl:someValuesFrom fibo-bp-iss-muni:IssuerCounsel ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:underwrittenBy ;
+            owl:someValuesFrom fibo-bp-iss-muni:PotentialMuniUnderwriter ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasSubscriber ;
+            owl:someValuesFrom fibo-bp-iss-prc:Subscriber ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasPayingAgent ;
+            owl:someValuesFrom fibo-bp-iss-muni:PayingAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasTrustee ;
+            owl:someValuesFrom fibo-bp-iss-muni:Trustee ],
+        fibo-bp-iss-prc:SecuritiesIssuanceProcess ;
+    skos:definition "The process by which debt instruments are offered to the market by a syndicate of underwriters who underwrite the issue."@en .
+

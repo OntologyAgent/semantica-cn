@@ -1,0 +1,253 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-der-rtd-irswp: <https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/> .
+@prefix fibo-exmp-sec-irsex: <https://spec.edmcouncil.org/fibo/ontology/EXMP/Securities/IRSwapExamples/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fct-bci: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-4217: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ir-cm: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/CommonInterestRates/> .
+@prefix fibo-ind-ir-ir: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/InterestRates/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-sec-id: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-exmp-sec-irsex: a owl:Ontology ;
+    rdfs:label "Interest Rate Swap Example Individuals Ontology",
+        "利率互换示例个体本体（Interest Rate Swap Example Individuals Ontology）"@zh ;
+    dcterms:abstract "This ontology provides examples of how to represent individuals for interest rate swaps and swap legs based on the Mizuho mocked-up sample data provided in the FIBO wiki." ;
+    dcterms:license """Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录利率互换合约的示例个体。"@zh ;
+    owl:imports fibo-der-drc-swp:,
+        fibo-der-rtd-irswp:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-bci:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-acc-4217:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ir-cm:,
+        fibo-ind-ir-ir:,
+        fibo-sec-dbt-dbti:,
+        fibo-sec-sec-id:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-loc: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/EXMP/20260701/Securities/IRSwapExamples/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20200601/Securities/IRSwapExamples.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20200701/Securities/IRSwapExamples.rdf version of this ontology was modified to move the property 'exchanges' to FND given that it could be applied more generally than with respect to swaps only.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210101/Securities/IRSwapExamples.rdf version of this ontology was modified to correct properties that were modified in the main ontology but not in the examples.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220101/Securities/IRSwapExamples.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/Securities/IRSwapExamples.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/Securities/IRSwapExamples.rdf version of the ontology was modified to replace concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231201/Securities/IRSwapExamples.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/Securities/IRSwapExamples.rdf version of the ontology was modified to move examples from their original locations to the EXMP module (FND-407), reflect the move of the definition of portfolio to FND ownership (SEC-219), and use Commons 1.3 properties rather than deprectated properties from FND (FND-412)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2018-2025 Object Management Group, Inc.",
+        "Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-exmp-sec-irsex:PortfolioBeta a owl:NamedIndividual,
+        fibo-fnd-oac-own:Portfolio ;
+    rdfs:label "portfolio Beta" ;
+    skos:definition "sample contract portfolio Beta" .
+
+fibo-exmp-sec-irsex:PortfolioDelta a owl:NamedIndividual,
+        fibo-fnd-oac-own:Portfolio ;
+    rdfs:label "portfolio Delta" ;
+    skos:definition "sample contract portfolio Delta" .
+
+fibo-exmp-sec-irsex:PortfolioGamma a owl:NamedIndividual,
+        fibo-fnd-oac-own:Portfolio ;
+    rdfs:label "portfolio Gamma" ;
+    skos:definition "sample contract portfolio Gamma" .
+
+fibo-exmp-sec-irsex:SecuritiesTransaction-IY7VKEUR45886 a owl:NamedIndividual,
+        fibo-fbc-fi-fi:SecuritiesTransaction ;
+    rdfs:label "securities transaction IY7VKEUR45886" ;
+    skos:definition "securities transaction for contract IY7VKEUR45886" ;
+    fibo-fbc-pas-fpas:isFacilitatedBy fibo-exmp-sec-irsex:Trader-J_Adams ;
+    cmns-av:explanatoryNote "Need to create the trade event - this is the activity (maybe we should rename these now? in FND to activity and event?) and add lifecycle elements - date and time, status of the trade and settlement status" ;
+    cmns-cxtdsg:appliesTo fibo-exmp-sec-irsex:Contract-IY7VKEUR45886 .
+
+fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886 a owl:NamedIndividual,
+        fibo-der-rtd-irswp:FixedInterestRateLeg ;
+    rdfs:label "contract leg 1 IY7VKEUR45886" ;
+    skos:definition "contract IY7VKEUR45886 swap leg 1 that is a fixed interest rate leg" ;
+    fibo-fbc-dae-dbt:hasInterestRate fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-InterestRate ;
+    fibo-fnd-acc-cur:hasNotionalAmount fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-NotionalAmount ;
+    fibo-fnd-agr-ctr:hasEffectiveDate fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-EffectiveDate ;
+    fibo-fnd-arr-doc:hasTerminationDate fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-TerminationDate ;
+    fibo-fnd-pas-pas:hasBuyer fibo-exmp-sec-irsex:SwapContractParty-ZZZWWK96TRQY0F2IY7VK ;
+    fibo-fnd-pas-pas:hasSeller fibo-exmp-sec-irsex:SwapContractParty-A ;
+    fibo-fnd-rel-rel:isMandatedBy fibo-exmp-sec-irsex:Contract-IY7VKEUR45886 ;
+    fibo-sec-dbt-dbti:hasInterestPaymentTerms fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-InterestPaymentTerms ;
+    cmns-av:explanatoryNote "Need to create the 1st period fixing date, payment days offset, discount notional amount, average remaining notional currency, net present value currency (pair, of type monetary amount)" .
+
+fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-EffectiveDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "contract leg 1 IY7VKEUR45886 effective date" ;
+    cmns-dt:hasDateValue "2015-12-12" .
+
+fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-InterestPaymentTerms a owl:NamedIndividual,
+        fibo-fbc-dae-dbt:InterestPaymentTerms ;
+    rdfs:label "contract leg 1 interest payment terms IY7VKEUR45886" ;
+    skos:definition "interest payment terms for contract IY7VKEUR45886 swap leg 1 that is a fixed interest rate leg" ;
+    fibo-fbc-dae-dbt:hasAccrualBasis fibo-fbc-dae-dbt:DayCountConvention-30E360 ;
+    fibo-fbc-dae-dbt:hasInterestPaymentFrequency fibo-ind-ir-ir:OneYear ;
+    fibo-fbc-dae-dbt:hasInterestRate fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-InterestRate ;
+    fibo-fnd-dt-bd:hasBusinessDayConvention fibo-exmp-sec-irsex:EuropeanCentralBankBBusinessDayAdjustment .
+
+fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-NotionalAmount a owl:NamedIndividual,
+        fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:label "contract leg 1 IY7VKEUR45886 notional amount" ;
+    fibo-fnd-acc-cur:hasAmount 1286805.0 ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:Euro .
+
+fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-TerminationDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "contract leg 1 IY7VKEUR45886 termination date" ;
+    cmns-dt:hasDateValue "2025-08-17" .
+
+fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886 a owl:NamedIndividual,
+        fibo-der-rtd-irswp:FloatingInterestRateLeg ;
+    rdfs:label "contract leg 2 IY7VKEUR45886" ;
+    skos:definition "contract IY7VKEUR45886 swap leg 2 that is a floating interest rate leg" ;
+    fibo-fbc-dae-dbt:hasInterestRate fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-InterestRate ;
+    fibo-fnd-acc-cur:hasNotionalAmount fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-NotionalAmount ;
+    fibo-fnd-agr-ctr:hasEffectiveDate fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-EffectiveDate ;
+    fibo-fnd-arr-doc:hasTerminationDate fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-TerminationDate ;
+    fibo-fnd-pas-pas:hasBuyer fibo-exmp-sec-irsex:SwapContractParty-A ;
+    fibo-fnd-pas-pas:hasSeller fibo-exmp-sec-irsex:SwapContractParty-ZZZWWK96TRQY0F2IY7VK ;
+    fibo-fnd-rel-rel:isMandatedBy fibo-exmp-sec-irsex:Contract-IY7VKEUR45886 ;
+    fibo-sec-dbt-dbti:hasInterestPaymentTerms fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-InterestPaymentTerms ;
+    cmns-av:explanatoryNote "Need to create the interest rate reset schedule or add a simple payment frequency, need a separate property for reference interest rate, need rate tenor" .
+
+fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-EffectiveDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "contract leg 2 IY7VKEUR45886 effective date" ;
+    cmns-dt:hasDateValue "2015-12-12" .
+
+fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-InterestPaymentTerms a owl:NamedIndividual,
+        fibo-fbc-dae-dbt:InterestPaymentTerms ;
+    rdfs:label "contract leg 2 interest payment terms IY7VKEUR45886" ;
+    skos:definition "interest payment terms for contract IY7VKEUR45886 swap leg 2 that is a floating interest rate leg" ;
+    fibo-fbc-dae-dbt:hasAccrualBasis fibo-fbc-dae-dbt:DayCountConvention-30E360 ;
+    fibo-fbc-dae-dbt:hasInterestPaymentFrequency fibo-ind-ir-ir:SixMonths ;
+    fibo-fbc-dae-dbt:hasInterestRate fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-InterestRate ;
+    fibo-fnd-dt-bd:hasBusinessDayConvention fibo-exmp-sec-irsex:EuropeanCentralBankBBusinessDayAdjustment .
+
+fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-NotionalAmount a owl:NamedIndividual,
+        fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:label "contract leg 2 IY7VKEUR45886 notional amount" ;
+    fibo-fnd-acc-cur:hasAmount 1286805.0 ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:Euro .
+
+fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-TerminationDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "contract leg 2 IY7VKEUR45886 termination date" ;
+    cmns-dt:hasDateValue "2025-08-17" .
+
+fibo-exmp-sec-irsex:ISIN-ZZ216659451 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "ZZ216659451" ;
+    skos:definition "ISIN for sample swap contract IY7VKEUR45886" ;
+    cmns-dsg:hasTag "ZZ216659451" ;
+    cmns-id:identifies fibo-exmp-sec-irsex:Contract-IY7VKEUR45886 .
+
+fibo-exmp-sec-irsex:IY7VKEUR45886 a owl:NamedIndividual,
+        fibo-der-drc-swp:UniqueSwapIdentifier ;
+    rdfs:label "IY7VKEUR45886" ;
+    skos:definition "unique swap identifier for sample swap contract IY7VKEUR45886" ;
+    cmns-dsg:hasTag "IY7VKEUR45886" ;
+    cmns-id:identifies fibo-exmp-sec-irsex:Contract-IY7VKEUR45886 .
+
+fibo-exmp-sec-irsex:PortfolioAlpha a owl:NamedIndividual,
+        fibo-fnd-oac-own:Portfolio ;
+    rdfs:label "portfolio Alpha" ;
+    skos:definition "sample contract portfolio Alpha" .
+
+fibo-exmp-sec-irsex:Trader-J_Adams a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:Trader ;
+    rdfs:label "trader J. Adams" .
+
+fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886-InterestRate a owl:NamedIndividual,
+        fibo-fbc-dae-dbt:FixedInterestRate ;
+    rdfs:label "contract leg 1 IY7VKEUR45886 fixed interest rate" ;
+    fibo-fnd-acc-cur:hasRateValue 1.0579 .
+
+fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886-InterestRate a owl:NamedIndividual,
+        fibo-fbc-dae-dbt:FloatingInterestRate ;
+    rdfs:label "contract leg 2 IY7VKEUR45886 floating interest rate" ;
+    fibo-fnd-acc-cur:hasRateValue 0.309 .
+
+fibo-exmp-sec-irsex:EuropeanCentralBankBBusinessDayAdjustment a owl:NamedIndividual,
+        fibo-fnd-dt-bd:BusinessDayConvention ;
+    rdfs:label "European Central Bank business day adjustment" ;
+    skos:definition "business day adjustment for the ECB" ;
+    fibo-fnd-dt-bd:hasBusinessDayConvention fibo-fnd-dt-bd:BusinessDayModifiedFollowing ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:Frankfurt .
+
+fibo-exmp-sec-irsex:SwapContractParty-A a owl:NamedIndividual,
+        fibo-der-drc-swp:SwapParty ;
+    rdfs:label "swap contract party A" ;
+    skos:definition "swap contract party A for all of the sample contracts in the sample swap data" .
+
+fibo-exmp-sec-irsex:SwapContractParty-ZZZWWK96TRQY0F2IY7VK a owl:NamedIndividual,
+        fibo-der-drc-swp:SwapParty,
+        fibo-fnd-agr-ctr:Counterparty ;
+    rdfs:label "swap contract party ZZZWWK96TRQY0F2IY7VK" ;
+    skos:definition "swap contract party ZZZWWK96TRQY0F2IY7VK" .
+
+fibo-exmp-sec-irsex:Contract-IY7VKEUR45886 a owl:NamedIndividual,
+        fibo-der-rtd-irswp:FixedFloatSingleCurrencyInterestRateSwap ;
+    rdfs:label "contract IY7VKEUR45886" ;
+    skos:definition "contract IY7VKEUR45886 that is a fixed/float, single currency interest rate swap" ;
+    fibo-fnd-agr-ctr:hasContractParty fibo-exmp-sec-irsex:SwapContractParty-A,
+        fibo-exmp-sec-irsex:SwapContractParty-ZZZWWK96TRQY0F2IY7VK ;
+    fibo-fnd-rel-rel:exchanges fibo-exmp-sec-irsex:ContractLeg1-IY7VKEUR45886,
+        fibo-exmp-sec-irsex:ContractLeg2-IY7VKEUR45886 ;
+    cmns-col:isIncludedIn fibo-exmp-sec-irsex:PortfolioAlpha ;
+    cmns-id:isIdentifiedBy fibo-exmp-sec-irsex:ISIN-ZZ216659451,
+        fibo-exmp-sec-irsex:IY7VKEUR45886 .
+

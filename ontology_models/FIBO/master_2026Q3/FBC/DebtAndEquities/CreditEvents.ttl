@@ -1,0 +1,323 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-cre: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditEvents/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-dae-cre: a owl:Ontology ;
+    rdfs:label "Credit Events Ontology"@en,
+        "信用事件本体（Credit Events Ontology）"@zh ;
+    dcterms:abstract """This ontology defines a range of credit events, that is events in which some payment or payments are not made. These include credit events relating to a specific debt obligation and events relating to the business entity as a whole. 
+		Note: the events defined herein are primarily business rather than consumer oriented, and are specified fairly generally. Many credit events are jurisdiction-specific, such as Chapter 11 restructuring and Chapter 7 bankruptcy in the United States. This ontology is designed to facilitate jurisdiction and instrument-specific extensions as needed.""" ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义信用事件（credit event）：破产、拒付、重组等会触发信用衍生品结算的事件类型。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-org: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20250401/DebtAndEquities/CreditEvents/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200901/DebtAndEquities/CreditEvents.rdf version of this ontology was revised to move a restriction involving breach of covenant from credit event, since not all credit events involve breaches, to default event, and loosen the constraint since a breach depends on the contract.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220401/DebtAndEquities/CreditEvents.rdf version of this ontology was revised to address text formatting issues uncovered by hygiene testing.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220801/DebtAndEquities/CreditEvents.rdf version of this ontology was revised to augment the definition of obligation-specific event with an optional default threshold to better support credit default swaps.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20221001/DebtAndEquities/CreditEvents.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/DebtAndEquities/CreditEvents.rdf version of this ontology was modified to move the property, 'is conferred on' to the Legal Capacity ontology and to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/DebtAndEquities/CreditEvents.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/DebtAndEquities/CreditEvents.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/DebtAndEquities/CreditEvents.rdf version of this ontology was modified to add the currency pertinent to a credit agreement (DER-55)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+
+fibo-fbc-dae-cre:Bankruptcy a owl:Class ;
+    rdfs:label "bankruptcy"@en,
+        "破产（bankruptcy）"@zh ;
+    rdfs:comment "信用事件的一种，指一方的状态或状况发生变化、陷入资不抵债（无力清偿）的情形。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:EntitySpecificCreditEvent ;
+    skos:definition "credit event involving a change in state or condition in which a party becomes insolvent"@en ;
+    cmns-av:adaptedFrom "https://thelawdictionary.org/bankruptcy/"^^xsd:anyURI,
+        "Barron's Dictionary of Banking Terms, Sixth Edition, 2012" .
+
+fibo-fbc-dae-cre:CrossDefaultProvision a owl:Class ;
+    rdfs:label "cross default provision"@en,
+        "交叉违约条款（cross default provision）"@zh ;
+    rdfs:comment "合同条款：当借款人在另一相关债务上违约时，触发本合同项下的违约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreement ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fbc-dae-cre:hasDefaultThresholdAmount ],
+        fibo-fnd-agr-ctr:ConditionPrecedent ;
+    skos:definition "contract provision that triggers a default under one contract if the borrower defaults on another related obligation" ;
+    cmns-av:explanatoryNote "Cross default provisions are commonly found in loans, bond indentures, syndicated loans, and other instruments such as certain master agreements (e.g., derivatives transactions master agreements)." .
+
+fibo-fbc-dae-cre:DistressedRatingsDowngrade a owl:Class ;
+    rdfs:label "distressed ratings downgrade"@en,
+        "困境级评级下调（distressed ratings downgrade）"@zh ;
+    rdfs:comment "当某项债务的信用评级被下调至困境债务水平时触发的信用事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:Downgrade ;
+    skos:definition "credit event triggered when the credit rating of an obligation is downgraded to a distressed debt level"@en .
+
+fibo-fbc-dae-cre:FailureToPayInterest a owl:Class ;
+    rdfs:label "failure to pay interest"@en,
+        "未能支付利息（failure to pay interest）"@zh ;
+    rdfs:comment "违约事件的一种：预期利息支付完全未付，或实付金额低于应付金额。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:FailureToPay ;
+    skos:definition "default event that where either an expected interest payment is missed altogether or the amount paid is less than the required amount"@en .
+
+fibo-fbc-dae-cre:FailureToPayPrincipal a owl:Class ;
+    rdfs:label "failure to pay principal"@en,
+        "未能支付本金（failure to pay principal）"@zh ;
+    rdfs:comment "违约事件的一种：预期本金支付完全未付，或实付金额低于应付金额。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:FailureToPay ;
+    skos:definition "default event that where either an expected principal payment is missed altogether or the amount paid is less than the required amount"@en .
+
+fibo-fbc-dae-cre:FilingForBankruptcy a owl:Class ;
+    rdfs:label "filing for bankruptcy"@en,
+        "申请破产（filing for bankruptcy）"@zh ;
+    rdfs:comment "向法院提出请求、要求被认定为破产的信用事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:EntitySpecificCreditEvent ;
+    skos:definition "credit event that involves a request to a court to be recognized as bankrupt"@en ;
+    cmns-av:explanatoryNote "The bankruptcy process is initiated via a petition filed by the debtor or on behalf of creditors. The debtor's assets may be used to repay a portion of outstanding debt as specified by the court or a court-appointed individual."@en .
+
+fibo-fbc-dae-cre:InstallmentDefault a owl:Class ;
+    rdfs:label "installment default"@en,
+        "分期违约（installment default）"@zh ;
+    rdfs:comment "违约事件的一种：未按协议条款如期支付多期分期款项，或未支付受益人要求的催缴款项。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:DefaultEvent ;
+    skos:definition "default event involving non-payment of several installment payments as scheduled in the terms of the agreement, or non-payment of a call by the beneficial owner"@en ;
+    cmns-av:explanatoryNote "The latter may result in a court action by the issuer or the sale of the securities to recover costs and/or a forfeit of partially paid securities."@en .
+
+fibo-fbc-dae-cre:MaturityExtension a owl:Class ;
+    rdfs:label "maturity extension"@en,
+        "到期延展（maturity extension）"@zh ;
+    rdfs:comment "将付款延长至债务原定到期日之后的信用事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:ObligationSpecificCreditEvent ;
+    skos:definition "credit event involving extension of payments beyond the original maturity date of the obligation"@en ;
+    cmns-av:explanatoryNote "As stipulated in the terms and conditions for a bond, for example, the issuer or the bondholder may prolong the maturity date. After extension, the security may differ from original issue (new rate or maturity date). May be subject to bondholder's approval."@en .
+
+fibo-fbc-dae-cre:Moratorium a owl:Class ;
+    rdfs:label "moratorium"@en,
+        "延期偿付（moratorium）"@zh ;
+    rdfs:comment "主体特定信用事件：在相关问题解决之前暂时中止付款。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:EntitySpecificCreditEvent ;
+    skos:definition "entity-specific credit event involving a temporary suspension of payments until related issues are resolved"@en ;
+    cmns-av:explanatoryNote "A moratorium may be a legally-mandated hiatus in debt collection as a part of a bankruptcy process."@en .
+
+fibo-fbc-dae-cre:ObligationAcceleration a owl:Class ;
+    rdfs:label "obligation acceleration"@en,
+        "债务加速到期（obligation acceleration）"@zh ;
+    rdfs:comment "因参考债务发生违约或违反契约条款，导致一笔或多笔参考债务立即到期应付的信用事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:ObligationSpecificCreditEvent ;
+    skos:definition "credit event triggered when one or more reference obligations become immediately due and payable as a result of a default or covenant breach on the reference entity's other debt instruments, subject to a materiality threshold"@en .
+
+fibo-fbc-dae-cre:ObligationDefault a owl:Class ;
+    rdfs:label "obligation default"@en,
+        "债务违约（obligation default）"@zh ;
+    rdfs:comment "因某项特定债务违约而触发的信用事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:DefaultEvent,
+        fibo-fbc-dae-cre:ObligationSpecificCreditEvent ;
+    skos:definition "credit event triggered as a result of an obligation-specific default"@en .
+
+fibo-fbc-dae-cre:Repudiation a owl:Class ;
+    rdfs:label "repudiation"@en,
+        "拒绝履行（repudiation）"@zh ;
+    rdfs:comment "拒绝履行合同条款的信用事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:ObligationSpecificCreditEvent ;
+    skos:definition "credit event involving the refusal to honor the terms of a contract"@en .
+
+fibo-fbc-dae-cre:SoftCreditEvent a owl:Class ;
+    rdfs:label "soft credit event"@en,
+        "软信用事件（soft credit event）"@zh ;
+    rdfs:comment "可修复（可补救）的违约事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:DefaultEvent ;
+    owl:disjointWith fibo-fbc-dae-cre:HardCreditEvent ;
+    skos:definition "default event that is repairable"@en ;
+    cmns-av:explanatoryNote "If the default is not repaired within a grace period, then a failure to repair (failure to pay) credit event is triggered, potentially as a hard default."@en .
+
+fibo-fbc-dae-cre:WriteDown a owl:Class ;
+    rdfs:label "write-down"@en,
+        "减记（write-down）"@zh ;
+    rdfs:comment "债务特定信用事件：债务的账面价值（如未偿本金余额）被调减。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:ObligationSpecificCreditEvent ;
+    skos:definition "obligation-specific credit event whereby the book value of the obligation, such as the outstanding principal amount, is reduced"@en .
+
+fibo-fbc-dae-cre:involvesMultipleEvents a owl:DatatypeProperty ;
+    rdfs:label "involves multiple events"@en,
+        "涉及多个事件（involves multiple events）"@zh ;
+    rdfs:comment "表明该重组跨越不止一个信用事件。"@zh ;
+    rdfs:domain fibo-fbc-dae-cre:ObligationRestructuring ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates that the restructuring spans more than one credit event"@en .
+
+fibo-fbc-dae-cre:isGracePeriodExtendable a owl:DatatypeProperty ;
+    rdfs:label "is grace period extendable"@en,
+        "宽限期是否可延长（is grace period extendable）"@zh ;
+    rdfs:comment "表明宽限期是否可以延长，可能因司法管辖区而异。"@zh ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether or not the grace period may be extended, which may be jurisdiction specific"@en .
+
+fibo-fbc-dae-cre:Downgrade a owl:Class ;
+    rdfs:label "downgrade"@en,
+        "评级下调（downgrade）"@zh ;
+    rdfs:comment "当某一方或某项债务的信用评级被降低时触发的信用事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:CreditEvent ;
+    skos:definition "credit event triggered when the credit rating of a party or obligation is lowered"@en ;
+    skos:example "On October 17, 2013, Dagong Global Credit Rating downgraded the United States from A to A- and maintained a negative outlook on the country's credit."@en .
+
+fibo-fbc-dae-cre:HardCreditEvent a owl:Class ;
+    rdfs:label "hard credit event"@en,
+        "硬信用事件（hard credit event）"@zh ;
+    rdfs:comment "不可修复（无法补救）的违约事件。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:DefaultEvent ;
+    skos:definition "default event that is not repairable"@en .
+
+fibo-fbc-dae-cre:ObligationRestructuring a owl:Class ;
+    rdfs:label "obligation restructuring"@en,
+        "债务重组（obligation restructuring）"@zh ;
+    rdfs:comment "对债务产生重大影响的信用事件，例如降息、削减本金、利息或本金延期支付、偿付顺序变更等。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-cre:ObligationSpecificCreditEvent ;
+    skos:definition "credit event that materially impacts an obligation, such as an interest rate reduction, principal reduction, deferral of interest or principal, change in priority ranking, or change in currency or composition of payment"@en .
+
+fibo-fbc-dae-cre:hasDefaultInterestCompoundingBasis a owl:ObjectProperty ;
+    rdfs:label "has default interest compounding basis"@en,
+        "具有违约利息复利基础（has default interest compounding basis）"@zh ;
+    rdfs:comment "指明违约利息的计算基础，以时间周期表示。"@zh ;
+    rdfs:domain fibo-fbc-dae-cre:InterestObligationInLightOfDefault ;
+    rdfs:range cmns-dt:DatePeriod ;
+    rdfs:subPropertyOf cmns-dt:hasDatePeriod ;
+    skos:definition "indicates the basis on which default interest is to be calculated, as a period of time"@en .
+
+fibo-fbc-dae-cre:hasGracePeriod a owl:ObjectProperty ;
+    rdfs:label "has grace period"@en,
+        "具有宽限期（has grace period）"@zh ;
+    rdfs:comment "付款到期日之后的窗口期，在此期间内一方须履行其义务，否则发生未能支付信用事件。"@zh ;
+    rdfs:range cmns-dt:DatePeriod ;
+    rdfs:subPropertyOf cmns-dt:hasDatePeriod ;
+    skos:definition "window following any payment due date during which a party must fulfill its obligations before a failure to pay credit event occurs"@en ;
+    cmns-av:explanatoryNote "Note that this may be a period denominated in business days or calendar days."@en .
+
+fibo-fbc-dae-cre:isDefaultInterestApplicable a owl:DatatypeProperty ;
+    rdfs:label "is default interest applicable"@en,
+        "是否适用违约利息（is default interest applicable）"@zh ;
+    rdfs:comment "表明在法律及适用协议允许的范围内，支付义务违约方是否须支付违约利息。"@zh ;
+    rdfs:domain fibo-fbc-dae-cre:InterestObligationInLightOfDefault ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether a party that defaults in the performance of any payment obligation is, to the extent permitted by law and the applicable agreement, required to pay interest (before as well as after judgment) on the overdue amount to the other party on demand in the same currency as such overdue amount, for the period from (and including) the original due date for payment to (but excluding) the date of actual payment"@en .
+
+fibo-fbc-dae-cre:FailureToPay a owl:Class ;
+    rdfs:label "failure to pay"@en,
+        "未能支付（failure to pay）"@zh ;
+    rdfs:comment "在任何适用的宽限期之后仍未履行支付义务而触发的违约事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DatePeriod ;
+            owl:onProperty fibo-fbc-dae-cre:hasGracePeriod ],
+        fibo-fbc-dae-cre:DefaultEvent ;
+    skos:definition "default event that is triggered following any applicable grace period in which a payment obligation is missed"@en .
+
+fibo-fbc-dae-cre:InterestObligationInLightOfDefault a owl:Class ;
+    rdfs:label "interest obligation in light of default"@en,
+        "违约情形下的利息义务（interest obligation in light of default）"@zh ;
+    rdfs:comment "就任何支付义务的违约行为所产生的利息方面的义务。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DatePeriod ;
+            owl:onProperty fibo-fbc-dae-cre:hasDefaultInterestCompoundingBasis ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-dae-dbt:CreditAgreement fibo-fnd-pas-psch:PaymentObligation ) ],
+                fibo-fnd-pas-psch:PaymentObligation ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-fbc-dae-cre:isDefaultInterestApplicable ],
+        fibo-fnd-law-lcap:ContingentObligation,
+        fibo-fnd-law-lcap:ContractualObligation ;
+    skos:definition "obligation in respect of default(s) in the performance of any payment obligation"@en ;
+    skos:example "Prior to the occurrence or effective designation of an early termination date in respect of the relevant transaction, a party that defaults in the performance of any payment obligation will, to the extent permitted by law (and in the case of an ISDA Master Agreement is subject to Section 6(c)), be required to pay interest (before as well as after judgment) on the overdue amount to the other party on demand in the same currency as such overdue amount, for the period from (and including) the original due date for payment to (but excluding) the date of actual payment, at the default rate. Such interest will be calculated on the basis of daily compounding and the actual number of days elapsed."@en .
+
+fibo-fbc-dae-cre:hasDefaultThresholdAmount a owl:ObjectProperty ;
+    rdfs:label "has default threshold amount"@en,
+        "具有违约门槛金额（has default threshold amount）"@zh ;
+    rdfs:comment "规定触发未能支付、拒绝履行/延期偿付或重组事件的金额门槛。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "specifies an amount of money that triggers a failure to pay, repudiation/moratorium or restructuring event"@en .
+
+fibo-fbc-dae-cre:CreditEvent a owl:Class ;
+    rdfs:label "credit event"@en,
+        "信用事件（credit event）"@zh ;
+    rdfs:comment "表明信用状况突然变化的事件，例如破产或违反债券契约、贷款协议，使人对相关方履行当前或未来义务的能力产生怀疑。"@zh ;
+    rdfs:subClassOf fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "event signifying a sudden change in credit standing, such as bankruptcy or a violation of a bond indenture or loan agreement, that raises doubts about the party's ability to meet current or future obligations"@en .
+
+fibo-fbc-dae-cre:EntitySpecificCreditEvent a owl:Class ;
+    rdfs:label "entity-specific credit event"@en,
+        "主体特定信用事件（entity-specific credit event）"@zh ;
+    rdfs:comment "适用于某一特定法律主体的信用事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
+        fibo-fbc-dae-cre:CreditEvent ;
+    skos:definition "credit event that applies to a given legal person"@en .
+
+fibo-fbc-dae-cre:DefaultEvent a owl:Class ;
+    rdfs:label "default event"@en,
+        "违约事件（default event）"@zh ;
+    rdfs:comment "信用事件的一种，表示未能履行合同义务，例如未能偿还贷款或证券的利息或本金等债务。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:BreachOfCovenant ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ],
+        fibo-fbc-dae-cre:ObligationSpecificCreditEvent ;
+    skos:definition "credit event representing a failure to meet a contractual obligation, such as failure to repay a debt including interest or principal on a loan or security"@en ;
+    cmns-av:explanatoryNote "A default can occur when a borrower is unable to make timely payments, misses payments, or avoids or stops making payments, typically with respect to a single transaction. A default has adverse effects on the borrower's credit and ability to borrow in the future, and allows the creditor to demand immediate repayment of the obligation in full."@en .
+
+fibo-fbc-dae-cre:ObligationSpecificCreditEvent a owl:Class ;
+    rdfs:label "obligation-specific credit event"@en,
+        "债务特定信用事件（obligation-specific credit event）"@zh ;
+    rdfs:comment "与某一具体信贷协议或债务工具（参考债务）相关的信用事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fbc-dae-cre:hasDefaultThresholdAmount ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreement ],
+        fibo-fbc-dae-cre:CreditEvent ;
+    skos:definition "credit event that relates to an individual credit agreement or debt instrument (reference obligation)"@en .
+

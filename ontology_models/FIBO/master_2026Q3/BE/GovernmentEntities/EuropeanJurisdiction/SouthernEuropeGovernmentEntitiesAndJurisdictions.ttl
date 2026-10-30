@@ -1,0 +1,428 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-seuj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-be-ge-seuj: a owl:Ontology ;
+    rdfs:label "Southern Europe Government Entities and Jurisdictions Ontology",
+        "南欧政府实体与法域本体（Southern Europe Government Entities and Jurisdictions Ontology）"@zh ;
+    dcterms:abstract "This ontology provides government entities and jurisdictions for countries that are defined as being part of Southern Europe in the U.N. M49 codes, primarily those that are considered independent countries in ISO 3166, or are important from a banking perspective." ;
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录南欧各国（意大利、西班牙、希腊等）的政体、政府与法域个体。"@zh ;
+    owl:imports fibo-be-ge-ge:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga:,
+        lcc-3166-1: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/BE/20200801/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to address hygiene issues with diacritical marks that are language-specific.",
+        "The http://www.omg.org/spec/EDMC-FIBO/BE/20210201/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to replace references to Macedonia with NorthMacedonia from LCC 1.2.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220101/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    skos:scopeNote "The initial version of this ontology reflects the national level only." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+
+fibo-be-ge-seuj:AlbanianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Albanian entity"@en,
+        "Entiteti shqiptar"@sq ;
+    skos:definition "sovereign state and polity that is Albania" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Albania ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheRepublicOfAlbania .
+
+fibo-be-ge-seuj:AndorranEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Entitat andorrana"@ca,
+        "Andorran entity"@en ;
+    skos:definition "sovereign state and polity that is Andorra" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Andorra ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfThePrincipalityOfAndorra .
+
+fibo-be-ge-seuj:BosnianAndHerzegovinianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:FederatedSovereignty ;
+    rdfs:label "Bosanskohercegovački entitet"@bs,
+        "Bosnian and Herzegovinian entity"@en,
+        "Bosanskohercegovački entitet"@hr,
+        "Босанскохерцеговачки ентитет"@sr ;
+    skos:definition "federal sovereignty state and polity that is Bosnia and Herzegovina" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:BosniaAndHerzegovina ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheFederationOfBosniaAndHerzegovina .
+
+fibo-be-ge-seuj:CroatianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Croatian entity"@en,
+        "Hrvatski entitet"@hr ;
+    skos:definition "sovereign state and polity that is Croatia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Croatia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheRepublicOfCroatia .
+
+fibo-be-ge-seuj:GreekEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Ελληνική οντότητα"@el,
+        "Greek entity"@en ;
+    skos:definition "sovereign state and polity that is Greece" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Greece ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheHellenicRepublic .
+
+fibo-be-ge-seuj:HolySeeEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Holy See entity"@en,
+        "Entità della Santa Sede"@it ;
+    skos:definition "sovereign state and polity that is the Holy See" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:HolySee ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheHolySee .
+
+fibo-be-ge-seuj:ItalianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Italian entity"@en,
+        "Ente italiano"@it ;
+    skos:definition "sovereign state and polity that is Italy" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Italy ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheRepublicOfItaly .
+
+fibo-be-ge-seuj:MalteseEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Maltese entity"@en ;
+    skos:definition "sovereign state and polity that is Malta" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Malta ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheRepublicOfMalta .
+
+fibo-be-ge-seuj:MontenegrinEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Montenegrin entity"@en ;
+    skos:definition "sovereign state and polity that is Montenegro" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Montenegro ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfMontenegro .
+
+fibo-be-ge-seuj:NorthMacedonianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "North Macedonian entity"@en,
+        "Северномакедонски субјект"@mk ;
+    skos:definition "sovereign state and polity that is North Macedonia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:NorthMacedonia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheRepublicOfNorthMacedonia .
+
+fibo-be-ge-seuj:PortugueseEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Portuguese entity"@en,
+        "Entidade portuguesa"@pt ;
+    skos:definition "sovereign state and polity that is Portugal" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Portugal ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfThePortugueseRepublic .
+
+fibo-be-ge-seuj:SammarineseEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Sammarinese entity"@en,
+        "Ente sammarinese"@it ;
+    skos:definition "sovereign state and polity that is San Marino" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:SanMarino ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheRepublicOfSanMarino .
+
+fibo-be-ge-seuj:SerbianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Serbian entity"@en,
+        "Српски ентитет"@sr ;
+    skos:definition "sovereign state and polity that is Serbia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Serbia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheRepublicOfSerbia .
+
+fibo-be-ge-seuj:SloveneEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Slovene entity"@en,
+        "Slovenska entiteta"@sl ;
+    skos:definition "sovereign state and polity that is Slovenia" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Slovenia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheRepublicOfSlovenia .
+
+fibo-be-ge-seuj:SpanishEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "Spanish entity"@en,
+        "Entidad española"@es ;
+    skos:definition "sovereign state and polity that is Spain" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Spain ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-seuj:GovernmentOfTheKingdomOfSpain .
+
+fibo-be-ge-seuj:JurisdictionOfAlbania a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Albania"@en,
+        "juridiksioni i Shqipërisë"@sq ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Supreme_Court_of_Albania> ;
+    skos:definition "jurisdiction of the judiciary of Albania, a system of courts that includes the supreme court, constitutional court, appeal court and administrative court, and whose Supreme Court of the Republic of Albania is the highest court and is the final court of appeal" ;
+    cmns-rga:hasReach lcc-3166-1:Albania ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheRepublicOfAlbania .
+
+fibo-be-ge-seuj:JurisdictionOfAndorra a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdicció d’Andorra"@ca,
+        "jurisdiction of Andorra"@en ;
+    skos:definition "jurisdiction of the judiciary of Andorra, composed of the Magistrates Court, the Criminal Law Court, the High Court of Andorra, and the Constitutional Court" ;
+    cmns-rga:hasReach lcc-3166-1:Andorra ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfThePrincipalityOfAndorra .
+
+fibo-be-ge-seuj:JurisdictionOfBosniaAndHerzegovina a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "nadležnost Bosne i Hercegovine"@bs,
+        "jurisdiction of Bosnia and Herzegovina"@en,
+        "nadležnost Bosne i Hercegovine"@hr,
+        "надлежност Босне и Херцеговине"@sr ;
+    rdfs:seeAlso <http://www.mpr.gov.ba/organizacija_nadleznosti/pravosudje/Default.aspx> ;
+    skos:definition "jurisdiction of the judiciary of Bosnia and Herzegovina, whose Constitutional Court of Bosnia and Herzegovina is the supreme, final arbiter of legal matters" ;
+    cmns-rga:hasReach lcc-3166-1:BosniaAndHerzegovina ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheFederationOfBosniaAndHerzegovina .
+
+fibo-be-ge-seuj:JurisdictionOfCroatia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Croatia"@en,
+        "nadležnost Hrvatske"@hr ;
+    rdfs:seeAlso <https://www.usud.hr/> ;
+    skos:definition "jurisdiction of the judiciary of Croatia, a civil law legal system in which law arises primarily from written statutes, influenced by German and Austrian legal systems, whose national courts include the Constitutional Court, which oversees violations of the Constitution, and the Supreme Court, which is the highest court of appeal" ;
+    cmns-rga:hasReach lcc-3166-1:Croatia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheRepublicOfCroatia .
+
+fibo-be-ge-seuj:JurisdictionOfGreece a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "δικαιοδοσία της Ελλάδας"@el,
+        "jurisdiction of Greece"@en ;
+    rdfs:seeAlso <https://www.mfa.gr/missionsabroad/en/about-greece/government-and-politics/judicial-power.html> ;
+    skos:definition "jurisdiction of the judiciary of the Hellenic Republic, whose supreme courts include the Court of Cassation, the Council of State and the Court of Auditors" ;
+    cmns-rga:hasReach lcc-3166-1:Greece ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheHellenicRepublic .
+
+fibo-be-ge-seuj:JurisdictionOfItaly a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Italy"@en,
+        "giurisdizione dell'Italia"@it ;
+    skos:definition "jurisdiction of the judiciary of Italy, a system of courts that is based on Roman law modified by the Napoleonic code and later statutes, comprising the Supreme Court of Cassation, the highest court in Italy for both criminal and civil appeal cases, and the Constitutional Court of Italy (Corte Costituzionale)" ;
+    cmns-rga:hasReach lcc-3166-1:Italy ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheRepublicOfItaly .
+
+fibo-be-ge-seuj:JurisdictionOfMalta a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Malta"@en ;
+    rdfs:seeAlso <https://justice.gov.mt/en/justice/Pages/The-Judiciary-in-Malta.aspx> ;
+    skos:definition "jurisdiction of the judiciary of Malta, which is based partially on English law and partly on Continental law, that interprets and applies the laws of Malta to ensure equal justice under law, and to provide a mechanism for dispute resolution" ;
+    cmns-rga:hasReach lcc-3166-1:Malta ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheRepublicOfMalta .
+
+fibo-be-ge-seuj:JurisdictionOfMontenegro a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Montenegro"@en ;
+    skos:definition "jurisdiction of the judiciary of Montenegro, that interprets and applies the laws of Montenegro, and has been working with the European Union over the last several years to increase judicial independence and accountability" ;
+    cmns-rga:hasReach lcc-3166-1:Montenegro ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfMontenegro .
+
+fibo-be-ge-seuj:JurisdictionOfNorthMacedonia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of North Macedonia"@en,
+        "јурисдикција на Северна Македонија"@mk ;
+    rdfs:seeAlso <https://www.sobranie.mk/the-constitution-of-the-republic-of-macedonia-ns_article-constitution-of-the-republic-of-north-macedonia.nspx> ;
+    skos:definition "jurisdiction of the judiciary of North Macedonia, an independent judicial branch that includes a constitutional court" ;
+    cmns-rga:hasReach lcc-3166-1:NorthMacedonia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheRepublicOfNorthMacedonia .
+
+fibo-be-ge-seuj:JurisdictionOfPortugal a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Portugal"@en,
+        "jurisdição de portugal"@pt ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Judiciary_of_Portugal> ;
+    skos:definition "jurisdiction of the judiciary of Portugal, a system of courts that together constitute one of the four organs of Sovereignty as defined by the Portuguese Constitution" ;
+    cmns-rga:hasReach lcc-3166-1:Portugal ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfThePortugueseRepublic .
+
+fibo-be-ge-seuj:JurisdictionOfSanMarino a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of San Marino"@en,
+        "giurisdizione di San Marino"@it ;
+    skos:definition "jurisdiction of the judiciary of San Marino, including the Council of Twelve, which forms the judicial branch during the period of legislature of the Council" ;
+    cmns-rga:hasReach lcc-3166-1:SanMarino ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheRepublicOfSanMarino .
+
+fibo-be-ge-seuj:JurisdictionOfSerbia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Serbia"@en,
+        "надлежност Србије"@sr ;
+    skos:definition "jurisdiction of the judiciary of Serbia, a three-tiered judicial system that includes the Supreme Court of Cassation as the court of the last resort, Courts of Appeal as the appellate instance, and Basic and High courts as the general jurisdictions at first instance" ;
+    cmns-rga:hasReach lcc-3166-1:Serbia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheRepublicOfSerbia .
+
+fibo-be-ge-seuj:JurisdictionOfSlovenia a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Slovenia"@en,
+        "pristojnost Slovenije"@sl ;
+    rdfs:seeAlso <http://www.sodisce.si/> ;
+    skos:definition "jurisdiction of the judiciary of Slovenia, a system of courts with general responsibilities and specialised courts that deal with matters relating to specific legal areas, including a Constitutional Court at the highest level" ;
+    cmns-rga:hasReach lcc-3166-1:Slovenia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheRepublicOfSlovenia .
+
+fibo-be-ge-seuj:JurisdictionOfSpain a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Spain"@en,
+        "jurisdicción de España"@es ;
+    rdfs:seeAlso <http://www.poderjudicial.es/cgpj/es/Poder_Judicial> ;
+    skos:definition "jurisdiction of judiciary of Spain, a system of courts that includes senior judges - the President and judges of the Constitutional Court (the highest tribunal in the Kingdom) - that interprets and applies the law in Spain" ;
+    cmns-rga:hasReach lcc-3166-1:Spain ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheKingdomOfSpain .
+
+fibo-be-ge-seuj:JurisdictionOfTheHolySee a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Holy See"@en,
+        "giurisdizione della Santa Sede"@it,
+        "ius proprium Sanctae Sedis"@la ;
+    skos:definition "jurisdiction of the Bishop of Rome, known as the pope, which includes the apostolic episcopal see of the Diocese of Rome with universal ecclesiastical jurisdiction of the worldwide Catholic Church, as well as a sovereign entity of international law, governing the Vatican City" ;
+    cmns-rga:hasReach lcc-3166-1:HolySee ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-seuj:GovernmentOfTheHolySee .
+
+fibo-be-ge-seuj:GovernmentOfMontenegro a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of Montenegro"@en ;
+    rdfs:seeAlso <http://www.gov.me/en/homepage/> ;
+    skos:definition "unitary, dominant-party, parliamentary constitutional republic that is located in South and Southeast Europe on the coast of the Balkans" ;
+    cmns-rga:governs lcc-3166-1:Montenegro ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfMontenegro .
+
+fibo-be-ge-seuj:GovernmentOfTheFederationOfBosniaAndHerzegovina a owl:NamedIndividual,
+        fibo-be-ge-ge:FederalGovernment ;
+    rdfs:label "Vlada Federacije Bosne i Hercegovine"@bs,
+        "Government of the Federation of Bosnia and Herzegovina"@en,
+        "Vlada Federacije Bosne i Hercegovine"@hr,
+        "Влада Федерације Босне и Херцеговине"@sr ;
+    rdfs:seeAlso <http://fbihvlada.gov.ba/english/> ;
+    skos:definition "federal parliamentary constitutional republic that is a representative democracy, located in South and Southeast Europe, within the Balkans" ;
+    cmns-rga:governs lcc-3166-1:BosniaAndHerzegovina ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfBosniaAndHerzegovina .
+
+fibo-be-ge-seuj:GovernmentOfTheHellenicRepublic a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Κυβέρνηση της Ελληνικής Δημοκρατίας"@el,
+        "Government of the Hellenic Republic"@en ;
+    rdfs:seeAlso <https://www.mfa.gr/missionsabroad/en/about-greece/government-and-politics/> ;
+    skos:definition "unitary parliamentary republic, located on the Balkan Peninsula in Southeast Europe" ;
+    cmns-rga:governs lcc-3166-1:Greece ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfGreece .
+
+fibo-be-ge-seuj:GovernmentOfTheHolySee a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Holy See"@en,
+        "Governo della Santa Sede"@it,
+        "Imperium in Consiliis Sanctae Sedis"@la ;
+    rdfs:seeAlso <http://www.vatican.va/content/vatican/en.html> ;
+    skos:definition "unitary Christian absolute monarchy (under an ecclesiastical and elective theocracy), headquartered in, operates from, and exercises 'exclusive dominion' over the independent Vatican City State enclave in Rome, of which the pope is sovereign, administered by the Roman Curia" ;
+    cmns-av:synonym "Government of the See of Rome" ;
+    cmns-rga:governs lcc-3166-1:HolySee ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfTheHolySee .
+
+fibo-be-ge-seuj:GovernmentOfTheKingdomOfSpain a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Kingdom of Spain"@en,
+        "Gobierno del Reino de España"@es ;
+    rdfs:seeAlso <https://www.lamoncloa.gob.es/lang/en/Paginas/index.aspx> ;
+    skos:definition "unitary parliamentary constitutional monarchy, whose monarch is the head of state and prime minister is the head of government, located in Southwestern Europe with some pockets of territory across the Strait of Gibraltar and the Atlantic Ocean" ;
+    cmns-rga:governs lcc-3166-1:Spain ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfSpain .
+
+fibo-be-ge-seuj:GovernmentOfThePortugueseRepublic a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Portuguese Republic"@en,
+        "Governo da República Portuguesa"@pt ;
+    rdfs:seeAlso <https://www.portugal.gov.pt/en/gc21> ;
+    skos:definition "unitary, semi-presidential, constitutional, representative democratic republic, located mostly on the Iberian Peninsula, in southwestern Europe" ;
+    cmns-rga:governs lcc-3166-1:Portugal ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfPortugal .
+
+fibo-be-ge-seuj:GovernmentOfThePrincipalityOfAndorra a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Govern del Principat d’Andorra"@ca,
+        "Government of the Principality of Andorra"@en ;
+    rdfs:seeAlso <https://www.govern.ad/> ;
+    skos:definition "unitary parliamentary semi-elective diarchy, a sovereign landlocked microstate on the Iberian Peninsula, in the eastern Pyrenees, bordered by France to the north and Spain to the south" ;
+    cmns-rga:governs lcc-3166-1:Andorra ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfAndorra .
+
+fibo-be-ge-seuj:GovernmentOfTheRepublicOfAlbania a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Albania"@en,
+        "Qeveria e Republikës së Shqipërisë"@sq ;
+    rdfs:seeAlso <http://parlament.al/> ;
+    skos:definition "unitary parliamentary constitutional republic, located in Southeast Europe on the Adriatic and Ionian Sea within the Mediterranean Sea" ;
+    cmns-rga:governs lcc-3166-1:Albania ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfAlbania .
+
+fibo-be-ge-seuj:GovernmentOfTheRepublicOfCroatia a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Croatia"@en,
+        "Vlada Republike Hrvatske"@hr ;
+    rdfs:seeAlso <https://vlada.gov.hr/> ;
+    skos:definition "unitary parliamentary constitutional republic, located in Southeast Europe, bordering Slovenia to the northwest, Hungary to the northeast, Serbia to the east, Bosnia and Herzegovina, and Montenegro to the southeast, sharing a maritime border with Italy" ;
+    cmns-rga:governs lcc-3166-1:Croatia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfCroatia .
+
+fibo-be-ge-seuj:GovernmentOfTheRepublicOfItaly a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Italy"@en,
+        "Governo della Repubblica Italiana"@it ;
+    rdfs:seeAlso <http://www.governo.it/> ;
+    skos:definition "unitary parliamentary, constitutional, democratic republic, consisting of a peninsula bordering the Alps and surrounded by several islands, located in south-central Europe" ;
+    cmns-rga:governs lcc-3166-1:Italy ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfItaly .
+
+fibo-be-ge-seuj:GovernmentOfTheRepublicOfMalta a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Malta"@en ;
+    rdfs:seeAlso <https://www.gov.mt/> ;
+    skos:definition "unitary parliamentary constitutional republic modelled on the Westminster system that is a Southern European island country consisting of an archipelago in the Mediterranean Sea" ;
+    cmns-rga:governs lcc-3166-1:Malta ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfMalta .
+
+fibo-be-ge-seuj:GovernmentOfTheRepublicOfNorthMacedonia a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of North Macedonia"@en,
+        "Влада на Република Северна Македонија"@mk ;
+    rdfs:seeAlso <https://vlada.mk/> ;
+    skos:definition "unitary parliamentary, constitutional, democratic republic, located in the Balkan Peninsula in Southeast Europe" ;
+    cmns-rga:governs lcc-3166-1:NorthMacedonia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfNorthMacedonia .
+
+fibo-be-ge-seuj:GovernmentOfTheRepublicOfSanMarino a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of San Marino"@en,
+        "Governo della Repubblica di San Marino"@it ;
+    rdfs:seeAlso <http://www.sanmarino.sm/on-line/en/home.html> ;
+    skos:definition "unitary parliamentary, diarchic, directorial republic that is a microstate in Southern Europe, completely surrounded by Italy, located on the northeastern side of the Apennine Mountains" ;
+    cmns-rga:governs lcc-3166-1:SanMarino ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfSanMarino .
+
+fibo-be-ge-seuj:GovernmentOfTheRepublicOfSerbia a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Serbia"@en,
+        "Влада Републике Србије"@sr ;
+    rdfs:seeAlso <https://www.srbija.gov.rs/> ;
+    skos:definition "unitary, dominant-party, parliamentary constitutional republic that is situated at the crossroads of Central and Southeast Europe in the southern Pannonian Plain and the central Balkans" ;
+    cmns-rga:governs lcc-3166-1:Serbia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfSerbia .
+
+fibo-be-ge-seuj:GovernmentOfTheRepublicOfSlovenia a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the Republic of Slovenia"@en,
+        "Vlada Republike Slovenije"@sl ;
+    rdfs:seeAlso <https://www.gov.si/> ;
+    skos:definition "unitary, parliamentary constitutional republic bordered by Italy to the west, Austria to the north, Hungary to the northeast, Croatia to the southeast, and the Adriatic Sea to the southwest" ;
+    cmns-rga:governs lcc-3166-1:Slovenia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-seuj:JurisdictionOfSlovenia .
+

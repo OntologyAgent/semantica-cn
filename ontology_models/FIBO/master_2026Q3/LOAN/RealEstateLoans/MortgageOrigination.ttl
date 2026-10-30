@@ -1,0 +1,457 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-dae-gty: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Guaranty/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-plc-rp: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/RealProperty/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-loan-reln-mtg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/> .
+@prefix fibo-loan-reln-org: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MortgageOrigination/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-plc-rp:RealProperty a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-loan-reln-org:hasNumberOfDwellingUnits ;
+            owl:someValuesFrom xsd:positiveInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-reln-org:hasNumberOfAffordableDwellingUnits ;
+            owl:someValuesFrom xsd:positiveInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-reln-org:DwellingCapacity ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-reln-org:ManufacturedHomeLegalClassification ] .
+
+fibo-loan-reln-org:AmortizationType-adjustableRate a owl:NamedIndividual,
+        fibo-loan-reln-org:AmortizationType ;
+    rdfs:label "adjustable rate" ;
+    skos:definition "a loan that allows the lender to periodically adjust the interest rate in accordance with a specified index" ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-org:AmortizationType-fixedRate a owl:NamedIndividual,
+        fibo-loan-reln-org:AmortizationType ;
+    rdfs:label "fixed rate" ;
+    skos:definition "a loan in which the interest rate and payments remain the same for the life of the loan" ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-org:AmortizationType-graduatedPayment a owl:NamedIndividual,
+        fibo-loan-reln-org:AmortizationType ;
+    rdfs:label "graduated payment" ;
+    skos:definition "a flexible payment loan where the payments increase for a specified period of time and then level off" ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." ;
+    cmns-av:explanatoryNote "Usually involves negative amortization." .
+
+fibo-loan-reln-org:AmortizationType-graduatedPaymentAdjustable a owl:NamedIndividual,
+        fibo-loan-reln-org:AmortizationType ;
+    rdfs:label "graduated payment adjustable" ;
+    skos:definition "a loan for which there are periodic payments/rate changes with additional specified principal and interest changes as documented in the Security Instruments." ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-org:AmortizationType-growingEquity a owl:NamedIndividual,
+        fibo-loan-reln-org:AmortizationType ;
+    rdfs:label "growing equity" ;
+    skos:definition "A graduated payment loan in which increases in a borrowers loan payments are used to accelerate reduction of principal on the mortgage" ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." ;
+    cmns-av:explanatoryNote "Due to increased payment, the borrower acquires equity more rapidly and retires the debt earlier." .
+
+fibo-loan-reln-org:AmortizationType-rateImprovement a owl:NamedIndividual,
+        fibo-loan-reln-org:AmortizationType ;
+    rdfs:label "rate improvement" ;
+    skos:definition "a type of flexible loan where the interest rate may decrease based on payment history." ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-org:AmortizationType-step a owl:NamedIndividual,
+        fibo-loan-reln-org:AmortizationType ;
+    rdfs:label "step" ;
+    skos:definition "a loan with fixed periodic payment/rate changes without subsidy or negative amortization." ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-org:AutomatedUnderwritingSystem-DesktopUnderwriter a owl:NamedIndividual,
+        fibo-loan-reln-org:AutomatedUnderwritingSystem ;
+    rdfs:label "Desktop Underwriter" ;
+    skos:definition "an automated underwriting software system produced by Fannie Mae" .
+
+fibo-loan-reln-org:AutomatedUnderwritingSystem-FHAScorecard a owl:NamedIndividual,
+        fibo-loan-reln-org:AutomatedUnderwritingSystem ;
+    rdfs:label "FHA Scorecard" ;
+    skos:definition "an automated underwriting software system produced by Federal Housing Administration (FHA)" .
+
+fibo-loan-reln-org:AutomatedUnderwritingSystem-GuaranteedUnderwritingSystem a owl:NamedIndividual,
+        fibo-loan-reln-org:AutomatedUnderwritingSystem ;
+    rdfs:label "Guaranteed Underwriting System" ;
+    skos:definition "an automated underwriting software system used by the USDA rural development loan program" ;
+    cmns-av:synonym "GUS" .
+
+fibo-loan-reln-org:AutomatedUnderwritingSystem-LoanProspector a owl:NamedIndividual,
+        fibo-loan-reln-org:AutomatedUnderwritingSystem ;
+    rdfs:label "Loan Prospector" ;
+    skos:definition "an automated underwriting software system produced by Freddie Mac" .
+
+fibo-loan-reln-org:CashOutStatus-CashOut a owl:NamedIndividual,
+        owl:Thing,
+        fibo-loan-reln-org:CashOutStatus ;
+    rdfs:label "cashout" ;
+    skos:definition "the mortgage is refinanced for more than is owed and the borrower pockets the difference." .
+
+fibo-loan-reln-org:CashOutStatus-LimitedCashOut a owl:NamedIndividual,
+        owl:Thing,
+        fibo-loan-reln-org:CashOutStatus ;
+    rdfs:label "limited cashout" ;
+    skos:definition "a cashout mortgage where the amount is limited by the lenger. 80% loan to value ratio is a common limit." .
+
+fibo-loan-reln-org:CashOutStatus-NoCashOut a owl:NamedIndividual,
+        owl:Thing,
+        fibo-loan-reln-org:CashOutStatus ;
+    rdfs:label "no cashout" ;
+    skos:definition "The mortgage is refinanced for less than or equal to what is owed." .
+
+fibo-loan-reln-org:ChargeCategory-appraisalFee a owl:NamedIndividual,
+        fibo-loan-reln-org:ChargeCategory ;
+    rdfs:label "appraisal fee" ;
+    skos:definition "a charge for an appraisal" .
+
+fibo-loan-reln-org:ChargeCategory-discountPoints a owl:NamedIndividual,
+        fibo-loan-reln-org:ChargeCategory ;
+    rdfs:label "discount points" ;
+    skos:definition "a charge for lowering your interest rate" ;
+    cmns-av:adaptedFrom "https://www.consumerfinance.gov/askcfpb/136/what-are-discount-points-and-lender-credits-and-how-do-they-work.html" .
+
+fibo-loan-reln-org:ChargeCategory-lenderCredits a owl:NamedIndividual,
+        fibo-loan-reln-org:ChargeCategory ;
+    rdfs:label "lender credits" ;
+    skos:definition "a credit whereby the lender reduces closing costs in exchange for a higher interest rate." ;
+    cmns-av:adaptedFrom "https://www.consumerfinance.gov/askcfpb/136/what-are-discount-points-and-lender-credits-and-how-do-they-work.html" ;
+    cmns-av:usageNote "This needs to be treated as a negative charge." .
+
+fibo-loan-reln-org:ChargeCategory-originationFee a owl:NamedIndividual,
+        fibo-loan-reln-org:ChargeCategory ;
+    rdfs:label "origination fee" ;
+    skos:definition "a charge for an origination" .
+
+fibo-loan-reln-org:ChargeCategory-principal a owl:NamedIndividual,
+        fibo-loan-reln-org:ChargeCategory ;
+    rdfs:label "principal" ;
+    skos:definition "the principal of the loan that is owed" .
+
+fibo-loan-reln-org:DwellingCapacity-multiFamily a owl:NamedIndividual,
+        fibo-loan-reln-org:DwellingCapacity ;
+    rdfs:label "multi-family" ;
+    skos:definition "5 or more units" .
+
+fibo-loan-reln-org:DwellingCapacity-singleFamily a owl:NamedIndividual,
+        owl:Thing,
+        fibo-loan-reln-org:DwellingCapacity ;
+    rdfs:label "single family" ;
+    skos:definition "1-4 units" .
+
+fibo-loan-reln-org:GovernmentSponsoredLoan a owl:Class ;
+    rdfs:label "government-sponsored loan"@en,
+        "政府支持贷款（government-sponsored loan）"@zh ;
+    rdfs:comment "由政府支持机构发起或担保的贷款。"@zh ;
+    rdfs:subClassOf fibo-loan-reln-mtg:LoanSecuredByRealEstate .
+
+fibo-loan-reln-org:ManufacturedHomeLegalClassification-personalProperty a owl:NamedIndividual,
+        fibo-loan-reln-org:ManufacturedHomeLegalClassification ;
+    rdfs:label "personal property" ;
+    skos:definition "the covered loan is secured by a manufactured home but not land" ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-org:ManufacturedHomeLegalClassification-realProperty a owl:NamedIndividual,
+        fibo-loan-reln-org:ManufacturedHomeLegalClassification ;
+    rdfs:label "real property" ;
+    skos:definition "the covered loan is secured by a manufactured home and land" ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-org:MortgageLoanPurpose-BusinessOrCommercial a owl:NamedIndividual,
+        fibo-loan-reln-org:MortgageLoanPurpose ;
+    rdfs:label "business or commercial" .
+
+fibo-loan-reln-org:MortgageLoanPurpose-DwellingConstruction a owl:NamedIndividual,
+        fibo-loan-reln-org:MortgageLoanPurpose ;
+    rdfs:label "dwelling construction" .
+
+fibo-loan-reln-org:MortgageLoanPurpose-HomeImprovement a owl:NamedIndividual,
+        fibo-loan-reln-org:MortgageLoanPurpose ;
+    rdfs:label "home improvement" .
+
+fibo-loan-reln-org:MortgageLoanPurpose-LoanRefinancing a owl:NamedIndividual,
+        fibo-loan-reln-org:MortgageLoanPurpose ;
+    rdfs:label "loan refinancing" .
+
+fibo-loan-reln-org:MortgageLoanPurpose-MortgageModification a owl:NamedIndividual,
+        fibo-loan-reln-org:MortgageLoanPurpose ;
+    rdfs:label "mortgage modification" .
+
+fibo-loan-reln-org:MortgageLoanPurpose-RealPropertyPurchase a owl:NamedIndividual,
+        fibo-loan-reln-org:MortgageLoanPurpose ;
+    rdfs:label "real property purchase" .
+
+fibo-loan-reln-org:PropertyUsage-investment a owl:NamedIndividual,
+        fibo-loan-reln-org:PropertyUsage ;
+    rdfs:label "investment" ;
+    skos:definition "a home owned for the purpose of generating income" .
+
+fibo-loan-reln-org:PropertyUsage-primaryResidence a owl:NamedIndividual,
+        fibo-loan-reln-org:PropertyUsage ;
+    rdfs:label "primary residence" ;
+    skos:definition "residence that the owner physically occupies and uses as his or her principal residence" .
+
+fibo-loan-reln-org:PropertyUsage-secondHome a owl:NamedIndividual,
+        owl:Thing,
+        fibo-loan-reln-org:PropertyUsage ;
+    rdfs:label "second home" ;
+    skos:definition "a property occupied by the owner for a portion of the year that is not the primary residence" .
+
+fibo-loan-reln-org:isLienOn a owl:ObjectProperty ;
+    rdfs:label "is lien on",
+        "是……的留置权（is lien on）"@zh ;
+    rdfs:comment "标识留置权所针对的财产。"@zh .
+
+fibo-loan-reln-org: a owl:Ontology ;
+    rdfs:label "Mortgage Origination Ontology"@en,
+        "抵押贷款发放本体（Mortgage Origination Ontology）"@zh ;
+    dcterms:abstract "This ontology covers a range of mortgage origination concepts, primarily in the form of controlled vocabularies that can be used to categorize aspects of a given mortgage loan." ;
+    dcterms:license """Copyright (c) 2016-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义抵押贷款的发起与发放流程。"@zh ;
+    owl:imports fibo-be-le-lei:,
+        fibo-be-le-lp:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-dae-gty:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-asmt:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-plc-rp:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-loan-ln-ln:,
+        fibo-loan-reln-mtg:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-id:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI fibo-loan-reln-org: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2016-2025 Object Management Group, Inc.",
+        "Copyright (c) 2016-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-loan-reln-org:AutomatedSystem a owl:Class ;
+    rdfs:label "automated system",
+        "自动化系统（automated system）"@zh ;
+    rdfs:comment "减少或消除人工参与即可完成任务的系统。"@zh ;
+    rdfs:subClassOf cmns-col:Arrangement ;
+    skos:definition "system that reduces or eliminates the need for human involvement in order to complete a task" ;
+    cmns-av:adaptedFrom "https://www.reference.com/technology/automated-system-c85583d0f17a632" .
+
+fibo-loan-reln-org:MortgageIndemnityGuarantee a owl:Class ;
+    rdfs:label "mortgage indemnity guarantee"@en,
+        "抵押赔偿担保（mortgage indemnity guarantee）"@zh ;
+    rdfs:comment "在抵押贷款还款因故中断（如借款人死亡或失业）时保护贷款人的保险型担保。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ;
+            owl:someValuesFrom fibo-loan-reln-org:MortgageIndemnityInsurancePolicy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-gty:isGuaranteedBy ;
+            owl:someValuesFrom fibo-loan-reln-org:MortgageIndemnityGuarantor ],
+        fibo-fbc-dae-gty:InsuranceBackedGuaranty ;
+    skos:definition "insurance-backed guarantee that protects lenders if the mortgage repayments cease for some reason, perhaps due to death or a homeowner being made redundant at work"@en ;
+    skos:editorialNote "See notes from SME Review and in MIG Provider. Applies to securitized pool, insures the lender. Additional note (IBM): there is a further application of this. When a lender takes a loan which is a where the value of the loan is greater than 80% of the value of the property, at that point it is required for the lender to also get a private mortgage insurance, so they are paying separately for the mortgage insurance so that if the borrower defaults above 80% then the mortgage insurance pays the loss. In the Loan Party Insurer (new \"Party\" type) you have Loan Party Insured Ratio (e.g. the 80% in the example above). These are different situations but the same principle. So this needs to be modeled for both. 30 June: Is this Lender or Borrower? since you have one lender and one borrower in a single loan, but multiple lenders in the case of packaging this up for a security - there are then multiple lenders and multiple borrowers. A similar kind of insurance exists in the one lender one borrower scenario i.e. the mortgage loan itself. There are two concepts here. the MIG thing was for bundling these. the MIG might apply across multiple contracts, but still be a fact about \"the\" contract? The notes about 80% above (IBM) are about the individual loan. ACTION: Tidy this up."@en .
+
+fibo-loan-reln-org:MortgageIndemnityInsurancePolicy a owl:Class ;
+    rdfs:label "mortgage indemnity insurance policy"@en,
+        "抵押赔偿保险单（mortgage indemnity insurance policy）"@zh ;
+    rdfs:comment "提供抵押赔偿担保的保险单。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
+            owl:someValuesFrom fibo-loan-reln-org:MortgageIndemnityGuarantee ],
+        fibo-fbc-dae-gty:InsurancePolicy ;
+    skos:definition "insurance policy providing the mortgage indemnity guarantee"@en .
+
+fibo-loan-reln-org:assumes a owl:ObjectProperty ;
+    rdfs:label "assumes",
+        "承接（assumes）"@zh ;
+    rdfs:comment "将新抵押贷款合同关联到先前就同一物业向不同借款人发放的旧合同；新合同通过法律行为设立。"@zh ;
+    skos:definition "relates a new mortgage loan contract to a previous one made to a different borrower for the same property. The new contract is created via a legally binding process where the new borrower assumes the terms of the previous loan contract" .
+
+fibo-loan-reln-org:hasNumberOfAffordableDwellingUnits a owl:DatatypeProperty ;
+    rdfs:label "has number of affordable dwelling units",
+        "具有可负担住宅单元数（has number of affordable dwelling units）"@zh ;
+    rdfs:comment "将房地产关联到其中按联邦、州或地方可负担住房计划设有收入限制的住宅单元数。"@zh ;
+    rdfs:subPropertyOf fibo-loan-reln-org:hasNumberOfDwellingUnits ;
+    skos:definition "relates real estate to the number of dwelling units it contains that are income-restricted under Federal, State, or local affordable housing programs." ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-org:hasOriginatingServiceProvider a owl:ObjectProperty ;
+    rdfs:label "has originating service provider",
+        "具有发起服务提供商（has originating service provider）"@zh ;
+    rdfs:comment "将某事物（通常为贷款合同）关联到负责发起该贷款的服务提供商。"@zh ;
+    rdfs:range [ a owl:Class ;
+            owl:intersectionOf ( fibo-fbc-pas-fpas:FinancialServiceProvider [ a owl:Class ;
+                        owl:unionOf ( fibo-fnd-agr-ctr:ContractParty fibo-fnd-agr-ctr:ContractThirdParty ) ] ) ] ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "relates something, typically a loan contract, to the service provider responsible for originated the loan" ;
+    cmns-av:explanatoryNote "Typically this will be a bank, mortgage broker, investment bank, or other similar party." .
+
+fibo-loan-reln-org:hasOriginatorPerson a owl:ObjectProperty ;
+    rdfs:label "has originator person",
+        "具有发起人（has originator person）"@zh ;
+    rdfs:comment "将某事物（通常为贷款）关联到最初发起或创建它的人。"@zh ;
+    rdfs:range fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+    rdfs:subPropertyOf cmns-pts:hasParty ;
+    skos:definition "relates something, typically a loan, to a person that initially originates or creates it" .
+
+fibo-loan-reln-org:MortgageIndemnityGuarantor a owl:Class ;
+    rdfs:label "mortgage indemnity guarantor"@en,
+        "抵押赔偿担保人（mortgage indemnity guarantor）"@zh ;
+    rdfs:comment "以抵押赔偿担保（MIG）形式提供抵押保险的担保人兼保险人。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-gty:Guarantor,
+        fibo-fbc-dae-gty:Insurer ;
+    skos:definition "guarantor and insurer that provides mortgage insurance in the form of a mortgage indemnity guarantee (MIG)"@en ;
+    cmns-av:explanatoryNote "SME Review notes 16 Sept: Guaranty - mortgage insurance e.g. insure up to 80% exposure. When you get into indemnification, then for instance if the product doesn't meet the investor's requirement such that if it doesn't get paid then the lender steps in and takes the hit for the loan - this is usually a precondition for securitizing (issuing) the loan in a pool. If the loan is not going to be sold on the secondary market there would be no need to indemnify that loan so this term would not apply. Indemnification is insurance for the investor, while the lender is the one providing that indemnification."@en .
+
+fibo-loan-reln-org:NMLSR-ID a owl:Class ;
+    rdfs:label "Nationwide Mortgage Licensing System and Registry Identifier",
+        "全国抵押贷款许可系统与登记处标识符（Nationwide Mortgage Licensing System and Registry Identifier）"@zh ;
+    rdfs:comment "NMLS 为每个维持登记的公司、分支和个人永久分配的编号。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:LicenseIdentifier ;
+    skos:definition "the number permanently assigned by the Nationwide Mortgage Licensing System and Registry (NMLS) for each company, branch, and individual that maintains a single account on NMLS." ;
+    cmns-av:abbreviation "NMLSR ID" ;
+    cmns-av:adaptedFrom "http://mortgage.nationwidelicensingsystem.org/about/Pages/NMLSID.aspx" .
+
+fibo-loan-reln-org:hasNumberOfDwellingUnits a owl:DatatypeProperty ;
+    rdfs:label "has number of dwelling units",
+        "具有住宅单元数（has number of dwelling units）"@zh ;
+    rdfs:comment "将房地产关联到其所含的住宅单元数。"@zh ;
+    rdfs:subPropertyOf fibo-fnd-dt-fd:hasCount ;
+    skos:definition "relates real estate to the number of dwelling units it contains" ;
+    cmns-av:adaptedFrom "the 2015 Revised HMDA regulation." .
+
+fibo-loan-reln-mtg:LoanSecuredByRealEstate a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-loan-reln-org:hasOriginatorPerson ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( fibo-be-le-lp:LegallyCompetentNaturalPerson [ a owl:Restriction ;
+                                owl:onProperty cmns-id:isIdentifiedBy ;
+                                owl:someValuesFrom fibo-loan-reln-org:NMLSR-ID ] ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-reln-org:hasOriginatingServiceProvider ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( fibo-fbc-pas-fpas:FinancialServiceProvider [ a owl:Restriction ;
+                                owl:onProperty cmns-id:isIdentifiedBy ;
+                                owl:someValuesFrom fibo-loan-reln-org:NMLSR-ID ] ) ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:Servicer ;
+            owl:onProperty fibo-loan-ln-ln:isServicedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-reln-org:MortgageIndemnityGuarantor ;
+            owl:onProperty fibo-fbc-dae-gty:hasGuarantor ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-reln-mtg:LoanSecuredByRealEstate ;
+            owl:onProperty fibo-loan-reln-org:assumes ] .
+
+fibo-loan-reln-org:CashOutStatus a owl:Class ;
+    rdfs:label "cash-out status",
+        "提现状态（cash-out status）"@zh ;
+    rdfs:comment "表明在以新贷款为现有贷款再融资的发放中向借款人释放资金之程度的分类符。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier indicating the extent to which funds are released to the borrower on a new loan origination that refinances an existing loan" ;
+    cmns-av:explanatoryNote "This is subject to lender and/or investor policy(s)." .
+
+fibo-loan-reln-org:DwellingCapacity a owl:Class ;
+    rdfs:label "dwelling capacity",
+        "住宅容量（dwelling capacity）"@zh ;
+    rdfs:comment "表明某物业拥有多少住宅单元的分类符。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier indicating how many dwellings some property has" .
+
+fibo-loan-reln-org:ManufacturedHomeLegalClassification a owl:Class ;
+    rdfs:label "manufactured home legal classification",
+        "活动房屋法律分类（manufactured home legal classification）"@zh ;
+    rdfs:comment "表明覆盖贷款仅以活动房屋作担保、还是连同土地一起作担保的类别。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "category indicating whether the covered loan is secured by a manufactured home only or with land as well" ;
+    cmns-av:adaptedFrom "2015 Revised HMDA regulation" .
+
+fibo-loan-reln-org:PropertyUsage a owl:Class ;
+    rdfs:label "property usage",
+        "物业用途（property usage）"@zh ;
+    rdfs:comment "表明借款人拟如何使用该物业的类别。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "a category indicating the manner in which the borrower intends to utilize the property" .
+
+fibo-loan-reln-org:AutomatedUnderwritingSystem a owl:Class ;
+    rdfs:label "automated underwriting system",
+        "自动核保系统（automated underwriting system）"@zh ;
+    rdfs:comment "收集批准贷款申请所需信息、支持抵押贷款人对新申请进行分析的软件系统。"@zh ;
+    rdfs:subClassOf fibo-loan-reln-org:AutomatedSystem ;
+    skos:definition "software system that collects the information necessary to approve a loan application and supports a mortgage lender's analysis of a new loan application" ;
+    cmns-av:explanatoryNote "In the United States, automated underwriting systems review the applicant's credit history and ability to repay the loan, and determine whether the price the applicant is offering to pay is supported by the property value." .
+
+fibo-loan-reln-org:ChargeCategory a owl:Class ;
+    rdfs:label "charge category",
+        "收费类别（charge category）"@zh ;
+    rdfs:comment "收费类别，如结清费用、利息、税项及其他服务相关费用。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "Examples include closing costs, interest, taxes, and other service-related fees.",
+        "classifier indicating what a particular fee or other expense is for" ;
+    cmns-av:usageNote "Use with LineItem, (has ChargeCategory instance), (hasNumericalValue for number of units) and (hasCost for the amount of money)" .
+
+fibo-loan-reln-org:MortgageLoanPurpose a owl:Class ;
+    rdfs:label "mortgage loan purpose",
+        "抵押贷款用途（mortgage loan purpose）"@zh ;
+    rdfs:comment "抵押贷款资金的用途，如购置不动产、住宅建设或贷款再融资。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "the purpose for which mortgage loan proceeds will be used, such as real property purchase, dwelling construction, or loan refinancing" .
+
+fibo-loan-reln-org:AmortizationType a owl:Class ;
+    rdfs:label "amortization type",
+        "摊销类型（amortization type）"@zh ;
+    rdfs:comment "摊销算法的分类符。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier of amortization algorithms" .
+

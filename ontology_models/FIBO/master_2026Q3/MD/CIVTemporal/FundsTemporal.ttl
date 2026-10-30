@@ -1,0 +1,229 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-civx-fun: <https://spec.edmcouncil.org/fibo/ontology/MD/CIVTemporal/FundsTemporal/> .
+@prefix fibo-sec-fund-civ: <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/CollectiveInvestmentVehicles/> .
+@prefix fibo-sec-fund-fund: <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/Funds/> .
+@prefix fibo-sec-sec-pls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-civx-fun:AccruedFees a owl:Class ;
+    rdfs:label "accrued fees"@en,
+        "应计费用（accrued fees）"@zh ;
+    rdfs:comment "已发生但尚未支付的费用。"@zh .
+
+fibo-md-civx-fun:AccruedIncome a owl:Class ;
+    rdfs:label "accrued income"@en,
+        "应计收益（accrued income）"@zh ;
+    rdfs:comment "已赚取但尚未收到的收益。"@zh .
+
+fibo-md-civx-fun:AccruedTaxes a owl:Class ;
+    rdfs:label "accrued taxes"@en,
+        "应计税款（accrued taxes）"@zh ;
+    rdfs:comment "已发生但尚未缴纳的税款。"@zh .
+
+fibo-md-civx-fun:AnnualizedPerformanceDeterminationMethod a owl:Class ;
+    rdfs:label "annualized performance determination method"@en,
+        "年化绩效确定方法（annualized performance determination method）"@zh ;
+    rdfs:comment "以年化方式确定绩效的方法。"@zh ;
+    rdfs:subClassOf fibo-md-civx-fun:PerformanceDeterminationMethod ;
+    skos:definition "Annualized performance determination."@en .
+
+fibo-md-civx-fun:GrossOfFeePerformanceDeterminationMethod a owl:Class ;
+    rdfs:label "gross of fee performance determination method"@en,
+        "费前绩效确定方法（gross of fee performance determination method）"@zh ;
+    rdfs:comment "在扣除费用之前确定绩效的方法。"@zh ;
+    rdfs:subClassOf fibo-md-civx-fun:PerformanceDeterminationMethod ;
+    skos:definition "Performance determined gross of fee. Review: Is this mutually exclusive with the other listed method? It sounds like it is not."@en .
+
+fibo-md-civx-fun:MoneyWeightedRateOfReturnPerformanceDeterminationMethod a owl:Class ;
+    rdfs:label "money weighted rate of return performance determination method"@en,
+        "资金加权收益率绩效确定方法（money weighted rate of return performance determination method）"@zh ;
+    rdfs:comment "以资金加权收益率确定绩效的方法。"@zh ;
+    rdfs:subClassOf fibo-md-civx-fun:PerformanceDeterminationMethod ;
+    skos:definition "Money weighted rate of return."@en .
+
+fibo-md-civx-fun:SigmaValueOfHoldings a owl:Class ;
+    rdfs:label "sigma value of holdings"@en,
+        "持仓西格玛值（sigma value of holdings）"@zh ;
+    rdfs:comment "持仓的标准差值。"@zh .
+
+fibo-md-civx-fun:Swing a owl:Class ;
+    rdfs:label "swing"@en,
+        "摆动（swing）"@zh ;
+    rdfs:comment "基金单位价格因大额申购或赎回而进行的摆动调整。"@zh .
+
+fibo-md-civx-fun:SwingPrice a owl:Class ;
+    rdfs:label "swing price"@en,
+        "摆动价格（swing price）"@zh ;
+    rdfs:comment "经摆动调整后的基金单位价格。"@zh ;
+    rdfs:subClassOf fibo-md-civx-fun:FundPrice .
+
+fibo-md-civx-fun:TimeWeightedRateOfReturnPerformanceDeterminationMethod a owl:Class ;
+    rdfs:label "time weighted rate of return performance determination method"@en,
+        "时间加权收益率绩效确定方法（time weighted rate of return performance determination method）"@zh ;
+    rdfs:comment "以时间加权收益率确定绩效的方法。"@zh ;
+    rdfs:subClassOf fibo-md-civx-fun:PerformanceDeterminationMethod ;
+    skos:definition "Time weighted rate of return."@en .
+
+fibo-md-civx-fun:determinationDate.1 a owl:ObjectProperty ;
+    rdfs:label "determination date"@en,
+        "确定日期（determination date）"@zh ;
+    rdfs:comment "绩效确定的日期。"@zh ;
+    rdfs:domain fibo-md-civx-fun:FundUnitPerformance ;
+    rdfs:range cmns-dt:Date .
+
+fibo-md-civx-fun:determinationPeriod a owl:ObjectProperty ;
+    rdfs:label "determination period"@en,
+        "确定期间（determination period）"@zh ;
+    rdfs:comment "绩效所确定的期间。"@zh ;
+    rdfs:domain fibo-md-civx-fun:FundUnitPerformance ;
+    rdfs:range cmns-dt:DatePeriod ;
+    skos:definition "THe period for which the performance is determined"@en .
+
+fibo-md-civx-fun:determines a owl:ObjectProperty ;
+    rdfs:label "determines"@en,
+        "确定（determines）"@zh ;
+    rdfs:comment "对某事物进行确定。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-md-civx-fun:FeePayable .
+
+fibo-md-civx-fun:hasPerformance a owl:ObjectProperty ;
+    rdfs:label "has performance"@en,
+        "具有绩效（has performance）"@zh ;
+    rdfs:comment "标识某事物的绩效。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundUnit ;
+    rdfs:range fibo-md-civx-fun:FundUnitPerformance .
+
+fibo-md-civx-fun:hasPerformanceDeterminationMethod a owl:ObjectProperty ;
+    rdfs:label "has performance determination method"@en,
+        "具有绩效确定方法（has performance determination method）"@zh ;
+    rdfs:comment "标识绩效确定所用的方法。"@zh ;
+    rdfs:domain fibo-sec-sec-pls:CollectiveInvestmentVehicle ;
+    rdfs:range fibo-md-civx-fun:PerformanceDeterminationMethod .
+
+fibo-md-civx-fun:incurs a owl:ObjectProperty ;
+    rdfs:label "incurs"@en,
+        "发生（incurs）"@zh ;
+    rdfs:comment "发生某项费用或税项。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolio ;
+    rdfs:range fibo-md-civx-fun:FundsTax .
+
+fibo-md-civx-fun:incursFees a owl:ObjectProperty ;
+    rdfs:label "incurs fees"@en,
+        "发生费用（incurs fees）"@zh ;
+    rdfs:comment "发生费用。"@zh ;
+    rdfs:domain fibo-be-oac-opty:Investor ;
+    rdfs:range fibo-md-civx-fun:FeePayable .
+
+fibo-md-civx-fun:incursFees.1 a owl:ObjectProperty ;
+    rdfs:label "incurs fees"@en,
+        "发生费用（incurs fees）"@zh ;
+    rdfs:comment "发生费用。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundUnit ;
+    rdfs:range fibo-md-civx-fun:FeePayable .
+
+fibo-md-civx-fun:incursTax a owl:ObjectProperty ;
+    rdfs:label "incurs tax"@en,
+        "发生税项（incurs tax）"@zh ;
+    rdfs:comment "发生税项。"@zh ;
+    rdfs:domain fibo-be-oac-opty:Investor ;
+    rdfs:range fibo-md-civx-fun:FundsTax .
+
+fibo-md-civx-fun:incursTax.1 a owl:ObjectProperty ;
+    rdfs:label "incurs tax"@en,
+        "发生税项（incurs tax）"@zh ;
+    rdfs:comment "发生税项。"@zh ;
+    rdfs:domain fibo-sec-fund-fund:FundUnit ;
+    rdfs:range fibo-md-civx-fun:FundsTax .
+
+fibo-md-civx-fun:incursTransactionFee a owl:ObjectProperty ;
+    rdfs:label "incurs transaction fee"@en,
+        "发生交易费用（incurs transaction fee）"@zh ;
+    rdfs:comment "发生交易费用。"@zh ;
+    rdfs:domain fibo-sec-fund-civ:FundPortfolio ;
+    rdfs:range fibo-md-civx-fun:FeePayable .
+
+fibo-md-civx-fun:netOrGrossOfFees a owl:DatatypeProperty ;
+    rdfs:label "net or gross of fees"@en,
+        "费后或费前（net or gross of fees）"@zh ;
+    rdfs:comment "表明绩效是扣除费用后（费后）还是扣除费用前（费前）。"@zh ;
+    rdfs:domain fibo-md-civx-fun:FundUnitPerformance ;
+    rdfs:range xsd:string .
+
+fibo-md-civx-fun:performanceDeterminationTimeframe a owl:ObjectProperty ;
+    rdfs:label "performance determination timeframe"@en,
+        "绩效确定时间框架（performance determination timeframe）"@zh ;
+    rdfs:comment "绩效报告所基于的时间框架（如 1 个月、1 年、年初至今）。"@zh ;
+    rdfs:domain fibo-md-civx-fun:PerformanceDeterminationMethod ;
+    rdfs:range cmns-dt:DatePeriod ;
+    skos:definition "The timeframe on which the performance is reported (e.g. 1month, 1 year, YTD)."@en .
+
+fibo-md-civx-fun: a owl:Ontology ;
+    rdfs:label "FundsTemporal"@en,
+        "基金时序本体（Funds Temporal Ontology）"@zh ;
+    dcterms:abstract "Terms which have a time component (either real time, intra-day or dated terms). These include Net Present Value (NPV) and related analytics." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义基金净值等随时间变化的市场数据的时间序列表示。"@zh ;
+    owl:imports fibo-be-oac-opty:,
+        fibo-fbc-fi-ip:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-utl-av:,
+        fibo-sec-fund-civ:,
+        fibo-sec-fund-fund:,
+        fibo-sec-sec-pls:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-dt: ;
+    owl:versionIRI fibo-md-civx-fun: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc." .
+
+fibo-md-civx-fun:FundPrice a owl:Class ;
+    rdfs:label "fund price"@en,
+        "基金价格（fund price）"@zh ;
+    rdfs:comment "基金单位的价格。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-ip:SecurityPrice .
+
+fibo-md-civx-fun:FundsTax a owl:Class ;
+    rdfs:label "funds tax"@en,
+        "基金税（funds tax）"@zh ;
+    rdfs:comment "与基金相关的税项。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-be-oac-opty:Investor ] .
+
+fibo-md-civx-fun:FeePayable a owl:Class ;
+    rdfs:label "fee payable"@en,
+        "应付费用（fee payable）"@zh ;
+    rdfs:comment "应支付的费用。"@zh .
+
+fibo-md-civx-fun:FundUnitPerformance a owl:Class ;
+    rdfs:label "fund unit performance"@en,
+        "基金单位绩效（fund unit performance）"@zh ;
+    rdfs:comment "基金单位在一定时期内的绩效表现。"@zh .
+
+fibo-md-civx-fun:PerformanceDeterminationMethod a owl:Class ;
+    rdfs:label "performance determination method"@en,
+        "绩效确定方法（performance determination method）"@zh ;
+    rdfs:comment "确定绩效的方法（如时间加权、资金加权、年化、费前），连同确定绩效的时间框架。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Method ;
+    skos:definition "A method for performance determination (e.g. Time weighted and money weighted, annualized, gross of fee) along with the time frame in which this is determined. PLUS Performances NamePeriod"@en .
+

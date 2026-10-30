@@ -1,0 +1,284 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-eeuj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-euj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-neuj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-seuj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-ukj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-wasj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/AsianJurisdiction/WesternAsiaGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-weuj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-ge-euj: a owl:Ontology ;
+    rdfs:label "European Government Entities and Jurisdictions Ontology",
+        "欧盟政府实体与法域本体（EU Government Entities and Jurisdictions Ontology）"@zh ;
+    dcterms:abstract "This ontology provides the set of basic European Union specific government level entities and jurisdictions." ;
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录欧盟层面的政体、机构与法域个体（欧盟本身及其超国家机构）。"@zh ;
+    owl:imports fibo-be-ge-wasj:,
+        fibo-be-ge-eeuj:,
+        fibo-be-ge-neuj:,
+        fibo-be-ge-seuj:,
+        fibo-be-ge-ukj:,
+        fibo-be-ge-weuj:,
+        fibo-be-ge-ge:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        lcc-3166-1: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20251101/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to remove the UK from coverage by the EU jurisdiction and replace references to the Czech Republic with Czechia.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190101/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to remove the unnecessary imports.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220201/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to add EU entities and jurisdictions needed for various initiatives (BE-262)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+
+fibo-be-ge-euj:CouncilOfEurope a owl:NamedIndividual,
+        fibo-be-ge-ge:SupranationalEntity ;
+    rdfs:label "Council of Europe" ;
+    skos:definition "supranational entity founded in the wake of World War II to uphold human rights, democracy and the rule of law in Europe" ;
+    cmns-av:directSource <https://www.coe.int/en/web/portal/home> ;
+    cmns-av:explanatoryNote "Founded in 1949, it has 46 member states, with a population of approximately 675 million; it operates with an annual budget of approximately 500 million euros." ;
+    cmns-col:hasMember fibo-be-ge-wasj:SovereignStateOfGeorgia,
+        fibo-be-ge-wasj:StateOfArmenia,
+        fibo-be-ge-wasj:StateOfAzerbaijan,
+        fibo-be-ge-wasj:StateOfCyprus,
+        fibo-be-ge-wasj:StateOfTurkey,
+        fibo-be-ge-eeuj:BulgarianEntity,
+        fibo-be-ge-eeuj:CzechEntity,
+        fibo-be-ge-eeuj:HungarianEntity,
+        fibo-be-ge-eeuj:MoldovanEntity,
+        fibo-be-ge-eeuj:PolishEntity,
+        fibo-be-ge-eeuj:RomanianEntity,
+        fibo-be-ge-eeuj:SlovakEntity,
+        fibo-be-ge-eeuj:UkranianEntity,
+        fibo-be-ge-neuj:DanishEntity,
+        fibo-be-ge-neuj:EstonianEntity,
+        fibo-be-ge-neuj:FinnishEntity,
+        fibo-be-ge-neuj:IcelandicEntity,
+        fibo-be-ge-neuj:IrishEntity,
+        fibo-be-ge-neuj:LatvianEntity,
+        fibo-be-ge-neuj:LithuanianEntity,
+        fibo-be-ge-neuj:NorwegianEntity,
+        fibo-be-ge-neuj:SwedishEntity,
+        fibo-be-ge-seuj:AlbanianEntity,
+        fibo-be-ge-seuj:AndorranEntity,
+        fibo-be-ge-seuj:BosnianAndHerzegovinianEntity,
+        fibo-be-ge-seuj:CroatianEntity,
+        fibo-be-ge-seuj:GreekEntity,
+        fibo-be-ge-seuj:ItalianEntity,
+        fibo-be-ge-seuj:MalteseEntity,
+        fibo-be-ge-seuj:MontenegrinEntity,
+        fibo-be-ge-seuj:NorthMacedonianEntity,
+        fibo-be-ge-seuj:PortugueseEntity,
+        fibo-be-ge-seuj:SammarineseEntity,
+        fibo-be-ge-seuj:SerbianEntity,
+        fibo-be-ge-seuj:SloveneEntity,
+        fibo-be-ge-seuj:SpanishEntity,
+        fibo-be-ge-ukj:UnitedKingdomEntity,
+        fibo-be-ge-weuj:AustrianEntity,
+        fibo-be-ge-weuj:BelgianEntity,
+        fibo-be-ge-weuj:FrenchEntity,
+        fibo-be-ge-weuj:GermanEntity,
+        fibo-be-ge-weuj:LiechtensteinerEntity,
+        fibo-be-ge-weuj:LuxembourgerEntity,
+        fibo-be-ge-weuj:MonegasqueEntity,
+        fibo-be-ge-weuj:NetherlandsEntity,
+        fibo-be-ge-weuj:SwissEntity .
+
+fibo-be-ge-euj:EuropeanCommissionAsRegulatoryAgency a owl:NamedIndividual,
+        cmns-rga:RegulatoryAgency ;
+    rdfs:label "European Commission as regulatory agency" ;
+    skos:definition "European Commission in its role as a regulator with shared jurisdiction over the European Union" ;
+    cmns-rga:hasJurisdiction fibo-be-ge-euj:EuropeanUnionJurisdiction ;
+    cmns-rlcmp:isPlayedBy fibo-be-ge-euj:EuropeanCommission .
+
+fibo-be-ge-euj:EuropeanEconomicArea a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "European Economic Area jurisdiction" ;
+    dcterms:source "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:European_Economic_Area_(EEA)"^^xsd:anyURI ;
+    skos:definition "jurisdiction that consists of the member states of the European Union (EU) and three countries of the European Free Trade Association (EFTA) (Iceland, Liechtenstein and Norway; excluding Switzerland)" ;
+    cmns-av:abbreviation "EEA" ;
+    cmns-av:explanatoryNote "The Agreement on the EEA entered into force on 1 January 1994. It seeks to strengthen trade and economic relations between the contracting parties and is principally concerned with the four fundamental pillars of the internal market, namely: the free movement of goods, people, services and capital. The availability of comparable statistical data is considered as relevant to the four freedoms and is therefore included in the agreement." ;
+    cmns-rga:hasReach lcc-3166-1:Austria,
+        lcc-3166-1:Belgium,
+        lcc-3166-1:Bulgaria,
+        lcc-3166-1:Croatia,
+        lcc-3166-1:Cyprus,
+        lcc-3166-1:Czechia,
+        lcc-3166-1:Denmark,
+        lcc-3166-1:Estonia,
+        lcc-3166-1:Finland,
+        lcc-3166-1:France,
+        lcc-3166-1:Germany,
+        lcc-3166-1:Greece,
+        lcc-3166-1:Hungary,
+        lcc-3166-1:Iceland,
+        lcc-3166-1:Ireland,
+        lcc-3166-1:Italy,
+        lcc-3166-1:Latvia,
+        lcc-3166-1:Liechtenstein,
+        lcc-3166-1:Lithuania,
+        lcc-3166-1:Luxembourg,
+        lcc-3166-1:Malta,
+        lcc-3166-1:Netherlands,
+        lcc-3166-1:Norway,
+        lcc-3166-1:Poland,
+        lcc-3166-1:Portugal,
+        lcc-3166-1:Romania,
+        lcc-3166-1:Slovakia,
+        lcc-3166-1:Slovenia,
+        lcc-3166-1:Spain,
+        lcc-3166-1:Sweden .
+
+fibo-be-ge-euj:EuropeanFreeTradeAssociation a owl:NamedIndividual,
+        fibo-be-ge-ge:SupranationalEntity ;
+    rdfs:label "European Free Trade Association" ;
+    skos:definition "intergovernmental organization of Iceland, Liechtenstein, Norway and Switzerland set up for the promotion of free trade and economic cooperation between its members, within Europe, and globally" ;
+    skos:note "EFTA was established in 1960 by its then seven Member States for the promotion of free trade and economic integration between its members. The four EFTA States are competitive in several sectors vital to the global economy and score among the highest in the world in competitiveness, wealth creation per inhabitant, life expectancy and quality of life." ;
+    cmns-av:abbreviation "EFTA" ;
+    cmns-av:adaptedFrom "https://www.efta.int/about-efta"^^xsd:anyURI ;
+    cmns-col:hasMember fibo-be-ge-neuj:IcelandicEntity,
+        fibo-be-ge-neuj:NorwegianEntity,
+        fibo-be-ge-weuj:LiechtensteinerEntity,
+        fibo-be-ge-weuj:SwissEntity .
+
+fibo-be-ge-euj:EuropeanUnionEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SupranationalEntity ;
+    rdfs:label "European Union entity" ;
+    rdfs:seeAlso <https://europa.eu/european-union/about-eu/countries_en> ;
+    skos:definition "individual representing the federated sovereignty and polity that is the European Union" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-1:Austria,
+        lcc-3166-1:Belgium,
+        lcc-3166-1:Bulgaria,
+        lcc-3166-1:Croatia,
+        lcc-3166-1:Cyprus,
+        lcc-3166-1:Czechia,
+        lcc-3166-1:Denmark,
+        lcc-3166-1:Estonia,
+        lcc-3166-1:Finland,
+        lcc-3166-1:France,
+        lcc-3166-1:Germany,
+        lcc-3166-1:Greece,
+        lcc-3166-1:Hungary,
+        lcc-3166-1:Ireland,
+        lcc-3166-1:Italy,
+        lcc-3166-1:Latvia,
+        lcc-3166-1:Lithuania,
+        lcc-3166-1:Luxembourg,
+        lcc-3166-1:Malta,
+        lcc-3166-1:Netherlands,
+        lcc-3166-1:Poland,
+        lcc-3166-1:Portugal,
+        lcc-3166-1:Romania,
+        lcc-3166-1:Slovakia,
+        lcc-3166-1:Slovenia,
+        lcc-3166-1:Spain,
+        lcc-3166-1:Sweden ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-euj:GovernmentOfTheEuropeanUnion .
+
+fibo-be-ge-euj:EuropeanCommission a owl:NamedIndividual,
+        fibo-be-ge-ge:SupranationalEntity ;
+    rdfs:label "European Commission" ;
+    skos:definition "supranational entity that helps to shape the EU's overall strategy, proposes new EU laws and policies, monitors their implementation and manages the EU budget" ;
+    skos:note "The European Commission also plays a significant role in supporting international development and delivering aid." ;
+    cmns-av:abbreviation "EC" ;
+    cmns-av:directSource <https://ec.europa.eu/info/about-european-commission> .
+
+fibo-be-ge-euj:EuropeanUnionJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "European Union jurisdiction" ;
+    skos:definition "individual representing the overall jurisdiction for the European Union, namely, that of the Court of Justice of the EU and Court of Auditors of the EU" ;
+    cmns-av:adaptedFrom "https://europa.eu/european-union/about-eu/countries_en"^^xsd:anyURI ;
+    cmns-rga:hasReach lcc-3166-1:Austria,
+        lcc-3166-1:Belgium,
+        lcc-3166-1:Bulgaria,
+        lcc-3166-1:Croatia,
+        lcc-3166-1:Cyprus,
+        lcc-3166-1:Czechia,
+        lcc-3166-1:Denmark,
+        lcc-3166-1:Estonia,
+        lcc-3166-1:Finland,
+        lcc-3166-1:France,
+        lcc-3166-1:Germany,
+        lcc-3166-1:Greece,
+        lcc-3166-1:Hungary,
+        lcc-3166-1:Ireland,
+        lcc-3166-1:Italy,
+        lcc-3166-1:Latvia,
+        lcc-3166-1:Lithuania,
+        lcc-3166-1:Luxembourg,
+        lcc-3166-1:Malta,
+        lcc-3166-1:Netherlands,
+        lcc-3166-1:Poland,
+        lcc-3166-1:Portugal,
+        lcc-3166-1:Romania,
+        lcc-3166-1:Slovakia,
+        lcc-3166-1:Slovenia,
+        lcc-3166-1:Spain,
+        lcc-3166-1:Sweden ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-euj:GovernmentOfTheEuropeanUnion .
+
+fibo-be-ge-euj:GovernmentOfTheEuropeanUnion a owl:NamedIndividual,
+        fibo-be-ge-ge:Government ;
+    rdfs:label "Government of the European Union" ;
+    skos:definition "individual representing the parliament, council, and other institutions that comprise the government of the European Union" ;
+    cmns-av:adaptedFrom "https://europa.eu/european-union/about-eu/countries_en"^^xsd:anyURI ;
+    cmns-av:explanatoryNote """In the EU's unique institutional set-up:
+- the EU's broad priorities are set by the European Council, which brings together national and EU-level leaders directly elected MEPs represent European citizens in the European Parliament
+- the interests of the EU as a whole are promoted by the European Commission, whose members are appointed by national governments
+- governments defend their own country's national interests in the Council of the European Union.""" ;
+    cmns-rga:governs lcc-3166-1:Austria,
+        lcc-3166-1:Belgium,
+        lcc-3166-1:Bulgaria,
+        lcc-3166-1:Croatia,
+        lcc-3166-1:Cyprus,
+        lcc-3166-1:Czechia,
+        lcc-3166-1:Denmark,
+        lcc-3166-1:Estonia,
+        lcc-3166-1:Finland,
+        lcc-3166-1:France,
+        lcc-3166-1:Germany,
+        lcc-3166-1:Greece,
+        lcc-3166-1:Hungary,
+        lcc-3166-1:Ireland,
+        lcc-3166-1:Italy,
+        lcc-3166-1:Latvia,
+        lcc-3166-1:Lithuania,
+        lcc-3166-1:Luxembourg,
+        lcc-3166-1:Malta,
+        lcc-3166-1:Netherlands,
+        lcc-3166-1:Poland,
+        lcc-3166-1:Portugal,
+        lcc-3166-1:Romania,
+        lcc-3166-1:Slovakia,
+        lcc-3166-1:Slovenia,
+        lcc-3166-1:Spain,
+        lcc-3166-1:Sweden ;
+    cmns-rga:hasJurisdiction fibo-be-ge-euj:EuropeanUnionJurisdiction .
+

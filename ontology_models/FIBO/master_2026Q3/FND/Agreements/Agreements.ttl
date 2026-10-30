@@ -1,0 +1,180 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-agr-agr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-agr-agr: a owl:Ontology ;
+    rdfs:label "Agreements Ontology",
+        "协议本体（Agreements Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the concept of an agreement and roles that parties to an agreement play in the context of financial agreements. Agreements represent an understanding between parties, whereas contracts typically formalize such agreements." ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义协议概念以及参与方在协议中所扮演角色的本体。"@zh ;
+    owl:imports fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20260601/Agreements/Agreements/> ;
+    skos:changeNote """The http://www.omg.org/spec/FIBO/Foundations/20130601/Agreements/Agreements.owl version of the ontology was revised in advance of the September 2013 New Brunswick, NJ meeting, as follows:
+   (1) to use slash style URI/IRIss (also called 303 URIs, vs. hash style) as required to support server side processing 
+   (2) to use version-independent IRIs for all definitions internally as opposed to version-specific IRIs
+   (3) to change the file suffix from .owl to .rdf to increase usability in RDF tools
+   (4) to use 4-level abbreviations and corresponding namespace prefixes for all FIBO ontologies, reflecting a family/specification/module/ontology structure
+   (5) to incorporate changes to the specification metadata to support documentation at the family, specification, module, and ontology level, similar to the abbreviations.
+   (6) to revise a few of the definitions based on more formal sources.""",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20130801/Agreements/Agreement.rdf version of the ontology was modified per the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Agreements/Agreement.rdf version of the ontology was modified per the issue resolutions identified in the FIBO FND 1.1 RTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.1/AboutFND-1.1/.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20160201/Agreements/Agreement.rdf version of the ontology was modified per FIBO 2.0 RFC to add general concepts including obligor, obligee, and beneficiary in support of other FIBO domain areas.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Agreements/Agreement.rdf version of the ontology was modified to eliminate duplication of concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200301/Agreements/Agreement.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, clean up definitions to conform with ISO 704, add a missing restriction to mutual commitment, and eliminate an unnecessary reference to LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Agreements/Agreement.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240101/Agreements/Agreement.rdf version of the ontology was modified to add bilateral and multilateral agreement definitions (DER-55), and to eliminate certain constructs that are redundant and will never be materialized to reduce the number of nodes required for various contract-related searches, such as 'mutual agreement' (FND-391).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250501/Agreements/Agreement.rdf version of this ontology was modified to eliminate deprecated constructs that have been deprecated for more than a year (FND-407)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group, Inc.",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fnd-agr-agr:Beneficiary a owl:Class ;
+    rdfs:label "beneficiary",
+        "受益方（beneficiary）"@zh ;
+    rdfs:comment "从某事物中获得某种利益、好处或收益的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                    owl:onClass fibo-fnd-agr-agr:Agreement ;
+                    owl:onProperty cmns-pts:isAPartyTo ] ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that receives some benefit or advantage or profits from something" .
+
+fibo-fnd-agr-agr:CommitmentAtLarge a owl:Class ;
+    rdfs:label "commitment at large",
+        "公开承诺（commitment at large）"@zh ;
+    rdfs:comment "某参与方作出、且潜在受益方未直接参与的承诺；可转让证券等的基础。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-agr:UnilateralCommitment ;
+    skos:definition "commitment made by some party without direct involvement from the potential beneficiaries of that commitment" ;
+    skos:scopeNote "A commitment at large forms the basis for negotiable securities including transferable contracts and potentially other kinds of agreements such as software licenses." .
+
+fibo-fnd-agr-agr:MultilateralAgreement a owl:Class ;
+    rdfs:label "multilateral agreement"@en,
+        "多边协议（multilateral agreement）"@zh ;
+    rdfs:comment "涉及多个参与方的协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:PartyRole ;
+            owl:onProperty cmns-pts:hasPartyRole ],
+        fibo-fnd-agr-agr:Agreement ;
+    owl:disjointWith fibo-fnd-agr-agr:BilateralAgreement ;
+    skos:definition "agreements that involve or include multiple parties" ;
+    cmns-av:explanatoryNote "Multilateral agreements are characterized by the participation and commitment of multiple countries or parties to achieve a common objective or address a shared issue." .
+
+fibo-fnd-agr-agr:Obligee a owl:Class ;
+    rdfs:label "obligee",
+        "权利人（obligee）"@zh ;
+    rdfs:comment "根据法律或协议条款享有某项承诺或义务的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                    owl:onClass fibo-fnd-agr-agr:Agreement ;
+                    owl:onProperty cmns-pts:isAPartyTo ] ],
+        cmns-pts:PartyRole ;
+    skos:definition "party to whom some commitment or obligation is owed, either legally or per the terms of an agreement" .
+
+fibo-fnd-agr-agr:BilateralAgreement a owl:Class ;
+    rdfs:label "bilateral agreement"@en,
+        "双边协议（bilateral agreement）"@zh ;
+    rdfs:comment "两方承诺相互履行特定义务或责任的协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-pts:PartyRole ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
+        fibo-fnd-agr-agr:Agreement ;
+    skos:definition "agreement where two parties commit to perform specific actions or obligations towards each other" ;
+    cmns-av:synonym "mutual agreement"@en .
+
+fibo-fnd-agr-agr:UnilateralCommitment a owl:Class ;
+    rdfs:label "unilateral commitment",
+        "单方面承诺（unilateral commitment）"@zh ;
+    rdfs:comment "由一方作出、无需另一方作出对等承诺的承诺或义务。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-agr:Commitment ;
+    skos:definition "commitment (promise or obligation) made by one party without requiring a reciprocal promise from another party" ;
+    skos:example "Unilateral commitments include some promotional offers, contests, and rewards, where the offering party sets conditions without requiring upfront agreement from others." .
+
+fibo-fnd-agr-agr:hasObligation a owl:ObjectProperty ;
+    rdfs:label "has obligation",
+        "具有义务（has obligation）"@zh ;
+    rdfs:comment "标识某参与方已承担的某项义务。"@zh ;
+    rdfs:domain fibo-fnd-agr-agr:Obligor ;
+    owl:inverseOf fibo-fnd-agr-agr:isObligationOf ;
+    skos:definition "identifies a duty or obligation that a given party has taken on" .
+
+fibo-fnd-agr-agr:isObligationOf a owl:ObjectProperty ;
+    rdfs:label "is obligation of",
+        "属于义务人（is obligation of）"@zh ;
+    rdfs:comment "标识承担某项义务的参与方。"@zh ;
+    rdfs:range fibo-fnd-agr-agr:Obligor ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "identifies a party that has a given obligation" .
+
+fibo-fnd-agr-agr:Obligor a owl:Class ;
+    rdfs:label "obligor",
+        "义务人（obligor）"@zh ;
+    rdfs:comment "根据法律或协议有义务偿还债务、付款、做某事或不做某事的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                    owl:onClass fibo-fnd-agr-agr:Agreement ;
+                    owl:onProperty cmns-pts:isAPartyTo ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-agr:hasObligation ;
+            owl:someValuesFrom fibo-fnd-agr-agr:Commitment ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that is bound legally or by agreement to repay a debt, make a payment, do something, or refrain from doing something" ;
+    cmns-av:synonym "obligated party",
+        "obligator" .
+
+fibo-fnd-agr-agr:Commitment a owl:Class ;
+    rdfs:label "commitment"@en,
+        "承诺（commitment）"@zh ;
+    rdfs:comment "某参与方作出的以某种方式行事或不行事的承诺。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom cmns-pts:PartyRole ],
+        cmns-pts:Situation ;
+    skos:definition "promise made by some party to act or refrain from acting in some manner" ;
+    cmns-av:explanatoryNote "Such a promise often results a corresponding right or obligation with respect to another party to the commitment. Thus, obligations and rights are considered as reciprocal aspects of a commitment." .
+
+fibo-fnd-agr-agr:Agreement a owl:Class ;
+    rdfs:label "agreement"@en,
+        "协议（agreement）"@zh ;
+    rdfs:comment "两个或多个参与方之间经协商达成的理解，体现各方作出的承诺及其接受。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:PartyRole ;
+            owl:onProperty cmns-pts:hasPartyRole ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-agr:Commitment ;
+            owl:onProperty fibo-fnd-rel-rel:confers ],
+        cmns-pts:Situation ;
+    skos:definition "negotiated understanding between two or more parties, reflecting the offer and acceptance of commitments on the part of either party" ;
+    cmns-av:explanatoryNote "All agreements are time bound, whether implicit or explicitly stated, and thus an agreement reflects a state of affairs that holds for some period of time." .
+

@@ -1,0 +1,85 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-plc-rp: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/RealProperty/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-loan-reln-cnst: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/ConstructionLoans/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-reln-cnst:hasMaximumAllowedBalance a owl:ObjectProperty ;
+    rdfs:label "has maximum allowed balance"@en,
+        "具有最高允许余额（has maximum allowed balance）"@zh ;
+    rdfs:comment "对具有灵活再提取安排的贷款，任何时点允许未偿的最高余额（低于信用额度）。"@zh ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( fibo-loan-reln-cnst:ConstructionLoan fibo-fbc-dae-dbt:SubFacility ) ] ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fbc-dae-dbt:hasAvailableAmount ;
+    skos:definition "maximum balance that may be outstanding at any time, below the credit limit, for loans with flexible re-draw facilities"@en .
+
+fibo-loan-reln-cnst:hasMaximumAnticipatedBalance a owl:ObjectProperty ;
+    rdfs:label "has maximum anticipated balance"@en,
+        "具有最高预期余额（has maximum anticipated balance）"@zh ;
+    rdfs:comment "借款人出于规划目的预计可能需要的最高余额（低于信用额度）。"@zh ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( fibo-loan-reln-cnst:ConstructionLoan fibo-fbc-dae-dbt:SubFacility ) ] ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fbc-dae-dbt:hasAvailableAmount ;
+    skos:definition "maximum balance the borrower believes they might need, below the credit limit, for planning purposes, for loans with flexible re-draw facilities"@en .
+
+fibo-loan-reln-cnst:hasMilestoneMaximumDrawdownAmount a owl:ObjectProperty ;
+    rdfs:label "has milestone maximum drawdown amount"@en,
+        "具有里程碑最高提取额（has milestone maximum drawdown amount）"@zh ;
+    rdfs:comment "里程碑完成后借款人可提取的最高贷款金额。"@zh ;
+    rdfs:domain fibo-fnd-agr-ctr:ContractMilestone ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fbc-dae-dbt:hasAvailableAmount ;
+    skos:definition "maximum amount of the loan that can be drawn by the borrower on completion of the milestone"@en .
+
+fibo-loan-reln-cnst: a owl:Ontology ;
+    rdfs:label "Construction Loans Ontology"@en,
+        "建筑贷款本体（Construction Loans Ontology）"@zh ;
+    dcterms:abstract "Construction loans are credit facilities with separate draw-downs (which may be specified through sub-facilities for large projects) allowed given evidence of completion, or substantial completion, of agreed milestones of the construction project." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义用于房地产建设、按工程进度阶段性放款的建筑贷款。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fbc-pas-caa:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-plc-rp:,
+        fibo-fnd-utl-av:,
+        fibo-loan-ln-ln:,
+        cmns-av:,
+        cmns-cls: ;
+    owl:versionIRI fibo-loan-reln-cnst: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2016-2024 EDM Council, Inc.",
+        "Copyright (c) 2016-2024 Object Management Group, Inc." .
+
+fibo-loan-reln-cnst:ConstructionLoan a owl:Class ;
+    rdfs:label "construction loan"@en,
+        "建设贷款（construction loan）"@zh ;
+    rdfs:comment "覆盖建设与开发成本、以所融资房产之抵押作担保的贷款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
+            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-rp:RealProperty ;
+            owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ],
+        fibo-fbc-dae-dbt:CreditFacility,
+        fibo-fnd-agr-ctr:MasterAgreement,
+        fibo-loan-ln-ln:CollateralizedLoan ;
+    skos:definition "loan covering construction and development costs, secured by a mortgage on the property financed"@en ;
+    cmns-av:explanatoryNote "A construction loan credit facility tranche (sub-facility) is a portion of a construction loan that is released in stages, or tranches, to fund specific phases of a construction project. Each tranche (committed sub-facility) is released once the borrower reaches a certain milestone, such as pouring concrete or completing the foundation. The borrower typically only pays interest on the amount that has been released at any given time."@en,
+        "The Project Management Institute (PMI) breaks down most construction projects into five phases, which are initiation, planning, execution, monitoring and control, and closeout. Construction loans also typically include milestones at which a portion of the total facility is advanced to the borrower given proof of completion or meeting other requirements with respect to the work."@en .
+

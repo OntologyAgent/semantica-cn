@@ -1,0 +1,65 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-loan-all: <https://spec.edmcouncil.org/fibo/ontology/LOAN/AllLOAN/> .
+@prefix fibo-loan-ln-app: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanApplications/> .
+@prefix fibo-loan-ln-ev: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanEvents/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-loan-ln-mod: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/MetadataLOANLoansGeneral/> .
+@prefix fibo-loan-mod: <https://spec.edmcouncil.org/fibo/ontology/LOAN/MetadataLOAN/> .
+@prefix fibo-loan-reln-cnst: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/ConstructionLoans/> .
+@prefix fibo-loan-reln-hmda: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/HomeMortgageDisclosureActCoveredMortgages/> .
+@prefix fibo-loan-reln-mtg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/> .
+@prefix fibo-loan-reln-org: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MortgageOrigination/> .
+@prefix fibo-loan-spc-cns: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/> .
+@prefix fibo-loan-spc-com: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/> .
+@prefix fibo-loan-spc-crd: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/> .
+@prefix fibo-loan-spc-grn: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/> .
+@prefix fibo-loan-spc-mar: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/MarineFinance/> .
+@prefix fibo-loan-spc-prod: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/LoanProducts/> .
+@prefix fibo-loan-spc-stu: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-all: a owl:Ontology ;
+    rdfs:label "Loans (LOAN) Domain",
+        "LOAN 域总入口（All LOAN）"@zh ;
+    dcterms:contributor "Adaptive, Inc.",
+        "FIUTUR",
+        "Federated Knowledge LLC",
+        "Hypercube Ltd.",
+        "John F. Gemski",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "ProBanker Simulations, LLC",
+        "Semantic Arts, Inc.",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo",
+        "agnos.ai U.K. Ltd" ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2024-11-11T18:00:00"^^xsd:dateTime ;
+    dcterms:title "Financial Industry Business Ontology (FIBO) Loans (LOAN) Domain" ;
+    rdfs:comment "聚合贷款（Loans，LOAN）域的全部生产本体：贷款通用概念、贷款申请与事件、各类具体贷款（商业、消费、学生、绿色、船舶、抵押贷款等），一次导入即获得 LOAN 域完整模型。"@zh ;
+    owl:imports <https://spec.edmcouncil.org/fibo/ontology/FBC/AllFBC/>,
+        fibo-loan-ln-app:,
+        fibo-loan-ln-ev:,
+        fibo-loan-ln-ln:,
+        fibo-loan-ln-mod:,
+        fibo-loan-spc-crd:,
+        fibo-loan-spc-com:,
+        fibo-loan-spc-cns:,
+        fibo-loan-spc-grn:,
+        fibo-loan-spc-prod:,
+        fibo-loan-spc-mar:,
+        fibo-loan-spc-stu:,
+        fibo-loan-mod:,
+        fibo-loan-reln-cnst:,
+        fibo-loan-reln-hmda:,
+        fibo-loan-reln-org:,
+        fibo-loan-reln-mtg: ;
+    owl:versionIRI fibo-loan-all: ;
+    cmns-av:copyright "Copyright (c) 2015-2024 EDM Council, Inc.",
+        "Copyright (c) 2015-2024 Object Management Group, Inc." ;
+    cmns-av:explanatoryNote "The 'all' ontology for LOAN is provided for convenience for FIBO users. This ontology does not add new assertions, but imports most of the Production (Released) ontologies that comprise the FIBO Foundations (FND), Business Entities (BE), Financial Business and Commerce (FBC), and Loans (LOAN) domains, excluding individuals for governments and jurisdictions, financial services, regulatory organizations and related registries, and reference individuals, as well as the LCC region-specific ontologies." .
+

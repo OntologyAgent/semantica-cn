@@ -1,0 +1,57 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-exmp-le-mod: <https://spec.edmcouncil.org/fibo/ontology/EXMP/LegalEntities/MetadataEXMPLegalEntities/> .
+@prefix fibo-exmp-mod: <https://spec.edmcouncil.org/fibo/ontology/EXMP/MetadataEXMP/> .
+@prefix fibo-exmp-sec-mod: <https://spec.edmcouncil.org/fibo/ontology/EXMP/Securities/MetadataEXMPSecurities/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-exmp-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the FIBO Examples Module",
+        "EXMP 域元数据（Metadata for the EXMP Domain）"@zh ;
+    dcterms:abstract "This module contains example individuals of various kinds, representing common concepts that FIBO users might find helpful with respect to implementation strategies. Some of these examples have been part of FIBO for a number of releases, but scattered across domain areas. Our goal through consolidation of the examples is to provide increasing coverage and support for our users." ;
+    dcterms:issued "2026-06-02T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2026 EDM Association dba EDM Council, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-06-02T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明示例（Examples，EXMP）域由两个模块构成：法律实体示例、证券示例。该域内容仅用于演示与测试，不属于生产模型。"@zh ;
+    owl:imports fibo-exmp-le-mod:,
+        fibo-exmp-sec-mod:,
+        fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/EXMP/20260601/MetadataEXMP/> ;
+    cmns-av:copyright "Copyright (c) 2026 EDM Association dba EDM Council, Inc." .
+
+fibo-exmp-mod:ExamplesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "examples module" ;
+    dcterms:abstract "This module contains example individuals of various kinds, representing common concepts that FIBO users might find helpful with respect to implementation strategies. Some of these examples have been part of FIBO for a number of releases, but scattered across domain areas. Our goal through consolidation of the examples is to provide increasing coverage and support for our users." ;
+    dcterms:hasPart fibo-exmp-le-mod:ExampleLegalEntitiesModule,
+        fibo-exmp-sec-mod:ExampleSecuritiesModule ;
+    dcterms:issued "2026-06-02T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2026 EDM Association dba EDM Council, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-06-02T18:00:00"^^xsd:dateTime ;
+    dcterms:title "FIBO Examples Module",
+        "Financial Industry Business Ontology (FIBO) Examples Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    skos:altLabel "Examples (EXMP)" ;
+    cmns-av:copyright "Copyright (c) 2026 EDM Association dba EDM Council, Inc." .
+

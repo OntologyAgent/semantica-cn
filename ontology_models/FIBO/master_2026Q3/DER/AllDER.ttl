@@ -1,0 +1,86 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-all: <https://spec.edmcouncil.org/fibo/ontology/DER/AllDER/> .
+@prefix fibo-der-cr-cds: <https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/CreditDefaultSwaps/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-comm: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/> .
+@prefix fibo-der-drc-cur: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CurrencyContracts/> .
+@prefix fibo-der-drc-exo: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/ExoticOptions/> .
+@prefix fibo-der-drc-ff: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/FuturesAndForwards/> .
+@prefix fibo-der-drc-ma: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesMasterAgreements/> .
+@prefix fibo-der-drc-opt: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/> .
+@prefix fibo-der-drc-raw: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/> .
+@prefix fibo-der-drc-str: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-der-rtd-irswp: <https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/> .
+@prefix fibo-der-rtd-rtd: <https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/RateDerivatives/> .
+@prefix fibo-der-sbd-eqs: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/EquitySwaps/> .
+@prefix fibo-der-sbd-sbd: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-all: a owl:Ontology ;
+    rdfs:label "Derivatives Domain",
+        "DER 域总入口（All DER）"@zh ;
+    dcterms:abstract "The Derivatives (DER) Domain covers many of the concepts that are common to derivative instruments, including but not limited to options, futures, forwards, swaps, and a wide range of other derivatives. This ontology provides metadata about the Derivatives Domain and its contents." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Bloomberg LP",
+        "Citigroup",
+        "Commodities Futures Trading Commission (CFTC)",
+        "Credit Suisse",
+        "Deutsche Bank",
+        "Exprentis",
+        "Federated Knowledge LLC",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Mizuho Financial Group, Inc.",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Quarule",
+        "State Street Bank and Trust",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo Bank, N.A.",
+        "Working Ontologist",
+        "agnos.ai" ;
+    dcterms:creator "https://wiki.edmcouncil.org/display/DER/FIBO+-+FCT+-+Derivatives+Home"^^xsd:anyURI ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2025-06-24T18:00:00"^^xsd:dateTime ;
+    dcterms:title "Financial Industry Business Ontology (FIBO) Derivatives (DER) Domain" ;
+    rdfs:comment "聚合衍生品（Derivatives，DER）域的全部生产本体：期权、期货与远期、互换、信用衍生品、利率衍生品、结构化工具与主协议等，一次导入即获得 DER 域完整模型。"@zh ;
+    rdfs:seeAlso <https://www.edmcouncil.org/fibo/> ;
+    owl:imports fibo-der-cr-cds:,
+        fibo-der-drc-comm:,
+        fibo-der-drc-cur:,
+        fibo-der-drc-bsc:,
+        fibo-der-drc-ma:,
+        fibo-der-drc-exo:,
+        fibo-der-drc-ff:,
+        fibo-der-drc-opt:,
+        fibo-der-drc-raw:,
+        fibo-der-drc-str:,
+        fibo-der-drc-swp:,
+        fibo-der-rtd-irswp:,
+        fibo-der-rtd-rtd:,
+        fibo-der-sbd-eqs:,
+        fibo-der-sbd-sbd:,
+        fibo-fnd-utl-av:,
+        <https://spec.edmcouncil.org/fibo/ontology/SEC/AllSEC/>,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20250601/AllDER/> ;
+    cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." ;
+    cmns-av:explanatoryNote "The 'all' ontology for DER is provided for convenience for FIBO users.  This ontology does not add new assertions, but imports most of the Production (Released) ontologies that comprise the FIBO Foundations (FND), Business Entities (BE), Financial Business and Commerce (FBC), Indices and Indicators (IND), Securities (SEC), and Derivatives (DER) domains, excluding individuals for governments and jurisdictions, financial services, regulatory organizations and related registries, and reference individuals, as well as the LCC region-specific ontologies." .
+

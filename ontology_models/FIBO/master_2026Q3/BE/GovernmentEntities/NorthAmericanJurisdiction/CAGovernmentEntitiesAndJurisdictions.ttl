@@ -1,0 +1,436 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-caj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2-ca: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-CA/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-be-ge-caj:CanadianEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:FederatedSovereignty ;
+    rdfs:label "Canadian entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <https://www.canada.ca/en/index.html> ;
+    skos:definition "individual representing the federated sovereignty and polity that is Canada" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Canada ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:Alberta,
+        lcc-3166-2-ca:BritishColumbia,
+        lcc-3166-2-ca:Manitoba,
+        lcc-3166-2-ca:NewBrunswick,
+        lcc-3166-2-ca:NewfoundlandAndLabrador,
+        lcc-3166-2-ca:NorthwestTerritories,
+        lcc-3166-2-ca:NovaScotia,
+        lcc-3166-2-ca:Nunavut,
+        lcc-3166-2-ca:Ontario,
+        lcc-3166-2-ca:PrinceEdwardIsland,
+        lcc-3166-2-ca:Quebec,
+        lcc-3166-2-ca:Saskatchewan,
+        lcc-3166-2-ca:Yukon ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfCanada .
+
+fibo-be-ge-caj:NorthwestTerritoriesEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Northwest Territories entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.nt.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Northwest Territories" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:NorthwestTerritories ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfNorthwestTerritories .
+
+fibo-be-ge-caj:NunavutEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Nunavut entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.nu.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian territory of Nunavut" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:Nunavut ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfNunavut .
+
+fibo-be-ge-caj:ProvinceOfAlbertaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of Alberta entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.alberta.ca/index.cfm> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of Alberta" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:Alberta ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfAlberta .
+
+fibo-be-ge-caj:ProvinceOfBritishColumbiaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of British Columbia entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www2.gov.bc.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of British Columbia" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:BritishColumbia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfBritishColumbia .
+
+fibo-be-ge-caj:ProvinceOfManitobaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of Manitoba entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://gov.mb.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of Manitoba" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:Manitoba ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfManitoba .
+
+fibo-be-ge-caj:ProvinceOfNewBrunswickEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of New Brunswick entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www2.gnb.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of New Brunswick" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:NewBrunswick ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfNewBrunswick .
+
+fibo-be-ge-caj:ProvinceOfNewfoundlandAndLabradorEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of Newfoundland and Labrador entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.nf.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of Newfoundland and Labrador" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:NewfoundlandAndLabrador ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfNewfoundlandAndLabrador .
+
+fibo-be-ge-caj:ProvinceOfNovaScotiaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of Nova Scotia entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://novascotia.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of Nova Scotia" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:NovaScotia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfNovaScotia .
+
+fibo-be-ge-caj:ProvinceOfOntarioEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of Ontario entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <https://www.ontario.ca/page/government-ontario> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of Ontario" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:Ontario ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfOntario .
+
+fibo-be-ge-caj:ProvinceOfPrinceEdwardIslandEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of Prince Edward Island entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.pe.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of Prince Edward Island" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:PrinceEdwardIsland ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfPrinceEdwardIsland .
+
+fibo-be-ge-caj:ProvinceOfQuebecEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of Quebec entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gouv.qc.ca/EN/Pages/Accueil.aspx> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of Quebec" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:Quebec ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfQuebec .
+
+fibo-be-ge-caj:ProvinceOfSaskatchewanEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Province of Saskatchewan entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://gov.sk.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Province of Saskatchewan" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:Saskatchewan ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfSaskatchewan .
+
+fibo-be-ge-caj:YukonEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Yukon entity" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.yk.ca/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the Canadian Yukon territory" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-ca:Yukon ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-caj:GovernmentOfYukon .
+
+fibo-be-ge-caj:CanadianJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Canadian jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.justice.gc.ca/eng/csj-sjc/just/> ;
+    skos:definition "individual representing the overall jurisdiction for Canada" ;
+    cmns-av:explanatoryNote "Canada's federal structure divides government responsibilities between the federal government and the ten provinces. Provincial legislatures are unicameral and operate in parliamentary fashion similar to the House of Commons. Canada's three territories also have legislatures, but these are not sovereign and have fewer constitutional responsibilities than the provinces. The territorial legislatures also differ structurally from their provincial counterparts." ;
+    cmns-rga:hasReach lcc-3166-1:Canada ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfCanada .
+
+fibo-be-ge-caj:NorthwestTerritoriesJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Northwest Territories jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <https://www.justice.gov.nt.ca/en/browse/court-information/> ;
+    skos:definition "individual representing the overall jurisdiction for the Courts of the Northwest Territories" ;
+    cmns-rga:hasReach lcc-3166-2-ca:NorthwestTerritories ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfNorthwestTerritories .
+
+fibo-be-ge-caj:NunavutJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Nunavut jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.nunavutcourts.ca/> ;
+    skos:definition "individual representing the overall jurisdiction for the Courts of Nunavut" ;
+    cmns-rga:hasReach lcc-3166-2-ca:Nunavut ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfNunavut .
+
+fibo-be-ge-caj:ProvinceOfAlbertaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of Alberta jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <https://albertacourts.ca/> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of Alberta, i.e., that of the Alberta Court of Appeal, Court of Queen's Bench, and Provincial Court of Alberta" ;
+    cmns-rga:hasReach lcc-3166-2-ca:Alberta ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfAlberta .
+
+fibo-be-ge-caj:ProvinceOfBritishColumbiaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of British Columbia jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.ag.gov.bc.ca/courts/> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of British Columbia, i.e., that of the British Columbia Court of Appeal, Supreme Court, and Provincial Court of British Columbia" ;
+    cmns-rga:hasReach lcc-3166-2-ca:BritishColumbia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfBritishColumbia .
+
+fibo-be-ge-caj:ProvinceOfManitobaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of Manitoba jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.manitobacourts.mb.ca/> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of Manitoba, i.e., that of the Manitoba Court of Appeal, Court of Queen's Bench, and Provincial Court of Manitoba" ;
+    cmns-rga:hasReach lcc-3166-2-ca:Manitoba ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfManitoba .
+
+fibo-be-ge-caj:ProvinceOfNewBrunswickJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of New Brunswick jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gnb.ca/Cour/index-e.asp> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of New Brunswick, i.e., that of the New Brunswick Court of Appeal, Court of Queen's Bench, and Provincial Court of New Brunswick" ;
+    cmns-rga:hasReach lcc-3166-2-ca:NewBrunswick ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfNewBrunswick .
+
+fibo-be-ge-caj:ProvinceOfNewfoundlandAndLabradorJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of Newfoundland and Labrador jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.court.nl.ca/> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of Newfoundland and Labrador, i.e., that of the Newfoundland and Labrador Supreme and Provincial Courts" ;
+    cmns-rga:hasReach lcc-3166-2-ca:NewfoundlandAndLabrador ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfNewfoundlandAndLabrador .
+
+fibo-be-ge-caj:ProvinceOfNovaScotiaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of Nova Scotia jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.courts.ns.ca/Courthouse_Locations/Courthouse_Locations_Map.htm> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of Nova Scotia, i.e., that of the Nova Scotia Supreme and Provincial Courts and Court of Appeals" ;
+    cmns-rga:hasReach lcc-3166-2-ca:NovaScotia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfNovaScotia .
+
+fibo-be-ge-caj:ProvinceOfOntarioJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of Ontario jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.attorneygeneral.jus.gov.on.ca/english/courts/> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of Ontario, i.e., that of the Ontario Superior and Provincial Court of Justice as well as Court of Appeals" ;
+    cmns-rga:hasReach lcc-3166-2-ca:Ontario ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfOntario .
+
+fibo-be-ge-caj:ProvinceOfPrinceEdwardIslandJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of Prince Edward Island jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.courts.pe.ca/> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of Prince Edward Island, i.e., that of the Prince Edward Island Court of Appeal, as well as the Supreme and Provincial Courts of Prince Edward Island" ;
+    cmns-rga:hasReach lcc-3166-2-ca:PrinceEdwardIsland ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfPrinceEdwardIsland .
+
+fibo-be-ge-caj:ProvinceOfQuebecJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of Quebec jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gouv.qc.ca/EN/LeQuebec/Pages/Justice.aspx> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of Quebec, i.e., that of the Quebec Court of Appeal, and the Supreme and Provincial Courts of Quebec" ;
+    cmns-rga:hasReach lcc-3166-2-ca:Quebec ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfQuebec .
+
+fibo-be-ge-caj:ProvinceOfSaskatchewanJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "province of Saskatchewan jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.sasklawcourts.ca/> ;
+    skos:definition "individual representing the overall jurisdiction for the Canadian Province Of Saskatchewan, i.e., that of the Saskatchewan Court of Appeal, Court of Queen's Bench, and Provincial Court of Saskatchewan" ;
+    cmns-rga:hasReach lcc-3166-2-ca:Saskatchewan ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfSaskatchewan .
+
+fibo-be-ge-caj:YukonJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Yukon jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.justice.gov.yk.ca/prog/cs/csindex.html> ;
+    skos:definition "individual representing the overall jurisdiction for the Courts of Yukon" ;
+    cmns-rga:hasReach lcc-3166-2-ca:Yukon ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-caj:GovernmentOfYukon .
+
+fibo-be-ge-caj:GovernmentOfAlberta a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Alberta" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.alberta.ca/organizational-structure.cfm> ;
+    skos:definition "individual representing the regional government of the province of Alberta" ;
+    cmns-rga:governs lcc-3166-2-ca:Alberta ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfAlbertaJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfBritishColumbia a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of British Columbia" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www2.gov.bc.ca/gov/content/governments> ;
+    skos:definition "individual representing the regional government of the province of British Columbia" ;
+    cmns-rga:governs lcc-3166-2-ca:BritishColumbia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfBritishColumbiaJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfCanada a owl:NamedIndividual,
+        fibo-be-ge-ge:FederalGovernment ;
+    rdfs:label "Government of Canada" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <https://www.canada.ca/en/index.html> ;
+    skos:definition "individual representing the federal parliamentary democracy and constitutional monarchy of Canada" ;
+    cmns-av:explanatoryNote "Canada is a federal parliamentary democracy and a constitutional monarchy, with Queen Elizabeth II being the head of state. The country is officially bilingual at the federal level. It is one of the world's most ethnically diverse and multicultural nations, the product of large-scale immigration from many countries. Its advanced economy is the eleventh largest in the world, relying chiefly upon its abundant natural resources and well-developed international trade networks." ;
+    cmns-rga:governs lcc-3166-1:Canada ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:CanadianJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfManitoba a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Manitoba" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.mb.ca/government/index.html> ;
+    skos:definition "individual representing the regional government of the province of Manitoba" ;
+    cmns-rga:governs lcc-3166-2-ca:Manitoba ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfManitobaJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfNewBrunswick a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of New Brunswick" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www2.gnb.ca/content/gnb/en/gateways/your_government.html> ;
+    skos:definition "individual representing the regional government of the province of New Brunswick" ;
+    cmns-rga:governs lcc-3166-2-ca:NewBrunswick ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfNewBrunswickJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfNewfoundlandAndLabrador a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Newfoundland and Labrador" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.nf.ca/government/index.html> ;
+    skos:definition "individual representing the regional government of the province of Newfoundland and Labrador" ;
+    cmns-rga:governs lcc-3166-2-ca:NewfoundlandAndLabrador ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfNewfoundlandAndLabradorJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfNorthwestTerritories a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Northwest Territories" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.nt.ca/> ;
+    skos:definition "individual representing the regional government of the Northwest Territories" ;
+    cmns-rga:governs lcc-3166-2-ca:NorthwestTerritories ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:NorthwestTerritoriesJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfNovaScotia a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Nova Scotia" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://novascotia.ca/government/> ;
+    skos:definition "individual representing the regional government of the province of Nova Scotia" ;
+    cmns-rga:governs lcc-3166-2-ca:NovaScotia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfNovaScotiaJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfNunavut a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Nunavut" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://gov.nu.ca/about-gn> ;
+    skos:definition "individual representing the regional government of Nunavut" ;
+    cmns-rga:governs lcc-3166-2-ca:Nunavut ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:NunavutJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfOntario a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Ontario" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <https://www.ontario.ca/page/government-ontario> ;
+    skos:definition "individual representing the regional government of the province of Ontario" ;
+    cmns-rga:governs lcc-3166-2-ca:Ontario ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfOntarioJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfPrinceEdwardIsland a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Prince Edward Island" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.pe.ca/index.php3> ;
+    skos:definition "individual representing the regional government of the province of Prince Edward Island" ;
+    cmns-rga:governs lcc-3166-2-ca:PrinceEdwardIsland ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfPrinceEdwardIslandJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfQuebec a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Quebec" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gouv.qc.ca/EN/VotreGouvernement/Pages/Accueil.aspx?pgs> ;
+    skos:definition "individual representing the regional government of the province of Quebec" ;
+    cmns-rga:governs lcc-3166-2-ca:Quebec ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfQuebecJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfSaskatchewan a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Saskatchewan" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://gov.sk.ca/about-government/>,
+        <http://www.saskatchewan.ca/government> ;
+    skos:definition "individual representing the regional government of the province of Saskatchewan" ;
+    cmns-rga:governs lcc-3166-2-ca:Saskatchewan ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:ProvinceOfSaskatchewanJurisdiction .
+
+fibo-be-ge-caj:GovernmentOfYukon a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Yukon" ;
+    rdfs:isDefinedBy fibo-be-ge-caj: ;
+    rdfs:seeAlso <http://www.gov.yk.ca/> ;
+    skos:definition "individual representing the regional government of the Yukon territory of Canada" ;
+    cmns-rga:governs lcc-3166-2-ca:Yukon ;
+    cmns-rga:hasJurisdiction fibo-be-ge-caj:YukonJurisdiction .
+
+fibo-be-ge-caj: a owl:Ontology ;
+    rdfs:label "Canadian Government Entities and Jurisdictions Ontology",
+        "加拿大政府实体与法域本体（Canadian Government Entities and Jurisdictions Ontology）"@zh ;
+    dcterms:abstract "This ontology provides the set of basic federal government, provincial, and territory level entities and jurisdictions." ;
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录加拿大的政体、联邦与省政府、法域个体。"@zh ;
+    owl:imports fibo-be-ge-ge:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga:,
+        lcc-3166-1:,
+        lcc-3166-2-ca: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/BE/20200201/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to replace 'hasPartialSovereigntyOver' with 'hasSharedSovereigntyOver'.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210201/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+

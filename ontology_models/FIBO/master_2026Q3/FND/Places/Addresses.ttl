@@ -1,0 +1,763 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-sfc: <https://www.omg.org/spec/Commons/SitesAndFacilities/> .
+@prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-id: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-plc-adr: a owl:Ontology ;
+    rdfs:label "Addresses Ontology",
+        "地址本体（Addresses Ontology）"@zh ;
+    dcterms:abstract "This ontology provides high level definitions for addresses and address components including elements that are common to addressing standards." ;
+    dcterms:license """2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义邮政地址及其组成部分，为机构注册地、通讯地址建模。"@zh ;
+    owl:imports fibo-fnd-arr-id:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-sfc:,
+        cmns-txt: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20260701/Places/Addresses/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/FND/20141101/Places/Addresses.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FND 1.1 RTF report. Differences from the 1.0 version include the addition of a hasAddress property and PhysicalAddress class as a parent of PostalAddress.",
+        "The http://www.omg.org/spec/EDMC-FIBO/FND/20160201/Places/Addresses.rdf version of this ontology was modified for the FIBO 2.0 RFC to integrate LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20130801/Places/Addresses.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/. Primary differences include elimination of data properties in favor of a simple class model,the addition of virtual address, and the addition of addressing scheme.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Places/Addresses.rdf version of this ontology was modified replace hasDefinition with isDefinedIn to clarify intent, and the address hierarchy was simplified to enable extensions for international and national delivery address specification, and to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190901/Places/Addresses.rdf version of this ontology was modified to eliminate duplication of concepts in LCC, simplify address representation and merge countries with locations.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200301/Places/Addresses.rdf version of this ontology was modified to correct a missing imports statement.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200601/Places/Addresses.rdf version of this ontology was modified to eliminate unnecessary unions and max 1 restrictions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200701/Places/Addresses.rdf version of this ontology was modified to revise names of address elements that could be construed as referring to multiple concepts.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210201/Places/Addresses.rdf version of this ontology was modified to make postcode a subclass of geographic region identifier and fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20211201/Places/Addresses.rdf version of this ontology was modified to address hygiene issues with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/Places/Addresses.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Places/Addresses.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Places/Addresses.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Places/Addresses.rdf version of the ontology was modified to reuse concepts from the Commons 1.3 sites and facilities ontology (FND-401).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20251201/Places/Addresses.rdf version of the ontology was modified to to replace references to the now deprecated hasTag property in Relations with its equivalent in OMG Commons (FND-412).",
+        """The https://spec.edmcouncil.org/fibo/ontology/Foundations/20130601/Organizations/Addresses.owl version of the ontology was revised in advance of the September 2013 New Brunswick, NJ meeting, as follows:
+	(1) to use slash style URI/IRIss (also called 303 URIs, vs. hash style) as required to support server side processing 
+	(2) to use version-independent IRIs for all definitions internally as opposed to version-specific IRIs
+	(3) to change the file suffix from .owl to .rdf to increase usability in RDF tools
+	(4) to use 4-level abbreviations and corresponding namespace prefixes for all FIBO ontologies, reflecting a family/specification/module/ontology structure
+	(5) to incorporate changes to the specification metadata to support documentation at the family, specification, module, and ontology level, similar to the abbreviations
+	(6) to move this ontology from Organizations to Places and eliminate unnecessary properties and related imports dependencies.""" ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group, Inc.",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fnd-plc-adr:Apartment a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "apartment"@en ;
+    skos:definition "room or a group of related rooms, among similar sets in one building, designed for use as a dwelling" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Basement a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "basement"@en ;
+    skos:definition "part of a building consisting of rooms that are partly or entirely below ground" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:Building a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "building"@en ;
+    skos:definition "relatively permanent enclosed structure, that has a roof and walls and stands more or less permanently in one place" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Department a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "department"@en ;
+    skos:definition "division of a large organization such as a government, university, business, or shop, dealing with a specific subject, commodity, or area of activity" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Floor a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "floor"@en ;
+    skos:definition "all of the rooms or areas on the same level of a building; a story" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true ;
+    cmns-av:explanatoryNote "Labeling systems for floors vary from country to country, and may be specific to the building, for example, whether or not a 13th floor is identified as such tends to be on a case-by-case basis." .
+
+fibo-fnd-plc-adr:Front a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "front"@en ;
+    skos:definition "side or part of a building that presents itself to view first, that faces the street; the most forward part of a building" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:Hangar a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "hanger"@en ;
+    skos:definition "shed or shelter; any relatively wide structure used for housing airplanes or airships" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Key a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "key"@en ;
+    skos:definition "usually metal instrument by which the bolt of a lock is turned" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Lobby a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "lobby"@en ;
+    skos:definition "entrance hall, corridor, or vestibule, as in a public building, often serving as an anteroom; foyer" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:Lot a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "lot"@en ;
+    skos:definition "measured parcel of land having fixed boundaries and designated on a plot or survey" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Lower a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "lower"@en ;
+    skos:definition "floor of a building in a multistory structure that is closer to ground level" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:Office a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "office"@en ;
+    skos:definition "place where a particular kind of business is transacted or a service is supplied" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:Penthouse a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "penthouse"@en ;
+    skos:definition "structure or dwelling on the roof or top floor of a building" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:Pier a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "pier"@en ;
+    skos:definition "structure extending into navigable water for use as a landing place or promenade" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:PostOfficeBoxAddress a owl:Class ;
+    rdfs:label "post office box address",
+        "邮政信箱地址（post office box address）"@zh ;
+    rdfs:comment "用于将通信投递到当地邮局（或该管辖区等同机构）指定信箱的物理地址。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:PostOfficeBox ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    skos:definition "physical address used to deliver communications to a designated container at a local post office or the local equivalent for the jurisdiction, where mail is held until the recipient collects it, rather than to a given house, building, or other location" .
+
+fibo-fnd-plc-adr:Rear a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "rear"@en ;
+    skos:definition "side or part of a building at the back, located opposite its front" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:RegionSpecificIdentifier a owl:Class ;
+    rdfs:label "region-specific identifier",
+        "区域专用标识符（region-specific identifier）"@zh ;
+    rdfs:comment "由国家或其他区域内部使用的地理区域或行政区划标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isUsedBy ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        cmns-loc:GeographicRegionIdentifier ;
+    skos:definition "geographic region or subdivision identifier used internally by a country or other region" .
+
+fibo-fnd-plc-adr:Room a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "room"@en ;
+    skos:definition "partitioned part of the inside of a building" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Side a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "side"@en ;
+    skos:definition "place, space, or direction with respect to a center or to a line of division" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:Slip a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "slip"@en ;
+    skos:definition "sloping ramp extending out into the water to serve as a place for landing or repairing ships; ship's or boat's berth between two piers" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Space a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "space"@en ;
+    skos:definition "extent set apart or available, such as a parking or storage space" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Stop a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "stop"@en ;
+    skos:definition "stopping place, such as a bus or mail stop" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Suite a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "suite"@en ;
+    skos:definition "group of rooms occupied as a unit" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Trailer a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "trailer"@en ;
+    skos:definition "vehicle designed to serve wherever parked as a temporary dwelling or place of business" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Unit a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "unit"@en ;
+    skos:definition "area in a facility, such as a medical facility or hospital that is specially staffed and equipped to provide a particular service or type of care" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange true .
+
+fibo-fnd-plc-adr:Upper a owl:NamedIndividual,
+        fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+    rdfs:label "upper"@en ;
+    skos:definition "floor of a building in a multistory structure that is farther away from the ground level" ;
+    fibo-fnd-plc-adr:requiresSecondaryUnitRange false .
+
+fibo-fnd-plc-adr:VirtualAddress a owl:Class ;
+    rdfs:label "virtual address",
+        "虚拟地址（virtual address）"@zh ;
+    rdfs:comment "标识虚拟（即非物理）位置的地址。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:Address ;
+    owl:disjointWith fibo-fnd-plc-adr:PhysicalAddress ;
+    skos:definition "address identifying a virtual, i.e. non-physical, location" .
+
+fibo-fnd-plc-adr:hasAttentionLine a owl:DatatypeProperty ;
+    rdfs:label "has attention line",
+        "具有收件人行（has attention line）"@zh ;
+    rdfs:comment "可选的自由文本地址行，标明预期收件人。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "an optional, free text address line denoting the intended recipient" .
+
+fibo-fnd-plc-adr:hasMailRouting a owl:DatatypeProperty ;
+    rdfs:label "has mail routing",
+        "具有邮件路由（has mail routing）"@zh ;
+    rdfs:comment "可选的自由文本地址行，含明确的路由信息（该元素的存在表明此地址为路由/「转交」地址）。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "an optional, free text address line containing explicit routing information (this elements's presence indicates that this address is a routing / 'care of' address)" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-fnd-plc-adr:hasStructureName a owl:ObjectProperty ;
+    rdfs:label "has structure name",
+        "具有建筑名称（has structure name）"@zh ;
+    rdfs:comment "指明楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的标识符。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:range fibo-fnd-plc-adr:StructureName ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "specifies an identifier for a building, house, office complex, shopping center, or other structure or group of structures" .
+
+fibo-fnd-plc-adr:hasTransliteratedAddress a owl:ObjectProperty ;
+    rdfs:label "has transliterated address",
+        "具有转写地址（has transliterated address）"@zh ;
+    rdfs:comment "标识注册实体的转写（即拉丁化或罗马化 ASCII）地址。"@zh ;
+    rdfs:range fibo-fnd-plc-adr:Address ;
+    rdfs:subPropertyOf fibo-fnd-plc-adr:hasAddress ;
+    skos:definition "identifies a transliterated (i.e., in Latin or Romanized ASCII) address for the registered entity" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-fnd-plc-adr:ConventionalStreetAddress a owl:Class ;
+    rdfs:label "conventional street address",
+        "常规街道地址（conventional street address）"@zh ;
+    rdfs:comment "标识通信可送达之街道位置的物理地址。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty fibo-fnd-plc-adr:hasAddressLine3 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:StreetAddress ;
+            owl:onProperty fibo-fnd-plc-adr:hasStreetAddress ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty fibo-fnd-plc-adr:hasAddressLine2 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty fibo-fnd-plc-adr:hasAddressLine1 ],
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    skos:definition "physical address that identifies a location on a street to which communications may be delivered" ;
+    cmns-av:explanatoryNote "Other unconventional addresses may include rural and highway route addresses, general delivery addresses, post office box addresses, private mail center addresses, and so forth." .
+
+fibo-fnd-plc-adr:PhysicalAddressIdentifier a owl:Class ;
+    rdfs:label "physical address identifier",
+        "物理地址标识符（physical address identifier）"@zh ;
+    rdfs:comment "物理地址的唯一标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:PhysicalAddressingScheme ;
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cds:CodeElement,
+        cmns-id:Identifier ;
+    skos:definition "unique identifier for a physical address" ;
+    skos:example "Physical address identifiers may include bar codes, QCR codes, and +codes in a number of countries." .
+
+fibo-fnd-plc-adr:PhysicalAddressingScheme a owl:Class ;
+    rdfs:label "physical addressing scheme",
+        "物理地址编制方案（physical addressing scheme）"@zh ;
+    rdfs:comment "按国家特定标准指明物理地址的方案。"@zh ;
+    rdfs:seeAlso <https://pe.usps.com/cpim/ftp/pubs/Pub28/pub28.pdf> ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                        owl:onClass fibo-fnd-plc-adr:PhysicalAddressIdentifier ;
+                        owl:onProperty cmns-dsg:defines ] [ a owl:Restriction ;
+                        owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                        owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
+                        owl:onProperty cmns-dsg:defines ] ) ],
+        fibo-fnd-plc-adr:AddressingScheme ;
+    skos:definition "scheme for specifying physical addresses according to a country specific standard" .
+
+fibo-fnd-plc-adr:PostCodeArea a owl:Class ;
+    rdfs:label "post code area"@en,
+        "邮区（post code area）"@zh ;
+    rdfs:comment "由某邮政编码唯一标识的物理区域。"@zh ;
+    rdfs:subClassOf cmns-loc:GeographicRegion ;
+    skos:definition "physical area uniquely identified by some postal code" .
+
+fibo-fnd-plc-adr:PostOfficeBox a owl:Class ;
+    rdfs:label "post office box",
+        "邮政信箱（post office box）"@zh ;
+    rdfs:comment "与某地址关联的邮政信箱。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:PostOfficeBoxDesignator ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:SupplementalAddressComponent ;
+    skos:definition "post office box associated with an address" ;
+    cmns-av:explanatoryNote "Post office box identifiers are only unique to a given jurisdiction, which may be a post office, town, or other region." .
+
+fibo-fnd-plc-adr:PostOfficeBoxDesignator a owl:Class ;
+    rdfs:label "post office box designator"@en,
+        "邮政信箱指称符（post office box designator）"@zh ;
+    rdfs:comment "与标识符一起用于邮政信箱的指称符。"@zh ;
+    rdfs:subClassOf fibo-fnd-plc-adr:SupplementalAddressDesignator ;
+    skos:definition "designator used, together with an identifier, for a post office box" ;
+    skos:example "In the U.S., the preferred designator is 'PO BOX'." .
+
+fibo-fnd-plc-adr:SecondaryUnitIndicator a owl:Class ;
+    rdfs:label "secondary unit indicator",
+        "次级单元指示符（secondary unit indicator）"@zh ;
+    rdfs:comment "指向特定街道地址处次级单元（如楼栋或公寓）内具体单元的索引。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:AddressComponent ;
+    skos:definition "index to the specific unit within a secondary unit, such as a building or apartment, at a particular street address" .
+
+fibo-fnd-plc-adr:StructureName a owl:Class ;
+    rdfs:label "structure name",
+        "建筑名称（structure name）"@zh ;
+    rdfs:comment "楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的名称。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:AddressComponent,
+        cmns-dsg:Name ;
+    skos:definition "name for a building, house, office complex, shopping center, or other structure or group of structures" ;
+    skos:example "Examples include 'McCoy Center', which is the name of the office complex where JPMorgan Chase's Polaris facility is located, 'Apple Park', which is the name of the corporate headquarters of Apple, Inc., and 'Howells Bridge Cottage', which is the name of a very old cottage in Cornwall." .
+
+fibo-fnd-plc-adr:SupplementalAddressUnit a owl:Class ;
+    rdfs:label "supplemental address unit",
+        "补充地址单元（supplemental address unit）"@zh ;
+    rdfs:comment "包含与特定地址关联的特定路线、信箱、公寓或其他指示符或单元的地址成分。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:AddressComponent ;
+    skos:definition "address component that includes a specific route, box, apartment, condominium or other indicator or unit associated with a specific address" .
+
+fibo-fnd-plc-adr:hasAddress a owl:ObjectProperty ;
+    rdfs:label "has address",
+        "具有地址（has address）"@zh ;
+    rdfs:comment "标识可据以定位或联系某事物（如网络地址情形）或某实体、或可接收函件的方式。"@zh ;
+    rdfs:range fibo-fnd-plc-adr:Address ;
+    rdfs:subPropertyOf cmns-cls:isCharacterizedBy ;
+    skos:definition "indicates a means by which something (in the case of a network address) or some entity may be located or contacted or may receive correspondence" .
+
+fibo-fnd-plc-adr:hasAddressLine1 a owl:DatatypeProperty ;
+    rdfs:label "has address line 1",
+        "具有地址行 1（has address line 1）"@zh ;
+    rdfs:comment "街道地址的第一行。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "the first line of the street address" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-fnd-plc-adr:hasAddressLine2 a owl:DatatypeProperty ;
+    rdfs:label "has address line 2",
+        "具有地址行 2（has address line 2）"@zh ;
+    rdfs:comment "街道地址的第二行。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "the second line of the street address" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-fnd-plc-adr:hasAddressLine3 a owl:DatatypeProperty ;
+    rdfs:label "has address line 3",
+        "具有地址行 3（has address line 3）"@zh ;
+    rdfs:comment "街道地址的第三行。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "the third line of the street address" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI ;
+    cmns-av:usageNote "This element SHALL be omitted if address line 2 is omitted." .
+
+fibo-fnd-plc-adr:hasIndividualPostcode a owl:ObjectProperty ;
+    rdfs:label "has individual postcode",
+        "具有具体邮政编码（has individual postcode）"@zh ;
+    rdfs:comment "标识当地邮政部门规定的投递地址的本地或国际邮政编码元素。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:range fibo-fnd-plc-adr:Postcode ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "indicates the local or international postcode element of a delivery address as specified by the local postal service" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-fnd-plc-adr:hasPostalCode a owl:DatatypeProperty ;
+    rdfs:label "has postal code",
+        "具有邮政编码（has postal code）"@zh ;
+    rdfs:comment "当地邮政部门规定的此地址的邮政编码。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "the postal code of this address as specified by the local postal service" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-fnd-plc-adr:hasPostdirectionalSymbol a owl:ObjectProperty ;
+    rdfs:label "has postdirectional symbol",
+        "具有后置方位符号（has postdirectional symbol）"@zh ;
+    rdfs:comment "指明街道地址中位于街道名称和街道后缀之后的地理方位符号。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:StreetAddress ;
+    rdfs:range fibo-fnd-plc-adr:PostdirectionalSymbol ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "specifies a geographic directional symbol that follows the street name and street suffix in a street address" .
+
+fibo-fnd-plc-adr:hasPredirectionalSymbol a owl:ObjectProperty ;
+    rdfs:label "has predirectional symbol",
+        "具有前置方位符号（has predirectional symbol）"@zh ;
+    rdfs:comment "指明街道地址中位于主门牌号之后、街道名称之前的地理方位符号。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:StreetAddress ;
+    rdfs:range fibo-fnd-plc-adr:PredirectionalSymbol ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "specifies a geographic directional symbol that occurs after the primary street number but before the street name in a street address" .
+
+fibo-fnd-plc-adr:hasPrimaryAddressNumber a owl:ObjectProperty ;
+    rdfs:label "has primary address number",
+        "具有主门牌号（has primary address number）"@zh ;
+    rdfs:comment "指明相对于给定街道的位置。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:StreetAddress ;
+    rdfs:range fibo-fnd-plc-adr:PrimaryAddressNumber ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "specifies a a location with respect to a given street" .
+
+fibo-fnd-plc-adr:hasSecondaryUnit a owl:ObjectProperty ;
+    rdfs:label "has secondary unit",
+        "具有次级单元（has secondary unit）"@zh ;
+    rdfs:comment "指明给定街道地址处较大结构内的独立单元，如公寓、办公室、机库、泊位、邮箱等。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:StreetAddress ;
+    rdfs:range fibo-fnd-plc-adr:SecondaryUnit ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "specifies an individual unit within a larger structure, such as an apartment, office, hangar, slip, mailbox, and so forth, at a given street address" .
+
+fibo-fnd-plc-adr:hasStreetAddress a owl:ObjectProperty ;
+    rdfs:label "has street address",
+        "具有街道地址（has street address）"@zh ;
+    rdfs:comment "标识由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的完整地址成分。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:range fibo-fnd-plc-adr:StreetAddress ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "indicates a fully-specified address component that consists of a primary address number, predirectional, street name, suffix, postdirectional, and an optional secondary unit" .
+
+fibo-fnd-plc-adr:hasStreetName a owl:ObjectProperty ;
+    rdfs:label "has street name",
+        "具有街道名称（has street name）"@zh ;
+    rdfs:comment "指明某情境中街道的标识符（如 Baker、First、Main）。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:StreetAddress ;
+    rdfs:range fibo-fnd-plc-adr:StreetName ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "specifies an identifier for a street in some context (e.g., 'Baker', 'First', 'Main')" .
+
+fibo-fnd-plc-adr:hasStreetSuffix a owl:ObjectProperty ;
+    rdfs:label "has street suffix",
+        "具有街道后缀（has street suffix）"@zh ;
+    rdfs:comment "指明街道或其他投递位置的附加限定符。"@zh ;
+    rdfs:domain fibo-fnd-plc-adr:StreetAddress ;
+    rdfs:range fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "specifies an additional qualifier for a street or other delivery location, such as a dwelling located along a waterway" .
+
+fibo-fnd-plc-adr:requiresSecondaryUnitRange a owl:DatatypeProperty ;
+    rdfs:label "requires secondary unit range",
+        "需要次级单元范围（requires secondary unit range）"@zh ;
+    rdfs:comment "若为真，表明需要附加限定符（如公寓号）才能完整描述投递点。"@zh ;
+    rdfs:range xsd:boolean ;
+    rdfs:seeAlso <https://pe.usps.com/cpim/ftp/pubs/Pub28/pub28.pdf> ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "if true, indicates that an additional qualifier is needed to complete the delivery point description, such as an apartment number" ;
+    cmns-av:explanatoryNote "Note that in some cases, such as for lobby or office, if there are multiple secondary units then a range may be needed to differentiate between them, even if the range is not always required." .
+
+fibo-fnd-plc-adr:AddressingScheme a owl:Class ;
+    rdfs:label "addressing scheme",
+        "地址编制方案（addressing scheme）"@zh ;
+    rdfs:comment "为对象分配地址的体系。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-plc-adr:Address ;
+            owl:onProperty cmns-dsg:defines ],
+        fibo-fnd-arr-id:IndexingScheme ;
+    skos:definition "system for allocating addresses to objects" .
+
+fibo-fnd-plc-adr:GeographicDirectionalSymbol a owl:Class ;
+    rdfs:label "geographic directional symbol",
+        "地理方位符号（geographic directional symbol）"@zh ;
+    rdfs:comment "为邮政投递提供方位信息的代码元素。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
+        cmns-cds:CodeElement ;
+    skos:definition "code element that gives directional information for postal delivery" ;
+    skos:example "In the United States, these include N, S, E, W, NE, NW, SE, SW." .
+
+fibo-fnd-plc-adr:Postcode a owl:Class ;
+    rdfs:label "postcode"@en,
+        "邮政编码（postcode）"@zh ;
+    rdfs:comment "用于辅助邮件分拣的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:PostCodeArea ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cds:CodeElement,
+        cmns-loc:GeographicRegionIdentifier ;
+    skos:definition "sequence of characters used to assist in the sorting of mail" ;
+    cmns-av:synonym "postal code" .
+
+fibo-fnd-plc-adr:PostdirectionalSymbol a owl:Class ;
+    rdfs:label "postdirectional symbol",
+        "后置方位符号（postdirectional symbol）"@zh ;
+    rdfs:comment "街道地址中位于街道名称和街道后缀之后的地理方位符号。"@zh ;
+    rdfs:subClassOf fibo-fnd-plc-adr:GeographicDirectionalSymbol ;
+    skos:definition "geographic directional symbol that follows the street name and street suffix in a street address" .
+
+fibo-fnd-plc-adr:PredirectionalSymbol a owl:Class ;
+    rdfs:label "predirectional symbol",
+        "前置方位符号（predirectional symbol）"@zh ;
+    rdfs:comment "街道地址中位于主门牌号之后、街道名称之前的地理方位符号。"@zh ;
+    rdfs:subClassOf fibo-fnd-plc-adr:GeographicDirectionalSymbol ;
+    skos:definition "geographic directional symbol that occurs after the primary street number but before the street name in a street address" .
+
+fibo-fnd-plc-adr:PrimaryAddressNumber a owl:Class ;
+    rdfs:label "primary address number",
+        "主门牌号（primary address number）"@zh ;
+    rdfs:comment "相对于给定街道标识位置的地址成分。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:AddressComponent ;
+    skos:definition "address component that identifies a location with respect to a given street" ;
+    cmns-av:explanatoryNote "Although traditionally called a 'number', the street number may consist of alphanumeric characters, for example, '221B'." ;
+    cmns-av:synonym "street number" .
+
+fibo-fnd-plc-adr:SecondaryUnit a owl:Class ;
+    rdfs:label "secondary unit",
+        "次级单元（secondary unit）"@zh ;
+    rdfs:comment "标识给定街道地址处较大结构内的独立单元（如公寓、办公室、机库、泊位、邮箱等）的地址成分。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:SecondaryUnitIndicator ;
+            owl:onProperty cmns-col:comprises ],
+        fibo-fnd-plc-adr:AddressComponent ;
+    skos:definition "address component that identifies an individual unit within a larger structure, such as an apartment, office, hangar, slip, mailbox, and so forth, at a given street address" .
+
+fibo-fnd-plc-adr:StreetName a owl:Class ;
+    rdfs:label "street name",
+        "街道名称（street name）"@zh ;
+    rdfs:comment "某情境（如城市、市政区、地理区域）中街道的标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:AddressComponent,
+        cmns-dsg:Name ;
+    skos:definition "identifier for a street in some context (e.g., city, municipality, geographic region)" .
+
+fibo-fnd-plc-adr:StreetSuffix a owl:Class ;
+    rdfs:label "street suffix",
+        "街道后缀（street suffix）"@zh ;
+    rdfs:comment "街道或其他投递位置（如沿水道住所）的分类符。"@zh ;
+    rdfs:subClassOf fibo-fnd-plc-adr:AddressComponent,
+        cmns-cls:Classifier ;
+    skos:definition "classifier for a street or other delivery location, such as a dwelling located along a waterway" ;
+    cmns-av:explanatoryNote "The suffix may provide some insight into the size or length of the street, though not necessarily consistently. In some cities, the suffix differentiates the street from another in the same context, such as 19th Street vs. 19th Avenue in San Francisco." .
+
+fibo-fnd-plc-adr:SupplementalAddressComponent a owl:Class ;
+    rdfs:label "supplemental address component",
+        "补充地址成分（supplemental address component）"@zh ;
+    rdfs:comment "提供对确保通信正确投递重要的附加信息的地址成分。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty cmns-dsg:hasTag ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:SupplementalAddressUnit ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:SupplementalAddressDesignator ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-plc-adr:AddressComponent ;
+    skos:definition "address component that provides additional information that is important to ensuring proper delivery of communications" ;
+    cmns-av:explanatoryNote "Supplemental components include post office box information, rural route and highway contract route information, private mailboxes, and so forth, that are not part of a conventional street address." .
+
+fibo-fnd-plc-adr:SupplementalAddressDesignator a owl:Class ;
+    rdfs:label "supplemental address designator",
+        "补充地址指称符（supplemental address designator）"@zh ;
+    rdfs:comment "补充地址信息（如公路合同路线、乡村路线、建筑综合体、购物中心、公寓综合体）的分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fnd-plc-adr:SupplementalAddressComponent ],
+        cmns-cls:Classifier ;
+    skos:definition "classifier for supplemental address information, such as a highway contract route, rural route, building complex, shopping center, condominium complex, mail box, or other similar designation" .
+
+fibo-fnd-plc-adr:Address a owl:Class ;
+    rdfs:label "address"@en,
+        "地址（address）"@zh ;
+    rdfs:comment "通信可送达之位置的索引。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-loc:Location ;
+            owl:onProperty fibo-fnd-arr-id:isIndexTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:AddressingScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        fibo-fnd-arr-id:Index ;
+    skos:definition "index to a location to which communications may be delivered" .
+
+fibo-fnd-plc-adr:StreetAddress a owl:Class ;
+    rdfs:label "street address",
+        "街道地址（street address）"@zh ;
+    rdfs:comment "由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的位置索引。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-plc-adr:hasStreetName ;
+            owl:someValuesFrom fibo-fnd-plc-adr:StreetName ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:PredirectionalSymbol ;
+            owl:onProperty fibo-fnd-plc-adr:hasPredirectionalSymbol ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:PrimaryAddressNumber ;
+            owl:onProperty fibo-fnd-plc-adr:hasPrimaryAddressNumber ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:SecondaryUnit ;
+            owl:onProperty fibo-fnd-plc-adr:hasSecondaryUnit ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:StreetSuffix ;
+            owl:onProperty fibo-fnd-plc-adr:hasStreetSuffix ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:PostdirectionalSymbol ;
+            owl:onProperty fibo-fnd-plc-adr:hasPostdirectionalSymbol ],
+        fibo-fnd-plc-adr:AddressComponent ;
+    skos:definition "index to a location that consists of a primary address number, predirectional, street name, suffix, postdirectional, and an optional secondary unit" .
+
+fibo-fnd-plc-adr:AddressComponent a owl:Class ;
+    rdfs:label "address component",
+        "地址成分（address component）"@zh ;
+    rdfs:comment "地址的某个方面。"@zh ;
+    rdfs:subClassOf cmns-cls:Aspect ;
+    skos:definition "aspect of an address" .
+
+fibo-fnd-plc-adr:PhysicalAddress a owl:Class ;
+    rdfs:label "physical address"@en,
+        "物理地址（physical address）"@zh ;
+    rdfs:comment "可为任何组织或个人送达通信、送达文书或找到代表的物理地址。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-loc:hasSubdivision ;
+            owl:someValuesFrom cmns-loc:CountrySubdivision ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-loc:Municipality ;
+            owl:onProperty cmns-loc:hasMunicipality ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-loc:PhysicalLocation ;
+            owl:onProperty fibo-fnd-arr-id:isIndexTo ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:Postcode ;
+            owl:onProperty fibo-fnd-plc-adr:hasIndividualPostcode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty fibo-fnd-plc-adr:hasPostalCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-loc:Country ;
+            owl:onProperty cmns-loc:hasCountry ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty cmns-loc:hasCityName ],
+        fibo-fnd-plc-adr:Address ;
+    skos:definition "physical address where communications can be addressed, papers served or representatives located for any kind of organization or person" ;
+    skos:scopeNote "An address may be used as an index to the location of a building, apartment, office within an office block, or other structure or parcel of land, often using political boundaries and street names as references, along with other information such as house or building numbers or names. Some addresses also contain secondary elements such as apartment or building numbers, or special codes to aid routing of mail and packages." ;
+    cmns-av:usageNote "Typically, addresses will have only one postcode expressed either as a string value or individual, and only a municipality (individual) or city (string value)." .
+
+fibo-fnd-plc-adr:SecondaryUnitDesignator a owl:Class ;
+    rdfs:label "secondary unit designator",
+        "次级单元指称符（secondary unit designator）"@zh ;
+    rdfs:comment "较大设施内较小结构或组成部分（如公寓、办公室、邮件站等类似指称）的分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-fnd-plc-adr:requiresSecondaryUnitRange ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cls:Classifier ;
+    skos:definition "classifier for a smaller structure or component within a larger facility, such as an apartment, office, mail stop, or other similar designation" ;
+    cmns-av:explanatoryNote "Note that only certain secondary units require a secondary range, such as an apartment number, to complete a delivery point." .
+

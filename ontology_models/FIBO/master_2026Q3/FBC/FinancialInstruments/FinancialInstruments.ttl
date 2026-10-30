@@ -1,0 +1,543 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-oac-cown: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateOwnership/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-dae-dbt:CreditFacility a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fbc-fi-fi:PromissoryNote ] .
+
+fibo-fbc-fi-fi: a owl:Ontology ;
+    rdfs:label "Financial Instruments Ontology",
+        "金融工具本体（Financial Instruments Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the fundamental concepts for financial instruments in general, providing the high-level hooks for build-out in more detail in the relevant domain areas. These include, but are not limited to, equities, options, debt instruments, and so forth, some of which may be negotiable." ;
+    dcterms:license """Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "FIBO 核心本体之一，定义金融工具（financial instrument）的通用概念：可交易、代表某种权利义务的合同工具，是证券、衍生品等具体工具的共同基础。"@zh ;
+    owl:imports fibo-be-le-fbo:,
+        fibo-be-oac-cown:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/IdentifiersAndIndices/>,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-id:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-qtu:,
+        cmns-rga:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20260801/FinancialInstruments/FinancialInstruments/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20150801/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to reflect issue resolutions detailed in the FIBO FBC 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20160801/FinancialInstruments/FinancialInstruments/ version of this ontology was modified for the FIBO 2.0 RFC, including minor bug fixes.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FinancialInstruments/FinancialInstruments/ version of this ontology was modified as a part of organizational hierarchy simplification, to add maturity-related properties, and to add exempt security.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190401/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to correct the label on packaged financial product.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190701/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190901/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to change the restriction on financial instrument identifier from some values to min 0, to allow for cases when an instrument identifier identifies a listing, eliminate duplication of concepts in LCC, and simplify addresses.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200301/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to move redemption provision from debt to financial instruments, given that it is a broader concept needed for equities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200801/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to add a property indicating the currency that an instrument is issued in, simplify the contract party hierarchy and add properties relating financial instruments to shareholders.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20201201/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to incorporate a hasMaturityDate property given that it can apply to debt instruments and preferred shares, as well as to other financial instruments, eliminated the redundant hasScheduledMaturityDate property, cleaned up circular definitions, eliminated the property 'mayBeTradedIn', which was only used in one place and was redundant with the concept of a ListedSecurity / Listing in SEC, added a synonym and additional explanatory note to packaged financial product, added hasNominalValue, which was a gap, and added back restrictions on debt instrument for hasMaturityDate (min 0 to account for rare instruments (e.g., consul) that have no maturity date), hasDurationToMaturity and hasTimeToMaturity.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210301/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to add the concept of a spot contract and clarify the definition of time to maturity, as well as add a property for days to maturity.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210701/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to make Entitlement a subclass of Security and fix spelling.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20211201/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to move properties and restrictions related to maturity to the Debt ontology, on credit agreement, and deprecate them here as well as to restructure the relationship between the two ontologies.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220101/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to eliminate deprecated content, i.e., properties related to maturity that are now in the Debt ontology and revise the definition of a securities transaction identifier to align with ISO 23897.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220601/FinancialInstruments/FinancialInstruments/ version of this ontology was modified to address dead links and text formatting issues uncovered by hygiene testing.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220801/FinancialInstruments/FinancialInstruments.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary and to add a new property, has underlier, which is needed in both securities and derivatives.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to augment the definition of a commodity contract with a quantity and price as of contract execution.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230501/FinancialInstruments/FinancialInstruments.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20231101/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to tease out the distinction between the nominal and notional amount, which were confused (DER-127)and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20231201/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to augment the definition of currency instrument with the notions of buying and selling currencies as well as the source(s) for anticipated rates (DER-143).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to refine the definition of issuer (FBC-284).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240801/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to loosen the constraint on financial instrument with respect to having exactly 1 currency (DER-113), and to move the definition of promissory note from debt to financial instruments (LOAN-168).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20241001/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to add a restriction related to initial exchange date.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20241201/FinancialInstruments/FinancialInstruments.rdf version of this ontology was modified to unify and simplify the notion of an underlier across FIBO (DER-112).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250201/FinancialInstruments/FinancialInstruments.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FinancialInstruments/FinancialInstruments.rdf version of the ontology was modified to add calculation agent, which may appear at a higher level than derivatives (DER-55).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250501/FinancialInstruments/FinancialInstruments.rdf version of the ontology was modified to replace hasConstituent with hasMember for better semantic consistency (FND-396) and to reclassify entitlement under financial instrument, since not all entitlements are securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250901/FinancialInstruments/FinancialInstruments.rdf version of the ontology was modified to eliminate long-time deprecated elements (FND-399).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20251201/FinancialInstruments/FinancialInstruments.rdf version of the ontology was modified to clarify the definition of issuer (FND-336)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 Object Management Group, Inc.",
+        "Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fbc-fi-fi:CommodityInstrument a owl:Class ;
+    rdfs:label "commodity instrument",
+        "商品工具（commodity instrument）"@zh ;
+    rdfs:comment "代表大宗商品（如原材料和初级农产品）所有权权益的金融工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-pas-pas:Commodity ;
+            owl:onProperty fibo-fnd-rel-rel:involves ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:ScalarQuantityValue ;
+            owl:onProperty cmns-qtu:hasQuantityValue ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fbc-fi-fi:hasCommodityValueAsOfExecutionDate ],
+        fibo-fbc-fi-fi:FinancialInstrument ;
+    skos:definition "financial instrument representing an ownership interest in bulk goods, such as raw materials and primary agricultural products" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of Financial Instruments (CFI code), Fourth edition, 2019-10." ;
+    cmns-av:explanatoryNote "The value of the contract is derived from the market value of an underlying commodity or commodity index. Commodity derivatives can be physically or cash settled. Primary underliers include metals, agricultural goods and energy." .
+
+fibo-fbc-fi-fi:CurrencyInstrument a owl:Class ;
+    rdfs:label "currency instrument",
+        "货币工具（currency instrument）"@zh ;
+    rdfs:comment "用于货币交易目的的金融工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fbc-fi-fi:hasBuyingCurrency ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fbc-fi-fi:hasSellingCurrency ],
+        fibo-fbc-fi-fi:FinancialInstrument ;
+    skos:definition "financial instrument used for the purposes of currency trading" ;
+    skos:example "Example currencies include UK pounds, US dollars, Euro. An example currency instrument is spot currency instrument." ;
+    skos:scopeNote "Each instance of a currency instrument has a one to one relationship with its associated currency." ;
+    cmns-av:adaptedFrom "Parameswaran, Sunil. Fundamentals of Financial Instruments: An Introduction to Stocks, Bonds, Foreign Exchange, and Derivatives. John Wiley and Sons (Asia) Pte. Lte., Singapore, 2011." .
+
+fibo-fbc-fi-fi:Entitlement a owl:Class ;
+    rdfs:label "entitlement",
+        "权益凭证（entitlement）"@zh ;
+    rdfs:comment "使持有人按既定条款获得特定资产的权益、认购特权或收取权的金融工具。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:FinancialInstrument ;
+    skos:definition "financial instrument that provides the holder an interest in, or the privilege to subscribe to, or to receive specific assets under terms specified" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of Financial Instruments (CFI code), Fourth edition, 2019-10." ;
+    cmns-av:explanatoryNote "Note that certain fund units, including but not limited to units in pension funds and other non-public investment structures may be considered entitlements but not securities. They may or may not be identified using traditional financial instrument identifiers. Some entitlements, such as warrants, whose value changes based on the value of some underlier, are considered derivative instruments." ;
+    cmns-av:synonym "right" .
+
+fibo-fbc-fi-fi:EquityInstrument a owl:Class ;
+    rdfs:label "equity instrument",
+        "权益工具（equity instrument）"@zh ;
+    rdfs:comment "代表对某一实体或资产池的所有权权益的金融工具。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:Security ;
+    skos:definition "financial instrument representing an ownership interest in an entity or pool of assets" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of Financial Instruments (CFI code), Fourth edition, 2019-10." .
+
+fibo-fbc-fi-fi:ExemptSecurity a owl:Class ;
+    rdfs:label "exempt security",
+        "豁免证券（exempt security）"@zh ;
+    rdfs:comment "免于适用某些监管规则的证券。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:Security ;
+    skos:definition "security that is exempt from certain regulatory rules" ;
+    skos:example "Some exemptions from the registration requirement include: private offerings to a limited number of persons or institutions; offerings of limited size; intrastate offerings; and securities of municipal, state, and federal governments." ;
+    cmns-av:adaptedFrom "Securities Act of 1933" ;
+    cmns-av:explanatoryNote "Generally, securities must be filed with the appropriate regulatory agencies in the jurisdiction in which they are sold. The registration forms companies file provide essential facts while minimizing the burden and expense of complying with the law. Not all securities must be registered, however. By exempting many small offerings from the registration process, regulators seek to foster capital formation by lowering the cost of offering securities to the public." .
+
+fibo-fbc-fi-fi:Future a owl:Class ;
+    rdfs:label "future",
+        "期货（future）"@zh ;
+    rdfs:comment "衍生工具：买方有义务在约定价格接收、卖方有义务交付约定资产，于未来某一时点执行。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "derivative instrument that obligates the buyer to receive and the seller to deliver the assets specified at an agreed price, at some later point in time" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of Financial Instruments (CFI code), Fourth edition, 2019-10." .
+
+fibo-fbc-fi-fi:NonNegotiableSecurity a owl:Class ;
+    rdfs:label "non-negotiable security",
+        "不可转让证券（non-negotiable security）"@zh ;
+    rdfs:comment "不可转让给他方的证券。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:Security ;
+    owl:disjointWith fibo-fbc-fi-fi:NegotiableSecurity ;
+    skos:definition "security that is not transferable to another party" ;
+    cmns-av:explanatoryNote "Certain securities that can be redeemed by the issuer may not be 'negotiable', such as savings bonds and certificates of deposit." .
+
+fibo-fbc-fi-fi:Option a owl:Class ;
+    rdfs:label "option",
+        "期权（option）"@zh ;
+    rdfs:comment "衍生工具：赋予持有人按预定价格买入或卖出约定资产的特权。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "derivative instrument that grants to the holder either the privilege to purchase or the privilege to sell the assets specified at a predetermined price or formula at or within a time period in the future" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of Financial Instruments (CFI code), Fourth edition, 2019-10." .
+
+fibo-fbc-fi-fi:PackagedFinancialProduct a owl:Class ;
+    rdfs:label "packaged financial product",
+        "打包金融产品（packaged financial product）"@zh ;
+    rdfs:comment "作为容器容纳至少一种金融工具（包括其他金融产品）、且其价值来源于所含成分的金融产品。"@zh ;
+    rdfs:seeAlso <https://www.sec.gov/Archives/edgar/data/36995/000121465907002234/c101872fwp.htm> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-pas-fpas:FinancialProduct fibo-fbc-fi-fi:FinancialInstrument ) ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:FinancialProductCatalog ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        fibo-fbc-pas-fpas:FinancialProduct,
+        fibo-fnd-pas-pas:ContractualProduct ;
+    skos:definition "financial product that acts as a container for at least one financial instrument, including other financial products, and whose value is derived from, or based on a reference asset, market measure, or investment strategy" ;
+    skos:scopeNote "Packaged products are typically included in an institution's approved product catalog, i.e., pre-approved by compliance organizations for sale to clients. Not all institutions maintain such a catalog, with internal identifiers for such products, but many do. Such core products may have as attributes: Type (product and possibly asset class), product identifier, status and approval date, product family approval (as appropriate), and so forth." ;
+    cmns-av:explanatoryNote "Certain properties of the instruments, such as their term, interest rate, eligibility of the client, etc., may be set as a part of the product specification. Some of these are intrinsic but variable properties of the instrument, for example the exact interest rate, whereas others are extrinsic, such as client eligibility. Product offerings have prices, which may build in various fees, that are components of the cost of carry on a trader's books.",
+        "Reference assets and market measures may include single equity or debt securities, indexes, commodities, interest rates and/or foreign currencies, as well as baskets of these reference assets or market measures. Like other well-known market instruments such as convertible bonds, many structured products are hybrid securities. Structured products typically have two components - a debt instrument and a derivative, which is often an option. The debt instrument, in some instances, may pay interest at a specified rate and interval. The derivative component establishes payment at maturity, which may give the issuer the right to buy from you, or sell you, the referenced security or securities at a predetermined price. For example, structured products may combine characteristics of debt and equity or of debt and commodities.",
+        "SEC Rule 434 defines structured securities as 'securities whose cash flow characteristics depend upon one or more indices or that have embedded forwards or options or securities where an investor's investment return and the issuer's payment obligations are contingent on, or highly sensitive to, changes in the value of underlying assets, indices, interest rates or cash flows'." ;
+    cmns-av:synonym "market-linked investment",
+        "structured product" .
+
+fibo-fbc-fi-fi:SpotContract a owl:Class ;
+    rdfs:label "spot contract"@en,
+        "即期合约（spot contract）"@zh ;
+    rdfs:comment "在指定日期即时交割结算的金融工具。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:FinancialInstrument ;
+    skos:definition "financial instrument that settles for immediate delivery on a specified date"@en ;
+    cmns-av:explanatoryNote "A spot transaction is a transaction in which some goods or instrument(s) are exchanged for some other goods or instruments, including currency, with no future delivery provision, i.e., within the minimum number of days possible. Examples include currency spots and commodity spot transactions, whose settlement convention is determined by the relevant market."@en .
+
+fibo-fbc-fi-fi:StandardizedTerms a owl:Class ;
+    rdfs:label "standardized terms",
+        "标准化条款（standardized terms）"@zh ;
+    rdfs:comment "组合在一起、在众多合同中被一致复用、由某机构发布且可被机器处理的合同条款。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractualCommitment ;
+    skos:definition "contract terms that, grouped together, that are generally and consistently reused across many contracts, published by some organization, and capable of being incorporated into a contract by reference" ;
+    skos:example "Each exchange has a set of terms they apply to membership agreements and with respect to the instruments that may be traded on that exchange. For example, there is a set expiration date that exchanges will publish for exchange-traded options - in the US it is the Saturday following the third Friday of every month. Similarly, there are set incremental dates for strike for exchange traded options. Contract sizes are also stipulated, for example in the US these are standardized by the OPRA Convention (Options Pricing Reporting Authority)." .
+
+fibo-fbc-fi-fi:hasCalculationAgent a owl:ObjectProperty ;
+    rdfs:label "has calculation agent"@en,
+        "具有计算代理人（has calculation agent）"@zh ;
+    rdfs:comment "指明负责确定工具价值的一方（角色）。"@zh ;
+    rdfs:range fibo-fbc-fi-fi:CalculationAgent ;
+    rdfs:subPropertyOf cmns-org:isProvidedBy ;
+    skos:definition "indicates a party (role) responsible for determining the value of an instrument" .
+
+fibo-fbc-fi-fi:hasPrincipalExecutiveOfficeAddress a owl:ObjectProperty ;
+    rdfs:label "has principal executive office address",
+        "具有主要办公地址（has principal executive office address）"@zh ;
+    rdfs:comment "将机构（具体为金融工具发行人）与其主要办公地址关联起来，为发行该工具所需。"@zh ;
+    rdfs:domain cmns-org:LegalPerson ;
+    rdfs:range fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:subPropertyOf fibo-be-le-fbo:hasRegisteredAddress ;
+    skos:definition "relates an organization, specifically the issuer of a financial instrument, to its principal executive address, as required for issuance of that instrument" ;
+    cmns-av:explanatoryNote "Note that in most cases, the principal executive office address is also the headquarters address for a company." .
+
+fibo-fbc-fi-fi:hasRedemptionProvision a owl:ObjectProperty ;
+    rdfs:label "has redemption terms",
+        "具有赎回条款（has redemption terms）"@zh ;
+    rdfs:comment "指明工具或相关合同文件中规定的赎回具体条款。"@zh ;
+    rdfs:range fibo-fbc-fi-fi:RedemptionProvision ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasContractualElement ;
+    skos:definition "indicates the specific terms related to redemption as specified in the instrument or a related contract document" .
+
+fibo-fbc-fi-fi:hasUnderlier a owl:ObjectProperty ;
+    rdfs:label "has underlier",
+        "具有标的（has underlier）"@zh ;
+    rdfs:comment "将衍生品与合约所基于的标的事物关联起来。"@zh ;
+    rdfs:range fibo-fbc-fi-fi:Underlier ;
+    rdfs:subPropertyOf cmns-pts:hasUndergoer ;
+    skos:definition "relates a derivative to something on which the contract is based" ;
+    cmns-av:usageNote "The domain of this property can be either a derivative instrument or, in the case of a swap contract, one leg of the swap." .
+
+fibo-fbc-fi-fi:hasValueExpressedIn a owl:ObjectProperty ;
+    rdfs:label "has value expressed in",
+        "价值以……表示（has value expressed in）"@zh ;
+    rdfs:comment "将工具或指数等与其价值通常表示所用的货币关联起来。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasCurrency ;
+    skos:definition "relates something, such as an instrument or index, to the currency its value is typically expressed in" ;
+    cmns-av:explanatoryNote "This should be the same currency that was declared at the time of issuance." .
+
+fibo-fbc-fi-fi:holdsSharesIn a owl:ObjectProperty ;
+    rdfs:label "holds shares in",
+        "持有……的股份（holds shares in）"@zh ;
+    rdfs:comment "指明股东持有权益头寸的发行人。"@zh ;
+    rdfs:domain fibo-be-oac-cown:Shareholder ;
+    rdfs:range fibo-fbc-fi-fi:Issuer ;
+    rdfs:subPropertyOf cmns-pts:actsOn ;
+    owl:inverseOf fibo-fbc-fi-fi:hasShareholder ;
+    skos:definition "specifies the issuer in which a shareholder holds an equity position" .
+
+fibo-fbc-pas-fpas:UniqueTransactionIdentifier a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fi-fi:SecuritiesTransaction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+fibo-fbc-fi-fi:CalculationAgent a owl:Class ;
+    rdfs:label "calculation agent"@en,
+        "计算代理人（calculation agent）"@zh ;
+    rdfs:comment "负责确定工具价值的一方，在某些情况下还确定双方相互应付的金额。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:ThirdPartyAgent ;
+    skos:definition "party that is responsible for determining the value of an instrument and in some cases, determines how much the parties owe one another"@en ;
+    cmns-av:explanatoryNote "A calculation agent is an entity responsible for performing calculations and determinations outlined in financial agreements, often related to derivatives or structured products. They ensure accuracy and timeliness in calculating payments, interest rates, or other terms based on predefined formulas and market conditions. The agent can establish the price for a given instrument and may act as its guarantor and issuer. If the counterparty in a derivative transaction is a broker-dealer, then the broker-dealer will often act as the calculation agent."@en .
+
+fibo-fbc-fi-fi:CashInstrument a owl:Class ;
+    rdfs:label "cash instrument",
+        "现金类工具（cash instrument）"@zh ;
+    rdfs:comment "价值由市场决定且易于转让（高流动性）的金融工具。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:FinancialInstrument ;
+    skos:definition "financial instrument whose value is determined by the market and that is readily transferable (highly liquid)" ;
+    skos:scopeNote "Cash instruments can be classified into two subgroups, as securities and other cash instruments such as loans and deposits." .
+
+fibo-fbc-fi-fi:DebtInstrument a owl:Class ;
+    rdfs:label "debt instrument",
+        "债务工具（debt instrument）"@zh ;
+    rdfs:comment "作为信贷协议的金融工具，证明发行人按既定条款对持有人负有欠款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasBorrower ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Borrower ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasLender ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Lender ],
+        fibo-fbc-dae-dbt:CreditAgreement,
+        fibo-fbc-fi-fi:FinancialInstrument ;
+    skos:definition "financial instrument and credit agreement evidencing monies owed by the issuer to the holder on terms as specified" ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of Financial Instruments (CFI code), Fourth edition, 2019-10." .
+
+fibo-fbc-fi-fi:FinancialInstrumentIdentifier a owl:Class ;
+    rdfs:label "financial instrument identifier",
+        "金融工具标识符（financial instrument identifier）"@zh ;
+    rdfs:comment "在特定情境下为某一目的唯一标识金融工具的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fi-fi:FinancialInstrument ;
+            owl:onProperty cmns-id:identifies ],
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters uniquely identifying a financial instrument for some purpose and within a specified context" ;
+    skos:scopeNote "Identifiers for financial instruments may include an ISIN, Sedol, CUSIP, BBGID, FIGI, or other identifier issued approximately when the instrument itself is issued, and based on the kind of instrument and jurisdiction in which it is issued." .
+
+fibo-fbc-fi-fi:NegotiableSecurity a owl:Class ;
+    rdfs:label "negotiable security",
+        "可转让证券（negotiable security）"@zh ;
+    rdfs:comment "可转让给他方的证券。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-fbc-fi-fi:isNegotiable ],
+        fibo-fbc-fi-fi:Security,
+        fibo-fnd-agr-ctr:TransferableContract ;
+    skos:definition "security that can be transferred to another party" .
+
+fibo-fbc-fi-fi:PromissoryNote a owl:Class ;
+    rdfs:label "promissory note",
+        "本票（promissory note）"@zh ;
+    rdfs:comment "一种债务工具：一方向另一方出具的书面承诺，承诺按要求或在规定期限内支付指定金额。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:DebtInstrument ;
+    skos:definition "debt instrument that is a written promise by one party to another that commits that party to pay a specified sum on demand or within a specified time frame under specified terms" ;
+    cmns-av:explanatoryNote "Promissory notes are generally fully fungible. They may or may not be negotiable." .
+
+fibo-fbc-fi-fi:RedemptionProvision a owl:Class ;
+    rdfs:label "redemption provision",
+        "赎回条款（redemption provision）"@zh ;
+    rdfs:comment "使发行人（签发方）能够通过偿付约定价格重新取得所有权的合同条款。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractualCommitment ;
+    skos:definition "contract provision enabling the issuer (writer) to regain possession through repayment of some stipulated price" ;
+    cmns-av:explanatoryNote "In general, redemption is synonymous with 'buy back' or 'cash in', depending on the kind of instrument. Redemption provisions are commonly applicable to the process of annulling a defeasible title, such as for a mortgage or tax sale, by paying the debt or fulfilling an obligation." .
+
+fibo-fbc-fi-fi:SecuritiesTransaction a owl:Class ;
+    rdfs:label "securities transaction",
+        "证券交易（securities transaction）"@zh ;
+    rdfs:comment "两方或多方之间涉及通用定义金融产品交换的交易。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:FinancialInstrument ],
+        fibo-fbc-pas-fpas:Trade ;
+    skos:definition "transaction between two or more parties involving the exchange of commonly defined financial products" ;
+    cmns-av:adaptedFrom "ISO 23897:2020, Financial services - Unique transaction identifier (UTI), clause 3.3" ;
+    cmns-av:synonym "financial transaction" .
+
+fibo-fbc-fi-fi:Underlier a owl:Class ;
+    rdfs:label "underlier",
+        "标的（underlier）"@zh ;
+    rdfs:comment "可在市场上被赋予价值、构成衍生品或资产池支持工具基础的事物。"@zh ;
+    rdfs:subClassOf cmns-pts:Undergoer ;
+    skos:definition "something that can be assigned a value in the marketplace that forms the basis for a derivative or pool-backed instrument" ;
+    cmns-av:explanatoryNote "Underlier means any rate (including interest and foreign exchange rates), currency, commodity, security, instrument of indebtedness, index, quantitative measure, occurrence or non-occurrence of an event, or other financial or economic interest, or property of any kind, or any interest therein or based on the value thereof, in or by reference to which any payment or delivery under a transaction is to be made or determined." .
+
+fibo-fbc-fi-fi:hasBuyingCurrency a owl:ObjectProperty ;
+    rdfs:label "has buying currency"@en,
+        "具有买入货币（has buying currency）"@zh ;
+    rdfs:comment "指明货币或相关工具中买入的货币。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasDealtCurrency ;
+    skos:definition "indicates the currency purchased with respect to a currency or related instrument"@en ;
+    cmns-av:explanatoryNote "Note that the buying and selling currencies could be the same under certain circumstances."@en .
+
+fibo-fbc-fi-fi:hasCommodityValueAsOfExecutionDate a owl:ObjectProperty ;
+    rdfs:label "has commodity value as of execution date",
+        "具有执行日商品价值（has commodity value as of execution date）"@zh ;
+    rdfs:comment "指明合同执行日某商品的单位价值。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "indicates the per unit value of a given commodity as of the date that the contract is executed" .
+
+fibo-fbc-fi-fi:hasNominalValue a owl:ObjectProperty ;
+    rdfs:label "has nominal value",
+        "具有名义价值（has nominal value）"@zh ;
+    rdfs:comment "指明合同的票面价值。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "indicates the face value of a contract" ;
+    cmns-av:explanatoryNote "Nominal value of a security is its redemption price and will vary from its market value. A preferred stock's nominal (par) value is important in that it is used to calculate its dividend while the nominal value of common stock is an arbitrary value assigned for balance sheet purposes.",
+        """The nominal amount of a financial instrument is the face amount used to calculate payments made on that instrument. This amount generally does not change.
+		
+		For securities the nominal value is often referred to as the face or par value. This is the redemption price of the security and is normally stated on the front of that security. With respect to bonds and stocks, it is the stated value of an issued security, as opposed to its market value.""" ;
+    cmns-av:synonym "has face value" .
+
+fibo-fbc-fi-fi:hasSellingCurrency a owl:ObjectProperty ;
+    rdfs:label "has selling currency"@en,
+        "具有卖出货币（has selling currency）"@zh ;
+    rdfs:comment "指明货币或相关工具中卖出的货币。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasBaseCurrency ;
+    skos:definition "indicates the currency sold with respect to a currency or related instrument"@en ;
+    cmns-av:explanatoryNote "Note that the buying and selling currencies could be the same under certain circumstances."@en .
+
+fibo-fbc-fi-fi:hasShareholder a owl:ObjectProperty ;
+    rdfs:label "has shareholder",
+        "具有股东（has shareholder）"@zh ;
+    rdfs:comment "指明持有发行人股份的一方。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:Issuer ;
+    rdfs:range fibo-be-oac-cown:Shareholder ;
+    rdfs:subPropertyOf cmns-pts:isAffectedBy ;
+    skos:definition "indicates a party that holds shares in the issuer" .
+
+fibo-fbc-fi-fi:isDenominatedIn a owl:ObjectProperty ;
+    rdfs:label "is denominated in",
+        "以……计价（is denominated in）"@zh ;
+    rdfs:comment "指明金融工具发行所用的货币。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:FinancialInstrument ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasCurrency ;
+    skos:definition "indicates the currency in which the financial instrument was issued" .
+
+fibo-fbc-fi-fi:DerivativeInstrument a owl:Class ;
+    rdfs:label "derivative instrument",
+        "衍生工具（derivative instrument）"@zh ;
+    rdfs:comment "赋予持有人特定权利或义务、其价值来源于一种或多种标的资产的金融工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fbc-dae-dbt:hasInitialExchangeDate ],
+        fibo-fbc-fi-fi:FinancialInstrument ;
+    owl:disjointWith fibo-fbc-fi-fi:CashInstrument ;
+    skos:definition "financial instrument that confers on its holders certain rights or obligations, whose value is derived from one or more underlying assets" ;
+    skos:example "The three major categories of derivatives are (1) forward and future contracts, (2) options contracts, and (3) swaps. The most common underlying assets include stocks, bonds, commodities, currencies, interest rates and market indexes." ;
+    skos:scopeNote "Derivatives can be characterized by whether they are exchange-traded or traded over-the-counter (OTC)." ;
+    cmns-av:adaptedFrom "Parameswaran, Sunil. Fundamentals of Financial Instruments: An Introduction to Stocks, Bonds, Foreign Exchange, and Derivatives. John Wiley and Sons (Asia) Pte. Lte., Singapore, 2011." ;
+    cmns-av:explanatoryNote "Derivative contracts owe their availability to the existence of markets for an underlying asset or a portfolio of assets on which such agreements are written. The derivative itself is merely a contract between two or more parties. Its value is determined by fluctuations in the underlying asset. Most derivatives are characterized by high leverage." ;
+    cmns-av:synonym "derivative contract" .
+
+fibo-fbc-fi-fi:isLegallyRecordedIn a owl:ObjectProperty ;
+    rdfs:label "is legally recorded in",
+        "法律登记于（is legally recorded in）"@zh ;
+    rdfs:comment "金融工具为监管或税务目的进行法律登记的司法管辖区（国家、县、州、省、市）。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:FinancialInstrument ;
+    rdfs:range cmns-rga:Jurisdiction ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasGoverningJurisdiction ;
+    skos:definition "jurisdiction (country, county, state, province, city) in which the financial instrument is legally recorded for regulatory and/or tax purposes" .
+
+fibo-fbc-fi-fi:isNegotiable a owl:DatatypeProperty ;
+    rdfs:label "is negotiable",
+        "是否可转让（is negotiable）"@zh ;
+    rdfs:comment "指明某一金融工具是否可转让。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:FinancialInstrument ;
+    rdfs:range xsd:boolean ;
+    skos:definition "specifies whether a particular financial instrument is or is not transferable" .
+
+fibo-fbc-fi-fi:Issuer a owl:Class ;
+    rdfs:label "issuer",
+        "发行人（issuer）"@zh ;
+    rdfs:comment "以某种明确且通常正式的方式发行（或拟发行）一种或多种金融工具的一方所扮演的角色。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-fbc-fi-fi:FinancialInstrument ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:issues ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-fbc-dae-dbt:CreditAgreement ) ] ],
+        fibo-fnd-agr-ctr:ContractPrincipal ;
+    skos:definition "role of a party that makes (or proposes to make) one or more financial instruments available in some well-defined, typically formal way" ;
+    cmns-av:adaptedFrom "Securities Exchange Act of 1934, as amended 12 August 2012" ;
+    cmns-av:explanatoryNote "An issuer can be any legal person, including a legally competent natural person, company, government, or political subdivision, agency, or instrumentality of a government, depending on the nature of the instrument. A person might provide a loan directly to another party, but most instruments are issued by legal entities.",
+        "With respect to certificates of deposit for securities, voting-trust certificates, or collateral- trust certificates, or with respect to certificates of interest or shares in an unincorporated investment trust not having a board of directors or of the fixed, restricted management, or unit type, the term issuer means the person or persons performing the acts and assuming the duties of depositor or manager pursuant to the provisions of the trust or other agreement or instrument under which such securities are issued; and except that with respect to equipment-trust certificates or like securities, the term issuer means the person by whom the equipment or property is, or is to be, used." .
+
+fibo-fbc-fi-fi:Security a owl:Class ;
+    rdfs:label "security",
+        "证券（security）"@zh ;
+    rdfs:comment "可以买入或卖出的金融工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-fi-fi:FinancialInstrument ;
+    skos:definition "financial instrument that can be bought or sold" ;
+    cmns-av:adaptedFrom "Securities Exchange Act of 1934, as amended 12 August 2012" ;
+    cmns-av:explanatoryNote "A security can be any note, stock, treasury stock, security future, security-based swap, bond, debenture,certificate of interest or participation in any profit-sharing agreement or in any oil, gas, or other mineral royalty or lease, any collateral-trust certificate, preorganization certificate or subscription, transferable share, investment contract, voting-trust certificate, certificate of deposit for a security, any put, call, straddle, option, or privilege on any security, certificate of deposit, or group or index of securities (including any interest therein or based on the value thereof), or any put, call, straddle, option, or privilege entered into on a national securities exchange relating to foreign currency, or in general, any instrument commonly known as a security, or any certificate of interest or participation in, temporary or interim certificate for, receipt for, or warrant or right to subscribe to or purchase, any of the foregoing; but shall not include currency or any note, draft, bill of exchange, or bankers' acceptance which has a maturity at the time of issuance of not exceeding nine months, exclusive of days of grace, or any renewal thereof the maturity of which is likewise limited.",
+        "In the U.S., the Supreme Court has adopted a flexible and liberal approach in determining what constitutes a security. In its famous decision of SEC v. W.J. Howey Co., 328 U.S. 293, 90 L.Ed. 1244, 66 S.Ct. 1100 (1946), the Court held that land sales contracts for citrus groves in Florida, coupled with warranty deeds for the land and a contract to service the land, were 'investment contracts' and thus securities. The Court stated that [a]n investment contract for purposes of the Securities Act means a contract, transaction or scheme whereby a person invests his money in a common enterprise and is led to expect profits solely from the efforts of the promoter or a third party. 66 S.Ct. at 1103. According to the Court, it is immaterial whether the shares in the enterprise are evidenced by formal certificates or by nominal interests in the physical assets employed in the enterprise. 66 S.Ct. at 1104.",
+        "Some securities may be traded over the counter, or through an exchange, or via some other trading venue such as an electronic trading platform.",
+        "Whether a contract or other economic right is a security essentially depends on whether the holder of the contract is acting as an investor who seeks financial benefits based on the work of a promoter or a third party." .
+
+fibo-fbc-fi-fi:FinancialInstrument a owl:Class ;
+    rdfs:label "financial instrument",
+        "金融工具（financial instrument）"@zh ;
+    rdfs:comment "同时产生一方金融资产和另一方金融负债的书面合同。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fbc-fi-fi:hasNominalValue ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fi-fi:FinancialInstrumentIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Issuer ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-fbc-fi-fi:isNegotiable ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:isDenominatedIn ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+        fibo-fnd-agr-ctr:WrittenContract ;
+    skos:definition "written contract that gives rise to both a financial asset of one entity and a financial liability of another entity" ;
+    skos:example "Examples of financial instruments include: cash, evidence of an ownership interest in an entity, or a contractual right to receive (or deliver) cash, or another financial instrument." ;
+    cmns-av:adaptedFrom "https://www.ifrs.org/content/dam/ifrs/publications/pdf-standards/english/2021/issued/part-a/ias-32-financial-instruments-presentation.pdf"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "A financial instrument can be thought of as a template that defines an arrangement structure that remains to be fleshed out with terms and parameters in order to establish a specific instance of the contract." .
+

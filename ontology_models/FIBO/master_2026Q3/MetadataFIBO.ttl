@@ -1,0 +1,92 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-actus-mod: <https://spec.edmcouncil.org/fibo/ontology/ACTUS/MetadataACTUS/> .
+@prefix fibo-be-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/MetadataBE/> .
+@prefix fibo-bp-mod: <https://spec.edmcouncil.org/fibo/ontology/BP/MetadataBP/> .
+@prefix fibo-cae-mod: <https://spec.edmcouncil.org/fibo/ontology/CAE/MetadataCAE/> .
+@prefix fibo-der-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/MetadataDER/> .
+@prefix fibo-exmp-mod: <https://spec.edmcouncil.org/fibo/ontology/EXMP/MetadataEXMP/> .
+@prefix fibo-fbc-mod: <https://spec.edmcouncil.org/fibo/ontology/FBC/MetadataFBC/> .
+@prefix fibo-fnd-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/MetadataFND/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/MetadataIND/> .
+@prefix fibo-loan-mod: <https://spec.edmcouncil.org/fibo/ontology/LOAN/MetadataLOAN/> .
+@prefix fibo-md-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/MetadataMD/> .
+@prefix fibo-sec-mod: <https://spec.edmcouncil.org/fibo/ontology/SEC/MetadataSEC/> .
+@prefix fibo-spec: <https://spec.edmcouncil.org/fibo/ontology/MetadataFIBO/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-spec: a owl:Ontology ;
+    rdfs:label "Metadata for FIBO",
+        "FIBO 全库元数据清单（Metadata for FIBO）"@zh ;
+    dcterms:abstract "This is the top-level metadata vocabulary used to describe the Financial Industry Business Ontology (FIBO)." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2026 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-04-15T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "FIBO 的最高层清单文件：声明整个 FIBO 由 12 个域（BE、FBC、FND、SEC、DER、LOAN、IND、BP、CAE、MD、EXMP、ACTUS）构成，并携带全库的版本、版权与许可信息，是发布管理意义上的「总目录」。"@zh ;
+    owl:imports fibo-actus-mod:,
+        fibo-be-mod:,
+        fibo-bp-mod:,
+        fibo-cae-mod:,
+        fibo-der-mod:,
+        fibo-exmp-mod:,
+        fibo-fbc-mod:,
+        fibo-fnd-mod:,
+        fibo-fnd-utl-av:,
+        fibo-ind-mod:,
+        fibo-loan-mod:,
+        fibo-md-mod:,
+        fibo-sec-mod:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/20260401/MetadataFIBO/> ;
+    cmns-av:copyright "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2013-2026 Object Management Group" .
+
+fibo-spec:FIBOSpecification a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "FIBO Specification" ;
+    dcterms:abstract """The Financial Industry Business Ontology (FIBO) is a collaborative effort among industry practitioners, semantic technology experts and information scientists to standardize the language used to precisely define the terms, conditions, and characteristics of financial instruments; the legal and relationship structure of business entities; the content and time dimensions of market data; and the legal obligations and process aspects of corporate actions. The definitions and relationships that comprise FIBO have been modularized into a number of domains, which in turn include a number of modules, each of which is further modularized into one or more constituent ontologies. 
+
+The FIBO ontologies are available for download as OWL 2 DL compliant ontologies from the EDM Council site in three serializations: RDF/XML, Turtle, and JSON-LD, and are linked at https://spec.edmcouncil.org/fibo/ontology/. They can also be downloaded directly from GitHub at https://github.com/edmcouncil/fibo.""" ;
+    dcterms:hasPart fibo-actus-mod:ACTUSDomain,
+        fibo-be-mod:BEDomain,
+        fibo-bp-mod:BPDomain,
+        fibo-cae-mod:CAEDomain,
+        fibo-der-mod:DERDomain,
+        fibo-exmp-mod:ExamplesModule,
+        fibo-fbc-mod:FBCDomain,
+        fibo-fnd-mod:FNDDomain,
+        fibo-ind-mod:INDDomain,
+        fibo-loan-mod:LOANDomain,
+        fibo-md-mod:MDDomain,
+        fibo-sec-mod:SECDomain ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2026 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-06-05T18:00:00"^^xsd:dateTime ;
+    dcterms:title "Financial Industry Business Ontology (FIBO)" ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    skos:altLabel "Financial Industry Business Ontology (FIBO)" ;
+    cmns-av:copyright "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.",
+        "Copyright (c) 2013-2026 Object Management Group" .
+

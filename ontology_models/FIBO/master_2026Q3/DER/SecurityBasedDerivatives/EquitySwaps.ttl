@@ -1,0 +1,210 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-der-sbd-eqs: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/EquitySwaps/> .
+@prefix fibo-der-sbd-sbd: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-mkt-bas: <https://spec.edmcouncil.org/fibo/ontology/IND/MarketIndices/BasketIndices/> .
+@prefix fibo-sec-eq-eq: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-sbd-eqs: a owl:Ontology ;
+    rdfs:label "Equity Swaps Ontology"@en,
+        "股权互换本体（Equity Swaps Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts specific to swap contracts in which one leg gives some form of return on an equity asset, including dividend returns, total asset returns equity dispersion and correlation measurement terms. Many of these return calculations are based on a variety of calculation methods and may vary widely." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义股权互换（equity swap）：以股票或股指收益与利率现金流交换的合约。"@zh ;
+    owl:imports fibo-der-drc-bsc:,
+        fibo-der-drc-swp:,
+        fibo-der-sbd-sbd:,
+        fibo-fbc-fi-fi:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        fibo-ind-mkt-bas:,
+        fibo-sec-eq-eq:,
+        cmns-av:,
+        cmns-dt:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20250301/SecurityBasedDerivatives/EquitySwaps/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20201201/SecurityBasedDerivatives/EquitySwaps.rdf version of this ontology was modified to fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20211201/SecurityBasedDerivatives/EquitySwaps.rdf version of this ontology was modified to add the concept of a high-level equity swap as well as an equity volatility swap per the ISO CFI standard and to add references to the CFI where appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220301/SecurityBasedDerivatives/EquitySwaps/ version of this ontology was modified to eliminate deprecated swap elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220501/SecurityBasedDerivatives/EquitySwaps.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, and to move the definition of an underlier and the related property, has underlier, to financial instruments so that these concepts are also available for use in relation to pool-backed securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/SecurityBasedDerivatives/EquitySwaps.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/SecurityBasedDerivatives/EquitySwaps.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230401/SecurityBasedDerivatives/EquitySwaps.rdf version of this ontology was modified to simplify and refine definitions related to underliers (DER-112)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-der-sbd-eqs:DispersionSwapIndexConstituentsLeg a owl:Class ;
+    rdfs:label "dispersion swap index constituents leg"@en,
+        "离散度互换指数成分腿（dispersion swap index constituents leg）"@zh ;
+    rdfs:comment "标的为给定股票指数一组成分股的离散度腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-ind-mkt-bas:BasketOfEquities ] ],
+        fibo-der-drc-swp:DispersionLeg ;
+    skos:definition "dispersion leg whose underlier is a defined set of constituents of a given equity index"@en .
+
+fibo-der-sbd-eqs:DispersionSwapIndexLeg a owl:Class ;
+    rdfs:label "dispersion swap index leg"@en,
+        "离散度互换指数腿（dispersion swap index leg）"@zh ;
+    rdfs:comment "标的为某一股票指数的离散度腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-ind-mkt-bas:ReferenceIndex ] ],
+        fibo-der-drc-swp:DispersionLeg ;
+    skos:definition "dispersion leg whose underlier is an equity index"@en .
+
+fibo-der-sbd-eqs:DividendSwap a owl:Class ;
+    rdfs:label "dividend swap"@en,
+        "股息互换（dividend swap）"@zh ;
+    rdfs:comment "至少一腿的标的为股息流的股票互换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasLeg ;
+            owl:someValuesFrom fibo-der-sbd-eqs:DividendLeg ],
+        fibo-der-sbd-eqs:EquitySwap ;
+    skos:definition "equity swap that has at least one leg whose underlier is a dividend stream"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15"@en ;
+    cmns-av:explanatoryNote "Dividend swaps include those that are fixed-term contracts between two parties where one party makes an interest rate payment for each interval and the other party pays the total dividends received as pay-out by a selected underlying asset."@en .
+
+fibo-der-sbd-eqs:EquityCorrelationSwap a owl:Class ;
+    rdfs:label "equity correlation swap"@en,
+        "股票相关性互换（equity correlation swap）"@zh ;
+    rdfs:comment "用于对冲一组标的产品价格观察平均相关性相关风险的相关性互换。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:CorrelationSwap,
+        fibo-der-sbd-eqs:EquitySwap ;
+    skos:definition "correlation swap that allows one to hedge risks associated with the observed average correlation of a collection of underlying equity products"@en ;
+    cmns-av:explanatoryNote "The underlier for the leg can be any of (1) dividend stream for a single stock, (2) change in value for a single share, (3) change in value for a basket of shares, (4) change in value for an index, (5) value of a dividend stream for a basket of shares, or (6) comparison of the change in value of a given share or basket or index against something else - for example, a single share against an index, which is the thing you are cross-correlating with the volatility of the share."@en .
+
+fibo-der-sbd-eqs:EquityPriceReturnSwap a owl:Class ;
+    rdfs:label "equity price return swap"@en,
+        "股票价格回报互换（equity price return swap）"@zh ;
+    rdfs:comment "回报腿标的基于股票的回报互换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasReturnLeg ;
+            owl:someValuesFrom fibo-der-sbd-eqs:EquityReturnLeg ],
+        fibo-der-drc-swp:ReturnSwap,
+        fibo-der-sbd-eqs:EquitySwap ;
+    skos:definition "return swap whose return leg underlier is based on equities"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15"@en ;
+    cmns-av:explanatoryNote "A price return equity swap is similar to a total return swap, except that dividends are not passed through to the buyer)."@en .
+
+fibo-der-sbd-eqs:EquityTotalReturnSwap a owl:Class ;
+    rdfs:label "equity total return swap"@en,
+        "股票总回报互换（equity total return swap）"@zh ;
+    rdfs:comment "回报腿标的基于股票的总回报互换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:hasReturnLeg ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( fibo-der-sbd-eqs:EquityReturnLeg fibo-der-drc-swp:TotalReturnLeg ) ] ],
+        fibo-der-drc-swp:TotalReturnSwap,
+        fibo-der-sbd-eqs:EquitySwap ;
+    skos:definition "total return swap whose return leg underlier is based on equities"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15"@en .
+
+fibo-der-sbd-eqs:EquityVarianceSwap a owl:Class ;
+    rdfs:label "equity variance swap"@en,
+        "股票方差互换（equity variance swap）"@zh ;
+    rdfs:comment "双方约定按特定标的股票（或指数）价格变动的已实现方差与约定方差之间的差额进行支付的离散度互换。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:DispersionSwap,
+        fibo-der-sbd-eqs:EquitySwap ;
+    skos:definition "dispersion swap in which the parties agree to exchange payments based on the difference between (i) the realized variance of the price changes of a specified equity underlier over a stated observation period and (ii) a fixed amount of variance that is agreed when the contract is executed"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15"@en ;
+    cmns-av:explanatoryNote "An equity variance swap is a forward swap that uses the variance (being the volatility squared) of an underlying's price movement over a period as the basis for the payoff calculation."@en .
+
+fibo-der-sbd-eqs:EquityVolatilitySwap a owl:Class ;
+    rdfs:label "equity volatility swap"@en,
+        "股票波动率互换（equity volatility swap）"@zh ;
+    rdfs:comment "以其标的股票价格变动之波动率为标的的远期合约型离散度互换。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:DispersionSwap,
+        fibo-der-sbd-eqs:EquitySwap ;
+    skos:definition "dispersion swap that is a forward contract on the variability of movements in the price of its underlying equities"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15"@en ;
+    cmns-av:explanatoryNote "An equity volatility swap is a measure of the amount by which an asset's price is expected to fluctuate over a given period of time; it is normally measured by the annual standard deviation of daily price changes."@en .
+
+fibo-der-sbd-eqs:DividendLeg a owl:Class ;
+    rdfs:label "dividend leg"@en,
+        "股息腿（dividend leg）"@zh ;
+    rdfs:comment "股息互换的浮动腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-sbd-eqs:SpecialDividendLegTerms ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasDatePeriod ;
+            owl:someValuesFrom fibo-der-sbd-eqs:QualifyingDividendPeriod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-fbc-fi-fi:EquityInstrument fibo-ind-mkt-bas:EquityIndex ) ] ] ],
+        fibo-der-drc-swp:SimpleReturnLeg ;
+    skos:definition "floating leg of a dividend swap"@en ;
+    cmns-av:usageNote "Note that both dividend swaps and some statistical swaps can be based on a dividend stream/leg."@en .
+
+fibo-der-sbd-eqs:QualifyingDividendPeriod a owl:Class ;
+    rdfs:label "qualifying dividend period"@en,
+        "合资格股息期间（qualifying dividend period）"@zh ;
+    rdfs:comment "计算互换条款所指相关发行人支付的全部合资格股息之和的日期区间。"@zh ;
+    rdfs:subClassOf cmns-dt:ExplicitDatePeriod ;
+    skos:definition "date period over which the sum of all qualifying dividends paid by the relevant issuers as identified in the swap terms is calculated"@en .
+
+fibo-der-sbd-eqs:SpecialDividendLegTerms a owl:Class ;
+    rdfs:label "special dividend leg terms"@en,
+        "特别股息腿条款（special dividend leg terms）"@zh ;
+    rdfs:comment "在适用特别股息和纪念股息时启用的条款。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:CashflowTerms ;
+    skos:definition "terms that are invoked if special dividend and memorial dividends are applicable"@en .
+
+fibo-der-sbd-eqs:EquityReturnLeg a owl:Class ;
+    rdfs:label "equity return leg"@en,
+        "股票回报腿（equity return leg）"@zh ;
+    rdfs:comment "收益基于股票的回报腿。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-fbc-fi-fi:EquityInstrument fibo-ind-mkt-bas:EquityIndex ) ] ] ],
+        fibo-der-drc-swp:ReturnLeg ;
+    skos:definition "return leg whose income is based on equities"@en .
+
+fibo-der-sbd-eqs:EquitySwap a owl:Class ;
+    rdfs:label "equity swap"@en,
+        "股票互换（equity swap）"@zh ;
+    rdfs:comment "支付与标的股票（如个股、股票篮子或指数）价值变动或其现金流挂钩的互换。"@zh ;
+    rdfs:subClassOf fibo-der-drc-swp:Swap,
+        fibo-der-sbd-sbd:EquityDerivative ;
+    skos:definition "swap whose payments are linked to the change in value of underlying equities (e.g. shares, basket of equities or index) or their cashflow(s)"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15"@en ;
+    cmns-av:explanatoryNote "Equity swaps can be physically or cash settled."@en .
+

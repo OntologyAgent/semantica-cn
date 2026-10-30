@@ -1,0 +1,445 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-fbc-fct-cra: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/CommercialRegistrationAuthorities/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ir-mdp: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/> .
+@prefix fibo-sec-sec-id: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/> .
+@prefix fibo-sec-sec-idind: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentificationIndividuals/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-sec-idind: a owl:Ontology ;
+    rdfs:label "Securities Identification Individuals Ontology",
+        "证券识别个体本体（Securities Identification Individuals Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts and primarily individuals required to identify securities, including the individuals that represent a number of well-known securities identifiers and related schemes, registries, and registration authorities." ;
+    dcterms:license """Copyright (c) 2016-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录证券标识方案的参考个体（如 ISIN、CUSIP 编码方案本身）。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-be-fct-pub:,
+        fibo-be-ge-ge:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-cra:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ir-mdp:,
+        fibo-sec-sec-id:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-org:,
+        cmns-ra:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20260601/Securities/SecuritiesIdentificationIndividuals/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/SEC/20180801/Securities/SecuritiesIdentification/ version of this ontology was modified to correct several logic issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190601/Securities/SecuritiesIdentification/ version of this ontology was updated to represent identifiers as classes rather than individuals and rename (migrate) the hasDefinition property to isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190701/Securities/SecuritiesIdentificationIndividuals/ version of this ontology was modified to restructure the concept of a listing and augment it with a number of relevant characteristics.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20191201/Securities/SecuritiesIdentificationIndividuals/ version of this ontology was modified to eliminate duplication of concepts with LCC and eliminate punning in individual definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200301/Securities/SecuritiesIdentificationIndividuals/ version of this ontology was modified to replace 'characterizes' with 'describes', which more accurately expresses the intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200701/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was revised to eliminate confusion between listed security and listing (which caused reasoning issues) and add the Telekurs Id (now retired) and Valoren as securities identifiers.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20201201/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was revised to correct a bad character in a note on the Valoren.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210201/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was revised to eliminate punning with respect to the FIGI registry entry.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20211201/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was revised to correct a typo in an annotation property name.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20220101/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was revised to address text formatting hygiene issues and clean up dead or irrelevant links.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20220101/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was revised to replace 'financial information publisher' with 'publisher'.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20221001/Securities/SecuritiesIdentificationIndividuals.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230301/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20231201/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was modified to revise the representation of a RIC code to reflect that it is now published by the London Stock Exchange and is branded using their Refinitiv brand (SEC-196).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240401/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was modified to address a punning issue (GitHub-2040).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240901/Securities/SecuritiesIdentificationIndividuals.rdf version of this ontology was modified to eliminate elements that have been deprecated for over six months (FND-386).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20241101/Securities/SecuritiesIdentificationIndividuals.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20250301/Securities/SecuritiesIdentificationIndividuals.rdf version of the ontology was modified to refine and streamline the definitions of some service providers (SEC-205).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20251001/Securities/SecuritiesIdentificationIndividuals.rdf version of the ontology was modified to reflect the migration of registration authorities to the Functional Entities module in FBC and better align with the GLEIF LEI model (FND-407)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 Object Management Group, Inc.",
+        "Copyright (c) 2016-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-sec-sec-idind:CUSIPInternationalNumberingSystemNumber a owl:Class ;
+    rdfs:label "CUSIP International Numbering System (CINS) number",
+        "CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）"@zh ;
+    rdfs:comment "9 位字母数字标识符，采用与 CUSIP 相同的 9 位字符，但首位为字母。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fi-fi:Security ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CGSCUSIPAccessRepository ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CUSIPInternationalNumberingSystemScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        fibo-sec-sec-id:ProprietarySecurityIdentifier,
+        cmns-ra:RegisteredIdentifier ;
+    skos:definition "9-character alphanumeric identifier that employs the same 9 characters as CUSIP, but also contains a letter of the alphabet in the first position signifying the issuer's country or geographic region, issued by CUSIP Global Services" ;
+    cmns-av:abbreviation "CINS" ;
+    cmns-av:adaptedFrom "https://www.cusip.com/cusip/about-cgs-identifiers.htm"^^xsd:anyURI ;
+    cmns-av:synonym "CINS number" .
+
+fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber a owl:Class ;
+    rdfs:label "Committee on Uniform Securities Identification Procedures (CUSIP) number",
+        "统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）"@zh ;
+    rdfs:comment "用于标识所有北美股票和记名债券的九位字母数字编号，以促进清算和结算。"@zh ;
+    rdfs:seeAlso <https://www.cusip.com/cusip/about-cgs-identifiers.htm> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fi-fi:Security ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CGSCUSIPAccessRepository ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
+        fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber,
+        fibo-sec-sec-id:ProprietarySecurityIdentifier,
+        cmns-ra:RegisteredIdentifier ;
+    skos:definition "nine-character alphanumeric number that identifies all North American stocks and registered bonds for the purposes of facilitating clearing and settlement of trades, issued by CUSIP Global Services on behalf of the American Bankers' Association, which is a part of Standard and Poor's Capital IQ, that is the National Numbering Agency Identifier for securities issued in North America, which is also part of the ISIN for the security it identifies" ;
+    cmns-av:abbreviation "CUSIP" ;
+    cmns-av:synonym "CUSIP number" .
+
+fibo-sec-sec-idind:CommonCodeRegistryEntry a owl:Class ;
+    rdfs:label "common code registry entry",
+        "通用代码登记册条目（common code registry entry）"@zh ;
+    rdfs:comment "通用代码登记册中的条目。"@zh ;
+    rdfs:seeAlso <http://www.isin.net/common-code-isin/> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CommonCodeRepository ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-sec-idind:EuroclearClearstreamCommonCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fbc-fi-fi:Security ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
+        cmns-ra:RegistryEntry ;
+    skos:definition "entry in a common code registry" .
+
+fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistryEntry a owl:Class ;
+    rdfs:label "Financial Instrument Global Identifier (FIGI) registry entry",
+        "金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry）"@zh ;
+    rdfs:comment "金融工具全球标识符（FIGI）登记册中的条目。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistry ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-sec-sec-lst:Listing ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ],
+        cmns-ra:RegistryEntry ;
+    skos:definition "entry in a Financial Instrument Global Identifier (FIGI) registry" ;
+    cmns-av:abbreviation "FIGI registry entry" ;
+    cmns-av:adaptedFrom "https://www.omg.org/spec/FIGI"^^xsd:anyURI .
+
+fibo-sec-sec-idind:FinancialTimesInteractiveDataScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:ProprietarySecurityIdentificationScheme ;
+    rdfs:label "Financial Times interactive data scheme" ;
+    skos:definition "proprietary identification scheme for securities identifiers managed by the Financial Times" ;
+    cmns-av:abbreviation "FTID scheme" .
+
+fibo-sec-sec-idind:RefinitivInstrumentCode a owl:Class ;
+    rdfs:label "Refinitiv instrument code",
+        "路孚特工具代码（Refinitiv instrument code）"@zh ;
+    rdfs:comment "由伦敦证券交易所集团（LSEG）旗下路孚特拥有、管理和分发的金融工具和指数专有代码（RIC）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:RefinitivInstrumentCodeScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-ind-ir-mdp:LSEGFinancialSolutionsAsMarketDataProvider ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-ind-ir-mdp:LSEGFinancialSolutionsAsMarketDataProvider ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        fibo-sec-sec-id:ProprietarySecurityIdentifier ;
+    skos:definition "proprietary code for financial instruments and indices owned, managed, and distributed by the London Stock Exchange Group's LSEG Financial Solutions (branded as Refinitiv)" ;
+    skos:note """A Refinitiv Instrument Code (RIC), previously known as the Reuters Instrument Code, is a proprietary identifier used by Refinitiv (now LSEG Financial Solutions) to represent financial instrument related data. The composition of a RIC is dependent on the type of instrument.
+
+- Instrument code : Can be based on the exchange ticker code, ISIN or local code, currency code, and so on
+- Period or time interval : Can be an expiry month code for example
+- Delimiter : Usually a full stop used to separate the instrument code from the exchange code or a = sign for money securities.
+- Source code : Usually a single or double alpha-character capital unique to an exchange
+
+An equity RIC has several components: the Equity RIC root is in upper case, brokerage characters in lower case (if applicable), and finally an exchange identifier. These codes facilitate information lookup across various financial networks. The concept of RICs traces back to the Quotron service, which Thomson Reuters acquired in the 1980s. The division was spun out as Refinitiv in 2018. Refinitiv was acquired by the London Stock Exchange Group in 2021, and the organization was rebranded as LSEG Financial Solutions in 2023, though the name of the code and certain other branded concepts were retained.""" ;
+    cmns-av:abbreviation "RIC" ;
+    cmns-av:adaptedFrom "https://community.developers.refinitiv.com/questions/28938/ric-code-understandingidentificaiton.html"^^xsd:anyURI .
+
+fibo-sec-sec-idind:StockExchangeDailyOfficialListCode a owl:Class ;
+    rdfs:label "Stock Exchange Daily Official List (SEDOL) code",
+        "证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）"@zh ;
+    rdfs:comment "由伦敦证券交易所签发的七位字符证券标识符，是在英国和爱尔兰发行证券的国家证券识别号码（NSIN）。"@zh ;
+    rdfs:seeAlso <https://www.isin.net/sedol/> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:LondonStockExchange ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:SEDOLMasterFile ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:StockExchangeDailyOfficialListScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:LondonStockExchange ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        fibo-sec-sec-id:ListedSecurityIdentifier,
+        fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber,
+        fibo-sec-sec-id:ProprietarySecurityIdentifier ;
+    skos:definition "seven-character security identifier, issued by the London Stock Exchange, that is the National Securities Identifying Number (NSIN) for securities issued in the United Kingdom, which is also part of the ISIN for the security it identifies" ;
+    cmns-av:abbreviation "SEDOL code" .
+
+fibo-sec-sec-idind:TelekursId a owl:Class ;
+    rdfs:label "Telekurs Id",
+        "德励财富标识符（Telekurs Id）"@zh ;
+    rdfs:comment "由 SIX 金融信息公司（前身 Telekurs AG）拥有、管理和分发的金融工具标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:TelekursSecurityIdentifierScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        fibo-sec-sec-id:ProprietarySecurityIdentifier ;
+    skos:definition "identifier used to identify financial instruments owned, managed, and distributed by SIX Financial Information (formerly Telekurs AG and subsequently SIX Telekurs Ltd.)" ;
+    cmns-av:explanatoryNote "The Telekurs Id was phased out in favor of the Valoren (Valor Nummer in Swiss German) in 2013." .
+
+fibo-sec-sec-idind:Valoren a owl:Class ;
+    rdfs:label "Valoren",
+        "瓦洛伦编号（Valoren）"@zh ;
+    rdfs:comment "由 SIX 金融信息公司签发、分配给瑞士、列支敦士登和比利时金融工具的识别号码，是当地的国家证券识别号码（NSIN）。"@zh ;
+    rdfs:seeAlso <https://www.six-group.com/en/products-services/financial-information.html> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:ValorenScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        fibo-sec-sec-id:ListedSecurityIdentifier,
+        fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber,
+        fibo-sec-sec-id:ProprietarySecurityIdentifier ;
+    skos:definition "identification number assigned to financial instruments in Switzerland, Liechtenstein and Belgium, issued by SIX Financial Information, that is the National Securities Identifying Number (NSIN) for securities issued in those countries and is also part of the ISIN for the security it identifies" ;
+    cmns-av:adaptedFrom "https://www.isin.net/valoren/"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "A VALOR code is between six and nine characters in length and like other securities identification codes (like ISIN, CUSIPs etc). A VALOR is utilized for identification purposes as well as clearing and settlement, similar to an ISIN code, and identifies debt and equity securities." ;
+    cmns-av:synonym "Valor"@de,
+        "Valor Nummer"@de,
+        "Valor"@en,
+        "Valor Code"@en,
+        "Valoren Code"@en,
+        "Valoren Number"@en .
+
+fibo-sec-sec-idind:CUSIPInternationalNumberingSystemScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:ProprietarySecurityIdentificationScheme ;
+    rdfs:label "CUSIP International Numbering System (CINS) scheme" ;
+    skos:definition "security identification scheme that extends the CUSIP scheme, used to identify securities outside of the United States and Canada for the purposes of facilitating clearing and settlement of trades" ;
+    cmns-av:abbreviation "CINS scheme" ;
+    cmns-av:adaptedFrom "https://www.cusip.com/cusip/about-cgs-identifiers.htm"^^xsd:anyURI .
+
+fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:NationalSecurityIdentificationScheme,
+        fibo-sec-sec-id:ProprietarySecurityIdentificationScheme ;
+    rdfs:label "Committee on Uniform Securities Identification Procedures (CUSIP) scheme" ;
+    rdfs:seeAlso <https://www.cusip.com/cusip/about-cgs-identifiers.htm> ;
+    skos:definition "national security identification scheme used to identify all North American stocks and registered bonds for the purposes of facilitating clearing and settlement of trades" ;
+    cmns-av:abbreviation "CUSIP scheme" .
+
+fibo-sec-sec-idind:EuroclearClearstreamCommonCode a owl:Class ;
+    rdfs:label "Euroclear Clearstream common code",
+        "欧洲清算-明讯通用代码（Euroclear Clearstream common code）"@zh ;
+    rdfs:comment "由 Euroclear 和 Clearstream 在卢森堡联合签发的九位字母数字证券标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:oneOf ( fibo-fbc-fct-cra:Clearstream fibo-fbc-fct-cra:Euroclear ) ] ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:oneOf ( fibo-fbc-fct-cra:Clearstream fibo-fbc-fct-cra:Euroclear ) ] ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fi-fi:Security ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:EuroclearClearstreamCommonCodeScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CommonCodeRepository ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
+        fibo-sec-sec-id:ProprietarySecurityIdentifier,
+        cmns-ra:RegisteredIdentifier ;
+    skos:definition "nine-character alphanumeric securities identifier, issued in Luxembourg, jointly by Euroclear and Clearstream" ;
+    cmns-av:adaptedFrom "http://www.isin.net/common-code-isin/"^^xsd:anyURI ;
+    cmns-av:synonym "common code" .
+
+fibo-sec-sec-idind:EuroclearClearstreamCommonCodeScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:ProprietarySecurityIdentificationScheme ;
+    rdfs:label "Euroclear Clearstream common code scheme" ;
+    skos:definition "nine-digit security identification scheme, defined originally by Euroclear and CEDEL (now Clearstream) that is used to identify securities in Europe for the purposes of facilitating clearing and settlement of trades" ;
+    cmns-av:adaptedFrom "http://www.isin.net/common-code-isin/"^^xsd:anyURI ;
+    cmns-av:synonym "common code scheme" ;
+    cmns-dsg:describes fibo-sec-sec-idind:CommonCodeRepository .
+
+fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier a owl:Class ;
+    rdfs:label "financial instrument global identifier",
+        "金融工具全球标识符（financial instrument global identifier）"@zh ;
+    rdfs:comment "按对象管理组织（OMG）金融工具全球标识符（FIGI）规范定义的金融工具标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:BloombergLP ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-sec-sec-lst:Listing ) ] ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:BloombergLP ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistry ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
+        cmns-ra:RegisteredIdentifier ;
+    skos:definition "financial instrument identifier that is defined as specified in the Object Management Group (OMG) Financial Instrument Global Identifier (FIGI) Specification" ;
+    cmns-av:abbreviation "FIGI" ;
+    cmns-av:adaptedFrom "https://www.omg.org/spec/FIGI"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The development of the Financial Instrument Global Identifier (FIGI) originated from a need for a standard methodology to bridge across multiple identification systems for financial instruments. Without prejudice against any existing symbol-based solutions, or any question of the validity of one system over the other, the FIGI standard utilizes a metadata driven approach to enable the unique and persistent identification of financial instruments. While in most cases, a FIGI uniquely identifies a security, there are situations outside of the U.S. where it instead identifies a listing for a security, similar to a ticker symbol." .
+
+fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:FinancialInstrumentIdentificationScheme,
+        cmns-ra:RegistrationScheme ;
+    rdfs:label "financial instrument global identifier scheme" ;
+    skos:definition "standard identification scheme for financial instrument identifiers (not limited to securities) and, in some cases, related listings, published by the Object Management Group (OMG)" ;
+    cmns-av:abbreviation "FIGI scheme" ;
+    cmns-av:adaptedFrom "https://www.omg.org/spec/FIGI"^^xsd:anyURI ;
+    cmns-dsg:describes fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistry .
+
+fibo-sec-sec-idind:RefinitivInstrumentCodeScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:ProprietarySecurityIdentificationScheme ;
+    rdfs:label "Refinitiv instrument code scheme" ;
+    skos:definition "proprietary identification scheme for securities identifiers managed by the London Stock Exchange Group's LSEG Financial Solutions" ;
+    cmns-av:abbreviation "RIC scheme" ;
+    cmns-av:adaptedFrom "https://community.developers.refinitiv.com/questions/28938/ric-code-understandingidentificaiton.html"^^xsd:anyURI .
+
+fibo-sec-sec-idind:StockExchangeDailyOfficialListScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:NationalSecurityIdentificationScheme,
+        fibo-sec-sec-id:ProprietarySecurityIdentificationScheme,
+        fibo-sec-sec-id:SecurityIdentificationScheme ;
+    rdfs:label "Stock Exchange Daily Official List (SEDOL) scheme" ;
+    rdfs:seeAlso <https://www.isin.net/sedol/> ;
+    skos:definition "national security identification scheme used to identify all stocks and registered bonds in the United Kingdom for the purposes of facilitating clearing and settlement of trades" ;
+    cmns-av:abbreviation "SEDOL scheme" ;
+    cmns-dsg:describes fibo-sec-sec-idind:SEDOLMasterFile .
+
+fibo-sec-sec-idind:TelekursSecurityIdentifierScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:ProprietarySecurityIdentificationScheme ;
+    rdfs:label "Telekurs security identifier scheme" ;
+    skos:definition "proprietary identification scheme for securities identifiers formerly managed by SIX Telekurs Ltd, a subsidiary of the SIX Group (Swiss Infrastructure and eXchange), now SIX Financial Information AG" ;
+    cmns-av:abbreviation "Telekurs security ID scheme" .
+
+fibo-sec-sec-idind:ValorenScheme a owl:NamedIndividual,
+        fibo-sec-sec-id:NationalSecurityIdentificationScheme,
+        fibo-sec-sec-id:ProprietarySecurityIdentificationScheme,
+        fibo-sec-sec-id:SecurityIdentificationScheme ;
+    rdfs:label "Valoren scheme" ;
+    skos:definition "national security identification scheme used to identify equity and debt securities in Switzerland, Liechtenstein and Belgium for the purposes of facilitating clearing and settlement of trades" ;
+    cmns-av:explanatoryNote "The VALOR number is a numeric code that intrinsically has no meaning. When a new VALOR is needed, the next one from the list is simply allocated. An instrument's number indicates nothing about the instrument itself." .
+
+fibo-sec-sec-idind:CGSCUSIPAccessRepository a owl:NamedIndividual,
+        fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistry ;
+    rdfs:label "CGS CUSIP Access Repository" ;
+    rdfs:seeAlso <https://www.cusip.com/cusip/index.htm> ;
+    skos:definition "CGS (CUSIP Global Services) CUSIP Access services and repository, a proprietary repository of security identifiers, issued by CUSIP Global Services, that is the National Securities Identifying Number (NSIN) for securities issued in North America, which is also part of the ISIN for the security it identifies" ;
+    cmns-org:isManagedBy fibo-sec-sec-idind:CUSIPGlobalServices .
+
+fibo-sec-sec-idind:SEDOLMasterFile a owl:NamedIndividual,
+        fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistry,
+        fibo-sec-sec-id:SecurityRegistry ;
+    rdfs:label "SEDOL Master File" ;
+    rdfs:seeAlso <https://www.isin.net/sedol/> ;
+    skos:definition "repository of security identifiers, issued by the London Stock Exchange, that is the National Securities Identifying Number (NSIN) for securities issued in the United Kingdom, which is also part of the ISIN for the security it identifies" ;
+    cmns-org:isManagedBy fibo-fbc-fct-cra:LondonStockExchange .
+
+fibo-fbc-fct-cra:BloombergLP a owl:NamedIndividual ;
+    cmns-org:manages fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistry .
+
+fibo-fbc-fct-cra:LondonStockExchange a owl:NamedIndividual,
+        fibo-sec-sec-id:NationalNumberingAgency .
+
+fibo-sec-sec-idind:CommonCodeRepository a owl:NamedIndividual,
+        cmns-ra:Registry ;
+    rdfs:label "common code repository" ;
+    rdfs:seeAlso <http://www.isin.net/common-code-isin/> ;
+    skos:definition "distributed international repository of security identifiers, issued by Euroclear or Clearstream (CEDEL), that are used to identify securities in Europe for the purposes of facilitating clearing and settlement of trades" ;
+    cmns-av:adaptedFrom "http://www.isin.net/common-code-isin/"^^xsd:anyURI ;
+    cmns-org:isManagedBy fibo-fbc-fct-cra:Clearstream .
+
+fibo-fbc-fct-cra:SIXFinancialInformation a owl:NamedIndividual,
+        fibo-sec-sec-id:NationalNumberingAgency .
+
+fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistry a owl:NamedIndividual,
+        cmns-ra:Registry ;
+    rdfs:label "Financial Instrument Global Identifier (FIGI) Registry" ;
+    rdfs:seeAlso <http://www.openfigi.com/> ;
+    skos:definition "open, OMG standards-based registry used by the FIGI registration authority to manage the financial instrument identifiers and related information that it registers according to the Financial Instrument Global Identifier (FIGI) standard" ;
+    cmns-av:abbreviation "FIGI Registry" ;
+    cmns-av:adaptedFrom "https://www.omg.org/spec/FIGI"^^xsd:anyURI ;
+    cmns-org:isManagedBy fibo-fbc-fct-cra:BloombergLP .
+
+fibo-sec-sec-idind:CUSIPGlobalServices a owl:NamedIndividual,
+        fibo-be-fct-pub:Publisher,
+        fibo-fbc-pas-fpas:FinancialServiceProvider,
+        fibo-sec-sec-id:NationalNumberingAgency ;
+    rdfs:label "CUSIP Global Services" ;
+    rdfs:seeAlso <http://www.cusip.com/> ;
+    skos:definition "CUSIP Global Services financial services provider that is the national numbering agency (NNA) for CUSIPs in North America" ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:SPGlobalInc-US-NY .
+

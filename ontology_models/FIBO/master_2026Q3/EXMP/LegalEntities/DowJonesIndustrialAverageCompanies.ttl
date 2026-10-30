@@ -1,0 +1,543 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-usj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-exmp-le-djiac: <https://spec.edmcouncil.org/fibo/ontology/EXMP/LegalEntities/DowJonesIndustrialAverageCompanies/> .
+@prefix fibo-fbc-fct-bci: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/> .
+@prefix fibo-fbc-fct-breg: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-usjrga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2-us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://rdf.gleif.org/L1/L-2572IBTT8CCZW6AU4141-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "The Proctor & Gamble Company legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for The Proctor & Gamble Company" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-11-28T20:59:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-09-09T18:05:24"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-09-12T17:58:27"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-2572IBTT8CCZW6AU4141> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-2572IBTT8CCZW6AU4141> .
+
+<https://rdf.gleif.org/L1/L-HWUPKR0MPOU8FGXBT394-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Apple Inc. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for for Apple Inc." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-06-06T15:53:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-03-03T16:34:33"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-03-08T17:27:20"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-HWUPKR0MPOU8FGXBT394> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-HWUPKR0MPOU8FGXBT394> .
+
+<https://rdf.gleif.org/L1/L-QEKMOTMBBKA8I816DO57-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "The Home Depot, Inc. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for The Home Depot, Inc." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-06-06T15:51:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2024-03-28T13:30:03"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:LapsedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2024-03-27T17:08:14"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-QEKMOTMBBKA8I816DO57> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-QEKMOTMBBKA8I816DO57> .
+
+<https://rdf.gleif.org/L1/L-UWJKFUJFZ02DKWI3RY53-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "The Coca-Cola Company legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for The Coca-Cola Company" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-10-19T18:57:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-03-04T16:54:07"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-03-12T11:55:23"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-UWJKFUJFZ02DKWI3RY53> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-UWJKFUJFZ02DKWI3RY53> .
+
+<https://rdf.gleif.org/L1/L-VGRQXHF3J8VDLUA7XE92-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "International Business Machines Corporation legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for International Business Machines Corporation" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2012-06-27T11:47:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-11-07T10:19:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-11-28T19:09:05"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-VGRQXHF3J8VDLUA7XE92> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-VGRQXHF3J8VDLUA7XE92> .
+
+fibo-exmp-le-djiac: a owl:Ontology ;
+    rdfs:label "Dow Jones Industrial Average Companies",
+        "道指成分公司示例（Dow Jones Industrial Average Companies）"@zh ;
+    dcterms:abstract "This ontology includes example entities that are companies in the US that issue stock and that are represented in the Dow Jones Industrial Average (DJIA), to demonstrate how to begin to model those entities in FIBO. Note that the examples included are a subset of the DJIA, not the entire set of companies, and the content may be dated. There is no guarantee that the content is current." ;
+    dcterms:license """Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录道琼斯工业平均指数成分股公司的示例个体，供演示与测试。"@zh ;
+    owl:imports fibo-be-ge-usj:,
+        fibo-be-le-cb:,
+        fibo-be-le-fbo:,
+        fibo-be-le-lei:,
+        fibo-fbc-fct-bci:,
+        fibo-fbc-fct-breg:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-fct-usjrga:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-ra:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        lcc-3166-1:,
+        lcc-3166-2-us: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/EXMP/20260601/LegalEntities/DowJonesIndustrialAverageCompanies/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20200201/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200701/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of this ontology was revised to update the LEI format to use the form published by the GLEIF at data.world.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20201201/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of this ontology was revised to make incorporation and registration dates explicit dates and to replace references to the legacy LCC UnitedStates country representation with UnitedStatesOfAmerica.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210301/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of this ontology was revised to update a dead link.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250301/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of the ontology was modified to merge details from the old corporations ontology into the corporate bodies for consistency and useability (BE-259).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250501/LegalEntities/NorthAmericanEntities/DowJonesIndustrialAverageCompanies.rdf version of the ontology was moved to a new Examples (EXMP) domain in FIBO to clarify it's purpose for FIBO users and improve the correspondence with the GLEIF LEI data to provide examples for mapping purposes (FND-407)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 Object Management Group, Inc.",
+        "Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-exmp-le-djiac:AlphabetIncBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "Alphabet Inc. business entity identifier" ;
+    skos:definition "registration identifier assigned by the Delaware Department of Corporations for Alphabet Inc." ;
+    fibo-fbc-fct-breg:hasEntityStatus fibo-fbc-fct-breg:ActiveStatus ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2015-07-23" ;
+    cmns-dsg:hasTag "5786925" ;
+    cmns-dsg:isDefinedIn fibo-fbc-fct-usjrga:DelawareBusinessRegistrationIdentifierScheme ;
+    cmns-id:identifies fibo-exmp-le-djiac:AlphabetInc-US-CA ;
+    cmns-ra:isRegisteredIn fibo-fbc-fct-usjrga:DelawareBusinessEntitiesRegistry ;
+    cmns-rga:isGovernedBy fibo-be-ge-usj:StateOfDelawareJurisdiction .
+
+fibo-exmp-le-djiac:AppleIncBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "Apple Inc. business entity identifier" ;
+    rdfs:seeAlso <https://bizfileonline.sos.ca.gov/search/business> ;
+    skos:definition "registration identifier assigned by the California Department of Corporations for Apple Inc." ;
+    fibo-fbc-fct-breg:hasEntityStatus fibo-fbc-fct-breg:ActiveStatus ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "1977-01-03" ;
+    cmns-dsg:hasTag "806592" ;
+    cmns-dsg:isDefinedIn fibo-fbc-fct-usjrga:CaliforniaBusinessRegistrationIdentifierScheme ;
+    cmns-id:identifies fibo-exmp-le-djiac:AppleInc-US-CA ;
+    cmns-ra:isRegisteredIn fibo-fbc-fct-usjrga:CaliforniaBusinessEntitiesRegistry ;
+    cmns-rga:isGovernedBy fibo-be-ge-usj:StateOfCaliforniaJurisdiction .
+
+fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "International Business Machines Corporation business entity identifier" ;
+    skos:definition "registration identifier assigned by the New York Division of Corporations for International Business Machines Corporation" ;
+    fibo-fbc-fct-breg:hasEntityStatus fibo-fbc-fct-breg:ActiveStatus ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "1924-02-14" ;
+    cmns-dsg:hasTag "30059" ;
+    cmns-dsg:isDefinedIn fibo-fbc-fct-usjrga:NewYorkBusinessRegistrationIdentifierScheme ;
+    cmns-id:identifies fibo-exmp-le-djiac:InternationalBusinessMachinesCorporation-US-NY ;
+    cmns-ra:isRegisteredIn fibo-fbc-fct-usjrga:NewYorkBusinessEntitiesRegistry ;
+    cmns-rga:isGovernedBy fibo-be-ge-usj:StateOfNewYorkJurisdiction .
+
+fibo-exmp-le-djiac:TheCoca-ColaCompanyBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "The Coca-Cola Company business entity identifier" ;
+    skos:definition "registration identifier assigned by the Delaware Division of Corporations for The Coca-Cola Company" ;
+    fibo-fbc-fct-breg:hasEntityStatus fibo-fbc-fct-breg:ActiveStatus ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "1919-09-05" ;
+    cmns-dsg:hasTag "88529" ;
+    cmns-dsg:isDefinedIn fibo-fbc-fct-usjrga:DelawareBusinessRegistrationIdentifierScheme ;
+    cmns-id:identifies fibo-exmp-le-djiac:TheCoca-ColaCompany-US-DE ;
+    cmns-ra:isRegisteredIn fibo-fbc-fct-usjrga:DelawareBusinessEntitiesRegistry ;
+    cmns-rga:isGovernedBy fibo-be-ge-usj:StateOfDelawareJurisdiction .
+
+fibo-exmp-le-djiac:TheHomeDepotBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "The Home Depot, Inc. business entity identifier" ;
+    skos:definition "registration identifier assigned by the Delaware Division of Corporations for The Home Depot, Inc." ;
+    fibo-fbc-fct-breg:hasEntityStatus fibo-fbc-fct-breg:ActiveStatus ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "1978-06-29" ;
+    cmns-dsg:hasTag "856429" ;
+    cmns-dsg:isDefinedIn fibo-fbc-fct-usjrga:DelawareBusinessRegistrationIdentifierScheme ;
+    cmns-id:identifies fibo-exmp-le-djiac:TheHomeDepotInc-US-DE ;
+    cmns-ra:isRegisteredIn fibo-fbc-fct-usjrga:DelawareBusinessEntitiesRegistry ;
+    cmns-rga:isGovernedBy fibo-be-ge-usj:StateOfDelawareJurisdiction .
+
+fibo-exmp-le-djiac:TheProctorAndGambleCompanyBusinessEntityIdentifier a owl:NamedIndividual,
+        fibo-be-le-cb:RegistrationIdentifier ;
+    rdfs:label "The Proctor & Gamble Company business entity identifier" ;
+    skos:definition "registration identifier assigned by the Ohio Department of Corporations for The Proctor & Gamble Company" ;
+    fibo-fbc-fct-breg:hasEntityStatus fibo-fbc-fct-breg:ActiveStatus ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "1905-05-05" ;
+    cmns-dsg:hasTag "20677" ;
+    cmns-dsg:isDefinedIn fibo-fbc-fct-usjrga:OhioBusinessRegistrationIdentifierScheme ;
+    cmns-id:identifies fibo-exmp-le-djiac:TheProctorAndGambleCompany-US-OH ;
+    cmns-ra:isRegisteredIn fibo-fbc-fct-usjrga:OhioBusinessFilingPortal ;
+    cmns-rga:isGovernedBy fibo-be-ge-usj:StateOfOhioJurisdiction .
+
+fibo-exmp-le-djiac:TheProctorAndGambleCompanyDateEstablished a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "The Proctor & Gamble Company date established" ;
+    skos:definition "date that The Proctor & Gamble was founded" ;
+    cmns-dt:hasDateValue "1837-01-01" .
+
+<https://rdf.gleif.org/L1/L-5493006MHB84DD0ZWV18-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "Alphabet Inc. legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for Alphabet Inc." ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2015-08-31T16:16:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5493001KJTIIGC8Y1R12> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2025-09-17T06:23:04"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2026-09-17T15:55:34"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-5493006MHB84DD0ZWV18>,
+        <https://rdf.gleif.org/L1/L-5493006MHB84DD0ZWV18-LEI> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-5493006MHB84DD0ZWV18> .
+
+fibo-exmp-le-djiac:AlphabetIncCorporateAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "Alphabet Inc. corporate address" ;
+    skos:definition "registration address for Alphabet Inc." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "1600 Amphitheatre Parkway" ;
+    fibo-fnd-plc-adr:hasPostalCode "94043" ;
+    cmns-loc:hasCityName "Mountain View" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:California .
+
+fibo-exmp-le-djiac:AlphabetIncIncorporationDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "Alphabet Inc. incorporation date" ;
+    skos:definition "date that Alphabet Inc. was first registered as a corporation in the State of Delaware" ;
+    cmns-dt:hasDateValue "2015-07-23" .
+
+fibo-exmp-le-djiac:AppleIncIncorporationDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "Apple Inc. incorporation date" ;
+    skos:definition "date that Apple Inc. was first registered as a corporation in the State of California" ;
+    cmns-dt:hasDateValue "1977-01-03" .
+
+fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationBusinessPartyPrefix a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessPartyPrefix ;
+    rdfs:label "International Business Machines Corporation business party prefix" ;
+    skos:definition "business party prefix for International Business Machines Corporation" ;
+    cmns-col:isIncludedIn fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationBusinessIdentifierCode ;
+    cmns-dsg:hasTag "IBMX" .
+
+fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationBusinessPartySuffix a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessPartySuffix ;
+    rdfs:label "International Business Machines Corporation business party suffix" ;
+    skos:definition "business party suffix for International Business Machines Corporation" ;
+    cmns-col:isIncludedIn fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationBusinessIdentifierCode ;
+    cmns-dsg:hasTag "33" .
+
+fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationIncorporationDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "International Business Machines Corporation incorporation date" ;
+    skos:definition "date that International Business Machines Corporation was first registered as a corporation in the State of New York" ;
+    cmns-dt:hasDateValue "1911-06-16" .
+
+fibo-exmp-le-djiac:TheCoca-ColaCompanyBusinessPartyPrefix a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessPartyPrefix ;
+    rdfs:label "The Coca-Cola Company business party prefix" ;
+    skos:definition "business party prefix for The Coca-Cola Company" ;
+    cmns-col:isIncludedIn fibo-exmp-le-djiac:TheCoca-ColaCompanyBusinessIdentifierCode ;
+    cmns-dsg:hasTag "TCCC" .
+
+fibo-exmp-le-djiac:TheCoca-ColaCompanyBusinessPartySuffix a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessPartySuffix ;
+    rdfs:label "The Coca-Cola Company business party suffix" ;
+    skos:definition "business party suffix for The Coca-Cola Company" ;
+    cmns-col:isIncludedIn fibo-exmp-le-djiac:TheCoca-ColaCompanyBusinessIdentifierCode ;
+    cmns-dsg:hasTag "33" .
+
+fibo-exmp-le-djiac:TheCoca-ColaCompanyIncorporationDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "The Coca-Cola Company incorporation date" ;
+    skos:definition "date that The Coca-Cola Company was first registered as a corporation in the State of Delaware" ;
+    cmns-dt:hasDateValue "1919-09-05" .
+
+fibo-exmp-le-djiac:TheHomeDepotIncorporationDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "The Home Depot, Inc. incorporation date" ;
+    skos:definition "date that The Home Depot, Inc. was first registered as a corporation in the State of Delaware" ;
+    cmns-dt:hasDateValue "1978-06-29" .
+
+fibo-exmp-le-djiac:TheProctorAndGambleCompanyBusinessPartyPrefix a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessPartyPrefix ;
+    rdfs:label "The Proctor & Gamble Company business party prefix" ;
+    skos:definition "business party prefix for The Proctor & Gamble Company" ;
+    cmns-col:isIncludedIn fibo-exmp-le-djiac:TheProctorAndGambleCompanyBusinessIdentifierCode ;
+    cmns-dsg:hasTag "PGGT" .
+
+fibo-exmp-le-djiac:TheProctorAndGambleCompanyBusinessPartySuffix a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessPartySuffix ;
+    rdfs:label "The Proctor & Gamble Company business party suffix" ;
+    skos:definition "business party suffix for The Proctor & Gamble Company" ;
+    cmns-col:isIncludedIn fibo-exmp-le-djiac:TheProctorAndGambleCompanyBusinessIdentifierCode ;
+    cmns-dsg:hasTag "33" .
+
+fibo-exmp-le-djiac:TheProctorAndGambleCompanyCorporateAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "The Proctor & Gamble Company corporate address" ;
+    skos:definition "registration address for The Proctor & Gamble Company" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "1 Procter & Gamble Plaza" ;
+    fibo-fnd-plc-adr:hasPostalCode "45202" ;
+    cmns-loc:hasCityName "Cincinnati" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:Ohio .
+
+fibo-exmp-le-djiac:TheProctorAndGambleCompanyIncorporationDate a owl:NamedIndividual,
+        cmns-dt:ExplicitDate ;
+    rdfs:label "The Proctor & Gamble Company incorporation date" ;
+    skos:definition "date that The Proctor & Gamble Company was first registered as a corporation in the State of Ohio" ;
+    cmns-dt:hasDateValue "1905-05-05" .
+
+<https://rdf.gleif.org/L1/L-2572IBTT8CCZW6AU4141> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "The Proctor & Gamble Company legal entity identifier" ;
+    skos:definition "legal entity identifier for The Proctor & Gamble Company" ;
+    cmns-dsg:hasTag "2572IBTT8CCZW6AU4141" ;
+    cmns-id:identifies fibo-exmp-le-djiac:TheProctorAndGambleCompany-US-OH .
+
+<https://rdf.gleif.org/L1/L-5493006MHB84DD0ZWV18> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Alphabet Inc. legal entity identifier" ;
+    skos:definition "legal entity identifier for Alphabet Inc." ;
+    cmns-dsg:hasTag "5493006MHB84DD0ZWV18" ;
+    cmns-id:identifies fibo-exmp-le-djiac:AlphabetInc-US-CA .
+
+<https://rdf.gleif.org/L1/L-HWUPKR0MPOU8FGXBT394> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "Apple Inc. legal entity identifier" ;
+    skos:definition "legal entity identifier for Apple Inc." ;
+    cmns-dsg:hasTag "HWUPKR0MPOU8FGXBT394" ;
+    cmns-id:identifies fibo-exmp-le-djiac:AppleInc-US-CA .
+
+<https://rdf.gleif.org/L1/L-QEKMOTMBBKA8I816DO57> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "The Home Depot, Inc. legal entity identifier" ;
+    skos:definition "legal entity identifier for The Home Depot, Inc." ;
+    cmns-dsg:hasTag "QEKMOTMBBKA8I816DO57" ;
+    cmns-id:identifies fibo-exmp-le-djiac:TheHomeDepotInc-US-DE .
+
+<https://rdf.gleif.org/L1/L-UWJKFUJFZ02DKWI3RY53> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "The Coca-Cola Company legal entity identifier" ;
+    skos:definition "legal entity identifier for The Coca-Cola Company" ;
+    cmns-dsg:hasTag "UWJKFUJFZ02DKWI3RY53" ;
+    cmns-id:identifies fibo-exmp-le-djiac:TheCoca-ColaCompany-US-DE .
+
+<https://rdf.gleif.org/L1/L-VGRQXHF3J8VDLUA7XE92> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "International Business Machines Corporation legal entity identifier" ;
+    skos:definition "legal entity identifier for International Business Machines Corporation" ;
+    cmns-dsg:hasTag "VGRQXHF3J8VDLUA7XE92" ;
+    cmns-id:identifies fibo-exmp-le-djiac:InternationalBusinessMachinesCorporation-US-NY .
+
+fibo-exmp-le-djiac:AlphabetInc-US-CA a owl:NamedIndividual,
+        fibo-be-le-cb:ForProfitCorporation,
+        fibo-be-le-cb:PubliclyHeldCompany ;
+    rdfs:label "Alphabet Inc. US-CA" ;
+    skos:definition "publicly held company and for profit corporation legal entity for Alphabet Inc., a Delaware stock corporation" ;
+    fibo-be-le-cb:hasDateOfIncorporation fibo-exmp-le-djiac:AlphabetIncIncorporationDate ;
+    fibo-be-le-cb:isIncorporatedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-exmp-le-djiac:AlphabetIncCorporateAddress ;
+    fibo-fbc-fct-breg:hasTradingOrOperationalName "Alphabet" ;
+    fibo-fbc-pas-fpas:hasLegalAgent fibo-fbc-fct-usjrga:CorporationServiceCompany ;
+    fibo-fnd-rel-rel:hasLegalName "Alphabet Inc." ;
+    cmns-org:hasWebsite "https://abc.xyz/"^^xsd:anyURI ;
+    cmns-org:isDomiciledIn lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-exmp-le-djiac:AppleInc-US-CA a owl:NamedIndividual,
+        fibo-be-le-cb:ForProfitCorporation,
+        fibo-be-le-cb:PubliclyHeldCompany ;
+    rdfs:label "Apple Inc. US-CA" ;
+    skos:definition "publicly held company and for profit corporation legal entity for Apple Inc., a California stock corporation" ;
+    fibo-be-le-cb:hasDateOfIncorporation fibo-exmp-le-djiac:AppleIncIncorporationDate ;
+    fibo-be-le-cb:isIncorporatedIn fibo-be-ge-usj:StateOfCaliforniaJurisdiction ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-exmp-le-djiac:AppleIncCorporateAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-exmp-le-djiac:AppleIncCorporateAddress ;
+    fibo-fbc-fct-breg:hasPriorLegalName "Apple Computer, Inc." ;
+    fibo-fbc-fct-breg:hasTradingOrOperationalName "Apple" ;
+    fibo-fnd-rel-rel:hasLegalName "Apple Inc." ;
+    cmns-org:hasWebsite "https://www.apple.com/"^^xsd:anyURI ;
+    cmns-org:isDomiciledIn lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-exmp-le-djiac:AppleIncCorporateAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "Apple Inc. corporate address" ;
+    skos:definition "registration address for Apple Inc." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "One Apple Park WY" ;
+    fibo-fnd-plc-adr:hasPostalCode "95014" ;
+    cmns-loc:hasCityName "Cupertino" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:California .
+
+fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "International Business Machines Corporation address" ;
+    skos:definition "registration address for International Business Machines Corporation" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "New Orchard Road" ;
+    fibo-fnd-plc-adr:hasPostalCode "10504" ;
+    cmns-loc:hasCityName "Armonk" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:NewYork .
+
+fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationBusinessIdentifierCode a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessIdentifierCode ;
+    rdfs:label "International Business Machines Corporation Business Identifier Code (BIC)" ;
+    skos:definition "business identifier code (BIC) for International Business Machines Corporation" ;
+    cmns-col:comprises fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationBusinessPartyPrefix,
+        fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationBusinessPartySuffix,
+        lcc-3166-1:US ;
+    cmns-cxtdsg:appliesTo lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:hasTag "IBMXUS33XXX" ;
+    cmns-id:identifies fibo-exmp-le-djiac:InternationalBusinessMachinesCorporation-US-NY .
+
+fibo-exmp-le-djiac:TheCoca-ColaCompanyBusinessIdentifierCode a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessIdentifierCode ;
+    rdfs:label "The Coca-Cola Company business identifier code (BIC)" ;
+    skos:definition "business identifier code (BIC) for The Coca-Cola Company" ;
+    cmns-col:comprises fibo-exmp-le-djiac:TheCoca-ColaCompanyBusinessPartyPrefix,
+        fibo-exmp-le-djiac:TheCoca-ColaCompanyBusinessPartySuffix,
+        lcc-3166-1:US ;
+    cmns-cxtdsg:appliesTo lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:hasTag "TCCCUS33XXX" ;
+    cmns-id:identifies fibo-exmp-le-djiac:TheCoca-ColaCompany-US-DE .
+
+fibo-exmp-le-djiac:TheCoca-ColaCompanyCorporateAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "The Coca-Cola Company corporate address" ;
+    skos:definition "registration address for The Coca-Cola Company" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "One Coca-Cola Plaza" ;
+    fibo-fnd-plc-adr:hasPostalCode "30313" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Atlanta ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:Georgia .
+
+fibo-exmp-le-djiac:TheHomeDepotInc-US-DE a owl:NamedIndividual,
+        fibo-be-le-cb:ForProfitCorporation,
+        fibo-be-le-cb:PubliclyHeldCompany ;
+    rdfs:label "The Home Depot, Inc. US-DE" ;
+    skos:definition "publicly held company and for profit corporation legal entity for The Home Depot, Inc., a Delaware corporation" ;
+    fibo-be-le-cb:hasDateOfIncorporation fibo-exmp-le-djiac:TheHomeDepotIncorporationDate ;
+    fibo-be-le-cb:isIncorporatedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-exmp-le-djiac:TheHomeDepotIncCorporateAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-exmp-le-djiac:TheHomeDepotIncCorporateAddress ;
+    fibo-fbc-pas-fpas:hasLegalAgent fibo-fbc-fct-usjrga:CorporationServiceCompany ;
+    fibo-fnd-rel-rel:hasLegalName "The Home Depot, Inc." ;
+    cmns-org:hasWebsite "https://www.homedepot.com/"^^xsd:anyURI ;
+    cmns-org:isDomiciledIn lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-exmp-le-djiac:TheHomeDepotIncCorporateAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:label "The Home Depot, Inc. corporate address" ;
+    skos:definition "registration address for The Home Depot, Inc." ;
+    fibo-fnd-plc-adr:hasAddressLine1 "2455 Paces Ferry Road" ;
+    fibo-fnd-plc-adr:hasPostalCode "30339" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Atlanta ;
+    cmns-loc:hasSubdivision lcc-3166-2-us:Georgia .
+
+fibo-exmp-le-djiac:TheProctorAndGambleCompanyBusinessIdentifierCode a owl:NamedIndividual,
+        fibo-fbc-fct-fse:BusinessIdentifierCode ;
+    rdfs:label "The Proctor & Gamble Company business identifier code (BIC)" ;
+    skos:definition "business identifier code (BIC) for The Proctor & Gamble Company" ;
+    cmns-col:comprises fibo-exmp-le-djiac:TheProctorAndGambleCompanyBusinessPartyPrefix,
+        fibo-exmp-le-djiac:TheProctorAndGambleCompanyBusinessPartySuffix,
+        lcc-3166-1:US ;
+    cmns-cxtdsg:appliesTo lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:hasTag "PGGTUS33XXX" ;
+    cmns-id:identifies fibo-exmp-le-djiac:TheProctorAndGambleCompany-US-OH .
+
+fibo-exmp-le-djiac:InternationalBusinessMachinesCorporation-US-NY a owl:NamedIndividual,
+        fibo-be-le-cb:ForProfitCorporation,
+        fibo-be-le-cb:PubliclyHeldCompany ;
+    rdfs:label "International Business Machines Corporation US-NY" ;
+    skos:definition "publicly held company and for profit corporation legal entity for International Business Machines Corporation, a New York domestic business corporation" ;
+    fibo-be-le-cb:hasDateOfIncorporation fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationIncorporationDate ;
+    fibo-be-le-cb:isIncorporatedIn fibo-be-ge-usj:StateOfNewYorkJurisdiction ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-exmp-le-djiac:InternationalBusinessMachinesCorporationAddress ;
+    fibo-fbc-fct-breg:hasPriorLegalName "COMPUTING-TABULATING-RECORDING-CO." ;
+    fibo-fbc-fct-breg:hasTradingOrOperationalName "IBM" ;
+    fibo-fnd-rel-rel:hasLegalName "International Business Machines Corporation" ;
+    cmns-org:hasWebsite "https://www.ibm.com/"^^xsd:anyURI ;
+    cmns-org:isDomiciledIn lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-exmp-le-djiac:TheCoca-ColaCompany-US-DE a owl:NamedIndividual,
+        fibo-be-le-cb:ForProfitCorporation,
+        fibo-be-le-cb:PubliclyHeldCompany ;
+    rdfs:label "The Coca-Cola Company US-DE" ;
+    skos:definition "publicly held company and for profit corporation legal entity for The Coca-Cola Company, a Delaware corporation" ;
+    fibo-be-le-cb:hasDateOfIncorporation fibo-exmp-le-djiac:TheCoca-ColaCompanyIncorporationDate ;
+    fibo-be-le-cb:isIncorporatedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-exmp-le-djiac:TheCoca-ColaCompanyCorporateAddress ;
+    fibo-be-le-lei:hasLegalAddress fibo-exmp-le-djiac:TheCoca-ColaCompanyCorporateAddress ;
+    fibo-fbc-pas-fpas:hasLegalAgent fibo-fbc-fct-usjrga:CorporationTrustCompany ;
+    fibo-fnd-rel-rel:hasLegalName "The Coca-Cola Company" ;
+    cmns-org:hasWebsite "https://www.coca-colacompany.com/"^^xsd:anyURI ;
+    cmns-org:isDomiciledIn lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-exmp-le-djiac:TheProctorAndGambleCompany-US-OH a owl:NamedIndividual,
+        fibo-be-le-cb:ForProfitCorporation,
+        fibo-be-le-cb:PubliclyHeldCompany ;
+    rdfs:label "The Proctor & Gamble Company US-OH" ;
+    skos:definition "publicly held company and for profit corporation legal entity for The Proctor & Gamble Company, an Ohio corporation" ;
+    fibo-be-le-cb:hasDateOfIncorporation fibo-exmp-le-djiac:TheProctorAndGambleCompanyIncorporationDate ;
+    fibo-be-le-cb:isIncorporatedIn fibo-be-ge-usj:StateOfOhioJurisdiction ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-exmp-le-djiac:TheProctorAndGambleCompanyCorporateAddress ;
+    fibo-fnd-rel-rel:hasLegalName "The Proctor & Gamble Company" ;
+    cmns-org:hasWebsite "https://us.pg.com/"^^xsd:anyURI ;
+    cmns-org:isDomiciledIn lcc-3166-1:UnitedStatesOfAmerica .
+

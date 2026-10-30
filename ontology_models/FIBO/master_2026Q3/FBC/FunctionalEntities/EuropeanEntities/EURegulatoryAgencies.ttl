@@ -1,0 +1,233 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-euj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-ukj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-fbc-fct-bci: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/> .
+@prefix fibo-fbc-fct-breg: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> .
+@prefix fibo-fbc-fct-cra: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/CommercialRegistrationAuthorities/> .
+@prefix fibo-fbc-fct-eufse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/EuropeanEntities/EUFinancialServicesEntities/> .
+@prefix fibo-fbc-fct-eurga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://rdf.gleif.org/L1/L-549300DTUYXVMJXZNY75-LEI> a owl:NamedIndividual,
+        fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry ;
+    rdfs:label "European Central Bank legal entity identifier registry entry" ;
+    skos:definition "legal entity identifier registry entry for the European Central Bank" ;
+    fibo-fbc-fct-breg:hasInitialRegistrationDate "2013-04-18T02:08:10+02:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasManagingLocalOperatingUnit <https://rdf.gleif.org/L1/L-5299000J2N45DDNE4Y28> ;
+    fibo-fbc-fct-breg:hasRegistrationRevisionDate "2026-01-27T17:59:54+01:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasRegistrationStatus fibo-fbc-fct-breg:IssuedStatus ;
+    fibo-fbc-fct-breg:hasRenewalDate "2027-03-13T11:54:18+01:00"^^xsd:dateTime ;
+    fibo-fbc-fct-breg:hasValidationLevel fibo-fbc-fct-breg:EntityValidationLevelFullyCorroborated ;
+    cmns-col:comprises <https://rdf.gleif.org/L1/L-549300DTUYXVMJXZNY75> ;
+    cmns-doc:records <https://rdf.gleif.org/L1/L-549300DTUYXVMJXZNY75> .
+
+fibo-fbc-fct-eurga: a owl:Ontology ;
+    rdfs:label "European Regulatory Agencies Ontology",
+        "欧盟监管机构本体（EU Regulatory Agencies Ontology）"@zh ;
+    dcterms:abstract "This ontology extends the primary regulatory agencies ontology in FBC with additional agencies and registries that regulate and provide services in Europe, across national boundaries, such as agencies that support the European Union." ;
+    dcterms:license """Copyright (c) 2017-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2017-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录欧盟层面的金融监管机构个体（如欧洲央行、欧洲证券和市场管理局 ESMA）。"@zh ;
+    owl:imports fibo-be-ge-euj:,
+        fibo-be-ge-ukj:,
+        fibo-be-ge-ge:,
+        fibo-be-le-fbo:,
+        fibo-be-le-lei:,
+        fibo-fbc-fct-bci:,
+        fibo-fbc-fct-breg:,
+        fibo-fbc-fct-cra:,
+        fibo-fbc-fct-eufse:,
+        fibo-fbc-fct-fse:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-ra:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        lcc-3166-1: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20260701/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/20230101/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of this ontology was added via the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of this ontology was modified to reflect revisions to the GLEIF LEI representation for validation level.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190101/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of this ontology was modified to reflect revisions to the GLEIF LEI information for the European Central Bank, eliminate duplication with concepts in LCC, simplify addresses, and merge countries with locations in FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200301/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200701/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of this ontology was revised to update the LEI URIs to the new form published by the GLEIF on data.world.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20201201/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of this ontology was revised to update the LEI data for all LEIs to correspond to the content published by the GLEIF and clean up individual definitions as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20211201/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of the ontology was modified to eliminate potential circular imports and extend the set of regulatory agencies (SEC-215).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20260301/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of the ontology was modified to reflect migration of the US Financial Services Entities Individuals to Commercial Registration Authorities, and for better alignment with the GLEIF LEI repository for broader FIBO usage (FND-407).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20260601/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies.rdf version of the ontology was modified to replace references to the now deprecated hasTag property in Relations with its equivalent in OMG Commons (FND-412)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2017-2025 Object Management Group, Inc.",
+        "Copyright (c) 2017-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fbc-fct-eurga:CreditInstitutionRegisterEntry a owl:Class ;
+    rdfs:label "Credit Institution Register entry",
+        "信贷机构登记册条目（Credit Institution Register entry）"@zh ;
+    rdfs:comment "信贷机构登记册中的条目；该登记册是由欧洲银行管理局（EBA）依据各国主管机构提供的信息汇集的信贷机构信息库。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fbc-fct-eufse:CreditInstitution ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-eurga:CreditInstitutionRegister ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-fct-eufse:CreditInstitution ],
+        cmns-ra:RegistryEntry ;
+    skos:definition "entry in the Credit Institution Register, a repository of credit institutions collected by the European Banking Authority (EBA) as provided by the various national banking authorities for those institutions that qualify" ;
+    cmns-av:adaptedFrom "http://www.eba.europa.eu/risk-analysis-and-data/credit-institutions-register"^^xsd:anyURI .
+
+fibo-fbc-fct-eurga:EuropeanBankingRegulatoryAgencyAndCentralBank a owl:NamedIndividual,
+        fibo-fbc-fct-fse:CentralBank,
+        cmns-ra:RegistrationAuthority,
+        cmns-rga:RegulatoryAgency ;
+    rdfs:label "European banking regulatory agency and central bank" ;
+    skos:definition "regulatory agency, registration authority and central banking role of the European Central Bank" ;
+    cmns-av:adaptedFrom "https://www.ecb.europa.eu/home/html/index.en.html"^^xsd:anyURI ;
+    cmns-rga:hasJurisdiction fibo-be-ge-euj:EuropeanUnionJurisdiction ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-eurga:EuropeanCentralBank .
+
+fibo-fbc-fct-eurga:FinancialConductAuthority a owl:NamedIndividual,
+        cmns-rga:RegulatoryAgency ;
+    rdfs:label "Financial Conduct Authority" ;
+    skos:definition "Financial Conduct Authority, enabling a fair and thriving financial services market for the good of consumers and the economy in the UK" ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:UnitedKingdomJurisdiction ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-eurga:FinancialConductAuthorityEntity .
+
+fibo-fbc-fct-eurga:PrudentialRegulatoryAuthority a owl:NamedIndividual,
+        cmns-rga:RegulatoryAgency ;
+    rdfs:label "Prudential Regulatory Authority" ;
+    skos:definition "Prudential Regulatory Authority, which is an agency of the Bank of England, responsible for the prudential regulation and supervision of banks, building societies, credit unions, insurers and major investment firms" ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:UnitedKingdomJurisdiction ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-eurga:PrudentialRegulatoryAuthorityEntity .
+
+fibo-fbc-fct-eurga:EuropeanBankingAuthority a owl:NamedIndividual,
+        fibo-be-ge-ge:GovernmentAgency ;
+    rdfs:label "European Banking Authority" ;
+    skos:definition "European Banking Authority legal entity, whose main task is to contribute, through the adoption of binding Technical Standards (BTS) and Guidelines, to the creation of the European Single Rulebook in banking" ;
+    cmns-av:abbreviation "EBA" ;
+    cmns-av:adaptedFrom "http://www.eba.europa.eu/about-us/missions-and-tasks"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The Authority also plays an important role in promoting convergence of supervisory practices to ensure a harmonised application of prudential rules. Finally, the EBA is mandated to assess risks and vulnerabilities in the EU banking sector through, in particular, regular risk assessment reports and pan-European stress tests. To perform these tasks, the EBA can produce a number of regulatory and non regulatory documents including binding Technical Standards, Guidelines, Recommendations, Opinions and ad-hoc or regular reports." .
+
+fibo-fbc-fct-eurga:EuropeanBankingAuthorityRegulator a owl:NamedIndividual,
+        cmns-ra:RegistrationAuthority,
+        cmns-rga:RegulatoryAgency ;
+    rdfs:label "European Banking Authority (EBA) Regulator" ;
+    skos:definition "European Banking Authority (EBA) regulator and registration authority" ;
+    cmns-av:adaptedFrom "http://www.eba.europa.eu/about-us/missions-and-tasks"^^xsd:anyURI ;
+    cmns-org:manages fibo-fbc-fct-eurga:CreditInstitutionRegister ;
+    cmns-rga:hasJurisdiction fibo-be-ge-euj:EuropeanUnionJurisdiction ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-eurga:EuropeanBankingAuthority .
+
+fibo-fbc-fct-eurga:EuropeanCentralBankHeadquartersAndLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "European Central Bank headquarters and legal address" ;
+    skos:definition "headquarters and legal address for the European Central Bank" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "Sonnemannstrasse 20"@de ;
+    fibo-fnd-plc-adr:hasPostalCode "60314" ;
+    cmns-loc:hasCountry lcc-3166-1:Germany ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:Frankfurt .
+
+fibo-fbc-fct-eurga:FinancialConductAuthorityEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:GovernmentAgency ;
+    rdfs:label "Financial Conduct Authority entity" ;
+    skos:definition "Financial Conduct Authority legal entity, enabling a fair and thriving financial services market for the good of consumers and the economy in the UK" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-eurga:FinancialConductAuthorityHeadquartersAndLegalAddress ;
+    fibo-fnd-rel-rel:hasLegalName "Financial Conduct Authority" ;
+    cmns-av:abbreviation "FCA" ;
+    cmns-org:hasWebsite "https://www.fca.org.uk/"^^xsd:anyURI .
+
+fibo-fbc-fct-eurga:FinancialConductAuthorityHeadquartersAndLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Financial Conduct Authority headquarters and legal address" ;
+    skos:definition "headquarters and legal address for the Financial Conduct Authority" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "12 Endeavour Square" ;
+    fibo-fnd-plc-adr:hasPostalCode "E20 1JN" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:London .
+
+fibo-fbc-fct-eurga:PrudentialRegulatoryAuthorityEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:GovernmentAgency ;
+    rdfs:label "Prudential Regulatory Authority entity" ;
+    skos:definition "Prudential Regulatory Authority entity, which is an agency of the Bank of England, responsible for the prudential regulation and supervision of banks, building societies, credit unions, insurers and major investment firms" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-eurga:PrudentialRegulatoryAuthorityHeadquartersAndLegalAddress ;
+    fibo-fnd-rel-rel:hasLegalName "Prudential Regulatory Authority" ;
+    cmns-av:abbreviation "PRA" ;
+    cmns-org:hasWebsite "https://pra.directory/"^^xsd:anyURI .
+
+fibo-fbc-fct-eurga:PrudentialRegulatoryAuthorityHeadquartersAndLegalAddress a owl:NamedIndividual,
+        fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:label "Prudential Regulatory Authority headquarters and legal address" ;
+    skos:definition "headquarters and legal address for the Prudential Regulatory Authority" ;
+    fibo-fnd-plc-adr:hasAddressLine1 "20 Moorgate" ;
+    fibo-fnd-plc-adr:hasPostalCode "EC2R 6DA" ;
+    cmns-loc:hasCountry lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland ;
+    cmns-loc:hasMunicipality fibo-fbc-fct-bci:London .
+
+<https://rdf.gleif.org/L1/L-549300DTUYXVMJXZNY75> a owl:NamedIndividual,
+        fibo-be-le-lei:LegalEntityIdentifier ;
+    rdfs:label "European Central Bank legal entity identifier" ;
+    skos:definition "legal entity identifier for the European Central Bank" ;
+    cmns-dsg:hasTag "549300DTUYXVMJXZNY75" ;
+    cmns-id:identifies fibo-fbc-fct-eurga:EuropeanCentralBank ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-cra:HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmann .
+
+fibo-fbc-fct-eurga:CreditInstitutionRegister a owl:NamedIndividual,
+        cmns-ra:Registry ;
+    rdfs:label "Credit Institution Register" ;
+    skos:definition "registry of credit institutions to which authorisation has been granted to operate within the European Union and European Economic Area countries (EEA), a repository of financial data and institution characteristics for covered institutions collected by the the European Banking Authority (EBA)" ;
+    cmns-av:adaptedFrom "http://www.eba.europa.eu/risk-analysis-and-data/credit-institutions-register"^^xsd:anyURI ;
+    cmns-org:isManagedBy fibo-fbc-fct-eurga:EuropeanBankingAuthorityRegulator .
+
+fibo-fbc-fct-eurga:EuropeanCentralBank a owl:NamedIndividual,
+        fibo-be-ge-ge:Instrumentality ;
+    rdfs:label "European Central Bank" ;
+    skos:definition "European Central Bank, whose main aim is to maintain price stability, i.e. to safeguard the value of the euro" ;
+    fibo-be-le-fbo:hasHeadquartersAddress fibo-fbc-fct-eurga:EuropeanCentralBankHeadquartersAndLegalAddress ;
+    fibo-fnd-rel-rel:hasLegalName "European Central Bank" ;
+    cmns-av:abbreviation "ECB" ;
+    cmns-av:adaptedFrom "https://www.ecb.europa.eu/ecb/orga/escb/ecb-mission/html/index.en.html"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The European Central Bank is responsible for the prudential supervision of credit institutions located in the euro area and participating non-euro area Member States, within the Single Supervisory Mechanism, which also comprises the national competent authorities. It thereby contributes to the safety and soundness of the banking system and the stability of the financial system within the EU and each participating Member State." ;
+    cmns-org:hasWebsite "http://www.ecb.europa.eu/"^^xsd:anyURI .
+

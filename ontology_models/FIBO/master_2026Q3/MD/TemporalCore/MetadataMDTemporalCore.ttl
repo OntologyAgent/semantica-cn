@@ -1,0 +1,33 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-temx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/TemporalCore/MetadataMDTemporalCore/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-temx-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Market Data (MD) TemporalCore Module",
+        "MD 时序核心模块元数据（Metadata for the MD Temporal Core Module）"@zh ;
+    dcterms:abstract "This module covers time-dependent concepts common to all instruments, funds and loans, such as pricing, yields and analytics." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-03-31T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明时序核心（Temporal Core）模块由证券信用状态时序、证券交易状态时序两个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/MD/20230301/TemporalCore/MetadataMDTemporalCore/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc." .
+
+fibo-md-temx-mod:TemporalCoreModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "temporal core module" ;
+    dcterms:abstract "This module covers time-dependent concepts common to all instruments, funds and loans, such as pricing, yields and analytics." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/MD/TemporalCore/SecurityCreditStatuses/>,
+        <https://spec.edmcouncil.org/fibo/ontology/MD/TemporalCore/SecurityTradingStatuses/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO MD Temporal Core Module",
+        "Financial Industry Business Ontology (FIBO) Market Data (MD) Temporal Core Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc." .
+

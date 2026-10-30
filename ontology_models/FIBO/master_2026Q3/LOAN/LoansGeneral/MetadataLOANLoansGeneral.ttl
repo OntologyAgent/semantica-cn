@@ -1,0 +1,47 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-mod: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/MetadataLOANLoansGeneral/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-ln-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Loans (LOAN) Loans General Module",
+        "LOAN 贷款通用模块元数据（Metadata for the LOAN Loans General Module）"@zh ;
+    dcterms:abstract "This module contains ontologies defining concepts that apply to most loans, including but not limited to applications." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-02-03T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明贷款通用（Loans General）模块由贷款、贷款申请、贷款事件、贷款监管四个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/LOAN/20230201/LoansGeneral/MetadataLOANLoansGeneral/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.",
+        "Copyright (c) 2018-2023 Object Management Group, Inc." .
+
+fibo-loan-ln-mod:LoansGeneralModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "loans general module" ;
+    dcterms:abstract "This module contains ontologies defining concepts that apply to most loans, including but not limited to applications." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Federated Knowledge LLC",
+        "Hypercube Ltd.",
+        "John F. Gemski",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Semantic Arts, Inc.",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo",
+        "agnos.ai U.K. Ltd" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanApplications/>,
+        <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanEvents/>,
+        <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/>,
+        <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoansRegulatory/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO LOAN Loans General Module",
+        "Financial Industry Business Ontology (FIBO) Loans (LOAN) Loans General Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.",
+        "Copyright (c) 2018-2023 Object Management Group, Inc." .
+

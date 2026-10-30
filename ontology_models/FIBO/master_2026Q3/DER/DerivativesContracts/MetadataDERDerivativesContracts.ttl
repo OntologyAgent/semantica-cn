@@ -1,0 +1,75 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/MetadataDERDerivativesContracts/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-drc-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Derivatives (DER) Derivatives Contracts Module",
+        "DER 衍生品合约模块元数据（Metadata for the DER Derivatives Contracts Module）"@zh ;
+    dcterms:abstract "The derivatives contracts module includes the contractual components common to all derivatives or to entire classes of derivatives." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2025-06-24T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明衍生品合约（Derivatives Contracts）模块的构成：衍生品基础、期权、奇异期权、期货与远期、互换、权利与权证、大宗商品合约、外汇合约、结构化工具、主协议及互换个体等本体。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20261001/DerivativesContracts/MetadataDERDerivativesContracts/> ;
+    cmns-av:copyright "Copyright (c) 2018-2025 Object Management Group, Inc.",
+        "Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-der-drc-mod:DerivativesContractsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "derivatives contracts module" ;
+    dcterms:abstract "The derivatives contracts module includes the contractual components common to all derivatives or to entire classes of derivatives." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Bloomberg LP",
+        "Citigroup",
+        "Commodities Futures Trading Commission (CFTC)",
+        "Credit Suisse",
+        "Deutsche Bank",
+        "Exprentis",
+        "Federated Knowledge LLC",
+        "Intuitive Technology Partners, Inc.",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Mizuho Financial Group, Inc.",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "ProBanker Simulations, LLC",
+        "Quarule",
+        "State Street Bank and Trust",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo Bank, N.A.",
+        "Working Ontologist",
+        "agnos.ai" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CommoditiesContracts/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/CurrencyContracts/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesMasterAgreements/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/ExoticOptions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/FuturesAndForwards/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/StructuredInstruments/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO DER Derivatives Contracts Module",
+        "Financial Industry Business Ontology (FIBO) Derivatives (DER) Derivatives Contracts Module" ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    cmns-av:copyright "Copyright (c) 2018-2025 Object Management Group, Inc.",
+        "Copyright (c) 2018-2026 EDM Association dba EDM Council, Inc." .
+

@@ -1,0 +1,114 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-strcol: <https://www.omg.org/spec/Commons/StructuredCollections/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-strcol: a owl:Ontology ;
+    rdfs:label "Commons Structured Collections Ontology",
+        "Commons 结构化集合本体（Commons Structured Collections Ontology）"@zh ;
+    dct:abstract "This ontology extends the concept of a structured collection to include sets, lists, and collections whose elements are ordered chronologically or are indexed." ;
+    dct:license """Copyright (c) 2019-2024 Thematix Partners LLC
+		Copyright (c) 2021-2024 EDM Council, Inc.
+		Copyright (c) 2024 Object Management Group, Inc.
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义具有特定结构或模式的集合，如序列、层次结构等。"@zh ;
+    owl:imports cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-doc: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20250801/StructuredCollections/> ;
+    skos:changeNote "The https://www.omg.org/spec/Commons/20240801/Collections.rdf version of this ontology was modified to clarify the definition of list (COMMONS13-8) and replace the property hasConstituent with hasMember due to a semantics mismatch (COMMONS13-4)." ;
+    cmns-av:copyright "Copyright (c) 2019-2025 Thematix Partners LLC",
+        "Copyright (c) 2021-2025 EDM Council, Inc.",
+        "Copyright (c) 2024-2025 Dassault Systèmes",
+        "Copyright (c) 2024-2025 Object Management Group, Inc." .
+
+cmns-strcol:ChronologicallyOrderedCollection a owl:Class ;
+    rdfs:label "chronologically ordered collection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom cmns-strcol:ChronologicallyOrderedConstituent ],
+        cmns-col:StructuredCollection ;
+    skos:definition "structured collection whose elements are ordered by time" ;
+    cmns-av:adaptedFrom "ISO 5127 Information and documentation - Foundation and vocabulary, Second edition, 2017-05" ;
+    cmns-av:explanatoryNote "Examples include simple schedules, bank statements, and other records that are ordered by time." .
+
+cmns-strcol:List a owl:Class ;
+    rdfs:label "list" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-strcol:IndexedConstituent ;
+            owl:onProperty cmns-col:hasMember ],
+        cmns-col:StructuredCollection ;
+    skos:definition "finite, linearly ordered collection of items, where the same item may occur more than once" ;
+    cmns-av:adaptedFrom "ISO 5127 Information and documentation - Foundation and vocabulary, Second edition, 2017-05" .
+
+cmns-strcol:Set a owl:Class ;
+    rdfs:label "set" ;
+    rdfs:subClassOf cmns-col:Collection ;
+    skos:definition "assembly of distinct objects or concepts considered as a whole" ;
+    cmns-av:adaptedFrom "ISO 5127 Information and documentation - Foundation and vocabulary, Second edition, 2017-05" .
+
+cmns-strcol:ChronologicallyOrderedConstituent a owl:Class ;
+    rdfs:label "chronologically ordered constituent" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty cmns-dt:hasObservedDateTime ],
+        cmns-col:Constituent ;
+    skos:definition "element of a collection that is ordered within a collection with respect to time" ;
+    cmns-av:adaptedFrom "ISO 5127 Information and documentation - Foundation and vocabulary, Second edition, 2017-05" ;
+    cmns-av:explanatoryNote "Note that the use of several options for the representation of a date and time stamp enables extensions for milliseconds, nanoseconds using an xsd:string that has the format of an xsd:dateTime datatype but extends the level of granularity consistently. An example of where this is required is to represent records that are ordered by date and time and security prices that change multiple times in a given day." .
+
+cmns-strcol:IndexedConstituent a owl:Class ;
+    rdfs:label "indexed constituent" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom cmns-strcol:IndexValue ],
+        cmns-col:Constituent ;
+    skos:definition "element of a collection that is ordered within that collection with respect to an index" ;
+    cmns-av:adaptedFrom "ISO 5127 Information and documentation - Foundation and vocabulary, Second edition, 2017-05" .
+
+cmns-strcol:IndexingScheme a owl:Class ;
+    rdfs:label "indexing scheme" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-strcol:IndexValue ;
+            owl:onProperty cmns-dsg:defines ],
+        cmns-col:Arrangement ;
+    skos:definition "system for indexing values, data, information, or knowledge" .
+
+cmns-col:Constituent a owl:Class ;
+    cmns-av:adaptedFrom "ISO 5127 Information and documentation - Foundation and vocabulary, Second edition, 2017-05" ;
+    cmns-av:explanatoryNote "An element is an object constituting part of a set, and can be a concept." ;
+    cmns-av:synonym "element" .
+
+cmns-strcol:IndexValue a owl:Class ;
+    rdfs:label "index value" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-strcol:IndexingScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-doc:refersTo ],
+        cmns-cls:Aspect ;
+    skos:definition "aspect of a collection or retrieval system indicating the address within a record, list, or document where that element can be found" ;
+    cmns-av:adaptedFrom "ISO 5127 Information and documentation - Foundation and vocabulary, Second edition, 2017-05" ;
+    cmns-av:explanatoryNote "An index may be an indirect shortcut derived from and pointing into, a collection of values, data, information or knowledge or a simple ordinal number." ;
+    cmns-av:usageNote "For index values that are numeric, use hasNumericValue from the Commons Quantities and Units ontology to specify the value itself. For a more complex string-valued index, use hasTextValue from the Commons TextDatatype ontology to specify the value." .
+

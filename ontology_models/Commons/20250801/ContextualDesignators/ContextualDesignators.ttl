@@ -1,0 +1,104 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-cxtdsg: a owl:Ontology ;
+    rdfs:label "Commons Contextual Designators Ontology",
+        "Commons 上下文指称本体（Commons Contextual Designators Ontology）"@zh ;
+    dct:abstract "The contextual designators ontology extends the designators ontology to incorporate applicable dates and times and facilitate the inclusion of other context that is commonly needed, derived in part from the patterns defined in ISO 11179-3, Metadata Registries." ;
+    dct:contributor "Dean Allemang, Working Ontologist",
+        "Elisa Kendall, Thematix Partners LLC",
+        "Pete Rivett, Federated Knowledge, LLC" ;
+    dct:license """Copyright (c) 2020-2025 Thematix Partners LLC
+		Copyright (c) 2020-2025 Working Ontologist LLC
+		Copyright (c) 2022-2025 Object Management Group, Inc.
+		Copyright (c) 2022-2025 agnos.ai U.K. Ltd
+		Copyright (c) 2023-2025 Federated Knowledge, LLC
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义在特定上下文中有意义的指称、名称和标识符。"@zh ;
+    owl:imports cmns-av:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-dsg: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20250801/ContextualDesignators/> ;
+    skos:changeNote "The https://www.omg.org/spec/Commons/20220501/ContextualDesignators.rdf version of this ontology was modified to eliminate a double space in a note on ContextualName (COMMONS-6) and to require a ContextualName to have context (COMMONS-26).",
+        "The https://www.omg.org/spec/Commons/20221101/ContextualDesignators.rdf version of this ontology was revised to clarify the definition of isUsedBy (COMMONS13-34)." ;
+    skos:note "The contextual designators ontology conforms with the OWL 2 DL semantics, and is outside of OWL 2 RL due to (1) imported axioms from the designations and dates and times ontologies, and (2) the inclusion of local some values and min 0 cardinality constraints. The latter could be removed as needed to support OWL RL rule-based applications that cannot be extended to support it." ;
+    cmns-av:copyright "Copyright (c) 2020-2025 Thematix Partners LLC",
+        "Copyright (c) 2020-2025 Working Ontologist LLC",
+        "Copyright (c) 2022-2025 Object Management Group, Inc.",
+        "Copyright (c) 2022-2025 agnos.ai U.K. Ltd",
+        "Copyright (c) 2023-2025 Federated Knowledge, LLC" .
+
+cmns-cxtdsg:ContextualName a owl:Class ;
+    rdfs:label "contextual name" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom cmns-cxtdsg:Context ],
+        cmns-cxtdsg:ContextualDesignation,
+        cmns-dsg:Name ;
+    skos:definition "designation by which someone, some place, or something is known in some context" ;
+    skos:note "Names for people may be considered to be personally identifying information (PII), especially when other details are also available. Specifying names as string values attached directly to an individual makes name reconciliation and management, including from a privacy perspective, more challenging.",
+        "Names of people, places, and organizations often change over time, and may be used in a particular context, such as a DBA name for a business or legal name for a person." ;
+    skos:scopeNote "This class is designed to be extended to include provenance details regarding the source for a particular name as well as links to the various contexts in which it is used." .
+
+cmns-cxtdsg:isUsedBy a owl:ObjectProperty ;
+    rdfs:label "is used by" ;
+    owl:inverseOf cmns-cxtdsg:uses ;
+    skos:definition "serves a function or purpose for" .
+
+cmns-cxtdsg:ContextualDesignation a owl:Class ;
+    rdfs:label "contextual designation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:DatePeriod ;
+            owl:onProperty cmns-cxtdsg:hasApplicablePeriod ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-cxtdsg:Context ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        cmns-dsg:Designation ;
+    skos:definition "designation that applies to something in some context" ;
+    skos:note "Contextual designators may be structured such that they include other designators, for example, composite identifiers that include a country code to distinguish national identifiers from one another, for example, in the case of some manufacturing, agricultural, or financial instrument identifiers.",
+        "Note that the use of the min 0 cardinality restriction in the definition of this class is provided as a reminder that contextual designators are expected, in most cases, to have some sort of context associated with them. There may be cases where the context is limited to a time period, though, and thus additional context may not be required, or where more direct relationships to provenance, governance, or other contextual information is available." .
+
+cmns-cxtdsg:appliesTo a owl:ObjectProperty ;
+    rdfs:label "applies to" ;
+    skos:definition "indicates something for which a context is material, germane, or relevant in some way" .
+
+cmns-cxtdsg:hasApplicablePeriod a owl:ObjectProperty ;
+    rdfs:label "has applicable period" ;
+    rdfs:range cmns-dt:DatePeriod ;
+    rdfs:subPropertyOf cmns-cxtdsg:isApplicableIn,
+        cmns-dt:hasDatePeriod ;
+    skos:definition "indicates a date period during which something may be used, applies, is valid or is accurate or relevant" .
+
+cmns-cxtdsg:uses a owl:ObjectProperty ;
+    rdfs:label "uses" ;
+    skos:definition "employs to accomplish some task or achieve some result" .
+
+cmns-cxtdsg:Context a owl:Class ;
+    rdfs:label "context" ;
+    dct:source "ISO 1087 Terminology work and terminology science - Vocabulary, Second edition, 2019-09, clause 3.6.5",
+        "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
+    skos:definition "situation or frame of reference in which something applies, exists, happens, or is used and that helps to illustrate or explain it" ;
+    skos:note "From a terminology perspective, context provides information, including but not limited to text, that illustrates a concept or the use of a designation for a given situation." .
+
+cmns-cxtdsg:isApplicableIn a owl:ObjectProperty ;
+    rdfs:label "is applicable in" ;
+    owl:inverseOf cmns-cxtdsg:appliesTo ;
+    skos:definition "indicates a context in which something is relevant" .
+

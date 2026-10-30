@@ -1,0 +1,163 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-oac-cpty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/> .
+@prefix fibo-be-oac-exec: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-be-plc-plc: <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-plc-plc: a owl:Ontology ;
+    rdfs:label "Private Limited Companies Ontology",
+        "私人有限公司本体（Private Limited Companies Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the fundamental concepts for representing private limited companies -- i.e., companies that have characteristics of corporations and of partnerships but are neither." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+		Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义私人有限公司（private limited company）这类不公开募股的有限责任公司形态。"@zh ;
+    owl:imports fibo-be-le-lp:,
+        fibo-be-oac-cpty:,
+        fibo-be-oac-exec:,
+        fibo-be-oac-opty:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-org:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/PrivateLimitedCompanies/PrivateLimitedCompanies/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20160201/PrivateLimitedCompanies/PrivateLimitedCompanies.rdf version of this ontology was modified per the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/PrivateLimitedCompanies/PrivateLimitedCompanies.rdf version of this ontology was modified to simplify / merge the legal person and formal organization class hierarchies, and add limited liability company, limited liability company taxed as a corporation, managing member, and private limited company.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20201201/PrivateLimitedCompanies/PrivateLimitedCompanies.rdf version of this ontology was modified to eliminate a smart quote in an explanatory note on manager-managed limited liability company, and to reflect the move of OrganizationMember from Parties to Organizations in FND",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210401/PrivateLimitedCompanies/PrivateLimitedCompanies.rdf version of this ontology was modified to fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20211201/PrivateLimitedCompanies/PrivateLimitedCompanies.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230201/PrivateLimitedCompanies/PrivateLimitedCompanies.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/PrivateLimitedCompanies/PrivateLimitedCompanies.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20240101/PrivateLimitedCompanies/PrivateLimitedCompanies.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-be-plc-plc:LimitedLiabilityCompanyTaxedAsACorporation a owl:Class ;
+    rdfs:label "limited liability company taxed as a corporation",
+        "按公司纳税的有限责任公司（limited liability company taxed as a corporation）"@zh ;
+    rdfs:comment "已选择公司纳税身份的有限责任公司。"@zh ;
+    rdfs:subClassOf fibo-be-plc-plc:LimitedLiabilityCompany ;
+    skos:definition "limited liability company that has elected to have corporate tax status" ;
+    cmns-av:abbreviation "C-LLC" ;
+    cmns-av:explanatoryNote "In the United States, LLCs that elect to be taxed as a corporation do so by filing an IRS Form 8832." .
+
+fibo-be-plc-plc:ManagerManagedLimitedLiabilityCompany a owl:Class ;
+    rdfs:label "manager-managed limited liability company",
+        "经理管理的有限责任公司（manager-managed limited liability company）"@zh ;
+    rdfs:comment "成员任命一名或多名经理处理日常运营与行政职责的有限责任公司。"@zh ;
+    rdfs:subClassOf fibo-be-plc-plc:LimitedLiabilityCompany ;
+    skos:definition "limited liability company in which the members appoint one or more managers to handle the daily operations and administrative responsibilities of the organization" ;
+    cmns-av:explanatoryNote "If no members are interested in managing the LLC, an external manager (someone who doesn't own any portion of the LLC) can be hired to run the business operations, including, in some jurisdictions, a third-party entity, such as another company." .
+
+fibo-be-plc-plc:PrivateLimitedCompany a owl:Class ;
+    rdfs:label "private limited company",
+        "私人有限公司（private limited company）"@zh ;
+    rdfs:comment "股东责任以其最初投入资本为限的私人有限公司。"@zh ;
+    rdfs:subClassOf fibo-be-plc-plc:PrivateCompanyWithLimitedLiability ;
+    skos:definition "private limited company whose shareholders' liability is limited to the capital they originally invested" ;
+    cmns-av:abbreviation "Ltd." ;
+    cmns-av:explanatoryNote "Private limited companies are common in countries including the U.K., Ireland, and Canada. They have one or more members, also called shareholders or owners, who buy in through private sales. Directors are company employees who keep up with all administrative tasks and tax filings but do not need to be shareholders." .
+
+fibo-be-plc-plc:isManagingMemberOf a owl:ObjectProperty ;
+    rdfs:label "is managing member of",
+        "是……的管理成员（is managing member of）"@zh ;
+    rdfs:comment "标识该管理成员所经营的受控有限责任公司。"@zh ;
+    rdfs:domain fibo-be-plc-plc:ManagingMember ;
+    rdfs:subPropertyOf fibo-be-oac-cpty:isControllingMemberOf ;
+    owl:inverseOf fibo-be-plc-plc:hasManagingMember ;
+    skos:definition "indicates the controlled limited liability company that the managing member runs" .
+
+fibo-be-plc-plc:LimitedLiabilityCompanyMember a owl:Class ;
+    rdfs:label "limited liability company member",
+        "有限责任公司成员（limited liability company member）"@zh ;
+    rdfs:comment "有限责任公司权益的所有者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-be-plc-plc:LimitedLiabilityCompany ] ;
+            owl:onProperty fibo-be-oac-cpty:isControllingMemberOf ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-col:isMemberOf ;
+                    owl:someValuesFrom fibo-be-plc-plc:LimitedLiabilityCompany ] ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-be-oac-cpty:DeJureControllingInterestParty,
+        fibo-be-oac-cpty:EntityControllingParty,
+        fibo-be-oac-opty:EntityOwner,
+        cmns-org:OrganizationMember ;
+    skos:definition "owner of an interest in a limited liability company" .
+
+fibo-be-plc-plc:PrivateCompanyWithLimitedLiability a owl:Class ;
+    rdfs:label "private company with limited liability",
+        "有限责任私人公司（private company with limited liability）"@zh ;
+    rdfs:comment "兼具公司与合伙或独资（视所有者数量而定）特征的混合型企业实体。"@zh ;
+    rdfs:subClassOf fibo-be-le-lp:BusinessEntity,
+        cmns-org:LegalEntity ;
+    skos:definition "hybrid business entity having characteristics of both a corporation and a partnership or sole proprietorship (depending on how many owners there are)" ;
+    cmns-av:adaptedFrom "https://en.wikipedia.org/wiki/Limited_liability_company#Overview"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "A private company with limited liability, although a business entity, is not a corporation. The primary characteristic this legal form shares with a corporation is limited liability, and the primary characteristic it shares with a partnership is the availability of pass-through income taxation. It is often more flexible than a corporation, and it is well-suited for companies with a single owner." .
+
+fibo-be-plc-plc:hasManagingMember a owl:ObjectProperty ;
+    rdfs:label "has managing member",
+        "具有管理成员（has managing member）"@zh ;
+    rdfs:comment "标识在有限责任公司中处于控制角色、负责日常业务运营的管理成员。"@zh ;
+    rdfs:range fibo-be-plc-plc:ManagingMember ;
+    rdfs:subPropertyOf fibo-be-oac-cpty:hasControllingOrganizationMember ;
+    skos:definition "indicates a managing member in a controlling role of a limited liability company that has responsibility for the day-to-day business operations" .
+
+fibo-be-plc-plc:ManagingMember a owl:Class ;
+    rdfs:label "managing member",
+        "管理成员（managing member）"@zh ;
+    rdfs:comment "同时经营日常业务的有限责任公司权益所有者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-plc-plc:isManagingMemberOf ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-be-plc-plc:LimitedLiabilityCompany ] ],
+        fibo-be-oac-exec:PrincipalParty,
+        fibo-be-plc-plc:LimitedLiabilityCompanyMember ;
+    skos:definition "owner of an interest in a limited liability company who also runs the day-to-day business operations" .
+
+fibo-be-plc-plc:LimitedLiabilityCompany a owl:Class ;
+    rdfs:label "limited liability company",
+        "有限责任公司（limited liability company）"@zh ;
+    rdfs:comment "将独资或合伙的穿透征税与公司的有限责任相结合的私人有限公司。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass [ a owl:Restriction ;
+                    owl:onProperty fibo-be-plc-plc:hasManagingMember ;
+                    owl:someValuesFrom fibo-be-plc-plc:ManagingMember ] ;
+            owl:onProperty cmns-rlcmp:playsRole ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:playsRole ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-be-oac-cpty:hasControllingOrganizationMember ;
+                    owl:someValuesFrom fibo-be-plc-plc:LimitedLiabilityCompanyMember ] ],
+        fibo-be-plc-plc:PrivateCompanyWithLimitedLiability ;
+    skos:definition "private limited company that combines the pass through taxation of a sole proprietorship or partnership with the limited liability of a corporation" ;
+    cmns-av:abbreviation "LLC" .
+

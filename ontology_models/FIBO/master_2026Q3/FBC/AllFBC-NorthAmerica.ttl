@@ -1,0 +1,65 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fct-cafse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities/> .
+@prefix fibo-fbc-fct-cajrga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/> .
+@prefix fibo-fbc-fct-cra: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/CommercialRegistrationAuthorities/> .
+@prefix fibo-fbc-fct-usfse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntities/> .
+@prefix fibo-fbc-fct-usjrga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/> .
+@prefix fibo-fbcna-all: <https://spec.edmcouncil.org/fibo/ontology/FBC/AllFBC-NorthAmerica/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbcna-all: a owl:Ontology ;
+    rdfs:label "Financial Business and Commerce Domain, North American Extension",
+        "FBC 域北美扩展入口（All FBC, North American Extension）"@zh ;
+    dcterms:abstract "The financial business and commerce domain covers business concepts that are common to common to a number of finance areas, such as loans, securities, and corporate actions, including products and services, financial intermediaries, registrars and regulators, and financial instruments and products." ;
+    dcterms:contributor "Adaptive Analytics, Inc.",
+        "Bloomberg LP",
+        "Capacity Post, Inc.",
+        "Citigroup",
+        "Credit Suisse",
+        "Dassault Systemes / No Magic",
+        "Deutsche Bank",
+        "Exprentis",
+        "Federated Knowledge, LLC",
+        "Intuitive Technology Partners, Inc.",
+        "John F. Gemski",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Pinnacle Bank (Morgan Hill, California)",
+        "Probanker Simulations, LLC",
+        "Quarule",
+        "State Street Bank and Trust",
+        "Statistics Canada",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo",
+        "agnos.ai UK Ltd." ;
+    dcterms:issued "2015-08-13T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2017-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2017-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-06-19T18:00:00"^^xsd:dateTime ;
+    dcterms:title "Financial Industry Business Ontology (FIBO) Financial Business and Commerce (FBC) Domain, North American Extension" ;
+    rdfs:comment "聚合 FBC 域中北美法域的扩展本体（美国与加拿大的金融服务实体、监管机构及受控词汇等）。"@zh ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    owl:imports <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-NorthAmerica/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/AllFBC-ReferenceMarkets/>,
+        fibo-fbc-fct-cra:,
+        fibo-fbc-fct-cafse:,
+        fibo-fbc-fct-cajrga:,
+        fibo-fbc-fct-usfse:,
+        fibo-fbc-fct-usjrga: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20261001/AllFBC-NorthAmerica/> ;
+    cmns-av:copyright "Copyright (c) 2020-2025 Object Management Group, Inc.",
+        "Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc." ;
+    cmns-av:explanatoryNote "The 'all' ontology for the North American Extension of FBC is provided for convenience for FIBO users. This ontology does not add new assertions, but imports most of the Production (Released) ontologies that comprise the FIBO Foundations (FND), Business Entities (BE) and Financial Business and Commerce (FBC) domains, including all of FND but excluding individuals for European governments and jurisdictions, financial services and regulatory organizations and related registries, as well as the related LCC region-specific ontologies." .
+

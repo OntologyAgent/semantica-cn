@@ -1,0 +1,150 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-plc-rp: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/RealProperty/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-loan-reln-mtg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-reln-mtg: a owl:Ontology ;
+    rdfs:label "Mortgages Ontology"@en,
+        "抵押贷款本体（Mortgages Ontology）"@zh ;
+    dcterms:abstract "This ontology covers high-level concepts related to loans secured by real property." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义以不动产为抵押的贷款：抵押物、抵押登记与止赎。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fbc-pas-caa:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-plc-rp:,
+        fibo-fnd-utl-av:,
+        fibo-loan-ln-ln:,
+        cmns-av:,
+        cmns-doc: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/LOAN/20250301/RealEstateLoans/Mortgages/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/LOAN/20241101/RealEstateLoans/Mortgages.rdf version of this ontology was modified to move the property 'has credit limit' to FBC as needed to define certain credit facilities (FBC-324)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-loan-reln-mtg:ClosedEndReverseMortgage a owl:Class ;
+    rdfs:label "closed-end reverse mortgage",
+        "封闭式反向抵押贷款（closed-end reverse mortgage）"@zh ;
+    dcterms:source "Instructions for the Preparation of Consolidated Reports of Condition and Income, FFIEC 031 and FFIEC 041, Updated March 2023, clause A-91" ;
+    rdfs:comment "在结清时向借款人一次性支付、借款人日后不得再提取额外资金的反向抵押贷款。"@zh ;
+    rdfs:subClassOf fibo-loan-reln-mtg:ClosedEndMortgageLoan,
+        fibo-loan-reln-mtg:ReverseMortgageLoan ;
+    skos:definition "reverse mortgage that provides a lump sum payment to the borrower at closing, with no ability for the borrower to receive additional funds under the mortgage at a later date" ;
+    cmns-av:explanatoryNote "Normally, closed-end reverse mortgages are first liens." .
+
+fibo-loan-reln-mtg:Mortgage a owl:Class ;
+    rdfs:label "mortgage",
+        "抵押（mortgage）"@zh ;
+    rdfs:comment "向非该不动产所有人的参与方授予的不动产财产权益，由注册机构登记。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ;
+            owl:someValuesFrom fibo-fnd-plc-rp:RealProperty ],
+        fibo-fbc-dae-dbt:SecurityAgreement ;
+    skos:definition "grant of financial interest in real property to a party that is not an owner of that real property and is recorded by a registration authority" ;
+    cmns-av:explanatoryNote "A mortgage prevents transfer of the ownership of the real property unless the financial interest is satisfied. Any loan can be collateralized by a mortgage, including, for example, a bail bond."@en .
+
+fibo-loan-reln-mtg:OpenEndReverseMortgage a owl:Class ;
+    rdfs:label "open-end reverse mortgage",
+        "开放式反向抵押贷款（open-end reverse mortgage）"@zh ;
+    dcterms:source "Instructions for the Preparation of Consolidated Reports of Condition and Income, FFIEC 031 and FFIEC 041, Updated March 2023, clause A-91" ;
+    rdfs:comment "结构类似房屋净值信用额度的反向抵押贷款，结清后借款人可获得额外资金。"@zh ;
+    rdfs:subClassOf fibo-loan-reln-mtg:OpenEndMortgageLoan,
+        fibo-loan-reln-mtg:ReverseMortgageLoan ;
+    skos:definition "reverse mortgage structured like a home equity line of credit in that it provides the borrower with additional funds after closing (either as fixed monthly payments, under a line of credit, or both)" ;
+    cmns-av:explanatoryNote "Normally, open-end reverse mortgages are first liens. These include combinations of both a lump sum payment to the borrower at closing and payments after the closing of the loan." .
+
+fibo-loan-reln-mtg:isARMConvertible a owl:DatatypeProperty ;
+    rdfs:label "is ARM convertible"@en,
+        "可转可调整利率（is ARM convertible）"@zh ;
+    rdfs:comment "表明该贷款是否可转换为可调整利率抵押贷款合同（ARM）。"@zh ;
+    rdfs:domain fibo-loan-reln-mtg:LoanSecuredByRealEstate ;
+    rdfs:range xsd:boolean ;
+    skos:definition "indicates whether or not the loan can be converted into an adjustable-rate mortgage contract (ARM)"@en .
+
+fibo-loan-reln-mtg:ClosedEndMortgageLoan a owl:Class ;
+    rdfs:label "closed-end mortgage loan",
+        "封闭式抵押贷款（closed-end mortgage loan）"@zh ;
+    rdfs:comment "以房地产作担保、借款人日后不得再提取额外资金的贷款。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-ln:ClosedEndCredit,
+        fibo-loan-reln-mtg:LoanSecuredByRealEstate ;
+    skos:definition "loan secured by real estate with no ability for the borrower to receive additional funds under the loan at a later date" ;
+    cmns-av:adaptedFrom "MISMO Business Glossary, available at https://www.mismo.org/standards-resources/business-glossary/" .
+
+fibo-loan-reln-mtg:OpenEndMortgageLoan a owl:Class ;
+    rdfs:label "open-end mortgage loan",
+        "开放式抵押贷款（open-end mortgage loan）"@zh ;
+    rdfs:comment "以房地产作担保、约定经借贷双方同意可增加未偿贷款金额的贷款。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-ln:OpenEndCredit,
+        fibo-loan-reln-mtg:LoanSecuredByRealEstate ;
+    skos:definition "loan secured by real estate with a provision that the outstanding loan amount may be increased upon mutual agreement of the lender and the borrower" ;
+    cmns-av:adaptedFrom "MISMO Business Glossary, available at https://www.mismo.org/standards-resources/business-glossary/" .
+
+fibo-loan-reln-mtg:hasInitialFundingDate a owl:ObjectProperty ;
+    rdfs:label "has initial funding date",
+        "具有初始放款日（has initial funding date）"@zh ;
+    rdfs:comment "将抵押贷款关联到合同成立、正式产生其义务的日期。"@zh ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasEffectiveDate ;
+    skos:definition "relates a mortgage to the date on which the contract is consummated, officially creating the obligations therein" ;
+    cmns-av:synonym "has closing date" .
+
+fibo-loan-reln-mtg:ReverseMortgageLoan a owl:Class ;
+    rdfs:label "reverse mortgage loan",
+        "反向抵押贷款（reverse mortgage loan）"@zh ;
+    rdfs:comment "以房地产作担保、按抵押物现有净值设定本金限额并向借款人支付资金的贷款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasCreditLimit ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+        fibo-loan-reln-mtg:LoanSecuredByRealEstate ;
+    skos:definition "loan secured by real estate that pays money to the borrower against a set principal limit based on the value of existing equity in the underlying collateral" ;
+    cmns-av:explanatoryNote "The interest accrued is added to the principal balance." .
+
+fibo-loan-reln-mtg:LoanSecuredByRealEstate a owl:Class ;
+    rdfs:label "loan secured by real estate",
+        "房地产担保贷款（loan secured by real estate）"@zh ;
+    dcterms:source "Consolidated Reports of Condition and Income for a Bank with Domestic and Foreign Offices - FFIEC 031; Board of Governors of the Federal Reserve System OMB Number 7100-0036, Federal Deposit Insurance Corporation OMB Number 3064-0052, Office of the Comptroller of the Currency OMB Number 1557-0081, dated 20240930",
+        "Instructions for the Preparation of Consolidated Reports of Condition and Income, FFIEC 031 and FFIEC 041, Updated March 2023, clause A-91" ;
+    rdfs:comment "发放时全部或主要由不动产留置权作担保、且该留置权为授信核心的贷款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:DisclosureProvision ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ;
+            owl:someValuesFrom fibo-fnd-plc-rp:RealProperty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:UseOfProceedsProvision ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:SecurityAgreement ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-reln-mtg:hasInitialFundingDate ;
+            owl:someValuesFrom fibo-fbc-pas-caa:TransactionDate ],
+        fibo-loan-ln-ln:CollateralizedLoan ;
+    skos:definition "loan that, at origination, is secured wholly or substantially by a lien or liens on real property for which the lien or liens are central to the extension of the credit - that is, the borrower would not have been extended credit in the same amount or on terms as favorable without the lien or liens on real property" ;
+    skos:example "Examples include (a) Construction, land development, and other land loans: (1) 1-4 family residential construction loans, and (2) Other construction loans and all land development and other land loans; (b) Secured by farmland (including farm residential and other improvements); (c) Secured by 1-4 family residential properties: (1) Revolving, open-end loans secured by 1-4 family residential properties and extended under lines of credit, and (2) Closed-end loans secured by 1-4 family residential properties including those secured by first liens and those secured by junior liens; (d) Secured by multifamily (5 or more) residential properties; and (e) Secured by nonfarm nonresidential properties: (1) Loans secured by owner-occupied nonfarm nonresidential, and (2) Loans secured by other nonfarm nonresidential properties."@en ;
+    cmns-av:explanatoryNote "In general parlance, loans secured by real estate are often called mortgages or mortgage loans. This usage conflates a number of related concepts, which would limit the usability of FIBO for financial institutions and regulators with respect to such loans. As described herein, many different kinds of loans can be secured by real estate, including various commercial, construction, agricultural, and consumer loans."@en,
+        "In the US, to be considered wholly or substantially secured by a lien or liens on real property, the estimated value of the real estate collateral at origination (after deducting any more senior liens held by others) must be greater than 50 percent of the principal amount of the loan at origination."@en,
+        "The borrower agrees to pay the lender over time, typically in a series of regular payments divided into principal and interest. The property then serves as collateral to secure the loan."@en .
+

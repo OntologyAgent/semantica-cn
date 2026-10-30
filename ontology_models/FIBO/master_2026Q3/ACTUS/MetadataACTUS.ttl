@@ -1,0 +1,67 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-actus-mod: <https://spec.edmcouncil.org/fibo/ontology/ACTUS/MetadataACTUS/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-actus-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the FIBO Algorithmic Contract Types Unified Standards (ACTUS) Domain",
+        "ACTUS 域元数据（Metadata for the ACTUS Domain）"@zh ;
+    dcterms:abstract "This ontology provides metadata about the FIBO Algorithmic Contract Types Unified Standards (ACTUS) Domain, which includes the ACTUS controlled vocabulary and maps it to FIBO, providing the corresponding semantics and enabling integration of knowledge graphs based on FIBO with the ACTUS system." ;
+    dcterms:issued "2024-12-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2024-2026 ACTUS Financial Research Foundation
+Copyright (c) 2024-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2024-2025 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:modified "2026-10-06T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明 ACTUS 域的构成（合约条款、条款映射、受控词汇三个本体）及版本信息。ACTUS 域把算法合约类型统一标准接入 FIBO。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/ACTUS/20261001/MetadataACTUS/> ;
+    cmns-av:copyright "Copyright (c) 2024-2025 Object Management Group",
+        "Copyright (c) 2024-2026 ACTUS Financial Research Foundation",
+        "Copyright (c) 2024-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-actus-mod:ACTUSDomain a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "ACTUS domain" ;
+    dcterms:abstract "The FIBO Algorithmic Contract Types Unified Standards (ACTUS) Domain includes several ACTUS controlled vocabularies and maps them to FIBO, providing the corresponding semantics and enabling integration of knowledge graphs based on FIBO with the ACTUS system." ;
+    dcterms:contributor "Federated Knowledge, LLC",
+        "Intuitive Technology Partners, Inc.",
+        "John F. Gemski",
+        "Pinnacle Bank (Morgan Hill, California)",
+        "ProBanker Simulations, LLC",
+        "Tahoe Blue Ltd",
+        "Thematix Partners, LLC" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/ACTUS/ACTUSContractTermMapping/>,
+        <https://spec.edmcouncil.org/fibo/ontology/ACTUS/ACTUSContractTerms/>,
+        <https://spec.edmcouncil.org/fibo/ontology/ACTUS/ACTUSTaxonomy/> ;
+    dcterms:license """Copyright (c) 2024-2026 ACTUS Financial Research Foundation
+Copyright (c) 2024-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2024-2025 Object Management Group
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    dcterms:title "FIBO ACTUS Domain",
+        "Financial Industry Business Ontology (FIBO) Algorithmic Contract Types Unified Standards (ACTUS) Domain" ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    skos:altLabel "Algorithmic Contract Types Unified Standards (ACTUS)" ;
+    cmns-av:copyright "Copyright (c) 2024-2025 Object Management Group",
+        "Copyright (c) 2024-2026 ACTUS Financial Research Foundation",
+        "Copyright (c) 2024-2026 EDM Association dba EDM Council, Inc." .
+

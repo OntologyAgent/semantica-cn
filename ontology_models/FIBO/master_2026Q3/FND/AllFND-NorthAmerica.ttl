@@ -1,0 +1,43 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-all: <https://spec.edmcouncil.org/fibo/ontology/FND/AllFND/> .
+@prefix fibo-fnd-plc-uspsa: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/> .
+@prefix fibo-fnd-plc-uspsai: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddressesIndividuals/> .
+@prefix fibo-fndna-all: <https://spec.edmcouncil.org/fibo/ontology/FND/AllFND-NorthAmerica/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fndna-all: a owl:Ontology ;
+    rdfs:label "all FND, North America",
+        "FND 域北美扩展入口（All FND, North America）"@zh ;
+    dcterms:abstract "The North American extension of the Foundations (FND) domain builds on the more general FND ontologies with concepts that are specific to the North American region of the world, such as those defining North American addresses." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Anthony B. Coates",
+        "Hypercube Limited",
+        "John F. Gemski",
+        "Maxwell Gillmore",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Pinnacle Bank (Morgan Hill, California)",
+        "State Street Bank and Trust",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo",
+        "Working Ontologist",
+        "agnos.ai, UK Ltd." ;
+    dcterms:issued "2020-03-22T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-20T18:00:00"^^xsd:dateTime ;
+    dcterms:title "FIBO FND Domain, North American Extension",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Domain, North American Extension" ;
+    rdfs:comment "聚合 FND 域中北美地区的扩展内容（美国邮政服务地址及其参考个体），与 AllFND 配合使用以覆盖北美地址场景。"@zh ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    owl:imports fibo-fnd-all:,
+        fibo-fnd-plc-uspsa:,
+        fibo-fnd-plc-uspsai: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20230101/AllFND-NorthAmerica/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." ;
+    cmns-av:explanatoryNote "The 'all' ontology for Foundations (FND), North American Extension is provided for convenience for FIBO users. This ontology does not add new assertions, but imports the Production (Released) ontologies that comprise the FIBO Foundations (FND) domain, including extensions related to postal addressing in the US and Canada." .
+

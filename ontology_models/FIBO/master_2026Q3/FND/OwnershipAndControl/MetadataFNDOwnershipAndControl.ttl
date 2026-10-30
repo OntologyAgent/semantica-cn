@@ -1,0 +1,36 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-oac-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/MetadataFNDOwnershipAndControl/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-oac-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Ownership and Control Module",
+        "FND 所有权与控制模块元数据（Metadata for the FND Ownership and Control Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Ownership and Control Module." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-20T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明所有权与控制（Ownership and Control）模块由所有权、控制、所有权与控制三个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20230101/OwnershipAndControl/MetadataFNDOwnershipAndControl/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+
+fibo-fnd-oac-mod:OwnershipAndControlModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "ownership and control module" ;
+    dcterms:abstract "This module includes ontologies defining the meanings of ownership and owner, and of types of control such as de jure and de facto control. These form the basis of ownership and control relationship hierarchies as well as what it means to own or to control something." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Control/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/OwnershipAndControl/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FND Ownership and Control Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Ownership and Control Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+

@@ -1,0 +1,32 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-civx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/CIVTemporal/MetadataMDCIVTemporal/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-civx-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Market Data (MD) CIV Temporal Module",
+        "MD 集合投资工具时序模块元数据（Metadata for the MD CIV Temporal Module）"@zh ;
+    dcterms:abstract "This module provides time-dependent concepts specific to funds and other collective investment vehicles." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-03-31T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明集合投资工具时序（CIV Temporal）模块由基金时序本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/MD/20230301/CIVTemporal/MetadataMDCIVTemporal/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc." .
+
+fibo-md-civx-mod:CIVTemporalModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "collective investment vehicles temporal module" ;
+    dcterms:abstract "This module provides time-dependent concepts specific to funds and other collective investment vehicles." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/MD/CIVTemporal/FundsTemporal/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO MD Collective Investment Vehicles Temporal Module",
+        "Financial Industry Business Ontology (FIBO) Market Data (MD) Collective Investment Vehicles Temporal Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc." .
+

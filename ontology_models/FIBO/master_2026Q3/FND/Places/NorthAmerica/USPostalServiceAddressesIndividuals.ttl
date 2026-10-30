@@ -1,0 +1,2626 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-plc-uspsa: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddresses/> .
+@prefix fibo-fnd-plc-uspsai: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/NorthAmerica/USPostalServiceAddressesIndividuals/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2-ca: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-CA/> .
+@prefix lcc-3166-2-us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/> .
+@prefix lcc-cr: <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-fnd-plc-uspsai: a owl:Ontology ;
+    rdfs:label "U.S. Postal Service Addresses Individuals Ontology",
+        "美国邮政地址个体本体（U.S. Postal Service Addresses Individuals Ontology）"@zh ;
+    dcterms:abstract "This ontology augments the U.S. Postal Service Address ontology with individuals for various street suffixes, military and U.S. Department of State specific individuals, and preferred designations for state and territory codes." ;
+    dcterms:contributor "Thematix Partners LLC" ;
+    dcterms:license """Copyright (c) 2019-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2019-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录美国州、地区等地址参考数据个体，供美国地址建模时引用。"@zh ;
+    rdfs:seeAlso <https://about.usps.com/who/profile/>,
+        <https://pe.usps.com/cpim/ftp/pubs/Pub28/pub28.pdf> ;
+    owl:imports fibo-fnd-plc-adr:,
+        fibo-fnd-plc-uspsa:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-cxtdsg:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-loc:,
+        lcc-cr:,
+        lcc-3166-1:,
+        lcc-3166-2-ca:,
+        lcc-3166-2-us: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20260701/Places/NorthAmerica/USPostalServiceAddressesIndividuals/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20200301/Places/NorthAmerica/USPostalServiceAddressesIndividuals.rdf version of this ontology was revised to update a dead link.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/Places/NorthAmerica/USPostalServiceAddressesIndividuals.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Places/NorthAmerica/USPostalServiceAddressesIndividuals.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Places/NorthAmerica/USPostalServiceAddressesIndividuals.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Places/NorthAmerica/USPostalServiceAddressesIndividuals.rdf version of the ontology was modified to replace properties that are now available in the OMG Commons Ontology Library (Commons) v1.3 (FND-412)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2019-2025 Object Management Group, Inc.",
+        "Copyright (c) 2019-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fnd-plc-uspsai:AA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AA" ;
+    skos:definition "US-specific code for the state designation for Armed Forces Americas, excluding Canada" ;
+    fibo-fnd-utl-av:preferredDesignation "AA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes fibo-fnd-plc-uspsai:ArmedForcesAmericas ;
+    cmns-dsg:hasTag "AA" ;
+    cmns-id:identifies fibo-fnd-plc-uspsai:ArmedForcesAmericas .
+
+fibo-fnd-plc-uspsai:AB a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AB" ;
+    skos:definition "Canadian and US-specific code for the designation for Alberta" ;
+    fibo-fnd-utl-av:preferredDesignation "AB" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:Alberta ;
+    cmns-dsg:hasTag "AB" ;
+    cmns-id:identifies lcc-3166-2-ca:Alberta .
+
+fibo-fnd-plc-uspsai:AE a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AE" ;
+    skos:definition "US-specific code for the state designation for Armed Forces Europe, the Middle East, and Canada" ;
+    fibo-fnd-utl-av:preferredDesignation "AE" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes fibo-fnd-plc-uspsai:ArmedForcesEurope ;
+    cmns-dsg:hasTag "AE" ;
+    cmns-id:identifies fibo-fnd-plc-uspsai:ArmedForcesEurope .
+
+fibo-fnd-plc-uspsai:AK a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AK" ;
+    skos:definition "US-specific code for the designation for Alaska" ;
+    fibo-fnd-utl-av:preferredDesignation "AK" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Alaska ;
+    cmns-dsg:hasTag "AK" ;
+    cmns-id:identifies lcc-3166-2-us:Alaska .
+
+fibo-fnd-plc-uspsai:AL a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AL" ;
+    skos:definition "US-specific code for the designation for Alabama" ;
+    fibo-fnd-utl-av:preferredDesignation "AL" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Alabama ;
+    cmns-dsg:hasTag "AL" ;
+    cmns-id:identifies lcc-3166-2-us:Alabama .
+
+fibo-fnd-plc-uspsai:AP a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AP" ;
+    skos:definition "US-specific code for the state designation for Armed Forces Pacific" ;
+    fibo-fnd-utl-av:preferredDesignation "AP" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes fibo-fnd-plc-uspsai:ArmedForcesPacific ;
+    cmns-dsg:hasTag "AP" ;
+    cmns-id:identifies fibo-fnd-plc-uspsai:ArmedForcesPacific .
+
+fibo-fnd-plc-uspsai:AR a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AR" ;
+    skos:definition "US-specific code for the designation for Arkansas" ;
+    fibo-fnd-utl-av:preferredDesignation "AR" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Arkansas ;
+    cmns-dsg:hasTag "AR" ;
+    cmns-id:identifies lcc-3166-2-us:Arkansas .
+
+fibo-fnd-plc-uspsai:AS a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AS" ;
+    skos:definition "US-specific code for the designation for American Samoa" ;
+    fibo-fnd-utl-av:preferredDesignation "AS" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:AmericanSamoa ;
+    cmns-dsg:hasTag "AS" ;
+    cmns-id:identifies lcc-3166-2-us:AmericanSamoa .
+
+fibo-fnd-plc-uspsai:AZ a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "AZ" ;
+    skos:definition "US-specific code for the designation for Arizona" ;
+    fibo-fnd-utl-av:preferredDesignation "AZ" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Arizona ;
+    cmns-dsg:hasTag "AZ" ;
+    cmns-id:identifies lcc-3166-2-us:Arizona .
+
+fibo-fnd-plc-uspsai:Alley a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "alley" ;
+    skos:definition "narrow passageway between or behind buildings" ;
+    fibo-fnd-utl-av:commonDesignation "ALLEE",
+        "ALLEY",
+        "ALLY",
+        "ALY" ;
+    fibo-fnd-utl-av:preferredDesignation "ALY" .
+
+fibo-fnd-plc-uspsai:Annex a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "annex" ;
+    skos:definition "addition appended to something else, such as another street" ;
+    fibo-fnd-utl-av:commonDesignation "ANEX",
+        "ANNEX",
+        "ANNX",
+        "ANX" ;
+    fibo-fnd-utl-av:preferredDesignation "ANX" .
+
+fibo-fnd-plc-uspsai:Arcade a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "arcade" ;
+    skos:definition "arched or covered passageway, usually with shops on each side" ;
+    fibo-fnd-utl-av:commonDesignation "ARC",
+        "ARCADE" ;
+    fibo-fnd-utl-av:preferredDesignation "ARC" .
+
+fibo-fnd-plc-uspsai:Avenue a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "avenue" ;
+    skos:definition "broad road in a town or city, typically having trees at regular intervals along its sides" ;
+    fibo-fnd-utl-av:commonDesignation "AV",
+        "AVE",
+        "AVEN",
+        "AVENU",
+        "AVENUE",
+        "AVN",
+        "AVNUE" ;
+    fibo-fnd-utl-av:preferredDesignation "AVE" .
+
+fibo-fnd-plc-uspsai:BC a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "BC" ;
+    skos:definition "Canadian and US-specific code for the designation for British Columbia" ;
+    fibo-fnd-utl-av:preferredDesignation "BC" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:BritishColumbia ;
+    cmns-dsg:hasTag "BC" ;
+    cmns-id:identifies lcc-3166-2-ca:BritishColumbia .
+
+fibo-fnd-plc-uspsai:Bayou a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "bayou" ;
+    skos:definition "creek, secondary watercourse, or minor river that is tributary to another body of water" ;
+    fibo-fnd-utl-av:commonDesignation "BAYOO",
+        "BAYOU" ;
+    fibo-fnd-utl-av:preferredDesignation "BYU" .
+
+fibo-fnd-plc-uspsai:Beach a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "beach" ;
+    skos:definition "shore of a body of water covered by sand, gravel, or larger rock fragments" ;
+    fibo-fnd-utl-av:commonDesignation "BCH",
+        "BEACH" ;
+    fibo-fnd-utl-av:preferredDesignation "BCH" .
+
+fibo-fnd-plc-uspsai:Bend a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "bend" ;
+    skos:definition "curve, especially a sharp one, in a road, river, racecourse, or path" ;
+    fibo-fnd-utl-av:commonDesignation "BEND",
+        "BND" ;
+    fibo-fnd-utl-av:preferredDesignation "BND" .
+
+fibo-fnd-plc-uspsai:Bluff a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "bluff" ;
+    skos:definition "broad, rounded cliff" ;
+    fibo-fnd-utl-av:commonDesignation "BLF",
+        "BLUF",
+        "BLUFF" ;
+    fibo-fnd-utl-av:preferredDesignation "BLF" .
+
+fibo-fnd-plc-uspsai:Bluffs a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "bluffs" ;
+    skos:definition "multiple broad, rounded cliffs" ;
+    fibo-fnd-utl-av:commonDesignation "BLUFFS" ;
+    fibo-fnd-utl-av:preferredDesignation "BLFS" .
+
+fibo-fnd-plc-uspsai:Bottom a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "bottom" ;
+    skos:definition "deepest or lowest part of something, such as the bottom of a hill" ;
+    fibo-fnd-utl-av:commonDesignation "BOT",
+        "BOTTM",
+        "BOTTOM",
+        "BTM" ;
+    fibo-fnd-utl-av:preferredDesignation "BTM" .
+
+fibo-fnd-plc-uspsai:Boulevard a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "boulevard" ;
+    skos:definition "broad thoroughfare in a city, usually having areas at the sides or center for trees, grass, or flowers" ;
+    fibo-fnd-utl-av:commonDesignation "BLVD",
+        "BOUL",
+        "BOULEVARD",
+        "BOULV" ;
+    fibo-fnd-utl-av:preferredDesignation "BLVD" .
+
+fibo-fnd-plc-uspsai:Branch a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "branch" ;
+    skos:definition "division of a road or path" ;
+    fibo-fnd-utl-av:commonDesignation "BR",
+        "BRANCH",
+        "BRNCH" ;
+    fibo-fnd-utl-av:preferredDesignation "BR" .
+
+fibo-fnd-plc-uspsai:Bridge a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "bridge" ;
+    skos:definition "structure carrying a road, path, railroad, or canal across a river, ravine, road, railroad, or other obstacle" ;
+    fibo-fnd-utl-av:commonDesignation "BRDGE",
+        "BRG",
+        "BRIDGE" ;
+    fibo-fnd-utl-av:preferredDesignation "BRG" .
+
+fibo-fnd-plc-uspsai:Brook a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "brook" ;
+    skos:definition "small, natural freshwater stream" ;
+    fibo-fnd-utl-av:commonDesignation "BRK",
+        "BROOK" ;
+    fibo-fnd-utl-av:preferredDesignation "BRK" .
+
+fibo-fnd-plc-uspsai:Brooks a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "brooks" ;
+    skos:definition "multiple small, natural freshwater streams" ;
+    fibo-fnd-utl-av:commonDesignation "BROOKS" ;
+    fibo-fnd-utl-av:preferredDesignation "BRKS" .
+
+fibo-fnd-plc-uspsai:Burg a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "burg" ;
+    skos:definition "city or town (informal)" ;
+    fibo-fnd-utl-av:commonDesignation "BURG" ;
+    fibo-fnd-utl-av:preferredDesignation "BG" .
+
+fibo-fnd-plc-uspsai:Burgs a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "burgs" ;
+    skos:definition "multiple cities or towns (informal)" ;
+    fibo-fnd-utl-av:commonDesignation "BURGS" ;
+    fibo-fnd-utl-av:preferredDesignation "BGS" .
+
+fibo-fnd-plc-uspsai:Bypass a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "bypass" ;
+    skos:definition "road passing around a town or its center to provide an alternative route for through traffic" ;
+    fibo-fnd-utl-av:commonDesignation "BYP",
+        "BYPA",
+        "BYPAS",
+        "BYPASS",
+        "BYS" ;
+    fibo-fnd-utl-av:preferredDesignation "BYP" .
+
+fibo-fnd-plc-uspsai:CA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "CA" ;
+    skos:definition "US-specific code for the designation for California" ;
+    fibo-fnd-utl-av:preferredDesignation "CA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:California ;
+    cmns-dsg:hasTag "CA" ;
+    cmns-id:identifies lcc-3166-2-us:California .
+
+fibo-fnd-plc-uspsai:CO a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "CO" ;
+    skos:definition "US-specific code for the designation for Colorado" ;
+    fibo-fnd-utl-av:preferredDesignation "CO" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Colorado ;
+    cmns-dsg:hasTag "CO" ;
+    cmns-id:identifies lcc-3166-2-us:Colorado .
+
+fibo-fnd-plc-uspsai:CT a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "CT" ;
+    skos:definition "US-specific code for the designation for Connecticut" ;
+    fibo-fnd-utl-av:preferredDesignation "CT" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Connecticut ;
+    cmns-dsg:hasTag "CT" ;
+    cmns-id:identifies lcc-3166-2-us:Connecticut .
+
+fibo-fnd-plc-uspsai:Camp a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "camp" ;
+    fibo-fnd-utl-av:commonDesignation "CAMP",
+        "CMP",
+        "CP" ;
+    fibo-fnd-utl-av:preferredDesignation "CP" .
+
+fibo-fnd-plc-uspsai:Canyon a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "canyon" ;
+    fibo-fnd-utl-av:commonDesignation "CANYN",
+        "CANYON",
+        "CNYN" ;
+    fibo-fnd-utl-av:preferredDesignation "CYN" .
+
+fibo-fnd-plc-uspsai:Cape a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "cape" ;
+    fibo-fnd-utl-av:commonDesignation "CAPE",
+        "CPE" ;
+    fibo-fnd-utl-av:preferredDesignation "CPE" .
+
+fibo-fnd-plc-uspsai:Causeway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "causeway" ;
+    fibo-fnd-utl-av:commonDesignation "CAUSEWAY",
+        "CAUSWA",
+        "CSWY" ;
+    fibo-fnd-utl-av:preferredDesignation "CSWY" .
+
+fibo-fnd-plc-uspsai:Center a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "center" ;
+    fibo-fnd-utl-av:commonDesignation "CEN",
+        "CENT",
+        "CENTER",
+        "CENTR",
+        "CENTRE",
+        "CNTER",
+        "CNTR",
+        "CTR" ;
+    fibo-fnd-utl-av:preferredDesignation "CTR" .
+
+fibo-fnd-plc-uspsai:Centers a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "centers" ;
+    fibo-fnd-utl-av:commonDesignation "CENTERS" ;
+    fibo-fnd-utl-av:preferredDesignation "CTRS" .
+
+fibo-fnd-plc-uspsai:Circle a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "circle" ;
+    fibo-fnd-utl-av:commonDesignation "CIR",
+        "CIRC",
+        "CIRCL",
+        "CIRCLE",
+        "CRCL",
+        "CRCLE" ;
+    fibo-fnd-utl-av:preferredDesignation "CIR" .
+
+fibo-fnd-plc-uspsai:Circles a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "circles" ;
+    fibo-fnd-utl-av:commonDesignation "CIRCLES" ;
+    fibo-fnd-utl-av:preferredDesignation "CIRS" .
+
+fibo-fnd-plc-uspsai:Cliff a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "cliff" ;
+    fibo-fnd-utl-av:commonDesignation "CLF",
+        "CLIFF" ;
+    fibo-fnd-utl-av:preferredDesignation "CLF" .
+
+fibo-fnd-plc-uspsai:Cliffs a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "cliffs" ;
+    fibo-fnd-utl-av:commonDesignation "CLFS",
+        "CLIFFS" ;
+    fibo-fnd-utl-av:preferredDesignation "CLFS" .
+
+fibo-fnd-plc-uspsai:Club a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "club" ;
+    fibo-fnd-utl-av:commonDesignation "CLB",
+        "CLUB" ;
+    fibo-fnd-utl-av:preferredDesignation "CLB" .
+
+fibo-fnd-plc-uspsai:Common a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "common" ;
+    fibo-fnd-utl-av:commonDesignation "COMMON" ;
+    fibo-fnd-utl-av:preferredDesignation "CMN" .
+
+fibo-fnd-plc-uspsai:Commons a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "commons" ;
+    fibo-fnd-utl-av:commonDesignation "COMMONS" ;
+    fibo-fnd-utl-av:preferredDesignation "CMNS" .
+
+fibo-fnd-plc-uspsai:Corner a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "corner" ;
+    fibo-fnd-utl-av:commonDesignation "COR",
+        "CORNER" ;
+    fibo-fnd-utl-av:preferredDesignation "COR" .
+
+fibo-fnd-plc-uspsai:Corners a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "corners" ;
+    fibo-fnd-utl-av:commonDesignation "CORNERS",
+        "CORS" ;
+    fibo-fnd-utl-av:preferredDesignation "CORS" .
+
+fibo-fnd-plc-uspsai:Course a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "course" ;
+    fibo-fnd-utl-av:commonDesignation "COURSE",
+        "CRSE" ;
+    fibo-fnd-utl-av:preferredDesignation "CRSE" .
+
+fibo-fnd-plc-uspsai:Court a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "court" ;
+    fibo-fnd-utl-av:commonDesignation "COURT",
+        "CT" ;
+    fibo-fnd-utl-av:preferredDesignation "CT" .
+
+fibo-fnd-plc-uspsai:Courts a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "courts" ;
+    fibo-fnd-utl-av:commonDesignation "COURTS",
+        "CTS" ;
+    fibo-fnd-utl-av:preferredDesignation "CTS" .
+
+fibo-fnd-plc-uspsai:Cove a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "cove" ;
+    fibo-fnd-utl-av:commonDesignation "COVE",
+        "CV" ;
+    fibo-fnd-utl-av:preferredDesignation "CV" .
+
+fibo-fnd-plc-uspsai:Coves a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "coves" ;
+    fibo-fnd-utl-av:commonDesignation "COVES" ;
+    fibo-fnd-utl-av:preferredDesignation "CVS" .
+
+fibo-fnd-plc-uspsai:Creek a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "creek" ;
+    fibo-fnd-utl-av:commonDesignation "CREEK",
+        "CRK" ;
+    fibo-fnd-utl-av:preferredDesignation "CRK" .
+
+fibo-fnd-plc-uspsai:Crescent a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "crescent" ;
+    fibo-fnd-utl-av:commonDesignation "CRES",
+        "CRESCENT",
+        "CRSENT",
+        "CRSNT" ;
+    fibo-fnd-utl-av:preferredDesignation "CRES" .
+
+fibo-fnd-plc-uspsai:Crest a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "crest" ;
+    fibo-fnd-utl-av:commonDesignation "CREST" ;
+    fibo-fnd-utl-av:preferredDesignation "CRST" .
+
+fibo-fnd-plc-uspsai:Crossing a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "crossing" ;
+    fibo-fnd-utl-av:commonDesignation "CROSSING",
+        "CRSSNG",
+        "XING" ;
+    fibo-fnd-utl-av:preferredDesignation "XING" .
+
+fibo-fnd-plc-uspsai:Crossroad a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "crossroad" ;
+    fibo-fnd-utl-av:commonDesignation "CROSSROAD" ;
+    fibo-fnd-utl-av:preferredDesignation "XRD" .
+
+fibo-fnd-plc-uspsai:Crossroads a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "crossroads" ;
+    fibo-fnd-utl-av:commonDesignation "CROSSROADS" ;
+    fibo-fnd-utl-av:preferredDesignation "XRDS" .
+
+fibo-fnd-plc-uspsai:Curve a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "curve" ;
+    fibo-fnd-utl-av:commonDesignation "CURVE" ;
+    fibo-fnd-utl-av:preferredDesignation "CURV" .
+
+fibo-fnd-plc-uspsai:DC a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "DC" ;
+    skos:definition "US-specific code for the designation for the District of Colombia" ;
+    fibo-fnd-utl-av:preferredDesignation "DC" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:DistrictOfColumbia ;
+    cmns-dsg:hasTag "DC" ;
+    cmns-id:identifies lcc-3166-2-us:DistrictOfColumbia .
+
+fibo-fnd-plc-uspsai:DE a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "DE" ;
+    skos:definition "US-specific code for the designation for Delaware" ;
+    fibo-fnd-utl-av:preferredDesignation "DE" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Delaware ;
+    cmns-dsg:hasTag "DE" ;
+    cmns-id:identifies lcc-3166-2-us:Delaware .
+
+fibo-fnd-plc-uspsai:Dale a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "dale" ;
+    fibo-fnd-utl-av:commonDesignation "DALE",
+        "DL" ;
+    fibo-fnd-utl-av:preferredDesignation "DL" .
+
+fibo-fnd-plc-uspsai:Dam a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "dam" ;
+    fibo-fnd-utl-av:commonDesignation "DAM",
+        "DM" ;
+    fibo-fnd-utl-av:preferredDesignation "DM" .
+
+fibo-fnd-plc-uspsai:Divide a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "divide" ;
+    fibo-fnd-utl-av:commonDesignation "DIV",
+        "DIVIDE",
+        "DV",
+        "DVD" ;
+    fibo-fnd-utl-av:preferredDesignation "DV" .
+
+fibo-fnd-plc-uspsai:Drive a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "drive" ;
+    fibo-fnd-utl-av:commonDesignation "DR",
+        "DRIV",
+        "DRIVE",
+        "DRV" ;
+    fibo-fnd-utl-av:preferredDesignation "DR" .
+
+fibo-fnd-plc-uspsai:Drives a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "drives" ;
+    fibo-fnd-utl-av:commonDesignation "DRIVES" ;
+    fibo-fnd-utl-av:preferredDesignation "DRS" .
+
+fibo-fnd-plc-uspsai:Estate a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "estate" ;
+    fibo-fnd-utl-av:commonDesignation "EST",
+        "ESTATE" ;
+    fibo-fnd-utl-av:preferredDesignation "EST" .
+
+fibo-fnd-plc-uspsai:Estates a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "estates" ;
+    fibo-fnd-utl-av:commonDesignation "ESTATES",
+        "ESTS" ;
+    fibo-fnd-utl-av:preferredDesignation "ESTS" .
+
+fibo-fnd-plc-uspsai:Expressway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "expressway" ;
+    fibo-fnd-utl-av:commonDesignation "EXP",
+        "EXPR",
+        "EXPRESS",
+        "EXPRESSWAY",
+        "EXPW",
+        "EXPY" ;
+    fibo-fnd-utl-av:preferredDesignation "EXPY" .
+
+fibo-fnd-plc-uspsai:Extension a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "extension" ;
+    fibo-fnd-utl-av:commonDesignation "EXT",
+        "EXTENSION",
+        "EXTN",
+        "EXTNSN" ;
+    fibo-fnd-utl-av:preferredDesignation "EXT" .
+
+fibo-fnd-plc-uspsai:Extensions a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "extensions" ;
+    fibo-fnd-utl-av:commonDesignation "EXTS" ;
+    fibo-fnd-utl-av:preferredDesignation "EXTS" .
+
+fibo-fnd-plc-uspsai:FL a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "FL" ;
+    skos:definition "US-specific code for the designation for Florida" ;
+    fibo-fnd-utl-av:preferredDesignation "FL" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Florida ;
+    cmns-dsg:hasTag "FL" ;
+    cmns-id:identifies lcc-3166-2-us:Florida .
+
+fibo-fnd-plc-uspsai:Fall a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "fall" ;
+    fibo-fnd-utl-av:commonDesignation "FALL" ;
+    fibo-fnd-utl-av:preferredDesignation "FALL" .
+
+fibo-fnd-plc-uspsai:Falls a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "falls" ;
+    fibo-fnd-utl-av:commonDesignation "FALLS",
+        "FLS" ;
+    fibo-fnd-utl-av:preferredDesignation "FLS" .
+
+fibo-fnd-plc-uspsai:Ferry a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ferry" ;
+    fibo-fnd-utl-av:commonDesignation "FERRY",
+        "FRRY",
+        "FRY" ;
+    fibo-fnd-utl-av:preferredDesignation "FRY" .
+
+fibo-fnd-plc-uspsai:Field a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "field" ;
+    fibo-fnd-utl-av:commonDesignation "FIELD",
+        "FLD" ;
+    fibo-fnd-utl-av:preferredDesignation "FLD" .
+
+fibo-fnd-plc-uspsai:Fields a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "fields" ;
+    fibo-fnd-utl-av:commonDesignation "FIELDS",
+        "FLDS" ;
+    fibo-fnd-utl-av:preferredDesignation "FLDS" .
+
+fibo-fnd-plc-uspsai:Flat a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "flat" ;
+    fibo-fnd-utl-av:commonDesignation "FLAT",
+        "FLT" ;
+    fibo-fnd-utl-av:preferredDesignation "FLT" .
+
+fibo-fnd-plc-uspsai:Flats a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "flats" ;
+    fibo-fnd-utl-av:commonDesignation "FLATS",
+        "FLTS" ;
+    fibo-fnd-utl-av:preferredDesignation "FLTS" .
+
+fibo-fnd-plc-uspsai:Ford a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ford" ;
+    fibo-fnd-utl-av:commonDesignation "FORD",
+        "FRD" ;
+    fibo-fnd-utl-av:preferredDesignation "FRD" .
+
+fibo-fnd-plc-uspsai:Fords a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "fords" ;
+    fibo-fnd-utl-av:commonDesignation "FORDS" ;
+    fibo-fnd-utl-av:preferredDesignation "FRDS" .
+
+fibo-fnd-plc-uspsai:Forest a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "forest" ;
+    fibo-fnd-utl-av:commonDesignation "FOREST",
+        "FORESTS",
+        "FRST" ;
+    fibo-fnd-utl-av:preferredDesignation "FRST" .
+
+fibo-fnd-plc-uspsai:Forge a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "forge" ;
+    fibo-fnd-utl-av:commonDesignation "FORG",
+        "FORGE",
+        "FRG" ;
+    fibo-fnd-utl-av:preferredDesignation "FRG" .
+
+fibo-fnd-plc-uspsai:Forges a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "forges" ;
+    fibo-fnd-utl-av:commonDesignation "FORGES" ;
+    fibo-fnd-utl-av:preferredDesignation "FRGS" .
+
+fibo-fnd-plc-uspsai:Fork a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "fork" ;
+    fibo-fnd-utl-av:commonDesignation "FORK",
+        "FRK" ;
+    fibo-fnd-utl-av:preferredDesignation "FRK" .
+
+fibo-fnd-plc-uspsai:Forks a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "forks" ;
+    fibo-fnd-utl-av:commonDesignation "FORKS",
+        "FRKS" ;
+    fibo-fnd-utl-av:preferredDesignation "FRKS" .
+
+fibo-fnd-plc-uspsai:Fort a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "fort" ;
+    fibo-fnd-utl-av:commonDesignation "FORT",
+        "FRT",
+        "FT" ;
+    fibo-fnd-utl-av:preferredDesignation "FT" .
+
+fibo-fnd-plc-uspsai:Freeway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "freeway" ;
+    fibo-fnd-utl-av:commonDesignation "FREEWAY",
+        "FREEWY",
+        "FRWAY",
+        "FRWY",
+        "FWY" ;
+    fibo-fnd-utl-av:preferredDesignation "FWY" .
+
+fibo-fnd-plc-uspsai:GA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "GA" ;
+    skos:definition "US-specific code for the designation for Georgia" ;
+    fibo-fnd-utl-av:preferredDesignation "GA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Georgia ;
+    cmns-dsg:hasTag "GA" ;
+    cmns-id:identifies lcc-3166-2-us:Georgia .
+
+fibo-fnd-plc-uspsai:GU a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "GU" ;
+    skos:definition "US-specific code for the designation for Guam" ;
+    fibo-fnd-utl-av:preferredDesignation "GU" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Guam ;
+    cmns-dsg:hasTag "GU" ;
+    cmns-id:identifies lcc-3166-2-us:Guam .
+
+fibo-fnd-plc-uspsai:Garden a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "garden" ;
+    fibo-fnd-utl-av:commonDesignation "GARDEN",
+        "GARDN",
+        "GRDEN",
+        "GRDN" ;
+    fibo-fnd-utl-av:preferredDesignation "GDN" .
+
+fibo-fnd-plc-uspsai:Gardens a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "gardens" ;
+    fibo-fnd-utl-av:commonDesignation "GARDENS",
+        "GDNS",
+        "GRDNS" ;
+    fibo-fnd-utl-av:preferredDesignation "GDNS" .
+
+fibo-fnd-plc-uspsai:Gateway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "gateway" ;
+    fibo-fnd-utl-av:commonDesignation "GATEWAY",
+        "GATEWY",
+        "GATWAY",
+        "GTWAY",
+        "GTWY" ;
+    fibo-fnd-utl-av:preferredDesignation "GTWY" .
+
+fibo-fnd-plc-uspsai:Glen a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "glen" ;
+    fibo-fnd-utl-av:commonDesignation "GLEN",
+        "GLN" ;
+    fibo-fnd-utl-av:preferredDesignation "GLN" .
+
+fibo-fnd-plc-uspsai:Glens a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "glens" ;
+    fibo-fnd-utl-av:commonDesignation "GLENS" ;
+    fibo-fnd-utl-av:preferredDesignation "GLNS" .
+
+fibo-fnd-plc-uspsai:Green a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "green" ;
+    fibo-fnd-utl-av:commonDesignation "GREEN",
+        "GRN" ;
+    fibo-fnd-utl-av:preferredDesignation "GRN" .
+
+fibo-fnd-plc-uspsai:Greens a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "greens" ;
+    fibo-fnd-utl-av:commonDesignation "GREENS" ;
+    fibo-fnd-utl-av:preferredDesignation "GRNS" .
+
+fibo-fnd-plc-uspsai:Grove a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "grove" ;
+    fibo-fnd-utl-av:commonDesignation "GROV",
+        "GROVE",
+        "GRV" ;
+    fibo-fnd-utl-av:preferredDesignation "GRV" .
+
+fibo-fnd-plc-uspsai:Groves a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "groves" ;
+    fibo-fnd-utl-av:commonDesignation "GROVES" ;
+    fibo-fnd-utl-av:preferredDesignation "GRVS" .
+
+fibo-fnd-plc-uspsai:HI a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "HI" ;
+    skos:definition "US-specific code for the designation for Hawaii" ;
+    fibo-fnd-utl-av:preferredDesignation "HI" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Hawaii ;
+    cmns-dsg:hasTag "HI" ;
+    cmns-id:identifies lcc-3166-2-us:Hawaii .
+
+fibo-fnd-plc-uspsai:Harbor a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "harbor" ;
+    fibo-fnd-utl-av:commonDesignation "HARB",
+        "HARBOR",
+        "HARBR",
+        "HBR",
+        "HRBOR" ;
+    fibo-fnd-utl-av:preferredDesignation "HBR" .
+
+fibo-fnd-plc-uspsai:Harbors a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "harbors" ;
+    fibo-fnd-utl-av:commonDesignation "HARBORS" ;
+    fibo-fnd-utl-av:preferredDesignation "HBRS" .
+
+fibo-fnd-plc-uspsai:Haven a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "haven" ;
+    fibo-fnd-utl-av:commonDesignation "HAVEN",
+        "HVN" ;
+    fibo-fnd-utl-av:preferredDesignation "HVN" .
+
+fibo-fnd-plc-uspsai:Heights a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "heights" ;
+    fibo-fnd-utl-av:commonDesignation "HT",
+        "HTS" ;
+    fibo-fnd-utl-av:preferredDesignation "HTS" .
+
+fibo-fnd-plc-uspsai:Highway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "highway" ;
+    fibo-fnd-utl-av:commonDesignation "HIGHWAY",
+        "HIGHWY",
+        "HIWAY",
+        "HIWY",
+        "HWAY",
+        "HWY" ;
+    fibo-fnd-utl-av:preferredDesignation "HWY" .
+
+fibo-fnd-plc-uspsai:Hill a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "hill" ;
+    fibo-fnd-utl-av:commonDesignation "HILL",
+        "HL" ;
+    fibo-fnd-utl-av:preferredDesignation "HL" .
+
+fibo-fnd-plc-uspsai:Hills a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "hills" ;
+    fibo-fnd-utl-av:commonDesignation "HILLS",
+        "HLS" ;
+    fibo-fnd-utl-av:preferredDesignation "HLS" .
+
+fibo-fnd-plc-uspsai:Hollow a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "hollow" ;
+    fibo-fnd-utl-av:commonDesignation "HLLW",
+        "HOLLOW",
+        "HOLLOWS",
+        "HOLW",
+        "HOLWS" ;
+    fibo-fnd-utl-av:preferredDesignation "HOLW" .
+
+fibo-fnd-plc-uspsai:IA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "IA" ;
+    skos:definition "US-specific code for the designation for Iowa" ;
+    fibo-fnd-utl-av:preferredDesignation "IA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Iowa ;
+    cmns-dsg:hasTag "IA" ;
+    cmns-id:identifies lcc-3166-2-us:Iowa .
+
+fibo-fnd-plc-uspsai:ID a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "ID" ;
+    skos:definition "US-specific code for the designation for Idaho" ;
+    fibo-fnd-utl-av:preferredDesignation "ID" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Idaho ;
+    cmns-dsg:hasTag "ID" ;
+    cmns-id:identifies lcc-3166-2-us:Idaho .
+
+fibo-fnd-plc-uspsai:IL a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "IL" ;
+    skos:definition "US-specific code for the designation for Illinois" ;
+    fibo-fnd-utl-av:preferredDesignation "IL" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Illinois ;
+    cmns-dsg:hasTag "IL" ;
+    cmns-id:identifies lcc-3166-2-us:Illinois .
+
+fibo-fnd-plc-uspsai:IN a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "IN" ;
+    skos:definition "US-specific code for the designation for Indiana" ;
+    fibo-fnd-utl-av:preferredDesignation "IN" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Indiana ;
+    cmns-dsg:hasTag "IN" ;
+    cmns-id:identifies lcc-3166-2-us:Indiana .
+
+fibo-fnd-plc-uspsai:Inlet a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "inlet" ;
+    fibo-fnd-utl-av:commonDesignation "INLT" ;
+    fibo-fnd-utl-av:preferredDesignation "INLT" .
+
+fibo-fnd-plc-uspsai:Island a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "island" ;
+    fibo-fnd-utl-av:commonDesignation "IS",
+        "ISLAND",
+        "ISLND" ;
+    fibo-fnd-utl-av:preferredDesignation "IS" .
+
+fibo-fnd-plc-uspsai:Islands a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "islands" ;
+    fibo-fnd-utl-av:commonDesignation "ISLANDS",
+        "ISLNDS",
+        "ISS" ;
+    fibo-fnd-utl-av:preferredDesignation "ISS" .
+
+fibo-fnd-plc-uspsai:Isle a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "isle" ;
+    fibo-fnd-utl-av:commonDesignation "ISLE",
+        "ISLES" ;
+    fibo-fnd-utl-av:preferredDesignation "ISLE" .
+
+fibo-fnd-plc-uspsai:Junction a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "junction" ;
+    fibo-fnd-utl-av:commonDesignation "JCT",
+        "JCTION",
+        "JCTN",
+        "JUNCTION",
+        "JUNCTN",
+        "JUNCTON" ;
+    fibo-fnd-utl-av:preferredDesignation "JCT" .
+
+fibo-fnd-plc-uspsai:Junctions a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "junctions" ;
+    fibo-fnd-utl-av:commonDesignation "JCTNS",
+        "JCTS",
+        "JUNCTIONS" ;
+    fibo-fnd-utl-av:preferredDesignation "JCTS" .
+
+fibo-fnd-plc-uspsai:KS a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "KS" ;
+    skos:definition "US-specific code for the designation for Kansas" ;
+    fibo-fnd-utl-av:preferredDesignation "KS" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Kansas ;
+    cmns-dsg:hasTag "KS" ;
+    cmns-id:identifies lcc-3166-2-us:Kansas .
+
+fibo-fnd-plc-uspsai:KY a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "KY" ;
+    skos:definition "US-specific code for the designation for Kentucky" ;
+    fibo-fnd-utl-av:preferredDesignation "KY" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Kentucky ;
+    cmns-dsg:hasTag "KY" ;
+    cmns-id:identifies lcc-3166-2-us:Kentucky .
+
+fibo-fnd-plc-uspsai:Key a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "key" ;
+    fibo-fnd-utl-av:commonDesignation "KEY",
+        "KY" ;
+    fibo-fnd-utl-av:preferredDesignation "KY" .
+
+fibo-fnd-plc-uspsai:Keys a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "keys" ;
+    fibo-fnd-utl-av:commonDesignation "KEYS",
+        "KYS" ;
+    fibo-fnd-utl-av:preferredDesignation "KYS" .
+
+fibo-fnd-plc-uspsai:Knoll a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "knoll" ;
+    fibo-fnd-utl-av:commonDesignation "KNL",
+        "KNOL",
+        "KNOLL" ;
+    fibo-fnd-utl-av:preferredDesignation "KNL" .
+
+fibo-fnd-plc-uspsai:Knolls a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "knolls" ;
+    fibo-fnd-utl-av:commonDesignation "KNLS",
+        "KNOLLS" ;
+    fibo-fnd-utl-av:preferredDesignation "KNLS" .
+
+fibo-fnd-plc-uspsai:LA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "LA" ;
+    skos:definition "US-specific code for the designation for Louisiana" ;
+    fibo-fnd-utl-av:preferredDesignation "LA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Louisiana ;
+    cmns-dsg:hasTag "LA" ;
+    cmns-id:identifies lcc-3166-2-us:Louisiana .
+
+fibo-fnd-plc-uspsai:Lake a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "lake" ;
+    fibo-fnd-utl-av:commonDesignation "LAKE",
+        "LK" ;
+    fibo-fnd-utl-av:preferredDesignation "LK" .
+
+fibo-fnd-plc-uspsai:Lakes a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "lakes" ;
+    fibo-fnd-utl-av:commonDesignation "LAKES",
+        "LKS" ;
+    fibo-fnd-utl-av:preferredDesignation "LKS" .
+
+fibo-fnd-plc-uspsai:Land a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "land" ;
+    fibo-fnd-utl-av:commonDesignation "LAND" ;
+    fibo-fnd-utl-av:preferredDesignation "LAND" .
+
+fibo-fnd-plc-uspsai:Landing a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "landing" ;
+    fibo-fnd-utl-av:commonDesignation "LANDING",
+        "LNDG",
+        "LNDNG" ;
+    fibo-fnd-utl-av:preferredDesignation "LNDG" .
+
+fibo-fnd-plc-uspsai:Lane a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "lane" ;
+    fibo-fnd-utl-av:commonDesignation "LANE",
+        "LN" ;
+    fibo-fnd-utl-av:preferredDesignation "LN" .
+
+fibo-fnd-plc-uspsai:Light a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "light" ;
+    fibo-fnd-utl-av:commonDesignation "LGT",
+        "LIGHT" ;
+    fibo-fnd-utl-av:preferredDesignation "LGT" .
+
+fibo-fnd-plc-uspsai:Lights a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "lights" ;
+    fibo-fnd-utl-av:commonDesignation "LIGHTS" ;
+    fibo-fnd-utl-av:preferredDesignation "LGTS" .
+
+fibo-fnd-plc-uspsai:Loaf a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "loaf" ;
+    fibo-fnd-utl-av:commonDesignation "LF",
+        "LOAF" ;
+    fibo-fnd-utl-av:preferredDesignation "LF" .
+
+fibo-fnd-plc-uspsai:Lock a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "lock" ;
+    fibo-fnd-utl-av:commonDesignation "LCK",
+        "LOCK" ;
+    fibo-fnd-utl-av:preferredDesignation "LCK" .
+
+fibo-fnd-plc-uspsai:Locks a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "locks" ;
+    fibo-fnd-utl-av:commonDesignation "LCKS",
+        "LOCKS" ;
+    fibo-fnd-utl-av:preferredDesignation "LCKS" .
+
+fibo-fnd-plc-uspsai:Lodge a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "lodge" ;
+    fibo-fnd-utl-av:commonDesignation "LDG",
+        "LDGE",
+        "LODG",
+        "LODGE" ;
+    fibo-fnd-utl-av:preferredDesignation "LDG" .
+
+fibo-fnd-plc-uspsai:Loop a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "loop" ;
+    fibo-fnd-utl-av:commonDesignation "LOOP",
+        "LOOPS" ;
+    fibo-fnd-utl-av:preferredDesignation "LOOP" .
+
+fibo-fnd-plc-uspsai:MA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MA" ;
+    skos:definition "US-specific code for the designation for Massachusetts" ;
+    fibo-fnd-utl-av:preferredDesignation "MA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Massachusetts ;
+    cmns-dsg:hasTag "MA" ;
+    cmns-id:identifies lcc-3166-2-us:Massachusetts .
+
+fibo-fnd-plc-uspsai:MB a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MB" ;
+    skos:definition "Canadian and US-specific code for the designation for Manitoba" ;
+    fibo-fnd-utl-av:preferredDesignation "MB" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:Manitoba ;
+    cmns-dsg:hasTag "MB" ;
+    cmns-id:identifies lcc-3166-2-ca:Manitoba .
+
+fibo-fnd-plc-uspsai:MD a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MD" ;
+    skos:definition "US-specific code for the designation for Maryland" ;
+    fibo-fnd-utl-av:preferredDesignation "MD" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Maryland ;
+    cmns-dsg:hasTag "MD" ;
+    cmns-id:identifies lcc-3166-2-us:Maryland .
+
+fibo-fnd-plc-uspsai:ME a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "ME" ;
+    skos:definition "US-specific code for the designation for Maine" ;
+    fibo-fnd-utl-av:preferredDesignation "ME" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Maine ;
+    cmns-dsg:hasTag "ME" ;
+    cmns-id:identifies lcc-3166-2-us:Maine .
+
+fibo-fnd-plc-uspsai:MI a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MI" ;
+    skos:definition "US-specific code for the designation for Michigan" ;
+    fibo-fnd-utl-av:preferredDesignation "MI" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Michigan ;
+    cmns-dsg:hasTag "MI" ;
+    cmns-id:identifies lcc-3166-2-us:Michigan .
+
+fibo-fnd-plc-uspsai:MN a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MN" ;
+    skos:definition "US-specific code for the designation for Minnesota" ;
+    fibo-fnd-utl-av:preferredDesignation "MN" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Minnesota ;
+    cmns-dsg:hasTag "MN" ;
+    cmns-id:identifies lcc-3166-2-us:Minnesota .
+
+fibo-fnd-plc-uspsai:MO a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MO" ;
+    skos:definition "US-specific code for the designation for Missouri" ;
+    fibo-fnd-utl-av:preferredDesignation "MO" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Missouri ;
+    cmns-dsg:hasTag "MO" ;
+    cmns-id:identifies lcc-3166-2-us:Missouri .
+
+fibo-fnd-plc-uspsai:MP a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MP" ;
+    skos:definition "US-specific code for the designation for the outlying area of Northern Mariana Islands" ;
+    fibo-fnd-utl-av:preferredDesignation "MP" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:NorthernMarianaIslands ;
+    cmns-dsg:hasTag "MP" ;
+    cmns-id:identifies lcc-3166-2-us:NorthernMarianaIslands .
+
+fibo-fnd-plc-uspsai:MS a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MS" ;
+    skos:definition "US-specific code for the designation for Mississippi" ;
+    fibo-fnd-utl-av:preferredDesignation "MS" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Mississippi ;
+    cmns-dsg:hasTag "MS" ;
+    cmns-id:identifies lcc-3166-2-us:Mississippi .
+
+fibo-fnd-plc-uspsai:MT a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "MT" ;
+    skos:definition "US-specific code for the designation for Montana" ;
+    fibo-fnd-utl-av:preferredDesignation "MT" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Montana ;
+    cmns-dsg:hasTag "MT" ;
+    cmns-id:identifies lcc-3166-2-us:Montana .
+
+fibo-fnd-plc-uspsai:Mall a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "mall" ;
+    fibo-fnd-utl-av:commonDesignation "MALL" ;
+    fibo-fnd-utl-av:preferredDesignation "MALL" .
+
+fibo-fnd-plc-uspsai:Manor a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "manor" ;
+    fibo-fnd-utl-av:commonDesignation "MANOR",
+        "MNR" ;
+    fibo-fnd-utl-av:preferredDesignation "MNR" .
+
+fibo-fnd-plc-uspsai:Manors a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "manors" ;
+    fibo-fnd-utl-av:commonDesignation "MANORS",
+        "MNRS" ;
+    fibo-fnd-utl-av:preferredDesignation "MNRS" .
+
+fibo-fnd-plc-uspsai:Meadow a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "meadow" ;
+    fibo-fnd-utl-av:commonDesignation "MEADOW" ;
+    fibo-fnd-utl-av:preferredDesignation "MDW" .
+
+fibo-fnd-plc-uspsai:Meadows a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "meadows" ;
+    fibo-fnd-utl-av:commonDesignation "MDW",
+        "MDWS",
+        "MEADOWS",
+        "MEDOWS" ;
+    fibo-fnd-utl-av:preferredDesignation "MDWS" .
+
+fibo-fnd-plc-uspsai:Mews a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "mews" ;
+    fibo-fnd-utl-av:commonDesignation "MEWS" ;
+    fibo-fnd-utl-av:preferredDesignation "MEWS" .
+
+fibo-fnd-plc-uspsai:Mill a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "mill" ;
+    fibo-fnd-utl-av:commonDesignation "MILL" ;
+    fibo-fnd-utl-av:preferredDesignation "ML" .
+
+fibo-fnd-plc-uspsai:Mills a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "mills" ;
+    fibo-fnd-utl-av:commonDesignation "MILLS" ;
+    fibo-fnd-utl-av:preferredDesignation "MLS" .
+
+fibo-fnd-plc-uspsai:Mission a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "mission" ;
+    fibo-fnd-utl-av:commonDesignation "MISSN",
+        "MSSN" ;
+    fibo-fnd-utl-av:preferredDesignation "MSN" .
+
+fibo-fnd-plc-uspsai:Motorway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "motorway" ;
+    fibo-fnd-utl-av:commonDesignation "MOTORWAY" ;
+    fibo-fnd-utl-av:preferredDesignation "MTWY" .
+
+fibo-fnd-plc-uspsai:Mount a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "mount" ;
+    fibo-fnd-utl-av:commonDesignation "MNT",
+        "MOUNT",
+        "MT" ;
+    fibo-fnd-utl-av:preferredDesignation "MT" .
+
+fibo-fnd-plc-uspsai:Mountain a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "mountain" ;
+    fibo-fnd-utl-av:commonDesignation "MNTAIN",
+        "MNTN",
+        "MOUNTAIN",
+        "MOUNTIN",
+        "MTIN",
+        "MTN" ;
+    fibo-fnd-utl-av:preferredDesignation "MTN" .
+
+fibo-fnd-plc-uspsai:Mountains a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "mountains" ;
+    fibo-fnd-utl-av:commonDesignation "MNTNS",
+        "MOUNTAINS" ;
+    fibo-fnd-utl-av:preferredDesignation "MTNS" .
+
+fibo-fnd-plc-uspsai:NB a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NB" ;
+    skos:definition "Canadian and US-specific code for the designation for New Brunswick" ;
+    fibo-fnd-utl-av:preferredDesignation "NB" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:NewBrunswick ;
+    cmns-dsg:hasTag "NB" ;
+    cmns-id:identifies lcc-3166-2-ca:NewBrunswick .
+
+fibo-fnd-plc-uspsai:NC a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NC" ;
+    skos:definition "US-specific code for the designation for North Carolina" ;
+    fibo-fnd-utl-av:preferredDesignation "NC" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:NorthCarolina ;
+    cmns-dsg:hasTag "NC" ;
+    cmns-id:identifies lcc-3166-2-us:NorthCarolina .
+
+fibo-fnd-plc-uspsai:ND a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "ND" ;
+    skos:definition "US-specific code for the designation for North Dakota" ;
+    fibo-fnd-utl-av:preferredDesignation "ND" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:NorthDakota ;
+    cmns-dsg:hasTag "ND" ;
+    cmns-id:identifies lcc-3166-2-us:NorthDakota .
+
+fibo-fnd-plc-uspsai:NE a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NE" ;
+    skos:definition "US-specific code for the designation for Nebraska" ;
+    fibo-fnd-utl-av:preferredDesignation "NE" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Nebraska ;
+    cmns-dsg:hasTag "NE" ;
+    cmns-id:identifies lcc-3166-2-us:Nebraska .
+
+fibo-fnd-plc-uspsai:NH a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NH" ;
+    skos:definition "US-specific code for the designation for New Hampshire" ;
+    fibo-fnd-utl-av:preferredDesignation "NH" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:NewHampshire ;
+    cmns-dsg:hasTag "NH" ;
+    cmns-id:identifies lcc-3166-2-us:NewHampshire .
+
+fibo-fnd-plc-uspsai:NJ a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NJ" ;
+    skos:definition "US-specific code for the designation for New Jersey" ;
+    fibo-fnd-utl-av:preferredDesignation "NJ" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:NewJersey ;
+    cmns-dsg:hasTag "NJ" ;
+    cmns-id:identifies lcc-3166-2-us:NewJersey .
+
+fibo-fnd-plc-uspsai:NL a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NL" ;
+    skos:definition "Canadian and US-specific code for the designation for Newfoundland and Labrador" ;
+    fibo-fnd-utl-av:preferredDesignation "NL" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:NewfoundlandAndLabrador ;
+    cmns-dsg:hasTag "NL" ;
+    cmns-id:identifies lcc-3166-2-ca:NewfoundlandAndLabrador .
+
+fibo-fnd-plc-uspsai:NM a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NM" ;
+    skos:definition "US-specific code for the designation for New Mexico" ;
+    fibo-fnd-utl-av:preferredDesignation "NM" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:NewMexico ;
+    cmns-dsg:hasTag "NM" ;
+    cmns-id:identifies lcc-3166-2-us:NewMexico .
+
+fibo-fnd-plc-uspsai:NS a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NS" ;
+    skos:definition "Canadian and US-specific code for the designation for Nova Scotia" ;
+    fibo-fnd-utl-av:preferredDesignation "NS" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:NovaScotia ;
+    cmns-dsg:hasTag "NS" ;
+    cmns-id:identifies lcc-3166-2-ca:NovaScotia .
+
+fibo-fnd-plc-uspsai:NT a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NT" ;
+    skos:definition "Canadian and US-specific code for the designation for Northwest Territories" ;
+    fibo-fnd-utl-av:preferredDesignation "NT" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:NorthwestTerritories ;
+    cmns-dsg:hasTag "NT" ;
+    cmns-id:identifies lcc-3166-2-ca:NorthwestTerritories .
+
+fibo-fnd-plc-uspsai:NU a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NU" ;
+    skos:definition "Canadian and US-specific code for the designation for Nunavut" ;
+    fibo-fnd-utl-av:preferredDesignation "NU" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:Nunavut ;
+    cmns-dsg:hasTag "NU" ;
+    cmns-id:identifies lcc-3166-2-ca:Nunavut .
+
+fibo-fnd-plc-uspsai:NV a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NV" ;
+    skos:definition "US-specific code for the designation for Nevada" ;
+    fibo-fnd-utl-av:preferredDesignation "NV" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Nevada ;
+    cmns-dsg:hasTag "NV" ;
+    cmns-id:identifies lcc-3166-2-us:Nevada .
+
+fibo-fnd-plc-uspsai:NY a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "NY" ;
+    skos:definition "US-specific code for the designation for New York" ;
+    fibo-fnd-utl-av:preferredDesignation "NY" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:NewYork ;
+    cmns-dsg:hasTag "NY" ;
+    cmns-id:identifies lcc-3166-2-us:NewYork .
+
+fibo-fnd-plc-uspsai:Neck a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "neck" ;
+    fibo-fnd-utl-av:commonDesignation "NCK",
+        "NECK" ;
+    fibo-fnd-utl-av:preferredDesignation "NCK" .
+
+fibo-fnd-plc-uspsai:OH a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "OH" ;
+    skos:definition "US-specific code for the designation for Ohio" ;
+    fibo-fnd-utl-av:preferredDesignation "OH" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Ohio ;
+    cmns-dsg:hasTag "OH" ;
+    cmns-id:identifies lcc-3166-2-us:Ohio .
+
+fibo-fnd-plc-uspsai:OK a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "OK" ;
+    skos:definition "US-specific code for the designation for Oklahoma" ;
+    fibo-fnd-utl-av:preferredDesignation "OK" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Oklahoma ;
+    cmns-dsg:hasTag "OK" ;
+    cmns-id:identifies lcc-3166-2-us:Oklahoma .
+
+fibo-fnd-plc-uspsai:ON a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "ON" ;
+    skos:definition "Canadian and US-specific code for the designation for Ontario" ;
+    fibo-fnd-utl-av:preferredDesignation "ON" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:Ontario ;
+    cmns-dsg:hasTag "ON" ;
+    cmns-id:identifies lcc-3166-2-ca:Ontario .
+
+fibo-fnd-plc-uspsai:OR a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "OR" ;
+    skos:definition "US-specific code for the designation for Oregon" ;
+    fibo-fnd-utl-av:preferredDesignation "OR" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Oregon ;
+    cmns-dsg:hasTag "OR" ;
+    cmns-id:identifies lcc-3166-2-us:Oregon .
+
+fibo-fnd-plc-uspsai:Orchard a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "orchard" ;
+    fibo-fnd-utl-av:commonDesignation "ORCH",
+        "ORCHARD",
+        "ORCHRD" ;
+    fibo-fnd-utl-av:preferredDesignation "ORCH" .
+
+fibo-fnd-plc-uspsai:Oval a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "oval" ;
+    fibo-fnd-utl-av:commonDesignation "OVAL",
+        "OVL" ;
+    fibo-fnd-utl-av:preferredDesignation "OVAL" .
+
+fibo-fnd-plc-uspsai:Overpass a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "overpass" ;
+    fibo-fnd-utl-av:commonDesignation "OVERPASS" ;
+    fibo-fnd-utl-av:preferredDesignation "OPAS" .
+
+fibo-fnd-plc-uspsai:PA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "PA" ;
+    skos:definition "US-specific code for the designation for Pennsylvania" ;
+    fibo-fnd-utl-av:preferredDesignation "PA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Pennsylvania ;
+    cmns-dsg:hasTag "PA" ;
+    cmns-id:identifies lcc-3166-2-us:Pennsylvania .
+
+fibo-fnd-plc-uspsai:PE a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "PE" ;
+    skos:definition "Canadian and US-specific code for the designation for Prince Edward Island" ;
+    fibo-fnd-utl-av:preferredDesignation "PE" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:PrinceEdwardIsland ;
+    cmns-dsg:hasTag "PE" ;
+    cmns-id:identifies lcc-3166-2-ca:PrinceEdwardIsland .
+
+fibo-fnd-plc-uspsai:PR a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "PR" ;
+    skos:definition "US-specific code for the designation for Puerto Rico" ;
+    fibo-fnd-utl-av:preferredDesignation "PR" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:PuertoRico ;
+    cmns-dsg:hasTag "PR" ;
+    cmns-id:identifies lcc-3166-2-us:PuertoRico .
+
+fibo-fnd-plc-uspsai:Park a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "park" ;
+    fibo-fnd-utl-av:commonDesignation "PARK",
+        "PRK" ;
+    fibo-fnd-utl-av:preferredDesignation "PARK" .
+
+fibo-fnd-plc-uspsai:Parks a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "parks" ;
+    fibo-fnd-utl-av:commonDesignation "PARKS" ;
+    fibo-fnd-utl-av:preferredDesignation "PARK" .
+
+fibo-fnd-plc-uspsai:Parkway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "parkway" ;
+    fibo-fnd-utl-av:commonDesignation "PARKWAY",
+        "PARKWY",
+        "PKWAY",
+        "PKWY",
+        "PKY" ;
+    fibo-fnd-utl-av:preferredDesignation "PKWY" .
+
+fibo-fnd-plc-uspsai:Parkways a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "parkways" ;
+    fibo-fnd-utl-av:commonDesignation "PARKWAYS",
+        "PKWYS" ;
+    fibo-fnd-utl-av:preferredDesignation "PKWY" .
+
+fibo-fnd-plc-uspsai:Pass a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "pass" ;
+    fibo-fnd-utl-av:commonDesignation "PASS" ;
+    fibo-fnd-utl-av:preferredDesignation "PASS" .
+
+fibo-fnd-plc-uspsai:Passage a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "passage" ;
+    fibo-fnd-utl-av:commonDesignation "PASSAGE" ;
+    fibo-fnd-utl-av:preferredDesignation "PSGE" .
+
+fibo-fnd-plc-uspsai:Path a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "path" ;
+    fibo-fnd-utl-av:commonDesignation "PATH",
+        "PATHS" ;
+    fibo-fnd-utl-av:preferredDesignation "PATH" .
+
+fibo-fnd-plc-uspsai:Pike a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "pike" ;
+    fibo-fnd-utl-av:commonDesignation "PIKE",
+        "PIKES" ;
+    fibo-fnd-utl-av:preferredDesignation "PIKE" .
+
+fibo-fnd-plc-uspsai:Pine a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "pine" ;
+    fibo-fnd-utl-av:commonDesignation "PINE" ;
+    fibo-fnd-utl-av:preferredDesignation "PNE" .
+
+fibo-fnd-plc-uspsai:Pines a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "pines" ;
+    fibo-fnd-utl-av:commonDesignation "PINES",
+        "PNES" ;
+    fibo-fnd-utl-av:preferredDesignation "PNES" .
+
+fibo-fnd-plc-uspsai:Place a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "place" ;
+    fibo-fnd-utl-av:commonDesignation "PL" ;
+    fibo-fnd-utl-av:preferredDesignation "PL" .
+
+fibo-fnd-plc-uspsai:Plain a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "plain" ;
+    fibo-fnd-utl-av:commonDesignation "PLAIN",
+        "PLN" ;
+    fibo-fnd-utl-av:preferredDesignation "PLN" .
+
+fibo-fnd-plc-uspsai:Plains a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "plains" ;
+    fibo-fnd-utl-av:commonDesignation "PLAINS",
+        "PLNS" ;
+    fibo-fnd-utl-av:preferredDesignation "PLNS" .
+
+fibo-fnd-plc-uspsai:Plaza a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "plaza" ;
+    fibo-fnd-utl-av:commonDesignation "PLAZA",
+        "PLZ",
+        "PLZA" ;
+    fibo-fnd-utl-av:preferredDesignation "PLZ" .
+
+fibo-fnd-plc-uspsai:Point a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "point" ;
+    fibo-fnd-utl-av:commonDesignation "POINT",
+        "PT" ;
+    fibo-fnd-utl-av:preferredDesignation "PT" .
+
+fibo-fnd-plc-uspsai:Points a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "points" ;
+    fibo-fnd-utl-av:commonDesignation "POINTS",
+        "PTS" ;
+    fibo-fnd-utl-av:preferredDesignation "PTS" .
+
+fibo-fnd-plc-uspsai:Port a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "port" ;
+    fibo-fnd-utl-av:commonDesignation "PORT",
+        "PRT" ;
+    fibo-fnd-utl-av:preferredDesignation "PRT" .
+
+fibo-fnd-plc-uspsai:Ports a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ports" ;
+    fibo-fnd-utl-av:commonDesignation "PORTS",
+        "PRTS" ;
+    fibo-fnd-utl-av:preferredDesignation "PRTS" .
+
+fibo-fnd-plc-uspsai:Prairie a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "prairie" ;
+    fibo-fnd-utl-av:commonDesignation "PR",
+        "PRAIRIE",
+        "PRR" ;
+    fibo-fnd-utl-av:preferredDesignation "PR" .
+
+fibo-fnd-plc-uspsai:QC a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "QC" ;
+    skos:definition "Canadian and US-specific code for the designation for Quebec" ;
+    fibo-fnd-utl-av:preferredDesignation "QC" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:Quebec ;
+    cmns-dsg:hasTag "QC" ;
+    cmns-id:identifies lcc-3166-2-ca:Quebec .
+
+fibo-fnd-plc-uspsai:RI a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "RI" ;
+    skos:definition "US-specific code for the designation for Rhode Island" ;
+    fibo-fnd-utl-av:preferredDesignation "RI" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:RhodeIsland ;
+    cmns-dsg:hasTag "RI" ;
+    cmns-id:identifies lcc-3166-2-us:RhodeIsland .
+
+fibo-fnd-plc-uspsai:Radial a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "radial" ;
+    fibo-fnd-utl-av:commonDesignation "RAD",
+        "RADIAL",
+        "RADIEL",
+        "RADL" ;
+    fibo-fnd-utl-av:preferredDesignation "RADL" .
+
+fibo-fnd-plc-uspsai:Ramp a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ramp" ;
+    fibo-fnd-utl-av:commonDesignation "RAMP" ;
+    fibo-fnd-utl-av:preferredDesignation "RAMP" .
+
+fibo-fnd-plc-uspsai:Ranch a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ranch" ;
+    fibo-fnd-utl-av:commonDesignation "RANCH",
+        "RANCHES",
+        "RNCH",
+        "RNCHS" ;
+    fibo-fnd-utl-av:preferredDesignation "RNCH" .
+
+fibo-fnd-plc-uspsai:Rapid a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "rapid" ;
+    fibo-fnd-utl-av:commonDesignation "RAPID",
+        "RPD" ;
+    fibo-fnd-utl-av:preferredDesignation "RPD" .
+
+fibo-fnd-plc-uspsai:Rapids a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "rapids" ;
+    fibo-fnd-utl-av:commonDesignation "RAPIDS",
+        "RPDS" ;
+    fibo-fnd-utl-av:preferredDesignation "RPDS" .
+
+fibo-fnd-plc-uspsai:Rest a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "rest" ;
+    fibo-fnd-utl-av:commonDesignation "REST",
+        "RST" ;
+    fibo-fnd-utl-av:preferredDesignation "RST" .
+
+fibo-fnd-plc-uspsai:Ridge a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ridge" ;
+    fibo-fnd-utl-av:commonDesignation "RDG",
+        "RDGE",
+        "RIDGE" ;
+    fibo-fnd-utl-av:preferredDesignation "RDG" .
+
+fibo-fnd-plc-uspsai:Ridges a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ridges" ;
+    fibo-fnd-utl-av:commonDesignation "RDGS",
+        "RIDGES" ;
+    fibo-fnd-utl-av:preferredDesignation "RDGS" .
+
+fibo-fnd-plc-uspsai:River a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "river" ;
+    fibo-fnd-utl-av:commonDesignation "RIV",
+        "RIVER",
+        "RIVR",
+        "RVR" ;
+    fibo-fnd-utl-av:preferredDesignation "RIV" .
+
+fibo-fnd-plc-uspsai:Road a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "road" ;
+    fibo-fnd-utl-av:commonDesignation "RD",
+        "ROAD" ;
+    fibo-fnd-utl-av:preferredDesignation "RD" .
+
+fibo-fnd-plc-uspsai:Roads a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "roads" ;
+    fibo-fnd-utl-av:commonDesignation "RDS",
+        "ROADS" ;
+    fibo-fnd-utl-av:preferredDesignation "RDS" .
+
+fibo-fnd-plc-uspsai:Route a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "route" ;
+    fibo-fnd-utl-av:commonDesignation "ROUTE" ;
+    fibo-fnd-utl-av:preferredDesignation "RTE" .
+
+fibo-fnd-plc-uspsai:Row a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "row" ;
+    fibo-fnd-utl-av:commonDesignation "ROW" ;
+    fibo-fnd-utl-av:preferredDesignation "ROW" .
+
+fibo-fnd-plc-uspsai:Rue a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "rue" ;
+    fibo-fnd-utl-av:commonDesignation "RUE" ;
+    fibo-fnd-utl-av:preferredDesignation "RUE" .
+
+fibo-fnd-plc-uspsai:Run a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "run" ;
+    fibo-fnd-utl-av:commonDesignation "RUN" ;
+    fibo-fnd-utl-av:preferredDesignation "RUN" .
+
+fibo-fnd-plc-uspsai:SC a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "SC" ;
+    skos:definition "US-specific code for the designation for South Carolina" ;
+    fibo-fnd-utl-av:preferredDesignation "SC" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:SouthCarolina ;
+    cmns-dsg:hasTag "SC" ;
+    cmns-id:identifies lcc-3166-2-us:SouthCarolina .
+
+fibo-fnd-plc-uspsai:SD a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "SD" ;
+    skos:definition "US-specific code for the designation for South Dakota" ;
+    fibo-fnd-utl-av:preferredDesignation "SD" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:SouthDakota ;
+    cmns-dsg:hasTag "SD" ;
+    cmns-id:identifies lcc-3166-2-us:SouthDakota .
+
+fibo-fnd-plc-uspsai:SK a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "SK" ;
+    skos:definition "Canadian and US-specific code for the designation for Saskatchewan" ;
+    fibo-fnd-utl-av:preferredDesignation "SK" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:Saskatchewan ;
+    cmns-dsg:hasTag "SK" ;
+    cmns-id:identifies lcc-3166-2-ca:Saskatchewan .
+
+fibo-fnd-plc-uspsai:Shoal a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "shoal" ;
+    fibo-fnd-utl-av:commonDesignation "SHL",
+        "SHOAL" ;
+    fibo-fnd-utl-av:preferredDesignation "SHL" .
+
+fibo-fnd-plc-uspsai:Shoals a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "shoals" ;
+    fibo-fnd-utl-av:commonDesignation "SHLS",
+        "SHOALS" ;
+    fibo-fnd-utl-av:preferredDesignation "SHLS" .
+
+fibo-fnd-plc-uspsai:Shore a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "shore" ;
+    fibo-fnd-utl-av:commonDesignation "SHOAR",
+        "SHORE",
+        "SHR" ;
+    fibo-fnd-utl-av:preferredDesignation "SHR" .
+
+fibo-fnd-plc-uspsai:Shores a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "shores" ;
+    fibo-fnd-utl-av:commonDesignation "SHOARS",
+        "SHORES",
+        "SHRS" ;
+    fibo-fnd-utl-av:preferredDesignation "SHRS" .
+
+fibo-fnd-plc-uspsai:Skyway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "skyway" ;
+    fibo-fnd-utl-av:commonDesignation "SKYWAY" ;
+    fibo-fnd-utl-av:preferredDesignation "SKWY" .
+
+fibo-fnd-plc-uspsai:Spring a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "spring" ;
+    fibo-fnd-utl-av:commonDesignation "SPG",
+        "SPNG",
+        "SPRING",
+        "SPRNG" ;
+    fibo-fnd-utl-av:preferredDesignation "SPG" .
+
+fibo-fnd-plc-uspsai:Springs a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "springs" ;
+    fibo-fnd-utl-av:commonDesignation "SPGS",
+        "SPNGS",
+        "SPRINGS",
+        "SPRNGS" ;
+    fibo-fnd-utl-av:preferredDesignation "SPGS" .
+
+fibo-fnd-plc-uspsai:Spur a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "spur" ;
+    fibo-fnd-utl-av:commonDesignation "SPUR" ;
+    fibo-fnd-utl-av:preferredDesignation "SPUR" .
+
+fibo-fnd-plc-uspsai:Spurs a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "spurs" ;
+    fibo-fnd-utl-av:commonDesignation "SPURS" ;
+    fibo-fnd-utl-av:preferredDesignation "SPUR" .
+
+fibo-fnd-plc-uspsai:Square a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "square" ;
+    fibo-fnd-utl-av:commonDesignation "SQ",
+        "SQR",
+        "SQRE",
+        "SQU",
+        "SQUARE" ;
+    fibo-fnd-utl-av:preferredDesignation "SQ" .
+
+fibo-fnd-plc-uspsai:Squares a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "squares" ;
+    fibo-fnd-utl-av:commonDesignation "SQRS",
+        "SQUARES" ;
+    fibo-fnd-utl-av:preferredDesignation "SQS" .
+
+fibo-fnd-plc-uspsai:Station a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "station" ;
+    fibo-fnd-utl-av:commonDesignation "STA",
+        "STATION",
+        "STATN",
+        "STN" ;
+    fibo-fnd-utl-av:preferredDesignation "STA" .
+
+fibo-fnd-plc-uspsai:Stravenue a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "stravenue" ;
+    fibo-fnd-utl-av:commonDesignation "STRA",
+        "STRAV",
+        "STRAVEN",
+        "STRAVENUE",
+        "STRAVN",
+        "STRVN",
+        "STRVNUE" ;
+    fibo-fnd-utl-av:preferredDesignation "STRA" .
+
+fibo-fnd-plc-uspsai:Stream a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "stream" ;
+    fibo-fnd-utl-av:commonDesignation "STREAM",
+        "STREME",
+        "STRM" ;
+    fibo-fnd-utl-av:preferredDesignation "STRM" .
+
+fibo-fnd-plc-uspsai:Street a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "street" ;
+    fibo-fnd-utl-av:commonDesignation "ST",
+        "STR",
+        "STREET",
+        "STRT" ;
+    fibo-fnd-utl-av:preferredDesignation "ST" .
+
+fibo-fnd-plc-uspsai:Streets a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "streets" ;
+    fibo-fnd-utl-av:commonDesignation "STREETS" ;
+    fibo-fnd-utl-av:preferredDesignation "STS" .
+
+fibo-fnd-plc-uspsai:Summit a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "summit" ;
+    fibo-fnd-utl-av:commonDesignation "SMT",
+        "SUMIT",
+        "SUMITT",
+        "SUMMIT" ;
+    fibo-fnd-utl-av:preferredDesignation "SMT" .
+
+fibo-fnd-plc-uspsai:TN a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "TN" ;
+    skos:definition "US-specific code for the designation for Tennessee" ;
+    fibo-fnd-utl-av:preferredDesignation "TN" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Tennessee ;
+    cmns-dsg:hasTag "TN" ;
+    cmns-id:identifies lcc-3166-2-us:Tennessee .
+
+fibo-fnd-plc-uspsai:TX a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "TX" ;
+    skos:definition "US-specific code for the designation for Texas" ;
+    fibo-fnd-utl-av:preferredDesignation "TX" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Texas ;
+    cmns-dsg:hasTag "TX" ;
+    cmns-id:identifies lcc-3166-2-us:Texas .
+
+fibo-fnd-plc-uspsai:Terrace a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "terrace" ;
+    fibo-fnd-utl-av:commonDesignation "TER",
+        "TERR",
+        "TERRACE" ;
+    fibo-fnd-utl-av:preferredDesignation "TER" .
+
+fibo-fnd-plc-uspsai:Throughway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "throughway" ;
+    fibo-fnd-utl-av:commonDesignation "THROUGHWAY" ;
+    fibo-fnd-utl-av:preferredDesignation "TRWY" .
+
+fibo-fnd-plc-uspsai:Trace a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "trace" ;
+    fibo-fnd-utl-av:commonDesignation "TRACE",
+        "TRACES",
+        "TRCE" ;
+    fibo-fnd-utl-av:preferredDesignation "TRCE" .
+
+fibo-fnd-plc-uspsai:Track a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "track" ;
+    fibo-fnd-utl-av:commonDesignation "TRACK",
+        "TRACKS",
+        "TRAK",
+        "TRK",
+        "TRKS" ;
+    fibo-fnd-utl-av:preferredDesignation "TRAK" .
+
+fibo-fnd-plc-uspsai:Trafficway a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "trafficway" ;
+    fibo-fnd-utl-av:commonDesignation "TRAFFICWAY" ;
+    fibo-fnd-utl-av:preferredDesignation "TRFY" .
+
+fibo-fnd-plc-uspsai:Trail a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "trail" ;
+    fibo-fnd-utl-av:commonDesignation "TRAIL",
+        "TRAILS",
+        "TRL",
+        "TRLS" ;
+    fibo-fnd-utl-av:preferredDesignation "TRL" .
+
+fibo-fnd-plc-uspsai:Trailer a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "trailer" ;
+    fibo-fnd-utl-av:commonDesignation "TRAILER",
+        "TRLR",
+        "TRLRS" ;
+    fibo-fnd-utl-av:preferredDesignation "TRLR" .
+
+fibo-fnd-plc-uspsai:Tunnel a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "tunnel" ;
+    fibo-fnd-utl-av:commonDesignation "TUNEL",
+        "TUNL",
+        "TUNLS",
+        "TUNNEL",
+        "TUNNELS",
+        "TUNNL" ;
+    fibo-fnd-utl-av:preferredDesignation "TUNL" .
+
+fibo-fnd-plc-uspsai:Turnpike a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "turnpike" ;
+    fibo-fnd-utl-av:commonDesignation "TRNPK",
+        "TURNPIKE",
+        "TURNPK" ;
+    fibo-fnd-utl-av:preferredDesignation "TPKE" .
+
+fibo-fnd-plc-uspsai:UM a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "UM" ;
+    skos:definition "US-specific code for the designation for the United States Minor Outlying Islands" ;
+    fibo-fnd-utl-av:preferredDesignation "UM" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:UnitedStatesMinorOutlyingIslands ;
+    cmns-dsg:hasTag "UM" ;
+    cmns-id:identifies lcc-3166-2-us:UnitedStatesMinorOutlyingIslands .
+
+fibo-fnd-plc-uspsai:US-AA a owl:NamedIndividual,
+        cmns-loc:GeographicRegionIdentifier ;
+    rdfs:label "US-AA" ;
+    skos:definition "subdivision code for the state designation for Armed Forces Americas, excluding Canada" ;
+    fibo-fnd-utl-av:preferredDesignation "AA" ;
+    cmns-dsg:denotes fibo-fnd-plc-uspsai:ArmedForcesAmericas ;
+    cmns-dsg:hasTag "US-AA" ;
+    cmns-id:identifies fibo-fnd-plc-uspsai:ArmedForcesAmericas .
+
+fibo-fnd-plc-uspsai:US-AE a owl:NamedIndividual,
+        cmns-loc:GeographicRegionIdentifier ;
+    rdfs:label "US-AE" ;
+    skos:definition "subdivision code for the state designation for Armed Forces Europe, the Middle East, and Canada" ;
+    fibo-fnd-utl-av:preferredDesignation "AE" ;
+    cmns-dsg:denotes fibo-fnd-plc-uspsai:ArmedForcesEurope ;
+    cmns-dsg:hasTag "US-AE" ;
+    cmns-id:identifies fibo-fnd-plc-uspsai:ArmedForcesEurope .
+
+fibo-fnd-plc-uspsai:US-AP a owl:NamedIndividual,
+        cmns-loc:GeographicRegionIdentifier ;
+    rdfs:label "US-AP" ;
+    skos:definition "subdivision code for the state designation for Armed Forces Pacific" ;
+    fibo-fnd-utl-av:preferredDesignation "AP" ;
+    cmns-dsg:denotes fibo-fnd-plc-uspsai:ArmedForcesPacific ;
+    cmns-dsg:hasTag "US-AP" ;
+    cmns-id:identifies fibo-fnd-plc-uspsai:ArmedForcesPacific .
+
+fibo-fnd-plc-uspsai:UT a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "UT" ;
+    skos:definition "US-specific code for the designation for Utah" ;
+    fibo-fnd-utl-av:preferredDesignation "UT" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Utah ;
+    cmns-dsg:hasTag "UT" ;
+    cmns-id:identifies lcc-3166-2-us:Utah .
+
+fibo-fnd-plc-uspsai:Underpass a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "underpass" ;
+    fibo-fnd-utl-av:commonDesignation "UNDERPASS" ;
+    fibo-fnd-utl-av:preferredDesignation "UPAS" .
+
+fibo-fnd-plc-uspsai:Union a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "union" ;
+    fibo-fnd-utl-av:commonDesignation "UN",
+        "UNION" ;
+    fibo-fnd-utl-av:preferredDesignation "UN" .
+
+fibo-fnd-plc-uspsai:Unions a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "unions" ;
+    fibo-fnd-utl-av:commonDesignation "UNIONS" ;
+    fibo-fnd-utl-av:preferredDesignation "UNS" .
+
+fibo-fnd-plc-uspsai:VA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "VA" ;
+    skos:definition "US-specific code for the designation for Virginia" ;
+    fibo-fnd-utl-av:preferredDesignation "VA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Virginia ;
+    cmns-dsg:hasTag "VA" ;
+    cmns-id:identifies lcc-3166-2-us:Virginia .
+
+fibo-fnd-plc-uspsai:VI a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "VI" ;
+    skos:definition "US-specific code for the designation for the U.S. Virgin Islands" ;
+    fibo-fnd-utl-av:preferredDesignation "VI" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:VirginIslands ;
+    cmns-dsg:hasTag "VI" ;
+    cmns-id:identifies lcc-3166-2-us:VirginIslands .
+
+fibo-fnd-plc-uspsai:VT a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "VT" ;
+    skos:definition "US-specific code for the designation for Vermont" ;
+    fibo-fnd-utl-av:preferredDesignation "VT" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Vermont ;
+    cmns-dsg:hasTag "VT" ;
+    cmns-id:identifies lcc-3166-2-us:Vermont .
+
+fibo-fnd-plc-uspsai:Valley a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "valley" ;
+    fibo-fnd-utl-av:commonDesignation "VALLEY",
+        "VALLY",
+        "VLLY",
+        "VLY" ;
+    fibo-fnd-utl-av:preferredDesignation "VLY" .
+
+fibo-fnd-plc-uspsai:Valleys a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "valleys" ;
+    fibo-fnd-utl-av:commonDesignation "VALLEYS",
+        "VLYS" ;
+    fibo-fnd-utl-av:preferredDesignation "VLYS" .
+
+fibo-fnd-plc-uspsai:Viaduct a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "viaduct" ;
+    fibo-fnd-utl-av:commonDesignation "VDCT",
+        "VIA",
+        "VIADCT",
+        "VIADUCT" ;
+    fibo-fnd-utl-av:preferredDesignation "VIA" .
+
+fibo-fnd-plc-uspsai:View a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "view" ;
+    fibo-fnd-utl-av:commonDesignation "VIEW",
+        "VW" ;
+    fibo-fnd-utl-av:preferredDesignation "VW" .
+
+fibo-fnd-plc-uspsai:Views a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "views" ;
+    fibo-fnd-utl-av:commonDesignation "VIEWS",
+        "VWS" ;
+    fibo-fnd-utl-av:preferredDesignation "VWS" .
+
+fibo-fnd-plc-uspsai:Village a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "village" ;
+    fibo-fnd-utl-av:commonDesignation "VILL",
+        "VILLAG",
+        "VILLAGE",
+        "VILLG",
+        "VILLIAGE",
+        "VLG" ;
+    fibo-fnd-utl-av:preferredDesignation "VLG" .
+
+fibo-fnd-plc-uspsai:Villages a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "villages" ;
+    fibo-fnd-utl-av:commonDesignation "VILLAGES",
+        "VLGS" ;
+    fibo-fnd-utl-av:preferredDesignation "VLGS" .
+
+fibo-fnd-plc-uspsai:Ville a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ville" ;
+    fibo-fnd-utl-av:commonDesignation "VILLE",
+        "VL" ;
+    fibo-fnd-utl-av:preferredDesignation "VL" .
+
+fibo-fnd-plc-uspsai:Vista a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "vista" ;
+    fibo-fnd-utl-av:commonDesignation "VIS",
+        "VIST",
+        "VISTA",
+        "VST",
+        "VSTA" ;
+    fibo-fnd-utl-av:preferredDesignation "VIS" .
+
+fibo-fnd-plc-uspsai:WA a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "WA" ;
+    skos:definition "US-specific code for the designation for Washington" ;
+    fibo-fnd-utl-av:preferredDesignation "WA" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Washington ;
+    cmns-dsg:hasTag "WA" ;
+    cmns-id:identifies lcc-3166-2-us:Washington .
+
+fibo-fnd-plc-uspsai:WI a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "WI" ;
+    skos:definition "US-specific code for the designation for Wisconsin" ;
+    fibo-fnd-utl-av:preferredDesignation "WI" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Wisconsin ;
+    cmns-dsg:hasTag "WI" ;
+    cmns-id:identifies lcc-3166-2-us:Wisconsin .
+
+fibo-fnd-plc-uspsai:WV a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "WV" ;
+    skos:definition "US-specific code for the designation for West Virginia" ;
+    fibo-fnd-utl-av:preferredDesignation "WV" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:WestVirginia ;
+    cmns-dsg:hasTag "WV" ;
+    cmns-id:identifies lcc-3166-2-us:WestVirginia .
+
+fibo-fnd-plc-uspsai:WY a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "WY" ;
+    skos:definition "US-specific code for the designation for Wyoming" ;
+    fibo-fnd-utl-av:preferredDesignation "WY" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-us:Wyoming ;
+    cmns-dsg:hasTag "WY" ;
+    cmns-id:identifies lcc-3166-2-us:Wyoming .
+
+fibo-fnd-plc-uspsai:Walk a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "walk" ;
+    fibo-fnd-utl-av:commonDesignation "WALK" ;
+    fibo-fnd-utl-av:preferredDesignation "WALK" .
+
+fibo-fnd-plc-uspsai:Walks a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "walks" ;
+    fibo-fnd-utl-av:commonDesignation "WALKS" ;
+    fibo-fnd-utl-av:preferredDesignation "WALK" .
+
+fibo-fnd-plc-uspsai:Wall a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "wall" ;
+    fibo-fnd-utl-av:commonDesignation "WALL" ;
+    fibo-fnd-utl-av:preferredDesignation "WALL" .
+
+fibo-fnd-plc-uspsai:Way a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "way" ;
+    fibo-fnd-utl-av:commonDesignation "WAY",
+        "WY" ;
+    fibo-fnd-utl-av:preferredDesignation "WAY" .
+
+fibo-fnd-plc-uspsai:Ways a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "ways" ;
+    fibo-fnd-utl-av:commonDesignation "WAYS" ;
+    fibo-fnd-utl-av:preferredDesignation "WAYS" .
+
+fibo-fnd-plc-uspsai:Well a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "well" ;
+    fibo-fnd-utl-av:commonDesignation "WELL" ;
+    fibo-fnd-utl-av:preferredDesignation "WL" .
+
+fibo-fnd-plc-uspsai:Wells a owl:NamedIndividual,
+        fibo-fnd-plc-adr:StreetSuffix ;
+    rdfs:label "wells" ;
+    fibo-fnd-utl-av:commonDesignation "WELLS",
+        "WLS" ;
+    fibo-fnd-utl-av:preferredDesignation "WLS" .
+
+fibo-fnd-plc-uspsai:YT a owl:NamedIndividual,
+        fibo-fnd-plc-adr:RegionSpecificIdentifier ;
+    rdfs:label "YT" ;
+    skos:definition "Canadian and US-specific code for the designation for Yukon" ;
+    fibo-fnd-utl-av:preferredDesignation "YT" ;
+    cmns-cxtdsg:isUsedBy lcc-3166-1:Canada,
+        lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-dsg:denotes lcc-3166-2-ca:Yukon ;
+    cmns-dsg:hasTag "YT" ;
+    cmns-id:identifies lcc-3166-2-ca:Yukon .
+
+lcc-3166-1:FM a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "FM" .
+
+lcc-3166-1:GU a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "GU" .
+
+lcc-3166-1:MH a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MH" .
+
+lcc-3166-1:PW a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "PW" .
+
+lcc-3166-2-ca:CA-AB a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "AB" .
+
+lcc-3166-2-ca:CA-BC a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "BC" .
+
+lcc-3166-2-ca:CA-MB a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MB" .
+
+lcc-3166-2-ca:CA-NB a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NB" .
+
+lcc-3166-2-ca:CA-NL a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NL" .
+
+lcc-3166-2-ca:CA-NS a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NS" .
+
+lcc-3166-2-ca:CA-NT a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NT" .
+
+lcc-3166-2-ca:CA-NU a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NU" .
+
+lcc-3166-2-ca:CA-ON a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "ON" .
+
+lcc-3166-2-ca:CA-PE a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "PE" .
+
+lcc-3166-2-ca:CA-QC a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "QC" .
+
+lcc-3166-2-ca:CA-SK a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "SK" .
+
+lcc-3166-2-ca:CA-YT a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "YT" .
+
+lcc-3166-2-us:US-AK a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "AK" .
+
+lcc-3166-2-us:US-AL a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "AL" .
+
+lcc-3166-2-us:US-AR a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "AR" .
+
+lcc-3166-2-us:US-AS a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "AS" .
+
+lcc-3166-2-us:US-AZ a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "AZ" .
+
+lcc-3166-2-us:US-CA a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "CA" .
+
+lcc-3166-2-us:US-CO a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "CO" .
+
+lcc-3166-2-us:US-CT a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "CT" .
+
+lcc-3166-2-us:US-DC a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "DC" .
+
+lcc-3166-2-us:US-DE a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "DE" .
+
+lcc-3166-2-us:US-FL a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "FL" .
+
+lcc-3166-2-us:US-GA a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "GA" .
+
+lcc-3166-2-us:US-GU a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "GU" .
+
+lcc-3166-2-us:US-HI a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "HI" .
+
+lcc-3166-2-us:US-IA a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "IA" .
+
+lcc-3166-2-us:US-ID a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "ID" .
+
+lcc-3166-2-us:US-IL a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "IL" .
+
+lcc-3166-2-us:US-IN a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "IN" .
+
+lcc-3166-2-us:US-KS a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "KS" .
+
+lcc-3166-2-us:US-KY a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "KY" .
+
+lcc-3166-2-us:US-LA a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "LA" .
+
+lcc-3166-2-us:US-MA a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MA" .
+
+lcc-3166-2-us:US-MD a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MD" .
+
+lcc-3166-2-us:US-ME a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "ME" .
+
+lcc-3166-2-us:US-MI a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MI" .
+
+lcc-3166-2-us:US-MN a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MN" .
+
+lcc-3166-2-us:US-MO a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MO" .
+
+lcc-3166-2-us:US-MP a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MP" .
+
+lcc-3166-2-us:US-MS a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MS" .
+
+lcc-3166-2-us:US-MT a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "MT" .
+
+lcc-3166-2-us:US-NC a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NC" .
+
+lcc-3166-2-us:US-ND a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "ND" .
+
+lcc-3166-2-us:US-NE a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NE" .
+
+lcc-3166-2-us:US-NH a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NH" .
+
+lcc-3166-2-us:US-NJ a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NJ" .
+
+lcc-3166-2-us:US-NM a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NM" .
+
+lcc-3166-2-us:US-NV a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NV" .
+
+lcc-3166-2-us:US-NY a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "NY" .
+
+lcc-3166-2-us:US-OH a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "OH" .
+
+lcc-3166-2-us:US-OK a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "OK" .
+
+lcc-3166-2-us:US-OR a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "OR" .
+
+lcc-3166-2-us:US-PA a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "PA" .
+
+lcc-3166-2-us:US-PR a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "PR" .
+
+lcc-3166-2-us:US-RI a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "RI" .
+
+lcc-3166-2-us:US-SC a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "SC" .
+
+lcc-3166-2-us:US-SD a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "SD" .
+
+lcc-3166-2-us:US-TN a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "TN" .
+
+lcc-3166-2-us:US-TX a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "TX" .
+
+lcc-3166-2-us:US-UM a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "UM" .
+
+lcc-3166-2-us:US-UT a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "UT" .
+
+lcc-3166-2-us:US-VA a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "VA" .
+
+lcc-3166-2-us:US-VI a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "VI" .
+
+lcc-3166-2-us:US-VT a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "VT" .
+
+lcc-3166-2-us:US-WA a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "WA" .
+
+lcc-3166-2-us:US-WI a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "WI" .
+
+lcc-3166-2-us:US-WV a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "WV" .
+
+lcc-3166-2-us:US-WY a owl:NamedIndividual ;
+    fibo-fnd-utl-av:preferredDesignation "WY" .
+
+fibo-fnd-plc-uspsai:ArmedForcesAmericas a owl:NamedIndividual,
+        cmns-loc:CountrySubdivision ;
+    rdfs:label "Armed Forces Americas" ;
+    skos:definition "state designation for Armed Forces Americas, excluding Canada" ;
+    cmns-cls:isClassifiedBy lcc-3166-2-us:State ;
+    cmns-loc:isSubregionOf lcc-3166-1:UnitedStatesOfAmerica ;
+    lcc-cr:hasEnglishShortName "Armed Forces Americas"@en .
+
+fibo-fnd-plc-uspsai:ArmedForcesEurope a owl:NamedIndividual,
+        cmns-loc:CountrySubdivision ;
+    rdfs:label "Armed Forces Europe" ;
+    skos:definition "state designation for Armed Forces Europe, the Middle East, and Canada" ;
+    cmns-cls:isClassifiedBy lcc-3166-2-us:State ;
+    cmns-loc:isSubregionOf lcc-3166-1:UnitedStatesOfAmerica ;
+    lcc-cr:hasEnglishShortName "Armed Forces Europe, the Middle East, and Canada"@en .
+
+fibo-fnd-plc-uspsai:ArmedForcesPacific a owl:NamedIndividual,
+        cmns-loc:CountrySubdivision ;
+    rdfs:label "Armed Forces Pacific" ;
+    skos:definition "state designation for Armed Forces Pacific" ;
+    cmns-cls:isClassifiedBy lcc-3166-2-us:State ;
+    cmns-loc:isSubregionOf lcc-3166-1:UnitedStatesOfAmerica ;
+    lcc-cr:hasEnglishShortName "Armed Forces Pacific"@en .
+

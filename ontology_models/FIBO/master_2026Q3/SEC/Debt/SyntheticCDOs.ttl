@@ -1,0 +1,283 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-der-cr-cds: <https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/CreditDefaultSwaps/> .
+@prefix fibo-fbc-dae-crt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditRatings/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-dbt-cdo: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/CollateralizedDebtObligations/> .
+@prefix fibo-sec-dbt-pbs: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/> .
+@prefix fibo-sec-dbt-syn: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/SyntheticCDOs/> .
+@prefix fibo-sec-fund-fund: <https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/Funds/> .
+@prefix fibo-sec-sec-pls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-dbt-cdo:CashCDOTranche a owl:Class ;
+    owl:disjointWith fibo-sec-dbt-syn:SyntheticCDOTranche .
+
+fibo-sec-dbt-syn:SyntheticAmortizingSecurity a owl:Class ;
+    rdfs:label "synthetic amortizing security"@en,
+        "合成摊销证券（synthetic amortizing security）"@zh ;
+    rdfs:comment "为模拟摊销证券行为而构造的证券。"@zh ;
+    rdfs:subClassOf fibo-sec-dbt-syn:SyntheticStructuredFinanceInstrument ;
+    skos:definition "Security constructed to emulate an amortizing security."@en ;
+    skos:scopeNote "Synthetic instruments can be created to mimic a wide range of debt instruments. These are not all shown here. This one is shown as an example"@en .
+
+fibo-sec-dbt-syn:isCash a owl:DatatypeProperty ;
+    rdfs:label "is cash"@en,
+        "是否现金型（is cash）"@zh ;
+    rdfs:comment "表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticCDOTranche ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the CDO has an underlying pool of real assets. This is No: the CDO has a synthetic pool of underlying assets."@en .
+
+fibo-sec-dbt-syn:percentageOfDefaultsThisTranche a owl:ObjectProperty ;
+    rdfs:label "percentage of defaults this tranche"@en,
+        "本分档违约百分比（percentage of defaults this tranche）"@zh ;
+    rdfs:comment "该分档持有人所暴露的违约百分比，即该分档所代表的违约份额。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticCDOTranche ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "The percentage of defaults which holders of this are exposed to, that is the percentage of defaults that this tranche represents. Further Notes Review session notes 21 April: The first, second and so on, to stop paying out when there is a default. In each case you get the first, second etc. x% of defaults. Base underlying may be high or low quality. Create the pool by buying or selling protection depending on hich way you want to go, e..g. have high quality funds, (borrowers), would sell protection. If low quality, would buy protection to improve quality. So risk is no longer bound to the funding. REVIEW: More likely this is a band of percentages (from and to); review and formalize. See also note on attachment and detachment points."@en .
+
+fibo-sec-dbt-syn:simulates a owl:ObjectProperty ;
+    rdfs:label "simulates"@en,
+        "模拟（simulates）"@zh ;
+    rdfs:comment "表明某合成工具模拟某一真实工具或组合的行为。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticPoolAsset .
+
+fibo-sec-dbt-syn:simulates.1 a owl:ObjectProperty ;
+    rdfs:label "simulates"@en,
+        "模拟（simulates）"@zh ;
+    rdfs:comment "表明某合成工具模拟某一真实工具或组合的行为。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticDebtInstrumentPool .
+
+fibo-sec-dbt-syn:trancheType a owl:ObjectProperty ;
+    rdfs:label "tranche type"@en,
+        "分档类型（tranche type）"@zh ;
+    rdfs:comment "指明分档的类型。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticCDOTranche ;
+    rdfs:range fibo-sec-dbt-cdo:CDOTrancheSenioritySelection .
+
+fibo-sec-dbt-syn: a owl:Ontology ;
+    rdfs:label "SyntheticCDOs"@en,
+        "合成 CDO 本体（Synthetic CDOs Ontology）"@zh ;
+    dcterms:abstract "Synthetic collateralized debt obligations are instruments designed to provide the same kind of structure and returns as a CDO, but these are not backed by an actual pool of debt assets." ;
+    dcterms:license """Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义以信用衍生品（而非实际债务资产）构建风险敞口的合成型担保债务凭证。"@zh ;
+    owl:imports fibo-be-le-lp:,
+        fibo-der-cr-cds:,
+        fibo-fbc-dae-crt:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-utl-av:,
+        fibo-sec-dbt-cdo:,
+        fibo-sec-dbt-pbs:,
+        fibo-sec-fund-fund:,
+        fibo-sec-sec-pls:,
+        cmns-av:,
+        cmns-doc:,
+        cmns-qtu: ;
+    owl:versionIRI fibo-sec-dbt-syn: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2015-2025 Object Management Group, Inc.",
+        "Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-sec-dbt-syn:ArbitrageSyntheticCDO a owl:Class ;
+    rdfs:label "arbitrage synthetic c d o"@en,
+        "套利型合成担保债务凭证（arbitrage synthetic CDO）"@zh ;
+    rdfs:comment "出于监管或实务考量而构造的合成 CDO，使银行在保留债务所有权的同时实现风险转移等目的。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:issues ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticCDOTranche ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:assetsManagedBy ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolioManager ],
+        fibo-sec-dbt-cdo:ArbitrageCDO,
+        fibo-sec-dbt-syn:SyntheticCDO ;
+    owl:disjointWith fibo-sec-dbt-syn:SyntheticBalanceSheetCDO ;
+    skos:definition "Arbitrage synthetic CDO deals are motivated by regulatory or practical considerations that might make a bank want to retain ownership of debt while achieving capital relief through CDSs. In this case, the sponsoring bank has a portfolio of obligations, called the reference portfolio. It retains that portfolio, but offloads its credit risk by transacting CDSs with the CDO."@en ;
+    cmns-av:explanatoryNote "For arbitrage synthetic deals, two advantages are - an abbreviated ramp-up period (for managed deals), and - the possibility that selling protection through CDSs can be less expensive than directly buying the underlying bonds. This is often true at the lower end of the credit spectrum."@en .
+
+fibo-sec-dbt-syn:SyntheticBalanceSheetCDO a owl:Class ;
+    rdfs:label "synthetic balance sheet c d o"@en,
+        "合成资产负债表型担保债务凭证（synthetic balance sheet CDO）"@zh ;
+    rdfs:comment "以合成方式将资产负债表资产风险转移出去的 CDO。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:issues ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticCDOTranche ],
+        fibo-sec-dbt-cdo:BalanceSheetCDO,
+        fibo-sec-dbt-syn:SyntheticCDO .
+
+fibo-sec-dbt-syn:SyntheticDebtSPV a owl:Class ;
+    rdfs:label "synthetic debt s p v"@en,
+        "合成债务特殊目的载体（synthetic debt SPV）"@zh ;
+    rdfs:comment "为发行合成 CDO 而设立的特殊目的载体（SPV），该实体（同所有 SPV）本身注册为某种法律实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:holds ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticDebtInstrumentPoolFundingAsset ],
+        fibo-be-le-lp:SpecialPurposeVehicle ;
+    skos:definition "A Special Purpose Vehicle set up for the issuance of synthetics CDOs. This entity (like all SPVs) its itself registered as some kind of legal entity, distinct from the sponsoring organization. It becomes the Issuer of Synthetic CDO issues."@en ;
+    skos:editorialNote "REVIEW: Whether this is (or is ever) a separate SPV for Synthetics, as it is for Cash CDO and other Cash structured finance. If not, how to define the facts at the level of SPV without contradictions. Moving stuff off the balance sheet is involved in putting it into the SPV. So talking a bout balance sheet or off balanc sheet, this is about creating the pool which is going to be sold off. This applies whether hte pool is cash (real holdings) or synthetics. Either way ,the instruments are transferred into the CPV to sell them off. conclusion: applies to cash and non cash. In the old days there were all sorts of guarantees added to that SPOV. Now if you provide support to that =SPV it is no longer \"Off balance sheet\" froma regulatory point of view. Accounting rules refer."@en .
+
+fibo-sec-dbt-syn:SyntheticStructuredFinanceInstrument a owl:Class ;
+    rdfs:label "synthetic structured finance instrument"@en,
+        "合成结构化金融工具（synthetic structured finance instrument）"@zh ;
+    rdfs:comment "以合成方式构造的结构化金融工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticPoolAsset ],
+        fibo-sec-dbt-pbs:StructuredFinanceInstrument .
+
+fibo-sec-dbt-syn:assetsManagedBy a owl:ObjectProperty ;
+    rdfs:label "assets managed by"@en,
+        "资产由……管理（assets managed by）"@zh ;
+    rdfs:comment "指明管理某一组合资产的管理人。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:ArbitrageSyntheticCDO ;
+    rdfs:range fibo-sec-dbt-cdo:CDOPortfolioManager .
+
+fibo-sec-dbt-syn:fundedBy a owl:ObjectProperty ;
+    rdfs:label "funded by"@en,
+        "由……提供资金（funded by）"@zh ;
+    rdfs:comment "指明为某一合成池提供资金的资产。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticDebtInstrumentPool ;
+    rdfs:range fibo-sec-dbt-syn:SyntheticDebtInstrumentPoolFundingAsset .
+
+fibo-sec-dbt-syn:hasInvestmentGrade a owl:ObjectProperty ;
+    rdfs:label "has investment grade"@en,
+        "具有投资级别（has investment grade）"@zh ;
+    rdfs:comment "指明工具或分档所具有的投资级别。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticDebtInstrumentPoolFundingAsset ;
+    rdfs:range fibo-fbc-dae-crt:InstrumentCreditRating .
+
+fibo-sec-dbt-syn:hasUnderlyingContract a owl:ObjectProperty ;
+    rdfs:label "has underlying contract"@en,
+        "具有标的合约（has underlying contract）"@zh ;
+    rdfs:comment "为在合成组合中实现现金流而创设的标的信用违约互换（CDS）。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticDebtInstrumentPool ;
+    rdfs:range fibo-der-cr-cds:CreditDefaultSwap ;
+    skos:definition "The underlying CDS which is created to mechanise the cash flows in the synthetic portfolio."@en .
+
+fibo-sec-dbt-syn:holds a owl:ObjectProperty ;
+    rdfs:label "holds"@en,
+        "持有（holds）"@zh ;
+    rdfs:comment "参与方与其占有、或对其实施某种所有权或控制、或可自主支配的事物之间的关系。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticDebtSPV ;
+    rdfs:range fibo-sec-dbt-syn:SyntheticDebtInstrumentPoolFundingAsset .
+
+fibo-sec-dbt-syn:isTrancheOf a owl:ObjectProperty ;
+    rdfs:label "is tranche of"@en,
+        "是……的分档（is tranche of）"@zh ;
+    rdfs:comment "表明某一档属于某一发行。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticCDOTranche ;
+    rdfs:range fibo-sec-dbt-syn:SyntheticDebtInstrumentPool .
+
+fibo-sec-dbt-syn:makesReferenceTo a owl:ObjectProperty ;
+    rdfs:label "makes reference to"@en,
+        "参考（makes reference to）"@zh ;
+    rdfs:comment "表明某工具参考某一标的资产或组合。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticDebtInstrumentPool ;
+    rdfs:range fibo-sec-dbt-syn:SyntheticCDOPortfolio .
+
+fibo-sec-dbt-syn:notionallyHolds a owl:ObjectProperty ;
+    rdfs:label "notionally holds"@en,
+        "名义持有（notionally holds）"@zh ;
+    rdfs:comment "表明以名义（而非实际持有）方式拥有某一资产头寸。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticCDOPortfolio ;
+    rdfs:range fibo-sec-dbt-syn:SyntheticCDOPortfolioConstituent .
+
+fibo-sec-dbt-syn:simulatedBy a owl:ObjectProperty ;
+    rdfs:label "simulated by"@en,
+        "由……模拟（simulated by）"@zh ;
+    rdfs:comment "为在合成组合中实现现金流而创设的标的信用违约互换（CDS）。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticPoolAsset ;
+    rdfs:range fibo-der-cr-cds:CreditDefaultSwap ;
+    skos:definition "The underlying CDS which is created to mechanise the cash flows in the synthetic portfolio."@en .
+
+fibo-sec-dbt-syn:SyntheticCDOPortfolioConstituent a owl:Class ;
+    rdfs:label "synthetic c d o portfolio constituent"@en,
+        "合成担保债务凭证组合成分（synthetic CDO portfolio constituent）"@zh ;
+    rdfs:comment "被定义为合成工具池成分的工具；它们并非实际持有，但在其他方面与持有类似。"@zh ;
+    skos:definition "An instrument which is defined as a constituent of a synthetic pool of instruments. These are not holdings because they are not held, but in all other respects they are the constituents of the portfolio."@en .
+
+fibo-sec-dbt-syn:SyntheticCDO a owl:Class ;
+    rdfs:label "synthetic c d o"@en,
+        "合成担保债务凭证（synthetic CDO）"@zh ;
+    rdfs:comment "通过信用衍生品（而非真实资产）合成标的组合的担保债务凭证。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:issues ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticCDOTranche ],
+        fibo-sec-dbt-cdo:CDODeal .
+
+fibo-sec-dbt-syn:SyntheticCDOPortfolio a owl:Class ;
+    rdfs:label "synthetic c d o portfolio"@en,
+        "合成担保债务凭证组合（synthetic CDO portfolio）"@zh ;
+    rdfs:comment "合成 CDO 的标的组合，由信用衍生品头寸构成而非实际持有资产。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:notionallyHolds ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticCDOPortfolioConstituent ] ;
+    skos:editorialNote "Review notes: What real stuff is this made of? Would be the actual contracts (the Ref Obligation contracts or the CDS contract)? Buyer of protection is buying protection and paying a fee. Similar to shorting on a stock. Seller of the protection is the one creating the instruments. So the Protection Seller is using the synthetic CDO as some kind of synthetic vehicle. Inside the portfolio is the actual contract that generates the cash."@en .
+
+fibo-sec-dbt-syn:SyntheticPoolAsset a owl:Class ;
+    rdfs:label "synthetic pool asset"@en,
+        "合成池资产（synthetic pool asset）"@zh ;
+    rdfs:comment "合成池中的资产成分。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:simulatedBy ;
+            owl:someValuesFrom fibo-der-cr-cds:CreditDefaultSwap ],
+        fibo-fnd-oac-own:FinancialAsset .
+
+fibo-sec-dbt-syn:issues a owl:ObjectProperty ;
+    rdfs:label "issues"@en,
+        "发行（issues）"@zh ;
+    rdfs:comment "正式使某事物可得。"@zh ;
+    rdfs:domain fibo-sec-dbt-syn:SyntheticCDO ;
+    rdfs:range fibo-sec-dbt-syn:SyntheticCDOTranche .
+
+fibo-sec-dbt-syn:SyntheticDebtInstrumentPoolFundingAsset a owl:Class ;
+    rdfs:label "synthetic debt instrument pool funding asset"@en,
+        "合成债务工具池融资资产（synthetic debt instrument pool funding asset）"@zh ;
+    rdfs:comment "为合成 CDO 中使用的合成债务工具池提供资金的资产。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:hasInvestmentGrade ;
+            owl:someValuesFrom fibo-fbc-dae-crt:InstrumentCreditRating ] ;
+    skos:definition "An asset which provides the funding for a synthetic debt instrument pool, as used in a synthetic CDO."@en,
+        "From April 28 review session: CDS mechanization: Q: Are the CDS taken out on the constituents of the (non owned) pool or on some other instrument? A: There is funding to underpin the pool. The funding may be high grade debt or may be low grade. There is an undedrlying source of funds. then you swap (using CDS) into other risks. so I might lend to a government institution, and then sell protection against a whole series of corporates. So I've taken the high quality portfolio and added other risks to it. Or the other way round. conclusions:"@en .
+
+fibo-sec-dbt-syn:SyntheticDebtInstrumentPool a owl:Class ;
+    rdfs:label "synthetic debt instrument pool"@en,
+        "合成债务工具池（synthetic debt instrument pool）"@zh ;
+    rdfs:comment "模拟一篮子债务证券行为的现金流结构，例如用信用衍生品合成的 CDO/债券/ABS 组合。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:fundedBy ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticDebtInstrumentPoolFundingAsset ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:hasUnderlyingContract ;
+            owl:someValuesFrom fibo-der-cr-cds:CreditDefaultSwap ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:makesReferenceTo ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticCDOPortfolio ],
+        fibo-sec-sec-pls:DebtPool ;
+    skos:definition "A cash flow structure which synthesizes the behavior of a portfolio of debt securities. For example a synthesized portfolio of CDO / Bonds / ABS using Total Returns Swaps and CDS. This does exist, it is just manufactured from different instruments."@en .
+
+fibo-sec-dbt-syn:SyntheticCDOTranche a owl:Class ;
+    rdfs:label "synthetic c d o tranche"@en,
+        "合成担保债务凭证分档（synthetic CDO tranche）"@zh ;
+    rdfs:comment "合成 CDO 的一个分档。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:isTrancheOf ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticDebtInstrumentPool ],
+        fibo-sec-dbt-cdo:CollateralizedDebtObligation .
+

@@ -1,0 +1,177 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-arr-cls: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-sec-cls: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-sec-cls: a owl:Ontology ;
+    rdfs:label "Securities Classification Ontology",
+        "证券分类本体（Securities Classification Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the fundamental concepts for classifying financial instruments, particularly securities, including, but not limited to classification schemes developed by government, regulatory agencies, and industry to classify the issuers of such securities as well as the securities themselves." ;
+    dcterms:license """Copyright (c) 2016-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义证券分类方案：按 CFI 代码、按资产类别等对证券归类。"@zh ;
+    owl:imports fibo-fbc-fi-fi:,
+        fibo-fnd-arr-cls:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-cds:,
+        cmns-dsg: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20260701/Securities/SecuritiesClassification/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/SEC/20180801/Securities/SecuritiesClassification.rdf version of this ontology was modified to rename (migrate) the hasDefinition property to isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190701/Securities/SecuritiesClassification.rdf version of this ontology was modified to eliminate duplication of concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200201/Securities/SecuritiesClassification.rdf version of this ontology was modified to add an class representing the ISO 10962 CFI standard and an individual for the 2019 version of that standard.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200501/Securities/SecuritiesClassification.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200701/Securities/SecuritiesClassification.rdf version of this ontology was revised to eliminate a reasoning issue with respect to the CFI codes related to making the classification code a code element (which makes it a code that applies to exactly one thing).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210401/Securities/SecuritiesClassification.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Securities/SecuritiesClassification.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230301/Securities/SecuritiesClassification.rdf version of this ontology was augmented to include additional securities classification schemes that are widely used (SEC-119).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20231201/Securities/SecuritiesClassification.rdf version of this ontology was modified to replace duplicate properties (FND-412)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 Object Management Group, Inc.",
+        "Copyright (c) 2016-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-sec-sec-cls:AssetClass a owl:Class ;
+    rdfs:label "asset class",
+        "资产类别（asset class）"@zh ;
+    rdfs:comment "金融工具分类器：表现相似特征、在市场中行为相似并受相似法规约束的一组证券。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-sec-sec-cls:FinancialInstrumentClassifier ;
+    skos:definition "financial instrument classifier for a group of securities that exhibit similar characteristics, behave similarly in the marketplace and are subject to the same laws and regulations" ;
+    cmns-av:adaptedFrom "http://www.investopedia.com/terms/a/assetclasses.asp"^^xsd:anyURI,
+        "https://www.law.cornell.edu/cfr/text/17/45.1"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Asset class means the broad category of goods, services or commodities, including any 'excluded commodity' as defined in CEA section 1a(19), with common characteristics underlying a swap. The asset classes include credit, equity, foreign exchange (excluding cross-currency), interest rate (including cross-currency), other commodity, and such other asset classes as may be determined by the Commission.",
+        "The three main asset classes are equities, or stocks; fixed income, or bonds; and cash equivalents, or money market instruments. Some investment professionals add real estate and commodities, and possibly other types of investments, to the asset class mix." .
+
+fibo-sec-sec-cls:GlobalIndustryClassificationStandardsClassifier a owl:Class ;
+    rdfs:label "Global Industry Classification Standards classifier",
+        "全球行业分类标准分类器（Global Industry Classification Standards classifier）"@zh ;
+    rdfs:comment "基于机构主要业务活动的四级标准化机构分类（GICS）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-cls:GlobalIndustryClassificationStandardsScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        fibo-fnd-arr-cls:IndustrySectorClassifier,
+        cmns-cds:CodeElement ;
+    skos:definition "four-tiered standardized classification or delineation for an organization based on the principal business activity of the organization" ;
+    cmns-av:abbreviation "GICS classifier",
+        "GICS code" .
+
+fibo-sec-sec-cls:ISO10962-201910-CodeScheme a owl:NamedIndividual,
+        fibo-sec-sec-cls:ClassificationOfFinancialInstrumentsCodeScheme ;
+    rdfs:label "ISO 10962 2019-10 code set" ;
+    skos:definition "Fourth Edition, 2019-10 version of the ISO 10962 Classification of Financial Instruments (CFI) Code scheme" .
+
+fibo-sec-sec-cls:IndustryClassificationBenchmarkClassifier a owl:Class ;
+    rdfs:label "industry classification benchmark classifier",
+        "行业分类基准分类器（industry classification benchmark classifier）"@zh ;
+    rdfs:comment "基于机构主要收入来源的标准化机构分类（ICB）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-cls:IndustryClassificationBenchmarkScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        fibo-fnd-arr-cls:IndustrySectorClassifier,
+        cmns-cds:CodeElement ;
+    skos:definition "standardized classification or delineation for an organization based on their main source of revenue" ;
+    cmns-av:abbreviation "ICB classifier",
+        "ICB code" .
+
+fibo-fbc-fi-fi:FinancialInstrument a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-sec-cls:FinancialInstrumentClassifier ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassifier ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-sec-sec-cls:FinancialInstrumentClassificationCode a owl:Class ;
+    rdfs:label "financial instrument classification code",
+        "金融工具分类代码（financial instrument classification code）"@zh ;
+    rdfs:comment "ISO 10962 金融工具分类（CFI）代码方案中定义的金融工具分类器和代码。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-sec-sec-cls:ClassificationOfFinancialInstrumentsCodeScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-sec-sec-cls:FinancialInstrumentClassifier ;
+    skos:definition "classifier and code for a financial instrument defined in the ISO 10962 Classification of Financial Instruments (CFI) Code Scheme" ;
+    cmns-av:abbreviation "CFI code" ;
+    cmns-av:adaptedFrom "https://www.iso.org/standard/73564.html"^^xsd:anyURI .
+
+fibo-sec-sec-cls:GlobalIndustryClassificationStandardsScheme a owl:NamedIndividual,
+        fibo-fnd-arr-cls:IndustrySectorClassificationScheme ;
+    rdfs:label "Global Industry Classification Standards scheme" ;
+    skos:definition "classification scheme that is a hierarchical four-level system classifying companies based on the principal business activity of the organization" ;
+    cmns-av:acronym "GICS" ;
+    cmns-av:adaptedFrom "https://www.msci.com/our-solutions/indexes/gics"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The four tiers are: Sectors, Industry Groups, Industries and Sub-Industries. All definitions are standardized and applied to companies globally. Each company is assigned a single GICS classification in each of the four tiers, according to its principal business activity. Revenue is a key factor in determining a firm's principal business activity. MSCI and S&P Dow Jones Indices developed this classification standard to provide investors with consistent and exhaustive industry definitions." .
+
+fibo-sec-sec-cls:IndustryClassificationBenchmarkScheme a owl:NamedIndividual,
+        fibo-fnd-arr-cls:IndustrySectorClassificationScheme ;
+    rdfs:label "Industry Classification Benchmark scheme" ;
+    skos:definition "classification scheme that is a hierarchical four-level system classifying companies based on their main source of revenue" ;
+    cmns-av:acronym "ICB" ;
+    cmns-av:adaptedFrom "https://www.ftserussell.com/data/industry-classification-benchmark-icb"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "It is operated and managed by FTSE Russell, a subsidiary of London Stock Exchange Group (LSEG). It is currently one of the major classification systems for securities. This system has been in use since its release in 2005. It is globally recognized and used by some of the biggest financial institutions, such as: London Stock Exchange, NYSE Euronext and NASDAQ." .
+
+fibo-sec-sec-cls:ClassificationOfFinancialInstrumentsCodeScheme a owl:Class ;
+    rdfs:label "classification of financial instruments code scheme",
+        "金融工具分类代码方案（classification of financial instruments code scheme）"@zh ;
+    rdfs:comment "金融工具代码集的分类方案，可供全球所有参与方用于直通式处理。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-sec-sec-cls:FinancialInstrumentClassificationCode ],
+        fibo-sec-sec-cls:FinancialInstrumentClassificationScheme ;
+    skos:definition "classification scheme for set of codes for financial instruments that can be used globally for straight-through processing by all involved participants in an electronic data processing environment" ;
+    cmns-av:abbreviation "CFI code scheme" ;
+    cmns-av:adaptedFrom "https://www.iso.org/standard/73564.html"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The ISO 10962 Securities and related financial instruments - Classification of financial instruments (CFI) code was developed as a solution to a number of challenges. One is to establish a series of codes which clearly classify financial instruments having similar features. The other is to develop a glossary of terms and provide common definitions which allow market participants to easily understand terminology being used." .
+
+fibo-sec-sec-cls:FinancialInstrumentClassificationScheme a owl:Class ;
+    rdfs:label "financial instrument classification scheme",
+        "金融工具分类方案（financial instrument classification scheme）"@zh ;
+    rdfs:comment "定义一组金融工具分类器的分类方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-sec-cls:FinancialInstrumentClassifier ;
+            owl:onProperty cmns-dsg:defines ],
+        cmns-cls:ClassificationScheme ;
+    skos:definition "classification scheme defining a set of classifiers for financial instruments" ;
+    skos:example "the ISO 10962 Classification of Financial Instruments (CFI) classification scheme" .
+
+fibo-sec-sec-cls:FinancialInstrumentClassifier a owl:Class ;
+    rdfs:label "financial instrument classifier",
+        "金融工具分类器（financial instrument classifier）"@zh ;
+    rdfs:comment "基于金融工具类型和特征的分类器。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-sec-sec-cls:FinancialInstrumentClassificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fbc-fi-fi:FinancialInstrument ],
+        cmns-cls:Classifier ;
+    skos:definition "classifier for a financial instrument based on its type and features" ;
+    skos:example "Examples include equity instrument, debt instrument, option, future, etc. per the the ISO 10962 CFI (Classification of Financial Instruments) standard, as cash instruments or derivative instruments per the Financial Accounting Standards Board (FASB) and International Accounting Standards Board (IASB) accounting standards, and so forth." .
+

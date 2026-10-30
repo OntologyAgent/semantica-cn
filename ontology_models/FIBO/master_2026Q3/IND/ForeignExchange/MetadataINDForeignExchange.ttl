@@ -1,0 +1,57 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-fx-mod: <https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/MetadataINDForeignExchange/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-ind-fx-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Indices and Indicators (IND) Foreign Exchange Module",
+        "IND 外汇模块元数据（Metadata for the IND Foreign Exchange Module）"@zh ;
+    dcterms:abstract "This module includes ontologies defining concepts to do with foreign exchange." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-02-06T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明外汇（Foreign Exchange）模块由外汇本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/IND/20230201/ForeignExchange/MetadataINDForeignExchange/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+
+fibo-ind-fx-mod:ForeignExchangeModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "foreign exchange module" ;
+    dcterms:abstract "This module includes ontologies defining concepts to do with foreign exchange." ;
+    dcterms:contributor "88 Solutions",
+        "Adaptive, Inc.",
+        "Bank of New York Mellon",
+        "Bloomberg LP",
+        "Bureau of Economic Analysis (BEA, US Department of Commerce)",
+        "Bureau of Labor Statistics (BLS, US Department of Commerce)",
+        "Census Bureau (US Department of Commerce)",
+        "Citigroup",
+        "Dassault Systemes/No Magic",
+        "Deutsche Bank",
+        "Federal Reserve Bank of Kansas City",
+        "HP Enterprise / Mphasis",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Nordea Bank AB",
+        "Office of Financial Research (OFR), U.S. Department of the Treasury",
+        "Pinnacle Bank (Morgan Hill, California)",
+        "State Street Bank and Trust",
+        "Statistics Canada",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo Bank, N. A.",
+        "agnos.ai UK Ltd" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/IND/ForeignExchange/ForeignExchange/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO IND Foreign Exchange Module",
+        "Financial Industry Business Ontology (FIBO) Indices and Indicators (IND) Foreign Exchange Module" ;
+    rdfs:seeAlso <https://www.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+        "Copyright (c) 2015-2023 Object Management Group, Inc." .
+

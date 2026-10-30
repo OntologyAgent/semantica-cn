@@ -1,0 +1,146 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-spc-com: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-dbt-dln: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DistributedLoans/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-dbt-dln:LoanParticipationNote a owl:Class ;
+    rdfs:label "loan participation note"@en,
+        "贷款参与票据（loan participation note）"@zh ;
+    rdfs:comment "可在多个贷款人之间分销的信贷额度和固定收益证券。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-sec-dbt-dln:LeadArranger ;
+            owl:onProperty cmns-pts:hasActor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-dae-dbt:CreditFacility,
+        fibo-loan-spc-com:CommercialLoan,
+        fibo-sec-dbt-dbti:FixedIncomeSecurity ;
+    skos:definition "credit facility and fixed-income security that may be distributed across a group of lenders"@en ;
+    cmns-av:abbreviation "LPN"@en ;
+    cmns-av:explanatoryNote "The main difference between a loan participation and a loan syndication is that in a loan participation, one lender sells ownership interests in a loan to other lenders, while in a loan syndication, the lenders work together to originate and lend on the loan."@en,
+        "With an LPN, a lead bank underwrites and issues the loan. This lending institution then recruits other banks to participate and share the risks and profits on a pro rata basis. The lead lender keeps a partial interest in the loan and is responsible for servicing it."@en .
+
+fibo-sec-dbt-dln:SyndicatedLoan a owl:Class ;
+    rdfs:label "syndicated loan"@en,
+        "银团贷款（syndicated loan）"@zh ;
+    rdfs:comment "由一组称为银团的贷款人集体向单一借款人提供大额贷款的信贷协议。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasActor ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-sec-dbt-dln:LeadArranger fibo-sec-dbt-dln:Bookrunner fibo-sec-dbt-dln:AdministrativeAgent fibo-sec-dbt-dln:DocumentationAgent fibo-sec-dbt-dln:SyndicationAgent fibo-sec-dbt-dln:FinanceSyndicateMember ) ] ],
+        fibo-fbc-dae-dbt:CreditFacility,
+        fibo-loan-spc-com:CommercialLoan ;
+    skos:definition "credit agreement in which a group of lenders, known as a syndicate, collectively provides a large loan to a single borrower"@en ;
+    cmns-av:explanatoryNote "A syndicated loan enables pooling of funds from multiple financial institutions, typically under the leadership of one or more arranging banks. These kinds of credit agreements are often used by large corporations, private equity investors and government entities for significant capital needs such as acquisitions, project financing, or to meet operational requirements."@en .
+
+fibo-sec-dbt-dln: a owl:Ontology ;
+    rdfs:label "Distributed Loans Ontology"@en,
+        "分销贷款本体（Distributed Loans Ontology）"@zh ;
+    dcterms:abstract "This ontology defines contracts which give the holder some formal participation in some loan." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+		Copyright (c) 2024-2025 FIUTUR
+		Copyright (c) 2024-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义银团贷款等被分销给多个持有人持有的贷款。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-utl-av:,
+        fibo-loan-spc-com:,
+        fibo-sec-dbt-dbti:,
+        cmns-av:,
+        cmns-col:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI fibo-sec-dbt-dln: ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DistributedLoans.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2024-2025 FIUTUR",
+        "Copyright (c) 2024-2025 Object Management Group, Inc." .
+
+fibo-sec-dbt-dln:AdministrativeAgent a owl:Class ;
+    rdfs:label "administrative agent"@en,
+        "代理行（administrative agent）"@zh ;
+    rdfs:comment "金融机构（通常是银团中的主要贷款人之一）被指定在借款人与银团成员之间充当中介的角色。"@zh ;
+    rdfs:subClassOf fibo-be-fct-fct:SyndicateMember ;
+    skos:definition "role of a financial institution (often one of the primary lenders in the syndicate) designated to act as an intermediary between the borrowers and the syndicate lenders"@en ;
+    cmns-av:explanatoryNote "An administrative agent is designated by the syndicate and granted the authority to disburse funds, collect payments, monitor compliance and act as the communications intermediary with the borrower on behalf of the syndicate. This coordination role is crucial to ensuring that lenders' rights and oblications are properly coordinated and to streamline operations. Their authority and the scope of what they can do is explicitly stated in the loan agreement, and does not allow unilateral decision making with respect to the terms of the loan."@en .
+
+fibo-sec-dbt-dln:Bookrunner a owl:Class ;
+    rdfs:label "bookrunner"@en,
+        "簿记行（bookrunner）"@zh ;
+    rdfs:comment "负责协调贷款安排、结构设计和营销的金融机构（通常是商业银行或投资银行）。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "financial institution (typically a commercial or investment bank) responsible for coordinating the arrangement, structuring, and marketing of the loan to potential lenders"@en ;
+    cmns-av:explanatoryNote "A 'bookrunner' is primarily responsible for managing the distribution and sale of a security during a new issuance, while a 'lead arranger' is the primary bank that structures and leads a syndicated loan, often assigning portions of the loan to other banks to participate in the deal; essentially, the bookrunner focuses on selling the security to investors, while the lead arranger focuses on structuring the loan itself and coordinating the syndicate of lenders involved."@en .
+
+fibo-sec-dbt-dln:DocumentationAgent a owl:Class ;
+    rdfs:label "documentation agent"@en,
+        "文件代理行（documentation agent）"@zh ;
+    rdfs:comment "被指定负责贷款文件起草、谈判和定稿的金融机构。"@zh ;
+    rdfs:subClassOf fibo-be-fct-fct:SyndicateMember ;
+    skos:definition "financial institution designated to oversee the drafting, negotiation, and finalization of the loan documentation"@en .
+
+fibo-sec-dbt-dln:FinanceSyndicate a owl:Class ;
+    rdfs:label "finance syndicate"@en,
+        "融资银团（finance syndicate）"@zh ;
+    rdfs:comment "集体同意向单一借款人提供大额贷款的一组金融机构或贷款人。"@zh ;
+    rdfs:subClassOf fibo-be-fct-fct:Syndicate ;
+    skos:definition "group of financial institutions or lenders that collectively agree to provide funding for a large loan to a single borrower"@en ;
+    cmns-av:explanatoryNote "Syndicates are formed to enable the provision of substantial financing amounts that would be challenging or risky for any one lender to offer alone. The syndicate structure allows lenders to share the loan amount, spreading both the funding and associated risks among multiple participants."@en .
+
+fibo-sec-dbt-dln:FinanceSyndicateMember a owl:Class ;
+    rdfs:label "finance syndicate member"@en,
+        "融资银团成员（finance syndicate member）"@zh ;
+    rdfs:comment "为银团贷款或贷款参与票据出资的金融服务提供商类型的银团成员。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:allValuesFrom fibo-sec-dbt-dln:FinanceSyndicate ;
+                    owl:onProperty cmns-col:isMemberOf ] ],
+        fibo-be-fct-fct:SyndicateMember,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "syndicate member that is a financial services provider that contributes funds to a syndicated loan or loan participation note"@en ;
+    cmns-av:explanatoryNote "Syndicate members may include a variety of financial institutions, such as commercial banks, investment banks, institutional investors - insurance companies, pension funds, and hedge funds, and specialty finance firms, focused on specific industries or credit profiles, which may join syndicates for specialized or higher-risk loans."@en .
+
+fibo-sec-dbt-dln:SyndicationAgent a owl:Class ;
+    rdfs:label "syndication agent"@en,
+        "银团代理行（syndication agent）"@zh ;
+    rdfs:comment "被指定协助构建、安排和管理贷款银团组建过程的金融机构（通常是商业银行或投资银行）。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "financial institution (typically a commercial or investment bank) designated to help structure, arrange, and manage the loan syndication process"@en ;
+    cmns-av:explanatoryNote "Syndication agents are important at the beginning of the process, including setting up the syndicate, supporting distribution of the loan across lenders, marketing, and the like. They are far less involved in loan administration, which is managed by the administrative agent."@en .
+
+fibo-sec-dbt-dln:LeadArranger a owl:Class ;
+    rdfs:label "lead arranger"@en,
+        "牵头安排行（lead arranger）"@zh ;
+    rdfs:comment "代表借款人主导贷款结构设计和银团组建过程的金融机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "financial institution that spearheads the loan structuring and syndication process on behalf of the borrower"@en ;
+    cmns-av:explanatoryNote "The lead arranger acts as the primary point of contact for the borrower. They perform credit analysis and due diligence, ensure that the structure meets borrowers goals, and coordinates with potential lenders regarding the initial structure and commitments."@en ;
+    cmns-av:synonym "arranger"@en,
+        "lead bank"@en,
+        "lead manager"@en .
+

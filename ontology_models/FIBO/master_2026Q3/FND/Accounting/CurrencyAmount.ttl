@@ -1,0 +1,423 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-acc-cur: a owl:Ontology ;
+    rdfs:label "Currency Amount Ontology",
+        "货币金额本体（Currency Amount Ontology）"@zh ;
+    dcterms:abstract """This ontology defines currency and monetary amount related concepts for use in defining other FIBO ontology elements. There are two distinct kinds of concepts that correspond to money and amounts: a concrete, actual amount of money, and the monetary measure of something denominated in some currency. These are dimensionally the same but whereas 'money amount' is defined as an amount of money, 'monetary amount' is an abstract monetary measure.
+
+The definition of currency provided herein is compliant with the definitions given in ISO 4217. ISO 4217 provides universally applicable coded representations of names of currencies and funds, used internationally for financial transaction support. The ontology has been partitioned into 2 parts: (1) the essential concept system describing the standard (this module), and (2) ISO4217-1-CurrencyCodes, which contains all of the individuals specified in ISO 4217.""" ;
+    dcterms:license """2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义「金额＋币种」的货币金额（currency amount）表示，是 FIBO 中表达价格、债务金额、付款额等一切带币种数值的基础构件。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dsg:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-qtu:,
+        cmns-txt: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20260701/Accounting/CurrencyAmount/> ;
+    skos:changeNote "The FIBO FND 1.0 (https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Accounting/CurrencyAmount.rdf) version of this ontology was modified per the additions introduced in the FIBO FBC RFC and related issue resolutions identified in the FIBO FND 1.1 RTF report and https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.1/, including adding support for ISO 4217 currency codes.",
+        "The FIBO FND 1.1 (https://spec.edmcouncil.org/fibo/ontology/FND/20160201/Accounting/CurrencyAmount.rdf) version of this ontology was modified per FIBO 2.0 RFC, including the addition of a new hasMonetaryAmount property as a superproperty of others required by various FIBO domain teams and integration with LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20000601/Accounting/CurrencyAmount/ version of this ontology was modified to replace a redundant concept, calculation formula with formula.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Accounting/CurrencyAmount.rdf version of this ontology was modified to include several classes to support automated inclusion of all ISO 4217 codes published as of 2018-06-04, and to revise definitions per the eighth edition of the specification.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20181101/Accounting/CurrencyAmount/ version of this ontology was modified to use the generic statistical measures and measurements now in FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190501/Accounting/CurrencyAmount/ version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190901/Accounting/CurrencyAmount/ version of this ontology was modified to improve definitions for notional amount and currency identifier.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20191201/Accounting/CurrencyAmount/ version of this ontology was modified to correct the explanatory note on currency identifier.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20191201/Accounting/CurrencyAmount/ version of this ontology was modified to eliminate duplication with concepts in LCC, dependencies on a couple of ontologies that were unnecessary, eliminate references to external dictionary sites that no longer resolve, clean up ambiguity in definitions, eliminate a redundant property, and add unit price.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210201/Accounting/CurrencyAmount/ version of this ontology was modified to loosen a restriction on currency to allow for more than one numeric currency code, which was necessitated by the October 2021 update to the ISO currency code definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220101/Accounting/CurrencyAmount/ version of this ontology was modified to move the definition of precious metal and the corresponding identifier to this ontology from Products and Services to simplify imports in cases where the broader definitions for commodities are not required and deprecated isTenderIn, given that we have used the property isUsedBy for this purpose in the currency codes themselves.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220201/Accounting/CurrencyAmount/ version of this ontology was modified to add a restriction to indicate the currency on percentage monetary amount, make currency a subclass of unit of measure, and deprecate the notion of monetary measure, which is more about monetary policy and was incorrectly used in a few places, and is out of scope for our current set of use cases.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220301/Accounting/CurrencyAmount/ version of this ontology was modified to eliminate hygiene errors with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/Accounting/CurrencyAmount.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Accounting/CurrencyAmount.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Accounting/CurrencyAmount.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231101/Accounting/CurrencyAmount.rdf version of this ontology was modified to tease out the distinction between the nominal and notional amount, which were confused (DER-127) and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231201/Accounting/CurrencyAmount.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Accounting/CurrencyAmount.rdf version of the ontology was modified to replace hasConstituent with hasMember for better semantic consistency (FND-396).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250701/Accounting/CurrencyAmount.rdf version of the ontology was modified to replace references to the now deprecated hasTag property in Relations with its equivalent in OMG Commons (FND-412)." ;
+    skos:editorialNote "(1) The present version of the ontology covers the English sections of the ISO 4217 standard only, and (2) UTF-8 character encodings are employed in names in the currency codes ontology to support the broadest number of tools." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group, Inc.",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." ;
+    cmns-av:directSource "ISO 4217 Codes for the representation of currencies and funds, Eighth edition, 2015-08-01",
+        "ISO 4217 Codes for the representation of currencies and funds, Seventh edition, 2008-07-15" .
+
+fibo-fnd-acc-cur:AmountOfMoney a owl:Class ;
+    rdfs:label "amount of money",
+        "货币金额（amount of money）"@zh ;
+    rdfs:comment "以纸币和硬币形式可随时动用的现金数量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-qtu:ScalarQuantityValue ;
+    skos:definition "amount of readily available cash in banknotes and coins" ;
+    skos:editorialNote "This is an actual sum of money, not the measure of a sum of money in monetary units, although it has the same basic properties (decimal number with a currenct unit)." ;
+    cmns-av:synonym "cash" .
+
+fibo-fnd-acc-cur:CalculatedPrice a owl:Class ;
+    rdfs:label "calculated price",
+        "计算价格（calculated price）"@zh ;
+    rdfs:comment "通过公式确定的货币价格。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-qtu:Expression ;
+            owl:onProperty cmns-qtu:hasExpression ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-acc-cur:MonetaryPrice ;
+    skos:definition "monetary price determined by a formula" .
+
+fibo-fnd-acc-cur:CurrencyBasket a owl:Class ;
+    rdfs:label "currency basket",
+        "货币篮子（currency basket）"@zh ;
+    rdfs:comment "选定的一组货币，以其加权平均值作为价值或债务数量的度量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+        cmns-col:StructuredCollection ;
+    skos:definition "selected group of currencies, in which the weighted average is used as a measure of the value or the amount of an obligation" ;
+    skos:note "A currency basket functions as a benchmark for regional currency movements; its composition and weighting depends on its purpose." ;
+    fibo-fnd-utl-av:definitionOrigin "Codes for the representation of currencies and funds, ISO 4217, Eighth edition, 2015-08-01, section 3.2" .
+
+fibo-fnd-acc-cur:CurrencyIdentifier a owl:Class ;
+    rdfs:label "currency identifier",
+        "货币标识符（currency identifier）"@zh ;
+    rdfs:comment "表示某种货币的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cds:CodeElement,
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters representing some currency" ;
+    cmns-av:adaptedFrom "Codes for the representation of currencies and funds, ISO 4217, Eighth edition, 2015-08-01, section 3.2" ;
+    cmns-av:explanatoryNote "The first (left-most) two characters of the ISO 4217 3-letter currency identifier relate to the currency authority that issues the currency, and is, in most cases the ISO 3166-1 alpha 2 code for the geopolitical entity whose central bank is the issuer. The third (right-most) character of the identifier (alphabetic code) is an indicator derived from the name of the major currency unit or fund. If the currency is not associated with a single geographical entity as described in ISO 3166-1, typically a specially allocated identifier (alpha-2 code) is used to describe the currency authority. This code has been allocated by the Maintenance Agency from within the user-assigned range of codes XA to XZ specified in 8.1.3 of ISO 3166-1:2013. The character following X will be a mnemonic, where possible, derived from the name of the geographical area concerned." .
+
+fibo-fnd-acc-cur:ExchangeRate a owl:Class ;
+    rdfs:label "exchange rate",
+        "汇率（exchange rate）"@zh ;
+    rdfs:comment "一种货币可兑换为另一种货币的比率。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasBaseCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasDealtCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-fnd-acc-cur:hasRateValue ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-qtu:Ratio ;
+    skos:definition "rate at which one currency can be exchanged for another" ;
+    skos:example "The exchange rate between the U.S. dollar and British pound is distinct from the exchange rate between the U.S. dollar and the euro." .
+
+fibo-fnd-acc-cur:FundsIdentifier a owl:Class ;
+    rdfs:label "funds identifier",
+        "资金单位标识符（funds identifier）"@zh ;
+    rdfs:comment "可用于唯一标识资金单位的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Funds ],
+        cmns-cds:CodeElement,
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters that can be used to uniquely identify funds" ;
+    cmns-av:adaptedFrom "Codes for the representation of currencies and funds, ISO 4217, Eighth edition, 2015-08-01, section 3.2" .
+
+fibo-fnd-acc-cur:InterestRate a owl:Class ;
+    rdfs:label "interest rate",
+        "利率（interest rate）"@zh ;
+    rdfs:comment "为使用资产而支付的费用，以本金的百分比表示。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-fnd-acc-cur:hasRateValue ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+    skos:definition "amount charged, expressed as a percentage of principal, in exchange for the use of assets" ;
+    cmns-av:explanatoryNote "Interest rates are typically noted on an annual basis, known as the annual percentage rate (APR). The assets borrowed could include cash, consumer goods, and large assets such as a vehicle or building. The rate is derived by dividing the amount of interest by the amount of principal borrowed. Interest rates are quoted on bills, notes, bonds, credit cards, and many kinds of consumer and business loans." .
+
+fibo-fnd-acc-cur:PreciousMetalIdentifier a owl:Class ;
+    rdfs:label "precious metal identifier",
+        "贵金属标识符（precious metal identifier）"@zh ;
+    rdfs:comment "在某情境中唯一标识贵金属的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-acc-cur:PreciousMetal ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cds:CodeElement,
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters uniquely identifying the precious metal in some context" .
+
+fibo-fnd-acc-cur:UnitOfAccountIdentifier a owl:Class ;
+    rdfs:label "unit of account identifier",
+        "记账单位标识符（unit of account identifier）"@zh ;
+    rdfs:comment "可用于唯一标识名义货币单位的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-acc-cur:UnitOfAccount ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cds:CodeElement,
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters that can be used to uniquely identify a nominal monetary unit" .
+
+fibo-fnd-acc-cur:UnitPrice a owl:Class ;
+    rdfs:label "unit price",
+        "单价（unit price）"@zh ;
+    rdfs:comment "以分配货物或服务所用的知名可测单位表示的货币价格。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-acc-cur:isPriceFor ;
+            owl:someValuesFrom owl:Thing ],
+        fibo-fnd-acc-cur:MonetaryPrice ;
+    skos:definition "monetary price expressed in relation to a well-known measurable unit by which the goods or services are allocated" ;
+    skos:example "For example, gold is commonly measured in troy ounces, grams, etc., and oil is measured in terms of barrels." .
+
+fibo-fnd-acc-cur:hasFundsType a owl:DatatypeProperty ;
+    rdfs:label "has funds type",
+        "具有资金类型（has funds type）"@zh ;
+    rdfs:comment "标识资金类型，如美元资金的「次日」。"@zh ;
+    rdfs:domain fibo-fnd-acc-cur:Funds ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "indicates the type of funds, such as next day for US funds" .
+
+fibo-fnd-acc-cur:hasNotionalAmount a owl:ObjectProperty ;
+    rdfs:label "has notional amount",
+        "具有名义金额（has notional amount）"@zh ;
+    rdfs:comment "具有一个通常不变、用于特定计算、以某货币数量表示的值。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "has a generally unchangeable value used for certain calculations, expressed as some monetary amount" ;
+    cmns-av:adaptedFrom "ISO 10962:2019, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019-10, clause 6.8.2" ;
+    cmns-av:explanatoryNote "For certain kinds of derivative instruments, including but not limited to swaps, the notional amount indicates face amount of a swap upon which the payment streams for that swap are based. While this is typically constant throughout the lifetime of a contract, it can be accreting, amortizing, or custom, such as in the case of a notional step schedule.",
+        """The notional amount (or notional principal amount or notional value) on a financial instrument is typically the face amount used to calculate payments made on that instrument. This amount generally does not change and is thus referred to as notional.
+		
+		When applied to a swap this is the amount used for calculating the actual value of the interest due. Also known as notional value when describing derivative contracts in the options, futures, and currency markets, this term is often used to value the underlying asset in a derivatives trade. It can be the total value of a position, how much value a position controls, or an agreed-upon amount in a contract.
+
+		An example is that a firm might have a variable rate loan on $100,000 but decide to swap only $40,000. The $40,000 is the notional amount of the swap and becomes the amount on which interest is paid.""" .
+
+fibo-fnd-acc-cur:PercentageMonetaryAmount a owl:Class ;
+    rdfs:label "percentage monetary amount",
+        "百分比货币数量（percentage monetary amount）"@zh ;
+    rdfs:comment "以占另一数量（某个名义数量或某个具体货币数量）的百分比表示的货币数量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-qtu:Percentage ;
+    skos:definition "measure of some amount of money expressed as a percentage of some other amount, some notional amount or some concrete money amount" .
+
+fibo-fnd-acc-cur:PreciousMetal a owl:Class ;
+    rdfs:label "precious metal",
+        "贵金属（precious metal）"@zh ;
+    rdfs:comment "被认为稀有和/或具有高经济价值的金属。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTextualName ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-fnd-acc-cur:hasNumericCode ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:definition "metal that is considered to be rare and/or have a high economic value" .
+
+fibo-fnd-acc-cur:UnitOfAccount a owl:Class ;
+    rdfs:label "unit of account",
+        "记账单位（unit of account）"@zh ;
+    rdfs:comment "用于表示任何经济项目（货物、服务、资产、负债、收入等）实际价值（或成本）的名义货币计量单位。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:Currency ;
+    skos:definition "nominal monetary unit of measure used to represent the real value (or cost) of any economic item; i.e. goods, services, assets, liabilities, income, expenses" .
+
+fibo-fnd-acc-cur:hasAmount a owl:DatatypeProperty ;
+    rdfs:label "has amount",
+        "具有金额（has amount）"@zh ;
+    rdfs:comment "总数或总量。"@zh ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf cmns-qtu:hasNumericValue ;
+    skos:definition "total number or quantity" .
+
+fibo-fnd-acc-cur:hasBaseCurrency a owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has base currency",
+        "具有基准货币（has base currency）"@zh ;
+    rdfs:comment "指明汇率中代表 R 单位交易货币的货币单位，R 为汇率值。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasCurrency ;
+    skos:definition "specifies a unit of currency representing R units of the dealt currency, where R is the exchange rate value, in an exchange rate" .
+
+fibo-fnd-acc-cur:hasDealtCurrency a owl:ObjectProperty ;
+    rdfs:label "has dealt currency",
+        "具有交易货币（has dealt currency）"@zh ;
+    rdfs:comment "指明汇率中被兑换（目标）货币的货币单位；该货币 R 单位代表一单位基准货币。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasCurrency ;
+    skos:definition "specifies a unit of currency representing the exchanged (target) currency in an exchange rate; R units of this currency represent one unit of the base currency" .
+
+fibo-fnd-acc-cur:hasMinorUnit a owl:DatatypeProperty ;
+    rdfs:label "has minor unit",
+        "具有辅币单位（has minor unit）"@zh ;
+    rdfs:comment "将货币辅币单位代码关联到货币或资金单位。"@zh ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "relates a code for the minor unit of currency to the currency or fund" ;
+    skos:scopeNote """Requirements sometimes arise for values to be expressed in terms of minor units of currency. When this occurs, it is necessary to know the decimal relationship that exists between the currency concerned and its minor unit. 
+- 0 means that there is no minor unit for the currency; 
+- 1, 2, and 3 signify a ratio of 10 to 1, 100 to 1 and 1000 to 1 respectively.""" .
+
+fibo-fnd-acc-cur:hasMonetaryAmount a owl:ObjectProperty ;
+    rdfs:label "has monetary amount",
+        "具有货币数量（has monetary amount）"@zh ;
+    rdfs:comment "以金额及其计值货币指明某事物的价值。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf cmns-qtu:hasQuantityValue ;
+    skos:definition "specifies a value for something in terms of an amount of money and the currency in which it is denoted" .
+
+fibo-fnd-acc-cur:hasPrice a owl:ObjectProperty ;
+    rdfs:label "has price",
+        "具有价格（has price）"@zh ;
+    rdfs:comment "标识以货币或货物数量表示的某事物的价值。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Price ;
+    rdfs:subPropertyOf cmns-qtu:hasQuantityValue ;
+    skos:definition "indicates the value of something expressed as an amount of money or goods" .
+
+fibo-fnd-acc-cur:isPriceFor a owl:ObjectProperty ;
+    rdfs:label "is price for",
+        "是……的价格（is price for）"@zh ;
+    rdfs:comment "将价格关联到其为之提供价值的事物。"@zh ;
+    rdfs:domain fibo-fnd-acc-cur:Price ;
+    rdfs:subPropertyOf cmns-doc:refersTo ;
+    owl:inverseOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "links a price to something it provides a value for" .
+
+fibo-fnd-acc-cur:Funds a owl:Class ;
+    rdfs:label "funds",
+        "资金单位（funds）"@zh ;
+    rdfs:comment "用作其他货币计算基准及会计用途的人造货币。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-acc-cur:Currency ;
+    skos:definition "artificial currency used as calculation basis for another currency(s) and accounting purposes" ;
+    fibo-fnd-utl-av:definitionOrigin "Codes for the representation of currencies and funds, ISO 4217, Eighth edition, 2015-08-01, section 3.3" .
+
+fibo-fnd-acc-cur:MonetaryPrice a owl:Class ;
+    rdfs:label "monetary price",
+        "货币价格（monetary price）"@zh ;
+    rdfs:comment "以货币数量表示的价格。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:MonetaryAmount,
+        fibo-fnd-acc-cur:Price ;
+    skos:definition "price that that is expressed as a monetary amount" ;
+    cmns-av:explanatoryNote "As the consideration given in exchange for transfer of ownership, price forms the essential basis of commercial transactions. It may be fixed by a contract, left to be determined by an agreed upon formula at a future date, or discovered or negotiated during the course of dealings between the parties involved. In commerce, price is determined by what (1) a buyer is willing to pay, (2) a seller is willing to accept, and (3) the competition is allowing to be charged." .
+
+fibo-fnd-acc-cur:hasNumericCode a owl:DatatypeProperty ;
+    rdfs:label "has numeric code",
+        "具有数字代码（has numeric code）"@zh ;
+    rdfs:comment "将数字代码关联到某事物，如货币或资金单位。"@zh ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "relates a numeric code to something, such as a currency or fund" ;
+    skos:scopeNote "In the case of currency codes, the numeric currency code is derived, where possible, from the United Nations Standard Country or Area Code. Additional codes to meet special requirements (as described in 5.1.3) and in respect of funds will be allocated as necessary from within the user-assigned range of codes 950 to 998. Funds codes are allocated in descending order commencing at 998." .
+
+fibo-fnd-acc-cur:hasRateValue a owl:DatatypeProperty ;
+    rdfs:label "has rate value",
+        "具有比率值（has rate value）"@zh ;
+    rdfs:comment "具有以数字（可为百分比或原始数字）表示的比率值。"@zh ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf cmns-qtu:hasNumericValue ;
+    skos:definition "has a value for a rate expressed as a number (may be a percentage or raw number)" .
+
+fibo-fnd-acc-cur:MonetaryAmount a owl:Class ;
+    rdfs:label "monetary amount",
+        "货币数量（monetary amount）"@zh ;
+    rdfs:comment "以货币单位表示的一定金额的量。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-fnd-acc-cur:hasAmount ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-qtu:ScalarQuantityValue ;
+    skos:definition "measure that is an amount of money specified in monetary units" .
+
+fibo-fnd-acc-cur:Price a owl:Class ;
+    rdfs:label "price",
+        "价格（price）"@zh ;
+    rdfs:comment "为换取他物而要求、期望、需要或支付的货币、货物或服务的数量。"@zh ;
+    rdfs:subClassOf cmns-qtu:ScalarQuantityValue ;
+    skos:definition "amount of money, goods, or services requested, expected, required, or given in exchange for something else" .
+
+fibo-fnd-acc-cur:hasCurrency a owl:ObjectProperty ;
+    rdfs:label "has currency",
+        "具有货币（has currency）"@zh ;
+    rdfs:comment "指明某事物（如货币数量）据以计值的交换价值媒介。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:Currency ;
+    rdfs:subPropertyOf cmns-qtu:hasMeasurementUnit ;
+    skos:definition "specifies the medium of exchange value in which something, such as a monetary amount is denominated" .
+
+fibo-fnd-acc-cur:Currency a owl:Class ;
+    rdfs:label "currency",
+        "货币（currency）"@zh ;
+    rdfs:comment "交换价值的媒介，参照负责管理它的货币当局的地理位置来定义。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isUsedBy ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-acc-cur:hasNumericCode ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTextualName ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-fnd-acc-cur:hasMinorUnit ],
+        cmns-qtu:MeasurementUnit ;
+    skos:definition "medium of exchange value, defined by reference to the geographical location of the monetary authorities responsible for it" ;
+    fibo-fnd-utl-av:definitionOrigin "Codes for the representation of currencies and funds, ISO 4217, Eighth edition, 2015-08-01, section 3.2" ;
+    cmns-av:synonym "currency unit",
+        "monetary unit" .
+

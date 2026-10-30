@@ -1,0 +1,76 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-ma: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesMasterAgreements/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-drc-ma: a owl:Ontology ;
+    rdfs:label "Derivatives Master Agreements Ontology"@en,
+        "衍生品主协议本体（Derivatives Master Agreements Ontology）"@zh ;
+    dcterms:abstract "This ontology covers terms that make up the OTC Derivatives Master agreement as defined in the ISDA literature, at a high level, although most of the relevant provisions are provided in the higher-level Contracts ontology." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义 ISDA 主协议等场外衍生品主协议（master agreement）及其条款结构。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20250601/DerivativesContracts/DerivativesMasterAgreements/> ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc." .
+
+fibo-der-drc-ma:AccountChangeNotificationObligation a owl:Class ;
+    rdfs:label "account change notification obligation"@en,
+        "账户变更通知义务（account change notification obligation）"@zh ;
+    rdfs:comment "就账户详情任何变更通知交易对手的义务。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:NotificationObligation ;
+    skos:definition "obligation to notify a counterparty of any changes in account details"@en ;
+    skos:example "Example text: \"Either party may change its account for receiving a payment or delivery by giving notice to the other party at least five Local Business Days prior to the scheduled date for the payment or delivery to which such change applies unless such other party gives timely notice of a reasonable objection to such change.\" Note that the notice period is given as a fact about the general kind of obligation which is Master Agreement Change notification Obligation."@en .
+
+fibo-der-drc-ma:DerivativeCreditSupportAgreement a owl:Class ;
+    rdfs:label "derivative credit support agreement"@en,
+        "衍生品信用支持协议（derivative credit support agreement）"@zh ;
+    rdfs:comment "主协议的附件，规范衍生品交易双方之间抵押品的交换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-ma:DerivativeMasterAgreement ;
+            owl:onProperty fibo-fnd-agr-ctr:isSubordinateTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-dae-dbt:CreditEnhancementAgreement ;
+    skos:definition "addendum to the master agreement that governs the exchange of collateral between parties in derivatives transactions"@en ;
+    cmns-av:explanatoryNote "Note that in the case of a derivative credit support agreement, the beneficiary actually holds the collateral and has the right to ask for additional collateral if its value falls below the threshold agreed upon per the agreement."@en .
+
+fibo-der-drc-ma:MasterAgreementEarlyTerminationRight a owl:Class ;
+    rdfs:label "master agreement early termination right"@en,
+        "主协议提前终止权（master agreement early termination right）"@zh ;
+    rdfs:comment "主协议一方提前终止协议的合同权利。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:ContractualRight ;
+    skos:definition "contractual right of a party to the master agreement to terminate the agreement early"@en ;
+    cmns-av:explanatoryNote "This generally arises from some default event on the part of the other party."@en .
+
+fibo-der-drc-ma:DerivativeMasterAgreement a owl:Class ;
+    rdfs:label "derivative master agreement"@en,
+        "衍生品主协议（derivative master agreement）"@zh ;
+    rdfs:comment "涵盖合同双方之间拟进行衍生品交易的主协议。"@zh ;
+    rdfs:subClassOf fibo-fbc-dae-dbt:CreditAgreement,
+        fibo-fnd-agr-ctr:MasterAgreement ;
+    skos:definition "master agreement covering derivatives transactions to be carried out between the parties to this contract"@en ;
+    skos:example "Related to conditions precedent that may apply: \"Each obligation of each party under Section 2(a)(i) is subject to (1) the condition precedent that no Event of Default or Potential Event of Default with respect to the other party has occurred and is continuing, (2) the condition precedent that no Early Termination Date in respect of the relevant Transaction has occurred or been effectively designated and (3) each other applicable condition precedent specified in this Agreement. \" In the above, the Obligations defined under Section 2(a)(i) of the Master Agrement is the obligation to make each payment or delivery defined in a Confirmation for a transaction carried out under this Master Agreement."@en,
+        "Sample preamble to one of these: \"EXAMPLE BANK, a Michigan banking corporation and SAMPLECOMPANY US, INC. a Delaware corporation have entered and/or anticipate entering into one or more transactions (each a \"Transaction\") that are or will be governed by this Master Agreement, which includes the schedule (the \"Schedule\"), and the documents and other confirming evidence (each a \"Confirmation\") exchanged between the parties confirming those Transactions. \""@en ;
+    cmns-av:explanatoryNote "The ISDA Master Agreement (Multicurrency-Cross Border version published in 1992) enables trading counterparties to include foreign exchange transactions under a global cross-product close-out netting master agreement. Because there are significant differences in market practices between the derivatives markets and the international foreign exchange spot and forward markets, parties to the ISDA frequently incorporate the ISDA FX and Currency Options Definitions and further tailor the ISDA Schedule to reflect standard market practice for the foreign exchange products."@en .
+

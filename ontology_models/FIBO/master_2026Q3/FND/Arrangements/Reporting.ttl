@@ -1,0 +1,245 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-arr-rep: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-arr-rep: a owl:Ontology ;
+    rdfs:label "Reporting Ontology",
+        "报告本体（Reporting Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the notion of a Report and related party concepts." ;
+    dcterms:license """Copyright (c) 2018-2025 EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义报告、报告方与报告内容的关系，支撑监管报告、财务报告等报送场景。"@zh ;
+    owl:imports fibo-fnd-arr-doc:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-pts: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Arrangements/Reporting/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/20241001/Arrangements/Reporting.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Arrangements/Reporting.rdf version of this ontology was modified to incorporate evaluates and isEvaluatedBy.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190901/Arrangements/Reporting.rdf version of this ontology was modified to eliminate references to deprecated elements and to external dictionary sites that no longer resolve, and to integrate concepts related to making a request for something.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210301/Arrangements/Reporting.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Arrangements/Reporting.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Arrangements/Reporting.rdf version of the ontology was modified to replace concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231201/Arrangements/Reporting.rdf version of the ontology was modified to replace additional concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240101/Arrangements/Reporting.rdf version of the ontology was modified to replace an additional property with its counterpart from the Commons Ontology Library (Commons) v1.1 (FBC-322)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+        "Copyright (c) 2018-2025 Object Management Group, Inc." .
+
+fibo-fnd-arr-rep:Request a owl:Class ;
+    rdfs:label "request",
+        "请求（request）"@zh ;
+    rdfs:comment "某参与方在某时点向另一参与方索要某事物的事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DateTime ;
+            owl:onProperty fibo-fnd-arr-rep:hasRequestDateTime ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fnd-arr-rep:hasRequestDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:someValuesFrom fibo-fnd-arr-rep:RequestActivity ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-rep:isRequestedOf ;
+            owl:someValuesFrom cmns-pts:PartyRole ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-rep:isRequestedBy ;
+            owl:someValuesFrom fibo-fnd-arr-rep:Requester ],
+        fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "event in which some party asks another party for something at some point in time" .
+
+fibo-fnd-arr-rep:reportsOn a owl:ObjectProperty ;
+    rdfs:label "reports on",
+        "报告关于（reports on）"@zh ;
+    rdfs:comment "标识报告的主题、观测、评估、焦点或其他话题。"@zh ;
+    rdfs:domain fibo-fnd-arr-rep:Report ;
+    rdfs:subPropertyOf cmns-doc:isAbout ;
+    skos:definition "indicates a subject matter, observation(s), assessment(s), focus or other topic of a report" .
+
+fibo-fnd-arr-rep:ReportingParty a owl:Class ;
+    rdfs:label "reporting party",
+        "报告方（reporting party）"@zh ;
+    rdfs:comment "提供报告的参与方，通常是应某项合同、法律、监管或其他业务要求。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:provides ;
+            owl:someValuesFrom fibo-fnd-arr-rep:Report ],
+        cmns-pts:PartyRole ;
+    skos:definition "party providing a report, typically in response to some contractual, legal, regulatory or other business requirement" .
+
+fibo-fnd-arr-rep:RequestActivity a owl:Class ;
+    rdfs:label "request activity",
+        "请求活动（request activity）"@zh ;
+    rdfs:comment "某参与方向另一参与方索要某事物或请求其做某事的活动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-rep:requests ;
+            owl:someValuesFrom owl:Thing ],
+        fibo-fnd-dt-oc:OccurrenceKind ;
+    skos:definition "activity in which some party asks another party for something or to do something" .
+
+fibo-fnd-arr-rep:hasReportDate a owl:ObjectProperty ;
+    rdfs:label "has report date"@en,
+        "具有报告日期（has report date）"@zh ;
+    rdfs:comment "报告发布的日期。"@zh ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasDateOfIssuance,
+        cmns-dt:hasExplicitDate ;
+    skos:definition "date on which a report was issued"@en .
+
+fibo-fnd-arr-rep:hasReportDateTime a owl:ObjectProperty ;
+    rdfs:label "has report date time"@en,
+        "具有报告日期时间（has report date time）"@zh ;
+    rdfs:comment "报告发布的日期与时间。"@zh ;
+    rdfs:range cmns-dt:DateTime ;
+    rdfs:subPropertyOf cmns-dt:hasDateTime ;
+    skos:definition "date and time at which a report was issued"@en .
+
+fibo-fnd-arr-rep:hasRequestDate a owl:ObjectProperty ;
+    rdfs:label "has request date"@en,
+        "具有请求日期（has request date）"@zh ;
+    rdfs:comment "提出请求的日期。"@zh ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate ;
+    skos:definition "date on which a request was made"@en .
+
+fibo-fnd-arr-rep:hasRequestDateTime a owl:ObjectProperty ;
+    rdfs:label "has request date time"@en,
+        "具有请求日期时间（has request date time）"@zh ;
+    rdfs:comment "提出请求的日期与时间。"@zh ;
+    rdfs:range cmns-dt:DateTime ;
+    rdfs:subPropertyOf cmns-dt:hasDateTime ;
+    skos:definition "date and time at which a request was made"@en .
+
+fibo-fnd-arr-rep:isReportedTo a owl:ObjectProperty ;
+    rdfs:label "is reported to",
+        "被报告给（is reported to）"@zh ;
+    rdfs:comment "标识某事物被报告给的参与方。"@zh ;
+    rdfs:range cmns-pts:PartyRole ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "indicates the party to which something is reported" .
+
+fibo-fnd-arr-rep:isRequestedBy a owl:ObjectProperty ;
+    rdfs:label "is requested by",
+        "由……请求（is requested by）"@zh ;
+    rdfs:comment "标识索要某事物的参与方。"@zh ;
+    rdfs:range fibo-fnd-arr-rep:Requester ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "indicates the party that asks for something" .
+
+fibo-fnd-arr-rep:isRequestedOf a owl:ObjectProperty ;
+    rdfs:label "is requested of",
+        "被请求于（is requested of）"@zh ;
+    rdfs:comment "标识被索要某事物的参与方。"@zh ;
+    rdfs:range cmns-pts:PartyRole ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "indicates the party that is asked for something" .
+
+fibo-fnd-arr-rep:isSubmittedBy a owl:ObjectProperty ;
+    rdfs:label "is submitted by",
+        "由……提交（is submitted by）"@zh ;
+    rdfs:comment "标识提交某事物的参与方。"@zh ;
+    rdfs:range fibo-fnd-arr-rep:Submitter ;
+    rdfs:subPropertyOf cmns-org:isProvidedBy ;
+    owl:inverseOf fibo-fnd-arr-rep:submits ;
+    skos:definition "indicates the party that submits something" .
+
+fibo-fnd-arr-rep:isSubmittedTo a owl:ObjectProperty ;
+    rdfs:label "is submitted to",
+        "被提交给（is submitted to）"@zh ;
+    rdfs:comment "标识某事物被提交给的参与方。"@zh ;
+    rdfs:range cmns-pts:PartyRole ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "indicates the party to which something is submitted" .
+
+fibo-fnd-arr-rep:requests a owl:ObjectProperty ;
+    rdfs:label "requests",
+        "请求（requests）"@zh ;
+    rdfs:comment "索要某事物。"@zh ;
+    rdfs:subPropertyOf cmns-doc:isAbout ;
+    skos:definition "asks for something" .
+
+fibo-fnd-arr-rep:Requester a owl:Class ;
+    rdfs:label "requester"@en,
+        "请求方（requester）"@zh ;
+    rdfs:comment "索要某事物的参与方。"@zh ;
+    rdfs:subClassOf cmns-pts:PartyRole ;
+    skos:definition "party that asks for something"@en .
+
+fibo-fnd-arr-rep:submits a owl:ObjectProperty ;
+    rdfs:label "submits",
+        "提交（submits）"@zh ;
+    rdfs:comment "呈交某事物（提案、申请、报告或其他文件）以供考虑或审查。"@zh ;
+    rdfs:domain fibo-fnd-arr-rep:Submitter ;
+    rdfs:subPropertyOf cmns-org:provides ;
+    skos:definition "presents something (a proposal, application, report, or other document) for consideration or review" .
+
+fibo-fnd-arr-rep:Report a owl:Class ;
+    rdfs:label "report",
+        "报告（report）"@zh ;
+    rdfs:comment "对某事物提供结构化描述的文件，按临时、定期、循环、常规或要求的方式编制。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-rep:Submitter ;
+            owl:onProperty fibo-fnd-arr-rep:isSubmittedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:PartyRole ;
+            owl:onProperty fibo-fnd-arr-rep:isSubmittedTo ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DateTime ;
+            owl:onProperty fibo-fnd-arr-rep:hasReportDateTime ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-rep:isReportedTo ;
+            owl:someValuesFrom cmns-pts:PartyRole ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fnd-arr-rep:hasReportDate ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DatePeriod ;
+            owl:onProperty fibo-fnd-arr-doc:hasReportingPeriod ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fnd-arr-rep:ReportingParty ],
+        cmns-doc:Document ;
+    skos:definition "document that provides a structured description of something, prepared on ad hoc, periodic, recurring, regular, or as required basis" ;
+    cmns-av:explanatoryNote "Reports may refer to specific periods, events, occurrences, or subjects, and may be communicated or presented in oral, electronic, or written form." .
+
+fibo-fnd-arr-rep:Submitter a owl:Class ;
+    rdfs:label "submitter",
+        "提交方（submitter）"@zh ;
+    rdfs:comment "呈交某事物（如监管报告）的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-rep:submits ;
+            owl:someValuesFrom fibo-fnd-arr-rep:Report ],
+        cmns-pts:PartyRole ;
+    skos:definition "party presenting something, such as a regulatory report" .
+

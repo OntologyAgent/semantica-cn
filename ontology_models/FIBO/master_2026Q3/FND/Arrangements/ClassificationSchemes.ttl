@@ -1,0 +1,64 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-arr: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/> .
+@prefix fibo-fnd-arr-cls: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-arr-cls: a owl:Ontology ;
+    rdfs:label "Classification Schemes Ontology",
+        "分类方案本体（Classification Schemes Ontology）"@zh ;
+    dcterms:abstract "This ontology defines abstract concepts for representation of industry classification schemes." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "本本体定义表示行业分类方案的抽象概念。"@zh ;
+    owl:imports fibo-fnd-arr-arr:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-dsg: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20231101/Arrangements/ClassificationSchemes/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20150501/Arrangements/ClassificationSchemes.rdf version of this ontology was introduced as a part of the initial FIBO FBC RFC and revised due to changes introduced in the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Arrangements/ClassificationSchemes.rdf version of this ontology was revised to replace hasDefinition with isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190701/Arrangements/ClassificationSchemes.rdf version of this ontology was revised to eliminate duplication of concepts in LCC and change the parent class of Classifier to Aspect in Analytics.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200701/Arrangements/ClassificationSchemes.rdf version of this ontology was revised to eliminate circular definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210201/Arrangements/ClassificationSchemes.rdf version of this ontology was revised to address hygiene issues with respect to text formatting and loosen the constraint on classifier from classifies something to min 0.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/Arrangements/ClassificationSchemes.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Arrangements/ClassificationSchemes.rdf version of this ontology was modified to move the property, 'is conferred on' to the Legal Capacity ontology and to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Arrangements/ClassificationSchemes.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2014-2023 EDM Council, Inc.",
+        "Copyright (c) 2014-2023 Object Management Group, Inc." .
+
+fibo-fnd-arr-cls:IndustrySectorClassificationScheme a owl:Class ;
+    rdfs:label "industry sector classification scheme",
+        "行业部门分类方案（industry sector classification scheme）"@zh ;
+    rdfs:comment "按行业部门为组织分配分类器的系统。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-fnd-arr-cls:IndustrySectorClassifier ],
+        cmns-cls:ClassificationScheme ;
+    skos:definition "system for allocating classifiers to organizations by industry sector" ;
+    skos:example "Examples include the North American Industry Classification System (NAICS) and Standardized Industry Classification (SIC) in the U.S. and Canada, and the NACE (Nomenclature Générale des Activités Économiques dans les Communautés Européennes) in the EU, developed by governments to classify industries. They also include commercial classification schemes, such as the Global Industry Standard Classification (GICS) developed jointly by Morgan Stanley Capital International (MSCI) and Standard and Poor's, and competing schemes including the Industry Classification Benchmark (ICB) system, maintained by Dow Jones and London's FTSE Group, among others." .
+
+fibo-fnd-arr-cls:IndustrySectorClassifier a owl:Class ;
+    rdfs:label "industry sector classifier",
+        "行业部门分类器（industry sector classifier）"@zh ;
+    rdfs:comment "按照某种行业划分方案，对组织或代表该组织权益的证券所作的标准化分类或划分。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cls:Classifier ;
+    skos:definition "standardized classification or delineation for an organization, or possibly for a security representing an interest in a given organization, per some scheme for such delineation, by industry" .
+
+cmns-cls:ClassificationScheme a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-cls:Classifier ;
+            owl:onProperty cmns-dsg:defines ],
+        fibo-fnd-arr-arr:Scheme .
+

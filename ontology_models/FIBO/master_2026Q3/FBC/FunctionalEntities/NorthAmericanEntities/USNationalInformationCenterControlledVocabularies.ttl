@@ -1,0 +1,544 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-usfse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntities/> .
+@prefix fibo-fbc-fct-usjrga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/> .
+@prefix fibo-fbc-fct-usnic: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USNationalInformationCenterControlledVocabularies/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-fse:BankHoldingCompany a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-BHC ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-fse:DataProcessingServicer a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-DPS ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-fse:FinanceCompany a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FNC ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:AgreementCorporation-Banking a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-AGB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:AgreementCorporation-Investment a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-AGI ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:CooperativeBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-CPB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:DomesticBranchOfDomesticBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-DBR ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:DomesticEntityOther a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-DEO ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:EdgeCorporation-Banking a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-EDB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:EdgeCorporation-DomesticBranch a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-EBR ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:EdgeCorporation-Investment a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-EDI ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:FederalCreditUnion a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FCU ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:FederalSavingsBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FSB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:FinancialHoldingCompany a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FHD ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:ForeignBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FBK ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:ForeignBankingOrganization a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FBO ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:ForeignBankingOrganizationAsABankHoldingCompany a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FHF ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FBH ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:ForeignBranchOfForeignBankManagedByUSOffice a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-PST ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-TWG ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:ForeignBranchOfUSBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-IBR ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:ForeignEntityOther a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FEO ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:InsuredFederalBranchOfForeignBankingOrganization a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-IFB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:InsuredStateBranchOfForeignBankingOrganization a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-ISB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:IntermediateHoldingCompany a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-IHC ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:InternationalBankOfUSDepositoryEdgeTrustCompany a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-IBK ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:InternationalNonBankSubsidiaryOfADomesticEntity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-INB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:NationalBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-NAT ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:NewYorkArticleXIIInvestmentCompany a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-NYI ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:RepresentativeOfficeOfAForeignBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-REP ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:SavingsLoanAssociation a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-SAL ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:SavingsLoanHoldingCompany a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-SLHC ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:StateCreditUnion a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-SCU ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:StateSavingsBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-SSB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:UninsuredFederalAgencyOfForeignBankingOrganization a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-UFA ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:UninsuredFederalBranchOfForeignBankingOrganization a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-UFB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:UninsuredStateAgencyOfForeignBankingOrganization a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-USA ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usfse:UninsuredStateBranchOfForeignBankingOrganization a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-USB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usjrga:FederalReserveSystemNonMemberInstitution a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-NMB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usjrga:NonDepositoryTrustCompany-MemberInstitution a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-MTC ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usjrga:NonDepositoryTrustCompany-NonMemberInstitution a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-NTC ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usjrga:StateMemberBank a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-SMB ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-pas-fpas:BrokerDealer a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-SBD ;
+            owl:onProperty cmns-cls:isClassifiedBy ] .
+
+fibo-fbc-fct-usnic: a owl:Ontology ;
+    rdfs:label "US National Information Center (NIC) Controlled Vocabularies Ontology",
+        "美国国家信息中心受控词汇本体（US NIC Controlled Vocabularies Ontology）"@zh ;
+    dcterms:abstract "This ontology extends the US regulatory agencies ontology with a number of controlled vocabularies required for mapping FIBO to the National Information Center (NIC) Data Dictionary." ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:source "https://www.ffiec.gov/NPW"^^xsd:anyURI,
+        "https://www.ffiec.gov/nicpubweb/Content/DataDownload/NPW%20Data%20Dictionary.pdf"^^xsd:anyURI ;
+    rdfs:comment "收录美联储国家信息中心（NIC）用于描述金融机构属性的受控词汇个体。"@zh ;
+    owl:imports fibo-fbc-fct-fse:,
+        fibo-fbc-fct-usfse:,
+        fibo-fbc-fct-usjrga:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-dsg:,
+        cmns-txt: ;
+    owl:versionIRI fibo-fbc-fct-usnic: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2023 EDM Council, Inc." .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-AGB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - AGB" ;
+    skos:definition "term and code for an Agreement Corporation - Banking" ;
+    cmns-txt:hasTextValue "AGB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-AGI a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - AGI" ;
+    skos:definition "term and code for an Agreement Corporation - Investment" ;
+    cmns-txt:hasTextValue "AGI" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-BHC a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - BHC" ;
+    skos:definition "term and code for a Bank Holding Company" ;
+    cmns-txt:hasTextValue "BCH" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-CPB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - CPB" ;
+    skos:definition "term and code for a Cooperative Bank" ;
+    cmns-txt:hasTextValue "CPB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-DBR a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - DBR" ;
+    skos:definition "term and code for a Domestic Branch of a Domestic Bank" ;
+    cmns-txt:hasTextValue "DBR" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-DEO a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - DEO" ;
+    skos:definition "term and code for a Domestic Entity Other" ;
+    cmns-txt:hasTextValue "DEO" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-DPS a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - DPS" ;
+    skos:definition "term and code for a Data Processing Servicer" ;
+    cmns-txt:hasTextValue "DPS" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-EBR a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - EBR" ;
+    skos:definition "term and code for an Edge Corporation - Domestic Branch" ;
+    cmns-txt:hasTextValue "EBR" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-EDB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - EDB" ;
+    skos:definition "term and code for an Edge Corporation - Banking" ;
+    cmns-txt:hasTextValue "EDB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-EDI a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - EDI" ;
+    skos:definition "term and code for an Edge Corporation - Investment" ;
+    cmns-txt:hasTextValue "EDI" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FBH a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FBH" ;
+    skos:definition "term and code for a Foreign Banking Organization as a Bank Holding Company" ;
+    cmns-txt:hasTextValue "FBH" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FBK a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FBK" ;
+    skos:definition "term and code for a Foreign Bank" ;
+    cmns-txt:hasTextValue "FBK" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FBO a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FBO" ;
+    skos:definition "term and code for a Foreign Banking Organization" ;
+    cmns-txt:hasTextValue "FBO" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FCU a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FCU" ;
+    skos:definition "term and code for a Federal Credit Union" ;
+    cmns-txt:hasTextValue "FCU" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FEO a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FEO" ;
+    skos:definition "term and code for a Foreign Entity Other" ;
+    cmns-txt:hasTextValue "FEO" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FHD a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FHD" ;
+    skos:definition "term and code for a Financial Holding Company / Bank Holding Company" ;
+    cmns-txt:hasTextValue "FHD" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FHF a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FHF" ;
+    skos:definition "term and code for a Financial Holding Company / Foreign Banking Organization" ;
+    cmns-txt:hasTextValue "FHF" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FNC a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FNC" ;
+    skos:definition "term and code for a Finance Company" ;
+    cmns-txt:hasTextValue "FNC" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-FSB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - FSB" ;
+    skos:definition "term and code for a Federal Savings Bank" ;
+    cmns-txt:hasTextValue "FSB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-IBK a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - IBK" ;
+    skos:definition "term and code for a International Bank of a U.S. Depository - Edge or Trust Co." ;
+    cmns-txt:hasTextValue "IBK" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-IBR a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - IBR" ;
+    skos:definition "term and code for a Foreign Branch of a U.S. Bank" ;
+    cmns-txt:hasTextValue "IBR" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-IFB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - IFB" ;
+    skos:definition "term and code for an Insured Federal Branch of an FBO" ;
+    cmns-txt:hasTextValue "IFB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-IHC a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - IHC" ;
+    skos:definition "term and code for an Intermediate Holding Company" ;
+    cmns-txt:hasTextValue "IHC" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-INB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - INB" ;
+    skos:definition "term and code for an International Non-bank Subs of Domestic Entities" ;
+    cmns-txt:hasTextValue "INB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-ISB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - ISB" ;
+    skos:definition "term and code for an Insured State Branch of an FBO" ;
+    cmns-txt:hasTextValue "ISB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-MTC a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - MTC" ;
+    skos:definition "term and code for a Non-deposit Trust Company - Member" ;
+    cmns-txt:hasTextValue "MTC" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-NAT a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - NAT" ;
+    skos:definition "term and code for a National Bank" ;
+    cmns-txt:hasTextValue "NAT" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-NMB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - NMB" ;
+    skos:definition "term and code for a Non-member Bank" ;
+    cmns-txt:hasTextValue "NMB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-NTC a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - NTC" ;
+    skos:definition "term and code for a Non-deposit Trust Company - Non-member" ;
+    cmns-txt:hasTextValue "NTC" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-NYI a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - NYI" ;
+    skos:definition "term and code for a New York Investment Company" ;
+    cmns-txt:hasTextValue "NYI" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-PST a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - PST" ;
+    skos:definition "term and code for a Non-U.S. Branch managed by a U.S. Branch/Agency of a Foreign Bank for 002's reporting - Pseudo Twig" ;
+    cmns-txt:hasTextValue "PST" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-REP a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - REP" ;
+    skos:definition "term and code for a Representative Office" ;
+    cmns-txt:hasTextValue "REP" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-SAL a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - SAL" ;
+    skos:definition "term and code for a Savings & Loan Association" ;
+    cmns-txt:hasTextValue "SAL" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-SBD a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - SBD" ;
+    skos:definition "term and code for a Securities Broker / Dealer" ;
+    cmns-txt:hasTextValue "SBD" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-SCU a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - SCU" ;
+    skos:definition "term and code for a State Credit Union" ;
+    cmns-txt:hasTextValue "SCU" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-SLHC a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - SLHC" ;
+    skos:definition "term and code for a Savings and Loan Holding Company" ;
+    cmns-txt:hasTextValue "SLHC" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-SMB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - SMB" ;
+    skos:definition "term and code for a State Member Bank" ;
+    cmns-txt:hasTextValue "SMB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-SSB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - SSB" ;
+    skos:definition "term and code for a State Savings Bank" ;
+    cmns-txt:hasTextValue "SSB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-TWG a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - TWG" ;
+    skos:definition "term and code for a Non-U.S. Branch managed by a U.S. Branch/Agency of a Foreign Bank - TWIG" ;
+    cmns-txt:hasTextValue "TWG" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-UFA a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - UFA" ;
+    skos:definition "term and code for an Uninsured Federal Agency of an FBO" ;
+    cmns-txt:hasTextValue "UFA" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-UFB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - UFB" ;
+    skos:definition "term and code for an Uninsured Federal Branch of an FBO" ;
+    cmns-txt:hasTextValue "UFB" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-USA a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - USA" ;
+    skos:definition "term and code for an Uninsured State Agency of an FBO" ;
+    cmns-txt:hasTextValue "USA" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier-USB a owl:NamedIndividual,
+        fibo-fbc-fct-usnic:NICEntityTypeClassifier ;
+    rdfs:label "NIC entity type classifier - USB" ;
+    skos:definition "term and code for an Uninsured State Branch of an FBO" ;
+    cmns-txt:hasTextValue "USB" .
+
+fibo-fbc-fct-usnic:NationalInformationCenterControlledVocabulary a owl:Class ;
+    rdfs:label "National Information Center (NIC) controlled vocabulary",
+        "国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）"@zh ;
+    rdfs:comment "用于刻画国家信息中心（NIC）所管理金融服务提供商内容之某项特征或方面的受控词汇表。"@zh ;
+    rdfs:isDefinedBy "https://www.ffiec.gov/nicpubweb/Content/DataDownload/NPW%20Data%20Dictionary.pdf"^^xsd:anyURI ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NationalInformationCenterClassificationSchemeAndCodeSet ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usnic:NationalInformationCenterClassificationSchemeAndCodeSet ;
+            owl:onProperty cmns-col:isMemberOf ],
+        cmns-cls:Classifier,
+        cmns-cds:CodeElement ;
+    skos:definition "controlled vocabulary that characterizes some feature or aspect of content about a financial service provider managed in the National Information Center (NIC) repository" .
+
+fibo-fbc-fct-usnic:NationalInformationCenterClassificationSchemeAndCodeSet a owl:NamedIndividual,
+        cmns-cls:ClassificationScheme,
+        cmns-cds:CodeSet ;
+    rdfs:label "National Information Center (NIC) Classification Scheme And Code Set" ;
+    rdfs:isDefinedBy "https://www.ffiec.gov/nicpubweb/Content/DataDownload/NPW%20Data%20Dictionary.pdf"^^xsd:anyURI ;
+    skos:definition "set of controlled vocabularies and codes for describing content managed in the National Information Center (NIC) repository" .
+
+fibo-fbc-fct-usnic:NICEntityTypeClassifier a owl:Class ;
+    rdfs:label "National Information Center (NIC) entity type classifier",
+        "国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier）"@zh ;
+    rdfs:comment "用于描述国家信息中心（NIC）信息库所管理功能实体性质的受控词汇表和代码。"@zh ;
+    rdfs:isDefinedBy "https://www.ffiec.gov/nicpubweb/Content/DataDownload/NPW%20Data%20Dictionary.pdf"^^xsd:anyURI ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:FinancialServiceProvider ;
+            owl:onProperty cmns-cls:classifies ],
+        fibo-fbc-fct-usnic:NationalInformationCenterControlledVocabulary ;
+    skos:definition "controlled vocabulary and codes for describing the nature of the functional entities managed by the National Information Center (NIC) repository" .
+

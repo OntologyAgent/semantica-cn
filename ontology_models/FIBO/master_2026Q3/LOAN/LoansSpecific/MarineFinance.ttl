@@ -1,0 +1,64 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix fibo-loan-spc-mar: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/MarineFinance/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-spc-mar:boatHeldAsChattel a owl:DatatypeProperty ;
+    rdfs:label "boat held as chattel"@en,
+        "船只作为动产持有（boat held as chattel）"@zh ;
+    rdfs:comment "贷款期间该船舶是否作为动产由贷款人持有。"@zh ;
+    rdfs:domain fibo-loan-spc-mar:MarineFinancing ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the vessel is to be held in ownership as a form of chattel by the lender during the period of the loan."@en .
+
+fibo-loan-spc-mar:mooredAt a owl:DatatypeProperty ;
+    rdfs:label "moored at"@en,
+        "停泊于（moored at）"@zh ;
+    rdfs:comment "船舶固定停泊地点的文本描述（名称等）。"@zh ;
+    rdfs:domain fibo-loan-spc-mar:MarineFinancing ;
+    rdfs:range xsd:string ;
+    skos:definition "Textual description (name etc.) of where the vessel is to be moored if it has a permanent mooring place."@en .
+
+fibo-loan-spc-mar:percentageAdvanced a owl:ObjectProperty ;
+    rdfs:label "percentage advanced"@en,
+        "垫付百分比（percentage advanced）"@zh ;
+    rdfs:comment "贷款垫付金额占购买价格的百分比。"@zh ;
+    rdfs:domain fibo-loan-spc-mar:MarineFinancing ;
+    rdfs:range cmns-qtu:Percentage ;
+    skos:definition "The percentage of the purchase price advanced as the loan."@en .
+
+fibo-loan-spc-mar:residential a owl:DatatypeProperty ;
+    rdfs:label "residential"@en,
+        "居住用途（residential）"@zh ;
+    rdfs:comment "该船只是否拟用作、且在法律上可用作居住场所。"@zh ;
+    rdfs:domain fibo-loan-spc-mar:MarineFinancing ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the boat is intended to be used and is legally able to be used as a place of residence."@en .
+
+fibo-loan-spc-mar: a owl:Ontology ;
+    rdfs:label "Marine Finance Ontology"@en,
+        "船舶融资本体（Marine Finance Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts specific to marine finance, which involves financing vessel acquisitions for the spot market, time charters or bareboat charters, as well as the construction of work boats, and to finance the acquisition of vessels for scrapping." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义船舶等海运资产融资的贷款结构。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        fibo-loan-ln-ln:,
+        cmns-av:,
+        cmns-qtu: ;
+    owl:versionIRI fibo-loan-spc-mar: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc." .
+
+fibo-loan-spc-mar:MarineFinancing a owl:Class ;
+    rdfs:label "marine finance"@en,
+        "船舶融资（marine finance）"@zh ;
+    rdfs:comment "用于购买船只或其他船舶的贷款。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-ln:Loan ;
+    skos:definition "A loan for the purchase of a boat or other vessel."@en .
+

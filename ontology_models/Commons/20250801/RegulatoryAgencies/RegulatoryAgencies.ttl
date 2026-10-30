@@ -1,0 +1,164 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-bauth: <https://www.omg.org/spec/Commons/BusinessAuthorizations/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-org:LegalPerson a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-rga:isRecognizedIn ] .
+
+cmns-rga: a owl:Ontology ;
+    rdfs:label "Commons Regulatory Agencies Ontology",
+        "Commons 监管机构本体（Commons Regulatory Agencies Ontology）"@zh ;
+    dct:abstract "This ontology defines general purpose concepts for representation of regulatory agencies, also known as regulatory authorities or regulators. It was derived from the FIBO Regulatory Agencies, Legal Capacity, and Jurisdictions ontologies and simplified/adapted for broader use." ;
+    dct:license """Copyright (c) 2015-2025 EDM Council, Inc.
+		Copyright (c) 2015-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义监管机构、监管角色及其关系。"@zh ;
+    owl:imports cmns-av:,
+        cmns-bauth:,
+        cmns-cxtdsg:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20250801/RegulatoryAgencies/> ;
+    skos:changeNote "The https://www.omg.org/spec/Commons/20240801/RegulatoryAgencies.rdf version of the ontology was modified to integrate the authorization pattern (COMMONS13-38)." ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc." .
+
+cmns-rga:RegulatoryReport a owl:Class ;
+    rdfs:label "regulatory report" ;
+    rdfs:subClassOf cmns-doc:Record,
+        cmns-doc:ReferenceDocument ;
+    skos:definition "document required to support operational transparency that demonstrates compliance with some specification, law, policy, restriction, or other rule specified by a regulatory agency" ;
+    cmns-av:explanatoryNote "Such a report may be needed for licensing, monitoring, taxation, or for other purposes that demonstrate the integrity, fairness, safety, or other capacity of a given industry, organization, or product." .
+
+cmns-rga:isApplicableInJurisdiction a owl:ObjectProperty ;
+    rdfs:label "is applicable in jurisdiction" ;
+    owl:propertyChainAxiom ( cmns-cxtdsg:isApplicableIn cmns-rga:hasReach cmns-id:isIdentifiedBy ) ;
+    skos:definition "indicates the geopolitical region identifier for the jurisdiction in which something is applicable" .
+
+cmns-rga:isJurisdictionOf a owl:ObjectProperty ;
+    rdfs:label "is jurisdiction of" ;
+    rdfs:domain cmns-rga:Jurisdiction ;
+    rdfs:subPropertyOf cmns-rga:isGovernedBy ;
+    owl:inverseOf cmns-rga:hasJurisdiction ;
+    skos:definition "relates a jurisdiction to a polity or other government entity or court that has some level of legal authority over it" .
+
+cmns-rga:isRegulatedBy a owl:ObjectProperty ;
+    rdfs:label "is regulated by" ;
+    rdfs:range cmns-rga:RegulatoryAgency ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole,
+        cmns-rga:isGovernedBy ;
+    skos:definition "specifies a regulatory agency that has regulatory authority for something" .
+
+cmns-org:LegalEntity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-rga:isOrganizedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+cmns-rga:RegulatoryService a owl:Class ;
+    rdfs:label "regulatory service" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom cmns-rga:RegulatoryAgency ],
+        cmns-org:Service ;
+    skos:definition "service provided by a regulatory agency, which may include, but not be limited to, examination, monitoring, supervision, testing, or other capabilities required to ensure the integrity, fairness, safety, or other capacity of a given industry, organization, or product" .
+
+cmns-rga:isOrganizedIn a owl:ObjectProperty ;
+    rdfs:label "is organized in" ;
+    rdfs:domain cmns-org:LegalEntity ;
+    rdfs:range cmns-rga:Jurisdiction ;
+    rdfs:subPropertyOf cmns-rga:isRecognizedIn ;
+    skos:definition "indicates the jurisdiction whose laws a legal entity is organized under" .
+
+cmns-rga:regulates a owl:ObjectProperty ;
+    rdfs:label "regulates" ;
+    rdfs:domain cmns-rga:RegulatoryAgency ;
+    rdfs:subPropertyOf cmns-rga:governs ;
+    skos:definition "has regulatory authority over or directs according to rule or law, typically an industry, organization, or product" ;
+    cmns-av:adaptedFrom "http://www.merriam-webster.com/dictionary/regulate" .
+
+cmns-rga:hasJurisdiction a owl:ObjectProperty ;
+    rdfs:label "has jurisdiction" ;
+    rdfs:range cmns-rga:Jurisdiction ;
+    rdfs:subPropertyOf cmns-rga:governs ;
+    skos:definition "relates a polity, government entity or regulatory agency to a jurisdiction over which it has some level of legal authority" .
+
+cmns-rga:hasReach a owl:ObjectProperty ;
+    rdfs:label "has reach" ;
+    rdfs:domain cmns-rga:Jurisdiction ;
+    rdfs:range cmns-loc:GeographicRegion ;
+    rdfs:subPropertyOf cmns-cxtdsg:isApplicableIn ;
+    skos:definition "indicates the geographic region covered by the jurisdiction" .
+
+cmns-rga:isRecognizedIn a owl:ObjectProperty ;
+    rdfs:label "is recognized in" ;
+    rdfs:range cmns-rga:Jurisdiction ;
+    rdfs:subPropertyOf cmns-rga:isGovernedBy ;
+    skos:definition "indicates the jurisdiction in which a legal person is considered competent to enter into a contract, conduct business, or participate in other activities, or in which an agreement may be acknowledged and possibly enforceable" .
+
+cmns-rga:RegulatoryAgency a owl:Class ;
+    rdfs:label "regulatory agency" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-rga:regulates ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:hasJurisdiction ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:RegulatoryService ;
+            owl:onProperty cmns-org:provides ],
+        cmns-bauth:AuthorizingParty,
+        cmns-org:ServiceProvider ;
+    skos:definition "public authority or government agency responsible for exercising authority over something in a regulatory or supervisory capacity" ;
+    skos:example "See http://www.finra.org/AboutFINRA/ for an example describing a regulatory agency." ;
+    cmns-av:explanatoryNote "Typically, a regulatory agency is chartered to protect some constituancy, (e.g., investors in the financial industry, consumers with respect to product safety), to ensure the fairness and integrity of some market, and fair and safe business practices among the service providers in that market." ;
+    cmns-av:synonym "regulator",
+        "regulatory authority",
+        "regulatory body" .
+
+cmns-rga:governs a owl:ObjectProperty ;
+    rdfs:label "governs" ;
+    skos:definition "has and exercises authority over" .
+
+cmns-rga:isGovernedBy a owl:ObjectProperty ;
+    rdfs:label "is governed by" ;
+    owl:inverseOf cmns-rga:governs ;
+    skos:definition "relates a contract, agreement, jurisdiction, or other legal construct and the regulation, policy, procedure, or legal person that regulates or oversees (governs) it" .
+
+cmns-rga:Jurisdiction a owl:Class ;
+    rdfs:label "jurisdiction"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:hasReach ;
+            owl:someValuesFrom cmns-loc:GeographicRegion ],
+        cmns-cxtdsg:Context ;
+    skos:definition "power of a court or regulatory agency to adjudicate cases, issue orders, and interpret and apply the law with respect to some specific geographic area" ;
+    cmns-av:adaptedFrom "https://www.law.cornell.edu/wex/jurisdiction" .
+

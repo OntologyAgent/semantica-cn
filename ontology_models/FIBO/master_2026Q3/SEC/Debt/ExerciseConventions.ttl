@@ -1,0 +1,165 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-dbt-ex: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/ExerciseConventions/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-sec-dbt-ex: a owl:Ontology ;
+    rdfs:label "Exercise Conventions Ontology"@en,
+        "行权惯例本体（Exercise Conventions Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the various kinds of exercise conventions that are common to debt and options instruments. They are distinguished primarily in terms of the date period during which an optional contract clause may be exercised." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义债务工具中嵌入期权的行权惯例：美式、欧式、百慕大式。"@zh ;
+    owl:imports fibo-fbc-fi-fi:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-dt: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/SEC/20250301/Debt/ExerciseConventions/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/20211001/Debt/ExerciseConventions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190101/Debt/ExerciseConventions.rdf version of this ontology was added to support integration of Bonds and Options in SEC and DER, respectively.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190101/Debt/ExerciseConventions.rdf version of this ontology was modified to add the hasExerciseTerms property.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20190501/Debt/ExerciseConventions.rdf version of this ontology was modified to eliminate duplication of concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200301/Debt/ExerciseConventions.rdf version of this ontology was modified to revise the definition of American exercise terms to say that an option with such terms may be exercised on or before the expiration date of the contract.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210901/Debt/ExerciseConventions.rdf version of this ontology was modified to loosen the domain of hasExerciseTerms to allow for entitlements to have such terms.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Debt/ExerciseConventions.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230301/Debt/ExerciseConventions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc." .
+
+fibo-sec-dbt-ex:AmericanExerciseTerms a owl:Class ;
+    rdfs:label "American exercise terms"@en,
+        "美式行权条款（American exercise terms）"@zh ;
+    rdfs:comment "规定期权可在到期日或之前任何时间行权的行权条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-ex:AmericanExerciseConvention ;
+            owl:onProperty cmns-cxtdsg:uses ],
+        fibo-sec-dbt-ex:ExerciseTerms ;
+    owl:disjointWith fibo-sec-dbt-ex:BermudanExerciseTerms,
+        fibo-sec-dbt-ex:EuropeanExerciseTerms ;
+    skos:definition "exercise terms that stipulate that an option may be exercised on or before the date of expiration"@en ;
+    cmns-av:explanatoryNote "Under certain circumstances, early exercise may be advantageous to the option holder."@en .
+
+fibo-sec-dbt-ex:CanaryExerciseTerms a owl:Class ;
+    rdfs:label "canary exercise terms"@en,
+        "金丝雀式行权条款（canary exercise terms）"@zh ;
+    rdfs:comment "规定期权仅可在达到第一个阶梯日之前的预定日期行权、之后不得行权的行权条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-ex:CanaryExerciseConvention ;
+            owl:onProperty cmns-cxtdsg:uses ],
+        fibo-sec-dbt-ex:BermudanExerciseTerms ;
+    skos:definition "exercise terms that stipulate that an option may only be exercised on predetermined dates until the first step is reached, but not after that point"@en .
+
+fibo-sec-dbt-ex:hasExerciseTerms a owl:ObjectProperty ;
+    rdfs:label "has exercise terms"@en,
+        "具有行权条款（has exercise terms）"@zh ;
+    rdfs:comment "将期权或权益凭证等衍生品与其中规定的行权条款关联起来。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:DerivativeInstrument ;
+    rdfs:range fibo-sec-dbt-ex:ExerciseTerms ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasContractualElement ;
+    skos:definition "links a derivative, such as an option or entitlement, to any exercise terms that are specified therein"@en .
+
+fibo-sec-dbt-ex:AmericanExerciseConvention a owl:NamedIndividual,
+        fibo-sec-dbt-ex:ExerciseConvention ;
+    rdfs:label "American exercise convention"@en ;
+    skos:definition "exercise convention that stipulates that an option may be exercised anytime between the purchase date and date of expiration"@en .
+
+fibo-sec-dbt-ex:BermudanExerciseConvention a owl:NamedIndividual,
+        fibo-sec-dbt-ex:ExerciseConvention ;
+    rdfs:label "Bermudan exercise convention"@en ;
+    skos:definition "exercise convention that stipulates that an option may be exercised anytime between the purchase date and date of expiration"@en .
+
+fibo-sec-dbt-ex:CanaryExerciseConvention a owl:NamedIndividual,
+        fibo-sec-dbt-ex:ExerciseConvention ;
+    rdfs:label "canary exercise convention"@en ;
+    skos:definition "exercise/call convention that stipulates that an option may only be exercised on predetermined dates until the first step is reached, but not after that point"@en .
+
+fibo-sec-dbt-ex:EuropeanExerciseConvention a owl:NamedIndividual,
+        fibo-sec-dbt-ex:ExerciseConvention ;
+    rdfs:label "European exercise convention"@en ;
+    skos:definition "exercise convention that stipulates that an option may only be exercised at the date of expiration"@en .
+
+fibo-sec-dbt-ex:hasExerciseWindow a owl:ObjectProperty ;
+    rdfs:label "has exercise window"@en,
+        "具有行权窗口（has exercise window）"@zh ;
+    rdfs:comment "指明合约条款规定的期权可行权的时间段。"@zh ;
+    rdfs:range cmns-dt:DatePeriod ;
+    skos:definition "indicates a period of time during which the option may be exercised as specified in the terms of the contract"@en .
+
+fibo-sec-dbt-ex:BermudanExerciseTerms a owl:Class ;
+    rdfs:label "Bermudan exercise terms"@en,
+        "百慕大式行权条款（Bermudan exercise terms）"@zh ;
+    rdfs:comment "规定期权仅可在行权窗口内的预定日期（通常每月或每周某一日）行权的行权条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-ex:hasExerciseWindow ;
+            owl:someValuesFrom cmns-dt:DatePeriod ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-ex:BermudanExerciseConvention ;
+            owl:onProperty cmns-cxtdsg:uses ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-ex:hasExerciseDate ;
+            owl:someValuesFrom cmns-dt:ExplicitDate ],
+        fibo-sec-dbt-ex:ExerciseTerms ;
+    owl:disjointWith fibo-sec-dbt-ex:EuropeanExerciseTerms ;
+    skos:definition "exercise terms that stipulate that an option may only be exercised on predetermined dates within some exercise window, often on one day each month or at the date of expiration"@en ;
+    cmns-av:explanatoryNote "The Bermuda option is named as such because its exercise dates are more flexible than European options and less flexible than American options. Thus, it is in the middle, just like Bermuda is between Europe and America. Bermuda options are also referred to as Mid-Atlantic, Quasi American, or Semi-American options."@en .
+
+fibo-sec-dbt-ex:EuropeanExerciseTerms a owl:Class ;
+    rdfs:label "European exercise terms"@en,
+        "欧式行权条款（European exercise terms）"@zh ;
+    rdfs:comment "规定期权仅可在到期日行权的行权条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-sec-dbt-ex:hasExerciseDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-ex:EuropeanExerciseConvention ;
+            owl:onProperty cmns-cxtdsg:uses ],
+        fibo-sec-dbt-ex:ExerciseTerms ;
+    skos:definition "exercise terms that stipulate that an option may only be exercised at the date of expiration"@en .
+
+fibo-sec-dbt-ex:hasExerciseDate a owl:ObjectProperty ;
+    rdfs:label "has exercise date"@en,
+        "具有行权日（has exercise date）"@zh ;
+    rdfs:comment "指明合约条款规定的期权可行权的日期。"@zh ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate ;
+    skos:definition "indicates a date on which an option may be exercised as specified in the terms of the contract"@en .
+
+fibo-sec-dbt-ex:ExerciseTerms a owl:Class ;
+    rdfs:label "exercise terms"@en,
+        "行权条款（exercise terms）"@zh ;
+    rdfs:comment "与期权或权益凭证行权相关的条件、惯例和其他规定的合同条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:uses ;
+            owl:someValuesFrom fibo-sec-dbt-ex:ExerciseConvention ],
+        fibo-fnd-agr-ctr:ContractualCommitment ;
+    skos:definition "contract terms specific to the conditions, conventions and other stipulations related to the exercise of an option or entitlement"@en .
+
+fibo-sec-dbt-ex:ExerciseConvention a owl:Class ;
+    rdfs:label "exercise convention"@en,
+        "行权惯例（exercise convention）"@zh ;
+    rdfs:comment "确定期权持有人或未来持有人何时可以行使期权所规定权利的惯例。"@zh ;
+    rdfs:subClassOf fibo-fnd-dt-bd:Convention ;
+    skos:definition "convention that determines when the holder or future holder of an option can implement the rights defined in the option"@en .
+

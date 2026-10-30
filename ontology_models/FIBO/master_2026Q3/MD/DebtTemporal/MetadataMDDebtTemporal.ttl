@@ -1,0 +1,32 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-md-dbtx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/MetadataMDDebtTemporal/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-md-dbtx-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Market Data (MD) DebtTemporal Module",
+        "MD 债务时序模块元数据（Metadata for the MD Debt Temporal Module）"@zh ;
+    dcterms:abstract "This module covers time-dependent concepts related to debt instruments, such as pricing, yields and analytics." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-03-31T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明债务时序（Debt Temporal）模块由债务分析本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/MD/20230301/DebtTemporal/MetadataMDDebtTemporal/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc." .
+
+fibo-md-dbtx-mod:DebtTemporalModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "debt temporal module" ;
+    dcterms:abstract "This module covers time-dependent concepts related to debt instruments, such as pricing, yields and analytics." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/DebtAnalytics/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO MD Debt Temporal Module",
+        "Financial Industry Business Ontology (FIBO) Market Data (MD) Debt Temporal Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc." .
+

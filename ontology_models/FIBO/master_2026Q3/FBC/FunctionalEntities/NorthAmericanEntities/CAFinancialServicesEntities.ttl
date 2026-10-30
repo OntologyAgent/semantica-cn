@@ -1,0 +1,58 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-fbc-fct-cafse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-cafse: a owl:Ontology ;
+    rdfs:label "Canadian Financial Services Entities Ontology",
+        "加拿大金融服务实体本体（Canadian Financial Services Entities Ontology）"@zh ;
+    dcterms:abstract "This ontology extends the primary financial services entities ontology in FBC with additional kinds of entities that are specific to Canada." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义加拿大法域下的金融服务机构类型与个体。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-be-le-cb:,
+        fibo-fbc-fct-fse:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20160801/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities.rdf version of this ontology was modified to generalize the definition of credit union.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities.rdf version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190901/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies.rdf version of the ontology was modified to eliminate unused references and include missing semantics(SEC-205)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-fbc-fct-cafse:CanadianCreditUnion a owl:Class ;
+    rdfs:label "Canadian credit union",
+        "加拿大信用合作社（Canadian credit union）"@zh ;
+    rdfs:comment "非营利性金融机构，通常由公司雇员、工会或宗教团体成员组成，以合作互助协会形式运营。"@zh ;
+    rdfs:seeAlso <http://www.investopedia.com/terms/c/creditunion.asp> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass [ a owl:Class ;
+                    owl:unionOf ( fibo-be-fct-fct:Association fibo-be-le-cb:NotForProfitCorporation ) ],
+                fibo-be-fct-fct:Association ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-fct-fse:CreditUnion ;
+    skos:definition "not-for-profit financial institution, typically formed by the employees of a company, labor union, or religious group, operated as a cooperative association organized for the purpose of promoting thrift among its members and creating a source of credit for provident or productive purposes" .
+

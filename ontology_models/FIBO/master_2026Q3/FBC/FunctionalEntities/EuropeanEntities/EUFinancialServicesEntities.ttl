@@ -1,0 +1,121 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-fct-eufse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/EuropeanEntities/EUFinancialServicesEntities/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-eufse: a owl:Ontology ;
+    rdfs:label "European Financial Services Entities Ontology",
+        "欧盟金融服务实体本体（EU Financial Services Entities Ontology）"@zh ;
+    dcterms:abstract "This ontology extends the primary financial services entities ontology in FBC with additional kinds of entities that that provide services in Europe, across national boundaries, such as European market data providers, organizations that provide exchanges in multiple countries, organizations that support the European Union, and so forth." ;
+    dcterms:license """Copyright (c) 2017-2025 EDM Council, Inc.
+Copyright (c) 2017-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义欧盟法域下的金融服务机构类型与个体。"@zh ;
+    owl:imports fibo-fbc-fct-fse:,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/>,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-org: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/EuropeanEntities/EUFinancialServicesEntities/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/EuropeanEntities/EUFinancialServicesEntities.rdf version of this ontology was added via the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/EuropeanEntities/EUFinancialServicesEntities.rdf version of this ontology was revised to adjust the name of the CreditInstitutionOrInvestmentFirm classification to eliminate the 'or' in the name to address hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210801/FunctionalEntities/EuropeanEntities/EUFinancialServicesEntities.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FunctionalEntities/EuropeanEntities/EUFinancialServicesEntities.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2017-2025 EDM Council, Inc.",
+        "Copyright (c) 2017-2025 Object Management Group, Inc." .
+
+fibo-fbc-fct-eufse:CRDCreditInstitution a owl:Class ;
+    rdfs:label "CRD credit institution",
+        "CRD 信贷机构（CRD credit institution）"@zh ;
+    rdfs:comment "依资本要求指令（CRD）定义、业务为从公众吸收存款或其他可偿还资金并以自己名义发放信贷的企业。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-eufse:CreditInstitution ;
+    owl:disjointWith fibo-fbc-fct-eufse:EuropeanEconomicAreaBranch,
+        fibo-fbc-fct-eufse:NonEuropeanEconomicAreaBranch ;
+    skos:definition "an undertaking whose business is to receive deposits or other repayable funds from the public and to grant credits for its own account as defined by the European Banking Authority (EBA)" ;
+    fibo-fnd-utl-av:definitionOrigin "http://www.eba.europa.eu/risk-analysis-and-data/credit-institutions-register"^^xsd:anyURI .
+
+fibo-fbc-fct-eufse:InvestmentFirm a owl:Class ;
+    rdfs:label "investment firm",
+        "投资公司（investment firm）"@zh ;
+    rdfs:comment "日常职业或业务为向第三方提供一项或多项投资服务和/或从事一项或多项投资活动的任何法人。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fbc-fct-fse:BrokerageFirm fibo-fbc-fct-fse:InvestmentCompany [ a owl:Restriction ;
+                        owl:onProperty cmns-org:provides ;
+                        owl:someValuesFrom fibo-fbc-fct-fse:InvestmentService ] ) ],
+        fibo-fbc-fct-eufse:CreditInstitutionInvestmentFirm ;
+    owl:disjointWith fibo-fbc-fct-eufse:CreditInstitution,
+        fibo-fbc-fct-eufse:LocalFirm ;
+    skos:definition "any legal person whose regular occupation or business is the provision of one or more investment services to third parties and/or the performance of one or more investment activities on a professional basis" ;
+    cmns-av:adaptedFrom "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32004L0039&from=en#page=9"^^xsd:anyURI .
+
+fibo-fbc-fct-eufse:PaymentInstitution a owl:Class ;
+    rdfs:label "payment institution",
+        "支付机构（payment institution）"@zh ;
+    rdfs:comment "依第 10 条获得授权、可在整个欧洲共同体内提供和执行支付服务的法人。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:provides ;
+            owl:someValuesFrom fibo-fbc-fct-fse:PaymentService ],
+        fibo-fbc-fct-eufse:CreditInstitutionInvestmentFirm ;
+    skos:definition "a legal person that has been granted authorisation in accordance with Article 10 to provide and execute payment services throughout the European community" ;
+    cmns-av:adaptedFrom "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32007L0064&from=EN#page=18"^^xsd:anyURI .
+
+fibo-fbc-fct-eufse:EuropeanEconomicAreaBranch a owl:Class ;
+    rdfs:label "European Economic Area branch",
+        "欧洲经济区分支机构（European Economic Area branch）"@zh ;
+    rdfs:comment "在另一欧洲经济区（EEA）国家获得授权、有权将其业务通行证化至其他成员国的信贷机构分支机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-eufse:CreditInstitution ;
+    owl:disjointWith fibo-fbc-fct-eufse:NonEuropeanEconomicAreaBranch ;
+    skos:definition "a branch of a credit institution authorised in another European Economic Area (EEA) country that has the right to passport its activities" ;
+    fibo-fnd-utl-av:definitionOrigin "http://www.eba.europa.eu/risk-analysis-and-data/credit-institutions-register"^^xsd:anyURI ;
+    cmns-av:synonym "EEA branch" .
+
+fibo-fbc-fct-eufse:LocalFirm a owl:Class ;
+    rdfs:label "local firm",
+        "本地自营公司（local firm）"@zh ;
+    rdfs:comment "在金融期货、期权或其他衍生品市场及现货市场上自营交易、仅以对冲为目的的公司。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-eufse:CreditInstitutionInvestmentFirm,
+        fibo-fbc-fct-fse:BrokerageFirm ;
+    skos:definition "a firm dealing for its own account on markets in financial futures or options or other derivatives and on cash markets for the sole purpose of hedging positions on derivatives markets, or dealing for the accounts of other members of those markets and being guaranteed by clearing members of the same markets, where responsibility for ensuring the performance of contracts entered into by such a firm is assumed by clearing members of the same markets" ;
+    cmns-av:adaptedFrom "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32013R0575&from=EN#page=18"^^xsd:anyURI .
+
+fibo-fbc-fct-eufse:NonEuropeanEconomicAreaBranch a owl:Class ;
+    rdfs:label "non European Economic Area branch",
+        "非欧洲经济区分支机构（non European Economic Area branch）"@zh ;
+    rdfs:comment "总部设在第三国的信贷机构分支机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-eufse:CreditInstitution ;
+    skos:definition "a branch of a credit institution whose Head Office is in a third country" ;
+    fibo-fnd-utl-av:definitionOrigin "http://www.eba.europa.eu/risk-analysis-and-data/credit-institutions-register"^^xsd:anyURI ;
+    cmns-av:synonym "non-EEA branch" .
+
+fibo-fbc-fct-eufse:CreditInstitution a owl:Class ;
+    rdfs:label "credit institution",
+        "信贷机构（credit institution）"@zh ;
+    rdfs:comment "业务为从公众吸收存款或其他可偿还资金并以自己名义发放信贷的企业。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-eufse:CreditInstitutionInvestmentFirm ;
+    skos:definition "an undertaking the business of which is to take deposits or other repayable funds from the public and to grant credits for its own account, and to which authorisation has been granted to operate within the European Union and European Economic Area countries (EEA)" ;
+    cmns-av:adaptedFrom "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32013R0575&from=EN#page=18"^^xsd:anyURI,
+        "http://www.eba.europa.eu/risk-analysis-and-data/credit-institutions-register"^^xsd:anyURI .
+
+fibo-fbc-fct-eufse:CreditInstitutionInvestmentFirm a owl:Class ;
+    rdfs:label "credit institution / investment firm",
+        "信贷机构/投资公司（credit institution / investment firm）"@zh ;
+    rdfs:comment "欧洲金融机构特有的分类，依欧洲银行管理局（EBA）的定义将其指定为信贷机构/投资公司。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "classification specific to European financial institutions that designates them as credit institutions / investment firms as defined by the European Banking Authority (EBA)" ;
+    cmns-av:adaptedFrom "http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32013R0575&from=EN#page=18"^^xsd:anyURI .
+

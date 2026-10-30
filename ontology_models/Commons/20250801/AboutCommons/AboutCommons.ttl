@@ -1,0 +1,125 @@
+@prefix cmns-abt: <https://www.omg.org/spec/Commons/AboutCommons/> .
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-abt: a owl:Ontology ;
+    rdfs:label "About the Commons Ontology Library",
+        "关于 Commons 本体库（About the Commons Ontology Library）"@zh ;
+    dct:abstract "This ontology is provided for the convenience of Commons users. It can be used to load all of the current Commons ontologies, using a relative catalog, as needed in Protege or other tools." ;
+    dct:contributor "Davide Sottara, Mayo Clinic",
+        "Dean Allemang, Working Ontologist LLC",
+        "Elisa Kendall, Thematix Partners LLC",
+        "Evan Wallace, U.S. Department of Commerce, National Institute of Standards and Technology (NIST)",
+        "Hans Peter de Koning, DEKonsult",
+        "Jim Logan, Ontogenesis Solutions, LLC",
+        "Michel Sauvage, Airbus Group",
+        "Pete Rivett, Federated Knowledge, LLC",
+        "Roger Burkhart, Thematix Partners LLC",
+        "Steve Jenkins, Jet Propulsion Laboratory (JPL), California Institute of Technology, National Aeronautics and Space Administration (NASA)",
+        "Stuart Chalk, University of North Florida",
+        "Thomas Barre, Airbus Group" ;
+    dct:license """Copyright (c) 2014-2025 EDM Council, Inc.
+		Copyright (c) 2014-2025 Thematix Partners LLC
+		Copyright (c) 2020-2025 Stardog Union
+		Copyright (c) 2020-2025 Working Ontologist LLC
+		Copyright (c) 2021-2025 agnos.ai U.K. Ltd
+		Copyright (c) 2021-2025 Federated Knowledge, LLC
+		Copyright (c) 2021-2025 Mayo Clinic
+		Copyright (c) 2022-2025 DEKonsult
+		Copyright (c) 2022-2025 Object Management Group, Inc.
+		Copyright (c) 2022-2025 OntoAge
+		Copyright (c) 2022-2025 Pistoia Alliance, Inc.
+		Copyright (c) 2022-2025 University of North Florida
+		Copyright (c) 2024-2025 88solutions
+		Copyright (c) 2024-2025 Adaptive Analytics, Inc.
+		Copyright (c) 2024-2025 Airbus Group
+		Copyright (c) 2024-2025 Boeing
+		Copyright (c) 2024-2025 Dassault Systemes
+		Copyright (c) 2024-2025 GfSE e.V.
+		Copyright (c) 2024-2025 Ontogenesis Solutions, LLC
+		Copyright (c) 2024-2025 ProSTEP iViP Association
+		Copyright (c) 2024-2025 Raytheon Technologies
+		Copyright (c) 2024-2025 Sparx Systems Pty Ltd
+	
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    dct:references dct:,
+        skos: ;
+    dct:source "https://www.omg.org/spec/SysML/"^^xsd:anyURI,
+        "ISO 1087:2019 Terminology work - Vocabulary - Theory and Application, Second edition, 2019-09",
+        "ISO 11240 Health informatics - Identification of medicinal products - Data elements and structures for the unique identification and exchange of units of measurement",
+        "ISO 12651-2:2014, Electronic document management - Vocabulary - Part 2: Workflow management",
+        "ISO 14813-1:2015 Intelligent transport systems - Reference model architecture(s) for the ITS sector - Part 1: ITS service domains, service groups and services",
+        "ISO 18629-1:2004 Industrial automation systems and integration - Process specification language - Part 1: Overview and basic principles",
+        "ISO 21298:2017 Health informatics - Functional and structural roles",
+        "ISO 22745-2:2010, Industrial automation systems and integration - Open technical dictionaries and their application to master data",
+        "ISO 23234:2021 Buildings and civil engineering works - Security - Planning of security measures in the built environment",
+        "ISO 3166-3:2020 Codes for the representation of names of countries and their subdivisions, Fourth edition, 2020-08",
+        "ISO 639:2023 Code for individual languages and language groups, Second edition, 2023-11",
+        "ISO 704:2022 Terminology work - Principles and methods, Fourth edition, 2022-07",
+        "ISO 80000-1:2009 Quantities and units - Part 1: General",
+        "ISO/IEC 11179-3:2013 Information technology - Metadata registries (MDR) - Registry metamodel and basic attributes, Third edition, 2013-02-15",
+        "ISO/IEC 18384-1:2016 Information technology - Reference Architecture for Service Oriented Architecture (SOA RA), Parts 1 and 3",
+        "ISO/IEC 19763-8:2015 Information technology - Metamodel framework for interoperability (MFI) - Part 8: Metamodel for role and goal model registration",
+        "ISO/IEC TR 29119-11:2020, Software and systems engineering - Software testing - Part 11: Guidelines on the testing of AI-based systems",
+        "ISO/TR 21965:2019 Information and documentation - Records management in enterprise architecture",
+        "ISO/TS 19807-1:2019 Nanotechnologies - Magnetic nanomaterials - Part 1: Specification of characteristics and measurements for magnetic nanosuspensions",
+        "International Information Centre for Terminology (InfoTerm), see http://www.infoterm.info/" ;
+    rdfs:comment "方便用户一次性加载全部 Commons 本体的入口文件。"@zh ;
+    owl:imports cmns-av:,
+        <https://www.omg.org/spec/Commons/BusinessAuthorizations/>,
+        <https://www.omg.org/spec/Commons/Classifiers/>,
+        <https://www.omg.org/spec/Commons/CodesAndCodeSets/>,
+        <https://www.omg.org/spec/Commons/Collections/>,
+        <https://www.omg.org/spec/Commons/ContextualDesignators/>,
+        <https://www.omg.org/spec/Commons/ContextualIdentifiers/>,
+        <https://www.omg.org/spec/Commons/DatesAndTimes/>,
+        <https://www.omg.org/spec/Commons/Designators/>,
+        <https://www.omg.org/spec/Commons/Documents/>,
+        <https://www.omg.org/spec/Commons/Identifiers/>,
+        <https://www.omg.org/spec/Commons/Languages/>,
+        <https://www.omg.org/spec/Commons/Locations/>,
+        <https://www.omg.org/spec/Commons/Organizations/>,
+        cmns-pts:,
+        <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>,
+        <https://www.omg.org/spec/Commons/RegistrationAuthorities/>,
+        <https://www.omg.org/spec/Commons/RegulatoryAgencies/>,
+        cmns-rlcmp:,
+        <https://www.omg.org/spec/Commons/SitesAndFacilities/>,
+        <https://www.omg.org/spec/Commons/StructuredCollections/>,
+        <https://www.omg.org/spec/Commons/TextDatatype/> ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20250801/AboutCommons/> ;
+    cmns-av:copyright "Copyright (c) 2014-2025 EDM Council, Inc.",
+        "Copyright (c) 2014-2025 Thematix Partners LLC",
+        "Copyright (c) 2020-2025 Stardog Union",
+        "Copyright (c) 2020-2025 Working Ontologist LLC",
+        "Copyright (c) 2021-2025 Federated Knowledge, LLC",
+        "Copyright (c) 2021-2025 Mayo Clinic",
+        "Copyright (c) 2021-2025 agnos.ai U.K. Ltd",
+        "Copyright (c) 2022-2025 DEKonsult",
+        "Copyright (c) 2022-2025 Object Management Group, Inc.",
+        "Copyright (c) 2022-2025 OntoAge",
+        "Copyright (c) 2022-2025 Pistoia Alliance, Inc.",
+        "Copyright (c) 2022-2025 University of North Florida",
+        "Copyright (c) 2024-2025 88solutions",
+        "Copyright (c) 2024-2025 Adaptive Analytics, Inc.",
+        "Copyright (c) 2024-2025 Airbus Group",
+        "Copyright (c) 2024-2025 Boeing",
+        "Copyright (c) 2024-2025 Dassault Systemes",
+        "Copyright (c) 2024-2025 GfSE e.V.",
+        "Copyright (c) 2024-2025 Ontogenesis Solutions, LLC",
+        "Copyright (c) 2024-2025 ProSTEP iViP Association",
+        "Copyright (c) 2024-2025 Raytheon Technologies",
+        "Copyright (c) 2024-2025 Sparx Systems Pty Ltd" .
+

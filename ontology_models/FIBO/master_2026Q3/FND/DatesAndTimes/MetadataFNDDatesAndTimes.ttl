@@ -1,0 +1,36 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-dt-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/MetadataFNDDatesAndTimes/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-dt-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Dates and Times Module",
+        "FND 日期与时间模块元数据（Metadata for the FND Dates and Times Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Dates and Times Module." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-01-20T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明日期与时间（Dates and Times）模块由金融日期、营业日期、事件与发生三个本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20230101/DatesAndTimes/MetadataFNDDatesAndTimes/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+
+fibo-fnd-dt-mod:DatesAndTimesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "dates and times module" ;
+    dcterms:abstract "This module includes ontologies describing date and time concepts which are of specific reference in financial services. These cover foundational date and time concepts in a form usable for financial subject matter ontologies, including occurrences and conventions for business days and the like. Business day conventions may be further extended in specialized ontologies for securities and derivatives." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/>,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FND Dates and Times Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Dates and Times Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2017-2023 EDM Council, Inc.",
+        "Copyright (c) 2017-2023 Object Management Group, Inc." .
+

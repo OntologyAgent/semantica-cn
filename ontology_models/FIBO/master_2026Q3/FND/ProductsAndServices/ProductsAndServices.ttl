@@ -1,0 +1,429 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix cmns-sfc: <https://www.omg.org/spec/Commons/SitesAndFacilities/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-plc-rp: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/RealProperty/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-acc-cur:PreciousMetal a owl:Class ;
+    rdfs:subClassOf fibo-fnd-pas-pas:NegotiableCommodity .
+
+fibo-fnd-pas-pas: a owl:Ontology ;
+    rdfs:label "Products and Services Ontology",
+        "产品与服务本体（Products and Services Ontology）"@zh ;
+    dcterms:abstract "This ontology defines fundamental concepts for buyers, sellers, clients, customers, products, goods and services for use in other FIBO ontologies." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义产品、服务及其提供者与客户的通用关系。"@zh ;
+    owl:imports fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-pty-pty:,
+        fibo-fnd-plc-rp:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        cmns-sfc: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20251201/ProductsAndServices/ProductsAndServices/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20150801/ProductsAndServices/ProductsAndServices.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FND 1.1 RTF report to replace MoneyAmount with AmountOfMoney.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20160201/ProductsAndServices/ProductsAndServices.rdf version of this ontology was modified for the FIBO 2.0 RFC to add NegotiableCommodity and Consumer.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/ProductsAndServices/ProductsAndServices.rdf version of this ontology was modified to include classes to support automated inclusion of all ISO 4217 codes published as of 2018-06-04.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20181101/ProductsAndServices/ProductsAndServices.rdf version of this ontology was modified to move (deprecate) the properties produces and isProducedBy to Relations for more general usability.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190501/ProductsAndServices/ProductsAndServices.rdf version of this ontology was revised to leverage the new party identifier.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190701/ProductsAndServices/ProductsAndServices.rdf version of this ontology was revised to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190901/ProductsAndServices/ProductsAndServices.rdf version of this ontology was revised to eliminate duplication with concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/ProductsAndServices/ProductsAndServices.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200701/ProductsAndServices/ProductsAndServices.rdf version of this ontology was revised to add properties for hasBuyer and hasSeller, integrate properties with the party lattice, and clean-up circular or ambiguous definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210101/ProductsAndServices/ProductsAndServices.rdf version of this ontology was revised to incorporate the concept of a right into the definition of product, to cover leases and rentals, such as the right to use a piece of property or other asset for some period of time, as products.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20211201/ProductsAndServices/ProductsAndServices.rdf version of this ontology was revised move the definition of precious metal and the corresponding identifier to CurrencyAmount from this ontology to simplify imports in cases where the broader definitions for commodities are not required.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220201/ProductsAndServices/ProductsAndServices.rdf version of this ontology was revised to eliminate deprecated elements related to precious metals.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220301/ProductsAndServices/ProductsAndServices.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/ProductsAndServices/ProductsAndServices.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/ProductsAndServices/ProductsAndServices.rdf version of the ontology was modified to replace concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231201/ProductsAndServices/ProductsAndServices.rdf version of the ontology was modified to replace additional concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240101/ProductsAndServices/ProductsAndServices.rdf version of the ontology was modified to replace the definition of real estate with the new definition in the real property ontology (LOAN-168).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20241001/ProductsAndServices/ProductsAndServices.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/ProductsAndServices/ProductsAndServices.rdf version of the ontology was modified to simplify the agreements class hierarchy (FND-391).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250501/ProductsAndServices/ProductsAndServices.rdf version of the ontology was modified to eliminate long-deprecated content (FND-399) and to reuse concepts from the Commons 1.3 sites and facilities ontology (FND-401)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.",
+        "Copyright (c) 2013-2025 Object Management Group, Inc." .
+
+fibo-fnd-pas-pas:ClientIdentifier a owl:Class ;
+    rdfs:label "client identifier",
+        "客户标识符（client identifier）"@zh ;
+    rdfs:comment "在某组织情境内唯一标识客户的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pas-pas:Client ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-pty-pty:PartyRoleIdentifier ;
+    skos:definition "sequence of characters uniquely identifying a client within the context of some organization" .
+
+fibo-fnd-pas-pas:Consumer a owl:Class ;
+    rdfs:label "consumer",
+        "消费者（consumer）"@zh ;
+    rdfs:comment "使用经济货物或服务的参与方，通常用于个人、家庭或住户目的。"@zh ;
+    rdfs:seeAlso <http://www.oecd.org/sti/consumer/> ;
+    rdfs:subClassOf cmns-pts:PartyRole ;
+    skos:definition "party that utilizes economic goods or services, typically for personal, family, or household purposes" ;
+    cmns-av:explanatoryNote "The general notion of a consumer includes an end user, and is not limited to a purchaser, in the distribution chain of a good or service" .
+
+fibo-fnd-pas-pas:ContractualTemplateProduct a owl:Class ;
+    rdfs:label "contractual template product",
+        "合同模板型产品（contractual template product）"@zh ;
+    rdfs:comment "通过为模板中定义的参数指定取值而定稿的合同型产品。"@zh ;
+    rdfs:subClassOf fibo-fnd-pas-pas:ContractualProduct,
+        fibo-fnd-pas-pas:OffTheShelfProduct ;
+    skos:definition "contractual product that is finalized through specification of values for parameters defined in a template" .
+
+fibo-fnd-pas-pas:CustomProduct a owl:Class ;
+    rdfs:label "custom product",
+        "定制产品（custom product）"@zh ;
+    rdfs:comment "按订单生产、依客户规格委托制作的产品。"@zh ;
+    rdfs:subClassOf fibo-fnd-pas-pas:Product ;
+    owl:disjointWith fibo-fnd-pas-pas:OffTheShelfProduct ;
+    skos:definition "product that is made to order, commissioned based on a customer's specifications" ;
+    cmns-av:synonym "bespoke product",
+        "custom-made product",
+        "made to order product" .
+
+fibo-fnd-pas-pas:CustomerIdentifier a owl:Class ;
+    rdfs:label "customer identifier",
+        "顾客标识符（customer identifier）"@zh ;
+    rdfs:comment "在某组织情境内唯一标识顾客的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pas-pas:Customer ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-pty-pty:PartyRoleIdentifier ;
+    skos:definition "sequence of characters uniquely identifying a customer within the context of some organization" .
+
+fibo-fnd-pas-pas:Producer a owl:Class ;
+    rdfs:label "producer",
+        "生产者（producer）"@zh ;
+    rdfs:comment "某种产品或其他货物的种植者、制造者、加工者或生产商。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:produces ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Good ],
+        cmns-pts:PartyRole ;
+    skos:definition "grower, maker, fabricator, or manufacturer of some product or other good" .
+
+fibo-fnd-pas-pas:ProductIdentifier a owl:Class ;
+    rdfs:label "product identifier",
+        "产品标识符（product identifier）"@zh ;
+    rdfs:comment "在某情境中唯一标识产品的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pas-pas:Product ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters uniquely identifying a product in some context" .
+
+fibo-fnd-pas-pas:Sale a owl:Class ;
+    rdfs:label "sale",
+        "销售（sale）"@zh ;
+    rdfs:comment "以货物或服务换取货币的交换。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Buyer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-acc-cur:hasPrice ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasSeller ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Seller ],
+        fibo-fnd-pas-pas:TransactionEvent,
+        cmns-pts:Situation ;
+    skos:definition "exchange of goods or services for money" .
+
+fibo-fnd-pas-pas:isSuppliedBy a owl:ObjectProperty ;
+    rdfs:label "is supplied by",
+        "由……供应（is supplied by）"@zh ;
+    rdfs:comment "标识使产品可获得的参与方（供应商、卖方、分销商等）。"@zh ;
+    rdfs:domain fibo-fnd-pas-pas:Product ;
+    rdfs:range fibo-fnd-pas-pas:Supplier ;
+    rdfs:subPropertyOf cmns-org:isProvidedBy ;
+    owl:inverseOf fibo-fnd-pas-pas:supplies ;
+    skos:definition "identifies the party (supplier, vendor, distributor, etc.) that makes a product available" .
+
+fibo-fnd-pas-pas:sellsTo a owl:ObjectProperty ;
+    rdfs:label "sells to",
+        "销售给（sells to）"@zh ;
+    rdfs:comment "将处于经纪人、交易商、卖方或经销商角色的参与方关联到买方或潜在买方。"@zh ;
+    rdfs:domain fibo-fnd-pas-pas:Seller ;
+    rdfs:range fibo-fnd-pas-pas:Buyer ;
+    rdfs:subPropertyOf cmns-pts:actsOn ;
+    owl:inverseOf fibo-fnd-pas-pas:buysFrom ;
+    skos:definition "links a party in the role of broker, dealer, vendor, or merchandiser to a purchaser or potential purchasing party" .
+
+fibo-fnd-pas-pas:Client a owl:Class ;
+    rdfs:label "client",
+        "客户（client）"@zh ;
+    rdfs:comment "向另一参与方购买专业服务、或与其存在购买服务之正式关系的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-fnd-pas-pas:ServiceAgreement ] ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that purchases professional services from, or has a formal relationship to purchase services from another party" .
+
+fibo-fnd-pas-pas:Commodity a owl:Class ;
+    rdfs:label "commodity",
+        "商品（commodity）"@zh ;
+    rdfs:comment "商业中使用的、可与同类型其他商品互换的物质资源。"@zh ;
+    rdfs:subClassOf fibo-fnd-pas-pas:Good ;
+    skos:definition "material resource used in commerce that is interchangeable with other commodities of the same type" ;
+    cmns-av:explanatoryNote "Commodities are most often used as inputs in the production of other goods or services. The quality of a given commodity may differ slightly, but it is essentially uniform across producers." .
+
+fibo-fnd-pas-pas:ContractualProduct a owl:Class ;
+    rdfs:label "contractual product",
+        "合同型产品（contractual product）"@zh ;
+    rdfs:comment "以协议形式存在的产品。"@zh ;
+    rdfs:subClassOf fibo-fnd-pas-pas:Product ;
+    skos:definition "product that takes the form of an agreement" ;
+    cmns-av:explanatoryNote "This represents the case where the product itself is a contract, such as a life insurance policy or financial instrument, rather than a product or service whose terms of use, license to use, or terms of service are specified in a product." .
+
+fibo-fnd-pas-pas:Customer a owl:Class ;
+    rdfs:label "customer",
+        "顾客（customer）"@zh ;
+    rdfs:comment "接收或消费产品（货物或服务）、并能在不同产品和供应商之间选择的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:buysFrom ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Supplier ],
+        fibo-fnd-pas-pas:Buyer ;
+    skos:definition "party that receives or consumes products (goods or services) and has the ability to choose between different products and suppliers" .
+
+fibo-fnd-pas-pas:NegotiableCommodity a owl:Class ;
+    rdfs:label "negotiable commodity",
+        "可流通商品（negotiable commodity）"@zh ;
+    rdfs:comment "可在某市场买入或卖出的商品。"@zh ;
+    rdfs:subClassOf fibo-fnd-pas-pas:Commodity ;
+    skos:definition "commodity that can be bought or sold in some marketplace" .
+
+fibo-fnd-pas-pas:ServiceAgreement a owl:Class ;
+    rdfs:label "service agreement",
+        "服务协议（service agreement）"@zh ;
+    rdfs:comment "客户与服务提供方之间的书面合同，服务提供方据此以时间、劳务和/或专业知识的形式提供某项服务。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom cmns-org:Service ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-org:ServiceProvider ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-agr-ctr:WrittenContract ;
+    skos:definition "written contract between a client and service provider whereby the service provider supplies some service in the form of time, effort, and/or expertise in exchange for compensation" ;
+    cmns-av:synonym "service contract" .
+
+fibo-fnd-pas-pas:TransactionConfirmation a owl:Class ;
+    rdfs:label "transaction confirmation",
+        "交易确认书（transaction confirmation）"@zh ;
+    rdfs:comment "卖方或服务提供方出具的、复述交易相关细节的书面通信。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pas-pas:TransactionEvent ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-doc:LegalDocument ;
+    skos:definition "written communication from a seller or service provider reciting the relevant details of a transaction" .
+
+fibo-fnd-pas-pas:buys a owl:ObjectProperty ;
+    rdfs:label "buys",
+        "购买（buys）"@zh ;
+    rdfs:comment "将处于购买者角色的参与方关联到其已购买或计划购买的事物。"@zh ;
+    rdfs:domain fibo-fnd-pas-pas:Buyer ;
+    rdfs:range fibo-fnd-pas-pas:Product ;
+    skos:definition "links a party in the role of purchaser to something that they have purchased or plan to purchase" .
+
+fibo-fnd-pas-pas:hasBuyer a owl:ObjectProperty ;
+    rdfs:label "has buyer"@en,
+        "具有买方（has buyer）"@zh ;
+    rdfs:comment "标识销售交易情境中的购买方。"@zh ;
+    rdfs:range fibo-fnd-pas-pas:Buyer ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole,
+        cmns-pts:hasUndergoer ;
+    skos:definition "indicates the purchasing party in the context of a sales transaction" .
+
+fibo-fnd-pas-pas:hasSeller a owl:ObjectProperty ;
+    rdfs:label "has seller"@en,
+        "具有卖方（has seller）"@zh ;
+    rdfs:comment "标识销售交易情境中的卖方。"@zh ;
+    rdfs:range fibo-fnd-pas-pas:Seller ;
+    rdfs:subPropertyOf cmns-pts:hasActor ;
+    skos:definition "indicates the vendor in the context of a sales transaction" .
+
+fibo-fnd-pas-pas:isProvisionedBy a owl:ObjectProperty ;
+    rdfs:label "is provisioned by",
+        "由……配置提供（is provisioned by）"@zh ;
+    rdfs:comment "标识配置提供服务或设施的服务提供方。"@zh ;
+    rdfs:range cmns-org:ServiceProvider ;
+    rdfs:subPropertyOf cmns-org:isProvidedBy ;
+    owl:inverseOf fibo-fnd-pas-pas:provisions ;
+    skos:definition "identifies the service provider that provisions the service or facility" .
+
+fibo-fnd-pas-pas:sells a owl:ObjectProperty ;
+    rdfs:label "sells",
+        "销售（sells）"@zh ;
+    rdfs:comment "将处于经纪人、交易商、卖方或经销商角色的参与方关联到其提供出售的事物。"@zh ;
+    rdfs:domain fibo-fnd-pas-pas:Seller ;
+    rdfs:range fibo-fnd-pas-pas:Product ;
+    skos:definition "links a party in the role of broker, dealer, vendor, or merchandiser to something that they make available for sale" .
+
+fibo-fnd-pas-pas:OffTheShelfProduct a owl:Class ;
+    rdfs:label "off-the-shelf product",
+        "现货产品（off-the-shelf product）"@zh ;
+    rdfs:comment "可直接从库存现货获得、或可快速按订单配置的产品，非专门设计或定制。"@zh ;
+    rdfs:subClassOf fibo-fnd-pas-pas:Product ;
+    skos:definition "product that is readily available from merchandise in stock, or can be quickly and easily configured to order, not specially designed or custom-made" ;
+    cmns-av:abbreviation "COTS product" ;
+    cmns-av:synonym "commercial off-the-shelf product",
+        "commercially available off-the-shelf product" .
+
+fibo-fnd-pas-pas:TransactionEvent a owl:Class ;
+    rdfs:label "transaction event",
+        "交易事件（transaction event）"@zh ;
+    rdfs:comment "交易的事件成分。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-pas-pas:TransactionConfirmation ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ],
+        fibo-fnd-dt-oc:OccurrenceKind ;
+    skos:definition "any sale, assignment, lease, license, loan, advance, contribution, or other transfer of any interest in or right to use any property (tangible or intangible) or money, however that transaction is effected, and regardless of whether the terms of the transaction are formally documented" .
+
+fibo-fnd-pas-pas:buysFrom a owl:ObjectProperty ;
+    rdfs:label "buys from",
+        "从……购买（buys from）"@zh ;
+    rdfs:comment "将处于购买者角色的参与方关联到其已购买或计划购买的对方参与方。"@zh ;
+    rdfs:domain fibo-fnd-pas-pas:Buyer ;
+    rdfs:range fibo-fnd-pas-pas:Seller ;
+    rdfs:subPropertyOf cmns-pts:isAffectedBy ;
+    skos:definition "links a party in the role of purchaser to a party from which they have made or are planning to make a purchase" .
+
+fibo-fnd-pas-pas:supplies a owl:ObjectProperty ;
+    rdfs:label "supplies",
+        "供应（supplies）"@zh ;
+    rdfs:comment "将处于装备商、供应商、分销商等角色的参与方关联到其提供的事物。"@zh ;
+    rdfs:domain fibo-fnd-pas-pas:Supplier ;
+    rdfs:range fibo-fnd-pas-pas:Product ;
+    rdfs:subPropertyOf cmns-org:provides ;
+    skos:definition "links a party in the role of outfitter, provisioner, distributor, etc. to something that they provide" .
+
+fibo-fnd-pas-pas:Good a owl:Class ;
+    rdfs:label "good",
+        "货物（good）"@zh ;
+    rdfs:comment "可确立所有权、且其所有权可通过交易在参与方之间转移的有形生产物品。"@zh ;
+    owl:disjointWith fibo-fnd-acc-cur:AmountOfMoney,
+        fibo-fnd-plc-rp:RealEstate ;
+    skos:definition "physical, produced item over which ownership rights can be established, whose ownership can be passed from one party to another by engaging in transactions, and that is not money or real estate" ;
+    cmns-av:adaptedFrom "https://data.oecd.org/trade/trade-in-goods.htm"^^xsd:anyURI,
+        "https://www.law.cornell.edu/ucc/9/9-102#goods"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "An inherently useful and relatively scarce tangible item produced from agricultural, construction, manufacturing, or mining activities. Off-the-shelf products, including off-the-shelf software products and customization of software products, are generally considered to be goods. Energy, such as electricity, is also considered to be a good from a legal perspective, and meets the criteria of being manufactured or produced via some process, including but not limited to a mining process. According to the UN Convention On Contract For The International Sale Of Goods, the term 'good' does not include (1) items bought for personal use, (2) items bought at an auction or foreclosure sale, (3) aircraft or ocean-going vessels.",
+        "From the Universal Commercial Code (UCC) in the United States, the term 'good' includes (i) fixtures, (ii) standing timber that is to be cut and removed under a conveyance or contract for sale, (iii) the unborn young of animals, (iv) crops grown, growing, or to be grown, even if the crops are produced on trees, vines, or bushes, and (v) manufactured homes. The term also includes a computer program embedded in goods and any supporting information provided in connection with a transaction relating to the program if (i) the program is associated with the goods in such a manner that it customarily is considered part of the goods, or (ii) by becoming the owner of the goods, a person acquires a right to use the program in connection with the goods. The term does not include a computer program embedded in goods that consist solely of the medium in which the program is embedded. The term also does not include accounts, chattel paper, commercial tort claims, deposit accounts, documents, general intangibles, instruments, investment property, letter-of-credit rights, letters of credit, money, or oil, gas, or other minerals before extraction." .
+
+fibo-fnd-pas-pas:Supplier a owl:Class ;
+    rdfs:label "supplier",
+        "供应商（supplier）"@zh ;
+    rdfs:comment "提供某参与方所需货物或服务的参与方，尤指长期供应者。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:supplies ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that provides goods or services that some party wants or needs, especially over a long period of time" ;
+    cmns-av:explanatoryNote "A supplier may be distinguished from a contractor or subcontractor, who commonly adds specialized input to deliverables." .
+
+fibo-fnd-pas-pas:provisions a owl:ObjectProperty ;
+    rdfs:label "provisions",
+        "配置提供（provisions）"@zh ;
+    rdfs:comment "定制、提供或装备交付服务所需的事物。"@zh ;
+    rdfs:domain cmns-org:ServiceProvider ;
+    rdfs:subPropertyOf cmns-org:provides ;
+    skos:definition "customizes, provides, or outfits something required for use in delivering a service" .
+
+cmns-org:Service a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-org:ServiceProvider ;
+            owl:onProperty fibo-fnd-pas-pas:isProvisionedBy ] .
+
+cmns-org:ServiceProvider a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-org:Service ;
+            owl:onProperty fibo-fnd-pas-pas:provisions ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-sfc:Facility ;
+            owl:onProperty fibo-fnd-pas-pas:provisions ] .
+
+fibo-fnd-pas-pas:Seller a owl:Class ;
+    rdfs:label "seller",
+        "卖方（seller）"@zh ;
+    rdfs:comment "向实际或潜在买方作出、要约或订立销售合同的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:sells ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that makes, offers or contracts to make a sale to an actual or potential buyer" ;
+    cmns-av:synonym "purveyor",
+        "vendor" .
+
+fibo-fnd-pas-pas:Buyer a owl:Class ;
+    rdfs:label "buyer",
+        "买方（buyer）"@zh ;
+    rdfs:comment "依销售合同以货币或其他对价购买某物的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:buys ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that purchases something in exchange for money or other consideration under a contract of sale" ;
+    cmns-av:explanatoryNote "A buyer is the party that acquires, or agrees to acquire, ownership (in case of goods), or benefit or usage (in case of rights or services), something in the context of a sale, and may or may not be an end user of the product, good, service, or right." ;
+    cmns-av:synonym "buyer",
+        "purchaser" .
+
+fibo-fnd-pas-pas:Product a owl:Class ;
+    rdfs:label "product",
+        "产品（product）"@zh ;
+    rdfs:comment "商业化分销的货物：(1) 有形财产，(2) 加工、制造或生产过程的产出或结果，或 (3) 服务。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fnd-pas-pas:Good fibo-fnd-law-lcap:ContractualRight cmns-org:Service ) ] ;
+    skos:definition "commercially distributed good that is (1) tangible property, (2) the output or result of a fabrication, manufacturing, or production process, or (3) something that passes through a distribution channel before being consumed or used." ;
+    cmns-av:explanatoryNote "Financial products include contracts that are developed via a financial service-specific process, such as a life insurance policy, demand deposit account or financial instrument, for example. Leases and rentals are similar in that they are initiated via some contractual development process, wherein the product is the right to use something for some period of time." .
+

@@ -1,0 +1,179 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-sfc: <https://www.omg.org/spec/Commons/SitesAndFacilities/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-plc-rp: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/RealProperty/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-plc-rp: a owl:Ontology ;
+    rdfs:label "Real Property Ontology"@en,
+        "不动产本体（Real Property Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts including real and personal property from a legal perspective, as well as assessments of those assets, for reference for taxation, lending, and related purposes." ;
+    dcterms:license """Copyright (c) 2024-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2024-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义不动产（real property）及其与地点、所有权的关系，支撑抵押贷款与房地产金融。"@zh ;
+    owl:imports fibo-fnd-arr-asmt:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-cxtid:,
+        cmns-doc:,
+        cmns-id:,
+        <https://www.omg.org/spec/Commons/Locations/>,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rga:,
+        cmns-sfc: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20260701/Places/RealProperty/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20241001/Places/RealProperty.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Places/RealProperty.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.3 (FND-399).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20251201/Places/RealProperty.rdf version of the ontology was modified to reflect migration of concepts from accounting equity to ownership in FND (FND-409)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2024-2025 Object Management Group, Inc.",
+        "Copyright (c) 2024-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fnd-plc-rp:PersonalProperty a owl:Class ;
+    rdfs:label "personal property"@en,
+        "动产（personal property）"@zh ;
+    rdfs:comment "不附着于土地的可移动物品或财物类资产。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-asmt:Appraisal ;
+            owl:onProperty fibo-fnd-rel-rel:isEvaluatedBy ],
+        fibo-fnd-oac-own:Asset ;
+    owl:disjointWith fibo-fnd-plc-rp:RealProperty ;
+    skos:definition "asset that is a movable item or possession not fixed to land"@en ;
+    cmns-av:explanatoryNote "Personal property may include tangible assets, such as machinery, furniture, vehicles, artwork, and jewelry, regardless of whether such assets are owned by a person or organization, and intangible assets, including but not limited to intellectual property and financial instruments."@en .
+
+fibo-fnd-plc-rp:PropertyInspection a owl:Class ;
+    rdfs:label "property inspection",
+        "房产查验（property inspection）"@zh ;
+    rdfs:comment "涉及分析不动产一个或多个方面的事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-fnd-plc-rp:RealProperty ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-rp:PropertyInspectionReport ;
+            owl:onProperty fibo-fnd-dt-oc:hasOutput ],
+        fibo-fnd-arr-asmt:AssessmentEvent ;
+    skos:definition "event that involves analyzing one or more aspects of a real property" ;
+    cmns-av:explanatoryNote "The concept of a property inspection is separate from conducting an overarching appraisal. Examples are termite inspections, construction inspections, evaluation for completion of some milestone, improvement, correction, etc." .
+
+fibo-fnd-plc-rp:RealPropertyIdentifier a owl:Class ;
+    rdfs:label "real property identifier",
+        "不动产标识符（real property identifier）"@zh ;
+    rdfs:comment "在某管辖区用于标识特定不动产的唯一标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-rp:RealProperty ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        cmns-cxtid:ContextualIdentifier ;
+    skos:definition "unique identifier given to identify a specific real property in some jurisidiction" .
+
+fibo-fnd-plc-rp:TractIdentifier a owl:Class ;
+    rdfs:label "地块标识符（TractIdentifier）"@zh ;
+    rdfs:comment "在某管辖区签发使用的地块唯一标识符。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass cmns-sfc:TractIdentifier .
+
+fibo-fnd-plc-rp:TractOfLand a owl:Class ;
+    rdfs:label "地块（TractOfLand）"@zh ;
+    rdfs:comment "地球表面较大区域内一块连续的土地，通常按契约、勘测或法律文件所述边界界定。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass cmns-sfc:TractOfLand .
+
+fibo-fnd-plc-rp:RealEstate a owl:Class ;
+    rdfs:label "real estate"@en,
+        "房地产（real estate）"@zh ;
+    rdfs:comment "不动产、不动产抵押权益（包括土地租赁权及其上建筑物的抵押权益）以及相关股份。"@zh ;
+    rdfs:subClassOf fibo-fnd-oac-own:Asset ;
+    skos:definition "real property, interests in mortgages on real property (including interests in mortgages on leaseholds of land or improvements thereon), and shares in qualified real estate investment trusts"@en ;
+    cmns-av:adaptedFrom "https://www.law.cornell.edu/cfr/text/26/1.856-3"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The term 'mortgages on real property' includes deeds of trust on real property. Note that interpretation of the term 'real estate' is context-dependent - this broader interpretation is used in tax law in the US and elsewhere."@en ;
+    cmns-av:synonym "real estate asset"@en .
+
+fibo-fnd-plc-rp:RealPropertyAppraisal a owl:Class ;
+    rdfs:label "real property appraisal",
+        "不动产估价（real property appraisal）"@zh ;
+    rdfs:comment "估计某不动产价值金额的价值评估。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-fnd-plc-rp:RealProperty ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-rp:PropertyInspectionReport ;
+            owl:onProperty fibo-fnd-dt-oc:hasInput ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Appraiser ],
+        fibo-fnd-arr-asmt:Appraisal ;
+    skos:definition "value assessment that estimates the amount of money some real property is worth" ;
+    cmns-av:explanatoryNote "The valuation uses one or more methodologies and is conducted by an appraiser or technology with a logical model that performs the same function." .
+
+cmns-sfc:TractOfLand a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
+            owl:onProperty fibo-fnd-plc-adr:hasAddress ] .
+
+fibo-fnd-plc-rp:PropertyInspectionReport a owl:Class ;
+    rdfs:label "property inspection report",
+        "房产查验报告（property inspection report）"@zh ;
+    rdfs:comment "涵盖房产查验结果的报告。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-fnd-plc-rp:RealProperty ],
+        fibo-fnd-arr-asmt:AssessmentReport ;
+    skos:definition "report covering the findings of a property inspection" .
+
+fibo-fnd-plc-rp:RealProperty a owl:Class ;
+    rdfs:label "real property"@en,
+        "不动产（real property）"@zh ;
+    rdfs:comment "定义为土地连同永久附着于该土地的任何构筑物（如房屋、树木、围栏和改良物）的实物资产。"@zh ;
+    rdfs:seeAlso <https://www.investopedia.com/terms/r/real-property.asp> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-rp:RealPropertyAppraisal ;
+            owl:onProperty fibo-fnd-rel-rel:isEvaluatedBy ],
+        fibo-fnd-oac-own:PhysicalAsset,
+        fibo-fnd-plc-rp:RealEstate ;
+    skos:definition "physical asset defined as land together with any structures that are permanently attached to that land, such as houses, trees, fences and improvements"@en ;
+    cmns-av:adaptedFrom "https://www.law.cornell.edu/cfr/text/10/600.101"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Real property may be classified according to its general use as residential, commercial, agricultural, industrial, or special purpose. This term is sometimes used synonymously with 'real estate', though not in all circumstances under US law."@en,
+        "Real property typically encompasses both the physical land and everything that lies above, below, or on its surface, including any fixed structures, natural resources, and rights or interests (e.g., mineral rights). There are cases, such as condominiums, in which the interior of the structure is owned by a party that may not own the land. There are also cases in which certain long-term leases have similar characteristics to ownership, but are time-bound."@en ;
+    cmns-av:synonym "parcel"@en .
+

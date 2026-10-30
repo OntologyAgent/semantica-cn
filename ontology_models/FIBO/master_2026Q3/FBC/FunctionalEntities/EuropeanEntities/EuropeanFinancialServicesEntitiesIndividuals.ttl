@@ -1,0 +1,116 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-be-oac-cctl: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateControl/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-fbc-fct-bci: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/> .
+@prefix fibo-fbc-fct-breg: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> .
+@prefix fibo-fbc-fct-cra: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/CommercialRegistrationAuthorities/> .
+@prefix fibo-fbc-fct-eufseind: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals/> .
+@prefix fibo-fbc-fct-eurga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-mkti: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/MarketsIndividuals/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-eufseind: a owl:Ontology ;
+    rdfs:label "European Financial Services Entities Individuals Ontology",
+        "欧洲金融服务实体个体本体（European Financial Services Entities Individuals Ontology）"@zh ;
+    dcterms:abstract "This ontology extends the primary financial services entities ontology in FBC with individuals representing additional kinds of entities that provide services internationally, such as international market data providers, organizations that provide exchanges in multiple countries, etc." ;
+    dcterms:license """Copyright (c) 2017-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2017-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录欧洲各国金融服务机构与市场的参考个体。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-be-le-cb:,
+        fibo-be-le-fbo:,
+        fibo-be-le-lei:,
+        fibo-be-oac-cctl:,
+        fibo-der-drc-bsc:,
+        fibo-der-drc-swp:,
+        fibo-fbc-fct-bci:,
+        fibo-fbc-fct-breg:,
+        fibo-fbc-fct-cra:,
+        fibo-fbc-fct-eurga:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-fct-mkti:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-ra:,
+        cmns-rlcmp:,
+        lcc-3166-1: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20260601/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/20230101/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was added via the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to reflect revisions to the GLEIF LEI representation for validation level.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190101/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to eliminate usage of deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190901/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to eliminate duplication of concepts in LCC, simplify addresses and merge countries with locations in FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200301/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200701/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was revised to add the SIX Group and SIX Financial Information, which owns and operates a number of exchanges and issues the valoren, which is a commonly used financial instrument identifier, as well as to update the LEI data for all LEIs to correspond to the content published by the GLEIF on data.world.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20201201/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was revised to clarify the definitions of various LOUs as well as to update the LEI data for all LEIs to correspond to the content published by the GLEIF and clean up individual definitions as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20211201/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was revised to clean up dead links.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220801/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to refine and streamline the definitions of some service providers (SEC-205).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20251001/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to merge details from the old corporations ontology into corporate bodies for consistency and useability (BE-259).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20251002/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to add individuals needed for the ACTUS challenge (SEC-215).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20260301/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf version of the ontology was modified to improve clarity, eliminate circularity due to migration of the original US Financial Services Entities Individuals to Commercial Registration Authorities, to move many of the examples that were in this vocabulry to the new Financial Institutions Examples, and for better alignment with the GLEIF LEI repository for broader FIBO usage (FND-407)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2017-2026 EDM Council, Inc.",
+        "Copyright (c) 2017-2026 Object Management Group" .
+
+fibo-fbc-fct-eufseind:EuropeanMoneyMarketsInstitute a owl:NamedIndividual,
+        fibo-be-le-fbo:NotForProfitOrganization ;
+    rdfs:label "European Money Markets Institute" ;
+    skos:definition "international non-profit association under Belgian law founded in 1999 with the launch of the Euro and based in Brussels (56, Ave des Arts, 1000 Brussels)" ;
+    cmns-av:abbreviation "EMMI" ;
+    cmns-av:adaptedFrom "http://www.emmi-benchmarks.eu/"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Its members are national banking associations in the Member States of the European Union which are involved in the Eurozone." .
+
+fibo-fbc-fct-eufseind:SwedishBankersAssociation a owl:NamedIndividual,
+        cmns-org:FormalOrganization ;
+    rdfs:label "Swedish Bankers' Association" ;
+    skos:definition "association that represents banks and financial institutions established in Sweden that contributes to a sound and efficient regulatory framework that facilitates for banks to help create economic wealth for customers and society" ;
+    cmns-av:adaptedFrom "https://www.swedishbankers.se/en-us/about/about-us/about-us/"^^xsd:anyURI ;
+    cmns-col:isMemberOf fibo-fbc-fct-eufseind:EuropeanBankingFederation .
+
+fibo-fbc-fct-eufseind:EuropeanBankingFederation a owl:NamedIndividual,
+        fibo-be-le-fbo:NotForProfitOrganization ;
+    rdfs:label "European Banking Federation" ;
+    skos:definition "international non-profit association founded in 1960 that is the voice of the European banking sector, uniting 32 national banking associations in Europe that together represent some 4,500 banks - large and small, wholesale and retail, local and international - employing about 2.1 million people" ;
+    cmns-av:abbreviation "EBF" ;
+    cmns-av:adaptedFrom "http://www.ebf.eu/about-us/"^^xsd:anyURI .
+

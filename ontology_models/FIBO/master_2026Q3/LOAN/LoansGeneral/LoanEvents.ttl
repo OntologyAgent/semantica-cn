@@ -1,0 +1,183 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-law-cor: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-loan-ln-ev: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanEvents/> .
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-loan-ln-ev:CollateralValuation a owl:Class ;
+    rdfs:label "collateral valuation"@en,
+        "抵押物估值（collateral valuation）"@zh ;
+    rdfs:comment "对作为抵押品的不动产进行估值的评估活动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fbc-dae-dbt:Collateral ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Appraiser ],
+        fibo-fnd-arr-asmt:AssessmentActivity ;
+    skos:definition "assessment activity resulting in the valuation of real property as collateral"@en .
+
+fibo-loan-ln-ev:LoanPaidInFull a owl:Class ;
+    rdfs:label "loan paid in full"@en,
+        "贷款全额清偿（loan paid in full）"@zh ;
+    rdfs:comment "贷款本息全部还清的事件。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-ev:LoanPhase .
+
+fibo-loan-ln-ev:Prepayment a owl:Class ;
+    rdfs:label "prepayment"@en,
+        "提前还款（prepayment）"@zh ;
+    rdfs:comment "在到期前提前偿还贷款。"@zh ;
+    rdfs:subClassOf fibo-fnd-pas-psch:Payment .
+
+fibo-loan-ln-ev:RepaymentPhase a owl:Class ;
+    rdfs:label "repayment phase"@en,
+        "还款阶段（repayment phase）"@zh ;
+    rdfs:comment "贷款处于还款期的阶段。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-ev:LoanPhase .
+
+fibo-loan-ln-ev:hasDefaultAmount a owl:ObjectProperty ;
+    rdfs:label "has default amount"@en,
+        "具有违约金额（has default amount）"@zh ;
+    rdfs:comment "在扣除出售所得和回收款之前的违约金额。"@zh ;
+    rdfs:domain fibo-loan-ln-ev:LoanDefaultProceeding ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "amount before the application of sale proceeds and recoveries"@en ;
+    cmns-av:explanatoryNote "Undefined PoC SDM Notes: Default or Foreclosure amount - Total default amount before the application of sale proceeds and recoveries.&nbsp; (AO 146, RR 135) Loan Default Proceeding_cd= (1) Default amount </p> <p> Sale price - Price achieved on sale of property ( AO 147, RR 137 )&nbsp; Loan Default Proceeding_cd= (2) Property Sale </p> <p> Loss on Sale&nbsp;&nbsp; Total loss net of fees, accrued interest etc. after application of sale proceeds (excluding prepayment charge if subordinate to principal recoveries). Show any gain on sale as a negative number (AO 148, RR 138 )&nbsp; Loan Default Proceeding_cd = (3) Loss amount </p> <p> Cumulative Reocveries - ony relevant for cases with losses&nbsp; ( AO 149, RR 139 )&nbsp; Loan Default Proceeding_cd =&nbsp; (4) Recoveries </p> <p> Professional Negligence Recoveries - Any amounts received in settlement or as a result of professional negligence claims against surveyors, solicitors etc. net of any fees / costs ( AO 150, RR 140 )&nbsp; Loan Default Proceeding_cd = (5) Professional Negligence </p><br />"@en .
+
+fibo-loan-ln-ev:hasDisbursementDate a owl:ObjectProperty ;
+    rdfs:label "disbursement date"@en,
+        "放款日期（disbursement date）"@zh ;
+    rdfs:comment "贷款资金实际发放的日期。"@zh ;
+    rdfs:domain fibo-loan-ln-ln:Loan ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate .
+
+fibo-loan-ln-ev:inDefault a owl:DatatypeProperty ;
+    rdfs:label "in default"@en,
+        "违约（in default）"@zh ;
+    rdfs:comment "发行人未能支付其合同义务所要求的款项。"@zh ;
+    rdfs:domain fibo-loan-ln-ln:Loan ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the loan is in default."@en .
+
+fibo-loan-ln-ev:isDeferred a owl:DatatypeProperty ;
+    rdfs:label "is deferred"@en,
+        "已延期（is deferred）"@zh ;
+    rdfs:comment "表明某事项是否已延期。"@zh ;
+    rdfs:domain fibo-loan-ln-ln:Loan ;
+    rdfs:range xsd:boolean .
+
+fibo-loan-ln-ev: a owl:Ontology ;
+    rdfs:label "Loan Events Ontology"@en,
+        "贷款事件本体（Loan Events Ontology）"@zh ;
+    dcterms:abstract "This ontology defines a wide range of events relating to loans. These include legal proceedings, prepayments, and so forth." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义贷款生命周期中的事件：放款、逾期、违约、核销等。"@zh ;
+    owl:imports fibo-fbc-dae-dbt:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-arr-asmt:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-law-cor:,
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/>,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-loan-ln-ln:,
+        cmns-av:,
+        cmns-dt:,
+        cmns-org:,
+        cmns-rga: ;
+    owl:versionIRI fibo-loan-ln-ev: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-loan-ln-ev:LoanDefaultProceeding a owl:Class ;
+    rdfs:label "loan default proceeding"@en,
+        "贷款违约处置（loan default proceeding）"@zh ;
+    rdfs:comment "处理贷款违约的程序，通常属于贷款服务部门的工作。"@zh ;
+    rdfs:subClassOf fibo-loan-ln-ev:LegalProceeding ;
+    skos:definition "[no definition] Further Review This is typically part of mortgagte servicing. THere would typically be a whole department dealing with this. Dealing with default, helping borrowers make payment Collections Default admin Foreclosure Reselling All dealt with by several sub departments. This requires subject matter experts in this area. 1. scoping Identify default as a possible state. This hands off to other business processes. Once you get into the default scenario we are talking about a proces that is going to fall into place over a period of time. The bank works out what to do with the default scenario, e.g. whether it restructures, forecloses, seeks restitution from the security (collateral). It does nto help us to understand the structure of the loan, rather tha consequences of the loan. If we were to further explore the default detail we would bring in other SMEs. And we would have to model a process flow. 1.1 impact on the pool of an MBS Loan Default Proceeding (special ase of legal thing) is an aspect of Default Management / Administratoin. there is also the State of the Loan. Sale / something / fulfilment / fiunduing / approved = servicing mode. Something happens (non payment) =&gt; Default Grace Period followed by negotiation. Some threshold whereby after a given amount of delinquency it needs to go into some other process moving towards foreclosure. Do State Diagram. Stages of loan."@en .
+
+fibo-loan-ln-ev:hasJudgementAmount a owl:ObjectProperty ;
+    rdfs:label "has judgement amount"@en,
+        "具有判决金额（has judgement amount）"@zh ;
+    rdfs:comment "对主要借款人记录且已/未履行（核保时点）的法院判决或等效事项的总金额。"@zh ;
+    rdfs:domain fibo-loan-ln-ev:CourtJudgment ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "Undefined PoC SDM Notes: Total value of CCJs or equivalent recorded against the primary borrower that were satisfied / unsatsified (at time of underwriting ) is computed by selecting the satisfaction code value of interest and aggregating against all borrower CC Judgements &lt;/p&gt;"@en .
+
+fibo-loan-ln-ev:isAgainst a owl:ObjectProperty ;
+    rdfs:label "is against"@en,
+        "针对（is against）"@zh ;
+    rdfs:comment "标识该程序或行动所针对的对象。"@zh ;
+    rdfs:domain fibo-loan-ln-ev:LegalProceeding ;
+    rdfs:range cmns-org:LegalPerson .
+
+fibo-loan-ln-ev:isDeliveredBy a owl:ObjectProperty ;
+    rdfs:label "is delivered by"@en,
+        "由……交付（is delivered by）"@zh ;
+    rdfs:comment "标识交付某事物的参与方。"@zh ;
+    rdfs:domain fibo-loan-ln-ev:CourtJudgment ;
+    rdfs:range fibo-fnd-law-cor:CourtOfLaw .
+
+fibo-loan-ln-ev:CourtJudgment a owl:Class ;
+    rdfs:label "court judgment"@en,
+        "法院判决（court judgment）"@zh ;
+    rdfs:comment "法院或其他裁判机构解决争议、确定各方权利与义务的决定。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-loan-ln-ev:hasJudgementAmount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-ev:isDeliveredBy ;
+            owl:someValuesFrom fibo-fnd-law-cor:CourtOfLaw ],
+        fibo-loan-ln-ev:LegalProceeding ;
+    skos:definition "decision by a court or other tribunal that resolves a controversy and determines the rights and obligations of the parties"@en .
+
+fibo-loan-ln-ev:LoanPhase a owl:Class ;
+    rdfs:label "loan phase"@en,
+        "贷款阶段（loan phase）"@zh ;
+    rdfs:comment "贷款所处的阶段。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStage .
+
+fibo-loan-ln-ev:LegalProceeding a owl:Class ;
+    rdfs:label "legal proceeding"@en,
+        "法律程序（legal proceeding）"@zh ;
+    rdfs:comment "在法院或机构指示或授权下采取的法律步骤或行动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-ev:isAgainst ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
+        fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "legal step or action taken at the direction of, or by the authority of, a court or agency"@en .
+

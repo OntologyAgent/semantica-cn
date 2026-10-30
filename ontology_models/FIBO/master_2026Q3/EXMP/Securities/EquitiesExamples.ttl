@@ -1,0 +1,898 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-usj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-exmp-le-djiac: <https://spec.edmcouncil.org/fibo/ontology/EXMP/LegalEntities/DowJonesIndustrialAverageCompanies/> .
+@prefix fibo-exmp-le-finst: <https://spec.edmcouncil.org/fibo/ontology/EXMP/LegalEntities/FinancialInstitutionExamples/> .
+@prefix fibo-exmp-le-mktex: <https://spec.edmcouncil.org/fibo/ontology/EXMP/LegalEntities/MarketsAndExchangesExamples/> .
+@prefix fibo-exmp-sec-eqex: <https://spec.edmcouncil.org/fibo/ontology/EXMP/Securities/EquitiesExamples/> .
+@prefix fibo-fbc-fct-mkti: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/MarketsIndividuals/> .
+@prefix fibo-fbc-fct-usjrga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-acc-4217: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-eq-10962: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/> .
+@prefix fibo-sec-eq-eq: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/> .
+@prefix fibo-sec-sec-id: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/> .
+@prefix fibo-sec-sec-idind: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentificationIndividuals/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-exmp-sec-eqex: a owl:Ontology ;
+    rdfs:label "Equities Example Individuals Ontology",
+        "股票示例个体本体（Equities Example Individuals Ontology）"@zh ;
+    dcterms:abstract "This ontology provides examples of how to represent simple equities." ;
+    dcterms:license """Copyright (c) 2019-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2019-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录典型股票（上市公司普通股）的示例个体。"@zh ;
+    owl:imports fibo-be-ge-usj:,
+        fibo-exmp-le-djiac:,
+        fibo-exmp-le-finst:,
+        fibo-exmp-le-mktex:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-mkti:,
+        fibo-fbc-fct-usjrga:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-acc-4217:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-sec-eq-eq:,
+        fibo-sec-sec-id:,
+        fibo-sec-sec-idind:,
+        fibo-sec-sec-iss:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-ra:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/EXMP/20260701/Securities/EquitiesExamples/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200301/Equities/EquitiesExampleIndividuals.rdf version of this ontology was modified to add CFI codes to the example equity instruments.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200501/Equities/EquitiesExampleIndividuals.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20200701/Equities/EquitiesExampleIndividuals.rdf version of this ontology was revised to add the share class to some of the examples, replace registered form with book entry (registered) form, and add detail to the common share and listing individuals.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20201201/Equities/EquitiesExampleIndividuals.rdf version of this ontology was revised to replace equity issuer with share issuer.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20210301/Equities/EquitiesExampleIndividuals.rdf version of this ontology was revised to address changes to the markets individuals ontology.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20221201/Equities/EquitiesExampleIndividuals.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Equities/EquitiesExampleIndividuals.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20230301/Equities/EquitiesExampleIndividuals.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20240101/Equities/EquitiesExampleIndividuals.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20250301/Equities/EquitiesExampleIndividuals.rdf version of the ontology was modified to integrate migration of individuals to Commercial Registration Authorities (FND-407).",
+        "The https://spec.edmcouncil.org/fibo/ontology/SEC/20260601/Equities/EquitiesExampleIndividuals.rdf version of the ontology was modified to replace references to the now deprecated hasTag property in Relations with its equivalent in OMG Commons (FND-412)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2019-2025 Object Management Group, Inc.",
+        "Copyright (c) 2019-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-exmp-sec-eqex:AlphabetIncClassAFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "Alphabet Inc. class A financial instrument short name" ;
+    skos:definition "Alphabet Inc. class A common share financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH CL A" ;
+    fibo-sec-sec-iss:hasIssuerShortName "ALPHABET INC" ;
+    cmns-dsg:hasTag "ALPHABET INC/SH CL A" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AlphabetIncClassACommonStock .
+
+fibo-exmp-sec-eqex:AlphabetIncClassCFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "Alphabet Inc. class C financial instrument short name" ;
+    skos:definition "Alphabet Inc. class C capital stock financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH CAP SH NV" ;
+    fibo-sec-sec-iss:hasIssuerShortName "ALPHABET INC" ;
+    cmns-dsg:hasTag "ALPHABET INC/SH CAP SH NV" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AlphabetIncClassCCapitalStock .
+
+fibo-exmp-sec-eqex:AppleIncCommonStockFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "Apple Inc. common stock financial instrument short name" ;
+    skos:definition "Apple Inc. common stock financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH SH" ;
+    fibo-sec-sec-iss:hasIssuerShortName "APPLE INC" ;
+    cmns-dsg:hasTag "APPLE INC/SH SH" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AppleIncCommonStock .
+
+fibo-exmp-sec-eqex:BBG000B9Y5X2 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG000B9Y5X2" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Apple Inc. common shares listed in the Nasdaq (NASDAQ-NGS)" ;
+    cmns-dsg:hasTag "BBG000B9Y5X2" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNASListedAppleIncCommonStock .
+
+fibo-exmp-sec-eqex:BBG000BKZDM1 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG000BKZDM1" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for The Home Depot common shares listed in the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "BBG000BKZDM1" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedTheHomeDepotIncCommonStock .
+
+fibo-exmp-sec-eqex:BBG000BLNQ16 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG000BLNQ16" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for IBM common shares listed in the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "BBG000BLNQ16" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedInternationalBusinessMachinesCorporationCommonStock .
+
+fibo-exmp-sec-eqex:BBG000BMX4N8 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG000BMX4N8" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for The Coca-Cola Company common shares listed in the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "BBG000BMX4N8" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedTheCoca-ColaCompanyCommonStock .
+
+fibo-exmp-sec-eqex:BBG000BR2WS4 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG000BR2WS4" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for The Proctor & Gamble Company common shares listed in the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "BBG000BR2WS4" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedTheProctorAndGambleCompanyCommonStock .
+
+fibo-exmp-sec-eqex:BBG000BWQFY7 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG000BWQFY7" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Wells Fargo & Company common shares listed in the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "BBG000BWQFY7" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedWellsFargoCommonStock .
+
+fibo-exmp-sec-eqex:BBG000DMBZW1 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG000DMBZW1" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for JPMorgan Chase & Co. common shares listed in the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "BBG000DMBZW1" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedJPMorganChaseAndCoCommonStock .
+
+fibo-exmp-sec-eqex:BBG000FY4VG8 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG000FY4VG8" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Citigroup Inc. common shares listed in the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "BBG000FY4VG8" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedCitigroupIncCommonStock .
+
+fibo-exmp-sec-eqex:BBG001S5MQ8 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG001S5MQ8" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for The Coca-Cola Company common shares" ;
+    cmns-dsg:hasTag "BBG001S5MQ8" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheCoca-ColaCompanyCommonStock .
+
+fibo-exmp-sec-eqex:BBG001S5N8V8 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG001S5N8V8" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Apple Inc. common shares" ;
+    cmns-dsg:hasTag "BBG001S5N8V8" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AppleIncCommonStock .
+
+fibo-exmp-sec-eqex:BBG001S5RTW7 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG001S5RTW7" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for The Home Depot, Inc. common shares" ;
+    cmns-dsg:hasTag "BBG001S5RTW7" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheHomeDepotIncCommonStock .
+
+fibo-exmp-sec-eqex:BBG001S5S399 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG001S5S399" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for IBM common shares" ;
+    cmns-dsg:hasTag "BBG001S5S399" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationCommonStock .
+
+fibo-exmp-sec-eqex:BBG001S5V4L9 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG001S5V4L9" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for The Proctor & Gamble Company common shares" ;
+    cmns-dsg:hasTag "BBG001S5V4L9" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheProctorAndGambleCompanyCommonStock .
+
+fibo-exmp-sec-eqex:BBG001S5XF23 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG001S5XF23" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Wells Fargo & Company common shares" ;
+    cmns-dsg:hasTag "BBG001S5XF23" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:WellsFargoCommonStock .
+
+fibo-exmp-sec-eqex:BBG001S72ZG4 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG001S72ZG4" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Citigroup Inc. common shares" ;
+    cmns-dsg:hasTag "BBG001S72ZG4" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:CitigroupIncCommonStock .
+
+fibo-exmp-sec-eqex:BBG001S8CRC3 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG001S8CRC3" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for JPMorgan Chase & Co. common shares" ;
+    cmns-dsg:hasTag "BBG001S8CRC3" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:JPMorganChaseAndCoCommonStock .
+
+fibo-exmp-sec-eqex:BBG009S39JY5 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG009S39JY5" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Alphabet Inc. class A common shares" ;
+    cmns-dsg:hasTag "BBG009S39JY5" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AlphabetIncClassACommonStock .
+
+fibo-exmp-sec-eqex:BBG009S3NB21 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG009S3NB21" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Alphabet Inc. class C common shares" ;
+    cmns-dsg:hasTag "BBG009S3NB21" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AlphabetIncClassCCapitalStock .
+
+fibo-exmp-sec-eqex:BBG009S4MT03 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG009S4MT03" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Alphabet Inc. class A common shares listed in the Nasdaq (NASDAQ-NGS)" ;
+    cmns-dsg:hasTag "BBG009S4MT03" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNASListedAlphabetIncClassACommonStock .
+
+fibo-exmp-sec-eqex:BBG009S4MVF2 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG009S4MVF2" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Alphabet Inc. class C common shares listed in the Nasdaq (NASDAQ-NGS)" ;
+    cmns-dsg:hasTag "BBG009S4MVF2" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNASListedAlphabetIncClassCCapitalStock .
+
+fibo-exmp-sec-eqex:BBG00JPR0LX8 a owl:NamedIndividual,
+        fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ;
+    rdfs:label "BBG00JPR0LX8" ;
+    skos:definition "Financial Instrument Global Identifier (FIGI) for Apple Inc. common shares listed in the London Stock Exchange" ;
+    cmns-dsg:hasTag "BBG00JPR0LX8" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XLOMListedAppleIncCommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-02079K107 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "02079K107" ;
+    skos:definition "Alphabet Inc. class C common share CUSIP" ;
+    cmns-dsg:hasTag "02079K107" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AlphabetIncClassCCapitalStock .
+
+fibo-exmp-sec-eqex:CUSIP-02079K305 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "02079K305" ;
+    skos:definition "Alphabet Inc. class A common share CUSIP" ;
+    cmns-dsg:hasTag "02079K305" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AlphabetIncClassACommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-037833100 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "037833100" ;
+    skos:definition "Apple Inc. common share CUSIP" ;
+    cmns-dsg:hasTag "037833100" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AppleIncCommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-172967424 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "172967424" ;
+    skos:definition "Citigroup Inc. common share CUSIP" ;
+    cmns-dsg:hasTag "172967424" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:CitigroupIncCommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-191216100 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "191216100" ;
+    skos:definition "The Coca-Cola Company common share CUSIP" ;
+    cmns-dsg:hasTag "191216100" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheCoca-ColaCompanyCommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-437076102 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "437076102" ;
+    skos:definition "The Home Depot, Inc. common share CUSIP" ;
+    cmns-dsg:hasTag "437076102" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheHomeDepotIncCommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-459200101 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "459200101" ;
+    skos:definition "IBM common share CUSIP" ;
+    cmns-dsg:hasTag "459200101" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationCommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-46625H100 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "46625H100" ;
+    skos:definition "JPMorgan Chase & Co. common share CUSIP" ;
+    cmns-dsg:hasTag "46625H100" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:JPMorganChaseAndCoCommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-742718109 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "742718109" ;
+    skos:definition "The Proctor & Gamble Company common share CUSIP" ;
+    cmns-dsg:hasTag "742718109" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheProctorAndGambleCompanyCommonStock .
+
+fibo-exmp-sec-eqex:CUSIP-949746101 a owl:NamedIndividual,
+        fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber ;
+    rdfs:label "949746101" ;
+    skos:definition "Wells Fargo & Company common share CUSIP" ;
+    cmns-dsg:hasTag "949746101" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:WellsFargoCommonStock .
+
+fibo-exmp-sec-eqex:CitigroupIncCommonStockFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "Citigroup Inc. common stock financial instrument short name" ;
+    skos:definition "Citigroup Inc. common stock financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH" ;
+    fibo-sec-sec-iss:hasIssuerShortName "CITIGROUP INC" ;
+    cmns-dsg:hasTag "CITIGROUP INC/SH" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:CitigroupIncCommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US02079K1079 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US02079K1079" ;
+    skos:definition "Alphabet Inc. class C common share ISIN" ;
+    cmns-dsg:hasTag "US02079K1079" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AlphabetIncClassCCapitalStock .
+
+fibo-exmp-sec-eqex:ISIN-US02079K3059 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US02079K3059" ;
+    skos:definition "Alphabet Inc. class A common share ISIN" ;
+    cmns-dsg:hasTag "US02079K3059" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AlphabetIncClassACommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US0378331005 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US0378331005" ;
+    skos:definition "Apple Inc. common share ISIN" ;
+    cmns-dsg:hasTag "US0378331005" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:AppleIncCommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US1729674242 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US1729674242" ;
+    skos:definition "Citigroup Inc. common share ISIN" ;
+    cmns-dsg:hasTag "US1729674242" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:CitigroupIncCommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US1912161007 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US1912161007" ;
+    skos:definition "The Coca-Cola Company common share ISIN" ;
+    cmns-dsg:hasTag "US1912161007" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheCoca-ColaCompanyCommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US4370761029 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US4370761029" ;
+    skos:definition "The Home Depot, Inc. common share ISIN" ;
+    cmns-dsg:hasTag "US4370761029" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheHomeDepotIncCommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US4592001014 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US4592001014" ;
+    skos:definition "IBM common share ISIN" ;
+    cmns-dsg:hasTag "US4592001014" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationCommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US46625H1005 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US46625H1005" ;
+    skos:definition "JPMorgan Chase & Co. common share ISIN" ;
+    cmns-dsg:hasTag "US46625H1005" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:JPMorganChaseAndCoCommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US7427181091 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US7427181091" ;
+    skos:definition "The Proctor & Gamble Company common share ISIN" ;
+    cmns-dsg:hasTag "US7427181091" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheProctorAndGambleCompanyCommonStock .
+
+fibo-exmp-sec-eqex:ISIN-US9497461015 a owl:NamedIndividual,
+        fibo-sec-sec-id:InternationalSecuritiesIdentificationNumber ;
+    rdfs:label "US9497461015" ;
+    skos:definition "Wells Fargo & Company common share ISIN" ;
+    cmns-dsg:hasTag "US9497461015" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:WellsFargoCommonStock .
+
+fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationCommonStockFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "International Business Machines Corporation common stock financial instrument short name" ;
+    skos:definition "IBM common stock financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH" ;
+    fibo-sec-sec-iss:hasIssuerShortName "INTL BUS MACHIN" ;
+    cmns-dsg:hasTag "INTL BUS MACHIN/SH" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationCommonStock .
+
+fibo-exmp-sec-eqex:JPMorganChaseAndCoCommonStockFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "J.P. Morgan Chase & Co. common stock financial instrument short name" ;
+    skos:definition "J.P. Morgan Chase & Co. common stock financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH" ;
+    fibo-sec-sec-iss:hasIssuerShortName "JPMORGAN CHASE" ;
+    cmns-dsg:hasTag "JPMORGAN CHASE/SH" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:JPMorganChaseAndCoCommonStock .
+
+fibo-exmp-sec-eqex:SEDOL-B0YQ5W0 a owl:NamedIndividual,
+        fibo-sec-sec-idind:StockExchangeDailyOfficialListCode ;
+    rdfs:label "B0YQ5W0" ;
+    skos:definition "Apple Inc. common share SEDOL listed in the London Stock Exchange" ;
+    cmns-dsg:hasTag "B0YQ5W0" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XLOMListedAppleIncCommonStock .
+
+fibo-exmp-sec-eqex:TheCoca-ColaCompanyCommonStockFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "The Coca-Cola Company common stock financial instrument short name" ;
+    skos:definition "The Coca-Cola Company common stock financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH" ;
+    fibo-sec-sec-iss:hasIssuerShortName "COCA COLA CO" ;
+    cmns-dsg:hasTag "COCA COLA CO/SH" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheCoca-ColaCompanyCommonStock .
+
+fibo-exmp-sec-eqex:TheHomeDepotIncCommonStockFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "The Home Depot, Inc. common stock financial instrument short name" ;
+    skos:definition "Home Depot, Inc. common stock financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH" ;
+    fibo-sec-sec-iss:hasIssuerShortName "HOME DEPOT INC" ;
+    cmns-dsg:hasTag "HOME DEPOT INC/SH" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheHomeDepotIncCommonStock .
+
+fibo-exmp-sec-eqex:TheProctorAndGambleCompanyCommonStockFinancialInstrumentShortName a owl:NamedIndividual,
+        fibo-sec-sec-iss:FinancialInstrumentShortName ;
+    rdfs:label "The Proctor & Gamble Company common stock financial instrument short name" ;
+    skos:definition "The Proctor & Gamble Company common stock financial instrument short name (FISN)" ;
+    fibo-sec-sec-iss:hasInstrumentDescription "SH" ;
+    fibo-sec-sec-iss:hasIssuerShortName "PROCTER & GAMBL" ;
+    cmns-dsg:hasTag "PROCTER & GAMBL/SH" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:TheProctorAndGambleCompanyCommonStock .
+
+fibo-exmp-sec-eqex:TickerSymbol-XLOM-0R2V a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XLOM - 0R2V" ;
+    skos:definition "ticker symbol for Apple Inc. common stock listed in the London Stock Exchange" ;
+    cmns-dsg:hasTag "0R2V" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XLOMListedAppleIncCommonStock ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-mkti:Facility-XLOM .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNAS-AAPL a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNAS - AAPL" ;
+    skos:definition "ticker symbol for Apple Inc. common stock listed in the Nasdaq (NASDAQ-NGS)" ;
+    cmns-dsg:hasTag "AAPL" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNASListedAppleIncCommonStock ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-mkti:Facility-XNAS .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNAS-GOOG a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNAS - GOOG" ;
+    skos:definition "ticker symbol for Alphabet Inc. class C capital stock listed in the Nasdaq (NASDAQ-NGS)" ;
+    cmns-dsg:hasTag "GOOG" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNASListedAlphabetIncClassCCapitalStock ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-mkti:Facility-XNAS .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNAS-GOOGL a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNAS - GOOGL" ;
+    skos:definition "ticker symbol for Alphabet Inc. class A common stock listed in the Nasdaq (NASDAQ-NGS)" ;
+    cmns-dsg:hasTag "GOOGL" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNASListedAlphabetIncClassACommonStock ;
+    cmns-ra:isRegisteredBy fibo-fbc-fct-mkti:Facility-XNAS .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNYS-C a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNYS - C" ;
+    skos:definition "ticker symbol for Citigroup Inc. common stock listed on the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "C" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedCitigroupIncCommonStock ;
+    cmns-ra:isRegisteredBy fibo-exmp-le-mktex:NewYorkStockExchange .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNYS-HD a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNYS - HD" ;
+    skos:definition "ticker symbol for The Home Depot, Inc. common stock listed on the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "HD" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedTheHomeDepotIncCommonStock ;
+    cmns-ra:isRegisteredBy fibo-exmp-le-mktex:NewYorkStockExchange .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNYS-IBM a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNYS - IBM" ;
+    skos:definition "ticker symbol for Wells Fargo & Company common stock listed on the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "IBM" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedInternationalBusinessMachinesCorporationCommonStock ;
+    cmns-ra:isRegisteredBy fibo-exmp-le-mktex:NewYorkStockExchange .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNYS-JPM a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNYS - JPM" ;
+    skos:definition "ticker symbol for JPMorgan Chase & Co. common stock listed on the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "JPM" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedJPMorganChaseAndCoCommonStock ;
+    cmns-ra:isRegisteredBy fibo-exmp-le-mktex:NewYorkStockExchange .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNYS-KO a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNYS - KO" ;
+    skos:definition "ticker symbol for The Coca-Cola Company common stock listed on the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "KO" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedTheCoca-ColaCompanyCommonStock ;
+    cmns-ra:isRegisteredBy fibo-exmp-le-mktex:NewYorkStockExchange .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNYS-PG a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNYS - PG" ;
+    skos:definition "ticker symbol for The Proctor & Gamble Company common stock listed on the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "PG" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedTheProctorAndGambleCompanyCommonStock ;
+    cmns-ra:isRegisteredBy fibo-exmp-le-mktex:NewYorkStockExchange .
+
+fibo-exmp-sec-eqex:TickerSymbol-XNYS-WFC a owl:NamedIndividual,
+        fibo-sec-sec-id:TickerSymbol ;
+    rdfs:label "XNYS - WFC" ;
+    skos:definition "ticker symbol for Wells Fargo & Company common stock listed on the New York Stock Exchange (NYSE)" ;
+    cmns-dsg:hasTag "WFC" ;
+    cmns-id:identifies fibo-exmp-sec-eqex:XNYSListedWellsFargoCommonStock ;
+    cmns-ra:isRegisteredBy fibo-exmp-le-mktex:NewYorkStockExchange .
+
+fibo-exmp-sec-eqex:AppleIncEquityIssuer a owl:NamedIndividual,
+        fibo-sec-eq-eq:ShareIssuer ;
+    rdfs:label "Apple Inc. common stock issuer" ;
+    skos:definition "Apple Inc. functional entity that is an issuer of common stock" ;
+    fibo-sec-sec-iss:hasIssuerShortName "APPLE INC" ;
+    cmns-rlcmp:isPlayedBy fibo-exmp-le-djiac:AppleInc-US-CA .
+
+fibo-exmp-sec-eqex:CitigroupIncEquityIssuer a owl:NamedIndividual,
+        fibo-sec-eq-eq:ShareIssuer ;
+    rdfs:label "Citigroup Inc. common stock issuer" ;
+    skos:definition "Citigroup Inc. functional entity that is an issuer of common stock" ;
+    fibo-sec-sec-iss:hasIssuerShortName "CITIGROUP INC" ;
+    cmns-rlcmp:isPlayedBy fibo-exmp-le-finst:CitigroupInc-US-DE .
+
+fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationEquityIssuer a owl:NamedIndividual,
+        fibo-sec-eq-eq:ShareIssuer ;
+    rdfs:label "International Business Machines Corporation common stock issuer" ;
+    skos:definition "IBM functional entity that is an issuer of common stock" ;
+    fibo-sec-sec-iss:hasIssuerShortName "INTL BUS MACHIN" ;
+    cmns-rlcmp:isPlayedBy fibo-exmp-le-djiac:InternationalBusinessMachinesCorporation-US-NY .
+
+fibo-exmp-sec-eqex:JPMorganChaseAndCoEquityIssuer a owl:NamedIndividual,
+        fibo-sec-eq-eq:ShareIssuer ;
+    rdfs:label "J.P. Morgan Chase & Co. common stock issuer" ;
+    skos:definition "J.P. Morgan Chase & Co. functional entity that is an issuer of common stock" ;
+    fibo-sec-sec-iss:hasIssuerShortName "JPMORGAN CHASE" ;
+    cmns-rlcmp:isPlayedBy fibo-exmp-le-finst:JPMorganChaseAndCo-US-DE .
+
+fibo-exmp-sec-eqex:TheCoca-ColaCompanyEquityIssuer a owl:NamedIndividual,
+        fibo-sec-eq-eq:ShareIssuer ;
+    rdfs:label "The Coca-Cola Company common stock issuer" ;
+    skos:definition "The Coca-Cola Company functional entity that is an issuer of common stock" ;
+    fibo-sec-sec-iss:hasIssuerShortName "COCA COLA CO" ;
+    cmns-rlcmp:isPlayedBy fibo-exmp-le-djiac:TheCoca-ColaCompany-US-DE .
+
+fibo-exmp-sec-eqex:TheHomeDepotIncEquityIssuer a owl:NamedIndividual,
+        fibo-sec-eq-eq:ShareIssuer ;
+    rdfs:label "The Home Depot, Inc. common stock issuer" ;
+    skos:definition "Home Depot, Inc. functional entity that is an issuer of common stock" ;
+    fibo-sec-sec-iss:hasIssuerShortName "HOME DEPOT INC" ;
+    cmns-rlcmp:isPlayedBy fibo-exmp-le-djiac:TheHomeDepotInc-US-DE .
+
+fibo-exmp-sec-eqex:TheProctorAndGambleCompanyEquityIssuer a owl:NamedIndividual,
+        fibo-sec-eq-eq:ShareIssuer ;
+    rdfs:label "The Proctor & Gamble Company common stock issuer" ;
+    skos:definition "The Proctor & Gamble Company functional entity that is an issuer of common stock" ;
+    fibo-sec-sec-iss:hasIssuerShortName "PROCTOR & GAMBL" ;
+    cmns-rlcmp:isPlayedBy fibo-exmp-le-djiac:TheProctorAndGambleCompany-US-OH .
+
+fibo-exmp-sec-eqex:XNASListedAlphabetIncClassACommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNAS-listed Alphabet Inc. class A common stock" ;
+    skos:definition "Alphabet Inc. class A common share listed in the Nasdaq (NASDAQ-NGS)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "2004-08-01" ;
+    fibo-sec-sec-lst:isTradedOn fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:AlphabetIncClassACommonStock .
+
+fibo-exmp-sec-eqex:XNASListedAlphabetIncClassCCapitalStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNAS-listed Alphabet Inc. class C capital stock" ;
+    skos:definition "Alphabet Inc. class C capital stock listed in the Nasdaq (NASDAQ-NGS)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "2004-08-01" ;
+    fibo-sec-sec-lst:isTradedOn fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:AlphabetIncClassCCapitalStock .
+
+fibo-exmp-sec-eqex:XNASListedAppleIncCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNAS-listed Apple Inc. common stock" ;
+    skos:definition "Apple Inc. common share listed in the Nasdaq (NASDAQ-NGS)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "1980-12-12" ;
+    fibo-sec-sec-lst:isTradedOn fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:AppleIncCommonStock .
+
+fibo-exmp-sec-eqex:XNYSListedCitigroupIncCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNYS-listed Citigroup Inc. common stock" ;
+    skos:definition "Citigroup Inc. common share listed in the New York Stock Exchange (NYSE)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "1988-10-08" ;
+    fibo-sec-sec-lst:isTradedOn fibo-exmp-le-mktex:NewYorkStockExchange ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:CitigroupIncCommonStock .
+
+fibo-exmp-sec-eqex:XNYSListedInternationalBusinessMachinesCorporationCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNYS-listed IBM common stock" ;
+    skos:definition "IBM common share listed in the New York Stock Exchange (NYSE)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "1924-02-14" ;
+    fibo-sec-sec-lst:isTradedOn fibo-exmp-le-mktex:NewYorkStockExchange ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationCommonStock .
+
+fibo-exmp-sec-eqex:XNYSListedJPMorganChaseAndCoCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNYS-listed JPMorgan Chase & Co. common stock" ;
+    skos:definition "JPMorgan Chase & Co. common share listed in the New York Stock Exchange (NYSE)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "1978-10-06" ;
+    fibo-sec-sec-lst:isTradedOn fibo-exmp-le-mktex:NewYorkStockExchange ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:JPMorganChaseAndCoCommonStock .
+
+fibo-exmp-sec-eqex:XNYSListedTheCoca-ColaCompanyCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNYS-listed The Coca-Cola Company common stock" ;
+    skos:definition "The Coca-Cola Company common share listed in the New York Stock Exchange (NYSE)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "1919-09-05" ;
+    fibo-sec-sec-lst:isTradedOn fibo-exmp-le-mktex:NewYorkStockExchange ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:TheCoca-ColaCompanyCommonStock .
+
+fibo-exmp-sec-eqex:XNYSListedTheHomeDepotIncCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNYS-listed The Home Depot, Inc. common stock" ;
+    skos:definition "The Home Depot, Inc. common share listed in the New York Stock Exchange (NYSE)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "1984-04-19" ;
+    fibo-sec-sec-lst:isTradedOn fibo-exmp-le-mktex:NewYorkStockExchange ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:TheHomeDepotIncCommonStock .
+
+fibo-exmp-sec-eqex:XNYSListedTheProctorAndGambleCompanyCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNYS-listed The Proctor & Gamble Company common stock" ;
+    skos:definition "The Proctor & Gamble Company common share listed in the New York Stock Exchange (NYSE)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:hasListingDate "1978-01-13" ;
+    fibo-sec-sec-lst:isTradedOn fibo-exmp-le-mktex:NewYorkStockExchange ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:TheProctorAndGambleCompanyCommonStock .
+
+fibo-exmp-sec-eqex:XNYSListedWellsFargoCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XNYS-listed Wells Fargo common stock" ;
+    skos:definition "Wells Fargo & Company common share listed in the New York Stock Exchange (NYSE)" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:isTradedOn fibo-exmp-le-mktex:NewYorkStockExchange ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:WellsFargoCommonStock .
+
+fibo-exmp-sec-eqex:AlphabetIncEquityIssuer a owl:NamedIndividual,
+        fibo-sec-eq-eq:ShareIssuer ;
+    rdfs:label "Alphabet Inc. equity issuer" ;
+    skos:definition "Alphabet Inc. functional entity that is an issuer of stock" ;
+    fibo-sec-sec-iss:hasIssuerShortName "ALPHABET INC" ;
+    cmns-rlcmp:isPlayedBy fibo-exmp-le-djiac:AlphabetInc-US-CA .
+
+fibo-exmp-sec-eqex:WellsFargoCommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "Wells Fargo common stock" ;
+    skos:definition "Wells Fargo & Company common share" ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-le-finst:WellsFargoAndCompany ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-le-finst:WellsFargoAndCompany ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BearerAndRegisteredForm,
+        fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNYSListedWellsFargoCommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR ;
+    cmns-ra:hasRegistrationDate "1998-09-11" .
+
+fibo-exmp-sec-eqex:XLOMListedAppleIncCommonStock a owl:NamedIndividual,
+        fibo-sec-sec-lst:Listing ;
+    rdfs:label "XLOM-listed Apple Inc. common stock" ;
+    skos:definition "Apple Inc. common share listed in the London Stock Exchange" ;
+    fibo-fnd-acc-cur:hasCurrency fibo-fnd-acc-4217:USDollar ;
+    fibo-sec-sec-lst:isTradedOn fibo-fbc-fct-mkti:Facility-XLOM ;
+    fibo-sec-sec-lst:lists fibo-exmp-sec-eqex:AppleIncCommonStock .
+
+fibo-exmp-sec-eqex:AlphabetIncClassACommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "Alphabet Inc. class A common stock" ;
+    skos:definition "common share class that represents class A series shares in Alphabet Inc." ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:AlphabetIncEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:AlphabetIncEquityIssuer ;
+    fibo-sec-eq-eq:hasShareClass "A" ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNASListedAlphabetIncClassACommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR ;
+    cmns-ra:hasRegistrationDate "2015-10-02" .
+
+fibo-exmp-sec-eqex:AlphabetIncClassCCapitalStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonNonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "Alphabet Inc. class C capital stock" ;
+    skos:definition "common share class that represents class C series shares in Alphabet Inc." ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:AlphabetIncEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:AlphabetIncEquityIssuer ;
+    fibo-sec-eq-eq:hasShareClass "C" ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNASListedAlphabetIncClassCCapitalStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESNUFR ;
+    cmns-ra:hasRegistrationDate "2015-10-02" .
+
+fibo-exmp-sec-eqex:CitigroupIncCommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "Citigroup Inc. common stock" ;
+    skos:definition "common share class representing shares in Citigroup Inc." ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:CitigroupIncEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:CitigroupIncEquityIssuer ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BearerAndRegisteredForm,
+        fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNYSListedCitigroupIncCommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR ;
+    cmns-ra:hasRegistrationDate "1998-09-29" .
+
+fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationCommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "International Business Machines Corporation common stock" ;
+    skos:definition "common share class representing shares in International Business Machines Corporation" ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfNewYorkJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:InternationalBusinessMachinesCorporationEquityIssuer ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BearerAndRegisteredForm,
+        fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNYSListedInternationalBusinessMachinesCorporationCommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR .
+
+fibo-exmp-sec-eqex:JPMorganChaseAndCoCommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "JPMorgan Chase & Co. common stock" ;
+    skos:definition "common share class representing shares in J.P. Morgan Chase & Co." ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:JPMorganChaseAndCoEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:JPMorganChaseAndCoEquityIssuer ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BearerAndRegisteredForm,
+        fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNYSListedJPMorganChaseAndCoCommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR ;
+    cmns-ra:hasRegistrationDate "2000-12-28" .
+
+fibo-exmp-sec-eqex:TheCoca-ColaCompanyCommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "The Coca-Cola Company common stock" ;
+    skos:definition "common share class representing shares in The Coca-Cola Company" ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:TheCoca-ColaCompanyEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:TheCoca-ColaCompanyEquityIssuer ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BearerAndRegisteredForm,
+        fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNYSListedTheCoca-ColaCompanyCommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR .
+
+fibo-exmp-sec-eqex:TheHomeDepotIncCommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "The Home Depot, Inc. common stock" ;
+    skos:definition "common share class representing shares in The Home Depot, Inc." ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfDelawareJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:TheHomeDepotIncEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:TheHomeDepotIncEquityIssuer ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BearerAndRegisteredForm,
+        fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNYSListedTheHomeDepotIncCommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR ;
+    cmns-ra:hasRegistrationDate "1981-09-22" .
+
+fibo-exmp-sec-eqex:TheProctorAndGambleCompanyCommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "The Proctor & Gamble Company common stock" ;
+    skos:definition "common share class representing shares in The Proctor & Gamble Company" ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfOhioJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:TheProctorAndGambleCompanyEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:TheProctorAndGambleCompanyEquityIssuer ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BearerAndRegisteredForm,
+        fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNYS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XNYSListedTheProctorAndGambleCompanyCommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR .
+
+fibo-exmp-sec-eqex:AppleIncCommonStock a owl:NamedIndividual,
+        fibo-sec-eq-10962:CommonVotingUnrestrictedFullyPaidRegisteredShare,
+        fibo-sec-eq-eq:ListedShare ;
+    rdfs:label "Apple Inc. common stock" ;
+    skos:definition "common share class representing shares in Apple Inc." ;
+    fibo-fbc-fi-fi:isDenominatedIn fibo-fnd-acc-4217:USDollar ;
+    fibo-fbc-fi-fi:isLegallyRecordedIn fibo-be-ge-usj:StateOfCaliforniaJurisdiction ;
+    fibo-fbc-fi-fi:isNegotiable true ;
+    fibo-fnd-agr-ctr:hasPrincipalParty fibo-exmp-sec-eqex:AppleIncEquityIssuer ;
+    fibo-fnd-agr-ctr:isAssignable false ;
+    fibo-fnd-rel-rel:isIssuedBy fibo-exmp-sec-eqex:AppleIncEquityIssuer ;
+    fibo-sec-sec-iss:isIssuedInForm fibo-sec-sec-iss:BookEntryForm ;
+    fibo-sec-sec-iss:isRegisteredWith fibo-fbc-fct-usjrga:SecuritiesAndExchangeRegulator ;
+    fibo-sec-sec-lst:hasHomeExchange fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:hasOriginalPlaceOfListing fibo-fbc-fct-mkti:Facility-XNAS ;
+    fibo-sec-sec-lst:isListedVia fibo-exmp-sec-eqex:XLOMListedAppleIncCommonStock,
+        fibo-exmp-sec-eqex:XNASListedAppleIncCommonStock ;
+    cmns-cls:isClassifiedBy fibo-sec-eq-10962:ESVUFR ;
+    cmns-ra:hasRegistrationDate "1980-12-01" .
+

@@ -1,0 +1,181 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-bauth: <https://www.omg.org/spec/Commons/BusinessAuthorizations/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-fbc-fct-rga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegulatoryAgencies/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-rep: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/> .
+@prefix fibo-fnd-law-cor: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-rga: a owl:Ontology ;
+    rdfs:label "Regulatory Agencies Ontology",
+        "监管机构本体（Regulatory Agencies Ontology）"@zh ;
+    dcterms:abstract "This ontology defines general purpose concepts for representation of regulatory agencies, also known as regulatory authorities or regulators. Examples of financial industry regulatory agencies in the US include the Securities Exchange Commission, FINRA, and the FDIC, among others. The SEC and FINRA are both registration authorities and regulatory agencies. The FDIC is a regulatory agency and an insurer, and may be a registration authority for certain state-chartered banks in the US without bank holding companies." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义金融监管机构（regulatory agency）及其监管职能的通用概念。"@zh ;
+    owl:imports fibo-be-ge-ge:,
+        fibo-be-le-lp:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-rep:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-law-cor:,
+        fibo-fnd-pty-pty:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-bauth:,
+        cmns-col:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-org:,
+        cmns-rga:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20251201/FunctionalEntities/RegulatoryAgencies/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20150801/FunctionalEntities/RegulatoryAgencies.rdf version of this ontology was modified per the FIBO 2.0 RFC, including deprecation of the hasJurisdiction property that was duplicated in BE via the BE 1.1 RTF.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/RegulatoryAgencies.rdf version of this ontology was modified as a part of organizational hierarchy simplification.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190901/FunctionalEntities/RegulatoryAgencies.rdf version of this ontology was modified to eliminate deprecated elements and duplication of concepts with LCC, and remove a redundant superclass declaration on GovernmentIssuedLicense.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200401/FunctionalEntities/RegulatoryAgencies.rdf version of this ontology was modified to add the concept of a tax authority.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20201101/FunctionalEntities/RegulatoryAgencies.rdf version of this ontology was modified to clean up the definition of regulatory agency.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20211001/FunctionalEntities/RegulatoryAgencies.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20211001/FunctionalEntities/RegulatoryAgencies.rdf version of this ontology was modified to address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FunctionalEntities/RegulatoryAgencies.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FunctionalEntities/RegulatoryAgencies.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/FunctionalEntities/RegulatoryAgencies.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/RegulatoryAgencies.rdf version of the ontology was modified to correct a reasoning issue uncovered during testing (DER-90) and to further reflect changes made in Commons v1.2 (FBC-338).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20251001/FunctionalEntities/RegulatoryAgencies.rdf version of the ontology was modified to clean up long-standing deprecations (FBC-399) and to replace some constructs with their equivalents introduced in Commons 1.3 (FND-401)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc." .
+
+fibo-fbc-fct-rga:Examiner a owl:Class ;
+    rdfs:label "examiner",
+        "检查员（examiner）"@zh ;
+    rdfs:comment "由监管机构授权作为官方代表、对指定文件的准确性和真实性进行调查和审查的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-rga:RegulatoryAgency ;
+            owl:onProperty cmns-bauth:isAuthorizedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
+                    owl:someValuesFrom fibo-fbc-fct-rga:RegulatoryCapacity ] ],
+        cmns-bauth:ResponsibleParty ;
+    skos:definition "party empowered as an official representative by a regulatory agency to investigate and review specified documents for accuracy and truthfulness" ;
+    cmns-av:adaptedFrom "Black's Law Dictionary, see http://thelawdictionary.org/examiner/",
+        "EDM Council" .
+
+fibo-fbc-fct-rga:TaxAuthority a owl:Class ;
+    rdfs:label "tax authority",
+        "税务机关（tax authority）"@zh ;
+    rdfs:comment "对任何税种的核定、确定、征收、课征及其他相关事项具有管辖权的监管机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:hasJurisdiction ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:manages ;
+            owl:someValuesFrom fibo-fnd-pty-pty:TaxIdentificationScheme ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-pty-pty:TaxIdentifier ;
+            owl:onProperty fibo-fnd-rel-rel:issues ],
+        cmns-rga:RegulatoryAgency ;
+    skos:definition "regulatory agency that has jurisdiction over the assessment, determination, collection, imposition and other aspects of any tax" ;
+    cmns-av:adaptedFrom "https://www.collinsdictionary.com/dictionary/english/tax-authority",
+        "https://www.lawinsider.com/dictionary/tax-authority" .
+
+cmns-rga:RegulatoryReport a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-agr-ctr:Contract fibo-fnd-law-cor:Constitution fibo-fnd-law-cor:Law fibo-fnd-law-lcap:Regulation ) ] ],
+        fibo-fnd-arr-rep:Report .
+
+fibo-fbc-fct-rga:GovernmentIssuedLicense a owl:Class ;
+    rdfs:label "government-issued license",
+        "政府颁发的许可证（government-issued license）"@zh ;
+    rdfs:comment "合法执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可授予。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom cmns-rga:RegulatoryAgency ],
+        fibo-fnd-law-lcap:License ;
+    skos:definition "grant of permission needed to legally perform some task, provide some service, exercise a certain privilege, or pursue some business or occupation" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Business and Economics Terms, Fifth Edition, 2012" .
+
+fibo-fbc-fct-rga:RegulationIdentificationScheme a owl:Class ;
+    rdfs:label "regulation identification scheme",
+        "法规标识方案（regulation identification scheme）"@zh ;
+    rdfs:comment "用于组织法规信息并为法规分配标识符的方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fbc-fct-rga:RegulationIdentifier ],
+        cmns-id:IdentificationScheme ;
+    skos:definition "a scheme for organizing information and allocating identifiers to regulations" .
+
+fibo-fbc-fct-rga:RegulationIdentifier a owl:Class ;
+    rdfs:label "regulation identifier",
+        "法规标识符（regulation identifier）"@zh ;
+    rdfs:comment "与某一项法规相关联的标识符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-law-lcap:Regulation ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fct-rga:RegulationIdentificationScheme ;
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-id:Identifier ;
+    skos:definition "an identifier associated with a regulation" .
+
+fibo-fbc-fct-rga:RegulatoryCapacity a owl:Class ;
+    rdfs:label "regulatory capacity",
+        "监管资格（regulatory capacity）"@zh ;
+    rdfs:comment "自然人凭借某监管机构的某项认证计划、代表其对某行业、组织或产品进行监管的资格。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:LegalCapacity ;
+    skos:definition "the capacity of some natural person to regulate some industry, organization, or product by virtue of some certification program on behalf of some regulatory agency" .
+
+fibo-fnd-law-lcap:Regulation a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-rga:RegulatoryAgency ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+cmns-rga:RegulatoryAgency a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-org:FormalOrganization ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fct-rga:GovernmentIssuedLicense ;
+            owl:onProperty fibo-fnd-rel-rel:issues ] .
+

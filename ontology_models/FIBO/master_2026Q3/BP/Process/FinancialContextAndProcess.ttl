@@ -1,0 +1,231 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-prc-fcp: <https://spec.edmcouncil.org/fibo/ontology/BP/Process/FinancialContextAndProcess/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-prc-fcp:Clearing a owl:Class ;
+    rdfs:label "clearing"@en,
+        "清算（clearing）"@zh ;
+    rdfs:comment "证券交易被清算的过程。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:ClearingAndSettlement ;
+    skos:definition "The process by which securities trades are cleared."@en .
+
+fibo-bp-prc-fcp:FinancialMarketsRegulation a owl:Class ;
+    rdfs:label "financial markets regulation"@en,
+        "金融市场监管（financial markets regulation）"@zh ;
+    rdfs:comment "对金融市场进行监管的活动与规则体系。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:FinancialIndustryContext .
+
+fibo-bp-prc-fcp:MarketDataProvision a owl:Class ;
+    rdfs:label "market data provision"@en,
+        "市场数据提供（market data provision）"@zh ;
+    rdfs:comment "向市场参与者提供行情与参考数据的业务活动。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:PreTrade .
+
+fibo-bp-prc-fcp:PortfolioManagement a owl:Class ;
+    rdfs:label "portfolio management"@en,
+        "组合管理（portfolio management）"@zh ;
+    rdfs:comment "对证券组合进行选择、监测与调整的业务活动。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:InvestmentManagement .
+
+fibo-bp-prc-fcp:PretradeQuotes a owl:Class ;
+    rdfs:label "pretrade quotes"@en,
+        "交易前报价（pretrade quotes）"@zh ;
+    rdfs:comment "交易执行之前提供的报价信息。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:PreTrade .
+
+fibo-bp-prc-fcp:PretradeReferenceDataProvision a owl:Class ;
+    rdfs:label "pretrade reference data provision"@en,
+        "交易前参考数据提供（pretrade reference data provision）"@zh ;
+    rdfs:comment "在交易执行前提供证券参考数据的活动。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:PreTrade .
+
+fibo-bp-prc-fcp:PrimaryMarketClosing a owl:Class ;
+    rdfs:label "primary market closing"@en,
+        "一级市场收盘（primary market closing）"@zh ;
+    rdfs:comment "一级市场发行完成、头寸划转到位的收尾环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:PrimaryMarket .
+
+fibo-bp-prc-fcp:PrimaryMarketIndicationsOfInterest a owl:Class ;
+    rdfs:label "primary market indications of interest"@en,
+        "一级市场兴趣表示（primary market indications of interest）"@zh ;
+    rdfs:comment "投资者在一级市场发行前表达认购兴趣的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:PreTrade .
+
+fibo-bp-prc-fcp:SecondaryMarketTradingContext a owl:Class ;
+    rdfs:label "secondary market trading context"@en,
+        "二级市场交易情境（secondary market trading context）"@zh ;
+    rdfs:comment "已发行证券在二级市场进行交易的情境。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:FinancialIndustryContext .
+
+fibo-bp-prc-fcp:SecuritiesCustody a owl:Class ;
+    rdfs:label "securities custody"@en,
+        "证券托管（securities custody）"@zh ;
+    rdfs:comment "为客户保管证券并处理相关事务的服务。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:FinancialIndustryContext .
+
+fibo-bp-prc-fcp:SecuritiesPostTradePositionManagement a owl:Class ;
+    rdfs:label "securities post trade position management"@en,
+        "证券交易后头寸管理（securities post trade position management）"@zh ;
+    rdfs:comment "交易执行后对证券头寸进行管理的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesPostTrade .
+
+fibo-bp-prc-fcp:SecuritiesTradeAllocation a owl:Class ;
+    rdfs:label "securities trade allocation"@en,
+        "证券交易分配（securities trade allocation）"@zh ;
+    rdfs:comment "将成交的交易分配到具体账户的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesPostTrade .
+
+fibo-bp-prc-fcp:SecuritiesTradeCaptureAndValidation a owl:Class ;
+    rdfs:label "securities trade capture and validation"@en,
+        "证券交易捕获与核验（securities trade capture and validation）"@zh ;
+    rdfs:comment "将交易录入系统并核验其要素的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesPostTrade .
+
+fibo-bp-prc-fcp:SecuritiesTradeConfirmationAffirmation a owl:Class ;
+    rdfs:label "securities trade confirmation affirmation"@en,
+        "证券交易确认与核实（securities trade confirmation affirmation）"@zh ;
+    rdfs:comment "交易双方确认并核实交易细节的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesPostTrade .
+
+fibo-bp-prc-fcp:SecuritiesTradeDatePositionReporting a owl:Class ;
+    rdfs:label "securities trade date position reporting"@en,
+        "交易日期寸报告（securities trade date position reporting）"@zh ;
+    rdfs:comment "按交易日对证券头寸进行报告的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesTrade .
+
+fibo-bp-prc-fcp:SecuritiesTradeExecution a owl:Class ;
+    rdfs:label "securities trade execution"@en,
+        "证券交易执行（securities trade execution）"@zh ;
+    rdfs:comment "证券交易在市场上实际成交的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesTrade .
+
+fibo-bp-prc-fcp:SecuritiesTradeOrderRouting a owl:Class ;
+    rdfs:label "securities trade order routing"@en,
+        "证券交易订单路由（securities trade order routing）"@zh ;
+    rdfs:comment "将交易订单发送到适当交易场所的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesTrade .
+
+fibo-bp-prc-fcp:SecuritiesTradesMatching a owl:Class ;
+    rdfs:label "securities trades matching"@en,
+        "证券交易匹配（securities trades matching）"@zh ;
+    rdfs:comment "在场外交易证券市场上对交易主张进行匹配、以识别已确认交易的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesPostTrade ;
+    skos:definition "Matching of trade allegations to identify confirmed trades, on an Over the Counter market in Traded Securities."@en .
+
+fibo-bp-prc-fcp:SecuritiesTradesReporting a owl:Class ;
+    rdfs:label "securities trades reporting"@en,
+        "证券交易报告（securities trades reporting）"@zh ;
+    rdfs:comment "对证券交易进行报告的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesPostTrade .
+
+fibo-bp-prc-fcp:ShortSaleLocate a owl:Class ;
+    rdfs:label "short sale locate"@en,
+        "卖空寻券（short sale locate）"@zh ;
+    rdfs:comment "卖空前确认可借入证券的环节。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:PreTrade .
+
+fibo-bp-prc-fcp:TradeAdvertisements a owl:Class ;
+    rdfs:label "trade advertisements"@en,
+        "交易广告（trade advertisements）"@zh ;
+    rdfs:comment "对交易或发行信息进行公告宣传的活动。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:PreTrade .
+
+fibo-bp-prc-fcp:TradedSecurityLifecycle a owl:Class ;
+    rdfs:label "traded security lifecycle"@en,
+        "交易证券生命周期（traded security lifecycle）"@zh ;
+    rdfs:comment "可交易证券从发行到注销的完整生命周期。"@zh .
+
+fibo-bp-prc-fcp:TradesReferenceDataProvision a owl:Class ;
+    rdfs:label "trades reference data provision"@en,
+        "交易参考数据提供（trades reference data provision）"@zh ;
+    rdfs:comment "为交易活动提供参考数据的活动。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:SecuritiesTrade .
+
+fibo-bp-prc-fcp:WhenIssuedTrading a owl:Class ;
+    rdfs:label "when issued trading"@en,
+        "预发行交易（when issued trading）"@zh ;
+    rdfs:comment "在证券正式发行前以「预发行」方式进行的交易。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:PrimaryMarket .
+
+fibo-bp-prc-fcp: a owl:Ontology ;
+    rdfs:label "Financial Context and Process Ontology"@en,
+        "金融语境与流程本体（Financial Context and Process Ontology）"@zh ;
+    dcterms:abstract "This ontology defines process concepts in general for refinement and re-use elsewhere in the FIBO business process domain." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义金融业务语境下的流程、阶段与参与者，是证券发行等具体业务流程本体的基础。"@zh ;
+    owl:imports fibo-fbc-fi-fi:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cxtdsg: ;
+    owl:versionIRI fibo-bp-prc-fcp: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc." .
+
+fibo-bp-prc-fcp:ClearingAndSettlement a owl:Class ;
+    rdfs:label "clearing and settlement"@en,
+        "清算与结算（clearing and settlement）"@zh ;
+    rdfs:comment "证券清算与结算的业务流程或服务领域。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:FinancialIndustryContext ;
+    skos:definition "The business process or service area of securities clearing and settlement."@en .
+
+fibo-bp-prc-fcp:SecurityRetirement a owl:Class ;
+    rdfs:label "security retirement"@en,
+        "证券注销（security retirement）"@zh ;
+    rdfs:comment "证券到期或被赎回后退出流通的环节。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-prc-fcp:isRetirementOf ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ] .
+
+fibo-bp-prc-fcp:isRetirementOf a owl:ObjectProperty ;
+    rdfs:label "is retirement of"@en,
+        "是……的注销（is retirement of）"@zh ;
+    rdfs:comment "标识被注销的证券。"@zh ;
+    rdfs:domain fibo-bp-prc-fcp:SecurityRetirement ;
+    rdfs:range fibo-fbc-fi-fi:Security .
+
+fibo-bp-prc-fcp:InvestmentManagement a owl:Class ;
+    rdfs:label "investment management"@en,
+        "投资管理（investment management）"@zh ;
+    rdfs:comment "对投资组合进行专业化管理、以实现投资目标的业务活动。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:FinancialIndustryContext .
+
+fibo-bp-prc-fcp:PrimaryMarket a owl:Class ;
+    rdfs:label "primary market"@en,
+        "一级市场（primary market）"@zh ;
+    rdfs:comment "新交易金融工具的发行与一级市场交易。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:FinancialIndustryContext ;
+    skos:definition "Issuance and primary market trading of new Traded Financial Instruments"@en .
+
+fibo-bp-prc-fcp:SecuritiesTrade a owl:Class ;
+    rdfs:label "securities trade"@en,
+        "证券交易（securities trade）"@zh ;
+    rdfs:comment "证券买卖双方达成并执行的交易。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:FinancialIndustryContext .
+
+fibo-bp-prc-fcp:PreTrade a owl:Class ;
+    rdfs:label "pre trade"@en,
+        "交易前（pre trade）"@zh ;
+    rdfs:comment "交易执行之前的阶段，包括询价、报价与参考数据准备。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:InvestmentManagement .
+
+fibo-bp-prc-fcp:SecuritiesPostTrade a owl:Class ;
+    rdfs:label "securities post trade"@en,
+        "证券交易后（securities post trade）"@zh ;
+    rdfs:comment "证券交易执行之后的处理阶段。"@zh ;
+    rdfs:subClassOf fibo-bp-prc-fcp:FinancialIndustryContext .
+
+fibo-bp-prc-fcp:FinancialIndustryContext a owl:Class ;
+    rdfs:label "financial industry context"@en,
+        "金融行业情境（financial industry context）"@zh ;
+    rdfs:comment "金融行业内业务活动发生的情境，即投资管理、批发金融市场交易等。"@zh ;
+    rdfs:subClassOf cmns-cxtdsg:Context ;
+    skos:definition "The context in which business activites take place within the financial industry, i.e. investment management, wholesale financial markets trading and so on."@en ;
+    skos:editorialNote "REVIEW: Ther precise definition above defines the Scope of this model."@en .
+

@@ -1,0 +1,848 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-oac-cpty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-be-plc-plc: <https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/PrivateLimitedCompanies/> .
+@prefix fibo-be-ptr-ptr: <https://spec.edmcouncil.org/fibo/ontology/BE/Partnerships/Partnerships/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-oac-ctl: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Control/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-cr: <https://www.omg.org/spec/LCC/Countries/CountryRepresentation/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-fse: a owl:Ontology ;
+    rdfs:label "Financial Services Entities Ontology",
+        "金融服务实体本体（Financial Services Entities Ontology）"@zh ;
+    dcterms:abstract "This ontology defines basic financial service providers, such as holding companies, financial institutions (both depository and non-depository institutions), and clearing houses at a relatively general level. Nuances specific to the institutions located in a specific country are defined in jurisdiction specific dependent ontologies." ;
+    dcterms:license """Copyright (c) 2015-2026 EDM Council, Inc.
+Copyright (c) 2015-2026 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "FBC 域核心本体，定义金融服务机构（银行、券商、保险公司、资管机构等）的功能分类体系。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-be-ge-ge:,
+        fibo-be-le-cb:,
+        fibo-be-le-fbo:,
+        fibo-be-le-lp:,
+        fibo-be-oac-cpty:,
+        fibo-be-oac-opty:,
+        fibo-be-ptr-ptr:,
+        fibo-be-plc-plc:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-oac-ctl:,
+        fibo-fnd-pty-pty:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cds:,
+        cmns-col:,
+        cmns-cxtid:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-ra:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        lcc-cr: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20260301/FunctionalEntities/FinancialServicesEntities/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20150801/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FBC 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20160801/FunctionalEntities/FinancialServicesEntities/ version of this ontology was modified per the FIBO 2.0 RFC, including, but not limited to, the addition of trade settlement concepts and generalizing the concept of a credit union.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/FunctionalEntities/FinancialServicesEntities/ version of this ontology was modified to refine the concept of a credit union and generalize the definition of an underwriter.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20181201/FunctionalEntities/FinancialServicesEntities/ version of this ontology was modified to generalize certain unions where they were no longer required and incorporate a new financial service provider identifier that is assigned functionally rather than to a legal entity.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190101/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to leverage the new party identifier and replace hasDefinition with isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190701/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to eliminate duplication with concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200201/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to enable merging business and functional business entity in BE.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200901/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to add missing functional entities and related properties, and eliminate circular or ambiguous definitions where possible.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20201201/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to eliminate references to external dictionary sites that no longer resolve and address additional circular definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210101/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to move the definition of the Bank for International Settlements (BIS) to the EU Regulatory Agencies ontology and build out the individual details there, and to reflect the move of some organization-specific concepts from BE to FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20211001/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to apply the new composite identifier definition to BIC codes.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220401/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to clean up dead links and address text formatting issues uncovered by hygiene testing.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220801/FunctionalEntities/FinancialServicesEntities.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220801/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to clean up a few definitions to conform with ISO 704, to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, and to add the concept of a data processing servicer.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to augment the representation of institutions based on their definitions in the law, to clarify and extend definitions related to non-bank financial institutions,and to add multilingual labels.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230401/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/FunctionalEntities/FinancialServicesEntities.rdf version of this ontology was revised to correct a labelling issue.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250201/FunctionalEntities/FinancialServicesEntities.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250301/FunctionalEntities/FinancialServicesEntities.rdf version of the ontology was modified to eliminate certain constructs that are redundant and will never be materialized to reduce the number of nodes required for various contract-related constructs (FND-391).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250501/FunctionalEntities/FinancialServicesEntities.rdf version of the ontology was modified to add an acronym to unit investment trust (SEC-200).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250801/FunctionalEntities/FinancialServicesEntities.rdf version of the ontology was modified to eliminate the disjointness between depository institution and non-depository institution, which is not the case outside of the US (SEC-215)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2026 EDM Council, Inc.",
+        "Copyright (c) 2015-2026 Object Management Group, Inc." .
+
+fibo-fbc-fct-fse:BankHoldingCompany a owl:Class ;
+    rdfs:label "bank holding company",
+        "银行控股公司（bank holding company）"@zh ;
+    rdfs:comment "拥有和/或直接或间接控制一家或多家银行的公司；银行控股公司还可以拥有经纪交易商等非银行子公司。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-be-le-cb:Corporation ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-fct-fse:HoldingCompany,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "any company that owns and/or has direct or indirect control of one or more banks; BHCs may also own nonbanking subsidiaries such as broker-dealers and asset managers" ;
+    cmns-av:adaptedFrom "Office of Financial Research (OFR) Annual Report, 2012, Glossary" ;
+    cmns-av:explanatoryNote "A bank holding company may also own another bank holding company, which in turn owns or controls a bank; the company at the top of the ownership chain is called the top holder." .
+
+fibo-fbc-fct-fse:BankingProduct a owl:Class ;
+    rdfs:label "banking product",
+        "银行产品（banking product）"@zh ;
+    rdfs:comment "由存款性机构向消费者和企业提供的产品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-fct-fse:DepositoryInstitution ],
+        fibo-fbc-pas-fpas:FinancialProduct ;
+    skos:definition "product provided to consumers and businesses by a depository institution" ;
+    skos:example "Examples include checking account, savings account, certificate of deposit, debit or pre-paid card, or credit card." .
+
+fibo-fbc-fct-fse:BankingService a owl:Class ;
+    rdfs:label "banking service",
+        "银行服务（banking service）"@zh ;
+    rdfs:comment "由存款性机构提供的金融服务。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-fct-fse:DepositoryInstitution ],
+        fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "financial service offered by a depository institution" ;
+    skos:example "Examples include cash management service, foreign exchange service, lending or credit service, investment service, insurance service, merchant service, payroll service, and the like." .
+
+fibo-fbc-fct-fse:CentralBank a owl:Class ;
+    rdfs:label "central bank",
+        "中央银行（central bank）"@zh ;
+    rdfs:comment "作为一个国家（或国家集团）货币当局和主要监管银行的金融机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-be-ge-ge:Instrumentality ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        fibo-fbc-fct-fse:Bank,
+        fibo-fbc-fct-fse:MonetaryAuthority ;
+    skos:definition "financial institution that is the monetary authority and major regulatory bank for a country (or group of countries)" ;
+    cmns-av:explanatoryNote "Its functions include issuing and managing the country's currency, controlling monetary policy and supervising money market operations, managing exchange and gold reserves, acting as lender of last resort to commercial banks, and providing banking services to the government. Central banks are state-controlled but are increasingly being given an independent status to insulate them from partisan politics." .
+
+fibo-fbc-fct-fse:CentralCounterpartyClearingHouse a owl:Class ;
+    rdfs:label "central counterparty clearing house",
+        "中央对手方清算所（central counterparty clearing house）"@zh ;
+    rdfs:comment "帮助促进衍生品和股票市场交易的清算所。"@zh ;
+    rdfs:seeAlso <https://www.esma.europa.eu/sites/default/files/EACH2.pdf> ;
+    rdfs:subClassOf fibo-fbc-fct-fse:ClearingHouse ;
+    skos:definition "clearing house that helps facilitate trading in derivatives and equities markets" ;
+    cmns-av:abbreviation "CCP" ;
+    cmns-av:explanatoryNote """These clearing houses are often operated by the major banks in the country. The house's prime responsibility is to provide efficiency and stability to the financial markets that they operate in.
+
+There are two main processes that are carried out by CCPs: clearing and settlement of market transactions. Clearing relates to identifying the obligations of both parties on either side of a transaction. Settlement occurs when the final transfer of securities and funds occur.
+
+CCPs benefit both parties in a transaction because they bear most of the credit risk. If two individuals deal with one another, the buyer bears the credit risk of the seller, and vice versa. When a CCP is used the credit risk that is held against both buyer and seller is coming from the CCP, which in all likelihood is much less than in the previous situation.""" .
+
+fibo-fbc-fct-fse:CentralSecuritiesDepository a owl:Class ;
+    rdfs:label "central securities depository",
+        "中央证券存管机构（central securities depository）"@zh ;
+    rdfs:comment "为金融工具（「证券」，如债券和股票）提供集中存管点的功能实体。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "functional entity that provides a central point for depositing financial instruments ('securities'), for example, bonds and shares" ;
+    cmns-av:abbreviation "CSD" ;
+    cmns-av:adaptedFrom "http://ecsda.eu/facts/faq"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "CSDs' clients are typically financial institutions themselves (such as custodian banks and brokers) rather than individual investors." .
+
+fibo-fbc-fct-fse:ClearingBank a owl:Class ;
+    rdfs:label "clearing bank",
+        "清算银行（clearing bank）"@zh ;
+    rdfs:comment "为金融交易（如支票清算或促进买卖双方之间交易）的支付和结算提供便利的商业银行。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:ClearingHouse,
+        fibo-fbc-fct-fse:CommercialBank ;
+    skos:definition "commercial bank that facilitates payment and settlement of financial transactions, such as check clearing or facilitating trades between the sellers and buyers of securities or other financial instruments or contracts" ;
+    fibo-fnd-utl-av:definitionOrigin "Office of Financial Research (OFR) Annual Report, 2012, Glossary" .
+
+fibo-fbc-fct-fse:ClearingCorporation a owl:Class ;
+    rdfs:label "clearing corporation",
+        "清算公司（clearing corporation）"@zh ;
+    rdfs:comment "以公司形式组建的清算所。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-be-le-cb:Corporation ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-fct-fse:ClearingHouse ;
+    skos:definition "clearing house that is organized as a corporation" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" .
+
+fibo-fbc-fct-fse:CommercialFinanceCompany a owl:Class ;
+    rdfs:label "commercial finance company",
+        "商业金融公司（commercial finance company）"@zh ;
+    rdfs:comment "以应收账款、存货和设备为担保向制造商和批发商发放贷款的金融公司。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinanceCompany ;
+    skos:definition "finance company that makes loans to manufacturers and wholesalers, secured by accounts receivable, inventories, and equipment" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" ;
+    cmns-av:synonym "commercial credit company" .
+
+fibo-fbc-fct-fse:CommodityTradingAdvisor a owl:Class ;
+    rdfs:label "commodity trading advisor",
+        "商品交易顾问（commodity trading advisor）"@zh ;
+    rdfs:comment "直接或间接就买卖期货合约或期权的价值或可行性向他人提供建议的一方。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution ;
+    skos:definition "party that directly or indirectly advises others as to the value or advisability of buying or selling futures contracts or options" ;
+    cmns-av:abbreviation "CTA" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" ;
+    cmns-av:explanatoryNote "Indirect advice includes exercising trading authority over a customer's account. In the U.S., registered CTAs are registered with the Commodities Futures Trading Commission (CFTC) and are generally required to be members of the National Futures Association (NFA)." .
+
+fibo-fbc-fct-fse:ConsumerFinanceCompany a owl:Class ;
+    rdfs:label "consumer finance company",
+        "消费金融公司（consumer finance company）"@zh ;
+    rdfs:comment "依据其经营所在司法管辖区的小额贷款法律向个人发放贷款的金融公司。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinanceCompany ;
+    skos:definition "finance company that lends to individuals under the small loans laws of the jurisdiction in which they operate" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" ;
+    cmns-av:synonym "direct loan company",
+        "small loan company" .
+
+fibo-fbc-fct-fse:ContractualSavingsInstitution a owl:Class ;
+    rdfs:label "contractual savings institution",
+        "契约型储蓄机构（contractual savings institution）"@zh ;
+    rdfs:comment "以受托（而非本人）方式为个人提供投资集合投资工具机会的金融机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass [ a owl:Class ;
+                    owl:unionOf ( fibo-be-le-lp:SpecialPurposeVehicle fibo-be-plc-plc:PrivateCompanyWithLimitedLiability fibo-be-ptr-ptr:Partnership ) ] ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        fibo-be-oac-opty:Investor,
+        fibo-fbc-fct-fse:NonDepositoryInstitution ;
+    skos:definition "financial institution that provides the opportunity for individuals to invest in collective investment vehicles in a fiduciary rather than a principle role" ;
+    skos:example "Example institutional investors include banks, insurance companies, mutual funds, pension funds, and other similar large funds." ;
+    cmns-av:adaptedFrom "https://www.worldbank.org/en/publication/gfdr/gfdr-2016/background/nonbank-financial-institution"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Collective investment vehicles invest the pooled resources of the individuals and firms into numerous equity, debt, and derivatives promises. The individual, however, holds equity in the CIV itself rather what the CIV invests in specifically. The two most popular examples of contractual savings institutions are mutual funds and private pension plans.",
+        "Typically more than 70 percent of the daily trading on the New York Stock Exchange is conducted on behalf of institutional investors." ;
+    cmns-av:synonym "institutional investment firm"@en-US,
+        "institutional investor"@en-US,
+        "investisseur institutionnel"@fr-FR .
+
+fibo-fbc-fct-fse:CreditUnion a owl:Class ;
+    rdfs:label "credit union",
+        "信用合作社（credit union）"@zh ;
+    rdfs:comment "为提倡节俭之目的而组织、发放个人贷款并提供其他消费金融服务的非营利性存款机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-be-le-fbo:NotForProfitOrganization ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-be-fct-fct:CooperativeSociety,
+        fibo-fbc-fct-fse:DepositoryInstitution ;
+    skos:definition "not-for-profit depository institution that makes personal loans and offers other consumer banking services, organized for the purpose of promoting thrift among its members and creating a source of credit for provident or productive purposes" .
+
+fibo-fbc-fct-fse:DataProcessingService a owl:Class ;
+    rdfs:label "data processing service",
+        "数据处理服务（data processing service）"@zh ;
+    rdfs:comment "由主要从事托管或数据处理基础设施业务的实体提供的金融服务。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-fct-fse:DataProcessingServicer ],
+        fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "financial service offered by an entity primarily engaged in providing infrastructure for hosting or data processing services" ;
+    cmns-av:adaptedFrom "https://www.ffiec.gov/npw/Help/InstitutionTypes" .
+
+fibo-fbc-fct-fse:DevelopmentBank a owl:Class ;
+    rdfs:label "development bank",
+        "开发银行（development bank）"@zh ;
+    rdfs:comment "旨在为生产性投资提供中长期资本（通常附带技术援助）的国家或区域性金融机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "national or regional financial institution designed to provide medium- and long-term capital for productive investment, often accompanied by technical assistance, in poor countries" ;
+    cmns-av:synonym "development finance company (DFC)",
+        "development financial institution (DFI)" .
+
+fibo-fbc-fct-fse:ElectronicFundsTransferService a owl:Class ;
+    rdfs:label "electronic funds transfer service",
+        "电子资金转账服务（electronic funds transfer service）"@zh ;
+    rdfs:comment "除纸质票据交易外，通过电子终端、电话、计算机或磁介质发起的资金转账服务。"@zh ;
+    rdfs:seeAlso <https://www.federalreserve.gov/boarddocs/caletters/2008/0807/08-07_attachment.pdf> ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "service involving any transfer of funds other than a transaction involving a paper instrument, that is initiated through an electronic terminal, telephone, or computer and that orders or authorizes a financial institution to debit or credit an account" ;
+    skos:example "EFT services include transfers through automated teller machines, point-of-sale terminals, automated clearinghouse systems, telephone bill-payment plans in which periodic or recurring transfers are contemplated, and remote banking programs." ;
+    cmns-av:abbreviation "EFT" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" ;
+    cmns-av:synonym "wire transfer service" .
+
+fibo-fbc-fct-fse:FaceAmountCertificateCompany a owl:Class ;
+    rdfs:label "face amount certificate company",
+        "面额证书公司（face amount certificate company）"@zh ;
+    rdfs:comment "从事或拟从事发行分期型面额证书业务、或已从事该业务的投资公司。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:InvestmentCompany ;
+    owl:disjointWith fibo-fbc-fct-fse:ManagementCompany ;
+    skos:definition "investment company which is engaged or proposes to engage in the business of issuing face-amount certificates of the installment type, or which has been engaged in such business and has any such certificate outstanding" ;
+    fibo-fnd-utl-av:definitionOrigin "Section 4, definition of investment companies, Investment Company Act of 1940 as amended and approved as of 3 January 2012, see https://www.sec.gov/about/laws/ica40.pdf" ;
+    cmns-av:explanatoryNote "An investor may enter into a contract with an issuer of a face amount certificate to contract to receive a stated or fixed amount of money (the face amount) at a stated date in the future. In exchange for this future sum, the investor must deposit an agreed lump sum or make scheduled installment payments over time. Face amount certificates are rarely issued these days, as most of the tax advantages that the investment once offered have been lost through changes in the tax laws." .
+
+fibo-fbc-fct-fse:FuturesCommissionMerchant a owl:Class ;
+    rdfs:label "futures commission merchant",
+        "期货佣金商（futures commission merchant）"@zh ;
+    rdfs:comment "从事以下两项业务的一方：（1）招揽或接受期货合约、期货期权、零售场外外汇等的买卖订单；（2）接受资金或其他资产作为保证金。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution ;
+    skos:definition "party that does both of the following: (1) solicits or accepts orders to buy or sell futures contracts, options on futures, retail off-exchange forex contracts, or swaps and (2) accepts money or other assets from customers to support such orders" ;
+    cmns-av:abbreviation "FCM" ;
+    cmns-av:adaptedFrom "National Futures Association" .
+
+fibo-fbc-fct-fse:InsuranceCompany a owl:Class ;
+    rdfs:label "insurance company",
+        "保险公司（insurance company）"@zh ;
+    rdfs:comment "主要且占主导地位的业务活动是承保保险或对保险公司承保的风险进行再保险的非存款性机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:RiskPoolingInstitution ;
+    skos:definition "non-depository institution whose primary and predominant business activity is the writing of insurance or the reinsuring of risks underwritten by insurance companies, and that provides compensation based on the happening of at least one contingency" ;
+    cmns-av:adaptedFrom "http://www.ffiec.gov/nicpubweb/Content/HELP/Institution%20Type%20Description.htm"^^xsd:anyURI,
+        "https://www.sec.gov/about/laws/ica40.pdf"^^xsd:anyURI ;
+    cmns-av:explanatoryNote """In the US, insurance companies are subject to supervision by the insurance commissioner or a similar official or agency of a State; or any receiver or similar official or any liquidating agent for such a company, in his capacity as such. Common forms of insurance include life, property and casualty, and health insurance. In addition to insuring against hazards, many insurance companies also sell investments or investment-like products. The most prevalent investment products offered by insurers are annuities and life insurance policies that also feature investment elements.
+
+A number of insurance companies operate brokerage arms that trade securities on behalf of clients.""" .
+
+fibo-fbc-fct-fse:InsuranceService a owl:Class ;
+    rdfs:label "insurance service",
+        "保险服务（insurance service）"@zh ;
+    rdfs:comment "保险人承诺就特定潜在未来损失提供补偿、以换取定期付款（保费）的金融服务。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "financial service in which the insurer promises to provide compensation for specific potential future losses in exchange for a periodic payment" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" ;
+    cmns-av:explanatoryNote "Insurance providers invest the compensation they receive in order to make a profit. In general, insurance transfers risk from individuals or organizations to a larger pool of individuals or organizations that are better able to mitigate that risk." .
+
+fibo-fbc-fct-fse:InvestmentBank a owl:Class ;
+    rdfs:label "investment bank",
+        "投资银行（investment bank）"@zh ;
+    rdfs:comment "作为承销商或代理人、在证券发行人与投资公众之间充当中介的金融服务提供商。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fbc-fct-fse:Bank fibo-fbc-fct-fse:BrokerageFirm ) ],
+        fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "financial service provider that acts as an underwriter or agent that serves as intermediary between the issuer of securities and the investing public" ;
+    cmns-av:explanatoryNote "Major investment banks include Barclays, BofA Merrill Lynch, Warburgs, Goldman Sachs, Deutsche Bank, JP Morgan, Morgan Stanley, Salomon Brothers, UBS, Credit Suisse, Citibank and Lazard. Some investment banks specialize in particular industry sectors. Many investment banks also have retail operations that serve small, individual customers." .
+
+fibo-fbc-fct-fse:InvestmentService a owl:Class ;
+    rdfs:label "investment service",
+        "投资服务（investment service）"@zh ;
+    rdfs:comment "旨在协助投资者运用资本创造更多资金的金融服务，可通过产生收入的工具或更具风险导向的工具实现。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "financial service designed to assist investors in using capital to create more money, either through income-producing vehicles or through more risk-oriented ventures to result in capital gains, including but not limited to providing investment advice, asset and portfolio management, and brokerage services" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" .
+
+fibo-fbc-fct-fse:MoneyServicesBusiness a owl:Class ;
+    rdfs:label "money services business",
+        "货币服务业务（money services business）"@zh ;
+    rdfs:comment "以下列任一身份开展业务的任何人（无论是否经常性地或以有组织的企业形式）：货币交易商或兑换商、支票兑现商、旅行支票或储值产品的发行/销售/赎回商、汇款商等。"@zh ;
+    rdfs:seeAlso <https://www.fincen.gov/money-services-business-definition> ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution ;
+    skos:definition "any person doing business, whether or not on a regular basis or as an organized business concern, in one of the following capacities: (1) currency dealer or exchanger, (2) check casher, (3) issuer of traveler's checks, money orders, or stored value, (4) seller or redeemer of traveler's checks, money orders, or stored value, (5) money transmitter, or (6) postal service" ;
+    cmns-av:abbreviation "MSB" ;
+    cmns-av:explanatoryNote "This definition excludes banks and persons registered with or examined by the Securities and Exchange Commission or the Commodities Futures Trading Commission." .
+
+fibo-fbc-fct-fse:MortgageCompany a owl:Class ;
+    rdfs:label "mortgage company",
+        "抵押贷款公司（mortgage company）"@zh ;
+    rdfs:comment "为住宅或商业物业发起和/或提供抵押贷款资金的金融服务提供商。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "financial service provider that originates and/or funds mortgages for residential or commercial property" .
+
+fibo-fbc-fct-fse:PaymentService a owl:Class ;
+    rdfs:label "payment service",
+        "支付服务（payment service）"@zh ;
+    rdfs:comment "涉及通过信用卡、借记卡等银行支付方式等多种支付方式接受电子支付的金融服务。"@zh ;
+    rdfs:seeAlso <https://ec.europa.eu/info/business-economy-euro/banking-and-finance/consumer-finance-and-payments/payment-services/payment-services_en> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:involves ;
+            owl:someValuesFrom fibo-fnd-pas-psch:PaymentObligation ],
+        fibo-fbc-fct-fse:MerchantService ;
+    skos:definition "financial service that involves acceptance of electronic payments by a variety of payment methods including credit card, bank-based payments such as direct debit, bank transfer, and real-time bank transfer based on online banking" .
+
+fibo-fbc-fct-fse:PayrollService a owl:Class ;
+    rdfs:label "payroll service",
+        "薪资服务（payroll service）"@zh ;
+    rdfs:comment "通常向规模不足以设立内部财务组织的小企业提供的、涉及薪资管理的金融服务。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "financial service, typically provided to small businesses that are not large enough to have an internal finance organization, that involves managing payment of wages to employees" ;
+    cmns-av:explanatoryNote "Payroll services typically include printing of employee pay checks, direct deposit of wages to employee bank accounts, calculation and withholding of employee taxes, calculation and payment of corporate payroll taxes and fees with appropriate government authorities (such as Social Security in the US), filing government quarterly and annual reports, and so forth. They may also include management of retirement and savings plans, health benefits, timekeeping, automated integration with the business' accounting system, etc." .
+
+fibo-fbc-fct-fse:PrincipalUnderwriter a owl:Class ;
+    rdfs:label "principal underwriter",
+        "主承销商（principal underwriter）"@zh ;
+    rdfs:comment "以本人身份从投资公司购入证券、或依合同有权从该公司购入任何证券的承销商。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:Underwriter ;
+    skos:definition "underwriter who, as principal, purchases from an investment company, or pursuant to some contract has the right to purchase from such company, any security for distribution, or who as agent for such company sells or has the right to sell any security to a dealer or to the public, excluding any dealer who purchases from such company through sn underwriter acting as an agent for such company" ;
+    cmns-av:adaptedFrom "Section 3a of the Investment Company Act of 1940 as amended in January, 2012, https://www.sec.gov/about/laws/ica40.pdf" ;
+    cmns-av:explanatoryNote "Principal underwriter of or for a closed-end company or any issuer which is not an investment company, or of any security issued by such a company or issuer, means any underwriter who, in connection with a primary distribution of securities, (a) is in privity of contract with the issuer or an affiliated person of the issuer; (b) acting alone or in concert with one or more other persons, initiates or directs the formation of an underwriting syndicate; or (c) is allowed a rate of gross commission, spread, or other profit greater than the rate allowed another underwriter participating in the distribution." .
+
+fibo-fbc-fct-fse:RegisteredInvestmentAdvisor a owl:Class ;
+    rdfs:label "registered investment advisor",
+        "注册投资顾问（registered investment advisor）"@zh ;
+    rdfs:comment "为高净值个人提供投资建议并管理其投资组合的注册代理人和金融服务提供商。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( cmns-ra:RegistrationAuthority cmns-rga:RegulatoryAgency ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-cpty:advises ;
+            owl:someValuesFrom fibo-be-oac-cpty:ControlledParty ],
+        fibo-fbc-pas-fpas:FinancialServiceProvider,
+        fibo-fbc-pas-fpas:RegisteredAgent ;
+    skos:definition "registered agent and financial service provider that advises high net worth individuals on investments and manages their portfolios" ;
+    cmns-av:abbreviation "RIA" .
+
+fibo-fbc-fct-fse:SalesFinanceCompany a owl:Class ;
+    rdfs:label "sales finance company",
+        "销售金融公司（sales finance company）"@zh ;
+    rdfs:comment "从汽车及其他消费品和商业商品经销商处购买零售和批发票据的金融公司。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinanceCompany ;
+    skos:definition "finance company that purchases retail and wholesale paper from automobile and other consumer and commercial goods dealers" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" ;
+    cmns-av:synonym "acceptance company" .
+
+fibo-fbc-fct-fse:SavingsAssociation a owl:Class ;
+    rdfs:label "savings association",
+        "储蓄协会（savings association）"@zh ;
+    rdfs:comment "存款性机构，包括：（a）依《联邦存款保险法》第 1464 条特许的任何联邦储蓄银行或协会；（b）其他相关储蓄机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:DepositoryInstitution ;
+    skos:definition "depository institution that is (a) any federal savings bank or association chartered under section 1464 of the Federal Deposit Insurance Act; (b) any state chartered building and loan association, savings and loan association, or homestead association; or (c) any cooperative bank (other than a cooperative bank which is a state bank as defined in subsection (a)(2)) of the Federal Deposit Insurance Act, which is organized and operating according to the laws of the State (as defined in subsection (a)(3)) in which it is chartered or organized; and (c) any corporation (other than a bank) that the board of directors and the comptroller of the currency jointly determine to be operating in substantially the same manner as such a depository institution" ;
+    cmns-av:adaptedFrom "https://www.fdic.gov/regulations/laws/rules/1000-400.html#fdic1000sec.3a"^^xsd:anyURI .
+
+fibo-fbc-fct-fse:SelfRegulatingOrganization a owl:Class ;
+    rdfs:label "self-regulating organization",
+        "自律组织（self-regulating organization）"@zh ;
+    rdfs:comment "有权在某国对某行业或职业创设并行施一定程度监管权的非政府组织。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom fibo-be-le-fbo:NonGovernmentalOrganization ],
+        cmns-rga:RegulatoryAgency ;
+    skos:definition "non-governmental organization that has the power to create and exercise some degree of regulatory authority over an industry or profession in some country or group of countries" ;
+    cmns-av:abbreviation "SRO" .
+
+fibo-fbc-fct-fse:TrustCompany a owl:Class ;
+    rdfs:label "trust company",
+        "信托公司（trust company）"@zh ;
+    rdfs:comment "以受托人、信托受托机构或信托代理机构身份行事的金融机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-be-le-cb:Corporation ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "financial institution that acts as a fiduciary, trustee or agent of trusts and agencies" ;
+    cmns-av:explanatoryNote "A professional trust company may be independently owned or owned by, for example, a bank or a law firm, and which specializes in being a trustee of various kinds of trusts. The trust company oversees the management of assets covered by the trust agreement. Such companies often are used when a grantor feels the trust company can do an equal or better job managing the assets than an individual person, or if the grantor does not know of anyone else who can act as trustee. Trust companies sometimes act as fiscal agents for corporations by attending to the registration and transfer of their stocks and bonds, serving as a trustee for their bond and mortgage creditors, and transacting general banking and loan business." .
+
+fibo-fbc-fct-fse:WealthManagementService a owl:Class ;
+    rdfs:label "wealth management service",
+        "财富管理服务（wealth management service）"@zh ;
+    rdfs:comment "为单一客户综合提供财务与投资建议、会计与税务服务、退休规划以及法律或遗产规划的金融服务。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "financial service that combines financial and investment advice, accounting and tax services, retirement planning and legal or estate planning for one set fee" .
+
+fibo-fbc-fct-fse:hasDateEstablished a owl:ObjectProperty ;
+    rdfs:label "has date established",
+        "具有设立日期（has date established）"@zh ;
+    rdfs:comment "金融服务提供商正式设立的日期。"@zh ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate,
+        cmns-dt:hasStartDate ;
+    skos:definition "the date that the financial service provider was formally established" ;
+    cmns-av:adaptedFrom "https://www.ffiec.gov/nicpubweb/Content/DataDownload/NPW%20Data%20Dictionary.pdf"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "This may be the date on its papers of incorporation or formation document, or the date on which it was granted a license." ;
+    cmns-av:synonym "date of commencement of existence" .
+
+fibo-fbc-fct-fse:hasDateEstablishmentTerminated a owl:ObjectProperty ;
+    rdfs:label "has date establishment terminated",
+        "具有终止日期（has date establishment terminated）"@zh ;
+    rdfs:comment "实体存续的最后一个完整日。"@zh ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf fibo-fnd-arr-doc:hasExpirationDate,
+        fibo-fnd-arr-doc:hasTerminationDate,
+        cmns-dt:hasExplicitDate ;
+    skos:definition "last full day that the entity existed" ;
+    cmns-av:adaptedFrom "https://www.ffiec.gov/nicpubweb/Content/DataDownload/NPW%20Data%20Dictionary.pdf"^^xsd:anyURI .
+
+fibo-fbc-fct-fse:hasDateInsured a owl:ObjectProperty ;
+    rdfs:label "has date insured",
+        "具有投保生效日（has date insured）"@zh ;
+    rdfs:comment "保险开始生效的日期。"@zh ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate,
+        cmns-dt:hasStartDate ;
+    skos:definition "date on which insurance became effective" ;
+    cmns-av:adaptedFrom "https://www.ffiec.gov/nicpubweb/Content/DataDownload/NPW%20Data%20Dictionary.pdf"^^xsd:anyURI .
+
+fibo-fbc-fct-fse:BrokerageFirm a owl:Class ;
+    rdfs:label "brokerage firm",
+        "经纪公司（brokerage firm）"@zh ;
+    rdfs:comment "从事证券买卖业务的公司，视交易情况同时以经纪商和交易商身份运作。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution,
+        fibo-fbc-pas-fpas:BrokerDealer ;
+    skos:definition "firm in the business of buying and selling securities, operating as both a broker and a dealer, depending on the transaction" ;
+    fibo-fnd-utl-av:definitionOrigin "Office of Financial Research (OFR) Annual Report, 2012, Glossary" ;
+    cmns-av:adaptedFrom "https://www.worldbank.org/en/publication/gfdr/gfdr-2016/background/nonbank-financial-institution"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The term broker-dealer is used in U.S. securities regulation parlance to describe stock brokerages, because most of them act as both agents and principals. A brokerage acts as a broker (or agent) when it executes orders on behalf of clients, whereas it acts as a dealer (or principal) when it trades for its own account." ;
+    cmns-av:synonym "market maker" .
+
+fibo-fbc-fct-fse:BusinessPartyPrefix a owl:Class ;
+    rdfs:label "business party prefix",
+        "商业方前缀（business party prefix）"@zh ;
+    rdfs:comment "为银行电讯目的与机构相关联的四位字符（4 位字母数字）代码。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCodeScheme ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fct-fse:BusinessIdentifierCode ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        cmns-cds:CodeElement,
+        cmns-org:OrganizationIdentifier ;
+    skos:definition "four-character (4 alphanumeric) code associated with an organization for the purposes of banking telecommunications" ;
+    cmns-av:adaptedFrom "ISO 9362:2014 Banking -- Banking telecommunication messages -- Business identifier code (BIC)" ;
+    cmns-av:explanatoryNote "For new BIC registration by an organization already identified with a BIC or an affiliated organization [after the transition period ending November 2018], SWIFT will still reserve the usage of an existing party prefix to these organizations. This legacy rule will be reserved to existing BIC owners. If they wish to preserve this value, no other organization will be allowed to use the same code",
+        "For new BIC registration from an organization not yet identified by a BIC, the party prefix will be allocated at the discretion of the RA. The code will not have a mnemonic or acronym value anymore." ;
+    cmns-av:synonym "bank code",
+        "institution code" .
+
+fibo-fbc-fct-fse:BusinessPartySuffix a owl:Class ;
+    rdfs:label "business party suffix",
+        "商业方后缀（business party suffix）"@zh ;
+    rdfs:comment "为银行电讯目的与机构相关联的两位字符（2 位字母数字）代码。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:isIncludedIn ;
+            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCode ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCodeScheme ],
+        cmns-cds:CodeElement ;
+    skos:definition "two-character (2 alphanumeric) code associated with the organization for the purposes of banking telecommunications" ;
+    cmns-av:adaptedFrom "ISO 9362:2014 Banking -- Banking telecommunication messages -- Business identifier code (BIC)" ;
+    cmns-av:explanatoryNote "In the prior version of the standard, position 7 of the BIC determined the location of the BIC in a particular country. In a country spanning over multiple time zones, each character may have been used to define a different time zone. If an organization moved location to a different time zone within the same country, the existing BIC would normally have been deleted and replaced by a new BIC with the appropriate location code.",
+        "With the revision of the standard [and transition period ending November 2018], the location code has been re-defined as a 'party suffix' without any specific meaning. A new reference data attribute has been introduced in the SWIFTRef directories to indicate where the institution is located and to which time zone it refers." .
+
+fibo-fbc-fct-fse:ClearingService a owl:Class ;
+    rdfs:label "clearing service",
+        "清算服务（clearing service）"@zh ;
+    rdfs:comment "交易达成后由清算服务提供方代表机构市场参与者提供、完成证券和资金划转的服务。"@zh ;
+    rdfs:seeAlso <https://dtcclearning.com/helpfiles/cross_bus/glossary/Content/Topics/gloss.htm> ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "service provided on behalf of an institutional market participant by a clearing services provider following a trade that finalizes the transfer of security ownership" ;
+    cmns-av:adaptedFrom "EDM Council / Quarule" .
+
+fibo-fbc-fct-fse:CommercialBank a owl:Class ;
+    rdfs:label "commercial bank",
+        "商业银行（commercial bank）"@zh ;
+    rdfs:comment "从事多种金融服务（如吸收存款和发放贷款）的存款性机构。"@zh ;
+    rdfs:seeAlso <http://www.ffiec.gov/nicpubweb/Content/HELP/Institution%20Type%20Description.htm> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-be-le-cb:Corporation ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-fct-fse:Bank ;
+    skos:definition "depository institution that engages in various financial services, such as accepting deposits and making loans" ;
+    cmns-av:explanatoryNote "A commercial bank is a financial institution that is owned by stockholders, operates for a profit, and engages in various lending activities. Commercial banks provide services, such as accepting deposits, giving business loans and auto loans, mortgage lending, and basic investment products like savings accounts and certificates of deposit.",
+        "The traditional commercial bank is a brick and mortar institution with tellers, safe deposit boxes, vaults and ATMs. However, some commercial banks do not have any physical branches and require consumers to complete all transactions by phone or Internet. In exchange, they generally pay higher interest rates on investments and deposits, and charge lower fees." .
+
+fibo-fbc-fct-fse:DataProcessingServicer a owl:Class ;
+    rdfs:label "data processing servicer",
+        "数据处理服务商（data processing servicer）"@zh ;
+    rdfs:comment "主要从事托管或数据处理基础设施业务的金融服务提供商。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "finance services provider primarily engaged in providing infrastructure for hosting or data processing services" ;
+    cmns-av:adaptedFrom "https://www.ffiec.gov/npw/Help/InstitutionTypes" ;
+    cmns-av:explanatoryNote "These establishments may provide specialized hosting activities, such as web hosting, streaming services or application hosting, provide application service provisioning, or may provide general time-share mainframe facilities to clients. Data processing establishments provide complete processing and specialized reports from data supplied by clients or provide automated data processing and data entry services." .
+
+fibo-fbc-fct-fse:FinancialServiceProviderIdentifier a owl:Class ;
+    rdfs:label "financial service provider identifier",
+        "金融服务提供商标识符（financial service provider identifier）"@zh ;
+    rdfs:comment "基于金融服务提供商所提供职能正式分配给它的标识符，通常在某一司法管辖区内有效。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-rga:isGovernedBy ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:FinancialServiceProvider ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fct-fse:FinancialServiceProviderIdentifierScheme ;
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-pty-pty:PartyRoleIdentifier ;
+    skos:definition "identifier that is officially allocated to a financial service provider based on a function that they provide, typically in a jurisdiction over which a regulatory agency has some jurisdiction" .
+
+fibo-fbc-fct-fse:FinancialServiceProviderIdentifierScheme a owl:Class ;
+    rdfs:label "financial service provider identifier scheme",
+        "金融服务提供商标识符方案（financial service provider identifier scheme）"@zh ;
+    rdfs:comment "依照签发注册机构或监管机构的规定定义金融服务提供商标识符的方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fbc-fct-fse:FinancialServiceProviderIdentifier ],
+        cmns-id:IdentificationScheme ;
+    skos:definition "scheme that defines the financial service provider identifier per the issuing registration authority or regulatory agency" .
+
+fibo-fbc-fct-fse:HoldingCompany a owl:Class ;
+    rdfs:label "holding company",
+        "控股公司（holding company）"@zh ;
+    rdfs:comment "为持有另一家公司股份而设立的商业实体，通常持有足够的表决权股份以对该公司的政策施加一定程度的控制。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-oac-cpty:ControlledParty ;
+            owl:onProperty fibo-fbc-fct-fse:hasPortfolioCompany ],
+        fibo-be-fct-fct:FunctionalBusinessEntity ;
+    skos:definition "business entity established to own stock in another company, typically to own enough voting shares to have some level of control over that company's policies and management" ;
+    cmns-av:explanatoryNote "Holding companies protect their owners from losses to some degree, protecting assets, for example, in case of bankruptcy. They can also be set up to own property such as real estate, patents, trademarks, stocks and other assets to limit financial and legal liability" .
+
+fibo-fbc-fct-fse:ManagementCompany a owl:Class ;
+    rdfs:label "management company",
+        "管理公司（management company）"@zh ;
+    rdfs:comment "除面额证书公司或单位投资信托外，出售并管理证券投资组合的投资公司。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:InvestmentCompany ;
+    owl:disjointWith fibo-fbc-fct-fse:UnitInvestmentTrust ;
+    skos:definition "investment company that sells and manages a portfolio of securities other than a face-amount certificate company or unit investment fund" ;
+    fibo-fnd-utl-av:definitionOrigin "Section 4, definition of investment companies, Investment Company Act of 1940 as amended and approved as of 3 January 2012, see https://www.sec.gov/about/laws/ica40.pdf" ;
+    cmns-av:explanatoryNote "Management companies allow investors to pool their capital with that of other investors in order to purchase professionally-managed groups of diversified securities." .
+
+fibo-fbc-fct-fse:MerchantService a owl:Class ;
+    rdfs:label "merchant service",
+        "商户服务（merchant service）"@zh ;
+    rdfs:comment "金融机构向商户或其他企业提供的金融服务，包括但不限于通过多种支付渠道管理金融交易。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "financial service provided by a financial institution to a merchant or other business, including but not limited to managing financial transactions via a secure channel" ;
+    skos:example "Example merchant services include credit and debit card processing, check guarantee and conversion services, point of sale (PoS) systems, gift card and loyalty programs, online transaction processing, etc." ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" .
+
+fibo-fbc-fct-fse:MonetaryAuthority a owl:Class ;
+    rdfs:label "monetary authority",
+        "货币当局（monetary authority）"@zh ;
+    rdfs:comment "控制某一国家或国家集团货币政策、监管和货币供应的监管机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fct-fse:regulatesSupplyOf ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+        cmns-rga:RegulatoryAgency ;
+    skos:definition "regulatory agency that controls the monetary policy, regulation and supply of money in some country or group of countries" ;
+    skos:example "a central bank, the executive branch of a government, a central bank for several nations, a currency board" ;
+    cmns-av:adaptedFrom "http://www.investordictionary.com/definition/monetary-authority"^^xsd:anyURI .
+
+fibo-fbc-fct-fse:RiskPoolingInstitution a owl:Class ;
+    rdfs:label "risk pooling institution",
+        "风险汇聚机构（risk pooling institution）"@zh ;
+    rdfs:comment "在提供某项金融服务的同时分散该服务固有风险、以降低重大损失概率的金融机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution ;
+    skos:definition "financial institution that provides some financial service while spreading the financial risk inherent in that service to lower the probability of a catastrophic financial event by aggregating customers across diverse dimensions as a risk management practice" ;
+    skos:example "Insurance companies are the most common form of risk pooling institution." ;
+    cmns-av:adaptedFrom "https://www.worldbank.org/en/publication/gfdr/gfdr-2016/background/nonbank-financial-institution"^^xsd:anyURI .
+
+fibo-fbc-fct-fse:UnderwritingArrangement a owl:Class ;
+    rdfs:label "underwriting arrangement",
+        "承销安排（underwriting arrangement）"@zh ;
+    rdfs:comment "承诺承销商承担风险的双方之间的书面合同。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-fbc-fct-fse:Underwriter ],
+        fibo-fnd-agr-ctr:WrittenContract ;
+    skos:definition "written contract between parties that commits the underwriter to assuming risk" .
+
+fibo-fbc-fct-fse:UnitInvestmentTrust a owl:Class ;
+    rdfs:label "unit investment trust",
+        "单位投资信托（unit investment trust）"@zh ;
+    rdfs:comment "依信托契约、托管或代理合同或类似文件组织、不设董事会的投资公司。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:InvestmentCompany ;
+    skos:definition "investment company which (a) is organized under a trust indenture, contract of custodianship or agency, or similar instrument, (b) does not have a board of directors, and (c) issues only redeemable securities, each of which represents an undivided interest in a unit of specified securities; but does not include a voting trust" ;
+    fibo-fnd-utl-av:definitionOrigin "Section 4, definition of investment companies, Investment Company Act of 1940 as amended and approved as of 3 January 2012, see https://www.sec.gov/about/laws/ica40.pdf" ;
+    cmns-av:abbreviation "UIT" ;
+    cmns-av:synonym "unit investment company" .
+
+fibo-fbc-fct-fse:hasPortfolioCompany a owl:ObjectProperty ;
+    rdfs:label "has portfolio company",
+        "具有被投公司（has portfolio company）"@zh ;
+    rdfs:comment "指明风险投资机构、并购基金或控股公司所投资的一方。"@zh ;
+    rdfs:domain fibo-fnd-oac-ctl:ControllingParty ;
+    rdfs:range fibo-be-oac-cpty:ControlledParty ;
+    rdfs:subPropertyOf fibo-fnd-oac-ctl:isPartyControlling ;
+    owl:inverseOf fibo-fbc-fct-fse:isPortfolioCompanyOf ;
+    skos:definition "indicates a party in which a venture capital firm, a buyout firm, or a holding company has invested" .
+
+fibo-fbc-fct-fse:isPortfolioCompanyOf a owl:ObjectProperty ;
+    rdfs:label "is portfolio company of",
+        "是……的被投公司（is portfolio company of）"@zh ;
+    rdfs:comment "指明作为该方财务投资人（即投资方）的风险投资机构、并购基金或控股公司。"@zh ;
+    rdfs:domain fibo-be-oac-cpty:ControlledParty ;
+    rdfs:range fibo-fnd-oac-ctl:ControllingParty ;
+    rdfs:subPropertyOf fibo-fnd-oac-ctl:hasControllingParty ;
+    skos:definition "indicates a venture capital firm, a buyout firm, or a holding company that is a financial sponsor (i.e. investor in) of the party" .
+
+fibo-fbc-fct-fse:regulatesSupplyOf a owl:ObjectProperty ;
+    rdfs:label "regulates supply of",
+        "监管……的供应（regulates supply of）"@zh ;
+    rdfs:comment "将监管机构与其通过规章制度在某市场上控制或监督其供应的事物关联起来。"@zh ;
+    rdfs:domain cmns-rga:RegulatoryAgency ;
+    rdfs:subPropertyOf cmns-rga:governs ;
+    skos:definition "relates a regulatory agency to something it controls or supervises the availability of in some market by means of rules and regulations" ;
+    skos:example "The Federal Reserve System, whose banks together comprise the central bank of the United States, supervises banking system and regulates the money supply in the US." .
+
+fibo-fbc-fct-fse:Underwriter a owl:Class ;
+    rdfs:label "underwriter",
+        "承销商（underwriter）"@zh ;
+    rdfs:comment "以佣金、保费、价差或利息等费用为代价，评估并承担他方风险的金融服务提供商。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-fbc-fct-fse:UnderwritingArrangement ] ],
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "financial service provider that evaluates and assumes another party's risk for a fee, such as a commission, premium, spread or interest" .
+
+fibo-fbc-fct-fse:Bank a owl:Class ;
+    rdfs:label "bank",
+        "银行（bank）"@zh ;
+    rdfs:comment "吸收存款、发放贷款、兑付支票并提供相关服务的存款性机构，通常为公司制，服务于个人客户和企业客户。"@zh ;
+    rdfs:seeAlso <https://www.sec.gov/about/laws/ica40.pdf> ;
+    rdfs:subClassOf fibo-fbc-fct-fse:DepositoryInstitution ;
+    skos:definition "depository institution, usually a corporation, that accepts deposits, makes loans, pays checks, and performs related services, for individual members of the public, businesses or other organizations" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Banking Terms, Sixth Edition, 2012" .
+
+fibo-fbc-fct-fse:BusinessIdentifierCode a owl:Class ;
+    rdfs:label "business identifier code",
+        "商业标识代码（business identifier code）"@zh ;
+    rdfs:comment "金融和非金融机构的国际标识符，用于促进金融服务信息的自动化处理。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-org:FormalOrganization ;
+            owl:onProperty cmns-dsg:denotes ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fct-fse:BusinessPartySuffix ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass lcc-cr:Alpha2Code ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCodeScheme ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-org:OrganizationSubUnitIdentifier ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fct-fse:BusinessPartyPrefix ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        cmns-cds:CodeElement,
+        cmns-cxtid:StructuredIdentifier,
+        cmns-org:OrganizationIdentifier ;
+    skos:definition "international identifier for financial and non-financial institutions used to facilitate automated processing of information for financial services" ;
+    cmns-av:abbreviation "BIC" ;
+    cmns-av:adaptedFrom "ISO 9362:2014 Banking -- Banking telecommunication messages -- Business identifier code (BIC)" ;
+    cmns-av:explanatoryNote "The BIC is used for addressing messages, routing business transactions and identifying business parties. Note that the use of OrganizationSubUnitIdentifier in FIBO corresponds to the Branch Code in the SWIFT scheme." ;
+    cmns-av:synonym "SWIFT ID",
+        "SWIFT code",
+        "SWIFT-BIC",
+        "bank identifier code",
+        "business entity identifier" .
+
+fibo-fbc-fct-fse:BusinessIdentifierCodeScheme a owl:Class ;
+    rdfs:label "business identifier code scheme",
+        "商业标识代码方案（business identifier code scheme）"@zh ;
+    rdfs:comment "规定用于标识金融和非金融机构的唯一商业标识代码（BIC）之构成要素的方案。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCode ],
+        cmns-cds:CodeSet,
+        cmns-org:OrganizationIdentificationScheme ;
+    skos:definition "scheme that specifies the elements of a unique business identifier code (BIC) scheme to identify financial and non-financial institutions used to facilitate automated processing of information for financial services" ;
+    cmns-av:adaptedFrom "https://www.iso.org/standard/60390.html"^^xsd:anyURI,
+        "ISO 9362:2014 Banking -- Banking telecommunication messages -- Business identifier code (BIC)" .
+
+fibo-fbc-fct-fse:ClearingHouse a owl:Class ;
+    rdfs:label "clearing house",
+        "清算所（clearing house）"@zh ;
+    rdfs:comment "附属于交易所、提供清算服务（包括金融交易的确认、交割和结算）的金融服务提供商。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:provides ;
+            owl:someValuesFrom fibo-fbc-fct-fse:ClearingService ],
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "financial service provider that is exchange affiliated and provides clearing services, including the validation, delivery, and settlement of financial transactions, for financial intermediaries" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" .
+
+fibo-fbc-fct-fse:FinanceCompany a owl:Class ;
+    rdfs:label "finance company",
+        "金融公司（finance company）"@zh ;
+    rdfs:comment "从事放贷业务、资金来源于银行、机构和其他货币市场渠道（而非公众存款）的金融中介。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution ;
+    skos:definition "financial intermediary in the business of making loans that obtains its financing from banks, institutions, and other money market sources rather than from deposits" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Finance and Investment Terms, Ninth Edition, 2014" .
+
+fibo-fbc-fct-fse:InvestmentCompany a owl:Class ;
+    rdfs:label "investment company",
+        "投资公司（investment company）"@zh ;
+    rdfs:comment "主要从事或自称主要从事、或拟主要从事投资、再投资或证券交易业务的任何发行人。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:NonDepositoryInstitution ;
+    skos:definition "any issuer which: (a) is or holds itself out as being engaged primarily, or proposes to engage primarily, in the business of investing, reinvesting, or trading in securities; (b) is engaged or proposes to engage in the business of issuing face-amount certificates of the installment type, or has been engaged in such business and has any such certificate outstanding; or (c) is engaged or proposes to engage in the business of investing, reinvesting, owning, holding, or trading in securities, and owns or proposes to acquire investment securities having a value exceeding 40 per centum of the value of such issuer&apos;s total assets (exclusive of Government securities and cash items) on an unconsolidated basis" ;
+    fibo-fnd-utl-av:definitionOrigin "Section 3a of the Investment Company Act of 1940 as amended in January, 2012, https://www.sec.gov/about/laws/ica40.pdf" ;
+    cmns-av:explanatoryNote "An investment company is organized as either a corporation or as a trust. Individual investors' money is then pooled together in a single account and used to purchase securities that will have the greatest chance of helping the investment company reach its objectives. All investors jointly own the portfolio that is created through these pooled funds, and each investor has an undivided interest in the securities.",
+        "In the US, all investment company offerings are subject to the Securities Act of 1933, which requires the investment company to register with the Securities Exchange Commission (SEC) and to give all purchasers a prospectus. Investment companies are also subject to the Investment Company Act of 1940, which sets forth guidelines on how investment companies must operate." .
+
+fibo-fbc-fct-fse:DepositoryInstitution a owl:Class ;
+    rdfs:label "depository institution",
+        "存款性机构（depository institution）"@zh ;
+    rdfs:comment "从事从公众或其他机构吸收活期存款业务的任何金融机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "any financial institution engaged in the business of receiving demand deposits from the public or other institutions" ;
+    cmns-av:adaptedFrom "https://www.fdic.gov/regulations/laws/rules/1000-400.html#fdic1000sec.3a"^^xsd:anyURI,
+        "12 U.S. Code Section 1813 - Definitions, see, for example, http://www.law.cornell.edu/uscode/text/12/1813" .
+
+fibo-fbc-fct-fse:FinancialInstitution a owl:Class ;
+    rdfs:label "financial institution",
+        "金融机构（financial institution）"@zh ;
+    rdfs:comment "被认定为政府机构或私营实体、从公众和其他机构归集资金的金融服务提供商。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:provides ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:FinancialService ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isRegulatedBy ;
+            owl:someValuesFrom cmns-rga:RegulatoryAgency ],
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    skos:definition "financial service provider identified as either a government agency or privately owned entity that collects funds from the public and from other institutions, and invests those funds in financial assets, such as loans, securities, bank deposits, and income-generating property" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Banking Terms, Sixth Edition, 2012" ;
+    cmns-av:explanatoryNote "Financial institutions are differentiated by the way they obtain and invest funds. Depository institutions accept public deposits, which are insured by the government against loss, and channel those deposits into lending activities. Non-depository institutions, such as brokerage firms, life insurance companies, pension funds, and investment companies, fund their investment activities directly from financial markets by selling securities to the public or by selling insurance policies, in the case of insurance companies." ;
+    cmns-av:synonym "financial intermediary" .
+
+fibo-fbc-fct-fse:NonDepositoryInstitution a owl:Class ;
+    rdfs:label "non-depository institution",
+        "非存款性机构（non-depository institution）"@zh ;
+    rdfs:comment "不具备完全银行牌照、通常不受国家或国际银行监管机构监管的金融机构。"@zh ;
+    rdfs:subClassOf fibo-fbc-fct-fse:FinancialInstitution ;
+    skos:definition "financial institution that does not have a full banking license and typically is not supervised by a national or international banking regulatory agency" ;
+    skos:historyNote "The term 'non-bank' may have been derived from 'non-deposit taking banking institution'. To be clearer, in the United States, non-depository institutions are explicitly disjoint with depository institutions (financial institutions that take deposits of some sort, potentially including securities) in FIBO. Banks are defined as financial institutions that take demand deposits from the public and that also provide commercial lending services. Many 'non-bank' institutions take deposits or provide commercial lending services, but they may not do both." ;
+    cmns-av:adaptedFrom "https://www.worldbank.org/en/publication/gfdr/gfdr-2016/background/nonbank-financial-institution"^^xsd:anyURI,
+        "Barron's Dictionary of Banking Terms, Sixth Edition, 2012" ;
+    cmns-av:explanatoryNote "A non-depository financial institution acts as a middleman between two parties in a financial transaction, and does not provide traditional depository services, such as brokerage firms, insurance companies, and investment companies. These kinds of institutions facilitate alternative financial services, such as investment (both collective and individual), risk pooling, financial consulting, brokering, money transmission, and check cashing. NBFIs are a source of consumer credit (along with licensed banks). Examples of nonbank financial institutions include insurance firms, venture capitalists, currency exchanges, some microloan organizations, and pawn shops. These non-bank financial institutions provide services that are not necessarily suited to banks, serve as competition to banks, and specialize in sectors or groups. Note, however, that there are exceptions in Europe, for example, where the same firm may have banking, insurance, and brokerage functions." ;
+    cmns-av:synonym "non-bank financial company (NBFC)",
+        "non-bank financial institution (NBFI)",
+        "non-banking financial institution (NBFI)" .
+

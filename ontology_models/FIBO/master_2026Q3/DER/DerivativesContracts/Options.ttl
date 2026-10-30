@@ -1,0 +1,730 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-opt: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/> .
+@prefix fibo-der-sbd-sbd: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ir-ir: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/InterestRates/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-dbt-ex: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/ExerciseConventions/> .
+@prefix fibo-sec-eq-eq: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/> .
+@prefix fibo-sec-sec-bsk: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-drc-opt: a owl:Ontology ;
+    rdfs:label "Options Ontology"@en,
+        "期权本体（Options Ontology）"@zh ;
+    dcterms:abstract "Concepts common to all option contracts. An option gives one party (the holder) the right to purchase or sell the underlying instrument at a given time or times in the future (as determined by the exercise convention), if they choose to do so." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义期权（option）：买方权利、行权价、到期日、看涨与看跌等核心结构。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-der-drc-bsc:,
+        fibo-der-sbd-sbd:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fi-ip:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-doc:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ir-ir:,
+        fibo-sec-dbt-bnd:,
+        fibo-sec-dbt-ex:,
+        fibo-sec-eq-eq:,
+        fibo-sec-sec-bsk:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-pts:,
+        cmns-qtu:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20250401/DerivativesContracts/Options/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20210601/DerivativesContracts/Options.rdf version of this ontology was revised to add an expiration date as an important property of an option.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210901/DerivativesContracts/Options.rdf version of this ontology was revised to correct a restriction on an option with respect to an optional option premium which was not well-formed, and modified the definition of interest rate option to reflect a benchmark, and to be a specialization of vanilla option.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20211201/DerivativesContracts/Options.rdf version of this ontology was revised to make certain values subclasses of MonetaryAmount instead of MonetaryMeasure.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220101/DerivativesContracts/Options.rdf version of this ontology was revised to add an explanatory note to basket option and make it a kind of exotic option and added interest rate derivative as the parent of interest rate option; added capped option as a kind of vanilla option.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220701/DerivativesContracts/Options.rdf version of this ontology was revised to add the most common options trading strategies.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220801/DerivativesContracts/Options.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, and to move the definition of an underlier and the related property, has underlier, to financial instruments so that these concepts are also available for use in relation to pool-backed securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/DerivativesContracts/Options.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/DerivativesContracts/Options.rdf version of the ontology was modified to replace concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231201/DerivativesContracts/Options.rdf version of the ontology was modified to replace additional concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240101/DerivativesContracts/Options.rdf version of this ontology was modified to support details of ISO 4914, Financial services - Unique Product Identifier (UPI), (DER-146).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250201/DerivativesContracts/Options.rdf version of this ontology was modified to simplify and refine definitions related to underliers (DER-112).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/DerivativesContracts/Options.rdf version of this ontology was modified to further simplify and clarify definitions related to rate derivatives (DER-90)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc." .
+
+fibo-der-drc-opt:AtTheMoney a owl:NamedIndividual,
+        fibo-der-drc-opt:Moneyness ;
+    rdfs:label "at-the-money"@en ;
+    skos:definition "moneyness classifier that refers to an option whose value in terms of its strike price is the same or close to the current market price of the underlying security"@en ;
+    cmns-av:abbreviation "ATM"@en ;
+    cmns-av:explanatoryNote "An ATM option has a delta of ±0.50, positive if it is a call, negative for a put."@en .
+
+fibo-der-drc-opt:BasketOption a owl:Class ;
+    rdfs:label "basket option"@en,
+        "篮子期权（basket option）"@zh ;
+    rdfs:comment "标的资产为一组（篮子）商品、证券、指数或货币的期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractDuration ;
+            owl:someValuesFrom cmns-dt:ExplicitDuration ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-sec-sec-bsk:MixedBasket ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-ip:hasPriceDeterminationMethod ;
+            owl:someValuesFrom fibo-fbc-fi-ip:PriceDeterminationMethod ],
+        fibo-der-drc-opt:ExoticOption ;
+    skos:definition "option whose underlying asset is a group, or basket, of commodities, securities, indices, or currencies"@en ;
+    cmns-av:explanatoryNote "As with other options, a basket option gives the holder the right, but not the obligation, to buy or sell the basket at a specific price, on or before a certain date. This exotic option has all the characteristics of a standard option, but with the basis of the strike price on the weighted value of its components. Currency baskets are the most popular type of basket option, and they will settle in the holder's home currency. Because it involves just one transaction, a basket option often costs less than multiple single options as it saves on commissions and fees."@en .
+
+fibo-der-drc-opt:BondOption a owl:Class ;
+    rdfs:label "bond option"@en,
+        "债券期权（bond option）"@zh ;
+    rdfs:comment "赋予买方（持有人）按特定价格买入或卖出（视看涨或看跌而定）债券的权利（而非义务）的期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-sec-dbt-bnd:Bond ] ],
+        fibo-der-drc-opt:FixedIncomeOption ;
+    skos:definition "option giving the buyer (holder) the right, but not the obligation, to buy or sell (depending on whether it is a call or a put) a bond at a certain price on or before a specified date"@en .
+
+fibo-der-drc-opt:CappedOption a owl:Class ;
+    rdfs:label "capped option"@en,
+        "封顶期权（capped option）"@zh ;
+    rdfs:comment "设有既定盈利上限或上限价格的期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasCapPrice ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
+        fibo-der-drc-opt:VanillaOption ;
+    skos:definition "option with an established profit cap or cap price"@en ;
+    cmns-av:explanatoryNote "The cap price is equal to the option's strike price plus a cap interval for a call option or the strike price minus a cap interval for a put option. A capped option is automatically exercised when the underlying security closes at or above (for a call) or at or below (for a put) the option's cap price."@en .
+
+fibo-der-drc-opt:ExtrinsicValue a owl:Class ;
+    rdfs:label "extrinsic value"@en,
+        "外在价值（extrinsic value）"@zh ;
+    rdfs:comment "期权市场价格（即权利金）与其内在价值之间的差额。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:MonetaryAmount ;
+    owl:disjointWith fibo-der-drc-opt:IntrinsicValue ;
+    skos:definition "measure of the difference between the market price of an option, called the premium, and its intrinsic value"@en ;
+    cmns-av:explanatoryNote "Extrinsic value is also the portion of the worth that has been assigned to an option by factors other than the underlying asset's price. The opposite of extrinsic value is intrinsic value, which is the inherent worth of an option."@en ;
+    cmns-av:synonym "option time value"@en .
+
+fibo-der-drc-opt:Fence a owl:Class ;
+    rdfs:label "fence"@en,
+        "护栏策略（fence）"@zh ;
+    rdfs:comment "利用期权将金融工具的可能回报限定在一定区间内的期权交易策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:OptionTradingStrategy ;
+    skos:definition "option trading strategy that uses options to limit the range of possible returns on a financial instrument"@en ;
+    cmns-av:explanatoryNote """A fence consists of the following elements:
+- long position in a financial instrument (e.g., a share, index or currency)
+- long put (normally with a strike price close to or at the current spot price of the financial instrument)
+- short put (with a strike price lower than the bought put - e.g., 80% of the current spot price)
+- short call (with a strike price higher than the current spot price)."""@en,
+        "The expiration dates of all the options are usually the same. The call strike is normally chosen in such a way that the sum total of the three option premiums is equal to zero. This investment strategy will ensure that the value of the investment at expiry will be between the strike price on the short call and the strike price on the long put. Thus, possible gains and losses (the value of the financial instrument minus the cost of acquiring it) are confined to a specified range. However, if the price of the financial instrument falls below the strike level of the sold put the investor will start participating in any further price declines of the financial instrument."@en .
+
+fibo-der-drc-opt:InTheMoney a owl:NamedIndividual,
+        fibo-der-drc-opt:Moneyness ;
+    rdfs:label "in-the-money"@en ;
+    skos:definition "moneyness classifier that refers to an option that has value in a strike price that is favorable in comparison to the prevailing market price of the underlying asset"@en ;
+    cmns-av:abbreviation "ITM"@en ;
+    cmns-av:explanatoryNote "An in-the-money call option means the option holder has the opportunity to buy the security below its current market price. An in-the-money put option means the option holder can sell the security above its current market price."@en .
+
+fibo-der-drc-opt:InterestRateOption a owl:Class ;
+    rdfs:label "interest rate option"@en,
+        "利率期权（interest rate option）"@zh ;
+    rdfs:comment "赋予买方（持有人）在参考利率的市场利率高于约定水平时收取现金付款的权利（而非义务）的期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-ind-ir-ir:InterestRateBenchmark ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasStrikeRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:InterestRate ],
+        fibo-der-drc-bsc:InterestRateDerivative,
+        fibo-der-drc-opt:VanillaOption ;
+    skos:definition "option that giving the buyer (holder) the right, but not the obligation, to receive a cash payment if market interest rate of a reference rate is higher or lower, depending on the option, than the strike rate of the option"@en ;
+    cmns-av:explanatoryNote "The amount of the payment will be based on the difference between the market rate on the exercise date and the strike rate, multiplied by the notional principal specified in the option contract, to calculate the total payment."@en .
+
+fibo-der-drc-opt:IronButterfly a owl:Class ;
+    rdfs:label "iron butterfly"@en,
+        "铁蝶式策略（iron butterfly）"@zh ;
+    rdfs:comment "由两个看涨期权、两个看跌期权、三个行权价和同一到期日构成的蝶式策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:Butterfly ;
+    skos:definition "butterfly strategy that consists of two call options and two put options, three strike prices and the same expiration date"@en ;
+    cmns-av:explanatoryNote "The key to using this trade as part of a successful trading strategy is to forecast a time when option prices are likely to decline in value generally. This usually occurs during periods of sideways movement or a mild upward trend."@en ;
+    cmns-av:synonym "iron fly"@en .
+
+fibo-der-drc-opt:IronCondor a owl:Class ;
+    rdfs:label "iron condor"@en,
+        "铁秃鹰策略（iron condor）"@zh ;
+    rdfs:comment "由两个看跌期权（一多一空）、两个看涨期权（一多一空）和四个行权价构成、到期日相同的秃鹰策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:StrikePrice ;
+            owl:onProperty fibo-der-drc-opt:hasExercisePrice ;
+            owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:CondorSpread ;
+    skos:definition "condor strategy consisting of two puts (one long and one short) and two calls (one long and one short), and four strike prices, all with the same expiration date"@en ;
+    cmns-av:explanatoryNote "The iron condor earns the maximum profit when the underlying asset closes between the middle strike prices at expiration. In other words, the goal is to profit from low volatility in the underlying asset."@en .
+
+fibo-der-drc-opt:LongTermEquityAnticipationSecurity a owl:Class ;
+    rdfs:label "long-term equity anticipation security"@en,
+        "长期股票预期证券（long-term equity anticipation security）"@zh ;
+    rdfs:comment "允许持有人买卖股票、到期日长于一年（通常最长三年）的股票期权（LEAPS）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractDuration ;
+            owl:someValuesFrom cmns-dt:Duration ],
+        fibo-der-drc-opt:EquityOption ;
+    skos:definition "equity option that allows the holder to buy or sell shares of stock with expiration dates that are longer than one year, and typically up to three years from issue"@en ;
+    cmns-av:abbreviation "LEAP"@en ;
+    cmns-av:explanatoryNote "By providing opportunities to control and manage risk or even to speculate, LEAPS are virtually identical to regular options. Expiration dates on LEAPs can range from nine months to three years, which is longer than the holding period for a traditional call or put option. Although they are not available on all stocks, LEAPS are available on most widely held issues."@en .
+
+fibo-der-drc-opt:OptionOnFuture a owl:Class ;
+    rdfs:label "option on future"@en,
+        "期货期权（option on future）"@zh ;
+    rdfs:comment "赋予持有人在期权到期日或之前按指定价格买入或卖出特定期货合约的权利（而非义务）的期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-fbc-fi-fi:Future ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-ex:hasExerciseTerms ;
+            owl:someValuesFrom fibo-sec-dbt-ex:AmericanExerciseTerms ],
+        fibo-der-drc-opt:VanillaOption ;
+    skos:definition "option that gives the holder the right, but not the obligation, to buy or sell a specific futures contract at a specified price on or before the option's expiration date"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019."@en .
+
+fibo-der-drc-opt:OutOfTheMoney a owl:NamedIndividual,
+        fibo-der-drc-opt:Moneyness ;
+    rdfs:label "out-of-the-money"@en ;
+    skos:definition "moneyness classifier that refers to an option whose value in terms of its strike price is not favorable in comparison to the prevailing market price of the underlying asset"@en ;
+    cmns-av:abbreviation "OTM"@en ;
+    cmns-av:explanatoryNote "An OTM call option will have a strike price that is higher than the market price of the underlying asset. Alternatively, an OTM put option has a strike price that is lower than the market price of the underlying asset."@en .
+
+fibo-der-drc-opt:ProtectiveCollar a owl:Class ;
+    rdfs:label "protective collar"@en,
+        "保护性领口策略（protective collar）"@zh ;
+    rdfs:comment "由备兑看涨期权和保护性看跌期权构成的领口策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:ProtectivePut ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CoveredCall ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:Collar ;
+    skos:definition "collar that consists of a covered call and protective put"@en ;
+    cmns-av:explanatoryNote "A protective collar consists of a long position in the underlying security, a put option purchased to hedge the downside risk on a stock, a call option written on the stock to finance the put purchase."@en .
+
+fibo-der-drc-opt:RiskReversal a owl:Class ;
+    rdfs:label "risk reversal"@en,
+        "风险逆转策略（risk reversal）"@zh ;
+    rdfs:comment "卖出虚值看跌期权并买入虚值看涨期权、两者到期日相同的期权交易策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:OptionTradingStrategy ;
+    skos:definition "option trading strategy that consists of being short (selling) an out of the money put and being long (i.e., buying) an out of the money call, both with the same maturity"@en ;
+    cmns-av:explanatoryNote "A risk reversal is a position which simulates profit and loss behavior of owning an underlying security; therefore, it is sometimes called a synthetic long. This is an investment strategy that amounts to both buying and selling out-of-money options simultaneously. In this strategy, the investor will first make a market hunch; if that hunch is bullish, he will want to go long. However, instead of going long on the stock, he will buy an out of the money call option, and simultaneously sell an out of the money put option. Presumably he will use the money from the sale of the put option to purchase the call option. Then as the stock goes up in price, the call option will be worth more, and the put option will be worth less."@en .
+
+fibo-der-drc-opt:StandardizedOptionsTerms a owl:Class ;
+    rdfs:label "standardized options terms"@en,
+        "标准化期权条款（standardized options terms）"@zh ;
+    rdfs:comment "由证券或期权交易所、或由期权清算机构制定的标准化合同条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-der-drc-opt:VanillaOption ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-ip:hasPriceDeterminationMethod ;
+            owl:someValuesFrom fibo-fbc-fi-ip:PriceDeterminationMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-fct-pub:hasPublisher ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fct-mkt:Exchange fibo-der-drc-bsc:DerivativesClearingOrganization ) ] ],
+        fibo-fbc-fi-fi:StandardizedTerms ;
+    skos:definition "standardized contract terms established by a securities or options exchange or by an options clearing entity"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019."@en ;
+    cmns-av:explanatoryNote "Such terms may relate to the underlying instruments, exercise price, expiration date, and contract size, for example."@en .
+
+fibo-der-drc-opt:Straddle a owl:Class ;
+    rdfs:label "straddle"@en,
+        "跨式策略（straddle）"@zh ;
+    rdfs:comment "同时买入同一标的证券、相同行权价和到期日的看跌期权与看涨期权的中性期权交易策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:OptionTradingStrategy ;
+    skos:definition "neutral option trading strategy that involves simultaneously buying both a put option and a call option for the underlying security with the same strike price and the same expiration date"@en ;
+    cmns-av:explanatoryNote "The strategy is profitable only when the value of the underlier varies (rises or falls) from the strike price by more than the total premium paid."@en .
+
+fibo-der-drc-opt:Strangle a owl:Class ;
+    rdfs:label "strangle"@en,
+        "宽跨式策略（strangle）"@zh ;
+    rdfs:comment "投资者同时持有行权价不同但到期日相同的看涨期权与看跌期权的期权交易策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:OptionTradingStrategy ;
+    skos:definition "option trading strategy in which the investor holds a position in both a call and a put option with different strike prices, but with the same expiration date and underlying asset"@en ;
+    cmns-av:explanatoryNote "A strangle is a good strategy if you think the underlying security will experience a large price movement in the near future but are unsure of the direction. However, it is profitable mainly if the asset swings sharply in price."@en .
+
+fibo-der-drc-opt:hasExerciseDateOffset a owl:ObjectProperty ;
+    rdfs:label "has exercise date offset"@en,
+        "具有行权日偏移（has exercise date offset）"@zh ;
+    rdfs:comment "指明重置日与行权日之间的天数。"@zh ;
+    rdfs:domain fibo-der-drc-opt:StripStrategy ;
+    rdfs:range cmns-dt:Duration ;
+    rdfs:subPropertyOf cmns-dt:hasDuration ;
+    skos:definition "indicates the period in days between the reset date and the exercise date"@en .
+
+fibo-der-drc-opt:hasInterestAccrualDateOffset a owl:ObjectProperty ;
+    rdfs:label "has interest accrual date offset"@en,
+        "具有起息日偏移（has interest accrual date offset）"@zh ;
+    rdfs:comment "指明每个重置日与下一期间利息开始计提之间的天数。"@zh ;
+    rdfs:domain fibo-der-drc-opt:StripStrategy ;
+    rdfs:range cmns-dt:Duration ;
+    rdfs:subPropertyOf cmns-dt:hasDuration ;
+    skos:definition "indicates the period in days between each reset date and the commencement of interest accrual for the next period"@en .
+
+fibo-der-drc-opt:hasSettlementDateOffset a owl:ObjectProperty ;
+    rdfs:label "has settlement date offset"@en,
+        "具有结算日偏移（has settlement date offset）"@zh ;
+    rdfs:comment "指明每个重置日与相应结算日之间的天数。"@zh ;
+    rdfs:domain fibo-der-drc-opt:StripStrategy ;
+    rdfs:range cmns-dt:Duration ;
+    rdfs:subPropertyOf cmns-dt:hasDuration ;
+    skos:definition "indicats the period in days between each reset date and the corresponding settlement date"@en .
+
+fibo-der-drc-opt:hasStrikePercentageAmount a owl:ObjectProperty ;
+    rdfs:label "has strike percentage amount"@en,
+        "具有行权百分比（has strike percentage amount）"@zh ;
+    rdfs:comment "指明以标的资产价值百分比表示的行权价格或行权水平。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "indicates a strike price or level expressed as a percentage of the value of the underlying asset"@en .
+
+fibo-der-drc-bsc:DerivativesClearingOrganization a owl:Class ;
+    cmns-av:explanatoryNote "For options, the derivatives clearing organization is responsible for clearing transactions for put and call options on common stocks and other equity issues, stock indexes, foreign currencies, interest rate composites and single-stock futures."@en .
+
+fibo-der-drc-opt:Butterfly a owl:Class ;
+    rdfs:label "butterfly"@en,
+        "蝶式策略（butterfly）"@zh ;
+    rdfs:comment "将牛市价差与熊市价差组合、风险固定且盈利封顶的期权策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:StrikePrice ;
+            owl:onProperty fibo-der-drc-opt:hasExercisePrice ;
+            owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fi-fi:Option ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:OptionTradingStrategy ;
+    skos:definition "strategy that combines bull and bear spreads with a fixed risk and capped profit"@en ;
+    cmns-av:explanatoryNote "These spreads are intended as a market-neutral strategy and pay off the most if the underlying asset does not move prior to option expiration. They involve either four calls, four puts, or a combination of puts and calls with three strike prices. Butterfly spreads pay off the most if the underlying asset price doesn't change before the option expires. The upper and lower strike prices are equal distance from the middle, or at-the-money, strike price."@en .
+
+fibo-der-drc-opt:Collar a owl:Class ;
+    rdfs:label "collar"@en,
+        "领口策略（collar）"@zh ;
+    rdfs:comment "买入下档看跌期权并卖出上档看涨期权的期权交易策略，用于防范大额亏损，但也限制了盈利。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:OptionTradingStrategy ;
+    skos:definition "option trading strategy that involves buying a downside put and selling an upside call that is implemented to protect against large losses, but which also limits large upside gains"@en .
+
+fibo-der-drc-opt:CondorSpread a owl:Class ;
+    rdfs:label "condor spread"@en,
+        "秃鹰价差（condor spread）"@zh ;
+    rdfs:comment "一种非方向性期权策略，同时限制盈利与亏损，旨在从低波动或高波动中获利。"@zh ;
+    rdfs:subClassOf fibo-der-drc-opt:OptionTradingStrategy ;
+    skos:definition "non-directional options strategy that limits both gains and losses while seeking to profit from either low or high volatility"@en ;
+    cmns-av:explanatoryNote "There are two types of condor spreads. A long condor seeks to profit from low volatility and little to no movement in the underlying asset. A short condor seeks to profit from high volatility and a sizable move in the underlying asset in either direction. A Condor Spread uses either all calls or all puts."@en .
+
+fibo-der-drc-opt:CoveredCall a owl:Class ;
+    rdfs:label "covered call"@en,
+        "备兑看涨期权（covered call）"@zh ;
+    rdfs:comment "卖方（投资者）持有等量标的证券的看涨期权。"@zh ;
+    rdfs:subClassOf fibo-der-drc-opt:CallOption ;
+    skos:definition "call option in which the seller (investor) owns an equivalent amount of the underlying security"@en .
+
+fibo-der-drc-opt:EquityOption a owl:Class ;
+    rdfs:label "equity option"@en,
+        "股票期权（equity option）"@zh ;
+    rdfs:comment "赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的股票资产的权利（而非义务）的期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-ex:AmericanExerciseConvention ;
+            owl:onProperty fibo-der-drc-opt:hasExerciseStyle ],
+        fibo-der-drc-opt:VanillaOption,
+        fibo-der-sbd-sbd:EquityDerivative ;
+    skos:definition "option giving the buyer (holder) the right, but not the obligation, to buy (via a call option) or sell (via a put option) the underlying equity assets specified at a pre-determined price (i.e., the strike price, fixed or calculated), on or before a specified date (the expiration date)"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019."@en ;
+    cmns-av:explanatoryNote "For an Equity Option, one contract represents 100 shares of stock. Equity options settle in 'American style'."@en .
+
+fibo-der-drc-opt:ExoticOption a owl:Class ;
+    rdfs:label "exotic option"@en,
+        "奇异期权（exotic option）"@zh ;
+    rdfs:comment "具有非标准支付结构或其他特殊特征的期权。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:OverTheCounterDerivativeInstrument,
+        fibo-fbc-fi-fi:Option ;
+    skos:definition "option that has a non-standard payout structure or other feature"@en ;
+    cmns-av:adaptedFrom "Commodity Futures Trading Commission (CFTC) glossary, https://www.cftc.gov/LearnAndProtect/EducationCenter/CFTCGlossary/glossary_e.html"@en ;
+    cmns-av:explanatoryNote "Exotic options include Asian options and lookback options, and are mostly traded in the over-the-counter market."@en .
+
+fibo-der-drc-opt:FixedIncomeOption a owl:Class ;
+    rdfs:label "fixed income option"@en,
+        "固定收益期权（fixed income option）"@zh ;
+    rdfs:comment "赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的固定收益资产的权利（而非义务）的期权。"@zh ;
+    rdfs:subClassOf fibo-der-drc-opt:VanillaOption,
+        fibo-der-sbd-sbd:DebtInstrumentDerivative ;
+    skos:definition "option giving the buyer (holder) the right, but not the obligation, to buy (via a call option) or sell (via a put option) the underlying fixed income assets specified at a pre-determined price (i.e., the strike price, fixed or calculated), on or before a specified date (the expiration date)"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019."@en ;
+    cmns-av:explanatoryNote "Fixed income options, or debt options, are derivatives contracts that use bonds or other fixed-income securities as their underlying asset."@en .
+
+fibo-der-drc-opt:IntrinsicValue a owl:Class ;
+    rdfs:label "intrinsic value"@en,
+        "内在价值（intrinsic value）"@zh ;
+    rdfs:comment "衡量资产价值的指标，即相对于其当前价格的价值。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:MonetaryAmount ;
+    skos:definition "measure of what an asset is worth, i.e. with respect to its current price"@en ;
+    cmns-av:explanatoryNote "This measure is arrived at by means of an objective calculation or complex financial model. In financial analysis this term is used in conjunction with the work of identifying, as nearly as possible, the underlying value of a company and its cash flow. In options pricing it refers to the difference between the strike price of the option and the current price of the underlying asset."@en .
+
+fibo-der-drc-opt:OptionPremiumFormula a owl:Class ;
+    rdfs:label "option premium formula"@en,
+        "期权权利金公式（option premium formula）"@zh ;
+    rdfs:comment "基于每份期权价格或名义本金百分比计算权利金的表达式。"@zh ;
+    rdfs:subClassOf cmns-qtu:Expression ;
+    skos:definition "expression used to calculate the premium based either on the price per option or percentage of the notional amount"@en .
+
+fibo-der-drc-opt:ProtectivePut a owl:Class ;
+    rdfs:label "protective put"@en,
+        "保护性看跌期权（protective put）"@zh ;
+    rdfs:comment "赋予买方（持有人）按等于或接近当前价格的行权价卖出指定资产的权利（而非义务）的看跌期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasCalculatedMarketValue ;
+            owl:someValuesFrom fibo-der-drc-opt:OptionPremium ],
+        fibo-der-drc-opt:PutOption ;
+    skos:definition "put option giving the buyer (holder) the right, but not the obligation, to sell the assets specified at with a strike price equal or close to the current price of the underlying asset, on or before a specified date"@en ;
+    cmns-av:explanatoryNote "A protective put is a risk management and options strategy that involves holding a long position in the underlying asset (e.g., stock). A protective put strategy is analogous to the nature of insurance. The main goal of a protective put is to limit potential losses that may result from an unexpected price drop of the underlying asset"@en ;
+    cmns-av:synonym "synthetic call"@en .
+
+fibo-der-drc-opt:hasCapPrice a owl:ObjectProperty ;
+    rdfs:label "has cap price"@en,
+        "具有上限价格（has cap price）"@zh ;
+    rdfs:comment "合约可行权的价格上限。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryPrice ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount,
+        fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "price at which the contract may be exercised"@en .
+
+fibo-der-drc-opt:hasExerciseSchedule a owl:ObjectProperty ;
+    rdfs:label "has exercise schedule"@en,
+        "具有行权计划表（has exercise schedule）"@zh ;
+    rdfs:comment "将期权与合约中规定的、约束其可行权时间的计划表关联起来。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:Option ;
+    rdfs:range fibo-fnd-dt-fd:Schedule ;
+    rdfs:subPropertyOf fibo-fnd-dt-fd:hasSchedule ;
+    skos:definition "links an option to the schedule specified in the contract that constrains when it may be exercised"@en ;
+    cmns-av:explanatoryNote "An exercise schedule may be as simple as a single date or date period. However, in more complex cases, it may be an ad hoc schedule of individual dates, or a regular schedule of periodic exercise dates."@en .
+
+fibo-der-drc-opt:hasOptionHolder a owl:ObjectProperty ;
+    rdfs:label "has option holder",
+        "具有期权持有人（has option holder）"@zh ;
+    rdfs:comment "指明期权的所有者。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:Option ;
+    rdfs:range fibo-der-drc-opt:OptionHolder ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasContractParty ;
+    skos:definition "indicates the owner of the option" .
+
+fibo-der-drc-opt:hasOptionWriter a owl:ObjectProperty ;
+    rdfs:label "has option writer",
+        "具有期权签发方（has option writer）"@zh ;
+    rdfs:comment "指明期权的发行人。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:Option ;
+    rdfs:range fibo-der-drc-opt:OptionIssuer ;
+    rdfs:subPropertyOf fibo-fnd-agr-ctr:hasContractParty ;
+    skos:definition "indicates the issuer of the option" ;
+    cmns-av:explanatoryNote "Typically, the option writer collects the premium when the option is initially sold."@en .
+
+fibo-der-drc-opt:hasStrikeRate a owl:ObjectProperty ;
+    rdfs:label "has strike rate"@en,
+        "具有行权利率（has strike rate）"@zh ;
+    rdfs:comment "合约可行权的利率。"@zh ;
+    rdfs:range cmns-qtu:Ratio ;
+    rdfs:subPropertyOf cmns-qtu:hasQuantityValue ;
+    skos:definition "rate at which the contract may be exercised"@en .
+
+fibo-der-drc-opt:OptionHolder a owl:Class ;
+    rdfs:label "option holder"@en,
+        "期权持有人（option holder）"@zh ;
+    rdfs:comment "拥有期权的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:holds ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Option ],
+        fibo-fnd-oac-own:Owner ;
+    skos:definition "party that owns an option"@en ;
+    cmns-av:explanatoryNote "In a call, the option holder has the right, but not the obligation, to buy the underlying asset, while, in a put, the option holder has the right to sell the underlying asset. An option holder may sell the option contract itself, at which point the buyer becomes the option holder. Once the instrument is exercised there are typically additional, relevant obligations with regard to settlement."@en .
+
+fibo-der-drc-opt:OptionIssuer a owl:Class ;
+    rdfs:label "option issuer"@en,
+        "期权发行人（option issuer）"@zh ;
+    rdfs:comment "以换取对价为条件授予期权所规定权利的发行人。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-fbc-fi-fi:Option ] ],
+        fibo-fbc-fi-fi:Issuer ;
+    skos:definition "issuer granting the rights defined in the option in exchange for some consideration"@en .
+
+fibo-der-drc-opt:hasCalculatedMarketValue a owl:ObjectProperty ;
+    rdfs:label "has calculated market value"@en,
+        "具有计算市值（has calculated market value）"@zh ;
+    rdfs:comment "指明截至某一相对日期计算得出、被视为该时期权市场价值的价格。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:Option ;
+    rdfs:range fibo-der-drc-opt:OptionPremium ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "indicates a calculated price as of some relative date considered the market value of the option at that point in time"@en ;
+    cmns-av:synonym "has premium"@en .
+
+fibo-der-drc-opt:hasExerciseStyle a owl:ObjectProperty ;
+    rdfs:label "has exercise style",
+        "具有行权方式（has exercise style）"@zh ;
+    rdfs:comment "指明期权规定的行权惯例。"@zh ;
+    rdfs:domain fibo-fbc-fi-fi:Option ;
+    rdfs:range fibo-sec-dbt-ex:ExerciseConvention ;
+    rdfs:subPropertyOf cmns-cls:isClassifiedBy ;
+    skos:definition "indicates the exercise convention specified for the option" .
+
+fibo-der-drc-opt:Moneyness a owl:Class ;
+    rdfs:label "moneyness"@en,
+        "价态（moneyness）"@zh ;
+    rdfs:comment "将衍生品的行权价与其标的资产价格相关联的分类器。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Option ],
+        cmns-cls:Classifier ;
+    skos:definition "classifier for a derivative relating its strike price to the price of its underlying asset"@en ;
+    cmns-av:explanatoryNote "Moneyness describes the intrinsic value of an option in its current state. The term moneyness is most commonly used with put and call options and is an indicator as to the comparative value of the option with respect to its exercise/strike price. Moneyness can be measured with respect to the underlying stock or other asset's current/spot price or its future price."@en .
+
+fibo-der-drc-opt:OptionPremium a owl:Class ;
+    rdfs:label "option premium"@en,
+        "期权权利金（option premium）"@zh ;
+    rdfs:comment "期权合约的当前市场价格。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+            owl:onProperty cmns-qtu:hasQuantityValue ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-opt:OptionPremiumFormula ;
+            owl:onProperty cmns-qtu:hasExpression ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ],
+        fibo-fbc-fi-ip:MarketPrice ;
+    skos:definition "current market price of an option contract"@en ;
+    cmns-av:explanatoryNote "The option premium is the income received by the seller (writer) of an option contract to another party. In-the-money option premiums are composed of two factors: intrinsic and extrinsic value. Out-of-the-money options' premiums consist solely of extrinsic value. For stock options, the premium is quoted as a dollar amount per share, and most contracts represent the commitment of 100 shares."@en .
+
+fibo-der-drc-opt:StripStrategy a owl:Class ;
+    rdfs:label "strip strategy"@en,
+        "序列期权策略（strip strategy）"@zh ;
+    rdfs:comment "涉及一组带周期性重置日的连续期权的交易策略，各重置区间表现如独立期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ;
+            owl:someValuesFrom fibo-fnd-dt-fd:Schedule ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-der-drc-opt:OptionTradingStrategy ;
+    skos:definition "option trading strategy that involves a sequential set of options with periodic reset dates, such that each period between resets behaves like an individual option"@en ;
+    cmns-av:explanatoryNote "Typically, a strip is a strategy that involves being long in one call position and two put options, all with the same strike price on a single underlying stock. The investor who adopts this strategy believes that the underlying price of the stock will plummet in the near-term future. All three of the options will have the same expiration date and the same strike price. If the investor is correct and the price drastically decreases, the puts will pay out substantially. If the investor is wrong and the price of the underlying asset increases, the call option will mitigate the loss. The period between resets may be called a Caplet or Floorlet."@en .
+
+fibo-der-drc-opt:hasExercisePrice a owl:ObjectProperty ;
+    rdfs:label "has exercise price"@en,
+        "具有行权价格（has exercise price）"@zh ;
+    rdfs:comment "规定持有人承诺买入或卖出标的资产的预定价格。"@zh ;
+    rdfs:range fibo-der-drc-opt:StrikePrice ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "specifies a predetermined price at which the holder commits to buy or sell an underlying asset"@en ;
+    cmns-av:synonym "has strike price"@en .
+
+fibo-der-drc-opt:StrikePrice a owl:Class ;
+    rdfs:label "strike price"@en,
+        "行权价（strike price）"@zh ;
+    rdfs:comment "合约行权时一手标的资产可以买入或卖出的价格。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:MonetaryPrice ;
+    skos:definition "price at which a lot of the underlying asset may be bought or sold when the contract is exercised"@en ;
+    cmns-av:explanatoryNote "For call options, the strike price is the price at which the security may be purchased by the option holder; for put options, the strike price is the price at which the security may be sold."@en .
+
+fibo-der-drc-opt:VanillaOption a owl:Class ;
+    rdfs:label "vanilla option"@en,
+        "普通期权（vanilla option）"@zh ;
+    rdfs:comment "赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的资产的权利（而非义务）的常见期权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractDuration ;
+            owl:someValuesFrom cmns-dt:ExplicitDuration ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-ip:hasPriceDeterminationMethod ;
+            owl:someValuesFrom fibo-fbc-fi-ip:PriceDeterminationMethod ],
+        fibo-fbc-fi-fi:Option ;
+    skos:definition "common option giving the buyer (holder) the right, but not the obligation, to buy (via a call option) or sell (via a put option) the underlying assets specified at a pre-determined price (i.e., the strike price, fixed or calculated), on or before a specified date (the expiration date)"@en ;
+    cmns-av:explanatoryNote "Vanilla options include call or put options that have no special or unusual features, and are typically exchange traded."@en .
+
+fibo-der-drc-opt:OptionTradingStrategy a owl:Class ;
+    rdfs:label "option trading strategy"@en,
+        "期权交易策略（option trading strategy）"@zh ;
+    rdfs:comment "在同一标的资产上涉及不止一种期权类型、行权价或到期日的交易策略。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Option ],
+        fibo-fbc-pas-fpas:TradingStrategy ;
+    skos:definition "trading tactic involving more than one option type, strike price, or expiration date on the same underlying asset"@en ;
+    cmns-av:explanatoryNote "Note that some trading strategies may be considered financial instruments in their own right, but most strategies are not. The critical differentiators include whether the strategy itself can be traded, whether it has a financial instrument identifier independently from the identifier(s) of the embedded instrument(s), such as a FIGI or ISIN, and so forth."@en,
+        "Option trading strategies refer to buying calls or put options or selling calls or put options or both together for the purpose of limiting losses and/or optimizing profits. Basically, these strategies utilize one or more combinations for the best outcome possible based on defined parameters. Simple combinations include option spread trades such as vertical spreads, calendar (or horizontal) spreads, and diagonal spreads. More involved combinations include trades such as condor or butterfly spreads which are actually combinations of two vertical spreads."@en .
+
+fibo-der-drc-opt:CallOption a owl:Class ;
+    rdfs:label "call option"@en,
+        "看涨期权（call option）"@zh ;
+    rdfs:comment "赋予买方（持有人）在指定日期或之前按固定价格或公式买入指定资产的权利（而非义务）的期权。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:Option ;
+    skos:definition "option giving the buyer (holder) the right, but not the obligation, to buy the assets specified at a fixed price or formula, on or before a specified date"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019."@en ;
+    cmns-av:explanatoryNote "The seller (issuer) of the call option assumes the obligation of delivering the assets specified should the buyer exercise the option."@en .
+
+fibo-der-drc-opt:PutOption a owl:Class ;
+    rdfs:label "put option"@en,
+        "看跌期权（put option）"@zh ;
+    rdfs:comment "赋予买方（持有人）在指定日期或之前按固定价格或公式卖出指定资产的权利（而非义务）的期权。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:Option ;
+    skos:definition "option giving the buyer (holder) the right, but not the obligation, to sell the assets specified at a fixed price or formula, on or before a specified date"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019."@en ;
+    cmns-av:explanatoryNote "The seller of the put option assumes the obligation of buying the assets specified should the buyer exercise the option."@en .
+
+fibo-fbc-fi-fi:Option a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-ip:hasLotSize ;
+            owl:someValuesFrom xsd:decimal ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasExerciseStyle ;
+            owl:someValuesFrom fibo-sec-dbt-ex:ExerciseConvention ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasExercisePrice ;
+            owl:someValuesFrom fibo-der-drc-opt:StrikePrice ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasExerciseSchedule ;
+            owl:someValuesFrom fibo-fnd-dt-fd:Schedule ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-opt:OptionPremium ;
+            owl:onProperty fibo-der-drc-opt:hasCalculatedMarketValue ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasOptionWriter ;
+            owl:someValuesFrom fibo-der-drc-opt:OptionIssuer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
+            owl:someValuesFrom cmns-dt:Date ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-opt:OptionHolder ;
+            owl:onProperty fibo-der-drc-opt:hasOptionHolder ] .
+

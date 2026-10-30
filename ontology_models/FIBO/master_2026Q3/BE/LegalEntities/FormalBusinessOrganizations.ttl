@@ -1,0 +1,199 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-fnd-aap-ppl: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-cls: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-pty-pty: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-le-fbo: a owl:Ontology ;
+    rdfs:label "Formal Business Organizations Ontology",
+        "正式商业组织本体（Formal Business Organizations Ontology）"@zh ;
+    dcterms:abstract "This ontology defines formal business organizations and related concepts. The ontology covers parts of organizations, membership, classification, address relations and other properties which are applicable to formal business organizations generally. The concept of a formal business organization forms the basis for articulation of types of organization, both incorporated and non-incorporated, in other FIBO-BE ontologies." ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义以营利为目的、依法注册的正式商业组织，连接法律实体与其商业功能。"@zh ;
+    owl:imports fibo-be-le-lp:,
+        fibo-fnd-aap-ppl:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-cls:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pty-pty:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-qtu:,
+        cmns-rga: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20260701/LegalEntities/FormalBusinessOrganizations/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20131101/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20160201/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was modified per the FIBO 2.0 RFC to address minor bug fixes.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was modified as a part of a simplification strategy for the organizational class hierarchy.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20181101/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was modified to reflect the move of hasObjective to FND to enable higher level reuse.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190401/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to replace hasDefinition with isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190701/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190901/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to eliminate duplication of concepts in LCC, simplify addresses, and correct the parent class of OrganizationSubUnit.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200301/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to eliminate the redundant hasSignatory property.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200601/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to extend the concept of a tax identifier, add a value-added tax identifier, and clean up definitions that were circular or ambiguous.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20201101/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to eliminate unnecessary references, some of which include wrong datatypes.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210601/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to move certain fundamental concepts, such as organizational sub-unit, to FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20211001/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220601/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was revised to address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/LegalEntities/FormalBusinessOrganizations.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/LegalEntities/FormalBusinessOrganizations.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20240101/LegalEntities/FormalBusinessOrganizations.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250301/LegalEntities/FormalBusinessOrganizations.rdf version of the ontology was modified to loosen various constraints to better reflect use case requirements (SEC-205).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20251001/LegalEntities/FormalBusinessOrganizations.rdf version of the ontology was modified to reflect migration of concepts from accounting equity to ownership in FND (FND-409)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group, Inc.",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-be-le-fbo:Branch a owl:Class ;
+    rdfs:label "branch",
+        "分支机构（branch）"@zh ;
+    rdfs:comment "较大组织的组成部分，可能不与其同地办公。"@zh ;
+    rdfs:subClassOf cmns-org:OrganizationalSubUnit ;
+    skos:definition "part of a larger organization that might not be co-located with it" .
+
+fibo-be-le-fbo:Division a owl:Class ;
+    rdfs:label "division",
+        "事业部（division）"@zh ;
+    rdfs:comment "组织的组成部分，如一条业务线，可能有单独的会计与报告要求。"@zh ;
+    rdfs:subClassOf cmns-org:OrganizationalSubUnit ;
+    skos:definition "part of an organization, such as a line of business, that may have separate accounting and reporting requirements" .
+
+fibo-be-le-fbo:JointVenture a owl:Class ;
+    rdfs:label "joint venture",
+        "合资企业（joint venture）"@zh ;
+    rdfs:comment "各方为完成特定任务而汇集资源、但此外各自保持独立的法律实体。"@zh ;
+    rdfs:subClassOf cmns-org:LegalEntity ;
+    skos:definition "legal entity that is formed between parties that pool their resources for the purpose of accomplishing a specific task but otherwise retain their distinct identities" ;
+    cmns-av:explanatoryNote "In a joint venture, each of the participants is responsible for profits, losses, and costs associated with it. However, the venture is its own entity, separate from the participants' other business interests." .
+
+fibo-be-le-fbo:NonGovernmentalOrganization a owl:Class ;
+    rdfs:label "non-governmental organization",
+        "非政府组织（non-governmental organization）"@zh ;
+    rdfs:comment "独立于政府运作的非营利组织。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-le-lp:PublicPurpose ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
+        fibo-be-le-fbo:NotForProfitOrganization ;
+    skos:definition "not-for-profit organization that functions independently of government" ;
+    cmns-av:abbreviation "NGO" ;
+    cmns-av:explanatoryNote "NGOs, sometimes called civil societies, are organized on community, national and international levels to serve specific social or political purposes, and are cooperative, rather than commercial, in nature.",
+        "Some NGOs avoid formal funding altogether and are run primarily by volunteers. NGOs are highly diverse groups of organizations engaged in a wide range of activities, and take different forms in different parts of the world. Some may have charitable status, while others may be registered for tax exemption based on recognition of social purposes. Others may be fronts for political, religious, or other interests." .
+
+fibo-be-le-fbo:ValueAddedTaxIdentificationNumber a owl:Class ;
+    rdfs:label "value-added tax identification number",
+        "增值税识别号（value-added tax identification number）"@zh ;
+    rdfs:comment "为按增量征收的消费税识别应税人（企业）或非应税法律实体的税务标识符。"@zh ;
+    rdfs:subClassOf fibo-fnd-pty-pty:TaxIdentifier,
+        cmns-org:OrganizationIdentifier ;
+    skos:definition "tax identifier that identifies a taxable person (business) or non-taxable legal entity for a consumption tax that is assessed incrementally, levied on the price of a product or service at each stage of production, distribution, and sale to the end consumer" ;
+    cmns-av:abbreviation "VATIN" ;
+    cmns-av:adaptedFrom "https://ec.europa.eu/taxation_customs/business/vat/eu-vat-rules-topic/vat-identification-numbers_en"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "If the ultimate consumer is a business that collects and pays to the government VAT on its products or services, it can reclaim the tax paid. Not all localities require VAT to be charged, and exports are often exempt. VAT is usually implemented as a destination-based tax, where the tax rate is based on the location of the consumer and applied to the sales price." ;
+    cmns-av:synonym "VAT identification number",
+        "VAT registration number" .
+
+fibo-be-le-fbo:hasEquity a owl:ObjectProperty ;
+    rdfs:label "has equity",
+        "具有权益（has equity）"@zh ;
+    rdfs:comment "标识与实体关联的所有者权益。"@zh ;
+    rdfs:domain cmns-org:LegalEntity ;
+    rdfs:range fibo-fnd-oac-own:OwnersEquity ;
+    rdfs:subPropertyOf cmns-qtu:hasExpression ;
+    skos:definition "indicates owners' equity associated with the entity" .
+
+fibo-be-le-fbo:hasHeadquartersAddress a owl:ObjectProperty ;
+    rdfs:label "has headquarters address",
+        "具有总部地址（has headquarters address）"@zh ;
+    rdfs:comment "标识组织可送达通信的主要地址。"@zh ;
+    rdfs:range fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf fibo-be-le-fbo:hasOperatingAddress ;
+    skos:definition "indicates the main address at which communications may be delivered for the organization" ;
+    cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/lei-cdf-format/lei-cdf-format-version-2-1"^^xsd:anyURI .
+
+fibo-be-le-fbo:hasRegisteredAddress a owl:ObjectProperty ;
+    rdfs:label "has registered address",
+        "具有注册地址（has registered address）"@zh ;
+    rdfs:comment "标识在某政府机关正式登记、可送达法律文书的地址。"@zh ;
+    rdfs:domain cmns-pts:Party ;
+    rdfs:range fibo-fnd-plc-adr:ConventionalStreetAddress ;
+    rdfs:subPropertyOf fibo-fnd-plc-adr:hasAddress ;
+    skos:definition "identifies an address that is officially recorded with some government authority and at which legal papers may be served" .
+
+fibo-be-le-fbo:NotForProfitOrganization a owl:Class ;
+    rdfs:label "not for profit organization",
+        "非营利组织（not for profit organization）"@zh ;
+    rdfs:comment "将盈余收入用于进一步实现其宗旨、而非分配给组织所有者的组织。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-le-lp:NotForProfitObjective ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
+        cmns-org:FormalOrganization ;
+    skos:definition "organization that uses its surplus revenues to further achieve its purpose rather than distributing its surplus income to the organization's owners (directors, investors, and equivalents) as profit / dividends" ;
+    cmns-av:explanatoryNote "In the US, a nonprofit organization is an association that explicitly is not required to pay taxes on its income. Such organizations are qualified for this exemption due to their socially desirable objective (e.g. hospitals, charitable organizations, etc., or because they meet some set of requirements as determined by the US Internal Revenue Service.",
+        "The nonprofit landscape is highly varied, although many people have come to associate NPOs with charitable organizations. Although charities do comprise an often high profile or visible aspect of the sector, there are many other types of nonprofits. Overall, they tend to be either member-serving or community-serving. Member-serving organizations include mutual societies, cooperatives, trade unions, credit unions, industry associations, sports clubs, retired serviceman's clubs and other organizations that benefit a particular group of people - the members of the organization. Typically, community-serving organizations are focused on providing services to the community in general, either globally or locally: organizations delivering human services programs or projects, aid and development programs, medical research, education and health services, and so on." ;
+    cmns-av:synonym "non-profit organization" .
+
+fibo-be-le-fbo:OrganizationCoveringAgreement a owl:Class ;
+    rdfs:label "organization covering agreement",
+        "组织基础协议（organization covering agreement）"@zh ;
+    rdfs:comment "正式组织各主事人之间的合同，规定主事人之间以及主事人与实体之间的关系。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:WrittenContract ;
+    skos:definition "contract between the principals in a formal organization that specifies the relationship between the principals, and between the principals and the entity" ;
+    cmns-av:explanatoryNote "Also covers the aims and purposes of the Entity." .
+
+fibo-be-le-fbo:hasOperatingAddress a owl:ObjectProperty ;
+    rdfs:label "has operating address",
+        "具有经营地址（has operating address）"@zh ;
+    rdfs:comment "标识组织开展经营活动的地址。"@zh ;
+    rdfs:domain cmns-org:Organization ;
+    rdfs:range fibo-fnd-plc-adr:PhysicalAddress ;
+    rdfs:subPropertyOf fibo-fnd-plc-adr:hasAddress ;
+    skos:definition "indicates an address at which an organization carries out operations" .
+
+fibo-fnd-pty-pty:TaxIdentifier a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( cmns-org:OrganizationIdentifier fibo-fnd-aap-ppl:NationalIdentificationNumber ) ] .
+
+cmns-org:LegalEntity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassifier ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-le-fbo:OrganizationCoveringAgreement ;
+            owl:onProperty cmns-rga:isGovernedBy ] .
+

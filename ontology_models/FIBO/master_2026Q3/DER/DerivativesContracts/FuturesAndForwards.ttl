@@ -1,0 +1,381 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-ff: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/FuturesAndForwards/> .
+@prefix fibo-der-drc-opt: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-der-sbd-sbd: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-fi-ip: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/InstrumentPricing/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ei-ei: <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/> .
+@prefix fibo-ind-mkt-bas: <https://spec.edmcouncil.org/fibo/ontology/IND/MarketIndices/BasketIndices/> .
+@prefix fibo-sec-dbt-bnd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-dbt-tstd: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/TradedShortTermDebt/> .
+@prefix fibo-sec-eq-eq: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/> .
+@prefix fibo-sec-sec-bsk: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-drc-ff: a owl:Ontology ;
+    rdfs:label "Futures and Forwards Ontology"@en,
+        "期货与远期本体（Futures and Forwards Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts for derivative contracts, including forwards and futures, representing a commitment to sell or purchase the underlier at a defined price at a given time in the future." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义期货（futures）与远期（forwards）合约：标准化与非标准化的远期交割安排。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-der-drc-bsc:,
+        fibo-der-drc-opt:,
+        fibo-der-drc-swp:,
+        fibo-der-sbd-sbd:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fi-ip:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ei-ei:,
+        fibo-ind-mkt-bas:,
+        fibo-sec-dbt-bnd:,
+        fibo-sec-dbt-dbti:,
+        fibo-sec-dbt-tstd:,
+        fibo-sec-eq-eq:,
+        fibo-sec-sec-bsk:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-qtu:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20250701/DerivativesContracts/FuturesAndForwards/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20210301/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to eliminate references to hasContractSize, clean up unnecessary restrictions on Future and Forward, and eliminate the redundant listing class.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210601/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to move designated contract market to the markets ontology in FBC and revise the definition of a CurrencyFuture to eliminate an unnecessary superclass and restriction due to the release of CurrencyContracts and to revise the definition of a dividend future to reference the listed share that it tracks rather than the dividend itself.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210701/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to incorporate the concepts that were originally in a separate, very small equity forwards ontology.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20220901/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to better integrate adjustment method.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20221001/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, and to move the definition of an underlier and the related property, has underlier, to financial instruments so that these concepts are also available for use in relation to pool-backed securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20231201/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to support details of ISO 4914, Financial services - Unique Product Identifier (UPI), (DER-146).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250201/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to simplify and refine definitions related to underliers (DER-112).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/DerivativesContracts/FuturesAndForwards.rdf version of this ontology was modified to clarify the distinction between a future and a forward (DER-148)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc." .
+
+fibo-der-drc-ff:BasketFuture a owl:Class ;
+    rdfs:label "basket future"@en,
+        "篮子期货（basket future）"@zh ;
+    rdfs:comment "标的资产为一篮子证券和/或指数的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-sec-sec-bsk:MixedBasket ] ],
+        fibo-der-drc-ff:FinancialFuture ;
+    skos:definition "futures contract whose underlying asset is a basket of securities and/or indices"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-der-drc-ff:CurrencyFuture a owl:Class ;
+    rdfs:label "currency future"@en,
+        "货币期货（currency future）"@zh ;
+    rdfs:comment "标的资产为基于约定汇率在未来某时以一种货币兑换另一种货币之协议的期货合约。"@zh ;
+    rdfs:subClassOf fibo-der-drc-ff:FinancialFuture ;
+    skos:definition "futures contract whose underlying asset is an agreement to exchange a specified amount of one currency for another at some point in the future based on pricing stated in the contract"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en ;
+    cmns-av:synonym "foreign exchange future"@en,
+        "forex future"@en .
+
+fibo-der-drc-ff:DividendFuture a owl:Class ;
+    rdfs:label "dividend future"@en,
+        "股息期货（dividend future）"@zh ;
+    rdfs:comment "标的资产为至少一笔股票股息的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-sec-eq-eq:ListedShare ] ],
+        fibo-der-drc-ff:FinancialFuture,
+        fibo-der-sbd-sbd:EquityDerivative ;
+    skos:definition "futures contract whose underlying asset is at least one stock dividend"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-der-drc-ff:FutureOnFuture a owl:Class ;
+    rdfs:label "future on future"@en,
+        "期货的期货（future on future）"@zh ;
+    rdfs:comment "标的资产为至少一份（其他）期货合约的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-fbc-fi-fi:Future ] ],
+        fibo-der-drc-ff:FinancialFuture ;
+    skos:definition "futures contract whose underlying asset is at least one (other) futures contract"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-der-drc-ff:FutureOnOption a owl:Class ;
+    rdfs:label "future on option"@en,
+        "期权的期货（future on option）"@zh ;
+    rdfs:comment "标的资产为至少一份期权合约的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-fbc-fi-fi:Option ] ],
+        fibo-der-drc-ff:FinancialFuture ;
+    skos:definition "futures contract whose underlying asset is at least one option contract"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-der-drc-ff:FutureOnSwap a owl:Class ;
+    rdfs:label "future on swap"@en,
+        "互换的期货（future on swap）"@zh ;
+    rdfs:comment "标的资产为至少一份互换合约的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-der-drc-swp:Swap ] ],
+        fibo-der-drc-ff:FinancialFuture ;
+    skos:definition "futures contract whose underlying asset is at least one swap contract"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-der-drc-ff:InterestRateFuture a owl:Class ;
+    rdfs:label "interest rate future"@en,
+        "利率期货（interest rate future）"@zh ;
+    rdfs:comment "以附息工具为标的资产的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-fbc-fi-fi:CashInstrument fibo-sec-dbt-dbti:FixedIncomeSecurity ) ] ] ],
+        fibo-der-drc-ff:FinancialFuture ;
+    skos:definition "futures contract with an interest-bearing instrument as the underlying asset"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en ;
+    cmns-av:explanatoryNote "Most interest rate futures that trade on American exchanges use U.S. Treasury securities, such as Treasury bills, Treasury bonds, certificates of deposit, Treasury notes, and Ginnie Mae securities, as the underlying asset."@en .
+
+fibo-der-drc-ff:MoneyMarketFuture a owl:Class ;
+    rdfs:label "money market future"@en,
+        "货币市场期货（money market future）"@zh ;
+    rdfs:comment "以货币市场工具为标的资产的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-sec-dbt-tstd:MoneyMarketInstrument ] ],
+        fibo-der-drc-ff:DebtInstrumentFuture ;
+    skos:definition "futures contract with a money market instrument as the underlying asset"@en .
+
+fibo-der-drc-ff:StandardizedFuturesListingTerms a owl:Class ;
+    rdfs:label "standardized futures listing terms"@en,
+        "标准化期货挂牌条款（standardized futures listing terms）"@zh ;
+    rdfs:comment "由衍生品交易所制定、适用于该交易所任何期货合约挂牌的合同条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-sec-lst:Listing ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-fct-pub:hasPublisher ;
+            owl:someValuesFrom fibo-fbc-fct-mkt:DesignatedContractMarket ],
+        fibo-der-drc-bsc:DerivativeTerms,
+        fibo-fbc-fi-fi:StandardizedTerms ;
+    skos:definition "contract terms established by a derivatives exchange that apply to any listing of a futures contract on that exchange."@en ;
+    cmns-av:explanatoryNote "Individual listings will take on these standard terms but they are not contractual terms of the futures contract, they are facts about that listing on that exchange."@en .
+
+fibo-der-drc-ff:StandardizedFuturesTerms a owl:Class ;
+    rdfs:label "standardized futures terms"@en,
+        "标准化期货条款（standardized futures terms）"@zh ;
+    rdfs:comment "由衍生品交易所制定、适用于该交易所交易的任何期货合约的合同条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Future ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:specifies ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
+        fibo-der-drc-bsc:DerivativeTerms,
+        fibo-fbc-fi-fi:StandardizedTerms ;
+    skos:definition "contract terms established by a derivatives exchange that apply to any futures contract traded on that exchange"@en ;
+    cmns-av:explanatoryNote "Standard symbology for the commodities are standardized by the exchanges as part of their standard contracts, for example trading in standard bushels, commonly defined kinds of oil and so on. These give the units in which lot sizes are described and defined."@en .
+
+fibo-der-drc-ff:hasConversionFactor a owl:DatatypeProperty ;
+    rdfs:label "has conversion factor"@en,
+        "具有转换因子（has conversion factor）"@zh ;
+    rdfs:comment "指明使交割债券/票据（1 美元面值）产生固定收益率的价格。转换因子用于计算最终交割价格。"@zh ;
+    rdfs:domain fibo-der-drc-ff:BondFuture ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf cmns-qtu:hasNumericValue ;
+    skos:definition "indicates the price of the delivered bond/note ($1 par value) to yield a fixed rate. The conversion factor is used to calculate a final delivery price."@en .
+
+fibo-der-drc-ff:hasMultiple a owl:DatatypeProperty ;
+    rdfs:label "has multiple"@en,
+        "具有乘数（has multiple）"@zh ;
+    rdfs:comment "指明用于确定期货合约相对于标的指数价格之关系的乘数。"@zh ;
+    rdfs:domain fibo-der-drc-ff:IndexFuture ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf cmns-qtu:hasNumericValue ;
+    skos:definition "indicates the multiple for determining the price of the futures contract in relation to the underlying index rate"@en .
+
+fibo-der-drc-ff:BondFuture a owl:Class ;
+    rdfs:label "bond future"@en,
+        "债券期货（bond future）"@zh ;
+    rdfs:comment "标的资产为至少一只债券的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-sec-dbt-bnd:Bond ] ],
+        fibo-der-drc-ff:DebtInstrumentFuture ;
+    skos:definition "futures contract whose underlying asset is at least one bond"@en .
+
+fibo-der-drc-ff:EquityFuture a owl:Class ;
+    rdfs:label "equity future"@en,
+        "股票期货（equity future）"@zh ;
+    rdfs:comment "标的资产为至少一种权益证券（具体为公开发行交易的股票）的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-sec-eq-eq:ListedShare ] ],
+        fibo-der-drc-ff:FinancialFuture,
+        fibo-der-sbd-sbd:EquityDerivative ;
+    skos:definition "futures contract whose underlying asset is at least one equity security, specifically a publicly issued and traded share"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-der-drc-ff:Forward a owl:Class ;
+    rdfs:label "forward"@en,
+        "远期合约（forward）"@zh ;
+    rdfs:comment "双方私下协商、按合约规定价格在未来指定日期买入标的的衍生工具。"@zh ;
+    rdfs:subClassOf fibo-der-drc-bsc:OverTheCounterDerivativeInstrument,
+        fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "derivative instrument that is privately negotiated between parties to buy the underlier at a specified future date at the price specified in the contract"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en ;
+    cmns-av:explanatoryNote "Certain contracts labeled 'forwards', such as London Metal Exchange (LME) Forwards, are actually futures and are exchange-traded. Some power and gas markets, such as Nord Pool, trade electricity forwards with clearinghouse support. Per the ontology, both would be classified as futures by definition, but naming blurs the lines."@en,
+        "Since forward contracts are not exchange traded, there is no mark-to-market requirement, which allows a buyer to avoid almost all capital outflow initially (though some counterparties might set collateral requirements). The forward price makes the forward contract have no value when the contract is written. However, if the value of the underlying commodity changes, the value of the forward contract becomes positive or negative, depending on the position held. Forwards are priced in a manner similar to futures. Like in the case of a futures contract, the first step in pricing a forward is to add the spot price to the cost of carry (interest forgone, convenience yield, storage costs and interest/dividend received on the underlying). Unlike a futures contract though, the price may also include a premium for counterparty credit risk, and the fact that there is not daily marking to market process to minimize default risk. If there is no allowance for these credit risks, then the forward price will equal the futures price."@en,
+        "The primary distinctions between futures and forwards are (1) forwards are bilateral and privately negotiated, (2) forwards are over-the-counter instruments rather than exchange traded, (3) forwards are fully customizable whereas futures are typically standardized, (4) the risk associated with a forward is assumed by the counterparties whereas it is mitigated via central clearing for futures, and (5) there is typically no margin requirement for a forward whereas futures require margin posting."@en ;
+    cmns-av:synonym "forward contract"@en .
+
+fibo-der-drc-ff:IndexFuture a owl:Class ;
+    rdfs:label "index future"@en,
+        "指数期货（index future）"@zh ;
+    rdfs:comment "标的资产为至少一个参考指数或经济指标的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-ind-ei-ei:EconomicIndicator fibo-ind-mkt-bas:ReferenceIndex ) ] ] ],
+        fibo-der-drc-ff:FinancialFuture ;
+    skos:definition "futures contract whose underlying asset is at least one reference index or economic indicator"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en ;
+    cmns-av:explanatoryNote "For each index there may be a different multiple for determining the price of the futures contract."@en .
+
+fibo-der-drc-ff:hasDividendAdjustmentPeriod a owl:ObjectProperty ;
+    rdfs:label "has dividend adjustment period"@en,
+        "具有股息调整期间（has dividend adjustment period）"@zh ;
+    rdfs:comment "指明至少一个用于计算预期股息与实际派发股息之间偏差的日期区间。"@zh ;
+    rdfs:domain fibo-der-drc-ff:EquityForward ;
+    rdfs:range fibo-der-drc-ff:DividendAdjustmentPeriod ;
+    rdfs:subPropertyOf cmns-dt:hasDatePeriod ;
+    skos:definition "indicates at least one date period used to calculate the deviation between an anticipated/expected dividend and the actual dividend issued during that period"@en .
+
+fibo-der-drc-ff:hasMethodOfAdjustment a owl:ObjectProperty ;
+    rdfs:label "has method of adjustment"@en,
+        "具有调整方法（has method of adjustment）"@zh ;
+    rdfs:comment "指明基于合约生命周期内发生的事件处理合约变更的方法。"@zh ;
+    rdfs:domain fibo-der-drc-ff:EquityForward ;
+    rdfs:range fibo-der-drc-ff:ForwardContractAdjustmentMethod ;
+    rdfs:subPropertyOf fibo-fnd-gao-obj:hasStrategy ;
+    skos:definition "indicates the method used to address any changes to the contract based on events that occur over the contract lifecycle"@en .
+
+fibo-der-drc-ff:DebtInstrumentFuture a owl:Class ;
+    rdfs:label "debt instrument future"@en,
+        "债务工具期货（debt instrument future）"@zh ;
+    rdfs:comment "标的资产为至少一种债务工具的期货合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom fibo-fbc-fi-fi:DebtInstrument ] ],
+        fibo-der-drc-ff:FinancialFuture,
+        fibo-der-sbd-sbd:DebtInstrumentDerivative ;
+    skos:definition "futures contract whose underlying asset is at least one debt instrument"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-der-drc-ff:DividendAdjustmentPeriod a owl:Class ;
+    rdfs:label "dividend adjustment period"@en,
+        "股息调整期间（dividend adjustment period）"@zh ;
+    rdfs:comment "用于计算预期股息与该期间实际派发股息之间差额（如有）的日期区间。"@zh ;
+    rdfs:subClassOf cmns-dt:DatePeriod ;
+    skos:definition "date period used to calculate the difference, if any between an anticipated dividend and the actual dividend distributed in that period"@en .
+
+fibo-der-drc-ff:EquityForward a owl:Class ;
+    rdfs:label "equity forward"@en,
+        "股票远期（equity forward）"@zh ;
+    rdfs:comment "按约定在未来买卖标的股票、股票指数、股票篮子、股票期货合约或股票期权的远期合约。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-ff:hasMethodOfAdjustment ;
+            owl:someValuesFrom fibo-der-drc-ff:ForwardContractAdjustmentMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-ff:hasDividendAdjustmentPeriod ;
+            owl:someValuesFrom fibo-der-drc-ff:DividendAdjustmentPeriod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-sec-eq-eq:ListedShare fibo-ind-mkt-bas:EquityIndex fibo-der-drc-ff:EquityFuture fibo-der-drc-opt:EquityOption ) ] ] ],
+        fibo-der-drc-ff:Forward ;
+    skos:definition "forward contract to buy or sell the underlying equity stock, equity index, basket of equity stock, equity futures contract, or equity option at a specified future date at the price specified at the outset of the contract"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+
+fibo-der-drc-ff:ForwardContractAdjustmentMethod a owl:Class ;
+    rdfs:label "forward contract adjustment method"@en,
+        "远期合约调整方法（forward contract adjustment method）"@zh ;
+    rdfs:comment "在发生一项或多项异常事件时对合约进行调整的方法。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Strategy ;
+    skos:definition "method by which adjustments will be made to the contract should one or more of a number of extraordinary events occur"@en .
+
+fibo-fbc-fi-fi:Future a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-ip:hasLotSize ;
+            owl:someValuesFrom xsd:decimal ] ;
+    cmns-av:explanatoryNote "A futures contract obligates the buyer to pay the seller a predetermined price based on the market value of the underlier, unless the contract is sold before settlement date which may happen if a trader waits to take a profit or cut a loss. This contrasts with options trading in which the option buyer may choose whether or not to exercise the option. Futures are distinguished from generic forward contracts in that they contain standardized terms, trade on a formal exchange, are regulated by overseeing agencies, and are guaranteed by clearing houses. Also, in order to insure that payment will occur, futures have a margin requirement that must be settled daily. Finally, by making an offsetting trade, taking delivery of goods, or arranging for an exchange of goods, futures contracts can be closed. Hedgers often trade futures for the purpose of keeping price risk in check."@en ;
+    cmns-av:synonym "futures contract"@en .
+
+fibo-der-drc-ff:FinancialFuture a owl:Class ;
+    rdfs:label "financial future"@en,
+        "金融期货（financial future）"@zh ;
+    rdfs:comment "以商品以外的资产为标的的期货合约。"@zh ;
+    rdfs:subClassOf fibo-fbc-fi-fi:Future ;
+    skos:definition "futures contract based on underlying assets excluding commodities"@en ;
+    cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .
+

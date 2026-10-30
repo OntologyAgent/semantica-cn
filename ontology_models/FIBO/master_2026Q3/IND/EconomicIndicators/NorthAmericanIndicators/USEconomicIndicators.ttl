@@ -1,0 +1,233 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-usj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ei-ei: <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/EconomicIndicators/> .
+@prefix fibo-ind-ei-usei: <https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-ind-ei-usei: a owl:Ontology ;
+    rdfs:label "American Economic Indicators Ontology",
+        "美国经济指标本体（US Economic Indicators Ontology）"@zh ;
+    dcterms:abstract "This ontology provides specific parameters which make up the various types of market economic indicators applicable to the American economy." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录美国官方发布的经济指标个体（如非农就业、CPI、GDP 系列）。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-be-ge-ge:,
+        fibo-be-ge-usj:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ei-ei:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-doc:,
+        cmns-loc:,
+        cmns-qtu:,
+        cmns-ra:,
+        cmns-rlcmp:,
+        lcc-3166-1: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/IND/20251001/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/IND/20160801/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was added to the IND specification per the issue resolutions identified in the FIBO IND 1.0 FTF 3 report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20160801/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was revised per the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20180801/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was revised to reflect the new hasCoverageArea property and migration of statistical measures in FND.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20190501/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was revised to eliminate duplication of concepts in LCC, merge countries with locations in FND, and eliminate a redundant superclass declaration on UrbanConsumerPriceIndex.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20200401/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was revised to merge statistical information publisher with economic indicators.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20210301/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was revised to correct out of date links.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20220801/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20230201/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20230301/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20231201/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of this ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20240101/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20250301/EconomicIndicators/NorthAmericanIndicators/USEconomicIndicators.rdf version of the ontology was modified to further reflect changes made in Commons v1.2 (FBC-338)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-ind-ei-usei:EmploymentSituationEstablishmentSurvey a owl:Class ;
+    rdfs:label "employment situation establishment survey",
+        "就业形势机构场所调查（employment situation establishment survey）"@zh ;
+    rdfs:comment "定期开展、从企业角度调查给定统计区劳动力分析信息的调查。"@zh ;
+    rdfs:seeAlso <https://www.bls.gov/news.release/empsit.tn.htm> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom fibo-ind-ei-ei:Establishment ],
+        fibo-ind-ei-usei:EmploymentSituationSurvey ;
+    skos:definition "survey conducted on a regular basis that presents analytical information related to the labor force of a given statistical area, surveyed with respect to businesses, and is, for the most part, seasonally adjusted" ;
+    cmns-av:adaptedFrom "U.S. Bureau of Labor Statistics and Statistics Canada reference definitions - https://wiki.edmcouncil.org/pages/viewpage.action?pageId=6358041" .
+
+fibo-ind-ei-usei:EmploymentSituationHouseholdSurvey a owl:Class ;
+    rdfs:label "employment situation household survey",
+        "就业形势住户调查（employment situation household survey）"@zh ;
+    rdfs:comment "定期开展、从住户角度调查给定统计区劳动力分析信息的调查。"@zh ;
+    rdfs:seeAlso <https://www.bls.gov/news.release/empsit.tn.htm> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom fibo-ind-ei-ei:Household ],
+        fibo-ind-ei-usei:EmploymentSituationSurvey ;
+    skos:definition "a survey conducted on a regular basis that presents analytical information related to the labor force of a given statistical area, surveyed with respect to households, and is, for the most part, seasonally adjusted" ;
+    cmns-av:adaptedFrom "U.S. Bureau of Labor Statistics and Statistics Canada reference definitions - https://wiki.edmcouncil.org/pages/viewpage.action?pageId=6358041" .
+
+fibo-ind-ei-usei:USProducerPriceIndex a owl:Class ;
+    rdfs:label "U.S. producer price index",
+        "美国生产者价格指数（U.S. producer price index）"@zh ;
+    rdfs:comment "表示国内生产者产出所获销售价格随时间变化之度量的经济指标。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-fct-pub:hasPublisher ;
+            owl:someValuesFrom fibo-ind-ei-usei:AmericanStatisticsPublisher ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-ind-ei-usei:BureauOfLaborStatistics ;
+            owl:onProperty fibo-be-fct-pub:isPublishedBy ],
+        fibo-ind-ei-ei:ProducerPriceIndex ;
+    skos:definition "an economic indicator representing a measure of the change over time in the selling prices received by domestic producers for their output" ;
+    cmns-av:adaptedFrom "http://www.bls.gov/ppi/"^^xsd:anyURI .
+
+fibo-ind-ei-usei:UrbanConsumerPriceIndex a owl:Class ;
+    rdfs:label "urban consumer price index",
+        "城市消费者价格指数（urban consumer price index）"@zh ;
+    rdfs:comment "表示城市消费者为一篮子消费货物与服务所付价格之平均变化的经济指标。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-ind-ei-usei:UrbanConsumersUniverse ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-ind-ei-usei:BureauOfLaborStatistics ;
+            owl:onProperty fibo-be-fct-pub:isPublishedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-fct-pub:hasPublisher ;
+            owl:someValuesFrom fibo-ind-ei-usei:AmericanStatisticsPublisher ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Basket ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-ind-ei-usei:UrbanConsumersUniverse ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-ind-ei-ei:ConsumerPriceIndex ;
+    skos:definition "an economic indicator representing a measure of the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services" ;
+    cmns-av:abbreviation "CPI-U" ;
+    cmns-av:adaptedFrom "http://www.bls.gov/cpi/"^^xsd:anyURI .
+
+fibo-ind-ei-usei:ConsumerExpenditureSurvey a owl:Class ;
+    rdfs:label "consumer expenditure survey",
+        "消费者支出调查（consumer expenditure survey）"@zh ;
+    rdfs:comment "定期开展、提供消费者购买习惯信息（含支出、收入数据）的统计计划。"@zh ;
+    rdfs:subClassOf fibo-fnd-utl-alx:StatisticalProgram ;
+    skos:definition "statistical program conducted on a regular basis that provides information on the buying habits of consumers, including data on their expenditures, income, and consumer unit (families and single consumers) characteristics" ;
+    cmns-av:adaptedFrom <http://www.bls.gov/cex/> .
+
+fibo-ind-ei-usei:CurrentEmploymentStatistics a owl:Class ;
+    rdfs:label "current employment statistics",
+        "当前就业统计（current employment statistics）"@zh ;
+    rdfs:comment "定期开展、提供与企业和政府机构相关的分析信息、以提供详细行业数据的调查。"@zh ;
+    rdfs:subClassOf fibo-fnd-utl-alx:StatisticalProgram ;
+    skos:definition "survey conducted on a regular basis that presents analytical information related to businesses and government agencies, in order to provide detailed industry data on employment, hours, and earnings of workers" ;
+    cmns-av:adaptedFrom <http://www.bls.gov/ces/> .
+
+fibo-ind-ei-usei:CurrentPopulationSurvey a owl:Class ;
+    rdfs:label "current population survey",
+        "当前人口调查（current population survey）"@zh ;
+    rdfs:comment "定期开展、提供给定统计区一般人口之劳动力相关分析信息的调查。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:specifies ;
+            owl:someValuesFrom fibo-ind-ei-ei:CivilianNonInstitutionalPopulation ],
+        fibo-fnd-utl-alx:StatisticalProgram ;
+    skos:definition "survey conducted on a regular basis that presents analytical information related to the general population of a given statistical area with respect to labor force, employment, unemployment, persons not in the labor force, hours of work, earnings, and other demographic and labor force characteristics" ;
+    cmns-av:adaptedFrom <http://www.bls.gov/cps/> .
+
+fibo-ind-ei-usei:PointOfPurchaseSurvey a owl:Class ;
+    rdfs:label "point of purchase survey",
+        "购买点调查（point of purchase survey）"@zh ;
+    rdfs:comment "定期开展、提供消费者购买各类物品与服务信息的计划。"@zh ;
+    rdfs:subClassOf fibo-fnd-utl-alx:StatisticalProgram ;
+    skos:definition "a program conducted on a regular basis that provides information on purchases of various items and services by consumers" ;
+    cmns-av:adaptedFrom <http://www.bls.gov/respondents/cpi/tpops/> .
+
+fibo-ind-ei-usei:UnitedStatesDepartmentOfLabor a owl:NamedIndividual,
+        fibo-be-ge-ge:GovernmentDepartment ;
+    rdfs:label "United States Department of Labor" ;
+    rdfs:seeAlso <https://www.dol.gov/> ;
+    skos:definition "individual representing the U.S. Department of Labor, a government department whose mission is to foster, promote, and develop the welfare of the wage earners, job seekers, and retirees of the United States; improve working conditions; advance opportunities for profitable employment; and assure work-related benefits and rights" ;
+    cmns-av:abbreviation "DOL" ;
+    cmns-av:adaptedFrom "https://www.dol.gov/general/aboutdol"^^xsd:anyURI ;
+    cmns-col:isPartOf fibo-be-ge-usj:UnitedStatesGovernment ;
+    cmns-loc:hasCoverageArea lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:UnitedStatesJurisdiction .
+
+fibo-ind-ei-usei:AmericanStatisticsPublisher a owl:Class ;
+    rdfs:label "American statistics publisher",
+        "美国统计信息发布方（American statistics publisher）"@zh ;
+    rdfs:comment "由代表美国联邦政府发布统计信息的政府机构和部门构成的统计信息发布方。"@zh ;
+    rdfs:subClassOf fibo-ind-ei-ei:StatisticalInformationPublisher ;
+    skos:definition "statistical information publisher comprised of the government agencies and departments that publish statistical information on behalf of the U.S. Federal Government" ;
+    skos:example "Examples of American statistical information publishers include the Department of Commerce, Bureau of Economic Analysis (Commerce), Census Bureau (Commerce), Bureau of Labor Statistics (Labor), Department of the Treasury, and the Federal Reserve Board, among others." .
+
+fibo-ind-ei-usei:BureauOfLaborStatistics a owl:NamedIndividual,
+        fibo-be-ge-ge:GovernmentAgency ;
+    rdfs:label "Bureau of Labor Statistics" ;
+    rdfs:seeAlso <http://www.bls.gov/> ;
+    skos:definition "the Bureau of Labor Statistics, the principal Federal agency responsible for measuring labor market activity, working conditions, and price changes in the economy" ;
+    cmns-av:abbreviation "BLS" ;
+    cmns-av:adaptedFrom "http://www.bls.gov/bls/infohome.htm"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "Its mission is to collect, analyze, and disseminate essential economic information to support public and private decision-making. As an independent statistical agency, BLS serves its diverse user communities by providing products and services that are objective, timely, accurate, and relevant." ;
+    cmns-col:isPartOf fibo-ind-ei-usei:UnitedStatesDepartmentOfLabor ;
+    cmns-loc:hasCoverageArea lcc-3166-1:UnitedStatesOfAmerica .
+
+fibo-ind-ei-usei:EmploymentSituationSurvey a owl:Class ;
+    rdfs:label "employment situation survey",
+        "就业形势调查（employment situation survey）"@zh ;
+    rdfs:comment "定期开展、聚焦给定统计区就业特征之分析信息的调查。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-ind-ei-ei:isSeasonallyAdjusted ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-ind-ei-usei:CurrentEmploymentStatistics,
+        fibo-ind-ei-usei:CurrentPopulationSurvey ;
+    skos:definition "a survey conducted on a regular basis that presents analytical information focused on the employment characteristics of a given statistical area" ;
+    cmns-av:adaptedFrom <http://www.bls.gov/opub/reports/about.htm> .
+
+fibo-ind-ei-usei:UrbanConsumersUniverse a owl:Class ;
+    rdfs:label "urban consumers universe",
+        "城市消费者全域（urban consumers universe）"@zh ;
+    rdfs:comment "消费者支出调查的统计全域，由住户中共同作出支出决策的人构成。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:playsRole ;
+                    owl:someValuesFrom fibo-ind-ei-ei:UltimateConsumer ] ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom fibo-ind-ei-usei:ConsumerExpenditureSurvey ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom fibo-ind-ei-usei:PointOfPurchaseSurvey ],
+        fibo-ind-ei-ei:CivilianNonInstitutionalPopulation ;
+    skos:definition "a statistical universe for consumer expenditure surveys consisting of people within a household that make joint expenditure decisions" ;
+    cmns-av:adaptedFrom "U.S. Bureau of Labor Statistics, http://www.bls.gov/cpi/" ;
+    cmns-av:explanatoryNote "In the United States, the CPI-U population, which covers about 88 percent of the U.S. population, covers households in all areas of the United States except people living in rural nonmetropolitan areas, in farm households, on military installations, in religious communities, and in institutions such as prisons and mental hospitals." .
+

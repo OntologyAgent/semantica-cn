@@ -1,0 +1,241 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-ukj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2-gb: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-GB/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-be-ge-ukj: a owl:Ontology ;
+    rdfs:label "Government Entities and Jurisdictions for the United Kingdom of Great Britain and Northern Ireland Ontology",
+        "英国政府实体与法域本体（UK Government Entities and Jurisdictions Ontology）"@zh ;
+    dcterms:abstract "This ontology provides government entities and jurisdictions for the United Kingdom of Great Britain and Northern Ireland use in other FIBO ontologies." ;
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录大不列颠及北爱尔兰联合王国的政体、政府与法域个体（英格兰、苏格兰、威尔士、北爱尔兰）。"@zh ;
+    owl:imports fibo-be-ge-ge:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga:,
+        lcc-3166-1:,
+        lcc-3166-2-gb: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/BE/20200201/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to add devolved government entities for Scotland, Wales, and Northern Ireland.",
+        "The https://spec.edmcouncil.org/fibo/ontology/20231101/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200701/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230701/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions.rdf version of this ontology was modified to include separate references to England and Wales in reach of the EnglandAndWalesJurisdiction." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+
+fibo-be-ge-ukj:GuernseyEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Guernsey entity" ;
+    skos:definition "regional sovereignty and polity that is the Bailiwick of Guernsey" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-1:Guernsey ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-ukj:GovernmentOfGuernsey .
+
+fibo-be-ge-ukj:IsleOfManEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Isle of Man entity" ;
+    skos:definition "regional sovereignty and polity that is the Isle of Man" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-1:IsleOfMan ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-ukj:GovernmentOfTheIsleOfMan ;
+    cmns-av:synonym "Manx entity" .
+
+fibo-be-ge-ukj:JerseyEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Jersey entity" ;
+    skos:definition "regional sovereignty and polity that is the Bailiwick of Jersey" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-1:Jersey ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-ukj:GovernmentOfJersey .
+
+fibo-be-ge-ukj:NorthernIrelandEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Northern Ireland entity"@en ;
+    rdfs:seeAlso <http://www.niassembly.gov.uk/> ;
+    skos:definition "regional devolved sovereignty that is Northern Ireland" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-gb:NorthernIreland ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-ukj:NorthernIrelandAssembly .
+
+fibo-be-ge-ukj:ScotlandEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Scotland entity"@en ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Scottish_Government>,
+        <https://www.gov.scot/> ;
+    skos:definition "regional devolved sovereignty that is Scotland" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-gb:Scotland ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-ukj:GovernmentOfScotland .
+
+fibo-be-ge-ukj:UnitedKingdomEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:SovereignState ;
+    rdfs:label "United Kingdom entity" ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Government_of_the_United_Kingdom>,
+        <https://www.gov.uk/> ;
+    skos:definition "federated sovereignty and polity that is the United Kingdom of Great Britain and Northern Ireland" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:Gibraltar,
+        lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-ukj:GovernmentOfTheUnitedKingdom .
+
+fibo-be-ge-ukj:WelshEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Welsh entity"@en ;
+    rdfs:seeAlso <http://www.assembly.wales/en/Pages/Home.aspx> ;
+    skos:definition "regional devolved sovereignty that is Wales" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-gb:Wales ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-ukj:NationalAssemblyForWales .
+
+fibo-be-ge-ukj:EnglandAndWalesJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "England and Wales jurisdiction" ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Courts_of_England_and_Wales>,
+        <https://law.gov.wales/> ;
+    skos:definition "jurisdiction of the Courts of England and Wales" ;
+    cmns-rga:hasReach lcc-3166-2-gb:GB-ENG-Subdivision,
+        lcc-3166-2-gb:GB-WLS-Subdivision ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-ukj:NationalAssemblyForWales .
+
+fibo-be-ge-ukj:JurisdictionOfGuernsey a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Guernsey" ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Guernsey#Politics> ;
+    skos:definition "jurisdiction of the bailiwick judiciary of Guernsey, headed by its Bailiff, which is derived from a combination of Norman Customary Law and principles taken from English common law and Equity, as well as from statute law enacted by the competent legislature(s)" ;
+    cmns-rga:hasReach lcc-3166-1:Guernsey ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-ukj:GovernmentOfGuernsey .
+
+fibo-be-ge-ukj:JurisdictionOfJersey a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of Jersey" ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Law_of_Jersey#Judiciary> ;
+    skos:definition "jurisdiction of the judiciary of Jersey, headed by is the Bailiff, who as well as performing the judicial functions of a chief justice is also the President (presiding officer) of the States of Jersey and has certain civic, ceremonial and executive functions" ;
+    cmns-rga:hasReach lcc-3166-1:Jersey ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-ukj:GovernmentOfJersey .
+
+fibo-be-ge-ukj:JurisdictionOfTheIsleOfMan a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "jurisdiction of the Isle of Man" ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Judiciary_of_the_Isle_of_Man> ;
+    skos:definition "jurisdiction of the judiciary of the Isle of Man, including the High Court of Justice of the Isle of Man, consisting of a Civil Division and an appeal division, called the Staff of Government Division" ;
+    cmns-rga:hasReach lcc-3166-1:IsleOfMan ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-ukj:GovernmentOfTheIsleOfMan .
+
+fibo-be-ge-ukj:NorthernIrelandJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Northern Ireland jurisdiction" ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Courts_of_Northern_Ireland>,
+        <https://www.justice-ni.gov.uk/topics/courts-and-tribunals> ;
+    skos:definition "jurisdiction of the Courts of Northern Ireland" ;
+    cmns-rga:hasReach lcc-3166-2-gb:NorthernIreland ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-ukj:NorthernIrelandAssembly .
+
+fibo-be-ge-ukj:ScotlandJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Scotland jurisdiction" ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Courts_of_Scotland>,
+        <https://www.scotcourts.gov.uk/>,
+        <https://www.scotcourts.gov.uk/the-courts/supreme-courts/about-the-court-of-session>,
+        <https://www.scotcourts.gov.uk/the-courts/supreme-courts/high-court/about-the-high-court/> ;
+    skos:definition "jurisdiction of the Supreme Courts of Scotland" ;
+    cmns-rga:hasReach lcc-3166-2-gb:Scotland ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-ukj:GovernmentOfScotland .
+
+fibo-be-ge-ukj:UnitedKingdomJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "United Kingdom jurisdiction" ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Courts_of_the_United_Kingdom>,
+        <https://en.wikipedia.org/wiki/Judiciaries_of_the_United_Kingdom>,
+        <https://www.supremecourt.uk/> ;
+    skos:definition "jurisdiction of the Supreme Court of the United Kingdom, the tribunal system, including the Asylum and Immigration Tribunal and the Special Immigration Appeals Commission, Employment tribunals and the Employment Appeal Tribunal" ;
+    skos:scopeNote "Note that the Courts of the United Kingdom are separated into three separate jurisdictions, the Courts of England and Wales, Courts of Scotland and the Courts of Northern Ireland, as the United Kingdom does not have a single unified judicial system, aside from the courts specifically identified in the definition of this individual." ;
+    cmns-rga:hasReach lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-ukj:GovernmentOfTheUnitedKingdom .
+
+fibo-be-ge-ukj:GovernmentOfGuernsey a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "Government of Guernsey"@en,
+        "Gouvèrnément d'Guernési"@fr ;
+    rdfs:seeAlso <https://www.gov.gg/> ;
+    skos:definition "parliamentary representative democracy that is the central government of the Bailiwick of Guernsey, a self-governing dependency of the United Kingdom and one of the British Channel Islands off the coast of Normandy" ;
+    cmns-rga:governs lcc-3166-1:Guernsey ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:JurisdictionOfGuernsey .
+
+fibo-be-ge-ukj:GovernmentOfJersey a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "Government of Jersey"@en,
+        "Gouvèrnément d'Jèrri"@fr ;
+    rdfs:seeAlso <https://www.gov.je/Pages/default.aspx> ;
+    skos:definition "central government of the Bailiwick of Jersey, a self-governing dependency of the United Kingdom that is the largest of the Channel Islands between England and France" ;
+    cmns-rga:governs lcc-3166-1:Jersey ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:JurisdictionOfJersey .
+
+fibo-be-ge-ukj:GovernmentOfScotland a owl:NamedIndividual,
+        fibo-be-ge-ge:DevolvedGovernment,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "Government of Scotland"@en,
+        "Riaghaltas na h-Alba"@gd ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Scottish_Government>,
+        <https://www.gov.scot/>,
+        <https://www.parliament.scot/index.aspx> ;
+    skos:definition "devolved government of Scotland" ;
+    cmns-av:synonym "Scottish government" ;
+    cmns-rga:governs lcc-3166-2-gb:Scotland ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:ScotlandJurisdiction .
+
+fibo-be-ge-ukj:GovernmentOfTheIsleOfMan a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "Government of the Isle of Man"@en ;
+    rdfs:seeAlso <https://www.gov.im/> ;
+    skos:definition "central government of the Isle of Man, a self-governing British Crown dependency in the Irish Sea between England and Ireland" ;
+    cmns-av:synonym "Manx Government" ;
+    cmns-rga:governs lcc-3166-1:IsleOfMan ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:JurisdictionOfTheIsleOfMan .
+
+fibo-be-ge-ukj:GovernmentOfTheUnitedKingdom a owl:NamedIndividual,
+        fibo-be-ge-ge:NationalGovernment ;
+    rdfs:label "Government of the United Kingdom" ;
+    rdfs:seeAlso <http://www.parliament.uk/about/how/role/parliament-government/>,
+        <https://en.wikipedia.org/wiki/Government_of_the_United_Kingdom>,
+        <https://www.gov.uk/> ;
+    skos:definition "constitutional monarchy that is the government of the United Kingdom of Great Britain and Northern Ireland, including the monarch, who is the head of state and sovereign, prime minister, who is the head of government, and cabinet, parliament (House of Lords and House of Commons), and other agencies and institutions that comprise the government" ;
+    cmns-av:synonym "British government" ;
+    cmns-rga:governs lcc-3166-1:UnitedKingdomOfGreatBritainAndNorthernIreland ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:UnitedKingdomJurisdiction .
+
+fibo-be-ge-ukj:NationalAssemblyForWales a owl:NamedIndividual,
+        fibo-be-ge-ge:DevolvedGovernment,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "Cynulliad Cenedlaethol Cymru"@cy,
+        "National Assembly for Wales"@en ;
+    rdfs:seeAlso <http://www.assembly.wales/en/Pages/Home.aspx>,
+        <https://en.wikipedia.org/wiki/National_Assembly_for_Wales>,
+        <https://law.gov.wales/constitution-government/devolution/> ;
+    skos:definition "devolved government of Wales" ;
+    cmns-av:synonym "Senedd"@cy,
+        "Welsh Assembly"@en ;
+    cmns-rga:governs lcc-3166-2-gb:Wales ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:EnglandAndWalesJurisdiction .
+
+fibo-be-ge-ukj:NorthernIrelandAssembly a owl:NamedIndividual,
+        fibo-be-ge-ge:DevolvedGovernment,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "Northern Ireland Assembly"@en,
+        "Tionól Thuaisceart Éireann"@ga ;
+    rdfs:seeAlso <http://www.niassembly.gov.uk/>,
+        <https://en.wikipedia.org/wiki/Northern_Ireland_Assembly> ;
+    skos:definition "devolved government of Northern Ireland" ;
+    cmns-rga:governs lcc-3166-2-gb:NorthernIreland ;
+    cmns-rga:hasJurisdiction fibo-be-ge-ukj:NorthernIrelandJurisdiction .
+

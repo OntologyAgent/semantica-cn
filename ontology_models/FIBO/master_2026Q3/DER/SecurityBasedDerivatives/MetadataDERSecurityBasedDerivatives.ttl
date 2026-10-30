@@ -1,0 +1,55 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-sbd-mod: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/MetadataDERSecurityBasedDerivatives/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-sbd-mod: a owl:Ontology ;
+    rdfs:label "Metadata about the EDMC-FIBO Derivatives (DER) Security-Based Derivatives Module",
+        "DER 证券类衍生品模块元数据（Metadata for the DER Security-Based Derivatives Module）"@zh ;
+    dcterms:abstract "The security-based derivatives module covers derivatives that have underlying securities, including those based on market indices or baskets securities." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-02-03T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明证券类衍生品（Security-Based Derivatives）模块由证券类衍生品本体与股权互换本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20230201/SecurityBasedDerivatives/MetadataDERSecurityBasedDerivatives/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.",
+        "Copyright (c) 2018-2023 Object Management Group, Inc." .
+
+fibo-der-sbd-mod:SecurityBasedDerivativesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "security-based derivatives module" ;
+    dcterms:abstract "The security-based derivatives module covers derivatives that have underlying securities, including those based on market indices or baskets securities." ;
+    dcterms:contributor "Adaptive, Inc.",
+        "Bloomberg LP",
+        "Citigroup",
+        "Commodities Futures Trading Commission (CFTC)",
+        "Credit Suisse",
+        "Deutsche Bank",
+        "Exprentis",
+        "Federated Knowledge LLC",
+        "John F. Gemski",
+        "John F. Tierney",
+        "Mizuho Financial Group, Inc.",
+        "Nordea Bank AB",
+        "Office of Financial Research (US Dept of the Treasury)",
+        "Quarule",
+        "State Street Bank and Trust",
+        "Tahoe Blue Ltd",
+        "Thematix Partners LLC",
+        "Wells Fargo Bank, N.A.",
+        "Working Ontologist",
+        "agnos.ai" ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/EquitySwaps/>,
+        <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO DER Security-based Derivatives Module",
+        "Financial Industry Business Ontology (FIBO) Derivatives (DER) Security-based Derivatives Module" ;
+    rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.",
+        "Copyright (c) 2018-2023 Object Management Group, Inc." .
+

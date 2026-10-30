@@ -1,0 +1,37 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-cae-ce-mod: <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/MetadataCAECorporateEvents/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-cae-ce-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Corporate Actions and Events (CAE) Corporate Events Module",
+        "CAE 企业事件模块元数据（Metadata for the CAE Corporate Events Module）"@zh ;
+    dcterms:abstract "This module contains ontologies of general corporate events and securities-related actions." ;
+    dcterms:issued "2018-03-31T18:00:00"^^xsd:dateTime ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2023-02-03T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明企业事件（Corporate Events）模块的构成：企业行动本体、证券相关企业行动本体，以及 GLEIF 与 ISO 15022 两套企业行动代码个体本体。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/CAE/20230201/CorporateEvents/MetadataCAECorporateEvents/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.",
+        "Copyright (c) 2018-2023 Object Management Group, Inc." .
+
+fibo-cae-ce-mod:CorporateEventsModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "corporate events module" ;
+    dcterms:abstract "This module contains ontologies that define common, general corporate events and securities-related actions." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/CorporateActions/>,
+        <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/GLEIF-CorporateActionIndividuals/>,
+        <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/ISO15022-CorporateActionIndividuals/>,
+        <https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/SecurityRelatedCorporateActions/> ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO CAE Corporate Events Module",
+        "Financial Industry Business Ontology (FIBO) Corporate Actions and Events (CAE) Domain, Corporate Events Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.",
+        "Copyright (c) 2018-2023 Object Management Group, Inc." .
+

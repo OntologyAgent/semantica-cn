@@ -1,0 +1,90 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-rtd-rtd: <https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/RateDerivatives/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-der-rtd-rtd: a owl:Ontology ;
+    rdfs:label "Rate Derivatives Ontology",
+        "利率衍生品本体（Rate Derivatives Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts that are common to derivatives based on variation in some defined variable, such as an economic rate, an interest rate or an index value." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义以利率为标的的衍生品的通用概念。"@zh ;
+    owl:imports fibo-der-drc-bsc:,
+        fibo-fbc-fi-fi:,
+        fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20250401/RateDerivatives/RateDerivatives/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20180801/RateDerivatives/RateDerivatives.rdf version of this ontology was extended to include foreign exchange rates, forward rate agreements, and revise definitions to be unambiguous and ISO 704 compliant.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20201201/RateDerivatives/RateDerivatives.rdf version of this ontology was modified to eliminate the dependency on NonPhysicalUnderlier, which was redundant.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20210801/RateDerivatives/RateDerivatives.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, to move the definition of an underlier and the related property, has underlier, to financial instruments so that these concepts are also available for use in relation to pool-backed securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/RateDerivatives/RateDerivatives.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240101/RateDerivatives/RateDerivatives.rdf version of this ontology was modified to deprecate ForeignExchangeRateObservable after other changes that eliminated its usage in currency derivatives and made it obsolete (DER-143).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240901/RateDerivatives/RateDerivatives.rdf version of this ontology was modified to simplify and refine definitions related to underliers (DER-112).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/RateDerivatives/RateDerivatives.rdf version of this ontology was modified to further simplify and clarify definitions (DER-90). Note that under DER-90, the remaining terms that were in this ontology have moved to Derivatives Basics, and this ontology will be eliminated when the deprecated elements are eliminated (at least 6 months from 4/2025)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-der-rtd-rtd:EconomicRateBasedDerivativeInstrument a owl:Class ;
+    rdfs:label "经济指标类衍生工具（EconomicRateBasedDerivativeInstrument）"@zh ;
+    rdfs:comment "标的为某一经济指标类比率的衍生工具。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-der-drc-bsc:EconomicRateBasedDerivative .
+
+fibo-der-rtd-rtd:EconomicRateObservable a owl:Class ;
+    rdfs:label "经济指标可观察量（EconomicRateObservable）"@zh ;
+    rdfs:comment "可在市场上观察到的经济指标类比率，如物价指数、汇率等。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-fbc-fi-fi:Underlier .
+
+fibo-der-rtd-rtd:ForeignExchangeRateObservable a owl:Class ;
+    rdfs:label "外汇汇率可观察量（ForeignExchangeRateObservable）"@zh ;
+    rdfs:comment "可在市场上观察到的外汇汇率。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-fbc-fi-fi:Underlier .
+
+fibo-der-rtd-rtd:ForwardRateAgreement a owl:Class ;
+    rdfs:label "远期利率协议（ForwardRateAgreement）"@zh ;
+    rdfs:comment "就未来某一日期名义本金的利率承诺进行交换的协议。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-der-drc-bsc:ForwardRateAgreement .
+
+fibo-der-rtd-rtd:InterestRateDerivativeInstrument a owl:Class ;
+    rdfs:label "利率衍生工具（InterestRateDerivativeInstrument）"@zh ;
+    rdfs:comment "标的为利率的衍生工具。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-der-drc-bsc:InterestRateDerivative .
+
+fibo-der-rtd-rtd:InterestRateObservable a owl:Class ;
+    rdfs:label "利率可观察量（InterestRateObservable）"@zh ;
+    rdfs:comment "可在市场上观察到的利率。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-fbc-fi-fi:Underlier .
+
+fibo-der-rtd-rtd:RateBasedDerivativeInstrument a owl:Class ;
+    rdfs:label "比率类衍生工具（RateBasedDerivativeInstrument）"@zh ;
+    rdfs:comment "标的为某一比率类可观察量的衍生工具。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-der-drc-bsc:RateBasedDerivative .
+
+fibo-der-rtd-rtd:RateBasedObservable a owl:Class ;
+    rdfs:label "比率类可观察量（RateBasedObservable）"@zh ;
+    rdfs:comment "可在市场上观察到的比率类数值，是比率类衍生品的定价基础。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-fbc-fi-fi:Underlier .
+

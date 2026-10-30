@@ -1,0 +1,92 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-arr-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-fnd-arr-doc: a owl:Ontology ;
+    rdfs:label "Documents Ontology",
+        "文档本体（Documents Ontology）"@zh ;
+    dcterms:abstract "This ontology defines abstract concepts for representation documents for use in other FIBO ontology elements." ;
+    dcterms:license """Copyright (c) 2014-2025 EDM Council, Inc.
+Copyright (c) 2014-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "本本体定义用于在其他 FIBO 本体元素中表示文档的抽象概念。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-doc: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20250801/Arrangements/Documents/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/20230101/Arrangements/Documents.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Arrangements/Documents.rdf version of this ontology was introduced as a part of the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/ in advance of the Long Beach meeting in December 2014.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20141101/Arrangements/Documents.rdf version of this ontology was revised as a part of the issue resolutions identified in the FIBO FND 1.1 RTF report to add a parent of hasDate to date properties.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20160201/Arrangements/Documents.rdf version of this ontology was revised as a part of the issue resolutions identified in the FIBO FND 1.2 RTF report to add a definition for a record.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20170201/Arrangements/Documents.rdf version of this ontology was revised as a part of the FIBO 2.0 RFC to add definitions for general purpose reports.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Arrangements/Documents.rdf version of this ontology was revised to add a new records property.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20181201/Arrangements/Documents.rdf version of this ontology was revised to eliminate deprecated properties.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190901/Arrangements/Documents.rdf version of this ontology was revised to integrate additional document concepts, including certificate, draft, and notice and eliminate duplication with concepts in LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/Arrangements/Documents.rdf version of this ontology was revised to add a hasRecord property.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200901/Arrangements/Documents.rdf version of this ontology was revised to eliminate references to external dictionary sites that no longer resolve.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210101/Arrangements/Documents.rdf version of this ontology was revised to clarify the definition of legal document.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20211201/Arrangements/Documents.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Arrangements/Documents.rdf version of the ontology was modified to replace many of the concepts with those in the Documents ontology added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231201/Arrangements/Documents.rdf version of the ontology was modified to replace an additional property with its equivalent in the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20241001/Arrangements/Documents.rdf version of the ontology was modified to eliminate elements that have been deprecated for several quarters (FND-386) and revise the definition of termination date to allow for future termination (SEC-200)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2014-2025 EDM Council, Inc.",
+        "Copyright (c) 2014-2025 Object Management Group, Inc." .
+
+fibo-fnd-arr-doc:FinancialRecord a owl:Class ;
+    rdfs:label "financial record",
+        "财务记录（financial record）"@zh ;
+    rdfs:comment "财务信息的记录。"@zh ;
+    rdfs:subClassOf cmns-col:Collection,
+        cmns-doc:Record ;
+    skos:definition "record of financial information" ;
+    skos:example "Financial records include accounts, agreements, trading books, etc." .
+
+fibo-fnd-arr-doc:hasExpirationDate a owl:ObjectProperty ;
+    rdfs:label "has expiration date",
+        "具有到期日（has expiration date）"@zh ;
+    rdfs:comment "将某事物（通常是协议、合同、文档或易腐物品）与其到期日关联起来。"@zh ;
+    rdfs:range cmns-dt:Date ;
+    rdfs:subPropertyOf cmns-dt:hasEndDate ;
+    skos:definition "links something, typically an agreement, contract, document, or perishable item, with an expiration date" .
+
+fibo-fnd-arr-doc:hasRecord a owl:ObjectProperty ;
+    rdfs:label "has record",
+        "具有记录（has record）"@zh ;
+    rdfs:comment "将某事物关联到与其相关的记录。"@zh ;
+    rdfs:range cmns-doc:Record ;
+    rdfs:subPropertyOf cmns-col:comprises ;
+    skos:definition "links something to a record that pertains to it" .
+
+fibo-fnd-arr-doc:hasReportingPeriod a owl:ObjectProperty ;
+    rdfs:label "has reporting period",
+        "具有报告期（has reporting period）"@zh ;
+    rdfs:comment "指定报告或其他内容（如市场利率、经济指标）适用的报告期。"@zh ;
+    rdfs:range cmns-dt:ExplicitDatePeriod ;
+    rdfs:subPropertyOf cmns-dt:hasDatePeriod ;
+    skos:definition "specifies the reporting period for which a report or something else, such as a market rate or economic indicator, applies" .
+
+fibo-fnd-arr-doc:hasTerminationDate a owl:ObjectProperty ;
+    rdfs:label "has termination date",
+        "具有终止日（has termination date）"@zh ;
+    rdfs:comment "将某事物（通常是协议、合同、文档或流程）与其计划或实际终止日期关联起来。"@zh ;
+    rdfs:range cmns-dt:Date ;
+    rdfs:subPropertyOf cmns-dt:hasEndDate ;
+    skos:definition "links something, typically an agreement, contract, document, or process, with a date on which it is scheduled to be or was terminated" .
+

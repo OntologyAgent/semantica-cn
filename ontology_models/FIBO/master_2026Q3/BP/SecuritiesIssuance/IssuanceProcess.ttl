@@ -1,0 +1,502 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-iss-dbti: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/> .
+@prefix fibo-bp-iss-doc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/> .
+@prefix fibo-bp-iss-muni: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MuniIssuance/> .
+@prefix fibo-bp-iss-prc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-pas-psch: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-sec-iss: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-bp-iss-prc:Announcement a owl:Class ;
+    rdfs:label "announcement"@en,
+        "公告（announcement）"@zh ;
+    rdfs:comment "关于发行的公告。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:offeringRequestor ;
+            owl:someValuesFrom fibo-bp-iss-prc:PotentialIssuer ],
+        fibo-bp-iss-dbti:IssuanceProcessActivity .
+
+fibo-bp-iss-prc:CompetitiveSaleMethod a owl:Class ;
+    rdfs:label "competitive sale method"@en,
+        "竞争性销售方式（competitive sale method）"@zh ;
+    rdfs:comment "通过竞标方式销售新发行证券的方式。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecurityOfferingSaleMethod ;
+    skos:definition "No definition"@en .
+
+fibo-bp-iss-prc:IssuanceProcessActivity a owl:Class ;
+    rdfs:label "issuance process activity"@en,
+        "发行流程活动（issuance process activity）"@zh ;
+    rdfs:comment "证券发行流程中的一项活动。"@zh ;
+    rdfs:subClassOf fibo-fnd-dt-oc:OccurrenceKind .
+
+fibo-bp-iss-prc:IssuanceProgramme a owl:Class ;
+    rdfs:label "issuance programme"@en,
+        "发行计划（issuance programme）"@zh ;
+    rdfs:comment "一段时间内的一系列发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-sec-iss:SecuritiesOffering ] ;
+    skos:definition "A series of issuances over time."@en ;
+    cmns-av:explanatoryNote "See for example MTN."@en .
+
+fibo-bp-iss-prc:NegotiatedSaleMethod a owl:Class ;
+    rdfs:label "negotiated sale method"@en,
+        "协议销售方式（negotiated sale method）"@zh ;
+    rdfs:comment "通过与承销商协商方式销售新发行证券的方式。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecurityOfferingSaleMethod ;
+    skos:definition "No definition"@en .
+
+fibo-bp-iss-prc:PotentialUnderwriter a owl:Class ;
+    rdfs:label "potential underwriter"@en,
+        "潜在承销商（potential underwriter）"@zh ;
+    rdfs:comment "将成为本次发行承销商的实体。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecuritiesIssuanceProcessActor ;
+    skos:definition "The entity which will become the underwriter for an issue. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-prc:PrimaryIdentifierIssuer a owl:Class ;
+    rdfs:label "primary identifier issuer"@en,
+        "主标识符签发方（primary identifier issuer）"@zh ;
+    rdfs:comment "正式向证券签发主要证券标识符的参与方。"@zh ;
+    rdfs:subClassOf fibo-fnd-agr-ctr:ContractThirdParty ;
+    skos:definition "The party which formally issues the primary security identifier to the security. Term origin:MBS PoC Reviews"@en .
+
+fibo-bp-iss-prc:PrimarySecurityOfferingDistribution a owl:Class ;
+    rdfs:label "primary security offering distribution"@en,
+        "一级证券发行分销（primary security offering distribution）"@zh ;
+    rdfs:comment "公司证券的原始销售，销售收入直接归公司所有。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecurityOfferingDistributionMethod ;
+    skos:definition "The original sale of a company's securities, in which the proceeds from the sale are received directly by the company."@en .
+
+fibo-bp-iss-prc:RegistrationInformation a owl:Class ;
+    rdfs:label "registration information"@en,
+        "注册信息（registration information）"@zh ;
+    rdfs:comment "与注册制证券的注册相关的信息。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ;
+    skos:definition "Information relating to the registration of a registered security."@en .
+
+fibo-bp-iss-prc:SecondarySecurityOfferingDistribution a owl:Class ;
+    rdfs:label "secondary security offering distribution"@en,
+        "二级证券发行分销（secondary security offering distribution）"@zh ;
+    rdfs:comment "对先前已发行证券的发行分销。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:SecurityOfferingDistributionMethod ;
+    skos:definition "An Offering of a security which has been previously issued."@en .
+
+fibo-bp-iss-prc:actualClosingDate a owl:ObjectProperty ;
+    rdfs:label "actual closing date"@en,
+        "实际截止日（actual closing date）"@zh ;
+    rdfs:comment "证券承销商完成收尾的日期。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssuedSecurityIssueInformation ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "The Closing Date for the Issue, recorded after the event."@en .
+
+fibo-bp-iss-prc:announcementDate a owl:ObjectProperty ;
+    rdfs:label "announcement date"@en,
+        "公告日期（announcement date）"@zh ;
+    rdfs:comment "发行人公告的证券拟发行并随后实际发行的日期时间。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssuedSecurityIssueInformation ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "Date/time, as announced by the issuer, at which the securities were to be issued and subsequently were issued."@en .
+
+fibo-bp-iss-prc:expectedClosingDate a owl:ObjectProperty ;
+    rdfs:label "expected closing date"@en,
+        "预期截止日（expected closing date）"@zh ;
+    rdfs:comment "预期向承销商划转头寸的日期，由承销商在公告中提供。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:OfferingProcess ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "The date on which the transfer of positions to underwriters is expected to take place. This date is provided by underwriters as part of an announcement."@en .
+
+fibo-bp-iss-prc:firstTradeDate a owl:ObjectProperty ;
+    rdfs:label "first trade date"@en,
+        "首个交易日（first trade date）"@zh ;
+    rdfs:comment "该证券在二级市场上首次交易的日期。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssuedSecurityIssueInformation ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "The date of the first trade of the security in the secondary market."@en .
+
+fibo-bp-iss-prc:firstTradeDateAndTime a owl:ObjectProperty ;
+    rdfs:label "first trade date and time"@en,
+        "首次交易日期时间（first trade date and time）"@zh ;
+    rdfs:comment "该证券可执行首笔交易的日期时间，均以东部时区为准。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:OfferingProcess ;
+    rdfs:range cmns-dt:DateTime ;
+    skos:definition "First Date and Time a trade may be executed for this security. All times in Eastern Time Zone only. NOTE: This is a date in the future tense at the time of the Offering."@en .
+
+fibo-bp-iss-prc:firstTradeSettlementDate a owl:ObjectProperty ;
+    rdfs:label "first trade settlement date"@en,
+        "首次交易结算日（first trade settlement date）"@zh ;
+    rdfs:comment "发行人与承销商就债券进行资金交收的日期。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssuedSecurityIssueInformation ;
+    rdfs:range cmns-dt:Date ;
+    skos:definition "The date the Issuer and Underwriter exchange money for bonds."@en .
+
+fibo-bp-iss-prc:formalAwardDateAndTime a owl:ObjectProperty ;
+    rdfs:label "formal award date and time"@en,
+        "正式授标日期时间（formal award date and time）"@zh ;
+    rdfs:comment "发行人正式接受竞标（竞争性发行）或签署债券购买协议（协议发行）的日期时间。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:OfferingProcess ;
+    rdfs:range cmns-dt:DateTime ;
+    skos:definition "Date and time the issuer formally accepts a bid for Competitive Issues or, the Date and Time the Bond Purchase Agreement is executed for Negotiated Issues. Time Zone: Include in date/time data or add a term for it?"@en .
+
+fibo-bp-iss-prc:issueNominalNumberOfUnits a owl:DatatypeProperty ;
+    rdfs:label "issue nominal number of units"@en,
+        "发行名义单位数（issue nominal number of units）"@zh ;
+    rdfs:comment "发行证券的原始总数量。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssuedSecurityIssueInformation ;
+    rdfs:range xsd:integer ;
+    skos:definition "Total original quantity of securities issued."@en .
+
+fibo-bp-iss-prc:issueOfferingUnits a owl:DatatypeProperty ;
+    rdfs:label "issue offering units"@en,
+        "发行发售单位数（issue offering units）"@zh ;
+    rdfs:comment "股票或公司债券发行中发售的全部证券数量。"@zh ;
+    rdfs:domain fibo-sec-sec-iss:SecuritiesOffering ;
+    rdfs:range xsd:integer ;
+    skos:definition "Quantity of all securities that is offered in an equity or Corporate Bond issue."@en .
+
+fibo-bp-iss-prc:minimumIssueSubscription a owl:DatatypeProperty ;
+    rdfs:label "minimum issue subscription"@en,
+        "最低发行认购额（minimum issue subscription）"@zh ;
+    rdfs:comment "证券转让或所有权变更所需的最低或增量面额。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssueSubscriptionInformation ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Minimum or incremental denomination required for the transfer or change of ownership of a security."@en .
+
+fibo-bp-iss-prc:overAlloted a owl:DatatypeProperty ;
+    rdfs:label "over alloted"@en,
+        "超额配售（over alloted）"@zh ;
+    rdfs:comment "认购人是否被超额配售了所请求的单位数。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:SubscriptionClosingInformation ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Whether the subscriber has been over-alloted the requested number of units. REVIEW: Not seen in data terms but implied elsewhere."@en .
+
+fibo-bp-iss-prc:series a owl:DatatypeProperty ;
+    rdfs:label "series"@en,
+        "系列（series）"@zh ;
+    rdfs:comment "一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssuedSecurityIssueInformation ;
+    rdfs:range xsd:string ;
+    skos:definition "Series identification for the individual Traded Financial Security."@en .
+
+fibo-bp-iss-prc:subscriptionAmount a owl:DatatypeProperty ;
+    rdfs:label "subscription amount"@en,
+        "认购数量（subscription amount）"@zh ;
+    rdfs:comment "单个认购人获配的发行单位数。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:SubscriptionClosingInformation ;
+    rdfs:range xsd:integer ;
+    skos:definition "Number of units of the issue that an individual subscriber is allocated."@en .
+
+fibo-bp-iss-prc:subscriptionPeriod a owl:ObjectProperty ;
+    rdfs:label "subscription period"@en,
+        "认购期间（subscription period）"@zh ;
+    rdfs:comment "证券可被认购的期间。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssueSubscriptionInformation ;
+    rdfs:range cmns-dt:DatePeriod ;
+    skos:definition "Period during which the security can be subscribed to."@en .
+
+fibo-bp-iss-prc: a owl:Ontology ;
+    rdfs:label "Issuance Process"@en,
+        "发行流程本体（Issuance Process Ontology）"@zh ;
+    dcterms:abstract "General ontology for the process by which securities are issued. Contains the process features common to all or most securities issuance. These are extended in the process ontologies that are specific to particular types of issuance" ;
+    dcterms:license """Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义证券发行的通用流程框架：从筹划、定价到配售的各阶段。"@zh ;
+    owl:imports fibo-bp-iss-dbti:,
+        fibo-bp-iss-doc:,
+        fibo-bp-iss-muni:,
+        fibo-fbc-fi-fi:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-pas-psch:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-sec-sec-iss:,
+        cmns-av:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-pts: ;
+    owl:versionIRI fibo-bp-iss-prc: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-bp-iss-prc:AllotmentInformation a owl:Class ;
+    rdfs:label "allotment information"@en,
+        "配售信息（allotment information）"@zh ;
+    rdfs:comment "关于向不同认购人配售发行数量的信息，关联单笔工具配售与认购。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-bp-iss-prc:SubscriptionClosingInformation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:describesAllotmentOf ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ;
+    skos:definition "Information about the allotment of quantities of the issue to different subscribers. This relates a single instrument allotment against the subscription amounts allotted to each Subscriber."@en .
+
+fibo-bp-iss-prc:UnderwritingProcessDetails a owl:Class ;
+    rdfs:label "underwriting process details"@en,
+        "承销流程细节（underwriting process details）"@zh ;
+    rdfs:comment "本次发行承销特有的信息。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ;
+    skos:definition "Information specific to the Underwriting of the Issue."@en .
+
+fibo-bp-iss-prc:describesAllotmentOf a owl:ObjectProperty ;
+    rdfs:label "describes allotment of"@en,
+        "描述……的配售（describes allotment of）"@zh ;
+    rdfs:comment "描述某证券的配售情况。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:AllotmentInformation ;
+    rdfs:range fibo-fbc-fi-fi:Security ;
+    rdfs:subPropertyOf cmns-doc:isAbout .
+
+fibo-bp-iss-prc:finalStateDescribedIn a owl:ObjectProperty ;
+    rdfs:label "final state described in"@en,
+        "最终状态描述于（final state described in）"@zh ;
+    rdfs:comment "标识描述某过程最终状态的文件。"@zh ;
+    rdfs:domain fibo-sec-sec-iss:SecuritiesOffering ;
+    rdfs:range fibo-bp-iss-doc:FinalProspectus .
+
+fibo-bp-iss-prc:hasDistributionType a owl:ObjectProperty ;
+    rdfs:label "has distribution type",
+        "具有分销类型（has distribution type）"@zh ;
+    rdfs:comment "标识证券发行的分销类型。"@zh .
+
+fibo-bp-iss-prc:hasPartiallyPaidIssuanceSchedule a owl:ObjectProperty ;
+    rdfs:label "has partially paid issuance schedule"@en,
+        "具有分期缴付发行进度表（has partially paid issuance schedule）"@zh ;
+    rdfs:comment "分期缴付发行：分期付款及日期的进度表。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:IssuedSecurityIssueInformation ;
+    rdfs:range fibo-fnd-pas-psch:PaymentSchedule ;
+    skos:definition "Partially paid issue: Schedule of partial payments and dates."@en .
+
+fibo-bp-iss-prc:hasSaleMethod a owl:ObjectProperty ;
+    rdfs:label "has sale method"@en,
+        "具有销售方式（has sale method）"@zh ;
+    rdfs:comment "标识证券的销售方式。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:OfferingProcess ;
+    rdfs:range fibo-bp-iss-prc:SecurityOfferingSaleMethod ;
+    skos:definition "Sale Method of the security."@en .
+
+fibo-bp-iss-prc:isIssuanceGuarantor a owl:ObjectProperty ;
+    rdfs:label "is issuance guarantor"@en,
+        "是发行担保人（is issuance guarantor）"@zh ;
+    rdfs:comment "标识为发行提供担保的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:SecurityIssuanceGuarantor ;
+    rdfs:range fibo-bp-iss-prc:SecuritiesIssuanceProcess .
+
+fibo-bp-iss-prc:isPotentialIssuer a owl:ObjectProperty ;
+    rdfs:label "is potential issuer"@en,
+        "是潜在发行人（is potential issuer）"@zh ;
+    rdfs:comment "标识潜在的发行参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:PotentialIssuer ;
+    rdfs:range fibo-bp-iss-prc:SecuritiesIssuanceProcess .
+
+fibo-bp-iss-prc:offerIssueSeries a owl:DatatypeProperty ;
+    rdfs:label "series"@en,
+        "系列（series）"@zh ;
+    rdfs:comment "一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。"@zh ;
+    rdfs:domain fibo-sec-sec-iss:SecuritiesOffering ;
+    rdfs:range xsd:string ;
+    skos:definition "Uniquely identified collection of securities within an Issue with same Expected Closing Date. The text gives the Series Identifier within the Issuance process. There may be one or more Series within one Issue."@en .
+
+fibo-bp-iss-prc:requiredToMakeEligible a owl:ObjectProperty ;
+    rdfs:label "required to make eligible"@en,
+        "使合格所需（required to make eligible）"@zh ;
+    rdfs:comment "使证券达到合格条件所要求的事项。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:OfferingProcess ;
+    rdfs:range fibo-sec-sec-iss:OfferingDocument .
+
+fibo-bp-iss-prc:takenDownBy a owl:ObjectProperty ;
+    rdfs:label "taken down by"@en,
+        "由……承销（taken down by）"@zh ;
+    rdfs:comment "标识承销该证券的承销商。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:UnderwriterTakedown ;
+    rdfs:range fibo-bp-iss-dbti:MuniIssueUnderwriter .
+
+fibo-bp-iss-prc:underwriterTakedownShares a owl:DatatypeProperty ;
+    rdfs:label "underwriter takedown shares"@en,
+        "承销商承销股数（underwriter takedown shares）"@zh ;
+    rdfs:comment "承销商经手的证券承销数量（将记入 DTC）。"@zh ;
+    rdfs:domain fibo-bp-iss-prc:UnderwriterTakedown ;
+    rdfs:range xsd:integer ;
+    skos:definition "Takedown quantity of the security handled by the underwriter (that will be brought into DTC)."@en .
+
+fibo-bp-iss-prc:IssueSubscriptionInformation a owl:Class ;
+    rdfs:label "issue subscription information"@en,
+        "发行认购信息（issue subscription information）"@zh ;
+    rdfs:comment "与本次发行认购相关的信息。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ;
+    skos:definition "Information relating to the subscription of the issue."@en .
+
+fibo-bp-iss-prc:SecurityIssuanceGuarantor a owl:Class ;
+    rdfs:label "security issuance guarantor"@en,
+        "证券发行担保人（security issuance guarantor）"@zh ;
+    rdfs:comment "为证券发行提供担保的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:isIssuanceGuarantor ;
+            owl:someValuesFrom fibo-bp-iss-prc:SecuritiesIssuanceProcess ],
+        fibo-bp-iss-prc:SecuritiesIssuanceProcessActor .
+
+fibo-bp-iss-prc:Subscriber a owl:Class ;
+    rdfs:label "subscriber"@en,
+        "认购人（subscriber）"@zh ;
+    rdfs:comment "认购发行证券的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:subscribesTo ;
+            owl:someValuesFrom fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess ],
+        cmns-pts:AgentRole .
+
+fibo-bp-iss-prc:UnderwriterTakedown a owl:Class ;
+    rdfs:label "underwriter takedown"@en,
+        "承销商承销量（underwriter takedown）"@zh ;
+    rdfs:comment "承销商经手的证券承销数量信息（将记入 DTC）。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:integer ;
+            owl:onProperty fibo-bp-iss-prc:underwriterTakedownShares ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:takenDownBy ;
+            owl:someValuesFrom fibo-bp-iss-dbti:MuniIssueUnderwriter ],
+        fibo-bp-iss-prc:UnderwritingProcessDetails ;
+    skos:definition "Infomation on Takedown quantity of the security handled by the underwriter (that will be brought into DTC)."@en ;
+    skos:editorialNote "Question: Do securities issued through processes other than the one formally identified as \"Underwriting Process\", have Underwriters? Our research would indicate that agency and non agency MBS issuance processes are not \"Underwriting\" processes as defined for the DTCC Muni unwriting process, but they do have a step which involves identifying and appointing an underwriter, so the issue is underwritten. It may be that these two processes should be defined as types of (variants on) a more general Underwriting Process, which is itself more general than the one captured separately for DTCC Muni Issuance, which is where this term now lives. Modeling Note: Definition is too DTC specific, from DTCC earliy reviews on Muni process. Need to have a global definition and understanding of this term."@en .
+
+fibo-bp-iss-prc:PotentialIssuer a owl:Class ;
+    rdfs:label "potential issuer"@en,
+        "潜在发行人（potential issuer）"@zh ;
+    rdfs:comment "将成为发行人的实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:isPotentialIssuer ;
+            owl:someValuesFrom fibo-bp-iss-prc:SecuritiesIssuanceProcess ],
+        fibo-bp-iss-prc:SecuritiesIssuanceProcessActor .
+
+fibo-bp-iss-prc:SecuritiesIssuanceProcessActor a owl:Class ;
+    rdfs:label "securities issuance process actor"@en,
+        "证券发行流程参与者（securities issuance process actor）"@zh ;
+    rdfs:comment "证券发行流程中的参与者。"@zh ;
+    rdfs:subClassOf cmns-pts:AgentRole .
+
+fibo-bp-iss-prc:SecurityOfferingDistributionMethod a owl:Class ;
+    rdfs:label "security offering distribution method"@en,
+        "证券发行分销方式（security offering distribution method）"@zh ;
+    rdfs:comment "证券发行的分销类型。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:DistributionStrategy ;
+    skos:definition "The distribution type of a securities Offering."@en .
+
+fibo-bp-iss-prc:SubscriptionClosingInformation a owl:Class ;
+    rdfs:label "subscription closing information"@en,
+        "认购截止信息（subscription closing information）"@zh ;
+    rdfs:comment "与认购截止相关的信息。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-bp-iss-prc:Subscriber ],
+        fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation .
+
+fibo-bp-iss-prc:SecuritiesIssuanceProcess a owl:Class ;
+    rdfs:label "securities issuance process"@en,
+        "证券发行流程（securities issuance process）"@zh ;
+    rdfs:comment "金融证券发行的过程。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasIssuanceGuarantor ;
+            owl:someValuesFrom fibo-bp-iss-prc:SecurityIssuanceGuarantor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasPotentialIssuer ;
+            owl:someValuesFrom fibo-bp-iss-prc:PotentialIssuer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:produces ;
+            owl:someValuesFrom fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:subscriber.1 ;
+            owl:someValuesFrom fibo-bp-iss-prc:Subscriber ] ;
+    skos:definition "The process by which a financial security is issued."@en .
+
+fibo-bp-iss-prc:SecurityOfferingSaleMethod a owl:Class ;
+    rdfs:label "security offering sale method"@en,
+        "证券发行销售方式（security offering sale method）"@zh ;
+    rdfs:comment "新证券发行的销售方式。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:SalesStrategy ;
+    skos:definition "Method for sale of a new security offering."@en .
+
+fibo-sec-sec-iss:SecuritiesOffering a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:offerIssueSeries ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:finalStateDescribedIn ;
+            owl:someValuesFrom fibo-bp-iss-doc:FinalProspectus ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:someValuesFrom <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ListedSecurityIdentifier> ] .
+
+fibo-bp-iss-prc:OfferingProcess a owl:Class ;
+    rdfs:label "offering"@en,
+        "发行（offering）"@zh ;
+    rdfs:comment "将证券提供发行的流程步骤，即通过承销使新证券发行可得。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:hasSaleMethod ;
+            owl:someValuesFrom fibo-bp-iss-prc:SecurityOfferingSaleMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:requiredToMakeEligible ;
+            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:hasDistributionType ;
+            owl:someValuesFrom fibo-bp-iss-prc:SecurityOfferingDistributionMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:givesRiseTo ;
+            owl:someValuesFrom fibo-bp-iss-prc:IssuedSecurityIssueInformation ],
+        fibo-bp-iss-dbti:IssuanceProcessActivity ;
+    skos:definition "The process step of offering a security for issue. This is the making available of a new securities issue through an underwriting."@en ;
+    cmns-av:explanatoryNote "It is assumed that this exists for all security types as the precise issuance process is defined among the Offering terms. Terms which only exist for specific types of instrument are given as specialized variants of this class of Thing."@en .
+
+fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation a owl:Class ;
+    rdfs:label "traded instrument issuance process information"@en,
+        "交易工具发行流程信息（traded instrument issuance process information）"@zh ;
+    rdfs:comment "由发行流程产生的、关于一次证券发行的信息。注意：一个发行流程（发行）可对应多次发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:isPartOf ;
+            owl:someValuesFrom fibo-bp-iss-prc:IssuedSecurityIssueInformation ],
+        cmns-doc:Document ;
+    skos:definition "Information on one Security issue, arising from the Issuance Process. Note that one Issuance Process (Offering) may relate to more than on Issue, which itself may be the issue of more than one Traded Security."@en .
+
+fibo-bp-iss-prc:IssuedSecurityIssueInformation a owl:Class ;
+    rdfs:label "issued security issue information"@en,
+        "已发行证券发行信息（issued security issue information）"@zh ;
+    rdfs:comment "与发行准备/推向市场（即一级市场或 IPO 发行）直至发行完成相关的要素。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-pas-psch:PaymentSchedule ;
+            owl:onProperty fibo-bp-iss-prc:hasPartiallyPaidIssuanceSchedule ],
+        cmns-doc:Document ;
+    skos:definition "FIBIM: \"Elements relating to issue preparation/bringing to market (also known as primary market or Initial Public Offering (IPO) issuance) through to issue date.\""@en,
+        "Information about the Issuance of a Security, which is maintained throughout the life of the Security."@en .
+

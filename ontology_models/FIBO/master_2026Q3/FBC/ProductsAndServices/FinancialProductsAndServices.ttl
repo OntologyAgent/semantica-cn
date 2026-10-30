@@ -1,0 +1,1147 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-bauth: <https://www.omg.org/spec/Commons/BusinessAuthorizations/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-be-oac-opty: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/OwnershipParties/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/> .
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-alx: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-pas-fpas: a owl:Ontology ;
+    rdfs:label "Financial Products and Services Ontology",
+        "金融产品与服务本体（Financial Products and Services Ontology）"@zh ;
+    dcterms:abstract "This ontology defines concepts that extend the Foundations (FND) Products and Services concepts specifically for the financial industry, including financial product, financial service, and financial service provider." ;
+    dcterms:license """Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2015-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义金融产品（financial product）与金融服务（financial service）及其提供、购买关系。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-be-fct-pub:,
+        fibo-be-le-lei:,
+        fibo-be-oac-opty:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-agr-ctr:,
+        fibo-fnd-arr-lif:,
+        fibo-fnd-dt-fd:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-law-lcap:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-pas-pas:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-alx:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-bauth:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-dsg:,
+        cmns-id:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-qtu:,
+        cmns-rga:,
+        cmns-rlcmp:,
+        cmns-txt: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FBC/20260701/ProductsAndServices/FinancialProductsAndServices/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/20150801/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to reflect issue resolutions detailed in the FIBO FBC 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20160801/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified by the FIBO 2.0 RFC, including, but not limited to, the addition of lifecycle events, concepts related to trade settlement, and the definition of a unique transaction identifier (UTI).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20180801/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified as a part of organizational hierarchy simplification and to correct a logical inconsistency with respect to the representation of baskets.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190601/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to replace hasDefinition with isDefinedIn to clarify intent.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190701/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to eliminate deprecated elements.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20190901/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to add the notion of a weighted basket, whose consituents are weighted.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20191101/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to eliminate duplication with concepts in LCC and eliminated a redundant superclass on FinancialServiceProvider.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200401/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to replace the property 'characterizes' with 'describes' with respect to restrictions on catalogs, and to correct the label on terminated trade.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20200701/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to eliminate references to external dictionary sites that no longer resolve, eliminate circular and ambiguous definitions, and revise definitions that referenced 'face value' improperly.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210301/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to rename ownership related properties for consistent alignment with the ownership situational pattern, add a definition for trading strategy, and loosen the constraint on offeree for offering to be optional.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210601/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to add a property to describe the criteria for including something in a basket, if that criteria is known, and to point to a party that is responsible for determining that criteria.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20210901/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20211201/ProductsAndServices/FinancialProductsAndServices/ version of this ontology was modified to revise the definition of a unique transaction identifier to align with ISO 23897 and to address text formatting issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20220801/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230101/ProductsAndServices/FinancialProductsAndServices.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230301/ProductsAndServices/FinancialProductsAndServices.rdf version of this ontology was revised to augment the representation of institutions based on their definitions in the law, and to clarify and extend definitions related to non-bank financial institutions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20230401/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old and to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20231201/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240101/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to add the concept of a contract lifecycle, as distinct from a product or trade lifecycle (FBC-317).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240201/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to eliminate a redundant restriction (GitHub-2028).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240901/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to eliminate certain constructs that are redundant and will never be materialized to reduce the number of nodes required for various contract-related constructs (FND-391).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20240901/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to reconcile shareholding with equity position (BE-254), and to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250501/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to replace hasConstituent with hasMember for better semantic consistency (FND-396).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20250701/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to leverage new constructs from the Commons 1.3 Business Authorizations ontology (FND-401).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FBC/20251201/ProductsAndServices/FinancialProductsAndServices.rdf version of the ontology was modified to make the concept of a holding more generally applicable and available in the ownership ontology and refine the definition of position (SEC-219)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2015-2025 Object Management Group, Inc.",
+        "Copyright (c) 2015-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-fbc-pas-fpas:AgentForServiceOfProcess a owl:Class ;
+    rdfs:label "agent for service of process",
+        "法律文书送达代理人（agent for service of process）"@zh ;
+    rdfs:comment "由企业实体（如公司）指定、代表该企业接收法律文书的注册代理人（个人或组织）。"@zh ;
+    rdfs:seeAlso <http://www.law.cornell.edu/wex/agent_for_service_of_process>,
+        <http://www.sos.state.tx.us/corp/registeredagents.shtml> ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:RegisteredAgent ;
+    skos:definition "registered agent (person or organization) designated by a business entity, such as a corporation, to receive legal correspondence on behalf of the business entity in the jurisdiction in which the agent's address is located" ;
+    cmns-av:explanatoryNote "The person may be an officer of the corporation or a third party, such as the corporation's attorney, or a company providing such agency services." .
+
+fibo-fbc-pas-fpas:AmendedTrade a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:TradeLifecycleStage ;
+    rdfs:label "amended trade" ;
+    skos:definition "stage in the lifecycle of a trade indicating that a change or addition has been made to the terms of the trade, leaving the original terms largely intact" .
+
+fibo-fbc-pas-fpas:BrokerDealer a owl:Class ;
+    rdfs:label "broker-dealer",
+        "经纪交易商（broker-dealer）"@zh ;
+    rdfs:comment "从事证券买卖业务、视交易情况同时以经纪商和交易商身份运作的任何一方。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fbc-pas-fpas:Broker fibo-fbc-pas-fpas:Dealer ) ],
+        fibo-be-fct-fct:FunctionalEntity ;
+    skos:definition "any party in the business of buying and selling securities, operating as both a broker and a dealer, depending on the transaction" ;
+    cmns-av:adaptedFrom "Office of Financial Research (OFR) Annual Report, 2012, Glossary" .
+
+fibo-fbc-pas-fpas:ClearedTrade a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:TradeLifecycleStage ;
+    rdfs:label "cleared trade" ;
+    skos:definition "stage in the lifecycle of a trade indicating that a third-party clearing house, acting as an intermediary, has reconciled the orders involved in the trade" ;
+    cmns-av:explanatoryNote "Clearing validates the availability of funds, records the transfer, and in the case of securities ensures the delivery of the security to the buyer." .
+
+fibo-fbc-pas-fpas:ClosedTrade a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:TradeLifecycleStage ;
+    rdfs:label "closed trade" ;
+    skos:definition "stage in the lifecycle of a trade indicating that the trade has been finalized, and that there is no longer a corresponding open position on the books of the trader, eliminating any exposure" .
+
+fibo-fbc-pas-fpas:FinancialIntermediationService a owl:Class ;
+    rdfs:label "financial intermediation service",
+        "金融中介服务（financial intermediation service）"@zh ;
+    rdfs:comment "由第三方（中介）将贷款人和投资者与需要资金的企业家及其他借款人撮合起来的金融服务。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialService ;
+    skos:definition "any financial service in which a third party (the intermediary) matches lenders and investors with entrepreneurs and other borrowers in need of capital" ;
+    fibo-fnd-utl-av:definitionOrigin "Office of Financial Research (OFR) Annual Report, 2012, Glossary" ;
+    cmns-av:explanatoryNote "Often investors and borrowers do not have precisely matching needs, and the intermediary's capital is put at risk to transform the credit risk and maturity of the liabilities to meet the needs of investors." .
+
+fibo-fbc-pas-fpas:FinancialProductCatalog a owl:Class ;
+    rdfs:label "financial product catalog",
+        "金融产品目录（financial product catalog）"@zh ;
+    rdfs:comment "列有可供销售的金融产品和/或服务及其描述和其他产品详情的目录。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:describes ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:FinancialProduct ],
+        fibo-fbc-pas-fpas:Catalog ;
+    skos:definition "catalog of financial products and/or services available for sale with their description and other product details" ;
+    cmns-av:adaptedFrom "Nordea Bank" .
+
+fibo-fbc-pas-fpas:Holding a owl:Class ;
+    rdfs:label "持仓（Holding）"@zh ;
+    rdfs:comment "持有的金融资产或头寸。"@zh ;
+    owl:deprecated true ;
+    owl:equivalentClass fibo-fnd-oac-own:Holding .
+
+fibo-fbc-pas-fpas:MaturedTrade a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:TradeLifecycleStage ;
+    rdfs:label "matured trade" ;
+    skos:definition "stage in the lifecycle of a trade indicating that the trade, and related instrument(s) has ended (expired)" .
+
+fibo-fbc-pas-fpas:OpenTrade a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:TradeLifecycleStage ;
+    rdfs:label "open trade" ;
+    skos:definition "stage in the lifecycle of a trade indicating that the trade has been established and there is an associated open position on the books of the trader as a consequence" .
+
+fibo-fbc-pas-fpas:Position a owl:Class ;
+    rdfs:label "position",
+        "头寸（position）"@zh ;
+    rdfs:comment "因持有、借入、卖空或订立合约（如衍生品）而产生的金融风险暴露。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:FinancialExposure ;
+    skos:definition "financial exposure resulting from owning, borrowing, shorting, or entering into a contract (e.g., derivatives)" ;
+    cmns-av:explanatoryNote "A position can be long or short, and it can be in any asset class, such as stocks, bonds, futures, or options. A position can be open (current) or closed (past), but in general use, unless a position is specifically referred to as closed, the assumption is that it references an open position.",
+        """Regulators use 'position' when speaking about exposure with respect to 
+- CFTC futures/options positions
+- Basel risk-weighted exposures
+- Short-selling regulations (net short position)
+- Derivatives reporting (swap positions)
+
+A position may exist without a holding (e.g., short sale, swap exposure). A holding always implies a long position, but a position does not always imply a holding.""" .
+
+fibo-fbc-pas-fpas:RegulatedCommodity a owl:Class ;
+    rdfs:label "regulated commodity",
+        "受监管商品（regulated commodity）"@zh ;
+    rdfs:comment "处于监管机构（如美国商品期货交易委员会 CFTC）管辖之下的商品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-rga:RegulatoryAgency ;
+            owl:onProperty cmns-rga:isRegulatedBy ],
+        fibo-fnd-pas-pas:Commodity ;
+    skos:definition "commodity under the jurisdiction of the regulatory agency, such as the Commodities Futures Trading Commission (CFTF) in the United States, which includes any commodity traded in an organized contracts market" ;
+    cmns-av:explanatoryNote "The CFTC polices matters of information and disclosure, fair trading practices, registration of firms and individuals, protection of customer funds, record keeping, and maintenance of orderly options and futures markets in the United States." .
+
+fibo-fbc-pas-fpas:SettlementTerms a owl:Class ;
+    rdfs:label "settlement terms",
+        "结算条款（settlement terms）"@zh ;
+    rdfs:comment "规定交易一方或多方结算承诺与机制的合同条款。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:Date ;
+            owl:onProperty fibo-fbc-pas-fpas:hasSettlementDate ],
+        fibo-fnd-agr-ctr:ContractualCommitment ;
+    skos:definition "contract terms that define the commitment to and mechanism for settling one or more sides of a transaction" ;
+    cmns-av:explanatoryNote "In general, settlement involves arrangement of disposition of property, typically for legal reasons. With respect to financial transactions, it involves completion of a trade, either between brokers or agents, or between a broker and client. This may include settlement in cash, either for the entire transaction or for the cash leg of a transaction, either now or at some specified time in the future." .
+
+fibo-fbc-pas-fpas:TerminatedTrade a owl:NamedIndividual,
+        fibo-fbc-pas-fpas:TradeLifecycleStage ;
+    rdfs:label "terminated trade" ;
+    skos:definition "stage in the trade lifecycle in which the trade has been terminated early, i.e., prior to maturity" ;
+    cmns-av:explanatoryNote "Early termination may be triggered by a position sell or early termination provision, such as auto call/cancel, knock-out, etc." .
+
+fibo-fbc-pas-fpas:TradingStrategy a owl:Class ;
+    rdfs:label "trading strategy",
+        "交易策略（trading strategy）"@zh ;
+    rdfs:comment "在证券市场进行买卖所采用的方法。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Strategy ;
+    skos:definition "approach used for buying and selling in the securities markets" ;
+    cmns-av:explanatoryNote "A trading strategy is a plan whose aim is to make a profit or hedge against risk, based on rules and other criteria used when making trading decisions. A trading strategy may be simple or complex, and involve considerations such as investment style (e.g., value vs. growth), market cap, technical indicators, fundamental analysis, industry sector, level of portfolio diversification, time horizon or holding period, risk tolerance, leverage, tax considerations, and so on." .
+
+fibo-fbc-pas-fpas:WeightedBasket a owl:Class ;
+    rdfs:label "weighted basket",
+        "加权篮子（weighted basket）"@zh ;
+    rdfs:comment "各成分彼此之间具有相对重要性的篮子。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasExpression ;
+            owl:someValuesFrom fibo-fnd-utl-alx:WeightingFunction ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:WeightedBasketConstituent ],
+        fibo-fbc-pas-fpas:Basket,
+        cmns-col:StructuredCollection ;
+    skos:definition "basket whose constituents have some relative importance with respect to one another" .
+
+fibo-fbc-pas-fpas:hasGeneratingEntityIdentifier a owl:ObjectProperty ;
+    rdfs:label "has generating entity identifier",
+        "具有生成实体标识符（has generating entity identifier）"@zh ;
+    rdfs:comment "指明生成唯一交易标识符的实体的标识符。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:UniqueTransactionIdentifier ;
+    owl:propertyChainAxiom ( fibo-fbc-pas-fpas:hasGeneratingEntity cmns-id:isIdentifiedBy ) ;
+    skos:definition "specifies an identifier for the entity that generated a unique transaction identifier" ;
+    cmns-av:explanatoryNote "Note that the range of is identified by must be that entity's LEI in the context of a UTI." .
+
+fibo-fbc-pas-fpas:hasLegalAgent a owl:ObjectProperty ;
+    rdfs:label "has registered agent",
+        "具有注册代理人（has registered agent）"@zh ;
+    rdfs:comment "标识在特定情况下具有法律、医疗或财务能力代表他人行事的一方。"@zh ;
+    rdfs:range fibo-fbc-pas-fpas:LegalAgent ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "identifies a party as one that has the legal, medical or financial capacity to act on behalf of someone else under specific circumstances" .
+
+fibo-fbc-pas-fpas:hasNominalNumberOfUnits a owl:DatatypeProperty ;
+    rdfs:label "has nominal number of units",
+        "具有名义单位数量（has nominal number of units）"@zh ;
+    rdfs:comment "指明与某要约相关联的基础单位数量。"@zh ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "indicates the base number of units of something associated with some offering" .
+
+fibo-fbc-pas-fpas:hasOffering a owl:ObjectProperty ;
+    rdfs:label "has offering",
+        "具有要约（has offering）"@zh ;
+    rdfs:comment "将某事物与买方或卖方（要约人）向另一方（受要约人）提交的、自愿但附条件的承诺关联起来，该承诺一经接受即具约束力。"@zh ;
+    rdfs:range fibo-fbc-pas-fpas:Offering ;
+    owl:inverseOf fibo-fbc-pas-fpas:isOfferingOf ;
+    skos:definition "relates something to a voluntary but conditional promise submitted by a buyer or seller (offeror) to another (offeree) for acceptance, and which becomes legally enforceable if accepted by the offeree" .
+
+fibo-fbc-pas-fpas:hasOfferingAmount a owl:ObjectProperty ;
+    rdfs:label "has offering amount",
+        "具有要约金额（has offering amount）"@zh ;
+    rdfs:comment "指明基于参考数据、市场利率或其他约定方法确定的、与某要约相关联的名义货币金额。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryAmount ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasNotionalAmount ;
+    skos:definition "indicates the notional monetary amount, determined based on reference data, market rates or some other agreed method associated with some offering" .
+
+fibo-fbc-pas-fpas:hasOfferingPrice a owl:ObjectProperty ;
+    rdfs:label "has offering price",
+        "具有要约价格（has offering price）"@zh ;
+    rdfs:comment "指明与要约相关联的价格，可为明示价格或计算价格。"@zh ;
+    rdfs:range fibo-fnd-acc-cur:MonetaryPrice ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasPrice ;
+    skos:definition "indicates the price associated with an offering, which may be an explicit or calculated price" .
+
+fibo-fbc-pas-fpas:hasOfferingUnits a owl:DatatypeProperty ;
+    rdfs:label "has offering units",
+        "具有要约单位数量（has offering units）"@zh ;
+    rdfs:comment "指明与某要约相关联的实际单位数量，包括单位数量的任何溢价部分。"@zh ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasAmount ;
+    skos:definition "indicates the actual number of units of something, including any premium on the number of units, associated with some offering" .
+
+fibo-fbc-pas-fpas:hasTradeDate a owl:ObjectProperty ;
+    rdfs:label "has trade date",
+        "具有交易日（has trade date）"@zh ;
+    rdfs:comment "指明证券或其他工具交易实际发生的日期。"@zh ;
+    rdfs:range cmns-dt:Date ;
+    rdfs:subPropertyOf cmns-dt:hasDate ;
+    skos:definition "indicates the date on which a security or other instrument-specific trade actually takes place" .
+
+fibo-fnd-agr-ctr:BreachOfContract a owl:Class ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:ContractLifecycleEvent .
+
+fibo-fnd-agr-ctr:BreachOfCovenant a owl:Class ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:ContractLifecycleEvent .
+
+fibo-fnd-oac-own:Portfolio a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-oac-opty:Investor fibo-fbc-pas-fpas:FinancialServiceProvider ) ] ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-oac-opty:Investor fibo-fbc-pas-fpas:FinancialServiceProvider ) ] ;
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ] .
+
+cmns-dt:precedes a owl:ObjectProperty ;
+    rdfs:subPropertyOf fibo-fbc-pas-fpas:relatesTo .
+
+fibo-fbc-pas-fpas:AgencyAgreement a owl:Class ;
+    rdfs:label "agency agreement",
+        "代理协议（agency agreement）"@zh ;
+    rdfs:comment "指定一方为注册代理人、在某一（通常为法律、财务或医疗）事务中代表另一方行事的协议。"@zh ;
+    rdfs:seeAlso <http://www.sos.state.tx.us/corp/registeredagents.shtml> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:RegisteredAgent ],
+        fibo-fnd-agr-ctr:WrittenContract ;
+    skos:definition "agreement that designates a party as a registered agent to represent and act on behalf of another party in some, typically legal, financial, or medical capacity" .
+
+fibo-fbc-pas-fpas:Broker a owl:Class ;
+    rdfs:label "broker",
+        "经纪商（broker）"@zh ;
+    rdfs:comment "在买方与卖方之间充当中介、通常收取佣金的任何一方。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fbc-pas-fpas:LicensedAgent fibo-fbc-pas-fpas:ThirdPartyAgent ) ],
+        fibo-fnd-agr-ctr:ContractThirdParty ;
+    skos:definition "any party that acts as an intermediary between a buyer and a seller, usually charging a commission" ;
+    cmns-av:adaptedFrom "17 CFR 45.1, Definitions - see the definition of agent" ;
+    cmns-av:explanatoryNote "A broker that specializes in stocks, bonds, commodities, or certain derivatives must be registered with the exchange in which the securities are traded." .
+
+fibo-fbc-pas-fpas:ContractLifecycleOccurrence a owl:Class ;
+    rdfs:label "contract lifecycle occurrence",
+        "合同生命周期历程（contract lifecycle occurrence）"@zh ;
+    rdfs:comment "某一具体合同生命周期的实现。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStageOccurrence ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:ContractLifecycle ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-arr-lif:LifecycleOccurrence ;
+    skos:definition "realization of the lifecycle of a specific contract" .
+
+fibo-fbc-pas-fpas:Dealer a owl:Class ;
+    rdfs:label "dealer",
+        "交易商（dealer）"@zh ;
+    rdfs:comment "购入商品或服务用于转售、并在交易中以本人身份行事的任何一方。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fnd-pas-pas:Buyer fibo-fnd-pas-pas:Seller ) ],
+        cmns-org:ServiceProvider ;
+    skos:definition "any party that purchases goods or services for resale and acts on their own behalf in a transaction" ;
+    cmns-av:explanatoryNote "A dealer is a counterparty or principal in the transaction with the customer." .
+
+fibo-fbc-pas-fpas:FinancialExposure a owl:Class ;
+    rdfs:label "financial exposure",
+        "金融风险暴露（financial exposure）"@zh ;
+    rdfs:comment "个人或组织在交易中或就某项或某组投资面临损失风险的程度。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:Exposure ;
+    skos:definition "the extent to which an individual or organization is open to risk of suffering a loss in a transaction, or with respect to some investment or set of investments, e.g., some holding; the amount one stands to lose in that transaction or investment" ;
+    skos:example "Examples in banking include the total amount of unsecured loans, the amount of loans advanced to a single borrower, group, industry, or country, and the probability of loss from devaluation, revaluation, or foreign exchange fluctuations." ;
+    skos:note "Financial exposure may be related to a holding, involving ownership, or may involve rights or obligations related to borrowing or derivatives." .
+
+fibo-fbc-pas-fpas:FinancialProduct a owl:Class ;
+    rdfs:label "financial product",
+        "金融产品（financial product）"@zh ;
+    rdfs:comment "由银行、保险公司、经纪公司、消费金融公司等金融机构向消费者和企业提供的产品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:FinancialServiceProvider ],
+        fibo-fnd-pas-pas:Product ;
+    skos:definition "product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies" .
+
+fibo-fbc-pas-fpas:LicensedAgent a owl:Class ;
+    rdfs:label "licensed agent",
+        "持证代理人（licensed agent）"@zh ;
+    rdfs:comment "经许可执行具有法律约束力职能、并经合法授权代表另一方行事的任何个人。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:LegalAgent,
+        fibo-fnd-law-lcap:Licensee,
+        cmns-bauth:ResponsibleParty ;
+    skos:definition "any individual who is licensed to perform a legally binding function, and who has been legally empowered to act on behalf of another party" ;
+    skos:example "Insurance agents, realtors, financial advisors, certain attorneys, and brokers are examples of legal agents." ;
+    cmns-av:adaptedFrom "17 CFR 45.1, Definitions - see the definition of agent" .
+
+fibo-fbc-pas-fpas:Offeree a owl:Class ;
+    rdfs:label "offeree",
+        "受要约人（offeree）"@zh ;
+    rdfs:comment "基于要约条款从某方（即要约人）处收到要约的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-fbc-pas-fpas:Offering ] ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that receives an offer from something from someone (i.e., an offerer) based on the terms of the offering" .
+
+fibo-fbc-pas-fpas:ProductLifecycleOccurrence a owl:Class ;
+    rdfs:label "product lifecycle occurrence",
+        "产品生命周期历程（product lifecycle occurrence）"@zh ;
+    rdfs:comment "某一具体产品生命周期的实现。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStageOccurrence ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycle ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-arr-lif:LifecycleOccurrence ;
+    skos:definition "realization of the lifecycle of a specific product" .
+
+fibo-fbc-pas-fpas:ThirdPartyAgent a owl:Class ;
+    rdfs:label "third-party agent",
+        "第三方代理人（third-party agent）"@zh ;
+    rdfs:comment "经许可执行具有法律约束力职能、并经合法授权代表另一方行事的任何服务提供商。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:LegalAgent,
+        fibo-fnd-law-lcap:Licensee,
+        cmns-org:ServiceProvider ;
+    skos:definition "any service provider that is licensed to perform a legally binding function and has been legally empowered to act on behalf of another party" ;
+    cmns-av:adaptedFrom "17 CFR 45.1, Definitions - see the definition of agent" ;
+    cmns-av:usageNote "Note that third-party agent is defined as a service provider (organization) acting in an agency capacity, such as a law firm, accountancy, or investment bank. This is distinct from the concept of an individual (licensed agent), for example one who works for a broker-dealer, that is a registered agent licensed to sell securities." .
+
+fibo-fbc-pas-fpas:TradeLifecycleOccurrence a owl:Class ;
+    rdfs:label "trade lifecycle occurrence",
+        "交易生命周期历程（trade lifecycle occurrence）"@zh ;
+    rdfs:comment "某一具体交易生命周期的实现。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycle ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence ],
+        fibo-fnd-arr-lif:LifecycleOccurrence ;
+    skos:definition "realization of the lifecycle for a specific trade" .
+
+fibo-fbc-pas-fpas:Trader a owl:Class ;
+    rdfs:label "trader",
+        "交易员（trader）"@zh ;
+    rdfs:comment "代表客户或金融服务提供商在任何金融市场进行金融资产转让的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
+                    owl:someValuesFrom fibo-fnd-law-lcap:ContractualCapability ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:facilitates ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
+        cmns-org:ServiceProvider ;
+    skos:definition "party that engages in the transfer of financial assets in any financial market on behalf of a client or the financial services provider" .
+
+fibo-fbc-pas-fpas:UniqueTransactionIdentifier a owl:Class ;
+    rdfs:label "unique transaction identifier",
+        "唯一交易标识符（unique transaction identifier）"@zh ;
+    rdfs:comment "在交易相关各方或团体认为有用并达成一致时唯一标识一笔金融交易的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:hasGeneratingEntity ;
+            owl:someValuesFrom cmns-org:LegalEntity ],
+        fibo-fbc-pas-fpas:TradeIdentifier ;
+    skos:definition "sequence of characters identifying a financial transaction uniquely whenever useful and agreed by the parties or community involved in the transaction" ;
+    cmns-av:abbreviation "UTI" ;
+    cmns-av:adaptedFrom "Harmonization of the Unique Transaction Identifier - Technical Guidance, 20 Feb 2017, described in https://www.bis.org/cpmi/publ/d158.pdf",
+        "ISO 23897:2020, Financial services - Unique transaction identifier (UTI)" ;
+    cmns-av:explanatoryNote "In particular, a UTI will help to ensure the consistent aggregation of OTC derivatives and other securities transactions by minimising the likelihood that the same transaction will be counted more than once (for instance, because it is reported by more than one counterparty to a transaction, or to more than one trade repository (TR))." .
+
+fibo-fbc-pas-fpas:WeightedBasketConstituent a owl:Class ;
+    rdfs:label "weighted basket constituent",
+        "加权篮子成分（weighted basket constituent）"@zh ;
+    rdfs:comment "其相对于其他篮子成分的重要性为已知的篮子组成部分。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-fnd-utl-alx:hasWeight ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fbc-pas-fpas:BasketConstituent ;
+    skos:definition "component of a basket whose relative importance with respect to other basket constituents is known" .
+
+fibo-fbc-pas-fpas:exposesIn a owl:ObjectProperty ;
+    rdfs:label "exposes in",
+        "暴露于（exposes in）"@zh ;
+    rdfs:comment "指明风险暴露发生的情势。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:Exposure ;
+    rdfs:range fibo-fbc-pas-fpas:ExposureSituation ;
+    rdfs:subPropertyOf cmns-pts:undergoes ;
+    skos:definition "indicates the state of affairs in which exposure occurs" .
+
+fibo-fbc-pas-fpas:hasExposedParty a owl:ObjectProperty ;
+    rdfs:label "has exposed party",
+        "具有风险暴露方（has exposed party）"@zh ;
+    rdfs:comment "指明承受影响或风险的一方。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:ExposureSituation ;
+    rdfs:range fibo-fbc-pas-fpas:ExposureBearer ;
+    rdfs:subPropertyOf cmns-pts:hasActor ;
+    owl:inverseOf fibo-fbc-pas-fpas:isExposedPartyIn ;
+    skos:definition "indicates the party subject to influence or risk in" .
+
+fibo-fbc-pas-fpas:hasExposureTo a owl:ObjectProperty ;
+    rdfs:label "has exposure to",
+        "暴露于……的风险（has exposure to）"@zh ;
+    rdfs:comment "涉及来自……的影响或风险。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:ExposureSituation ;
+    rdfs:range fibo-fbc-pas-fpas:Exposure ;
+    rdfs:subPropertyOf cmns-pts:hasUndergoer ;
+    owl:inverseOf fibo-fbc-pas-fpas:exposesIn ;
+    skos:definition "involves influence or risk from" .
+
+fibo-fbc-pas-fpas:hasSelectingParty a owl:ObjectProperty ;
+    rdfs:label "has selecting party",
+        "具有挑选方（has selecting party）"@zh ;
+    rdfs:comment "指明负责确定篮子成分的个人或组织。"@zh ;
+    rdfs:range cmns-pts:Party ;
+    rdfs:subPropertyOf cmns-pts:hasParty ;
+    skos:definition "indicates the person(s) or organization(s) responsible for determining the contents of a basket" .
+
+fibo-fbc-pas-fpas:hasSelectionCriteria a owl:DatatypeProperty ;
+    rdfs:label "has selection criteria",
+        "具有挑选标准（has selection criteria）"@zh ;
+    rdfs:comment "描述用于确定集合成员构成的方法或程序。"@zh ;
+    rdfs:domain cmns-col:Collection ;
+    rdfs:subPropertyOf cmns-txt:hasTextValue ;
+    skos:definition "describes the methodology or program used to determine the membership of a collection" .
+
+fibo-fbc-pas-fpas:hasSettlementDate a owl:ObjectProperty ;
+    rdfs:label "has settlement date",
+        "具有结算日（has settlement date）"@zh ;
+    rdfs:comment "指明已执行订单或交易必须完成结算的日期。"@zh ;
+    rdfs:range fibo-fnd-dt-fd:CalculatedDate ;
+    rdfs:subPropertyOf cmns-dt:hasEndDate ;
+    skos:definition "indicates the date by which an executed order or transaction must be settled" ;
+    cmns-av:explanatoryNote "Settlement might involve either a buyer paying in cash or a seller delivering the relevant instrument(s) and receiving the proceeds as specified by the terms of a given transaction." .
+
+fibo-fbc-pas-fpas:isEmbodiedIn a owl:ObjectProperty ;
+    rdfs:label "is embodied in",
+        "体现于（is embodied in）"@zh ;
+    rdfs:comment "标识某事物在某一情境中的表现形式或有形载体。"@zh ;
+    owl:inverseOf fibo-fnd-rel-rel:embodies ;
+    skos:definition "identifies the representation or tangible form of something in some context" .
+
+fibo-fbc-pas-fpas:isExposedTo a owl:ObjectProperty ;
+    rdfs:label "is exposed to",
+        "暴露于（is exposed to）"@zh ;
+    rdfs:comment "承受来自……的影响或风险。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:ExposureBearer ;
+    rdfs:range fibo-fbc-pas-fpas:Exposure ;
+    rdfs:subPropertyOf cmns-pts:actsOn ;
+    owl:inverseOf fibo-fbc-pas-fpas:isExposureOf ;
+    skos:definition "is subject to influence or risk from" .
+
+fibo-fbc-pas-fpas:isExposureOf a owl:ObjectProperty ;
+    rdfs:label "is exposure of",
+        "是……的风险暴露（is exposure of）"@zh ;
+    rdfs:comment "是由……承担的影响或风险。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:Exposure ;
+    rdfs:range fibo-fbc-pas-fpas:ExposureBearer ;
+    rdfs:subPropertyOf cmns-pts:isAffectedBy ;
+    skos:definition "is the influence or risk borne by" .
+
+fibo-fbc-pas-fpas:isFacilitatedBy a owl:ObjectProperty ;
+    rdfs:label "is facilitated by",
+        "由……促进（is facilitated by）"@zh ;
+    rdfs:comment "标识在某一情境中促成某一事件、交易、对话或其他事物的人或事物。"@zh ;
+    rdfs:subPropertyOf cmns-pts:hasActiveParty ;
+    owl:inverseOf fibo-fbc-pas-fpas:facilitates ;
+    skos:definition "identifies someone or something that expedites some event, transaction, conversation or something else in some context" .
+
+fibo-fbc-pas-fpas:isOfferingOf a owl:ObjectProperty ;
+    rdfs:label "is offering of",
+        "是……的要约（is offering of）"@zh ;
+    rdfs:comment "将要约与作为要约标的的一个或多个事物关联起来。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:Offering ;
+    skos:definition "relates an offering to one or things that are the subject of the offer" .
+
+fibo-fbc-pas-fpas:Basket a owl:Class ;
+    rdfs:label "basket",
+        "篮子（basket）"@zh ;
+    rdfs:comment "可在某市场买卖的商品、服务或其他事物（如金融合约）的集合。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-fbc-pas-fpas:hasSelectionCriteria ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:BasketConstituent ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:Party ;
+            owl:onProperty fibo-fbc-pas-fpas:hasSelectingParty ],
+        cmns-col:Collection ;
+    skos:definition "collection of goods, services, or other things (e.g., financial contracts) that can be purchased and sold in some marketplace" ;
+    cmns-av:explanatoryNote "A basket may be associated with a specific market sector, and may be delineated for the purposes of statistical analysis, such as for calculating CPI. According to the US Bureau of Labor Statistics (BLS), with respect to the CPI, a market basket is a package of goods and services that consumers purchase for day-to-day living. The weight of each item is based on the amount of expenditure reported by a sample of households.",
+        "From a securities perspective, a basket is a collection of products or securities that are designated to mimic the performance of a market. For investors, the market basket is the principal idea behind index funds, which are essentially a broad sample of stocks, bonds or other securities in the market; this provides investors with a benchmark against which to compare their investment returns." .
+
+fibo-fbc-pas-fpas:BasketConstituent a owl:Class ;
+    rdfs:label "basket constituent",
+        "篮子成分（basket constituent）"@zh ;
+    rdfs:comment "篮子的组成部分。"@zh ;
+    rdfs:subClassOf cmns-col:Constituent ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty cmns-col:isConstituentOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Basket ] ;
+    skos:definition "component of a basket" .
+
+fibo-fbc-pas-fpas:Catalog a owl:Class ;
+    rdfs:label "catalog",
+        "产品目录（catalog）"@zh ;
+    rdfs:comment "列有可供销售产品及其描述、可能还包括价格的出版物。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-id:Identifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:describes ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        fibo-be-fct-pub:Publication ;
+    skos:definition "publication including a list of products available for sale with their descriptions and possibly prices" .
+
+fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence a owl:Class ;
+    rdfs:label "contract lifecycle event occurrence",
+        "合同生命周期事件发生（contract lifecycle event occurrence）"@zh ;
+    rdfs:comment "特定合同生命周期某一阶段中事件的实际发生。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStageOccurrence ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:ContractLifecycleEvent ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleEvent ],
+        fibo-fnd-arr-lif:LifecycleEventOccurrence ;
+    skos:definition "actual occurrence of an event during a specific stage of a specific contract lifecycle" .
+
+fibo-fbc-pas-fpas:ContractLifecycleStageOccurrence a owl:Class ;
+    rdfs:label "contract lifecycle stage occurrence",
+        "合同生命周期阶段历程（contract lifecycle stage occurrence）"@zh ;
+    rdfs:comment "某一具体合同生命周期历程中某一阶段从开始到结束的实现。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:ContractLifecycleStage ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleOccurrence ],
+        fibo-fnd-arr-lif:LifecycleStageOccurrence ;
+    skos:definition "realization, from start to finish of a phase in an occurrence of a specific contract lifecycle" .
+
+fibo-fbc-pas-fpas:FinancialService a owl:Class ;
+    rdfs:label "financial service",
+        "金融服务（financial service）"@zh ;
+    rdfs:comment "由银行、保险公司、经纪公司、消费金融公司等金融机构向消费者和企业提供的服务。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:FinancialServiceProvider ],
+        cmns-org:Service ;
+    skos:definition "service provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies" .
+
+fibo-fbc-pas-fpas:Offeror a owl:Class ;
+    rdfs:label "offeror",
+        "要约人（offeror）"@zh ;
+    rdfs:comment "基于要约条款提议向某方（即受要约人）提供某物的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-fbc-pas-fpas:Offering ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:issues ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Offering ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that proposes to make something available to someone (i.e., an offeree) based on the terms of the offering" .
+
+fibo-fbc-pas-fpas:ProductLifecycleEventOccurrence a owl:Class ;
+    rdfs:label "product lifecycle event occurrence",
+        "产品生命周期事件发生（product lifecycle event occurrence）"@zh ;
+    rdfs:comment "特定产品生命周期某一阶段中事件的实际发生。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleEvent ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStageOccurrence ],
+        fibo-fnd-arr-lif:LifecycleEventOccurrence ;
+    skos:definition "actual occurrence of an event that happens during a specific stage of a specific product lifecycle" .
+
+fibo-fbc-pas-fpas:ProductLifecycleStageOccurrence a owl:Class ;
+    rdfs:label "product lifecycle stage occurrence",
+        "产品生命周期阶段历程（product lifecycle stage occurrence）"@zh ;
+    rdfs:comment "某一给定产品生命周期中特定阶段的实现。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleStage ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleOccurrence ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleEventOccurrence ],
+        fibo-fnd-arr-lif:LifecycleStageOccurrence ;
+    skos:definition "realization of a specific stage in the lifecycle of a given product" .
+
+fibo-fbc-pas-fpas:RegisteredAgent a owl:Class ;
+    rdfs:label "registered agent",
+        "注册代理人（registered agent）"@zh ;
+    rdfs:comment "由某方依据正式代理协议指定、代表其行事的法定代理人。"@zh ;
+    rdfs:seeAlso <http://www.sos.state.tx.us/corp/registeredagents.shtml>,
+        <https://thelawdictionary.org/agent/> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( [ a owl:Restriction ;
+                                owl:onProperty cmns-pts:isAPartyTo ;
+                                owl:someValuesFrom fibo-fbc-pas-fpas:AgencyAgreement ] [ a owl:Restriction ;
+                                owl:onProperty cmns-rga:isRecognizedIn ;
+                                owl:someValuesFrom cmns-rga:Jurisdiction ] ) ] ],
+        fibo-fbc-pas-fpas:LegalAgent,
+        fibo-fnd-agr-ctr:ContractParty ;
+    skos:definition "legal agent designated by some party to represent them and act on their behalf under a formal agency agreement" ;
+    cmns-av:explanatoryNote "Agency capacity, as specified in an agency agreement, may include power of attorney, the ability to act as an agent in certain kinds of transactions such as real estate, tax, audit or other financial or legal transactions, as a fiduciary, including as a trustee or legal guardian, for service of process, and so forth." ;
+    cmns-av:synonym "resident agent",
+        "statutory agent" .
+
+fibo-fbc-pas-fpas:TradeIdentifier a owl:Class ;
+    rdfs:label "trade identifier",
+        "交易标识符（trade identifier）"@zh ;
+    rdfs:comment "在某一情境中标识一笔交易的字符序列。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
+        cmns-id:Identifier ;
+    skos:definition "sequence of characters identifying a trade within some context" ;
+    skos:note "Note that a given trade may consist of multiple transactions, and thus there may be multiple identifiers for such transactions associated with a specific trade." .
+
+fibo-fbc-pas-fpas:facilitates a owl:ObjectProperty ;
+    rdfs:label "facilitates",
+        "促进（facilitates）"@zh ;
+    rdfs:comment "在某一事件、任务、对话或其他事物发生的情势中充当促成者。"@zh ;
+    rdfs:subPropertyOf cmns-pts:playsActivePartyIn ;
+    skos:definition "acts as an enabler in a situation in which an event, a task, a conversation or something else occurs" .
+
+fibo-fbc-pas-fpas:hasGeneratingEntity a owl:ObjectProperty ;
+    rdfs:label "has generating entity",
+        "具有生成实体（has generating entity）"@zh ;
+    rdfs:comment "指明生成某事物的法律实体。"@zh ;
+    rdfs:range cmns-org:LegalEntity ;
+    rdfs:subPropertyOf fibo-fnd-rel-rel:generates ;
+    skos:definition "specifies a legal entity that generates something" .
+
+fibo-fbc-pas-fpas:isExposedPartyIn a owl:ObjectProperty ;
+    rdfs:label "is exposed party in",
+        "在……中为风险暴露方（is exposed party in）"@zh ;
+    rdfs:comment "指明该方承担风险的情势。"@zh ;
+    rdfs:domain fibo-fbc-pas-fpas:ExposureBearer ;
+    rdfs:range fibo-fbc-pas-fpas:ExposureSituation ;
+    rdfs:subPropertyOf cmns-pts:actsIn ;
+    skos:definition "indicates the state of affairs in which the party bears the risk" .
+
+fibo-fbc-pas-fpas:relatesTo a owl:ObjectProperty ;
+    rdfs:label "relates to",
+        "关联于（relates to）"@zh ;
+    rdfs:comment "与……存在逻辑或因果联系。"@zh ;
+    skos:definition "has a logical or causal connection with" .
+
+fibo-fbc-pas-fpas:ContractLifecycle a owl:Class ;
+    rdfs:label "contract lifecycle",
+        "合同生命周期（contract lifecycle）"@zh ;
+    rdfs:comment "协议（包括但不限于信贷协议、金融工具或其他正式合同）从初始阶段到终止的生命周期。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+        fibo-fnd-arr-lif:Lifecycle ;
+    skos:definition "lifecycle of an agreement, including, but not limited to a credit agreement, financial instrument, or other formal contract, from initial stages through retirement" ;
+    cmns-av:explanatoryNote "Certain business agreements, such as partnership agreements,may involve planning, drafting/review/revision, execution and management, renewal, and possibly sunsetting phases. Financial contracts, such as loans and other instruments have specific stages and events during the execution and management phase, i.e. from the effective date of the contract through maturity and redemption." .
+
+fibo-fbc-pas-fpas:ProductLifecycleEvent a owl:Class ;
+    rdfs:label "product lifecycle event",
+        "产品生命周期事件（product lifecycle event）"@zh ;
+    rdfs:comment "在产品生命周期的一个或多个阶段中发生的事件类别。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleEvent ;
+            owl:onProperty cmns-dt:succeeds ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleEventOccurrence ;
+            owl:onProperty cmns-cls:classifies ],
+        fibo-fnd-arr-lif:LifecycleEvent ;
+    skos:definition "kind of event that occurs during one or more stages of a product lifecycle" .
+
+fibo-fbc-pas-fpas:TradeLifecycleEvent a owl:Class ;
+    rdfs:label "trade lifecycle event",
+        "交易生命周期事件（trade lifecycle event）"@zh ;
+    rdfs:comment "在交易生命周期的一个或多个阶段中发生的事件类别。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence ;
+            owl:onProperty cmns-cls:classifies ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEvent ;
+            owl:onProperty cmns-dt:succeeds ],
+        fibo-fnd-arr-lif:LifecycleEvent ;
+    skos:definition "kind of event that occurs during one or more stages of the lifecycle of a trade" .
+
+fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence a owl:Class ;
+    rdfs:label "trade lifecycle event occurrence",
+        "交易生命周期事件发生（trade lifecycle event occurrence）"@zh ;
+    rdfs:comment "特定交易生命周期某一阶段中事件的实现。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence ;
+            owl:onProperty cmns-dt:succeeds ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEvent ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-arr-lif:LifecycleEventOccurrence ;
+    skos:definition "realization of an event that happens during a specific stage of a specific trade lifecycle" .
+
+fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence a owl:Class ;
+    rdfs:label "trade lifecycle stage occurrence",
+        "交易生命周期阶段历程（trade lifecycle stage occurrence）"@zh ;
+    rdfs:comment "某一具体交易生命周期中某一阶段的实现。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleOccurrence ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleStage ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence ;
+            owl:onProperty cmns-dt:succeeds ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence ],
+        fibo-fnd-arr-lif:LifecycleStageOccurrence ;
+    skos:definition "realization of a phase in the lifecycle of a specific trade" .
+
+fibo-fbc-pas-fpas:FinancialServiceProvider a owl:Class ;
+    rdfs:label "financial service provider",
+        "金融服务提供商（financial service provider）"@zh ;
+    rdfs:comment "获许可以向消费者和/或企业提供金融服务、或依法设立以提供金融服务的功能实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-org:LegalEntity ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:provides ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:FinancialService ],
+        fibo-be-fct-fct:FunctionalBusinessEntity,
+        cmns-org:ServiceProvider ;
+    skos:definition "functional entity either licensed to provide financial services to consumers and/or businesses or established by law to provide financial services, such as a central bank" .
+
+fibo-fbc-pas-fpas:LegalAgent a owl:Class ;
+    rdfs:label "legal agent",
+        "法定代理人（legal agent）"@zh ;
+    rdfs:comment "经合法授权代表另一方行事的任何一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
+                    owl:someValuesFrom fibo-fnd-law-lcap:DelegatedLegalAuthority ] ],
+        cmns-pts:AgentRole ;
+    skos:definition "any party that has been legally empowered to act on behalf of another party" ;
+    cmns-av:adaptedFrom "17 CFR 45.1, Definitions - see the definition of agent" .
+
+fibo-fbc-pas-fpas:ProductLifecycle a owl:Class ;
+    rdfs:label "product lifecycle",
+        "产品生命周期（product lifecycle）"@zh ;
+    rdfs:comment "特定于某一产品或产品族的生命周期。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStage ],
+        fibo-fnd-arr-lif:Lifecycle ;
+    skos:definition "lifecycle specific to a product or product family" ;
+    skos:example "The product life cycle describes the period of time over which an item is developed, brought to market and eventually removed from the market. The cycle is broken into four stages: introduction, growth, maturity and decline. The idea of the product life cycle is used in marketing to decide when it is appropriate to advertise, reduce prices, explore new markets or create new packaging." .
+
+fibo-fbc-pas-fpas:TradeLifecycle a owl:Class ;
+    rdfs:label "trade lifecycle",
+        "交易生命周期（trade lifecycle）"@zh ;
+    rdfs:comment "规定交易从发起到结算之演变过程的生命周期。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
+        fibo-fnd-arr-lif:Lifecycle ;
+    skos:definition "lifecycle that defines the evolution of a trade, from initiation through settlement" ;
+    skos:example "The trade life cycle covers the period of time over which a trade is initiated, typically as a part of a broader deal, is consumated, processed and executed, is settled or closed for other reasons, and is reported. Parts of a trade lifecycle may include or overlap with the lifecycle of one or more contracts." .
+
+fibo-fnd-pas-pas:Product a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:Catalog ;
+            owl:onProperty cmns-cls:isCharacterizedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycle ;
+            owl:onProperty fibo-fnd-arr-lif:hasLifecycle ] .
+
+fibo-fbc-pas-fpas:ContractLifecycleStage a owl:Class ;
+    rdfs:label "contract lifecycle stage",
+        "合同生命周期阶段（contract lifecycle stage）"@zh ;
+    rdfs:comment "协议生命周期中的一个阶段。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycle ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleEvent ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ContractLifecycleStage ;
+            owl:onProperty cmns-dt:succeeds ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycle ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+        fibo-fnd-arr-lif:LifecycleStage ;
+    skos:definition "phase in the lifecycle of an agreement" .
+
+fibo-fbc-pas-fpas:ExposureBearer a owl:Class ;
+    rdfs:label "exposure bearer",
+        "风险暴露承担方（exposure bearer）"@zh ;
+    rdfs:comment "承受源自特定合同、工具或安排的影响或风险的一方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:isExposedTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Exposure ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:isExposedPartyIn ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ExposureSituation ],
+        cmns-pts:Actor ;
+    skos:definition "party subject to influence or risk arising from a specific contract, instrument, or arrangement" ;
+    skos:note "Note that the name given to the party at risk is dependent on the jurisdiction and nature of the risk. Different regulations use differing terminology for this party, and exposure bearer is considered more general that some synonyms." ;
+    cmns-av:synonym "exposed party",
+        "risk bearer",
+        "risk-bearing party" .
+
+fibo-fbc-pas-fpas:ExposureSituation a owl:Class ;
+    rdfs:label "exposure situation"@en,
+        "风险暴露情形（exposure situation）"@zh ;
+    rdfs:comment "某一方承受源自特定合同、工具或安排的影响或风险的情势。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:hasExposureTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Exposure ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:hasExposedParty ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ExposureBearer ],
+        cmns-pts:Situation ;
+    skos:definition "state of affairs in which some party is subject to influence or risk arising from a specific contract, instrument, or arrangement" .
+
+fibo-fbc-pas-fpas:Offering a owl:Class ;
+    rdfs:label "offering",
+        "发行（offering）"@zh ;
+    rdfs:comment "将证券提供发行的流程步骤，即通过承销使新证券发行可得。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:Offeree ;
+            owl:onProperty cmns-pts:hasPartyRole ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Offeror ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Offeror ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom owl:Thing ] ;
+    skos:definition "expression of interest in providing something to someone that is contingent upon acceptance, forbearance, or some other consideration, as might be desired by an offeree(s)" ;
+    cmns-av:explanatoryNote "The making of an offer is the first of three steps in the traditional process of forming a valid contract: an offer, an acceptance of the offer, and an exchange of consideration. (Consideration is the act of doing something or promising to do something that a person is not legally required to do, or the forbearance or the promise to forbear from doing something that he or she has the legal right to do.)" ;
+    cmns-av:usageNote "An offering may or may not be considered a 'state of affairs' or situation, depending on the circumstances. In some cases such as a prospectus or other offering in the context of financial services, an offering may also be classified as a situation. Users may choose to model an individual offering as both an offering and situation, depending on the circumstances, in other words." .
+
+fibo-fbc-pas-fpas:ProductLifecycleStage a owl:Class ;
+    rdfs:label "product lifecycle stage",
+        "产品生命周期阶段（product lifecycle stage）"@zh ;
+    rdfs:comment "产品生命周期中的一个阶段。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycle ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycle ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleEvent ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleStage ;
+            owl:onProperty cmns-dt:succeeds ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        fibo-fnd-arr-lif:LifecycleStage ;
+    skos:definition "phase in a product lifecycle" ;
+    skos:example "research and development phase of a product lifecycle or the introduction phase in a marketing lifecycle, growth stage in an economic lifecycle for a product" .
+
+fibo-fbc-pas-fpas:Trade a owl:Class ;
+    rdfs:label "trade",
+        "交易（trade）"@zh ;
+    rdfs:comment "实现参与自愿买卖商品和服务行为的各方之间协议的情势。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:isEmbodiedIn ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:Trader ;
+            owl:onProperty fibo-fbc-pas-fpas:isFacilitatedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Buyer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasSeller ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Seller ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycle ;
+            owl:onProperty cmns-cls:isCharacterizedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:involves ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-pas-pas:Good cmns-org:Service fibo-fnd-agr-ctr:Contract ) ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:Trade ;
+            owl:onProperty cmns-dt:succeeds ],
+        cmns-pts:Situation ;
+    skos:definition "situation that realizes an agreement between parties participating in a voluntary action of buying and selling goods and services" ;
+    cmns-av:adaptedFrom "Deutsche Bank Presentation on the Lifecycle of a Trade, available at http://www.slideshare.net/ahaline/23512555-tradelifecycle" ;
+    cmns-av:explanatoryNote "The advent of money as a medium of exchange has allowed trade to be conducted in a manner that is much simpler and effective compared to earlier forms of trade, such as bartering. In financial markets, trading also can mean performing a transaction that involves the selling and purchasing of a security.",
+        "The seller must deliver the commodity sold to the buyer; the buyer must pay the agreed purchase price, which could be in the form of other goods or services, on the agreed date.",
+        "Trading activities typically include (a) regularly underwriting or dealing in securities; interest rate, foreign exchange rate, commodity, equity, and credit derivative contracts; other financial instruments; and other assets for resale, (b) acquiring or taking positions in such items principally for the purpose of selling in the near term or otherwise with the intent to resell in order to profit from short-term price movements, and (c) acquiring or taking positions in such items as an accommodation to customers or for other trading purposes. (Source: Instructions for Preparation of Consolidated Reports of Condition and Income (FFIEC 031 and 041), Schedule RC-D - Trading Assets and Liabilities, 2013." .
+
+fibo-fbc-pas-fpas:ContractLifecycleEvent a owl:Class ;
+    rdfs:label "contract lifecycle event",
+        "合同生命周期事件（contract lifecycle event）"@zh ;
+    rdfs:comment "在协议生命周期的一个或多个阶段中发生的事件类别。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence ;
+            owl:onProperty cmns-cls:classifies ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ContractLifecycleEvent ;
+            owl:onProperty cmns-dt:succeeds ],
+        fibo-fnd-arr-lif:LifecycleEvent ;
+    skos:definition "kind of event that occurs during one or more stages of the lifecycle of an agreement" ;
+    skos:example "a call notification or coupon payment as a part of a bond lifecycle" .
+
+fibo-fbc-pas-fpas:Exposure a owl:Class ;
+    rdfs:label "exposure",
+        "风险暴露（exposure）"@zh ;
+    rdfs:comment "个人或组织失去保护、面临损害、危险、损失风险或不确定性的状态。"@zh ;
+    rdfs:subClassOf cmns-pts:Undergoer ;
+    skos:definition "means by which an individual or organization is unprotected and open to damage, danger, risk of suffering a loss, or uncertainty" ;
+    skos:example "Examples include financial exposure, credit exposure, legal exposure, credit rating exposure, reputational exposure, and so forth." .
+
+cmns-dt:succeeds a owl:ObjectProperty ;
+    rdfs:subPropertyOf fibo-fbc-pas-fpas:relatesTo .
+
+fibo-fbc-pas-fpas:TradeLifecycleStage a owl:Class ;
+    rdfs:label "trade lifecycle stage",
+        "交易生命周期阶段（trade lifecycle stage）"@zh ;
+    rdfs:comment "交易生命周期中的一个阶段。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleEvent ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycle ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycle ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleStage ;
+            owl:onProperty cmns-dt:succeeds ],
+        fibo-fnd-arr-lif:LifecycleStage ;
+    skos:definition "phase in the lifecycle of a trade" .
+

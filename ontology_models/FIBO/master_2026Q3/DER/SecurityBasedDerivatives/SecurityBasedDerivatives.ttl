@@ -1,0 +1,194 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-der-drc-bsc: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/> .
+@prefix fibo-der-drc-swp: <https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/> .
+@prefix fibo-der-sbd-sbd: <https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ind-ind: <https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/> .
+@prefix fibo-ind-mkt-bas: <https://spec.edmcouncil.org/fibo/ontology/IND/MarketIndices/BasketIndices/> .
+@prefix fibo-sec-dbt-dbti: <https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/> .
+@prefix fibo-sec-eq-eq: <https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/> .
+@prefix fibo-sec-sec-bsk: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Baskets/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+fibo-der-sbd-sbd: a owl:Ontology ;
+    rdfs:label "Security-Based Derivatives Ontology",
+        "证券类衍生品本体（Security-Based Derivatives Ontology）"@zh ;
+    dcterms:abstract "This ontology defines common concepts for derivatives based on securities as their underliers, including those based on indices or baskets of these assets." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义以单个证券或证券组合为标的的衍生品。"@zh ;
+    owl:imports fibo-der-drc-bsc:,
+        fibo-der-drc-swp:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ind-ind:,
+        fibo-ind-mkt-bas:,
+        fibo-sec-dbt-dbti:,
+        fibo-sec-eq-eq:,
+        fibo-sec-sec-bsk:,
+        cmns-av:,
+        cmns-col:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/DER/20251201/SecurityBasedDerivatives/SecurityBasedDerivatives/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/DER/20201201/SecurityBasedDerivatives/SecurityBasedDerivatives.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary, to move the definition of an underlier and the related property, has underlier, to financial instruments so that these concepts are also available for use in relation to pool-backed securities.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230201/SecurityBasedDerivatives/SecurityBasedDerivatives.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20230301/SecurityBasedDerivatives/SecurityBasedDerivatives.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240101/SecurityBasedDerivatives/SecurityBasedDerivatives.rdf version of this ontology was modified to augment the concept of a basket of debt instruments with several variants (SEC-181).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20240301/SecurityBasedDerivatives/SecurityBasedDerivatives.rdf version of this ontology was modified to simplify and refine definitions related to underliers (DER-112).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250301/SecurityBasedDerivatives/SecurityBasedDerivatives.rdf version of the ontology was modified to replace hasConstituent with hasMember for better semantic consistency (FND-396).",
+        "The https://spec.edmcouncil.org/fibo/ontology/DER/20250701/SecurityBasedDerivatives/SecurityBasedDerivatives.rdf version of the ontology was modified to eliminate long-time deprecated concepts (FND-399)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-der-sbd-sbd:CapitalizedLeaseObligationDebtBasket a owl:Class ;
+    rdfs:label "capitalized lease obligation debt basket"@en,
+        "资本化租赁债务篮子（capitalized lease obligation debt basket）"@zh ;
+    rdfs:comment "成分为赋予承租人临时使用资产权利、在会计上视为资产所有权之合同的债务工具篮子。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:allValuesFrom fibo-fbc-dae-dbt:Lease ;
+                    owl:onProperty cmns-col:comprises ] ],
+        fibo-der-sbd-sbd:BasketOfDebtInstruments ;
+    skos:definition "basket of debt instruments whose constituents are contracts entitling a renter the temporary use of an asset and, in accounting terms, has asset ownership characteristics"@en ;
+    cmns-av:explanatoryNote "A capitalized lease obligation basket is increasingly broadly drafted to include indebtedness incurred to finance the purchase, improvement, repair, renewal etc. of property (including the purchase of stock of a person owning such property)."@en .
+
+fibo-der-sbd-sbd:ContributionDebtBasket a owl:Class ;
+    rdfs:label "contribution debt basket"@en,
+        "出资债务篮子（contribution debt basket）"@zh ;
+    rdfs:comment "允许公司发生等于（或在美国顶级发起人交易中不超过）某一数额债务的债务工具篮子。"@zh ;
+    rdfs:subClassOf fibo-der-sbd-sbd:BasketOfDebtInstruments ;
+    skos:definition "basket of debt instruments that allows a company to incur an amount of indebtedness that is equal to (or in top tier sponsor transactions in the U.S., up to two times) the amount of equity contributed to the group"@en ;
+    cmns-av:explanatoryNote "A non-guarantor debt basket is often also permitted to be secured by assets of a subsidiary other than the issuer/borrower or guarantors."@en,
+        "In U.S. law, a non-guarantor debt basket is a shared basket in an amount not to exceed the greater of $150,000,000 and 20% of Consolidated EBITDA for the most recently ended Test Period at any time outstanding that may be used for (A) the incurrence of certain Indebtedness by Restricted Subsidiaries that are not Loan Parties under Sections 6.01(a)(xii), 6.01(a)(xix) and 6.01(a)(xx) and (B) Secured Cash Management Obligations of any Restricted Subsidiary that is not a Loan Party."@en .
+
+fibo-der-sbd-sbd:DebtInstrumentDerivative a owl:Class ;
+    rdfs:label "debt instrument derivative",
+        "债务工具衍生品（debt instrument derivative）"@zh ;
+    rdfs:comment "标的为债务类可观察量的证券类衍生品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-der-sbd-sbd:BasketOfDebtInstruments fibo-sec-dbt-dbti:TradableDebtInstrument fibo-ind-mkt-bas:CreditIndex fibo-ind-mkt-bas:BasketOfCreditRisks ) ] ] ],
+        fibo-der-sbd-sbd:SecurityBasedDerivative ;
+    skos:definition "security-based derivative whose underlier is a debt observable" .
+
+fibo-der-sbd-sbd:EquityDerivative a owl:Class ;
+    rdfs:label "equity derivative",
+        "股票衍生品（equity derivative）"@zh ;
+    rdfs:comment "标的基于股票（如个股、股票篮子或指数）或其现金流的证券类衍生品。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-fbc-fi-fi:EquityInstrument fibo-ind-mkt-bas:EquityIndex ) ] ] ],
+        fibo-der-sbd-sbd:SecurityBasedDerivative ;
+    skos:definition "security-based derivative whose underlier is based on equities (e.g. shares, basket of equities or index) or their cashflow(s)" .
+
+fibo-der-sbd-sbd:GeneralDebtBasket a owl:Class ;
+    rdfs:label "general debt basket"@en,
+        "一般债务篮子（general debt basket）"@zh ;
+    rdfs:comment "为潜在融资提供额外额度、且不要求所得款项用于特定用途的债务工具篮子。"@zh ;
+    rdfs:subClassOf fibo-der-sbd-sbd:BasketOfDebtInstruments ;
+    skos:definition "basket of debt instruments that provides additional capacity for potential funding and does not require the proceeds to be used for any particular purpose"@en ;
+    cmns-av:explanatoryNote "The general debt basket has increasingly become a basket for additional secured debt. Lenders providing funding to companies need to carefully consider whether any previous debt incurred by the company using this basket has reduced the available capacity."@en .
+
+fibo-der-sbd-sbd:IncrementalFacilityDebtBasket a owl:Class ;
+    rdfs:label "incremental facility debt basket"@en,
+        "增量额度债务篮子（incremental facility debt basket）"@zh ;
+    rdfs:comment "成分为可扩展额度的信贷额度篮子，允许公司借入额外的定期贷款或循环信用额度。"@zh ;
+    rdfs:subClassOf fibo-der-sbd-sbd:CreditFacilityDebtBasket ;
+    skos:definition "basket of credit facilities whose constituents are extensible, allowing companies to borrow an additional term loan or revolving credit facility (or increase the commitments applicable thereto) under the same credit agreement subject to certain parameters"@en ;
+    cmns-av:explanatoryNote "The incremental debt basket is available to borrowers and guarantors only; it cannot be used by non-guarantor entities to raise indebtedness. The size of the incremental debt basket varies depending on the size and creditworthiness of the credit group. The principle of a basket consists of allowing the borrower, up to a maximum determined amount, to make restricted payments, disposals or investments, or take on incremental debt. Commonly, a basket is expressed as subject to restrictions based on a fixed ('hard cap') amount (e.g., may not exceed EUR 5,000,000)."@en ;
+    cmns-av:synonym "builder basket"@en .
+
+fibo-der-sbd-sbd:LocalLinesOfCreditDebtBasket a owl:Class ;
+    rdfs:label "local lines of credit debt basket"@en,
+        "本地信用额度债务篮子（local lines of credit debt basket）"@zh ;
+    rdfs:comment "对跨国经营公司可能有意义的债务工具篮子，通常允许非担保人子公司发生债务。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:allValuesFrom fibo-fbc-dae-dbt:RevolvingLineOfCredit ;
+                    owl:onProperty cmns-col:comprises ] ],
+        fibo-der-sbd-sbd:BasketOfDebtInstruments ;
+    skos:definition "basket of debt instruments that may be relevant for companies with international operations, often permitting debt to be incurred by a non-guarantor restricted subsidiary"@en .
+
+fibo-der-sbd-sbd:Non-GuarantorDebtBasket a owl:Class ;
+    rdfs:label "non-guarantor debt basket"@en,
+        "非担保人债务篮子（non-guarantor debt basket）"@zh ;
+    rdfs:comment "包含允许集团内未参与贷款担保的特定子公司发生债务之条款的债务工具篮子。"@zh ;
+    rdfs:subClassOf fibo-der-sbd-sbd:BasketOfDebtInstruments ;
+    skos:definition "basket of debt instruments that include a provision allowing certain subsidiaries within a corporate group, which are not part of the loan guarantee, to incur a specified amount of indebtedness"@en ;
+    cmns-av:explanatoryNote "A non-guarantor debt basket is often also permitted to be secured by assets of a subsidiary other than the issuer/borrower or guarantors."@en,
+        "In U.S. law, a non-guarantor debt basket is a shared basket in an amount not to exceed the greater of $150,000,000 and 20% of Consolidated EBITDA for the most recently ended Test Period at any time outstanding that may be used for (A) the incurrence of certain Indebtedness by Restricted Subsidiaries that are not Loan Parties under Sections 6.01(a)(xii), 6.01(a)(xix) and 6.01(a)(xx) and (B) Secured Cash Management Obligations of any Restricted Subsidiary that is not a Loan Party."@en .
+
+fibo-der-sbd-sbd:RatioDebtBasket a owl:Class ;
+    rdfs:label "ratio debt basket"@en,
+        "比率债务篮子（ratio debt basket）"@zh ;
+    rdfs:comment "成分基于以总债务（而非仅有担保债务）计算的杠杆率确定的债务工具篮子。"@zh ;
+    rdfs:subClassOf fibo-der-sbd-sbd:BasketOfDebtInstruments ;
+    skos:definition "basket of debt instruments whose constituents are specified based on a leverage ratio based on total debt rather than only secured debt"@en ;
+    cmns-av:explanatoryNote "The ratio basket provides different ratio tests depending on the type of indebtedness being incurred (for example, first lien leverage ratio in respect of first lien indebtedness, senior secured leverage ratio in respect of indebtedness secured by a junior lien and a total net leverage ratio or interest coverage ratio in respect of unsecured indebtedness). A ratio basket would typically allow the borrower to incur debt secured on a senior secured basis subject to a maximum senior secured leverage ratio and unsecured debt subject to a maximum total leverage ratio."@en .
+
+fibo-der-sbd-sbd:CreditFacilityDebtBasket a owl:Class ;
+    rdfs:label "credit facility debt basket"@en,
+        "信贷额度债务篮子（credit facility debt basket）"@zh ;
+    rdfs:comment "成分为允许借款人在较长时期内分期提取资金之信贷协议的证券篮子。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:allValuesFrom fibo-fbc-dae-dbt:CreditFacility ;
+                    owl:onProperty cmns-col:comprises ] ],
+        fibo-der-sbd-sbd:BasketOfDebtInstruments ;
+    skos:definition "basket of securities whose constituents are credit agreements that allow the borrower to periodically take out money over an extended period of time rather than reapplying for a loan every time they need funds"@en ;
+    cmns-av:explanatoryNote "The credit facility debt basket consists of a number of credit facilities including revolving loans/line of credit, committed facilities, letters of credit and most retail credit accounts. The first port of call for issuers is the credit facility debt basket. In addition to the fixed dollar (or euro) amounts, credit facility debt baskets in senior secured notes and indentures typically provide for a grower component that is the greater of the fixed dollar/euro amount and a percentage of total assets, total tangible assets or EBITDA."@en .
+
+fibo-der-sbd-sbd:SecurityBasedDerivative a owl:Class ;
+    rdfs:label "security-based derivative"@en,
+        "证券类衍生品（security-based derivative）"@zh ;
+    rdfs:comment "标的基于证券（包括证券集合和基于证券的指数）的衍生工具。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-sec-sec-bsk:BasketOfSecurities fibo-fbc-fi-fi:Security fibo-ind-mkt-bas:ReferenceIndex ) ] ] ],
+        fibo-fbc-fi-fi:DerivativeInstrument ;
+    skos:definition "derivative instrument whose underlier is based on a security, including collections of securities and indices based on securities" .
+
+fibo-der-sbd-sbd:BasketOfDebtInstruments a owl:Class ;
+    rdfs:label "basket of debt instruments"@en,
+        "债务工具篮子（basket of debt instruments）"@zh ;
+    rdfs:comment "成分为债务工具的证券篮子。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:allValuesFrom fibo-fbc-fi-fi:DebtInstrument ;
+                    owl:onProperty cmns-col:comprises ] ],
+        fibo-sec-sec-bsk:BasketOfSecurities ;
+    skos:definition "basket of securities whose constituents are debt instruments"@en .
+

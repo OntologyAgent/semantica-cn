@@ -1,0 +1,455 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-bauth: <https://www.omg.org/spec/Commons/BusinessAuthorizations/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-le-lp: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/> .
+@prefix fibo-be-oac-exec: <https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/Executives/> .
+@prefix fibo-fnd-aap-ppl: <https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/People/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-law-cor: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-ge-ge: a owl:Ontology ;
+    rdfs:label "Government Entities Ontology",
+        "政府实体本体（Government Entities Ontology）"@zh ;
+    dcterms:abstract "This ontology defines the fundamental concepts for representing polities and government entities and their relations." ;
+    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义政府、政体（polity）、法域（jurisdiction）及政府实体的核心概念，是各区域政府实体本体的共同基础。"@zh ;
+    owl:imports fibo-be-fct-fct:,
+        fibo-be-le-lp:,
+        fibo-be-oac-exec:,
+        fibo-fnd-aap-ppl:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-law-cor:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-bauth:,
+        cmns-col:,
+        cmns-loc:,
+        cmns-org:,
+        cmns-rga:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20251201/GovernmentEntities/GovernmentEntities/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/BE/20160801/GovernmentEntities/GovernmentEntities.rdf version of this ontology was added to Business Entities, per the issue resolutions identified in the FIBO BE 1.1 RTF report.",
+        "The http://www.omg.org/spec/EDMC-FIBO/BE/20160801/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.2 RTF report.",
+        "The http://www.omg.org/spec/EDMC-FIBO/BE/20170201/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified per the FIBO 2.0 RFC to integrate LCC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180201/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to to rationalize natural person and legally capable person in a new concept, competent natural person, simplify / merge the legal person and formal organization class hierarchies, and revise certain definitions, such as for supranational entity, to correspond to ISO definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20181201/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to reflect the move of hasObjective to FND to enable higher level reuse and eliminate a reasoning error.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20190501/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to eliminate duplication of concepts in LCC and merge the countries ontology with locations.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200301/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to replace isAppointedBy with isDesignatedBy due to a name change in Relations, and to add a class for devolved government.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20200701/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to eliminate references to external dictionary sites that no longer resolve, revise circular or ambiguous definitions, and to eliminate 'hasPartialSovereigntyOver' in favor of 'hasSharedSovereigntyOver'.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210201/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20211201/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to address text formatting hygiene issues and to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230301/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to augment the definition of instrumentality with additional notes.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230901/GovernmentEntities/GovernmentEntities.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 and loosened restrictions causing reasoning and representational challenges (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20240101/GovernmentEntities/GovernmentEntities.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/GovernmentEntities.rdf version of the ontology was modified to replace hasConstituent with hasMember for better semantic consistency (FND-396) and to further reflect changes made in Commons v1.2 (FBC-338).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20251001/GovernmentEntities/GovernmentEntities.rdf version of the ontology was modified to remove deprecations that reflect changes made in Commons v1.2 (FBC-399) and to use new constructs from the Commons 1.3 Business Authorizations ontology (FND-401)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+        "Copyright (c) 2016-2025 Object Management Group, Inc." .
+
+fibo-be-ge-ge:DevolvedGovernment a owl:Class ;
+    rdfs:label "devolved government",
+        "权力下放政府（devolved government）"@zh ;
+    rdfs:comment "治理次国家领土的政府及政客，其权力可能是临时的、可撤销的，最终归属于中央政府。"@zh ;
+    rdfs:subClassOf fibo-be-ge-ge:Government ;
+    skos:definition "government and the politicians that that run a subnational territory with powers that may be temporary and reversible, ultimately residing with the central government" .
+
+fibo-be-ge-ge:ExecutiveBranch a owl:Class ;
+    rdfs:label "executive branch",
+        "行政分支（executive branch）"@zh ;
+    rdfs:comment "经授权负责政府日常行政管理的政府部门分支。"@zh ;
+    rdfs:subClassOf fibo-be-ge-ge:BranchOfGovernment ;
+    skos:definition "the branch of government that is authorized and responsible for the daily administration of the government" ;
+    cmns-av:adaptedFrom "https://www.usa.gov/branches-of-government"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The executive branch executes and enforces the law." .
+
+fibo-be-ge-ge:FederatedSovereignty a owl:Class ;
+    rdfs:label "federated sovereignty",
+        "联邦主权体（federated sovereignty）"@zh ;
+    rdfs:comment "以中央（联邦）政府之下若干部分自治的州或地区的联合为特征的政体。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty fibo-be-ge-ge:hasFullSovereigntyOver ;
+                        owl:someValuesFrom cmns-loc:Country ] [ a owl:Restriction ;
+                        owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
+                        owl:someValuesFrom cmns-loc:FederalState ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+                        owl:someValuesFrom fibo-be-ge-ge:RegionalGovernment ] [ a owl:Restriction ;
+                        owl:onClass fibo-be-ge-ge:FederalGovernment ;
+                        owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ],
+        fibo-be-ge-ge:SovereignState ;
+    skos:definition "polity characterized by a union of partially self-governing states or regions under a central (federal) government" ;
+    cmns-av:explanatoryNote "The federated sovereignty is the legal entity that can incur debt for a federal government, as distinct from the Federal government." .
+
+fibo-be-ge-ge:Judiciary a owl:Class ;
+    rdfs:label "judiciary",
+        "司法分支（judiciary）"@zh ;
+    rdfs:comment "由法院系统构成的政府部门分支，以超国家、国家、联邦或地区当局之名解释和适用法律。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasPart ;
+            owl:someValuesFrom fibo-fnd-law-cor:CourtOfLaw ],
+        fibo-be-ge-ge:BranchOfGovernment ;
+    skos:definition "branch of government that comprises the system of courts that interprets and applies the law in the name of the supranational, national, federal, or regional government, depending on its jurisdiction" ;
+    cmns-av:explanatoryNote "The judiciary also provides a mechanism for the resolution of disputes. Under the doctrine of the separation of powers, the judiciary generally does not make law (that is, in a plenary fashion, which is the responsibility of the legislature) or enforce law (which is the responsibility of the executive), but rather interprets law and applies it to the facts of each case." .
+
+fibo-be-ge-ge:Legislature a owl:Class ;
+    rdfs:label "legislature",
+        "立法机关（legislature）"@zh ;
+    rdfs:comment "政治单位（通常为国家政府）的立法机构，有权制定、修改和废止公共政策。"@zh ;
+    rdfs:subClassOf fibo-be-ge-ge:BranchOfGovernment ;
+    skos:definition "the law-making body of a political unit, usually a national government, that has power to enact, amend, and repeal public policy" ;
+    cmns-av:explanatoryNote "Laws enacted by legislatures are known as legislation. Legislatures observe and steer governing actions and usually have exclusive authority to amend the budget or budgets involved in the process." .
+
+fibo-be-ge-ge:MunicipalEntity a owl:Class ;
+    rdfs:label "municipal entity",
+        "市政实体（municipal entity）"@zh ;
+    rdfs:comment "通常代表城市、镇区或其他行政区划的政体，具有法人地位和自治权力或管辖权。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:MunicipalGovernment ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasSovereigntyOver ;
+            owl:someValuesFrom cmns-loc:Municipality ],
+        fibo-be-ge-ge:Polity ;
+    skos:definition "polity that typically represents a city, township, or other administrative subdivision having corporate status and powers of self-government or jurisdiction" ;
+    cmns-av:explanatoryNote "Municipal entity in the sense of a legal entity, that is, what it is that incurs debt for a municipality, as distinct from the Municipal government. A municipal entity has a Government which sets laws applicable within the geographical area corresponding to its jurisdiction." ;
+    cmns-av:synonym "municipality" .
+
+fibo-be-ge-ge:RegionalSovereignty a owl:Class ;
+    rdfs:label "regional sovereignty",
+        "地区主权体（regional sovereignty）"@zh ;
+    rdfs:comment "对应行政区划、行政单位、行政实体或国家行政区划的法律主体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:RegionalGovernment ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        fibo-be-ge-ge:Polity ;
+    skos:definition "legal person that corresponds to an administrative division, administrative unit, administrative entity or country subdivision (or, sometimes, geopolitical division or subnational entity), that has the capacity to incur debt, issue contracts, and enter into relations with other similar entities" ;
+    skos:example "A country may be divided into provinces, which, in turn, are divided into counties, which, in turn, may be divided in whole or in part into municipalities; and so on." .
+
+fibo-be-ge-ge:SupranationalEntity a owl:Class ;
+    rdfs:label "supranational entity",
+        "超国家实体（supranational entity）"@zh ;
+    rdfs:comment "依国际法或条约建立、或在国际层面注册成立的政府或非政府实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
+            owl:someValuesFrom cmns-loc:Country ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:GovernmentBody ],
+        fibo-be-ge-ge:Polity ;
+    skos:definition "governmental or non-governmental entity that is established by international law or treaty or incorporated at an international level" ;
+    cmns-av:adaptedFrom "ISO 20275:2017, Financial services - Entity legal forms (ELF), First Edition, July 2017.",
+        "Kiljunen, Kimmo (2004). The European Constitution in the Making. Centre for European Policy Studies. pp. 21-26. ISBN 978-92-9079-493-6" ;
+    cmns-av:explanatoryNote "A supranational union is a supranational polity which lies somewhere between a confederation that is an association of states and a federation that is a state. Unlike states in a federal super-state, member states retain ultimate sovereignty, although some sovereignty is shared with, or ceded to, the supranational body." .
+
+fibo-be-ge-ge:TribalEntity a owl:Class ;
+    rdfs:label "tribal entity",
+        "部落实体（tribal entity）"@zh ;
+    rdfs:comment "代表主权部落（原住民）政府基本单位的法律实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
+            owl:someValuesFrom fibo-be-ge-ge:TribalArea ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:TribalGovernment ],
+        fibo-be-ge-ge:Polity ;
+    skos:definition "legal entity that represents fundamental unit of sovereign tribal (indigenous) government" ;
+    cmns-av:explanatoryNote "Any indigenous group or community which is recognized as having rights and obligations independent of the central government." .
+
+fibo-be-ge-ge:isElectedBy a owl:ObjectProperty ;
+    rdfs:label "is elected by",
+        "由……选举产生（is elected by）"@zh ;
+    rdfs:comment "标识通过投票选出任职的官员或政府。"@zh ;
+    owl:inverseOf fibo-be-oac-exec:elects ;
+    skos:definition "identifies an official or government chosen to hold office by voting" .
+
+fibo-fnd-aap-ppl:IdentityDocument a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-be-ge-ge:Government ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+fibo-fnd-aap-ppl:NationalIdentificationNumber a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-be-ge-ge:Government ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+
+fibo-be-ge-ge:FederalGovernment a owl:Class ;
+    rdfs:label "federal government",
+        "联邦政府（federal government）"@zh ;
+    rdfs:comment "在中央政府之下联合的各州，中央政府有别于各成员州各自的政府。"@zh ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                        owl:onClass cmns-loc:FederalCapitalArea ;
+                        owl:onProperty cmns-rga:governs ] [ a owl:Restriction ;
+                        owl:onProperty cmns-rga:governs ;
+                        owl:someValuesFrom cmns-loc:FederalState ] ) ],
+        fibo-be-ge-ge:NationalGovernment ;
+    skos:definition "union of states under a central government distinct from the individual governments of the separate states" ;
+    cmns-av:explanatoryNote "A federation is a political entity characterized by a union of partially self-governing states or regions under a central (federal) government. In a federation, the self-governing status of the component states, as well as the division of power between them and the central government, are typically constitutionally entrenched and may not be altered by a unilateral decision of either party, the states or the federal political body." .
+
+fibo-be-ge-ge:GovernmentAgency a owl:Class ;
+    rdfs:label "government agency",
+        "政府机构（government agency）"@zh ;
+    rdfs:comment "政府机器中负责某领域监督与行政的永久或半永久组织，常为受任命的委员会。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-ge-ge:GovernmentAppointee ;
+            owl:onProperty cmns-org:isManagedBy ],
+        fibo-be-ge-ge:GovernmentBody ;
+    owl:disjointWith fibo-be-ge-ge:GovernmentDepartment ;
+    skos:definition "permanent or semi-permanent organization, often an appointed commission, in the machinery of government that is responsible for the oversight and administration of specific functions" ;
+    cmns-av:explanatoryNote "There is a notable variety of agency types. Although usage differs, a government agency is normally distinct both from a department or ministry, and other types of public body established by government. The functions of an agency are normally executive in character, since different types of organizations (such as commissions) are most often constituted in an advisory role; this distinction is often blurred in practice however." .
+
+fibo-be-ge-ge:GovernmentAppointee a owl:Class ;
+    rdfs:label "government appointee",
+        "政府任命官员（government appointee）"@zh ;
+    rdfs:comment "由政府法令指定领导或以某种身份参与政府机构的个人。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass [ a owl:Restriction ;
+                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                    owl:onClass fibo-be-ge-ge:GovernmentBody ;
+                    owl:onProperty cmns-org:isDesignatedBy ] ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        fibo-be-ge-ge:GovernmentOfficial,
+        fibo-be-oac-exec:Executive ;
+    skos:definition "individual designated by government decree to lead, or participate in some capacity in a government body" .
+
+fibo-be-ge-ge:GovernmentMinister a owl:Class ;
+    rdfs:label "government minister",
+        "政府部长（government minister）"@zh ;
+    rdfs:comment "被任命或当选担任政府高级职务的行政官员。"@zh ;
+    rdfs:subClassOf fibo-be-ge-ge:GovernmentOfficial,
+        fibo-be-oac-exec:Executive ;
+    skos:definition "government official that is an executive, who is either appointed or elected to a high office in the government" ;
+    skos:example "Minister of Finance, Secretary of State, Attorney General of California" .
+
+fibo-be-ge-ge:MunicipalGovernment a owl:Class ;
+    rdfs:label "municipal government",
+        "市政府（municipal government）"@zh ;
+    rdfs:comment "城市、镇区或其他行政区划的地区政府。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom cmns-loc:Municipality ],
+        fibo-be-ge-ge:Government ;
+    skos:definition "regional government of a city, township, or other administrative subdivision" .
+
+fibo-be-ge-ge:SovereignState a owl:Class ;
+    rdfs:label "sovereign state",
+        "主权国家（sovereign state）"@zh ;
+    rdfs:comment "由对一个地理区域拥有主权的单一中央政府所代表的非物理法人实体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasFullSovereigntyOver ;
+            owl:someValuesFrom cmns-loc:Country ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:NationalGovernment ],
+        fibo-be-ge-ge:Polity ;
+    skos:definition "non-physical juridical entity that is represented by one centralized government that has sovereignty over a geographic area" ;
+    cmns-av:explanatoryNote "A legal entity that is represented by one centralized government, has a permanent population, defined territory, and the capacity to enter into relations with other sovereign states." .
+
+fibo-be-ge-ge:TribalGovernment a owl:Class ;
+    rdfs:label "tribal government",
+        "部落政府（tribal government）"@zh ;
+    rdfs:comment "代表原住民群体、对该群体拥有合法治理权（包括立法权）的政府。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-be-ge-ge:TribalArea ],
+        fibo-be-ge-ge:Government ;
+    skos:definition "government representing a group of indigenous people that has legal authority to govern those people, including authority to legislate the existence of tribal entities" .
+
+fibo-be-ge-ge:isInstrumentOf a owl:ObjectProperty ;
+    rdfs:label "is an instrument of",
+        "是……的部属单位（is an instrument of）"@zh ;
+    rdfs:comment "将某政府的部属单位关联到它所支持的政府。"@zh ;
+    rdfs:domain fibo-be-ge-ge:Instrumentality ;
+    rdfs:range fibo-be-ge-ge:Government ;
+    skos:definition "relates an instrumentality of some government to the government that it supports" .
+
+fibo-be-ge-ge:GovernmentDepartment a owl:Class ;
+    rdfs:label "government department",
+        "政府部门（government department）"@zh ;
+    rdfs:comment "负责政府公共行政某个领域的专门组织。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-ge-ge:GovernmentMinister ;
+            owl:onProperty cmns-org:isManagedBy ],
+        fibo-be-ge-ge:GovernmentBody ;
+    skos:definition "specialized organization responsible for a sector of government public administration" .
+
+fibo-be-ge-ge:GovernmentOfficial a owl:Class ;
+    rdfs:label "government official",
+        "政府官员（government official）"@zh ;
+    rdfs:comment "经选举或任命管理政府某方面事务的人。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                    owl:onClass fibo-be-ge-ge:GovernmentBody ;
+                    owl:onProperty cmns-col:isMemberOf ] ],
+        cmns-bauth:ResponsibleParty ;
+    skos:definition "person elected or appointed to administer some aspect of a government" .
+
+fibo-be-ge-ge:Instrumentality a owl:Class ;
+    rdfs:label "instrumentality",
+        "部属单位（instrumentality）"@zh ;
+    rdfs:comment "服务公共目的、与政府关系密切但不是政府机构的组织。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-law-cor:StatuteLaw ;
+            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isInstrumentOf ;
+            owl:someValuesFrom fibo-be-ge-ge:Government ],
+        fibo-be-ge-ge:GovernmentBody,
+        cmns-org:LegalEntity ;
+    skos:definition "organization that serves a public purpose and is closely tied to a government, but is not a government agency" ;
+    cmns-av:explanatoryNote "An instrumentality is a non-governmental agency that acts independently but whose obligations are backed by a government because of its role in providing a public service. Many instrumentalities are private companies, and some are chartered directly by government. Instrumentalities are subject to a unique set of laws that shape their activities. Certain organizations, such as Sallie Mae in the United States, may be considered instrumentalities from some perspectives but not others. Sallie Mae's status was changed in 2004, when it was privatized, and since that time it is no longer considered a government-sponsored enterprise (GSE)." .
+
+fibo-be-ge-ge:NationalGovernment a owl:Class ;
+    rdfs:label "national government",
+        "国家政府（national government）"@zh ;
+    rdfs:comment "治理整个国家（相对于地方政府）的政府及政客。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom cmns-loc:Country ],
+        fibo-be-ge-ge:Government ;
+    skos:definition "government and the politicians that that run a country as a whole (as opposed to local government)" .
+
+fibo-be-ge-ge:RegionalGovernment a owl:Class ;
+    rdfs:label "regional government",
+        "地区政府（regional government）"@zh ;
+    rdfs:comment "地理区域（如县、小城镇或类似社区）的行政机构。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        fibo-be-ge-ge:Government ;
+    skos:definition "administrative body for a geographic area, such as a county, smaller town, or other similar community" ;
+    cmns-av:explanatoryNote "A local government will typically only have control over their specific geographical region, and cannot pass or enforce laws that will affect a wider area. Local governments can elect officials, enact taxes, and do many other things that a national government would do, just on a smaller scale." ;
+    cmns-av:synonym "local government" .
+
+fibo-be-ge-ge:TribalArea a owl:Class ;
+    rdfs:label "tribal area",
+        "部落地区（tribal area）"@zh ;
+    rdfs:comment "由原住民群体而非主权国家或地区政府实体管辖的地理区域的指称。"@zh ;
+    rdfs:subClassOf cmns-loc:GeopoliticalEntity ;
+    skos:definition "designation for geographic region administered by a group of indigenous people rather than by a sovereign state or regional governmental entity" .
+
+fibo-be-ge-ge:hasFullSovereigntyOver a owl:ObjectProperty ;
+    rdfs:label "has full sovereignty over",
+        "对……拥有完全主权（has full sovereignty over）"@zh ;
+    rdfs:comment "将政体关联到其拥有绝对、最高且不受他者约束之统治权的地缘政治实体。"@zh ;
+    rdfs:subPropertyOf fibo-be-ge-ge:hasSovereigntyOver ;
+    skos:definition "relates a polity to a geopolitical entity where the polity has absolute, supreme and ultimate dominion and authority of a political state subject to no higher power, expressed within its territory in full self-government and in complete freedom from any outside influence" .
+
+fibo-be-ge-ge:BranchOfGovernment a owl:Class ;
+    rdfs:label "branch of government",
+        "政府部门分支（branch of government）"@zh ;
+    rdfs:comment "国家政府的分支，拥有相互独立、互不冲突的权力与职责范围。"@zh ;
+    rdfs:subClassOf fibo-be-ge-ge:GovernmentBody ;
+    skos:definition "division of the government of a state, with separate and independent powers and areas of responsibility so that the powers of one branch are not in conflict with the powers associated with the other branches" ;
+    cmns-av:adaptedFrom "https://www.usa.gov/branches-of-government"^^xsd:anyURI .
+
+fibo-be-ge-ge:hasSharedSovereigntyOver a owl:ObjectProperty ;
+    rdfs:label "has shared sovereignty over",
+        "对……拥有共享主权（has shared sovereignty over）"@zh ;
+    rdfs:comment "将政体关联到其与他者共享统治权的地缘政治实体。"@zh ;
+    rdfs:subPropertyOf fibo-be-ge-ge:hasSovereigntyOver ;
+    skos:definition "relates a polity to a geopolitical entity where the polity exercises shared dominion and authority of a political state" .
+
+fibo-be-ge-ge:hasSovereigntyOver a owl:ObjectProperty ;
+    rdfs:label "has sovereignty over",
+        "对……拥有主权（has sovereignty over）"@zh ;
+    rdfs:comment "将政体关联到其行使政治统治权的地缘政治实体。"@zh ;
+    rdfs:domain fibo-be-ge-ge:Polity ;
+    rdfs:range cmns-loc:GeopoliticalEntity ;
+    rdfs:subPropertyOf cmns-rga:governs ;
+    skos:definition "relates a polity to a geopolitical entity where the polity exercises dominion and authority of a political state" .
+
+fibo-be-ge-ge:Polity a owl:Class ;
+    rdfs:label "polity",
+        "政体（polity）"@zh ;
+    rdfs:comment "作为超国家实体、王室、国家或下级民政当局（如省、县、市）的法律主体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:Government ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasSovereigntyOver ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        fibo-be-ge-ge:GovernmentBody,
+        cmns-org:LegalPerson ;
+    skos:definition "legal person that is a supranational entity, crown, state, or subordinate civil authority, such as a province, prefecture, county, municipality, city, or district representing the people of that entity" .
+
+fibo-be-ge-ge:GovernmentBody a owl:Class ;
+    rdfs:label "government body",
+        "政府机关（government body）"@zh ;
+    rdfs:comment "作为超国家、国家、联邦、州或地方政府之机构、部属单位或其他机关的正式组织。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-le-lp:PublicPurpose ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
+        cmns-org:FormalOrganization ;
+    skos:definition "formal organization that is an agency, instrumentality, or other body of a supranational, national, federal, state, or local government, including certain multijurisdictional agencies and departments that carry out the business of government" ;
+    cmns-av:explanatoryNote "Identifying government bodies is a pre-requisite for identifying government officials. This information is needed to help ensure compliance with applicable laws relating to bribery or corruption, including the U.S. Foreign Corrupt Practices Act (FCPA), the UK Bribery Act 2010 (UKBA), the U.S. Bank Bribery Act (Bribery Act), and other anti-bribery and corruption laws in the jurisdictions where financial institutions conduct business." .
+
+fibo-be-ge-ge:isRepresentedBy a owl:ObjectProperty ;
+    rdfs:label "is represented by",
+        "由……代表（is represented by）"@zh ;
+    rdfs:comment "将治理体系关联到其选出的代表。"@zh ;
+    skos:definition "relates a system of governance to its chosen representatives" .
+
+fibo-be-ge-ge:Government a owl:Class ;
+    rdfs:label "government",
+        "政府（government）"@zh ;
+    rdfs:comment "控制国家或共同体的体系。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass [ a owl:Class ;
+                    owl:unionOf ( fibo-be-ge-ge:BranchOfGovernment fibo-be-ge-ge:GovernmentAgency fibo-be-ge-ge:GovernmentDepartment ) ] ;
+            owl:onProperty cmns-col:hasMember ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        fibo-be-fct-fct:FunctionalEntity ;
+    owl:disjointWith fibo-be-ge-ge:Instrumentality ;
+    skos:definition "system by which a state or community is controlled" ;
+    cmns-av:explanatoryNote "In the Commonwealth of Nations, the word government is also used more narrowly to refer to the collective group of people that exercises executive authority in a state. This usage is analogous to what is called an 'administration' in American English. Furthermore, especially in American English, the concepts of the state and the government may be used synonymously to refer to the person or group of people exercising authority over a politically organized territory." .
+

@@ -1,0 +1,197 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-law-lcap: <https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/> .
+@prefix fibo-fnd-oac-ctl: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Control/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-oac-ctl: a owl:Ontology ;
+    rdfs:label "Control Ontology",
+        "控制本体（Control Ontology）"@zh ;
+    dcterms:abstract "This ontology defines high-level, control-related concepts, including the distinction between de jure and de facto control, the former being derived with reference to terms in the Legal Capacity ontology." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "定义「控制」关系：控制方、被控制方与控制程度，用于公司治理与合并报表判断。"@zh ;
+    owl:imports fibo-fnd-law-lcap:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-dt:,
+        cmns-pts: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20240101/OwnershipAndControl/Control/> ;
+    skos:changeNote """The http://www.omg.org/spec/FIBO/Foundations/20130601/OwnershipAndControl/Control.owl version of the ontology was revised in advance of the September 2013 New Brunswick, NJ meeting, as follows:
+	(1) to use slash style URI/IRIss (also called 303 URIs, vs. hash style) as required to support server side processing 
+	(2) to use version-independent IRIs for all definitions internally as opposed to version-specific IRIs
+	(3) to change the file suffix from .owl to .rdf to increase usability in RDF tools
+	(4) to use 4-level abbreviations and corresponding namespace prefixes for all FIBO ontologies, reflecting a family/specification/module/ontology structure
+	(5) to incorporate changes to the specification metadata to support documentation at the family, specification, module, and ontology level, similar to the abbreviations.""",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20130801/OwnershipAndControl/Control.rdf version of the ontology was was modified per the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/OwnershipAndControl/Control.rdf version of the ontology was modified to integrate the concept of a situation, situational roles, and corresponding relations with the definition of control and eliminate minimum cardinality of 1 restrictions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200601/OwnershipAndControl/Control.rdf version of the ontology was modified to simplify control concepts and relations, complete the control patterns, and eliminate ambiguity in definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20201201/OwnershipAndControl/Control.rdf version of the ontology was modified to eliminate references to external dictionary sites that no longer resolve.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210101/OwnershipAndControl/Control.rdf version of the ontology was modified to incorporate the latest insights into how control relations should integrate with the control situation and to unwind confusion around the various properties used to represent aspects of control with respect to their domains and ranges.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210401/OwnershipAndControl/Control.rdf version of the ontology was modified to address hygiene issues with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/OwnershipAndControl/Control.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/OwnershipAndControl/Control.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/OwnershipAndControl/Control.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2024 EDM Council, Inc.",
+        "Copyright (c) 2013-2024 Object Management Group, Inc." .
+
+fibo-fnd-oac-ctl:DeFactoControl a owl:Class ;
+    rdfs:label "de facto control",
+        "事实控制（de facto control）"@zh ;
+    rdfs:comment "非正式存在但被接受的控制，虽未经正式承认。"@zh ;
+    rdfs:subClassOf fibo-fnd-oac-ctl:Control ;
+    owl:disjointWith fibo-fnd-oac-ctl:DeJureControl ;
+    skos:definition "control that exists informally and is accepted, although not formally recognized" ;
+    cmns-av:explanatoryNote "For example, de facto acquisition or change of control means the acquisition, directly or indirectly, by any person or group of persons acting jointly or in concert, of beneficial ownership of, or control or direction over, sufficient voting shares of some legal entity to permit such person or persons to exercise, or to control or direct the voting of, 50 percent or more of the total number of votes in that entity." .
+
+fibo-fnd-oac-ctl:isControlledPartyOf a owl:ObjectProperty ;
+    rdfs:label "is controlled party of",
+        "是……的受控方（is controlled party of）"@zh ;
+    rdfs:comment "标识对……具有一定权力或影响力的控制方。"@zh ;
+    rdfs:range fibo-fnd-oac-ctl:ControllingParty ;
+    rdfs:subPropertyOf cmns-pts:isDirectlyAffectedBy ;
+    skos:definition "indicates a controlling party that has some amount of authority or influence over it" .
+
+fibo-fnd-oac-ctl:isControllingPartyOf a owl:ObjectProperty ;
+    rdfs:label "is controlling party of",
+        "是……的控制方（is controlling party of）"@zh ;
+    rdfs:comment "标识控制方对其具有一定权力或影响力的事物。"@zh ;
+    rdfs:domain fibo-fnd-oac-ctl:ControllingParty ;
+    rdfs:subPropertyOf cmns-pts:directlyAffects ;
+    skos:definition "indicates something that a controlling party has some amount of authority or influence over" .
+
+fibo-fnd-rel-rel:controls a owl:ObjectProperty ;
+    rdfs:domain cmns-pts:Party ;
+    rdfs:subPropertyOf cmns-pts:playsActiveRoleThatDirectlyAffects .
+
+fibo-fnd-rel-rel:isControlledBy a owl:ObjectProperty ;
+    rdfs:range cmns-pts:Party ;
+    rdfs:subPropertyOf cmns-pts:experiencesDirectly .
+
+fibo-fnd-oac-ctl:DeJureControl a owl:Class ;
+    rdfs:label "de jure control",
+        "法律控制（de jure control）"@zh ;
+    rdfs:comment "作为法律事项存在的控制，即对某事物的正当合法控制。"@zh ;
+    rdfs:subClassOf fibo-fnd-law-lcap:LegalConstruct,
+        fibo-fnd-oac-ctl:Control ;
+    skos:definition "control that exists as a matter of law, i.e., legitimate, legal control of something" .
+
+fibo-fnd-oac-ctl:isControlledThingIn a owl:ObjectProperty ;
+    rdfs:label "is controlled thing in",
+        "在……中为受控事物（is controlled thing in）"@zh ;
+    rdfs:comment "标识某事物被控制的控制情境。"@zh ;
+    rdfs:domain fibo-fnd-oac-ctl:ControlledThing ;
+    rdfs:range fibo-fnd-oac-ctl:Control ;
+    rdfs:subPropertyOf cmns-pts:undergoes ;
+    owl:inverseOf fibo-fnd-oac-ctl:involvesControlledThing ;
+    skos:definition "indicates the context of control in which something is being controlled" .
+
+fibo-fnd-oac-ctl:isControllingPartyIn a owl:ObjectProperty ;
+    rdfs:label "is controlling party in",
+        "在……中为控制方（is controlling party in）"@zh ;
+    rdfs:comment "标识参与方扮演控制角色的控制情境。"@zh ;
+    rdfs:domain fibo-fnd-oac-ctl:ControllingParty ;
+    rdfs:range fibo-fnd-oac-ctl:Control ;
+    rdfs:subPropertyOf cmns-pts:actsIn ;
+    owl:inverseOf fibo-fnd-oac-ctl:hasPartyInControl ;
+    skos:definition "indicates the context of control in which the party plays the role of controlling something" .
+
+fibo-fnd-oac-ctl:isInitiallyControlledOn a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "is initially controlled on",
+        "首次受控于（is initially controlled on）"@zh ;
+    rdfs:comment "标识某种程度的权力或影响力首次确立的日期或日期时间。"@zh ;
+    rdfs:range cmns-dt:CombinedDateTime ;
+    rdfs:subPropertyOf cmns-dt:hasObservedDateTime ;
+    skos:definition "indicates the date or date and time that some level of authority or influence was first put in place" .
+
+fibo-fnd-oac-ctl:isPartyControlling a owl:ObjectProperty ;
+    rdfs:label "is party controlling",
+        "是控制方（is party controlling）"@zh ;
+    rdfs:comment "标识控制方对其具有一定权力或影响力的受控事物。"@zh ;
+    rdfs:domain fibo-fnd-oac-ctl:ControllingParty ;
+    rdfs:range fibo-fnd-oac-ctl:ControlledThing ;
+    rdfs:subPropertyOf cmns-pts:actsOn ;
+    owl:inverseOf fibo-fnd-oac-ctl:hasControllingParty ;
+    skos:definition "indicates something controlled that a controlling party has some amount of authority or influence over" .
+
+fibo-fnd-oac-ctl:hasControllingParty a owl:ObjectProperty ;
+    rdfs:label "has controlling party",
+        "具有控制方（has controlling party）"@zh ;
+    rdfs:comment "标识对某事物行使权力或影响力的参与方。"@zh ;
+    rdfs:domain fibo-fnd-oac-ctl:ControlledThing ;
+    rdfs:range fibo-fnd-oac-ctl:ControllingParty ;
+    rdfs:subPropertyOf cmns-pts:isAffectedBy ;
+    skos:definition "indicates the party that exercises authority or influence over something" .
+
+fibo-fnd-oac-ctl:hasPartyInControl a owl:ObjectProperty ;
+    rdfs:label "has party in control",
+        "具有控制中参与方（has party in control）"@zh ;
+    rdfs:comment "标识控制情形情境中的行为体。"@zh ;
+    rdfs:domain fibo-fnd-oac-ctl:Control ;
+    rdfs:range fibo-fnd-oac-ctl:ControllingParty ;
+    rdfs:subPropertyOf cmns-pts:hasActor ;
+    skos:definition "indicates the actor in the context of a control situation" .
+
+fibo-fnd-oac-ctl:involvesControlledThing a owl:ObjectProperty ;
+    rdfs:label "involves controlled thing",
+        "涉及受控事物（involves controlled thing）"@zh ;
+    rdfs:comment "标识控制情形情境中被控制的某事物。"@zh ;
+    rdfs:domain fibo-fnd-oac-ctl:Control ;
+    rdfs:range fibo-fnd-oac-ctl:ControlledThing ;
+    rdfs:subPropertyOf cmns-pts:hasUndergoer ;
+    skos:definition "indicates something controlled in the context of a control situation" .
+
+fibo-fnd-oac-ctl:ControlledThing a owl:Class ;
+    rdfs:label "controlled thing",
+        "受控事物（controlled thing）"@zh ;
+    rdfs:comment "在某情形中被某参与方施以某种形式控制的事物。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty fibo-fnd-oac-ctl:isInitiallyControlledOn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:hasControllingParty ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:ControllingParty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:isControlledThingIn ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:Control ],
+        cmns-pts:Undergoer ;
+    skos:definition "something over which some party exercises some form of control with respect to some situation" .
+
+fibo-fnd-oac-ctl:Control a owl:Class ;
+    rdfs:label "control",
+        "控制（control）"@zh ;
+    rdfs:comment "某参与方有权指挥或强烈影响某事物相关管理与政策方向的情形。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:hasPartyInControl ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:ControllingParty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:involvesControlledThing ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:ControlledThing ],
+        cmns-pts:Situation ;
+    skos:definition "situation in which some party has the power to direct or strongly influence the direction of the management and policies related to something" ;
+    cmns-av:explanatoryNote "Control may be direct (explicit) or indirect (implicit), derived through ownership of voting shares, beneficial ownership, other ownership relations, through provisions of a contract, or otherwise." .
+
+fibo-fnd-oac-ctl:ControllingParty a owl:Class ;
+    rdfs:label "controlling party",
+        "控制方（controlling party）"@zh ;
+    rdfs:comment "在某情形情境中实施某种形式控制的行为体。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:isPartyControlling ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:ControlledThing ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:isControllingPartyIn ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:Control ],
+        cmns-pts:Actor ;
+    skos:definition "actor that exercises some form of control in the context of some situation" ;
+    skos:editorialNote "At this level of abstraction it is not defined whether the control is some degree of controlling interest, or some level of actual control (asserted or calculated) in some entity." .
+

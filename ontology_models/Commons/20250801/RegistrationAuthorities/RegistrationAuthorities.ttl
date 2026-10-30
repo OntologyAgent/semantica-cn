@@ -1,0 +1,182 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-bauth: <https://www.omg.org/spec/Commons/BusinessAuthorizations/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cmns-ra: a owl:Ontology ;
+    rdfs:label "Commons Registration Authorities Ontology",
+        "Commons 注册机构本体（Commons Registration Authorities Ontology）"@zh ;
+    dct:abstract "This ontology defines concepts for representation of registration authorities, registrars, registration-specific identifiers and related identification schemes. It was derived from the FIBO Registration Authorities Ontology and ISO 11179-3, and adapted for broader use." ;
+    dct:license """Copyright (c) 2015-2025 EDM Council, Inc.
+		Copyright (c) 2015-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义注册机构、注册标识符及其管理。"@zh ;
+    owl:imports cmns-av:,
+        cmns-bauth:,
+        cmns-col:,
+        cmns-cxtid:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-id:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://www.omg.org/spec/Commons/20250801/RegistrationAuthorities/> ;
+    skos:changeNote "The https://www.omg.org/spec/Commons/20240801/RegistrationAuthorities.rdf version of the ontology was modified to clarify the distinction between a registrar and registration authority (COMMONS13-33) and to integrate the authorization pattern (COMMONS13-38)." ;
+    cmns-av:copyright "Copyright (c) 2015-2025 EDM Council, Inc.",
+        "Copyright (c) 2015-2025 Object Management Group, Inc." .
+
+cmns-ra:hasRegistrationAuthority a owl:ObjectProperty ;
+    rdfs:label "has registration authority" ;
+    rdfs:range cmns-ra:RegistrationAuthority ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    owl:inverseOf cmns-ra:isRegistrationAuthorityFor ;
+    skos:definition "indicates the registration authority for something" .
+
+cmns-ra:RegisteredIdentifier a owl:Class ;
+    rdfs:label "registered identifier" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredIn ;
+            owl:someValuesFrom cmns-ra:Registry ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-ra:RegistrationScheme ;
+            owl:onProperty cmns-col:compliesWith ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty cmns-ra:hasRegistrationDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom cmns-ra:Registrar ],
+        cmns-cxtid:ContextualIdentifier ;
+    skos:definition "contextual identifier that is registered in a registry by, or on behalf of, a registration authority according to some registration scheme" .
+
+cmns-ra:RegistrationScheme a owl:Class ;
+    rdfs:label "registration scheme" ;
+    rdfs:subClassOf cmns-id:IdentificationScheme ;
+    skos:definition "scheme for organizing information in a registry and allocating identifiers to registered items" ;
+    cmns-av:adaptedFrom "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" .
+
+cmns-ra:RegistrationService a owl:Class ;
+    rdfs:label "registration service" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom cmns-ra:Registrar ],
+        cmns-org:Service ;
+    skos:definition "service provided to individuals and/or organizations for the registration of items in a registry" .
+
+cmns-ra:RegistryEntry a owl:Class ;
+    rdfs:label "registry entry" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-ra:Registry ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-ra:RegisteredIdentifier ;
+            owl:onProperty cmns-col:comprises ],
+        cmns-col:Constituent ;
+    skos:definition "constituent of a registry that includes the details for something recorded in that registry" ;
+    cmns-av:adaptedFrom "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" ;
+    cmns-av:explanatoryNote "Note: From an ISO 11179 perspective, a registry item (entry) is recorded in the registry, but is not necessarily identified, named, defined, classified, registered or administered. Specific information needs to be provided for each of these categories which can be provided when the item is initially recorded, or later." ;
+    cmns-av:synonym "registry item" .
+
+cmns-ra:hasRegistrationDate a owl:DatatypeProperty ;
+    rdfs:label "has registration date" ;
+    rdfs:range cmns-dt:CombinedDateTime ;
+    rdfs:subPropertyOf cmns-dt:hasObservedDateTime ;
+    skos:definition "indicates the date or date and time on which something is registered" .
+
+cmns-ra:isRegisteredIn a owl:ObjectProperty ;
+    rdfs:label "is registered in" ;
+    rdfs:range cmns-ra:Registry ;
+    rdfs:subPropertyOf cmns-doc:refersTo ;
+    skos:definition "indicates the registry that something is registered in" .
+
+cmns-ra:registers a owl:ObjectProperty ;
+    rdfs:label "registers" ;
+    rdfs:domain cmns-ra:Registrar ;
+    rdfs:subPropertyOf cmns-doc:records,
+        cmns-rlcmp:isRoleIn ;
+    owl:inverseOf cmns-ra:isRegisteredBy ;
+    skos:definition "records something in a registry or archive" .
+
+cmns-ra:isRegisteredBy a owl:ObjectProperty ;
+    rdfs:label "is registered by" ;
+    rdfs:range cmns-ra:Registrar ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole ;
+    skos:definition "indicates the registration authority or registrar that registers something" .
+
+cmns-ra:isRegistrationAuthorityFor a owl:ObjectProperty ;
+    rdfs:label "is registration authority for" ;
+    rdfs:domain cmns-ra:RegistrationAuthority ;
+    rdfs:subPropertyOf cmns-rlcmp:isRoleIn ;
+    skos:definition "indicates something (typically an identifier or code) that the registration authority issues" .
+
+cmns-ra:Registrar a owl:Class ;
+    rdfs:label "registrar" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-ra:RegistrationService ;
+            owl:onProperty cmns-org:provides ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:registers ;
+            owl:someValuesFrom owl:Thing ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isDesignatedBy ;
+            owl:someValuesFrom cmns-ra:RegistrationAuthority ],
+        cmns-org:ServiceProvider,
+        cmns-pts:Actor ;
+    skos:definition "role of a party that acts as a representative of a registration authority to provide registration services, including official record keeping" ;
+    cmns-av:adaptedFrom "Barron's Dictionary of Business and Economic Terms, Fifth Edition, 2012",
+        "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" .
+
+cmns-ra:RegistrationAuthority a owl:Class ;
+    rdfs:label "registration authority" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-ra:Registry ;
+            owl:onProperty cmns-org:manages ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-ra:isRegistrationAuthorityFor ],
+        cmns-bauth:AuthorizingParty,
+        cmns-org:ServiceProvider ;
+    skos:definition "service provider that is officially responsible for maintaining a registry and providing registration services and/or for delegating of some or all of these roles to a registrar" ;
+    cmns-av:abbreviation "RA" ;
+    cmns-av:adaptedFrom "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" .
+
+cmns-ra:Registry a owl:Class ;
+    rdfs:label "registry" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-ra:RegistryEntry ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom cmns-ra:RegistrationAuthority ],
+        cmns-col:StructuredCollection,
+        cmns-doc:Record ;
+    skos:definition "authoritative record or collection of records relating to something" ;
+    cmns-av:adaptedFrom "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" ;
+    cmns-av:explanatoryNote "Electronic registries typically contain a unique identifier for each entry, so that individual records can be referenced from other documents and registries." .
+

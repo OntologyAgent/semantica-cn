@@ -1,0 +1,165 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/> .
+@prefix fibo-be-le-fbo: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/> .
+@prefix fibo-be-le-lei: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/> .
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fct-bci: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessCentersIndividuals/> .
+@prefix fibo-fbc-fct-breg: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/BusinessRegistries/> .
+@prefix fibo-fbc-fct-cajrga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies/> .
+@prefix fibo-fbc-fct-cra: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/CommercialRegistrationAuthorities/> .
+@prefix fibo-fbc-fct-eufseind: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals/> .
+@prefix fibo-fbc-fct-eurga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/EuropeanEntities/EURegulatoryAgencies/> .
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/> .
+@prefix fibo-fbc-fct-usjrga: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USRegulatoryAgencies/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-dt-bd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/BusinessDates/> .
+@prefix fibo-fnd-plc-adr: <https://spec.edmcouncil.org/fibo/ontology/FND/Places/Addresses/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-ind-ir-ir: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/InterestRates/> .
+@prefix fibo-ind-ir-mdp: <https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/MarketDataProviders/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2-us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fbc-fct-eurga:EuropeanBankingRegulatoryAgencyAndCentralBank a owl:NamedIndividual,
+        fibo-ind-ir-ir:InterestRateAuthority .
+
+fibo-fbc-fct-cajrga:CanadianBankingRegulatoryAgencyAndCentralBank a owl:NamedIndividual,
+        fibo-ind-ir-ir:InterestRateAuthority .
+
+fibo-fbc-fct-usjrga:BoardOfGovernorsOfTheFederalReserveSystem a owl:NamedIndividual,
+        fibo-ind-ir-ir:InterestRateAuthority .
+
+fibo-ind-ir-mdp: a owl:Ontology ;
+    rdfs:label "Market Data Providers Ontology",
+        "市场数据提供商本体（Market Data Providers Ontology）"@zh ;
+    dcterms:abstract "This ontology provides reference data for a number of international market data providers, including, but not limited to, those that publish interest rate benchmarks referenced in the published FpML benchmark reference." ;
+    dcterms:license """Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义市场数据提供商（交易所、资讯商等）及其发布的数据。"@zh ;
+    owl:imports fibo-be-fct-pub:,
+        fibo-be-le-cb:,
+        fibo-be-le-fbo:,
+        fibo-be-le-lei:,
+        fibo-fbc-dae-dbt:,
+        fibo-fbc-fct-bci:,
+        fibo-fbc-fct-breg:,
+        fibo-fbc-fct-cra:,
+        fibo-fbc-fct-eurga:,
+        fibo-fbc-fct-eufseind:,
+        fibo-fbc-fct-fse:,
+        fibo-fbc-fct-cajrga:,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/USFinancialServicesEntities/>,
+        fibo-fbc-fct-usjrga:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-dt-bd:,
+        fibo-fnd-plc-adr:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        fibo-ind-ir-ir:,
+        cmns-av:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-id:,
+        cmns-loc:,
+        cmns-ra:,
+        cmns-rlcmp:,
+        lcc-3166-1:,
+        lcc-3166-2-us: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/IND/20260601/InterestRates/MarketDataProviders/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/IND/20200301/InterestRates/MarketDataProviders.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20200701/InterestRates/MarketDataProviders.rdf version of this ontology was revised to update the LEI URIs to the new form published by the GLEIF on data.world.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20201201/InterestRates/MarketDataProviders.rdf version of this ontology was revised to replace references to the legacy LCC UnitedStates country representation with UnitedStatesOfAmerica.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20210301/InterestRates/MarketDataProviders.rdf version of this ontology was revised to clean up the LEI data.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20211201/InterestRates/MarketDataProviders.rdf version of this ontology was revised to reflect the move of market data provider from interest rates in IND to publishers in BE.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20221001/InterestRates/MarketDataProviders.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20230201/InterestRates/MarketDataProviders.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC) and to eliminate redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20230301/InterestRates/MarketDataProviders.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20240101/InterestRates/MarketDataProviders.rdf version of this ontology was modified to clarify the definition of ticker symbol and revise the role of Thomson Reuters' market data division to reflect it's history as (1) a subsidiary called Refinitiv, and (2) its acquisition by the London Stock Exchange Group (SEC-196).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20240401/InterestRates/MarketDataProviders.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20250301/InterestRates/MarketDataProviders.rdf version of the ontology was modified to merge details from the old corporations ontology into corporate bodies for consistency and useability (BE-259).",
+        "The https://spec.edmcouncil.org/fibo/ontology/IND/20251001/InterestRates/MarketDataProviders.rdf version of the ontology was modified to reflect the migration of registration authorities to the Functional Entities module in FBC and better align with the GLEIF LEI model (FND-407)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 Object Management Group, Inc.",
+        "Copyright (c) 2020-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-ind-ir-mdp:EuropeanMoneyMarketsInstituteBenchmarkPublisher a owl:NamedIndividual,
+        fibo-ind-ir-ir:InterestRateAuthority ;
+    rdfs:label "European Money Markets Institute (EMMI) benchmark publisher" ;
+    skos:definition "individual representing the European Money Markets Institute (EMMI) functional entity that is an international financial information publisher, responsible for the publication of euro-based benchmarks, including Euribor" ;
+    cmns-av:adaptedFrom "http://www.emmi-benchmarks.eu/"^^xsd:anyURI ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-eufseind:EuropeanMoneyMarketsInstitute .
+
+fibo-ind-ir-mdp:FederalReserveBoardH.15RateResetTimeOfDay a owl:NamedIndividual,
+        fibo-fbc-dae-dbt:RateResetTimeOfDay ;
+    rdfs:label "Federal Reserve Board H.15 rate reset time of day" ;
+    skos:definition "the time of day that the Federal Reserve Board publishes Selected Interest Rates (Daily) in Schedule H.15" ;
+    fibo-fnd-dt-bd:hasBusinessDayConvention fibo-fbc-fct-bci:NewYorkFederalReserveBusinessDay ;
+    cmns-av:adaptedFrom "https://www.federalreserve.gov/releases/h15/"^^xsd:anyURI ;
+    cmns-dt:hasTimeValue "T16:15:00" ;
+    cmns-loc:hasBusinessCenter fibo-fbc-fct-bci:New_York .
+
+fibo-ind-ir-mdp:FenicsMarketData a owl:NamedIndividual,
+        fibo-be-fct-pub:MarketDataProvider ;
+    rdfs:label "Fenics Market Data" ;
+    skos:definition "Fenics Market Data functional entity that is a financial service and market data provider and division of BGC Partners" ;
+    fibo-fnd-rel-rel:wasFormerlyKnownAs "BGCantor Market Data, L.P." ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:BGCPartnersInc-US-DE .
+
+fibo-ind-ir-mdp:ICEBenchmarkPublisher a owl:NamedIndividual,
+        fibo-ind-ir-ir:InterestRateAuthority ;
+    rdfs:label "ICE benchmark publisher" ;
+    skos:definition "the ICE Benchmark Administration functional entity that is an international financial information publisher, responsible for the publication of ICE LIBOR, ICE Swap Rate, LBMA Gold Price and ISDA SIMM benchmarks" ;
+    cmns-av:adaptedFrom "https://www.theice.com/index"^^xsd:anyURI ;
+    cmns-rlcmp:isPlayedBy fibo-fbc-fct-cra:ICEBenchmarkAdministration .
+
+fibo-ind-ir-mdp:LSEGFinancialSolutionsAsMarketDataProvider a owl:NamedIndividual,
+        fibo-be-fct-pub:MarketDataProvider ;
+    rdfs:label "LSEG Financial Solutions as market data provider" ;
+    skos:definition "financial market data provider role of the London Stock Exchange Group (LSEG)'s subsidiary, LSEG Financial Solutions" ;
+    cmns-av:explanatoryNote "Note that LSEG Financial Group was formerly known as Refinitiv, and before that, the market data division of Thomson Reuters." .
+
+fibo-ind-ir-mdp:ReferenceBanks a owl:NamedIndividual,
+        fibo-be-fct-pub:MarketDataProvider,
+        cmns-col:Collection ;
+    rdfs:label "reference banks" ;
+    skos:definition "market data provider of interest rate benchmarks representing a group of one or more banks that either individually, or in aggregate, provide quoted rates that contribute to the benchmark" ;
+    cmns-av:explanatoryNote "With respect to LIBOR, for example, the Bank of England will request the principal London office of each of the Reference Banks to provide a quotation of its rate. If at least two such quotations are provided, the rate for such date will be the arithmetic mean of the quotations. If fewer than two quotations are provided as requested, the rate for such date will be the arithmetic mean of the rates quoted by major banks in New York City selected by the Bank, at approximately 11:00 a.m. New York City time for loans in U.S. Dollars to leading European banks for such Interest Period and in an amount approximately equal to the amount requested LIBOR-Reference Banks Loan." .
+
+fibo-ind-ir-mdp:ReferenceDealers a owl:NamedIndividual,
+        fibo-be-fct-pub:MarketDataProvider,
+        cmns-col:Collection ;
+    rdfs:label "reference dealers" ;
+    skos:definition "market data provider of interest rate benchmarks representing a group of one or more swap dealers that either individually, or in aggregate, provide quoted rates that contribute to the benchmark" .
+
+fibo-ind-ir-mdp:SwapMarker a owl:NamedIndividual,
+        fibo-be-fct-pub:MarketDataProvider ;
+    rdfs:label "Swap Marker" ;
+    skos:definition "market data provider of interest rate benchmarks" .
+
+fibo-ind-ir-mdp:Tradition a owl:NamedIndividual,
+        fibo-be-fct-pub:MarketDataProvider,
+        fibo-fbc-pas-fpas:FinancialServiceProvider ;
+    rdfs:label "Tradition" ;
+    skos:definition "Tradition functional entity that is a financial service and market data provider and division of Compagnie Financiere Tradition" .
+

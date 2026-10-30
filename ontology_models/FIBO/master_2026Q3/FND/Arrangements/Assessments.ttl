@@ -1,0 +1,322 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-arr-asmt: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Assessments/> .
+@prefix fibo-fnd-arr-rep: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Reporting/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-arr-asmt: a owl:Ontology ;
+    rdfs:label "Assessments Ontology",
+        "评估本体（Assessments Ontology）"@zh ;
+    dcterms:abstract "This ontology defines abstract concepts for assessments, evaluations, and outcomes, as the basis for various analysis, such as for business performance, compliance and risk." ;
+    dcterms:license """Copyright (c) 2019-2025 EDM Council, Inc.
+Copyright (c) 2019-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义评估活动、评估结果与评估方的通用结构，为信用评级、风险打分等判断性活动提供基础模型。"@zh ;
+    owl:imports fibo-fnd-acc-cur:,
+        fibo-fnd-arr-rep:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-gao-obj:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-qtu: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20250301/Arrangements/Assessments/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20190601/Arrangements/Assessments.rdf version of this ontology was revised to integrate concepts related to value assessments / appraisals.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200201/Arrangements/Assessments.rdf version of this ontology was revised to augment the definition of appraisal with an estimated value and correct a bug in the definition of hasAppraiser.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20211201/Arrangements/Assessments.rdf version of this ontology was revised to add the concept of a valuation method, which is then applied in the context of a value assessment.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20221001/Arrangements/Assessments.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Arrangements/Assessments.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230301/Arrangements/Assessments.rdf version of this ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20231201/Arrangements/Assessments.rdf version of this ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240101/Arrangements/Assessments.rdf version of this ontology was modified to generalize the notion of value and observable value required for valuation of various instruments and their underliers (DER-112)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2019-2024 EDM Council, Inc.",
+        "Copyright (c) 2019-2024 Object Management Group, Inc." .
+
+fibo-fnd-arr-asmt:ExpectedValue a owl:Class ;
+    rdfs:label "expected value",
+        "期望价值（expected value）"@zh ;
+    rdfs:comment "基于模型或假设预期的理论价值。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-asmt:Value ;
+    owl:disjointWith fibo-fnd-arr-asmt:ObservedValue ;
+    skos:definition "theoretical value that is anticipated based on a model or hypothesis" ;
+    cmns-av:explanatoryNote "Expected values are often calculated using probability distributions. Note that they can be qualitative, however, such as certain ratings." .
+
+fibo-fnd-arr-asmt:FairValue a owl:Class ;
+    rdfs:label "fair value",
+        "公允价值（fair value）"@zh ;
+    rdfs:comment "在计量日市场参与者之间的有序交易中出售资产所能收到或转移负债所须支付的价格。"@zh ;
+    rdfs:seeAlso <https://en.wikipedia.org/wiki/Fair_value> ;
+    rdfs:subClassOf fibo-fnd-acc-cur:MonetaryAmount,
+        fibo-fnd-arr-asmt:QuantitativeValue ;
+    skos:definition "price that would be received to sell an asset, or paid to transfer a liability, in an orderly transaction between market participants at the measurement date" ;
+    cmns-av:adaptedFrom "ISO/TS 55010:2024(en), Asset management - Guidance on the alignment of financial and non-financial functions in asset management" .
+
+fibo-fnd-arr-asmt:PresentValue a owl:Class ;
+    rdfs:label "present value",
+        "现值（present value）"@zh ;
+    rdfs:comment "资产当前的价值，可由参考数据计算并可能基于其预期未来价值。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-asmt:QuantitativeValue ;
+    skos:definition "value of an asset today, which may be calculated from reference data and may based on its expected future value" .
+
+fibo-fnd-arr-asmt:QualitativeValue a owl:Class ;
+    rdfs:label "qualitative value",
+        "定性值（qualitative value）"@zh ;
+    rdfs:comment "精度或准确度低于定量方法所确定值的值，通常以代码而非实际数值表示。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-asmt:Value ;
+    owl:disjointWith fibo-fnd-arr-asmt:QuantitativeValue ;
+    skos:definition "value that has less precision or accuracy than a value determined via quantitative methods and which is usually expressed in codes rather than actual numbers" ;
+    cmns-av:adaptedFrom "ISO/IEC 5207:2024(en), Information technology - Data usage - Terminology and use cases" ;
+    cmns-av:explanatoryNote "Qualitative values may follow nominal or ordinal scales, and may be expressed as enumerations." .
+
+fibo-fnd-arr-asmt:ReferenceValue a owl:Class ;
+    rdfs:label "reference value",
+        "参考值（reference value）"@zh ;
+    rdfs:comment "对某可辨识事物、可获得证据支持的值。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-asmt:QuantitativeValue,
+        cmns-doc:Reference ;
+    skos:definition "value for something discernible for which evidence can be obtained" ;
+    cmns-av:explanatoryNote "Derivatives, such as certain exotics, can be based on values ascribed to virtually anything, including weather. Typically, however, a reference value refers to something that can be readily observed in the marketplace, such as a quoted rate (e.g., interest rate, exchange rate), index value, commodity price, stock price, economic indicator, or something similar as of some point in time." .
+
+fibo-fnd-arr-asmt:ValueAssessment a owl:Class ;
+    rdfs:label "value assessment",
+        "价值评估（value assessment）"@zh ;
+    rdfs:comment "估计某事物价值的评估事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-asmt:ValuationMethod ;
+            owl:onProperty fibo-fnd-arr-asmt:appliesMethodology ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-asmt:hasAppraiser ;
+            owl:someValuesFrom cmns-pts:AgentRole ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-asmt:Appraisal ;
+            owl:onProperty fibo-fnd-dt-oc:hasOutput ],
+        fibo-fnd-arr-asmt:AssessmentEvent ;
+    skos:definition "assessment event to estimate the value of something" ;
+    cmns-av:explanatoryNote "Note that an appraiser in this context may be a licensed appraiser, such as a real estate appraiser or auction house, or a calculation agent, depending on the circumstances." .
+
+fibo-fnd-arr-asmt:hasDateOfAssessment a owl:ObjectProperty ;
+    rdfs:label "has date of assessment"@en,
+        "具有评估日期（has date of assessment）"@zh ;
+    rdfs:comment "评估过程完成的日期。"@zh ;
+    rdfs:range cmns-dt:ExplicitDate ;
+    rdfs:subPropertyOf cmns-dt:hasExplicitDate ;
+    skos:definition "date on which an assessment process was completed"@en .
+
+fibo-fnd-arr-asmt:isEstimatedValueOf a owl:ObjectProperty ;
+    rdfs:label "is estimated value of",
+        "是……的估计价值（is estimated value of）"@zh ;
+    rdfs:comment "将评估价值关联到评估日所关注的资产。"@zh ;
+    rdfs:domain fibo-fnd-arr-asmt:AppraisedValue ;
+    rdfs:subPropertyOf cmns-qtu:isValueOf ;
+    owl:inverseOf fibo-fnd-arr-asmt:hasEstimatedValue ;
+    skos:definition "relates an appraised value to the asset of interest as of the date of the assessment" .
+
+fibo-fnd-arr-asmt:Appraiser a owl:Class ;
+    rdfs:label "appraiser",
+        "估价师（appraiser）"@zh ;
+    rdfs:comment "评估或估计某人或某事物的性质、质量、能力或价值的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:provides ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Appraisal ],
+        cmns-pts:PartyRole ;
+    skos:definition "party that evaluates or estimates the nature, quality, ability, or value of someone or something" .
+
+fibo-fnd-arr-asmt:AssessmentActivity a owl:Class ;
+    rdfs:label "assessment activity",
+        "评估活动（assessment activity）"@zh ;
+    rdfs:comment "涉及评估或估计某人或某事物的性质、质量、能力或价值的活动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom cmns-pts:AgentRole ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ],
+        fibo-fnd-dt-oc:OccurrenceKind ;
+    skos:definition "activity involving the evaluation or estimation of the nature, quality, ability, or value of someone or something" .
+
+fibo-fnd-arr-asmt:MarketValue a owl:Class ;
+    rdfs:label "market value",
+        "市场价值（market value）"@zh ;
+    rdfs:comment "资产在市场上可售得的价格。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:MonetaryAmount,
+        fibo-fnd-arr-asmt:QuantitativeValue ;
+    skos:definition "price an asset would sell for in the market" .
+
+fibo-fnd-arr-asmt:ObservedValue a owl:Class ;
+    rdfs:label "observed value",
+        "观测值（observed value）"@zh ;
+    rdfs:comment "从实验、调查或观测中收集的实际数据点。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-asmt:Value ;
+    skos:definition "value that is an actual data point collected from an experiment, survey, or observation" .
+
+fibo-fnd-arr-asmt:appliesMethodology a owl:ObjectProperty ;
+    rdfs:label "applies methodology",
+        "应用方法论（applies methodology）"@zh ;
+    rdfs:comment "标识为确定某事物公允市场价值或现值所用的策略。"@zh ;
+    rdfs:range fibo-fnd-arr-asmt:ValuationMethod ;
+    rdfs:subPropertyOf fibo-fnd-gao-obj:hasStrategy ;
+    skos:definition "indicates the strategy used for the purposes of determining the fair market or present value of something" .
+
+fibo-fnd-arr-asmt:estimatesValueAt a owl:ObjectProperty ;
+    rdfs:label "estimates value at",
+        "估计价值为（estimates value at）"@zh ;
+    rdfs:comment "给出某资产在某时点的近似价值。"@zh ;
+    rdfs:range fibo-fnd-arr-asmt:AppraisedValue ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "provides an approximate value of some asset as of some point in time" .
+
+fibo-fnd-arr-asmt:hasAppraiser a owl:ObjectProperty ;
+    rdfs:label "has appraiser",
+        "具有估价师（has appraiser）"@zh ;
+    rdfs:comment "将评估或报告关联到实施评估的代理。"@zh ;
+    rdfs:subPropertyOf cmns-org:isProvidedBy ;
+    skos:definition "relates an assessment or report to an agent that conducts the assessment" .
+
+fibo-fnd-arr-asmt:hasEstimatedValue a owl:ObjectProperty ;
+    rdfs:label "has estimated value",
+        "具有估计价值（has estimated value）"@zh ;
+    rdfs:comment "将某事物关联到其估计价值。"@zh ;
+    rdfs:range fibo-fnd-arr-asmt:AppraisedValue ;
+    rdfs:subPropertyOf fibo-fnd-acc-cur:hasMonetaryAmount ;
+    skos:definition "relates something to its estimated value" .
+
+fibo-fnd-arr-asmt:Appraisal a owl:Class ;
+    rdfs:label "appraisal",
+        "估价报告（appraisal）"@zh ;
+    rdfs:comment "对某事物在某时点市场价值的书面估计，通常由合格估价师提供。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-asmt:Appraiser ;
+            owl:onProperty fibo-fnd-rel-rel:isGeneratedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-asmt:estimatesValueAt ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:AppraisedValue ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-oac-own:Asset ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ],
+        fibo-fnd-arr-asmt:AssessmentReport ;
+    skos:definition "written estimate of the market value of something as of some point in time, typically provided by a qualified appraiser" .
+
+fibo-fnd-arr-asmt:AssessmentEvent a owl:Class ;
+    rdfs:label "assessment event",
+        "评估事件（assessment event）"@zh ;
+    rdfs:comment "涉及评估或估计某人或某事物的性质、质量或能力的事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom cmns-pts:AgentRole ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-arr-asmt:AssessmentActivity ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-asmt:AssessmentReport ;
+            owl:onProperty fibo-fnd-dt-oc:hasOutput ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:hasOutput ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Opinion ],
+        fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "event involving the evaluation or estimation of the nature, quality, or ability of someone or something" .
+
+fibo-fnd-arr-asmt:AssessmentReport a owl:Class ;
+    rdfs:label "assessment report",
+        "评估报告（assessment report）"@zh ;
+    rdfs:comment "包含对某事物的意见、判断、估价或看法，以及通常得出该意见所用方法和原始输入的报告。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-asmt:Opinion ;
+            owl:onProperty fibo-fnd-arr-rep:reportsOn ],
+        fibo-fnd-arr-rep:Report ;
+    skos:definition "report that includes an opinion, judgement, appraisal, or view about something and typically the methodology and raw inputs used to arrive at that opinion" .
+
+fibo-fnd-arr-asmt:Opinion a owl:Class ;
+    rdfs:label "opinion",
+        "意见（opinion）"@zh ;
+    rdfs:comment "对某事物的判断、估价或看法。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isGeneratedBy ;
+            owl:someValuesFrom cmns-pts:AgentRole ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:isOutputFrom ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:AssessmentEvent ] ;
+    skos:definition "judgement, appraisal, or view about something" .
+
+fibo-fnd-arr-asmt:ValuationMethod a owl:Class ;
+    rdfs:label "valuation method"@en,
+        "估值方法（valuation method）"@zh ;
+    rdfs:comment "用于确定资产当前或预期价值的方法。"@zh ;
+    rdfs:subClassOf fibo-fnd-gao-obj:Strategy ;
+    skos:definition "method used to determine the present or expected worth of an asset"@en ;
+    cmns-av:explanatoryNote "Asset valuation is the process of determining the fair market or present value of assets, using book values, absolute valuation models like discounted cash flow analysis, option pricing models or comparables. Such assets include investments in marketable securities such as stocks, bonds and options; tangible assets like buildings and equipment; or intangible assets such as brands, patents and trademarks."@en .
+
+fibo-fnd-arr-asmt:AppraisedValue a owl:Class ;
+    rdfs:label "appraised value",
+        "评估价值（appraised value）"@zh ;
+    rdfs:comment "某资产在给定时点的估计价值。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-asmt:MarketValue ;
+    skos:definition "estimated value of some asset as of a given point in time" .
+
+fibo-fnd-arr-asmt:Value a owl:Class ;
+    rdfs:label "value",
+        "价值（value）"@zh ;
+    rdfs:comment "某事物（如产品、服务或资产）对公司、客户或利益相关方的感知价值。"@zh ;
+    rdfs:subClassOf cmns-cls:Aspect ;
+    skos:definition "perceived worth of something, such as a product, service, or asset to a company, customer, or stakeholder" ;
+    cmns-av:explanatoryNote """The concept of business value encompasses several dimensions, including:
+- Customer Value: The benefits that a customer derives from a product or service, measured against the cost of obtaining it. This includes factors like quality, performance, convenience, and price.
+- Economic Value: The financial benefits that a company gains from its assets, investments, or operations. This can be calculated through metrics like revenue, profit, return on investment (ROI), and cost savings.
+- Market Value: The price at which an asset or company can be bought or sold in the open market. This reflects the collective assessment of investors and market participants.
+- Shareholder Value: The financial returns that shareholders receive from owning a company's stock, including dividends and capital gains.
+- Brand Value: The premium that customers are willing to pay for a product or service due to the brand's reputation, recognition, and loyalty.
+
+Overall, value in business is about creating and capturing benefits that meet the needs and expectations of various stakeholders, from customers to investors.""" ;
+    cmns-av:synonym "business value" .
+
+fibo-fnd-arr-asmt:QuantitativeValue a owl:Class ;
+    rdfs:label "quantitative value",
+        "定量值（quantitative value）"@zh ;
+    rdfs:comment "通过定量方法确定、以适当单位的数值表示的值。"@zh ;
+    rdfs:subClassOf fibo-fnd-arr-asmt:Value,
+        cmns-qtu:ScalarQuantityValue ;
+    skos:definition "value determined via quantitative methods, expressed as a numerical value in appropriate units" .
+

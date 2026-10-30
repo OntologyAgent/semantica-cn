@@ -1,0 +1,67 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-oac-ctl: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Control/> .
+@prefix fibo-fnd-oac-oac: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/OwnershipAndControl/> .
+@prefix fibo-fnd-oac-own: <https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-oac-oac: a owl:Ontology ;
+    rdfs:label "Ownership and Control Ontology",
+        "所有权与控制本体（Ownership and Control Ontology）"@zh ;
+    dcterms:abstract "This ontology brings the concepts of ownership and control together, in cases where the combined semantics are applicable, such as for a wholly owned subsidiary." ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "本本体将所有权（ownership）和控制（control）概念结合在一起，适用于两者语义同时成立的情形，例如全资子公司。"@zh ;
+    owl:imports fibo-fnd-oac-ctl:,
+        fibo-fnd-oac-own:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-pts: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20240101/OwnershipAndControl/OwnershipAndControl/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/OwnershipAndControl/OwnershipAndControl.rdf version of the ontology was modified to better integrate it with the situation pattern and eliminate circular definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20210201/OwnershipAndControl/OwnershipAndControl.rdf version of the ontology was modified to integrate the properties defined herein with the ownership and control patterns.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20211201/OwnershipAndControl/OwnershipAndControl.rdf version of the ontology was modified to address hygiene issues with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/OwnershipAndControl/OwnershipAndControl.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/OwnershipAndControl/OwnershipAndControl.rdf version of the ontology was modified to replace content that is now available in the OMG Commons Ontology Library (Commons) v1.1 (FND-380).",
+        "This ontology was added to Foundations in advance of the December 2014 Long Beach meeting in support of the issue resolutions identified in the FIBO FND 1.0 FTF report and in https://spec.edmcouncil.org/fibo/ontology/FND/1.0/AboutFND-1.0/." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2024 EDM Council, Inc.",
+        "Copyright (c) 2013-2024 Object Management Group, Inc." .
+
+fibo-fnd-oac-oac:OwnershipControlSituation a owl:Class ;
+    rdfs:label "ownership control situation",
+        "所有权控制情境（ownership control situation）"@zh ;
+    rdfs:comment "某参与方拥有并控制某物的情境。"@zh ;
+    rdfs:subClassOf cmns-pts:Situation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( fibo-fnd-oac-ctl:Control fibo-fnd-oac-own:Ownership ) ] ;
+    skos:definition "situation in which some party owns and controls something" .
+
+fibo-fnd-oac-oac:ownsAndControls a owl:ObjectProperty ;
+    rdfs:label "owns and controls",
+        "拥有并控制（owns and controls）"@zh ;
+    rdfs:comment "对某物进行指挥并施加权威性或支配性影响，且该物同时为其所有。"@zh ;
+    rdfs:domain cmns-pts:Party ;
+    rdfs:subPropertyOf fibo-fnd-oac-own:owns,
+        fibo-fnd-rel-rel:controls ;
+    owl:inverseOf fibo-fnd-oac-oac:isOwnedAndControlledBy ;
+    skos:definition "directs and exercises authoritative or dominating influence over some thing that is also owned" ;
+    skos:editorialNote """basic rule: if x controls y and x owns y then x owns and controls y
+SWRL rule: controls(?x, ?y), owns(?x, ?y) -> ownsAndControls(?x, ?y)""" .
+
+fibo-fnd-oac-oac:isOwnedAndControlledBy a owl:ObjectProperty ;
+    rdfs:label "is owned and controlled by",
+        "由…拥有并控制（is owned and controlled by）"@zh ;
+    rdfs:comment "将某物关联到拥有、影响、管理并指挥它的参与方。"@zh ;
+    rdfs:range cmns-pts:Party ;
+    rdfs:subPropertyOf fibo-fnd-oac-own:isOwnedBy,
+        fibo-fnd-rel-rel:isControlledBy ;
+    skos:definition "relates something to the party that owns, influences, manages and directs it" .
+

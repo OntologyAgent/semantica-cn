@@ -1,0 +1,324 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-bp-iss-doc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/> .
+@prefix fibo-bp-iss-ipo: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/EquitiesIPOIssuance/> .
+@prefix fibo-bp-iss-prc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/> .
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/> .
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/> .
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/> .
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+fibo-bp-iss-ipo:AgreeBasisForAllocation a owl:Class ;
+    rdfs:label "agree basis for allocation"@en,
+        "商定分配依据（agree basis for allocation）"@zh ;
+    rdfs:comment "就股票分配的依据达成一致。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:Allocation a owl:Class ;
+    rdfs:label "allocation"@en,
+        "分配（allocation）"@zh ;
+    rdfs:comment "将发行股票分配给各认购人的行为。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:AllocationBasisDetails a owl:Class ;
+    rdfs:label "allocation basis details"@en,
+        "分配依据细节（allocation basis details）"@zh ;
+    rdfs:comment "关于股票分配依据的详细信息。"@zh ;
+    rdfs:subClassOf cmns-doc:Document .
+
+fibo-bp-iss-ipo:AllocationDetails a owl:Class ;
+    rdfs:label "allocation details"@en,
+        "分配细节（allocation details）"@zh ;
+    rdfs:comment "关于股票分配结果的详细信息。"@zh ;
+    rdfs:subClassOf cmns-doc:Document .
+
+fibo-bp-iss-ipo:AnnounceEquityIssue a owl:Class ;
+    rdfs:label "announce equity issue"@en,
+        "公告股票发行（announce equity issue）"@zh ;
+    rdfs:comment "对股票发行进行公告。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:ApplicationForShares a owl:Class ;
+    rdfs:label "application for shares"@en,
+        "认购申请（application for shares）"@zh ;
+    rdfs:comment "投资者提交的认购股票的申请。"@zh ;
+    rdfs:subClassOf cmns-doc:Document .
+
+fibo-bp-iss-ipo:ApproveForFlotation a owl:Class ;
+    rdfs:label "approve for flotation"@en,
+        "批准上市（approve for flotation）"@zh ;
+    rdfs:comment "批准公司上市发行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-fct-mkt:Exchange ],
+        fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:EquityAnnouncement a owl:Class ;
+    rdfs:label "equity announcement"@en,
+        "股票发行公告（equity announcement）"@zh ;
+    rdfs:comment "关于股票发行的公告。"@zh ;
+    rdfs:subClassOf cmns-doc:Notice .
+
+fibo-bp-iss-ipo:FilingDetails a owl:Class ;
+    rdfs:label "filing details"@en,
+        "申报细节（filing details）"@zh ;
+    rdfs:comment "向监管机构申报的详细信息。"@zh ;
+    rdfs:subClassOf cmns-doc:Document .
+
+fibo-bp-iss-ipo:FormalApprovalForListingAndTrading a owl:Class ;
+    rdfs:label "formal approval for listing and trading"@en,
+        "正式上市交易批准（formal approval for listing and trading）"@zh ;
+    rdfs:comment "对证券上市与交易的正式批准。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-fct-mkt:Exchange ],
+        fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:IPOPreliminaryProspectus a owl:Class ;
+    rdfs:label "i p o preliminary prospectus"@en,
+        "IPO 初步招募说明书（i p o preliminary prospectus）"@zh ;
+    rdfs:comment "首次公开发行的初步招募说明书。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:precedes ;
+            owl:someValuesFrom fibo-bp-iss-ipo:IPOFullProspectus ],
+        fibo-bp-iss-doc:PreliminaryProspectus .
+
+fibo-bp-iss-ipo:IPOSettlementDetails a owl:Class ;
+    rdfs:label "i p o settlement details"@en,
+        "IPO 结算细节（i p o settlement details）"@zh ;
+    rdfs:comment "首次公开发行结算的详细信息。"@zh ;
+    rdfs:subClassOf cmns-doc:Document .
+
+fibo-bp-iss-ipo:IndicationOfInterest a owl:Class ;
+    rdfs:label "indication of interest"@en,
+        "兴趣表示（indication of interest）"@zh ;
+    rdfs:comment "投资者对认购发行证券表达的兴趣。"@zh ;
+    rdfs:subClassOf cmns-doc:Document .
+
+fibo-bp-iss-ipo:MarketingOfShareIssue a owl:Class ;
+    rdfs:label "marketing of share issue"@en,
+        "股票发行营销（marketing of share issue）"@zh ;
+    rdfs:comment "对股票发行进行的市场营销。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:NoticeOfAllocation a owl:Class ;
+    rdfs:label "notice of allocation"@en,
+        "分配通知（notice of allocation）"@zh ;
+    rdfs:comment "向认购人发出的股票分配通知。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:PublishInitialProspectus a owl:Class ;
+    rdfs:label "publish initial prospectus"@en,
+        "发布初步招募说明书（publish initial prospectus）"@zh ;
+    rdfs:comment "对外发布初步招募说明书。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:PurchasePrice a owl:Class ;
+    rdfs:label "purchase price"@en,
+        "购买价格（purchase price）"@zh ;
+    rdfs:comment "购买证券的价格。"@zh ;
+    rdfs:subClassOf fibo-fnd-acc-cur:MonetaryPrice .
+
+fibo-bp-iss-ipo:PurchaseUnallocatedStock a owl:Class ;
+    rdfs:label "purchase unallocated stock"@en,
+        "购入未分配股票（purchase unallocated stock）"@zh ;
+    rdfs:comment "承销商购入未被认购分配的股票。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:ReceiveApplications a owl:Class ;
+    rdfs:label "receive applications"@en,
+        "接收申请（receive applications）"@zh ;
+    rdfs:comment "接收投资者的认购申请。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:RegisterWithRegulatoryAuthority a owl:Class ;
+    rdfs:label "register with regulatory authority"@en,
+        "向监管机构注册（register with regulatory authority）"@zh ;
+    rdfs:comment "在监管机构办理发行注册。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-fct-mkt:Exchange ],
+        fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:RegistrationStatementDocument a owl:Class ;
+    rdfs:label "registration statement document"@en,
+        "注册说明书文件（registration statement document）"@zh ;
+    rdfs:comment "向监管机构提交的注册说明书文件。"@zh ;
+    rdfs:subClassOf cmns-doc:Document .
+
+fibo-bp-iss-ipo:SetPrice a owl:Class ;
+    rdfs:label "set price"@en,
+        "定价（set price）"@zh ;
+    rdfs:comment "确定发行价格。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:SettlementOfAllocatedShares a owl:Class ;
+    rdfs:label "settlement of allocated shares"@en,
+        "已分配股票的结算（settlement of allocated shares）"@zh ;
+    rdfs:comment "对已分配股票进行结算。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:ShareRegister a owl:Class ;
+    rdfs:label "share register"@en,
+        "股东名册（share register）"@zh ;
+    rdfs:comment "记录股票持有人的名册。"@zh ;
+    rdfs:subClassOf cmns-ra:Registry .
+
+fibo-bp-iss-ipo:lead a owl:ObjectProperty ;
+    rdfs:label "lead"@en,
+        "牵头（lead）"@zh ;
+    rdfs:comment "担任牵头角色。"@zh ;
+    rdfs:domain fibo-bp-iss-ipo:AppointAdvisors ;
+    rdfs:range fibo-bp-iss-ipo:Sponsor .
+
+fibo-bp-iss-ipo: a owl:Ontology ;
+    rdfs:label "Equities IPO Issuance Ontology"@en,
+        "股票首次公开发行本体（Equities IPO Issuance Ontology）"@zh ;
+    dcterms:abstract "Issuance process for equity instruments that are issued via an Initial Public Offering (IPO)." ;
+    dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义首次公开发行（IPO）的流程、阶段与参与方。"@zh ;
+    owl:imports fibo-bp-iss-doc:,
+        fibo-bp-iss-prc:,
+        fibo-fbc-fi-fi:,
+        fibo-fbc-fct-mkt:,
+        fibo-fbc-pas-fpas:,
+        fibo-fnd-acc-cur:,
+        fibo-fnd-dt-oc:,
+        fibo-fnd-utl-av:,
+        fibo-sec-sec-lst:,
+        cmns-av:,
+        cmns-cxtdsg:,
+        cmns-dt:,
+        cmns-doc:,
+        cmns-org:,
+        cmns-pts:,
+        cmns-ra:,
+        cmns-rlcmp: ;
+    owl:versionIRI fibo-bp-iss-ipo: ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional ;
+    cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc." .
+
+fibo-bp-iss-ipo:AppointAdvisors a owl:Class ;
+    rdfs:label "appoint advisors"@en,
+        "任命顾问（appoint advisors）"@zh ;
+    rdfs:comment "任命发行相关顾问。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:designates ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-bp-iss-ipo:CorporateBroker fibo-bp-iss-ipo:Sponsor fibo-bp-iss-ipo:ReportingAccountant cmns-ra:RegistrationAuthority ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:playsRole ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Issuer ],
+        fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
+
+fibo-bp-iss-ipo:IPOFullProspectus a owl:Class ;
+    rdfs:label "i p o full prospectus"@en,
+        "IPO 完整招募说明书（i p o full prospectus）"@zh ;
+    rdfs:comment "首次公开发行的完整招募说明书。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-doc:FinalProspectus .
+
+fibo-bp-iss-ipo:IPOProcess a owl:Class ;
+    rdfs:label "i p o process"@en,
+        "IPO 流程（i p o process）"@zh ;
+    rdfs:comment "首次公开发行的完整流程。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasDatePeriod ;
+            owl:someValuesFrom cmns-dt:DatePeriod ] .
+
+fibo-bp-iss-ipo:ReportingAccountant a owl:Class ;
+    rdfs:label "reporting accountant"@en,
+        "申报会计师（reporting accountant）"@zh ;
+    rdfs:comment "为发行出具会计报告的会计师。"@zh ;
+    rdfs:subClassOf cmns-pts:PartyRole .
+
+fibo-bp-iss-ipo:mayBe a owl:ObjectProperty ;
+    rdfs:label "may be"@en,
+        "可能是（may be）"@zh ;
+    rdfs:comment "标识一种可能性。"@zh ;
+    rdfs:domain fibo-bp-iss-ipo:Sponsor ;
+    rdfs:range fibo-bp-iss-ipo:CorporateBroker .
+
+fibo-bp-iss-ipo:shareUnderwriter a owl:ObjectProperty ;
+    rdfs:label "share underwriter"@en,
+        "股票承销商（share underwriter）"@zh ;
+    rdfs:comment "承销股票发行的参与方。"@zh ;
+    rdfs:domain fibo-bp-iss-ipo:Underwriting ;
+    rdfs:range fibo-bp-iss-ipo:PotentialShareUnderwriter .
+
+fibo-bp-iss-ipo:syndicateMember a owl:ObjectProperty ;
+    rdfs:label "syndicate member"@en,
+        "辛迪加成员（syndicate member）"@zh ;
+    rdfs:comment "作为联盟成员、为大型交易汇集资源并分担风险的个人或组织所扮演的角色。"@zh ;
+    rdfs:domain fibo-bp-iss-ipo:Underwriting ;
+    rdfs:range fibo-bp-iss-ipo:SyndicateMember .
+
+fibo-bp-iss-ipo:PotentialShareUnderwriter a owl:Class ;
+    rdfs:label "potential share underwriter"@en,
+        "潜在股票承销商（potential share underwriter）"@zh ;
+    rdfs:comment "可能成为股票发行承销商的参与方。"@zh ;
+    rdfs:subClassOf fibo-bp-iss-prc:PotentialUnderwriter .
+
+fibo-bp-iss-ipo:SyndicateMember a owl:Class ;
+    rdfs:label "syndicate member"@en,
+        "辛迪加成员（syndicate member）"@zh ;
+    rdfs:comment "作为联盟成员、为大型交易汇集资源并分担风险的个人或组织所扮演的角色。"@zh ;
+    rdfs:subClassOf cmns-pts:PartyRole .
+
+fibo-bp-iss-ipo:Underwriting a owl:Class ;
+    rdfs:label "underwriting"@en,
+        "承销（underwriting）"@zh ;
+    rdfs:comment "承销商承诺购入并转售发行证券的活动。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ipo:syndicateMember ;
+            owl:someValuesFrom fibo-bp-iss-ipo:SyndicateMember ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ipo:shareUnderwriter ;
+            owl:someValuesFrom fibo-bp-iss-ipo:PotentialShareUnderwriter ] .
+
+fibo-bp-iss-ipo:CorporateBroker a owl:Class ;
+    rdfs:label "corporate broker"@en,
+        "公司经纪人（corporate broker）"@zh ;
+    rdfs:comment "为公司发行提供经纪服务的参与方。"@zh ;
+    rdfs:subClassOf fibo-fbc-pas-fpas:Broker .
+
+fibo-bp-iss-ipo:Sponsor a owl:Class ;
+    rdfs:label "sponsor"@en,
+        "保荐人（sponsor）"@zh ;
+    rdfs:comment "为发行提供保荐服务的参与方。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ipo:mayBe ;
+            owl:someValuesFrom fibo-bp-iss-ipo:CorporateBroker ],
+        cmns-pts:PartyRole .
+
+fibo-bp-iss-ipo:InitialPublicOfferingProcessStep a owl:Class ;
+    rdfs:label "initial public offering process step",
+        "首次公开发行流程步骤（initial public offering process step）"@zh ;
+    rdfs:comment "首次公开发行流程中的一个步骤。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-bp-iss-ipo:IPOProcess ],
+        fibo-fnd-dt-oc:OccurrenceKind ;
+    cmns-av:abbreviation "IPO process step" .
+

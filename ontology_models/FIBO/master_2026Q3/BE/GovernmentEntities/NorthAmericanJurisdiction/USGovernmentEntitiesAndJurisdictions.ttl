@@ -1,0 +1,1675 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-ge-ge: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/GovernmentEntities/> .
+@prefix fibo-be-ge-usj: <https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix lcc-3166-1: <https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/> .
+@prefix lcc-3166-2-us: <https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-US/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-ge-usj:AmericanSamoaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "American Samoa entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://americansamoa.gov/>,
+        <https://www.doi.gov/oia/islands/american-samoa> ;
+    skos:definition "individual representing the unincorporated territory and polity of the United States located in the South Pacific Ocean, known as American Samoa" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:AmericanSamoa ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:GovernmentOfAmericanSamoa ;
+    cmns-av:explanatoryNote "American Samoa consists of five main islands and two coral atolls. The largest and most populous island is Tutuila, with the Manu'a Islands, Rose Atoll, and Swains Island also included in the territory. American Samoa is part of the Samoan Islands chain, located west of the Cook Islands, north of Tonga, and some 300 miles (500 km) south of Tokelau." .
+
+fibo-be-ge-usj:CommonwealthOfPuertoRicoEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Commonwealth of Puerto Rico entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://prfaa.pr.gov/>,
+        <https://en.wikipedia.org/wiki/Puerto_Rico> ;
+    skos:definition "individual representing the unincorporated territory and polity for the Commonwealth of Puerto Rico" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:PuertoRico ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:GovernmentOfPuertoRico .
+
+fibo-be-ge-usj:CommonwealthOfTheNorthernMarianaIslandsEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Commonwealth of the Northern Mariana Islands entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://gov.mp/>,
+        <https://www.doi.gov/oia/islands/cnmi> ;
+    skos:definition "individual representing the unincorporated territory and polity for the Commonwealth of the Northern Mariana Islands" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:NorthernMarianaIslands ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:GovernmentOfNorthernMarianaIslands ;
+    cmns-av:abbreviation "CMNI" .
+
+fibo-be-ge-usj:DistrictOfColumbiaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "District of Columbia entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://dc.gov/>,
+        <https://en.wikipedia.org/wiki/Washington,_D.C.> ;
+    skos:definition "individual representing the federal district and polity that is the US District of Columbia, also known as 'Washington, D.C.', 'Washington', 'the District', and 'D.C.', that is, the capital of the United States" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:DistrictOfColumbia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:DistrictOfColumbiaGovernment ;
+    cmns-av:synonym "Washington, D.C. entity" .
+
+fibo-be-ge-usj:GuamEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Guam entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.guam.gov/>,
+        <https://www.doi.gov/oia/islands/guam> ;
+    skos:definition "individual representing the unincorporated territory and polity for the island of Guam" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Guam ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:GovernmentOfGuam .
+
+fibo-be-ge-usj:StateOfAlabamaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Alabama entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.alabama.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Alabama" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Alabama ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfAlabamaGovernment .
+
+fibo-be-ge-usj:StateOfAlaskaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Alaska entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://alaska.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Alaska" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Alaska ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfAlaskaGovernment .
+
+fibo-be-ge-usj:StateOfArizonaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Arizona entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://az.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Arizona" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Arizona ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfArizonaGovernment .
+
+fibo-be-ge-usj:StateOfArkansasEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Arkansas entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.arkansas.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Arkansas" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Arkansas ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfArkansasGovernment .
+
+fibo-be-ge-usj:StateOfCaliforniaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of California entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.ca.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of California" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:California ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfCaliforniaGovernment .
+
+fibo-be-ge-usj:StateOfColoradoEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Colorado entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.colorado.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Colorado" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Colorado ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfColoradoGovernment .
+
+fibo-be-ge-usj:StateOfConnecticutEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Connecticut entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.colorado.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Connecticut" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Connecticut ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfConnecticutGovernment .
+
+fibo-be-ge-usj:StateOfDelawareEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Delaware entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://delaware.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Delaware" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Delaware ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfDelawareGovernment .
+
+fibo-be-ge-usj:StateOfFloridaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Florida entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.myflorida.com/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Florida" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Florida ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfFloridaGovernment .
+
+fibo-be-ge-usj:StateOfGeorgiaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Georgia entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://georgia.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Georgia" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Georgia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfGeorgiaGovernment .
+
+fibo-be-ge-usj:StateOfHawaiiEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Hawai'i entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://portal.ehawaii.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Hawai'i" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Hawaii ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfHawaiiGovernment .
+
+fibo-be-ge-usj:StateOfIdahoEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Idaho entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.idaho.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Idaho" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Idaho ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfIdahoGovernment .
+
+fibo-be-ge-usj:StateOfIllinoisEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Illinois entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.illinois.gov/Pages/default.aspx> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Illinois" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Illinois ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfIllinoisGovernment .
+
+fibo-be-ge-usj:StateOfIndianaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Indiana entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.in.gov/core/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Indiana" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Indiana ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfIndianaGovernment .
+
+fibo-be-ge-usj:StateOfIowaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Iowa entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.iowa.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Iowa" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Iowa ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfIowaGovernment .
+
+fibo-be-ge-usj:StateOfKansasEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Kansas entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.kansas.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Kansas" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Kansas ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfKansasGovernment .
+
+fibo-be-ge-usj:StateOfKentuckyEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Kentucky entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://kentucky.gov/Pages/home.aspx> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Kentucky" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Kentucky ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfKentuckyGovernment .
+
+fibo-be-ge-usj:StateOfLouisianaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Louisiana entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://louisiana.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Louisiana" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Louisiana ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfLouisianaGovernment .
+
+fibo-be-ge-usj:StateOfMaineEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Maine entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.maine.gov/portal/index.html> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Maine" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Maine ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfMaineGovernment .
+
+fibo-be-ge-usj:StateOfMarylandEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Maryland entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.maryland.gov/Pages/default.aspx> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Maryland" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Maryland ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfMarylandGovernment .
+
+fibo-be-ge-usj:StateOfMassachusettsEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Massachusetts entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.mass.gov/portal/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of (Commonwealth of) Massachusetts" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Massachusetts ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfMassachusettsGovernment .
+
+fibo-be-ge-usj:StateOfMichiganEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Michigan entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.michigan.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Michigan" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Michigan ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfMichiganGovernment .
+
+fibo-be-ge-usj:StateOfMinnesotaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Minnesota entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://mn.gov/portal/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Minnesota" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Minnesota ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfMinnesotaGovernment .
+
+fibo-be-ge-usj:StateOfMississippiEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Mississippi entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.mississippi.gov/Pages/default.aspx> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Mississippi" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Mississippi ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfMississippiGovernment .
+
+fibo-be-ge-usj:StateOfMissouriEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Missouri entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.mo.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Missouri" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Missouri ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfMissouriGovernment .
+
+fibo-be-ge-usj:StateOfMontanaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Montana entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://mt.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Montana" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Montana ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfMontanaGovernment .
+
+fibo-be-ge-usj:StateOfNebraskaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Nebraska entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nebraska.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Nebraska" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Nebraska ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfNebraskaGovernment .
+
+fibo-be-ge-usj:StateOfNevadaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Nevada entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://nv.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Nevada" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Nevada ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfNevadaGovernment .
+
+fibo-be-ge-usj:StateOfNewHampshireEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of New Hampshire entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nh.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of New Hampshire" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:NewHampshire ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfNewHampshireGovernment .
+
+fibo-be-ge-usj:StateOfNewJerseyEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of New Jersey entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.state.nj.us/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of New Jersey" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:NewJersey ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfNewJerseyGovernment .
+
+fibo-be-ge-usj:StateOfNewMexicoEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of New Mexico entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.newmexico.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of New Mexico" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:NewMexico ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfNewMexicoGovernment .
+
+fibo-be-ge-usj:StateOfNewYorkEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of New York entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.ny.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of New York" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:NewYork ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfNewYorkGovernment .
+
+fibo-be-ge-usj:StateOfNorthCarolinaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of North Carolina entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nc.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of North Carolina" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:NorthCarolina ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfNorthCarolinaGovernment .
+
+fibo-be-ge-usj:StateOfNorthDakotaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of North Dakota entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nd.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of North Dakota" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:NorthDakota ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfNorthDakotaGovernment .
+
+fibo-be-ge-usj:StateOfOhioEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Ohio entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://ohio.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Ohio" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Ohio ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfOhioGovernment .
+
+fibo-be-ge-usj:StateOfOklahomaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Oklahoma entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.ok.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Oklahoma" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Oklahoma ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfOklahomaGovernment .
+
+fibo-be-ge-usj:StateOfOregonEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Oregon entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.oregon.gov/pages/index.aspx> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Oregon" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Oregon ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfOregonGovernment .
+
+fibo-be-ge-usj:StateOfPennsylvaniaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Pennsylvania entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.pa.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Pennsylvania" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Pennsylvania ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfPennsylvaniaGovernment ;
+    cmns-av:synonym "Commonwealth of Pennsylvania entity" .
+
+fibo-be-ge-usj:StateOfRhodeIslandEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Rhode Island entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.ri.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Rhode Island" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:RhodeIsland ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfRhodeIslandGovernment .
+
+fibo-be-ge-usj:StateOfSouthCarolinaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of South Carolina entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.sc.gov/Pages/default.aspx> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of South Carolina" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:SouthCarolina ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfSouthCarolinaGovernment .
+
+fibo-be-ge-usj:StateOfSouthDakotaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of South Dakota entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://sd.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of South Dakota" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:SouthDakota ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfSouthDakotaGovernment .
+
+fibo-be-ge-usj:StateOfTennesseeEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Tennessee entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://tennessee.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Tennessee" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Tennessee ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfTennesseeGovernment .
+
+fibo-be-ge-usj:StateOfTexasEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Texas entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.texas.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Texas" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Texas ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfTexasGovernment .
+
+fibo-be-ge-usj:StateOfUtahEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Utah entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.utah.gov/index.html> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Utah" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Utah ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfUtahGovernment .
+
+fibo-be-ge-usj:StateOfVermontEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Vermont entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.vermont.gov/portal/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Vermont" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Vermont ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfVermontGovernment .
+
+fibo-be-ge-usj:StateOfVirginiaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Virginia entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.virginia.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Virginia" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Virginia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfVirginiaGovernment ;
+    cmns-av:synonym "Commonwealth of Virginia entity" .
+
+fibo-be-ge-usj:StateOfWashingtonEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Washington entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://access.wa.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Washington" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Washington ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfWashingtonGovernment .
+
+fibo-be-ge-usj:StateOfWestVirginiaEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of West Virginia entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.wv.gov/Pages/default.aspx#home> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of West Virginia" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:WestVirginia ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfWestVirginiaGovernment .
+
+fibo-be-ge-usj:StateOfWisconsinEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Wisconsin entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.wisconsin.gov/Pages/home.aspx> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Wisconsin" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Wisconsin ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfWisconsinGovernment .
+
+fibo-be-ge-usj:StateOfWyomingEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "State of Wyoming entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.wyo.gov/> ;
+    skos:definition "individual representing the regional sovereignty and polity that is the US State of Wyoming" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Wyoming ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:StateOfWyomingGovernment .
+
+fibo-be-ge-usj:UnitedStatesEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:FederatedSovereignty ;
+    rdfs:label "United States entity" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.usa.gov/> ;
+    skos:definition "individual representing the federated sovereignty and polity that is the United States of America" ;
+    fibo-be-ge-ge:hasFullSovereigntyOver lcc-3166-1:UnitedStatesOfAmerica ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:Alabama,
+        lcc-3166-2-us:Alaska,
+        lcc-3166-2-us:AmericanSamoa,
+        lcc-3166-2-us:Arizona,
+        lcc-3166-2-us:Arkansas,
+        lcc-3166-2-us:California,
+        lcc-3166-2-us:Colorado,
+        lcc-3166-2-us:Connecticut,
+        lcc-3166-2-us:Delaware,
+        lcc-3166-2-us:DistrictOfColumbia,
+        lcc-3166-2-us:Florida,
+        lcc-3166-2-us:Georgia,
+        lcc-3166-2-us:Guam,
+        lcc-3166-2-us:Hawaii,
+        lcc-3166-2-us:Idaho,
+        lcc-3166-2-us:Illinois,
+        lcc-3166-2-us:Indiana,
+        lcc-3166-2-us:Iowa,
+        lcc-3166-2-us:Kansas,
+        lcc-3166-2-us:Kentucky,
+        lcc-3166-2-us:Louisiana,
+        lcc-3166-2-us:Maine,
+        lcc-3166-2-us:Maryland,
+        lcc-3166-2-us:Massachusetts,
+        lcc-3166-2-us:Michigan,
+        lcc-3166-2-us:Minnesota,
+        lcc-3166-2-us:Mississippi,
+        lcc-3166-2-us:Missouri,
+        lcc-3166-2-us:Montana,
+        lcc-3166-2-us:Nebraska,
+        lcc-3166-2-us:Nevada,
+        lcc-3166-2-us:NewHampshire,
+        lcc-3166-2-us:NewJersey,
+        lcc-3166-2-us:NewMexico,
+        lcc-3166-2-us:NewYork,
+        lcc-3166-2-us:NorthCarolina,
+        lcc-3166-2-us:NorthDakota,
+        lcc-3166-2-us:NorthernMarianaIslands,
+        lcc-3166-2-us:Ohio,
+        lcc-3166-2-us:Oklahoma,
+        lcc-3166-2-us:Oregon,
+        lcc-3166-2-us:Pennsylvania,
+        lcc-3166-2-us:PuertoRico,
+        lcc-3166-2-us:RhodeIsland,
+        lcc-3166-2-us:SouthCarolina,
+        lcc-3166-2-us:SouthDakota,
+        lcc-3166-2-us:Tennessee,
+        lcc-3166-2-us:Texas,
+        lcc-3166-2-us:UnitedStatesMinorOutlyingIslands,
+        lcc-3166-2-us:Utah,
+        lcc-3166-2-us:Vermont,
+        lcc-3166-2-us:VirginIslands,
+        lcc-3166-2-us:Virginia,
+        lcc-3166-2-us:Washington,
+        lcc-3166-2-us:WestVirginia,
+        lcc-3166-2-us:Wisconsin,
+        lcc-3166-2-us:Wyoming ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:UnitedStatesGovernment .
+
+fibo-be-ge-usj:VirginIslandsEntity a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalSovereignty ;
+    rdfs:label "Virgin Islands entity (USA)" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.vi.gov/>,
+        <https://en.wikipedia.org/wiki/United_States_Virgin_Islands>,
+        <https://www.doi.gov/oia/islands/virgin-islands> ;
+    skos:definition "individual representing the unincorporated territory and polity for the Virgin Islands (USA)" ;
+    fibo-be-ge-ge:hasSharedSovereigntyOver lcc-3166-2-us:VirginIslands ;
+    fibo-be-ge-ge:isRepresentedBy fibo-be-ge-usj:GovernmentOfVirginIslands .
+
+fibo-be-ge-usj:AmericanSamoaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "American Samoa jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://americansamoa.gov/>,
+        <https://www.doi.gov/oia/islands/american-samoa> ;
+    skos:definition "individual representing the jurisdiction of the US territory of American Samoa" ;
+    cmns-rga:hasReach lcc-3166-2-us:AmericanSamoa ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:GovernmentOfAmericanSamoa .
+
+fibo-be-ge-usj:DistrictOfColumbiaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "District of Columbia jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.dccourts.gov/internet/> ;
+    skos:definition "individual representing the jurisdiction of the US District of Columbia, also known as Washington, D.C." ;
+    cmns-av:explanatoryNote "Article One, Section Eight of the United States Constitution grants the U.S. Congress 'exclusive jurisdiction' over the city. The District did not have an elected local government until the passage of the 1973 Home Rule Act. The Act devolved certain Congressional powers to an elected mayor and the thirteen-member Council of the District of Columbia. However, Congress retains the right to review and overturn laws created by the council and intervene in local affairs. Jurisdiction is shared among numerous federal agencies, the attorney general for the District, and Congress today. Actions requiring litigation in court may be addressed in the District of Columbia Superior Court or Court of Appeals, or in Federal Court, depending on the issue." ;
+    cmns-rga:hasReach lcc-3166-2-us:DistrictOfColumbia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:DistrictOfColumbiaGovernment .
+
+fibo-be-ge-usj:GuamJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Guam jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.guam.gov/>,
+        <https://www.doi.gov/oia/islands/guam> ;
+    skos:definition "individual representing the jurisdiction of the US territory of Guam" ;
+    cmns-rga:hasReach lcc-3166-2-us:Guam ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:GovernmentOfGuam .
+
+fibo-be-ge-usj:NorthernMarianaIslandsJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Northern Mariana Islands jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://gov.mp/>,
+        <https://www.doi.gov/oia/islands/cnmi> ;
+    skos:definition "individual representing the jurisdiction of the US territory of the Commonwealth of the Northern Mariana Islands" ;
+    cmns-rga:hasReach lcc-3166-2-us:NorthernMarianaIslands ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:GovernmentOfNorthernMarianaIslands .
+
+fibo-be-ge-usj:PuertoRicoJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Puerto Rico jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://prfaa.pr.gov/>,
+        <https://en.wikipedia.org/wiki/Puerto_Rico> ;
+    skos:definition "individual representing the jurisdiction of the US territory of the Commonwealth of Puerto Rico" ;
+    cmns-rga:hasReach lcc-3166-2-us:PuertoRico ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:GovernmentOfPuertoRico .
+
+fibo-be-ge-usj:StateOfAlabamaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Alabama jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://judicial.alabama.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Alabama, i.e., that of the Supreme Court of Alabama and Alabama's Unified Judicial System" ;
+    cmns-rga:hasReach lcc-3166-2-us:Alabama ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfAlabamaGovernment .
+
+fibo-be-ge-usj:StateOfAlaskaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Alaska jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.courts.alaska.gov/ctinfo.htm> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Alaska, i.e., that of the Alaska Supreme Court and Alaska Court System" ;
+    cmns-rga:hasReach lcc-3166-2-us:Alaska ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfAlaskaGovernment .
+
+fibo-be-ge-usj:StateOfArizonaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Arizona jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.azcourts.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Arizona, i.e., that of the Arizona Supreme Court and Arizona Judicial System" ;
+    cmns-rga:hasReach lcc-3166-2-us:Arizona ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfArizonaGovernment .
+
+fibo-be-ge-usj:StateOfArkansasJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Arkansas jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://courts.arkansas.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Arkansas, i.e., that of the Arkansas Supreme Court and Judiciary System" ;
+    cmns-rga:hasReach lcc-3166-2-us:Arkansas ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfArkansasGovernment .
+
+fibo-be-ge-usj:StateOfCaliforniaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of California jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.ca.gov/Agencies/Courts-California> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of California, i.e., that of the California Supreme Court and Judiciary of California" ;
+    cmns-rga:hasReach lcc-3166-2-us:California ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfCaliforniaGovernment .
+
+fibo-be-ge-usj:StateOfColoradoJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Colorado jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.courts.state.co.us/Courts/Index.cfm> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Colorado, i.e., that of the Colorado Supreme Court and Colorado Judicial System" ;
+    cmns-rga:hasReach lcc-3166-2-us:Colorado ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfColoradoGovernment .
+
+fibo-be-ge-usj:StateOfConnecticutJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Connecticut jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.jud.ct.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Connecticut, i.e., that of the Connecticut Supreme Court and State of Connecticut Judicial System" ;
+    cmns-rga:hasReach lcc-3166-2-us:Connecticut ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfConnecticutGovernment .
+
+fibo-be-ge-usj:StateOfDelawareJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Delaware jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://courts.delaware.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Delaware, i.e., that of the Delaware Supreme Court, Court of Chancery, and Judiciary System" ;
+    cmns-rga:hasReach lcc-3166-2-us:Delaware ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfDelawareGovernment .
+
+fibo-be-ge-usj:StateOfFloridaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Florida jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.flcourts.org/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Florida, i.e., that of the Florida Supreme Court and State Courts System of Florida" ;
+    cmns-rga:hasReach lcc-3166-2-us:Florida ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfFloridaGovernment .
+
+fibo-be-ge-usj:StateOfGeorgiaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Georgia jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.gasupreme.us/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Georgia, i.e., that of the Supreme Court of Georgia and Judiciary System" ;
+    cmns-rga:hasReach lcc-3166-2-us:Georgia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfGeorgiaGovernment .
+
+fibo-be-ge-usj:StateOfHawaiiJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Hawai'i jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.courts.state.hi.us/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Hawai'i, i.e., that of the Hawai'i Supreme Court and Hawai'i State Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Hawaii ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfHawaiiGovernment .
+
+fibo-be-ge-usj:StateOfIdahoJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Idaho jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.idaho.gov/government/judicial.html> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Idaho, i.e., that of the Idaho Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Idaho ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfIdahoGovernment .
+
+fibo-be-ge-usj:StateOfIllinoisJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Illinois jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.illinois.gov/Government/Pages/JudicialBranch.aspx> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Illinois, i.e., that of the Illinois Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Illinois ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfIllinoisGovernment .
+
+fibo-be-ge-usj:StateOfIndianaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Indiana jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.in.gov/judiciary/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Indiana, i.e., that of the Indiana Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Indiana ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfIndianaGovernment .
+
+fibo-be-ge-usj:StateOfIowaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Iowa jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.iowacourts.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Iowa, i.e., that of the Iowa Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Iowa ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfIowaGovernment .
+
+fibo-be-ge-usj:StateOfKansasJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Kansas jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.kansas.gov/government/judicial.html> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Kansas, i.e., that of the Kansas Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Kansas ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfKansasGovernment .
+
+fibo-be-ge-usj:StateOfKentuckyJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Kentucky jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://kentucky.gov/government/Pages/default.aspx#courts> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Kansas, i.e., that of the Kentucky Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Kentucky ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfKentuckyGovernment .
+
+fibo-be-ge-usj:StateOfLouisianaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Louisiana jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://louisiana.gov/Government/Judicial_Branch/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Louisiana, i.e., that of the Louisiana Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Louisiana ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfLouisianaGovernment .
+
+fibo-be-ge-usj:StateOfMaineJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Maine jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.courts.maine.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Maine, i.e., that of the Maine Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Maine ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfMaineGovernment .
+
+fibo-be-ge-usj:StateOfMarylandJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Maryland jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.courts.state.md.us/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Maryland, i.e., that of the Maryland Court of Appeals and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Maryland ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfMarylandGovernment .
+
+fibo-be-ge-usj:StateOfMassachusettsJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Massachusetts jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.mass.gov/courts/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of (Commonwealth of) Massachusetts, i.e., that of the Massachusetts Supreme Judicial Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Massachusetts ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfMassachusettsGovernment .
+
+fibo-be-ge-usj:StateOfMichiganJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Michigan jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.michigan.gov/som/0,4669,7-192-29701_29703---,00.html> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Michigan, i.e., that of the Michigan Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Michigan ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfMichiganGovernment .
+
+fibo-be-ge-usj:StateOfMinnesotaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Minnesota jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://mn.gov/portal/government/state/courts/>,
+        <http://www.mncourts.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Minnesota, i.e., that of the Minnesota Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Minnesota ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfMinnesotaGovernment .
+
+fibo-be-ge-usj:StateOfMississippiJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Mississippi jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://courts.ms.gov/>,
+        <http://www.mississippi.gov/content/Pages/Government-Branches.aspx#Judicial> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Mississippi, i.e., that of the Mississippi Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Mississippi ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfMississippiGovernment .
+
+fibo-be-ge-usj:StateOfMissouriJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Missouri jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.mo.gov/government/judicial-branch/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Missouri, i.e., that of the Missouri Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Missouri ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfMissouriGovernment .
+
+fibo-be-ge-usj:StateOfMontanaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Montana jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://courts.mt.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Montana, i.e., that of the Montana Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Montana ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfMontanaGovernment .
+
+fibo-be-ge-usj:StateOfNebraskaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Nebraska jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nebraska.gov/government/judicial/>,
+        <https://supremecourt.nebraska.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Nebraska, i.e., that of the Nebraska Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Nebraska ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfNebraskaGovernment .
+
+fibo-be-ge-usj:StateOfNevadaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Nevada jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://nv.gov/government/judicial/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Nevada, i.e., that of the Nevada Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Nevada ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfNevadaGovernment .
+
+fibo-be-ge-usj:StateOfNewHampshireJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of New Hampshire jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.courts.state.nh.us/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of New Hampshire, i.e., that of the New Hampshire Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:NewHampshire ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfNewHampshireGovernment .
+
+fibo-be-ge-usj:StateOfNewJerseyJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of New Jersey jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.judiciary.state.nj.us/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of New Jersey, i.e., that of the New Jersey Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:NewJersey ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfNewJerseyGovernment .
+
+fibo-be-ge-usj:StateOfNewMexicoJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of New Mexico jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://supremecourt.nmcourts.gov/>,
+        <http://www.newmexico.gov/government/New_Mexico_Judicial_Branch.aspx> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of New Mexico, i.e., that of the New Mexico Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:NewMexico ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfNewMexicoGovernment .
+
+fibo-be-ge-usj:StateOfNewYorkJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of New York jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nycourts.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of New York, i.e., that of the New York Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:NewYork ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfNewYorkGovernment .
+
+fibo-be-ge-usj:StateOfNorthCarolinaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of North Carolina jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nccourts.org/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of North Carolina, i.e., that of the North Carolina Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:NorthCarolina ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfNorthCarolinaGovernment .
+
+fibo-be-ge-usj:StateOfNorthDakotaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of North Dakota jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.ndcourts.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of North Dakota, i.e., that of the North Dakota Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:NorthDakota ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfNorthDakotaGovernment .
+
+fibo-be-ge-usj:StateOfOhioJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Ohio jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.supremecourt.ohio.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Ohio, i.e., that of the Ohio Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Ohio ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfOhioGovernment .
+
+fibo-be-ge-usj:StateOfOklahomaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Oklahoma jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.ok.gov/portal/section.php?sec_id=67#skipcontent> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Oklahoma, i.e., that of the Oklahoma Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Oklahoma ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfOklahomaGovernment .
+
+fibo-be-ge-usj:StateOfOregonJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Oregon jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://bluebook.state.or.us/state/judicial/judicial.htm> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Oregon, i.e., that of the Oregon Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Oregon ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfOregonGovernment .
+
+fibo-be-ge-usj:StateOfPennsylvaniaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Pennsylvania jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.pacourts.us/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Pennsylvania, i.e., that of the Pennsylvania Supreme Court and Judiciary" ;
+    cmns-av:synonym "Commonwealth of Pennsylvania jurisdiction" ;
+    cmns-rga:hasReach lcc-3166-2-us:Pennsylvania ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfPennsylvaniaGovernment .
+
+fibo-be-ge-usj:StateOfRhodeIslandJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Rhode Island jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.courts.ri.gov/Pages/default.aspx> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Rhode Island, i.e., that of the Rhode Island Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:RhodeIsland ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfRhodeIslandGovernment .
+
+fibo-be-ge-usj:StateOfSouthCarolinaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of South Carolina jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.sc.gov/Government/Pages/courtsAndLegalServices.aspx> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of South Carolina, i.e., that of the South Carolina Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:SouthCarolina ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfSouthCarolinaGovernment .
+
+fibo-be-ge-usj:StateOfSouthDakotaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of South Dakota jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://ujs.sd.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of South Dakota, i.e., that of the South Dakota Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:SouthDakota ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfSouthDakotaGovernment .
+
+fibo-be-ge-usj:StateOfTennesseeJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Tennessee jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.tncourts.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Tennessee, i.e., that of the Tennessee Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Tennessee ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfTennesseeGovernment .
+
+fibo-be-ge-usj:StateOfTexasJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Texas jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.txcourts.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Texas, i.e., that of the Texas Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Texas ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfTexasGovernment .
+
+fibo-be-ge-usj:StateOfUtahJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Utah jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.utah.gov/government/judicial.html> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Utah, i.e., that of the Utah Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Utah ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfUtahGovernment .
+
+fibo-be-ge-usj:StateOfVermontJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Vermont jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.vermontjudiciary.org/default.aspx> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Vermont, i.e., that of the Vermont Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Vermont ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfVermontGovernment .
+
+fibo-be-ge-usj:StateOfVirginiaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Virginia jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.courts.state.va.us/courts/home.html> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Virginia, i.e., that of the Virginia Supreme Court and Judiciary" ;
+    cmns-av:synonym "Commonwealth of Virginia jurisdiction" ;
+    cmns-rga:hasReach lcc-3166-2-us:Virginia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfVirginiaGovernment .
+
+fibo-be-ge-usj:StateOfWashingtonJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Washington jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.courts.wa.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Washington, i.e., that of the Washington Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Washington ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfWashingtonGovernment .
+
+fibo-be-ge-usj:StateOfWestVirginiaJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of West Virginia jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.courtswv.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of West Virginia, i.e., that of the West Virginia Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:WestVirginia ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfWestVirginiaGovernment .
+
+fibo-be-ge-usj:StateOfWisconsinJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Wisconsin jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.wisconsin.gov/Pages/courtsAndLaw.aspx> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Wisconsin, i.e., that of the Wisconsin Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Wisconsin ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfWisconsinGovernment .
+
+fibo-be-ge-usj:StateOfWyomingJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "State of Wyoming jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.wyo.gov/> ;
+    skos:definition "individual representing the overall jurisdiction for the US State of Wyoming, i.e., that of the Wyoming Supreme Court and Judiciary" ;
+    cmns-rga:hasReach lcc-3166-2-us:Wyoming ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:StateOfWyomingGovernment .
+
+fibo-be-ge-usj:UnitedStatesJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "United States jurisdiction" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.uscourts.gov/about-federal-courts> ;
+    skos:definition "individual representing the federal jurisdiction of the United States of America" ;
+    cmns-av:adaptedFrom "http://en.wikipedia.org/wiki/Federal_jurisdiction_(United_States)"^^xsd:anyURI,
+        "http://www.uscourts.gov/about-federal-courts"^^xsd:anyURI ;
+    cmns-av:explanatoryNote "The United States of America is a federal republic governed by the U.S. Constitution containing fifty states and a federal district which elect the president, and having other territories and possessions in its national jurisdiction. This government is known as the Union, the United States, or the federal government. Federal jurisdiction refers to the legal scope of the government's powers. Under the Constitution and various treaties, the legal jurisdiction of the United States includes territories and territorial waters." ;
+    cmns-rga:hasReach lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:UnitedStatesGovernment .
+
+fibo-be-ge-usj:VirginIslandsJurisdiction a owl:NamedIndividual,
+        cmns-rga:Jurisdiction ;
+    rdfs:label "Virgin Islands jurisdiction (USA)" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.vi.gov/>,
+        <https://www.doi.gov/oia/islands/virgin-islands> ;
+    skos:definition "individual representing the jurisdiction of the US territory of the Virgin Islands" ;
+    cmns-rga:hasReach lcc-3166-2-us:VirginIslands ;
+    cmns-rga:isJurisdictionOf fibo-be-ge-usj:GovernmentOfVirginIslands .
+
+fibo-be-ge-usj:DistrictOfColumbiaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "District of Columbia government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://dc.gov/page/government-resource-center> ;
+    skos:definition "individual representing the government of the US District of Columbia, also known as Washington, D.C." ;
+    cmns-rga:governs lcc-3166-2-us:DistrictOfColumbia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:DistrictOfColumbiaJurisdiction .
+
+fibo-be-ge-usj:GovernmentOfAmericanSamoa a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of American Samoa" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://americansamoa.gov/>,
+        <https://www.doi.gov/oia/islands/american-samoa> ;
+    skos:definition "individual representing the government of the US territory of American Samoa" ;
+    cmns-rga:governs lcc-3166-2-us:AmericanSamoa ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:AmericanSamoaJurisdiction .
+
+fibo-be-ge-usj:GovernmentOfGuam a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Guam" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.guam.gov/>,
+        <https://www.doi.gov/oia/islands/guam> ;
+    skos:definition "individual representing the government of the US territory of Guam" ;
+    cmns-rga:governs lcc-3166-2-us:Guam ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:GuamJurisdiction .
+
+fibo-be-ge-usj:GovernmentOfNorthernMarianaIslands a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of the Northern Mariana Islands" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://gov.mp/>,
+        <https://www.doi.gov/oia/islands/cnmi> ;
+    skos:definition "individual representing the government of the US territory of the Commonwealth of the Northern Mariana Islands" ;
+    cmns-rga:governs lcc-3166-2-us:NorthernMarianaIslands ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:NorthernMarianaIslandsJurisdiction .
+
+fibo-be-ge-usj:GovernmentOfPuertoRico a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of Puerto Rico" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://prfaa.pr.gov/>,
+        <https://en.wikipedia.org/wiki/Puerto_Rico> ;
+    skos:definition "individual representing the government of the US territory of the Commonwealth of Puerto Rico" ;
+    cmns-rga:governs lcc-3166-2-us:PuertoRico ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:PuertoRicoJurisdiction .
+
+fibo-be-ge-usj:GovernmentOfVirginIslands a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "government of the Virgin Islands (USA)" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.vi.gov/>,
+        <https://www.doi.gov/oia/islands/virgin-islands> ;
+    skos:definition "individual representing the government of the US territory of the Virgin Islands" ;
+    cmns-rga:governs lcc-3166-2-us:VirginIslands ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:VirginIslandsJurisdiction .
+
+fibo-be-ge-usj:StateOfAlabamaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Alabama government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.alabama.gov/#government> ;
+    skos:definition "individual representing the regional government of the State of Alabama" ;
+    cmns-rga:governs lcc-3166-2-us:Alabama ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfAlabamaJurisdiction .
+
+fibo-be-ge-usj:StateOfAlaskaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Alaska government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://alaska.gov/akdir1.html> ;
+    skos:definition "individual representing the regional government of the State of Alaska" ;
+    cmns-rga:governs lcc-3166-2-us:Alaska ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfAlaskaJurisdiction .
+
+fibo-be-ge-usj:StateOfArizonaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Arizona government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://az.gov/government> ;
+    skos:definition "individual representing the regional government of the State of Arizona" ;
+    cmns-rga:governs lcc-3166-2-us:Arizona ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfArizonaJurisdiction .
+
+fibo-be-ge-usj:StateOfArkansasGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Arkansas government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.arkansas.gov/government/> ;
+    skos:definition "individual representing the regional government of the State of Arkansas" ;
+    cmns-rga:governs lcc-3166-2-us:Arkansas ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfArkansasJurisdiction .
+
+fibo-be-ge-usj:StateOfCaliforniaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of California government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.ca.gov/Government> ;
+    skos:definition "individual representing the regional government of the State of California" ;
+    cmns-rga:governs lcc-3166-2-us:California ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfCaliforniaJurisdiction .
+
+fibo-be-ge-usj:StateOfColoradoGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Colorado government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.colorado.gov/cogov-now> ;
+    skos:definition "individual representing the regional government of the State of Colorado" ;
+    cmns-rga:governs lcc-3166-2-us:Colorado ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfColoradoJurisdiction .
+
+fibo-be-ge-usj:StateOfConnecticutGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Connecticut government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://portal.ct.gov/government/> ;
+    skos:definition "individual representing the regional government of the State of Connecticut" ;
+    cmns-rga:governs lcc-3166-2-us:Connecticut ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfConnecticutJurisdiction .
+
+fibo-be-ge-usj:StateOfDelawareGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Delaware government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://delaware.gov/> ;
+    skos:definition "individual representing the regional government of the State of Delaware" ;
+    cmns-rga:governs lcc-3166-2-us:Delaware ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfDelawareJurisdiction .
+
+fibo-be-ge-usj:StateOfFloridaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Florida government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.myflorida.com/taxonomy/government/> ;
+    skos:definition "individual representing the regional government of the State of Florida" ;
+    cmns-rga:governs lcc-3166-2-us:Florida ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfFloridaJurisdiction .
+
+fibo-be-ge-usj:StateOfGeorgiaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Georgia government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://georgia.gov/georgia-government> ;
+    skos:definition "individual representing the regional government of the State of Georgia" ;
+    cmns-rga:governs lcc-3166-2-us:Georgia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfGeorgiaJurisdiction .
+
+fibo-be-ge-usj:StateOfHawaiiGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Hawai'i government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://portal.ehawaii.gov/government/> ;
+    skos:definition "individual representing the regional government of the State of Hawai'i" ;
+    cmns-rga:governs lcc-3166-2-us:Hawaii ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfHawaiiJurisdiction .
+
+fibo-be-ge-usj:StateOfIdahoGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Idaho government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.idaho.gov/government/index.html> ;
+    skos:definition "individual representing the regional government of the State of Idaho" ;
+    cmns-rga:governs lcc-3166-2-us:Idaho ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfIdahoJurisdiction .
+
+fibo-be-ge-usj:StateOfIllinoisGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Illinois government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.illinois.gov/government/Pages/default.aspx> ;
+    skos:definition "individual representing the regional government of the State of Illinois" ;
+    cmns-rga:governs lcc-3166-2-us:Illinois ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfIllinoisJurisdiction .
+
+fibo-be-ge-usj:StateOfIndianaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Indiana government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.in.gov/core/> ;
+    skos:definition "individual representing the regional government of the State of Indiana" ;
+    cmns-rga:governs lcc-3166-2-us:Indiana ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfIndianaJurisdiction .
+
+fibo-be-ge-usj:StateOfIowaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Iowa government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.iowa.gov/> ;
+    skos:definition "individual representing the regional government of the State of Iowa" ;
+    cmns-rga:governs lcc-3166-2-us:Iowa ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfIowaJurisdiction .
+
+fibo-be-ge-usj:StateOfKansasGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Kansas government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.kansas.gov/government> ;
+    skos:definition "individual representing the regional government of the State of Kansas" ;
+    cmns-rga:governs lcc-3166-2-us:Kansas ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfKansasJurisdiction .
+
+fibo-be-ge-usj:StateOfKentuckyGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Kentucky government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://kentucky.gov/government/Pages/default.aspx> ;
+    skos:definition "individual representing the regional government of the State of Kentucky" ;
+    cmns-rga:governs lcc-3166-2-us:Kentucky ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfKentuckyJurisdiction .
+
+fibo-be-ge-usj:StateOfLouisianaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Louisiana government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://louisiana.gov/Government/> ;
+    skos:definition "individual representing the regional government of the State of Louisiana" ;
+    cmns-rga:governs lcc-3166-2-us:Louisiana ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfLouisianaJurisdiction .
+
+fibo-be-ge-usj:StateOfMaineGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Maine government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.maine.gov/portal/government/> ;
+    skos:definition "individual representing the regional government of the State of Maine" ;
+    cmns-rga:governs lcc-3166-2-us:Maine ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfMaineJurisdiction .
+
+fibo-be-ge-usj:StateOfMarylandGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Maryland government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.maryland.gov/pages/government.aspx> ;
+    skos:definition "individual representing the regional government of the State of Maryland" ;
+    cmns-rga:governs lcc-3166-2-us:Maryland ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfMarylandJurisdiction .
+
+fibo-be-ge-usj:StateOfMassachusettsGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Massachusetts government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.mass.gov/portal/government/> ;
+    skos:definition "individual representing the regional government of the Commonwealth of Massachusetts" ;
+    cmns-rga:governs lcc-3166-2-us:Massachusetts ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfMassachusettsJurisdiction .
+
+fibo-be-ge-usj:StateOfMichiganGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Michigan government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.michigan.gov/som/0,4669,7-192-29701---,00.html> ;
+    skos:definition "individual representing the regional government of the US State of Michigan" ;
+    cmns-rga:governs lcc-3166-2-us:Michigan ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfMichiganJurisdiction .
+
+fibo-be-ge-usj:StateOfMinnesotaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Minnesota government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://mn.gov/portal/government/> ;
+    skos:definition "individual representing the regional government of the US State of Minnesota" ;
+    cmns-rga:governs lcc-3166-2-us:Minnesota ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfMinnesotaJurisdiction .
+
+fibo-be-ge-usj:StateOfMississippiGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Mississippi government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.mississippi.gov/content/pages/government.aspx> ;
+    skos:definition "individual representing the regional government of the US State of Mississippi" ;
+    cmns-rga:governs lcc-3166-2-us:Mississippi ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfMississippiJurisdiction .
+
+fibo-be-ge-usj:StateOfMissouriGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Missouri government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.mo.gov/government> ;
+    skos:definition "individual representing the regional government of the US State of Missouri" ;
+    cmns-rga:governs lcc-3166-2-us:Missouri ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfMissouriJurisdiction .
+
+fibo-be-ge-usj:StateOfMontanaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Montana government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://mt.gov/government/default.aspx> ;
+    skos:definition "individual representing the regional government of the US State of Montana" ;
+    cmns-rga:governs lcc-3166-2-us:Montana ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfMontanaJurisdiction .
+
+fibo-be-ge-usj:StateOfNebraskaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Nebraska government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nebraska.gov/#government> ;
+    skos:definition "individual representing the regional government of the US State of Nebraska" ;
+    cmns-rga:governs lcc-3166-2-us:Nebraska ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfNebraskaJurisdiction .
+
+fibo-be-ge-usj:StateOfNevadaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Nevada government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://nv.gov/government/> ;
+    skos:definition "individual representing the regional government of the US State of Nevada" ;
+    cmns-rga:governs lcc-3166-2-us:Nevada ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfNevadaJurisdiction .
+
+fibo-be-ge-usj:StateOfNewHampshireGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of New Hampshire government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nh.gov/government/index.html> ;
+    skos:definition "individual representing the regional government of the US State of New Hampshire" ;
+    cmns-rga:governs lcc-3166-2-us:NewHampshire ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfNewHampshireJurisdiction .
+
+fibo-be-ge-usj:StateOfNewJerseyGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of New Jersey government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.state.nj.us/nj/gov/> ;
+    skos:definition "individual representing the regional government of the US State of New Jersey" ;
+    cmns-rga:governs lcc-3166-2-us:NewJersey ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfNewJerseyJurisdiction .
+
+fibo-be-ge-usj:StateOfNewMexicoGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of New Mexico government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.newmexico.gov/government/> ;
+    skos:definition "individual representing the regional government of the US State of New Mexico" ;
+    cmns-rga:governs lcc-3166-2-us:NewMexico ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfNewMexicoJurisdiction .
+
+fibo-be-ge-usj:StateOfNewYorkGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of New York government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.ny.gov/agencies> ;
+    skos:definition "individual representing the regional government of the US State of New York" ;
+    cmns-rga:governs lcc-3166-2-us:NewYork ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfNewYorkJurisdiction .
+
+fibo-be-ge-usj:StateOfNorthCarolinaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of North Carolina government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nc.gov/government> ;
+    skos:definition "individual representing the regional government of the US State of North Carolina" ;
+    cmns-rga:governs lcc-3166-2-us:NorthCarolina ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfNorthCarolinaJurisdiction .
+
+fibo-be-ge-usj:StateOfNorthDakotaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of North Dakota government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.nd.gov/category.htm?id=71> ;
+    skos:definition "individual representing the regional government of the US State of North Dakota" ;
+    cmns-rga:governs lcc-3166-2-us:NorthDakota ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfNorthDakotaJurisdiction .
+
+fibo-be-ge-usj:StateOfOhioGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Ohio government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://ohio.gov/government/> ;
+    skos:definition "individual representing the regional government of the US State of Ohio" ;
+    cmns-rga:governs lcc-3166-2-us:Ohio ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfOhioJurisdiction .
+
+fibo-be-ge-usj:StateOfOklahomaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Oklahoma government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.ok.gov/portal/section.php?sec_id=1> ;
+    skos:definition "individual representing the regional government of the US State of Oklahoma" ;
+    cmns-rga:governs lcc-3166-2-us:Oklahoma ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfOklahomaJurisdiction .
+
+fibo-be-ge-usj:StateOfOregonGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Oregon government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://bluebook.state.or.us/state/index.htm> ;
+    skos:definition "individual representing the regional government of the US State of Oregon" ;
+    cmns-rga:governs lcc-3166-2-us:Oregon ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfOregonJurisdiction .
+
+fibo-be-ge-usj:StateOfPennsylvaniaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Pennsylvania government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.pa.gov/#government> ;
+    skos:definition "individual representing the regional government of the US State of Pennsylvania" ;
+    cmns-av:synonym "Commonwealth of Pennsylvania government" ;
+    cmns-rga:governs lcc-3166-2-us:Pennsylvania ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfPennsylvaniaJurisdiction .
+
+fibo-be-ge-usj:StateOfRhodeIslandGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Rhode Island government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.ri.gov/government/submenu.php> ;
+    skos:definition "individual representing the regional government of the US State of Rhode Island" ;
+    cmns-rga:governs lcc-3166-2-us:RhodeIsland ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfRhodeIslandJurisdiction .
+
+fibo-be-ge-usj:StateOfSouthCarolinaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of South Carolina government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.sc.gov/Government/Pages/default.aspx> ;
+    skos:definition "individual representing the regional government of the US State of South Carolina" ;
+    cmns-rga:governs lcc-3166-2-us:SouthCarolina ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfSouthCarolinaJurisdiction .
+
+fibo-be-ge-usj:StateOfSouthDakotaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of South Dakota government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://sd.gov/government.aspx> ;
+    skos:definition "individual representing the regional government of the US State of South Dakota" ;
+    cmns-rga:governs lcc-3166-2-us:SouthDakota ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfSouthDakotaJurisdiction .
+
+fibo-be-ge-usj:StateOfTennesseeGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Tennessee government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://tennessee.gov/main/section/government> ;
+    skos:definition "individual representing the regional government of the US State of Tennessee" ;
+    cmns-rga:governs lcc-3166-2-us:Tennessee ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfTennesseeJurisdiction .
+
+fibo-be-ge-usj:StateOfTexasGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Texas government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.texas.gov/> ;
+    skos:definition "individual representing the regional government of the US State of Texas" ;
+    cmns-rga:governs lcc-3166-2-us:Texas ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfTexasJurisdiction .
+
+fibo-be-ge-usj:StateOfUtahGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Utah government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.utah.gov/index.html> ;
+    skos:definition "individual representing the regional government of the US State of Utah" ;
+    cmns-rga:governs lcc-3166-2-us:Utah ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfUtahJurisdiction .
+
+fibo-be-ge-usj:StateOfVermontGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Vermont government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.vermont.gov/portal/government/> ;
+    skos:definition "individual representing the regional government of the US State of Vermont" ;
+    cmns-rga:governs lcc-3166-2-us:Vermont ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfVermontJurisdiction .
+
+fibo-be-ge-usj:StateOfVirginiaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Virginia government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <https://www.virginia.gov/government/> ;
+    skos:definition "individual representing the regional government of the US State of Virginia" ;
+    cmns-av:synonym "Commonwealth of Virginia government" ;
+    cmns-rga:governs lcc-3166-2-us:Virginia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfVirginiaJurisdiction .
+
+fibo-be-ge-usj:StateOfWashingtonGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Washington government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://access.wa.gov/> ;
+    skos:definition "individual representing the regional government of the US State of Washington" ;
+    cmns-rga:governs lcc-3166-2-us:Washington ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfWashingtonJurisdiction .
+
+fibo-be-ge-usj:StateOfWestVirginiaGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of West Virginia government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.wv.gov/Pages/default.aspx#government> ;
+    skos:definition "individual representing the regional government of the US State of West Virginia" ;
+    cmns-rga:governs lcc-3166-2-us:WestVirginia ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfWestVirginiaJurisdiction .
+
+fibo-be-ge-usj:StateOfWisconsinGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Wisconsin government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.wisconsin.gov/Pages/government.aspx> ;
+    skos:definition "individual representing the regional government of the US State of Wisconsin" ;
+    cmns-rga:governs lcc-3166-2-us:Wisconsin ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfWisconsinJurisdiction .
+
+fibo-be-ge-usj:StateOfWyomingGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:RegionalGovernment ;
+    rdfs:label "State of Wyoming government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.wyo.gov/> ;
+    skos:definition "individual representing the regional government of the US State of Wyoming" ;
+    cmns-rga:governs lcc-3166-2-us:Wyoming ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:StateOfWyomingJurisdiction .
+
+fibo-be-ge-usj:UnitedStatesGovernment a owl:NamedIndividual,
+        fibo-be-ge-ge:FederalGovernment ;
+    rdfs:label "United States federal government" ;
+    rdfs:isDefinedBy fibo-be-ge-usj: ;
+    rdfs:seeAlso <http://www.archives.gov/exhibits/charters/constitution.html>,
+        <https://www.usa.gov/agencies>,
+        <https://www.usa.gov/branches-of-government> ;
+    skos:definition "individual representing the federal government of the United States of America" ;
+    cmns-rga:governs lcc-3166-1:UnitedStatesOfAmerica ;
+    cmns-rga:hasJurisdiction fibo-be-ge-usj:UnitedStatesJurisdiction .
+
+fibo-be-ge-usj: a owl:Ontology ;
+    rdfs:label "US Government Entities and Jurisdictions Ontology",
+        "美国政府实体与法域本体（US Government Entities and Jurisdictions Ontology）"@zh ;
+    dcterms:abstract "This ontology provides the set of basic US federal government, state, and territory level entities and jurisdictions." ;
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
+Copyright (c) 2020-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "收录美国的政体、联邦与各州政府、法域个体，是北美金融建模最常用的法域参考数据。"@zh ;
+    owl:imports fibo-be-ge-ge:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-rga:,
+        lcc-3166-1:,
+        lcc-3166-2-us: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20250301/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20200201/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace references to the legacy LCC UnitedStates country representation with UnitedStatesOfAmerica.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210301/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to address text formatting hygiene issues.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20220801/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/GovernmentEntities/NorthAmericanJurisdiction/USGovernmentEntitiesAndJurisdictions.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2020-2025 EDM Council, Inc.",
+        "Copyright (c) 2020-2025 Object Management Group, Inc." .
+

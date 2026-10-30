@@ -1,0 +1,108 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-utl-av: a owl:Ontology ;
+    rdfs:label "FIBO Annotation Vocabulary",
+        "FIBO 标注词汇表（FIBO Annotation Vocabulary）"@zh ;
+    dcterms:abstract """This vocabulary provides a set of metadata annotations for use in describing FIBO ontology elements. The annotations extend properties defined in the OMG's Commons Ontology Library (Commons) Annotation Vocabulary, in the Dublin Core Metadata Terms Vocabulary and in the W3C Simple Knowledge Organization System (SKOS) Vocabulary, and have been customized to suit the FIBO specification development process. 
+
+Note that any of the original properties provided in Dublin Core and SKOS can be used in addition to the terms provided herein. However, any Dublin Core terms that are not explicitly defined as OWL annotation properties in this ontology or in any of its imports must be so declared in the ontologies that use them.""" ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    rdfs:comment "本词汇表提供一组用于描述 FIBO 本体元素的元数据标注，扩展了 Commons 标注词汇表、Dublin Core 和 SKOS 中的属性，并针对 FIBO 规范开发流程做了定制。"@zh ;
+    owl:imports cmns-av:,
+        cmns-cls: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20231101/Utilities/AnnotationVocabulary/> ;
+    skos:changeNote "The http://www.omg.org/spec/EDMC-FIBO/FND/20130801/Utilities/AnnotationVocabulary.rdf version of this ontology was modified per the issue resolutions identified in the FIBO FND 1.0 FTF report and in http://www.omg.org/spec/EDMC-FIBO/FND/1.0/AboutFND-1.0/.",
+        """The http://www.omg.org/spec/FIBO/Foundations/20130601/Utilities/AnnotationVocabulary.owl version of the ontology was revised in advance of the September 2013 New Brunswick, NJ meeting, as follows:
+	(1) to use slash style URI/IRIss (also called 303 URIs, vs. hash style) as required to support server side processing 
+	(2) to use version-independent IRIs for all definitions internally as opposed to version-specific IRIs
+	(3) to change the file suffix from .owl to .rdf to increase usability in RDF tools
+	(4) to use 4-level abbreviations and corresponding namespace prefixes for all FIBO ontologies, reflecting a family/specification/module/ontology structure
+	(5) to incorporate changes to the specification metadata to support documentation at the family, specification, module, and ontology level, similar to the abbreviations""",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/Utilities/AnnotationVocabulary.rdf version of this ontology was modified to add the symbol annotation.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190501/Utilities/AnnotationVocabulary.rdf version of this ontology was modified to eliminate deprecated properties.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190901/Utilities/AnnotationVocabulary.rdf version of this ontology was modified to add common and preferred designations as needed for postal addresses and other purposes, to correct named individuals to be properly declared, and to revise definitions to be ISO 704 compliant.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200301/Utilities/AnnotationVocabulary.rdf version of this ontology was modified to eliminate skos:Concept as a superclass of MaturityLevel (replaced with LifecycleStage in the Lifecycles ontology), revise explanatory notes for maturity levels based on community feedback, and correct the subproperty inheritance for adaptedFrom and logicalDefinition.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200601/Utilities/AnnotationVocabulary.rdf version of this ontology was modified to address hygiene issues with respect to text formatting and eliminate the explicit SKOS import which is not needed.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/Utilities/AnnotationVocabulary.rdf version of this ontology was modified to integrate the Commons Ontology Library (Commons) Annotation Vocabulary and eliminate the need to import the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/Utilities/AnnotationVocabulary.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2023 EDM Council, Inc.",
+        "Copyright (c) 2013-2023 Object Management Group, Inc." .
+
+fibo-fnd-utl-av:Informative a owl:NamedIndividual,
+        fibo-fnd-utl-av:MaturityLevel ;
+    rdfs:label "informative" ;
+    skos:definition "entity that is considered deprecated but included for informational purposes because it is referenced by some provisional concept"@en ;
+    cmns-av:explanatoryNote "Informative content will be removed as soon as all dependencies have been eliminated, thus FIBO users should not depend on it going forward."@en .
+
+fibo-fnd-utl-av:Module a owl:Class ;
+    rdfs:label "module",
+        "模块（module）"@zh ;
+    rdfs:comment "基于模型驱动架构方法论的原则对某物进行模块化划分的类别。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier used to indicate a category used to modularize something based on principles of the model driven architecture methodology (MDA), including but not limited to separation of concerns, coherence, and establishing clear logical boundaries in order to increase reusability and maintainability" ;
+    cmns-av:explanatoryNote "A module should be designed to reflect these principles, including a small number of models that have well-defined relationships with one another, that form a coherent and cohesive whole for some purpose, and that have clear boundaries or interfaces to other modules." .
+
+fibo-fnd-utl-av:Provisional a owl:NamedIndividual,
+        fibo-fnd-utl-av:MaturityLevel ;
+    rdfs:label "provisional" ;
+    skos:definition "entity that is considered to be under development"@en ;
+    cmns-av:explanatoryNote "Provisional content is subject to change, and may change substantially prior to release. FIBO users should be aware that it is not dependable, but could be used for reference and as the basis for further work."@en .
+
+fibo-fnd-utl-av:commonDesignation a owl:AnnotationProperty ;
+    rdfs:label "common designation",
+        "通用称谓（common designation）"@zh ;
+    rdfs:comment "实体的常用称谓。"@zh ;
+    rdfs:subPropertyOf cmns-av:synonym ;
+    skos:definition "frequently used designation for an entity" ;
+    cmns-av:adaptedFrom "https://pe.usps.com/cpim/ftp/pubs/Pub28/pub28.pdf"^^xsd:anyURI .
+
+fibo-fnd-utl-av:definitionOrigin a owl:AnnotationProperty ;
+    rdfs:label "definition origin",
+        "定义来源（definition origin）"@zh ;
+    rdfs:comment "某定义直接取自的文档或其他来源。"@zh ;
+    rdfs:subPropertyOf cmns-av:directSource ;
+    skos:definition "document or other source from which a given definition was taken directly; the range for this annotation can be a string, URI, or BibliographicCitation" .
+
+fibo-fnd-utl-av:hasMaturityLevel a owl:AnnotationProperty ;
+    rdfs:label "has maturity level",
+        "具有成熟度级别（has maturity level）"@zh ;
+    rdfs:comment "将某事物关联到其在开发生命周期中所处的状态。"@zh ;
+    skos:definition "links something to its state with respect to a development lifecycle" .
+
+fibo-fnd-utl-av:preferredDesignation a owl:AnnotationProperty ;
+    rdfs:label "preferred designation",
+        "首选称谓（preferred designation）"@zh ;
+    rdfs:comment "在某情境中推荐使用的实体称谓。"@zh ;
+    rdfs:subPropertyOf cmns-av:synonym ;
+    skos:definition "recommended designation for an entity in some context" ;
+    cmns-av:adaptedFrom "https://pe.usps.com/cpim/ftp/pubs/Pub28/pub28.pdf"^^xsd:anyURI .
+
+fibo-fnd-utl-av:termOrigin a owl:AnnotationProperty ;
+    rdfs:label "term origin",
+        "术语来源（term origin）"@zh ;
+    rdfs:comment "某术语直接取自的文档或其他来源。"@zh ;
+    rdfs:subPropertyOf cmns-av:directSource ;
+    skos:definition "document or other source from which a given term was taken directly; the range for this annotation can be a string, URI, or BibliographicCitation" .
+
+fibo-fnd-utl-av:Release a owl:NamedIndividual,
+        fibo-fnd-utl-av:MaturityLevel ;
+    rdfs:label "release" ;
+    skos:definition "entity that is considered to be stable and mature from a development perspective"@en ;
+    cmns-av:explanatoryNote "Release notes will be provided for any changes with respect to released content, and any revisions will be backwards compatible with the prior version to the degree possible."@en .
+
+fibo-fnd-utl-av:MaturityLevel a owl:Class ;
+    rdfs:label "maturity level",
+        "成熟度级别（maturity level）"@zh ;
+    rdfs:comment "用于指示工件在开发生命周期中所处状态的分类器。"@zh ;
+    rdfs:subClassOf cmns-cls:Classifier ;
+    skos:definition "classifier used to indicate the state of an artifact with respect to its development lifecycle" ;
+    cmns-av:explanatoryNote "FIBO currently has three maturity levels: Informative, Provisional, and Release."@en .
+

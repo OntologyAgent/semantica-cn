@@ -1,0 +1,162 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-be-fct-pub: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/Publishers/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-be-fct-pub: a owl:Ontology ;
+    rdfs:label "Publishers Ontology",
+        "出版方本体（Publishers Ontology）"@zh ;
+    dcterms:abstract "The concept of a publisher is central to the notion of a data provider in financial markets. This ontology defines the fundamental concepts for publishers of information, including entities whose primary function is to publish, and those (whether or not they are publishers in that sense) that play the role of the publisher of some information." ;
+    dcterms:license """2013-2026 EDM Association dba EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义出版方及其出版物，用于标识金融信息与文档的发布来源。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-doc:,
+        cmns-pts:,
+        cmns-rlcmp: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/BE/20260601/FunctionalEntities/Publishers/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/BE/20140501/FunctionalEntities/Publishers.rdf version of this ontology was modified per the issue resolutions identified in the FIBO BE 1.0 FTF report.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20160201/FunctionalEntities/Publishers.rdf version of this ontology was modified per the FIBO 2.0 RFC.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20180801/FunctionalEntities/Publishers.rdf version of this ontology was modified to eliminate references to external dictionary sites that no longer resolve.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20210101/FunctionalEntities/Publishers.rdf version of this ontology was modified to deprecate publishing house rather than having two disconnected concepts, clean up the related restrictions, and add market data provider (originally in IND).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20221001/FunctionalEntities/Publishers.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary and revise definitions to be ISO 704 compliant as needed.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20230101/FunctionalEntities/Publishers.rdf version of the ontology was modified to eliminate deprecations that are more than 6 months old.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20231101/FunctionalEntities/Publishers.rdf version of the ontology was modified to replace concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20231201/FunctionalEntities/Publishers.rdf version of the ontology was modified to replace additional concepts from several FIBO FND ontologies with their counterparts added to the Commons Ontology Library (Commons) v1.1.",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20250301/FunctionalEntities/Publishers.rdf version of the ontology was modified to loosen various constraints to better reflect use case requirements (SEC-205).",
+        "The https://spec.edmcouncil.org/fibo/ontology/BE/20260101/FunctionalEntities/Publishers.rdf version of the ontology was modified to add market data provider discrimination required for examples (FND-407)." ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2013-2025 Object Management Group, Inc.",
+        "Copyright (c) 2013-2026 EDM Association dba EDM Council, Inc." .
+
+fibo-be-fct-pub:APIFirstMarketDataProvider a owl:Class ;
+    rdfs:label "API-first market data provider",
+        "API 优先市场数据提供商（API-first market data provider）"@zh ;
+    rdfs:comment "主要通过程序化接口交付金融信息、以 API 提供实时或历史数据的市场数据提供商。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:MarketDataProvider ;
+    skos:definition "market data provider that delivers financial information primarily through programmatic interfaces, offering real-time or historical data via APIs for automated consumption" .
+
+fibo-be-fct-pub:AlternativeDataProvider a owl:Class ;
+    rdfs:label "alternative data provider",
+        "另类数据提供商（alternative data provider）"@zh ;
+    rdfs:comment "提供源自网络活动、情感分析、地理空间信号等的非传统数据集的市场数据提供商。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:MarketDataProvider ;
+    skos:definition "market data provider that supplies non-traditional datasets derived from sources such as web activity, sentiment analysis, geospatial signals, or other alternative information channels" .
+
+fibo-be-fct-pub:CryptoDigitalAssetDataProvider a owl:Class ;
+    rdfs:label "crypto and digital-asset data provider",
+        "加密与数字资产数据提供商（crypto and digital-asset data provider）"@zh ;
+    rdfs:comment "为数字通证和加密资产提供定价、参考数据和分析的市场数据提供商。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:MarketDataProvider ;
+    skos:definition "market data provider that supplies pricing, reference data, and analytics for digital tokens and crypto-assets" .
+
+fibo-be-fct-pub:DerivativesVolatilityDataProvider a owl:Class ;
+    rdfs:label "derivatives and volatility data provider",
+        "衍生品与波动率数据提供商（derivatives and volatility data provider）"@zh ;
+    rdfs:comment "为衍生品（含期权、期货和结构化产品）提供定价、隐含波动率曲面和分析的市场数据提供商。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:MarketDataProvider ;
+    skos:definition "market data provider that supplies pricing, implied-volatility surfaces, and analytics for derivatives, including options, futures, and structured products" .
+
+fibo-be-fct-pub:ExchangeSourcedDataProvider a owl:Class ;
+    rdfs:label "exchange-sourced data provider",
+        "交易所数据源提供商（exchange-sourced data provider）"@zh ;
+    rdfs:comment "分发直接源自交易场所的金融信息（含订单簿数据、成交、报价）的市场数据提供商。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:MarketDataProvider ;
+    skos:definition "market data provider that distributes financial information originating directly from trading venues, including order-book data, trades, quotes, and venue-specific reference data" .
+
+fibo-be-fct-pub:FixedIncomeSpecialistProvider a owl:Class ;
+    rdfs:label "fixed income specialist provider",
+        "固定收益专业提供商（fixed income specialist provider）"@zh ;
+    rdfs:comment "专注于固定收益工具（如债券、信用产品和货币市场工具）定价、参考数据和分析的市场数据提供商。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:MarketDataProvider ;
+    skos:definition "market data provider that focuses on pricing, reference data, and analytics for fixed-income instruments such as bonds, credit products, and money-market securities" .
+
+fibo-be-fct-pub:InstitutionalMarketDataProvider a owl:Class ;
+    rdfs:label "institutional market data provider",
+        "机构市场数据提供商（institutional market data provider）"@zh ;
+    rdfs:comment "向银行、资产管理公司等金融机构提供多资产金融信息、分析和参考数据的市场数据提供商。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:MarketDataProvider ;
+    skos:definition "market data provider that supplies multi-asset financial information, analytics, and reference data to financial institutions such as banks, asset managers, and trading firms" ;
+    cmns-av:explanatoryNote "Institutional market data providers Offer real-time and historical market data for various asset classes. They ensure data accuracy and compliance with regulatory standards. They typically provide tools for data visualization and analysis to aid decision-making. They may also facilitate access to proprietary research and market insights. Many such firms provide APIs and other options for ease of integration with trading platforms and risk management systems" .
+
+fibo-be-fct-pub:ReferenceDataSpecialistProvider a owl:Class ;
+    rdfs:label "reference data specialist provider",
+        "参考数据专业提供商（reference data specialist provider）"@zh ;
+    rdfs:comment "专注于权威参考数据（含公司行动、工具标识符、分类和实体信息）的市场数据提供商。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:MarketDataProvider ;
+    skos:definition "market data provider that focuses on authoritative reference data, including corporate actions, instrument identifiers, classifications, and entity information aligned with ISO standards" .
+
+fibo-be-fct-pub:hasPublisher a owl:ObjectProperty ;
+    rdfs:label "has publisher",
+        "具有发布方（has publisher）"@zh ;
+    rdfs:comment "标识承担信息发布角色的参与方。"@zh ;
+    rdfs:domain fibo-be-fct-pub:Publication ;
+    rdfs:range fibo-be-fct-pub:Publisher ;
+    rdfs:subPropertyOf cmns-pts:hasPartyRole,
+        cmns-rlcmp:manifests ;
+    owl:inverseOf fibo-be-fct-pub:publishes ;
+    skos:definition "indicates the party in the role of issuing the information" .
+
+fibo-be-fct-pub:isPublishedBy a owl:ObjectProperty ;
+    rdfs:label "is published by",
+        "由……发布（is published by）"@zh ;
+    rdfs:comment "标识传播该材料的独立方（个人或组织）。"@zh ;
+    rdfs:domain fibo-be-fct-pub:Publication ;
+    rdfs:range cmns-pts:Party ;
+    rdfs:subPropertyOf cmns-pts:hasParty ;
+    skos:definition "identifies the independent party (i.e., the individual or organization) that disseminates the material" .
+
+fibo-be-fct-pub:publishes a owl:ObjectProperty ;
+    rdfs:label "publishes",
+        "发布（publishes）"@zh ;
+    rdfs:comment "编制并发行材料供公众使用。"@zh ;
+    rdfs:domain fibo-be-fct-pub:Publisher ;
+    rdfs:range fibo-be-fct-pub:Publication ;
+    rdfs:subPropertyOf cmns-rlcmp:isManifestedIn ;
+    skos:definition "prepares and issues material for public consumption" .
+
+fibo-be-fct-pub:Publication a owl:Class ;
+    rdfs:label "publication",
+        "出版物（publication）"@zh ;
+    rdfs:comment "向公众分发、通常制作多份副本的文件。"@zh ;
+    rdfs:subClassOf cmns-doc:Document ;
+    skos:definition "document offered for general distribution and usually produced in multiple copies" ;
+    cmns-av:adaptedFrom "ISO 5127:2017, Information and documentation - Foundation and vocabulary" ;
+    cmns-av:explanatoryNote "A publication can be anything made public by print (such as a newspaper, magazine, pamphlet, letter, telegram, via computer modem or program, or in a poster, brochure or pamphlet), orally, or by broadcast (radio, television)." .
+
+fibo-be-fct-pub:Publisher a owl:Class ;
+    rdfs:label "publisher",
+        "发布者（publisher）"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:Party ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
+        cmns-pts:PartyRole ;
+    skos:definition "role of person(s) or organization(s) responsible for the printing or distribution of an item, whether in digital or print (physical) form" ;
+    cmns-av:adaptedFrom "ISO 10161-1:2014(en), Information and documentation - Open Systems Interconnection - Interlibrary Loan Application Protocol Specification - Part 1: Protocol specification" ;
+    cmns-av:explanatoryNote "Publishers may also include banks, government agencies and the like." .
+
+fibo-be-fct-pub:MarketDataProvider a owl:Class ;
+    rdfs:label "market data provider",
+        "市场数据提供商（market data provider）"@zh ;
+    rdfs:comment "提供金融市场所用金融信息、参考数据、分析或相关数据集的发布方。"@zh ;
+    rdfs:subClassOf fibo-be-fct-pub:Publisher ;
+    skos:definition "publisher that supplies financial information, reference data, analytics, or related datasets used in financial markets" ;
+    cmns-av:explanatoryNote "Market data providers include exchanges and independent data vendors, among others. Market valuation and related control and risk processes typically require explicit documentation of the source for a given market rate, such as an interest rate benchmark, exchange rate, stock prices, and so forth." .
+

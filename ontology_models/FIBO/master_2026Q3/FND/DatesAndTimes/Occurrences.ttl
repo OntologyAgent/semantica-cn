@@ -1,0 +1,249 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/> .
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
+@prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-dt-fd: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/> .
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/> .
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-dt-fd:AdHocScheduleEntry a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-oc:Occurrence ;
+            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ] .
+
+fibo-fnd-dt-fd:RegularSchedule a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-oc:Occurrence ;
+            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty cmns-col:comprises ] .
+
+fibo-fnd-dt-fd:RelativeDate a owl:Class ;
+    owl:disjointWith fibo-fnd-dt-oc:OccurrenceBasedDate .
+
+fibo-fnd-dt-fd:ScheduleStub a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-oc:Occurrence ;
+            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty cmns-col:comprises ] .
+
+fibo-fnd-dt-fd:SpecifiedDate a owl:Class ;
+    owl:disjointWith fibo-fnd-dt-oc:OccurrenceBasedDate .
+
+fibo-fnd-dt-oc: a owl:Ontology ;
+    rdfs:label "Occurrences Ontology",
+        "事件与发生本体（Occurrences Ontology）"@zh ;
+    dcterms:abstract "This ontology extends definitions of date and schedule concepts from the FinancialDates ontology with concepts defining occurrences (i.e., event-related concepts) for use in other FIBO ontologies." ;
+    dcterms:license """Copyright (c) 2014-2025 EDM Council, Inc.
+		Copyright (c) 2014-2025 Object Management Group, Inc.
+		
+		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""" ;
+    rdfs:comment "定义「发生」（occurrence）、事件与触发条件，用于表达企业行动、信用事件等「发生了什么」。"@zh ;
+    owl:imports fibo-fnd-dt-fd:,
+        fibo-fnd-rel-rel:,
+        fibo-fnd-utl-av:,
+        cmns-av:,
+        cmns-cls:,
+        cmns-col:,
+        cmns-dt:,
+        cmns-loc:,
+        cmns-pts:,
+        cmns-qtu: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20250301/DatesAndTimes/Occurrences/> ;
+    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FND/20141101/DatesAndTimes/Occurrences/ version of this ontology was revised to address the issue resolutions in the FIBO 2.0 RFC, primarily to add properties that are relevant to the inputs and outputs from processes, events, systems and the like.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20180801/DatesAndTimes/Occurrences/ version of this ontology was revised to make use of the new composite date type added to Financial Dates.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20190201/DatesAndTimes/Occurrences/ version of this ontology was revised to eliminate duplication of concepts in LCC, and eliminate unnecessary complexity in restrictions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200701/DatesAndTimes/Occurrences/ version of this ontology was revised to eliminate the hasDescription property, which can easily supported using an annotation or isDescribedBy, depending on the situation, clarify the formal definition of occurrence kind, and correct circular and/or non-ISO 704 compliant definitions.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20200901/DatesAndTimes/Occurrences/ version of this ontology was revised to fix spelling errors.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20211201/DatesAndTimes/Occurrences/ version of this ontology was revised to address hygiene errors with respect to text formatting.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20220701/DatesAndTimes/Occurrences.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20230101/DatesAndTimes/Occurrences.rdf version of this ontology was modified to use the Commons Ontology Library (Commons) rather than the OMG's Languages, Countries and Codes (LCC), eliminating redundancies in FIBO as appropriate.",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20240301/DatesAndTimes/Occurrences.rdf version of this ontology was modified to eliminate elements that have been deprecated for several quarters (FND-386).",
+        "The https://spec.edmcouncil.org/fibo/ontology/FND/20241101/DatesAndTimes/Occurrences.rdf version of the ontology was modified to replace additional content that is now available in the OMG Commons Ontology Library (Commons) v1.2 (FND-389).",
+        """This ontology was added to Foundations in advance of the December 2014 Long Beach meeting in support of the SEC specification. It is also needed to provide temporal relationships for Ownership and Control.
+
+These three ontologies are designed for use together:
+
+	* FinancialDates -- financial Dates and Schedules
+	* BusinessDates -- business day adjustments
+	* Occurrences -- occurrences (events) and kinds of occurrences
+
+They are modularized this way to minimize the ontological committments that are imposed upon ontologies that rely upon them. Ontologies can import FinancialDates alone, or FinancialDates + BusinessDates, or FinancialDates + Occurrences, or all three together.""" ;
+    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release ;
+    cmns-av:copyright "Copyright (c) 2014-2025 EDM Council, Inc.",
+        "Copyright (c) 2014-2025 Object Management Group, Inc." .
+
+fibo-fnd-dt-oc:hasInput a owl:ObjectProperty ;
+    rdfs:label "has input",
+        "具有输入（has input）"@zh ;
+    rdfs:comment "将某事物（如发生事项）关联到用作某活动或过程输入的事物。"@zh ;
+    owl:inverseOf fibo-fnd-dt-oc:isInputTo ;
+    skos:definition "relates something (e.g. an occurrence) to something that is used as an input to some activity or process" .
+
+fibo-fnd-dt-oc:hasOutput a owl:ObjectProperty ;
+    rdfs:label "has output",
+        "具有输出（has output）"@zh ;
+    rdfs:comment "将某事物（如发生事项）关联到作为某活动或过程结果的事物。"@zh ;
+    owl:inverseOf fibo-fnd-dt-oc:isOutputFrom ;
+    skos:definition "relates something (e.g. an occurrence) to something that is the result of some activity or process" .
+
+fibo-fnd-dt-oc:Calculation a owl:Class ;
+    rdfs:label "calculation",
+        "计算（calculation）"@zh ;
+    rdfs:comment "被排定或由某事物触发的某项计算、计算过程或运算的实际执行。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-dt-oc:CalculationEvent ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:ScalarQuantityValueRange ;
+            owl:onProperty cmns-qtu:hasQuantityValueRange ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:Expression ;
+            owl:onProperty cmns-qtu:hasExpression ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:ScalarQuantityValue ;
+            owl:onProperty cmns-qtu:hasQuantityValue ],
+        fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "actual execution of some computation, computational process, or operation that was scheduled or triggered by something" .
+
+fibo-fnd-dt-oc:CalculationEvent a owl:Class ;
+    rdfs:label "calculation event",
+        "计算事件（calculation event）"@zh ;
+    rdfs:comment "被排定或由某事物（如相关金融事件）触发、从而导致执行计算的一类事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fnd-dt-oc:Calculation ],
+        fibo-fnd-dt-oc:OccurrenceKind ;
+    skos:definition "kind of event that is either scheduled or triggered by something, such as a related financial event, that causes a calculation to be performed" ;
+    skos:note "A calculation event may be prescriptive, that occurs within a specified period, or ad hoc.",
+        "A calculation event related to a debt instrument might be a rate reset event, calculation of interest subsequent to a rate change, an amortization calculation, calculation of interest and/or recalculation of principal due to a late payment, etc. A calculation event related to an investment might involve the adjustment of the number of shares owned, such as a redemption or dividend related event." .
+
+fibo-fnd-dt-oc:hasEventDate a owl:ObjectProperty ;
+    rdfs:label "has event date",
+        "具有事件日期（has event date）"@zh ;
+    rdfs:comment "标识与事件（发生事项）关联的日期。"@zh ;
+    rdfs:range cmns-dt:Date ;
+    rdfs:subPropertyOf cmns-dt:hasDate ;
+    skos:definition "identifies a date associated with an event (occurrence)" .
+
+fibo-fnd-dt-oc:hasEventDateValue a owl:DatatypeProperty ;
+    rdfs:label "has event date value",
+        "具有事件日期值（has event date value）"@zh ;
+    rdfs:comment "标识与事件（发生事项）关联的日期或日期时间值。"@zh ;
+    rdfs:range cmns-dt:CombinedDateTime ;
+    skos:definition "identifies a date or date and time value associated with an event (occurrence)" .
+
+fibo-fnd-dt-oc:isInputTo a owl:ObjectProperty ;
+    rdfs:label "is input to",
+        "是……的输入（is input to）"@zh ;
+    rdfs:comment "标识某活动、过程、系统、报告、分析等的前提条件、要求或其他投入（如数据）。"@zh ;
+    skos:definition "indicates a precondition, requirement, or other contribution (e.g., data) to some activity, process, system, report, analysis, etc." .
+
+fibo-fnd-dt-oc:isOutputFrom a owl:ObjectProperty ;
+    rdfs:label "is output from",
+        "是……的输出（is output from）"@zh ;
+    rdfs:comment "标识某活动、过程、系统、报告、分析等的后置条件或其他产物。"@zh ;
+    skos:definition "indicates post condition or other product of some activity, process, system, report, analysis, etc." .
+
+fibo-fnd-dt-oc:isTriggeredBy a owl:ObjectProperty ;
+    rdfs:label "is triggered by",
+        "由……触发（is triggered by）"@zh ;
+    rdfs:comment "由……激活或发起。"@zh ;
+    rdfs:domain fibo-fnd-dt-oc:OccurrenceBasedDate ;
+    rdfs:range fibo-fnd-dt-oc:OccurrenceKind ;
+    skos:definition "is activated or initiated by" ;
+    cmns-av:explanatoryNote "An OccurrenceBasedDate is triggered by an Occurrence that exemplifies the OccurrenceKind." .
+
+fibo-fnd-dt-oc:OccurrenceBasedDate a owl:Class ;
+    rdfs:label "occurrence-based date",
+        "基于发生事项的日期（occurrence-based date）"@zh ;
+    rdfs:comment "相对于某发生类别的发生而定义的推算日期。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty fibo-fnd-dt-oc:isTriggeredBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        fibo-fnd-dt-fd:CalculatedDate ;
+    skos:definition "calculated date that is defined with respect to the occurrence of some occurrence kind" ;
+    cmns-av:explanatoryNote "The 'hasDateValue' property of an OccurrenceBasedDate is not set until the Occurrence happens. The 'triggeredBy' property relates an OccurrenceBasedDate to the OccurrenceKind that gives the meaning of the OccurrenceBasedDate." .
+
+fibo-fnd-dt-oc:hasOccurrence a owl:ObjectProperty ;
+    rdfs:label "has occurrence",
+        "具有发生事项（has occurrence）"@zh ;
+    rdfs:comment "标识给定发生类别的事件，通常指其在进度表中的发生。"@zh ;
+    rdfs:range fibo-fnd-dt-oc:Occurrence ;
+    skos:definition "identifies events of a given occurrence kind, typically as they occur in a schedule" .
+
+fibo-fnd-dt-oc:Occurrence a owl:Class ;
+    rdfs:label "occurrence",
+        "发生事项（occurrence）"@zh ;
+    rdfs:comment "某种发生类别的发生，即事件。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-loc:Location ;
+            owl:onProperty cmns-loc:hasLocation ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:onClass cmns-dt:DatePeriod ;
+                        owl:onProperty cmns-pts:holdsDuring ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
+                        owl:onClass cmns-dt:Date ;
+                        owl:onProperty fibo-fnd-dt-oc:hasEventDate ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] [ a owl:Restriction ;
+                        owl:onDataRange cmns-dt:CombinedDateTime ;
+                        owl:onProperty fibo-fnd-dt-oc:hasEventDateValue ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+    skos:definition "happening of an OccurrenceKind, i.e., an event" ;
+    cmns-av:explanatoryNote "Each occurrence has a date time stamp, which identifies when the event occurred, and, optionally, a location (possibly virtual), that identifies where the occurrence happened." ;
+    cmns-av:synonym "event" ;
+    cmns-av:usageNote "In order for other ontologies to accept FinancialDates without committing to the particular notions of 'Occurrence' and 'OccurrenceKind' that is modeled here, all aspects of Occurrences are captured in this ontology." .
+
+fibo-fnd-dt-oc:OccurrenceKind a owl:Class ;
+    rdfs:label "occurrence kind",
+        "发生类别（occurrence kind）"@zh ;
+    rdfs:comment "指明发生事项（事件）一般性质的分类符。"@zh ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fnd-dt-oc:Occurrence ],
+        cmns-cls:Classifier ;
+    skos:definition "classifier that specifies the general nature of an occurrence (event)" ;
+    skos:example "loan origination",
+        "trade settlement" ;
+    cmns-av:explanatoryNote "As types (or categories) of events, OccurenceKinds do not happen; OccurenceKinds describe Occurrences which happen and exemplify an OccurenceKind. As occurrences are things that actually happen, they have an actual date where as OccurenceKinds do not have an actual date." ;
+    cmns-av:usageNote "In order for other ontologies to accept FinancialDates without committing to the particular notions of 'Occurrence' and 'OccurrenceKind' that is modeled here, all aspects of Occurrences are captured in this ontolog" .
+

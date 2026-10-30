@@ -1,0 +1,34 @@
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fibo-fnd-pty-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/MetadataFNDParties/> .
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+fibo-fnd-pty-mod: a owl:Ontology ;
+    rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Parties Module",
+        "FND 参与方模块元数据（Metadata for the FND Parties Module）"@zh ;
+    dcterms:abstract "This is the metadata ontology used to describe the Foundations Parties Module." ;
+    dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:modified "2024-11-14T18:00:00"^^xsd:dateTime ;
+    rdfs:comment "声明参与方（Parties）模块由参与方本体构成，及版本信息。"@zh ;
+    owl:imports fibo-fnd-utl-av:,
+        cmns-av: ;
+    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/FND/20241101/Parties/MetadataFNDParties/> ;
+    cmns-av:copyright "Copyright (c) 2017-2024 EDM Council, Inc.",
+        "Copyright (c) 2017-2024 Object Management Group, Inc." .
+
+fibo-fnd-pty-mod:PartiesModule a owl:NamedIndividual,
+        fibo-fnd-utl-av:Module ;
+    rdfs:label "parties module" ;
+    dcterms:abstract "The parties module extends the Commons Parties and Situations ontology with identifiers for party roles and very general tax identifiers." ;
+    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/> ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:title "FIBO FND Parties Module",
+        "Financial Industry Business Ontology (FIBO) Foundations (FND) Parties Module" ;
+    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/> ;
+    cmns-av:copyright "Copyright (c) 2017-2024 EDM Council, Inc.",
+        "Copyright (c) 2017-2024 Object Management Group, Inc." .
+

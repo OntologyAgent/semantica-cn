@@ -34,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Parquet and Arrow relationship export lost graph-backend endpoint names** (refs #2018) by @george07-t
+  - `ParquetExporter.export_relationships()` and `ArrowExporter.export_relationships()` read only `source`/`source_id` and `target`/`target_id`, so a record shaped by a graph backend (`start_node_id`/`end_node_id` from Neo4j, FalkorDB and Neptune, `start_id`/`end_id` from raw AGE edges) made Parquet raise `ValidationError` and wrote Arrow rows with empty `source_id` and `target_id`. Both now run the records through `canonical_endpoints` first, so the shared list, order and empty-value rule apply; Parquet keeps its `from_id`/`from`/`to_id`/`to` fallbacks, and an integer id of `0` is now kept as a real id in both, as the shared helper treats it (it used to be dropped by their `or` chains)
+  - New tests in `tests/export/test_columnar_exporters_endpoint_names.py` read the written files back for every accepted spelling, an empty canonical value, precedence, an id of `0`, untouched input and mixed batches
+
 - **`DomainOntologies` advertised legal, research and cybersecurity templates that did not exist** (fixes #1819) by @pkupt
   - `get_domain_template("legal")`, `("research")` and `("cybersecurity")` returned a bare `None`, which surfaced in caller code as `AttributeError: 'NoneType' object has no attribute 'get'`. The three templates are now registered, in the same small hand-written style as `healthcare` and `finance`.
   - `get_domain_template` still returns `None` for an unregistered domain, but now logs a warning listing the available domains so the miss is visible. New `tests/ontology/test_domain_ontologies.py`

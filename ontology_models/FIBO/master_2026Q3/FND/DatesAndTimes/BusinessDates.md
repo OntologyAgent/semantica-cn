@@ -21,13 +21,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 营业日惯例（business day convention） | 列举日期落在周末或节假日时各种处理方式的惯例。 |
-| 营业重复区间（business recurrence interval） | 按特定惯例定义的重复区间，该惯例决定如何处理重复出现的日期。 |
-| 营业重复区间惯例（business recurrence interval convention） | 规定如何处理重复日期的惯例，如月末、某月特定日或星期几。 |
-| 惯例（convention） | 某实践共同体内被广泛接受或确立的做事方式。 |
-| 月中日（day of month） | 每月中特定的重复日期。 |
-| 星期几（day of the week） | 每周中特定的重复日。 |
-| 月末（end of the month） | 日历月的最后一天，不论该月长短。 |
+| 营业日惯例（business day convention） | 列举日期落在周末或节假日时各种处理方式的惯例。<br>convention that enumerates the possible ways to handle a date that falls on a weekend or holiday |
+| 营业重复区间（business recurrence interval） | 按特定惯例定义的重复区间，该惯例决定如何处理重复出现的日期。<br>recurrence interval that is defined per a specific convention that determines how recurring days should be handled |
+| 营业重复区间惯例（business recurrence interval convention） | 规定如何处理重复日期的惯例，如月末、某月特定日或星期几。<br>convention that specifies how recurring days should be handled, such as the end of the month, a particular day of the month, a day of the week, or more specifically, a t-bill auction date |
+| 惯例（convention） | 某实践共同体内被广泛接受或确立的做事方式。<br>widely accepted or established way of doing 'something' within some community of practice |
+| 月中日（day of month） | 每月中特定的重复日期。<br>specific, recurring day of the month |
+| 星期几（day of the week） | 每周中特定的重复日。<br>specific, recurring day of the week |
+| 月末（end of the month） | 日历月的最后一天，不论该月长短。<br>the last day of a calendar month, irrespective of the length of the calendar month |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -42,7 +42,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有营业重复区间惯例（has business recurrence interval convention）** | 标识关于特定重复日期相对给定日程应如何处理的惯例。 | 值域：营业重复区间惯例（business recurrence interval convention） |
+| **具有营业重复区间惯例（has business recurrence interval convention）** | 标识关于特定重复日期相对给定日程应如何处理的惯例。<br>identifies a convention regarding how certain recurring dates should be handled with respect to a given schedule, such as the end of the month | 值域：营业重复区间惯例（business recurrence interval convention） |
 
 公理：
 
@@ -113,7 +113,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有营业日惯例（has business day convention）** | 标识当日期落在非营业日（如周末或节假日）时应如何处理的惯例。 | 值域：营业日惯例（business day convention） |
+| **具有营业日惯例（has business day convention）** | 标识当日期落在非营业日（如周末或节假日）时应如何处理的惯例。<br>identifies a convention regarding how a date should be handled when it falls on a day that is not a business day, such as a weekend or holiday | 值域：营业日惯例（business day convention） |
 
 ## 4. 依赖（owl:imports，7 个）
 

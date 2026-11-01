@@ -34,35 +34,35 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 账面储备养老金计划（book reserved pension plan） | 资产负债表反映计划发起人资产负债表中以储备或拨备形式入账之职业养老金计划金额的养老金计划。 |
-| 封闭型养老基金（closed pension fund） | 成员资格限于特定人士或特定类别人士的养老基金。 |
-| 待遇确定型职业养老金计划（defined benefit occupational pension plan） | 按预定待遇公式预先确定退休待遇的职业养老金计划，由发起雇主承担给付责任。 |
-| 待遇确定型职业养老金计划分类器（defined benefit occupational pension plan classifier） | 对按预定待遇公式预先确定退休待遇、并由发起雇主承担义务的职业计划进行分类的分类器。 |
-| 缴费确定型职业养老金计划（defined contribution occupational pension plan） | 计划发起人支付固定缴费、且无法定或推定义务支付额外缴费的职业养老金计划。 |
-| 基金制养老金计划（funded pension plan） | 积累专门资产以覆盖计划负债的养老金计划。 |
-| 个人养老金账户（individual pension account） | 记录归属于个人之金额的养老金账户。 |
-| 个人养老基金（individual pension fund） | 支持一个或多个个人养老金计划、并按成员个人为基础维持资产和权益的封闭型养老基金。 |
-| 个人退休账户（individual retirement account） | 记录归属于个人之金额的退休账户（IRA）。 |
-| 强制性职业养老金计划（mandatory occupational pension plan） | 雇主必须参加的职业养老金计划。 |
-| 强制性个人养老金计划（mandatory personal pension plan） | 个人必须加入、或可接收强制性养老金缴费的个人养老金计划。 |
-| 多雇主养老基金（multi-employer pension fund） | 汇集多个计划发起人所设养老金计划资产的养老基金。 |
-| 职业养老金计划（occupational pension plan） | 与计划成员和设立计划的实体（计划发起人）之间雇佣或职业关系相关联的养老金计划。 |
-| 开放型养老基金（open pension fund） | 支持至少一个成员资格不受限制之计划的养老基金。 |
-| 养老金账户（pension account） | 记录与养老金计划相关之金额的退休账户。 |
-| 养老金保险合同（pension insurance contract） | 规定养老金计划向保险企业缴费、以换取由保险企业支付养老金计划待遇的保险合同。 |
-| 养老金计划（pension plan） | 具有明确退休目标的具有法律约束力的安排，或为满足税收相关条件或合同条款而设定受益安排的安排。 |
-| 个人养老金计划（personal pension plan） | 无须与雇佣或职业关系相关联的养老金计划。 |
-| 私营养老基金（private pension fund） | 受私营部门法律监管的养老基金。 |
-| 私营养老金计划（private pension plan） | 由一般政府以外机构管理的养老金计划。 |
-| 公共养老基金（public pension fund） | 受公共部门法律监管的养老基金。 |
-| 公共养老金计划（public pension plan） | 由一般政府（即中央、州和地方政府以及社会保障机构等其他公共部门机构）管理的养老金计划。 |
-| 关联成员养老基金（related member pension fund） | 由数量有限的关联成员资产组成、且成员均为该养老基金管理机构成员的养老基金。 |
-| 退休账户（retirement account） | 记录旨在为退休期间提供收入或财务资源之金额的账户。 |
-| 退休安排（retirement arrangement） | 确立为退休积累或提供财务资源之条件的安排。 |
-| 单一雇主养老基金（single employer pension fund） | 汇集单一发起人所设养老金计划资产的养老基金。 |
-| 现收现付养老金计划（unfunded pension plan） | 直接以计划发起人或提供方和/或计划参与人的缴费支付的养老金计划。 |
-| 自愿性职业养老金计划（voluntary occupational pension plan） | 雇主自愿设立的职业养老金计划（包括作为雇佣安排一部分自动加入的情形）。 |
-| 自愿性个人养老金计划（voluntary personal pension plan） | 个人自愿参加的个人养老金计划。 |
+| 账面储备养老金计划（book reserved pension plan） | 资产负债表反映计划发起人资产负债表中以储备或拨备形式入账之职业养老金计划金额的养老金计划。<br>pension plan whose balance sheet reflects sums entered in the balance sheet of the plan sponsor as reserves or provisions for occupational pension plan benefits |
+| 封闭型养老基金（closed pension fund） | 成员资格限于特定人士或特定类别人士的养老基金。<br>pension fund whose membership is restricted to specified persons or categories of persons |
+| 待遇确定型职业养老金计划（defined benefit occupational pension plan） | 按预定待遇公式预先确定退休待遇的职业养老金计划，由发起雇主承担给付责任。<br>occupational pension plan that provides retirement benefits determined in advance according to a prescribed benefit formula, with the sponsoring employer or plan sponsor bearing the primary responsibility for financing any shortfall required to provide the promised benefits |
+| 待遇确定型职业养老金计划分类器（defined benefit occupational pension plan classifier） | 对按预定待遇公式预先确定退休待遇、并由发起雇主承担义务的职业计划进行分类的分类器。<br>classifier for occupational plans that provide retirement benefits determined in advance according to a prescribed benefit formula, and whose sponsoring employer or plan sponsor bears the primary responsibility for financing any shortfall required to provide the promised benefits |
+| 缴费确定型职业养老金计划（defined contribution occupational pension plan） | 计划发起人支付固定缴费、且无法定或推定义务支付额外缴费的职业养老金计划。<br>occupational pension plan under which the plan sponsor pays fixed contributions and has no legal or constructive obligation to pay further contributions to an ongoing plan in the event of unfavourable plan experience |
+| 基金制养老金计划（funded pension plan） | 积累专门资产以覆盖计划负债的养老金计划。<br>pension plan that accumulates dedicated assets to cover the plan's liabilities |
+| 个人养老金账户（individual pension account） | 记录归属于个人之金额的养老金账户。<br>pension account in which amounts attributable to an individual are recorded |
+| 个人养老基金（individual pension fund） | 支持一个或多个个人养老金计划、并按成员个人为基础维持资产和权益的封闭型养老基金。<br>closed pension fund that supports one or more individual pension plans and in which assets and entitlements are maintained on an individual-member basis |
+| 个人退休账户（individual retirement account） | 记录归属于个人之金额的退休账户（IRA）。<br>retirement account in which amounts attributable to an individual are recorded |
+| 强制性职业养老金计划（mandatory occupational pension plan） | 雇主必须参加的职业养老金计划。<br>occupational pension plan for which participation is mandatory for employers |
+| 强制性个人养老金计划（mandatory personal pension plan） | 个人必须加入、或可接收强制性养老金缴费的个人养老金计划。<br>personal pension plan that individuals must join or that are eligible to receive mandatory pension contributions |
+| 多雇主养老基金（multi-employer pension fund） | 汇集多个计划发起人所设养老金计划资产的养老基金。<br>pension fund that pools the assets of pension plans established by various plan sponsors |
+| 职业养老金计划（occupational pension plan） | 与计划成员和设立计划的实体（计划发起人）之间雇佣或职业关系相关联的养老金计划。<br>pension plan linked to an employment or professional relationship between the plan member and the entity that establishes the plan (the plan sponsor) |
+| 开放型养老基金（open pension fund） | 支持至少一个成员资格不受限制之计划的养老基金。<br>pension fund that supports at least one plan with no restriction on membership |
+| 养老金账户（pension account） | 记录与养老金计划相关之金额的退休账户。<br>retirement account in which amounts associated with a pension plan are recorded |
+| 养老金保险合同（pension insurance contract） | 规定养老金计划向保险企业缴费、以换取由保险企业支付养老金计划待遇的保险合同。<br>insurance contract that specifies pension plan contributions to an insurance undertaking in exchange for which the pension plan benefits will be paid when the members reach a specified retirement age or on earlier exit of members from the plan |
+| 养老金计划（pension plan） | 具有明确退休目标的具有法律约束力的安排，或为满足税收相关条件或合同条款而设定受益安排的安排。<br>legally binding arrangement having an explicit retirement objective or - in order to satisfy tax related conditions or contract provisions - the benefits can not be paid at all or without a significant penalty unless the beneficiary is older than a legally defined retirement age |
+| 个人养老金计划（personal pension plan） | 无须与雇佣或职业关系相关联的养老金计划。<br>pension plan that does not need to be linked to an employment or professional relationship |
+| 私营养老基金（private pension fund） | 受私营部门法律监管的养老基金。<br>pension fund that is regulated under private sector law |
+| 私营养老金计划（private pension plan） | 由一般政府以外机构管理的养老金计划。<br>pension plan administered by an institution other than general government |
+| 公共养老基金（public pension fund） | 受公共部门法律监管的养老基金。<br>pension fund that is regulated under public sector law |
+| 公共养老金计划（public pension plan） | 由一般政府（即中央、州和地方政府以及社会保障机构等其他公共部门机构）管理的养老金计划。<br>pension plan administered by the general government (that is central, state, and local governments, as well as other public sector bodies such as social security institutions) |
+| 关联成员养老基金（related member pension fund） | 由数量有限的关联成员资产组成、且成员均为该养老基金管理机构成员的养老基金。<br>pension fund that comprises the assets of a limited number of related members who are all in the governing body of the pension fund |
+| 退休账户（retirement account） | 记录旨在为退休期间提供收入或财务资源之金额的账户。<br>account in which amounts intended to provide income or financial resources during retirement are recorded |
+| 退休安排（retirement arrangement） | 确立为退休积累或提供财务资源之条件的安排。<br>arrangement that establishes conditions for the accumulation or provision of financial resources for retirement |
+| 单一雇主养老基金（single employer pension fund） | 汇集单一发起人所设养老金计划资产的养老基金。<br>pension fund that pools the assets of pension plans established by a single sponsor |
+| 现收现付养老金计划（unfunded pension plan） | 直接以计划发起人或提供方和/或计划参与人的缴费支付的养老金计划。<br>pension plan that is financed directly from contributions from the plan sponsor or provider and/or the plan participant |
+| 自愿性职业养老金计划（voluntary occupational pension plan） | 雇主自愿设立的职业养老金计划（包括作为雇佣安排一部分自动加入的情形）。<br>occupational pension plan for which establishment is voluntary for employers (including those in which there is automatic enrollment as part of an employment contract or where the law requires employees to join plans set up on a voluntary basis by their employers) |
+| 自愿性个人养老金计划（voluntary personal pension plan） | 个人自愿参加的个人养老金计划。<br>personal pension plan in which participation is voluntary for individuals |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -215,14 +215,14 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……提供资金（is funded by）** | 将计划或基金与为其提供资金的协议或其他资金安排关联起来。 | 逆属性：为……提供资金（provides funding for）；子属性：由……提供 |
-| **是否无保障（is unprotected）** | 若为真，表明养老金计划/基金本身或养老金提供方不提供任何投资回报或待遇保证。 | 值域：xsd:boolean |
+| **由……提供资金（is funded by）** | 将计划或基金与为其提供资金的协议或其他资金安排关联起来。<br>links a plan or fund to an agreement or other funding arrangement that funds it | 逆属性：为……提供资金（provides funding for）；子属性：由……提供 |
+| **是否无保障（is unprotected）** | 若为真，表明养老金计划/基金本身或养老金提供方不提供任何投资回报或待遇保证。<br>indicates, if true, that the pension plan/fund itself or the pension provider does not offer any investment return or benefit guarantees or promises covering the whole plan/fund | 值域：xsd:boolean |
 | **规定（specifies）** | — | — |
 
 公理：
 
 - **是否无保障（is unprotected）**存在取值约束。
-- **由……提供资金（is funded by）**可以有 0 个或多个**N0a2699eb763a4879b311db33236a1fbe**。
+- **由……提供资金（is funded by）**可以有 0 个或多个**Nabe0d3760c5b43c8a875bec007e97586**。
 - **规定（specifies）**可以有 0 个或多个**养老金账户（pension account）**。
 
 ##### 2.8.1.1 账面储备养老金计划（book reserved pension plan）
@@ -286,7 +286,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否强制（is mandatory）** | 表明某事物是否为必需。 | 值域：xsd:boolean |
+| **是否强制（is mandatory）** | 表明某事物是否为必需。<br>indicates, if true, that something is required | 值域：xsd:boolean |
 
 公理：
 
@@ -302,7 +302,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否强制（is mandatory）** | 表明某事物是否为必需。 | 值域：xsd:boolean |
+| **是否强制（is mandatory）** | 表明某事物是否为必需。<br>indicates, if true, that something is required | 值域：xsd:boolean |
 
 公理：
 
@@ -330,7 +330,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否强制（is mandatory）** | 表明某事物是否为必需。 | 值域：xsd:boolean |
+| **是否强制（is mandatory）** | 表明某事物是否为必需。<br>indicates, if true, that something is required | 值域：xsd:boolean |
 
 公理：
 
@@ -346,7 +346,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否强制（is mandatory）** | 表明某事物是否为必需。 | 值域：xsd:boolean |
+| **是否强制（is mandatory）** | 表明某事物是否为必需。<br>indicates, if true, that something is required | 值域：xsd:boolean |
 
 公理：
 
@@ -363,7 +363,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否强制（is mandatory）** | 表明某事物是否为必需。 | 值域：xsd:boolean |
+| **是否强制（is mandatory）** | 表明某事物是否为必需。<br>indicates, if true, that something is required | 值域：xsd:boolean |
 
 公理：
 
@@ -390,7 +390,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **为……提供资金（provides funding for）** | 将协议或资金安排与其所资助的事物关联起来。 | 逆属性：由……提供资金（is funded by）；子属性：提供 |
+| **为……提供资金（provides funding for）** | 将协议或资金安排与其所资助的事物关联起来。<br>relates an agreement or funding arrangement to something that funds it | 逆属性：由……提供资金（is funded by）；子属性：提供 |
 
 ## 4. 依赖（owl:imports，12 个）
 

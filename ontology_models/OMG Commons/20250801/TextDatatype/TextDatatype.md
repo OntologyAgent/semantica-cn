@@ -22,7 +22,7 @@
 
 | 属性 | 定义 |
 |---|---|
-| **具有文本值（has text value）** | 为某事物提供字符串值，可带或不带语言标签。 |
+| **具有文本值（has text value）** | 为某事物提供字符串值，可带或不带语言标签。<br>provides a string value for something, with or without a language tag |
 
 ## 3. 依赖（owl:imports，1 个）
 

@@ -29,13 +29,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 分支机构（branch） | 较大组织的组成部分，可能不与其同地办公。 |
-| 事业部（division） | 组织的组成部分，如一条业务线，可能有单独的会计与报告要求。 |
-| 合资企业（joint venture） | 各方为完成特定任务而汇集资源、但此外各自保持独立的法律实体。 |
-| 非政府组织（non-governmental organization） | 独立于政府运作的非营利组织。 |
-| 非营利组织（not for profit organization） | 将盈余收入用于进一步实现其宗旨、而非分配给组织所有者的组织。 |
-| 组织基础协议（organization covering agreement） | 正式组织各主事人之间的合同，规定主事人之间以及主事人与实体之间的关系。 |
-| 增值税识别号（value-added tax identification number） | 为按增量征收的消费税识别应税人（企业）或非应税法律实体的税务标识符。 |
+| 分支机构（branch） | 较大组织的组成部分，可能不与其同地办公。<br>part of a larger organization that might not be co-located with it |
+| 事业部（division） | 组织的组成部分，如一条业务线，可能有单独的会计与报告要求。<br>part of an organization, such as a line of business, that may have separate accounting and reporting requirements |
+| 合资企业（joint venture） | 各方为完成特定任务而汇集资源、但此外各自保持独立的法律实体。<br>legal entity that is formed between parties that pool their resources for the purpose of accomplishing a specific task but otherwise retain their distinct identities |
+| 非政府组织（non-governmental organization） | 独立于政府运作的非营利组织。<br>not-for-profit organization that functions independently of government |
+| 非营利组织（not for profit organization） | 将盈余收入用于进一步实现其宗旨、而非分配给组织所有者的组织。<br>organization that uses its surplus revenues to further achieve its purpose rather than distributing its surplus income to the organization's owners (directors, investors, and equivalents) as profit / dividends |
+| 组织基础协议（organization covering agreement） | 正式组织各主事人之间的合同，规定主事人之间以及主事人与实体之间的关系。<br>contract between the principals in a formal organization that specifies the relationship between the principals, and between the principals and the entity |
+| 增值税识别号（value-added tax identification number） | 为按增量征收的消费税识别应税人（企业）或非应税法律实体的税务标识符。<br>tax identifier that identifies a taxable person (business) or non-taxable legal entity for a consumption tax that is assessed incrementally, levied on the price of a product or service at each stage of production, distribution, and sale to the end consumer |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -110,10 +110,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有权益（has equity）** | 标识与实体关联的所有者权益。 | 值域：所有者权益；子属性：具有表达式 |
-| **具有总部地址（has headquarters address）** | 标识组织可送达通信的主要地址。 | 值域：物理地址；子属性：具有经营地址（has operating address） |
-| **具有经营地址（has operating address）** | 标识组织开展经营活动的地址。 | 值域：物理地址；子属性：具有地址 |
-| **具有注册地址（has registered address）** | 标识在某政府机关正式登记、可送达法律文书的地址。 | 值域：常规街道地址；子属性：具有地址 |
+| **具有权益（has equity）** | 标识与实体关联的所有者权益。<br>indicates owners' equity associated with the entity | 值域：所有者权益；子属性：具有表达式 |
+| **具有总部地址（has headquarters address）** | 标识组织可送达通信的主要地址。<br>indicates the main address at which communications may be delivered for the organization | 值域：物理地址；子属性：具有经营地址（has operating address） |
+| **具有经营地址（has operating address）** | 标识组织开展经营活动的地址。<br>indicates an address at which an organization carries out operations | 值域：物理地址；子属性：具有地址 |
+| **具有注册地址（has registered address）** | 标识在某政府机关正式登记、可送达法律文书的地址。<br>identifies an address that is officially recorded with some government authority and at which legal papers may be served | 值域：常规街道地址；子属性：具有地址 |
 
 ## 4. 依赖（owl:imports，15 个）
 

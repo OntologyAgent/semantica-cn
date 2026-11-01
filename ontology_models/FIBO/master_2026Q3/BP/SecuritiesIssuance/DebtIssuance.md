@@ -35,40 +35,40 @@
 | 类（Class） | 定义（Definition） |
 |---|---|
 | ABS 证券化流程（a b s securitization process） | 资产支持证券的证券化过程。 |
-| 提前再融资（advance refunding） | 以低于存量债券利率发行新债券进行再融资的债券发行。 |
+| 提前再融资（advance refunding） | 以低于存量债券利率发行新债券进行再融资的债券发行。<br>refunding in which bond issuance in which new bonds are sold at a lower rate than outstanding ones |
 | 资产池创建流程（asset pool creation process） | 创建资产池的过程，资产池随后可作为证券发行的基础资产。 |
-| 债券发行计划（bond issuance programme） | 一种债务发行计划，实体可不时按基础招募说明书载明的条款发行债券。 |
-| 债券发行（bond offering） | 作为发行计划全部或一部分的一只或多只债券的债务发行。 |
-| 附认股权证债券发行（bond offering with warrant） | 发行中附带回股权证的债券发行（ISO 10962 CFI：与一份或多份认股权证一起发行的债券）。 |
+| 债券发行计划（bond issuance programme） | 一种债务发行计划，实体可不时按基础招募说明书载明的条款发行债券。<br>a debt issuance programe under which an entity may, from time to time, issue bonds under the terms and conditions specified in the base prospectus for that programme |
+| 债券发行（bond offering） | 作为发行计划全部或一部分的一只或多只债券的债务发行。<br>a debt offering of one or more bonds, as all or part of an issuance programme |
+| 附认股权证债券发行（bond offering with warrant） | 发行中附带回股权证的债券发行（ISO 10962 CFI：与一份或多份认股权证一起发行的债券）。<br>a bond offering where the issue includes a warrant; Further notes: ISO 10962 CFI definition is A bond that is issued together with one or more warrant(s) attached as part of the offer, the warrant(s) granting the holder the right to purchase a designated security, often the common stock of the issuer of the debt, at a specified price. Review notes: This need not be any specific type of bond. The warrant is used as a sweetener to encourage people to subscribe to a new bond issue. The Bond and the Warrant trade together as a unit (called "Bond Unit"). |
 | CDO 证券化流程（c d o securitization process） | 债务担保凭证的证券化过程。 |
 | 已完成债务池（completed debts pool） | 内容已定稿、可用于发行的债务池。 |
 | 信用卡池创建流程（credit card pool creation process） | 创建信用卡应收款资产池的过程。 |
 | 债务工具池创建流程（debt instrument pool creation process） | 创建债务工具池的过程。 |
-| 债务发行流程信息（debt issuance process information） | 债务证券发行特有的信息。 |
-| 债务发行计划（debt issuance programme） | 一段时间内的一系列债务证券发行。 |
-| 债务发行目的（debt issuance purpose） | 债务证券发行的目的；在某些情形下也规定须遵循的流程。 |
+| 债务发行流程信息（debt issuance process information） | 债务证券发行特有的信息。<br>information specific to the issuance of a debt security |
+| 债务发行计划（debt issuance programme） | 一段时间内的一系列债务证券发行。<br>a series of debt security issuances over time |
+| 债务发行目的（debt issuance purpose） | 债务证券发行的目的；在某些情形下也规定须遵循的流程。<br>purpose for the issuance of a debt security; also defines processes to be followed in some instances |
 | 债务证券化流程（debt securitization process） | 将债务资产打包证券化的过程。 |
 | 房屋净值信用额度池创建流程（home equity line of credit pool creation process） | 创建房屋净值信用额度（HELOC）资产池的过程。 |
 | 组建中（in assembly） | 池或发行处于组建阶段的状态。 |
 | 组建中债务池（in assembly debts pool） | 尚在组建、内容未定的债务池。 |
 | 发行中（in issuance） | 池或证券处于发行阶段的状态。 |
-| 发行流程活动（issuance process activity） | 证券发行流程中的一项活动。 |
+| 发行流程活动（issuance process activity） | 证券发行流程中的一项活动。<br>An activity within the process of securities issuance. |
 | 发布日期（issued） | — |
 | 贷款池创建流程（loan pool creation process） | 创建贷款资产池的过程。 |
 | MTN 注册（m t n registration） | 中期票据发行计划在相关机构的注册。 |
-| 中期票据发行计划（medium term note issuance programme） | 一系列中期票据发行的计划；在其余条款向相关机构注册后再确定到期日的一组发行。 |
+| 中期票据发行计划（medium term note issuance programme） | 一系列中期票据发行的计划；在其余条款向相关机构注册后再确定到期日的一组发行。<br>a program of offerings of medium term notes; a set of issues where the maturity is defined after the rest of the terms have been registered with some authority; these are registered up front so that then the company wants to borrow more money they don't have to go through the registration period but have the facility up front to issue another security. |
 | 中期票据发行（medium term note offering） | 中期票据的单次发行。 |
-| 市政债发行承销商（muni issue underwriter） | 同意买入投资者未认购之全部债券的参与方。 |
-| 新增资金目的（new money purpose） | 为新项目或新用途筹集资金而发行证券。 |
+| 市政债发行承销商（muni issue underwriter） | 同意买入投资者未认购之全部债券的参与方。<br>The party which agrees to buy any certificates that are not bought by investors Term origin:DTCC |
+| 新增资金目的（new money purpose） | 为新项目或新用途筹集资金而发行证券。<br>securities issued to raise funds for a new project or purpose |
 | 尚未发行（not yet issued） | 池或证券尚未进入发行阶段的状态。 |
 | 未发行债务池（not yet issued debts pool） | 已组建但尚未发行的债务池。 |
 | 池支持证券证券化流程（pool backed security securitization process） | 以资产池为基础发行证券的证券化过程。 |
 | 池支持证券证券化流程参与者（pool backed security securitization process actor） | 池支持证券证券化流程中的参与者。 |
-| 再融资目的（refunding purpose） | 发行人通过发行新债券对存量债券进行再融资的程序。 |
-| 再营销目的（remarketing purpose） | 将原持有人回售的证券重新向公众销售的过程。 |
-| 零售资产池创建流程（retail asset pool creation process） | 创建资产池的过程，资产池随后可用作以其为基础资产之证券的发行。 |
+| 再融资目的（refunding purpose） | 发行人通过发行新债券对存量债券进行再融资的程序。<br>a procedure whereby an issuer refinances outstanding bonds by issuing new bonds |
+| 再营销目的（remarketing purpose） | 将原持有人回售的证券重新向公众销售的过程。<br>the process of reselling securities to the public that have been tendered for purchase by the previous owners thereof |
+| 零售资产池创建流程（retail asset pool creation process） | 创建资产池的过程，资产池随后可用作以其为基础资产之证券的发行。<br>The process by which pools of assets are created. These may then be used in the issue of securities based on those asset pools as underlying. |
 | 证券化流程参与者（securitization process actor） | 证券化流程中的参与者。 |
-| 承销商承销量（债务）（underwriter takedown for debt） | 承销商经手的债务证券承销数量信息（将记入 DTC）。 |
+| 承销商承销量（债务）（underwriter takedown for debt） | 承销商经手的债务证券承销数量信息（将记入 DTC）。<br>information on takedown quantity of the debt security handled by the underwriter (that will be brought into DTC) |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -142,8 +142,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有原始发行折让（has original issue discount）** | 债券或其他债务工具发行时相对于面值的折让。 | 值域：百分比 |
-| **银行合格（is bank qualified）** | 发行人在合理预期其在该发行日历年内的发行不超过规定额度时，给予公共目的债券发行的指定。 | 值域：xsd:boolean |
+| **具有原始发行折让（has original issue discount）** | 债券或其他债务工具发行时相对于面值的折让。<br>discount from par value at the time a bond or other debt instrument is issued | 值域：百分比 |
+| **银行合格（is bank qualified）** | 发行人在合理预期其在该发行日历年内的发行不超过规定额度时，给予公共目的债券发行的指定。<br>designation given to a public purpose bond offering by the issuer if it reasonably expects to issue in the calendar year of such offering no more than $10 million par amount of bonds of the type required to be included in making such calculation under the Internal Revenue Code.  When purchased by a commercial bank for its portfolio, the bank may receive an 80% tax deduction for the interest cost of carry for the issue.  A bond that is bank qualified is also known as a qualified tax-exempt obligation. | 值域：xsd:boolean |
 
 #### 2.2.1 附认股权证债券发行（bond offering with warrant）
 
@@ -426,7 +426,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **承销商承销金额（underwriter takedown amount）** | 承销商经手的证券承销金额（将记入 DTC）。 | 值域：货币数量 |
+| **承销商承销金额（underwriter takedown amount）** | 承销商经手的证券承销金额（将记入 DTC）。<br>Takedown amount of the security handled by the underwriter(that will be brought into DTC). | 值域：货币数量 |
 
 ## 3. 其他属性
 
@@ -436,7 +436,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **公告（announces）** | 该公告所涉及的一只或多只证券的发行。 | — |
+| **公告（announces）** | 该公告所涉及的一只或多只证券的发行。<br>The issue of one or more securities that the announcement pertains to. | — |
 | **导致（results in）** | 产生某个结果。 | 值域：潜在分层发行承销商 |
 
 ## 4. 依赖（owl:imports，22 个）

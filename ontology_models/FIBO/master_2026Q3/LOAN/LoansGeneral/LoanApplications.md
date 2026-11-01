@@ -34,25 +34,25 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 全体借款人月收入（all borrowers' monthly income） | 贷款全部借款人的月度合格收入总额。 |
-| 借款人评估（borrower assessment） | 详述借款人及其与贷款申请可能相关的信用历史的评估报告。 |
-| 借款人月收入（borrower monthly income） | 潜在借款人的月度合格收入总额。 |
-| 信用风险评估（credit risk assessment） | 聚焦于确定潜在借款人偿还贷款之可能性的风险评估。 |
-| 收入核实报告（income verification report） | 提供核实借款人收入所用方法及支持文件的报告。 |
-| 个人信用评级（individual person credit rating） | 提供对个人信用状况之意见的信用评级。 |
-| 贷款申请（loan application） | 潜在借款人向潜在贷款人提出的借款请求，包含用于决定是否批准贷款的信息。 |
+| 全体借款人月收入（all borrowers' monthly income） | 贷款全部借款人的月度合格收入总额。<br>total monthly qualifying income for all borrowers on the loan |
+| 借款人评估（borrower assessment） | 详述借款人及其与贷款申请可能相关的信用历史的评估报告。<br>assessment report detailing information about the borrower and their credit history that may be relevant to the loan application |
+| 借款人月收入（borrower monthly income） | 潜在借款人的月度合格收入总额。<br>total monthly qualifying income of a potential borrower |
+| 信用风险评估（credit risk assessment） | 聚焦于确定潜在借款人偿还贷款之可能性的风险评估。<br>risk assessment that focuses on determining the likelihood of a potential borrower repaying a loan |
+| 收入核实报告（income verification report） | 提供核实借款人收入所用方法及支持文件的报告。<br>report providing the methodology and supporting documentation used to verify the borrower's income |
+| 个人信用评级（individual person credit rating） | 提供对个人信用状况之意见的信用评级。<br>credit rating that provides an opinion of the creditworthiness of a person |
+| 贷款申请（loan application） | 潜在借款人向潜在贷款人提出的借款请求，包含用于决定是否批准贷款的信息。<br>request by a potential borrower to a potential lender to borrow money containing information used to decide whether to grant the loan |
 | 协议阶段的贷款申请（loan application at agreement stage） | 处于协议阶段的贷款申请。 |
 | 放款阶段的贷款申请（loan application at disbursement stage） | 处于放款阶段的贷款申请。 |
 | 贷款申请阶段（loan application phase） | 贷款申请所处的阶段。 |
 | 贷款申请状态（loan application status） | 贷款申请的状态。 |
 | 申请阶段的贷款（loan at application stage） | 处于申请阶段的贷款。 |
-| 预批准合同（pre-approval contract） | 当特定条件满足（如找到合适房产、信用状况不变）时提供贷款的书面承诺。 |
-| 预批准请求（pre-approval request） | 潜在借款人请求贷款人承诺为其预批准不超过指定金额贷款的请求。 |
-| 公开记录（public record） | 可从法院或其他政府机构公开获取的、关于某参与方所涉行动的记录。 |
-| 公开记录类别（public record category） | 与贷款申请相关的公开记录分类符，如税务留置、工资扣押、止赎。 |
-| 总债务支出比（total debt expense ratio） | 全体借款人全部月度债务偿付（含拟议支出）与其收入之比。 |
-| 核保自动化（underwriting automation） | 表明贷款是人工核保还是通过自动核保系统核保的分类符。 |
-| 核保决定（underwriting decision） | 由人工或自动核保系统确定的贷款批准建议分类符。 |
+| 预批准合同（pre-approval contract） | 当特定条件满足（如找到合适房产、信用状况不变）时提供贷款的书面承诺。<br>written commitment to lend when specified conditions are met, such as finding suitable property, and unchanged creditworthiness |
+| 预批准请求（pre-approval request） | 潜在借款人请求贷款人承诺为其预批准不超过指定金额贷款的请求。<br>request from a potential borrower that a lender commit to pre-approving the borrower for a loan of up to a specified amount of money |
+| 公开记录（public record） | 可从法院或其他政府机构公开获取的、关于某参与方所涉行动的记录。<br>record about an action involving a party that is publicly available from a court or other government agency |
+| 公开记录类别（public record category） | 与贷款申请相关的公开记录分类符，如税务留置、工资扣押、止赎。<br>classifier of public records relevant to a loan application, e.g. tax lien, wage garnishment, foreclosure |
+| 总债务支出比（total debt expense ratio） | 全体借款人全部月度债务偿付（含拟议支出）与其收入之比。<br>ratio of all monthly debt payments of all borrowers, including proposed expenses, with respect to the income of the borrowers as relied upon to make a credit decision |
+| 核保自动化（underwriting automation） | 表明贷款是人工核保还是通过自动核保系统核保的分类符。<br>classifier indicating whether a loan was underwritten manually or using an automated underwriting system |
+| 核保决定（underwriting decision） | 由人工或自动核保系统确定的贷款批准建议分类符。<br>classifier providing a loan approval recommendation determined either manually or by an automated underwriting system |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -83,8 +83,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有评估日期（hasDateOfAssessment）** | — | — |
-| **具有总收入（has gross income）** | 标识借款人的个人总收入。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有原始贷款债务收入比（has original loan debt-to-income ratio）** | 标识贷款发放时的债务收入比（DTI），按合并收入计。 | 值域：xsd:decimal |
+| **具有总收入（has gross income）** | 标识借款人的个人总收入。<br>indicates the personal gross income of the borrower | 值域：货币数量；子属性：具有货币数量 |
+| **具有原始贷款债务收入比（has original loan debt-to-income ratio）** | 标识贷款发放时的债务收入比（DTI），按合并收入计。<br>indicates the debt-to-income (DTI) ratio at the time when the loan was advanced; for combined income | 值域：xsd:decimal |
 | **包含（comprises）** | — | — |
 | **关于（isAbout）** | — | — |
 
@@ -125,7 +125,7 @@
 |---|---|---|
 | **具有输入（hasInput）** | — | — |
 | **具有输出（hasOutput）** | — | — |
-| **使用因子（uses factor）** | 将（如）风险评估关联到评估中作为因子使用的事物。 | 子属性：基于 |
+| **使用因子（uses factor）** | 将（如）风险评估关联到评估中作为因子使用的事物。<br>relates e.g. a risk assessment to something used as a factor to make the assessment | 子属性：基于 |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -165,10 +165,10 @@
 |---|---|---|
 | **由……提交（isSubmittedBy）** | — | — |
 | **具有接收日期（hasDateReceived）** | — | — |
-| **具有申请日期（has application date）** | 申请签署并提交的日期。 | 值域：显式日期；子属性：具有请求日期 |
-| **具有申请阶段（has application phase）** | 该贷款申请在申请生命周期中所处的阶段。 | 值域：贷款申请阶段（loan application phase）；子属性：具有阶段 |
-| **具有拟定贷款用途（has intended loan purpose）** | 标识贷款资金的拟定用途。 | 值域：xsd:string |
-| **已申请预批准（is pre-approval requested）** | 表明是否已随贷款申请一并申请预批准。 | 值域：xsd:boolean |
+| **具有申请日期（has application date）** | 申请签署并提交的日期。<br>date on which an application was signed and submitted | 值域：显式日期；子属性：具有请求日期 |
+| **具有申请阶段（has application phase）** | 该贷款申请在申请生命周期中所处的阶段。<br>The phase within the application lifecycle, that this Loan Application is at, | 值域：贷款申请阶段（loan application phase）；子属性：具有阶段 |
+| **具有拟定贷款用途（has intended loan purpose）** | 标识贷款资金的拟定用途。<br>indicates the purpose to which the loaned funds are to be put | 值域：xsd:string |
+| **已申请预批准（is pre-approval requested）** | 表明是否已随贷款申请一并申请预批准。<br>indicates whether a pre-approval has been requested, in conjunction with a loan application | 值域：xsd:boolean |
 | **包含（comprises）** | — | — |
 
 公理：
@@ -225,7 +225,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有利率（hasInterestRate）** | — | — |
-| **具有批准金额（has approved amount）** | 将某事物（如贷款）关联到批准的资金金额。 | 子属性：具有货币数量 |
+| **具有批准金额（has approved amount）** | 将某事物（如贷款）关联到批准的资金金额。<br>relates something, e.g. a loan, to the amount of funds approved | 子属性：具有货币数量 |
 
 公理：
 
@@ -243,7 +243,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有借款人（hasBorrower）** | — | — |
-| **具有申请金额（has requested amount）** | 将某事物（如贷款申请）关联到所申请的资金金额。 | 子属性：具有货币数量 |
+| **具有申请金额（has requested amount）** | 将某事物（如贷款申请）关联到所申请的资金金额。<br>relates something, e.g. a request for a loan, to the amount of funds requested | 子属性：具有货币数量 |
 
 公理：
 

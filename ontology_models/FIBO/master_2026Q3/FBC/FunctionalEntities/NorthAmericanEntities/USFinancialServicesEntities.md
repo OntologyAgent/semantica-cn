@@ -34,71 +34,75 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 纽约州第十二条投资公司（New York Article XII investment company） | 依纽约州银行法第十二条设立、拥有广泛借贷权限并可投资股票和债券的专业非存款性贷款机构。 |
-| 美国银行（U.S. bank） | 获准在美国开展业务的银行。 |
-| 美国银行控股公司（U.S. bank holding company） | 获准在美国开展业务、并依相关法律受联邦储备监管和监督的银行控股公司。 |
-| 美国信用合作社（U.S. credit union） | 为促进会员节俭、并为勤俭或生产性目的创造信贷来源而组织的合作协会。 |
-| 外国银行机构代理处（agency of a foreign banking organization） | 外国银行设于美国任何州的营业场所，在该场所维持贷方余额、兑付支票、发放贷款，或在法律允许范围内从事其他业务。 |
-| 协议公司（agreement corporation） | 由州特许从事国际银行业务的公司，因该公司与联邦储备委员会订立「协议」而得名。 |
-| 协议公司——银行类（agreement corporation - banking） | 章程允许其从事国际银行业务的协议公司。 |
-| 协议公司——投资类（agreement corporation - investment） | 章程允许其从事国际投资银行业务的协议公司。 |
-| 银行家银行（bankers' bank） | 除法律要求的董事资格股外，完全由其他存款性机构或存款性机构控股公司拥有的商业银行。 |
-| 受准备金要求约束的银行家银行（bankers' bank subject to reserve requirements） | 其活动受联邦储备特定要求限制的银行家银行。 |
-| 不受准备金要求约束的银行家银行（bankers' bank that is not subject to reserve requirements） | 其活动不受联邦储备特定要求限制的银行家银行。 |
-| 存款性机构分支机构（branch of a depository institution） | 位于美国任何州、吸收存款的任何办事处或营业场所。 |
-| 商业贷款公司（commercial lending company） | 依《联邦储备法》第 25 条以外的法律组建、从事商业贷款业务的机构（银行或依该法第 25 条运营的组织除外）。 |
-| 合作银行（cooperative bank） | 依照其特许或组建所在州的法律组织和运营的州特许储蓄协会。 |
-| 外国银行的境内分行（domestic branch of a foreign bank） | 外国银行设于美国任何州、吸收存款的营业场所，且不属于法规定义的代理处。 |
-| 境内银行的境内分行（domestic branch of domestic bank） | 位于美国境内、其母行也位于美国境内的分行。 |
-| 境内实体（domestic entity） | 在美国注册成立并以美国为住所地的金融服务提供商。 |
-| 其他境内实体（domestic entity other） | 通常在美国从事与银行业务相关活动的境内机构。 |
-| 境内实体的境内非银行子公司（domestic non-bank subsidiary of a domestic entity） | 总部位于美国、其 25% 或以上表决权股份由境内实体拥有或控制的非银行金融服务提供商。 |
-| 埃奇公司（edge corporation） | 由联邦储备特许、从事国际银行和金融业务的股份公司，得名于《埃奇法》。 |
-| 埃奇公司——银行类（edge corporation - banking） | 章程允许其从事国际银行业务的埃奇公司。 |
-| 埃奇公司——境内分行（edge corporation - domestic branch） | 位于美国境内的埃奇公司分行。 |
-| 埃奇公司——投资类（edge corporation - investment） | 章程允许其从事国际投资银行业务的埃奇公司。 |
-| 农业信贷体系机构（farm credit system institution） | 由农业信贷管理局监督、检查和监管、并依相关法案运营的联邦特许金融机构。 |
-| 外国银行机构的联邦代理处（federal agency of foreign banking organization） | 依《联邦法规汇编》第 12 编第 3102 节及 1978 年《国际银行法》第 4 节设立并运营的外国银行代理处。 |
-| 外国银行机构的联邦分行（federal branch of foreign banking organization） | 依《联邦法规汇编》第 12 编第 3102 节及 1978 年《国际银行法》第 4 节设立并运营的外国银行分行。 |
-| 联邦信用合作社（federal credit union） | 具有联邦隶属关系的信用合作社。 |
-| 联邦储蓄银行（federal savings bank） | 具有联邦隶属关系的储蓄银行。 |
-| 金融控股公司（financial holding company） | 依 1999 年《格雷姆-里奇-比利雷法》获准从事广泛银行相关业务的金融实体。 |
-| 外国银行（foreign bank） | 依外国、美国属地、波多黎各、关岛、美属萨摩亚或维尔京群岛法律组建的金融机构。 |
-| 外国银行机构（foreign banking organization） | 总部设在美国境外、可收购或设立独立银行或银行控股公司的金融服务提供商。 |
-| 作为银行控股公司的外国银行机构（foreign banking organization as a bank holding company） | 在美国境内属于银行控股公司的外国银行机构。 |
-| 银行控股公司旗下的外国银行机构（foreign banking organization of a bank holding company） | 由银行控股公司拥有或控制的外国银行机构。 |
-| 美国银行的境外分行（foreign branch of US bank） | 位于美国境外、但其母行位于美国境内的分行。 |
-| 外国银行的境外分行（foreign branch of foreign bank） | 位于美国境外、其母行也位于美国境外的分行。 |
-| 由美国机构管理的外国银行境外分行（foreign branch of foreign bank managed by US office） | 位于美国境外、母行也在美国境外、但由该行的美国分行或代理处管理的分行。 |
-| 其他境外实体（foreign entity other） | 通常在其所在国家从事与银行业务相关活动的境外机构。 |
-| 工业银行（industrial bank） | 通过出售称为「投资股份」的凭证和吸收存款来筹集资金的有限服务金融机构。 |
-| 外国银行机构的参保联邦分行（insured federal branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依联邦法律设立并运营且受联邦存款保险公司承保的办事处或营业场所。 |
-| 外国银行机构的参保州分行（insured state branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依州法律设立并运营且受联邦存款保险公司承保的办事处或营业场所。 |
-| 中间控股公司（intermediate holding company） | 外国银行机构依联邦储备委员会 YY 条例（12 CFR）O 分部分设立或指定的银行控股公司。 |
-| 美国存款机构、埃奇公司或信托公司旗下的国际银行（international bank of US depositary, edge, trust company） | 由美国存款性机构、埃奇法公司或信托公司拥有或控制的银行。 |
-| 境内实体的境外非银行子公司（international non-bank subsidiary of a domestic entity） | 总部位于美国境外、其 25% 或以上表决权股份由境内实体拥有或控制的非银行金融服务提供商。 |
-| 外国银行的有限分行（limited branch of a foreign bank） | 仅吸收依《联邦储备法》第 25A 条组建的公司所允许吸收之存款的外国银行分行。 |
-| 互助储蓄银行（mutual savings bank） | 主要从个人吸收存款、并将大部分资金投放于抵押贷款的金融机构。 |
-| 国民银行（national bank） | 章程由货币监理署（OCC）而非州银行监管机构批准的商业银行。 |
-| 境内实体的非银行子公司（non-bank subsidiary of a domestic entity） | 其 25% 或以上表决权股份由总部位于美国的实体拥有或控制的非银行实体。 |
-| 非存款性信托公司（non-depository trust company） | 接受并执行信托但不发行货币的信托公司；可以是联邦储备成员或非成员。 |
-| 外国银行办事机构（office of a foreign bank） | 外国银行在美国的任何分行、代理处、代表处或商业贷款公司子公司等设施。 |
-| 外国银行区域行政办事处（regional administrative office of a foreign bank） | 由在美国运营两个或以上分行、代理处、商业贷款公司或银行的外国银行设立的代表处，承担区域管理职能。 |
-| 外国银行代表处（representative office of a foreign bank） | 外国银行设于美国任何州、且不属于联邦分行、联邦代理处、州分行、州代理处或商业贷款公司的办事机构。 |
-| 储蓄银行（savings bank） | 为吸收储蓄存款并对储蓄存款支付利息而组建的银行机构。 |
-| 储蓄贷款协会（savings loan association） | 主要从个人吸收存款、并将资金主要投向住宅抵押贷款的金融机构。 |
-| 储蓄贷款控股公司（savings loan holding company） | 直接或间接控制储蓄协会或相关控股公司的公司，明确排除同时属于银行控股公司的公司。 |
-| 外国银行机构的州代理处（state agency of foreign banking organization） | 依美国任何州（含哥伦比亚特区）法律设立并运营的外国银行代理处。 |
-| 外国银行机构的州分行（state branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依该州法律设立并运营的分行。 |
-| 州信用合作社（state credit union） | 具有州隶属关系的信用合作社。 |
-| 州储蓄银行（state savings bank） | 具有州隶属关系的储蓄银行。 |
-| 州特许银行（state-chartered bank） | 章程由州银行监管机构批准的商业银行。 |
-| 境内实体的子公司（subsidiary of a domestic entity） | 其 25% 或以上表决权股份由总部位于美国的实体拥有或控制、或其实质多数股权受其控制的实体。 |
-| 节俭机构（thrift institution） | 主要吸收储蓄账户存款并将大部分资金投资于抵押贷款的储蓄协会。 |
-| 外国银行机构的未参保联邦代理处（uninsured federal agency of foreign banking organization） | 依《联邦法规汇编》第 12 编第 3102 节及 1978 年《国际银行法》第 4 节设立并运营、但不受联邦存款保险公司承保的外国银行代理处。 |
-| 外国银行机构的未参保联邦分行（uninsured federal branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依联邦法律设立并运营、但不受联邦存款保险公司承保的办事处或营业场所。 |
-| 外国银行机构的未参保州代理处（uninsured state agency of foreign banking organization） | 依美国任何州法律设立并运营、不受联邦存款保险公司承保或监管的外国银行代理处。 |
-| 外国银行机构的未参保州分行（uninsured state branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依州法律设立并运营、但不受联邦存款保险公司承保的办事处或营业场所。 |
+| 纽约州第十二条投资公司（New York Article XII investment company） | 依纽约州银行法第十二条设立、拥有广泛借贷权限并可投资股票和债券的专业非存款性贷款机构。<br>specialized non-depository lending institution that has broad borrowing and lending powers and may invest in stocks and bonds |
+| 美国银行（U.S. bank） | 获准在美国开展业务的银行。<br>bank that is licensed to conduct business in the United States |
+| 美国银行控股公司（U.S. bank holding company） | 获准在美国开展业务、并依相关法律受联邦储备监管和监督的银行控股公司。<br>bank holding company that is licensed to conduct business in the United States and is regulated and supervised by the Federal Reserve in accordance with the Bank Holding Company Act of 1956 |
+| 美国信用合作社（U.S. credit union） | 为促进会员节俭、并为勤俭或生产性目的创造信贷来源而组织的合作协会。<br>cooperative association organized for the purpose of promoting thrift among its members and creating a source of credit for provident or productive purposes |
+| 外国银行机构代理处（agency of a foreign banking organization） | 外国银行设于美国任何州的营业场所，在该场所维持贷方余额、兑付支票、发放贷款，或在法律允许范围内从事其他业务。<br>place of business of a foreign bank, located in any state, at which credit balances are maintained, checks are paid, money is lent, or, to the extent not prohibited by state or federal law, deposits are accepted from a person or entity that is not a citizen or resident of the United States |
+| 协议公司（agreement corporation） | 由州特许从事国际银行业务的公司，因该公司与联邦储备委员会订立「协议」而得名。<br>corporation chartered by a state to engage in international banking, so named because the corporation enters into an 'agreement' with the Fed's Board of Governors that it will limit its activities to those permitted |
+| 协议公司——银行类（agreement corporation - banking） | 章程允许其从事国际银行业务的协议公司。<br>agreement corporation whose charter allows the corporation to engage in international banking |
+| 协议公司——投资类（agreement corporation - investment） | 章程允许其从事国际投资银行业务的协议公司。<br>agreement corporation whose charter allows the corporation to engage in international investment banking |
+| 银行家银行（bankers' bank） | 除法律要求的董事资格股外，完全由其他存款性机构或存款性机构控股公司拥有的商业银行。<br>commercial bank owned exclusively (except to the extent directors' qualifying shares are required by law) by other depository institutions or depository institution holding companies, the activities of which are limited by its articles of association exclusively to providing services to or for other depository institutions, their holding companies, and the officers, directors, and employees of such institutions and companies, and to providing correspondent banking services at the request of other depository institutions or their holding companies |
+| 受准备金要求约束的银行家银行（bankers' bank subject to reserve requirements） | 其活动受联邦储备特定要求限制的银行家银行。<br>bankers' bank whose activities are limited by specific requirements of the Federal Reserve |
+| 不受准备金要求约束的银行家银行（bankers' bank that is not subject to reserve requirements） | 其活动不受联邦储备特定要求限制的银行家银行。<br>bankers' bank whose activities are not limited by specific requirements of the Federal Reserve |
+| 存款性机构分支机构（branch of a depository institution） | 位于美国任何州、吸收存款的任何办事处或营业场所。<br>any office or any place of business located in any State of the United States at which deposits are received |
+| 商业贷款公司（commercial lending company） | 依《联邦储备法》第 25 条以外的法律组建、从事商业贷款业务的机构（银行或依该法第 25 条运营的组织除外）。<br>any institution, other than a bank or an organization operating under section 25 of the Federal Reserve Act [12 U.S.C. 601 et seq.], organized under the laws of any State of the United States, or the District of Columbia which maintains credit balances incidental to or arising out of the exercise of banking powers and engages in the business of making commercial loans |
+| 合作银行（cooperative bank） | 依照其特许或组建所在州的法律组织和运营的州特许储蓄协会。<br>state-chartered savings association that is organized and operates according to the laws of the state in which it is chartered or organized, including Massachusetts, New Hampshire, Rhode Island or Vermont |
+| 外国银行的境内分行（domestic branch of a foreign bank） | 外国银行设于美国任何州、吸收存款的营业场所，且不属于法规定义的代理处。<br>place of business of a foreign bank, located in any state, at which deposits are received, and that is not an agency as defined in https://www.ecfr.gov/current/title-12/chapter-II/subchapter-A/part-211/subpart-B/section-211.21 |
+| 境内银行的境内分行（domestic branch of domestic bank） | 位于美国境内、其母行也位于美国境内的分行。<br>branch that resides in the United States, and whose parent is also located in the United States |
+| 境内实体（domestic entity） | 在美国注册成立并以美国为住所地的金融服务提供商。<br>financial service provider that is incorporated and domiciled in the United States |
+| 其他境内实体（domestic entity other） | 通常在美国从事与银行业务相关活动的境内机构。<br>domestic institution that engages in banking activities usually in connection with the business of banking in the United States |
+| 境内实体的境内非银行子公司（domestic non-bank subsidiary of a domestic entity） | 总部位于美国、其 25% 或以上表决权股份由境内实体拥有或控制的非银行金融服务提供商。<br>non-bank financial service provider based in the United States of which 25 percent or more of whose voting shares are owned or controlled by an entity that is also based in the United States, or of which a majority of its directors are controlled by such domestic entity, or of which 25 percent or more of whose voting shares are held by trustees for the benefit of the shareholders or members of such domestic entity |
+| 埃奇公司（edge corporation） | 由联邦储备特许、从事国际银行和金融业务的股份公司，得名于《埃奇法》。<br>corporation chartered by the Federal Reserve to engage in international banking and financial operations |
+| 埃奇公司——银行类（edge corporation - banking） | 章程允许其从事国际银行业务的埃奇公司。<br>edge corporation whose charter allows the corporation to engage in international banking |
+| 埃奇公司——境内分行（edge corporation - domestic branch） | 位于美国境内的埃奇公司分行。<br>branch of an edge corporation that is located in the United States |
+| 埃奇公司——投资类（edge corporation - investment） | 章程允许其从事国际投资银行业务的埃奇公司。<br>edge corporation whose charter allows the corporation to engage in international investment banking |
+| 农业信贷体系机构（farm credit system institution） | 由农业信贷管理局监督、检查和监管、并依相关法案运营的联邦特许金融机构。<br>federally-chartered financial institution that is supervised, examined, and regulated by the Farm Credit Administration and operates in accordance with the Farm Credit Act of 1971, as amended, 12 U.S.C. 2001 et seq |
+| 外国银行机构的联邦代理处（federal agency of foreign banking organization） | 依《联邦法规汇编》第 12 编第 3102 节及 1978 年《国际银行法》第 4 节设立并运营的外国银行代理处。<br>agency of a foreign bank established and operating under section 3102 of CFR Title 12, Chapter 32 and section 4 of the International Banking Act of 1978 |
+| 外国银行机构的联邦分行（federal branch of foreign banking organization） | 依《联邦法规汇编》第 12 编第 3102 节及 1978 年《国际银行法》第 4 节设立并运营的外国银行分行。<br>branch of a foreign bank established and operating under section 3102 of CFR Title 12, Chapter 32 and section 4 of the International Banking Act of 1978 |
+| 联邦信用合作社（federal credit union） | 具有联邦隶属关系的信用合作社。<br>credit union that has a federal affiliation |
+| 联邦储蓄银行（federal savings bank） | 具有联邦隶属关系的储蓄银行。<br>savings bank that has a federal affiliation |
+| 金融控股公司（financial holding company） | 依 1999 年《格雷姆-里奇-比利雷法》获准从事广泛银行相关业务的金融实体。<br>financial entity engaged in a broad range of banking-related activities as permitted under the Gramm-Leach-Bliley Act of 1999 |
+| 外国银行（foreign bank） | 依外国、美国属地、波多黎各、关岛、美属萨摩亚或维尔京群岛法律组建的金融机构。<br>financial institution organized under the laws of a foreign country, a territory of the United States, Puerto Rico, Guam, American Samoa, or the Virgin Islands, which engages in the business of banking, or any subsidiary or affiliate, organized under such laws, of any such institution |
+| 外国银行机构（foreign banking organization） | 总部设在美国境外、可收购或设立独立银行或银行控股公司的金融服务提供商。<br>financial service provider that is headquartered outside the United States and that can acquire or establish freestanding banks or bank holding companies in the United States |
+| 作为银行控股公司的外国银行机构（foreign banking organization as a bank holding company） | 在美国境内属于银行控股公司的外国银行机构。<br>foreign banking organization that is a bank holding company in the United States |
+| 银行控股公司旗下的外国银行机构（foreign banking organization of a bank holding company） | 由银行控股公司拥有或控制的外国银行机构。<br>foreign banking organization that is owned or controlled by a bank holding company |
+| 美国银行的境外分行（foreign branch of US bank） | 位于美国境外、但其母行位于美国境内的分行。<br>branch that resides outside of the United States, but has a parent that is located in the United States |
+| 外国银行的境外分行（foreign branch of foreign bank） | 位于美国境外、其母行也位于美国境外的分行。<br>branch that resides outside of the United States whose parent is located outside of the United States |
+| 由美国机构管理的外国银行境外分行（foreign branch of foreign bank managed by US office） | 位于美国境外、母行也在美国境外、但由该行的美国分行或代理处管理的分行。<br>branch that resides outside of the United States whose parent is located outside of the United States that is managed by a US branch or agency of the foreign bank |
+| 其他境外实体（foreign entity other） | 通常在其所在国家从事与银行业务相关活动的境外机构。<br>foreign institution that engages in banking activities usually in connection with the business of banking in the countries where such foreign institutions are organized or operating |
+| 工业银行（industrial bank） | 通过出售称为「投资股份」的凭证和吸收存款来筹集资金的有限服务金融机构。<br>limited service financial institution that raises funds by selling certificates called 'investment shares' and by accepting deposits |
+| 外国银行机构的参保联邦分行（insured federal branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依联邦法律设立并运营且受联邦存款保险公司承保的办事处或营业场所。<br>any office or any place of business of a foreign bank located in any State of the United States at which deposits are received established and operating under section 4 of the International Banking Act of 1978 that is insured and regulated by the Federal Deposit Insurance Corporation (FDIC) |
+| 外国银行机构的参保州分行（insured state branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依州法律设立并运营且受联邦存款保险公司承保的办事处或营业场所。<br>any office or any place of business of a foreign bank located in any State of the United States at which deposits are received, established and operating under the laws of that State that is insured and regulated by the Federal Deposit Insurance Corporation (FDIC) |
+| 中间控股公司（intermediate holding company） | 外国银行机构依联邦储备委员会 YY 条例（12 CFR）O 分部分设立或指定的银行控股公司。<br>bank holding company established or designated by a foreign banking organization under subpart O of the Federal Reserve Board's Regulation YY (12 CFR part 252) |
+| 美国存款机构、埃奇公司或信托公司旗下的国际银行（international bank of US depositary, edge, trust company） | 由美国存款性机构、埃奇法公司或信托公司拥有或控制的银行。<br>bank that is owned or controlled by a US depository institution, Edge Act corporation or trust company |
+| 境内实体的境外非银行子公司（international non-bank subsidiary of a domestic entity） | 总部位于美国境外、其 25% 或以上表决权股份由境内实体拥有或控制的非银行金融服务提供商。<br>non-bank financial service provider based outside of the United States of which 25 percent or more of whose voting shares are owned or controlled by an entity that is based in the United States, or of which a majority of its directors are controlled by such domestic entity, or of which 25 percent or more of whose voting shares are held by trustees for the benefit of the shareholders or members of such domestic entity |
+| 外国银行的有限分行（limited branch of a foreign bank） | 仅吸收依《联邦储备法》第 25A 条组建的公司所允许吸收之存款的外国银行分行。<br>branch of a foreign bank that receives only such deposits as would be permitted for a corporation organized under section 25A of the Federal Reserve Act (12 U.S.C. 611-631) |
+| 互助储蓄银行（mutual savings bank） | 主要从个人吸收存款、并将大部分资金投放于抵押贷款的金融机构。<br>financial institution that accepts deposits primarily from individuals and places a large portion of its funds into mortgage loans |
+| 国民银行（national bank） | 章程由货币监理署（OCC）而非州银行监管机构批准的商业银行。<br>commercial bank whose charter is approved by the Office of the Comptroller of the Currency (OCC) rather than by a state banking agency |
+| 境内实体的非银行子公司（non-bank subsidiary of a domestic entity） | 其 25% 或以上表决权股份由总部位于美国的实体拥有或控制的非银行实体。<br>non-bank entity of which 25 percent or more of whose voting shares are owned or controlled by an entity that is based in the United States, or of which a majority of its directors are controlled by such domestic entity, or of which 25 percent or more of whose voting shares are held by trustees for the benefit of the shareholders or members of such domestic entity |
+| 非存款性信托公司（non-depository trust company） | 接受并执行信托但不发行货币的信托公司；可以是联邦储备成员或非成员。<br>trust company that accepts and executes trusts, but does not issue currency; non-depository trust companies can either be Federal Reserve Members or Federal Reserve Non-members |
+| 外国银行办事机构（office of a foreign bank） | 外国银行在美国的任何分行、代理处、代表处或商业贷款公司子公司等设施。<br>facility that is any branch, agency, representative office, or commercial lending company subsidiary of a foreign bank in the United States |
+| 外国银行区域行政办事处（regional administrative office of a foreign bank） | 由在美国运营两个或以上分行、代理处、商业贷款公司或银行的外国银行设立的代表处，承担区域管理职能。<br>representative office that 
+(1) Is established by a foreign bank that operates two or more branches, agencies, commercial lending companies, or banks in the United States; 
+(2) Is located in the same city as one or more of the foreign bank's branches, agencies, commercial lending companies, or banks in the United States; 
+(3) Manages, supervises, or coordinates the operations of the foreign bank or its affiliates, if any, in a particular geographic area that includes the United States or a region thereof, including by exercising credit approval authority in that area pursuant to written standards, credit policies, and procedures established by the foreign bank; and 
+(4) Does not solicit business from actual or potential customers of the foreign bank or its affiliates. |
+| 外国银行代表处（representative office of a foreign bank） | 外国银行设于美国任何州、且不属于联邦分行、联邦代理处、州分行、州代理处或商业贷款公司的办事机构。<br>office of a foreign bank which is located in any state and is not a federal branch, federal agency, state branch, state agency, or commercial lending company subsidiary |
+| 储蓄银行（savings bank） | 为吸收储蓄存款并对储蓄存款支付利息而组建的银行机构。<br>banking institution organized to accept savings deposits and pay interest on those savings deposits |
+| 储蓄贷款协会（savings loan association） | 主要从个人吸收存款、并将资金主要投向住宅抵押贷款的金融机构。<br>financial institution that accepts deposits primarily from individuals and channels its funds primarily into residential mortgage loans |
+| 储蓄贷款控股公司（savings loan holding company） | 直接或间接控制储蓄协会或相关控股公司的公司，明确排除同时属于银行控股公司的公司。<br>company that directly or indirectly controls a savings association or related holding company, and explicitly excludes any company that is also a bank holding company |
+| 外国银行机构的州代理处（state agency of foreign banking organization） | 依美国任何州（含哥伦比亚特区）法律设立并运营的外国银行代理处。<br>agency of a foreign bank established and operating under the laws of any state, where state means any State of the United States or the District of Columbia |
+| 外国银行机构的州分行（state branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依该州法律设立并运营的分行。<br>branch of a foreign bank located in any State of the United States at which deposits are received, established and operating under the laws of that State, where state means any State of the United States or the District of Columbia |
+| 州信用合作社（state credit union） | 具有州隶属关系的信用合作社。<br>credit union that has a state affiliation |
+| 州储蓄银行（state savings bank） | 具有州隶属关系的储蓄银行。<br>savings bank that has a state affiliation |
+| 州特许银行（state-chartered bank） | 章程由州银行监管机构批准的商业银行。<br>commercial bank whose charter is approved by a state banking regulator |
+| 境内实体的子公司（subsidiary of a domestic entity） | 其 25% 或以上表决权股份由总部位于美国的实体拥有或控制、或其实质多数股权受其控制的实体。<br>entity of which 25 percent or more of whose voting shares are owned or controlled by an entity that is based in the United States, or of which a majority of its directors are controlled by such domestic entity, or of which 25 percent or more of whose voting shares are held by trustees for the benefit of the shareholders or members of such domestic entity |
+| 节俭机构（thrift institution） | 主要吸收储蓄账户存款并将大部分资金投资于抵押贷款的储蓄协会。<br>savings association that primarily accepts savings account deposits and invests most of the proceeds in mortgages |
+| 外国银行机构的未参保联邦代理处（uninsured federal agency of foreign banking organization） | 依《联邦法规汇编》第 12 编第 3102 节及 1978 年《国际银行法》第 4 节设立并运营、但不受联邦存款保险公司承保的外国银行代理处。<br>agency of a foreign bank established and operating under section 3102 of CFR Title 12, Chapter 32 and section 4 of the International Banking Act of 1978 that is not insured or regulated by the Federal Deposit Insurance Corporation (FDIC) |
+| 外国银行机构的未参保联邦分行（uninsured federal branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依联邦法律设立并运营、但不受联邦存款保险公司承保的办事处或营业场所。<br>any office or any place of business of a foreign bank located in any State of the United States at which deposits are received established and operating under section 4 of the International Banking Act of 1978 that is not insured or regulated by the Federal Deposit Insurance Corporation (FDIC) |
+| 外国银行机构的未参保州代理处（uninsured state agency of foreign banking organization） | 依美国任何州法律设立并运营、不受联邦存款保险公司承保或监管的外国银行代理处。<br>agency of a foreign bank established and operating under the laws of any state that is not insured or regulated by the Federal Deposit Insurance Corporation (FDIC) |
+| 外国银行机构的未参保州分行（uninsured state branch of foreign banking organization） | 外国银行设于美国任何州、吸收存款、依州法律设立并运营、但不受联邦存款保险公司承保的办事处或营业场所。<br>any office or any place of business of a foreign bank located in any State of the United States at which deposits are received, established and operating under the laws of that State that is not insured or regulated by the Federal Deposit Insurance Corporation (FDIC) |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -392,7 +396,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否受准备金要求约束（is subject to reserve requirements）** | 表明金融服务提供商的某项能力是否以符合联邦储备特定政策、法规或要求为条件。 | 值域：xsd:boolean |
+| **是否受准备金要求约束（is subject to reserve requirements）** | 表明金融服务提供商的某项能力是否以符合联邦储备特定政策、法规或要求为条件。<br>indicates whether some capability of a financial service provider is contingent on conformance with certain Federal Reserve policies, regulations, or other requirements | 值域：xsd:boolean |
 
 公理：
 
@@ -408,7 +412,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否受准备金要求约束（is subject to reserve requirements）** | 表明金融服务提供商的某项能力是否以符合联邦储备特定政策、法规或要求为条件。 | 值域：xsd:boolean |
+| **是否受准备金要求约束（is subject to reserve requirements）** | 表明金融服务提供商的某项能力是否以符合联邦储备特定政策、法规或要求为条件。<br>indicates whether some capability of a financial service provider is contingent on conformance with certain Federal Reserve policies, regulations, or other requirements | 值域：xsd:boolean |
 
 公理：
 
@@ -424,7 +428,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否受准备金要求约束（is subject to reserve requirements）** | 表明金融服务提供商的某项能力是否以符合联邦储备特定政策、法规或要求为条件。 | 值域：xsd:boolean |
+| **是否受准备金要求约束（is subject to reserve requirements）** | 表明金融服务提供商的某项能力是否以符合联邦储备特定政策、法规或要求为条件。<br>indicates whether some capability of a financial service provider is contingent on conformance with certain Federal Reserve policies, regulations, or other requirements | 值域：xsd:boolean |
 
 公理：
 
@@ -616,8 +620,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有母国（has home country）** | 就外国银行而言，指明该外国银行获得特许或注册成立的国家。 | 值域：国家；子属性：具有国家 |
-| **具有母国监管机构（has home country supervisor）** | 就外国银行而言，指明其母国负有监管职责的政府实体。 | 值域：监管机构；子属性：受……监管 |
+| **具有母国（has home country）** | 就外国银行而言，指明该外国银行获得特许或注册成立的国家。<br>indicates, with respect to a foreign bank, the country in which the foreign bank is chartered or incorporated | 值域：国家；子属性：具有国家 |
+| **具有母国监管机构（has home country supervisor）** | 就外国银行而言，指明其母国负有监管职责的政府实体。<br>indicates, with respect to a foreign bank, the governmental entity or entities in the foreign bank's home country with responsibility for the supervision and regulation of the foreign bank | 值域：监管机构；子属性：受……监管 |
 
 公理：
 
@@ -637,8 +641,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有母国（has home country）** | 就外国银行而言，指明该外国银行获得特许或注册成立的国家。 | 值域：国家；子属性：具有国家 |
-| **具有母国监管机构（has home country supervisor）** | 就外国银行而言，指明其母国负有监管职责的政府实体。 | 值域：监管机构；子属性：受……监管 |
+| **具有母国（has home country）** | 就外国银行而言，指明该外国银行获得特许或注册成立的国家。<br>indicates, with respect to a foreign bank, the country in which the foreign bank is chartered or incorporated | 值域：国家；子属性：具有国家 |
+| **具有母国监管机构（has home country supervisor）** | 就外国银行而言，指明其母国负有监管职责的政府实体。<br>indicates, with respect to a foreign bank, the governmental entity or entities in the foreign bank's home country with responsibility for the supervision and regulation of the foreign bank | 值域：监管机构；子属性：受……监管 |
 
 公理：
 

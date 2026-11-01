@@ -41,32 +41,32 @@
 | 吉利美二号池（GNMA-II pool） | 政府国民抵押贷款协会（GNMA，吉利美）二号计划的抵押贷款池。 |
 | 吉利美一号池（GNMA-I pool） | 政府国民抵押贷款协会（GNMA，吉利美）一号计划的抵押贷款池。 |
 | 小企业管理局池（SBA pool） | 由美国小企业管理局（SBA）担保贷款组成的池。 |
-| 机构抵押支持证券交易（agency MBS deal） | 由政府机构持有的抵押贷款池支持的证券的一次发行。 |
-| 机构抵押支持证券发行人（agency MBS issuer） | 过手型 MBS 的发行人为机构发行人，即专门为发行此类工具而设立的某种机构。 |
-| 机构抵押支持证券池（agency MBS pool） | 由一组机构 MBS 工具组成的池投资。 |
-| 机构抵押贷款池（agency mortgage pool） | 由机构抵押贷款组成的池。 |
+| 机构抵押支持证券交易（agency MBS deal） | 由政府机构持有的抵押贷款池支持的证券的一次发行。<br>An issue of securities backed by pools of mortgages held by government agencies. |
+| 机构抵押支持证券发行人（agency MBS issuer） | 过手型 MBS 的发行人为机构发行人，即专门为发行此类工具而设立的某种机构。<br>The issuer of the pass through MBS is an Agency issuer. This is identified as being some kind of agency that is set up specifically to issue these instruments. |
+| 机构抵押支持证券池（agency MBS pool） | 由一组机构 MBS 工具组成的池投资。<br>A pool investment consisting of a collection of Agency MBS instruments. |
+| 机构抵押贷款池（agency mortgage pool） | 由机构抵押贷款组成的池。<br>A pool of agency mortgages. |
 | 商业抵押支持证券（commercial MBS） | 由商业房地产抵押贷款池支持的抵押支持证券。 |
-| 政府抵押贷款机构（government mortgage agency） | 由政府为发行抵押贷款（证券）之目的而设立的机构。 |
-| 已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool） | 已作为机构抵押支持证券一部分证券化的机构抵押贷款池。 |
-| 已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool） | 已作为分档型抵押支持证券一部分证券化的非机构抵押贷款池。 |
-| 抵押支持证券发行人（MBS issuer） | 抵押支持证券的发行人。 |
-| 抵押支持证券池（MBS pool） | 由一组 MBS 工具组成的池投资。 |
-| 抵押贷款池（mortgage pool） | 由信托持有、作为发行抵押支持证券之抵押品的贷款池。 |
-| 抵押支持证券（mortgage-backed security） | 代表对抵押贷款池（最常见为住宅房产抵押贷款）现金流请求权的债务凭证。 |
-| 抵押支持证券发行招募说明书（mortgage-backed security offering prospectus） | 描述抵押支持证券发行条款及所含各工具的招募说明书。 |
-| 非机构抵押支持证券发行人（non-agency MBS issuer） | MBS 证券的非机构发行人，其身份可以是银行或专业（非机构）抵押贷款公司。 |
+| 政府抵押贷款机构（government mortgage agency） | 由政府为发行抵押贷款（证券）之目的而设立的机构。<br>An agency set up by a government for the purpose of issuing mortgages. |
+| 已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool） | 已作为机构抵押支持证券一部分证券化的机构抵押贷款池。<br>An agency mortgage pool which has been securitized as part of an agency Mortgage Backed Security. |
+| 已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool） | 已作为分档型抵押支持证券一部分证券化的非机构抵押贷款池。<br>A non agency mortgage pool which has been securitized as part of a tranched Mortgage Backed Security. |
+| 抵押支持证券发行人（MBS issuer） | 抵押支持证券的发行人。<br>The issuer of a Mortgage Backed Security. |
+| 抵押支持证券池（MBS pool） | 由一组 MBS 工具组成的池投资。<br>A pool investment consisting of a collection of MBS instruments. |
+| 抵押贷款池（mortgage pool） | 由信托持有、作为发行抵押支持证券之抵押品的贷款池。<br>loan pool consisting of mortgages that are held in trust as collateral for the issuance of a mortgage-backed security |
+| 抵押支持证券（mortgage-backed security） | 代表对抵押贷款池（最常见为住宅房产抵押贷款）现金流请求权的债务凭证。<br>debt obligations that represent claims to the cash flows from pools of mortgage loans, most commonly on residential property |
+| 抵押支持证券发行招募说明书（mortgage-backed security offering prospectus） | 描述抵押支持证券发行条款及所含各工具的招募说明书。<br>Prospectus describing the terms of the issue and each of the instruments included in the mortgage backed security issue. Term origin:SMER |
+| 非机构抵押支持证券发行人（non-agency MBS issuer） | MBS 证券的非机构发行人，其身份可以是银行或专业（非机构）抵押贷款公司。<br>A party which is a non agency issuer of MBS securities. The identity of this party may be a bank or a specialist (non agency) mortgage company. Term origin:MBS PoC Reviews |
 | 非机构抵押贷款池（non-agency mortgage pool） | 由非机构抵押贷款组成的池。 |
-| 过手型抵押支持证券交易（pass-through MBS deal） | 池中付款直接过手给投资者的抵押支持证券工具的一次发行。 |
-| 过手型抵押支持证券交易招募说明书（pass-through MBS deal prospectus） | 机构过手型抵押支持证券发行的书面招募说明书。 |
-| 过手型抵押支持证券工具（pass-through MBS instrument） | 标的资产池现金流通过赎回付款方式过手给投资者的证券。 |
-| 过手型抵押支持证券工具票据（pass-through MBS instrument note） | 过手型工具中的单张票据。 |
-| 过手型抵押支持证券发行承销商（pass-through MBS issue underwriter） | 同意买入投资者未认购之任何凭证的一方。 |
+| 过手型抵押支持证券交易（pass-through MBS deal） | 池中付款直接过手给投资者的抵押支持证券工具的一次发行。<br>An issue of Mortgage Backed Security instruments in which payments on the pool are passed through to investors |
+| 过手型抵押支持证券交易招募说明书（pass-through MBS deal prospectus） | 机构过手型抵押支持证券发行的书面招募说明书。<br>The written prospectus for an agency, pass through issue of Mortgage Backed Securities |
+| 过手型抵押支持证券工具（pass-through MBS instrument） | 标的资产池现金流通过赎回付款方式过手给投资者的证券。<br>A security in which the cash flows from the underlying asset pool are passed through to the investor by way of redemption payments. |
+| 过手型抵押支持证券工具票据（pass-through MBS instrument note） | 过手型工具中的单张票据。<br>An individual note of a pass through instrument. |
+| 过手型抵押支持证券发行承销商（pass-through MBS issue underwriter） | 同意买入投资者未认购之任何凭证的一方。<br>The party which agrees to buy any certificates that are not bought by investors Term origin:MBS PoC Reviews |
 | 过手池（pass-through pool） | 现金流直接过手给投资者的抵押贷款池。 |
 | 付款代理（paying agent） | 代表发行人向证券持有人付款的代理机构。 |
 | 私募品牌抵押支持证券交易（private label MBS deal） | 由私人机构（而非政府机构）发行的抵押支持证券的一次发行。 |
-| 房地产抵押贷款投资管道（real estate mortgage investment conduit） | 将抵押贷款汇聚成池并发行抵押支持证券的特殊目的载体（REMIC）。 |
-| 住宅抵押支持证券（residential MBS） | 由住宅抵押贷款池支持的信托凭证（债券）。 |
-| 专业抵押贷款发行人（specialist mortgage issuer） | 专门从事面向公众发行抵押贷款业务的商业组织。 |
+| 房地产抵押贷款投资管道（real estate mortgage investment conduit） | 将抵押贷款汇聚成池并发行抵押支持证券的特殊目的载体（REMIC）。<br>special purpose vehicle that pools mortgage loans together and issues mortgage-backed securities |
+| 住宅抵押支持证券（residential MBS） | 由住宅抵押贷款池支持的信托凭证（债券）。<br>Residential Mortgage-Backed Securities, which are trust certificates (bonds) backed by a pool of residential mortgage loans. |
+| 专业抵押贷款发行人（specialist mortgage issuer） | 专门从事面向公众发行抵押贷款业务的商业组织。<br>A business organization that specialises in and exists for the issuance of mortgages to the general public. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -308,7 +308,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否优质（prime）** | 表明该抵押贷款池是否被标识为优质（Prime）贷款池。 | 值域：xsd:boolean |
+| **是否优质（prime）** | 表明该抵押贷款池是否被标识为优质（Prime）贷款池。<br>Whether the mortage pool is identified as Prime or not. | 值域：xsd:boolean |
 
 ### 2.7 抵押支持证券发行招募说明书（mortgage-backed security offering prospectus）
 
@@ -349,7 +349,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **票面金额（denomination）** | 票据计价的货币金额，例如 500 美元面额的票据。 | 值域：货币数量 |
+| **票面金额（denomination）** | 票据计价的货币金额，例如 500 美元面额的票据。<br>The currency amount in which the Note is denominated, for example $500 notes. This term added by symmettry with MBS Tranche Note. needs to be reviewed and validated. | 值域：货币数量 |
 
 ### 2.10 过手型抵押支持证券发行承销商（pass-through MBS issue underwriter）
 

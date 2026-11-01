@@ -34,17 +34,17 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| API 优先市场数据提供商（API-first market data provider） | 主要通过程序化接口交付金融信息、以 API 提供实时或历史数据的市场数据提供商。 |
-| 另类数据提供商（alternative data provider） | 提供源自网络活动、情感分析、地理空间信号等的非传统数据集的市场数据提供商。 |
-| 加密与数字资产数据提供商（crypto and digital-asset data provider） | 为数字通证和加密资产提供定价、参考数据和分析的市场数据提供商。 |
-| 衍生品与波动率数据提供商（derivatives and volatility data provider） | 为衍生品（含期权、期货和结构化产品）提供定价、隐含波动率曲面和分析的市场数据提供商。 |
-| 交易所数据源提供商（exchange-sourced data provider） | 分发直接源自交易场所的金融信息（含订单簿数据、成交、报价）的市场数据提供商。 |
-| 固定收益专业提供商（fixed income specialist provider） | 专注于固定收益工具（如债券、信用产品和货币市场工具）定价、参考数据和分析的市场数据提供商。 |
-| 机构市场数据提供商（institutional market data provider） | 向银行、资产管理公司等金融机构提供多资产金融信息、分析和参考数据的市场数据提供商。 |
-| 市场数据提供商（market data provider） | 提供金融市场所用金融信息、参考数据、分析或相关数据集的发布方。 |
-| 出版物（publication） | 向公众分发、通常制作多份副本的文件。 |
+| API 优先市场数据提供商（API-first market data provider） | 主要通过程序化接口交付金融信息、以 API 提供实时或历史数据的市场数据提供商。<br>market data provider that delivers financial information primarily through programmatic interfaces, offering real-time or historical data via APIs for automated consumption |
+| 另类数据提供商（alternative data provider） | 提供源自网络活动、情感分析、地理空间信号等的非传统数据集的市场数据提供商。<br>market data provider that supplies non-traditional datasets derived from sources such as web activity, sentiment analysis, geospatial signals, or other alternative information channels |
+| 加密与数字资产数据提供商（crypto and digital-asset data provider） | 为数字通证和加密资产提供定价、参考数据和分析的市场数据提供商。<br>market data provider that supplies pricing, reference data, and analytics for digital tokens and crypto-assets |
+| 衍生品与波动率数据提供商（derivatives and volatility data provider） | 为衍生品（含期权、期货和结构化产品）提供定价、隐含波动率曲面和分析的市场数据提供商。<br>market data provider that supplies pricing, implied-volatility surfaces, and analytics for derivatives, including options, futures, and structured products |
+| 交易所数据源提供商（exchange-sourced data provider） | 分发直接源自交易场所的金融信息（含订单簿数据、成交、报价）的市场数据提供商。<br>market data provider that distributes financial information originating directly from trading venues, including order-book data, trades, quotes, and venue-specific reference data |
+| 固定收益专业提供商（fixed income specialist provider） | 专注于固定收益工具（如债券、信用产品和货币市场工具）定价、参考数据和分析的市场数据提供商。<br>market data provider that focuses on pricing, reference data, and analytics for fixed-income instruments such as bonds, credit products, and money-market securities |
+| 机构市场数据提供商（institutional market data provider） | 向银行、资产管理公司等金融机构提供多资产金融信息、分析和参考数据的市场数据提供商。<br>market data provider that supplies multi-asset financial information, analytics, and reference data to financial institutions such as banks, asset managers, and trading firms |
+| 市场数据提供商（market data provider） | 提供金融市场所用金融信息、参考数据、分析或相关数据集的发布方。<br>publisher that supplies financial information, reference data, analytics, or related datasets used in financial markets |
+| 出版物（publication） | 向公众分发、通常制作多份副本的文件。<br>document offered for general distribution and usually produced in multiple copies |
 | 发布者（publisher） | role of person(s) or organization(s) responsible for the printing or distribution of an item, whether in digital or print (physical) form |
-| 参考数据专业提供商（reference data specialist provider） | 专注于权威参考数据（含公司行动、工具标识符、分类和实体信息）的市场数据提供商。 |
+| 参考数据专业提供商（reference data specialist provider） | 专注于权威参考数据（含公司行动、工具标识符、分类和实体信息）的市场数据提供商。<br>market data provider that focuses on authoritative reference data, including corporate actions, instrument identifiers, classifications, and entity information aligned with ISO standards |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -58,8 +58,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有发布方（has publisher）** | 标识承担信息发布角色的参与方。 | 值域：发布者（publisher）；逆属性：发布（publishes）；子属性：具有参与方角色（has party role） |
-| **由……发布（is published by）** | 标识传播该材料的独立方（个人或组织）。 | 值域：参与方（party）；子属性：具有参与方（has party） |
+| **具有发布方（has publisher）** | 标识承担信息发布角色的参与方。<br>indicates the party in the role of issuing the information | 值域：发布者（publisher）；逆属性：发布（publishes）；子属性：具有参与方角色（has party role） |
+| **由……发布（is published by）** | 标识传播该材料的独立方（个人或组织）。<br>identifies the independent party (i.e., the individual or organization) that disseminates the material | 值域：参与方（party）；子属性：具有参与方（has party） |
 
 ### 2.2 发布者（publisher）
 
@@ -72,7 +72,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **发布（publishes）** | 编制并发行材料供公众使用。 | 值域：出版物（publication）；子属性：体现在…中（is manifested in） |
+| **发布（publishes）** | 编制并发行材料供公众使用。<br>prepares and issues material for public consumption | 值域：出版物（publication）；子属性：体现在…中（is manifested in） |
 | **由…扮演（is played by）** | — | — |
 
 公理：

@@ -34,19 +34,19 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 货币兑换服务（currency conversion service） | 将一国或一组国家的货币兑换为另一货币的外汇服务，通常（但非总是）作为某笔交易的对价。 |
-| 货币远期汇率（currency forward rate） | 两种货币之间在未来某时点结算的汇率，以相对于即期汇率的升水表示。 |
-| 货币远期汇率波动率（currency forward rate volatility） | 基于汇率一系列预测值的汇率波动度量。 |
-| 货币即期买入价（currency spot buy rate） | 报告来源观测到的指示性即期买入市场汇率。 |
-| 货币即期中间价（currency spot mid rate） | 报告来源观测到的指示性中间市场汇率（即期买入与卖出的均值）。 |
-| 货币即期汇率（currency spot rate） | 一种货币可立即交割兑换为另一种货币的汇率。 |
-| 货币即期卖出价（currency spot sell rate） | 报告来源观测到的指示性即期卖出市场汇率。 |
-| 货币即期波动率（currency spot volatility） | 基于汇率一系列历史实际值的汇率波动度量。 |
-| 汇率结构（exchange rate structure） | 报价或预测汇率的结构化集合，可据以构造波动率。 |
-| 汇率波动率（exchange rate volatility） | 一种货币兑换另一货币之汇率的变化率的统计度量。 |
-| 外汇服务（foreign exchange service） | 涉及货币兑换、货币转换以及跨国资金转移的金融服务。 |
-| 国际电子资金转账服务（international electronic funds transfer service） | 涉及跨境资金转移、可能同时涉及货币兑换的电子资金转账（EFT）服务。 |
-| 报价汇率（quoted exchange rate） | 在特定时点、针对以另一（基准）货币报价的给定金额货币所报的汇率。 |
+| 货币兑换服务（currency conversion service） | 将一国或一组国家的货币兑换为另一货币的外汇服务，通常（但非总是）作为某笔交易的对价。<br>foreign exchange service involving the conversion of currency of one country or group of countries for another, typically, but not always, as a counter transaction |
+| 货币远期汇率（currency forward rate） | 两种货币之间在未来某时点结算的汇率，以相对于即期汇率的升水表示。<br>rate of exchange between two currencies for settlement at some future point in time, expressed as a premium on the spot rate |
+| 货币远期汇率波动率（currency forward rate volatility） | 基于汇率一系列预测值的汇率波动度量。<br>measure of exchange rate fluctuation based on a range of projected values for exchange rates |
+| 货币即期买入价（currency spot buy rate） | 报告来源观测到的指示性即期买入市场汇率。<br>indicative spot buying market rate as observed by the reporting source |
+| 货币即期中间价（currency spot mid rate） | 报告来源观测到的指示性中间市场汇率（即期买入与卖出的均值）。<br>indicative middle market (mean of spot buying and selling) rate as observed by the reporting source |
+| 货币即期汇率（currency spot rate） | 一种货币可立即交割兑换为另一种货币的汇率。<br>rate at which one currency may be exchanged for another for immediate delivery |
+| 货币即期卖出价（currency spot sell rate） | 报告来源观测到的指示性即期卖出市场汇率。<br>indicative spot selling market rate as observed by the reporting source |
+| 货币即期波动率（currency spot volatility） | 基于汇率一系列历史实际值的汇率波动度量。<br>measure of exchange rate fluctuation based on a range of past actual values for exchange rates |
+| 汇率结构（exchange rate structure） | 报价或预测汇率的结构化集合，可据以构造波动率。<br>structured collection of quoted or projected exchange rates, such that volatility may be constructed for the structure |
+| 汇率波动率（exchange rate volatility） | 一种货币兑换另一货币之汇率的变化率的统计度量。<br>statistical measure of the rate of change in the rate at which one currency can be exchanged for another |
+| 外汇服务（foreign exchange service） | 涉及货币兑换、货币转换以及跨国资金转移的金融服务。<br>financial service involving the exchange of one currency for another, conversion of one currency for another, and transfer of money from one country to another whereby currency conversion is required |
+| 国际电子资金转账服务（international electronic funds transfer service） | 涉及跨境资金转移、可能同时涉及货币兑换的电子资金转账（EFT）服务。<br>electronic funds transfer (EFT) service involving the transfer of funds across national borders, that may also involve currency conversion |
+| 报价汇率（quoted exchange rate） | 在特定时点、针对以另一（基准）货币报价的给定金额货币所报的汇率。<br>exchange rate quoted at a specific point in time, for a given block amount of currency as quoted against another (base) currency |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -145,10 +145,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有汇率报价来源（has exchange rate quotation source）** | 标识报价汇率的来源。 | 值域：N80fcc8ef7ab74735a19bcffb02bfafbf；子属性：引用 |
-| **具有报价金额基准（has quotation block amount basis）** | 标识适用所述即期汇率的交易中将被兑换的交易货币金额。 | 值域：货币数量 |
-| **具有报价结算基准（has quotation settlement basis）** | 标识适用所述即期汇率的交易的结算周期。 | 值域：时长；子属性：具有时长 |
-| **具有报价货币（has quote currency）** | 标识汇率中的报价货币；该货币的 R 单位代表一单位基准货币。 | 值域：货币；子属性：具有交易货币 |
+| **具有汇率报价来源（has exchange rate quotation source）** | 标识报价汇率的来源。<br>indicates the origin of a quoted exchange rate | 值域：N236f4fc454da4ae49651c9fc03330926；子属性：引用 |
+| **具有报价金额基准（has quotation block amount basis）** | 标识适用所述即期汇率的交易中将被兑换的交易货币金额。<br>indicates the amount of the dealt currency which would be exchanged in a trade for which the stated spot rate applies | 值域：货币数量 |
+| **具有报价结算基准（has quotation settlement basis）** | 标识适用所述即期汇率的交易的结算周期。<br>indicates the settlement period for a trade for which the stated spot rate applies | 值域：时长；子属性：具有时长 |
+| **具有报价货币（has quote currency）** | 标识汇率中的报价货币；该货币的 R 单位代表一单位基准货币。<br>indicates the quote currency in an exchange rate; R units of this currency represent one unit of the base currency | 值域：货币；子属性：具有交易货币 |
 
 公理：
 
@@ -166,7 +166,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有结算日（hasSettlementDate）** | — | — |
-| **是……的升水（is premium on）** | 以相对于该货币对即期汇率的升水表示的汇率。 | 值域：报价汇率（quoted exchange rate） |
+| **是……的升水（is premium on）** | 以相对于该货币对即期汇率的升水表示的汇率。<br>an exchange rate expressed as a premium on the spot rate for the currency pair | 值域：报价汇率（quoted exchange rate） |
 
 公理：
 
@@ -205,7 +205,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有报价汇率（has quoted exchange rate）** | 特定来源在某日期时间所报的两种货币之间的汇率。 | 值域：报价汇率（quoted exchange rate）；子属性：具有量值 |
+| **具有报价汇率（has quoted exchange rate）** | 特定来源在某日期时间所报的两种货币之间的汇率。<br>rate of exchange between two currencies as specified as of some date and time as quoted by a specific source | 值域：报价汇率（quoted exchange rate）；子属性：具有量值 |
 
 ## 4. 依赖（owl:imports，14 个）
 

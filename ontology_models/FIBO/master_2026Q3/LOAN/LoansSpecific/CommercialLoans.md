@@ -22,7 +22,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 商业贷款（commercial loan） | 向公司、商业企业、合资企业或其他组织（而非消费者个人）发放的贷款。 |
+| 商业贷款（commercial loan） | 向公司、商业企业、合资企业或其他组织（而非消费者个人）发放的贷款。<br>loan extended to a corporation, commercial enterprise, joint venture, or other organization as opposed to a consumer |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -38,7 +38,7 @@
 |---|---|---|
 | **具有借款人（hasBorrower）** | — | — |
 | **具有目标（hasObjective）** | — | — |
-| **具有业务用途描述（has business purpose description）** | 从借款人角度对贷款用途的描述。 | 子属性：具有描述 |
+| **具有业务用途描述（has business purpose description）** | 从借款人角度对贷款用途的描述。<br>provides a description of the purpose of the loan from the perspective of the borrower | 子属性：具有描述 |
 
 公理：
 

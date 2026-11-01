@@ -24,9 +24,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 商业中心代码（business center code） | 用于表示开展商业活动的都会区域的代码。 |
-| 商业中心代码集（business center code set） | 用于定义城市或商业中心代码集合的编码方案。 |
-| 营业日调整代码（business day adjustment code） | 用于表示当某日恰逢某城市或商业中心的周末或节假日时如何处理之惯例的代码。 |
+| 商业中心代码（business center code） | 用于表示开展商业活动的都会区域的代码。<br>code used to denote a metropolitan area where business is conducted |
+| 商业中心代码集（business center code set） | 用于定义城市或商业中心代码集合的编码方案。<br>coding scheme used to define a set of codes for municipalities or business centers |
+| 营业日调整代码（business day adjustment code） | 用于表示当某日恰逢某城市或商业中心的周末或节假日时如何处理之惯例的代码。<br>code used to denote a convention for specifying what happens when a date falls on a day that is weekend or holiday in some municipality or business center |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

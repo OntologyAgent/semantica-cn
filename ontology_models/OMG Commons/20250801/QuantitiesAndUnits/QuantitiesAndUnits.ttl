@@ -67,15 +67,15 @@ cmns-qtu:ArbitraryUnit a owl:Class ;
     rdfs:comment "任意定义的计量单位，其与国际单位制物理单位的关系不存在或未知。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-qtu:ReferenceMaterial ;
-            owl:onProperty cmns-doc:refersTo ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:MaterialMeasure ;
             owl:onProperty cmns-doc:refersTo ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:MeasurementProcedure ;
+            owl:onProperty cmns-doc:refersTo ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:ReferenceMaterial ;
             owl:onProperty cmns-doc:refersTo ],
         cmns-qtu:MeasurementUnit ;
     owl:disjointWith cmns-qtu:PhysicalUnit ;
@@ -125,12 +125,12 @@ cmns-qtu:DerivedQuantityKind a owl:Class ;
         "ISO 80000-1:2009 Quantities and units - Part 1: General, clause 3.5" ;
     rdfs:comment "在量制中以该制基本量定义的量。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:isDerivedFrom ;
-            owl:someValuesFrom cmns-qtu:QuantityKind ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:QuantityKindPowerFactor ;
             owl:onProperty cmns-qtu:hasFactor ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:isDerivedFrom ;
+            owl:someValuesFrom cmns-qtu:QuantityKind ],
         cmns-qtu:QuantityKind ;
     owl:disjointWith cmns-qtu:BaseQuantityKind ;
     skos:definition "quantity, in a system of quantities, defined in terms of the base quantities of that system" ;
@@ -373,12 +373,12 @@ cmns-qtu:QuantityName a owl:Class ;
         "量名称（quantity name）"@zh ;
     rdfs:comment "量的人类可读文本表示。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:isNameOf ;
-            owl:someValuesFrom cmns-qtu:ScalarQuantity ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:SystemOfUnits ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isNameOf ;
+            owl:someValuesFrom cmns-qtu:ScalarQuantity ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:SystemOfQuantities ;
@@ -494,12 +494,12 @@ cmns-qtu:DerivedUnit a owl:Class ;
         "ISO 80000-1:2009 Quantities and units - Part 1: General, clause 3.11" ;
     rdfs:comment "导出量的计量单位，即以一个或多个基本单位（如其他计量单位的幂之积）定义的单位。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:isDerivedFrom ;
-            owl:someValuesFrom cmns-qtu:BaseUnit ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:UnitPowerFactor ;
             owl:onProperty cmns-qtu:hasFactor ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:isDerivedFrom ;
+            owl:someValuesFrom cmns-qtu:BaseUnit ],
         cmns-qtu:PhysicalUnit ;
     skos:definition "measurement unit for a derived quantity, i.e., one that is defined with respect to one or more base units, such as as a product of powers of one or more other measurement units" ;
     skos:example "The meter per second, symbol m/s, and the centimeter per second, symbol cm/s, are derived units of speed in the SI. The kilometer per hour, symbol km/h, is a measurement unit of speed outside the SI but accepted for use with the SI. The knot, equal to one nautical mile per hour, is a measurement unit of speed outside the SI." .
@@ -523,12 +523,12 @@ cmns-qtu:QuantityKindPowerFactor a owl:Class ;
     dcterms:source "https://www.omg.org/spec/SysML/"^^xsd:anyURI ;
     rdfs:comment "定义导出量的幂之积中的因子。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasQuantityKind ;
+            owl:someValuesFrom cmns-qtu:QuantityKind ],
+        [ a owl:Restriction ;
             owl:onDataRange owl:rational ;
             owl:onProperty cmns-qtu:hasExponent ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:hasQuantityKind ;
-            owl:someValuesFrom cmns-qtu:QuantityKind ],
         cmns-qtu:Factor ;
     skos:definition "factor in a product of powers that defines a derived quantity" .
 
@@ -576,12 +576,12 @@ cmns-qtu:UnitPowerFactor a owl:Class ;
     dcterms:source "https://www.omg.org/spec/SysML/"^^xsd:anyURI ;
     rdfs:comment "定义导出单位的幂之积中的因子。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange owl:rational ;
-            owl:onProperty cmns-qtu:hasExponent ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass cmns-qtu:MeasurementUnit ;
             owl:onProperty cmns-qtu:hasMeasurementUnit ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange owl:rational ;
+            owl:onProperty cmns-qtu:hasExponent ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-qtu:Factor ;
     skos:definition "factor in a product of powers that defines a derived unit" .
@@ -801,13 +801,16 @@ cmns-qtu:MeasurementScale a owl:Class ;
         "ISO 80000-1:2009 Quantities and units - Part 1: General, clause 3.27" ;
     rdfs:comment "用于按大小对某类量进行排序的该类量量值的有序集合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom cmns-qtu:MeasurementUnit ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty cmns-qtu:isMaximumInclusive ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValue ;
-            owl:onProperty cmns-qtu:hasMaximumPermissiveValue ],
+            owl:onProperty cmns-qtu:hasMinimumPermissiveValue ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
@@ -815,10 +818,7 @@ cmns-qtu:MeasurementScale a owl:Class ;
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValue ;
-            owl:onProperty cmns-qtu:hasMinimumPermissiveValue ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom cmns-qtu:MeasurementUnit ],
+            owl:onProperty cmns-qtu:hasMaximumPermissiveValue ],
         cmns-cls:ClassificationScheme,
         cmns-qtu:MeasurementReference ;
     skos:definition "ordered set of quantity values of quantities of a given kind of quantity used in ranking, according to magnitude, quantities of that kind" ;
@@ -834,16 +834,16 @@ cmns-qtu:MeasurementUnit a owl:Class ;
     rdfs:comment "由约定定义并采用的实标量，任何同类量都可与之比较，以数值表示该量与该单位之比。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-qtu:MeasurementUnit ;
-            owl:onProperty cmns-qtu:specializes ],
+            owl:onClass cmns-qtu:SystemOfUnits ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:UnitPowerFactor ;
             owl:onProperty cmns-qtu:hasFactor ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-qtu:SystemOfUnits ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
+            owl:onClass cmns-qtu:MeasurementUnit ;
+            owl:onProperty cmns-qtu:specializes ],
         cmns-qtu:MeasurementReference,
         cmns-qtu:ScalarQuantity ;
     skos:definition "real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number" ;
@@ -868,17 +868,17 @@ cmns-qtu:QuantityKind a owl:Class ;
             owl:onClass cmns-qtu:SystemOfQuantities ;
             owl:onProperty cmns-dsg:isDefinedIn ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-qtu:QuantityKind ;
-            owl:onProperty cmns-qtu:specializes ],
+            owl:onClass cmns-qtu:QuantityDimension ;
+            owl:onProperty cmns-qtu:hasDimension ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:MeasurementUnit ;
             owl:onProperty cmns-qtu:hasMeasurementUnit ],
         [ a owl:Restriction ;
-            owl:onClass cmns-qtu:QuantityDimension ;
-            owl:onProperty cmns-qtu:hasDimension ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:QuantityKind ;
+            owl:onProperty cmns-qtu:specializes ],
         cmns-cls:Classifier ;
     skos:definition "aspect common to mutually comparable quantities" ;
     skos:example "The quantities diameter, circumference, and wavelength are generally considered to be quantities of the same kind, namely, of the kind of quantity called length.",
@@ -895,16 +895,16 @@ cmns-qtu:ScalarQuantityValue a owl:Class ;
         "ISO 80000-1:2009 Quantities and units - Part 1: General, clause 3.19" ;
     rdfs:comment "共同表示某量大小的数与参考。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:decimal ;
-            owl:onProperty cmns-qtu:hasNumericValue ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasMeasurementReference ;
             owl:someValuesFrom cmns-qtu:MeasurementReference ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantity ;
-            owl:onProperty cmns-qtu:expressesTheMagnitudeOf ] ;
+            owl:onProperty cmns-qtu:expressesTheMagnitudeOf ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty cmns-qtu:hasNumericValue ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "number and reference together expressing the magnitude of a quantity" ;
     skos:note """According to the type of reference, a quantity value is either
 - a product of a number and a measurement unit; the measurement unit one is generally not indicated for quantities of dimension one, or

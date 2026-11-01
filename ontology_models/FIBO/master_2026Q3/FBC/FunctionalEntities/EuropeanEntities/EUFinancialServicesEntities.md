@@ -30,14 +30,14 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| CRD 信贷机构（CRD credit institution） | 依资本要求指令（CRD）定义、业务为从公众吸收存款或其他可偿还资金并以自己名义发放信贷的企业。 |
-| 欧洲经济区分支机构（European Economic Area branch） | 在另一欧洲经济区（EEA）国家获得授权、有权将其业务通行证化至其他成员国的信贷机构分支机构。 |
-| 信贷机构（credit institution） | 业务为从公众吸收存款或其他可偿还资金并以自己名义发放信贷的企业。 |
-| 信贷机构/投资公司（credit institution / investment firm） | 欧洲金融机构特有的分类，依欧洲银行管理局（EBA）的定义将其指定为信贷机构/投资公司。 |
-| 投资公司（investment firm） | 日常职业或业务为向第三方提供一项或多项投资服务和/或从事一项或多项投资活动的任何法人。 |
-| 本地自营公司（local firm） | 在金融期货、期权或其他衍生品市场及现货市场上自营交易、仅以对冲为目的的公司。 |
-| 非欧洲经济区分支机构（non European Economic Area branch） | 总部设在第三国的信贷机构分支机构。 |
-| 支付机构（payment institution） | 依第 10 条获得授权、可在整个欧洲共同体内提供和执行支付服务的法人。 |
+| CRD 信贷机构（CRD credit institution） | 依资本要求指令（CRD）定义、业务为从公众吸收存款或其他可偿还资金并以自己名义发放信贷的企业。<br>an undertaking whose business is to receive deposits or other repayable funds from the public and to grant credits for its own account as defined by the European Banking Authority (EBA) |
+| 欧洲经济区分支机构（European Economic Area branch） | 在另一欧洲经济区（EEA）国家获得授权、有权将其业务通行证化至其他成员国的信贷机构分支机构。<br>a branch of a credit institution authorised in another European Economic Area (EEA) country that has the right to passport its activities |
+| 信贷机构（credit institution） | 业务为从公众吸收存款或其他可偿还资金并以自己名义发放信贷的企业。<br>an undertaking the business of which is to take deposits or other repayable funds from the public and to grant credits for its own account, and to which authorisation has been granted to operate within the European Union and European Economic Area countries (EEA) |
+| 信贷机构/投资公司（credit institution / investment firm） | 欧洲金融机构特有的分类，依欧洲银行管理局（EBA）的定义将其指定为信贷机构/投资公司。<br>classification specific to European financial institutions that designates them as credit institutions / investment firms as defined by the European Banking Authority (EBA) |
+| 投资公司（investment firm） | 日常职业或业务为向第三方提供一项或多项投资服务和/或从事一项或多项投资活动的任何法人。<br>any legal person whose regular occupation or business is the provision of one or more investment services to third parties and/or the performance of one or more investment activities on a professional basis |
+| 本地自营公司（local firm） | 在金融期货、期权或其他衍生品市场及现货市场上自营交易、仅以对冲为目的的公司。<br>a firm dealing for its own account on markets in financial futures or options or other derivatives and on cash markets for the sole purpose of hedging positions on derivatives markets, or dealing for the accounts of other members of those markets and being guaranteed by clearing members of the same markets, where responsibility for ensuring the performance of contracts entered into by such a firm is assumed by clearing members of the same markets |
+| 非欧洲经济区分支机构（non European Economic Area branch） | 总部设在第三国的信贷机构分支机构。<br>a branch of a credit institution whose Head Office is in a third country |
+| 支付机构（payment institution） | 依第 10 条获得授权、可在整个欧洲共同体内提供和执行支付服务的法人。<br>a legal person that has been granted authorisation in accordance with Article 10 to provide and execute payment services throughout the European community |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

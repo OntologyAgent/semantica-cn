@@ -111,11 +111,11 @@ fibo-sec-dbt-ex:BermudanExerciseTerms a owl:Class ;
         "百慕大式行权条款（Bermudan exercise terms）"@zh ;
     rdfs:comment "规定期权仅可在行权窗口内的预定日期（通常每月或每周某一日）行权的行权条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-ex:hasExerciseWindow ;
-            owl:someValuesFrom cmns-dt:DatePeriod ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-sec-dbt-ex:BermudanExerciseConvention ;
             owl:onProperty cmns-cxtdsg:uses ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-ex:hasExerciseWindow ;
+            owl:someValuesFrom cmns-dt:DatePeriod ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-ex:hasExerciseDate ;
             owl:someValuesFrom cmns-dt:ExplicitDate ],
@@ -129,12 +129,12 @@ fibo-sec-dbt-ex:EuropeanExerciseTerms a owl:Class ;
         "欧式行权条款（European exercise terms）"@zh ;
     rdfs:comment "规定期权仅可在到期日行权的行权条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-ex:EuropeanExerciseConvention ;
+            owl:onProperty cmns-cxtdsg:uses ],
+        [ a owl:Restriction ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-sec-dbt-ex:hasExerciseDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-sec-dbt-ex:EuropeanExerciseConvention ;
-            owl:onProperty cmns-cxtdsg:uses ],
         fibo-sec-dbt-ex:ExerciseTerms ;
     skos:definition "exercise terms that stipulate that an option may only be exercised at the date of expiration"@en .
 

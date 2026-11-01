@@ -24,9 +24,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 情境（context） | 某事物适用、存在、发生或被使用的情形或参照框架，有助于说明或解释该事物。 |
-| 情境化指称（contextual designation） | 在某情境中适用于某事物的指称。 |
-| 情境化名称（contextual name） | 某人、某地或某物在某情境中为人所知的指称。 |
+| 情境（context） | 某事物适用、存在、发生或被使用的情形或参照框架，有助于说明或解释该事物。<br>situation or frame of reference in which something applies, exists, happens, or is used and that helps to illustrate or explain it |
+| 情境化指称（contextual designation） | 在某情境中适用于某事物的指称。<br>designation that applies to something in some context |
+| 情境化名称（contextual name） | 某人、某地或某物在某情境中为人所知的指称。<br>designation by which someone, some place, or something is known in some context |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -45,8 +45,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有适用期间（has applicable period）** | 标识某事物可使用、适用、有效或准确相关的日期区间。 | 值域：日期区间；子属性：适用于情境（is applicable in） |
-| **适用于情境（is applicable in）** | 标识某事物在其中具有相关性的情境。 | 逆属性：适用于（applies to） |
+| **具有适用期间（has applicable period）** | 标识某事物可使用、适用、有效或准确相关的日期区间。<br>indicates a date period during which something may be used, applies, is valid or is accurate or relevant | 值域：日期区间；子属性：适用于情境（is applicable in） |
+| **适用于情境（is applicable in）** | 标识某事物在其中具有相关性的情境。<br>indicates a context in which something is relevant | 逆属性：适用于（applies to） |
 
 公理：
 
@@ -63,7 +63,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **适用于情境（is applicable in）** | 标识某事物在其中具有相关性的情境。 | 逆属性：适用于（applies to） |
+| **适用于情境（is applicable in）** | 标识某事物在其中具有相关性的情境。<br>indicates a context in which something is relevant | 逆属性：适用于（applies to） |
 
 公理：
 
@@ -77,9 +77,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **适用于（applies to）** | 标识某情境与之相关、切题或适用的某事物。 | — |
-| **被……使用（is used by）** | 为……发挥功能或用途。 | 逆属性：使用（uses） |
-| **使用（uses）** | 运用……以完成某项任务或达成某个结果。 | — |
+| **适用于（applies to）** | 标识某情境与之相关、切题或适用的某事物。<br>indicates something for which a context is material, germane, or relevant in some way | — |
+| **被……使用（is used by）** | 为……发挥功能或用途。<br>serves a function or purpose for | 逆属性：使用（uses） |
+| **使用（uses）** | 运用……以完成某项任务或达成某个结果。<br>employs to accomplish some task or achieve some result | — |
 
 ## 4. 依赖（owl:imports，4 个）
 

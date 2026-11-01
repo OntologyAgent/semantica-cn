@@ -18,9 +18,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 现金流（cash flow） | 资金从某来源到某去向的流动。 |
-| 现金流结构（cash flow structure） | 与一个或多个现金流相关的结构。 |
-| 触发事件（triggering event） | 与信用违约互换的某些方面相关或触发这些方面的事件。 |
+| 现金流（cash flow） | 资金从某来源到某去向的流动。<br>the movement of money from some source to some sink |
+| 现金流结构（cash flow structure） | 与一个或多个现金流相关的结构。<br>the structure related to one or more cash flows |
+| 触发事件（triggering event） | 与信用违约互换的某些方面相关或触发这些方面的事件。<br>event that relates to or triggers some aspect of a credit default swap |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -34,8 +34,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有资金来源（has source of funds）** | 指某笔资金的来源。 | 子属性：引用 |
-| **具有资金去向（has target of funds）** | 指某笔资金的去向。 | 子属性：引用 |
+| **具有资金来源（has source of funds）** | 指某笔资金的来源。<br>refers to the origin of some amount of money | 子属性：引用 |
+| **具有资金去向（has target of funds）** | 指某笔资金的去向。<br>refers to the sink for some amount of money | 子属性：引用 |
 | **具有货币数量（hasMonetaryAmount）** | — | — |
 
 公理：

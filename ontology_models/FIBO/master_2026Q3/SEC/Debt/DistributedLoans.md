@@ -34,15 +34,15 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 代理行（administrative agent） | 金融机构（通常是银团中的主要贷款人之一）被指定在借款人与银团成员之间充当中介的角色。 |
-| 簿记行（bookrunner） | 负责协调贷款安排、结构设计和营销的金融机构（通常是商业银行或投资银行）。 |
-| 文件代理行（documentation agent） | 被指定负责贷款文件起草、谈判和定稿的金融机构。 |
-| 融资银团（finance syndicate） | 集体同意向单一借款人提供大额贷款的一组金融机构或贷款人。 |
-| 融资银团成员（finance syndicate member） | 为银团贷款或贷款参与票据出资的金融服务提供商类型的银团成员。 |
-| 牵头安排行（lead arranger） | 代表借款人主导贷款结构设计和银团组建过程的金融机构。 |
-| 贷款参与票据（loan participation note） | 可在多个贷款人之间分销的信贷额度和固定收益证券。 |
-| 银团贷款（syndicated loan） | 由一组称为银团的贷款人集体向单一借款人提供大额贷款的信贷协议。 |
-| 银团代理行（syndication agent） | 被指定协助构建、安排和管理贷款银团组建过程的金融机构（通常是商业银行或投资银行）。 |
+| 代理行（administrative agent） | 金融机构（通常是银团中的主要贷款人之一）被指定在借款人与银团成员之间充当中介的角色。<br>role of a financial institution (often one of the primary lenders in the syndicate) designated to act as an intermediary between the borrowers and the syndicate lenders |
+| 簿记行（bookrunner） | 负责协调贷款安排、结构设计和营销的金融机构（通常是商业银行或投资银行）。<br>financial institution (typically a commercial or investment bank) responsible for coordinating the arrangement, structuring, and marketing of the loan to potential lenders |
+| 文件代理行（documentation agent） | 被指定负责贷款文件起草、谈判和定稿的金融机构。<br>financial institution designated to oversee the drafting, negotiation, and finalization of the loan documentation |
+| 融资银团（finance syndicate） | 集体同意向单一借款人提供大额贷款的一组金融机构或贷款人。<br>group of financial institutions or lenders that collectively agree to provide funding for a large loan to a single borrower |
+| 融资银团成员（finance syndicate member） | 为银团贷款或贷款参与票据出资的金融服务提供商类型的银团成员。<br>syndicate member that is a financial services provider that contributes funds to a syndicated loan or loan participation note |
+| 牵头安排行（lead arranger） | 代表借款人主导贷款结构设计和银团组建过程的金融机构。<br>financial institution that spearheads the loan structuring and syndication process on behalf of the borrower |
+| 贷款参与票据（loan participation note） | 可在多个贷款人之间分销的信贷额度和固定收益证券。<br>credit facility and fixed-income security that may be distributed across a group of lenders |
+| 银团贷款（syndicated loan） | 由一组称为银团的贷款人集体向单一借款人提供大额贷款的信贷协议。<br>credit agreement in which a group of lenders, known as a syndicate, collectively provides a large loan to a single borrower |
+| 银团代理行（syndication agent） | 被指定协助构建、安排和管理贷款银团组建过程的金融机构（通常是商业银行或投资银行）。<br>financial institution (typically a commercial or investment bank) designated to help structure, arrange, and manage the loan syndication process |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

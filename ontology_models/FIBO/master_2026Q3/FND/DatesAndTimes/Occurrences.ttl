@@ -25,12 +25,12 @@ fibo-fnd-dt-fd:AdHocScheduleEntry a owl:Class ;
 fibo-fnd-dt-fd:RegularSchedule a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-oc:Occurrence ;
-            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ],
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
-            owl:onProperty cmns-col:comprises ] .
+            owl:onClass fibo-fnd-dt-oc:Occurrence ;
+            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ] .
 
 fibo-fnd-dt-fd:RelativeDate a owl:Class ;
     owl:disjointWith fibo-fnd-dt-oc:OccurrenceBasedDate .
@@ -38,12 +38,12 @@ fibo-fnd-dt-fd:RelativeDate a owl:Class ;
 fibo-fnd-dt-fd:ScheduleStub a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
-            owl:onProperty cmns-col:comprises ],
+            owl:onClass fibo-fnd-dt-oc:Occurrence ;
+            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-oc:Occurrence ;
-            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ] .
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty cmns-col:comprises ] .
 
 fibo-fnd-dt-fd:SpecifiedDate a owl:Class ;
     owl:disjointWith fibo-fnd-dt-oc:OccurrenceBasedDate .
@@ -209,6 +209,10 @@ fibo-fnd-dt-oc:Occurrence a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-loc:Location ;
             owl:onProperty cmns-loc:hasLocation ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Class ;
             owl:unionOf ( [ a owl:Restriction ;
                         owl:onClass cmns-dt:DatePeriod ;
@@ -220,10 +224,6 @@ fibo-fnd-dt-oc:Occurrence a owl:Class ;
                         owl:onDataRange cmns-dt:CombinedDateTime ;
                         owl:onProperty fibo-fnd-dt-oc:hasEventDateValue ;
                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;

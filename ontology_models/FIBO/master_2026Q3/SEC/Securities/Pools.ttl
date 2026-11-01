@@ -74,12 +74,12 @@ fibo-sec-sec-pls:FundFamily a owl:Class ;
         "基金家族（fund family）"@zh ;
     rdfs:comment "由单一投资机构管理的集合投资产品的集合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-sec-pls:ManagedInvestment ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-fse:FinancialInstitution ;
             owl:onProperty cmns-org:isManagedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-sec-sec-pls:ManagedInvestment ],
         cmns-col:Collection ;
     skos:definition "collection of managed investments that are all managed by a single investment institution" .
 
@@ -88,14 +88,14 @@ fibo-sec-sec-pls:InstrumentPoolAsAsset a owl:Class ;
         "作为资产的工具池（instrument pool as asset）"@zh ;
     rdfs:comment "以工具池形式存在的金融资产。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom fibo-sec-sec-pls:InstrumentPool ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:isAssetOf ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fbc-fct-fse:FinancialInstitution [ a owl:Restriction ;
                                 owl:onProperty cmns-rlcmp:isPlayedBy ;
                                 owl:someValuesFrom fibo-be-le-lp:SpecialPurposeVehicle ] ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom fibo-sec-sec-pls:InstrumentPool ],
         fibo-fnd-oac-own:FinancialAsset ;
     skos:definition "financial asset in the form of an instrument pool" .
 

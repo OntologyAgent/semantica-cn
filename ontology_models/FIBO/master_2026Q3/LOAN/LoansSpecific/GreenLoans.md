@@ -34,27 +34,27 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 评估边界（assessment boundary） | 用于确定环境影响评估、分析或计量之纳入与排除范围的界限与标准。 |
-| 环境计划（environmental program） | 旨在改善环境可持续性、减少生态损害或应对环境挑战的大规模倡议、活动或投资。 |
-| 环境项目（environmental project） | 旨在改善环境可持续性、减少生态损害或应对环境挑战的具体倡议、活动或投资。 |
-| 绿色贷款（green loan） | 专门用于为绿色项目融资或再融资的信贷协议和/或或有融资安排（如保函额度、担保额度或信用证）。 |
-| 绿色项目（green project） | 通过应对气候变化、保护自然资源、减少污染或促进可持续发展而贡献于环境可持续性的项目。 |
-| 绿色项目募集资金用途条款（green project use of proceeds provision） | 规定融资所得资金专用于绿色项目的募集资金用途条款。 |
-| 观测指标值（observed indicator value） | 在特定日期时间对关键绩效指标的观测（测量）值。 |
-| 观测指标值结构（observed indicator value structure） | 某关键绩效指标在指定时间窗口内观测值的集合。 |
-| 可持续业务目标（sustainability business objective） | 与改善企业可持续状况相关的目标。 |
-| 可持续业务战略（sustainability business strategy） | 从环境、社会和/或治理（ESG）视角实现可持续相关特定业务目标的战略。 |
-| 可持续关键绩效指标（sustainability key performance indicator） | 可持续领域特定的可测绩效指标。 |
-| 可持续关键绩效指标标识符（sustainability key performance indicator identifier） | 唯一标识特定可持续相关关键绩效指标的字符序列。 |
-| 可持续绩效目标（sustainability performance target） | 用于校准借款人就某关键绩效指标之达成水平的一组定量目标值。 |
-| 可持续绩效目标标识符（sustainability performance target identifier） | 唯一标识特定可持续相关绩效目标的字符序列。 |
-| 可持续结构设计行（sustainability structuring agent） | 受委任帮助设计、实施和监测银团绿色贷款可持续方面安排的金融机构。 |
-| 可持续挂钩贷款（sustainability-linked loan） | 其经济特征可随借款人可持续绩效目标达成情况而变化的信贷协议和/或或有融资安排。 |
-| 目标指标值（target indicator value） | 关键绩效指标在特定日期时间的目标值。 |
-| 转型贷款（transition loan） | 旨在帮助企业或组织支持其长期脱碳或可持续转型的信贷协议和/或或有融资安排。 |
-| 转型项目（transition project） | 支持行业层面减少环境影响的广泛努力的项目。 |
-| 转型战略（transition strategy） | 在长期脱碳或可持续转型背景下实现可持续相关特定业务目标的战略。 |
-| 转型募集资金用途条款（transition use of proceeds provision） | 规定融资所得资金用于转型目的的募集资金用途条款。 |
+| 评估边界（assessment boundary） | 用于确定环境影响评估、分析或计量之纳入与排除范围的界限与标准。<br>defined scope, limits, and criteria used to determine what is included or excluded in an evaluation, analysis, or measurement of environmental impacts, sustainability performance, or related objectives |
+| 环境计划（environmental program） | 旨在改善环境可持续性、减少生态损害或应对环境挑战的大规模倡议、活动或投资。<br>broad scale initiative, activity, or investment aimed at improving environmental sustainability, reducing ecological harm, or addressing environmental challenges |
+| 环境项目（environmental project） | 旨在改善环境可持续性、减少生态损害或应对环境挑战的具体倡议、活动或投资。<br>specific initiative, activity, or investment aimed at improving environmental sustainability, reducing ecological harm, or addressing environmental challenges |
+| 绿色贷款（green loan） | 专门用于为绿色项目融资或再融资的信贷协议和/或或有融资安排（如保函额度、担保额度或信用证）。<br>credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) made available exclusively to finance, re-finance or guarantee, in whole or in part, new and/or existing eligible green projects that are aligned to the four core components of the Green Loan Principles (GLP) |
+| 绿色项目（green project） | 通过应对气候变化、保护自然资源、减少污染或促进可持续发展而贡献于环境可持续性的项目。<br>project that contributes to environmental sustainability by addressing climate change, conserving natural resources, reducing pollution, or promoting ecological balance |
+| 绿色项目募集资金用途条款（green project use of proceeds provision） | 规定融资所得资金专用于绿色项目的募集资金用途条款。<br>use of proceeds provision specifying that funds obtained through financing, such as through a credit agreement, offering, warrant, or other instrument are intended to be used for Green Projects (including other related and supporting expenditures, including research and development) |
+| 观测指标值（observed indicator value） | 在特定日期时间对关键绩效指标的观测（测量）值。<br>observation (measurement) of a key performance indicator measured at specific date and time |
+| 观测指标值结构（observed indicator value structure） | 某关键绩效指标在指定时间窗口内观测值的集合。<br>collection of observations for some key performance indicator measured over a specified window of time |
+| 可持续业务目标（sustainability business objective） | 与改善企业可持续状况相关的目标。<br>objective related to improving the sustainability profile of the business |
+| 可持续业务战略（sustainability business strategy） | 从环境、社会和/或治理（ESG）视角实现可持续相关特定业务目标的战略。<br>strategy for achieving specific business objectives related to sustainability (from an environmental and/or social and/or governance (ESG) perspective) |
+| 可持续关键绩效指标（sustainability key performance indicator） | 可持续领域特定的可测绩效指标。<br>measurable performance indicator that is sustainability specific |
+| 可持续关键绩效指标标识符（sustainability key performance indicator identifier） | 唯一标识特定可持续相关关键绩效指标的字符序列。<br>sequence of characters uniquely identifying a specific sustainability-related key performance indicator |
+| 可持续绩效目标（sustainability performance target） | 用于校准借款人就某关键绩效指标之达成水平的一组定量目标值。<br>collection of quantitative target values used to calibrate the level of achievement a borrower makes with respect to a key performance indicator, by date, including, but not limited to, the methodology used to calculate its value at any point over the lifetime of a loan |
+| 可持续绩效目标标识符（sustainability performance target identifier） | 唯一标识特定可持续相关绩效目标的字符序列。<br>sequence of characters uniquely identifying a specific sustainability-related performance target |
+| 可持续结构设计行（sustainability structuring agent） | 受委任帮助设计、实施和监测银团绿色贷款可持续方面安排的金融机构。<br>financial institution appointed to help design, implement, and monitor the sustainability aspects of a syndicated green loan |
+| 可持续挂钩贷款（sustainability-linked loan） | 其经济特征可随借款人可持续绩效目标达成情况而变化的信贷协议和/或或有融资安排。<br>credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) for which the economic characteristics can vary depending on whether the borrower achieves ambitious, material and quantifiable predetermined sustainability performance objectives aligned with Sustainability-Linked Loan Principles (SSLP) |
+| 目标指标值（target indicator value） | 关键绩效指标在特定日期时间的目标值。<br>target value for a key performance indicator as of a specific date and time |
+| 转型贷款（transition loan） | 旨在帮助企业或组织支持其长期脱碳或可持续转型的信贷协议和/或或有融资安排。<br>credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) designed to help a business or organization shift from carbon-intensive or environmentally harmful practices to more sustainable and environmentally friendly operations |
+| 转型项目（transition project） | 支持行业层面减少环境影响的广泛努力的项目。<br>project that supports broad, sector-specific efforts to reduce environmental impact |
+| 转型战略（transition strategy） | 在长期脱碳或可持续转型背景下实现可持续相关特定业务目标的战略。<br>strategy for achieving specific business objectives related to sustainability in the context of long-term decarbonization or sustainability transitions |
+| 转型募集资金用途条款（transition use of proceeds provision） | 规定融资所得资金用于转型目的的募集资金用途条款。<br>use of proceeds provision specifying that funds obtained through financing, such as through a credit agreement, offering, warrant, or other instrument are intended to be used to fund specific projects, investments, or operational changes that support a company's transition toward sustainability |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -69,7 +69,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **涉及（involves）** | — | — |
-| **具有空间边界（has spatial boundary）** | 指明环境或可持续评估所涵盖的地理区域，可为特定场所、设施、区域或全球。 | 值域：地理区域；子属性：具有区域 |
+| **具有空间边界（has spatial boundary）** | 指明环境或可持续评估所涵盖的地理区域，可为特定场所、设施、区域或全球。<br>specifies a geographic region included in an environmental or sustainability assessment, which may cover a specific site, facility, region, or the global operations of a company or project | 值域：地理区域；子属性：具有区域 |
 | **适用于（appliesTo）** | — | — |
 | **适用于情境（isApplicableIn）** | — | — |
 
@@ -110,7 +110,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有进度表（hasSchedule）** | — | — |
-| **具有评估边界（has assessment boundary）** | 标识环境或可持续项目的范围、界限与情境。 | 值域：评估边界（assessment boundary）；子属性：适用于情境 |
+| **具有评估边界（has assessment boundary）** | 标识环境或可持续项目的范围、界限与情境。<br>indicates the scope, limits, and context for an environmental or sustainability project | 值域：评估边界（assessment boundary）；子属性：适用于情境 |
 | **以……为特征（isCharacterizedBy）** | — | — |
 | **是……的成员（isMemberOf）** | — | — |
 

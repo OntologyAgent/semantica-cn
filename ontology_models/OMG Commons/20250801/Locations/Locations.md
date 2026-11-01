@@ -34,24 +34,24 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 商业中心（business center） | 开展商业活动的市政区，尤指被视为金融中心的市政区。 |
-| 国家（country） | 代表独立领土实体、政治实体或属地的地缘政治实体。 |
-| 国家行政区划（country subdivision） | 作为国家、属地或其他特殊地缘政治利益区域的法定划分的地缘政治实体。 |
-| 县（county） | 国家、州或省的政治行政划分，提供特定的地方政府服务。 |
-| 联邦首都区（federal capital area） | 作为联邦政府所在地的市政区或首都城市，或包含该市政区的国家行政区划。 |
-| 联邦州（federal state） | 自治的地缘政治单位，构成被承认为国家的更大地缘政治单位的一部分。 |
-| 大地坐标系（geodetic coordinate system） | 以大地测量方式精确表示地球或其他行星体上位置的三维参考系。 |
-| 地理区域（geographic region） | 具有共同特征的陆地区域。 |
-| 地理区域标识方案（geographic region identification scheme） | 专用于唯一标识地理区域的标识方案。 |
-| 地理区域标识符（geographic region identifier） | 为在某情境内唯一标识地理区域而分配的代码或其他标识符字符串。 |
-| 地理区域类别（geographic region kind） | 地理区域的分类符，包括但不限于地缘政治实体的细分。 |
-| 地缘政治实体（geopolitical entity） | 与某种政治结构相关联的地理区域。 |
-| 位置（location） | 时间和/或空间中的地点或方位，包括虚拟地点。 |
-| 市政区（municipality） | 具有法人地位、通常拥有自治权或管辖权的城市行政划分。 |
-| 物理位置（physical location） | 物理空间中的位置。 |
-| 区域（region） | 表面、空间或物体中连续的部分。 |
-| 领土（territory） | 受某国家或其他实体主权、控制或管辖的地理区域，通常被视为特殊地缘政治利益区域。 |
-| 虚拟位置（virtual location） | 不存在于任何单一物理位置的地点。 |
+| 商业中心（business center） | 开展商业活动的市政区，尤指被视为金融中心的市政区。<br>municipality where business is conducted, especially one that is considered a financial center |
+| 国家（country） | 代表独立领土实体、政治实体或属地的地缘政治实体。<br>geopolitical entity representing a distinct territorial body or political entity or dependent territory |
+| 国家行政区划（country subdivision） | 作为国家、属地或其他特殊地缘政治利益区域的法定划分的地缘政治实体。<br>geopolitical entity that is a legal division of a country, dependency, or other area of special geopolitical interest related to a country or other geopolitical entity |
+| 县（county） | 国家、州或省的政治行政划分，提供特定的地方政府服务。<br>political and administrative division of a country, state or province, providing certain local governmental services |
+| 联邦首都区（federal capital area） | 作为联邦政府所在地的市政区或首都城市，或包含该市政区的国家行政区划。<br>country subdivision that is or includes the municipality or capital city that acts as the seat of the federal government |
+| 联邦州（federal state） | 自治的地缘政治单位，构成被承认为国家的更大地缘政治单位的一部分。<br>self-governing geopolitical unit which forms part of a wider geopolitical unit that is recognized as a country |
+| 大地坐标系（geodetic coordinate system） | 以大地测量方式精确表示地球或其他行星体上位置的三维参考系。<br>three-dimensional reference system that is a global frame of reference for precisely representing the position of locations on Earth or other planetary bodies by means of geodetic coordinates |
+| 地理区域（geographic region） | 具有共同特征的陆地区域。<br>area of land that has common features |
+| 地理区域标识方案（geographic region identification scheme） | 专用于唯一标识地理区域的标识方案。<br>identification scheme dedicated to the unique identification of geographic regions |
+| 地理区域标识符（geographic region identifier） | 为在某情境内唯一标识地理区域而分配的代码或其他标识符字符串。<br>string of letters that indicates a code or other identifier for geographical region, assigned for the purpose of uniquely identifying it within some context |
+| 地理区域类别（geographic region kind） | 地理区域的分类符，包括但不限于地缘政治实体的细分。<br>classifier for a geographic region, including but not limited to a subdivision of a geopolitical entity, (noting that there may be more than one kind for a given country or other entity) |
+| 地缘政治实体（geopolitical entity） | 与某种政治结构相关联的地理区域。<br>geographic area that represents a geophysical location associated with some form of political structure |
+| 位置（location） | 时间和/或空间中的地点或方位，包括虚拟地点。<br>place or position in time and/or space, including a virtual place |
+| 市政区（municipality） | 具有法人地位、通常拥有自治权或管辖权的城市行政划分。<br>urban administrative division having corporate status and usually powers of self-government or jurisdiction |
+| 物理位置（physical location） | 物理空间中的位置。<br>location in physical space |
+| 区域（region） | 表面、空间或物体中连续的部分。<br>area that is a continuous part of a surface, space, or body |
+| 领土（territory） | 受某国家或其他实体主权、控制或管辖的地理区域，通常被视为特殊地缘政治利益区域。<br>geographic area, typically considered an area of special geopolitical interest, subject to the sovereignty, control, or jurisdiction of a state or other entity |
+| 虚拟位置（virtual location） | 不存在于任何单一物理位置的地点。<br>place that does not exist in any single physical location |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -144,8 +144,8 @@
 |---|---|---|
 | **具有名称（hasName）** | — | — |
 | **具有文本名称（hasTextualName）** | — | — |
-| **具有子区域（has subregion）** | 将一个地理区域关联到其指定的子区域。 | 值域：地理区域（geographic region）；子属性：具有部分 |
-| **是……的子区域（is subregion of）** | 将一个地理区域关联到它所属的更大地理区域。 | 值域：地理区域（geographic region）；逆属性：具有子区域（has subregion）；子属性：是……的部分 |
+| **具有子区域（has subregion）** | 将一个地理区域关联到其指定的子区域。<br>relates a geographic region to another geographic region that is a designated subregion of it | 值域：地理区域（geographic region）；子属性：具有部分 |
+| **是……的子区域（is subregion of）** | 将一个地理区域关联到它所属的更大地理区域。<br>relates a geographic region to another geographic region that it is a part of | 值域：地理区域（geographic region）；逆属性：具有子区域（has subregion）；子属性：是……的部分 |
 
 公理：
 
@@ -163,7 +163,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **独立（is independent）** | 表明某地缘政治实体是独立的还是被视为另一地缘政治实体（如国家）的一部分。 | 值域：xsd:boolean |
+| **独立（is independent）** | 表明某地缘政治实体是独立的还是被视为另一地缘政治实体（如国家）的一部分。<br>indicates whether a geopolitical entity stands alone or is considered part of another geopolitical entity (e.g., a country) | 值域：xsd:boolean |
 
 ###### 2.6.1.1.1 国家（country）
 
@@ -175,7 +175,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **独立（is independent）** | 表明某地缘政治实体是独立的还是被视为另一地缘政治实体（如国家）的一部分。 | 值域：xsd:boolean |
+| **独立（is independent）** | 表明某地缘政治实体是独立的还是被视为另一地缘政治实体（如国家）的一部分。<br>indicates whether a geopolitical entity stands alone or is considered part of another geopolitical entity (e.g., a country) | 值域：xsd:boolean |
 
 公理：
 
@@ -243,28 +243,28 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有商业中心（has business center）** | 标识开展商业活动的位置，进而确定用于调整日期的商业日历。 | 值域：商业中心（business center）；子属性：具有市政区（has municipality） |
-| **具有国家（has country）** | 标识一个国家，如联合国承认的国家。 | 值域：国家（country）；子属性：具有区域（has region） |
-| **具有县（has county）** | 标识提供特定地方政府服务的国家行政区划。 | 值域：县（county）；子属性：具有行政区划（has subdivision） |
-| **具有覆盖区域（has coverage area）** | 标识某项服务提供、某项政策适用或某事物可用的地理区域。 | 值域：地理区域（geographic region）；子属性：具有区域（has region） |
-| **具有位置（has location）** | 将某事物关联到一个位置，可为物理或虚拟位置。 | 值域：位置（location） |
-| **具有市政区（has municipality）** | 标识一个商业中心、城市或市政区。 | 值域：市政区（municipality）；子属性：具有区域（has region） |
-| **具有主要行政区划（has primary subdivision）** | 标识一个国家最直接、最主要的行政区划，如州或省。 | 值域：国家行政区划（country subdivision）；子属性：具有直接部分 |
-| **具有区域（has region）** | 标识地球表面一块划定的区域。 | 值域：地理区域（geographic region） |
-| **具有行政区划（has subdivision）** | 标识国家行政区划（州、省、地区等）。 | 值域：国家行政区划（country subdivision）；子属性：具有区域（has region） |
+| **具有商业中心（has business center）** | 标识开展商业活动的位置，进而确定用于调整日期的商业日历。<br>identifies a location where business is conducted, and hence the business calendar used to adjust dates | 值域：商业中心（business center）；子属性：具有市政区（has municipality） |
+| **具有国家（has country）** | 标识一个国家，如联合国承认的国家。<br>indicates a country, such as one that is recognized by the United Nations | 值域：国家（country）；子属性：具有区域（has region） |
+| **具有县（has county）** | 标识提供特定地方政府服务的国家行政区划。<br>indicates a country subdivision providing certain local governmental services | 值域：县（county）；子属性：具有行政区划（has subdivision） |
+| **具有覆盖区域（has coverage area）** | 标识某项服务提供、某项政策适用或某事物可用的地理区域。<br>indicates a geographic region in which some service is provided, or to which some policy applies, or in which something is available | 值域：地理区域（geographic region）；子属性：具有区域（has region） |
+| **具有位置（has location）** | 将某事物关联到一个位置，可为物理或虚拟位置。<br>relates something to a location, which might be physical or virtual | 值域：位置（location） |
+| **具有市政区（has municipality）** | 标识一个商业中心、城市或市政区。<br>indicates a business center, city, or municipality | 值域：市政区（municipality）；子属性：具有区域（has region） |
+| **具有主要行政区划（has primary subdivision）** | 标识一个国家最直接、最主要的行政区划，如州或省。<br>identifies the most immediate and main subdivision of a country, such as a state or province | 值域：国家行政区划（country subdivision）；子属性：具有直接部分 |
+| **具有区域（has region）** | 标识地球表面一块划定的区域。<br>indicates a demarcated area on the surface of the Earth | 值域：地理区域（geographic region） |
+| **具有行政区划（has subdivision）** | 标识国家行政区划（州、省、地区等）。<br>identifies a country subdivision (state, province, region, etc.) | 值域：国家行政区划（country subdivision）；子属性：具有区域（has region） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有海拔（has altitude）** | 某点高出参考面的高度或垂直标高。 |
-| **具有城市名称（has city name）** | 标识一个通常为大型、永久且人口稠密的定居地的名称。 |
-| **具有纬度（has latitude）** | 某点处垂直于地球（或其他天体）表面的直线与赤道平面相交所成的角。 |
-| **具有经度（has longitude）** | 过某点及南北极的平面与参考平面之间的夹角。 |
-| **具有最大纬度（has maximum latitude）** | 标识某范围内纬度的最高值。 |
-| **具有最大经度（has maximum longitude）** | 标识某范围内经度的最高值。 |
-| **具有最小纬度（has minimum latitude）** | 标识某范围内纬度的最低值。 |
-| **具有最小经度（has minimum longitude）** | 标识某范围内经度的最低值。 |
+| **具有海拔（has altitude）** | 某点高出参考面的高度或垂直标高。<br>the height or vertical elevation of a point above a reference surface |
+| **具有城市名称（has city name）** | 标识一个通常为大型、永久且人口稠密的定居地的名称。<br>indicates the name of a typically large, permanent, and densely settled place |
+| **具有纬度（has latitude）** | 某点处垂直于地球（或其他天体）表面的直线与赤道平面相交所成的角。<br>the angle formed by the intersection of a line perpendicular to the Earth's (or other celestial body's) surface at a point and the plane of the Equator |
+| **具有经度（has longitude）** | 过某点及南北极的平面与参考平面之间的夹角。<br>the angle between a plane that passes through the point and the North and South poles, and a reference plane |
+| **具有最大纬度（has maximum latitude）** | 标识某范围内纬度的最高值。<br>indicates the highest value / maximum for latitude with respect to a range |
+| **具有最大经度（has maximum longitude）** | 标识某范围内经度的最高值。<br>indicates the highest value / maximum for longitude with respect to a range |
+| **具有最小纬度（has minimum latitude）** | 标识某范围内纬度的最低值。<br>indicates the lowest value / latitude with respect to a range |
+| **具有最小经度（has minimum longitude）** | 标识某范围内经度的最低值。<br>indicates the lowest value / longitude with respect to a range |
 
 ## 4. 依赖（owl:imports，8 个）
 

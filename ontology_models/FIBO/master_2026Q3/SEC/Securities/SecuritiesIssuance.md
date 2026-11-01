@@ -34,24 +34,24 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 代销发行（best efforts offering） | 投资银行承诺尽力出售所发行证券、但不承担承销商全部风险的证券发行。 |
-| 转换条款（conversion terms） | 规定证券何时以及如何转换为另一证券（通常为同一发行人）的合同条款。 |
-| 可转换证券（convertible security） | 可转换为另一证券的证券。 |
-| 豁免发行人（exempt issuer） | 所发行证券免于某些监管报告要求的发行人。 |
-| 豁免发行（exempt offering） | 涉及免于某些监管报告要求之证券的公开发行。 |
-| 豁免交易（exempt transaction） | 无须向监管机构办理注册的证券交易。 |
-| 金融工具简称（financial instrument short name） | 按 ISO 18774 规定结构定义的金融工具缩写名称（FISN）。 |
-| 包销发行（firm commitment offering） | 承销商以自己名义全额购入证券的证券发行。 |
-| 发行文件（offering document） | 说明一项投资的目标、风险和条款的法律文件。 |
-| 发行说明书（offering statement） | 符合 1933 年《证券法》A 条例《发行说明书》要求的发行备忘录。 |
-| 私募发行（private offering） | 私下向有限数量的合格潜在投资者发售证券的发行。 |
-| 私募配售备忘录（private placement memorandum） | 说明私募配售所涉投资目标、风险和条款的法律文件。 |
-| 招募说明书（prospectus） | 为出售证券而出具的正式书面发行文件，提供投资者作出知情投资决策所需的事实。 |
-| 公开发行（public offering） | 在遵守相关监管机构注册要求后向投资公众出售证券的发行。 |
-| 证券发行（securities offering） | 出售一种或多种证券的发行。 |
-| 证券形式（security form） | 证券所有权凭证的性质。 |
-| 证券承销商（security underwriter） | 从发行人处购入证券以图分销、或为发行人销售证券、或参与证券分销的一方。 |
-| 证券承销安排（security underwriting arrangement） | 机构（通常为投资银行）与证券发行人之间的承销协议，承诺承销商承担分销风险。 |
+| 代销发行（best efforts offering） | 投资银行承诺尽力出售所发行证券、但不承担承销商全部风险的证券发行。<br>securities offering whereby investment bankers commit to doing their best to sell the securities offered, but do not assume the full risk of an underwriter |
+| 转换条款（conversion terms） | 规定证券何时以及如何转换为另一证券（通常为同一发行人）的合同条款。<br>contract terms specifying when and how a security may be converted to another security (usually of the same issuer) |
+| 可转换证券（convertible security） | 可转换为另一证券的证券。<br>security that can be converted into another security |
+| 豁免发行人（exempt issuer） | 所发行证券免于某些监管报告要求的发行人。<br>issuer that issues securities that are excused from certain regulatory reporting requirements |
+| 豁免发行（exempt offering） | 涉及免于某些监管报告要求之证券的公开发行。<br>public offering involving securities that are excused from certain regulatory reporting requirements |
+| 豁免交易（exempt transaction） | 无须向监管机构办理注册的证券交易。<br>securities transaction for which there is no requirement to register the transaction with a regulatory agency |
+| 金融工具简称（financial instrument short name） | 按 ISO 18774 规定结构定义的金融工具缩写名称（FISN）。<br>abbreviated name for a financial instrument within a defined structure as specified in ISO 18774 |
+| 包销发行（firm commitment offering） | 承销商以自己名义全额购入证券的证券发行。<br>securities offering whereby the underwriter purchases the securities outright for their own account |
+| 发行文件（offering document） | 说明一项投资的目标、风险和条款的法律文件。<br>legal document that states the objectives, risks and terms of an investment |
+| 发行说明书（offering statement） | 符合 1933 年《证券法》A 条例《发行说明书》要求的发行备忘录。<br>offering memorandum that conforms to Regulation A, Offering Statement, of the Securities Act of 1933 |
+| 私募发行（private offering） | 私下向有限数量的合格潜在投资者发售证券的发行。<br>offering of securities made privately to a limited number of qualified potential investors |
+| 私募配售备忘录（private placement memorandum） | 说明私募配售所涉投资目标、风险和条款的法律文件。<br>legal document stating the objectives, risks and terms of investment involved with a private placement |
+| 招募说明书（prospectus） | 为出售证券而出具的正式书面发行文件，提供投资者作出知情投资决策所需的事实。<br>formal, written offering document to sell securities that provides the facts an investor needs to make an informed investment decision |
+| 公开发行（public offering） | 在遵守相关监管机构注册要求后向投资公众出售证券的发行。<br>offering of securities for sale to the investment public, after compliance with registration requirements of the relevant regulatory authorities |
+| 证券发行（securities offering） | 出售一种或多种证券的发行。<br>offering of a security (or securities) for sale |
+| 证券形式（security form） | 证券所有权凭证的性质。<br>nature of the proof of ownership of a security |
+| 证券承销商（security underwriter） | 从发行人处购入证券以图分销、或为发行人销售证券、或参与证券分销的一方。<br>party that has purchased from an issuer with a view to, or sells for an issuer in connection with, the distribution of any security, or participates or has a direct or indirect participation in any such undertaking, or participates or has a participation in the direct or indirect underwriting of any such undertaking |
+| 证券承销安排（security underwriting arrangement） | 机构（通常为投资银行）与证券发行人之间的承销协议，承诺承销商承担分销风险。<br>underwriting agreement between an organization (typically an investment bank) and a securities issuer that commits the underwriter to assuming risk involved in buying a new issue of securities and reselling it to the public |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -65,7 +65,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **规定转换为（specifies conversion into）** | 规定按协议条款将替换可转换证券的证券。 | 值域：证券 |
+| **规定转换为（specifies conversion into）** | 规定按协议条款将替换可转换证券的证券。<br>specifies a security that will replace a convertible security under the terms of the agreement | 值域：证券 |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -111,8 +111,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有工具描述（has instrument description）** | 将金融工具或 FISN 与符合 ISO 18774 的工具描述（即特征属性集合）关联起来。 | 值域：xsd:string |
-| **具有发行人简称（has issuer short name）** | 将证券发行人或 FISN 与符合 ISO 18774 的发行人简称（官方发行人名称的缩写，有长度上限）关联起来。 | 值域：xsd:string；子属性：具有正式名称 |
+| **具有工具描述（has instrument description）** | 将金融工具或 FISN 与符合 ISO 18774 的工具描述（即特征属性集合）关联起来。<br>relates a financial instrument or FISN to an ISO 18774-compliant instrument description, that is, a collection of characteristics and attributes defining a financial instrument with a maximum length up to 19 alphanumeric characters | 值域：xsd:string |
+| **具有发行人简称（has issuer short name）** | 将证券发行人或 FISN 与符合 ISO 18774 的发行人简称（官方发行人名称的缩写，有长度上限）关联起来。<br>relates a security issuer or FISN to an ISO 18774-compliant issuer short name, that is, an abbreviation of the official issuer name, limited to a maximum of 15 alphanumeric characters | 值域：xsd:string；子属性：具有正式名称 |
 
 公理：
 
@@ -175,7 +175,7 @@
 | **具有管辖辖区（hasGoverningJurisdiction）** | — | — |
 | **由……证明（isEvidencedBy）** | — | — |
 | **由……发行（isIssuedBy）** | — | — |
-| **由……承销（is underwritten by）** | 将发行与参与募集资金或分销发行标的工具的承销商关联起来。 | 值域：承销商 |
+| **由……承销（is underwritten by）** | 将发行与参与募集资金或分销发行标的工具的承销商关联起来。<br>relates an offering to an underwriter involved in raising capital for or distributing the instruments that are the subject of the offering | 值域：承销商 |
 | **适用于（appliesTo）** | — | — |
 | **具有参与方角色（has party role）** | — | — |
 
@@ -307,23 +307,23 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有实际截止日（has actual closing date）** | 指明发行或交易正式截止的日期，与预定截止日相区别。 | 值域：显式日期；子属性：具有日期 |
-| **具有公告日（has announcement date）** | 指明公众首次获得新证券发行信息的日期。 | 值域：日期；子属性：具有日期 |
-| **具有金融工具简称（has financial instrument short name）** | 将证券与其符合 ISO 18774 的简称（含发行人简称、工具特征缩写等）关联起来。 | 值域：金融工具简称（financial instrument short name）；子属性：由……标识 |
-| **具有首个交易日（has first trade date）** | 指明新发行证券开始交易的日期。 | 值域：显式日期；子属性：具有日期 |
-| **具有首次交易结算日（has first trade settlement date）** | 指明新发行证券首笔交易结算的日期。 | 值域：日期 |
-| **具有认购期（has subscription period）** | 指明投资者可承诺购买待发行股份（或单位）的时间段。 | 值域：日期区间；子属性：具有日期区间 |
-| **以……形式发行（is issued in form）** | 指明证券发行的形式，通常为记名形式。 | 值域：证券形式（security form）；子属性：由……证明 |
-| **注册于（is registered）** | 指明某一证券的注册机构，即以所有人名义登记于发行人或其登记机构名册。 | 值域：注册机构；子属性：由……注册 |
-| **承销（underwrites）** | 对发行进行承销。 | 值域：证券发行（securities offering）；逆属性：由……承销（is underwritten by） |
+| **具有实际截止日（has actual closing date）** | 指明发行或交易正式截止的日期，与预定截止日相区别。<br>indicates the date on which an offering or transaction officially closes, in contrast with an intended closing date | 值域：显式日期；子属性：具有日期 |
+| **具有公告日（has announcement date）** | 指明公众首次获得新证券发行信息的日期。<br>indicates the first day the public will receive information regarding a new security issue | 值域：日期；子属性：具有日期 |
+| **具有金融工具简称（has financial instrument short name）** | 将证券与其符合 ISO 18774 的简称（含发行人简称、工具特征缩写等）关联起来。<br>relates a security to its ISO 18774-compliant short name, which includes an issuer short name, abbreviated instrument characteristics, and abbreviated instrument description per the ISO standard | 值域：金融工具简称（financial instrument short name）；子属性：由……标识 |
+| **具有首个交易日（has first trade date）** | 指明新发行证券开始交易的日期。<br>indicates the date on which a newly issued security starts trading | 值域：显式日期；子属性：具有日期 |
+| **具有首次交易结算日（has first trade settlement date）** | 指明新发行证券首笔交易结算的日期。<br>indicates the date on which the first trade of a newly issued security is settled | 值域：日期 |
+| **具有认购期（has subscription period）** | 指明投资者可承诺购买待发行股份（或单位）的时间段。<br>indicates a period of time in which investors can commit to purchase shares (or units) to be issued | 值域：日期区间；子属性：具有日期区间 |
+| **以……形式发行（is issued in form）** | 指明证券发行的形式，通常为记名形式。<br>indicates the form in which the security is issued, typically in registered form | 值域：证券形式（security form）；子属性：由……证明 |
+| **注册于（is registered）** | 指明某一证券的注册机构，即以所有人名义登记于发行人或其登记机构名册。<br>indicates the registration authority for a given security, i.e., in the name of the owner on the books of the issuer, with the issuer's registrar, with a third-party transfer agent, with a broker-dealer, or other competent party | 值域：注册机构；子属性：由……注册 |
+| **承销（underwrites）** | 对发行进行承销。<br>identifies one or more underwriters involved in raising capital for or distributing the instruments that are the subject of the offering | 值域：证券发行（securities offering）；逆属性：由……承销（is underwritten by） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有系列（has series）** | 指明工具分多个系列（亦称分档）发行时发行人所标识的系列。 |
-| **具有认购数量（has subscription amount）** | 指明认购的股份或单位数量。 |
-| **是否超额认购（is over-allotted）** | 表明认购是否超额。 |
+| **具有系列（has series）** | 指明工具分多个系列（亦称分档）发行时发行人所标识的系列。<br>indicates the series identified by the issuer in the event that the instrument is issued in several series (also known as tranches) |
+| **具有认购数量（has subscription amount）** | 指明认购的股份或单位数量。<br>indicates a number of shares or units |
+| **是否超额认购（is over-allotted）** | 表明认购是否超额。<br>indicates whether or not the subscription is over-subscribed |
 
 ## 4. 依赖（owl:imports，23 个）
 

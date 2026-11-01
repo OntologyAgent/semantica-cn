@@ -29,14 +29,14 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 银行承兑汇票（bankers' acceptance） | 由银行担保并兑付的短期债务工具，用作大额交易中相对安全的支付形式。 |
-| 汇票（bill of exchange） | 一种短期可转让金融票据，由一人（货物卖方）向另一人（买方）签发书面付款指令。 |
-| 商业票据（commercial paper） | 通常由银行、公司或外国政府发行、用于筹措资金满足短期债务需要的无担保短期债务工具。 |
-| 付款人（drawee） | 被要求向收款人支付汇票所载金额的一方。 |
-| 出票人（drawer） | 就汇票要求付款人向第三方或自己付款的一方。 |
-| 欧洲美元存款（eurodollar deposit） | 在联邦储备管辖范围之外以美元发行、存放于美国境外银行的固定利率存单。 |
-| 货币市场工具（money market instrument） | 赋予所有者在指定日期无条件收取既定固定金额之权利的短期债务证券。 |
-| 回购协议（repurchase agreement） | 双方之间的协议：一方按指定价格向另一方出让证券，并承诺在日后按约定价格购回。 |
+| 银行承兑汇票（bankers' acceptance） | 由银行担保并兑付的短期债务工具，用作大额交易中相对安全的支付形式。<br>short-term debt instrument that is guaranteed and paid by a bank and used as a relatively safe form of payment for large transactions |
+| 汇票（bill of exchange） | 一种短期可转让金融票据，由一人（货物卖方）向另一人（买方）签发书面付款指令。<br>short-term negotiable financial instrument consisting of an order in writing addressed by one person (the seller of goods) to another (the buyer), requiring the latter to pay a fixed amount of money on demand (a sight draft) or on a predetermined date (a time draft) |
+| 商业票据（commercial paper） | 通常由银行、公司或外国政府发行、用于筹措资金满足短期债务需要的无担保短期债务工具。<br>an unsecured short-term debt instrument typically issued by a bank, corporation, or foreign government to obtain funds to meet short-term debt obligations, such as accounts receivable, inventories, or payroll, backed only by an issuing bank or company promise to pay the face amount on the maturity date specified on the note |
+| 付款人（drawee） | 被要求向收款人支付汇票所载金额的一方。<br>party that is required to pay the amount stated on the bill of exchange to the payee |
+| 出票人（drawer） | 就汇票要求付款人向第三方或自己付款的一方。<br>party that requires a drawee to pay either a third party or themselves with respect to a bill of exchange |
+| 欧洲美元存款（eurodollar deposit） | 在联邦储备管辖范围之外以美元发行、存放于美国境外银行的固定利率存单。<br>a certificate of deposit with a fixed interest rate issued in U.S. dollars outside the jurisdiction of the Federal Reserve, held at banks outside of the United States, including branches of U.S. banks located outside of the U.S. |
+| 货币市场工具（money market instrument） | 赋予所有者在指定日期无条件收取既定固定金额之权利的短期债务证券。<br>a short-term debt security that gives the owner the unconditional right to receive a stated, fixed sum of money on a specified date |
+| 回购协议（repurchase agreement） | 双方之间的协议：一方按指定价格向另一方出让证券，并承诺在日后按约定价格购回。<br>agreement between two parties whereby one party lends the other a security at a specified price with a commitment to take the security back at a later date for another specified price |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

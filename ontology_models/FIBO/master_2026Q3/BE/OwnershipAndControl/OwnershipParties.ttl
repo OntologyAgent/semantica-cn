@@ -226,21 +226,21 @@ fibo-be-oac-opty:EntityOwnership a owl:Class ;
         "实体所有权（entity ownership）"@zh ;
     rdfs:comment "某参与方对某非政府正式组织之权益的所有权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-opty:hasOwningEntity ;
-            owl:someValuesFrom cmns-org:LegalPerson ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-be-le-lei:RelationshipQualifier ;
             owl:onProperty fibo-fnd-agr-ctr:isQualifiedBy ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-opty:hasOwnedEntity ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-be-le-fbo:NotForProfitOrganization fibo-be-le-lp:BusinessEntity cmns-org:LegalEntity ) ] ],
+            owl:onProperty fibo-be-oac-opty:hasOwningEntity ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( fibo-fnd-oac-own:OwnersEquity fibo-fnd-agr-ctr:Contract ) ] ;
             owl:onProperty fibo-fnd-rel-rel:isConferredBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-opty:hasOwnedEntity ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-le-fbo:NotForProfitOrganization fibo-be-le-lp:BusinessEntity cmns-org:LegalEntity ) ] ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:decimal ;

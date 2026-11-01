@@ -73,10 +73,10 @@ fibo-der-drc-cur:CurrencyForwardOutright a owl:Class ;
     rdfs:comment "外汇市场上的远期合约，锁定实体在未来某日必须买入或卖出某一货币的价格。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-col:hasPart ;
-            owl:someValuesFrom fibo-der-drc-cur:CurrencySwap ],
+            owl:someValuesFrom fibo-der-drc-cur:CurrencySpotContract ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:hasPart ;
-            owl:someValuesFrom fibo-der-drc-cur:CurrencySpotContract ],
+            owl:someValuesFrom fibo-der-drc-cur:CurrencySwap ],
         fibo-der-drc-cur:CurrencyForward ;
     skos:definition "forward contract in a foreign exchange market that locks in the price at which an entity must buy or sell a currency on a future date"@en ;
     cmns-av:explanatoryNote "The holders of a currency forward are obligated to buy or sell the currency at a specified price, at a specified quantity and on a specified future date. These contracts cannot be transferred. Jan 10 Review Notes Outright Forward is the term for the professional markets. Spot + Swap where Swap is 2 simultaneous transactions."@en ;

@@ -23,9 +23,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 方面（aspect） | 可用于对一类、一集合事物进行维度化、过滤或划分子集的特征或特性。 |
-| 分类方案（classification scheme） | 为事物分配分类符的体系。 |
-| 分类符（classifier） | 在特定情境下、依据某种划分体系对事物的标准化分类或划定。 |
+| 方面（aspect） | 可用于对一类、一集合事物进行维度化、过滤或划分子集的特征或特性。<br>characteristic or feature that can be used to dimensionalize, filter, or subset a class, collection, or set of things |
+| 分类方案（classification scheme） | 为事物分配分类符的体系。<br>system for allocating classifiers to things |
+| 分类符（classifier） | 在特定情境下、依据某种划分体系对事物的标准化分类或划定。<br>standardized classification or delineation for something, per some scheme for such delineation, within a specified context |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -39,7 +39,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **刻画（characterizes）** | 提供……的区分性特征或性质。 | 子属性：描述 |
+| **刻画（characterizes）** | 提供……的区分性特征或性质。<br>provides a discriminating feature or quality of | 子属性：描述 |
 
 公理：
 
@@ -55,7 +55,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **分类（classifies）** | 按一个或多个共同特征将……归入类别。 | 子属性：刻画（characterizes） |
+| **分类（classifies）** | 按一个或多个共同特征将……归入类别。<br>arranges in categories according to one or more shared characteristics | 子属性：刻画（characterizes） |
 | **定义于（isDefinedIn）** | — | — |
 
 公理：
@@ -73,7 +73,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **互斥（is exclusive）** | 表明该方案中的分类符两两不相交，一个事物只能用一个分类符分类。 | 值域：xsd:boolean |
+| **互斥（is exclusive）** | 表明该方案中的分类符两两不相交，一个事物只能用一个分类符分类。<br>indicates that the classifiers in the scheme are all disjoint and that only one classifier may be used to classify something | 值域：xsd:boolean |
 
 ## 3. 其他属性
 
@@ -83,8 +83,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **以……为特征（is characterized by）** | 标识某事物区别于他物的性质或特征。 | 逆属性：刻画（characterizes）；子属性：由……描述 |
-| **由……分类（is classified by）** | 由……基于特征进行系统化归类。 | 逆属性：分类（classifies）；子属性：以……为特征（is characterized by） |
+| **以……为特征（is characterized by）** | 标识某事物区别于他物的性质或特征。<br>indicates a quality or feature of something, distinguishing it from something else | 逆属性：刻画（characterizes）；子属性：由……描述 |
+| **由……分类（is classified by）** | 由……基于特征进行系统化归类。<br>is systematically grouped based on characteristics by | 逆属性：分类（classifies）；子属性：以……为特征（is characterized by） |
 
 ## 4. 依赖（owl:imports，3 个）
 

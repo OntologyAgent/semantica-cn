@@ -22,7 +22,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 信贷机构登记册条目（Credit Institution Register entry） | 信贷机构登记册中的条目；该登记册是由欧洲银行管理局（EBA）依据各国主管机构提供的信息汇集的信贷机构信息库。 |
+| 信贷机构登记册条目（Credit Institution Register entry） | 信贷机构登记册中的条目；该登记册是由欧洲银行管理局（EBA）依据各国主管机构提供的信息汇集的信贷机构信息库。<br>entry in the Credit Institution Register, a repository of credit institutions collected by the European Banking Authority (EBA) as provided by the various national banking authorities for those institutions that qualify |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

@@ -35,11 +35,11 @@ fibo-fnd-txn-rea:EconomicContract a owl:Class ;
         "经济合同（economic contract）"@zh ;
     rdfs:comment "与两方之间经济交易相关并对其加以治理的合同。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:embodies ;
-            owl:someValuesFrom fibo-fnd-txn-rea:ContractualEconomicAgreement ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
             owl:someValuesFrom fibo-fnd-txn-rea:EconomicContractTermsSet ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:embodies ;
+            owl:someValuesFrom fibo-fnd-txn-rea:ContractualEconomicAgreement ],
         fibo-fnd-agr-ctr:Contract ;
     skos:definition "A contract relating to and governing an economic transaction between two parties."@en ;
     skos:editorialNote "From REA ontology."@en .
@@ -118,11 +118,11 @@ fibo-fnd-txn-rea:ContractualEconomicAgreement a owl:Class ;
         "合同性经济协议（contractual economic agreement）"@zh ;
     rdfs:comment "构成交易一部分、以双方之间合同为凭而具有合同地位的经济协议。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:confers ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:ContractualCommitment ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
             owl:someValuesFrom fibo-fnd-txn-rea:ContractualTransactionParty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:confers ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:ContractualCommitment ],
         fibo-fnd-agr-ctr:Contract,
         fibo-fnd-txn-rea:EconomicAgreement ;
     skos:definition "An economic agreement forming part of a transaction, which has contractual standing as evidenced by a contract between the two parties to the Agreement."@en ;
@@ -340,11 +340,11 @@ fibo-fnd-txn-rea:EconomicAgreement a owl:Class ;
         "经济协议（economic agreement）"@zh ;
     rdfs:comment "交易各方之间就经济价值交换达成的协议。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-pts:hasPartyRole ;
-            owl:someValuesFrom fibo-fnd-txn-rea:TransactionParty ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rga:governs ;
             owl:someValuesFrom fibo-fnd-txn-rea:EconomicTransaction ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-fnd-txn-rea:TransactionParty ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:confers ;
             owl:someValuesFrom fibo-fnd-txn-rea:EconomicCommitment ],
@@ -365,20 +365,20 @@ fibo-fnd-txn-rea:LedgerEntry a owl:Class ;
         "分类账条目（ledger entry）"@zh ;
     rdfs:comment "记录于分类账中的一项条目。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:isRegisteredIn ;
-            owl:someValuesFrom fibo-fbc-pas-caa:LedgerAccount ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
+            owl:onClass fibo-fbc-pas-caa:TransactionDate ;
+            owl:onProperty fibo-fbc-pas-caa:hasTransactionDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-caa:PostingDate ;
             owl:onProperty fibo-fbc-pas-caa:hasPostingDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-caa:TransactionDate ;
-            owl:onProperty fibo-fbc-pas-caa:hasTransactionDate ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredIn ;
+            owl:someValuesFrom fibo-fbc-pas-caa:LedgerAccount ],
         fibo-fnd-dt-fd:DatedCollectionConstituent,
         cmns-ra:RegistryEntry .
 
@@ -417,20 +417,20 @@ fibo-fnd-txn-rea:Undertaking a owl:Class ;
         "承担（undertaking）"@zh ;
     rdfs:comment "采取行动的某项承担。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-rea:isMadeAsPartOf ;
-            owl:someValuesFrom fibo-fnd-agr-agr:Agreement ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:ContractParty ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-rea:bestows ;
-            owl:someValuesFrom fibo-fnd-law-lcap:ContingentRight ],
+            owl:onProperty fibo-fnd-txn-rea:isUndertakingTo ;
+            owl:someValuesFrom fibo-fnd-law-lcap:ContingentObligation ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-txn-rea:givesRiseTo ;
             owl:someValuesFrom fibo-fnd-agr-agr:Commitment ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-rea:isUndertakingTo ;
-            owl:someValuesFrom fibo-fnd-law-lcap:ContingentObligation ] ;
+            owl:onProperty fibo-fnd-txn-rea:isMadeAsPartOf ;
+            owl:someValuesFrom fibo-fnd-agr-agr:Agreement ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-rea:bestows ;
+            owl:someValuesFrom fibo-fnd-law-lcap:ContingentRight ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:ContractParty ] ;
     skos:definition "Some undertaking to act."@en ;
     cmns-av:explanatoryNote "This could be an undertaking to deliver something, to do something and so on. These correspond to negative and positive pledges in the contract."@en .
 
@@ -439,9 +439,6 @@ fibo-fnd-txn-rea:TransactionEvent a owl:Class ;
         "交易事件（transaction event）"@zh ;
     rdfs:comment "交易的事件成分。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-rea:hasStart ;
-            owl:someValuesFrom fibo-fnd-txn-rea:TransactionUndertaking ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-txn-rea:hasEnd ;
             owl:someValuesFrom fibo-fnd-txn-rea:DischargingEvent ],
         [ a owl:Restriction ;
@@ -449,7 +446,10 @@ fibo-fnd-txn-rea:TransactionEvent a owl:Class ;
             owl:someValuesFrom fibo-fnd-txn-rea:EconomicCommitment ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-txn-rea:hasCorresponding ;
-            owl:someValuesFrom fibo-fnd-txn-rea:TransactionEvent ] ;
+            owl:someValuesFrom fibo-fnd-txn-rea:TransactionEvent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-rea:hasStart ;
+            owl:someValuesFrom fibo-fnd-txn-rea:TransactionUndertaking ] ;
     skos:definition "The event component of a transaction"@en ;
     cmns-av:explanatoryNote "This describes an event. The event may be delivery of something or settlement of monies in payment for something delivered. A Transaction Event will have terms describing the commitment embodied in that side of that transaction."@en .
 
@@ -461,12 +461,12 @@ fibo-fnd-txn-rea:EconomicTransaction a owl:Class ;
             owl:onProperty fibo-fnd-txn-rea:transactedUnder ;
             owl:someValuesFrom fibo-fnd-txn-rea:EconomicContractTermsSet ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-rea:transactionEmbodiesEconomicAgreement ;
+            owl:someValuesFrom fibo-fnd-txn-rea:EconomicAgreement ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-txn-rea:EconomicResource ;
-            owl:onProperty fibo-fnd-txn-rea:subject ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-rea:transactionEmbodiesEconomicAgreement ;
-            owl:someValuesFrom fibo-fnd-txn-rea:EconomicAgreement ] ;
+            owl:onProperty fibo-fnd-txn-rea:subject ] ;
     skos:definition "Some exchange of some items of economic value between two parties (economic agents)."@en .
 
 fibo-fnd-txn-rea:TransactionParty a owl:Class ;

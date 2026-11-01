@@ -166,14 +166,14 @@ fibo-fnd-org-fm:Employee a owl:Class ;
     rdfs:comment "依任何明示或默示、口头或书面的雇佣合同为他人服务的人，雇主有权控制和指导其工作。"@zh ;
     rdfs:seeAlso <https://www.bls.gov/opub/mlr/2002/01/art1full.pdf> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom fibo-fnd-aap-ppl:Person ],
+            owl:onProperty fibo-fnd-org-fm:isEmployedIn ;
+            owl:someValuesFrom fibo-fnd-org-fm:Employment ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-org-fm:isEmployeeOf ;
             owl:someValuesFrom fibo-fnd-org-fm:Employer ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-org-fm:isEmployedIn ;
-            owl:someValuesFrom fibo-fnd-org-fm:Employment ],
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom fibo-fnd-aap-ppl:Person ],
         cmns-org:OrganizationMember ;
     skos:definition "person in the service of another under any contract of hire, express or implied, oral or written, where the employer has the right to control and direct that person in the material details of how the work is to be performed" .
 
@@ -182,14 +182,14 @@ fibo-fnd-org-fm:Employer a owl:Class ;
         "雇主（employer）"@zh ;
     rdfs:comment "以报酬（包括工资或薪金及潜在的其他福利）换取一人或多人工作的参与方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom cmns-org:LegalPerson ],
+            owl:onProperty fibo-fnd-org-fm:hasEmployee ;
+            owl:someValuesFrom fibo-fnd-org-fm:Employee ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-org-fm:isEmployingParty ;
             owl:someValuesFrom fibo-fnd-org-fm:Employment ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-org-fm:hasEmployee ;
-            owl:someValuesFrom fibo-fnd-org-fm:Employee ],
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
         cmns-org:MemberBearingOrganization ;
     skos:definition "party that provides compensation, including wages or a salary and potentially other benefits, in exchange for work performed by one or more people, and that has the right to control and direct the employee in the material details of how the work is to be performed" .
 

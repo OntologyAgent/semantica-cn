@@ -93,17 +93,17 @@ fibo-sec-sec-id:ListedSecurityIdentifier a owl:Class ;
         "上市证券标识符（listed security identifier）"@zh ;
     rdfs:comment "在公共领域发布、并在上市文件及其他相关出版物中引用的证券标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:isDefinedIn ;
-            owl:someValuesFrom fibo-sec-sec-id:SecurityIdentificationScheme ],
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-sec-sec-lst:ListedSecurity ],
         [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredIn ;
             owl:someValuesFrom fibo-sec-sec-id:SecurityRegistry ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-id:identifies ;
-            owl:someValuesFrom fibo-sec-sec-lst:ListedSecurity ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredBy ;
             owl:someValuesFrom fibo-fbc-fct-mkt:Exchange ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-sec-sec-id:SecurityIdentificationScheme ],
         fibo-sec-sec-id:SecurityIdentifier ;
     skos:definition "security identifier issued in the public domain and referred to in listings and other relevant publications" .
 
@@ -156,15 +156,15 @@ fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistry a owl:Class ;
         "国家证券识别号码登记册（National Securities Identifying Number registry）"@zh ;
     rdfs:comment "国家编号机构用于管理其登记的金融工具标识符及相关信息的登记册。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalNumberingAgency ],
+        [ a owl:Restriction ;
             owl:onClass fibo-sec-sec-id:NationalSecurityIdentificationScheme ;
             owl:onProperty cmns-cls:isCharacterizedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistryEntry ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-org:isManagedBy ;
-            owl:someValuesFrom fibo-sec-sec-id:NationalNumberingAgency ],
         fibo-sec-sec-id:SecurityRegistry ;
     skos:definition "registry used by a national numbering agency to manage the financial instrument identifiers and related information that it registers" ;
     cmns-av:abbreviation "NSIN registry" .
@@ -208,17 +208,17 @@ fibo-sec-sec-id:NationalNumberingAgency a owl:Class ;
         "国家编号机构（national numbering agency）"@zh ;
     rdfs:comment "负责按照 ISO 6166 标准发行和管理国家证券识别号码的注册机构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-org:manages ;
-            owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistry ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-ra:registers ;
             owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-loc:hasCoverageArea ;
-            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:issues ;
             owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:manages ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalSecuritiesIdentifyingNumberRegistry ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-loc:hasCoverageArea ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
         cmns-ra:RegistrationAuthority ;
     skos:definition "registration authority responsible for issuing and managing National Securities Identifying Numbers for securities in accordance with the ISO 6166 standard in some jurisdiction (typically that of a country)" ;
     cmns-av:abbreviation "NNA" .
@@ -242,11 +242,11 @@ fibo-sec-sec-id:SecurityRegistry a owl:Class ;
         "证券登记册（security registry）"@zh ;
     rdfs:comment "用于管理证券标识符及相关信息的登记册。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-sec-sec-id:SecurityRegistryEntry ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-org:isManagedBy ;
             owl:someValuesFrom cmns-ra:RegistrationAuthority ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-sec-id:SecurityRegistryEntry ],
         [ a owl:Restriction ;
             owl:onClass fibo-sec-sec-id:SecurityIdentificationScheme ;
             owl:onProperty cmns-cls:isCharacterizedBy ;
@@ -273,11 +273,11 @@ fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber a owl:Class ;
         "国家证券识别号码（National Securities Identifying Number）"@zh ;
     rdfs:comment "由国家编号机构按 ISO 6166 标准分配的、用于标识可互换证券的通用九位字母数字代码（NSIN）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:isRegisteredBy ;
-            owl:someValuesFrom fibo-sec-sec-id:NationalNumberingAgency ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:someValuesFrom fibo-sec-sec-id:NationalSecurityIdentificationScheme ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom fibo-sec-sec-id:NationalNumberingAgency ],
         fibo-sec-sec-id:SecurityIdentifier ;
     skos:definition "generic, nine-digit alpha numeric code which identifies a fungible security, assigned by a national numbering agency under the ISO 6166 standard" ;
     cmns-av:abbreviation "NSIN" .

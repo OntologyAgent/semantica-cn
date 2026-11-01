@@ -34,26 +34,26 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 临时进度表（ad hoc schedule） | 由若干个不一定重复发生的独立事件组成的进度表。 |
-| 临时进度表条目（ad hoc schedule entry） | 进度表中多个非定期重复条目之一，含日期或日期时间。 |
-| 存续时间（age） | 某事物或某人已存活或存在的时间长度。 |
-| 基准日期（anchor date） | 序列或时间线中的固定参照点。 |
-| 商业日历（business calendar） | 用于管理会议、规划事件、协调组织内和/或跨组织活动的日程与沟通工具。 |
-| 推算日期（calculated date） | 基于某个公式确定或将要确定的日期。 |
-| 计算期间（calculation period） | 计算过程或运算发生所在的特定区间或范围内、从起点到终点的显式期间。 |
-| 计算期间长度（calculation period length） | 按适用规则计算的、从调整后的生效日或起始日到调整后的终止日或结束日的显式天数。 |
-| 历期（calendar period） | 在某体系内确定一年的某段起点与长度的时间区间。 |
-| 按日历指定的区间（calendar-specified interval） | 定义为某历期（如日历月）第 n 天并带有时间方向（自起点向前或自终点向后）的重复区间。 |
-| 带日期集合成分（dated collection constituent） | 与日期时间关联的集合元素。 |
-| 带日期结构化集合（dated structured collection） | 其元素必须具有日期时间的结构化集合。 |
-| 显式重复区间（explicit recurrence interval） | 以显式时长定义的重复区间。 |
-| 重复区间（recurrence interval） | 在定期进度表的各元素之间保持一致的时间区间。 |
-| 定期进度表（regular schedule） | 时间区间规律重复的进度表。 |
-| 相对日期（relative date） | 在另一日期之前或之后某时长的推算日期。 |
-| 进度表（schedule） | 事件、观测或其他发生事项及其将完成的关联日期和/或时间的集合。 |
-| 进度表短端（schedule stub） | 进度表重复部分开始之前或结束之后、可能与特定发生事项关联的日期区间。 |
-| 规则指定日期（specified date） | 由规则定义的推算日期，该规则以字符串形式记录于「具有日期规则」属性。 |
-| 时间方向（time direction） | 表明按日历指定的日期从历期起点还是终点起算的枚举。 |
+| 临时进度表（ad hoc schedule） | 由若干个不一定重复发生的独立事件组成的进度表。<br>schedule consisting of some number of individual events that are not necessarily recurring |
+| 临时进度表条目（ad hoc schedule entry） | 进度表中多个非定期重复条目之一，含日期或日期时间。<br>entry, including a date or date and time, among multiple non-regularly-recurring entries in a schedule |
+| 存续时间（age） | 某事物或某人已存活或存在的时间长度。<br>length of time that something or someone has been alive or existed |
+| 基准日期（anchor date） | 序列或时间线中的固定参照点。<br>fixed reference point within a series or timeline |
+| 商业日历（business calendar） | 用于管理会议、规划事件、协调组织内和/或跨组织活动的日程与沟通工具。<br>schedule and communications tool used to manage meetings, plan events, and coordinate activities within and/or across organizations |
+| 推算日期（calculated date） | 基于某个公式确定或将要确定的日期。<br>date that is or will be determined based on some formula |
+| 计算期间（calculation period） | 计算过程或运算发生所在的特定区间或范围内、从起点到终点的显式期间。<br>explicit period from the start to the end of a specific interval or range within which a computational process or operation occurs |
+| 计算期间长度（calculation period length） | 按适用规则计算的、从调整后的生效日或起始日到调整后的终止日或结束日的显式天数。<br>explicit number of days from the adjusted effective or start date to the adjusted termination or end date calculated in accordance with the applicable day count fraction |
+| 历期（calendar period） | 在某体系内确定一年的某段起点与长度的时间区间。<br>time interval that occurs within a system that fixes the beginning and length of a segment of the year with respect to that system |
+| 按日历指定的区间（calendar-specified interval） | 定义为某历期（如日历月）第 n 天并带有时间方向（自起点向前或自终点向后）的重复区间。<br>recurrence interval that is defined as the nth day of some calendar period (such as a calendar month), and a time direction (forward from the beginning of the month, or backwards from the end) |
+| 带日期集合成分（dated collection constituent） | 与日期时间关联的集合元素。<br>element of a collection that is associated with a date and time |
+| 带日期结构化集合（dated structured collection） | 其元素必须具有日期时间的结构化集合。<br>structured collection whose elements are required to have a date and time |
+| 显式重复区间（explicit recurrence interval） | 以显式时长定义的重复区间。<br>recurrence interval defined via an explicit duration |
+| 重复区间（recurrence interval） | 在定期进度表的各元素之间保持一致的时间区间。<br>time interval that is consistent between elements of a regular schedule |
+| 定期进度表（regular schedule） | 时间区间规律重复的进度表。<br>schedule whose time intervals recur regularly |
+| 相对日期（relative date） | 在另一日期之前或之后某时长的推算日期。<br>calculated date that is some duration before or after another date |
+| 进度表（schedule） | 事件、观测或其他发生事项及其将完成的关联日期和/或时间的集合。<br>collection of events, observations, or other occurrences and the associated dates and/or times when they will be done |
+| 进度表短端（schedule stub） | 进度表重复部分开始之前或结束之后、可能与特定发生事项关联的日期区间。<br>date period before the start of the recurring part of a schedule or after the end of the recurring part, which may be associated with a specific occurrence kind |
+| 规则指定日期（specified date） | 由规则定义的推算日期，该规则以字符串形式记录于「具有日期规则」属性。<br>calculated date that is defined by a rule that is captured as a string by the 'hasDateSpecification' property |
+| 时间方向（time direction） | 表明按日历指定的日期从历期起点还是终点起算的枚举。<br>enumeration that indicates whether a calendar-specified date is figured from the start or the end of a calendar period |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -67,7 +67,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有截止日（has as-of date）** | 将某事物关联到其内容准确或有效的日期（如信用报告的截止日指信息提取之日）。 | 子属性：具有日期 |
+| **具有截止日（has as-of date）** | 将某事物关联到其内容准确或有效的日期（如信用报告的截止日指信息提取之日）。<br>relates something to the date on which it is accurate or valid (e.g. a credit report has an asOfDate that means the date when the information was drawn) | 子属性：具有日期 |
 
 公理：
 
@@ -100,8 +100,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有相对时长（has relative duration）** | 两个显式日期之间的时长。 | 值域：xsd:string |
-| **相对于（is relative to）** | 标识相对日期或相对日期区间所参照的特定日期。 | 值域：日期 |
+| **具有相对时长（has relative duration）** | 两个显式日期之间的时长。<br>duration between two explicit dates | 值域：xsd:string |
+| **相对于（is relative to）** | 标识相对日期或相对日期区间所参照的特定日期。<br>identifies a specific date that a relative date or relative date period references | 值域：日期 |
 
 公理：
 
@@ -119,7 +119,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有日期规则（has date specification）** | 指明规则指定日期如何计算的规则。 | 值域：xsd:string |
+| **具有日期规则（has date specification）** | 指明规则指定日期如何计算的规则。<br>rule that specifies how a specified date is computed | 值域：xsd:string |
 
 公理：
 
@@ -209,9 +209,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有历期（has calendar period）** | 标识计算按日历指定日期所用的时段，如日历年周、日历月、日历季度或日历年。 | 值域：历期（calendar period） |
-| **具有序数（has ordinal number）** | 指明在有序序列中位置的数字，即第 1、第 2、第 3 等。 | 值域：xsd:integer |
-| **具有时间方向（has time direction）** | 表明按日历指定的日期从历期起点还是终点起算。 | 值域：时间方向（time direction） |
+| **具有历期（has calendar period）** | 标识计算按日历指定日期所用的时段，如日历年周、日历月、日历季度或日历年。<br>identifies a period of time used in computing a calendar-specified date, such as a calendar week, calendar month, calendar quarter, or calendar year | 值域：历期（calendar period） |
+| **具有序数（has ordinal number）** | 指明在有序序列中位置的数字，即第 1、第 2、第 3 等。<br>specifies a number designating place in an ordered sequence, i.e., 1st, 2nd, 3rd, etc. | 值域：xsd:integer |
+| **具有时间方向（has time direction）** | 表明按日历指定的日期从历期起点还是终点起算。<br>indicates whether a calendar-specified date is figured from the beginning or end of a calendar period | 值域：时间方向（time direction） |
 
 公理：
 
@@ -247,7 +247,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有整体期间（has overall period）** | 标识包含进度表全部日期（含任何短端）的日期区间。 | 子属性：具有日期区间 |
+| **具有整体期间（has overall period）** | 标识包含进度表全部日期（含任何短端）的日期区间。<br>identifies a date period that includes all the dates of a schedule, including any schedule stubs | 子属性：具有日期区间 |
 
 公理：
 
@@ -285,12 +285,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有基准日期（has anchor date）** | 指明序列或时间线中的固定参照点。 | 值域：基准日期（anchor date）；子属性：具有显式日期 |
-| **具有计数（has count）** | 指明集合中事物的总数，如定期进度表的条目数。 | 值域：xsd:positiveInteger |
-| **具有末段短端（has final stub）** | 标识定期进度表末尾的任何特殊时段。 | 子属性：具有短端（has stub） |
-| **具有首段短端（has initial stub）** | 标识定期进度表开头的任何特殊时段。 | 子属性：具有短端（has stub） |
-| **具有重复区间（has recurrence interval）** | 标识某事件或发布发生的频率。 | 值域：重复区间（recurrence interval） |
-| **具有短端（has stub）** | 将进度表开头或末尾的缩短时段关联到整体进度表。 | 值域：进度表短端（schedule stub） |
+| **具有基准日期（has anchor date）** | 指明序列或时间线中的固定参照点。<br>specifies a fixed reference point within a series or timeline | 值域：基准日期（anchor date）；子属性：具有显式日期 |
+| **具有计数（has count）** | 指明集合中事物的总数，如定期进度表的条目数。<br>specifies the total number of things in a collection, such as the number of entries in a regular schedule | 值域：xsd:positiveInteger |
+| **具有末段短端（has final stub）** | 标识定期进度表末尾的任何特殊时段。<br>identifies any special period at the end of a regular schedule | 子属性：具有短端（has stub） |
+| **具有首段短端（has initial stub）** | 标识定期进度表开头的任何特殊时段。<br>identifies any special period at the start of a regular schedule | 子属性：具有短端（has stub） |
+| **具有重复区间（has recurrence interval）** | 标识某事件或发布发生的频率。<br>indicates the frequency with which some event or publication occurs | 值域：重复区间（recurrence interval） |
+| **具有短端（has stub）** | 将进度表开头或末尾的缩短时段关联到整体进度表。<br>links an abbreviated period at the start or end of some schedule to the overall schedule | 值域：进度表短端（schedule stub） |
 | **具有起始日期（hasStartDate）** | — | — |
 
 公理：
@@ -332,18 +332,18 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有存续时间（has age）** | 将某事物关联到其已存在的时间长度。 | 值域：时长；子属性：具有时长 |
-| **具有加入日期（has date added）** | 标识某事物被纳入他物的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有接收日期（has date received）** | 将某事物关联到其到达或交付的日期，如贷款申请。 | 子属性：具有日期 |
-| **具有进度表（has schedule）** | 标识某事物的进度表。 | 值域：进度表（schedule） |
+| **具有存续时间（has age）** | 将某事物关联到其已存在的时间长度。<br>relates something to the length of time it has existed | 值域：时长；子属性：具有时长 |
+| **具有加入日期（has date added）** | 标识某事物被纳入他物的日期。<br>indicates the date something was included in something else | 值域：显式日期；子属性：具有显式日期 |
+| **具有接收日期（has date received）** | 将某事物关联到其到达或交付的日期，如贷款申请。<br>relates something to the date it arrived or was delivered, e.g., a loan application request | 子属性：具有日期 |
+| **具有进度表（has schedule）** | 标识某事物的进度表。<br>indicates a schedule for something | 值域：进度表（schedule） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有取得日期（has acquisition date）** | 将资产或所有者/控制方/被控制方关联到购买日期或日期时间。 |
-| **具有截止日时间（has closing date time）** | 某事物截止的日期与时间。 |
-| **具有开启日时间（has opening date time）** | 某事物开启的日期与时间。 |
+| **具有取得日期（has acquisition date）** | 将资产或所有者/控制方/被控制方关联到购买日期或日期时间。<br>links an asset or owner/controller/controllee to the date or date and time of purchase |
+| **具有截止日时间（has closing date time）** | 某事物截止的日期与时间。<br>the day and time at which something closes |
+| **具有开启日时间（has opening date time）** | 某事物开启的日期与时间。<br>the day and time at which something opens |
 
 ## 4. 依赖（owl:imports，4 个）
 

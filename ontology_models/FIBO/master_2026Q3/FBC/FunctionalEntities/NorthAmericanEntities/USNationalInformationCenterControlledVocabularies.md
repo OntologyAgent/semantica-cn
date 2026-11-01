@@ -24,8 +24,8 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary） | 用于刻画国家信息中心（NIC）所管理金融服务提供商内容之某项特征或方面的受控词汇表。 |
-| 国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier） | 用于描述国家信息中心（NIC）信息库所管理功能实体性质的受控词汇表和代码。 |
+| 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary） | 用于刻画国家信息中心（NIC）所管理金融服务提供商内容之某项特征或方面的受控词汇表。<br>controlled vocabulary that characterizes some feature or aspect of content about a financial service provider managed in the National Information Center (NIC) repository |
+| 国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier） | 用于描述国家信息中心（NIC）信息库所管理功能实体性质的受控词汇表和代码。<br>controlled vocabulary and codes for describing the nature of the functional entities managed by the National Information Center (NIC) repository |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

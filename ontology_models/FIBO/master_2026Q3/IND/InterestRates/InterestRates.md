@@ -34,17 +34,17 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 基准利率（base rate） | 银行据此计算向客户贷款实际利率的基本利率。 |
-| 银行间拆入利率（interbank bid rate） | 参与银行愿意从其他银行借入存款的银行间利率。 |
-| 银行间中间利率（interbank mid rate） | 代表拆入与拆出利率中点的银行间利率。 |
-| 银行间拆出利率（interbank offered rate） | 参与银行贷出资金的银行间利率。 |
-| 银行间利率（interbank rate） | 银行之间短期贷款所收利率的参考利率。 |
-| 利率主管机构（interest rate authority） | 负责规定某项基准性利率的金融服务提供商/发布方。 |
-| 利率基准（interest rate benchmark） | 对定期更新、公众可获取的利率的分类符，通常由中央银行或金融机构集团设定。 |
-| 利率基准分类方案（interest rate benchmark classification scheme） | 对利率基准进行分类的方案，如 FpML 分类方案。 |
-| 隔夜利率（overnight rate） | 存款机构向另一存款机构（短期）拆出资金的利率，或中央银行所设的利率。 |
-| 参考利率（reference interest rate） | 由某银行或银行集团支付或约定的市场利率。 |
-| 特定提供商利率基准（specific-provider interest rate benchmark） | 由特定市场数据提供商提供、供参考之用的利率基准。 |
+| 基准利率（base rate） | 银行据此计算向客户贷款实际利率的基本利率。<br>basic rate of interest on which the actual rate a bank charges on loans to its customers is calculated |
+| 银行间拆入利率（interbank bid rate） | 参与银行愿意从其他银行借入存款的银行间利率。<br>interbank rate that is the interest rate at which participating banks are willing to borrow deposits from other banks |
+| 银行间中间利率（interbank mid rate） | 代表拆入与拆出利率中点的银行间利率。<br>interbank rate that represents the mid-point between bid and offer rates |
+| 银行间拆出利率（interbank offered rate） | 参与银行贷出资金的银行间利率。<br>interbank rate that is the interest rate at which participating banks lend money |
+| 银行间利率（interbank rate） | 银行之间短期贷款所收利率的参考利率。<br>reference rate that is the rate of interest charged on short-term loans between banks |
+| 利率主管机构（interest rate authority） | 负责规定某项基准性利率的金融服务提供商/发布方。<br>financial service provider/publisher responsible for specifying some benchmark interest rate |
+| 利率基准（interest rate benchmark） | 对定期更新、公众可获取的利率的分类符，通常由中央银行或金融机构集团设定。<br>classifier for regularly updated interest rates that are publicly accessible, typically set by a central bank or group of financial institutions |
+| 利率基准分类方案（interest rate benchmark classification scheme） | 对利率基准进行分类的方案，如 FpML 分类方案。<br>scheme for classifying interest rate benchmarks, such as the FpML classification scheme |
+| 隔夜利率（overnight rate） | 存款机构向另一存款机构（短期）拆出资金的利率，或中央银行所设的利率。<br>reference rate that is an interest rate at which a depository institution lends funds to another depository institution (short-term), or the interest rate the central bank charges a financial institution to borrow money overnight |
+| 参考利率（reference interest rate） | 由某银行或银行集团支付或约定的市场利率。<br>market rate that is a rate of interest paid by or agreed among some bank or set of banks |
+| 特定提供商利率基准（specific-provider interest rate benchmark） | 由特定市场数据提供商提供、供参考之用的利率基准。<br>interest rate benchmark that is made available by a specific market data provider for reference purposes |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -76,9 +76,9 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **由……生产（isProducedBy）** | — | — |
-| **具有利率重置时刻（has rate reset time of day）** | 标识基准利率变动发布的日内时刻，通常每个营业日相同。 | 值域：日期时间；子属性：具有日期时间 |
-| **具有参考货币（has reference currency）** | 将某事物关联到其所基于的货币。 | 值域：货币；子属性：具有货币 |
-| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。 | 值域：时长；子属性：具有时长 |
+| **具有利率重置时刻（has rate reset time of day）** | 标识基准利率变动发布的日内时刻，通常每个营业日相同。<br>indicates the time of day when a change in a benchmark rate is published, typically the same time every business day | 值域：日期时间；子属性：具有日期时间 |
+| **具有参考货币（has reference currency）** | 将某事物关联到其所基于的货币。<br>relates something to the currency it is based on | 值域：货币；子属性：具有货币 |
+| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。<br>indicates the length of time for which a given rate, such as an interbank rate, exchange rate, other market rate is quoted, or a debt instrument has remaining prior to maturity or expiration | 值域：时长；子属性：具有时长 |
 | **分类（classifies）** | — | — |
 | **由……提供（isProvidedBy）** | — | — |
 
@@ -134,9 +134,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有利率重置时刻（has rate reset time of day）** | 标识基准利率变动发布的日内时刻，通常每个营业日相同。 | 值域：日期时间；子属性：具有日期时间 |
-| **具有参考货币（has reference currency）** | 将某事物关联到其所基于的货币。 | 值域：货币；子属性：具有货币 |
-| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。 | 值域：时长；子属性：具有时长 |
+| **具有利率重置时刻（has rate reset time of day）** | 标识基准利率变动发布的日内时刻，通常每个营业日相同。<br>indicates the time of day when a change in a benchmark rate is published, typically the same time every business day | 值域：日期时间；子属性：具有日期时间 |
+| **具有参考货币（has reference currency）** | 将某事物关联到其所基于的货币。<br>relates something to the currency it is based on | 值域：货币；子属性：具有货币 |
+| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。<br>indicates the length of time for which a given rate, such as an interbank rate, exchange rate, other market rate is quoted, or a debt instrument has remaining prior to maturity or expiration | 值域：时长；子属性：具有时长 |
 | **具有量类（hasQuantityKind）** | — | — |
 
 公理：
@@ -187,7 +187,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。 | 值域：时长；子属性：具有时长 |
+| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。<br>indicates the length of time for which a given rate, such as an interbank rate, exchange rate, other market rate is quoted, or a debt instrument has remaining prior to maturity or expiration | 值域：时长；子属性：具有时长 |
 
 公理：
 

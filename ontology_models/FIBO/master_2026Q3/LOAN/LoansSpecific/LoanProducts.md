@@ -39,12 +39,12 @@
 | 建设贷款用途（construction loan purpose） | 用于建设项目的贷款用途。 |
 | 信用卡应收用途（credit card receivable purpose） | 与信用卡应收款相关的用途。 |
 | 房屋净值贷款用途（home equity loan purpose） | 以房屋净值为基础的贷款用途。 |
-| 明细行项（line item） | 对产品或服务的描述，包括单价、数量与总价。 |
-| 贷款市场类别（loan market category） | 表明贷款产品所面向市场领域的类别。 |
-| 贷款发售（loan offering） | 与贷款产品相关的发售，可针对特定情形、某组借款人或单个借款人定制。 |
-| 贷款产品（loan product） | 以贷款形式实现、参与方可从贷款机构获得的具有特定特征与条款的金融产品。 |
-| 贷款产品知情权（loan product disclosure right） | 在订立贷款产品协议之前获得其产品事实之公允陈述的权利。 |
-| 贷款用途（loan purpose） | 贷款（信贷）提取金额的用途与使用方式，有多种类型可选。 |
+| 明细行项（line item） | 对产品或服务的描述，包括单价、数量与总价。<br>description of a product or service including its unit cost, number of units and total cost |
+| 贷款市场类别（loan market category） | 表明贷款产品所面向市场领域的类别。<br>category indicating the market domain in which the loan product is offered |
+| 贷款发售（loan offering） | 与贷款产品相关的发售，可针对特定情形、某组借款人或单个借款人定制。<br>offering related to a loan product that may be a tailored to particular circumstances, aimed at a group of borrowers or individual borrower |
+| 贷款产品（loan product） | 以贷款形式实现、参与方可从贷款机构获得的具有特定特征与条款的金融产品。<br>financial product that is realized as a loan that a party may acquire from a lending institution with specific characteristics and terms |
+| 贷款产品知情权（loan product disclosure right） | 在订立贷款产品协议之前获得其产品事实之公允陈述的权利。<br>Right to fair representation of the facts about Loan products before entrering into agreements for same. |
+| 贷款用途（loan purpose） | 贷款（信贷）提取金额的用途与使用方式，有多种类型可选。<br>A selection of different types of loan purpose, being the purpose for which and manner in which loan (credit) draw-down amounts are to be used. This shows the purpose for which credit is to be used, and implies certain kinds of fact that relate to that specific type of loan e.g. mortgages. These are also identified as tranche types in tranches of a credit facility. |
 | 抵押贷款产品（mortgage product） | 以不动产抵押为基础的贷款产品。 |
 | 房车贷款用途（motorhome loan purpose） | 用于购买房车的贷款用途。 |
 | 普通贷款用途（ordinary loan purpose） | 一般用途的贷款。 |
@@ -66,7 +66,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有成本（hasCost）** | — | — |
-| **具有单价（has unit cost）** | 将某行项关联到其单位成本。 | 子属性：具有成本 |
+| **具有单价（has unit cost）** | 将某行项关联到其单位成本。<br>relates an item to its unit cost | 子属性：具有成本 |
 | **引用（refersTo）** | — | — |
 | **具有数值（hasNumericValue）** | — | — |
 

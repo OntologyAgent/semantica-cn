@@ -159,17 +159,17 @@ fibo-sec-fund-fund:FundPosition a owl:Class ;
         "基金头寸（fund position）"@zh ;
     rdfs:comment "在某一基金中的头寸，可用基金单位来界定。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass [ a owl:Class ;
-                    owl:unionOf ( fibo-sec-fund-fund:FundHolder fibo-sec-eq-eq:Custodian ) ] ;
-            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
             owl:someValuesFrom fibo-sec-fund-fund:FundHolding ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-fund-fund:FundHolder ;
             owl:onProperty fibo-fnd-oac-own:hasOwningParty ],
+        [ a owl:Restriction ;
+            owl:onClass [ a owl:Class ;
+                    owl:unionOf ( fibo-sec-fund-fund:FundHolder fibo-sec-eq-eq:Custodian ) ] ;
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fbc-pas-fpas:Position ;
     skos:definition "position in some fund, which may be defined in terms of fund units"@en .
 
@@ -293,12 +293,12 @@ fibo-sec-fund-fund:FundHolding a owl:Class ;
     rdfs:comment "在基金中的所有权权益，可由赋予财务权利和治理特权的基金单位表示。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-fund-fund:FundUnit ;
-            owl:onProperty cmns-doc:refersTo ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-be-oac-cown:consistsOfNumberOfUnits ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-fund-fund:FundUnit ;
+            owl:onProperty cmns-doc:refersTo ],
         fibo-fnd-oac-own:FinancialAsset ;
     skos:definition "ownership interest in a fund, which may represented by fund units that confer financial rights and governance privileges" .
 
@@ -370,11 +370,11 @@ fibo-sec-fund-fund:LegalFundStructure a owl:Class ;
     rdfs:label "legal fund structure"@en,
         "基金法律结构（legal fund structure）"@zh ;
     rdfs:comment "基金在某一司法管辖区法律组建形式方面的结构。"@zh ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:unionOf ( cmns-org:LegalEntity fibo-sec-fund-fund:FundContract ) ],
-        [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-rga:isGovernedBy ;
             owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Class ;
+            owl:unionOf ( cmns-org:LegalEntity fibo-sec-fund-fund:FundContract ) ],
         fibo-fnd-law-lcap:LegalConstruct ;
     skos:definition "structure of a fund with respect to its legal formation in some jurisdiction"@en .
 
@@ -466,11 +466,11 @@ fibo-sec-sec-pls:PooledFund a owl:Class ;
             owl:onProperty cmns-col:hasPart ;
             owl:someValuesFrom fibo-sec-fund-fund:FundUnit ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:boolean ;
-            owl:onProperty fibo-sec-fund-fund:isPrivate ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fct-fse:hasDateEstablished ;
             owl:someValuesFrom cmns-dt:ExplicitDate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty fibo-sec-fund-fund:isPrivate ],
         fibo-fnd-oac-own:FinancialAsset ;
     cmns-av:explanatoryNote "A fund can be established for any purpose, such as a municipality setting aside money for a construction project, monies designated to endow a university chair or for scholarships, or funds set aside by insurance companies to settle claims."@en ;
     cmns-av:synonym "fund"@en .

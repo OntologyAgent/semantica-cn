@@ -34,9 +34,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 清算（clearing） | 证券交易被清算的过程。 |
-| 清算与结算（clearing and settlement） | 证券清算与结算的业务流程或服务领域。 |
-| 金融行业情境（financial industry context） | 金融行业内业务活动发生的情境，即投资管理、批发金融市场交易等。 |
+| 清算（clearing） | 证券交易被清算的过程。<br>The process by which securities trades are cleared. |
+| 清算与结算（clearing and settlement） | 证券清算与结算的业务流程或服务领域。<br>The business process or service area of securities clearing and settlement. |
+| 金融行业情境（financial industry context） | 金融行业内业务活动发生的情境，即投资管理、批发金融市场交易等。<br>The context in which business activites take place within the financial industry, i.e. investment management, wholesale financial markets trading and so on. |
 | 金融市场监管（financial markets regulation） | 对金融市场进行监管的活动与规则体系。 |
 | 投资管理（investment management） | 对投资组合进行专业化管理、以实现投资目标的业务活动。 |
 | 市场数据提供（market data provision） | 向市场参与者提供行情与参考数据的业务活动。 |
@@ -44,7 +44,7 @@
 | 交易前（pre trade） | 交易执行之前的阶段，包括询价、报价与参考数据准备。 |
 | 交易前报价（pretrade quotes） | 交易执行之前提供的报价信息。 |
 | 交易前参考数据提供（pretrade reference data provision） | 在交易执行前提供证券参考数据的活动。 |
-| 一级市场（primary market） | 新交易金融工具的发行与一级市场交易。 |
+| 一级市场（primary market） | 新交易金融工具的发行与一级市场交易。<br>Issuance and primary market trading of new Traded Financial Instruments |
 | 一级市场收盘（primary market closing） | 一级市场发行完成、头寸划转到位的收尾环节。 |
 | 一级市场兴趣表示（primary market indications of interest） | 投资者在一级市场发行前表达认购兴趣的环节。 |
 | 二级市场交易情境（secondary market trading context） | 已发行证券在二级市场进行交易的情境。 |
@@ -58,7 +58,7 @@
 | 交易日期寸报告（securities trade date position reporting） | 按交易日对证券头寸进行报告的环节。 |
 | 证券交易执行（securities trade execution） | 证券交易在市场上实际成交的环节。 |
 | 证券交易订单路由（securities trade order routing） | 将交易订单发送到适当交易场所的环节。 |
-| 证券交易匹配（securities trades matching） | 在场外交易证券市场上对交易主张进行匹配、以识别已确认交易的环节。 |
+| 证券交易匹配（securities trades matching） | 在场外交易证券市场上对交易主张进行匹配、以识别已确认交易的环节。<br>Matching of trade allegations to identify confirmed trades, on an Over the Counter market in Traded Securities. |
 | 证券交易报告（securities trades reporting） | 对证券交易进行报告的环节。 |
 | 证券注销（security retirement） | 证券到期或被赎回后退出流通的环节。 |
 | 卖空寻券（short sale locate） | 卖空前确认可借入证券的环节。 |

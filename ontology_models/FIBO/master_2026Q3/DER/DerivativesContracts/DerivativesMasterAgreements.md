@@ -26,10 +26,10 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 账户变更通知义务（account change notification obligation） | 就账户详情任何变更通知交易对手的义务。 |
-| 衍生品信用支持协议（derivative credit support agreement） | 主协议的附件，规范衍生品交易双方之间抵押品的交换。 |
-| 衍生品主协议（derivative master agreement） | 涵盖合同双方之间拟进行衍生品交易的主协议。 |
-| 主协议提前终止权（master agreement early termination right） | 主协议一方提前终止协议的合同权利。 |
+| 账户变更通知义务（account change notification obligation） | 就账户详情任何变更通知交易对手的义务。<br>obligation to notify a counterparty of any changes in account details |
+| 衍生品信用支持协议（derivative credit support agreement） | 主协议的附件，规范衍生品交易双方之间抵押品的交换。<br>addendum to the master agreement that governs the exchange of collateral between parties in derivatives transactions |
+| 衍生品主协议（derivative master agreement） | 涵盖合同双方之间拟进行衍生品交易的主协议。<br>master agreement covering derivatives transactions to be carried out between the parties to this contract |
+| 主协议提前终止权（master agreement early termination right） | 主协议一方提前终止协议的合同权利。<br>contractual right of a party to the master agreement to terminate the agreement early |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

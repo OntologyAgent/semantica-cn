@@ -22,7 +22,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 加拿大信用合作社（Canadian credit union） | 非营利性金融机构，通常由公司雇员、工会或宗教团体成员组成，以合作互助协会形式运营。 |
+| 加拿大信用合作社（Canadian credit union） | 非营利性金融机构，通常由公司雇员、工会或宗教团体成员组成，以合作互助协会形式运营。<br>not-for-profit financial institution, typically formed by the employees of a company, labor union, or religious group, operated as a cooperative association organized for the purpose of promoting thrift among its members and creating a source of credit for provident or productive purposes |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

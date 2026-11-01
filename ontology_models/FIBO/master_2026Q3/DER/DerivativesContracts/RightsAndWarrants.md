@@ -35,47 +35,47 @@
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 公司权证（CompanyWarrant） | 由公司自身发行的权证，行权时通常涉及公司发行新股。 |
-| 配股权（allotment right） | 授予现有证券持有人的特权，使其有权免费获得新证券。 |
-| 配股权公式（allotment right formula） | 用于计算配股权对应证券数量的规则，通常基于持有人所持该类工具的数量。 |
-| 基于障碍工具的迷你期货凭证（barrier instrument-based mini-future certificate） | 在产品存续期内障碍工具交易价格水平被突破时立即到期的迷你期货凭证。 |
-| 标的障碍迷你期货凭证（barrier underlying mini-future certificate） | 在产品存续期内标的价格突破障碍水平时立即到期的迷你期货凭证。 |
-| 篮子权证（basket warrant） | 允许持有人在规定期间内按指定价格购买一揽子或一组资产的权证。 |
-| 债券购买权（bond purchase right） | 赋予潜在被收购方债券持有人以大幅折价购买该公司或任何收购该公司者之债券的权利的反收购安排。 |
-| 债券认购权（bond subscription right） | 授予现有债券持有人以通常低于当时市价的价格认购新证券的认购权。 |
-| 认购认沽权证（call put warrant） | 未明确认购或认沽特征、或明确同时包含认购和认沽特征的权证。 |
-| 认购权证（call warrant） | 赋予买方（持有人）在规定期间内按指定价格购买特定标的资产的权利（而非义务）的权证。 |
-| 组合工具购买权（combined instruments purchase right） | 赋予潜在被收购方多种证券持有人购买该公司或任何收购该公司者之证券的权利的反收购安排。 |
-| 组合工具认购权（combined instruments subscription right） | 授予现有多种证券持有人以通常低于当时市价的价格认购新证券的认购权。 |
-| 商品权证（commodity warrant） | 允许持有人在规定期间内按指定价格购买指定数量商品的权证。 |
-| 普通可转换股购买权（common convertible share purchase right） | 赋予潜在被收购方普通可转换股股东购买该公司或任何收购该公司者之普通可转换股的权利的购买权。 |
-| 普通可转换股认购权（common convertible share subscription right） | 授予现有普通可转换股股东以通常低于当时市价的价格认购新证券的认购权。 |
-| 普通股购买权（common share purchase right） | 赋予潜在被收购方普通股股东购买该公司或任何收购该公司者之普通股的权利的购买权。 |
-| 普通股认购权（common share subscription right） | 授予现有普通股股东以通常低于当时市价的价格认购新证券的认购权。 |
-| 恒定杠杆凭证（constant leverage certificate） | 将开放式凭证结构与无固定期限的杠杆期权相结合、使杠杆在无期限条件下可用的权益凭证。 |
-| 备兑权证（covered warrant） | 赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）的权证，通常由第三方发行。 |
-| 货币权证（currency warrant） | 允许持有人在规定期间内按指定汇率购买指定金额某种货币的权证。 |
-| 债务权证（debt warrant） | 允许持有人在规定期间内按指定价格购买指定数量债务工具或相关债务指标的权证。 |
-| 股权权证（equity warrant） | 允许持有人在规定期间内按指定价格购买指定数量权益工具的权证。 |
-| 交易所交易权证（exchange-traded warrant） | 在证券交易所挂牌的权证。 |
-| 奇异权证（exotic warrant） | 赋予持有人在非标准或复杂条件下买入（有时卖出）标的资产的权利（而非义务）的权证。 |
-| 指数权证（index warrant） | 允许持有人在规定期间内按指定价格购买基于指数表现之指定金额的权证。 |
-| 做多迷你期货凭证（long mini-future certificate） | 通常授予持有人在规定期间内按指定价格购买特定标的资产之权利的迷你期货凭证。 |
-| 迷你期货凭证（mini-future certificate） | 将开放式凭证结构与无固定期限的杠杆期权相结合、使杠杆在无期限条件下可用的权益凭证。 |
-| 裸权证（naked warrant） | 赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）、但不伴随标的持有的权证。 |
-| 永续权证（perpetual warrant） | 无到期日的权证，赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）。 |
-| 优先可转换股购买权（preferred convertible share purchase right） | 赋予潜在被收购方优先可转换股股东购买该公司或任何收购该公司者之优先可转换股的权利的购买权。 |
-| 优先可转换股认购权（preferred convertible share subscription right） | 授予现有优先可转换股股东以通常低于当时市价的价格认购新证券的认购权。 |
-| 优先股购买权（preferred share purchase right） | 赋予潜在被收购方优先股股东购买该公司或任何收购该公司者之优先股的权利的购买权。 |
-| 优先股认购权（preferred share subscription right） | 授予现有优先股股东以通常低于当时市价的价格认购新证券的认购权。 |
-| 私募权证（private warrant） | 不可交易的权证。 |
-| 公募权证（public warrant） | 可在场外（OTC）或通过交易所交易的权证。 |
-| 购买权（purchase right） | 一种反收购安排：赋予潜在被收购方股东以折扣价购买该公司或任何收购该公司者之股份的权利。 |
-| 认沽权证（put warrant） | 赋予买方（持有人）卖出指定资产（即以标的资产换取现金）的权利（而非义务）的权证。 |
-| 做空迷你期货凭证（short mini-future certificate） | 授予持有人以特定标的资产换取现金之权利的迷你期货凭证。 |
-| 结构化权证（structured warrant） | 在交易所挂牌的权证，为投资者提供不直接购买标的资产即可参与其价格表现的途径。 |
-| 认购权（subscription right） | 授予现有证券持有人的特权，使其有权以通常低于当时市价的价格认购新证券。 |
-| 传统权证（traditional warrant） | 赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）的权证。 |
-| 权证（warrant） | 允许持有人在规定期间内按指定价格购买指定数量金融工具、商品、货币或其他资产的权益凭证。 |
+| 配股权（allotment right） | 授予现有证券持有人的特权，使其有权免费获得新证券。<br>privileges allotted to existing security holders, entitling them to receive new securities free of charge |
+| 配股权公式（allotment right formula） | 用于计算配股权对应证券数量的规则，通常基于持有人所持该类工具的数量。<br>rule applied to calculate the number of securities for an allotment right, typically based on the number of these instruments that the holder holds |
+| 基于障碍工具的迷你期货凭证（barrier instrument-based mini-future certificate） | 在产品存续期内障碍工具交易价格水平被突破时立即到期的迷你期货凭证。<br>mini-future certificate that immediately expires if the barrier instrument trading price level is breached during product lifetime |
+| 标的障碍迷你期货凭证（barrier underlying mini-future certificate） | 在产品存续期内标的价格突破障碍水平时立即到期的迷你期货凭证。<br>mini-future certificate that immediately expires if the barrier underlying level is breached during product lifetime |
+| 篮子权证（basket warrant） | 允许持有人在规定期间内按指定价格购买一揽子或一组资产的权证。<br>warrant that permits the holder to acquire a package or group of assets at a specified price during a specified period |
+| 债券购买权（bond purchase right） | 赋予潜在被收购方债券持有人以大幅折价购买该公司或任何收购该公司者之债券的权利的反收购安排。<br>purchase right that gives a prospective acquiree's bondholders the right to buy bonds of the firm or bonds of anyone who acquires the firm at a deep discount to their fair market value |
+| 债券认购权（bond subscription right） | 授予现有债券持有人以通常低于当时市价的价格认购新证券的认购权。<br>subscription right entitling existing bond holders to subscribe to new securities at a price normally lower than the prevailing market price |
+| 认购认沽权证（call put warrant） | 未明确认购或认沽特征、或明确同时包含认购和认沽特征的权证。<br>warrant that either does not specify call or put features, or that explicitly includes both a call and put feature |
+| 认购权证（call warrant） | 赋予买方（持有人）在规定期间内按指定价格购买特定标的资产的权利（而非义务）的权证。<br>warrant giving the buyer (holder) the right, but not the obligation, to acquire specific underlying assets during a specified period at a specified price |
+| 组合工具购买权（combined instruments purchase right） | 赋予潜在被收购方多种证券持有人购买该公司或任何收购该公司者之证券的权利的反收购安排。<br>purchase right that gives a prospective acquiree's holders of multiple securities the right to buy securities of the firm or securities of anyone who acquires the firm at a deep discount to their fair market value |
+| 组合工具认购权（combined instruments subscription right） | 授予现有多种证券持有人以通常低于当时市价的价格认购新证券的认购权。<br>subscription right entitling existing holders of multiple securities to subscribe to new securities at a price normally lower than the prevailing market price |
+| 商品权证（commodity warrant） | 允许持有人在规定期间内按指定价格购买指定数量商品的权证。<br>warrant that permits the holder to acquire a specified amount of a commodity during a specified period at a specified price |
+| 普通可转换股购买权（common convertible share purchase right） | 赋予潜在被收购方普通可转换股股东购买该公司或任何收购该公司者之普通可转换股的权利的购买权。<br>purchase right that gives a prospective acquiree's common, convertible shareholders the right to buy common, convertible shares of the firm or common, convertible shares of anyone who acquires the firm at a deep discount to their fair market value |
+| 普通可转换股认购权（common convertible share subscription right） | 授予现有普通可转换股股东以通常低于当时市价的价格认购新证券的认购权。<br>subscription right entitling existing common convertible shareholders to subscribe to new securities at a price normally lower than the prevailing market price |
+| 普通股购买权（common share purchase right） | 赋予潜在被收购方普通股股东购买该公司或任何收购该公司者之普通股的权利的购买权。<br>purchase right that gives a prospective acquiree's common shareholders the right to buy common shares of the firm or common shares of anyone who acquires the firm at a deep discount to their fair market value |
+| 普通股认购权（common share subscription right） | 授予现有普通股股东以通常低于当时市价的价格认购新证券的认购权。<br>subscription right entitling existing common shareholders to subscribe to new securities at a price normally lower than the prevailing market price |
+| 恒定杠杆凭证（constant leverage certificate） | 将开放式凭证结构与无固定期限的杠杆期权相结合、使杠杆在无期限条件下可用的权益凭证。<br>entitlement that combines the structure of an open-end certificate with a leverage option with no fixed term, making leverage available without a term restriction, without a knock-out barrier dependency |
+| 备兑权证（covered warrant） | 赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）的权证，通常由第三方发行。<br>warrant that gives the holder the right, but not the obligation, to buy (call warrant) or to sell (put warrant) an underlying asset at a specified price (the strike or exercise price) by a predetermined date, issued without an accompanying security by a third party that holds as many securities as would be required if all the warrants are exercised |
+| 货币权证（currency warrant） | 允许持有人在规定期间内按指定汇率购买指定金额某种货币的权证。<br>warrant that permits the holder to acquire a specified amount in a certain currency at a specified exchange rate during a specified period |
+| 债务权证（debt warrant） | 允许持有人在规定期间内按指定价格购买指定数量债务工具或相关债务指标的权证。<br>warrant that permits the holder to acquire a specified amount of a debt instrument or related debt observable a specified period at a specified price |
+| 股权权证（equity warrant） | 允许持有人在规定期间内按指定价格购买指定数量权益工具的权证。<br>warrant that permits the holder to acquire a specified amount of an equity instrument during a specified period at a specified price |
+| 交易所交易权证（exchange-traded warrant） | 在证券交易所挂牌的权证。<br>warrant that is listed on a securities exchange |
+| 奇异权证（exotic warrant） | 赋予持有人在非标准或复杂条件下买入（有时卖出）标的资产的权利（而非义务）的权证。<br>warrant that gives the holder the right (but not the obligation) to buy (or sometimes sell) an underlying asset under non-standard or complex conditions, often involving additional features not found in a plain vanilla (standard) warrant |
+| 指数权证（index warrant） | 允许持有人在规定期间内按指定价格购买基于指数表现之指定金额的权证。<br>warrant that permits the holder to acquire a specified amount based on the performance of an index during a specified period at a specified price |
+| 做多迷你期货凭证（long mini-future certificate） | 通常授予持有人在规定期间内按指定价格购买特定标的资产之权利的迷你期货凭证。<br>mini-future certificate that typically entitles the holder to acquire specific underlying assets during a specified period at a specified price |
+| 迷你期货凭证（mini-future certificate） | 将开放式凭证结构与无固定期限的杠杆期权相结合、使杠杆在无期限条件下可用的权益凭证。<br>entitlement that combines the structure of an open-end certificate with a leverage option with no fixed term, making leverage available without a term restriction, and whose payoff depends on whether or not the underlying asset has reached or exceeded a predetermined price |
+| 裸权证（naked warrant） | 赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）、但不伴随标的持有的权证。<br>warrant that gives the holder the right, but not the obligation, to buy (call warrant) or to sell (put warrant) an underlying asset at a specified price (the strike or exercise price) by a predetermined date, issued without an accompanying security by a third party that does not hold as many securities as would be required if all the warrants are exercised |
+| 永续权证（perpetual warrant） | 无到期日的权证，赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）。<br>warrant without an expiration date, giving the holder the right, but not the obligation, to buy (call warrant) or to sell (put warrant) an underlying asset at a certain strike price |
+| 优先可转换股购买权（preferred convertible share purchase right） | 赋予潜在被收购方优先可转换股股东购买该公司或任何收购该公司者之优先可转换股的权利的购买权。<br>purchase right that gives a prospective acquiree's preferred, convertible shareholders the right to buy preferred, convertible shares of the firm or preferred, convertible shares of anyone who acquires the firm at a deep discount to their fair market value |
+| 优先可转换股认购权（preferred convertible share subscription right） | 授予现有优先可转换股股东以通常低于当时市价的价格认购新证券的认购权。<br>subscription right entitling existing preferred, convertible shareholders to subscribe to new securities at a price normally lower than the prevailing market price |
+| 优先股购买权（preferred share purchase right） | 赋予潜在被收购方优先股股东购买该公司或任何收购该公司者之优先股的权利的购买权。<br>purchase right that gives a prospective acquiree's preferred shareholders the right to buy preferred shares of the firm or preferred shares of anyone who acquires the firm at a deep discount to their fair market value |
+| 优先股认购权（preferred share subscription right） | 授予现有优先股股东以通常低于当时市价的价格认购新证券的认购权。<br>subscription right entitling existing preferred shareholders to subscribe to new securities at a price normally lower than the prevailing market price |
+| 私募权证（private warrant） | 不可交易的权证。<br>warrant that is not tradable |
+| 公募权证（public warrant） | 可在场外（OTC）或通过交易所交易的权证。<br>warrant that may be traded over the counter (OTC) or through an exchange |
+| 购买权（purchase right） | 一种反收购安排：赋予潜在被收购方股东以折扣价购买该公司或任何收购该公司者之股份的权利。<br>anti-takeover device that gives a prospective acquiree's shareholders the right to buy shares of the firm or shares of anyone who acquires the firm at a deep discount to their fair market value |
+| 认沽权证（put warrant） | 赋予买方（持有人）卖出指定资产（即以标的资产换取现金）的权利（而非义务）的权证。<br>warrant giving the buyer (holder) the right, but not the obligation, to sell the assets specified (i.e., acquire cash in exchange for the underlying assets, such as stock) back to the issuer at a fixed price or formula, on or before a specified date |
+| 做空迷你期货凭证（short mini-future certificate） | 授予持有人以特定标的资产换取现金之权利的迷你期货凭证。<br>mini-future certificate that entitles the holder to acquire cash in exchange for specific underlying assets |
+| 结构化权证（structured warrant） | 在交易所挂牌的权证，为投资者提供不直接购买标的资产即可参与其价格表现的途径。<br>warrant that is listed on an exchange, offering investors a way to participate in the price performance of an underlying asset without buying it directly |
+| 认购权（subscription right） | 授予现有证券持有人的特权，使其有权以通常低于当时市价的价格认购新证券。<br>privileges allotted to existing security holders, entitling them to subscribe to new securities at a price normally lower than the prevailing market price |
+| 传统权证（traditional warrant） | 赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）的权证。<br>warrant that gives the holder the right, but not the obligation, to buy (call warrant) or to sell (put warrant) an underlying asset at a specified price (the strike or exercise price) by a predetermined date, issued by the issuer of the underlying instrument |
+| 权证（warrant） | 允许持有人在规定期间内按指定价格购买指定数量金融工具、商品、货币或其他资产的权益凭证。<br>entitlement that permits the holder to purchase a specified amount of a financial instrument, commodity, currency or other asset during a specified period at a specified price |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -444,7 +444,7 @@
 
 公理：
 
-- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**N2e54fdeb97694dd6845b071571d16eba**。
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**N353c645ea1b44464baa932e0a0d725b4**。
 
 #### 2.8.9 裸权证（naked warrant）
 
@@ -521,8 +521,8 @@
 
 | 属性 | 定义 |
 |---|---|
-| **具有转换比率（has conversion ratio）** | 指明为买入或卖出特定数量证券或投资单位所需权证数量的换算系数。 |
-| **是否具有超额认购选择权（has oversubscribe option）** | 表明在其他权利持有人选择不认购时，该权利凭证持有人是否可以获得相应证券。 |
+| **具有转换比率（has conversion ratio）** | 指明为买入或卖出特定数量证券或投资单位所需权证数量的换算系数。<br>indicates the factor used to determine the number of warrants needed in order to buy or sell a specific number of securities or investment units |
+| **是否具有超额认购选择权（has oversubscribe option）** | 表明在其他权利持有人选择不认购时，该权利凭证持有人是否可以获得相应证券。<br>indicates whether the holders of the rights instrument may get securities in the event that other right holders choose not to subscribe |
 
 ## 4. 依赖（owl:imports，21 个）
 

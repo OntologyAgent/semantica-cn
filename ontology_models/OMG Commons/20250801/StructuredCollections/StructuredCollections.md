@@ -28,13 +28,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 按时间排序集合（chronologically ordered collection） | 元素按时间排序的结构化集合。 |
-| 按时间排序成分（chronologically ordered constituent） | 在集合中按时间排序的集合元素。 |
-| 索引值（index value） | 集合或检索系统中指示元素在记录、列表或文档中所在位置的方面。 |
-| 带索引成分（indexed constituent） | 在集合中按索引排序的集合元素。 |
-| 索引方案（indexing scheme） | 对值、数据、信息或知识进行索引的体系。 |
-| 列表（list） | 有限的线性有序项集合，同一项可出现多次。 |
-| 集（set） | 作为整体考虑的不同对象或概念的汇集。 |
+| 按时间排序集合（chronologically ordered collection） | 元素按时间排序的结构化集合。<br>structured collection whose elements are ordered by time |
+| 按时间排序成分（chronologically ordered constituent） | 在集合中按时间排序的集合元素。<br>element of a collection that is ordered within a collection with respect to time |
+| 索引值（index value） | 集合或检索系统中指示元素在记录、列表或文档中所在位置的方面。<br>aspect of a collection or retrieval system indicating the address within a record, list, or document where that element can be found |
+| 带索引成分（indexed constituent） | 在集合中按索引排序的集合元素。<br>element of a collection that is ordered within that collection with respect to an index |
+| 索引方案（indexing scheme） | 对值、数据、信息或知识进行索引的体系。<br>system for indexing values, data, information, or knowledge |
+| 列表（list） | 有限的线性有序项集合，同一项可出现多次。<br>finite, linearly ordered collection of items, where the same item may occur more than once |
+| 集（set） | 作为整体考虑的不同对象或概念的汇集。<br>assembly of distinct objects or concepts considered as a whole |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

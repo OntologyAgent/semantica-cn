@@ -24,11 +24,11 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 组合（composition） | 为特定目的将其他事物（可能以特定角色）组合在一起而形成的特定产物。 |
-| 功能角色（functional role） | 表示某人、组织、过程或服务预期执行或提供的底层功能的角色。 |
-| 过程角色（process role） | 将资源和参与者关联到为特定目的设计并组织的一组涉及多个企业实体的结构化活动的角色。 |
-| 角色（role） | 某事物在特定情境中参与的命名具体行为。 |
-| 结构角色（structural role） | 以能力意义指定实体之间关系的角色，通常反映组织或结构关系（层级）。 |
+| 组合（composition） | 为特定目的将其他事物（可能以特定角色）组合在一起而形成的特定产物。<br>distinct thing resulting from bringing together other things, possibly in specific roles, for a particular purpose |
+| 功能角色（functional role） | 表示某人、组织、过程或服务预期执行或提供的底层功能的角色。<br>role representing an underlying functionality that something, such as a person, organization, process, or service, is expected to perform or deliver |
+| 过程角色（process role） | 将资源和参与者关联到为特定目的设计并组织的一组涉及多个企业实体的结构化活动的角色。<br>role that associates resources and participants to a structured set of activities involving various enterprise entities, that is designed and organised for a given purpose |
+| 角色（role） | 某事物在特定情境中参与的命名具体行为。<br>named specific behavior of something participating in a particular context |
+| 结构角色（structural role） | 以能力意义指定实体之间关系的角色，通常反映组织或结构关系（层级）。<br>role specifying relations between entities in the sense of competence, often reflecting organizational or structural relations (hierarchies) |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -42,7 +42,7 @@
 |---|---|---|
 | **具有组成成分（hasConstituent）** | — | — |
 | **适用于情境（isApplicableIn）** | — | — |
-| **具有角色（has role）** | 识别在某事物（例如组合）中扮演部分的角色。 | 值域：角色（role） |
+| **具有角色（has role）** | 识别在某事物（例如组合）中扮演部分的角色。<br>identifies something or someone playing a part in something, such as a composition | 值域：角色（role） |
 
 公理：
 
@@ -60,9 +60,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **体现在…中（is manifested in）** | 指示角色在其中实现、出现或发生的事物。 | 逆属性：体现（manifests） |
-| **由…扮演（is played by）** | 指示填充该角色的人、组织或其他事物。 | 逆属性：扮演角色（plays role） |
-| **是…中的角色（is role in）** | 识别涉及该角色的某事物，例如组合、情境或合同。 | 逆属性：具有角色（has role） |
+| **体现在…中（is manifested in）** | 指示角色在其中实现、出现或发生的事物。<br>indicates something in which the role is realized, appears, or occurs | 逆属性：体现（manifests） |
+| **由…扮演（is played by）** | 指示填充该角色的人、组织或其他事物。<br>indicates something or someone, such as a person, organization, or other thing filling a role | 逆属性：扮演角色（plays role） |
+| **是…中的角色（is role in）** | 识别涉及该角色的某事物，例如组合、情境或合同。<br>identifies something, such as a composition, situation, or contract, involving the role | 逆属性：具有角色（has role） |
 
 公理：
 
@@ -94,8 +94,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **体现（manifests）** | 指示在某种情境中实现、展示或显示某事物的角色。 | 值域：角色（role） |
-| **扮演角色（plays role）** | 指示某人或某事物在某种情境下所扮演的部分。 | 值域：角色（role） |
+| **体现（manifests）** | 指示在某种情境中实现、展示或显示某事物的角色。<br>indicates a role that realizes, displays, or shows something, typically in some context | 值域：角色（role） |
+| **扮演角色（plays role）** | 指示某人或某事物在某种情境下所扮演的部分。<br>indicates a part that someone or something plays under some circumstance | 值域：角色（role） |
 
 ## 4. 依赖（owl:imports，5 个）
 

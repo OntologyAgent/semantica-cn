@@ -24,8 +24,8 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 独资经营者（sole proprietor） | 拥有某企业、享有该企业全部利润、并与该企业被视为单一实体（非法人）的参与方。 |
-| 独资企业（sole proprietorship） | 由单人拥有的非法人企业。 |
+| 独资经营者（sole proprietor） | 拥有某企业、享有该企业全部利润、并与该企业被视为单一实体（非法人）的参与方。<br>party that owns a business, has the rights to all profits from that business and is considered a single entity (unincorporated) together with that business for tax and liability purposes |
+| 独资企业（sole proprietorship） | 由单人拥有的非法人企业。<br>unincorporated business owned by a single person |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

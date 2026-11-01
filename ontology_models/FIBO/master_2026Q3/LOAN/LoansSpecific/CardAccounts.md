@@ -34,36 +34,36 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 卡账户（card account） | 条款与条件由以支付卡为载体的卡协议定义的账户。 |
-| 卡认证值（card authentication value） | 专用于 JCB 支付卡的卡验证值。 |
-| 卡认证值 2（card authentication value 2） | 专用于 JCB 支付卡的卡验证值。 |
-| 卡有效期（card expiration date） | 给定支付卡的到期日期。 |
-| 卡识别码（card identification number） | 专用于美国运通和 Discover 支付卡的卡验证值。 |
-| 卡产品（card product） | 涉及发行信用卡、借记卡或其他支付卡的金融产品。 |
-| 卡安全码（card security code） | 专用于美国运通支付卡的卡验证值。 |
-| 卡验证码（card validation code） | 专用于万事达支付卡的卡验证码。 |
-| 卡验证码 2（card validation code 2） | 专用于万事达支付卡的卡验证值。 |
-| 卡验证码或验证值（card verification code or value） | 指 (1) 磁条数据或 (2) 印刷安全特征的代码，用于保护数据完整性并限制篡改。 |
-| 卡验证值（card verification value） | 专用于 Visa 和 Discover 支付卡的卡验证值。 |
-| 卡验证值 2（card verification value 2） | 专用于 Visa 支付卡的卡验证值。 |
-| 持卡人（cardholder） | 获发支付卡的账户持有人。 |
-| 商业信用卡协议（commercial credit card agreement） | 向正式组织（如小企业、中型企业、政府机构）发行或与其联名发行的信用卡的协议。 |
-| 消费者信用卡协议（consumer credit card agreement） | 为家庭、家属或其他个人支出而发行、由借款人使用信用卡支取的信用卡协议。 |
-| 信用卡（credit card） | 由金融服务提供商发行、使持卡人能够借入资金的卡。 |
-| 信用卡账户（credit card account） | 条款与条件由以信用卡为载体的信用卡协议定义的卡账户。 |
-| 信用卡协议（credit card agreement） | 规定发行人向持卡人提供信用卡之条款与条件的账户专用信贷安排。 |
-| 信用卡网络（credit card network） | 对授权、处理信用卡交易并设定其条款、以及在购物者、商户与机构之间划转支付的网络的分类符。 |
-| 信用卡产品（credit card product） | 允许持卡人凭信用购买货物或服务的卡产品。 |
-| 借记卡（debit card） | 由金融服务提供商发行、使持卡人能够动用活期存款账户资金的支付卡。 |
-| 借记卡账户（debit card account） | 以一张或多张借记卡为载体的卡账户。 |
-| 借记卡产品（debit card product） | 通常由存款机构提供、允许持卡人在消费时向另一账户电子转账的卡产品。 |
-| 发卡金融机构（issuing financial institution） | 发行支付卡、或履行/促成/支持发卡服务的发行人及金融服务提供商。 |
-| 磁条验证码或验证值（magnetic stripe verification code or value） | 卡磁条上的验证码，采用安全加密过程保护磁条数据完整性并可揭示篡改。 |
-| 支付卡（payment card） | 由金融服务提供商发行的法律凭证，使持卡人能够动用其指定银行账户中的资金或获得信用。 |
-| 支付卡协议（payment card agreement） | 规定发行人向持卡人提供支付卡之条款与条件的账户专用信贷协议。 |
-| 主卡账户号（primary card account number） | 压印在银行卡或支付卡上、并编码于磁条中的 14 或 16 位复合标识符。 |
-| 智能卡（smart card） | 内嵌集成电路的支付卡。 |
-| 三位验证码或验证值（three-digit verification code or value） | 印在卡背面签名栏区域最右三位数字的卡验证码。 |
+| 卡账户（card account） | 条款与条件由以支付卡为载体的卡协议定义的账户。<br>account whose terms and conditions are defined in a card agreement that is represented by a payment card |
+| 卡认证值（card authentication value） | 专用于 JCB 支付卡的卡验证值。<br>card verification value specifically for JCB payment cards |
+| 卡认证值 2（card authentication value 2） | 专用于 JCB 支付卡的卡验证值。<br>card verification value specifically for JCB payment cards |
+| 卡有效期（card expiration date） | 给定支付卡的到期日期。<br>date on which a given payment card expires |
+| 卡识别码（card identification number） | 专用于美国运通和 Discover 支付卡的卡验证值。<br>card verification value specifically for American Express and Discover payment cards |
+| 卡产品（card product） | 涉及发行信用卡、借记卡或其他支付卡的金融产品。<br>financial product involving the issuance of credit, debit, or other payment cards |
+| 卡安全码（card security code） | 专用于美国运通支付卡的卡验证值。<br>card verification value specifically for American Express payment cards |
+| 卡验证码（card validation code） | 专用于万事达支付卡的卡验证码。<br>card verification code specifically for Mastercard payment cards |
+| 卡验证码 2（card validation code 2） | 专用于万事达支付卡的卡验证值。<br>card verification value specifically for Mastercard payment cards |
+| 卡验证码或验证值（card verification code or value） | 指 (1) 磁条数据或 (2) 印刷安全特征的代码，用于保护数据完整性并限制篡改。<br>code that specifies either (1) magnetic-stripe data, or (2) printed security features that are used to protect data integrity and limit alteration, counterfeiting and fraud generally |
+| 卡验证值（card verification value） | 专用于 Visa 和 Discover 支付卡的卡验证值。<br>card verification value specifically for Visa and Discover payment cards |
+| 卡验证值 2（card verification value 2） | 专用于 Visa 支付卡的卡验证值。<br>card verification value specifically for Visa payment cards |
+| 持卡人（cardholder） | 获发支付卡的账户持有人。<br>account holder to whom a payment card is issued |
+| 商业信用卡协议（commercial credit card agreement） | 向正式组织（如小企业、中型企业、政府机构）发行或与其联名发行的信用卡的协议。<br>credit card agreement for a card issued to, or in conjunction with, a formal organization, such as a small business, middle market business, local, state, or national government, or large corporation |
+| 消费者信用卡协议（consumer credit card agreement） | 为家庭、家属或其他个人支出而发行、由借款人使用信用卡支取的信用卡协议。<br>credit card agreement for a card issued for household, family, or other personal expenditures that is accessed by a borrower's use of a credit card |
+| 信用卡（credit card） | 由金融服务提供商发行、使持卡人能够借入资金的卡。<br>card issued by a financial service provider that enables the cardholder to borrow funds |
+| 信用卡账户（credit card account） | 条款与条件由以信用卡为载体的信用卡协议定义的卡账户。<br>card account whose terms and conditions are defined in a credit card agreement that is represented by a credit card |
+| 信用卡协议（credit card agreement） | 规定发行人向持卡人提供信用卡之条款与条件的账户专用信贷安排。<br>account-specific credit facility that specifies the terms and conditions under which the credit card is offered to the cardholder by the issuer |
+| 信用卡网络（credit card network） | 对授权、处理信用卡交易并设定其条款、以及在购物者、商户与机构之间划转支付的网络的分类符。<br>classifier for the network that authorizes, processes, and sets the terms of credit card transactions, as well as transfers payments between shoppers, merchants, and their banks |
+| 信用卡产品（credit card product） | 允许持卡人凭信用购买货物或服务的卡产品。<br>card product allowing the holder to purchase goods or services on credit |
+| 借记卡（debit card） | 由金融服务提供商发行、使持卡人能够动用活期存款账户资金的支付卡。<br>payment card issued by a financial service provider that enables the cardholder to access funds in a demand deposit account |
+| 借记卡账户（debit card account） | 以一张或多张借记卡为载体的卡账户。<br>card account that is represented by a one or more debit cards |
+| 借记卡产品（debit card product） | 通常由存款机构提供、允许持卡人在消费时向另一账户电子转账的卡产品。<br>card product card typically provided by a depository institution allowing the holder to transfer money electronically to another account when making a purchase |
+| 发卡金融机构（issuing financial institution） | 发行支付卡、或履行/促成/支持发卡服务的发行人及金融服务提供商。<br>issuer and financial services provider that issues payment cards or performs, facilitates, or supports issuing services including but not limited to issuing banks and issuing processors |
+| 磁条验证码或验证值（magnetic stripe verification code or value） | 卡磁条上的验证码，采用安全加密过程保护磁条数据完整性并可揭示篡改。<br>card verification code on a card's magnetic stripe that uses secure cryptographic processes to protect data integrity on the stripe, and reveals any alteration or counterfeiting |
+| 支付卡（payment card） | 由金融服务提供商发行的法律凭证，使持卡人能够动用其指定银行账户中的资金或获得信用。<br>legal document issued by a financial services provider that enables the cardholder to access the funds in the customer's designated bank accounts, or through a credit account and make payments by electronic funds transfer and access automated teller machines (ATMs) |
+| 支付卡协议（payment card agreement） | 规定发行人向持卡人提供支付卡之条款与条件的账户专用信贷协议。<br>account-specific credit agreement that specifies the terms and conditions under which the payment card is offered to the cardholder by the issuer |
+| 主卡账户号（primary card account number） | 压印在银行卡或支付卡上、并编码于磁条中的 14 或 16 位复合标识符。<br>composite identifier of 14 or 16 digits embossed on a bank or payment card and encoded in the card's magnetic strip |
+| 智能卡（smart card） | 内嵌集成电路的支付卡。<br>payment card that has integrated circuits embedded within it |
+| 三位验证码或验证值（three-digit verification code or value） | 印在卡背面签名栏区域最右三位数字的卡验证码。<br>card verification code that is the rightmost three-digit value printed in the signature panel area on the back of the card |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -152,8 +152,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **由……例证（isExemplifiedBy）** | — | — |
-| **具有信用卡网络（has credit card network）** | 标识信用卡产品的底层网络。 | 值域：信用卡网络（credit card network）；子属性：由……分类 |
-| **使用货币（uses currency）** | 标识信用卡产品所定义的货币。 | 值域：货币；子属性：使用 |
+| **具有信用卡网络（has credit card network）** | 标识信用卡产品的底层网络。<br>indicates the underlying network for credit card product | 值域：信用卡网络（credit card network）；子属性：由……分类 |
+| **使用货币（uses currency）** | 标识信用卡产品所定义的货币。<br>indicates the currency defined for the credit card product | 值域：货币；子属性：使用 |
 | **具有国家（hasCountry）** | — | — |
 | **具有行政区划（hasSubdivision）** | — | — |
 
@@ -176,7 +176,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **由……例证（isExemplifiedBy）** | — | — |
-| **具有信用卡网络（has credit card network）** | 标识信用卡产品的底层网络。 | 值域：信用卡网络（credit card network）；子属性：由……分类 |
+| **具有信用卡网络（has credit card network）** | 标识信用卡产品的底层网络。<br>indicates the underlying network for credit card product | 值域：信用卡网络（credit card network）；子属性：由……分类 |
 | **分类（classifies）** | — | — |
 
 公理：
@@ -340,8 +340,8 @@
 |---|---|---|
 | **是……的证据（isEvidenceFor）** | — | — |
 | **具有到期日（hasExpirationDate）** | — | — |
-| **具有卡验证码（has card verification code）** | 将信用卡关联到 (1) 磁条数据或 (2) 用于保护数据完整性并限制篡改的印刷安全特征。 | 值域：卡验证码或验证值（card verification code or value） |
-| **具有主账户号（has primary account number）** | 指明卡面上显示的账户号。 | 值域：主卡账户号（primary card account number） |
+| **具有卡验证码（has card verification code）** | 将信用卡关联到 (1) 磁条数据或 (2) 用于保护数据完整性并限制篡改的印刷安全特征。<br>links a credit card to either: (1) magnetic-stripe data, or (2) printed security features that are used to protect data integrity and limit alteration, counterfeiting and fraud generally | 值域：卡验证码或验证值（card verification code or value） |
+| **具有主账户号（has primary account number）** | 指明卡面上显示的账户号。<br>specifies the account number displayed on the face of the card | 值域：主卡账户号（primary card account number） |
 
 公理：
 

@@ -34,15 +34,15 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 普通合伙人（general partner） | 负责合伙日常运营管理的合伙人兼共同所有人，可能对合伙债务承担连带责任。 |
-| 普通合伙（general partnership） | 至少有两名普通合伙人、同意共享企业全部资产、利润以及财务与法律责任的合伙。 |
-| 有限责任有限合伙（limited liability limited partnership） | 由一名或多名对实体债务承担责任的普通合伙人与一名或多名受保护的有限合伙人组成的有限合伙。 |
-| 有限责任合伙（limited liability partnership） | 设有普通合伙人、但为各合伙人提供针对特定合伙债务之个人责任保护的合伙。 |
-| 有限合伙人（limited partner） | 责任以其出资或担保额为限、不参与合伙日常运营的合伙人。 |
-| 有限合伙（limited partnership） | 至少有一名普通合伙人和一名有限合伙人的合伙。 |
-| 合伙人（partner） | 合伙的共同所有人、成员和代理，其参与程度（包括按比例承担的责任和盈亏份额）由合伙协议确定。 |
-| 合伙（partnership） | 两个或两个以上法律主体为盈利而作为共同所有人经营业务的联合。 |
-| 合伙协议（partnership agreement） | 合伙人之间确立合伙关系条款与条件的合同。 |
+| 普通合伙人（general partner） | 负责合伙日常运营管理的合伙人兼共同所有人，可能对合伙债务承担连带责任。<br>partner and part-owner that is responsible for managing the day to day operations of the partnership and that may be jointly and severally liable for the obligations of the partnership |
+| 普通合伙（general partnership） | 至少有两名普通合伙人、同意共享企业全部资产、利润以及财务与法律责任的合伙。<br>partnership that has at least two general partners that agree to share in all assets, profits, and financial and legal liabilities of the business |
+| 有限责任有限合伙（limited liability limited partnership） | 由一名或多名对实体债务承担责任的普通合伙人与一名或多名受保护的有限合伙人组成的有限合伙。<br>limited partnership that consists of one or more general partners who are liable for the obligations of the entity as well as one or more protected limited liability partners |
+| 有限责任合伙（limited liability partnership） | 设有普通合伙人、但为各合伙人提供针对特定合伙债务之个人责任保护的合伙。<br>partnership that has general partners but provides its individual partners some level of protection against personal liability for certain partnership liabilities |
+| 有限合伙人（limited partner） | 责任以其出资或担保额为限、不参与合伙日常运营的合伙人。<br>partner whose liabilities are limited to the extent of their investment or guarantees and that has no involvement in the day to day operations of the partnership |
+| 有限合伙（limited partnership） | 至少有一名普通合伙人和一名有限合伙人的合伙。<br>partnership that has at least one general partner and at least one limited partner |
+| 合伙人（partner） | 合伙的共同所有人、成员和代理，其参与程度（包括按比例承担的责任和盈亏份额）由合伙协议确定。<br>co-owner, member, and agent of a partnership whose participation level, including proportional liabilities and share in the profit / loss of the business is specified in a partnership agreement |
+| 合伙（partnership） | 两个或两个以上法律主体为盈利而作为共同所有人经营业务的联合。<br>association of two or more legal persons to carry on as co-owners a business for profit |
+| 合伙协议（partnership agreement） | 合伙人之间确立合伙关系条款与条件的合同。<br>contract between partners in a partnership that establishes the terms and conditions of the relationship between the partners |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -75,7 +75,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的普通合伙人（is general partner of）** | 标识该普通合伙人所管理的组织。 | 值域：合伙（partnership）；逆属性：具有普通合伙人（has general partner）；子属性：对…采取行动（acts on） |
+| **是……的普通合伙人（is general partner of）** | 标识该普通合伙人所管理的组织。<br>indicates the organization that the general partner manages | 值域：合伙（partnership）；逆属性：具有普通合伙人（has general partner）；子属性：对…采取行动（acts on） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -92,7 +92,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的有限合伙人（is limited partner of）** | 标识该有限合伙人所参与的组织。 | 值域：合伙（partnership）；逆属性：具有有限合伙人（has limited partner）；子属性：对…采取行动（acts on） |
+| **是……的有限合伙人（is limited partner of）** | 标识该有限合伙人所参与的组织。<br>indicates the organization that the limited partner participates in | 值域：合伙（partnership）；逆属性：具有有限合伙人（has limited partner）；子属性：对…采取行动（acts on） |
 
 公理：
 
@@ -109,8 +109,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。 | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
-| **具有有限合伙人（has limited partner）** | 标识对合伙可能拥有一定程度影响力的行为体。 | 值域：有限合伙人（limited partner）；子属性：受…影响（is affected by） |
+| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。<br>indicates an actor that has some measure of control over the partnership | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
+| **具有有限合伙人（has limited partner）** | 标识对合伙可能拥有一定程度影响力的行为体。<br>indicates an actor that may have some measure of influence over the partnership | 值域：有限合伙人（limited partner）；子属性：受…影响（is affected by） |
 | **具有目标（hasObjective）** | — | — |
 | **具有成员（hasMember）** | — | — |
 | **受……管辖（isGovernedBy）** | — | — |
@@ -131,7 +131,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。 | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
+| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。<br>indicates an actor that has some measure of control over the partnership | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
 | **具有成员（hasMember）** | — | — |
 
 公理：
@@ -149,7 +149,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。 | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
+| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。<br>indicates an actor that has some measure of control over the partnership | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
 
 公理：
 
@@ -167,8 +167,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。 | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
-| **具有有限合伙人（has limited partner）** | 标识对合伙可能拥有一定程度影响力的行为体。 | 值域：有限合伙人（limited partner）；子属性：受…影响（is affected by） |
+| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。<br>indicates an actor that has some measure of control over the partnership | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
+| **具有有限合伙人（has limited partner）** | 标识对合伙可能拥有一定程度影响力的行为体。<br>indicates an actor that may have some measure of influence over the partnership | 值域：有限合伙人（limited partner）；子属性：受…影响（is affected by） |
 
 公理：
 

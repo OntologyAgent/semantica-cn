@@ -34,56 +34,56 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 账户（account） | 与常规交易和服务之业务安排相关记录的容器。 |
-| 作为资产的账户（account as an asset） | 以账户形式存在的金融资产。 |
-| 账户持有人（account holder） | 拥有账户的一方。 |
-| 账户标识符（account identifier） | 表示某一账户的标识符。 |
-| 账户所有权（account ownership） | 对账户的持有。 |
-| 账户提供方（account provider） | 提供并服务账户的一方。 |
-| 对账单（account statement） | 某一给定期间账户活动的定期汇总。 |
-| 账户专属服务协议（account-specific service agreement） | 针对特定账户的服务协议，适用于客户在同一机构持有多个条款各异的账户的情形。 |
-| 会计交易（accounting transaction） | 通过账户记录中的分录予以确认的事件。 |
-| 余额（balance） | 可用或欠付的货币金额。 |
-| 银行账户标识符（bank account identifier） | 标识银行提供的活期存款账户的标识符。 |
-| 银行标识符（bank identifier） | 唯一标识金融机构的标识符，在适当时还标识为该账户提供服务的该机构分支机构。 |
-| 基本银行账户标识符（basic bank account identifier） | 在特定国家唯一标识某一金融机构中某一账户的标识符，包含银行标识符（BBAN）。 |
-| 经纪账户（brokerage account） | 由经纪商提供、允许投资者存入资金并下达投资指令的账户。 |
-| 存单（certificate of deposit） | 与定期存款账户相关联、在一定期限（存期）内不可提取的现金类工具。 |
-| 会计科目表（chart of accounts） | 依照适用法律、监管和报告要求对实体财务交易进行分类、记录和组织的结构化财务账户代码体系。 |
-| 关闭日期（close date） | 某事物被关闭的日期。 |
-| 商业贷款服务（commercial lending service） | 涉及为支持商业活动而提供信贷的服务。 |
-| 客户账户（customer account） | 代表一组已识别、具名的余额和累计总额集合的账户，用于汇总某段期间与客户交易相关的活动。 |
-| 客户账户持有人（customer account holder） | 拥有客户账户的一方。 |
-| 活期存款账户（demand deposit account） | 不计息存款账户，存款可按要求立即支付，或原始期限或所需通知期极短。 |
-| 存款账户（deposit account） | 记录存放于存款性机构保管和管理的资金的账户。 |
-| 分布式账本（distributed ledger） | 在一组节点间共享、并通过共识机制在节点间同步的账本。 |
-| 分布式账本技术（distributed ledger technology） | 使分布式账本得以运营和使用的方法。 |
-| 费用（fee） | 对所提供服务收取的报酬。 |
-| 总分类账（general ledger） | 用于在会计期间内随交易过账而记录和汇总头寸变化的有组织的分类账户集合。 |
-| 单笔交易（individual transaction） | 具有货币影响、并记录在与账户相关联的记录中的事件。 |
-| 国际银行账户标识符（international bank account identifier） | 基本银行账户号（BBAN）的扩展版本银行账户标识符，供国际使用（IBAN）。 |
-| 投资账户（investment account） | 记录存放于金融机构的资金和/或证券的账户。 |
-| 投资或存款账户（investment or deposit account） | 与要求账户持有人提供资金交由账户提供方管理的产品或服务相关联的账户。 |
-| 分类账（ledger） | 业务活动和交易的有组织记录。 |
-| 分类账户（ledger account） | 分类账中某一要素或子要素的单独记录，记录并汇总该特定科目的增加、减少和余额。 |
-| 分类账户分类器（ledger account classifier） | 依照适用法律、监管和报告要求组织实体财务账户的分类器。 |
-| 信贷主管（lending officer） | 对与特定借款人或账户的关系负总责的公司管理人员。 |
-| 贷款或信用账户（loan or credit account） | 与账户持有人按特定还款条款和条件从账户提供方获得资金的服务相关联的账户。 |
-| 非交易存款账户（non-transaction deposit account） | 任何未被明确视为交易账户的存款账户。 |
-| 开立日期（open date） | 某事物被创建的日期。 |
-| 付款到期日（payment due date） | 当期未偿余额、其部分金额或最低应付款额须支付给债权人的截止日期。 |
-| 过账日期（posting date） | 决定凭证或日记账分录记入账户记录所属过账期间的日期。 |
-| 客户经理（relationship manager） | 管理客户账户并维护其与服务提供商关系的责任方。 |
-| 定期存单账户（time certificate of deposit account） | 允许以可转让或不可转让凭证证明的存款、或以收据证明的记账形式存款的定期存款账户。 |
-| 定期存款账户（time deposit account） | 存款人无权、也不被允许在存款后六日内提取的存款账户，除非满足特定条件。 |
-| 定期开放存款账户（time deposit open account） | 允许（定期存单以外的）存款、并与存款人订有有效书面合同的定期存款账户。 |
-| 交易类别（transaction category） | 单笔交易的高层分类器。 |
-| 交易日期（transaction date） | 特定交易发起的日期。 |
-| 交易存款账户（transaction deposit account） | 存款人/账户持有人可通过可转让票据、支付指令等方式转账或取款的存款账户。 |
-| 交易标识符（transaction identifier） | 与账户相关联的单笔交易的标识符。 |
-| 交易记录（transaction record） | 与账户相关联的交易的记录。 |
-| 交易记录标识符（transaction record identifier） | 交易记录的唯一标识符。 |
-| 交易子类别（transaction subcategory） | 交易的第二层分类器，例如直接存款、支票、预借现金、取款、付款、购买等。 |
+| 账户（account） | 与常规交易和服务之业务安排相关记录的容器。<br>container for records associated with a business arrangement for regular transactions and services |
+| 作为资产的账户（account as an asset） | 以账户形式存在的金融资产。<br>financial asset in the form of an account |
+| 账户持有人（account holder） | 拥有账户的一方。<br>party that owns an account |
+| 账户标识符（account identifier） | 表示某一账户的标识符。<br>identifier that denotes an account |
+| 账户所有权（account ownership） | 对账户的持有。<br>holding of an account |
+| 账户提供方（account provider） | 提供并服务账户的一方。<br>party that provides and services an account |
+| 对账单（account statement） | 某一给定期间账户活动的定期汇总。<br>periodic summary of account activity for a given period of time |
+| 账户专属服务协议（account-specific service agreement） | 针对特定账户的服务协议，适用于客户在同一机构持有多个条款各异的账户的情形。<br>service-agreement that is account-specific, applicable in cases where a client might hold multiple accounts with differing terms and conditions |
+| 会计交易（accounting transaction） | 通过账户记录中的分录予以确认的事件。<br>event recognized by an entry in the records of an account |
+| 余额（balance） | 可用或欠付的货币金额。<br>amount of money available or owed |
+| 银行账户标识符（bank account identifier） | 标识银行提供的活期存款账户的标识符。<br>identifier that identifies a demand deposit account provided by a bank |
+| 银行标识符（bank identifier） | 唯一标识金融机构的标识符，在适当时还标识为该账户提供服务的该机构分支机构。<br>identifier that uniquely identifies the financial institution and, when appropriate, the branch of that financial institution servicing an account |
+| 基本银行账户标识符（basic bank account identifier） | 在特定国家唯一标识某一金融机构中某一账户的标识符，包含银行标识符（BBAN）。<br>identifier that uniquely identifies an individual account at a specific financial institution in a particular country and which includes a bank identifier of the financial institution servicing that account |
+| 经纪账户（brokerage account） | 由经纪商提供、允许投资者存入资金并下达投资指令的账户。<br>account offered by a broker that allows the investor to deposit funds and place investment orders |
+| 存单（certificate of deposit） | 与定期存款账户相关联、在一定期限（存期）内不可提取的现金类工具。<br>cash instrument associated with a time deposit account that cannot be withdrawn for a certain period of time (term) |
+| 会计科目表（chart of accounts） | 依照适用法律、监管和报告要求对实体财务交易进行分类、记录和组织的结构化财务账户代码体系。<br>structured system of financial account codes used to classify, record, and organize an entity's financial transactions in accordance with applicable legal, regulatory, and reporting requirements |
+| 关闭日期（close date） | 某事物被关闭的日期。<br>date on which something was closed |
+| 商业贷款服务（commercial lending service） | 涉及为支持商业活动而提供信贷的服务。<br>service involving the extension of credit to support business activities |
+| 客户账户（customer account） | 代表一组已识别、具名的余额和累计总额集合的账户，用于汇总某段期间与客户交易相关的活动。<br>account that represents an identified, named collection of balances and cumulative totals used to summarize customer transaction-related activity over a designated period of time |
+| 客户账户持有人（customer account holder） | 拥有客户账户的一方。<br>party that owns a customer account |
+| 活期存款账户（demand deposit account） | 不计息存款账户，存款可按要求立即支付，或原始期限或所需通知期极短。<br>non-interest-bearing deposit account in which deposits are payable immediately on demand, or that are issued with an original maturity or required notice period of less than seven days, or that represent funds for which the depository institution does not reserve the right to require at least seven days' written notice of an intended withdrawal |
+| 存款账户（deposit account） | 记录存放于存款性机构保管和管理的资金的账户。<br>account that provides a record of money placed with a depository institution for safekeeping and management |
+| 分布式账本（distributed ledger） | 在一组节点间共享、并通过共识机制在节点间同步的账本。<br>ledger that is shared across a set of nodes and synchronized between the nodes using a consensus mechanism |
+| 分布式账本技术（distributed ledger technology） | 使分布式账本得以运营和使用的方法。<br>method that enables the operation and use of distributed ledgers |
+| 费用（fee） | 对所提供服务收取的报酬。<br>charge for services performed |
+| 总分类账（general ledger） | 用于在会计期间内随交易过账而记录和汇总头寸变化的有组织的分类账户集合。<br>organized collection of ledger accounts used to record and summarize changes in position as transactions are posted during an accounting period |
+| 单笔交易（individual transaction） | 具有货币影响、并记录在与账户相关联的记录中的事件。<br>event that has a monetary impact and is documented in the records associated with an account |
+| 国际银行账户标识符（international bank account identifier） | 基本银行账户号（BBAN）的扩展版本银行账户标识符，供国际使用（IBAN）。<br>identifier for a bank account that is an expanded version of the basic bank account number (BBAN), intended for use internationally |
+| 投资账户（investment account） | 记录存放于金融机构的资金和/或证券的账户。<br>account that provides a record of deposits of funds and/or securities held at a financial institution |
+| 投资或存款账户（investment or deposit account） | 与要求账户持有人提供资金交由账户提供方管理的产品或服务相关联的账户。<br>account associated with a product or service that requires the account holder to provide funds for management by the account provider |
+| 分类账（ledger） | 业务活动和交易的有组织记录。<br>organized record of business activities and transactions |
+| 分类账户（ledger account） | 分类账中某一要素或子要素的单独记录，记录并汇总该特定科目的增加、减少和余额。<br>individual record for one element or sub-element in a ledger that records and summarizes increases, decreases, and balances associated with that specific element |
+| 分类账户分类器（ledger account classifier） | 依照适用法律、监管和报告要求组织实体财务账户的分类器。<br>classifier used to organize an entity's financial accounts in accordance with applicable legal, regulatory, and reporting requirements |
+| 信贷主管（lending officer） | 对与特定借款人或账户的关系负总责的公司管理人员。<br>corporate officer that has overarching responsibility for the relationship with a specific borrower or account |
+| 贷款或信用账户（loan or credit account） | 与账户持有人按特定还款条款和条件从账户提供方获得资金的服务相关联的账户。<br>account associated with a service in which the account holder receives funds from the account provider under certain terms and conditions for repayment |
+| 非交易存款账户（non-transaction deposit account） | 任何未被明确视为交易账户的存款账户。<br>any deposit account that is not explicitly considered a transaction account |
+| 开立日期（open date） | 某事物被创建的日期。<br>date on which something was created |
+| 付款到期日（payment due date） | 当期未偿余额、其部分金额或最低应付款额须支付给债权人的截止日期。<br>date by which payment of the current outstanding balance, part thereof, or a minimum amount due must be made to the creditor |
+| 过账日期（posting date） | 决定凭证或日记账分录记入账户记录所属过账期间的日期。<br>date that determines in which posting period a document or journal entry is added to an account record |
+| 客户经理（relationship manager） | 管理客户账户并维护其与服务提供商关系的责任方。<br>responsible party who manages a client's account and oversees their relationship with the service provider |
+| 定期存单账户（time certificate of deposit account） | 允许以可转让或不可转让凭证证明的存款、或以收据证明的记账形式存款的定期存款账户。<br>time deposit account that allows deposits evidenced by a negotiable or nonnegotiable instrument, or a deposit in book entry form evidenced by a receipt or similar acknowledgement issued by the bank, that provides, on its face, that the amount of such deposit is payable to the bearer, to any specified person, or to the order of a specified person, as follows: (1) on a certain date not less than seven days after the date of deposit, (2) at the expiration of a specified period not less than seven days after the date of the deposit, or (3) upon written notice to the bank which is to be given not less than seven days before the date of withdrawal. |
+| 定期存款账户（time deposit account） | 存款人无权、也不被允许在存款后六日内提取的存款账户，除非满足特定条件。<br>deposit account that the depositor does not have a right, and is not permitted, to make withdrawals from within six days after the date of deposit unless the deposit is subject to an early withdrawal penalty of at least seven days' simple interest on amounts withdrawn within the first six days after deposit |
+| 定期开放存款账户（time deposit open account） | 允许（定期存单以外的）存款、并与存款人订有有效书面合同的定期存款账户。<br>time deposit account that allows deposits (other than time certificates of deposit) for which there is in force a written contract with the depositor that neither the whole nor any part of such deposit may be withdrawn prior to (1) the date of maturity, which shall be not less than seven days after the date of the deposit, or (2) the expiration of a specified period of written notice of not less than seven days |
+| 交易类别（transaction category） | 单笔交易的高层分类器。<br>high-level classifier for an individual transaction |
+| 交易日期（transaction date） | 特定交易发起的日期。<br>date on which a specific transaction was initiated |
+| 交易存款账户（transaction deposit account） | 存款人/账户持有人可通过可转让票据、支付指令等方式转账或取款的存款账户。<br>deposit account from which the depositor / account holder is permitted to make transfers or withdrawals by negotiable / transferable instruments, payment orders of withdrawal, telephone transfers, and so forth, and that may be accessible via an electronic device such as an automated teller machine (ATM), remote service unit (RSU), mobile device, and by debit card |
+| 交易标识符（transaction identifier） | 与账户相关联的单笔交易的标识符。<br>identifier for an individual transaction associated with an account |
+| 交易记录（transaction record） | 与账户相关联的交易的记录。<br>record of transactions associated with an account |
+| 交易记录标识符（transaction record identifier） | 交易记录的唯一标识符。<br>unique identifier for record of transactions |
+| 交易子类别（transaction subcategory） | 交易的第二层分类器，例如直接存款、支票、预借现金、取款、付款、购买等。<br>second-level classifier for a transaction, e.g., direct deposit, check, cash advance, withdrawal, payment, purchase, and so forth |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -98,9 +98,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有余额（has balance）** | 将账户与该账户中可用的货币净额关联起来。 | 值域：余额（balance）；子属性：具有货币数量 |
-| **具有关闭日期（has close date）** | 将某事物与其被关闭的日期关联起来。 | 值域：关闭日期（close date）；子属性：具有结束日期 |
-| **具有开立日期（has open date）** | 将某事物与其被创建的日期关联起来。 | 值域：开立日期（open date）；子属性：具有显式日期 |
+| **具有余额（has balance）** | 将账户与该账户中可用的货币净额关联起来。<br>relates an account to the net amount of money available in that account | 值域：余额（balance）；子属性：具有货币数量 |
+| **具有关闭日期（has close date）** | 将某事物与其被关闭的日期关联起来。<br>relates something to the date that it was closed | 值域：关闭日期（close date）；子属性：具有结束日期 |
+| **具有开立日期（has open date）** | 将某事物与其被创建的日期关联起来。<br>relates something to the date that it was created | 值域：开立日期（open date）；子属性：具有显式日期 |
 | **具有记录（hasRecord）** | — | — |
 | **由……持有（isHeldBy）** | — | — |
 | **由……标识（isIdentifiedBy）** | — | — |
@@ -126,9 +126,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有主要账户持有人（has primary account holder）** | 将账户与被视为账户主要所有者的客户关联起来。 | 值域：客户账户持有人（customer account holder）；子属性：由……持有 |
-| **具有次要账户持有人（has secondary account holder）** | 将账户与被视为账户次要有人的客户（共同所有人）关联起来。 | 值域：客户账户持有人（customer account holder）；子属性：由……持有 |
-| **关联至账户（is linked to account）** | 将给定客户账户与另一客户账户连接起来。 | 值域：客户账户（customer account）；子属性：关联于 |
+| **具有主要账户持有人（has primary account holder）** | 将账户与被视为账户主要所有者的客户关联起来。<br>relates an account to a client or customer that is considered the primary owner of the account | 值域：客户账户持有人（customer account holder）；子属性：由……持有 |
+| **具有次要账户持有人（has secondary account holder）** | 将账户与被视为账户次要有人的客户（共同所有人）关联起来。<br>relates an account to a client or customer that is considered a secondary, co-owner of the account | 值域：客户账户持有人（customer account holder）；子属性：由……持有 |
+| **关联至账户（is linked to account）** | 将给定客户账户与另一客户账户连接起来。<br>connects a given customer account to another customer account | 值域：客户账户（customer account）；子属性：关联于 |
 | **例证（exemplifies）** | — | — |
 | **由……持有（isHeldBy）** | — | — |
 | **定义于（isDefinedIn）** | — | — |
@@ -440,10 +440,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **适用于账户（applies to account）** | 指明交易记录或单笔交易所适用的账户。 | 值域：账户（account）；子属性：适用于 |
-| **具有期末余额（has ending balance）** | 将对账单与账单期间结束时账户中的可用金额关联起来。 | 值域：余额（balance）；子属性：具有余额（has balance） |
-| **具有期初余额（has starting balance）** | 将对账单与账单期间开始时账户中的可用金额关联起来。 | 值域：余额（balance）；子属性：具有余额（has balance） |
-| **记录交易（records transaction）** | 将对账单与其所记载的单笔交易关联起来。 | — |
+| **适用于账户（applies to account）** | 指明交易记录或单笔交易所适用的账户。<br>indicates the account to which the transaction record or individual transaction applies | 值域：账户（account）；子属性：适用于 |
+| **具有期末余额（has ending balance）** | 将对账单与账单期间结束时账户中的可用金额关联起来。<br>relates an account statement to the amount of money available in that account at the end of the statement period | 值域：余额（balance）；子属性：具有余额（has balance） |
+| **具有期初余额（has starting balance）** | 将对账单与账单期间开始时账户中的可用金额关联起来。<br>relates an account statement to the amount of money available in that account at the beginning of the statement period | 值域：余额（balance）；子属性：具有余额（has balance） |
+| **记录交易（records transaction）** | 将对账单与其所记载的单笔交易关联起来。<br>links an account statement to the individual transactions it documents | — |
 | **具有报告期（hasReportingPeriod）** | — | — |
 
 公理：
@@ -571,11 +571,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **适用于账户（applies to account）** | 指明交易记录或单笔交易所适用的账户。 | 值域：账户（account）；子属性：适用于 |
-| **具有过账日期（has posting date）** | 指明交易过账至账户的日期。 | 值域：过账日期（posting date）；子属性：具有显式日期 |
-| **具有交易日期（has transaction date）** | 指明交易实际发生的日期。 | 值域：交易日期（transaction date）；子属性：具有显式日期 |
-| **具有交易描述（has transaction description）** | 提供交易的文字描述。 | 值域：xsd:string |
-| **涉及商户（involves merchant）** | 指明交易中涉及的商户（卖方）。 | 值域：商户；子属性：涉及 |
+| **适用于账户（applies to account）** | 指明交易记录或单笔交易所适用的账户。<br>indicates the account to which the transaction record or individual transaction applies | 值域：账户（account）；子属性：适用于 |
+| **具有过账日期（has posting date）** | 指明交易过账至账户的日期。<br>indicates the date that the transaction was posted to the account | 值域：过账日期（posting date）；子属性：具有显式日期 |
+| **具有交易日期（has transaction date）** | 指明交易实际发生的日期。<br>indicates the date on which the transaction actually occurred | 值域：交易日期（transaction date）；子属性：具有显式日期 |
+| **具有交易描述（has transaction description）** | 提供交易的文字描述。<br>provides a textual description of the transaction | 值域：xsd:string |
+| **涉及商户（involves merchant）** | 指明交易中涉及的商户（卖方）。<br>indicates the merchant (seller) involved in the transaction | 值域：商户；子属性：涉及 |
 | **具有货币数量（hasMonetaryAmount）** | — | — |
 | **例证（exemplifies）** | — | — |
 | **由……分类（isClassifiedBy）** | — | — |
@@ -744,10 +744,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **适用于账户（applies to account）** | 指明交易记录或单笔交易所适用的账户。 | 值域：账户（account）；子属性：适用于 |
-| **具有关闭日期（has close date）** | 将某事物与其被关闭的日期关联起来。 | 值域：关闭日期（close date）；子属性：具有结束日期 |
-| **具有开立日期（has open date）** | 将某事物与其被创建的日期关联起来。 | 值域：开立日期（open date）；子属性：具有显式日期 |
-| **具有交易记录状态（has transaction record status）** | 指明交易记录的状态。 | 值域：xsd:string |
+| **适用于账户（applies to account）** | 指明交易记录或单笔交易所适用的账户。<br>indicates the account to which the transaction record or individual transaction applies | 值域：账户（account）；子属性：适用于 |
+| **具有关闭日期（has close date）** | 将某事物与其被关闭的日期关联起来。<br>relates something to the date that it was closed | 值域：关闭日期（close date）；子属性：具有结束日期 |
+| **具有开立日期（has open date）** | 将某事物与其被创建的日期关联起来。<br>relates something to the date that it was created | 值域：开立日期（open date）；子属性：具有显式日期 |
+| **具有交易记录状态（has transaction record status）** | 指明交易记录的状态。<br>indicates the status of the transaction record | 值域：xsd:string |
 | **包含（comprises）** | — | — |
 | **由……标识（isIdentifiedBy）** | — | — |
 | **由……管理（isManagedBy）** | — | — |
@@ -806,8 +806,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有对应账户（has corresponding account）** | 将信贷协议与用作交易管理基础的账户关联起来。 | 值域：贷款或信用账户（loan or credit account）；子属性：关联于 |
-| **具有付款到期日（has payment due date）** | 指明某笔款项须支付给债权人的截止日期。 | 值域：付款到期日（payment due date）；子属性：具有显式日期 |
+| **具有对应账户（has corresponding account）** | 将信贷协议与用作交易管理基础的账户关联起来。<br>relates a credit agreement to an account used as the basis for managing transactions | 值域：贷款或信用账户（loan or credit account）；子属性：关联于 |
+| **具有付款到期日（has payment due date）** | 指明某笔款项须支付给债权人的截止日期。<br>indicates the date by which payment of some amount must be made to the creditor | 值域：付款到期日（payment due date）；子属性：具有显式日期 |
 
 ## 4. 依赖（owl:imports，34 个）
 

@@ -34,39 +34,39 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 调整后收盘价（adjusted closing price） | 在计入拆股、分红、配股等公司行为后，经修正以反映证券价值的收盘价。 |
-| 最优买价（best bid） | 潜在买方在特定时点就某一证券愿意支付的最高买入价。 |
-| 最优卖价（best offer） | 潜在卖方在特定时点就某一证券可接受的最低卖出价。 |
-| 买卖价差（bid ask spread） | 卖出（要价）与买入（出价）之间的差额。 |
-| 买价（bid price） | 潜在买方愿意支付的价格。 |
-| 净价（clean price） | 不含应计利息的债务工具价格。 |
-| 收盘价（closing price） | 市场收盘前最后一笔成交价格的现金价值。 |
-| 收盘价确定方法（closing price determination method） | 计算或以其他方式确定官方收盘价的策略。 |
-| 证券价格集合（collection of security prices） | 由一系列价格组成的集合，每一价格均与特定日期和时间相关联。 |
-| 综合市场（composite market） | 为定价目的而参考的一组交易所和交易场所。 |
-| 衍生价格（derived price） | 来源于其他数据源或计算、而非报价或基于实际交易数据的价格。 |
-| 全价（dirty price） | 含应计利息的债务工具价格。 |
-| 最高价（high price） | 指定期间内某一证券的最高价格。 |
-| 内部收益率（internal rate of return） | 使一系列未来现金流净现值（NPV）为零的折现率。 |
-| 盘中价格（intra day price） | 交易所开盘价与官方收盘价之间某一时点的证券价格。 |
-| 最低价（low price） | 指定期间内某一证券的最低价格。 |
-| 市场价格（market price） | 证券最近一次成交的报告价格。 |
-| 中间价（mid price） | 买价与卖价的算术平均值。 |
-| 卖价（offer price） | 潜在卖方在特定时点就某一证券提出的价格。 |
-| 官方收盘价（official closing price） | 某一交易所交易日结束时证券最后一笔成交的价格。 |
-| 开盘价（opening price） | 交易日开始时的首次成交价格。 |
-| 价格分析指标（price analytic） | 涉及证券价格的统计度量。 |
-| 价格确定方法（price determination method） | 计算或以其他方式确立某物价格的策略。 |
-| 价格差（price spread） | 两个价格之间的差额。 |
-| 定价模型（pricing model） | 用于确定工具在某一时点价值的表达式。 |
-| 收益率（rate of return） | 投资在规定期间内的净收益或净损失，以占投资初始成本或某一时点价值的百分比表示。 |
-| 证券价格（security price） | 金融工具在某一时点的货币价格。 |
-| 交易日（trading day） | 某一交易场所开放的时间跨度。 |
-| 交易时段（trading session） | 交易日内可以提交并成交订单的时间窗口。 |
-| 成交量加权平均价（volume-weighted average price） | 证券在全日交易中的平均价格，由每笔成交价格乘以其成交量后加总，再除以总成交量得出。 |
-| 成交量加权开盘价（volume-weighted open price） | 由每笔成交价格乘以其成交量后加总，再除以交易日内某一期间的成交量得出的价格。 |
-| 收益率（yield） | 投资人资本投资的回报。 |
-| 收益率差（yield spread） | 两个项目收益率之间的差值。 |
+| 调整后收盘价（adjusted closing price） | 在计入拆股、分红、配股等公司行为后，经修正以反映证券价值的收盘价。<br>amended closing price to reflect a security's value after accounting for any corporate actions, such as stock splits, dividends, and rights offerings |
+| 最优买价（best bid） | 潜在买方在特定时点就某一证券愿意支付的最高买入价。<br>highest bid price a prospective buyer is willing to pay at a particular time for a given security |
+| 最优卖价（best offer） | 潜在卖方在特定时点就某一证券可接受的最低卖出价。<br>lowest price acceptable to a prospective seller for a given security at a particular point in time |
+| 买卖价差（bid ask spread） | 卖出（要价）与买入（出价）之间的差额。<br>difference between an offer (ask) price and a bid price |
+| 买价（bid price） | 潜在买方愿意支付的价格。<br>price a prospective buyer is willing to pay |
+| 净价（clean price） | 不含应计利息的债务工具价格。<br>debt instrument price that does not include accrued interest |
+| 收盘价（closing price） | 市场收盘前最后一笔成交价格的现金价值。<br>cash value of the last transacted price before the market closes |
+| 收盘价确定方法（closing price determination method） | 计算或以其他方式确定官方收盘价的策略。<br>strategy for calculating or otherwise determining an official closing price |
+| 证券价格集合（collection of security prices） | 由一系列价格组成的集合，每一价格均与特定日期和时间相关联。<br>collection consisting of a series of prices, each of which has a specific date and time associated with it, for some security |
+| 综合市场（composite market） | 为定价目的而参考的一组交易所和交易场所。<br>group of exchanges and trading venues referenced for pricing purposes |
+| 衍生价格（derived price） | 来源于其他数据源或计算、而非报价或基于实际交易数据的价格。<br>price that stems from another source or calculation rather than being quoted or based on actual trading data |
+| 全价（dirty price） | 含应计利息的债务工具价格。<br>debt instrument price that includes accrued interest |
+| 最高价（high price） | 指定期间内某一证券的最高价格。<br>highest price for a given security over the period specified |
+| 内部收益率（internal rate of return） | 使一系列未来现金流净现值（NPV）为零的折现率。<br>discount rate that results in a net present value (NPV) of zero for a series of future cash flows |
+| 盘中价格（intra day price） | 交易所开盘价与官方收盘价之间某一时点的证券价格。<br>price for a given security at some point between the opening and official closing price on an exchange |
+| 最低价（low price） | 指定期间内某一证券的最低价格。<br>lowest value for a given security over the period specified |
+| 市场价格（market price） | 证券最近一次成交的报告价格。<br>last reported price at which a security was sold |
+| 中间价（mid price） | 买价与卖价的算术平均值。<br>arithmetic mean between bid and offer prices |
+| 卖价（offer price） | 潜在卖方在特定时点就某一证券提出的价格。<br>price suggested by a prospective seller at a particular time for a given security |
+| 官方收盘价（official closing price） | 某一交易所交易日结束时证券最后一笔成交的价格。<br>price of the final trade of a security at the end of a trading day on a given exchange |
+| 开盘价（opening price） | 交易日开始时的首次成交价格。<br>price at which something first trades at the start of a trading day |
+| 价格分析指标（price analytic） | 涉及证券价格的统计度量。<br>statistical measure involving security prices |
+| 价格确定方法（price determination method） | 计算或以其他方式确立某物价格的策略。<br>strategy for calculating or otherwise establishing a price for something |
+| 价格差（price spread） | 两个价格之间的差额。<br>difference between two prices |
+| 定价模型（pricing model） | 用于确定工具在某一时点价值的表达式。<br>expression used to determine a value for an instrument at a given point in time |
+| 收益率（rate of return） | 投资在规定期间内的净收益或净损失，以占投资初始成本或某一时点价值的百分比表示。<br>net gain or loss on an investment over a specified time period, expressed as a percentage of the investment's initial cost or value as of a specific point in time |
+| 证券价格（security price） | 金融工具在某一时点的货币价格。<br>monetary price for a financial instrument at some point in time |
+| 交易日（trading day） | 某一交易场所开放的时间跨度。<br>time span that a particular trading venue is open |
+| 交易时段（trading session） | 交易日内可以提交并成交订单的时间窗口。<br>window of time within a trading day in which orders may be placed and filled |
+| 成交量加权平均价（volume-weighted average price） | 证券在全日交易中的平均价格，由每笔成交价格乘以其成交量后加总，再除以总成交量得出。<br>average price at which a given security has traded throughout a trading day, determined by multiplying each trade by its volume, adding the results, then dividing by the volume traded for the day |
+| 成交量加权开盘价（volume-weighted open price） | 由每笔成交价格乘以其成交量后加总，再除以交易日内某一期间的成交量得出的价格。<br>price determined by multiplying each trade by its volume, adding the results, then dividing by the volume over a certain period during the trading day (rather than over the course of the entire day) |
+| 收益率（yield） | 投资人资本投资的回报。<br>return on the investor's capital investment |
+| 收益率差（yield spread） | 两个项目收益率之间的差值。<br>the spread between the yields of two items |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -226,16 +226,16 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有盘口深度（has book depth）** | 指明价格所对应的订单簿深度。 | 值域：xsd:integer |
-| **具有定价来源（has pricing source）** | 指明金融工具某一报价或价格的来源。 | 子属性：引用 |
-| **具有报价批量规模（has quote lot size）** | 报价所对应标的的规模。 | 值域：xsd:decimal；子属性：具有批量规模（has lot size） |
-| **具有交易日期时间（has trading date time）** | 指明与某一价格相关联的具体日期和时间。 | 值域：日期时间；子属性：具有日期时间 |
+| **具有盘口深度（has book depth）** | 指明价格所对应的订单簿深度。<br>indicates depth of the order book to which the price refers | 值域：xsd:integer |
+| **具有定价来源（has pricing source）** | 指明金融工具某一报价或价格的来源。<br>indicates the origin of a given quote or price for a financial instrument | 子属性：引用 |
+| **具有报价批量规模（has quote lot size）** | 报价所对应标的的规模。<br>magnitude of something to which the quote price refers | 值域：xsd:decimal；子属性：具有批量规模（has lot size） |
+| **具有交易日期时间（has trading date time）** | 指明与某一价格相关联的具体日期和时间。<br>indicates the specific date and time associated with a given price | 值域：日期时间；子属性：具有日期时间 |
 | **是……的价格（isPriceFor）** | — | — |
 | **具有观测日期时间（hasObservedDateTime）** | — | — |
 
 公理：
 
-- **具有定价来源（has pricing source）**可以有 0 个或多个**N68d8e5bde4da4ec49b0a7fc8421752b3**。
+- **具有定价来源（has pricing source）**可以有 0 个或多个**N25c04017d6fa4edeab99da69e9518d7b**。
 - **具有观测日期时间（hasObservedDateTime）**存在取值约束。
 - **是……的价格（isPriceFor）**至少有一个取值，类型是**证券（Security）**。
 
@@ -341,7 +341,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有定价来源（has pricing source）** | 指明金融工具某一报价或价格的来源。 | 子属性：引用 |
+| **具有定价来源（has pricing source）** | 指明金融工具某一报价或价格的来源。<br>indicates the origin of a given quote or price for a financial instrument | 子属性：引用 |
 
 公理：
 
@@ -370,7 +370,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有收盘价确定方法（has closing price determination method）** | 指明确定官方收盘价所采用的策略。 | 值域：收盘价确定方法（closing price determination method）；子属性：具有价格确定方法（has price determination method） |
+| **具有收盘价确定方法（has closing price determination method）** | 指明确定官方收盘价所采用的策略。<br>indicates a strategy by which the official closing price is determined | 值域：收盘价确定方法（closing price determination method）；子属性：具有价格确定方法（has price determination method） |
 
 公理：
 
@@ -514,17 +514,17 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有价格确定方法（has price determination method）** | 指明确定某一价格所采用的策略。 | 值域：价格确定方法（price determination method）；子属性：具有战略 |
-| **具有收益率（has rate of return）** | 指明某一金融工具在一段时间内的回顾性收益率。 | 值域：收益率（rate of return）；子属性：具有量值 |
+| **具有价格确定方法（has price determination method）** | 指明确定某一价格所采用的策略。<br>indicates a strategy by which a given price is determined | 值域：价格确定方法（price determination method）；子属性：具有战略 |
+| **具有收益率（has rate of return）** | 指明某一金融工具在一段时间内的回顾性收益率。<br>indicates the retrospective rate of return for a given financial instrument over some period of time | 值域：收益率（rate of return）；子属性：具有量值 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有批量规模（has lot size）** | 项目的规模（即总数量）。 |
-| **具有应计天数（has number of days accrued）** | 指明利息已计提但尚未收到的天数。 |
-| **具有整手规模（has round lot size）** | 交易所证券交易的标准手数。 |
-| **具有成交量（has trading volume）** | 指明某一交易日成交的股份/单位数量。 |
+| **具有批量规模（has lot size）** | 项目的规模（即总数量）。<br>magnitude of an item (i.e., total quantity) |
+| **具有应计天数（has number of days accrued）** | 指明利息已计提但尚未收到的天数。<br>indicates the number of days for which interest has accrued and has not yet been received |
+| **具有整手规模（has round lot size）** | 交易所证券交易的标准手数。<br>standard number of securities traded on an exchange |
+| **具有成交量（has trading volume）** | 指明某一交易日成交的股份/单位数量。<br>indicates the number of shares/units traded on a given trading day |
 
 ## 4. 依赖（owl:imports，17 个）
 

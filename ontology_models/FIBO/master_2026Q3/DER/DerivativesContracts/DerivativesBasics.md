@@ -34,30 +34,30 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 现金流表达式（cashflow expression） | 规定作为现金流公式组成部分的现金流计算的表达式。 |
-| 现金流公式（cashflow formula） | 用于确定衍生工具现金流的公式。 |
-| 现金流条款（cashflow terms） | 列明合约一方承诺支付的现金流结构的条款。 |
-| 差价合约（contract for difference） | 现金结算的衍生品：双方同意在合约到期时交换标的当前价值与合约价值之间的差额。 |
-| 信用衍生品（credit derivative） | 一种衍生工具：私人持有、可转让的双边合约，在场外（OTC）由债权/债务关系中的双方交易。 |
-| 衍生品结算条款（derivative settlement terms） | 规定结算时应交付何物、何时交付、交付给谁以及在何种条件下交付等细节的结算条款。 |
-| 衍生品条款（derivative terms） | 衍生品合约特有的合同条款，包括双方之间支付和交付的相关条款。 |
-| 衍生品清算组织（derivatives clearing organization） | 使各方能够以清算组织（DCO）的信用替代交易对手信用的清算所。 |
-| 经济指标型衍生品（economic rate-based derivative） | 标的为某一经济指标的比率类衍生品。 |
-| 远期利率协议（forward rate agreement） | 就未来某一日期的名义本金交换利率承诺的协议。 |
-| 利率衍生品（interest rate derivative） | 标的为利率的比率类衍生品。 |
-| 介绍经纪商（introducing broker） | 招揽或接受在交易所交易或受其规则约束的衍生品订单的经纪商。 |
-| 可观察值（observable value） | 对某一可辨识且可取得证据的事物之值的规范。 |
-| 场外衍生工具（over-the-counter derivative instrument） | 未在有组织交易所挂牌的衍生工具。 |
-| 场外工具（over-the-counter instrument） | 未在有组织交易所挂牌的金融工具和双边合约。 |
-| 参数化现金流条款（parametric cashflow terms） | 按照数学公式定义的一组现金流的条款。 |
-| 付款方（paying party） | 负责支付合约所规定交易款项的一方。 |
-| 比率类衍生品（rate-based derivative） | 持有人有权（视工具性质可能无义务）进入标的比率类合约的衍生工具。 |
-| 收款对手方（receiving counterparty） | 收取合约所规定交易款项的一方。 |
-| 标的资产评估（underlying asset valuation） | 对衍生品标的资产进行价值估计的评估活动。 |
-| 唯一产品标识符（unique product identifier） | 唯一标识应向交易数据库报告的场外衍生品产品的字符序列。 |
-| 唯一产品标识符登记册条目（unique product identifier registry entry） | 唯一产品标识符（UPI）登记册中的条目。 |
-| 唯一产品标识符服务提供商（unique product identifier service provider） | 由金融监管机构组成的外部机构指定、负责分配 UPI 并运营 UPI 参考数据库的组织。 |
-| 估值条款（valuation terms） | 标的资产估值特有的合同条款。 |
+| 现金流表达式（cashflow expression） | 规定作为现金流公式组成部分的现金流计算的表达式。<br>expression that specifies a calculation of a cash flow as a component of a cashflow formula |
+| 现金流公式（cashflow formula） | 用于确定衍生工具现金流的公式。<br>formula for determining cashflows for a derivative instrument |
+| 现金流条款（cashflow terms） | 列明合约一方承诺支付的现金流结构的条款。<br>terms setting out a cashflow structure of payments committed to by one party to a contract |
+| 差价合约（contract for difference） | 现金结算的衍生品：双方同意在合约到期时交换标的当前价值与合约价值之间的差额。<br>cash-settled derivative where the parties agree to exchange on the maturity of the contract the difference between the current value of the underlying asset and the initial value of that asset when the contract is initiated |
+| 信用衍生品（credit derivative） | 一种衍生工具：私人持有、可转让的双边合约，在场外（OTC）由债权/债务关系中的双方交易。<br>derivative instrument that is a privately held, negotiable bilateral contract traded over-the-counter (OTC) between two parties in a creditor/debtor relationship, enabling the creditor to effectively transfer some or all of the risk of a debtor defaulting to a third party |
+| 衍生品结算条款（derivative settlement terms） | 规定结算时应交付何物、何时交付、交付给谁以及在何种条件下交付等细节的结算条款。<br>settlement terms specifying additional details with respect to what is to be delivered when, to whom, under what conditions at the time of settlement |
+| 衍生品条款（derivative terms） | 衍生品合约特有的合同条款，包括双方之间支付和交付的相关条款。<br>contractual terms specific to derivative contracts, including terms related to payments and delivery between parties |
+| 衍生品清算组织（derivatives clearing organization） | 使各方能够以清算组织（DCO）的信用替代交易对手信用的清算所。<br>clearing house that enables parties to substitute the credit of the DCO for the credit of the parties |
+| 经济指标型衍生品（economic rate-based derivative） | 标的为某一经济指标的比率类衍生品。<br>rate-based derivative whose underlier is some economic indicator |
+| 远期利率协议（forward rate agreement） | 就未来某一日期的名义本金交换利率承诺的协议。<br>agreement to exchange an interest rate commitment on a notional amount at a future date |
+| 利率衍生品（interest rate derivative） | 标的为利率的比率类衍生品。<br>rate-based derivative whose underlier is an interest rate |
+| 介绍经纪商（introducing broker） | 招揽或接受在交易所交易或受其规则约束的衍生品订单的经纪商。<br>broker that solicits or accepts orders for derivatives that are traded on or subject to the rules of an exchange |
+| 可观察值（observable value） | 对某一可辨识且可取得证据的事物之值的规范。<br>specification for the value for something discernible and for which evidence can be obtained |
+| 场外衍生工具（over-the-counter derivative instrument） | 未在有组织交易所挂牌的衍生工具。<br>derivative instrument that is not listed on an organized exchange |
+| 场外工具（over-the-counter instrument） | 未在有组织交易所挂牌的金融工具和双边合约。<br>financial instrument and bilateral contract that is not listed on an organized exchange |
+| 参数化现金流条款（parametric cashflow terms） | 按照数学公式定义的一组现金流的条款。<br>terms for a set of cashflows defined according to a mathematical formula |
+| 付款方（paying party） | 负责支付合约所规定交易款项的一方。<br>party responsible for making payments in a transaction specified in a contract |
+| 比率类衍生品（rate-based derivative） | 持有人有权（视工具性质可能无义务）进入标的比率类合约的衍生工具。<br>derivative instrument where the holder has the right but may not have the obligation, depending on the nature of the instrument, to enter into the underlying contract, or pay or receive payment related to the underlying financial rate (or rate contract) on a specified future date based on a specified future rate and term |
+| 收款对手方（receiving counterparty） | 收取合约所规定交易款项的一方。<br>party that receives payments in a transaction specified in a contract |
+| 标的资产评估（underlying asset valuation） | 对衍生品标的资产进行价值估计的评估活动。<br>assessment activity to estimate the value of an underlying asset of a derivative |
+| 唯一产品标识符（unique product identifier） | 唯一标识应向交易数据库报告的场外衍生品产品的字符序列。<br>sequence of characters uniquely identifying an OTC derivative product that is reportable to a trade repository |
+| 唯一产品标识符登记册条目（unique product identifier registry entry） | 唯一产品标识符（UPI）登记册中的条目。<br>entry in a unique product identifier registry |
+| 唯一产品标识符服务提供商（unique product identifier service provider） | 由金融监管机构组成的外部机构指定、负责分配 UPI 并运营 UPI 参考数据库的组织。<br>organization designated by an external body of financial regulators to assign UPIs and operate a UPI reference data library |
+| 估值条款（valuation terms） | 标的资产估值特有的合同条款。<br>contract terms specific to valuation of the underlying asset(s) |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -135,8 +135,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有附加成本（has additional costs）** | 指明交割时必须支付的成本，如前期费用、经纪佣金等。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有标的资产价格（has underlying asset price）** | 规定合约所基于之物的价格。 | 值域：货币价格；子属性：具有价格 |
+| **具有附加成本（has additional costs）** | 指明交割时必须支付的成本，如前期费用、经纪佣金等。<br>indicates costs, such as up front costs, brokerage fees and the like, that must be paid on delivery | 值域：货币数量；子属性：具有货币数量 |
+| **具有标的资产价格（has underlying asset price）** | 规定合约所基于之物的价格。<br>specifies a price for something on which the contract is based | 值域：货币价格；子属性：具有价格 |
 
 公理：
 
@@ -183,7 +183,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **规定……的价值（specifies value of）** | 将衍生品与标的资产估值特有的合同条款关联起来。 | 子属性：适用于 |
+| **规定……的价值（specifies value of）** | 将衍生品与标的资产估值特有的合同条款关联起来。<br>relates a derivative to contractual terms specific to valuation of the underlying asset(s) | 子属性：适用于 |
 | **价值以……表示（hasValueExpressedIn）** | — | — |
 
 公理：
@@ -229,7 +229,7 @@
 
 公理：
 
-- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**N4f03e4b815d64d60ba857dc7e2014e7b**。
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**N1c764720da4f4b8f8b1dff0f15e8a317**。
 
 #### 2.11.1 经济指标型衍生品（economic rate-based derivative）
 
@@ -356,17 +356,17 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有递增名义本金（has accreting notional amount）** | 表明名义本金在合约存续期内递增。 | 值域：货币数量；子属性：具有名义金额 |
-| **具有递减名义本金（has amortizing notional amount）** | 表明名义本金在合约存续期内递减。 | 值域：货币数量；子属性：具有名义金额 |
-| **具有固定名义本金（has constant notional amount）** | 表明名义本金在合约存续期内保持不变。 | 值域：货币数量；子属性：具有名义金额 |
-| **具有定制名义本金（has custom notional amount）** | 表明名义本金按名义本金阶梯计划表定制。 | 值域：货币数量；子属性：具有名义金额 |
-| **具有首个交割日（has first delivery date）** | 规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的首个日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有首个通知日（has first notice date）** | 规定可以发出交割通知的首个日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有最后交割日（has last delivery date）** | 规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的最后日期。 | 值域：显式日期；子属性：具有结束日期 |
-| **具有最后通知日（has last notice date）** | 规定可以发出交割通知的最后日期。 | 值域：显式日期；子属性：具有结束日期 |
-| **具有结算条款（has settlement terms）** | 将衍生品与结算过程特有的合同条款关联起来。 | 值域：结算条款；子属性：具有合同要素 |
-| **具有最小变动价位价值（has tick value）** | 指明一个最小变动价位（即合约最小价格变动）的现金价值。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有估值条款（has valuation terms）** | 将衍生品与标的资产估值特有的合同条款关联起来。 | 值域：估值条款（valuation terms）；子属性：具有合同要素 |
+| **具有递增名义本金（has accreting notional amount）** | 表明名义本金在合约存续期内递增。<br>indicates that the notional amount increases through the life of the contract | 值域：货币数量；子属性：具有名义金额 |
+| **具有递减名义本金（has amortizing notional amount）** | 表明名义本金在合约存续期内递减。<br>indicates that the notional amount decreases through the life of the contract | 值域：货币数量；子属性：具有名义金额 |
+| **具有固定名义本金（has constant notional amount）** | 表明名义本金在合约存续期内保持不变。<br>indicates that the notional amount is constant through the life of the contract | 值域：货币数量；子属性：具有名义金额 |
+| **具有定制名义本金（has custom notional amount）** | 表明名义本金按名义本金阶梯计划表定制。<br>indicates that the notional amount is customized per a notional step schedule | 值域：货币数量；子属性：具有名义金额 |
+| **具有首个交割日（has first delivery date）** | 规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的首个日期。<br>specifies the initial date in a range of dates by which the underlying asset (or some portion thereof) must be delivered in order for the terms of the contract to be fulfilled | 值域：显式日期；子属性：具有显式日期 |
+| **具有首个通知日（has first notice date）** | 规定可以发出交割通知的首个日期。<br>specifies the initial date on which a delivery notice can be issued | 值域：显式日期；子属性：具有显式日期 |
+| **具有最后交割日（has last delivery date）** | 规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的最后日期。<br>specifies the final date in a range of dates by which the underlying asset (or some portion thereof) must be delivered in order for the terms of the contract to be fulfilled | 值域：显式日期；子属性：具有结束日期 |
+| **具有最后通知日（has last notice date）** | 规定可以发出交割通知的最后日期。<br>specifies the final date on which a delivery notice can be issued | 值域：显式日期；子属性：具有结束日期 |
+| **具有结算条款（has settlement terms）** | 将衍生品与结算过程特有的合同条款关联起来。<br>relates a derivative to contractual terms specific to the settlement process | 值域：结算条款；子属性：具有合同要素 |
+| **具有最小变动价位价值（has tick value）** | 指明一个最小变动价位（即合约最小价格变动）的现金价值。<br>indicates the cash value of one tick, i.e., the minimum price change of the contract | 值域：货币数量；子属性：具有货币数量 |
+| **具有估值条款（has valuation terms）** | 将衍生品与标的资产估值特有的合同条款关联起来。<br>relates a derivative to contractual terms specific to valuation of the underlying asset(s) | 值域：估值条款（valuation terms）；子属性：具有合同要素 |
 
 ## 4. 依赖（owl:imports，33 个）
 

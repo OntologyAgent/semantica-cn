@@ -29,12 +29,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 收款人（payee） | 债务应支付给的一方，或汇票、本票、支票的指定受款人，或收到或将收到付款的一方。 |
-| 付款人（payer） | 支付账单或费用、或为部分或全部履行义务而向收款人付款的一方。 |
-| 支付（payment） | 为履行义务（如清偿请求权或债务）而交付货币。 |
-| 支付事件（payment event） | 涉及为履行义务而交付货币的事件。 |
-| 支付义务（payment obligation） | 按合同所载条款支付一定金额的可法律强制执行的责任。 |
-| 支付进度表（payment schedule） | 为履行义务而交付货币的进度表。 |
+| 收款人（payee） | 债务应支付给的一方，或汇票、本票、支票的指定受款人，或收到或将收到付款的一方。<br>a party to whom a debt should be paid, or to whose order a bill of exchange, note, or check is made payable, or who receives or will receive a payment from a payer in partial or complete fulfillment of an obligation |
+| 付款人（payer） | 支付账单或费用、或为部分或全部履行义务而向收款人付款的一方。<br>a party who pays a bill or fees, or who makes payments to a payee in partial or complete fulfillment of an obligation |
+| 支付（payment） | 为履行义务（如清偿请求权或债务）而交付货币。<br>delivery of money in fulfillment of an obligation, such as to satisfy a claim or debt |
+| 支付事件（payment event） | 涉及为履行义务而交付货币的事件。<br>an event that involves delivery of money in fulfillment of an obligation |
+| 支付义务（payment obligation） | 按合同所载条款支付一定金额的可法律强制执行的责任。<br>legally enforceable duty to pay a sum of money according to the terms stated in a contract |
+| 支付进度表（payment schedule） | 为履行义务而交付货币的进度表。<br>schedule for delivery of money in fulfillment of an obligation |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -80,8 +80,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **履行义务（fulfills obligation）** | 满足某项请求权、债务或其他义务的支付要求。 | 值域：支付义务（payment obligation） |
-| **具有支付金额（has payment amount）** | 指明支付所涉及的货币金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **履行义务（fulfills obligation）** | 满足某项请求权、债务或其他义务的支付要求。<br>satisfies a requirement for payment of some claim, debt, or other obligation | 值域：支付义务（payment obligation） |
+| **具有支付金额（has payment amount）** | 指明支付所涉及的货币金额。<br>specifies the amount of money involved in a payment | 值域：货币数量；子属性：具有货币数量 |
 
 公理：
 
@@ -149,7 +149,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有支付进度表（has payment schedule）** | 指明履行义务的进度表。 | 值域：支付进度表（payment schedule）；子属性：具有进度表 |
+| **具有支付进度表（has payment schedule）** | 指明履行义务的进度表。<br>specifies the schedule for fulfillment of an obligation | 值域：支付进度表（payment schedule）；子属性：具有进度表 |
 
 ## 4. 依赖（owl:imports，14 个）
 

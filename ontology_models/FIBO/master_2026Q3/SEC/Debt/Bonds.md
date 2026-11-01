@@ -34,94 +34,94 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 建设美国债券（Build America Bond） | 依 2009 年《美国复苏与再投资法》（ARRA）于 2010 年 12 月 31 日前发行的应税市政债券。 |
-| 英国政府证券（U.K. Government security） | 由英国财政部发行并在伦敦证券交易所挂牌的债务工具。 |
-| 美国国债（U.S. Treasury security） | 由美国财政部发行、附有完全信用担保的债务工具。 |
-| 摊销债券（amortizing bond） | 在债券存续期内随利息支出定期偿还债务本金（面值）的债券。 |
-| 债券（bond） | 代表一笔贷款的可交易债务工具，发行人对持有人负有债务。 |
-| 债券摊销支付条款（bond amortization payment terms） | 包含债券存续期内本金偿还计划的条款，通常按固定间隔等额支付。 |
-| 债券子弹式本金偿还条款（bond bullet principal repayment terms） | 以一次性付款覆盖全部本金金额的债券本金偿还条款。 |
-| 债券转换条款（bond conversion terms） | 指明可转换债券何时可转换为另一证券（通常为同一发行人发行的公开交易股票）的条款。 |
-| 债券票息（bond coupon） | 发行人承诺在到期前向持有人支付的债务证券利率，以面值的年度百分比表示。 |
-| 债券保险（bond insurance） | 债券发行人购买的保险单，在发行人违约时保证向债券持有人偿还本金及全部相关利息。 |
-| 债券本金偿还条款（bond principal repayment terms） | 关于债券本金偿还的条款。 |
-| 债券登记机构（bond registrar） | 代表发行人负责维护记名债券所有人记录的一方。 |
-| 债券浮动票息（bond variable coupon） | 利率可变的债券票息。 |
-| 可部分赎回债券（bond with partial call） | 具有发行人可自行决定金额部分赎回之特征的债券。 |
-| 公布偿债基金债券（bond with published sinking fund） | 按已知且公开的偿债基金计划表进行摊销的债券。 |
-| 附权证债券（bond with warrant） | 发行时附带一份或多份权证的债券，权证赋予持有人购买指定证券的权利。 |
-| 子弹型债券（bullet bond） | 全部本金在到期日一次性支付、而非在存续期内摊销的债券。 |
-| 可赎回债券（callable bond） | 包含允许发行人在赎回保护期后按赎回价回购并注销债券之条款的债券。 |
-| 可赎回可转换债券（callable convertible bond） | 同时具有可赎回特征的可转换债券。 |
-| 义务证书（certificate of obligation） | 在自然灾害等需要立即行动而无时间表决的紧急情况下供地方议会使用的市政证券。 |
-| 参与证书（certificate of participation） | 证明对特定质押收入流（通常为发行人的租赁付款）享有按比例份额的债务工具。 |
-| 常规金边债券（conventional gilt） | 由英国财政部发行的固定票息债券，保证每六个月向持有人支付固定现金（票息）直至到期。 |
-| 可转换债券（convertible bond） | 当股票价格高于指定水平时，赋予持有人将债券转换为固定数量股份（转换比率）之权利的债券。 |
-| 公司债券（corporate bond） | 公司为筹集资金而发行的债券。 |
-| 票息支付条款（coupon payment terms） | 关于债券利息支付的条款。 |
-| 股票挂钩债券（equity linked bond） | 基于股票随时间的回报（即价格与股息支付或总回报，类似于总回报互换）的债券。 |
-| 特别赎回条款（extraordinary redemption provision） | 赋予债券发行人在发行说明书规定的异常一次性事件发生时赎回债券之权利的条款。 |
-| 首个常规付息日（first regular coupon date） | 在任何非标准（长或短）首个票息期之后，常规重复票息期系列中首次常规票息支付的计划日期。 |
-| 固定票息债券（fixed coupon bond） | 票息率和本金金额在发行或出售时确定、并在证券存续期内保持不变的债券。 |
-| 固定票息条款（fixed coupon terms） | 关于按固定利率支付债券利息的条款。 |
-| 浮动利率票据（floating rate note） | 以公开参考利率为基础的浮动利率债券。 |
-| 完全信用担保债券（full faith credit bond） | 由另一实体无条件付款承诺担保的债券。 |
-| 一般责任市政债券（general obligation municipal bond） | 由发行市政当局的完全信用、一般资源和一般征税权力支持的市政债券。 |
-| 政府债券（government bond） | 政府为资助政府开支而发行的债务证券。 |
-| 政府发行债务证券（government issued debt security） | 由某一政府代表某一政体发行的债务证券，包括主权债务和市政债务。 |
-| 绿色债券（green bond） | 专门为气候或环境项目融资而发行的债券。 |
-| 隐含完全信用债券（implicit full faith credit bond） | 由政府支持机构或公司（而非政府直接）发行的债券。 |
-| 指数挂钩债券（index-linked bond） | 收益可能随时间变动的债券，因其票息率或本金金额与特定指数（如消费者价格指数）挂钩。 |
-| 通胀挂钩债券（inflation-linked bond） | 与通胀挂钩的债券，其本金或利息支付随通胀率升降。 |
-| 最后常规付息日（last regular coupon date） | 常规重复票息期系列中最后一次常规票息支付的计划日期。 |
-| 上市债券（listed bond） | 可在交易所交易的债券。 |
-| 补偿赎回（make whole call） | 允许发行人提前清偿剩余债务的赎回安排。 |
-| 强制可转换债券（mandatory convertible bond） | 无论股票价格如何、到期时强制转换为股份的可转换债券。 |
-| 中期票据（medium term note） | 在储架发行计划下分期发行的债券，各期可有不同票息，期限通常为一至十年。 |
-| 市政债券（municipal bond） | 可由地方（而非国家）当局发行的政府债券。 |
-| 市政债务资金用途（municipal debt funds usage） | 说明新发行市政证券所筹资金用途的正式声明。 |
-| 市政债务再营销代理人（municipal debt remarketing agent） | 负责向投资者转售证券（如浮动利率即期债务和其他投标选择权债券）的市政证券交易商。 |
-| 市政债务资金来源（municipal debt source of funds） | 指明新发行市政证券资金来源的正式声明。 |
-| 市政票据（municipal note） | 在某一日期偿还指定本金及按约定利率计付利息的短期债务，通常以特定收入来源偿付。 |
-| 市政证券（municipal security） | 由地方政府实体发行的债务凭证。 |
-| 市政受托机构（municipal trustee） | 由发行人指定、依债券合同以受托人身份为债券持有人利益行事的具有信托权限的金融机构。 |
-| 原始发行折价债券（original issue discount bond） | 以面值大幅折价发行的附息债券。 |
-| 部分赎回（partial call） | 对债券发行的一部分进行赎回。 |
-| 部分赎回特征（partial call feature） | 发行人可在预定日期按某规则或抽签方式选择部分债券进行赎回的赎回特征。 |
-| 部分赎回分配惯例（partial redemption allocation convention） | 用于确定部分赎回如何在债券持有人之间分摊的惯例。 |
-| 永续债券（perpetual bond） | 没有到期日、永久支付利息的债券。 |
-| 利率基准惯例（rate basis convention） | 在规定债券赎回百分比金额时所用百分比报价利率的基准。 |
-| 赎回付款（redemption payment） | 在到期或赎回时支付债券本金的偿还事件。 |
-| 赎回计划表（redemption schedule） | 按规定日期赎回债券发行一定百分比的偿还计划表。 |
-| 监管赎回（regulatory call） | 由某项监管特定规则触发的赎回。 |
-| 可再营销债券（remarketable bond） | 未偿债券票息率通过拍卖程序定期重置的公司债券计划。 |
-| 收益债券（revenue bond） | 由特定项目收入支持的市政债券。 |
-| 有担保债券（secured bond） | 除一般付款承诺外，还以抵押品（如有形资产或收入流）为支持的债券。 |
-| 偿债基金摊销条款（sinking fund amortization terms） | 偿债基金型摊销证券本金偿付的条款。 |
-| 主权债券（sovereign bond） | 由国家政府发行的债券。 |
-| 主权债务工具（sovereign debt instrument） | 由国家政府发行的债务证券。 |
-| 特别摊派债券（special assessment bond） | 用于为开发项目融资、以受益社区的摊派（税收）收入偿付的市政债券。 |
-| 特别责任债券（special obligation bond） | 以有限收入来源（如指定项目所得收入）为担保的债券。 |
-| 特别税债券（special tax bond） | 以从价税以外的指定税收收入为担保的债券。 |
-| 票息递增债券（step up bond） | 票息在存续期内递增的债券。 |
-| 阶梯票息条款（stepped coupon terms） | 票息在债券存续期内递增的证券的票息支付条款。 |
-| 拆息债券（strip bond） | 由债券的每笔利息支付和本金分别拆分为独立零息债券而形成的系列债券之一。 |
-| 税收增额债券（tax allocation bond） | 以财产价值和其他经济活动增加所实现税收增量偿付的债券，通常用于特定开发区。 |
-| 短期国库券（treasury bill） | 期限为一至十二个月的短期零息国库债务。 |
-| 长期国债（treasury bond） | 以 20 年或 30 年期发行、每六个月付息一次直至到期的长期附息国库债务。 |
-| 通胀保值国债（treasury inflation-protected security） | 本金与通胀或通缩挂钩、并在证券存续期内相应变动的可变收益债券。 |
-| 中期国债（treasury note） | 原始期限为二至十年的中期附息国库债务。 |
-| 非上市债券（unlisted bond） | 在场外交易（而非通过交易所或其他挂牌场所）的债券。 |
-| 无担保债券（unsecured bond） | 仅以债券发行人的良好信用为支持的债券。 |
-| 浮动票息债券（variable coupon bond） | 利率浮动的债券。 |
-| 浮动票息条款（variable coupon terms） | 规定浮动票息债券利率计算方法的合同条款。 |
-| 可变债务本金（variable debt principal） | 随某一变量定义、因而随时间变动的本金。 |
-| 可变收益债券（variable income bond） | 收益可能随时间变动的债券，因其票息率或本金金额在存续期内随某指数或计划表变动。 |
-| 可变利息计算公式（variable interest calculation formula） | 用于计算可变利息的公式。 |
-| 可变利息表达式（variable interest expression） | 用于确定可变利息支付金额的表达式。 |
-| 可变本金债券（variable principal bond） | 本金随指数变动而调整的债券。 |
-| 零息债券（zero coupon bond） | 票息率为零、以面值大幅折价交易的债券。 |
-| 零息条款（zero coupon terms） | 关于零息债券利息支付的条款。 |
+| 建设美国债券（Build America Bond） | 依 2009 年《美国复苏与再投资法》（ARRA）于 2010 年 12 月 31 日前发行的应税市政债券。<br>taxable municipal bond issued through December 31, 2010 under the American Recovery and Reinvestment Act of 2009 (ARRA) |
+| 英国政府证券（U.K. Government security） | 由英国财政部发行并在伦敦证券交易所挂牌的债务工具。<br>debt instrument issued by HM Treasury and listed on the London Stock Exchange |
+| 美国国债（U.S. Treasury security） | 由美国财政部发行、附有完全信用担保的债务工具。<br>debt instrument issued by the United States Department of the Treasury that carries a full faith and credit guarantee |
+| 摊销债券（amortizing bond） | 在债券存续期内随利息支出定期偿还债务本金（面值）的债券。<br>bond that regularly pays down the principal (face value) on the debt along with its interest expense over the life of the bond |
+| 债券（bond） | 代表一笔贷款的可交易债务工具，发行人对持有人负有债务。<br>tradable debt instrument representing a loan in which the issuer owes the holder(s) a debt |
+| 债券摊销支付条款（bond amortization payment terms） | 包含债券存续期内本金偿还计划的条款，通常按固定间隔等额支付。<br>terms that include a schedule for repayment of the principal over the lifetime of the bond, typically in equal payments at regular intervals |
+| 债券子弹式本金偿还条款（bond bullet principal repayment terms） | 以一次性付款覆盖全部本金金额的债券本金偿还条款。<br>terms for repayment of the principal for a bond as a single payment covering the whole principal amount |
+| 债券转换条款（bond conversion terms） | 指明可转换债券何时可转换为另一证券（通常为同一发行人发行的公开交易股票）的条款。<br>terms indicating when a convertible bond can be converted to another security (usually a publicly traded share issued by of the same issuer) |
+| 债券票息（bond coupon） | 发行人承诺在到期前向持有人支付的债务证券利率，以面值的年度百分比表示。<br>interest rate on a debt security that the issuer promises to pay to the holder until maturity, expressed as an annual percentage of the face value |
+| 债券保险（bond insurance） | 债券发行人购买的保险单，在发行人违约时保证向债券持有人偿还本金及全部相关利息。<br>insurance policy that a bond issuer purchases that guarantees the repayment of the principal and all associated interest payments to the bondholders in the event of default |
+| 债券本金偿还条款（bond principal repayment terms） | 关于债券本金偿还的条款。<br>terms for the repayment of the principal on a bond |
+| 债券登记机构（bond registrar） | 代表发行人负责维护记名债券所有人记录的一方。<br>party responsible for maintaining records on behalf of the issuer that identify the owners of a registered bond issue |
+| 债券浮动票息（bond variable coupon） | 利率可变的债券票息。<br>bond coupon that has a variable interest rate |
+| 可部分赎回债券（bond with partial call） | 具有发行人可自行决定金额部分赎回之特征的债券。<br>bond with a feature whereby the issue can be partially called for amounts that are at the discretion of the issuer |
+| 公布偿债基金债券（bond with published sinking fund） | 按已知且公开的偿债基金计划表进行摊销的债券。<br>bond whereby amortization is via a known and published schedule |
+| 附权证债券（bond with warrant） | 发行时附带一份或多份权证的债券，权证赋予持有人购买指定证券的权利。<br>bond that is issued together with one or more warrant(s) attached as part of the offer, the warrant(s) granting the holder the right to purchase a designated security, often the common stock of the issuer of the debt, at a specified price |
+| 子弹型债券（bullet bond） | 全部本金在到期日一次性支付、而非在存续期内摊销的债券。<br>bond whose entire principal value is paid on the maturity date, rather than amortized over its lifetime |
+| 可赎回债券（callable bond） | 包含允许发行人在赎回保护期后按赎回价回购并注销债券之条款的债券。<br>bond that includes a stipulation allowing the issuer the right to repurchase and retire the bond at the call price after the call protection period |
+| 可赎回可转换债券（callable convertible bond） | 同时具有可赎回特征的可转换债券。<br>convertible bond that is also callable |
+| 义务证书（certificate of obligation） | 在自然灾害等需要立即行动而无时间表决的紧急情况下供地方议会使用的市政证券。<br>municipal security available to governing councils in case of emergency, such as a natural disaster, that needs immediate action without time for voter referendum |
+| 参与证书（certificate of participation） | 证明对特定质押收入流（通常为发行人的租赁付款）享有按比例份额的债务工具。<br>debt instrument evidencing a pro rata share in a specific pledged revenue stream, usually lease payments by the issuer that are typically subject to annual appropriation |
+| 常规金边债券（conventional gilt） | 由英国财政部发行的固定票息债券，保证每六个月向持有人支付固定现金（票息）直至到期。<br>fixed coupon bond issued by HM Treasury that guarantees to pay the holder of the gilt a fixed cash payment (coupon) every six months until the maturity date, at which point the holder receives the final coupon payment and the return of the principal |
+| 可转换债券（convertible bond） | 当股票价格高于指定水平时，赋予持有人将债券转换为固定数量股份（转换比率）之权利的债券。<br>bond that gives the holder the right to convert the bond into a fixed number of shares (conversion ratio) if the equity price rises above a specified level (strike price) |
+| 公司债券（corporate bond） | 公司为筹集资金而发行的债券。<br>bond issued by a company in order to raise financing |
+| 票息支付条款（coupon payment terms） | 关于债券利息支付的条款。<br>terms for payment of interest on a bond |
+| 股票挂钩债券（equity linked bond） | 基于股票随时间的回报（即价格与股息支付或总回报，类似于总回报互换）的债券。<br>bond based on the return on an equity over time, i.e. the price and dividend payments or the total return (similar to total return swaps) |
+| 特别赎回条款（extraordinary redemption provision） | 赋予债券发行人在发行说明书规定的异常一次性事件发生时赎回债券之权利的条款。<br>provision that gives a bond issuer the right to call its bonds due to an unusual one-time occurrence, as specified in the offering statement |
+| 首个常规付息日（first regular coupon date） | 在任何非标准（长或短）首个票息期之后，常规重复票息期系列中首次常规票息支付的计划日期。<br>scheduled date for the first regular coupon payment, in a regular repeating series of coupon periods, after any non standard (long or short) first coupon period in the schedule |
+| 固定票息债券（fixed coupon bond） | 票息率和本金金额在发行或出售时确定、并在证券存续期内保持不变的债券。<br>bond whose coupon rate and principal amount are fixed at the time of origination or sale and remain constant while the security is outstanding |
+| 固定票息条款（fixed coupon terms） | 关于按固定利率支付债券利息的条款。<br>terms for payment of interest on a bond with a fixed interest rate |
+| 浮动利率票据（floating rate note） | 以公开参考利率为基础的浮动利率债券。<br>bond with a variable interest rate based on a published reference interest rate |
+| 完全信用担保债券（full faith credit bond） | 由另一实体无条件付款承诺担保的债券。<br>bond secured by an unconditional promise to pay by another entity |
+| 一般责任市政债券（general obligation municipal bond） | 由发行市政当局的完全信用、一般资源和一般征税权力支持的市政债券。<br>municipal bond that is backed by the full faith and credit and general resources of the issuing municipality, including its general taxing authority |
+| 政府债券（government bond） | 政府为资助政府开支而发行的债务证券。<br>debt security issued by a government to fund government spending |
+| 政府发行债务证券（government issued debt security） | 由某一政府代表某一政体发行的债务证券，包括主权债务和市政债务。<br>debt security issued by some government on behalf of some polity, including sovereign and municipal debt |
+| 绿色债券（green bond） | 专门为气候或环境项目融资而发行的债券。<br>bond issued specifically to fund climate or environmental projects |
+| 隐含完全信用债券（implicit full faith credit bond） | 由政府支持机构或公司（而非政府直接）发行的债券。<br>bond issued by a government sponsored agency or corporation rather than by the government directly |
+| 指数挂钩债券（index-linked bond） | 收益可能随时间变动的债券，因其票息率或本金金额与特定指数（如消费者价格指数）挂钩。<br>bond whose income may vary over time, because either the coupon rate or principal amount is related to a specific index, such as the Consumer Price Index |
+| 通胀挂钩债券（inflation-linked bond） | 与通胀挂钩的债券，其本金或利息支付随通胀率升降。<br>bond indexed to inflation so that the principal or interest payments rise and fall with the rate of inflation |
+| 最后常规付息日（last regular coupon date） | 常规重复票息期系列中最后一次常规票息支付的计划日期。<br>scheduled date of the last regular coupon payment, that is the last of the payments that are made according to a regular repeating series of coupon periods, before any non-standard (long or short) final coupon period in the schedule |
+| 上市债券（listed bond） | 可在交易所交易的债券。<br>bond that may be traded on an exchange |
+| 补偿赎回（make whole call） | 允许发行人提前清偿剩余债务的赎回安排。<br>call allowing the issuer to pay off remaining debt early |
+| 强制可转换债券（mandatory convertible bond） | 无论股票价格如何、到期时强制转换为股份的可转换债券。<br>convertible bond that converts into shares at maturity regardless of the equity price |
+| 中期票据（medium term note） | 在储架发行计划下分期发行的债券，各期可有不同票息，期限通常为一至十年。<br>bond issued over time under a shelf registration program, where each issue may have a different coupon and maturity typically ranging from one to ten years |
+| 市政债券（municipal bond） | 可由地方（而非国家）当局发行的政府债券。<br>government bond that may be issued by a regional, rather than national, authority |
+| 市政债务资金用途（municipal debt funds usage） | 说明新发行市政证券所筹资金用途的正式声明。<br>official statement specifying how the funds raised via a new issue of municipal securities are to be applied |
+| 市政债务再营销代理人（municipal debt remarketing agent） | 负责向投资者转售证券（如浮动利率即期债务和其他投标选择权债券）的市政证券交易商。<br>municipal securities dealer responsible for reselling to investors securities (such as variable rate demand obligations and other tender option bonds) that have been tendered for purchase by their owner |
+| 市政债务资金来源（municipal debt source of funds） | 指明新发行市政证券资金来源的正式声明。<br>official statement identifying the source of funds for a new issue of municipal securities |
+| 市政票据（municipal note） | 在某一日期偿还指定本金及按约定利率计付利息的短期债务，通常以特定收入来源偿付。<br>short-term obligation to repay a specified principal amount on a certain date, together with interest at a stated rate, usually payable from a defined source of anticipated revenues |
+| 市政证券（municipal security） | 由地方政府实体发行的债务凭证。<br>debt obligation issued by a regional governmental entity |
+| 市政受托机构（municipal trustee） | 由发行人指定、依债券合同以受托人身份为债券持有人利益行事的具有信托权限的金融机构。<br>financial institution with trust powers, designated by the issuer, that acts, pursuant to a bond contract, in a fiduciary capacity for the benefit of the bondholders in enforcing the terms of the bond contract |
+| 原始发行折价债券（original issue discount bond） | 以面值大幅折价发行的附息债券。<br>interest-bearing bond issued at a deep discount to face value |
+| 部分赎回（partial call） | 对债券发行的一部分进行赎回。<br>call of part of an issue |
+| 部分赎回特征（partial call feature） | 发行人可在预定日期按某规则或抽签方式选择部分债券进行赎回的赎回特征。<br>call feature whereby the issuer can recall part of the issue on scheduled dates, where bonds are selected to be called according to some rule, or by selecting various bonds at random |
+| 部分赎回分配惯例（partial redemption allocation convention） | 用于确定部分赎回如何在债券持有人之间分摊的惯例。<br>convention used to determine how the partial call will be actioned with respect to bond selection |
+| 永续债券（perpetual bond） | 没有到期日、永久支付利息的债券。<br>bond that has no maturity date, i.e., one that pays interest in perpetuity |
+| 利率基准惯例（rate basis convention） | 在规定债券赎回百分比金额时所用百分比报价利率的基准。<br>basis for a percentage quoted rate as used in specifying bond call percentage amounts |
+| 赎回付款（redemption payment） | 在到期或赎回时支付债券本金的偿还事件。<br>repayment event involving payment of a bond's principal amount at maturity or when it is called |
+| 赎回计划表（redemption schedule） | 按规定日期赎回债券发行一定百分比的偿还计划表。<br>repayment schedule whereby a given percentage of a bond issue is redeemed on predefined dates |
+| 监管赎回（regulatory call） | 由某项监管特定规则触发的赎回。<br>call triggered by some regulation-specific rule |
+| 可再营销债券（remarketable bond） | 未偿债券票息率通过拍卖程序定期重置的公司债券计划。<br>corporate bond program where the coupon rate on outstanding bonds is periodically reset through an auction process |
+| 收益债券（revenue bond） | 由特定项目收入支持的市政债券。<br>municipal bond supported by the revenue from a specific project |
+| 有担保债券（secured bond） | 除一般付款承诺外，还以抵押品（如有形资产或收入流）为支持的债券。<br>bond that is backed by collateral, such as a tangible asset or income stream, in addition to a general promise to pay |
+| 偿债基金摊销条款（sinking fund amortization terms） | 偿债基金型摊销证券本金偿付的条款。<br>terms for the paydown of principal in a sinking fund type of amortizing security |
+| 主权债券（sovereign bond） | 由国家政府发行的债券。<br>bond issued by the government of a country |
+| 主权债务工具（sovereign debt instrument） | 由国家政府发行的债务证券。<br>debt security issued by the government of a country |
+| 特别摊派债券（special assessment bond） | 用于为开发项目融资、以受益社区的摊派（税收）收入偿付的市政债券。<br>municipal bond used to fund a development project that is payable from the revenues of an assessment (tax) on the community that is intended to benefit from the project |
+| 特别责任债券（special obligation bond） | 以有限收入来源（如指定项目所得收入）为担保的债券。<br>bond secured by a limited revenue source, such as receipts derived from a designated project |
+| 特别税债券（special tax bond） | 以从价税以外的指定税收收入为担保的债券。<br>bond secured by revenues derived from designated taxes other than ad valorem taxes |
+| 票息递增债券（step up bond） | 票息在存续期内递增的债券。<br>bond with a coupon that increases (steps up) while the bond is outstanding |
+| 阶梯票息条款（stepped coupon terms） | 票息在债券存续期内递增的证券的票息支付条款。<br>coupon payment terms for securities with a coupon that increases (steps up) while the bond is outstanding |
+| 拆息债券（strip bond） | 由债券的每笔利息支付和本金分别拆分为独立零息债券而形成的系列债券之一。<br>bond that is part of a series of bonds formed by selling each interest payment and the principal amount of a bond as separate zero coupon bonds. |
+| 税收增额债券（tax allocation bond） | 以财产价值和其他经济活动增加所实现税收增量偿付的债券，通常用于特定开发区。<br>bond payable from the incremental increase in tax revenues realized from any increase in property value and other economic activity, often designed to capture the economic benefit resulting from a bond financing |
+| 短期国库券（treasury bill） | 期限为一至十二个月的短期零息国库债务。<br>short-term zero coupon treasury obligation with a maturity ranging from one to twelve months |
+| 长期国债（treasury bond） | 以 20 年或 30 年期发行、每六个月付息一次直至到期的长期附息国库债务。<br>long term term coupon bearing treasury obligation issued in terms of 20 years or 30 years that pays interest every six months until they mature |
+| 通胀保值国债（treasury inflation-protected security） | 本金与通胀或通缩挂钩、并在证券存续期内相应变动的可变收益债券。<br>variable income bond whose principal is indexed to inflation or deflation and thus changes over the life of the security |
+| 中期国债（treasury note） | 原始期限为二至十年的中期附息国库债务。<br>medium term coupon bearing treasury obligation with original maturity ranging from two to ten years |
+| 非上市债券（unlisted bond） | 在场外交易（而非通过交易所或其他挂牌场所）的债券。<br>bond that is traded over the counter rather than via an exchange or other listing facility |
+| 无担保债券（unsecured bond） | 仅以债券发行人的良好信用为支持的债券。<br>bond that is only secured by the bond issuer's good credit standing |
+| 浮动票息债券（variable coupon bond） | 利率浮动的债券。<br>bond that has a floating interest rate |
+| 浮动票息条款（variable coupon terms） | 规定浮动票息债券利率计算方法的合同条款。<br>contractual terms specifying the calculation of the interest rate for a variable coupon bond |
+| 可变债务本金（variable debt principal） | 随某一变量定义、因而随时间变动的本金。<br>principal that is defined in relation to some variable and so varies over time, as principal |
+| 可变收益债券（variable income bond） | 收益可能随时间变动的债券，因其票息率或本金金额在存续期内随某指数或计划表变动。<br>bond whose income may vary over time, because either the coupon rate or principal amount changes in line with an index or schedule over the life of the security |
+| 可变利息计算公式（variable interest calculation formula） | 用于计算可变利息的公式。<br>formula for the calculation of variable interest |
+| 可变利息表达式（variable interest expression） | 用于确定可变利息支付金额的表达式。<br>an expression used to determine a variable interest payment amount |
+| 可变本金债券（variable principal bond） | 本金随指数变动而调整的债券。<br>bond whose principal adjusts over time with changes in an index |
+| 零息债券（zero coupon bond） | 票息率为零、以面值大幅折价交易的债券。<br>bond issued with a coupon rate of zero and that trades at a deep discount to face value |
+| 零息条款（zero coupon terms） | 关于零息债券利息支付的条款。<br>terms for payment of interest on a zero coupon bond |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -136,7 +136,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有原始发行折价金额（has original issue discount amount）** | 指明到期既定赎回价格与发行价格之间的差额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有原始发行折价金额（has original issue discount amount）** | 指明到期既定赎回价格与发行价格之间的差额。<br>indicates the difference between the stated redemption price at maturity and the issue price | 值域：货币数量；子属性：具有货币数量 |
 | **具有利息支付条款（hasInterestPaymentTerms）** | — | — |
 | **具有偿还条款（hasRepaymentTerms）** | — | — |
 | **具有系列（hasSeries）** | — | — |
@@ -206,7 +206,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有特别赎回条款（has extraordinary redemption provision）** | 将债务工具的赎回条款与发行人在特定情况下可行使的一次性条款关联起来。 | 值域：特别赎回条款（extraordinary redemption provision）；子属性：具有合同要素 |
+| **具有特别赎回条款（has extraordinary redemption provision）** | 将债务工具的赎回条款与发行人在特定情况下可行使的一次性条款关联起来。<br>relates the redemption provision of a debt instrument to one-time provision that may be exercised by the issuer under certain circumstances | 值域：特别赎回条款（extraordinary redemption provision）；子属性：具有合同要素 |
 | **具有赎回特征（hasCallFeature）** | — | — |
 | **是否可赎回（isCallable）** | — | — |
 
@@ -338,10 +338,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有配售日（has award date）** | 规定协议承销中债券配售给牵头行或银团的日期，或竞争性承销中的投标日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有市政受托机构（has municipal trustee）** | 指明由发行人指定、依债券合同以受托人身份为债券持有人利益行事的具有信托权限的金融机构。 | 值域：市政受托机构（municipal trustee）；子属性：具有第三方 |
-| **银行合格（is bank qualified）** | 发行人在合理预期其在该发行日历年内的发行不超过规定额度时，给予公共目的债券发行的指定。 | 值域：xsd:boolean |
-| **是否有法律意见书（is legal opinion available）** | 表明某一市政债券是否存在法律意见书。 | 值域：xsd:boolean |
+| **具有配售日（has award date）** | 规定协议承销中债券配售给牵头行或银团的日期，或竞争性承销中的投标日期。<br>specifies the date on which bonds are awarded to the lead manager or syndicate on negotiated deals, or the date of bidding on competitive deals | 值域：显式日期；子属性：具有显式日期 |
+| **具有市政受托机构（has municipal trustee）** | 指明由发行人指定、依债券合同以受托人身份为债券持有人利益行事的具有信托权限的金融机构。<br>specifies the financial institution with trust powers, designated by the issuer, that acts, pursuant to a bond contract, in a fiduciary capacity for the benefit of the bondholders in enforcing the terms of the bond contract | 值域：市政受托机构（municipal trustee）；子属性：具有第三方 |
+| **银行合格（is bank qualified）** | 发行人在合理预期其在该发行日历年内的发行不超过规定额度时，给予公共目的债券发行的指定。<br>indicates whether or not a given municipal bond conforms with section 265(b)(3) of the IRS tax code; when purchased by a commercial bank for its portfolio, such designation allows the bank to deduct a portion of the interest cost of carry for the position | 值域：xsd:boolean |
+| **是否有法律意见书（is legal opinion available）** | 表明某一市政债券是否存在法律意见书。<br>indicates whether a legal opinion exists for a given municipal bond | 值域：xsd:boolean |
 
 ###### 2.1.8.1.1 建设美国债券（Build America Bond）
 
@@ -445,7 +445,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有原始发行折价金额（has original issue discount amount）** | 指明到期既定赎回价格与发行价格之间的差额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有原始发行折价金额（has original issue discount amount）** | 指明到期既定赎回价格与发行价格之间的差额。<br>indicates the difference between the stated redemption price at maturity and the issue price | 值域：货币数量；子属性：具有货币数量 |
 | **具有到期时相对价格（hasRelativePriceAtMaturity）** | — | — |
 
 公理：
@@ -627,7 +627,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有原始发行折价金额（has original issue discount amount）** | 指明到期既定赎回价格与发行价格之间的差额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有原始发行折价金额（has original issue discount amount）** | 指明到期既定赎回价格与发行价格之间的差额。<br>indicates the difference between the stated redemption price at maturity and the issue price | 值域：货币数量；子属性：具有货币数量 |
 | **具有利息支付条款（hasInterestPaymentTerms）** | — | — |
 | **具有到期时相对价格（hasRelativePriceAtMaturity）** | — | — |
 
@@ -663,7 +663,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有转换日（has convertible date）** | 债券可转换为指定权益证券的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有转换日（has convertible date）** | 债券可转换为指定权益证券的日期。<br>date on which a bond can be converted into the specified equity security | 值域：显式日期；子属性：具有显式日期 |
 | **规定转换为（specifiesConversionInto）** | — | — |
 
 公理：
@@ -735,8 +735,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否强制（is mandatory）** | 表明某事物是否为必需。 | 值域：xsd:boolean |
-| **超级偿债债券（super sinker）** | 表明该债券具有长期票息但潜在到期日较短。 | 值域：xsd:boolean |
+| **是否强制（is mandatory）** | 表明某事物是否为必需。<br>indicates whether something is required | 值域：xsd:boolean |
+| **超级偿债债券（super sinker）** | 表明该债券具有长期票息但潜在到期日较短。<br>indicates that the bond has a long-term coupon but short potential short maturity | 值域：xsd:boolean |
 
 公理：
 
@@ -800,9 +800,9 @@
 | **具有利率（hasInterestRate）** | — | — |
 | **具有货币（hasCurrency）** | — | — |
 | **具有进度表（hasSchedule）** | — | — |
-| **具有首次付息日（has first coupon payment date）** | 规定发行人或其代理人预期或承诺支付首次票息的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有最后付息日（has last coupon payment date）** | 规定发行人预期支付最后一次票息的日期。 | 值域：显式日期；子属性：具有结束日期 |
-| **具有到期前最后付息日（has penultimate coupon payment date）** | 规定到期前的最后一次票息支付日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有首次付息日（has first coupon payment date）** | 规定发行人或其代理人预期或承诺支付首次票息的日期。<br>specifies the first date on which the issuer or its agent expects or commits to make a coupon payment | 值域：显式日期；子属性：具有显式日期 |
+| **具有最后付息日（has last coupon payment date）** | 规定发行人预期支付最后一次票息的日期。<br>specifies the final date on which the issuer expects to make a final coupon payment | 值域：显式日期；子属性：具有结束日期 |
+| **具有到期前最后付息日（has penultimate coupon payment date）** | 规定到期前的最后一次票息支付日期。<br>specifies the last coupon payment prior to maturity | 值域：显式日期；子属性：具有显式日期 |
 
 公理：
 
@@ -855,7 +855,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **基于（isBasedOn）** | — | — |
-| **具有重置日偏移（has reset date offset）** | 指明相对于票息支付日进行利率重置的偏移量。 | 值域：相对日期；子属性：具有日期 |
+| **具有重置日偏移（has reset date offset）** | 指明相对于票息支付日进行利率重置的偏移量。<br>indicates the offset from the coupon payment date on which the rate is reset | 值域：相对日期；子属性：具有日期 |
 | **具有表达式（hasExpression）** | — | — |
 
 公理：
@@ -905,8 +905,8 @@
 |---|---|---|
 | **具有目标（hasObjective）** | — | — |
 | **由……发行（isIssuedBy）** | — | — |
-| **具有资金来源（has funding source）** | 指明新发行市政证券的资金来源。 | 值域：市政债务资金来源（municipal debt source of funds）；子属性：具有数据来源 |
-| **具有再营销代理（has remarketing agent）** | 标识再营销代理。 | 值域：市政债务再营销代理人（municipal debt remarketing agent）；子属性：具有第三方 |
+| **具有资金来源（has funding source）** | 指明新发行市政证券的资金来源。<br>indicates the source of funds for a new issue of municipal securities | 值域：市政债务资金来源（municipal debt source of funds）；子属性：具有数据来源 |
+| **具有再营销代理（has remarketing agent）** | 标识再营销代理。<br>identifies the dealer responsible for reselling to investors securities (such as variable rate demand obligations and other tender option bonds) that have been tendered for purchase by their owner. | 值域：市政债务再营销代理人（municipal debt remarketing agent）；子属性：具有第三方 |
 
 公理：
 
@@ -1040,7 +1040,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有部分赎回分配惯例（has partial redemption allocation convention）** | 指明用于确定赎回如何在债券持有人集合中分摊的惯例。 | 值域：部分赎回分配惯例（partial redemption allocation convention） |
+| **具有部分赎回分配惯例（has partial redemption allocation convention）** | 指明用于确定赎回如何在债券持有人集合中分摊的惯例。<br>indicates the convention used to determine how the redemption is allocated over the set of bond holders | 值域：部分赎回分配惯例（partial redemption allocation convention） |
 
 公理：
 
@@ -1088,7 +1088,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有赎回金额（has redemption amount）** | 指明赎回付款中支付的本金金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有赎回金额（has redemption amount）** | 指明赎回付款中支付的本金金额。<br>indicates the amount of the principal paid with a redemption payment | 值域：货币数量；子属性：具有货币数量 |
 
 ### 2.23 赎回计划表（redemption schedule）
 
@@ -1144,8 +1144,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有上限（has ceiling）** | 指明可变利息支付金额的最大值。 | 值域：xsd:decimal；子属性：具有比率值 |
-| **具有下限（has floor）** | 指明可变利息支付金额的最小值。 | 值域：xsd:decimal；子属性：具有比率值 |
+| **具有上限（has ceiling）** | 指明可变利息支付金额的最大值。<br>indicates the maximum variable interest payment amount | 值域：xsd:decimal；子属性：具有比率值 |
+| **具有下限（has floor）** | 指明可变利息支付金额的最小值。<br>indicates the minimum variable interest payment amount | 值域：xsd:decimal；子属性：具有比率值 |
 | **具有自变量（hasArgument）** | — | — |
 
 公理：
@@ -1162,27 +1162,27 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有赎回价格（has call price）** | 指明指定赎回日的赎回金额，通常为面值加赎回溢价，按合约规定。 | 值域：货币价格；子属性：具有价格 |
-| **具有赎回利率基准（has call rate basis）** | 对计划表中的每一赎回事件，指明该利率以面值百分比还是累计平均百分比表示。 | 值域：利率基准惯例（rate basis convention） |
-| **具有最终到期日（has final maturity date）** | 指明金融工具的最后付款日，届时本金（及全部剩余利息）到期应付。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有首次赎回价格（has first call price）** | 指明赎回计划表规定的首个赎回日的赎回金额。 | 值域：货币价格；子属性：具有赎回价格（has call price） |
-| **具有首次平价赎回日（has first par call date）** | 指明债券首次可按面值赎回的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有首次平价赎回价格（has first par call price）** | 规定赎回计划表中首个平价赎回日的赎回金额。 | 值域：货币价格；子属性：具有首次赎回价格（has first call price） |
-| **具有首次溢价赎回日（has first premium call date）** | 指明债券首次可按高于面值的价格赎回的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有首次溢价赎回价格（has first premium call price）** | 规定赎回计划表中首次可按高于面值价格赎回之日的赎回金额。 | 值域：货币价格；子属性：具有首次赎回价格（has first call price） |
-| **具有首次回售日（has first put date）** | 指明持有人可在到期前将债券售回给发行人的首个日期。 | 值域：显式日期；子属性：具有回售日（has put date） |
-| **具有首次回售价格（has first put price）** | 规定持有人可在到期前将债券售回给发行人的初始价格。 | 值域：货币价格；子属性：具有价格 |
-| **具有锁定期（has lockout period）** | 指明可赎回证券不可赎回、持有人仅收到利息票息支付的时间段。 | 值域：日期区间；子属性：具有日期区间 |
-| **具有溢价金额（has premium amount）** | 指明债券被赎回时支付给债券持有人的溢价。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有回售日（has put date）** | 指明证券可由债券持有人要求赎回的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有回售频率（has put frequency）** | 指明回售特征可行使的重复时间窗口。 | 值域：重复区间；子属性：具有重复区间 |
-| **关联后备债券（is linked to fallback）** | 将指数挂钩工具与计算代理人可选定的政府债券关联起来。 | 值域：政府债券（government bond）；子属性：引用 |
+| **具有赎回价格（has call price）** | 指明指定赎回日的赎回金额，通常为面值加赎回溢价，按合约规定。<br>indicates the amount of the call on the specified call date, typically the sum of par value and the call premium, as specified in the contract | 值域：货币价格；子属性：具有价格 |
+| **具有赎回利率基准（has call rate basis）** | 对计划表中的每一赎回事件，指明该利率以面值百分比还是累计平均百分比表示。<br>for each call event on the schedule, indicates whether the rate is expressed as a percentage of par or percentage of percentage of cumulative average value (CAV) | 值域：利率基准惯例（rate basis convention） |
+| **具有最终到期日（has final maturity date）** | 指明金融工具的最后付款日，届时本金（及全部剩余利息）到期应付。<br>indicates the final payment date of a financial instrument, at which point the principal (and all remaining interest) is due to be paid | 值域：显式日期；子属性：具有显式日期 |
+| **具有首次赎回价格（has first call price）** | 指明赎回计划表规定的首个赎回日的赎回金额。<br>indicates the amount of the call on the first call date as specified in the call schedule | 值域：货币价格；子属性：具有赎回价格（has call price） |
+| **具有首次平价赎回日（has first par call date）** | 指明债券首次可按面值赎回的日期。<br>indicates the first date on which the bond may be called at par for redemption | 值域：显式日期；子属性：具有显式日期 |
+| **具有首次平价赎回价格（has first par call price）** | 规定赎回计划表中首个平价赎回日的赎回金额。<br>specifies the amount of the call on the first par call date as specified in the call schedule | 值域：货币价格；子属性：具有首次赎回价格（has first call price） |
+| **具有首次溢价赎回日（has first premium call date）** | 指明债券首次可按高于面值的价格赎回的日期。<br>indicates the first date on which the bond may be called for redemption at a price above par | 值域：显式日期；子属性：具有显式日期 |
+| **具有首次溢价赎回价格（has first premium call price）** | 规定赎回计划表中首次可按高于面值价格赎回之日的赎回金额。<br>specifies the amount of the call on the first call date on which the bond may be called at a price above par as specified in the call schedule | 值域：货币价格；子属性：具有首次赎回价格（has first call price） |
+| **具有首次回售日（has first put date）** | 指明持有人可在到期前将债券售回给发行人的首个日期。<br>indicates the initial date on which the holder may sell the bond to the issuer prior to maturity | 值域：显式日期；子属性：具有回售日（has put date） |
+| **具有首次回售价格（has first put price）** | 规定持有人可在到期前将债券售回给发行人的初始价格。<br>specifies the initial price at which the holder may sell the bond to the issuer prior to maturity | 值域：货币价格；子属性：具有价格 |
+| **具有锁定期（has lockout period）** | 指明可赎回证券不可赎回、持有人仅收到利息票息支付的时间段。<br>indicates the period of time for which a callable security cannot be called and only interest coupon payments are received by the security holder | 值域：日期区间；子属性：具有日期区间 |
+| **具有溢价金额（has premium amount）** | 指明债券被赎回时支付给债券持有人的溢价。<br>indicates the premium paid to a bond holder when the bond is called | 值域：货币数量；子属性：具有货币数量 |
+| **具有回售日（has put date）** | 指明证券可由债券持有人要求赎回的日期。<br>indicates the date on which a security is subject to redemption by the bond holder | 值域：显式日期；子属性：具有显式日期 |
+| **具有回售频率（has put frequency）** | 指明回售特征可行使的重复时间窗口。<br>indicates the recurring window of time in which the put feature can be exercised | 值域：重复区间；子属性：具有重复区间 |
+| **关联后备债券（is linked to fallback）** | 将指数挂钩工具与计算代理人可选定的政府债券关联起来。<br>relates an index-linked instrument to a government bond that may be selected by a calculation agent | 值域：政府债券（government bond）；子属性：引用 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **是否按比例计算（is pro-rated）** | 表明票息是否按付款期间实际天数与付款期数之比按比例计算。 |
+| **是否按比例计算（is pro-rated）** | 表明票息是否按付款期间实际天数与付款期数之比按比例计算。<br>indicates whether the coupon is pro rated to the actual number of days in the payment period versus the number of payment periods |
 
 ## 4. 依赖（owl:imports，37 个）
 

@@ -29,12 +29,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 最终招募说明书（final prospectus） | 描述发行事项的最终招募说明书，包括发行本身的事实（如截止日期）及已知的相关事实。 |
-| 信托契约（indenture） | 债券与信用债券据以发行的书面合同，又称「信托契据」，载明到期日、利率、赎回条款等。 |
+| 最终招募说明书（final prospectus） | 描述发行事项的最终招募说明书，包括发行本身的事实（如截止日期）及已知的相关事实。<br>The final Prospectus for an issue describes the Offer Issue, including facts about the issue itself such as closing dates, and known facts about the securities that will form part of that issue. |
+| 信托契约（indenture） | 债券与信用债券据以发行的书面合同，又称「信托契据」，载明到期日、利率、赎回条款等。<br>A written contract, also known as a "Deed of Trust", under which bonds and debentures are issued, setting forth maturity date, interest rate, redemption rights, call privileges and other terms. Under the rules of the Trust Indenture Act of 1939, the contract is executed by the issuer and a trustee who acts on behalf of the bondholders. |
 | 发行信托协议（issuance trust agreement） | 就某次证券发行设立的信托协议。 |
-| 发行文件条款（offering document terms） | 发行文件中包含的、在发行时产生法律约束力的条款。 |
-| 初步招募说明书（preliminary prospectus） | 发行营销前确定的招募说明书草案，其中某些条款将在发行后续阶段定稿。 |
-| 证券发行协议（securities issuance agreement） | 就某次拟议证券发行订立的正式协议、契据或合同。 |
+| 发行文件条款（offering document terms） | 发行文件中包含的、在发行时产生法律约束力的条款。<br>terms included in an offering document that become legally binding at issue |
+| 初步招募说明书（preliminary prospectus） | 发行营销前确定的招募说明书草案，其中某些条款将在发行后续阶段定稿。<br>The draft prospectus for the issue, as determined prior to marketing the issue. Certain terms in the draft prospectus will be finalized later in the issuance process to become the actual Prospectus. Term origin:DTCC issuance Reviews |
+| 证券发行协议（securities issuance agreement） | 就某次拟议证券发行订立的正式协议、契据或合同。<br>A formal agreement, deed or contract in respect of some intended securities issuance. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

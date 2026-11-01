@@ -34,29 +34,29 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 跨货币利率互换（cross-currency interest rate swap） | 两笔利息支付流使用不同货币的利率互换。 |
-| 固定对固定利率互换（fixed fixed interest rate swap） | 双方均支付通过互换安排之外无法获得的固定利率的利率互换。 |
-| 跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap） | 以名义本金的固定利息支付交换浮动利息支付、且两笔支付流使用不同货币的利率互换。 |
-| 固定对浮动利率互换（fixed float interest rate swap） | 以名义本金的固定利息支付交换浮动利息支付的利率互换。 |
-| 单货币固定对浮动利率互换（fixed float single currency interest rate swap） | 以名义本金的固定利息支付交换浮动利息支付、且两笔支付流使用同一货币的利率互换。 |
-| 固定利率腿（fixed interest rate leg） | 规定固定利息金额及该利息支付条款的固定腿。 |
-| 跨货币浮动对浮动利率互换（float float cross-currency interest rate swap） | 交换基于两种不同货币不同利率之现金流的利率互换。 |
-| 浮动对浮动利率互换（float float interest rate swap） | 交换基于两种不同浮动利率之现金流的利率互换。 |
-| 单货币浮动对浮动利率互换（float float single currency interest rate swap） | 交换基于同一货币两种不同浮动利率之现金流的利率互换。 |
-| 浮动利率腿（floating interest rate leg） | 就某一名义本金支付可变利息、并与某一基础利率参考挂钩的浮动腿。 |
-| 通胀腿（inflation leg） | 与通胀指数（如消费者价格指数 CPI）挂钩的通胀互换浮动利率腿。 |
-| 通胀互换（inflation swap） | 一方按通胀率指数计算付款、另一方按另一通胀率或其他方式计算付款的利率互换。 |
-| 利率互换（interest rate swap） | 至少一腿的参考标的为利率的互换。 |
-| 利率互换腿（interest rate swap leg） | 具有利率支付流的互换腿，包括该支付流的参数化表示和现金流表示。 |
-| 名义本金阶梯金额（notional step amount） | 在每个阶梯日从名义本金中减去（或增加）的金额。 |
-| 名义本金阶梯变更事件（notional step change event） | 某一互换腿名义本金发生阶梯式变更的事件。 |
-| 名义本金阶梯周期长度（notional step period length） | 表示阶梯变更发生频率的重复区间，为计算计划表中计算周期的整数倍。 |
-| 名义本金阶梯计划表（notional step schedule） | 计息名义本金变更的计划表，由规则的阶梯事件序列构成。 |
-| 隔夜指数互换（overnight index swap） | 一腿的定期付款基于隔夜利率指数乘以与另一腿相同名义本金的互换。 |
-| 隔夜利率指数腿（overnight rate index leg） | 定期付款基于隔夜利率指数乘以相同名义本金的浮动腿。 |
-| 普通利率互换（plain vanilla interest rate swap） | 利息支付净额结算、名义本金不变、不内嵌任何期权或其他复杂结构的单货币固定对浮动利率互换。 |
-| 单货币利率互换（single currency interest rate swap） | 两笔利息支付流使用同一货币的利率互换。 |
-| 零息利率互换（zero coupon interest rate swap） | 固定利率现金流复利累积并在到期日一次性支付（而非定期支付）的利率互换。 |
+| 跨货币利率互换（cross-currency interest rate swap） | 两笔利息支付流使用不同货币的利率互换。<br>interest rate swap in which the two streams of interest payments are in different currencies |
+| 固定对固定利率互换（fixed fixed interest rate swap） | 双方均支付通过互换安排之外无法获得的固定利率的利率互换。<br>interest rate swap in which both parties pay a fixed interest rate that they could not otherwise obtain outside of a swap arrangement |
+| 跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap） | 以名义本金的固定利息支付交换浮动利息支付、且两笔支付流使用不同货币的利率互换。<br>interest rate swap in which fixed interest payments on the notional are exchanged for floating interest payments and the two streams of interest payments are in different currencies |
+| 固定对浮动利率互换（fixed float interest rate swap） | 以名义本金的固定利息支付交换浮动利息支付的利率互换。<br>interest rate swap in which fixed interest payments on the notional are exchanged for floating interest payments |
+| 单货币固定对浮动利率互换（fixed float single currency interest rate swap） | 以名义本金的固定利息支付交换浮动利息支付、且两笔支付流使用同一货币的利率互换。<br>interest rate swap in which fixed interest payments on the notional are exchanged for floating interest payments and where both payment streams are expressed in terms of the same currency |
+| 固定利率腿（fixed interest rate leg） | 规定固定利息金额及该利息支付条款的固定腿。<br>fixed leg that specifies fixed interest amounts and terms for the payment of that interest |
+| 跨货币浮动对浮动利率互换（float float cross-currency interest rate swap） | 交换基于两种不同货币不同利率之现金流的利率互换。<br>interest rate swap that exchanges cashflows based on two different interest rates in different currencies |
+| 浮动对浮动利率互换（float float interest rate swap） | 交换基于两种不同浮动利率之现金流的利率互换。<br>interest rate swap that exchanges cashflows based on two different floating interest rates |
+| 单货币浮动对浮动利率互换（float float single currency interest rate swap） | 交换基于同一货币两种不同浮动利率之现金流的利率互换。<br>interest rate swap that exchanges cashflows based on two different floating interest rates in the same currency |
+| 浮动利率腿（floating interest rate leg） | 就某一名义本金支付可变利息、并与某一基础利率参考挂钩的浮动腿。<br>floating leg in which variable interest is paid on some notional amount, linked to some underlying interest reference rate |
+| 通胀腿（inflation leg） | 与通胀指数（如消费者价格指数 CPI）挂钩的通胀互换浮动利率腿。<br>floating rate leg of an inflation swap linked to an inflation index, such as the Consumer Price Index (CPI) |
+| 通胀互换（inflation swap） | 一方按通胀率指数计算付款、另一方按另一通胀率或其他方式计算付款的利率互换。<br>rate swap in which one party pays an amount calculated using an inflation rate index, and the other party pays an amount calculated using another inflation rate index, or a fixed or floating interest rate |
+| 利率互换（interest rate swap） | 至少一腿的参考标的为利率的互换。<br>swap in which the reference (underlier) for at least one leg is an interest rate |
+| 利率互换腿（interest rate swap leg） | 具有利率支付流的互换腿，包括该支付流的参数化表示和现金流表示。<br>swap leg that has an interest rate payment stream, including both a parametric and cashflow representation for the stream of payments |
+| 名义本金阶梯金额（notional step amount） | 在每个阶梯日从名义本金中减去（或增加）的金额。<br>the amount of money that is subtracted from the notional on each step date |
+| 名义本金阶梯变更事件（notional step change event） | 某一互换腿名义本金发生阶梯式变更的事件。<br>event in which a step change in the notional amount for a given swap leg occurs |
+| 名义本金阶梯周期长度（notional step period length） | 表示阶梯变更发生频率的重复区间，为计算计划表中计算周期的整数倍。<br>recurrence interval indicating the frequency with which step changes occur, which is a multiple of the calculation period in the calculation schedule |
+| 名义本金阶梯计划表（notional step schedule） | 计息名义本金变更的计划表，由规则的阶梯事件序列构成。<br>schedule of changes in the notional amount on which interest is paid, comprising the regular sequence of step events |
+| 隔夜指数互换（overnight index swap） | 一腿的定期付款基于隔夜利率指数乘以与另一腿相同名义本金的互换。<br>swap in which the periodic payments for one leg are based on an overnight interest rate index multiplied by the same notional amount upon which payments for the other leg of the swap are based |
+| 隔夜利率指数腿（overnight rate index leg） | 定期付款基于隔夜利率指数乘以相同名义本金的浮动腿。<br>floating leg in which periodic payments are based on an overnight interest rate index multiplied by the same notional amount on which the payments for the other leg of the swap are based |
+| 普通利率互换（plain vanilla interest rate swap） | 利息支付净额结算、名义本金不变、不内嵌任何期权或其他复杂结构的单货币固定对浮动利率互换。<br>fixed-float single currency interest rate swap in which interest payments are netted, the notional principal does not change, and there are no embedded options |
+| 单货币利率互换（single currency interest rate swap） | 两笔利息支付流使用同一货币的利率互换。<br>interest rate swap in which the two streams of interest payments are in the same currency |
+| 零息利率互换（zero coupon interest rate swap） | 固定利率现金流复利累积并在到期日一次性支付（而非定期支付）的利率互换。<br>interest rate swap in which the fixed rate cash flows are compounded and paid once on the expiration date, rather than periodically; the payments on the other side (which can be based on a floating interest rate or a fixed rate) follow typical swap payment schedules |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -389,17 +389,17 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有首个名义本金阶梯日（has first notional step date）** | 指明名义本金阶梯计划表中的首个日期。 | 值域：显式日期；子属性：具有起始日期 |
-| **具有浮动利率上限（has floating rate cap）** | 指明浮动利率债务利率的可选上限。 | 值域：浮动利率；子属性：具有利率 |
-| **具有浮动利率下限（has floating rate floor）** | 指明浮动利率债务利率的可选下限。 | 值域：浮动利率；子属性：具有利率 |
-| **具有最后名义本金阶梯日（has last notional step date）** | 指明名义本金阶梯计划表中的最后日期。 | 值域：显式日期；子属性：具有结束日期 |
+| **具有首个名义本金阶梯日（has first notional step date）** | 指明名义本金阶梯计划表中的首个日期。<br>indicates the initial date in a notional step schedule | 值域：显式日期；子属性：具有起始日期 |
+| **具有浮动利率上限（has floating rate cap）** | 指明浮动利率债务利率的可选上限。<br>indicates an optional ceiling (cap) on interest rates on floating rate debts | 值域：浮动利率；子属性：具有利率 |
+| **具有浮动利率下限（has floating rate floor）** | 指明浮动利率债务利率的可选下限。<br>indicates an optional lower bound on interest rates on floating rate debts | 值域：浮动利率；子属性：具有利率 |
+| **具有最后名义本金阶梯日（has last notional step date）** | 指明名义本金阶梯计划表中的最后日期。<br>indicates the final date in a notional step schedule | 值域：显式日期；子属性：具有结束日期 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有浮动利率利差（has floating rate spread）** | 规定可用于调整浮动利率的可选利差。 |
-| **具有利率乘数（has rate multiplier）** | 指明在加入浮动利率利差之前应用于票息的乘数。 |
+| **具有浮动利率利差（has floating rate spread）** | 规定可用于调整浮动利率的可选利差。<br>defines the spread rate that can optionally be used to adjust the floating rate |
+| **具有利率乘数（has rate multiplier）** | 指明在加入浮动利率利差之前应用于票息的乘数。<br>indicates a multiplier applied to the coupon before adding the floating rate spread |
 
 ## 4. 依赖（owl:imports，23 个）
 

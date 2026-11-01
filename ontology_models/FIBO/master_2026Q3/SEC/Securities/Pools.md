@@ -33,17 +33,17 @@
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 证券池成分（SecuritiesPoolConstituent） | 证券池的组成部分。 |
-| 集合投资工具（collective investment vehicle） | 由投资者汇聚的资产池，其股本与该工具的资产保持分离。 |
-| 债务池（debt pool） | 由债务工具（如债券、贷款或抵押贷款）组成的池。 |
-| 基金家族（fund family） | 由单一投资机构管理的集合投资产品的集合。 |
-| 工具池（instrument pool） | 由可纳入同一投资工具的金融工具组成的池。 |
-| 作为资产的工具池（instrument pool as asset） | 以工具池形式存在的金融资产。 |
-| 管理型投资（managed investment） | 由专业投资管理人控制的投资池，管理人将该池投资于符合既定目标的各类金融工具和资产。 |
-| 池（pool） | 为共同目的或利益而组合的资源。 |
-| 池成分（pool constituent） | 池的组成部分。 |
-| 汇集基金（pooled fund） | 由为共同投资目的而组合和管理的资产构成的基金。 |
-| 私募基金（private fund） | 不得向公众发售证券的管理型投资。 |
-| 证券池（securities pool） | 为基于这些证券发行票据而组织的证券池。 |
+| 集合投资工具（collective investment vehicle） | 由投资者汇聚的资产池，其股本与该工具的资产保持分离。<br>assets pooled by investors whose share capital remains separate from the assets of the vehicle |
+| 债务池（debt pool） | 由债务工具（如债券、贷款或抵押贷款）组成的池。<br>pool consisting of debt instruments, such as bonds, loans or mortgages |
+| 基金家族（fund family） | 由单一投资机构管理的集合投资产品的集合。<br>collection of managed investments that are all managed by a single investment institution |
+| 工具池（instrument pool） | 由可纳入同一投资工具的金融工具组成的池。<br>pool consisting of financial instruments that may be included in the same investment vehicle |
+| 作为资产的工具池（instrument pool as asset） | 以工具池形式存在的金融资产。<br>financial asset in the form of an instrument pool |
+| 管理型投资（managed investment） | 由专业投资管理人控制的投资池，管理人将该池投资于符合既定目标的各类金融工具和资产。<br>investment pool that is controlled by a professional investment manager who invests the pool in various financial instruments and assets that align with their investment objectives and is overseen by a board of directors |
+| 池（pool） | 为共同目的或利益而组合的资源。<br>combination of resources for a common purpose or benefit |
+| 池成分（pool constituent） | 池的组成部分。<br>component of a pool |
+| 汇集基金（pooled fund） | 由为共同投资目的而组合和管理的资产构成的基金。<br>fund comprising assets combined and managed for a common investment purpose |
+| 私募基金（private fund） | 不得向公众发售证券的管理型投资。<br>managed investment that cannot offer securities to the public |
+| 证券池（securities pool） | 为基于这些证券发行票据而组织的证券池。<br>pool of securities organized for the purpose of issuing notes against those securities |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

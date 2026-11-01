@@ -24,7 +24,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 建设贷款（construction loan） | 覆盖建设与开发成本、以所融资房产之抵押作担保的贷款。 |
+| 建设贷款（construction loan） | 覆盖建设与开发成本、以所融资房产之抵押作担保的贷款。<br>loan covering construction and development costs, secured by a mortgage on the property financed |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -54,9 +54,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有最高允许余额（has maximum allowed balance）** | 对具有灵活再提取安排的贷款，任何时点允许未偿的最高余额（低于信用额度）。 | 值域：货币数量；子属性：具有可用金额 |
-| **具有最高预期余额（has maximum anticipated balance）** | 借款人出于规划目的预计可能需要的最高余额（低于信用额度）。 | 值域：货币数量；子属性：具有可用金额 |
-| **具有里程碑最高提取额（has milestone maximum drawdown amount）** | 里程碑完成后借款人可提取的最高贷款金额。 | 值域：货币数量；子属性：具有可用金额 |
+| **具有最高允许余额（has maximum allowed balance）** | 对具有灵活再提取安排的贷款，任何时点允许未偿的最高余额（低于信用额度）。<br>maximum balance that may be outstanding at any time, below the credit limit, for loans with flexible re-draw facilities | 值域：货币数量；子属性：具有可用金额 |
+| **具有最高预期余额（has maximum anticipated balance）** | 借款人出于规划目的预计可能需要的最高余额（低于信用额度）。<br>maximum balance the borrower believes they might need, below the credit limit, for planning purposes, for loans with flexible re-draw facilities | 值域：货币数量；子属性：具有可用金额 |
+| **具有里程碑最高提取额（has milestone maximum drawdown amount）** | 里程碑完成后借款人可提取的最高贷款金额。<br>maximum amount of the loan that can be drawn by the borrower on completion of the milestone | 值域：货币数量；子属性：具有可用金额 |
 
 ## 4. 依赖（owl:imports，9 个）
 

@@ -34,20 +34,20 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 全国抵押贷款许可系统与登记处标识符（Nationwide Mortgage Licensing System and Registry Identifier） | NMLS 为每个维持登记的公司、分支和个人永久分配的编号。 |
-| 摊销类型（amortization type） | 摊销算法的分类符。 |
-| 自动化系统（automated system） | 减少或消除人工参与即可完成任务的系统。 |
-| 自动核保系统（automated underwriting system） | 收集批准贷款申请所需信息、支持抵押贷款人对新申请进行分析的软件系统。 |
-| 提现状态（cash-out status） | 表明在以新贷款为现有贷款再融资的发放中向借款人释放资金之程度的分类符。 |
-| 收费类别（charge category） | 收费类别，如结清费用、利息、税项及其他服务相关费用。 |
-| 住宅容量（dwelling capacity） | 表明某物业拥有多少住宅单元的分类符。 |
+| 全国抵押贷款许可系统与登记处标识符（Nationwide Mortgage Licensing System and Registry Identifier） | NMLS 为每个维持登记的公司、分支和个人永久分配的编号。<br>the number permanently assigned by the Nationwide Mortgage Licensing System and Registry (NMLS) for each company, branch, and individual that maintains a single account on NMLS. |
+| 摊销类型（amortization type） | 摊销算法的分类符。<br>classifier of amortization algorithms |
+| 自动化系统（automated system） | 减少或消除人工参与即可完成任务的系统。<br>system that reduces or eliminates the need for human involvement in order to complete a task |
+| 自动核保系统（automated underwriting system） | 收集批准贷款申请所需信息、支持抵押贷款人对新申请进行分析的软件系统。<br>software system that collects the information necessary to approve a loan application and supports a mortgage lender's analysis of a new loan application |
+| 提现状态（cash-out status） | 表明在以新贷款为现有贷款再融资的发放中向借款人释放资金之程度的分类符。<br>classifier indicating the extent to which funds are released to the borrower on a new loan origination that refinances an existing loan |
+| 收费类别（charge category） | 收费类别，如结清费用、利息、税项及其他服务相关费用。<br>Examples include closing costs, interest, taxes, and other service-related fees. |
+| 住宅容量（dwelling capacity） | 表明某物业拥有多少住宅单元的分类符。<br>classifier indicating how many dwellings some property has |
 | 政府支持贷款（government-sponsored loan） | 由政府支持机构发起或担保的贷款。 |
-| 活动房屋法律分类（manufactured home legal classification） | 表明覆盖贷款仅以活动房屋作担保、还是连同土地一起作担保的类别。 |
-| 抵押赔偿担保（mortgage indemnity guarantee） | 在抵押贷款还款因故中断（如借款人死亡或失业）时保护贷款人的保险型担保。 |
-| 抵押赔偿担保人（mortgage indemnity guarantor） | 以抵押赔偿担保（MIG）形式提供抵押保险的担保人兼保险人。 |
-| 抵押赔偿保险单（mortgage indemnity insurance policy） | 提供抵押赔偿担保的保险单。 |
-| 抵押贷款用途（mortgage loan purpose） | 抵押贷款资金的用途，如购置不动产、住宅建设或贷款再融资。 |
-| 物业用途（property usage） | 表明借款人拟如何使用该物业的类别。 |
+| 活动房屋法律分类（manufactured home legal classification） | 表明覆盖贷款仅以活动房屋作担保、还是连同土地一起作担保的类别。<br>category indicating whether the covered loan is secured by a manufactured home only or with land as well |
+| 抵押赔偿担保（mortgage indemnity guarantee） | 在抵押贷款还款因故中断（如借款人死亡或失业）时保护贷款人的保险型担保。<br>insurance-backed guarantee that protects lenders if the mortgage repayments cease for some reason, perhaps due to death or a homeowner being made redundant at work |
+| 抵押赔偿担保人（mortgage indemnity guarantor） | 以抵押赔偿担保（MIG）形式提供抵押保险的担保人兼保险人。<br>guarantor and insurer that provides mortgage insurance in the form of a mortgage indemnity guarantee (MIG) |
+| 抵押赔偿保险单（mortgage indemnity insurance policy） | 提供抵押赔偿担保的保险单。<br>insurance policy providing the mortgage indemnity guarantee |
+| 抵押贷款用途（mortgage loan purpose） | 抵押贷款资金的用途，如购置不动产、住宅建设或贷款再融资。<br>the purpose for which mortgage loan proceeds will be used, such as real property purchase, dwelling construction, or loan refinancing |
+| 物业用途（property usage） | 表明借款人拟如何使用该物业的类别。<br>a category indicating the manner in which the borrower intends to utilize the property |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -166,17 +166,17 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **承接（assumes）** | 将新抵押贷款合同关联到先前就同一物业向不同借款人发放的旧合同；新合同通过法律行为设立。 | — |
-| **具有发起服务提供商（has originating service provider）** | 将某事物（通常为贷款合同）关联到负责发起该贷款的服务提供商。 | 值域：N73192aae0ad345e7b461f86d8d7f3ae7；子属性：具有参与方角色（has party role） |
-| **具有发起人（has originator person）** | 将某事物（通常为贷款）关联到最初发起或创建它的人。 | 值域：具有法律行为能力的自然人；子属性：具有参与方（has party） |
+| **承接（assumes）** | 将新抵押贷款合同关联到先前就同一物业向不同借款人发放的旧合同；新合同通过法律行为设立。<br>relates a new mortgage loan contract to a previous one made to a different borrower for the same property. The new contract is created via a legally binding process where the new borrower assumes the terms of the previous loan contract | — |
+| **具有发起服务提供商（has originating service provider）** | 将某事物（通常为贷款合同）关联到负责发起该贷款的服务提供商。<br>relates something, typically a loan contract, to the service provider responsible for originated the loan | 值域：N6fc7596735dc461faebf244222aec1bb；子属性：具有参与方角色（has party role） |
+| **具有发起人（has originator person）** | 将某事物（通常为贷款）关联到最初发起或创建它的人。<br>relates something, typically a loan, to a person that initially originates or creates it | 值域：具有法律行为能力的自然人；子属性：具有参与方（has party） |
 | **是……的留置权（is lien on）** | 标识留置权所针对的财产。 | — |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有可负担住宅单元数（has number of affordable dwelling units）** | 将房地产关联到其中按联邦、州或地方可负担住房计划设有收入限制的住宅单元数。 |
-| **具有住宅单元数（has number of dwelling units）** | 将房地产关联到其所含的住宅单元数。 |
+| **具有可负担住宅单元数（has number of affordable dwelling units）** | 将房地产关联到其中按联邦、州或地方可负担住房计划设有收入限制的住宅单元数。<br>relates real estate to the number of dwelling units it contains that are income-restricted under Federal, State, or local affordable housing programs. |
+| **具有住宅单元数（has number of dwelling units）** | 将房地产关联到其所含的住宅单元数。<br>relates real estate to the number of dwelling units it contains |
 
 ## 4. 依赖（owl:imports，26 个）
 

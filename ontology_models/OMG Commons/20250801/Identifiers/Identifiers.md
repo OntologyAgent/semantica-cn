@@ -23,8 +23,8 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 标识方案（identification scheme） | 为事物生成标识符的体系，规定标识符结构的约束。 |
-| 标识符（identifier） | 唯一标识其所关联事物的字符序列。 |
+| 标识方案（identification scheme） | 为事物生成标识符的体系，规定标识符结构的约束。<br>system for minting identifiers for things that specifies constraints on the structure of the identifier |
+| 标识符（identifier） | 唯一标识其所关联事物的字符序列。<br>sequence of characters uniquely identifying that with which it is associated |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -45,7 +45,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **遵从（compliesWith）** | — | — |
-| **标识（identifies）** | 在某情境内识别或确立身份。 | 子属性：指代 |
+| **标识（identifies）** | 在某情境内识别或确立身份。<br>recognizes or establishes identity within some context | 子属性：指代 |
 
 公理：
 
@@ -61,7 +61,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……标识（is identified by）** | 具有在某情境内唯一的标识符。 | 值域：标识符（identifier）；逆属性：标识（identifies）；子属性：由……表示 |
+| **由……标识（is identified by）** | 具有在某情境内唯一的标识符。<br>has an identifier that is unique within some context | 值域：标识符（identifier）；逆属性：标识（identifies）；子属性：由……表示 |
 
 ## 4. 依赖（owl:imports，3 个）
 

@@ -23,8 +23,8 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 商业标识代码数据记录（business identifier code data record） | 符合 ISO 9362 的登记册条目，用于管理 BIC 代码及相关注册信息。 |
-| 市场标识代码登记册条目（market identifier code registry entry） | 符合 ISO 10383 的市场标识代码（MIC）登记册条目。 |
+| 商业标识代码数据记录（business identifier code data record） | 符合 ISO 9362 的登记册条目，用于管理 BIC 代码及相关注册信息。<br>entry in a registry that conforms to ISO 9362 for the management of BIC codes and related registration information |
+| 市场标识代码登记册条目（market identifier code registry entry） | 符合 ISO 10383 的市场标识代码（MIC）登记册条目。<br>entry in a market identifier code registry that conforms to ISO 10383 |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

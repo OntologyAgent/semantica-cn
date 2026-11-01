@@ -31,11 +31,11 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 指数篮子成分（basket of indices constituent） | 指数篮子的单一成分。 |
-| 证券篮子（basket of securities） | 由证券组成的篮子，通常为某一特定资产类别（如股票或债券）。 |
-| 市场篮子（market basket） | 由市场指数组成的篮子。 |
-| 混合篮子（mixed basket） | 成分混合的篮子，同时包含证券和指数。 |
-| 证券篮子成分（securities basket constituent） | 被标识为证券篮子组成部分的证券。 |
+| 指数篮子成分（basket of indices constituent） | 指数篮子的单一成分。<br>single constituent of a basket of indices |
+| 证券篮子（basket of securities） | 由证券组成的篮子，通常为某一特定资产类别（如股票或债券）。<br>basket composed of securities, typically of a particular asset class such as equities or bonds |
+| 市场篮子（market basket） | 由市场指数组成的篮子。<br>basket composed of market indices |
+| 混合篮子（mixed basket） | 成分混合的篮子，同时包含证券和指数。<br>basket that has a mix of constituents, including securities and indices |
+| 证券篮子成分（securities basket constituent） | 被标识为证券篮子组成部分的证券。<br>security identified as a component of a basket of securities |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -55,7 +55,7 @@
 公理：
 
 - **具有加入日期（hasDateAdded）**至多有 1 个**显式日期（ExplicitDate）**。
-- **包含（comprises）**的所有取值只能是**Nc8290ba6d7f541ffa00ab6b70b7ad637**。
+- **包含（comprises）**的所有取值只能是**Ne7c2ef8a227c41538734f1c80a498af8**。
 
 ### 2.2 证券篮子（basket of securities）
 

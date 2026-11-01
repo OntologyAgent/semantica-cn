@@ -34,18 +34,18 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 汽车资产支持证券（auto asset-backed security） | 由汽车相关贷款和/或租赁组成的标的资产池支持的资产支持证券。 |
-| 汽车债务池（auto debt pool） | 由机动车相关贷款和/或租赁组成的债务池。 |
-| 债券池（bond pool） | 由债券组成的债务池。 |
-| 消费资产支持证券（consumer asset-backed security） | 以汽车贷款和租赁（汽车 ABS）、信用卡应收账款（信用卡 ABS）或学生贷款等资产池为抵押的结构化金融证券。 |
-| 受控摊销资产支持证券（controlled amortization asset-backed security） | 基于采用受控摊销结构证券化的债券池的资产支持证券。 |
-| 信用卡账户池（credit card account pool） | 与指定账户相关联的信用卡应收账款池。 |
-| 信用卡资产支持证券（credit card asset-backed security） | 以信用卡应收账款为基础的资产支持证券。 |
-| 完全摊销资产支持证券（fully amortizing asset-backed security） | 基于在证券存续期内向投资者逐步归还本金的债务工具池的资产支持证券。 |
-| 房屋净值信用额度池（home equity line of credit pool） | 由房屋净值贷款组成的债务池。 |
-| 房屋净值贷款资产支持证券（home equity loan asset-backed security） | 以房屋净值贷款应收款为基础的资产支持证券。 |
-| 学生贷款资产支持证券（student loan asset-backed security） | 以学生贷款应收款为基础的资产支持证券。 |
-| 学生贷款池（student loan pool） | 由学生贷款组成的债务池。 |
+| 汽车资产支持证券（auto asset-backed security） | 由汽车相关贷款和/或租赁组成的标的资产池支持的资产支持证券。<br>asset-backed security that is backed by an underlying pool of auto-related loans and/or leases |
+| 汽车债务池（auto debt pool） | 由机动车相关贷款和/或租赁组成的债务池。<br>debt pool of loans and/or leases that are motor vehicle-related |
+| 债券池（bond pool） | 由债券组成的债务池。<br>debt pool of consisting of bonds |
+| 消费资产支持证券（consumer asset-backed security） | 以汽车贷款和租赁（汽车 ABS）、信用卡应收账款（信用卡 ABS）或学生贷款等资产池为抵押的结构化金融证券。<br>structured finance securities collateralized by pools of auto loans and leases (auto ABS), credit card receivables (credit card ABS) or student loans (student loan ABS) |
+| 受控摊销资产支持证券（controlled amortization asset-backed security） | 基于采用受控摊销结构证券化的债券池的资产支持证券。<br>asset-backed security based on a pool of bonds securitized using a controlled amortization structure |
+| 信用卡账户池（credit card account pool） | 与指定账户相关联的信用卡应收账款池。<br>pool of credit card receivables associated with designated accounts |
+| 信用卡资产支持证券（credit card asset-backed security） | 以信用卡应收账款为基础的资产支持证券。<br>asset-backed security based on credit card receivables |
+| 完全摊销资产支持证券（fully amortizing asset-backed security） | 基于在证券存续期内向投资者逐步归还本金的债务工具池的资产支持证券。<br>asset-backed security based on a pool of debt instruments that returns principal to investors over the life of the security |
+| 房屋净值信用额度池（home equity line of credit pool） | 由房屋净值贷款组成的债务池。<br>debt pool consisting of home equity loans |
+| 房屋净值贷款资产支持证券（home equity loan asset-backed security） | 以房屋净值贷款应收款为基础的资产支持证券。<br>asset-backed security based on home equity loan receivables |
+| 学生贷款资产支持证券（student loan asset-backed security） | 以学生贷款应收款为基础的资产支持证券。<br>asset-backed security based on student loan receivables |
+| 学生贷款池（student loan pool） | 由学生贷款组成的债务池。<br>debt pool consisting of student loans |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

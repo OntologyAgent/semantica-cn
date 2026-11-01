@@ -32,16 +32,16 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 章程性所有者（constitutional owner） | 以股东权益形式持有该实体股权的实体所有者。 |
-| 控制性股权（controlling equity） | 依法或在相应股权工具中明示、正式赋予对实体之控制权的股东权益。 |
-| 直接合并（direct consolidation） | 以会计合并方式记录的对实体的直接所有权。 |
-| 实体所有者（entity owner） | 拥有正式企业组织或持有其所有权权益的所有者（个人、群体或其他企业实体）。 |
-| 实体所有权（entity ownership） | 某参与方对某非政府正式组织之权益的所有权。 |
-| 外国分支所有权（foreign branch ownership） | 某参与方对作为外国关联方且在法律上属于拥有实体一部分的正式组织或组织子单位的所有权。 |
-| 投资权益（investment equity） | 代表对某实体之所有权权益的权益，可能以股东权益形式存在，也可能不是。 |
-| 投资者（investor） | 通过投资拥有某组织一定份额的参与方。 |
-| 投资者合同（investor contract） | 规定投资者向实体投资之条款、并规定赋予该投资者之权利的合同。 |
-| 最终所有权（ultimate ownership） | 以会计合并为证的、某参与方对另一法律实体的最高层（顶端、末端）祖先级所有权。 |
+| 章程性所有者（constitutional owner） | 以股东权益形式持有该实体股权的实体所有者。<br>entity owner that holds an equity stake in said entity, in the form of shareholders' equity |
+| 控制性股权（controlling equity） | 依法或在相应股权工具中明示、正式赋予对实体之控制权的股东权益。<br>shareholders's equity that formally confers control in the entity, either by law or as explicitly stated in a corresponding equity instrument |
+| 直接合并（direct consolidation） | 以会计合并方式记录的对实体的直接所有权。<br>direct ownership of an entity recorded as accounting consolidation |
+| 实体所有者（entity owner） | 拥有正式企业组织或持有其所有权权益的所有者（个人、群体或其他企业实体）。<br>owner (person, group of people, or other business entity) that owns, or holds an ownership interest in, a formal business organization |
+| 实体所有权（entity ownership） | 某参与方对某非政府正式组织之权益的所有权。<br>ownership by some party of an interest in some non-governmental formal organization |
+| 外国分支所有权（foreign branch ownership） | 某参与方对作为外国关联方且在法律上属于拥有实体一部分的正式组织或组织子单位的所有权。<br>ownership by some party of some formal organization or organizational sub-unit that is a foreign affiliate and legally part of the owning entity |
+| 投资权益（investment equity） | 代表对某实体之所有权权益的权益，可能以股东权益形式存在，也可能不是。<br>equity that represents an ownership interest in some entity, but may or may not take the form of shareholders's equity |
+| 投资者（investor） | 通过投资拥有某组织一定份额的参与方。<br>party that owns some stake in some organization by way of investment |
+| 投资者合同（investor contract） | 规定投资者向实体投资之条款、并规定赋予该投资者之权利的合同。<br>Contract setting out the terms under which some investor invests in the entity and setting out the rights which are conferred on that investor. |
+| 最终所有权（ultimate ownership） | 以会计合并为证的、某参与方对另一法律实体的最高层（顶端、末端）祖先级所有权。<br>highest-level (top, end) ancestral ownership, evidenced by accounting consolidation, by some party of some other legal entity |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -122,8 +122,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有所有权百分比（hasOwnershipPercentage）** | — | — |
-| **具有被拥有实体（has owned entity）** | 标识被法律主体拥有的正式组织，可能包括独资企业。 | 值域：Ncefb00438ecc420e8132406b6ddb17f4；子属性：被…经历（is experienced by） |
-| **具有拥有实体（has owning entity）** | 标识拥有正式组织的参与方。 | 值域：法律主体；子属性：具有主动参与方（has active party） |
+| **具有被拥有实体（has owned entity）** | 标识被法律主体拥有的正式组织，可能包括独资企业。<br>indicates a formal organization, including potentially a sole proprietorship, that is owned by a legal person | 值域：N556b1c7b2fe9492c9639f64af2ee71d8；子属性：被…经历（is experienced by） |
+| **具有拥有实体（has owning entity）** | 标识拥有正式组织的参与方。<br>indicates a party that owns a formal organization | 值域：法律主体；子属性：具有主动参与方（has active party） |
 | **受……限定（isQualifiedBy）** | — | — |
 | **由……授予（isConferredBy）** | — | — |
 | **由……分类（isClassifiedBy）** | — | — |
@@ -135,7 +135,7 @@
 - **具有被拥有实体（has owned entity）**至少有一个取值，该取值满足：该属性存在取值约束。
 - **受……限定（isQualifiedBy）**可以有 0 个或多个**关系限定符（RelationshipQualifier）**。
 - **由……分类（isClassifiedBy）**恰好有 1 个**关系状态（RelationshipStatus）**。
-- **由……授予（isConferredBy）**可以有 0 个或多个**N5553f1254f1a46838df6cb5ccddbb9a4**。
+- **由……授予（isConferredBy）**可以有 0 个或多个**N9986a1b6deae4fc7ab1e88c6e5ef8235**。
 
 #### 2.3.1 直接合并（direct consolidation）
 
@@ -195,11 +195,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **担保（guarantees）** | 提供正式的保证或承诺，尤指与产品、服务或交易相关的某些条件将得到满足。 | — |
-| **具有直接所有权（has direct ownership）** | 将正式组织关联到其被另一实体直接拥有的情形。 | 值域：实体所有权（entity ownership）；逆属性：具有被拥有实体（has owned entity）；子属性：经历（experiences） |
-| **具有直接拥有实体（has direct owning entity）** | 将正式组织关联到直接的法律主体/所有者。 | — |
-| **具有投资实体（has investment entity）** | 将法律主体关联到其直接拥有的正式组织或子公司，视所有权百分比而定。 | — |
-| **具有投资所有权（has investment ownership）** | 将法律主体关联到其拥有正式组织的情境。 | 值域：实体所有权（entity ownership）；逆属性：具有拥有实体（has owning entity）；子属性：在…中扮演主动角色（plays active role in） |
+| **担保（guarantees）** | 提供正式的保证或承诺，尤指与产品、服务或交易相关的某些条件将得到满足。<br>provides a formal assurance or promise, esp. that certain conditions shall be fulfilled relating to a product, service, or transaction | — |
+| **具有直接所有权（has direct ownership）** | 将正式组织关联到其被另一实体直接拥有的情形。<br>relates a formal organization to the situation in which it is owned directly by another entity | 值域：实体所有权（entity ownership）；逆属性：具有被拥有实体（has owned entity）；子属性：经历（experiences） |
+| **具有直接拥有实体（has direct owning entity）** | 将正式组织关联到直接的法律主体/所有者。<br>relates a formal organization to a direct legal person / owner | — |
+| **具有投资实体（has investment entity）** | 将法律主体关联到其直接拥有的正式组织或子公司，视所有权百分比而定。<br>relates a legal person to a directly owned formal organization or subsidiary, depending on the percent ownership interest | — |
+| **具有投资所有权（has investment ownership）** | 将法律主体关联到其拥有正式组织的情境。<br>relates a legal person to the context in which it owns a formal organization | 值域：实体所有权（entity ownership）；逆属性：具有拥有实体（has owning entity）；子属性：在…中扮演主动角色（plays active role in） |
 
 ## 4. 依赖（owl:imports，13 个）
 

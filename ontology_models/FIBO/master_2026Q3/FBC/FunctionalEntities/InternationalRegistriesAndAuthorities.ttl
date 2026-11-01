@@ -99,11 +99,11 @@ fibo-fbc-fct-ireg:BusinessIdentifierCodeDataRecord a owl:Class ;
         "商业标识代码数据记录（business identifier code data record）"@zh ;
     rdfs:comment "符合 ISO 9362 的登记册条目，用于管理 BIC 代码及相关注册信息。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fct-breg:isSelfMaintained ;
-            owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-ireg:BusinessIdentifierCodeRegistry ;
             owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fct-breg:isSelfMaintained ;
+            owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCode ],
@@ -148,12 +148,12 @@ fibo-fbc-fct-ireg:MarketIdentifierCodeRegistryEntry a owl:Class ;
             owl:onProperty fibo-fbc-fct-mkt:hasMarketIdentifierCodeStatus ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-ireg:MarketIdentifierCodeRegistry ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-fbc-fct-breg:hasInitialRegistrationDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-ireg:MarketIdentifierCodeRegistry ;
-            owl:onProperty cmns-col:isIncludedIn ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;

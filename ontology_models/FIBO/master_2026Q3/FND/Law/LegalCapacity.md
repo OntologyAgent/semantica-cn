@@ -34,33 +34,33 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 请求权（claim） | 一方基于共同产生可法律强制执行的权利或司法行动的事实，向另一方提出的要求或主张。 |
-| 或有义务（contingent obligation） | 取决于未来事件或某行为之履行的义务。 |
-| 或有权利（contingent right） | 取决于未来事件或某行为之履行的权利。 |
-| 缔约能力（contractual capability） | 订立具有法律约束力合同的能力。 |
-| 合同权益（contractual interest） | 由合同、协议或工具产生的可法律强制执行的利益或权利，实体在其中持有特定的权利或义务。 |
-| 合同义务（contractual obligation） | 由合同条款产生的具有法律约束力的义务。 |
-| 合同期权（contractual option） | 可在未来某时点行使的合同权利，如展期合同的选择权或其他可用但非强制的权利。 |
-| 合同权利（contractual right） | 在有约束力协议中授予参与方的可法律强制执行的利益或权利。 |
-| 受托法律权限（delegated legal authority） | 特定职务、职能或职位所固有的制度化法定权力，旨在使其持有者能够成功履行职责。 |
-| 交付义务（delivery obligation） | 为清偿请求权或债务而交付某物的义务。 |
-| 责任（duty） | 存在并加于某个人的某项义务。 |
-| 法律行为能力（legal capacity） | 实施特定行为或享有特定权利的能力，以及为此所需的资源。 |
-| 法律构造（legal construct） | 通过法律或合同赋予的事物，如权利。 |
-| 法律义务（legal obligation） | 可由法院强制执行的义务或责任。 |
-| 法律权利（legal right） | 政府、合同或法律提供或保护的个人权利、特权或利益，使个人或实体有资格获得某物。 |
-| 应诉能力（liability capacity） | 在法律上被起诉的能力。 |
-| 许可（license） | 做某事所需之准许的授予。 |
-| 许可标识符（license identifier） | 与许可关联的标识符。 |
-| 被许可方（licensee） | 被授予许可的参与方。 |
-| 许可方（licensor） | 授予许可的参与方。 |
-| 诉讼能力（litigation capacity） | 在法律上提起并推进诉讼的法律行为能力。 |
-| 通知义务（notification obligation） | 按协议约定，一方就特定事件、行为或变更正式告知另一方（或多方）的要求。 |
-| 政策（policy） | 组织为指导特定情形下的决策而采纳并实施的原则、规则和指南体系。 |
-| 规章（regulation） | 用于实施法律的规则。 |
-| 报告政策（reporting policy） | 就报告某方面规定原则、规则和/或指南的政策。 |
-| 权利（right） | 实施（或不实施）特定行为、或处于（或不处于）特定状态的资格；或要求他人实施特定行为的资格。 |
-| 签署能力（signatory capacity） | 自然人代表某组织或法律主体签署协议的能力。 |
+| 请求权（claim） | 一方基于共同产生可法律强制执行的权利或司法行动的事实，向另一方提出的要求或主张。<br>demand or assertion made by one party on another, based on facts that, taken together, give rise to a legally enforceable right or judicial action |
+| 或有义务（contingent obligation） | 取决于未来事件或某行为之履行的义务。<br>obligation that depends on a future event or the performance of an action |
+| 或有权利（contingent right） | 取决于未来事件或某行为之履行的权利。<br>right that depends on a future event or the performance of an action |
+| 缔约能力（contractual capability） | 订立具有法律约束力合同的能力。<br>the capacity to enter into legally binding contracts |
+| 合同权益（contractual interest） | 由合同、协议或工具产生的可法律强制执行的利益或权利，实体在其中持有特定的权利或义务。<br>legally enforceable benefit or entitlement arising from a contract, agreement, or instrument, in which an entity holds specified rights or obligations related to the performance, use, or benefit of something, without necessarily holding ownership |
+| 合同义务（contractual obligation） | 由合同条款产生的具有法律约束力的义务。<br>legally binding obligation that arises from the terms of a contract |
+| 合同期权（contractual option） | 可在未来某时点行使的合同权利，如展期合同的选择权或其他可用但非强制的权利。<br>contractual right that may be exercised at some point in the future, such as an option to extend a contract, or other available but not obligatory rights as defined in the contract |
+| 合同权利（contractual right） | 在有约束力协议中授予参与方的可法律强制执行的利益或权利。<br>legally enforceable benefit or entitlement granted to a party within a binding agreement |
+| 受托法律权限（delegated legal authority） | 特定职务、职能或职位所固有的制度化法定权力，旨在使其持有者能够成功履行职责。<br>institutionalized and legal power inherent in a particular job, function, or position that is meant to enable its holder to successfully carry out his or her responsibilities, where such power has been delegated through some formal means |
+| 交付义务（delivery obligation） | 为清偿请求权或债务而交付某物的义务。<br>obligation to deliver something in order to satisfy a claim or debt |
+| 责任（duty） | 存在并加于某个人的某项义务。<br>some obligation which exists and is imposed on some individual |
+| 法律行为能力（legal capacity） | 实施特定行为或享有特定权利的能力，以及为此所需的资源。<br>the capability to carry out certain actions or to have certain rights together with the resources to do so |
+| 法律构造（legal construct） | 通过法律或合同赋予的事物，如权利。<br>something which is conferred by way of law or contract, such as a right |
+| 法律义务（legal obligation） | 可由法院强制执行的义务或责任。<br>an obligation or duty that is enforceable by a court |
+| 法律权利（legal right） | 政府、合同或法律提供或保护的个人权利、特权或利益，使个人或实体有资格获得某物。<br>personal right, privilege, or benefit that a government, contract, or law provides or protects, making an individual or entity eligible to receive something |
+| 应诉能力（liability capacity） | 在法律上被起诉的能力。<br>the ability to be sued at law |
+| 许可（license） | 做某事所需之准许的授予。<br>grant of permission needed to do something |
+| 许可标识符（license identifier） | 与许可关联的标识符。<br>an identifier associated with a license |
+| 被许可方（licensee） | 被授予许可的参与方。<br>a party to whom a license has been granted |
+| 许可方（licensor） | 授予许可的参与方。<br>a party who grants a license |
+| 诉讼能力（litigation capacity） | 在法律上提起并推进诉讼的法律行为能力。<br>the legal capacity to pursue a litigation action in law |
+| 通知义务（notification obligation） | 按协议约定，一方就特定事件、行为或变更正式告知另一方（或多方）的要求。<br>requirement for one party to formally inform another party (or parties) about specific events, actions, or changes as outlined in the agreement |
+| 政策（policy） | 组织为指导特定情形下的决策而采纳并实施的原则、规则和指南体系。<br>system of principles, rules and guidelines, adopted by an organization to guide decision making with respect to particular situations and implemented via procedures or protocols to achieve stated goals |
+| 规章（regulation） | 用于实施法律的规则。<br>a rule used to carry out a law |
+| 报告政策（reporting policy） | 就报告某方面规定原则、规则和/或指南的政策。<br>policy specifying principles, rules and/or guidelines regarding some aspect of reporting |
+| 权利（right） | 实施（或不实施）特定行为、或处于（或不处于）特定状态的资格；或要求他人实施特定行为的资格。<br>entitlement to perform certain actions (or not), or to be in certain states (or not); or entitlement that requires others to perform certain actions or be in certain states (or not) |
+| 签署能力（signatory capacity） | 自然人代表某组织或法律主体签署协议的能力。<br>the capacity of some natural person to sign agreements on the part of some organization or legal person |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -74,12 +74,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **被授予给（is conferred on）** | 标识被授予某项利益或权利的参与方。 | 值域：参与方（party） |
+| **被授予给（is conferred on）** | 标识被授予某项利益或权利的参与方。<br>indicates a party to which some benefit or right has been granted | 值域：参与方（party） |
 | **由……授予（isConferredBy）** | — | — |
 
 公理：
 
-- **由……授予（isConferredBy）**可以有 0 个或多个**N4b49daef4e40423784f83fb113f9b684**。
+- **由……授予（isConferredBy）**可以有 0 个或多个**Nba8f9904b46b401091b3dafeb9810221**。
 - **被授予给（is conferred on）**可以有 0 个或多个**参与方（party）**。
 
 #### 2.1.1 请求权（claim）
@@ -107,7 +107,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **属于义务人（isObligationOf）** | — | — |
-| **由……蕴含（is implied by）** | 标识由另一事物强烈暗示的事物，如基于某组观测、事实或事件的逻辑推论。 | 逆属性：蕴含（implies） |
+| **由……蕴含（is implied by）** | 标识由另一事物强烈暗示的事物，如基于某组观测、事实或事件的逻辑推论。<br>indicates something that is strongly suggested by something else, such as a logical consequence based on some set of observations, facts, or events | 逆属性：蕴含（implies） |
 
 公理：
 
@@ -157,7 +157,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……蕴含（is implied by）** | 标识由另一事物强烈暗示的事物，如基于某组观测、事实或事件的逻辑推论。 | 逆属性：蕴含（implies） |
+| **由……蕴含（is implied by）** | 标识由另一事物强烈暗示的事物，如基于某组观测、事实或事件的逻辑推论。<br>indicates something that is strongly suggested by something else, such as a logical consequence based on some set of observations, facts, or events | 逆属性：蕴含（implies） |
 | **由……授予（isConferredBy）** | — | — |
 
 公理：
@@ -176,7 +176,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的能力（is capacity of）** | 标识被赋予某项法律行为能力的个人或组织。 | 值域：参与方（party）；子属性：被授予给（is conferred on） |
+| **是……的能力（is capacity of）** | 标识被赋予某项法律行为能力的个人或组织。<br>identifies an individual or organization on which a given legal capacity has been conferred | 值域：参与方（party）；子属性：被授予给（is conferred on） |
 
 ##### 2.1.3.1 缔约能力（contractual capability）
 
@@ -243,8 +243,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。 | 子属性：涉及 |
-| **被授予给（is conferred on）** | 标识被授予某项利益或权利的参与方。 | 值域：参与方（party） |
+| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。<br>strongly suggests or involves as a logical consequence based on some set of observations, facts, or events | 子属性：涉及 |
+| **被授予给（is conferred on）** | 标识被授予某项利益或权利的参与方。<br>indicates a party to which some benefit or right has been granted | 值域：参与方（party） |
 
 公理：
 
@@ -262,7 +262,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。 | 子属性：涉及 |
+| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。<br>strongly suggests or involves as a logical consequence based on some set of observations, facts, or events | 子属性：涉及 |
 | **由……授予（isConferredBy）** | — | — |
 
 公理：
@@ -280,7 +280,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有份额权益（has fractional interest）** | 对……具有按比例的、非排他的权利。 | 值域：xsd:decimal；子属性：具有数值 |
+| **具有份额权益（has fractional interest）** | 对……具有按比例的、非排他的权利。<br>has proportionate, non-exclusive entitlement to | 值域：xsd:decimal；子属性：具有数值 |
 
 公理：
 
@@ -302,7 +302,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。 | 子属性：涉及 |
+| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。<br>strongly suggests or involves as a logical consequence based on some set of observations, facts, or events | 子属性：涉及 |
 | **由……授予（isConferredBy）** | — | — |
 | **适用于情境（isApplicableIn）** | — | — |
 
@@ -376,7 +376,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **签发许可（licenses）** | 签发展为执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可。 | 子属性：管辖 |
+| **签发许可（licenses）** | 签发展为执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可。<br>issues a license required in order to perform some task, provide some service, exercise some privilege, or pursue some line of business or occupation to some party | 子属性：管辖 |
 | **发行（issues）** | — | — |
 | **由…扮演（is played by）** | — | — |
 
@@ -396,12 +396,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **实施（implements）** | 执行或付诸实施，履行。 | 子属性：涉及 |
+| **实施（implements）** | 执行或付诸实施，履行。<br>carries out or puts into effect, fulfills | 子属性：涉及 |
 | **管辖（governs）** | — | — |
 
 公理：
 
-- **实施（implements）**可以有 0 个或多个**N53faf6cb6dd3424ba878053e2358f74a**。
+- **实施（implements）**可以有 0 个或多个**Nb21b73118c2649b999f87045f589faa0**。
 - **管辖（governs）**至少有一个取值，类型是**战略（Strategy）**。
 
 #### 2.6.1 报告政策（reporting policy）
@@ -418,10 +418,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有能力方（has capacity）** | 标识具有实施特定行为的能力和余力、或具有特定权利或义务的个人或组织。 | 值域：法律行为能力（legal capacity）；逆属性：是……的能力（is capacity of） |
-| **由……实施（is implemented by）** | 标识由……执行、纳入或付诸实施的事物。 | 逆属性：实施（implements） |
-| **由……许可（is licensed by）** | 标识向另一方签发特定许可的参与方。 | 值域：参与方角色（party role）；逆属性：签发许可（licenses）；子属性：受……管辖 |
-| **以……为前提（is predicated on）** | 取决于……中所述的假定或要求。 | 值域：N7354b4e1d83640a2bb9818014f5ededd；子属性：规定于 |
+| **具有能力方（has capacity）** | 标识具有实施特定行为的能力和余力、或具有特定权利或义务的个人或组织。<br>identifies an individual or organization that has some ability and availability to carry out certain actions, or has certain rights or obligations | 值域：法律行为能力（legal capacity）；逆属性：是……的能力（is capacity of） |
+| **由……实施（is implemented by）** | 标识由……执行、纳入或付诸实施的事物。<br>indicates something that is carried out, incorporated or put into effect by | 逆属性：实施（implements） |
+| **由……许可（is licensed by）** | 标识向另一方签发特定许可的参与方。<br>indicates the party that has issued a particular license to some other party | 值域：参与方角色（party role）；逆属性：签发许可（licenses）；子属性：受……管辖 |
+| **以……为前提（is predicated on）** | 取决于……中所述的假定或要求。<br>depends on an assumption or requirement stated in | 值域：N8dd696c022184db5940b838ffc7e14f8；子属性：规定于 |
 
 ## 4. 依赖（owl:imports，16 个）
 

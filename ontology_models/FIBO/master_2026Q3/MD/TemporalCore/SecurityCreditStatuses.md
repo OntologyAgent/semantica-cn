@@ -25,9 +25,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 信用正常（credit o k） | 未违约。 |
-| 违约（in default） | 发行人未能支付其合同义务所要求的款项。 |
-| 证券现金流状态（security cashflow status） | 证券应付给持有人的现金流的状态。 |
+| 信用正常（credit o k） | 未违约。<br>Not defaulted. |
+| 违约（in default） | 发行人未能支付其合同义务所要求的款项。<br>The issuer has failed to pay somthing that they are contractually obliged to pay. |
+| 证券现金流状态（security cashflow status） | 证券应付给持有人的现金流的状态。<br>The status of the cashflow due to the holder from the security. |
 | 证券信用状态（security credit status） | 证券在信用方面的状态。 |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。

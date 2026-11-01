@@ -34,22 +34,22 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 合同性控制（contractual control） | 通过某合同的条款确立的控制。 |
-| 受控方（controlled party） | 在某情形中被某参与方施以某种权力或影响的个人或组织。 |
-| 控制联盟（controlling alliance） | 为共同对某实体实施控制而结成联盟的团体。 |
-| 法院指定控制（court appointed control） | 由法院行为授予的控制，例如在接管情形下。 |
-| 事实控制权益方（de facto controlling interest party） | 以非明示法律手段对某实体实施某种控制的参与方。 |
-| 法律控制权益方（de jure controlling interest party） | 具有实施控制之法律权力的参与方。 |
-| 实体控制方（entity controlling party） | 有权控制某法律实体的参与方。 |
-| 基于影响力的事实控制（influence-based de facto control） | 涉及对某参与方之影响力的非正式控制。 |
-| 基于影响力的事实控制方（influence-based de facto controlling party） | 对另一参与方持有基于影响力之控制的参与方。 |
-| 基于投资的事实控制（investment-based de facto control） | 通过对某实体的投资（而非持有该实体的章程性股权）产生的控制。 |
-| 基于投资的事实控制权益方（investment-based de facto controlling interest party） | 对另一参与方持有基于投资之控制的参与方。 |
-| 共同控制方（joint controlling party） | 集体有权控制某企业组织事务的参与方。 |
-| 多数控制方（majority controlling party） | 直接或间接拥有指挥或促使指挥某法律实体管理与政策之权力的控制方。 |
-| 接管人（receiver） | 由法院指定、负责清算不再具有偿付能力之实体事务的参与方。 |
-| 单独控制方（sole controlling party） | 对某法律实体拥有单独控制并指挥其事务的参与方。 |
-| 完全所有者（total owner） | 对某法律实体拥有 100% 所有权的参与方。 |
+| 合同性控制（contractual control） | 通过某合同的条款确立的控制。<br>control established through the terms of some contract |
+| 受控方（controlled party） | 在某情形中被某参与方施以某种权力或影响的个人或组织。<br>person or organization over which some party exercises some form of authority or influence with respect to some situation |
+| 控制联盟（controlling alliance） | 为共同对某实体实施控制而结成联盟的团体。<br>group that has formed some alliance to jointly exercise control over some entity |
+| 法院指定控制（court appointed control） | 由法院行为授予的控制，例如在接管情形下。<br>control conferred by the actions of some court, for example in the context of receivership |
+| 事实控制权益方（de facto controlling interest party） | 以非明示法律手段对某实体实施某种控制的参与方。<br>party that exercises some control over an entity other than via explicit, legal means |
+| 法律控制权益方（de jure controlling interest party） | 具有实施控制之法律权力的参与方。<br>party that has the legal authority to exercise control |
+| 实体控制方（entity controlling party） | 有权控制某法律实体的参与方。<br>party that has the authority to control some legal entity |
+| 基于影响力的事实控制（influence-based de facto control） | 涉及对某参与方之影响力的非正式控制。<br>informal control that involves influence over some party |
+| 基于影响力的事实控制方（influence-based de facto controlling party） | 对另一参与方持有基于影响力之控制的参与方。<br>party that holds influence-based control over some other party |
+| 基于投资的事实控制（investment-based de facto control） | 通过对某实体的投资（而非持有该实体的章程性股权）产生的控制。<br>control that arises through some investment in some entity, other than via the holding of constitutional equity (shares etc.) in that entity |
+| 基于投资的事实控制权益方（investment-based de facto controlling interest party） | 对另一参与方持有基于投资之控制的参与方。<br>party that holds investment-based control over some other party |
+| 共同控制方（joint controlling party） | 集体有权控制某企业组织事务的参与方。<br>party that collectively has the authority to control the affairs of some business organization |
+| 多数控制方（majority controlling party） | 直接或间接拥有指挥或促使指挥某法律实体管理与政策之权力的控制方。<br>controlling party that possesses, either directly or indirectly, the power to direct or cause the direction of the management and policies of a legal person, whether through the ownership of a majority of voting securities, by contract, or otherwise |
+| 接管人（receiver） | 由法院指定、负责清算不再具有偿付能力之实体事务的参与方。<br>party appointed by some court for the purposes of winding up the affairs of some entity which is no longer solvent |
+| 单独控制方（sole controlling party） | 对某法律实体拥有单独控制并指挥其事务的参与方。<br>party that has sole control over and directs the affairs of some legal entity |
+| 完全所有者（total owner） | 对某法律实体拥有 100% 所有权的参与方。<br>party that has 100 percent ownership some legal entity |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -79,8 +79,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有控制性组织成员（has controlling organization member）** | 将受控方关联到该组织的控制性成员。 | 值域：组织成员；逆属性：是……的控制性成员（is controlling member of）；子属性：具有控制方 |
-| **具有顾问（has advisor）** | 标识以顾问身份为受控方服务的参与方。 | 值域：控制方；子属性：具有控制方 |
+| **具有控制性组织成员（has controlling organization member）** | 将受控方关联到该组织的控制性成员。<br>relates a controlled party to a controlling member of the organization | 值域：组织成员；逆属性：是……的控制性成员（is controlling member of）；子属性：具有控制方 |
+| **具有顾问（has advisor）** | 标识以顾问身份为受控方服务的参与方。<br>indicates the party that acts in an advisory capacity to the controlled party | 值域：控制方；子属性：具有控制方 |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -263,7 +263,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **基于投资权益（is based on investment equity）** | 标识基于投资的事实控制，即基于某参与方持有某种投资权益。 | 值域：投资权益；子属性：由……授予 |
+| **基于投资权益（is based on investment equity）** | 标识基于投资的事实控制，即基于某参与方持有某种投资权益。<br>indicates investment-based de facto control, which is is based on the holding of some investment equity by some party | 值域：投资权益；子属性：由……授予 |
 | **具有控制中参与方（hasPartyInControl）** | — | — |
 | **由……授予（isConferredBy）** | — | — |
 
@@ -286,9 +286,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **提供咨询（advises）** | 向……提供建议或指导。 | 值域：受控方（controlled party）；逆属性：具有顾问（has advisor）；子属性：是控制方 |
-| **具有多数控制方（has majority controlling party）** | 标识拥有该实体控股权益（超过 50%）的参与方。 | 值域：多数控制方（majority controlling party）；子属性：是……的受控方 |
-| **是……的控制性成员（is controlling member of）** | 标识该成员对其拥有一定程度控制的受控组织。 | 值域：受控方（controlled party）；子属性：是控制方 |
+| **提供咨询（advises）** | 向……提供建议或指导。<br>provides counsel or guidance to | 值域：受控方（controlled party）；逆属性：具有顾问（has advisor）；子属性：是控制方 |
+| **具有多数控制方（has majority controlling party）** | 标识拥有该实体控股权益（超过 50%）的参与方。<br>indicates a party that owns a controlling stake (over 50 percent) in the entity | 值域：多数控制方（majority controlling party）；子属性：是……的受控方 |
+| **是……的控制性成员（is controlling member of）** | 标识该成员对其拥有一定程度控制的受控组织。<br>identifies a controlled organization over which the member has some measure of control | 值域：受控方（controlled party）；子属性：是控制方 |
 
 ## 4. 依赖（owl:imports，11 个）
 

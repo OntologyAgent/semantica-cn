@@ -31,11 +31,11 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 消费贷款（consumer loan） | 向一个或多个个人发放、用于家庭或个人支出的贷款，不含抵押贷款和学生贷款。 |
-| 房屋净值信用额度（home equity line of credit） | 以借款人住房或其他财产的净值作担保向房主授予的信用额度。 |
-| 机动车贷款（motor vehicle loan） | 用于购买机动车的抵押单利贷款，通常分三到五年按月偿还。 |
-| 担保消费贷款（secured consumer loan） | 向个人发放、借款人通过担保协议以某项资产作抵押的消费贷款。 |
-| 信用消费贷款（unsecured consumer loan） | 基于借款人信用历史或声誉向个人发放的消费贷款。 |
+| 消费贷款（consumer loan） | 向一个或多个个人发放、用于家庭或个人支出的贷款，不含抵押贷款和学生贷款。<br>loan to one or more individuals for household, family, or other personal expenditures, excluding mortgages and student loans |
+| 房屋净值信用额度（home equity line of credit） | 以借款人住房或其他财产的净值作担保向房主授予的信用额度。<br>line of credit granted to a homeowner secured by the equity value in a borrower's home or other property |
+| 机动车贷款（motor vehicle loan） | 用于购买机动车的抵押单利贷款，通常分三到五年按月偿还。<br>collateralized, simple-interest loan that is repaid in monthly installments over a period of typically three to five years, for the purpose of purchasing a vehicle |
+| 担保消费贷款（secured consumer loan） | 向个人发放、借款人通过担保协议以某项资产作抵押的消费贷款。<br>loan to one or more individuals for household, family, or other personal expenditures in which the borrower pledges some asset via a security agreement as collateral for the loan, or that is secured via third-party guarantee |
+| 信用消费贷款（unsecured consumer loan） | 基于借款人信用历史或声誉向个人发放的消费贷款。<br>loan to one or more individuals for household, family, or other personal expenditures granted based on the strength of the borrower's credit history or reputation in the community |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

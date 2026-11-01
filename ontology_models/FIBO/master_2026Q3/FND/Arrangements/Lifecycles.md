@@ -28,13 +28,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 生命周期（lifecycle） | 将家族、组织、过程、产品、营销、订单管理、组合管理等系统的循环性质与生物体从摇篮到坟墓的生命阶段（出生、成长、成熟、衰退、死亡）相类比的编排。 |
-| 生命周期事件（lifecycle event） | 在生命周期的一个或多个阶段中发生的一类事件。 |
-| 生命周期事件发生（lifecycle event occurrence） | 生命周期某阶段中事件的实现。 |
-| 生命周期发生（lifecycle occurrence） | 生命周期的实现。 |
-| 生命周期阶段（lifecycle stage） | 生命周期中的一个时期。 |
-| 生命周期阶段发生（lifecycle stage occurrence） | 给定生命周期中某个时期的实现。 |
-| 生命周期状态（lifecycle status） | 标识某事物在其生命周期特定时点所处位置或状态的分类符。 |
+| 生命周期（lifecycle） | 将家族、组织、过程、产品、营销、订单管理、组合管理等系统的循环性质与生物体从摇篮到坟墓的生命阶段（出生、成长、成熟、衰退、死亡）相类比的编排。<br>arrangement that compares the cyclical nature of families, organizations, processes, products, marketing, and order management, portfolio management or other systems with the cradle to grave life stages (birth, growth, maturity, decay, and death) of living organisms |
+| 生命周期事件（lifecycle event） | 在生命周期的一个或多个阶段中发生的一类事件。<br>kind of event that occurs during one or more stages of a lifecycle |
+| 生命周期事件发生（lifecycle event occurrence） | 生命周期某阶段中事件的实现。<br>realization of an event in a stage of a lifecycle |
+| 生命周期发生（lifecycle occurrence） | 生命周期的实现。<br>realization of a lifecycle |
+| 生命周期阶段（lifecycle stage） | 生命周期中的一个时期。<br>phase in a lifecycle |
+| 生命周期阶段发生（lifecycle stage occurrence） | 给定生命周期中某个时期的实现。<br>realization of a phase in a given lifecycle |
+| 生命周期状态（lifecycle status） | 标识某事物在其生命周期特定时点所处位置或状态的分类符。<br>classifier indicating the position or state of something at a particular point in its life-cycle |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -48,8 +48,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域：Nd94e64aff1fa4d0eb5c580fd7058589e；子属性：具有部分 |
-| **是……的生命周期（is lifecycle of）** | 将生命周期关联到它所刻画的事物。 | 逆属性：具有生命周期（has lifecycle）；子属性：刻画 |
+| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。<br>relates something, such as a product or trade lifecycle or related process, to a phase or stage in that lifecycle | 值域：N18d156f7f1ef4a1e9b89fcb01536f8b5；子属性：具有部分 |
+| **是……的生命周期（is lifecycle of）** | 将生命周期关联到它所刻画的事物。<br>relates a lifecycle to something it characterizes | 逆属性：具有生命周期（has lifecycle）；子属性：刻画 |
 | **定义（defines）** | — | — |
 
 公理：
@@ -102,7 +102,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域：Nd94e64aff1fa4d0eb5c580fd7058589e；子属性：具有部分 |
+| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。<br>relates something, such as a product or trade lifecycle or related process, to a phase or stage in that lifecycle | 值域：N18d156f7f1ef4a1e9b89fcb01536f8b5；子属性：具有部分 |
 | **例证（exemplifies）** | — | — |
 
 公理：
@@ -120,7 +120,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的阶段（is stage of）** | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。 | 逆属性：具有阶段（has stage）；子属性：是……的部分 |
+| **是……的阶段（is stage of）** | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。<br>relates a stage in a product or trade lifecycle or process to the lifecycle or process that it is a stage of | 逆属性：具有阶段（has stage）；子属性：是……的部分 |
 | **包含（comprises）** | — | — |
 | **定义于（isDefinedIn）** | — | — |
 
@@ -140,7 +140,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的阶段（is stage of）** | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。 | 逆属性：具有阶段（has stage）；子属性：是……的部分 |
+| **是……的阶段（is stage of）** | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。<br>relates a stage in a product or trade lifecycle or process to the lifecycle or process that it is a stage of | 逆属性：具有阶段（has stage）；子属性：是……的部分 |
 | **例证（exemplifies）** | — | — |
 | **包含（comprises）** | — | — |
 
@@ -160,7 +160,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域：Nd94e64aff1fa4d0eb5c580fd7058589e；子属性：具有部分 |
+| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。<br>relates something, such as a product or trade lifecycle or related process, to a phase or stage in that lifecycle | 值域：N18d156f7f1ef4a1e9b89fcb01536f8b5；子属性：具有部分 |
 
 公理：
 
@@ -174,7 +174,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有生命周期（has lifecycle）** | 将某事物（如产品、交易或相关过程）关联到刻画它的生命周期。 | 值域：生命周期（lifecycle）；子属性：以……为特征 |
+| **具有生命周期（has lifecycle）** | 将某事物（如产品、交易或相关过程）关联到刻画它的生命周期。<br>relates something, such as a product, trade, or related process, to a lifecycle that characterizes it | 值域：生命周期（lifecycle）；子属性：以……为特征 |
 
 ## 4. 依赖（owl:imports，8 个）
 

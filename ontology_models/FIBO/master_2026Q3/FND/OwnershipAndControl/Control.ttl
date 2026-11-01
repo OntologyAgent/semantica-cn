@@ -155,12 +155,12 @@ fibo-fnd-oac-ctl:ControlledThing a owl:Class ;
         "受控事物（controlled thing）"@zh ;
     rdfs:comment "在某情形中被某参与方施以某种形式控制的事物。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:isControlledThingIn ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:Control ],
+        [ a owl:Restriction ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
             owl:onProperty fibo-fnd-oac-ctl:isInitiallyControlledOn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-ctl:isControlledThingIn ;
-            owl:someValuesFrom fibo-fnd-oac-ctl:Control ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-ctl:hasControllingParty ;
             owl:someValuesFrom fibo-fnd-oac-ctl:ControllingParty ],
@@ -172,11 +172,11 @@ fibo-fnd-oac-ctl:Control a owl:Class ;
         "控制（control）"@zh ;
     rdfs:comment "某参与方有权指挥或强烈影响某事物相关管理与政策方向的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-ctl:involvesControlledThing ;
-            owl:someValuesFrom fibo-fnd-oac-ctl:ControlledThing ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-ctl:hasPartyInControl ;
             owl:someValuesFrom fibo-fnd-oac-ctl:ControllingParty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:involvesControlledThing ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:ControlledThing ],
         cmns-pts:Situation ;
     skos:definition "situation in which some party has the power to direct or strongly influence the direction of the management and policies related to something" ;
     cmns-av:explanatoryNote "Control may be direct (explicit) or indirect (implicit), derived through ownership of voting shares, beneficial ownership, other ownership relations, through provisions of a contract, or otherwise." .
@@ -186,11 +186,11 @@ fibo-fnd-oac-ctl:ControllingParty a owl:Class ;
         "控制方（controlling party）"@zh ;
     rdfs:comment "在某情形情境中实施某种形式控制的行为体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-ctl:isControllingPartyIn ;
-            owl:someValuesFrom fibo-fnd-oac-ctl:Control ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-ctl:isPartyControlling ;
             owl:someValuesFrom fibo-fnd-oac-ctl:ControlledThing ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:isControllingPartyIn ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:Control ],
         cmns-pts:Actor ;
     skos:definition "actor that exercises some form of control in the context of some situation" ;
     skos:editorialNote "At this level of abstraction it is not defined whether the control is some degree of controlling interest, or some level of actual control (asserted or calculated) in some entity." .

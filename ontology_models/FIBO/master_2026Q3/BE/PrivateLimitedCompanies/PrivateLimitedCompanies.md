@@ -33,13 +33,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 有限责任公司（limited liability company） | 将独资或合伙的穿透征税与公司的有限责任相结合的私人有限公司。 |
-| 有限责任公司成员（limited liability company member） | 有限责任公司权益的所有者。 |
-| 按公司纳税的有限责任公司（limited liability company taxed as a corporation） | 已选择公司纳税身份的有限责任公司。 |
-| 经理管理的有限责任公司（manager-managed limited liability company） | 成员任命一名或多名经理处理日常运营与行政职责的有限责任公司。 |
-| 管理成员（managing member） | 同时经营日常业务的有限责任公司权益所有者。 |
-| 有限责任私人公司（private company with limited liability） | 兼具公司与合伙或独资（视所有者数量而定）特征的混合型企业实体。 |
-| 私人有限公司（private limited company） | 股东责任以其最初投入资本为限的私人有限公司。 |
+| 有限责任公司（limited liability company） | 将独资或合伙的穿透征税与公司的有限责任相结合的私人有限公司。<br>private limited company that combines the pass through taxation of a sole proprietorship or partnership with the limited liability of a corporation |
+| 有限责任公司成员（limited liability company member） | 有限责任公司权益的所有者。<br>owner of an interest in a limited liability company |
+| 按公司纳税的有限责任公司（limited liability company taxed as a corporation） | 已选择公司纳税身份的有限责任公司。<br>limited liability company that has elected to have corporate tax status |
+| 经理管理的有限责任公司（manager-managed limited liability company） | 成员任命一名或多名经理处理日常运营与行政职责的有限责任公司。<br>limited liability company in which the members appoint one or more managers to handle the daily operations and administrative responsibilities of the organization |
+| 管理成员（managing member） | 同时经营日常业务的有限责任公司权益所有者。<br>owner of an interest in a limited liability company who also runs the day-to-day business operations |
+| 有限责任私人公司（private company with limited liability） | 兼具公司与合伙或独资（视所有者数量而定）特征的混合型企业实体。<br>hybrid business entity having characteristics of both a corporation and a partnership or sole proprietorship (depending on how many owners there are) |
+| 私人有限公司（private limited company） | 股东责任以其最初投入资本为限的私人有限公司。<br>private limited company whose shareholders' liability is limited to the capital they originally invested |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -59,7 +59,7 @@
 
 公理：
 
-- **是……的控制性成员（isControllingMemberOf）**可以有 0 个或多个**N43a433e467774735addc9a43e9912fbe**。
+- **是……的控制性成员（isControllingMemberOf）**可以有 0 个或多个**N3236a2c571f84a4da03eb0c9d1064b40**。
 - **由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
 - **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，类型是**有限责任公司（limited liability company）**。
 
@@ -73,7 +73,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的管理成员（is managing member of）** | 标识该管理成员所经营的受控有限责任公司。 | 逆属性：具有管理成员（has managing member）；子属性：是……的控制性成员 |
+| **是……的管理成员（is managing member of）** | 标识该管理成员所经营的受控有限责任公司。<br>indicates the controlled limited liability company that the managing member runs | 逆属性：具有管理成员（has managing member）；子属性：是……的控制性成员 |
 
 公理：
 
@@ -101,7 +101,7 @@
 
 公理：
 
-- **扮演角色（plays role）**可以有 0 个或多个**N0580115fc5484ea598f16325d6a468f5**。
+- **扮演角色（plays role）**可以有 0 个或多个**N3cfe3bcf5b5e4def9272dd2b08ac770f**。
 - **扮演角色（plays role）**至少有一个取值，该取值满足：**具有控制性组织成员（hasControllingOrganizationMember）**至少有一个取值，类型是**有限责任公司成员（limited liability company member）**。
 
 ##### 2.2.1.1 按公司纳税的有限责任公司（limited liability company taxed as a corporation）
@@ -130,7 +130,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有管理成员（has managing member）** | 标识在有限责任公司中处于控制角色、负责日常业务运营的管理成员。 | 值域：管理成员（managing member）；子属性：具有控制性组织成员 |
+| **具有管理成员（has managing member）** | 标识在有限责任公司中处于控制角色、负责日常业务运营的管理成员。<br>indicates a managing member in a controlling role of a limited liability company that has responsibility for the day-to-day business operations | 值域：管理成员（managing member）；子属性：具有控制性组织成员 |
 
 ## 4. 依赖（owl:imports，9 个）
 

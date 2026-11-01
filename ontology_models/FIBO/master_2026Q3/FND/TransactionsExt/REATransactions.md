@@ -34,27 +34,27 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 合同性经济协议（contractual economic agreement） | 构成交易一部分、以双方之间合同为凭而具有合同地位的经济协议。 |
-| 合同性交易（contractual transaction） | 具有某种合同基础的经济交易。 |
-| 合同性交易当事方（contractual transaction party） | 具有合同地位之交易的当事方。 |
-| 受覆盖交易（covered transaction） | 受某主协议覆盖的交易。 |
+| 合同性经济协议（contractual economic agreement） | 构成交易一部分、以双方之间合同为凭而具有合同地位的经济协议。<br>An economic agreement forming part of a transaction, which has contractual standing as evidenced by a contract between the two parties to the Agreement. |
+| 合同性交易（contractual transaction） | 具有某种合同基础的经济交易。<br>An economic transaction which has some contractual basis. |
+| 合同性交易当事方（contractual transaction party） | 具有合同地位之交易的当事方。<br>That which is party to a transaction which has contractual standing. |
+| 受覆盖交易（covered transaction） | 受某主协议覆盖的交易。<br>A transaction covered by some Master Agreement. |
 | 清偿事件（discharging event） | 使某项义务或承诺得以解除的事件。 |
 | 经济协议（economic agreement） | 交易各方之间就经济价值交换达成的协议。 |
-| 经济承诺（economic commitment） | 构成某交易标的之承诺，即交易一方向他方作出的承担。 |
-| 经济合同（economic contract） | 与两方之间经济交易相关并对其加以治理的合同。 |
-| 经济合同承诺（economic contract commitment） | 交易合同所依据的条款。 |
-| 经济资源（economic resource） | 任何可购买、出售或交换的事物。 |
-| 经济交易（economic transaction） | 两方（经济代理）之间就某些经济价值项目进行的交换。 |
+| 经济承诺（economic commitment） | 构成某交易标的之承诺，即交易一方向他方作出的承担。<br>Some Commitment which forms part of the subject of some Transaction, being an undertaking by one or other of the parties to the transaction, extended to the other party to that same transaction. |
+| 经济合同（economic contract） | 与两方之间经济交易相关并对其加以治理的合同。<br>A contract relating to and governing an economic transaction between two parties. |
+| 经济合同承诺（economic contract commitment） | 交易合同所依据的条款。<br>Terms underlying the contract for a transaction. |
+| 经济资源（economic resource） | 任何可购买、出售或交换的事物。<br>Anything that can bought sold or exchanged. |
+| 经济交易（economic transaction） | 两方（经济代理）之间就某些经济价值项目进行的交换。<br>Some exchange of some items of economic value between two parties (economic agents). |
 | 分类账条目（ledger entry） | 记录于分类账中的一项条目。 |
-| REA 请求权（r e a claim） | 在某给定时点，两方相互权利与义务之间的失衡。 |
+| REA 请求权（r e a claim） | 在某给定时点，两方相互权利与义务之间的失衡。<br>Some imbalance, at a given point in time, between the respective rights and obligations of two parties with respect to one another. |
 | 重估（revaluation） | 对某项价值进行重新评估。 |
-| 交易业务事件（transaction business event） | 业务交易各方希望监测或控制的时间中的发生。 |
-| 交易事件（transaction event） | 交易的事件成分。 |
-| 交易事件侧面（transaction event aspect） | 从交易一方视角所见的交易侧。 |
-| 交易当事方（transaction party） | 通过接收和/或让渡某项经济价值或付款而参与某交易的实体。 |
-| 交易承担（transaction undertaking） | 以合同方式定义和确立的、交付某些货物、履行某项服务或以现金或实物作出某项付款的承诺。 |
-| 承担（undertaking） | 采取行动的某项承担。 |
-| 承担事件（undertaking event） | 某时点发生的事情，在该时点一方向他方作出某项承诺。 |
+| 交易业务事件（transaction business event） | 业务交易各方希望监测或控制的时间中的发生。<br>Occurrence in time that partners to a business transaction wish to monitor or control. |
+| 交易事件（transaction event） | 交易的事件成分。<br>The event component of a transaction |
+| 交易事件侧面（transaction event aspect） | 从交易一方视角所见的交易侧。<br>A transaction side as seen from the perspective of one of the parties to the transaction. |
+| 交易当事方（transaction party） | 通过接收和/或让渡某项经济价值或付款而参与某交易的实体。<br>Some entity which takes part in some transaction by receiving and/or parting with some item of economic value or some payment or both. |
+| 交易承担（transaction undertaking） | 以合同方式定义和确立的、交付某些货物、履行某项服务或以现金或实物作出某项付款的承诺。<br>A contractually defined and established commitment to deliver some goods, perform some service or make some payment in cash or in kind. |
+| 承担（undertaking） | 采取行动的某项承担。<br>Some undertaking to act. |
+| 承担事件（undertaking event） | 某时点发生的事情，在该时点一方向他方作出某项承诺。<br>Something which occurs at a point in time, at which a party makes some commitment to some other party. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -143,7 +143,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **列明合同性经济承诺（sets out contractual economic commitment）** | 使交易协议正式化的合同条款中所列明的经济承诺。 | 值域：合同承诺 |
+| **列明合同性经济承诺（sets out contractual economic commitment）** | 使交易协议正式化的合同条款中所列明的经济承诺。<br>The economic commitment set out in the terms to the contract which formalizes the agreement to the transaction. | 值域：合同承诺 |
 
 公理：
 
@@ -158,7 +158,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **定义于……情境（defined in context of）** | 标识某事物被定义时所处的情境。 | — |
-| **呈现物质形态（takes material form）** | 经济资源所呈现的物质形态，即被确认为经济资源的事物。 | — |
+| **呈现物质形态（takes material form）** | 经济资源所呈现的物质形态，即被确认为经济资源的事物。<br>The material form of the Economic Resource; that is the thing which is recognized as being an Economic Resource as defined here, Editorial Note: This would usually be some Independent Thing. However it is conceivable that the existence of some relative thing, for example an asset, may itself be regarded and defined as a resource, over and above the role or context already defined for it. Therefore this identity relationship has a range of Thing, but is modeled as a sub property of "identity" to make this conclusion explicit. Editorial Note: This is a relationship with the sense that some relative thing takes the form of something, but is distinct from the similar concept as applied to Asset, in which the thing which takes the form of some asset is owned by someone. Here it is a resource, irrespective of whether or by whom it is owned. Labeled as "takes material form" to disambiguate these two relationships. | — |
 
 公理：
 
@@ -240,7 +240,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……中的失衡（is imbalance in）** | 一方与另一方之间在义务或权利上的失衡（取决于描述的视角）。 | 值域：法律构造 |
+| **是……中的失衡（is imbalance in）** | 一方与另一方之间在义务或权利上的失衡（取决于描述的视角）。<br>The imbalance in Obligations or Rights (depending on the viewpoint from which it is described) between one party and another. | 值域：法律构造 |
 
 公理：
 

@@ -435,11 +435,11 @@ fibo-sec-dbt-bnd:TreasuryBill a owl:Class ;
     rdfs:seeAlso <https://www.treasurydirect.gov/indiv/research/indepth/tbills/res_tbill.htm>,
         <https://www.treasurydirect.gov/indiv/research/indepth/tbills/res_tbill_rates.htm> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-sec-dbt-dbti:AtADiscount ;
-            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtIssue ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-sec-dbt-dbti:ParValue ;
             owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtMaturity ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-dbt-dbti:AtADiscount ;
+            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtIssue ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:hasInterestRate ;
             owl:someValuesFrom fibo-ind-ir-ir:ReferenceInterestRate ],
@@ -943,15 +943,15 @@ fibo-sec-dbt-bnd:ZeroCouponBond a owl:Class ;
         "零息债券（zero coupon bond）"@zh ;
     rdfs:comment "票息率为零、以面值大幅折价交易的债券。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-dbti:hasInterestPaymentTerms ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:ZeroCouponTerms ],
+        [ a owl:Restriction ;
             owl:hasValue fibo-sec-dbt-dbti:ParValue ;
             owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtMaturity ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-sec-dbt-bnd:hasOriginalIssueDiscountAmount ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-dbti:hasInterestPaymentTerms ;
-            owl:someValuesFrom fibo-sec-dbt-bnd:ZeroCouponTerms ],
         fibo-sec-dbt-bnd:Bond,
         fibo-sec-dbt-dbti:FixedIncomeSecurity ;
     skos:definition "bond issued with a coupon rate of zero and that trades at a deep discount to face value" ;
@@ -1135,17 +1135,17 @@ fibo-sec-dbt-bnd:VariableInterestExpression a owl:Class ;
         "可变利息表达式（variable interest expression）"@zh ;
     rdfs:comment "用于确定可变利息支付金额的表达式。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:decimal ;
-            owl:onProperty fibo-sec-dbt-bnd:hasFloor ],
+            owl:onClass fibo-sec-dbt-dbti:FullyIndexedInterestRate ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-sec-dbt-bnd:hasCeiling ],
         [ a owl:Restriction ;
-            owl:onClass fibo-sec-dbt-dbti:FullyIndexedInterestRate ;
-            owl:onProperty cmns-qtu:hasArgument ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:decimal ;
+            owl:onProperty fibo-sec-dbt-bnd:hasFloor ],
         cmns-qtu:Expression ;
     skos:definition "an expression used to determine a variable interest payment amount" .
 
@@ -1211,12 +1211,12 @@ fibo-sec-dbt-bnd:CallableBond a owl:Class ;
         "可赎回债券（callable bond）"@zh ;
     rdfs:comment "包含允许发行人在赎回保护期后按赎回价回购并注销债券之条款的债券。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue true ;
-            owl:onProperty fibo-sec-dbt-dbti:isCallable ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-dbt-bnd:ExtraordinaryRedemptionProvision ;
             owl:onProperty fibo-sec-dbt-bnd:hasExtraordinaryRedemptionProvision ],
+        [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-sec-dbt-dbti:isCallable ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-dbti:hasCallFeature ;
             owl:someValuesFrom fibo-sec-dbt-dbti:CallFeature ],
@@ -1336,14 +1336,14 @@ fibo-sec-dbt-bnd:MunicipalSecurity a owl:Class ;
         "市政证券（municipal security）"@zh ;
     rdfs:comment "由地方政府实体发行的债务凭证。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:MunicipalDebtFundsUsage ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:isPlayedBy ;
                     owl:someValuesFrom [ a owl:Class ;
                             owl:unionOf ( fibo-be-ge-ge:MunicipalEntity fibo-be-ge-ge:RegionalSovereignty ) ] ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
-            owl:someValuesFrom fibo-sec-dbt-bnd:MunicipalDebtFundsUsage ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-bnd:hasFundingSource ;
             owl:someValuesFrom fibo-sec-dbt-bnd:MunicipalDebtSourceOfFunds ],
@@ -1357,11 +1357,11 @@ fibo-sec-dbt-bnd:CouponPaymentTerms a owl:Class ;
         "票息支付条款（coupon payment terms）"@zh ;
     rdfs:comment "关于债券利息支付的条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
-            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-dt-fd:hasSchedule ;
             owl:someValuesFrom fibo-fbc-dae-dbt:InterestPaymentSchedule ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:hasInterestRate ;
             owl:someValuesFrom fibo-sec-dbt-bnd:BondCoupon ],
@@ -1383,15 +1383,15 @@ fibo-sec-dbt-bnd:Bond a owl:Class ;
         "债券（bond）"@zh ;
     rdfs:comment "代表一笔贷款的可交易债务工具，发行人对持有人负有债务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-dbti:hasRepaymentTerms ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:BondPrincipalRepaymentTerms ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-dbti:hasInterestPaymentTerms ;
             owl:someValuesFrom fibo-sec-dbt-bnd:CouponPaymentTerms ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-sec-sec-iss:hasSeries ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-dbti:hasRepaymentTerms ;
-            owl:someValuesFrom fibo-sec-dbt-bnd:BondPrincipalRepaymentTerms ],
         fibo-fbc-dae-dbt:CreditAgreementRepaidAtMaturity,
         fibo-sec-dbt-dbti:TradableDebtInstrument ;
     skos:definition "tradable debt instrument representing a loan in which the issuer owes the holder(s) a debt" ;

@@ -29,11 +29,11 @@ fibo-loan-ln-reg:BorrowerDisclosureRequirement a owl:Class ;
         "借款人披露要求（borrower disclosure requirement）"@zh ;
     rdfs:comment "要求贷款人向借款人或潜在借款人披露信息的监管要求。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rga:governs ;
-            owl:someValuesFrom fibo-loan-ln-app:BorrowerAssessment ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:confers ;
             owl:someValuesFrom fibo-loan-ln-reg:ProductDisclosureRight ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom fibo-loan-ln-app:BorrowerAssessment ],
         fibo-loan-ln-reg:DisclosureRequirement .
 
 fibo-loan-ln-reg:LenderRight a owl:Class ;
@@ -268,11 +268,11 @@ fibo-loan-ln-reg:LoanRegulatoryRequirement a owl:Class ;
             owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
             owl:someValuesFrom fibo-loan-ln-reg:ConsumerCreditProtectionLaw ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-rga:regulates ;
-            owl:someValuesFrom fibo-loan-ln-ln:Loan ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-loan-ln-reg:administeredBy ;
             owl:someValuesFrom cmns-rga:RegulatoryAgency ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:regulates ;
+            owl:someValuesFrom fibo-loan-ln-ln:Loan ],
         fibo-fnd-law-lcap:LegalObligation ;
     skos:definition "A regulatory requirement defined in regulations by a comsumer credit act or other legislation."@en ;
     cmns-av:explanatoryNote "Presence of a loan regulatory requirement associated with a loan indicates that the loan is regulated by the UK Consumer credit act or the equivalent in continental Europe."@en .

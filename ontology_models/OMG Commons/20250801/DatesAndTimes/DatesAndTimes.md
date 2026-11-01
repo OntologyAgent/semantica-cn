@@ -34,21 +34,21 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 日期（date） | 某日历上的一个历日。 |
-| 日期区间（date period） | 跨越一个或多个历日的时间段。 |
-| 日期时间（date time） | 包含日期和时间的时间点，可选含时区偏移。 |
-| 日期时间戳（date time stamp） | 包含日期和时间且必须含时区偏移的时间点。 |
-| 时长（duration） | 具有特定长度的时间区间。 |
-| 显式日期（explicit date） | 必须具备「具有日期值」属性的日期。 |
-| 显式日期区间（explicit date period） | 必须具备起始日期、结束日期和/或时长的日期区间。 |
-| 显式时长（explicit duration） | 「具有时长值」属性必须有值的时长。 |
-| 显式时间段（explicit time period） | 必须具备起始时间、结束时间和/或时长的时间段。 |
-| 真区间（proper interval） | 具有非零跨度或时长的时间区间。 |
-| 时间实体（temporal entity） | 时间区间或时刻。 |
-| 时刻（time instant） | 属于某时间标尺的时间实体，无跨度或时长。 |
-| 时间区间（time interval） | 时间轴上的一段，即时间中的一个位置，具有跨度或时长。 |
-| 日内时间（time of day） | 按钟表表示的显式时间。 |
-| 时间段（time period） | 某个有限窗口上的时间跨度。 |
+| 日期（date） | 某日历上的一个历日。<br>calendar day on some calendar |
+| 日期区间（date period） | 跨越一个或多个历日的时间段。<br>time span over one or more calendar days |
+| 日期时间（date time） | 包含日期和时间的时间点，可选含时区偏移。<br>time point including a date and a time, optionally including a time zone offset |
+| 日期时间戳（date time stamp） | 包含日期和时间且必须含时区偏移的时间点。<br>time point including a date and a time that requires a time zone offset |
+| 时长（duration） | 具有特定长度的时间区间。<br>interval of time of some specific length |
+| 显式日期（explicit date） | 必须具备「具有日期值」属性的日期。<br>date in which the 'has date value' property is required |
+| 显式日期区间（explicit date period） | 必须具备起始日期、结束日期和/或时长的日期区间。<br>date period for which the start date, end date, and/or duration are required |
+| 显式时长（explicit duration） | 「具有时长值」属性必须有值的时长。<br>duration for which the 'has duration value' property must have a value |
+| 显式时间段（explicit time period） | 必须具备起始时间、结束时间和/或时长的时间段。<br>time period for which the starting time, ending time, and/or duration are required |
+| 真区间（proper interval） | 具有非零跨度或时长的时间区间。<br>time interval with a non-zero extent or duration |
+| 时间实体（temporal entity） | 时间区间或时刻。<br>time interval or instant |
+| 时刻（time instant） | 属于某时间标尺的时间实体，无跨度或时长。<br>temporal entity that is a member of a time scale, with no extent or duration |
+| 时间区间（time interval） | 时间轴上的一段，即时间中的一个位置，具有跨度或时长。<br>segment of the time axis, a location in time, with an extent or duration |
+| 日内时间（time of day） | 按钟表表示的显式时间。<br>explicit time, according to a clock |
+| 时间段（time period） | 某个有限窗口上的时间跨度。<br>time span over some finite window |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -76,7 +76,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有日期值（has date value）** | 指明按 xsd:date（即 ISO 8601）格式记录的字面（显式）日期，不含时间或时区信息。 | 值域：xsd:string |
+| **具有日期值（has date value）** | 指明按 xsd:date（即 ISO 8601）格式记录的字面（显式）日期，不含时间或时区信息。<br>specifies an actual literal (explicit) date captured in the format specified for xsd:date (i.e., ISO 8601 format), WITHOUT the time or timezone information; the semantics are identical to those of xsd:date | 值域：xsd:string |
 
 公理：
 
@@ -92,7 +92,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有日期值（has date value）** | 指明按 xsd:date（即 ISO 8601）格式记录的字面（显式）日期，不含时间或时区信息。 | 值域：xsd:string |
+| **具有日期值（has date value）** | 指明按 xsd:date（即 ISO 8601）格式记录的字面（显式）日期，不含时间或时区信息。<br>specifies an actual literal (explicit) date captured in the format specified for xsd:date (i.e., ISO 8601 format), WITHOUT the time or timezone information; the semantics are identical to those of xsd:date | 值域：xsd:string |
 
 公理：
 
@@ -108,7 +108,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有日期时间值（has date time value）** | 指明一个字面（显式）日期时间。 | 值域：xsd:dateTime |
+| **具有日期时间值（has date time value）** | 指明一个字面（显式）日期时间。<br>specifies an actual literal (explicit) date and time | 值域：xsd:dateTime |
 
 公理：
 
@@ -124,7 +124,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有日期时间戳值（has date time stamp value）** | 指明一个字面（显式）日期时间，含时区。 | 值域：xsd:dateTimeStamp |
+| **具有日期时间戳值（has date time stamp value）** | 指明一个字面（显式）日期时间，含时区。<br>specifies an actual literal (explicit) date and time, including the time zone | 值域：xsd:dateTimeStamp |
 
 公理：
 
@@ -140,7 +140,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有时间值（has time value）** | 指明按 xsd:time（即 ISO 8601）格式记录的显式时间，不含日期或时区信息。 | 值域：xsd:string |
+| **具有时间值（has time value）** | 指明按 xsd:time（即 ISO 8601）格式记录的显式时间，不含日期或时区信息。<br>specifies an explicit time, captured in the format specified for xsd:time (i.e., ISO 8601 format), WITHOUT the date or timezone information | 值域：xsd:string |
 
 公理：
 
@@ -164,9 +164,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有时长（has duration）** | 指明某事物持续的时间。 | 值域：时长（duration）；子属性：具有时间（has time） |
-| **具有结束日期（has end date）** | 标识与某事物关联的最终或结束日期。 | 值域：日期（date）；子属性：具有日期（has date） |
-| **具有起始日期（has start date）** | 标识与某事物关联的初始日期。 | 值域：日期（date）；子属性：具有日期（has date） |
+| **具有时长（has duration）** | 指明某事物持续的时间。<br>specifies the time during which something continues | 值域：时长（duration）；子属性：具有时间（has time） |
+| **具有结束日期（has end date）** | 标识与某事物关联的最终或结束日期。<br>indicates the final or ending date associated with something | 值域：日期（date）；子属性：具有日期（has date） |
+| **具有起始日期（has start date）** | 标识与某事物关联的初始日期。<br>indicates the initial date associated with something | 值域：日期（date）；子属性：具有日期（has date） |
 
 公理：
 
@@ -184,9 +184,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有时长（has duration）** | 指明某事物持续的时间。 | 值域：时长（duration）；子属性：具有时间（has time） |
-| **具有结束日期（has end date）** | 标识与某事物关联的最终或结束日期。 | 值域：日期（date）；子属性：具有日期（has date） |
-| **具有起始日期（has start date）** | 标识与某事物关联的初始日期。 | 值域：日期（date）；子属性：具有日期（has date） |
+| **具有时长（has duration）** | 指明某事物持续的时间。<br>specifies the time during which something continues | 值域：时长（duration）；子属性：具有时间（has time） |
+| **具有结束日期（has end date）** | 标识与某事物关联的最终或结束日期。<br>indicates the final or ending date associated with something | 值域：日期（date）；子属性：具有日期（has date） |
+| **具有起始日期（has start date）** | 标识与某事物关联的初始日期。<br>indicates the initial date associated with something | 值域：日期（date）；子属性：具有日期（has date） |
 
 公理：
 
@@ -205,7 +205,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有时长值（has duration value）** | 指明按 xsd:duration（即 ISO 8601）格式记录的字面（显式）时长。 | 值域：xsd:string |
+| **具有时长值（has duration value）** | 指明按 xsd:duration（即 ISO 8601）格式记录的字面（显式）时长。<br>specifies a literal (explicit) duration (amount of time) captured in the format specified for xsd:duration (i.e., ISO 8601 format); the semantics are identical to those of xsd:duration | 值域：xsd:string |
 
 公理：
 
@@ -221,7 +221,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有时长值（has duration value）** | 指明按 xsd:duration（即 ISO 8601）格式记录的字面（显式）时长。 | 值域：xsd:string |
+| **具有时长值（has duration value）** | 指明按 xsd:duration（即 ISO 8601）格式记录的字面（显式）时长。<br>specifies a literal (explicit) duration (amount of time) captured in the format specified for xsd:duration (i.e., ISO 8601 format); the semantics are identical to those of xsd:duration | 值域：xsd:string |
 
 公理：
 
@@ -248,9 +248,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有时长（has duration）** | 指明某事物持续的时间。 | 值域：时长（duration）；子属性：具有时间（has time） |
-| **具有结束时间（has end time）** | 标识与某事物关联的最终或结束时间。 | 值域：日内时间（time of day）；子属性：具有终点（has end） |
-| **具有起始时间（has start time）** | 标识与某事物关联的初始或起始时间。 | 值域：日内时间（time of day）；子属性：具有起点（has start） |
+| **具有时长（has duration）** | 指明某事物持续的时间。<br>specifies the time during which something continues | 值域：时长（duration）；子属性：具有时间（has time） |
+| **具有结束时间（has end time）** | 标识与某事物关联的最终或结束时间。<br>indicates the final or ending time associated with something | 值域：日内时间（time of day）；子属性：具有终点（has end） |
+| **具有起始时间（has start time）** | 标识与某事物关联的初始或起始时间。<br>indicates the initial or starting time associated with something | 值域：日内时间（time of day）；子属性：具有起点（has start） |
 
 公理：
 
@@ -269,9 +269,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有时长（has duration）** | 指明某事物持续的时间。 | 值域：时长（duration）；子属性：具有时间（has time） |
-| **具有结束时间（has end time）** | 标识与某事物关联的最终或结束时间。 | 值域：日内时间（time of day）；子属性：具有终点（has end） |
-| **具有起始时间（has start time）** | 标识与某事物关联的初始或起始时间。 | 值域：日内时间（time of day）；子属性：具有起点（has start） |
+| **具有时长（has duration）** | 指明某事物持续的时间。<br>specifies the time during which something continues | 值域：时长（duration）；子属性：具有时间（has time） |
+| **具有结束时间（has end time）** | 标识与某事物关联的最终或结束时间。<br>indicates the final or ending time associated with something | 值域：日内时间（time of day）；子属性：具有终点（has end） |
+| **具有起始时间（has start time）** | 标识与某事物关联的初始或起始时间。<br>indicates the initial or starting time associated with something | 值域：日内时间（time of day）；子属性：具有起点（has start） |
 
 公理：
 
@@ -287,24 +287,24 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有日期（has date）** | 标识一个历日、月和年。 | 值域：日期（date）；子属性：具有时间（has time） |
-| **具有签发日期（has date of issuance）** | 将协议、合同、许可或报告等关联到其发布日期。 | 值域：日期（date）；子属性：具有起始日期（has start date） |
-| **具有日期区间（has date period）** | 标识一个具体时间窗口，含起始日期、结束日期和/或时长。 | 值域：日期区间（date period）；子属性：具有时间（has time） |
-| **具有日期时间（has date time）** | 标识特定的日期与日内时间，可能不含时区。 | 值域：日期时间（date time）；子属性：具有时间（has time） |
-| **具有日期时间戳（has date time stamp）** | 标识特定的日期与日内时间，明确包含时区。 | 值域：日期时间戳（date time stamp）；子属性：具有时间（has time） |
-| **具有终点（has end）** | 标识与某事物关联的最终或结束时间点。 | 值域：时刻（time instant）；子属性：具有时间（has time） |
-| **具有显式日期（has explicit date）** | 标识与某事物关联的明示日期，而非推算或未知日期。 | 值域：显式日期（explicit date）；子属性：具有日期（has date） |
-| **具有起点（has start）** | 标识与某事物关联的初始时间点。 | 值域：时刻（time instant）；子属性：具有时间（has time） |
-| **具有时间（has time）** | 指明可与任意元素关联的一般时间。 | 值域：时间实体（temporal entity） |
-| **具有时间段（has time period）** | 标识一个具体时间窗口，含起始时间、结束时间和/或时长。 | 值域：时间段（time period）；子属性：具有时间（has time） |
-| **先于（precedes）** | 基于空间或时间上的在先邻近而关联；在逻辑次序或序列中发生在前。 | — |
-| **后于（succeeds）** | 基于空间或时间上的在后邻近而关联；在逻辑次序或序列中跟随在后。 | 逆属性：先于（precedes） |
+| **具有日期（has date）** | 标识一个历日、月和年。<br>identifies a calendar day, month and year | 值域：日期（date）；子属性：具有时间（has time） |
+| **具有签发日期（has date of issuance）** | 将协议、合同、许可或报告等关联到其发布日期。<br>links something, such as an agreement, contract, license, or report, to the date it was made available | 值域：日期（date）；子属性：具有起始日期（has start date） |
+| **具有日期区间（has date period）** | 标识一个具体时间窗口，含起始日期、结束日期和/或时长。<br>identifies a specific window of time, including a start date, end date and/or duration | 值域：日期区间（date period）；子属性：具有时间（has time） |
+| **具有日期时间（has date time）** | 标识特定的日期与日内时间，可能不含时区。<br>identifies a specific date and time of day, possibly excluding the time zone | 值域：日期时间（date time）；子属性：具有时间（has time） |
+| **具有日期时间戳（has date time stamp）** | 标识特定的日期与日内时间，明确包含时区。<br>identifies a specific date and time of day, explicitly including the time zone | 值域：日期时间戳（date time stamp）；子属性：具有时间（has time） |
+| **具有终点（has end）** | 标识与某事物关联的最终或结束时间点。<br>indicates the final or ending time point associated with something | 值域：时刻（time instant）；子属性：具有时间（has time） |
+| **具有显式日期（has explicit date）** | 标识与某事物关联的明示日期，而非推算或未知日期。<br>indicates a stated date, as opposed to a calculated or unknown date, associated with something | 值域：显式日期（explicit date）；子属性：具有日期（has date） |
+| **具有起点（has start）** | 标识与某事物关联的初始时间点。<br>indicates the initial time point associated with something | 值域：时刻（time instant）；子属性：具有时间（has time） |
+| **具有时间（has time）** | 指明可与任意元素关联的一般时间。<br>specifies a general time that can be associated with any element | 值域：时间实体（temporal entity） |
+| **具有时间段（has time period）** | 标识一个具体时间窗口，含起始时间、结束时间和/或时长。<br>identifies a specific window of time, including a starting time, ending time and/or duration | 值域：时间段（time period）；子属性：具有时间（has time） |
+| **先于（precedes）** | 基于空间或时间上的在先邻近而关联；在逻辑次序或序列中发生在前。<br>associates based on prior spatial or temporal proximity; occurs before in a logical order or sequence | — |
+| **后于（succeeds）** | 基于空间或时间上的在后邻近而关联；在逻辑次序或序列中跟随在后。<br>associates based on subsequent spatial or temporal proximity; follows in a logical order or sequence | 逆属性：先于（precedes） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有观测日期时间（has observed date and time）** | 标识与事件、度量、记录或观测关联的日期时间。 |
+| **具有观测日期时间（has observed date and time）** | 标识与事件、度量、记录或观测关联的日期时间。<br>indicates a date and time associated with an event, measurement, record, or observation |
 
 ## 4. 依赖（owl:imports，1 个）
 

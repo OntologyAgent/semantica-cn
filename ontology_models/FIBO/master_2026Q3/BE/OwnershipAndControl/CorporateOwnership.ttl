@@ -153,12 +153,12 @@ fibo-be-oac-cown:BeneficialOwner a owl:Class ;
         "受益所有人（beneficial owner）"@zh ;
     rdfs:comment "即使某物的所有权（名义）可能登记在他人名下，仍享有其所有权利益（如获得收入）的参与方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-cown:isBeneficialOwnerOf ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
+        [ a owl:Restriction ;
             owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-cown:isBeneficialOwnerOf ;
-            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
         fibo-fnd-oac-own:Owner ;
     skos:definition "party that enjoys the benefits of ownership (such as receipt of income) of something even though its ownership (title) may be in the name of another party (called a nominee or registered owner)" ;
     cmns-av:adaptedFrom "https://en.wikipedia.org/wiki/Beneficial_ownership#Financial_Action_Task_Force_on_Money_Laundering_(FATF)"^^xsd:anyURI,

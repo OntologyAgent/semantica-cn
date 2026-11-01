@@ -34,25 +34,25 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 封闭式信贷（closed-end credit） | 贷款结清、资金全额发放后本金不得再增加的信贷协议。 |
-| 共同签署人（co-maker） | 在借款人本票上共同签署、提供额外担保并可能改善债务质量的参与方。 |
-| 抵押贷款（collateralized loan） | 以借款人提供的现金或其他可接受抵押品（不动产、证券或其他资产）作担保的担保贷款。 |
-| 合并贷款价值比（combined loan-to-value ratio） | 以资产作担保的全部债务总额与该资产评估价值之比。 |
-| 担保贷款（guaranteed loan） | 本金与利息的偿付由担保作保的贷款。 |
-| 单笔付款交易（individual payment transaction） | 为履行债务义务而实际支付本金、利息、费用或其他相关款项的单笔交易。 |
-| 贷款人留置顺位（lender lien position） | 表明贷款人对贷款抵押资产是否拥有第一留置权的分类符。 |
-| 贷款（loan） | 一方向另一方（或多方）提供货币或信用、并约定借款将获偿还的债务工具。 |
-| 贷款还款进度表（loan payment schedule） | 与特定贷款账户关联的定期或显式（临时）还款进度表。 |
-| 贷款专用客户账户（loan-specific customer account） | 借款人持有的、与特定贷款关联的账户。 |
-| 贷款价值比（loan-to-value ratio） | 贷款本金与担保融资之资产评估价值之比，以百分比表示。 |
-| 开放式信贷（open-end credit） | 可在约定信用额度内随时支取和偿还、并就支取部分计息的信贷协议。 |
-| 所有权益（ownership interest） | 表明申请人或借款人对贷款抵押资产的所有权或租赁权益性质的分类符。 |
-| 还款历史（payment history） | 借款人为履行还款义务向贷款人或服务机构实际支付本金、利息及其他相关款项的记录。 |
-| 提前还款条款（pre-payment terms） | 与贷款到期前还款相关的本金偿付条款。 |
-| 担保贷款（secured loan） | 借款人通过担保协议以某项资产作抵押、或通过第三方担保作保的贷款。 |
-| 服务机构（servicer） | 为资产池提供收款、管理等服务的机构。 |
-| 未偿本金总额（total outstanding principal） | 以该房产作担保的全部贷款的本金余额。 |
-| 信用贷款（unsecured loan） | 基于借款人信用历史或声誉而发放的贷款。 |
+| 封闭式信贷（closed-end credit） | 贷款结清、资金全额发放后本金不得再增加的信贷协议。<br>credit agreement in which the loan principal cannot be increased after funds are dispersed in full when the loan closes |
+| 共同签署人（co-maker） | 在借款人本票上共同签署、提供额外担保并可能改善债务质量的参与方。<br>party that signs a borrower's promissory note, providing additional security and potentially improving the quality of the debt |
+| 抵押贷款（collateralized loan） | 以借款人提供的现金或其他可接受抵押品（不动产、证券或其他资产）作担保的担保贷款。<br>secured loan that is secured with cash or other acceptable collateral (real property, securities or other assets) provided by the borrower as specified in the collateral agreement |
+| 合并贷款价值比（combined loan-to-value ratio） | 以资产作担保的全部债务总额与该资产评估价值之比。<br>ratio of the total amount of debt that is secured by the asset(s) and the appraised value of the asset(s) securing the financing |
+| 担保贷款（guaranteed loan） | 本金与利息的偿付由担保作保的贷款。<br>loan that is secured with respect to repayment of principal and interest by guaranty |
+| 单笔付款交易（individual payment transaction） | 为履行债务义务而实际支付本金、利息、费用或其他相关款项的单笔交易。<br>actual payment of principal, interest, fees, or other related amounts towards fulfillment of a debt obligation |
+| 贷款人留置顺位（lender lien position） | 表明贷款人对贷款抵押资产是否拥有第一留置权的分类符。<br>classifier indicating whether the lender has the primary lien position with respect to an asset used as collateral for the loan |
+| 贷款（loan） | 一方向另一方（或多方）提供货币或信用、并约定借款将获偿还的债务工具。<br>debt instrument whereby one party extends money or credit to another party (or parties) with the understanding that the borrowed money will be repaid according to the terms of the contract |
+| 贷款还款进度表（loan payment schedule） | 与特定贷款账户关联的定期或显式（临时）还款进度表。<br>regular or explicit (ad hoc) payment schedule associated with a given loan-specific account |
+| 贷款专用客户账户（loan-specific customer account） | 借款人持有的、与特定贷款关联的账户。<br>account held by the borrower associated with a specific loan |
+| 贷款价值比（loan-to-value ratio） | 贷款本金与担保融资之资产评估价值之比，以百分比表示。<br>ratio, expressed as a percentage, between the principal amount of the loan and the appraised value of the asset securing the financing |
+| 开放式信贷（open-end credit） | 可在约定信用额度内随时支取和偿还、并就支取部分计息的信贷协议。<br>credit agreement that may be extended up to an agreed credit limit and paid down at any time within the period of the line, if any, and on which interest is charged only on the outstanding balance |
+| 所有权益（ownership interest） | 表明申请人或借款人对贷款抵押资产的所有权或租赁权益性质的分类符。<br>classifier indicating the nature of the applicant's or borrower's ownership or leasehold interest in an asset used as collateral for the loan |
+| 还款历史（payment history） | 借款人为履行还款义务向贷款人或服务机构实际支付本金、利息及其他相关款项的记录。<br>record of actual payments of principal, interest, and other related amounts made by a borrower to a lender or servicer in order to fulfill their re-payment obligation |
+| 提前还款条款（pre-payment terms） | 与贷款到期前还款相关的本金偿付条款。<br>principal repayment terms related to payment of the loan prior to maturity |
+| 担保贷款（secured loan） | 借款人通过担保协议以某项资产作抵押、或通过第三方担保作保的贷款。<br>loan in which the borrower pledges some asset via a security agreement as collateral for the loan, or that is secured via third-party guarantee |
+| 服务机构（servicer） | 为资产池提供收款、管理等服务的机构。<br>party that collects principal and interest payments on behalf of the lender |
+| 未偿本金总额（total outstanding principal） | 以该房产作担保的全部贷款的本金余额。<br>the principal balance of all loans secured by the property |
+| 信用贷款（unsecured loan） | 基于借款人信用历史或声誉而发放的贷款。<br>loan granted based on the strength of the borrower's credit history or reputation in the community |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -116,13 +116,13 @@
 | **具有担保人（hasGuarantor）** | — | — |
 | **具有对应账户（hasCorrespondingAccount）** | — | — |
 | **具有第三方（hasThirdParty）** | — | — |
-| **具有负摊销（has negative amortization）** | 表明合同条款是否允许将未付利息计入未偿本金余额。 | 值域：xsd:boolean |
-| **具有本金金额（has principal amount）** | 标识到期时或之前须偿还的贷款名义金额。 | 值域：货币数量；子属性：具有本金 |
-| **具有总结清费用（has total closing costs）** | 标识房地产交易结清（产权转移）时支付的总费用。 | 子属性：具有成本（has cost） |
-| **具有总点数与费用（has total points and fees）** | 标识贷款人以点数形式收取的预付利息及费用，作为提高贷款利率的替代。 | 子属性：具有成本（has cost） |
-| **可承接（is assumable）** | 表明另一借款人是否可承接本贷款的还款。 | 值域：xsd:boolean |
-| **仅付息（is interest only）** | 表明合同条款是否包含仅付息的还款方式。 | 值域：xsd:boolean |
-| **由……服务（is performed by）** | 将贷款关联到为其提供服务的金融服务提供商。 | 值域：服务机构（servicer）；子属性：具有参与方角色（has party role） |
+| **具有负摊销（has negative amortization）** | 表明合同条款是否允许将未付利息计入未偿本金余额。<br>indicates whether the contractual terms include or would have included a feature that allows unpaid interest to be added to the balance of unpaid principal | 值域：xsd:boolean |
+| **具有本金金额（has principal amount）** | 标识到期时或之前须偿还的贷款名义金额。<br>indicates the nominal amount of the loan that must be paid at or before maturity | 值域：货币数量；子属性：具有本金 |
+| **具有总结清费用（has total closing costs）** | 标识房地产交易结清（产权转移）时支付的总费用。<br>indicates the total the amount paid at the closing of a real estate transaction, i.e., at the time when the title to the property is conveyed (transferred) to the buyer | 子属性：具有成本（has cost） |
+| **具有总点数与费用（has total points and fees）** | 标识贷款人以点数形式收取的预付利息及费用，作为提高贷款利率的替代。<br>indicates a form of pre-paid interest, charged by the lender as an alternative to charging a higher rate of interest on the mortgage loan | 子属性：具有成本（has cost） |
+| **可承接（is assumable）** | 表明另一借款人是否可承接本贷款的还款。<br>indicates whether or not another borrower may assume the payments on this loan | 值域：xsd:boolean |
+| **仅付息（is interest only）** | 表明合同条款是否包含仅付息的还款方式。<br>indicates whether the contractual terms include or would have included interest only payments | 值域：xsd:boolean |
+| **由……服务（is performed by）** | 将贷款关联到为其提供服务的金融服务提供商。<br>relates a loan to the financial service provider that services it | 值域：服务机构（servicer）；子属性：具有参与方角色（has party role） |
 | **由……分类（isClassifiedBy）** | — | — |
 
 公理：
@@ -227,8 +227,8 @@
 | **关联于（relatesTo）** | — | — |
 | **具有支付进度表（hasPaymentSchedule）** | — | — |
 | **由……持有（isHeldBy）** | — | — |
-| **具有贷款余额（has loan balance）** | 标识截至某日期的贷款本金余额。 | 子属性：具有未偿金额 |
-| **具有还款历史（has payment history）** | 将信贷协议、贷款或承诺关联到借款人截至某时点的还款历史。 | 值域：还款历史（payment history）；子属性：具有记录 |
+| **具有贷款余额（has loan balance）** | 标识截至某日期的贷款本金余额。<br>indicates the balance with respect to the principal on the loan as of some date | 子属性：具有未偿金额 |
+| **具有还款历史（has payment history）** | 将信贷协议、贷款或承诺关联到借款人截至某时点的还款历史。<br>relates a credit agreement, loan, or commitment to any history of payments that have been made by the borrower up to the point that payment history is requested | 值域：还款历史（payment history）；子属性：具有记录 |
 | **由……提供（isProvidedBy）** | — | — |
 
 公理：
@@ -305,7 +305,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **适用于账户（appliesToAccount）** | — | — |
-| **具有单笔付款（has individual payment）** | 将本金、利息及其他相关款项的单笔实际支付关联到账户的整体还款历史。 | 值域：单笔付款交易（individual payment transaction）；子属性：包含 |
+| **具有单笔付款（has individual payment）** | 将本金、利息及其他相关款项的单笔实际支付关联到账户的整体还款历史。<br>links an actual payment of principal, interest, and other related amounts to the overall payment history for an account | 值域：单笔付款交易（individual payment transaction）；子属性：包含 |
 
 公理：
 
@@ -322,7 +322,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有提前还款罚则期限（has pre-payment penalty term）** | 将贷款关联到一个期限（月），超过该期限后不再收取提前还款罚金。 | 子属性：具有时长 |
+| **具有提前还款罚则期限（has pre-payment penalty term）** | 将贷款关联到一个期限（月），超过该期限后不再收取提前还款罚金。<br>relates a loan to a period of time in months after which there is no prepayment penalty | 子属性：具有时长 |
 
 公理：
 
@@ -348,16 +348,16 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有成本（has cost）** | 应付的本金、利息、费用或其他开支金额。 | 子属性：具有货币数量 |
-| **具有首次利率变动期限（has first rate change term）** | 指明发放后利率不得变动的月数。 | 子属性：具有时长 |
-| **具有计划未偿余额（has scheduled unpaid balance）** | 标识按合同条款完成计划还款后应有的余额。 | 值域：余额；子属性：具有余额 |
+| **具有成本（has cost）** | 应付的本金、利息、费用或其他开支金额。<br>has amount payable for principal, interest, fees or other expenses | 子属性：具有货币数量 |
+| **具有首次利率变动期限（has first rate change term）** | 指明发放后利率不得变动的月数。<br>specifies a period of time in months after origination during which the interest rate cannot change | 子属性：具有时长 |
+| **具有计划未偿余额（has scheduled unpaid balance）** | 标识按合同条款完成计划还款后应有的余额。<br>indicates what the balance should be after a scheduled payment is made according to contract terms | 值域：余额；子属性：具有余额 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有期末大额还款（has balloon payment）** | 表明合同条款是否包含在贷款期末一次性偿还全部未偿本金。 |
-| **初始应付对象（is initially payable）** | 表明本贷款所生义务最初应付给该金融机构（申请情形则为应付对象）。 |
+| **具有期末大额还款（has balloon payment）** | 表明合同条款是否包含在贷款期末一次性偿还全部未偿本金。<br>indicates whether the contractual terms include or would have included repayment of the outstanding principal sum at the end of a loan period, prior to which only partial or no payments were made on the principal |
+| **初始应付对象（is initially payable）** | 表明本贷款所生义务最初应付给该金融机构（申请情形则为应付对象）。<br>indicates whether the obligation arising from the covered loan was, or in the case of an application, would have been initially payable to the financial institution |
 
 ## 4. 依赖（owl:imports，25 个）
 

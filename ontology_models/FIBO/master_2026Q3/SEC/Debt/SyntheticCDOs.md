@@ -34,16 +34,16 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 套利型合成担保债务凭证（arbitrage synthetic CDO） | 出于监管或实务考量而构造的合成 CDO，使银行在保留债务所有权的同时实现风险转移等目的。 |
-| 合成摊销证券（synthetic amortizing security） | 为模拟摊销证券行为而构造的证券。 |
+| 套利型合成担保债务凭证（arbitrage synthetic CDO） | 出于监管或实务考量而构造的合成 CDO，使银行在保留债务所有权的同时实现风险转移等目的。<br>Arbitrage synthetic CDO deals are motivated by regulatory or practical considerations that might make a bank want to retain ownership of debt while achieving capital relief through CDSs. In this case, the sponsoring bank has a portfolio of obligations, called the reference portfolio. It retains that portfolio, but offloads its credit risk by transacting CDSs with the CDO. |
+| 合成摊销证券（synthetic amortizing security） | 为模拟摊销证券行为而构造的证券。<br>Security constructed to emulate an amortizing security. |
 | 合成资产负债表型担保债务凭证（synthetic balance sheet CDO） | 以合成方式将资产负债表资产风险转移出去的 CDO。 |
 | 合成担保债务凭证（synthetic CDO） | 通过信用衍生品（而非真实资产）合成标的组合的担保债务凭证。 |
 | 合成担保债务凭证组合（synthetic CDO portfolio） | 合成 CDO 的标的组合，由信用衍生品头寸构成而非实际持有资产。 |
-| 合成担保债务凭证组合成分（synthetic CDO portfolio constituent） | 被定义为合成工具池成分的工具；它们并非实际持有，但在其他方面与持有类似。 |
+| 合成担保债务凭证组合成分（synthetic CDO portfolio constituent） | 被定义为合成工具池成分的工具；它们并非实际持有，但在其他方面与持有类似。<br>An instrument which is defined as a constituent of a synthetic pool of instruments. These are not holdings because they are not held, but in all other respects they are the constituents of the portfolio. |
 | 合成担保债务凭证分档（synthetic CDO tranche） | 合成 CDO 的一个分档。 |
-| 合成债务工具池（synthetic debt instrument pool） | 模拟一篮子债务证券行为的现金流结构，例如用信用衍生品合成的 CDO/债券/ABS 组合。 |
-| 合成债务工具池融资资产（synthetic debt instrument pool funding asset） | 为合成 CDO 中使用的合成债务工具池提供资金的资产。 |
-| 合成债务特殊目的载体（synthetic debt SPV） | 为发行合成 CDO 而设立的特殊目的载体（SPV），该实体（同所有 SPV）本身注册为某种法律实体。 |
+| 合成债务工具池（synthetic debt instrument pool） | 模拟一篮子债务证券行为的现金流结构，例如用信用衍生品合成的 CDO/债券/ABS 组合。<br>A cash flow structure which synthesizes the behavior of a portfolio of debt securities. For example a synthesized portfolio of CDO / Bonds / ABS using Total Returns Swaps and CDS. This does exist, it is just manufactured from different instruments. |
+| 合成债务工具池融资资产（synthetic debt instrument pool funding asset） | 为合成 CDO 中使用的合成债务工具池提供资金的资产。<br>An asset which provides the funding for a synthetic debt instrument pool, as used in a synthetic CDO. |
+| 合成债务特殊目的载体（synthetic debt SPV） | 为发行合成 CDO 而设立的特殊目的载体（SPV），该实体（同所有 SPV）本身注册为某种法律实体。<br>A Special Purpose Vehicle set up for the issuance of synthetics CDOs. This entity (like all SPVs) its itself registered as some kind of legal entity, distinct from the sponsoring organization. It becomes the Issuer of Synthetic CDO issues. |
 | 合成池资产（synthetic pool asset） | 合成池中的资产成分。 |
 | 合成结构化金融工具（synthetic structured finance instrument） | 以合成方式构造的结构化金融工具。 |
 
@@ -129,9 +129,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否现金型（is cash）** | 表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。 | 值域：xsd:boolean |
+| **是否现金型（is cash）** | 表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。<br>Whether the CDO has an underlying pool of real assets. This is No: the CDO has a synthetic pool of underlying assets. | 值域：xsd:boolean |
 | **是……的分档（is tranche of）** | 表明某一档属于某一发行。 | 值域：合成债务工具池（synthetic debt instrument pool） |
-| **本分档违约百分比（percentage of defaults this tranche）** | 该分档持有人所暴露的违约百分比，即该分档所代表的违约份额。 | 值域：百分比 |
+| **本分档违约百分比（percentage of defaults this tranche）** | 该分档持有人所暴露的违约百分比，即该分档所代表的违约份额。<br>The percentage of defaults which holders of this are exposed to, that is the percentage of defaults that this tranche represents. Further Notes Review session notes 21 April: The first, second and so on, to stop paying out when there is a default. In each case you get the first, second etc. x% of defaults. Base underlying may be high or low quality. Create the pool by buying or selling protection depending on hich way you want to go, e..g. have high quality funds, (borrowers), would sell protection. If low quality, would buy protection to improve quality. So risk is no longer bound to the funding. REVIEW: More likely this is a band of percentages (from and to); review and formalize. See also note on attachment and detachment points. | 值域：百分比 |
 | **分档类型（tranche type）** | 指明分档的类型。 | 值域：担保债务凭证分档优先级选择 |
 
 公理：
@@ -149,7 +149,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **由……提供资金（funded by）** | 指明为某一合成池提供资金的资产。 | 值域：合成债务工具池融资资产（synthetic debt instrument pool funding asset） |
-| **具有标的合约（has underlying contract）** | 为在合成组合中实现现金流而创设的标的信用违约互换（CDS）。 | 值域：信用违约互换 |
+| **具有标的合约（has underlying contract）** | 为在合成组合中实现现金流而创设的标的信用违约互换（CDS）。<br>The underlying CDS which is created to mechanise the cash flows in the synthetic portfolio. | 值域：信用违约互换 |
 | **参考（makes reference to）** | 表明某工具参考某一标的资产或组合。 | 值域：合成担保债务凭证组合（synthetic CDO portfolio） |
 | **模拟（simulates）** | 表明某合成工具模拟某一真实工具或组合的行为。 | — |
 
@@ -199,7 +199,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……模拟（simulated by）** | 为在合成组合中实现现金流而创设的标的信用违约互换（CDS）。 | 值域：信用违约互换 |
+| **由……模拟（simulated by）** | 为在合成组合中实现现金流而创设的标的信用违约互换（CDS）。<br>The underlying CDS which is created to mechanise the cash flows in the synthetic portfolio. | 值域：信用违约互换 |
 | **模拟（simulates）** | 表明某合成工具模拟某一真实工具或组合的行为。 | — |
 
 公理：

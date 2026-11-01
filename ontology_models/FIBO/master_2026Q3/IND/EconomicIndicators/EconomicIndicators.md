@@ -34,64 +34,64 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 平均日收入（average daily earnings） | 雇员在报告期内的平均日工资度量。 |
-| 平均收入（average earnings） | 计时或受薪劳动者在给定时期内的平均工资度量。 |
-| 平均时薪（average hourly earnings） | 雇员在报告期内的平均小时工资度量。 |
-| 平均月收入（average monthly earnings） | 雇员在报告期内的平均月工资度量。 |
-| 平均周收入（average weekly earnings） | 雇员在报告期内的平均周工资度量。 |
-| 基于增加值的资本生产率（capital productivity, based on value added） | 增加值数量指数与资本投入数量指数之比。 |
-| 基于增加值的资本-劳动多要素生产率（capital-labor multifactor productivity (MFP), based on value added） | 增加值数量指数与劳动和资本组合投入数量指数之比。 |
-| 资本-劳动-能源-材料多要素生产率（capital-labor-energy-materials multifactor productivity） | 总产出数量指数与组合投入数量指数之比。 |
-| 平民（civilian） | 非军队成员（即非现役）的人。 |
-| 平民劳动力（civilian labor force） | 在给定报告期内被视为劳动力的平民非机构人口子集。 |
-| 平民劳动力参与率（civilian labor force participation rate） | 表示给定经济体在某指定时期内劳动力参与率的经济指标。 |
-| 平民非机构个人（civilian non-institutional person） | 不住在机构（如惩教所、长期护理医院或疗养院）内、且非现役的法定工作年龄人。 |
-| 平民非机构人口（civilian non-institutional population） | 由居住在给定地区、达到一定年龄、不住在机构内的平民构成的统计全域。 |
-| 联合统计区（combined statistical area） | 以通勤模式衡量具有经济联系的相邻大都市区和小都市区的组合。 |
-| 消费者价格指数（consumer price index） | 表示家庭消费的消费货物与服务价格随时间变化之度量的经济指标。 |
-| 气馁劳动者人口（discouraged worker population） | 边缘附着人口中因就业市场原因而当前不找工作的子集。 |
-| 经济指标（economic indicator） | 在统计区（地区）情境内规律且可比的经济活动统计度量，用于经济绩效分析。 |
-| 就业人口（employed population） | 报告期内被视为就业的平民劳动力子集。 |
-| 兼职就业人口（employed population part-time） | 按通常工时每周工作少于 30 至 35 小时的就业人口子集。 |
-| 因经济原因兼职就业人口（employed population part-time for economic reasons） | 因工作量不足、不利商业条件等经济原因每周工作少于 30 至 35 小时的就业人口子集。 |
-| 因非经济原因兼职就业人口（employed population part-time for non-economic reasons） | 因疾病或其他健康医疗限制等非经济原因每周工作少于 30 至 35 小时的就业人口子集。 |
-| 暂时不在岗就业人口（employed population temporarily not at work） | 因各种原因暂时离岗的就业人口子集。 |
-| 就业人口比（employment-population ratio） | 表示给定经济体在某指定时期内就业人口与平民非机构总人口之比的经济指标。 |
-| 企业（enterprise） | 生产和/或销售货物或服务的功能型企业实体。 |
-| 企业总体（enterprise population） | 为支持就业和生产者价格等调查而设计的企业统计全域。 |
-| 机构场所（establishment） | 从单一物理位置运营的企业（或企业的一部分）。 |
-| 机构场所就业（establishment employment） | 表示在机构场所工作或为其工作的人员总数（含在业业主、活跃业务合伙人和无酬家庭工）的经济指标。 |
-| 机构场所总体（establishment population） | 企业总体中聚焦于机构场所的子集。 |
-| 固定篮子（fixed basket） | 数量与质量在某段时期内保持固定的货物与服务篮子。 |
-| 固定篮子成分（fixed basket constituent） | 固定篮子的组成成分。 |
-| 固定篮子总体（fixed basket population） | 由特定货物和/或服务构成的、为支持价格指数等调查而设计的统计全域。 |
-| 政府指定统计区（government-specified statistical area） | 由政府机构定义的统计区。 |
-| 国内生产总值（gross domestic product） | 表示总体经济活动最广度量的经济指标，计量全部最终货物与服务的不重复总市值。 |
-| 住户（household） | 共同居住于一个住房单元（如房屋或公寓）作为通常居所、并共享部分或全部资源的个人或小群体。 |
-| 住房单元（housing unit） | 作为独立居住空间占用的房屋、公寓、活动房屋、一组房间或单个房间，或空置但拟供居住者。 |
-| 通货膨胀率（inflation rate） | 表示给定统计区在指定时期内货物与服务价格变化的经济指标。 |
-| 投入生产者价格指数（input producer price index） | 表示生产者购买的货物与服务投入价格随时间变化率之度量的经济指标。 |
-| 机构内人员（institutional person） | 因某种原因（如住院、康复或监禁）居住在机构内的人。 |
-| 机构单位（institutional unit） | 能够以自身名义拥有资产、承担负债、从事经济活动并与他方交易的参与方。 |
-| 基于总产出的劳动生产率（labor productivity, based on gross output） | 总产出数量指数与劳动投入数量指数之比。 |
-| 基于增加值的劳动生产率（labor productivity, based on value added） | 增加值数量指数与劳动投入数量指数之比。 |
-| 边缘附着人口（marginally attached population） | 当前既不工作也不找工作、但表示想要并可以工作且近期找过工作的人口子集。 |
-| 大都市统计区（metropolitan statistical area） | 拥有至少一个 5 万人以上城市核心区的一个或多个相邻县（或同级单位）及其周边紧密联系地区。 |
-| 小都市统计区（micropolitan statistical area） | 拥有至少一个 1 万至 5 万人城市核心区的一个或多个相邻县（或同级单位）及其周边地区。 |
-| 军人（military person） | 现役军队成员。 |
-| 产出生产者价格指数（output producer price index） | 表示产品离开生产者时的销售价格随时间变化率之度量的经济指标。 |
-| 个人消费支出（personal consumption expenditures） | 表示「个人」或代表个人购买的货物与服务价值之度量的经济指标。 |
-| 非劳动力人口（population not in the labor force） | 报告期内被报告机构认定为既非就业也非失业的平民非机构人口子集。 |
-| 生产者价格指数（producer price index） | 表示生产者买卖的货物与服务价格随时间变化率之度量的经济指标。 |
-| 生产率（productivity） | 表示产出量度量与投入使用量度量之比的经济指标。 |
-| 统计信息发布方（statistical information publisher） | 打包并提供分析与统计数据的发布方。 |
-| 最终消费者（ultimate consumer） | 货物、产品或服务的最终使用者。 |
-| 就业不足人口（underemployed population） | 就业人口中因经济原因兼职、想要并可从事全职工作但不得不接受兼职的子集。 |
-| 职业不匹配就业不足人口（underemployed population with respect to occupation） | 就业不足人口中所从事岗位与其培训和经验不符的子集（不含自愿转行者）。 |
-| 未充分利用人口（underutilized population） | 平民非机构人口中因经济原因兼职者、边缘附着劳动力及失业者的子集。 |
-| 失业人口（unemployed population） | 平民劳动力中被认为没有工作、但（除暂时生病外）可以工作、且已作出具体求职努力的子集。 |
-| 失业率（unemployment rate） | 表示给定经济体在某指定时期内失业人口与平民劳动力之比的经济指标。 |
-| 增加值生产者价格指数（value-added producer price index） | 表示投入与产出生产者价格指数加权平均的经济指标。 |
+| 平均日收入（average daily earnings） | 雇员在报告期内的平均日工资度量。<br>measure of the average daily wage an employee makes over the reporting period |
+| 平均收入（average earnings） | 计时或受薪劳动者在给定时期内的平均工资度量。<br>measure of the average wage an hourly or salaried worker makes in a given period of time |
+| 平均时薪（average hourly earnings） | 雇员在报告期内的平均小时工资度量。<br>measure of the average hourly wage an employee makes over the reporting period |
+| 平均月收入（average monthly earnings） | 雇员在报告期内的平均月工资度量。<br>measure of the average monthly wage an employee makes over the reporting period |
+| 平均周收入（average weekly earnings） | 雇员在报告期内的平均周工资度量。<br>measure of the average weekly wage an employee makes over the reporting period |
+| 基于增加值的资本生产率（capital productivity, based on value added） | 增加值数量指数与资本投入数量指数之比。<br>ratio of a quantity index of value added to a quantity index of capital input |
+| 基于增加值的资本-劳动多要素生产率（capital-labor multifactor productivity (MFP), based on value added） | 增加值数量指数与劳动和资本组合投入数量指数之比。<br>ratio of a quantity index of value added to a quantity index of combined labor and capital input |
+| 资本-劳动-能源-材料多要素生产率（capital-labor-energy-materials multifactor productivity） | 总产出数量指数与组合投入数量指数之比。<br>ratio of a quantity index of gross output to a quantity index of combined inputs |
+| 平民（civilian） | 非军队成员（即非现役）的人。<br>person that is not a member of the military (i.e., that is not on active duty) |
+| 平民劳动力（civilian labor force） | 在给定报告期内被视为劳动力的平民非机构人口子集。<br>subset of the civilian, non-institutional population considered to be part of the labor force during a given reporting period |
+| 平民劳动力参与率（civilian labor force participation rate） | 表示给定经济体在某指定时期内劳动力参与率的经济指标。<br>economic indicator representing the rate of participation the labor force of a given economy for some specified period |
+| 平民非机构个人（civilian non-institutional person） | 不住在机构（如惩教所、长期护理医院或疗养院）内、且非现役的法定工作年龄人。<br>legal working-age person that does not live in an institution (for example, a correctional facility, long-term care hospital, or nursing home), and is not on active military duty |
+| 平民非机构人口（civilian non-institutional population） | 由居住在给定地区、达到一定年龄、不住在机构内的平民构成的统计全域。<br>statistical universe consisting of people of a certain age who reside in a given region, do not live in institutions (for example, correctional facilities, long-term care hospitals, and nursing homes), and are not on active military duty |
+| 联合统计区（combined statistical area） | 以通勤模式衡量具有经济联系的相邻大都市区和小都市区的组合。<br>combination of adjacent metropolitan and micropolitan areas with economic ties measured by commuting patterns |
+| 消费者价格指数（consumer price index） | 表示家庭消费的消费货物与服务价格随时间变化之度量的经济指标。<br>economic indicator representing measure of the change over time in the prices of consumer goods and services that households consume |
+| 气馁劳动者人口（discouraged worker population） | 边缘附着人口中因就业市场原因而当前不找工作的子集。<br>subset of the marginally attached population that have given a job-market related reason for not currently looking for work |
+| 经济指标（economic indicator） | 在统计区（地区）情境内规律且可比的经济活动统计度量，用于经济绩效分析。<br>statistical measure of economic activity that is regular and comparable in the context of a statistical area (region), used for analysis of economic performance and predictions of future performance |
+| 就业人口（employed population） | 报告期内被视为就业的平民劳动力子集。<br>subset of the civilian labor force considered to be employed during the reporting period |
+| 兼职就业人口（employed population part-time） | 按通常工时每周工作少于 30 至 35 小时的就业人口子集。<br>subset of the employed population that includes persons that are working fewer than 30 to 35 hours per week based on usual working hours |
+| 因经济原因兼职就业人口（employed population part-time for economic reasons） | 因工作量不足、不利商业条件等经济原因每周工作少于 30 至 35 小时的就业人口子集。<br>subset of the employed population that includes persons that are working fewer than 30 to 35 hours per week due to slack work, unfavorable business conditions, inability to find full-time work, and seasonal declines in demand |
+| 因非经济原因兼职就业人口（employed population part-time for non-economic reasons） | 因疾病或其他健康医疗限制等非经济原因每周工作少于 30 至 35 小时的就业人口子集。<br>subset of the employed population that includes persons that are working fewer than 30 to 35 hours per week due to illness or other health or medical limitations, childcare problems, family or personal obligations, being in school or training, retirement or Social Security limits on earnings, and having a job where full-time work is less than 35 hours |
+| 暂时不在岗就业人口（employed population temporarily not at work） | 因各种原因暂时离岗的就业人口子集。<br>subset of the employed population that includes persons that are temporarily absent from work for various reasons |
+| 就业人口比（employment-population ratio） | 表示给定经济体在某指定时期内就业人口与平民非机构总人口之比的经济指标。<br>economic indicator representing the ratio of the employed population with respect to the overall civilian non-institutional population of a given economy for some specified period |
+| 企业（enterprise） | 生产和/或销售货物或服务的功能型企业实体。<br>functional business entity that produces and/or sells goods or services |
+| 企业总体（enterprise population） | 为支持就业和生产者价格等调查而设计的企业统计全域。<br>statistical universe consisting of enterprises designed for the purposes of supporting surveys such as those used as the basis for employment and producer price indices |
+| 机构场所（establishment） | 从单一物理位置运营的企业（或企业的一部分）。<br>an enterprise (or part of an enterprise) that operates from a single physical location |
+| 机构场所就业（establishment employment） | 表示在机构场所工作或为其工作的人员总数（含在业业主、活跃业务合伙人和无酬家庭工）的经济指标。<br>economic indicator representing the total number of persons who work in or for the establishment including working proprietors, active business partners and unpaid family workers, as well as persons working outside the establishment when paid by and under the control of the establishment, for example, sales representatives, outside service engineers and repair and maintenance personnel |
+| 机构场所总体（establishment population） | 企业总体中聚焦于机构场所的子集。<br>a subset of the enterprise population focused on establishments |
+| 固定篮子（fixed basket） | 数量与质量在某段时期内保持固定的货物与服务篮子。<br>basket of goods and services whose quantity and quality are held fixed for some period of time |
+| 固定篮子成分（fixed basket constituent） | 固定篮子的组成成分。<br>component of a fixed basket |
+| 固定篮子总体（fixed basket population） | 由特定货物和/或服务构成的、为支持价格指数等调查而设计的统计全域。<br>statistical universe consisting of specific goods and/or services designed for the purposes of supporting surveys such as those used as the basis for price indices |
+| 政府指定统计区（government-specified statistical area） | 由政府机构定义的统计区。<br>statistical area defined by a government agency |
+| 国内生产总值（gross domestic product） | 表示总体经济活动最广度量的经济指标，计量全部最终货物与服务的不重复总市值。<br>economic indicator representing the broadest measure of aggregate economic activity, measuring the total unduplicated market value of all final goods and services produced within a statistical area in a period |
+| 住户（household） | 共同居住于一个住房单元（如房屋或公寓）作为通常居所、并共享部分或全部资源的个人或小群体。<br>individual or small group of persons who occupy a housing unit (such as a house or apartment) as their usual place of residence, who pool some, or all, of their income and wealth and who consume certain types of goods and services collectively, mainly housing and food |
+| 住房单元（housing unit） | 作为独立居住空间占用的房屋、公寓、活动房屋、一组房间或单个房间，或空置但拟供居住者。<br>house, an apartment, a mobile home or trailer, a group of rooms, or a single room occupied as separate living quarters, or if vacant, intended for occupancy as separate living quarters |
+| 通货膨胀率（inflation rate） | 表示给定统计区在指定时期内货物与服务价格变化的经济指标。<br>economic indicator representing a change in prices of goods and services for a specified period, for a given statistical area |
+| 投入生产者价格指数（input producer price index） | 表示生产者购买的货物与服务投入价格随时间变化率之度量的经济指标。<br>economic indicator representing measure of the rate of change over time in the prices of inputs of goods and services purchased by the producer |
+| 机构内人员（institutional person） | 因某种原因（如住院、康复或监禁）居住在机构内的人。<br>person that resides in an institution for some reason, due, for example, to hospitalization, rehabilitation, or incarceration |
+| 机构单位（institutional unit） | 能够以自身名义拥有资产、承担负债、从事经济活动并与他方交易的参与方。<br>party that is capable, in its own right, of owning assets, incurring liabilities, and engaging in economic activities and in transactions with other parties |
+| 基于总产出的劳动生产率（labor productivity, based on gross output） | 总产出数量指数与劳动投入数量指数之比。<br>ratio of a quantity index of gross output to a quantity index of labor input |
+| 基于增加值的劳动生产率（labor productivity, based on value added） | 增加值数量指数与劳动投入数量指数之比。<br>ratio of a quantity index of value added to a quantity index of labor input |
+| 边缘附着人口（marginally attached population） | 当前既不工作也不找工作、但表示想要并可以工作且近期找过工作的人口子集。<br>subset of the population that includes people who currently are neither working nor looking for work but indicate that they want and are available for a job and have looked for work sometime in the past 12 months |
+| 大都市统计区（metropolitan statistical area） | 拥有至少一个 5 万人以上城市核心区的一个或多个相邻县（或同级单位）及其周边紧密联系地区。<br>one or more adjacent counties or county equivalents that have at least one urban core area of at least 50,000 population, plus adjacent territory that has a high degree of social and economic integration with the core as measured by commuting ties |
+| 小都市统计区（micropolitan statistical area） | 拥有至少一个 1 万至 5 万人城市核心区的一个或多个相邻县（或同级单位）及其周边地区。<br>one or more adjacent counties or county equivalents that have at least one urban core area of at least 10,000 population but less than 50,000, plus adjacent territory that has a high degree of social and economic integration with the core as measured by commuting ties |
+| 军人（military person） | 现役军队成员。<br>person that is a member of the active duty military |
+| 产出生产者价格指数（output producer price index） | 表示产品离开生产者时的销售价格随时间变化率之度量的经济指标。<br>economic indicator representing measure of the rate of change over time in the prices of products sold as they leave the producer |
+| 个人消费支出（personal consumption expenditures） | 表示「个人」或代表个人购买的货物与服务价值之度量的经济指标。<br>economic indicator representing measure of the value of the goods and services purchased by, or on the behalf of, 'persons' |
+| 非劳动力人口（population not in the labor force） | 报告期内被报告机构认定为既非就业也非失业的平民非机构人口子集。<br>subset of the civilian, noninstitutional population, that is considered neither employed nor unemployed by the reporting agency during the reporting period |
+| 生产者价格指数（producer price index） | 表示生产者买卖的货物与服务价格随时间变化率之度量的经济指标。<br>economic indicator representing measure of the rate of change over time in the prices of goods and services bought and sold by producers |
+| 生产率（productivity） | 表示产出量度量与投入使用量度量之比的经济指标。<br>economic indicator representing ratio of a volume measure of output to a volume measure of input use |
+| 统计信息发布方（statistical information publisher） | 打包并提供分析与统计数据的发布方。<br>publisher that packages and makes analytical and statistical data available |
+| 最终消费者（ultimate consumer） | 货物、产品或服务的最终使用者。<br>person that is the ultimate user of a good, product or service |
+| 就业不足人口（underemployed population） | 就业人口中因经济原因兼职、想要并可从事全职工作但不得不接受兼职的子集。<br>subset of the employed population that includes persons employed part-time for economic reasons, who want and are available for full-time work but have had to settle for a part-time schedule |
+| 职业不匹配就业不足人口（underemployed population with respect to occupation） | 就业不足人口中所从事岗位与其培训和经验不符的子集（不含自愿转行者）。<br>subset of the underemployed population that includes persons employed in a role that does not reflect their training and experience, excluding those that change careers |
+| 未充分利用人口（underutilized population） | 平民非机构人口中因经济原因兼职者、边缘附着劳动力及失业者的子集。<br>subset of the civilian non-institutional population that includes persons employed part-time for economic reasons, persons that are marginally attached to the labor force, and persons that are identified as unemployed |
+| 失业人口（unemployed population） | 平民劳动力中被认为没有工作、但（除暂时生病外）可以工作、且已作出具体求职努力的子集。<br>subset of the civilian labor force that is considered to have had no employment but was available for work, except for temporary illness, and had made specific efforts to find employment sometime during a specified period, during the reporting period |
+| 失业率（unemployment rate） | 表示给定经济体在某指定时期内失业人口与平民劳动力之比的经济指标。<br>economic indicator representing the ratio of the unemployed population with respect to the civilian labor force of a given economy for some specified period |
+| 增加值生产者价格指数（value-added producer price index） | 表示投入与产出生产者价格指数加权平均的经济指标。<br>economic indicator representing a weighted average of the input and output producer price indices |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -199,7 +199,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有失业时长（has duration of unemployment）** | 指明被归类为失业的人持续寻找工作的时间长度，通常以周计。 | 值域：时长；子属性：具有时长 |
+| **具有失业时长（has duration of unemployment）** | 指明被归类为失业的人持续寻找工作的时间长度，通常以周计。<br>specifies the length of time, typically in weeks, that people classified as unemployed have been continuously looking for work | 值域：时长；子属性：具有时长 |
 
 公理：
 
@@ -250,8 +250,8 @@
 | **具有报告期（hasReportingPeriod）** | — | — |
 | **具有发布日期（hasReleaseDate）** | — | — |
 | **具有发布日期时间（hasReleaseDateTime）** | — | — |
-| **具有序列起点（has series origin）** | 指明给定经济指标时间序列的原始起始日期。 | 值域：日期；子属性：具有起始日期 |
-| **经季节调整（is seasonally adjusted）** | 表明是否应用了某种公开的正式方法对总体或指数值的季节性波动进行补偿。 | 值域：xsd:boolean |
+| **具有序列起点（has series origin）** | 指明给定经济指标时间序列的原始起始日期。<br>specifies the original starting date for the time series for a given economic indicator | 值域：日期；子属性：具有起始日期 |
+| **经季节调整（is seasonally adjusted）** | 表明是否应用了某种公开的正式方法对总体或指数值的季节性波动进行补偿。<br>a predicate indicating whether some published formal method is applied that compensates for seasonal variations in the population or index value | 值域：xsd:boolean |
 | **具有覆盖区域（hasCoverageArea）** | — | — |
 
 公理：
@@ -354,8 +354,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
-| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。 | 值域：统计全域；子属性：具有输入 |
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。<br>specifies the starting point statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：引用 |
+| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。<br>specifies the subset of the baseline statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：具有输入 |
 
 公理：
 
@@ -373,8 +373,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有输入（hasInput）** | — | — |
-| **剔除能源与食品（excludes energy and food）** | 表明该指数的计算是否剔除能源与食品价格。 | 值域：xsd:boolean |
-| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+| **剔除能源与食品（excludes energy and food）** | 表明该指数的计算是否剔除能源与食品价格。<br>indicates whether the calculation of the index includes energy and food prices or not | 值域：xsd:boolean |
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。<br>specifies the starting point statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：引用 |
 
 公理：
 
@@ -396,8 +396,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
-| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。 | 值域：统计全域；子属性：具有输入 |
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。<br>specifies the starting point statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：引用 |
+| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。<br>specifies the subset of the baseline statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：具有输入 |
 
 公理：
 
@@ -414,7 +414,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。<br>specifies the starting point statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：引用 |
 
 公理：
 
@@ -464,7 +464,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有输入（hasInput）** | — | — |
-| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。<br>specifies the starting point statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：引用 |
 
 公理：
 
@@ -548,8 +548,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
-| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。 | 值域：统计全域；子属性：具有输入 |
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。<br>specifies the starting point statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：引用 |
+| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。<br>specifies the subset of the baseline statistical universe or population used for comparison or analysis | 值域：统计全域；子属性：具有输入 |
 
 公理：
 
@@ -814,7 +814,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有指标值（has indicator value）** | 指明给定指标的量值。 | 值域：标量值；子属性：具有量值 |
+| **具有指标值（has indicator value）** | 指明给定指标的量值。<br>specifies a quantity value for a given indicator | 值域：标量值；子属性：具有量值 |
 
 ## 4. 依赖（owl:imports，29 个）
 

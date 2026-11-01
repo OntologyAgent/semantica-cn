@@ -17,8 +17,8 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 成熟度级别（maturity level） | 用于指示工件在开发生命周期中所处状态的分类器。 |
-| 模块（module） | 基于模型驱动架构方法论的原则对某物进行模块化划分的类别。 |
+| 成熟度级别（maturity level） | 用于指示工件在开发生命周期中所处状态的分类器。<br>classifier used to indicate the state of an artifact with respect to its development lifecycle |
+| 模块（module） | 基于模型驱动架构方法论的原则对某物进行模块化划分的类别。<br>classifier used to indicate a category used to modularize something based on principles of the model driven architecture methodology (MDA), including but not limited to separation of concerns, coherence, and establishing clear logical boundaries in order to increase reusability and maintainability |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -34,7 +34,21 @@
 
 - 父类：**分类符（Classifier）**
 
-## 3. 依赖（owl:imports，2 个）
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+标注属性（Annotation Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **通用称谓（common designation）** | 实体的常用称谓。<br>frequently used designation for an entity |
+| **定义来源（definition origin）** | 某定义直接取自的文档或其他来源。<br>document or other source from which a given definition was taken directly; the range for this annotation can be a string, URI, or BibliographicCitation |
+| **具有成熟度级别（has maturity level）** | 将某事物关联到其在开发生命周期中所处的状态。<br>links something to its state with respect to a development lifecycle |
+| **首选称谓（preferred designation）** | 在某情境中推荐使用的实体称谓。<br>recommended designation for an entity in some context |
+| **术语来源（term origin）** | 某术语直接取自的文档或其他来源。<br>document or other source from which a given term was taken directly; the range for this annotation can be a string, URI, or BibliographicCitation |
+
+## 4. 依赖（owl:imports，2 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -43,7 +57,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/Classifiers/` | OMG 通用分类器本体（OMG Commons Classifiers） | OMG 通用本体库（Commons）中的分类器本体，定义分类方案、类别与归类关系的通用概念，FIBO 的分类建模建立在其上。 |
 
-## 4. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`AnnotationVocabulary.rdf`
 - 中文 Turtle：`AnnotationVocabulary.ttl`

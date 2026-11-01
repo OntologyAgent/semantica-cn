@@ -39,13 +39,13 @@
 | 分配评级（allocate ratings） | 为各分层证券确定评级。 |
 | 评估池的发行适用性（assess pool suitability for issuance） | 评估抵押贷款池是否适合用于发行。 |
 | 评估评级（assess ratings） | 对分层证券可获得的评级进行评估。 |
-| 经纪自营商（broker dealer） | 可能成为本次发行主要投资者的实体。 |
+| 经纪自营商（broker dealer） | 可能成为本次发行主要投资者的实体。<br>An entity which may become a primary investor in the issue. Term origin:MBS PoC Reviews |
 | 完成交易（close deal） | 完成本次发行交易。 |
-| 定义票据参数（define notes parameters） | 定义票据的面额等参数。 |
+| 定义票据参数（define notes parameters） | 定义票据的面额等参数。<br>the denom of the notes |
 | 定义池特征（define pool characteristics） | 确定抵押贷款池的特征。 |
-| 起草分层票据参数（draft tranche notes parameters） | 起草定义某一分层票据细分（面额及可购金额）的信息集。 |
-| 起草分层结构（draft tranche structure） | 起草定义分层发行中各分层及其相互关系的信息集。 |
-| 起草分层条款清单（draft tranche termsheet） | 起草定义分层发行中某一分层的信息集，将成为该分层的条款清单。 |
+| 起草分层票据参数（draft tranche notes parameters） | 起草定义某一分层票据细分（面额及可购金额）的信息集。<br>Draft of set of information defining the notes breakdown of one tranche. covers denominations and amounts that you can byu of the instrument in this tranche. Term origin:MBS PoC Reviews |
+| 起草分层结构（draft tranche structure） | 起草定义分层发行中各分层及其相互关系的信息集。<br>Draft of set of information defining the tranches in the tranched issue and how these relate to one another. Term origin:MBS PoC Reviews |
+| 起草分层条款清单（draft tranche termsheet） | 起草定义分层发行中某一分层的信息集，将成为该分层的条款清单。<br>Draft of set of information defining one tranche of a tranched issue. This will become the termsheet of an individual tranche within that issue. Term origin:MBS PoC Reviews |
 | 拟定发行备忘录（draw up offering memorandum） | 拟定载明未来发行基本信息、供潜在投资者参考的发行备忘录。 |
 | 拟定各分层条款清单（draw up tranche termsheets） | 拟定分层发行中各分层的条款清单。 |
 | 定稿池内容（finalize pool content） | 最终确定抵押贷款池的构成内容。 |
@@ -55,38 +55,38 @@
 | 确定承销商（identify underwriter） | 确定本次发行的承销商。 |
 | 组建中抵押贷款池（in assembly mortgage pool） | 尚在组建、内容未定的抵押贷款池。 |
 | 发行中非机构抵押贷款池（in issuance non agency mortgage pool） | 正在发行过程中的非机构抵押贷款池。 |
-| 各分层定义（individual tranche definitions） | 标识分层发行中单个分层之条款的信息类别（实际为一份条款清单中针对各分层的条款信息集）。 |
+| 各分层定义（individual tranche definitions） | 标识分层发行中单个分层之条款的信息类别（实际为一份条款清单中针对各分层的条款信息集）。<br>In reality there is one termsheet that has sets of information for the terms for each Tranche. This class of information identifies the terms of one tranche, but it does not exist as a separate document in its own right. Further Notes ? We may need to firm up the relationship between the individual tranche termsheet and the information about the relationships among these (some of which are quite complex) and the terms that are common to more than one tranche. In practice these may be separate sections of one document. Term origin:MBS PoC Reviews |
 | 投资者（investor） | 通过投资拥有某组织一定份额的参与方。 |
 | MBS 证券化结束（m b s securitization end） | MBS 证券化流程的结束节点。 |
 | MBS 证券化开始（m b s securitization start） | MBS 证券化流程的起始节点。 |
-| 使证券进入市场（make securities available in market） | 使所发行证券可在市场上获得（结构化融资市场较小，主要通过定向营销）。 |
+| 使证券进入市场（make securities available in market） | 使所发行证券可在市场上获得（结构化融资市场较小，主要通过定向营销）。<br>What happens here? e.g. notices / marketing (phone calls) Structured Finance: There's not really notices in the newspaper, it's a very small market and it's all based on relationships so there's no public notice. So you would get an email from the sales person at the bank who has just closed the deal and is now selling these (this bank is the broker/dealer who bought it?) There's not really much of a secondary market - the initial investors would often hold on to these. There is something around Bloomberg - you can go there and see what's available, if someone has a number of notes from a iven tranche, that they are willing to sell. So there's no transpoarency (!!) Sales would be OTC but less transparent e.g. if you look up a normal OTC stock, you would be able to see more of this information, than in these (non Agency) MBS issues and other SF. DOES THIS APPLY IN ALL MBS??. |
 | 向主要投资者营销发行（market issue to primary investors） | 面向主要投资者对本次发行进行营销。 |
 | 非机构池创建结束（non agency pool creation end） | 非机构抵押贷款池创建流程的结束节点。 |
 | 非机构池创建流程（non agency pool creation process） | 私募（非机构）抵押贷款池的创建过程。 |
 | 非机构池创建开始（non agency pool creation start） | 非机构抵押贷款池创建流程的起始节点。 |
 | 未发行非机构抵押贷款池（not yet issued non agency mortgage pool） | 已组建但尚未发行的非机构抵押贷款池。 |
-| 编号机构（numbering agency） | 为证券提供主要证券标识符的机构。 |
+| 编号机构（numbering agency） | 为证券提供主要证券标识符的机构。<br>The agency which will provide the primary securitiy identifier for the security. Term origin:MBS PoC Reviews |
 | 池可发行（pool ready for issue） | 抵押贷款池已具备发行条件的状态。 |
 | 池受托人（pool trustee） | 为资产池担任受托人的参与方。 |
 | 潜在 MBS 投资者（potential m b s investor） | 可能成为 MBS 发行投资者的参与方。 |
-| 潜在非机构 MBS 发行人（potential non agency m b s issuer） | 将成为分层 MBS 发行发行方的实体，是发行中大多数活动的主要行为体。 |
-| 潜在分层发行承销商（potential tranched issue underwriter） | 将成为分层 MBS 发行承销商的实体。 |
-| 主要投资者（primary investor） | 通过购买本次发行的部分分层而成为主要投资者的参与方。 |
+| 潜在非机构 MBS 发行人（potential non agency m b s issuer） | 将成为分层 MBS 发行发行方的实体，是发行中大多数活动的主要行为体。<br>The entity which will become the issuing party for the Tranched MBS Issue. This entity is the principal actor in most of the activities involved in the issue. Term origin:MBS PoC Reviews |
+| 潜在分层发行承销商（potential tranched issue underwriter） | 将成为分层 MBS 发行承销商的实体。<br>The entity which will become the underwriter for the tranched MBS issue. Term origin:MBS PoC Reviews |
+| 主要投资者（primary investor） | 通过购买本次发行的部分分层而成为主要投资者的参与方。<br>A party which becomes the primary investor in the issue, by purchasing some of the tranches of the issue. Term origin:MBS PoC Reviews |
 | 购入抵押贷款入池（purchase mortgage into pool） | 购入抵押贷款并将其纳入资产池。 |
 | 评级机构（ratings agency） | 为发行提供评级的机构。 |
 | 评级适合发行（ratings suitable for issue） | 评级结果满足发行要求的状态。 |
-| 注册证券（register security） | 交易完成后将证券在注册机构正式注册。 |
-| 汇款报告（remittance report） | 包含关于本次交易的特定有限信息集的报告。 |
-| 分层票据参数（tranche notes parameters） | 定义某一分层票据细分（面额及该分层中可购金额）的一组信息。 |
-| 分层结构与条款清单（tranche structure and termsheet） | 定义 MBS 结构的一份清单。 |
-| 分层招募说明书草案（tranched draft prospectus） | 发行实体在营销发行前确定的分层 MBS 发行招募说明书草案。 |
+| 注册证券（register security） | 交易完成后将证券在注册机构正式注册。<br>After the deal is closed the security is formally registered with some registraton authority This is the "official" bit - there is not a separate "Issue" activity which is official ????? |
+| 汇款报告（remittance report） | 包含关于本次交易的特定有限信息集的报告。<br>Report containing a specific and limited set of information about the Deal. Term origin:MBS PoC Reviews |
+| 分层票据参数（tranche notes parameters） | 定义某一分层票据细分（面额及该分层中可购金额）的一组信息。<br>One set of information defining the notes breakdown of one tranche. Covers denominations and amounts that you can byu of the instrument in this tranche. Q: Is this really defined in the prospectus? A: yes The prospectus lists the characteristics including e.g. "The notes will be sold in denominations of X AND Increuemtns of Y e.g. $250 000 incremented by $1000. Parameters include: Denominations Minimum amounts what else? Term origin:MBS PoC Reviews |
+| 分层结构与条款清单（tranche structure and termsheet） | 定义 MBS 结构的一份清单。<br>One sheet defining the MBS structure. |
+| 分层招募说明书草案（tranched draft prospectus） | 发行实体在营销发行前确定的分层 MBS 发行招募说明书草案。<br>The draft prospectus for a tranched Mortgage Backed Securities issue, as determined by the issuing entity prior to marketing the issue. Certain terms in the draft prospectus will be finalized later in the issuance process to become the actual Prospectus. Term origin:MBS PoC Reviews |
 | 分层 MBS 交易结算（tranched m b s deal settlement） | 分层 MBS 交易的结算。 |
-| 分层 MBS 交易（tranched m b s deal transaction） | 据以向主要投资者发行 MBS 的交易。 |
-| 分层 MBS 发行招募说明书部分（tranched m b s issue prospectus part） | 分层 MBS 发行招募说明书的一个部分或章节。 |
-| 分层 MBS 一级交易结算流程（tranched m b s primary deal transaction settlement process） | 一级交易完成结算的过程。 |
-| 分层 MBS 招募说明书大纲（tranched m b s prospectus outline） | 分层招募说明书的大纲，提供可能分层及其特征的初步表示。 |
+| 分层 MBS 交易（tranched m b s deal transaction） | 据以向主要投资者发行 MBS 的交易。<br>The deal transaction by which the MBS Issue is issued to primary investors. Term origin:MBS PoC Reviews |
+| 分层 MBS 发行招募说明书部分（tranched m b s issue prospectus part） | 分层 MBS 发行招募说明书的一个部分或章节。<br>A part or section of a prospectus for a tranched mortgage backed securities issue. Term origin:MBS PoC Reviews |
+| 分层 MBS 一级交易结算流程（tranched m b s primary deal transaction settlement process） | 一级交易完成结算的过程。<br>The process by which the primary deal transaction is settled. Term origin:MBS PoC Reviews |
+| 分层 MBS 招募说明书大纲（tranched m b s prospectus outline） | 分层招募说明书的大纲，提供可能分层及其特征的初步表示。<br>An outline of the tranched prospectus, provind an intial representation of the possible tranches and their features. Term origin:MBS PoC Reviews |
 | 分层 MBS 证券化流程（tranched m b s securitization process） | 分层抵押贷款支持证券的证券化过程。 |
-| 分层发行备忘录（tranched offering memorandum） | 发行备忘录，包含或附上构成本次发行的两个或多个分层的条款及分层结构。 |
+| 分层发行备忘录（tranched offering memorandum） | 发行备忘录，包含或附上构成本次发行的两个或多个分层的条款及分层结构。<br>The Offering Memorandum will include or attach the terms for two or more individual tranches that will make up the issue, and the structure of the tranches, including how they will relate to one another (priorities and so on). Term origin:MBS PoC Reviews |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -637,7 +637,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **面额增量（denomination increment）** | 票据面额的增量。 | 值域：货币数量 |
-| **最大金额（maximum amount）** | 允许的最大金额。 | 值域：货币数量 |
+| **最大金额（maximum amount）** | 允许的最大金额。<br>This has not been seen - incliuded as it's implicit but we might want to get rid of this. ACTION: Look at example prospectus document, mark up against this model; if this item is not seen, we could remove it | 值域：货币数量 |
 | **最小面额（minimum denomination）** | 允许的最小面额。 | 值域：货币数量 |
 | **关于（isAbout）** | — | — |
 

@@ -178,12 +178,12 @@ fibo-fnd-oac-own:DigitalTokenIdentifier a owl:Class ;
         "数字通证标识符（digital token identifier）"@zh ;
     rdfs:comment "符合 ISO 24165 的数字通证注册用全球唯一标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-oac-own:DigitalTokenRegistryRecord ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fnd-oac-own:DigitalTokenRegistrationScheme ;
             owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-id:identifies ;
-            owl:someValuesFrom fibo-fnd-oac-own:DigitalTokenRegistryRecord ],
         cmns-ra:RegisteredIdentifier ;
     skos:definition "globally unique identifier conformant with ISO 24165 for the registration of digital tokens" ;
     cmns-av:abbreviation "DTI" ;
@@ -405,11 +405,11 @@ fibo-fnd-oac-own:Ownership a owl:Class ;
         "所有权（ownership）"@zh ;
     rdfs:comment "某参与方（明示或默示）持有某事物法定所有权、并有权转让该所有权和/或占有权的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:hasOwningParty ;
-            owl:someValuesFrom fibo-fnd-oac-own:Owner ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
             owl:someValuesFrom fibo-fnd-oac-own:Asset ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:hasOwningParty ;
+            owl:someValuesFrom fibo-fnd-oac-own:Owner ],
         cmns-pts:Situation ;
     skos:definition "situation in which some party holds the legal title to something (explicitly or implicitly) and has the right to transfer that title and/or possession" ;
     cmns-av:explanatoryNote "Ownership is the right to possess, use, sell, donate or give as a gift any asset or property belonging to a person known as the 'owner'. An owner can be either a beneficial owner or a legal owner." .
@@ -419,12 +419,12 @@ fibo-fnd-oac-own:Asset a owl:Class ;
         "资产（asset）"@zh ;
     rdfs:comment "具有货币价值、为某参与方所拥有或为其带来利益的事物。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:isOwnedAsset ;
-            owl:someValuesFrom fibo-fnd-oac-own:Ownership ],
-        [ a owl:Restriction ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
             owl:onProperty fibo-fnd-dt-fd:hasAcquisitionDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:isOwnedAsset ;
+            owl:someValuesFrom fibo-fnd-oac-own:Ownership ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:Price ;

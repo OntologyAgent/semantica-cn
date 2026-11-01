@@ -24,11 +24,11 @@ fibo-loan-ln-ev:CollateralValuation a owl:Class ;
         "抵押物估值（collateral valuation）"@zh ;
     rdfs:comment "对作为抵押品的不动产进行估值的评估活动。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-org:isProvidedBy ;
-            owl:someValuesFrom fibo-fnd-arr-asmt:Appraiser ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-dae-dbt:Collateral ;
             owl:onProperty fibo-fnd-rel-rel:evaluates ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Appraiser ],
         fibo-fnd-arr-asmt:AssessmentActivity ;
     skos:definition "assessment activity resulting in the valuation of real property as collateral"@en .
 

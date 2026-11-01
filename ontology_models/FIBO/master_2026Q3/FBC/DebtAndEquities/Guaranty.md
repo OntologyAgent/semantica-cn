@@ -34,19 +34,19 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 抵押担保（collateralized guaranty） | 以借款人向贷款人质押某项资产为形式的担保（通常用于换取贷款）。 |
-| 政府担保（government guaranty） | 由政府实体提供的担保，例如政府支持证券的担保。 |
-| 担保人（guarantor） | 为其他方的某项义务提供保证、背书或赔偿的当事方。 |
-| 担保（guaranty） | 一种承诺：当承担首要责任的一方未能履约时，由担保方正式保证相关事项得到履行。 |
-| 保险单（insurance policy） | 一种合同：（1）使赔偿责任保障生效；（2）作为保险协议的法律凭证；（3）列明保险的确切条款。 |
-| 保险支持担保（insurance-backed guaranty） | 以保险单形式实现的担保。 |
-| 保险人（insurer） | 签发保险单的金融服务提供方。 |
-| 共同担保（joint guaranty） | 由至少两方共同连带提供的担保。 |
-| 信用证（letter of credit） | 由银行或其他资信良好的机构出具的函件，保证买方对卖方的付款将按时、足额收到。 |
-| 信用证担保（letter of credit guaranty） | 以信用证形式提供的担保，即由银行签发、保证在特定期限内支付不超过规定金额款项的文件。 |
-| 消极质押承诺（negative pledge） | 一种担保承诺：发行人承诺不质押任何资产，以免降低贷款人或投资人的受保障程度。 |
-| 保单持有人（policyholder） | 保险单的相对方，通常也是保险单的所有者。 |
-| 优先级别（priority level） | 担保在合同语境中的相对排序，例如信用增级的优先顺序。 |
+| 抵押担保（collateralized guaranty） | 以借款人向贷款人质押某项资产为形式的担保（通常用于换取贷款）。<br>guaranty that takes the form of some asset that is pledged by a borrower to a lender (usually in return for a loan) |
+| 政府担保（government guaranty） | 由政府实体提供的担保，例如政府支持证券的担保。<br>guaranty provided by a government entity, such as for a government-backed security |
+| 担保人（guarantor） | 为其他方的某项义务提供保证、背书或赔偿的当事方。<br>party that guarantees, endorses, or provides indemnity for some obligation on behalf of some other party |
+| 担保（guaranty） | 一种承诺：当承担首要责任的一方未能履约时，由担保方正式保证相关事项得到履行。<br>commitment whereby something is formally assured if a party with primary liability fails to perform |
+| 保险单（insurance policy） | 一种合同：（1）使赔偿责任保障生效；（2）作为保险协议的法律凭证；（3）列明保险的确切条款。<br>contract that (1) puts an indemnity cover into effect, (2) serves as a legal evidence of the insurance agreement, (3) sets out the exact terms on which the indemnity cover has been provided, and (4) states associated information such as the (a) specific risks and perils covered, (b) duration of coverage, (c) amount of premium, (d) mode of premium payment, and (e) deductibles, if any |
+| 保险支持担保（insurance-backed guaranty） | 以保险单形式实现的担保。<br>guaranty that is realized as an insurance policy |
+| 保险人（insurer） | 签发保险单的金融服务提供方。<br>financial service provider that issues an insurance policy |
+| 共同担保（joint guaranty） | 由至少两方共同连带提供的担保。<br>guaranty provided by at least two parties, jointly and severally |
+| 信用证（letter of credit） | 由银行或其他资信良好的机构出具的函件，保证买方对卖方的付款将按时、足额收到。<br>letter from a bank or other creditworthy institution guaranteeing that a buyer's payment to a seller will be received on time and for the correct amount |
+| 信用证担保（letter of credit guaranty） | 以信用证形式提供的担保，即由银行签发、保证在特定期限内支付不超过规定金额款项的文件。<br>guaranty that takes the form of a letter of credit, i.e., a document issued by a bank guaranteeing the payment up to a stated amount for a specified period |
+| 消极质押承诺（negative pledge） | 一种担保承诺：发行人承诺不质押任何资产，以免降低贷款人或投资人的受保障程度。<br>guaranty whereby the issuer will not pledge any assets if doing so would result in less security for lender(s) or investor(s) |
+| 保单持有人（policyholder） | 保险单的相对方，通常也是保险单的所有者。<br>counterparty to and typically owner of an insurance policy |
+| 优先级别（priority level） | 担保在合同语境中的相对排序，例如信用增级的优先顺序。<br>relative ranking that a guaranty has in the context of a contract, for example for a credit enhancement priority |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -60,7 +60,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的担保人（is guarantor of）** | 标识担保人因提供担保而对之拥有一定程度控制权的当事方。 | 值域：受控方；子属性：是控制方 |
+| **是……的担保人（is guarantor of）** | 标识担保人因提供担保而对之拥有一定程度控制权的当事方。<br>identifies a party over which a guarantor has some measure of control by virtue of the guarantee | 值域：受控方；子属性：是控制方 |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -79,9 +79,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有担保金额（has guaranteed amount）** | 将担保与其所担保的货币金额关联起来。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有优先级别（has priority level）** | 将担保与其在合同语境中的相对排序关联起来，例如信用增级优先顺序。 | 值域：优先级别（priority level）；子属性：由……分类 |
-| **由……担保（is guaranteed by）** | 将担保与合同担保人（即提供担保的法律主体）关联起来。 | 值域：担保人（guarantor） |
+| **具有担保金额（has guaranteed amount）** | 将担保与其所担保的货币金额关联起来。<br>relates the guaranty to the monetary amount guaranteed | 值域：货币数量；子属性：具有货币数量 |
+| **具有优先级别（has priority level）** | 将担保与其在合同语境中的相对排序关联起来，例如信用增级优先顺序。<br>relates a guaranty to some relative ranking that the guaranty has in the context of the contract, for example for a credit enhancement priority | 值域：优先级别（priority level）；子属性：由……分类 |
+| **由……担保（is guaranteed by）** | 将担保与合同担保人（即提供担保的法律主体）关联起来。<br>relates guaranty to the contract guarantor, i.e., to the legal person providing the guaranty | 值域：担保人（guarantor） |
 | **具有到期日（hasExpirationDate）** | — | — |
 | **在…期间保持（holds during）** | — | — |
 
@@ -136,7 +136,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……担保（is guaranteed by）** | 将担保与合同担保人（即提供担保的法律主体）关联起来。 | 值域：担保人（guarantor） |
+| **由……担保（is guaranteed by）** | 将担保与合同担保人（即提供担保的法律主体）关联起来。<br>relates guaranty to the contract guarantor, i.e., to the legal person providing the guaranty | 值域：担保人（guarantor） |
 
 公理：
 
@@ -168,7 +168,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……担保（is guaranteed by）** | 将担保与合同担保人（即提供担保的法律主体）关联起来。 | 值域：担保人（guarantor） |
+| **由……担保（is guaranteed by）** | 将担保与合同担保人（即提供担保的法律主体）关联起来。<br>relates guaranty to the contract guarantor, i.e., to the legal person providing the guaranty | 值域：担保人（guarantor） |
 
 公理：
 
@@ -242,8 +242,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有担保人（has guarantor）** | 将担保人与被担保的合同关联起来。 | 值域：担保人（guarantor）；子属性：具有第三方 |
-| **具有担保当事方（has guarantor party）** | 指明为其义务提供保证、背书或赔偿的当事方。 | 值域：担保人（guarantor）；逆属性：是……的担保人（is guarantor of）；子属性：具有控制方 |
+| **具有担保人（has guarantor）** | 将担保人与被担保的合同关联起来。<br>relates the guarantor to the contract for which they are providing a guaranty | 值域：担保人（guarantor）；子属性：具有第三方 |
+| **具有担保当事方（has guarantor party）** | 指明为其义务提供保证、背书或赔偿的当事方。<br>indicates a party that guarantees, endorses, or provides indemnity for some obligation on its behalf | 值域：担保人（guarantor）；逆属性：是……的担保人（is guarantor of）；子属性：具有控制方 |
 
 ## 4. 依赖（owl:imports，18 个）
 

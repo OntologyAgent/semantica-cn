@@ -136,6 +136,7 @@ See https://opensource.org/licenses/MIT.""" ;
 cmns-av:acronym a owl:AnnotationProperty ;
     rdfs:label "acronym",
         "首字母缩写（acronym）"@zh ;
+    rdfs:comment "由完整术语或专有名称各成分的首字母（或音节）组成的缩写。"@zh ;
     rdfs:subPropertyOf cmns-av:abbreviation ;
     skos:definition "abbreviation that is made up of the initial letters of the components of the full form of a term or proper name or from syllables of the full form" ;
     skos:example "Examples of acronyms are: laser, ISO, GATT, UNESCO, UNICEF" ;
@@ -146,6 +147,7 @@ cmns-av:acronym a owl:AnnotationProperty ;
 cmns-av:adaptedFrom a owl:AnnotationProperty ;
     rdfs:label "adapted from",
         "改编自（adaptedFrom）"@zh ;
+    rdfs:comment "某个术语（或其定义）所改编来源的文档或出处；即与来源兼容但并非原文引用。取值可以是字符串、URI 或引文。"@zh ;
     rdfs:subPropertyOf dcterms:source ;
     skos:definition "document or other source from which a given term (or its definition) was adapted (i.e., is compatible with but not quoted); the range for this annotation can be a string, URI, or citation" ;
     cmns-av:usageNote "This annotation should be used to indicate that a reference was used, for example, as input to the development of a definition or term but would not be considered infringing on a copyright." .
@@ -153,6 +155,7 @@ cmns-av:adaptedFrom a owl:AnnotationProperty ;
 cmns-av:copyright a owl:AnnotationProperty ;
     rdfs:label "copyright",
         "版权（copyright）"@zh ;
+    rdfs:comment "赋予创作者或受让人的专有法律权利，用于印刷、出版、表演、拍摄或录制文学、艺术或音乐作品，并可授权他人实施同样行为。"@zh ;
     rdfs:subPropertyOf dcterms:rights ;
     skos:definition "exclusive legal right, given to an originator or an assignee to print, publish, perform, film, or record literary, artistic, or musical material, and to authorize others to do the same" ;
     cmns-av:usageNote "This annotation is typically used to describe an artifact such as a controlled vocabulary, ontology, or other similar resource." .
@@ -160,24 +163,28 @@ cmns-av:copyright a owl:AnnotationProperty ;
 cmns-av:directSource a owl:AnnotationProperty ;
     rdfs:label "direct source",
         "直接来源（directSource）"@zh ;
+    rdfs:comment "对主题资源的直接引用出处。取值可以是字符串、URI 或文献引文。"@zh ;
     rdfs:subPropertyOf dcterms:source ;
     skos:definition "quoted reference for the subject resource; the range for this annotation can be a string, URI, or bibliographic citation" .
 
 cmns-av:explanatoryNote a owl:AnnotationProperty ;
     rdfs:label "explanatory note",
         "解释性说明（explanatoryNote）"@zh ;
+    rdfs:comment "为资源提供补充解释材料的注记。"@zh ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "note that provides additional explanatory material for a resource" .
 
 cmns-av:logicalDefinition a owl:AnnotationProperty ;
     rdfs:label "logical definition",
         "逻辑定义（logicalDefinition）"@zh ;
+    rdfs:comment "以形式化表达式（如数学或逻辑表示）给出的资源定义。"@zh ;
     rdfs:subPropertyOf skos:definition ;
     skos:definition "definition in the form of a formal expression, such as the mathematical or logic representation, for the resource" .
 
 cmns-av:symbol a owl:AnnotationProperty ;
     rdfs:label "symbol",
         "符号（symbol）"@zh ;
+    rdfs:comment "以图形、记号或其他非字母数字字符表示某事物的符号，如货币符号、数学记号或运算符。"@zh ;
     rdfs:subPropertyOf cmns-av:synonym ;
     skos:definition "abbreviation that is a design or mark, or other non-alpha-numeric character(s) conventionally used to represent something, such as a currency or mathematical sign or operator" ;
     cmns-av:usageNote "Note that any SPARQL or other query using entailment for the rdfs:label on any construct will return not only the rdfs:label but all labels that are specified using subproperties of rdfs:label, such as symbol." .
@@ -185,6 +192,7 @@ cmns-av:symbol a owl:AnnotationProperty ;
 cmns-av:usageNote a owl:AnnotationProperty ;
     rdfs:label "usage note",
         "使用说明（usageNote）"@zh ;
+    rdfs:comment "说明资源如何使用或如何扩展的注记。"@zh ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "note that provides information about how a given resource is used or may be extended" .
 
@@ -221,6 +229,7 @@ skos:definition a owl:AnnotationProperty ;
 cmns-av:abbreviation a owl:AnnotationProperty ;
     rdfs:label "abbreviation",
         "缩写（abbreviation）"@zh ;
+    rdfs:comment "省略完整术语的部分内容而形成的指称，与原术语表示同一概念。"@zh ;
     rdfs:subPropertyOf cmns-av:synonym ;
     skos:definition "designation formed by omitting parts from the full form of a term that denotes the same concept" ;
     skos:example "Chemical Symbols: H, O, Mg; Units of Measure: Km, Kg, G" ;
@@ -247,6 +256,7 @@ dcterms:source a owl:AnnotationProperty ;
 cmns-av:synonym a owl:AnnotationProperty ;
     rdfs:label "synonym",
         "同义词（synonym）"@zh ;
+    rdfs:comment "可以替代某事物主要表示形式的指称。"@zh ;
     rdfs:subPropertyOf skos:altLabel ;
     skos:definition "designation that can be substituted for the primary representation of something" ;
     cmns-av:adaptedFrom "ISO 1087 Terminology work and terminology science - Vocabulary, Second edition, 2019-09" ;

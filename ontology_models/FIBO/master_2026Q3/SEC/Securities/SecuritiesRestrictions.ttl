@@ -146,11 +146,11 @@ fibo-sec-sec-rst:SecuritiesRegulation a owl:Class ;
         "证券法规（securities regulation）"@zh ;
     rdfs:comment "在法律中成文化、专门针对证券和投资的法规。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom fibo-sec-sec-rst:SecuritiesRestriction ;
-            owl:onProperty cmns-dsg:defines ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
             owl:someValuesFrom fibo-fnd-law-cor:StatuteLaw ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-sec-rst:SecuritiesRestriction ;
+            owl:onProperty cmns-dsg:defines ],
         fibo-fnd-law-lcap:Regulation ;
     skos:definition "regulation codified in law specific to securities and investments" .
 
@@ -183,12 +183,12 @@ fibo-sec-sec-rst:SecuritiesRestriction a owl:Class ;
     rdfs:comment "依法律或合同规定、适用于金融工具或挂牌的法定义务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-sec-sec-lst:Listing ) ] ;
-            owl:onProperty cmns-cxtdsg:appliesTo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fnd-law-cor:StatuteLaw fibo-sec-sec-rst:SecuritiesRegulation fibo-fnd-agr-ctr:Contract ) ] ;
             owl:onProperty fibo-fnd-rel-rel:isMandatedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-sec-sec-lst:Listing ) ] ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
         fibo-fnd-law-lcap:LegalObligation ;
     skos:definition "legal obligation that is applicable to a financial instrument or listing as mandated in a law or by contract" .
 

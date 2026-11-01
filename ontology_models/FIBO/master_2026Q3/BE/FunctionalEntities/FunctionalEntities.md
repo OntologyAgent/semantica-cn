@@ -33,17 +33,17 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 协会（association） | 由其成员拥有并代表成员行事的非营利组织。 |
-| 合作社（cooperative society） | 由使用其服务的人拥有并为其利益运营的组织。 |
-| 家族办公室（family office） | 承担一个家族事务日常行政与管理的组织。 |
-| 功能型企业实体（functional business entity） | 按其所从事商业活动的性质定义的功能实体。 |
-| 功能实体（functional entity） | 按其所履行职能定义的参与方。 |
-| 商户（merchant） | 为盈利而从事他人所生产货物之购销的参与方。 |
-| 商户类别码（merchant category code） | 国际上用于对商户进行分类的代码。 |
-| 商户类别码方案（merchant category code scheme） | 定义一组用于商户服务分类之代码的方案。 |
-| 商户标识符（merchant identifier） | 商户的唯一标识符，例如用于交易交换目的。 |
-| 辛迪加（syndicate） | 为完成特定业务而组成的临时性自组织联盟，由个人、公司或其他实体构成。 |
-| 辛迪加成员（syndicate member） | 作为联盟成员、为大型交易汇集资源并分担风险的个人或组织所扮演的角色。 |
+| 协会（association） | 由其成员拥有并代表成员行事的非营利组织。<br>not-for-profit organization that is owned by and acts on behalf of its members |
+| 合作社（cooperative society） | 由使用其服务的人拥有并为其利益运营的组织。<br>organization owned by and operated for the benefit of those using its services |
+| 家族办公室（family office） | 承担一个家族事务日常行政与管理的组织。<br>organization that assumes the day-to-day administration and management of a family's affairs |
+| 功能型企业实体（functional business entity） | 按其所从事商业活动的性质定义的功能实体。<br>functional entity defined in terms of the nature of the commercial activity it conducts |
+| 功能实体（functional entity） | 按其所履行职能定义的参与方。<br>party defined in terms of a function they or it performs |
+| 商户（merchant） | 为盈利而从事他人所生产货物之购销的参与方。<br>party engaged in the purchase and sales of goods produced by others for profit |
+| 商户类别码（merchant category code） | 国际上用于对商户进行分类的代码。<br>code used internationally to classify a merchant |
+| 商户类别码方案（merchant category code scheme） | 定义一组用于商户服务分类之代码的方案。<br>scheme defining a set of codes for classifying merchant services |
+| 商户标识符（merchant identifier） | 商户的唯一标识符，例如用于交易交换目的。<br>unique identifier for a merchant that is used, for example, for transaction interchange purposes |
+| 辛迪加（syndicate） | 为完成特定业务而组成的临时性自组织联盟，由个人、公司或其他实体构成。<br>temporary, self-organizing group of people, companies, corporations or entities organized as an alliance whose purpose is to transact some specific business, or to pursue or promote a shared interest |
+| 辛迪加成员（syndicate member） | 作为联盟成员、为大型交易汇集资源并分担风险的个人或组织所扮演的角色。<br>role of an individual or organization that is a member of an alliance set up to pool resources and share risk with respect to a large transaction |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -137,7 +137,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有商户类别描述（has merchant category description）** | 提供该代码所适用行业的文本描述。 | 值域：xsd:string |
+| **具有商户类别描述（has merchant category description）** | 提供该代码所适用行业的文本描述。<br>provides a text description of the sector to which the code applies | 值域：xsd:string |
 | **分类（classifies）** | — | — |
 | **具有标签（hasTag）** | — | — |
 | **定义于（isDefinedIn）** | — | — |

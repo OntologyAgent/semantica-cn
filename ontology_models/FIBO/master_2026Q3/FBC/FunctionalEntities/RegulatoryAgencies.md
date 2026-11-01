@@ -27,12 +27,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 检查员（examiner） | 由监管机构授权作为官方代表、对指定文件的准确性和真实性进行调查和审查的一方。 |
-| 政府颁发的许可证（government-issued license） | 合法执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可授予。 |
-| 法规标识方案（regulation identification scheme） | 用于组织法规信息并为法规分配标识符的方案。 |
-| 法规标识符（regulation identifier） | 与某一项法规相关联的标识符。 |
-| 监管资格（regulatory capacity） | 自然人凭借某监管机构的某项认证计划、代表其对某行业、组织或产品进行监管的资格。 |
-| 税务机关（tax authority） | 对任何税种的核定、确定、征收、课征及其他相关事项具有管辖权的监管机构。 |
+| 检查员（examiner） | 由监管机构授权作为官方代表、对指定文件的准确性和真实性进行调查和审查的一方。<br>party empowered as an official representative by a regulatory agency to investigate and review specified documents for accuracy and truthfulness |
+| 政府颁发的许可证（government-issued license） | 合法执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可授予。<br>grant of permission needed to legally perform some task, provide some service, exercise a certain privilege, or pursue some business or occupation |
+| 法规标识方案（regulation identification scheme） | 用于组织法规信息并为法规分配标识符的方案。<br>a scheme for organizing information and allocating identifiers to regulations |
+| 法规标识符（regulation identifier） | 与某一项法规相关联的标识符。<br>an identifier associated with a regulation |
+| 监管资格（regulatory capacity） | 自然人凭借某监管机构的某项认证计划、代表其对某行业、组织或产品进行监管的资格。<br>the capacity of some natural person to regulate some industry, organization, or product by virtue of some certification program on behalf of some regulatory agency |
+| 税务机关（tax authority） | 对任何税种的核定、确定、征收、课征及其他相关事项具有管辖权的监管机构。<br>regulatory agency that has jurisdiction over the assessment, determination, collection, imposition and other aspects of any tax |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

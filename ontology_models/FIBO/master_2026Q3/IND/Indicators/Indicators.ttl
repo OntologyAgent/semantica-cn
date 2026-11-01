@@ -196,6 +196,10 @@ fibo-ind-ind-ind:MarketRate a owl:Class ;
         "市场利率（market rate）"@zh ;
     rdfs:comment "市场上对一组工具确立的利率值，或描述某行业和/或政治区域经济气候的利率值（如 SOFR）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-utl-alx:ScopedMeasure ;
+            owl:onProperty cmns-qtu:isValueOf ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-fnd-acc-cur:hasRateValue ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -203,10 +207,6 @@ fibo-ind-ind-ind:MarketRate a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
             owl:onProperty fibo-ind-ind-ind:hasQuotationDateTime ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-utl-alx:ScopedMeasure ;
-            owl:onProperty cmns-qtu:isValueOf ],
         cmns-qtu:Ratio ;
     skos:definition "value of a rate established in the marketplace for a set of instruments or that describes the economic climate for an industry and/or political region (e.g., SOFR, Prime)" ;
     skos:example "Financial market rates include, but are not limited to reference rates, foreign exchange rates, lending rates, bankers' acceptance rates, and so forth." ;
@@ -225,14 +225,14 @@ fibo-ind-ind-ind:Volatility a owl:Class ;
     rdfs:label "volatility",
         "波动率（volatility）"@zh ;
     rdfs:comment "某随机变量在某段时期内围绕其均值的离散程度的统计度量。"@zh ;
-    rdfs:subClassOf [ a owl:Class ;
-            owl:unionOf ( fibo-fnd-utl-alx:Variance fibo-fnd-utl-alx:StandardDeviation ) ],
-        [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fnd-dt-fd:DatedStructuredCollection ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dt:hasDatePeriod ;
             owl:someValuesFrom cmns-dt:DatePeriod ],
+        [ a owl:Class ;
+            owl:unionOf ( fibo-fnd-utl-alx:Variance fibo-fnd-utl-alx:StandardDeviation ) ],
         fibo-fnd-utl-alx:Dispersion ;
     skos:definition "statistical measure of the dispersion around the average of some random variable over some period of time" .
 

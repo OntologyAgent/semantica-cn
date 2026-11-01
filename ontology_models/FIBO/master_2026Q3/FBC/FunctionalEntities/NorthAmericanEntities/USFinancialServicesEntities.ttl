@@ -142,13 +142,13 @@ fibo-fbc-fct-usfse:EdgeCorporation-DomesticBranch a owl:Class ;
         "埃奇公司——境内分行（edge corporation - domestic branch）"@zh ;
     rdfs:comment "位于美国境内的埃奇公司分行。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue lcc-3166-1:UnitedStatesOfAmerica ;
-            owl:onProperty cmns-org:isDomiciledIn ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:isPartOf ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:playsRole ;
                     owl:someValuesFrom fibo-fbc-fct-usfse:EdgeCorporation ] ],
+        [ a owl:Restriction ;
+            owl:hasValue lcc-3166-1:UnitedStatesOfAmerica ;
+            owl:onProperty cmns-org:isDomiciledIn ],
         fibo-be-le-fbo:Branch ;
     skos:definition "branch of an edge corporation that is located in the United States" ;
     cmns-av:adaptedFrom "https://www.ffiec.gov/npw/Help/InstitutionTypes"^^xsd:anyURI .
@@ -599,13 +599,13 @@ fibo-fbc-fct-usfse:DomesticBranchOfDomesticBank a owl:Class ;
         "境内银行的境内分行（domestic branch of domestic bank）"@zh ;
     rdfs:comment "位于美国境内、其母行也位于美国境内的分行。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue lcc-3166-1:UnitedStatesOfAmerica ;
+            owl:onProperty cmns-org:isDomiciledIn ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-col:isPartOf ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:playsRole ;
                     owl:someValuesFrom fibo-fbc-fct-usfse:USBank ] ],
-        [ a owl:Restriction ;
-            owl:hasValue lcc-3166-1:UnitedStatesOfAmerica ;
-            owl:onProperty cmns-org:isDomiciledIn ],
         fibo-fbc-fct-usfse:BranchOfADepositoryInstitution ;
     skos:definition "branch that resides in the United States, and whose parent is also located in the United States" ;
     cmns-av:adaptedFrom "https://www.ecfr.gov/current/title-12/chapter-II/subchapter-A/part-211/subpart-B/section-211.21"^^xsd:anyURI,
@@ -790,19 +790,19 @@ fibo-fbc-fct-usfse:AgencyOfAForeignBankingOrganization a owl:Class ;
         "外国银行机构代理处（agency of a foreign banking organization）"@zh ;
     rdfs:comment "外国银行设于美国任何州的营业场所，在该场所维持贷方余额、兑付支票、发放贷款，或在法律允许范围内从事其他业务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:isOwnedAsset ;
+            owl:onProperty fibo-fnd-oac-ctl:isControlledPartyOf ;
             owl:someValuesFrom fibo-fbc-fct-usfse:ForeignBank ],
         [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom fibo-fbc-fct-usfse:OfficeOfAForeignBank ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-ctl:isControlledPartyOf ;
-            owl:someValuesFrom fibo-fbc-fct-usfse:ForeignBank ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:hasValue lcc-3166-1:UnitedStatesOfAmerica ;
                     owl:onProperty cmns-org:isDomiciledIn ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:isOwnedAsset ;
+            owl:someValuesFrom fibo-fbc-fct-usfse:ForeignBank ],
         fibo-fbc-fct-fse:FinancialInstitution ;
     skos:definition "place of business of a foreign bank, located in any state, at which credit balances are maintained, checks are paid, money is lent, or, to the extent not prohibited by state or federal law, deposits are accepted from a person or entity that is not a citizen or resident of the United States" ;
     cmns-av:adaptedFrom "https://www.ecfr.gov/current/title-12/chapter-II/subchapter-A/part-211/subpart-B/section-211.21"^^xsd:anyURI,
@@ -821,13 +821,13 @@ fibo-fbc-fct-usfse:DomesticBranchOfAForeignBank a owl:Class ;
         "外国银行的境内分行（domestic branch of a foreign bank）"@zh ;
     rdfs:comment "外国银行设于美国任何州、吸收存款的营业场所，且不属于法规定义的代理处。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue lcc-3166-1:UnitedStatesOfAmerica ;
+            owl:onProperty cmns-org:isDomiciledIn ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-col:isPartOf ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:playsRole ;
                     owl:someValuesFrom fibo-fbc-fct-usfse:ForeignBank ] ],
-        [ a owl:Restriction ;
-            owl:hasValue lcc-3166-1:UnitedStatesOfAmerica ;
-            owl:onProperty cmns-org:isDomiciledIn ],
         fibo-fbc-fct-usfse:BranchOfADepositoryInstitution,
         fibo-fbc-fct-usfse:OfficeOfAForeignBank ;
     owl:disjointWith [ a owl:Restriction ;

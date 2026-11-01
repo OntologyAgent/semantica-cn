@@ -34,19 +34,19 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 离散度互换指数成分腿（dispersion swap index constituents leg） | 标的为给定股票指数一组成分股的离散度腿。 |
-| 离散度互换指数腿（dispersion swap index leg） | 标的为某一股票指数的离散度腿。 |
-| 股息腿（dividend leg） | 股息互换的浮动腿。 |
-| 股息互换（dividend swap） | 至少一腿的标的为股息流的股票互换。 |
-| 股票相关性互换（equity correlation swap） | 用于对冲一组标的产品价格观察平均相关性相关风险的相关性互换。 |
-| 股票价格回报互换（equity price return swap） | 回报腿标的基于股票的回报互换。 |
-| 股票回报腿（equity return leg） | 收益基于股票的回报腿。 |
-| 股票互换（equity swap） | 支付与标的股票（如个股、股票篮子或指数）价值变动或其现金流挂钩的互换。 |
-| 股票总回报互换（equity total return swap） | 回报腿标的基于股票的总回报互换。 |
-| 股票方差互换（equity variance swap） | 双方约定按特定标的股票（或指数）价格变动的已实现方差与约定方差之间的差额进行支付的离散度互换。 |
-| 股票波动率互换（equity volatility swap） | 以其标的股票价格变动之波动率为标的的远期合约型离散度互换。 |
-| 合资格股息期间（qualifying dividend period） | 计算互换条款所指相关发行人支付的全部合资格股息之和的日期区间。 |
-| 特别股息腿条款（special dividend leg terms） | 在适用特别股息和纪念股息时启用的条款。 |
+| 离散度互换指数成分腿（dispersion swap index constituents leg） | 标的为给定股票指数一组成分股的离散度腿。<br>dispersion leg whose underlier is a defined set of constituents of a given equity index |
+| 离散度互换指数腿（dispersion swap index leg） | 标的为某一股票指数的离散度腿。<br>dispersion leg whose underlier is an equity index |
+| 股息腿（dividend leg） | 股息互换的浮动腿。<br>floating leg of a dividend swap |
+| 股息互换（dividend swap） | 至少一腿的标的为股息流的股票互换。<br>equity swap that has at least one leg whose underlier is a dividend stream |
+| 股票相关性互换（equity correlation swap） | 用于对冲一组标的产品价格观察平均相关性相关风险的相关性互换。<br>correlation swap that allows one to hedge risks associated with the observed average correlation of a collection of underlying equity products |
+| 股票价格回报互换（equity price return swap） | 回报腿标的基于股票的回报互换。<br>return swap whose return leg underlier is based on equities |
+| 股票回报腿（equity return leg） | 收益基于股票的回报腿。<br>return leg whose income is based on equities |
+| 股票互换（equity swap） | 支付与标的股票（如个股、股票篮子或指数）价值变动或其现金流挂钩的互换。<br>swap whose payments are linked to the change in value of underlying equities (e.g. shares, basket of equities or index) or their cashflow(s) |
+| 股票总回报互换（equity total return swap） | 回报腿标的基于股票的总回报互换。<br>total return swap whose return leg underlier is based on equities |
+| 股票方差互换（equity variance swap） | 双方约定按特定标的股票（或指数）价格变动的已实现方差与约定方差之间的差额进行支付的离散度互换。<br>dispersion swap in which the parties agree to exchange payments based on the difference between (i) the realized variance of the price changes of a specified equity underlier over a stated observation period and (ii) a fixed amount of variance that is agreed when the contract is executed |
+| 股票波动率互换（equity volatility swap） | 以其标的股票价格变动之波动率为标的的远期合约型离散度互换。<br>dispersion swap that is a forward contract on the variability of movements in the price of its underlying equities |
+| 合资格股息期间（qualifying dividend period） | 计算互换条款所指相关发行人支付的全部合资格股息之和的日期区间。<br>date period over which the sum of all qualifying dividends paid by the relevant issuers as identified in the swap terms is calculated |
+| 特别股息腿条款（special dividend leg terms） | 在适用特别股息和纪念股息时启用的条款。<br>terms that are invoked if special dividend and memorial dividends are applicable |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

@@ -34,38 +34,38 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 农业资源（agricultural resource） | 通过农业过程获得的可转让商品，包括林业、渔业、畜牧、谷物、乳制品、玉米、可可、大豆、糖等。 |
-| 基本金属（base metal） | 暴露于空气或湿气中时相对较快失去光泽、氧化或腐蚀、并广泛用于商业和工业的普通金属。 |
-| 商品篮子（basket of commodities） | 成分由一种或多种可转让商品组成的定制篮子。 |
-| 金银条块（bullion） | 经官方认定纯度至少达 99.5% 的实物贵金属。 |
-| 商品篮子成分（commodity basket constituent） | 定制商品篮子的组成部分，其相对于其他篮子成分的重要性为已知。 |
-| 商品衍生品（commodity derivative） | 主要标的为实物商品、商品价格、相关指数或与实物商品相关之任何其他方面的衍生工具。 |
-| 商品衍生品标的（commodity derivative underlier） | 商品衍生品的标的，包括但不限于可转让商品本身。 |
-| 商品远期（commodity forward） | 买方和卖方约定在未来指定日期交付指定质量和数量货物的远期合约。 |
-| 商品期货（commodity future） | 在未来特定日期按特定价格买入或卖出预定数量商品的期货合约。 |
-| 商品指数（commodity index） | 追踪一篮子商品以衡量其价格和投资回报表现的投资工具。 |
-| 商品期权（commodity option） | 期权买方有权在到期日或之前按固定价格或公式买入或卖出指定商品或商品相关指数的期权。 |
-| 商品回报腿（commodity return leg） | 商品回报互换中回报基于实物商品、商品价格、价格行为或与商品相关之任何其他方面的一腿。 |
-| 商品即期合约（commodity spot contract） | 结算时涉及商品资产实物交割的合约。 |
-| 商品互换（commodity swap） | 一种商品衍生品：包括但不限于任何主要名义标的为实物商品或商品价格的互换。 |
-| 能源资源（energy resource） | 属于能源相关产品或其衍生品的可转让商品，包括电力、可再生能源等。 |
-| 能源输电权（energy transmission rights） | 在配电网络中输送电力的权利。 |
-| 环境资源（environmental resource） | 包括抵消信用额在内的可转让商品。 |
-| 开采资源（extraction resource） | 通过从自然环境中开采获得的矿产资源类可转让商品。 |
-| 化肥资源（fertilizer resource） | 包括氨、磷酸二铵（DAP）、钾肥、硫磺、尿素、尿素硝酸铵（UAN）在内的可转让商品。 |
-| 运费资源（freight resource） | 属于运费指数航线的可转让商品。 |
-| 天然气商品（gas commodity） | 属于天然气的开采资源。 |
-| 发电资源（generated resource） | 通过某种生产过程获得的可转让商品，包括电力、可再生能源或任何通过公用事业网络输送的电力/能源。 |
-| 谷物商品（grain commodity） | 属于食用植物（尤其是禾谷类植物）细小坚硬种子的农业资源，如小麦、玉米、黑麦、燕麦、大米和小米。 |
-| 工业资源（industrial resource） | 通过工业过程（包括建筑和制造）获得的可转让商品。 |
-| 肉类商品（meat commodity） | 源自动物（尤其是哺乳动物）肉体的农业资源，如猪腩肉。 |
-| 金属（metal） | 新鲜制备、抛光或断裂时呈现光泽外观、且导电导热性能较好的材料。 |
-| 石油商品（oil commodity） | 从石油提炼的粘稠液体类发电资源，用于燃料、润滑剂及多种产品的制造。 |
-| 油品等级（oil grade） | 衡量石油在使用过程中粘度的指标。 |
-| 纸类资源（paper resource） | 属于纸制品的可转让商品，包括箱板纸、新闻纸、纸浆、回收纸等。 |
-| 聚丙烯资源（polypropylene resource） | 包括塑料在内的可转让商品。 |
-| 服务资源（service resource） | 涉及运输、通信和贸易等服务的可转让商品。 |
-| 天气衍生品（weather derivative） | 主要名义标的基于天气相关事物（例如某地平均温度）的衍生工具。 |
+| 农业资源（agricultural resource） | 通过农业过程获得的可转让商品，包括林业、渔业、畜牧、谷物、乳制品、玉米、可可、大豆、糖等。<br>negotiable commodity that is obtained via some agricultural process, including forestry, fishing, livestock, grain, dairy, corn, cocoa, soybeans, sugar, coffee |
+| 基本金属（base metal） | 暴露于空气或湿气中时相对较快失去光泽、氧化或腐蚀、并广泛用于商业和工业的普通金属。<br>common metal that tarnishes, oxidizes, or corrodes relatively quickly when exposed to air or moisture, that is widely used in commercial and industrial applications, such as construction and manufacturing |
+| 商品篮子（basket of commodities） | 成分由一种或多种可转让商品组成的定制篮子。<br>custom basket whose constituents consist of one or more negotiable commodities |
+| 金银条块（bullion） | 经官方认定纯度至少达 99.5% 的实物贵金属。<br>physical precious metal that is officially recognized as being at least 99.5 percent pure |
+| 商品篮子成分（commodity basket constituent） | 定制商品篮子的组成部分，其相对于其他篮子成分的重要性为已知。<br>component of a custom commodity basket whose relative importance with respect to other basket constituents is known |
+| 商品衍生品（commodity derivative） | 主要标的为实物商品、商品价格、相关指数或与实物商品相关之任何其他方面的衍生工具。<br>derivative instrument whose primary underlying item is a physical commodity, or the price, or related index, or any other aspect related to a physical commodity |
+| 商品衍生品标的（commodity derivative underlier） | 商品衍生品的标的，包括但不限于可转让商品本身。<br>underlier of a commodity derivative, including, but not limited to, the negotiable commodity itself |
+| 商品远期（commodity forward） | 买方和卖方约定在未来指定日期交付指定质量和数量货物的远期合约。<br>forward contract in which a buyer and seller agree upon delivery of a specified quality and quantity of goods at a specified future date |
+| 商品期货（commodity future） | 在未来特定日期按特定价格买入或卖出预定数量商品的期货合约。<br>futures contract to buy or sell a predetermined amount of a commodity at a specific price on a specific date in the future |
+| 商品指数（commodity index） | 追踪一篮子商品以衡量其价格和投资回报表现的投资工具。<br>investment vehicle that tracks a basket of commodities to measure their price and investment return performance |
+| 商品期权（commodity option） | 期权买方有权在到期日或之前按固定价格或公式买入或卖出指定商品或商品相关指数的期权。<br>option where the option buyer has the right to buy or sell specified commodities or commodity related index at a fixed price or formula, on or before a specified date |
+| 商品回报腿（commodity return leg） | 商品回报互换中回报基于实物商品、商品价格、价格行为或与商品相关之任何其他方面的一腿。<br>leg of a commodity return swap in which the return is based on a physical commodity, or the price, or behavior of the price, or any other aspect related to a physical commodity |
+| 商品即期合约（commodity spot contract） | 结算时涉及商品资产实物交割的合约。<br>contract that involves physical delivery of the commodity asset at settlement |
+| 商品互换（commodity swap） | 一种商品衍生品：包括但不限于任何主要名义标的为实物商品或商品价格的互换。<br>commodity derivative that includes, without limitation, any swap for which the primary underlying notional item is a physical commodity, or the price, or behavior of the price, or the level of a commodity index, or other aspect related to a physical commodity |
+| 能源资源（energy resource） | 属于能源相关产品或其衍生品的可转让商品，包括电力、可再生能源等。<br>negotiable commodity that is an energy-related product, or a derivative of an energy-related product, including electricity, renewable energy, or any power/energy delivered through a utility network of provider; diesel fuel, fuel oil, gas oil, gasoline, heating oil, jet fuel, kerosene, natural gas, oil (Brent, Tapis, Dubai, WTI) |
+| 能源输电权（energy transmission rights） | 在配电网络中输送电力的权利。<br>rights to the transmission of power across an electricity distribution network |
+| 环境资源（environmental resource） | 包括抵消信用额在内的可转让商品。<br>negotiable commodity including offset credits |
+| 开采资源（extraction resource） | 通过从自然环境中开采获得的矿产资源类可转让商品。<br>negotiable commodity that is a mineral resource obtained via withdrawal from the natural environment |
+| 化肥资源（fertilizer resource） | 包括氨、磷酸二铵（DAP）、钾肥、硫磺、尿素、尿素硝酸铵（UAN）在内的可转让商品。<br>negotiable commodity that includes ammonia, diammonium phosphate (DAP), potash, sulphur, urea, urea and ammonium nitrate (UAN) |
+| 运费资源（freight resource） | 属于运费指数航线的可转让商品。<br>negotiable commodity that is a freight index route |
+| 天然气商品（gas commodity） | 属于天然气的开采资源。<br>extraction resource that is natural gas |
+| 发电资源（generated resource） | 通过某种生产过程获得的可转让商品，包括电力、可再生能源或任何通过公用事业网络输送的电力/能源。<br>negotiable commodity obtained via some generation process, including electricity, renewable energy, or any power/energy delivered through a utility network or provider |
+| 谷物商品（grain commodity） | 属于食用植物（尤其是禾谷类植物）细小坚硬种子的农业资源，如小麦、玉米、黑麦、燕麦、大米和小米。<br>agricultural resource that is a small, hard seed, of a food plant, especially of a cereal plant, such as wheat, corn, rye, oats, rice, and millet |
+| 工业资源（industrial resource） | 通过工业过程（包括建筑和制造）获得的可转让商品。<br>negotiable commodity that is obtained via some industrial process, including construction and manufacturing |
+| 肉类商品（meat commodity） | 源自动物（尤其是哺乳动物）肉体的农业资源，如猪腩肉。<br>agricultural resource derived from the flesh of an animal (especially a mammal), such as pork bellies |
+| 金属（metal） | 新鲜制备、抛光或断裂时呈现光泽外观、且导电导热性能较好的材料。<br>material that, when freshly prepared, polished, or fractured, shows a lustrous appearance, and conducts electricity and heat relatively well |
+| 石油商品（oil commodity） | 从石油提炼的粘稠液体类发电资源，用于燃料、润滑剂及多种产品的制造。<br>generated resource that is a viscous liquid derived from petroleum, including for use as fuel, or as a lubricant, and the manufacture of many types of paints, plastics, and other materials |
+| 油品等级（oil grade） | 衡量石油在使用过程中粘度的指标。<br>measure of the viscosity of oil during operation |
+| 纸类资源（paper resource） | 属于纸制品的可转让商品，包括箱板纸、新闻纸、纸浆、回收纸等。<br>negotiable commodity that is a paper product, including containerboard, newsprint, pulp, recovered paper |
+| 聚丙烯资源（polypropylene resource） | 包括塑料在内的可转让商品。<br>negotiable commodity including plastics |
+| 服务资源（service resource） | 涉及运输、通信和贸易等服务的可转让商品。<br>negotiable commodity involving services such as transportation, communications, and trade |
+| 天气衍生品（weather derivative） | 主要名义标的基于天气相关事物（例如某地平均温度）的衍生工具。<br>derivative instrument whose primary underlying notional item is based on something related to the weather, for example, the average temperature in Chicago in January |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -120,7 +120,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有某日商品价值（has commodity value as of date）** | 指明某一商品在指定日期的单位价值。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有某日商品价值（has commodity value as of date）** | 指明某一商品在指定日期的单位价值。<br>indicates the per unit value of a given commodity as of some specified date | 值域：货币数量；子属性：具有货币数量 |
 | **具有截止日（hasAsOfDate）** | — | — |
 | **涉及（involves）** | — | — |
 | **具有量值（hasQuantityValue）** | — | — |
@@ -203,7 +203,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有某日商品价值（has commodity value as of date）** | 指明某一商品在指定日期的单位价值。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有某日商品价值（has commodity value as of date）** | 指明某一商品在指定日期的单位价值。<br>indicates the per unit value of a given commodity as of some specified date | 值域：货币数量；子属性：具有货币数量 |
 | **具有截止日（hasAsOfDate）** | — | — |
 | **涉及（involves）** | — | — |
 | **具有量值（hasQuantityValue）** | — | — |
@@ -331,7 +331,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有等级（has grade）** | 石油的等级，例如布伦特原油（Brent Crude）。 | 值域：油品等级（oil grade） |
+| **具有等级（has grade）** | 石油的等级，例如布伦特原油（Brent Crude）。<br>The grade of oil e.g. Brent Crude. | 值域：油品等级（oil grade） |
 
 公理：
 

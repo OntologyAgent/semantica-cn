@@ -18,10 +18,10 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 宪章（constitution） | 治理某组织的一套基本原则，尤其涉及被治理者的权利。 |
-| 法院（court of law） | 具有司法权威、依据成文法或普通法审理并解决纠纷的个人或机构。 |
-| 法律（law） | 某共同体认可为规范其成员行为、并可通过施加处罚来强制执行的规则。 |
-| 成文法（statute law） | 由立法机关颁布的法律。 |
+| 宪章（constitution） | 治理某组织的一套基本原则，尤其涉及被治理者的权利。<br>set of basic principles by which an organization is governed, especially in relation to the rights of the people it governs |
+| 法院（court of law） | 具有司法权威、依据成文法或普通法审理并解决纠纷的个人或机构。<br>person or body of persons having judicial authority to hear and resolve disputes on the basis of statutes or the common law |
+| 法律（law） | 某共同体认可为规范其成员行为、并可通过施加处罚来强制执行的规则。<br>rule recognized by some community as regulating the behavior of its members and that it may enforce through the imposition of penalties |
+| 成文法（statute law） | 由立法机关颁布的法律。<br>law enacted by a legislature |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -57,7 +57,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **在…中有效（is in force in）** | 标识某法律生效的司法辖区。 | — |
+| **在…中有效（is in force in）** | 标识某法律生效的司法辖区。<br>identifies a jurisdiction in which some law has effect | — |
 
 #### 2.3.1 成文法（statute law）
 
@@ -69,7 +69,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **在…中有效（is in force in）** | 标识某法律生效的司法辖区。 | — |
+| **在…中有效（is in force in）** | 标识某法律生效的司法辖区。<br>identifies a jurisdiction in which some law has effect | — |
 
 公理：
 
@@ -83,7 +83,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **现行有效（has in force）** | 将某司法辖区或情境关联到当前在其中有效的规则、规章或法律（统称“法律”）。 | 值域：法律（law）；逆属性：在…中有效（is in force in） |
+| **现行有效（has in force）** | 将某司法辖区或情境关联到当前在其中有效的规则、规章或法律（统称“法律”）。<br>relates a jurisdiction or situation to a rule, regulation or law (collectively "law") that is currently in force in that situation or jurisdiction | 值域：法律（law）；逆属性：在…中有效（is in force in） |
 
 ## 4. 依赖（owl:imports，5 个）
 

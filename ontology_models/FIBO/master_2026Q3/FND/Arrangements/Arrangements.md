@@ -16,7 +16,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 方案（scheme） | 用于组织信息的结构或方式，如蓝图、模式、编号系统、组织结构、度量系统、计划、分类法或组织信息的语言。 |
+| 方案（scheme） | 用于组织信息的结构或方式，如蓝图、模式、编号系统、组织结构、度量系统、计划、分类法或组织信息的语言。<br>structure or means of organizing information such as a blueprint, schema, numbering system, organization structure, measurement system, plan, taxonomy, or language for organizing information |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -44,7 +44,7 @@
 
 | 属性 | 定义 |
 |---|---|
-| **具有集合大小（has collection size）** | 指示给定集合中元素的数量。 |
+| **具有集合大小（has collection size）** | 指示给定集合中元素的数量。<br>indicates the number of elements in a given collection |
 
 ## 4. 依赖（owl:imports，5 个）
 

@@ -97,12 +97,12 @@ fibo-be-le-cb:IncorporationGuarantee a owl:Class ;
         "注册成立担保（incorporation guarantee）"@zh ;
     rdfs:comment "构成某法律实体注册成立之财务基础一部分的担保。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty cmns-org:isProvidedBy ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fnd-acc-cur:hasNotionalAmount ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-org:isProvidedBy ],
         fibo-fnd-law-cor:Constitution ;
     skos:definition "guarantee that is part of the financial basis by which some legal entity is incorporated" .
 
@@ -176,13 +176,13 @@ fibo-be-le-cb:RegistrationIdentifier a owl:Class ;
         "注册标识符（registration identifier）"@zh ;
     rdfs:comment "组织注册时（通常在其组建所在管辖区）官方分配的标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-rga:Jurisdiction ;
-            owl:onProperty cmns-rga:isGovernedBy ],
-        [ a owl:Restriction ;
             owl:onClass cmns-org:FormalOrganization ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-rga:isGovernedBy ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:someValuesFrom fibo-be-le-cb:RegistrationIdentifierScheme ],
@@ -251,19 +251,19 @@ fibo-be-le-cb:StockCorporation a owl:Class ;
         "股份公司（stock corporation）"@zh ;
     rdfs:comment "拥有股东的公司，每位股东通过股票获得公司部分所有权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass cmns-dt:ExplicitDate ;
-            owl:onProperty fibo-be-le-cb:hasDateOfIncorporation ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-be-le-cb:hasIssuedCapital ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rga:isGovernedBy ;
-            owl:someValuesFrom fibo-be-le-cb:BoardAgreement ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-be-le-cb:hasDateOfRegistration ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-be-le-cb:hasIssuedCapital ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom fibo-be-le-cb:BoardAgreement ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-be-le-cb:hasDateOfIncorporation ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-be-le-cb:Corporation ;
     skos:definition "corporation that has shareholders, each of whom receives a portion of the ownership of the corporation through shares of stock" ;
@@ -285,12 +285,12 @@ fibo-be-le-cb:Corporation a owl:Class ;
         "公司（corporation）"@zh ;
     rdfs:comment "作为法律实体（拟制人）、区别于其所有者、依州或国家法律管辖区设立的正式组织。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:hasLegalName ;
-            owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
             owl:onClass cmns-rga:Jurisdiction ;
             owl:onProperty fibo-be-le-cb:isIncorporatedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:hasLegalName ;
+            owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-be-le-cb:InstrumentOfIncorporation ;

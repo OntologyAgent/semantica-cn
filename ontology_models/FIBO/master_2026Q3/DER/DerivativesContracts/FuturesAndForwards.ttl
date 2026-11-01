@@ -342,17 +342,17 @@ fibo-der-drc-ff:EquityForward a owl:Class ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
             owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
-            owl:someValuesFrom [ a owl:Restriction ;
-                    owl:onProperty cmns-rlcmp:isPlayedBy ;
-                    owl:someValuesFrom [ a owl:Class ;
-                            owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-sec-eq-eq:ListedShare fibo-ind-mkt-bas:EquityIndex fibo-der-drc-ff:EquityFuture fibo-der-drc-opt:EquityOption ) ] ] ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-ff:hasMethodOfAdjustment ;
             owl:someValuesFrom fibo-der-drc-ff:ForwardContractAdjustmentMethod ],
         [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-ff:hasDividendAdjustmentPeriod ;
             owl:someValuesFrom fibo-der-drc-ff:DividendAdjustmentPeriod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:isPlayedBy ;
+                    owl:someValuesFrom [ a owl:Class ;
+                            owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-sec-eq-eq:ListedShare fibo-ind-mkt-bas:EquityIndex fibo-der-drc-ff:EquityFuture fibo-der-drc-opt:EquityOption ) ] ] ],
         fibo-der-drc-ff:Forward ;
     skos:definition "forward contract to buy or sell the underlying equity stock, equity index, basket of equity stock, equity futures contract, or equity option at a specified future date at the price specified at the outset of the contract"@en ;
     cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .

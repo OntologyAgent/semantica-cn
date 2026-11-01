@@ -224,13 +224,13 @@ fibo-ind-fx-fx:QuotedExchangeRate a owl:Class ;
         "报价汇率（quoted exchange rate）"@zh ;
     rdfs:comment "在特定时点、针对以另一（基准）货币报价的给定金额货币所报的汇率。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-ind-fx-fx:hasExchangeRateQuotationSource ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-fct-mkt:Exchange ) ] ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:Currency ;
             owl:onProperty fibo-ind-fx-fx:hasQuoteCurrency ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-ind-fx-fx:hasExchangeRateQuotationSource ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-fct-mkt:Exchange ) ] ],
         fibo-fnd-acc-cur:ExchangeRate,
         fibo-ind-ind-ind:MarketRate ;
     skos:definition "exchange rate quoted at a specific point in time, for a given block amount of currency as quoted against another (base) currency" ;

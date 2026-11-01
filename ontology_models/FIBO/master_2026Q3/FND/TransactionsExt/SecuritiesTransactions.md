@@ -33,12 +33,12 @@
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 金融一级市场交易（financial primary market transaction） | 在一级市场上进行的金融交易。 |
-| 金融证券二级市场交易（financial securities secondary market transaction） | 以某种可流通证券换取某种对价的交易。 |
-| 证券交易合同（securities transaction contract） | 治理二级市场证券交易的合同（书面或默示）。 |
+| 金融证券二级市场交易（financial securities secondary market transaction） | 以某种可流通证券换取某种对价的交易。<br>A Transaction in which some negotiable security is provided in exchange for some Consideration. |
+| 证券交易合同（securities transaction contract） | 治理二级市场证券交易的合同（书面或默示）。<br>The contract (written or implied) which governs the transaction of securities in the secondary Market. |
 | 证券交易对手方（securities transaction counterparty） | 证券交易中的对手方。 |
 | 证券交易主当事方（securities transaction principal） | 证券交易中的主当事方。 |
 | 结算过程（settlement process） | 完成交易交收的过程。 |
-| 预发行交易（when issued transaction） | 在证券正式交易之前进行的证券买卖。 |
+| 预发行交易（when issued transaction） | 在证券正式交易之前进行的证券买卖。<br>Trading in securities ahead of them being traded. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -93,7 +93,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **预发行发行日偏移（offset for w i issue date）** | 用于由给定预发行（WI）发行日计算实际结算日；若发行日未知，它确定自发行日起算的天数。 | 值域：xsd:integer |
+| **预发行发行日偏移（offset for w i issue date）** | 用于由给定预发行（WI）发行日计算实际结算日；若发行日未知，它确定自发行日起算的天数。<br>Used to calculate actual settlement date from given WI issue date. If issue date is unknwn, this determines how many days form the issue date it's going to settle. | 值域：xsd:integer |
 
 ### 2.3 证券交易合同（securities transaction contract）
 

@@ -18,9 +18,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 索引（index） | 从大量值、数据、信息或知识中派生并指向其中的间接快捷方式。 |
-| 索引方案（indexing scheme） | 对值、数据、信息或知识进行索引的体系。 |
-| 可重分配标识符（reassignable identifier） | 在给定时间段内唯一标识某物、并可在不同时间点重新用于标识其他事物的标识符。 |
+| 索引（index） | 从大量值、数据、信息或知识中派生并指向其中的间接快捷方式。<br>indirect shortcut derived from and pointing into, a greater volume of values, data, information or knowledge |
+| 索引方案（indexing scheme） | 对值、数据、信息或知识进行索引的体系。<br>system for indexing values, data, information, or knowledge |
+| 可重分配标识符（reassignable identifier） | 在给定时间段内唯一标识某物、并可在不同时间点重新用于标识其他事物的标识符。<br>identifier that uniquely identifies something for a given time period, and that may be reused to identify something else at a different point in time |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -34,7 +34,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是…的索引（is index to）** | 索引所指的对象。 | 子属性：引用 |
+| **是…的索引（is index to）** | 索引所指的对象。<br>that to which the index refers | 子属性：引用 |
 | **定义于（isDefinedIn）** | — | — |
 
 公理：
@@ -68,15 +68,26 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有分配终止日期（has assignment termination date）** | 标识符解除与某资源分配关系的日期。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
-| **具有初始分配日期（has initial assignment date）** | 标识符首次分配给某资源的日期。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **具有分配终止日期（has assignment termination date）** | 标识符解除与某资源分配关系的日期。<br>the date on which an identifier is released from its assignment to some resource | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **具有初始分配日期（has initial assignment date）** | 标识符首次分配给某资源的日期。<br>the date on which an identifier is first assigned to some resource | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
 
 公理：
 
 - **具有分配终止日期（has assignment termination date）**存在取值约束。
 - **具有初始分配日期（has initial assignment date）**存在取值约束。
 
-## 3. 依赖（owl:imports，10 个）
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+标注属性（Annotation Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **构造正则表达式（construct regex）** | 指示如何由各组成部分拼出给定字符串。<br>indicates how to compose the supplied character string from its components |
+| **解析正则表达式（parse regex）** | 指示如何将给定字符串拆解为其组成部分。<br>indicates how to deconstruct the supplied character string into its components |
+
+## 4. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -93,7 +104,7 @@
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 | `https://www.omg.org/spec/Commons/Identifiers/` | OMG 通用标识符本体（OMG Commons Identifiers） | Commons 库中的标识符本体，定义标识符及其编码方案的通用概念。 |
 
-## 4. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`IdentifiersAndIndices.rdf`
 - 中文 Turtle：`IdentifiersAndIndices.ttl`

@@ -116,11 +116,11 @@ fibo-fbc-dae-gty:InsurancePolicy a owl:Class ;
         "保险单（insurance policy）"@zh ;
     rdfs:comment "一种合同：（1）使赔偿责任保障生效；（2）作为保险协议的法律凭证；（3）列明保险的确切条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
-            owl:someValuesFrom fibo-fbc-dae-gty:Policyholder ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
             owl:someValuesFrom fibo-fbc-dae-gty:Insurer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
+            owl:someValuesFrom fibo-fbc-dae-gty:Policyholder ],
         fibo-fnd-agr-ctr:WrittenContract ;
     skos:definition "contract that (1) puts an indemnity cover into effect, (2) serves as a legal evidence of the insurance agreement, (3) sets out the exact terms on which the indemnity cover has been provided, and (4) states associated information such as the (a) specific risks and perils covered, (b) duration of coverage, (c) amount of premium, (d) mode of premium payment, and (e) deductibles, if any" ;
     cmns-av:synonym "insurance contract" .
@@ -138,11 +138,11 @@ fibo-fbc-dae-gty:LetterOfCredit a owl:Class ;
         "信用证（letter of credit）"@zh ;
     rdfs:comment "由银行或其他资信良好的机构出具的函件，保证买方对卖方的付款将按时、足额收到。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:playsRole ;
-            owl:someValuesFrom fibo-fnd-oac-own:FinancialAsset ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
             owl:someValuesFrom cmns-pts:PartyRole ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:playsRole ;
+            owl:someValuesFrom fibo-fnd-oac-own:FinancialAsset ],
         fibo-fbc-dae-dbt:CommittedCreditFacility ;
     skos:definition "letter from a bank or other creditworthy institution guaranteeing that a buyer's payment to a seller will be received on time and for the correct amount" ;
     cmns-av:abbreviation "L/C" ;
@@ -209,13 +209,13 @@ fibo-fbc-dae-gty:Guarantor a owl:Class ;
     rdfs:comment "为其他方的某项义务提供保证、背书或赔偿的当事方。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-gty: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom cmns-org:LegalPerson ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-pts:isAPartyTo ;
                     owl:someValuesFrom fibo-fnd-agr-ctr:Contract ] ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-org:LegalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
         fibo-be-oac-cpty:DeJureControllingInterestParty,
         fibo-fnd-agr-ctr:ContractThirdParty ;
     skos:definition "party that guarantees, endorses, or provides indemnity for some obligation on behalf of some other party" ;
@@ -282,14 +282,14 @@ fibo-fbc-dae-gty:Guaranty a owl:Class ;
             owl:allValuesFrom cmns-dt:Date ;
             owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ],
         [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:DatePeriod ;
+            owl:onProperty cmns-pts:holdsDuring ],
+        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fbc-dae-gty:hasGuaranteedAmount ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-dae-gty:PriorityLevel ;
             owl:onProperty fibo-fbc-dae-gty:hasPriorityLevel ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmns-dt:DatePeriod ;
-            owl:onProperty cmns-pts:holdsDuring ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-dae-gty:Guarantor ;
             owl:onProperty fibo-fbc-dae-gty:isGuaranteedBy ],

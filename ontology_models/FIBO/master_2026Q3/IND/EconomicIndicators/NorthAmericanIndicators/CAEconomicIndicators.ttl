@@ -68,21 +68,21 @@ fibo-ind-ei-caei:CanadianConsumerPriceIndex a owl:Class ;
         "加拿大消费者价格指数（Canadian consumer price index）"@zh ;
     rdfs:comment "表示加拿大私人住户消费的固定篮子消费货物与服务价格随时间变化之度量的经济指标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-ind-ei-caei:CanadianHouseholdsConsumersUniverse ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-ind-ei-caei:CanadianStatisticsPublisher ;
             owl:onProperty fibo-be-fct-pub:hasPublisher ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-ind-ei-caei:CanadianHouseholdsConsumersUniverse ;
-            owl:onProperty cmns-qtu:hasArgument ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:hasValue fibo-ind-ei-caei:StatisticsCanada ;
             owl:onProperty fibo-be-fct-pub:isPublishedBy ],
         [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-ind-ei-ei:FixedBasket ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-ind-ei-caei:CanadianHouseholdsConsumersUniverse ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-ind-ei-caei:CanadianHouseholdsConsumersUniverse ],
         fibo-ind-ei-ei:ConsumerPriceIndex ;
     skos:definition "economic indicator representing a measure of changes over time in the prices of a fixed basket of consumer goods and services that Canadian private households consume" ;
     cmns-av:abbreviation "CPI" ;
@@ -94,15 +94,15 @@ fibo-ind-ei-caei:CanadianProducerPriceIndex a owl:Class ;
         "加拿大生产者价格指数（Canadian producer price index）"@zh ;
     rdfs:comment "表示国内生产者固定篮子货物与服务价格随时间变化之度量的经济指标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-ind-ei-caei:StatisticsCanada ;
-            owl:onProperty fibo-be-fct-pub:isPublishedBy ],
+            owl:hasValue fibo-ind-ei-caei:CanadianStatisticsPublisher ;
+            owl:onProperty fibo-be-fct-pub:hasPublisher ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-ind-ei-caei:IndustrialProductsSector fibo-ind-ei-caei:NewHousingSector fibo-ind-ei-caei:RawMaterialsSector ) ] ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-ind-ei-caei:CanadianStatisticsPublisher ;
-            owl:onProperty fibo-be-fct-pub:hasPublisher ],
+            owl:hasValue fibo-ind-ei-caei:StatisticsCanada ;
+            owl:onProperty fibo-be-fct-pub:isPublishedBy ],
         fibo-ind-ei-ei:ProducerPriceIndex ;
     skos:definition "an economic indicator representing a measure of the change over time in the prices of a fixed-basket of domestic producer goods and services" ;
     cmns-av:adaptedFrom "http://www23.statcan.gc.ca/imdb-bmdi/pub/indexth-eng.htm"^^xsd:anyURI ;
@@ -137,13 +137,13 @@ fibo-ind-ei-caei:CanadianHouseholdsConsumersUniverse a owl:Class ;
         "加拿大住户消费者全域（Canadian households consumers universe）"@zh ;
     rdfs:comment "由加拿大全部私人住户构成的统计全域，不含军事基地士兵、第一民族保留地居民等。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:isApplicableIn ;
-            owl:someValuesFrom fibo-ind-ei-ei:Household ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:playsRole ;
                     owl:someValuesFrom fibo-ind-ei-ei:UltimateConsumer ] ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom fibo-ind-ei-ei:Household ],
         fibo-ind-ei-ei:CivilianNonInstitutionalPopulation ;
     skos:definition "a statistical universe consisting of all private households in Canada, with the exception of soldiers on military bases, people living on First Nations reserves, institutionalized persons, and households living in the rural areas of the three northern territories" ;
     cmns-av:adaptedFrom "http://www.statcan.gc.ca/pub/62-553-x/62-553-x2015001-eng.pdf" .

@@ -31,13 +31,13 @@
 |---|---|
 | 交易所期货价格（exchange futures price） | 交易所确定的期货价格。 |
 | 期货收盘价（futures closing price） | 期货在交易时段结束时的价格。 |
-| 期货每日结算价（futures daily settlement price） | 期货每日的结算价格。 |
-| 期货希腊字母（futures greek） | 表示期货价格对其价值所依赖的标的参数变化之敏感度的量。 |
+| 期货每日结算价（futures daily settlement price） | 期货每日的结算价格。<br>Review whether this exists |
+| 期货希腊字母（futures greek） | 表示期货价格对其价值所依赖的标的参数变化之敏感度的量。<br>quantity representing the sensitivity of the price of a future or futures to a change in underlying parameters on which the value depends |
 | 期货西塔（futures theta） | 期货价值对到期时间单位变化之变化率的度量。 |
-| 期货交易账户持有人（futures trading account holder） | 在衍生品交易所开立期货交易账户的参与方；开户时存入的款项称为保证金。 |
+| 期货交易账户持有人（futures trading account holder） | 在衍生品交易所开立期货交易账户的参与方；开户时存入的款项称为保证金。<br>A party who has an account for futures trading at a derivatives exchange. Further notes: The trader opens an account with a given amount known as a margin. |
 | 期货维加（futures vega） | 期货价值对波动率假设单位变化之变化率的度量。 |
-| 初始保证金（initial margin） | 作为诚信押金存入、以保证期货合同将得到履行的货币或证券。 |
-| 最低保证金（minimum margin） | 账户在需要补充之前可降至的最低金额。 |
+| 初始保证金（initial margin） | 作为诚信押金存入、以保证期货合同将得到履行的货币或证券。<br>money or securities put up as a good faith deposit assuring that a future contract will be fulfilled |
+| 最低保证金（minimum margin） | 账户在需要补充之前可降至的最低金额。<br>The lowest amount an account can reach before needing to be replenished. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

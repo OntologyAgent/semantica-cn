@@ -27,12 +27,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 美式行权条款（American exercise terms） | 规定期权可在到期日或之前任何时间行权的行权条款。 |
-| 百慕大式行权条款（Bermudan exercise terms） | 规定期权仅可在行权窗口内的预定日期（通常每月或每周某一日）行权的行权条款。 |
-| 欧式行权条款（European exercise terms） | 规定期权仅可在到期日行权的行权条款。 |
-| 金丝雀式行权条款（canary exercise terms） | 规定期权仅可在达到第一个阶梯日之前的预定日期行权、之后不得行权的行权条款。 |
-| 行权惯例（exercise convention） | 确定期权持有人或未来持有人何时可以行使期权所规定权利的惯例。 |
-| 行权条款（exercise terms） | 与期权或权益凭证行权相关的条件、惯例和其他规定的合同条款。 |
+| 美式行权条款（American exercise terms） | 规定期权可在到期日或之前任何时间行权的行权条款。<br>exercise terms that stipulate that an option may be exercised on or before the date of expiration |
+| 百慕大式行权条款（Bermudan exercise terms） | 规定期权仅可在行权窗口内的预定日期（通常每月或每周某一日）行权的行权条款。<br>exercise terms that stipulate that an option may only be exercised on predetermined dates within some exercise window, often on one day each month or at the date of expiration |
+| 欧式行权条款（European exercise terms） | 规定期权仅可在到期日行权的行权条款。<br>exercise terms that stipulate that an option may only be exercised at the date of expiration |
+| 金丝雀式行权条款（canary exercise terms） | 规定期权仅可在达到第一个阶梯日之前的预定日期行权、之后不得行权的行权条款。<br>exercise terms that stipulate that an option may only be exercised on predetermined dates until the first step is reached, but not after that point |
+| 行权惯例（exercise convention） | 确定期权持有人或未来持有人何时可以行使期权所规定权利的惯例。<br>convention that determines when the holder or future holder of an option can implement the rights defined in the option |
+| 行权条款（exercise terms） | 与期权或权益凭证行权相关的条件、惯例和其他规定的合同条款。<br>contract terms specific to the conditions, conventions and other stipulations related to the exercise of an option or entitlement |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -88,8 +88,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权日（has exercise date）** | 指明合约条款规定的期权可行权的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有行权窗口（has exercise window）** | 指明合约条款规定的期权可行权的时间段。 | 值域：日期区间 |
+| **具有行权日（has exercise date）** | 指明合约条款规定的期权可行权的日期。<br>indicates a date on which an option may be exercised as specified in the terms of the contract | 值域：显式日期；子属性：具有显式日期 |
+| **具有行权窗口（has exercise window）** | 指明合约条款规定的期权可行权的时间段。<br>indicates a period of time during which the option may be exercised as specified in the terms of the contract | 值域：日期区间 |
 | **使用（uses）** | — | — |
 
 公理：
@@ -125,7 +125,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权日（has exercise date）** | 指明合约条款规定的期权可行权的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有行权日（has exercise date）** | 指明合约条款规定的期权可行权的日期。<br>indicates a date on which an option may be exercised as specified in the terms of the contract | 值域：显式日期；子属性：具有显式日期 |
 | **使用（uses）** | — | — |
 
 公理：
@@ -141,7 +141,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权条款（has exercise terms）** | 将期权或权益凭证等衍生品与其中规定的行权条款关联起来。 | 值域：行权条款（exercise terms）；子属性：具有合同要素 |
+| **具有行权条款（has exercise terms）** | 将期权或权益凭证等衍生品与其中规定的行权条款关联起来。<br>links a derivative, such as an option or entitlement, to any exercise terms that are specified therein | 值域：行权条款（exercise terms）；子属性：具有合同要素 |
 
 ## 4. 依赖（owl:imports，7 个）
 

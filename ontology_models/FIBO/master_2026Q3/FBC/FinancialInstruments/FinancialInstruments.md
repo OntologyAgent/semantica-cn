@@ -34,30 +34,30 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 计算代理人（calculation agent） | 负责确定工具价值的一方，在某些情况下还确定双方相互应付的金额。 |
-| 现金类工具（cash instrument） | 价值由市场决定且易于转让（高流动性）的金融工具。 |
-| 商品工具（commodity instrument） | 代表大宗商品（如原材料和初级农产品）所有权权益的金融工具。 |
-| 货币工具（currency instrument） | 用于货币交易目的的金融工具。 |
-| 债务工具（debt instrument） | 作为信贷协议的金融工具，证明发行人按既定条款对持有人负有欠款。 |
-| 衍生工具（derivative instrument） | 赋予持有人特定权利或义务、其价值来源于一种或多种标的资产的金融工具。 |
-| 权益凭证（entitlement） | 使持有人按既定条款获得特定资产的权益、认购特权或收取权的金融工具。 |
-| 权益工具（equity instrument） | 代表对某一实体或资产池的所有权权益的金融工具。 |
-| 豁免证券（exempt security） | 免于适用某些监管规则的证券。 |
-| 金融工具（financial instrument） | 同时产生一方金融资产和另一方金融负债的书面合同。 |
-| 金融工具标识符（financial instrument identifier） | 在特定情境下为某一目的唯一标识金融工具的字符序列。 |
-| 期货（future） | 衍生工具：买方有义务在约定价格接收、卖方有义务交付约定资产，于未来某一时点执行。 |
-| 发行人（issuer） | 以某种明确且通常正式的方式发行（或拟发行）一种或多种金融工具的一方所扮演的角色。 |
-| 可转让证券（negotiable security） | 可转让给他方的证券。 |
-| 不可转让证券（non-negotiable security） | 不可转让给他方的证券。 |
-| 期权（option） | 衍生工具：赋予持有人按预定价格买入或卖出约定资产的特权。 |
-| 打包金融产品（packaged financial product） | 作为容器容纳至少一种金融工具（包括其他金融产品）、且其价值来源于所含成分的金融产品。 |
-| 本票（promissory note） | 一种债务工具：一方向另一方出具的书面承诺，承诺按要求或在规定期限内支付指定金额。 |
-| 赎回条款（redemption provision） | 使发行人（签发方）能够通过偿付约定价格重新取得所有权的合同条款。 |
-| 证券交易（securities transaction） | 两方或多方之间涉及通用定义金融产品交换的交易。 |
-| 证券（security） | 可以买入或卖出的金融工具。 |
-| 即期合约（spot contract） | 在指定日期即时交割结算的金融工具。 |
-| 标准化条款（standardized terms） | 组合在一起、在众多合同中被一致复用、由某机构发布且可被机器处理的合同条款。 |
-| 标的（underlier） | 可在市场上被赋予价值、构成衍生品或资产池支持工具基础的事物。 |
+| 计算代理人（calculation agent） | 负责确定工具价值的一方，在某些情况下还确定双方相互应付的金额。<br>party that is responsible for determining the value of an instrument and in some cases, determines how much the parties owe one another |
+| 现金类工具（cash instrument） | 价值由市场决定且易于转让（高流动性）的金融工具。<br>financial instrument whose value is determined by the market and that is readily transferable (highly liquid) |
+| 商品工具（commodity instrument） | 代表大宗商品（如原材料和初级农产品）所有权权益的金融工具。<br>financial instrument representing an ownership interest in bulk goods, such as raw materials and primary agricultural products |
+| 货币工具（currency instrument） | 用于货币交易目的的金融工具。<br>financial instrument used for the purposes of currency trading |
+| 债务工具（debt instrument） | 作为信贷协议的金融工具，证明发行人按既定条款对持有人负有欠款。<br>financial instrument and credit agreement evidencing monies owed by the issuer to the holder on terms as specified |
+| 衍生工具（derivative instrument） | 赋予持有人特定权利或义务、其价值来源于一种或多种标的资产的金融工具。<br>financial instrument that confers on its holders certain rights or obligations, whose value is derived from one or more underlying assets |
+| 权益凭证（entitlement） | 使持有人按既定条款获得特定资产的权益、认购特权或收取权的金融工具。<br>financial instrument that provides the holder an interest in, or the privilege to subscribe to, or to receive specific assets under terms specified |
+| 权益工具（equity instrument） | 代表对某一实体或资产池的所有权权益的金融工具。<br>financial instrument representing an ownership interest in an entity or pool of assets |
+| 豁免证券（exempt security） | 免于适用某些监管规则的证券。<br>security that is exempt from certain regulatory rules |
+| 金融工具（financial instrument） | 同时产生一方金融资产和另一方金融负债的书面合同。<br>written contract that gives rise to both a financial asset of one entity and a financial liability of another entity |
+| 金融工具标识符（financial instrument identifier） | 在特定情境下为某一目的唯一标识金融工具的字符序列。<br>sequence of characters uniquely identifying a financial instrument for some purpose and within a specified context |
+| 期货（future） | 衍生工具：买方有义务在约定价格接收、卖方有义务交付约定资产，于未来某一时点执行。<br>derivative instrument that obligates the buyer to receive and the seller to deliver the assets specified at an agreed price, at some later point in time |
+| 发行人（issuer） | 以某种明确且通常正式的方式发行（或拟发行）一种或多种金融工具的一方所扮演的角色。<br>role of a party that makes (or proposes to make) one or more financial instruments available in some well-defined, typically formal way |
+| 可转让证券（negotiable security） | 可转让给他方的证券。<br>security that can be transferred to another party |
+| 不可转让证券（non-negotiable security） | 不可转让给他方的证券。<br>security that is not transferable to another party |
+| 期权（option） | 衍生工具：赋予持有人按预定价格买入或卖出约定资产的特权。<br>derivative instrument that grants to the holder either the privilege to purchase or the privilege to sell the assets specified at a predetermined price or formula at or within a time period in the future |
+| 打包金融产品（packaged financial product） | 作为容器容纳至少一种金融工具（包括其他金融产品）、且其价值来源于所含成分的金融产品。<br>financial product that acts as a container for at least one financial instrument, including other financial products, and whose value is derived from, or based on a reference asset, market measure, or investment strategy |
+| 本票（promissory note） | 一种债务工具：一方向另一方出具的书面承诺，承诺按要求或在规定期限内支付指定金额。<br>debt instrument that is a written promise by one party to another that commits that party to pay a specified sum on demand or within a specified time frame under specified terms |
+| 赎回条款（redemption provision） | 使发行人（签发方）能够通过偿付约定价格重新取得所有权的合同条款。<br>contract provision enabling the issuer (writer) to regain possession through repayment of some stipulated price |
+| 证券交易（securities transaction） | 两方或多方之间涉及通用定义金融产品交换的交易。<br>transaction between two or more parties involving the exchange of commonly defined financial products |
+| 证券（security） | 可以买入或卖出的金融工具。<br>financial instrument that can be bought or sold |
+| 即期合约（spot contract） | 在指定日期即时交割结算的金融工具。<br>financial instrument that settles for immediate delivery on a specified date |
+| 标准化条款（standardized terms） | 组合在一起、在众多合同中被一致复用、由某机构发布且可被机器处理的合同条款。<br>contract terms that, grouped together, that are generally and consistently reused across many contracts, published by some organization, and capable of being incorporated into a contract by reference |
+| 标的（underlier） | 可在市场上被赋予价值、构成衍生品或资产池支持工具基础的事物。<br>something that can be assigned a value in the marketplace that forms the basis for a derivative or pool-backed instrument |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -78,10 +78,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有名义价值（has nominal value）** | 指明合同的票面价值。 | 值域：货币数量；子属性：具有货币数量 |
-| **以……计价（is denominated in）** | 指明金融工具发行所用的货币。 | 值域：货币；子属性：具有货币 |
-| **法律登记于（is legally recorded in）** | 金融工具为监管或税务目的进行法律登记的司法管辖区（国家、县、州、省、市）。 | 值域：管辖权；子属性：具有管辖辖区 |
-| **是否可转让（is negotiable）** | 指明某一金融工具是否可转让。 | 值域：xsd:boolean |
+| **具有名义价值（has nominal value）** | 指明合同的票面价值。<br>indicates the face value of a contract | 值域：货币数量；子属性：具有货币数量 |
+| **以……计价（is denominated in）** | 指明金融工具发行所用的货币。<br>indicates the currency in which the financial instrument was issued | 值域：货币；子属性：具有货币 |
+| **法律登记于（is legally recorded in）** | 金融工具为监管或税务目的进行法律登记的司法管辖区（国家、县、州、省、市）。<br>jurisdiction (country, county, state, province, city) in which the financial instrument is legally recorded for regulatory and/or tax purposes | 值域：管辖权；子属性：具有管辖辖区 |
+| **是否可转让（is negotiable）** | 指明某一金融工具是否可转让。<br>specifies whether a particular financial instrument is or is not transferable | 值域：xsd:boolean |
 | **由……发行（isIssuedBy）** | — | — |
 | **由……标识（isIdentifiedBy）** | — | — |
 
@@ -110,7 +110,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有执行日商品价值（has commodity value as of execution date）** | 指明合同执行日某商品的单位价值。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有执行日商品价值（has commodity value as of execution date）** | 指明合同执行日某商品的单位价值。<br>indicates the per unit value of a given commodity as of the date that the contract is executed | 值域：货币数量；子属性：具有货币数量 |
 | **涉及（involves）** | — | — |
 | **具有量值（hasQuantityValue）** | — | — |
 
@@ -130,8 +130,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有买入货币（has buying currency）** | 指明货币或相关工具中买入的货币。 | 值域：货币；子属性：具有交易货币 |
-| **具有卖出货币（has selling currency）** | 指明货币或相关工具中卖出的货币。 | 值域：货币；子属性：具有基准货币 |
+| **具有买入货币（has buying currency）** | 指明货币或相关工具中买入的货币。<br>indicates the currency purchased with respect to a currency or related instrument | 值域：货币；子属性：具有交易货币 |
+| **具有卖出货币（has selling currency）** | 指明货币或相关工具中卖出的货币。<br>indicates the currency sold with respect to a currency or related instrument | 值域：货币；子属性：具有基准货币 |
 
 公理：
 
@@ -210,7 +210,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **法律登记于（is legally recorded in）** | 金融工具为监管或税务目的进行法律登记的司法管辖区（国家、县、州、省、市）。 | 值域：管辖权；子属性：具有管辖辖区 |
+| **法律登记于（is legally recorded in）** | 金融工具为监管或税务目的进行法律登记的司法管辖区（国家、县、州、省、市）。<br>jurisdiction (country, county, state, province, city) in which the financial instrument is legally recorded for regulatory and/or tax purposes | 值域：管辖权；子属性：具有管辖辖区 |
 
 公理：
 
@@ -238,7 +238,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否可转让（is negotiable）** | 指明某一金融工具是否可转让。 | 值域：xsd:boolean |
+| **是否可转让（is negotiable）** | 指明某一金融工具是否可转让。<br>specifies whether a particular financial instrument is or is not transferable | 值域：xsd:boolean |
 
 公理：
 
@@ -286,7 +286,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股东（has shareholder）** | 指明持有发行人股份的一方。 | 值域：股东；子属性：受…影响（is affected by） |
+| **具有股东（has shareholder）** | 指明持有发行人股份的一方。<br>indicates a party that holds shares in the issuer | 值域：股东；子属性：受…影响（is affected by） |
 | **发行（issues）** | — | — |
 | **由…扮演（is played by）** | — | — |
 
@@ -355,12 +355,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有计算代理人（has calculation agent）** | 指明负责确定工具价值的一方（角色）。 | 值域：计算代理人（calculation agent）；子属性：由……提供 |
-| **具有主要办公地址（has principal executive office address）** | 将机构（具体为金融工具发行人）与其主要办公地址关联起来，为发行该工具所需。 | 值域：常规街道地址；子属性：具有注册地址 |
-| **具有赎回条款（has redemption terms）** | 指明工具或相关合同文件中规定的赎回具体条款。 | 值域：赎回条款（redemption provision）；子属性：具有合同要素 |
-| **具有标的（has underlier）** | 将衍生品与合约所基于的标的事物关联起来。 | 值域：标的（underlier）；子属性：具有承受者（has undergoer） |
-| **价值以……表示（has value expressed in）** | 将工具或指数等与其价值通常表示所用的货币关联起来。 | 值域：货币；子属性：具有货币 |
-| **持有……的股份（holds shares in）** | 指明股东持有权益头寸的发行人。 | 值域：发行人（issuer）；逆属性：具有股东（has shareholder）；子属性：对…采取行动（acts on） |
+| **具有计算代理人（has calculation agent）** | 指明负责确定工具价值的一方（角色）。<br>indicates a party (role) responsible for determining the value of an instrument | 值域：计算代理人（calculation agent）；子属性：由……提供 |
+| **具有主要办公地址（has principal executive office address）** | 将机构（具体为金融工具发行人）与其主要办公地址关联起来，为发行该工具所需。<br>relates an organization, specifically the issuer of a financial instrument, to its principal executive address, as required for issuance of that instrument | 值域：常规街道地址；子属性：具有注册地址 |
+| **具有赎回条款（has redemption terms）** | 指明工具或相关合同文件中规定的赎回具体条款。<br>indicates the specific terms related to redemption as specified in the instrument or a related contract document | 值域：赎回条款（redemption provision）；子属性：具有合同要素 |
+| **具有标的（has underlier）** | 将衍生品与合约所基于的标的事物关联起来。<br>relates a derivative to something on which the contract is based | 值域：标的（underlier）；子属性：具有承受者（has undergoer） |
+| **价值以……表示（has value expressed in）** | 将工具或指数等与其价值通常表示所用的货币关联起来。<br>relates something, such as an instrument or index, to the currency its value is typically expressed in | 值域：货币；子属性：具有货币 |
+| **持有……的股份（holds shares in）** | 指明股东持有权益头寸的发行人。<br>specifies the issuer in which a shareholder holds an equity position | 值域：发行人（issuer）；逆属性：具有股东（has shareholder）；子属性：对…采取行动（acts on） |
 
 ## 4. 依赖（owl:imports，21 个）
 

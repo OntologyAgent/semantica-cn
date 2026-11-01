@@ -34,19 +34,19 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 日均市场利率（daily average market rate） | 给定利率的总体水平，按所选观测值（特定参考利率、汇率、借贷利率等）之和平均计算。 |
-| 日终市场利率（end-of-day market rate） | 特定日期营业日结束时给定市场利率的值。 |
-| 历史价格波动率（historical price volatility） | 标的证券与指数过去价格交易区间的历史波动率度量。 |
-| 历史波动率（historical volatility） | 使用此前某段时期内价格、利率及其他测算之实际值的波动率度量。 |
-| 隐含价格波动率（implied price volatility） | 表示标的股票或指数在特定时间框架内预期波动的波动率度量。 |
-| 隐含波动率（implied volatility） | 用于计算概率的前瞻性波动率度量。 |
-| 市场利率（market rate） | 市场上对一组工具确立的利率值，或描述某行业和/或政治区域经济气候的利率值（如 SOFR）。 |
-| 市场利差（market spread） | 提供两个市场利率之差（利差）的统计度量。 |
-| 价格结构（price structure） | 价格（如某指数或证券的市场价格）的结构化集合，可据以进行波动率或其他分析。 |
-| 价格波动率（price volatility） | 给定证券或市场指数定价变化率的统计度量。 |
-| 报价（quoted price） | 某发布方在给定日期报出的货币价格。 |
-| 期限结构（term structure） | 利率（如不同到期期限的债券收益率）的结构化集合，可据以构造收益率曲线。 |
-| 波动率（volatility） | 某随机变量在某段时期内围绕其均值的离散程度的统计度量。 |
+| 日均市场利率（daily average market rate） | 给定利率的总体水平，按所选观测值（特定参考利率、汇率、借贷利率等）之和平均计算。<br>overall level of a given rate, calculated as the sum of some selected observed values of the rates for a particular reference rate, foreign exchange rate, lending rate, or other market rate divided by the number of samples collected over the course of a twenty-four (24) hour period for a specific date |
+| 日终市场利率（end-of-day market rate） | 特定日期营业日结束时给定市场利率的值。<br>value of a given market rate of the end of the business day for a specific date |
+| 历史价格波动率（historical price volatility） | 标的证券与指数过去价格交易区间的历史波动率度量。<br>historical volatility measure of past trading ranges of prices of underlying securities and indexes |
+| 历史波动率（historical volatility） | 使用此前某段时期内价格、利率及其他测算之实际值的波动率度量。<br>measure of volatility that uses actual values for pricing, rates, and other measurements calculated over some prior period |
+| 隐含价格波动率（implied price volatility） | 表示标的股票或指数在特定时间框架内预期波动的波动率度量。<br>measure of volatility that represents the expected fluctuations of an underlying stock or index over a specific time frame |
+| 隐含波动率（implied volatility） | 用于计算概率的前瞻性波动率度量。<br>measure of volatility that is a forward-looking metric used to calculate probability |
+| 市场利率（market rate） | 市场上对一组工具确立的利率值，或描述某行业和/或政治区域经济气候的利率值（如 SOFR）。<br>value of a rate established in the marketplace for a set of instruments or that describes the economic climate for an industry and/or political region (e.g., SOFR, Prime) |
+| 市场利差（market spread） | 提供两个市场利率之差（利差）的统计度量。<br>statistical measure providing the difference (or spread) between two market rates |
+| 价格结构（price structure） | 价格（如某指数或证券的市场价格）的结构化集合，可据以进行波动率或其他分析。<br>structured collection of prices, such as market prices for some index or security, such that volatility or other analyses may be performed over the structure |
+| 价格波动率（price volatility） | 给定证券或市场指数定价变化率的统计度量。<br>statistical measure of the rate of change in pricing for a given security or market index |
+| 报价（quoted price） | 某发布方在给定日期报出的货币价格。<br>a monetary price quoted by some publisher on a given date |
+| 期限结构（term structure） | 利率（如不同到期期限的债券收益率）的结构化集合，可据以构造收益率曲线。<br>structured collection of rates, such as interest rates, or bond yields with different terms to maturity, such that a yield curve may be constructed for the structure |
+| 波动率（volatility） | 某随机变量在某段时期内围绕其均值的离散程度的统计度量。<br>statistical measure of the dispersion around the average of some random variable over some period of time |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -62,7 +62,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有比率值（hasRateValue）** | — | — |
-| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。<br>indicates a quotation date and possibly a time for a given market rate, interest rate, indicator, or other quoted pricing information | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
 | **是……的值（isValueOf）** | — | — |
 
 公理：
@@ -81,7 +81,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。<br>indicates a quotation date and possibly a time for a given market rate, interest rate, indicator, or other quoted pricing information | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
 
 公理：
 
@@ -97,7 +97,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。<br>indicates a quotation date and possibly a time for a given market rate, interest rate, indicator, or other quoted pricing information | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
 
 公理：
 
@@ -145,7 +145,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。<br>indicates a quotation date and possibly a time for a given market rate, interest rate, indicator, or other quoted pricing information | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
 
 公理：
 
@@ -178,7 +178,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的波动率（is volatility of）** | 标识波动率度量所适用并计量的对象。 | 子属性：适用于 |
+| **是……的波动率（is volatility of）** | 标识波动率度量所适用并计量的对象。<br>indicates something to which the volatility measure applies and of which it is a measure | 子属性：适用于 |
 | **具有日期区间（hasDatePeriod）** | — | — |
 | **具有自变量（hasArgument）** | — | — |
 
@@ -239,7 +239,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有报价日期（has quotation date）** | 标识给定市场利率或指标的报价日期。 | 值域：日期；子属性：具有日期 |
+| **具有报价日期（has quotation date）** | 标识给定市场利率或指标的报价日期。<br>indicates the quotation date for a given market rate or indicator | 值域：日期；子属性：具有日期 |
 
 ## 4. 依赖（owl:imports，10 个）
 

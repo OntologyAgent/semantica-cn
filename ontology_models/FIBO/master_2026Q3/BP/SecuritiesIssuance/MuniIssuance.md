@@ -36,10 +36,10 @@
 |---|---|
 | 公告证券发行（announce securities issue） | 对证券发行进行公告。 |
 | 债券律师（bond counsel） | 就债券发行的法律问题提供意见的律师事务所。 |
-| 代理行（correspondent） | 不是 DTC 直接成员的银行、券商或其他金融机构，依靠 DTC 直接参与者履行其 DTC 职能。 |
-| DTCC 成员（d t c c member） | 作为 DTCC 成员的公司，可在发行模型中扮演多种角色。 |
+| 代理行（correspondent） | 不是 DTC 直接成员的银行、券商或其他金融机构，依靠 DTC 直接参与者履行其 DTC 职能。<br>A bank, brokerage or other financial institution that is not a direct DTC member. Correspondents rely on direct DTC Participants to perform their DTC settlement services |
+| DTCC 成员（d t c c member） | 作为 DTCC 成员的公司，可在发行模型中扮演多种角色。<br>A firm which is a member of DTCC. Note: this Actor may perform any of the Roles described elsewhere in this Issuance model, i.e. the DTCC Member may also be any of the Actors defined. REVIEW: does this apply to ALL the defined Actor types? |
 | 债务拍卖流程（debt auction process） | 以拍卖方式发行债务证券的过程。 |
-| 债务发行超额配售条款（debt issue over allotment terms） | 债务证券发行数量变更的条款。 |
+| 债务发行超额配售条款（debt issue over allotment terms） | 债务证券发行数量变更的条款。<br>Terms for Change to an Issue Amount for Debt securities |
 | 债务承销收尾（debt underwriting closing） | 债务承销发行的收尾环节。 |
 | 债务承销发行流程（debt underwriting issuance process） | 以承销方式发行债务证券的流程。 |
 | 信息分发（dissemination） | 将发行相关信息向市场分发的活动。 |
@@ -48,34 +48,34 @@
 | 股票 IPO 流程（equity i p o process） | 股票首次公开发行的流程。 |
 | 股票承销发行流程（equity underwriting issuance process） | 以承销方式发行股票的流程。 |
 | 发行代理（issuance agent） | 在发行过程中担任代理的参与方。 |
-| 发行收尾（issuance closing） | 在结算日向 DTC 参与者账户贷记新发行头寸的过程，整体收尾过程还包括其他步骤。 |
+| 发行收尾（issuance closing） | 在结算日向 DTC 参与者账户贷记新发行头寸的过程，整体收尾过程还包括其他步骤。<br>The process of crediting the DTC participant account on settlement date with the position for the new issue. The overall closing process includes the exchange of funds that happens outside of DTC. |
 | 发行贷记参与者（issuance crediting participant） | 在发行收尾中被贷记头寸的参与者。 |
 | 发行财务顾问（issuance financial advisor） | 为发行提供财务顾问服务的参与方。 |
 | 发行印刷商（issuance printer） | 负责印制发行文件的参与方。 |
 | 发行流程参与者（issuance process participant） | 发行流程中的参与者。 |
 | 发行结算（issuance settlement） | 发行交易的资金与证券交收。 |
-| 发行超额配售条款（issue over allotment terms） | 发行数量变更条款：承销协议中允许承销团成员额外购买证券的条款。 |
+| 发行超额配售条款（issue over allotment terms） | 发行数量变更条款：承销协议中允许承销团成员额外购买证券的条款。<br>Terms for Change to an Issue Amount. A provision in an underwriting agreement, which allows members of the underwriting syndicate to purchase additional shares at the original price. |
 | 发行人律师（issuer counsel） | 为发行人提供法律意见的律师事务所。 |
-| 市政债发行（muni debt offering） | 将市政债务证券提供发行的流程步骤。 |
+| 市政债发行（muni debt offering） | 将市政债务证券提供发行的流程步骤。<br>The process step of offering a Municipal Debt security for issue. |
 | 市政发行流程参与者（muni issuance process participant） | 市政债发行流程中的参与者。 |
 | 义务人（obligor） | 根据法律或协议有义务偿还债务、付款、做某事或不做某事的参与方。 |
 | 付款代理（paying agent） | 代表发行人向证券持有人付款的代理机构。 |
-| 潜在市政债承销商（potential muni underwriter） | 证券发行人与投资公众之间的中介，可为 DTC 参与者或代理行。 |
+| 潜在市政债承销商（potential muni underwriter） | 证券发行人与投资公众之间的中介，可为 DTC 参与者或代理行。<br>An intermediary between an issuer of a security and the investing public. An underwriter can either be DTC Participant or Correspondent who would clear the underwriting deal using the Crediting Participant. |
 | 私募配售（private placement） | 向特定投资者非公开销售证券的发行方式。 |
 | 流程参与者（process participant） | 业务流程中的参与者。 |
 | 注册制证券发行流程（registered security issuance process） | 以注册方式发行证券的流程。 |
 | 注册（registration） | 向监管机构办理发行注册的行为。 |
 | 再营销代理（remarketing agent） | 负责将回售证券重新销售的代理机构。 |
 | 证券发行情境（securities issuance context） | 证券发行活动发生的情境。 |
-| 证券承销发行（securities underwriting issuance） | 作为证券发行方式的承销。 |
-| 证券承销发行流程（securities underwriting issuance process） | 由承销辛迪加将债务工具承销并推向市场的过程。 |
+| 证券承销发行（securities underwriting issuance） | 作为证券发行方式的承销。<br>Underwriting, as a method of Securities Issuance. |
+| 证券承销发行流程（securities underwriting issuance process） | 由承销辛迪加将债务工具承销并推向市场的过程。<br>The process by which debt instruments are offered to the market by a syndicate of underwriters who underwrite the issue. |
 | 服务机构（servicer） | 为资产池提供收款、管理等服务的机构。 |
 | 过户代理（transfer agent） | 负责证券登记与过户的代理机构。 |
 | 受托人（trustee） | 为他人利益持有并管理资产的参与方。 |
 | 承销发行收尾（underwriting issuance closing） | 承销发行的收尾环节。 |
 | 承销发行请求方（underwriting issuance requestor） | 发起承销发行请求的参与方。 |
 | 承销流程活动（underwriting process activity） | 承销流程中的一项活动。 |
-| 承销流程参与者（underwriting process actor） | DTCC 承销流程或任何其他承销流程中的参与者。 |
+| 承销流程参与者（underwriting process actor） | DTCC 承销流程或任何其他承销流程中的参与者。<br>any actor within the DTCC Underwriting Process or any other Underwriting Process. Note: At present all these Actors (e.g. Underwriter) are defined simply as Process Actors and not as specializations of this type of Actor. Therefore this Actor is a Union of all of those. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -88,7 +88,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **公告（announces）** | — | — |
-| **公告备注（announcement comments）** | 对发行目的、资金来源等的自由文本描述。 | 值域：xsd:string |
+| **公告备注（announcement comments）** | 对发行目的、资金来源等的自由文本描述。<br>Free form description of Purpose of Issue, Source of funds etc. | 值域：xsd:string |
 | **公告……的发行（announces issue of）** | 公告某证券的发行。 | 值域：证券 |
 
 公理：
@@ -187,7 +187,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **实际截止日（actual closing date）** | 证券承销商完成收尾的日期。 | 值域：日期 |
+| **实际截止日（actual closing date）** | 证券承销商完成收尾的日期。<br>The date in which closing has been done for the underwriter of a security. | 值域：日期 |
 
 #### 2.6.1 承销发行收尾（underwriting issuance closing）
 
@@ -274,7 +274,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **发行结算日（issuance settlement date）** | 初始发行交易的结算日。 | 值域：日期 |
+| **发行结算日（issuance settlement date）** | 初始发行交易的结算日。<br>Settlement date for the initial Issuance transaction. | 值域：日期 |
 
 ### 2.11 发行超额配售条款（issue over allotment terms）
 
@@ -287,11 +287,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **最大超额配售金额（maximum over allotment amount）** | 超额配售选择权可用的最大金额。 | 值域：货币数量 |
-| **最大超额配售百分比（maximum over allotment percentage）** | 超额配售选择权可用的百分比。 | 值域：百分比 |
-| **最大超额配售股数（maximum over allotment shares）** | 超额配售选择权可用的最大股数。 | 值域：xsd:integer |
-| **可超额配售（over allotment available）** | 该证券是否提供超额配售选择权。 | 值域：xsd:boolean |
-| **超额配售到期天数（over allotment expiry period days）** | 初始发行截止后超额配售选择权到期的日历天数。 | 值域：xsd:integer |
+| **最大超额配售金额（maximum over allotment amount）** | 超额配售选择权可用的最大金额。<br>The maximum amount that is available as part of providing the over-allotment option. | 值域：货币数量 |
+| **最大超额配售百分比（maximum over allotment percentage）** | 超额配售选择权可用的百分比。<br>The percentage that is available as part of providing the over-allotment option. | 值域：百分比 |
+| **最大超额配售股数（maximum over allotment shares）** | 超额配售选择权可用的最大股数。<br>The maximum amount of shares that are available as part of providing the over-allotment option. | 值域：xsd:integer |
+| **可超额配售（over allotment available）** | 该证券是否提供超额配售选择权。<br>Whether an over-allotment option is available for the security. | 值域：xsd:boolean |
+| **超额配售到期天数（over allotment expiry period days）** | 初始发行截止后超额配售选择权到期的日历天数。<br>Number of calendar days after the closing of initial offering for expiry of over-allotment option. | 值域：xsd:integer |
 
 公理：
 
@@ -307,7 +307,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **最大超额配售金额（maximum over allotment amount）** | 超额配售选择权可用的最大金额。 | 值域：货币数量 |
+| **最大超额配售金额（maximum over allotment amount）** | 超额配售选择权可用的最大金额。<br>The maximum amount that is available as part of providing the over-allotment option. | 值域：货币数量 |
 
 ### 2.12 发行人律师（issuer counsel）
 
@@ -333,7 +333,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **销售方式（sale method）** | 证券的销售方式。 | 值域：xsd:string |
+| **销售方式（sale method）** | 证券的销售方式。<br>Sale Method of the security. | 值域：xsd:string |
 
 ### 2.14 义务人（obligor）
 
@@ -662,7 +662,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **信息分发决定日期时间（dissemination decision date and time）** | 信息分发承销商作出信息分发决定的日期时间。 | 值域：日期时间 |
+| **信息分发决定日期时间（dissemination decision date and time）** | 信息分发承销商作出信息分发决定的日期时间。<br>Date and Time when the Dissemination Underwriter made the Decision about Dissemination. | 值域：日期时间 |
 
 ### 2.27 承销流程参与者（underwriting process actor）
 
@@ -682,13 +682,13 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **正式授标日期时间（formal award date and time）** | 发行人正式接受竞标（竞争性发行）或签署债券购买协议（协议发行）的日期时间。 | 值域：日期时间 |
+| **正式授标日期时间（formal award date and time）** | 发行人正式接受竞标（竞争性发行）或签署债券购买协议（协议发行）的日期时间。<br>Date and time the issuer formally accepts a bid for Competitive Issues or, the Date and Time the Bond Purchase Agreement is executed for Negotiated Issues. Time Zone: Include in date/time data or add a term for it? | 值域：日期时间 |
 | **引起（gives rise to）** | 导致某事物的产生。 | — |
 | **具有发行担保人（has issuance guarantor）** | 标识发行担保人。 | — |
 | **具有潜在发行人（has potential issuer）** | 标识潜在的发行人。 | — |
 | **发行请求方（offering requestor）** | 发起发行请求的参与方。 | — |
 | **认购人（subscriber）** | 认购发行证券的参与方。 | — |
-| **认购（subscribes to）** | 认购人响应营销/招募说明书草案，表达兴趣并获配股份或债务单位。 | 值域：证券承销发行流程（securities underwriting issuance process） |
+| **认购（subscribes to）** | 认购人响应营销/招募说明书草案，表达兴趣并获配股份或债务单位。<br>Subscriber responds to marketing / draft propspectus, indicates interest and is allocated shares / debt units based on interest. | 值域：证券承销发行流程（securities underwriting issuance process） |
 | **认购（subscribes to）** | 认购人响应营销/招募说明书草案，表达兴趣并获配股份或债务单位。 | 值域：证券发行流程 |
 
 ## 4. 依赖（owl:imports，19 个）

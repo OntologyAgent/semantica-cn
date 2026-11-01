@@ -73,17 +73,17 @@ fibo-fnd-txn-mkt:MarketTransaction a owl:Class ;
         "市场交易（market transaction）"@zh ;
     rdfs:comment "定义以某种对价换取某种可转让物品供应的交易；市场交易有委托方和对手方，不是对称的。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-mkt:paymentTerms ;
-            owl:someValuesFrom fibo-fnd-txn-mkt:MarketTransactionPaymentTerms ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-mkt:consideration ;
-            owl:someValuesFrom fibo-fnd-txn-rea:EconomicResource ],
+            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
+            owl:someValuesFrom fibo-fnd-txn-mkt:TransactionCounterparty ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
             owl:someValuesFrom fibo-fnd-txn-mkt:TransactionPrincipal ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
-            owl:someValuesFrom fibo-fnd-txn-mkt:TransactionCounterparty ],
+            owl:onProperty fibo-fnd-txn-mkt:consideration ;
+            owl:someValuesFrom fibo-fnd-txn-rea:EconomicResource ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-mkt:paymentTerms ;
+            owl:someValuesFrom fibo-fnd-txn-mkt:MarketTransactionPaymentTerms ],
         fibo-fnd-txn-rea:EconomicTransaction ;
     skos:definition "Any transaction which defines a supply of some negotiable item in return for some Consideration. The Market Transaction has a Principal and a Counterparty, i.e. it is not symmetrical."@en .
 

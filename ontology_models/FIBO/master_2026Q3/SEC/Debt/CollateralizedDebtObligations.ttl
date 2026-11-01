@@ -970,11 +970,11 @@ fibo-sec-dbt-cdo:CDOPortfolio a owl:Class ;
         "担保债务凭证组合（CDO portfolio）"@zh ;
     rdfs:comment "持有 CDO 参考资产的组合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:MBSInstrumentSlice ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-org:isManagedBy ;
             owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolioManager ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MBSInstrumentSlice ],
         fibo-fnd-oac-own:Portfolio ;
     skos:definition "A portfolio in which the reference assets of the CDO are held."@en .
 
@@ -1048,11 +1048,11 @@ fibo-sec-dbt-cdo:AgencyCMO a owl:Class ;
             owl:onProperty fibo-sec-dbt-cdo:providesPrepaymentSupport ;
             owl:someValuesFrom fibo-sec-dbt-cdo:AgencyCMO ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-cdo:hasTrancheType ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:TrancheType ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-sec-dbt-mbs:AgencyMBSPool ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:hasTrancheType ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TrancheType ],
         fibo-sec-dbt-dbti:DebtOffering ;
     skos:editorialNote "Definition for the property 'has tranche type' which is now a restriction: The type of tranche for the CMO. Many different structures are used in practice, including stable PAC bonds or risky IOs and POs. There are floaters and inverse floaters. There are also Z-bonds, which are analogous to zero-coupon bonds."@en .
 
@@ -1073,14 +1073,14 @@ fibo-sec-dbt-cdo:PlannedAmortizationClassBond a owl:Class ;
         "计划摊销档债券（planned amortization class bond）"@zh ;
     rdfs:comment "本金支付必须遵循特定计划表的分档（PAC）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
+            owl:onProperty fibo-sec-dbt-cdo:supportedBy ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-cdo:specifies ;
             owl:someValuesFrom fibo-sec-dbt-cdo:PACTrancheAmortizationSchedule ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
             owl:onProperty fibo-sec-dbt-cdo:providesPrepaymentSupportFor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
-            owl:onProperty fibo-sec-dbt-cdo:supportedBy ],
         fibo-sec-dbt-cdo:AgencyCMO ;
     skos:definition "Planned Amortization Class tranche.This is a tranche where the principal payment must follow a certain schedule."@en ;
     cmns-av:explanatoryNote "These tranches have priority over the other tranches in the deal, which are then referred to as the support or companion tranches. There are usually several PAC tranches created. PAC-1, PAC-2, PAC-3 -- this requires some more explanation. PAC-2 refers to a support tranche that is given a scheduled payment structure like a PAC bond. For example, let's say you have a deal with a PAC tranche and a support tranche (i.e., a tranche that is a support tranche and is therefore subordinate to the PAC tranche) that has a scheduled payment structure like you did with the PAC bond. That support bond then is called the PAC-2 bond. If you continue, and create another support tranche that also has scheduled payments, that would become the PAC-3 bond. Prospectus will cover each class. Prospectus is at the level of an issue."@en .
@@ -1090,8 +1090,8 @@ fibo-sec-dbt-cdo:CDODeal a owl:Class ;
         "担保债务凭证交易（CDO deal）"@zh ;
     rdfs:comment "作为面向市场发行的一部分、一组 CDO 分档的一次发行。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-org:isManagedBy ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolioManager ],
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MezzanineCDOTranche ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-sec-dbt-cdo:SuperSeniorCDOTranche ],
@@ -1099,17 +1099,17 @@ fibo-sec-dbt-cdo:CDODeal a owl:Class ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-sec-dbt-cdo:SeniorCDOTranche ],
         [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:SubordinatedCDOEquity ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolioManager ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-sec-dbt-cdo:CollateralizedDebtObligation ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolio ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:MezzanineCDOTranche ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:SubordinatedCDOEquity ],
         fibo-sec-dbt-dbti:DebtOffering ;
     skos:definition "An Issue of a set of CDO tranches as part of an offering to the market."@en ;
     cmns-av:explanatoryNote "Multiple tranches of securities are issued by the CDO issue (usually referred to simply as the CDO), offering investors various maturity and credit risk characteristics. Note that it is in the sense of CDO as an issue that one might say that a CDO \"has tranches\". The CDO as an individual instrument (labelled CDO in this model) does not have tranches but is itself a member of one or another tranche."@en .

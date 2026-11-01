@@ -30,16 +30,16 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 证书（certificate） | 证明某个或某组事实属实的文件。 |
-| 文件（document） | 某种智力或艺术作品实现的单一表达。 |
-| 文件部分（document part） | 文件在结构上可区分的子划分。 |
-| 法律文件（legal document） | 规定协议、证明、认证、条件、许可和/或法律主体、政府实体决定的条款，或为其提供证据的文件。 |
-| 通知（notice） | 对某事的公告、传达、告知或预先警示，通常（但非必然）用于让人有所准备。 |
-| 记录（record） | 对已完成的活动、已发生的事件、已达成结果或已作陈述的备忘与客观证据，无论其特性、媒介、物理形式如何。 |
-| 参考文献（reference） | 可用于查明、解释或理解某事物的来源。 |
-| 参考文件（reference document） | 用作某事物参考的文件。 |
-| 规范（specification） | 某事物（如产品、材料、模型、过程或系统）须满足的明确要求或要求集。 |
-| 技术规范文件（technical specification document） | 规定产品、材料、过程或系统须满足的详细要求及符合性检查程序的文件。 |
+| 证书（certificate） | 证明某个或某组事实属实的文件。<br>document attesting to the truth of some fact or set of facts |
+| 文件（document） | 某种智力或艺术作品实现的单一表达。<br>unitary expression of some realization of an intellectual or artistic work |
+| 文件部分（document part） | 文件在结构上可区分的子划分。<br>structurally distinct subdivision of a document |
+| 法律文件（legal document） | 规定协议、证明、认证、条件、许可和/或法律主体、政府实体决定的条款，或为其提供证据的文件。<br>document specifying the terms of, or provides evidence for, an agreement, attestation, certification, conditions, permissions, and/or decisions of legal persons, government entities, or courts of law, drawn up in accordance with certain rules that apply in the relevant jurisdiction(s) |
+| 通知（notice） | 对某事的公告、传达、告知或预先警示，通常（但非必然）用于让人有所准备。<br>announcement, communication, intimation, or advance warning of something, usually, but not necessarily, to allow preparations to be made |
+| 记录（record） | 对已完成的活动、已发生的事件、已达成结果或已作陈述的备忘与客观证据，无论其特性、媒介、物理形式如何。<br>memorialization and objective evidence of activities performed, events occurred, results achieved, or statements made, regardless of its characteristics, media, physical form, or the manner in which it is recorded or stored |
+| 参考文献（reference） | 可用于查明、解释或理解某事物的来源。<br>source that may be used to ascertain, interpret, or understand something |
+| 参考文件（reference document） | 用作某事物参考的文件。<br>document that is used as a reference for something |
+| 规范（specification） | 某事物（如产品、材料、模型、过程或系统）须满足的明确要求或要求集。<br>explicit requirement or set of requirements to be satisfied by something, such as a product, material, model, process or system |
+| 技术规范文件（technical specification document） | 规定产品、材料、过程或系统须满足的详细要求及符合性检查程序的文件。<br>document that sets out detailed requirements to be satisfied by a product, material, process or system and the procedures for checking conformity to these requirements |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -53,7 +53,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **关于（is about）** | 标识某事物（如文件）的主题或话题。 | — |
+| **关于（is about）** | 标识某事物（如文件）的主题或话题。<br>indicates the subject or topic of something, such as a document | — |
 
 公理：
 
@@ -132,12 +132,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有数据来源（has data source）** | 将协议、合同、文件、记录、报告或过程等关联到用于分析、编制、解释或生成它的数据来源。 | 子属性：引用（refers to） |
-| **被……引用（is referred to by）** | 标识将某事物作为信息或解释来源引用的事物。 | 逆属性：引用（refers to） |
-| **规定于（is specified in）** | 标识某项要求、事实或事实集的明确出处。 | 逆属性：规定（specifies）；子属性：引用（refers to） |
-| **记录（records）** | 将……形诸文件以备日后查阅。 | — |
-| **引用（refers to）** | 将……作为信息或解释来源加以引用。 | — |
-| **规定（specifies）** | 清晰而确定地提及、命名或陈述某事物。 | — |
+| **具有数据来源（has data source）** | 将协议、合同、文件、记录、报告或过程等关联到用于分析、编制、解释或生成它的数据来源。<br>relates something, such as an agreement, contract, document, record, report, or process, to a source of data used to analyze, develop, explain, produce, or otherwise create it | 子属性：引用（refers to） |
+| **被……引用（is referred to by）** | 标识将某事物作为信息或解释来源引用的事物。<br>indicates something that is referenced as a source for information or explanation | 逆属性：引用（refers to） |
+| **规定于（is specified in）** | 标识某项要求、事实或事实集的明确出处。<br>indicates the explicit source for some requirement, fact, or set of facts | 逆属性：规定（specifies）；子属性：引用（refers to） |
+| **记录（records）** | 将……形诸文件以备日后查阅。<br>documents for later reference | — |
+| **引用（refers to）** | 将……作为信息或解释来源加以引用。<br>makes reference to as a source for information or explanation | — |
+| **规定（specifies）** | 清晰而确定地提及、命名或陈述某事物。<br>mentions, names or states something clearly and definitively | — |
 
 ## 4. 依赖（owl:imports，2 个）
 

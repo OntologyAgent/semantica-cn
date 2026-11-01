@@ -34,24 +34,24 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 绝对提前偿付率（absolute prepayment rate） | 以原始资产池余额百分比表示的月度贷款提前偿付率。 |
-| 资产支持证券（asset-backed security） | 由房地产贷款或抵押贷款以外应收款支持的债务工具。 |
-| 附着点（attachment point） | 分档的下边界，以发行时或某一时点抵押品总池价值的百分比表示。 |
-| 债务池统计度量（debt pool statistical measure） | 对一个或多个债务工具可能随时间变化之行为的某方面进行的限定性度量。 |
-| 违约率（default rate） | 对池中债务工具持有人违约比率的限定性度量。 |
-| 脱离点（detachment point） | 分档的上边界，以发行时或某一时点抵押品总池价值的百分比表示。 |
-| 资产池支持证券（pool-backed security） | 现金流来源于标的抵押贷款池或其他应收款池的债务工具。 |
-| 提前偿付速度（prepayment speed） | 对债务或部分债务提前清偿比率的估计。 |
-| 保本票据（principal protected note） | 通过多种方式和不对称支付结构为投资者提供选定标的资产风险敞口的结构化金融产品。 |
-| 单月清偿率（single monthly mortality） | 对抵押支持证券（MBS）池中每月将提前清偿之抵押贷款百分比的估计。 |
-| 结构化金融工具（structured finance instrument） | 通过特定结构将资产池风险与发起机构风险相隔离的资产池支持证券。 |
-| 无本金保护结构化金融产品（structured finance without principal protection） | 与标的资产挂钩、提供稳定收入流的短期票据类结构化金融产品。 |
-| 分档（tranche） | 证券池（通常为债务工具）的一个部分。 |
-| 加权平均票息（weighted average coupon） | 抵押支持证券（MBS）标的抵押贷款池按余额加权的平均总利率。 |
-| 加权平均期限（weighted average life） | 本金偿还时间的加权平均值，按收取全部未来现金流的时间加权计算。 |
-| 加权平均贷款账龄（weighted average loan age） | 衡量抵押转手证券或集合证券中各笔贷款账龄的金额加权平均值。 |
-| 加权平均到期期限（weighted average maturity） | 抵押支持证券（MBS）中抵押贷款到期时间的加权平均值。 |
-| 加权平均剩余期限（weighted average remaining term） | 资产支持证券（ABS）或抵押支持证券（MBS）组合的加权平均到期时间。 |
+| 绝对提前偿付率（absolute prepayment rate） | 以原始资产池余额百分比表示的月度贷款提前偿付率。<br>measure of the monthly rate of loan prepayments as a percentage of the original pool balance |
+| 资产支持证券（asset-backed security） | 由房地产贷款或抵押贷款以外应收款支持的债务工具。<br>debt instrument backed by receivables other than those arising out of real estate loans or mortgages |
+| 附着点（attachment point） | 分档的下边界，以发行时或某一时点抵押品总池价值的百分比表示。<br>lower tranche boundary of a tranche defined as a percentage of the value of the total pool of collateral, either at issuance or as of some point in time |
+| 债务池统计度量（debt pool statistical measure） | 对一个或多个债务工具可能随时间变化之行为的某方面进行的限定性度量。<br>qualified measure of some aspect of the behavior of one or more debt instrument(s) that may vary over time |
+| 违约率（default rate） | 对池中债务工具持有人违约比率的限定性度量。<br>qualified measure of the rate at which holders of the debt instruments in the pool default on those instruments |
+| 脱离点（detachment point） | 分档的上边界，以发行时或某一时点抵押品总池价值的百分比表示。<br>upper tranche boundary of a tranche defined as a percentage of the value of the total pool of collateral, either at issuance or as of some point in time |
+| 资产池支持证券（pool-backed security） | 现金流来源于标的抵押贷款池或其他应收款池的债务工具。<br>debt instrument that derives its cashflow from an underlying pool of mortgage loans or other receivables |
+| 提前偿付速度（prepayment speed） | 对债务或部分债务提前清偿比率的估计。<br>estimated rate at which a debt or part of a debt is paid off ahead of schedule |
+| 保本票据（principal protected note） | 通过多种方式和不对称支付结构为投资者提供选定标的资产风险敞口的结构化金融产品。<br>structured finance that offers investors exposure to chosen underlying assets using various approaches and asymmetric pay-off profiles |
+| 单月清偿率（single monthly mortality） | 对抵押支持证券（MBS）池中每月将提前清偿之抵押贷款百分比的估计。<br>estimated per-month percentage of mortgages in an MBS pool that will be paid off early |
+| 结构化金融工具（structured finance instrument） | 通过特定结构将资产池风险与发起机构风险相隔离的资产池支持证券。<br>pool-backed security wherein the risk associated with the pool has been uncoupled from the risk associated with the originating institution through a special purpose vehicle |
+| 无本金保护结构化金融产品（structured finance without principal protection） | 与标的资产挂钩、提供稳定收入流的短期票据类结构化金融产品。<br>structured finance that is a short-term note linked to an underlying asset that offers a steady stream of income |
+| 分档（tranche） | 证券池（通常为债务工具）的一个部分。<br>segment of a pool of securities, typically debt instruments |
+| 加权平均票息（weighted average coupon） | 抵押支持证券（MBS）标的抵押贷款池按余额加权的平均总利率。<br>weighted-average gross interest rates of the pool of mortgages that underlie a mortgage-backed security (MBS) weighed by their balances at the time the securities were issued |
+| 加权平均期限（weighted average life） | 本金偿还时间的加权平均值，按收取全部未来现金流的时间加权计算。<br>weighted average of the times of the principal repayments Average life is calculated using the weighted average time to the receipt of all future cash flows. |
+| 加权平均贷款账龄（weighted average loan age） | 衡量抵押转手证券或集合证券中各笔贷款账龄的金额加权平均值。<br>dollar-weighted average measuring the age of the individual loans in a mortgage pass-through or pooled security |
+| 加权平均到期期限（weighted average maturity） | 抵押支持证券（MBS）中抵押贷款到期时间的加权平均值。<br>weighted average amount of time until the maturities on mortgages in a mortgage-backed security (MBS) |
+| 加权平均剩余期限（weighted average remaining term） | 资产支持证券（ABS）或抵押支持证券（MBS）组合的加权平均到期时间。<br>weighted average time to maturity of a portfolio of asset-backed securities (ABS) or mortgage-backed (MBS) securities |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -182,8 +182,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **基于（isBasedOn）** | — | — |
-| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。 | 值域：截至日抵押品价值；子属性：是……的估计价值 |
-| **是否过手（is pass through）** | 表明标的资产池的现金流是否通过赎回付款方式过手给投资者。 | 值域：xsd:boolean |
+| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。<br>indicates the estimated value of the combined underlying collateral for a given tranche at the time the instrument was issued | 值域：截至日抵押品价值；子属性：是……的估计价值 |
+| **是否过手（is pass through）** | 表明标的资产池的现金流是否通过赎回付款方式过手给投资者。<br>indicates whether the cash flows from the underlying asset pool are passed through to the investor by way of redemption payments | 值域：xsd:boolean |
 | **以……为特征（isCharacterizedBy）** | — | — |
 
 公理：
@@ -242,9 +242,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有附着点（has attachment point）** | 指明标的抵押品总价值的下限（以发行时或某一时点计），达到该点时该分档开始承担损失。 | 值域：附着点（attachment point）；子属性：具有量值 |
-| **具有脱离点（has detachment point）** | 指明标的抵押品总价值的上限（以发行时或某一时点计），达到该点时该分档不再承担损失。 | 值域：脱离点（detachment point）；子属性：具有量值 |
-| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。 | 值域：截至日抵押品价值；子属性：是……的估计价值 |
+| **具有附着点（has attachment point）** | 指明标的抵押品总价值的下限（以发行时或某一时点计），达到该点时该分档开始承担损失。<br>indicates the minimum (lower boundary) of the total value of the underlying collateral, either at issuance or as of some point in time, at which point a given tranche becomes liable for losses | 值域：附着点（attachment point）；子属性：具有量值 |
+| **具有脱离点（has detachment point）** | 指明标的抵押品总价值的上限（以发行时或某一时点计），达到该点时该分档不再承担损失。<br>indicates the maximum (upper boundary) of the total value of the underlying collateral, either at issuance or as of some point in time, at which point the value of given tranche is wiped out | 值域：脱离点（detachment point）；子属性：具有量值 |
+| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。<br>indicates the estimated value of the combined underlying collateral for a given tranche at the time the instrument was issued | 值域：截至日抵押品价值；子属性：是……的估计价值 |
 | **包含（comprises）** | — | — |
 
 公理：

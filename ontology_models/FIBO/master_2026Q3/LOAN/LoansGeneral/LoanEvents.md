@@ -29,10 +29,10 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 抵押物估值（collateral valuation） | 对作为抵押品的不动产进行估值的评估活动。 |
-| 法院判决（court judgment） | 法院或其他裁判机构解决争议、确定各方权利与义务的决定。 |
-| 法律程序（legal proceeding） | 在法院或机构指示或授权下采取的法律步骤或行动。 |
-| 贷款违约处置（loan default proceeding） | 处理贷款违约的程序，通常属于贷款服务部门的工作。 |
+| 抵押物估值（collateral valuation） | 对作为抵押品的不动产进行估值的评估活动。<br>assessment activity resulting in the valuation of real property as collateral |
+| 法院判决（court judgment） | 法院或其他裁判机构解决争议、确定各方权利与义务的决定。<br>decision by a court or other tribunal that resolves a controversy and determines the rights and obligations of the parties |
+| 法律程序（legal proceeding） | 在法院或机构指示或授权下采取的法律步骤或行动。<br>legal step or action taken at the direction of, or by the authority of, a court or agency |
+| 贷款违约处置（loan default proceeding） | 处理贷款违约的程序，通常属于贷款服务部门的工作。<br>[no definition] Further Review This is typically part of mortgagte servicing. THere would typically be a whole department dealing with this. Dealing with default, helping borrowers make payment Collections Default admin Foreclosure Reselling All dealt with by several sub departments. This requires subject matter experts in this area. 1. scoping Identify default as a possible state. This hands off to other business processes. Once you get into the default scenario we are talking about a proces that is going to fall into place over a period of time. The bank works out what to do with the default scenario, e.g. whether it restructures, forecloses, seeks restitution from the security (collateral). It does nto help us to understand the structure of the loan, rather tha consequences of the loan. If we were to further explore the default detail we would bring in other SMEs. And we would have to model a process flow. 1.1 impact on the pool of an MBS Loan Default Proceeding (special ase of legal thing) is an aspect of Default Management / Administratoin. there is also the State of the Loan. Sale / something / fulfilment / fiunduing / approved = servicing mode. Something happens (non payment) =&gt; Default Grace Period followed by negotiation. Some threshold whereby after a given amount of delinquency it needs to go into some other process moving towards foreclosure. Do State Diagram. Stages of loan. |
 | 贷款全额清偿（loan paid in full） | 贷款本息全部还清的事件。 |
 | 贷款阶段（loan phase） | 贷款所处的阶段。 |
 | 提前还款（prepayment） | 在到期前提前偿还贷款。 |
@@ -87,7 +87,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有判决金额（has judgement amount）** | 对主要借款人记录且已/未履行（核保时点）的法院判决或等效事项的总金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有判决金额（has judgement amount）** | 对主要借款人记录且已/未履行（核保时点）的法院判决或等效事项的总金额。<br>Undefined PoC SDM Notes: Total value of CCJs or equivalent recorded against the primary borrower that were satisfied / unsatsified (at time of underwriting ) is computed by selecting the satisfaction code value of interest and aggregating against all borrower CC Judgements &lt;/p&gt; | 值域：货币数量；子属性：具有货币数量 |
 | **由……交付（is delivered by）** | 标识交付某事物的参与方。 | 值域：法院 |
 
 公理：
@@ -105,7 +105,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有违约金额（has default amount）** | 在扣除出售所得和回收款之前的违约金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有违约金额（has default amount）** | 在扣除出售所得和回收款之前的违约金额。<br>amount before the application of sale proceeds and recoveries | 值域：货币数量；子属性：具有货币数量 |
 
 ### 2.3 贷款阶段（loan phase）
 
@@ -146,7 +146,7 @@
 
 | 属性 | 定义 |
 |---|---|
-| **违约（in default）** | 发行人未能支付其合同义务所要求的款项。 |
+| **违约（in default）** | 发行人未能支付其合同义务所要求的款项。<br>Whether the loan is in default. |
 | **已延期（is deferred）** | 表明某事项是否已延期。 |
 
 ## 4. 依赖（owl:imports，15 个）

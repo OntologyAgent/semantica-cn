@@ -33,11 +33,11 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 控制（control） | 某参与方有权指挥或强烈影响某事物相关管理与政策方向的情形。 |
-| 受控事物（controlled thing） | 在某情形中被某参与方施以某种形式控制的事物。 |
-| 控制方（controlling party） | 在某情形情境中实施某种形式控制的行为体。 |
-| 事实控制（de facto control） | 非正式存在但被接受的控制，虽未经正式承认。 |
-| 法律控制（de jure control） | 作为法律事项存在的控制，即对某事物的正当合法控制。 |
+| 控制（control） | 某参与方有权指挥或强烈影响某事物相关管理与政策方向的情形。<br>situation in which some party has the power to direct or strongly influence the direction of the management and policies related to something |
+| 受控事物（controlled thing） | 在某情形中被某参与方施以某种形式控制的事物。<br>something over which some party exercises some form of control with respect to some situation |
+| 控制方（controlling party） | 在某情形情境中实施某种形式控制的行为体。<br>actor that exercises some form of control in the context of some situation |
+| 事实控制（de facto control） | 非正式存在但被接受的控制，虽未经正式承认。<br>control that exists informally and is accepted, although not formally recognized |
+| 法律控制（de jure control） | 作为法律事项存在的控制，即对某事物的正当合法控制。<br>control that exists as a matter of law, i.e., legitimate, legal control of something |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -52,8 +52,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有控制中参与方（has party in control）** | 标识控制情形情境中的行为体。 | 值域：控制方（controlling party）；子属性：具有行为者（has actor） |
-| **涉及受控事物（involves controlled thing）** | 标识控制情形情境中被控制的某事物。 | 值域：受控事物（controlled thing）；子属性：具有承受者（has undergoer） |
+| **具有控制中参与方（has party in control）** | 标识控制情形情境中的行为体。<br>indicates the actor in the context of a control situation | 值域：控制方（controlling party）；子属性：具有行为者（has actor） |
+| **涉及受控事物（involves controlled thing）** | 标识控制情形情境中被控制的某事物。<br>indicates something controlled in the context of a control situation | 值域：受控事物（controlled thing）；子属性：具有承受者（has undergoer） |
 
 公理：
 
@@ -86,9 +86,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有控制方（has controlling party）** | 标识对某事物行使权力或影响力的参与方。 | 值域：控制方（controlling party）；子属性：受…影响（is affected by） |
-| **在……中为受控事物（is controlled thing in）** | 标识某事物被控制的控制情境。 | 值域：控制（control）；逆属性：涉及受控事物（involves controlled thing）；子属性：承受（undergoes） |
-| **首次受控于（is initially controlled on）** | 标识某种程度的权力或影响力首次确立的日期或日期时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **具有控制方（has controlling party）** | 标识对某事物行使权力或影响力的参与方。<br>indicates the party that exercises authority or influence over something | 值域：控制方（controlling party）；子属性：受…影响（is affected by） |
+| **在……中为受控事物（is controlled thing in）** | 标识某事物被控制的控制情境。<br>indicates the context of control in which something is being controlled | 值域：控制（control）；逆属性：涉及受控事物（involves controlled thing）；子属性：承受（undergoes） |
+| **首次受控于（is initially controlled on）** | 标识某种程度的权力或影响力首次确立的日期或日期时间。<br>indicates the date or date and time that some level of authority or influence was first put in place | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
 
 公理：
 
@@ -106,9 +106,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **在……中为控制方（is controlling party in）** | 标识参与方扮演控制角色的控制情境。 | 值域：控制（control）；逆属性：具有控制中参与方（has party in control）；子属性：在…中行动（acts in） |
-| **是……的控制方（is controlling party of）** | 标识控制方对其具有一定权力或影响力的事物。 | 子属性：直接影响（directly affects） |
-| **是控制方（is party controlling）** | 标识控制方对其具有一定权力或影响力的受控事物。 | 值域：受控事物（controlled thing）；逆属性：具有控制方（has controlling party）；子属性：对…采取行动（acts on） |
+| **在……中为控制方（is controlling party in）** | 标识参与方扮演控制角色的控制情境。<br>indicates the context of control in which the party plays the role of controlling something | 值域：控制（control）；逆属性：具有控制中参与方（has party in control）；子属性：在…中行动（acts in） |
+| **是……的控制方（is controlling party of）** | 标识控制方对其具有一定权力或影响力的事物。<br>indicates something that a controlling party has some amount of authority or influence over | 子属性：直接影响（directly affects） |
+| **是控制方（is party controlling）** | 标识控制方对其具有一定权力或影响力的受控事物。<br>indicates something controlled that a controlling party has some amount of authority or influence over | 值域：受控事物（controlled thing）；逆属性：具有控制方（has controlling party）；子属性：对…采取行动（acts on） |
 
 公理：
 
@@ -123,7 +123,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的受控方（is controlled party of）** | 标识对……具有一定权力或影响力的控制方。 | 值域：控制方（controlling party）；子属性：直接受…影响（is directly affected by） |
+| **是……的受控方（is controlled party of）** | 标识对……具有一定权力或影响力的控制方。<br>indicates a controlling party that has some amount of authority or influence over it | 值域：控制方（controlling party）；子属性：直接受…影响（is directly affected by） |
 
 ## 4. 依赖（owl:imports，6 个）
 

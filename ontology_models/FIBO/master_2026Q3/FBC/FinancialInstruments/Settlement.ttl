@@ -104,10 +104,6 @@ fibo-fbc-fi-stl:SettlementEvent a owl:Class ;
         "结算事件（settlement event）"@zh ;
     rdfs:comment "完成交易或其一部分的具体事件，包括但不限于完成账务处理、交换对价等。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fbc-fi-stl:Settlement ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fi-ip:SecurityPrice ;
             owl:onProperty fibo-fnd-acc-cur:hasPrice ],
@@ -115,6 +111,10 @@ fibo-fbc-fi-stl:SettlementEvent a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-arr-asmt:ValueAssessment ;
             owl:onProperty fibo-fnd-rel-rel:involves ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fi-stl:Settlement ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence ;
     skos:definition "specific event involving the finalization a transaction or portion thereof, including but not limited to finalizing accounting, exchanging consideration, and/or legally recording documents, as applicable" .
 

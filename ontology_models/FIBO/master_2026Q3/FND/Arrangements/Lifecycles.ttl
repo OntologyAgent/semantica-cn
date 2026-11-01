@@ -58,12 +58,12 @@ fibo-fnd-arr-lif:LifecycleEventOccurrence a owl:Class ;
         "生命周期事件发生（lifecycle event occurrence）"@zh ;
     rdfs:comment "生命周期某阶段中事件的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleStageOccurrence ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-arr-lif:LifecycleEvent ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleStageOccurrence ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "realization of an event in a stage of a lifecycle" .
 
@@ -150,12 +150,12 @@ fibo-fnd-arr-lif:LifecycleStageOccurrence a owl:Class ;
         "生命周期阶段发生（lifecycle stage occurrence）"@zh ;
     rdfs:comment "给定生命周期中某个时期的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleOccurrence ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fnd-arr-lif:LifecycleStage ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
-            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleOccurrence ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fnd-arr-lif:LifecycleEventOccurrence ],

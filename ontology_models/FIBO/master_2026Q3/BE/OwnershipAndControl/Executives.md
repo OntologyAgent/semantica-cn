@@ -38,29 +38,29 @@
 | 被授权方（AuthorizedParty） | 在一定规则下、一定时期内被赋予代表他方行事能力或特定能力的参与方。 |
 | 授权方（AuthorizingParty） | 将某个角色、权限或控制权委托给他方的参与方。 |
 | 法定受托权限（LegallyDelegatedAuthority） | 被赋予一定法律控制权及相应责任的被授权方。 |
-| 公司章程（articles of incorporation） | 设立新公司、或（修订时）调整公司法律基础的合同，列明公司的基本信息。 |
-| 审计师（auditor） | 有资格并经授权审查和核实财务记录准确性、确保公司遵守税法的参与方。 |
-| 获授权个人（authorized individual） | 在一套规则下被赋予代表另一参与方行事之责任的个人的角色。 |
-| 董事会职权（board capacity） | 以受托身份为组织行事的权力，包括但不限于制定和执行公司政策。 |
-| 董事会组成控制（board composition control） | 表决权股东、实体所有者或其他参与方（非营利组织情形）任命和/或提名董事会成员的情形。 |
-| 董事会成员（board member） | 对组织负有受托责任的参与方，包括但不限于制定和执行公司政策。 |
-| 董事会成员关系（board membership） | 将董事会个人成员关联到组织的情形。 |
-| 董事会（board of directors） | 构成组织治理机构、有权制定组织战略与政策以及选任高管的人员团体。 |
-| 内部章程（bylaws） | 公司、协会、合伙或任何组织的行为成文规则。 |
-| 首席执行官（chief executive officer） | 负责组织整体运营与绩效的最高公司高管。 |
-| 首席财务官（chief financial officer） | 负责组织或项目财务控制与规划的最高级公司高管。 |
-| 公司法（company law） | 据以管理和控制公司的设立、注册或登记成立、治理与解散的立法。 |
-| 公司秘书（company secretary） | 由组织董事任命的公司高管，负责确保遵守与公司治理相关的法律义务。 |
-| 控制性名义持有人（controlling nominee） | 代表受益所有人持有资产（如股票、债券或财产）法定所有权的参与方。 |
-| 公司内部章程（corporate bylaws） | 由董事会通过的公司行为成文规则。 |
-| 公司高管（corporate officer） | 由董事会或企业主聘用、被赋予特定职责的公司或其他组织的高级管理人员。 |
-| 高管（executive） | 被任命并赋予管理组织事务之责任、在指定角色权限内作出决策之权力的人。 |
-| 执行董事（executive board member） | 同时是该组织雇员的董事会成员。 |
-| 外部审计师（external auditor） | 有资格并经授权检查和报告财务记录准确性、确保公司遵守税法的独立参与方。 |
-| 内部审计师（internal auditor） | 有资格并经授权审查和核实财务记录准确性、评估内部控制与合规情况的雇员。 |
-| 非执行董事（non-executive board member） | 对组织运营不承担执行职责的董事会成员。 |
-| 主要负责方（principal party） | 负责组织日常业务运营管理的控制方。 |
-| 签署人（signatory） | 经授权代表自己、他人或组织签署协议的责任方。 |
+| 公司章程（articles of incorporation） | 设立新公司、或（修订时）调整公司法律基础的合同，列明公司的基本信息。<br>contract that establishes a new corporation or, when amended, adjusts the legal basis for the corporation, and outlines basic information about the corporation, including the type of business, and a description of the business' operational characteristics |
+| 审计师（auditor） | 有资格并经授权审查和核实财务记录准确性、确保公司遵守税法的参与方。<br>party qualified and authorized to review and verify the accuracy of financial records and ensure that companies comply with tax laws |
+| 获授权个人（authorized individual） | 在一套规则下被赋予代表另一参与方行事之责任的个人的角色。<br>role of an individual that has been given the responsibility to act on behalf of another party under some set of guidelines |
+| 董事会职权（board capacity） | 以受托身份为组织行事的权力，包括但不限于制定和执行公司政策。<br>authority to act in a fiduciary capacity with respect to the organization, including but not limited to determining and executing corporate policy |
+| 董事会组成控制（board composition control） | 表决权股东、实体所有者或其他参与方（非营利组织情形）任命和/或提名董事会成员的情形。<br>situation in which a voting shareholder, entity owner, or some other party in the case of a not-for-profit organization, appoints and/or nominates someone to the board of directors of an organization for some period of time |
+| 董事会成员（board member） | 对组织负有受托责任的参与方，包括但不限于制定和执行公司政策。<br>party that has fiduciary responsibility with respect to the organization, including but not limited to determining and executing corporate policy |
+| 董事会成员关系（board membership） | 将董事会个人成员关联到组织的情形。<br>situation relating an individual member of the board of directors to the organization |
+| 董事会（board of directors） | 构成组织治理机构、有权制定组织战略与政策以及选任高管的人员团体。<br>group of people comprising the governing body of an organization that has the authority to set organizational strategy and policies as well as to select and, to some degree manage, leadership |
+| 内部章程（bylaws） | 公司、协会、合伙或任何组织的行为成文规则。<br>written rules for conduct of a corporation, association, partnership or any organization |
+| 首席执行官（chief executive officer） | 负责组织整体运营与绩效的最高公司高管。<br>top corporate officer responsible for an organization's overall operations and performance |
+| 首席财务官（chief financial officer） | 负责组织或项目财务控制与规划的最高级公司高管。<br>senior-most corporate officer responsible for financial control and planning for an organization or project |
+| 公司法（company law） | 据以管理和控制公司的设立、注册或登记成立、治理与解散的立法。<br>legislation under which the formation, registration or incorporation, governance, and dissolution of a firm is administered and controlled |
+| 公司秘书（company secretary） | 由组织董事任命的公司高管，负责确保遵守与公司治理相关的法律义务。<br>corporate officer appointed by the directors of an organization, responsible for ensuring compliance with legal obligations related to corporate governance |
+| 控制性名义持有人（controlling nominee） | 代表受益所有人持有资产（如股票、债券或财产）法定所有权的参与方。<br>party that holds legal title to an asset (e.g., stocks, bonds, or property) on behalf of the beneficial owner |
+| 公司内部章程（corporate bylaws） | 由董事会通过的公司行为成文规则。<br>written rules for conduct of a corporation, adopted by the board of directors |
+| 公司高管（corporate officer） | 由董事会或企业主聘用、被赋予特定职责的公司或其他组织的高级管理人员。<br>high-level management executive of a corporation or other organization, hired by the board of directors or the business owner(s), charged with certain operational responsibilities, and who has the authority to act on behalf of the organization, including the authority to enter into contracts on behalf of the organization |
+| 高管（executive） | 被任命并赋予管理组织事务之责任、在指定角色权限内作出决策之权力的人。<br>person appointed and given the responsibility to manage the affairs of an organization and the authority to make decisions within specified role-specific boundaries |
+| 执行董事（executive board member） | 同时是该组织雇员的董事会成员。<br>member of a board of directors that is also an employee of the organization |
+| 外部审计师（external auditor） | 有资格并经授权检查和报告财务记录准确性、确保公司遵守税法的独立参与方。<br>independent party qualified and authorized to examine and report on the accuracy of financial records and ensure that companies comply with tax laws |
+| 内部审计师（internal auditor） | 有资格并经授权审查和核实财务记录准确性、评估内部控制与合规情况的雇员。<br>employee who is qualified and authorized to review and verify the accuracy of financial records and evaluate internal controls and compliance |
+| 非执行董事（non-executive board member） | 对组织运营不承担执行职责的董事会成员。<br>member of the board of directors of an organization that has no executive responsibilities towards the running of that organization |
+| 主要负责方（principal party） | 负责组织日常业务运营管理的控制方。<br>controlling party that is responsible for the management of daily business operations of an organization |
+| 签署人（signatory） | 经授权代表自己、他人或组织签署协议的责任方。<br>responsible party authorized to sign agreements on behalf of themselves, another person, or an organization |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -137,7 +137,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **对……具有签署权（has signing authority for）** | 标识签署人有权为之签署协议、访问账户并执行相关任务的参与方。 | 逆属性：指定签署人（designates signatory）；子属性：由……授权 |
+| **对……具有签署权（has signing authority for）** | 标识签署人有权为之签署协议、访问账户并执行相关任务的参与方。<br>indicates the party for which a signatory has the ability to sign agreements, access accounts and perform related tasks | 逆属性：指定签署人（designates signatory）；子属性：由……授权 |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -155,7 +155,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的高管（is officer of）** | 标识该人对其拥有一定权力并负有管理责任的组织。 | 值域：受控方；逆属性：具有公司高管（has corporate officer）；子属性：是控制方 |
+| **是……的高管（is officer of）** | 标识该人对其拥有一定权力并负有管理责任的组织。<br>indicates the organization that the person has some authority over and managerial responsibility for | 值域：受控方；逆属性：具有公司高管（has corporate officer）；子属性：是控制方 |
 
 ###### 2.7.1.1.1 首席执行官（chief executive officer）
 
@@ -196,7 +196,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的主要负责方（is principal party of）** | 标识主要负责方对其拥有一定程度控制的法律实体（受控方）。 | 值域：受控方；子属性：是……的控制性成员 |
+| **是……的主要负责方（is principal party of）** | 标识主要负责方对其拥有一定程度控制的法律实体（受控方）。<br>identifies a legal entity (controlled party) over which a principal has some measure of control | 值域：受控方；子属性：是……的控制性成员 |
 
 ### 2.8 董事会职权（board capacity）
 
@@ -233,7 +233,7 @@
 
 公理：
 
-- **具有控制中参与方（hasPartyInControl）**可以有 0 个或多个**N13a7592a762946b9b5713f952995ddd8**。
+- **具有控制中参与方（hasPartyInControl）**可以有 0 个或多个**N74bab462b5444bebb1dfd85fa0ea0e8c**。
 - **涉及受控事物（involvesControlledThing）**至少有一个取值，类型是**董事会成员（board member）**。
 
 ### 2.10 董事会成员（board member）
@@ -247,7 +247,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的董事（is director of）** | 标识该董事会成员所监督的组织。 | 值域：受控方；逆属性：具有董事（has director）；子属性：是控制方 |
+| **是……的董事（is director of）** | 标识该董事会成员所监督的组织。<br>indicates the organization that the board member oversees | 值域：受控方；逆属性：具有董事（has director）；子属性：是控制方 |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -300,7 +300,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **提名（nominates）** | 任命或提议任命某人担任职务或职位。 | 值域：参与方角色（party role） |
+| **提名（nominates）** | 任命或提议任命某人担任职务或职位。<br>appoints or proposes for appointment to an office or place | 值域：参与方角色（party role） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -382,13 +382,13 @@
 | **授权（authorizes）** | 认可、使能、赋权或给予许可。 | — |
 | **通过……授权（authorizesThrough）** | 标识促成授权方为某目的指定被授权方的情形。 | — |
 | **将控制权委托给（delegatesControlTo）** | 标识授权方已将某些权限或控制权委托给的参与方。 | — |
-| **指定签署人（designates signatory）** | 授权签署协议、访问账户和/或执行其他类似任务。 | 值域：签署人（signatory）；子属性：授权 |
-| **选举（elects）** | 通过投票选出某人或一群人担任职务或其他职位。 | 值域：参与方角色（party role） |
-| **具有公司高管（has corporate officer）** | 标识组织的高管。 | 值域：公司高管（corporate officer）；子属性：具有控制方 |
-| **具有董事（has director）** | 标识组织董事会的成员。 | 值域：董事会成员（board member）；子属性：具有控制方 |
-| **具有主要管理方（has principal managing party）** | 标识负责组织日常业务运营管理的控制方。 | 值域：主要负责方（principal party）；逆属性：是……的主要负责方（is principal party of）；子属性：具有控制性组织成员 |
-| **具有责任（has responsibility）** | 指明独立参与方所负的承诺或义务。 | 值域：责任；子属性：具有能力方 |
-| **被授予权力（has vested in it）** | 通过委托被赋予权力。 | 值域：受托法律权限 |
+| **指定签署人（designates signatory）** | 授权签署协议、访问账户和/或执行其他类似任务。<br>authorizes to sign agreements, access accounts and/or perform other similar tasks | 值域：签署人（signatory）；子属性：授权 |
+| **选举（elects）** | 通过投票选出某人或一群人担任职务或其他职位。<br>chooses someone, or a group of individuals, to hold office or some other position by voting | 值域：参与方角色（party role） |
+| **具有公司高管（has corporate officer）** | 标识组织的高管。<br>indicates an officer of the organization | 值域：公司高管（corporate officer）；子属性：具有控制方 |
+| **具有董事（has director）** | 标识组织董事会的成员。<br>indicates a member of the board of directors of the organization | 值域：董事会成员（board member）；子属性：具有控制方 |
+| **具有主要管理方（has principal managing party）** | 标识负责组织日常业务运营管理的控制方。<br>indicates a controlling party that is responsible for the management of daily business operations | 值域：主要负责方（principal party）；逆属性：是……的主要负责方（is principal party of）；子属性：具有控制性组织成员 |
+| **具有责任（has responsibility）** | 指明独立参与方所负的承诺或义务。<br>specifies a commitment or obligation that an independent party has | 值域：责任；子属性：具有能力方 |
+| **被授予权力（has vested in it）** | 通过委托被赋予权力。<br>is empowered with, via delegation | 值域：受托法律权限 |
 | **具有被授权方（hasAuthorizedParty）** | 标识在该情形中被认可、使能、赋权或许可行事的参与方（角色）。 | — |
 | **具有授权方（hasAuthorizingParty）** | 标识在该情形中给予认可、使能、赋权或许可的参与方（角色）。 | — |
 | **受托控制（hasDelegatedControlOf）** | 标识通过委托而被控制的某事物或某参与方。 | — |

@@ -35,62 +35,62 @@
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 麦考利久期分析（MacCaulays Duration Analytic） | 麦考利久期的分析度量。 |
-| 债券等价收益率（bond equivalent yield） | 按与另一债券收益率等价基准确定的收益率，用于真实比较不同债务工具的价格。 |
-| 信用利差（credit spread） | 反映投资者从信用风险较高的证券相对信用风险较低证券所能获得的额外净收益的收益率利差。 |
-| 当期收益率计算法（current yield calculation method） | 利息支付额与净价之比。 |
-| 债务凸性分析（debt convexity analytic） | 证券价格对其收益率的二阶导数除以证券价格；当价格上升幅度大于收益率下降所暗示的幅度时呈正凸性。 |
-| 债务工具收益率（debt instrument yield） | 按所述价格计算的债务工具回报。 |
-| 债务价格利差（debt price spread） | 某证券价格与作为参照的另一证券公允价值之差，用于定价比较。 |
-| 债务证券做市商（debt securities market maker） | 在给定市场中担任做市商角色的参与者。 |
-| 平均期限收益率（debt yield to average life） | 以债券平均期限替代最终到期日计算所得的收益率。 |
-| 等价期限收益率（debt yield to equivalent life） | 以债券等价期限替代最终到期日计算所得的收益率。 |
-| 到期收益率（debt yield to maturity） | 投资者以当前全价购入债券并持有至到期（假设所有票息按该收益率再投资）可获得的内部收益率。 |
-| 至下一赎回日收益率（debt yield to next call） | 债券到下一个可能赎回日的收益率。 |
-| 最差收益率（debt yield to worst） | 按该工具可能被赎回的最坏情形计算的收益率。 |
-| 贴现工具收益率（discounted instrument yield） | 贴现工具的报价收益率：贴现额与面值之比，再除以以年计（不足一年按分数计）的到期期限。 |
-| 久期分析（duration analytic） | 收到全部付款的加权平均时间。 |
+| 债券等价收益率（bond equivalent yield） | 按与另一债券收益率等价基准确定的收益率，用于真实比较不同债务工具的价格。<br>Yield determined on an equivalent basis to the yield of another bond. This is used to be able to realistically compare prices between debt instruments across different markets. |
+| 信用利差（credit spread） | 反映投资者从信用风险较高的证券相对信用风险较低证券所能获得的额外净收益的收益率利差。<br>yield spread that reflects the additional net yield an investor can earn from a security with more credit risk relative to one with less credit risk |
+| 当期收益率计算法（current yield calculation method） | 利息支付额与净价之比。<br>The ratio of the interest payment amount to the clean price. |
+| 债务凸性分析（debt convexity analytic） | 证券价格对其收益率的二阶导数除以证券价格；当价格上升幅度大于收益率下降所暗示的幅度时呈正凸性。<br>The second derivative of a security's price with respect to its yield, divided by the security's price. A security exhibits positive convexity when its price rises more for a downward move in its yield than its price declines for an equal upward move in its yield. Further notes: A measure of the change in price for a given change in Modified Duration. This always (necessarily) refers to Modified Duration. This is used as another risk measurement. Numerator is always (a) duration - either MacCaulays or Modified. Always rate of change of (one of the) Duration against some other parameter. The other paramater can be characterised as a Yield (it may be the Price, but that has a relationship to the Yield in any case). REVIEW: Inconsistency in the above - is it always necessarily Modified Duration that is referred to, or "any" Duration measure (Macaulays and.or Modified)? notes 9 Dec A measure of the sensitivity of the price with reference to interest rates. This is normally determined with reference to maturity, but since there are different maturity dates, this figure gives an estimate of the equitvalent if you had a homogenous portfolio, i.e. this is an estimate based on a pure equivalent, homogenous portfolio. Convexity of instrument versus portfolio. Sees instrument in terms of the set of cashflows. The term Convexity can be applied either to a bond or to a portfolio. More notes: When you get Convexit in MD, it will tell you what Duration it is refrfering to, along with Redemption Date (logically). Also if there is Option Adjusted Yield, there is a third set of analytics. What are they? i.e. OA Convexity, Duration Yield and the rest. Conclusions: Agreed to revisit this in OTC. |
+| 债务工具收益率（debt instrument yield） | 按所述价格计算的债务工具回报。<br>The return on the debt instrument at the stated price. |
+| 债务价格利差（debt price spread） | 某证券价格与作为参照的另一证券公允价值之差，用于定价比较。<br>The difference between the [what?] of a security and the fair price value of a different security which is used as a point of reference. The spread is used to determine the price of the instrument. (draft definition) |
+| 债务证券做市商（debt securities market maker） | 在给定市场中担任做市商角色的参与者。<br>An actor which has the role of Market Maker in a given market. |
+| 平均期限收益率（debt yield to average life） | 以债券平均期限替代最终到期日计算所得的收益率。<br>The yield achieved by substituting a bond's average life for the issue's final maturity date. |
+| 等价期限收益率（debt yield to equivalent life） | 以债券等价期限替代最终到期日计算所得的收益率。<br>The yield achieved by substituting a bond's equivalent life for the issue's final maturity date. |
+| 到期收益率（debt yield to maturity） | 投资者以当前全价购入债券并持有至到期（假设所有票息按该收益率再投资）可获得的内部收益率。<br>The internal rate of return an investor would achieve if he or she purchased that bond at its current dirty price, and held it to maturity, assuming all coupon and principal payments are received as scheduled. |
+| 至下一赎回日收益率（debt yield to next call） | 债券到下一个可能赎回日的收益率。<br>The yield of a bond to the next possible call date. |
+| 最差收益率（debt yield to worst） | 按该工具可能被赎回的最坏情形计算的收益率。<br>Yield to the worst case of when the instrument might be called. |
+| 贴现工具收益率（discounted instrument yield） | 贴现工具的报价收益率：贴现额与面值之比，再除以以年计（不足一年按分数计）的到期期限。<br>Yield quoted for a discount instrument. This is the ratio of the discount to the face value, divided by the period to maturity as a fraction of a year. |
+| 久期分析（duration analytic） | 收到全部付款的加权平均时间。<br>Weighted average time to receipt of all the payments. |
 | 有效久期（effective duration） | 考虑现金流随利率变化而调整的久期度量。 |
 | 有效收益率（effective yield） | 考虑复利影响的实际收益率。 |
 | 等价期限分析（equivalent life analytic） | 等价期限的分析度量。 |
 | 等价收益率计算法（equivalent yield calculation method） | 按等价基准计算收益率的方法。 |
 | 交易所交易债券价格（exchange traded bond price） | 在交易所交易的债券的价格。 |
-| FFIEC 降 300 提前偿付速度（f f i e c down 300 prepay speed） | 「降 300」情景下用于基础抵押品现金流计算的公共证券协会（PSA）速度。 |
-| FFIEC 升 300 提前偿付速度（f f i e c up 300 prepay speed） | 「升 300」情景下用于基础抵押品现金流计算的公共证券协会（PSA）速度。 |
-| ICMA 收益率公式（i c m a yield formula） | 国际资本市场协会（ICMA，原 ISMA）规定的固定利率债券收益率确定方法。 |
+| FFIEC 降 300 提前偿付速度（f f i e c down 300 prepay speed） | 「降 300」情景下用于基础抵押品现金流计算的公共证券协会（PSA）速度。<br>Public Securities Association (PSA) speed used for the underlying collateral for cash-flow calculations in the "down 300" scenario. |
+| FFIEC 升 300 提前偿付速度（f f i e c up 300 prepay speed） | 「升 300」情景下用于基础抵押品现金流计算的公共证券协会（PSA）速度。<br>Public Securities Association (PSA) speed used for the underlying collateral for cash-flow calculations in the "up 300" scenario. |
+| ICMA 收益率公式（i c m a yield formula） | 国际资本市场协会（ICMA，原 ISMA）规定的固定利率债券收益率确定方法。<br>The calculation method specified by ICMA (formerly ISMA) for determination of yield for fixed-rate bonds. |
 | 隐含远期利率（implied forward rate） | 由即期利率结构隐含的远期利率。 |
-| 内部确定价格利差（internally determined price spread） | 组织内部根据自有交易台可得信息确定的利差。 |
-| 日本复利收益率计算法（japanese compound yield calculation method） | 日本市场使用的复利收益率计算方法。 |
-| 日本单利收益率计算法（japanese simple yield calculation method） | 日本市场使用的单利收益率计算方法。 |
+| 内部确定价格利差（internally determined price spread） | 组织内部根据自有交易台可得信息确定的利差。<br>The spread determined internally within the organisation from information available at their own trading desks. Further Notes Internal prices within a bank would be determined by surveying their own traders. So e.g. corporate desk trades these 30 bonds, get the daily spreads on those at the end of the day and calculate the price. The traders determine the pricing during the based on market movements. (this is all for OTC traded bonds, not exchange traded bonds). |
+| 日本复利收益率计算法（japanese compound yield calculation method） | 日本市场使用的复利收益率计算方法。<br>No definition in selection list. |
+| 日本单利收益率计算法（japanese simple yield calculation method） | 日本市场使用的单利收益率计算方法。<br>No definition.Term put here from memory. 02 Dec changed from Japanese Yield to Japanese Simple Yield. note hat Japanese Compound yield also here (from FIBIM or anothe rlist, added 25 nov with the rest). |
 | 关键利率久期（key rate duration） | 证券价格对特定期限利率变化的敏感度度量。 |
-| 期限分析（life analytic） | 对证券期限的某种度量，而非实际到期时间本身；为基于适当参数计算的导出数值。 |
-| 贷款池提前偿付模型（loan pool prepayment model） | 个贷池（如抵押贷款池或贷款池）中贷款提前偿付的模型。 |
-| 贷款提前偿付公式（loan prepayment formula） | 体现贷款池提前偿付速度模型的公式。 |
-| 到期等价 PSA（maturity equivalent p s a） | 产生与 CMO、ABS 或 MBS 所计算平均期限相同之平均期限的提前偿付速度。 |
-| 修正久期分析（modified duration analytic） | 给定收益率变化下证券价格的百分比变化；修正久期越高，风险越高。 |
-| 本地收益率（native yield） | 按该证券交易市场的默认收益率计算方法确定的证券收益率。 |
-| 本地收益率计算法（native yield calculation method） | 该证券市场通行的计算方法惯例。 |
-| 下一赎回（next call） | 截至当前时点该次发行的下一次赎回。 |
-| 下一赎回日（next call date） | 自当前日期起该次发行可被赎回的下一日期。 |
-| 下一回售（next put） | 截至当前时点该次发行的下一个可回售日。 |
-| 场外债券市场价（o t c bond market price） | 场外交易债券的市场价格。 |
-| 期权调整收益率（option adjusted yield） | 以利差形式表示、基于不同利率路径计算的期权调整收益率（OAS）。 |
-| 部分赎回估计模型（partial calls estimation model） | 估计提前部分赎回的模型。 |
-| 池因子（pool factor） | 原始池中仍未清偿的比例，为小于 1 的数，以百分比表示。 |
-| 池清偿速度（pool paydown rate） | 池清偿的速度，基于观测因子（CPR、SMM 等），不同证券计量方式不同。 |
-| 基点价格值（price value of basis point） | 收益率变动一个基点时价格的敏感度，定义为收益率变动 1 个基点时的价格差。 |
+| 期限分析（life analytic） | 对证券期限的某种度量，而非实际到期时间本身；为基于适当参数计算的导出数值。<br>Some measure of the life of a security, other than the actual time to maturity itself. This is a derived figure, based on certain parameters as appropriate to that type of instrument, to give a figure that is equivalent to and similar to the basic maturity of the instrument, for the purposes of analysing that security. |
+| 贷款池提前偿付模型（loan pool prepayment model） | 个贷池（如抵押贷款池或贷款池）中贷款提前偿付的模型。<br>Model of the prepayments of loans in a pool of individual loans, such as a mortgage pool or loan pool. |
+| 贷款提前偿付公式（loan prepayment formula） | 体现贷款池提前偿付速度模型的公式。<br>The formula which embodies the model for loan pool prepayment speed. |
+| 到期等价 PSA（maturity equivalent p s a） | 产生与 CMO、ABS 或 MBS 所计算平均期限相同之平均期限的提前偿付速度。<br>Prepayment speed that results in the same average life as that computed for the Collateralized Mortgage Obligation (CMO), Asset Backed Securities (ABS) or Mortgage Backed Securities (MBS) using the Maturity Prepay Model. |
+| 修正久期分析（modified duration analytic） | 给定收益率变化下证券价格的百分比变化；修正久期越高，风险越高。<br>The percentage price change of a security for a given change in yield. The higher the modified duration of a security, the higher its risk. Ad/ModDuration = [duration / {1 + (IRR/M)}]; where IRR is the internal rate of return and M is the number of compounding periods per year. |
+| 本地收益率（native yield） | 按该证券交易市场的默认收益率计算方法确定的证券收益率。<br>The yield of the security as determined using the Yield Calculation Method that is the default for the market that the security is traded in. |
+| 本地收益率计算法（native yield calculation method） | 该证券市场通行的计算方法惯例。<br>The convention used in the marketplace for that security. |
+| 下一赎回（next call） | 截至当前时点该次发行的下一次赎回。<br>The next call of the issue, as at the current time. |
+| 下一赎回日（next call date） | 自当前日期起该次发行可被赎回的下一日期。<br>The next date on which the issue can be called, from the present date. |
+| 下一回售（next put） | 截至当前时点该次发行的下一个可回售日。<br>The next available put date for the issue, as at the current time. |
+| 场外债券市场价（o t c bond market price） | 场外交易债券的市场价格。<br>The price determined for the marketplace for a bond which is traded over the counter. |
+| 期权调整收益率（option adjusted yield） | 以利差形式表示、基于不同利率路径计算的期权调整收益率（OAS）。<br>NB specified as a spread. synonym: OAS Based on different Int Rate paths. There are different OAS models just like there are different Yield methods. Also would make reference to the Yield Curve - but these are parameters that go into that model. Limit this model at the point where it distinguishes the difference between things - we are not in a position to mathematically model the things themselves, just capture the basic facts. |
+| 部分赎回估计模型（partial calls estimation model） | 估计提前部分赎回的模型。<br>A model of how the early partial calls are estimated. |
+| 池因子（pool factor） | 原始池中仍未清偿的比例，为小于 1 的数，以百分比表示。<br>How much of the original pool is still outstanding. This is a number below one. Expressed as percentage. |
+| 池清偿速度（pool paydown rate） | 池清偿的速度，基于观测因子（CPR、SMM 等），不同证券计量方式不同。<br>The rate at which the pool is paying down. This is based on observed factor. CPR, SMM, etc. etc. Measured differently for different kinds of security. CBO might have a prepayment rate for example if the underlying bond is callable. with a non agency mortgge dela, defualts will effect this. so for instance there is principal is no lnger inthe pool because the mortgagee defaults. With agency these are not taken out in the case of default but for non agency these mortgages are removed from the pool if and when a mortgagee defualts. |
+| 基点价格值（price value of basis point） | 收益率变动一个基点时价格的敏感度，定义为收益率变动 1 个基点时的价格差。<br>Sensitivity of the price for one basis point change in yield, defined as the difference in price given 1 bp change in yield. |
 | 相对收益率计算法（relative yield calculation method） | 以相对基准计算收益率的方法。 |
 | 相对定义的债务工具收益率（relatively defined debt instrument yield） | 以相对基准定义的债务工具收益率。 |
-| 俄罗斯收益率计算法（russian yield calculation method） | 俄罗斯市场用于确定收益率的方法，基于数学基础不同的有效收益率。 |
-| 俄罗斯收益率公式（russian yield formula） | 基于与其他市场不同之有效收益率的收益率公式。 |
-| 简单收益率计算法（simple yield calculation method） | 以百分比表示的年回报率：回报除以投入再乘以 100。 |
-| 西班牙收益率计算法（spanish yield calculation method） | 西班牙公司债市场用于确定年收益率的方法。 |
-| 美国公司债收益率计算法（u s corporate bond yield calculation method） | 采用 30/360 计息惯例和半年复利的收益率计算方法。 |
+| 俄罗斯收益率计算法（russian yield calculation method） | 俄罗斯市场用于确定收益率的方法，基于数学基础不同的有效收益率。<br>The method used in determining Yield in the Russian markets. This is based on an effective yield with fundamentally different math. To give an example of the use of a different "yield type", we have Russia, which trades based on an effective yield. The price-yield math is fundamentally different. Notes Origin:Fidessa Uses a trade space and effective yield formula. MAy have same day types but different math. |
+| 俄罗斯收益率公式（russian yield formula） | 基于与其他市场不同之有效收益率的收益率公式。<br>This is based on a different Effective Yield than on another market. |
+| 简单收益率计算法（simple yield calculation method） | 以百分比表示的年回报率：回报除以投入再乘以 100。<br>The annual rate of return expressed as a percentage. This is the return divided by the outlay and multiplied by 100 to express the figure as a percentage. |
+| 西班牙收益率计算法（spanish yield calculation method） | 西班牙公司债市场用于确定年收益率的方法。<br>The method used in determining annual yield in Spanish corporate bonds. |
+| 美国公司债收益率计算法（u s corporate bond yield calculation method） | 采用 30/360 计息惯例和半年复利的收益率计算方法。<br>This has 30/360 and semi-annual compounding. |
 | 美国国债收益率计算法（u s treasury yield calculation method） | 美国国债市场使用的收益率计算方法。 |
-| 华尔街收益率计算法（wall street yield calculation method） | 华尔街通行的收益率计算方法。 |
-| 现金流收取加权平均时间（weighted average time to receipt of cashflows） | 某工具现金流收取的加权平均时间。 |
-| 最差赎回（worst call） | 就工具可能被赎回的时间而言代表最坏情形的赎回事件。 |
-| 收益率计算公式（yield calculation formula） | 用于确定收益率的公式。 |
-| 收益率计算方法（yield calculation method） | 计算收益率的方法，包括计算公式及特定的天数计算惯例与复利方式。 |
+| 华尔街收益率计算法（wall street yield calculation method） | 华尔街通行的收益率计算方法。<br>No definition.Term put here from memory. |
+| 现金流收取加权平均时间（weighted average time to receipt of cashflows） | 某工具现金流收取的加权平均时间。<br>The weighted average time to the receipt of cashflows for an instrument. |
+| 最差赎回（worst call） | 就工具可能被赎回的时间而言代表最坏情形的赎回事件。<br>call event representing the worst case with respect to when the instrument might be called |
+| 收益率计算公式（yield calculation formula） | 用于确定收益率的公式。<br>The formula used in determining the Yield. |
+| 收益率计算方法（yield calculation method） | 计算收益率的方法，包括计算公式及特定的天数计算惯例与复利方式。<br>The method by which the yield is calculated. This includes a formula for calculation and a specific day count convention and compounding. You would apply this calculation method on top of the underlying terms and conditions, do for example the holiday calenders and so on, are used in these formulae. For final cash flow: Japanese yield will round down accrued interest. Add: The actual underlying math. Wall Street uses the same ICMA formula. |
 | 至下一回售日收益率（yield to next put） | 到下一个可回售日的收益率。 |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
@@ -143,9 +143,9 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **按……计算（calculation following）** | 标识计算所遵循的方法或惯例。 | 值域：收益率计算方法（yield calculation method） |
-| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Ne01be6b94dbc49d9b70107c758651f3e |
-| **复利（is compounded）** | 表明收益率是否按复利计算（用于债务工具或贷款等收益与利息支付相关的情形）。 | 值域：xsd:boolean |
-| **除息报价（price quoted ex dividend）** | 表明收益率是否基于除息报价；债券除息交易指在付息日前某段时期内成交。 | 值域：xsd:boolean |
+| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Nf6187ddb78624b4b8bf9ccab70a327bf |
+| **复利（is compounded）** | 表明收益率是否按复利计算（用于债务工具或贷款等收益与利息支付相关的情形）。<br>Definition needed Moved from Yield - assume this can only be about debt instrument or loan / debt yields i..e where the income relates to interest payments. . | 值域：xsd:boolean |
+| **除息报价（price quoted ex dividend）** | 表明收益率是否基于除息报价；债券除息交易指在付息日前某段时期内成交。<br>Whether or not the yield is based on a price which is quoted ex-dividend. When a bond is said to trade ex-dividend it means that there is a period of time prior to each coupon payment during which a bond purchaser does not receive custody of the next coupon. That payment is made to the previous bond holder and accrued interest is therefore negative during the ex-dividend period. | 值域：xsd:boolean |
 | **具有自变量（hasArgument）** | — | — |
 
 公理：
@@ -164,7 +164,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Ne01be6b94dbc49d9b70107c758651f3e |
+| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Nf6187ddb78624b4b8bf9ccab70a327bf |
 
 公理：
 
@@ -180,7 +180,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Ne01be6b94dbc49d9b70107c758651f3e |
+| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Nf6187ddb78624b4b8bf9ccab70a327bf |
 
 公理：
 
@@ -196,7 +196,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Ne01be6b94dbc49d9b70107c758651f3e |
+| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Nf6187ddb78624b4b8bf9ccab70a327bf |
 
 公理：
 
@@ -212,7 +212,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Ne01be6b94dbc49d9b70107c758651f3e |
+| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Nf6187ddb78624b4b8bf9ccab70a327bf |
 
 公理：
 
@@ -228,7 +228,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Ne01be6b94dbc49d9b70107c758651f3e |
+| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Nf6187ddb78624b4b8bf9ccab70a327bf |
 
 公理：
 
@@ -301,7 +301,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Ne01be6b94dbc49d9b70107c758651f3e |
+| **具有展望期（has outlook period）** | 标识展望所覆盖的期间。 | 值域：Nf6187ddb78624b4b8bf9ccab70a327bf |
 
 公理：
 
@@ -401,7 +401,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **修正久期值（modified duration value）** | 以年计的修正久期。 | 值域：时长 |
+| **修正久期值（modified duration value）** | 以年计的修正久期。<br>The Modified Duration in Years. | 值域：时长 |
 | **引用（refersTo）** | — | — |
 
 公理：
@@ -419,7 +419,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **价格成交（price is traded）** | 该证券在所述期间内以价格成交。 | 值域：xsd:boolean |
+| **价格成交（price is traded）** | 该证券在所述期间内以价格成交。<br>The highest valuation over the period specified. Notes from Equity review, may apply to Debt also: this can be regarded as a derived price. See also note in LowPrice Difference: different rules used. May be based on trade OR quote price Analytic or Price?? this is a derived type but with a much simpler rule. | 值域：xsd:boolean |
 
 公理：
 
@@ -461,7 +461,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **基于（isBasedOn）** | — | — |
-| **等价期限值（equivalent life value）** | 所述日期的等价期限（以年计）。 | 值域：时长 |
+| **等价期限值（equivalent life value）** | 所述日期的等价期限（以年计）。<br>The Equivalent Life in years at the stated date. | 值域：时长 |
 | **引用（refersTo）** | — | — |
 
 公理：
@@ -558,7 +558,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **小数位数（decimal places）** | 因子值公布所用的小数位数。 | 值域：xsd:integer |
+| **小数位数（decimal places）** | 因子值公布所用的小数位数。<br>The number of decimal places used in the publication of the factor value. | 值域：xsd:integer |
 
 ### 2.21 池清偿速度（pool paydown rate）
 
@@ -648,7 +648,7 @@
 |---|---|---|
 | **具有复利频率（hasCompoundingFrequency）** | — | — |
 | **具有公式（hasFormula）** | — | — |
-| **舍入惯例（rounding convention）** | 计算方法中使用的舍入惯例。 | 值域：xsd:string |
+| **舍入惯例（rounding convention）** | 计算方法中使用的舍入惯例。<br>The rounding convention used in the calculation method. | 值域：xsd:string |
 | **具有自变量（hasArgument）** | — | — |
 
 公理：
@@ -821,7 +821,7 @@
 
 | 属性 | 定义 |
 |---|---|
-| **除息报价（quoted ex dividend）** | 表明价格是否为除息报价。 |
+| **除息报价（quoted ex dividend）** | 表明价格是否为除息报价。<br>Whether or not the price is quoted ex-dividend. When a bond is said to trade ex-dividend it means that there is a period of time prior to each coupon payment during which a bond purchaser does not receive custody of the next coupon. That payment is made to the previous bond holder and accrued interest is therefore negative during the ex-dividend period. |
 
 ## 4. 依赖（owl:imports，21 个）
 

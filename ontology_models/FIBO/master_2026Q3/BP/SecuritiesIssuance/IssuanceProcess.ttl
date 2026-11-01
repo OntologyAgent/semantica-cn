@@ -425,6 +425,9 @@ fibo-bp-iss-prc:SecuritiesIssuanceProcess a owl:Class ;
         "证券发行流程（securities issuance process）"@zh ;
     rdfs:comment "金融证券发行的过程。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:produces ;
+            owl:someValuesFrom fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-muni:hasIssuanceGuarantor ;
             owl:someValuesFrom fibo-bp-iss-prc:SecurityIssuanceGuarantor ],
         [ a owl:Restriction ;
@@ -432,10 +435,7 @@ fibo-bp-iss-prc:SecuritiesIssuanceProcess a owl:Class ;
             owl:someValuesFrom fibo-bp-iss-prc:Subscriber ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-muni:hasPotentialIssuer ;
-            owl:someValuesFrom fibo-bp-iss-prc:PotentialIssuer ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:produces ;
-            owl:someValuesFrom fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ] ;
+            owl:someValuesFrom fibo-bp-iss-prc:PotentialIssuer ] ;
     skos:definition "The process by which a financial security is issued."@en .
 
 fibo-bp-iss-prc:SecurityOfferingSaleMethod a owl:Class ;
@@ -447,31 +447,31 @@ fibo-bp-iss-prc:SecurityOfferingSaleMethod a owl:Class ;
 
 fibo-sec-sec-iss:SecuritiesOffering a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-prc:finalStateDescribedIn ;
-            owl:someValuesFrom fibo-bp-iss-doc:FinalProspectus ],
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:someValuesFrom <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ListedSecurityIdentifier> ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-prc:offerIssueSeries ;
             owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-id:isIdentifiedBy ;
-            owl:someValuesFrom <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ListedSecurityIdentifier> ] .
+            owl:onProperty fibo-bp-iss-prc:finalStateDescribedIn ;
+            owl:someValuesFrom fibo-bp-iss-doc:FinalProspectus ] .
 
 fibo-bp-iss-prc:OfferingProcess a owl:Class ;
     rdfs:label "offering"@en,
         "发行（offering）"@zh ;
     rdfs:comment "将证券提供发行的流程步骤，即通过承销使新证券发行可得。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-prc:hasDistributionType ;
-            owl:someValuesFrom fibo-bp-iss-prc:SecurityOfferingDistributionMethod ],
+            owl:onProperty fibo-bp-iss-prc:requiredToMakeEligible ;
+            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-prc:hasSaleMethod ;
             owl:someValuesFrom fibo-bp-iss-prc:SecurityOfferingSaleMethod ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-prc:requiredToMakeEligible ;
-            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-muni:givesRiseTo ;
             owl:someValuesFrom fibo-bp-iss-prc:IssuedSecurityIssueInformation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:hasDistributionType ;
+            owl:someValuesFrom fibo-bp-iss-prc:SecurityOfferingDistributionMethod ],
         fibo-bp-iss-dbti:IssuanceProcessActivity ;
     skos:definition "The process step of offering a security for issue. This is the making available of a new securities issue through an underwriting."@en ;
     cmns-av:explanatoryNote "It is assumed that this exists for all security types as the precise issuance process is defined among the Offering terms. Terms which only exist for specific types of instrument are given as specialized variants of this class of Thing."@en .
@@ -491,11 +491,11 @@ fibo-bp-iss-prc:IssuedSecurityIssueInformation a owl:Class ;
         "已发行证券发行信息（issued security issue information）"@zh ;
     rdfs:comment "与发行准备/推向市场（即一级市场或 IPO 发行）直至发行完成相关的要素。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fnd-pas-psch:PaymentSchedule ;
-            owl:onProperty fibo-bp-iss-prc:hasPartiallyPaidIssuanceSchedule ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-doc:isAbout ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-pas-psch:PaymentSchedule ;
+            owl:onProperty fibo-bp-iss-prc:hasPartiallyPaidIssuanceSchedule ],
         cmns-doc:Document ;
     skos:definition "FIBIM: \"Elements relating to issue preparation/bringing to market (also known as primary market or Initial Public Offering (IPO) issuance) through to issue date.\""@en,
         "Information about the Issuance of a Security, which is maintained throughout the life of the Security."@en .

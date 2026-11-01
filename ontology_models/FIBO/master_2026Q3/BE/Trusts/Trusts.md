@@ -34,16 +34,16 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 不可撤销信托（irrevocable trust） | 除特定法律情形外不得修改、修订或终止的信托，通常须经授予人同意。 |
-| 生前信托（living trust） | 在个人生前设立的信托，由指定受托人负责为该个人利益管理其资产。 |
-| 可撤销信托（revocable trust） | 信托财产的法定所有权转移给受托人、但委托人保留全部撤销、修改或修订权力的信托。 |
-| 遗嘱信托（testamentary trust） | 按照遗嘱中的指示设立的信托。 |
-| 信托（trust） | 一种受托关系和法律实体：委托人授予受托人为受益人利益持有并管理财产所有权的权利。 |
-| 信托协议（trust agreement） | 设立信托的正式协议，委托人据此将持有和管理资产的责任赋予受托人，以为受益人谋利。 |
-| 信托受益人（trust beneficiary） | 年金、转让（如信用证）、合同、保险单、判决、承诺、信托、遗嘱等为其利益而设的参与方。 |
-| 信托基金经理（trust fund manager） | 获授权代表受托人管理信托资产的参与方。 |
-| 受托人（trustee） | 为他人利益持有并管理资产的参与方。 |
-| 委托人（trustor） | 设立信托、并将财产置于一名或多名受托人的保护与管理之下以为至少一名受益人谋利的参与方。 |
+| 不可撤销信托（irrevocable trust） | 除特定法律情形外不得修改、修订或终止的信托，通常须经授予人同意。<br>trust that cannot be modified, amended or terminated except under certain legal circumstances and typically not without the permission of the grantor's named beneficiary or beneficiaries |
+| 生前信托（living trust） | 在个人生前设立的信托，由指定受托人负责为该个人利益管理其资产。<br>trust created during an individual's lifetime where a designated person, the trustee, is given responsibility for managing that individual's assets for the benefit of the eventual beneficiary |
+| 可撤销信托（revocable trust） | 信托财产的法定所有权转移给受托人、但委托人保留全部撤销、修改或修订权力的信托。<br>trust in which legal ownership of the trust property is transferred to the trustee, but the trustor retains full power to revoke, modify or amend the trust |
+| 遗嘱信托（testamentary trust） | 按照遗嘱中的指示设立的信托。<br>trust established in accordance with the instructions contained in a last will and testament |
+| 信托（trust） | 一种受托关系和法律实体：委托人授予受托人为受益人利益持有并管理财产所有权的权利。<br>fiduciary relationship and legal entity in which one party, known as a trustor, gives another party, the trustee, the right to hold title to and manage assets for the benefit of a third party, the beneficiary |
+| 信托协议（trust agreement） | 设立信托的正式协议，委托人据此将持有和管理资产的责任赋予受托人，以为受益人谋利。<br>formal agreement that establishes a trust, whereby the trustor(s) gives the trustee(s) the responsibility to hold and manage assets for the beneficiary(ies) |
+| 信托受益人（trust beneficiary） | 年金、转让（如信用证）、合同、保险单、判决、承诺、信托、遗嘱等为其利益而设的参与方。<br>party for whose interest (benefit) an annuity, assignment (such as a letter of credit), contract, insurance policy, judgment, promise, trust, will, etc., is made |
+| 信托基金经理（trust fund manager） | 获授权代表受托人管理信托资产的参与方。<br>party empowered to act on behalf of the trustee to manage the assets of the trust |
+| 受托人（trustee） | 为他人利益持有并管理资产的参与方。<br>party that holds and manages assets for the benefit of another |
+| 委托人（trustor） | 设立信托、并将财产置于一名或多名受托人的保护与管理之下以为至少一名受益人谋利的参与方。<br>party that establishes a trust and places property under the protection and management of one or more trustees for the benefit of at least one beneficiary |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -58,7 +58,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有受托人（has trustee）** | 将信托关联到具名受托人。 | 值域：受托人（trustee）；逆属性：是……的受托人（is trustee of）；子属性：受…影响（is affected by） |
+| **具有受托人（has trustee）** | 将信托关联到具名受托人。<br>links a trust to a named trustee | 值域：受托人（trustee）；逆属性：是……的受托人（is trustee of）；子属性：受…影响（is affected by） |
 | **具有参与方角色（has party role）** | — | — |
 | **受……管辖（isGovernedBy）** | — | — |
 
@@ -158,7 +158,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的受托人（is trustee of）** | 标识受托人对其拥有一定程度控制的信托。 | 值域：信托（trust）；子属性：对…采取行动（acts on） |
+| **是……的受托人（is trustee of）** | 标识受托人对其拥有一定程度控制的信托。<br>identifies the trust over which a trustee has some measure of control | 值域：信托（trust）；子属性：对…采取行动（acts on） |
 | **由…扮演（is played by）** | — | — |
 
 公理：

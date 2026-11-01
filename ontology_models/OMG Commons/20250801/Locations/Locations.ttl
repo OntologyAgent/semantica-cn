@@ -95,15 +95,15 @@ cmns-loc:GeographicRegionIdentifier a owl:Class ;
         "地理区域标识符（geographic region identifier）"@zh ;
     rdfs:comment "为在某情境内唯一标识地理区域而分配的代码或其他标识符字符串。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-id:identifies ;
-            owl:someValuesFrom cmns-loc:GeographicRegion ],
+            owl:onProperty cmns-txt:hasTextValue ;
+            owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
             owl:onClass cmns-loc:GeographicRegionIdentificationScheme ;
             owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-txt:hasTextValue ;
-            owl:someValuesFrom xsd:string ],
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom cmns-loc:GeographicRegion ],
         cmns-cds:CodeElement,
         cmns-id:Identifier ;
     skos:definition "string of letters that indicates a code or other identifier for geographical region, assigned for the purpose of uniquely identifying it within some context" .
@@ -421,12 +421,12 @@ cmns-loc:GeographicRegion a owl:Class ;
     dcterms:source <https://www.nationalgeographic.org/encyclopedia/region/> ;
     rdfs:comment "具有共同特征的陆地区域。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty cmns-dsg:hasTextualName ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dsg:Name ;
             owl:onProperty cmns-dsg:hasName ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-dsg:hasTextualName ],
         cmns-loc:Region ;
     skos:definition "area of land that has common features" ;
     cmns-av:explanatoryNote "A region may be defined by natural or artificial features, and may be described as part of a country or the world having definable characteristics but not always fixed boundaries." ;

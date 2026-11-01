@@ -408,16 +408,16 @@ fibo-der-rtd-irswp:FloatingInterestRateLeg a owl:Class ;
     rdfs:comment "就某一名义本金支付可变利息、并与某一基础利率参考挂钩的浮动腿。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-dbt:InterestRateReset ;
+            owl:onProperty cmns-doc:specifies ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:InterestRateSettingEvent ;
             owl:onProperty cmns-doc:specifies ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:InterestCalculationSchedule ;
             owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-dbt:InterestRateReset ;
-            owl:onProperty cmns-doc:specifies ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:InterestRateResetSchedule ;
@@ -442,6 +442,10 @@ fibo-der-rtd-irswp:InterestRateSwapLeg a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-dbt:InterestCalculationSchedule ;
+            owl:onProperty cmns-doc:specifies ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:DayCountConvention ;
             owl:onProperty fibo-fnd-dt-bd:hasBusinessRecurrenceIntervalConvention ],
         [ a owl:Restriction ;
@@ -452,10 +456,6 @@ fibo-der-rtd-irswp:InterestRateSwapLeg a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:InterestPaymentSchedule ;
             owl:onProperty fibo-fnd-pas-psch:hasPaymentSchedule ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-dbt:InterestCalculationSchedule ;
-            owl:onProperty cmns-doc:specifies ],
         fibo-der-drc-swp:RateBasedLeg ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( fibo-der-drc-swp:RateBasedLeg [ a owl:Restriction ;

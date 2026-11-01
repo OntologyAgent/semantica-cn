@@ -241,11 +241,11 @@ cmns-bauth:Authorization a owl:Class ;
         "授权（Authorization）"@zh ;
     rdfs:comment "一方授权他人在特定条件下、特定时期内代表其行事或具备特定能力的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-bauth:hasAuthorizedParty ;
-            owl:someValuesFrom cmns-bauth:AuthorizedParty ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-bauth:hasAuthorizingParty ;
             owl:someValuesFrom cmns-bauth:AuthorizingParty ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-bauth:hasAuthorizedParty ;
+            owl:someValuesFrom cmns-bauth:AuthorizedParty ],
         cmns-pts:Situation ;
     skos:definition "situation in which a party authorizes someone to act on their behalf or to have specific capabilities under certain conditions for some period of time" ;
     skos:prefLabel "authorization" .

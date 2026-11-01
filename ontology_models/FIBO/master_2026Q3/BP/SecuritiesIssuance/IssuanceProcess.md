@@ -34,31 +34,31 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 配售信息（allotment information） | 关于向不同认购人配售发行数量的信息，关联单笔工具配售与认购。 |
+| 配售信息（allotment information） | 关于向不同认购人配售发行数量的信息，关联单笔工具配售与认购。<br>Information about the allotment of quantities of the issue to different subscribers. This relates a single instrument allotment against the subscription amounts allotted to each Subscriber. |
 | 公告（announcement） | 关于发行的公告。 |
-| 竞争性销售方式（competitive sale method） | 通过竞标方式销售新发行证券的方式。 |
+| 竞争性销售方式（competitive sale method） | 通过竞标方式销售新发行证券的方式。<br>No definition |
 | 发行流程活动（issuance process activity） | 证券发行流程中的一项活动。 |
-| 发行计划（issuance programme） | 一段时间内的一系列发行。 |
-| 发行认购信息（issue subscription information） | 与本次发行认购相关的信息。 |
-| 已发行证券发行信息（issued security issue information） | 与发行准备/推向市场（即一级市场或 IPO 发行）直至发行完成相关的要素。 |
-| 协议销售方式（negotiated sale method） | 通过与承销商协商方式销售新发行证券的方式。 |
-| 发行（offering） | 将证券提供发行的流程步骤，即通过承销使新证券发行可得。 |
+| 发行计划（issuance programme） | 一段时间内的一系列发行。<br>A series of issuances over time. |
+| 发行认购信息（issue subscription information） | 与本次发行认购相关的信息。<br>Information relating to the subscription of the issue. |
+| 已发行证券发行信息（issued security issue information） | 与发行准备/推向市场（即一级市场或 IPO 发行）直至发行完成相关的要素。<br>FIBIM: "Elements relating to issue preparation/bringing to market (also known as primary market or Initial Public Offering (IPO) issuance) through to issue date." |
+| 协议销售方式（negotiated sale method） | 通过与承销商协商方式销售新发行证券的方式。<br>No definition |
+| 发行（offering） | 将证券提供发行的流程步骤，即通过承销使新证券发行可得。<br>The process step of offering a security for issue. This is the making available of a new securities issue through an underwriting. |
 | 潜在发行人（potential issuer） | 将成为发行人的实体。 |
-| 潜在承销商（potential underwriter） | 将成为本次发行承销商的实体。 |
-| 主标识符签发方（primary identifier issuer） | 正式向证券签发主要证券标识符的参与方。 |
-| 一级证券发行分销（primary security offering distribution） | 公司证券的原始销售，销售收入直接归公司所有。 |
-| 注册信息（registration information） | 与注册制证券的注册相关的信息。 |
-| 二级证券发行分销（secondary security offering distribution） | 对先前已发行证券的发行分销。 |
-| 证券发行流程（securities issuance process） | 金融证券发行的过程。 |
+| 潜在承销商（potential underwriter） | 将成为本次发行承销商的实体。<br>The entity which will become the underwriter for an issue. Term origin:MBS PoC Reviews |
+| 主标识符签发方（primary identifier issuer） | 正式向证券签发主要证券标识符的参与方。<br>The party which formally issues the primary security identifier to the security. Term origin:MBS PoC Reviews |
+| 一级证券发行分销（primary security offering distribution） | 公司证券的原始销售，销售收入直接归公司所有。<br>The original sale of a company's securities, in which the proceeds from the sale are received directly by the company. |
+| 注册信息（registration information） | 与注册制证券的注册相关的信息。<br>Information relating to the registration of a registered security. |
+| 二级证券发行分销（secondary security offering distribution） | 对先前已发行证券的发行分销。<br>An Offering of a security which has been previously issued. |
+| 证券发行流程（securities issuance process） | 金融证券发行的过程。<br>The process by which a financial security is issued. |
 | 证券发行流程参与者（securities issuance process actor） | 证券发行流程中的参与者。 |
 | 证券发行担保人（security issuance guarantor） | 为证券发行提供担保的参与方。 |
-| 证券发行分销方式（security offering distribution method） | 证券发行的分销类型。 |
-| 证券发行销售方式（security offering sale method） | 新证券发行的销售方式。 |
+| 证券发行分销方式（security offering distribution method） | 证券发行的分销类型。<br>The distribution type of a securities Offering. |
+| 证券发行销售方式（security offering sale method） | 新证券发行的销售方式。<br>Method for sale of a new security offering. |
 | 认购人（subscriber） | 认购发行证券的参与方。 |
 | 认购截止信息（subscription closing information） | 与认购截止相关的信息。 |
-| 交易工具发行流程信息（traded instrument issuance process information） | 由发行流程产生的、关于一次证券发行的信息。注意：一个发行流程（发行）可对应多次发行。 |
-| 承销商承销量（underwriter takedown） | 承销商经手的证券承销数量信息（将记入 DTC）。 |
-| 承销流程细节（underwriting process details） | 本次发行承销特有的信息。 |
+| 交易工具发行流程信息（traded instrument issuance process information） | 由发行流程产生的、关于一次证券发行的信息。注意：一个发行流程（发行）可对应多次发行。<br>Information on one Security issue, arising from the Issuance Process. Note that one Issuance Process (Offering) may relate to more than on Issue, which itself may be the issue of more than one Traded Security. |
+| 承销商承销量（underwriter takedown） | 承销商经手的证券承销数量信息（将记入 DTC）。<br>Infomation on Takedown quantity of the security handled by the underwriter (that will be brought into DTC). |
+| 承销流程细节（underwriting process details） | 本次发行承销特有的信息。<br>Information specific to the Underwriting of the Issue. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -108,13 +108,13 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **实际截止日（actual closing date）** | 证券承销商完成收尾的日期。 | 值域：日期 |
-| **公告日期（announcement date）** | 发行人公告的证券拟发行并随后实际发行的日期时间。 | 值域：日期 |
-| **首个交易日（first trade date）** | 该证券在二级市场上首次交易的日期。 | 值域：日期 |
-| **首次交易结算日（first trade settlement date）** | 发行人与承销商就债券进行资金交收的日期。 | 值域：日期 |
-| **具有分期缴付发行进度表（has partially paid issuance schedule）** | 分期缴付发行：分期付款及日期的进度表。 | 值域：支付进度表 |
-| **发行名义单位数（issue nominal number of units）** | 发行证券的原始总数量。 | 值域：xsd:integer |
-| **系列（series）** | 一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。 | 值域：xsd:string |
+| **实际截止日（actual closing date）** | 证券承销商完成收尾的日期。<br>The Closing Date for the Issue, recorded after the event. | 值域：日期 |
+| **公告日期（announcement date）** | 发行人公告的证券拟发行并随后实际发行的日期时间。<br>Date/time, as announced by the issuer, at which the securities were to be issued and subsequently were issued. | 值域：日期 |
+| **首个交易日（first trade date）** | 该证券在二级市场上首次交易的日期。<br>The date of the first trade of the security in the secondary market. | 值域：日期 |
+| **首次交易结算日（first trade settlement date）** | 发行人与承销商就债券进行资金交收的日期。<br>The date the Issuer and Underwriter exchange money for bonds. | 值域：日期 |
+| **具有分期缴付发行进度表（has partially paid issuance schedule）** | 分期缴付发行：分期付款及日期的进度表。<br>Partially paid issue: Schedule of partial payments and dates. | 值域：支付进度表 |
+| **发行名义单位数（issue nominal number of units）** | 发行证券的原始总数量。<br>Total original quantity of securities issued. | 值域：xsd:integer |
+| **系列（series）** | 一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。<br>Series identification for the individual Traded Financial Security. | 值域：xsd:string |
 | **关于（isAbout）** | — | — |
 
 公理：
@@ -132,11 +132,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **预期截止日（expected closing date）** | 预期向承销商划转头寸的日期，由承销商在公告中提供。 | 值域：日期 |
-| **首次交易日期时间（first trade date and time）** | 该证券可执行首笔交易的日期时间，均以东部时区为准。 | 值域：日期时间 |
-| **正式授标日期时间（formal award date and time）** | 发行人正式接受竞标（竞争性发行）或签署债券购买协议（协议发行）的日期时间。 | 值域：日期时间 |
+| **预期截止日（expected closing date）** | 预期向承销商划转头寸的日期，由承销商在公告中提供。<br>The date on which the transfer of positions to underwriters is expected to take place. This date is provided by underwriters as part of an announcement. | 值域：日期 |
+| **首次交易日期时间（first trade date and time）** | 该证券可执行首笔交易的日期时间，均以东部时区为准。<br>First Date and Time a trade may be executed for this security. All times in Eastern Time Zone only. NOTE: This is a date in the future tense at the time of the Offering. | 值域：日期时间 |
+| **正式授标日期时间（formal award date and time）** | 发行人正式接受竞标（竞争性发行）或签署债券购买协议（协议发行）的日期时间。<br>Date and time the issuer formally accepts a bid for Competitive Issues or, the Date and Time the Bond Purchase Agreement is executed for Negotiated Issues. Time Zone: Include in date/time data or add a term for it? | 值域：日期时间 |
 | **具有分销类型（has distribution type）** | 标识证券发行的分销类型。 | — |
-| **具有销售方式（has sale method）** | 标识证券的销售方式。 | 值域：证券发行销售方式（security offering sale method） |
+| **具有销售方式（has sale method）** | 标识证券的销售方式。<br>Sale Method of the security. | 值域：证券发行销售方式（security offering sale method） |
 | **使合格所需（required to make eligible）** | 使证券达到合格条件所要求的事项。 | 值域：发行文件 |
 | **fibo-bp-iss-muni:givesRiseTo（givesRiseTo）** | — | — |
 
@@ -317,8 +317,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **最低发行认购额（minimum issue subscription）** | 证券转让或所有权变更所需的最低或增量面额。 | 值域：xsd:decimal |
-| **认购期间（subscription period）** | 证券可被认购的期间。 | 值域：日期区间 |
+| **最低发行认购额（minimum issue subscription）** | 证券转让或所有权变更所需的最低或增量面额。<br>Minimum or incremental denomination required for the transfer or change of ownership of a security. | 值域：xsd:decimal |
+| **认购期间（subscription period）** | 证券可被认购的期间。<br>Period during which the security can be subscribed to. | 值域：日期区间 |
 
 #### 2.12.3 注册信息（registration information）
 
@@ -336,8 +336,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **超额配售（over alloted）** | 认购人是否被超额配售了所请求的单位数。 | 值域：xsd:boolean |
-| **认购数量（subscription amount）** | 单个认购人获配的发行单位数。 | 值域：xsd:integer |
+| **超额配售（over alloted）** | 认购人是否被超额配售了所请求的单位数。<br>Whether the subscriber has been over-alloted the requested number of units. REVIEW: Not seen in data terms but implied elsewhere. | 值域：xsd:boolean |
+| **认购数量（subscription amount）** | 单个认购人获配的发行单位数。<br>Number of units of the issue that an individual subscriber is allocated. | 值域：xsd:integer |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -362,7 +362,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **由……承销（taken down by）** | 标识承销该证券的承销商。 | 值域：市政债发行承销商 |
-| **承销商承销股数（underwriter takedown shares）** | 承销商经手的证券承销数量（将记入 DTC）。 | 值域：xsd:integer |
+| **承销商承销股数（underwriter takedown shares）** | 承销商经手的证券承销数量（将记入 DTC）。<br>Takedown quantity of the security handled by the underwriter (that will be brought into DTC). | 值域：xsd:integer |
 
 公理：
 
@@ -383,8 +383,8 @@
 
 | 属性 | 定义 |
 |---|---|
-| **发行发售单位数（issue offering units）** | 股票或公司债券发行中发售的全部证券数量。 |
-| **系列（series）** | 一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。 |
+| **发行发售单位数（issue offering units）** | 股票或公司债券发行中发售的全部证券数量。<br>Quantity of all securities that is offered in an equity or Corporate Bond issue. |
+| **系列（series）** | 一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。<br>Uniquely identified collection of securities within an Issue with same Expected Closing Date. The text gives the Series Identifier within the Issuance process. There may be one or more Series within one Issue. |
 
 ## 4. 依赖（owl:imports，19 个）
 

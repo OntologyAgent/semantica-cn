@@ -30,15 +30,15 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| HMDA 覆盖贷款合同（HMDA covered loan contract） | 按美国《住房抵押贷款披露法》修订版第 1003.3(c) 条不属于 HMDA 报告豁免交易的封闭式抵押贷款或开放式信用额度。 |
-| HMDA 处置（HMDA disposition） | 对 HMDA 覆盖贷款申请所采取行动的类型。 |
-| HMDA 预批准请求（HMDA pre-approval request） | 对不超过一定金额、且受若干非信用条件约束的购房贷款预批准请求。 |
-| HMDA 报告（HMDA report） | 为满足《住房抵押贷款披露法》监管报告要求而编制的报告。 |
-| 建造类型（construction type） | 特定种类的建造方式。 |
-| 族裔（ethnicity） | 基于文化因素（包括国籍、地域文化、祖籍和语言）的类别。 |
-| 提交方式（how submitted） | 表明申请人或借款人是否直接向报告金融机构提交覆盖贷款申请的类别。 |
-| 种族（race） | 基于人的身体特征（如骨骼结构和肤色、发色或瞳色）的类别。 |
-| 通用贷款标识符（universal loan identifier） | 用于无歧义标识以房地产作担保之特定贷款的唯一标识符。 |
+| HMDA 覆盖贷款合同（HMDA covered loan contract） | 按美国《住房抵押贷款披露法》修订版第 1003.3(c) 条不属于 HMDA 报告豁免交易的封闭式抵押贷款或开放式信用额度。<br>a closed-end mortgage loan or open-end line of credit that is not an excluded transaction for HMDA reporting under US section 1003.3(c) of the Revised Home Mortgage Disclosure Act of 2015 |
+| HMDA 处置（HMDA disposition） | 对 HMDA 覆盖贷款申请所采取行动的类型。<br>a type of action taken regarding an application for a HMDA covered loan |
+| HMDA 预批准请求（HMDA pre-approval request） | 对不超过一定金额、且受若干非信用条件约束的购房贷款预批准请求。<br>a request for pre-approval of a home purchase loan up to a certain amount, and subject to certain non-credit related conditions |
+| HMDA 报告（HMDA report） | 为满足《住房抵押贷款披露法》监管报告要求而编制的报告。<br>a report prepared to satisfy HMDA regulatory reporting requirements as described US section 1003.3(c) of the Revised Home Mortgage Disclosure Act of 2015 |
+| 建造类型（construction type） | 特定种类的建造方式。<br>particular kind of construction |
+| 族裔（ethnicity） | 基于文化因素（包括国籍、地域文化、祖籍和语言）的类别。<br>category based on a cultural factors, including nationality, regional culture, ancestry, and language |
+| 提交方式（how submitted） | 表明申请人或借款人是否直接向报告金融机构提交覆盖贷款申请的类别。<br>category indicating whether the applicant or borrower submitted the application for the covered loan directly to the reporting financial institution |
+| 种族（race） | 基于人的身体特征（如骨骼结构和肤色、发色或瞳色）的类别。<br>a category based on a person's physical characteristics, such as bone structure and skin, hair, or eye color |
+| 通用贷款标识符（universal loan identifier） | 用于无歧义标识以房地产作担保之特定贷款的唯一标识符。<br>unique identifier given to unequivocally identify a specific loan secured by real estate |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -87,7 +87,7 @@
 公理：
 
 - **具有条目数（hasNumberOfEntries）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
-- **由……提交（isSubmittedBy）**可以有 0 个或多个**N6f15fec8205643308d17c3d70b6a16c5**。
+- **由……提交（isSubmittedBy）**可以有 0 个或多个**Nc1f528f688164d8785f16d311732f575**。
 - **被提交给（isSubmittedTo）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
 
 ### 2.5 建造类型（construction type）
@@ -162,7 +162,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **HMDA 处置日期（HMDA disposition date）** | 与 HMDA 覆盖贷款之 HMDA 处置关联的日期。 | 子属性：具有日期 |
+| **HMDA 处置日期（HMDA disposition date）** | 与 HMDA 覆盖贷款之 HMDA 处置关联的日期。<br>the date associated with the HMDA Disposition for a HMDA Covered Loan | 子属性：具有日期 |
 
 ## 4. 依赖（owl:imports，16 个）
 

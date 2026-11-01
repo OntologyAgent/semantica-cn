@@ -16,7 +16,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 所有权控制情境（ownership control situation） | 某参与方拥有并控制某物的情境。 |
+| 所有权控制情境（ownership control situation） | 某参与方拥有并控制某物的情境。<br>situation in which some party owns and controls something |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -34,8 +34,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由…拥有并控制（is owned and controlled by）** | 将某物关联到拥有、影响、管理并指挥它的参与方。 | 值域：参与方（party）；子属性：由……拥有 |
-| **拥有并控制（owns and controls）** | 对某物进行指挥并施加权威性或支配性影响，且该物同时为其所有。 | 逆属性：由…拥有并控制（is owned and controlled by）；子属性：拥有 |
+| **由…拥有并控制（is owned and controlled by）** | 将某物关联到拥有、影响、管理并指挥它的参与方。<br>relates something to the party that owns, influences, manages and directs it | 值域：参与方（party）；子属性：由……拥有 |
+| **拥有并控制（owns and controls）** | 对某物进行指挥并施加权威性或支配性影响，且该物同时为其所有。<br>directs and exercises authoritative or dominating influence over some thing that is also owned | 逆属性：由…拥有并控制（is owned and controlled by）；子属性：拥有 |
 
 ## 4. 依赖（owl:imports，6 个）
 

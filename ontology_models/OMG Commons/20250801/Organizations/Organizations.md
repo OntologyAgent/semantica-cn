@@ -34,23 +34,23 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 正式组织（FormalOrganization） | 在某个法律管辖区内得到承认、具有相应权利与责任的组织。 |
-| 非正式组织（InformalOrganization） | 为共同目的走到一起但未构成法律实体的个人群体。 |
-| 组织（Organization） | 个人、多人或群体为某种目的（如满足需求或追求共同目标）在其中行动或被指定行动的权威框架。 |
-| 组织标识符（OrganizationIdentifier） | 在组织标识方案内分配给组织、且在该方案内唯一的标识符。 |
-| 组织成员（OrganizationMember） | 对某组织具有成员角色的参与方（个人或组织）。 |
-| 组织名称（OrganizationName） | 某组织在某情境中为人所知的指称。 |
-| 组织子单位标识符（OrganizationSubUnitIdentifier） | 分配给特定组织子单位的标识符。 |
-| 组织子单位（OrganizationalSubUnit） | 较大组织内部的任何部门或其他实体，仅在该组织情境内得到完全承认，但因某种目的需要标识。 |
-| 能力（capability） | 执行特定职能或达成特定结果的能力。 |
-| 容量（capacity） | 在规定条件下某事物或某人执行职能或产出成果的最大限度。 |
-| 法律实体（legal entity） | 作为合伙、公司或其他组织的法律主体，具有订立合同、承担财务义务和清偿债务的能力。 |
-| 法律主体（legal person） | 在法律下被承认享有权利与义务的参与方，包括但不限于起诉与被诉、订立合同、拥有财产的权利。 |
-| 含成员组织（member-bearing organization） | 拥有成员（个人或其他组织）的团体或组织所扮演的角色。 |
-| 成员关系（membership） | 对应 n 元关系的情形：某团体或组织在某时期内拥有至少一名成员（个人或组织）。 |
-| 组织标识方案（organization identification scheme） | 专用于唯一标识组织的标识方案。 |
-| 服务（service） | 某参与方为另一参与方的利益执行的无形活动。 |
-| 服务提供方（service provider） | 提供某种服务（包括但不限于商业或专业服务）的代理所扮演的角色。 |
+| 正式组织（FormalOrganization） | 在某个法律管辖区内得到承认、具有相应权利与责任的组织。<br>organization that is recognized in some legal jurisdiction, with associated rights and responsibilities |
+| 非正式组织（InformalOrganization） | 为共同目的走到一起但未构成法律实体的个人群体。<br>group of individuals who come together for a common purpose without forming a legal entity |
+| 组织（Organization） | 个人、多人或群体为某种目的（如满足需求或追求共同目标）在其中行动或被指定行动的权威框架。<br>framework of authority within which a person, persons, or groups of people act, or are designated to act, towards some purpose, such as to meet a need or pursue collective goals |
+| 组织标识符（OrganizationIdentifier） | 在组织标识方案内分配给组织、且在该方案内唯一的标识符。<br>identifier assigned to an organization within an organization identification scheme, and unique within that scheme |
+| 组织成员（OrganizationMember） | 对某组织具有成员角色的参与方（个人或组织）。<br>party (person or organization) that has a membership role with respect to some organization |
+| 组织名称（OrganizationName） | 某组织在某情境中为人所知的指称。<br>designation by which some organization is known in some context |
+| 组织子单位标识符（OrganizationSubUnitIdentifier） | 分配给特定组织子单位的标识符。<br>identifier allocated to a particular organizational sub-unit |
+| 组织子单位（OrganizationalSubUnit） | 较大组织内部的任何部门或其他实体，仅在该组织情境内得到完全承认，但因某种目的需要标识。<br>any department or other entity within a larger organization that only has full recognition within the context of that organization, but requires identification for some purpose |
+| 能力（capability） | 执行特定职能或达成特定结果的能力。<br>ability to perform a specific function or achieve a particular outcome |
+| 容量（capacity） | 在规定条件下某事物或某人执行职能或产出成果的最大限度。<br>maximum extent to which something or someone can perform a function or produce an output under specified conditions |
+| 法律实体（legal entity） | 作为合伙、公司或其他组织的法律主体，具有订立合同、承担财务义务和清偿债务的能力。<br>legal person that is a partnership, corporation, or other organization having the capacity to negotiate contracts, assume financial obligations, and pay off debts, organized under the laws of some jurisdiction |
+| 法律主体（legal person） | 在法律下被承认享有权利与义务的参与方，包括但不限于起诉与被诉、订立合同、拥有财产的权利。<br>party that is recognized as having rights and obligations under the law, including but not limited to the right to sue and be sued, enter into contracts, own property, and incur financial and other obligations |
+| 含成员组织（member-bearing organization） | 拥有成员（个人或其他组织）的团体或组织所扮演的角色。<br>role of a group or organization that has members that are people or other organizations |
+| 成员关系（membership） | 对应 n 元关系的情形：某团体或组织在某时期内拥有至少一名成员（个人或组织）。<br>situation, corresponding to an n-ary relation, in which some group or organization has at least one member (person or organization) for some period of time |
+| 组织标识方案（organization identification scheme） | 专用于唯一标识组织的标识方案。<br>identification scheme dedicated to the unique identification of organizations |
+| 服务（service） | 某参与方为另一参与方的利益执行的无形活动。<br>intangible activity performed by some party for the benefit of another party |
+| 服务提供方（service provider） | 提供某种服务（包括但不限于商业或专业服务）的代理所扮演的角色。<br>role of an agent that provides some service, including but not limited to commercial or professional services |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -68,7 +68,7 @@
 | **具有成员（hasMember）** | — | — |
 | **具有部分（hasPart）** | — | — |
 | **具有名称（hasName）** | — | — |
-| **具有子单位（has sub-unit）** | 将一个组织关联到其组成部分。 | 值域：组织子单位（OrganizationalSubUnit）；逆属性：是……的子单位（is sub-unit of）；子属性：具有部分 |
+| **具有子单位（has sub-unit）** | 将一个组织关联到其组成部分。<br>relates an organization to a part of that organization | 值域：组织子单位（OrganizationalSubUnit）；逆属性：是……的子单位（is sub-unit of）；子属性：具有部分 |
 
 公理：
 
@@ -87,7 +87,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **注册于（is domiciled in）** | 标识实体在某国开展业务的主要地点，如总部所在地。 | 值域：地缘政治实体；子属性：具有区域 |
+| **注册于（is domiciled in）** | 标识实体在某国开展业务的主要地点，如总部所在地。<br>indicates the principal place where an entity conducts business within some country, such as where its headquarters is located | 值域：地缘政治实体；子属性：具有区域 |
 
 公理：
 
@@ -117,7 +117,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **是……的部分（isPartOf）** | — | — |
-| **是……的子单位（is sub-unit of）** | 将组织的组成部分关联到更大的实体。 | 值域：组织（Organization）；子属性：是……的部分 |
+| **是……的子单位（is sub-unit of）** | 将组织的组成部分关联到更大的实体。<br>relates a part of an organization to the larger entity | 值域：组织（Organization）；子属性：是……的部分 |
 
 公理：
 
@@ -151,7 +151,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是组织成员（is organization member）** | 标识参与方扮演组织成员角色的成员关系情境。 | 值域：成员关系（membership）；子属性：承受（undergoes） |
+| **是组织成员（is organization member）** | 标识参与方扮演组织成员角色的成员关系情境。<br>indicates the context of membership in which the party plays the role of an organization member | 值域：成员关系（membership）；子属性：承受（undergoes） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -219,7 +219,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **在……中为成员方（is membership party in）** | 标识参与方扮演「拥有成员」角色的成员关系情形。 | 值域：成员关系（membership）；子属性：在…中行动（acts in） |
+| **在……中为成员方（is membership party in）** | 标识参与方扮演「拥有成员」角色的成员关系情形。<br>indicates the membership situation in which the party plays the role of having members | 值域：成员关系（membership）；子属性：在…中行动（acts in） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -236,8 +236,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有成员关系（has membership）** | 标识在组织成员关系情形中扮演「拥有成员」角色的组织。 | 值域：含成员组织（member-bearing organization）；逆属性：在……中为成员方（is membership party in）；子属性：具有行为者（has actor） |
-| **具有组织成员（has organization member）** | 标识在组织成员关系情形中扮演成员角色的参与方。 | 值域：组织成员（OrganizationMember）；逆属性：是组织成员（is organization member）；子属性：具有承受者（has undergoer） |
+| **具有成员关系（has membership）** | 标识在组织成员关系情形中扮演「拥有成员」角色的组织。<br>identifies the organization acting in the role of having members in an organizational membership situation | 值域：含成员组织（member-bearing organization）；逆属性：在……中为成员方（is membership party in）；子属性：具有行为者（has actor） |
+| **具有组织成员（has organization member）** | 标识在组织成员关系情形中扮演成员角色的参与方。<br>indicates the party acting in the role of the member in an organizational membership situation | 值域：组织成员（OrganizationMember）；逆属性：是组织成员（is organization member）；子属性：具有承受者（has undergoer） |
 
 公理：
 
@@ -258,8 +258,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……提供（is provided by）** | 由……使之可获得。 | 逆属性：提供（provides） |
-| **提供（provides）** | 使之可获得。 | — |
+| **由……提供（is provided by）** | 由……使之可获得。<br>is made available by | 逆属性：提供（provides） |
+| **提供（provides）** | 使之可获得。<br>makes available | — |
 
 公理：
 
@@ -276,7 +276,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **提供（provides）** | 使之可获得。 | — |
+| **提供（provides）** | 使之可获得。<br>makes available | — |
 
 公理：
 
@@ -290,18 +290,18 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **指定（designates）** | 正式任命某人。 | 值域：参与方角色（party role）；子属性：具有相关参与方角色（has related party role） |
-| **由……指定（is designated by）** | 标识指派或任命某人担任职务的参与方角色。 | 值域：参与方角色（party role）；逆属性：指定（designates）；子属性：具有相关参与方角色（has related party role） |
-| **由……管理（is managed by）** | 标识指挥某事物或某人事务或行政管理的参与方角色。 | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
-| **提供给（is provided to）** | 使之可被……获得。 | — |
-| **管理（manages）** | 将参与方角色关联到其以某种方式指挥或管理的事物或人。 | 逆属性：由……管理（is managed by）；子属性：是…中的角色（is role in） |
+| **指定（designates）** | 正式任命某人。<br>appoints someone officially | 值域：参与方角色（party role）；子属性：具有相关参与方角色（has related party role） |
+| **由……指定（is designated by）** | 标识指派或任命某人担任职务的参与方角色。<br>indicates the role of the party that has assigned or appointed someone to an office or position | 值域：参与方角色（party role）；逆属性：指定（designates）；子属性：具有相关参与方角色（has related party role） |
+| **由……管理（is managed by）** | 标识指挥某事物或某人事务或行政管理的参与方角色。<br>indicates the role of a party that directs the affairs or administration of something or someone | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
+| **提供给（is provided to）** | 使之可被……获得。<br>is made available to | — |
+| **管理（manages）** | 将参与方角色关联到其以某种方式指挥或管理的事物或人。<br>relates a party role to something or someone that it directs or administers in some way | 逆属性：由……管理（is managed by）；子属性：是…中的角色（is role in） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有网址（has URL）** | 将某事物链接到指明其在计算机网络中的位置及检索方法的网络资源。 |
-| **具有网站（has website）** | 将某事物链接到位于单一域名下的网页或相关网页集合。 |
+| **具有网址（has URL）** | 将某事物链接到指明其在计算机网络中的位置及检索方法的网络资源。<br>links something to a web resource that specifies its location on a computer network and a method for retrieving it |
+| **具有网站（has website）** | 将某事物链接到位于单一域名下的网页或相关网页集合。<br>links something to a page or set of related web pages located under a single domain name, typically produced by a single person or organization |
 
 ## 4. 依赖（owl:imports，9 个）
 

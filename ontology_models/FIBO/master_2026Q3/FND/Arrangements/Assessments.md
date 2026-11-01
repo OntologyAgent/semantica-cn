@@ -34,24 +34,24 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 估价报告（appraisal） | 对某事物在某时点市场价值的书面估计，通常由合格估价师提供。 |
-| 评估价值（appraised value） | 某资产在给定时点的估计价值。 |
-| 估价师（appraiser） | 评估或估计某人或某事物的性质、质量、能力或价值的参与方。 |
-| 评估活动（assessment activity） | 涉及评估或估计某人或某事物的性质、质量、能力或价值的活动。 |
-| 评估事件（assessment event） | 涉及评估或估计某人或某事物的性质、质量或能力的事件。 |
-| 评估报告（assessment report） | 包含对某事物的意见、判断、估价或看法，以及通常得出该意见所用方法和原始输入的报告。 |
-| 期望价值（expected value） | 基于模型或假设预期的理论价值。 |
-| 公允价值（fair value） | 在计量日市场参与者之间的有序交易中出售资产所能收到或转移负债所须支付的价格。 |
-| 市场价值（market value） | 资产在市场上可售得的价格。 |
-| 观测值（observed value） | 从实验、调查或观测中收集的实际数据点。 |
-| 意见（opinion） | 对某事物的判断、估价或看法。 |
-| 现值（present value） | 资产当前的价值，可由参考数据计算并可能基于其预期未来价值。 |
-| 定性值（qualitative value） | 精度或准确度低于定量方法所确定值的值，通常以代码而非实际数值表示。 |
-| 定量值（quantitative value） | 通过定量方法确定、以适当单位的数值表示的值。 |
-| 参考值（reference value） | 对某可辨识事物、可获得证据支持的值。 |
-| 估值方法（valuation method） | 用于确定资产当前或预期价值的方法。 |
-| 价值（value） | 某事物（如产品、服务或资产）对公司、客户或利益相关方的感知价值。 |
-| 价值评估（value assessment） | 估计某事物价值的评估事件。 |
+| 估价报告（appraisal） | 对某事物在某时点市场价值的书面估计，通常由合格估价师提供。<br>written estimate of the market value of something as of some point in time, typically provided by a qualified appraiser |
+| 评估价值（appraised value） | 某资产在给定时点的估计价值。<br>estimated value of some asset as of a given point in time |
+| 估价师（appraiser） | 评估或估计某人或某事物的性质、质量、能力或价值的参与方。<br>party that evaluates or estimates the nature, quality, ability, or value of someone or something |
+| 评估活动（assessment activity） | 涉及评估或估计某人或某事物的性质、质量、能力或价值的活动。<br>activity involving the evaluation or estimation of the nature, quality, ability, or value of someone or something |
+| 评估事件（assessment event） | 涉及评估或估计某人或某事物的性质、质量或能力的事件。<br>event involving the evaluation or estimation of the nature, quality, or ability of someone or something |
+| 评估报告（assessment report） | 包含对某事物的意见、判断、估价或看法，以及通常得出该意见所用方法和原始输入的报告。<br>report that includes an opinion, judgement, appraisal, or view about something and typically the methodology and raw inputs used to arrive at that opinion |
+| 期望价值（expected value） | 基于模型或假设预期的理论价值。<br>theoretical value that is anticipated based on a model or hypothesis |
+| 公允价值（fair value） | 在计量日市场参与者之间的有序交易中出售资产所能收到或转移负债所须支付的价格。<br>price that would be received to sell an asset, or paid to transfer a liability, in an orderly transaction between market participants at the measurement date |
+| 市场价值（market value） | 资产在市场上可售得的价格。<br>price an asset would sell for in the market |
+| 观测值（observed value） | 从实验、调查或观测中收集的实际数据点。<br>value that is an actual data point collected from an experiment, survey, or observation |
+| 意见（opinion） | 对某事物的判断、估价或看法。<br>judgement, appraisal, or view about something |
+| 现值（present value） | 资产当前的价值，可由参考数据计算并可能基于其预期未来价值。<br>value of an asset today, which may be calculated from reference data and may based on its expected future value |
+| 定性值（qualitative value） | 精度或准确度低于定量方法所确定值的值，通常以代码而非实际数值表示。<br>value that has less precision or accuracy than a value determined via quantitative methods and which is usually expressed in codes rather than actual numbers |
+| 定量值（quantitative value） | 通过定量方法确定、以适当单位的数值表示的值。<br>value determined via quantitative methods, expressed as a numerical value in appropriate units |
+| 参考值（reference value） | 对某可辨识事物、可获得证据支持的值。<br>value for something discernible for which evidence can be obtained |
+| 估值方法（valuation method） | 用于确定资产当前或预期价值的方法。<br>method used to determine the present or expected worth of an asset |
+| 价值（value） | 某事物（如产品、服务或资产）对公司、客户或利益相关方的感知价值。<br>perceived worth of something, such as a product, service, or asset to a company, customer, or stakeholder |
+| 价值评估（value assessment） | 估计某事物价值的评估事件。<br>assessment event to estimate the value of something |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -125,8 +125,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **应用方法论（applies methodology）** | 标识为确定某事物公允市场价值或现值所用的策略。 | 值域：估值方法（valuation method）；子属性：具有战略 |
-| **具有估价师（has appraiser）** | 将评估或报告关联到实施评估的代理。 | 子属性：由……提供 |
+| **应用方法论（applies methodology）** | 标识为确定某事物公允市场价值或现值所用的策略。<br>indicates the strategy used for the purposes of determining the fair market or present value of something | 值域：估值方法（valuation method）；子属性：具有战略 |
+| **具有估价师（has appraiser）** | 将评估或报告关联到实施评估的代理。<br>relates an assessment or report to an agent that conducts the assessment | 子属性：由……提供 |
 | **具有输出（hasOutput）** | — | — |
 
 公理：
@@ -162,7 +162,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **估计价值为（estimates value at）** | 给出某资产在某时点的近似价值。 | 值域：评估价值（appraised value）；子属性：具有货币数量 |
+| **估计价值为（estimates value at）** | 给出某资产在某时点的近似价值。<br>provides an approximate value of some asset as of some point in time | 值域：评估价值（appraised value）；子属性：具有货币数量 |
 | **评估（evaluates）** | — | — |
 | **由……生成（isGeneratedBy）** | — | — |
 
@@ -257,7 +257,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。 | 逆属性：具有估计价值（has estimated value）；子属性：是……的值 |
+| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。<br>relates an appraised value to the asset of interest as of the date of the assessment | 逆属性：具有估计价值（has estimated value）；子属性：是……的值 |
 
 ##### 2.7.4.3 现值（present value）
 
@@ -279,8 +279,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有评估日期（has date of assessment）** | 评估过程完成的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有估计价值（has estimated value）** | 将某事物关联到其估计价值。 | 值域：评估价值（appraised value）；子属性：具有货币数量 |
+| **具有评估日期（has date of assessment）** | 评估过程完成的日期。<br>date on which an assessment process was completed | 值域：显式日期；子属性：具有显式日期 |
+| **具有估计价值（has estimated value）** | 将某事物关联到其估计价值。<br>relates something to its estimated value | 值域：评估价值（appraised value）；子属性：具有货币数量 |
 
 ## 4. 依赖（owl:imports，15 个）
 

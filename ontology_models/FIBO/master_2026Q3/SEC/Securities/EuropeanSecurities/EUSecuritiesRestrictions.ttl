@@ -83,12 +83,12 @@ fibo-sec-sec-eurst:MiFIDRegulatedSecurity a owl:Class ;
         "受 MiFID 监管证券（MiFID regulated security）"@zh ;
     rdfs:comment "须按金融工具市场指令（MiFID）进行报告的证券。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue true ;
-            owl:onProperty fibo-sec-sec-eurst:isMiFIDReportingRequired ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-sec-sec-eurst:hasUpperLimitOnFloatingShares ],
+        [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-sec-sec-eurst:isMiFIDReportingRequired ],
         fibo-fbc-fi-fi:Security ;
     skos:definition "security for which MiFID reporting is required"@en ;
     cmns-av:explanatoryNote "A MiFID requlated security is one that is traded on a MiFID regulated market and for which certain additional reporting requirements apply. Markets in Financial Instruments Directive (MiFID), which is a European regulation, issued by the European Securities and Markets Authority (ESMA), that aims to increase transparency across the European Union's financial markets and standardize regulatory disclosures required for firms operating within the EU." .

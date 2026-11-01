@@ -33,18 +33,18 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 债务工具篮子（basket of debt instruments） | 成分为债务工具的证券篮子。 |
-| 资本化租赁债务篮子（capitalized lease obligation debt basket） | 成分为赋予承租人临时使用资产权利、在会计上视为资产所有权之合同的债务工具篮子。 |
-| 出资债务篮子（contribution debt basket） | 允许公司发生等于（或在美国顶级发起人交易中不超过）某一数额债务的债务工具篮子。 |
-| 信贷额度债务篮子（credit facility debt basket） | 成分为允许借款人在较长时期内分期提取资金之信贷协议的证券篮子。 |
-| 债务工具衍生品（debt instrument derivative） | 标的为债务类可观察量的证券类衍生品。 |
-| 股票衍生品（equity derivative） | 标的基于股票（如个股、股票篮子或指数）或其现金流的证券类衍生品。 |
-| 一般债务篮子（general debt basket） | 为潜在融资提供额外额度、且不要求所得款项用于特定用途的债务工具篮子。 |
-| 增量额度债务篮子（incremental facility debt basket） | 成分为可扩展额度的信贷额度篮子，允许公司借入额外的定期贷款或循环信用额度。 |
-| 本地信用额度债务篮子（local lines of credit debt basket） | 对跨国经营公司可能有意义的债务工具篮子，通常允许非担保人子公司发生债务。 |
-| 非担保人债务篮子（non-guarantor debt basket） | 包含允许集团内未参与贷款担保的特定子公司发生债务之条款的债务工具篮子。 |
-| 比率债务篮子（ratio debt basket） | 成分基于以总债务（而非仅有担保债务）计算的杠杆率确定的债务工具篮子。 |
-| 证券类衍生品（security-based derivative） | 标的基于证券（包括证券集合和基于证券的指数）的衍生工具。 |
+| 债务工具篮子（basket of debt instruments） | 成分为债务工具的证券篮子。<br>basket of securities whose constituents are debt instruments |
+| 资本化租赁债务篮子（capitalized lease obligation debt basket） | 成分为赋予承租人临时使用资产权利、在会计上视为资产所有权之合同的债务工具篮子。<br>basket of debt instruments whose constituents are contracts entitling a renter the temporary use of an asset and, in accounting terms, has asset ownership characteristics |
+| 出资债务篮子（contribution debt basket） | 允许公司发生等于（或在美国顶级发起人交易中不超过）某一数额债务的债务工具篮子。<br>basket of debt instruments that allows a company to incur an amount of indebtedness that is equal to (or in top tier sponsor transactions in the U.S., up to two times) the amount of equity contributed to the group |
+| 信贷额度债务篮子（credit facility debt basket） | 成分为允许借款人在较长时期内分期提取资金之信贷协议的证券篮子。<br>basket of securities whose constituents are credit agreements that allow the borrower to periodically take out money over an extended period of time rather than reapplying for a loan every time they need funds |
+| 债务工具衍生品（debt instrument derivative） | 标的为债务类可观察量的证券类衍生品。<br>security-based derivative whose underlier is a debt observable |
+| 股票衍生品（equity derivative） | 标的基于股票（如个股、股票篮子或指数）或其现金流的证券类衍生品。<br>security-based derivative whose underlier is based on equities (e.g. shares, basket of equities or index) or their cashflow(s) |
+| 一般债务篮子（general debt basket） | 为潜在融资提供额外额度、且不要求所得款项用于特定用途的债务工具篮子。<br>basket of debt instruments that provides additional capacity for potential funding and does not require the proceeds to be used for any particular purpose |
+| 增量额度债务篮子（incremental facility debt basket） | 成分为可扩展额度的信贷额度篮子，允许公司借入额外的定期贷款或循环信用额度。<br>basket of credit facilities whose constituents are extensible, allowing companies to borrow an additional term loan or revolving credit facility (or increase the commitments applicable thereto) under the same credit agreement subject to certain parameters |
+| 本地信用额度债务篮子（local lines of credit debt basket） | 对跨国经营公司可能有意义的债务工具篮子，通常允许非担保人子公司发生债务。<br>basket of debt instruments that may be relevant for companies with international operations, often permitting debt to be incurred by a non-guarantor restricted subsidiary |
+| 非担保人债务篮子（non-guarantor debt basket） | 包含允许集团内未参与贷款担保的特定子公司发生债务之条款的债务工具篮子。<br>basket of debt instruments that include a provision allowing certain subsidiaries within a corporate group, which are not part of the loan guarantee, to incur a specified amount of indebtedness |
+| 比率债务篮子（ratio debt basket） | 成分基于以总债务（而非仅有担保债务）计算的杠杆率确定的债务工具篮子。<br>basket of debt instruments whose constituents are specified based on a leverage ratio based on total debt rather than only secured debt |
+| 证券类衍生品（security-based derivative） | 标的基于证券（包括证券集合和基于证券的指数）的衍生工具。<br>derivative instrument whose underlier is based on a security, including collections of securities and indices based on securities |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

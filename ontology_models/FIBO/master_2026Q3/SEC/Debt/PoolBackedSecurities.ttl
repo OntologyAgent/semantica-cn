@@ -127,12 +127,12 @@ fibo-sec-dbt-pbs:Tranche a owl:Class ;
                     owl:someValuesFrom fibo-sec-sec-pls:InstrumentPool ] ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-dbt-pbs:DetachmentPoint ;
-            owl:onProperty fibo-sec-dbt-pbs:hasDetachmentPoint ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-dbt-pbs:AttachmentPoint ;
             owl:onProperty fibo-sec-dbt-pbs:hasAttachmentPoint ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-dbt-pbs:DetachmentPoint ;
+            owl:onProperty fibo-sec-dbt-pbs:hasDetachmentPoint ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:CollateralValueAsOfDate ;
@@ -289,19 +289,19 @@ fibo-sec-dbt-pbs:PoolBackedSecurity a owl:Class ;
     rdfs:comment "现金流来源于标的抵押贷款池或其他应收款池的债务工具。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ;
-            owl:onProperty cmns-cls:isCharacterizedBy ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
-            owl:someValuesFrom fibo-sec-sec-pls:InstrumentPool ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:CollateralValueAsOfDate ;
             owl:onProperty fibo-sec-dbt-pbs:hasEstimatedTotalCollateralValueAtIssuance ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ;
+            owl:onProperty cmns-cls:isCharacterizedBy ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty fibo-sec-dbt-pbs:isPassThrough ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-sec-sec-pls:InstrumentPool ],
         fibo-sec-dbt-dbti:TradableDebtInstrument ;
     skos:definition "debt instrument that derives its cashflow from an underlying pool of mortgage loans or other receivables"@en ;
     cmns-av:explanatoryNote "If the security is a component of a collateralized debt obligation, then the underlying pool is typically segmented into various tranches, each of which provides cash flows to hedge particular risks, or that offset other gains by time to maturity or other factors."@en .
@@ -327,12 +327,12 @@ fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure a owl:Class ;
         "债务池统计度量（debt pool statistical measure）"@zh ;
     rdfs:comment "对一个或多个债务工具可能随时间变化之行为的某方面进行的限定性度量。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-sec-pls:DebtPool ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DatePeriod ;
             owl:onProperty cmns-cxtdsg:hasApplicablePeriod ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-sec-sec-pls:DebtPool ],
         fibo-fnd-utl-alx:QualifiedMeasure ;
     skos:definition "qualified measure of some aspect of the behavior of one or more debt instrument(s) that may vary over time"@en .
 

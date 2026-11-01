@@ -318,21 +318,6 @@ fibo-fnd-dt-fd:RegularSchedule a owl:Class ;
         "定期进度表（regular schedule）"@zh ;
     rdfs:comment "时间区间规律重复的进度表。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:positiveInteger ;
-            owl:onProperty fibo-fnd-dt-fd:hasCount ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-fd:ScheduleStub ;
-            owl:onProperty fibo-fnd-dt-fd:hasInitialStub ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-dt-fd:hasRecurrenceInterval ;
-            owl:someValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-dt:hasStartDate ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fnd-dt-fd:CalculatedDate cmns-dt:ExplicitDate ) ] ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-fd:AnchorDate ;
             owl:onProperty fibo-fnd-dt-fd:hasAnchorDate ],
@@ -340,6 +325,21 @@ fibo-fnd-dt-fd:RegularSchedule a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-fd:ScheduleStub ;
             owl:onProperty fibo-fnd-dt-fd:hasFinalStub ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-fd:hasRecurrenceInterval ;
+            owl:someValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-fd:ScheduleStub ;
+            owl:onProperty fibo-fnd-dt-fd:hasInitialStub ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:positiveInteger ;
+            owl:onProperty fibo-fnd-dt-fd:hasCount ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasStartDate ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-dt-fd:CalculatedDate cmns-dt:ExplicitDate ) ] ],
         fibo-fnd-dt-fd:Schedule,
         cmns-col:StructuredCollection ;
     skos:definition "schedule whose time intervals recur regularly" ;

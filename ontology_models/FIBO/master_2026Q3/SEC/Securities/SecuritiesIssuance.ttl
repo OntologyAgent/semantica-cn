@@ -449,11 +449,11 @@ fibo-sec-sec-iss:FinancialInstrumentShortName a owl:Class ;
     rdfs:comment "按 ISO 18774 规定结构定义的金融工具缩写名称（FISN）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty fibo-sec-sec-iss:hasIssuerShortName ;
+            owl:onProperty fibo-sec-sec-iss:hasInstrumentDescription ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
-            owl:onProperty fibo-sec-sec-iss:hasInstrumentDescription ;
+            owl:onProperty fibo-sec-sec-iss:hasIssuerShortName ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-id:Identifier ;
     skos:definition "abbreviated name for a financial instrument within a defined structure as specified in ISO 18774" ;
@@ -465,19 +465,19 @@ fibo-sec-sec-iss:OfferingDocument a owl:Class ;
         "发行文件（offering document）"@zh ;
     rdfs:comment "说明一项投资的目标、风险和条款的法律文件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
             owl:onClass fibo-sec-sec-iss:SecuritiesOffering ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty cmns-dt:hasDateOfIssuance ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
-        [ a owl:Restriction ;
-            owl:onClass cmns-dt:Date ;
-            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-be-fct-pub:Publication,
         cmns-doc:LegalDocument ;
@@ -504,27 +504,27 @@ fibo-sec-sec-iss:SecuritiesOffering a owl:Class ;
         "证券发行（securities offering）"@zh ;
     rdfs:comment "出售一种或多种证券的发行。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-sec-iss:SecurityUnderwriter ;
+            owl:onProperty fibo-sec-sec-iss:isUnderwrittenBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
+            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fbc-fi-fi:Issuer fibo-fbc-pas-fpas:Offeror ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasGoverningJurisdiction ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:ThirdPartyAgent ;
             owl:onProperty cmns-pts:hasPartyRole ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
-            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
+            owl:onProperty fibo-fnd-agr-ctr:hasGoverningJurisdiction ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
         [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
             owl:onProperty fibo-fbc-pas-fpas:hasOfferingPrice ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-sec-iss:SecurityUnderwriter ;
-            owl:onProperty fibo-sec-sec-iss:isUnderwrittenBy ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
@@ -538,10 +538,10 @@ fibo-sec-sec-iss:SecuritiesOffering a owl:Class ;
 fibo-fbc-fi-fi:Security a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-sec-iss:SecurityForm ;
-            owl:onProperty fibo-sec-sec-iss:isIssuedInForm ],
+            owl:onClass cmns-ra:RegistrationAuthority ;
+            owl:onProperty fibo-sec-sec-iss:isRegisteredWith ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-ra:RegistrationAuthority ;
-            owl:onProperty fibo-sec-sec-iss:isRegisteredWith ] .
+            owl:onClass fibo-sec-sec-iss:SecurityForm ;
+            owl:onProperty fibo-sec-sec-iss:isIssuedInForm ] .
 

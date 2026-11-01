@@ -34,21 +34,21 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 公益公司（benefit corporation） | 依特定州立法设立的非营利公司，通常旨在提供某种社会利益，无最大化股东价值的义务。 |
-| 董事会协议（board agreement） | 组织董事会成员之间正式的、具有法律约束力的协议。 |
-| 共同利益开发公司（common interest development corporation） | 依特定州立法为业主协会设立的非营利公司型企业实体。 |
-| 公司（corporation） | 作为法律实体（拟制人）、区别于其所有者、依州或国家法律管辖区设立的正式组织。 |
-| 营利公司（for profit corporation） | 以赚钱为目标的公司，即确保实现财务利益，使业务收入超过支出。 |
-| 注册成立担保（incorporation guarantee） | 构成某法律实体注册成立之财务基础一部分的担保。 |
-| 注册成立文书（instrument of incorporation） | 据以设立某法律实体的组织章程大纲及章程细则。 |
-| 合股公司（joint stock company） | 营利性、非法人企业，兼有公司与合伙的特征，所有权权益以股份表示。 |
-| 非营利公司（not-for-profit corporation） | 经辖区监管与税务机关批准、为教育、慈善、社会、宗教、公民或人道目的运营的公司。 |
-| 私人持股公司（privately held company） | 已发行股份全部由家族或少数投资者团体持有、公众无法购买的公司。 |
-| 公众持股公司（publicly held company） | 股份公开交易并持有的公司。 |
-| 注册标识符（registration identifier） | 组织注册时（通常在其组建所在管辖区）官方分配的标识符。 |
-| 注册标识符方案（registration identifier scheme） | 按签发注册机构规定注册标识符的方案。 |
-| 宗教公司（religious corporation） | 目标特定于某套基本信仰与实践的非营利公司。 |
-| 股份公司（stock corporation） | 拥有股东的公司，每位股东通过股票获得公司部分所有权。 |
+| 公益公司（benefit corporation） | 依特定州立法设立的非营利公司，通常旨在提供某种社会利益，无最大化股东价值的义务。<br>not-for-profit corporation set up under specific state legislation, typically to provide some social benefit, without an obligation to maximize shareholder return |
+| 董事会协议（board agreement） | 组织董事会成员之间正式的、具有法律约束力的协议。<br>formal, legally binding agreement between members of the Board of Directors of the organization |
+| 共同利益开发公司（common interest development corporation） | 依特定州立法为业主协会设立的非营利公司型企业实体。<br>not-for-profit corporation set up under specific state legislation as a business entity for homeowners' associations |
+| 公司（corporation） | 作为法律实体（拟制人）、区别于其所有者、依州或国家法律管辖区设立的正式组织。<br>formal organization that is a legal entity (artificial person) distinct from its owners, created under the jurisdiction of the laws of a state or nation |
+| 营利公司（for profit corporation） | 以赚钱为目标的公司，即确保实现财务利益，使业务收入超过支出。<br>corporation whose objective is to make money, i.e., to ensure realization of a financial benefit such that the amount of revenue gained from a business activity exceeds the expenses, costs and taxes needed to sustain that activity |
+| 注册成立担保（incorporation guarantee） | 构成某法律实体注册成立之财务基础一部分的担保。<br>guarantee that is part of the financial basis by which some legal entity is incorporated |
+| 注册成立文书（instrument of incorporation） | 据以设立某法律实体的组织章程大纲及章程细则。<br>memorandum and articles of association by which some legal entity is established |
+| 合股公司（joint stock company） | 营利性、非法人企业，兼有公司与合伙的特征，所有权权益以股份表示。<br>for-profit, unincorporated business that has some characteristics of a corporation and some features of a partnership, with ownership interests represented by shares of stock |
+| 非营利公司（not-for-profit corporation） | 经辖区监管与税务机关批准、为教育、慈善、社会、宗教、公民或人道目的运营的公司。<br>corporation approved by its jurisdictional oversight and tax authorities as operating for educational, charitable, social, religious, civic or humanitarian purposes |
+| 私人持股公司（privately held company） | 已发行股份全部由家族或少数投资者团体持有、公众无法购买的公司。<br>corporation whose issued shares are all held by a family or a small group of investors and, therefore, cannot be bought by the public |
+| 公众持股公司（publicly held company） | 股份公开交易并持有的公司。<br>corporation whose shares are traded and held publicly |
+| 注册标识符（registration identifier） | 组织注册时（通常在其组建所在管辖区）官方分配的标识符。<br>identifier that is officially allocated to an organization at the time of registration, typically in a jurisdiction in which said organization is organized or registered and used in that jurisdiction to identify the organization |
+| 注册标识符方案（registration identifier scheme） | 按签发注册机构规定注册标识符的方案。<br>scheme that defines the registration identifier per the issuing registration authority |
+| 宗教公司（religious corporation） | 目标特定于某套基本信仰与实践的非营利公司。<br>not-for-profit corporation whose objective is specific to some fundamental set of beliefs and practices generally agreed upon by a number of people, and that is incorporated under the law |
+| 股份公司（stock corporation） | 拥有股东的公司，每位股东通过股票获得公司部分所有权。<br>corporation that has shareholders, each of whom receives a portion of the ownership of the corporation through shares of stock |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -69,8 +69,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……设立（is constituted by）** | 实体据以注册成立的文书。 | 值域：宪章 |
-| **注册成立于（is incorporated in）** | 法律实体注册成立所在的法律管辖区。 | 值域：管辖权；子属性：组建于 |
+| **由……设立（is constituted by）** | 实体据以注册成立的文书。<br>the instrument by which an entity is incorporated | 值域：宪章 |
+| **注册成立于（is incorporated in）** | 法律实体注册成立所在的法律管辖区。<br>the legal jurisdiction under which the legal entity is incorporated | 值域：管辖权；子属性：组建于 |
 | **具有法定名称（hasLegalName）** | — | — |
 
 公理：
@@ -142,9 +142,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有注册成立日期（has date of incorporation）** | 标识申报文件中所载的正式注册成立日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有登记日期（has date of registration）** | 标识公司为监管和/或税务目的在某管辖区登记的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有已发行资本（has issued capital）** | 标识股东所持全部股份的总价值。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有注册成立日期（has date of incorporation）** | 标识申报文件中所载的正式注册成立日期。<br>indicates the formal date of incorporation as stated in filing documents | 值域：显式日期；子属性：具有显式日期 |
+| **具有登记日期（has date of registration）** | 标识公司为监管和/或税务目的在某管辖区登记的日期。<br>indicates the date on which the corporation has registered in some jurisdiction for regulatory and / or for tax purposes | 值域：显式日期；子属性：具有显式日期 |
+| **具有已发行资本（has issued capital）** | 标识股东所持全部股份的总价值。<br>indicates the aggregate value of all shares held by shareholders | 值域：货币数量；子属性：具有货币数量 |
 | **受……管辖（isGovernedBy）** | — | — |
 
 公理：
@@ -250,7 +250,7 @@
 
 | 属性 | 定义 |
 |---|---|
-| **具有授权股份数（has shares authorized）** | 标识董事会确定的可发行股份的最大数量。 |
+| **具有授权股份数（has shares authorized）** | 标识董事会确定的可发行股份的最大数量。<br>indicates the maximum number of shares that are permitted to be issued, as established by the board of directors |
 
 ## 4. 依赖（owl:imports，13 个）
 

@@ -34,31 +34,31 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 年化标准差（annualized standard deviation） | 某度量在特定参照期间上的标准差。 |
-| 算术平均值（arithmetic mean） | 一组数值之和除以该组数值的个数。 |
-| 平均绝对偏差（average absolute deviation） | 各观测值距中心点的绝对偏差的平均值。 |
-| 差（difference） | 数量相减所得的差额；一个值减去另一个值后的余数。 |
-| 离散度（dispersion） | 观测值呈现的散布或变异程度。 |
-| 有限总体（finite population） | 其单位可以被计数的总体。 |
-| 公式（formula） | 以字母和符号表达、至少包含一个表达式的规则。 |
-| 几何平均值（geometric mean） | 用一组数值的乘积（而非和）表示其中央趋势或典型值的平均值。 |
-| 关键绩效指标（key performance indicator） | 表明个人或企业在达成目标方面表现如何的可测目标。 |
-| 平均值（mean） | 最常见的中央趋势度量；一组数值的平均。 |
-| 中位数（median） | 将数据样本、总体或概率分布的总频数分为两半的变量值。 |
-| 中位绝对偏差（median absolute deviation） | 观测值距平均值（可为算术平均值、中位数或众数）的绝对偏差的中位数。 |
-| 数值指数值（numeric index value） | 某总量相对于其在某日期之值的数值。 |
-| 限定度量（qualified measure） | 受特征、量类或单位约束、从而细化其计算方式的统计度量。 |
-| 抽样方差（sampling variance） | 对同一规模、同一设计的不同可能样本所得某特征估计值之间差异程度的度量。 |
-| 限定范围度量（scoped measure） | 受其适用统计总体上的过滤器约束的限定度量。 |
-| 标准差（standard deviation） | 方差的平方根，度量数据集围绕均值的散布或离散程度。 |
-| 统计区（statistical area） | 按某地理区域指定计划定义的、用于汇总和呈现统计数据的物理位置。 |
-| 统计区标识符（statistical area identifier） | 按全国一致的地理区域指定计划定义的物理位置的标识符。 |
-| 统计度量（statistical measure） | 特定组（研究域）内各统计单位的个体定量变量值的汇总（平均值、众数、总计、指数等）。 |
-| 统计总体（statistical population） | 经时间和区域过滤的统计全域。 |
-| 统计计划（statistical program） | 对涉及一项或多项研究或调查的课题或情形进行详细调查与分析的计划。 |
-| 统计全域（statistical universe） | 代表某问题所关注的全部成员（人、资源、产品、服务、事件或实体）之「全域」的集合。 |
-| 方差（variance） | 散布的度量，计算为数据集中每个数与均值之平方偏差的平均。 |
-| 加权函数（weighting function） | 确定集合中给定元素相对于整体的相对重要性或影响力的表达式或函数。 |
+| 年化标准差（annualized standard deviation） | 某度量在特定参照期间上的标准差。<br>standard deviation for some measure over a specific reference period |
+| 算术平均值（arithmetic mean） | 一组数值之和除以该组数值的个数。<br>sum of a collection of numbers divided by the number of numbers in the collection |
+| 平均绝对偏差（average absolute deviation） | 各观测值距中心点的绝对偏差的平均值。<br>average of the absolute deviations from a central point |
+| 差（difference） | 数量相减所得的差额；一个值减去另一个值后的余数。<br>quantity by which amounts differ; the remainder left after subtraction of one value from another |
+| 离散度（dispersion） | 观测值呈现的散布或变异程度。<br>degree of scatter or variability shown by observations |
+| 有限总体（finite population） | 其单位可以被计数的总体。<br>population for which it is possible to count its units |
+| 公式（formula） | 以字母和符号表达、至少包含一个表达式的规则。<br>rule expressed in letters and symbols that consists of at least one expression |
+| 几何平均值（geometric mean） | 用一组数值的乘积（而非和）表示其中央趋势或典型值的平均值。<br>mean that indicates the central tendency or typical value of a set of numbers by using the product of their values (as opposed to the arithmetic mean which uses their sum) |
+| 关键绩效指标（key performance indicator） | 表明个人或企业在达成目标方面表现如何的可测目标。<br>measurable target that indicates how an individual or business is performing in terms of meeting its goals |
+| 平均值（mean） | 最常见的中央趋势度量；一组数值的平均。<br>most common measure of central tendency; the average of a set of numbers |
+| 中位数（median） | 将数据样本、总体或概率分布的总频数分为两半的变量值。<br>value of the variate dividing the total frequency of a data sample, population, or probability distribution, into two halves |
+| 中位绝对偏差（median absolute deviation） | 观测值距平均值（可为算术平均值、中位数或众数）的绝对偏差的中位数。<br>median of the absolute deviations of observations from the average which may be the arithmetic mean, the median or the mode |
+| 数值指数值（numeric index value） | 某总量相对于其在某日期之值的数值。<br>numeric value of some aggregate relative to the value of that aggregate as of some date |
+| 限定度量（qualified measure） | 受特征、量类或单位约束、从而细化其计算方式的统计度量。<br>statistical measure that is constrained by features, quantity kinds or units that refine how it is calculated |
+| 抽样方差（sampling variance） | 对同一规模、同一设计的不同可能样本所得某特征估计值之间差异程度的度量。<br>measure of the extent to which the estimate of a characteristic from different possible samples of the same size and the same design differ from one another |
+| 限定范围度量（scoped measure） | 受其适用统计总体上的过滤器约束的限定度量。<br>qualified measure that is constrained by filters on the statistical population to which it applies |
+| 标准差（standard deviation） | 方差的平方根，度量数据集围绕均值的散布或离散程度。<br>square root of variance that measures the spread or dispersion around the mean of a data set |
+| 统计区（statistical area） | 按某地理区域指定计划定义的、用于汇总和呈现统计数据的物理位置。<br>physical location that is defined per some program for designating geographic regions for the purposes of tabulating and presenting statistical data |
+| 统计区标识符（statistical area identifier） | 按全国一致的地理区域指定计划定义的物理位置的标识符。<br>identifier for a physical location that is defined per a nationally consistent program for designating geographic regions for the purposes of tabulating and presenting statistical data |
+| 统计度量（statistical measure） | 特定组（研究域）内各统计单位的个体定量变量值的汇总（平均值、众数、总计、指数等）。<br>summary (means, mode, total, index, etc.) of the individual quantitative variable values for the statistical units in a specific group (study domain) |
+| 统计总体（statistical population） | 经时间和区域过滤的统计全域。<br>statistical universe filtered by time and region |
+| 统计计划（statistical program） | 对涉及一项或多项研究或调查的课题或情形进行详细调查与分析的计划。<br>program that presents a detailed investigation and analysis of a subject or situation involving one or more studies or surveys |
+| 统计全域（statistical universe） | 代表某问题所关注的全部成员（人、资源、产品、服务、事件或实体）之「全域」的集合。<br>collection representing the total membership, or 'universe', of people, resources, products, services, events, or entities of interest for some question, experiment, survey or statistical program |
+| 方差（variance） | 散布的度量，计算为数据集中每个数与均值之平方偏差的平均。<br>measure of spread, calculated as the average squared deviation of each number from the mean of a data set |
+| 加权函数（weighting function） | 确定集合中给定元素相对于整体的相对重要性或影响力的表达式或函数。<br>expression or function that determines the relative importance or influence of a given element of a set with respect to the whole |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -79,7 +79,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有总体规模（has population size）** | 标识给定总体中的元素数量。 | 值域：xsd:nonNegativeInteger；子属性：具有集合大小 |
+| **具有总体规模（has population size）** | 标识给定总体中的元素数量。<br>indicates the number of elements in a given population | 值域：xsd:nonNegativeInteger；子属性：具有集合大小 |
 | **以……为特征（isCharacterizedBy）** | — | — |
 
 公理：
@@ -114,7 +114,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有测量日期时间（has measurement date time）** | 标识进行测量的日期与时间。 | 值域：cmns-dt:CombinedDateTime |
+| **具有测量日期时间（has measurement date time）** | 标识进行测量的日期与时间。<br>indicates the date and time that the measurement was taken | 值域：cmns-dt:CombinedDateTime |
 | **是……的值（isValueOf）** | — | — |
 
 公理：
@@ -165,8 +165,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **按方法论计算（is calculated via methodology）** | 获得结果所用方法的高层描述。 | — |
-| **为估计值（is estimate）** | 表明该度量反映的是估计（近似）值还是非估计值。 | 值域：xsd:boolean |
+| **按方法论计算（is calculated via methodology）** | 获得结果所用方法的高层描述。<br>high-level description of the approach taken to obtain the result | — |
+| **为估计值（is estimate）** | 表明该度量反映的是估计（近似）值还是非估计值。<br>indicates whether the measure reflects an estimate (approximation) or not | 值域：xsd:boolean |
 | **以……为特征（isCharacterizedBy）** | — | — |
 
 公理：
@@ -184,8 +184,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有被减数（has minuend）** | 指明被减去某量的量值，即被减损的值。 | 子属性：具有自变量 |
-| **具有减数（has subtrahend）** | 指明从某量中减去的量值。 | 子属性：具有自变量 |
+| **具有被减数（has minuend）** | 指明被减去某量的量值，即被减损的值。<br>specifies the quantity value from which something is subtracted; the value that is diminished | 子属性：具有自变量 |
+| **具有减数（has subtrahend）** | 指明从某量中减去的量值。<br>specifies the quantity value that is subtracted from something | 子属性：具有自变量 |
 
 公理：
 
@@ -204,7 +204,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有集合大小（hasCollectionSize）** | — | — |
-| **具有观测值（has observed value）** | 指明分析所基于的值集合。 | 值域：结构化集合；子属性：具有自变量 |
+| **具有观测值（has observed value）** | 指明分析所基于的值集合。<br>specifies a collection of values over which some analysis is performed | 值域：结构化集合；子属性：具有自变量 |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -272,7 +272,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有参照期间（has reference period）** | 指明给定度量所适用的参照（基线）重复区间。 | 值域：重复区间；子属性：具有重复区间 |
+| **具有参照期间（has reference period）** | 指明给定度量所适用的参照（基线）重复区间。<br>specifies a reference (baseline) recurrence interval for which a given measure applies | 值域：重复区间；子属性：具有重复区间 |
 
 公理：
 
@@ -312,7 +312,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有观测值（has observed value）** | 指明分析所基于的值集合。 | 值域：结构化集合；子属性：具有自变量 |
+| **具有观测值（has observed value）** | 指明分析所基于的值集合。<br>specifies a collection of values over which some analysis is performed | 值域：结构化集合；子属性：具有自变量 |
 
 公理：
 
@@ -340,7 +340,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有观测值（has observed value）** | 指明分析所基于的值集合。 | 值域：结构化集合；子属性：具有自变量 |
+| **具有观测值（has observed value）** | 指明分析所基于的值集合。<br>specifies a collection of values over which some analysis is performed | 值域：结构化集合；子属性：具有自变量 |
 
 公理：
 
@@ -358,7 +358,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有基准日期（hasAnchorDate）** | — | — |
-| **按方法论计算（is calculated via methodology）** | 获得结果所用方法的高层描述。 | — |
+| **按方法论计算（is calculated via methodology）** | 获得结果所用方法的高层描述。<br>high-level description of the approach taken to obtain the result | — |
 
 公理：
 
@@ -375,8 +375,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有观测值（has observed value）** | 指明分析所基于的值集合。 | 值域：结构化集合；子属性：具有自变量 |
-| **具有目标值（has target value）** | 指明代表某事物随时间的计划或预计目标的值集合。 | 值域：带日期结构化集合；子属性：具有自变量 |
+| **具有观测值（has observed value）** | 指明分析所基于的值集合。<br>specifies a collection of values over which some analysis is performed | 值域：结构化集合；子属性：具有自变量 |
+| **具有目标值（has target value）** | 指明代表某事物随时间的计划或预计目标的值集合。<br>specifies a collection of values that represent planned or projected goals or objectives for some something over time | 值域：带日期结构化集合；子属性：具有自变量 |
 
 公理：
 
@@ -393,7 +393,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有周期性（has periodicity）** | 指明统计度量所反映的重复区间（月度、季度、年度）。 | 值域：重复区间；子属性：具有重复区间 |
+| **具有周期性（has periodicity）** | 指明统计度量所反映的重复区间（月度、季度、年度）。<br>specifies a recurrence interval (monthly, quarterly, annual) that a statistical measure reflects | 值域：重复区间；子属性：具有重复区间 |
 | **适用于（appliesTo）** | — | — |
 | **具有覆盖区域（hasCoverageArea）** | — | — |
 
@@ -440,7 +440,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有全域规模（has universe size）** | 标识给定全域中的元素数量。 | 值域：xsd:nonNegativeInteger；子属性：具有集合大小 |
+| **具有全域规模（has universe size）** | 标识给定全域中的元素数量。<br>indicates the number of elements in a given universe | 值域：xsd:nonNegativeInteger；子属性：具有集合大小 |
 | **适用于情境（isApplicableIn）** | — | — |
 
 公理：
@@ -456,20 +456,20 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有固定比较日期（has fixed comparative date）** | 指明限定范围度量据以比较的特定日期，如上一次衰退结束之时。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有公式（has formula）** | 指明以符号简洁表达信息的方式，如数学或化学公式。 | 值域：公式（formula）；子属性：以……为特征 |
-| **具有相对比较日期（has relative comparative date）** | 指明限定范围度量的值据以比较的日期（如前一个月、前三个月等）。 | 值域：相对日期；子属性：具有日期 |
-| **具有相对比较期间（has relative comparative period）** | 指明限定范围度量据以比较的期间（通常为前期）。 | 值域：日期区间；子属性：具有日期区间 |
-| **具有发布日期（has release date）** | 指明某事物发布的日期。 | 值域：日期；子属性：具有日期 |
+| **具有固定比较日期（has fixed comparative date）** | 指明限定范围度量据以比较的特定日期，如上一次衰退结束之时。<br>specifies the a specific date, such as the end of the last recession (e.g., March 2009) against which the scoped measure is compared | 值域：显式日期；子属性：具有显式日期 |
+| **具有公式（has formula）** | 指明以符号简洁表达信息的方式，如数学或化学公式。<br>specifies a concise way of expressing information symbolically, as in a mathematical or chemical formula | 值域：公式（formula）；子属性：以……为特征 |
+| **具有相对比较日期（has relative comparative date）** | 指明限定范围度量的值据以比较的日期（如前一个月、前三个月等）。<br>specifies a date against which the value of a scoped measure is compared (e.g., one month prior, three months prior, etc., and typically against a prior release or average over prior releases) | 值域：相对日期；子属性：具有日期 |
+| **具有相对比较期间（has relative comparative period）** | 指明限定范围度量据以比较的期间（通常为前期）。<br>specifies a period (typically a prior period) against which the scoped measure is compared, such as an average set of values for some period of time compared with a more recent or projected average for a forward looking period of time | 值域：日期区间；子属性：具有日期区间 |
+| **具有发布日期（has release date）** | 指明某事物发布的日期。<br>specifies the date on which something is published | 值域：日期；子属性：具有日期 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有测量期间月数（has measurement period in months）** | 标识度量适用的覆盖期间，以月为单位。 |
-| **具有条目数（has number of entries）** | 标识某文件、表格或其他资源（如报告、表格）中的元素数量。 |
-| **具有发布日期时间（has release date and time）** | 指明某事物发布的日期与时间。 |
-| **具有权重（has weight）** | 标识为增大或减小某项重要性而赋予的数量。 |
+| **具有测量期间月数（has measurement period in months）** | 标识度量适用的覆盖期间，以月为单位。<br>indicates the coverage period for which the measure is applicable expressed in months |
+| **具有条目数（has number of entries）** | 标识某文件、表格或其他资源（如报告、表格）中的元素数量。<br>indicates the number of elements in some document, table, or other resource (e.g., in a report, table) |
+| **具有发布日期时间（has release date and time）** | 指明某事物发布的日期与时间。<br>specifies the date and time on which something is published |
+| **具有权重（has weight）** | 标识为增大或减小某项重要性而赋予的数量。<br>indicates an amount given to increase or decrease the importance of an item |
 
 ## 4. 依赖（owl:imports，14 个）
 

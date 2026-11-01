@@ -34,32 +34,32 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 政府部门分支（branch of government） | 国家政府的分支，拥有相互独立、互不冲突的权力与职责范围。 |
-| 权力下放政府（devolved government） | 治理次国家领土的政府及政客，其权力可能是临时的、可撤销的，最终归属于中央政府。 |
-| 行政分支（executive branch） | 经授权负责政府日常行政管理的政府部门分支。 |
-| 联邦政府（federal government） | 在中央政府之下联合的各州，中央政府有别于各成员州各自的政府。 |
-| 联邦主权体（federated sovereignty） | 以中央（联邦）政府之下若干部分自治的州或地区的联合为特征的政体。 |
-| 政府（government） | 控制国家或共同体的体系。 |
-| 政府机构（government agency） | 政府机器中负责某领域监督与行政的永久或半永久组织，常为受任命的委员会。 |
-| 政府任命官员（government appointee） | 由政府法令指定领导或以某种身份参与政府机构的个人。 |
-| 政府机关（government body） | 作为超国家、国家、联邦、州或地方政府之机构、部属单位或其他机关的正式组织。 |
-| 政府部门（government department） | 负责政府公共行政某个领域的专门组织。 |
-| 政府部长（government minister） | 被任命或当选担任政府高级职务的行政官员。 |
-| 政府官员（government official） | 经选举或任命管理政府某方面事务的人。 |
-| 部属单位（instrumentality） | 服务公共目的、与政府关系密切但不是政府机构的组织。 |
-| 司法分支（judiciary） | 由法院系统构成的政府部门分支，以超国家、国家、联邦或地区当局之名解释和适用法律。 |
-| 立法机关（legislature） | 政治单位（通常为国家政府）的立法机构，有权制定、修改和废止公共政策。 |
-| 市政实体（municipal entity） | 通常代表城市、镇区或其他行政区划的政体，具有法人地位和自治权力或管辖权。 |
-| 市政府（municipal government） | 城市、镇区或其他行政区划的地区政府。 |
-| 国家政府（national government） | 治理整个国家（相对于地方政府）的政府及政客。 |
-| 政体（polity） | 作为超国家实体、王室、国家或下级民政当局（如省、县、市）的法律主体。 |
-| 地区政府（regional government） | 地理区域（如县、小城镇或类似社区）的行政机构。 |
-| 地区主权体（regional sovereignty） | 对应行政区划、行政单位、行政实体或国家行政区划的法律主体。 |
-| 主权国家（sovereign state） | 由对一个地理区域拥有主权的单一中央政府所代表的非物理法人实体。 |
-| 超国家实体（supranational entity） | 依国际法或条约建立、或在国际层面注册成立的政府或非政府实体。 |
-| 部落地区（tribal area） | 由原住民群体而非主权国家或地区政府实体管辖的地理区域的指称。 |
-| 部落实体（tribal entity） | 代表主权部落（原住民）政府基本单位的法律实体。 |
-| 部落政府（tribal government） | 代表原住民群体、对该群体拥有合法治理权（包括立法权）的政府。 |
+| 政府部门分支（branch of government） | 国家政府的分支，拥有相互独立、互不冲突的权力与职责范围。<br>division of the government of a state, with separate and independent powers and areas of responsibility so that the powers of one branch are not in conflict with the powers associated with the other branches |
+| 权力下放政府（devolved government） | 治理次国家领土的政府及政客，其权力可能是临时的、可撤销的，最终归属于中央政府。<br>government and the politicians that that run a subnational territory with powers that may be temporary and reversible, ultimately residing with the central government |
+| 行政分支（executive branch） | 经授权负责政府日常行政管理的政府部门分支。<br>the branch of government that is authorized and responsible for the daily administration of the government |
+| 联邦政府（federal government） | 在中央政府之下联合的各州，中央政府有别于各成员州各自的政府。<br>union of states under a central government distinct from the individual governments of the separate states |
+| 联邦主权体（federated sovereignty） | 以中央（联邦）政府之下若干部分自治的州或地区的联合为特征的政体。<br>polity characterized by a union of partially self-governing states or regions under a central (federal) government |
+| 政府（government） | 控制国家或共同体的体系。<br>system by which a state or community is controlled |
+| 政府机构（government agency） | 政府机器中负责某领域监督与行政的永久或半永久组织，常为受任命的委员会。<br>permanent or semi-permanent organization, often an appointed commission, in the machinery of government that is responsible for the oversight and administration of specific functions |
+| 政府任命官员（government appointee） | 由政府法令指定领导或以某种身份参与政府机构的个人。<br>individual designated by government decree to lead, or participate in some capacity in a government body |
+| 政府机关（government body） | 作为超国家、国家、联邦、州或地方政府之机构、部属单位或其他机关的正式组织。<br>formal organization that is an agency, instrumentality, or other body of a supranational, national, federal, state, or local government, including certain multijurisdictional agencies and departments that carry out the business of government |
+| 政府部门（government department） | 负责政府公共行政某个领域的专门组织。<br>specialized organization responsible for a sector of government public administration |
+| 政府部长（government minister） | 被任命或当选担任政府高级职务的行政官员。<br>government official that is an executive, who is either appointed or elected to a high office in the government |
+| 政府官员（government official） | 经选举或任命管理政府某方面事务的人。<br>person elected or appointed to administer some aspect of a government |
+| 部属单位（instrumentality） | 服务公共目的、与政府关系密切但不是政府机构的组织。<br>organization that serves a public purpose and is closely tied to a government, but is not a government agency |
+| 司法分支（judiciary） | 由法院系统构成的政府部门分支，以超国家、国家、联邦或地区当局之名解释和适用法律。<br>branch of government that comprises the system of courts that interprets and applies the law in the name of the supranational, national, federal, or regional government, depending on its jurisdiction |
+| 立法机关（legislature） | 政治单位（通常为国家政府）的立法机构，有权制定、修改和废止公共政策。<br>the law-making body of a political unit, usually a national government, that has power to enact, amend, and repeal public policy |
+| 市政实体（municipal entity） | 通常代表城市、镇区或其他行政区划的政体，具有法人地位和自治权力或管辖权。<br>polity that typically represents a city, township, or other administrative subdivision having corporate status and powers of self-government or jurisdiction |
+| 市政府（municipal government） | 城市、镇区或其他行政区划的地区政府。<br>regional government of a city, township, or other administrative subdivision |
+| 国家政府（national government） | 治理整个国家（相对于地方政府）的政府及政客。<br>government and the politicians that that run a country as a whole (as opposed to local government) |
+| 政体（polity） | 作为超国家实体、王室、国家或下级民政当局（如省、县、市）的法律主体。<br>legal person that is a supranational entity, crown, state, or subordinate civil authority, such as a province, prefecture, county, municipality, city, or district representing the people of that entity |
+| 地区政府（regional government） | 地理区域（如县、小城镇或类似社区）的行政机构。<br>administrative body for a geographic area, such as a county, smaller town, or other similar community |
+| 地区主权体（regional sovereignty） | 对应行政区划、行政单位、行政实体或国家行政区划的法律主体。<br>legal person that corresponds to an administrative division, administrative unit, administrative entity or country subdivision (or, sometimes, geopolitical division or subnational entity), that has the capacity to incur debt, issue contracts, and enter into relations with other similar entities |
+| 主权国家（sovereign state） | 由对一个地理区域拥有主权的单一中央政府所代表的非物理法人实体。<br>non-physical juridical entity that is represented by one centralized government that has sovereignty over a geographic area |
+| 超国家实体（supranational entity） | 依国际法或条约建立、或在国际层面注册成立的政府或非政府实体。<br>governmental or non-governmental entity that is established by international law or treaty or incorporated at an international level |
+| 部落地区（tribal area） | 由原住民群体而非主权国家或地区政府实体管辖的地理区域的指称。<br>designation for geographic region administered by a group of indigenous people rather than by a sovereign state or regional governmental entity |
+| 部落实体（tribal entity） | 代表主权部落（原住民）政府基本单位的法律实体。<br>legal entity that represents fundamental unit of sovereign tribal (indigenous) government |
+| 部落政府（tribal government） | 代表原住民群体、对该群体拥有合法治理权（包括立法权）的政府。<br>government representing a group of indigenous people that has legal authority to govern those people, including authority to legislate the existence of tribal entities |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -79,7 +79,7 @@
 
 公理：
 
-- **具有成员（hasMember）**可以有 0 个或多个**Ndc4c4b373a4c44afb0d95645ffd0654b**。
+- **具有成员（hasMember）**可以有 0 个或多个**N8d1d605fd1264202a2343bb2fa1da371**。
 - **管辖（governs）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
 - 与**部属单位（instrumentality）**互斥：同一个体不能同时属于两者。
 
@@ -259,7 +259,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的部属单位（is an instrument of）** | 将某政府的部属单位关联到它所支持的政府。 | 值域：政府（government） |
+| **是……的部属单位（is an instrument of）** | 将某政府的部属单位关联到它所支持的政府。<br>relates an instrumentality of some government to the government that it supports | 值域：政府（government） |
 | **由……授权要求（isMandatedBy）** | — | — |
 
 公理：
@@ -278,8 +278,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **对……拥有主权（has sovereignty over）** | 将政体关联到其行使政治统治权的地缘政治实体。 | 值域：地缘政治实体；子属性：管辖 |
-| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+| **对……拥有主权（has sovereignty over）** | 将政体关联到其行使政治统治权的地缘政治实体。<br>relates a polity to a geopolitical entity where the polity exercises dominion and authority of a political state | 值域：地缘政治实体；子属性：管辖 |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。<br>relates a system of governance to its chosen representatives | — |
 
 公理：
 
@@ -296,8 +296,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **对……拥有主权（has sovereignty over）** | 将政体关联到其行使政治统治权的地缘政治实体。 | 值域：地缘政治实体；子属性：管辖 |
-| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+| **对……拥有主权（has sovereignty over）** | 将政体关联到其行使政治统治权的地缘政治实体。<br>relates a polity to a geopolitical entity where the polity exercises dominion and authority of a political state | 值域：地缘政治实体；子属性：管辖 |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。<br>relates a system of governance to its chosen representatives | — |
 
 公理：
 
@@ -314,8 +314,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。 | 子属性：对……拥有主权（has sovereignty over） |
-| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。<br>relates a polity to a geopolitical entity where the polity exercises shared dominion and authority of a political state | 子属性：对……拥有主权（has sovereignty over） |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。<br>relates a system of governance to its chosen representatives | — |
 
 公理：
 
@@ -333,8 +333,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **对……拥有完全主权（has full sovereignty over）** | 将政体关联到其拥有绝对、最高且不受他者约束之统治权的地缘政治实体。 | 子属性：对……拥有主权（has sovereignty over） |
-| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+| **对……拥有完全主权（has full sovereignty over）** | 将政体关联到其拥有绝对、最高且不受他者约束之统治权的地缘政治实体。<br>relates a polity to a geopolitical entity where the polity has absolute, supreme and ultimate dominion and authority of a political state subject to no higher power, expressed within its territory in full self-government and in complete freedom from any outside influence | 子属性：对……拥有主权（has sovereignty over） |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。<br>relates a system of governance to its chosen representatives | — |
 
 公理：
 
@@ -362,8 +362,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。 | 子属性：对……拥有主权（has sovereignty over） |
-| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。<br>relates a polity to a geopolitical entity where the polity exercises shared dominion and authority of a political state | 子属性：对……拥有主权（has sovereignty over） |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。<br>relates a system of governance to its chosen representatives | — |
 
 公理：
 
@@ -380,8 +380,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。 | 子属性：对……拥有主权（has sovereignty over） |
-| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。<br>relates a polity to a geopolitical entity where the polity exercises shared dominion and authority of a political state | 子属性：对……拥有主权（has sovereignty over） |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。<br>relates a system of governance to its chosen representatives | — |
 
 公理：
 
@@ -420,7 +420,7 @@
 
 公理：
 
-- **由…扮演（is played by）**可以有 0 个或多个**Na00164ab765a4eaabd377c3fb4c7bd99**。
+- **由…扮演（is played by）**可以有 0 个或多个**Nfcde7588ab5341feb2337222d3786794**。
 
 #### 2.3.2 政府部长（government minister）
 
@@ -442,7 +442,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……选举产生（is elected by）** | 标识通过投票选出任职的官员或政府。 | 逆属性：选举 |
+| **由……选举产生（is elected by）** | 标识通过投票选出任职的官员或政府。<br>identifies an official or government chosen to hold office by voting | 逆属性：选举 |
 
 ## 4. 依赖（owl:imports，15 个）
 

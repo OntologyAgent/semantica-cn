@@ -48,12 +48,12 @@ fibo-loan-spc-com:CommercialLoan a owl:Class ;
     rdfs:comment "向公司、商业企业、合资企业或其他组织（而非消费者个人）发放的贷款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-gao-obj:BusinessObjective ;
-            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-loan-spc-com:hasBusinessPurposeDescription ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-gao-obj:BusinessObjective ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:hasBorrower ;
             owl:someValuesFrom [ a owl:Restriction ;

@@ -132,6 +132,9 @@ fibo-der-drc-exo:DoubleBarrierOption a owl:Class ;
         "双重障碍期权（double barrier option）"@zh ;
     rdfs:comment "应用于货币或场外股票的障碍期权，其运作方式类似二元（数字）期权，仅在规定情形下支付。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-exo:hasFirstBarrierPrice ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
             owl:onProperty fibo-der-drc-exo:hasFirstRebateAmount ],
@@ -139,9 +142,6 @@ fibo-der-drc-exo:DoubleBarrierOption a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
             owl:onProperty fibo-der-drc-exo:hasSecondRebateAmount ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-exo:hasFirstBarrierPrice ;
-            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
         [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-exo:hasSecondBarrierPrice ;
             owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
@@ -176,12 +176,12 @@ fibo-der-drc-exo:KnockOutOption a owl:Class ;
         "敲出期权（knock-out option）"@zh ;
     rdfs:comment "内建机制使期权在标的资产达到指定价格水平时作废失效的障碍期权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-exo:hasFirstBarrierPrice ;
-            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
             owl:onProperty fibo-der-drc-exo:hasFirstRebateAmount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-exo:hasFirstBarrierPrice ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
         fibo-der-drc-exo:BarrierOption ;
     skos:definition "barrier option with a built-in mechanism to expire as worthless if a specified price level in the underlying asset is reached"@en ;
     skos:example "Assume an investor purchases a Knock-Out call option with a down Direction, also called a 'Down and Out Option', on a stock that is trading at $60 with a strike price of $55 and a barrier of $50. Assume the stock trades below $50, at any time, before the call option expires. Therefore, the down-and-out call option promptly ceases to exist."@en ;
@@ -446,12 +446,12 @@ fibo-der-drc-exo:LookbackStrikeTerms a owl:Class ;
         "回望行权条款（lookback strike terms）"@zh ;
     rdfs:comment "基于特定期间（通常截至期权到期）的分析确定标的资产价值的条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-ind-ind-ind:PriceStructure ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-der-drc-exo:FixedLookbackStrikeExpression ;
             owl:onProperty cmns-qtu:hasExpression ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:hasArgument ;
-            owl:someValuesFrom fibo-ind-ind-ind:PriceStructure ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-der-drc-exo:FloatingLookbackStrikeExpression ;
@@ -517,6 +517,10 @@ fibo-der-drc-exo:AsianOption a owl:Class ;
         "亚式期权（Asian option）"@zh ;
     rdfs:comment "行权条款中支付额由标的平均价格（行权价或结算价）决定的期权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-der-drc-exo:usesCurrencyInAveraging ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onClass cmns-dt:DatePeriod ;
             owl:onProperty fibo-der-drc-exo:hasAsianTailPeriod ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -529,16 +533,12 @@ fibo-der-drc-exo:AsianOption a owl:Class ;
             owl:onProperty cmns-cls:isClassifiedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:Currency ;
-            owl:onProperty fibo-der-drc-exo:usesCurrencyInAveraging ;
+            owl:onClass fibo-der-drc-exo:AveragingStrategy ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty fibo-der-drc-exo:usesWeightedAverage ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-exo:AveragingStrategy ;
-            owl:onProperty cmns-cls:isClassifiedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-der-drc-opt:ExoticOption ;
     skos:definition "option whose exercise terms involve a payoff determined by the average underlying price (either the strike price or the settlement price) of the underlying asset over a predetermined period"@en ;
@@ -555,11 +555,11 @@ fibo-der-drc-exo:BarrierOption a owl:Class ;
             owl:onProperty fibo-der-drc-exo:hasMonitoringFrequency ;
             owl:someValuesFrom xsd:positiveInteger ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-exo:hasMonitoringPeriod ;
-            owl:someValuesFrom cmns-dt:DatePeriod ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-exo:isAboveStrikePrice ;
             owl:someValuesFrom xsd:boolean ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-exo:hasMonitoringPeriod ;
+            owl:someValuesFrom cmns-dt:DatePeriod ],
         fibo-der-drc-opt:ExoticOption ;
     skos:definition "option whose final exercise depends upon the path taken by the price of an underlying instrument, i.e., whose payoff depends on whether or not the underlying asset has reached or exceeded a predetermined price"@en ;
     skos:note "For a knock-out barrier option, the option is cancelled if the underlying price crosses a predetermined barrier level; for a knock-in barrier option, the option becomes available-for-exercise if the underlying price crosses a predetermined barrier level."@en ;

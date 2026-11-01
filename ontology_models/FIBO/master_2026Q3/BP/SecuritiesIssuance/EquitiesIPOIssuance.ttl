@@ -291,11 +291,11 @@ fibo-bp-iss-ipo:Underwriting a owl:Class ;
         "承销（underwriting）"@zh ;
     rdfs:comment "承销商承诺购入并转售发行证券的活动。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-ipo:syndicateMember ;
-            owl:someValuesFrom fibo-bp-iss-ipo:SyndicateMember ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-ipo:shareUnderwriter ;
-            owl:someValuesFrom fibo-bp-iss-ipo:PotentialShareUnderwriter ] .
+            owl:someValuesFrom fibo-bp-iss-ipo:PotentialShareUnderwriter ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ipo:syndicateMember ;
+            owl:someValuesFrom fibo-bp-iss-ipo:SyndicateMember ] .
 
 fibo-bp-iss-ipo:CorporateBroker a owl:Class ;
     rdfs:label "corporate broker"@en,

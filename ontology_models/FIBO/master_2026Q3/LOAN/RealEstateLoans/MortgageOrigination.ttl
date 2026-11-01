@@ -35,16 +35,16 @@
 fibo-fnd-plc-rp:RealProperty a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-cls:isClassifiedBy ;
-            owl:someValuesFrom fibo-loan-reln-org:DwellingCapacity ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:isClassifiedBy ;
             owl:someValuesFrom fibo-loan-reln-org:ManufacturedHomeLegalClassification ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-reln-org:hasNumberOfAffordableDwellingUnits ;
+            owl:someValuesFrom xsd:positiveInteger ],
         [ a owl:Restriction ;
             owl:onProperty fibo-loan-reln-org:hasNumberOfDwellingUnits ;
             owl:someValuesFrom xsd:positiveInteger ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-loan-reln-org:hasNumberOfAffordableDwellingUnits ;
-            owl:someValuesFrom xsd:positiveInteger ] .
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-reln-org:DwellingCapacity ] .
 
 fibo-loan-reln-org:AmortizationType-adjustableRate a owl:NamedIndividual,
         fibo-loan-reln-org:AmortizationType ;
@@ -290,11 +290,11 @@ fibo-loan-reln-org:MortgageIndemnityGuarantee a owl:Class ;
         "抵押赔偿担保（mortgage indemnity guarantee）"@zh ;
     rdfs:comment "在抵押贷款还款因故中断（如借款人死亡或失业）时保护贷款人的保险型担保。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ;
-            owl:someValuesFrom fibo-loan-reln-org:MortgageIndemnityInsurancePolicy ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-gty:isGuaranteedBy ;
             owl:someValuesFrom fibo-loan-reln-org:MortgageIndemnityGuarantor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ;
+            owl:someValuesFrom fibo-loan-reln-org:MortgageIndemnityInsurancePolicy ],
         fibo-fbc-dae-gty:InsuranceBackedGuaranty ;
     skos:definition "insurance-backed guarantee that protects lenders if the mortgage repayments cease for some reason, perhaps due to death or a homeowner being made redundant at work"@en ;
     skos:editorialNote "See notes from SME Review and in MIG Provider. Applies to securitized pool, insures the lender. Additional note (IBM): there is a further application of this. When a lender takes a loan which is a where the value of the loan is greater than 80% of the value of the property, at that point it is required for the lender to also get a private mortgage insurance, so they are paying separately for the mortgage insurance so that if the borrower defaults above 80% then the mortgage insurance pays the loss. In the Loan Party Insurer (new \"Party\" type) you have Loan Party Insured Ratio (e.g. the 80% in the example above). These are different situations but the same principle. So this needs to be modeled for both. 30 June: Is this Lender or Borrower? since you have one lender and one borrower in a single loan, but multiple lenders in the case of packaging this up for a security - there are then multiple lenders and multiple borrowers. A similar kind of insurance exists in the one lender one borrower scenario i.e. the mortgage loan itself. There are two concepts here. the MIG thing was for bundling these. the MIG might apply across multiple contracts, but still be a fact about \"the\" contract? The notes about 80% above (IBM) are about the individual loan. ACTION: Tidy this up."@en .
@@ -370,6 +370,12 @@ fibo-loan-reln-org:hasNumberOfDwellingUnits a owl:DatatypeProperty ;
 
 fibo-loan-reln-mtg:LoanSecuredByRealEstate a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-loan-reln-org:hasOriginatingServiceProvider ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( fibo-fbc-pas-fpas:FinancialServiceProvider [ a owl:Restriction ;
+                                owl:onProperty cmns-id:isIdentifiedBy ;
+                                owl:someValuesFrom fibo-loan-reln-org:NMLSR-ID ] ) ] ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-loan-reln-org:hasOriginatorPerson ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:intersectionOf ( fibo-be-le-lp:LegallyCompetentNaturalPerson [ a owl:Restriction ;
@@ -380,19 +386,13 @@ fibo-loan-reln-mtg:LoanSecuredByRealEstate a owl:Class ;
             owl:onClass fibo-loan-reln-org:MortgageIndemnityGuarantor ;
             owl:onProperty fibo-fbc-dae-gty:hasGuarantor ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-loan-reln-org:hasOriginatingServiceProvider ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( fibo-fbc-pas-fpas:FinancialServiceProvider [ a owl:Restriction ;
-                                owl:onProperty cmns-id:isIdentifiedBy ;
-                                owl:someValuesFrom fibo-loan-reln-org:NMLSR-ID ] ) ] ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:Servicer ;
+            owl:onProperty fibo-loan-ln-ln:isServicedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-loan-reln-mtg:LoanSecuredByRealEstate ;
-            owl:onProperty fibo-loan-reln-org:assumes ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-ln-ln:Servicer ;
-            owl:onProperty fibo-loan-ln-ln:isServicedBy ] .
+            owl:onProperty fibo-loan-reln-org:assumes ] .
 
 fibo-loan-reln-org:CashOutStatus a owl:Class ;
     rdfs:label "cash-out status",

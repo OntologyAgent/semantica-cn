@@ -30,13 +30,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number） | 由实体的商业编号、'RT'缩写和用于申报 GST/HST 的 4 位子账户编号拼接而成。 |
-| 商业编号（business number） | 加拿大法律实体（通常为企业）的标准标识符，是唯一的 9 位数字编号。 |
-| 公司所得税编号（corporation income tax number） | 由实体的商业编号、'RC'缩写和用于申报公司所得税的 4 位子账户编号拼接而成。 |
-| 进出口计划编号（import export program number） | 由实体的商业编号、'RM'缩写和用于海关及进出口申报的 4 位子账户编号拼接而成。 |
-| 信息申报计划编号（information return program number） | 由实体的商业编号、'RZ'缩写和用于信息申报的 4 位子账户编号拼接而成。 |
-| 工资代扣计划编号（payroll deductions program number） | 由实体的商业编号、'RP'缩写和用于申报工资代扣的 4 位子账户编号拼接而成。 |
-| 注册慈善机构计划编号（registered charity program number） | 由实体的商业编号、'RR'缩写和用于注册慈善机构捐赠申报的 4 位子账户编号拼接而成。 |
+| 商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number） | 由实体的商业编号、'RT'缩写和用于申报 GST/HST 的 4 位子账户编号拼接而成。<br>concatenation of an entity's business number, the 'RT' abbreviation and a 4-digit subaccount number used for reporting GST/HST |
+| 商业编号（business number） | 加拿大法律实体（通常为企业）的标准标识符，是唯一的 9 位数字编号。<br>unique, 9-digit number that is the standard identifier for legal entities in Canada which are typically a business |
+| 公司所得税编号（corporation income tax number） | 由实体的商业编号、'RC'缩写和用于申报公司所得税的 4 位子账户编号拼接而成。<br>concatenation of an entity's business number, the 'RC' abbreviation and a 4-digit subaccount number used for reporting corporate income tax |
+| 进出口计划编号（import export program number） | 由实体的商业编号、'RM'缩写和用于海关及进出口申报的 4 位子账户编号拼接而成。<br>concatenation of an entity's business number, the 'RM' abbreviation and a 4-digit subaccount number used for customs and import/export reporting purposes |
+| 信息申报计划编号（information return program number） | 由实体的商业编号、'RZ'缩写和用于信息申报的 4 位子账户编号拼接而成。<br>concatenation of an entity's business number, the 'RZ' abbreviation and a 4-digit subaccount number used for information returns |
+| 工资代扣计划编号（payroll deductions program number） | 由实体的商业编号、'RP'缩写和用于申报工资代扣的 4 位子账户编号拼接而成。<br>concatenation of an entity's business number, the 'RP' abbreviation and a 4-digit subaccount number used for reporting payroll deductions |
+| 注册慈善机构计划编号（registered charity program number） | 由实体的商业编号、'RR'缩写和用于注册慈善机构捐赠申报的 4 位子账户编号拼接而成。<br>concatenation of an entity's business number, the 'RR' abbreviation and a 4-digit subaccount number used for registered charity contribution |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

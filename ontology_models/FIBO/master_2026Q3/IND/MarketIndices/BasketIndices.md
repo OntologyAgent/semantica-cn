@@ -31,14 +31,14 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 信用风险篮子（basket of credit risks） | 为风险分析目的而汇集的工具、法律实体或其组合的篮子。 |
-| 股票篮子（basket of equities） | 成分为上市股票的证券篮子。 |
-| 市值加权函数（capitalization-based weighting function） | 由指数所跟踪公司的相对市值（股价乘以流通股数）导出的加权函数。 |
-| 信用指数（credit index） | 以改变标的组合价值的信用事件为函数的参考指数。 |
-| 信用指数成分（credit index constituent） | 信用风险篮子的组成成分。 |
-| 股票指数（equity index） | 成分全部为股票工具的基准指数。 |
-| 市值（market capitalization） | 表示股票市场在特定时点对公司之估值的表达式。 |
-| 参考指数（reference index） | 篮子内容在给定时期内价值变化的度量。 |
+| 信用风险篮子（basket of credit risks） | 为风险分析目的而汇集的工具、法律实体或其组合的篮子。<br>basket of instruments, legal entities, or a combination thereof collected for the purpose of analyzing risk |
+| 股票篮子（basket of equities） | 成分为上市股票的证券篮子。<br>basket of securities whose constituents are listed shares |
+| 市值加权函数（capitalization-based weighting function） | 由指数所跟踪公司的相对市值（股价乘以流通股数）导出的加权函数。<br>weighting function derived from the relative market capitalization (share price times the number of shares outstanding) of the companies tracked by an index |
+| 信用指数（credit index） | 以改变标的组合价值的信用事件为函数的参考指数。<br>reference index that is a function of credit events that change the value of an underlying portfolio |
+| 信用指数成分（credit index constituent） | 信用风险篮子的组成成分。<br>constituent of a basket of credit risks |
+| 股票指数（equity index） | 成分全部为股票工具的基准指数。<br>benchmark whose constituents are exclusively equity instruments |
+| 市值（market capitalization） | 表示股票市场在特定时点对公司之估值的表达式。<br>expression representing the perceived value of a company as determined by the stock market at a specific point in time |
+| 参考指数（reference index） | 篮子内容在给定时期内价值变化的度量。<br>measure of change in the value of the contents of a basket over a given period of time |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -84,7 +84,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有市值（has market capitalization）** | 标识某发行人在某日期的市值。 | 值域：市值（market capitalization） |
+| **具有市值（has market capitalization）** | 标识某发行人在某日期的市值。<br>indicates the market capitalization of some issuer as of some date | 值域：市值（market capitalization） |
 
 公理：
 
@@ -101,7 +101,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有货币（hasCurrency）** | — | — |
-| **具有债务排序（has debt ranking）** | 标识该债务工具相对于信用指数整体的排序。 | 值域：xsd:string |
+| **具有债务排序（has debt ranking）** | 标识该债务工具相对于信用指数整体的排序。<br>indicates the ranking of this debt instrument with respect to the credit index as a whole | 值域：xsd:string |
 | **引用（refersTo）** | — | — |
 
 公理：
@@ -119,7 +119,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有市值金额（has market capitalization value）** | 标识表示某发行人在某日期市值的货币金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有市值金额（has market capitalization value）** | 标识表示某发行人在某日期市值的货币金额。<br>indicates the monetary amount representing the market capitalization of some issuer as of some date | 值域：货币数量；子属性：具有货币数量 |
 | **具有流通股数（hasSharesOutstanding）** | — | — |
 | **适用于（appliesTo）** | — | — |
 | **具有观测日期时间（hasObservedDateTime）** | — | — |
@@ -149,7 +149,7 @@
 | **具有周期性（hasPeriodicity）** | — | — |
 | **具有发布日期（hasReleaseDate）** | — | — |
 | **具有发布日期时间（hasReleaseDateTime）** | — | — |
-| **具有指数名称（has index name）** | 指明该指数的正式名称。 | 值域：xsd:string；子属性：具有正式名称 |
+| **具有指数名称（has index name）** | 指明该指数的正式名称。<br>specifies a formal name for the index | 值域：xsd:string；子属性：具有正式名称 |
 | **由……分类（isClassifiedBy）** | — | — |
 
 公理：
@@ -173,10 +173,10 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **基于（isBasedOn）** | — | — |
-| **具有原始名义价值（has original notional value）** | 标识该指数最初构成时所代表的名义金额。 | 值域：货币数量；子属性：具有名义金额 |
-| **具有权利金（has premium）** | 标识基于该指数的合同应付的权利金。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有利差区间（has spread range）** | 指数各成分的信用利差区间。 | 值域：xsd:string |
-| **具有预付费用（has up front fee）** | 指明任何希望在合同开始后参与基于该指数之合同的参与方应付的费用。 | 值域：货币数量 |
+| **具有原始名义价值（has original notional value）** | 标识该指数最初构成时所代表的名义金额。<br>indicates the notional amount represented by the index when it is first constituted | 值域：货币数量；子属性：具有名义金额 |
+| **具有权利金（has premium）** | 标识基于该指数的合同应付的权利金。<br>indicates a premium payable for a contract based on the index | 值域：货币数量；子属性：具有货币数量 |
+| **具有利差区间（has spread range）** | 指数各成分的信用利差区间。<br>the range of credit spread for the constituents of the index | 值域：xsd:string |
+| **具有预付费用（has up front fee）** | 指明任何希望在合同开始后参与基于该指数之合同的参与方应付的费用。<br>specifies a fee payable by any party that wishes to participate in a contract based on the index after the start of its life | 值域：货币数量 |
 
 公理：
 
@@ -206,7 +206,7 @@
 
 | 属性 | 定义 |
 |---|---|
-| **具有指数值（has index value）** | 指明给定指数在发布日的值。 |
+| **具有指数值（has index value）** | 指明给定指数在发布日的值。<br>specifies the value of a given index as of the release date |
 
 ## 4. 依赖（owl:imports，21 个）
 

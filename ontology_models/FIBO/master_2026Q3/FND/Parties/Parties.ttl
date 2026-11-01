@@ -84,12 +84,12 @@ fibo-fnd-pty-pty:TaxIdentifier a owl:Class ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ;
             owl:someValuesFrom cmns-rga:Jurisdiction ],
         [ a owl:Restriction ;
-            owl:onClass cmns-pts:Party ;
-            owl:onProperty cmns-id:identifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-pty-pty:TaxIdentificationScheme ;
             owl:onProperty cmns-col:isMemberOf ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-pts:Party ;
+            owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-id:Identifier ;
     skos:definition "identifier assigned to a taxpayer that enables compulsory financial charges and other levies to be imposed on the taxpayer by a governmental organization in order to fund government spending and various public expenditures" ;
@@ -115,15 +115,15 @@ fibo-fnd-pty-pty:PartyRoleIdentifier a owl:Class ;
     rdfs:comment "基于参与方在某种情境中所扮演的特定角色，能够唯一标识该参与方的字符序列。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass fibo-fnd-pty-pty:PartyRoleIdentificationScheme ;
-            owl:onProperty cmns-col:isMemberOf ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fnd-pty-pty:PartyRoleIdentificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass cmns-pts:PartyRole ;
             owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-pty-pty:PartyRoleIdentificationScheme ;
+            owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-id:Identifier ;
     skos:definition "sequence of characters, capable of uniquely identifying a party based on a specific role that they play in some context" .

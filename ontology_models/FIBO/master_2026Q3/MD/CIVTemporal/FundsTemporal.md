@@ -31,18 +31,18 @@
 | 应计费用（accrued fees） | 已发生但尚未支付的费用。 |
 | 应计收益（accrued income） | 已赚取但尚未收到的收益。 |
 | 应计税款（accrued taxes） | 已发生但尚未缴纳的税款。 |
-| 年化绩效确定方法（annualized performance determination method） | 以年化方式确定绩效的方法。 |
+| 年化绩效确定方法（annualized performance determination method） | 以年化方式确定绩效的方法。<br>Annualized performance determination. |
 | 应付费用（fee payable） | 应支付的费用。 |
 | 基金价格（fund price） | 基金单位的价格。 |
 | 基金单位绩效（fund unit performance） | 基金单位在一定时期内的绩效表现。 |
 | 基金税（funds tax） | 与基金相关的税项。 |
-| 费前绩效确定方法（gross of fee performance determination method） | 在扣除费用之前确定绩效的方法。 |
-| 资金加权收益率绩效确定方法（money weighted rate of return performance determination method） | 以资金加权收益率确定绩效的方法。 |
-| 绩效确定方法（performance determination method） | 确定绩效的方法（如时间加权、资金加权、年化、费前），连同确定绩效的时间框架。 |
+| 费前绩效确定方法（gross of fee performance determination method） | 在扣除费用之前确定绩效的方法。<br>Performance determined gross of fee. Review: Is this mutually exclusive with the other listed method? It sounds like it is not. |
+| 资金加权收益率绩效确定方法（money weighted rate of return performance determination method） | 以资金加权收益率确定绩效的方法。<br>Money weighted rate of return. |
+| 绩效确定方法（performance determination method） | 确定绩效的方法（如时间加权、资金加权、年化、费前），连同确定绩效的时间框架。<br>A method for performance determination (e.g. Time weighted and money weighted, annualized, gross of fee) along with the time frame in which this is determined. PLUS Performances NamePeriod |
 | 持仓西格玛值（sigma value of holdings） | 持仓的标准差值。 |
 | 摆动（swing） | 基金单位价格因大额申购或赎回而进行的摆动调整。 |
 | 摆动价格（swing price） | 经摆动调整后的基金单位价格。 |
-| 时间加权收益率绩效确定方法（time weighted rate of return performance determination method） | 以时间加权收益率确定绩效的方法。 |
+| 时间加权收益率绩效确定方法（time weighted rate of return performance determination method） | 以时间加权收益率确定绩效的方法。<br>Time weighted rate of return. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -84,7 +84,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **确定日期（determination date）** | 绩效确定的日期。 | 值域：日期 |
-| **确定期间（determination period）** | 绩效所确定的期间。 | 值域：日期区间 |
+| **确定期间（determination period）** | 绩效所确定的期间。<br>THe period for which the performance is determined | 值域：日期区间 |
 | **费后或费前（net or gross of fees）** | 表明绩效是扣除费用后（费后）还是扣除费用前（费前）。 | 值域：xsd:string |
 
 ### 2.7 基金税（funds tax）
@@ -112,7 +112,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **绩效确定时间框架（performance determination timeframe）** | 绩效报告所基于的时间框架（如 1 个月、1 年、年初至今）。 | 值域：日期区间 |
+| **绩效确定时间框架（performance determination timeframe）** | 绩效报告所基于的时间框架（如 1 个月、1 年、年初至今）。<br>The timeframe on which the performance is reported (e.g. 1month, 1 year, YTD). | 值域：日期区间 |
 
 #### 2.8.1 年化绩效确定方法（annualized performance determination method）
 

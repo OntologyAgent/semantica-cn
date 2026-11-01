@@ -242,12 +242,12 @@ fibo-ind-ei-ei:Household a owl:Class ;
         "住户（household）"@zh ;
     rdfs:comment "共同居住于一个住房单元（如房屋或公寓）作为通常居所、并共享部分或全部资源的个人或小群体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-fnd-aap-ppl:Person ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-ind-ei-ei:HousingUnit ;
             owl:onProperty cmns-loc:hasLocation ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-fnd-aap-ppl:Person ],
         fibo-ind-ei-ei:InstitutionalUnit ;
     skos:definition "individual or small group of persons who occupy a housing unit (such as a house or apartment) as their usual place of residence, who pool some, or all, of their income and wealth and who consume certain types of goods and services collectively, mainly housing and food" ;
     cmns-av:adaptedFrom <http://stats.oecd.org/glossary/detail.asp?ID=1255> ;
@@ -363,10 +363,10 @@ fibo-ind-ei-ei:ValueAddedProducerPriceIndex a owl:Class ;
     rdfs:comment "表示投入与产出生产者价格指数加权平均的经济指标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty fibo-fnd-dt-oc:hasInput ;
-            owl:someValuesFrom fibo-ind-ei-ei:InputProducerPriceIndex ],
+            owl:someValuesFrom fibo-ind-ei-ei:OutputProducerPriceIndex ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-dt-oc:hasInput ;
-            owl:someValuesFrom fibo-ind-ei-ei:OutputProducerPriceIndex ],
+            owl:someValuesFrom fibo-ind-ei-ei:InputProducerPriceIndex ],
         fibo-ind-ei-ei:ProducerPriceIndex ;
     skos:definition "economic indicator representing a weighted average of the input and output producer price indices" ;
     cmns-av:abbreviation "value-added PPI" ;
@@ -393,11 +393,11 @@ fibo-ind-ei-ei:CivilianLaborForceParticipationRate a owl:Class ;
         "平民劳动力参与率（civilian labor force participation rate）"@zh ;
     rdfs:comment "表示给定经济体在某指定时期内劳动力参与率的经济指标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-ind-ei-ei:hasBaselinePopulation ;
-            owl:someValuesFrom fibo-ind-ei-ei:CivilianNonInstitutionalPopulation ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-ind-ei-ei:hasComparisonPopulation ;
             owl:someValuesFrom fibo-ind-ei-ei:CivilianLaborForce ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-ind-ei-ei:hasBaselinePopulation ;
+            owl:someValuesFrom fibo-ind-ei-ei:CivilianNonInstitutionalPopulation ],
         fibo-ind-ei-ei:EconomicIndicator,
         cmns-qtu:Expression ;
     skos:definition "economic indicator representing the rate of participation the labor force of a given economy for some specified period" ;
@@ -637,14 +637,14 @@ fibo-ind-ei-ei:Enterprise a owl:Class ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-ind-ei-ei:Establishment ],
         [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fnd-pas-pas:Good cmns-org:Service ) ] ],
         [ a owl:Class ;
             owl:unionOf ( fibo-fnd-pas-pas:Producer cmns-org:ServiceProvider ) ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom cmns-org:LegalPerson ],
         fibo-be-fct-fct:FunctionalBusinessEntity,
         fibo-ind-ei-ei:InstitutionalUnit ;
     skos:definition "functional business entity that produces and/or sells goods or services" ;
@@ -769,12 +769,12 @@ fibo-ind-ei-ei:ProducerPriceIndex a owl:Class ;
         "生产者价格指数（producer price index）"@zh ;
     rdfs:comment "表示生产者买卖的货物与服务价格随时间变化率之度量的经济指标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-dt-oc:hasInput ;
-            owl:someValuesFrom fibo-ind-ei-ei:FixedBasket ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-ind-ei-ei:hasBaselinePopulation ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-ind-ei-ei:EnterprisePopulation fibo-ind-ei-ei:EstablishmentPopulation fibo-ind-ei-ei:FixedBasketPopulation ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:hasInput ;
+            owl:someValuesFrom fibo-ind-ei-ei:FixedBasket ],
         fibo-ind-ei-ei:EconomicIndicator,
         cmns-qtu:Expression ;
     owl:disjointWith fibo-ind-ei-ei:ConsumerPriceIndex ;
@@ -878,16 +878,12 @@ fibo-ind-ei-ei:EconomicIndicator a owl:Class ;
         "经济指标（economic indicator）"@zh ;
     rdfs:comment "在统计区（地区）情境内规律且可比的经济活动统计度量，用于经济绩效分析。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:Date ;
+            owl:onProperty fibo-ind-ei-ei:hasSeriesOrigin ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty fibo-fnd-utl-alx:hasReleaseDate ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty fibo-fnd-utl-alx:hasReleaseDateTime ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-doc:hasReportingPeriod ;
-            owl:someValuesFrom cmns-dt:ExplicitDatePeriod ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty fibo-ind-ei-ei:isSeasonallyAdjusted ],
@@ -895,8 +891,12 @@ fibo-ind-ei-ei:EconomicIndicator a owl:Class ;
             owl:onProperty cmns-loc:hasCoverageArea ;
             owl:someValuesFrom fibo-ind-ei-ei:GovernmentSpecifiedStatisticalArea ],
         [ a owl:Restriction ;
-            owl:allValuesFrom cmns-dt:Date ;
-            owl:onProperty fibo-ind-ei-ei:hasSeriesOrigin ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty fibo-fnd-utl-alx:hasReleaseDateTime ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-doc:hasReportingPeriod ;
+            owl:someValuesFrom cmns-dt:ExplicitDatePeriod ],
         fibo-fnd-utl-alx:ScopedMeasure ;
     skos:definition "statistical measure of economic activity that is regular and comparable in the context of a statistical area (region), used for analysis of economic performance and predictions of future performance" ;
     skos:example "Example indicators include the average work week, weekly claims for unemployment insurance, new orders, vendor performance, stock prices, and changes in the money supply." ;

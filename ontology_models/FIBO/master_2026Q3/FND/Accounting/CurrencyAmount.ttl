@@ -134,12 +134,12 @@ fibo-fnd-acc-cur:ExchangeRate a owl:Class ;
             owl:onProperty fibo-fnd-acc-cur:hasDealtCurrency ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:Currency ;
-            owl:onProperty fibo-fnd-acc-cur:hasBaseCurrency ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-fnd-acc-cur:hasRateValue ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasBaseCurrency ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-qtu:Ratio ;
     skos:definition "rate at which one currency can be exchanged for another" ;
@@ -178,12 +178,12 @@ fibo-fnd-acc-cur:PreciousMetalIdentifier a owl:Class ;
         "贵金属标识符（precious metal identifier）"@zh ;
     rdfs:comment "在某情境中唯一标识贵金属的字符序列。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-acc-cur:PreciousMetal ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty cmns-dsg:hasTag ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-id:identifies ;
-            owl:someValuesFrom fibo-fnd-acc-cur:PreciousMetal ],
         cmns-cds:CodeElement,
         cmns-id:Identifier ;
     skos:definition "sequence of characters uniquely identifying the precious metal in some context" .
@@ -193,12 +193,12 @@ fibo-fnd-acc-cur:UnitOfAccountIdentifier a owl:Class ;
         "记账单位标识符（unit of account identifier）"@zh ;
     rdfs:comment "可用于唯一标识名义货币单位的字符序列。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-id:identifies ;
-            owl:someValuesFrom fibo-fnd-acc-cur:UnitOfAccount ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty cmns-dsg:hasTag ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-acc-cur:UnitOfAccount ],
         cmns-cds:CodeElement,
         cmns-id:Identifier ;
     skos:definition "sequence of characters that can be used to uniquely identify a nominal monetary unit" .
@@ -373,12 +373,12 @@ fibo-fnd-acc-cur:MonetaryAmount a owl:Class ;
         "货币数量（monetary amount）"@zh ;
     rdfs:comment "以货币单位表示的一定金额的量。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:Currency ;
-            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-fnd-acc-cur:hasAmount ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-qtu:ScalarQuantityValue ;
     skos:definition "measure that is an amount of money specified in monetary units" .
@@ -406,10 +406,10 @@ fibo-fnd-acc-cur:Currency a owl:Class ;
             owl:onProperty cmns-cxtdsg:isUsedBy ;
             owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-acc-cur:hasNumericCode ;
+            owl:onProperty cmns-dsg:hasTextualName ;
             owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:hasTextualName ;
+            owl:onProperty fibo-fnd-acc-cur:hasNumericCode ;
             owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;

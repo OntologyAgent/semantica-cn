@@ -34,31 +34,31 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 亚式期权（Asian option） | 行权条款中支付额由标的平均价格（行权价或结算价）决定的期权。 |
-| 亚式期权分类器（Asian option classifier） | 按基于利率还是基于价格对亚式期权进行分类的金融工具分类器。 |
-| 平均方法（averaging strategy） | 用于计算亚式期权平均利率或平均价格的方法。 |
-| 障碍期权（barrier option） | 最终行权取决于标的工具价格路径的期权，即其支付取决于标的价格是否触及特定水平。 |
-| 任选期权（chooser option） | 允许持有人（买方）选择按固定价格买入（看涨）或卖出（看跌）指定资产之权利的奇异期权。 |
-| 棘轮期权（cliquet option） | 由一系列平值（ATM）期权（看跌或看涨）构成的奇异期权，前一期权到期时后一期权生效。 |
-| 康莫多期权（commodore option） | 由若干数字障碍期权构成的奇异期权，当标的或标的篮子达到预定水平时支付票息。 |
-| 复合期权（compound option） | 标的资产为另一期权的奇异期权。 |
-| 数字期权（digital option） | 在期权处于实值且支付条件满足时支付预定金额的奇异期权。 |
-| 双重障碍期权（double barrier option） | 应用于货币或场外股票的障碍期权，其运作方式类似二元（数字）期权，仅在规定情形下支付。 |
-| 固定回望行权价表达式（fixed lookback strike expression） | 规定计算回望期权固定行权价所需参数的现金流表达式。 |
-| 浮动回望行权价表达式（floating lookback strike expression） | 规定计算回望期权可行权最优预计价格所需参数的现金流表达式。 |
-| 远期生效期权（forward start option） | 就已定到期日、标的资产和其他参数完全确定、在购买时付款、但在未来某时生效的奇异期权。 |
-| 利率上限期权（interest rate cap option） | 买方在每个利率超过约定行权价的期间结束时收到付款的利率衍生品。 |
-| 利率下限期权（interest rate floor option） | 买方在每个利率低于约定行权价的期间结束时收到付款的利率衍生品。 |
-| 敲入期权（knock-in option） | 在达到特定价格门槛之前不被触发的障碍期权。 |
-| 敲出期权（knock-out option） | 内建机制使期权在标的资产达到指定价格水平时作废失效的障碍期权。 |
-| 回望期权（lookback option） | 最大限度降低市场进入时点不确定性的奇异期权，持有人在确定行权时可利用历史价格信息。 |
-| 回望行权条款（lookback strike terms） | 基于特定期间（通常截至期权到期）的分析确定标的资产价值的条款。 |
-| 低行权价期权（low exercise price option） | 行权价为一分钱的欧式看涨期权，其表现类似于期货合约。 |
-| 山岭期权（mountain range option） | 基于多种标的证券的奇异期权。 |
-| 观察最优值（observed best value） | 回望期内某一日期观察到的、从期权视角被视为最优的标的资产价值。 |
-| 到期预计价值（projected value at maturity） | 在回望期内某一日期计算得出的标的资产到期预期价值。 |
-| 彩虹期权（rainbow option） | 与两种或更多标的资产的表现挂钩的奇异期权。 |
-| 互换期权（swaption） | 赋予持有人在未来某时进入互换交易的权利（而非义务）的场外期权。 |
+| 亚式期权（Asian option） | 行权条款中支付额由标的平均价格（行权价或结算价）决定的期权。<br>option whose exercise terms involve a payoff determined by the average underlying price (either the strike price or the settlement price) of the underlying asset over a predetermined period |
+| 亚式期权分类器（Asian option classifier） | 按基于利率还是基于价格对亚式期权进行分类的金融工具分类器。<br>financial instrument classifier that classifies Asian options based on whether they are rate-based or price based |
+| 平均方法（averaging strategy） | 用于计算亚式期权平均利率或平均价格的方法。<br>method used for calculating the average rate or price of an Asian option |
+| 障碍期权（barrier option） | 最终行权取决于标的工具价格路径的期权，即其支付取决于标的价格是否触及特定水平。<br>option whose final exercise depends upon the path taken by the price of an underlying instrument, i.e., whose payoff depends on whether or not the underlying asset has reached or exceeded a predetermined price |
+| 任选期权（chooser option） | 允许持有人（买方）选择按固定价格买入（看涨）或卖出（看跌）指定资产之权利的奇异期权。<br>exotic option that allows its holder (buyer) to exercise the right to buy (call) or sell (put) specified assets at a fixed price whereby the buyer does not have to decide whether the contract will be a put or a call until an agreed future date, prior to expiration |
+| 棘轮期权（cliquet option） | 由一系列平值（ATM）期权（看跌或看涨）构成的奇异期权，前一期权到期时后一期权生效。<br>exotic option that is a series of at-the-money (ATM) options, either puts or calls, where each successive option becomes active when the previous one expires |
+| 康莫多期权（commodore option） | 由若干数字障碍期权构成的奇异期权，当标的或标的篮子达到预定水平时支付票息。<br>exotic option consisting of a number of digital barrier options that pay a coupon if a pre-determined level of the underlying or basket of underlyings is reached |
+| 复合期权（compound option） | 标的资产为另一期权的奇异期权。<br>exotic option for which the underlying asset is another option |
+| 数字期权（digital option） | 在期权处于实值且支付条件满足时支付预定金额的奇异期权。<br>exotic option that has a pre-determined payout if the option is in-the-money and the payoff condition is satisfied |
+| 双重障碍期权（double barrier option） | 应用于货币或场外股票的障碍期权，其运作方式类似二元（数字）期权，仅在规定情形下支付。<br>barrier option applied to currencies or over the counter stocks that works as a binary, or digital option in that it pays out only under defined circumstances, or it is worthless, at expiration |
+| 固定回望行权价表达式（fixed lookback strike expression） | 规定计算回望期权固定行权价所需参数的现金流表达式。<br>cashflow expression specifying the arguments required to calculate the fixed price at which the lookback option is to be exercised |
+| 浮动回望行权价表达式（floating lookback strike expression） | 规定计算回望期权可行权最优预计价格所需参数的现金流表达式。<br>cashflow expression specifying the arguments required to calculate the best projected price at which the lookback option may be exercised |
+| 远期生效期权（forward start option） | 就已定到期日、标的资产和其他参数完全确定、在购买时付款、但在未来某时生效的奇异期权。<br>exotic option that is fully specified with respect to a set expiry date, underlying asset and other parameters, purchased and paid for on initiation, but that becomes active at a set activation date with a strike price determined at the time of activation |
+| 利率上限期权（interest rate cap option） | 买方在每个利率超过约定行权价的期间结束时收到付款的利率衍生品。<br>interest rate derivative in which the buyer receives payments at the end of each period in which the interest rate exceeds the agreed strike price |
+| 利率下限期权（interest rate floor option） | 买方在每个利率低于约定行权价的期间结束时收到付款的利率衍生品。<br>interest rate derivative in which the buyer receives payments at the end of each period in which the interest rate is below the agreed strike price |
+| 敲入期权（knock-in option） | 在达到特定价格门槛之前不被触发的障碍期权。<br>barrier option that is not triggered until a certain price threshold is met |
+| 敲出期权（knock-out option） | 内建机制使期权在标的资产达到指定价格水平时作废失效的障碍期权。<br>barrier option with a built-in mechanism to expire as worthless if a specified price level in the underlying asset is reached |
+| 回望期权（lookback option） | 最大限度降低市场进入时点不确定性的奇异期权，持有人在确定行权时可利用历史价格信息。<br>exotic option that minimizes the uncertainties related to the timing of market entry, providing the holder the advantage of knowing history when determining when to exercise their option |
+| 回望行权条款（lookback strike terms） | 基于特定期间（通常截至期权到期）的分析确定标的资产价值的条款。<br>terms specifying the value of the underlying asset based on analysis during a specific period, typically ending in the maturity of the option, whereby the payoff is determined by comparing the strike price with the value of the selected price |
+| 低行权价期权（low exercise price option） | 行权价为一分钱的欧式看涨期权，其表现类似于期货合约。<br>exotic option that is a European-style call option with an exercise price of one cent that mimics a futures contract |
+| 山岭期权（mountain range option） | 基于多种标的证券的奇异期权。<br>exotic option based on multiple underlying securities |
+| 观察最优值（observed best value） | 回望期内某一日期观察到的、从期权视角被视为最优的标的资产价值。<br>observed value of the underlying asset as of some date during the lookback period that is considered the best value from the perspective of the option holder during the lookback period (depending on whether the option is a call or put) |
+| 到期预计价值（projected value at maturity） | 在回望期内某一日期计算得出的标的资产到期预期价值。<br>expected value of the underlying asset at maturity calculated as of some date during the lookback period |
+| 彩虹期权（rainbow option） | 与两种或更多标的资产的表现挂钩的奇异期权。<br>exotic option linked to the performances of two or more underlying assets |
+| 互换期权（swaption） | 赋予持有人在未来某时进入互换交易的权利（而非义务）的场外期权。<br>over-the-counter option that confers the right but not the obligation, to enter into a swap transaction at some time in the future |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -72,9 +72,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有亚式尾部期间（has Asian tail period）** | 标的合约价格平均值计算生效的时间窗口。 | 值域：日期区间；子属性：具有日期区间 |
-| **平均值计算所用货币（uses currency in averaging）** | 指明平均值计算所使用的货币。 | 值域：货币；子属性：具有货币 |
-| **是否使用加权平均（uses weighted average）** | 表明是否使用加权平均来计算平均利率或行权价。 | 值域：xsd:boolean |
+| **具有亚式尾部期间（has Asian tail period）** | 标的合约价格平均值计算生效的时间窗口。<br>window of time during which averaging of the price of the underlying contract is effective | 值域：日期区间；子属性：具有日期区间 |
+| **平均值计算所用货币（uses currency in averaging）** | 指明平均值计算所使用的货币。<br>indicates the currency used in averaging calculation | 值域：货币；子属性：具有货币 |
+| **是否使用加权平均（uses weighted average）** | 表明是否使用加权平均来计算平均利率或行权价。<br>indicates whether a weighted average is being used to calculate the average rate or strike price | 值域：xsd:boolean |
 | **具有行权日（hasExerciseDate）** | — | — |
 | **由……分类（isClassifiedBy）** | — | — |
 
@@ -130,9 +130,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有监测频率（has monitoring frequency）** | 检查资产价格是否突破障碍的频率（以天计）。 | 值域：xsd:positiveInteger |
-| **具有监测期（has monitoring period）** | 对定价进行监测的时间窗口。 | 值域：日期区间；子属性：具有日期区间 |
-| **是否高于行权价（is above strike price）** | 表明标的价格高于（或低于）行权价（门槛）时是否触发障碍。 | 值域：xsd:boolean |
+| **具有监测频率（has monitoring frequency）** | 检查资产价格是否突破障碍的频率（以天计）。<br>has frequency with respect to how often, in days, the asset price is checked to see if the barrier has been breached | 值域：xsd:positiveInteger |
+| **具有监测期（has monitoring period）** | 对定价进行监测的时间窗口。<br>window of time during which pricing is monitored | 值域：日期区间；子属性：具有日期区间 |
+| **是否高于行权价（is above strike price）** | 表明标的价格高于（或低于）行权价（门槛）时是否触发障碍。<br>indicates whether the barrier is crossed when the price of the underlier is above (or below, if not) the strike price (threshold) | 值域：xsd:boolean |
 
 公理：
 
@@ -156,10 +156,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。 | 值域：货币价格；子属性：具有价格 |
-| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。 | 值域：百分比货币数量；子属性：具有价格 |
-| **具有第二障碍价格（has second barrier price）** | 双重障碍期权中第二重障碍激活或失效的价格（或水平）。 | 值域：货币价格；子属性：具有价格 |
-| **具有第二返还金额（has second rebate amount）** | 指明双重障碍期权中持有人支付的权利金百分比。 | 值域：百分比货币数量；子属性：具有价格 |
+| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。<br>has price (or level) that activates or deactivates the option | 值域：货币价格；子属性：具有价格 |
+| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。<br>indicates the percentage of the premium paid by the holder for the option | 值域：百分比货币数量；子属性：具有价格 |
+| **具有第二障碍价格（has second barrier price）** | 双重障碍期权中第二重障碍激活或失效的价格（或水平）。<br>has price (or level) that the second barrier activates or deactivates in the case of a double barrier option | 值域：货币价格；子属性：具有价格 |
+| **具有第二返还金额（has second rebate amount）** | 指明双重障碍期权中持有人支付的权利金百分比。<br>indicates the percentage of the premium paid by the holder in the case of a double barrier option | 值域：百分比货币数量；子属性：具有价格 |
 
 公理：
 
@@ -178,8 +178,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。 | 值域：货币价格；子属性：具有价格 |
-| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。 | 值域：百分比货币数量；子属性：具有价格 |
+| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。<br>has price (or level) that activates or deactivates the option | 值域：货币价格；子属性：具有价格 |
+| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。<br>indicates the percentage of the premium paid by the holder for the option | 值域：百分比货币数量；子属性：具有价格 |
 
 公理：
 
@@ -196,8 +196,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。 | 值域：货币价格；子属性：具有价格 |
-| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。 | 值域：百分比货币数量；子属性：具有价格 |
+| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。<br>has price (or level) that activates or deactivates the option | 值域：货币价格；子属性：具有价格 |
+| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。<br>indicates the percentage of the premium paid by the holder for the option | 值域：百分比货币数量；子属性：具有价格 |
 
 公理：
 
@@ -214,7 +214,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有期权类型选择日（has option type election date）** | 指明任选期权合约持有人选择看涨或看跌的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有期权类型选择日（has option type election date）** | 指明任选期权合约持有人选择看涨或看跌的日期。<br>indicates the date on which the holder of the chooser option contract determines a choice of either a call or a put | 值域：显式日期；子属性：具有显式日期 |
 | **包含（comprises）** | — | — |
 
 公理：
@@ -368,7 +368,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有回望期（has lookback period）** | 回望生效的时间窗口。 | 值域：日期区间；子属性：具有日期区间 |
+| **具有回望期（has lookback period）** | 回望生效的时间窗口。<br>window of time during which the lookback is effective | 值域：日期区间；子属性：具有日期区间 |
 | **具有自变量（hasArgument）** | — | — |
 | **具有表达式（hasExpression）** | — | — |
 

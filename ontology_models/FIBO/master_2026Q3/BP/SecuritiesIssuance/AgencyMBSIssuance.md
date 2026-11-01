@@ -41,30 +41,30 @@
 | 评估池的发行适用性（assess pool suitablility for issuance） | 评估抵押贷款池是否适合用于发行。 |
 | 分类抵押贷款（classify mortgage） | 按类别对抵押贷款进行归类。 |
 | 定义抵押贷款池（define mortgage pool） | 确定抵押贷款池的构成标准与内容。 |
-| 起草过手证券条款清单（draft pass through termsheet） | 起草定义过手证券条款的信息集，最终将成为该工具的合同条款。 |
+| 起草过手证券条款清单（draft pass through termsheet） | 起草定义过手证券条款的信息集，最终将成为该工具的合同条款。<br>Draft of set of information defining the pass thorugh security terms. These will eventually become the contractual terms of the instrument. Term origin:MBS PoC Reviews |
 | 拟定发行备忘录（draw up offering memorandum） | 拟定载明未来发行基本信息、供潜在投资者参考的发行备忘录。 |
 | 拟定条款清单（draw up termsheet） | 拟定载明发行条款的条款清单。 |
 | 定稿池内容（finalize pool content） | 最终确定抵押贷款池的构成内容。 |
 | 定稿招募说明书（finalize prospectus） | 最终确定发行的招募说明书。 |
-| 识别合格抵押贷款（identify conforming mortgage） | 识别符合该发行人总体要求的抵押贷款。 |
+| 识别合格抵押贷款（identify conforming mortgage） | 识别符合该发行人总体要求的抵押贷款。<br>Identify mortgage conforming to overall requirements for this issuer. |
 | 确定承销商（identify underwriter） | 确定本次发行的承销商。 |
 | 组建中机构抵押贷款池（in assembly agency mortgage pool） | 尚在组建、内容未定的机构抵押贷款池。 |
 | 发行中机构抵押贷款池（in issuance agency mortgage pool） | 正在发行过程中的机构抵押贷款池。 |
 | 使证券进入市场（make securities availabe in market） | 使所发行证券可在市场上获得。 |
 | 营销发行（market issue） | 对本次发行进行市场营销。 |
 | 未发行机构抵押贷款池（not yet issued agency mortgage pool） | 已组建但尚未发行的机构抵押贷款池。 |
-| 过手发行招募说明书部分（pass through issue prospectus part） | 过手 MBS 发行招募说明书的一个部分或章节。 |
-| 过手 MBS 招募说明书草案（pass through m b s draft prospectus） | 发行机构在营销发行前确定的过手抵押贷款支持证券发行招募说明书草案。 |
-| 过手 MBS 最终招募说明书（pass through m b s final prospectus） | 过手 MBS 发行的最终招募说明书。 |
-| 过手 MBS 最终条款清单（pass through m b s final termsheet） | 过手 MBS 发行的最终条款清单，定义 MBS 合同本身的条款。 |
+| 过手发行招募说明书部分（pass through issue prospectus part） | 过手 MBS 发行招募说明书的一个部分或章节。<br>A part or section of a prospectus for a pass through MBS issue. Term origin:MBS PoC Reviews |
+| 过手 MBS 招募说明书草案（pass through m b s draft prospectus） | 发行机构在营销发行前确定的过手抵押贷款支持证券发行招募说明书草案。<br>The draft prospectus for a pass through Mortgage Backed Securities issue, as determined by the issuing agency prior to marketing the issue. Certain terms in the draft prospectus will be finalized later in the issuance process to become the actual Prospectus. Term origin:MBS PoC Reviews |
+| 过手 MBS 最终招募说明书（pass through m b s final prospectus） | 过手 MBS 发行的最终招募说明书。<br>Term origin:MBS PoC Reviews |
+| 过手 MBS 最终条款清单（pass through m b s final termsheet） | 过手 MBS 发行的最终条款清单，定义 MBS 合同本身的条款。<br>The final termsheet for the pass through MBS issue. This defines the terms for the MBS contract itself. Term origin:MBS PoC Reviews |
 | 过手 MBS 证券化流程（pass through m b s securitization process） | 过手型抵押贷款支持证券的证券化过程。 |
-| 过手发行备忘录（pass through offering memorandum） | 过手 MBS 发行的发行备忘录，载明未来发行的基本信息，供潜在投资者参考。 |
+| 过手发行备忘录（pass through offering memorandum） | 过手 MBS 发行的发行备忘录，载明未来发行的基本信息，供潜在投资者参考。<br>The offering memorandum for a pass through MBS issue, setting out basic information about a future issue, for the information of prospective investors and their agents. Term origin:MBS PoC Reviews |
 | 池合格标准（pool conformance criteria） | 抵押贷款须满足方可入池的标准。 |
-| 潜在机构 MBS 发行人（potential agency m b s issuer） | 将成为过手 MBS 发行发行方的实体，是发行中大多数活动的主要行为体。 |
-| 潜在过手发行承销商（potential pass through issuance underwriter） | 将成为过手 MBS 发行承销商的实体。 |
+| 潜在机构 MBS 发行人（potential agency m b s issuer） | 将成为过手 MBS 发行发行方的实体，是发行中大多数活动的主要行为体。<br>The entity which will become the issuing party for the pass through MBS Issue. This entity is the principal actor in most of the activities involved in the issue. Term origin:MBS PoC Reviews |
+| 潜在过手发行承销商（potential pass through issuance underwriter） | 将成为过手 MBS 发行承销商的实体。<br>The entity which will become the underwriter for the pass through MBS issue. Term origin:MBS PoC Reviews |
 | 注册证券（register security） | 交易完成后将证券在注册机构正式注册。 |
 | 适合发行（suitable for issue） | 经评估适合用于发行的状态。 |
-| 验证合格性（validate conformance） | 自动验证抵押贷款是否符合其拟入池的要求。 |
+| 验证合格性（validate conformance） | 自动验证抵押贷款是否符合其拟入池的要求。<br>The mortgage is automatically validated for conformance to the requirements of the pool in which it is to be included. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

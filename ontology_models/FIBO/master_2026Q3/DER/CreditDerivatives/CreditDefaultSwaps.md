@@ -34,27 +34,27 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 资产支持信用违约互换（asset-backed credit default swap） | 标的参考债务为资产支持证券（而非公司信用）的信用违约互换。 |
-| 篮子信用违约互换（basket credit default swap） | 参考一组为特定场外衍生品交易约定的定制化合成资产组合的信用违约互换。 |
-| 信用违约互换篮子（basket of credit default swaps） | 参考债务为信用违约互换工具的篮子。 |
-| 现金结算方法（cash settlement method） | 计算或以其他方式确定合约最终参考价格的策略。 |
-| 或有信用违约互换（contingent credit default swap） | 需要额外触发事件才能生效的信用违约互换。 |
-| 信用违约互换（credit default swap） | 双边合约：一方（保护卖方）同意在信用事件发生时向另一方（保护买方）支付款项。 |
-| 信用违约互换指数（credit default swap index） | 标的参考债务为信用违约互换工具的指数。 |
-| 信用事件通知（credit event notice） | 声明触发事件已发生的不可撤销书面或口头通知。 |
-| 信用保护条款（credit protection terms） | 规定触发事件及与结算相关条件的法律条款。 |
-| 可交割资产（deliverable asset） | 在信用违约互换结算过程中必须交付的资产。 |
-| 可交割债务买方（deliverable obligation buyer） | 在触发事件发生时（视事件和合约而定）有义务购买可交割债务（资产）的合约方。 |
-| 可交割债务卖方（deliverable obligation seller） | 在触发事件发生时（视事件和合约而定）有义务出售可交割债务（资产）的合约方。 |
-| 托管代理人（escrow agent） | 在资产或资金按合约条款从一方正式转移给另一方之前代为持有的第三方。 |
-| 指数信用违约互换（index credit default swap） | 参考一族标准化信用衍生品指数的信用违约互换，其标的参考实体为一组既定实体篮子。 |
-| 指数分档信用违约互换（index tranche credit default swap） | 参考基于信用指数的合成债务抵押债券（CDO）的信用违约互换，每一档参考不同的损失区间。 |
-| 贷款信用违约互换（loan credit default swap） | 标的参考债务严格限于银团担保贷款（而非任何类型公司债务）的信用违约互换。 |
-| 多名信用违约互换（multi-name credit default swap） | 参考不止一个债务或借款人的信用违约互换。 |
-| 通知方（notifying party） | 负责发出一份或多份正式通知、表明与给定合约相关的事件已经发生的一方。 |
-| 结算拍卖（settlement auction） | 针对一组既定可交割债务独立管理的合成拍卖程序，用于确定可用于结算的最终参考价格。 |
-| 单名信用违约互换（single name credit default swap） | 标的风险为单一参考债务或单一参考实体（如公司或主权借款人）的信用违约互换。 |
-| 触发事件（triggering event） | 与信用违约互换的某些方面相关或触发这些方面的事件。 |
+| 资产支持信用违约互换（asset-backed credit default swap） | 标的参考债务为资产支持证券（而非公司信用）的信用违约互换。<br>credit default swap whose underlying reference obligation is an asset-backed security rather than corporate credit |
+| 篮子信用违约互换（basket credit default swap） | 参考一组为特定场外衍生品交易约定的定制化合成资产组合的信用违约互换。<br>credit default swap that references a bespoke, synthetic portfolio of underlying assets whose components have been agreed to for a specific OTC derivative by the parties to the transaction |
+| 信用违约互换篮子（basket of credit default swaps） | 参考债务为信用违约互换工具的篮子。<br>basket of reference obligations are credit default swap instruments |
+| 现金结算方法（cash settlement method） | 计算或以其他方式确定合约最终参考价格的策略。<br>strategy for calculating or otherwise establishing a reference final price for the contract |
+| 或有信用违约互换（contingent credit default swap） | 需要额外触发事件才能生效的信用违约互换。<br>credit default swap in which an additional triggering event is required |
+| 信用违约互换（credit default swap） | 双边合约：一方（保护卖方）同意在信用事件发生时向另一方（保护买方）支付款项。<br>bilateral contract in which one party (protection seller) agrees to provide payment to the other party (protection buyer) should a credit event occur against the underlying, which could be a specified debt (the reference obligation), a specific debt issuer (reference entity), a basket of reference entities and/or reference obligations, or a credit index (reference index) |
+| 信用违约互换指数（credit default swap index） | 标的参考债务为信用违约互换工具的指数。<br>index whose underlying reference obligations are credit default swap instruments |
+| 信用事件通知（credit event notice） | 声明触发事件已发生的不可撤销书面或口头通知。<br>irrevocable written or verbal notice that states that a triggering event has occurred |
+| 信用保护条款（credit protection terms） | 规定触发事件及与结算相关条件的法律条款。<br>legal terms that define triggering events and associated conditions related to settlement |
+| 可交割资产（deliverable asset） | 在信用违约互换结算过程中必须交付的资产。<br>asset that must be delivered as a part of the process of settling a credit default swap |
+| 可交割债务买方（deliverable obligation buyer） | 在触发事件发生时（视事件和合约而定）有义务购买可交割债务（资产）的合约方。<br>contract party that is obliged to purchase a deliverable obligation (asset) if a triggering event occurs, depending on the event and the contract |
+| 可交割债务卖方（deliverable obligation seller） | 在触发事件发生时（视事件和合约而定）有义务出售可交割债务（资产）的合约方。<br>contract party that is obliged to sell a deliverable obligation (asset) if a triggering event occurs, depending on the event and the contract |
+| 托管代理人（escrow agent） | 在资产或资金按合约条款从一方正式转移给另一方之前代为持有的第三方。<br>third party that holds an asset or funds before they are formally transferred from one party to another party, per the terms of a contract, within some specified time period and/or when a triggering event occurs |
+| 指数信用违约互换（index credit default swap） | 参考一族标准化信用衍生品指数的信用违约互换，其标的参考实体为一组既定实体篮子。<br>credit default swap that references a family of standardized credit derivative indices, where the underlying reference entities are a defined basket of credit from a particular geographic region (e.g. Asia, North America, Europe), and/or credit rating level (e.g. emerging markets, high yield, investment grade) |
+| 指数分档信用违约互换（index tranche credit default swap） | 参考基于信用指数的合成债务抵押债券（CDO）的信用违约互换，每一档参考不同的损失区间。<br>credit default swap that references a synthetic collateralized debt obligation (CDO) based on a credit index where each tranche references a different segment of the loss distribution of the underlying index |
+| 贷款信用违约互换（loan credit default swap） | 标的参考债务严格限于银团担保贷款（而非任何类型公司债务）的信用违约互换。<br>credit default swap whose underlying reference obligation is limited strictly to syndicated secured loans, rather than any type of corporate debt |
+| 多名信用违约互换（multi-name credit default swap） | 参考不止一个债务或借款人的信用违约互换。<br>credit default swap that references more than one obligation or borrower |
+| 通知方（notifying party） | 负责发出一份或多份正式通知、表明与给定合约相关的事件已经发生的一方。<br>party responsible for issuing one or more formal notices indicating that an event that is relevant to a given contract has taken place |
+| 结算拍卖（settlement auction） | 针对一组既定可交割债务独立管理的合成拍卖程序，用于确定可用于结算的最终参考价格。<br>independently administered synthetic auction process on a set of defined deliverable obligations that sets the reference final price that can be used to facilitate cash settlement of all covered transactions following a credit event |
+| 单名信用违约互换（single name credit default swap） | 标的风险为单一参考债务或单一参考实体（如公司或主权借款人）的信用违约互换。<br>credit default swap whose underlying risk is a single reference obligation, or a single reference entity, such as a corporation or a sovereign borrower |
+| 触发事件（triggering event） | 与信用违约互换的某些方面相关或触发这些方面的事件。<br>event that relates to or triggers some aspect of a credit default swap |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -91,7 +91,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有合约价格（has contract price）** | 规定买方购买信用违约互换合约的预定价格。 | 值域：货币价格；子属性：具有价格 |
+| **具有合约价格（has contract price）** | 规定买方购买信用违约互换合约的预定价格。<br>specifies a predetermined price at which the buyer purchases the credit default swap contract | 值域：货币价格；子属性：具有价格 |
 | **具有合同要素（hasContractualElement）** | — | — |
 | **具有发生事项（hasOccurrence）** | — | — |
 | **规定（specifies）** | — | — |
@@ -196,8 +196,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否允许替换（allows substitution）** | 表明是否可以用其他债务替换指定的可交割债务。 | 值域：xsd:boolean |
-| **具有预定终止日（has scheduled termination date）** | 双方约定的信用保护到期日期。 | 值域：显式日期；子属性：具有终止日 |
+| **是否允许替换（allows substitution）** | 表明是否可以用其他债务替换指定的可交割债务。<br>indicates whether it is possible to substitute other obligations in place of the specified deliverable obligation | 值域：xsd:boolean |
+| **具有预定终止日（has scheduled termination date）** | 双方约定的信用保护到期日期。<br>date on which credit protection is due to expire as agreed by both parties | 值域：显式日期；子属性：具有终止日 |
 | **具有买方（hasBuyer）** | — | — |
 | **具有卖方（hasSeller）** | — | — |
 | **规定（specifies）** | — | — |
@@ -275,8 +275,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有最低报价金额（has minimum quotation amount）** | 指明报价所针对的参考债务未偿本金余额的最低预期门槛金额。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有报价方法（has quotation method）** | 指明在确定参考债务市场价值时向银行和/或交易商请求的报价性质。 | 值域：现金结算方法（cash settlement method）；子属性：具有价格确定方法 |
+| **具有最低报价金额（has minimum quotation amount）** | 指明报价所针对的参考债务未偿本金余额的最低预期门槛金额。<br>indicates a minimum intended threshold amount of outstanding principal balance of the reference obligation for which the quote should be obtained | 值域：货币数量；子属性：具有货币数量 |
+| **具有报价方法（has quotation method）** | 指明在确定参考债务市场价值时向银行和/或交易商请求的报价性质。<br>indicates the nature of the pricing quotations to be requested from banks and/or dealers when determining the market value of the reference obligation for purposes of cash settlement | 值域：现金结算方法（cash settlement method）；子属性：具有价格确定方法 |
 
 ## 4. 依赖（owl:imports，25 个）
 

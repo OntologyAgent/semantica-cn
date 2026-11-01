@@ -34,37 +34,37 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 成年人（adult） | 在某管辖区达到法定成年年龄的人。 |
-| 法定成年年龄（age of majority） | 在某管辖区获得成年人权利与责任的年龄。 |
-| 出生证明（birth certificate） | 证明出生情况的原始文件，或该出生登记的认证副本或表示。 |
-| 出生证明标识方案（birth certificate identification scheme） | 为出生证明分配标识符的体系。 |
-| 出生证明标识符（birth certificate identifier） | 与记录儿童出生的生命统计记录关联的标识符。 |
-| 联系人（contact） | 作为指定联络点的参与方所扮演的角色，通常在某个系统或过程中。 |
-| 联系人记录（contact record） | 关于处于特定通信或联络角色的参与方的记录。 |
-| 出生日期（date of birth） | 个人出生的显式日期（年、月、日）。 |
-| 死亡日期（date of death） | 个人死亡的显式日期（年、月、日）。 |
-| 死亡证明（death certificate） | 证明死亡情况（如死亡方式与时间）的原始文件，或该死亡登记的认证副本或表示。 |
-| 死亡证明标识方案（death certificate identification scheme） | 为死亡证明分配标识符的体系。 |
-| 死亡证明标识符（death certificate identifier） | 与记录个人死亡的生命统计记录关联的标识符。 |
-| 驾驶证（driver's license） | 声明某人可在公共道路上驾驶机动车辆（如摩托车、汽车、卡车或公共汽车）的官方文件。 |
-| 驾驶证标识方案（driver's license identification scheme） | 为驾驶证、操作证或非驾驶身份证件分配标识符的体系。 |
-| 驾驶证标识符（driver's license identifier） | 与机动车驾驶执照或非驾驶身份卡关联的标识符。 |
-| 解除监护的未成年人（emancipated minor） | 获准在不受父母控制的情况下以自己名义或为自己账户经营业务或从事其他职业的未成年人。 |
-| 身份证件（identity document） | 可用于核验个人身份各个方面的任何法律文件。 |
-| 无行为能力成年人（incapacitated adult） | 在法律上被认定为不具有法律行为能力的成年人，通常因某种固有的身心障碍所致。 |
-| 法定年龄（legal age） | 在某管辖区获得做法律此前禁止之事的能力的年龄。 |
-| 法定工作年龄（legal working age） | 在某管辖区获得合法工作能力的年龄。 |
-| 达到法定工作年龄的人（legal working age person） | 年龄大于其工作所在管辖区规定的最低法定工作年龄的人。 |
-| 具有法律行为能力的成年人（legally capable adult） | 在某管辖区达到法定成年年龄、并获准以自己名义经营业务或从事其他职业的人。 |
-| 未成年人（minor） | 低于某一年龄（通常是给定管辖区的法定成年年龄）的人，该年龄在法律上划分童年与成年。 |
-| 国家身份号码（national identification number） | 出现在由国家或管辖区签发的身份证件上的号码或文字。 |
-| 国家身份号码方案（national identification number scheme） | 为国家身份号码分配标识符的体系。 |
-| 护照（passport） | 由国家政府签发的正式身份证件，为国际旅行目的证明持有人的身份与国籍。 |
-| 护照号码（passport number） | 与护照关联的国家身份号码。 |
-| 护照号码标识方案（passport number identification scheme） | 为护照分配标识符的体系。 |
-| 个人（person） | 具有自我意识的个体人类。 |
-| 人名（person name） | 某人在某情境中为人所知的指称。 |
-| 出生地（place of birth） | 个人出生的物理位置，包括国家、地区和市政区。 |
+| 成年人（adult） | 在某管辖区达到法定成年年龄的人。<br>person who has attained the age of majority as defined in some jurisdiction |
+| 法定成年年龄（age of majority） | 在某管辖区获得成年人权利与责任的年龄。<br>age at which someone acquires the rights and responsibilities of an adult in some jurisdiction |
+| 出生证明（birth certificate） | 证明出生情况的原始文件，或该出生登记的认证副本或表示。<br>an original document certifying the circumstances of the birth, or a certified copy of or representation of the ensuing registration of that birth |
+| 出生证明标识方案（birth certificate identification scheme） | 为出生证明分配标识符的体系。<br>system for allocating identifiers to birth certificates |
+| 出生证明标识符（birth certificate identifier） | 与记录儿童出生的生命统计记录关联的标识符。<br>identifier associated with a vital record documenting the birth of a child |
+| 联系人（contact） | 作为指定联络点的参与方所扮演的角色，通常在某个系统或过程中。<br>role or associated with a party serving as a designated point of communication, typically within a system or process |
+| 联系人记录（contact record） | 关于处于特定通信或联络角色的参与方的记录。<br>record about a party in a specific communicative or liaison role |
+| 出生日期（date of birth） | 个人出生的显式日期（年、月、日）。<br>explicit date, i.e., the day, month and year, on which an individual was born |
+| 死亡日期（date of death） | 个人死亡的显式日期（年、月、日）。<br>explicit date, i.e., the day, month and year, on which an individual died |
+| 死亡证明（death certificate） | 证明死亡情况（如死亡方式与时间）的原始文件，或该死亡登记的认证副本或表示。<br>original document certifying the circumstances of the death (such as how and when it occurred), or a certified copy of or representation of the ensuing registration of that death |
+| 死亡证明标识方案（death certificate identification scheme） | 为死亡证明分配标识符的体系。<br>system for allocating identifiers to death certificates |
+| 死亡证明标识符（death certificate identifier） | 与记录个人死亡的生命统计记录关联的标识符。<br>identifier associated with a vital record documenting the death of an individual |
+| 驾驶证（driver's license） | 声明某人可在公共道路上驾驶机动车辆（如摩托车、汽车、卡车或公共汽车）的官方文件。<br>an official document which states that a person may operate a motorized vehicle, such as a motorcycle, car, truck or a bus, on a public roadway or provides official identifying information for a non-driver |
+| 驾驶证标识方案（driver's license identification scheme） | 为驾驶证、操作证或非驾驶身份证件分配标识符的体系。<br>system for allocating identifiers to driver's, operating, or non-driver identification documents |
+| 驾驶证标识符（driver's license identifier） | 与机动车驾驶执照或非驾驶身份卡关联的标识符。<br>identifier associated with a drivers' or operating license for operating a motor vehicle or non-driver identification card |
+| 解除监护的未成年人（emancipated minor） | 获准在不受父母控制的情况下以自己名义或为自己账户经营业务或从事其他职业的未成年人。<br>a minor who is allowed to conduct a business or any other occupation on his or her own behalf or for their own account outside the control of a parent or guardian |
+| 身份证件（identity document） | 可用于核验个人身份各个方面的任何法律文件。<br>any legal document which may be used to verify aspects of a person's identity |
+| 无行为能力成年人（incapacitated adult） | 在法律上被认定为不具有法律行为能力的成年人，通常因某种固有的身心障碍所致。<br>an adult who is legally identified as not having legal capacity, typically as a result of some inherent physical or mental incapacity or as a result of having contracted some illness which temporarily deprives them of such capacity |
+| 法定年龄（legal age） | 在某管辖区获得做法律此前禁止之事的能力的年龄。<br>age at which someone acquires the capacity to do something that they were prohibited from doing before under the law in some jurisdiction |
+| 法定工作年龄（legal working age） | 在某管辖区获得合法工作能力的年龄。<br>age at which someone acquires the capacity to work legally in some jurisdiction |
+| 达到法定工作年龄的人（legal working age person） | 年龄大于其工作所在管辖区规定的最低法定工作年龄的人。<br>person whose age is greater than the minimum legal working age specified in a jurisdiction in which they work |
+| 具有法律行为能力的成年人（legally capable adult） | 在某管辖区达到法定成年年龄、并获准以自己名义经营业务或从事其他职业的人。<br>person who has attained the age of majority as defined in some jurisdiction and who is allowed to conduct a business or any other occupation on his or her own behalf or for their own account |
+| 未成年人（minor） | 低于某一年龄（通常是给定管辖区的法定成年年龄）的人，该年龄在法律上划分童年与成年。<br>a person under a certain age, usually the age of majority in a given jurisdiction, which legally demarcates childhood from adulthood |
+| 国家身份号码（national identification number） | 出现在由国家或管辖区签发的身份证件上的号码或文字。<br>number or text which appears on an identity document issued by a country or jurisdiction |
+| 国家身份号码方案（national identification number scheme） | 为国家身份号码分配标识符的体系。<br>system for allocating identifiers to national identification numbers |
+| 护照（passport） | 由国家政府签发的正式身份证件，为国际旅行目的证明持有人的身份与国籍。<br>formal identity document, issued by a national government, which certifies the identity and nationality of its holder for the purpose of international travel |
+| 护照号码（passport number） | 与护照关联的国家身份号码。<br>national identification number associated with a passport |
+| 护照号码标识方案（passport number identification scheme） | 为护照分配标识符的体系。<br>system for allocating identifiers to passports |
+| 个人（person） | 具有自我意识的个体人类。<br>individual human being, with consciousness of self |
+| 人名（person name） | 某人在某情境中为人所知的指称。<br>designation by which someone is known in some context |
+| 出生地（place of birth） | 个人出生的物理位置，包括国家、地区和市政区。<br>physical location, including country, region, and municipality where an individual was born |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -112,7 +112,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的联络点（is point of contact for）** | 是该参与方作为联络点所服务的实体或目的。 | 逆属性：具有联络点（has point of contact）；子属性：具有角色（has role） |
+| **是……的联络点（is point of contact for）** | 是该参与方作为联络点所服务的实体或目的。<br>is the entity or purpose for which the party is the point of contact | 逆属性：具有联络点（has point of contact）；子属性：具有角色（has role） |
 | **由……表示（isSignifiedBy）** | — | — |
 | **由……标识（isIdentifiedBy）** | — | — |
 | **由…扮演（is played by）** | — | — |
@@ -415,13 +415,13 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有国籍（has citizenship）** | 将个人关联到其国籍国。 | 值域：国家；子属性：由……分类 |
-| **具有出生日期（has date of birth）** | 标识个人出生的日期。 | 值域：出生日期（date of birth）；子属性：具有显式日期 |
-| **具有死亡日期（has date of death）** | 标识个人死亡的日期。 | 值域：死亡日期（date of death）；子属性：具有显式日期 |
-| **具有性别（has gender）** | 将特定性别值与个人关联。 | 值域：xsd:string |
-| **具有出生地（has place of birth）** | 标识个人出生的位置。 | 值域：出生地（place of birth）；子属性：以……为特征 |
-| **具有主要居所（has primary residence）** | 标识个人一年中大部分时间居住的住所。 | 值域：常规街道地址；子属性：具有居所（has residence） |
-| **具有居所（has residence）** | 标识个人居住的住所。 | 值域：常规街道地址；子属性：具有地址 |
+| **具有国籍（has citizenship）** | 将个人关联到其国籍国。<br>links a person to their country of citizenship | 值域：国家；子属性：由……分类 |
+| **具有出生日期（has date of birth）** | 标识个人出生的日期。<br>identifies the date on which an individual was born | 值域：出生日期（date of birth）；子属性：具有显式日期 |
+| **具有死亡日期（has date of death）** | 标识个人死亡的日期。<br>identifies the date on which an individual died | 值域：死亡日期（date of death）；子属性：具有显式日期 |
+| **具有性别（has gender）** | 将特定性别值与个人关联。<br>links a particular gender value with a person | 值域：xsd:string |
+| **具有出生地（has place of birth）** | 标识个人出生的位置。<br>identifies the location where an individual was born | 值域：出生地（place of birth）；子属性：以……为特征 |
+| **具有主要居所（has primary residence）** | 标识个人一年中大部分时间居住的住所。<br>identifies a dwelling where an individual resides the majority of the year | 值域：常规街道地址；子属性：具有居所（has residence） |
+| **具有居所（has residence）** | 标识个人居住的住所。<br>identifies a dwelling where an individual lives | 值域：常规街道地址；子属性：具有地址 |
 | **具有存续时间（hasAge）** | — | — |
 | **具有名称（hasName）** | — | — |
 
@@ -447,7 +447,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有法定成年年龄（has age of majority）** | 将某人关联到在某管辖区获得从事特定交易能力或被法律视为成年人所需的年龄。 | 值域：法定成年年龄（age of majority）；子属性：具有存续时间 |
+| **具有法定成年年龄（has age of majority）** | 将某人关联到在某管辖区获得从事特定交易能力或被法律视为成年人所需的年龄。<br>relates someone to the age required to attain the capacity to engage in certain transactions or be treated legally as an adult in some jurisdiction | 值域：法定成年年龄（age of majority）；子属性：具有存续时间 |
 
 公理：
 
@@ -479,7 +479,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有最低法定工作年龄（has minimum legal working age）** | 将某人关联到其居住管辖区的最低法定工作年龄。 | 值域：法定工作年龄（legal working age）；子属性：具有存续时间 |
+| **具有最低法定工作年龄（has minimum legal working age）** | 将某人关联到其居住管辖区的最低法定工作年龄。<br>relates someone to the minimum legal working age for the jurisdiction in which they reside | 值域：法定工作年龄（legal working age）；子属性：具有存续时间 |
 
 公理：
 
@@ -508,10 +508,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有完整法定姓名（has full legal name）** | 标识个人的完整姓名，通常用于正式场合（包括法律或合同性质的场合）。 | 子属性：具有人名（has person name） |
-| **具有姓名前缀（has name prefix）** | 标识位于个人姓名之前、提供其附加信息（如头衔、敬称或军衔）的字符或字符序列。 | 子属性：具有文本值 |
-| **具有姓名后缀（has name suffix）** | 标识位于个人姓名之后、提供其附加信息（如职位、学位、资格、官职或荣誉）的字符或字符序列。 | 子属性：具有文本值 |
-| **具有姓（has surname）** | 标识家庭成员共有的、区别于各成员名字的姓。 | 子属性：具有人名（has person name） |
+| **具有完整法定姓名（has full legal name）** | 标识个人的完整姓名，通常用于正式场合（包括法律或合同性质的场合）。<br>indicates the complete name of a person, typically used in formal situations including those of a legal or contractual nature | 子属性：具有人名（has person name） |
+| **具有姓名前缀（has name prefix）** | 标识位于个人姓名之前、提供其附加信息（如头衔、敬称或军衔）的字符或字符序列。<br>indicates a character or sequence of characters, preceding a person's name, that provides additional information about the person, such as a form of address representing a title, honorific, or military rank | 子属性：具有文本值 |
+| **具有姓名后缀（has name suffix）** | 标识位于个人姓名之后、提供其附加信息（如职位、学位、资格、官职或荣誉）的字符或字符序列。<br>indicates a character or sequence of characters, following a person's name, that provides additional information about the person, such as their position, educational degree, accreditation, office, or honor | 子属性：具有文本值 |
+| **具有姓（has surname）** | 标识家庭成员共有的、区别于各成员名字的姓。<br>indicates the name shared in common to identify the members of a family, as distinguished from each member's given name | 子属性：具有人名（has person name） |
 | **是……的名称（isNameOf）** | — | — |
 
 公理：
@@ -536,19 +536,19 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有联络点（has point of contact）** | 标识被指定为联络点的参与方。 | 值域：联系人（contact）；子属性：具有角色（has role） |
+| **具有联络点（has point of contact）** | 标识被指定为联络点的参与方。<br>identifies a party designated as the point of contact for | 值域：联系人（contact）；子属性：具有角色（has role） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有姓氏（has family name）** | 标识家庭成员共有的、区别于各成员名字的姓。 |
-| **具有名字（has first name）** | 标识个人的名，即出生时为其选取或其后更改的名字。 |
-| **具有名（has given name）** | 标识个人的名，即出生时为其选取或其后更改的名字。 |
-| **具有姓（has last name）** | 标识家庭成员共有的、区别于各成员名字的姓。 |
-| **具有婚前姓（has maiden name）** | 标识因婚姻而改姓之前的家族姓氏。 |
-| **具有中间名或首字母（has middle name or initial）** | 位于个人名与姓之间的一个或多个附加名字或首字母。 |
-| **具有人名（has person name）** | 将名称关联到个人。 |
+| **具有姓氏（has family name）** | 标识家庭成员共有的、区别于各成员名字的姓。<br>indicates the name shared in common to identify the members of a family, as distinguished from each member's given name |
+| **具有名字（has first name）** | 标识个人的名，即出生时为其选取或其后更改的名字。<br>indicates the given name or first name of a person, that is, the name chosen for them at birth or changed by them subsequently from the name given at birth |
+| **具有名（has given name）** | 标识个人的名，即出生时为其选取或其后更改的名字。<br>indicates the given name or first name of a person, that is, the name chosen for them at birth or changed by them subsequently from the name given at birth |
+| **具有姓（has last name）** | 标识家庭成员共有的、区别于各成员名字的姓。<br>indicates the name shared in common to identify the members of a family, as distinguished from each member's given name |
+| **具有婚前姓（has maiden name）** | 标识因婚姻而改姓之前的家族姓氏。<br>indicates the name shared in common to identify the members of a family, that predates any changes of name due to marriage |
+| **具有中间名或首字母（has middle name or initial）** | 位于个人名与姓之间的一个或多个附加名字或首字母。<br>one or more additional names or initial letters for names that occur between a person's first and last name |
+| **具有人名（has person name）** | 将名称关联到个人。<br>links a name to an individual |
 
 ## 4. 依赖（owl:imports，20 个）
 

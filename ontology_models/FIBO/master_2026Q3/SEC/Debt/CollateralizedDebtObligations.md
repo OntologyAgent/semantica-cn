@@ -34,90 +34,90 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 担保债务凭证分档优先级选择（CDOTrancheSenioritySelection） | CDO 发行中某一档的优先级别。 |
-| 资产支持证券担保债务凭证交易（ABS CDO deal） | 资产支持证券担保债务凭证（ABS CDO）票据的一次发行。 |
-| 资产支持证券担保债务凭证工具（ABS CDO instrument） | 标的资产池为资产支持证券（ABS）的担保债务凭证。 |
+| 担保债务凭证分档优先级选择（CDOTrancheSenioritySelection） | CDO 发行中某一档的优先级别。<br>The seniority of a tranche of a CDO issue. |
+| 资产支持证券担保债务凭证交易（ABS CDO deal） | 资产支持证券担保债务凭证（ABS CDO）票据的一次发行。<br>An issue of Asset Backed Security CDO notes. |
+| 资产支持证券担保债务凭证工具（ABS CDO instrument） | 标的资产池为资产支持证券（ABS）的担保债务凭证。<br>CDO where the underlying asset pool is ABS. |
 | 机构抵押担保债券（agency CMO） | 由政府机构发行或担保的抵押担保债券（CMO）。 |
 | 机构仅付息分档（agency IO tranche） | 机构产品中仅支付利息的分档（Interest Only）。 |
-| 机构跳转分档（agency jump tranche） | 机构产品中的一种分档：当某种触发事件达成时，该分档持有人开始收到付款。 |
-| 机构跳转 Z 分档（agency jump Z tranche） | 类似于 Z 分档，但当某种触发事件达成时，跳转 Z 分档持有人开始收到付款。 |
-| 机构仅付本分档（agency PO tranche） | 仅支付本金的分档（Principal Only）。 |
-| 机构常规跳转 Z 分档（agency regular jump Z） | 常规（非粘性）跳转 Z 分档：仅在触发事件持续期间维持变更后的状态，触发事件解除后恢复原有付款状态。 |
-| 机构粘性跳转 Z 分档（agency sticky jump Z） | 「粘性」跳转 Z 分档：一旦触发即保持跳转 Z 分档的付款优先级，直至清偿完毕。 |
-| 机构 Z 分档（agency Z tranche） | 在其他分档存续期间不接收付款的分档。 |
-| 套利型担保债务凭证（arbitrage CDO） | 套利型 CDO/CLO/CBO：由公司、管道机构或特殊目的载体（SPV）购入参考资产，旨在重新打包后出售。 |
-| 套利型目标（arbitrage CDO objective） | 目标是套利：通过将资产重新打包为不同分档来增加价值。 |
-| 资产负债表型担保债务凭证（balance sheet CDO） | 资产负债表型 CDO/CLO/CBO：其组合的参考资产取自某一公司的资产负债表。 |
-| 资产负债表型目标（balance sheet CDO objective） | 目标是创建担保债务凭证以将资产移出发起人的资产负债表。 |
-| 担保债务凭证现金流处理结构（CDO cashflow treatment structure） | 担保债务凭证（CDO）中现金流的处理方式。 |
-| 担保债务凭证交易（CDO deal） | 作为面向市场发行的一部分、一组 CDO 分档的一次发行。 |
-| 担保债务凭证管理风格（CDO management style） | CDO 存续期内参考资产的管理方式。 |
-| 担保债务凭证发起目标（CDO origination objective） | CDO 发行背后的缘起或动机。 |
-| 担保债务凭证池（CDO pool） | 由 CDO 证券组成的池，双层 CDO（CDO Squared）的标的就是 CDO 工具池。 |
-| 担保债务凭证组合（CDO portfolio） | 持有 CDO 参考资产的组合。 |
-| 担保债务凭证组合管理人（CDO portfolio manager） | 管理型 CDO 或套利型 CDO 的组合管理人（亦称资产管理人）。 |
-| 双层担保债务凭证交易（CDO squared deal） | 双层 CDO（CDO Squared）票据的一次发行。 |
-| 双层担保债务凭证工具（CDO squared instrument） | 标的资产池为其他 CDO 的担保债务凭证。 |
-| 抵押担保债券交易（CMO deal） | 抵押担保债券（CMO）的一次发行。 |
-| 现金型资产支持证券池（cash ABS pool） | 由一组现金型 ABS 工具组成的池投资。 |
-| 现金型担保债务凭证（cash CDO） | 标的资产组合由发行人实际持有的 CDO。 |
+| 机构跳转分档（agency jump tranche） | 机构产品中的一种分档：当某种触发事件达成时，该分档持有人开始收到付款。<br>A tranche where if there is some sort of trigger event reached then the holders of the tranche will begin to receive payments. |
+| 机构跳转 Z 分档（agency jump Z tranche） | 类似于 Z 分档，但当某种触发事件达成时，跳转 Z 分档持有人开始收到付款。<br>A Jump Z tranche is like a Z tranche but if there is some sort of trigger event reached then the holders of the Jump Z tranche will begin to receive payments. Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed. |
+| 机构仅付本分档（agency PO tranche） | 仅支付本金的分档（Principal Only）。<br>Principal Only tranche. This tranche will only pay principal. |
+| 机构常规跳转 Z 分档（agency regular jump Z） | 常规（非粘性）跳转 Z 分档：仅在触发事件持续期间维持变更后的状态，触发事件解除后恢复原有付款状态。<br>Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed. |
+| 机构粘性跳转 Z 分档（agency sticky jump Z） | 「粘性」跳转 Z 分档：一旦触发即保持跳转 Z 分档的付款优先级，直至清偿完毕。<br>"Sticky" Jump Z tranches maintain the payment priority of a Jump Z tranche until they are retired. |
+| 机构 Z 分档（agency Z tranche） | 在其他分档存续期间不接收付款的分档。<br>A tranche that does not receive payments while other tranches remain. |
+| 套利型担保债务凭证（arbitrage CDO） | 套利型 CDO/CLO/CBO：由公司、管道机构或特殊目的载体（SPV）购入参考资产，旨在重新打包后出售。<br>Arbitrage CDO/CLO/CBO - the reference assets are bought by a firm or conduit or SPV (Special Purpose Vehicle) with a view to repackage them and sell them on as the structured product. |
+| 套利型目标（arbitrage CDO objective） | 目标是套利：通过将资产重新打包为不同分档来增加价值。<br>The objective is arbitrage, whereby the motivation is to add value by repackaging assets into tranches. |
+| 资产负债表型担保债务凭证（balance sheet CDO） | 资产负债表型 CDO/CLO/CBO：其组合的参考资产取自某一公司的资产负债表。<br>Balance Sheet CDO/CLO/CBO - the reference assets for the SDO portfolio are taken from a company/firm's balance sheet. |
+| 资产负债表型目标（balance sheet CDO objective） | 目标是创建担保债务凭证以将资产移出发起人的资产负债表。<br>The objective is that the CDO is created to move assets off the originator balance sheet. |
+| 担保债务凭证现金流处理结构（CDO cashflow treatment structure） | 担保债务凭证（CDO）中现金流的处理方式。<br>The way in which cash flows are handled in a CDO. |
+| 担保债务凭证交易（CDO deal） | 作为面向市场发行的一部分、一组 CDO 分档的一次发行。<br>An Issue of a set of CDO tranches as part of an offering to the market. |
+| 担保债务凭证管理风格（CDO management style） | CDO 存续期内参考资产的管理方式。<br>The manner in which reference assets are managed during the life of a CDO. |
+| 担保债务凭证发起目标（CDO origination objective） | CDO 发行背后的缘起或动机。<br>The origin or motivation behind a CDO issue. |
+| 担保债务凭证池（CDO pool） | 由 CDO 证券组成的池，双层 CDO（CDO Squared）的标的就是 CDO 工具池。<br>A pool of CDO securities. The underlying of the CDO Squared is a pool of CDO instruments. |
+| 担保债务凭证组合（CDO portfolio） | 持有 CDO 参考资产的组合。<br>A portfolio in which the reference assets of the CDO are held. |
+| 担保债务凭证组合管理人（CDO portfolio manager） | 管理型 CDO 或套利型 CDO 的组合管理人（亦称资产管理人）。<br>The portfolio manager for a managed CDO or arbitrage CDO (also called an asset manager). This assumes that the role is the same in both cases. |
+| 双层担保债务凭证交易（CDO squared deal） | 双层 CDO（CDO Squared）票据的一次发行。<br>An issue of CDO Squared notes. |
+| 双层担保债务凭证工具（CDO squared instrument） | 标的资产池为其他 CDO 的担保债务凭证。<br>CDOs where the underlying asset pool is CDOs. |
+| 抵押担保债券交易（CMO deal） | 抵押担保债券（CMO）的一次发行。<br>An issue of Collateralized mortgaged Obligations. |
+| 现金型资产支持证券池（cash ABS pool） | 由一组现金型 ABS 工具组成的池投资。<br>A pool investment consisting of a collection of cash ABS instruments. |
+| 现金型担保债务凭证（cash CDO） | 标的资产组合由发行人实际持有的 CDO。<br>A CDO which has an uderlying portfolio of assets which are held by the issuer. |
 | 现金型担保债务凭证分档（cash CDO tranche） | 现金型 CDO 的一个分档。 |
-| 现金流型担保债务凭证（cashflow CDO） | 类似于 CMO：抵押品产生的现金流用于向投资者支付本金和利息；若现金流不足则按约定处理。 |
-| 现金流结构（cashflow structure） | CDO 的资金来源为现金流，即抵押品产生的现金流用于向投资者支付本金和利息。 |
-| 担保债券凭证（collateralized bond obligation） | 以投资级债券为标的资产、由高收益或垃圾债券应收款支持的结构化债务证券。 |
-| 担保债务凭证（collateralized debt obligation） | 由公司贷款和抵押支持证券等固定收益资产组合构建的结构化金融产品，由特殊目的载体发行。 |
+| 现金流型担保债务凭证（cashflow CDO） | 类似于 CMO：抵押品产生的现金流用于向投资者支付本金和利息；若现金流不足则按约定处理。<br>A cash-flow CDO is analogous to a CMO. Cash flows from collateral are used to pay principal and interest to investors. If such cash flows prove inadequate, principal and interest is paid to tranches according to seniority. At any point in time, all immediate obligations to a given tranch are met before any payments are made to less senior tranches. |
+| 现金流结构（cashflow structure） | CDO 的资金来源为现金流，即抵押品产生的现金流用于向投资者支付本金和利息。<br>The source of funds for the CDO is cashflow. this means that cash flows from collateral are used to pay principal and interest to investors. |
+| 担保债券凭证（collateralized bond obligation） | 以投资级债券为标的资产、由高收益或垃圾债券应收款支持的结构化债务证券。<br>structured debt security that has investment-grade bonds as its underlying assets backed by the receivables on high-yield or junk bonds |
+| 担保债务凭证（collateralized debt obligation） | 由公司贷款和抵押支持证券等固定收益资产组合构建的结构化金融产品，由特殊目的载体发行。<br>structured finance constructed from a portfolio of fixed income assets including corporate loans and mortgage backed securities. A special purpose vehicle (SPV) issues notes to investors in order to raise funds that are invested in a portfolio of those fixed income assets, held by the SPV as collateral for the notes. Further notes: Collateralized Debt Obligation, for example, ABS CDO which consists of a portfolio of different ABS bonds, and the payments to the holders of these trust certificates are derived from the cash flows of the ABS bonds. This CDO instrument is part of a CDO issue, consisting of individual CDO instruments of a given seniority. Often referred to as tranches and slices (Investopedia). Investopedia: Similar in structure to a collateralized mortgage obligation (CMO) or collateralized bond obligation (CBO), CDOs are unique in that they represent different types of debt and credit risk. In the case of CDOs, these different types of debt are often referred to as 'tranches' or 'slices'. Each slice has a different maturity and risk associated with it. The higher the risk, the more the CDO pays. Further details: Collateralized Debt obligations are securitized interests in pools of - generally non-mortgage - assets. Assets - called collateral - usually comprise loans or debt instruments. A CDO may be called a collateralized loan obligation (CLO) or collateralized bond obligation (CBO) if it holds only loans or bonds, respectively. Investors bear the credit risk of the collateral. Multiple tranches of securities are issued by the CDO, offering investors various maturity and credit risk characteristics. |
 | 担保贷款凭证发行（collateralized loan obligation offering） | 担保贷款凭证（CLO）的一次发行。 |
-| 浮动分档（floater tranche） | 与某一指数加利差挂钩的分档。 |
-| 混合型担保债务凭证（hybrid CDO） | 兼具现金型和合成型 CDO 特征的 CDO，即同时具有现金型分档和合成标的资产分档的 CDO。 |
-| 小仅付息分档（IOette） | 一种仅付息（IO）分档的变体。 |
+| 浮动分档（floater tranche） | 与某一指数加利差挂钩的分档。<br>A floater tranche is a tranche that is keyed to an index and a spread. |
+| 混合型担保债务凭证（hybrid CDO） | 兼具现金型和合成型 CDO 特征的 CDO，即同时具有现金型分档和合成标的资产分档的 CDO。<br>A CDO which combines features both of the cash and synthetic CDO. This is a CDO with tranches of cash and tranches of synthetic underlying assets. Further notes: So for example an issiue of $550 million may have $500 million in an asset pool and an additional $50 million created via a synthetic asset. |
+| 小仅付息分档（IOette） | 一种仅付息（IO）分档的变体。<br>REVIEW: Is this a kind of IO Tranche. |
 | 反向浮动分档（inverse floater tranche） | 票息与参考利率反向变动的分档。 |
-| 跳转 Z 触发事件（jump Z trigger event） | 触发跳转 Z 分档生效的事件。 |
-| 跳转 Z 触发事件解除（jump z trigger event reversal） | 触发跳转 Z 分档之事件的解除。 |
-| 贷款池（loan pool） | 成分为贷款的债务池。 |
-| 抵押支持证券工具切片（MBS instrument slice） | 对某一档中单独一片或数片的持有。 |
-| 抵押支持证券分档票据（MBS tranche note） | 某一档中的单张票据。 |
-| 管理型担保债务凭证（managed CDO） | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的 CDO。 |
-| 管理型担保债务凭证组合（managed CDO portfolio） | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整的组合。 |
+| 跳转 Z 触发事件（jump Z trigger event） | 触发跳转 Z 分档生效的事件。<br>The event which triggers the Jump Z |
+| 跳转 Z 触发事件解除（jump z trigger event reversal） | 触发跳转 Z 分档之事件的解除。<br>The reversal of the event which triggers the Jump Z |
+| 贷款池（loan pool） | 成分为贷款的债务池。<br>debt pool whose consituents are loans |
+| 抵押支持证券工具切片（MBS instrument slice） | 对某一档中单独一片或数片的持有。<br>A holding of an individual slice or slices of a tranche. |
+| 抵押支持证券分档票据（MBS tranche note） | 某一档中的单张票据。<br>An individual note of a tranche. |
+| 管理型担保债务凭证（managed CDO） | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的 CDO。<br>A CDO where the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit. |
+| 管理型担保债务凭证组合（managed CDO portfolio） | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整的组合。<br>A portfolio where the reference assets of the CDO are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit. |
 | 管理型管理风格（managed management style） | 由管理人主动调整参考资产组合的管理方式。 |
 | 市值型担保债务凭证（market value CDO） | 以偿付能力取决于抵押品市场价值（而非仅现金流）的 CDO。 |
 | 市值结构（market value structure） | CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。 |
-| 夹层担保债务凭证分档（mezzanine CDO tranche） | 介于优先档与次级档之间的分档，CDO 夹层档的评级通常为 B 至 BBB。 |
-| 夹层抵押支持证券分档（mezzanine MBS tranche） | MBS 发行中优先级居中的夹层分档。 |
-| 非机构仅付息分档（non-agency IO tranche） | 仅支付利息的分档（Interest Only），即该分档只付息。 |
-| 非机构跳转分档（non-agency jump tranche） | 当某种触发事件达成时，该分档持有人开始收到付款的分档。 |
-| 非机构跳转 Z 分档（non-agency jump Z tranche） | 类似于 Z 分档，但当某种触发事件达成时，跳转 Z 分档持有人开始收到付款。 |
-| 非机构仅付本分档（non-agency PO tranche） | 仅支付本金的分档（Principal Only）。 |
-| 非机构常规跳转 Z 分档（non-agency regular jump Z tranche） | 常规（非粘性）跳转 Z 分档：仅在触发事件持续期间维持变更后的状态，触发事件解除后恢复原有付款状态。 |
-| 非机构粘性跳转 Z 分档（non-agency sticky jump Z tranche） | 「粘性」跳转 Z 分档：一旦触发即保持跳转 Z 分档的付款优先级，直至清偿完毕。 |
-| 非机构 Z 分档（non-agency Z tranche） | 在其他分档存续期间不接收付款的分档。 |
-| 计划摊销仅付本分档（PAC PO tranche） | 计划摊销档（PAC）中的仅付本金分档。 |
+| 夹层担保债务凭证分档（mezzanine CDO tranche） | 介于优先档与次级档之间的分档，CDO 夹层档的评级通常为 B 至 BBB。<br>The tranche between senior and subordinated. Mezzanine tranches of a CDO issue are typically rated B to BBB. |
+| 夹层抵押支持证券分档（mezzanine MBS tranche） | MBS 发行中优先级居中的夹层分档。<br>Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model. |
+| 非机构仅付息分档（non-agency IO tranche） | 仅支付利息的分档（Interest Only），即该分档只付息。<br>Interest Only tranche, meaning that this tranche will only pay interest. |
+| 非机构跳转分档（non-agency jump tranche） | 当某种触发事件达成时，该分档持有人开始收到付款的分档。<br>A tranche where if there is some sort of trigger event reached then the holders of the tranche will begin to receive payments. |
+| 非机构跳转 Z 分档（non-agency jump Z tranche） | 类似于 Z 分档，但当某种触发事件达成时，跳转 Z 分档持有人开始收到付款。<br>A Jump Z tranche is like a Z tranche but if there is some sort of trigger event reached then the holders of the Jump Z tranche will begin to receive payments. Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed. |
+| 非机构仅付本分档（non-agency PO tranche） | 仅支付本金的分档（Principal Only）。<br>Principal Only tranche. This tranche will only pay principal. |
+| 非机构常规跳转 Z 分档（non-agency regular jump Z tranche） | 常规（非粘性）跳转 Z 分档：仅在触发事件持续期间维持变更后的状态，触发事件解除后恢复原有付款状态。<br>Regular non-Sticky Jump Z tranches maintain their changed status only while the trigger event is in effect, and revert to their old payment status once the trigger event has passed. |
+| 非机构粘性跳转 Z 分档（non-agency sticky jump Z tranche） | 「粘性」跳转 Z 分档：一旦触发即保持跳转 Z 分档的付款优先级，直至清偿完毕。<br>"Sticky" Jump Z tranches maintain the payment priority of a Jump Z tranche until they are retired. |
+| 非机构 Z 分档（non-agency Z tranche） | 在其他分档存续期间不接收付款的分档。<br>A tranche that does not receive payments while other tranches remain. |
+| 计划摊销仅付本分档（PAC PO tranche） | 计划摊销档（PAC）中的仅付本金分档。<br>Planned Amortization Class principal only tranche. |
 | 计划摊销档摊销计划表（PAC tranche amortization schedule） | 计划摊销档（PAC）分档的本金摊销计划表。 |
-| 计划摊销 Z 分档（PAC-Z tranche） | 同时为 Z 分档的计划摊销档（PAC）分档。 |
-| 计划摊销一档（PAC-1 class） | 计划摊销档（PAC）分档，PAC-1 是优先级最高的计划摊销档。 |
-| 计划摊销二档（PAC-2 class） | 计划摊销档（PAC）分档，PAC-2 指具有类似 PAC 债券之计划付款结构的支持档。 |
-| 计划摊销三档（PAC-3 class） | 计划摊销档（PAC）分档，具有计划付款的补充支持档。 |
-| 计划摊销档债券（planned amortization class bond） | 本金支付必须遵循特定计划表的分档（PAC）。 |
-| 常规浮动分档（regular floater tranche） | 与某一指数加利差挂钩的分档，利差加在指数之上。 |
-| 剩余分档（residual tranche） | 收取其他分档受偿后剩余现金流的分档。 |
-| 优先担保债务凭证分档（senior CDO tranche） | CDO 发行中优先级最高的分档，评级通常为 A 至 AAA；若发生违约或抵押品表现不佳，计划付款优先保障该档。 |
-| 优先抵押支持证券分档（senior MBS tranche） | MBS 发行中优先级最高的分档。 |
-| 静态担保债务凭证（static CDO） | 抵押品在 CDO 存续期内固定不变的 CDO：参考资产购入后，在产品期限内不再调整。 |
-| 静态担保债务凭证组合（static CDO portfolio） | 抵押品在 CDO 存续期内固定不变的组合：参考资产购入后，在产品期限内保持不动。 |
+| 计划摊销 Z 分档（PAC-Z tranche） | 同时为 Z 分档的计划摊销档（PAC）分档。<br>Planned Amortization Class tranche which is also a Z tranche, that is Definition needed. |
+| 计划摊销一档（PAC-1 class） | 计划摊销档（PAC）分档，PAC-1 是优先级最高的计划摊销档。<br>Planned Amortization Class tranche. PAC-1 is the most senior Planned Amortization Class tranche. |
+| 计划摊销二档（PAC-2 class） | 计划摊销档（PAC）分档，PAC-2 指具有类似 PAC 债券之计划付款结构的支持档。<br>Planned Amortization Class tranche. PAC-2 refers to a support tranche that is given a scheduled payment structure like a PAC bond. |
+| 计划摊销三档（PAC-3 class） | 计划摊销档（PAC）分档，具有计划付款的补充支持档。<br>Planned Amortization Class tranche. Additional support tranche with scheduled payments. |
+| 计划摊销档债券（planned amortization class bond） | 本金支付必须遵循特定计划表的分档（PAC）。<br>Planned Amortization Class tranche.This is a tranche where the principal payment must follow a certain schedule. |
+| 常规浮动分档（regular floater tranche） | 与某一指数加利差挂钩的分档，利差加在指数之上。<br>A floater tranche is a tranche that is keyed to an index and a spread. The spread is added to the index. |
+| 剩余分档（residual tranche） | 收取其他分档受偿后剩余现金流的分档。<br>Unknown Further notes: Verify whether Residual Tranche and Support Tranche are meant to be in the same list of types as PAC etc. i.e. can a tranche not be PAC and Residual? this looks suspicioulsy like two semantics. |
+| 优先担保债务凭证分档（senior CDO tranche） | CDO 发行中优先级最高的分档，评级通常为 A 至 AAA；若发生违约或抵押品表现不佳，计划付款优先保障该档。<br>The most senior tranche of the CDO issue. Typically rated A to AAA. If there are defaults or the CDO's collateral otherwise underperforms, scheduled payments to senior tranches take precedence over those of mezzanine tranches. |
+| 优先抵押支持证券分档（senior MBS tranche） | MBS 发行中优先级最高的分档。<br>Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model. |
+| 静态担保债务凭证（static CDO） | 抵押品在 CDO 存续期内固定不变的 CDO：参考资产购入后，在产品期限内不再调整。<br>A CDO where collateral is fixed through the life of the CDO. The reference assets are bought and then are kept untouched for the term of the product. |
+| 静态担保债务凭证组合（static CDO portfolio） | 抵押品在 CDO 存续期内固定不变的组合：参考资产购入后，在产品期限内保持不动。<br>A portfolio where collateral of the CDO is fixed through the life of the CDO. The reference assets are bought and then are kept untouched for the term of the product. |
 | 静态管理风格（static management style） | 参考资产组合在存续期内保持固定的管理方式。 |
-| 次级担保债务凭证权益档（subordinated CDO equity） | 次级（亦称权益）CDO 分档是 CDO 发行中最末尾的分档，违约或抵押品表现不佳时最先承担损失。 |
-| 次级抵押支持证券分档（subordinated MBS tranche） | MBS 发行中优先级最低的分档。 |
+| 次级担保债务凭证权益档（subordinated CDO equity） | 次级（亦称权益）CDO 分档是 CDO 发行中最末尾的分档，违约或抵押品表现不佳时最先承担损失。<br>The subordinated (also known as equity) CDO tranche is the most junior tranche in the CDO issue. If there are defaults or the CDO's collateral otherwise underperforms, scheduled payments to senior and mezzanine tranches take precedence over those to subordinated/equity tranches. |
+| 次级抵押支持证券分档（subordinated MBS tranche） | MBS 发行中优先级最低的分档。<br>Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model. |
 | 超级浮动分档（super floater tranche） | 票息杠杆放大浮动利率变动的分档。 |
-| 超级仅付本分档（super PO tranche） | 仅支付本金的分档（Principal Only）的一种特殊形式。 |
-| 超优先担保债务凭证分档（super senior CDO tranche） | 位于 CDO 发行最顶端的分档。 |
-| 支持分档（support tranche） | 为计划摊销档（PAC）分档提供付款支持的分档。 |
-| 目标摊销档（TAC tranche） | 目标摊销档（TAC）：与 PAC 分档相关，具有针对特定提前偿付速度（称为定价速度）的付款计划表。 |
+| 超级仅付本分档（super PO tranche） | 仅支付本金的分档（Principal Only）的一种特殊形式。<br>Principal Only tranche. This tranche will only pay principal. Not clear how this is distinct from generic PO. |
+| 超优先担保债务凭证分档（super senior CDO tranche） | 位于 CDO 发行最顶端的分档。<br>A tranche at the very top of a CDO Issue. |
+| 支持分档（support tranche） | 为计划摊销档（PAC）分档提供付款支持的分档。<br>A tranche which provides payment support to a PAC Tranche. |
+| 目标摊销档（TAC tranche） | 目标摊销档（TAC）：与 PAC 分档相关，具有针对特定提前偿付速度（称为定价速度）的付款计划表。<br>Targeted Amortization Class. This is related to a PAC tranche and has a payment schedule geared towards a specified prepayment speed (called the pricing speed). Agency CMO |
 | 目标摊销档摊销计划表（TAC tranche amortization schedule） | 目标摊销档（TAC）分档的本金摊销计划表。 |
-| 分档发行时评级（tranche rating at issue） | 证券某一档在发行时的评级。 |
-| 分档类型（tranche type） | 指明分档的类型。 |
+| 分档发行时评级（tranche rating at issue） | 证券某一档在发行时的评级。<br>The rating at issue of a tranche of a security. Note this is under review |
+| 分档类型（tranche type） | 指明分档的类型。<br>the type of tranche in a tranched MBS security |
 | 分档型抵押支持证券交易（tranched MBS deal） | 分档型 MBS 的一次发行。 |
 | 分档型抵押支持证券交易招募说明书（tranched MBS deal prospectus） | 分档型 MBS 发行的招募说明书。 |
 | 分档型抵押支持证券工具（tranched MBS instrument） | 分档型 MBS 的工具。 |
-| 触发事件（trigger event） | 某一数值越过某一阈值的事件，或其他类型的业务事件。 |
+| 触发事件（trigger event） | 某一数值越过某一阈值的事件，或其他类型的业务事件。<br>Any event where some value passes some threashold. Or some other type of business event. This is not restricted to "trigger" in the sense of a value passing a threshold. Can also be an seen such as a CDO manager going into bankruptcy. |
 | 真实出售目标（true sale objective） | 以实现资产真实出售为目的的发起目标。 |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
@@ -175,7 +175,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **规定触发（specifies trigger）** | 规定一旦发生时使跳转 Z 持有人开始接收付款的事件。 | 值域：跳转 Z 触发事件（jump Z trigger event） |
+| **规定触发（specifies trigger）** | 规定一旦发生时使跳转 Z 持有人开始接收付款的事件。<br>The event which, when it takes place, causes the Jump Z holders to begin receiving payments. | 值域：跳转 Z 触发事件（jump Z trigger event） |
 
 公理：
 
@@ -348,8 +348,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有担保债务凭证发起目标（has CDO origination objective）** | 指明 CDO 发行的发起目标或动机。 | 值域：担保债务凭证发起目标（CDO origination objective） |
-| **管理风格（management style）** | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的管理方式。 | 值域：担保债务凭证管理风格（CDO management style） |
-| **结构（structure）** | CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。 | 值域：担保债务凭证现金流处理结构（CDO cashflow treatment structure） |
+| **管理风格（management style）** | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的管理方式。<br>A CDO where the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit. | 值域：担保债务凭证管理风格（CDO management style） |
+| **结构（structure）** | CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。<br>The source of funds for the CDO is market value. This means that principal and interest payments to investors come from both collateral cash flows as well as sales of collateral. | 值域：担保债务凭证现金流处理结构（CDO cashflow treatment structure） |
 | **具有成员（hasMember）** | — | — |
 | **适用于（appliesTo）** | — | — |
 | **由……管理（isManagedBy）** | — | — |
@@ -455,7 +455,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **结构（structure）** | CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。 | 值域：担保债务凭证现金流处理结构（CDO cashflow treatment structure） |
+| **结构（structure）** | CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。<br>The source of funds for the CDO is market value. This means that principal and interest payments to investors come from both collateral cash flows as well as sales of collateral. | 值域：担保债务凭证现金流处理结构（CDO cashflow treatment structure） |
 
 公理：
 
@@ -476,7 +476,7 @@
 
 公理：
 
-- **适用于（appliesTo）**的所有取值只能是**Nbc07646d3ba749c1b6c89a24720b0900**。
+- **适用于（appliesTo）**的所有取值只能是**N24c8db0d1b0d4f44bdb6117094be6121**。
 
 #### 2.4.8 管理型担保债务凭证（managed CDO）
 
@@ -488,7 +488,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **管理风格（management style）** | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的管理方式。 | 值域：担保债务凭证管理风格（CDO management style） |
+| **管理风格（management style）** | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的管理方式。<br>A CDO where the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit. | 值域：担保债务凭证管理风格（CDO management style） |
 | **具有成员（hasMember）** | — | — |
 
 公理：
@@ -508,7 +508,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **结构（structure）** | CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。 | 值域：担保债务凭证现金流处理结构（CDO cashflow treatment structure） |
+| **结构（structure）** | CDO 的资金来源为市值，即向投资者支付的本金和利息来自抵押品现金流及抵押品出售所得。<br>The source of funds for the CDO is market value. This means that principal and interest payments to investors come from both collateral cash flows as well as sales of collateral. | 值域：担保债务凭证现金流处理结构（CDO cashflow treatment structure） |
 
 公理：
 
@@ -524,7 +524,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **管理风格（management style）** | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的管理方式。 | 值域：担保债务凭证管理风格（CDO management style） |
+| **管理风格（management style）** | 参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的管理方式。<br>A CDO where the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit. | 值域：担保债务凭证管理风格（CDO management style） |
 
 公理：
 
@@ -650,11 +650,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否现金型（is cash）** | 表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。 | 值域：xsd:boolean |
-| **具有交易管理风格（has deal management style）** | 表明 CDO 是静态还是管理型，即 CDO 管理人是否可在存续期内调整参考组合。 | 值域：担保债务凭证管理风格（CDO management style） |
+| **是否现金型（is cash）** | 表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。<br>Whether the CDO has an underlying pool of real assets. If yes, the CDO has an underlying pool of real assets. If no, the CDO has a synthetic pool of underlying assets. | 值域：xsd:boolean |
+| **具有交易管理风格（has deal management style）** | 表明 CDO 是静态还是管理型，即 CDO 管理人是否可在存续期内调整参考组合。<br>Whether the CDO is static or managed. This refers to whether or not the CDO manager may make changes to the reference portfolio during the life of the security. Further notes: If it is static, collateral is fixed through the life of the CDO. The reference assets are bought and then are kept untouched for the term of the product.If it is managed, the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit. | 值域：担保债务凭证管理风格（CDO management style） |
 | **具有发起目标（has origination objective）** | 指明发行的发起目标或动机。 | 值域：担保债务凭证发起目标（CDO origination objective） |
-| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。 | 值域：担保债务凭证分档优先级选择（CDOTrancheSenioritySelection） |
-| **具有结构类型（has structure type）** | 指明 CDO 的资金来源类型，即现金流型或市值型。 | 值域：担保债务凭证现金流处理结构（CDO cashflow treatment structure） |
+| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。<br>The seniority which defines this tranche. This is the precedence order for scheduled payments. Further notes: Tranches are categorized as senior, mezzanine, and subordinated/equity, according to their degree of credit risk. If there are defaults or the CDO's collateral otherwise underperforms, scheduled payments to senior tranches take precedence over those of mezzanine tranches, and scheduled payments to mezzanine tranches take precedence over those to subordinated/equity tranches. Senior and mezzanine tranches are typically rated, with the former receiving ratings of A to AAA and the latter receiving ratings of B to BBB. The ratings reflect both the credit quality of underlying collateral as well as how much protection a given tranch is afforded by tranches that are subordinate to it. | 值域：担保债务凭证分档优先级选择（CDOTrancheSenioritySelection） |
+| **具有结构类型（has structure type）** | 指明 CDO 的资金来源类型，即现金流型或市值型。<br>The source of funds for the CDO. This is either cashflow or market value. | 值域：担保债务凭证现金流处理结构（CDO cashflow treatment structure） |
 | **次于（isSubordinatedTo）** | — | — |
 
 公理：
@@ -678,7 +678,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否现金型（is cash）** | 表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。 | 值域：xsd:boolean |
+| **是否现金型（is cash）** | 表明 CDO 是否拥有真实资产的标的池：是则为现金型，否则为合成型标的池。<br>Whether the CDO has an underlying pool of real assets. This is yes: the CDO has an underlying pool of real assets, | 值域：xsd:boolean |
 | **是……的部分（isPartOf）** | — | — |
 
 公理：
@@ -722,7 +722,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **发行时评级（rated at issue）** | 分档在发行时所获得的评级。 | 值域：分档发行时评级（tranche rating at issue） |
-| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。 | — |
+| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。<br>The seniority which defines this tranche. This is the precedence order for scheduled payments. This is Mezzanine, meaning the tranche between senior and subordinated. | — |
 
 公理：
 
@@ -739,7 +739,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **发行时评级（rated at issue）** | 分档在发行时所获得的评级。 | 值域：分档发行时评级（tranche rating at issue） |
-| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。 | — |
+| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。<br>The seniority which defines this tranche. This is the precedence order for scheduled payments. This is defined as Senior, i.e. this is the most senior tranche of the CDO issue. | — |
 
 公理：
 
@@ -755,7 +755,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。 | — |
+| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。<br>The seniority which defines this tranche. This is the precedence order for scheduled payments. This is defined as Senior, i.e. this is the most senior tranche of the CDO issue. | — |
 
 ### 2.13 担保贷款凭证发行（collateralized loan obligation offering）
 
@@ -816,7 +816,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **票面金额（denomination）** | 票据计价的货币金额，例如 500 美元面额的票据。 | 值域：货币数量 |
+| **票面金额（denomination）** | 票据计价的货币金额，例如 500 美元面额的票据。<br>The currency amount in which the Note is denominated, for example $500 notes. | 值域：货币数量 |
 
 ### 2.17 计划摊销档摊销计划表（PAC tranche amortization schedule）
 
@@ -835,7 +835,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **授予……的所有权（confers ownership of）** | 表明某凭证或分档授予对某一资产或现金流的权利。 | — |
-| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。 | — |
+| **优先级别（seniority）** | 界定该分档的优先级别，即计划付款的先后次序；分档通常分为优先、夹层和次级。<br>The seniority which defines this tranche. This is the precedence order for scheduled payments. This is subordinated (also known as equity) and is the most junior tranche in the CDO issue. | — |
 
 ### 2.19 支持分档（support tranche）
 
@@ -962,7 +962,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **优先于（senior to）** | 表明某一分档在受偿顺序上优先于另一分档。 | 值域：夹层抵押支持证券分档（mezzanine MBS tranche）；子属性：现金流优先顺序（cashflow precedence） |
+| **优先于（senior to）** | 表明某一分档在受偿顺序上优先于另一分档。<br>Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model. | 值域：夹层抵押支持证券分档（mezzanine MBS tranche）；子属性：现金流优先顺序（cashflow precedence） |
 
 公理：
 
@@ -985,7 +985,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **规定触发（specifies trigger）** | 规定一旦发生时使跳转 Z 持有人开始接收付款的事件。 | 值域：跳转 Z 触发事件（jump Z trigger event） |
+| **规定触发（specifies trigger）** | 规定一旦发生时使跳转 Z 持有人开始接收付款的事件。<br>The event which, when it takes place, causes the Jump Z holders to begin receiving payments. | 值域：跳转 Z 触发事件（jump Z trigger event） |
 
 公理：
 
@@ -1049,7 +1049,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **优先于（senior to）** | 表明某一分档在受偿顺序上优先于另一分档。 | 值域：夹层抵押支持证券分档（mezzanine MBS tranche）；子属性：现金流优先顺序（cashflow precedence） |
+| **优先于（senior to）** | 表明某一分档在受偿顺序上优先于另一分档。<br>Specific kinds of tranche are modeled for example and investigation only and have been removed from the diagrams. These will be removed from the final model. | 值域：夹层抵押支持证券分档（mezzanine MBS tranche）；子属性：现金流优先顺序（cashflow precedence） |
 
 公理：
 

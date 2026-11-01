@@ -18520,127 +18520,127 @@
   },
   "http://purl.org/dc/terms/abstract": {
    "label_zh": "摘要（abstract）",
-   "comment_zh": ""
+   "comment_zh": "资源的摘要。"
   },
   "http://purl.org/dc/terms/contributor": {
    "label_zh": "贡献者（contributor）",
-   "comment_zh": ""
+   "comment_zh": "对资源作出贡献的实体。"
   },
   "http://purl.org/dc/terms/creator": {
    "label_zh": "创建者（creator）",
-   "comment_zh": ""
+   "comment_zh": "创建资源的实体。"
   },
   "http://purl.org/dc/terms/description": {
    "label_zh": "描述（description）",
-   "comment_zh": ""
+   "comment_zh": "对资源内容的描述。"
   },
   "http://purl.org/dc/terms/issued": {
    "label_zh": "发布日期（issued）",
-   "comment_zh": ""
+   "comment_zh": "资源正式发布的日期。"
   },
   "http://purl.org/dc/terms/license": {
    "label_zh": "许可证（license）",
-   "comment_zh": ""
+   "comment_zh": "许可他人以特定方式使用资源的法律文件。"
   },
   "http://purl.org/dc/terms/modified": {
    "label_zh": "修改日期（modified）",
-   "comment_zh": ""
+   "comment_zh": "资源被修改的日期。"
   },
   "http://purl.org/dc/terms/publisher": {
    "label_zh": "发布者（publisher）",
-   "comment_zh": ""
+   "comment_zh": "负责将资源对外提供的实体。"
   },
   "http://purl.org/dc/terms/references": {
    "label_zh": "引用（references）",
-   "comment_zh": ""
+   "comment_zh": "被本资源引用、引述或指向的相关资源。"
   },
   "http://purl.org/dc/terms/rights": {
    "label_zh": "权利（rights）",
-   "comment_zh": ""
+   "comment_zh": "关于资源所持有权利的信息。"
   },
   "http://purl.org/dc/terms/source": {
    "label_zh": "来源（source）",
-   "comment_zh": ""
+   "comment_zh": "本资源所派生自的相关资源。"
   },
   "http://purl.org/dc/terms/title": {
    "label_zh": "标题（title）",
-   "comment_zh": ""
+   "comment_zh": "赋予资源的名称。"
   },
   "http://www.w3.org/2004/02/skos/core#altLabel": {
    "label_zh": "替代标签（altLabel）",
-   "comment_zh": ""
+   "comment_zh": "资源的替代性文字标签。"
   },
   "http://www.w3.org/2004/02/skos/core#changeNote": {
    "label_zh": "变更说明（changeNote）",
-   "comment_zh": ""
+   "comment_zh": "关于概念修改情况的注记。"
   },
   "http://www.w3.org/2004/02/skos/core#definition": {
    "label_zh": "定义（definition）",
-   "comment_zh": ""
+   "comment_zh": "对概念含义的陈述或正式解释。"
   },
   "http://www.w3.org/2004/02/skos/core#editorialNote": {
    "label_zh": "编辑注记（editorialNote）",
-   "comment_zh": ""
+   "comment_zh": "供词汇表编辑者、翻译者或维护者使用的注记。"
   },
   "http://www.w3.org/2004/02/skos/core#example": {
    "label_zh": "示例（example）",
-   "comment_zh": ""
+   "comment_zh": "概念使用方式的示例。"
   },
   "http://www.w3.org/2004/02/skos/core#historyNote": {
    "label_zh": "历史说明（historyNote）",
-   "comment_zh": ""
+   "comment_zh": "关于概念过去状态、用法或含义的注记。"
   },
   "http://www.w3.org/2004/02/skos/core#note": {
    "label_zh": "注记（note）",
-   "comment_zh": ""
+   "comment_zh": "通用注记，可用于任何目的。"
   },
   "http://www.w3.org/2004/02/skos/core#prefLabel": {
    "label_zh": "首选标签（prefLabel）",
-   "comment_zh": ""
+   "comment_zh": "资源在指定语言下的首选文字标签。"
   },
   "http://www.w3.org/2004/02/skos/core#scopeNote": {
    "label_zh": "范围说明（scopeNote）",
-   "comment_zh": ""
+   "comment_zh": "用于澄清概念含义或用法的注记。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/abbreviation": {
    "label_zh": "缩写（abbreviation）",
-   "comment_zh": ""
+   "comment_zh": "省略完整术语的部分内容而形成的指称，与原术语表示同一概念。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/acronym": {
    "label_zh": "首字母缩写（acronym）",
-   "comment_zh": ""
+   "comment_zh": "由完整术语或专有名称各成分的首字母（或音节）组成的缩写。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/adaptedFrom": {
    "label_zh": "改编自（adaptedFrom）",
-   "comment_zh": ""
+   "comment_zh": "某个术语（或其定义）所改编来源的文档或出处；即与来源兼容但并非原文引用。取值可以是字符串、URI 或引文。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/copyright": {
    "label_zh": "版权（copyright）",
-   "comment_zh": ""
+   "comment_zh": "赋予创作者或受让人的专有法律权利，用于印刷、出版、表演、拍摄或录制文学、艺术或音乐作品，并可授权他人实施同样行为。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/directSource": {
    "label_zh": "直接来源（directSource）",
-   "comment_zh": ""
+   "comment_zh": "对主题资源的直接引用出处。取值可以是字符串、URI 或文献引文。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/explanatoryNote": {
    "label_zh": "解释性说明（explanatoryNote）",
-   "comment_zh": ""
+   "comment_zh": "为资源提供补充解释材料的注记。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/logicalDefinition": {
    "label_zh": "逻辑定义（logicalDefinition）",
-   "comment_zh": ""
+   "comment_zh": "以形式化表达式（如数学或逻辑表示）给出的资源定义。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/symbol": {
    "label_zh": "符号（symbol）",
-   "comment_zh": ""
+   "comment_zh": "以图形、记号或其他非字母数字字符表示某事物的符号，如货币符号、数学记号或运算符。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym": {
    "label_zh": "同义词（synonym）",
-   "comment_zh": ""
+   "comment_zh": "可以替代某事物主要表示形式的指称。"
   },
   "https://www.omg.org/spec/Commons/AnnotationVocabulary/usageNote": {
    "label_zh": "使用说明（usageNote）",
-   "comment_zh": ""
+   "comment_zh": "说明资源如何使用或如何扩展的注记。"
   }
  },
  "display_labels": {

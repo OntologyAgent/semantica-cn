@@ -32,11 +32,11 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| ACTUS 营业日惯例（ACTUS business day convention） | ACTUS 支持的一组营业日惯例之一的代码元素。 |
-| ACTUS 日历代码（ACTUS calendar code） | 适用于特定合同的日历代码。 |
-| ACTUS 合同角色分类符（ACTUS contract role classifier） | 对合同当事方在处理合同时所涉各类角色的分类符。 |
-| ACTUS 合同条款（ACTUS contract term） | 表示一个或多个 ACTUS 合同类型之某方面条款的代码。 |
-| ACTUS 字典术语组（ACTUS dictionary term group） | 对通常一起使用的一组 ACTUS 字典参数的分类符。 |
+| ACTUS 营业日惯例（ACTUS business day convention） | ACTUS 支持的一组营业日惯例之一的代码元素。<br>code element for one of a set of conventions that ACTUS supports |
+| ACTUS 日历代码（ACTUS calendar code） | 适用于特定合同的日历代码。<br>code for a calendar that applies to a particular contract |
+| ACTUS 合同角色分类符（ACTUS contract role classifier） | 对合同当事方在处理合同时所涉各类角色的分类符。<br>classifier for various roles that are relevant to how the contract is processed by a particular contract party |
+| ACTUS 合同条款（ACTUS contract term） | 表示一个或多个 ACTUS 合同类型之某方面条款的代码。<br>code denoting a term describing an aspect of one or more ACTUS contract type(s) |
+| ACTUS 字典术语组（ACTUS dictionary term group） | 对通常一起使用的一组 ACTUS 字典参数的分类符。<br>classifier for a collection of ACTUS dictionary parameters that tend to be applied together |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -106,7 +106,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有参数名（has parameter name）** | 将名称与 ACTUS 数据字典中定义的定量或定性因子关联，该因子用作一个或多个合同类型分类的条件。 | 子属性：具有文本值 |
+| **具有参数名（has parameter name）** | 将名称与 ACTUS 数据字典中定义的定量或定性因子关联，该因子用作一个或多个合同类型分类的条件。<br>associates a name with a quantitative or qualitative factor defined in the ACTUS data dictionary used as a condition for classification of one or more contract type | 子属性：具有文本值 |
 | **刻画（characterizes）** | — | — |
 | **由……分类（isClassifiedBy）** | — | — |
 | **被包含于（isIncludedIn）** | — | — |
@@ -152,8 +152,8 @@
 
 | 属性 | 定义 |
 |---|---|
-| **具有选项序号（has option sequence number）** | 指明可选元素在枚举列表中的出现次序。 |
-| **具有参数映射（has parameter mapping）** | 将 ACTUS 数据字典中定义的定量或定性参数映射到其他事物（如 FIBO 中规定的属性）。 |
+| **具有选项序号（has option sequence number）** | 指明可选元素在枚举列表中的出现次序。<br>specifies the order of occurance of an optional element in an enumerated list |
+| **具有参数映射（has parameter mapping）** | 将 ACTUS 数据字典中定义的定量或定性参数映射到其他事物（如 FIBO 中规定的属性）。<br>maps a quantitative or qualitative parameter defined in the ACTUS data dictionary with something else, such as a property specified in FIBO |
 
 ## 4. 依赖（owl:imports，13 个）
 

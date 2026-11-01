@@ -43,13 +43,13 @@ fibo-fnd-aap-ppl:IdentityDocument a owl:Class ;
             owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-aap-ppl:PlaceOfBirth ;
-            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-aap-ppl:DateOfBirth ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-aap-ppl:PlaceOfBirth ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ] .
 
 fibo-fnd-agr-ctr: a owl:Ontology ;
     rdfs:label "Contracts Ontology",
@@ -137,11 +137,11 @@ fibo-fnd-agr-ctr:BreachOfContract a owl:Class ;
         "违约（breach of contract）"@zh ;
     rdfs:comment "表示在无合法理由的情况下违反合同明示或默示条件（做或不做某事）的事件分类符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-doc:refersTo ;
             owl:someValuesFrom fibo-fnd-agr-ctr:ContractualCommitment ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
         fibo-fnd-dt-oc:OccurrenceKind ;
     skos:definition "classifier of events representing a violation of an express, or implied, condition of a contract to do or not to do something, without a legitimate excuse"@en ;
     cmns-av:explanatoryNote "Examples of events that are considered a breach of contract include discovery of misrepresentation, not completing a job, not paying in full or on time, failing to deliver all the goods, substituting inferior or significantly different goods, not providing a bond when required, being late without excuse, or any act that demonstrates that a party will not complete required work ('anticipatory breach.') Breach of contract is one of the most common causes of law suits for damages and/or court-ordered 'specific performance' of the contract. A breach of contract frequently invalidates the contract."@en .
@@ -622,12 +622,12 @@ fibo-fnd-agr-ctr:ContractMilestone a owl:Class ;
         "合同里程碑（contract milestone）"@zh ;
     rdfs:comment "对与合同履行所要求的指定活动、任务或工作段的状态或完成程度相关的事件（里程碑）或事件集的分类符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-ctr:MilestoneEvent ;
             owl:onProperty cmns-cls:classifies ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
         fibo-fnd-agr-ctr:ConditionPrecedent,
         fibo-fnd-dt-oc:OccurrenceKind ;
     skos:definition "classifier for an event (milestone), or set of events related to the status or level of completion of a designated activity, task, or segment of work required for contract fulfillment"@en ;
@@ -787,11 +787,11 @@ fibo-fnd-agr-ctr:ContractualCommitment a owl:Class ;
         "合同承诺（contractual commitment）"@zh ;
     rdfs:comment "规定缔约各方所同意事项（即一方所作履行某行为的许诺或保证）的条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fnd-agr-ctr:ContractualCommitment ;
             owl:onProperty cmns-col:hasPart ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
         fibo-fnd-agr-ctr:ContractualElement ;
     skos:definition "provision specifying something that the contracting parties agree to, i.e., a promise or pledge made by one of the parties to perform some action or fulfill some duty" ;
     skos:scopeNote "Contractual commitments include general conditions which are common to all types of contracts, such as general and special arrangements, provisions, requirements, rules, rights and obligations, specifications, and standards that form an integral part of an agreement or contract, as well as special conditions which are peculiar to a specific contract (such as, contract change conditions, payment conditions, price variation clauses, penalties). Such a commitment indicates an intention or willingness to do something, which may not be legally binding, for example, to negotiate in good faith." .
@@ -805,8 +805,16 @@ fibo-fnd-agr-ctr:WrittenContract a owl:Class ;
             owl:onClass cmns-dt:DateTimeStamp ;
             owl:onProperty fibo-fnd-agr-ctr:hasEffectiveDateTimeStamp ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DateTimeStamp ;
+            owl:onProperty fibo-fnd-agr-ctr:hasExecutionDateTimeStamp ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
             owl:someValuesFrom fibo-fnd-agr-ctr:ContractDocument ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fnd-agr-ctr:hasExecutionDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
@@ -815,16 +823,8 @@ fibo-fnd-agr-ctr:WrittenContract a owl:Class ;
             owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
             owl:someValuesFrom fibo-fnd-agr-ctr:ContractPrincipal ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:DateTimeStamp ;
-            owl:onProperty fibo-fnd-agr-ctr:hasExecutionDateTimeStamp ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
             owl:someValuesFrom fibo-fnd-agr-ctr:Counterparty ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:Date ;
-            owl:onProperty fibo-fnd-agr-ctr:hasExecutionDate ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty fibo-fnd-agr-ctr:isAssignable ;
@@ -837,16 +837,16 @@ fibo-fnd-agr-ctr:Contract a owl:Class ;
         "合同（contract）"@zh ;
     rdfs:comment "有行为能力的参与方之间自愿、审慎达成的协议，各方同意受法律约束，并为此提供有价值的对价。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:ContractualElement ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fnd-agr-ctr:hasEffectiveDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-ctr:ContractParty ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractParty ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:Date ;
-            owl:onProperty fibo-fnd-agr-ctr:hasEffectiveDate ],
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:ContractualElement ],
         fibo-fnd-agr-agr:Agreement ;
     skos:definition "voluntary, deliberate agreement between competent parties to which the parties agree to be legally bound, and for which the parties provide valuable consideration" ;
     cmns-av:explanatoryNote "A contractual relationship is evidenced by (1) an offer, (2) acceptance of the offer, and a (3) valid (legal and valuable) consideration. A contract is a kind of agreement, and as such it embodies the assertion that it has been negotiated, such negotiation having included the presence of some offer and the acceptance of that offer on the part of either or both of the parties.",

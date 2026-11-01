@@ -409,11 +409,11 @@ fibo-be-ge-ge:Polity a owl:Class ;
         "政体（polity）"@zh ;
     rdfs:comment "作为超国家实体、王室、国家或下级民政当局（如省、县、市）的法律主体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
-            owl:someValuesFrom fibo-be-ge-ge:Government ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-ge-ge:hasSovereigntyOver ;
             owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:Government ],
         fibo-be-ge-ge:GovernmentBody,
         cmns-org:LegalPerson ;
     skos:definition "legal person that is a supranational entity, crown, state, or subordinate civil authority, such as a province, prefecture, county, municipality, city, or district representing the people of that entity" .

@@ -25,9 +25,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 情境化标识方案（contextual identification scheme） | 在一个或多个情境内适用的标识方案。 |
-| 情境化标识符（contextual identifier） | 在特定情境内唯一标识其所关联事物的字符序列。 |
-| 结构化标识符（structured identifier） | 唯一标识其所关联事物的字符序列，其中包含其他代码或标识符，或由其他要素构造而成。 |
+| 情境化标识方案（contextual identification scheme） | 在一个或多个情境内适用的标识方案。<br>identification scheme that applies within one or more contexts |
+| 情境化标识符（contextual identifier） | 在特定情境内唯一标识其所关联事物的字符序列。<br>sequence of characters uniquely identifying that with which it is associated, within a specified context |
+| 结构化标识符（structured identifier） | 唯一标识其所关联事物的字符序列，其中包含其他代码或标识符，或由其他要素构造而成。<br>sequence of characters uniquely identifying that with which it is associated, that includes other codes or identifiers, or that is constructed from other notions |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

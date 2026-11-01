@@ -96,13 +96,13 @@ cmns-sfc:Facility a owl:Class ;
     rdfs:comment "为服务特定目的、使某行动或操作更便利、或提供某种能力或服务而设立的事物。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-sfc:Site ;
-            owl:onProperty cmns-sfc:isSituatedAt ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( cmns-org:Capability cmns-org:Service ) ] ;
-            owl:onProperty cmns-sfc:enables ] ;
+            owl:onProperty cmns-sfc:enables ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-sfc:Site ;
+            owl:onProperty cmns-sfc:isSituatedAt ] ;
     skos:definition "something established to serve a particular purpose, make some course of action or operation easier, or provide some capability or service" ;
     cmns-av:explanatoryNote "A facility may be concrete (as in a manufacturing facility) or abstract. Concrete facilities may be permanent, semi-permanent, or temporary structures, providing one or more capabilities at a given site. A single site may include multiple facilities and a given facility may span multiple sites." .
 

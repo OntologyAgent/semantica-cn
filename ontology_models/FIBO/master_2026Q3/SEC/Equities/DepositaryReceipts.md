@@ -34,22 +34,22 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 美国存托凭证（American depositary receipt） | 代表外国公司证券、使该公司证券得以在美国金融市场交易的存托凭证（ADR）。 |
-| 美国存托凭证级别（American depositary receipt level） | 按外国公司进入美国市场程度对美国存托凭证（ADR）进行分级的分类器。 |
-| 美国存托凭证级别方案（American depositary receipt level scheme） | 按外国公司进入美国市场程度对美国存托凭证（ADR）进行分级的方案。 |
-| 中国存托凭证（Chinese depositary receipt） | 代表非中国公司证券所有权、在中国境内公开交易所交易的全球存托凭证（CDR）。 |
-| 欧洲存托凭证（European depositary receipt） | 代表非欧洲公司证券所有权、在欧洲金融市场交易的全球存托凭证（EDR）。 |
-| 香港存托凭证（Hong Kong depositary receipt） | 代表购买或拥有存放于香港存托银行之外国资产的全球存托凭证（HDR）。 |
-| 印度存托凭证（Indian depositary receipt） | 代表购买或拥有存放于印度账户（由境内托管人管理）之外国资产的全球存托凭证（IDR）。 |
-| 日本存托凭证（Japanese depositary receipt） | 代表购买或拥有存放于日本信托银行之外国资产的全球存托凭证（JDR）。 |
-| 卢森堡存托凭证（Luxembourg depositary receipt） | 代表购买或拥有存放于卢森堡账户之外国资产的全球存托凭证。 |
-| 存托凭证（depositary receipt） | 由信托公司、证券存管机构或银行签发的可转让金融工具，是公开交易证券存托的凭证。 |
-| 全球存托凭证（global depositary receipt） | 由购入外国公司证券的存托银行签发凭证、在本地交易所创设证券的存托凭证（GDR）。 |
-| 离岸存托凭证（offshore depositary receipt） | 依美国证券交易委员会（SEC）S 条例发行的存托凭证。 |
-| 参与票据（participatory note） | 便于持有在其他司法管辖区交易之证券的可交易债务工具。 |
-| 私募存托凭证（privately placed depositary receipt） | 代表依美国证券交易委员会（SEC）144A 规则私募配售之股份的存托凭证。 |
-| 有保荐存托凭证（sponsored depositary receipt） | 与外国公司合作发行、使其能够直接进入国际资本市场的存托凭证。 |
-| 无保荐存托凭证（unsponsored depositary receipt） | 未经该公司合作而设立的存托凭证。 |
+| 美国存托凭证（American depositary receipt） | 代表外国公司证券、使该公司证券得以在美国金融市场交易的存托凭证（ADR）。<br>depositary receipt that represents securities of a foreign company and allows that company's securities to trade in the U.S. financial markets |
+| 美国存托凭证级别（American depositary receipt level） | 按外国公司进入美国市场程度对美国存托凭证（ADR）进行分级的分类器。<br>classifier for American depositary receipts that categorizes ADRs into levels based on the extent to which the foreign company has access to the U.S. market |
+| 美国存托凭证级别方案（American depositary receipt level scheme） | 按外国公司进入美国市场程度对美国存托凭证（ADR）进行分级的方案。<br>classifier for American depositary receipts that categorizes ADRs into levels based on the extent to which the foreign company has access to the U.S. market |
+| 中国存托凭证（Chinese depositary receipt） | 代表非中国公司证券所有权、在中国境内公开交易所交易的全球存托凭证（CDR）。<br>global depositary receipt that represents ownership in the securities of a non-Chinese company that trades on a public exchange in China |
+| 欧洲存托凭证（European depositary receipt） | 代表非欧洲公司证券所有权、在欧洲金融市场交易的全球存托凭证（EDR）。<br>global depositary receipt that represents ownership in the securities of a non-European company that trades in European financial markets |
+| 香港存托凭证（Hong Kong depositary receipt） | 代表购买或拥有存放于香港存托银行之外国资产的全球存托凭证（HDR）。<br>global depositary receipt that represents the purchase, or ownership, of foreign assets which are deposited in a depositary bank in Hong Kong |
+| 印度存托凭证（Indian depositary receipt） | 代表购买或拥有存放于印度账户（由境内托管人管理）之外国资产的全球存托凭证（IDR）。<br>global depositary receipt that represents the purchase, or ownership, of foreign assets which are deposited in a Indian account managed by the Domestic Depository in India |
+| 日本存托凭证（Japanese depositary receipt） | 代表购买或拥有存放于日本信托银行之外国资产的全球存托凭证（JDR）。<br>global depositary receipt that represents the purchase, or ownership, of foreign assets which are deposited in a trust bank in Japan |
+| 卢森堡存托凭证（Luxembourg depositary receipt） | 代表购买或拥有存放于卢森堡账户之外国资产的全球存托凭证。<br>global depositary receipt that represents the purchase, or ownership, of foreign assets which are deposited in a Luxembourg-based account |
+| 存托凭证（depositary receipt） | 由信托公司、证券存管机构或银行签发的可转让金融工具，是公开交易证券存托的凭证。<br>negotiable financial instrument issued by a trust company, security depositary, or bank that is evidence of the deposit of publicly traded securities and that facilitates the ownership of securities traded in other jurisdictions |
+| 全球存托凭证（global depositary receipt） | 由购入外国公司证券的存托银行签发凭证、在本地交易所创设证券的存托凭证（GDR）。<br>depositary receipt where a certificate issued by a depositary bank, which purchases securities of foreign companies, creates a security on a local exchange backed by those securities |
+| 离岸存托凭证（offshore depositary receipt） | 依美国证券交易委员会（SEC）S 条例发行的存托凭证。<br>depositary receipt issued under SEC Regulation S |
+| 参与票据（participatory note） | 便于持有在其他司法管辖区交易之证券的可交易债务工具。<br>tradable debt instrument that facilitates the ownership of securities traded in other jurisdictions |
+| 私募存托凭证（privately placed depositary receipt） | 代表依美国证券交易委员会（SEC）144A 规则私募配售之股份的存托凭证。<br>depositary receipt that represents shares in a private placement under the SEC Rule 144-A |
+| 有保荐存托凭证（sponsored depositary receipt） | 与外国公司合作发行、使其能够直接进入国际资本市场的存托凭证。<br>depositary receipt that is issued in collaboration with the foreign company enabling them to tap into international capital markets directly |
+| 无保荐存托凭证（unsponsored depositary receipt） | 未经该公司合作而设立的存托凭证。<br>depositary receipt that is established without the company's cooperation |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -98,10 +98,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有乘数（has multiplier）** | 指明单张存托凭证所代表的标的股份数量（可为多股或零碎股）。 | 值域：xsd:decimal |
-| **具有存托凭证发行数量（has number of depositary receipts issued）** | 指明向公众发行的凭证数量。 | 值域：xsd:positiveInteger |
-| **具有所代表证券（has traded security）** | 将存托凭证与其所代表的工具关联起来。 | 值域：证券；子属性：指代 |
-| **具有所代表股份（has traded share）** | 将存托凭证与其所代表的工具（股票或交易所交易基金）关联起来。 | 值域：股份；子属性：具有所代表证券（has traded security） |
+| **具有乘数（has multiplier）** | 指明单张存托凭证所代表的标的股份数量（可为多股或零碎股）。<br>indicates the number of underlying shares (whether multiple or fractional) represented by a single depositary receipt | 值域：xsd:decimal |
+| **具有存托凭证发行数量（has number of depositary receipts issued）** | 指明向公众发行的凭证数量。<br>indicates the number of receipts issued to the general public | 值域：xsd:positiveInteger |
+| **具有所代表证券（has traded security）** | 将存托凭证与其所代表的工具关联起来。<br>links a depositary receipt to the instrument that it represents | 值域：证券；子属性：指代 |
+| **具有所代表股份（has traded share）** | 将存托凭证与其所代表的工具（股票或交易所交易基金）关联起来。<br>links a depositary receipt to the instrument (equity or exchange-traded fund) that it represents | 值域：股份；子属性：具有所代表证券（has traded security） |
 
 公理：
 
@@ -296,7 +296,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有所代表证券（has traded security）** | 将存托凭证与其所代表的工具关联起来。 | 值域：证券；子属性：指代 |
+| **具有所代表证券（has traded security）** | 将存托凭证与其所代表的工具关联起来。<br>links a depositary receipt to the instrument that it represents | 值域：证券；子属性：指代 |
 
 公理：
 

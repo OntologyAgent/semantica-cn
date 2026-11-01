@@ -17,8 +17,8 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 行业部门分类方案（industry sector classification scheme） | 按行业部门为组织分配分类器的系统。 |
-| 行业部门分类器（industry sector classifier） | 按照某种行业划分方案，对组织或代表该组织权益的证券所作的标准化分类或划分。 |
+| 行业部门分类方案（industry sector classification scheme） | 按行业部门为组织分配分类器的系统。<br>system for allocating classifiers to organizations by industry sector |
+| 行业部门分类器（industry sector classifier） | 按照某种行业划分方案，对组织或代表该组织权益的证券所作的标准化分类或划分。<br>standardized classification or delineation for an organization, or possibly for a security representing an interest in a given organization, per some scheme for such delineation, by industry |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

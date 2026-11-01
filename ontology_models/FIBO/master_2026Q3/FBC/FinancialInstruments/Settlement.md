@@ -27,12 +27,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 现金结算条款（cash settlement terms） | 以现金方式结算的合同承诺。 |
-| 交割方式（delivery method） | 按合同结算条款转让商品、货币、证券、现金或其他工具的方式与承诺。 |
-| 实物结算条款（physical settlement terms） | 承诺在指定交割日交付实际标的资产，而非现金。 |
-| 结算（settlement） | 完成交易的行为，包括但不限于完成账务处理、交换对价以及依法登记文件等。 |
-| 结算惯例（settlement convention） | 在证券或工具交易结算过程中，用于（根据既定结算日）确定截止日期的惯例。 |
-| 结算事件（settlement event） | 完成交易或其一部分的具体事件，包括但不限于完成账务处理、交换对价等。 |
+| 现金结算条款（cash settlement terms） | 以现金方式结算的合同承诺。<br>contractual commitment to settle in cash |
+| 交割方式（delivery method） | 按合同结算条款转让商品、货币、证券、现金或其他工具的方式与承诺。<br>method and commitment to transfer a commodity, currency, security, cash or another instrument as defined in the settlement terms of the contract |
+| 实物结算条款（physical settlement terms） | 承诺在指定交割日交付实际标的资产，而非现金。<br>commitment to deliver the actual underlying asset on the specified delivery date, rather than cash |
+| 结算（settlement） | 完成交易的行为，包括但不限于完成账务处理、交换对价以及依法登记文件等。<br>act of finalizing a transaction, including but not limited to finalizing accounting, exchanging consideration, and/or legally recording documents, as applicable |
+| 结算惯例（settlement convention） | 在证券或工具交易结算过程中，用于（根据既定结算日）确定截止日期的惯例。<br>convention employed to determine the closing date (from the stated settlement date) in the process of settling a transaction on which securities or interests in securities are delivered, usually against (in simultaneous exchange for) payment of some consideration |
+| 结算事件（settlement event） | 完成交易或其一部分的具体事件，包括但不限于完成账务处理、交换对价等。<br>specific event involving the finalization a transaction or portion thereof, including but not limited to finalizing accounting, exchanging consideration, and/or legally recording documents, as applicable |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -46,8 +46,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有结算方式（has settlement method）** | 从交割角度规定结算策略。 | 值域：交割方式（delivery method）；子属性：具有战略 |
-| **具有结算金额（has settlement amount）** | 指明现金结算所需的货币金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有结算方式（has settlement method）** | 从交割角度规定结算策略。<br>specifies the strategy for settlement from a delivery perspective | 值域：交割方式（delivery method）；子属性：具有战略 |
+| **具有结算金额（has settlement amount）** | 指明现金结算所需的货币金额。<br>indicates the monetary amount required for cash settlement | 值域：货币数量；子属性：具有货币数量 |
 | **具有价格（hasPrice）** | — | — |
 
 公理：
@@ -72,7 +72,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有结算方式（has settlement method）** | 从交割角度规定结算策略。 | 值域：交割方式（delivery method）；子属性：具有战略 |
+| **具有结算方式（has settlement method）** | 从交割角度规定结算策略。<br>specifies the strategy for settlement from a delivery perspective | 值域：交割方式（delivery method）；子属性：具有战略 |
 
 公理：
 
@@ -128,14 +128,14 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有首选结算货币（has preferred settlement currency）** | 指明结算所用的首选货币。 | 值域：货币；子属性：具有货币 |
+| **具有首选结算货币（has preferred settlement currency）** | 指明结算所用的首选货币。<br>indicates the preferred currency for settlement purposes | 值域：货币；子属性：具有货币 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **是否允许零碎份额（is fractional eligible）** | 表明该证券是否可以包含零碎份额或零碎数量。 |
-| **是否适用全自动证券过户（is fully automated securities transfer applicable）** | 表明该证券是否作为 FAST（全自动证券过户）计划的一部分由过户代理机构持有。 |
+| **是否允许零碎份额（is fractional eligible）** | 表明该证券是否可以包含零碎份额或零碎数量。<br>indicates whether the security can contain fractional share/amounts |
+| **是否适用全自动证券过户（is fully automated securities transfer applicable）** | 表明该证券是否作为 FAST（全自动证券过户）计划的一部分由过户代理机构持有。<br>indicates whether the security is to be held at the transfer agent as part of the FAST (Fully Automated Securities Transfer) program |
 
 ## 4. 依赖（owl:imports，13 个）
 

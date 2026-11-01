@@ -94,13 +94,13 @@ fibo-fnd-plc-rp:RealPropertyIdentifier a owl:Class ;
         "不动产标识符（real property identifier）"@zh ;
     rdfs:comment "在某管辖区用于标识特定不动产的唯一标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-rp:RealProperty ;
-            owl:onProperty cmns-id:identifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-rga:Jurisdiction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-rp:RealProperty ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-cxtid:ContextualIdentifier ;
     skos:definition "unique identifier given to identify a specific real property in some jurisidiction" .
 
@@ -134,12 +134,12 @@ fibo-fnd-plc-rp:RealPropertyAppraisal a owl:Class ;
             owl:onProperty fibo-fnd-rel-rel:evaluates ;
             owl:someValuesFrom fibo-fnd-plc-rp:RealProperty ],
         [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Appraiser ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-rp:PropertyInspectionReport ;
             owl:onProperty fibo-fnd-dt-oc:hasInput ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-org:isProvidedBy ;
-            owl:someValuesFrom fibo-fnd-arr-asmt:Appraiser ],
         fibo-fnd-arr-asmt:Appraisal ;
     skos:definition "value assessment that estimates the amount of money some real property is worth" ;
     cmns-av:explanatoryNote "The valuation uses one or more methodologies and is conducted by an appraiser or technology with a logical model that performs the same function." .

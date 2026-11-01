@@ -27,12 +27,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 加拿大消费者价格指数（Canadian consumer price index） | 表示加拿大私人住户消费的固定篮子消费货物与服务价格随时间变化之度量的经济指标。 |
-| 加拿大住户消费者全域（Canadian households consumers universe） | 由加拿大全部私人住户构成的统计全域，不含军事基地士兵、第一民族保留地居民等。 |
-| 加拿大生产者价格指数（Canadian producer price index） | 表示国内生产者固定篮子货物与服务价格随时间变化之度量的经济指标。 |
-| 工业产品部门（industrial products sector） | 价格指数中用于聚焦加拿大制造商销售的主要商品的经济部门分类符。 |
-| 新建住房部门（new housing sector） | 价格指数中用于聚焦承包商新建住宅销售价格的经济部门分类符。 |
-| 原材料部门（raw materials sector） | 与加拿大各行业购入以供进一步加工的原材料相关的价格指数所用的分类符。 |
+| 加拿大消费者价格指数（Canadian consumer price index） | 表示加拿大私人住户消费的固定篮子消费货物与服务价格随时间变化之度量的经济指标。<br>economic indicator representing a measure of changes over time in the prices of a fixed basket of consumer goods and services that Canadian private households consume |
+| 加拿大住户消费者全域（Canadian households consumers universe） | 由加拿大全部私人住户构成的统计全域，不含军事基地士兵、第一民族保留地居民等。<br>a statistical universe consisting of all private households in Canada, with the exception of soldiers on military bases, people living on First Nations reserves, institutionalized persons, and households living in the rural areas of the three northern territories |
+| 加拿大生产者价格指数（Canadian producer price index） | 表示国内生产者固定篮子货物与服务价格随时间变化之度量的经济指标。<br>an economic indicator representing a measure of the change over time in the prices of a fixed-basket of domestic producer goods and services |
+| 工业产品部门（industrial products sector） | 价格指数中用于聚焦加拿大制造商销售的主要商品的经济部门分类符。<br>a classifier for a sector of the economy used for price indices focused on major commodities sold by manufacturers in Canada |
+| 新建住房部门（new housing sector） | 价格指数中用于聚焦承包商新建住宅销售价格的经济部门分类符。<br>a classifier for a sector of the economy used for price indices focused on contractors' selling prices of new residential houses, where detailed specifications pertaining to each house remain the same between two consecutive periods |
+| 原材料部门（raw materials sector） | 与加拿大各行业购入以供进一步加工的原材料相关的价格指数所用的分类符。<br>a classifier used for price indices related to raw materials purchased by industries in Canada for further processing |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

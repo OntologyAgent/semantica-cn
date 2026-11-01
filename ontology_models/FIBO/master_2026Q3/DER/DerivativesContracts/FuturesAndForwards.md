@@ -34,25 +34,25 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 篮子期货（basket future） | 标的资产为一篮子证券和/或指数的期货合约。 |
-| 债券期货（bond future） | 标的资产为至少一只债券的期货合约。 |
-| 货币期货（currency future） | 标的资产为基于约定汇率在未来某时以一种货币兑换另一种货币之协议的期货合约。 |
-| 债务工具期货（debt instrument future） | 标的资产为至少一种债务工具的期货合约。 |
-| 股息调整期间（dividend adjustment period） | 用于计算预期股息与该期间实际派发股息之间差额（如有）的日期区间。 |
-| 股息期货（dividend future） | 标的资产为至少一笔股票股息的期货合约。 |
-| 股票远期（equity forward） | 按约定在未来买卖标的股票、股票指数、股票篮子、股票期货合约或股票期权的远期合约。 |
-| 股票期货（equity future） | 标的资产为至少一种权益证券（具体为公开发行交易的股票）的期货合约。 |
-| 金融期货（financial future） | 以商品以外的资产为标的的期货合约。 |
-| 远期合约（forward） | 双方私下协商、按合约规定价格在未来指定日期买入标的的衍生工具。 |
-| 远期合约调整方法（forward contract adjustment method） | 在发生一项或多项异常事件时对合约进行调整的方法。 |
-| 期货的期货（future on future） | 标的资产为至少一份（其他）期货合约的期货合约。 |
-| 期权的期货（future on option） | 标的资产为至少一份期权合约的期货合约。 |
-| 互换的期货（future on swap） | 标的资产为至少一份互换合约的期货合约。 |
-| 指数期货（index future） | 标的资产为至少一个参考指数或经济指标的期货合约。 |
-| 利率期货（interest rate future） | 以附息工具为标的资产的期货合约。 |
-| 货币市场期货（money market future） | 以货币市场工具为标的资产的期货合约。 |
-| 标准化期货挂牌条款（standardized futures listing terms） | 由衍生品交易所制定、适用于该交易所任何期货合约挂牌的合同条款。 |
-| 标准化期货条款（standardized futures terms） | 由衍生品交易所制定、适用于该交易所交易的任何期货合约的合同条款。 |
+| 篮子期货（basket future） | 标的资产为一篮子证券和/或指数的期货合约。<br>futures contract whose underlying asset is a basket of securities and/or indices |
+| 债券期货（bond future） | 标的资产为至少一只债券的期货合约。<br>futures contract whose underlying asset is at least one bond |
+| 货币期货（currency future） | 标的资产为基于约定汇率在未来某时以一种货币兑换另一种货币之协议的期货合约。<br>futures contract whose underlying asset is an agreement to exchange a specified amount of one currency for another at some point in the future based on pricing stated in the contract |
+| 债务工具期货（debt instrument future） | 标的资产为至少一种债务工具的期货合约。<br>futures contract whose underlying asset is at least one debt instrument |
+| 股息调整期间（dividend adjustment period） | 用于计算预期股息与该期间实际派发股息之间差额（如有）的日期区间。<br>date period used to calculate the difference, if any between an anticipated dividend and the actual dividend distributed in that period |
+| 股息期货（dividend future） | 标的资产为至少一笔股票股息的期货合约。<br>futures contract whose underlying asset is at least one stock dividend |
+| 股票远期（equity forward） | 按约定在未来买卖标的股票、股票指数、股票篮子、股票期货合约或股票期权的远期合约。<br>forward contract to buy or sell the underlying equity stock, equity index, basket of equity stock, equity futures contract, or equity option at a specified future date at the price specified at the outset of the contract |
+| 股票期货（equity future） | 标的资产为至少一种权益证券（具体为公开发行交易的股票）的期货合约。<br>futures contract whose underlying asset is at least one equity security, specifically a publicly issued and traded share |
+| 金融期货（financial future） | 以商品以外的资产为标的的期货合约。<br>futures contract based on underlying assets excluding commodities |
+| 远期合约（forward） | 双方私下协商、按合约规定价格在未来指定日期买入标的的衍生工具。<br>derivative instrument that is privately negotiated between parties to buy the underlier at a specified future date at the price specified in the contract |
+| 远期合约调整方法（forward contract adjustment method） | 在发生一项或多项异常事件时对合约进行调整的方法。<br>method by which adjustments will be made to the contract should one or more of a number of extraordinary events occur |
+| 期货的期货（future on future） | 标的资产为至少一份（其他）期货合约的期货合约。<br>futures contract whose underlying asset is at least one (other) futures contract |
+| 期权的期货（future on option） | 标的资产为至少一份期权合约的期货合约。<br>futures contract whose underlying asset is at least one option contract |
+| 互换的期货（future on swap） | 标的资产为至少一份互换合约的期货合约。<br>futures contract whose underlying asset is at least one swap contract |
+| 指数期货（index future） | 标的资产为至少一个参考指数或经济指标的期货合约。<br>futures contract whose underlying asset is at least one reference index or economic indicator |
+| 利率期货（interest rate future） | 以附息工具为标的资产的期货合约。<br>futures contract with an interest-bearing instrument as the underlying asset |
+| 货币市场期货（money market future） | 以货币市场工具为标的资产的期货合约。<br>futures contract with a money market instrument as the underlying asset |
+| 标准化期货挂牌条款（standardized futures listing terms） | 由衍生品交易所制定、适用于该交易所任何期货合约挂牌的合同条款。<br>contract terms established by a derivatives exchange that apply to any listing of a futures contract on that exchange. |
+| 标准化期货条款（standardized futures terms） | 由衍生品交易所制定、适用于该交易所交易的任何期货合约的合同条款。<br>contract terms established by a derivatives exchange that apply to any futures contract traded on that exchange |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -118,7 +118,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有转换因子（has conversion factor）** | 指明使交割债券/票据（1 美元面值）产生固定收益率的价格。转换因子用于计算最终交割价格。 | 值域：xsd:decimal；子属性：具有数值 |
+| **具有转换因子（has conversion factor）** | 指明使交割债券/票据（1 美元面值）产生固定收益率的价格。转换因子用于计算最终交割价格。<br>indicates the price of the delivered bond/note ($1 par value) to yield a fixed rate. The conversion factor is used to calculate a final delivery price. | 值域：xsd:decimal；子属性：具有数值 |
 | **具有标的（hasUnderlier）** | — | — |
 
 公理：
@@ -231,7 +231,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有乘数（has multiple）** | 指明用于确定期货合约相对于标的指数价格之关系的乘数。 | 值域：xsd:decimal；子属性：具有数值 |
+| **具有乘数（has multiple）** | 指明用于确定期货合约相对于标的指数价格之关系的乘数。<br>indicates the multiple for determining the price of the futures contract in relation to the underlying index rate | 值域：xsd:decimal；子属性：具有数值 |
 | **具有标的（hasUnderlier）** | — | — |
 
 公理：
@@ -271,8 +271,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股息调整期间（has dividend adjustment period）** | 指明至少一个用于计算预期股息与实际派发股息之间偏差的日期区间。 | 值域：股息调整期间（dividend adjustment period）；子属性：具有日期区间 |
-| **具有调整方法（has method of adjustment）** | 指明基于合约生命周期内发生的事件处理合约变更的方法。 | 值域：远期合约调整方法（forward contract adjustment method）；子属性：具有战略 |
+| **具有股息调整期间（has dividend adjustment period）** | 指明至少一个用于计算预期股息与实际派发股息之间偏差的日期区间。<br>indicates at least one date period used to calculate the deviation between an anticipated/expected dividend and the actual dividend issued during that period | 值域：股息调整期间（dividend adjustment period）；子属性：具有日期区间 |
+| **具有调整方法（has method of adjustment）** | 指明基于合约生命周期内发生的事件处理合约变更的方法。<br>indicates the method used to address any changes to the contract based on events that occur over the contract lifecycle | 值域：远期合约调整方法（forward contract adjustment method）；子属性：具有战略 |
 | **具有标的（hasUnderlier）** | — | — |
 | **具有合同要素（hasContractualElement）** | — | — |
 

@@ -34,16 +34,16 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 货币衍生品（currency derivative） | 以约定汇率交付并结算一种货币的给定金额、以换取另一货币给定金额的协议。 |
-| 货币远期（currency forward） | 在未来约定日期交付并结算一种货币的给定金额、以换取另一货币给定金额的协议。 |
-| 直接货币远期（currency forward outright） | 外汇市场上的远期合约，锁定实体在未来某日必须买入或卖出某一货币的价格。 |
-| 货币期权（currency option） | 赋予买方（持有人）在规定期间内按指定汇率买入或卖出货币的权利（而非义务）的期权。 |
-| 货币即期合约（currency spot contract） | 即时交割的外汇合约。 |
-| 货币即期远期互换（currency spot forward swap） | 双方按约定固定汇率进行两种货币交换的外汇协议：a）在即期结算日交换；b）在远期日反向交换。 |
-| 货币互换（currency swap） | 双方将一种货币的给定金额交换为另一种货币、用于即期交割或远期交割的外汇协议。 |
-| 货币波动率期权（currency volatility option） | 标的资产基于某一外汇汇率波动率的货币期权。 |
-| 外汇主协议（foreign exchange master agreement） | 旨在反映市场最佳实践、为外汇市场参与者提供标准协议的产品专用主协议。 |
-| 外汇结算净额条款（foreign exchange settlement netting provision） | 外汇合约特有的结算净额条款。 |
+| 货币衍生品（currency derivative） | 以约定汇率交付并结算一种货币的给定金额、以换取另一货币给定金额的协议。<br>agreement to deliver and settle a given amount of money in one currency, in exchange for a given amount in another currency at an agreed rate of exchange |
+| 货币远期（currency forward） | 在未来约定日期交付并结算一种货币的给定金额、以换取另一货币给定金额的协议。<br>agreement to deliver and settle a given amount of money in one currency, in exchange for a given amount in another currency, at an agreed date in the future and at an agreed rate of exchange |
+| 直接货币远期（currency forward outright） | 外汇市场上的远期合约，锁定实体在未来某日必须买入或卖出某一货币的价格。<br>forward contract in a foreign exchange market that locks in the price at which an entity must buy or sell a currency on a future date |
+| 货币期权（currency option） | 赋予买方（持有人）在规定期间内按指定汇率买入或卖出货币的权利（而非义务）的期权。<br>option giving the buyer (holder) the right, but not the obligation, to buy or sell currency at a specified exchange rate during a specified period of time |
+| 货币即期合约（currency spot contract） | 即时交割的外汇合约。<br>foreign-exchange contract for immediate delivery |
+| 货币即期远期互换（currency spot forward swap） | 双方按约定固定汇率进行两种货币交换的外汇协议：a）在即期结算日交换；b）在远期日反向交换。<br>foreign exchange agreement between two parties involving an exchange of two currencies at agreed fixed rates: a) on the spot settlement date and b) a reverse exchange on a later specified date |
+| 货币互换（currency swap） | 双方将一种货币的给定金额交换为另一种货币、用于即期交割或远期交割的外汇协议。<br>foreign exchange agreement between two parties to exchange a given amount of one currency for another currency for spot delivery or for forward delivery at an agreed rate after a specified period of time |
+| 货币波动率期权（currency volatility option） | 标的资产基于某一外汇汇率波动率的货币期权。<br>currency option whose underlying asset is based on the volatility of a foreign exchange rate |
+| 外汇主协议（foreign exchange master agreement） | 旨在反映市场最佳实践、为外汇市场参与者提供标准协议的产品专用主协议。<br>product-specific master agreement intended to reflect best market practice and to provide a standard agreement for participants in the foreign exchange markets |
+| 外汇结算净额条款（foreign exchange settlement netting provision） | 外汇合约特有的结算净额条款。<br>settlement netting provision that is specific to foreign exchange contracts |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -75,7 +75,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有远期汇率（has forward exchange rate）** | 远期合约中规定的两种货币之间的汇率。 | 值域：汇率；子属性：具有量值 |
+| **具有远期汇率（has forward exchange rate）** | 远期合约中规定的两种货币之间的汇率。<br>rate of exchange between two currencies as specified in a forward contract | 值域：汇率；子属性：具有量值 |
 
 公理：
 
@@ -176,7 +176,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有即期汇率（has spot exchange rate）** | 由特定来源在某一日期和时间报出的两种货币之间的汇率，通常用于即期合约。 | 值域：报价汇率；子属性：具有报价汇率 |
+| **具有即期汇率（has spot exchange rate）** | 由特定来源在某一日期和时间报出的两种货币之间的汇率，通常用于即期合约。<br>rate of exchange between two currencies as specified as of some date and time as quoted by a specific source, typically for a spot contract | 值域：报价汇率；子属性：具有报价汇率 |
 
 公理：
 

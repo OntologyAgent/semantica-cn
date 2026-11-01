@@ -26,11 +26,11 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 计算（calculation） | 被排定或由某事物触发的某项计算、计算过程或运算的实际执行。 |
-| 计算事件（calculation event） | 被排定或由某事物（如相关金融事件）触发、从而导致执行计算的一类事件。 |
-| 发生事项（occurrence） | 某种发生类别的发生，即事件。 |
-| 发生类别（occurrence kind） | 指明发生事项（事件）一般性质的分类符。 |
-| 基于发生事项的日期（occurrence-based date） | 相对于某发生类别的发生而定义的推算日期。 |
+| 计算（calculation） | 被排定或由某事物触发的某项计算、计算过程或运算的实际执行。<br>actual execution of some computation, computational process, or operation that was scheduled or triggered by something |
+| 计算事件（calculation event） | 被排定或由某事物（如相关金融事件）触发、从而导致执行计算的一类事件。<br>kind of event that is either scheduled or triggered by something, such as a related financial event, that causes a calculation to be performed |
+| 发生事项（occurrence） | 某种发生类别的发生，即事件。<br>happening of an OccurrenceKind, i.e., an event |
+| 发生类别（occurrence kind） | 指明发生事项（事件）一般性质的分类符。<br>classifier that specifies the general nature of an occurrence (event) |
+| 基于发生事项的日期（occurrence-based date） | 相对于某发生类别的发生而定义的推算日期。<br>calculated date that is defined with respect to the occurrence of some occurrence kind |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -120,7 +120,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……触发（is triggered by）** | 由……激活或发起。 | 值域：发生类别（occurrence kind） |
+| **由……触发（is triggered by）** | 由……激活或发起。<br>is activated or initiated by | 值域：发生类别（occurrence kind） |
 
 公理：
 
@@ -134,18 +134,18 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有事件日期（has event date）** | 标识与事件（发生事项）关联的日期。 | 值域：日期；子属性：具有日期 |
-| **具有输入（has input）** | 将某事物（如发生事项）关联到用作某活动或过程输入的事物。 | 逆属性：是……的输入（is input to） |
-| **具有发生事项（has occurrence）** | 标识给定发生类别的事件，通常指其在进度表中的发生。 | 值域：发生事项（occurrence） |
-| **具有输出（has output）** | 将某事物（如发生事项）关联到作为某活动或过程结果的事物。 | 逆属性：是……的输出（is output from） |
-| **是……的输入（is input to）** | 标识某活动、过程、系统、报告、分析等的前提条件、要求或其他投入（如数据）。 | — |
-| **是……的输出（is output from）** | 标识某活动、过程、系统、报告、分析等的后置条件或其他产物。 | — |
+| **具有事件日期（has event date）** | 标识与事件（发生事项）关联的日期。<br>identifies a date associated with an event (occurrence) | 值域：日期；子属性：具有日期 |
+| **具有输入（has input）** | 将某事物（如发生事项）关联到用作某活动或过程输入的事物。<br>relates something (e.g. an occurrence) to something that is used as an input to some activity or process | 逆属性：是……的输入（is input to） |
+| **具有发生事项（has occurrence）** | 标识给定发生类别的事件，通常指其在进度表中的发生。<br>identifies events of a given occurrence kind, typically as they occur in a schedule | 值域：发生事项（occurrence） |
+| **具有输出（has output）** | 将某事物（如发生事项）关联到作为某活动或过程结果的事物。<br>relates something (e.g. an occurrence) to something that is the result of some activity or process | 逆属性：是……的输出（is output from） |
+| **是……的输入（is input to）** | 标识某活动、过程、系统、报告、分析等的前提条件、要求或其他投入（如数据）。<br>indicates a precondition, requirement, or other contribution (e.g., data) to some activity, process, system, report, analysis, etc. | — |
+| **是……的输出（is output from）** | 标识某活动、过程、系统、报告、分析等的后置条件或其他产物。<br>indicates post condition or other product of some activity, process, system, report, analysis, etc. | — |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有事件日期值（has event date value）** | 标识与事件（发生事项）关联的日期或日期时间值。 |
+| **具有事件日期值（has event date value）** | 标识与事件（发生事项）关联的日期或日期时间值。<br>identifies a date or date and time value associated with an event (occurrence) |
 
 ## 4. 依赖（owl:imports，10 个）
 

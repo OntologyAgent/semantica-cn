@@ -34,34 +34,34 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 地址（address） | 通信可送达之位置的索引。 |
-| 地址成分（address component） | 地址的某个方面。 |
-| 地址编制方案（addressing scheme） | 为对象分配地址的体系。 |
-| 常规街道地址（conventional street address） | 标识通信可送达之街道位置的物理地址。 |
-| 地理方位符号（geographic directional symbol） | 为邮政投递提供方位信息的代码元素。 |
-| 物理地址（physical address） | 可为任何组织或个人送达通信、送达文书或找到代表的物理地址。 |
-| 物理地址标识符（physical address identifier） | 物理地址的唯一标识符。 |
-| 物理地址编制方案（physical addressing scheme） | 按国家特定标准指明物理地址的方案。 |
-| 邮区（post code area） | 由某邮政编码唯一标识的物理区域。 |
-| 邮政信箱（post office box） | 与某地址关联的邮政信箱。 |
-| 邮政信箱地址（post office box address） | 用于将通信投递到当地邮局（或该管辖区等同机构）指定信箱的物理地址。 |
-| 邮政信箱指称符（post office box designator） | 与标识符一起用于邮政信箱的指称符。 |
-| 邮政编码（postcode） | 用于辅助邮件分拣的字符序列。 |
-| 后置方位符号（postdirectional symbol） | 街道地址中位于街道名称和街道后缀之后的地理方位符号。 |
-| 前置方位符号（predirectional symbol） | 街道地址中位于主门牌号之后、街道名称之前的地理方位符号。 |
-| 主门牌号（primary address number） | 相对于给定街道标识位置的地址成分。 |
-| 区域专用标识符（region-specific identifier） | 由国家或其他区域内部使用的地理区域或行政区划标识符。 |
-| 次级单元（secondary unit） | 标识给定街道地址处较大结构内的独立单元（如公寓、办公室、机库、泊位、邮箱等）的地址成分。 |
-| 次级单元指称符（secondary unit designator） | 较大设施内较小结构或组成部分（如公寓、办公室、邮件站等类似指称）的分类符。 |
-| 次级单元指示符（secondary unit indicator） | 指向特定街道地址处次级单元（如楼栋或公寓）内具体单元的索引。 |
-| 街道地址（street address） | 由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的位置索引。 |
-| 街道名称（street name） | 某情境（如城市、市政区、地理区域）中街道的标识符。 |
-| 街道后缀（street suffix） | 街道或其他投递位置（如沿水道住所）的分类符。 |
-| 建筑名称（structure name） | 楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的名称。 |
-| 补充地址成分（supplemental address component） | 提供对确保通信正确投递重要的附加信息的地址成分。 |
-| 补充地址指称符（supplemental address designator） | 补充地址信息（如公路合同路线、乡村路线、建筑综合体、购物中心、公寓综合体）的分类符。 |
-| 补充地址单元（supplemental address unit） | 包含与特定地址关联的特定路线、信箱、公寓或其他指示符或单元的地址成分。 |
-| 虚拟地址（virtual address） | 标识虚拟（即非物理）位置的地址。 |
+| 地址（address） | 通信可送达之位置的索引。<br>index to a location to which communications may be delivered |
+| 地址成分（address component） | 地址的某个方面。<br>aspect of an address |
+| 地址编制方案（addressing scheme） | 为对象分配地址的体系。<br>system for allocating addresses to objects |
+| 常规街道地址（conventional street address） | 标识通信可送达之街道位置的物理地址。<br>physical address that identifies a location on a street to which communications may be delivered |
+| 地理方位符号（geographic directional symbol） | 为邮政投递提供方位信息的代码元素。<br>code element that gives directional information for postal delivery |
+| 物理地址（physical address） | 可为任何组织或个人送达通信、送达文书或找到代表的物理地址。<br>physical address where communications can be addressed, papers served or representatives located for any kind of organization or person |
+| 物理地址标识符（physical address identifier） | 物理地址的唯一标识符。<br>unique identifier for a physical address |
+| 物理地址编制方案（physical addressing scheme） | 按国家特定标准指明物理地址的方案。<br>scheme for specifying physical addresses according to a country specific standard |
+| 邮区（post code area） | 由某邮政编码唯一标识的物理区域。<br>physical area uniquely identified by some postal code |
+| 邮政信箱（post office box） | 与某地址关联的邮政信箱。<br>post office box associated with an address |
+| 邮政信箱地址（post office box address） | 用于将通信投递到当地邮局（或该管辖区等同机构）指定信箱的物理地址。<br>physical address used to deliver communications to a designated container at a local post office or the local equivalent for the jurisdiction, where mail is held until the recipient collects it, rather than to a given house, building, or other location |
+| 邮政信箱指称符（post office box designator） | 与标识符一起用于邮政信箱的指称符。<br>designator used, together with an identifier, for a post office box |
+| 邮政编码（postcode） | 用于辅助邮件分拣的字符序列。<br>sequence of characters used to assist in the sorting of mail |
+| 后置方位符号（postdirectional symbol） | 街道地址中位于街道名称和街道后缀之后的地理方位符号。<br>geographic directional symbol that follows the street name and street suffix in a street address |
+| 前置方位符号（predirectional symbol） | 街道地址中位于主门牌号之后、街道名称之前的地理方位符号。<br>geographic directional symbol that occurs after the primary street number but before the street name in a street address |
+| 主门牌号（primary address number） | 相对于给定街道标识位置的地址成分。<br>address component that identifies a location with respect to a given street |
+| 区域专用标识符（region-specific identifier） | 由国家或其他区域内部使用的地理区域或行政区划标识符。<br>geographic region or subdivision identifier used internally by a country or other region |
+| 次级单元（secondary unit） | 标识给定街道地址处较大结构内的独立单元（如公寓、办公室、机库、泊位、邮箱等）的地址成分。<br>address component that identifies an individual unit within a larger structure, such as an apartment, office, hangar, slip, mailbox, and so forth, at a given street address |
+| 次级单元指称符（secondary unit designator） | 较大设施内较小结构或组成部分（如公寓、办公室、邮件站等类似指称）的分类符。<br>classifier for a smaller structure or component within a larger facility, such as an apartment, office, mail stop, or other similar designation |
+| 次级单元指示符（secondary unit indicator） | 指向特定街道地址处次级单元（如楼栋或公寓）内具体单元的索引。<br>index to the specific unit within a secondary unit, such as a building or apartment, at a particular street address |
+| 街道地址（street address） | 由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的位置索引。<br>index to a location that consists of a primary address number, predirectional, street name, suffix, postdirectional, and an optional secondary unit |
+| 街道名称（street name） | 某情境（如城市、市政区、地理区域）中街道的标识符。<br>identifier for a street in some context (e.g., city, municipality, geographic region) |
+| 街道后缀（street suffix） | 街道或其他投递位置（如沿水道住所）的分类符。<br>classifier for a street or other delivery location, such as a dwelling located along a waterway |
+| 建筑名称（structure name） | 楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的名称。<br>name for a building, house, office complex, shopping center, or other structure or group of structures |
+| 补充地址成分（supplemental address component） | 提供对确保通信正确投递重要的附加信息的地址成分。<br>address component that provides additional information that is important to ensuring proper delivery of communications |
+| 补充地址指称符（supplemental address designator） | 补充地址信息（如公路合同路线、乡村路线、建筑综合体、购物中心、公寓综合体）的分类符。<br>classifier for supplemental address information, such as a highway contract route, rural route, building complex, shopping center, condominium complex, mail box, or other similar designation |
+| 补充地址单元（supplemental address unit） | 包含与特定地址关联的特定路线、信箱、公寓或其他指示符或单元的地址成分。<br>address component that includes a specific route, box, apartment, condominium or other indicator or unit associated with a specific address |
+| 虚拟地址（virtual address） | 标识虚拟（即非物理）位置的地址。<br>address identifying a virtual, i.e. non-physical, location |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -96,14 +96,14 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **是…的索引（isIndexTo）** | — | — |
-| **具有地址行 1（has address line 1）** | 街道地址的第一行。 | 子属性：具有文本值 |
-| **具有地址行 2（has address line 2）** | 街道地址的第二行。 | 子属性：具有文本值 |
-| **具有地址行 3（has address line 3）** | 街道地址的第三行。 | 子属性：具有文本值 |
-| **具有收件人行（has attention line）** | 可选的自由文本地址行，标明预期收件人。 | 子属性：具有文本值 |
-| **具有具体邮政编码（has individual postcode）** | 标识当地邮政部门规定的投递地址的本地或国际邮政编码元素。 | 值域：邮政编码（postcode）；子属性：包含 |
-| **具有邮件路由（has mail routing）** | 可选的自由文本地址行，含明确的路由信息（该元素的存在表明此地址为路由/「转交」地址）。 | 子属性：具有文本值 |
-| **具有邮政编码（has postal code）** | 当地邮政部门规定的此地址的邮政编码。 | 子属性：具有文本值 |
-| **具有建筑名称（has structure name）** | 指明楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的标识符。 | 值域：建筑名称（structure name）；子属性：包含 |
+| **具有地址行 1（has address line 1）** | 街道地址的第一行。<br>the first line of the street address | 子属性：具有文本值 |
+| **具有地址行 2（has address line 2）** | 街道地址的第二行。<br>the second line of the street address | 子属性：具有文本值 |
+| **具有地址行 3（has address line 3）** | 街道地址的第三行。<br>the third line of the street address | 子属性：具有文本值 |
+| **具有收件人行（has attention line）** | 可选的自由文本地址行，标明预期收件人。<br>an optional, free text address line denoting the intended recipient | 子属性：具有文本值 |
+| **具有具体邮政编码（has individual postcode）** | 标识当地邮政部门规定的投递地址的本地或国际邮政编码元素。<br>indicates the local or international postcode element of a delivery address as specified by the local postal service | 值域：邮政编码（postcode）；子属性：包含 |
+| **具有邮件路由（has mail routing）** | 可选的自由文本地址行，含明确的路由信息（该元素的存在表明此地址为路由/「转交」地址）。<br>an optional, free text address line containing explicit routing information (this elements's presence indicates that this address is a routing / 'care of' address) | 子属性：具有文本值 |
+| **具有邮政编码（has postal code）** | 当地邮政部门规定的此地址的邮政编码。<br>the postal code of this address as specified by the local postal service | 子属性：具有文本值 |
+| **具有建筑名称（has structure name）** | 指明楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的标识符。<br>specifies an identifier for a building, house, office complex, shopping center, or other structure or group of structures | 值域：建筑名称（structure name）；子属性：包含 |
 | **具有城市名称（hasCityName）** | — | — |
 | **具有国家（hasCountry）** | — | — |
 | **具有市政区（hasMunicipality）** | — | — |
@@ -129,10 +129,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有地址行 1（has address line 1）** | 街道地址的第一行。 | 子属性：具有文本值 |
-| **具有地址行 2（has address line 2）** | 街道地址的第二行。 | 子属性：具有文本值 |
-| **具有地址行 3（has address line 3）** | 街道地址的第三行。 | 子属性：具有文本值 |
-| **具有街道地址（has street address）** | 标识由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的完整地址成分。 | 值域：街道地址（street address）；子属性：包含 |
+| **具有地址行 1（has address line 1）** | 街道地址的第一行。<br>the first line of the street address | 子属性：具有文本值 |
+| **具有地址行 2（has address line 2）** | 街道地址的第二行。<br>the second line of the street address | 子属性：具有文本值 |
+| **具有地址行 3（has address line 3）** | 街道地址的第三行。<br>the third line of the street address | 子属性：具有文本值 |
+| **具有街道地址（has street address）** | 标识由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的完整地址成分。<br>indicates a fully-specified address component that consists of a primary address number, predirectional, street name, suffix, postdirectional, and an optional secondary unit | 值域：街道地址（street address）；子属性：包含 |
 
 公理：
 
@@ -240,12 +240,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有后置方位符号（has postdirectional symbol）** | 指明街道地址中位于街道名称和街道后缀之后的地理方位符号。 | 值域：后置方位符号（postdirectional symbol）；子属性：包含 |
-| **具有前置方位符号（has predirectional symbol）** | 指明街道地址中位于主门牌号之后、街道名称之前的地理方位符号。 | 值域：前置方位符号（predirectional symbol）；子属性：包含 |
-| **具有主门牌号（has primary address number）** | 指明相对于给定街道的位置。 | 值域：主门牌号（primary address number）；子属性：包含 |
-| **具有次级单元（has secondary unit）** | 指明给定街道地址处较大结构内的独立单元，如公寓、办公室、机库、泊位、邮箱等。 | 值域：次级单元（secondary unit）；子属性：包含 |
-| **具有街道名称（has street name）** | 指明某情境中街道的标识符（如 Baker、First、Main）。 | 值域：街道名称（street name）；子属性：包含 |
-| **具有街道后缀（has street suffix）** | 指明街道或其他投递位置的附加限定符。 | 值域：街道后缀（street suffix）；子属性：包含 |
+| **具有后置方位符号（has postdirectional symbol）** | 指明街道地址中位于街道名称和街道后缀之后的地理方位符号。<br>specifies a geographic directional symbol that follows the street name and street suffix in a street address | 值域：后置方位符号（postdirectional symbol）；子属性：包含 |
+| **具有前置方位符号（has predirectional symbol）** | 指明街道地址中位于主门牌号之后、街道名称之前的地理方位符号。<br>specifies a geographic directional symbol that occurs after the primary street number but before the street name in a street address | 值域：前置方位符号（predirectional symbol）；子属性：包含 |
+| **具有主门牌号（has primary address number）** | 指明相对于给定街道的位置。<br>specifies a a location with respect to a given street | 值域：主门牌号（primary address number）；子属性：包含 |
+| **具有次级单元（has secondary unit）** | 指明给定街道地址处较大结构内的独立单元，如公寓、办公室、机库、泊位、邮箱等。<br>specifies an individual unit within a larger structure, such as an apartment, office, hangar, slip, mailbox, and so forth, at a given street address | 值域：次级单元（secondary unit）；子属性：包含 |
+| **具有街道名称（has street name）** | 指明某情境中街道的标识符（如 Baker、First、Main）。<br>specifies an identifier for a street in some context (e.g., 'Baker', 'First', 'Main') | 值域：街道名称（street name）；子属性：包含 |
+| **具有街道后缀（has street suffix）** | 指明街道或其他投递位置的附加限定符。<br>specifies an additional qualifier for a street or other delivery location, such as a dwelling located along a waterway | 值域：街道后缀（street suffix）；子属性：包含 |
 
 公理：
 
@@ -468,7 +468,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **需要次级单元范围（requires secondary unit range）** | 若为真，表明需要附加限定符（如公寓号）才能完整描述投递点。 | 值域：xsd:boolean；子属性：具有文本值 |
+| **需要次级单元范围（requires secondary unit range）** | 若为真，表明需要附加限定符（如公寓号）才能完整描述投递点。<br>if true, indicates that an additional qualifier is needed to complete the delivery point description, such as an apartment number | 值域：xsd:boolean；子属性：具有文本值 |
 
 公理：
 
@@ -505,8 +505,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有地址（has address）** | 标识可据以定位或联系某事物（如网络地址情形）或某实体、或可接收函件的方式。 | 值域：地址（address）；子属性：以……为特征 |
-| **具有转写地址（has transliterated address）** | 标识注册实体的转写（即拉丁化或罗马化 ASCII）地址。 | 值域：地址（address）；子属性：具有地址（has address） |
+| **具有地址（has address）** | 标识可据以定位或联系某事物（如网络地址情形）或某实体、或可接收函件的方式。<br>indicates a means by which something (in the case of a network address) or some entity may be located or contacted or may receive correspondence | 值域：地址（address）；子属性：以……为特征 |
+| **具有转写地址（has transliterated address）** | 标识注册实体的转写（即拉丁化或罗马化 ASCII）地址。<br>identifies a transliterated (i.e., in Latin or Romanized ASCII) address for the registered entity | 值域：地址（address）；子属性：具有地址（has address） |
 
 ## 4. 依赖（owl:imports，13 个）
 

@@ -34,64 +34,64 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 银行（bank） | 吸收存款、发放贷款、兑付支票并提供相关服务的存款性机构，通常为公司制，服务于个人客户和企业客户。 |
-| 银行控股公司（bank holding company） | 拥有和/或直接或间接控制一家或多家银行的公司；银行控股公司还可以拥有经纪交易商等非银行子公司。 |
-| 银行产品（banking product） | 由存款性机构向消费者和企业提供的产品。 |
-| 银行服务（banking service） | 由存款性机构提供的金融服务。 |
-| 经纪公司（brokerage firm） | 从事证券买卖业务的公司，视交易情况同时以经纪商和交易商身份运作。 |
-| 商业标识代码（business identifier code） | 金融和非金融机构的国际标识符，用于促进金融服务信息的自动化处理。 |
-| 商业标识代码方案（business identifier code scheme） | 规定用于标识金融和非金融机构的唯一商业标识代码（BIC）之构成要素的方案。 |
-| 商业方前缀（business party prefix） | 为银行电讯目的与机构相关联的四位字符（4 位字母数字）代码。 |
-| 商业方后缀（business party suffix） | 为银行电讯目的与机构相关联的两位字符（2 位字母数字）代码。 |
-| 中央银行（central bank） | 作为一个国家（或国家集团）货币当局和主要监管银行的金融机构。 |
-| 中央对手方清算所（central counterparty clearing house） | 帮助促进衍生品和股票市场交易的清算所。 |
-| 中央证券存管机构（central securities depository） | 为金融工具（「证券」，如债券和股票）提供集中存管点的功能实体。 |
-| 清算银行（clearing bank） | 为金融交易（如支票清算或促进买卖双方之间交易）的支付和结算提供便利的商业银行。 |
-| 清算公司（clearing corporation） | 以公司形式组建的清算所。 |
-| 清算所（clearing house） | 附属于交易所、提供清算服务（包括金融交易的确认、交割和结算）的金融服务提供商。 |
-| 清算服务（clearing service） | 交易达成后由清算服务提供方代表机构市场参与者提供、完成证券和资金划转的服务。 |
-| 商业银行（commercial bank） | 从事多种金融服务（如吸收存款和发放贷款）的存款性机构。 |
-| 商业金融公司（commercial finance company） | 以应收账款、存货和设备为担保向制造商和批发商发放贷款的金融公司。 |
-| 商品交易顾问（commodity trading advisor） | 直接或间接就买卖期货合约或期权的价值或可行性向他人提供建议的一方。 |
-| 消费金融公司（consumer finance company） | 依据其经营所在司法管辖区的小额贷款法律向个人发放贷款的金融公司。 |
-| 契约型储蓄机构（contractual savings institution） | 以受托（而非本人）方式为个人提供投资集合投资工具机会的金融机构。 |
-| 信用合作社（credit union） | 为提倡节俭之目的而组织、发放个人贷款并提供其他消费金融服务的非营利性存款机构。 |
-| 数据处理服务（data processing service） | 由主要从事托管或数据处理基础设施业务的实体提供的金融服务。 |
-| 数据处理服务商（data processing servicer） | 主要从事托管或数据处理基础设施业务的金融服务提供商。 |
-| 存款性机构（depository institution） | 从事从公众或其他机构吸收活期存款业务的任何金融机构。 |
-| 开发银行（development bank） | 旨在为生产性投资提供中长期资本（通常附带技术援助）的国家或区域性金融机构。 |
-| 电子资金转账服务（electronic funds transfer service） | 除纸质票据交易外，通过电子终端、电话、计算机或磁介质发起的资金转账服务。 |
-| 面额证书公司（face amount certificate company） | 从事或拟从事发行分期型面额证书业务、或已从事该业务的投资公司。 |
-| 金融公司（finance company） | 从事放贷业务、资金来源于银行、机构和其他货币市场渠道（而非公众存款）的金融中介。 |
-| 金融机构（financial institution） | 被认定为政府机构或私营实体、从公众和其他机构归集资金的金融服务提供商。 |
-| 金融服务提供商标识符（financial service provider identifier） | 基于金融服务提供商所提供职能正式分配给它的标识符，通常在某一司法管辖区内有效。 |
-| 金融服务提供商标识符方案（financial service provider identifier scheme） | 依照签发注册机构或监管机构的规定定义金融服务提供商标识符的方案。 |
-| 期货佣金商（futures commission merchant） | 从事以下两项业务的一方：（1）招揽或接受期货合约、期货期权、零售场外外汇等的买卖订单；（2）接受资金或其他资产作为保证金。 |
-| 控股公司（holding company） | 为持有另一家公司股份而设立的商业实体，通常持有足够的表决权股份以对该公司的政策施加一定程度的控制。 |
-| 保险公司（insurance company） | 主要且占主导地位的业务活动是承保保险或对保险公司承保的风险进行再保险的非存款性机构。 |
-| 保险服务（insurance service） | 保险人承诺就特定潜在未来损失提供补偿、以换取定期付款（保费）的金融服务。 |
-| 投资银行（investment bank） | 作为承销商或代理人、在证券发行人与投资公众之间充当中介的金融服务提供商。 |
-| 投资公司（investment company） | 主要从事或自称主要从事、或拟主要从事投资、再投资或证券交易业务的任何发行人。 |
-| 投资服务（investment service） | 旨在协助投资者运用资本创造更多资金的金融服务，可通过产生收入的工具或更具风险导向的工具实现。 |
-| 管理公司（management company） | 除面额证书公司或单位投资信托外，出售并管理证券投资组合的投资公司。 |
-| 商户服务（merchant service） | 金融机构向商户或其他企业提供的金融服务，包括但不限于通过多种支付渠道管理金融交易。 |
-| 货币当局（monetary authority） | 控制某一国家或国家集团货币政策、监管和货币供应的监管机构。 |
-| 货币服务业务（money services business） | 以下列任一身份开展业务的任何人（无论是否经常性地或以有组织的企业形式）：货币交易商或兑换商、支票兑现商、旅行支票或储值产品的发行/销售/赎回商、汇款商等。 |
-| 抵押贷款公司（mortgage company） | 为住宅或商业物业发起和/或提供抵押贷款资金的金融服务提供商。 |
-| 非存款性机构（non-depository institution） | 不具备完全银行牌照、通常不受国家或国际银行监管机构监管的金融机构。 |
-| 支付服务（payment service） | 涉及通过信用卡、借记卡等银行支付方式等多种支付方式接受电子支付的金融服务。 |
-| 薪资服务（payroll service） | 通常向规模不足以设立内部财务组织的小企业提供的、涉及薪资管理的金融服务。 |
-| 主承销商（principal underwriter） | 以本人身份从投资公司购入证券、或依合同有权从该公司购入任何证券的承销商。 |
-| 注册投资顾问（registered investment advisor） | 为高净值个人提供投资建议并管理其投资组合的注册代理人和金融服务提供商。 |
-| 风险汇聚机构（risk pooling institution） | 在提供某项金融服务的同时分散该服务固有风险、以降低重大损失概率的金融机构。 |
-| 销售金融公司（sales finance company） | 从汽车及其他消费品和商业商品经销商处购买零售和批发票据的金融公司。 |
-| 储蓄协会（savings association） | 存款性机构，包括：（a）依《联邦存款保险法》第 1464 条特许的任何联邦储蓄银行或协会；（b）其他相关储蓄机构。 |
-| 自律组织（self-regulating organization） | 有权在某国对某行业或职业创设并行施一定程度监管权的非政府组织。 |
-| 信托公司（trust company） | 以受托人、信托受托机构或信托代理机构身份行事的金融机构。 |
-| 承销商（underwriter） | 以佣金、保费、价差或利息等费用为代价，评估并承担他方风险的金融服务提供商。 |
-| 承销安排（underwriting arrangement） | 承诺承销商承担风险的双方之间的书面合同。 |
-| 单位投资信托（unit investment trust） | 依信托契约、托管或代理合同或类似文件组织、不设董事会的投资公司。 |
-| 财富管理服务（wealth management service） | 为单一客户综合提供财务与投资建议、会计与税务服务、退休规划以及法律或遗产规划的金融服务。 |
+| 银行（bank） | 吸收存款、发放贷款、兑付支票并提供相关服务的存款性机构，通常为公司制，服务于个人客户和企业客户。<br>depository institution, usually a corporation, that accepts deposits, makes loans, pays checks, and performs related services, for individual members of the public, businesses or other organizations |
+| 银行控股公司（bank holding company） | 拥有和/或直接或间接控制一家或多家银行的公司；银行控股公司还可以拥有经纪交易商等非银行子公司。<br>any company that owns and/or has direct or indirect control of one or more banks; BHCs may also own nonbanking subsidiaries such as broker-dealers and asset managers |
+| 银行产品（banking product） | 由存款性机构向消费者和企业提供的产品。<br>product provided to consumers and businesses by a depository institution |
+| 银行服务（banking service） | 由存款性机构提供的金融服务。<br>financial service offered by a depository institution |
+| 经纪公司（brokerage firm） | 从事证券买卖业务的公司，视交易情况同时以经纪商和交易商身份运作。<br>firm in the business of buying and selling securities, operating as both a broker and a dealer, depending on the transaction |
+| 商业标识代码（business identifier code） | 金融和非金融机构的国际标识符，用于促进金融服务信息的自动化处理。<br>international identifier for financial and non-financial institutions used to facilitate automated processing of information for financial services |
+| 商业标识代码方案（business identifier code scheme） | 规定用于标识金融和非金融机构的唯一商业标识代码（BIC）之构成要素的方案。<br>scheme that specifies the elements of a unique business identifier code (BIC) scheme to identify financial and non-financial institutions used to facilitate automated processing of information for financial services |
+| 商业方前缀（business party prefix） | 为银行电讯目的与机构相关联的四位字符（4 位字母数字）代码。<br>four-character (4 alphanumeric) code associated with an organization for the purposes of banking telecommunications |
+| 商业方后缀（business party suffix） | 为银行电讯目的与机构相关联的两位字符（2 位字母数字）代码。<br>two-character (2 alphanumeric) code associated with the organization for the purposes of banking telecommunications |
+| 中央银行（central bank） | 作为一个国家（或国家集团）货币当局和主要监管银行的金融机构。<br>financial institution that is the monetary authority and major regulatory bank for a country (or group of countries) |
+| 中央对手方清算所（central counterparty clearing house） | 帮助促进衍生品和股票市场交易的清算所。<br>clearing house that helps facilitate trading in derivatives and equities markets |
+| 中央证券存管机构（central securities depository） | 为金融工具（「证券」，如债券和股票）提供集中存管点的功能实体。<br>functional entity that provides a central point for depositing financial instruments ('securities'), for example, bonds and shares |
+| 清算银行（clearing bank） | 为金融交易（如支票清算或促进买卖双方之间交易）的支付和结算提供便利的商业银行。<br>commercial bank that facilitates payment and settlement of financial transactions, such as check clearing or facilitating trades between the sellers and buyers of securities or other financial instruments or contracts |
+| 清算公司（clearing corporation） | 以公司形式组建的清算所。<br>clearing house that is organized as a corporation |
+| 清算所（clearing house） | 附属于交易所、提供清算服务（包括金融交易的确认、交割和结算）的金融服务提供商。<br>financial service provider that is exchange affiliated and provides clearing services, including the validation, delivery, and settlement of financial transactions, for financial intermediaries |
+| 清算服务（clearing service） | 交易达成后由清算服务提供方代表机构市场参与者提供、完成证券和资金划转的服务。<br>service provided on behalf of an institutional market participant by a clearing services provider following a trade that finalizes the transfer of security ownership |
+| 商业银行（commercial bank） | 从事多种金融服务（如吸收存款和发放贷款）的存款性机构。<br>depository institution that engages in various financial services, such as accepting deposits and making loans |
+| 商业金融公司（commercial finance company） | 以应收账款、存货和设备为担保向制造商和批发商发放贷款的金融公司。<br>finance company that makes loans to manufacturers and wholesalers, secured by accounts receivable, inventories, and equipment |
+| 商品交易顾问（commodity trading advisor） | 直接或间接就买卖期货合约或期权的价值或可行性向他人提供建议的一方。<br>party that directly or indirectly advises others as to the value or advisability of buying or selling futures contracts or options |
+| 消费金融公司（consumer finance company） | 依据其经营所在司法管辖区的小额贷款法律向个人发放贷款的金融公司。<br>finance company that lends to individuals under the small loans laws of the jurisdiction in which they operate |
+| 契约型储蓄机构（contractual savings institution） | 以受托（而非本人）方式为个人提供投资集合投资工具机会的金融机构。<br>financial institution that provides the opportunity for individuals to invest in collective investment vehicles in a fiduciary rather than a principle role |
+| 信用合作社（credit union） | 为提倡节俭之目的而组织、发放个人贷款并提供其他消费金融服务的非营利性存款机构。<br>not-for-profit depository institution that makes personal loans and offers other consumer banking services, organized for the purpose of promoting thrift among its members and creating a source of credit for provident or productive purposes |
+| 数据处理服务（data processing service） | 由主要从事托管或数据处理基础设施业务的实体提供的金融服务。<br>financial service offered by an entity primarily engaged in providing infrastructure for hosting or data processing services |
+| 数据处理服务商（data processing servicer） | 主要从事托管或数据处理基础设施业务的金融服务提供商。<br>finance services provider primarily engaged in providing infrastructure for hosting or data processing services |
+| 存款性机构（depository institution） | 从事从公众或其他机构吸收活期存款业务的任何金融机构。<br>any financial institution engaged in the business of receiving demand deposits from the public or other institutions |
+| 开发银行（development bank） | 旨在为生产性投资提供中长期资本（通常附带技术援助）的国家或区域性金融机构。<br>national or regional financial institution designed to provide medium- and long-term capital for productive investment, often accompanied by technical assistance, in poor countries |
+| 电子资金转账服务（electronic funds transfer service） | 除纸质票据交易外，通过电子终端、电话、计算机或磁介质发起的资金转账服务。<br>service involving any transfer of funds other than a transaction involving a paper instrument, that is initiated through an electronic terminal, telephone, or computer and that orders or authorizes a financial institution to debit or credit an account |
+| 面额证书公司（face amount certificate company） | 从事或拟从事发行分期型面额证书业务、或已从事该业务的投资公司。<br>investment company which is engaged or proposes to engage in the business of issuing face-amount certificates of the installment type, or which has been engaged in such business and has any such certificate outstanding |
+| 金融公司（finance company） | 从事放贷业务、资金来源于银行、机构和其他货币市场渠道（而非公众存款）的金融中介。<br>financial intermediary in the business of making loans that obtains its financing from banks, institutions, and other money market sources rather than from deposits |
+| 金融机构（financial institution） | 被认定为政府机构或私营实体、从公众和其他机构归集资金的金融服务提供商。<br>financial service provider identified as either a government agency or privately owned entity that collects funds from the public and from other institutions, and invests those funds in financial assets, such as loans, securities, bank deposits, and income-generating property |
+| 金融服务提供商标识符（financial service provider identifier） | 基于金融服务提供商所提供职能正式分配给它的标识符，通常在某一司法管辖区内有效。<br>identifier that is officially allocated to a financial service provider based on a function that they provide, typically in a jurisdiction over which a regulatory agency has some jurisdiction |
+| 金融服务提供商标识符方案（financial service provider identifier scheme） | 依照签发注册机构或监管机构的规定定义金融服务提供商标识符的方案。<br>scheme that defines the financial service provider identifier per the issuing registration authority or regulatory agency |
+| 期货佣金商（futures commission merchant） | 从事以下两项业务的一方：（1）招揽或接受期货合约、期货期权、零售场外外汇等的买卖订单；（2）接受资金或其他资产作为保证金。<br>party that does both of the following: (1) solicits or accepts orders to buy or sell futures contracts, options on futures, retail off-exchange forex contracts, or swaps and (2) accepts money or other assets from customers to support such orders |
+| 控股公司（holding company） | 为持有另一家公司股份而设立的商业实体，通常持有足够的表决权股份以对该公司的政策施加一定程度的控制。<br>business entity established to own stock in another company, typically to own enough voting shares to have some level of control over that company's policies and management |
+| 保险公司（insurance company） | 主要且占主导地位的业务活动是承保保险或对保险公司承保的风险进行再保险的非存款性机构。<br>non-depository institution whose primary and predominant business activity is the writing of insurance or the reinsuring of risks underwritten by insurance companies, and that provides compensation based on the happening of at least one contingency |
+| 保险服务（insurance service） | 保险人承诺就特定潜在未来损失提供补偿、以换取定期付款（保费）的金融服务。<br>financial service in which the insurer promises to provide compensation for specific potential future losses in exchange for a periodic payment |
+| 投资银行（investment bank） | 作为承销商或代理人、在证券发行人与投资公众之间充当中介的金融服务提供商。<br>financial service provider that acts as an underwriter or agent that serves as intermediary between the issuer of securities and the investing public |
+| 投资公司（investment company） | 主要从事或自称主要从事、或拟主要从事投资、再投资或证券交易业务的任何发行人。<br>any issuer which: (a) is or holds itself out as being engaged primarily, or proposes to engage primarily, in the business of investing, reinvesting, or trading in securities; (b) is engaged or proposes to engage in the business of issuing face-amount certificates of the installment type, or has been engaged in such business and has any such certificate outstanding; or (c) is engaged or proposes to engage in the business of investing, reinvesting, owning, holding, or trading in securities, and owns or proposes to acquire investment securities having a value exceeding 40 per centum of the value of such issuer&apos;s total assets (exclusive of Government securities and cash items) on an unconsolidated basis |
+| 投资服务（investment service） | 旨在协助投资者运用资本创造更多资金的金融服务，可通过产生收入的工具或更具风险导向的工具实现。<br>financial service designed to assist investors in using capital to create more money, either through income-producing vehicles or through more risk-oriented ventures to result in capital gains, including but not limited to providing investment advice, asset and portfolio management, and brokerage services |
+| 管理公司（management company） | 除面额证书公司或单位投资信托外，出售并管理证券投资组合的投资公司。<br>investment company that sells and manages a portfolio of securities other than a face-amount certificate company or unit investment fund |
+| 商户服务（merchant service） | 金融机构向商户或其他企业提供的金融服务，包括但不限于通过多种支付渠道管理金融交易。<br>financial service provided by a financial institution to a merchant or other business, including but not limited to managing financial transactions via a secure channel |
+| 货币当局（monetary authority） | 控制某一国家或国家集团货币政策、监管和货币供应的监管机构。<br>regulatory agency that controls the monetary policy, regulation and supply of money in some country or group of countries |
+| 货币服务业务（money services business） | 以下列任一身份开展业务的任何人（无论是否经常性地或以有组织的企业形式）：货币交易商或兑换商、支票兑现商、旅行支票或储值产品的发行/销售/赎回商、汇款商等。<br>any person doing business, whether or not on a regular basis or as an organized business concern, in one of the following capacities: (1) currency dealer or exchanger, (2) check casher, (3) issuer of traveler's checks, money orders, or stored value, (4) seller or redeemer of traveler's checks, money orders, or stored value, (5) money transmitter, or (6) postal service |
+| 抵押贷款公司（mortgage company） | 为住宅或商业物业发起和/或提供抵押贷款资金的金融服务提供商。<br>financial service provider that originates and/or funds mortgages for residential or commercial property |
+| 非存款性机构（non-depository institution） | 不具备完全银行牌照、通常不受国家或国际银行监管机构监管的金融机构。<br>financial institution that does not have a full banking license and typically is not supervised by a national or international banking regulatory agency |
+| 支付服务（payment service） | 涉及通过信用卡、借记卡等银行支付方式等多种支付方式接受电子支付的金融服务。<br>financial service that involves acceptance of electronic payments by a variety of payment methods including credit card, bank-based payments such as direct debit, bank transfer, and real-time bank transfer based on online banking |
+| 薪资服务（payroll service） | 通常向规模不足以设立内部财务组织的小企业提供的、涉及薪资管理的金融服务。<br>financial service, typically provided to small businesses that are not large enough to have an internal finance organization, that involves managing payment of wages to employees |
+| 主承销商（principal underwriter） | 以本人身份从投资公司购入证券、或依合同有权从该公司购入任何证券的承销商。<br>underwriter who, as principal, purchases from an investment company, or pursuant to some contract has the right to purchase from such company, any security for distribution, or who as agent for such company sells or has the right to sell any security to a dealer or to the public, excluding any dealer who purchases from such company through sn underwriter acting as an agent for such company |
+| 注册投资顾问（registered investment advisor） | 为高净值个人提供投资建议并管理其投资组合的注册代理人和金融服务提供商。<br>registered agent and financial service provider that advises high net worth individuals on investments and manages their portfolios |
+| 风险汇聚机构（risk pooling institution） | 在提供某项金融服务的同时分散该服务固有风险、以降低重大损失概率的金融机构。<br>financial institution that provides some financial service while spreading the financial risk inherent in that service to lower the probability of a catastrophic financial event by aggregating customers across diverse dimensions as a risk management practice |
+| 销售金融公司（sales finance company） | 从汽车及其他消费品和商业商品经销商处购买零售和批发票据的金融公司。<br>finance company that purchases retail and wholesale paper from automobile and other consumer and commercial goods dealers |
+| 储蓄协会（savings association） | 存款性机构，包括：（a）依《联邦存款保险法》第 1464 条特许的任何联邦储蓄银行或协会；（b）其他相关储蓄机构。<br>depository institution that is (a) any federal savings bank or association chartered under section 1464 of the Federal Deposit Insurance Act; (b) any state chartered building and loan association, savings and loan association, or homestead association; or (c) any cooperative bank (other than a cooperative bank which is a state bank as defined in subsection (a)(2)) of the Federal Deposit Insurance Act, which is organized and operating according to the laws of the State (as defined in subsection (a)(3)) in which it is chartered or organized; and (c) any corporation (other than a bank) that the board of directors and the comptroller of the currency jointly determine to be operating in substantially the same manner as such a depository institution |
+| 自律组织（self-regulating organization） | 有权在某国对某行业或职业创设并行施一定程度监管权的非政府组织。<br>non-governmental organization that has the power to create and exercise some degree of regulatory authority over an industry or profession in some country or group of countries |
+| 信托公司（trust company） | 以受托人、信托受托机构或信托代理机构身份行事的金融机构。<br>financial institution that acts as a fiduciary, trustee or agent of trusts and agencies |
+| 承销商（underwriter） | 以佣金、保费、价差或利息等费用为代价，评估并承担他方风险的金融服务提供商。<br>financial service provider that evaluates and assumes another party's risk for a fee, such as a commission, premium, spread or interest |
+| 承销安排（underwriting arrangement） | 承诺承销商承担风险的双方之间的书面合同。<br>written contract between parties that commits the underwriter to assuming risk |
+| 单位投资信托（unit investment trust） | 依信托契约、托管或代理合同或类似文件组织、不设董事会的投资公司。<br>investment company which (a) is organized under a trust indenture, contract of custodianship or agency, or similar instrument, (b) does not have a board of directors, and (c) issues only redeemable securities, each of which represents an undivided interest in a unit of specified securities; but does not include a voting trust |
+| 财富管理服务（wealth management service） | 为单一客户综合提供财务与投资建议、会计与税务服务、退休规划以及法律或遗产规划的金融服务。<br>financial service that combines financial and investment advice, accounting and tax services, retirement planning and legal or estate planning for one set fee |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -424,7 +424,7 @@
 
 公理：
 
-- **由…扮演（is played by）**可以有 0 个或多个**N7768c4609ab34ab79eb359ed1b4ea327**。
+- **由…扮演（is played by）**可以有 0 个或多个**N1422d4b4f04f48a0be357ca7a84a098a**。
 
 ##### 2.13.4.4 金融公司（finance company）
 
@@ -572,7 +572,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有被投公司（has portfolio company）** | 指明风险投资机构、并购基金或控股公司所投资的一方。 | 值域：受控方；逆属性：是……的被投公司（is portfolio company of）；子属性：是控制方 |
+| **具有被投公司（has portfolio company）** | 指明风险投资机构、并购基金或控股公司所投资的一方。<br>indicates a party in which a venture capital firm, a buyout firm, or a holding company has invested | 值域：受控方；逆属性：是……的被投公司（is portfolio company of）；子属性：是控制方 |
 
 公理：
 
@@ -640,7 +640,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **监管……的供应（regulates supply of）** | 将监管机构与其通过规章制度在某市场上控制或监督其供应的事物关联起来。 | 子属性：管辖 |
+| **监管……的供应（regulates supply of）** | 将监管机构与其通过规章制度在某市场上控制或监督其供应的事物关联起来。<br>relates a regulatory agency to something it controls or supervises the availability of in some market by means of rules and regulations | 子属性：管辖 |
 
 公理：
 
@@ -745,10 +745,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有设立日期（has date established）** | 金融服务提供商正式设立的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有终止日期（has date establishment terminated）** | 实体存续的最后一个完整日。 | 值域：显式日期；子属性：具有到期日 |
-| **具有投保生效日（has date insured）** | 保险开始生效的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **是……的被投公司（is portfolio company of）** | 指明作为该方财务投资人（即投资方）的风险投资机构、并购基金或控股公司。 | 值域：控制方；子属性：具有控制方 |
+| **具有设立日期（has date established）** | 金融服务提供商正式设立的日期。<br>the date that the financial service provider was formally established | 值域：显式日期；子属性：具有显式日期 |
+| **具有终止日期（has date establishment terminated）** | 实体存续的最后一个完整日。<br>last full day that the entity existed | 值域：显式日期；子属性：具有到期日 |
+| **具有投保生效日（has date insured）** | 保险开始生效的日期。<br>date on which insurance became effective | 值域：显式日期；子属性：具有显式日期 |
+| **是……的被投公司（is portfolio company of）** | 指明作为该方财务投资人（即投资方）的风险投资机构、并购基金或控股公司。<br>indicates a venture capital firm, a buyout firm, or a holding company that is a financial sponsor (i.e. investor in) of the party | 值域：控制方；子属性：具有控制方 |
 
 ## 4. 依赖（owl:imports，31 个）
 

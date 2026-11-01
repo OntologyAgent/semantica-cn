@@ -39,25 +39,25 @@
 | 借款人权利（borrower right） | 借款人在借贷关系中享有的权利。 |
 | 消费信贷公平对待要求（consumer credit equal treatment requirement） | 要求贷款人在信贷业务中公平对待借款人的监管要求。 |
 | 消费信贷保护法（consumer credit protection law） | 保护消费信贷借款人的法律。 |
-| 消费信贷征信机构（consumer credit reference agency） | 收集并提供消费者信用信息的机构，其可披露内容受各辖区法规约束。 |
-| 消费信贷要求（consumer credit requirement） | 对贷款人如何对待贷款申请所设定的要求。 |
-| 消费者保护机构（consumer protection agency） | 在某辖区负责消费者保护监管的机构。 |
+| 消费信贷征信机构（consumer credit reference agency） | 收集并提供消费者信用信息的机构，其可披露内容受各辖区法规约束。<br>Applicable regulations: vary by jurisdiciton. for example, only being allowed ot divulge actual judgements against a party, but not things that are not substantiated by judgements. For example, slow payments which are not covered by some judgement against the party. There will be different regulatory requirments about: 1. What the CR Agency can hold 2. Who they can divulge it to 3. What information they must provide the borrower at his/her request Some of the third thing there is covered in the EU the Data Protection Directive and local acts that implement this. |
+| 消费信贷要求（consumer credit requirement） | 对贷款人如何对待贷款申请所设定的要求。<br>Requirement set out on the lender about how they must treat the appliction to a loan |
+| 消费者保护机构（consumer protection agency） | 在某辖区负责消费者保护监管的机构。<br>Some agency tasked with regulating consumer protection in some jurisdiction. |
 | 消费者保护法（consumer protection law） | 保护消费者权益的法律。 |
 | 消费者权利（consumer right） | 消费者依法享有的权利。 |
-| 征信机构要求（credit reference agency requirements） | 除数据保护外、规制征信机构可为与不可为的要求。 |
-| 数据保护要求（data protection requirement） | 规定个人数据如何保存的要求，如欧盟数据保护指令（数据归个人所有）。 |
-| 披露要求（disclosure requirement） | 向借款人或潜在借款人披露的要求，包括所持有信息的披露与产品条款的披露两类。 |
-| 公平对待权（equal treatment right） | 在法律下获得公平对待的权利。 |
-| 诚信估价单（good faith estimate） | 贷款人就贷款结清（提前终止）的成本与影响所作的说明（GFE）。 |
-| 知情权（information right） | 在某情境中获得某项信息的权利，如购买产品时的充分公平披露权。 |
-| 贷款人权利（lender right） | 保护贷款人免受损失的权利。 |
-| 贷款产品说明（loan product representations） | 关于贷款产品及其对借款人适当性的陈述。 |
-| 贷款监管要求（loan regulatory requirement） | 由消费信贷法或其他立法在法规中定义的监管要求。 |
-| 产品披露要求（product disclosure requirement） | 规制对产品可作出何种陈述（就其影响消费者而言）的要求。 |
-| 产品知情权（product disclosure right） | 在购买产品时获得产品信息的权利。 |
-| B 条例（reg b） | 美国关于《平等信贷机会法》的条例，涉及披露的电子化送达。 |
-| Z 条例（reg z） | 美联储《诚实借贷法》条例，规定披露电子化送达的统一标准。 |
-| 信用记录更正权（right of credit record correction） | 要求更正信用记录的权利。 |
+| 征信机构要求（credit reference agency requirements） | 除数据保护外、规制征信机构可为与不可为的要求。<br>REquirements other than data protection, governing what a credit reference agency can or cannot do. |
+| 数据保护要求（data protection requirement） | 规定个人数据如何保存的要求，如欧盟数据保护指令（数据归个人所有）。<br>Requirements defining how data about individuals is held. Example is the EU DA directive and laws, which make the data the property of the individual that data is about. Covers - what information i sheld - who information can be divulged to. - the individual's rights in respect of that information Privacy regulations cover most of this. EU defines "Personal Data" and "Sensitive Personal Data". For credit reference agencies the latter would be covered. More detail about whether they can divulge facts which are not subject to formal judgements etc. |
+| 披露要求（disclosure requirement） | 向借款人或潜在借款人披露的要求，包括所持有信息的披露与产品条款的披露两类。<br>Requirement for disclosure to borrowers or potential borrowers. There are two kinds of disclosure requirement: 1. Disclosure about the information held on the borrower 2. Disclsure about the product. |
+| 公平对待权（equal treatment right） | 在法律下获得公平对待的权利。<br>The right to equal treatment under the law. |
+| 诚信估价单（good faith estimate） | 贷款人就贷款结清（提前终止）的成本与影响所作的说明（GFE）。<br>GFE - representation by the lender on the costs and implications of settlement (early termination) of the loan. |
+| 知情权（information right） | 在某情境中获得某项信息的权利，如购买产品时的充分公平披露权。<br>The right to some information in some context, for example when purchasing some product. The right to full and fair disclosure of |
+| 贷款人权利（lender right） | 保护贷款人免受损失的权利。<br>Rights on the lender to protect them against loss. furthe rNtoes: Logically, considering the two parties, they both have protecxtion mechanisms. so while the lender has protecxtion mechanisms through mortgage insurance, and the consumer has protextion mechanisms such as good faith estimates. also the agencies (see Consumer Protection Agency), an instance of which is the CFPB in the US (just set up). Lender rights are: - expressed in the Contract Consumer protection develops becaues the contract is written by the potential Lender. So the rights are introcued to rectify the imbalance between the two parties. Same goes for insurance. consumer protection laws (governe dby the relevant consumer protection agency. So the lender protexts itself as it writes th contract AND does the things it needs to do to protext itself, but on the approval process, and with later instruments such as insurance. Interestingly., it is the Borrower who pays for this by paying for credit reports etc. So the borrower protects itself by other mechanisms. Caveat emptor - displaced by regulation (the buyer is protected by regulation). Uberimae Fidae - in the utmost good faith. Mortgage Insurance is an additional means of mitigating the risk, that the lended may have., so if the information assessed is not accurate, or if the borrower's situation changes for the worse. then the risk rating may go down. So the Mortgage Insurance is a further strategy which mitigates any shortfall in the Lender Righrs that you may have - ie someone guarantees. In the US you can also avoid that by having paid a deposit. PIMI: Principal, Interst and Morgage Insurance. So the Borrower pays towards the MI, esxcept if they have paid a given amount as deposit. there are 2 types of MI: 1. protects the lender in the event of borrower degault 2. Insurance for "Incapacity to pay the mortage" (these can be bought off the shelf - can combine health, unemployment etc.). - this is the Borrower mitigating their own risk. Prevents foreclosure. Similar to general sickness etc. Where the lender charges for MI, the cost is passed onto the Borrower. e.g. if there is a % valuation (e.g. 70% in Aus, 80% in US for example) then no insurance is required. |
+| 贷款产品说明（loan product representations） | 关于贷款产品及其对借款人适当性的陈述。<br>Representations about the loan product and the appropriateness of this for the borrower. |
+| 贷款监管要求（loan regulatory requirement） | 由消费信贷法或其他立法在法规中定义的监管要求。<br>A regulatory requirement defined in regulations by a comsumer credit act or other legislation. |
+| 产品披露要求（product disclosure requirement） | 规制对产品可作出何种陈述（就其影响消费者而言）的要求。<br>A requirement governing what representations can be made about a product, as it affects the consumer. |
+| 产品知情权（product disclosure right） | 在购买产品时获得产品信息的权利。<br>The right to information about products at the point of purchasing these. |
+| B 条例（reg b） | 美国关于《平等信贷机会法》的条例，涉及披露的电子化送达。<br>US regulation concerning "Equal credit opportunity act" Electronic delivery of disclosures |
+| Z 条例（reg z） | 美联储《诚实借贷法》条例，规定披露电子化送达的统一标准。<br>US Fed regulation "Truth in Lending Act" uniform standards for electronic delivery of disclosures |
+| 信用记录更正权（right of credit record correction） | 要求更正信用记录的权利。<br>The right to have a credit record corrected. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

@@ -30,13 +30,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 全球行业分类标准分类器（Global Industry Classification Standards classifier） | 基于机构主要业务活动的四级标准化机构分类（GICS）。 |
-| 资产类别（asset class） | 金融工具分类器：表现相似特征、在市场中行为相似并受相似法规约束的一组证券。 |
-| 金融工具分类代码方案（classification of financial instruments code scheme） | 金融工具代码集的分类方案，可供全球所有参与方用于直通式处理。 |
-| 金融工具分类代码（financial instrument classification code） | ISO 10962 金融工具分类（CFI）代码方案中定义的金融工具分类器和代码。 |
-| 金融工具分类方案（financial instrument classification scheme） | 定义一组金融工具分类器的分类方案。 |
-| 金融工具分类器（financial instrument classifier） | 基于金融工具类型和特征的分类器。 |
-| 行业分类基准分类器（industry classification benchmark classifier） | 基于机构主要收入来源的标准化机构分类（ICB）。 |
+| 全球行业分类标准分类器（Global Industry Classification Standards classifier） | 基于机构主要业务活动的四级标准化机构分类（GICS）。<br>four-tiered standardized classification or delineation for an organization based on the principal business activity of the organization |
+| 资产类别（asset class） | 金融工具分类器：表现相似特征、在市场中行为相似并受相似法规约束的一组证券。<br>financial instrument classifier for a group of securities that exhibit similar characteristics, behave similarly in the marketplace and are subject to the same laws and regulations |
+| 金融工具分类代码方案（classification of financial instruments code scheme） | 金融工具代码集的分类方案，可供全球所有参与方用于直通式处理。<br>classification scheme for set of codes for financial instruments that can be used globally for straight-through processing by all involved participants in an electronic data processing environment |
+| 金融工具分类代码（financial instrument classification code） | ISO 10962 金融工具分类（CFI）代码方案中定义的金融工具分类器和代码。<br>classifier and code for a financial instrument defined in the ISO 10962 Classification of Financial Instruments (CFI) Code Scheme |
+| 金融工具分类方案（financial instrument classification scheme） | 定义一组金融工具分类器的分类方案。<br>classification scheme defining a set of classifiers for financial instruments |
+| 金融工具分类器（financial instrument classifier） | 基于金融工具类型和特征的分类器。<br>classifier for a financial instrument based on its type and features |
+| 行业分类基准分类器（industry classification benchmark classifier） | 基于机构主要收入来源的标准化机构分类（ICB）。<br>standardized classification or delineation for an organization based on their main source of revenue |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

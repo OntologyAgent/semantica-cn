@@ -148,15 +148,15 @@ cmns-rga:RegulatoryAgency a owl:Class ;
         "监管机构（regulatory agency）"@zh ;
     rdfs:comment "负责以监管或监督身份对某事物行使权力的公共当局或政府机构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty cmns-rga:regulates ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:RegulatoryService ;
+            owl:onProperty cmns-org:provides ],
         [ a owl:Restriction ;
             owl:onProperty cmns-rga:hasJurisdiction ;
             owl:someValuesFrom cmns-rga:Jurisdiction ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-rga:RegulatoryService ;
-            owl:onProperty cmns-org:provides ],
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-rga:regulates ],
         cmns-bauth:AuthorizingParty,
         cmns-org:ServiceProvider ;
     skos:definition "public authority or government agency responsible for exercising authority over something in a regulatory or supervisory capacity" ;

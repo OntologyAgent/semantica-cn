@@ -72,12 +72,12 @@ cmns-org:OrganizationIdentifier a owl:Class ;
         "组织标识符（OrganizationIdentifier）"@zh ;
     rdfs:comment "在组织标识方案内分配给组织、且在该方案内唯一的标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-id:identifies ;
-            owl:someValuesFrom cmns-org:Organization ],
-        [ a owl:Restriction ;
             owl:onClass cmns-org:OrganizationIdentificationScheme ;
             owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom cmns-org:Organization ],
         cmns-id:Identifier ;
     skos:definition "identifier assigned to an organization within an organization identification scheme, and unique within that scheme" ;
     skos:prefLabel "organization identifier" ;
@@ -389,11 +389,11 @@ cmns-org:Membership a owl:Class ;
     rdfs:comment "对应 n 元关系的情形：某团体或组织在某时期内拥有至少一名成员（个人或组织）。"@zh ;
     rdfs:seeAlso <https://www.w3.org/TR/vocab-org/#class-membership> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-org:hasMembership ;
-            owl:someValuesFrom cmns-org:MemberBearingOrganization ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-org:hasOrganizationMember ;
             owl:someValuesFrom cmns-org:OrganizationMember ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:hasMembership ;
+            owl:someValuesFrom cmns-org:MemberBearingOrganization ],
         cmns-pts:Situation ;
     skos:definition "situation, corresponding to an n-ary relation, in which some group or organization has at least one member (person or organization) for some period of time" .
 
@@ -404,15 +404,15 @@ cmns-org:Organization a owl:Class ;
     rdfs:comment "个人、多人或群体为某种目的（如满足需求或追求共同目标）在其中行动或被指定行动的权威框架。"@zh ;
     rdfs:seeAlso <https://www.w3.org/TR/vocab-org/#org:Organization> ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-org:OrganizationName ;
+            owl:onProperty cmns-dsg:hasName ],
+        [ a owl:Restriction ;
             owl:allValuesFrom cmns-org:Organization ;
             owl:onProperty cmns-col:hasPart ],
         [ a owl:Restriction ;
             owl:allValuesFrom cmns-pts:Party ;
             owl:onProperty cmns-col:hasMember ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-org:OrganizationName ;
-            owl:onProperty cmns-dsg:hasName ],
         cmns-pts:Party ;
     skos:definition "framework of authority within which a person, persons, or groups of people act, or are designated to act, towards some purpose, such as to meet a need or pursue collective goals" ;
     skos:example "This may be a business entity, government, international organization, not-for-profit, academic institution, or other unincorporated and/or informal social organization." ;

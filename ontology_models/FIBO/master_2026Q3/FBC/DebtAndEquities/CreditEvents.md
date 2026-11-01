@@ -34,29 +34,29 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 破产（bankruptcy） | 信用事件的一种，指一方的状态或状况发生变化、陷入资不抵债（无力清偿）的情形。 |
-| 信用事件（credit event） | 表明信用状况突然变化的事件，例如破产或违反债券契约、贷款协议，使人对相关方履行当前或未来义务的能力产生怀疑。 |
-| 交叉违约条款（cross default provision） | 合同条款：当借款人在另一相关债务上违约时，触发本合同项下的违约。 |
-| 违约事件（default event） | 信用事件的一种，表示未能履行合同义务，例如未能偿还贷款或证券的利息或本金等债务。 |
-| 困境级评级下调（distressed ratings downgrade） | 当某项债务的信用评级被下调至困境债务水平时触发的信用事件。 |
-| 评级下调（downgrade） | 当某一方或某项债务的信用评级被降低时触发的信用事件。 |
-| 主体特定信用事件（entity-specific credit event） | 适用于某一特定法律主体的信用事件。 |
-| 未能支付（failure to pay） | 在任何适用的宽限期之后仍未履行支付义务而触发的违约事件。 |
-| 未能支付利息（failure to pay interest） | 违约事件的一种：预期利息支付完全未付，或实付金额低于应付金额。 |
-| 未能支付本金（failure to pay principal） | 违约事件的一种：预期本金支付完全未付，或实付金额低于应付金额。 |
-| 申请破产（filing for bankruptcy） | 向法院提出请求、要求被认定为破产的信用事件。 |
-| 硬信用事件（hard credit event） | 不可修复（无法补救）的违约事件。 |
-| 分期违约（installment default） | 违约事件的一种：未按协议条款如期支付多期分期款项，或未支付受益人要求的催缴款项。 |
-| 违约情形下的利息义务（interest obligation in light of default） | 就任何支付义务的违约行为所产生的利息方面的义务。 |
-| 到期延展（maturity extension） | 将付款延长至债务原定到期日之后的信用事件。 |
-| 延期偿付（moratorium） | 主体特定信用事件：在相关问题解决之前暂时中止付款。 |
-| 债务加速到期（obligation acceleration） | 因参考债务发生违约或违反契约条款，导致一笔或多笔参考债务立即到期应付的信用事件。 |
-| 债务违约（obligation default） | 因某项特定债务违约而触发的信用事件。 |
-| 债务重组（obligation restructuring） | 对债务产生重大影响的信用事件，例如降息、削减本金、利息或本金延期支付、偿付顺序变更等。 |
-| 债务特定信用事件（obligation-specific credit event） | 与某一具体信贷协议或债务工具（参考债务）相关的信用事件。 |
-| 拒绝履行（repudiation） | 拒绝履行合同条款的信用事件。 |
-| 软信用事件（soft credit event） | 可修复（可补救）的违约事件。 |
-| 减记（write-down） | 债务特定信用事件：债务的账面价值（如未偿本金余额）被调减。 |
+| 破产（bankruptcy） | 信用事件的一种，指一方的状态或状况发生变化、陷入资不抵债（无力清偿）的情形。<br>credit event involving a change in state or condition in which a party becomes insolvent |
+| 信用事件（credit event） | 表明信用状况突然变化的事件，例如破产或违反债券契约、贷款协议，使人对相关方履行当前或未来义务的能力产生怀疑。<br>event signifying a sudden change in credit standing, such as bankruptcy or a violation of a bond indenture or loan agreement, that raises doubts about the party's ability to meet current or future obligations |
+| 交叉违约条款（cross default provision） | 合同条款：当借款人在另一相关债务上违约时，触发本合同项下的违约。<br>contract provision that triggers a default under one contract if the borrower defaults on another related obligation |
+| 违约事件（default event） | 信用事件的一种，表示未能履行合同义务，例如未能偿还贷款或证券的利息或本金等债务。<br>credit event representing a failure to meet a contractual obligation, such as failure to repay a debt including interest or principal on a loan or security |
+| 困境级评级下调（distressed ratings downgrade） | 当某项债务的信用评级被下调至困境债务水平时触发的信用事件。<br>credit event triggered when the credit rating of an obligation is downgraded to a distressed debt level |
+| 评级下调（downgrade） | 当某一方或某项债务的信用评级被降低时触发的信用事件。<br>credit event triggered when the credit rating of a party or obligation is lowered |
+| 主体特定信用事件（entity-specific credit event） | 适用于某一特定法律主体的信用事件。<br>credit event that applies to a given legal person |
+| 未能支付（failure to pay） | 在任何适用的宽限期之后仍未履行支付义务而触发的违约事件。<br>default event that is triggered following any applicable grace period in which a payment obligation is missed |
+| 未能支付利息（failure to pay interest） | 违约事件的一种：预期利息支付完全未付，或实付金额低于应付金额。<br>default event that where either an expected interest payment is missed altogether or the amount paid is less than the required amount |
+| 未能支付本金（failure to pay principal） | 违约事件的一种：预期本金支付完全未付，或实付金额低于应付金额。<br>default event that where either an expected principal payment is missed altogether or the amount paid is less than the required amount |
+| 申请破产（filing for bankruptcy） | 向法院提出请求、要求被认定为破产的信用事件。<br>credit event that involves a request to a court to be recognized as bankrupt |
+| 硬信用事件（hard credit event） | 不可修复（无法补救）的违约事件。<br>default event that is not repairable |
+| 分期违约（installment default） | 违约事件的一种：未按协议条款如期支付多期分期款项，或未支付受益人要求的催缴款项。<br>default event involving non-payment of several installment payments as scheduled in the terms of the agreement, or non-payment of a call by the beneficial owner |
+| 违约情形下的利息义务（interest obligation in light of default） | 就任何支付义务的违约行为所产生的利息方面的义务。<br>obligation in respect of default(s) in the performance of any payment obligation |
+| 到期延展（maturity extension） | 将付款延长至债务原定到期日之后的信用事件。<br>credit event involving extension of payments beyond the original maturity date of the obligation |
+| 延期偿付（moratorium） | 主体特定信用事件：在相关问题解决之前暂时中止付款。<br>entity-specific credit event involving a temporary suspension of payments until related issues are resolved |
+| 债务加速到期（obligation acceleration） | 因参考债务发生违约或违反契约条款，导致一笔或多笔参考债务立即到期应付的信用事件。<br>credit event triggered when one or more reference obligations become immediately due and payable as a result of a default or covenant breach on the reference entity's other debt instruments, subject to a materiality threshold |
+| 债务违约（obligation default） | 因某项特定债务违约而触发的信用事件。<br>credit event triggered as a result of an obligation-specific default |
+| 债务重组（obligation restructuring） | 对债务产生重大影响的信用事件，例如降息、削减本金、利息或本金延期支付、偿付顺序变更等。<br>credit event that materially impacts an obligation, such as an interest rate reduction, principal reduction, deferral of interest or principal, change in priority ranking, or change in currency or composition of payment |
+| 债务特定信用事件（obligation-specific credit event） | 与某一具体信贷协议或债务工具（参考债务）相关的信用事件。<br>credit event that relates to an individual credit agreement or debt instrument (reference obligation) |
+| 拒绝履行（repudiation） | 拒绝履行合同条款的信用事件。<br>credit event involving the refusal to honor the terms of a contract |
+| 软信用事件（soft credit event） | 可修复（可补救）的违约事件。<br>default event that is repairable |
+| 减记（write-down） | 债务特定信用事件：债务的账面价值（如未偿本金余额）被调减。<br>obligation-specific credit event whereby the book value of the obligation, such as the outstanding principal amount, is reduced |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -126,7 +126,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有违约门槛金额（has default threshold amount）** | 规定触发未能支付、拒绝履行/延期偿付或重组事件的金额门槛。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有违约门槛金额（has default threshold amount）** | 规定触发未能支付、拒绝履行/延期偿付或重组事件的金额门槛。<br>specifies an amount of money that triggers a failure to pay, repudiation/moratorium or restructuring event | 值域：货币数量；子属性：具有货币数量 |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -162,7 +162,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有宽限期（has grace period）** | 付款到期日之后的窗口期，在此期间内一方须履行其义务，否则发生未能支付信用事件。 | 值域：日期区间；子属性：具有日期区间 |
+| **具有宽限期（has grace period）** | 付款到期日之后的窗口期，在此期间内一方须履行其义务，否则发生未能支付信用事件。<br>window following any payment due date during which a party must fulfill its obligations before a failure to pay credit event occurs | 值域：日期区间；子属性：具有日期区间 |
 
 公理：
 
@@ -230,7 +230,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **涉及多个事件（involves multiple events）** | 表明该重组跨越不止一个信用事件。 | 值域：xsd:boolean |
+| **涉及多个事件（involves multiple events）** | 表明该重组跨越不止一个信用事件。<br>indicates that the restructuring spans more than one credit event | 值域：xsd:boolean |
 
 ##### 2.1.3.6 拒绝履行（repudiation）
 
@@ -254,7 +254,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有违约门槛金额（has default threshold amount）** | 规定触发未能支付、拒绝履行/延期偿付或重组事件的金额门槛。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有违约门槛金额（has default threshold amount）** | 规定触发未能支付、拒绝履行/延期偿付或重组事件的金额门槛。<br>specifies an amount of money that triggers a failure to pay, repudiation/moratorium or restructuring event | 值域：货币数量；子属性：具有货币数量 |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -272,8 +272,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有违约利息复利基础（has default interest compounding basis）** | 指明违约利息的计算基础，以时间周期表示。 | 值域：日期区间；子属性：具有日期区间 |
-| **是否适用违约利息（is default interest applicable）** | 表明在法律及适用协议允许的范围内，支付义务违约方是否须支付违约利息。 | 值域：xsd:boolean |
+| **具有违约利息复利基础（has default interest compounding basis）** | 指明违约利息的计算基础，以时间周期表示。<br>indicates the basis on which default interest is to be calculated, as a period of time | 值域：日期区间；子属性：具有日期区间 |
+| **是否适用违约利息（is default interest applicable）** | 表明在法律及适用协议允许的范围内，支付义务违约方是否须支付违约利息。<br>indicates whether a party that defaults in the performance of any payment obligation is, to the extent permitted by law and the applicable agreement, required to pay interest (before as well as after judgment) on the overdue amount to the other party on demand in the same currency as such overdue amount, for the period from (and including) the original due date for payment to (but excluding) the date of actual payment | 值域：xsd:boolean |
 | **由……授权要求（isMandatedBy）** | — | — |
 
 公理：
@@ -290,7 +290,7 @@
 
 | 属性 | 定义 |
 |---|---|
-| **宽限期是否可延长（is grace period extendable）** | 表明宽限期是否可以延长，可能因司法管辖区而异。 |
+| **宽限期是否可延长（is grace period extendable）** | 表明宽限期是否可以延长，可能因司法管辖区而异。<br>indicates whether or not the grace period may be extended, which may be jurisdiction specific |
 
 ## 4. 依赖（owl:imports，12 个）
 

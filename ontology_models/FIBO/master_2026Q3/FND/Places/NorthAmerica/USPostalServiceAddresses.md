@@ -34,28 +34,28 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 国务院地址（Department of State address） | 投递地址行以「UNIT」加单元标识符、再加「BOX」加信箱号代替街道地址的投递地址。 |
-| 国务院单元成分（Department of State unit component） | 国务院地址中包含「UNIT」加单元标识符的成分。 |
-| 波多黎各地址（Puerto Rico address） | 波多黎各投递点的投递地址，可含以缩写「URB」加城区名的补充地址行。 |
-| 美国邮政地址标识符（U.S. Postal Service address identifier） | 与 ZIP+4 编码组合后，投递点编码为 USPS 服务的每个可投递地址提供唯一标识符。 |
-| ZIP+4 编码（ZIP+4 Code） | 由五位数字、连字符和四位数字组成的九位号码，USPS 以其商标 ZIP+4 称之。 |
-| 邮区编码（Zip Code） | 分配给投递地址、指明州和邮局或邮区的五位编码。 |
-| 完整地址（complete address） | 具备全部必要地址元素、可与美国邮政 ZIP+4 及城市州文件精确匹配以获得投递点编码的投递地址。 |
-| 投递地址代码集（delivery address code set） | 按美国邮政署 28 号出版物、替代特定投递点细节的数字代码体系。 |
-| 投递点编码（delivery point code） | 分配给投递点的 00 至 99 之间的特定数字组。 |
-| 投递点代码集（delivery point code set） | 按美国邮政署 28 号出版物、替代特定投递点细节的数字代码体系。 |
-| 存局候领地址（general delivery address） | 以「GENERAL DELIVERY」字样（最好大写、完整拼写不缩写）代替街道地址的投递地址。 |
-| 公路合同地址（highway contract address） | 投递地址行以缩写「HC」加路线标识符、再加「BOX」加信箱号代替街道地址的投递地址。 |
-| 公路合同路线（highway contract route） | 与某地址关联的公路合同路线。 |
-| 公路合同路线地址（highway contract route address） | 乡村地区城市或镇区界限之外、与某地址关联的邮路。 |
-| 国际地址（international address） | 明确包含国家的物理地址。 |
-| 信箱（mailbox） | 与某地址关联的、非美国邮政局信箱的信箱。 |
-| 海外军事地址（overseas military address） | 投递地址行使用部队或指挥单位缩写（如 CMR、PSC、UNIT 或 HC）加单元编号的投递地址。 |
-| 私人信箱地址（private mail box address） | 由商业邮件接收公司提供的投递地址，含以缩写「PMB」开头的补充地址行。 |
-| 乡村路线地址（rural route address） | 投递地址行以缩写「RR」加路线标识符、再加「BOX」加信箱号代替街道地址的投递地址。 |
-| 标准化地址（standardized address） | 按邮政标准缩写完整拼写的投递地址。 |
-| 城区（urbanization） | 较大地理区域中的片区、分区或开发区。 |
-| 邮区编码方案（zip code scheme） | 美国用于便利邮件投递的体系，由直接印在地址后的五位或九位区域改进计划（ZIP）编码构成。 |
+| 国务院地址（Department of State address） | 投递地址行以「UNIT」加单元标识符、再加「BOX」加信箱号代替街道地址的投递地址。<br>delivery address whose delivery address line uses 'UNIT' followed by the unit identifier, followed by 'BOX' followed by box number, in place of a street address, 'DPO' as the literal value for the city, and the appropriate armed forces subdivision code in place of a subdivision (state) code |
+| 国务院单元成分（Department of State unit component） | 国务院地址中包含「UNIT」加单元标识符的成分。<br>component of a Department of State address that includes 'UNIT' followed by the unit identifier |
+| 波多黎各地址（Puerto Rico address） | 波多黎各投递点的投递地址，可含以缩写「URB」加城区名的补充地址行。<br>delivery address for a delivery point in Puerto Rico that may include a supplementary address line containing the abbreviation 'URB' followed by the name of the urbanization area that is appropriate for that address |
+| 美国邮政地址标识符（U.S. Postal Service address identifier） | 与 ZIP+4 编码组合后，投递点编码为 USPS 服务的每个可投递地址提供唯一标识符。<br>combined with the ZIP + 4 code, the delivery point code provides a unique identifier for every deliverable address served by the USPS |
+| ZIP+4 编码（ZIP+4 Code） | 由五位数字、连字符和四位数字组成的九位号码，USPS 以其商标 ZIP+4 称之。<br>nine-digit number consisting of five digits, a hyphen, and four digits, which the USPS describes by its trademark ZIP+4 |
+| 邮区编码（Zip Code） | 分配给投递地址、指明州和邮局或邮区的五位编码。<br>five-digit code code assigned to a delivery address indicating the state and post office or postal zone |
+| 完整地址（complete address） | 具备全部必要地址元素、可与美国邮政 ZIP+4 及城市州文件精确匹配以获得投递点编码的投递地址。<br>delivery address that has all the address elements necessary to allow an exact match with the current Postal Service ZIP+4 and City State files to obtain the finest level of ZIP+4 and delivery point codes for the delivery address |
+| 投递地址代码集（delivery address code set） | 按美国邮政署 28 号出版物、替代特定投递点细节的数字代码体系。<br>system of numeric codes that substitute for specified delivery point details according to the U.S. Postal Service Publication 28 |
+| 投递点编码（delivery point code） | 分配给投递点的 00 至 99 之间的特定数字组。<br>specific set of digits between 00 and 99 assigned to a delivery point |
+| 投递点代码集（delivery point code set） | 按美国邮政署 28 号出版物、替代特定投递点细节的数字代码体系。<br>system of numeric codes that substitute for specified delivery point details according to the U.S. Postal Service Publication 28 |
+| 存局候领地址（general delivery address） | 以「GENERAL DELIVERY」字样（最好大写、完整拼写不缩写）代替街道地址的投递地址。<br>delivery address that uses the words 'GENERAL DELIVERY', uppercase preferred, spelled out (no abbreviation), in place of a street address |
+| 公路合同地址（highway contract address） | 投递地址行以缩写「HC」加路线标识符、再加「BOX」加信箱号代替街道地址的投递地址。<br>delivery address whose delivery address line uses the abbreviation 'HC', followed by the route identifier, followed by 'BOX' followed by box number, in place of a street address |
+| 公路合同路线（highway contract route） | 与某地址关联的公路合同路线。<br>highway contract route associated with an address |
+| 公路合同路线地址（highway contract route address） | 乡村地区城市或镇区界限之外、与某地址关联的邮路。<br>mail route outside the city or township limits in a rural area associated with an address |
+| 国际地址（international address） | 明确包含国家的物理地址。<br>physical address that explicitly includes a country |
+| 信箱（mailbox） | 与某地址关联的、非美国邮政局信箱的信箱。<br>mailbox, other than a U.S. Post Office box, associated with an address |
+| 海外军事地址（overseas military address） | 投递地址行使用部队或指挥单位缩写（如 CMR、PSC、UNIT 或 HC）加单元编号的投递地址。<br>delivery address whose delivery address line uses an abbreviation for the unit or command such as 'CMR', 'PSC', or 'UNIT', or 'HC', followed by the unit identifier, followed by 'BOX' followed by box number, in place of a street address, either 'APO' or 'FPO' as the literal value for the city and the appropriate armed forces subdivision code in place of a subdivision (state) code |
+| 私人信箱地址（private mail box address） | 由商业邮件接收公司提供的投递地址，含以缩写「PMB」开头的补充地址行。<br>delivery address provided by a commercial mail receiving company that includes a supplementary address line containing the abbreviation 'PMB' or the pound "#" symbol followed by the mailbox number; alternatively, 'PMB' or '#" and the mailbox number can be appended to the street address |
+| 乡村路线地址（rural route address） | 投递地址行以缩写「RR」加路线标识符、再加「BOX」加信箱号代替街道地址的投递地址。<br>delivery address whose delivery address line uses the abbreviation 'RR', followed by the route identifier, followed by 'BOX' followed by box number, in place of a street address |
+| 标准化地址（standardized address） | 按邮政标准缩写完整拼写的投递地址。<br>delivery address that is fully spelled out, abbreviated by using the Postal Service standard abbreviations or as given in the current Postal Service ZIP+4 file |
+| 城区（urbanization） | 较大地理区域中的片区、分区或开发区。<br>an area, sector, or development within a larger geographic area |
+| 邮区编码方案（zip code scheme） | 美国用于便利邮件投递的体系，由直接印在地址后的五位或九位区域改进计划（ZIP）编码构成。<br>system used in the U.S. to facilitate the delivery of mail, consisting of a five- or nine-digit code Zone Improvement Plan (ZIP) printed directly after the address, the first five digits (initial code) indicating the state and post office or postal zone, the last four (expanded code) the box section or number, portion of a rural route, building, or other specific delivery location |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -365,7 +365,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有城区（has urbanization）** | 标识与投递地址相关的地理区域内的片区、分区或开发区。 | 值域：城区（urbanization）；子属性：包含 |
+| **具有城区（has urbanization）** | 标识与投递地址相关的地理区域内的片区、分区或开发区。<br>indicates area, sector, or development within a geographic area relevant to a delivery address | 值域：城区（urbanization）；子属性：包含 |
 
 ## 4. 依赖（owl:imports，8 个）
 

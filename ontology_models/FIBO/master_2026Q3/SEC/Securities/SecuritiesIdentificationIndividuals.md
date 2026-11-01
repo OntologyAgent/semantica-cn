@@ -34,16 +34,16 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number） | 9 位字母数字标识符，采用与 CUSIP 相同的 9 位字符，但首位为字母。 |
-| 统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number） | 用于标识所有北美股票和记名债券的九位字母数字编号，以促进清算和结算。 |
-| 欧洲清算-明讯通用代码（Euroclear Clearstream common code） | 由 Euroclear 和 Clearstream 在卢森堡联合签发的九位字母数字证券标识符。 |
-| 金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry） | 金融工具全球标识符（FIGI）登记册中的条目。 |
-| 路孚特工具代码（Refinitiv instrument code） | 由伦敦证券交易所集团（LSEG）旗下路孚特拥有、管理和分发的金融工具和指数专有代码（RIC）。 |
-| 证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code） | 由伦敦证券交易所签发的七位字符证券标识符，是在英国和爱尔兰发行证券的国家证券识别号码（NSIN）。 |
-| 德励财富标识符（Telekurs Id） | 由 SIX 金融信息公司（前身 Telekurs AG）拥有、管理和分发的金融工具标识符。 |
-| 瓦洛伦编号（Valoren） | 由 SIX 金融信息公司签发、分配给瑞士、列支敦士登和比利时金融工具的识别号码，是当地的国家证券识别号码（NSIN）。 |
-| 通用代码登记册条目（common code registry entry） | 通用代码登记册中的条目。 |
-| 金融工具全球标识符（financial instrument global identifier） | 按对象管理组织（OMG）金融工具全球标识符（FIGI）规范定义的金融工具标识符。 |
+| CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number） | 9 位字母数字标识符，采用与 CUSIP 相同的 9 位字符，但首位为字母。<br>9-character alphanumeric identifier that employs the same 9 characters as CUSIP, but also contains a letter of the alphabet in the first position signifying the issuer's country or geographic region, issued by CUSIP Global Services |
+| 统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number） | 用于标识所有北美股票和记名债券的九位字母数字编号，以促进清算和结算。<br>nine-character alphanumeric number that identifies all North American stocks and registered bonds for the purposes of facilitating clearing and settlement of trades, issued by CUSIP Global Services on behalf of the American Bankers' Association, which is a part of Standard and Poor's Capital IQ, that is the National Numbering Agency Identifier for securities issued in North America, which is also part of the ISIN for the security it identifies |
+| 欧洲清算-明讯通用代码（Euroclear Clearstream common code） | 由 Euroclear 和 Clearstream 在卢森堡联合签发的九位字母数字证券标识符。<br>nine-character alphanumeric securities identifier, issued in Luxembourg, jointly by Euroclear and Clearstream |
+| 金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry） | 金融工具全球标识符（FIGI）登记册中的条目。<br>entry in a Financial Instrument Global Identifier (FIGI) registry |
+| 路孚特工具代码（Refinitiv instrument code） | 由伦敦证券交易所集团（LSEG）旗下路孚特拥有、管理和分发的金融工具和指数专有代码（RIC）。<br>proprietary code for financial instruments and indices owned, managed, and distributed by the London Stock Exchange Group's LSEG Financial Solutions (branded as Refinitiv) |
+| 证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code） | 由伦敦证券交易所签发的七位字符证券标识符，是在英国和爱尔兰发行证券的国家证券识别号码（NSIN）。<br>seven-character security identifier, issued by the London Stock Exchange, that is the National Securities Identifying Number (NSIN) for securities issued in the United Kingdom, which is also part of the ISIN for the security it identifies |
+| 德励财富标识符（Telekurs Id） | 由 SIX 金融信息公司（前身 Telekurs AG）拥有、管理和分发的金融工具标识符。<br>identifier used to identify financial instruments owned, managed, and distributed by SIX Financial Information (formerly Telekurs AG and subsequently SIX Telekurs Ltd.) |
+| 瓦洛伦编号（Valoren） | 由 SIX 金融信息公司签发、分配给瑞士、列支敦士登和比利时金融工具的识别号码，是当地的国家证券识别号码（NSIN）。<br>identification number assigned to financial instruments in Switzerland, Liechtenstein and Belgium, issued by SIX Financial Information, that is the National Securities Identifying Number (NSIN) for securities issued in those countries and is also part of the ISIN for the security it identifies |
+| 通用代码登记册条目（common code registry entry） | 通用代码登记册中的条目。<br>entry in a common code registry |
+| 金融工具全球标识符（financial instrument global identifier） | 按对象管理组织（OMG）金融工具全球标识符（FIGI）规范定义的金融工具标识符。<br>financial instrument identifier that is defined as specified in the Object Management Group (OMG) Financial Instrument Global Identifier (FIGI) Specification |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -116,8 +116,8 @@
 - **定义于（isDefinedIn）**的取值固定为 EuroclearClearstreamCommonCodeScheme。
 - **标识（identifies）**恰好有 1 个**证券（Security）**。
 - **注册于（isRegisteredIn）**的取值固定为 CommonCodeRepository。
-- **由……发行（isIssuedBy）**的所有取值只能是**N9d0096662e1d46ee85ed5a3c2ce4ba91**。
-- **由……注册（isRegisteredBy）**的所有取值只能是**Nd2b39955284f4ca9930cee4c8d55a2f2**。
+- **由……发行（isIssuedBy）**的所有取值只能是**Ncd0a9e6835ce41d2b9acb54394455211**。
+- **由……注册（isRegisteredBy）**的所有取值只能是**N8a97fc34050246d58e0785381995520f**。
 
 ### 2.4 金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry）
 

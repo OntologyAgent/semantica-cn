@@ -147,14 +147,14 @@ fibo-fnd-plc-uspsa:DepartmentOfStateAddress a owl:Class ;
         "国务院地址（Department of State address）"@zh ;
     rdfs:comment "投递地址行以「UNIT」加单元标识符、再加「BOX」加信箱号代替街道地址的投递地址。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-uspsa:DepartmentOfStateUnitComponent ;
+            owl:onClass fibo-fnd-plc-uspsa:Mailbox ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:hasValue "DPO" ;
             owl:onProperty cmns-loc:hasCityName ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-uspsa:Mailbox ;
+            owl:onClass fibo-fnd-plc-uspsa:DepartmentOfStateUnitComponent ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-plc-adr:PhysicalAddress ;
@@ -178,11 +178,11 @@ fibo-fnd-plc-uspsa:HighwayContractRouteAddress a owl:Class ;
         "公路合同地址（highway contract address）"@zh ;
     rdfs:comment "投递地址行以缩写「HC」加路线标识符、再加「BOX」加信箱号代替街道地址的投递地址。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-uspsa:HighwayContractRoute ;
+            owl:onClass fibo-fnd-plc-uspsa:Mailbox ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-uspsa:Mailbox ;
+            owl:onClass fibo-fnd-plc-uspsa:HighwayContractRoute ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-plc-adr:PhysicalAddress ;
@@ -205,12 +205,12 @@ fibo-fnd-plc-uspsa:OverseasMilitaryAddress a owl:Class ;
         "海外军事地址（overseas military address）"@zh ;
     rdfs:comment "投递地址行使用部队或指挥单位缩写（如 CMR、PSC、UNIT 或 HC）加单元编号的投递地址。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-plc-adr:hasAddressLine1 ;
+            owl:someValuesFrom rdfs:Literal ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-loc:hasCityName ;
             owl:someValuesFrom [ a rdfs:Datatype ;
                     owl:oneOf ( "APO" "FPO" ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-plc-adr:hasAddressLine1 ;
-            owl:someValuesFrom rdfs:Literal ],
         fibo-fnd-plc-adr:PhysicalAddress ;
     owl:disjointWith fibo-fnd-plc-adr:ConventionalStreetAddress ;
     skos:definition "delivery address whose delivery address line uses an abbreviation for the unit or command such as 'CMR', 'PSC', or 'UNIT', or 'HC', followed by the unit identifier, followed by 'BOX' followed by box number, in place of a street address, either 'APO' or 'FPO' as the literal value for the city and the appropriate armed forces subdivision code in place of a subdivision (state) code" .
@@ -401,11 +401,11 @@ fibo-fnd-plc-uspsa:USPostalServiceAddressIdentifier a owl:Class ;
         "美国邮政地址标识符（U.S. Postal Service address identifier）"@zh ;
     rdfs:comment "与 ZIP+4 编码组合后，投递点编码为 USPS 服务的每个可投递地址提供唯一标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-uspsa:DeliveryPointCode ;
+            owl:onClass fibo-fnd-plc-uspsa:ZIPPlus4Code ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-uspsa:ZIPPlus4Code ;
+            owl:onClass fibo-fnd-plc-uspsa:DeliveryPointCode ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-plc-adr:PhysicalAddressIdentifier ;
@@ -433,12 +433,12 @@ fibo-fnd-plc-uspsa:DeliveryPointCode a owl:Class ;
     rdfs:comment "分配给投递点的 00 至 99 之间的特定数字组。"@zh ;
     rdfs:seeAlso <https://pe.usps.com/cpim/ftp/pubs/Pub28/pub28.pdf> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-uspsa:DeliveryPointCodeSet ;
-            owl:onProperty cmns-col:isMemberOf ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-uspsa:DeliveryPointCodeSet ;
+            owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-cds:CodeElement ;
     skos:definition "specific set of digits between 00 and 99 assigned to a delivery point" ;

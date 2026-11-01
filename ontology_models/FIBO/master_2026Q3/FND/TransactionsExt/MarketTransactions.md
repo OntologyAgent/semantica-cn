@@ -23,7 +23,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 市场交易（market transaction） | 定义以某种对价换取某种可转让物品供应的交易；市场交易有委托方和对手方，不是对称的。 |
+| 市场交易（market transaction） | 定义以某种对价换取某种可转让物品供应的交易；市场交易有委托方和对手方，不是对称的。<br>Any transaction which defines a supply of some negotiable item in return for some Consideration. The Market Transaction has a Principal and a Counterparty, i.e. it is not symmetrical. |
 | 市场交易开票条款（market transaction invoicing terms） | 市场交易的开票条款。 |
 | 市场交易支付条款（market transaction payment terms） | 市场交易的支付条款。 |
 | 交易对手方（transaction counterparty） | 交易中的对手方。 |

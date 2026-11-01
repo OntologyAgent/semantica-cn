@@ -65,14 +65,14 @@ fibo-sec-dbt-tstd:BankersAcceptance a owl:Class ;
         "银行承兑汇票（bankers' acceptance）"@zh ;
     rdfs:comment "由银行担保并兑付的短期债务工具，用作大额交易中相对安全的支付形式。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-sec-dbt-dbti:ParValue ;
-            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtMaturity ],
+            owl:onProperty fibo-fbc-dae-gty:hasGuarantor ;
+            owl:someValuesFrom fibo-fbc-fct-fse:Bank ],
         [ a owl:Restriction ;
             owl:hasValue fibo-sec-dbt-dbti:AtADiscount ;
             owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtIssue ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-gty:hasGuarantor ;
-            owl:someValuesFrom fibo-fbc-fct-fse:Bank ],
+            owl:hasValue fibo-sec-dbt-dbti:ParValue ;
+            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtMaturity ],
         fibo-sec-dbt-tstd:BillOfExchange ;
     skos:definition "short-term debt instrument that is guaranteed and paid by a bank and used as a relatively safe form of payment for large transactions"@en ;
     cmns-av:explanatoryNote "Considered negotiable instruments with features of a time draft, bankers' acceptances are created by the drawer and provide the bearer with the right to the amount noted on the face of the acceptance on the specified date. Unlike traditional checks, bankers' acceptances function based on the creditworthiness of the banking institution instead of the individual or business acting as the drawer. Additionally, the drawer must provide the funds necessary to support the bankers' acceptance, eliminating the risk associated with insufficient funds on the part of the drawer."@en .
@@ -142,14 +142,14 @@ fibo-sec-dbt-tstd:BillOfExchange a owl:Class ;
     rdfs:comment "一种短期可转让金融票据，由一人（货物卖方）向另一人（买方）签发书面付款指令。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-sec-dbt-tstd:Drawee ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
             owl:someValuesFrom fibo-sec-dbt-tstd:Drawer ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-pas-psch:Payee ;
             owl:onProperty cmns-pts:hasPartyRole ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-pts:hasPartyRole ;
-            owl:someValuesFrom fibo-sec-dbt-tstd:Drawee ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-fse:FinancialInstitution ;

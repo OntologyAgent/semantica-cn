@@ -17,7 +17,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 财务记录（financial record） | 财务信息的记录。 |
+| 财务记录（financial record） | 财务信息的记录。<br>record of financial information |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -35,10 +35,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有到期日（has expiration date）** | 将某事物（通常是协议、合同、文档或易腐物品）与其到期日关联起来。 | 值域：日期；子属性：具有结束日期 |
-| **具有记录（has record）** | 将某事物关联到与其相关的记录。 | 值域：记录；子属性：包含 |
-| **具有报告期（has reporting period）** | 指定报告或其他内容（如市场利率、经济指标）适用的报告期。 | 值域：显式日期区间；子属性：具有日期区间 |
-| **具有终止日（has termination date）** | 将某事物（通常是协议、合同、文档或流程）与其计划或实际终止日期关联起来。 | 值域：日期；子属性：具有结束日期 |
+| **具有到期日（has expiration date）** | 将某事物（通常是协议、合同、文档或易腐物品）与其到期日关联起来。<br>links something, typically an agreement, contract, document, or perishable item, with an expiration date | 值域：日期；子属性：具有结束日期 |
+| **具有记录（has record）** | 将某事物关联到与其相关的记录。<br>links something to a record that pertains to it | 值域：记录；子属性：包含 |
+| **具有报告期（has reporting period）** | 指定报告或其他内容（如市场利率、经济指标）适用的报告期。<br>specifies the reporting period for which a report or something else, such as a market rate or economic indicator, applies | 值域：显式日期区间；子属性：具有日期区间 |
+| **具有终止日（has termination date）** | 将某事物（通常是协议、合同、文档或流程）与其计划或实际终止日期关联起来。<br>links something, typically an agreement, contract, document, or process, with a date on which it is scheduled to be or was terminated | 值域：日期；子属性：具有结束日期 |
 
 ## 4. 依赖（owl:imports，5 个）
 

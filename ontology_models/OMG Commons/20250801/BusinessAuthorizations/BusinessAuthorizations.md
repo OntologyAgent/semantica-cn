@@ -32,11 +32,11 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 授权（Authorization） | 一方授权他人在特定条件下、特定时期内代表其行事或具备特定能力的情形。 |
-| 被授权方（AuthorizedParty） | 在一定规则下、一定时期内被赋予代表他方行事能力或特定能力的参与方。 |
-| 授权方（AuthorizingParty） | 将某个角色、权限或控制权委托给他方的参与方。 |
-| 法定受托权限（legally delegated authority） | 被赋予一定法律控制权及相应责任的被授权方。 |
-| 责任方（responsible party） | 以某种角色承担正式责任的法律主体。 |
+| 授权（Authorization） | 一方授权他人在特定条件下、特定时期内代表其行事或具备特定能力的情形。<br>situation in which a party authorizes someone to act on their behalf or to have specific capabilities under certain conditions for some period of time |
+| 被授权方（AuthorizedParty） | 在一定规则下、一定时期内被赋予代表他方行事能力或特定能力的参与方。<br>party that has been given the ability to act on behalf of another party or to have specified capabilities under some set of guidelines for some period of time |
+| 授权方（AuthorizingParty） | 将某个角色、权限或控制权委托给他方的参与方。<br>party that delegates some role, authority, or control to another party |
+| 法定受托权限（legally delegated authority） | 被赋予一定法律控制权及相应责任的被授权方。<br>authorized party empowered with some level of legal control and corresponding responsibility |
+| 责任方（responsible party） | 以某种角色承担正式责任的法律主体。<br>legal person acting in a role that has some formal responsibility |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -50,10 +50,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有被授权方（has authorized party）** | 标识在该情形中被认可、使能、赋权或许可行事的参与方（角色）。 | 值域：被授权方（AuthorizedParty）；子属性：具有承受者（has undergoer） |
-| **具有被授权人（has authorizee）** | 标识在该情形中被认可、使能、赋权或许可行事的法律主体。 | 值域：法律主体；子属性：被…经历（is experienced by） |
-| **具有授权方（has authorizing party）** | 标识在该情形中给予认可、使能、赋权或许可的参与方（角色）。 | 值域：授权方（AuthorizingParty）；子属性：具有行为者（has actor） |
-| **具有授权人（has authorizor）** | 标识在该情形中给予认可、使能、赋权或许可的法律主体。 | 值域：法律主体；子属性：具有主动参与方（has active party） |
+| **具有被授权方（has authorized party）** | 标识在该情形中被认可、使能、赋权或许可行事的参与方（角色）。<br>indicates the party (role) that is endorsed, enabled, empowered, or otherwise permitted to do something in the situation | 值域：被授权方（AuthorizedParty）；子属性：具有承受者（has undergoer） |
+| **具有被授权人（has authorizee）** | 标识在该情形中被认可、使能、赋权或许可行事的法律主体。<br>indicates the legal person that is endorsed, enabled, empowered, or otherwise permitted to do something in the situation | 值域：法律主体；子属性：被…经历（is experienced by） |
+| **具有授权方（has authorizing party）** | 标识在该情形中给予认可、使能、赋权或许可的参与方（角色）。<br>indicates the party (role) that endorses, enables, empowers, or gives permission in the situation | 值域：授权方（AuthorizingParty）；子属性：具有行为者（has actor） |
+| **具有授权人（has authorizor）** | 标识在该情形中给予认可、使能、赋权或许可的法律主体。<br>indicates the legal person that endorses, enables, empowers, or gives permission in the situation | 值域：法律主体；子属性：具有主动参与方（has active party） |
 
 公理：
 
@@ -71,8 +71,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……授权（is authorized by）** | 由……认可、使能、赋权或许可。 | 值域：授权方（AuthorizingParty）；子属性：受…影响（is affected by） |
-| **通过……被授权（is authorized through）** | 标识促成被授权方为某目的获得认可的情形。 | 值域：授权（Authorization）；逆属性：具有被授权方（has authorized party）；子属性：承受（undergoes） |
+| **由……授权（is authorized by）** | 由……认可、使能、赋权或许可。<br>is endorsed, enabled, empowered, or otherwise permitted by | 值域：授权方（AuthorizingParty）；子属性：受…影响（is affected by） |
+| **通过……被授权（is authorized through）** | 标识促成被授权方为某目的获得认可的情形。<br>indicates the situation that facilitates endorsement of the authorized party for some purpose | 值域：授权（Authorization）；逆属性：具有被授权方（has authorized party）；子属性：承受（undergoes） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -90,7 +90,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **受托控制（has delegated control of）** | 标识通过委托而被控制的某事物或某参与方。 | — |
+| **受托控制（has delegated control of）** | 标识通过委托而被控制的某事物或某参与方。<br>indicates something or some party that is controlled via delegation | — |
 
 #### 2.2.2 责任方（responsible party）
 
@@ -108,9 +108,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **授权（authorizes）** | 认可、使能、赋权或给予许可。 | 值域：被授权方（AuthorizedParty）；逆属性：由……授权（is authorized by）；子属性：对…采取行动（acts on） |
-| **直接授权（authorizes directly）** | 直接认可、使能、赋权或给予许可。 | 值域：法律主体；逆属性：由……直接授权（is directly authorized by）；子属性：直接影响（directly affects） |
-| **通过……授权（authorizes through）** | 标识促成授权方为某目的指定被授权方的情形。 | 值域：授权（Authorization）；逆属性：具有授权方（has authorizing party）；子属性：在…中行动（acts in） |
+| **授权（authorizes）** | 认可、使能、赋权或给予许可。<br>endorses, enables, empowers, or gives permission to | 值域：被授权方（AuthorizedParty）；逆属性：由……授权（is authorized by）；子属性：对…采取行动（acts on） |
+| **直接授权（authorizes directly）** | 直接认可、使能、赋权或给予许可。<br>endorses, enables, empowers, or gives permission directly to | 值域：法律主体；逆属性：由……直接授权（is directly authorized by）；子属性：直接影响（directly affects） |
+| **通过……授权（authorizes through）** | 标识促成授权方为某目的指定被授权方的情形。<br>indicates the situation that facilitates designation of an authorized party by the authorizing party for some purpose | 值域：授权（Authorization）；逆属性：具有授权方（has authorizing party）；子属性：在…中行动（acts in） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -126,12 +126,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **将控制权委托给（delegates control to）** | 标识授权方已将某些权限或控制权委托给的参与方。 | 值域：法定受托权限（legally delegated authority）；子属性：授权（authorizes） |
-| **具有授权（has authorization）** | 将某事物关联到在特定情境下适用于它的授权。 | 值域：授权（Authorization）；子属性：适用于情境 |
-| **具有责任方（has responsible party）** | 标识对某情形或组织负有任务、承诺或义务的参与方。 | 值域：责任方（responsible party）；子属性：具有参与方角色（has party role） |
-| **在……中为被授权人（is authorizee in）** | 标识促成法律主体被指定为被授权方的情形。 | 值域：授权（Authorization）；逆属性：具有被授权人（has authorizee）；子属性：经历（experiences） |
-| **在……中为授权人（is authorizor in）** | 标识促成法律主体指定被授权方的情形。 | 值域：授权（Authorization）；逆属性：具有授权人（has authorizor）；子属性：在…中扮演主动角色（plays active role in） |
-| **由……直接授权（is directly authorized by）** | 由……直接认可、使能、赋权或许可。 | 值域：授权方（AuthorizingParty）；子属性：直接受…影响（is directly affected by） |
+| **将控制权委托给（delegates control to）** | 标识授权方已将某些权限或控制权委托给的参与方。<br>indicates a party to which the authorizing party has delegated some authority or control | 值域：法定受托权限（legally delegated authority）；子属性：授权（authorizes） |
+| **具有授权（has authorization）** | 将某事物关联到在特定情境下适用于它的授权。<br>relates something to a specific authorization that is applicable to it in some context | 值域：授权（Authorization）；子属性：适用于情境 |
+| **具有责任方（has responsible party）** | 标识对某情形或组织负有任务、承诺或义务的参与方。<br>identifies a party that has some assignment, commitment or obligation with respect to some situation or organization | 值域：责任方（responsible party）；子属性：具有参与方角色（has party role） |
+| **在……中为被授权人（is authorizee in）** | 标识促成法律主体被指定为被授权方的情形。<br>indicates the situation that facilitates designation of the legal person as an authorized party for some purpose | 值域：授权（Authorization）；逆属性：具有被授权人（has authorizee）；子属性：经历（experiences） |
+| **在……中为授权人（is authorizor in）** | 标识促成法律主体指定被授权方的情形。<br>indicates the situation that facilitates designation of an authorized party by the legal person for some purpose | 值域：授权（Authorization）；逆属性：具有授权人（has authorizor）；子属性：在…中扮演主动角色（plays active role in） |
+| **由……直接授权（is directly authorized by）** | 由……直接认可、使能、赋权或许可。<br>is directly endorsed, enabled, empowered, or otherwise permitted by | 值域：授权方（AuthorizingParty）；子属性：直接受…影响（is directly affected by） |
 
 ## 4. 依赖（owl:imports，5 个）
 

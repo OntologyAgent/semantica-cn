@@ -22,7 +22,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 船舶融资（marine finance） | 用于购买船只或其他船舶的贷款。 |
+| 船舶融资（marine finance） | 用于购买船只或其他船舶的贷款。<br>A loan for the purchase of a boat or other vessel. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -36,10 +36,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **船只作为动产持有（boat held as chattel）** | 贷款期间该船舶是否作为动产由贷款人持有。 | 值域：xsd:boolean |
-| **停泊于（moored at）** | 船舶固定停泊地点的文本描述（名称等）。 | 值域：xsd:string |
-| **垫付百分比（percentage advanced）** | 贷款垫付金额占购买价格的百分比。 | 值域：百分比 |
-| **居住用途（residential）** | 该船只是否拟用作、且在法律上可用作居住场所。 | 值域：xsd:boolean |
+| **船只作为动产持有（boat held as chattel）** | 贷款期间该船舶是否作为动产由贷款人持有。<br>Whether the vessel is to be held in ownership as a form of chattel by the lender during the period of the loan. | 值域：xsd:boolean |
+| **停泊于（moored at）** | 船舶固定停泊地点的文本描述（名称等）。<br>Textual description (name etc.) of where the vessel is to be moored if it has a permanent mooring place. | 值域：xsd:string |
+| **垫付百分比（percentage advanced）** | 贷款垫付金额占购买价格的百分比。<br>The percentage of the purchase price advanced as the loan. | 值域：百分比 |
+| **居住用途（residential）** | 该船只是否拟用作、且在法律上可用作居住场所。<br>Whether the boat is intended to be used and is legally able to be used as a place of residence. | 值域：xsd:boolean |
 
 ## 3. 依赖（owl:imports，4 个）
 

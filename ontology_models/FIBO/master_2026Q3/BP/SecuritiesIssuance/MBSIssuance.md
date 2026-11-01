@@ -24,7 +24,7 @@
 | 类（Class） | 定义（Definition） |
 |---|---|
 | MBS 证券化流程（m b s securitization process） | 抵押贷款支持证券的证券化过程。 |
-| 招募说明书部分（prospectus part） | 证券发行招募说明书的一个部分或章节。 |
+| 招募说明书部分（prospectus part） | 证券发行招募说明书的一个部分或章节。<br>A part or section of a prospectus for a securities issue. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

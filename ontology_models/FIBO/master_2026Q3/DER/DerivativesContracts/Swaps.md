@@ -34,41 +34,41 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 基差互换（basis swap） | 支付流参考不同基准的互换。 |
-| 相关性腿（correlation leg） | 相关性互换的浮动腿，支付金额基于一组标的产品价格的观察平均相关性。 |
-| 相关性互换（correlation swap） | 一种场外统计衍生品，用于对冲一组标的产品价格观察平均相关性相关的风险。 |
-| 离散度腿（dispersion leg） | 离散度互换的浮动腿，支付金额基于标的产品价格变动的已实现离散度。 |
-| 离散度互换（dispersion swap） | 用于对冲标的资产价格变动幅度的统计衍生品。 |
-| 超额回报互换（excess return swap） | 回报互换的一种：指数水平变动等于主要由各成分价格变化产生的回报。 |
-| 固定腿（fixed leg） | 付款方有义务在互换期限内按固定年利率或固定金额不定期付款的互换腿。 |
-| 固定支付腿（fixed payment leg） | 规定按固定年利率计算的付款计划相关合同条款的互换腿。 |
-| 浮动腿（floating leg） | 付款方有义务在互换期限内按某一浮动利率不定期付款的互换腿。 |
-| 指数回报互换（index return swap） | 付款基于向互换卖方支付的费用以及基于指数水平变动的浮动参考价格的回报互换。 |
-| 主要互换参与者（major swap participant） | 在任何主要互换类别中持有大量头寸的金融服务提供商。 |
-| 基于业绩的浮动腿（performance-based variable leg） | 支付取决于标的业绩某种统计度量的互换浮动腿。 |
-| 利率类腿（rate-based leg） | 基于浮动利率、浮动通胀率或固定利率的利率类互换腿。 |
-| 利率互换（rates swap） | 两个交易对手约定在协议期间的规定日期、基于指定名义本金和利率互相支付现金流的互换。 |
-| 已实现浮动腿（realized variable leg） | 付款在到期时一次性净额结算（而非定期支付）的基于业绩的互换腿。 |
-| 回报腿（return leg） | 支付标的所产生收益的互换腿。 |
-| 回报互换（return swap） | 其中一腿（回报腿）基于某一标的所产生收益的互换。 |
-| 简单回报腿（simple return leg） | 严格基于标的资产所产生收益、不含升值、减值、资本利得和任何费用的回报腿。 |
-| 统计互换（statistical swap） | 支付取决于标的业绩某种统计度量的互换。 |
-| 执行腿（strike leg） | 规定在执行时报出的固定金额（即「执行额」）的互换腿。 |
-| 互换（swap） | 交易对手约定交换来自两种不同金融工具的周期性现金流或负债流的衍生工具。 |
-| 互换确认书（swap confirmation） | 将双方整体交易中与生命周期事件相关的具体条款和条件成文化的正式确认书。 |
-| 互换数据存库机构（swap data repository） | 为互换数据报告和记录保存提供集中设施的金融服务提供商。 |
-| 互换交易商（swap dealer） | 经营互换、为互换做市、并在日常业务中经常与交易对手订立互换的非存款性机构。 |
-| 互换腿（swap leg） | 规定互换某一组成部分的现金流要求（如利息支付、票息支付等）及履约承诺的条款。 |
-| 互换腿事件（swap leg event） | 适用于互换某一腿的互换生命周期事件，如付款或利率重置事件。 |
-| 互换生命周期事件（swap lifecycle event） | 互换生命周期内发生的事件，整体事件集包括发行人、前台、中台、后台各自特有的事件。 |
-| 互换生命周期事件标识符（swap lifecycle event identifier） | 唯一标识互换生命周期中特定事件的标识符。 |
-| 互换方（swap party） | 互换的一方，因此也是体现该交易的合约的法定当事方。 |
-| 互换付款方（swap paying party） | 按合约规定为交易某一腿负责付款的互换方。 |
-| 互换收款方（swap receiving party） | 按合约规定收取交易某一腿款项的互换方。 |
-| 互换条款（swap terms） | 互换交易的法律合同条款。 |
-| 总回报腿（total return leg） | 基于标的资产所产生收益以及任何升值、减值、资本利得和费用的回报腿。 |
-| 总回报互换（total return swap） | 卖方同意向另一方支付标的资产价值变动乘以约定名义金额的回报互换。 |
-| 唯一互换标识符（unique swap identifier） | 用于记录保存和互换数据报告的互换标识符。 |
+| 基差互换（basis swap） | 支付流参考不同基准的互换。<br>swap in which payment streams are referenced to different bases |
+| 相关性腿（correlation leg） | 相关性互换的浮动腿，支付金额基于一组标的产品价格的观察平均相关性。<br>floating leg of a correlation swap that pays an amount based on the observed average correlation of the prices of a collection of underlying products |
+| 相关性互换（correlation swap） | 一种场外统计衍生品，用于对冲一组标的产品价格观察平均相关性相关的风险。<br>over-the-counter statistical derivative that allows one to hedge risks associated with the observed average correlation of a collection of underlying products |
+| 离散度腿（dispersion leg） | 离散度互换的浮动腿，支付金额基于标的产品价格变动的已实现离散度。<br>floating leg of a dispersion swap that pays an amount based on the realized dispersion of the price changes of the underlying product |
+| 离散度互换（dispersion swap） | 用于对冲标的资产价格变动幅度的统计衍生品。<br>statistical derivative used to hedge on the magnitude of a price movement of an underlying asset |
+| 超额回报互换（excess return swap） | 回报互换的一种：指数水平变动等于主要由各成分价格变化产生的回报。<br>return swap in which the change in the level of the index will be equal to the returns generated primarily by the changes in price of each of the contracts that comprise the index |
+| 固定腿（fixed leg） | 付款方有义务在互换期限内按固定年利率或固定金额不定期付款的互换腿。<br>swap leg whose paying party is obligated to make payments from time to time over the term of a swap calculated by reference to a fixed annual rate or consisting of at least one payment of a fixed amount |
+| 固定支付腿（fixed payment leg） | 规定按固定年利率计算的付款计划相关合同条款的互换腿。<br>swap leg that specifies contractual terms associated with a schedule of payments for any swap calculated by reference to a fixed annual rate |
+| 浮动腿（floating leg） | 付款方有义务在互换期限内按某一浮动利率不定期付款的互换腿。<br>swap leg whose paying party is obligated to make payments from time to time over the term of a swap calculated by reference to some variable rate, calculated based on the change in value of some underlying asset, or consisting of at least one payment of some floating amount |
+| 指数回报互换（index return swap） | 付款基于向互换卖方支付的费用以及基于指数水平变动的浮动参考价格的回报互换。<br>return swap in which payments are based on a fee paid to the seller of the swap and on a floating reference price based on changes in the level of an index from an initial level to a level observed on some valuation date(s) |
+| 主要互换参与者（major swap participant） | 在任何主要互换类别中持有大量头寸的金融服务提供商。<br>financial service provider that maintains a substantial position in swaps for any of the major swap categories |
+| 基于业绩的浮动腿（performance-based variable leg） | 支付取决于标的业绩某种统计度量的互换浮动腿。<br>floating leg of a swap that depends on some statistical measure of the performance of the underlier |
+| 利率类腿（rate-based leg） | 基于浮动利率、浮动通胀率或固定利率的利率类互换腿。<br>swap leg of a rate-based swap based on a floating interest, floating inflation or fixed interest rate |
+| 利率互换（rates swap） | 两个交易对手约定在协议期间的规定日期、基于指定名义本金和利率互相支付现金流的互换。<br>swap in two counterparties each agree to pay the other cash flows on defined dates during an agreed period, based on a specified notional amount and a floating interest, floating inflation or fixed interest rate |
+| 已实现浮动腿（realized variable leg） | 付款在到期时一次性净额结算（而非定期支付）的基于业绩的互换腿。<br>performance-based leg wherein the payment is netted at maturity rather than periodically |
+| 回报腿（return leg） | 支付标的所产生收益的互换腿。<br>leg of a swap in which the income generated by some underlier is paid |
+| 回报互换（return swap） | 其中一腿（回报腿）基于某一标的所产生收益的互换。<br>swap in which one leg, the return leg, is based on income generated from some underlier |
+| 简单回报腿（simple return leg） | 严格基于标的资产所产生收益、不含升值、减值、资本利得和任何费用的回报腿。<br>return leg based strictly on the income generated by the underlying asset, excluding appreciation, decrease in value, capital gains, and fees on any increase in value |
+| 统计互换（statistical swap） | 支付取决于标的业绩某种统计度量的互换。<br>swap that depends on some statistical measure of the performance of the underlier |
+| 执行腿（strike leg） | 规定在执行时报出的固定金额（即「执行额」）的互换腿。<br>swap leg that specifies a fixed amount, 'the strike', quoted at the time of execution |
+| 互换（swap） | 交易对手约定交换来自两种不同金融工具的周期性现金流或负债流的衍生工具。<br>derivative instrument whereby counterparties agree to exchange periodic streams of cash flows or liabilities from two different financial instruments with each other |
+| 互换确认书（swap confirmation） | 将双方整体交易中与生命周期事件相关的具体条款和条件成文化的正式确认书。<br>formal confirmation that codifies the terms and conditions specific to a lifecycle event with respect to the overall transaction between the parties |
+| 互换数据存库机构（swap data repository） | 为互换数据报告和记录保存提供集中设施的金融服务提供商。<br>financial service provider that provides a central facility for swap data reporting and recordkeeping |
+| 互换交易商（swap dealer） | 经营互换、为互换做市、并在日常业务中经常与交易对手订立互换的非存款性机构。<br>non-depository institution such as one that deals in swaps, makes a market in swaps, regularly enters into swaps with counterparties as an ordinary course of business for its own account, and engages in any activity causing the person to be commonly known in the trade as a dealer/market maker in swaps |
+| 互换腿（swap leg） | 规定互换某一组成部分的现金流要求（如利息支付、票息支付等）及履约承诺的条款。<br>terms defining and the commitment to fulfill cashflow requirements (e.g., interest payments, coupon payments, etc.) for a component of a swap |
+| 互换腿事件（swap leg event） | 适用于互换某一腿的互换生命周期事件，如付款或利率重置事件。<br>swap lifecycle event, such as a payment or rate reset event, that applies to one leg of a swap |
+| 互换生命周期事件（swap lifecycle event） | 互换生命周期内发生的事件，整体事件集包括发行人、前台、中台、后台各自特有的事件。<br>event that occurs during the lifecycle of a swap, where the overall set of events includes those specific to the issuer, front office, middle office, and/or back office processes |
+| 互换生命周期事件标识符（swap lifecycle event identifier） | 唯一标识互换生命周期中特定事件的标识符。<br>identifier that uniquely identifies a specific event in the lifecycle of a swap |
+| 互换方（swap party） | 互换的一方，因此也是体现该交易的合约的法定当事方。<br>party to a swap and therefore a legal party to the contract that embodies that transaction |
+| 互换付款方（swap paying party） | 按合约规定为交易某一腿负责付款的互换方。<br>swap party responsible for making payments for a given leg of the transaction as defined in the contract |
+| 互换收款方（swap receiving party） | 按合约规定收取交易某一腿款项的互换方。<br>swap party that receives payments for a given leg of the transaction as defined in the contract |
+| 互换条款（swap terms） | 互换交易的法律合同条款。<br>legal contractual terms of a swap transaction |
+| 总回报腿（total return leg） | 基于标的资产所产生收益以及任何升值、减值、资本利得和费用的回报腿。<br>return leg based on the income generated by the underlying asset as well as any appreciation, decrease in value, capital gains, and fees on any increase in value |
+| 总回报互换（total return swap） | 卖方同意向另一方支付标的资产价值变动乘以约定名义金额的回报互换。<br>return swap where the seller agrees to pay the other party the difference in value of some underlying asset multiplied by an agreed-upon notional value should the asset value increase between specified periods of time |
+| 唯一互换标识符（unique swap identifier） | 用于记录保存和互换数据报告的互换标识符。<br>identifier for a swap that is used in recordkeeping and swap data reporting |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -89,7 +89,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有腿（has leg）** | 将互换合约与构成该互换的一腿关联起来。 | 值域：互换腿（swap leg）；子属性：具有合同要素 |
+| **具有腿（has leg）** | 将互换合约与构成该互换的一腿关联起来。<br>relates a swap contract to a leg that is part of that swap | 值域：互换腿（swap leg）；子属性：具有合同要素 |
 | **具有合同当事方（hasContractParty）** | — | — |
 | **具有合同要素（hasContractualElement）** | — | — |
 | **交换（exchanges）** | — | — |
@@ -113,7 +113,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有腿（has leg）** | 将互换合约与构成该互换的一腿关联起来。 | 值域：互换腿（swap leg）；子属性：具有合同要素 |
+| **具有腿（has leg）** | 将互换合约与构成该互换的一腿关联起来。<br>relates a swap contract to a leg that is part of that swap | 值域：互换腿（swap leg）；子属性：具有合同要素 |
 
 公理：
 
@@ -136,8 +136,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有融资腿（has funding leg）** | 指明回报互换中规定固定支付率（通常基于基准、也可能为固定利率）的一腿。 | 子属性：具有腿（has leg） |
-| **具有回报腿（has return leg）** | 指明回报互换中支付基于标的资产回报的一腿。 | 值域：回报腿（return leg）；子属性：具有腿（has leg） |
+| **具有融资腿（has funding leg）** | 指明回报互换中规定固定支付率（通常基于基准、也可能为固定利率）的一腿。<br>indicates the leg of a return swap that specifies a set payment rate, typically benchmark based but possibly a fixed rate | 子属性：具有腿（has leg） |
+| **具有回报腿（has return leg）** | 指明回报互换中支付基于标的资产回报的一腿。<br>indicates the leg of a return swap whose payments are based on the return of an underlying asset | 值域：回报腿（return leg）；子属性：具有腿（has leg） |
 
 公理：
 
@@ -167,7 +167,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有回报腿（has return leg）** | 指明回报互换中支付基于标的资产回报的一腿。 | 值域：回报腿（return leg）；子属性：具有腿（has leg） |
+| **具有回报腿（has return leg）** | 指明回报互换中支付基于标的资产回报的一腿。<br>indicates the leg of a return swap whose payments are based on the return of an underlying asset | 值域：回报腿（return leg）；子属性：具有腿（has leg） |
 
 公理：
 
@@ -184,7 +184,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有腿（has leg）** | 将互换合约与构成该互换的一腿关联起来。 | 值域：互换腿（swap leg）；子属性：具有合同要素 |
+| **具有腿（has leg）** | 将互换合约与构成该互换的一腿关联起来。<br>relates a swap contract to a leg that is part of that swap | 值域：互换腿（swap leg）；子属性：具有合同要素 |
 
 公理：
 
@@ -207,7 +207,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有腿（has leg）** | 将互换合约与构成该互换的一腿关联起来。 | 值域：互换腿（swap leg）；子属性：具有合同要素 |
+| **具有腿（has leg）** | 将互换合约与构成该互换的一腿关联起来。<br>relates a swap contract to a leg that is part of that swap | 值域：互换腿（swap leg）；子属性：具有合同要素 |
 
 公理：
 
@@ -236,7 +236,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有互换标识符（has swap identifier）** | 将互换生命周期事件与该互换的标识符关联起来。 | 值域：金融工具标识符；子属性：引用 |
+| **具有互换标识符（has swap identifier）** | 将互换生命周期事件与该互换的标识符关联起来。<br>relates a swap lifecycle event to the identifier for the swap | 值域：金融工具标识符；子属性：引用 |
 | **适用于（appliesTo）** | — | — |
 | **由……标识（isIdentifiedBy）** | — | — |
 | **具有参与方角色（has party role）** | — | — |
@@ -345,7 +345,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。 | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
+| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。<br>relates a swap leg to the to the swap that includes it | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
 | **以……计价（isDenominatedIn）** | — | — |
 | **具有生效日期（hasEffectiveDate）** | — | — |
 | **具有终止日（hasTerminationDate）** | — | — |
@@ -430,7 +430,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。 | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
+| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。<br>relates a swap leg to the to the swap that includes it | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
 
 公理：
 
@@ -446,7 +446,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。 | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
+| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。<br>relates a swap leg to the to the swap that includes it | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
 
 公理：
 
@@ -462,7 +462,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。 | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
+| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。<br>relates a swap leg to the to the swap that includes it | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
 
 公理：
 
@@ -485,7 +485,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。 | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
+| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。<br>relates a swap leg to the to the swap that includes it | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
 | **具有标的（hasUnderlier）** | — | — |
 
 公理：
@@ -515,7 +515,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。 | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
+| **是……的腿（is leg of）** | 将互换腿与包含该腿的互换关联起来。<br>relates a swap leg to the to the swap that includes it | 值域：互换（swap）；逆属性：具有腿（has leg）；子属性：被包含于 |
 | **具有标的（hasUnderlier）** | — | — |
 
 公理：

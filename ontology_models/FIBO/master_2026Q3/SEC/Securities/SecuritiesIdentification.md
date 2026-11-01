@@ -34,22 +34,22 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 国家证券识别号码（National Securities Identifying Number） | 由国家编号机构按 ISO 6166 标准分配的、用于标识可互换证券的通用九位字母数字代码（NSIN）。 |
-| 国家证券识别号码登记册（National Securities Identifying Number registry） | 国家编号机构用于管理其登记的金融工具标识符及相关信息的登记册。 |
-| 金融工具标识方案（financial instrument identification scheme） | 对某一特定金融工具标识符集的结构和应用的正式定义。 |
-| 国际证券识别码（international securities identification number） | 按 ISO 6166《证券及相关金融工具——国际证券识别编码》规定定义的证券标识符（ISIN）。 |
-| 国际证券识别编码方案（international securities identification numbering scheme） | 按 ISO 6166 定义的国际证券识别码（ISIN）结构和应用的正式定义。 |
-| 上市证券标识符（listed security identifier） | 在公共领域发布、并在上市文件及其他相关出版物中引用的证券标识符。 |
-| 国家编号机构（national numbering agency） | 负责按照 ISO 6166 标准发行和管理国家证券识别号码的注册机构。 |
-| 国家编号机构登记册条目（national numbering agency registry entry） | 国家证券识别号码登记册中的条目。 |
-| 国家证券标识方案（national security identification scheme） | 规定国家证券识别号码（NSIN）格式和结构、由国家层面代表相关机构发布的证券标识方案。 |
-| 专有证券标识方案（proprietary security identification scheme） | 由商业机构发布的证券标识方案。 |
-| 专有证券标识符（proprietary security identifier） | 由商业机构提供的标识符。 |
-| 证券标识方案（security identification scheme） | 对某一特定证券标识符集的结构和应用的正式定义。 |
-| 证券标识符（security identifier） | 任何用于标识证券的公开可用标识符。 |
-| 证券登记册（security registry） | 用于管理证券标识符及相关信息的登记册。 |
-| 证券登记册条目（security registry entry） | 证券登记册中某一证券的记录。 |
-| 行情代码（ticker symbol） | 在某一交易所内对特定金融工具或挂牌唯一的、可重新分配的短字符串标识符。 |
+| 国家证券识别号码（National Securities Identifying Number） | 由国家编号机构按 ISO 6166 标准分配的、用于标识可互换证券的通用九位字母数字代码（NSIN）。<br>generic, nine-digit alpha numeric code which identifies a fungible security, assigned by a national numbering agency under the ISO 6166 standard |
+| 国家证券识别号码登记册（National Securities Identifying Number registry） | 国家编号机构用于管理其登记的金融工具标识符及相关信息的登记册。<br>registry used by a national numbering agency to manage the financial instrument identifiers and related information that it registers |
+| 金融工具标识方案（financial instrument identification scheme） | 对某一特定金融工具标识符集的结构和应用的正式定义。<br>formal definition of the structure and application of a particular set of financial instrument identifiers |
+| 国际证券识别码（international securities identification number） | 按 ISO 6166《证券及相关金融工具——国际证券识别编码》规定定义的证券标识符（ISIN）。<br>security identifier that is defined as specified in ISO 6166, Securities and related financial instruments -- International securities identification numbering system (ISIN) |
+| 国际证券识别编码方案（international securities identification numbering scheme） | 按 ISO 6166 定义的国际证券识别码（ISIN）结构和应用的正式定义。<br>formal definition of the structure and application of a ISINs as defined in ISO 6166 |
+| 上市证券标识符（listed security identifier） | 在公共领域发布、并在上市文件及其他相关出版物中引用的证券标识符。<br>security identifier issued in the public domain and referred to in listings and other relevant publications |
+| 国家编号机构（national numbering agency） | 负责按照 ISO 6166 标准发行和管理国家证券识别号码的注册机构。<br>registration authority responsible for issuing and managing National Securities Identifying Numbers for securities in accordance with the ISO 6166 standard in some jurisdiction (typically that of a country) |
+| 国家编号机构登记册条目（national numbering agency registry entry） | 国家证券识别号码登记册中的条目。<br>entry in a National Securities Identifying Number registry |
+| 国家证券标识方案（national security identification scheme） | 规定国家证券识别号码（NSIN）格式和结构、由国家层面代表相关机构发布的证券标识方案。<br>security identification scheme, defining the format and structure of a National Securities Identifying Number (NSIN), published nationally on behalf of a country |
+| 专有证券标识方案（proprietary security identification scheme） | 由商业机构发布的证券标识方案。<br>security identification scheme published by a commercial entity |
+| 专有证券标识符（proprietary security identifier） | 由商业机构提供的标识符。<br>identifier supplied by a commercial entity |
+| 证券标识方案（security identification scheme） | 对某一特定证券标识符集的结构和应用的正式定义。<br>formal definition of the structure and application of a particular set of securities identifiers |
+| 证券标识符（security identifier） | 任何用于标识证券的公开可用标识符。<br>any publicly available identifier that is used to identify a security |
+| 证券登记册（security registry） | 用于管理证券标识符及相关信息的登记册。<br>registry used to manage security identifiers and related information |
+| 证券登记册条目（security registry entry） | 证券登记册中某一证券的记录。<br>record for a security in a securities registry |
+| 行情代码（ticker symbol） | 在某一交易所内对特定金融工具或挂牌唯一的、可重新分配的短字符串标识符。<br>reassignable identifier of relatively short character string length that is unique within an exchange for a particular financial instrument or listing for that instrument |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

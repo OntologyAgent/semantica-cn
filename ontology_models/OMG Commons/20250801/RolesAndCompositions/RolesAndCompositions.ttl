@@ -34,12 +34,12 @@ cmns-rlcmp:Composition a owl:Class ;
         "组合（composition）"@zh ;
     rdfs:comment "为特定目的将其他事物（可能以特定角色）组合在一起而形成的特定产物。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom cmns-col:Constituent ;
-            owl:onProperty cmns-col:hasConstituent ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-cxtdsg:Context ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-col:Constituent ;
+            owl:onProperty cmns-col:hasConstituent ],
         [ a owl:Restriction ;
             owl:allValuesFrom cmns-rlcmp:Role ;
             owl:onProperty cmns-rlcmp:hasRole ] ;

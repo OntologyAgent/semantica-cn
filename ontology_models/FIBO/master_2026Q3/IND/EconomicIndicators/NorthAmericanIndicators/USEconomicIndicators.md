@@ -33,17 +33,17 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 美国统计信息发布方（American statistics publisher） | 由代表美国联邦政府发布统计信息的政府机构和部门构成的统计信息发布方。 |
-| 美国生产者价格指数（U.S. producer price index） | 表示国内生产者产出所获销售价格随时间变化之度量的经济指标。 |
-| 消费者支出调查（consumer expenditure survey） | 定期开展、提供消费者购买习惯信息（含支出、收入数据）的统计计划。 |
-| 当前就业统计（current employment statistics） | 定期开展、提供与企业和政府机构相关的分析信息、以提供详细行业数据的调查。 |
-| 当前人口调查（current population survey） | 定期开展、提供给定统计区一般人口之劳动力相关分析信息的调查。 |
-| 就业形势机构场所调查（employment situation establishment survey） | 定期开展、从企业角度调查给定统计区劳动力分析信息的调查。 |
-| 就业形势住户调查（employment situation household survey） | 定期开展、从住户角度调查给定统计区劳动力分析信息的调查。 |
-| 就业形势调查（employment situation survey） | 定期开展、聚焦给定统计区就业特征之分析信息的调查。 |
-| 购买点调查（point of purchase survey） | 定期开展、提供消费者购买各类物品与服务信息的计划。 |
-| 城市消费者价格指数（urban consumer price index） | 表示城市消费者为一篮子消费货物与服务所付价格之平均变化的经济指标。 |
-| 城市消费者全域（urban consumers universe） | 消费者支出调查的统计全域，由住户中共同作出支出决策的人构成。 |
+| 美国统计信息发布方（American statistics publisher） | 由代表美国联邦政府发布统计信息的政府机构和部门构成的统计信息发布方。<br>statistical information publisher comprised of the government agencies and departments that publish statistical information on behalf of the U.S. Federal Government |
+| 美国生产者价格指数（U.S. producer price index） | 表示国内生产者产出所获销售价格随时间变化之度量的经济指标。<br>an economic indicator representing a measure of the change over time in the selling prices received by domestic producers for their output |
+| 消费者支出调查（consumer expenditure survey） | 定期开展、提供消费者购买习惯信息（含支出、收入数据）的统计计划。<br>statistical program conducted on a regular basis that provides information on the buying habits of consumers, including data on their expenditures, income, and consumer unit (families and single consumers) characteristics |
+| 当前就业统计（current employment statistics） | 定期开展、提供与企业和政府机构相关的分析信息、以提供详细行业数据的调查。<br>survey conducted on a regular basis that presents analytical information related to businesses and government agencies, in order to provide detailed industry data on employment, hours, and earnings of workers |
+| 当前人口调查（current population survey） | 定期开展、提供给定统计区一般人口之劳动力相关分析信息的调查。<br>survey conducted on a regular basis that presents analytical information related to the general population of a given statistical area with respect to labor force, employment, unemployment, persons not in the labor force, hours of work, earnings, and other demographic and labor force characteristics |
+| 就业形势机构场所调查（employment situation establishment survey） | 定期开展、从企业角度调查给定统计区劳动力分析信息的调查。<br>survey conducted on a regular basis that presents analytical information related to the labor force of a given statistical area, surveyed with respect to businesses, and is, for the most part, seasonally adjusted |
+| 就业形势住户调查（employment situation household survey） | 定期开展、从住户角度调查给定统计区劳动力分析信息的调查。<br>a survey conducted on a regular basis that presents analytical information related to the labor force of a given statistical area, surveyed with respect to households, and is, for the most part, seasonally adjusted |
+| 就业形势调查（employment situation survey） | 定期开展、聚焦给定统计区就业特征之分析信息的调查。<br>a survey conducted on a regular basis that presents analytical information focused on the employment characteristics of a given statistical area |
+| 购买点调查（point of purchase survey） | 定期开展、提供消费者购买各类物品与服务信息的计划。<br>a program conducted on a regular basis that provides information on purchases of various items and services by consumers |
+| 城市消费者价格指数（urban consumer price index） | 表示城市消费者为一篮子消费货物与服务所付价格之平均变化的经济指标。<br>an economic indicator representing a measure of the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services |
+| 城市消费者全域（urban consumers universe） | 消费者支出调查的统计全域，由住户中共同作出支出决策的人构成。<br>a statistical universe for consumer expenditure surveys consisting of people within a household that make joint expenditure decisions |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

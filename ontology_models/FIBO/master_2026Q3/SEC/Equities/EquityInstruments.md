@@ -34,64 +34,64 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 普通股（CommonShare） | 表示公司所有权单位、并代表对公司部分资产和收益的请求权的股份。 |
-| 可变利益实体份额（VariableInterestEntityShare） | 证明持有对公司一定比例利润之合同权利所有权的份额。 |
-| 可调整利率股息（adjustable rate dividend） | 随基准利率变动的股息。 |
-| 拍卖利率股息（auction rate dividend） | 利率通过拍卖定期重置（通常每 7、14、28 或 35 天）的优先股股息。 |
-| 可转换普通股（convertible common share） | 可转换为另一证券的普通股。 |
-| 可转换优先股（convertible preferred share） | 包含持有人可在预定日期后将股份转换为固定数量普通股之选择权的优先股。 |
-| 累积优先股（cumulative preferred share） | 股息如未按时支付则累积递延至日后支付的优先股。 |
-| 托管人（custodian） | 为客户保管证券的金融机构。 |
-| 股息（dividend） | 宣布按证券类别按比例向股东分配部分收益的承诺。 |
-| 股息分配方式（dividend distribution method） | 向股东提供股息的惯例。 |
-| 股息支付计划表（dividend schedule） | 指明股息到期应付日期的付款计划表。 |
-| 增强表决权股（enhanced voting share） | 每股享有超过一票表决权的股份。 |
-| 股权转换条款（equity conversion terms） | 规定股份转换为其他证券之细节的转换条款。 |
-| 股票头寸（equity position） | 在权益工具中的头寸。 |
-| 股权赎回条款（equity redemption provision） | 规定发行人或股东可赎回股份之条件的赎回条款。 |
-| 赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date） | 允许将赎回日修改至原定日期之后的股权赎回条款。 |
-| 可交换优先股（exchangeable preferred share） | 可交换为另一发行人证券的优先股。 |
-| 可展期优先股（extendable preferred share） | 赎回日可由发行人或持有人选择延长的优先股。 |
-| 固定利率股息（fixed rate dividend） | 按股份名义价值（及任何溢价）提供固定年度回报的股息。 |
-| 缴足股（fully paid share） | 付款状态表明股东无需就股份价值再向公司缴付任何款项的股份。 |
-| 硬回售优先股（hard retractable preferred share） | 回售价值必须以现金支付的可回售优先股。 |
-| 有限合伙份额（limited partnership unit） | 有限合伙中的份额：除一名或多名普通合伙人（GP）外，还有一名或多名承担有限责任的有限合伙人（LP）。 |
-| 上市股份（listed share） | 在至少一个平台挂牌的股份。 |
-| 未缴股款股份（nil paid share） | 付款状态表明公司尚未收到股份任何市值款项的股份。 |
-| 非累积优先股（non-cumulative preferred share） | 股息不予递延的优先股。 |
-| 非参与优先股（non-participating preferred share） | 不属于参与优先股的优先股。 |
-| 无表决权股（non-voting share） | 不享有表决权的股份。 |
-| 普通股息（ordinary dividend） | 定期向股东支付的股息。 |
-| 部分缴足股（partially paid share） | 付款状态表明公司仅收到股份部分市值款项的股份。 |
-| 参与优先股（participating preferred share） | 除支付约定股息外，还赋予持有人与普通股股东分享额外收益之权利的优先股。 |
-| 永续优先股（perpetual preferred share） | 无固定到期日的优先股。 |
-| 优先受偿权（precedence right） | 使股东就特定预定股息支付优先于其他股东、并在公司清算时先行受偿的权利。 |
-| 优先股息（preferred dividend） | 向股东分配部分收益的承诺，类似于股息，但通常金额和支付计划固定。 |
-| 优先股（preferred share） | 按约定利率支付股息、并在股息支付和公司资产清算方面优先于普通股的股份。 |
-| 可调整利率股息优先股（preferred share with adjustable rate dividend） | 股息率随某一基准利率变动的优先股。 |
-| 拍卖利率股息优先股（preferred share with auction rate dividend） | 股息率通过拍卖（如荷兰式拍卖）定期重置的优先股。 |
-| 固定到期日优先股（preferred share with fixed maturity date） | 到期日既定（通常按招募说明书条款确定）的优先股。 |
-| 固定利率股息优先股（preferred share with fixed rate dividend） | 股息既定（通常按招募说明书条款确定）的优先股。 |
-| 每股价格（price per share） | 某一证券在某一时点的单股价格。 |
-| 私人持有股份（privately held share） | 代表对非公开交易实体之所有权的股份。 |
-| 合资格股息（qualified dividend） | 适用低于普通（不合资格）股息所得税率的资本利得税率的股息。 |
-| 可赎回优先股（redeemable preferred share） | 赋予发行人在规定条件下赎回股份之权利的优先股。 |
-| 到期日可延长的可赎回优先股（redeemable preferred share with extendable maturity date） | 有固定到期日、且发行人可选择延长到期日的可赎回优先股。 |
-| 赎回日可延长的可赎回优先股（redeemable preferred share with extendable redemption date） | 赎回日可以修改的可赎回优先股。 |
-| 受限股份（restricted share） | 其所有权/转让/出售受特殊条件（包括特定国家限制）约束的股份。 |
-| 受限表决权股（restricted voting share） | 每股享有不足一票表决权的股份。 |
-| 可回售优先股（retractable preferred share） | 赋予所有人（股东）在规定条件下要求赎回股份之权利的优先股。 |
-| 到期日可延长的可回售优先股（retractable preferred share with extendable maturity date） | 有固定到期日、且发行人和/或持有人可选择延长到期日的可回售优先股。 |
-| 赎回日可延长的可回售优先股（retractable preferred share with extendable redemption date） | 赎回日可以修改的可回售优先股。 |
-| 股份（share） | 表示公司股权所有权单位、共同基金所有权单位、或合伙中权益的金融工具。 |
-| 股份发行人（share issuer） | 发行代表对某事物所有权权益之证券的发行人。 |
-| 股份缴款状态（share payment status） | 规定已发行股份总体缴款状态的分类器。 |
-| 股息率（share yield） | 每股年化股息除以每股（当前）价格的比率。 |
-| 单一表决权股（single voting share） | 每股享有一票表决权的股份。 |
-| 软回售优先股（soft retractable preferred share） | 回售价值可由发行人选择以现金或等值发行人普通股支付的可回售优先股。 |
-| 特别股息（special dividend） | 一次性向股东支付的股息。 |
-| 非受限股份（unrestricted share） | 其所有权/转让/出售不受特殊条件（包括特定国家限制）约束的股份。 |
-| 表决权（voting right） | 规定股东表决权利（如选举董事、选举外部审计师、就公司事项表决）的合同权利。 |
+| 普通股（CommonShare） | 表示公司所有权单位、并代表对公司部分资产和收益的请求权的股份。<br>share that signifies a unit of ownership in a corporation and represents a claim on part of the corporation's assets and earnings |
+| 可变利益实体份额（VariableInterestEntityShare） | 证明持有对公司一定比例利润之合同权利所有权的份额。<br>share that certifies ownership of a contractual right to a percentage of a company's profits |
+| 可调整利率股息（adjustable rate dividend） | 随基准利率变动的股息。<br>dividend that varies with a benchmark |
+| 拍卖利率股息（auction rate dividend） | 利率通过拍卖定期重置（通常每 7、14、28 或 35 天）的优先股股息。<br>preferred share dividend whose rate is periodically reset through an auction, typically every 7, 14, 28, or 35 days |
+| 可转换普通股（convertible common share） | 可转换为另一证券的普通股。<br>common share that is convertible into another security |
+| 可转换优先股（convertible preferred share） | 包含持有人可在预定日期后将股份转换为固定数量普通股之选择权的优先股。<br>preferred share that includes an option for the holder to convert the shares into a fixed number of common shares after a predetermined date |
+| 累积优先股（cumulative preferred share） | 股息如未按时支付则累积递延至日后支付的优先股。<br>preferred share whose dividends, if not paid on time, accumulate until paid out |
+| 托管人（custodian） | 为客户保管证券的金融机构。<br>financial institution that holds customers' securities for safekeeping |
+| 股息（dividend） | 宣布按证券类别按比例向股东分配部分收益的承诺。<br>announced commitment to make a specific distribution of a portion of earnings to shareholders, prorated by class of security |
+| 股息分配方式（dividend distribution method） | 向股东提供股息的惯例。<br>convention by which dividends are provided to shareholders |
+| 股息支付计划表（dividend schedule） | 指明股息到期应付日期的付款计划表。<br>payment schedule indicating the dates on which dividends are due to be paid |
+| 增强表决权股（enhanced voting share） | 每股享有超过一票表决权的股份。<br>share that confers more than one vote per share |
+| 股权转换条款（equity conversion terms） | 规定股份转换为其他证券之细节的转换条款。<br>conversion terms specifying the details regarding conversion of shares into other securities |
+| 股票头寸（equity position） | 在权益工具中的头寸。<br>position in an equity instrument |
+| 股权赎回条款（equity redemption provision） | 规定发行人或股东可赎回股份之条件的赎回条款。<br>redemption provision that specifies the conditions under which the issuer or shareholder may redeem the shares |
+| 赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date） | 允许将赎回日修改至原定日期之后的股权赎回条款。<br>equity redemption provision that allows modification of the redemption date beyond the original specified date |
+| 可交换优先股（exchangeable preferred share） | 可交换为另一发行人证券的优先股。<br>preferred share that may be exchanged for a security of another issuer |
+| 可展期优先股（extendable preferred share） | 赎回日可由发行人或持有人选择延长的优先股。<br>preferred share whose redemption date can be extended at the issuer or holder option |
+| 固定利率股息（fixed rate dividend） | 按股份名义价值（及任何溢价）提供固定年度回报的股息。<br>dividend that provides a specified annual return on the nominal value (and any premium) paid on shares |
+| 缴足股（fully paid share） | 付款状态表明股东无需就股份价值再向公司缴付任何款项的股份。<br>share whose payment status indicates that no additional money is owed to the company by shareholders on the value of the shares |
+| 硬回售优先股（hard retractable preferred share） | 回售价值必须以现金支付的可回售优先股。<br>retractable preferred share whose retraction value must be paid in cash |
+| 有限合伙份额（limited partnership unit） | 有限合伙中的份额：除一名或多名普通合伙人（GP）外，还有一名或多名承担有限责任的有限合伙人（LP）。<br>share in a form of partnership similar to a general partnership, except that in addition to one or more general partners (GPs), there are one or more limited partners (LPs) |
+| 上市股份（listed share） | 在至少一个平台挂牌的股份。<br>share that is listed on at least one platform |
+| 未缴股款股份（nil paid share） | 付款状态表明公司尚未收到股份任何市值款项的股份。<br>share whose payment status indicates that none of the market value has been received by the company for the shares |
+| 非累积优先股（non-cumulative preferred share） | 股息不予递延的优先股。<br>preferred share whose dividend payments are not carried forward |
+| 非参与优先股（non-participating preferred share） | 不属于参与优先股的优先股。<br>preferred share that is not a participating preferred share |
+| 无表决权股（non-voting share） | 不享有表决权的股份。<br>share that has no voting right |
+| 普通股息（ordinary dividend） | 定期向股东支付的股息。<br>dividend that is paid to shareholders periodically |
+| 部分缴足股（partially paid share） | 付款状态表明公司仅收到股份部分市值款项的股份。<br>share whose payment status indicates that only a portion of the market value has been received by the company for the shares |
+| 参与优先股（participating preferred share） | 除支付约定股息外，还赋予持有人与普通股股东分享额外收益之权利的优先股。<br>preferred share that, in addition to paying a stipulated dividend, gives the holder the right to participate with common share holders in additional distributions of earnings under specified conditions |
+| 永续优先股（perpetual preferred share） | 无固定到期日的优先股。<br>preferred share that has no fixed maturity date |
+| 优先受偿权（precedence right） | 使股东就特定预定股息支付优先于其他股东、并在公司清算时先行受偿的权利。<br>right that give the shareholder higher priority with respect to certain pre-defined dividend payments over other shareholders and that pay out first in the case of liquidation |
+| 优先股息（preferred dividend） | 向股东分配部分收益的承诺，类似于股息，但通常金额和支付计划固定。<br>commitment to distribute a portion of earnings to shareholders, similar to a dividend but often with a fixed payment amount and schedule |
+| 优先股（preferred share） | 按约定利率支付股息、并在股息支付和公司资产清算方面优先于普通股的股份。<br>share that pays dividends at a specified rate and has preference over common shares in the payment of dividends and liquidation of corporate assets |
+| 可调整利率股息优先股（preferred share with adjustable rate dividend） | 股息率随某一基准利率变动的优先股。<br>preferred share whose dividend rate varies according to some benchmark |
+| 拍卖利率股息优先股（preferred share with auction rate dividend） | 股息率通过拍卖（如荷兰式拍卖）定期重置的优先股。<br>preferred share whose dividend rate is periodically reset through an auction, such as a Dutch auction |
+| 固定到期日优先股（preferred share with fixed maturity date） | 到期日既定（通常按招募说明书条款确定）的优先股。<br>preferred share whose maturity date is set, typically according to the terms of the prospectus |
+| 固定利率股息优先股（preferred share with fixed rate dividend） | 股息既定（通常按招募说明书条款确定）的优先股。<br>preferred share whose dividends are set, typically according to the terms of the prospectus |
+| 每股价格（price per share） | 某一证券在某一时点的单股价格。<br>price for one share of a given security at some point in time |
+| 私人持有股份（privately held share） | 代表对非公开交易实体之所有权的股份。<br>share in a security that signifies ownership in an entity that is not publicly traded |
+| 合资格股息（qualified dividend） | 适用低于普通（不合资格）股息所得税率的资本利得税率的股息。<br>dividend that falls under capital gains tax rates that are lower than the income tax rates on unqualified (ordinary) dividends |
+| 可赎回优先股（redeemable preferred share） | 赋予发行人在规定条件下赎回股份之权利的优先股。<br>preferred share that gives the issuer the right to redeem the stock under specified conditions |
+| 到期日可延长的可赎回优先股（redeemable preferred share with extendable maturity date） | 有固定到期日、且发行人可选择延长到期日的可赎回优先股。<br>redeemable preferred share with a fixed maturity date whose issuer has the option to extend the maturity date |
+| 赎回日可延长的可赎回优先股（redeemable preferred share with extendable redemption date） | 赎回日可以修改的可赎回优先股。<br>redeemable preferred share whose redemption date can be modified |
+| 受限股份（restricted share） | 其所有权/转让/出售受特殊条件（包括特定国家限制）约束的股份。<br>share whose ownership/transfer/sale is subject to special conditions including country-specific restrictions |
+| 受限表决权股（restricted voting share） | 每股享有不足一票表决权的股份。<br>share that confers less than one vote per share |
+| 可回售优先股（retractable preferred share） | 赋予所有人（股东）在规定条件下要求赎回股份之权利的优先股。<br>preferred share that gives the owner (shareholder) the right to redeem the stock under specified conditions |
+| 到期日可延长的可回售优先股（retractable preferred share with extendable maturity date） | 有固定到期日、且发行人和/或持有人可选择延长到期日的可回售优先股。<br>retractable preferred share with a fixed maturity date whose issuer and/or holders have the option to extend the maturity date |
+| 赎回日可延长的可回售优先股（retractable preferred share with extendable redemption date） | 赎回日可以修改的可回售优先股。<br>retractable preferred share whose redemption date can be modified |
+| 股份（share） | 表示公司股权所有权单位、共同基金所有权单位、或合伙中权益的金融工具。<br>financial instrument that signifies a unit of equity ownership in a corporation, or a unit of ownership in a mutual fund, or interest in a general or limited partnership, or a unit of ownership in a structured product, such as a real estate investment trust |
+| 股份发行人（share issuer） | 发行代表对某事物所有权权益之证券的发行人。<br>issuer of securities that represent an ownership interest in something |
+| 股份缴款状态（share payment status） | 规定已发行股份总体缴款状态的分类器。<br>classifier that specifies the overall payment status for shares issued |
+| 股息率（share yield） | 每股年化股息除以每股（当前）价格的比率。<br>ratio of the annualized dividend per share divided by the (current) price per share |
+| 单一表决权股（single voting share） | 每股享有一票表决权的股份。<br>share that has the right to exactly one vote |
+| 软回售优先股（soft retractable preferred share） | 回售价值可由发行人选择以现金或等值发行人普通股支付的可回售优先股。<br>retractable preferred share whose retraction value may be paid in cash or in an equal value of common stock of the issuer, at the option of the issuer |
+| 特别股息（special dividend） | 一次性向股东支付的股息。<br>dividend that is paid to shareholders on a one-time basis |
+| 非受限股份（unrestricted share） | 其所有权/转让/出售不受特殊条件（包括特定国家限制）约束的股份。<br>share whose ownership/transfer/sale is not subject to special conditions including country-specific restrictions |
+| 表决权（voting right） | 规定股东表决权利（如选举董事、选举外部审计师、就公司事项表决）的合同权利。<br>contractual right that specifies shareholder voting entitlements, such as to elect directors, elect outside auditors, and vote on matters of corporate policy |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -124,7 +124,7 @@
 |---|---|---|
 | **具有进度表（hasSchedule）** | — | — |
 | **具有支付金额（hasPaymentAmount）** | — | — |
-| **具有分配方式（has distribution method）** | 指明股息支付的分配方式。 | 值域：股息分配方式（dividend distribution method）；子属性：具有战略 |
+| **具有分配方式（has distribution method）** | 指明股息支付的分配方式。<br>indicates the method by which dividend payments are to be distributed | 值域：股息分配方式（dividend distribution method）；子属性：具有战略 |
 
 公理：
 
@@ -159,9 +159,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有可调整股息率（has adjustable dividend rate）** | 指明可变股息率，通常在招募说明书中规定为基于基准的公式或经拍卖确定。 | 值域：百分比货币数量；子属性：具有量值 |
-| **具有股息宽限期（has dividend grace period）** | 指明股息到期应付后、发行人受罚之前的时间段。 | 值域：时长；子属性：具有时长 |
-| **具有固定股息率（has fixed dividend rate）** | 指明优先股的预定固定股息率，通常在招募说明书中规定。 | 值域：百分比货币数量；子属性：具有量值 |
+| **具有可调整股息率（has adjustable dividend rate）** | 指明可变股息率，通常在招募说明书中规定为基于基准的公式或经拍卖确定。<br>indicates a variable dividend rate, typically specified in the prospectus as a formula based on a benchmark or set at auction | 值域：百分比货币数量；子属性：具有量值 |
+| **具有股息宽限期（has dividend grace period）** | 指明股息到期应付后、发行人受罚之前的时间段。<br>indicates a period of time after a dividend payment becomes due, before the issuer is subject to penalties | 值域：时长；子属性：具有时长 |
+| **具有固定股息率（has fixed dividend rate）** | 指明优先股的预定固定股息率，通常在招募说明书中规定。<br>indicates a pre-arranged fixed dividend rate, typically specified in the prospectus, for a preferred share | 值域：百分比货币数量；子属性：具有量值 |
 
 公理：
 
@@ -178,7 +178,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有可调整股息率（has adjustable dividend rate）** | 指明可变股息率，通常在招募说明书中规定为基于基准的公式或经拍卖确定。 | 值域：百分比货币数量；子属性：具有量值 |
+| **具有可调整股息率（has adjustable dividend rate）** | 指明可变股息率，通常在招募说明书中规定为基于基准的公式或经拍卖确定。<br>indicates a variable dividend rate, typically specified in the prospectus as a formula based on a benchmark or set at auction | 值域：百分比货币数量；子属性：具有量值 |
 | **描述实际表达式（describesActualExpression）** | — | — |
 | **具有量类（hasQuantityKind）** | — | — |
 
@@ -198,7 +198,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有可调整股息率（has adjustable dividend rate）** | 指明可变股息率，通常在招募说明书中规定为基于基准的公式或经拍卖确定。 | 值域：百分比货币数量；子属性：具有量值 |
+| **具有可调整股息率（has adjustable dividend rate）** | 指明可变股息率，通常在招募说明书中规定为基于基准的公式或经拍卖确定。<br>indicates a variable dividend rate, typically specified in the prospectus as a formula based on a benchmark or set at auction | 值域：百分比货币数量；子属性：具有量值 |
 
 公理：
 
@@ -214,7 +214,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有固定股息率（has fixed dividend rate）** | 指明优先股的预定固定股息率，通常在招募说明书中规定。 | 值域：百分比货币数量；子属性：具有量值 |
+| **具有固定股息率（has fixed dividend rate）** | 指明优先股的预定固定股息率，通常在招募说明书中规定。<br>indicates a pre-arranged fixed dividend rate, typically specified in the prospectus, for a preferred share | 值域：百分比货币数量；子属性：具有量值 |
 
 公理：
 
@@ -254,7 +254,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **规定转换日（specifies conversion date）** | 指明可以发生转换的日期或其后日期。 | 值域：日期 |
+| **规定转换日（specifies conversion date）** | 指明可以发生转换的日期或其后日期。<br>indicates the date on which, or after which, conversion may occur | 值域：日期 |
 | **规定转换为（specifiesConversionInto）** | — | — |
 
 公理：
@@ -280,7 +280,7 @@
 
 - **具有所有方（hasOwningParty）**可以有 0 个或多个**股东（Shareholder）**。
 - **具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**持股（Shareholding）**。
-- **由……持有（isHeldBy）**恰好有 1 个**N0bf30f5b56844403a9bea04417eb13b3**。
+- **由……持有（isHeldBy）**恰好有 1 个**Nb3c17ae84d574899a80a0cc8464a6708**。
 
 ### 2.7 股权赎回条款（equity redemption provision）
 
@@ -293,12 +293,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有最早赎回日（has earliest redemption date）** | 指明股份可赎回的最早日期或其后日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **是否具有可延长赎回日（has extendable redemption date）** | 表明有指定赎回日的可赎回股份的发行人和/或持有人是否可选择延长该日期。 | 值域：xsd:boolean |
-| **具有最低赎回价格（has minimum redemption price）** | 指明股份可赎回的最低市场价格门槛。 | 值域：货币数量；子属性：具有价格 |
-| **具有赎回溢价（has redemption premium）** | 指明为赎回股份须支付的超过市场价格的每股溢价（如有）。 | 值域：货币价格；子属性：具有价格 |
-| **发行人是否可赎回（is redeemable at issuer option）** | 表明发行人是否有权发起回购，类似于赎回特征。 | 值域：xsd:boolean |
-| **股东是否可回售（is redeemable at shareholder option）** | 表明股东是否有权发起回售，类似于回售特征。 | 值域：xsd:boolean |
+| **具有最早赎回日（has earliest redemption date）** | 指明股份可赎回的最早日期或其后日期。<br>indicates a date on or after which a stock can be redeemed | 值域：显式日期；子属性：具有显式日期 |
+| **是否具有可延长赎回日（has extendable redemption date）** | 表明有指定赎回日的可赎回股份的发行人和/或持有人是否可选择延长该日期。<br>indicates whether the issuer and/or holders of redeemable shares with a specified redemption date have the option to extend that date | 值域：xsd:boolean |
+| **具有最低赎回价格（has minimum redemption price）** | 指明股份可赎回的最低市场价格门槛。<br>indicates the lowest market price above which a share may be redeemed | 值域：货币数量；子属性：具有价格 |
+| **具有赎回溢价（has redemption premium）** | 指明为赎回股份须支付的超过市场价格的每股溢价（如有）。<br>indicates the premium price per share over the market price, if any, that must be paid in order to redeem the stock | 值域：货币价格；子属性：具有价格 |
+| **发行人是否可赎回（is redeemable at issuer option）** | 表明发行人是否有权发起回购，类似于赎回特征。<br>indicates whether the issuer has the option of initiating the buy-back, similar to a call feature | 值域：xsd:boolean |
+| **股东是否可回售（is redeemable at shareholder option）** | 表明股东是否有权发起回售，类似于回售特征。<br>indicates whether the shareholder has the option of initiating the buy-back, similar to a put feature | 值域：xsd:boolean |
 
 公理：
 
@@ -319,7 +319,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否具有可延长赎回日（has extendable redemption date）** | 表明有指定赎回日的可赎回股份的发行人和/或持有人是否可选择延长该日期。 | 值域：xsd:boolean |
+| **是否具有可延长赎回日（has extendable redemption date）** | 表明有指定赎回日的可赎回股份的发行人和/或持有人是否可选择延长该日期。<br>indicates whether the issuer and/or holders of redeemable shares with a specified redemption date have the option to extend that date | 值域：xsd:boolean |
 
 公理：
 
@@ -359,21 +359,21 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有授权股份数（hasSharesAuthorized）** | — | — |
-| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。 | 值域：xsd:decimal；子属性：具有金额 |
-| **授予……的所有权（confers ownership of）** | 表明某凭证或分档授予对某一资产或现金流的权利。 | 子属性：授予 |
-| **具有可交易股份数（has available shares）** | 指明流通股数量减去受限股份后的数量，即可供交易的股份数。 | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
-| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。 | 值域：股息（dividend）；子属性：由……分类 |
-| **具有宣派日（has declaration date）** | 指明机构宣布预期支付股息的日期，包括股息金额、除息日等信息。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有除息日（has ex-dividend date）** | 指明股票「除息」的日期，通常在向登记股东支付股息前约三周。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有流通股数量（has floating stock）** | 指明可供交易的股份数量，即流通股减去内部人持有股份后的数量。 | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
-| **具有股权登记日（has record date）** | 指明发行人核查某方是否在规定时点登记于公司股东名册的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有股类（has share class）** | 指明股份所属的类别，通常按表决权等特权区分。 | 值域：xsd:string |
-| **具有股份缴款状态（has share payment status）** | 指明已发行股份的缴款状态。 | 值域：股份缴款状态（share payment status）；子属性：由……分类 |
-| **具有已发行股份数（has shares issued）** | 指明股东实际持有的股份（即流通股）加库存股的总数。 | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
-| **具有流通股数（has shares outstanding）** | 指明当前由股东持有的股份数量，包括散户投资者、机构投资者和内部人持有的股份。 | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
-| **具有库存股数（has treasury shares）** | 指明已发行但未流通的股份数量，包括曾在市场上流通但已被公司回购的股份。 | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
-| **具有表决权限制（has voting restriction）** | 规定对表决权的限制（如有）。 | 值域：xsd:string |
-| **优先于（is senior to）** | 表明给定股份（股类）优先级别高于相关股份，即持有人对公司资产和收益享有更高请求权。 | 值域：股份（share） |
+| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。<br>grants the right to vote on a per share basis to the shareholder | 值域：xsd:decimal；子属性：具有金额 |
+| **授予……的所有权（confers ownership of）** | 表明某凭证或分档授予对某一资产或现金流的权利。<br>grants ownership via contract | 子属性：授予 |
+| **具有可交易股份数（has available shares）** | 指明流通股数量减去受限股份后的数量，即可供交易的股份数。<br>indicates the number of shares outstanding less those shares that are restricted, i.e., those that are available for trading | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
+| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。<br>relates a share to a dividend that applies to that share, or that the share may pay | 值域：股息（dividend）；子属性：由……分类 |
+| **具有宣派日（has declaration date）** | 指明机构宣布预期支付股息的日期，包括股息金额、除息日等信息。<br>indicates a date on which an organization states that a dividend payment may be anticipated, including the the dividend amount and the ex-dividend and payment dates | 值域：显式日期；子属性：具有显式日期 |
+| **具有除息日（has ex-dividend date）** | 指明股票「除息」的日期，通常在向登记股东支付股息前约三周。<br>indicates a date on which a stock 'goes ex-dividend', typically about three weeks before the dividend is paid to shareholders of record | 值域：显式日期；子属性：具有显式日期 |
+| **具有流通股数量（has floating stock）** | 指明可供交易的股份数量，即流通股减去内部人持有股份后的数量。<br>indicates the number of shares that are available for trading, i.e., the number of shares outstanding less closely held shares (those held by insiders) and restricted shares | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
+| **具有股权登记日（has record date）** | 指明发行人核查某方是否在规定时点登记于公司股东名册的日期。<br>indicates the date on which the issuer checks to determine whether a party was on the company's books as a shareholder when required (i.e., they must have been on the books prior to the ex-dividend date), to identify who is eligible to receive the next dividend | 值域：显式日期；子属性：具有显式日期 |
+| **具有股类（has share class）** | 指明股份所属的类别，通常按表决权等特权区分。<br>indicates the class to which the share belongs, typically differentiated by privileges, such as voting rights | 值域：xsd:string |
+| **具有股份缴款状态（has share payment status）** | 指明已发行股份的缴款状态。<br>indicates the payment status for shares issued | 值域：股份缴款状态（share payment status）；子属性：由……分类 |
+| **具有已发行股份数（has shares issued）** | 指明股东实际持有的股份（即流通股）加库存股的总数。<br>indicates the actual number of shares held by shareholders (i.e., shares outstanding) and treasury shares | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
+| **具有流通股数（has shares outstanding）** | 指明当前由股东持有的股份数量，包括散户投资者、机构投资者和内部人持有的股份。<br>indicates the number of shares currently held by shareholders, including those held by retail investors, institutional investors and insiders, and typically available for trading | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
+| **具有库存股数（has treasury shares）** | 指明已发行但未流通的股份数量，包括曾在市场上流通但已被公司回购的股份。<br>indicates the number of shares issued but not outstanding, including those that were available in the market at one time but have been repurchased by the company | 值域：xsd:nonNegativeInteger；子属性：具有金额 |
+| **具有表决权限制（has voting restriction）** | 规定对表决权的限制（如有）。<br>specifies restrictions on voting rights, if any | 值域：xsd:string |
+| **优先于（is senior to）** | 表明给定股份（股类）优先级别高于相关股份，即持有人对公司资产和收益享有更高请求权。<br>indicates that a given share (share class) has higher seniority than the related share, meaning that it gives the holder a higher claim on the assets of the issuer | 值域：股份（share） |
 
 公理：
 
@@ -400,7 +400,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。 | 值域：股息（dividend）；子属性：由……分类 |
+| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。<br>relates a share to a dividend that applies to that share, or that the share may pay | 值域：股息（dividend）；子属性：由……分类 |
 
 公理：
 
@@ -439,7 +439,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。 | 值域：xsd:decimal；子属性：具有金额 |
+| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。<br>grants the right to vote on a per share basis to the shareholder | 值域：xsd:decimal；子属性：具有金额 |
 
 公理：
 
@@ -455,7 +455,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股份缴款状态（has share payment status）** | 指明已发行股份的缴款状态。 | 值域：股份缴款状态（share payment status）；子属性：由……分类 |
+| **具有股份缴款状态（has share payment status）** | 指明已发行股份的缴款状态。<br>indicates the payment status for shares issued | 值域：股份缴款状态（share payment status）；子属性：由……分类 |
 
 公理：
 
@@ -493,7 +493,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股份缴款状态（has share payment status）** | 指明已发行股份的缴款状态。 | 值域：股份缴款状态（share payment status）；子属性：由……分类 |
+| **具有股份缴款状态（has share payment status）** | 指明已发行股份的缴款状态。<br>indicates the payment status for shares issued | 值域：股份缴款状态（share payment status）；子属性：由……分类 |
 
 公理：
 
@@ -509,7 +509,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。 | 值域：xsd:decimal；子属性：具有金额 |
+| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。<br>grants the right to vote on a per share basis to the shareholder | 值域：xsd:decimal；子属性：具有金额 |
 
 公理：
 
@@ -525,7 +525,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股份缴款状态（has share payment status）** | 指明已发行股份的缴款状态。 | 值域：股份缴款状态（share payment status）；子属性：由……分类 |
+| **具有股份缴款状态（has share payment status）** | 指明已发行股份的缴款状态。<br>indicates the payment status for shares issued | 值域：股份缴款状态（share payment status）；子属性：由……分类 |
 
 公理：
 
@@ -543,9 +543,9 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有到期日（hasMaturityDate）** | — | — |
-| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。 | 值域：股息（dividend）；子属性：由……分类 |
-| **是否具有可延长到期日（has extendable maturity date）** | 表明有固定到期日的可赎回股份的发行人和/或持有人是否可选择延长到期日。 | 值域：xsd:boolean |
-| **优先于（is senior to）** | 表明给定股份（股类）优先级别高于相关股份，即持有人对公司资产和收益享有更高请求权。 | 值域：股份（share） |
+| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。<br>relates a share to a dividend that applies to that share, or that the share may pay | 值域：股息（dividend）；子属性：由……分类 |
+| **是否具有可延长到期日（has extendable maturity date）** | 表明有固定到期日的可赎回股份的发行人和/或持有人是否可选择延长到期日。<br>indicates whether the issuer and/or holders of redeemable shares with a fixed maturity date have the option to extend the maturity date | 值域：xsd:boolean |
+| **优先于（is senior to）** | 表明给定股份（股类）优先级别高于相关股份，即持有人对公司资产和收益享有更高请求权。<br>indicates that a given share (share class) has higher seniority than the related share, meaning that it gives the holder a higher claim on the assets of the issuer | 值域：股份（share） |
 
 公理：
 
@@ -607,7 +607,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。 | 值域：股息（dividend）；子属性：由……分类 |
+| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。<br>relates a share to a dividend that applies to that share, or that the share may pay | 值域：股息（dividend）；子属性：由……分类 |
 
 公理：
 
@@ -640,7 +640,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。 | 值域：股息（dividend）；子属性：由……分类 |
+| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。<br>relates a share to a dividend that applies to that share, or that the share may pay | 值域：股息（dividend）；子属性：由……分类 |
 
 公理：
 
@@ -657,7 +657,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。 | 值域：股息（dividend）；子属性：由……分类 |
+| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。<br>relates a share to a dividend that applies to that share, or that the share may pay | 值域：股息（dividend）；子属性：由……分类 |
 
 公理：
 
@@ -691,7 +691,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否具有可延长到期日（has extendable maturity date）** | 表明有固定到期日的可赎回股份的发行人和/或持有人是否可选择延长到期日。 | 值域：xsd:boolean |
+| **是否具有可延长到期日（has extendable maturity date）** | 表明有固定到期日的可赎回股份的发行人和/或持有人是否可选择延长到期日。<br>indicates whether the issuer and/or holders of redeemable shares with a fixed maturity date have the option to extend the maturity date | 值域：xsd:boolean |
 
 公理：
 
@@ -708,7 +708,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有展期条款（hasExtensionProvision）** | — | — |
-| **是否具有可延长到期日（has extendable maturity date）** | 表明有固定到期日的可赎回股份的发行人和/或持有人是否可选择延长到期日。 | 值域：xsd:boolean |
+| **是否具有可延长到期日（has extendable maturity date）** | 表明有固定到期日的可赎回股份的发行人和/或持有人是否可选择延长到期日。<br>indicates whether the issuer and/or holders of redeemable shares with a fixed maturity date have the option to extend the maturity date | 值域：xsd:boolean |
 
 公理：
 
@@ -726,7 +726,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。 | 值域：股息（dividend）；子属性：由……分类 |
+| **具有股息（has dividend）** | 将股份与适用于该股份或该股份可能支付的股息关联起来。<br>relates a share to a dividend that applies to that share, or that the share may pay | 值域：股息（dividend）；子属性：由……分类 |
 
 公理：
 
@@ -844,7 +844,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。 | 值域：xsd:decimal；子属性：具有金额 |
+| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。<br>grants the right to vote on a per share basis to the shareholder | 值域：xsd:decimal；子属性：具有金额 |
 
 公理：
 
@@ -860,7 +860,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。 | 值域：xsd:decimal；子属性：具有金额 |
+| **每股表决票数（number of votes per share）** | 按每股基准授予股东表决权的票数。<br>grants the right to vote on a per share basis to the shareholder | 值域：xsd:decimal；子属性：具有金额 |
 
 公理：
 

@@ -34,41 +34,41 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 篮子期权（basket option） | 标的资产为一组（篮子）商品、证券、指数或货币的期权。 |
-| 债券期权（bond option） | 赋予买方（持有人）按特定价格买入或卖出（视看涨或看跌而定）债券的权利（而非义务）的期权。 |
-| 蝶式策略（butterfly） | 将牛市价差与熊市价差组合、风险固定且盈利封顶的期权策略。 |
-| 看涨期权（call option） | 赋予买方（持有人）在指定日期或之前按固定价格或公式买入指定资产的权利（而非义务）的期权。 |
-| 封顶期权（capped option） | 设有既定盈利上限或上限价格的期权。 |
-| 领口策略（collar） | 买入下档看跌期权并卖出上档看涨期权的期权交易策略，用于防范大额亏损，但也限制了盈利。 |
-| 秃鹰价差（condor spread） | 一种非方向性期权策略，同时限制盈利与亏损，旨在从低波动或高波动中获利。 |
-| 备兑看涨期权（covered call） | 卖方（投资者）持有等量标的证券的看涨期权。 |
-| 股票期权（equity option） | 赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的股票资产的权利（而非义务）的期权。 |
-| 奇异期权（exotic option） | 具有非标准支付结构或其他特殊特征的期权。 |
-| 外在价值（extrinsic value） | 期权市场价格（即权利金）与其内在价值之间的差额。 |
-| 护栏策略（fence） | 利用期权将金融工具的可能回报限定在一定区间内的期权交易策略。 |
-| 固定收益期权（fixed income option） | 赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的固定收益资产的权利（而非义务）的期权。 |
-| 利率期权（interest rate option） | 赋予买方（持有人）在参考利率的市场利率高于约定水平时收取现金付款的权利（而非义务）的期权。 |
-| 内在价值（intrinsic value） | 衡量资产价值的指标，即相对于其当前价格的价值。 |
-| 铁蝶式策略（iron butterfly） | 由两个看涨期权、两个看跌期权、三个行权价和同一到期日构成的蝶式策略。 |
-| 铁秃鹰策略（iron condor） | 由两个看跌期权（一多一空）、两个看涨期权（一多一空）和四个行权价构成、到期日相同的秃鹰策略。 |
-| 长期股票预期证券（long-term equity anticipation security） | 允许持有人买卖股票、到期日长于一年（通常最长三年）的股票期权（LEAPS）。 |
-| 价态（moneyness） | 将衍生品的行权价与其标的资产价格相关联的分类器。 |
-| 期权持有人（option holder） | 拥有期权的一方。 |
-| 期权发行人（option issuer） | 以换取对价为条件授予期权所规定权利的发行人。 |
-| 期货期权（option on future） | 赋予持有人在期权到期日或之前按指定价格买入或卖出特定期货合约的权利（而非义务）的期权。 |
-| 期权权利金（option premium） | 期权合约的当前市场价格。 |
-| 期权权利金公式（option premium formula） | 基于每份期权价格或名义本金百分比计算权利金的表达式。 |
-| 期权交易策略（option trading strategy） | 在同一标的资产上涉及不止一种期权类型、行权价或到期日的交易策略。 |
-| 保护性领口策略（protective collar） | 由备兑看涨期权和保护性看跌期权构成的领口策略。 |
-| 保护性看跌期权（protective put） | 赋予买方（持有人）按等于或接近当前价格的行权价卖出指定资产的权利（而非义务）的看跌期权。 |
-| 看跌期权（put option） | 赋予买方（持有人）在指定日期或之前按固定价格或公式卖出指定资产的权利（而非义务）的期权。 |
-| 风险逆转策略（risk reversal） | 卖出虚值看跌期权并买入虚值看涨期权、两者到期日相同的期权交易策略。 |
-| 标准化期权条款（standardized options terms） | 由证券或期权交易所、或由期权清算机构制定的标准化合同条款。 |
-| 跨式策略（straddle） | 同时买入同一标的证券、相同行权价和到期日的看跌期权与看涨期权的中性期权交易策略。 |
-| 宽跨式策略（strangle） | 投资者同时持有行权价不同但到期日相同的看涨期权与看跌期权的期权交易策略。 |
-| 行权价（strike price） | 合约行权时一手标的资产可以买入或卖出的价格。 |
-| 序列期权策略（strip strategy） | 涉及一组带周期性重置日的连续期权的交易策略，各重置区间表现如独立期权。 |
-| 普通期权（vanilla option） | 赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的资产的权利（而非义务）的常见期权。 |
+| 篮子期权（basket option） | 标的资产为一组（篮子）商品、证券、指数或货币的期权。<br>option whose underlying asset is a group, or basket, of commodities, securities, indices, or currencies |
+| 债券期权（bond option） | 赋予买方（持有人）按特定价格买入或卖出（视看涨或看跌而定）债券的权利（而非义务）的期权。<br>option giving the buyer (holder) the right, but not the obligation, to buy or sell (depending on whether it is a call or a put) a bond at a certain price on or before a specified date |
+| 蝶式策略（butterfly） | 将牛市价差与熊市价差组合、风险固定且盈利封顶的期权策略。<br>strategy that combines bull and bear spreads with a fixed risk and capped profit |
+| 看涨期权（call option） | 赋予买方（持有人）在指定日期或之前按固定价格或公式买入指定资产的权利（而非义务）的期权。<br>option giving the buyer (holder) the right, but not the obligation, to buy the assets specified at a fixed price or formula, on or before a specified date |
+| 封顶期权（capped option） | 设有既定盈利上限或上限价格的期权。<br>option with an established profit cap or cap price |
+| 领口策略（collar） | 买入下档看跌期权并卖出上档看涨期权的期权交易策略，用于防范大额亏损，但也限制了盈利。<br>option trading strategy that involves buying a downside put and selling an upside call that is implemented to protect against large losses, but which also limits large upside gains |
+| 秃鹰价差（condor spread） | 一种非方向性期权策略，同时限制盈利与亏损，旨在从低波动或高波动中获利。<br>non-directional options strategy that limits both gains and losses while seeking to profit from either low or high volatility |
+| 备兑看涨期权（covered call） | 卖方（投资者）持有等量标的证券的看涨期权。<br>call option in which the seller (investor) owns an equivalent amount of the underlying security |
+| 股票期权（equity option） | 赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的股票资产的权利（而非义务）的期权。<br>option giving the buyer (holder) the right, but not the obligation, to buy (via a call option) or sell (via a put option) the underlying equity assets specified at a pre-determined price (i.e., the strike price, fixed or calculated), on or before a specified date (the expiration date) |
+| 奇异期权（exotic option） | 具有非标准支付结构或其他特殊特征的期权。<br>option that has a non-standard payout structure or other feature |
+| 外在价值（extrinsic value） | 期权市场价格（即权利金）与其内在价值之间的差额。<br>measure of the difference between the market price of an option, called the premium, and its intrinsic value |
+| 护栏策略（fence） | 利用期权将金融工具的可能回报限定在一定区间内的期权交易策略。<br>option trading strategy that uses options to limit the range of possible returns on a financial instrument |
+| 固定收益期权（fixed income option） | 赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的固定收益资产的权利（而非义务）的期权。<br>option giving the buyer (holder) the right, but not the obligation, to buy (via a call option) or sell (via a put option) the underlying fixed income assets specified at a pre-determined price (i.e., the strike price, fixed or calculated), on or before a specified date (the expiration date) |
+| 利率期权（interest rate option） | 赋予买方（持有人）在参考利率的市场利率高于约定水平时收取现金付款的权利（而非义务）的期权。<br>option that giving the buyer (holder) the right, but not the obligation, to receive a cash payment if market interest rate of a reference rate is higher or lower, depending on the option, than the strike rate of the option |
+| 内在价值（intrinsic value） | 衡量资产价值的指标，即相对于其当前价格的价值。<br>measure of what an asset is worth, i.e. with respect to its current price |
+| 铁蝶式策略（iron butterfly） | 由两个看涨期权、两个看跌期权、三个行权价和同一到期日构成的蝶式策略。<br>butterfly strategy that consists of two call options and two put options, three strike prices and the same expiration date |
+| 铁秃鹰策略（iron condor） | 由两个看跌期权（一多一空）、两个看涨期权（一多一空）和四个行权价构成、到期日相同的秃鹰策略。<br>condor strategy consisting of two puts (one long and one short) and two calls (one long and one short), and four strike prices, all with the same expiration date |
+| 长期股票预期证券（long-term equity anticipation security） | 允许持有人买卖股票、到期日长于一年（通常最长三年）的股票期权（LEAPS）。<br>equity option that allows the holder to buy or sell shares of stock with expiration dates that are longer than one year, and typically up to three years from issue |
+| 价态（moneyness） | 将衍生品的行权价与其标的资产价格相关联的分类器。<br>classifier for a derivative relating its strike price to the price of its underlying asset |
+| 期权持有人（option holder） | 拥有期权的一方。<br>party that owns an option |
+| 期权发行人（option issuer） | 以换取对价为条件授予期权所规定权利的发行人。<br>issuer granting the rights defined in the option in exchange for some consideration |
+| 期货期权（option on future） | 赋予持有人在期权到期日或之前按指定价格买入或卖出特定期货合约的权利（而非义务）的期权。<br>option that gives the holder the right, but not the obligation, to buy or sell a specific futures contract at a specified price on or before the option's expiration date |
+| 期权权利金（option premium） | 期权合约的当前市场价格。<br>current market price of an option contract |
+| 期权权利金公式（option premium formula） | 基于每份期权价格或名义本金百分比计算权利金的表达式。<br>expression used to calculate the premium based either on the price per option or percentage of the notional amount |
+| 期权交易策略（option trading strategy） | 在同一标的资产上涉及不止一种期权类型、行权价或到期日的交易策略。<br>trading tactic involving more than one option type, strike price, or expiration date on the same underlying asset |
+| 保护性领口策略（protective collar） | 由备兑看涨期权和保护性看跌期权构成的领口策略。<br>collar that consists of a covered call and protective put |
+| 保护性看跌期权（protective put） | 赋予买方（持有人）按等于或接近当前价格的行权价卖出指定资产的权利（而非义务）的看跌期权。<br>put option giving the buyer (holder) the right, but not the obligation, to sell the assets specified at with a strike price equal or close to the current price of the underlying asset, on or before a specified date |
+| 看跌期权（put option） | 赋予买方（持有人）在指定日期或之前按固定价格或公式卖出指定资产的权利（而非义务）的期权。<br>option giving the buyer (holder) the right, but not the obligation, to sell the assets specified at a fixed price or formula, on or before a specified date |
+| 风险逆转策略（risk reversal） | 卖出虚值看跌期权并买入虚值看涨期权、两者到期日相同的期权交易策略。<br>option trading strategy that consists of being short (selling) an out of the money put and being long (i.e., buying) an out of the money call, both with the same maturity |
+| 标准化期权条款（standardized options terms） | 由证券或期权交易所、或由期权清算机构制定的标准化合同条款。<br>standardized contract terms established by a securities or options exchange or by an options clearing entity |
+| 跨式策略（straddle） | 同时买入同一标的证券、相同行权价和到期日的看跌期权与看涨期权的中性期权交易策略。<br>neutral option trading strategy that involves simultaneously buying both a put option and a call option for the underlying security with the same strike price and the same expiration date |
+| 宽跨式策略（strangle） | 投资者同时持有行权价不同但到期日相同的看涨期权与看跌期权的期权交易策略。<br>option trading strategy in which the investor holds a position in both a call and a put option with different strike prices, but with the same expiration date and underlying asset |
+| 行权价（strike price） | 合约行权时一手标的资产可以买入或卖出的价格。<br>price at which a lot of the underlying asset may be bought or sold when the contract is exercised |
+| 序列期权策略（strip strategy） | 涉及一组带周期性重置日的连续期权的交易策略，各重置区间表现如独立期权。<br>option trading strategy that involves a sequential set of options with periodic reset dates, such that each period between resets behaves like an individual option |
+| 普通期权（vanilla option） | 赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的资产的权利（而非义务）的常见期权。<br>common option giving the buyer (holder) the right, but not the obligation, to buy (via a call option) or sell (via a put option) the underlying assets specified at a pre-determined price (i.e., the strike price, fixed or calculated), on or before a specified date (the expiration date) |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -230,7 +230,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权价格（has exercise price）** | 规定持有人承诺买入或卖出标的资产的预定价格。 | 值域：行权价（strike price）；子属性：具有价格 |
+| **具有行权价格（has exercise price）** | 规定持有人承诺买入或卖出标的资产的预定价格。<br>specifies a predetermined price at which the holder commits to buy or sell an underlying asset | 值域：行权价（strike price）；子属性：具有价格 |
 | **包含（comprises）** | — | — |
 
 公理：
@@ -307,7 +307,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权价格（has exercise price）** | 规定持有人承诺买入或卖出标的资产的预定价格。 | 值域：行权价（strike price）；子属性：具有价格 |
+| **具有行权价格（has exercise price）** | 规定持有人承诺买入或卖出标的资产的预定价格。<br>specifies a predetermined price at which the holder commits to buy or sell an underlying asset | 值域：行权价（strike price）；子属性：具有价格 |
 | **包含（comprises）** | — | — |
 
 公理：
@@ -394,9 +394,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权日偏移（has exercise date offset）** | 指明重置日与行权日之间的天数。 | 值域：时长；子属性：具有时长 |
-| **具有起息日偏移（has interest accrual date offset）** | 指明每个重置日与下一期间利息开始计提之间的天数。 | 值域：时长；子属性：具有时长 |
-| **具有结算日偏移（has settlement date offset）** | 指明每个重置日与相应结算日之间的天数。 | 值域：时长；子属性：具有时长 |
+| **具有行权日偏移（has exercise date offset）** | 指明重置日与行权日之间的天数。<br>indicates the period in days between the reset date and the exercise date | 值域：时长；子属性：具有时长 |
+| **具有起息日偏移（has interest accrual date offset）** | 指明每个重置日与下一期间利息开始计提之间的天数。<br>indicates the period in days between each reset date and the commencement of interest accrual for the next period | 值域：时长；子属性：具有时长 |
+| **具有结算日偏移（has settlement date offset）** | 指明每个重置日与相应结算日之间的天数。<br>indicats the period in days between each reset date and the corresponding settlement date | 值域：时长；子属性：具有时长 |
 | **具有进度表（hasSchedule）** | — | — |
 | **包含（comprises）** | — | — |
 
@@ -423,7 +423,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有计算市值（has calculated market value）** | 指明截至某一相对日期计算得出、被视为该时期权市场价值的价格。 | 值域：期权权利金（option premium）；子属性：具有价格 |
+| **具有计算市值（has calculated market value）** | 指明截至某一相对日期计算得出、被视为该时期权市场价值的价格。<br>indicates a calculated price as of some relative date considered the market value of the option at that point in time | 值域：期权权利金（option premium）；子属性：具有价格 |
 
 公理：
 
@@ -484,7 +484,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有上限价格（has cap price）** | 合约可行权的价格上限。 | 值域：货币价格；子属性：具有货币数量 |
+| **具有上限价格（has cap price）** | 合约可行权的价格上限。<br>price at which the contract may be exercised | 值域：货币价格；子属性：具有货币数量 |
 
 公理：
 
@@ -501,7 +501,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权方式（has exercise style）** | 指明期权规定的行权惯例。 | 值域：行权惯例；子属性：由……分类 |
+| **具有行权方式（has exercise style）** | 指明期权规定的行权惯例。<br>indicates the exercise convention specified for the option | 值域：行权惯例；子属性：由……分类 |
 
 公理：
 
@@ -556,7 +556,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权利率（has strike rate）** | 合约可行权的利率。 | 值域：比率；子属性：具有量值 |
+| **具有行权利率（has strike rate）** | 合约可行权的利率。<br>rate at which the contract may be exercised | 值域：比率；子属性：具有量值 |
 | **具有标的（hasUnderlier）** | — | — |
 
 公理：
@@ -590,10 +590,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有行权计划表（has exercise schedule）** | 将期权与合约中规定的、约束其可行权时间的计划表关联起来。 | 值域：进度表；子属性：具有进度表 |
-| **具有期权持有人（has option holder）** | 指明期权的所有者。 | 值域：期权持有人（option holder）；子属性：具有合同当事方 |
-| **具有期权签发方（has option writer）** | 指明期权的发行人。 | 值域：期权发行人（option issuer）；子属性：具有合同当事方 |
-| **具有行权百分比（has strike percentage amount）** | 指明以标的资产价值百分比表示的行权价格或行权水平。 | 值域：百分比货币数量；子属性：具有价格 |
+| **具有行权计划表（has exercise schedule）** | 将期权与合约中规定的、约束其可行权时间的计划表关联起来。<br>links an option to the schedule specified in the contract that constrains when it may be exercised | 值域：进度表；子属性：具有进度表 |
+| **具有期权持有人（has option holder）** | 指明期权的所有者。<br>indicates the owner of the option | 值域：期权持有人（option holder）；子属性：具有合同当事方 |
+| **具有期权签发方（has option writer）** | 指明期权的发行人。<br>indicates the issuer of the option | 值域：期权发行人（option issuer）；子属性：具有合同当事方 |
+| **具有行权百分比（has strike percentage amount）** | 指明以标的资产价值百分比表示的行权价格或行权水平。<br>indicates a strike price or level expressed as a percentage of the value of the underlying asset | 值域：百分比货币数量；子属性：具有价格 |
 
 ## 4. 依赖（owl:imports，30 个）
 

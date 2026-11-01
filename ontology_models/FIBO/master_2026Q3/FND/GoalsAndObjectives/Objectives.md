@@ -34,27 +34,27 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 项目群（Program） | 为获得单独管理所无法获得的收益而设计的事务状态与协调活动集。 |
-| 项目群标识符（ProgramIdentifier） | 在项目群被管理的情境内唯一标识特定项目群的字符序列。 |
-| 项目群名称（ProgramName） | 项目群在其被管理情境内的情境化指称。 |
-| 意向（aim） | 指明代理行动所指向的期望方向、状况或情形的意图，不要求精确的范围或可测性。 |
-| 途径（approach） | 应对意向或问题的方式，以高层规划和系统化执行为特征，不预设范围或粒度。 |
-| 业务目标（business objective） | 反映企业在一定时间框架和可用资源内的战略目标与方向的目标。 |
-| 业务战略（business strategy） | 实现特定业务目标、目的、解决方案或结果的战略。 |
-| 分配策略（distribution strategy） | 使产品或服务可获得、或分配资金（如以股息或票息形式）的策略。 |
-| 财务目标（financial objective） | 反映参与方在一定时间框架和可用资源内的战略财务目标与方向的目标。 |
-| 愿景（goal） | 以宽泛范围和抱负性质为特征的意向，常为定性的、长期的，用以达成某种期望状态。 |
-| 投资目标（investment objective） | 投资者用于判断某项潜在投资是否适合自己或代表他人的财务目标。 |
-| 本地投资目标（local investment objective） | 旨在支持地理上集中的社区发展需求的财务目标。 |
-| 方法（method） | 以系统化、可重复的程序和操作上的明确性为特征的途径，由明确的步骤组成。 |
-| 目标（objective） | 以具体范围和可测标准为特征的意向，常为定量的、短期的，参与方寻求达成它。 |
-| 项目（project） | 为交付有形产出而设计的事务状态及独特而临时的组织。 |
-| 项目标识符（project identifier） | 在项目或其所属项目群被管理的情境内唯一标识特定项目的字符序列。 |
-| 项目名称（project name） | 项目的情境化指称。 |
-| 销售策略（sales strategy） | 销售某事物的策略，包括为销售过程分配资源、降低成本和优化收入。 |
-| 战略（strategy） | 指导决策并协调行动与计划以追求某意向的高层途径。 |
-| 研究（study） | 调查特定关注领域以确定其特性、关系、约束或影响的分析活动。 |
-| 三重底线目标（triple bottom line objective） | 将经济绩效、环境管理和社会责任作为同等成功标准加以整合的财务目标。 |
+| 项目群（Program） | 为获得单独管理所无法获得的收益而设计的事务状态与协调活动集。<br>state of affairs and coordinated set of activities designed to obtain benefits not available from managing them individually |
+| 项目群标识符（ProgramIdentifier） | 在项目群被管理的情境内唯一标识特定项目群的字符序列。<br>sequence of characters uniquely identifying a specific program within the context in which that program is administered |
+| 项目群名称（ProgramName） | 项目群在其被管理情境内的情境化指称。<br>contextual designation for a program within the context in which that program is administered |
+| 意向（aim） | 指明代理行动所指向的期望方向、状况或情形的意图，不要求精确的范围或可测性。<br>intention specifying a desired direction, condition, or situation toward which an agent's actions are directed, without requiring precise scope or measurable criteria |
+| 途径（approach） | 应对意向或问题的方式，以高层规划和系统化执行为特征，不预设范围或粒度。<br>way of addressing an aim or problem characterized by high-level planning and systematic execution, without presupposing scope or granularity |
+| 业务目标（business objective） | 反映企业在一定时间框架和可用资源内的战略目标与方向的目标。<br>objective that reflects the strategic goals and direction of a business within a time frame and available resources |
+| 业务战略（business strategy） | 实现特定业务目标、目的、解决方案或结果的战略。<br>strategy for achieving a specific business goal, objective, solution or outcome |
+| 分配策略（distribution strategy） | 使产品或服务可获得、或分配资金（如以股息或票息形式）的策略。<br>strategy for making a product or service available, or for distributing funds, such as in the form of a dividend or coupon |
+| 财务目标（financial objective） | 反映参与方在一定时间框架和可用资源内的战略财务目标与方向的目标。<br>objective that reflects the strategic financial goals and direction of a party within a time frame and available resources |
+| 愿景（goal） | 以宽泛范围和抱负性质为特征的意向，常为定性的、长期的，用以达成某种期望状态。<br>aim distinguished by broad scope and aspirational character, often qualitative and long-term, in order to achieve a desired state |
+| 投资目标（investment objective） | 投资者用于判断某项潜在投资是否适合自己或代表他人的财务目标。<br>financial objective used by an investor to determine whether or not a given potential investment is appropriate for themselves or on behalf of another party |
+| 本地投资目标（local investment objective） | 旨在支持地理上集中的社区发展需求的财务目标。<br>financial objective that aims to support geographically centralized, community development needs |
+| 方法（method） | 以系统化、可重复的程序和操作上的明确性为特征的途径，由明确的步骤组成。<br>approach distinguished by systematic, repeatable procedures and operational specificity for doing or calculating something, consisting of defined steps or rules to achieve a result |
+| 目标（objective） | 以具体范围和可测标准为特征的意向，常为定量的、短期的，参与方寻求达成它。<br>aim distinguished by specific scope and measurable criteria, often quantitative and short-term that a party seeks to attain, typically in order to achieve its long-term goals |
+| 项目（project） | 为交付有形产出而设计的事务状态及独特而临时的组织。<br>state of affairs and unique and temporary organization, designed to deliver a tangible output |
+| 项目标识符（project identifier） | 在项目或其所属项目群被管理的情境内唯一标识特定项目的字符序列。<br>sequence of characters uniquely identifying a specific project within the context in which that project or an overarching program is administered |
+| 项目名称（project name） | 项目的情境化指称。<br>contextual designation for a project |
+| 销售策略（sales strategy） | 销售某事物的策略，包括为销售过程分配资源、降低成本和优化收入。<br>strategy for selling something, including allocating resources to the sales process, reducing costs, and optimizing revenues |
+| 战略（strategy） | 指导决策并协调行动与计划以追求某意向的高层途径。<br>high-level approach that guides decision-making and the coordination of actions and plans in pursuit of some aim |
+| 研究（study） | 调查特定关注领域以确定其特性、关系、约束或影响的分析活动。<br>analytical activity that investigates a specified area of interest, to determine its characteristics, relationships, constraints, or implications |
+| 三重底线目标（triple bottom line objective） | 将经济绩效、环境管理和社会责任作为同等成功标准加以整合的财务目标。<br>financial objective that integrates economic performance, environmental stewardship, and social responsibility as co-equal criteria for success |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -68,8 +68,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有愿景（has goal）** | 具有长期的期望结果。 | 值域：愿景（goal） |
-| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。 | 值域：目标（objective） |
+| **具有愿景（has goal）** | 具有长期的期望结果。<br>has long-term, desired outcome | 值域：愿景（goal） |
+| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。<br>aims to achieve within a time frame and with available resources | 值域：目标（objective） |
 | **具有成员（hasMember）** | — | — |
 | **具有描述（hasDescription）** | — | — |
 | **具有名称（hasName）** | — | — |
@@ -126,7 +126,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……应对（is addressed by）** | 标识被……处理的事物，如愿景或目标。 | 逆属性：应对（addresses） |
+| **由……应对（is addressed by）** | 标识被……处理的事物，如愿景或目标。<br>indicates something, such a goal or objective, that is dealt with by | 逆属性：应对（addresses） |
 
 公理：
 
@@ -199,8 +199,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **应对（addresses）** | 处理、处置或关注。 | 子属性：涉及 |
-| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。 | 值域：目标（objective） |
+| **应对（addresses）** | 处理、处置或关注。<br>deals with, handles, or gives attention to | 子属性：涉及 |
+| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。<br>aims to achieve within a time frame and with available resources | 值域：目标（objective） |
 
 公理：
 
@@ -224,7 +224,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有愿景（has goal）** | 具有长期的期望结果。 | 值域：愿景（goal） |
+| **具有愿景（has goal）** | 具有长期的期望结果。<br>has long-term, desired outcome | 值域：愿景（goal） |
 
 公理：
 
@@ -241,7 +241,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。 | 值域：目标（objective） |
+| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。<br>aims to achieve within a time frame and with available resources | 值域：目标（objective） |
 
 公理：
 
@@ -271,8 +271,8 @@
 |---|---|---|
 | **具有输入（hasInput）** | — | — |
 | **具有输出（hasOutput）** | — | — |
-| **具有愿景（has goal）** | 具有长期的期望结果。 | 值域：愿景（goal） |
-| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。 | 值域：目标（objective） |
+| **具有愿景（has goal）** | 具有长期的期望结果。<br>has long-term, desired outcome | 值域：愿景（goal） |
+| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。<br>aims to achieve within a time frame and with available resources | 值域：目标（objective） |
 | **是……的成员（isMemberOf）** | — | — |
 | **具有描述（hasDescription）** | — | — |
 | **具有名称（hasName）** | — | — |
@@ -331,7 +331,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有愿景（has goal）** | 具有长期的期望结果。 | 值域：愿景（goal） |
+| **具有愿景（has goal）** | 具有长期的期望结果。<br>has long-term, desired outcome | 值域：愿景（goal） |
 | **适用于情境（isApplicableIn）** | — | — |
 
 公理：
@@ -347,8 +347,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有战略（has strategy）** | 应用战略。 | 值域：战略（strategy）；子属性：使用 |
-| **使用方法（uses method）** | 运用方法。 | 值域：方法（method）；子属性：使用 |
+| **具有战略（has strategy）** | 应用战略。<br>applies strategy | 值域：战略（strategy）；子属性：使用 |
+| **使用方法（uses method）** | 运用方法。<br>employs method | 值域：方法（method）；子属性：使用 |
 
 ## 4. 依赖（owl:imports，11 个）
 

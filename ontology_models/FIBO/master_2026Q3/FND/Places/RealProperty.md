@@ -31,13 +31,13 @@
 |---|---|
 | 地块标识符（TractIdentifier） | 在某管辖区签发使用的地块唯一标识符。 |
 | 地块（TractOfLand） | 地球表面较大区域内一块连续的土地，通常按契约、勘测或法律文件所述边界界定。 |
-| 动产（personal property） | 不附着于土地的可移动物品或财物类资产。 |
-| 房产查验（property inspection） | 涉及分析不动产一个或多个方面的事件。 |
-| 房产查验报告（property inspection report） | 涵盖房产查验结果的报告。 |
-| 房地产（real estate） | 不动产、不动产抵押权益（包括土地租赁权及其上建筑物的抵押权益）以及相关股份。 |
-| 不动产（real property） | 定义为土地连同永久附着于该土地的任何构筑物（如房屋、树木、围栏和改良物）的实物资产。 |
-| 不动产估价（real property appraisal） | 估计某不动产价值金额的价值评估。 |
-| 不动产标识符（real property identifier） | 在某管辖区用于标识特定不动产的唯一标识符。 |
+| 动产（personal property） | 不附着于土地的可移动物品或财物类资产。<br>asset that is a movable item or possession not fixed to land |
+| 房产查验（property inspection） | 涉及分析不动产一个或多个方面的事件。<br>event that involves analyzing one or more aspects of a real property |
+| 房产查验报告（property inspection report） | 涵盖房产查验结果的报告。<br>report covering the findings of a property inspection |
+| 房地产（real estate） | 不动产、不动产抵押权益（包括土地租赁权及其上建筑物的抵押权益）以及相关股份。<br>real property, interests in mortgages on real property (including interests in mortgages on leaseholds of land or improvements thereon), and shares in qualified real estate investment trusts |
+| 不动产（real property） | 定义为土地连同永久附着于该土地的任何构筑物（如房屋、树木、围栏和改良物）的实物资产。<br>physical asset defined as land together with any structures that are permanently attached to that land, such as houses, trees, fences and improvements |
+| 不动产估价（real property appraisal） | 估计某不动产价值金额的价值评估。<br>value assessment that estimates the amount of money some real property is worth |
+| 不动产标识符（real property identifier） | 在某管辖区用于标识特定不动产的唯一标识符。<br>unique identifier given to identify a specific real property in some jurisidiction |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

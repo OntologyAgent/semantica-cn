@@ -159,17 +159,17 @@ fibo-fnd-pas-pas:Sale a owl:Class ;
         "销售（sale）"@zh ;
     rdfs:comment "以货物或服务换取货币的交换。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
             owl:someValuesFrom fibo-fnd-pas-pas:Buyer ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-acc-cur:hasPrice ;
-            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-pas-pas:hasSeller ;
             owl:someValuesFrom fibo-fnd-pas-pas:Seller ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+            owl:onProperty fibo-fnd-acc-cur:hasPrice ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
         fibo-fnd-pas-pas:TransactionEvent,
         cmns-pts:Situation ;
     skos:definition "exchange of goods or services for money" .
@@ -244,12 +244,12 @@ fibo-fnd-pas-pas:ServiceAgreement a owl:Class ;
         "服务协议（service agreement）"@zh ;
     rdfs:comment "客户与服务提供方之间的书面合同，服务提供方据此以时间、劳务和/或专业知识的形式提供某项服务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rga:governs ;
-            owl:someValuesFrom cmns-org:Service ],
-        [ a owl:Restriction ;
             owl:onClass cmns-org:ServiceProvider ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom cmns-org:Service ],
         fibo-fnd-agr-ctr:WrittenContract ;
     skos:definition "written contract between a client and service provider whereby the service provider supplies some service in the form of time, effort, and/or expertise in exchange for compensation" ;
     cmns-av:synonym "service contract" .

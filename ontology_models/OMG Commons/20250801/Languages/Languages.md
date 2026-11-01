@@ -31,14 +31,14 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 人工语言（constructed language） | 规则在使用前被明确制定的个体语言。 |
-| 形式语言（formal language） | 由有限字母表按一套组合方法（称为文法）构造的有限长字符串（即词的整体）所组成的语言。 |
-| 人类语言（human language） | 可用于人与人之间表达或传达意义或讯息的语言。 |
-| 语言（language） | 声音、视觉空间符号、文字或其他书写符号的系统性使用，可组合以表达或传达意义，并为某社群所理解。 |
-| 语言标识符（language identifier） | 为无歧义标识某种个体语言或语群而分配的字符串。 |
-| 自然语言（natural language） | 在某语言社群中（曾）活跃使用、代代相传的个体语言。 |
-| 文字体系（script） | 用于一种或多种个体语言书写形式的图形字符的完备集合。 |
-| 文字体系标识符（script identifier） | 为无歧义表示某文字体系而分配的字符串。 |
+| 人工语言（constructed language） | 规则在使用前被明确制定的个体语言。<br>individual language whose rules are explicitly established prior to its use |
+| 形式语言（formal language） | 由有限字母表按一套组合方法（称为文法）构造的有限长字符串（即词的整体）所组成的语言。<br>language comprised of a set of finite-length strings (i.e., a body of words) constructed from a finite alphabet, following a set of methods of combining them (called a grammar), governed by precise syntactic rules |
+| 人类语言（human language） | 可用于人与人之间表达或传达意义或讯息的语言。<br>language that may be used to express or communicate meaning or a message between humans |
+| 语言（language） | 声音、视觉空间符号、文字或其他书写符号的系统性使用，可组合以表达或传达意义，并为某社群所理解。<br>systematic use of sounds, visual-spatial signs, characters or other written symbols or signs that can be combined to express or communicate meaning, understood by a community |
+| 语言标识符（language identifier） | 为无歧义标识某种个体语言或语群而分配的字符串。<br>string of characters assigned to an individual language or a language group for the purpose of identifying it unequivocally |
+| 自然语言（natural language） | 在某语言社群中（曾）活跃使用、代代相传的个体语言。<br>individual language which is or was in active use in a language community, passed on from one generation of speakers to the next |
+| 文字体系（script） | 用于一种或多种个体语言书写形式的图形字符的完备集合。<br>comprehensive set of graphic characters used for the written form of one or more individual languages |
+| 文字体系标识符（script identifier） | 为无歧义表示某文字体系而分配的字符串。<br>string of characters assigned to represent a script unequivocally |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -142,7 +142,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有语言（has language）** | 在某情境中以某语言表达或使用某语言。 | 值域：语言（language）；子属性：使用 |
+| **具有语言（has language）** | 在某情境中以某语言表达或使用某语言。<br>is expressed in or uses a given language in some context | 值域：语言（language）；子属性：使用 |
 
 ## 4. 依赖（owl:imports，6 个）
 

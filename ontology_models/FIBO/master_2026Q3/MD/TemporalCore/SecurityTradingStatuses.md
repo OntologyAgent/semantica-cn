@@ -32,17 +32,17 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 活跃（active） | 证券处于活跃交易状态。 |
-| 活跃交易中（actively trading） | 证券正在交易所或交易设施上活跃交易。 |
-| 交易所证券交易状态（exchange security trading status） | 上市证券在给定交易所的交易状态。 |
+| 活跃（active） | 证券处于活跃交易状态。<br>Security is actively traded |
+| 活跃交易中（actively trading） | 证券正在交易所或交易设施上活跃交易。<br>Security is actively traded on the exchange or trading facility |
+| 交易所证券交易状态（exchange security trading status） | 上市证券在给定交易所的交易状态。<br>trading status of a listed security on a given trading exchange |
 | 不活跃（inactive） | 证券处于不活跃状态。 |
 | 发布日期（issued） | The security has been issued into the secondary market. |
-| 证券生命周期状态（security lifecycle status） | 证券在其生命周期内所处的状态。 |
-| 证券交易状态（security trading status） | 证券在是否可交易方面的状态，以及与交易相关的特殊事项。 |
+| 证券生命周期状态（security lifecycle status） | 证券在其生命周期内所处的状态。<br>status of a security within its lifecycle |
+| 证券交易状态（security trading status） | 证券在是否可交易方面的状态，以及与交易相关的特殊事项。<br>status of the security in terms of whether it is trading or not, and any special considerations relating to trading |
 | 交易停牌（trading halted） | 证券交易被暂停。 |
-| 发行后交付前交易（when distributed） | 指证券在发行日之后、证书交付之前进行交易的状态。 |
-| 预发行交易（when issued） | 证券在其预定发行日之前进行的交易（灰市交易）。 |
-| 无价值（worthless） | 监管机构公告该证券已变得毫无价值。 |
+| 发行后交付前交易（when distributed） | 指证券在发行日之后、证书交付之前进行交易的状态。<br>Used to refer to a security that trades after the date of issue but before the time at which the certificates are delivered |
+| 预发行交易（when issued） | 证券在其预定发行日之前进行的交易（灰市交易）。<br>When Issued or Gray Market trading is when a security is traded ahead of the date at which it is to be issued. |
+| 无价值（worthless） | 监管机构公告该证券已变得毫无价值。<br>Announcement by the regulator that the security has become worthless. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

@@ -153,11 +153,11 @@ fibo-fnd-pas-psch:PaymentObligation a owl:Class ;
         "支付义务（payment obligation）"@zh ;
     rdfs:comment "按合同所载条款支付一定金额的可法律强制执行的责任。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fnd-agr-ctr:Contract ;
-            owl:onProperty fibo-fnd-rel-rel:isConferredBy ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-agr:isObligationOf ;
             owl:someValuesFrom fibo-fnd-pas-psch:Payer ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-agr-ctr:Contract ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ],
         [ a owl:Restriction ;
             owl:onProperty cmns-pts:hasPartyRole ;
             owl:someValuesFrom fibo-fnd-pas-psch:Payee ],

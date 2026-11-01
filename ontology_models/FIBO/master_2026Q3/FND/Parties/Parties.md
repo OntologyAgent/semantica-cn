@@ -19,10 +19,10 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 参与方角色识别方案（party role identification scheme） | 为参与方所扮演角色分配标识符的系统。 |
-| 参与方角色标识符（party role identifier） | 基于参与方在某种情境中所扮演的特定角色，能够唯一标识该参与方的字符序列。 |
-| 税务识别方案（tax identification scheme） | 在某司法辖区用于识别纳税人的识别方案。 |
-| 税务标识符（tax identifier） | 分配给纳税人的标识符，使政府组织能够向其征收强制性财政收费和其他税费，以资助政府支出和各项公共开支。 |
+| 参与方角色识别方案（party role identification scheme） | 为参与方所扮演角色分配标识符的系统。<br>system for allocating identifiers to roles that parties play |
+| 参与方角色标识符（party role identifier） | 基于参与方在某种情境中所扮演的特定角色，能够唯一标识该参与方的字符序列。<br>sequence of characters, capable of uniquely identifying a party based on a specific role that they play in some context |
+| 税务识别方案（tax identification scheme） | 在某司法辖区用于识别纳税人的识别方案。<br>identification scheme used to identify taxpayers in some jurisdiction |
+| 税务标识符（tax identifier） | 分配给纳税人的标识符，使政府组织能够向其征收强制性财政收费和其他税费，以资助政府支出和各项公共开支。<br>identifier assigned to a taxpayer that enables compulsory financial charges and other levies to be imposed on the taxpayer by a governmental organization in order to fund government spending and various public expenditures |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -106,7 +106,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有邮寄地址（has mailing address）** | 标识独立参与方可以接收信件和包裹等通信的实体地址。 | 值域：物理地址；子属性：具有地址 |
+| **具有邮寄地址（has mailing address）** | 标识独立参与方可以接收信件和包裹等通信的实体地址。<br>identifies a physical address where an independent party can receive communications, including letters and packages | 值域：物理地址；子属性：具有地址 |
 
 ## 4. 依赖（owl:imports，12 个）
 

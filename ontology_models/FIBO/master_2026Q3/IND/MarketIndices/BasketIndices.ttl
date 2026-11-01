@@ -222,20 +222,20 @@ fibo-ind-mkt-bas:MarketCapitalization a owl:Class ;
         "市值（market capitalization）"@zh ;
     rdfs:comment "表示股票市场在特定时点对公司之估值的表达式。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dt:hasObservedDateTime ;
-            owl:someValuesFrom cmns-dt:CombinedDateTime ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-sec-eq-eq:PricePerShare ],
         [ a owl:Restriction ;
             owl:onProperty fibo-ind-mkt-bas:hasMarketCapitalizationValue ;
             owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-sec-eq-eq:ShareIssuer ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-eq-eq:hasSharesOutstanding ;
             owl:someValuesFrom xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasObservedDateTime ;
+            owl:someValuesFrom cmns-dt:CombinedDateTime ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-eq-eq:ShareIssuer ],
         cmns-qtu:Expression ;
     skos:definition "expression representing the perceived value of a company as determined by the stock market at a specific point in time"@en ;
     cmns-av:synonym "market cap"@en ;
@@ -249,20 +249,13 @@ fibo-ind-mkt-bas:ReferenceIndex a owl:Class ;
             owl:allValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ;
             owl:onProperty fibo-fnd-utl-alx:hasPeriodicity ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:WeightedBasket ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassifier ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty fibo-fnd-utl-alx:hasReleaseDateTime ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty fibo-fnd-utl-alx:hasReleaseDate ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty fibo-fnd-utl-alx:hasReleaseDateTime ],
         [ a owl:Restriction ;
             owl:onClass cmns-dt:ExplicitDatePeriod ;
             owl:onProperty fibo-fnd-arr-doc:hasReportingPeriod ;
@@ -270,6 +263,13 @@ fibo-ind-mkt-bas:ReferenceIndex a owl:Class ;
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-sec-cls:AssetClass ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:WeightedBasket ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassifier ;
             owl:onProperty cmns-cls:isClassifiedBy ],
         fibo-fnd-utl-alx:ScopedMeasure ;
     skos:definition "measure of change in the value of the contents of a basket over a given period of time"@en ;

@@ -34,28 +34,28 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 买方（buyer） | 依销售合同以货币或其他对价购买某物的参与方。 |
-| 客户（client） | 向另一参与方购买专业服务、或与其存在购买服务之正式关系的参与方。 |
-| 客户标识符（client identifier） | 在某组织情境内唯一标识客户的字符序列。 |
-| 商品（commodity） | 商业中使用的、可与同类型其他商品互换的物质资源。 |
-| 消费者（consumer） | 使用经济货物或服务的参与方，通常用于个人、家庭或住户目的。 |
-| 合同型产品（contractual product） | 以协议形式存在的产品。 |
-| 合同模板型产品（contractual template product） | 通过为模板中定义的参数指定取值而定稿的合同型产品。 |
-| 定制产品（custom product） | 按订单生产、依客户规格委托制作的产品。 |
-| 顾客（customer） | 接收或消费产品（货物或服务）、并能在不同产品和供应商之间选择的参与方。 |
-| 顾客标识符（customer identifier） | 在某组织情境内唯一标识顾客的字符序列。 |
-| 货物（good） | 可确立所有权、且其所有权可通过交易在参与方之间转移的有形生产物品。 |
-| 可流通商品（negotiable commodity） | 可在某市场买入或卖出的商品。 |
-| 现货产品（off-the-shelf product） | 可直接从库存现货获得、或可快速按订单配置的产品，非专门设计或定制。 |
-| 生产者（producer） | 某种产品或其他货物的种植者、制造者、加工者或生产商。 |
-| 产品（product） | 商业化分销的货物：(1) 有形财产，(2) 加工、制造或生产过程的产出或结果，或 (3) 服务。 |
-| 产品标识符（product identifier） | 在某情境中唯一标识产品的字符序列。 |
-| 销售（sale） | 以货物或服务换取货币的交换。 |
-| 卖方（seller） | 向实际或潜在买方作出、要约或订立销售合同的参与方。 |
-| 服务协议（service agreement） | 客户与服务提供方之间的书面合同，服务提供方据此以时间、劳务和/或专业知识的形式提供某项服务。 |
-| 供应商（supplier） | 提供某参与方所需货物或服务的参与方，尤指长期供应者。 |
-| 交易确认书（transaction confirmation） | 卖方或服务提供方出具的、复述交易相关细节的书面通信。 |
-| 交易事件（transaction event） | 交易的事件成分。 |
+| 买方（buyer） | 依销售合同以货币或其他对价购买某物的参与方。<br>party that purchases something in exchange for money or other consideration under a contract of sale |
+| 客户（client） | 向另一参与方购买专业服务、或与其存在购买服务之正式关系的参与方。<br>party that purchases professional services from, or has a formal relationship to purchase services from another party |
+| 客户标识符（client identifier） | 在某组织情境内唯一标识客户的字符序列。<br>sequence of characters uniquely identifying a client within the context of some organization |
+| 商品（commodity） | 商业中使用的、可与同类型其他商品互换的物质资源。<br>material resource used in commerce that is interchangeable with other commodities of the same type |
+| 消费者（consumer） | 使用经济货物或服务的参与方，通常用于个人、家庭或住户目的。<br>party that utilizes economic goods or services, typically for personal, family, or household purposes |
+| 合同型产品（contractual product） | 以协议形式存在的产品。<br>product that takes the form of an agreement |
+| 合同模板型产品（contractual template product） | 通过为模板中定义的参数指定取值而定稿的合同型产品。<br>contractual product that is finalized through specification of values for parameters defined in a template |
+| 定制产品（custom product） | 按订单生产、依客户规格委托制作的产品。<br>product that is made to order, commissioned based on a customer's specifications |
+| 顾客（customer） | 接收或消费产品（货物或服务）、并能在不同产品和供应商之间选择的参与方。<br>party that receives or consumes products (goods or services) and has the ability to choose between different products and suppliers |
+| 顾客标识符（customer identifier） | 在某组织情境内唯一标识顾客的字符序列。<br>sequence of characters uniquely identifying a customer within the context of some organization |
+| 货物（good） | 可确立所有权、且其所有权可通过交易在参与方之间转移的有形生产物品。<br>physical, produced item over which ownership rights can be established, whose ownership can be passed from one party to another by engaging in transactions, and that is not money or real estate |
+| 可流通商品（negotiable commodity） | 可在某市场买入或卖出的商品。<br>commodity that can be bought or sold in some marketplace |
+| 现货产品（off-the-shelf product） | 可直接从库存现货获得、或可快速按订单配置的产品，非专门设计或定制。<br>product that is readily available from merchandise in stock, or can be quickly and easily configured to order, not specially designed or custom-made |
+| 生产者（producer） | 某种产品或其他货物的种植者、制造者、加工者或生产商。<br>grower, maker, fabricator, or manufacturer of some product or other good |
+| 产品（product） | 商业化分销的货物：(1) 有形财产，(2) 加工、制造或生产过程的产出或结果，或 (3) 服务。<br>commercially distributed good that is (1) tangible property, (2) the output or result of a fabrication, manufacturing, or production process, or (3) something that passes through a distribution channel before being consumed or used. |
+| 产品标识符（product identifier） | 在某情境中唯一标识产品的字符序列。<br>sequence of characters uniquely identifying a product in some context |
+| 销售（sale） | 以货物或服务换取货币的交换。<br>exchange of goods or services for money |
+| 卖方（seller） | 向实际或潜在买方作出、要约或订立销售合同的参与方。<br>party that makes, offers or contracts to make a sale to an actual or potential buyer |
+| 服务协议（service agreement） | 客户与服务提供方之间的书面合同，服务提供方据此以时间、劳务和/或专业知识的形式提供某项服务。<br>written contract between a client and service provider whereby the service provider supplies some service in the form of time, effort, and/or expertise in exchange for compensation |
+| 供应商（supplier） | 提供某参与方所需货物或服务的参与方，尤指长期供应者。<br>party that provides goods or services that some party wants or needs, especially over a long period of time |
+| 交易确认书（transaction confirmation） | 卖方或服务提供方出具的、复述交易相关细节的书面通信。<br>written communication from a seller or service provider reciting the relevant details of a transaction |
+| 交易事件（transaction event） | 交易的事件成分。<br>any sale, assignment, lease, license, loan, advance, contribution, or other transfer of any interest in or right to use any property (tangible or intangible) or money, however that transaction is effected, and regardless of whether the terms of the transaction are formally documented |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -70,8 +70,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **购买（buys）** | 将处于购买者角色的参与方关联到其已购买或计划购买的事物。 | 值域：产品（product） |
-| **从……购买（buys from）** | 将处于购买者角色的参与方关联到其已购买或计划购买的对方参与方。 | 值域：卖方（seller）；子属性：受…影响（is affected by） |
+| **购买（buys）** | 将处于购买者角色的参与方关联到其已购买或计划购买的事物。<br>links a party in the role of purchaser to something that they have purchased or plan to purchase | 值域：产品（product） |
+| **从……购买（buys from）** | 将处于购买者角色的参与方关联到其已购买或计划购买的对方参与方。<br>links a party in the role of purchaser to a party from which they have made or are planning to make a purchase | 值域：卖方（seller）；子属性：受…影响（is affected by） |
 
 公理：
 
@@ -87,7 +87,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **从……购买（buys from）** | 将处于购买者角色的参与方关联到其已购买或计划购买的对方参与方。 | 值域：卖方（seller）；子属性：受…影响（is affected by） |
+| **从……购买（buys from）** | 将处于购买者角色的参与方关联到其已购买或计划购买的对方参与方。<br>links a party in the role of purchaser to a party from which they have made or are planning to make a purchase | 值域：卖方（seller）；子属性：受…影响（is affected by） |
 
 公理：
 
@@ -197,7 +197,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……供应（is supplied by）** | 标识使产品可获得的参与方（供应商、卖方、分销商等）。 | 值域：供应商（supplier）；逆属性：供应（supplies）；子属性：由……提供 |
+| **由……供应（is supplied by）** | 标识使产品可获得的参与方（供应商、卖方、分销商等）。<br>identifies the party (supplier, vendor, distributor, etc.) that makes a product available | 值域：供应商（supplier）；逆属性：供应（supplies）；子属性：由……提供 |
 
 公理：
 
@@ -259,8 +259,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **销售（sells）** | 将处于经纪人、交易商、卖方或经销商角色的参与方关联到其提供出售的事物。 | 值域：产品（product） |
-| **销售给（sells to）** | 将处于经纪人、交易商、卖方或经销商角色的参与方关联到买方或潜在买方。 | 值域：买方（buyer）；逆属性：从……购买（buys from）；子属性：对…采取行动（acts on） |
+| **销售（sells）** | 将处于经纪人、交易商、卖方或经销商角色的参与方关联到其提供出售的事物。<br>links a party in the role of broker, dealer, vendor, or merchandiser to something that they make available for sale | 值域：产品（product） |
+| **销售给（sells to）** | 将处于经纪人、交易商、卖方或经销商角色的参与方关联到买方或潜在买方。<br>links a party in the role of broker, dealer, vendor, or merchandiser to a purchaser or potential purchasing party | 值域：买方（buyer）；逆属性：从……购买（buys from）；子属性：对…采取行动（acts on） |
 
 公理：
 
@@ -294,7 +294,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **供应（supplies）** | 将处于装备商、供应商、分销商等角色的参与方关联到其提供的事物。 | 值域：产品（product）；子属性：提供 |
+| **供应（supplies）** | 将处于装备商、供应商、分销商等角色的参与方关联到其提供的事物。<br>links a party in the role of outfitter, provisioner, distributor, etc. to something that they provide | 值域：产品（product）；子属性：提供 |
 
 公理：
 
@@ -344,8 +344,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有价格（hasPrice）** | — | — |
-| **具有买方（has buyer）** | 标识销售交易情境中的购买方。 | 值域：买方（buyer）；子属性：具有参与方角色（has party role） |
-| **具有卖方（has seller）** | 标识销售交易情境中的卖方。 | 值域：卖方（seller）；子属性：具有行为者（has actor） |
+| **具有买方（has buyer）** | 标识销售交易情境中的购买方。<br>indicates the purchasing party in the context of a sales transaction | 值域：买方（buyer）；子属性：具有参与方角色（has party role） |
+| **具有卖方（has seller）** | 标识销售交易情境中的卖方。<br>indicates the vendor in the context of a sales transaction | 值域：卖方（seller）；子属性：具有行为者（has actor） |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -363,8 +363,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……配置提供（is provisioned by）** | 标识配置提供服务或设施的服务提供方。 | 值域：服务提供方；逆属性：配置提供（provisions）；子属性：由……提供 |
-| **配置提供（provisions）** | 定制、提供或装备交付服务所需的事物。 | 子属性：提供 |
+| **由……配置提供（is provisioned by）** | 标识配置提供服务或设施的服务提供方。<br>identifies the service provider that provisions the service or facility | 值域：服务提供方；逆属性：配置提供（provisions）；子属性：由……提供 |
+| **配置提供（provisions）** | 定制、提供或装备交付服务所需的事物。<br>customizes, provides, or outfits something required for use in delivering a service | 子属性：提供 |
 
 ## 4. 依赖（owl:imports，17 个）
 

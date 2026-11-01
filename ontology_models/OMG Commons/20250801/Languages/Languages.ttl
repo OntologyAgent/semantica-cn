@@ -109,11 +109,11 @@ cmns-lang:LanguageIdentifier a owl:Class ;
         "语言标识符（language identifier）"@zh ;
     rdfs:comment "为无歧义标识某种个体语言或语群而分配的字符串。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:hasTag ;
-            owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-id:identifies ;
             owl:someValuesFrom cmns-lang:Language ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
         cmns-cds:CodeElement,
         cmns-id:Identifier ;
     skos:definition "string of characters assigned to an individual language or a language group for the purpose of identifying it unequivocally" ;
@@ -146,12 +146,12 @@ cmns-lang:Language a owl:Class ;
     rdfs:comment "声音、视觉空间符号、文字或其他书写符号的系统性使用，可组合以表达或传达意义，并为某社群所理解。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dsg:Name ;
-            owl:onProperty cmns-dsg:hasName ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-lang:LanguageIdentifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dsg:Name ;
+            owl:onProperty cmns-dsg:hasName ],
         [ a owl:Restriction ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onProperty cmns-dsg:hasTextualName ],

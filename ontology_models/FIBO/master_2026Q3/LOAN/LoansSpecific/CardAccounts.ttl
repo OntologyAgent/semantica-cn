@@ -250,15 +250,15 @@ fibo-loan-spc-crd:CreditCardProduct a owl:Class ;
         "信用卡产品（credit card product）"@zh ;
     rdfs:comment "允许持卡人凭信用购买货物或服务的卡产品。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-loan-spc-crd:CreditCardNetwork ;
-            owl:onProperty fibo-loan-spc-crd:hasCreditCardNetwork ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-loan-spc-crd:CreditCard ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ;
             owl:someValuesFrom fibo-loan-spc-crd:CreditCardAccount ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-loan-spc-crd:CreditCard ],
+            owl:onClass fibo-loan-spc-crd:CreditCardNetwork ;
+            owl:onProperty fibo-loan-spc-crd:hasCreditCardNetwork ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-loan-spc-crd:CardProduct ;
     skos:definition "card product allowing the holder to purchase goods or services on credit" .
 
@@ -267,12 +267,12 @@ fibo-loan-spc-crd:DebitCard a owl:Class ;
         "借记卡（debit card）"@zh ;
     rdfs:comment "由金融服务提供商发行、使持卡人能够动用活期存款账户资金的支付卡。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-loan-spc-crd:DebitCardProduct ],
+        [ a owl:Restriction ;
             owl:onClass fibo-loan-spc-crd:DebitCardAccount ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:isClassifiedBy ;
-            owl:someValuesFrom fibo-loan-spc-crd:DebitCardProduct ],
         fibo-loan-spc-crd:PaymentCard ;
     skos:definition "payment card issued by a financial service provider that enables the cardholder to access funds in a demand deposit account" .
 
@@ -281,11 +281,11 @@ fibo-loan-spc-crd:DebitCardAccount a owl:Class ;
         "借记卡账户（debit card account）"@zh ;
     rdfs:comment "以一张或多张借记卡为载体的卡账户。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:someValuesFrom fibo-loan-spc-crd:DebitCardProduct ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isSignifiedBy ;
             owl:someValuesFrom fibo-loan-spc-crd:DebitCard ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:someValuesFrom fibo-loan-spc-crd:DebitCardProduct ],
         fibo-loan-spc-crd:CardAccount ;
     skos:definition "card account that is represented by a one or more debit cards" .
 
@@ -318,16 +318,16 @@ fibo-loan-spc-crd:PaymentCardAgreement a owl:Class ;
     rdfs:comment "规定发行人向持卡人提供支付卡之条款与条件的账户专用信贷协议。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
-            owl:someValuesFrom fibo-loan-spc-crd:Cardholder ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
             owl:someValuesFrom fibo-loan-spc-crd:IssuingFinancialInstitution ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
             owl:someValuesFrom fibo-loan-spc-crd:PaymentCard ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:someValuesFrom fibo-loan-spc-crd:Cardholder ],
         fibo-fbc-dae-dbt:CreditAgreement,
         fibo-fbc-pas-caa:AccountSpecificServiceAgreement ;
     skos:definition "account-specific credit agreement that specifies the terms and conditions under which the payment card is offered to the cardholder by the issuer" .
@@ -345,6 +345,9 @@ fibo-loan-spc-crd:Cardholder a owl:Class ;
         "持卡人（cardholder）"@zh ;
     rdfs:comment "获发支付卡的账户持有人。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:holds ;
+            owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty fibo-fnd-oac-own:owns ;
@@ -354,9 +357,6 @@ fibo-loan-spc-crd:Cardholder a owl:Class ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-pts:isAPartyTo ;
                     owl:someValuesFrom fibo-loan-spc-crd:CardAccount ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:holds ;
-            owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
         fibo-fbc-pas-caa:CustomerAccountHolder ;
     skos:definition "account holder to whom a payment card is issued" ;
     cmns-av:adaptedFrom "https://www.pcisecuritystandards.org/pci_security/glossary"^^xsd:anyURI .
@@ -387,11 +387,11 @@ fibo-loan-spc-crd:CreditCardAccount a owl:Class ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:someValuesFrom fibo-loan-spc-crd:CreditCardProduct ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-pas-caa:hasPaymentDueDate ;
-            owl:someValuesFrom fibo-fbc-pas-caa:PaymentDueDate ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isSignifiedBy ;
             owl:someValuesFrom fibo-loan-spc-crd:CreditCard ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-caa:hasPaymentDueDate ;
+            owl:someValuesFrom fibo-fbc-pas-caa:PaymentDueDate ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:someValuesFrom fibo-loan-spc-crd:CreditCardAgreement ],
@@ -404,9 +404,6 @@ fibo-loan-spc-crd:CreditCardAgreement a owl:Class ;
         "信用卡协议（credit card agreement）"@zh ;
     rdfs:comment "规定发行人向持卡人提供信用卡之条款与条件的账户专用信贷安排。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-dbt:hasLender ;
-            owl:someValuesFrom fibo-loan-spc-crd:IssuingFinancialInstitution ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-loan-spc-crd:CreditCardAccount ],
         [ a owl:Restriction ;
@@ -415,6 +412,9 @@ fibo-loan-spc-crd:CreditCardAgreement a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
             owl:someValuesFrom fibo-loan-spc-crd:CreditCard ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:hasLender ;
+            owl:someValuesFrom fibo-loan-spc-crd:IssuingFinancialInstitution ],
         fibo-fbc-dae-dbt:CommittedCreditFacility,
         fibo-loan-spc-crd:PaymentCardAgreement ;
     skos:definition "account-specific credit facility that specifies the terms and conditions under which the credit card is offered to the cardholder by the issuer" .
@@ -438,14 +438,6 @@ fibo-loan-spc-crd:CardProduct a owl:Class ;
         "卡产品（card product）"@zh ;
     rdfs:comment "涉及发行信用卡、借记卡或其他支付卡的金融产品。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:Currency ;
-            owl:onProperty fibo-loan-spc-crd:usesCurrency ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass cmns-loc:Country ;
-            owl:onProperty cmns-loc:hasCountry ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ;
             owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
         [ a owl:Restriction ;
@@ -453,9 +445,17 @@ fibo-loan-spc-crd:CardProduct a owl:Class ;
             owl:onClass cmns-loc:CountrySubdivision ;
             owl:onProperty cmns-loc:hasSubdivision ],
         [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-loan-spc-crd:usesCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-loan-spc-crd:CreditCardNetwork ;
             owl:onProperty fibo-loan-spc-crd:hasCreditCardNetwork ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-loc:Country ;
+            owl:onProperty cmns-loc:hasCountry ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fbc-pas-fpas:FinancialProduct ;
     skos:definition "financial product involving the issuance of credit, debit, or other payment cards" .
 
@@ -510,20 +510,20 @@ fibo-loan-spc-crd:PaymentCard a owl:Class ;
     rdfs:comment "由金融服务提供商发行的法律凭证，使持卡人能够动用其指定银行账户中的资金或获得信用。"@zh ;
     rdfs:seeAlso <https://www.irs.gov/payments/payment-card-transactions-faqs> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-loan-spc-crd:CardVerificationCodeValue ;
-            owl:onProperty fibo-loan-spc-crd:hasCardVerificationCode ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-loan-spc-crd:CardExpirationDate ;
             owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-loan-spc-crd:PrimaryCardAccountNumber ;
-            owl:onProperty fibo-loan-spc-crd:hasPrimaryAccountNumber ;
+            owl:onClass fibo-loan-spc-crd:CardVerificationCodeValue ;
+            owl:onProperty fibo-loan-spc-crd:hasCardVerificationCode ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
             owl:someValuesFrom fibo-loan-spc-crd:CardAccount ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-loan-spc-crd:PrimaryCardAccountNumber ;
+            owl:onProperty fibo-loan-spc-crd:hasPrimaryAccountNumber ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-doc:LegalDocument ;
     skos:definition "legal document issued by a financial services provider that enables the cardholder to access the funds in the customer's designated bank accounts, or through a credit account and make payments by electronic funds transfer and access automated teller machines (ATMs)" ;
     cmns-av:explanatoryNote "For purposes of Payment Card Industry Data Security Standard (PCI DSS), a payment card is any payment card/device that bears the logo of the founding members of PCI SSC, which are American Express, Discover Financial Services, JCB International, MasterCard, or Visa, Inc.",
@@ -534,18 +534,18 @@ fibo-loan-spc-crd:CardAccount a owl:Class ;
         "卡账户（card account）"@zh ;
     rdfs:comment "条款与条件由以支付卡为载体的卡协议定义的账户。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:CustomerAccount ;
-            owl:onProperty fibo-fbc-pas-caa:isLinkedToAccount ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:isDefinedIn ;
-            owl:someValuesFrom fibo-loan-spc-crd:PaymentCardAgreement ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:someValuesFrom fibo-loan-spc-crd:CardProduct ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-pas-caa:hasPrimaryAccountHolder ;
             owl:someValuesFrom fibo-loan-spc-crd:Cardholder ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-loan-spc-crd:PaymentCardAgreement ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:CustomerAccount ;
+            owl:onProperty fibo-fbc-pas-caa:isLinkedToAccount ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isSignifiedBy ;
             owl:someValuesFrom fibo-loan-spc-crd:PaymentCard ],

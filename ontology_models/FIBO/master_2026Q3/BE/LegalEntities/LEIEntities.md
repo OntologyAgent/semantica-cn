@@ -34,18 +34,18 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| LEI 注册实体（LEI registered entity） | 已注册并以法律实体标识符（LEI）标识的法律主体。 |
-| 会计框架（accounting framework） | 用于计量、确认、列报和披露实体财务信息的框架，包括政策、方法、规则和流程。 |
-| 具有缔约能力的实体（contractually capable entity） | 对金融交易之履行承担法律或财务责任、或在其管辖区具有缔约法律权利的唯一实体。 |
-| 实体法律形式（entity legal form） | 从法律或监管角度表明实体在其注册管辖区内之性质的法律实体分类符。 |
-| 实体法律形式标识符（entity legal form identifier） | 按 ISO 20275 定义表示实体法律形式的代码。 |
-| 实体法律形式方案（entity legal form scheme） | 规定实体法律形式代码之要素的方案，如 ISO 20275 所定义。 |
-| 法律实体标识符（legal entity identifier） | 按 ISO 17442 定义唯一标识法律主体的组织标识符。 |
-| 法律实体标识符方案（legal entity identifier scheme） | 规定无歧义 LEI 方案之要素、以标识与任何金融交易相关的法律实体的方案。 |
-| 关系期间限定符（relationship period qualifier） | 对报告期间某方面加以限定的分类符，如该日期区间反映的是会计期间或文件申报期间。 |
-| 关系限定符（relationship qualifier） | 对报告期间内合并实体之间关系的某方面加以限定的分类符，如所用会计框架。 |
-| 关系记录（relationship record） | 描述法律实体之间关系的记录。 |
-| 关系状态（relationship status） | 指明报告期间内合并实体之间关系状态（活跃或不活跃）的分类符。 |
+| LEI 注册实体（LEI registered entity） | 已注册并以法律实体标识符（LEI）标识的法律主体。<br>a legal person that has registered for and is identified by a legal entity identifier |
+| 会计框架（accounting framework） | 用于计量、确认、列报和披露实体财务信息的框架，包括政策、方法、规则和流程。<br>framework, including policies, methods, rules, and processes, used to measure, recognize, present, and disclose the information appearing in an entity's financial statements, and, from a legal ownership perspective, that is applied for accounting consolidation determination |
+| 具有缔约能力的实体（contractually capable entity） | 对金融交易之履行承担法律或财务责任、或在其管辖区具有缔约法律权利的唯一实体。<br>a unique entity that is legally or financially responsible for the performance of financial transactions, or has the legal right in its jurisdiction to enter independently into legal contracts, regardless of whether it is incorporated or constituted in some other way (e.g. trust, partnership, contractual). This excludes natural persons, but includes governmental organizations and supranationals. |
+| 实体法律形式（entity legal form） | 从法律或监管角度表明实体在其注册管辖区内之性质的法律实体分类符。<br>a classifier for a legal entity that indicates the nature of that entity as defined from a legal or regulatory perspective, in the jurisdiction in which it was established |
+| 实体法律形式标识符（entity legal form identifier） | 按 ISO 20275 定义表示实体法律形式的代码。<br>code that denotes an entity legal form as defined in ISO 20275 |
+| 实体法律形式方案（entity legal form scheme） | 规定实体法律形式代码之要素的方案，如 ISO 20275 所定义。<br>scheme that specifies the elements of the codes for entity legal forms, such as those that are sanctioned in a given jurisdiction as defined in ISO 20725 |
+| 法律实体标识符（legal entity identifier） | 按 ISO 17442 定义唯一标识法律主体的组织标识符。<br>an organization identifier that uniquely identifies a legal person as defined in ISO 17442 |
+| 法律实体标识符方案（legal entity identifier scheme） | 规定无歧义 LEI 方案之要素、以标识与任何金融交易相关的法律实体的方案。<br>a scheme that specifies the elements of an unambiguous legal entity identifier (LEI) scheme to identify the legal entities relevant to any financial transaction |
+| 关系期间限定符（relationship period qualifier） | 对报告期间某方面加以限定的分类符，如该日期区间反映的是会计期间或文件申报期间。<br>a classifier that qualifies something about the reporting period specified, such as that the date period reflects an accounting or document filing period |
+| 关系限定符（relationship qualifier） | 对报告期间内合并实体之间关系的某方面加以限定的分类符，如所用会计框架。<br>a classifier that qualifies something about the relationship between consolidated entities during the reporting period, such as the accounting framework used |
+| 关系记录（relationship record） | 描述法律实体之间关系的记录。<br>a record describing relationships between legal entities |
+| 关系状态（relationship status） | 指明报告期间内合并实体之间关系状态（活跃或不活跃）的分类符。<br>a classifier that specifies the status of the relationship between consolidated entities during the reporting period (active or inactive) |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -81,9 +81,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有法律形式缩写（has legal form abbreviation）** | 实体在其注册管辖区所定义法律形式的精确缩写，如 LLC、LLP、Ltd、PLC、Corp。 | 子属性：具有文本值 |
-| **具有转写法律形式缩写（has transliterated legal form abbreviation）** | 实体法律形式缩写的转写（即拉丁化或罗马化 ASCII）表示。 | 子属性：具有文本值 |
-| **具有转写名称（has transliterated name）** | 实体名称的转写（即拉丁化或罗马化 ASCII）表示。 | 子属性：具有文本名称 |
+| **具有法律形式缩写（has legal form abbreviation）** | 实体在其注册管辖区所定义法律形式的精确缩写，如 LLC、LLP、Ltd、PLC、Corp。<br>the precise abbreviation for the entity legal form as defined in the jurisdiction in which it is registered, for example LLC, LLP, Ltd, PLC, Corp. | 子属性：具有文本值 |
+| **具有转写法律形式缩写（has transliterated legal form abbreviation）** | 实体法律形式缩写的转写（即拉丁化或罗马化 ASCII）表示。<br>a transliterated (i.e., in Latin or Romanized ASCII) representation of the abbreviation for the entity legal form | 子属性：具有文本值 |
+| **具有转写名称（has transliterated name）** | 实体名称的转写（即拉丁化或罗马化 ASCII）表示。<br>a transliterated (i.e., in Latin or Romanized ASCII) representation of a name for the entity | 子属性：具有文本名称 |
 | **分类（classifies）** | — | — |
 | **适用于情境（isApplicableIn）** | — | — |
 | **具有文本名称（hasTextualName）** | — | — |
@@ -196,7 +196,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……量化（is quantified by）** | 表明某事物受某个比率或其他统计值限定或以之为条件。 | 值域：xsd:decimal |
+| **由……量化（is quantified by）** | 表明某事物受某个比率或其他统计值限定或以之为条件。<br>indicates that something is limited to or conditional due to some rate or other statistical value | 值域：xsd:decimal |
 | **受……限定（isQualifiedBy）** | — | — |
 
 公理：
@@ -218,19 +218,19 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有法定地址（has legal address）** | 标识实体在其设立管辖区内用于注册目的的法定地址。 | 值域：常规街道地址；子属性：具有注册地址 |
-| **具有法律形式（has legal form）** | 标识在给定管辖区内从法律或监管角度定义的实体性质。 | 值域：实体法律形式（entity legal form）；子属性：由……分类 |
-| **是……的国际分支（is an international branch of）** | 标识「起始节点」（子公司）是「末端节点」（母公司）的国际分支。 | 值域：法律实体；子属性：由……合并（is consolidated by） |
-| **由……合并（is consolidated by）** | 从 ISO 17442 角度标识被视为「末端节点」或合并实体（母公司）的实体。 | 值域：法律实体 |
-| **是……的合并对象（is consolidation of）** | 从 ISO 17442 角度标识被视为「起始节点」或被合并实体的实体。 | 值域：法律实体；子属性：包含 |
-| **由……直接合并（is directly consolidated by）** | 标识「末端节点」（母公司）对「起始节点」（子公司）的会计进行直接完全合并。 | 值域：法律实体；子属性：由……合并（is consolidated by） |
-| **由……最终合并（is ultimately consolidated by）** | 标识「末端节点」（母公司）对「起始节点」（子公司）的会计进行最终完全合并。 | 值域：法律实体；子属性：由……合并（is consolidated by） |
+| **具有法定地址（has legal address）** | 标识实体在其设立管辖区内用于注册目的的法定地址。<br>indicates the legal address for the entity, in the jurisdiction in which the entity is established, used for registration purposes with respect to obtaining an LEI | 值域：常规街道地址；子属性：具有注册地址 |
+| **具有法律形式（has legal form）** | 标识在给定管辖区内从法律或监管角度定义的实体性质。<br>indicates the nature of the entity as defined from a legal or regulatory perspective in a given jurisdiction | 值域：实体法律形式（entity legal form）；子属性：由……分类 |
+| **是……的国际分支（is an international branch of）** | 标识「起始节点」（子公司）是「末端节点」（母公司）的国际分支。<br>indicates that the entity considered the 'start node' or consolidated entity (child) is an international subsidiary of the 'end node' (parent) in the jurisdiction of the child | 值域：法律实体；子属性：由……合并（is consolidated by） |
+| **由……合并（is consolidated by）** | 从 ISO 17442 角度标识被视为「末端节点」或合并实体（母公司）的实体。<br>indicates the entity considered the 'end node' or consolidating entity (parent) from an ISO 17442 perspective | 值域：法律实体 |
+| **是……的合并对象（is consolidation of）** | 从 ISO 17442 角度标识被视为「起始节点」或被合并实体的实体。<br>indicates the entity considered the 'start node' or consolidated entity from an ISO 17442 perspective | 值域：法律实体；子属性：包含 |
+| **由……直接合并（is directly consolidated by）** | 标识「末端节点」（母公司）对「起始节点」（子公司）的会计进行直接完全合并。<br>indicates that the entity considered the 'end node' or consolidating entity (parent) fully consolidates the accounting of the 'start node' (child) per the accounting rules specified, and is the closest consolidating entity to that child in any applicable ownership hierarchy | 值域：法律实体；子属性：由……合并（is consolidated by） |
+| **由……最终合并（is ultimately consolidated by）** | 标识「末端节点」（母公司）对「起始节点」（子公司）的会计进行最终完全合并。<br>indicates that the entity considered the 'end node' or consolidating entity (parent) fully consolidates the accounting of the 'start node' (child) per the accounting rules specified, and is the most distant consolidating entity to that child in any applicable ownership hierarchy | 值域：法律实体；子属性：由……合并（is consolidated by） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有所有权百分比（has ownership percentage）** | 拥有实体在被拥有实体中拥有的所有权权益百分比（如已知）。 |
+| **具有所有权百分比（has ownership percentage）** | 拥有实体在被拥有实体中拥有的所有权权益百分比（如已知）。<br>the percentage ownership interest in the owned entity owned by owning entity, if known |
 
 ## 4. 依赖（owl:imports，16 个）
 

@@ -31,15 +31,15 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 合同限制（contractual restriction） | 在工具本身条款中规定、对证券持有人或发行人施加限制的合同条款。 |
-| 个人投资者（individual investor） | 作为自然人（而非组织）的投资者，从法律角度看可能是也可能不是合格投资者。 |
-| 机构投资者（institutional investor） | 汇集资金购买证券、不动产和其他投资资产或发放贷款的投资者。 |
-| 投资者住所地限制（investors' domicile restriction） | 规定证券持有人住所地要求的法律持有限制。 |
-| 法律持有限制（legal holding restriction） | 适用于持有证券的证券限制。 |
-| 合格投资者限制（qualified investor restriction） | 为特定目的定义合格投资者概念、并规定仅合格投资者可持有该证券的法律持有限制。 |
-| 证券法规（securities regulation） | 在法律中成文化、专门针对证券和投资的法规。 |
-| 证券限制（securities restriction） | 依法律或合同规定、适用于金融工具或挂牌的法定义务。 |
-| 交易限制（trading restriction） | 以某种方式限制交易的限制，通常概述于条款清单或其他文件中，包括但不限于转让限制。 |
+| 合同限制（contractual restriction） | 在工具本身条款中规定、对证券持有人或发行人施加限制的合同条款。<br>contract terms setting out restrictions on either the holder or the issuer of the security, as specified in the terms of the instrument itself |
+| 个人投资者（individual investor） | 作为自然人（而非组织）的投资者，从法律角度看可能是也可能不是合格投资者。<br>investor that is a person, rather than an organization, who may or may not be considered a qualified investor from a legal perspective |
+| 机构投资者（institutional investor） | 汇集资金购买证券、不动产和其他投资资产或发放贷款的投资者。<br>investor that pools money to purchase securities, real property, and other investment assets or originates loans |
+| 投资者住所地限制（investors' domicile restriction） | 规定证券持有人住所地要求的法律持有限制。<br>legal holding restriction that specifies where holders of a security may be domiciled |
+| 法律持有限制（legal holding restriction） | 适用于持有证券的证券限制。<br>security restriction applicable to holding the security |
+| 合格投资者限制（qualified investor restriction） | 为特定目的定义合格投资者概念、并规定仅合格投资者可持有该证券的法律持有限制。<br>legal holding restriction that defines the concept of a qualified investor for a given purpose and specifies that only such qualified investors may hold the security |
+| 证券法规（securities regulation） | 在法律中成文化、专门针对证券和投资的法规。<br>regulation codified in law specific to securities and investments |
+| 证券限制（securities restriction） | 依法律或合同规定、适用于金融工具或挂牌的法定义务。<br>legal obligation that is applicable to a financial instrument or listing as mandated in a law or by contract |
+| 交易限制（trading restriction） | 以某种方式限制交易的限制，通常概述于条款清单或其他文件中，包括但不限于转让限制。<br>restriction that limits trading in some manner, typically summarized on term sheets or in other documentation, including but not limited to restrictions on day trading |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -110,8 +110,8 @@
 
 公理：
 
-- **由……授权要求（isMandatedBy）**的所有取值只能是**N28f6db5cbeb44f8881a5d2412ffa75a8**。
-- **适用于（appliesTo）**的所有取值只能是**Na05719a737b84a47a32bc6bc99d46064**。
+- **由……授权要求（isMandatedBy）**的所有取值只能是**Ned6b746b2be44faa95220821fd7ddc6a**。
+- **适用于（appliesTo）**的所有取值只能是**N1baea8c510cd486ca52eb2ef480a3837**。
 
 #### 2.4.1 合同限制（contractual restriction）
 
@@ -152,7 +152,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有持有期（has holding period）** | 标识适用于某一金融资产的持有期。 | 值域：日期区间；子属性：具有日期区间 |
+| **具有持有期（has holding period）** | 标识适用于某一金融资产的持有期。<br>identifies a holding period applicable to some financial asset | 值域：日期区间；子属性：具有日期区间 |
 
 公理：
 
@@ -172,7 +172,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有限制（has restriction）** | 标识适用于给定金融工具或挂牌的限制。 | 值域：证券限制（securities restriction）；子属性：规定 |
+| **具有限制（has restriction）** | 标识适用于给定金融工具或挂牌的限制。<br>identifies a restriction applicable to a given financial instrument or listing | 值域：证券限制（securities restriction）；子属性：规定 |
 
 ## 4. 依赖（owl:imports，16 个）
 

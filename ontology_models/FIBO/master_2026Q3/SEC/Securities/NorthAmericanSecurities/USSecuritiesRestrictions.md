@@ -22,7 +22,7 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 蓝天法（blue sky law） | 美国州级证券法规，旨在保护投资者免受证券欺诈，要求发行人注册并披露详细信息。 |
+| 蓝天法（blue sky law） | 美国州级证券法规，旨在保护投资者免受证券欺诈，要求发行人注册并披露详细信息。<br>state-level securities regulation, designed to protect investors against securities fraud that require issuers to be registered and to disclose details of their offerings |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -50,9 +50,9 @@
 
 | 属性 | 定义 |
 |---|---|
-| **是否符合《雇员退休收入保障法》（is Employee Retirement Income Security Act conformant）** | 表明该证券是否符合 1974 年《雇员退休收入保障法》（ERISA）这一规范雇员福利计划的联邦法律。 |
-| **是否受联邦存款保险公司承保（is Federal Deposit Insurance Corporation insured）** | 表明该证券是否在联邦存款保险公司（FDIC）保险覆盖范围内。 |
-| **是否受联邦储备委员会 T 条例约束（is subject to Federal Reserve Board Regulation T）** | 表明某一现金或保证金账户是否受联邦储备委员会（FRB）保证金要求约束。 |
+| **是否符合《雇员退休收入保障法》（is Employee Retirement Income Security Act conformant）** | 表明该证券是否符合 1974 年《雇员退休收入保障法》（ERISA）这一规范雇员福利计划的联邦法律。<br>indicates whether the security conforms to the Employee Retirement Income Security Act (ERISA) of 1974, a federal outline for regulating employee benefit plans, including healthcare plans sponsored and/or insured by an employer |
+| **是否受联邦存款保险公司承保（is Federal Deposit Insurance Corporation insured）** | 表明该证券是否在联邦存款保险公司（FDIC）保险覆盖范围内。<br>indicates whether the security is covered by Federal Deposit Insurance Corporation (FDIC) insurance |
+| **是否受联邦储备委员会 T 条例约束（is subject to Federal Reserve Board Regulation T）** | 表明某一现金或保证金账户是否受联邦储备委员会（FRB）保证金要求约束。<br>indicates whether a given cash or margin account is subject to Federal Reserve Board (FRB) margin requirements |
 
 ## 4. 依赖（owl:imports，11 个）
 

@@ -254,8 +254,8 @@ fibo-fbc-dae-cre:InterestObligationInLightOfDefault a owl:Class ;
     rdfs:comment "就任何支付义务的违约行为所产生的利息方面的义务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:DatePeriod ;
-            owl:onProperty fibo-fbc-dae-cre:hasDefaultInterestCompoundingBasis ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-fbc-dae-cre:isDefaultInterestApplicable ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
             owl:someValuesFrom [ a owl:Class ;
@@ -263,8 +263,8 @@ fibo-fbc-dae-cre:InterestObligationInLightOfDefault a owl:Class ;
                 fibo-fnd-pas-psch:PaymentObligation ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-fbc-dae-cre:isDefaultInterestApplicable ],
+            owl:onClass cmns-dt:DatePeriod ;
+            owl:onProperty fibo-fbc-dae-cre:hasDefaultInterestCompoundingBasis ],
         fibo-fnd-law-lcap:ContingentObligation,
         fibo-fnd-law-lcap:ContractualObligation ;
     skos:definition "obligation in respect of default(s) in the performance of any payment obligation"@en ;

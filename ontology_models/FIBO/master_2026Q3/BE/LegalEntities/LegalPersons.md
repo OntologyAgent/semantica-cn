@@ -34,18 +34,18 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 特殊目的载体（SpecialPurposeVehicle） | 为实现狭窄、特定且常为临时性目标而设立的法律实体。 |
-| 企业实体（business entity） | 按商法设立和管理、以从事商业活动的实体。 |
-| 营业执照（business license） | 允许持有人在某管辖区内、在某段时期内经营业务或从事特定职业的许可。 |
-| 特许法律主体（chartered legal person） | 由皇家特许状或法令设立的法律主体。 |
-| 具有法律行为能力的自然人（legally competent natural person） | 在相关情形下被认为有能力订立合同、开展业务或参与其他通常产生法律义务之活动的人。 |
-| 非营利目标（not for profit objective） | 反映组织慈善、教育、宗教、人道、公共服务或其他非营利宗旨的目标。 |
-| 授权委托书（power of attorney） | 一方（委托人）授予另一方（代理人）代表委托人实施特定行为的法律授权。 |
-| 盈利目标（profit objective） | 反映对财务利益之追求的目标，该利益在业务收入超过支出时得以实现。 |
-| 公共宗旨（public purpose） | 反映普遍认为为全民共享、旨在惠及全体公众之价值观的目标。 |
-| 宗教目标（religious objective） | 反映组织宗教宗旨的非营利目标。 |
-| 法定机构（statutory body） | 由政府设立、在某活动领域内审查证据并作出裁决的法律实体。 |
-| 可变利益实体（variable interest entity） | 股东通过私人合同有权获得某具名公司一定比例利润的法律实体。 |
+| 特殊目的载体（SpecialPurposeVehicle） | 为实现狭窄、特定且常为临时性目标而设立的法律实体。<br>legal entity created to fulfill narrow, specific, and frequently temporary objectives |
+| 企业实体（business entity） | 按商法设立和管理、以从事商业活动的实体。<br>entity that is formed and administered as per commercial law in order to engage in business activities |
+| 营业执照（business license） | 允许持有人在某管辖区内、在某段时期内经营业务或从事特定职业的许可。<br>license that allows the holder to conduct business or carry out a specific profession within some jurisdiction for some period of time |
+| 特许法律主体（chartered legal person） | 由皇家特许状或法令设立的法律主体。<br>a legal person created by a royal charter or decree |
+| 具有法律行为能力的自然人（legally competent natural person） | 在相关情形下被认为有能力订立合同、开展业务或参与其他通常产生法律义务之活动的人。<br>person who is considered competent, under the circumstances, to enter into a contract, conduct business, or participate in other activities that generally require the mental ability to understand problems and make decisions on his or her own behalf |
+| 非营利目标（not for profit objective） | 反映组织慈善、教育、宗教、人道、公共服务或其他非营利宗旨的目标。<br>objective that reflects the charitable, educational, religious, humanitarian, public services, or other not for profit goals of an organization |
+| 授权委托书（power of attorney） | 一方（委托人）授予另一方（代理人）代表委托人实施特定行为的法律授权。<br>legal authorization given by one party (the principal) to another (the agent or attorney-in-fact) to perform certain acts on the principal's behalf |
+| 盈利目标（profit objective） | 反映对财务利益之追求的目标，该利益在业务收入超过支出时得以实现。<br>objective that reflects pursuit of a financial benefit that may be realized when the amount of revenue gained from a business activity exceeds the expenses, costs and taxes needed to sustain that activity |
+| 公共宗旨（public purpose） | 反映普遍认为为全民共享、旨在惠及全体公众之价值观的目标。<br>objective that reflects values generally thought to be shared by and that is intended to benefit the populace as a whole |
+| 宗教目标（religious objective） | 反映组织宗教宗旨的非营利目标。<br>not-for-profit objective that reflects the religious goals of an organization |
+| 法定机构（statutory body） | 由政府设立、在某活动领域内审查证据并作出裁决的法律实体。<br>legal entity established by a government to consider evidence and make judgements in some field of activity |
+| 可变利益实体（variable interest entity） | 股东通过私人合同有权获得某具名公司一定比例利润的法律实体。<br>legal entity whose shareholders are entitled to a percentage of a named company's profits via a private contract |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -59,7 +59,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有预定清算日期（has intended liquidation date）** | 将协议、合同或法律实体关联到其预定出售的日期。 | 值域：日期；子属性：具有终止日 |
+| **具有预定清算日期（has intended liquidation date）** | 将协议、合同或法律实体关联到其预定出售的日期。<br>links an agreement, contract, or legal entity to a date on which it is scheduled to be sold | 值域：日期；子属性：具有终止日 |
 
 公理：
 

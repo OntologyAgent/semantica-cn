@@ -109,12 +109,12 @@ fibo-fbc-fct-breg:BusinessRegisterIdentifier a owl:Class ;
         "商业登记册标识符（business register identifier）"@zh ;
     rdfs:comment "唯一标识商业登记册的标识符，例如由全球法人识别编码基金会（GLEIF）登记册标识的登记册。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:isRegisteredBy ;
-            owl:someValuesFrom fibo-fbc-fct-breg:BusinessRegistrationAuthority ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-breg:BusinessRegistry ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom fibo-fbc-fct-breg:BusinessRegistrationAuthority ],
         cmns-id:Identifier ;
     skos:definition "identifier that uniquely identifies a business register, such as a register identified by the Global Legal Entity Identifier Foundation (GLEIF) registration authorities list" ;
     cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI .
@@ -225,10 +225,10 @@ fibo-fbc-fct-breg:LocalOperatingUnit a owl:Class ;
         "本地运营单位（local operating unit）"@zh ;
     rdfs:comment "经全球法人识别编码基金会授权、可签发法人识别编码（LEI）的注册机构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:registers ;
+            owl:onProperty fibo-fnd-rel-rel:issues ;
             owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:issues ;
+            owl:onProperty cmns-ra:registers ;
             owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ],
         cmns-ra:Registrar ;
     skos:definition "registrar that is authorized by the Global LEI Foundation to issue legal entity identifiers" ;
@@ -398,18 +398,18 @@ fibo-fbc-fct-breg:LegalEntityIdentifierRegistryEntry a owl:Class ;
         "法人识别编码登记册条目（legal entity identifier registry entry）"@zh ;
     rdfs:comment "符合 ISO 17442 及全球法人识别编码基金会（GLEIF）通用数据格式（CDF）的登记册记录。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fct-breg:hasValidationLevel ;
+            owl:someValuesFrom fibo-fbc-fct-breg:EntityValidationLevel ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-breg:BusinessRegistrationAuthority ;
             owl:onProperty fibo-fbc-fct-breg:hasValidationAuthority ],
         [ a owl:Restriction ;
-            owl:allValuesFrom fibo-be-le-lei:LegalEntityIdentifier ;
-            owl:onProperty fibo-fbc-fct-breg:hasManagingLocalOperatingUnit ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fct-breg:hasValidationLevel ;
-            owl:someValuesFrom fibo-fbc-fct-breg:EntityValidationLevel ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fct-breg:hasRegistrationStatus ;
             owl:someValuesFrom fibo-fbc-fct-breg:RegistrationStatus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-be-le-lei:LegalEntityIdentifier ;
+            owl:onProperty fibo-fbc-fct-breg:hasManagingLocalOperatingUnit ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-be-le-lei:LegalEntityIdentifier ],
@@ -517,6 +517,22 @@ fibo-fbc-fct-breg:hasValidationLevel a owl:ObjectProperty ;
 cmns-org:LegalEntity a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-org:LegalEntity ;
+            owl:onProperty cmns-dt:precedes ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fct-breg:EntityExpirationReason ;
+            owl:onProperty fibo-fbc-fct-breg:hasEntityExpirationReason ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty fibo-fbc-fct-breg:hasEntityExpirationDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fct-breg:EntityStatus ;
+            owl:onProperty fibo-fbc-fct-breg:hasEntityStatus ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
             owl:onProperty fibo-be-le-fbo:hasHeadquartersAddress ],
         [ a owl:Restriction ;
@@ -525,36 +541,20 @@ cmns-org:LegalEntity a owl:Class ;
             owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-org:LegalEntity ;
-            owl:onProperty cmns-dt:precedes ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-breg:StandardIndustrialClassificationCode ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-fct-breg:EntityStatus ;
-            owl:onProperty fibo-fbc-fct-breg:hasEntityStatus ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-fct-breg:EntityExpirationReason ;
-            owl:onProperty fibo-fbc-fct-breg:hasEntityExpirationReason ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty fibo-fbc-fct-breg:hasEntityExpirationDate ] .
+            owl:onProperty cmns-cls:isClassifiedBy ] .
 
 fibo-fbc-fct-breg:BusinessRegistryEntry a owl:Class ;
     rdfs:label "business registry entry",
         "商业登记册条目（business registry entry）"@zh ;
     rdfs:comment "商业登记册中的一条记录。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-be-le-cb:RegistrationIdentifier ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-breg:RegistrationStatus ;
             owl:onProperty fibo-fbc-fct-breg:hasRegistrationStatus ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-be-le-cb:RegistrationIdentifier ],
         [ a owl:Restriction ;
             owl:onProperty cmns-ra:hasRegistrationDate ;
             owl:someValuesFrom cmns-dt:CombinedDateTime ],
@@ -581,11 +581,11 @@ fibo-fbc-fct-breg:hasTransliteratedLegalName a owl:DatatypeProperty ;
 cmns-org:FormalOrganization a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-fct-breg:StandardIndustrialClassificationCode ;
+            owl:onClass fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode ;
             owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode ;
+            owl:onClass fibo-fbc-fct-breg:StandardIndustrialClassificationCode ;
             owl:onProperty cmns-cls:isClassifiedBy ] .
 
 fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode a owl:Class ;
@@ -596,12 +596,12 @@ fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemCode a owl:Class ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom cmns-org:FormalOrganization ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemScheme ;
-            owl:onProperty cmns-dsg:isDefinedIn ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty cmns-dsg:hasTag ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fct-breg:NorthAmericanIndustryClassificationSystemScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-arr-cls:IndustrySectorClassifier,
         cmns-cds:CodeElement ;
@@ -613,12 +613,12 @@ fibo-fbc-fct-breg:StandardIndustrialClassificationCode a owl:Class ;
         "标准行业分类代码（standard industrial classification code）"@zh ;
     rdfs:comment "代表某一行业的标准行业分类（SIC）代码。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom cmns-org:FormalOrganization ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-breg:StandardIndustrialClassificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom cmns-org:FormalOrganization ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty cmns-dsg:hasTag ;
@@ -636,11 +636,11 @@ fibo-fbc-fct-breg:BusinessRegistrationAuthority a owl:Class ;
         "商业登记主管机构（business registration authority）"@zh ;
     rdfs:comment "负责维护商业实体登记册的登记主管机构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:registers ;
-            owl:someValuesFrom fibo-be-le-cb:RegistrationIdentifier ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-org:manages ;
             owl:someValuesFrom fibo-fbc-fct-breg:BusinessRegistry ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:registers ;
+            owl:someValuesFrom fibo-be-le-cb:RegistrationIdentifier ],
         cmns-ra:Registrar,
         cmns-ra:RegistrationAuthority ;
     skos:definition "registration authority that is responsible for maintaining a registry of business entities" ;
@@ -655,13 +655,13 @@ fibo-fbc-fct-breg:BusinessRegistry a owl:Class ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-fct-breg:BusinessRegistryEntry ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty fibo-fbc-fct-breg:hasRegistryName ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-breg:BusinessRegistrationAuthority ;
             owl:onProperty cmns-org:isManagedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-fbc-fct-breg:hasRegistryName ],
         cmns-ra:Registry ;
     skos:definition "registry for registering and maintaining information about business entities" ;
     cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/gleif-registration-authorities-list"^^xsd:anyURI .

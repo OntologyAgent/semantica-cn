@@ -380,12 +380,12 @@ cmns-pts:Situation a owl:Class ;
             owl:onClass cmns-rlcmp:Role ;
             owl:onProperty cmns-pts:hasObjectRole ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-pts:hasSubjectRole ;
-            owl:someValuesFrom cmns-rlcmp:Role ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DatePeriod ;
-            owl:onProperty cmns-pts:holdsDuring ] ;
+            owl:onProperty cmns-pts:holdsDuring ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasSubjectRole ;
+            owl:someValuesFrom cmns-rlcmp:Role ] ;
     skos:definition "setting, state of being, or relationship that is relatively stable for some period of time" ;
     skos:example "Examples include ownership, control, possession, affiliation, beneficial ownership, employment, and other similar situations." ;
     skos:note "From a usage perspective, situations are essentially reified relations, sometimes called mediating relationships." .

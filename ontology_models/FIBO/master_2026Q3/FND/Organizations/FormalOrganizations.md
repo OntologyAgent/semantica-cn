@@ -31,10 +31,10 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 雇员（employee） | 依任何明示或默示、口头或书面的雇佣合同为他人服务的人，雇主有权控制和指导其工作。 |
-| 雇主（employer） | 以报酬（包括工资或薪金及潜在的其他福利）换取一人或多人工作的参与方。 |
-| 雇佣关系（employment） | 表示被雇用状态的情形，即雇主与雇员之间在某段时期内存在的关系。 |
-| 团体（group） | 被视为一个整体的代理（人、组织、软件代理等）集合。 |
+| 雇员（employee） | 依任何明示或默示、口头或书面的雇佣合同为他人服务的人，雇主有权控制和指导其工作。<br>person in the service of another under any contract of hire, express or implied, oral or written, where the employer has the right to control and direct that person in the material details of how the work is to be performed |
+| 雇主（employer） | 以报酬（包括工资或薪金及潜在的其他福利）换取一人或多人工作的参与方。<br>party that provides compensation, including wages or a salary and potentially other benefits, in exchange for work performed by one or more people, and that has the right to control and direct the employee in the material details of how the work is to be performed |
+| 雇佣关系（employment） | 表示被雇用状态的情形，即雇主与雇员之间在某段时期内存在的关系。<br>situation representing the state of being employed, i.e., the relationship that holds between an employer and employee for some period of time |
+| 团体（group） | 被视为一个整体的代理（人、组织、软件代理等）集合。<br>collection of agents (people, organizations, software agents, etc.) that are considered as a unit |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -48,8 +48,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **受雇于情境（is employed in）** | 标识某人受雇所在的雇佣情境。 | 值域：雇佣关系（employment）；子属性：是组织成员 |
-| **是……的雇员（is employee of）** | 标识雇员为之工作的正式组织。 | 值域：雇主（employer）；子属性：受…影响（is affected by） |
+| **受雇于情境（is employed in）** | 标识某人受雇所在的雇佣情境。<br>indicates the context of employment in which someone is employed | 值域：雇佣关系（employment）；子属性：是组织成员 |
+| **是……的雇员（is employee of）** | 标识雇员为之工作的正式组织。<br>identifies the formal organization for which the employee works | 值域：雇主（employer）；子属性：受…影响（is affected by） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -68,8 +68,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有雇员（has employee）** | 标识被雇主雇用的雇员。 | 值域：雇员（employee）；逆属性：是……的雇员（is employee of）；子属性：对…采取行动（acts on） |
-| **是雇佣方（is employing party）** | 将处于雇主角色的参与方关联到雇佣情境。 | 值域：雇佣关系（employment）；子属性：在……中为成员方 |
+| **具有雇员（has employee）** | 标识被雇主雇用的雇员。<br>indicates an employee that is employed by the employer | 值域：雇员（employee）；逆属性：是……的雇员（is employee of）；子属性：对…采取行动（acts on） |
+| **是雇佣方（is employing party）** | 将处于雇主角色的参与方关联到雇佣情境。<br>relates a party in the role of employer to the context of employment | 值域：雇佣关系（employment）；子属性：在……中为成员方 |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -88,8 +88,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有被雇方（has employed party）** | 标识雇佣情形中的雇员。 | 值域：雇员（employee）；逆属性：受雇于情境（is employed in）；子属性：具有组织成员 |
-| **具有雇佣方（has employing party）** | 标识雇佣情形中的雇主。 | 值域：雇主（employer）；逆属性：是雇佣方（is employing party）；子属性：具有成员关系 |
+| **具有被雇方（has employed party）** | 标识雇佣情形中的雇员。<br>identifies the employee in an employment situation | 值域：雇员（employee）；逆属性：受雇于情境（is employed in）；子属性：具有组织成员 |
+| **具有雇佣方（has employing party）** | 标识雇佣情形中的雇主。<br>identifies employer in an employment situation | 值域：雇主（employer）；逆属性：是雇佣方（is employing party）；子属性：具有成员关系 |
 
 公理：
 
@@ -120,8 +120,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **雇用（employs）** | 标识被该法律主体雇用的人。 | 值域：个人；子属性：扮演直接影响…的主动角色（plays active role that directly affects） |
-| **受雇于（is employed by）** | 标识雇用某人的参与方（法律主体或正式组织）。 | 值域：法律主体；子属性：直接经历（experiences directly） |
+| **雇用（employs）** | 标识被该法律主体雇用的人。<br>indicates someone that is employed by the legal person | 值域：个人；子属性：扮演直接影响…的主动角色（plays active role that directly affects） |
+| **受雇于（is employed by）** | 标识雇用某人的参与方（法律主体或正式组织）。<br>indicates the party (legal person or formal organization) that employs someone | 值域：法律主体；子属性：直接经历（experiences directly） |
 
 ## 4. 依赖（owl:imports，10 个）
 

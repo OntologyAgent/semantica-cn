@@ -127,11 +127,11 @@ fibo-fnd-utl-alx:KeyPerformanceIndicator a owl:Class ;
     rdfs:comment "表明个人或企业在达成目标方面表现如何的可测目标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty fibo-fnd-utl-alx:hasTargetValue ;
+            owl:onProperty fibo-fnd-utl-alx:hasObservedValue ;
             owl:someValuesFrom fibo-fnd-dt-fd:DatedStructuredCollection ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty fibo-fnd-utl-alx:hasObservedValue ;
+            owl:onProperty fibo-fnd-utl-alx:hasTargetValue ;
             owl:someValuesFrom fibo-fnd-dt-fd:DatedStructuredCollection ],
         fibo-fnd-utl-alx:QualifiedMeasure ;
     skos:definition "measurable target that indicates how an individual or business is performing in terms of meeting its goals" ;
@@ -184,6 +184,9 @@ fibo-fnd-utl-alx:ScopedMeasure a owl:Class ;
         "限定范围度量（scoped measure）"@zh ;
     rdfs:comment "受其适用统计总体上的过滤器约束的限定度量。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ;
+            owl:onProperty fibo-fnd-utl-alx:hasPeriodicity ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-utl-alx:StatisticalArea ;
             owl:onProperty cmns-loc:hasCoverageArea ],
@@ -191,9 +194,6 @@ fibo-fnd-utl-alx:ScopedMeasure a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-utl-alx:FinitePopulation ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ;
-            owl:onProperty fibo-fnd-utl-alx:hasPeriodicity ],
         fibo-fnd-utl-alx:QualifiedMeasure ;
     skos:definition "qualified measure that is constrained by filters on the statistical population to which it applies" ;
     cmns-av:explanatoryNote "Note that (1) the anchor date reflects the start of the current series, such as 1982-1984 for the CPI, (2) the fixed comparative date might be something like March 2009, if one is comparing a current index against its value at the end of the great recession, (3) the relative comparative date might be something like a month or year ago, depending on the analysis requirements, and (4) the relative comparative period might be a 3 month average prior value, again depending on the analysis requirements." .
@@ -345,11 +345,11 @@ fibo-fnd-utl-alx:StatisticalProgram a owl:Class ;
         "统计计划（statistical program）"@zh ;
     rdfs:comment "对涉及一项或多项研究或调查的课题或情形进行详细调查与分析的计划。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-org:provides ;
-            owl:someValuesFrom fibo-fnd-utl-alx:StatisticalMeasure ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-loc:hasCoverageArea ;
             owl:someValuesFrom fibo-fnd-utl-alx:StatisticalArea ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:provides ;
+            owl:someValuesFrom fibo-fnd-utl-alx:StatisticalMeasure ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fnd-utl-alx:StatisticalUniverse ],
@@ -467,11 +467,11 @@ fibo-fnd-utl-alx:StatisticalUniverse a owl:Class ;
         "统计全域（statistical universe）"@zh ;
     rdfs:comment "代表某问题所关注的全部成员（人、资源、产品、服务、事件或实体）之「全域」的集合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:nonNegativeInteger ;
-            owl:onProperty fibo-fnd-utl-alx:hasUniverseSize ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ;
             owl:someValuesFrom fibo-fnd-utl-alx:StatisticalProgram ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-utl-alx:hasUniverseSize ],
         cmns-col:Collection ;
     skos:definition "collection representing the total membership, or 'universe', of people, resources, products, services, events, or entities of interest for some question, experiment, survey or statistical program" ;
     skos:example "A statistical universe can be a group of actually existing objects (e.g. the set of all stars within the Milky Way galaxy) or a hypothetical and potentially infinite group of objects conceived as a generalization from experience (e.g. the set of all possible hands in a game of poker)." ;
@@ -521,15 +521,15 @@ fibo-fnd-utl-alx:Dispersion a owl:Class ;
         "离散度（dispersion）"@zh ;
     rdfs:comment "观测值呈现的散布或变异程度。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty fibo-fnd-arr-arr:hasCollectionSize ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fnd-utl-alx:FinitePopulation ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-utl-alx:hasObservedValue ;
             owl:someValuesFrom cmns-col:StructuredCollection ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-arr-arr:hasCollectionSize ],
         fibo-fnd-utl-alx:StatisticalMeasure,
         cmns-qtu:Expression ;
     skos:definition "degree of scatter or variability shown by observations" ;
@@ -584,13 +584,13 @@ fibo-fnd-utl-alx:StatisticalMeasure a owl:Class ;
         "统计度量（statistical measure）"@zh ;
     rdfs:comment "特定组（研究域）内各统计单位的个体定量变量值的汇总（平均值、众数、总计、指数等）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-cls:Aspect ;
-            owl:onProperty cmns-cls:isCharacterizedBy ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty fibo-fnd-utl-alx:isEstimate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-cls:Aspect ;
+            owl:onProperty cmns-cls:isCharacterizedBy ],
         cmns-qtu:Measure ;
     skos:definition "summary (means, mode, total, index, etc.) of the individual quantitative variable values for the statistical units in a specific group (study domain)" ;
     cmns-av:adaptedFrom "http://stats.oecd.org/glossary/detail.asp?ID=5068"^^xsd:anyURI ;

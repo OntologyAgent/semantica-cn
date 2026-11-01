@@ -34,18 +34,18 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 定性评级得分（qualitative rating score） | 以相对于某评级标度的定性代码表示的评级得分。 |
-| 定量评级得分（quantitative rating score） | 某标度上的简单数值型评级得分，如个人的信用评分。 |
-| 评级（rating） | 某事物在特定时间的等级地位，由某参与方基于评估、参照某标度以至少一个得分表示。 |
-| 评级机构（rating agency） | 同时也是评级标度发布方的评级发布方，通常（但非总是）为独立评级服务机构。 |
-| 评级评估活动（rating assessment activity） | 产生等级或得分、并可能产生描述该得分及其确定过程之报告的评估活动。 |
-| 评级评估事件（rating assessment event） | 产生等级或得分、并可能产生描述该得分之报告的单个评估。 |
-| 评级发布方（rating issuer） | 负责发布评级的参与方。 |
-| 评级方（rating party） | 分析某事物某方面并制定评级的个人、组织或团体。 |
-| 评级报告（rating report） | 描述一组评级的报告。 |
-| 评级标度（rating scale） | 依据某种标度、就质量、标准或排名为某事物赋值的体系。 |
-| 评级标度发布方（rating scale publisher） | 负责管理一个或多个评级方案并可能据以发布评级的参与方。 |
-| 评级得分（rating score） | 依照某评级标度对某事物的等级、分类或排名。 |
+| 定性评级得分（qualitative rating score） | 以相对于某评级标度的定性代码表示的评级得分。<br>rating score that is represented as a qualitative code with respect to some rating scale |
+| 定量评级得分（quantitative rating score） | 某标度上的简单数值型评级得分，如个人的信用评分。<br>rating score that is a simple numeric value on some scale, such as a credit rating for an individual |
+| 评级（rating） | 某事物在特定时间的等级地位，由某参与方基于评估、参照某标度以至少一个得分表示。<br>standing of something at a particular time, indicated by at least one scores with respect to some scale, based on an assessment by some party |
+| 评级机构（rating agency） | 同时也是评级标度发布方的评级发布方，通常（但非总是）为独立评级服务机构。<br>rating issuer that is also a rating scale publisher, frequently but not always an independent rating service |
+| 评级评估活动（rating assessment activity） | 产生等级或得分、并可能产生描述该得分及其确定过程之报告的评估活动。<br>assessment activity resulting in a grade or score and potentially a report describing the score and the process used to determine that score |
+| 评级评估事件（rating assessment event） | 产生等级或得分、并可能产生描述该得分之报告的单个评估。<br>individual assessment resulting in a grade or score and potentially a report describing the score |
+| 评级发布方（rating issuer） | 负责发布评级的参与方。<br>party that is responsible for issuing ratings |
+| 评级方（rating party） | 分析某事物某方面并制定评级的个人、组织或团体。<br>person, organization or group that analyzes some aspect of something and develops a rating |
+| 评级报告（rating report） | 描述一组评级的报告。<br>report describing a set of ratings |
+| 评级标度（rating scale） | 依据某种标度、就质量、标准或排名为某事物赋值的体系。<br>system for assigning a value to something according to some scale with respect to quality, a standard, or ranking |
+| 评级标度发布方（rating scale publisher） | 负责管理一个或多个评级方案并可能据以发布评级的参与方。<br>party responsible for managing one or more rating schemes and potentially publishing ratings based on those schemes |
+| 评级得分（rating score） | 依照某评级标度对某事物的等级、分类或排名。<br>grade, classification, or ranking of for something in accordance with some rating scale |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -60,8 +60,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有生效日期（hasEffectiveDate）** | — | — |
-| **具有评级得分（has rating score）** | 标识某评级相对于特定评级标度的等级或得分。 | 值域：评级得分（rating score）；子属性：由……分类 |
-| **评定（rates）** | 标识评级所适用的工具、参与方或其他事物。 | 子属性：分类 |
+| **具有评级得分（has rating score）** | 标识某评级相对于特定评级标度的等级或得分。<br>indicates the grade or score associated with a rating with respect to a particular rating scale | 值域：评级得分（rating score）；子属性：由……分类 |
+| **评定（rates）** | 标识评级所适用的工具、参与方或其他事物。<br>indicates the instrument, party or something else to which a rating applies | 子属性：分类 |
 | **由……生成（isGeneratedBy）** | — | — |
 | **由……发行（isIssuedBy）** | — | — |
 | **具有签发日期（hasDateOfIssuance）** | — | — |
@@ -123,7 +123,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **使用评级执行方（uses rating performer）** | 发行方用于评估评级的评级执行方。 | 值域：评级方（rating party）；子属性：由……生产 |
+| **使用评级执行方（uses rating performer）** | 发行方用于评估评级的评级执行方。<br>rating performer an issuer uses to assess ratings | 值域：评级方（rating party）；子属性：由……生产 |
 | **发行（issues）** | — | — |
 
 公理：
@@ -156,7 +156,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **为……制作评级（produces ratings for）** | 通过其为……制作或发布评级的发行方。 | 值域：评级发布方（rating issuer）；逆属性：使用评级执行方（uses rating performer）；子属性：生产 |
+| **为……制作评级（produces ratings for）** | 通过其为……制作或发布评级的发行方。<br>issuer for which ratings are produced or posted through | 值域：评级发布方（rating issuer）；逆属性：使用评级执行方（uses rating performer）；子属性：生产 |
 | **生成（generates）** | — | — |
 
 公理：
@@ -189,8 +189,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有最优度量（has best measure）** | 标识评级得分的标度内度量属性可能的「最优」（最期望）值。 | 值域：xsd:decimal |
-| **具有最差度量（has worst measure）** | 标识评级得分的标度内度量属性可能的「最差」（最不期望）值。 | 值域：xsd:decimal |
+| **具有最优度量（has best measure）** | 标识评级得分的标度内度量属性可能的「最优」（最期望）值。<br>indicates the 'best' (most desirable) possible value for a rating score's hasMeasureWithinScale property | 值域：xsd:decimal |
+| **具有最差度量（has worst measure）** | 标识评级得分的标度内度量属性可能的「最差」（最不期望）值。<br>indicates the 'worst' (least desirable) possible value for a rating score's hasMeasureWithinScale property | 值域：xsd:decimal |
 | **定义（defines）** | — | — |
 | **由……管理（isManagedBy）** | — | — |
 
@@ -229,7 +229,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有标度内度量（has measure within scale）** | 标识评级标度上的相对数值度量或次序。 | 值域：xsd:decimal |
+| **具有标度内度量（has measure within scale）** | 标识评级标度上的相对数值度量或次序。<br>indicates a relative, numeric measure or ordering on a rating scale | 值域：xsd:decimal |
 | **定义于（isDefinedIn）** | — | — |
 
 公理：
@@ -263,7 +263,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有标度内度量（has measure within scale）** | 标识评级标度上的相对数值度量或次序。 | 值域：xsd:decimal |
+| **具有标度内度量（has measure within scale）** | 标识评级标度上的相对数值度量或次序。<br>indicates a relative, numeric measure or ordering on a rating scale | 值域：xsd:decimal |
 
 公理：
 
@@ -277,7 +277,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有评级（has rating）** | 标识基于特定评级标度按等级或得分赋予某事物的评级。 | 值域：评级（rating）；逆属性：评定（rates）；子属性：由……分类 |
+| **具有评级（has rating）** | 标识基于特定评级标度按等级或得分赋予某事物的评级。<br>indicates the rating assigned to a thing based on a grade or score according to a particular rating scale | 值域：评级（rating）；逆属性：评定（rates）；子属性：由……分类 |
 
 ## 4. 依赖（owl:imports，14 个）
 

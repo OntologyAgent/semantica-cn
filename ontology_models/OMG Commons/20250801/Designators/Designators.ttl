@@ -148,12 +148,12 @@ cmns-dsg:Designation a owl:Class ;
         "指称（designation）"@zh ;
     rdfs:comment "在某领域或主题中指代某事物（或其概念化）的表示。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:denotes ;
-            owl:someValuesFrom owl:Thing ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-txt:Text ;
-            owl:onProperty cmns-txt:hasTextValue ] ;
+            owl:onProperty cmns-txt:hasTextValue ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:denotes ;
+            owl:someValuesFrom owl:Thing ] ;
     skos:definition "representation for something, or for a conceptualization thereof, that denotes it in a domain or subject" ;
     skos:note "A designation can be a term including appellations, a proper name, or a symbol.",
         "A designation can be linguistic or non-linguistic. It can consist of various types of characters, but also punctuation marks such as hyphens and parentheses, governed by domain-, subject-, or language-specific conventions.",

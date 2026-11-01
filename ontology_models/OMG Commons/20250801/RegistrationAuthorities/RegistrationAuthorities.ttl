@@ -59,10 +59,6 @@ cmns-ra:RegisteredIdentifier a owl:Class ;
         "注册标识符（registered identifier）"@zh ;
     rdfs:comment "由注册机构或其代表按某注册方案在注册簿中登记的情境化标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty cmns-ra:hasRegistrationDate ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredBy ;
             owl:someValuesFrom cmns-ra:Registrar ],
         [ a owl:Restriction ;
@@ -72,6 +68,10 @@ cmns-ra:RegisteredIdentifier a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredIn ;
             owl:someValuesFrom cmns-ra:Registry ],
+        [ a owl:Restriction ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty cmns-ra:hasRegistrationDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-cxtid:ContextualIdentifier ;
     skos:definition "contextual identifier that is registered in a registry by, or on behalf of, a registration authority according to some registration scheme" .
 
@@ -157,15 +157,15 @@ cmns-ra:Registrar a owl:Class ;
         "注册员（registrar）"@zh ;
     rdfs:comment "作为注册机构代表提供注册服务（含官方记录保存）的参与方角色。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-ra:RegistrationService ;
-            owl:onProperty cmns-org:provides ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-ra:registers ;
             owl:someValuesFrom owl:Thing ],
         [ a owl:Restriction ;
             owl:onProperty cmns-org:isDesignatedBy ;
             owl:someValuesFrom cmns-ra:RegistrationAuthority ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-ra:RegistrationService ;
+            owl:onProperty cmns-org:provides ],
         cmns-org:ServiceProvider,
         cmns-pts:Actor ;
     skos:definition "role of a party that acts as a representative of a registration authority to provide registration services, including official record keeping" ;
@@ -177,12 +177,12 @@ cmns-ra:RegistrationAuthority a owl:Class ;
         "注册机构（registration authority）"@zh ;
     rdfs:comment "官方负责维护注册簿并提供注册服务、和/或将部分或全部职责委托给注册员的服务提供方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-ra:isRegistrationAuthorityFor ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-ra:Registry ;
             owl:onProperty cmns-org:manages ],
-        [ a owl:Restriction ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty cmns-ra:isRegistrationAuthorityFor ],
         cmns-bauth:AuthorizingParty,
         cmns-org:ServiceProvider ;
     skos:definition "service provider that is officially responsible for maintaining a registry and providing registration services and/or for delegating of some or all of these roles to a registrar" ;
@@ -194,12 +194,12 @@ cmns-ra:Registry a owl:Class ;
         "注册簿（registry）"@zh ;
     rdfs:comment "与某事物相关的权威记录或记录集合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom cmns-ra:RegistrationAuthority ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-ra:RegistryEntry ;
             owl:onProperty cmns-col:comprises ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-org:isManagedBy ;
-            owl:someValuesFrom cmns-ra:RegistrationAuthority ],
         cmns-col:StructuredCollection,
         cmns-doc:Record ;
     skos:definition "authoritative record or collection of records relating to something" ;

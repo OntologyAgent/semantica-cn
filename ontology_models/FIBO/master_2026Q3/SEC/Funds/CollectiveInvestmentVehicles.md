@@ -34,69 +34,69 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 共同投资基金（FondsCommunDePlacement） | 开放式集合投资基金，是基金管理人与投资者之间设立的合同形式，而非独立法律实体（法国 FCP）。 |
-| 累积股类（accumulating share class） | 不提供分红再投资选择、收益累积于份额净值中的股类。 |
-| 资产类别策略（asset class strategy） | 基于资产类别的投资策略。 |
-| 基金普通份额（common share in fund） | 基金中被归类为普通股类的份额单位。 |
-| 货币策略（currency strategy） | 基于货币的投资策略。 |
+| 共同投资基金（FondsCommunDePlacement） | 开放式集合投资基金，是基金管理人与投资者之间设立的合同形式，而非独立法律实体（法国 FCP）。<br>open-ended collective investment fund, which is a contractual form set up between the fund manager and investors and not a separate legal entity |
+| 累积股类（accumulating share class） | 不提供分红再投资选择、收益累积于份额净值中的股类。<br>A share class in which there is no option to reinvest. |
+| 资产类别策略（asset class strategy） | 基于资产类别的投资策略。<br>Strategy which is asset class based. |
+| 基金普通份额（common share in fund） | 基金中被归类为普通股类的份额单位。<br>A share unit in a fund, which is classified as a Common Share class. |
+| 货币策略（currency strategy） | 基于货币的投资策略。<br>Strategy which is currency based. |
 | 分红股类（distributing share class） | 将收益定期分配给份额持有人的股类。 |
-| 股票基金（equity fund） | 至少 85% 投资于股票的基金。 |
-| 股票组合（equity portfolio） | 至少 85% 敞口为股票的投资组合。 |
-| 基金会计（fund accountant） | 负责记录基金资产和负债账目的一方，计算交易价格、基金资产净值（NAV）等。 |
-| 基金债券类单位（fund bond class unit） | 以对该基金之债权形式存在的基金单位。 |
-| 基金债券单位票息（fund bond unit coupon） | 向基金债券单位持有人支付的固定票息。 |
-| 基金现金分配政策（fund cash distribution policy） | 在基金单位分配政策为「现金」而非「再投资」时，关于现金股息或票据分配的政策。 |
-| 基金分类（fund classification） | 按资产类别对基金进行的分类，是用于对基金归类的公开代码。 |
-| 基金分类方案（fund classification scheme） | 按资产类别对基金进行分类的公开方案。 |
-| 基金票息政策（fund coupon policy） | 关于债券单位票息预期分配的条款。 |
-| 基金存管人（fund depositary） | 持有并保管基金所持资产的一方，还负责组合符合法定比例等合规事项。 |
-| 基金分配政策（fund distribution policy） | 表明基金分配总体策略或限制的政策。 |
-| 基金分销商（fund distributor） | 投资者通过其购买基金份额的实体，可基于全权委托、咨询或仅执行交易的方式。 |
-| 基金股息政策（fund dividend policy） | 关于股息预期分配的条款。 |
-| 基金投资目标（fund investment objective） | 基金的目标，例如超越某一基准。 |
-| 基金投资政策（fund investment policy） | 基金为实现既定目标而实施的政策。 |
-| 基金投资限制集（fund investment restrictions set） | 适用于基金整体的限制（如风险因素），用于判断该基金是否适合某类投资者。 |
-| 基金法律形式文件（fund legal form documentation） | 依合同法设立的基金的章程或组织文件，以合同形式体现。 |
-| 基金下单台（fund order desk） | 基金下单台账户的一方，负责接收投资者申购赎回指令。 |
-| 基金组合（fund portfolio） | 包含若干金融工具以及一种或多种货币现金头寸、并归属于某一基金的账户。 |
-| 基金组合投资限制（fund portfolio investment limitations） | 关于组合应如何配置以实现既定投资目标的详细政策，构成详细策略的基础。 |
-| 基金组合投资政策（fund portfolio investment policy） | 为实现既定投资策略和目标而制定的组合配置政策。 |
-| 基金处理一般条款（fund processing general terms） | 基金一般处理的正式条款，规定投资者和基金可以或不可以做什么。 |
-| 基金处理条款（fund processing terms） | 基金处理的正式条款，规定投资者和基金可以或不可以做什么，包括赎回和申购条款。 |
+| 股票基金（equity fund） | 至少 85% 投资于股票的基金。<br>A fund which invests in at least 85% shares. |
+| 股票组合（equity portfolio） | 至少 85% 敞口为股票的投资组合。<br>A portfolio which has at least 85% exposure to shares. |
+| 基金会计（fund accountant） | 负责记录基金资产和负债账目的一方，计算交易价格、基金资产净值（NAV）等。<br>The party that keeps accounting records of the available assets and liabilities of the Fund. It calculates dealing prices, the Net Asset Value (NAV) of the Fund, and may provide fund performance and tax data. Can be subcontracted by the FundAdministrator. |
+| 基金债券类单位（fund bond class unit） | 以对该基金之债权形式存在的基金单位。<br>A fund unit which takes the form of debt in that fund. |
+| 基金债券单位票息（fund bond unit coupon） | 向基金债券单位持有人支付的固定票息。<br>A fixed coupon paid out to holders of the Fund Bond Unit. |
+| 基金现金分配政策（fund cash distribution policy） | 在基金单位分配政策为「现金」而非「再投资」时，关于现金股息或票据分配的政策。<br>Policy for distribution of cash dividends or notes in the event that the fund units have a distribution policy of "Cash" rather than "Reinvestment". |
+| 基金分类（fund classification） | 按资产类别对基金进行的分类，是用于对基金归类的公开代码。<br>The category of the fund according to the asset class. This is a published code by which the Fund is classified. Further notes: Could be EFCF codes. This is the way in which "Type of fund" is articulated. |
+| 基金分类方案（fund classification scheme） | 按资产类别对基金进行分类的公开方案。<br>A published scheme for the category of a fund according to the asset class. |
+| 基金票息政策（fund coupon policy） | 关于债券单位票息预期分配的条款。<br>Terms for the expected distribution of bond unit coupons. |
+| 基金存管人（fund depositary） | 持有并保管基金所持资产的一方，还负责组合符合法定比例等合规事项。<br>The party that holds and safeguards holdings owned by a fund. It is also responsible for compliance of the portfolio with legal ratios etc. |
+| 基金分配政策（fund distribution policy） | 表明基金分配总体策略或限制的政策。<br>policy indicating the overall strategy or limitations on distribution for the fund |
+| 基金分销商（fund distributor） | 投资者通过其购买基金份额的实体，可基于全权委托、咨询或仅执行交易的方式。<br>an entity through which a fund may be bought by or for an investor. This may be on a discretionary or advisory basis, or as an execution-only service. Definition origin:EFAMA DD |
+| 基金股息政策（fund dividend policy） | 关于股息预期分配的条款。<br>Terms for the expected distributions of dividends. |
+| 基金投资目标（fund investment objective） | 基金的目标，例如超越某一基准。<br>The aim of a Fund e.g outperfom a given benchmark. |
+| 基金投资政策（fund investment policy） | 基金为实现既定目标而实施的政策。<br>policy that the fund implements in order to achieve the stated fund objectives |
+| 基金投资限制集（fund investment restrictions set） | 适用于基金整体的限制（如风险因素），用于判断该基金是否适合某类投资者。<br>Limitations that apply to the fund as a whole, such as risk factors. these are used to determine whether the fund is appropriate for a given type of investor to invest in. |
+| 基金法律形式文件（fund legal form documentation） | 依合同法设立的基金的章程或组织文件，以合同形式体现。<br>For a fund which is constituted under the law of contract, the constitution or articles that define the fund. These are embodied in a Contract. |
+| 基金下单台（fund order desk） | 基金下单台账户的一方，负责接收投资者申购赎回指令。<br>The Fund Order Desk is a party to the Fund Order Desk Account. |
+| 基金组合（fund portfolio） | 包含若干金融工具以及一种或多种货币现金头寸、并归属于某一基金的账户。<br>An account containing a number of financial instruments along with cash positions in one or more currencies and belonging to a Fund |
+| 基金组合投资限制（fund portfolio investment limitations） | 关于组合应如何配置以实现既定投资目标的详细政策，构成详细策略的基础。<br>Detailed Policy on approximately how the portfolio is to be allocated to achieve the stated investment goals. This underpins the detailed strategy of how to achieve this. |
+| 基金组合投资政策（fund portfolio investment policy） | 为实现既定投资策略和目标而制定的组合配置政策。<br>policy with respect to allocation of the portfolio that is designed to meet the stated investment strategy and goals |
+| 基金处理一般条款（fund processing general terms） | 基金一般处理的正式条款，规定投资者和基金可以或不可以做什么。<br>Formal terms for general processing of the fund. These set out what the investor and the fund may or may not do. |
+| 基金处理条款（fund processing terms） | 基金处理的正式条款，规定投资者和基金可以或不可以做什么，包括赎回和申购条款。<br>Formal terms for processing of the fund. These set out what the investor and the fund may or may not do. These include terms for redemption and subscription processing as well as general processing terms. ISO FIBIM definition: Processing characteristics linked to the instrument, ie, not to the market. |
 | 基金赎回限制（fund redemption restriction） | 对投资者赎回基金单位施加的限制。 |
-| 基金赎回条款（fund redemption terms） | 基金单位赎回的正式条款，规定投资者和基金可以或不可以做什么。 |
-| 基金再投资政策（fund reinvestment policy） | 关于基金单位收益预期再投资的条款。 |
-| 基金股类单位（fund share class unit） | 购买投资池一部分的法律结构，由投资者类型、最低投资额等多种特征定义。 |
-| 基金申购条款（fund subscription terms） | 基金的申购条款，规定投资者和基金在申购环节可以或不可以做什么。 |
-| 基金监管机构（fund supervisory authority） | 监管基金或基金行业的一方。 |
-| 基金过户代理人（fund transfer agent） | 代表基金执行申购、赎回和转换指令的实体。 |
-| 基金单位分配方式（fund unit distribution method） | 基金的常规分配政策方式。 |
-| 基金单位分配政策（fund unit distribution policy） | 与基金单位相关的政策，例如收益是分配给投资者还是留存于基金中，以及如何处理。 |
-| 基金现金分配（funds cash distribution） | 应计收益定期分配给投资者的方式。 |
-| 基金处理（funds processing） | 管理和处理基金、发行基金单位等的业务语境，基金相关各方即在此语境中定义。 |
-| 基金处理账户（funds processing account） | 专门用于基金处理的账户，按 FIBIM 定义是两个实体之间的业务关系。 |
-| 基金处理参与方（funds processing party） | 参与基金处理的一方。 |
-| 收益累积（income accumulation） | 应计收益不予分配，而是继续反映在单位/份额价格中的方式。 |
-| 投资策略（investment strategy） | 为实现特定投资目标而制定的计划、方法或一系列策略安排。 |
-| 司法管辖区策略（jurisdiction strategy） | 基于司法管辖区的投资策略。 |
-| 关键投资者信息文件（key investor information document） | 为投资者提供关键信息的简短文件，汇总招募说明书内容以便投资者理解（KIID）。 |
-| 资产净值计算方法（net asset value calculation method） | 计算投资基金/基金类别资产净值（NAV）的参数。 |
-| 票据基金（note fund） | 向投资者发行债务工具（票据）而非（或同时发行）传统权益的集合投资工具。 |
-| 票据基金份额（note fund share） | 在基金以公司形式组建时，发行票据而非传统权益的基金中的投资权益。 |
-| 票据基金单位（note fund unit） | 在基金以信托、合伙或单位信托形式组建时，发行票据而非传统权益的基金中的投资权益。 |
-| 机构策略（organization strategy） | 基于特定机构的投资策略。 |
-| 其他投资基金信息（other investment fund information） | 不属于招募说明书、但对理解基金很重要的信息。 |
-| 组合基准（portfolio benchmark） | 用于评价组合表现的证券或其他价格基准。 |
-| 组合投资策略（portfolio investment strategy） | 组合管理人试图实现基金目标的方式。 |
+| 基金赎回条款（fund redemption terms） | 基金单位赎回的正式条款，规定投资者和基金可以或不可以做什么。<br>Formal terms for redemption of units in the fund. These set out what the investor and the fund may or may not do. |
+| 基金再投资政策（fund reinvestment policy） | 关于基金单位收益预期再投资的条款。<br>Terms for the expected reinvestment of profits on fund units. |
+| 基金股类单位（fund share class unit） | 购买投资池一部分的法律结构，由投资者类型、最低投资额等多种特征定义。<br>The legal structure in which you can purchase part of an investment pool, defined by a variety of characteristics like investor type, minimum size of investment, distribution type, fee and currency. A fund unit which gives the holder an equity stake in the fund. |
+| 基金申购条款（fund subscription terms） | 基金的申购条款，规定投资者和基金在申购环节可以或不可以做什么。<br>Subscription terms for the fund. Further notes: ISO FIBIM, EFAMA DD and FPP combine terms for subscription, redemption and general holding requirements. These have been separated here as they are different kinds of term, but this can be reviewed. Subscription Terms are identified as terms of the fund and not the fund unit, since terms for how you might subscribe can't be binding one someone who has not yet subscribed. |
+| 基金监管机构（fund supervisory authority） | 监管基金或基金行业的一方。<br>party that supervises the fund or fund industry |
+| 基金过户代理人（fund transfer agent） | 代表基金执行申购、赎回和转换指令的实体。<br>An entity that undertakes the execution of subscription, redemption and switch orders on behalf of a fund. Definition origin:EFAMA DD |
+| 基金单位分配方式（fund unit distribution method） | 基金的常规分配政策方式。<br>The normal distribution policy for funds. |
+| 基金单位分配政策（fund unit distribution policy） | 与基金单位相关的政策，例如收益是分配给投资者还是留存于基金中，以及如何处理。<br>policy relating to the unit, e.g. if income is paid out or retained in the fund and how this is treated, including distribution policy details for dividends and coupons. |
+| 基金现金分配（funds cash distribution） | 应计收益定期分配给投资者的方式。<br>Accrued income is distributed periodically to the investor. |
+| 基金处理（funds processing） | 管理和处理基金、发行基金单位等的业务语境，基金相关各方即在此语境中定义。<br>The context of managing and processing funds, issuing funds units etc. This is the context in which the different parties involved in a fund are defined as parties. |
+| 基金处理账户（funds processing account） | 专门用于基金处理的账户，按 FIBIM 定义是两个实体之间的业务关系。<br>An account used specifically in the processing of funds. Like all accounts this is (per FIBIM definition) a business relationship between two entities; one entity is the account owner, the other entity is the account servicer. Please refer to Financial global model for treatment of accounts relationships in this model. |
+| 基金处理参与方（funds processing party） | 参与基金处理的一方。<br>party involved in the processing of funds |
+| 收益累积（income accumulation） | 应计收益不予分配，而是继续反映在单位/份额价格中的方式。<br>Accrued income is not distributed and instead remains reflected within the unit/share price. |
+| 投资策略（investment strategy） | 为实现特定投资目标而制定的计划、方法或一系列策略安排。<br>plan, method, or series of maneuvers or stratagems for obtaining a specific investment goal |
+| 司法管辖区策略（jurisdiction strategy） | 基于司法管辖区的投资策略。<br>Strategy which is jurisdiction based. |
+| 关键投资者信息文件（key investor information document） | 为投资者提供关键信息的简短文件，汇总招募说明书内容以便投资者理解（KIID）。<br>short document that provides critical information for investors, summarizing content derived from a prospectus such that it can be understood by investors without reference to other documents, as required by law in the European Union |
+| 资产净值计算方法（net asset value calculation method） | 计算投资基金/基金类别资产净值（NAV）的参数。<br>Parameters for the calculation of the net asset value for an investment fund/fund class. |
+| 票据基金（note fund） | 向投资者发行债务工具（票据）而非（或同时发行）传统权益的集合投资工具。<br>pooled investment vehicle that issues debt instruments (notes) to investors rather than (or in addition to) traditional equity interests |
+| 票据基金份额（note fund share） | 在基金以公司形式组建时，发行票据而非传统权益的基金中的投资权益。<br>investment interest in a fund that issues notes rather than traditional equity, in cases where the fund is structured as a company |
+| 票据基金单位（note fund unit） | 在基金以信托、合伙或单位信托形式组建时，发行票据而非传统权益的基金中的投资权益。<br>investment interest in a fund that issues notes rather than traditional equity, in cases where the fund is structured as a trust, partnership, or unitized fund |
+| 机构策略（organization strategy） | 基于特定机构的投资策略。<br>Strategy which is organization based. |
+| 其他投资基金信息（other investment fund information） | 不属于招募说明书、但对理解基金很重要的信息。<br>Things which are not part of the prospectus but are important if you want to understand the fund. |
+| 组合基准（portfolio benchmark） | 用于评价组合表现的证券或其他价格基准。<br>Security or other price against which the performance of the portfolio is evaluated. |
+| 组合投资策略（portfolio investment strategy） | 组合管理人试图实现基金目标的方式。<br>The manner in which the portfolio manager tries to reach the funds objectives. |
 | 基金优先份额（preferred share in fund） | 基金中被归类为优先股类的份额单位。 |
-| 私募股权持有（private equity holding） | 对私募股权的持有。 |
-| 房地产持有（real estate holding） | 由个人、组织或实体为投资、运营或战略目的拥有或控制的房地产有形资产。 |
-| 须洽基金下单台（refer to fund order desk） | 要求投资者在赎回基金前先与基金下单台联系的限制。 |
+| 私募股权持有（private equity holding） | 对私募股权的持有。<br>A holding of private equity. |
+| 房地产持有（real estate holding） | 由个人、组织或实体为投资、运营或战略目的拥有或控制的房地产有形资产。<br>tangible asset consisting of real estate that is owned or controlled by an individual, organization, or entity for investment, operational, or strategic purposes |
+| 须洽基金下单台（refer to fund order desk） | 要求投资者在赎回基金前先与基金下单台联系的限制。<br>Restriction requiring an investor to refer to the fund order desk prior to redeeming a fund. |
 | 风险级别（risk level） | 对基金或投资组合风险程度的度量。 |
-| 法国固定资本投资公司（SICAF） | 法国的一种基金载体形式，资本固定的投资公司。 |
-| 可变资本投资公司（SICAV） | 法国及欧洲大陆常见的开放式投资公司形式，资本可变的集合投资公司。 |
-| 行业策略（sector strategy） | 基于行业板块的投资策略。 |
-| 单位发行人（unit issuer） | 发行基金单位的一方。 |
+| 法国固定资本投资公司（SICAF） | 法国的一种基金载体形式，资本固定的投资公司。<br>A French fund vehicle type. Designation and definition needed. |
+| 可变资本投资公司（SICAV） | 法国及欧洲大陆常见的开放式投资公司形式，资本可变的集合投资公司。<br>Societe Collective a Capital Variable |
+| 行业策略（sector strategy） | 基于行业板块的投资策略。<br>Strategy which is sector based. |
+| 单位发行人（unit issuer） | 发行基金单位的一方。<br>The party which issues the Fund Unit. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -206,7 +206,7 @@
 |---|---|---|
 | **具有预期风险级别（has intended risk level）** | 指明基金的预期风险级别。 | 值域：风险级别（risk level） |
 | **列明于（stated in）** | 指明某信息列明于某一文件。 | 值域：招募说明书 |
-| **列明投资目标（stated investment aim）** | 以文字表述的基金目标，例如超越某一基准。 | 值域：xsd:string |
+| **列明投资目标（stated investment aim）** | 以文字表述的基金目标，例如超越某一基准。<br>The stated aim of the Fund in words, e.g outperfom a given benchmark. | 值域：xsd:string |
 
 公理：
 
@@ -244,11 +244,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **最低评级限制（minimum rating restriction）** | 可投资证券的最低评级要求。 | 值域：评级得分 |
-| **投资比例（percentage invested）** | 任一给定时间应投资的资金百分比。 | 值域：百分比 |
-| **跟踪误差（tracking error）** | 组合回报与基准回报之间差异的度量。 | 值域：百分比 |
-| **证券类型（type of securities）** | 可投资的证券或其他持有资产的类型。 | 值域：xsd:string |
-| **风险价值（value at risk）** | 对基金（而非组合）在给定置信水平下潜在损失的度量（VaR）。 | 值域：百分比 |
+| **最低评级限制（minimum rating restriction）** | 可投资证券的最低评级要求。<br>The minimum rating of securities to be invested in. | 值域：评级得分 |
+| **投资比例（percentage invested）** | 任一给定时间应投资的资金百分比。<br>The percentage of funds that is to be invested at any given time. | 值域：百分比 |
+| **跟踪误差（tracking error）** | 组合回报与基准回报之间差异的度量。<br>See RiskFactors narrative in EFAMA DD | 值域：百分比 |
+| **证券类型（type of securities）** | 可投资的证券或其他持有资产的类型。<br>The type of securities or other holdings that may be invested in. | 值域：xsd:string |
+| **风险价值（value at risk）** | 对基金（而非组合）在给定置信水平下潜在损失的度量（VaR）。<br>See RiskClassification_NameOf in EFAMA DD Applies to Fund not Portfolio. | 值域：百分比 |
 | **是……的部分（isPartOf）** | — | — |
 
 公理：
@@ -266,11 +266,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否纳入（inclusion）** | 所指策略是否被纳入；若为否，则该描述指将所述内容排除于组合之外。 | 值域：xsd:boolean |
-| **最大投资金额（maximum investment amount）** | 在指定策略中可投资的最大金额。 | 值域：货币数量 |
-| **最大投资比例（maximum investment percentage）** | 在指定策略中可投资的最大百分比。 | 值域：百分比 |
-| **最低投资金额（minimum investment amount）** | 在指定策略中必须投资的最低金额。 | 值域：货币数量 |
-| **最低投资比例（minimum investment percentage）** | 在指定策略中必须投资的最低百分比。 | 值域：百分比 |
+| **是否纳入（inclusion）** | 所指策略是否被纳入；若为否，则该描述指将所述内容排除于组合之外。<br>Whether the referred strategy is included. No means this description refers to the exclusion of what is described, from the portfolio. | 值域：xsd:boolean |
+| **最大投资金额（maximum investment amount）** | 在指定策略中可投资的最大金额。<br>Maximum amount that may be invested in the specified strategy. | 值域：货币数量 |
+| **最大投资比例（maximum investment percentage）** | 在指定策略中可投资的最大百分比。<br>Maximum percentage that may be invested in the specified strategy. | 值域：百分比 |
+| **最低投资金额（minimum investment amount）** | 在指定策略中必须投资的最低金额。<br>Minimum amount that has to be invested in the specified strategy. | 值域：货币数量 |
+| **最低投资比例（minimum investment percentage）** | 在指定策略中必须投资的最低百分比。<br>Minimum percentage that has to be invested in the specified strategy. | 值域：百分比 |
 
 ##### 2.10.1.1 资产类别策略（asset class strategy）
 
@@ -320,10 +320,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **附加限制（additional restrictions）** | 关于该策略及其所指机构的其他限制或处理信息。 | 值域：xsd:string |
-| **是否列入黑名单（blacklisted）** | 该策略是否将所指商业实体列入黑名单：若是，则该策略禁止投资于该实体。 | 值域：xsd:boolean |
+| **附加限制（additional restrictions）** | 关于该策略及其所指机构的其他限制或处理信息。<br>Other restrictions or treatment information in respect of this strategy and the organization to which it refers. | 值域：xsd:string |
+| **是否列入黑名单（blacklisted）** | 该策略是否将所指商业实体列入黑名单：若是，则该策略禁止投资于该实体。<br>Whether or not the strategy in framed so as to include the referenced business entity as being blacklisted. If yes, the strategy prevents investment in securities issued by that organization. | 值域：xsd:boolean |
 | **相对于……定义（defined in relation to）** | 表明某术语是相对于另一事物定义的。 | 值域：公司 |
-| **是否包含关联公司（include related firms）** | 该策略是否包含与所指机构存在某种关联的公司。 | 值域：xsd:boolean |
+| **是否包含关联公司（include related firms）** | 该策略是否包含与所指机构存在某种关联的公司。<br>Whether or not the strategy includes firms which are related in some way to the referenced organization. | 值域：xsd:boolean |
 
 公理：
 
@@ -409,7 +409,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **规定配置（defines allocations）** | 规定组合资产的配置方式。 | 值域：基金组合投资限制（fund portfolio investment limitations）；子属性：定义 |
-| **名称（name）** | 以语言表达式对某事物的指称。 | 值域：xsd:string |
+| **名称（name）** | 以语言表达式对某事物的指称。<br>Name given to the defined strategy. | 值域：xsd:string |
 | **管辖（governs）** | — | — |
 
 公理：
@@ -428,11 +428,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **交易频率描述（dealing frequency description）** | 对申购和赎回执行频率的文字描述。 | 值域：xsd:string |
+| **交易频率描述（dealing frequency description）** | 对申购和赎回执行频率的文字描述。<br>Description of frequency at which the subscriptions and redemptions are done. | 值域：xsd:string |
 | **规定主基金下单台账户（defines main fund order desk account）** | 规定基金的主要下单台账户。 | 值域：基金处理账户（funds processing account） |
 | **具有默认结算惯例（has default settlement convention）** | 指明基金交易的默认结算惯例。 | 值域：结算惯例 |
-| **是否主基金下单台（main fund order desk）** | 该基金下单台是否为基金指定的接收指令的主要实体。 | 值域：xsd:boolean |
-| **处理所在国（processing country）** | 该处理特性所适用的国家。 | 值域：国家 |
+| **是否主基金下单台（main fund order desk）** | 该基金下单台是否为基金指定的接收指令的主要实体。<br>Whether the fund order desk is the principal entity appointed by the fund to which orders should be submitted. | 值域：xsd:boolean |
+| **处理所在国（processing country）** | 该处理特性所适用的国家。<br>Country in which the processing characteristic applies. | 值域：国家 |
 
 公理：
 
@@ -449,14 +449,14 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **获准销售国（authorized country）** | 获准在该国销售基金的国家。 | 值域：国家 |
-| **是否适用后端收费（back end load applicable）** | 该类别的赎回指令是否可收取退出费用（如或有递延销售费 CDSC）。 | 值域：xsd:boolean |
-| **是否双价基金（dual fund）** | 该基金是否有两个价格。 | 值域：xsd:boolean |
-| **持有可否转让（holding transferable）** | 注册投资者是否可以将其部分或全部持有转让给第三方。 | 值域：xsd:boolean |
-| **最短持有期（minimum holding period）** | 单位/份额发行后必须持有、方允许赎回的天数。 | 值域：时长 |
-| **最低留存持有金额（minimum remaining holding amount）** | 为避免自动赎回而必须留存的单位/份额最低价值。 | 值域：货币数量 |
-| **最低留存持有单位数（minimum remaining holding units）** | 为避免自动赎回而必须留存的最低单位/份额数量。 | 值域：xsd:integer |
-| **是否收取转换费（switching chargeable）** | 同一伞形基金下子基金之间转换是否可收取转换费。 | 值域：xsd:boolean |
+| **获准销售国（authorized country）** | 获准在该国销售基金的国家。<br>Country in which it is authorised to commercialise the fund. | 值域：国家 |
+| **是否适用后端收费（back end load applicable）** | 该类别的赎回指令是否可收取退出费用（如或有递延销售费 CDSC）。<br>Whether an exit charge, eg, CDSC, on redemption orders for this class can be applied. | 值域：xsd:boolean |
+| **是否双价基金（dual fund）** | 该基金是否有两个价格。<br>Whether the fund has two prices. | 值域：xsd:boolean |
+| **持有可否转让（holding transferable）** | 注册投资者是否可以将其部分或全部持有转让给第三方。<br>Whether registered investors are able to transfer some or all of their holdings to third parties. | 值域：xsd:boolean |
+| **最短持有期（minimum holding period）** | 单位/份额发行后必须持有、方允许赎回的天数。<br>Period, in days, during which the units/shares must be held following their issue before redemption will be permitted. | 值域：时长 |
+| **最低留存持有金额（minimum remaining holding amount）** | 为避免自动赎回而必须留存的单位/份额最低价值。<br>Minimum value of units/shares that must be retained to avoid automatic redemption. | 值域：货币数量 |
+| **最低留存持有单位数（minimum remaining holding units）** | 为避免自动赎回而必须留存的最低单位/份额数量。<br>Minimum number of units/shares that must be retained to avoid automatic redemption. | 值域：xsd:integer |
+| **是否收取转换费（switching chargeable）** | 同一伞形基金下子基金之间转换是否可收取转换费。<br>Whether a switching charge for changing between sub-funds of the same umbrella can be applied. | 值域：xsd:boolean |
 
 #### 2.15.2 基金赎回条款（fund redemption terms）
 
@@ -469,14 +469,14 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有附加赎回限制（has additional redemption restrictions）** | 指明基金的附加赎回限制。 | 值域：须洽基金下单台（refer to fund order desk） |
-| **最大赎回金额（maximum redemption amount）** | 以金额表示的可卖出证券最大数量。 | 值域：货币数量 |
-| **最大赎回比例（maximum redemption percentage）** | 以百分比表示的可卖出证券最大数量。 | 值域：百分比 |
-| **最大赎回单位数（maximum redemption units）** | 单一交易日可赎回的最大份额/单位数量。 | 值域：xsd:integer |
-| **赎回截止时间（redemption cutoff date time）** | 可以提交赎回指令的最后日期/时间。 | 值域：日期时间 |
-| **赎回交易频率（redemption dealing frequency）** | 赎回执行的频率。 | 值域：重复区间 |
-| **赎回申请表（redemption form）** | 投资者赎回单位/份额的纸质书面指令/弃权表格。 | — |
-| **是否允许按金额赎回（redemption in amount allowed）** | 是否允许按金额赎回。 | 值域：xsd:boolean |
-| **赎回期（redemption period）** | 可以赎回单位/份额的特定期间，例如某些保本基金的赎回期。 | 值域：日期区间 |
+| **最大赎回金额（maximum redemption amount）** | 以金额表示的可卖出证券最大数量。<br>Maximum quantity of securities, expressed as an amount that can be sold. | 值域：货币数量 |
+| **最大赎回比例（maximum redemption percentage）** | 以百分比表示的可卖出证券最大数量。<br>Maximum quantity of securities, expressed as a percentage that can be sold. | 值域：百分比 |
+| **最大赎回单位数（maximum redemption units）** | 单一交易日可赎回的最大份额/单位数量。<br>Maximum number of shares/units that may be redeemed on a single dealing day. | 值域：xsd:integer |
+| **赎回截止时间（redemption cutoff date time）** | 可以提交赎回指令的最后日期/时间。<br>Last date/time at which an order to redeem can be given. | 值域：日期时间 |
+| **赎回交易频率（redemption dealing frequency）** | 赎回执行的频率。<br>Frequency at which the redemptions are done. | 值域：重复区间 |
+| **赎回申请表（redemption form）** | 投资者赎回单位/份额的纸质书面指令/弃权表格。<br>Physical written instruction/renunciation form for redemption of units/shares by the investor. | — |
+| **是否允许按金额赎回（redemption in amount allowed）** | 是否允许按金额赎回。<br>Whether redemptions in amount are allowed. | 值域：xsd:boolean |
+| **赎回期（redemption period）** | 可以赎回单位/份额的特定期间，例如某些保本基金的赎回期。<br>Specific period, eg, for some guaranteed funds, during which the units/shares may be redeemed. | 值域：日期区间 |
 
 公理：
 
@@ -492,23 +492,23 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否适用前端收费（front end load applicable）** | 该类别的申购指令是否可收取前端费用。 | 值域：xsd:boolean |
-| **首次申请表（initial application form）** | 投资者首次申购的纸质申请表。 | — |
-| **最高申购费（maximum purchasing fee）** | 购买基金份额时应付的最高百分比或固定金额费用。 | 值域：费用 |
-| **最高赎回费（maximum redemption fee）** | 赎回基金份额时应付的最高百分比或固定金额费用。 | 值域：费用 |
-| **最低首次申购金额（minimum initial subscription amount）** | 最低首次申购价值。 | 值域：货币数量 |
-| **最低首次申购单位数（minimum initial subscription units）** | 首次必须购买的最低单位/份额数量。 | 值域：xsd:integer |
-| **最低申购金额（minimum subscription amount）** | 现有投资者的最低申购价值。 | 值域：货币数量 |
-| **最低申购单位数（minimum subscription units）** | 现有投资者必须购买的最低单位/份额数量。 | 值域：xsd:integer |
-| **业绩报酬（performance fee）** | 为实现预定超额收益目标而支付的费用。 | 值域：费用 |
-| **申购费（purchasing fee）** | 购买基金份额时应付的实际百分比或固定金额费用。 | 值域：费用 |
-| **赎回费（redemption fee）** | 赎回基金份额时应付的实际百分比或固定金额费用。 | 值域：费用 |
-| **申购截止时间（subscription cutoff date time）** | 可以提交申购指令的最后日期/时间。 | 值域：日期时间 |
-| **申购交易频率（subscription dealing frequency）** | 申购执行的频率。 | 值域：重复区间 |
-| **认购期间（subscription period）** | 证券可被认购的期间。 | 值域：日期区间 |
-| **是否允许按金额申购（subscriptions in amount allowed）** | 是否允许按金额申购。 | 值域：xsd:boolean |
-| **后续申请表（subsequent application form）** | 同一投资者后续投资的纸质申请表。 | — |
-| **转换费（switching fee）** | 转换至另一基金时应付的实际百分比或固定金额费用。 | 值域：费用 |
+| **是否适用前端收费（front end load applicable）** | 该类别的申购指令是否可收取前端费用。<br>Whether a front end charge on subscription orders for this class can be applied. | 值域：xsd:boolean |
+| **首次申请表（initial application form）** | 投资者首次申购的纸质申请表。<br>Physical application form for the initial subscription by the investor. | — |
+| **最高申购费（maximum purchasing fee）** | 购买基金份额时应付的最高百分比或固定金额费用。<br>Maximum percentage or fixed amount of money due when purchasing fund shares Definition origin:EFAMA DD | 值域：费用 |
+| **最高赎回费（maximum redemption fee）** | 赎回基金份额时应付的最高百分比或固定金额费用。<br>Maximum percentage or fixed amount of money due when redeeming fund shares Definition origin:EFAMA DD | 值域：费用 |
+| **最低首次申购金额（minimum initial subscription amount）** | 最低首次申购价值。<br>Minimum initial subscription value. | 值域：货币数量 |
+| **最低首次申购单位数（minimum initial subscription units）** | 首次必须购买的最低单位/份额数量。<br>Minimum initial number of units/shares that must be purchased. | 值域：xsd:integer |
+| **最低申购金额（minimum subscription amount）** | 现有投资者的最低申购价值。<br>Minimum subscription value for existing investors. | 值域：货币数量 |
+| **最低申购单位数（minimum subscription units）** | 现有投资者必须购买的最低单位/份额数量。<br>Minimum number of units/shares that must be purchased by existing investors. | 值域：xsd:integer |
+| **业绩报酬（performance fee）** | 为实现预定超额收益目标而支付的费用。<br>Fees paid for the achivements of predefined outperformance objectives Definition origin:EFAMA DD | 值域：费用 |
+| **申购费（purchasing fee）** | 购买基金份额时应付的实际百分比或固定金额费用。<br>Actual percentage or fixed amount of money due when purchasing fund shares Definition origin:EFAMA DD | 值域：费用 |
+| **赎回费（redemption fee）** | 赎回基金份额时应付的实际百分比或固定金额费用。<br>Actual percentage or fixed amount of money due when redeeming fund shares Definition origin:EFAMA DD | 值域：费用 |
+| **申购截止时间（subscription cutoff date time）** | 可以提交申购指令的最后日期/时间。<br>Last date/time at which an order to subscribe can be given. | 值域：日期时间 |
+| **申购交易频率（subscription dealing frequency）** | 申购执行的频率。<br>Frequency at which the subscriptions are done. | 值域：重复区间 |
+| **认购期间（subscription period）** | 证券可被认购的期间。<br>Specific period, eg, for some guaranteed funds, during which the units/shares may be subscribed to. | 值域：日期区间 |
+| **是否允许按金额申购（subscriptions in amount allowed）** | 是否允许按金额申购。<br>Whether subscriptions in amount are allowed. | 值域：xsd:boolean |
+| **后续申请表（subsequent application form）** | 同一投资者后续投资的纸质申请表。<br>Physical application form for subsequent investments by the same investor. | — |
+| **转换费（switching fee）** | 转换至另一基金时应付的实际百分比或固定金额费用。<br>Actual percentage or fixed amount of money due when switching to another fund. Definition origin:EFAMA DD | 值域：费用 |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -540,8 +540,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有战略（hasStrategy）** | — | — |
-| **核准设立日（inception date）** | 在原产国获得核准的日期。 | 值域：日期 |
-| **是否限量发行份额（limited shares are issued）** | 该基金是否可以发行新份额，这决定其为封闭式还是开放式基金。 | 值域：xsd:boolean |
+| **核准设立日（inception date）** | 在原产国获得核准的日期。<br>Authorization date in the country of origin. Further Notes See definition in Inception Date for Fund. Separate fact exists here. Same definition used. EFAMA Review notes: Inception Date exists as soon as there is a prospectus, so it is a fact about a Share Class even if the share class is never formally issued or offered to the public. Legal structure exists even if something is not launched. Editor question: Review stated this was a fact about Share Class; confirm this fact does not apply to Bond and Note units, or was the term Share Class being used to mean all three? Meanwhile I have put the term "Issue Date" as a fact about all Fund Unit, as this is given a sa separate term in the EFAMA DD spreadsheet. MAy come clearer in the next version of that. | 值域：日期 |
+| **是否限量发行份额（limited shares are issued）** | 该基金是否可以发行新份额，这决定其为封闭式还是开放式基金。<br>Whether or not new shares can be issued in the fund. This is what makes it a closed end or open end fund. | 值域：xsd:boolean |
 
 公理：
 
@@ -577,7 +577,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **持有人可否再投资（holder may reinvest）** | 持有人是否可以将股息再投资于该基金。 | 值域：xsd:boolean |
+| **持有人可否再投资（holder may reinvest）** | 持有人是否可以将股息再投资于该基金。<br>Whether or not the holder may reinvest dividends in the fund. | 值域：xsd:boolean |
 
 #### 2.17.4 基金优先份额（preferred share in fund）
 
@@ -644,8 +644,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **票息支付日（coupon payment date）** | 票息分配给债券单位持有人的日期。 | 值域：月中日 |
-| **除息日（ex coupon date）** | 票息从资产净值（NAV）中扣除的日期。 | 值域：月中日 |
+| **票息支付日（coupon payment date）** | 票息分配给债券单位持有人的日期。<br>The date at which the coupon is distributed to the bond unit holder. | 值域：月中日 |
+| **除息日（ex coupon date）** | 票息从资产净值（NAV）中扣除的日期。<br>The date at which the coupon is substracted from the NAV | 值域：月中日 |
 
 ##### 2.20.1.2 基金股息政策（fund dividend policy）
 
@@ -663,8 +663,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **分配并再投资（distribution with reinvestment）** | 可以持有这样一类份额：应计收益先予分配，然后自动再投资于额外单位/份额。 | 值域：xsd:boolean |
-| **再投资频率（reinvestment frequency）** | 对采取再投资分配方式的单位，再投资发生的频率。 | 值域：重复区间 |
+| **分配并再投资（distribution with reinvestment）** | 可以持有这样一类份额：应计收益先予分配，然后自动再投资于额外单位/份额。<br>It is possible to hold shares for which the accrued income is distributed, but then reinvested automatically in additional units/shares allocated to the investor. | 值域：xsd:boolean |
+| **再投资频率（reinvestment frequency）** | 对采取再投资分配方式的单位，再投资发生的频率。<br>For units where there is Reinvestment distribution, the frequency with which the reinvestment takes place (this will be the same or less frequently than the Dividend Payment Frequency), otherwise this fact does not apply. | 值域：重复区间 |
 
 ### 2.21 基金处理（funds processing）
 
@@ -774,7 +774,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **投资重点（investment focus）** | 关于基金主要投资领域的信息（例如德国股票市场）。 | 值域：xsd:string |
+| **投资重点（investment focus）** | 关于基金主要投资领域的信息（例如德国股票市场）。<br>The information about the area the fund is mostly invested into (for example stock market in Germany). | 值域：xsd:string |
 | **包含（comprises）** | — | — |
 
 公理：
@@ -809,11 +809,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **公告渠道（declaration channel）** | 资产净值公布的渠道，例如报纸。 | 值域：xsd:string |
-| **历史定价标志（historic pricing indicator）** | 表明价格是历史价还是远期价。 | 值域：xsd:boolean |
+| **公告渠道（declaration channel）** | 资产净值公布的渠道，例如报纸。<br>Means of the net asset value publication, eg, a newspaper. | 值域：xsd:string |
+| **历史定价标志（historic pricing indicator）** | 表明价格是历史价还是远期价。<br>Indicates whether the price is historic or forward. | 值域：xsd:boolean |
 | **以……计算（is calculated in）** | 指明资产净值等数值计算所用的货币或单位。 | 值域：货币 |
-| **估值频率（valuation frequency）** | 资产净值计算的频率。 | 值域：重复区间 |
-| **估值频率文字描述（valuation frequency textual description）** | 对资产净值计算频率的文字描述。 | 值域：xsd:string |
+| **估值频率（valuation frequency）** | 资产净值计算的频率。<br>Frequency of the net asset value calculation. | 值域：重复区间 |
+| **估值频率文字描述（valuation frequency textual description）** | 对资产净值计算频率的文字描述。<br>Description of the frequency of the net asset value calculation. | 值域：xsd:string |
 
 公理：
 
@@ -873,10 +873,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **基准权重（benchmark weight）** | 工具在组合基准中的权重。 | 值域：百分比 |
+| **基准权重（benchmark weight）** | 工具在组合基准中的权重。<br>Instrument weighting in the benchmark for the portfolio. | 值域：百分比 |
 | **规定基准（defines benchmark）** | 规定组合所用的基准。 | 值域：市场利率 |
-| **最大偏离度（maximum deviation）** | 允许偏离基准的最大幅度。 | 值域：百分比 |
-| **最小偏离度（minimum deviation）** | 允许偏离基准的最小幅度。 | 值域：百分比 |
+| **最大偏离度（maximum deviation）** | 允许偏离基准的最大幅度。<br>Maximum allowable deviation from the benchmark. | 值域：百分比 |
+| **最小偏离度（minimum deviation）** | 允许偏离基准的最小幅度。<br>Minimum allowable deviation from the benchmark. | 值域：百分比 |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -942,20 +942,20 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **会计年度截止日（accounting year end date）** | 基金会计年度的最后一天。 | 值域：月中日 |
+| **会计年度截止日（accounting year end date）** | 基金会计年度的最后一天。<br>Last day of the accounting year for the fund. | 值域：月中日 |
 | **由……管理（administered by）** | 标识负责管理某事物的机构。 | 值域：基金管理人；子属性：基金具有相关方（fund has related party） |
 | **由……担任顾问（advised by）** | 指明为基金提供投资顾问服务的一方。 | 值域：注册投资顾问；子属性：基金具有相关方（fund has related party） |
 | **由……分销（distributed by）** | 指明分销基金的一方。 | 值域：基金分销商（fund distributor）；子属性：基金具有相关方（fund has related party） |
-| **财年截止日（end of fiscal year）** | 每年结账并确定损益的日期（月和日）。 | 值域：月中日 |
+| **财年截止日（end of fiscal year）** | 每年结账并确定损益的日期（月和日）。<br>Day and month on any given year at which the books are closed and profit and loss is determined. | 值域：月中日 |
 | **基金具有相关方（fund has related party）** | 指明与基金相关联的一方。 | 值域：基金处理参与方（funds processing party） |
 | **具有附加信息（has additional information）** | 指明基金的附加信息。 | 值域：其他投资基金信息（other investment fund information） |
 | **具有审计师（has auditor）** | 指明基金的审计师。 | 值域：外部审计师；子属性：基金具有相关方（fund has related party） |
-| **具有数据提供方（has data provider）** | 指明作为数据提供方并对所提供信息承担法律责任的机构。 | 值域：市场数据提供商；子属性：基金具有相关方（fund has related party） |
+| **具有数据提供方（has data provider）** | 指明作为数据提供方并对所提供信息承担法律责任的机构。<br>has an organization which is the data provider and is legally responsible for the information provided | 值域：市场数据提供商；子属性：基金具有相关方（fund has related party） |
 | **具有存管人（has depository）** | 指明基金的存管人。 | 值域：基金存管人（fund depositary）；子属性：基金具有相关方（fund has related party） |
-| **具有明细（has details）** | 关于投资基金组成部分资产净值计算的信息。 | 值域：资产净值计算方法（net asset value calculation method） |
-| **具有基金政策（has fund policy）** | 关于投资金额、限制等的总体政策，不同于详细的组合政策。 | 值域：基金投资政策（fund investment policy） |
+| **具有明细（has details）** | 关于投资基金组成部分资产净值计算的信息。<br>Information on the net asset value calculation of the investment fund component. | 值域：资产净值计算方法（net asset value calculation method） |
+| **具有基金政策（has fund policy）** | 关于投资金额、限制等的总体政策，不同于详细的组合政策。<br>Overall policy for amounts invested, limitations etc. Not the same as the detailed Portfolio policy. | 值域：基金投资政策（fund investment policy） |
 | **具有基金处理条款（has fund processing terms）** | 指明基金的处理条款。 | 值域：基金处理条款（fund processing terms）；子属性：具有合同要素 |
-| **具有设立日（has issue date）** | 首次资产净值计算和业绩计算开始的日期（同成立日）。 | 值域：日期 |
+| **具有设立日（has issue date）** | 首次资产净值计算和业绩计算开始的日期（同成立日）。<br>Date of first NAV calculation and start of performance calculations (same as launch date) | 值域：日期 |
 | **具有管理公司（has management company）** | 指明基金的管理公司。 | 值域：基金经理；子属性：基金具有相关方（fund has related party） |
 | **具有组合（has portfolio）** | 指明基金的投资组合。 | 值域：基金组合（fund portfolio） |
 | **具有相关基金条款（has related fund terms）** | 指明基金的相关条款。 | 值域：基金处理条款（fund processing terms）；子属性：具有相关条款（has related terms） |
@@ -963,31 +963,31 @@
 | **具有申购条款（has subscription terms）** | 指明基金的申购条款。 | 值域：基金申购条款（fund subscription terms）；子属性：具有相关基金条款（has related fund terms） |
 | **具有可交易单位（has tradable unit）** | 指明基金的可交易单位。 | 值域：基金单位 |
 | **具有过户代理（has transfer agent）** | 标识过户代理。 | 值域：基金过户代理人（fund transfer agent）；子属性：基金具有相关方（fund has related party） |
-| **核准设立日（inception date）** | 在原产国获得核准的日期。 | 值域：日期 |
+| **核准设立日（inception date）** | 在原产国获得核准的日期。<br>Authorization date in the country of origin. | 值域：日期 |
 | **是单位持有人（is unit holder）** | 表明某方是基金单位的持有人。 | 值域：基金单位 |
-| **发行价格（issue price）** | 基金单位首次发行的价格。 | 值域：价格 |
-| **也可以是（may also be）** | 表明某角色也可由另一方担任，例如单位发行人可以是基金管理机构（债券单位除外）。 | 值域：单位发行人（unit issuer） |
+| **发行价格（issue price）** | 基金单位首次发行的价格。<br>The price at which the Fund Unit was first issued. | 值域：价格 |
+| **也可以是（may also be）** | 表明某角色也可由另一方担任，例如单位发行人可以是基金管理机构（债券单位除外）。<br>The unit issuer would be the fund administrator (except when it is a Bond). | 值域：单位发行人（unit issuer） |
 | **概述（outlines）** | 表明某文件概述某一事项。 | 值域：基金投资目标（fund investment objective）；逆属性：列明于（stated in） |
 | **列明分销费（stated distribution fee）** | 在招募说明书中列明的分销费用。 | 值域：货币数量 |
-| **列明管理费（stated management fee）** | 在招募说明书中列明的管理费用，可为货币金额或百分比。 | 值域：货币数量 |
+| **列明管理费（stated management fee）** | 在招募说明书中列明的管理费用，可为货币金额或百分比。<br>The fee that is stated in the Prospectus as being what is to be charged for management. Further notes: Can be monetary amount or a percentage or a combination. Action: simple type is wrong. | 值域：货币数量 |
 | **由……监管（supervised by）** | 指明监管基金的机构。 | 值域：基金监管机构（fund supervisory authority） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **是否需要资金到账（clear funds required）** | 执行申购指令前是否要求资金已清算到账。 |
-| **首个会计年度截止日（first accounting year end date）** | 基金第一个会计年度的最后一天。 |
-| **首次资产净值计算日（first NAV calculation date）** | 首次计算资产净值（NAV）的日期。 |
-| **基金类别类型标识符（fund class type identifier）** | 基金单位类别的文字标识，用于唯一标识某一基金单位类别及其特征。 |
-| **成立日（launch date）** | 首次资产净值计算和业绩计算开始的日期。 |
-| **名称（name）** | 以语言表达式对某事物的指称。 |
-| **是否需要纸质文件（physical document required）** | 是否必须通过主基金下单台提交纸质表格。 |
-| **产品组描述（product group description）** | 公司对一组基金的特定描述。 |
-| **赎回周期（营业日）（redemption cycle in business days）** | 自赎回指令定价日（T）起算、主基金下单台受理指令应完成结算的最后营业日。 |
-| **注册日期（registration date）** | 基金在原产国以外国家获得法律核准的日期。 |
-| **是否需要签名（signature required）** | 是否必须通过主基金下单台提交附有投资者亲笔签名的纸质表格。 |
-| **列明目标（stated objective）** | 以文字表述的基金目标。 |
+| **是否需要资金到账（clear funds required）** | 执行申购指令前是否要求资金已清算到账。<br>Whether cleared funds may be required before a subscription order can be executed. |
+| **首个会计年度截止日（first accounting year end date）** | 基金第一个会计年度的最后一天。<br>Last day of the first accounting year for the fund. |
+| **首次资产净值计算日（first NAV calculation date）** | 首次计算资产净值（NAV）的日期。<br>The first date of NAV calculation |
+| **基金类别类型标识符（fund class type identifier）** | 基金单位类别的文字标识，用于唯一标识某一基金单位类别及其特征。<br>A textual identification of the class of fund units. This is used to uniquely identify a particular class of fund units, and thereby identify features of this type of unit within the fund. |
+| **成立日（launch date）** | 首次资产净值计算和业绩计算开始的日期。<br>Date of first NAV calculation and start of performance calculations |
+| **名称（name）** | 以语言表达式对某事物的指称。<br>Name of the investment fund. |
+| **是否需要纸质文件（physical document required）** | 是否必须通过主基金下单台提交纸质表格。<br>Whether a phsyical form is required through the main fund order desk. Yes: A phsyical form is required through the main fund order desk. No: A phsyical form is not required through the main fund order desk. |
+| **产品组描述（product group description）** | 公司对一组基金的特定描述。<br>Company specific description of a group of funds. |
+| **赎回周期（营业日）（redemption cycle in business days）** | 自赎回指令定价日（T）起算、主基金下单台受理指令应完成结算的最后营业日。<br>The last business day following the day on which a redemption order is priced (T) by which settlement will be due for orders placed with the main Fund Order Desk. Alternatively, if proceeds will be paid following receipt of written renunciation, the last business day following receipt of the relevant renunciation documentation by the main Fund Order Desk (R) by which the proceeds will be sent. |
+| **注册日期（registration date）** | 基金在原产国以外国家获得法律核准的日期。<br>The date at which the fund is legally approved in a country other than the country of origin. |
+| **是否需要签名（signature required）** | 是否必须通过主基金下单台提交附有投资者亲笔签名的纸质表格。<br>Whether a phsyical form with the investor's written signature is required through the main fund order desk. Yes:A phsyical form with the investor's written signature is required through the main fund order desk. |
+| **列明目标（stated objective）** | 以文字表述的基金目标。<br>The stated objective of the fund, in words. |
 
 ## 4. 依赖（owl:imports，49 个）
 

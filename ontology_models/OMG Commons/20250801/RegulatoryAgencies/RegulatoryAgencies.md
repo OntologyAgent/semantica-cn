@@ -27,10 +27,10 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 管辖权（jurisdiction） | 法院或监管机构就特定地理区域裁决案件、发布命令以及解释和适用法律的权力。 |
-| 监管机构（regulatory agency） | 负责以监管或监督身份对某事物行使权力的公共当局或政府机构。 |
-| 监管报告（regulatory report） | 为支持运营透明度、证明符合监管机构规定的某项规范、法律、政策、限制或其他规则而要求的文件。 |
-| 监管服务（regulatory service） | 监管机构提供的服务，可包括但不限于检查、监测、监督、测试等能力。 |
+| 管辖权（jurisdiction） | 法院或监管机构就特定地理区域裁决案件、发布命令以及解释和适用法律的权力。<br>power of a court or regulatory agency to adjudicate cases, issue orders, and interpret and apply the law with respect to some specific geographic area |
+| 监管机构（regulatory agency） | 负责以监管或监督身份对某事物行使权力的公共当局或政府机构。<br>public authority or government agency responsible for exercising authority over something in a regulatory or supervisory capacity |
+| 监管报告（regulatory report） | 为支持运营透明度、证明符合监管机构规定的某项规范、法律、政策、限制或其他规则而要求的文件。<br>document required to support operational transparency that demonstrates compliance with some specification, law, policy, restriction, or other rule specified by a regulatory agency |
+| 监管服务（regulatory service） | 监管机构提供的服务，可包括但不限于检查、监测、监督、测试等能力。<br>service provided by a regulatory agency, which may include, but not be limited to, examination, monitoring, supervision, testing, or other capabilities required to ensure the integrity, fairness, safety, or other capacity of a given industry, organization, or product |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -44,8 +44,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有覆盖范围（has reach）** | 标识该管辖权覆盖的地理区域。 | 值域：地理区域；子属性：适用于情境 |
-| **是……的管辖权（is jurisdiction of）** | 将管辖权关联到对其拥有一定程度法律权力的政体、政府实体或法院。 | 逆属性：具有管辖权（has jurisdiction）；子属性：受……管辖（is governed by） |
+| **具有覆盖范围（has reach）** | 标识该管辖权覆盖的地理区域。<br>indicates the geographic region covered by the jurisdiction | 值域：地理区域；子属性：适用于情境 |
+| **是……的管辖权（is jurisdiction of）** | 将管辖权关联到对其拥有一定程度法律权力的政体、政府实体或法院。<br>relates a jurisdiction to a polity or other government entity or court that has some level of legal authority over it | 逆属性：具有管辖权（has jurisdiction）；子属性：受……管辖（is governed by） |
 
 公理：
 
@@ -62,8 +62,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **提供（provides）** | — | — |
-| **具有管辖权（has jurisdiction）** | 将政体、政府实体或监管机构关联到其拥有一定程度法律权力的管辖权。 | 值域：管辖权（jurisdiction）；子属性：管辖（governs） |
-| **监管（regulates）** | 对……具有监管权或按规则或法律加以指导，对象通常是行业、组织或产品。 | 子属性：管辖（governs） |
+| **具有管辖权（has jurisdiction）** | 将政体、政府实体或监管机构关联到其拥有一定程度法律权力的管辖权。<br>relates a polity, government entity or regulatory agency to a jurisdiction over which it has some level of legal authority | 值域：管辖权（jurisdiction）；子属性：管辖（governs） |
+| **监管（regulates）** | 对……具有监管权或按规则或法律加以指导，对象通常是行业、组织或产品。<br>has regulatory authority over or directs according to rule or law, typically an industry, organization, or product | 子属性：管辖（governs） |
 
 公理：
 
@@ -101,12 +101,12 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **管辖（governs）** | 对……拥有并行使权力。 | — |
-| **适用于管辖区（is applicable in jurisdiction）** | 标识某事物适用之管辖区的地缘政治区域标识符。 | — |
-| **受……管辖（is governed by）** | 将合同、协议、管辖权或其他法律构造关联到规制或监督（管辖）它的规章、政策、程序或法律主体。 | 逆属性：管辖（governs） |
-| **组建于（is organized in）** | 标识法律实体据以组建的法律所属管辖区。 | 值域：管辖权（jurisdiction）；子属性：获承认于（is recognized in） |
-| **获承认于（is recognized in）** | 标识法律主体被认为有能力订立合同、开展业务或参与其他活动、或协议可被承认并可能可执行的管辖区。 | 值域：管辖权（jurisdiction）；子属性：受……管辖（is governed by） |
-| **受……监管（is regulated by）** | 指明对某事物具有监管权的监管机构。 | 值域：监管机构（regulatory agency）；子属性：具有参与方角色（has party role） |
+| **管辖（governs）** | 对……拥有并行使权力。<br>has and exercises authority over | — |
+| **适用于管辖区（is applicable in jurisdiction）** | 标识某事物适用之管辖区的地缘政治区域标识符。<br>indicates the geopolitical region identifier for the jurisdiction in which something is applicable | — |
+| **受……管辖（is governed by）** | 将合同、协议、管辖权或其他法律构造关联到规制或监督（管辖）它的规章、政策、程序或法律主体。<br>relates a contract, agreement, jurisdiction, or other legal construct and the regulation, policy, procedure, or legal person that regulates or oversees (governs) it | 逆属性：管辖（governs） |
+| **组建于（is organized in）** | 标识法律实体据以组建的法律所属管辖区。<br>indicates the jurisdiction whose laws a legal entity is organized under | 值域：管辖权（jurisdiction）；子属性：获承认于（is recognized in） |
+| **获承认于（is recognized in）** | 标识法律主体被认为有能力订立合同、开展业务或参与其他活动、或协议可被承认并可能可执行的管辖区。<br>indicates the jurisdiction in which a legal person is considered competent to enter into a contract, conduct business, or participate in other activities, or in which an agreement may be acknowledged and possibly enforceable | 值域：管辖权（jurisdiction）；子属性：受……管辖（is governed by） |
+| **受……监管（is regulated by）** | 指明对某事物具有监管权的监管机构。<br>specifies a regulatory agency that has regulatory authority for something | 值域：监管机构（regulatory agency）；子属性：具有参与方角色（has party role） |
 
 ## 4. 依赖（owl:imports，9 个）
 

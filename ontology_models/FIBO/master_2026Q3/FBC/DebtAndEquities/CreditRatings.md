@@ -34,26 +34,26 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 征信查询（credit inquiry） | 贷款人向征信机构发出的请求，以获取有关潜在借款人信用状况的信息。 |
-| 征信查询类型（credit inquiry type） | 分类器，表明征信查询是由借款人直接授权发起，还是通过其他间接方式产生。 |
-| 信用提示信息（credit message） | 信用报告上的提示，用于提醒审阅者注意特殊或异常信息。 |
-| 信用提示信息类型（credit message type） | 对信用提示信息进行分类的分类器。 |
-| 信用质量（credit quality） | 针对借贷市场中的借款人、利率或持仓，就其信用质量进行分类的分类器。 |
-| 信用评级（credit rating） | 对借款人信用状况的评估，可以是总体评估，也可以针对特定债务或金融义务。 |
-| 信用评级机构（credit rating agency） | 发布评估报告的评级机构，评估借款人或法律实体的信用状况，可以是总体评估，也可以针对特定债务。 |
-| 信用评级模型（credit rating model） | 用于计算信用评级的算法。 |
-| 信用评级标度（credit rating scale） | 为个人、实体或工具赋予信用评级的标度，包括定义一套代码或数值分数并说明其解读方式。 |
-| 信用报告（credit report） | 描述借款人信用状况及相关信用属性的报告。 |
-| 信用报告类别（credit report category） | 信用报告的分类器，同类报告通常可从多家供应商获得。 |
-| 信用报告产品（credit report product） | 市场上提供的品牌化信用报告。 |
-| 信用评分模型类型（credit score model type） | 对应于一族具有共同特征的信用评分算法的类型。 |
-| 信用交易记录（credit tradeline） | 由信用账户交易历史生成的记录。 |
+| 征信查询（credit inquiry） | 贷款人向征信机构发出的请求，以获取有关潜在借款人信用状况的信息。<br>request from a lender to a credit repository to obtain information regarding a prospective borrower's creditworthiness |
+| 征信查询类型（credit inquiry type） | 分类器，表明征信查询是由借款人直接授权发起，还是通过其他间接方式产生。<br>classifier indicating whether a credit inquiry is a result of a borrower's direct authorization or by some indirect means |
+| 信用提示信息（credit message） | 信用报告上的提示，用于提醒审阅者注意特殊或异常信息。<br>notice on a credit report to alert a reviewer of special or exceptional information |
+| 信用提示信息类型（credit message type） | 对信用提示信息进行分类的分类器。<br>classifier that categorizes credit messages |
+| 信用质量（credit quality） | 针对借贷市场中的借款人、利率或持仓，就其信用质量进行分类的分类器。<br>classifier for borrowers, rates, or holdings in the lending market with respect to the quality of the credit |
+| 信用评级（credit rating） | 对借款人信用状况的评估，可以是总体评估，也可以针对特定债务或金融义务。<br>assessment of creditworthiness of a borrower generally or with respect to a particular debt or financial obligation |
+| 信用评级机构（credit rating agency） | 发布评估报告的评级机构，评估借款人或法律实体的信用状况，可以是总体评估，也可以针对特定债务。<br>rating agency that publishes reports assessing the creditworthiness of a borrower or legal entity, either generally or with respect to a specific obligation |
+| 信用评级模型（credit rating model） | 用于计算信用评级的算法。<br>algorithm for computing a credit rating |
+| 信用评级标度（credit rating scale） | 为个人、实体或工具赋予信用评级的标度，包括定义一套代码或数值分数并说明其解读方式。<br>rating scale for assigning a credit rating to individual, entity, or instrument, including defining a set of codes or numeric scores and indicating how an assessment that is assigned a score based on that scale means |
+| 信用报告（credit report） | 描述借款人信用状况及相关信用属性的报告。<br>report describing the creditworthiness and related credit attributes of a borrower |
+| 信用报告类别（credit report category） | 信用报告的分类器，同类报告通常可从多家供应商获得。<br>classifier for credit reports, often available from multiple vendors |
+| 信用报告产品（credit report product） | 市场上提供的品牌化信用报告。<br>branded credit report offered in the marketplace |
+| 信用评分模型类型（credit score model type） | 对应于一族具有共同特征的信用评分算法的类型。<br>a type corresonding to a family of credit scoring algorithms sharing common characteristics |
+| 信用交易记录（credit tradeline） | 由信用账户交易历史生成的记录。<br>report derived from the transaction history of a credit account |
 | 信用观察方向（credit watch direction） | 表示投资信用评级被列入观察名单后预计变动的方向。 |
 | 信用观察展望（credit watch outlook） | 表示对被评级主体的预期展望。 |
-| 工具信用评级（instrument credit rating） | 投资信用评级的一种，提供对某一工具信用状况的意见，通常与其发行人的信用状况相关。 |
-| 投资信用评级（investment credit rating） | 信用评级的一种，提供对某项投资（包括但不限于工具或机构）信用状况的意见。 |
-| 机构信用评级（organization credit rating） | 信用评级的一种，提供对某一机构信用状况的意见。 |
-| 短期信用评级（short term credit rating） | 信用评级的一种，提供对个人或机构在一年内发生违约概率的意见。 |
+| 工具信用评级（instrument credit rating） | 投资信用评级的一种，提供对某一工具信用状况的意见，通常与其发行人的信用状况相关。<br>investment credit rating that provides an opinion of creditworthiness of an instrument, typically with some relationship to the creditworthiness of the issuer(s) |
+| 投资信用评级（investment credit rating） | 信用评级的一种，提供对某项投资（包括但不限于工具或机构）信用状况的意见。<br>credit rating that provides an opinion of creditworthiness of an investment, including but not limited to an instrument or organization |
+| 机构信用评级（organization credit rating） | 信用评级的一种，提供对某一机构信用状况的意见。<br>credit rating that provides an opinion of creditworthiness of an organization |
+| 短期信用评级（short term credit rating） | 信用评级的一种，提供对个人或机构在一年内发生违约概率的意见。<br>credit rating that provides an opinion of the probability of an individual or organization going into default within a year |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -67,7 +67,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **涉及当事方（concerns party）** | 指明某事物正在或已经为其提出的当事方。 | 子属性：具有参与方（has party） |
+| **涉及当事方（concerns party）** | 指明某事物正在或已经为其提出的当事方。<br>indicates the party for which something is being or has been requested | 子属性：具有参与方（has party） |
 | **被请求于（isRequestedOf）** | — | — |
 | **由……分类（isClassifiedBy）** | — | — |
 
@@ -141,8 +141,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **观察方向（watch direction）** | 当投资信用评级处于观察状态时，指明其预计变动的方向。 | 值域：信用观察方向（credit watch direction） |
-| **观察展望（watch outlook）** | 指明对被评级实体的预期展望。 | 值域：信用观察展望（credit watch outlook） |
+| **观察方向（watch direction）** | 当投资信用评级处于观察状态时，指明其预计变动的方向。<br>indicates direction in which an investment credit rating is expected to move in cases where that rating is on watch | 值域：信用观察方向（credit watch direction） |
+| **观察展望（watch outlook）** | 指明对被评级实体的预期展望。<br>indicates the expected outlook for the rated entity | 值域：信用观察展望（credit watch outlook） |
 
 ##### 2.6.1.1 工具信用评级（instrument credit rating）
 
@@ -246,8 +246,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **涉及当事方（concerns party）** | 指明某事物正在或已经为其提出的当事方。 | 子属性：具有参与方（has party） |
-| **具有覆盖期间（has coverage period）** | 将某事物（如信用报告或保险单）与其所覆盖的特定时间段关联起来。 | 值域：日期区间；子属性：具有日期区间 |
+| **涉及当事方（concerns party）** | 指明某事物正在或已经为其提出的当事方。<br>indicates the party for which something is being or has been requested | 子属性：具有参与方（has party） |
+| **具有覆盖期间（has coverage period）** | 将某事物（如信用报告或保险单）与其所覆盖的特定时间段关联起来。<br>relates something (e.g. a credit report or insurance policy) to the specific time period that it covers | 值域：日期区间；子属性：具有日期区间 |
 | **具有截止日（hasAsOfDate）** | — | — |
 | **例证（exemplifies）** | — | — |
 | **由……生产（isProducedBy）** | — | — |
@@ -260,7 +260,7 @@
 
 - **例证（exemplifies）**可以有 0 个或多个**信用报告产品（credit report product）**。
 - **具有截止日（hasAsOfDate）**至少有一个取值，类型是**日期（Date）**。
-- **具有数据来源（hasDataSource）**可以有 0 个或多个**N6bb6323d11aa450fabd5ccee8763f9bb**。
+- **具有数据来源（hasDataSource）**可以有 0 个或多个**N6983855db48c456784176196730ebfa5**。
 - **具有覆盖期间（has coverage period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
 - **包含（comprises）**可以有 0 个或多个**信用交易记录（credit tradeline）**。
 - **包含（comprises）**可以有 0 个或多个**信用提示信息（credit message）**。

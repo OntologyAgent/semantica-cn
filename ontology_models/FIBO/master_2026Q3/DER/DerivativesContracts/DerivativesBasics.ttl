@@ -223,14 +223,14 @@ fibo-der-drc-bsc:UniqueProductIdentifierRegistryEntry a owl:Class ;
         "唯一产品标识符登记册条目（unique product identifier registry entry）"@zh ;
     rdfs:comment "唯一产品标识符（UPI）登记册中的条目。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-der-drc-bsc:UniqueProductIdentifier ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-der-drc-bsc:UniqueProductIdentifierReferenceDataLibrary ;
             owl:onProperty cmns-col:isIncludedIn ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-der-drc-bsc:OverTheCounterDerivativeInstrument ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-der-drc-bsc:UniqueProductIdentifier ],
         cmns-ra:RegistryEntry ;
     skos:definition "entry in a unique product identifier registry" ;
     cmns-av:explanatoryNote "The Reference Data Library (RDL) is a set of reference data elements, together with their values, which is properly organized and maintained by the UPI service provider. The library associates UPI codes with the values of the reference data elements characterizing the product. Each entry in the library (the registry entry) contains a minimum number of elements as defined in the ISO standard, and may be extended by the service provider." .
@@ -390,12 +390,12 @@ fibo-der-drc-bsc:UnderlyingAssetValuation a owl:Class ;
         "标的资产评估（underlying asset valuation）"@zh ;
     rdfs:comment "对衍生品标的资产进行价值估计的评估活动。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Underlier ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fi-fi:CalculationAgent ;
             owl:onProperty fibo-fbc-fi-fi:hasCalculationAgent ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:evaluates ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Underlier ],
         fibo-fnd-arr-asmt:ValueAssessment ;
     skos:definition "assessment activity to estimate the value of an underlying asset of a derivative"@en .
 
@@ -543,20 +543,20 @@ fibo-der-drc-bsc:DerivativeTerms a owl:Class ;
 
 fibo-fbc-fi-fi:DerivativeInstrument a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-bsc:hasValuationTerms ;
+            owl:someValuesFrom fibo-der-drc-bsc:ValuationTerms ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValue ;
             owl:onProperty cmns-qtu:hasQuantityValue ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-bsc:hasValuationTerms ;
-            owl:someValuesFrom fibo-der-drc-bsc:ValuationTerms ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Underlier ],
+            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
+            owl:someValuesFrom cmns-dt:Date ],
         [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-bsc:hasSettlementTerms ;
             owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
-            owl:someValuesFrom cmns-dt:Date ] ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Underlier ] ;
     cmns-av:usageNote "Note that the quantity value associated with the derivative represents the quantity of the underlier. The price of the underlier is included in settlement terms." .
 

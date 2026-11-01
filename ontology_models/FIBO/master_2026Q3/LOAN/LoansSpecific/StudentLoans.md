@@ -25,9 +25,9 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 私人学生贷款（private student loan） | 不属于政府支持/监管贷款的学生贷款。 |
-| 受监管学生贷款（regulated student loan） | 贷款人为政府机构或部属单位、和/或因税务规定而获特殊对待的学生贷款。 |
-| 学生贷款（student loan） | 为教育目的提供的贷款，允许学生及其父母/监护人为上大学借款。 |
+| 私人学生贷款（private student loan） | 不属于政府支持/监管贷款的学生贷款。<br>student loan that is not considered a government-backed / regulated loan |
+| 受监管学生贷款（regulated student loan） | 贷款人为政府机构或部属单位、和/或因税务规定而获特殊对待的学生贷款。<br>student loan (1) whose lender is a government agency or instrumentality, and/or (2) that is treated uniquely due to tax regulations |
+| 学生贷款（student loan） | 为教育目的提供的贷款，允许学生及其父母/监护人为上大学借款。<br>loan provided for the purposes of education, allowing students and parents/guardians to borrow money for college |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

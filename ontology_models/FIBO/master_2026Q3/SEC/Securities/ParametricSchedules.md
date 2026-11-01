@@ -34,21 +34,21 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 国际货币市场（IMM）澳元（AUD）交易日期规则（International Money Market (IMM) Australian Dollar (AUD) trading date rule） | 定义为澳大利亚证券交易所（ASX）90 天银行承兑期货和期权产品最后一个交易日（悉尼时间）的交易日期规则。 |
-| 国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule） | 定义为加拿大衍生品交易所（蒙特利尔交易所）三个月银行承兑汇票产品最后一个交易日/到期日的交易日期规则。 |
-| 国际货币市场（IMM）新西兰元（NZD）交易日期规则（International Money Market (IMM) New Zealand Dollar (NZD) trading date rule） | 定义为澳大利亚证券交易所（ASX）新西兰 90 天银行承兑期货和期权产品最后一个交易日的交易日期规则。 |
-| 国际货币市场（IMM）结算日期规则（International Money Market (IMM) settlement date rule） | 国际货币市场（IMM）结算日期日历中定义的结算日期规则。 |
-| 美国短期国库券拍卖日期规则（US Treasury bill auction date rule） | 用于设定美国短期国库券拍卖日期的规则。 |
-| 美国短期国库券日期（US Treasury bill date） | 美国 13 周和 26 周短期国库券的拍卖日期。 |
-| 拍卖日期规则（auction date rule） | 用于确定某一拍卖事件日期的已发布规则，属于业务重复区间惯例。 |
-| 结算日期规则返回的日期（date returned by settlement date rule） | 通过结算规则确定的计算日期。 |
-| 交易日期规则返回的日期（date returned by trading date rule） | 通过交易规则确定的计算日期。 |
-| 浮动利率票据日期（floating-rate note date） | 与浮动利率票据（亦称浮息票据或 FRN，一种可变利率债务工具）相关联的计算日期。 |
-| 浮动利率票据日期规则（floating-rate note date rule） | 适用于浮动利率票据工具的营业日调整规则。 |
-| 计划计算期结束事件（scheduled calculation period end event） | 某一特定计算期的结束日期。 |
-| 计划计算期开始事件（scheduled calculation period start event） | 某一特定计算期的开始日期。 |
-| 结算日期规则（settlement date rule） | 参照某一司法管辖区或由某交易所等交易场所设定的、用于确定结算日期的惯例。 |
-| 交易日期规则（trading date rule） | 参照某交易场所或交易所发布的交易日历确定的、用于确定交易日期的惯例。 |
+| 国际货币市场（IMM）澳元（AUD）交易日期规则（International Money Market (IMM) Australian Dollar (AUD) trading date rule） | 定义为澳大利亚证券交易所（ASX）90 天银行承兑期货和期权产品最后一个交易日（悉尼时间）的交易日期规则。<br>trading date rule defined as the last trading day of an Australian Stock Exchange (ASX) 90-Day Bank Accepted Futures and Options product, one Sydney business day preceding the second Friday of the relevant settlement month |
+| 国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule） | 定义为加拿大衍生品交易所（蒙特利尔交易所）三个月银行承兑汇票产品最后一个交易日/到期日的交易日期规则。<br>trading date rule defined as the last trading day / expiration day of the Canadian Derivatives Exchange (Bourse do Montreal Inc.), three month Bankers' Acceptance Futures (Ticker symbol BAX), the second London banking day prior to the third Wednesday of the contract month |
+| 国际货币市场（IMM）新西兰元（NZD）交易日期规则（International Money Market (IMM) New Zealand Dollar (NZD) trading date rule） | 定义为澳大利亚证券交易所（ASX）新西兰 90 天银行承兑期货和期权产品最后一个交易日的交易日期规则。<br>trading date rule defined as the last trading day of an Australian Stock Exchange (ASX) New Zealand (NZ) 90-Day Bank Accepted Futures and Options product, the first Wednesday after the ninth day of the relevant settlement month |
+| 国际货币市场（IMM）结算日期规则（International Money Market (IMM) settlement date rule） | 国际货币市场（IMM）结算日期日历中定义的结算日期规则。<br>settlement date rule as defined in the International Money Market (IMM) settlement dates calendar |
+| 美国短期国库券拍卖日期规则（US Treasury bill auction date rule） | 用于设定美国短期国库券拍卖日期的规则。<br>rule for setting auction dates for US Treasury bills |
+| 美国短期国库券日期（US Treasury bill date） | 美国 13 周和 26 周短期国库券的拍卖日期。<br>auction date for US 13 week and 26 week Treasury bills |
+| 拍卖日期规则（auction date rule） | 用于确定某一拍卖事件日期的已发布规则，属于业务重复区间惯例。<br>business recurrence interval convention that is a published rule for defining the date of some auction event |
+| 结算日期规则返回的日期（date returned by settlement date rule） | 通过结算规则确定的计算日期。<br>calculated date that is determined via a settlement rule |
+| 交易日期规则返回的日期（date returned by trading date rule） | 通过交易规则确定的计算日期。<br>calculated date that is determined via a trading rule |
+| 浮动利率票据日期（floating-rate note date） | 与浮动利率票据（亦称浮息票据或 FRN，一种可变利率债务工具）相关联的计算日期。<br>calculated date associated with a floating-rate note, also known as a floater or FRN, which is a debt instrument with a variable interest rate |
+| 浮动利率票据日期规则（floating-rate note date rule） | 适用于浮动利率票据工具的营业日调整规则。<br>business day adjustment rule applied to floating-rate note instruments |
+| 计划计算期结束事件（scheduled calculation period end event） | 某一特定计算期的结束日期。<br>the end date of a specific calculation period |
+| 计划计算期开始事件（scheduled calculation period start event） | 某一特定计算期的开始日期。<br>the start of a specific calculation period |
+| 结算日期规则（settlement date rule） | 参照某一司法管辖区或由某交易所等交易场所设定的、用于确定结算日期的惯例。<br>convention for determining settlement dates by reference to some jurisdiction or as set by a given exchange or similar venue |
+| 交易日期规则（trading date rule） | 参照某交易场所或交易所发布的交易日历确定的、用于确定交易日期的惯例。<br>convention for determining trading dates defined with reference to some trading date calendar published by some trading facility or exchange |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

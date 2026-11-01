@@ -48,11 +48,11 @@ cmns-cls:Classifier a owl:Class ;
     dcterms:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
     rdfs:comment "在特定情境下、依据某种划分体系对事物的标准化分类或划定。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty cmns-cls:classifies ],
-        [ a owl:Restriction ;
             owl:allValuesFrom cmns-cls:ClassificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty cmns-cls:classifies ],
         cmns-cls:Aspect ;
     skos:definition "standardized classification or delineation for something, per some scheme for such delineation, within a specified context" ;
     skos:example "The classifier 'color' embraces characteristics being red, blue, green, etc. The classifier 'material' embraces characteristics made of wood, metal, etc." ;

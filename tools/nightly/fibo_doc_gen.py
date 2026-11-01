@@ -337,6 +337,17 @@ def generate_markdown(g: Graph, terms: dict[str, dict], trans: dict, rdf_path: P
                 return str(c)
         return english_definition(g, URIRef(uri))
 
+    def bilingual_comment(uri):
+        zh = ""
+        for c in g.objects(URIRef(uri), RDFS.comment):
+            if isinstance(c, Literal) and c.language == "zh":
+                zh = str(c)
+                break
+        en = english_definition(g, URIRef(uri))
+        if zh and en and zh != en:
+            return f"{zh}<br>{en}"
+        return zh or en
+
     own = own_summary_entry(summaries, rdf_path)
     overview_zh = own.get("overview_zh", "")
     if own.get("name_zh"):
@@ -434,7 +445,7 @@ def generate_markdown(g: Graph, terms: dict[str, dict], trans: dict, rdf_path: P
             lines += ["属性：", "", "| 属性 | 定义 | 说明 |", "|---|---|---|"]
             for p in attached:
                 notes = prop_notes(p)
-                lines.append(f"| {bold_label(g, trans, URIRef(p))} | {zh_comment(p) or '—'} | {'；'.join(notes) if notes else '—'} |")
+                lines.append(f"| {bold_label(g, trans, URIRef(p))} | {bilingual_comment(p) or '—'} | {'；'.join(notes) if notes else '—'} |")
             lines.append("")
         ax = sorted(f"- {restriction_zh(g, trans, b)}。" for b in restrictions_of[uri])
         for dw in g.objects(URIRef(uri), OWL.disjointWith):
@@ -447,7 +458,7 @@ def generate_markdown(g: Graph, terms: dict[str, dict], trans: dict, rdf_path: P
         lines += ["## 2. 类（Class）", "", "| 类（Class） | 定义（Definition） |", "|---|---|"]
         for info in sorted(classes, key=lambda x: x["label_en"]):
             uri = info["uri"]
-            lines.append(f"| {zh_label(uri)} | {zh_comment(uri) or '—'} |")
+            lines.append(f"| {zh_label(uri)} | {bilingual_comment(uri) or '—'} |")
         lines.append("")
         lines += ["以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。", ""]
         visited = set()
@@ -480,19 +491,19 @@ def generate_markdown(g: Graph, terms: dict[str, dict], trans: dict, rdf_path: P
             for info in sorted(leftover_obj, key=lambda x: x["label_en"]):
                 uri = info["uri"]
                 notes = prop_notes(uri)
-                lines.append(f"| **{zh_label(uri)}** | {zh_comment(uri) or '—'} | {'；'.join(notes) if notes else '—'} |")
+                lines.append(f"| **{zh_label(uri)}** | {bilingual_comment(uri) or '—'} | {'；'.join(notes) if notes else '—'} |")
             lines.append("")
         if leftover_dt:
             lines += ["数据属性（Datatype Property）：", "", "| 属性 | 定义 |", "|---|---|"]
             for info in sorted(leftover_dt, key=lambda x: x["label_en"]):
                 uri = info["uri"]
-                lines.append(f"| **{zh_label(uri)}** | {zh_comment(uri) or '—'} |")
+                lines.append(f"| **{zh_label(uri)}** | {bilingual_comment(uri) or '—'} |")
             lines.append("")
         if leftover_ann:
             lines += ["标注属性（Annotation Property）：", "", "| 属性 | 定义 |", "|---|---|"]
             for info in sorted(leftover_ann, key=lambda x: x["label_en"]):
                 uri = info["uri"]
-                lines.append(f"| {bold_label(g, trans, URIRef(uri))} | {zh_comment(uri) or '—'} |")
+                lines.append(f"| {bold_label(g, trans, URIRef(uri))} | {bilingual_comment(uri) or '—'} |")
             lines.append("")
 
     imports_uris = [str(i) for i in g.objects(ont, OWL.imports)] if ont else []

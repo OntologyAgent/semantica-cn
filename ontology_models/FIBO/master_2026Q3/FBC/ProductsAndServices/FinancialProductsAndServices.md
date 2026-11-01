@@ -35,58 +35,58 @@
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 持仓（Holding） | 持有的金融资产或头寸。 |
-| 代理协议（agency agreement） | 指定一方为注册代理人、在某一（通常为法律、财务或医疗）事务中代表另一方行事的协议。 |
-| 法律文书送达代理人（agent for service of process） | 由企业实体（如公司）指定、代表该企业接收法律文书的注册代理人（个人或组织）。 |
-| 篮子（basket） | 可在某市场买卖的商品、服务或其他事物（如金融合约）的集合。 |
-| 篮子成分（basket constituent） | 篮子的组成部分。 |
-| 经纪商（broker） | 在买方与卖方之间充当中介、通常收取佣金的任何一方。 |
-| 经纪交易商（broker-dealer） | 从事证券买卖业务、视交易情况同时以经纪商和交易商身份运作的任何一方。 |
-| 产品目录（catalog） | 列有可供销售产品及其描述、可能还包括价格的出版物。 |
-| 合同生命周期（contract lifecycle） | 协议（包括但不限于信贷协议、金融工具或其他正式合同）从初始阶段到终止的生命周期。 |
-| 合同生命周期事件（contract lifecycle event） | 在协议生命周期的一个或多个阶段中发生的事件类别。 |
-| 合同生命周期事件发生（contract lifecycle event occurrence） | 特定合同生命周期某一阶段中事件的实际发生。 |
-| 合同生命周期历程（contract lifecycle occurrence） | 某一具体合同生命周期的实现。 |
-| 合同生命周期阶段（contract lifecycle stage） | 协议生命周期中的一个阶段。 |
-| 合同生命周期阶段历程（contract lifecycle stage occurrence） | 某一具体合同生命周期历程中某一阶段从开始到结束的实现。 |
-| 交易商（dealer） | 购入商品或服务用于转售、并在交易中以本人身份行事的任何一方。 |
-| 风险暴露（exposure） | 个人或组织失去保护、面临损害、危险、损失风险或不确定性的状态。 |
-| 风险暴露承担方（exposure bearer） | 承受源自特定合同、工具或安排的影响或风险的一方。 |
-| 风险暴露情形（exposure situation） | 某一方承受源自特定合同、工具或安排的影响或风险的情势。 |
-| 金融风险暴露（financial exposure） | 个人或组织在交易中或就某项或某组投资面临损失风险的程度。 |
-| 金融中介服务（financial intermediation service） | 由第三方（中介）将贷款人和投资者与需要资金的企业家及其他借款人撮合起来的金融服务。 |
-| 金融产品（financial product） | 由银行、保险公司、经纪公司、消费金融公司等金融机构向消费者和企业提供的产品。 |
-| 金融产品目录（financial product catalog） | 列有可供销售的金融产品和/或服务及其描述和其他产品详情的目录。 |
-| 金融服务（financial service） | 由银行、保险公司、经纪公司、消费金融公司等金融机构向消费者和企业提供的服务。 |
-| 金融服务提供商（financial service provider） | 获许可以向消费者和/或企业提供金融服务、或依法设立以提供金融服务的功能实体。 |
-| 法定代理人（legal agent） | 经合法授权代表另一方行事的任何一方。 |
-| 持证代理人（licensed agent） | 经许可执行具有法律约束力职能、并经合法授权代表另一方行事的任何个人。 |
-| 受要约人（offeree） | 基于要约条款从某方（即要约人）处收到要约的一方。 |
-| 发行（offering） | 将证券提供发行的流程步骤，即通过承销使新证券发行可得。 |
-| 要约人（offeror） | 基于要约条款提议向某方（即受要约人）提供某物的一方。 |
-| 头寸（position） | 因持有、借入、卖空或订立合约（如衍生品）而产生的金融风险暴露。 |
-| 产品生命周期（product lifecycle） | 特定于某一产品或产品族的生命周期。 |
-| 产品生命周期事件（product lifecycle event） | 在产品生命周期的一个或多个阶段中发生的事件类别。 |
-| 产品生命周期事件发生（product lifecycle event occurrence） | 特定产品生命周期某一阶段中事件的实际发生。 |
-| 产品生命周期历程（product lifecycle occurrence） | 某一具体产品生命周期的实现。 |
-| 产品生命周期阶段（product lifecycle stage） | 产品生命周期中的一个阶段。 |
-| 产品生命周期阶段历程（product lifecycle stage occurrence） | 某一给定产品生命周期中特定阶段的实现。 |
-| 注册代理人（registered agent） | 由某方依据正式代理协议指定、代表其行事的法定代理人。 |
-| 受监管商品（regulated commodity） | 处于监管机构（如美国商品期货交易委员会 CFTC）管辖之下的商品。 |
-| 结算条款（settlement terms） | 规定交易一方或多方结算承诺与机制的合同条款。 |
-| 第三方代理人（third-party agent） | 经许可执行具有法律约束力职能、并经合法授权代表另一方行事的任何服务提供商。 |
-| 交易（trade） | 实现参与自愿买卖商品和服务行为的各方之间协议的情势。 |
-| 交易标识符（trade identifier） | 在某一情境中标识一笔交易的字符序列。 |
-| 交易生命周期（trade lifecycle） | 规定交易从发起到结算之演变过程的生命周期。 |
-| 交易生命周期事件（trade lifecycle event） | 在交易生命周期的一个或多个阶段中发生的事件类别。 |
-| 交易生命周期事件发生（trade lifecycle event occurrence） | 特定交易生命周期某一阶段中事件的实现。 |
-| 交易生命周期历程（trade lifecycle occurrence） | 某一具体交易生命周期的实现。 |
-| 交易生命周期阶段（trade lifecycle stage） | 交易生命周期中的一个阶段。 |
-| 交易生命周期阶段历程（trade lifecycle stage occurrence） | 某一具体交易生命周期中某一阶段的实现。 |
-| 交易员（trader） | 代表客户或金融服务提供商在任何金融市场进行金融资产转让的一方。 |
-| 交易策略（trading strategy） | 在证券市场进行买卖所采用的方法。 |
-| 唯一交易标识符（unique transaction identifier） | 在交易相关各方或团体认为有用并达成一致时唯一标识一笔金融交易的字符序列。 |
-| 加权篮子（weighted basket） | 各成分彼此之间具有相对重要性的篮子。 |
-| 加权篮子成分（weighted basket constituent） | 其相对于其他篮子成分的重要性为已知的篮子组成部分。 |
+| 代理协议（agency agreement） | 指定一方为注册代理人、在某一（通常为法律、财务或医疗）事务中代表另一方行事的协议。<br>agreement that designates a party as a registered agent to represent and act on behalf of another party in some, typically legal, financial, or medical capacity |
+| 法律文书送达代理人（agent for service of process） | 由企业实体（如公司）指定、代表该企业接收法律文书的注册代理人（个人或组织）。<br>registered agent (person or organization) designated by a business entity, such as a corporation, to receive legal correspondence on behalf of the business entity in the jurisdiction in which the agent's address is located |
+| 篮子（basket） | 可在某市场买卖的商品、服务或其他事物（如金融合约）的集合。<br>collection of goods, services, or other things (e.g., financial contracts) that can be purchased and sold in some marketplace |
+| 篮子成分（basket constituent） | 篮子的组成部分。<br>component of a basket |
+| 经纪商（broker） | 在买方与卖方之间充当中介、通常收取佣金的任何一方。<br>any party that acts as an intermediary between a buyer and a seller, usually charging a commission |
+| 经纪交易商（broker-dealer） | 从事证券买卖业务、视交易情况同时以经纪商和交易商身份运作的任何一方。<br>any party in the business of buying and selling securities, operating as both a broker and a dealer, depending on the transaction |
+| 产品目录（catalog） | 列有可供销售产品及其描述、可能还包括价格的出版物。<br>publication including a list of products available for sale with their descriptions and possibly prices |
+| 合同生命周期（contract lifecycle） | 协议（包括但不限于信贷协议、金融工具或其他正式合同）从初始阶段到终止的生命周期。<br>lifecycle of an agreement, including, but not limited to a credit agreement, financial instrument, or other formal contract, from initial stages through retirement |
+| 合同生命周期事件（contract lifecycle event） | 在协议生命周期的一个或多个阶段中发生的事件类别。<br>kind of event that occurs during one or more stages of the lifecycle of an agreement |
+| 合同生命周期事件发生（contract lifecycle event occurrence） | 特定合同生命周期某一阶段中事件的实际发生。<br>actual occurrence of an event during a specific stage of a specific contract lifecycle |
+| 合同生命周期历程（contract lifecycle occurrence） | 某一具体合同生命周期的实现。<br>realization of the lifecycle of a specific contract |
+| 合同生命周期阶段（contract lifecycle stage） | 协议生命周期中的一个阶段。<br>phase in the lifecycle of an agreement |
+| 合同生命周期阶段历程（contract lifecycle stage occurrence） | 某一具体合同生命周期历程中某一阶段从开始到结束的实现。<br>realization, from start to finish of a phase in an occurrence of a specific contract lifecycle |
+| 交易商（dealer） | 购入商品或服务用于转售、并在交易中以本人身份行事的任何一方。<br>any party that purchases goods or services for resale and acts on their own behalf in a transaction |
+| 风险暴露（exposure） | 个人或组织失去保护、面临损害、危险、损失风险或不确定性的状态。<br>means by which an individual or organization is unprotected and open to damage, danger, risk of suffering a loss, or uncertainty |
+| 风险暴露承担方（exposure bearer） | 承受源自特定合同、工具或安排的影响或风险的一方。<br>party subject to influence or risk arising from a specific contract, instrument, or arrangement |
+| 风险暴露情形（exposure situation） | 某一方承受源自特定合同、工具或安排的影响或风险的情势。<br>state of affairs in which some party is subject to influence or risk arising from a specific contract, instrument, or arrangement |
+| 金融风险暴露（financial exposure） | 个人或组织在交易中或就某项或某组投资面临损失风险的程度。<br>the extent to which an individual or organization is open to risk of suffering a loss in a transaction, or with respect to some investment or set of investments, e.g., some holding; the amount one stands to lose in that transaction or investment |
+| 金融中介服务（financial intermediation service） | 由第三方（中介）将贷款人和投资者与需要资金的企业家及其他借款人撮合起来的金融服务。<br>any financial service in which a third party (the intermediary) matches lenders and investors with entrepreneurs and other borrowers in need of capital |
+| 金融产品（financial product） | 由银行、保险公司、经纪公司、消费金融公司等金融机构向消费者和企业提供的产品。<br>product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies |
+| 金融产品目录（financial product catalog） | 列有可供销售的金融产品和/或服务及其描述和其他产品详情的目录。<br>catalog of financial products and/or services available for sale with their description and other product details |
+| 金融服务（financial service） | 由银行、保险公司、经纪公司、消费金融公司等金融机构向消费者和企业提供的服务。<br>service provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies |
+| 金融服务提供商（financial service provider） | 获许可以向消费者和/或企业提供金融服务、或依法设立以提供金融服务的功能实体。<br>functional entity either licensed to provide financial services to consumers and/or businesses or established by law to provide financial services, such as a central bank |
+| 法定代理人（legal agent） | 经合法授权代表另一方行事的任何一方。<br>any party that has been legally empowered to act on behalf of another party |
+| 持证代理人（licensed agent） | 经许可执行具有法律约束力职能、并经合法授权代表另一方行事的任何个人。<br>any individual who is licensed to perform a legally binding function, and who has been legally empowered to act on behalf of another party |
+| 受要约人（offeree） | 基于要约条款从某方（即要约人）处收到要约的一方。<br>party that receives an offer from something from someone (i.e., an offerer) based on the terms of the offering |
+| 发行（offering） | 将证券提供发行的流程步骤，即通过承销使新证券发行可得。<br>expression of interest in providing something to someone that is contingent upon acceptance, forbearance, or some other consideration, as might be desired by an offeree(s) |
+| 要约人（offeror） | 基于要约条款提议向某方（即受要约人）提供某物的一方。<br>party that proposes to make something available to someone (i.e., an offeree) based on the terms of the offering |
+| 头寸（position） | 因持有、借入、卖空或订立合约（如衍生品）而产生的金融风险暴露。<br>financial exposure resulting from owning, borrowing, shorting, or entering into a contract (e.g., derivatives) |
+| 产品生命周期（product lifecycle） | 特定于某一产品或产品族的生命周期。<br>lifecycle specific to a product or product family |
+| 产品生命周期事件（product lifecycle event） | 在产品生命周期的一个或多个阶段中发生的事件类别。<br>kind of event that occurs during one or more stages of a product lifecycle |
+| 产品生命周期事件发生（product lifecycle event occurrence） | 特定产品生命周期某一阶段中事件的实际发生。<br>actual occurrence of an event that happens during a specific stage of a specific product lifecycle |
+| 产品生命周期历程（product lifecycle occurrence） | 某一具体产品生命周期的实现。<br>realization of the lifecycle of a specific product |
+| 产品生命周期阶段（product lifecycle stage） | 产品生命周期中的一个阶段。<br>phase in a product lifecycle |
+| 产品生命周期阶段历程（product lifecycle stage occurrence） | 某一给定产品生命周期中特定阶段的实现。<br>realization of a specific stage in the lifecycle of a given product |
+| 注册代理人（registered agent） | 由某方依据正式代理协议指定、代表其行事的法定代理人。<br>legal agent designated by some party to represent them and act on their behalf under a formal agency agreement |
+| 受监管商品（regulated commodity） | 处于监管机构（如美国商品期货交易委员会 CFTC）管辖之下的商品。<br>commodity under the jurisdiction of the regulatory agency, such as the Commodities Futures Trading Commission (CFTF) in the United States, which includes any commodity traded in an organized contracts market |
+| 结算条款（settlement terms） | 规定交易一方或多方结算承诺与机制的合同条款。<br>contract terms that define the commitment to and mechanism for settling one or more sides of a transaction |
+| 第三方代理人（third-party agent） | 经许可执行具有法律约束力职能、并经合法授权代表另一方行事的任何服务提供商。<br>any service provider that is licensed to perform a legally binding function and has been legally empowered to act on behalf of another party |
+| 交易（trade） | 实现参与自愿买卖商品和服务行为的各方之间协议的情势。<br>situation that realizes an agreement between parties participating in a voluntary action of buying and selling goods and services |
+| 交易标识符（trade identifier） | 在某一情境中标识一笔交易的字符序列。<br>sequence of characters identifying a trade within some context |
+| 交易生命周期（trade lifecycle） | 规定交易从发起到结算之演变过程的生命周期。<br>lifecycle that defines the evolution of a trade, from initiation through settlement |
+| 交易生命周期事件（trade lifecycle event） | 在交易生命周期的一个或多个阶段中发生的事件类别。<br>kind of event that occurs during one or more stages of the lifecycle of a trade |
+| 交易生命周期事件发生（trade lifecycle event occurrence） | 特定交易生命周期某一阶段中事件的实现。<br>realization of an event that happens during a specific stage of a specific trade lifecycle |
+| 交易生命周期历程（trade lifecycle occurrence） | 某一具体交易生命周期的实现。<br>realization of the lifecycle for a specific trade |
+| 交易生命周期阶段（trade lifecycle stage） | 交易生命周期中的一个阶段。<br>phase in the lifecycle of a trade |
+| 交易生命周期阶段历程（trade lifecycle stage occurrence） | 某一具体交易生命周期中某一阶段的实现。<br>realization of a phase in the lifecycle of a specific trade |
+| 交易员（trader） | 代表客户或金融服务提供商在任何金融市场进行金融资产转让的一方。<br>party that engages in the transfer of financial assets in any financial market on behalf of a client or the financial services provider |
+| 交易策略（trading strategy） | 在证券市场进行买卖所采用的方法。<br>approach used for buying and selling in the securities markets |
+| 唯一交易标识符（unique transaction identifier） | 在交易相关各方或团体认为有用并达成一致时唯一标识一笔金融交易的字符序列。<br>sequence of characters identifying a financial transaction uniquely whenever useful and agreed by the parties or community involved in the transaction |
+| 加权篮子（weighted basket） | 各成分彼此之间具有相对重要性的篮子。<br>basket whose constituents have some relative importance with respect to one another |
+| 加权篮子成分（weighted basket constituent） | 其相对于其他篮子成分的重要性为已知的篮子组成部分。<br>component of a basket whose relative importance with respect to other basket constituents is known |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -121,8 +121,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有挑选方（has selecting party）** | 指明负责确定篮子成分的个人或组织。 | 值域：参与方（party）；子属性：具有参与方（has party） |
-| **具有挑选标准（has selection criteria）** | 描述用于确定集合成员构成的方法或程序。 | 子属性：具有文本值 |
+| **具有挑选方（has selecting party）** | 指明负责确定篮子成分的个人或组织。<br>indicates the person(s) or organization(s) responsible for determining the contents of a basket | 值域：参与方（party）；子属性：具有参与方（has party） |
+| **具有挑选标准（has selection criteria）** | 描述用于确定集合成员构成的方法或程序。<br>describes the methodology or program used to determine the membership of a collection | 子属性：具有文本值 |
 | **具有成员（hasMember）** | — | — |
 
 公理：
@@ -370,8 +370,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **暴露于（exposes in）** | 指明风险暴露发生的情势。 | 值域：风险暴露情形（exposure situation）；子属性：承受（undergoes） |
-| **是……的风险暴露（is exposure of）** | 是由……承担的影响或风险。 | 值域：风险暴露承担方（exposure bearer）；子属性：受…影响（is affected by） |
+| **暴露于（exposes in）** | 指明风险暴露发生的情势。<br>indicates the state of affairs in which exposure occurs | 值域：风险暴露情形（exposure situation）；子属性：承受（undergoes） |
+| **是……的风险暴露（is exposure of）** | 是由……承担的影响或风险。<br>is the influence or risk borne by | 值域：风险暴露承担方（exposure bearer）；子属性：受…影响（is affected by） |
 
 #### 2.15.1 金融风险暴露（financial exposure）
 
@@ -396,8 +396,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **在……中为风险暴露方（is exposed party in）** | 指明该方承担风险的情势。 | 值域：风险暴露情形（exposure situation）；子属性：在…中行动（acts in） |
-| **暴露于（is exposed to）** | 承受来自……的影响或风险。 | 值域：风险暴露（exposure）；逆属性：是……的风险暴露（is exposure of）；子属性：对…采取行动（acts on） |
+| **在……中为风险暴露方（is exposed party in）** | 指明该方承担风险的情势。<br>indicates the state of affairs in which the party bears the risk | 值域：风险暴露情形（exposure situation）；子属性：在…中行动（acts in） |
+| **暴露于（is exposed to）** | 承受来自……的影响或风险。<br>is subject to influence or risk from | 值域：风险暴露（exposure）；逆属性：是……的风险暴露（is exposure of）；子属性：对…采取行动（acts on） |
 
 公理：
 
@@ -414,8 +414,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有风险暴露方（has exposed party）** | 指明承受影响或风险的一方。 | 值域：风险暴露承担方（exposure bearer）；逆属性：在……中为风险暴露方（is exposed party in）；子属性：具有行为者（has actor） |
-| **暴露于……的风险（has exposure to）** | 涉及来自……的影响或风险。 | 值域：风险暴露（exposure）；逆属性：暴露于（exposes in）；子属性：具有承受者（has undergoer） |
+| **具有风险暴露方（has exposed party）** | 指明承受影响或风险的一方。<br>indicates the party subject to influence or risk in | 值域：风险暴露承担方（exposure bearer）；逆属性：在……中为风险暴露方（is exposed party in）；子属性：具有行为者（has actor） |
+| **暴露于……的风险（has exposure to）** | 涉及来自……的影响或风险。<br>involves influence or risk from | 值域：风险暴露（exposure）；逆属性：暴露于（exposes in）；子属性：具有承受者（has undergoer） |
 
 公理：
 
@@ -555,7 +555,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的要约（is offering of）** | 将要约与作为要约标的的一个或多个事物关联起来。 | — |
+| **是……的要约（is offering of）** | 将要约与作为要约标的的一个或多个事物关联起来。<br>relates an offering to one or things that are the subject of the offer | — |
 | **由……发行（isIssuedBy）** | — | — |
 | **适用于（appliesTo）** | — | — |
 | **具有参与方角色（has party role）** | — | — |
@@ -733,7 +733,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有结算日（has settlement date）** | 指明已执行订单或交易必须完成结算的日期。 | 值域：推算日期；子属性：具有结束日期 |
+| **具有结算日（has settlement date）** | 指明已执行订单或交易必须完成结算的日期。<br>indicates the date by which an executed order or transaction must be settled | 值域：推算日期；子属性：具有结束日期 |
 
 公理：
 
@@ -749,8 +749,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **体现于（is embodied in）** | 标识某事物在某一情境中的表现形式或有形载体。 | 逆属性：体现（embodies） |
-| **由……促进（is facilitated by）** | 标识在某一情境中促成某一事件、交易、对话或其他事物的人或事物。 | 逆属性：促进（facilitates）；子属性：具有主动参与方（has active party） |
+| **体现于（is embodied in）** | 标识某事物在某一情境中的表现形式或有形载体。<br>identifies the representation or tangible form of something in some context | 逆属性：体现（embodies） |
+| **由……促进（is facilitated by）** | 标识在某一情境中促成某一事件、交易、对话或其他事物的人或事物。<br>identifies someone or something that expedites some event, transaction, conversation or something else in some context | 逆属性：促进（facilitates）；子属性：具有主动参与方（has active party） |
 | **具有买方（hasBuyer）** | — | — |
 | **具有卖方（hasSeller）** | — | — |
 | **涉及（involves）** | — | — |
@@ -796,8 +796,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有生成实体（has generating entity）** | 指明生成某事物的法律实体。 | 值域：法律实体；子属性：生成 |
-| **具有生成实体标识符（has generating entity identifier）** | 指明生成唯一交易标识符的实体的标识符。 | — |
+| **具有生成实体（has generating entity）** | 指明生成某事物的法律实体。<br>specifies a legal entity that generates something | 值域：法律实体；子属性：生成 |
+| **具有生成实体标识符（has generating entity identifier）** | 指明生成唯一交易标识符的实体的标识符。<br>specifies an identifier for the entity that generated a unique transaction identifier | — |
 
 公理：
 
@@ -937,7 +937,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **促进（facilitates）** | 在某一事件、任务、对话或其他事物发生的情势中充当促成者。 | 子属性：在…中扮演主动参与方（plays active party in） |
+| **促进（facilitates）** | 在某一事件、任务、对话或其他事物发生的情势中充当促成者。<br>acts as an enabler in a situation in which an event, a task, a conversation or something else occurs | 子属性：在…中扮演主动参与方（plays active party in） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -959,19 +959,19 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有要约（has offering）** | 将某事物与买方或卖方（要约人）向另一方（受要约人）提交的、自愿但附条件的承诺关联起来，该承诺一经接受即具约束力。 | 值域：发行（offering）；逆属性：是……的要约（is offering of） |
-| **具有要约金额（has offering amount）** | 指明基于参考数据、市场利率或其他约定方法确定的、与某要约相关联的名义货币金额。 | 值域：货币数量；子属性：具有名义金额 |
-| **具有要约价格（has offering price）** | 指明与要约相关联的价格，可为明示价格或计算价格。 | 值域：货币价格；子属性：具有价格 |
-| **具有注册代理人（has registered agent）** | 标识在特定情况下具有法律、医疗或财务能力代表他人行事的一方。 | 值域：法定代理人（legal agent）；子属性：具有参与方角色（has party role） |
-| **具有交易日（has trade date）** | 指明证券或其他工具交易实际发生的日期。 | 值域：日期；子属性：具有日期 |
-| **关联于（relates to）** | 与……存在逻辑或因果联系。 | — |
+| **具有要约（has offering）** | 将某事物与买方或卖方（要约人）向另一方（受要约人）提交的、自愿但附条件的承诺关联起来，该承诺一经接受即具约束力。<br>relates something to a voluntary but conditional promise submitted by a buyer or seller (offeror) to another (offeree) for acceptance, and which becomes legally enforceable if accepted by the offeree | 值域：发行（offering）；逆属性：是……的要约（is offering of） |
+| **具有要约金额（has offering amount）** | 指明基于参考数据、市场利率或其他约定方法确定的、与某要约相关联的名义货币金额。<br>indicates the notional monetary amount, determined based on reference data, market rates or some other agreed method associated with some offering | 值域：货币数量；子属性：具有名义金额 |
+| **具有要约价格（has offering price）** | 指明与要约相关联的价格，可为明示价格或计算价格。<br>indicates the price associated with an offering, which may be an explicit or calculated price | 值域：货币价格；子属性：具有价格 |
+| **具有注册代理人（has registered agent）** | 标识在特定情况下具有法律、医疗或财务能力代表他人行事的一方。<br>identifies a party as one that has the legal, medical or financial capacity to act on behalf of someone else under specific circumstances | 值域：法定代理人（legal agent）；子属性：具有参与方角色（has party role） |
+| **具有交易日（has trade date）** | 指明证券或其他工具交易实际发生的日期。<br>indicates the date on which a security or other instrument-specific trade actually takes place | 值域：日期；子属性：具有日期 |
+| **关联于（relates to）** | 与……存在逻辑或因果联系。<br>has a logical or causal connection with | — |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有名义单位数量（has nominal number of units）** | 指明与某要约相关联的基础单位数量。 |
-| **具有要约单位数量（has offering units）** | 指明与某要约相关联的实际单位数量，包括单位数量的任何溢价部分。 |
+| **具有名义单位数量（has nominal number of units）** | 指明与某要约相关联的基础单位数量。<br>indicates the base number of units of something associated with some offering |
+| **具有要约单位数量（has offering units）** | 指明与某要约相关联的实际单位数量，包括单位数量的任何溢价部分。<br>indicates the actual number of units of something, including any premium on the number of units, associated with some offering |
 
 ## 4. 依赖（owl:imports，29 个）
 

@@ -56,11 +56,11 @@ cmns-cxtid:StructuredIdentifier a owl:Class ;
     rdfs:comment "唯一标识其所关联事物的字符序列，其中包含其他代码或标识符，或由其他要素构造而成。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-cds:CodeElement ;
+            owl:onClass cmns-id:Identifier ;
             owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-id:Identifier ;
+            owl:onClass cmns-cds:CodeElement ;
             owl:onProperty cmns-col:comprises ],
         cmns-id:Identifier ;
     skos:definition "sequence of characters uniquely identifying that with which it is associated, that includes other codes or identifiers, or that is constructed from other notions" ;

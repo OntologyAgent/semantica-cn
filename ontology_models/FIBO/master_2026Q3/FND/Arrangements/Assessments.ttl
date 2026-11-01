@@ -113,12 +113,12 @@ fibo-fnd-arr-asmt:ValueAssessment a owl:Class ;
         "价值评估（value assessment）"@zh ;
     rdfs:comment "估计某事物价值的评估事件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-asmt:hasAppraiser ;
+            owl:someValuesFrom cmns-pts:AgentRole ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-arr-asmt:ValuationMethod ;
             owl:onProperty fibo-fnd-arr-asmt:appliesMethodology ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-asmt:hasAppraiser ;
-            owl:someValuesFrom cmns-pts:AgentRole ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-arr-asmt:Appraisal ;
@@ -221,6 +221,9 @@ fibo-fnd-arr-asmt:Appraisal a owl:Class ;
         "估价报告（appraisal）"@zh ;
     rdfs:comment "对某事物在某时点市场价值的书面估计，通常由合格估价师提供。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-asmt:estimatesValueAt ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:AppraisedValue ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-arr-asmt:Appraiser ;
             owl:onProperty fibo-fnd-rel-rel:isGeneratedBy ],
@@ -228,9 +231,6 @@ fibo-fnd-arr-asmt:Appraisal a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-oac-own:Asset ;
             owl:onProperty fibo-fnd-rel-rel:evaluates ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-asmt:estimatesValueAt ;
-            owl:someValuesFrom fibo-fnd-arr-asmt:AppraisedValue ],
         fibo-fnd-arr-asmt:AssessmentReport ;
     skos:definition "written estimate of the market value of something as of some point in time, typically provided by a qualified appraiser" .
 
@@ -243,18 +243,18 @@ fibo-fnd-arr-asmt:AssessmentEvent a owl:Class ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-arr-asmt:AssessmentReport ;
-            owl:onProperty fibo-fnd-dt-oc:hasOutput ],
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-dt-oc:hasOutput ;
             owl:someValuesFrom fibo-fnd-arr-asmt:Opinion ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-arr-asmt:AssessmentReport ;
+            owl:onProperty fibo-fnd-dt-oc:hasOutput ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-org:isProvidedBy ;
             owl:someValuesFrom cmns-pts:AgentRole ],
-        [ a owl:Restriction ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty fibo-fnd-rel-rel:evaluates ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "event involving the evaluation or estimation of the nature, quality, or ability of someone or something" .
 

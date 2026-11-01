@@ -153,17 +153,17 @@ fibo-sec-eq-eq:EquityPosition a owl:Class ;
         "股票头寸（equity position）"@zh ;
     rdfs:comment "在权益工具中的头寸。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass [ a owl:Class ;
-                    owl:unionOf ( fibo-be-oac-cown:Shareholder fibo-sec-eq-eq:Custodian ) ] ;
-            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
             owl:someValuesFrom fibo-be-oac-cown:Shareholding ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-be-oac-cown:Shareholder ;
             owl:onProperty fibo-fnd-oac-own:hasOwningParty ],
+        [ a owl:Restriction ;
+            owl:onClass [ a owl:Class ;
+                    owl:unionOf ( fibo-be-oac-cown:Shareholder fibo-sec-eq-eq:Custodian ) ] ;
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fbc-pas-fpas:Position ;
     skos:definition "position in an equity instrument"@en .
 
@@ -381,14 +381,14 @@ fibo-sec-eq-eq:RetractablePreferredShareWithExtendableMaturityDate a owl:Class ;
         "到期日可延长的可回售优先股（retractable preferred share with extendable maturity date）"@zh ;
     rdfs:comment "有固定到期日、且发行人和/或持有人可选择延长到期日的可回售优先股。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue true ;
-            owl:onProperty fibo-sec-eq-eq:hasExtendableMaturityDate ],
-        [ a owl:Restriction ;
-            owl:hasValue true ;
-            owl:onProperty fibo-sec-eq-eq:hasExtendableMaturityDate ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasExtensionProvision ;
             owl:someValuesFrom fibo-fnd-agr-ctr:ExtensionProvision ],
+        [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-sec-eq-eq:hasExtendableMaturityDate ],
+        [ a owl:Restriction ;
+            owl:hasValue true ;
+            owl:onProperty fibo-sec-eq-eq:hasExtendableMaturityDate ],
         fibo-sec-eq-eq:PreferredShareWithFixedMaturityDate,
         fibo-sec-eq-eq:RetractablePreferredShare ;
     skos:definition "retractable preferred share with a fixed maturity date whose issuer and/or holders have the option to extend the maturity date" .
@@ -517,12 +517,12 @@ fibo-sec-eq-eq:AdjustableRateDividend a owl:Class ;
         "可调整利率股息（adjustable rate dividend）"@zh ;
     rdfs:comment "随基准利率变动的股息。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:hasAdjustableDividendRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:PercentageMonetaryAmount ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty cmns-qtu:describesActualExpression ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-eq:hasAdjustableDividendRate ;
-            owl:someValuesFrom fibo-fnd-acc-cur:PercentageMonetaryAmount ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-ind-ir-ir:InterestRateBenchmark ;
@@ -954,10 +954,6 @@ fibo-sec-eq-eq:Dividend a owl:Class ;
         "股息（dividend）"@zh ;
     rdfs:comment "宣布按证券类别按比例向股东分配部分收益的承诺。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-eq-eq:DividendDistributionMethod ;
-            owl:onProperty fibo-sec-eq-eq:hasDistributionMethod ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fnd-pas-psch:hasPaymentAmount ],
@@ -965,6 +961,10 @@ fibo-sec-eq-eq:Dividend a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-eq-eq:DividendSchedule ;
             owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:DividendDistributionMethod ;
+            owl:onProperty fibo-sec-eq-eq:hasDistributionMethod ],
         fibo-fnd-agr-agr:Commitment ;
     skos:definition "announced commitment to make a specific distribution of a portion of earnings to shareholders, prorated by class of security" ;
     cmns-av:explanatoryNote "The amount and timing of payment is set by the board of directors, typically quarterly. Dividends may be paid in the form of money, shares, scrip, or on rare occasion, property." .
@@ -984,16 +984,12 @@ fibo-sec-eq-eq:EquityRedemptionProvision a owl:Class ;
     rdfs:comment "规定发行人或股东可赎回股份之条件的赎回条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
-            owl:onProperty fibo-sec-eq-eq:hasRedemptionPremium ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-sec-eq-eq:isRedeemableAtShareholderOption ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-sec-eq-eq:hasEarliestRedemptionDate ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-sec-eq-eq:hasExtendableRedemptionDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
@@ -1004,8 +1000,12 @@ fibo-sec-eq-eq:EquityRedemptionProvision a owl:Class ;
             owl:onProperty fibo-sec-eq-eq:hasMinimumRedemptionPrice ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
+            owl:onProperty fibo-sec-eq-eq:hasRedemptionPremium ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-sec-eq-eq:isRedeemableAtShareholderOption ],
+            owl:onProperty fibo-sec-eq-eq:hasExtendableRedemptionDate ],
         fibo-fbc-fi-fi:RedemptionProvision ;
     skos:definition "redemption provision that specifies the conditions under which the issuer or shareholder may redeem the shares"@en .
 
@@ -1015,12 +1015,12 @@ fibo-sec-eq-eq:PreferredDividend a owl:Class ;
     rdfs:comment "向股东分配部分收益的承诺，类似于股息，但通常金额和支付计划固定。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
-            owl:onProperty fibo-sec-eq-eq:hasFixedDividendRate ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Duration ;
             owl:onProperty fibo-sec-eq-eq:hasDividendGracePeriod ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
+            owl:onProperty fibo-sec-eq-eq:hasFixedDividendRate ],
         fibo-sec-eq-eq:Dividend ;
     skos:definition "commitment to distribute a portion of earnings to shareholders, similar to a dividend but often with a fixed payment amount and schedule" .
 
@@ -1029,12 +1029,12 @@ fibo-sec-eq-eq:PreferredShare a owl:Class ;
         "优先股（preferred share）"@zh ;
     rdfs:comment "按约定利率支付股息、并在股息支付和公司资产清算方面优先于普通股的股份。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:isSeniorTo ;
+            owl:someValuesFrom fibo-sec-eq-eq:CommonShare ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-fbc-dae-dbt:hasMaturityDate ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-eq:isSeniorTo ;
-            owl:someValuesFrom fibo-sec-eq-eq:CommonShare ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-eq-eq:hasDividend ;
             owl:someValuesFrom [ a owl:Class ;
@@ -1048,41 +1048,41 @@ fibo-sec-eq-eq:Share a owl:Class ;
         "股份（share）"@zh ;
     rdfs:comment "表示公司股权所有权单位、共同基金所有权单位、或合伙中权益的金融工具。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:hasSharePaymentStatus ;
+            owl:someValuesFrom fibo-sec-eq-eq:SharePaymentStatus ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasFloatingStock ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ;
+            owl:someValuesFrom xsd:decimal ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasSharesIssued ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:confersOwnershipOf ;
+            owl:someValuesFrom fibo-fnd-oac-own:ShareholdersEquity ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasSharesOutstanding ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-le-cb:hasSharesAuthorized ;
+            owl:someValuesFrom xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-sec-eq-eq:hasVotingRestriction ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:nonNegativeInteger ;
             owl:onProperty fibo-sec-eq-eq:hasAvailableShares ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty fibo-sec-eq-eq:hasFloatingStock ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty fibo-sec-eq-eq:hasSharesIssued ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:nonNegativeInteger ;
             owl:onProperty fibo-sec-eq-eq:hasTreasuryShares ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty fibo-sec-eq-eq:hasSharesOutstanding ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-eq:confersOwnershipOf ;
-            owl:someValuesFrom fibo-fnd-oac-own:ShareholdersEquity ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-be-le-cb:hasSharesAuthorized ;
-            owl:someValuesFrom xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ;
-            owl:someValuesFrom xsd:decimal ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty fibo-sec-eq-eq:hasVotingRestriction ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-eq:hasSharePaymentStatus ;
-            owl:someValuesFrom fibo-sec-eq-eq:SharePaymentStatus ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;

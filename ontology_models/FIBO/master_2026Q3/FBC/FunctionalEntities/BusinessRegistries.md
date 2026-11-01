@@ -34,24 +34,24 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 北美行业分类体系代码（North American Industry Classification System code） | 代表某一行业的北美行业分类体系（NAICS）代码。 |
-| 北美行业分类体系方案（North American Industry Classification System scheme） | 定义北美行业分类体系（NAICS）代码的方案。 |
-| 商业登记册标识符（business register identifier） | 唯一标识商业登记册的标识符，例如由全球法人识别编码基金会（GLEIF）登记册标识的登记册。 |
-| 商业登记主管机构（business registration authority） | 负责维护商业实体登记册的登记主管机构。 |
-| 商业登记册（business registry） | 用于登记和维护商业实体信息的登记册。 |
-| 商业登记册条目（business registry entry） | 商业登记册中的一条记录。 |
-| 实体终止原因（entity expiration reason） | 表示法律实体终止存在和/或终止运营原因的代码。 |
-| 实体法律形式登记册（entity legal form registry） | 按照特定司法管辖区规定，登记和维护商业实体有效法律形式信息的登记册。 |
-| 实体法律形式登记册条目（entity legal form registry entry） | 符合 ISO 20275 标准的实体法律形式登记册记录。 |
-| 实体状态（entity status） | 表明实体运营和/或法律状态的生命周期阶段。 |
-| 实体核验级别（entity validation level） | 表示全球法人识别编码基金会（GLEIF）或本地运营单位（LOU）对注册人提供的参考数据所执行核验级别的代码。 |
-| 法人识别编码登记册（legal entity identifier registry） | 为特定司法管辖区登记和维护商业实体信息的登记册。 |
-| 法人识别编码登记册条目（legal entity identifier registry entry） | 符合 ISO 17442 及全球法人识别编码基金会（GLEIF）通用数据格式（CDF）的登记册记录。 |
-| 本地运营单位（local operating unit） | 经全球法人识别编码基金会授权、可签发法人识别编码（LEI）的注册机构。 |
-| 登记主管机构代码（registration authority code） | 唯一标识商业登记册、并与登记主管机构和司法管辖区相关联的标识符，由全球法人识别编码基金会签发。 |
-| 登记状态（registration status） | 表明某事物（如企业或法律实体）特定登记状态的生命周期阶段，由登记主管机构规定。 |
-| 标准行业分类代码（standard industrial classification code） | 代表某一行业的标准行业分类（SIC）代码。 |
-| 标准行业分类方案（standard industrial classification scheme） | 定义标准行业分类（SIC）代码表的方案。 |
+| 北美行业分类体系代码（North American Industry Classification System code） | 代表某一行业的北美行业分类体系（NAICS）代码。<br>the North American Industry Classification System (NAICS) code representing an industry |
+| 北美行业分类体系方案（North American Industry Classification System scheme） | 定义北美行业分类体系（NAICS）代码的方案。<br>the scheme defining the North American Industry Classification System (NAICS) Codes |
+| 商业登记册标识符（business register identifier） | 唯一标识商业登记册的标识符，例如由全球法人识别编码基金会（GLEIF）登记册标识的登记册。<br>identifier that uniquely identifies a business register, such as a register identified by the Global Legal Entity Identifier Foundation (GLEIF) registration authorities list |
+| 商业登记主管机构（business registration authority） | 负责维护商业实体登记册的登记主管机构。<br>registration authority that is responsible for maintaining a registry of business entities |
+| 商业登记册（business registry） | 用于登记和维护商业实体信息的登记册。<br>registry for registering and maintaining information about business entities |
+| 商业登记册条目（business registry entry） | 商业登记册中的一条记录。<br>entry in a business registry |
+| 实体终止原因（entity expiration reason） | 表示法律实体终止存在和/或终止运营原因的代码。<br>code for the reason that a legal entity ceased to exist and/or operate |
+| 实体法律形式登记册（entity legal form registry） | 按照特定司法管辖区规定，登记和维护商业实体有效法律形式信息的登记册。<br>registry for registering and maintaining information about the legal forms that are valid for business entities for a particular jurisdiction following the ISO 20275 standard |
+| 实体法律形式登记册条目（entity legal form registry entry） | 符合 ISO 20275 标准的实体法律形式登记册记录。<br>entry in an entity legal form registry that conforms to ISO 20275 |
+| 实体状态（entity status） | 表明实体运营和/或法律状态的生命周期阶段。<br>lifecycle stage indicating the operational and/or legal status of an entity |
+| 实体核验级别（entity validation level） | 表示全球法人识别编码基金会（GLEIF）或本地运营单位（LOU）对注册人提供的参考数据所执行核验级别的代码。<br>code for the level of validation performed by the GLEIF or LOU with respect to the reference data provided by the registrant |
+| 法人识别编码登记册（legal entity identifier registry） | 为特定司法管辖区登记和维护商业实体信息的登记册。<br>registry for registering and maintaining information about business entities for a particular jurisdiction |
+| 法人识别编码登记册条目（legal entity identifier registry entry） | 符合 ISO 17442 及全球法人识别编码基金会（GLEIF）通用数据格式（CDF）的登记册记录。<br>entry in a legal entity identifier registry that conforms to ISO 17442 and the Global Legal Entity Identifier Foundation (GLEIF) Common Data Format (CDF) |
+| 本地运营单位（local operating unit） | 经全球法人识别编码基金会授权、可签发法人识别编码（LEI）的注册机构。<br>registrar that is authorized by the Global LEI Foundation to issue legal entity identifiers |
+| 登记主管机构代码（registration authority code） | 唯一标识商业登记册、并与登记主管机构和司法管辖区相关联的标识符，由全球法人识别编码基金会签发。<br>identifier that uniquely identifies a business registry, and is associated with a registration authority and jurisdiction, issued by the Global Legal Entity Identifier Foundation (GLEIF) |
+| 登记状态（registration status） | 表明某事物（如企业或法律实体）特定登记状态的生命周期阶段，由登记主管机构规定。<br>lifecycle stage indicating the status of a given registration of something, such as a business or legal entity, as specified by the registration authority |
+| 标准行业分类代码（standard industrial classification code） | 代表某一行业的标准行业分类（SIC）代码。<br>the SIC code representing an industry |
+| 标准行业分类方案（standard industrial classification scheme） | 定义标准行业分类（SIC）代码表的方案。<br>the scheme defining the Standard Industrial Classification (SIC) Code List |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -138,7 +138,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有登记册名称（has registry name）** | 表示登记册的名称，例如登记法律实体商业登记标识符的商业登记册。 | 子属性：具有文本名称 |
+| **具有登记册名称（has registry name）** | 表示登记册的名称，例如登记法律实体商业登记标识符的商业登记册。<br>denotes a name for the registry, for example, for a business registry in which a business registration identifier for the legal entity is registered | 子属性：具有文本名称 |
 | **包含（comprises）** | — | — |
 | **由……管理（isManagedBy）** | — | — |
 
@@ -175,7 +175,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有登记状态（has registration status）** | 指明特定登记（如标识符或许可证的登记）的状态。 | 值域：登记状态（registration status）；子属性：具有阶段 |
+| **具有登记状态（has registration status）** | 指明特定登记（如标识符或许可证的登记）的状态。<br>indicates the status of a specific registration, such as for an identifier or license | 值域：登记状态（registration status）；子属性：具有阶段 |
 | **包含（comprises）** | — | — |
 | **具有注册日期（hasRegistrationDate）** | — | — |
 
@@ -195,10 +195,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有管理本地运营单位（has managing local operating unit）** | 将法人识别记录与注册相关法人识别编码的本地运营单位标识符关联起来。 | — |
-| **具有登记状态（has registration status）** | 指明特定登记（如标识符或许可证的登记）的状态。 | 值域：登记状态（registration status）；子属性：具有阶段 |
-| **具有核验机构（has validation authority）** | 标识法律实体的商业登记主管机构，本地运营单位（LOU）以其作为核验依据。 | 值域：商业登记主管机构（business registration authority）；子属性：具有参与方角色（has party role） |
-| **具有核验级别（has validation level）** | 指明注册机构对法律实体执行的核验级别。 | 值域：实体核验级别（entity validation level） |
+| **具有管理本地运营单位（has managing local operating unit）** | 将法人识别记录与注册相关法人识别编码的本地运营单位标识符关联起来。<br>relates a legal entity identification record to the identifier for the local operating unit that registered the relevant legal entity identifier | — |
+| **具有登记状态（has registration status）** | 指明特定登记（如标识符或许可证的登记）的状态。<br>indicates the status of a specific registration, such as for an identifier or license | 值域：登记状态（registration status）；子属性：具有阶段 |
+| **具有核验机构（has validation authority）** | 标识法律实体的商业登记主管机构，本地运营单位（LOU）以其作为核验依据。<br>identifies the business registration authority for the legal entity, used by the Local Operating Unit (LOU) as the basis for validation, as defined in the GLEIF Registration Authorities List | 值域：商业登记主管机构（business registration authority）；子属性：具有参与方角色（has party role） |
+| **具有核验级别（has validation level）** | 指明注册机构对法律实体执行的核验级别。<br>indicates the level of validation performed by the registrar with respect to the legal entity | 值域：实体核验级别（entity validation level） |
 | **包含（comprises）** | — | — |
 
 公理：
@@ -363,26 +363,26 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有实体终止原因（has entity expiration reason）** | 指明实体终止存在的原因（如解散、与其他实体合并等）。 | 值域：实体终止原因（entity expiration reason）；子属性：由……表示 |
-| **具有实体状态（has entity status）** | 指明实体的状态（如存续、注销）。 | 值域：实体状态（entity status）；子属性：具有阶段 |
+| **具有实体终止原因（has entity expiration reason）** | 指明实体终止存在的原因（如解散、与其他实体合并等）。<br>indicates the reason that an entity ceased to exist (i.e., disolved, merged with another entity, etc.) | 值域：实体终止原因（entity expiration reason）；子属性：由……表示 |
+| **具有实体状态（has entity status）** | 指明实体的状态（如存续、注销）。<br>indicates the status of the entity (i.e., active, inactive) | 值域：实体状态（entity status）；子属性：具有阶段 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **具有替代语言法定名称（has alternative language legal name）** | 表示实体在其注册司法管辖区所使用的替代语言的注册法定名称。 |
-| **具有自动转写法定名称（has automatically transliterated legal name）** | 表示实体法定名称的自动生成的 ASCII 转写形式。 |
-| **具有实体终止日期（has entity expiration date）** | 指明实体终止存在的日期。 |
-| **具有到期日（has expiry date）** | 指明某事物终止存在的日期。 |
-| **具有初始登记日期（has initial registration date）** | 指明标识符或其他登记项目创建和/或首次登记的日期。 |
-| **具有首选转写法定名称（has preferred transliterated legal name）** | 表示实体法定名称的首选 ASCII 转写形式。 |
-| **具有曾用法定名称（has prior legal name）** | 表示实体此前使用过的主要法定名称。 |
-| **具有登记状态修订日期（has registration status revision date）** | 指明登记册中特定登记状态被修订的日期。 |
-| **具有续展日期（has renewal date）** | 指明登记册中特定登记须续展或更新的日期。 |
-| **具有经营名称（has trading or operational name）** | 表示实体当前使用的「以……名义经营」「品牌名」等名称，该名称是对法定名称的补充而非替代。 |
-| **具有转写法定名称（has transliterated legal name）** | 表示实体法定名称的可选 ASCII 转写（即拉丁化/罗马化）形式。 |
-| **具有核验日期（has validation date）** | 指明登记册中特定登记最近一次被审核和核验的日期。 |
-| **是否自行维护（is self-maintained）** | 表明实体信息是由内部维护还是由第三方维护。 |
+| **具有替代语言法定名称（has alternative language legal name）** | 表示实体在其注册司法管辖区所使用的替代语言的注册法定名称。<br>denotes a registered legal name for the entity in an alternative language used in the legal jurisdiction in which the entity is registered |
+| **具有自动转写法定名称（has automatically transliterated legal name）** | 表示实体法定名称的自动生成的 ASCII 转写形式。<br>denotes an auto-generated ASCII-transliterated representation of the legal name for the entity |
+| **具有实体终止日期（has entity expiration date）** | 指明实体终止存在的日期。<br>indicates the date on which an entity ceases(d) to exist |
+| **具有到期日（has expiry date）** | 指明某事物终止存在的日期。<br>indicates the date on which something ceases(d) to exist |
+| **具有初始登记日期（has initial registration date）** | 指明标识符或其他登记项目创建和/或首次登记的日期。<br>indicates the date on which an identifier or other registered item was created and/or first registered |
+| **具有首选转写法定名称（has preferred transliterated legal name）** | 表示实体法定名称的首选 ASCII 转写形式。<br>denotes a preferred ASCII-transliterated representation of the legal name for the entity |
+| **具有曾用法定名称（has prior legal name）** | 表示实体此前使用过的主要法定名称。<br>denotes a primary legal name that was used previously for the entity |
+| **具有登记状态修订日期（has registration status revision date）** | 指明登记册中特定登记状态被修订的日期。<br>indicates the date that the status of a specific registration in the registry was revised |
+| **具有续展日期（has renewal date）** | 指明登记册中特定登记须续展或更新的日期。<br>indicates the date by which a specific registration in the registry must be renewed or updated |
+| **具有经营名称（has trading or operational name）** | 表示实体当前使用的「以……名义经营」「品牌名」等名称，该名称是对法定名称的补充而非替代。<br>denotes a 'trading as', 'brand name', 'doing business as', or 'operating under' name currently used by the entity in addition to, but not replacing, the (primary) legal, official registered name |
+| **具有转写法定名称（has transliterated legal name）** | 表示实体法定名称的可选 ASCII 转写（即拉丁化/罗马化）形式。<br>denotes an optional ASCII-transliterated (i.e. Latin- or Romanized) representation of the legal name for the entity |
+| **具有核验日期（has validation date）** | 指明登记册中特定登记最近一次被审核和核验的日期。<br>indicates the date that a specific registration in the registry was most recently reviewed and validated |
+| **是否自行维护（is self-maintained）** | 表明实体信息是由内部维护还是由第三方维护。<br>indicates whether the information about the entity is maintained internally or by a third-party |
 
 ## 4. 依赖（owl:imports，20 个）
 

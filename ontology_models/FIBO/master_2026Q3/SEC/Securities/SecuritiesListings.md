@@ -26,10 +26,10 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 上市证券（listed security） | 在至少一个交易所挂牌的注册证券。 |
-| 挂牌（listing） | 由交易所管理的证券发行的目录条目，规定该证券在该交易所可供交易的条款。 |
-| 挂牌服务（listing service） | 交易所为促进证券交易提供的服务。 |
-| 注册证券（registered security） | 已在某一注册机构注册的证券。 |
+| 上市证券（listed security） | 在至少一个交易所挂牌的注册证券。<br>registered security listed on at least one exchange |
+| 挂牌（listing） | 由交易所管理的证券发行的目录条目，规定该证券在该交易所可供交易的条款。<br>catalog entry for a securities offering managed by an exchange that provides the terms under which that security is made available on that exchange |
+| 挂牌服务（listing service） | 交易所为促进证券交易提供的服务。<br>service provided by an exchange to facilitate securities trading |
+| 注册证券（registered security） | 已在某一注册机构注册的证券。<br>security that is registered with some registration authority |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -44,11 +44,11 @@
 | **具有批量规模（hasLotSize）** | — | — |
 | **具有登记状态（hasRegistrationStatus）** | — | — |
 | **具有货币（hasCurrency）** | — | — |
-| **具有退市日期（has delisting date）** | 规定交易所为证券设定的退市日期。 | 值域：cmns-dt:CombinedDateTime |
-| **具有最后交易日期时间（has last trading date and time）** | 规定该证券在交易所最后成交的日期和时间。 | 值域：日期时间；子属性：具有日期时间 |
-| **具有上市日期（has listing date）** | 指明证券挂牌的日期。 | 值域：cmns-dt:CombinedDateTime |
-| **具有最小报价单位（has tick size）** | 规定该证券在某一交易所的最小价格变动单位。 | 值域：货币数量；子属性：具有货币数量 |
-| **挂牌（lists）** | 将某一交易所特定的证券挂牌与其发行关联起来。 | 值域：上市证券（listed security） |
+| **具有退市日期（has delisting date）** | 规定交易所为证券设定的退市日期。<br>specifies the date set by the exchange for delisting a security | 值域：cmns-dt:CombinedDateTime |
+| **具有最后交易日期时间（has last trading date and time）** | 规定该证券在交易所最后成交的日期和时间。<br>specifies the last date and time that the security was traded on the exchange | 值域：日期时间；子属性：具有日期时间 |
+| **具有上市日期（has listing date）** | 指明证券挂牌的日期。<br>indicates the date on which a security is listed | 值域：cmns-dt:CombinedDateTime |
+| **具有最小报价单位（has tick size）** | 规定该证券在某一交易所的最小价格变动单位。<br>specifies a minimum price movement for the security with respect to an exchange | 值域：货币数量；子属性：具有货币数量 |
+| **挂牌（lists）** | 将某一交易所特定的证券挂牌与其发行关联起来。<br>relates a given exchange-specific security listing to its issue | 值域：上市证券（listed security） |
 
 公理：
 
@@ -113,11 +113,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有主场交易所（has home exchange）** | 指明被视为某证券主要市场的交易所，通常（但不一定）位于该证券的发行国。 | 值域：交易所；子属性：由……提供 |
-| **具有原始挂牌地（has original place of listing）** | 指明最初为证券挂牌的交易所。 | 值域：交易所 |
-| **经由……挂牌（is listed via）** | 标识负责该证券挂牌的服务。 | 值域：挂牌（listing）；逆属性：挂牌（lists） |
-| **是否已成熟（is seasoned）** | 表明该证券公开交易时间已足够长，其首次公开发行带来的短期成交量波动已消除。 | 值域：xsd:boolean |
-| **在……交易（is traded on）** | 标识该证券交易的交易场所。 | 值域：交易所；子属性：由……提供 |
+| **具有主场交易所（has home exchange）** | 指明被视为某证券主要市场的交易所，通常（但不一定）位于该证券的发行国。<br>indicates the exchange that is considered the primary market for a security; typically, but not always, in the country in which the security was originally issued | 值域：交易所；子属性：由……提供 |
+| **具有原始挂牌地（has original place of listing）** | 指明最初为证券挂牌的交易所。<br>indicates the original exchange that listed the security | 值域：交易所 |
+| **经由……挂牌（is listed via）** | 标识负责该证券挂牌的服务。<br>identifies the service responsible for listing the security | 值域：挂牌（listing）；逆属性：挂牌（lists） |
+| **是否已成熟（is seasoned）** | 表明该证券公开交易时间已足够长，其首次公开发行带来的短期成交量波动已消除。<br>indicates that the security has been publicly traded long enough to eliminate any short-term volume volatility from its initial public offering | 值域：xsd:boolean |
+| **在……交易（is traded on）** | 标识该证券交易的交易场所。<br>identifies the trading facility on which the security is traded | 值域：交易所；子属性：由……提供 |
 
 公理：
 

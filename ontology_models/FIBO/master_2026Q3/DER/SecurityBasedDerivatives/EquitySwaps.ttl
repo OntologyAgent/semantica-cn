@@ -161,12 +161,12 @@ fibo-der-sbd-eqs:DividendLeg a owl:Class ;
                     owl:someValuesFrom [ a owl:Class ;
                             owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-fbc-fi-fi:EquityInstrument fibo-ind-mkt-bas:EquityIndex ) ] ] ],
         [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasDatePeriod ;
+            owl:someValuesFrom fibo-der-sbd-eqs:QualifyingDividendPeriod ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-der-sbd-eqs:SpecialDividendLegTerms ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-dt:hasDatePeriod ;
-            owl:someValuesFrom fibo-der-sbd-eqs:QualifyingDividendPeriod ],
         fibo-der-drc-swp:SimpleReturnLeg ;
     skos:definition "floating leg of a dividend swap"@en ;
     cmns-av:usageNote "Note that both dividend swaps and some statistical swaps can be based on a dividend stream/leg."@en .

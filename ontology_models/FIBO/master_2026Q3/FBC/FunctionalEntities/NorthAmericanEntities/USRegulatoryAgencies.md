@@ -34,29 +34,29 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 美国银行家协会发行人识别号登记册条目（ABA IIN registry entry） | 美国银行家协会（ABA）发行人识别号（IIN）登记册中的条目，是 ABA 为其签发 IIN 的机构所收集的金融机构特征信息库。 |
-| 美国银行家协会路由号码登记册条目（ABA RTN registry entry） | 美国银行家协会（ABA）路由号码（RTN）登记册中的条目，是 ABA 注册机构代表 ABA 收集的金融机构特征信息库。 |
-| 联邦存款保险公司证书编号（FDIC Certificate Number） | 联邦存款保险公司（FDIC）在批准存款性机构参保申请后向其签发的标识符。 |
-| 联邦存款保险公司登记册条目（FDIC registry entry） | 联邦存款保险公司（FDIC）机构名录中的条目，是 FDIC 就其承保机构收集的金融机构特征信息库。 |
-| 联邦储备体系成员（Federal Reserve System member） | 属于联邦储备体系（FRS）成员的金融机构。 |
-| 联邦储备体系非成员机构（Federal Reserve System non-member institution） | 不属于联邦储备体系（FRS）成员的存款性机构。 |
-| 联邦储备区（Federal Reserve district） | 标识某一联邦储备银行管辖范围的美国区域，以该储备银行所在城市编号和命名。 |
-| 联邦储备区银行（Federal Reserve district bank） | 对美国特定区域拥有管辖权的联邦储备区成员银行，以储备银行所在城市命名。 |
-| 联邦储备区标识符（Federal Reserve district identifier） | 与某一联邦储备区相关联的标识符。 |
-| 国家信息中心（NIC）登记册条目（National Information Center (NIC) registry entry） | 国家信息中心（NIC）信息库中的条目，该信息库由联邦储备收集金融数据和机构特征信息。 |
-| 研究统计监管与贴现信贷标识符（Research, Statistics, Supervision and Regulation, and Discount and Credit identifier） | 联邦储备为监管和监督目的向金融机构分配的唯一标识符（RSSD ID）。 |
-| 雇主识别号（employer identification number） | 由美国国税局（IRS）为在美国经营的企业实体分配的唯一九位数字编号，用于身份识别。 |
-| 雇主识别号编号方案（employer identification numbering scheme） | 美国用于标识企业实体的纳税人识别编号方案。 |
-| 联邦政府实体（federal government entity） | 美国政府机构体系中的独立机构、直属机构或其他永久或半永久性正式组织。 |
-| 发行人识别号（issuer identification number） | 一种编号体系，用于将信用卡、借记卡或其他卡片识别为由特定金融机构发行。 |
-| 非存款性信托公司——成员机构（non-depository trust company - member institution） | 属于联邦储备体系成员的非存款性信托公司。 |
-| 非存款性信托公司——非成员机构（non-depository trust company - non-member institution） | 不属于联邦储备体系成员的非存款性信托公司。 |
-| 主要联邦监管机构（primary federal regulator） | 被指定为对某一机构负主要监督职责的联邦监管机构。 |
-| 路由号码（routing transit number） | 主要用于美国的九位数字唯一标识符，用于在资金清算时标识银行或其他金融机构。 |
-| 州政府实体或机构（state government entity or agency） | 州政府机构体系中的独立机构、直属机构或其他永久或半永久性正式组织。 |
-| 州成员银行（state member bank） | 属于联邦储备体系（FRS）成员的州特许银行。 |
-| 纳税人识别号（taxpayer identification number） | 美国国税局（IRS）在税收管理中使用的识别编号。 |
-| 纳税人识别编号方案（taxpayer identification numbering scheme） | 美国使用的税务识别编号方案。 |
+| 美国银行家协会发行人识别号登记册条目（ABA IIN registry entry） | 美国银行家协会（ABA）发行人识别号（IIN）登记册中的条目，是 ABA 为其签发 IIN 的机构所收集的金融机构特征信息库。<br>an entry in the ABA IIN registry, a repository of financial institution characteristics collected by the ABA for those institutions to which they issue IINs |
+| 美国银行家协会路由号码登记册条目（ABA RTN registry entry） | 美国银行家协会（ABA）路由号码（RTN）登记册中的条目，是 ABA 注册机构代表 ABA 收集的金融机构特征信息库。<br>an entry in the ABA RTN registry, a repository of financial institution characteristics collected by the ABA Registrar on behalf of the ABA |
+| 联邦存款保险公司证书编号（FDIC Certificate Number） | 联邦存款保险公司（FDIC）在批准存款性机构参保申请后向其签发的标识符。<br>identifier issued to a depository institution by the FDIC on approval of that institution's application for insurance |
+| 联邦存款保险公司登记册条目（FDIC registry entry） | 联邦存款保险公司（FDIC）机构名录中的条目，是 FDIC 就其承保机构收集的金融机构特征信息库。<br>an entry in the FDIC institution directory, a repository of financial institution characteristics collected by the FDIC related to the institutions they insure |
+| 联邦储备体系成员（Federal Reserve System member） | 属于联邦储备体系（FRS）成员的金融机构。<br>financial institution that is a member of the Federal Reserve System (FRS) |
+| 联邦储备体系非成员机构（Federal Reserve System non-member institution） | 不属于联邦储备体系（FRS）成员的存款性机构。<br>depository institution that is not member of the Federal Reserve System (FRS) |
+| 联邦储备区（Federal Reserve district） | 标识某一联邦储备银行管辖范围的美国区域，以该储备银行所在城市编号和命名。<br>a region of the US identifying the jurisdiction of a Federal Reserve Bank, numbered and named for the city in which that reserve bank is located |
+| 联邦储备区银行（Federal Reserve district bank） | 对美国特定区域拥有管辖权的联邦储备区成员银行，以储备银行所在城市命名。<br>Federal Reserve district and member bank, with jurisdiction over a specific region of the US, named for the city in which the reserve bank is located |
+| 联邦储备区标识符（Federal Reserve district identifier） | 与某一联邦储备区相关联的标识符。<br>identifier associated with a Federal Reserve district |
+| 国家信息中心（NIC）登记册条目（National Information Center (NIC) registry entry） | 国家信息中心（NIC）信息库中的条目，该信息库由联邦储备收集金融数据和机构特征信息。<br>an entry in the the National Information Center (NIC) repository, a repository of financial data and institution characteristics collected by the Federal Reserve System |
+| 研究统计监管与贴现信贷标识符（Research, Statistics, Supervision and Regulation, and Discount and Credit identifier） | 联邦储备为监管和监督目的向金融机构分配的唯一标识符（RSSD ID）。<br>unique identifier assigned by the Federal Reserve to financial institutions for regulatory and oversight purposes |
+| 雇主识别号（employer identification number） | 由美国国税局（IRS）为在美国经营的企业实体分配的唯一九位数字编号，用于身份识别。<br>unique nine-digit number assigned by the Internal Revenue Service (IRS) to business entities operating in the United States for the purposes of identification |
+| 雇主识别号编号方案（employer identification numbering scheme） | 美国用于标识企业实体的纳税人识别编号方案。<br>taxpayer identification numbering scheme used in the United States to identify business entities |
+| 联邦政府实体（federal government entity） | 美国政府机构体系中的独立机构、直属机构或其他永久或半永久性正式组织。<br>formal organization that is an independent agency, instrumentality or other permanent or semi-permanent organization in the machinery of government in the United States, authorized by the executive branch or by Congress, that operates at the national (federal) level |
+| 发行人识别号（issuer identification number） | 一种编号体系，用于将信用卡、借记卡或其他卡片识别为由特定金融机构发行。<br>a numbering system that allows a credit, debit, or other card to be identified as having been issued by a particular financial institution |
+| 非存款性信托公司——成员机构（non-depository trust company - member institution） | 属于联邦储备体系成员的非存款性信托公司。<br>non-depository trust company that is a member of the Federal Reserve system |
+| 非存款性信托公司——非成员机构（non-depository trust company - non-member institution） | 不属于联邦储备体系成员的非存款性信托公司。<br>non-depository trust company that is not a member of the Federal Reserve system |
+| 主要联邦监管机构（primary federal regulator） | 被指定为对某一机构负主要监督职责的联邦监管机构。<br>federal regulatory agency that is designated as the main agency responsible for oversight of a given institution for an institution |
+| 路由号码（routing transit number） | 主要用于美国的九位数字唯一标识符，用于在资金清算时标识银行或其他金融机构。<br>unique nine digit identifier, used primarily in the United States, to identify a banking or other financial institution for clearing funds, and, as it appears on a check, denotes the banking institution that holds the account from which funds are to be drawn |
+| 州政府实体或机构（state government entity or agency） | 州政府机构体系中的独立机构、直属机构或其他永久或半永久性正式组织。<br>formal organization that is an independent agency, instrumentality or other permanent or semi-permanent organization in the machinery of government of any one of the states or territories of the United States |
+| 州成员银行（state member bank） | 属于联邦储备体系（FRS）成员的州特许银行。<br>state-chartered bank that is a member of the Federal Reserve System (FRS) |
+| 纳税人识别号（taxpayer identification number） | 美国国税局（IRS）在税收管理中使用的识别编号。<br>identification number used by the Internal Revenue Service (IRS) in the administration of tax laws in the United States |
+| 纳税人识别编号方案（taxpayer identification numbering scheme） | 美国使用的税务识别编号方案。<br>tax identification scheme used in the United States |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -431,8 +431,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有主要联邦监管机构（has primary federal regulator）** | 标识某一机构的主要联邦监管机构。 | 值域：主要联邦监管机构（primary federal regulator）；子属性：受……监管 |
-| **具有次要联邦监管机构（has secondary federal regulator）** | 标识某一机构在主要联邦监管机构之外的其他联邦监管机构。 | 值域：监管机构；子属性：受……监管 |
+| **具有主要联邦监管机构（has primary federal regulator）** | 标识某一机构的主要联邦监管机构。<br>identifies the primary federal regulator for an institution | 值域：主要联邦监管机构（primary federal regulator）；子属性：受……监管 |
+| **具有次要联邦监管机构（has secondary federal regulator）** | 标识某一机构在主要联邦监管机构之外的其他联邦监管机构。<br>identifies an additional federal regulator, over and above the primary federal regulator, for an institution | 值域：监管机构；子属性：受……监管 |
 
 ## 4. 依赖（owl:imports，29 个）
 

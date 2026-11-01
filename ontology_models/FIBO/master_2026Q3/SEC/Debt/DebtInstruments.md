@@ -34,37 +34,37 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 赎回事件（call event） | 与债务工具赎回计划表相关联的事件。 |
-| 赎回特征（call feature） | 规定发行人在赎回保护期后按赎回价买回证券之权利的赎回条款。 |
-| 赎回通知条款（call notification provision） | 赎回特征中规定通知要求的条款。 |
-| 赎回溢价（call premium） | 发行人行使赎回条款时为赎回证券而支付的超过面值的价格。 |
-| 赎回计划表（call schedule） | 赎回价格及其生效时间的计划表。 |
-| 赎回通知窗口（call window） | 在赎回日之前发行人或代理人必须向持有人发出通知的明确时间段。 |
-| 债务发行（debt offering） | 一种或多种债务工具的出售发行。 |
-| 固定收益证券（fixed income security） | 以固定定期付款形式提供回报、并通常在到期时归还本金的可交易债务工具。 |
-| 完全指数化利率（fully-indexed interest rate） | 通过在指定指数利率上加一个利差计算得出的可变利率。 |
-| 仅付息拆条（interest-only strip） | 代表标的债务工具（如债券）月度付款中非本金部分的拆条。 |
-| 已发行债务（issued debt） | 借款人以某种金融证券形式设立的债务，贷款人为该证券的持有人或交易对手。 |
-| 补偿赎回特征（make whole feature） | 允许发行人提前清偿剩余债务的赎回条款。 |
-| 利差（margin） | 加在指定指数利率之上、用于确定就信用余额向借款人收取的完全指数化利率的变量。 |
-| 不可交易债务工具（non-tradable debt instrument） | 不得买卖的债务工具。 |
-| 通知条款（notification provision） | 表明相关事件发生前须作出通知的条款。 |
-| 规定性事件（prescriptive event） | 与规则、方法、公式等的设定或执行相关的事件。 |
-| 仅付本拆条（principal-only strip） | 代表标的债务工具（如债券）月度付款中本金部分的拆条。 |
-| 公开发行债务（publicly issued debt） | 以可交易债务工具（证券）形式发行的债务。 |
-| 回售事件（put event） | 与债务工具回售计划表相关联的事件，即持有人「回售」或交出工具的事件。 |
-| 回售特征（put feature） | 赋予持有人在到期前卖出指定数量债务工具（即要求赎回）之权利（而非义务）的赎回条款。 |
-| 回售通知条款（put notification provision） | 回售特征中规定通知要求的条款。 |
-| 回售溢价（put premium） | 债务工具持有人提前卖出证券时须支付的超过面值的金额。 |
-| 回售计划表（put schedule） | 规定债务工具回售特征相关事件（即可以何种价格于何日卖出债务工具）的计划表。 |
-| 回售通知窗口（put window） | 在回售日之前持有人或代理人必须向发行人发出通知的明确时间段。 |
-| 兑付事件（redemption event） | 涉及向优先股或债券等固定收益证券投资者返还本金、或出售单位的规定性事件。 |
-| 相对价格（relative price） | 相对于债务工具在某一时点的面值或市值所标示的证券价格。 |
-| 阶梯事件（step event） | 规定给定合同的某一合同条款（如利率或名义金额）发生变更的事件。 |
-| 阶梯计划表（step schedule） | 规定具有阶梯特征的合同之合同条款（如利率或名义金额）变更日期的计划表。 |
-| 拆条（strip） | 通过将债券票息剥离、并将各部分作为零息债券分别出售而创造的可交易债务工具。 |
-| 可交易债务工具（tradable debt instrument） | 同时属于证券、即可由持有人买卖的债务工具。 |
-| 可变收益证券（variable income security） | 为持有人提供由市场力量决定的动态回报率的可交易债务工具。 |
+| 赎回事件（call event） | 与债务工具赎回计划表相关联的事件。<br>an event associated with the call schedule for a debt instrument |
+| 赎回特征（call feature） | 规定发行人在赎回保护期后按赎回价买回证券之权利的赎回条款。<br>redemption provision defining the rights of the issuer to buy back a security at a call price after a call protection period |
+| 赎回通知条款（call notification provision） | 赎回特征中规定通知要求的条款。<br>provision of a call feature defining notification requirements |
+| 赎回溢价（call premium） | 发行人行使赎回条款时为赎回证券而支付的超过面值的价格。<br>the price over par paid by an issuer to redeem securities when exercising a call provision |
+| 赎回计划表（call schedule） | 赎回价格及其生效时间的计划表。<br>a schedule of call prices and when they are in effect |
+| 赎回通知窗口（call window） | 在赎回日之前发行人或代理人必须向持有人发出通知的明确时间段。<br>an explicit period of time prior to a call date during which an issuer or agent must give notice to holders |
+| 债务发行（debt offering） | 一种或多种债务工具的出售发行。<br>an offering of one or more debt instruments for sale |
+| 固定收益证券（fixed income security） | 以固定定期付款形式提供回报、并通常在到期时归还本金的可交易债务工具。<br>tradeable debt instrument that provides a return in the form of fixed periodic payments and typically the return of principal at maturity |
+| 完全指数化利率（fully-indexed interest rate） | 通过在指定指数利率上加一个利差计算得出的可变利率。<br>a variable interest rate that is calculated by adding a margin to a specified index rate |
+| 仅付息拆条（interest-only strip） | 代表标的债务工具（如债券）月度付款中非本金部分的拆条。<br>a strip that represents the non-principal portion of the monthly payments on the underlying debt instrument, such as a bond |
+| 已发行债务（issued debt） | 借款人以某种金融证券形式设立的债务，贷款人为该证券的持有人或交易对手。<br>debt that is set out by the borrower in some form of financial security in which the lender is the holder or counterparty of that security |
+| 补偿赎回特征（make whole feature） | 允许发行人提前清偿剩余债务的赎回条款。<br>a call provision allowing the issuer to pay off remaining debt early |
+| 利差（margin） | 加在指定指数利率之上、用于确定就信用余额向借款人收取的完全指数化利率的变量。<br>a variable that is added to a specified index rate to determine the fully indexed interest rate charged to a borrower on a credit balance |
+| 不可交易债务工具（non-tradable debt instrument） | 不得买卖的债务工具。<br>a debt instrument that may not be bought or sold |
+| 通知条款（notification provision） | 表明相关事件发生前须作出通知的条款。<br>provision of a redemption feature defining notification requirements |
+| 规定性事件（prescriptive event） | 与规则、方法、公式等的设定或执行相关的事件。<br>event related to the imposition or enforcement of a rule, method, formula, etc. |
+| 仅付本拆条（principal-only strip） | 代表标的债务工具（如债券）月度付款中本金部分的拆条。<br>a strip that represents the principal portion of the monthly payments on the underlying debt instrument, such as a bond |
+| 公开发行债务（publicly issued debt） | 以可交易债务工具（证券）形式发行的债务。<br>an issued debt in the form of a tradable debt instrument (security) |
+| 回售事件（put event） | 与债务工具回售计划表相关联的事件，即持有人「回售」或交出工具的事件。<br>an event associated with the put schedule for a debt instrument, i.e., an event involving the 'put', or surrender of the instrument by the holder |
+| 回售特征（put feature） | 赋予持有人在到期前卖出指定数量债务工具（即要求赎回）之权利（而非义务）的赎回条款。<br>redemption provision giving the holder the right, but not the obligation, to sell a specified amount of the debt instrument (i.e., redeem it), prior to maturity |
+| 回售通知条款（put notification provision） | 回售特征中规定通知要求的条款。<br>a provision of a put feature defining notification requirements |
+| 回售溢价（put premium） | 债务工具持有人提前卖出证券时须支付的超过面值的金额。<br>an amount over par that a debt instrument holder must pay to sell the security early |
+| 回售计划表（put schedule） | 规定债务工具回售特征相关事件（即可以何种价格于何日卖出债务工具）的计划表。<br>a schedule that defines the events associated with the put feature of a debt instrument, i.e, the dates on which the debt instrument may be sold at what price by the holder |
+| 回售通知窗口（put window） | 在回售日之前持有人或代理人必须向发行人发出通知的明确时间段。<br>an explicit period of time prior to a put date during which holder or agent must give notice to an issuer |
+| 兑付事件（redemption event） | 涉及向优先股或债券等固定收益证券投资者返还本金、或出售单位的规定性事件。<br>a prescriptive event involving the return of an investor's principal in a fixed-income security, such as a preferred stock or bond, or the sale of units in a mutual fund |
+| 相对价格（relative price） | 相对于债务工具在某一时点的面值或市值所标示的证券价格。<br>security price specified in comparison with either a stated or market value for a debt instrument at some point in time |
+| 阶梯事件（step event） | 规定给定合同的某一合同条款（如利率或名义金额）发生变更的事件。<br>event that prescribes a change in a contractual term, such as a rate or notional amount, for a given contract |
+| 阶梯计划表（step schedule） | 规定具有阶梯特征的合同之合同条款（如利率或名义金额）变更日期的计划表。<br>schedule specifying the date(s) and change in a contractual term(s), e.g., rate or notional amount, for a contract that has a feature where stipulated changes occur at specified intervals or on specified dates |
+| 拆条（strip） | 通过将债券票息剥离、并将各部分作为零息债券分别出售而创造的可交易债务工具。<br>a tradeable debt instrument created either through the process of removing coupons from a bond and then selling the separate parts as a zero coupon bond and an interest paying coupon bond or through taking the opposite position from some variant in the options market |
+| 可交易债务工具（tradable debt instrument） | 同时属于证券、即可由持有人买卖的债务工具。<br>a debt instrument that is also a security, i.e., that can be bought and sold by the holder |
+| 可变收益证券（variable income security） | 为持有人提供由市场力量决定的动态回报率的可交易债务工具。<br>tradeable debt instrument that provide their owners with a rate of return that is dynamic and determined by market forces |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -79,7 +79,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有通知条款（has notification provision）** | 将债务工具的赎回条款与通知条款（如赎回或回售通知）关联起来。 | 值域：通知条款（notification provision）；子属性：具有合同要素 |
+| **具有通知条款（has notification provision）** | 将债务工具的赎回条款与通知条款（如赎回或回售通知）关联起来。<br>relates the redemption provision of a debt instrument to a notification provision (e.g., call or put notification) | 值域：通知条款（notification provision）；子属性：具有合同要素 |
 | **包含（comprises）** | — | — |
 
 公理：
@@ -185,7 +185,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **由……授予（isConferredBy）** | — | — |
-| **具有池编号（has pool number）** | 指明该债务所属池的编号。 | 值域：xsd:integer；子属性：具有数值 |
+| **具有池编号（has pool number）** | 指明该债务所属池的编号。<br>indicates the pool number of the debt | 值域：xsd:integer；子属性：具有数值 |
 
 公理：
 
@@ -208,8 +208,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有赎回条款（hasRedemptionProvision）** | — | — |
-| **具有发行时相对价格（has relative price at issue）** | 指明工具发行时相对于面值的相对价格，即平价、溢价或折价。 | 值域：相对价格（relative price）；子属性：具有价格 |
-| **具有赎回时相对价格（has relative price at redemption）** | 指明工具赎回时相对于面值的相对价格，即平价、折价或溢价。 | 值域：相对价格（relative price）；子属性：具有价格 |
+| **具有发行时相对价格（has relative price at issue）** | 指明工具发行时相对于面值的相对价格，即平价、溢价或折价。<br>indicates a relative price with respect to the face value at which an instrument is issued, namely par, premium or discount | 值域：相对价格（relative price）；子属性：具有价格 |
+| **具有赎回时相对价格（has relative price at redemption）** | 指明工具赎回时相对于面值的相对价格，即平价、折价或溢价。<br>indicates a relative price with respect to the face value at the time an instrument is redeemed, namely par, discount or premium | 值域：相对价格（relative price）；子属性：具有价格 |
 
 公理：
 
@@ -309,9 +309,9 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否具有遗产/身故回售特征（has estate or death put feature）** | 表明该证券在持有人身故时可被要求赎回。 | 值域：xsd:boolean |
-| **具有通知条款（has notification provision）** | 将债务工具的赎回条款与通知条款（如赎回或回售通知）关联起来。 | 值域：通知条款（notification provision）；子属性：具有合同要素 |
-| **保留权（right to retain）** | 表明在发行人行使回售特征时，持有人是否有权选择保留该证券。 | 值域：xsd:boolean |
+| **是否具有遗产/身故回售特征（has estate or death put feature）** | 表明该证券在持有人身故时可被要求赎回。<br>indicates that a security is subject to redemption upon the passing of the holder | 值域：xsd:boolean |
+| **具有通知条款（has notification provision）** | 将债务工具的赎回条款与通知条款（如赎回或回售通知）关联起来。<br>relates the redemption provision of a debt instrument to a notification provision (e.g., call or put notification) | 值域：通知条款（notification provision）；子属性：具有合同要素 |
+| **保留权（right to retain）** | 表明在发行人行使回售特征时，持有人是否有权选择保留该证券。<br>indicates whether the holder has an option to retain the security in the event of an issuer exercising the put feature | 值域：xsd:boolean |
 | **包含（comprises）** | — | — |
 
 公理：
@@ -382,7 +382,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有担保人（hasGuarantor）** | — | — |
-| **次于（is subordinated to）** | 表明目标证券（即区间所指证券）的优先级高于所讨论的证券。 | 值域：可交易债务工具（tradable debt instrument） |
+| **次于（is subordinated to）** | 表明目标证券（即区间所指证券）的优先级高于所讨论的证券。<br>indicates the target security (i.e., the one in the range) has a higher priority than the security in question | 值域：可交易债务工具（tradable debt instrument） |
 
 公理：
 
@@ -433,28 +433,28 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有赎回特征（has call feature）** | 指明发行文件/工具中规定的任何内蕴赎回特征的具体条款。 | 值域：赎回特征（call feature）；子属性：具有偿还条款（has repayment terms） |
-| **具有起息日（has dated date）** | 规定固定收益证券开始计息的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有利息支付条款（has interest payment terms）** | 指明工具或相关合同文件中规定的本金利息支付的具体条款。 | 值域：利息支付条款；子属性：具有合同要素 |
-| **具有价格与收益率计日惯例（has price and yield day count convention）** | 指明进行收益率和价格计算时用于确定每月天数和每年天数的惯例。 | 值域：计日惯例；子属性：具有营业重复区间惯例 |
-| **具有回售特征（has put feature）** | 指明发行文件/工具中规定的任何内蕴回售特征的具体条款。 | 值域：回售特征（put feature）；子属性：具有偿还条款（has repayment terms） |
-| **具有到期时相对价格（has relative price at maturity）** | 指明工具到期时相对于面值的相对价格，即平价、折价或溢价。 | 值域：相对价格（relative price）；子属性：具有价格 |
-| **具有偿还条款（has repayment terms）** | 指明工具或相关合同文件中规定的本金偿还的具体条款。 | 值域：本金偿还条款；子属性：具有合同要素 |
+| **具有赎回特征（has call feature）** | 指明发行文件/工具中规定的任何内蕴赎回特征的具体条款。<br>indicates the specific terms related to any inherent call feature as specified in the offering/instrument | 值域：赎回特征（call feature）；子属性：具有偿还条款（has repayment terms） |
+| **具有起息日（has dated date）** | 规定固定收益证券开始计息的日期。<br>specifies the date on which interest begins to accrue on a fixed-income security | 值域：显式日期；子属性：具有显式日期 |
+| **具有利息支付条款（has interest payment terms）** | 指明工具或相关合同文件中规定的本金利息支付的具体条款。<br>indicates the specific terms related to interest payments on the principal as specified in the instrument or a related contract document | 值域：利息支付条款；子属性：具有合同要素 |
+| **具有价格与收益率计日惯例（has price and yield day count convention）** | 指明进行收益率和价格计算时用于确定每月天数和每年天数的惯例。<br>indicates the convention used to determine the number of days in a month and days in a year that are counted when performing calculations for yield and price figures | 值域：计日惯例；子属性：具有营业重复区间惯例 |
+| **具有回售特征（has put feature）** | 指明发行文件/工具中规定的任何内蕴回售特征的具体条款。<br>indicates the specific terms related to any inherent put feature as specified in the offering/instrument | 值域：回售特征（put feature）；子属性：具有偿还条款（has repayment terms） |
+| **具有到期时相对价格（has relative price at maturity）** | 指明工具到期时相对于面值的相对价格，即平价、折价或溢价。<br>indicates a relative price with respect to the face value at the time an instrument matures, namely par, discount or premium | 值域：相对价格（relative price）；子属性：具有价格 |
+| **具有偿还条款（has repayment terms）** | 指明工具或相关合同文件中规定的本金偿还的具体条款。<br>indicates the specific terms related to repayment of principal as specified in the instrument or a related contract document | 值域：本金偿还条款；子属性：具有合同要素 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **是否允许自动再投资（allows auto-reinvestment）** | 表明该证券是否允许将其利息自动再投资用于购买同一证券的额外份额或单位。 |
-| **是否允许实物支付（allows payment in kind）** | 表明本金是否可以用实物（即以另一工具替代）而非现金偿付。 |
-| **具有默认手数（has default lot size）** | 指明任一时刻可持有该证券的默认单位数量。 |
-| **是否可赎回（is callable）** | 表明债务合同的发行人（签署方，即债务人）是否可以在到期前赎回该债务。 |
-| **是否可交换（is exchangeable）** | 表明该证券是否可由发行人酌情决定交换为另一证券。 |
-| **持有人是否可展期（is extendable by holder）** | 表明持有人是否可以延长到期日。 |
-| **发行人是否可展期（is extendable by issuer）** | 表明发行人是否有权选择将债务展期而非再融资。 |
-| **是否可回售（is putable）** | 表明持有人是否有权在最终到期前要求赎回该证券。 |
-| **是否可拆条（is strippable）** | 表明该工具是否可以拆条，使利息和本金可分别交易。 |
-| **是否为次级（is subordinated）** | 表明该证券是否为次级证券，即其优先级低于另一证券，从而在资产处置时后受偿。 |
+| **是否允许自动再投资（allows auto-reinvestment）** | 表明该证券是否允许将其利息自动再投资用于购买同一证券的额外份额或单位。<br>indicates whether the security allows automatically re-investing the interest on that security towards purchasing additional shares or units of the same security |
+| **是否允许实物支付（allows payment in kind）** | 表明本金是否可以用实物（即以另一工具替代）而非现金偿付。<br>indicates whether the principal may be repaid in kind (i.e., replaced with another instrument) rather than in cash |
+| **具有默认手数（has default lot size）** | 指明任一时刻可持有该证券的默认单位数量。<br>indicates the default number of units of the security that may be held at any one time |
+| **是否可赎回（is callable）** | 表明债务合同的发行人（签署方，即债务人）是否可以在到期前赎回该债务。<br>indicates whether the issuer (writer) of the debt contract (the debtor) can call the debt prior to maturity |
+| **是否可交换（is exchangeable）** | 表明该证券是否可由发行人酌情决定交换为另一证券。<br>indicates whether the security can be exchanged for another security at the issuers discretion |
+| **持有人是否可展期（is extendable by holder）** | 表明持有人是否可以延长到期日。<br>indicates whether the expiration date or maturity date can be extended by the holder |
+| **发行人是否可展期（is extendable by issuer）** | 表明发行人是否有权选择将债务展期而非再融资。<br>indicates whether the issuer has the option to extend the debt rather than refinancing |
+| **是否可回售（is putable）** | 表明持有人是否有权在最终到期前要求赎回该证券。<br>indicates whether the holder has the right to ask for redemption of the security prior to final maturity |
+| **是否可拆条（is strippable）** | 表明该工具是否可以拆条，使利息和本金可分别交易。<br>indicates whether or not the instrument can be stripped, so that interest and principal may be traded separately |
+| **是否为次级（is subordinated）** | 表明该证券是否为次级证券，即其优先级低于另一证券，从而在资产处置时后受偿。<br>indicates whether the security is a subordinated security, meaning that the security has a lower priority than another security so that when the assets are liquidated this one is not first in line |
 
 ## 4. 依赖（owl:imports，20 个）
 

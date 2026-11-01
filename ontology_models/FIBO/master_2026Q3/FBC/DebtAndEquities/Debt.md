@@ -34,64 +34,64 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 计提（accrual） | 利息或其他已赚取但尚未支付的收入逐步累积的过程。 |
-| 应计利息（accrued interest） | 截至某一特定日期，贷款或其他金融义务已发生但尚未支付的利息金额。 |
-| 摊销（amortization） | 通过对资产或负债的周期性扣减来逐步减少债务或其他成本的过程，例如按揭贷款的本金偿还。 |
-| 摊销计划表（amortization schedule） | 规定债务余额随时间变化的周期性付款（还款分期）计划表。 |
-| 借款人（borrower） | 信贷协议的一方，有义务按工具条款偿还所借款项（本金）以及利息和其他费用。 |
-| 借款人标识方案（borrower identification scheme） | 为借款人分配标识符的体系。 |
-| 借款人标识符（borrower identifier） | 能够唯一标识某一借款人的字符序列。 |
-| 借款能力（borrowing capacity） | 截至某一时点，贷款人认为一方有能力按期偿还债务的资金总额上限。 |
-| 资本租赁（capital lease） | 必须在机构资产负债表上同时列示为资产和相应负债的租赁。 |
-| 抵押品（collateral） | 为确保履行对另一方的义务（如借款、授信或证券交付）而质押的担保物。 |
-| 截至日抵押品价值（collateral value as of date） | 某项债务的抵押品截至给定日期的评估价值。 |
-| 承诺性信贷额度（committed credit facility） | 作为借款人确定融资来源的信贷额度，只要借款人满足协议条件即可使用。 |
-| 承诺性子额度（committed sub-facility） | 信贷额度中以合同承诺、可供借款人使用的部分，可能与特定抵押品相关联。 |
-| 信贷协议（credit agreement） | 一种合同协议：债务人获得有价值之物，并通常承诺在未来某一日期之前以某种形式向债权人偿还。 |
-| 到期偿还型信贷协议（credit agreement repaid at maturity） | 应计利息可定期偿付或到期支付，但本金在到期日一次性支付的信贷协议。 |
-| 定期偿还型信贷协议（credit agreement repaid periodically） | 本金和应计利息可定期偿付或交换的信贷协议。 |
-| 信用增级协议（credit enhancement agreement） | 规范双方之间抵押品交换、以缓释交易对手信用风险的抵押协议。 |
-| 信用增级受益人（credit enhancement beneficiary） | 从协议设立的抵押品或担保中受益的一方，即因该安排而受到交易对手信用风险保护的一方。 |
-| 信贷额度（credit facility） | 允许借款人在较长时期内分期提取资金、而无需每次重新申请贷款的信贷协议。 |
-| 债权人（creditor） | 对其存在某项义务（如一笔款项、货物或某项服务之履行）的一方。 |
-| 计日惯例（day-count convention） | 一种业务重复区间惯例，用于计算利息支付所涵盖的天数，适用于应计利息的金额计算。 |
-| 债务（debt） | 支付某物（如一笔款项、货物、服务或工具）的义务。 |
-| 债务条款（debt terms） | 规定资金借贷合同中借款人与贷款人正式权利和义务的合同条款。 |
-| 债务人（debtor） | 对另一方负有债务或其他义务的一方。 |
-| 明示合同事件计划表（explicit contract event schedule） | 信贷协议存续期内将发生的事件计划表，包括但不限于付款事件、利率重置事件等。 |
-| 固定利率（fixed interest rate） | 在贷款或其他债务工具存续期内不发生波动的利率。 |
-| 浮动利率（floating interest rate） | 以特定指数或基准利率为基础的可变利率。 |
-| 全额摊销（full amortization） | 最后一期付款（若计划表计算正确，应与其他各期相等）清偿全部剩余本金的摊销方式。 |
-| 利息（interest） | 使用信贷或他人资金的成本，以单位时间费率表示，由债务人为获得信贷而向债权人支付。 |
-| 利息计算事件（interest calculation） | 反映利息计算的事件。 |
-| 利息计算计划表（interest calculation schedule） | 合同特定的定期计划表，列明利息计算的日期。 |
-| 利息支付事件（interest payment） | 反映利息实际支付的事件。 |
-| 利息支付计划表（interest payment schedule） | 合同特定的定期计划表，列明利息到期应付的日期。 |
-| 利息支付条款（interest payment terms） | 关于债务利息支付的合同条款。 |
-| 利率重置（interest rate reset） | 反映利率可能发生调整的事件，通常对应基础基准利率或指数利差的变化。 |
-| 利率重置计划表（interest rate reset schedule） | 合同特定的定期计划表，列明利率重置及相应实际利率重新计算的日期。 |
-| 利率设定事件（interest rate setting event） | 为给定合同设定初始利率的事件，可能相对于其他合同生命周期事件（如放款日）发生。 |
-| 租赁（lease） | 一种信贷协议：资产（如不动产、设备或车辆）的所有者（出租人）许可使用者（承租人）使用该资产。 |
-| 贷款人（lender） | 向借款人提供信贷或资金、并期望获得偿还（通常附带利息）的一方。 |
-| 管理利率（managed interest rate） | 金融机构对借款收取的可变利率，不是规定为基准利率加点，而是由机构不定期设定。 |
-| 机动车租赁（motor vehicle lease） | 以约定金额、在固定期限内租赁机动车的租赁。 |
-| 负摊销（negative amortization） | 所付款项不足以覆盖到期利息的摊销方式。 |
-| 非实物抵押品（non-physical collateral） | 作为抵押品质押的金融资产（而非实物资产）。 |
-| 部分摊销（partial amortization） | 最后一期到期付款可能是包含全部剩余本金和利息的大额期末整付的摊销方式。 |
-| 实物抵押品（physical collateral） | 作为抵押品质押的、具有物质形态的资产，即债务人的实物资产。 |
-| 本金（principal） | 就债务而言：债券或贷款等债务的募集额，须在到期时偿还；就投资而言：原始投入金额。 |
-| 本金支付事件（principal payment） | 反映债务本金实际支付的事件。 |
-| 本金支付计划表（principal payment schedule） | 合同特定的定期计划表，列明部分或全部本金到期应（偿）付的日期。 |
-| 本金偿还条款（principal repayment terms） | 规定本金偿还要求的合同条款。 |
-| 预计合同事件计划表（projected contract event schedule） | 预计在合同存续期内发生的事件计划表，包括但不限于预期付款事件、利率重置事件等。 |
-| 利率重置时刻（rate reset time of day） | 由某一利率发布机构或市场数据提供商所示的利率重置的具体时刻。 |
-| 零售信贷额度（retail credit facility） | 零售商和房地产公司使用的贷款或信用额度。 |
-| 循环信用额度（revolving line of credit） | 允许借款人提取资金、偿还后再提取的信贷额度。 |
-| 担保协议（security agreement） | 将某项抵押品上的财产性权益授予非该抵押品所有者一方的抵押协议，并规定相关条款。 |
-| 子额度（sub-facility） | 信贷额度中为某一目的向借款人提供的部分，可能按额度中规定的某计划执行。 |
-| 非承诺性信贷额度（uncommitted credit facility） | 尚未被确认为借款人融资来源的信贷额度。 |
-| 非承诺性子额度（uncommitted sub-facility） | 尚未被确认为借款人融资来源的子额度。 |
-| 可变利率（variable interest rate） | 允许在贷款或其他债务工具期限内变动的利率。 |
+| 计提（accrual） | 利息或其他已赚取但尚未支付的收入逐步累积的过程。<br>the process of accumulating interest or other income that has been earned but not paid |
+| 应计利息（accrued interest） | 截至某一特定日期，贷款或其他金融义务已发生但尚未支付的利息金额。<br>amount of interest that has been incurred, as of a specific date, on a loan or other financial obligation but has not yet been paid out |
+| 摊销（amortization） | 通过对资产或负债的周期性扣减来逐步减少债务或其他成本的过程，例如按揭贷款的本金偿还。<br>the process of reduction of debt or other costs through periodic charges to assets or liabilities, such as through principal payments on mortgages |
+| 摊销计划表（amortization schedule） | 规定债务余额随时间变化的周期性付款（还款分期）计划表。<br>schedule of periodic payments (repayment installments) that specify changes in the balance of the debt over time |
+| 借款人（borrower） | 信贷协议的一方，有义务按工具条款偿还所借款项（本金）以及利息和其他费用。<br>party to a credit agreement that is obligated to repay the amount borrowed (principal) with interest and other fees according to the terms of the instrument |
+| 借款人标识方案（borrower identification scheme） | 为借款人分配标识符的体系。<br>system for allocating identifiers to borrowers |
+| 借款人标识符（borrower identifier） | 能够唯一标识某一借款人的字符序列。<br>sequence of characters, capable of uniquely identifying a borrower |
+| 借款能力（borrowing capacity） | 截至某一时点，贷款人认为一方有能力按期偿还债务的资金总额上限。<br>upper bound on the total amount of money that a lender believes a party has the ability to repay an obligation when due, as of some point in time |
+| 资本租赁（capital lease） | 必须在机构资产负债表上同时列示为资产和相应负债的租赁。<br>lease that must be reflected on an organization's balance sheet as an asset and as a corresponding liability |
+| 抵押品（collateral） | 为确保履行对另一方的义务（如借款、授信或证券交付）而质押的担保物。<br>something pledged as security to ensure fulfillment of an obligation to another party, to lend money, extend credit, or provision securities |
+| 截至日抵押品价值（collateral value as of date） | 某项债务的抵押品截至给定日期的评估价值。<br>appraised value of the collateral for an obligation as of a given date |
+| 承诺性信贷额度（committed credit facility） | 作为借款人确定融资来源的信贷额度，只要借款人满足协议条件即可使用。<br>credit facility that is a confirmed source of financing for the borrower, as long as the borrower meets the conditions of the agreement |
+| 承诺性子额度（committed sub-facility） | 信贷额度中以合同承诺、可供借款人使用的部分，可能与特定抵押品相关联。<br>contractually committed portion of a credit facility that is available to the borrower and may be associated with some specific collateral |
+| 信贷协议（credit agreement） | 一种合同协议：债务人获得有价值之物，并通常承诺在未来某一日期之前以某种形式向债权人偿还。<br>contractual agreement in which a debtor receives something of value and typically agrees to repay the creditor by some date in the future, in some form (e.g., cash, securities, etc.), generally with interest |
+| 到期偿还型信贷协议（credit agreement repaid at maturity） | 应计利息可定期偿付或到期支付，但本金在到期日一次性支付的信贷协议。<br>credit agreement in which accrued interest may be periodically repaid or paid at maturity, but principal is paid at maturity |
+| 定期偿还型信贷协议（credit agreement repaid periodically） | 本金和应计利息可定期偿付或交换的信贷协议。<br>credit agreement in which the principal and accrued interest may be periodically repaid or exchanged |
+| 信用增级协议（credit enhancement agreement） | 规范双方之间抵押品交换、以缓释交易对手信用风险的抵押协议。<br>collateral agreement that governs the exchange of collateral between parties to mitigate counterparty credit risk |
+| 信用增级受益人（credit enhancement beneficiary） | 从协议设立的抵押品或担保中受益的一方，即因该安排而受到交易对手信用风险保护的一方。<br>party that benefits from the collateral or guarantee established under the agreement, i.e., that is protected against counterparty credit risk because the collateral or guarantee serves as security for the obligation(s) owed to them |
+| 信贷额度（credit facility） | 允许借款人在较长时期内分期提取资金、而无需每次重新申请贷款的信贷协议。<br>credit agreement that allows the borrower to periodically take out money over an extended period of time rather than reapplying for a loan every time they need funds |
+| 债权人（creditor） | 对其存在某项义务（如一笔款项、货物或某项服务之履行）的一方。<br>a party to whom an obligation, such as an amount of money, or good, or performance of some service exists |
+| 计日惯例（day-count convention） | 一种业务重复区间惯例，用于计算利息支付所涵盖的天数，适用于应计利息的金额计算。<br>a business recurrence interval convention that is used to calculate the number of days in an interest payment, which applies to the amount of accrued interest or the present value for debt instruments |
+| 债务（debt） | 支付某物（如一笔款项、货物、服务或工具）的义务。<br>obligation to pay something, such as an amount of money, good, service, or instrument |
+| 债务条款（debt terms） | 规定资金借贷合同中借款人与贷款人正式权利和义务的合同条款。<br>contract terms that specify the formal rights and obligations of borrower and lender under a contract in which funds are lent from the one party to the other |
+| 债务人（debtor） | 对另一方负有债务或其他义务的一方。<br>a party that owes a debt or other obligation to another party |
+| 明示合同事件计划表（explicit contract event schedule） | 信贷协议存续期内将发生的事件计划表，包括但不限于付款事件、利率重置事件等。<br>schedule of events, including but not limited to payment events, rate reset events and others that will occur over the lifetime of the credit agreement |
+| 固定利率（fixed interest rate） | 在贷款或其他债务工具存续期内不发生波动的利率。<br>interest rate that does not fluctuate over the lifetime of a loan or other debt instrument |
+| 浮动利率（floating interest rate） | 以特定指数或基准利率为基础的可变利率。<br>variable interest rate that is based on a specific index or benchmark rate |
+| 全额摊销（full amortization） | 最后一期付款（若计划表计算正确，应与其他各期相等）清偿全部剩余本金的摊销方式。<br>amortization in which the very last payment (which, if the schedule was calculated correctly, should be equal to all others) pays off all remaining principal and interest on the loan |
+| 利息（interest） | 使用信贷或他人资金的成本，以单位时间费率表示，由债务人为获得信贷而向债权人支付。<br>the cost of using credit, or another's money, expressed as a rate per period of time, payable by a debtor to a creditor in consideration of the credit extended to the debtor |
+| 利息计算事件（interest calculation） | 反映利息计算的事件。<br>event reflecting the calculation of interest |
+| 利息计算计划表（interest calculation schedule） | 合同特定的定期计划表，列明利息计算的日期。<br>regular, contract-specific schedule including the dates on which interest is calculated |
+| 利息支付事件（interest payment） | 反映利息实际支付的事件。<br>event reflecting the actual payment of interest |
+| 利息支付计划表（interest payment schedule） | 合同特定的定期计划表，列明利息到期应付的日期。<br>regular, contract-specific schedule including the dates on which interest is due to be paid |
+| 利息支付条款（interest payment terms） | 关于债务利息支付的合同条款。<br>contract terms for payment of interest on a debt |
+| 利率重置（interest rate reset） | 反映利率可能发生调整的事件，通常对应基础基准利率或指数利差的变化。<br>event reflecting a potential adjustment to an interest rate, typically corresponding to a change in the underlying benchmark interest rate or index specified in the contract |
+| 利率重置计划表（interest rate reset schedule） | 合同特定的定期计划表，列明利率重置及相应实际利率重新计算的日期。<br>regular, contract-specific schedule including the dates on which a rate reset, and corresponding actual rate, is recalculated |
+| 利率设定事件（interest rate setting event） | 为给定合同设定初始利率的事件，可能相对于其他合同生命周期事件（如放款日）发生。<br>event on which an initial rate for a given contract is set, which may be relative the the occurrence of some other contract lifecycle event, such as the execution date |
+| 租赁（lease） | 一种信贷协议：资产（如不动产、设备或车辆）的所有者（出租人）许可使用者（承租人）使用该资产。<br>credit agreement permitting the use of real estate, equipment or another asset, such as a vehicle, by the owner of that asset (the lessor) to a user (the lessee) for a specific period of time in return for payment as specified in the agreement |
+| 贷款人（lender） | 向借款人提供信贷或资金、并期望获得偿还（通常附带利息）的一方。<br>a party that extends credit or money to a borrower with the expectation of being repaid, usually with interest |
+| 管理利率（managed interest rate） | 金融机构对借款收取的可变利率，不是规定为基准利率加点，而是由机构不定期设定。<br>variable interest rate charged by a financial institution for borrowing that is not prescribed as a margin over base rate but is set from time to time by the institution |
+| 机动车租赁（motor vehicle lease） | 以约定金额、在固定期限内租赁机动车的租赁。<br>lease of a motor vehicle for a fixed period of time at an agreed amount of money |
+| 负摊销（negative amortization） | 所付款项不足以覆盖到期利息的摊销方式。<br>amortization in which the payments made do not cover the interest due |
+| 非实物抵押品（non-physical collateral） | 作为抵押品质押的金融资产（而非实物资产）。<br>asset pledged as collateral that is a financial asset, rather than physical asset |
+| 部分摊销（partial amortization） | 最后一期到期付款可能是包含全部剩余本金和利息的大额期末整付的摊销方式。<br>amortization in which the very last payment the last payment due may be a large balloon payment of all remaining principal and interest |
+| 实物抵押品（physical collateral） | 作为抵押品质押的、具有物质形态的资产，即债务人的实物资产。<br>asset pledged as collateral that has a material form, i.e., is a physical asset of the obligor |
+| 本金（principal） | 就债务而言：债券或贷款等债务的募集额，须在到期时偿还；就投资而言：原始投入金额。<br>with respect to a debt: the value of an obligation, such as a bond or loan, raised and that must be repaid at maturity; for investments: the original amount of money invested, separate from any associated interest, dividends or capital gains |
+| 本金支付事件（principal payment） | 反映债务本金实际支付的事件。<br>event reflecting the actual payment of some amount of the principal of a debt |
+| 本金支付计划表（principal payment schedule） | 合同特定的定期计划表，列明部分或全部本金到期应（偿）付的日期。<br>regular, contract-specific schedule including the dates on which some percentage or all of the principal is due to be (re)paid |
+| 本金偿还条款（principal repayment terms） | 规定本金偿还要求的合同条款。<br>contract terms that specify requirements for repayment of the principal |
+| 预计合同事件计划表（projected contract event schedule） | 预计在合同存续期内发生的事件计划表，包括但不限于预期付款事件、利率重置事件等。<br>schedule of events, including but not limited to anticipated payment events, rate reset events and others that are expected to occur over the lifetime of the contract |
+| 利率重置时刻（rate reset time of day） | 由某一利率发布机构或市场数据提供商所示的利率重置的具体时刻。<br>time of day that an interest rate is reset, as indicated by some interest rate authority or market data provider |
+| 零售信贷额度（retail credit facility） | 零售商和房地产公司使用的贷款或信用额度。<br>credit facility that is a loan or line of credit used by retailers and real estate companies |
+| 循环信用额度（revolving line of credit） | 允许借款人提取资金、偿还后再提取的信贷额度。<br>credit facility that enables the borrower to withdraw funds, repay, and withdraw again |
+| 担保协议（security agreement） | 将某项抵押品上的财产性权益授予非该抵押品所有者一方的抵押协议，并规定相关条款。<br>collateral agreement that grants a financial interest in some collateral to a party that is not an owner of that collateral, specifying terms including relative duties and rights, over and above those specified in the primary contract, regarding the disposition of the asset used as collateral |
+| 子额度（sub-facility） | 信贷额度中为某一目的向借款人提供的部分，可能按额度中规定的某计划执行。<br>portion of a credit facility extended to the borrower for some purpose, possibly per some schedule specified in the facility |
+| 非承诺性信贷额度（uncommitted credit facility） | 尚未被确认为借款人融资来源的信贷额度。<br>credit facility that has yet to be confirmed as a source of financing for the borrower |
+| 非承诺性子额度（uncommitted sub-facility） | 尚未被确认为借款人融资来源的子额度。<br>sub-facility that has yet to be confirmed as a source of financing for the borrower |
+| 可变利率（variable interest rate） | 允许在贷款或其他债务工具期限内变动的利率。<br>an interest rate that is allowed to vary over the maturity of a loan or other debt instrument |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -122,7 +122,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的摊销（is amortization of）** | 将通过周期性扣减来减少债务或其他成本的过程与相关资产或负债关联起来。 | — |
+| **是……的摊销（is amortization of）** | 将通过周期性扣减来减少债务或其他成本的过程与相关资产或负债关联起来。<br>links the process of reduction of debt or other costs through periodic charges to the relevant asset or liability | — |
 
 公理：
 
@@ -201,7 +201,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的抵押担保（is collateralization of）** | 将抵押品与质押该资产作为担保的协议关联起来。 | — |
+| **是……的抵押担保（is collateralization of）** | 将抵押品与质押该资产作为担保的协议关联起来。<br>relates some collateral to an agreement pledging the asset as security | — |
 
 公理：
 
@@ -217,7 +217,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的抵押担保（is collateralization of）** | 将抵押品与质押该资产作为担保的协议关联起来。 | — |
+| **是……的抵押担保（is collateralization of）** | 将抵押品与质押该资产作为担保的协议关联起来。<br>relates some collateral to an agreement pledging the asset as security | — |
 
 公理：
 
@@ -234,7 +234,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的抵押担保（is collateralization of）** | 将抵押品与质押该资产作为担保的协议关联起来。 | — |
+| **是……的抵押担保（is collateralization of）** | 将抵押品与质押该资产作为担保的协议关联起来。<br>relates some collateral to an agreement pledging the asset as security | — |
 
 公理：
 
@@ -269,10 +269,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有债务金额（has debt amount）** | 指明债务的货币金额。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有初始交换日（has initial exchange date）** | 指明资产或资金初始交换发生的具体日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有到期日（has maturity date）** | 指明工具本金应向投资人偿还、利息或票息停止支付的日期。 | 值域：显式日期；子属性：具有结束日期 |
-| **以……为抵押（is collateralized by）** | 将协议与质押作为担保的资产关联起来。 | 值域：抵押品（collateral） |
+| **具有债务金额（has debt amount）** | 指明债务的货币金额。<br>indicates the monetary amount of the debt | 值域：货币数量；子属性：具有货币数量 |
+| **具有初始交换日（has initial exchange date）** | 指明资产或资金初始交换发生的具体日期。<br>indicates the specific date when the initial exchange of assets or funds takes place | 值域：显式日期；子属性：具有显式日期 |
+| **具有到期日（has maturity date）** | 指明工具本金应向投资人偿还、利息或票息停止支付的日期。<br>indicates the date on which the principal amount of an instrument is due to be repaid to the investor and interest or coupon payments stop, and/or the date on which the instrument may be redeemed | 值域：显式日期；子属性：具有结束日期 |
+| **以……为抵押（is collateralized by）** | 将协议与质押作为担保的资产关联起来。<br>relates an agreement to an asset pledged as security | 值域：抵押品（collateral） |
 | **具有货币（hasCurrency）** | — | — |
 | **具有合同当事方（hasContractParty）** | — | — |
 | **具有合同要素（hasContractualElement）** | — | — |
@@ -298,7 +298,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有到期日（has maturity date）** | 指明工具本金应向投资人偿还、利息或票息停止支付的日期。 | 值域：显式日期；子属性：具有结束日期 |
+| **具有到期日（has maturity date）** | 指明工具本金应向投资人偿还、利息或票息停止支付的日期。<br>indicates the date on which the principal amount of an instrument is due to be repaid to the investor and interest or coupon payments stop, and/or the date on which the instrument may be redeemed | 值域：显式日期；子属性：具有结束日期 |
 
 公理：
 
@@ -366,7 +366,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **以……为抵押（is collateralized by）** | 将协议与质押作为担保的资产关联起来。 | 值域：抵押品（collateral） |
+| **以……为抵押（is collateralized by）** | 将协议与质押作为担保的资产关联起来。<br>relates an agreement to an asset pledged as security | 值域：抵押品（collateral） |
 
 公理：
 
@@ -442,7 +442,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **被欠付（is owed）** | 将债权人与欠付并应向其支付的债务关联起来。 | 值域：债务（debt） |
+| **被欠付（is owed）** | 将债权人与欠付并应向其支付的债务关联起来。<br>links a creditor to a debt that is outstanding and payable to them | 值域：债务（debt） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -482,8 +482,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……欠付（is owed by）** | 将债务与欠付该债务的一方关联起来。 | 值域：债务人（debtor）；逆属性：欠付（owes） |
-| **欠付给（is owed to）** | 将债务与其应支付的一方关联起来。 | 值域：债权人（creditor） |
+| **由……欠付（is owed by）** | 将债务与欠付该债务的一方关联起来。<br>links a debt to the party that owes it | 值域：债务人（debtor）；逆属性：欠付（owes） |
+| **欠付给（is owed to）** | 将债务与其应支付的一方关联起来。<br>links a debt to the party to which it is payable | 值域：债权人（creditor） |
 
 公理：
 
@@ -501,7 +501,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **规范……的支付（governs payment of）** | 将合同中内嵌的合同条款（如利息条款或还款条款）与其所适用的对象关联起来。 | 子属性：管辖 |
+| **规范……的支付（governs payment of）** | 将合同中内嵌的合同条款（如利息条款或还款条款）与其所适用的对象关联起来。<br>links contractual terms embedded in a contract, such as interest or repayment terms to the element those terms apply to | 子属性：管辖 |
 
 #### 2.14.1 利息支付条款（interest payment terms）
 
@@ -513,15 +513,15 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **规范……的支付（governs payment of）** | 将合同中内嵌的合同条款（如利息条款或还款条款）与其所适用的对象关联起来。 | 子属性：管辖 |
-| **具有计提基础（has accrual basis）** | 标识规定利息如何计提的惯例，即计算时采用的每月天数和每年天数。 | 值域：计日惯例（day-count convention）；子属性：具有营业重复区间惯例 |
-| **具有复利频率（has compounding frequency）** | 在协议期间内利息计入债务本金的频率。 | 值域：重复区间；子属性：具有重复区间 |
-| **具有利息起计日（has initial interest accrual date）** | 利息开始计提的日期。 | 值域：日期；子属性：具有起始日期 |
-| **具有首次利息支付日（has initial interest payment date）** | 第一期利息的到期支付日期。 | 值域：日期；子属性：具有起始日期 |
-| **具有付息日（has interest payment day）** | 每月须支付债务利息的日期。 | 值域：重复区间；子属性：具有重复区间 |
-| **具有付息频率（has interest payment frequency）** | 债务利息须支付的频率。 | 值域：重复区间；子属性：具有重复区间 |
-| **具有利率（has interest rate）** | 将协议或债务工具等与债务人应向债权人支付的（通常为年化）利率关联起来。 | 值域：利率；子属性：具有量值 |
-| **具有利率上限（has interest rate cap）** | 将协议或债务工具等与可变利率债务的（通常为年化）利率上限关联起来。 | 值域：利率；子属性：具有利率（has interest rate） |
+| **规范……的支付（governs payment of）** | 将合同中内嵌的合同条款（如利息条款或还款条款）与其所适用的对象关联起来。<br>links contractual terms embedded in a contract, such as interest or repayment terms to the element those terms apply to | 子属性：管辖 |
+| **具有计提基础（has accrual basis）** | 标识规定利息如何计提的惯例，即计算时采用的每月天数和每年天数。<br>identifies the convention that defines how interest accrues on something, that is the number of days in a month and days in a year that are counted when performing interest accrual calculations | 值域：计日惯例（day-count convention）；子属性：具有营业重复区间惯例 |
+| **具有复利频率（has compounding frequency）** | 在协议期间内利息计入债务本金的频率。<br>the frequency at which interest is added to the principal of the debt over the course of the agreement | 值域：重复区间；子属性：具有重复区间 |
+| **具有利息起计日（has initial interest accrual date）** | 利息开始计提的日期。<br>the date from which interest begins to accrue | 值域：日期；子属性：具有起始日期 |
+| **具有首次利息支付日（has initial interest payment date）** | 第一期利息的到期支付日期。<br>the date on which the first interest payment is due | 值域：日期；子属性：具有起始日期 |
+| **具有付息日（has interest payment day）** | 每月须支付债务利息的日期。<br>the day of the month on which interest payments must be made on the debt | 值域：重复区间；子属性：具有重复区间 |
+| **具有付息频率（has interest payment frequency）** | 债务利息须支付的频率。<br>the frequency at which interest payments must be made on the debt | 值域：重复区间；子属性：具有重复区间 |
+| **具有利率（has interest rate）** | 将协议或债务工具等与债务人应向债权人支付的（通常为年化）利率关联起来。<br>relates something, such as an agreement, or debt instrument, to the rate (typically annual) of interest that is to be paid by the debtor to the creditor on the debt | 值域：利率；子属性：具有量值 |
+| **具有利率上限（has interest rate cap）** | 将协议或债务工具等与可变利率债务的（通常为年化）利率上限关联起来。<br>relates something, such as an agreement, or debt instrument, to the upper bound (ceiling) rate (typically annual) of interest on variable-rate debt that is to be paid by the debtor to the creditor on the debt | 值域：利率；子属性：具有利率（has interest rate） |
 
 公理：
 
@@ -545,11 +545,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **规范……的支付（governs payment of）** | 将合同中内嵌的合同条款（如利息条款或还款条款）与其所适用的对象关联起来。 | 子属性：管辖 |
-| **具有首次本金支付日（has initial principal payment date）** | 第一期本金的到期支付日期。 | 值域：日期；子属性：具有起始日期 |
-| **具有本金支付日（has principal payment day）** | 每月须支付本金的日期。 | 值域：重复区间；子属性：具有重复区间 |
-| **具有本金支付频率（has principal payment frequency）** | 本金须支付的频率。 | 值域：重复区间；子属性：具有重复区间 |
-| **具有本金偿还日（has principal repayment date）** | 将工具与其本金须全额偿还的日期关联起来。 | 值域：日期；子属性：具有结束日期 |
+| **规范……的支付（governs payment of）** | 将合同中内嵌的合同条款（如利息条款或还款条款）与其所适用的对象关联起来。<br>links contractual terms embedded in a contract, such as interest or repayment terms to the element those terms apply to | 子属性：管辖 |
+| **具有首次本金支付日（has initial principal payment date）** | 第一期本金的到期支付日期。<br>the date on which the first payment against the principal is due | 值域：日期；子属性：具有起始日期 |
+| **具有本金支付日（has principal payment day）** | 每月须支付本金的日期。<br>the day of the month on which payments on the principal must be made | 值域：重复区间；子属性：具有重复区间 |
+| **具有本金支付频率（has principal payment frequency）** | 本金须支付的频率。<br>the frequency at which payments on the principal must be made | 值域：重复区间；子属性：具有重复区间 |
+| **具有本金偿还日（has principal repayment date）** | 将工具与其本金须全额偿还的日期关联起来。<br>relates an instrument to the date by which the principal must be repaid in full | 值域：日期；子属性：具有结束日期 |
 | **具有展期条款（hasExtensionProvision）** | — | — |
 
 公理：
@@ -572,7 +572,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **欠付（owes）** | 将一方与其所欠付的债务关联起来。 | 值域：债务（debt） |
+| **欠付（owes）** | 将一方与其所欠付的债务关联起来。<br>links a party to a debt that they owe | 值域：债务（debt） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -590,7 +590,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **欠付（owes）** | 将一方与其所欠付的债务关联起来。 | 值域：债务（debt） |
+| **欠付（owes）** | 将一方与其所欠付的债务关联起来。<br>links a party to a debt that they owe | 值域：债务（debt） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -631,8 +631,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有利率（has interest rate）** | 将协议或债务工具等与债务人应向债权人支付的（通常为年化）利率关联起来。 | 值域：利率；子属性：具有量值 |
-| **是……的利息（is interest on）** | 将作为使用信贷成本的货币金额与其所适用的债务关联起来。 | — |
+| **具有利率（has interest rate）** | 将协议或债务工具等与债务人应向债权人支付的（通常为年化）利率关联起来。<br>relates something, such as an agreement, or debt instrument, to the rate (typically annual) of interest that is to be paid by the debtor to the creditor on the debt | 值域：利率；子属性：具有量值 |
+| **是……的利息（is interest on）** | 将作为使用信贷成本的货币金额与其所适用的债务关联起来。<br>links a monetary amount that is the cost of using credit to the debt that it applies to | — |
 | **具有日期区间（hasDatePeriod）** | — | — |
 
 公理：
@@ -668,7 +668,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有利率（has interest rate）** | 将协议或债务工具等与债务人应向债权人支付的（通常为年化）利率关联起来。 | 值域：利率；子属性：具有量值 |
+| **具有利率（has interest rate）** | 将协议或债务工具等与债务人应向债权人支付的（通常为年化）利率关联起来。<br>relates something, such as an agreement, or debt instrument, to the rate (typically annual) of interest that is to be paid by the debtor to the creditor on the debt | 值域：利率；子属性：具有量值 |
 | **具有货币数量（hasMonetaryAmount）** | — | — |
 
 公理：
@@ -704,7 +704,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的本金（is principal of）** | 将债务的价值（不含利息或其他信贷使用成本）与其所适用的债务关联起来。 | — |
+| **是……的本金（is principal of）** | 将债务的价值（不含利息或其他信贷使用成本）与其所适用的债务关联起来。<br>links the value of a debt, excluding any interest or other costs of using credit, to the debt that it applies to | — |
 
 公理：
 
@@ -728,7 +728,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有预计付款次数（has anticipated number of payments）** | 假定全部付款均按合同条款履行时，合同存续期内承诺的付款次数。 | 值域：xsd:positiveInteger；子属性：具有计数 |
+| **具有预计付款次数（has anticipated number of payments）** | 假定全部付款均按合同条款履行时，合同存续期内承诺的付款次数。<br>specifies the number of payments promised per the terms of the contract over the lifetime of the contract assuming all payments are made | 值域：xsd:positiveInteger；子属性：具有计数 |
 | **适用于（appliesTo）** | — | — |
 
 公理：
@@ -924,18 +924,18 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有已提供信贷金额（has amount of credit extended）** | 指明截至某一时点，就特定协议已向借款人提供的信贷总额。 | 子属性：具有货币数量 |
-| **具有可用金额（has available amount）** | 指明个人或机构可供借用的资金金额。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有借款人（has borrower）** | 将合同（如债务工具或信贷协议）与承担债务的一方或多方关联起来。 | 值域：借款人（borrower）；子属性：具有合同当事方 |
-| **具有信用限额（has credit limit）** | 规定就特定协议（如信用额度）可借用的信贷最高金额。 | 子属性：具有货币数量 |
-| **具有面额（has denomination）** | 货币单位、硬币或证券的票面价值。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有最终利息支付日（has final interest payment date）** | 最后一期利息的到期支付日期。 | 值域：日期；子属性：具有结束日期 |
-| **具有贷款人（has lender）** | 将合同（如债务工具或信贷协议）与为债务提供融资的一方或多方关联起来。 | 值域：贷款人（lender）；子属性：具有合同当事方 |
-| **具有单次最高提取金额（has maximum advance amount）** | 规定借款人就特定协议单次请求可提取的信贷金额上限。 | 子属性：具有货币数量 |
-| **具有未偿金额（has outstanding amount）** | 指明某一时点欠付的本金、利息或其他金额。 | 值域：货币数量；子属性：具有货币数量 |
-| **具有本金（has principal）** | 指明债券或贷款等债务须在到期时偿还的票面价值，即按揭或其他融资所募集的基础金额。 | 值域：本金（principal） |
-| **具有距到期期限（has time to maturity）** | 指明信贷协议或发行的存续期，即自发行日至预定到期日的时长。 | 值域：显式时长；子属性：具有时长 |
-| **基于（is based on）** | 将某事物与其所依托或在某方面支撑它的另一事物关联起来。 | 子属性：适用于 |
+| **具有已提供信贷金额（has amount of credit extended）** | 指明截至某一时点，就特定协议已向借款人提供的信贷总额。<br>specifies the gross amount of credit that has been provided to the borrower as of a given point in time with respect to a specific agreement (e.g. for line of credit) | 子属性：具有货币数量 |
+| **具有可用金额（has available amount）** | 指明个人或机构可供借用的资金金额。<br>indicates an amount of money available for an individual or organization to borrow | 值域：货币数量；子属性：具有货币数量 |
+| **具有借款人（has borrower）** | 将合同（如债务工具或信贷协议）与承担债务的一方或多方关联起来。<br>relates a contract, such as a debt instrument or credit agreement, to one or more parties that are incurring the debt | 值域：借款人（borrower）；子属性：具有合同当事方 |
+| **具有信用限额（has credit limit）** | 规定就特定协议（如信用额度）可借用的信贷最高金额。<br>specifies the maximum amount of credit that may be borrowed with respect to a specific agreement (e.g. for line of credit) | 子属性：具有货币数量 |
+| **具有面额（has denomination）** | 货币单位、硬币或证券的票面价值。<br>the face value of currency units, coins, or securities | 值域：货币数量；子属性：具有货币数量 |
+| **具有最终利息支付日（has final interest payment date）** | 最后一期利息的到期支付日期。<br>the date on which the last interest payment is due | 值域：日期；子属性：具有结束日期 |
+| **具有贷款人（has lender）** | 将合同（如债务工具或信贷协议）与为债务提供融资的一方或多方关联起来。<br>relates a contract, such as a debt instrument or credit agreement, to one or more parties that are financing the debt | 值域：贷款人（lender）；子属性：具有合同当事方 |
+| **具有单次最高提取金额（has maximum advance amount）** | 规定借款人就特定协议单次请求可提取的信贷金额上限。<br>specifies the ceiling on the amount of credit that can be drawn by the borrower in a single request with respect to a specific agreement (e.g. for line of credit) within the specified credit limit | 子属性：具有货币数量 |
+| **具有未偿金额（has outstanding amount）** | 指明某一时点欠付的本金、利息或其他金额。<br>indicates an amount of money representing the principal, interest, or other amount owed at a specific point in time | 值域：货币数量；子属性：具有货币数量 |
+| **具有本金（has principal）** | 指明债券或贷款等债务须在到期时偿还的票面价值，即按揭或其他融资所募集的基础金额。<br>indicates the face value of an obligation, such as a bond or loan, that must be repaid at maturity, i.e., the base amount raised by a mortgage or other debt instrument | 值域：本金（principal） |
+| **具有距到期期限（has time to maturity）** | 指明信贷协议或发行的存续期，即自发行日至预定到期日的时长。<br>indicates the lifespan of credit agreement or offering, from the date of issuance to the scheduled maturity date | 值域：显式时长；子属性：具有时长 |
+| **基于（is based on）** | 将某事物与其所依托或在某方面支撑它的另一事物关联起来。<br>relates something to something else on which it rests, or that supports it in some way | 子属性：适用于 |
 
 ## 4. 依赖（owl:imports，29 个）
 

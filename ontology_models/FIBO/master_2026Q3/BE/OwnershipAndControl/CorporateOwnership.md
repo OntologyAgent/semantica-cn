@@ -28,12 +28,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 受益所有人（beneficial owner） | 即使某物的所有权（名义）可能登记在他人名下，仍享有其所有权利益（如获得收入）的参与方。 |
-| 受益所有权（beneficial ownership） | 将享有所有权利益（如获得收入）的参与方与名义所有权可能在他人名下之事物相关联的情形。 |
-| 购入批（purchase lot） | 在给定日期以特定价格一次性买入的一批证券或其他金融资产。 |
-| 股东（shareholder） | 拥有某资产股份、并以投资换取相应权利与责任的参与方。 |
-| 持股（shareholding） | 以赋予财务权利和治理特权的股份所代表的对公司股权的所有权权益。 |
-| 税务批（tax lot） | 为税务申报目的具有独立成本基础的一批证券或其他金融资产。 |
+| 受益所有人（beneficial owner） | 即使某物的所有权（名义）可能登记在他人名下，仍享有其所有权利益（如获得收入）的参与方。<br>party that enjoys the benefits of ownership (such as receipt of income) of something even though its ownership (title) may be in the name of another party (called a nominee or registered owner) |
+| 受益所有权（beneficial ownership） | 将享有所有权利益（如获得收入）的参与方与名义所有权可能在他人名下之事物相关联的情形。<br>situation linking party that enjoys the benefits of ownership (such as receipt of income) of something even though its ownership (title) may be in the name of another party (called a nominee or registered owner) to the asset that they own |
+| 购入批（purchase lot） | 在给定日期以特定价格一次性买入的一批证券或其他金融资产。<br>financial asset that is a block of securities or other financial assets bought in one transaction on a given date at a specific price |
+| 股东（shareholder） | 拥有某资产股份、并以投资换取相应权利与责任的参与方。<br>party that owns shares in and has rights and responsibilities with respect to some asset, provided in exchange for investment |
+| 持股（shareholding） | 以赋予财务权利和治理特权的股份所代表的对公司股权的所有权权益。<br>ownership interest in the equity of a company, represented by shares that confer financial rights and governance privileges |
+| 税务批（tax lot） | 为税务申报目的具有独立成本基础的一批证券或其他金融资产。<br>financial asset that is a block of securities or other financial assets with a distinct cost basis for tax reporting purposes |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -47,7 +47,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的受益所有人（is beneficial owner of）** | 标识受益所有人在受益所有权情形中持有权利（通常为表决权、管理权等）的资产。 | 值域：资产；逆属性：具有受益所有人（has beneficial owner）；子属性：拥有资产 |
+| **是……的受益所有人（is beneficial owner of）** | 标识受益所有人在受益所有权情形中持有权利（通常为表决权、管理权等）的资产。<br>indicates an asset in which the beneficial owner holds rights (typically voting rights, management rights, etc.) in a beneficial ownership situation | 值域：资产；逆属性：具有受益所有人（has beneficial owner）；子属性：拥有资产 |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -85,7 +85,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……单位组成（consists of number of units）** | 标识……的单位数量。 | 值域：xsd:decimal；子属性：具有金额 |
+| **由……单位组成（consists of number of units）** | 标识……的单位数量。<br>indicates the number of units of | 值域：xsd:decimal；子属性：具有金额 |
 
 公理：
 
@@ -107,7 +107,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……单位组成（consists of number of units）** | 标识……的单位数量。 | 值域：xsd:decimal；子属性：具有金额 |
+| **由……单位组成（consists of number of units）** | 标识……的单位数量。<br>indicates the number of units of | 值域：xsd:decimal；子属性：具有金额 |
 
 公理：
 
@@ -123,7 +123,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **由……单位组成（consists of number of units）** | 标识……的单位数量。 | 值域：xsd:decimal；子属性：具有金额 |
+| **由……单位组成（consists of number of units）** | 标识……的单位数量。<br>indicates the number of units of | 值域：xsd:decimal；子属性：具有金额 |
 
 公理：
 
@@ -137,7 +137,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有受益所有人（has beneficial owner）** | 标识在受益所有权情形中保留其所拥资产之权利的参与方。 | 值域：受益所有人（beneficial owner）；子属性：是……的资产 |
+| **具有受益所有人（has beneficial owner）** | 标识在受益所有权情形中保留其所拥资产之权利的参与方。<br>indicates the party that retains rights in the asset they own in a beneficial ownership situation | 值域：受益所有人（beneficial owner）；子属性：是……的资产 |
 
 ## 4. 依赖（owl:imports，11 个）
 

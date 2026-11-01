@@ -24,8 +24,8 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 代码元素（code element） | 在特定情境下按某种规则集为某目的表示某事物的字符序列。 |
-| 代码集（code set） | 在某情境中代表特定值的字母数字符号或其组合的体系。 |
+| 代码元素（code element） | 在特定情境下按某种规则集为某目的表示某事物的字符序列。<br>sequence of characters denoting something for some purpose, within a specified context, according to some rule set |
+| 代码集（code set） | 在某情境中代表特定值的字母数字符号或其组合的体系。<br>system of alpha-numeric symbols, or combinations of symbols, that stand for specified values in some context |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

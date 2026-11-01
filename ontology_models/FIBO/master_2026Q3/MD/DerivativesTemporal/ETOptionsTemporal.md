@@ -28,12 +28,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 德尔塔（delta） | 期权价值对标的价格的一阶导数（或持仓上的对应值）。 |
-| 期权每日结算价（option daily settlement price） | 交易时段结束时的官方价格，由期权清算公司确定，用于计算账户权益变动。 |
-| 期权理论价值（option theoretical value） | 由期权定价模型确定的期权公允价值。 |
-| 期权希腊字母（options greek） | 表示期权价格对其价值所依赖的标的参数变化之敏感度的量。 |
-| 期权西塔（options theta） | 期权理论价值对到期时间单位变化之变化率的度量。 |
-| 期权维加（options vega） | 期权理论价值对波动率假设单位变化之变化率的度量。 |
+| 德尔塔（delta） | 期权价值对标的价格的一阶导数（或持仓上的对应值）。<br>First derivative of option value with respect to theoretical price is a delta (or on a position). Theoretical price |
+| 期权每日结算价（option daily settlement price） | 交易时段结束时的官方价格，由期权清算公司确定，用于计算账户权益变动。<br>The official price at the end of a trading session. This price is established by The Options Clearing Corporation and is used to determine changes in account equity, margin requirements, and for other purposes. |
+| 期权理论价值（option theoretical value） | 由期权定价模型确定的期权公允价值。<br>fair value of the option as determined by an option pricing model |
+| 期权希腊字母（options greek） | 表示期权价格对其价值所依赖的标的参数变化之敏感度的量。<br>quantity representing the sensitivity of the price of an option or options to a change in underlying parameters on which the value depends |
+| 期权西塔（options theta） | 期权理论价值对到期时间单位变化之变化率的度量。<br>A measure of the rate of change in an option's theoretical value for a one-unit change in time to the option's expiration date. Action: add terms that define or influence this. |
+| 期权维加（options vega） | 期权理论价值对波动率假设单位变化之变化率的度量。<br>A measure of the rate of change in an option's theoretical value for a one-unit change in the volatility assumption. Action: add terms that define or influence this. |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 

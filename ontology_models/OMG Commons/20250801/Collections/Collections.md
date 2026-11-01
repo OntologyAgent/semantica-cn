@@ -22,10 +22,10 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 编排（arrangement） | 制作、执行、实现或组织某事物的系统性计划、方式或方法。 |
-| 集合（collection） | 具有某种共同意义的事物的分组（可为零个）。 |
-| 组成成分（constituent） | 集合或事物组合中的组成部分。 |
-| 结构化集合（structured collection） | 具有明确定义的结构或组织的集合。 |
+| 编排（arrangement） | 制作、执行、实现或组织某事物的系统性计划、方式或方法。<br>systematic plan, manner, or method for making, doing, achieving, or organizing something |
+| 集合（collection） | 具有某种共同意义的事物的分组（可为零个）。<br>grouping of things (may be zero) that have some shared significance |
+| 组成成分（constituent） | 集合或事物组合中的组成部分。<br>component of a collection or combination of things |
+| 结构化集合（structured collection） | 具有明确定义的结构或组织的集合。<br>collection that has a clearly defined structure or organization |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -37,7 +37,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有方法（has method）** | 提供完成某事所用途径或方法的文本描述。 | 子属性：具有文本值 |
+| **具有方法（has method）** | 提供完成某事所用途径或方法的文本描述。<br>provides a text description of an approach or method used to accomplish something | 子属性：具有文本值 |
 
 公理：
 
@@ -59,7 +59,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有编排（has arrangement）** | 按……组织或构造。 | 值域：编排（arrangement） |
+| **具有编排（has arrangement）** | 按……组织或构造。<br>is structured or organized according to | 值域：编排（arrangement） |
 
 公理：
 
@@ -77,17 +77,17 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **遵从（complies with）** | 遵守……中规定的政策或规则。 | 值域：编排（arrangement）；子属性：具有编排（has arrangement） |
-| **包含（comprises）** | 尤其在特定范围内包括、由……组成或含有。 | — |
-| **具有组成成分（has constituent）** | 由……组成或含有。 | 子属性：包含（comprises） |
-| **具有直接部分（has direct part）** | 标识某事物的直接「子」部分。 | 子属性：具有部分（has part） |
-| **具有成员（has member）** | 将……作为离散元素包含。 | 子属性：包含（comprises） |
-| **具有部分（has part）** | 标识某事物的任意部分，无论该部分是否与整体相连、是否认知显著或任意划定。 | — |
-| **是……的组成成分（is constituent of）** | 是其他事物的组成部分。 | 逆属性：具有组成成分（has constituent）；子属性：被包含于（is included in） |
-| **是……的直接部分（is direct part of）** | 标识该部分的直接「父」整体。 | 逆属性：具有直接部分（has direct part）；子属性：是……的部分（is part of） |
-| **被包含于（is included in）** | 被包含于……或是……的元素。 | 逆属性：包含（comprises） |
-| **是……的成员（is member of）** | 是……的离散元素。 | 逆属性：具有成员（has member）；子属性：被包含于（is included in） |
-| **是……的部分（is part of）** | 将某事物关联到它作为组成部分或部分的另一事物，无论整体-部分关系如何体现。 | 逆属性：具有部分（has part） |
+| **遵从（complies with）** | 遵守……中规定的政策或规则。<br>adheres to policies or rules specified in | 值域：编排（arrangement）；子属性：具有编排（has arrangement） |
+| **包含（comprises）** | 尤其在特定范围内包括、由……组成或含有。<br>includes, consists of, or contains, especially within a particular scope | — |
+| **具有组成成分（has constituent）** | 由……组成或含有。<br>consists of or contains | 子属性：包含（comprises） |
+| **具有直接部分（has direct part）** | 标识某事物的直接「子」部分。<br>indicates an immediate 'child' part of something | 子属性：具有部分（has part） |
+| **具有成员（has member）** | 将……作为离散元素包含。<br>includes, as a discrete element | 子属性：包含（comprises） |
+| **具有部分（has part）** | 标识某事物的任意部分，无论该部分是否与整体相连、是否认知显著或任意划定。<br>indicates any portion of something, regardless of whether the portion itself is attached to the remainder or detached; cognitively salient or arbitrarily demarcated; self-connected or disconnected; homogeneous or gerrymandered; material or immaterial; extended or unextended; spatial or temporal | — |
+| **是……的组成成分（is constituent of）** | 是其他事物的组成部分。<br>is a component of something else | 逆属性：具有组成成分（has constituent）；子属性：被包含于（is included in） |
+| **是……的直接部分（is direct part of）** | 标识该部分的直接「父」整体。<br>indicates an immediate 'parent' of this part | 逆属性：具有直接部分（has direct part）；子属性：是……的部分（is part of） |
+| **被包含于（is included in）** | 被包含于……或是……的元素。<br>is contained in or an element of | 逆属性：包含（comprises） |
+| **是……的成员（is member of）** | 是……的离散元素。<br>is a discrete element of | 逆属性：具有成员（has member）；子属性：被包含于（is included in） |
+| **是……的部分（is part of）** | 将某事物关联到它作为组成部分或部分的另一事物，无论整体-部分关系如何体现。<br>relates something to another thing that it is some component or portion of, regardless of how that whole-part relationship is manifested | 逆属性：具有部分（has part） |
 
 ## 4. 依赖（owl:imports，2 个）
 

@@ -24,15 +24,15 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 协议（agreement） | 两个或多个参与方之间经协商达成的理解，体现各方作出的承诺及其接受。 |
-| 受益方（beneficiary） | 从某事物中获得某种利益、好处或收益的参与方。 |
-| 双边协议（bilateral agreement） | 两方承诺相互履行特定义务或责任的协议。 |
-| 承诺（commitment） | 某参与方作出的以某种方式行事或不行事的承诺。 |
-| 公开承诺（commitment at large） | 某参与方作出、且潜在受益方未直接参与的承诺；可转让证券等的基础。 |
-| 多边协议（multilateral agreement） | 涉及多个参与方的协议。 |
-| 权利人（obligee） | 根据法律或协议条款享有某项承诺或义务的参与方。 |
-| 义务人（obligor） | 根据法律或协议有义务偿还债务、付款、做某事或不做某事的参与方。 |
-| 单方面承诺（unilateral commitment） | 由一方作出、无需另一方作出对等承诺的承诺或义务。 |
+| 协议（agreement） | 两个或多个参与方之间经协商达成的理解，体现各方作出的承诺及其接受。<br>negotiated understanding between two or more parties, reflecting the offer and acceptance of commitments on the part of either party |
+| 受益方（beneficiary） | 从某事物中获得某种利益、好处或收益的参与方。<br>party that receives some benefit or advantage or profits from something |
+| 双边协议（bilateral agreement） | 两方承诺相互履行特定义务或责任的协议。<br>agreement where two parties commit to perform specific actions or obligations towards each other |
+| 承诺（commitment） | 某参与方作出的以某种方式行事或不行事的承诺。<br>promise made by some party to act or refrain from acting in some manner |
+| 公开承诺（commitment at large） | 某参与方作出、且潜在受益方未直接参与的承诺；可转让证券等的基础。<br>commitment made by some party without direct involvement from the potential beneficiaries of that commitment |
+| 多边协议（multilateral agreement） | 涉及多个参与方的协议。<br>agreements that involve or include multiple parties |
+| 权利人（obligee） | 根据法律或协议条款享有某项承诺或义务的参与方。<br>party to whom some commitment or obligation is owed, either legally or per the terms of an agreement |
+| 义务人（obligor） | 根据法律或协议有义务偿还债务、付款、做某事或不做某事的参与方。<br>party that is bound legally or by agreement to repay a debt, make a payment, do something, or refrain from doing something |
+| 单方面承诺（unilateral commitment） | 由一方作出、无需另一方作出对等承诺的承诺或义务。<br>commitment (promise or obligation) made by one party without requiring a reciprocal promise from another party |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -160,7 +160,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有义务（has obligation）** | 标识某参与方已承担的某项义务。 | 逆属性：属于义务人（is obligation of） |
+| **具有义务（has obligation）** | 标识某参与方已承担的某项义务。<br>identifies a duty or obligation that a given party has taken on | 逆属性：属于义务人（is obligation of） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -176,7 +176,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **属于义务人（is obligation of）** | 标识承担某项义务的参与方。 | 值域：义务人（obligor）；子属性：具有参与方角色（has party role） |
+| **属于义务人（is obligation of）** | 标识承担某项义务的参与方。<br>identifies a party that has a given obligation | 值域：义务人（obligor）；子属性：具有参与方角色（has party role） |
 
 ## 4. 依赖（owl:imports，5 个）
 

@@ -34,49 +34,49 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 任意单位（arbitrary unit） | 任意定义的计量单位，其与国际单位制物理单位的关系不存在或未知。 |
-| 基本量类（base quantity kind） | 在约定选取的量子集之内的量，该子集中的任何量都不能用子集内其他量表示。 |
-| 基本单位（base unit） | 由单位制定义为基本量参考计量单位的计量单位。 |
-| 一贯导出单位（coherent derived unit） | 对给定量制和选定基本单位集，由基本单位的幂之积构成且比例因子仅为一的导出单位。 |
-| 常量（constant） | 在公式或表达式中表示不变（即固定）值的符号。 |
-| 单位间换算因子（conversion factor between units） | 同类量的两个计量单位之比。 |
-| 换算型单位（conversion-based unit） | 通过与另一参考单位的显式换算关系定义的导出单位。 |
-| 循环比率标度（cyclic ratio scale） | 表示具有周期性循环的比率标度的测量标度。 |
-| 导出量类（derived quantity kind） | 在量制中以该制基本量定义的量。 |
-| 导出单位（derived unit） | 导出量的计量单位，即以一个或多个基本单位（如其他计量单位的幂之积）定义的单位。 |
-| 无量纲量（dimensionless quantity） | 其量纲中对应基本量的各因子指数均为零的量。 |
-| 表达式（expression） | 按适用规则构成的有限符号组合。 |
-| 因子（factor） | 与另一数或量相乘得到给定数或表达式的数或量。 |
-| 区间标度（interval scale） | 表示定量值且可计算众数、中位数和均值的测量标度。 |
-| 对数标度（logarithmic scale） | 某点到标度零点的实际距离与对应标度数（而非数值本身）的对数成正比的测量标度。 |
-| 实物量具（material measure） | 复现或提供一个或多个各带赋值量值的量的实物。 |
-| 度量（measure） | 某事物的数量或程度；通过测量确定的尺寸、容量或数量。 |
-| 测量程序（measurement procedure） | 依据一种或多种测量原理（即现象、可观测量）和给定测量方法、基于测量模型并包含获得测量结果所需计算的测量程序。 |
-| 测量参考（measurement reference） | 计量单位、测量程序、参考物质，或其组合。 |
-| 测量标度（measurement scale） | 用于按大小对某类量进行排序的该类量量值的有序集合。 |
-| 计量单位（measurement unit） | 由约定定义并采用的实标量，任何同类量都可与之比较，以数值表示该量与该单位之比。 |
-| 名义标度（nominal scale） | 将对象表示为属于无特定次序之类别的测量标度。 |
-| 序数标度（ordinal scale） | 用于序数量的量值标度，即只表示次序而不含进一步代数结构的标度。 |
-| 百分比（percentage） | 以百分之几（分母固定为 100）表示的比率值。 |
-| 物理单位（physical unit） | 用物理量定义的计量单位。 |
-| 词头（prefix） | 在导出单位的规定中使用的、具名的倍数或分数倍乘因子。 |
-| 带词头单位（prefixed unit） | 通过与另一测量参考单位的线性换算关系定义、以表示单位倍数或分数的具名词头构成的换算型单位。 |
-| 量纲（quantity dimension） | 以基本量对应因子的幂之积表示某量对量制基本量的依赖关系的表达式，略去数值因子。 |
-| 量类（quantity kind） | 可相互比较的量共有的方面。 |
-| 量类幂因子（quantity kind power factor） | 定义导出量的幂之积中的因子。 |
-| 量名称（quantity name） | 量的人类可读文本表示。 |
-| 比率（ratio） | 两个不同量值之间产生特定量类数据的比例关系。 |
-| 比率标度（ratio scale） | 表示定量值、允许比较差值、具有固定零点且在乘以正数下不变的测量标度。 |
-| 带附加限值的比率标度（ratio scale with additional limit values） | 表示带有附加限值的比率标度的测量标度。 |
-| 参考物质（reference material） | 就规定特性而言足够均匀稳定、已确认适合其在测量或名义特性检查中预期用途的物质。 |
-| 标量（scalar quantity） | 现象、物体或物质的属性，其大小可用一个数和一个参考来表示。 |
-| 标量值（scalar quantity value） | 共同表示某量大小的数与参考。 |
-| 标量值区间（scalar quantity value range） | 对某标量的最低可能值和/或最高可能值的表达。 |
-| 量制（system of quantities） | 一组量连同关联这些量的一组互不矛盾的方程。 |
-| 单位制（system of units） | 对给定量制按给定规则定义的一组基本单位和导出单位及其倍数与分数单位。 |
-| 总计（total） | 所有单位的某特性之值的总和。 |
-| 单位幂因子（unit power factor） | 定义导出单位的幂之积中的因子。 |
-| 变量（variable） | 在公式或表达式中表示参数的符号。 |
+| 任意单位（arbitrary unit） | 任意定义的计量单位，其与国际单位制物理单位的关系不存在或未知。<br>arbitrarily defined unit of measurement, where a relation of the unit to a physical unit of the SI does not exist or is unknown |
+| 基本量类（base quantity kind） | 在约定选取的量子集之内的量，该子集中的任何量都不能用子集内其他量表示。<br>quantity in a conventionally chosen subset of a given system of quantities, where no quantity in the subset can be expressed in terms of the other quantities within that subset |
+| 基本单位（base unit） | 由单位制定义为基本量参考计量单位的计量单位。<br>measurement unit that is defined by a system of units to be the reference measurement unit for a base quantity |
+| 一贯导出单位（coherent derived unit） | 对给定量制和选定基本单位集，由基本单位的幂之积构成且比例因子仅为一的导出单位。<br>derived unit that, for a given system of quantities and for a chosen set of base units, is a product of powers of base units with no other proportionality factor than one |
+| 常量（constant） | 在公式或表达式中表示不变（即固定）值的符号。<br>symbol that represents a value that does not change (i.e., is fixed) with respect to a formula or expression |
+| 单位间换算因子（conversion factor between units） | 同类量的两个计量单位之比。<br>ratio of two measurement units for quantities of the same kind |
+| 换算型单位（conversion-based unit） | 通过与另一参考单位的显式换算关系定义的导出单位。<br>derived unit that is defined with respect to another reference unit through an explicit conversion relationship |
+| 循环比率标度（cyclic ratio scale） | 表示具有周期性循环的比率标度的测量标度。<br>measurement scale that represents a ratio scale with a periodic cycle |
+| 导出量类（derived quantity kind） | 在量制中以该制基本量定义的量。<br>quantity, in a system of quantities, defined in terms of the base quantities of that system |
+| 导出单位（derived unit） | 导出量的计量单位，即以一个或多个基本单位（如其他计量单位的幂之积）定义的单位。<br>measurement unit for a derived quantity, i.e., one that is defined with respect to one or more base units, such as as a product of powers of one or more other measurement units |
+| 无量纲量（dimensionless quantity） | 其量纲中对应基本量的各因子指数均为零的量。<br>quantity for which all the exponents of the factors corresponding to the base quantities in its quantity dimension are zero |
+| 表达式（expression） | 按适用规则构成的有限符号组合。<br>finite combination of symbols that are well-formed according to applicable rules |
+| 因子（factor） | 与另一数或量相乘得到给定数或表达式的数或量。<br>number or quantity that when multiplied with another produces a given number or expression |
+| 区间标度（interval scale） | 表示定量值且可计算众数、中位数和均值的测量标度。<br>measurement scale that represents quantitative values and for which mode, median and mean can be calculated |
+| 对数标度（logarithmic scale） | 某点到标度零点的实际距离与对应标度数（而非数值本身）的对数成正比的测量标度。<br>measurement scale on which the actual distance of a point from the scale's zero is proportional to the logarithm of the corresponding scale number rather than to the number itself |
+| 实物量具（material measure） | 复现或提供一个或多个各带赋值量值的量的实物。<br>something that reproduces or supplies one or more quantities, each with an assigned quantity value |
+| 度量（measure） | 某事物的数量或程度；通过测量确定的尺寸、容量或数量。<br>amount or degree of something; the dimensions, capacity, or amount of something ascertained by measuring |
+| 测量程序（measurement procedure） | 依据一种或多种测量原理（即现象、可观测量）和给定测量方法、基于测量模型并包含获得测量结果所需计算的测量程序。<br>procedure of a measurement according to one or more measurement principles (i.e. phenomena, observables) and a given measurement method, based on a measurement model and including any calculation to obtain a measurement result |
+| 测量参考（measurement reference） | 计量单位、测量程序、参考物质，或其组合。<br>measurement unit, measurement procedure, reference material, or a combination of such |
+| 测量标度（measurement scale） | 用于按大小对某类量进行排序的该类量量值的有序集合。<br>ordered set of quantity values of quantities of a given kind of quantity used in ranking, according to magnitude, quantities of that kind |
+| 计量单位（measurement unit） | 由约定定义并采用的实标量，任何同类量都可与之比较，以数值表示该量与该单位之比。<br>real scalar quantity, defined and adopted by convention, with which any other quantity of the same kind can be compared to express the ratio of the second quantity to the first one as a number |
+| 名义标度（nominal scale） | 将对象表示为属于无特定次序之类别的测量标度。<br>measurement scale that represents objects as belonging to classes that have no particular order |
+| 序数标度（ordinal scale） | 用于序数量的量值标度，即只表示次序而不含进一步代数结构的标度。<br>quantity-value scale for ordinal quantities, i.e., one that represents order but no further algebraic structure |
+| 百分比（percentage） | 以百分之几（分母固定为 100）表示的比率值。<br>ratio value expressed as a fraction of 100, i.e., in which the denominator is fixed rather than variable and equal to 100 |
+| 物理单位（physical unit） | 用物理量定义的计量单位。<br>unit of measurement that is defined using a physical quantity |
+| 词头（prefix） | 在导出单位的规定中使用的、具名的倍数或分数倍乘因子。<br>named multiple or sub-multiple multiplication factor used in the specification of a derived unit |
+| 带词头单位（prefixed unit） | 通过与另一测量参考单位的线性换算关系定义、以表示单位倍数或分数的具名词头构成的换算型单位。<br>conversion-based unit that is defined with respect to another measurement reference unit through a linear conversion relationship with a named prefix that represents a multiple or submultiple of a unit |
+| 量纲（quantity dimension） | 以基本量对应因子的幂之积表示某量对量制基本量的依赖关系的表达式，略去数值因子。<br>expression of the dependence of a quantity on the base quantities of a system of quantities as a product of powers of factors corresponding to the base quantities, omitting any numerical factor |
+| 量类（quantity kind） | 可相互比较的量共有的方面。<br>aspect common to mutually comparable quantities |
+| 量类幂因子（quantity kind power factor） | 定义导出量的幂之积中的因子。<br>factor in a product of powers that defines a derived quantity |
+| 量名称（quantity name） | 量的人类可读文本表示。<br>human-readable textual representation of the quantity |
+| 比率（ratio） | 两个不同量值之间产生特定量类数据的比例关系。<br>proportional relationship between two different quantity values that gives rise to a datum of a specific quantity kind |
+| 比率标度（ratio scale） | 表示定量值、允许比较差值、具有固定零点且在乘以正数下不变的测量标度。<br>measurement scale that represents quantitative values, allows comparison of differences in values, has a fixed zero value and is invariant under multiplication by a positive number |
+| 带附加限值的比率标度（ratio scale with additional limit values） | 表示带有附加限值的比率标度的测量标度。<br>measurement scale that that represents a ratio scale that has additional limit values |
+| 参考物质（reference material） | 就规定特性而言足够均匀稳定、已确认适合其在测量或名义特性检查中预期用途的物质。<br>material, sufficiently homogeneous and stable with reference to specified properties, which has been established to be fit for its intended use in measurement or in examination of nominal properties |
+| 标量（scalar quantity） | 现象、物体或物质的属性，其大小可用一个数和一个参考来表示。<br>property of a phenomenon, body, or substance, where the property has a magnitude that can be expressed by means of a number and a reference |
+| 标量值（scalar quantity value） | 共同表示某量大小的数与参考。<br>number and reference together expressing the magnitude of a quantity |
+| 标量值区间（scalar quantity value range） | 对某标量的最低可能值和/或最高可能值的表达。<br>expression of the lowest possible value and/or highest possible value for some scalar quantity |
+| 量制（system of quantities） | 一组量连同关联这些量的一组互不矛盾的方程。<br>set of quantities together with a set of non-contradictory equations relating those quantities |
+| 单位制（system of units） | 对给定量制按给定规则定义的一组基本单位和导出单位及其倍数与分数单位。<br>set of base units and derived units, together with their multiples and submultiples, defined in accordance with given rules, for a given system of quantities |
+| 总计（total） | 所有单位的某特性之值的总和。<br>sum of the values for some characteristic of all units |
+| 单位幂因子（unit power factor） | 定义导出单位的幂之积中的因子。<br>factor in a product of powers that defines a derived unit |
+| 变量（variable） | 在公式或表达式中表示参数的符号。<br>symbol that represents a parameter in a formula or expression |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -90,7 +90,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有自变量（has argument）** | 标识函数、公式或表达式的特定输入，也称独立变量。 | 值域：N3a4b7ba2a762486cad015bee9d74dd5f |
+| **具有自变量（has argument）** | 标识函数、公式或表达式的特定输入，也称独立变量。<br>indicates a specific input to a function, formula or expression, also known as an independent variable | 值域：Nbb4f315ae4d54d13bcd4a1850f46c5b8 |
 
 公理：
 
@@ -108,8 +108,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有分母（has denominator）** | 指明分数中「线下」部分、即分子应除以的数值的量值。 | 值域：Nc5b36dbed5c94fc0b8c154d4dd2b2e08；子属性：具有自变量（has argument） |
-| **具有分子（has numerator）** | 指明分数中「线上」部分、即应被分母除的数值的量值。 | 值域：N6161449e31704ca6957711e39f2b4947；子属性：具有自变量（has argument） |
+| **具有分母（has denominator）** | 指明分数中「线下」部分、即分子应除以的数值的量值。<br>specifies the quantity value that is the part of a fraction 'below the line' and signifies the value by which the numerator should be divided | 值域：N928d299f506b4f1f95fb70a8250256a5；子属性：具有自变量（has argument） |
+| **具有分子（has numerator）** | 指明分数中「线上」部分、即应被分母除的数值的量值。<br>specifies the quantity value that is the part of a fraction 'above the line' and signifies the value to be divided by the denominator | 值域：Nb0149da2d0cc4c87bbd4d98689e04ac2；子属性：具有自变量（has argument） |
 
 公理：
 
@@ -126,7 +126,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有量类（has quantity kind）** | 标识参与个体量或因子定义的可相互比较之量的类别。 | 值域：量类（quantity kind）；子属性：由……分类 |
+| **具有量类（has quantity kind）** | 标识参与个体量或因子定义的可相互比较之量的类别。<br>indicates the class of mutually comparable quantities involved in the definition of an individual quantity or factor | 值域：量类（quantity kind）；子属性：由……分类 |
 
 公理：
 
@@ -148,8 +148,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有下界（has lower bound）** | 指明表示区间的两个值中较低的那个量值。 | 值域：标量值（scalar quantity value）；子属性：具有自变量（has argument） |
-| **具有上界（has upper bound）** | 指明表示区间的两个值中较高的那个量值。 | 值域：标量值（scalar quantity value）；子属性：具有自变量（has argument） |
+| **具有下界（has lower bound）** | 指明表示区间的两个值中较低的那个量值。<br>specifies the quantity value that is the lower value of a pair of values representing a range | 值域：标量值（scalar quantity value）；子属性：具有自变量（has argument） |
+| **具有上界（has upper bound）** | 指明表示区间的两个值中较高的那个量值。<br>specifies the quantity value that is the higher value of a pair of values representing a range | 值域：标量值（scalar quantity value）；子属性：具有自变量（has argument） |
 
 公理：
 
@@ -179,7 +179,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有因子值（has factor value）** | 标识数值的倍数或分数倍乘因子。 | 值域：owl:rational |
+| **具有因子值（has factor value）** | 标识数值的倍数或分数倍乘因子。<br>indicates the numeric multiple or submultiple multiplication factor | 值域：owl:rational |
 
 公理：
 
@@ -195,8 +195,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有指数（has exponent）** | 标识一个数应自乘的次数。 | 值域：owl:rational |
-| **具有量类（has quantity kind）** | 标识参与个体量或因子定义的可相互比较之量的类别。 | 值域：量类（quantity kind）；子属性：由……分类 |
+| **具有指数（has exponent）** | 标识一个数应自乘的次数。<br>indicates the number of times a number should be multiplied by itself | 值域：owl:rational |
+| **具有量类（has quantity kind）** | 标识参与个体量或因子定义的可相互比较之量的类别。<br>indicates the class of mutually comparable quantities involved in the definition of an individual quantity or factor | 值域：量类（quantity kind）；子属性：由……分类 |
 
 公理：
 
@@ -213,8 +213,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有指数（has exponent）** | 标识一个数应自乘的次数。 | 值域：owl:rational |
-| **具有计量单位（has measurement unit）** | 标识量值中量可据以表达的单位。 | 值域：计量单位（measurement unit）；子属性：具有测量参考（has measurement reference） |
+| **具有指数（has exponent）** | 标识一个数应自乘的次数。<br>indicates the number of times a number should be multiplied by itself | 值域：owl:rational |
+| **具有计量单位（has measurement unit）** | 标识量值中量可据以表达的单位。<br>indicates the unit against which a quantity can be expressed in a quantity value | 值域：计量单位（measurement unit）；子属性：具有测量参考（has measurement reference） |
 
 公理：
 
@@ -262,10 +262,10 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **分类（classifies）** | — | — |
-| **具有最大允许值（has maximum permissive value）** | 标识给定标度上测量所允许的最大值。 | 值域：标量值（scalar quantity value）；子属性：具有量值（has quantity value） |
-| **具有最小允许值（has minimum permissive value）** | 标识给定标度上测量所允许的最小值。 | 值域：标量值（scalar quantity value）；子属性：具有量值（has quantity value） |
-| **含最大值（is maximum inclusive）** | 表明某事物（如测量标度）是否包含绝对最大允许值。 | 值域：xsd:boolean |
-| **含最小值（is minimum inclusive）** | 表明某事物（如测量标度）是否包含绝对最小允许值。 | 值域：xsd:boolean |
+| **具有最大允许值（has maximum permissive value）** | 标识给定标度上测量所允许的最大值。<br>indicates the maximum allowed value for a measurement on the given scale | 值域：标量值（scalar quantity value）；子属性：具有量值（has quantity value） |
+| **具有最小允许值（has minimum permissive value）** | 标识给定标度上测量所允许的最小值。<br>indicates the minimum allowed value for a measurement on the given scale | 值域：标量值（scalar quantity value）；子属性：具有量值（has quantity value） |
+| **含最大值（is maximum inclusive）** | 表明某事物（如测量标度）是否包含绝对最大允许值。<br>indicates whether something, such as a measurement scale, includes the absolute maximum permissive value or not | 值域：xsd:boolean |
+| **含最小值（is minimum inclusive）** | 表明某事物（如测量标度）是否包含绝对最小允许值。<br>indicates whether something, such as a measurement scale, includes the absolute minimum permissive value or not | 值域：xsd:boolean |
 
 公理：
 
@@ -330,8 +330,8 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **定义于（isDefinedIn）** | — | — |
-| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。 | 子属性：具有自变量（has argument） |
-| **特化（specializes）** | 标识性质比主语更一般（更宽泛）的事物。 | — |
+| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。<br>indicates a number or quantity that when multiplied with another produces a given number or expression | 子属性：具有自变量（has argument） |
+| **特化（specializes）** | 标识性质比主语更一般（更宽泛）的事物。<br>indicates something whose nature is more general (broader than) the subject | — |
 
 公理：
 
@@ -392,8 +392,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。 | 子属性：具有自变量（has argument） |
-| **导出自（is derived from）** | 标识主语由之获得或确定的事物。 | — |
+| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。<br>indicates a number or quantity that when multiplied with another produces a given number or expression | 子属性：具有自变量（has argument） |
+| **导出自（is derived from）** | 标识主语由之获得或确定的事物。<br>indicates something from which the subject is obtained or determined | — |
 
 公理：
 
@@ -417,7 +417,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有表达式（has expression）** | 指明按依赖语言与情境的规则构成的、含常量与可经运算符排序的变量的有限符号组合。 | 值域：表达式（expression） |
+| **具有表达式（has expression）** | 指明按依赖语言与情境的规则构成的、含常量与可经运算符排序的变量的有限符号组合。<br>specifies a finite combination of symbols, including constants, variables that may be ordered via one or more operators, that is well-formed according to rules that depend on the language and context | 值域：表达式（expression） |
 
 公理：
 
@@ -433,7 +433,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。 | 子属性：具有自变量（has argument） |
+| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。<br>indicates a number or quantity that when multiplied with another produces a given number or expression | 子属性：具有自变量（has argument） |
 
 公理：
 
@@ -455,8 +455,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。 | 子属性：具有自变量（has argument） |
-| **是……的量纲（is dimension of）** | 标识某量制中与给定量类关联的可测广度，视基本量的选择可为导出量纲。 | 值域：量类（quantity kind）；逆属性：具有量纲（has dimension）；子属性：分类 |
+| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。<br>indicates a number or quantity that when multiplied with another produces a given number or expression | 子属性：具有自变量（has argument） |
+| **是……的量纲（is dimension of）** | 标识某量制中与给定量类关联的可测广度，视基本量的选择可为导出量纲。<br>indicates a measurable extent associated with a given quantity kind in some system of quantities, which may be derived, depending on the choice of base quantity | 值域：量类（quantity kind）；逆属性：具有量纲（has dimension）；子属性：分类 |
 
 公理：
 
@@ -474,9 +474,9 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **定义于（isDefinedIn）** | — | — |
-| **具有量纲（has dimension）** | 标识某量制中与给定量类关联的可测广度，视基本量的选择可为导出量纲。 | 值域：量纲（quantity dimension）；子属性：由……分类 |
-| **具有计量单位（has measurement unit）** | 标识量值中量可据以表达的单位。 | 值域：计量单位（measurement unit）；子属性：具有测量参考（has measurement reference） |
-| **特化（specializes）** | 标识性质比主语更一般（更宽泛）的事物。 | — |
+| **具有量纲（has dimension）** | 标识某量制中与给定量类关联的可测广度，视基本量的选择可为导出量纲。<br>indicates a measurable extent associated with a given quantity kind in some system of quantities, which may be derived, depending on the choice of base quantity | 值域：量纲（quantity dimension）；子属性：由……分类 |
+| **具有计量单位（has measurement unit）** | 标识量值中量可据以表达的单位。<br>indicates the unit against which a quantity can be expressed in a quantity value | 值域：计量单位（measurement unit）；子属性：具有测量参考（has measurement reference） |
+| **特化（specializes）** | 标识性质比主语更一般（更宽泛）的事物。<br>indicates something whose nature is more general (broader than) the subject | — |
 
 公理：
 
@@ -511,8 +511,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。 | 子属性：具有自变量（has argument） |
-| **导出自（is derived from）** | 标识主语由之获得或确定的事物。 | — |
+| **具有因子（has factor）** | 标识与另一数或量相乘得到给定数或表达式的数或量。<br>indicates a number or quantity that when multiplied with another produces a given number or expression | 子属性：具有自变量（has argument） |
+| **导出自（is derived from）** | 标识主语由之获得或确定的事物。<br>indicates something from which the subject is obtained or determined | — |
 
 公理：
 
@@ -556,7 +556,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有名称（hasName）** | — | — |
-| **具有量类（has quantity kind）** | 标识参与个体量或因子定义的可相互比较之量的类别。 | 值域：量类（quantity kind）；子属性：由……分类 |
+| **具有量类（has quantity kind）** | 标识参与个体量或因子定义的可相互比较之量的类别。<br>indicates the class of mutually comparable quantities involved in the definition of an individual quantity or factor | 值域：量类（quantity kind）；子属性：由……分类 |
 
 公理：
 
@@ -573,10 +573,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **表示……的大小（expresses the magnitude of）** | 指明某量值所反映的量。 | 值域：标量（scalar quantity） |
-| **具有测量参考（has measurement reference）** | 标识量可据以相对于数值表达的参考。 | 值域：测量参考（measurement reference） |
-| **具有数值（has numeric value）** | 标识某可观测特性的特定大小或指定值，且为数值。 | 值域：xsd:decimal |
-| **是……的值（is value of）** | 是该值所表示的度量。 | 逆属性：具有量值（has quantity value）；子属性：适用于 |
+| **表示……的大小（expresses the magnitude of）** | 指明某量值所反映的量。<br>specifies the quantity that some quantity value reflects | 值域：标量（scalar quantity） |
+| **具有测量参考（has measurement reference）** | 标识量可据以相对于数值表达的参考。<br>indicates the reference against which a quantity can be expressed with respect to a number | 值域：测量参考（measurement reference） |
+| **具有数值（has numeric value）** | 标识某可观测特性的特定大小或指定值，且为数值。<br>indicates a particular magnitude or designation for a given observable characteristic that is a number | 值域：xsd:decimal |
+| **是……的值（is value of）** | 是该值所表示的度量。<br>is the measure that the value represents | 逆属性：具有量值（has quantity value）；子属性：适用于 |
 
 公理：
 
@@ -616,14 +616,14 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有量值（has quantity value）** | 将某事物（表达式、公式等）关联到以数值连同计量单位（如适用）表示的大小。 | 值域：标量值（scalar quantity value） |
-| **具有量值区间（has quantity value range）** | 将某事物（表达式、公式等）关联到以数值区间连同计量单位（如适用）表示的大小。 | 值域：标量值区间（scalar quantity value range）；子属性：具有表达式（has expression） |
+| **具有量值（has quantity value）** | 将某事物（表达式、公式等）关联到以数值连同计量单位（如适用）表示的大小。<br>relates something (an expression, formula, etc.) to its magnitude expressed as a number together with its unit of measure (if applicable) | 值域：标量值（scalar quantity value） |
+| **具有量值区间（has quantity value range）** | 将某事物（表达式、公式等）关联到以数值区间连同计量单位（如适用）表示的大小。<br>relates something (an expression, formula, etc.) to its magnitude expressed as range of numbers together with their unit(s) of measure (if applicable) | 值域：标量值区间（scalar quantity value range）；子属性：具有表达式（has expression） |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **描述实际表达式（describes actual expression）** | 指明用于确定某事物之值的计算或表达式。 |
+| **描述实际表达式（describes actual expression）** | 指明用于确定某事物之值的计算或表达式。<br>specifies the calculation or expression used to determine the value of something |
 
 ## 4. 依赖（owl:imports，6 个）
 

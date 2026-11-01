@@ -53,16 +53,16 @@ cmns-dt:ExplicitDatePeriod a owl:Class ;
     rdfs:comment "必须具备起始日期、结束日期和/或时长的日期区间。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:ExplicitDuration ;
-            owl:onProperty cmns-dt:hasDuration ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty cmns-dt:hasEndDate ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty cmns-dt:hasStartDate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDuration ;
+            owl:onProperty cmns-dt:hasDuration ],
         cmns-dt:DatePeriod,
         cmns-dt:ProperInterval ;
     skos:definition "date period for which the start date, end date, and/or duration are required" ;
@@ -75,15 +75,15 @@ cmns-dt:ExplicitTimePeriod a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:TimeOfDay ;
-            owl:onProperty cmns-dt:hasEndTime ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:TimeOfDay ;
             owl:onProperty cmns-dt:hasStartTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDuration ;
             owl:onProperty cmns-dt:hasDuration ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:TimeOfDay ;
+            owl:onProperty cmns-dt:hasEndTime ],
         cmns-dt:ProperInterval,
         cmns-dt:TimePeriod ;
     skos:definition "time period for which the starting time, ending time, and/or duration are required" ;
@@ -220,16 +220,16 @@ cmns-dt:DatePeriod a owl:Class ;
     rdfs:comment "跨越一个或多个历日的时间段。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Duration ;
+            owl:onProperty cmns-dt:hasDuration ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty cmns-dt:hasEndDate ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty cmns-dt:hasStartDate ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:Duration ;
-            owl:onProperty cmns-dt:hasDuration ],
         cmns-dt:TimeInterval ;
     skos:definition "time span over one or more calendar days" ;
     skos:note "A date period is considered unknown or incomplete if either the start date or the end date has no value. There may be cases, however, when the length of time is known, such as a 4-day work week, but the precise start and end of that week are not known.",
@@ -242,7 +242,7 @@ cmns-dt:TimePeriod a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:TimeOfDay ;
-            owl:onProperty cmns-dt:hasStartTime ],
+            owl:onProperty cmns-dt:hasEndTime ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Duration ;
@@ -250,7 +250,7 @@ cmns-dt:TimePeriod a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:TimeOfDay ;
-            owl:onProperty cmns-dt:hasEndTime ],
+            owl:onProperty cmns-dt:hasStartTime ],
         cmns-dt:TimeInterval ;
     skos:definition "time span over some finite window" ;
     skos:note "A time period is defined by at least two of three properties: (1) a start time, (2) an end time, and (3) a duration. If more than one of these properties is missing, the time period may be invalid or unknown.",

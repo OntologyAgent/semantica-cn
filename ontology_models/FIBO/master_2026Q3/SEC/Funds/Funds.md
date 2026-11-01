@@ -35,33 +35,33 @@
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 集合投资工具（CollectiveInvestmentVehicle） | 由投资者汇聚的资产池，其股本与该工具的资产保持分离。 |
-| 协同社区投资基金（aligned community investment fund） | 从社区成员公开募集资本、并将部分资本投资于其客户企业的社区投资基金。 |
-| 封闭式投资（closed-end investment） | 由投资公司通过首次公开发行提供固定数量份额的投资基金。 |
-| 社区投资基金（community investment fund） | 专业管理的投资基金，具有三个基本特征：资本来源于社区人士（理想情况下为零售/非合格投资者）、投资于本地、并向社区成员开放。 |
-| 多元化社区投资基金（diversified community investment fund） | 主要投资于房地产、但也可投资于任何本地企业或项目的社区投资基金。 |
-| 交易所交易基金（exchange-traded fund） | 基金份额像股票一样在交易所交易的投资基金（ETF）。 |
-| 基金管理人（行政）（fund administrator） | 负责投资基金运营、会计和合规职能的一方所扮演的角色。 |
-| 基金合同（fund contract） | 在不存在独立组织的情况下体现和定义基金法律形式的合同。 |
-| 基金份额持有人（fund holder） | 拥有某基金份额或一定比例、并以出资为对价享有相关权利和承担相关责任的一方。 |
-| 基金持有（fund holding） | 在基金中的所有权权益，可由赋予财务权利和治理特权的基金单位表示。 |
-| 基金经理（fund manager） | 负责作出投资决策并管理投资基金组合的一方所扮演的角色。 |
-| 基金中的基金（fund of funds） | 直接投资于其他投资基金（而非股票、债券等证券）的投资基金。 |
-| 基金头寸（fund position） | 在某一基金中的头寸，可用基金单位来界定。 |
-| 基金单位（fund unit） | 汇集基金中受益权益的计量份额，代表对基金资产、收益或权利的按比例请求权。 |
-| 对冲基金（hedge fund） | 追求绝对回报、通常仅向合格投资者开放的投资基金。 |
-| 基金法律结构（legal fund structure） | 基金在某一司法管辖区法律组建形式方面的结构。 |
-| 共同基金（mutual fund） | 为投资股票、债券、货币市场工具等证券而设立的开放式专业管理投资基金。 |
-| 不可交易基金单位（non-tradable fund unit） | 代表基金权益、但不能在基金本身之外交易的证券。 |
-| 非营利基金（nonprofit fund） | 旨在支持非营利使命的投资工具，其目标除财务回报外还包括环境责任和/或社会责任。 |
-| 开放式投资（open-end investment） | 通过基金公司直接向投资者出售份额的投资基金。 |
-| 养老基金（pension fund） | 独立于计划成员个人账户设立、用于为一个或多个养老金计划提供资金而维持的基金。 |
-| 私募信贷基金（private credit fund） | 在传统银行体系之外向企业提供贷款或其他形式信贷的投资工具。 |
-| 私募股权基金（private equity fund） | 按照特定投资策略投资于各类权益（在较小程度上也包括债务）证券的投资基金。 |
-| 房地产投资信托（real estate investment trust） | 向公众发售份额/单位并直接投资于房地产的投资基金（REIT）。 |
-| 主权财富基金（sovereign wealth fund） | 由国家储备资金构成的国有投资基金。 |
-| 可交易基金单位（tradable fund unit） | 代表基金中可交易权益的证券。 |
-| 单位信托（unit trust） | 投资者持有代表对信托管理资产组合之受益所有权的单位的集合投资工具。 |
-| 单位化基金（unitized fund） | 投资者持有代表对基金标的资产按比例份额之单位的集合投资工具，常用于养老金计划。 |
+| 协同社区投资基金（aligned community investment fund） | 从社区成员公开募集资本、并将部分资本投资于其客户企业的社区投资基金。<br>community investment fund that raises capital publicly from community members and deploys some of that capital via investments into its client businesses or other businesses in the community |
+| 封闭式投资（closed-end investment） | 由投资公司通过首次公开发行提供固定数量份额的投资基金。<br>investment fund that has a fixed number of shares offered by an investment company through an initial public offering |
+| 社区投资基金（community investment fund） | 专业管理的投资基金，具有三个基本特征：资本来源于社区人士（理想情况下为零售/非合格投资者）、投资于本地、并向社区成员开放。<br>professionally-managed investment fund with three essential characteristics: capital is sourced from people in the community (ideally from retail/non-accredited investors); capital is invested into local people, projects, and businesses; and capital is deployed by individuals in the community, typically but not necessarily a nonprofit fund |
+| 多元化社区投资基金（diversified community investment fund） | 主要投资于房地产、但也可投资于任何本地企业或项目的社区投资基金。<br>community investment fund that invests primarily in real estate but can also invest in any local business or project, and can do so with investment capital raised publicly from within the fund's own community, including community investors |
+| 交易所交易基金（exchange-traded fund） | 基金份额像股票一样在交易所交易的投资基金（ETF）。<br>investment fund whose fund units are traded on an exchange, much like stocks |
+| 基金管理人（行政）（fund administrator） | 负责投资基金运营、会计和合规职能的一方所扮演的角色。<br>role of the party responsible for managing the operational, accounting, and compliance functions of an investment fund |
+| 基金合同（fund contract） | 在不存在独立组织的情况下体现和定义基金法律形式的合同。<br>contract that embodies and defines the fund legal form in cases where there is no independent organization |
+| 基金份额持有人（fund holder） | 拥有某基金份额或一定比例、并以出资为对价享有相关权利和承担相关责任的一方。<br>party that owns units in or a percentage of and has rights and responsibilities with respect to some fund, provided in exchange for investment |
+| 基金持有（fund holding） | 在基金中的所有权权益，可由赋予财务权利和治理特权的基金单位表示。<br>ownership interest in a fund, which may represented by fund units that confer financial rights and governance privileges |
+| 基金经理（fund manager） | 负责作出投资决策并管理投资基金组合的一方所扮演的角色。<br>role of the party responsible for making investment decisions and managing the portfolio of an investment fund |
+| 基金中的基金（fund of funds） | 直接投资于其他投资基金（而非股票、债券等证券）的投资基金。<br>investment fund that invests directly in other investment funds rather than investing in stocks, bonds, and other securities |
+| 基金头寸（fund position） | 在某一基金中的头寸，可用基金单位来界定。<br>position in some fund, which may be defined in terms of fund units |
+| 基金单位（fund unit） | 汇集基金中受益权益的计量份额，代表对基金资产、收益或权利的按比例请求权。<br>quantified share of beneficial interest in a pooled fund, representing a proportional claim on the fund's assets, income, or entitlements |
+| 对冲基金（hedge fund） | 追求绝对回报、通常仅向合格投资者开放的投资基金。<br>investment fund that pursues a total return and is usually open to qualified investors only |
+| 基金法律结构（legal fund structure） | 基金在某一司法管辖区法律组建形式方面的结构。<br>structure of a fund with respect to its legal formation in some jurisdiction |
+| 共同基金（mutual fund） | 为投资股票、债券、货币市场工具等证券而设立的开放式专业管理投资基金。<br>open-end professionally managed investment fund established for the purpose of investing in securities such as stocks, bonds, money market instruments and similar assets |
+| 不可交易基金单位（non-tradable fund unit） | 代表基金权益、但不能在基金本身之外交易的证券。<br>security representing an interest in a fund that cannot be traded ontside of the fund itself |
+| 非营利基金（nonprofit fund） | 旨在支持非营利使命的投资工具，其目标除财务回报外还包括环境责任和/或社会责任。<br>investment vehicle designed to support a nonprofit mission, whose objectives include environmental stewardship and/or social responsibility in addition to financial performance |
+| 开放式投资（open-end investment） | 通过基金公司直接向投资者出售份额的投资基金。<br>investment fund that offered through a fund company that sells shares directly to investors |
+| 养老基金（pension fund） | 独立于计划成员个人账户设立、用于为一个或多个养老金计划提供资金而维持的基金。<br>fund established separately from the individual accounts of plan members and maintained to finance pension benefits under one or more pension plans |
+| 私募信贷基金（private credit fund） | 在传统银行体系之外向企业提供贷款或其他形式信贷的投资工具。<br>investment vehicle that provides loans or other forms of credit to companies, typically outside of the traditional banking system |
+| 私募股权基金（private equity fund） | 按照特定投资策略投资于各类权益（在较小程度上也包括债务）证券的投资基金。<br>investment fund used for making investments in various equity (and to a lesser extent debt) securities according to an investment strategy associated with private equity |
+| 房地产投资信托（real estate investment trust） | 向公众发售份额/单位并直接投资于房地产的投资基金（REIT）。<br>investment fund that offers shares/units to the public and invests in real estate directly |
+| 主权财富基金（sovereign wealth fund） | 由国家储备资金构成的国有投资基金。<br>state-owned investment fund that consists of pools of money derived from a country's reserves |
+| 可交易基金单位（tradable fund unit） | 代表基金中可交易权益的证券。<br>security representing a tradable interest in a fund |
+| 单位信托（unit trust） | 投资者持有代表对信托管理资产组合之受益所有权的单位的集合投资工具。<br>pooled investment vehicle in which investors hold units that represent beneficial ownership in a trust-managed portfolio of assets |
+| 单位化基金（unitized fund） | 投资者持有代表对基金标的资产按比例份额之单位的集合投资工具，常用于养老金计划。<br>pooled investment vehicle in which investors hold units that represent a proportional share of the fund's underlying assets, typically used in pensions or insurance-based products |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -79,7 +79,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否开放式（is open ended）** | 表明该基金是开放式基金还是封闭式基金。 | 值域：xsd:boolean |
+| **是否开放式（is open ended）** | 表明该基金是开放式基金还是封闭式基金。<br>indicates whether the fund is an open-end/closed-end fund | 值域：xsd:boolean |
 
 公理：
 
@@ -168,7 +168,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有子基金（has sub-fund）** | 将汇集基金与作为母基金组成部分的子基金关联起来。 | 值域：汇集基金；子属性：具有部分 |
+| **具有子基金（has sub-fund）** | 将汇集基金与作为母基金组成部分的子基金关联起来。<br>relates a pooled fund to a sub-fund that is a constituent of the parent fund | 值域：汇集基金；子属性：具有部分 |
 
 公理：
 
@@ -192,7 +192,7 @@
 
 - **具有所有方（hasOwningParty）**可以有 0 个或多个**基金份额持有人（fund holder）**。
 - **具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**基金持有（fund holding）**。
-- **由……持有（isHeldBy）**恰好有 1 个**N61a49f08d3274db78d3b54e3714ef931**。
+- **由……持有（isHeldBy）**恰好有 1 个**N4cba0b7cbcf04941b2bf8c4cc0330a76**。
 
 ### 2.11 基金单位（fund unit）
 
@@ -273,7 +273,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是否开放式（is open ended）** | 表明该基金是开放式基金还是封闭式基金。 | 值域：xsd:boolean |
+| **是否开放式（is open ended）** | 表明该基金是开放式基金还是封闭式基金。<br>indicates whether the fund is an open-end/closed-end fund | 值域：xsd:boolean |
 
 公理：
 
@@ -330,7 +330,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有法律结构（has legal structure）** | 指明基金所采取的法律形式。 | 值域：基金法律结构（legal fund structure） |
+| **具有法律结构（has legal structure）** | 指明基金所采取的法律形式。<br>indicates the legal form that the fund takes | 值域：基金法律结构（legal fund structure） |
 
 公理：
 
@@ -367,13 +367,13 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的子基金（is sub-fund of）** | 将汇集基金与其母基金关联起来。 | 值域：汇集基金；逆属性：具有子基金（has sub-fund）；子属性：是……的部分 |
+| **是……的子基金（is sub-fund of）** | 将汇集基金与其母基金关联起来。<br>relates a pooled fund to a parent fund | 值域：汇集基金；逆属性：具有子基金（has sub-fund）；子属性：是……的部分 |
 
 数据属性（Datatype Property）：
 
 | 属性 | 定义 |
 |---|---|
-| **是否私募（is private）** | 表明该基金不向公众发售其证券。 |
+| **是否私募（is private）** | 表明该基金不向公众发售其证券。<br>indicates that the fund does not offer its securities to the general public |
 
 ## 4. 依赖（owl:imports，22 个）
 

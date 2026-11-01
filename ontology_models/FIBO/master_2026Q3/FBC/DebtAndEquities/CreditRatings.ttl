@@ -241,28 +241,19 @@ fibo-fbc-dae-crt:CreditReport a owl:Class ;
     rdfs:comment "描述借款人信用状况及相关信用属性的报告。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditRatingAgency ;
-            owl:onProperty fibo-fnd-rel-rel:isProducedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditRating ;
-            owl:onProperty cmns-col:comprises ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditTradeline ;
-            owl:onProperty cmns-col:comprises ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditReportProduct ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditInquiry ;
-            owl:onProperty cmns-col:comprises ],
+            owl:onClass fibo-fbc-dae-crt:CreditReportCategory ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-crt:CreditMessage ;
             owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-crt:concernsParty ;
+            owl:someValuesFrom cmns-pts:Party ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-crt:CreditRatingAgency ;
+            owl:onProperty fibo-fnd-rel-rel:isProducedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Restriction ;
@@ -270,19 +261,28 @@ fibo-fbc-dae-crt:CreditReport a owl:Class ;
                     owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingAgency ] ;
             owl:onProperty cmns-doc:hasDataSource ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-crt:CreditRating ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ;
             owl:someValuesFrom cmns-dt:Date ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditReportCategory ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
+            owl:onClass fibo-fbc-dae-crt:CreditReportProduct ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-crt:concernsParty ;
-            owl:someValuesFrom cmns-pts:Party ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-crt:CreditTradeline ;
+            owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-id:Identifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-crt:CreditInquiry ;
+            owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-crt:hasCoveragePeriod ;
             owl:someValuesFrom cmns-dt:DatePeriod ],

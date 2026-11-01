@@ -85,10 +85,10 @@ fibo-bp-iss-pmbs:PotentialNonAgencyMBSIssuer a owl:Class ;
     rdfs:comment "将成为分层 MBS 发行发行方的实体，是发行中大多数活动的主要行为体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:evaluates ;
-            owl:someValuesFrom fibo-bp-iss-pmbs:AssessPoolSuitabilityForIssuance ],
+            owl:someValuesFrom fibo-bp-iss-pmbs:AssessRatings ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:evaluates ;
-            owl:someValuesFrom fibo-bp-iss-pmbs:AssessRatings ],
+            owl:someValuesFrom fibo-bp-iss-pmbs:AssessPoolSuitabilityForIssuance ],
         fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcessActor ;
     skos:definition "The entity which will become the issuing party for the Tranched MBS Issue. This entity is the principal actor in most of the activities involved in the issue. Term origin:MBS PoC Reviews"@en .
 
@@ -279,11 +279,11 @@ fibo-bp-iss-pmbs:NumberingAgency a owl:Class ;
         "编号机构（numbering agency）"@zh ;
     rdfs:comment "为证券提供主要证券标识符的机构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-ambs:allocatesIdentifier ;
-            owl:someValuesFrom fibo-bp-iss-ambs:AllocatePrimaryIdentifier ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-pmbs:allocatesIdentifier ;
             owl:someValuesFrom fibo-bp-iss-pmbs:AllocatePrimaryIdentifier ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:allocatesIdentifier ;
+            owl:someValuesFrom fibo-bp-iss-ambs:AllocatePrimaryIdentifier ],
         fibo-bp-iss-prc:SecuritiesIssuanceProcessActor ;
     skos:definition "The agency which will provide the primary securitiy identifier for the security. Term origin:MBS PoC Reviews"@en .
 
@@ -604,10 +604,10 @@ fibo-bp-iss-pmbs:IndividualTrancheDefinitions a owl:Class ;
     rdfs:comment "标识分层发行中单个分层之条款的信息类别（实际为一份条款清单中针对各分层的条款信息集）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-sec-dbt-bnd:BondAmortizationPaymentTerms ],
+            owl:someValuesFrom fibo-sec-dbt-bnd:CouponPaymentTerms ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-sec-dbt-bnd:CouponPaymentTerms ],
+            owl:someValuesFrom fibo-sec-dbt-bnd:BondAmortizationPaymentTerms ],
         fibo-bp-iss-pmbs:TranchedMBSIssueProspectusPart,
         fibo-fnd-agr-ctr:TermSheet ;
     skos:definition "In reality there is one termsheet that has sets of information for the terms for each Tranche. This class of information identifies the terms of one tranche, but it does not exist as a separate document in its own right. Further Notes ? We may need to firm up the relationship between the individual tranche termsheet and the information about the relationships among these (some of which are quite complex) and the terms that are common to more than one tranche. In practice these may be separate sections of one document. Term origin:MBS PoC Reviews"@en .
@@ -622,11 +622,11 @@ fibo-bp-iss-pmbs:MakeSecuritiesAvailableInMarket a owl:Class ;
         "使证券进入市场（make securities available in market）"@zh ;
     rdfs:comment "使所发行证券可在市场上获得（结构化融资市场较小，主要通过定向营销）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-pmbs:isIssueOf ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:TranchedMBSDeal ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-pmbs:requires.1 ;
             owl:someValuesFrom fibo-sec-dbt-cdo:TranchedMBSDealProspectus ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:isIssueOf ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TranchedMBSDeal ],
         fibo-bp-iss-prc:IssuanceProcessActivity ;
     skos:definition "What happens here? e.g. notices / marketing (phone calls) Structured Finance: There's not really notices in the newspaper, it's a very small market and it's all based on relationships so there's no public notice. So you would get an email from the sales person at the bank who has just closed the deal and is now selling these (this bank is the broker/dealer who bought it?) There's not really much of a secondary market - the initial investors would often hold on to these. There is something around Bloomberg - you can go there and see what's available, if someone has a number of notes from a iven tranche, that they are willing to sell. So there's no transpoarency (!!) Sales would be OTC but less transparent e.g. if you look up a normal OTC stock, you would be able to see more of this information, than in these (non Agency) MBS issues and other SF. DOES THIS APPLY IN ALL MBS??."@en .
 
@@ -644,11 +644,11 @@ fibo-bp-iss-pmbs:PurchaseMortgageIntoPool a owl:Class ;
         "购入抵押贷款入池（purchase mortgage into pool）"@zh ;
     rdfs:comment "购入抵押贷款并将其纳入资产池。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-pmbs:addsTo ;
-            owl:someValuesFrom fibo-bp-iss-pmbs:InAssemblyMortgagePool ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-pmbs:isPurchaseOf ;
             owl:someValuesFrom fibo-loan-reln-mtg:LoanSecuredByRealEstate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-pmbs:addsTo ;
+            owl:someValuesFrom fibo-bp-iss-pmbs:InAssemblyMortgagePool ],
         fibo-bp-iss-prc:IssuanceProcessActivity .
 
 fibo-bp-iss-pmbs:RemittanceReport a owl:Class ;
@@ -773,15 +773,15 @@ fibo-bp-iss-pmbs:TranchedOfferingMemorandum a owl:Class ;
         "分层发行备忘录（tranched offering memorandum）"@zh ;
     rdfs:comment "发行备忘录，包含或附上构成本次发行的两个或多个分层的条款及分层结构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-bp-iss-pmbs:DraftTrancheNotesParameters ;
+            owl:onProperty fibo-bp-iss-pmbs:mayIncludeDetailsAbout ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-pmbs:includesDetailsAbout ;
             owl:someValuesFrom fibo-bp-iss-pmbs:TrancheStructureAndTermsheet ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-pmbs:includesDetailsAbout.1 ;
             owl:someValuesFrom fibo-bp-iss-pmbs:IndividualTrancheDefinitions ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-bp-iss-pmbs:DraftTrancheNotesParameters ;
-            owl:onProperty fibo-bp-iss-pmbs:mayIncludeDetailsAbout ],
         fibo-sec-sec-iss:OfferingDocument ;
     skos:definition "The Offering Memorandum will include or attach the terms for two or more individual tranches that will make up the issue, and the structure of the tranches, including how they will relate to one another (priorities and so on). Term origin:MBS PoC Reviews"@en,
         "The offering memorandum for a tranched MBS issue, setting out basic information about a future issue, for the information of prospective investors and their agents."@en .

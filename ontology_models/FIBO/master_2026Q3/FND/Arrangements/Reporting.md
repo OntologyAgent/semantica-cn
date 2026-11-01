@@ -27,12 +27,12 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 报告（report） | 对某事物提供结构化描述的文件，按临时、定期、循环、常规或要求的方式编制。 |
-| 报告方（reporting party） | 提供报告的参与方，通常是应某项合同、法律、监管或其他业务要求。 |
-| 请求（request） | 某参与方在某时点向另一参与方索要某事物的事件。 |
-| 请求活动（request activity） | 某参与方向另一参与方索要某事物或请求其做某事的活动。 |
-| 请求方（requester） | 索要某事物的参与方。 |
-| 提交方（submitter） | 呈交某事物（如监管报告）的参与方。 |
+| 报告（report） | 对某事物提供结构化描述的文件，按临时、定期、循环、常规或要求的方式编制。<br>document that provides a structured description of something, prepared on ad hoc, periodic, recurring, regular, or as required basis |
+| 报告方（reporting party） | 提供报告的参与方，通常是应某项合同、法律、监管或其他业务要求。<br>party providing a report, typically in response to some contractual, legal, regulatory or other business requirement |
+| 请求（request） | 某参与方在某时点向另一参与方索要某事物的事件。<br>event in which some party asks another party for something at some point in time |
+| 请求活动（request activity） | 某参与方向另一参与方索要某事物或请求其做某事的活动。<br>activity in which some party asks another party for something or to do something |
+| 请求方（requester） | 索要某事物的参与方。<br>party that asks for something |
+| 提交方（submitter） | 呈交某事物（如监管报告）的参与方。<br>party presenting something, such as a regulatory report |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -47,12 +47,12 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **具有报告期（hasReportingPeriod）** | — | — |
-| **具有报告日期（has report date）** | 报告发布的日期。 | 值域：显式日期；子属性：具有签发日期 |
-| **具有报告日期时间（has report date time）** | 报告发布的日期与时间。 | 值域：日期时间；子属性：具有日期时间 |
-| **被报告给（is reported to）** | 标识某事物被报告给的参与方。 | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
-| **由……提交（is submitted by）** | 标识提交某事物的参与方。 | 值域：提交方（submitter）；逆属性：提交（submits）；子属性：由……提供 |
-| **被提交给（is submitted to）** | 标识某事物被提交给的参与方。 | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
-| **报告关于（reports on）** | 标识报告的主题、观测、评估、焦点或其他话题。 | 子属性：关于 |
+| **具有报告日期（has report date）** | 报告发布的日期。<br>date on which a report was issued | 值域：显式日期；子属性：具有签发日期 |
+| **具有报告日期时间（has report date time）** | 报告发布的日期与时间。<br>date and time at which a report was issued | 值域：日期时间；子属性：具有日期时间 |
+| **被报告给（is reported to）** | 标识某事物被报告给的参与方。<br>indicates the party to which something is reported | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
+| **由……提交（is submitted by）** | 标识提交某事物的参与方。<br>indicates the party that submits something | 值域：提交方（submitter）；逆属性：提交（submits）；子属性：由……提供 |
+| **被提交给（is submitted to）** | 标识某事物被提交给的参与方。<br>indicates the party to which something is submitted | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
+| **报告关于（reports on）** | 标识报告的主题、观测、评估、焦点或其他话题。<br>indicates a subject matter, observation(s), assessment(s), focus or other topic of a report | 子属性：关于 |
 | **由……提供（isProvidedBy）** | — | — |
 
 公理：
@@ -91,10 +91,10 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有请求日期（has request date）** | 提出请求的日期。 | 值域：显式日期；子属性：具有显式日期 |
-| **具有请求日期时间（has request date time）** | 提出请求的日期与时间。 | 值域：日期时间；子属性：具有日期时间 |
-| **由……请求（is requested by）** | 标识索要某事物的参与方。 | 值域：请求方（requester）；子属性：具有参与方角色（has party role） |
-| **被请求于（is requested of）** | 标识被索要某事物的参与方。 | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
+| **具有请求日期（has request date）** | 提出请求的日期。<br>date on which a request was made | 值域：显式日期；子属性：具有显式日期 |
+| **具有请求日期时间（has request date time）** | 提出请求的日期与时间。<br>date and time at which a request was made | 值域：日期时间；子属性：具有日期时间 |
+| **由……请求（is requested by）** | 标识索要某事物的参与方。<br>indicates the party that asks for something | 值域：请求方（requester）；子属性：具有参与方角色（has party role） |
+| **被请求于（is requested of）** | 标识被索要某事物的参与方。<br>indicates the party that is asked for something | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
 | **例证（exemplifies）** | — | — |
 
 公理：
@@ -115,7 +115,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **请求（requests）** | 索要某事物。 | 子属性：关于 |
+| **请求（requests）** | 索要某事物。<br>asks for something | 子属性：关于 |
 
 公理：
 
@@ -137,7 +137,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **提交（submits）** | 呈交某事物（提案、申请、报告或其他文件）以供考虑或审查。 | 子属性：提供 |
+| **提交（submits）** | 呈交某事物（提案、申请、报告或其他文件）以供考虑或审查。<br>presents something (a proposal, application, report, or other document) for consideration or review | 子属性：提供 |
 
 公理：
 

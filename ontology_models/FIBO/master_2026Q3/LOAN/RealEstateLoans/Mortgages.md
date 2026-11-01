@@ -32,13 +32,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 封闭式抵押贷款（closed-end mortgage loan） | 以房地产作担保、借款人日后不得再提取额外资金的贷款。 |
-| 封闭式反向抵押贷款（closed-end reverse mortgage） | 在结清时向借款人一次性支付、借款人日后不得再提取额外资金的反向抵押贷款。 |
-| 房地产担保贷款（loan secured by real estate） | 发放时全部或主要由不动产留置权作担保、且该留置权为授信核心的贷款。 |
-| 抵押（mortgage） | 向非该不动产所有人的参与方授予的不动产财产权益，由注册机构登记。 |
-| 开放式抵押贷款（open-end mortgage loan） | 以房地产作担保、约定经借贷双方同意可增加未偿贷款金额的贷款。 |
-| 开放式反向抵押贷款（open-end reverse mortgage） | 结构类似房屋净值信用额度的反向抵押贷款，结清后借款人可获得额外资金。 |
-| 反向抵押贷款（reverse mortgage loan） | 以房地产作担保、按抵押物现有净值设定本金限额并向借款人支付资金的贷款。 |
+| 封闭式抵押贷款（closed-end mortgage loan） | 以房地产作担保、借款人日后不得再提取额外资金的贷款。<br>loan secured by real estate with no ability for the borrower to receive additional funds under the loan at a later date |
+| 封闭式反向抵押贷款（closed-end reverse mortgage） | 在结清时向借款人一次性支付、借款人日后不得再提取额外资金的反向抵押贷款。<br>reverse mortgage that provides a lump sum payment to the borrower at closing, with no ability for the borrower to receive additional funds under the mortgage at a later date |
+| 房地产担保贷款（loan secured by real estate） | 发放时全部或主要由不动产留置权作担保、且该留置权为授信核心的贷款。<br>loan that, at origination, is secured wholly or substantially by a lien or liens on real property for which the lien or liens are central to the extension of the credit - that is, the borrower would not have been extended credit in the same amount or on terms as favorable without the lien or liens on real property |
+| 抵押（mortgage） | 向非该不动产所有人的参与方授予的不动产财产权益，由注册机构登记。<br>grant of financial interest in real property to a party that is not an owner of that real property and is recorded by a registration authority |
+| 开放式抵押贷款（open-end mortgage loan） | 以房地产作担保、约定经借贷双方同意可增加未偿贷款金额的贷款。<br>loan secured by real estate with a provision that the outstanding loan amount may be increased upon mutual agreement of the lender and the borrower |
+| 开放式反向抵押贷款（open-end reverse mortgage） | 结构类似房屋净值信用额度的反向抵押贷款，结清后借款人可获得额外资金。<br>reverse mortgage structured like a home equity line of credit in that it provides the borrower with additional funds after closing (either as fixed monthly payments, under a line of credit, or both) |
+| 反向抵押贷款（reverse mortgage loan） | 以房地产作担保、按抵押物现有净值设定本金限额并向借款人支付资金的贷款。<br>loan secured by real estate that pays money to the borrower against a set principal limit based on the value of existing equity in the underlying collateral |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -55,8 +55,8 @@
 |---|---|---|
 | **以……为抵押（isCollateralizedBy）** | — | — |
 | **具有合同要素（hasContractualElement）** | — | — |
-| **具有初始放款日（has initial funding date）** | 将抵押贷款关联到合同成立、正式产生其义务的日期。 | 子属性：具有生效日期 |
-| **可转可调整利率（is ARM convertible）** | 表明该贷款是否可转换为可调整利率抵押贷款合同（ARM）。 | 值域：xsd:boolean |
+| **具有初始放款日（has initial funding date）** | 将抵押贷款关联到合同成立、正式产生其义务的日期。<br>relates a mortgage to the date on which the contract is consummated, officially creating the obligations therein | 子属性：具有生效日期 |
+| **可转可调整利率（is ARM convertible）** | 表明该贷款是否可转换为可调整利率抵押贷款合同（ARM）。<br>indicates whether or not the loan can be converted into an adjustable-rate mortgage contract (ARM) | 值域：xsd:boolean |
 | **引用（refersTo）** | — | — |
 
 公理：

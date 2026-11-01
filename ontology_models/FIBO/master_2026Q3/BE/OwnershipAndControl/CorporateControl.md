@@ -34,17 +34,17 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 关联方（affiliate） | 与某法律实体相关联（直接或通过一个或多个中间方间接）、控制该实体、被其控制或与其同受控制的参与方。 |
-| 关联关系（affiliation） | 受控方在某段时期内与控制方相关联的情形。 |
-| 受控关联方（controlled affiliate） | 关联关系情形中的受控方。 |
-| 控制性关联方（controlling affiliate） | 关联关系情形中的控制方。 |
-| 境内最终母公司（domestic ultimate parent） | 在注册成立国或管辖区内被认定为某组织最终母公司的参与方。 |
-| 全球最终母公司（global ultimate parent） | 在全球范围内被认定为某组织最终母公司的参与方。 |
-| 合资伙伴（joint venture partner） | 在共同控制下分担某实体的资本、技术、人力资源、风险与收益的参与方。 |
-| 重要股东（significant shareholder） | 拥有某组织低于 50% 但高于某门槛的重要表决权股份的参与方。 |
-| 子公司（subsidiary） | 被另一法律实体全部或多数拥有并控制的法律实体。 |
-| 完全控制权益方（total controlling interest party） | 拥有某法律实体 100% 表决权股份的表决权股东。 |
-| 表决权股东（voting shareholder） | 股份赋予其在公司选举中表决权（含在年度或特别会议上选举董事的权利）的股东。 |
+| 关联方（affiliate） | 与某法律实体相关联（直接或通过一个或多个中间方间接）、控制该实体、被其控制或与其同受控制的参与方。<br>party that is related to a legal entity, directly, or indirectly through one or more intermediaries, and controls, or is controlled by, or is under common control with that entity, typically determined by the degree of ownership |
+| 关联关系（affiliation） | 受控方在某段时期内与控制方相关联的情形。<br>situation in which a controlled party is affiliated with a controlling party for some period of time |
+| 受控关联方（controlled affiliate） | 关联关系情形中的受控方。<br>controlled party in an affiliation situation |
+| 控制性关联方（controlling affiliate） | 关联关系情形中的控制方。<br>controlling party in an affiliation situation |
+| 境内最终母公司（domestic ultimate parent） | 在注册成立国或管辖区内被认定为某组织最终母公司的参与方。<br>party that is recognized as the ultimate parent of a given organization within the country or jurisdiction of incorporation or organization |
+| 全球最终母公司（global ultimate parent） | 在全球范围内被认定为某组织最终母公司的参与方。<br>party that is recognized as the ultimate parent of a given organization world-wide |
+| 合资伙伴（joint venture partner） | 在共同控制下分担某实体的资本、技术、人力资源、风险与收益的参与方。<br>party that shares capital, technology, human resources, risks, and benefits of an entity under shared control |
+| 重要股东（significant shareholder） | 拥有某组织低于 50% 但高于某门槛的重要表决权股份的参与方。<br>party that owns a significant voting stake in an organization that is less than 50 percent but greater than some threshold |
+| 子公司（subsidiary） | 被另一法律实体全部或多数拥有并控制的法律实体。<br>legal entity that is entirely or majority owned and controlled by another legal entity |
+| 完全控制权益方（total controlling interest party） | 拥有某法律实体 100% 表决权股份的表决权股东。<br>voting shareholder that owns 100 percent of the voting shares in some legal entity |
+| 表决权股东（voting shareholder） | 股份赋予其在公司选举中表决权（含在年度或特别会议上选举董事的权利）的股东。<br>shareholder whose shares confer the right to vote in corporate elections, including the right to elect directors at annual or special meetings, and to express their views to corporate management and directors on significant issues that may affect the value of those shares |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -59,7 +59,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的关联方（is affiliate of）** | 将直接或通过一个或多个中间方间接控制、被控制或同受控制的参与方关联到另一参与方。 | 值域：关联方（affiliate） |
+| **是……的关联方（is affiliate of）** | 将直接或通过一个或多个中间方间接控制、被控制或同受控制的参与方关联到另一参与方。<br>relates a party which directly, or indirectly through one or more intermediaries, controls, or is controlled by, or is under common control by another party to that party | 值域：关联方（affiliate） |
 
 公理：
 
@@ -76,7 +76,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有控制性关联方（has controlling affiliate）** | 被一个直接或通过一个或多个中间方间接控制它的参与方所控制。 | 值域：控制性关联方（controlling affiliate）；子属性：是……的关联方（is affiliate of） |
+| **具有控制性关联方（has controlling affiliate）** | 被一个直接或通过一个或多个中间方间接控制它的参与方所控制。<br>is directly, or indirectly through one or more intermediaries, controlled by | 值域：控制性关联方（controlling affiliate）；子属性：是……的关联方（is affiliate of） |
 | **由…扮演（is played by）** | — | — |
 
 公理：
@@ -93,7 +93,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的子公司（is subsidiary of）** | 被……直接或通过一个或多个中间方间接控制并至少拥有 50%。 | 值域：控制性关联方（controlling affiliate）；子属性：具有控制性关联方（has controlling affiliate） |
+| **是……的子公司（is subsidiary of）** | 被……直接或通过一个或多个中间方间接控制并至少拥有 50%。<br>is controlled directly, or indirectly through one or more intermediaries and owned at least 50 percent by | 值域：控制性关联方（controlling affiliate）；子属性：具有控制性关联方（has controlling affiliate） |
 
 #### 2.1.2 控制性关联方（controlling affiliate）
 
@@ -105,8 +105,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **是……的控制性关联方（is controlling affiliate of）** | 直接或通过一个或多个中间方间接控制。 | 值域：受控关联方（controlled affiliate）；逆属性：具有控制性关联方（has controlling affiliate）；子属性：是……的关联方（is affiliate of） |
-| **是……的母公司（is parent company of）** | 标识其至少拥有 50% 的受控关联方。 | 值域：子公司（subsidiary）；逆属性：是……的子公司（is subsidiary of）；子属性：是……的控制性关联方（is controlling affiliate of） |
+| **是……的控制性关联方（is controlling affiliate of）** | 直接或通过一个或多个中间方间接控制。<br>controls directly, or indirectly through one or more intermediaries | 值域：受控关联方（controlled affiliate）；逆属性：具有控制性关联方（has controlling affiliate）；子属性：是……的关联方（is affiliate of） |
+| **是……的母公司（is parent company of）** | 标识其至少拥有 50% 的受控关联方。<br>indicates a controlled affiliate that it owns at least 50 percent of | 值域：子公司（subsidiary）；逆属性：是……的子公司（is subsidiary of）；子属性：是……的控制性关联方（is controlling affiliate of） |
 
 ### 2.2 关联关系（affiliation）
 
@@ -183,11 +183,11 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有关联方（has affiliate）** | 具有一个直接或通过一个或多个中间方间接控制该公司、被其控制或与其同受控制的参与方。 | 值域：关联方（affiliate）；子属性：是……的受控方 |
-| **具有境内最终母公司（has domestic ultimate parent）** | 将组织关联到在其注册成立国或管辖区内被认定为其最终母公司的组织（如有）。 | 值域：境内最终母公司（domestic ultimate parent）；子属性：具有多数控制方 |
-| **具有全球最终母公司（has global ultimate parent）** | 将组织关联到被认定为其最终母公司的组织（如有）。 | 值域：全球最终母公司（global ultimate parent）；子属性：具有多数控制方 |
-| **具有子公司（has subsidiary）** | 将法律实体关联到其至少拥有 50% 的另一组织。 | 值域：子公司（subsidiary） |
-| **由……全资拥有（is wholly owned by）** | 将法律实体关联到对其拥有 100% 所有权与控制权的参与方。 | 值域：完全控制权益方（total controlling interest party） |
+| **具有关联方（has affiliate）** | 具有一个直接或通过一个或多个中间方间接控制该公司、被其控制或与其同受控制的参与方。<br>has a party which directly, or indirectly through one or more intermediaries, controls, or is controlled by, or is under common control with the company | 值域：关联方（affiliate）；子属性：是……的受控方 |
+| **具有境内最终母公司（has domestic ultimate parent）** | 将组织关联到在其注册成立国或管辖区内被认定为其最终母公司的组织（如有）。<br>relates an organization to another recognized as its ultimate parent, within its country or jurisdiction of incorporation, if it has one | 值域：境内最终母公司（domestic ultimate parent）；子属性：具有多数控制方 |
+| **具有全球最终母公司（has global ultimate parent）** | 将组织关联到被认定为其最终母公司的组织（如有）。<br>relates an organization to another recognized as its ultimate parent, if it has one | 值域：全球最终母公司（global ultimate parent）；子属性：具有多数控制方 |
+| **具有子公司（has subsidiary）** | 将法律实体关联到其至少拥有 50% 的另一组织。<br>relates a legal entity to another organization that it owns at least 50 percent of | 值域：子公司（subsidiary） |
+| **由……全资拥有（is wholly owned by）** | 将法律实体关联到对其拥有 100% 所有权与控制权的参与方。<br>relates a legal entity to a party that has 100 percent ownership and control over it | 值域：完全控制权益方（total controlling interest party） |
 
 ## 4. 依赖（owl:imports，10 个）
 

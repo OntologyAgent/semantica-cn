@@ -23,8 +23,8 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 巴塞尔 III 指定（Basel III Designation） | 由巴塞尔银行监管委员会（BCBS）定义的欧盟范围内的证券指定，基于证券质量进行分类。 |
-| 受 MiFID 监管证券（MiFID regulated security） | 须按金融工具市场指令（MiFID）进行报告的证券。 |
+| 巴塞尔 III 指定（Basel III Designation） | 由巴塞尔银行监管委员会（BCBS）定义的欧盟范围内的证券指定，基于证券质量进行分类。<br>European Union wide securities designation, defined by the Basel Committee on Banking Supervision (BCBS), that classifies securities based on the quality of capital underlying the instrument |
+| 受 MiFID 监管证券（MiFID regulated security） | 须按金融工具市场指令（MiFID）进行报告的证券。<br>security for which MiFID reporting is required |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -56,8 +56,8 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有流通股数量上限（has upper limit on floating shares）** | 指明应报告的自由流通股数量上限（如适用）。 | 值域：xsd:decimal；子属性：具有金额 |
-| **是否须 MiFID 报告（is MiFID reporting required）** | 表明该证券是否须按金融工具市场指令（MiFID）进行报告。 | 值域：xsd:boolean |
+| **具有流通股数量上限（has upper limit on floating shares）** | 指明应报告的自由流通股数量上限（如适用）。<br>indicates the upper limit on the number of free float shares to be reported, if applicable | 值域：xsd:decimal；子属性：具有金额 |
+| **是否须 MiFID 报告（is MiFID reporting required）** | 表明该证券是否须按金融工具市场指令（MiFID）进行报告。<br>indicates whether reporting on the security is required by the Markets in Financial Instruments Directive (MiFID) | 值域：xsd:boolean |
 
 公理：
 

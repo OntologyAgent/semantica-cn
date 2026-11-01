@@ -31,13 +31,13 @@
 
 | 类（Class） | 定义（Definition） |
 |---|---|
-| 注册标识符（registered identifier） | 由注册机构或其代表按某注册方案在注册簿中登记的情境化标识符。 |
-| 注册员（registrar） | 作为注册机构代表提供注册服务（含官方记录保存）的参与方角色。 |
-| 注册机构（registration authority） | 官方负责维护注册簿并提供注册服务、和/或将部分或全部职责委托给注册员的服务提供方。 |
-| 注册方案（registration scheme） | 组织注册簿中信息并为登记条目分配标识符的方案。 |
-| 注册服务（registration service） | 为个人和/或组织提供在注册簿中登记条目的服务。 |
-| 注册簿（registry） | 与某事物相关的权威记录或记录集合。 |
-| 注册簿条目（registry entry） | 注册簿的组成成分，包含登记于其中的某事物的详细信息。 |
+| 注册标识符（registered identifier） | 由注册机构或其代表按某注册方案在注册簿中登记的情境化标识符。<br>contextual identifier that is registered in a registry by, or on behalf of, a registration authority according to some registration scheme |
+| 注册员（registrar） | 作为注册机构代表提供注册服务（含官方记录保存）的参与方角色。<br>role of a party that acts as a representative of a registration authority to provide registration services, including official record keeping |
+| 注册机构（registration authority） | 官方负责维护注册簿并提供注册服务、和/或将部分或全部职责委托给注册员的服务提供方。<br>service provider that is officially responsible for maintaining a registry and providing registration services and/or for delegating of some or all of these roles to a registrar |
+| 注册方案（registration scheme） | 组织注册簿中信息并为登记条目分配标识符的方案。<br>scheme for organizing information in a registry and allocating identifiers to registered items |
+| 注册服务（registration service） | 为个人和/或组织提供在注册簿中登记条目的服务。<br>service provided to individuals and/or organizations for the registration of items in a registry |
+| 注册簿（registry） | 与某事物相关的权威记录或记录集合。<br>authoritative record or collection of records relating to something |
+| 注册簿条目（registry entry） | 注册簿的组成成分，包含登记于其中的某事物的详细信息。<br>constituent of a registry that includes the details for something recorded in that registry |
 
 以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
@@ -52,9 +52,9 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **遵从（compliesWith）** | — | — |
-| **具有注册日期（has registration date）** | 标识某事物登记的日期或日期时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
-| **由……注册（is registered by）** | 标识注册某事物的注册机构或注册员。 | 值域：注册员（registrar）；子属性：具有参与方角色（has party role） |
-| **注册于（is registered in）** | 标识某事物登记所在的注册簿。 | 值域：注册簿（registry）；子属性：引用 |
+| **具有注册日期（has registration date）** | 标识某事物登记的日期或日期时间。<br>indicates the date or date and time on which something is registered | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **由……注册（is registered by）** | 标识注册某事物的注册机构或注册员。<br>indicates the registration authority or registrar that registers something | 值域：注册员（registrar）；子属性：具有参与方角色（has party role） |
+| **注册于（is registered in）** | 标识某事物登记所在的注册簿。<br>indicates the registry that something is registered in | 值域：注册簿（registry）；子属性：引用 |
 
 公理：
 
@@ -75,7 +75,7 @@
 |---|---|---|
 | **由……指定（isDesignatedBy）** | — | — |
 | **提供（provides）** | — | — |
-| **登记（registers）** | 将某事物记录于注册簿或档案中。 | 逆属性：由……注册（is registered by）；子属性：记录 |
+| **登记（registers）** | 将某事物记录于注册簿或档案中。<br>records something in a registry or archive | 逆属性：由……注册（is registered by）；子属性：记录 |
 
 公理：
 
@@ -94,7 +94,7 @@
 | 属性 | 定义 | 说明 |
 |---|---|---|
 | **管理（manages）** | — | — |
-| **是……的注册机构（is registration authority for）** | 标识注册机构所签发的某事物（通常是标识符或代码）。 | 子属性：是…中的角色（is role in） |
+| **是……的注册机构（is registration authority for）** | 标识注册机构所签发的某事物（通常是标识符或代码）。<br>indicates something (typically an identifier or code) that the registration authority issues | 子属性：是…中的角色（is role in） |
 
 公理：
 
@@ -167,7 +167,7 @@
 
 | 属性 | 定义 | 说明 |
 |---|---|---|
-| **具有注册机构（has registration authority）** | 标识某事物的注册机构。 | 值域：注册机构（registration authority）；逆属性：是……的注册机构（is registration authority for）；子属性：具有参与方角色（has party role） |
+| **具有注册机构（has registration authority）** | 标识某事物的注册机构。<br>indicates the registration authority for something | 值域：注册机构（registration authority）；逆属性：是……的注册机构（is registration authority for）；子属性：具有参与方角色（has party role） |
 
 ## 4. 依赖（owl:imports，10 个）
 

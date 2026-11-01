@@ -1,101 +1,88 @@
 @prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
-dct:abstract a owl:AnnotationProperty ;
-    rdfs:label "abstract",
-        "摘要（abstract）"@zh ;
-    rdfs:isDefinedBy dct: ;
-    rdfs:subPropertyOf dct:description ;
+dcterms:abstract a owl:AnnotationProperty ;
+    rdfs:label "abstract" ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:subPropertyOf dcterms:description ;
     skos:definition "summary of the resource" ;
     cmns-av:usageNote "This annotation is typically used to describe an artifact such as a controlled vocabulary, ontology, or other similar resource." .
 
-dct:creator a owl:AnnotationProperty ;
-    rdfs:label "creator",
-        "创建者（creator）"@zh ;
-    rdfs:isDefinedBy dct: ;
-    rdfs:subPropertyOf dct:contributor ;
+dcterms:creator a owl:AnnotationProperty ;
+    rdfs:label "creator" ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:subPropertyOf dcterms:contributor ;
     skos:definition "an entity responsible for making the resource" ;
     skos:note "Recommended practice is to identify the creator with a URI. If this is not possible or feasible, a literal value that identifies the creator may be provided." .
 
-dct:issued a owl:AnnotationProperty ;
-    rdfs:label "issued",
-        "发布日期（issued）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:issued a owl:AnnotationProperty ;
+    rdfs:label "issued" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "date of formal issuance of the resource" ;
     skos:note "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty." ;
     cmns-av:usageNote "This annotation is typically used to describe an artifact such as a controlled vocabulary, ontology, or other similar resource." .
 
-dct:license a owl:AnnotationProperty ;
-    rdfs:label "license",
-        "许可证（license）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:license a owl:AnnotationProperty ;
+    rdfs:label "license" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "a legal document giving official permission to do something with the resource" ;
     skos:note "Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided." ;
     cmns-av:usageNote "This annotation is typically used to describe an artifact such as a controlled vocabulary, ontology, or other similar resource." .
 
-dct:modified a owl:AnnotationProperty ;
-    rdfs:label "modified",
-        "修改日期（modified）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:modified a owl:AnnotationProperty ;
+    rdfs:label "modified" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "date on which the resource was changed" ;
     skos:note "Recommended practice is to describe the date, date/time, or period of time as recommended for the property Date, of which this is a subproperty." ;
     cmns-av:usageNote "This annotation is typically used to indicate the most recent date on which an artifact such as a controlled vocabulary, ontology, or other similar resource was changed." .
 
-dct:publisher a owl:AnnotationProperty ;
-    rdfs:label "publisher",
-        "发布者（publisher）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:publisher a owl:AnnotationProperty ;
+    rdfs:label "publisher" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "an entity responsible for making the resource available" ;
     cmns-av:usageNote "This annotation is typically used to describe an artifact such as a controlled vocabulary, ontology, or other similar resource." .
 
-dct:references a owl:AnnotationProperty ;
-    rdfs:label "references",
-        "引用（references）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:references a owl:AnnotationProperty ;
+    rdfs:label "references" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "a related resource that is referenced, cited, or otherwise pointed to by the described resource" ;
     skos:note "This property is intended to be used with non-literal values. This property is an inverse property of Is Referenced By." .
 
-dct:title a owl:AnnotationProperty ;
-    rdfs:label "title",
-        "标题（title）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:title a owl:AnnotationProperty ;
+    rdfs:label "title" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "a name given to the resource" ;
     cmns-av:usageNote "This annotation is typically used to describe an artifact such as a controlled vocabulary, document, ontology, or other similar resource." .
 
 skos:changeNote a owl:AnnotationProperty ;
-    rdfs:label "change note",
-        "变更说明（changeNote）"@zh ;
+    rdfs:label "change note" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "a note about a modification to a concept" .
 
 skos:editorialNote a owl:AnnotationProperty ;
-    rdfs:label "editorial note",
-        "编辑注记（editorialNote）"@zh ;
+    rdfs:label "editorial note" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "a note for an editor, translator or maintainer of the vocabulary" .
 
 skos:example a owl:AnnotationProperty ;
-    rdfs:label "example",
-        "示例（example）"@zh ;
+    rdfs:label "example" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "an example of the use of a concept" .
 
 skos:historyNote a owl:AnnotationProperty ;
-    rdfs:label "history note",
-        "历史说明（historyNote）"@zh ;
+    rdfs:label "history note" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "a note about the past state, use, or meaning of a concept" .
 
 skos:prefLabel a owl:AnnotationProperty ;
-    rdfs:label "preferred label",
-        "首选标签（prefLabel）"@zh ;
+    rdfs:label "preferred label" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf rdfs:label ;
     skos:definition "the preferred lexical label for a resource, in a given language" ;
@@ -104,8 +91,7 @@ skos:prefLabel a owl:AnnotationProperty ;
         "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties." .
 
 skos:scopeNote a owl:AnnotationProperty ;
-    rdfs:label "scope note",
-        "范围说明（scopeNote）"@zh ;
+    rdfs:label "scope note" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "a note that helps to clarify the meaning and/or the use of a concept" .
@@ -113,10 +99,10 @@ skos:scopeNote a owl:AnnotationProperty ;
 cmns-av: a owl:Ontology ;
     rdfs:label "Annotation Vocabulary",
         "Commons 标注词汇表（Commons Annotation Vocabulary）"@zh ;
-    dct:abstract """The Annotation Vocabulary provides commonly used annotation properties for documentation to facilitate understanding.
+    dcterms:abstract """The Annotation Vocabulary provides commonly used annotation properties for documentation to facilitate understanding.
 		
 		Note that this ontology defines a property hierarchy for a number of external annotations, including SKOS and Dublin Core annotations, to show how they relate to one another, although the semantics of OWL ignore this. Doing so emphasizes how the annotations are intended to be used and assists with integration in cases where different ontologies use different annotations and/or approaches.""" ;
-    dct:license """Copyright (c) 2022-2025 Adaptive Analytics, Inc.
+    dcterms:license """Copyright (c) 2022-2025 Adaptive Analytics, Inc.
 Copyright (c) 2022-2025 EDM Council, Inc.
 Copyright (c) 2022-2025 Federated Knowledge LLC
 Copyright (c) 2022-2025 Object Management Group, Inc.
@@ -130,9 +116,9 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		
 See https://opensource.org/licenses/MIT.""" ;
-    dct:references dct:,
+    dcterms:references dcterms:,
         skos: ;
-    dct:title "Commons Annotation Vocabulary" ;
+    dcterms:title "Commons Annotation Vocabulary" ;
     rdfs:comment "提供文档标注常用的属性，如摘要、定义、解释、版权、同义词等，并梳理 SKOS 与 Dublin Core 标注属性之间的关系。"@zh ;
     owl:versionIRI <https://www.omg.org/spec/Commons/20250801/AnnotationVocabulary/> ;
     skos:changeNote "https://www.omg.org/spec/Commons/20220501/AnnotationVocabulary.rdf version of this ontology was modified to normalize the use of rdfs:isDefinedBy for SKOS and Dublin Core annotations (COMMONS-1).",
@@ -160,21 +146,21 @@ cmns-av:acronym a owl:AnnotationProperty ;
 cmns-av:adaptedFrom a owl:AnnotationProperty ;
     rdfs:label "adapted from",
         "改编自（adaptedFrom）"@zh ;
-    rdfs:subPropertyOf dct:source ;
+    rdfs:subPropertyOf dcterms:source ;
     skos:definition "document or other source from which a given term (or its definition) was adapted (i.e., is compatible with but not quoted); the range for this annotation can be a string, URI, or citation" ;
     cmns-av:usageNote "This annotation should be used to indicate that a reference was used, for example, as input to the development of a definition or term but would not be considered infringing on a copyright." .
 
 cmns-av:copyright a owl:AnnotationProperty ;
     rdfs:label "copyright",
         "版权（copyright）"@zh ;
-    rdfs:subPropertyOf dct:rights ;
+    rdfs:subPropertyOf dcterms:rights ;
     skos:definition "exclusive legal right, given to an originator or an assignee to print, publish, perform, film, or record literary, artistic, or musical material, and to authorize others to do the same" ;
     cmns-av:usageNote "This annotation is typically used to describe an artifact such as a controlled vocabulary, ontology, or other similar resource." .
 
 cmns-av:directSource a owl:AnnotationProperty ;
     rdfs:label "direct source",
         "直接来源（directSource）"@zh ;
-    rdfs:subPropertyOf dct:source ;
+    rdfs:subPropertyOf dcterms:source ;
     skos:definition "quoted reference for the subject resource; the range for this annotation can be a string, URI, or bibliographic citation" .
 
 cmns-av:explanatoryNote a owl:AnnotationProperty ;
@@ -202,24 +188,21 @@ cmns-av:usageNote a owl:AnnotationProperty ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "note that provides information about how a given resource is used or may be extended" .
 
-dct:contributor a owl:AnnotationProperty ;
-    rdfs:label "contributor",
-        "贡献者（contributor）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:contributor a owl:AnnotationProperty ;
+    rdfs:label "contributor" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "an entity responsible for making contributions to the resource" ;
     skos:note "The guidelines for using names of persons or organizations as creators apply to contributors." .
 
-dct:rights a owl:AnnotationProperty ;
-    rdfs:label "rights",
-        "权利（rights）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:rights a owl:AnnotationProperty ;
+    rdfs:label "rights" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "information about rights held in and over the resource" ;
     skos:note "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided." ;
     cmns-av:usageNote "This annotation is typically used to describe an artifact such as a controlled vocabulary, ontology, or other similar resource." .
 
 skos:altLabel a owl:AnnotationProperty ;
-    rdfs:label "alternative label",
-        "替代标签（altLabel）"@zh ;
+    rdfs:label "alternative label" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf rdfs:label ;
     skos:definition "an alternative lexical label for a resource" ;
@@ -228,10 +211,9 @@ skos:altLabel a owl:AnnotationProperty ;
         "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties." .
 
 skos:definition a owl:AnnotationProperty ;
-    rdfs:label "definition",
-        "定义（definition）"@zh ;
+    rdfs:label "definition" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    rdfs:subPropertyOf dct:description,
+    rdfs:subPropertyOf dcterms:description,
         skos:note ;
     skos:definition "a statement or formal explanation of the meaning of a concept" ;
     cmns-av:usageNote "For the purposes of OMG and other industry standards, definitions must be ISO 704 compliant." .
@@ -248,18 +230,16 @@ cmns-av:abbreviation a owl:AnnotationProperty ;
     cmns-av:explanatoryNote "The symbols for quantities are generally single letters of the Latin or Greek alphabet, sometimes with subscripts or other modifying signs. These letters, including those that are members of the Greek alphabet are not symbols for the purposes of this ontology, however, they are abbreviations. Expressions of chemical formulae may, however, include a combination of abbreviations and symbols, as needed to define a given quantity." ;
     cmns-av:usageNote "Note that any SPARQL or other query using entailment for the rdfs:label on any construct will return not only the rdfs:label but all labels that are specified using subproperties of rdfs:label, such as abbreviation." .
 
-dct:description a owl:AnnotationProperty ;
-    rdfs:label "description",
-        "描述（description）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:description a owl:AnnotationProperty ;
+    rdfs:label "description" ;
+    rdfs:isDefinedBy dcterms: ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "an account of the resource" ;
     skos:note "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource." .
 
-dct:source a owl:AnnotationProperty ;
-    rdfs:label "source",
-        "来源（source）"@zh ;
-    rdfs:isDefinedBy dct: ;
+dcterms:source a owl:AnnotationProperty ;
+    rdfs:label "source" ;
+    rdfs:isDefinedBy dcterms: ;
     skos:definition "a related resource from which the described resource is derived" ;
     skos:note "This property is intended to be used with non-literal values. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system." ;
     cmns-av:explanatoryNote "The intent is to provide a user with a reference as to how the thing being annotated was derived or arrived at. The source can be a URL to a standard, common dictionary (e.g., Collins, Merriam-Webster, Oxford), a formal reference such as an ISO standard, or similar reference. Or it can be a short description of a source from which the entity being annotated was derived." .
@@ -273,8 +253,7 @@ cmns-av:synonym a owl:AnnotationProperty ;
     cmns-av:usageNote "Note that any SPARQL or other query using entailment for the rdfs:label on any construct will return not only the rdfs:label but all labels that are specified using subproperties of rdfs:label, such as synonym." .
 
 skos:note a owl:AnnotationProperty ;
-    rdfs:label "note",
-        "注记（note）"@zh ;
+    rdfs:label "note" ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf rdfs:comment ;
     skos:definition "a general note, for any purpose" ;

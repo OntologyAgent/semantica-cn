@@ -1,8 +1,6 @@
 @prefix cmns-abt: <https://www.omg.org/spec/Commons/AboutCommons/> .
 @prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
-@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
-@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -10,9 +8,9 @@
 
 cmns-abt: a owl:Ontology ;
     rdfs:label "About the Commons Ontology Library",
-        "关于 Commons 本体库（About the Commons Ontology Library）"@zh ;
-    dct:abstract "This ontology is provided for the convenience of Commons users. It can be used to load all of the current Commons ontologies, using a relative catalog, as needed in Protege or other tools." ;
-    dct:contributor "Davide Sottara, Mayo Clinic",
+        "Commons 库总入口（About Commons）"@zh ;
+    dcterms:abstract "This ontology is provided for the convenience of Commons users. It can be used to load all of the current Commons ontologies, using a relative catalog, as needed in Protege or other tools." ;
+    dcterms:contributor "Davide Sottara, Mayo Clinic",
         "Dean Allemang, Working Ontologist LLC",
         "Elisa Kendall, Thematix Partners LLC",
         "Evan Wallace, U.S. Department of Commerce, National Institute of Standards and Technology (NIST)",
@@ -24,7 +22,7 @@ cmns-abt: a owl:Ontology ;
         "Steve Jenkins, Jet Propulsion Laboratory (JPL), California Institute of Technology, National Aeronautics and Space Administration (NASA)",
         "Stuart Chalk, University of North Florida",
         "Thomas Barre, Airbus Group" ;
-    dct:license """Copyright (c) 2014-2025 EDM Council, Inc.
+    dcterms:license """Copyright (c) 2014-2025 EDM Council, Inc.
 		Copyright (c) 2014-2025 Thematix Partners LLC
 		Copyright (c) 2020-2025 Stardog Union
 		Copyright (c) 2020-2025 Working Ontologist LLC
@@ -54,9 +52,9 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		
 		See https://opensource.org/licenses/MIT.""" ;
-    dct:references dct:,
+    dcterms:references dcterms:,
         skos: ;
-    dct:source "https://www.omg.org/spec/SysML/"^^xsd:anyURI,
+    dcterms:source "https://www.omg.org/spec/SysML/"^^xsd:anyURI,
         "ISO 1087:2019 Terminology work - Vocabulary - Theory and Application, Second edition, 2019-09",
         "ISO 11240 Health informatics - Identification of medicinal products - Data elements and structures for the unique identification and exchange of units of measurement",
         "ISO 12651-2:2014, Electronic document management - Vocabulary - Part 2: Workflow management",
@@ -76,7 +74,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         "ISO/TR 21965:2019 Information and documentation - Records management in enterprise architecture",
         "ISO/TS 19807-1:2019 Nanotechnologies - Magnetic nanomaterials - Part 1: Specification of characteristics and measurements for magnetic nanosuspensions",
         "International Information Centre for Terminology (InfoTerm), see http://www.infoterm.info/" ;
-    rdfs:comment "方便用户一次性加载全部 Commons 本体的入口文件。"@zh ;
+    rdfs:comment "聚合 OMG 通用本体库（Commons）全部 22 个模块，一次导入即获得完整 Commons 概念体系，是使用 Commons 的标准入口。"@zh ;
     owl:imports cmns-av:,
         <https://www.omg.org/spec/Commons/BusinessAuthorizations/>,
         <https://www.omg.org/spec/Commons/Classifiers/>,
@@ -91,11 +89,11 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <https://www.omg.org/spec/Commons/Languages/>,
         <https://www.omg.org/spec/Commons/Locations/>,
         <https://www.omg.org/spec/Commons/Organizations/>,
-        cmns-pts:,
+        <https://www.omg.org/spec/Commons/PartiesAndSituations/>,
         <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>,
         <https://www.omg.org/spec/Commons/RegistrationAuthorities/>,
         <https://www.omg.org/spec/Commons/RegulatoryAgencies/>,
-        cmns-rlcmp:,
+        <https://www.omg.org/spec/Commons/RolesAndCompositions/>,
         <https://www.omg.org/spec/Commons/SitesAndFacilities/>,
         <https://www.omg.org/spec/Commons/StructuredCollections/>,
         <https://www.omg.org/spec/Commons/TextDatatype/> ;

@@ -290,12 +290,17 @@ def generate_diagram(g: Graph, terms: dict[str, dict], trans: dict, out_base: Pa
     dot.render(str(out_base), cleanup=True)
 
 
+def library_root(rdf_path: Path) -> Path:
+    root = rdf_path
+    while root.name not in ("master_2026Q3", "20250801") and root.parent != root:
+        root = root.parent
+    return root
+
+
 def own_summary_entry(summaries: dict, rdf_path: Path) -> dict:
     if not summaries:
         return {}
-    root = rdf_path
-    while root.name != "master_2026Q3" and root.parent != root:
-        root = root.parent
+    root = library_root(rdf_path)
     try:
         return summaries.get(str(rdf_path.with_suffix("").relative_to(root)), {})
     except ValueError:
@@ -462,11 +467,12 @@ def generate_markdown(g: Graph, terms: dict[str, dict], trans: dict, rdf_path: P
             if u not in visited:
                 walk(u, f"2.{len(visited) + 1}", 3)
 
-    sec = 3
+    sec = 3 if classes else 2
     attached_all = set().union(*props_of.values()) if class_uris else set()
     leftover_obj = [i for i in obj_props if i["uri"] not in attached_all]
     leftover_dt = [i for i in dt_props if i["uri"] not in attached_all]
-    if leftover_obj or leftover_dt:
+    leftover_ann = [i for i in terms.values() if i["kind"] == "annotation_property" and i["uri"] not in attached_all]
+    if leftover_obj or leftover_dt or leftover_ann:
         lines += [f"## {sec}. 其他属性", "", "以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：", ""]
         sec += 1
         if leftover_obj:
@@ -481,6 +487,12 @@ def generate_markdown(g: Graph, terms: dict[str, dict], trans: dict, rdf_path: P
             for info in sorted(leftover_dt, key=lambda x: x["label_en"]):
                 uri = info["uri"]
                 lines.append(f"| **{zh_label(uri)}** | {zh_comment(uri) or '—'} |")
+            lines.append("")
+        if leftover_ann:
+            lines += ["标注属性（Annotation Property）：", "", "| 属性 | 定义 |", "|---|---|"]
+            for info in sorted(leftover_ann, key=lambda x: x["label_en"]):
+                uri = info["uri"]
+                lines.append(f"| {bold_label(g, trans, URIRef(uri))} | {zh_comment(uri) or '—'} |")
             lines.append("")
 
     imports_uris = [str(i) for i in g.objects(ont, OWL.imports)] if ont else []
@@ -514,9 +526,7 @@ def aggregate_module_info(summaries: dict, uri: str, rdf_path: Path) -> dict:
     """Resolve one owl:imports URI to display info and its kind (local/external/missing)."""
     if uri.startswith(FIBO_PREFIX):
         rel = uri[len(FIBO_PREFIX):].rstrip("/")
-        root = rdf_path
-        while root.name != "master_2026Q3" and root.parent != root:
-            root = root.parent
+        root = library_root(rdf_path)
         local_file = root / (rel + ".rdf")
         if not local_file.exists() and "/" in rel:
             # dct:hasPart may point at a Module/Domain individual inside a metadata file
@@ -533,6 +543,14 @@ def aggregate_module_info(summaries: dict, uri: str, rdf_path: Path) -> dict:
         return {"kind": "missing", "rel": rel,
                 "name_zh": info.get("name_zh", rel.split("/")[-1]),
                 "summary_zh": info.get("summary_zh", "FIBO 上游声明引用，但本版本仓库未包含对应文件。")}
+    if uri.startswith("https://www.omg.org/spec/Commons/"):
+        mod = uri[len("https://www.omg.org/spec/Commons/"):].rstrip("/")
+        root = library_root(rdf_path)
+        if (root / mod / (mod + ".rdf")).exists():
+            info = summaries.get(f"{mod}/{mod}", {})
+            return {"kind": "local", "rel": f"{mod}/{mod}.rdf",
+                    "name_zh": info.get("name_zh", mod),
+                    "summary_zh": info.get("summary_zh", "")}
     ext = summaries.get("_external", {}).get(uri)
     if ext:
         return {"kind": "external", "rel": uri, "name_zh": ext["name_zh"], "summary_zh": ext["summary_zh"]}
@@ -571,9 +589,7 @@ def generate_aggregate_markdown(g: Graph, trans: dict, summaries: dict,
                                 rdf_path: Path, out_path: Path) -> None:
     ont = next(iter(g.subjects(RDF.type, OWL.Ontology)), None)
     stem = str(rdf_path.with_suffix(""))
-    root = rdf_path
-    while root.name != "master_2026Q3" and root.parent != root:
-        root = root.parent
+    root = library_root(rdf_path)
     own_rel = str(rdf_path.with_suffix("").relative_to(root))
     own = summaries.get(own_rel, {})
     name_zh = own.get("name_zh", rdf_path.stem)
@@ -656,9 +672,7 @@ def generate_metadata_markdown(g: Graph, trans: dict, summaries: dict,
                                rdf_path: Path, out_path: Path) -> None:
     """Doc for Metadata*.rdf manifest files (dct:hasPart composition declarations)."""
     ont = next(iter(g.subjects(RDF.type, OWL.Ontology)), None)
-    root = rdf_path
-    while root.name != "master_2026Q3" and root.parent != root:
-        root = root.parent
+    root = library_root(rdf_path)
     own = summaries.get(str(rdf_path.with_suffix("").relative_to(root)), {})
     name_zh = own.get("name_zh", rdf_path.stem)
     summary_zh = own.get("summary_zh", "")
@@ -722,9 +736,7 @@ def generate_individuals_markdown(g: Graph, trans: dict, summaries: dict,
                                   individuals: list, rdf_path: Path, out_path: Path) -> None:
     """Doc for reference-data / example files whose content is named individuals."""
     ont = next(iter(g.subjects(RDF.type, OWL.Ontology)), None)
-    root = rdf_path
-    while root.name != "master_2026Q3" and root.parent != root:
-        root = root.parent
+    root = library_root(rdf_path)
     own = summaries.get(str(rdf_path.with_suffix("").relative_to(root)), {})
     name_zh = own.get("name_zh", rdf_path.stem)
     summary_zh = own.get("summary_zh", "")
@@ -843,12 +855,11 @@ def main() -> int:
     trans = load_translations()
 
     ont = next(iter(g.subjects(RDF.type, OWL.Ontology)), None)
-    is_aggregate = not terms and ont is not None and any(g.objects(ont, OWL.imports))
+    is_aggregate = (not terms and ont is not None and any(g.objects(ont, OWL.imports))
+                    and not any(g.subjects(RDF.type, RDFS.Datatype)))
     if is_aggregate:
         summaries = load_summaries()
-        root = rdf_path
-        while root.name != "master_2026Q3" and root.parent != root:
-            root = root.parent
+        root = library_root(rdf_path)
         own_rel = str(rdf_path.with_suffix("").relative_to(root))
         own = summaries.get(own_rel, {})
         if own.get("name_zh"):

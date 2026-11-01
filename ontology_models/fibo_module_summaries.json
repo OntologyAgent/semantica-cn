@@ -1604,5 +1604,120 @@
   "overview_zh": "定义作为资产持有的证券：证券在投资组合语境下的资产属性（持仓、市值、资产类别）。\n\n**在体系中的位置**：SEC 证券模块中连接「证券」与「资产管理」视角的本体。\n\n**上下游关系**：上游依赖证券与 FND 所有权、货币金额本体；下游服务持仓、估值与绩效分析建模。\n\n**与相近概念的差别**：证券≠证券资产——证券是工具本身的定义（条款），证券资产是「某人持有的若干单位该证券」这一持仓事实；同一只债券作为发行条款和作为持仓是两个视角。",
   "name_zh": "证券资产本体（Security Assets Ontology）",
   "summary_zh": "定义作为资产持有的证券：证券在投资组合语境下的资产属性（持仓、市值、资产类别）。"
+ },
+ "AboutCommons/AboutCommons": {
+  "name_zh": "Commons 库总入口（About Commons）",
+  "summary_zh": "聚合 OMG 通用本体库（Commons）全部 22 个模块，一次导入即获得完整 Commons 概念体系，是使用 Commons 的标准入口。",
+  "overview_zh": "Commons 库的总入口文件：聚合全部 22 个模块（参与方、角色、组织、地点、分类、代码、标识、文档、日期、量与单位等），本身不定义新概念。\n\n**在体系中的位置**：OMG 通用本体库（Commons）的统一加载入口，对应 FIBO 的 About 系列入口。\n\n**上下游关系**：被希望整体使用 Commons 的应用导入；FIBO 不直接引用它，而是按需引用各具体模块。\n\n**与相近概念的差别**：与单个模块的差别——它只负责「打包加载」，概念内容全在各模块中；与 AnnotationVocabulary 的差别——那是给本体写元数据用的词汇表，不是业务概念入口。"
+ },
+ "AnnotationVocabulary/AnnotationVocabulary": {
+  "name_zh": "Commons 标注词汇表（Commons Annotation Vocabulary）",
+  "summary_zh": "提供文档标注常用的属性，如摘要、定义、解释、版权、同义词等，并梳理 SKOS 与 Dublin Core 标注属性之间的关系。",
+  "overview_zh": "提供本体元数据标注用的词汇表：摘要、定义、版权、同义词、缩写、逻辑定义、使用说明等标注属性，并梳理 SKOS 与 Dublin Core 标注属性之间的关系。\n\n**在体系中的位置**：Commons 全部 22 个模块都导入它——它是整个库的「元数据基础设施」，不含业务类。\n\n**上下游关系**：上游仅依赖 Dublin Core、SKOS 等 W3C 词汇；下游被 Commons 所有模块及 FIBO 全库引用（FIBO 用自己的标注词汇表与它对接）。\n\n**与相近概念的差别**：标注属性≠业务属性——标注属性描述「概念本身的文档信息」（如定义、出处），不参与推理；业务属性描述「现实对象之间的关系」。"
+ },
+ "BusinessAuthorizations/BusinessAuthorizations": {
+  "name_zh": "Commons 业务授权本体（Commons Business Authorizations Ontology）",
+  "summary_zh": "定义业务授权、许可及其相关角色和关系。",
+  "overview_zh": "定义业务授权（business authorization）、许可（license）及其相关角色：谁授予谁、在什么范围内、做什么事的权限。\n\n**在体系中的位置**：Commons 中处理「权限」的模块，处于参与方与组织概念之上。\n\n**上下游关系**：上游依赖参与方与情境、组织、角色与构成、语境指称等模块；下游被登记主管机构、监管机构模块引用（发照、核准都是授权行为）。\n\n**与相近概念的差别**：授权≠法律能力——授权是「某个组织授予的具体权限」（如营业执照），法律能力（FND/Law）是「主体有没有资格」的抽象属性。"
+ },
+ "Classifiers/Classifiers": {
+  "name_zh": "Commons 分类器本体（Commons Classifiers Ontology）",
+  "summary_zh": "定义用于对事物进行分类、分面或归类的通用概念。",
+  "overview_zh": "定义分类器（classifier）、分类方案（classification scheme）与归类关系：把事物按某种体系归入类别的通用机制。\n\n**在体系中的位置**：Commons 的基础构件模块之一，为一切「按类别组织事物」的场景提供模型。\n\n**上下游关系**：上游依赖集合、指称符模块；下游被量与单位、地点、组织、结构化集合等模块引用。\n\n**与相近概念的差别**：分类器≠标识符——分类器把事物归入「一类」（如「商业银行」这个类别），标识符唯一指向「一个」事物；与本体的类（Class）的差别——分类方案是业务数据层面的分类体系，不是逻辑类定义。"
+ },
+ "CodesAndCodeSets/CodesAndCodeSets": {
+  "name_zh": "Commons 代码与代码集本体（Commons Codes and Code Sets Ontology）",
+  "summary_zh": "定义代码、代码集、编码方案及其标识方式。",
+  "overview_zh": "定义代码（code）与代码集（code set）：一套受控的编码及其维护方，如国家代码、货币代码这类编码体系的通用模型。\n\n**在体系中的位置**：Commons 的基础构件模块，是 ISO 系列标准代码（LCC 国家代码、ISO 4217 货币代码）的类定义来源。\n\n**上下游关系**：上游依赖集合、指称符模块；下游被语境标识符、语言、地点模块及 LCC 代码库引用。\n\n**与相近概念的差别**：代码集≠分类方案——代码集是「标准取值的清单」（如 USD、CNY），分类方案是「归类的规则体系」；代码是编码方案中的单个取值。"
+ },
+ "Collections/Collections": {
+  "name_zh": "Commons 集合本体（Commons Collections Ontology）",
+  "summary_zh": "定义集合、成员关系及集合操作的基础概念。",
+  "overview_zh": "定义集合（collection）与成员关系的最基础概念：把若干事物当作一个整体对待。\n\n**在体系中的位置**：Commons 最底层的构件之一，被分类、代码、标识、参与方等模块广泛依赖。\n\n**上下游关系**：上游仅依赖标注词汇表与文本数据类型；下游被全库大多数模块引用。\n\n**与相近概念的差别**：集合≠结构化集合——本模块只有「集合＋成员」，结构化集合（StructuredCollections）进一步定义序列、层次等有内部结构的集合。"
+ },
+ "ContextualDesignators/ContextualDesignators": {
+  "name_zh": "Commons 上下文指称本体（Commons Contextual Designators Ontology）",
+  "summary_zh": "定义在特定上下文中有意义的指称、名称和标识符。",
+  "overview_zh": "定义语境指称（contextual designator）：在特定语境下指代某物的名称或符号，如「某人的法定姓名」「某地的邮政地址」都依赖语境。\n\n**在体系中的位置**：Commons 的基础构件模块，是指称符（Designators）的语境化扩展。\n\n**上下游关系**：上游依赖指称符、集合、日期模块；下游被语境标识符、参与方、组织、监管机构等模块引用。\n\n**与相近概念的差别**：指称符≠语境指称——指称符是「名字指代事物」的一般概念，语境指称强调「在哪个语境下这个名字有效」；例如同一个人在不同法域可以有不同法定姓名。"
+ },
+ "ContextualIdentifiers/ContextualIdentifiers": {
+  "name_zh": "Commons 上下文标识符本体（Commons Contextual Identifiers Ontology）",
+  "summary_zh": "定义在特定上下文或情境中使用的标识符。",
+  "overview_zh": "定义语境标识符（contextual identifier）：在特定语境（法域、机构、系统）内唯一标识事物的标识符，如税号、身份证号、账户号。\n\n**在体系中的位置**：Commons 的基础构件模块，是标识符（Identifiers）的语境化扩展。\n\n**上下游关系**：上游依赖标识符、代码与代码集、语境指称模块；下游被登记主管机构、场所与设施模块引用。\n\n**与相近概念的差别**：语境标识符≠全局标识符——税号只在税务语境唯一，LEI 才是全局唯一；现实世界的标识大多带语境，这正是本模块存在的意义。"
+ },
+ "DatesAndTimes/DatesAndTimes": {
+  "name_zh": "Commons 日期与时间本体（Commons Dates and Times Ontology）",
+  "summary_zh": "定义日期、时间、时间段及其表示方式。",
+  "overview_zh": "定义日期、时间点、期间（period）、持续时间（duration）等通用时间概念。\n\n**在体系中的位置**：Commons 的时间基础模块，为合同期限、角色有效期、授权期间等提供时间表达。\n\n**上下游关系**：上游仅依赖标注词汇表；下游被参与方与情境、角色与构成、语境指称、登记主管机构、结构化集合等模块引用。\n\n**与相近概念的差别**：期间≠时间点——期间有起止，时间点是瞬间；与 FIBO 金融日期本体的差别——Commons 管通用时间概念，FIBO 管金融特有的日期规则（日计数基准、营业日调整）。"
+ },
+ "Designators/Designators": {
+  "name_zh": "Commons 指称本体（Commons Designators Ontology）",
+  "summary_zh": "定义名称、标识符等指称事物的通用概念。",
+  "overview_zh": "定义指称符（designator）：指代某事物的名称、符号或表达方式的最抽象概念。\n\n**在体系中的位置**：Commons 最底层的构件之一，是标识符、语境指称、代码等概念的上游。\n\n**上下游关系**：上游仅依赖标注词汇表与文本数据类型；下游被分类、代码、标识、语言、地点等大量模块引用。\n\n**与相近概念的差别**：指称符≠标识符——指称符泛指一切「用来指代的东西」（名字、符号），标识符特指「用于唯一识别的指称符」。"
+ },
+ "Documents/Documents": {
+  "name_zh": "Commons 文档本体（Commons Documents Ontology）",
+  "summary_zh": "定义文档、记录及其组成部分的通用概念。",
+  "overview_zh": "定义文档（document）、文档组成部分与文档类型：合同文本、证书、报告等文书的通用模型。\n\n**在体系中的位置**：Commons 的通用构件模块，为一切「以文书为载体」的业务提供基础。\n\n**上下游关系**：上游依赖集合与标注词汇表；下游被量与单位、登记主管机构、监管机构、结构化集合等模块引用。\n\n**与相近概念的差别**：文档≠合同——文档是信息的物理/电子载体，合同是法律关系（同一份合同可以有多个文档副本）；与报告的差别——报告是带报送行为的文档。"
+ },
+ "Identifiers/Identifiers": {
+  "name_zh": "Commons 标识符本体（Commons Identifiers Ontology）",
+  "summary_zh": "定义标识符及其发布、管理与解析的基础概念。",
+  "overview_zh": "定义标识符（identifier）与标识方案：用于唯一识别事物的指称符及其分配规则。\n\n**在体系中的位置**：Commons 的基础构件模块，是 ISIN、LEI 等一切编码标识的上层概念。\n\n**上下游关系**：上游依赖指称符、集合模块；下游被语境标识符、语言、地点、组织等模块引用。\n\n**与相近概念的差别**：标识符≠代码——代码强调「编码体系中的取值」，标识符强调「唯一识别某个体」；很多标识符由代码实现，但目的不同。"
+ },
+ "Languages/Languages": {
+  "name_zh": "Commons 语言本体（Commons Languages Ontology）",
+  "summary_zh": "定义语言、语言标签及其相关概念。",
+  "overview_zh": "定义语言（language）、语言代码及其使用：自然语言的标识与语境化表达。\n\n**在体系中的位置**：Commons 的通用构件模块，支撑多语言文本、翻译与国际化场景。\n\n**上下游关系**：上游依赖代码与代码集、标识符、语境指称、集合、指称符模块；下游被需要语言标注的应用引用。\n\n**与相近概念的差别**：语言≠文本数据类型——语言是「哪种自然语言」的概念实体，文本数据类型是「带语言标记的字符串」的格式定义，两者配合使用。"
+ },
+ "Locations/Locations": {
+  "name_zh": "Commons 位置本体（Commons Locations Ontology）",
+  "summary_zh": "定义地址、地理区域、位置及其关系。",
+  "overview_zh": "定义地点（location）、地理区域、地址相关概念：物理空间位置的通用模型。\n\n**在体系中的位置**：Commons 的通用构件模块，是组织注册地、设施位置等概念的基础。\n\n**上下游关系**：上游依赖分类、代码、标识、量与单位、文本类型等模块；下游被组织、场所与设施、监管机构模块引用。\n\n**与相近概念的差别**：地点≠地址——地点是空间位置本身，地址是指代地点的文字结构（语境指称的一种）；与场所的差别——场所（SitesAndFacilities）强调「有用途的物理空间」，地点是抽象位置。"
+ },
+ "Organizations/Organizations": {
+  "name_zh": "Commons 组织本体（Commons Organizations Ontology）",
+  "summary_zh": "定义组织、组织单元及其标识和关系。",
+  "overview_zh": "定义组织（organization）、组织成员、组织内部结构与角色：公司、机构、团体等通用组织模型。\n\n**在体系中的位置**：Commons 的核心业务模块之一，是 FIBO 正式组织、BE 各类法律实体的上层基础。\n\n**上下游关系**：上游依赖参与方与情境、角色与构成、地点、标识符、分类等模块；下游被登记主管机构、监管机构、场所与设施模块引用。\n\n**与相近概念的差别**：组织≠参与方——组织是「有结构的团体」这一实体，参与方是「进入某关系的主体」这一角色；一个组织只有签约、交易时才成为参与方。"
+ },
+ "PartiesAndSituations/PartiesAndSituations": {
+  "name_zh": "Commons 参与方与情境本体（Commons Parties and Situations Ontology）",
+  "summary_zh": "定义参与方、角色、情境以及它们之间关系的高层概念，是 FIBO 等多领域的上层本体。",
+  "overview_zh": "定义参与方（party）、行为者（actor）、承受者（undergoer）与情境（situation）：描述「谁、在什么场景下、扮演什么角色」的核心框架，是 Commons 最具代表性的模块。\n\n**在体系中的位置**：Commons 的核心模块，组织、授权、登记、监管等业务模块都建立在它之上；FIBO 的参与方本体直接继承它。\n\n**上下游关系**：上游依赖角色与构成、语境指称、指称符、日期、集合模块；下游被组织、业务授权、登记主管机构、监管机构引用。\n\n**与相近概念的差别**：参与方≠行为者——行为者强调「主动做事」的一方，承受者是「被影响」的一方；情境≠事件——情境是一段时间内相对稳定的关系状态，事件是时间点上的发生。"
+ },
+ "QuantitiesAndUnits/QuantitiesAndUnits": {
+  "name_zh": "Commons 量与单位本体（Commons Quantities and Units Ontology）",
+  "summary_zh": "定义数量、度量单位、量纲及其转换。",
+  "overview_zh": "定义量（quantity）、度量单位（measurement unit）、量纲（dimension）与度量体系：长度、重量、货币、比率等一切数值度量的通用模型，是 Commons 中类最多的模块（47 个类）。\n\n**在体系中的位置**：Commons 的度量基础模块，为金额、面积、汇率等数值表达提供支撑。\n\n**上下游关系**：上游依赖分类、集合、语境指称、指称符、文档模块；下游被地点等模块及各行业本体（含 FIBO 货币金额概念）引用。\n\n**与相近概念的差别**：量≠数值——量是「数值＋单位＋量纲」的完整结构（5 公里），数值只是数字；单位≠量纲——量纲是物理类别（长度），单位是具体刻度（公里、英里）。"
+ },
+ "RegistrationAuthorities/RegistrationAuthorities": {
+  "name_zh": "Commons 注册机构本体（Commons Registration Authorities Ontology）",
+  "summary_zh": "定义注册机构、注册标识符及其管理。",
+  "overview_zh": "定义登记主管机构（registration authority）：负责受理登记、维护登记册、颁发注册证明的机构及其登记行为。\n\n**在体系中的位置**：Commons 中处理「注册与登记」的业务模块。\n\n**上下游关系**：上游依赖业务授权、组织、参与方、文档、标识符、日期等模块；下游被需要表达「在哪注册、由谁登记」的场景引用（如企业注册、证券登记）。\n\n**与相近概念的差别**：登记机构≠监管机构——登记机构负责「记录与发照」，监管机构负责「监督与执法」；登记行为是一种特殊的授权。"
+ },
+ "RegulatoryAgencies/RegulatoryAgencies": {
+  "name_zh": "Commons 监管机构本体（Commons Regulatory Agencies Ontology）",
+  "summary_zh": "定义监管机构、监管角色及其关系。",
+  "overview_zh": "定义监管机构（regulatory agency）：依法设立、对特定行业或活动行使监督职权的机构及其管辖范围。\n\n**在体系中的位置**：Commons 中处理「监管」的业务模块，是 FIBO 各国监管机构本体的上层基础。\n\n**上下游关系**：上游依赖业务授权、组织、地点、文档、参与方等模块；下游被场所与设施模块及 FIBO 监管体系引用。\n\n**与相近概念的差别**：监管机构≠登记机构——监管重「持续监督合规」，登记重「主体注册」；监管权来自法律授权，这是它与一般行业自律组织的差别。"
+ },
+ "RolesAndCompositions/RolesAndCompositions": {
+  "name_zh": "Commons 角色与组合本体（Commons Roles and Compositions Ontology）",
+  "summary_zh": "定义角色、组合及其扮演/组成关系的基础本体。",
+  "overview_zh": "定义角色（role）与组合（composition）：某事物在特定情境中扮演的部分，以及「整体由部分组成」的结构，含功能角色、结构角色、过程角色三类。\n\n**在体系中的位置**：Commons 的机制性基础模块，参与方与情境模块的角色机制直接建立在它之上。\n\n**上下游关系**：上游依赖集合、语境指称、指称符、日期模块；下游被参与方与情境、组织、业务授权、登记与监管模块引用。\n\n**与相近概念的差别**：角色≠类——「董事长」不是人的类别，而是人在特定组织情境中扮演的角色（同一人可兼任多角）；组合≠集合——组合强调「为特定目的组织起来的整体」，集合只是成员的汇集。"
+ },
+ "SitesAndFacilities/SitesAndFacilities": {
+  "name_zh": "Commons 场所与设施本体（Commons Sites and Facilities Ontology）",
+  "summary_zh": "定义场所、设施、地址及其关系。",
+  "overview_zh": "定义场所（site）与设施（facility）：有特定用途的物理空间及其配套，如办公楼、工厂、数据中心。\n\n**在体系中的位置**：Commons 中处理「物理空间与用途」的业务模块。\n\n**上下游关系**：上游依赖地点、组织、监管机构、语境标识符等模块；下游被需要表达经营场所、注册地址实体化的场景引用。\n\n**与相近概念的差别**：场所≠地点——地点是抽象空间位置，场所是「有用途、有边界」的具体空间；设施强调场所内的功能设备与配套。"
+ },
+ "StructuredCollections/StructuredCollections": {
+  "name_zh": "Commons 结构化集合本体（Commons Structured Collections Ontology）",
+  "summary_zh": "定义具有特定结构或模式的集合，如序列、层次结构等。",
+  "overview_zh": "定义结构化集合：具有内部结构或模式的集合，如序列（sequence）、层次结构（hierarchy）、表格结构。\n\n**在体系中的位置**：Commons 的构件模块，是集合（Collections）的扩展。\n\n**上下游关系**：上游依赖集合、分类、指称符、日期、文档模块；下游被需要表达有序、分层数据的场景引用。\n\n**与相近概念的差别**：结构化集合≠集合——集合只有成员关系，结构化集合增加了顺序、层级等内部组织；与分类方案的差别——分类方案管「归类」，结构化集合管「怎么排列」。"
+ },
+ "TextDatatype/TextDatatype": {
+  "name_zh": "Commons 文本数据类型本体（Commons Text Datatype Ontology）",
+  "summary_zh": "定义文本、字符串及其数据类型的基础概念。",
+  "overview_zh": "定义文本相关的数据类型：带语言标记的字符串等基础文本格式。\n\n**在体系中的位置**：Commons 最底层的类型模块，为名称、描述等文本属性提供数据类型定义。\n\n**上下游关系**：上游仅依赖标注词汇表；下游被指称符、集合等基础模块引用。\n\n**与相近概念的差别**：本模块不含任何类，只定义数据类型（datatype）——它管「文本值怎么表示」，不管「事物是什么」；与语言模块的差别——语言模块定义语言实体，本模块定义带语言标记的文本格式。"
  }
 }

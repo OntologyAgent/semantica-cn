@@ -5,7 +5,7 @@
 @prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
 @prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
 @prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -15,10 +15,10 @@
 cmns-pts: a owl:Ontology ;
     rdfs:label "Commons Parties and Situations Ontology",
         "Commons 参与方与情境本体（Commons Parties and Situations Ontology）"@zh ;
-    dct:abstract "This ontology defines the high-level concepts of parties and the roles they play in various situations." ;
-    dct:contributor "Dean Allemang, Working Ontologist",
+    dcterms:abstract "This ontology defines the high-level concepts of parties and the roles they play in various situations." ;
+    dcterms:contributor "Dean Allemang, Working Ontologist",
         "Elisa Kendall, Thematix Partners LLC" ;
-    dct:license """Copyright (c) 2020-2025 EDM Council, Inc.
+    dcterms:license """Copyright (c) 2020-2025 EDM Council, Inc.
 		Copyright (c) 2020-2025 Thematix Partners LLC
 		Copyright (c) 2020-2025 Working Ontologist LLC
 		Copyright (c) 2022-2025 Object Management Group, Inc.
@@ -51,7 +51,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 cmns-pts:SoftwareAgent a owl:Class ;
     rdfs:label "software agent",
         "软件智能体（software agent）"@zh ;
-    dct:source "ISO/IEC TR 29119-11:2020(en), Software and systems engineering - Software testing - Part 11: Guidelines on the testing of AI-based systems, clause 3.1.73" ;
+    dcterms:source "ISO/IEC TR 29119-11:2020(en), Software and systems engineering - Software testing - Part 11: Guidelines on the testing of AI-based systems, clause 3.1.73" ;
     rdfs:comment "感知环境并采取行动以最大化实现其目标的数字实体。"@zh ;
     rdfs:subClassOf cmns-pts:Agent ;
     owl:disjointWith cmns-pts:Party ;
@@ -376,12 +376,12 @@ cmns-pts:Situation a owl:Class ;
         "情境（situation）"@zh ;
     rdfs:comment "在一段时间内相对稳定的场景、状态或关系。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-pts:hasSubjectRole ;
-            owl:someValuesFrom cmns-rlcmp:Role ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-rlcmp:Role ;
             owl:onProperty cmns-pts:hasObjectRole ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasSubjectRole ;
+            owl:someValuesFrom cmns-rlcmp:Role ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DatePeriod ;

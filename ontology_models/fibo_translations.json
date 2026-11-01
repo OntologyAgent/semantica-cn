@@ -18325,7 +18325,324 @@
    "comment_zh": "优先股：每股享有一票表决权；发行人或股东可选择赎回；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。"
   }
  },
- "by_uri": {},
+ "by_uri": {
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/Actor": {
+   "label_zh": "行为者（actor）",
+   "comment_zh": "参与方之间关系中的主要执行者，即做出某事、导致某事发生或以其他方式在关系中扮演施事角色的参与方。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/Agent": {
+   "label_zh": "智能体（agent）",
+   "comment_zh": "能够适应环境并与之交互的自主事物。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/AgentRole": {
+   "label_zh": "智能体角色（agent role）",
+   "comment_zh": "任何智能体所扮演的角色。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/Party": {
+   "label_zh": "参与方（party）",
+   "comment_zh": "个人或组织。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/PartyRole": {
+   "label_zh": "参与方角色（party role）",
+   "comment_zh": "由组织或个人扮演的、可能具有时间边界的角色。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/Situation": {
+   "label_zh": "情境（situation）",
+   "comment_zh": "在一段时间内相对稳定的场景、状态或关系。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/SoftwareAgent": {
+   "label_zh": "软件智能体（software agent）",
+   "comment_zh": "感知环境并采取行动以最大化实现其目标的数字实体。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/Undergoer": {
+   "label_zh": "承受者（undergoer）",
+   "comment_zh": "在情境中扮演客体或接受者角色的事物（或参与方），即被情境影响的对象，或扮演被动接受者/受事角色的实体。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/actsIn": {
+   "label_zh": "在…中行动（acts in）",
+   "comment_zh": "指出行为者扮演主要角色的情境。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/actsOn": {
+   "label_zh": "对…采取行动（acts on）",
+   "comment_zh": "将情境中的行为者与其在特定情形下影响的承受者关联起来。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/directlyAffects": {
+   "label_zh": "直接影响（directly affects）",
+   "comment_zh": "将情境中的行为者与其在特定情形下直接影响的事物（或参与方）关联起来。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/experiences": {
+   "label_zh": "经历（experiences）",
+   "comment_zh": "将某事物与以某种方式影响它的情境关联起来。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/experiencesDirectly": {
+   "label_zh": "直接经历（experiences directly）",
+   "comment_zh": "将某事物直接关联到驱动涉及该事物的情境的参与方。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/experiencesWith": {
+   "label_zh": "与…共同经历（experiences with）",
+   "comment_zh": "将某事物关联到驱动涉及该事物的情境的行为者。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasActiveParty": {
+   "label_zh": "具有主动参与方（has active party）",
+   "comment_zh": "将情境关联到以主要（施事）角色行动的个人或组织。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasActiveRole": {
+   "label_zh": "具有主动角色（has active role）",
+   "comment_zh": "将情境关联到以主要（施事）角色行动的事物。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasActor": {
+   "label_zh": "具有行为者（has actor）",
+   "comment_zh": "识别在特定情境中扮演特定角色并起主要作用的参与方。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasObjectRole": {
+   "label_zh": "具有客体角色（has object role）",
+   "comment_zh": "识别被特定关系或情境影响，或在该关系中充当次要参数的人或事物。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasParty": {
+   "label_zh": "具有参与方（has party）",
+   "comment_zh": "识别与协议、合同、政策、规章、情境或其他安排相关联的参与方。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasPartyRole": {
+   "label_zh": "具有参与方角色（has party role）",
+   "comment_zh": "识别某个人或组织在与情境、协议、合同、政策、规章、活动或其他关系相关的方面所扮演的具体角色。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasRelatedPartyRole": {
+   "label_zh": "具有相关参与方角色（has related party role）",
+   "comment_zh": "将扮演某一具体角色的参与方直接关联到扮演相同或另一角色的另一参与方。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasSubjectRole": {
+   "label_zh": "具有主体角色（has subject role）",
+   "comment_zh": "识别在特定情境中是讨论、描述、处理对象或主要主题的人或事物。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/hasUndergoer": {
+   "label_zh": "具有承受者（has undergoer）",
+   "comment_zh": "识别给定情境中作为经历者、被动或其他客体角色的实体。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/holdsDuring": {
+   "label_zh": "在…期间保持（holds during）",
+   "comment_zh": "指示某事物为真的日期时间段。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/isAPartyTo": {
+   "label_zh": "是…的参与方（is a party to）",
+   "comment_zh": "识别参与方所关联的协议、合同、政策、规章、情境或其他安排。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/isAffectedBy": {
+   "label_zh": "受…影响（is affected by）",
+   "comment_zh": "将情境中的承受者关联到在特定情形下对其产生影响的行为者。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/isDirectlyAffectedBy": {
+   "label_zh": "直接受…影响（is directly affected by）",
+   "comment_zh": "将情境中的承受者关联到在特定情形下对其产生直接影响的人或组织。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/isExperiencedBy": {
+   "label_zh": "被…经历（is experienced by）",
+   "comment_zh": "将情境关联到直接参与或受其影响的事物。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/isObjectRoleIn": {
+   "label_zh": "是…中的客体角色（is object role in）",
+   "comment_zh": "指示该角色为次要角色的情境，例如经历者或被动参与者。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/isRealizedIn": {
+   "label_zh": "在…中实现（is realized in）",
+   "comment_zh": "将情境或组成关联到被特定关系或情境影响或作为其次要参数的事物。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/isSubjectRoleIn": {
+   "label_zh": "是…中的主体角色（is subject role in）",
+   "comment_zh": "指示该角色为主要主题的情境。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/playsActivePartyIn": {
+   "label_zh": "在…中扮演主动参与方（plays active party in）",
+   "comment_zh": "将个人或组织关联到其直接参与的情境。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleIn": {
+   "label_zh": "在…中扮演主动角色（plays active role in）",
+   "comment_zh": "将某事物关联到其直接参与的情境。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleThatAffects": {
+   "label_zh": "扮演影响…的主动角色（plays active role that affects）",
+   "comment_zh": "将个人或组织关联到其在特定情形下产生影响的承受者。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/playsActiveRoleThatDirectlyAffects": {
+   "label_zh": "扮演直接影响…的主动角色（plays active role that directly affects）",
+   "comment_zh": "将个人或组织关联到其在特定情形下直接影响的事物。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/realizes": {
+   "label_zh": "实现（realizes）",
+   "comment_zh": "将某事物关联到其扮演的角色为次要角色的情境或组成，例如经历者或被动参与者。"
+  },
+  "https://www.omg.org/spec/Commons/PartiesAndSituations/undergoes": {
+   "label_zh": "承受（undergoes）",
+   "comment_zh": "指示承受者所经历的情境。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/Composition": {
+   "label_zh": "组合（composition）",
+   "comment_zh": "为特定目的将其他事物（可能以特定角色）组合在一起而形成的特定产物。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/FunctionalRole": {
+   "label_zh": "功能角色（functional role）",
+   "comment_zh": "表示某人、组织、过程或服务预期执行或提供的底层功能的角色。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/ProcessRole": {
+   "label_zh": "过程角色（process role）",
+   "comment_zh": "将资源和参与者关联到为特定目的设计并组织的一组涉及多个企业实体的结构化活动的角色。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/Role": {
+   "label_zh": "角色（role）",
+   "comment_zh": "某事物在特定情境中参与的命名具体行为。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/StructuralRole": {
+   "label_zh": "结构角色（structural role）",
+   "comment_zh": "以能力意义指定实体之间关系的角色，通常反映组织或结构关系（层级）。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/hasRole": {
+   "label_zh": "具有角色（has role）",
+   "comment_zh": "识别在某事物（例如组合）中扮演部分的角色。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/isManifestedIn": {
+   "label_zh": "体现在…中（is manifested in）",
+   "comment_zh": "指示角色在其中实现、出现或发生的事物。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/isPlayedBy": {
+   "label_zh": "由…扮演（is played by）",
+   "comment_zh": "指示填充该角色的人、组织或其他事物。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/isRoleIn": {
+   "label_zh": "是…中的角色（is role in）",
+   "comment_zh": "识别涉及该角色的某事物，例如组合、情境或合同。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/manifests": {
+   "label_zh": "体现（manifests）",
+   "comment_zh": "指示在某种情境中实现、展示或显示某事物的角色。"
+  },
+  "https://www.omg.org/spec/Commons/RolesAndCompositions/playsRole": {
+   "label_zh": "扮演角色（plays role）",
+   "comment_zh": "指示某人或某事物在某种情境下所扮演的部分。"
+  },
+  "http://purl.org/dc/terms/abstract": {
+   "label_zh": "摘要（abstract）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/contributor": {
+   "label_zh": "贡献者（contributor）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/creator": {
+   "label_zh": "创建者（creator）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/description": {
+   "label_zh": "描述（description）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/issued": {
+   "label_zh": "发布日期（issued）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/license": {
+   "label_zh": "许可证（license）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/modified": {
+   "label_zh": "修改日期（modified）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/publisher": {
+   "label_zh": "发布者（publisher）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/references": {
+   "label_zh": "引用（references）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/rights": {
+   "label_zh": "权利（rights）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/source": {
+   "label_zh": "来源（source）",
+   "comment_zh": ""
+  },
+  "http://purl.org/dc/terms/title": {
+   "label_zh": "标题（title）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#altLabel": {
+   "label_zh": "替代标签（altLabel）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#changeNote": {
+   "label_zh": "变更说明（changeNote）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#definition": {
+   "label_zh": "定义（definition）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#editorialNote": {
+   "label_zh": "编辑注记（editorialNote）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#example": {
+   "label_zh": "示例（example）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#historyNote": {
+   "label_zh": "历史说明（historyNote）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#note": {
+   "label_zh": "注记（note）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#prefLabel": {
+   "label_zh": "首选标签（prefLabel）",
+   "comment_zh": ""
+  },
+  "http://www.w3.org/2004/02/skos/core#scopeNote": {
+   "label_zh": "范围说明（scopeNote）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/abbreviation": {
+   "label_zh": "缩写（abbreviation）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/acronym": {
+   "label_zh": "首字母缩写（acronym）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/adaptedFrom": {
+   "label_zh": "改编自（adaptedFrom）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/copyright": {
+   "label_zh": "版权（copyright）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/directSource": {
+   "label_zh": "直接来源（directSource）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/explanatoryNote": {
+   "label_zh": "解释性说明（explanatoryNote）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/logicalDefinition": {
+   "label_zh": "逻辑定义（logicalDefinition）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/symbol": {
+   "label_zh": "符号（symbol）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym": {
+   "label_zh": "同义词（synonym）",
+   "comment_zh": ""
+  },
+  "https://www.omg.org/spec/Commons/AnnotationVocabulary/usageNote": {
+   "label_zh": "使用说明（usageNote）",
+   "comment_zh": ""
+  }
+ },
  "display_labels": {
   "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/Obligee": "权利人",
   "https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Agreements/isObligationOf": "属于义务人",

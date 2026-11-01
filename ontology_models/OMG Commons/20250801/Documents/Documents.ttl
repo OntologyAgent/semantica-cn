@@ -1,7 +1,7 @@
 @prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
 @prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
 @prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -11,12 +11,12 @@
 cmns-doc: a owl:Ontology ;
     rdfs:label "Commons Documents Ontology",
         "Commons 文档本体（Commons Documents Ontology）"@zh ;
-    dct:abstract "This ontology defines high-level concepts for representation of documents, including legal documents and records, such as a transaction record, purchase history, or payment history. It is deliberately lightweight in order to accommodate mappings to other document and bibliographic ontologies." ;
-    dct:contributor "Davide Sottara, Mayo Clinic",
+    dcterms:abstract "This ontology defines high-level concepts for representation of documents, including legal documents and records, such as a transaction record, purchase history, or payment history. It is deliberately lightweight in order to accommodate mappings to other document and bibliographic ontologies." ;
+    dcterms:contributor "Davide Sottara, Mayo Clinic",
         "Elisa Kendall, Thematix Partners LLC",
         "Evan Wallace, U.S. National Institute of Standards and Technology (NIST)",
         "Pete Rivett, Federated Knowledge LLC" ;
-    dct:license """Copyright (c) 2014-2025 EDM Council, Inc.
+    dcterms:license """Copyright (c) 2014-2025 EDM Council, Inc.
 		Copyright (c) 2022-2025 Federated Knowledge LLC
 		Copyright (c) 2022-2025 Mayo Clinic
 		Copyright (c) 2022-2025 Thematix Partners LLC
@@ -42,7 +42,9 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         "Copyright (c) 2023-2025 Object Management Group, Inc." .
 
 cmns-doc:Certificate a owl:Class ;
-    rdfs:label "certificate" ;
+    rdfs:label "certificate",
+        "证书（certificate）"@zh ;
+    rdfs:comment "证明某个或某组事实属实的文件。"@zh ;
     rdfs:subClassOf cmns-doc:Document ;
     skos:definition "document attesting to the truth of some fact or set of facts" ;
     cmns-av:adaptedFrom "ISO 5127 - Information and documentation - Foundation and vocabulary, Second edition, 2017-05, clause 3.1.1.38" ;
@@ -50,7 +52,9 @@ cmns-doc:Certificate a owl:Class ;
         "Certificates, such as electronic certificates, including public keys, may be issued by some certificate authority." .
 
 cmns-doc:DocumentPart a owl:Class ;
-    rdfs:label "document part" ;
+    rdfs:label "document part",
+        "文件部分（document part）"@zh ;
+    rdfs:comment "文件在结构上可区分的子划分。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-col:isMemberOf ;
             owl:someValuesFrom cmns-doc:Document ],
@@ -59,7 +63,9 @@ cmns-doc:DocumentPart a owl:Class ;
     skos:note "Parts of documents are typically identified separately based on the function they serve in conveying, organizing, or supporting the content." .
 
 cmns-doc:LegalDocument a owl:Class ;
-    rdfs:label "legal document" ;
+    rdfs:label "legal document",
+        "法律文件（legal document）"@zh ;
+    rdfs:comment "规定协议、证明、认证、条件、许可和/或法律主体、政府实体决定的条款，或为其提供证据的文件。"@zh ;
     rdfs:subClassOf cmns-doc:Document ;
     skos:definition "document specifying the terms of, or provides evidence for, an agreement, attestation, certification, conditions, permissions, and/or decisions of legal persons, government entities, or courts of law, drawn up in accordance with certain rules that apply in the relevant jurisdiction(s)" ;
     skos:example "Examples include some certificates, deeds, bonds, business documents (such as articles of incorporation, bylaws, partnership agreements), contracts, certain identity documents, wills, trusts, legislative acts, notarial acts, court writs or processes (such as related complaints and pleadings in the context of litigation as well as other documents relevant to some legal issue), and any law passed by a competent legislative body in municipal (domestic) or international law." ;
@@ -68,7 +74,9 @@ cmns-doc:LegalDocument a owl:Class ;
     cmns-av:adaptedFrom "ISO 5127 - Information and documentation - Foundation and vocabulary, Second edition, 2017-05, clause 3.4.6.02" .
 
 cmns-doc:Notice a owl:Class ;
-    rdfs:label "notice" ;
+    rdfs:label "notice",
+        "通知（notice）"@zh ;
+    rdfs:comment "对某事的公告、传达、告知或预先警示，通常（但非必然）用于让人有所准备。"@zh ;
     rdfs:subClassOf cmns-doc:Document ;
     skos:definition "announcement, communication, intimation, or advance warning of something, usually, but not necessarily, to allow preparations to be made" ;
     skos:example "registered trademark notice, disclaimer, copyright notice, overdue notice, recall notice" ;
@@ -76,13 +84,17 @@ cmns-doc:Notice a owl:Class ;
     cmns-av:adaptedFrom "ISO 5127 - Information and documentation - Foundation and vocabulary, Second edition, 2017-05" .
 
 cmns-doc:Record a owl:Class ;
-    rdfs:label "record" ;
+    rdfs:label "record",
+        "记录（record）"@zh ;
+    rdfs:comment "对已完成的活动、已发生的事件、已达成结果或已作陈述的备忘与客观证据，无论其特性、媒介、物理形式如何。"@zh ;
     rdfs:subClassOf cmns-doc:Document ;
     skos:definition "memorialization and objective evidence of activities performed, events occurred, results achieved, or statements made, regardless of its characteristics, media, physical form, or the manner in which it is recorded or stored" ;
     skos:note "Records are created or received by an organization in routine transaction of its business or in pursuance of its legal obligations." .
 
 cmns-doc:TechnicalSpecificationDocument a owl:Class ;
-    rdfs:label "technical specification document" ;
+    rdfs:label "technical specification document",
+        "技术规范文件（technical specification document）"@zh ;
+    rdfs:comment "规定产品、材料、过程或系统须满足的详细要求及符合性检查程序的文件。"@zh ;
     rdfs:subClassOf cmns-doc:ReferenceDocument,
         cmns-doc:Specification ;
     skos:definition "document that sets out detailed requirements to be satisfied by a product, material, process or system and the procedures for checking conformity to these requirements" ;
@@ -92,29 +104,39 @@ cmns-doc:TechnicalSpecificationDocument a owl:Class ;
     cmns-av:explanatoryNote "A technical specification is a specification expressing technical requirements, such as one for designing and developing a solution to be implemented." .
 
 cmns-doc:hasDataSource a owl:ObjectProperty ;
-    rdfs:label "has data source" ;
+    rdfs:label "has data source",
+        "具有数据来源（has data source）"@zh ;
+    rdfs:comment "将协议、合同、文件、记录、报告或过程等关联到用于分析、编制、解释或生成它的数据来源。"@zh ;
     rdfs:subPropertyOf cmns-doc:refersTo ;
     skos:definition "relates something, such as an agreement, contract, document, record, report, or process, to a source of data used to analyze, develop, explain, produce, or otherwise create it" ;
     cmns-av:usageNote "Although in many cases an annotation property, such as dct:source, is sufficient for this purpose, there are occasions when a more complete description of a source is required, such as to meet data lineage requirements, for which this property may be used." .
 
 cmns-doc:isSpecifiedIn a owl:ObjectProperty ;
-    rdfs:label "is specified in" ;
+    rdfs:label "is specified in",
+        "规定于（is specified in）"@zh ;
+    rdfs:comment "标识某项要求、事实或事实集的明确出处。"@zh ;
     rdfs:subPropertyOf cmns-doc:refersTo ;
     owl:inverseOf cmns-doc:specifies ;
     skos:definition "indicates the explicit source for some requirement, fact, or set of facts" .
 
 cmns-doc:records a owl:ObjectProperty ;
-    rdfs:label "records" ;
+    rdfs:label "records",
+        "记录（records）"@zh ;
+    rdfs:comment "将……形诸文件以备日后查阅。"@zh ;
     skos:definition "documents for later reference" .
 
 cmns-doc:Reference a owl:Class ;
-    rdfs:label "reference" ;
+    rdfs:label "reference",
+        "参考文献（reference）"@zh ;
+    rdfs:comment "可用于查明、解释或理解某事物的来源。"@zh ;
     skos:definition "source that may be used to ascertain, interpret, or understand something" ;
     cmns-av:explanatoryNote "In linguistics, a reference characterizes, provides context for, or specifies the relationship of one linguistic expression to another, i.e., provides the information necessary to interpret the dependent expression.",
         "References may be rendered in the form of a document, but may also take other forms, such as reference materials, scientific equations, and constants, including in some cases physical things, used as the basis for units of measure." .
 
 cmns-doc:ReferenceDocument a owl:Class ;
-    rdfs:label "reference document" ;
+    rdfs:label "reference document",
+        "参考文件（reference document）"@zh ;
+    rdfs:comment "用作某事物参考的文件。"@zh ;
     rdfs:subClassOf cmns-doc:Document,
         cmns-doc:Reference ;
     owl:equivalentClass [ a owl:Class ;
@@ -126,31 +148,43 @@ cmns-doc:ReferenceDocument a owl:Class ;
     cmns-av:explanatoryNote "A reference document is typically one that provides pertinent details for consultation about a subject." .
 
 cmns-doc:Specification a owl:Class ;
-    rdfs:label "specification" ;
+    rdfs:label "specification",
+        "规范（specification）"@zh ;
+    rdfs:comment "某事物（如产品、材料、模型、过程或系统）须满足的明确要求或要求集。"@zh ;
     skos:definition "explicit requirement or set of requirements to be satisfied by something, such as a product, material, model, process or system" ;
     cmns-av:abbreviation "spec"@en ;
     cmns-av:adaptedFrom "ISO 6707-2:2017 Buildings and civil engineering works - Vocabulary - Part 2: Contract and communication terms, clause 3.2.22" .
 
 cmns-doc:isAbout a owl:ObjectProperty ;
-    rdfs:label "is about" ;
+    rdfs:label "is about",
+        "关于（is about）"@zh ;
+    rdfs:comment "标识某事物（如文件）的主题或话题。"@zh ;
     skos:definition "indicates the subject or topic of something, such as a document" .
 
 cmns-doc:isReferredToBy a owl:ObjectProperty ;
-    rdfs:label "is referred to by" ;
+    rdfs:label "is referred to by",
+        "被……引用（is referred to by）"@zh ;
+    rdfs:comment "标识将某事物作为信息或解释来源引用的事物。"@zh ;
     owl:inverseOf cmns-doc:refersTo ;
     skos:definition "indicates something that is referenced as a source for information or explanation" .
 
 cmns-doc:specifies a owl:ObjectProperty ;
-    rdfs:label "specifies" ;
+    rdfs:label "specifies",
+        "规定（specifies）"@zh ;
+    rdfs:comment "清晰而确定地提及、命名或陈述某事物。"@zh ;
     skos:definition "mentions, names or states something clearly and definitively" ;
     cmns-av:explanatoryNote "Specifies may be used to refer to a requirement, fact, or set of facts." .
 
 cmns-doc:refersTo a owl:ObjectProperty ;
-    rdfs:label "refers to" ;
+    rdfs:label "refers to",
+        "引用（refers to）"@zh ;
+    rdfs:comment "将……作为信息或解释来源加以引用。"@zh ;
     skos:definition "makes reference to as a source for information or explanation" .
 
 cmns-doc:Document a owl:Class ;
-    rdfs:label "document" ;
+    rdfs:label "document",
+        "文件（document）"@zh ;
+    rdfs:comment "某种智力或艺术作品实现的单一表达。"@zh ;
     rdfs:seeAlso <https://www.ifla.org/wp-content/uploads/2019/05/assets/cataloguing/frbr/frbroo_v2.2.pdf> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ;

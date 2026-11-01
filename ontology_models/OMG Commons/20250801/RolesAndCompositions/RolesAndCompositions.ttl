@@ -2,7 +2,7 @@
 @prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
 @prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
 @prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -11,10 +11,10 @@
 cmns-rlcmp: a owl:Ontology ;
     rdfs:label "Commons Roles and Compositions Ontology",
         "Commons 角色与组合本体（Commons Roles and Compositions Ontology）"@zh ;
-    dct:abstract "This ontology defines the high-level things defining roles, which enable specification of the various participants in something, and the notion of a composition, i.e., relating something that is a specification for a 'whole', such as a product or recipe, to its ingredients or constituents, potentially with respect to some context-specific requirements." ;
-    dct:contributor "Dean Allemang, Working Ontologist",
+    dcterms:abstract "This ontology defines the high-level things defining roles, which enable specification of the various participants in something, and the notion of a composition, i.e., relating something that is a specification for a 'whole', such as a product or recipe, to its ingredients or constituents, potentially with respect to some context-specific requirements." ;
+    dcterms:contributor "Dean Allemang, Working Ontologist",
         "Elisa Kendall, Thematix Partners LLC" ;
-    dct:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI ;
     rdfs:comment "定义角色、组合及其扮演/组成关系的基础本体。"@zh ;
     owl:imports cmns-av:,
         cmns-col:,
@@ -34,12 +34,12 @@ cmns-rlcmp:Composition a owl:Class ;
         "组合（composition）"@zh ;
     rdfs:comment "为特定目的将其他事物（可能以特定角色）组合在一起而形成的特定产物。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-col:Constituent ;
+            owl:onProperty cmns-col:hasConstituent ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-cxtdsg:Context ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmns-col:Constituent ;
-            owl:onProperty cmns-col:hasConstituent ],
         [ a owl:Restriction ;
             owl:allValuesFrom cmns-rlcmp:Role ;
             owl:onProperty cmns-rlcmp:hasRole ] ;
@@ -71,7 +71,7 @@ cmns-rlcmp:ProcessRole a owl:Class ;
 cmns-rlcmp:StructuralRole a owl:Class ;
     rdfs:label "structural role",
         "结构角色（structural role）"@zh ;
-    dct:source "ISO 21298:2017(en), Health informatics - Functional and structural roles, clause 3.26" ;
+    dcterms:source "ISO 21298:2017(en), Health informatics - Functional and structural roles, clause 3.26" ;
     rdfs:comment "以能力意义指定实体之间关系的角色，通常反映组织或结构关系（层级）。"@zh ;
     rdfs:subClassOf cmns-rlcmp:Role ;
     skos:definition "role specifying relations between entities in the sense of competence, often reflecting organizational or structural relations (hierarchies)" .

@@ -1,7 +1,7 @@
 @prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
 @prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
 @prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -10,13 +10,13 @@
 cmns-dsg: a owl:Ontology ;
     rdfs:label "Commons Designators Ontology",
         "Commons 指称本体（Commons Designators Ontology）"@zh ;
-    dct:abstract "The designators ontology defines commonly used concepts for naming, derived in part from the patterns defined in ISO 1087 for terminology work and ISO 11179-3, Metadata Registries. It includes several very high level semiotic relationships, including defines, describes, and denotes for associating designators with the concepts they reference." ;
-    dct:contributor "Davide Sottara, Mayo Clinic",
+    dcterms:abstract "The designators ontology defines commonly used concepts for naming, derived in part from the patterns defined in ISO 1087 for terminology work and ISO 11179-3, Metadata Registries. It includes several very high level semiotic relationships, including defines, describes, and denotes for associating designators with the concepts they reference." ;
+    dcterms:contributor "Davide Sottara, Mayo Clinic",
         "Dean Allemang, Working Ontologist",
         "Elisa Kendall, Thematix Partners LLC",
         "Pete Rivett, Federated Knowledge, LLC" ;
-    dct:issued "2022-05-19T18:00:00"^^xsd:dateTime ;
-    dct:license """Copyright (c) 2014-2025 Thematix Partners LLC
+    dcterms:issued "2022-05-19T18:00:00"^^xsd:dateTime ;
+    dcterms:license """Copyright (c) 2014-2025 Thematix Partners LLC
 		Copyright (c) 2021-2025 agnos.ai U.K. Ltd
 		Copyright (c) 2021-2025 Federated Knowledge, LLC
 		Copyright (c) 2021-2025 Mayo Clinic
@@ -30,8 +30,8 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		
 		See https://opensource.org/licenses/MIT.""" ;
-    dct:modified "2025-08-10T18:00:00"^^xsd:dateTime ;
-    dct:title "Commons Designators Ontology" ;
+    dcterms:modified "2025-08-10T18:00:00"^^xsd:dateTime ;
+    dcterms:title "Commons Designators Ontology" ;
     rdfs:comment "定义名称、标识符等指称事物的通用概念。"@zh ;
     owl:imports cmns-av:,
         cmns-txt: ;
@@ -48,64 +48,84 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         "Copyright (c) 2022-2025 Object Management Group, Inc." .
 
 cmns-dsg:defines a owl:ObjectProperty ;
-    rdfs:label "defines" ;
+    rdfs:label "defines",
+        "定义（defines）"@zh ;
+    rdfs:comment "以一个或多个本质属性指明某事物的含义。"@zh ;
     rdfs:seeAlso <https://plato.stanford.edu/entries/definitions/> ;
     owl:inverseOf cmns-dsg:isDefinedIn ;
     skos:definition "specifies the meaning of something in terms of one or more of its essential qualities" ;
     skos:note "A quality is an elementary characteristic of something. An 'essential quality' is one that provides a necessary criteria for being that thing and differentiating criteria for not being something else." .
 
 cmns-dsg:describes a owl:ObjectProperty ;
-    rdfs:label "describes" ;
+    rdfs:label "describes",
+        "描述（describes）"@zh ;
+    rdfs:comment "传达……的性质。"@zh ;
     owl:inverseOf cmns-dsg:isDescribedBy ;
     skos:definition "conveys the nature of" ;
     cmns-av:usageNote "Note that the describes property defined herein as an object property has an implicit range of owl:Class. This is purposeful, so that users can specify any concept, such as a document, contract, specification, situation, or other domain-specific concept, as the thing being described by the domain of this property, which might also be a document, reference, or something else." .
 
 cmns-dsg:hasDescription a owl:DatatypeProperty ;
-    rdfs:label "has description" ;
+    rdfs:label "has description",
+        "具有描述（has description）"@zh ;
+    rdfs:comment "提供描述某事物的文字陈述、文字画面或说明。"@zh ;
     rdfs:subPropertyOf cmns-txt:hasTextValue ;
     skos:definition "provides a textual statement, picture in words, or account that describes something" ;
     skos:note "Note that the hasDescription property defined herein has an implicit range of rdfs:Literal. This is purposeful, so that users can specify any element that has a name with or without a language tag without concern for conflicting datatypes (i.e., xsd:string vs. rdf:langString, which are logically disjoint)." ;
     cmns-av:usageNote "This property is a data property, rather than an annotation such as dct:description, enabling it to be used for mapping controlled vocabularies and other literals that are explicit, required attributes of other models." .
 
 cmns-dsg:hasName a owl:ObjectProperty ;
-    rdfs:label "has name" ;
+    rdfs:label "has name",
+        "具有名称（has name）"@zh ;
+    rdfs:comment "以……为人所知。"@zh ;
     rdfs:range cmns-dsg:Name ;
     rdfs:subPropertyOf cmns-dsg:isSignifiedBy ;
     owl:inverseOf cmns-dsg:isNameOf ;
     skos:definition "is known by" .
 
 cmns-dsg:hasTag a owl:DatatypeProperty ;
-    rdfs:label "has tag" ;
+    rdfs:label "has tag",
+        "具有标签（has tag）"@zh ;
+    rdfs:comment "关联与某事物指称对应的唯一字母数字组合。"@zh ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf cmns-txt:hasTextValue ;
     skos:definition "associates unique combination of alphanumeric characters corresponding to a designator for something" ;
     skos:note "Text-valued tags can be useful for controlled vocabulary encoding or transformation, such as those used to produce IETF compliant language tags in XML." .
 
 cmns-dsg:hasTextualName a owl:DatatypeProperty ;
-    rdfs:label "has textual name" ;
+    rdfs:label "has textual name",
+        "具有文本名称（has textual name）"@zh ;
+    rdfs:comment "将名称、引用名或称谓与某个体概念关联。"@zh ;
     rdfs:subPropertyOf cmns-txt:hasTextValue ;
     skos:definition "associates a name, reference name, or appellation with an individual concept" ;
     skos:note "Note that the hasTextualName property defined herein has an implicit range of rdfs:Literal. This is purposeful, so that users can specify any element that has a name with or without a language tag without concern for conflicting datatypes (i.e., xsd:string vs. rdf:langString, which are logically disjoint)." ;
     cmns-av:adaptedFrom "ISO 639:2023 Code for individual languages and language groups, Second edition, 2023-11" .
 
 cmns-dsg:isDefinedIn a owl:ObjectProperty ;
-    rdfs:label "is defined in" ;
+    rdfs:label "is defined in",
+        "定义于（is defined in）"@zh ;
+    rdfs:comment "标识规定主语含义的某事物。"@zh ;
     skos:definition "indicates something that specifies the meaning associated with the subject" ;
     skos:note "Typically, a concept, such as a classifier or identifier, will be defined in terms of a scheme, contract, specification, standard, or other reference." .
 
 cmns-dsg:isDescribedBy a owl:ObjectProperty ;
-    rdfs:label "is described by" ;
+    rdfs:label "is described by",
+        "由……描述（is described by）"@zh ;
+    rdfs:comment "具有……的一般性质或描述。"@zh ;
     skos:definition "has general nature or description of" ;
     cmns-av:usageNote "Note that the 'is described by' property defined herein as an object property has an implicit range of owl:Class. This is purposeful, so that users can specify any concept, such as a document, reference, or other domain-specific concept, as the descriptive thing describing the domain of this property." .
 
 cmns-dsg:isSignifiedBy a owl:ObjectProperty ;
-    rdfs:label "is signified by" ;
+    rdfs:label "is signified by",
+        "由……表示（is signified by）"@zh ;
+    rdfs:comment "具有……的表示、指称或符号。"@zh ;
     rdfs:range cmns-dsg:Designation ;
     owl:inverseOf cmns-dsg:denotes ;
     skos:definition "has representation, denotation or sign of" .
 
 cmns-dsg:Name a owl:Class ;
-    rdfs:label "name" ;
+    rdfs:label "name",
+        "名称（name）"@zh ;
+    rdfs:comment "以语言表达式对某事物的指称。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isNameOf ;
             owl:someValuesFrom owl:Thing ],
@@ -116,13 +136,17 @@ cmns-dsg:Name a owl:Class ;
     cmns-av:explanatoryNote "Note that unlike symbols and other designations, a name is explicitly not linguistically neutral." .
 
 cmns-dsg:isNameOf a owl:ObjectProperty ;
-    rdfs:label "is name of" ;
+    rdfs:label "is name of",
+        "是……的名称（is name of）"@zh ;
+    rdfs:comment "在某情境中指代……。"@zh ;
     rdfs:domain cmns-dsg:Name ;
     rdfs:subPropertyOf cmns-dsg:denotes ;
     skos:definition "denotes in some context" .
 
 cmns-dsg:Designation a owl:Class ;
-    rdfs:label "designation" ;
+    rdfs:label "designation",
+        "指称（designation）"@zh ;
+    rdfs:comment "在某领域或主题中指代某事物（或其概念化）的表示。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-dsg:denotes ;
             owl:someValuesFrom owl:Thing ],
@@ -139,7 +163,9 @@ cmns-dsg:Designation a owl:Class ;
     cmns-av:synonym "designator" .
 
 cmns-dsg:denotes a owl:ObjectProperty ;
-    rdfs:label "denotes" ;
+    rdfs:label "denotes",
+        "指代（denotes）"@zh ;
+    rdfs:comment "作为某事物（或其概念化）的符号。"@zh ;
     rdfs:domain cmns-dsg:Designation ;
     rdfs:seeAlso <http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#>,
         <https://www.w3.org/2016/05/ontolex/> ;

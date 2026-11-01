@@ -9,7 +9,7 @@
 @prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
 @prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/> .
 @prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -18,8 +18,8 @@
 cmns-ra: a owl:Ontology ;
     rdfs:label "Commons Registration Authorities Ontology",
         "Commons 注册机构本体（Commons Registration Authorities Ontology）"@zh ;
-    dct:abstract "This ontology defines concepts for representation of registration authorities, registrars, registration-specific identifiers and related identification schemes. It was derived from the FIBO Registration Authorities Ontology and ISO 11179-3, and adapted for broader use." ;
-    dct:license """Copyright (c) 2015-2025 EDM Council, Inc.
+    dcterms:abstract "This ontology defines concepts for representation of registration authorities, registrars, registration-specific identifiers and related identification schemes. It was derived from the FIBO Registration Authorities Ontology and ISO 11179-3, and adapted for broader use." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
 		Copyright (c) 2015-2025 Object Management Group, Inc.
 		
 		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -46,39 +46,47 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         "Copyright (c) 2015-2025 Object Management Group, Inc." .
 
 cmns-ra:hasRegistrationAuthority a owl:ObjectProperty ;
-    rdfs:label "has registration authority" ;
+    rdfs:label "has registration authority",
+        "具有注册机构（has registration authority）"@zh ;
+    rdfs:comment "标识某事物的注册机构。"@zh ;
     rdfs:range cmns-ra:RegistrationAuthority ;
     rdfs:subPropertyOf cmns-pts:hasPartyRole ;
     owl:inverseOf cmns-ra:isRegistrationAuthorityFor ;
     skos:definition "indicates the registration authority for something" .
 
 cmns-ra:RegisteredIdentifier a owl:Class ;
-    rdfs:label "registered identifier" ;
+    rdfs:label "registered identifier",
+        "注册标识符（registered identifier）"@zh ;
+    rdfs:comment "由注册机构或其代表按某注册方案在注册簿中登记的情境化标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:isRegisteredIn ;
-            owl:someValuesFrom cmns-ra:Registry ],
-        [ a owl:Restriction ;
-            owl:onClass cmns-ra:RegistrationScheme ;
-            owl:onProperty cmns-col:compliesWith ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
             owl:onProperty cmns-ra:hasRegistrationDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredBy ;
             owl:someValuesFrom cmns-ra:Registrar ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-ra:RegistrationScheme ;
+            owl:onProperty cmns-col:compliesWith ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredIn ;
+            owl:someValuesFrom cmns-ra:Registry ],
         cmns-cxtid:ContextualIdentifier ;
     skos:definition "contextual identifier that is registered in a registry by, or on behalf of, a registration authority according to some registration scheme" .
 
 cmns-ra:RegistrationScheme a owl:Class ;
-    rdfs:label "registration scheme" ;
+    rdfs:label "registration scheme",
+        "注册方案（registration scheme）"@zh ;
+    rdfs:comment "组织注册簿中信息并为登记条目分配标识符的方案。"@zh ;
     rdfs:subClassOf cmns-id:IdentificationScheme ;
     skos:definition "scheme for organizing information in a registry and allocating identifiers to registered items" ;
     cmns-av:adaptedFrom "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" .
 
 cmns-ra:RegistrationService a owl:Class ;
-    rdfs:label "registration service" ;
+    rdfs:label "registration service",
+        "注册服务（registration service）"@zh ;
+    rdfs:comment "为个人和/或组织提供在注册簿中登记条目的服务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-org:isProvidedBy ;
             owl:someValuesFrom cmns-ra:Registrar ],
@@ -86,14 +94,16 @@ cmns-ra:RegistrationService a owl:Class ;
     skos:definition "service provided to individuals and/or organizations for the registration of items in a registry" .
 
 cmns-ra:RegistryEntry a owl:Class ;
-    rdfs:label "registry entry" ;
+    rdfs:label "registry entry",
+        "注册簿条目（registry entry）"@zh ;
+    rdfs:comment "注册簿的组成成分，包含登记于其中的某事物的详细信息。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom cmns-ra:Registry ;
-            owl:onProperty cmns-col:isIncludedIn ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-ra:RegisteredIdentifier ;
             owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-ra:Registry ;
+            owl:onProperty cmns-col:isIncludedIn ],
         cmns-col:Constituent ;
     skos:definition "constituent of a registry that includes the details for something recorded in that registry" ;
     cmns-av:adaptedFrom "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" ;
@@ -101,19 +111,25 @@ cmns-ra:RegistryEntry a owl:Class ;
     cmns-av:synonym "registry item" .
 
 cmns-ra:hasRegistrationDate a owl:DatatypeProperty ;
-    rdfs:label "has registration date" ;
+    rdfs:label "has registration date",
+        "具有注册日期（has registration date）"@zh ;
+    rdfs:comment "标识某事物登记的日期或日期时间。"@zh ;
     rdfs:range cmns-dt:CombinedDateTime ;
     rdfs:subPropertyOf cmns-dt:hasObservedDateTime ;
     skos:definition "indicates the date or date and time on which something is registered" .
 
 cmns-ra:isRegisteredIn a owl:ObjectProperty ;
-    rdfs:label "is registered in" ;
+    rdfs:label "is registered in",
+        "注册于（is registered in）"@zh ;
+    rdfs:comment "标识某事物登记所在的注册簿。"@zh ;
     rdfs:range cmns-ra:Registry ;
     rdfs:subPropertyOf cmns-doc:refersTo ;
     skos:definition "indicates the registry that something is registered in" .
 
 cmns-ra:registers a owl:ObjectProperty ;
-    rdfs:label "registers" ;
+    rdfs:label "registers",
+        "登记（registers）"@zh ;
+    rdfs:comment "将某事物记录于注册簿或档案中。"@zh ;
     rdfs:domain cmns-ra:Registrar ;
     rdfs:subPropertyOf cmns-doc:records,
         cmns-rlcmp:isRoleIn ;
@@ -121,19 +137,25 @@ cmns-ra:registers a owl:ObjectProperty ;
     skos:definition "records something in a registry or archive" .
 
 cmns-ra:isRegisteredBy a owl:ObjectProperty ;
-    rdfs:label "is registered by" ;
+    rdfs:label "is registered by",
+        "由……注册（is registered by）"@zh ;
+    rdfs:comment "标识注册某事物的注册机构或注册员。"@zh ;
     rdfs:range cmns-ra:Registrar ;
     rdfs:subPropertyOf cmns-pts:hasPartyRole ;
     skos:definition "indicates the registration authority or registrar that registers something" .
 
 cmns-ra:isRegistrationAuthorityFor a owl:ObjectProperty ;
-    rdfs:label "is registration authority for" ;
+    rdfs:label "is registration authority for",
+        "是……的注册机构（is registration authority for）"@zh ;
+    rdfs:comment "标识注册机构所签发的某事物（通常是标识符或代码）。"@zh ;
     rdfs:domain cmns-ra:RegistrationAuthority ;
     rdfs:subPropertyOf cmns-rlcmp:isRoleIn ;
     skos:definition "indicates something (typically an identifier or code) that the registration authority issues" .
 
 cmns-ra:Registrar a owl:Class ;
-    rdfs:label "registrar" ;
+    rdfs:label "registrar",
+        "注册员（registrar）"@zh ;
+    rdfs:comment "作为注册机构代表提供注册服务（含官方记录保存）的参与方角色。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-ra:RegistrationService ;
@@ -151,7 +173,9 @@ cmns-ra:Registrar a owl:Class ;
         "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" .
 
 cmns-ra:RegistrationAuthority a owl:Class ;
-    rdfs:label "registration authority" ;
+    rdfs:label "registration authority",
+        "注册机构（registration authority）"@zh ;
+    rdfs:comment "官方负责维护注册簿并提供注册服务、和/或将部分或全部职责委托给注册员的服务提供方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-ra:Registry ;
@@ -166,7 +190,9 @@ cmns-ra:RegistrationAuthority a owl:Class ;
     cmns-av:adaptedFrom "ISO/IEC 11179-3:2023, Information technology - Metadata registries (MDR) - Part 3: Metamodel for registry common facilities, Fourth edition, 2023" .
 
 cmns-ra:Registry a owl:Class ;
-    rdfs:label "registry" ;
+    rdfs:label "registry",
+        "注册簿（registry）"@zh ;
+    rdfs:comment "与某事物相关的权威记录或记录集合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-ra:RegistryEntry ;

@@ -2,7 +2,7 @@
 @prefix cmns-cds: <https://www.omg.org/spec/Commons/CodesAndCodeSets/> .
 @prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/> .
 @prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -11,10 +11,10 @@
 cmns-cds: a owl:Ontology ;
     rdfs:label "Commons Codes and Code Sets Ontology",
         "Commons 代码与代码集本体（Commons Codes and Code Sets Ontology）"@zh ;
-    dct:abstract "This ontology defines commonly used concepts for describing codes, including standardized codes such as ISO language, country, and other code sets, the North American Industry Classification System (NAICS) codes, and custom code sets that many organizations develop for various purposes, derived from the patterns specified in ISO 11179-3, Metadata Registries." ;
-    dct:contributor "Elisa Kendall, Thematix Partners LLC",
+    dcterms:abstract "This ontology defines commonly used concepts for describing codes, including standardized codes such as ISO language, country, and other code sets, the North American Industry Classification System (NAICS) codes, and custom code sets that many organizations develop for various purposes, derived from the patterns specified in ISO 11179-3, Metadata Registries." ;
+    dcterms:contributor "Elisa Kendall, Thematix Partners LLC",
         "Pete Rivett, agnos.ai U.K. Ltd" ;
-    dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
     rdfs:comment "定义代码、代码集、编码方案及其标识方式。"@zh ;
     owl:imports cmns-av:,
         cmns-col:,
@@ -29,8 +29,10 @@ cmns-cds: a owl:Ontology ;
         "Copyright (c) 2022 Object Management Group, Inc." .
 
 cmns-cds:CodeElement a owl:Class ;
-    rdfs:label "code element" ;
-    dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
+    rdfs:label "code element",
+        "代码元素（code element）"@zh ;
+    dcterms:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
+    rdfs:comment "在特定情境下按某种规则集为某目的表示某事物的字符序列。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-col:isMemberOf ;
             owl:someValuesFrom cmns-cds:CodeSet ],
@@ -40,8 +42,10 @@ cmns-cds:CodeElement a owl:Class ;
     skos:note "Note that codes may be included in multiple code lists, especially in cases where there are multiple versions of those code lists. ICD-9 and ICD-10 are examples of code sets that specify, in some cases, the same codes, but across different versions of those code sets." .
 
 cmns-cds:CodeSet a owl:Class ;
-    rdfs:label "code set" ;
-    dct:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
+    rdfs:label "code set",
+        "代码集（code set）"@zh ;
+    dcterms:source "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
+    rdfs:comment "在某情境中代表特定值的字母数字符号或其组合的体系。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom cmns-cds:CodeElement ;
             owl:onProperty cmns-col:hasMember ],

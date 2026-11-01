@@ -8,7 +8,7 @@
 @prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/> .
 @prefix cmns-rga: <https://www.omg.org/spec/Commons/RegulatoryAgencies/> .
 @prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -24,8 +24,8 @@ cmns-org:LegalPerson a owl:Class ;
 cmns-rga: a owl:Ontology ;
     rdfs:label "Commons Regulatory Agencies Ontology",
         "Commons 监管机构本体（Commons Regulatory Agencies Ontology）"@zh ;
-    dct:abstract "This ontology defines general purpose concepts for representation of regulatory agencies, also known as regulatory authorities or regulators. It was derived from the FIBO Regulatory Agencies, Legal Capacity, and Jurisdictions ontologies and simplified/adapted for broader use." ;
-    dct:license """Copyright (c) 2015-2025 EDM Council, Inc.
+    dcterms:abstract "This ontology defines general purpose concepts for representation of regulatory agencies, also known as regulatory authorities or regulators. It was derived from the FIBO Regulatory Agencies, Legal Capacity, and Jurisdictions ontologies and simplified/adapted for broader use." ;
+    dcterms:license """Copyright (c) 2015-2025 EDM Council, Inc.
 		Copyright (c) 2015-2025 Object Management Group, Inc.
 		
 		Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -51,26 +51,34 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         "Copyright (c) 2015-2025 Object Management Group, Inc." .
 
 cmns-rga:RegulatoryReport a owl:Class ;
-    rdfs:label "regulatory report" ;
+    rdfs:label "regulatory report",
+        "监管报告（regulatory report）"@zh ;
+    rdfs:comment "为支持运营透明度、证明符合监管机构规定的某项规范、法律、政策、限制或其他规则而要求的文件。"@zh ;
     rdfs:subClassOf cmns-doc:Record,
         cmns-doc:ReferenceDocument ;
     skos:definition "document required to support operational transparency that demonstrates compliance with some specification, law, policy, restriction, or other rule specified by a regulatory agency" ;
     cmns-av:explanatoryNote "Such a report may be needed for licensing, monitoring, taxation, or for other purposes that demonstrate the integrity, fairness, safety, or other capacity of a given industry, organization, or product." .
 
 cmns-rga:isApplicableInJurisdiction a owl:ObjectProperty ;
-    rdfs:label "is applicable in jurisdiction" ;
+    rdfs:label "is applicable in jurisdiction",
+        "适用于管辖区（is applicable in jurisdiction）"@zh ;
+    rdfs:comment "标识某事物适用之管辖区的地缘政治区域标识符。"@zh ;
     owl:propertyChainAxiom ( cmns-cxtdsg:isApplicableIn cmns-rga:hasReach cmns-id:isIdentifiedBy ) ;
     skos:definition "indicates the geopolitical region identifier for the jurisdiction in which something is applicable" .
 
 cmns-rga:isJurisdictionOf a owl:ObjectProperty ;
-    rdfs:label "is jurisdiction of" ;
+    rdfs:label "is jurisdiction of",
+        "是……的管辖权（is jurisdiction of）"@zh ;
+    rdfs:comment "将管辖权关联到对其拥有一定程度法律权力的政体、政府实体或法院。"@zh ;
     rdfs:domain cmns-rga:Jurisdiction ;
     rdfs:subPropertyOf cmns-rga:isGovernedBy ;
     owl:inverseOf cmns-rga:hasJurisdiction ;
     skos:definition "relates a jurisdiction to a polity or other government entity or court that has some level of legal authority over it" .
 
 cmns-rga:isRegulatedBy a owl:ObjectProperty ;
-    rdfs:label "is regulated by" ;
+    rdfs:label "is regulated by",
+        "受……监管（is regulated by）"@zh ;
+    rdfs:comment "指明对某事物具有监管权的监管机构。"@zh ;
     rdfs:range cmns-rga:RegulatoryAgency ;
     rdfs:subPropertyOf cmns-pts:hasPartyRole,
         cmns-rga:isGovernedBy ;
@@ -83,7 +91,9 @@ cmns-org:LegalEntity a owl:Class ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] .
 
 cmns-rga:RegulatoryService a owl:Class ;
-    rdfs:label "regulatory service" ;
+    rdfs:label "regulatory service",
+        "监管服务（regulatory service）"@zh ;
+    rdfs:comment "监管机构提供的服务，可包括但不限于检查、监测、监督、测试等能力。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-org:isProvidedBy ;
             owl:someValuesFrom cmns-rga:RegulatoryAgency ],
@@ -91,40 +101,52 @@ cmns-rga:RegulatoryService a owl:Class ;
     skos:definition "service provided by a regulatory agency, which may include, but not be limited to, examination, monitoring, supervision, testing, or other capabilities required to ensure the integrity, fairness, safety, or other capacity of a given industry, organization, or product" .
 
 cmns-rga:isOrganizedIn a owl:ObjectProperty ;
-    rdfs:label "is organized in" ;
+    rdfs:label "is organized in",
+        "组建于（is organized in）"@zh ;
+    rdfs:comment "标识法律实体据以组建的法律所属管辖区。"@zh ;
     rdfs:domain cmns-org:LegalEntity ;
     rdfs:range cmns-rga:Jurisdiction ;
     rdfs:subPropertyOf cmns-rga:isRecognizedIn ;
     skos:definition "indicates the jurisdiction whose laws a legal entity is organized under" .
 
 cmns-rga:regulates a owl:ObjectProperty ;
-    rdfs:label "regulates" ;
+    rdfs:label "regulates",
+        "监管（regulates）"@zh ;
+    rdfs:comment "对……具有监管权或按规则或法律加以指导，对象通常是行业、组织或产品。"@zh ;
     rdfs:domain cmns-rga:RegulatoryAgency ;
     rdfs:subPropertyOf cmns-rga:governs ;
     skos:definition "has regulatory authority over or directs according to rule or law, typically an industry, organization, or product" ;
     cmns-av:adaptedFrom "http://www.merriam-webster.com/dictionary/regulate" .
 
 cmns-rga:hasJurisdiction a owl:ObjectProperty ;
-    rdfs:label "has jurisdiction" ;
+    rdfs:label "has jurisdiction",
+        "具有管辖权（has jurisdiction）"@zh ;
+    rdfs:comment "将政体、政府实体或监管机构关联到其拥有一定程度法律权力的管辖权。"@zh ;
     rdfs:range cmns-rga:Jurisdiction ;
     rdfs:subPropertyOf cmns-rga:governs ;
     skos:definition "relates a polity, government entity or regulatory agency to a jurisdiction over which it has some level of legal authority" .
 
 cmns-rga:hasReach a owl:ObjectProperty ;
-    rdfs:label "has reach" ;
+    rdfs:label "has reach",
+        "具有覆盖范围（has reach）"@zh ;
+    rdfs:comment "标识该管辖权覆盖的地理区域。"@zh ;
     rdfs:domain cmns-rga:Jurisdiction ;
     rdfs:range cmns-loc:GeographicRegion ;
     rdfs:subPropertyOf cmns-cxtdsg:isApplicableIn ;
     skos:definition "indicates the geographic region covered by the jurisdiction" .
 
 cmns-rga:isRecognizedIn a owl:ObjectProperty ;
-    rdfs:label "is recognized in" ;
+    rdfs:label "is recognized in",
+        "获承认于（is recognized in）"@zh ;
+    rdfs:comment "标识法律主体被认为有能力订立合同、开展业务或参与其他活动、或协议可被承认并可能可执行的管辖区。"@zh ;
     rdfs:range cmns-rga:Jurisdiction ;
     rdfs:subPropertyOf cmns-rga:isGovernedBy ;
     skos:definition "indicates the jurisdiction in which a legal person is considered competent to enter into a contract, conduct business, or participate in other activities, or in which an agreement may be acknowledged and possibly enforceable" .
 
 cmns-rga:RegulatoryAgency a owl:Class ;
-    rdfs:label "regulatory agency" ;
+    rdfs:label "regulatory agency",
+        "监管机构（regulatory agency）"@zh ;
+    rdfs:comment "负责以监管或监督身份对某事物行使权力的公共当局或政府机构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onProperty cmns-rga:regulates ],
@@ -145,16 +167,22 @@ cmns-rga:RegulatoryAgency a owl:Class ;
         "regulatory body" .
 
 cmns-rga:governs a owl:ObjectProperty ;
-    rdfs:label "governs" ;
+    rdfs:label "governs",
+        "管辖（governs）"@zh ;
+    rdfs:comment "对……拥有并行使权力。"@zh ;
     skos:definition "has and exercises authority over" .
 
 cmns-rga:isGovernedBy a owl:ObjectProperty ;
-    rdfs:label "is governed by" ;
+    rdfs:label "is governed by",
+        "受……管辖（is governed by）"@zh ;
+    rdfs:comment "将合同、协议、管辖权或其他法律构造关联到规制或监督（管辖）它的规章、政策、程序或法律主体。"@zh ;
     owl:inverseOf cmns-rga:governs ;
     skos:definition "relates a contract, agreement, jurisdiction, or other legal construct and the regulation, policy, procedure, or legal person that regulates or oversees (governs) it" .
 
 cmns-rga:Jurisdiction a owl:Class ;
-    rdfs:label "jurisdiction"@en ;
+    rdfs:label "jurisdiction"@en,
+        "管辖权（jurisdiction）"@zh ;
+    rdfs:comment "法院或监管机构就特定地理区域裁决案件、发布命令以及解释和适用法律的权力。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-rga:hasReach ;
             owl:someValuesFrom cmns-loc:GeographicRegion ],

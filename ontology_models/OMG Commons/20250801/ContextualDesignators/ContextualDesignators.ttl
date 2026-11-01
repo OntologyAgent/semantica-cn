@@ -3,7 +3,7 @@
 @prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
 @prefix cmns-dsg: <https://www.omg.org/spec/Commons/Designators/> .
 @prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -12,11 +12,11 @@
 cmns-cxtdsg: a owl:Ontology ;
     rdfs:label "Commons Contextual Designators Ontology",
         "Commons 上下文指称本体（Commons Contextual Designators Ontology）"@zh ;
-    dct:abstract "The contextual designators ontology extends the designators ontology to incorporate applicable dates and times and facilitate the inclusion of other context that is commonly needed, derived in part from the patterns defined in ISO 11179-3, Metadata Registries." ;
-    dct:contributor "Dean Allemang, Working Ontologist",
+    dcterms:abstract "The contextual designators ontology extends the designators ontology to incorporate applicable dates and times and facilitate the inclusion of other context that is commonly needed, derived in part from the patterns defined in ISO 11179-3, Metadata Registries." ;
+    dcterms:contributor "Dean Allemang, Working Ontologist",
         "Elisa Kendall, Thematix Partners LLC",
         "Pete Rivett, Federated Knowledge, LLC" ;
-    dct:license """Copyright (c) 2020-2025 Thematix Partners LLC
+    dcterms:license """Copyright (c) 2020-2025 Thematix Partners LLC
 		Copyright (c) 2020-2025 Working Ontologist LLC
 		Copyright (c) 2022-2025 Object Management Group, Inc.
 		Copyright (c) 2022-2025 agnos.ai U.K. Ltd
@@ -45,7 +45,9 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         "Copyright (c) 2023-2025 Federated Knowledge, LLC" .
 
 cmns-cxtdsg:ContextualName a owl:Class ;
-    rdfs:label "contextual name" ;
+    rdfs:label "contextual name",
+        "情境化名称（contextual name）"@zh ;
+    rdfs:comment "某人、某地或某物在某情境中为人所知的指称。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ;
             owl:someValuesFrom cmns-cxtdsg:Context ],
@@ -57,48 +59,62 @@ cmns-cxtdsg:ContextualName a owl:Class ;
     skos:scopeNote "This class is designed to be extended to include provenance details regarding the source for a particular name as well as links to the various contexts in which it is used." .
 
 cmns-cxtdsg:isUsedBy a owl:ObjectProperty ;
-    rdfs:label "is used by" ;
+    rdfs:label "is used by",
+        "被……使用（is used by）"@zh ;
+    rdfs:comment "为……发挥功能或用途。"@zh ;
     owl:inverseOf cmns-cxtdsg:uses ;
     skos:definition "serves a function or purpose for" .
 
 cmns-cxtdsg:ContextualDesignation a owl:Class ;
-    rdfs:label "contextual designation" ;
+    rdfs:label "contextual designation",
+        "情境化指称（contextual designation）"@zh ;
+    rdfs:comment "在某情境中适用于某事物的指称。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom cmns-dt:DatePeriod ;
-            owl:onProperty cmns-cxtdsg:hasApplicablePeriod ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-cxtdsg:Context ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:DatePeriod ;
+            owl:onProperty cmns-cxtdsg:hasApplicablePeriod ],
         cmns-dsg:Designation ;
     skos:definition "designation that applies to something in some context" ;
     skos:note "Contextual designators may be structured such that they include other designators, for example, composite identifiers that include a country code to distinguish national identifiers from one another, for example, in the case of some manufacturing, agricultural, or financial instrument identifiers.",
         "Note that the use of the min 0 cardinality restriction in the definition of this class is provided as a reminder that contextual designators are expected, in most cases, to have some sort of context associated with them. There may be cases where the context is limited to a time period, though, and thus additional context may not be required, or where more direct relationships to provenance, governance, or other contextual information is available." .
 
 cmns-cxtdsg:appliesTo a owl:ObjectProperty ;
-    rdfs:label "applies to" ;
+    rdfs:label "applies to",
+        "适用于（applies to）"@zh ;
+    rdfs:comment "标识某情境与之相关、切题或适用的某事物。"@zh ;
     skos:definition "indicates something for which a context is material, germane, or relevant in some way" .
 
 cmns-cxtdsg:hasApplicablePeriod a owl:ObjectProperty ;
-    rdfs:label "has applicable period" ;
+    rdfs:label "has applicable period",
+        "具有适用期间（has applicable period）"@zh ;
+    rdfs:comment "标识某事物可使用、适用、有效或准确相关的日期区间。"@zh ;
     rdfs:range cmns-dt:DatePeriod ;
     rdfs:subPropertyOf cmns-cxtdsg:isApplicableIn,
         cmns-dt:hasDatePeriod ;
     skos:definition "indicates a date period during which something may be used, applies, is valid or is accurate or relevant" .
 
 cmns-cxtdsg:uses a owl:ObjectProperty ;
-    rdfs:label "uses" ;
+    rdfs:label "uses",
+        "使用（uses）"@zh ;
+    rdfs:comment "运用……以完成某项任务或达成某个结果。"@zh ;
     skos:definition "employs to accomplish some task or achieve some result" .
 
 cmns-cxtdsg:Context a owl:Class ;
-    rdfs:label "context" ;
-    dct:source "ISO 1087 Terminology work and terminology science - Vocabulary, Second edition, 2019-09, clause 3.6.5",
+    rdfs:label "context",
+        "情境（context）"@zh ;
+    dcterms:source "ISO 1087 Terminology work and terminology science - Vocabulary, Second edition, 2019-09, clause 3.6.5",
         "ISO/IEC 11179-3 Information technology - Metadata registries (MDR) - Part 3: Registry metamodel and basic attributes, Third edition, 2013-02-15" ;
+    rdfs:comment "某事物适用、存在、发生或被使用的情形或参照框架，有助于说明或解释该事物。"@zh ;
     skos:definition "situation or frame of reference in which something applies, exists, happens, or is used and that helps to illustrate or explain it" ;
     skos:note "From a terminology perspective, context provides information, including but not limited to text, that illustrates a concept or the use of a designation for a given situation." .
 
 cmns-cxtdsg:isApplicableIn a owl:ObjectProperty ;
-    rdfs:label "is applicable in" ;
+    rdfs:label "is applicable in",
+        "适用于情境（is applicable in）"@zh ;
+    rdfs:comment "标识某事物在其中具有相关性的情境。"@zh ;
     owl:inverseOf cmns-cxtdsg:appliesTo ;
     skos:definition "indicates a context in which something is relevant" .
 

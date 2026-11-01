@@ -4,7 +4,7 @@
 @prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/> .
 @prefix cmns-cxtid: <https://www.omg.org/spec/Commons/ContextualIdentifiers/> .
 @prefix cmns-id: <https://www.omg.org/spec/Commons/Identifiers/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -13,10 +13,10 @@
 cmns-cxtid: a owl:Ontology ;
     rdfs:label "Commons Contextual Identifiers Ontology",
         "Commons 上下文标识符本体（Commons Contextual Identifiers Ontology）"@zh ;
-    dct:abstract "The contextual identifiers ontology defines commonly used concepts for describing more complex identifiers, including those that apply for some period of time as well as those that are structured and include other codes or identifiers." ;
-    dct:contributor "Elisa Kendall, Thematix Partners LLC",
+    dcterms:abstract "The contextual identifiers ontology defines commonly used concepts for describing more complex identifiers, including those that apply for some period of time as well as those that are structured and include other codes or identifiers." ;
+    dcterms:contributor "Elisa Kendall, Thematix Partners LLC",
         "Evan Wallace, U.S. National Institute of Standards and Technology (NIST)" ;
-    dct:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
+    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI ;
     rdfs:comment "定义在特定上下文或情境中使用的标识符。"@zh ;
     owl:imports cmns-av:,
         cmns-cds:,
@@ -29,7 +29,9 @@ cmns-cxtid: a owl:Ontology ;
         "Copyright (c) 2022 Thematix Partners LLC" .
 
 cmns-cxtid:ContextualIdentificationScheme a owl:Class ;
-    rdfs:label "contextual identification scheme" ;
+    rdfs:label "contextual identification scheme",
+        "情境化标识方案（contextual identification scheme）"@zh ;
+    rdfs:comment "在一个或多个情境内适用的标识方案。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ;
             owl:someValuesFrom cmns-cxtdsg:Context ],
@@ -37,7 +39,9 @@ cmns-cxtid:ContextualIdentificationScheme a owl:Class ;
     skos:definition "identification scheme that applies within one or more contexts" .
 
 cmns-cxtid:ContextualIdentifier a owl:Class ;
-    rdfs:label "contextual identifier" ;
+    rdfs:label "contextual identifier",
+        "情境化标识符（contextual identifier）"@zh ;
+    rdfs:comment "在特定情境内唯一标识其所关联事物的字符序列。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ;
             owl:someValuesFrom cmns-cxtdsg:Context ],
@@ -47,14 +51,16 @@ cmns-cxtid:ContextualIdentifier a owl:Class ;
     skos:note "The context within which an identifier is unique may be limited to a given data source, registry or jurisdiction, or may be designed to be globally unique such as a legal entity identifier issued by a registrar authorized by the Global LEI Foundation. Such identifiers may have other features associated with them, such as the date they were originally issued, and information related to registration, validation, recency, and so forth." .
 
 cmns-cxtid:StructuredIdentifier a owl:Class ;
-    rdfs:label "structured identifier" ;
+    rdfs:label "structured identifier",
+        "结构化标识符（structured identifier）"@zh ;
+    rdfs:comment "唯一标识其所关联事物的字符序列，其中包含其他代码或标识符，或由其他要素构造而成。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-id:Identifier ;
+            owl:onClass cmns-cds:CodeElement ;
             owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-cds:CodeElement ;
+            owl:onClass cmns-id:Identifier ;
             owl:onProperty cmns-col:comprises ],
         cmns-id:Identifier ;
     skos:definition "sequence of characters uniquely identifying that with which it is associated, that includes other codes or identifiers, or that is constructed from other notions" ;

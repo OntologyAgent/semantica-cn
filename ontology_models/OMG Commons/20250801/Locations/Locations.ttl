@@ -7,7 +7,7 @@
 @prefix cmns-loc: <https://www.omg.org/spec/Commons/Locations/> .
 @prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
 @prefix cmns-txt: <https://www.omg.org/spec/Commons/TextDatatype/> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -17,12 +17,12 @@
 cmns-loc: a owl:Ontology ;
     rdfs:label "Commons Locations Ontology",
         "Commons 位置本体（Commons Locations Ontology）"@zh ;
-    dct:abstract "This ontology provides a very high level definition of geographic region and geopolitical entity related concepts, including, but not limited to, countries, sub-country regions such as states and provinces, and municipalities. The representation was derived from a combination of ISO 3166, the UN M49 Region codes, Geonames, the SWIFT registry, the UN FAO and CIA World Factbook, and other sources. It aims to provide a systematic description of the vocabulary used for country and geopolitical entity representation, useful for mapping among the various names and codes for countries and their subdivisions used world-wide, including but not limited to FIPA and International Olympics codes for countries, (based strictly on requirements for business applications, not broader geographic or political uses).The terms defined herein terms are reused by the OMG's LCC controlled vocabulary representing ISO 3166 country and country subdivision codes, and may be mapped to other standards and de facto standards such as those mentioned." ;
-    dct:contributor "Elisa Kendall, Thematix Partners LLC",
+    dcterms:abstract "This ontology provides a very high level definition of geographic region and geopolitical entity related concepts, including, but not limited to, countries, sub-country regions such as states and provinces, and municipalities. The representation was derived from a combination of ISO 3166, the UN M49 Region codes, Geonames, the SWIFT registry, the UN FAO and CIA World Factbook, and other sources. It aims to provide a systematic description of the vocabulary used for country and geopolitical entity representation, useful for mapping among the various names and codes for countries and their subdivisions used world-wide, including but not limited to FIPA and International Olympics codes for countries, (based strictly on requirements for business applications, not broader geographic or political uses).The terms defined herein terms are reused by the OMG's LCC controlled vocabulary representing ISO 3166 country and country subdivision codes, and may be mapped to other standards and de facto standards such as those mentioned." ;
+    dcterms:contributor "Elisa Kendall, Thematix Partners LLC",
         "Evan Wallace, U.S. National Institute of Standards and Technology (NIST)",
         "Pete Rivett, Federated Knowledge, LLC",
         "Roy Bell, Thematix Partners LLC" ;
-    dct:license """Copyright (c) 2015-2025 Adaptive Analytics, Inc.
+    dcterms:license """Copyright (c) 2015-2025 Adaptive Analytics, Inc.
 		Copyright (c) 2015-2025 EDM Council, Inc.
 		Copyright (c) 2015-2025 Object Management Group, Inc.
 		Copyright (c) 2015-2025 Thematix Partners LLC
@@ -37,7 +37,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		
 		See https://opensource.org/licenses/MIT.""" ;
-    dct:references <http://www.w3.org/2003/01/geo/wgs84_pos#> ;
+    dcterms:references <http://www.w3.org/2003/01/geo/wgs84_pos#> ;
     rdfs:comment "定义地址、地理区域、位置及其关系。"@zh ;
     owl:imports cmns-av:,
         cmns-cls:,
@@ -59,14 +59,18 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         "Copyright (c) 2021-2025 Federated Knowledge, LLC" .
 
 cmns-loc:FederalCapitalArea a owl:Class ;
-    rdfs:label "federal capital area" ;
+    rdfs:label "federal capital area",
+        "联邦首都区（federal capital area）"@zh ;
+    rdfs:comment "作为联邦政府所在地的市政区或首都城市，或包含该市政区的国家行政区划。"@zh ;
     rdfs:subClassOf cmns-loc:CountrySubdivision ;
     skos:definition "country subdivision that is or includes the municipality or capital city that acts as the seat of the federal government" ;
     skos:example "Examples include the District of Columbia in the US, and the Canberra area in Australia." ;
     cmns-av:explanatoryNote "The capital administrative region of some federations includes those for which the capital is situated other than within one of the states or provinces which make up the country as a whole." .
 
 cmns-loc:FederalState a owl:Class ;
-    rdfs:label "federal state" ;
+    rdfs:label "federal state",
+        "联邦州（federal state）"@zh ;
+    rdfs:comment "自治的地缘政治单位，构成被承认为国家的更大地缘政治单位的一部分。"@zh ;
     rdfs:subClassOf cmns-loc:CountrySubdivision ;
     skos:definition "self-governing geopolitical unit which forms part of a wider geopolitical unit that is recognized as a country" ;
     cmns-av:explanatoryNote "This type of entity, variously referred to as a state, province or canton, has a level of self government including its own legal system and court jurisdiction, but cedes a level of autonomy to the federation of which it forms a part." ;
@@ -75,9 +79,11 @@ cmns-loc:FederalState a owl:Class ;
         "state" .
 
 cmns-loc:GeodeticCoordinateSystem a owl:Class ;
-    rdfs:label "geodetic coordinate system" ;
-    dct:source <http://edndoc.esri.com/arcsde/9.1/general_topics/what_coord_sys.htm>,
+    rdfs:label "geodetic coordinate system",
+        "大地坐标系（geodetic coordinate system）"@zh ;
+    dcterms:source <http://edndoc.esri.com/arcsde/9.1/general_topics/what_coord_sys.htm>,
         <https://pubs.usgs.gov/circ/1983/0878b/report.pdf> ;
+    rdfs:comment "以大地测量方式精确表示地球或其他行星体上位置的三维参考系。"@zh ;
     rdfs:subClassOf cmns-col:Arrangement ;
     skos:definition "three-dimensional reference system that is a global frame of reference for precisely representing the position of locations on Earth or other planetary bodies by means of geodetic coordinates" ;
     skos:example "The three most widely used systems for indicating point locations in the United States are (1) latitude and longitude [and optionally elevation], (2) Universal Transverse Mercator (UTM) system, and (3) State Plane Coordinate Systems (SPCS)." ;
@@ -85,7 +91,9 @@ cmns-loc:GeodeticCoordinateSystem a owl:Class ;
     cmns-av:explanatoryNote "Geodetic coordinates are crucial to any technology or technique based on spatial location, including geodesy, navigation, surveying, geographic information systems, remote sensing, and cartography." .
 
 cmns-loc:GeographicRegionIdentifier a owl:Class ;
-    rdfs:label "geographic region identifier" ;
+    rdfs:label "geographic region identifier",
+        "地理区域标识符（geographic region identifier）"@zh ;
+    rdfs:comment "为在某情境内唯一标识地理区域而分配的代码或其他标识符字符串。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-id:identifies ;
             owl:someValuesFrom cmns-loc:GeographicRegion ],
@@ -101,21 +109,27 @@ cmns-loc:GeographicRegionIdentifier a owl:Class ;
     skos:definition "string of letters that indicates a code or other identifier for geographical region, assigned for the purpose of uniquely identifying it within some context" .
 
 cmns-loc:Territory a owl:Class ;
-    rdfs:label "territory" ;
+    rdfs:label "territory",
+        "领土（territory）"@zh ;
+    rdfs:comment "受某国家或其他实体主权、控制或管辖的地理区域，通常被视为特殊地缘政治利益区域。"@zh ;
     rdfs:subClassOf cmns-loc:GeographicRegion ;
     skos:definition "geographic area, typically considered an area of special geopolitical interest, subject to the sovereignty, control, or jurisdiction of a state or other entity" ;
     skos:note "Certain territories are included in the ISO 3166-2 code set without an alpha 2 or alpha 3 code. In these cases, the numeric code for the subregion may have more than 3 characters in their corresponding numeric region codes." .
 
 cmns-loc:VirtualLocation a owl:Class ;
-    rdfs:label "virtual location" ;
+    rdfs:label "virtual location",
+        "虚拟位置（virtual location）"@zh ;
+    rdfs:comment "不存在于任何单一物理位置的地点。"@zh ;
     rdfs:subClassOf cmns-loc:Location ;
     owl:disjointWith cmns-loc:PhysicalLocation ;
     skos:definition "place that does not exist in any single physical location" ;
     skos:example "a network-based location without geographic boundaries" .
 
 cmns-loc:hasAltitude a owl:DatatypeProperty ;
-    rdfs:label "has altitude" ;
-    dct:source <https://support.esri.com/en-us/gis-dictionary/altitude> ;
+    rdfs:label "has altitude",
+        "具有海拔（has altitude）"@zh ;
+    dcterms:source <https://support.esri.com/en-us/gis-dictionary/altitude> ;
+    rdfs:comment "某点高出参考面的高度或垂直标高。"@zh ;
     rdfs:range xsd:decimal ;
     rdfs:seeAlso <http://www.w3.org/2003/01/geo/wgs84_pos#alt> ;
     rdfs:subPropertyOf cmns-qtu:hasNumericValue ;
@@ -123,13 +137,17 @@ cmns-loc:hasAltitude a owl:DatatypeProperty ;
     skos:note "Altitude measurements are usually based on a given reference datum, such as mean sea level." .
 
 cmns-loc:hasBusinessCenter a owl:ObjectProperty ;
-    rdfs:label "has business center" ;
+    rdfs:label "has business center",
+        "具有商业中心（has business center）"@zh ;
+    rdfs:comment "标识开展商业活动的位置，进而确定用于调整日期的商业日历。"@zh ;
     rdfs:range cmns-loc:BusinessCenter ;
     rdfs:subPropertyOf cmns-loc:hasMunicipality ;
     skos:definition "identifies a location where business is conducted, and hence the business calendar used to adjust dates" .
 
 cmns-loc:hasCityName a owl:DatatypeProperty ;
-    rdfs:label "has city name" ;
+    rdfs:label "has city name",
+        "具有城市名称（has city name）"@zh ;
+    rdfs:comment "标识一个通常为大型、永久且人口稠密的定居地的名称。"@zh ;
     rdfs:subPropertyOf cmns-dsg:hasTextualName ;
     skos:definition "indicates the name of a typically large, permanent, and densely settled place" ;
     cmns-av:adaptedFrom "https://en.wikipedia.org/wiki/City"^^xsd:anyURI,
@@ -138,55 +156,73 @@ cmns-loc:hasCityName a owl:DatatypeProperty ;
     cmns-av:usageNote "This property should be used in cases where a formal individual for the business center or municipality is not available. Note that Geonames could be used as a source in cases where an individual is desired. Use the property cmns-loc;hasMunicipality in cases where an individual is available. Also note that with respect to an address, this property may stand in for any village, town, or city of any size." .
 
 cmns-loc:hasCountry a owl:ObjectProperty ;
-    rdfs:label "has country" ;
+    rdfs:label "has country",
+        "具有国家（has country）"@zh ;
+    rdfs:comment "标识一个国家，如联合国承认的国家。"@zh ;
     rdfs:range cmns-loc:Country ;
     rdfs:subPropertyOf cmns-loc:hasRegion ;
     skos:definition "indicates a country, such as one that is recognized by the United Nations" ;
     cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/current-versions/level-1-data-lei-cdf-3-1-format"^^xsd:anyURI .
 
 cmns-loc:hasCounty a owl:ObjectProperty ;
-    rdfs:label "has county" ;
+    rdfs:label "has county",
+        "具有县（has county）"@zh ;
+    rdfs:comment "标识提供特定地方政府服务的国家行政区划。"@zh ;
     rdfs:range cmns-loc:County ;
     rdfs:subPropertyOf cmns-loc:hasSubdivision ;
     skos:definition "indicates a country subdivision providing certain local governmental services" .
 
 cmns-loc:hasCoverageArea a owl:ObjectProperty ;
-    rdfs:label "has coverage area" ;
+    rdfs:label "has coverage area",
+        "具有覆盖区域（has coverage area）"@zh ;
+    rdfs:comment "标识某项服务提供、某项政策适用或某事物可用的地理区域。"@zh ;
     rdfs:range cmns-loc:GeographicRegion ;
     rdfs:subPropertyOf cmns-loc:hasRegion ;
     skos:definition "indicates a geographic region in which some service is provided, or to which some policy applies, or in which something is available" .
 
 cmns-loc:hasLocation a owl:ObjectProperty ;
-    rdfs:label "has location" ;
+    rdfs:label "has location",
+        "具有位置（has location）"@zh ;
+    rdfs:comment "将某事物关联到一个位置，可为物理或虚拟位置。"@zh ;
     rdfs:range cmns-loc:Location ;
     skos:definition "relates something to a location, which might be physical or virtual" .
 
 cmns-loc:hasMaximumLatitude a owl:DatatypeProperty ;
-    rdfs:label "has maximum latitude" ;
+    rdfs:label "has maximum latitude",
+        "具有最大纬度（has maximum latitude）"@zh ;
+    rdfs:comment "标识某范围内纬度的最高值。"@zh ;
     rdfs:range xsd:decimal ;
     rdfs:subPropertyOf cmns-loc:hasLatitude ;
     skos:definition "indicates the highest value / maximum for latitude with respect to a range" .
 
 cmns-loc:hasMaximumLongitude a owl:DatatypeProperty ;
-    rdfs:label "has maximum longitude" ;
+    rdfs:label "has maximum longitude",
+        "具有最大经度（has maximum longitude）"@zh ;
+    rdfs:comment "标识某范围内经度的最高值。"@zh ;
     rdfs:range xsd:decimal ;
     rdfs:subPropertyOf cmns-loc:hasLongitude ;
     skos:definition "indicates the highest value / maximum for longitude with respect to a range" .
 
 cmns-loc:hasMinimumLatitude a owl:DatatypeProperty ;
-    rdfs:label "has minimum latitude" ;
+    rdfs:label "has minimum latitude",
+        "具有最小纬度（has minimum latitude）"@zh ;
+    rdfs:comment "标识某范围内纬度的最低值。"@zh ;
     rdfs:range xsd:decimal ;
     rdfs:subPropertyOf cmns-loc:hasLatitude ;
     skos:definition "indicates the lowest value / latitude with respect to a range" .
 
 cmns-loc:hasMinimumLongitude a owl:DatatypeProperty ;
-    rdfs:label "has minimum longitude" ;
+    rdfs:label "has minimum longitude",
+        "具有最小经度（has minimum longitude）"@zh ;
+    rdfs:comment "标识某范围内经度的最低值。"@zh ;
     rdfs:range xsd:decimal ;
     rdfs:subPropertyOf cmns-loc:hasLongitude ;
     skos:definition "indicates the lowest value / longitude with respect to a range" .
 
 cmns-loc:hasPrimarySubdivision a owl:ObjectProperty ;
-    rdfs:label "has primary subdivision" ;
+    rdfs:label "has primary subdivision",
+        "具有主要行政区划（has primary subdivision）"@zh ;
+    rdfs:comment "标识一个国家最直接、最主要的行政区划，如州或省。"@zh ;
     rdfs:range cmns-loc:CountrySubdivision ;
     rdfs:subPropertyOf cmns-col:hasDirectPart,
         cmns-loc:hasSubdivision ;
@@ -194,7 +230,9 @@ cmns-loc:hasPrimarySubdivision a owl:ObjectProperty ;
     cmns-av:usageNote "This property is intended for use when using RDF entailment or other inferencing to query for only the primary subdivisions of a geopolitical entity and eliminate references to smaller subdivisions, such as counties, from being returned in results, if present in the data set." .
 
 cmns-loc:isSubregionOf a owl:ObjectProperty ;
-    rdfs:label "is subregion of" ;
+    rdfs:label "is subregion of",
+        "是……的子区域（is subregion of）"@zh ;
+    rdfs:comment "将一个地理区域关联到它所属的更大地理区域。"@zh ;
     rdfs:domain cmns-loc:GeographicRegion ;
     rdfs:range cmns-loc:GeographicRegion ;
     rdfs:subPropertyOf cmns-col:isPartOf ;
@@ -211,13 +249,17 @@ cmns-loc:isSubregionOf a owl:ObjectProperty ;
     skos:note "WGS 84 provides the 'long' property as an RDF property, so we declare it here to enable use in OWL. However, we have not made it equivalent to hasLongitude due to the potential semantic clash for people using 'long' with string values or numeric values with different units." .
 
 cmns-loc:BusinessCenter a owl:Class ;
-    rdfs:label "business center" ;
+    rdfs:label "business center",
+        "商业中心（business center）"@zh ;
+    rdfs:comment "开展商业活动的市政区，尤指被视为金融中心的市政区。"@zh ;
     rdfs:subClassOf cmns-loc:Municipality ;
     skos:definition "municipality where business is conducted, especially one that is considered a financial center" ;
     cmns-av:adaptedFrom "FpML Business Center and related codes, see http://www.fpml.org/coding-scheme/business-center-7-14.xml" .
 
 cmns-loc:Country a owl:Class ;
-    rdfs:label "country" ;
+    rdfs:label "country",
+        "国家（country）"@zh ;
+    rdfs:comment "代表独立领土实体、政治实体或属地的地缘政治实体。"@zh ;
     rdfs:seeAlso <https://datahelpdesk.worldbank.org/knowledgebase/articles/906519>,
         <https://www.un.org/development/desa/dpad/wp-content/uploads/sites/45/2017wesp_annex_en.pdf> ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -229,17 +271,23 @@ cmns-loc:Country a owl:Class ;
     cmns-av:explanatoryNote "It may be an independent sovereign state or part of a larger state, as a non-sovereign or formerly sovereign political division, a physical territory with a government, or a geographic region associated with sets of previously independent or differently associated peoples with distinct political characteristics." .
 
 cmns-loc:County a owl:Class ;
-    rdfs:label "county" ;
+    rdfs:label "county",
+        "县（county）"@zh ;
+    rdfs:comment "国家、州或省的政治行政划分，提供特定的地方政府服务。"@zh ;
     rdfs:subClassOf cmns-loc:CountrySubdivision ;
     skos:definition "political and administrative division of a country, state or province, providing certain local governmental services" .
 
 cmns-loc:GeographicRegionIdentificationScheme a owl:Class ;
-    rdfs:label "geographic region identification scheme" ;
+    rdfs:label "geographic region identification scheme",
+        "地理区域标识方案（geographic region identification scheme）"@zh ;
+    rdfs:comment "专用于唯一标识地理区域的标识方案。"@zh ;
     rdfs:subClassOf cmns-id:IdentificationScheme ;
     skos:definition "identification scheme dedicated to the unique identification of geographic regions" .
 
 cmns-loc:GeographicRegionKind a owl:Class ;
-    rdfs:label "geographic region kind" ;
+    rdfs:label "geographic region kind",
+        "地理区域类别（geographic region kind）"@zh ;
+    rdfs:comment "地理区域的分类符，包括但不限于地缘政治实体的细分。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom cmns-loc:GeographicRegion ;
             owl:onProperty cmns-cls:classifies ],
@@ -247,23 +295,31 @@ cmns-loc:GeographicRegionKind a owl:Class ;
     skos:definition "classifier for a geographic region, including but not limited to a subdivision of a geopolitical entity, (noting that there may be more than one kind for a given country or other entity)" .
 
 cmns-loc:PhysicalLocation a owl:Class ;
-    rdfs:label "physical location" ;
+    rdfs:label "physical location",
+        "物理位置（physical location）"@zh ;
+    rdfs:comment "物理空间中的位置。"@zh ;
     rdfs:subClassOf cmns-loc:Location ;
     skos:definition "location in physical space" .
 
 cmns-loc:Region a owl:Class ;
-    rdfs:label "region" ;
+    rdfs:label "region",
+        "区域（region）"@zh ;
+    rdfs:comment "表面、空间或物体中连续的部分。"@zh ;
     skos:definition "area that is a continuous part of a surface, space, or body" .
 
 cmns-loc:hasMunicipality a owl:ObjectProperty ;
-    rdfs:label "has municipality" ;
+    rdfs:label "has municipality",
+        "具有市政区（has municipality）"@zh ;
+    rdfs:comment "标识一个商业中心、城市或市政区。"@zh ;
     rdfs:range cmns-loc:Municipality ;
     rdfs:subPropertyOf cmns-loc:hasRegion ;
     skos:definition "indicates a business center, city, or municipality" ;
     cmns-av:usageNote "Note that certain greater metropolitan areas span multiple counties or states (e.g., the greater Washington, D.C. area, which includes parts of Maryland and Virginia, and divided/disputed cities such as Jerusalem), thus hasMunicipality is a subproperty of hasRegion rather than hasSubdivision." .
 
 cmns-loc:hasSubregion a owl:ObjectProperty ;
-    rdfs:label "has subregion" ;
+    rdfs:label "has subregion",
+        "具有子区域（has subregion）"@zh ;
+    rdfs:comment "将一个地理区域关联到其指定的子区域。"@zh ;
     rdfs:domain cmns-loc:GeographicRegion ;
     rdfs:range cmns-loc:GeographicRegion ;
     rdfs:subPropertyOf cmns-col:hasPart,
@@ -271,13 +327,17 @@ cmns-loc:hasSubregion a owl:ObjectProperty ;
     skos:definition "relates a geographic region to another geographic region that is a designated subregion of it" .
 
 cmns-loc:isIndependent a owl:DatatypeProperty ;
-    rdfs:label "is independent" ;
+    rdfs:label "is independent",
+        "独立（is independent）"@zh ;
+    rdfs:comment "表明某地缘政治实体是独立的还是被视为另一地缘政治实体（如国家）的一部分。"@zh ;
     rdfs:domain cmns-loc:GeopoliticalEntity ;
     rdfs:range xsd:boolean ;
     skos:definition "indicates whether a geopolitical entity stands alone or is considered part of another geopolitical entity (e.g., a country)" .
 
 cmns-loc:Municipality a owl:Class ;
-    rdfs:label "municipality" ;
+    rdfs:label "municipality",
+        "市政区（municipality）"@zh ;
+    rdfs:comment "具有法人地位、通常拥有自治权或管辖权的城市行政划分。"@zh ;
     rdfs:subClassOf cmns-loc:CountrySubdivision ;
     skos:definition "urban administrative division having corporate status and usually powers of self-government or jurisdiction" ;
     skos:example "A municipality can be any political jurisdiction from a sovereign state, such as the Principality of Monaco, or a small village, such as West Hampton Dunes, New York." ;
@@ -288,8 +348,10 @@ cmns-loc:Municipality a owl:Class ;
     cmns-av:explanatoryNote "A municipality is a general-purpose administrative subdivision, as opposed to a special-purpose district." .
 
 cmns-loc:hasLatitude a owl:DatatypeProperty ;
-    rdfs:label "has latitude" ;
-    dct:source <https://support.esri.com/en-us/gis-dictionary/latitude> ;
+    rdfs:label "has latitude",
+        "具有纬度（has latitude）"@zh ;
+    dcterms:source <https://support.esri.com/en-us/gis-dictionary/latitude> ;
+    rdfs:comment "某点处垂直于地球（或其他天体）表面的直线与赤道平面相交所成的角。"@zh ;
     rdfs:range [ a rdfs:Datatype ;
             owl:onDatatype xsd:decimal ;
             owl:withRestrictions ( [ xsd:maxInclusive 90.0 ] [ xsd:minInclusive -90.0 ] ) ] ;
@@ -299,8 +361,10 @@ cmns-loc:hasLatitude a owl:DatatypeProperty ;
     skos:note "Points north of the Equator have positive latitude values, while points south have negative values. Latitude values range from minus 90 to plus 90 degrees. Lines of latitude are also called parallels because a particular value of latitude forms a circle parallel to the Equator." .
 
 cmns-loc:hasLongitude a owl:DatatypeProperty ;
-    rdfs:label "has longitude" ;
-    dct:source <https://support.esri.com/en-us/gis-dictionary/longitude> ;
+    rdfs:label "has longitude",
+        "具有经度（has longitude）"@zh ;
+    dcterms:source <https://support.esri.com/en-us/gis-dictionary/longitude> ;
+    rdfs:comment "过某点及南北极的平面与参考平面之间的夹角。"@zh ;
     rdfs:range [ a rdfs:Datatype ;
             owl:onDatatype xsd:decimal ;
             owl:withRestrictions ( [ xsd:maxInclusive 180.0 ] [ xsd:minInclusive -180.0 ] ) ] ;
@@ -310,29 +374,39 @@ cmns-loc:hasLongitude a owl:DatatypeProperty ;
     skos:note "The reference plane is known as the prime meridian. The most common prime meridian passes through Greenwich, United Kingdom. Other examples of prime meridians in use pass through Paris and Bogota. Longitude values range from minus 180 to plus 180 degrees." .
 
 cmns-loc:hasSubdivision a owl:ObjectProperty ;
-    rdfs:label "has subdivision" ;
+    rdfs:label "has subdivision",
+        "具有行政区划（has subdivision）"@zh ;
+    rdfs:comment "标识国家行政区划（州、省、地区等）。"@zh ;
     rdfs:range cmns-loc:CountrySubdivision ;
     rdfs:subPropertyOf cmns-loc:hasRegion ;
     skos:definition "identifies a country subdivision (state, province, region, etc.)" ;
     cmns-av:adaptedFrom "https://www.gleif.org/en/about-lei/common-data-file-format/current-versions/level-1-data-lei-cdf-3-1-format"^^xsd:anyURI .
 
 cmns-loc:GeopoliticalEntity a owl:Class ;
-    rdfs:label "geopolitical entity" ;
+    rdfs:label "geopolitical entity",
+        "地缘政治实体（geopolitical entity）"@zh ;
+    rdfs:comment "与某种政治结构相关联的地理区域。"@zh ;
     rdfs:subClassOf cmns-loc:GeographicRegion ;
     skos:definition "geographic area that represents a geophysical location associated with some form of political structure" ;
     skos:example "A geopolitical entity may be any country, federal province, city or other administrative unit that represents a geophysical location" .
 
 cmns-loc:Location a owl:Class ;
-    rdfs:label "location" ;
+    rdfs:label "location",
+        "位置（location）"@zh ;
+    rdfs:comment "时间和/或空间中的地点或方位，包括虚拟地点。"@zh ;
     skos:definition "place or position in time and/or space, including a virtual place" .
 
 cmns-loc:hasRegion a owl:ObjectProperty ;
-    rdfs:label "has region" ;
+    rdfs:label "has region",
+        "具有区域（has region）"@zh ;
+    rdfs:comment "标识地球表面一块划定的区域。"@zh ;
     rdfs:range cmns-loc:GeographicRegion ;
     skos:definition "indicates a demarcated area on the surface of the Earth" .
 
 cmns-loc:CountrySubdivision a owl:Class ;
-    rdfs:label "country subdivision" ;
+    rdfs:label "country subdivision",
+        "国家行政区划（country subdivision）"@zh ;
+    rdfs:comment "作为国家、属地或其他特殊地缘政治利益区域的法定划分的地缘政治实体。"@zh ;
     rdfs:seeAlso <https://www.census.gov/programs-surveys/popest/guidance-geographies/terms-and-definitions.html> ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-cls:isClassifiedBy ;
@@ -342,8 +416,10 @@ cmns-loc:CountrySubdivision a owl:Class ;
     cmns-av:explanatoryNote "In the US, the US Census Bureau and other federal agencies may group some number of other subdivisions for statistical analysis and reporting purposes, ranging from multiple states to minor civil divisions." .
 
 cmns-loc:GeographicRegion a owl:Class ;
-    rdfs:label "geographic region" ;
-    dct:source <https://www.nationalgeographic.org/encyclopedia/region/> ;
+    rdfs:label "geographic region",
+        "地理区域（geographic region）"@zh ;
+    dcterms:source <https://www.nationalgeographic.org/encyclopedia/region/> ;
+    rdfs:comment "具有共同特征的陆地区域。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onProperty cmns-dsg:hasTextualName ],

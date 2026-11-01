@@ -56,7 +56,7 @@
 
 | 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
 |---|---|---|---|
-| fibo-ind-fx-fx:hasExchangeRateQuotationSource | 具有汇率报价来源（has exchange rate quotation source） | 标识报价汇率的来源。 | 值域（range）：N8e83dc477e124c5381c1a1b4cdd36635；子属性（subPropertyOf）：引用 |
+| fibo-ind-fx-fx:hasExchangeRateQuotationSource | 具有汇率报价来源（has exchange rate quotation source） | 标识报价汇率的来源。 | 值域（range）：N4638095598ba4c01abc00fcb71fafe2c；子属性（subPropertyOf）：引用 |
 | fibo-ind-fx-fx:hasQuotationBlockAmountBasis | 具有报价金额基准（has quotation block amount basis） | 标识适用所述即期汇率的交易中将被兑换的交易货币金额。 | 定义域（domain）：报价汇率（quoted exchange rate）；值域（range）：货币数量 |
 | fibo-ind-fx-fx:hasQuotationSettlementBasis | 具有报价结算基准（has quotation settlement basis） | 标识适用所述即期汇率的交易的结算周期。 | 定义域（domain）：报价汇率（quoted exchange rate）；值域（range）：时长；子属性（subPropertyOf）：具有时长 |
 | fibo-ind-fx-fx:hasQuoteCurrency | 具有报价货币（has quote currency） | 标识汇率中的报价货币；该货币的 R 单位代表一单位基准货币。 | 值域（range）：货币；子属性（subPropertyOf）：具有交易货币 |
@@ -65,13 +65,15 @@
 
 ## 5. 公理约定（Axioms）
 
-- 货币远期汇率（currency forward rate）：具有结算日 only 日期
-- 货币远期汇率波动率（currency forward rate volatility）：是……的波动率 only 货币远期汇率（currency forward rate）
-- 货币即期波动率（currency spot volatility）：是……的波动率 only 货币即期汇率（currency spot rate）
-- 汇率结构（exchange rate structure）：具有成员 some 汇率
-- 汇率波动率（exchange rate volatility）：具有自变量 some 汇率结构（exchange rate structure）
-- 报价汇率（quoted exchange rate）：具有报价货币（has quote currency） 货币 =1
-- 报价汇率（quoted exchange rate）：具有汇率报价来源（has exchange rate quotation source） some（restriction）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **货币远期汇率（currency forward rate）**：**具有结算日（hasSettlementDate）**的所有取值只能是**日期（Date）**。
+- **货币远期汇率波动率（currency forward rate volatility）**：**是……的波动率（isVolatilityOf）**的所有取值只能是**货币远期汇率（currency forward rate）**。
+- **货币即期波动率（currency spot volatility）**：**是……的波动率（isVolatilityOf）**的所有取值只能是**货币即期汇率（currency spot rate）**。
+- **汇率结构（exchange rate structure）**：**具有成员（hasMember）**至少有一个取值，类型是**汇率（ExchangeRate）**。
+- **汇率波动率（exchange rate volatility）**：**具有自变量（hasArgument）**至少有一个取值，类型是**汇率结构（exchange rate structure）**。
+- **报价汇率（quoted exchange rate）**：**具有报价货币（has quote currency）**恰好有 1 个**货币（Currency）**。
+- **报价汇率（quoted exchange rate）**：**具有汇率报价来源（has exchange rate quotation source）**至少有一个取值，该取值满足：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，14 个）
 

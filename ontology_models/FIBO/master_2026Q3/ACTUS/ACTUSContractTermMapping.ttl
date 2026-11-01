@@ -327,12 +327,12 @@ fibo-actus-acv:AlgorithmicContractCategory a owl:Class ;
 
 fibo-actus-acv:AlgorithmicContractFamily a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-fnd-acc-csf:CashFlowStructure ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-doc:refersTo ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fnd-agr-ctr:WrittenContract fibo-fbc-pas-caa:InvestmentOrDepositAccount ) ] ] .
+                    owl:unionOf ( fibo-fnd-agr-ctr:WrittenContract fibo-fbc-pas-caa:InvestmentOrDepositAccount ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fnd-acc-csf:CashFlowStructure ] .
 
 fibo-actus-actm: a owl:Ontology ;
     rdfs:label "ACTUS Contract Term Mapping",

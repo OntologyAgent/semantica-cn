@@ -48,23 +48,25 @@
 
 ## 5. 公理约定（Axioms）
 
-- ACTUS 营业日惯例（ACTUS business day convention）：restriction
-- ACTUS 营业日惯例（ACTUS business day convention）：restriction
-- ACTUS 日历代码（ACTUS calendar code）：restriction
-- ACTUS 日历代码（ACTUS calendar code）：restriction
-- ACTUS 合同角色分类符（ACTUS contract role classifier）：restriction
-- ACTUS 合同角色分类符（ACTUS contract role classifier）：分类 some 角色（role）
-- ACTUS 合同角色分类符（ACTUS contract role classifier）：指代 some 角色（role）
-- ACTUS 合同条款（ACTUS contract term）：restriction
-- ACTUS 合同条款（ACTUS contract term）：restriction
-- ACTUS 合同条款（ACTUS contract term）：restriction
-- ACTUS 合同条款（ACTUS contract term）：刻画 some ACTUS 合同类型
-- ACTUS 合同条款（ACTUS contract term）：由……分类 some ACTUS 字典术语组（ACTUS dictionary term group）
-- ACTUS 合同条款（ACTUS contract term）：具有标签 some xsd:string
-- ACTUS 合同条款（ACTUS contract term）：具有文本名称 some xsd:string
-- ACTUS 字典术语组（ACTUS dictionary term group）：restriction
-- ACTUS 字典术语组（ACTUS dictionary term group）：restriction
-- ACTUS 字典术语组（ACTUS dictionary term group）：分类 some ACTUS 合同条款（ACTUS contract term）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **ACTUS 营业日惯例（ACTUS business day convention）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **ACTUS 营业日惯例（ACTUS business day convention）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **ACTUS 日历代码（ACTUS calendar code）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **ACTUS 日历代码（ACTUS calendar code）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **ACTUS 合同角色分类符（ACTUS contract role classifier）**：**由……分类（isClassifiedBy）**的取值固定为 ACTUSContractTermGroup-ContractIdentification。
+- **ACTUS 合同角色分类符（ACTUS contract role classifier）**：**分类（classifies）**至少有一个取值，类型是**角色（role）**。
+- **ACTUS 合同角色分类符（ACTUS contract role classifier）**：**指代（denotes）**至少有一个取值，类型是**角色（role）**。
+- **ACTUS 合同条款（ACTUS contract term）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **ACTUS 合同条款（ACTUS contract term）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **ACTUS 合同条款（ACTUS contract term）**：**具有参数名（has parameter name）**存在取值约束。
+- **ACTUS 合同条款（ACTUS contract term）**：**刻画（characterizes）**至少有一个取值，类型是**ACTUS 合同类型（ACTUSContractType）**。
+- **ACTUS 合同条款（ACTUS contract term）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**ACTUS 字典术语组（ACTUS dictionary term group）**。
+- **ACTUS 合同条款（ACTUS contract term）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **ACTUS 合同条款（ACTUS contract term）**：**具有文本名称（hasTextualName）**至少有一个取值，类型是**xsd:string（string）**。
+- **ACTUS 字典术语组（ACTUS dictionary term group）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **ACTUS 字典术语组（ACTUS dictionary term group）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **ACTUS 字典术语组（ACTUS dictionary term group）**：**分类（classifies）**至少有一个取值，类型是**ACTUS 合同条款（ACTUS contract term）**。
 
 ## 6. 依赖（owl:imports，13 个）
 

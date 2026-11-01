@@ -68,20 +68,22 @@
 
 ## 5. 公理约定（Axioms）
 
-- 合同性控制（contractual control）：由……授予 some 合同
-- 受控方（controlled party）：由…扮演（is played by） 参与方（party） =1
-- 法院指定控制（court appointed control）：由……授予 only 法院
-- 事实控制权益方（de facto controlling interest party）：在……中为控制方 some 事实控制
-- 法律控制权益方（de jure controlling interest party）：在……中为控制方 some 法律控制
-- 实体控制方（entity controlling party）：是……的控制方 some 法律实体
-- 基于影响力的事实控制（influence-based de facto control）：具有控制中参与方 some 基于影响力的事实控制方（influence-based de facto controlling party）
-- 基于影响力的事实控制方（influence-based de facto controlling party）：在……中为控制方 some 基于影响力的事实控制（influence-based de facto control）
-- 基于投资的事实控制（investment-based de facto control）：由……授予 only 投资权益
-- 基于投资的事实控制（investment-based de facto control）：具有控制中参与方 some 基于投资的事实控制权益方（investment-based de facto controlling interest party）
-- 基于投资的事实控制权益方（investment-based de facto controlling interest party）：在……中为控制方 only 基于投资的事实控制（investment-based de facto control）
-- 共同控制方（joint controlling party）：由…扮演（is played by） only 控制联盟（controlling alliance）
-- 共同控制方（joint controlling party） 与 单独控制方（sole controlling party） 互斥（disjointWith）
-- 接管人（receiver）：在……中为控制方 some 法院指定控制（court appointed control）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **合同性控制（contractual control）**：**由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
+- **受控方（controlled party）**：**由…扮演（is played by）**恰好有 1 个**参与方（party）**。
+- **法院指定控制（court appointed control）**：**由……授予（isConferredBy）**的所有取值只能是**法院（CourtOfLaw）**。
+- **事实控制权益方（de facto controlling interest party）**：**在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**事实控制（DeFactoControl）**。
+- **法律控制权益方（de jure controlling interest party）**：**在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**法律控制（DeJureControl）**。
+- **实体控制方（entity controlling party）**：**是……的控制方（isControllingPartyOf）**至少有一个取值，类型是**法律实体（LegalEntity）**。
+- **基于影响力的事实控制（influence-based de facto control）**：**具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**基于影响力的事实控制方（influence-based de facto controlling party）**。
+- **基于影响力的事实控制方（influence-based de facto controlling party）**：**在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**基于影响力的事实控制（influence-based de facto control）**。
+- **基于投资的事实控制（investment-based de facto control）**：**由……授予（isConferredBy）**的所有取值只能是**投资权益（InvestmentEquity）**。
+- **基于投资的事实控制（investment-based de facto control）**：**具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**基于投资的事实控制权益方（investment-based de facto controlling interest party）**。
+- **基于投资的事实控制权益方（investment-based de facto controlling interest party）**：**在……中为控制方（isControllingPartyIn）**的所有取值只能是**基于投资的事实控制（investment-based de facto control）**。
+- **共同控制方（joint controlling party）**：**由…扮演（is played by）**的所有取值只能是**控制联盟（controlling alliance）**。
+- **共同控制方（joint controlling party）**与**单独控制方（sole controlling party）**互斥：同一个体不能同时属于两者。
+- **接管人（receiver）**：**在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**法院指定控制（court appointed control）**。
 
 ## 6. 依赖（owl:imports，11 个）
 

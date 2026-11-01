@@ -216,11 +216,11 @@ fibo-cae-ce-GLEIF:ActionGroup a owl:Class ;
         "行动组（action group）"@zh ;
     rdfs:comment "按 GLEIF 特定分组对公司行动进行区分的分类符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:hasTag ;
-            owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom fibo-cae-ce-act:Action ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
         cmns-cls:Classifier ;
     skos:definition "classifier that differentiates corporate actions based on a GLEIF specific grouping"@en .
 

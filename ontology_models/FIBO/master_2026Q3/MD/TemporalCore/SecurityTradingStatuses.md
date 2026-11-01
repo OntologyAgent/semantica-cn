@@ -46,11 +46,13 @@
 
 ## 5. 公理约定（Axioms）
 
-- 活跃（active） 与 不活跃（inactive） 互斥（disjointWith）
-- 活跃交易中（actively trading） 与 交易停牌（trading halted） 互斥（disjointWith）
-- 交易所证券交易状态（exchange security trading status）：分类 some 挂牌
-- 证券生命周期状态（security lifecycle status）：分类 some 证券
-- 证券交易状态（security trading status）：分类 some 证券
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **活跃（active）**与**不活跃（inactive）**互斥：同一个体不能同时属于两者。
+- **活跃交易中（actively trading）**与**交易停牌（trading halted）**互斥：同一个体不能同时属于两者。
+- **交易所证券交易状态（exchange security trading status）**：**分类（classifies）**至少有一个取值，类型是**挂牌（Listing）**。
+- **证券生命周期状态（security lifecycle status）**：**分类（classifies）**至少有一个取值，类型是**证券（Security）**。
+- **证券交易状态（security trading status）**：**分类（classifies）**至少有一个取值，类型是**证券（Security）**。
 
 ## 6. 依赖（owl:imports，6 个）
 

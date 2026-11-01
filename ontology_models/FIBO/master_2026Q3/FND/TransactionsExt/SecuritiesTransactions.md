@@ -53,13 +53,15 @@
 
 ## 5. 公理约定（Axioms）
 
-- 金融一级市场交易（financial primary market transaction）：遵循（follows） some 结算过程（settlement process）
-- 金融证券二级市场交易（financial securities secondary market transaction）：具有交易对手 some 证券交易对手方（securities transaction counterparty）
-- 金融证券二级市场交易（financial securities secondary market transaction）：具有主当事方 some 证券交易主当事方（securities transaction principal）
-- 金融证券二级市场交易（financial securities secondary market transaction）：对价 some（restriction）
-- 金融证券二级市场交易（financial securities secondary market transaction）：标的 some 证券
-- 金融证券二级市场交易（financial securities secondary market transaction）：体现（embodies） some 证券交易合同（securities transaction contract）
-- 证券交易合同（securities transaction contract）：管辖（governs） some 金融证券二级市场交易（financial securities secondary market transaction）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **金融一级市场交易（financial primary market transaction）**：**遵循（follows）**至少有一个取值，类型是**结算过程（settlement process）**。
+- **金融证券二级市场交易（financial securities secondary market transaction）**：**具有交易对手（hasCounterparty）**至少有一个取值，类型是**证券交易对手方（securities transaction counterparty）**。
+- **金融证券二级市场交易（financial securities secondary market transaction）**：**具有主当事方（hasPrincipalParty）**至少有一个取值，类型是**证券交易主当事方（securities transaction principal）**。
+- **金融证券二级市场交易（financial securities secondary market transaction）**：**对价（consideration）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **金融证券二级市场交易（financial securities secondary market transaction）**：**标的（subject）**至少有一个取值，类型是**证券（Security）**。
+- **金融证券二级市场交易（financial securities secondary market transaction）**：**体现（embodies）**至少有一个取值，类型是**证券交易合同（securities transaction contract）**。
+- **证券交易合同（securities transaction contract）**：**管辖（governs）**至少有一个取值，类型是**金融证券二级市场交易（financial securities secondary market transaction）**。
 
 ## 6. 依赖（owl:imports，7 个）
 

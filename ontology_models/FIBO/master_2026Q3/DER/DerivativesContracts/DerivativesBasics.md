@@ -100,26 +100,28 @@
 
 ## 5. 公理约定（Axioms）
 
-- 现金流公式（cashflow formula）：具有表达式 some 现金流表达式（cashflow expression）
-- 衍生品结算条款（derivative settlement terms）：具有附加成本（has additional costs） 货币数量 ≥0
-- 衍生品结算条款（derivative settlement terms）：具有标的资产价格（has underlying asset price） 货币价格 ≥0
-- 经济指标型衍生品（economic rate-based derivative）：具有标的 some（由…扮演（is played by） some 经济指标）
-- 利率衍生品（interest rate derivative）：具有标的 some（由…扮演（is played by） some 参考利率）
-- 可观察值（observable value）：价值以……表示 货币 ≥0
-- 可观察值（observable value）：规定……的价值（specifies value of） some owl:Thing
-- 场外工具（over-the-counter instrument） 与 上市证券 互斥（disjointWith）
-- 参数化现金流条款（parametric cashflow terms）：具有公式 some 现金流公式（cashflow formula）
-- 比率类衍生品（rate-based derivative）：具有标的 some（由…扮演（is played by） N1e8b124034f84881b476f7a9665aca3f ≥0）
-- 标的资产评估（underlying asset valuation）：具有计算代理人 计算代理人 ≥0
-- 标的资产评估（underlying asset valuation）：评估 some 标的
-- 唯一产品标识符（unique product identifier）：标识 场外衍生工具（over-the-counter derivative instrument） ≥0
-- 唯一产品标识符（unique product identifier）：由……注册 some 唯一产品标识符服务提供商（unique product identifier service provider）
-- 唯一产品标识符登记册条目（unique product identifier registry entry）：适用于 only 场外衍生工具（over-the-counter derivative instrument）
-- 唯一产品标识符登记册条目（unique product identifier registry entry）：restriction
-- 唯一产品标识符登记册条目（unique product identifier registry entry）：包含 some 唯一产品标识符（unique product identifier）
-- 唯一产品标识符服务提供商（unique product identifier service provider）：登记 唯一产品标识符（unique product identifier） ≥0
-- 估值条款（valuation terms）：具有评估日期 some 显式日期
-- 估值条款（valuation terms）：涉及 some 标的资产评估（underlying asset valuation）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **现金流公式（cashflow formula）**：**具有表达式（hasExpression）**至少有一个取值，类型是**现金流表达式（cashflow expression）**。
+- **衍生品结算条款（derivative settlement terms）**：**具有附加成本（has additional costs）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **衍生品结算条款（derivative settlement terms）**：**具有标的资产价格（has underlying asset price）**可以有 0 个或多个**货币价格（MonetaryPrice）**。
+- **经济指标型衍生品（economic rate-based derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**经济指标（EconomicIndicator）**。
+- **利率衍生品（interest rate derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**参考利率（ReferenceInterestRate）**。
+- **可观察值（observable value）**：**价值以……表示（hasValueExpressedIn）**可以有 0 个或多个**货币（Currency）**。
+- **可观察值（observable value）**：**规定……的价值（specifies value of）**至少有一个取值，类型是**owl:Thing（Thing）**。
+- **场外工具（over-the-counter instrument）**与**上市证券**互斥：同一个体不能同时属于两者。
+- **参数化现金流条款（parametric cashflow terms）**：**具有公式（hasFormula）**至少有一个取值，类型是**现金流公式（cashflow formula）**。
+- **比率类衍生品（rate-based derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**Nc2574b5cfb324bef8d0acc8afd11a6bb**。
+- **标的资产评估（underlying asset valuation）**：**具有计算代理人（hasCalculationAgent）**可以有 0 个或多个**计算代理人（CalculationAgent）**。
+- **标的资产评估（underlying asset valuation）**：**评估（evaluates）**至少有一个取值，类型是**标的（Underlier）**。
+- **唯一产品标识符（unique product identifier）**：**标识（identifies）**可以有 0 个或多个**场外衍生工具（over-the-counter derivative instrument）**。
+- **唯一产品标识符（unique product identifier）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**唯一产品标识符服务提供商（unique product identifier service provider）**。
+- **唯一产品标识符登记册条目（unique product identifier registry entry）**：**适用于（appliesTo）**的所有取值只能是**场外衍生工具（over-the-counter derivative instrument）**。
+- **唯一产品标识符登记册条目（unique product identifier registry entry）**：**被包含于（isIncludedIn）**的取值固定为 UniqueProductIdentifierReferenceDataLibrary。
+- **唯一产品标识符登记册条目（unique product identifier registry entry）**：**包含（comprises）**至少有一个取值，类型是**唯一产品标识符（unique product identifier）**。
+- **唯一产品标识符服务提供商（unique product identifier service provider）**：**登记（registers）**可以有 0 个或多个**唯一产品标识符（unique product identifier）**。
+- **估值条款（valuation terms）**：**具有评估日期（hasDateOfAssessment）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **估值条款（valuation terms）**：**涉及（involves）**至少有一个取值，类型是**标的资产评估（underlying asset valuation）**。
 
 ## 6. 依赖（owl:imports，33 个）
 

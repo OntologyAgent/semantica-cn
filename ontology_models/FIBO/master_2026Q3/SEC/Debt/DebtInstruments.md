@@ -93,12 +93,12 @@
 
 | 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
 |---|---|---|---|
-| fibo-sec-dbt-dbti:hasCallFeature | 具有赎回特征（has call feature） | 指明发行文件/工具中规定的任何内蕴赎回特征的具体条款。 | 定义域（domain）：Ne9131529204543b1b629d85ef6a8beb6；值域（range）：赎回特征（call feature）；子属性（subPropertyOf）：具有偿还条款（has repayment terms） |
+| fibo-sec-dbt-dbti:hasCallFeature | 具有赎回特征（has call feature） | 指明发行文件/工具中规定的任何内蕴赎回特征的具体条款。 | 定义域（domain）：N5d3498db59584cc28dcf5894a4c8ff54；值域（range）：赎回特征（call feature）；子属性（subPropertyOf）：具有偿还条款（has repayment terms） |
 | fibo-sec-dbt-dbti:hasDatedDate | 具有起息日（has dated date） | 规定固定收益证券开始计息的日期。 | 定义域（domain）：利息支付条款；值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
 | fibo-sec-dbt-dbti:hasInterestPaymentTerms | 具有利息支付条款（has interest payment terms） | 指明工具或相关合同文件中规定的本金利息支付的具体条款。 | 值域（range）：利息支付条款；子属性（subPropertyOf）：具有合同要素 |
 | fibo-sec-dbt-dbti:hasNotificationProvision | 具有通知条款（has notification provision） | 将债务工具的赎回条款与通知条款（如赎回或回售通知）关联起来。 | 定义域（domain）：赎回条款；值域（range）：通知条款（notification provision）；子属性（subPropertyOf）：具有合同要素 |
 | fibo-sec-dbt-dbti:hasPriceAndYieldDayCountConvention | 具有价格与收益率计日惯例（has price and yield day count convention） | 指明进行收益率和价格计算时用于确定每月天数和每年天数的惯例。 | 值域（range）：计日惯例；子属性（subPropertyOf）：具有营业重复区间惯例 |
-| fibo-sec-dbt-dbti:hasPutFeature | 具有回售特征（has put feature） | 指明发行文件/工具中规定的任何内蕴回售特征的具体条款。 | 定义域（domain）：Nf96ca020a670458ead8998885d46a2be；值域（range）：回售特征（put feature）；子属性（subPropertyOf）：具有偿还条款（has repayment terms） |
+| fibo-sec-dbt-dbti:hasPutFeature | 具有回售特征（has put feature） | 指明发行文件/工具中规定的任何内蕴回售特征的具体条款。 | 定义域（domain）：N691feeb140cb43cc8b7781338daed847；值域（range）：回售特征（put feature）；子属性（subPropertyOf）：具有偿还条款（has repayment terms） |
 | fibo-sec-dbt-dbti:hasRelativePriceAtIssue | 具有发行时相对价格（has relative price at issue） | 指明工具发行时相对于面值的相对价格，即平价、溢价或折价。 | 值域（range）：相对价格（relative price）；子属性（subPropertyOf）：具有价格 |
 | fibo-sec-dbt-dbti:hasRelativePriceAtMaturity | 具有到期时相对价格（has relative price at maturity） | 指明工具到期时相对于面值的相对价格，即平价、折价或溢价。 | 值域（range）：相对价格（relative price）；子属性（subPropertyOf）：具有价格 |
 | fibo-sec-dbt-dbti:hasRelativePriceAtRedemption | 具有赎回时相对价格（has relative price at redemption） | 指明工具赎回时相对于面值的相对价格，即平价、折价或溢价。 | 值域（range）：相对价格（relative price）；子属性（subPropertyOf）：具有价格 |
@@ -125,31 +125,33 @@
 
 ## 5. 公理约定（Axioms）
 
-- 赎回特征（call feature）：具有通知条款（has notification provision） 赎回通知条款（call notification provision） ≥0
-- 赎回特征（call feature）：包含 some 赎回计划表（call schedule）
-- 赎回通知条款（call notification provision）：具有日期区间 only 赎回通知窗口（call window）
-- 赎回计划表（call schedule）：包含 some 赎回事件（call event）
-- 赎回计划表（call schedule）：包含 some（restriction）
-- 债务发行（debt offering）：适用于 some 债务工具
-- 完全指数化利率（fully-indexed interest rate）：具有自变量 基准利率 =1
-- 完全指数化利率（fully-indexed interest rate）：具有自变量 some 利差（margin）
-- 已发行债务（issued debt）：由……授予 only 债务工具
-- 已发行债务（issued debt）：具有债务金额 only 货币数量
-- 不可交易债务工具（non-tradable debt instrument）：具有赎回条款 赎回条款 ≥0
-- 不可交易债务工具（non-tradable debt instrument）：具有发行时相对价格（has relative price at issue） some 相对价格（relative price）
-- 不可交易债务工具（non-tradable debt instrument）：具有赎回时相对价格（has relative price at redemption） some 相对价格（relative price）
-- 不可交易债务工具（non-tradable debt instrument） 与 可交易债务工具（tradable debt instrument） 互斥（disjointWith）
-- 通知条款（notification provision）：具有日期区间 only 日期区间
-- 仅付本拆条（principal-only strip） 与 仅付息拆条（interest-only strip） 互斥（disjointWith）
-- 公开发行债务（publicly issued debt）：由……授予 only 可交易债务工具（tradable debt instrument）
-- 回售特征（put feature）：具有通知条款（has notification provision） 回售通知条款（put notification provision） ≥0
-- 回售特征（put feature）：包含 some 回售计划表（put schedule）
-- 回售通知条款（put notification provision）：具有日期区间 only 回售通知窗口（put window）
-- 回售计划表（put schedule）：包含 some 回售事件（put event）
-- 回售计划表（put schedule）：包含 some（restriction）
-- 阶梯计划表（step schedule）：包含 some 阶梯事件（step event）
-- 可交易债务工具（tradable debt instrument）：具有担保人 担保人 ≥0
-- 可交易债务工具（tradable debt instrument）：次于（is subordinated to） 可交易债务工具（tradable debt instrument） ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **赎回特征（call feature）**：**具有通知条款（has notification provision）**可以有 0 个或多个**赎回通知条款（call notification provision）**。
+- **赎回特征（call feature）**：**包含（comprises）**至少有一个取值，类型是**赎回计划表（call schedule）**。
+- **赎回通知条款（call notification provision）**：**具有日期区间（hasDatePeriod）**的所有取值只能是**赎回通知窗口（call window）**。
+- **赎回计划表（call schedule）**：**包含（comprises）**至少有一个取值，类型是**赎回事件（call event）**。
+- **赎回计划表（call schedule）**：**包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **债务发行（debt offering）**：**适用于（appliesTo）**至少有一个取值，类型是**债务工具（DebtInstrument）**。
+- **完全指数化利率（fully-indexed interest rate）**：**具有自变量（hasArgument）**恰好有 1 个**基准利率（BaseRate）**。
+- **完全指数化利率（fully-indexed interest rate）**：**具有自变量（hasArgument）**至少有一个取值，类型是**利差（margin）**。
+- **已发行债务（issued debt）**：**由……授予（isConferredBy）**的所有取值只能是**债务工具（DebtInstrument）**。
+- **已发行债务（issued debt）**：**具有债务金额（hasDebtAmount）**的所有取值只能是**货币数量（MonetaryAmount）**。
+- **不可交易债务工具（non-tradable debt instrument）**：**具有赎回条款（hasRedemptionProvision）**可以有 0 个或多个**赎回条款（RedemptionProvision）**。
+- **不可交易债务工具（non-tradable debt instrument）**：**具有发行时相对价格（has relative price at issue）**至少有一个取值，类型是**相对价格（relative price）**。
+- **不可交易债务工具（non-tradable debt instrument）**：**具有赎回时相对价格（has relative price at redemption）**至少有一个取值，类型是**相对价格（relative price）**。
+- **不可交易债务工具（non-tradable debt instrument）**与**可交易债务工具（tradable debt instrument）**互斥：同一个体不能同时属于两者。
+- **通知条款（notification provision）**：**具有日期区间（hasDatePeriod）**的所有取值只能是**日期区间（DatePeriod）**。
+- **仅付本拆条（principal-only strip）**与**仅付息拆条（interest-only strip）**互斥：同一个体不能同时属于两者。
+- **公开发行债务（publicly issued debt）**：**由……授予（isConferredBy）**的所有取值只能是**可交易债务工具（tradable debt instrument）**。
+- **回售特征（put feature）**：**具有通知条款（has notification provision）**可以有 0 个或多个**回售通知条款（put notification provision）**。
+- **回售特征（put feature）**：**包含（comprises）**至少有一个取值，类型是**回售计划表（put schedule）**。
+- **回售通知条款（put notification provision）**：**具有日期区间（hasDatePeriod）**的所有取值只能是**回售通知窗口（put window）**。
+- **回售计划表（put schedule）**：**包含（comprises）**至少有一个取值，类型是**回售事件（put event）**。
+- **回售计划表（put schedule）**：**包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **阶梯计划表（step schedule）**：**包含（comprises）**至少有一个取值，类型是**阶梯事件（step event）**。
+- **可交易债务工具（tradable debt instrument）**：**具有担保人（hasGuarantor）**可以有 0 个或多个**担保人（Guarantor）**。
+- **可交易债务工具（tradable debt instrument）**：**次于（is subordinated to）**可以有 0 个或多个**可交易债务工具（tradable debt instrument）**。
 
 ## 6. 依赖（owl:imports，20 个）
 

@@ -137,6 +137,67 @@ def restriction_text(g: Graph, trans: dict, bnode: BNode) -> str:
     return "restriction"
 
 
+def bold_label(g: Graph, trans: dict, uri) -> str:
+    if uri is None:
+        return "?"
+    label = display_label(g, trans, uri)
+    if "（" not in label:
+        frag = str(uri).split("/")[-1].split("#")[-1]
+        if frag and frag != label:
+            label = f"{label}（{frag}）"
+    return f"**{label}**"
+
+
+def restriction_zh(g: Graph, trans: dict, bnode: BNode) -> str:
+    """Render an OWL restriction as a short, plain-Chinese sentence fragment."""
+    on_prop = g.value(bnode, OWL.onProperty)
+    prop = bold_label(g, trans, on_prop) if on_prop else "该属性"
+    on_class = g.value(bnode, OWL.onClass)
+    svf = g.value(bnode, OWL.someValuesFrom)
+    avf = g.value(bnode, OWL.allValuesFrom)
+    hv = g.value(bnode, OWL.hasValue)
+    q = g.value(bnode, OWL.qualifiedCardinality)
+    min_q = g.value(bnode, OWL.minQualifiedCardinality)
+    max_q = g.value(bnode, OWL.maxQualifiedCardinality)
+    min_c = g.value(bnode, OWL.minCardinality)
+    max_c = g.value(bnode, OWL.maxCardinality)
+
+    if hv is not None:
+        val = str(hv).split("/")[-1].split("#")[-1] if isinstance(hv, URIRef) else str(hv)
+        return f"{prop}的取值固定为 {val}"
+
+    if on_class:
+        target = bold_label(g, trans, on_class)
+        if q is not None:
+            return f"{prop}恰好有 {q} 个{target}"
+        if min_q is not None:
+            if str(min_q) == "0":
+                return f"{prop}可以有 0 个或多个{target}"
+            return f"{prop}至少有 {min_q} 个{target}"
+        if max_q is not None:
+            return f"{prop}至多有 {max_q} 个{target}"
+        if min_c is not None:
+            return f"{prop}至少有 {min_c} 个{target}"
+        if max_c is not None:
+            return f"{prop}至多有 {max_c} 个{target}"
+        return f"{prop}的取值类型是{target}"
+
+    if svf is not None:
+        if isinstance(svf, BNode):
+            inner = restriction_zh(g, trans, svf)
+            return f"{prop}至少有一个取值，该取值满足：{inner}"
+        return f"{prop}至少有一个取值，类型是{bold_label(g, trans, svf)}"
+
+    if avf is not None:
+        return f"{prop}的所有取值只能是{bold_label(g, trans, avf)}"
+
+    if min_c is not None:
+        return f"{prop}至少有 {min_c} 个取值"
+    if max_c is not None:
+        return f"{prop}至多有 {max_c} 个取值"
+    return f"{prop}存在取值约束"
+
+
 def short_uri(g: Graph, uri) -> str:
     if uri is None:
         return ""
@@ -338,12 +399,17 @@ def generate_markdown(g: Graph, terms: dict[str, dict], trans: dict, rdf_path: P
         uri = info["uri"]
         for sco in g.objects(URIRef(uri), RDFS.subClassOf):
             if isinstance(sco, BNode):
-                restriction_lines.append(f"- {zh_label(uri)}：{restriction_text(g, trans, sco)}")
+                restriction_lines.append(f"- **{zh_label(uri)}**：{restriction_zh(g, trans, sco)}。")
         for dw in g.objects(URIRef(uri), OWL.disjointWith):
             if isinstance(dw, URIRef):
-                restriction_lines.append(f"- {zh_label(uri)} 与 {zh_label(str(dw))} 互斥（disjointWith）")
+                restriction_lines.append(f"- **{zh_label(uri)}**与**{zh_label(str(dw))}**互斥：同一个体不能同时属于两者。")
     if restriction_lines:
-        lines += ["## 5. 公理约定（Axioms）", ""] + restriction_lines + [""]
+        lines += [
+            "## 5. 公理约定（Axioms）",
+            "",
+            "以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。",
+            "",
+        ] + restriction_lines + [""]
 
     imports_uris = [str(i) for i in g.objects(ont, OWL.imports)] if ont else []
     if imports_uris:

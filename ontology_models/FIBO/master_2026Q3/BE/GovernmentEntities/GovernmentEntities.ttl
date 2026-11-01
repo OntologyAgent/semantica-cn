@@ -94,17 +94,17 @@ fibo-be-ge-ge:FederatedSovereignty a owl:Class ;
     rdfs:comment "以中央（联邦）政府之下若干部分自治的州或地区的联合为特征的政体。"@zh ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty fibo-be-ge-ge:hasFullSovereigntyOver ;
-                        owl:someValuesFrom cmns-loc:Country ] [ a owl:Restriction ;
-                        owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
-                        owl:someValuesFrom cmns-loc:FederalState ] ) ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
                         owl:someValuesFrom fibo-be-ge-ge:RegionalGovernment ] [ a owl:Restriction ;
                         owl:onClass fibo-be-ge-ge:FederalGovernment ;
                         owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty fibo-be-ge-ge:hasFullSovereigntyOver ;
+                        owl:someValuesFrom cmns-loc:Country ] [ a owl:Restriction ;
+                        owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
+                        owl:someValuesFrom cmns-loc:FederalState ] ) ],
         fibo-be-ge-ge:SovereignState ;
     skos:definition "polity characterized by a union of partially self-governing states or regions under a central (federal) government" ;
     cmns-av:explanatoryNote "The federated sovereignty is the legal entity that can incur debt for a federal government, as distinct from the Federal government." .
@@ -178,11 +178,11 @@ fibo-be-ge-ge:TribalEntity a owl:Class ;
         "部落实体（tribal entity）"@zh ;
     rdfs:comment "代表主权部落（原住民）政府基本单位的法律实体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
-            owl:someValuesFrom fibo-be-ge-ge:TribalArea ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
             owl:someValuesFrom fibo-be-ge-ge:TribalGovernment ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
+            owl:someValuesFrom fibo-be-ge-ge:TribalArea ],
         fibo-be-ge-ge:Polity ;
     skos:definition "legal entity that represents fundamental unit of sovereign tribal (indigenous) government" ;
     cmns-av:explanatoryNote "Any indigenous group or community which is recognized as having rights and obligations independent of the central government." .
@@ -316,15 +316,15 @@ fibo-be-ge-ge:GovernmentOfficial a owl:Class ;
         "政府官员（government official）"@zh ;
     rdfs:comment "经选举或任命管理政府某方面事务的人。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                     owl:onClass fibo-be-ge-ge:GovernmentBody ;
                     owl:onProperty cmns-col:isMemberOf ] ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-bauth:ResponsibleParty ;
     skos:definition "person elected or appointed to administer some aspect of a government" .
 
@@ -409,11 +409,11 @@ fibo-be-ge-ge:Polity a owl:Class ;
         "政体（polity）"@zh ;
     rdfs:comment "作为超国家实体、王室、国家或下级民政当局（如省、县、市）的法律主体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
-            owl:someValuesFrom fibo-be-ge-ge:Government ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-ge-ge:hasSovereigntyOver ;
             owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:Government ],
         fibo-be-ge-ge:GovernmentBody,
         cmns-org:LegalPerson ;
     skos:definition "legal person that is a supranational entity, crown, state, or subordinate civil authority, such as a province, prefecture, county, municipality, city, or district representing the people of that entity" .
@@ -441,13 +441,13 @@ fibo-be-ge-ge:Government a owl:Class ;
         "政府（government）"@zh ;
     rdfs:comment "控制国家或共同体的体系。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( fibo-be-ge-ge:BranchOfGovernment fibo-be-ge-ge:GovernmentAgency fibo-be-ge-ge:GovernmentDepartment ) ] ;
             owl:onProperty cmns-col:hasMember ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rga:governs ;
-            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
         fibo-be-fct-fct:FunctionalEntity ;
     owl:disjointWith fibo-be-ge-ge:Instrumentality ;
     skos:definition "system by which a state or community is controlled" ;

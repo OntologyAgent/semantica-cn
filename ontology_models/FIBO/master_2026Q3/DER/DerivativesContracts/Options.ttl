@@ -110,13 +110,13 @@ fibo-der-drc-opt:BasketOption a owl:Class ;
         "篮子期权（basket option）"@zh ;
     rdfs:comment "标的资产为一组（篮子）商品、证券、指数或货币的期权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractDuration ;
-            owl:someValuesFrom cmns-dt:ExplicitDuration ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:isPlayedBy ;
                     owl:someValuesFrom fibo-sec-sec-bsk:MixedBasket ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractDuration ;
+            owl:someValuesFrom cmns-dt:ExplicitDuration ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-ip:hasPriceDeterminationMethod ;
             owl:someValuesFrom fibo-fbc-fi-ip:PriceDeterminationMethod ],
@@ -190,13 +190,13 @@ fibo-der-drc-opt:InterestRateOption a owl:Class ;
         "利率期权（interest rate option）"@zh ;
     rdfs:comment "赋予买方（持有人）在参考利率的市场利率高于约定水平时收取现金付款的权利（而非义务）的期权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasStrikeRate ;
+            owl:someValuesFrom fibo-fnd-acc-cur:InterestRate ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:isPlayedBy ;
                     owl:someValuesFrom fibo-ind-ir-ir:InterestRateBenchmark ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-opt:hasStrikeRate ;
-            owl:someValuesFrom fibo-fnd-acc-cur:InterestRate ],
         fibo-der-drc-bsc:InterestRateDerivative,
         fibo-der-drc-opt:VanillaOption ;
     skos:definition "option that giving the buyer (holder) the right, but not the obligation, to receive a cash payment if market interest rate of a reference rate is higher or lower, depending on the option, than the strike rate of the option"@en ;
@@ -256,13 +256,13 @@ fibo-der-drc-opt:OptionOnFuture a owl:Class ;
         "期货期权（option on future）"@zh ;
     rdfs:comment "赋予持有人在期权到期日或之前按指定价格买入或卖出特定期货合约的权利（而非义务）的期权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-ex:hasExerciseTerms ;
+            owl:someValuesFrom fibo-sec-dbt-ex:AmericanExerciseTerms ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:isPlayedBy ;
                     owl:someValuesFrom fibo-fbc-fi-fi:Future ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-ex:hasExerciseTerms ;
-            owl:someValuesFrom fibo-sec-dbt-ex:AmericanExerciseTerms ],
         fibo-der-drc-opt:VanillaOption ;
     skos:definition "option that gives the holder the right, but not the obligation, to buy or sell a specific futures contract at a specified price on or before the option's expiration date"@en ;
     cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, 2019."@en .
@@ -279,11 +279,11 @@ fibo-der-drc-opt:ProtectiveCollar a owl:Class ;
         "保护性领口策略（protective collar）"@zh ;
     rdfs:comment "由备兑看涨期权和保护性看跌期权构成的领口策略。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-opt:ProtectivePut ;
+            owl:onClass fibo-der-drc-opt:CoveredCall ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-opt:CoveredCall ;
+            owl:onClass fibo-der-drc-opt:ProtectivePut ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-der-drc-opt:Collar ;
@@ -311,11 +311,11 @@ fibo-der-drc-opt:StandardizedOptionsTerms a owl:Class ;
         "标准化期权条款（standardized options terms）"@zh ;
     rdfs:comment "由证券或期权交易所、或由期权清算机构制定的标准化合同条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-der-drc-opt:VanillaOption ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-ip:hasPriceDeterminationMethod ;
             owl:someValuesFrom fibo-fbc-fi-ip:PriceDeterminationMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-der-drc-opt:VanillaOption ],
         [ a owl:Restriction ;
             owl:onProperty fibo-be-fct-pub:hasPublisher ;
             owl:someValuesFrom [ a owl:Class ;
@@ -400,13 +400,13 @@ fibo-der-drc-opt:Butterfly a owl:Class ;
         "蝶式策略（butterfly）"@zh ;
     rdfs:comment "将牛市价差与熊市价差组合、风险固定且盈利封顶的期权策略。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-opt:StrikePrice ;
-            owl:onProperty fibo-der-drc-opt:hasExercisePrice ;
-            owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fi-fi:Option ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-opt:StrikePrice ;
+            owl:onProperty fibo-der-drc-opt:hasExercisePrice ;
+            owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ],
         fibo-der-drc-opt:OptionTradingStrategy ;
     skos:definition "strategy that combines bull and bear spreads with a fixed risk and capped profit"@en ;
     cmns-av:explanatoryNote "These spreads are intended as a market-neutral strategy and pay off the most if the underlying asset does not move prior to option expiration. They involve either four calls, four puts, or a combination of puts and calls with three strike prices. Butterfly spreads pay off the most if the underlying asset price doesn't change before the option expires. The upper and lower strike prices are equal distance from the middle, or at-the-money, strike price."@en .
@@ -416,11 +416,11 @@ fibo-der-drc-opt:Collar a owl:Class ;
         "领口策略（collar）"@zh ;
     rdfs:comment "买入下档看跌期权并卖出上档看涨期权的期权交易策略，用于防范大额亏损，但也限制了盈利。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-opt:PutOption ;
+            owl:onClass fibo-der-drc-opt:CallOption ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-opt:CallOption ;
+            owl:onClass fibo-der-drc-opt:PutOption ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-der-drc-opt:OptionTradingStrategy ;
@@ -610,12 +610,12 @@ fibo-der-drc-opt:OptionPremium a owl:Class ;
             owl:onProperty cmns-qtu:hasQuantityValue ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-der-drc-opt:OptionPremiumFormula ;
-            owl:onProperty cmns-qtu:hasExpression ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-opt:OptionPremiumFormula ;
+            owl:onProperty cmns-qtu:hasExpression ],
         fibo-fbc-fi-ip:MarketPrice ;
     skos:definition "current market price of an option contract"@en ;
     cmns-av:explanatoryNote "The option premium is the income received by the seller (writer) of an option contract to another party. In-the-money option premiums are composed of two factors: intrinsic and extrinsic value. Out-of-the-money options' premiums consist solely of extrinsic value. For stock options, the premium is quoted as a dollar amount per share, and most contracts represent the commitment of 100 shares."@en .
@@ -661,11 +661,11 @@ fibo-der-drc-opt:VanillaOption a owl:Class ;
         "普通期权（vanilla option）"@zh ;
     rdfs:comment "赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的资产的权利（而非义务）的常见期权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractDuration ;
-            owl:someValuesFrom cmns-dt:ExplicitDuration ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-ip:hasPriceDeterminationMethod ;
             owl:someValuesFrom fibo-fbc-fi-ip:PriceDeterminationMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractDuration ;
+            owl:someValuesFrom cmns-dt:ExplicitDuration ],
         fibo-fbc-fi-fi:Option ;
     skos:definition "common option giving the buyer (holder) the right, but not the obligation, to buy (via a call option) or sell (via a put option) the underlying assets specified at a pre-determined price (i.e., the strike price, fixed or calculated), on or before a specified date (the expiration date)"@en ;
     cmns-av:explanatoryNote "Vanilla options include call or put options that have no special or unusual features, and are typically exchange traded."@en .
@@ -702,29 +702,29 @@ fibo-der-drc-opt:PutOption a owl:Class ;
 
 fibo-fbc-fi-fi:Option a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fi-ip:hasLotSize ;
-            owl:someValuesFrom xsd:decimal ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-opt:hasExerciseStyle ;
             owl:someValuesFrom fibo-sec-dbt-ex:ExerciseConvention ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
+            owl:someValuesFrom cmns-dt:Date ],
         [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-opt:hasExercisePrice ;
             owl:someValuesFrom fibo-der-drc-opt:StrikePrice ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-opt:hasExerciseSchedule ;
-            owl:someValuesFrom fibo-fnd-dt-fd:Schedule ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-opt:OptionHolder ;
+            owl:onProperty fibo-der-drc-opt:hasOptionHolder ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-opt:hasOptionWriter ;
+            owl:someValuesFrom fibo-der-drc-opt:OptionIssuer ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-der-drc-opt:OptionPremium ;
             owl:onProperty fibo-der-drc-opt:hasCalculatedMarketValue ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-opt:hasOptionWriter ;
-            owl:someValuesFrom fibo-der-drc-opt:OptionIssuer ],
+            owl:onProperty fibo-der-drc-opt:hasExerciseSchedule ;
+            owl:someValuesFrom fibo-fnd-dt-fd:Schedule ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
-            owl:someValuesFrom cmns-dt:Date ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-der-drc-opt:OptionHolder ;
-            owl:onProperty fibo-der-drc-opt:hasOptionHolder ] .
+            owl:onProperty fibo-fbc-fi-ip:hasLotSize ;
+            owl:someValuesFrom xsd:decimal ] .
 

@@ -86,46 +86,48 @@
 
 ## 5. 公理约定（Axioms）
 
-- 美国银行家协会发行人识别号登记册条目（ABA IIN registry entry）：适用于 only 金融机构
-- 美国银行家协会发行人识别号登记册条目（ABA IIN registry entry）：restriction
-- 美国银行家协会发行人识别号登记册条目（ABA IIN registry entry）：包含 some 发行人识别号（issuer identification number）
-- 美国银行家协会路由号码登记册条目（ABA RTN registry entry）：适用于 only 金融机构
-- 美国银行家协会路由号码登记册条目（ABA RTN registry entry）：restriction
-- 美国银行家协会路由号码登记册条目（ABA RTN registry entry）：包含 some 路由号码（routing transit number）
-- 联邦存款保险公司证书编号（FDIC Certificate Number）：restriction
-- 联邦存款保险公司证书编号（FDIC Certificate Number）：restriction
-- 联邦存款保险公司登记册条目（FDIC registry entry）：适用于 only 存款性机构
-- 联邦存款保险公司登记册条目（FDIC registry entry）：restriction
-- 联邦存款保险公司登记册条目（FDIC registry entry）：包含 some 联邦存款保险公司证书编号（FDIC Certificate Number）
-- 联邦储备体系成员（Federal Reserve System member）：由…扮演（is played by） some（restriction）
-- 联邦储备体系非成员机构（Federal Reserve System non-member institution）：restriction
-- 联邦储备体系非成员机构（Federal Reserve System non-member institution）：由…扮演（is played by） some（restriction）
-- 联邦储备体系非成员机构（Federal Reserve System non-member institution） 与 联邦储备体系成员（Federal Reserve System member） 互斥（disjointWith）
-- 联邦储备区银行（Federal Reserve district bank）：restriction
-- 联邦储备区银行（Federal Reserve district bank）：具有管辖权 联邦储备区（Federal Reserve district） =1
-- 联邦储备区标识符（Federal Reserve district identifier）：标识 联邦储备区（Federal Reserve district） =1
-- 国家信息中心（NIC）登记册条目（National Information Center (NIC) registry entry）：适用于 only 金融服务提供商
-- 国家信息中心（NIC）登记册条目（National Information Center (NIC) registry entry）：restriction
-- 国家信息中心（NIC）登记册条目（National Information Center (NIC) registry entry）：包含 some 研究统计监管与贴现信贷标识符（Research, Statistics, Supervision and Regulation, and Discount and Credit identifier）
-- 研究统计监管与贴现信贷标识符（Research, Statistics, Supervision and Regulation, and Discount and Credit identifier）：restriction
-- 研究统计监管与贴现信贷标识符（Research, Statistics, Supervision and Regulation, and Discount and Credit identifier）：restriction
-- 雇主识别号（employer identification number）：是……的成员 雇主识别号编号方案（employer identification numbering scheme） =1
-- 联邦政府实体（federal government entity）：restriction
-- 联邦政府实体（federal government entity）：restriction
-- 发行人识别号（issuer identification number）：restriction
-- 发行人识别号（issuer identification number）：restriction
-- 发行人识别号（issuer identification number）：restriction
-- 发行人识别号（issuer identification number）：标识 金融机构 =1
-- 非存款性信托公司——非成员机构（non-depository trust company - non-member institution） 与 非存款性信托公司——成员机构（non-depository trust company - member institution） 互斥（disjointWith）
-- 主要联邦监管机构（primary federal regulator）：由…扮演（is played by） 政府机关 =1
-- 路由号码（routing transit number）：restriction
-- 路由号码（routing transit number）：restriction
-- 路由号码（routing transit number）：restriction
-- 州政府实体或机构（state government entity or agency）：restriction
-- 州政府实体或机构（state government entity or agency）：具有管辖权 some（具有覆盖范围 some（restriction））
-- 纳税人识别号（taxpayer identification number）：restriction
-- 纳税人识别号（taxpayer identification number）：是……的成员 纳税人识别编号方案（taxpayer identification numbering scheme） =1
-- 纳税人识别编号方案（taxpayer identification numbering scheme）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **美国银行家协会发行人识别号登记册条目（ABA IIN registry entry）**：**适用于（appliesTo）**的所有取值只能是**金融机构（FinancialInstitution）**。
+- **美国银行家协会发行人识别号登记册条目（ABA IIN registry entry）**：**被包含于（isIncludedIn）**的取值固定为 ABAIINRegistry。
+- **美国银行家协会发行人识别号登记册条目（ABA IIN registry entry）**：**包含（comprises）**至少有一个取值，类型是**发行人识别号（issuer identification number）**。
+- **美国银行家协会路由号码登记册条目（ABA RTN registry entry）**：**适用于（appliesTo）**的所有取值只能是**金融机构（FinancialInstitution）**。
+- **美国银行家协会路由号码登记册条目（ABA RTN registry entry）**：**被包含于（isIncludedIn）**的取值固定为 ABARTNRegistry。
+- **美国银行家协会路由号码登记册条目（ABA RTN registry entry）**：**包含（comprises）**至少有一个取值，类型是**路由号码（routing transit number）**。
+- **联邦存款保险公司证书编号（FDIC Certificate Number）**：**注册于（isRegisteredIn）**的取值固定为 FDICInstitutionDirectory。
+- **联邦存款保险公司证书编号（FDIC Certificate Number）**：**由……注册（isRegisteredBy）**的取值固定为 FederalDepositInsurerAndRegulator。
+- **联邦存款保险公司登记册条目（FDIC registry entry）**：**适用于（appliesTo）**的所有取值只能是**存款性机构（DepositoryInstitution）**。
+- **联邦存款保险公司登记册条目（FDIC registry entry）**：**被包含于（isIncludedIn）**的取值固定为 FDICInstitutionDirectory。
+- **联邦存款保险公司登记册条目（FDIC registry entry）**：**包含（comprises）**至少有一个取值，类型是**联邦存款保险公司证书编号（FDIC Certificate Number）**。
+- **联邦储备体系成员（Federal Reserve System member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的取值固定为 FederalReserveSystem。
+- **联邦储备体系非成员机构（Federal Reserve System non-member institution）**：该属性存在取值约束。
+- **联邦储备体系非成员机构（Federal Reserve System non-member institution）**：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **联邦储备体系非成员机构（Federal Reserve System non-member institution）**与**联邦储备体系成员（Federal Reserve System member）**互斥：同一个体不能同时属于两者。
+- **联邦储备区银行（Federal Reserve district bank）**：**是……的部分（isPartOf）**的取值固定为 FederalReserveRegulatoryAgencyAndCentralBank。
+- **联邦储备区银行（Federal Reserve district bank）**：**具有管辖权（hasJurisdiction）**恰好有 1 个**联邦储备区（Federal Reserve district）**。
+- **联邦储备区标识符（Federal Reserve district identifier）**：**标识（identifies）**恰好有 1 个**联邦储备区（Federal Reserve district）**。
+- **国家信息中心（NIC）登记册条目（National Information Center (NIC) registry entry）**：**适用于（appliesTo）**的所有取值只能是**金融服务提供商（FinancialServiceProvider）**。
+- **国家信息中心（NIC）登记册条目（National Information Center (NIC) registry entry）**：**被包含于（isIncludedIn）**的取值固定为 NationalInformationCenterRepository。
+- **国家信息中心（NIC）登记册条目（National Information Center (NIC) registry entry）**：**包含（comprises）**至少有一个取值，类型是**研究统计监管与贴现信贷标识符（Research, Statistics, Supervision and Regulation, and Discount and Credit identifier）**。
+- **研究统计监管与贴现信贷标识符（Research, Statistics, Supervision and Regulation, and Discount and Credit identifier）**：**由……注册（isRegisteredBy）**的取值固定为 FederalReserveRegulatoryAgencyAndCentralBank。
+- **研究统计监管与贴现信贷标识符（Research, Statistics, Supervision and Regulation, and Discount and Credit identifier）**：**注册于（isRegisteredIn）**的取值固定为 NationalInformationCenterRepository。
+- **雇主识别号（employer identification number）**：**是……的成员（isMemberOf）**恰好有 1 个**雇主识别号编号方案（employer identification numbering scheme）**。
+- **联邦政府实体（federal government entity）**：该属性存在取值约束。
+- **联邦政府实体（federal government entity）**：**具有管辖权（hasJurisdiction）**的取值固定为 UnitedStatesJurisdiction。
+- **发行人识别号（issuer identification number）**：**注册于（isRegisteredIn）**的取值固定为 ABAIINRegistry。
+- **发行人识别号（issuer identification number）**：**具有注册机构（hasRegistrationAuthority）**的取值固定为 AmericanBankersAssociationRegistrationAuthority。
+- **发行人识别号（issuer identification number）**：**由……注册（isRegisteredBy）**的取值固定为 AmericanBankersAssociationRegistrationAuthority。
+- **发行人识别号（issuer identification number）**：**标识（identifies）**恰好有 1 个**金融机构（FinancialInstitution）**。
+- **非存款性信托公司——非成员机构（non-depository trust company - non-member institution）**与**非存款性信托公司——成员机构（non-depository trust company - member institution）**互斥：同一个体不能同时属于两者。
+- **主要联邦监管机构（primary federal regulator）**：**由…扮演（is played by）**恰好有 1 个**政府机关（GovernmentBody）**。
+- **路由号码（routing transit number）**：**注册于（isRegisteredIn）**的取值固定为 ABARTNRegistry。
+- **路由号码（routing transit number）**：**由……注册（isRegisteredBy）**的取值固定为 AmericanBankersAssociationRTNRegistrar。
+- **路由号码（routing transit number）**：**具有注册机构（hasRegistrationAuthority）**的取值固定为 AmericanBankersAssociationRegistrationAuthority。
+- **州政府实体或机构（state government entity or agency）**：该属性存在取值约束。
+- **州政府实体或机构（state government entity or agency）**：**具有管辖权（hasJurisdiction）**至少有一个取值，该取值满足：**具有覆盖范围（hasReach）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **纳税人识别号（taxpayer identification number）**：**适用于情境（isApplicableIn）**的取值固定为 UnitedStatesJurisdiction。
+- **纳税人识别号（taxpayer identification number）**：**是……的成员（isMemberOf）**恰好有 1 个**纳税人识别编号方案（taxpayer identification numbering scheme）**。
+- **纳税人识别编号方案（taxpayer identification numbering scheme）**：**适用于情境（isApplicableIn）**的取值固定为 UnitedStatesJurisdiction。
 
 ## 6. 依赖（owl:imports，29 个）
 

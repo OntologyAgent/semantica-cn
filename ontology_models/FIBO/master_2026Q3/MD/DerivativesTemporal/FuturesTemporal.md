@@ -41,10 +41,12 @@
 
 ## 5. 公理约定（Axioms）
 
-- 初始保证金（initial margin）：具有截止日 some 显式日期
-- 初始保证金（initial margin）：由……持有 some 期货交易账户持有人（futures trading account holder）
-- 最低保证金（minimum margin）：具有截止日 some 显式日期
-- 最低保证金（minimum margin）：由……持有 some 期货交易账户持有人（futures trading account holder）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **初始保证金（initial margin）**：**具有截止日（hasAsOfDate）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **初始保证金（initial margin）**：**由……持有（isHeldBy）**至少有一个取值，类型是**期货交易账户持有人（futures trading account holder）**。
+- **最低保证金（minimum margin）**：**具有截止日（hasAsOfDate）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **最低保证金（minimum margin）**：**由……持有（isHeldBy）**至少有一个取值，类型是**期货交易账户持有人（futures trading account holder）**。
 
 ## 6. 依赖（owl:imports，7 个）
 

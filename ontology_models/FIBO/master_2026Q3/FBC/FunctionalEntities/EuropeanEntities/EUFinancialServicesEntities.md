@@ -41,13 +41,15 @@
 
 ## 5. 公理约定（Axioms）
 
-- CRD 信贷机构（CRD credit institution） 与 欧洲经济区分支机构（European Economic Area branch） 互斥（disjointWith）
-- CRD 信贷机构（CRD credit institution） 与 非欧洲经济区分支机构（non European Economic Area branch） 互斥（disjointWith）
-- 欧洲经济区分支机构（European Economic Area branch） 与 非欧洲经济区分支机构（non European Economic Area branch） 互斥（disjointWith）
-- 投资公司（investment firm）：restriction
-- 投资公司（investment firm） 与 信贷机构（credit institution） 互斥（disjointWith）
-- 投资公司（investment firm） 与 本地自营公司（local firm） 互斥（disjointWith）
-- 支付机构（payment institution）：提供 some 支付服务
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **CRD 信贷机构（CRD credit institution）**与**欧洲经济区分支机构（European Economic Area branch）**互斥：同一个体不能同时属于两者。
+- **CRD 信贷机构（CRD credit institution）**与**非欧洲经济区分支机构（non European Economic Area branch）**互斥：同一个体不能同时属于两者。
+- **欧洲经济区分支机构（European Economic Area branch）**与**非欧洲经济区分支机构（non European Economic Area branch）**互斥：同一个体不能同时属于两者。
+- **投资公司（investment firm）**：该属性存在取值约束。
+- **投资公司（investment firm）**与**信贷机构（credit institution）**互斥：同一个体不能同时属于两者。
+- **投资公司（investment firm）**与**本地自营公司（local firm）**互斥：同一个体不能同时属于两者。
+- **支付机构（payment institution）**：**提供（provides）**至少有一个取值，类型是**支付服务（PaymentService）**。
 
 ## 6. 依赖（owl:imports，5 个）
 

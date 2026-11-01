@@ -54,21 +54,23 @@
 
 ## 5. 公理约定（Axioms）
 
-- 普通合伙人（general partner）：由…扮演（is played by） some（具有能力方 some 应诉能力）
-- 普通合伙（general partnership）：具有普通合伙人（has general partner） some 普通合伙人（general partner）
-- 普通合伙（general partnership）：具有成员 some（扮演角色（plays role） 普通合伙人（general partner） ≥2）
-- 有限责任合伙（limited liability partnership）：具有普通合伙人（has general partner） some 普通合伙人（general partner）
-- 有限责任合伙（limited liability partnership） 与 有限合伙（limited partnership） 互斥（disjointWith）
-- 有限合伙人（limited partner） 与 普通合伙人（general partner） 互斥（disjointWith）
-- 有限合伙（limited partnership）：具有普通合伙人（has general partner） some 普通合伙人（general partner）
-- 有限合伙（limited partnership）：具有有限合伙人（has limited partner） some 有限合伙人（limited partner）
-- 合伙人（partner）：由…扮演（is played by） 法律主体 =1
-- 合伙人（partner）：由…扮演（is played by） some（是……的成员 some 合伙（partnership））
-- 合伙人（partner）：由…扮演（is played by） some（是…的参与方（is a party to） some 合伙协议（partnership agreement））
-- 合伙（partnership）：具有目标 盈利目标 ≥0
-- 合伙（partnership）：具有成员 some（扮演角色（plays role） some 合伙人（partner））
-- 合伙（partnership）：受……管辖 some 合伙协议（partnership agreement）
-- 合伙协议（partnership agreement）：具有参与方角色（has party role） some 合伙人（partner）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **普通合伙人（general partner）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**应诉能力（LiabilityCapacity）**。
+- **普通合伙（general partnership）**：**具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
+- **普通合伙（general partnership）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有 2 个**普通合伙人（general partner）**。
+- **有限责任合伙（limited liability partnership）**：**具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
+- **有限责任合伙（limited liability partnership）**与**有限合伙（limited partnership）**互斥：同一个体不能同时属于两者。
+- **有限合伙人（limited partner）**与**普通合伙人（general partner）**互斥：同一个体不能同时属于两者。
+- **有限合伙（limited partnership）**：**具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
+- **有限合伙（limited partnership）**：**具有有限合伙人（has limited partner）**至少有一个取值，类型是**有限合伙人（limited partner）**。
+- **合伙人（partner）**：**由…扮演（is played by）**恰好有 1 个**法律主体（LegalPerson）**。
+- **合伙人（partner）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，类型是**合伙（partnership）**。
+- **合伙人（partner）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**合伙协议（partnership agreement）**。
+- **合伙（partnership）**：**具有目标（hasObjective）**可以有 0 个或多个**盈利目标（ProfitObjective）**。
+- **合伙（partnership）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**合伙人（partner）**。
+- **合伙（partnership）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**合伙协议（partnership agreement）**。
+- **合伙协议（partnership agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**合伙人（partner）**。
 
 ## 6. 依赖（owl:imports，13 个）
 

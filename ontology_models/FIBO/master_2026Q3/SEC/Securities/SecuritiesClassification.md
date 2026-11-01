@@ -40,15 +40,17 @@
 
 ## 5. 公理约定（Axioms）
 
-- 全球行业分类标准分类器（Global Industry Classification Standards classifier）：restriction
-- 资产类别（asset class）：分类 some 证券
-- 金融工具分类代码方案（classification of financial instruments code scheme）：定义 some 金融工具分类代码（financial instrument classification code）
-- 金融工具分类代码（financial instrument classification code）：定义于 金融工具分类代码方案（classification of financial instruments code scheme） =1
-- 金融工具分类代码（financial instrument classification code）：restriction
-- 金融工具分类方案（financial instrument classification scheme）：定义 only 金融工具分类器（financial instrument classifier）
-- 金融工具分类器（financial instrument classifier）：定义于 金融工具分类方案（financial instrument classification scheme） =1
-- 金融工具分类器（financial instrument classifier）：分类 some 金融工具
-- 行业分类基准分类器（industry classification benchmark classifier）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **全球行业分类标准分类器（Global Industry Classification Standards classifier）**：**定义于（isDefinedIn）**的取值固定为 GlobalIndustryClassificationStandardsScheme。
+- **资产类别（asset class）**：**分类（classifies）**至少有一个取值，类型是**证券（Security）**。
+- **金融工具分类代码方案（classification of financial instruments code scheme）**：**定义（defines）**至少有一个取值，类型是**金融工具分类代码（financial instrument classification code）**。
+- **金融工具分类代码（financial instrument classification code）**：**定义于（isDefinedIn）**恰好有 1 个**金融工具分类代码方案（classification of financial instruments code scheme）**。
+- **金融工具分类代码（financial instrument classification code）**：**具有标签（hasTag）**存在取值约束。
+- **金融工具分类方案（financial instrument classification scheme）**：**定义（defines）**的所有取值只能是**金融工具分类器（financial instrument classifier）**。
+- **金融工具分类器（financial instrument classifier）**：**定义于（isDefinedIn）**恰好有 1 个**金融工具分类方案（financial instrument classification scheme）**。
+- **金融工具分类器（financial instrument classifier）**：**分类（classifies）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
+- **行业分类基准分类器（industry classification benchmark classifier）**：**定义于（isDefinedIn）**的取值固定为 IndustryClassificationBenchmarkScheme。
 
 ## 6. 依赖（owl:imports，7 个）
 

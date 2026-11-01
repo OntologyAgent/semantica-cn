@@ -110,40 +110,42 @@
 
 ## 5. 公理约定（Axioms）
 
-- 年化标准差（annualized standard deviation）：具有参照期间（has reference period） 显式重复区间 =1
-- 平均绝对偏差（average absolute deviation）：具有自变量 some（restriction）
-- 差（difference）：restriction
-- 差（difference）：restriction
-- 离散度（dispersion）：restriction
-- 离散度（dispersion）：具有观测值（has observed value） some 结构化集合
-- 离散度（dispersion）：适用于 some 有限总体（finite population）
-- 公式（formula）：具有表达式 some 表达式
-- 关键绩效指标（key performance indicator）：具有观测值（has observed value） some 带日期结构化集合
-- 关键绩效指标（key performance indicator）：具有目标值（has target value） some 带日期结构化集合
-- 平均值（mean）：具有观测值（has observed value） some 结构化集合
-- 中位数（median）：具有观测值（has observed value） some 结构化集合
-- 中位绝对偏差（median absolute deviation）：具有自变量 some 中位数（median）
-- 数值指数值（numeric index value）：是……的值 限定度量（qualified measure） ≥0
-- 数值指数值（numeric index value）：restriction
-- 限定度量（qualified measure）：具有基准日期 基准日期 ≥0
-- 限定度量（qualified measure）：restriction
-- 限定范围度量（scoped measure）：具有周期性（has periodicity） only 重复区间
-- 限定范围度量（scoped measure）：适用于 有限总体（finite population） ≥0
-- 限定范围度量（scoped measure）：具有覆盖区域 统计区（statistical area） ≥0
-- 标准差（standard deviation）：具有自变量 some（restriction）
-- 统计区（statistical area）：由……标识 some 统计区标识符（statistical area identifier）
-- 统计区标识符（statistical area identifier）：标识 统计区（statistical area） =1
-- 统计度量（statistical measure）：以……为特征 方面 ≥0
-- 统计度量（statistical measure）：restriction
-- 统计总体（statistical population）：具有总体规模（has population size） only xsd:nonNegativeInteger
-- 统计总体（statistical population）：以……为特征 some 统计区（statistical area）
-- 统计总体（statistical population）：以……为特征 some 显式日期区间
-- 统计计划（statistical program）：适用于 some 统计全域（statistical universe）
-- 统计计划（statistical program）：具有覆盖区域 some 统计区（statistical area）
-- 统计计划（statistical program）：提供 some 统计度量（statistical measure）
-- 统计全域（statistical universe）：具有全域规模（has universe size） only xsd:nonNegativeInteger
-- 统计全域（statistical universe）：适用于情境 some 统计计划（statistical program）
-- 方差（variance）：具有自变量 some 平均值（mean）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **年化标准差（annualized standard deviation）**：**具有参照期间（has reference period）**恰好有 1 个**显式重复区间（ExplicitRecurrenceInterval）**。
+- **平均绝对偏差（average absolute deviation）**：**具有自变量（hasArgument）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **差（difference）**：**具有被减数（has minuend）**存在取值约束。
+- **差（difference）**：**具有减数（has subtrahend）**存在取值约束。
+- **离散度（dispersion）**：**具有集合大小（hasCollectionSize）**存在取值约束。
+- **离散度（dispersion）**：**具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
+- **离散度（dispersion）**：**适用于（appliesTo）**至少有一个取值，类型是**有限总体（finite population）**。
+- **公式（formula）**：**具有表达式（hasExpression）**至少有一个取值，类型是**表达式（Expression）**。
+- **关键绩效指标（key performance indicator）**：**具有观测值（has observed value）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
+- **关键绩效指标（key performance indicator）**：**具有目标值（has target value）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
+- **平均值（mean）**：**具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
+- **中位数（median）**：**具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
+- **中位绝对偏差（median absolute deviation）**：**具有自变量（hasArgument）**至少有一个取值，类型是**中位数（median）**。
+- **数值指数值（numeric index value）**：**是……的值（isValueOf）**可以有 0 个或多个**限定度量（qualified measure）**。
+- **数值指数值（numeric index value）**：**具有测量日期时间（has measurement date time）**存在取值约束。
+- **限定度量（qualified measure）**：**具有基准日期（hasAnchorDate）**可以有 0 个或多个**基准日期（AnchorDate）**。
+- **限定度量（qualified measure）**：**按方法论计算（is calculated via methodology）**存在取值约束。
+- **限定范围度量（scoped measure）**：**具有周期性（has periodicity）**的所有取值只能是**重复区间（RecurrenceInterval）**。
+- **限定范围度量（scoped measure）**：**适用于（appliesTo）**可以有 0 个或多个**有限总体（finite population）**。
+- **限定范围度量（scoped measure）**：**具有覆盖区域（hasCoverageArea）**可以有 0 个或多个**统计区（statistical area）**。
+- **标准差（standard deviation）**：**具有自变量（hasArgument）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **统计区（statistical area）**：**由……标识（isIdentifiedBy）**至少有一个取值，类型是**统计区标识符（statistical area identifier）**。
+- **统计区标识符（statistical area identifier）**：**标识（identifies）**恰好有 1 个**统计区（statistical area）**。
+- **统计度量（statistical measure）**：**以……为特征（isCharacterizedBy）**可以有 0 个或多个**方面（Aspect）**。
+- **统计度量（statistical measure）**：**为估计值（is estimate）**存在取值约束。
+- **统计总体（statistical population）**：**具有总体规模（has population size）**的所有取值只能是**xsd:nonNegativeInteger（nonNegativeInteger）**。
+- **统计总体（statistical population）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**统计区（statistical area）**。
+- **统计总体（statistical population）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**显式日期区间（ExplicitDatePeriod）**。
+- **统计计划（statistical program）**：**适用于（appliesTo）**至少有一个取值，类型是**统计全域（statistical universe）**。
+- **统计计划（statistical program）**：**具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**统计区（statistical area）**。
+- **统计计划（statistical program）**：**提供（provides）**至少有一个取值，类型是**统计度量（statistical measure）**。
+- **统计全域（statistical universe）**：**具有全域规模（has universe size）**的所有取值只能是**xsd:nonNegativeInteger（nonNegativeInteger）**。
+- **统计全域（statistical universe）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**统计计划（statistical program）**。
+- **方差（variance）**：**具有自变量（hasArgument）**至少有一个取值，类型是**平均值（mean）**。
 
 ## 6. 依赖（owl:imports，14 个）
 

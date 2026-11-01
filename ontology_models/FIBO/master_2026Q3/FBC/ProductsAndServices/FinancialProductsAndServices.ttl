@@ -201,11 +201,11 @@ fibo-fbc-pas-fpas:RegulatedCommodity a owl:Class ;
         "受监管商品（regulated commodity）"@zh ;
     rdfs:comment "处于监管机构（如美国商品期货交易委员会 CFTC）管辖之下的商品。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rga:isGovernedBy ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
-        [ a owl:Restriction ;
             owl:allValuesFrom cmns-rga:RegulatoryAgency ;
             owl:onProperty cmns-rga:isRegulatedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
         fibo-fnd-pas-pas:Commodity ;
     skos:definition "commodity under the jurisdiction of the regulatory agency, such as the Commodities Futures Trading Commission (CFTF) in the United States, which includes any commodity traded in an organized contracts market" ;
     cmns-av:explanatoryNote "The CFTC polices matters of information and disclosure, fair trading practices, registration of firms and individuals, protection of customer funds, record keeping, and maintenance of orderly options and futures markets in the United States." .
@@ -322,13 +322,13 @@ fibo-fnd-agr-ctr:BreachOfCovenant a owl:Class ;
 
 fibo-fnd-oac-own:Portfolio a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-org:isManagedBy ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-be-oac-opty:Investor fibo-fbc-pas-fpas:FinancialServiceProvider ) ] ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-be-oac-opty:Investor fibo-fbc-pas-fpas:FinancialServiceProvider ) ] ;
-            owl:onProperty fibo-fnd-rel-rel:isHeldBy ] .
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isManagedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-oac-opty:Investor fibo-fbc-pas-fpas:FinancialServiceProvider ) ] ] .
 
 cmns-dt:precedes a owl:ObjectProperty ;
     rdfs:subPropertyOf fibo-fbc-pas-fpas:relatesTo .
@@ -451,12 +451,12 @@ fibo-fbc-pas-fpas:TradeLifecycleOccurrence a owl:Class ;
         "交易生命周期历程（trade lifecycle occurrence）"@zh ;
     rdfs:comment "某一具体交易生命周期的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-fpas:TradeLifecycle ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:hasStage ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence ],
         fibo-fnd-arr-lif:LifecycleOccurrence ;
     skos:definition "realization of the lifecycle for a specific trade" .
 
@@ -465,13 +465,13 @@ fibo-fbc-pas-fpas:Trader a owl:Class ;
         "交易员（trader）"@zh ;
     rdfs:comment "代表客户或金融服务提供商在任何金融市场进行金融资产转让的一方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:facilitates ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
                     owl:someValuesFrom fibo-fnd-law-lcap:ContractualCapability ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-pas-fpas:facilitates ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
         cmns-org:ServiceProvider ;
     skos:definition "party that engages in the transfer of financial assets in any financial market on behalf of a client or the financial services provider" .
 
@@ -630,11 +630,11 @@ fibo-fbc-pas-fpas:Catalog a owl:Class ;
         "产品目录（catalog）"@zh ;
     rdfs:comment "列有可供销售产品及其描述、可能还包括价格的出版物。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom cmns-id:Identifier ;
-            owl:onProperty cmns-id:isIdentifiedBy ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-dsg:describes ;
             owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-id:Identifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
         fibo-be-fct-pub:Publication ;
     skos:definition "publication including a list of products available for sale with their descriptions and possibly prices" .
 
@@ -643,15 +643,15 @@ fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence a owl:Class ;
         "合同生命周期事件发生（contract lifecycle event occurrence）"@zh ;
     rdfs:comment "特定合同生命周期某一阶段中事件的实际发生。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleEvent ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStageOccurrence ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-fpas:ContractLifecycleEvent ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:isClassifiedBy ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleEvent ],
         fibo-fnd-arr-lif:LifecycleEventOccurrence ;
     skos:definition "actual occurrence of an event during a specific stage of a specific contract lifecycle" .
 
@@ -660,15 +660,15 @@ fibo-fbc-pas-fpas:ContractLifecycleStageOccurrence a owl:Class ;
         "合同生命周期阶段历程（contract lifecycle stage occurrence）"@zh ;
     rdfs:comment "某一具体合同生命周期历程中某一阶段从开始到结束的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleOccurrence ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-fpas:ContractLifecycleStage ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleOccurrence ],
         fibo-fnd-arr-lif:LifecycleStageOccurrence ;
     skos:definition "realization, from start to finish of a phase in an occurrence of a specific contract lifecycle" .
 
@@ -687,13 +687,13 @@ fibo-fbc-pas-fpas:Offeror a owl:Class ;
         "要约人（offeror）"@zh ;
     rdfs:comment "基于要约条款提议向某方（即受要约人）提供某物的一方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:issues ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Offering ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-pts:isAPartyTo ;
                     owl:someValuesFrom fibo-fbc-pas-fpas:Offering ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:issues ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:Offering ],
         cmns-pts:PartyRole ;
     skos:definition "party that proposes to make something available to someone (i.e., an offeree) based on the terms of the offering" .
 
@@ -716,15 +716,15 @@ fibo-fbc-pas-fpas:ProductLifecycleStageOccurrence a owl:Class ;
         "产品生命周期阶段历程（product lifecycle stage occurrence）"@zh ;
     rdfs:comment "某一给定产品生命周期中特定阶段的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleStage ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleEventOccurrence ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:isStageOf ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleOccurrence ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleEventOccurrence ],
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleStage ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-arr-lif:LifecycleStageOccurrence ;
     skos:definition "realization of a specific stage in the lifecycle of a given product" .
 
@@ -798,11 +798,11 @@ fibo-fbc-pas-fpas:ContractLifecycle a owl:Class ;
             owl:onProperty cmns-dsg:defines ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStage ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:hasStage ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStage ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
             owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStage ],
         fibo-fnd-arr-lif:Lifecycle ;
     skos:definition "lifecycle of an agreement, including, but not limited to a credit agreement, financial instrument, or other formal contract, from initial stages through retirement" ;
     cmns-av:explanatoryNote "Certain business agreements, such as partnership agreements,may involve planning, drafting/review/revision, execution and management, renewal, and possibly sunsetting phases. Financial contracts, such as loans and other instruments have specific stages and events during the execution and management phase, i.e. from the effective date of the contract through maturity and redemption." .
@@ -812,9 +812,6 @@ fibo-fbc-pas-fpas:ProductLifecycleEvent a owl:Class ;
         "产品生命周期事件（product lifecycle event）"@zh ;
     rdfs:comment "在产品生命周期的一个或多个阶段中发生的事件类别。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStage ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:ProductLifecycleEvent ;
             owl:onProperty cmns-dt:succeeds ],
@@ -822,6 +819,9 @@ fibo-fbc-pas-fpas:ProductLifecycleEvent a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:ProductLifecycleEventOccurrence ;
             owl:onProperty cmns-cls:classifies ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStage ],
         fibo-fnd-arr-lif:LifecycleEvent ;
     skos:definition "kind of event that occurs during one or more stages of a product lifecycle" .
 
@@ -834,12 +834,12 @@ fibo-fbc-pas-fpas:TradeLifecycleEvent a owl:Class ;
             owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence ;
             owl:onProperty cmns-cls:classifies ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStage ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEvent ;
             owl:onProperty cmns-dt:succeeds ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStage ],
         fibo-fnd-arr-lif:LifecycleEvent ;
     skos:definition "kind of event that occurs during one or more stages of the lifecycle of a trade" .
 
@@ -848,16 +848,16 @@ fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence a owl:Class ;
         "交易生命周期事件发生（trade lifecycle event occurrence）"@zh ;
     rdfs:comment "特定交易生命周期某一阶段中事件的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence ;
-            owl:onProperty cmns-dt:succeeds ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEvent ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence ;
+            owl:onProperty cmns-dt:succeeds ],
         fibo-fnd-arr-lif:LifecycleEventOccurrence ;
     skos:definition "realization of an event that happens during a specific stage of a specific trade lifecycle" .
 
@@ -866,19 +866,19 @@ fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence a owl:Class ;
         "交易生命周期阶段历程（trade lifecycle stage occurrence）"@zh ;
     rdfs:comment "某一具体交易生命周期中某一阶段的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleOccurrence ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleStage ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:TradeLifecycleStageOccurrence ;
             owl:onProperty cmns-dt:succeeds ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleEventOccurrence ],
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycleStage ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleOccurrence ],
         fibo-fnd-arr-lif:LifecycleStageOccurrence ;
     skos:definition "realization of a phase in the lifecycle of a specific trade" .
 
@@ -915,14 +915,14 @@ fibo-fbc-pas-fpas:ProductLifecycle a owl:Class ;
         "产品生命周期（product lifecycle）"@zh ;
     rdfs:comment "特定于某一产品或产品族的生命周期。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
-            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-dsg:defines ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStage ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:hasStage ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleStage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Product ],
         fibo-fnd-arr-lif:Lifecycle ;
     skos:definition "lifecycle specific to a product or product family" ;
     skos:example "The product life cycle describes the period of time over which an item is developed, brought to market and eventually removed from the market. The cycle is broken into four stages: introduction, growth, maturity and decline. The idea of the product life cycle is used in marketing to decide when it is appropriate to advertise, reduce prices, explore new markets or create new packaging." .
@@ -932,14 +932,14 @@ fibo-fbc-pas-fpas:TradeLifecycle a owl:Class ;
         "交易生命周期（trade lifecycle）"@zh ;
     rdfs:comment "规定交易从发起到结算之演变过程的生命周期。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:hasStage ;
             owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStage ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dsg:defines ;
             owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleStage ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
         fibo-fnd-arr-lif:Lifecycle ;
     skos:definition "lifecycle that defines the evolution of a trade, from initiation through settlement" ;
     skos:example "The trade life cycle covers the period of time over which a trade is initiated, typically as a part of a broader deal, is consumated, processed and executed, is settled or closed for other reasons, and is reported. Parts of a trade lifecycle may include or overlap with the lifecycle of one or more contracts." .
@@ -959,11 +959,11 @@ fibo-fbc-pas-fpas:ContractLifecycleStage a owl:Class ;
         "合同生命周期阶段（contract lifecycle stage）"@zh ;
     rdfs:comment "协议生命周期中的一个阶段。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycle ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleEvent ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:ContractLifecycleStage ;
@@ -972,8 +972,8 @@ fibo-fbc-pas-fpas:ContractLifecycleStage a owl:Class ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycle ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+            owl:onProperty fibo-fnd-arr-lif:isStageOf ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycle ],
         fibo-fnd-arr-lif:LifecycleStage ;
     skos:definition "phase in the lifecycle of an agreement" .
 
@@ -999,11 +999,11 @@ fibo-fbc-pas-fpas:ExposureSituation a owl:Class ;
         "风险暴露情形（exposure situation）"@zh ;
     rdfs:comment "某一方承受源自特定合同、工具或安排的影响或风险的情势。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-pas-fpas:hasExposureTo ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:Exposure ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-pas-fpas:hasExposedParty ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ExposureBearer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:hasExposureTo ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Exposure ],
         cmns-pts:Situation ;
     skos:definition "state of affairs in which some party is subject to influence or risk arising from a specific contract, instrument, or arrangement" .
 
@@ -1012,9 +1012,8 @@ fibo-fbc-pas-fpas:Offering a owl:Class ;
         "发行（offering）"@zh ;
     rdfs:comment "将证券提供发行的流程步骤，即通过承销使新证券发行可得。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-fpas:Offeree ;
-            owl:onProperty cmns-pts:hasPartyRole ],
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom owl:Thing ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
             owl:someValuesFrom fibo-fbc-pas-fpas:Offeror ],
@@ -1022,8 +1021,9 @@ fibo-fbc-pas-fpas:Offering a owl:Class ;
             owl:onProperty cmns-pts:hasPartyRole ;
             owl:someValuesFrom fibo-fbc-pas-fpas:Offeror ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom owl:Thing ] ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:Offeree ;
+            owl:onProperty cmns-pts:hasPartyRole ] ;
     skos:definition "expression of interest in providing something to someone that is contingent upon acceptance, forbearance, or some other consideration, as might be desired by an offeree(s)" ;
     cmns-av:explanatoryNote "The making of an offer is the first of three steps in the traditional process of forming a valid contract: an offer, an acceptance of the offer, and an exchange of consideration. (Consideration is the act of doing something or promising to do something that a person is not legally required to do, or the forbearance or the promise to forbear from doing something that he or she has the legal right to do.)" ;
     cmns-av:usageNote "An offering may or may not be considered a 'state of affairs' or situation, depending on the circumstances. In some cases such as a prospectus or other offering in the context of financial services, an offering may also be classified as a situation. Users may choose to model an individual offering as both an offering and situation, depending on the circumstances, in other words." .
@@ -1033,21 +1033,21 @@ fibo-fbc-pas-fpas:ProductLifecycleStage a owl:Class ;
         "产品生命周期阶段（product lifecycle stage）"@zh ;
     rdfs:comment "产品生命周期中的一个阶段。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleStage ;
+            owl:onProperty cmns-dt:succeeds ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:isStageOf ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycle ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycle ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleEvent ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-fpas:ProductLifecycleStage ;
-            owl:onProperty cmns-dt:succeeds ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom fibo-fnd-pas-pas:Product ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:ProductLifecycleEvent ],
         fibo-fnd-arr-lif:LifecycleStage ;
     skos:definition "phase in a product lifecycle" ;
     skos:example "research and development phase of a product lifecycle or the introduction phase in a marketing lifecycle, growth stage in an economic lifecycle for a product" .
@@ -1057,8 +1057,13 @@ fibo-fbc-pas-fpas:Trade a owl:Class ;
         "交易（trade）"@zh ;
     rdfs:comment "实现参与自愿买卖商品和服务行为的各方之间协议的情势。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-pas-fpas:isEmbodiedIn ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeLifecycle ;
+            owl:onProperty cmns-cls:isCharacterizedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:TradeIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:Trader ;
@@ -1067,16 +1072,11 @@ fibo-fbc-pas-fpas:Trade a owl:Class ;
             owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
             owl:someValuesFrom fibo-fnd-pas-pas:Buyer ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:isEmbodiedIn ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-pas-pas:hasSeller ;
             owl:someValuesFrom fibo-fnd-pas-pas:Seller ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-fpas:TradeLifecycle ;
-            owl:onProperty cmns-cls:isCharacterizedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-fpas:TradeIdentifier ;
-            owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:involves ;
             owl:someValuesFrom [ a owl:Class ;
@@ -1098,15 +1098,15 @@ fibo-fbc-pas-fpas:ContractLifecycleEvent a owl:Class ;
     rdfs:comment "在协议生命周期的一个或多个阶段中发生的事件类别。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:ContractLifecycleEvent ;
+            owl:onProperty cmns-dt:succeeds ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence ;
             owl:onProperty cmns-cls:classifies ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-pas-fpas:ContractLifecycleStage ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-fpas:ContractLifecycleEvent ;
-            owl:onProperty cmns-dt:succeeds ],
         fibo-fnd-arr-lif:LifecycleEvent ;
     skos:definition "kind of event that occurs during one or more stages of the lifecycle of an agreement" ;
     skos:example "a call notification or coupon payment as a part of a bond lifecycle" .
@@ -1127,14 +1127,14 @@ fibo-fbc-pas-fpas:TradeLifecycleStage a owl:Class ;
         "交易生命周期阶段（trade lifecycle stage）"@zh ;
     rdfs:comment "交易生命周期中的一个阶段。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycle ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycleEvent ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:isDefinedIn ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycle ],
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Trade ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:isStageOf ;
             owl:someValuesFrom fibo-fbc-pas-fpas:TradeLifecycle ],

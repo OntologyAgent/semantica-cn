@@ -138,21 +138,23 @@
 
 ## 5. 公理约定（Axioms）
 
-- 债券违约事件（bond default event）：适用于 some 债券
-- 证券交易状态变更事件（change of security trading status event）：适用于 some 证券交易状态
-- 转换行动（conversion action）：转换自（converts from） some 证券
-- 转换行动（conversion action）：转换为（converts to） some 证券
-- 息票剥离（coupon strip）：适用于 some 债券
-- 利率调整（interest rate adjustment）：适用于 some 浮动票息债券
-- 合并后证券交换（post-merger securities exchange）：具有货币数量 货币数量 ≥0
-- 合并后证券交换（post-merger securities exchange）：转换自（converts from） some 证券
-- 合并后证券交换（post-merger securities exchange）：转换为（converts to） some 证券
-- 并股（reverse stock split）：适用于 some 股份
-- 并股（reverse stock split） 与 拆股（stock split） 互斥（disjointWith）
-- 拆股（stock split）：适用于 some 股份
-- 要约收购（tender offer）：适用于 some 股份
-- 交易状态消息（trading status message）：关于 some 证券交易状态
-- 交易状态消息（trading status message）：引用 some 证券
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **债券违约事件（bond default event）**：**适用于（appliesTo）**至少有一个取值，类型是**债券（Bond）**。
+- **证券交易状态变更事件（change of security trading status event）**：**适用于（appliesTo）**至少有一个取值，类型是**证券交易状态（SecurityTradingStatus）**。
+- **转换行动（conversion action）**：**转换自（converts from）**至少有一个取值，类型是**证券（Security）**。
+- **转换行动（conversion action）**：**转换为（converts to）**至少有一个取值，类型是**证券（Security）**。
+- **息票剥离（coupon strip）**：**适用于（appliesTo）**至少有一个取值，类型是**债券（Bond）**。
+- **利率调整（interest rate adjustment）**：**适用于（appliesTo）**至少有一个取值，类型是**浮动票息债券（VariableCouponBond）**。
+- **合并后证券交换（post-merger securities exchange）**：**具有货币数量（hasMonetaryAmount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **合并后证券交换（post-merger securities exchange）**：**转换自（converts from）**至少有一个取值，类型是**证券（Security）**。
+- **合并后证券交换（post-merger securities exchange）**：**转换为（converts to）**至少有一个取值，类型是**证券（Security）**。
+- **并股（reverse stock split）**：**适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
+- **并股（reverse stock split）**与**拆股（stock split）**互斥：同一个体不能同时属于两者。
+- **拆股（stock split）**：**适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
+- **要约收购（tender offer）**：**适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
+- **交易状态消息（trading status message）**：**关于（isAbout）**至少有一个取值，类型是**证券交易状态（SecurityTradingStatus）**。
+- **交易状态消息（trading status message）**：**引用（refersTo）**至少有一个取值，类型是**证券（Security）**。
 
 ## 6. 依赖（owl:imports，13 个）
 

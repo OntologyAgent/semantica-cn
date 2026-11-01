@@ -68,30 +68,32 @@
 
 ## 5. 公理约定（Axioms）
 
-- 定性评级得分（qualitative rating score）：restriction
-- 定量评级得分（quantitative rating score）：restriction
-- 评级（rating）：restriction
-- 评级（rating）：具有生效日期 日期 ≤1
-- 评级（rating）：由……发行 评级发布方（rating issuer） =1
-- 评级（rating）：由……生成 评级方（rating party） =1
-- 评级（rating）：具有签发日期 日期 =1
-- 评级（rating）：具有评级得分（has rating score） some 评级得分（rating score）
-- 评级机构（rating agency）：由…扮演（is played by） some 正式组织
-- 评级评估活动（rating assessment activity）：由……提供 some 评级方（rating party）
-- 评级评估事件（rating assessment event）：具有输出 评级报告（rating report） ≥0
-- 评级评估事件（rating assessment event）：例证 评级评估活动（rating assessment activity） =1
-- 评级评估事件（rating assessment event）：具有输出 some 评级（rating）
-- 评级评估事件（rating assessment event）：由……提供 some 评级方（rating party）
-- 评级发布方（rating issuer）：发行 some 评级（rating）
-- 评级方（rating party）：生成 some 评级（rating）
-- 评级报告（rating report）：报告关于 some 评级（rating）
-- 评级标度（rating scale）：restriction
-- 评级标度（rating scale）：restriction
-- 评级标度（rating scale）：由……管理 评级标度发布方（rating scale publisher） =1
-- 评级标度（rating scale）：定义 some 评级得分（rating score）
-- 评级标度发布方（rating scale publisher）：管理 some 评级标度（rating scale）
-- 评级得分（rating score）：restriction
-- 评级得分（rating score）：定义于 评级标度（rating scale） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **定性评级得分（qualitative rating score）**：**具有标签（hasTag）**存在取值约束。
+- **定量评级得分（quantitative rating score）**：**具有标度内度量（has measure within scale）**存在取值约束。
+- **评级（rating）**：**评定（rates）**存在取值约束。
+- **评级（rating）**：**具有生效日期（hasEffectiveDate）**至多有 1 个**日期（Date）**。
+- **评级（rating）**：**由……发行（isIssuedBy）**恰好有 1 个**评级发布方（rating issuer）**。
+- **评级（rating）**：**由……生成（isGeneratedBy）**恰好有 1 个**评级方（rating party）**。
+- **评级（rating）**：**具有签发日期（hasDateOfIssuance）**恰好有 1 个**日期（Date）**。
+- **评级（rating）**：**具有评级得分（has rating score）**至少有一个取值，类型是**评级得分（rating score）**。
+- **评级机构（rating agency）**：**由…扮演（is played by）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+- **评级评估活动（rating assessment activity）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**评级方（rating party）**。
+- **评级评估事件（rating assessment event）**：**具有输出（hasOutput）**可以有 0 个或多个**评级报告（rating report）**。
+- **评级评估事件（rating assessment event）**：**例证（exemplifies）**恰好有 1 个**评级评估活动（rating assessment activity）**。
+- **评级评估事件（rating assessment event）**：**具有输出（hasOutput）**至少有一个取值，类型是**评级（rating）**。
+- **评级评估事件（rating assessment event）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**评级方（rating party）**。
+- **评级发布方（rating issuer）**：**发行（issues）**至少有一个取值，类型是**评级（rating）**。
+- **评级方（rating party）**：**生成（generates）**至少有一个取值，类型是**评级（rating）**。
+- **评级报告（rating report）**：**报告关于（reportsOn）**至少有一个取值，类型是**评级（rating）**。
+- **评级标度（rating scale）**：**具有最优度量（has best measure）**存在取值约束。
+- **评级标度（rating scale）**：**具有最差度量（has worst measure）**存在取值约束。
+- **评级标度（rating scale）**：**由……管理（isManagedBy）**恰好有 1 个**评级标度发布方（rating scale publisher）**。
+- **评级标度（rating scale）**：**定义（defines）**至少有一个取值，类型是**评级得分（rating score）**。
+- **评级标度发布方（rating scale publisher）**：**管理（manages）**至少有一个取值，类型是**评级标度（rating scale）**。
+- **评级得分（rating score）**：**具有标度内度量（has measure within scale）**存在取值约束。
+- **评级得分（rating score）**：**定义于（isDefinedIn）**恰好有 1 个**评级标度（rating scale）**。
 
 ## 6. 依赖（owl:imports，14 个）
 

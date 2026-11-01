@@ -29,9 +29,11 @@
 
 ## 5. 公理约定（Axioms）
 
-- 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）：restriction
-- 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）：restriction
-- 国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier）：分类 金融服务提供商 ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）**：**是……的成员（isMemberOf）**的取值固定为 NationalInformationCenterClassificationSchemeAndCodeSet。
+- **国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）**：**定义于（isDefinedIn）**的取值固定为 NationalInformationCenterClassificationSchemeAndCodeSet。
+- **国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier）**：**分类（classifies）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
 
 ## 6. 依赖（owl:imports，11 个）
 

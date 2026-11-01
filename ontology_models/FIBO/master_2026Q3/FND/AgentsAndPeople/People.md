@@ -120,50 +120,52 @@
 
 ## 5. 公理约定（Axioms）
 
-- 成年人（adult）：具有法定成年年龄（has age of majority） 法定成年年龄（age of majority） ≥0
-- 出生证明（birth certificate）：由……标识 出生证明标识符（birth certificate identifier） =1
-- 出生证明标识方案（birth certificate identification scheme）：定义 some 出生证明标识符（birth certificate identifier）
-- 出生证明标识符（birth certificate identifier）：标识 出生证明（birth certificate） =1
-- 出生证明标识符（birth certificate identifier）：定义于 出生证明标识方案（birth certificate identification scheme） =1
-- 联系人（contact）：由……表示 some 联系人记录（contact record）
-- 联系人（contact）：由……标识 some 参与方角色标识符
-- 联系人（contact）：由…扮演（is played by） some 参与方（party）
-- 联系人记录（contact record）：指代 联系人（contact） =1
-- 联系人记录（contact record）：包含 参与方角色标识符 =1
-- 死亡证明（death certificate）：由……标识 死亡证明标识符（death certificate identifier） =1
-- 死亡证明标识方案（death certificate identification scheme）：定义 some 死亡证明标识符（death certificate identifier）
-- 死亡证明标识符（death certificate identifier）：标识 死亡证明（death certificate） =1
-- 死亡证明标识符（death certificate identifier）：定义于 死亡证明标识方案（death certificate identification scheme） =1
-- 驾驶证（driver's license）：由……标识 驾驶证标识符（driver's license identifier） =1
-- 驾驶证标识方案（driver's license identification scheme）：定义 some 驾驶证标识符（driver's license identifier）
-- 驾驶证标识符（driver's license identifier）：标识 驾驶证（driver's license） =1
-- 驾驶证标识符（driver's license identifier）：定义于 驾驶证标识方案（driver's license identification scheme） =1
-- 身份证件（identity document）：具有到期日 日期 =1
-- 身份证件（identity document）：具有签发日期 日期 =1
-- 身份证件（identity document）：由……标识 标识符 =1
-- 身份证件（identity document）：标识 some 个人（person）
-- 无行为能力成年人（incapacitated adult） 与 具有法律行为能力的成年人（legally capable adult） 互斥（disjointWith）
-- 法定年龄（legal age）：适用于情境 some 管辖权
-- 达到法定工作年龄的人（legal working age person）：具有最低法定工作年龄（has minimum legal working age） 法定工作年龄（legal working age） ≥0
-- 国家身份号码（national identification number）：定义于 国家身份号码方案（national identification number scheme） =1
-- 国家身份号码（national identification number）：标识 个人（person） =1
-- 国家身份号码方案（national identification number scheme）：具有成员 some 国家身份号码（national identification number）
-- 护照（passport）：包含 护照号码（passport number） =1
-- 护照号码（passport number）：定义于 护照号码标识方案（passport number identification scheme） =1
-- 护照号码标识方案（passport number identification scheme）：具有成员 some 护照号码（passport number）
-- 个人（person）：具有死亡日期（has date of death） 死亡日期（date of death） ≥0
-- 个人（person）：具有名称 人名（person name） ≥0
-- 个人（person）：具有存续时间 存续时间 ≥0
-- 个人（person）：具有居所（has residence） 常规街道地址 ≥0
-- 个人（person）：具有国籍（has citizenship） 国家 ≥0
-- 个人（person）：具有出生日期（has date of birth） 出生日期（date of birth） =1
-- 个人（person）：具有出生地（has place of birth） 出生地（place of birth） =1
-- 个人（person）：restriction
-- 人名（person name）：是……的名称 个人（person） ≥0
-- 人名（person name）：restriction
-- 人名（person name）：restriction
-- 人名（person name）：restriction
-- 人名（person name）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **成年人（adult）**：**具有法定成年年龄（has age of majority）**可以有 0 个或多个**法定成年年龄（age of majority）**。
+- **出生证明（birth certificate）**：**由……标识（isIdentifiedBy）**恰好有 1 个**出生证明标识符（birth certificate identifier）**。
+- **出生证明标识方案（birth certificate identification scheme）**：**定义（defines）**至少有一个取值，类型是**出生证明标识符（birth certificate identifier）**。
+- **出生证明标识符（birth certificate identifier）**：**标识（identifies）**恰好有 1 个**出生证明（birth certificate）**。
+- **出生证明标识符（birth certificate identifier）**：**定义于（isDefinedIn）**恰好有 1 个**出生证明标识方案（birth certificate identification scheme）**。
+- **联系人（contact）**：**由……表示（isSignifiedBy）**至少有一个取值，类型是**联系人记录（contact record）**。
+- **联系人（contact）**：**由……标识（isIdentifiedBy）**至少有一个取值，类型是**参与方角色标识符（PartyRoleIdentifier）**。
+- **联系人（contact）**：**由…扮演（is played by）**至少有一个取值，类型是**参与方（party）**。
+- **联系人记录（contact record）**：**指代（denotes）**恰好有 1 个**联系人（contact）**。
+- **联系人记录（contact record）**：**包含（comprises）**恰好有 1 个**参与方角色标识符（PartyRoleIdentifier）**。
+- **死亡证明（death certificate）**：**由……标识（isIdentifiedBy）**恰好有 1 个**死亡证明标识符（death certificate identifier）**。
+- **死亡证明标识方案（death certificate identification scheme）**：**定义（defines）**至少有一个取值，类型是**死亡证明标识符（death certificate identifier）**。
+- **死亡证明标识符（death certificate identifier）**：**标识（identifies）**恰好有 1 个**死亡证明（death certificate）**。
+- **死亡证明标识符（death certificate identifier）**：**定义于（isDefinedIn）**恰好有 1 个**死亡证明标识方案（death certificate identification scheme）**。
+- **驾驶证（driver's license）**：**由……标识（isIdentifiedBy）**恰好有 1 个**驾驶证标识符（driver's license identifier）**。
+- **驾驶证标识方案（driver's license identification scheme）**：**定义（defines）**至少有一个取值，类型是**驾驶证标识符（driver's license identifier）**。
+- **驾驶证标识符（driver's license identifier）**：**标识（identifies）**恰好有 1 个**驾驶证（driver's license）**。
+- **驾驶证标识符（driver's license identifier）**：**定义于（isDefinedIn）**恰好有 1 个**驾驶证标识方案（driver's license identification scheme）**。
+- **身份证件（identity document）**：**具有到期日（hasExpirationDate）**恰好有 1 个**日期（Date）**。
+- **身份证件（identity document）**：**具有签发日期（hasDateOfIssuance）**恰好有 1 个**日期（Date）**。
+- **身份证件（identity document）**：**由……标识（isIdentifiedBy）**恰好有 1 个**标识符（Identifier）**。
+- **身份证件（identity document）**：**标识（identifies）**至少有一个取值，类型是**个人（person）**。
+- **无行为能力成年人（incapacitated adult）**与**具有法律行为能力的成年人（legally capable adult）**互斥：同一个体不能同时属于两者。
+- **法定年龄（legal age）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **达到法定工作年龄的人（legal working age person）**：**具有最低法定工作年龄（has minimum legal working age）**可以有 0 个或多个**法定工作年龄（legal working age）**。
+- **国家身份号码（national identification number）**：**定义于（isDefinedIn）**恰好有 1 个**国家身份号码方案（national identification number scheme）**。
+- **国家身份号码（national identification number）**：**标识（identifies）**恰好有 1 个**个人（person）**。
+- **国家身份号码方案（national identification number scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**国家身份号码（national identification number）**。
+- **护照（passport）**：**包含（comprises）**恰好有 1 个**护照号码（passport number）**。
+- **护照号码（passport number）**：**定义于（isDefinedIn）**恰好有 1 个**护照号码标识方案（passport number identification scheme）**。
+- **护照号码标识方案（passport number identification scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**护照号码（passport number）**。
+- **个人（person）**：**具有死亡日期（has date of death）**可以有 0 个或多个**死亡日期（date of death）**。
+- **个人（person）**：**具有名称（hasName）**可以有 0 个或多个**人名（person name）**。
+- **个人（person）**：**具有存续时间（hasAge）**可以有 0 个或多个**存续时间（Age）**。
+- **个人（person）**：**具有居所（has residence）**可以有 0 个或多个**常规街道地址（ConventionalStreetAddress）**。
+- **个人（person）**：**具有国籍（has citizenship）**可以有 0 个或多个**国家（Country）**。
+- **个人（person）**：**具有出生日期（has date of birth）**恰好有 1 个**出生日期（date of birth）**。
+- **个人（person）**：**具有出生地（has place of birth）**恰好有 1 个**出生地（place of birth）**。
+- **个人（person）**：**具有性别（has gender）**存在取值约束。
+- **人名（person name）**：**是……的名称（isNameOf）**可以有 0 个或多个**个人（person）**。
+- **人名（person name）**：**具有完整法定姓名（has full legal name）**存在取值约束。
+- **人名（person name）**：**具有姓名前缀（has name prefix）**存在取值约束。
+- **人名（person name）**：**具有姓名后缀（has name suffix）**存在取值约束。
+- **人名（person name）**：**具有姓（has surname）**存在取值约束。
 
 ## 6. 依赖（owl:imports，20 个）
 

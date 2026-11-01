@@ -128,26 +128,28 @@
 
 ## 5. 公理约定（Axioms）
 
-- 配股权（allotment right）：具有表达式 some 配股权公式（allotment right formula）
-- 篮子权证（basket warrant）：具有标的 some（由…扮演（is played by） some 证券篮子）
-- 债券购买权（bond purchase right）：具有标的 some（由…扮演（is played by） some 债券）
-- 债券认购权（bond subscription right）：具有标的 some（由…扮演（is played by） some 债券）
-- 普通可转换股购买权（common convertible share purchase right）：具有标的 some（由…扮演（is played by） some 可转换普通股）
-- 普通可转换股认购权（common convertible share subscription right）：具有标的 some（由…扮演（is played by） some 可转换普通股）
-- 普通股购买权（common share purchase right）：具有标的 some（由…扮演（is played by） some 普通股）
-- 普通股认购权（common share subscription right）：具有标的 some（由…扮演（is played by） some 普通股）
-- 备兑权证（covered warrant）：由……发行 some 金融机构
-- 股权权证（equity warrant）：由……发行 some（由…扮演（is played by） only 股份公司）
-- 指数权证（index warrant）：具有标的 some（由…扮演（is played by） Nbac3ce0bca954591b9cee7d38aa5c1ff ≥0）
-- 裸权证（naked warrant）：由……发行 some 金融机构
-- 裸权证（naked warrant） 与 备兑权证（covered warrant） 互斥（disjointWith）
-- 优先可转换股购买权（preferred convertible share purchase right）：具有标的 some（由…扮演（is played by） some 可转换优先股）
-- 优先可转换股认购权（preferred convertible share subscription right）：具有标的 some（由…扮演（is played by） some 可转换优先股）
-- 优先股购买权（preferred share purchase right）：具有标的 some（由…扮演（is played by） some 优先股）
-- 优先股认购权（preferred share subscription right）：具有标的 some（由…扮演（is played by） some 优先股）
-- 传统权证（traditional warrant） 与 备兑权证（covered warrant） 互斥（disjointWith）
-- 传统权证（traditional warrant） 与 裸权证（naked warrant） 互斥（disjointWith）
-- 权证（warrant）：具有行权条款 some 行权条款
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **配股权（allotment right）**：**具有表达式（hasExpression）**至少有一个取值，类型是**配股权公式（allotment right formula）**。
+- **篮子权证（basket warrant）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**证券篮子（BasketOfSecurities）**。
+- **债券购买权（bond purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
+- **债券认购权（bond subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
+- **普通可转换股购买权（common convertible share purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换普通股（ConvertibleCommonShare）**。
+- **普通可转换股认购权（common convertible share subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换普通股（ConvertibleCommonShare）**。
+- **普通股购买权（common share purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**普通股（CommonShare）**。
+- **普通股认购权（common share subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**普通股（CommonShare）**。
+- **备兑权证（covered warrant）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
+- **股权权证（equity warrant）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**的所有取值只能是**股份公司（StockCorporation）**。
+- **指数权证（index warrant）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**Ne9cd7be6ceb24c12845ab5d64f06ae51**。
+- **裸权证（naked warrant）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
+- **裸权证（naked warrant）**与**备兑权证（covered warrant）**互斥：同一个体不能同时属于两者。
+- **优先可转换股购买权（preferred convertible share purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换优先股（ConvertiblePreferredShare）**。
+- **优先可转换股认购权（preferred convertible share subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换优先股（ConvertiblePreferredShare）**。
+- **优先股购买权（preferred share purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**优先股（PreferredShare）**。
+- **优先股认购权（preferred share subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**优先股（PreferredShare）**。
+- **传统权证（traditional warrant）**与**备兑权证（covered warrant）**互斥：同一个体不能同时属于两者。
+- **传统权证（traditional warrant）**与**裸权证（naked warrant）**互斥：同一个体不能同时属于两者。
+- **权证（warrant）**：**具有行权条款（hasExerciseTerms）**至少有一个取值，类型是**行权条款（ExerciseTerms）**。
 
 ## 6. 依赖（owl:imports，21 个）
 

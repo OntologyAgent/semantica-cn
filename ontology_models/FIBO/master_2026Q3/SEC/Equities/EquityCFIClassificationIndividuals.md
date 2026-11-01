@@ -1360,170 +1360,172 @@
 
 ## 5. 公理约定（Axioms）
 
-- 增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）：restriction
-- 增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）：restriction
-- 增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare）：restriction
-- 增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare）：restriction
-- 增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare）：restriction
-- 增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare）：restriction
-- 无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare）：restriction
-- 无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare）：restriction
-- 无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare）：restriction
-- 无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare）：restriction
-- 无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare）：restriction
-- 无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare）：restriction
-- 受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare）：restriction
-- 受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare）：restriction
-- 受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare）：restriction
-- 受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare）：restriction
-- 受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare）：restriction
-- 受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare）：restriction
-- 单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare）：restriction
-- 单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare）：restriction
-- 单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare）：restriction
-- 单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare）：restriction
-- 单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare）：restriction
-- 单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare）：restriction
-- 增强表决权、可展期、可调整收益优先股（PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare）：restriction
-- 增强表决权、可展期、拍卖利率收益优先股（PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare）：restriction
-- 增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare）：restriction
-- 增强表决权、可展期、普通收益优先股（PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare）：restriction
-- 增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare）：restriction
-- 增强表决权、可赎回、可调整收益优先股（PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare）：restriction
-- 增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare）：restriction
-- 增强表决权、可赎回、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare）：restriction
-- 增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare）：restriction
-- 增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、普通收益优先股（PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare）：restriction
-- 增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare）：restriction
-- 无表决权、可展期、可调整收益优先股（PreferredNonVotingExtendableAdjustableIncomeRegisteredShare）：restriction
-- 无表决权、可展期、拍卖利率收益优先股（PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare）：restriction
-- 无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare）：restriction
-- 无表决权、可展期、普通收益优先股（PreferredNonVotingExtendableNormalIncomeRegisteredShare）：restriction
-- 无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare）：restriction
-- 无表决权、可赎回、可调整收益优先股（PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、拍卖利率收益优先股（PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare）：restriction
-- 无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、可调整收益优先股（PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、普通收益优先股（PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare）：restriction
-- 无表决权、可赎回、可展期、可调整收益优先股（PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare）：restriction
-- 无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可展期、普通收益优先股（PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare）：restriction
-- 无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、普通收益优先股（PreferredNonVotingRedeemableNormalIncomeRegisteredShare）：restriction
-- 无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare）：restriction
-- 受限表决权、可展期、可调整收益优先股（PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare）：restriction
-- 受限表决权、可展期、拍卖利率收益优先股（PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare）：restriction
-- 受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare）：restriction
-- 受限表决权、可展期、普通收益优先股（PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare）：restriction
-- 受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare）：restriction
-- 受限表决权、可赎回、可调整收益优先股（PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare）：restriction
-- 受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare）：restriction
-- 受限表决权、可赎回、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare）：restriction
-- 受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare）：restriction
-- 受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、普通收益优先股（PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare）：restriction
-- 受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare）：restriction
-- 单一表决权、可展期、可调整收益优先股（PreferredVotingExtendableAdjustableIncomeRegisteredShare）：restriction
-- 单一表决权、可展期、拍卖利率收益优先股（PreferredVotingExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare）：restriction
-- 单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare）：restriction
-- 单一表决权、可展期、普通收益优先股（PreferredVotingExtendableNormalIncomeRegisteredShare）：restriction
-- 单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare）：restriction
-- 单一表决权、可赎回、可调整收益优先股（PreferredVotingRedeemableAdjustableIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、拍卖利率收益优先股（PreferredVotingRedeemableAuctionRateIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare）：restriction
-- 单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、可调整收益优先股（PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、普通收益优先股（PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare）：restriction
-- 单一表决权、可赎回、可展期、可调整收益优先股（PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）：restriction
-- 单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare）：restriction
-- 单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可展期、普通收益优先股（PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare）：restriction
-- 单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、普通收益优先股（PreferredVotingRedeemableNormalIncomeRegisteredShare）：restriction
-- 单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESETFR。
+- **增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESETOR。
+- **增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESETPR。
+- **增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESEUFR。
+- **增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESEUOR。
+- **增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESEUPR。
+- **无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNTFR。
+- **无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNTOR。
+- **无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNTPR。
+- **无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNUFR。
+- **无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNUOR。
+- **无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNUPR。
+- **受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRTFR。
+- **受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRTOR。
+- **受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRTPR。
+- **受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRUFR。
+- **受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRUOR。
+- **受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRUPR。
+- **单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVTFR。
+- **单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVTOR。
+- **单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVTPR。
+- **单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVUFR。
+- **单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVUOR。
+- **单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVUPR。
+- **增强表决权、可展期、可调整收益优先股（PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可展期、拍卖利率收益优先股（PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可展期、普通收益优先股（PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可调整收益优先股（PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、普通收益优先股（PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可展期、可调整收益优先股（PreferredNonVotingExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可展期、拍卖利率收益优先股（PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可展期、普通收益优先股（PreferredNonVotingExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可调整收益优先股（PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、拍卖利率收益优先股（PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、可调整收益优先股（PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、普通收益优先股（PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可展期、可调整收益优先股（PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可展期、普通收益优先股（PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、普通收益优先股（PreferredNonVotingRedeemableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可展期、可调整收益优先股（PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可展期、拍卖利率收益优先股（PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可展期、普通收益优先股（PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可调整收益优先股（PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、普通收益优先股（PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可展期、可调整收益优先股（PreferredVotingExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可展期、拍卖利率收益优先股（PreferredVotingExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可展期、普通收益优先股（PreferredVotingExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可调整收益优先股（PreferredVotingRedeemableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、拍卖利率收益优先股（PreferredVotingRedeemableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、可调整收益优先股（PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、普通收益优先股（PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可展期、可调整收益优先股（PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可展期、普通收益优先股（PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、普通收益优先股（PreferredVotingRedeemableNormalIncomeRegisteredShare）**：该属性存在取值约束。
+- **单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare）**：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，9 个）
 

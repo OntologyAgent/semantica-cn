@@ -30,8 +30,10 @@
 
 ## 5. 公理约定（Axioms）
 
-- 商业中心代码（business center code）：标识 some 商业中心
-- 营业日调整代码（business day adjustment code）：标识 some 营业日惯例
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **商业中心代码（business center code）**：**标识（identifies）**至少有一个取值，类型是**商业中心（BusinessCenter）**。
+- **营业日调整代码（business day adjustment code）**：**标识（identifies）**至少有一个取值，类型是**营业日惯例（BusinessDayConvention）**。
 
 ## 6. 依赖（owl:imports，8 个）
 

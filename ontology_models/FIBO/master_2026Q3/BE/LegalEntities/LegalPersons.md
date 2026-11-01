@@ -55,15 +55,17 @@
 
 ## 5. 公理约定（Axioms）
 
-- 特殊目的载体（SpecialPurposeVehicle）：具有预定清算日期（has intended liquidation date） 日期 ≥0
-- 企业实体（business entity）：具有目标 业务目标 ≥0
-- 企业实体（business entity）：持有 许可 ≥0
-- 营业执照（business license）：适用于 企业实体（business entity） =1
-- 营业执照（business license）：获承认于 some 管辖权
-- 具有法律行为能力的自然人（legally competent natural person） 与 无行为能力成年人 互斥（disjointWith）
-- 非营利目标（not for profit objective） 与 盈利目标（profit objective） 互斥（disjointWith）
-- 授权委托书（power of attorney）：具有生效日期 日期 ≥0
-- 授权委托书（power of attorney）：被授予给 some 具有法律行为能力的自然人（legally competent natural person）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **特殊目的载体（SpecialPurposeVehicle）**：**具有预定清算日期（has intended liquidation date）**可以有 0 个或多个**日期（Date）**。
+- **企业实体（business entity）**：**具有目标（hasObjective）**可以有 0 个或多个**业务目标（BusinessObjective）**。
+- **企业实体（business entity）**：**持有（holds）**可以有 0 个或多个**许可（License）**。
+- **营业执照（business license）**：**适用于（appliesTo）**恰好有 1 个**企业实体（business entity）**。
+- **营业执照（business license）**：**获承认于（isRecognizedIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **具有法律行为能力的自然人（legally competent natural person）**与**无行为能力成年人**互斥：同一个体不能同时属于两者。
+- **非营利目标（not for profit objective）**与**盈利目标（profit objective）**互斥：同一个体不能同时属于两者。
+- **授权委托书（power of attorney）**：**具有生效日期（hasEffectiveDate）**可以有 0 个或多个**日期（Date）**。
+- **授权委托书（power of attorney）**：**被授予给（isConferredOn）**至少有一个取值，类型是**具有法律行为能力的自然人（legally competent natural person）**。
 
 ## 6. 依赖（owl:imports，15 个）
 

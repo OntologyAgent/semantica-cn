@@ -177,15 +177,15 @@ fibo-fbc-fi-ip:MidPrice a owl:Class ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fbc-fi-ip:BidPrice ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:Currency ;
-            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:hasApplicablePeriod ;
             owl:someValuesFrom cmns-dt:DatePeriod ],
         [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fbc-fi-ip:OfferPrice ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fbc-fi-ip:SecurityPrice,
         fibo-fnd-utl-alx:ArithmeticMean ;
     skos:definition "arithmetic mean between bid and offer prices"@en .
@@ -215,9 +215,6 @@ fibo-fbc-fi-ip:TradingDay a owl:Class ;
         "交易日（trading day）"@zh ;
     rdfs:comment "某一交易场所开放的时间跨度。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue cmns-dt:Day ;
-            owl:onProperty cmns-dt:hasDuration ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
             owl:onProperty fibo-fnd-dt-fd:hasClosingDateTime ],
@@ -225,6 +222,9 @@ fibo-fbc-fi-ip:TradingDay a owl:Class ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
             owl:onProperty fibo-fnd-dt-fd:hasOpeningDateTime ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue cmns-dt:Day ;
+            owl:onProperty cmns-dt:hasDuration ],
         cmns-dt:ExplicitDatePeriod ;
     skos:definition "time span that a particular trading venue is open"@en ;
     cmns-av:abbreviation "RTH"@en ;
@@ -240,11 +240,11 @@ fibo-fbc-fi-ip:TradingSession a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty fibo-fnd-dt-fd:hasOpeningDateTime ],
+            owl:onProperty fibo-fnd-dt-fd:hasClosingDateTime ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty fibo-fnd-dt-fd:hasClosingDateTime ],
+            owl:onProperty fibo-fnd-dt-fd:hasOpeningDateTime ],
         cmns-dt:ExplicitDatePeriod ;
     skos:definition "window of time within a trading day in which orders may be placed and filled"@en ;
     cmns-av:adaptedFrom "https://financial-dictionary.thefreedictionary.com/Trading+Sessions"^^xsd:anyURI ;
@@ -366,12 +366,12 @@ fibo-fbc-fi-ip:PriceSpread a owl:Class ;
         "价格差（price spread）"@zh ;
     rdfs:comment "两个价格之间的差额。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:hasApplicablePeriod ;
+            owl:someValuesFrom cmns-dt:DatePeriod ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:hasApplicablePeriod ;
-            owl:someValuesFrom cmns-dt:DatePeriod ],
         fibo-fnd-utl-alx:Difference ;
     skos:definition "difference between two prices" .
 
@@ -380,15 +380,15 @@ fibo-fbc-fi-ip:Yield a owl:Class ;
         "收益率（yield）"@zh ;
     rdfs:comment "投资人资本投资的回报。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:hasApplicablePeriod ;
+            owl:someValuesFrom cmns-dt:DatePeriod ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:Currency ;
             owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty cmns-doc:refersTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:hasApplicablePeriod ;
-            owl:someValuesFrom cmns-dt:DatePeriod ],
         cmns-qtu:Percentage ;
     skos:definition "return on the investor's capital investment"@en ;
     cmns-av:explanatoryNote "A Yield must be based on a price, and must be in reference to some event or duration of time. It has a calculation method, and may have other qualifying terms such as for compounded yield."@en,
@@ -538,6 +538,10 @@ fibo-fbc-fi-ip:SecurityPrice a owl:Class ;
         "证券价格（security price）"@zh ;
     rdfs:comment "金融工具在某一时点的货币价格。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty cmns-dt:hasObservedDateTime ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-acc-cur:isPriceFor ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         [ a owl:Restriction ;
@@ -545,10 +549,6 @@ fibo-fbc-fi-ip:SecurityPrice a owl:Class ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-pas-fpas:Dealer fibo-fbc-fi-ip:PricingModel fibo-fbc-fct-mkt:Exchange fibo-fbc-fi-ip:CompositeMarket ) ] ;
             owl:onProperty fibo-fbc-fi-ip:hasPricingSource ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty cmns-dt:hasObservedDateTime ],
         fibo-fnd-acc-cur:MonetaryPrice ;
     skos:definition "monetary price for a financial instrument at some point in time"@en ;
     cmns-av:explanatoryNote "A security price may be the price that some party is willing to pay, has recently paid, or would like to be paid, depending on the circumstances."@en .

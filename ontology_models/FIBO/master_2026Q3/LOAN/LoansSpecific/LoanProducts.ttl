@@ -101,12 +101,12 @@ fibo-loan-spc-prod:LoanProductOffering a owl:Class ;
         "贷款发售（loan offering）"@zh ;
     rdfs:comment "与贷款产品相关的发售，可针对特定情形、某组借款人或单个借款人定制。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-loan-spc-prod:LoanProduct ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-loan-spc-prod:LineItem ;
             owl:onProperty cmns-col:hasMember ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-loan-spc-prod:LoanProduct ],
         fibo-fbc-pas-fpas:Offering ;
     skos:definition "offering related to a loan product that may be a tailored to particular circumstances, aimed at a group of borrowers or individual borrower" .
 
@@ -198,20 +198,20 @@ fibo-loan-spc-prod:LineItem a owl:Class ;
         "明细行项（line item）"@zh ;
     rdfs:comment "对产品或服务的描述，包括单价、数量与总价。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-loan-ln-ln:hasCost ;
-            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-doc:refersTo ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fnd-pas-pas:Product fibo-loan-reln-org:ChargeCategory ) ] ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-loan-spc-prod:hasUnitCost ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty cmns-qtu:hasNumericValue ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-loan-spc-prod:hasUnitCost ],
+            owl:onProperty fibo-loan-ln-ln:hasCost ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
         cmns-col:Constituent ;
     skos:definition "description of a product or service including its unit cost, number of units and total cost" ;
     skos:editorialNote "Future consideration: move this to ProductsAndServices ontology (fibo-fnd-pas-pas)." .
@@ -237,16 +237,16 @@ fibo-loan-spc-prod:LoanProduct a owl:Class ;
     rdfs:comment "以贷款形式实现、参与方可从贷款机构获得的具有特定特征与条款的金融产品。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:Loan ;
+            owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:Collateral ;
             owl:onProperty cmns-doc:refersTo ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-ctr:ConditionPrecedent ;
             owl:onProperty fibo-loan-spc-prod:hasPreconditions ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-ln-ln:Loan ;
-            owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ],
         fibo-fbc-dae-dbt:CreditFacility,
         fibo-fbc-pas-fpas:FinancialProduct ;
     skos:definition "financial product that is realized as a loan that a party may acquire from a lending institution with specific characteristics and terms" .

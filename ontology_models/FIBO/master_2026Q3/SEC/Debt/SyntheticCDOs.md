@@ -72,20 +72,22 @@
 
 ## 5. 公理约定（Axioms）
 
-- 套利型合成担保债务凭证（arbitrage synthetic CDO）：资产由……管理（assets managed by） some 担保债务凭证组合管理人
-- 套利型合成担保债务凭证（arbitrage synthetic CDO）：发行（issues） some 合成担保债务凭证分档（synthetic CDO tranche）
-- 套利型合成担保债务凭证（arbitrage synthetic CDO） 与 合成资产负债表型担保债务凭证（synthetic balance sheet CDO） 互斥（disjointWith）
-- 合成资产负债表型担保债务凭证（synthetic balance sheet CDO）：发行（issues） some 合成担保债务凭证分档（synthetic CDO tranche）
-- 合成担保债务凭证（synthetic CDO）：发行（issues） some 合成担保债务凭证分档（synthetic CDO tranche）
-- 合成担保债务凭证组合（synthetic CDO portfolio）：名义持有（notionally holds） some 合成担保债务凭证组合成分（synthetic CDO portfolio constituent）
-- 合成担保债务凭证分档（synthetic CDO tranche）：是……的分档（is tranche of） some 合成债务工具池（synthetic debt instrument pool）
-- 合成债务工具池（synthetic debt instrument pool）：由……提供资金（funded by） some 合成债务工具池融资资产（synthetic debt instrument pool funding asset）
-- 合成债务工具池（synthetic debt instrument pool）：具有标的合约（has underlying contract） some 信用违约互换
-- 合成债务工具池（synthetic debt instrument pool）：参考（makes reference to） some 合成担保债务凭证组合（synthetic CDO portfolio）
-- 合成债务工具池融资资产（synthetic debt instrument pool funding asset）：具有投资级别（has investment grade） some 工具信用评级
-- 合成债务特殊目的载体（synthetic debt SPV）：持有（holds） some 合成债务工具池融资资产（synthetic debt instrument pool funding asset）
-- 合成池资产（synthetic pool asset）：由……模拟（simulated by） some 信用违约互换
-- 合成结构化金融工具（synthetic structured finance instrument）：引用 some 合成池资产（synthetic pool asset）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **套利型合成担保债务凭证（arbitrage synthetic CDO）**：**资产由……管理（assets managed by）**至少有一个取值，类型是**担保债务凭证组合管理人（CDOPortfolioManager）**。
+- **套利型合成担保债务凭证（arbitrage synthetic CDO）**：**发行（issues）**至少有一个取值，类型是**合成担保债务凭证分档（synthetic CDO tranche）**。
+- **套利型合成担保债务凭证（arbitrage synthetic CDO）**与**合成资产负债表型担保债务凭证（synthetic balance sheet CDO）**互斥：同一个体不能同时属于两者。
+- **合成资产负债表型担保债务凭证（synthetic balance sheet CDO）**：**发行（issues）**至少有一个取值，类型是**合成担保债务凭证分档（synthetic CDO tranche）**。
+- **合成担保债务凭证（synthetic CDO）**：**发行（issues）**至少有一个取值，类型是**合成担保债务凭证分档（synthetic CDO tranche）**。
+- **合成担保债务凭证组合（synthetic CDO portfolio）**：**名义持有（notionally holds）**至少有一个取值，类型是**合成担保债务凭证组合成分（synthetic CDO portfolio constituent）**。
+- **合成担保债务凭证分档（synthetic CDO tranche）**：**是……的分档（is tranche of）**至少有一个取值，类型是**合成债务工具池（synthetic debt instrument pool）**。
+- **合成债务工具池（synthetic debt instrument pool）**：**由……提供资金（funded by）**至少有一个取值，类型是**合成债务工具池融资资产（synthetic debt instrument pool funding asset）**。
+- **合成债务工具池（synthetic debt instrument pool）**：**具有标的合约（has underlying contract）**至少有一个取值，类型是**信用违约互换（CreditDefaultSwap）**。
+- **合成债务工具池（synthetic debt instrument pool）**：**参考（makes reference to）**至少有一个取值，类型是**合成担保债务凭证组合（synthetic CDO portfolio）**。
+- **合成债务工具池融资资产（synthetic debt instrument pool funding asset）**：**具有投资级别（has investment grade）**至少有一个取值，类型是**工具信用评级（InstrumentCreditRating）**。
+- **合成债务特殊目的载体（synthetic debt SPV）**：**持有（holds）**至少有一个取值，类型是**合成债务工具池融资资产（synthetic debt instrument pool funding asset）**。
+- **合成池资产（synthetic pool asset）**：**由……模拟（simulated by）**至少有一个取值，类型是**信用违约互换（CreditDefaultSwap）**。
+- **合成结构化金融工具（synthetic structured finance instrument）**：**引用（refersTo）**至少有一个取值，类型是**合成池资产（synthetic pool asset）**。
 
 ## 6. 依赖（owl:imports，12 个）
 

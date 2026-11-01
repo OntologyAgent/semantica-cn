@@ -213,11 +213,11 @@ fibo-der-drc-ff:StandardizedFuturesTerms a owl:Class ;
         "标准化期货条款（standardized futures terms）"@zh ;
     rdfs:comment "由衍生品交易所制定、适用于该交易所交易的任何期货合约的合同条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Future ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-doc:specifies ;
             owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Future ],
         fibo-der-drc-bsc:DerivativeTerms,
         fibo-fbc-fi-fi:StandardizedTerms ;
     skos:definition "contract terms established by a derivatives exchange that apply to any futures contract traded on that exchange"@en ;
@@ -339,12 +339,6 @@ fibo-der-drc-ff:EquityForward a owl:Class ;
         "股票远期（equity forward）"@zh ;
     rdfs:comment "按约定在未来买卖标的股票、股票指数、股票篮子、股票期货合约或股票期权的远期合约。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-ff:hasMethodOfAdjustment ;
-            owl:someValuesFrom fibo-der-drc-ff:ForwardContractAdjustmentMethod ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-ff:hasDividendAdjustmentPeriod ;
             owl:someValuesFrom fibo-der-drc-ff:DividendAdjustmentPeriod ],
         [ a owl:Restriction ;
@@ -353,6 +347,12 @@ fibo-der-drc-ff:EquityForward a owl:Class ;
                     owl:onProperty cmns-rlcmp:isPlayedBy ;
                     owl:someValuesFrom [ a owl:Class ;
                             owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-sec-eq-eq:ListedShare fibo-ind-mkt-bas:EquityIndex fibo-der-drc-ff:EquityFuture fibo-der-drc-opt:EquityOption ) ] ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-ff:hasMethodOfAdjustment ;
+            owl:someValuesFrom fibo-der-drc-ff:ForwardContractAdjustmentMethod ],
         fibo-der-drc-ff:Forward ;
     skos:definition "forward contract to buy or sell the underlying equity stock, equity index, basket of equity stock, equity futures contract, or equity option at a specified future date at the price specified at the outset of the contract"@en ;
     cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fourth Edition, October 2019"@en .

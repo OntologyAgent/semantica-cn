@@ -106,14 +106,14 @@ fibo-fbc-fct-eurga:CreditInstitutionRegisterEntry a owl:Class ;
         "信贷机构登记册条目（Credit Institution Register entry）"@zh ;
     rdfs:comment "信贷机构登记册中的条目；该登记册是由欧洲银行管理局（EBA）依据各国主管机构提供的信息汇集的信贷机构信息库。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-fct-eufse:CreditInstitution ],
+        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-fct-eufse:CreditInstitution ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-eurga:CreditInstitutionRegister ;
             owl:onProperty cmns-col:isIncludedIn ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-fbc-fct-eufse:CreditInstitution ],
         cmns-ra:RegistryEntry ;
     skos:definition "entry in the Credit Institution Register, a repository of credit institutions collected by the European Banking Authority (EBA) as provided by the various national banking authorities for those institutions that qualify" ;
     cmns-av:adaptedFrom "http://www.eba.europa.eu/risk-analysis-and-data/credit-institutions-register"^^xsd:anyURI .

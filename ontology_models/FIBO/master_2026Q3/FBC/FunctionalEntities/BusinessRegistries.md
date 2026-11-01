@@ -96,37 +96,39 @@
 
 ## 5. 公理约定（Axioms）
 
-- 北美行业分类体系代码（North American Industry Classification System code）：定义于 北美行业分类体系方案（North American Industry Classification System scheme） =1
-- 北美行业分类体系代码（North American Industry Classification System code）：restriction
-- 北美行业分类体系代码（North American Industry Classification System code）：分类 some 正式组织
-- 北美行业分类体系方案（North American Industry Classification System scheme）：定义 some 北美行业分类体系代码（North American Industry Classification System code）
-- 商业登记册标识符（business register identifier）：标识 商业登记册（business registry） =1
-- 商业登记册标识符（business register identifier）：由……注册 some 商业登记主管机构（business registration authority）
-- 商业登记主管机构（business registration authority）：管理 some 商业登记册（business registry）
-- 商业登记主管机构（business registration authority）：登记 some 注册标识符
-- 商业登记册（business registry）：restriction
-- 商业登记册（business registry）：由……管理 商业登记主管机构（business registration authority） =1
-- 商业登记册（business registry）：包含 some 商业登记册条目（business registry entry）
-- 商业登记册条目（business registry entry）：具有登记状态（has registration status） 登记状态（registration status） ≤1
-- 商业登记册条目（business registry entry）：包含 some 注册标识符
-- 商业登记册条目（business registry entry）：具有注册日期 some cmns-dt:CombinedDateTime
-- 实体终止原因（entity expiration reason）：restriction
-- 实体法律形式登记册（entity legal form registry）：包含 some 实体法律形式登记册条目（entity legal form registry entry）
-- 实体法律形式登记册条目（entity legal form registry entry）：包含 some 实体法律形式标识符
-- 实体核验级别（entity validation level）：restriction
-- 法人识别编码登记册（legal entity identifier registry）：包含 some 法人识别编码登记册条目（legal entity identifier registry entry）
-- 法人识别编码登记册条目（legal entity identifier registry entry）：具有管理本地运营单位（has managing local operating unit） only 法律实体标识符
-- 法人识别编码登记册条目（legal entity identifier registry entry）：具有核验机构（has validation authority） 商业登记主管机构（business registration authority） ≥0
-- 法人识别编码登记册条目（legal entity identifier registry entry）：具有登记状态（has registration status） some 登记状态（registration status）
-- 法人识别编码登记册条目（legal entity identifier registry entry）：具有核验级别（has validation level） some 实体核验级别（entity validation level）
-- 法人识别编码登记册条目（legal entity identifier registry entry）：包含 some 法律实体标识符
-- 本地运营单位（local operating unit）：发行 some 法律实体标识符
-- 本地运营单位（local operating unit）：登记 some 法律实体标识符
-- 登记主管机构代码（registration authority code）：标识 商业登记册（business registry） =1
-- 标准行业分类代码（standard industrial classification code）：定义于 标准行业分类方案（standard industrial classification scheme） =1
-- 标准行业分类代码（standard industrial classification code）：restriction
-- 标准行业分类代码（standard industrial classification code）：分类 some 正式组织
-- 标准行业分类方案（standard industrial classification scheme）：定义 some 标准行业分类代码（standard industrial classification code）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **北美行业分类体系代码（North American Industry Classification System code）**：**定义于（isDefinedIn）**恰好有 1 个**北美行业分类体系方案（North American Industry Classification System scheme）**。
+- **北美行业分类体系代码（North American Industry Classification System code）**：**具有标签（hasTag）**存在取值约束。
+- **北美行业分类体系代码（North American Industry Classification System code）**：**分类（classifies）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+- **北美行业分类体系方案（North American Industry Classification System scheme）**：**定义（defines）**至少有一个取值，类型是**北美行业分类体系代码（North American Industry Classification System code）**。
+- **商业登记册标识符（business register identifier）**：**标识（identifies）**恰好有 1 个**商业登记册（business registry）**。
+- **商业登记册标识符（business register identifier）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**商业登记主管机构（business registration authority）**。
+- **商业登记主管机构（business registration authority）**：**管理（manages）**至少有一个取值，类型是**商业登记册（business registry）**。
+- **商业登记主管机构（business registration authority）**：**登记（registers）**至少有一个取值，类型是**注册标识符（RegistrationIdentifier）**。
+- **商业登记册（business registry）**：**具有登记册名称（has registry name）**存在取值约束。
+- **商业登记册（business registry）**：**由……管理（isManagedBy）**恰好有 1 个**商业登记主管机构（business registration authority）**。
+- **商业登记册（business registry）**：**包含（comprises）**至少有一个取值，类型是**商业登记册条目（business registry entry）**。
+- **商业登记册条目（business registry entry）**：**具有登记状态（has registration status）**至多有 1 个**登记状态（registration status）**。
+- **商业登记册条目（business registry entry）**：**包含（comprises）**至少有一个取值，类型是**注册标识符（RegistrationIdentifier）**。
+- **商业登记册条目（business registry entry）**：**具有注册日期（hasRegistrationDate）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+- **实体终止原因（entity expiration reason）**：**具有标签（hasTag）**存在取值约束。
+- **实体法律形式登记册（entity legal form registry）**：**包含（comprises）**至少有一个取值，类型是**实体法律形式登记册条目（entity legal form registry entry）**。
+- **实体法律形式登记册条目（entity legal form registry entry）**：**包含（comprises）**至少有一个取值，类型是**实体法律形式标识符（EntityLegalFormIdentifier）**。
+- **实体核验级别（entity validation level）**：**具有标签（hasTag）**存在取值约束。
+- **法人识别编码登记册（legal entity identifier registry）**：**包含（comprises）**至少有一个取值，类型是**法人识别编码登记册条目（legal entity identifier registry entry）**。
+- **法人识别编码登记册条目（legal entity identifier registry entry）**：**具有管理本地运营单位（has managing local operating unit）**的所有取值只能是**法律实体标识符（LegalEntityIdentifier）**。
+- **法人识别编码登记册条目（legal entity identifier registry entry）**：**具有核验机构（has validation authority）**可以有 0 个或多个**商业登记主管机构（business registration authority）**。
+- **法人识别编码登记册条目（legal entity identifier registry entry）**：**具有登记状态（has registration status）**至少有一个取值，类型是**登记状态（registration status）**。
+- **法人识别编码登记册条目（legal entity identifier registry entry）**：**具有核验级别（has validation level）**至少有一个取值，类型是**实体核验级别（entity validation level）**。
+- **法人识别编码登记册条目（legal entity identifier registry entry）**：**包含（comprises）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
+- **本地运营单位（local operating unit）**：**发行（issues）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
+- **本地运营单位（local operating unit）**：**登记（registers）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
+- **登记主管机构代码（registration authority code）**：**标识（identifies）**恰好有 1 个**商业登记册（business registry）**。
+- **标准行业分类代码（standard industrial classification code）**：**定义于（isDefinedIn）**恰好有 1 个**标准行业分类方案（standard industrial classification scheme）**。
+- **标准行业分类代码（standard industrial classification code）**：**具有标签（hasTag）**存在取值约束。
+- **标准行业分类代码（standard industrial classification code）**：**分类（classifies）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+- **标准行业分类方案（standard industrial classification scheme）**：**定义（defines）**至少有一个取值，类型是**标准行业分类代码（standard industrial classification code）**。
 
 ## 6. 依赖（owl:imports，20 个）
 

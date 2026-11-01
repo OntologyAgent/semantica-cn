@@ -48,13 +48,15 @@
 
 ## 5. 公理约定（Axioms）
 
-- 债务工具篮子（basket of debt instruments）：具有成员 some（包含 only 债务工具）
-- 资本化租赁债务篮子（capitalized lease obligation debt basket）：具有成员 some（包含 only 租赁）
-- 信贷额度债务篮子（credit facility debt basket）：具有成员 some（包含 only 信贷额度）
-- 债务工具衍生品（debt instrument derivative）：具有标的 some（由…扮演（is played by） some（restriction））
-- 股票衍生品（equity derivative）：具有标的 some（由…扮演（is played by） some（restriction））
-- 本地信用额度债务篮子（local lines of credit debt basket）：具有成员 some（包含 only 循环信用额度）
-- 证券类衍生品（security-based derivative）：具有标的 some（由…扮演（is played by） some（restriction））
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **债务工具篮子（basket of debt instruments）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**债务工具（DebtInstrument）**。
+- **资本化租赁债务篮子（capitalized lease obligation debt basket）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**租赁（Lease）**。
+- **信贷额度债务篮子（credit facility debt basket）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**信贷额度（CreditFacility）**。
+- **债务工具衍生品（debt instrument derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **股票衍生品（equity derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **本地信用额度债务篮子（local lines of credit debt basket）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**循环信用额度（RevolvingLineOfCredit）**。
+- **证券类衍生品（security-based derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，14 个）
 

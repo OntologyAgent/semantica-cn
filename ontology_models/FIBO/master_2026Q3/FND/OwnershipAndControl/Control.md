@@ -54,14 +54,16 @@
 
 ## 5. 公理约定（Axioms）
 
-- 控制（control）：具有控制中参与方（has party in control） some 控制方（controlling party）
-- 控制（control）：涉及受控事物（involves controlled thing） some 受控事物（controlled thing）
-- 受控事物（controlled thing）：restriction
-- 受控事物（controlled thing）：具有控制方（has controlling party） some 控制方（controlling party）
-- 受控事物（controlled thing）：在……中为受控事物（is controlled thing in） some 控制（control）
-- 控制方（controlling party）：在……中为控制方（is controlling party in） some 控制（control）
-- 控制方（controlling party）：是控制方（is party controlling） some 受控事物（controlled thing）
-- 事实控制（de facto control） 与 法律控制（de jure control） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **控制（control）**：**具有控制中参与方（has party in control）**至少有一个取值，类型是**控制方（controlling party）**。
+- **控制（control）**：**涉及受控事物（involves controlled thing）**至少有一个取值，类型是**受控事物（controlled thing）**。
+- **受控事物（controlled thing）**：**首次受控于（is initially controlled on）**存在取值约束。
+- **受控事物（controlled thing）**：**具有控制方（has controlling party）**至少有一个取值，类型是**控制方（controlling party）**。
+- **受控事物（controlled thing）**：**在……中为受控事物（is controlled thing in）**至少有一个取值，类型是**控制（control）**。
+- **控制方（controlling party）**：**在……中为控制方（is controlling party in）**至少有一个取值，类型是**控制（control）**。
+- **控制方（controlling party）**：**是控制方（is party controlling）**至少有一个取值，类型是**受控事物（controlled thing）**。
+- **事实控制（de facto control）**与**法律控制（de jure control）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，6 个）
 

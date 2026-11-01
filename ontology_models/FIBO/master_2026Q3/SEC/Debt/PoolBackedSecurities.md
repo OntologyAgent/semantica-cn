@@ -81,21 +81,23 @@
 
 ## 5. 公理约定（Axioms）
 
-- 附着点（attachment point）：是……的估计价值 截至日抵押品价值 ≥0
-- 债务池统计度量（debt pool statistical measure）：具有适用期间 日期区间 ≥0
-- 债务池统计度量（debt pool statistical measure）：适用于 some 债务池
-- 脱离点（detachment point）：是……的估计价值 截至日抵押品价值 ≥0
-- 资产池支持证券（pool-backed security）：是……的估计价值（is estimated value of） 截至日抵押品价值 ≥0
-- 资产池支持证券（pool-backed security）：以……为特征 债务池统计度量（debt pool statistical measure） ≥0
-- 资产池支持证券（pool-backed security）：restriction
-- 资产池支持证券（pool-backed security）：基于 some 工具池
-- 结构化金融工具（structured finance instrument）：由……发行 some（由…扮演（is played by） some 特殊目的载体）
-- 无本金保护结构化金融产品（structured finance without principal protection） 与 保本票据（principal protected note） 互斥（disjointWith）
-- 分档（tranche）：是……的估计价值（is estimated value of） 截至日抵押品价值 ≥0
-- 分档（tranche）：具有附着点（has attachment point） 附着点（attachment point） ≥0
-- 分档（tranche）：具有脱离点（has detachment point） 脱离点（detachment point） ≥0
-- 分档（tranche）：包含 some（是……的部分 some 工具池）
-- 加权平均期限（weighted average life）：引用 提前偿付速度（prepayment speed） ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **附着点（attachment point）**：**是……的估计价值（isEstimatedValueOf）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
+- **债务池统计度量（debt pool statistical measure）**：**具有适用期间（hasApplicablePeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
+- **债务池统计度量（debt pool statistical measure）**：**适用于（appliesTo）**至少有一个取值，类型是**债务池（DebtPool）**。
+- **脱离点（detachment point）**：**是……的估计价值（isEstimatedValueOf）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
+- **资产池支持证券（pool-backed security）**：**是……的估计价值（is estimated value of）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
+- **资产池支持证券（pool-backed security）**：**以……为特征（isCharacterizedBy）**可以有 0 个或多个**债务池统计度量（debt pool statistical measure）**。
+- **资产池支持证券（pool-backed security）**：**是否过手（is pass through）**存在取值约束。
+- **资产池支持证券（pool-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**工具池（InstrumentPool）**。
+- **结构化金融工具（structured finance instrument）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**特殊目的载体（SpecialPurposeVehicle）**。
+- **无本金保护结构化金融产品（structured finance without principal protection）**与**保本票据（principal protected note）**互斥：同一个体不能同时属于两者。
+- **分档（tranche）**：**是……的估计价值（is estimated value of）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
+- **分档（tranche）**：**具有附着点（has attachment point）**可以有 0 个或多个**附着点（attachment point）**。
+- **分档（tranche）**：**具有脱离点（has detachment point）**可以有 0 个或多个**脱离点（detachment point）**。
+- **分档（tranche）**：**包含（comprises）**至少有一个取值，该取值满足：**是……的部分（isPartOf）**至少有一个取值，类型是**工具池（InstrumentPool）**。
+- **加权平均期限（weighted average life）**：**引用（refersTo）**可以有 0 个或多个**提前偿付速度（prepayment speed）**。
 
 ## 6. 依赖（owl:imports，17 个）
 

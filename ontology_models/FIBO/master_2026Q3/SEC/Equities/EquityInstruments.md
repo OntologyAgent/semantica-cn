@@ -187,82 +187,84 @@
 
 ## 5. 公理约定（Axioms）
 
-- 普通股（CommonShare）：具有股息（has dividend） 普通股息（ordinary dividend） ≥0
-- 普通股（CommonShare） 与 优先股（preferred share） 互斥（disjointWith）
-- 可变利益实体份额（VariableInterestEntityShare）：由……发行 some（由…扮演（is played by） some 可变利益实体）
-- 可调整利率股息（adjustable rate dividend）：具有量类 利率基准 ≥0
-- 可调整利率股息（adjustable rate dividend）：restriction
-- 可调整利率股息（adjustable rate dividend）：具有可调整股息率（has adjustable dividend rate） some 百分比货币数量
-- 拍卖利率股息（auction rate dividend）：具有可调整股息率（has adjustable dividend rate） some 百分比货币数量
-- 托管人（custodian）：持有 some 股份（share）
-- 股息（dividend）：具有分配方式（has distribution method） 股息分配方式（dividend distribution method） ≤1
-- 股息（dividend）：具有支付金额 货币数量 ≥0
-- 股息（dividend）：具有进度表 股息支付计划表（dividend schedule） ≥0
-- 增强表决权股（enhanced voting share）：每股表决票数（number of votes per share） some（restriction）
-- 股权转换条款（equity conversion terms）：规定转换日（specifies conversion date） some 日期
-- 股权转换条款（equity conversion terms）：规定转换为 some 证券
-- 股票头寸（equity position）：具有所有方 股东 ≥0
-- 股票头寸（equity position）：由……持有 N06a64b2c35c34ee0917df735dbeb020c =1
-- 股票头寸（equity position）：具有自有资产 some 持股
-- 股权赎回条款（equity redemption provision）：具有最低赎回价格（has minimum redemption price） 货币价格 ≥0
-- 股权赎回条款（equity redemption provision）：具有赎回溢价（has redemption premium） 货币价格 ≥0
-- 股权赎回条款（equity redemption provision）：具有最早赎回日（has earliest redemption date） 显式日期 ≥0
-- 股权赎回条款（equity redemption provision）：restriction
-- 股权赎回条款（equity redemption provision）：restriction
-- 股权赎回条款（equity redemption provision）：restriction
-- 赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date）：restriction
-- 固定利率股息（fixed rate dividend）：具有固定股息率（has fixed dividend rate） some 百分比货币数量
-- 缴足股（fully paid share）：restriction
-- 硬回售优先股（hard retractable preferred share） 与 软回售优先股（soft retractable preferred share） 互斥（disjointWith）
-- 有限合伙份额（limited partnership unit）：具有交易对手 some（由…扮演（is played by） some 有限合伙）
-- 未缴股款股份（nil paid share）：restriction
-- 非累积优先股（non-cumulative preferred share） 与 累积优先股（cumulative preferred share） 互斥（disjointWith）
-- 非参与优先股（non-participating preferred share） 与 参与优先股（participating preferred share） 互斥（disjointWith）
-- 无表决权股（non-voting share）：restriction
-- 普通股息（ordinary dividend）：具有支付金额 货币数量 =1
-- 部分缴足股（partially paid share）：restriction
-- 参与优先股（participating preferred share）：具有股息（has dividend） 普通股息（ordinary dividend） ≥0
-- 永续优先股（perpetual preferred share）：具有到期日 显式日期 ≤0
-- 永续优先股（perpetual preferred share） 与 固定到期日优先股（preferred share with fixed maturity date） 互斥（disjointWith）
-- 优先股息（preferred dividend）：具有固定股息率（has fixed dividend rate） 百分比货币数量 ≤1
-- 优先股息（preferred dividend）：具有股息宽限期（has dividend grace period） 时长 ≤1
-- 优先股（preferred share）：具有到期日 显式日期 ≥0
-- 优先股（preferred share）：具有股息（has dividend） some（restriction）
-- 优先股（preferred share）：优先于（is senior to） some 普通股（CommonShare）
-- 可调整利率股息优先股（preferred share with adjustable rate dividend）：具有股息（has dividend） 可调整利率股息（adjustable rate dividend） ≥0
-- 可调整利率股息优先股（preferred share with adjustable rate dividend） 与 固定利率股息优先股（preferred share with fixed rate dividend） 互斥（disjointWith）
-- 拍卖利率股息优先股（preferred share with auction rate dividend）：具有股息（has dividend） 拍卖利率股息（auction rate dividend） ≥0
-- 拍卖利率股息优先股（preferred share with auction rate dividend） 与 固定利率股息优先股（preferred share with fixed rate dividend） 互斥（disjointWith）
-- 固定到期日优先股（preferred share with fixed maturity date）：具有到期日 显式日期 =1
-- 固定利率股息优先股（preferred share with fixed rate dividend）：具有股息（has dividend） 固定利率股息（fixed rate dividend） ≥0
-- 每股价格（price per share）：是……的价格 some 股份（share）
-- 私人持有股份（privately held share） 与 上市股份（listed share） 互斥（disjointWith）
-- 可赎回优先股（redeemable preferred share）：具有赎回条款 some 股权赎回条款（equity redemption provision）
-- 到期日可延长的可赎回优先股（redeemable preferred share with extendable maturity date）：restriction
-- 赎回日可延长的可赎回优先股（redeemable preferred share with extendable redemption date）：具有展期条款 some 赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date）
-- 受限股份（restricted share） 与 非受限股份（unrestricted share） 互斥（disjointWith）
-- 受限表决权股（restricted voting share）：每股表决票数（number of votes per share） some（restriction）
-- 可回售优先股（retractable preferred share）：具有赎回条款 some 股权赎回条款（equity redemption provision）
-- 到期日可延长的可回售优先股（retractable preferred share with extendable maturity date）：restriction
-- 到期日可延长的可回售优先股（retractable preferred share with extendable maturity date）：restriction
-- 到期日可延长的可回售优先股（retractable preferred share with extendable maturity date）：具有展期条款 some 展期条款
-- 赎回日可延长的可回售优先股（retractable preferred share with extendable redemption date）：具有展期条款 some 赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date）
-- 股份（share）：restriction
-- 股份（share）：restriction
-- 股份（share）：restriction
-- 股份（share）：restriction
-- 股份（share）：restriction
-- 股份（share）：restriction
-- 股份（share）：restriction
-- 股份（share）：具有授权股份数 some xsd:nonNegativeInteger
-- 股份（share）：每股表决票数（number of votes per share） some xsd:decimal
-- 股份（share）：授予……的所有权（confers ownership of） some 股东权益
-- 股份（share）：具有股份缴款状态（has share payment status） some 股份缴款状态（share payment status）
-- 股份发行人（share issuer）：发行 some 股份（share）
-- 股份缴款状态（share payment status）：分类 some 股份（share）
-- 股息率（share yield）：具有自变量 some（restriction）
-- 单一表决权股（single voting share）：restriction
-- 表决权（voting right）：由……授予 some 书面合同
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **普通股（CommonShare）**：**具有股息（has dividend）**可以有 0 个或多个**普通股息（ordinary dividend）**。
+- **普通股（CommonShare）**与**优先股（preferred share）**互斥：同一个体不能同时属于两者。
+- **可变利益实体份额（VariableInterestEntityShare）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可变利益实体（VariableInterestEntity）**。
+- **可调整利率股息（adjustable rate dividend）**：**具有量类（hasQuantityKind）**可以有 0 个或多个**利率基准（InterestRateBenchmark）**。
+- **可调整利率股息（adjustable rate dividend）**：**描述实际表达式（describesActualExpression）**存在取值约束。
+- **可调整利率股息（adjustable rate dividend）**：**具有可调整股息率（has adjustable dividend rate）**至少有一个取值，类型是**百分比货币数量（PercentageMonetaryAmount）**。
+- **拍卖利率股息（auction rate dividend）**：**具有可调整股息率（has adjustable dividend rate）**至少有一个取值，类型是**百分比货币数量（PercentageMonetaryAmount）**。
+- **托管人（custodian）**：**持有（holds）**至少有一个取值，类型是**股份（share）**。
+- **股息（dividend）**：**具有分配方式（has distribution method）**至多有 1 个**股息分配方式（dividend distribution method）**。
+- **股息（dividend）**：**具有支付金额（hasPaymentAmount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **股息（dividend）**：**具有进度表（hasSchedule）**可以有 0 个或多个**股息支付计划表（dividend schedule）**。
+- **增强表决权股（enhanced voting share）**：**每股表决票数（number of votes per share）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **股权转换条款（equity conversion terms）**：**规定转换日（specifies conversion date）**至少有一个取值，类型是**日期（Date）**。
+- **股权转换条款（equity conversion terms）**：**规定转换为（specifiesConversionInto）**至少有一个取值，类型是**证券（Security）**。
+- **股票头寸（equity position）**：**具有所有方（hasOwningParty）**可以有 0 个或多个**股东（Shareholder）**。
+- **股票头寸（equity position）**：**由……持有（isHeldBy）**恰好有 1 个**Na46e6c3785e843f1bc6d3717e1e72f68**。
+- **股票头寸（equity position）**：**具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**持股（Shareholding）**。
+- **股权赎回条款（equity redemption provision）**：**具有最低赎回价格（has minimum redemption price）**可以有 0 个或多个**货币价格（MonetaryPrice）**。
+- **股权赎回条款（equity redemption provision）**：**具有赎回溢价（has redemption premium）**可以有 0 个或多个**货币价格（MonetaryPrice）**。
+- **股权赎回条款（equity redemption provision）**：**具有最早赎回日（has earliest redemption date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **股权赎回条款（equity redemption provision）**：**是否具有可延长赎回日（has extendable redemption date）**存在取值约束。
+- **股权赎回条款（equity redemption provision）**：**发行人是否可赎回（is redeemable at issuer option）**存在取值约束。
+- **股权赎回条款（equity redemption provision）**：**股东是否可回售（is redeemable at shareholder option）**存在取值约束。
+- **赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date）**：**是否具有可延长赎回日（has extendable redemption date）**的取值固定为 true。
+- **固定利率股息（fixed rate dividend）**：**具有固定股息率（has fixed dividend rate）**至少有一个取值，类型是**百分比货币数量（PercentageMonetaryAmount）**。
+- **缴足股（fully paid share）**：**具有股份缴款状态（has share payment status）**的取值固定为 FullyPaidShareStatus。
+- **硬回售优先股（hard retractable preferred share）**与**软回售优先股（soft retractable preferred share）**互斥：同一个体不能同时属于两者。
+- **有限合伙份额（limited partnership unit）**：**具有交易对手（hasCounterparty）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**有限合伙（LimitedPartnership）**。
+- **未缴股款股份（nil paid share）**：**具有股份缴款状态（has share payment status）**的取值固定为 NilPaidShareStatus。
+- **非累积优先股（non-cumulative preferred share）**与**累积优先股（cumulative preferred share）**互斥：同一个体不能同时属于两者。
+- **非参与优先股（non-participating preferred share）**与**参与优先股（participating preferred share）**互斥：同一个体不能同时属于两者。
+- **无表决权股（non-voting share）**：**每股表决票数（number of votes per share）**的取值固定为 0。
+- **普通股息（ordinary dividend）**：**具有支付金额（hasPaymentAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **部分缴足股（partially paid share）**：**具有股份缴款状态（has share payment status）**的取值固定为 PartiallyPaidShareStatus。
+- **参与优先股（participating preferred share）**：**具有股息（has dividend）**可以有 0 个或多个**普通股息（ordinary dividend）**。
+- **永续优先股（perpetual preferred share）**：**具有到期日（hasMaturityDate）**至多有 0 个**显式日期（ExplicitDate）**。
+- **永续优先股（perpetual preferred share）**与**固定到期日优先股（preferred share with fixed maturity date）**互斥：同一个体不能同时属于两者。
+- **优先股息（preferred dividend）**：**具有固定股息率（has fixed dividend rate）**至多有 1 个**百分比货币数量（PercentageMonetaryAmount）**。
+- **优先股息（preferred dividend）**：**具有股息宽限期（has dividend grace period）**至多有 1 个**时长（Duration）**。
+- **优先股（preferred share）**：**具有到期日（hasMaturityDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **优先股（preferred share）**：**具有股息（has dividend）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **优先股（preferred share）**：**优先于（is senior to）**至少有一个取值，类型是**普通股（CommonShare）**。
+- **可调整利率股息优先股（preferred share with adjustable rate dividend）**：**具有股息（has dividend）**可以有 0 个或多个**可调整利率股息（adjustable rate dividend）**。
+- **可调整利率股息优先股（preferred share with adjustable rate dividend）**与**固定利率股息优先股（preferred share with fixed rate dividend）**互斥：同一个体不能同时属于两者。
+- **拍卖利率股息优先股（preferred share with auction rate dividend）**：**具有股息（has dividend）**可以有 0 个或多个**拍卖利率股息（auction rate dividend）**。
+- **拍卖利率股息优先股（preferred share with auction rate dividend）**与**固定利率股息优先股（preferred share with fixed rate dividend）**互斥：同一个体不能同时属于两者。
+- **固定到期日优先股（preferred share with fixed maturity date）**：**具有到期日（hasMaturityDate）**恰好有 1 个**显式日期（ExplicitDate）**。
+- **固定利率股息优先股（preferred share with fixed rate dividend）**：**具有股息（has dividend）**可以有 0 个或多个**固定利率股息（fixed rate dividend）**。
+- **每股价格（price per share）**：**是……的价格（isPriceFor）**至少有一个取值，类型是**股份（share）**。
+- **私人持有股份（privately held share）**与**上市股份（listed share）**互斥：同一个体不能同时属于两者。
+- **可赎回优先股（redeemable preferred share）**：**具有赎回条款（hasRedemptionProvision）**至少有一个取值，类型是**股权赎回条款（equity redemption provision）**。
+- **到期日可延长的可赎回优先股（redeemable preferred share with extendable maturity date）**：**是否具有可延长到期日（has extendable maturity date）**的取值固定为 true。
+- **赎回日可延长的可赎回优先股（redeemable preferred share with extendable redemption date）**：**具有展期条款（hasExtensionProvision）**至少有一个取值，类型是**赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date）**。
+- **受限股份（restricted share）**与**非受限股份（unrestricted share）**互斥：同一个体不能同时属于两者。
+- **受限表决权股（restricted voting share）**：**每股表决票数（number of votes per share）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **可回售优先股（retractable preferred share）**：**具有赎回条款（hasRedemptionProvision）**至少有一个取值，类型是**股权赎回条款（equity redemption provision）**。
+- **到期日可延长的可回售优先股（retractable preferred share with extendable maturity date）**：**是否具有可延长到期日（has extendable maturity date）**的取值固定为 true。
+- **到期日可延长的可回售优先股（retractable preferred share with extendable maturity date）**：**是否具有可延长到期日（has extendable maturity date）**的取值固定为 true。
+- **到期日可延长的可回售优先股（retractable preferred share with extendable maturity date）**：**具有展期条款（hasExtensionProvision）**至少有一个取值，类型是**展期条款（ExtensionProvision）**。
+- **赎回日可延长的可回售优先股（retractable preferred share with extendable redemption date）**：**具有展期条款（hasExtensionProvision）**至少有一个取值，类型是**赎回日可延长的股权赎回条款（equity redemption provision with extendable redemption date）**。
+- **股份（share）**：**具有可交易股份数（has available shares）**存在取值约束。
+- **股份（share）**：**具有流通股数量（has floating stock）**存在取值约束。
+- **股份（share）**：**具有已发行股份数（has shares issued）**存在取值约束。
+- **股份（share）**：**具有流通股数（has shares outstanding）**存在取值约束。
+- **股份（share）**：**具有库存股数（has treasury shares）**存在取值约束。
+- **股份（share）**：**具有股类（has share class）**存在取值约束。
+- **股份（share）**：**具有表决权限制（has voting restriction）**存在取值约束。
+- **股份（share）**：**具有授权股份数（hasSharesAuthorized）**至少有一个取值，类型是**xsd:nonNegativeInteger（nonNegativeInteger）**。
+- **股份（share）**：**每股表决票数（number of votes per share）**至少有一个取值，类型是**xsd:decimal（decimal）**。
+- **股份（share）**：**授予……的所有权（confers ownership of）**至少有一个取值，类型是**股东权益（ShareholdersEquity）**。
+- **股份（share）**：**具有股份缴款状态（has share payment status）**至少有一个取值，类型是**股份缴款状态（share payment status）**。
+- **股份发行人（share issuer）**：**发行（issues）**至少有一个取值，类型是**股份（share）**。
+- **股份缴款状态（share payment status）**：**分类（classifies）**至少有一个取值，类型是**股份（share）**。
+- **股息率（share yield）**：**具有自变量（hasArgument）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **单一表决权股（single voting share）**：**每股表决票数（number of votes per share）**的取值固定为 1。
+- **表决权（voting right）**：**由……授予（isConferredBy）**至少有一个取值，类型是**书面合同（WrittenContract）**。
 
 ## 6. 依赖（owl:imports，29 个）
 

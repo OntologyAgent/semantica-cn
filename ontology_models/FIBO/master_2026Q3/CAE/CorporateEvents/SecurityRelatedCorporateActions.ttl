@@ -108,10 +108,10 @@ fibo-cae-ce-srca:ConversionAction a owl:Class ;
         "转换行动（conversion action）"@zh ;
     rdfs:comment "将证券（通常为可转换债券或优先股）转换为另一形式证券（通常为普通股）的公司行动。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-cae-ce-srca:convertsFrom ;
+            owl:onProperty fibo-cae-ce-srca:convertsTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-cae-ce-srca:convertsTo ;
+            owl:onProperty fibo-cae-ce-srca:convertsFrom ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         fibo-cae-ce-act:VoluntaryCorporateAction ;
     skos:definition "corporate action involving conversion of securities (generally convertible bonds or preferred shares) into another form of securities (usually common shares) at a pre-stated price/ratio"@en .
@@ -268,12 +268,12 @@ fibo-cae-ce-srca:PostMergerSecuritiesExchange a owl:Class ;
             owl:onProperty fibo-cae-ce-srca:convertsFrom ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-cae-ce-srca:convertsTo ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-cae-ce-srca:convertsTo ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         fibo-cae-ce-act:CorporateAction ;
     skos:definition "corporate action that involves the exchange of outstanding securities, initiated by the issuer which may include options, as the result of two or more companies combining assets, that is, an external, third party company"@en ;
     cmns-av:explanatoryNote "This is an action as a result of the merger, not the merger itself, and may be mandatory or voluntary. Cash payments may accompany share exchange."@en .

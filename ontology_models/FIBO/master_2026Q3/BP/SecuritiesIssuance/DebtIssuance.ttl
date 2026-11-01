@@ -337,6 +337,9 @@ fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcess a owl:Class ;
 
 fibo-sec-dbt-dbti:DebtOffering a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-sec-iss:isUnderwrittenBy ;
+            owl:someValuesFrom fibo-sec-sec-iss:SecurityUnderwriter ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-sec-dbt-dbti:TradableDebtInstrument ],
         [ a owl:Restriction ;
@@ -345,10 +348,7 @@ fibo-sec-dbt-dbti:DebtOffering a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-fbc-pas-fpas:hasOfferingAmount ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-sec-iss:isUnderwrittenBy ;
-            owl:someValuesFrom fibo-sec-sec-iss:SecurityUnderwriter ] .
+            owl:onProperty fibo-fbc-pas-fpas:hasOfferingAmount ] .
 
 fibo-bp-iss-dbti:DebtSecuritizationProcess a owl:Class ;
     rdfs:label "debt securitization process"@en,

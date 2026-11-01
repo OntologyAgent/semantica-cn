@@ -71,24 +71,26 @@
 
 ## 5. 公理约定（Axioms）
 
-- 美国存托凭证（American depositary receipt）：restriction
-- 美国存托凭证（American depositary receipt）：由……分类 美国存托凭证级别（American depositary receipt level） ≥0
-- 美国存托凭证级别（American depositary receipt level）：分类 some 美国存托凭证（American depositary receipt）
-- 美国存托凭证级别（American depositary receipt level）：定义于 some 美国存托凭证级别方案（American depositary receipt level scheme）
-- 美国存托凭证级别方案（American depositary receipt level scheme）：定义 some 美国存托凭证级别（American depositary receipt level）
-- 中国存托凭证（Chinese depositary receipt）：restriction
-- 欧洲存托凭证（European depositary receipt）：restriction
-- 香港存托凭证（Hong Kong depositary receipt）：restriction
-- 印度存托凭证（Indian depositary receipt）：restriction
-- 日本存托凭证（Japanese depositary receipt）：restriction
-- 卢森堡存托凭证（Luxembourg depositary receipt）：restriction
-- 存托凭证（depositary receipt）：restriction
-- 存托凭证（depositary receipt）：具有所代表证券（has traded security） some 证券
-- 离岸存托凭证（offshore depositary receipt）：restriction
-- 参与票据（participatory note）：具有所代表证券（has traded security） some 可交易债务工具
-- 私募存托凭证（privately placed depositary receipt）：restriction
-- 无保荐存托凭证（unsponsored depositary receipt）：restriction
-- 无保荐存托凭证（unsponsored depositary receipt） 与 有保荐存托凭证（sponsored depositary receipt） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **美国存托凭证（American depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 UnitedStatesJurisdiction。
+- **美国存托凭证（American depositary receipt）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**美国存托凭证级别（American depositary receipt level）**。
+- **美国存托凭证级别（American depositary receipt level）**：**分类（classifies）**至少有一个取值，类型是**美国存托凭证（American depositary receipt）**。
+- **美国存托凭证级别（American depositary receipt level）**：**定义于（isDefinedIn）**至少有一个取值，类型是**美国存托凭证级别方案（American depositary receipt level scheme）**。
+- **美国存托凭证级别方案（American depositary receipt level scheme）**：**定义（defines）**至少有一个取值，类型是**美国存托凭证级别（American depositary receipt level）**。
+- **中国存托凭证（Chinese depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfTheRepublicOfChina。
+- **欧洲存托凭证（European depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 EuropeanUnionJurisdiction。
+- **香港存托凭证（Hong Kong depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfHongKong。
+- **印度存托凭证（Indian depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfIndia。
+- **日本存托凭证（Japanese depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfJapan。
+- **卢森堡存托凭证（Luxembourg depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfLuxembourg。
+- **存托凭证（depositary receipt）**：**具有乘数（has multiplier）**存在取值约束。
+- **存托凭证（depositary receipt）**：**具有所代表证券（has traded security）**至少有一个取值，类型是**证券（Security）**。
+- **离岸存托凭证（offshore depositary receipt）**：**具有限制（hasRestriction）**的取值固定为 RegulationS。
+- **参与票据（participatory note）**：**具有所代表证券（has traded security）**至少有一个取值，类型是**可交易债务工具（TradableDebtInstrument）**。
+- **私募存托凭证（privately placed depositary receipt）**：**具有限制（hasRestriction）**的取值固定为 Rule144A。
+- **无保荐存托凭证（unsponsored depositary receipt）**：**由……分类（isClassifiedBy）**的取值固定为 LevelIAmericanDepositaryReceipt。
+- **无保荐存托凭证（unsponsored depositary receipt）**与**有保荐存托凭证（sponsored depositary receipt）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，15 个）
 

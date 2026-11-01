@@ -34,7 +34,9 @@
 
 ## 5. 公理约定（Axioms）
 
-- 蓝天法（blue sky law）：适用于情境 地理区域 ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **蓝天法（blue sky law）**：**适用于情境（isApplicableIn）**可以有 0 个或多个**地理区域（GeographicRegion）**。
 
 ## 6. 依赖（owl:imports，11 个）
 

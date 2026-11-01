@@ -284,53 +284,55 @@
 
 ## 5. 公理约定（Axioms）
 
-- 累积股类（accumulating share class） 与 分红股类（distributing share class） 互斥（disjointWith）
-- 资产类别策略（asset class strategy）：以……标识资产类型（identifies asset types by） some 金融工具分类器
-- 基金普通份额（common share in fund） 与 基金优先份额（preferred share in fund） 互斥（disjointWith）
-- 股票基金（equity fund）：包含 some 股票组合（equity portfolio）
-- 股票组合（equity portfolio）：包含 some 持股
-- 基金债券类单位（fund bond class unit）：具有战略 some 基金单位分配政策（fund unit distribution policy）
-- 基金债券类单位（fund bond class unit）：具有预期票息（has expected coupon） some 基金债券单位票息（fund bond unit coupon）
-- 基金债券单位票息（fund bond unit coupon）：具有政策条款（has policy terms） some 基金票息政策（fund coupon policy）
-- 基金分类（fund classification）：分类 some 集合投资工具
-- 基金分类方案（fund classification scheme）：定义 some 基金分类（fund classification）
-- 基金存管人（fund depositary）：为……提供存管服务（provides depositary service for） some 基金单位
-- 基金投资目标（fund investment objective）：具有预期风险级别（has intended risk level） some 风险级别（risk level）
-- 基金投资目标（fund investment objective）：列明于（stated in） some 招募说明书
-- 基金投资政策（fund investment policy）：规定基准（stipulates benchmark） 市场利率 ≤1
-- 基金投资政策（fund investment policy）：定义 some 基金投资限制集（fund investment restrictions set）
-- 基金投资政策（fund investment policy）：管辖 some 组合投资策略（portfolio investment strategy）
-- 基金投资限制集（fund investment restrictions set）：是……的部分 some 招募说明书
-- 基金下单台（fund order desk）：由…扮演（is played by） some 法律实体
-- 基金组合（fund portfolio）：具有货币数量 some 余额
-- 基金组合（fund portfolio）：对照……评估（assessed against） some 组合基准（portfolio benchmark）
-- 基金组合（fund portfolio）：战略（strategy） some 组合投资策略（portfolio investment strategy）
-- 基金组合（fund portfolio）：实施基金政策（implements fund policy） some 基金组合投资政策（fund portfolio investment policy）
-- 基金组合（fund portfolio）：包含 some 组合
-- 基金组合投资政策（fund portfolio investment policy）：规定配置（defines allocations） some 基金组合投资限制（fund portfolio investment limitations）
-- 基金组合投资政策（fund portfolio investment policy）：管辖 some 组合投资策略（portfolio investment strategy）
-- 基金处理条款（fund processing terms）：规定主基金下单台账户（defines main fund order desk account） some 基金处理账户（funds processing account）
-- 基金处理条款（fund processing terms）：具有默认结算惯例（has default settlement convention） some 结算惯例
-- 基金赎回条款（fund redemption terms）：具有附加赎回限制（has additional redemption restrictions） some 须洽基金下单台（refer to fund order desk）
-- 基金股类单位（fund share class unit）：具有战略 some 基金单位分配政策（fund unit distribution policy）
-- 基金申购条款（fund subscription terms）：适用于 some 基金单位
-- 基金单位分配政策（fund unit distribution policy）：具有战略 some 基金单位分配方式（fund unit distribution method）
-- 基金处理账户（funds processing account）：由……提供 some 基金下单台（fund order desk）
-- 投资策略（investment strategy）：具有目标 some 投资目标
-- 司法管辖区策略（jurisdiction strategy）：适用于情境 some 管辖权
-- 关键投资者信息文件（key investor information document）：restriction
-- 关键投资者信息文件（key investor information document）：适用于 some 基金单位
-- 资产净值计算方法（net asset value calculation method）：以……计算（is calculated in） some 货币
-- 票据基金份额（note fund share）：是……的部分 some 票据基金（note fund）
-- 票据基金单位（note fund unit）：是……的部分 some 票据基金（note fund）
-- 机构策略（organization strategy）：相对于……定义（defined in relation to） some 公司
-- 组合基准（portfolio benchmark）：规定基准（defines benchmark） some 市场利率
-- 组合基准（portfolio benchmark）：适用于 some 基金组合（fund portfolio）
-- 组合投资策略（portfolio investment strategy）：包含 some 基金组合投资限制（fund portfolio investment limitations）
-- 私募股权持有（private equity holding）：包含 some 私人持有股份
-- 房地产持有（real estate holding）：包含 some 房地产
-- 单位发行人（unit issuer）：发行 some 基金单位
-- 单位发行人（unit issuer）：由…扮演（is played by） some 公司
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **累积股类（accumulating share class）**与**分红股类（distributing share class）**互斥：同一个体不能同时属于两者。
+- **资产类别策略（asset class strategy）**：**以……标识资产类型（identifies asset types by）**至少有一个取值，类型是**金融工具分类器（FinancialInstrumentClassifier）**。
+- **基金普通份额（common share in fund）**与**基金优先份额（preferred share in fund）**互斥：同一个体不能同时属于两者。
+- **股票基金（equity fund）**：**包含（comprises）**至少有一个取值，类型是**股票组合（equity portfolio）**。
+- **股票组合（equity portfolio）**：**包含（comprises）**至少有一个取值，类型是**持股（Shareholding）**。
+- **基金债券类单位（fund bond class unit）**：**具有战略（hasStrategy）**至少有一个取值，类型是**基金单位分配政策（fund unit distribution policy）**。
+- **基金债券类单位（fund bond class unit）**：**具有预期票息（has expected coupon）**至少有一个取值，类型是**基金债券单位票息（fund bond unit coupon）**。
+- **基金债券单位票息（fund bond unit coupon）**：**具有政策条款（has policy terms）**至少有一个取值，类型是**基金票息政策（fund coupon policy）**。
+- **基金分类（fund classification）**：**分类（classifies）**至少有一个取值，类型是**集合投资工具（CollectiveInvestmentVehicle）**。
+- **基金分类方案（fund classification scheme）**：**定义（defines）**至少有一个取值，类型是**基金分类（fund classification）**。
+- **基金存管人（fund depositary）**：**为……提供存管服务（provides depositary service for）**至少有一个取值，类型是**基金单位（FundUnit）**。
+- **基金投资目标（fund investment objective）**：**具有预期风险级别（has intended risk level）**至少有一个取值，类型是**风险级别（risk level）**。
+- **基金投资目标（fund investment objective）**：**列明于（stated in）**至少有一个取值，类型是**招募说明书（Prospectus）**。
+- **基金投资政策（fund investment policy）**：**规定基准（stipulates benchmark）**至多有 1 个**市场利率（MarketRate）**。
+- **基金投资政策（fund investment policy）**：**定义（defines）**至少有一个取值，类型是**基金投资限制集（fund investment restrictions set）**。
+- **基金投资政策（fund investment policy）**：**管辖（governs）**至少有一个取值，类型是**组合投资策略（portfolio investment strategy）**。
+- **基金投资限制集（fund investment restrictions set）**：**是……的部分（isPartOf）**至少有一个取值，类型是**招募说明书（Prospectus）**。
+- **基金下单台（fund order desk）**：**由…扮演（is played by）**至少有一个取值，类型是**法律实体（LegalEntity）**。
+- **基金组合（fund portfolio）**：**具有货币数量（hasMonetaryAmount）**至少有一个取值，类型是**余额（Balance）**。
+- **基金组合（fund portfolio）**：**对照……评估（assessed against）**至少有一个取值，类型是**组合基准（portfolio benchmark）**。
+- **基金组合（fund portfolio）**：**战略（strategy）**至少有一个取值，类型是**组合投资策略（portfolio investment strategy）**。
+- **基金组合（fund portfolio）**：**实施基金政策（implements fund policy）**至少有一个取值，类型是**基金组合投资政策（fund portfolio investment policy）**。
+- **基金组合（fund portfolio）**：**包含（comprises）**至少有一个取值，类型是**组合（Portfolio）**。
+- **基金组合投资政策（fund portfolio investment policy）**：**规定配置（defines allocations）**至少有一个取值，类型是**基金组合投资限制（fund portfolio investment limitations）**。
+- **基金组合投资政策（fund portfolio investment policy）**：**管辖（governs）**至少有一个取值，类型是**组合投资策略（portfolio investment strategy）**。
+- **基金处理条款（fund processing terms）**：**规定主基金下单台账户（defines main fund order desk account）**至少有一个取值，类型是**基金处理账户（funds processing account）**。
+- **基金处理条款（fund processing terms）**：**具有默认结算惯例（has default settlement convention）**至少有一个取值，类型是**结算惯例（SettlementConvention）**。
+- **基金赎回条款（fund redemption terms）**：**具有附加赎回限制（has additional redemption restrictions）**至少有一个取值，类型是**须洽基金下单台（refer to fund order desk）**。
+- **基金股类单位（fund share class unit）**：**具有战略（hasStrategy）**至少有一个取值，类型是**基金单位分配政策（fund unit distribution policy）**。
+- **基金申购条款（fund subscription terms）**：**适用于（appliesTo）**至少有一个取值，类型是**基金单位（FundUnit）**。
+- **基金单位分配政策（fund unit distribution policy）**：**具有战略（hasStrategy）**至少有一个取值，类型是**基金单位分配方式（fund unit distribution method）**。
+- **基金处理账户（funds processing account）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**基金下单台（fund order desk）**。
+- **投资策略（investment strategy）**：**具有目标（hasObjective）**至少有一个取值，类型是**投资目标（InvestmentObjective）**。
+- **司法管辖区策略（jurisdiction strategy）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **关键投资者信息文件（key investor information document）**：**适用于情境（isApplicableIn）**的取值固定为 EuropeanUnionJurisdiction。
+- **关键投资者信息文件（key investor information document）**：**适用于（appliesTo）**至少有一个取值，类型是**基金单位（FundUnit）**。
+- **资产净值计算方法（net asset value calculation method）**：**以……计算（is calculated in）**至少有一个取值，类型是**货币（Currency）**。
+- **票据基金份额（note fund share）**：**是……的部分（isPartOf）**至少有一个取值，类型是**票据基金（note fund）**。
+- **票据基金单位（note fund unit）**：**是……的部分（isPartOf）**至少有一个取值，类型是**票据基金（note fund）**。
+- **机构策略（organization strategy）**：**相对于……定义（defined in relation to）**至少有一个取值，类型是**公司（Corporation）**。
+- **组合基准（portfolio benchmark）**：**规定基准（defines benchmark）**至少有一个取值，类型是**市场利率（MarketRate）**。
+- **组合基准（portfolio benchmark）**：**适用于（appliesTo）**至少有一个取值，类型是**基金组合（fund portfolio）**。
+- **组合投资策略（portfolio investment strategy）**：**包含（comprises）**至少有一个取值，类型是**基金组合投资限制（fund portfolio investment limitations）**。
+- **私募股权持有（private equity holding）**：**包含（comprises）**至少有一个取值，类型是**私人持有股份（PrivatelyHeldShare）**。
+- **房地产持有（real estate holding）**：**包含（comprises）**至少有一个取值，类型是**房地产（RealEstate）**。
+- **单位发行人（unit issuer）**：**发行（issues）**至少有一个取值，类型是**基金单位（FundUnit）**。
+- **单位发行人（unit issuer）**：**由…扮演（is played by）**至少有一个取值，类型是**公司（Corporation）**。
 
 ## 6. 依赖（owl:imports，49 个）
 

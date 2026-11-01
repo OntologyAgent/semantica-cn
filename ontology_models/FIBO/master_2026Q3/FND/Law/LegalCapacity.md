@@ -88,7 +88,7 @@
 | fibo-fnd-law-lcap:isImplementedBy | 由……实施（is implemented by） | 标识由……执行、纳入或付诸实施的事物。 | 逆属性（inverseOf）：实施（implements） |
 | fibo-fnd-law-lcap:isImpliedBy | 由……蕴含（is implied by） | 标识由另一事物强烈暗示的事物，如基于某组观测、事实或事件的逻辑推论。 | 逆属性（inverseOf）：蕴含（implies） |
 | fibo-fnd-law-lcap:isLicensedBy | 由……许可（is licensed by） | 标识向另一方签发特定许可的参与方。 | 值域（range）：参与方角色（party role）；逆属性（inverseOf）：签发许可（licenses）；子属性（subPropertyOf）：受……管辖 |
-| fibo-fnd-law-lcap:isPredicatedOn | 以……为前提（is predicated on） | 取决于……中所述的假定或要求。 | 定义域（domain）：先决条件；值域（range）：N0c7f4bab703b4b47b7caaf2e5fdaabfd；子属性（subPropertyOf）：规定于 |
+| fibo-fnd-law-lcap:isPredicatedOn | 以……为前提（is predicated on） | 取决于……中所述的假定或要求。 | 定义域（domain）：先决条件；值域（range）：N56133744374c486ea451c8326d43d3b4；子属性（subPropertyOf）：规定于 |
 | fibo-fnd-law-lcap:licenses | 签发许可（licenses） | 签发展为执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可。 | 定义域（domain）：参与方角色（party role）；子属性（subPropertyOf）：管辖 |
 
 ## 4. 数据属性（Datatype Property）
@@ -99,36 +99,38 @@
 
 ## 5. 公理约定（Axioms）
 
-- 或有义务（contingent obligation）：属于义务人 some 义务人
-- 或有义务（contingent obligation）：由……蕴含（is implied by） some 或有权利（contingent right）
-- 或有权利（contingent right）：蕴含（implies） some 或有义务（contingent obligation）
-- 或有权利（contingent right）：被授予给（is conferred on） some 参与方（party）
-- 合同权益（contractual interest）：restriction
-- 合同义务（contractual obligation）：由……蕴含（is implied by） only 合同权利（contractual right）
-- 合同义务（contractual obligation）：由……授予 some 合同
-- 合同权利（contractual right）：蕴含（implies） some 合同义务（contractual obligation）
-- 合同权利（contractual right）：由……授予 some 合同
-- 法律构造（legal construct）：被授予给（is conferred on） 参与方（party） ≥0
-- 法律构造（legal construct）：由……授予 N56bff8f80fb04a7c8b8e857c4dfb2991 ≥0
-- 法律义务（legal obligation）：由……授予 some（restriction）
-- 法律义务（legal obligation）：由……授权要求 some（restriction）
-- 法律义务（legal obligation）：适用于情境 some 管辖权
-- 法律权利（legal right）：蕴含（implies） some 法律义务（legal obligation）
-- 法律权利（legal right）：由……授予 some 成文法
-- 法律权利（legal right）：适用于情境 some 管辖权
-- 许可（license）：在…期间保持（holds during） 日期区间 =1
-- 许可（license）：授予 some 法律行为能力（legal capacity）
-- 许可（license）：由……发行 some 许可方（licensor）
-- 许可（license）：具有参与方角色（has party role） some 被许可方（licensee）
-- 许可标识符（license identifier）：标识 许可（license） =1
-- 被许可方（licensee）：由…扮演（is played by） some（是…的参与方（is a party to） some 许可（license））
-- 许可方（licensor）：签发许可（licenses） some owl:Thing
-- 许可方（licensor）：发行 some 许可（license）
-- 许可方（licensor）：由…扮演（is played by） some（是…的参与方（is a party to） some 许可（license））
-- 政策（policy）：实施（implements） N191659c5cca74c53b13a4f6a187f80d1 ≥0
-- 政策（policy）：管辖 some 战略
-- 规章（regulation）：由……授予 some 法律
-- 规章（regulation）：适用于情境 some 管辖权
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **或有义务（contingent obligation）**：**属于义务人（isObligationOf）**至少有一个取值，类型是**义务人（Obligor）**。
+- **或有义务（contingent obligation）**：**由……蕴含（is implied by）**至少有一个取值，类型是**或有权利（contingent right）**。
+- **或有权利（contingent right）**：**蕴含（implies）**至少有一个取值，类型是**或有义务（contingent obligation）**。
+- **或有权利（contingent right）**：**被授予给（is conferred on）**至少有一个取值，类型是**参与方（party）**。
+- **合同权益（contractual interest）**：**具有份额权益（has fractional interest）**存在取值约束。
+- **合同义务（contractual obligation）**：**由……蕴含（is implied by）**的所有取值只能是**合同权利（contractual right）**。
+- **合同义务（contractual obligation）**：**由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
+- **合同权利（contractual right）**：**蕴含（implies）**至少有一个取值，类型是**合同义务（contractual obligation）**。
+- **合同权利（contractual right）**：**由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
+- **法律构造（legal construct）**：**被授予给（is conferred on）**可以有 0 个或多个**参与方（party）**。
+- **法律构造（legal construct）**：**由……授予（isConferredBy）**可以有 0 个或多个**N00feea27f027426295a9ff8b14f188c5**。
+- **法律义务（legal obligation）**：**由……授予（isConferredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **法律义务（legal obligation）**：**由……授权要求（isMandatedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **法律义务（legal obligation）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **法律权利（legal right）**：**蕴含（implies）**至少有一个取值，类型是**法律义务（legal obligation）**。
+- **法律权利（legal right）**：**由……授予（isConferredBy）**至少有一个取值，类型是**成文法（StatuteLaw）**。
+- **法律权利（legal right）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **许可（license）**：**在…期间保持（holds during）**恰好有 1 个**日期区间（DatePeriod）**。
+- **许可（license）**：**授予（confers）**至少有一个取值，类型是**法律行为能力（legal capacity）**。
+- **许可（license）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**许可方（licensor）**。
+- **许可（license）**：**具有参与方角色（has party role）**至少有一个取值，类型是**被许可方（licensee）**。
+- **许可标识符（license identifier）**：**标识（identifies）**恰好有 1 个**许可（license）**。
+- **被许可方（licensee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**许可（license）**。
+- **许可方（licensor）**：**签发许可（licenses）**至少有一个取值，类型是**owl:Thing（Thing）**。
+- **许可方（licensor）**：**发行（issues）**至少有一个取值，类型是**许可（license）**。
+- **许可方（licensor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**许可（license）**。
+- **政策（policy）**：**实施（implements）**可以有 0 个或多个**Nfdaa754de07d4daa80e9c82a095db72e**。
+- **政策（policy）**：**管辖（governs）**至少有一个取值，类型是**战略（Strategy）**。
+- **规章（regulation）**：**由……授予（isConferredBy）**至少有一个取值，类型是**法律（Law）**。
+- **规章（regulation）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
 
 ## 6. 依赖（owl:imports，16 个）
 

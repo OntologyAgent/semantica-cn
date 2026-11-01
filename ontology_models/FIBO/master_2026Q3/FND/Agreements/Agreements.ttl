@@ -138,14 +138,14 @@ fibo-fnd-agr-agr:Obligor a owl:Class ;
         "义务人（obligor）"@zh ;
     rdfs:comment "根据法律或协议有义务偿还债务、付款、做某事或不做某事的参与方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-agr:hasObligation ;
+            owl:someValuesFrom fibo-fnd-agr-agr:Commitment ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                     owl:onClass fibo-fnd-agr-agr:Agreement ;
                     owl:onProperty cmns-pts:isAPartyTo ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-agr:hasObligation ;
-            owl:someValuesFrom fibo-fnd-agr-agr:Commitment ],
         cmns-pts:PartyRole ;
     skos:definition "party that is bound legally or by agreement to repay a debt, make a payment, do something, or refrain from doing something" ;
     cmns-av:synonym "obligated party",
@@ -167,13 +167,13 @@ fibo-fnd-agr-agr:Agreement a owl:Class ;
         "协议（agreement）"@zh ;
     rdfs:comment "两个或多个参与方之间经协商达成的理解，体现各方作出的承诺及其接受。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-pts:PartyRole ;
-            owl:onProperty cmns-pts:hasPartyRole ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-agr:Commitment ;
             owl:onProperty fibo-fnd-rel-rel:confers ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:PartyRole ;
+            owl:onProperty cmns-pts:hasPartyRole ],
         cmns-pts:Situation ;
     skos:definition "negotiated understanding between two or more parties, reflecting the offer and acceptance of commitments on the part of either party" ;
     cmns-av:explanatoryNote "All agreements are time bound, whether implicit or explicitly stated, and thus an agreement reflects a state of affairs that holds for some period of time." .

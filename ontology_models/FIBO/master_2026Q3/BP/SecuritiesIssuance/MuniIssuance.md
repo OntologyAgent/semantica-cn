@@ -163,51 +163,53 @@
 
 ## 5. 公理约定（Axioms）
 
-- 公告证券发行（announce securities issue）：公告 some 证券发行
-- 公告证券发行（announce securities issue）：公告……的发行（announces issue of） some 证券
-- 债券律师（bond counsel）：是债券律师（is bond counsel） some 债务承销发行流程（debt underwriting issuance process）
-- 代理行（correspondent）：参与（participates in） some 证券承销发行流程（securities underwriting issuance process）
-- DTCC 成员（d t c c member）：参与（participates in） some 证券承销发行流程（securities underwriting issuance process）
-- 债务拍卖流程（debt auction process） 与 证券承销发行流程（securities underwriting issuance process） 互斥（disjointWith）
-- 债务承销收尾（debt underwriting closing）：引用（refers to） some 承销商承销量
-- 债务承销发行流程（debt underwriting issuance process）：具有债券律师（has bond counsel） some 债券律师（bond counsel）
-- 债务承销发行流程（debt underwriting issuance process）：步骤（step） some 债务发行
-- 债务承销发行流程（debt underwriting issuance process） 与 股票承销发行流程（equity underwriting issuance process） 互斥（disjointWith）
-- 信息分发承销商（dissemination underwriter）：就……作出决定（makes decision on） some 信息分发（dissemination）
-- 发行代理（issuance agent）：是……中的代理（is agent in） some 证券承销发行流程（securities underwriting issuance process）
-- 发行贷记参与者（issuance crediting participant）：是贷记参与者（is crediting participant） some 证券承销发行流程（securities underwriting issuance process）
-- 发行财务顾问（issuance financial advisor）：提供咨询（advises） some 证券承销发行流程（securities underwriting issuance process）
-- 发行印刷商（issuance printer）：印制（prints） some 证券承销发行流程（securities underwriting issuance process）
-- 发行超额配售条款（issue over allotment terms）：最大超额配售金额（maximum over allotment amount） 货币数量 ≤1
-- 发行人律师（issuer counsel）：是发行人律师（is issuer counsel） some 证券承销发行流程（securities underwriting issuance process）
-- 义务人（obligor）：对……负有义务（obligor to） some 证券承销发行流程（securities underwriting issuance process）
-- 付款代理（paying agent）：促成付款（facilitates payment） some 证券承销发行流程（securities underwriting issuance process）
-- 潜在市政债承销商（potential muni underwriter）：承销（underwrites） some 证券承销发行流程（securities underwriting issuance process）
-- 注册制证券发行流程（registered security issuance process）：包含步骤（includes step） some 注册（registration）
-- 注册（registration）：注册于（registered under） some 管辖权
-- 再营销代理（remarketing agent）：促成再营销（facililtates remarketing） some 证券承销发行流程（securities underwriting issuance process）
-- 证券发行情境（securities issuance context）：引用 some 证券
-- 证券承销发行（securities underwriting issuance）：引用 some 证券
-- 证券承销发行流程（securities underwriting issuance process）：具有代理（has agent） some 发行代理（issuance agent）
-- 证券承销发行流程（securities underwriting issuance process）：具有财务顾问（has financial advisor） some 发行财务顾问（issuance financial advisor）
-- 证券承销发行流程（securities underwriting issuance process）：具有发行人律师（has issuer counsel） some 发行人律师（issuer counsel）
-- 证券承销发行流程（securities underwriting issuance process）：具有义务人（has obligor） some 义务人（obligor）
-- 证券承销发行流程（securities underwriting issuance process）：具有付款代理（has paying agent） some 付款代理（paying agent）
-- 证券承销发行流程（securities underwriting issuance process）：具有印刷商（has printer） some 发行印刷商（issuance printer）
-- 证券承销发行流程（securities underwriting issuance process）：具有再营销代理（has remarketing agent） some 再营销代理（remarketing agent）
-- 证券承销发行流程（securities underwriting issuance process）：具有服务机构（has servicer） some 服务机构（servicer）
-- 证券承销发行流程（securities underwriting issuance process）：具有认购人（has subscriber） some 认购人
-- 证券承销发行流程（securities underwriting issuance process）：具有过户代理（has transfer agent） some 过户代理（transfer agent）
-- 证券承销发行流程（securities underwriting issuance process）：具有受托人（has trustee） some 受托人（trustee）
-- 证券承销发行流程（securities underwriting issuance process）：生产（produces） some 承销流程细节
-- 证券承销发行流程（securities underwriting issuance process）：由……请求（requested by） some 承销发行请求方（underwriting issuance requestor）
-- 证券承销发行流程（securities underwriting issuance process）：由……承销（underwritten by） some 潜在市政债承销商（potential muni underwriter）
-- 服务机构（servicer）：服务（services） some 证券承销发行流程（securities underwriting issuance process）
-- 过户代理（transfer agent）：促成过户（facilitates transfer） some 证券承销发行流程（securities underwriting issuance process）
-- 受托人（trustee）：是受托人（is trustee） some 证券承销发行流程（securities underwriting issuance process）
-- 承销发行收尾（underwriting issuance closing）：引用（refers to） some 承销商承销量
-- 承销发行请求方（underwriting issuance requestor）：请求（requests） some 证券承销发行流程（securities underwriting issuance process）
-- 承销流程参与者（underwriting process actor）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **公告证券发行（announce securities issue）**：**公告（announces）**至少有一个取值，类型是**证券发行（SecuritiesOffering）**。
+- **公告证券发行（announce securities issue）**：**公告……的发行（announces issue of）**至少有一个取值，类型是**证券（Security）**。
+- **债券律师（bond counsel）**：**是债券律师（is bond counsel）**至少有一个取值，类型是**债务承销发行流程（debt underwriting issuance process）**。
+- **代理行（correspondent）**：**参与（participates in）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **DTCC 成员（d t c c member）**：**参与（participates in）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **债务拍卖流程（debt auction process）**与**证券承销发行流程（securities underwriting issuance process）**互斥：同一个体不能同时属于两者。
+- **债务承销收尾（debt underwriting closing）**：**引用（refers to）**至少有一个取值，类型是**承销商承销量（UnderwriterTakedownForDebt）**。
+- **债务承销发行流程（debt underwriting issuance process）**：**具有债券律师（has bond counsel）**至少有一个取值，类型是**债券律师（bond counsel）**。
+- **债务承销发行流程（debt underwriting issuance process）**：**步骤（step）**至少有一个取值，类型是**债务发行（DebtOffering）**。
+- **债务承销发行流程（debt underwriting issuance process）**与**股票承销发行流程（equity underwriting issuance process）**互斥：同一个体不能同时属于两者。
+- **信息分发承销商（dissemination underwriter）**：**就……作出决定（makes decision on）**至少有一个取值，类型是**信息分发（dissemination）**。
+- **发行代理（issuance agent）**：**是……中的代理（is agent in）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **发行贷记参与者（issuance crediting participant）**：**是贷记参与者（is crediting participant）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **发行财务顾问（issuance financial advisor）**：**提供咨询（advises）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **发行印刷商（issuance printer）**：**印制（prints）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **发行超额配售条款（issue over allotment terms）**：**最大超额配售金额（maximum over allotment amount）**至多有 1 个**货币数量（MonetaryAmount）**。
+- **发行人律师（issuer counsel）**：**是发行人律师（is issuer counsel）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **义务人（obligor）**：**对……负有义务（obligor to）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **付款代理（paying agent）**：**促成付款（facilitates payment）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **潜在市政债承销商（potential muni underwriter）**：**承销（underwrites）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **注册制证券发行流程（registered security issuance process）**：**包含步骤（includes step）**至少有一个取值，类型是**注册（registration）**。
+- **注册（registration）**：**注册于（registered under）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **再营销代理（remarketing agent）**：**促成再营销（facililtates remarketing）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **证券发行情境（securities issuance context）**：**引用（refersTo）**至少有一个取值，类型是**证券（Security）**。
+- **证券承销发行（securities underwriting issuance）**：**引用（refersTo）**至少有一个取值，类型是**证券（Security）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有代理（has agent）**至少有一个取值，类型是**发行代理（issuance agent）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有财务顾问（has financial advisor）**至少有一个取值，类型是**发行财务顾问（issuance financial advisor）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有发行人律师（has issuer counsel）**至少有一个取值，类型是**发行人律师（issuer counsel）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有义务人（has obligor）**至少有一个取值，类型是**义务人（obligor）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有付款代理（has paying agent）**至少有一个取值，类型是**付款代理（paying agent）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有印刷商（has printer）**至少有一个取值，类型是**发行印刷商（issuance printer）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有再营销代理（has remarketing agent）**至少有一个取值，类型是**再营销代理（remarketing agent）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有服务机构（has servicer）**至少有一个取值，类型是**服务机构（servicer）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有认购人（has subscriber）**至少有一个取值，类型是**认购人（Subscriber）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有过户代理（has transfer agent）**至少有一个取值，类型是**过户代理（transfer agent）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**具有受托人（has trustee）**至少有一个取值，类型是**受托人（trustee）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**生产（produces）**至少有一个取值，类型是**承销流程细节（UnderwritingProcessDetails）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**由……请求（requested by）**至少有一个取值，类型是**承销发行请求方（underwriting issuance requestor）**。
+- **证券承销发行流程（securities underwriting issuance process）**：**由……承销（underwritten by）**至少有一个取值，类型是**潜在市政债承销商（potential muni underwriter）**。
+- **服务机构（servicer）**：**服务（services）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **过户代理（transfer agent）**：**促成过户（facilitates transfer）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **受托人（trustee）**：**是受托人（is trustee）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **承销发行收尾（underwriting issuance closing）**：**引用（refers to）**至少有一个取值，类型是**承销商承销量（UnderwriterTakedown）**。
+- **承销发行请求方（underwriting issuance requestor）**：**请求（requests）**至少有一个取值，类型是**证券承销发行流程（securities underwriting issuance process）**。
+- **承销流程参与者（underwriting process actor）**：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，19 个）
 

@@ -50,12 +50,14 @@
 
 ## 5. 公理约定（Axioms）
 
-- 有限责任公司（limited liability company）：扮演角色（plays role） Nfa32cd111d524e38a01b16b12f53a5f3 ≥0
-- 有限责任公司（limited liability company）：扮演角色（plays role） some（具有控制性组织成员 some 有限责任公司成员（limited liability company member））
-- 有限责任公司成员（limited liability company member）：是……的控制性成员 N24864ec19be04b43987891972763fa0e ≥0
-- 有限责任公司成员（limited liability company member）：由…扮演（is played by） 具有法律行为能力的自然人 =1
-- 有限责任公司成员（limited liability company member）：由…扮演（is played by） some（是……的成员 some 有限责任公司（limited liability company））
-- 管理成员（managing member）：是……的管理成员（is managing member of） some（由…扮演（is played by） some 有限责任公司（limited liability company））
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **有限责任公司（limited liability company）**：**扮演角色（plays role）**可以有 0 个或多个**Nbdf3046d09a74971928215afa9803c0e**。
+- **有限责任公司（limited liability company）**：**扮演角色（plays role）**至少有一个取值，该取值满足：**具有控制性组织成员（hasControllingOrganizationMember）**至少有一个取值，类型是**有限责任公司成员（limited liability company member）**。
+- **有限责任公司成员（limited liability company member）**：**是……的控制性成员（isControllingMemberOf）**可以有 0 个或多个**N34d57239ab9b4a3da8f9c12c1d77dd2b**。
+- **有限责任公司成员（limited liability company member）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **有限责任公司成员（limited liability company member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，类型是**有限责任公司（limited liability company）**。
+- **管理成员（managing member）**：**是……的管理成员（is managing member of）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**有限责任公司（limited liability company）**。
 
 ## 6. 依赖（owl:imports，9 个）
 

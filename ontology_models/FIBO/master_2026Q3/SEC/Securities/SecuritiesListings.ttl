@@ -111,15 +111,15 @@ fibo-sec-sec-lst:RegisteredSecurity a owl:Class ;
         "注册证券（registered security）"@zh ;
     rdfs:comment "已在某一注册机构注册的证券。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-ra:hasRegistrationDate ;
+            owl:someValuesFrom cmns-dt:CombinedDateTime ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-sec-sec-iss:isRegisteredWith ;
             owl:someValuesFrom cmns-ra:RegistrationAuthority ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-sec-iss:isIssuedInForm ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:oneOf ( fibo-sec-sec-iss:BearerAndRegisteredForm fibo-sec-sec-iss:BookEntryForm fibo-sec-sec-iss:RegisteredForm ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-ra:hasRegistrationDate ;
-            owl:someValuesFrom cmns-dt:CombinedDateTime ],
         fibo-fbc-fi-fi:Security ;
     owl:disjointWith fibo-fbc-fi-fi:ExemptSecurity ;
     skos:definition "security that is registered with some registration authority" .
@@ -198,15 +198,15 @@ fibo-sec-sec-lst:ListedSecurity a owl:Class ;
     rdfs:comment "在至少一个交易所挂牌的注册证券。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-mkt:Exchange ;
+            owl:onProperty fibo-sec-sec-lst:hasHomeExchange ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fct-mkt:Exchange ;
             owl:onProperty fibo-sec-sec-lst:hasOriginalPlaceOfListing ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-sec-lst:isListedVia ;
             owl:someValuesFrom fibo-sec-sec-lst:Listing ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fbc-fct-mkt:Exchange ;
-            owl:onProperty fibo-sec-sec-lst:hasHomeExchange ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-sec-sec-lst:RegisteredSecurity ;
     skos:definition "registered security listed on at least one exchange" ;
     cmns-av:synonym "exchange-traded security" ;
@@ -217,35 +217,35 @@ fibo-sec-sec-lst:Listing a owl:Class ;
         "挂牌（listing）"@zh ;
     rdfs:comment "由交易所管理的证券发行的目录条目，规定该证券在该交易所可供交易的条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange cmns-dt:CombinedDateTime ;
+            owl:onProperty fibo-sec-sec-lst:hasListingDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-breg:RegistrationStatus ;
             owl:onProperty fibo-fbc-fct-breg:hasRegistrationStatus ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
-            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-sec-sec-iss:SecuritiesOffering ;
-            owl:onProperty fibo-sec-sec-lst:lists ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DateTime ;
+            owl:onProperty fibo-sec-sec-lst:hasLastTradingDateTime ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-sec-sec-lst:hasTickSize ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty fibo-sec-sec-lst:hasDelistingDate ],
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-fbc-fi-ip:hasLotSize ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:DateTime ;
-            owl:onProperty fibo-sec-sec-lst:hasLastTradingDateTime ],
-        [ a owl:Restriction ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
-            owl:onProperty fibo-sec-sec-lst:hasListingDate ;
+            owl:onProperty fibo-sec-sec-lst:hasDelistingDate ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-sec-sec-iss:SecuritiesOffering ;
+            owl:onProperty fibo-sec-sec-lst:lists ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
     skos:definition "catalog entry for a securities offering managed by an exchange that provides the terms under which that security is made available on that exchange" ;
     cmns-av:synonym "market listing"@en .

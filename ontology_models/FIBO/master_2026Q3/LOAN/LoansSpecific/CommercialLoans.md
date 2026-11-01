@@ -32,9 +32,11 @@
 
 ## 5. 公理约定（Axioms）
 
-- 商业贷款（commercial loan）：具有目标 业务目标 ≥0
-- 商业贷款（commercial loan）：restriction
-- 商业贷款（commercial loan）：具有借款人 some（由…扮演（is played by） some 法律实体）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **商业贷款（commercial loan）**：**具有目标（hasObjective）**可以有 0 个或多个**业务目标（BusinessObjective）**。
+- **商业贷款（commercial loan）**：**具有业务用途描述（has business purpose description）**存在取值约束。
+- **商业贷款（commercial loan）**：**具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**法律实体（LegalEntity）**。
 
 ## 6. 依赖（owl:imports，8 个）
 

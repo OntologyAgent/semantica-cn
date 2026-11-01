@@ -51,24 +51,26 @@
 
 ## 5. 公理约定（Axioms）
 
-- 上市证券（listed security）：具有主场交易所（has home exchange） 交易所 =1
-- 上市证券（listed security）：具有原始挂牌地（has original place of listing） 交易所 =1
-- 上市证券（listed security）：经由……挂牌（is listed via） some 挂牌（listing）
-- 挂牌（listing）：具有登记状态 登记状态 ≤1
-- 挂牌（listing）：具有最小报价单位（has tick size） 货币数量 ≥0
-- 挂牌（listing）：具有最后交易日期时间（has last trading date and time） 日期时间 ≥0
-- 挂牌（listing）：restriction
-- 挂牌（listing）：restriction
-- 挂牌（listing）：挂牌（lists） 证券发行 =1
-- 挂牌（listing）：restriction
-- 挂牌（listing）：具有货币 some 货币
-- 挂牌服务（listing service）：由……配置提供 交易所 ≥0
-- 挂牌服务（listing service）：由……提供 交易所 ≥0
-- 挂牌服务（listing service）：提供 挂牌（listing） ≥0
-- 注册证券（registered security）：以……形式发行 some（restriction）
-- 注册证券（registered security）：注册于 some 注册机构
-- 注册证券（registered security）：具有注册日期 some cmns-dt:CombinedDateTime
-- 注册证券（registered security） 与 豁免证券 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **上市证券（listed security）**：**具有主场交易所（has home exchange）**恰好有 1 个**交易所（Exchange）**。
+- **上市证券（listed security）**：**具有原始挂牌地（has original place of listing）**恰好有 1 个**交易所（Exchange）**。
+- **上市证券（listed security）**：**经由……挂牌（is listed via）**至少有一个取值，类型是**挂牌（listing）**。
+- **挂牌（listing）**：**具有登记状态（hasRegistrationStatus）**至多有 1 个**登记状态（RegistrationStatus）**。
+- **挂牌（listing）**：**具有最小报价单位（has tick size）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **挂牌（listing）**：**具有最后交易日期时间（has last trading date and time）**可以有 0 个或多个**日期时间（DateTime）**。
+- **挂牌（listing）**：**具有批量规模（hasLotSize）**存在取值约束。
+- **挂牌（listing）**：**具有退市日期（has delisting date）**存在取值约束。
+- **挂牌（listing）**：**挂牌（lists）**恰好有 1 个**证券发行（SecuritiesOffering）**。
+- **挂牌（listing）**：**具有上市日期（has listing date）**存在取值约束。
+- **挂牌（listing）**：**具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
+- **挂牌服务（listing service）**：**由……配置提供（isProvisionedBy）**可以有 0 个或多个**交易所（Exchange）**。
+- **挂牌服务（listing service）**：**由……提供（isProvidedBy）**可以有 0 个或多个**交易所（Exchange）**。
+- **挂牌服务（listing service）**：**提供（provides）**可以有 0 个或多个**挂牌（listing）**。
+- **注册证券（registered security）**：**以……形式发行（isIssuedInForm）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **注册证券（registered security）**：**注册于（isRegisteredWith）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
+- **注册证券（registered security）**：**具有注册日期（hasRegistrationDate）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+- **注册证券（registered security）**与**豁免证券**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，15 个）
 

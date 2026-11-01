@@ -71,23 +71,25 @@
 
 ## 5. 公理约定（Axioms）
 
-- 公司（corporation）：由……设立（is constituted by） 注册成立文书（instrument of incorporation） ≥0
-- 公司（corporation）：注册成立于（is incorporated in） 管辖权 =1
-- 公司（corporation）：具有法定名称 some xsd:string
-- 营利公司（for profit corporation）：具有目标 盈利目标 ≥0
-- 营利公司（for profit corporation） 与 非营利公司（not-for-profit corporation） 互斥（disjointWith）
-- 注册成立担保（incorporation guarantee）：restriction
-- 注册成立担保（incorporation guarantee）：具有名义金额 货币数量 =1
-- 注册成立文书（instrument of incorporation）：受……管辖 管辖权 =1
-- 注册标识符（registration identifier）：受……管辖 管辖权 ≥0
-- 注册标识符（registration identifier）：标识 正式组织 =1
-- 注册标识符（registration identifier）：定义于 some 注册标识符方案（registration identifier scheme）
-- 注册标识符方案（registration identifier scheme）：定义 some 注册标识符（registration identifier）
-- 宗教公司（religious corporation）：具有目标 some 宗教目标
-- 股份公司（stock corporation）：具有登记日期（has date of registration） 显式日期 ≥0
-- 股份公司（stock corporation）：具有已发行资本（has issued capital） 货币数量 =1
-- 股份公司（stock corporation）：具有注册成立日期（has date of incorporation） 显式日期 =1
-- 股份公司（stock corporation）：受……管辖 some 董事会协议（board agreement）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **公司（corporation）**：**由……设立（is constituted by）**可以有 0 个或多个**注册成立文书（instrument of incorporation）**。
+- **公司（corporation）**：**注册成立于（is incorporated in）**恰好有 1 个**管辖权（Jurisdiction）**。
+- **公司（corporation）**：**具有法定名称（hasLegalName）**至少有一个取值，类型是**xsd:string（string）**。
+- **营利公司（for profit corporation）**：**具有目标（hasObjective）**可以有 0 个或多个**盈利目标（ProfitObjective）**。
+- **营利公司（for profit corporation）**与**非营利公司（not-for-profit corporation）**互斥：同一个体不能同时属于两者。
+- **注册成立担保（incorporation guarantee）**：**由……提供（isProvidedBy）**存在取值约束。
+- **注册成立担保（incorporation guarantee）**：**具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **注册成立文书（instrument of incorporation）**：**受……管辖（isGovernedBy）**恰好有 1 个**管辖权（Jurisdiction）**。
+- **注册标识符（registration identifier）**：**受……管辖（isGovernedBy）**可以有 0 个或多个**管辖权（Jurisdiction）**。
+- **注册标识符（registration identifier）**：**标识（identifies）**恰好有 1 个**正式组织（FormalOrganization）**。
+- **注册标识符（registration identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**注册标识符方案（registration identifier scheme）**。
+- **注册标识符方案（registration identifier scheme）**：**定义（defines）**至少有一个取值，类型是**注册标识符（registration identifier）**。
+- **宗教公司（religious corporation）**：**具有目标（hasObjective）**至少有一个取值，类型是**宗教目标（ReligiousObjective）**。
+- **股份公司（stock corporation）**：**具有登记日期（has date of registration）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **股份公司（stock corporation）**：**具有已发行资本（has issued capital）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **股份公司（stock corporation）**：**具有注册成立日期（has date of incorporation）**恰好有 1 个**显式日期（ExplicitDate）**。
+- **股份公司（stock corporation）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**董事会协议（board agreement）**。
 
 ## 6. 依赖（owl:imports，13 个）
 

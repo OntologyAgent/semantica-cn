@@ -126,11 +126,11 @@ fibo-der-cr-cds:CreditEventNotice a owl:Class ;
         "信用事件通知（credit event notice）"@zh ;
     rdfs:comment "声明触发事件已发生的不可撤销书面或口头通知。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-doc:isAbout ;
-            owl:someValuesFrom fibo-der-cr-cds:TriggeringEvent ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-org:isProvidedBy ;
             owl:someValuesFrom fibo-der-cr-cds:NotifyingParty ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-der-cr-cds:TriggeringEvent ],
         cmns-doc:Notice ;
     skos:definition "irrevocable written or verbal notice that states that a triggering event has occurred"@en ;
     cmns-av:explanatoryNote "Notices of certain kinds of credit events are required as a condition of a credit default swap. Such notices are sent from a notifying party (either the buyer or the seller) to the counterparty. They provide information that assists the contract parties in determining whether a triggering credit event has occurred."@en .
@@ -301,20 +301,20 @@ fibo-der-cr-cds:DeliverableObligation a owl:Class ;
 fibo-fbc-fi-stl:CashSettlementTerms a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-der-drc-bsc:ValuationTerms ;
-            owl:onProperty cmns-col:comprises ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-der-cr-cds:hasMinimumQuotationAmount ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-der-cr-cds:CashSettlementMethod ;
             owl:onProperty fibo-der-cr-cds:hasQuotationMethod ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-ip:hasPricingSource ;
             owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-pas-fpas:Dealer fibo-fbc-fi-ip:PricingModel fibo-fbc-fct-mkt:Exchange fibo-fbc-fi-ip:CompositeMarket ) ] ] ;
+                    owl:unionOf ( fibo-be-fct-pub:Publisher fibo-fbc-pas-fpas:FinancialServiceProvider fibo-fbc-pas-fpas:Dealer fibo-fbc-fi-ip:PricingModel fibo-fbc-fct-mkt:Exchange fibo-fbc-fi-ip:CompositeMarket ) ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-bsc:ValuationTerms ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-der-cr-cds:hasMinimumQuotationAmount ] ;
     cmns-av:explanatoryNote "Note that the valuation determined via the appraisal of the underlying asset may include a quotation that is either an upper limit to the outstanding principal balance of the reference obligation for which the quote should be obtained, or a floating rate payer calculation amount."@en .
 
 fibo-der-cr-cds:CreditProtectionTerms a owl:Class ;
@@ -322,25 +322,25 @@ fibo-der-cr-cds:CreditProtectionTerms a owl:Class ;
         "信用保护条款（credit protection terms）"@zh ;
     rdfs:comment "规定触发事件及与结算相关条件的法律条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-der-cr-cds:allowsSubstitution ],
+            owl:onProperty cmns-doc:specifies ;
+            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasSeller ;
+            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligationSeller ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
+            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligationBuyer ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-der-cr-cds:hasScheduledTerminationDate ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-pas-pas:hasSeller ;
-            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligationSeller ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-doc:specifies ;
-            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligation ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
-            owl:someValuesFrom fibo-der-cr-cds:DeliverableObligationBuyer ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-doc:specifies ;
             owl:someValuesFrom fibo-der-cr-cds:TriggeringEvent ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-der-cr-cds:allowsSubstitution ],
         fibo-der-drc-bsc:DerivativeTerms ;
     skos:definition "legal terms that define triggering events and associated conditions related to settlement"@en ;
     cmns-av:explanatoryNote "Note that there may be additional payment schedules or a more complex calculation formula required depending on the terms of the contract."@en ;
@@ -374,14 +374,14 @@ fibo-der-cr-cds:CreditDefaultSwap a owl:Class ;
             owl:onClass fibo-der-cr-cds:SettlementAuction ;
             owl:onProperty fibo-fnd-dt-oc:hasOccurrence ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-der-cr-cds:CreditProtectionTerms ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-doc:specifies ;
             owl:someValuesFrom fibo-der-cr-cds:TriggeringEvent ],
         [ a owl:Restriction ;
             owl:onProperty fibo-der-cr-cds:hasContractPrice ;
             owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-der-cr-cds:CreditProtectionTerms ],
         fibo-der-drc-bsc:CreditDerivative,
         fibo-der-drc-swp:Swap ;
     skos:definition "bilateral contract in which one party (protection seller) agrees to provide payment to the other party (protection buyer) should a credit event occur against the underlying, which could be a specified debt (the reference obligation), a specific debt issuer (reference entity), a basket of reference entities and/or reference obligations, or a credit index (reference index)"@en ;

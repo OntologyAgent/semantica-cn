@@ -74,26 +74,28 @@
 
 ## 5. 公理约定（Axioms）
 
-- 估价报告（appraisal）：由……生成 估价师（appraiser） ≥0
-- 估价报告（appraisal）：评估 资产 ≥0
-- 估价报告（appraisal）：估计价值为（estimates value at） some 评估价值（appraised value）
-- 估价师（appraiser）：restriction
-- 估价师（appraiser）：提供 some 估价报告（appraisal）
-- 评估活动（assessment activity）：restriction
-- 评估活动（assessment activity）：由……提供 some 智能体角色（agent role）
-- 评估事件（assessment event）：restriction
-- 评估事件（assessment event）：具有输出 评估报告（assessment report） ≥0
-- 评估事件（assessment event）：例证 评估活动（assessment activity） =1
-- 评估事件（assessment event）：具有输出 some 意见（opinion）
-- 评估事件（assessment event）：由……提供 some 智能体角色（agent role）
-- 评估报告（assessment report）：报告关于 意见（opinion） ≥0
-- 期望价值（expected value） 与 观测值（observed value） 互斥（disjointWith）
-- 意见（opinion）：是……的输出 some 评估事件（assessment event）
-- 意见（opinion）：由……生成 some 智能体角色（agent role）
-- 定性值（qualitative value） 与 定量值（quantitative value） 互斥（disjointWith）
-- 价值评估（value assessment）：具有输出 估价报告（appraisal） ≥0
-- 价值评估（value assessment）：应用方法论（applies methodology） 估值方法（valuation method） ≥0
-- 价值评估（value assessment）：具有估价师（has appraiser） some 智能体角色（agent role）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **估价报告（appraisal）**：**由……生成（isGeneratedBy）**可以有 0 个或多个**估价师（appraiser）**。
+- **估价报告（appraisal）**：**评估（evaluates）**可以有 0 个或多个**资产（Asset）**。
+- **估价报告（appraisal）**：**估计价值为（estimates value at）**至少有一个取值，类型是**评估价值（appraised value）**。
+- **估价师（appraiser）**：**评估（evaluates）**至少有 0 个取值。
+- **估价师（appraiser）**：**提供（provides）**至少有一个取值，类型是**估价报告（appraisal）**。
+- **评估活动（assessment activity）**：**评估（evaluates）**至少有 0 个取值。
+- **评估活动（assessment activity）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
+- **评估事件（assessment event）**：**评估（evaluates）**至少有 0 个取值。
+- **评估事件（assessment event）**：**具有输出（hasOutput）**可以有 0 个或多个**评估报告（assessment report）**。
+- **评估事件（assessment event）**：**例证（exemplifies）**恰好有 1 个**评估活动（assessment activity）**。
+- **评估事件（assessment event）**：**具有输出（hasOutput）**至少有一个取值，类型是**意见（opinion）**。
+- **评估事件（assessment event）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
+- **评估报告（assessment report）**：**报告关于（reportsOn）**可以有 0 个或多个**意见（opinion）**。
+- **期望价值（expected value）**与**观测值（observed value）**互斥：同一个体不能同时属于两者。
+- **意见（opinion）**：**是……的输出（isOutputFrom）**至少有一个取值，类型是**评估事件（assessment event）**。
+- **意见（opinion）**：**由……生成（isGeneratedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
+- **定性值（qualitative value）**与**定量值（quantitative value）**互斥：同一个体不能同时属于两者。
+- **价值评估（value assessment）**：**具有输出（hasOutput）**可以有 0 个或多个**估价报告（appraisal）**。
+- **价值评估（value assessment）**：**应用方法论（applies methodology）**可以有 0 个或多个**估值方法（valuation method）**。
+- **价值评估（value assessment）**：**具有估价师（has appraiser）**至少有一个取值，类型是**智能体角色（agent role）**。
 
 ## 6. 依赖（owl:imports，15 个）
 

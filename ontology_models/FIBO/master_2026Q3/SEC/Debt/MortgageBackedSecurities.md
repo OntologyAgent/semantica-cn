@@ -106,21 +106,23 @@
 
 ## 5. 公理约定（Axioms）
 
-- 机构抵押支持证券交易（agency MBS deal） 与 私募品牌抵押支持证券交易（private label MBS deal） 互斥（disjointWith）
-- 机构抵押贷款池（agency mortgage pool） 与 非机构抵押贷款池（non-agency mortgage pool） 互斥（disjointWith）
-- 商业抵押支持证券（commercial MBS） 与 住宅抵押支持证券（residential MBS） 互斥（disjointWith）
-- 政府抵押贷款机构（government mortgage agency）：由…扮演（is played by） some 法律实体
-- 已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool）：具有阶段 some fibo-bp-iss-dbti:Issued
-- 已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool）：具有阶段 some fibo-bp-iss-dbti:Issued
-- 抵押支持证券发行人（MBS issuer）：restriction
-- 抵押贷款池（mortgage pool）：具有成员 some 房地产担保贷款
-- 抵押支持证券（mortgage-backed security）：由……发行 some 抵押支持证券发行人（MBS issuer）
-- 抵押支持证券（mortgage-backed security）：以……为特征 some 加权平均剩余期限
-- 非机构抵押支持证券发行人（non-agency MBS issuer）：restriction
-- 过手型抵押支持证券交易（pass-through MBS deal）：同时是（is also） some 机构抵押支持证券交易（agency MBS deal）
-- 过手型抵押支持证券工具（pass-through MBS instrument）：具有票据（has note） some 过手型抵押支持证券工具票据（pass-through MBS instrument note）
-- 付款代理（paying agent）：负责（responsible for） some 支付
-- 房地产抵押贷款投资管道（real estate mortgage investment conduit）：拥有 抵押贷款池（mortgage pool） ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **机构抵押支持证券交易（agency MBS deal）**与**私募品牌抵押支持证券交易（private label MBS deal）**互斥：同一个体不能同时属于两者。
+- **机构抵押贷款池（agency mortgage pool）**与**非机构抵押贷款池（non-agency mortgage pool）**互斥：同一个体不能同时属于两者。
+- **商业抵押支持证券（commercial MBS）**与**住宅抵押支持证券（residential MBS）**互斥：同一个体不能同时属于两者。
+- **政府抵押贷款机构（government mortgage agency）**：**由…扮演（is played by）**至少有一个取值，类型是**法律实体（LegalEntity）**。
+- **已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**fibo-bp-iss-dbti:Issued（Issued）**。
+- **已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**fibo-bp-iss-dbti:Issued（Issued）**。
+- **抵押支持证券发行人（MBS issuer）**：该属性存在取值约束。
+- **抵押贷款池（mortgage pool）**：**具有成员（hasMember）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
+- **抵押支持证券（mortgage-backed security）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**抵押支持证券发行人（MBS issuer）**。
+- **抵押支持证券（mortgage-backed security）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**加权平均剩余期限（WeightedAverageRemainingTerm）**。
+- **非机构抵押支持证券发行人（non-agency MBS issuer）**：该属性存在取值约束。
+- **过手型抵押支持证券交易（pass-through MBS deal）**：**同时是（is also）**至少有一个取值，类型是**机构抵押支持证券交易（agency MBS deal）**。
+- **过手型抵押支持证券工具（pass-through MBS instrument）**：**具有票据（has note）**至少有一个取值，类型是**过手型抵押支持证券工具票据（pass-through MBS instrument note）**。
+- **付款代理（paying agent）**：**负责（responsible for）**至少有一个取值，类型是**支付（Payment）**。
+- **房地产抵押贷款投资管道（real estate mortgage investment conduit）**：**拥有（owns）**可以有 0 个或多个**抵押贷款池（mortgage pool）**。
 
 ## 6. 依赖（owl:imports，26 个）
 

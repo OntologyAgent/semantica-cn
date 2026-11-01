@@ -158,14 +158,14 @@ fibo-sec-dbt-cdo:ManagedCDO a owl:Class ;
         "管理型担保债务凭证（managed CDO）"@zh ;
     rdfs:comment "参考资产购入后（组合逐步建成），CDO 管理人可酌情调整组合的 CDO。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-cdo:managementStyle.1 ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:ManagedManagementStyle ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-sec-dbt-cdo:ManagedCDOPortfolio ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-sec-dbt-cdo:MBSInstrumentSlice ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-cdo:managementStyle.1 ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:ManagedManagementStyle ],
         fibo-sec-dbt-cdo:CDODeal ;
     owl:disjointWith fibo-sec-dbt-cdo:StaticCDO ;
     skos:definition "A CDO where the reference assets are bought (the portfolio is ramped up) and then the CDO manager may alter the portfolio as they see fit."@en .
@@ -1045,14 +1045,14 @@ fibo-sec-dbt-cdo:AgencyCMO a owl:Class ;
         "机构抵押担保债券（agency CMO）"@zh ;
     rdfs:comment "由政府机构发行或担保的抵押担保债券（CMO）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-cdo:hasTrancheType ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:TrancheType ],
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-dbt-mbs:AgencyMBSPool ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-cdo:providesPrepaymentSupport ;
             owl:someValuesFrom fibo-sec-dbt-cdo:AgencyCMO ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-sec-dbt-mbs:AgencyMBSPool ],
+            owl:onProperty fibo-sec-dbt-cdo:hasTrancheType ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:TrancheType ],
         fibo-sec-dbt-dbti:DebtOffering ;
     skos:editorialNote "Definition for the property 'has tranche type' which is now a restriction: The type of tranche for the CMO. Many different structures are used in practice, including stable PAC bonds or risky IOs and POs. There are floaters and inverse floaters. There are also Z-bonds, which are analogous to zero-coupon bonds."@en .
 
@@ -1074,10 +1074,10 @@ fibo-sec-dbt-cdo:PlannedAmortizationClassBond a owl:Class ;
     rdfs:comment "本金支付必须遵循特定计划表的分档（PAC）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
-            owl:onProperty fibo-sec-dbt-cdo:supportedBy ],
+            owl:onProperty fibo-sec-dbt-cdo:providesPrepaymentSupportFor ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-sec-dbt-cdo:PlannedAmortizationClassBond ;
-            owl:onProperty fibo-sec-dbt-cdo:providesPrepaymentSupportFor ],
+            owl:onProperty fibo-sec-dbt-cdo:supportedBy ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-cdo:specifies ;
             owl:someValuesFrom fibo-sec-dbt-cdo:PACTrancheAmortizationSchedule ],
@@ -1094,6 +1094,15 @@ fibo-sec-dbt-cdo:CDODeal a owl:Class ;
             owl:someValuesFrom fibo-sec-dbt-cdo:MezzanineCDOTranche ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:SuperSeniorCDOTranche ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:SubordinatedCDOEquity ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:SeniorCDOTranche ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolio ],
         [ a owl:Restriction ;
             owl:onProperty cmns-org:isManagedBy ;
@@ -1101,15 +1110,6 @@ fibo-sec-dbt-cdo:CDODeal a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-sec-dbt-cdo:CollateralizedDebtObligation ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:SeniorCDOTranche ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:SubordinatedCDOEquity ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:SuperSeniorCDOTranche ],
         fibo-sec-dbt-dbti:DebtOffering ;
     skos:definition "An Issue of a set of CDO tranches as part of an offering to the market."@en ;
     cmns-av:explanatoryNote "Multiple tranches of securities are issued by the CDO issue (usually referred to simply as the CDO), offering investors various maturity and credit risk characteristics. Note that it is in the sense of CDO as an issue that one might say that a CDO \"has tranches\". The CDO as an individual instrument (labelled CDO in this model) does not have tranches but is itself a member of one or another tranche."@en .
@@ -1122,10 +1122,10 @@ fibo-sec-dbt-cdo:TranchedMBSInstrument a owl:Class ;
             owl:allValuesFrom fibo-sec-dbt-cdo:TranchedMBSInstrument ;
             owl:onProperty fibo-sec-dbt-cdo:cashflowPrecedence ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-mbs:hasNote ;
-            owl:someValuesFrom fibo-sec-dbt-cdo:MBSTrancheNote ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-sec-dbt-cdo:TranchedMBSInstrument ;
             owl:onProperty fibo-sec-dbt-cdo:providesCreditSupportTo ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-mbs:hasNote ;
+            owl:someValuesFrom fibo-sec-dbt-cdo:MBSTrancheNote ],
         fibo-sec-dbt-mbs:MortgageBackedSecurity .
 

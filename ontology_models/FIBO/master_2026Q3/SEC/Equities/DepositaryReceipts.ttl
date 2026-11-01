@@ -298,12 +298,12 @@ fibo-sec-eq-dr:DepositaryReceipt a owl:Class ;
         "存托凭证（depositary receipt）"@zh ;
     rdfs:comment "由信托公司、证券存管机构或银行签发的可转让金融工具，是公开交易证券存托的凭证。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-dr:hasTradedSecurity ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-sec-eq-dr:hasMultiplier ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-dr:hasTradedSecurity ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         fibo-fbc-fi-fi:Security ;
     skos:definition "negotiable financial instrument issued by a trust company, security depositary, or bank that is evidence of the deposit of publicly traded securities and that facilitates the ownership of securities traded in other jurisdictions"@en ;
     cmns-av:abbreviation "DR"@en ;

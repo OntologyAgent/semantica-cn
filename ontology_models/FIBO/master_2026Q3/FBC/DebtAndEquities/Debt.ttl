@@ -65,9 +65,6 @@ fibo-fbc-dae-dbt:AmortizationSchedule a owl:Class ;
     rdfs:comment "规定债务余额随时间变化的周期性付款（还款分期）计划表。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:embodies ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:Amortization ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:PrincipalPaymentSchedule ;
             owl:onProperty cmns-col:comprises ],
@@ -75,6 +72,9 @@ fibo-fbc-dae-dbt:AmortizationSchedule a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:InterestPaymentSchedule ;
             owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:embodies ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Amortization ],
         fibo-fbc-dae-dbt:ProjectedContractEventSchedule,
         fibo-fnd-pas-psch:PaymentSchedule ;
     skos:definition "schedule of periodic payments (repayment installments) that specify changes in the balance of the debt over time" ;
@@ -86,12 +86,12 @@ fibo-fbc-dae-dbt:BorrowerIdentifier a owl:Class ;
     rdfs:comment "能够唯一标识某一借款人的字符序列。"@zh ;
     rdfs:seeAlso <https://www.fdic.gov/news/financial-institution-letters/1997/fil9786.pdf> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fbc-dae-dbt:BorrowerIdentificationScheme ;
-            owl:onProperty cmns-dsg:isDefinedIn ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-dae-dbt:Borrower ;
             owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-dae-dbt:BorrowerIdentificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-pty-pty:PartyRoleIdentifier ;
     skos:definition "sequence of characters, capable of uniquely identifying a borrower" ;
@@ -106,11 +106,11 @@ fibo-fbc-dae-dbt:BorrowingCapacity a owl:Class ;
             owl:onProperty fibo-fnd-arr-asmt:hasDateOfAssessment ;
             owl:someValuesFrom cmns-dt:ExplicitDate ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom cmns-org:LegalPerson ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
             owl:someValuesFrom fibo-fnd-arr-asmt:AssessmentReport ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
         fibo-fnd-acc-cur:MonetaryAmount ;
     skos:definition "upper bound on the total amount of money that a lender believes a party has the ability to repay an obligation when due, as of some point in time" ;
     cmns-av:explanatoryNote "The notion of borrowing capacity is related to management decisions pertaining to credit, i.e., the creditworthiness of the borrower, loan amount, risk tolerance, and so forth, and may be reassessed from time to time depending on the type of credit agreement and regulatory requirements. Determining borrowing capacity is typically done as a part of loan origination, especially for residential mortgages." .
@@ -277,35 +277,35 @@ fibo-fbc-dae-dbt:InterestPaymentTerms a owl:Class ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-bd:DayOfMonth ;
+            owl:onProperty fibo-fbc-dae-dbt:hasInterestPaymentDay ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:InterestRate ;
+            owl:onProperty fibo-fbc-dae-dbt:hasInterestRate ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty fibo-fbc-dae-dbt:hasInitialInterestAccrualDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:governsPaymentOf ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Interest ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-fd:RecurrenceInterval ;
             owl:onProperty fibo-fbc-dae-dbt:hasInterestPaymentFrequency ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:Date ;
-            owl:onProperty fibo-fbc-dae-dbt:hasInitialInterestPaymentDate ],
+            owl:onClass fibo-fnd-dt-fd:RecurrenceInterval ;
+            owl:onProperty fibo-fbc-dae-dbt:hasCompoundingFrequency ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:DayCountConvention ;
             owl:onProperty fibo-fbc-dae-dbt:hasAccrualBasis ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-fd:RecurrenceInterval ;
-            owl:onProperty fibo-fbc-dae-dbt:hasCompoundingFrequency ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:InterestRate ;
-            owl:onProperty fibo-fbc-dae-dbt:hasInterestRate ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-dbt:governsPaymentOf ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:Interest ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-bd:DayOfMonth ;
-            owl:onProperty fibo-fbc-dae-dbt:hasInterestPaymentDay ],
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fbc-dae-dbt:hasInitialInterestPaymentDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:InterestRate ;
@@ -670,12 +670,12 @@ fibo-fbc-dae-dbt:PrincipalRepaymentTerms a owl:Class ;
     rdfs:comment "规定本金偿还要求的合同条款。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:Date ;
-            owl:onProperty fibo-fbc-dae-dbt:hasInitialPrincipalPaymentDate ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:governsPaymentOf ;
             owl:someValuesFrom fibo-fbc-dae-dbt:Principal ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fbc-dae-dbt:hasPrincipalRepaymentDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-bd:DayOfMonth ;
@@ -687,7 +687,7 @@ fibo-fbc-dae-dbt:PrincipalRepaymentTerms a owl:Class ;
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
-            owl:onProperty fibo-fbc-dae-dbt:hasPrincipalRepaymentDate ],
+            owl:onProperty fibo-fbc-dae-dbt:hasInitialPrincipalPaymentDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-fd:RecurrenceInterval ;
@@ -940,12 +940,12 @@ fibo-fbc-dae-dbt:hasMaturityDate a owl:ObjectProperty ;
 
 fibo-fnd-agr-ctr:CollateralAgreement a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-asmt:hasEstimatedValue ;
-            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:Collateral ;
-            owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ] .
+            owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-asmt:hasEstimatedValue ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ] .
 
 fibo-fbc-dae-dbt:CommittedCreditFacility a owl:Class ;
     rdfs:label "committed credit facility"@en,
@@ -965,12 +965,12 @@ fibo-fbc-dae-dbt:CreditFacility a owl:Class ;
     rdfs:comment "允许借款人在较长时期内分期提取资金、而无需每次重新申请贷款的信贷协议。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-dbt:SubFacility ;
-            owl:onProperty cmns-col:hasMember ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-ctr:ConditionPrecedent ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-dbt:SubFacility ;
+            owl:onProperty cmns-col:hasMember ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
             owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
@@ -984,12 +984,12 @@ fibo-fbc-dae-dbt:InterestCalculation a owl:Class ;
         "利息计算事件（interest calculation）"@zh ;
     rdfs:comment "反映利息计算的事件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:InterestRate ;
             owl:onProperty fibo-fbc-dae-dbt:hasInterestRate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fbc-pas-fpas:ContractLifecycleEventOccurrence,
         fibo-fnd-dt-oc:Calculation ;
@@ -1001,11 +1001,11 @@ fibo-fbc-dae-dbt:Principal a owl:Class ;
     rdfs:comment "就债务而言：债券或贷款等债务的募集额，须在到期时偿还；就投资而言：原始投入金额。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:seeAlso <http://www.finra.org/investors/bond-glossary#p> ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fnd-acc-cur:MonetaryAmount fibo-fnd-pas-pas:NegotiableCommodity ) ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:isPrincipalOf ;
             owl:someValuesFrom fibo-fbc-dae-dbt:Debt ],
-        [ a owl:Class ;
-            owl:unionOf ( fibo-fnd-acc-cur:MonetaryAmount fibo-fnd-pas-pas:NegotiableCommodity ) ],
         cmns-cls:Aspect ;
     skos:definition "with respect to a debt: the value of an obligation, such as a bond or loan, raised and that must be repaid at maturity; for investments: the original amount of money invested, separate from any associated interest, dividends or capital gains" .
 
@@ -1064,14 +1064,14 @@ fibo-fbc-dae-dbt:Interest a owl:Class ;
     rdfs:comment "使用信贷或他人资金的成本，以单位时间费率表示，由债务人为获得信贷而向债权人支付。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:DatePeriod ;
+            owl:onProperty cmns-dt:hasDatePeriod ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:isInterestOn ;
             owl:someValuesFrom fibo-fbc-dae-dbt:Debt ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-fnd-acc-cur:InterestRate ;
             owl:onProperty fibo-fbc-dae-dbt:hasInterestRate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmns-dt:DatePeriod ;
-            owl:onProperty cmns-dt:hasDatePeriod ],
         fibo-fnd-acc-cur:MonetaryAmount ;
     skos:definition "the cost of using credit, or another's money, expressed as a rate per period of time, payable by a debtor to a creditor in consideration of the credit extended to the debtor" .
 
@@ -1102,11 +1102,11 @@ fibo-fbc-dae-dbt:Creditor a owl:Class ;
     rdfs:comment "对其存在某项义务（如一笔款项、货物或某项服务之履行）的一方。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-dbt:isOwed ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:Debt ],
-        [ a owl:Restriction ;
             owl:allValuesFrom cmns-org:LegalPerson ;
             owl:onProperty cmns-rlcmp:isPlayedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isOwed ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Debt ],
         fibo-fnd-agr-agr:Obligee ;
     skos:definition "a party to whom an obligation, such as an amount of money, or good, or performance of some service exists" .
 
@@ -1116,12 +1116,12 @@ fibo-fbc-dae-dbt:Debtor a owl:Class ;
     rdfs:comment "对另一方负有债务或其他义务的一方。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom cmns-org:LegalPerson ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:Debt ;
             owl:onProperty fibo-fbc-dae-dbt:owes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-org:LegalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ],
         fibo-fnd-agr-agr:Obligor ;
     skos:definition "a party that owes a debt or other obligation to another party" .
 
@@ -1147,33 +1147,33 @@ fibo-fbc-dae-dbt:CreditAgreement a owl:Class ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-dbt:Collateral ;
-            owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-fbc-dae-dbt:hasInitialExchangeDate ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
             owl:someValuesFrom fibo-fbc-dae-dbt:Debtor ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:DebtTerms ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:Currency ;
             owl:onProperty fibo-fnd-acc-cur:hasCurrency ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:DebtTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Creditor ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fbc-dae-dbt:hasMaturityDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-ctr:UseOfProceedsProvision ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:ExplicitDate ;
-            owl:onProperty fibo-fbc-dae-dbt:hasMaturityDate ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:Creditor ],
+            owl:onClass fibo-fbc-dae-dbt:Collateral ;
+            owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ],
         fibo-fnd-agr-ctr:WrittenContract ;
     skos:definition "contractual agreement in which a debtor receives something of value and typically agrees to repay the creditor by some date in the future, in some form (e.g., cash, securities, etc.), generally with interest" .
 
@@ -1195,11 +1195,11 @@ fibo-fbc-dae-dbt:Debt a owl:Class ;
     rdfs:comment "支付某物（如一笔款项、货物、服务或工具）的义务。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-dbt: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-dbt:isOwedBy ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:Debtor ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:isOwedTo ;
             owl:someValuesFrom fibo-fbc-dae-dbt:Creditor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isOwedBy ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Debtor ],
         fibo-fnd-agr-agr:Commitment ;
     skos:definition "obligation to pay something, such as an amount of money, good, service, or instrument" ;
     cmns-av:explanatoryNote "In cases where the debtor and payer are the same legal person, then a debt is equivalent to a payment obligation." .

@@ -53,19 +53,21 @@
 
 ## 5. 公理约定（Axioms）
 
-- 协会（association）：扮演角色（plays role） 合作社（cooperative society） ≥0
-- 功能型企业实体（functional business entity）：由…扮演（is played by） 正式组织 ≥0
-- 功能实体（functional entity）：由…扮演（is played by） 参与方（party） ≥0
-- 商户（merchant）：由……分类 some 商户类别码（merchant category code）
-- 商户（merchant）：由……标识 some 商户标识符（merchant identifier）
-- 商户类别码（merchant category code）：定义于 商户类别码方案（merchant category code scheme） =1
-- 商户类别码（merchant category code）：restriction
-- 商户类别码（merchant category code）：具有商户类别描述（has merchant category description） some xsd:string
-- 商户类别码（merchant category code）：分类 some 商户（merchant）
-- 商户类别码方案（merchant category code scheme）：定义 some 商户类别码（merchant category code）
-- 商户标识符（merchant identifier）：标识 商户（merchant） =1
-- 辛迪加（syndicate）：具有成员 some 参与方（party）
-- 辛迪加成员（syndicate member）：由…扮演（is played by） some（是……的成员 only 辛迪加（syndicate））
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **协会（association）**：**扮演角色（plays role）**可以有 0 个或多个**合作社（cooperative society）**。
+- **功能型企业实体（functional business entity）**：**由…扮演（is played by）**可以有 0 个或多个**正式组织（FormalOrganization）**。
+- **功能实体（functional entity）**：**由…扮演（is played by）**可以有 0 个或多个**参与方（party）**。
+- **商户（merchant）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**商户类别码（merchant category code）**。
+- **商户（merchant）**：**由……标识（isIdentifiedBy）**至少有一个取值，类型是**商户标识符（merchant identifier）**。
+- **商户类别码（merchant category code）**：**定义于（isDefinedIn）**恰好有 1 个**商户类别码方案（merchant category code scheme）**。
+- **商户类别码（merchant category code）**：**具有标签（hasTag）**存在取值约束。
+- **商户类别码（merchant category code）**：**具有商户类别描述（has merchant category description）**至少有一个取值，类型是**xsd:string（string）**。
+- **商户类别码（merchant category code）**：**分类（classifies）**至少有一个取值，类型是**商户（merchant）**。
+- **商户类别码方案（merchant category code scheme）**：**定义（defines）**至少有一个取值，类型是**商户类别码（merchant category code）**。
+- **商户标识符（merchant identifier）**：**标识（identifies）**恰好有 1 个**商户（merchant）**。
+- **辛迪加（syndicate）**：**具有成员（hasMember）**至少有一个取值，类型是**参与方（party）**。
+- **辛迪加成员（syndicate member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**辛迪加（syndicate）**。
 
 ## 6. 依赖（owl:imports，13 个）
 

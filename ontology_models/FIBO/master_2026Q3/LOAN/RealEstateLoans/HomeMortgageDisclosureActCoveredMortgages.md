@@ -48,15 +48,17 @@
 
 ## 5. 公理约定（Axioms）
 
-- HMDA 覆盖贷款合同（HMDA covered loan contract）：由……分类 some 提交方式（how submitted）
-- HMDA 报告（HMDA report）：由……提交 N0769fd7efb8c40f483453329caa64ab9 ≥0
-- HMDA 报告（HMDA report）：被提交给 some 监管机构
-- HMDA 报告（HMDA report）：具有条目数 some xsd:positiveInteger
-- 族裔（ethnicity）：分类 some 具有法律行为能力的自然人
-- 种族（race）：skos:broaderTransitive some 种族（race）
-- 种族（race）：分类 some 具有法律行为能力的自然人
-- 通用贷款标识符（universal loan identifier）：包含 法律实体标识符 =1
-- 通用贷款标识符（universal loan identifier）：标识 房地产担保贷款 =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **HMDA 覆盖贷款合同（HMDA covered loan contract）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**提交方式（how submitted）**。
+- **HMDA 报告（HMDA report）**：**由……提交（isSubmittedBy）**可以有 0 个或多个**Nc70c952496f84a5eaa31a5dc99afa826**。
+- **HMDA 报告（HMDA report）**：**被提交给（isSubmittedTo）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+- **HMDA 报告（HMDA report）**：**具有条目数（hasNumberOfEntries）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
+- **族裔（ethnicity）**：**分类（classifies）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **种族（race）**：**skos:broaderTransitive（broaderTransitive）**至少有一个取值，类型是**种族（race）**。
+- **种族（race）**：**分类（classifies）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **通用贷款标识符（universal loan identifier）**：**包含（comprises）**恰好有 1 个**法律实体标识符（LegalEntityIdentifier）**。
+- **通用贷款标识符（universal loan identifier）**：**标识（identifies）**恰好有 1 个**房地产担保贷款（LoanSecuredByRealEstate）**。
 
 ## 6. 依赖（owl:imports，16 个）
 

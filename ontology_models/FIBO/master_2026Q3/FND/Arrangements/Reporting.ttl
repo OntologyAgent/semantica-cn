@@ -56,22 +56,22 @@ fibo-fnd-arr-rep:Request a owl:Class ;
         "请求（request）"@zh ;
     rdfs:comment "某参与方在某时点向另一参与方索要某事物的事件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:DateTime ;
-            owl:onProperty fibo-fnd-arr-rep:hasRequestDateTime ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:ExplicitDate ;
-            owl:onProperty fibo-fnd-arr-rep:hasRequestDate ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:someValuesFrom fibo-fnd-arr-rep:RequestActivity ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-rep:isRequestedOf ;
             owl:someValuesFrom cmns-pts:PartyRole ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fnd-arr-rep:hasRequestDate ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-rep:isRequestedBy ;
             owl:someValuesFrom fibo-fnd-arr-rep:Requester ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DateTime ;
+            owl:onProperty fibo-fnd-arr-rep:hasRequestDateTime ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "event in which some party asks another party for something at some point in time" .
 
@@ -205,30 +205,30 @@ fibo-fnd-arr-rep:Report a owl:Class ;
     rdfs:comment "对某事物提供结构化描述的文件，按临时、定期、循环、常规或要求的方式编制。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-arr-rep:Submitter ;
-            owl:onProperty fibo-fnd-arr-rep:isSubmittedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-pts:PartyRole ;
-            owl:onProperty fibo-fnd-arr-rep:isSubmittedTo ],
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fnd-arr-rep:hasReportDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DateTime ;
             owl:onProperty fibo-fnd-arr-rep:hasReportDateTime ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-pts:PartyRole ;
+            owl:onProperty fibo-fnd-arr-rep:isSubmittedTo ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-rep:isReportedTo ;
             owl:someValuesFrom cmns-pts:PartyRole ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:ExplicitDate ;
-            owl:onProperty fibo-fnd-arr-rep:hasReportDate ],
+            owl:onClass fibo-fnd-arr-rep:Submitter ;
+            owl:onProperty fibo-fnd-arr-rep:isSubmittedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fnd-arr-rep:ReportingParty ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DatePeriod ;
             owl:onProperty fibo-fnd-arr-doc:hasReportingPeriod ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-org:isProvidedBy ;
-            owl:someValuesFrom fibo-fnd-arr-rep:ReportingParty ],
         cmns-doc:Document ;
     skos:definition "document that provides a structured description of something, prepared on ad hoc, periodic, recurring, regular, or as required basis" ;
     cmns-av:explanatoryNote "Reports may refer to specific periods, events, occurrences, or subjects, and may be communicated or presented in oral, electronic, or written form." .

@@ -57,11 +57,11 @@ fibo-md-der-fut:MinimumMargin a owl:Class ;
         "最低保证金（minimum margin）"@zh ;
     rdfs:comment "账户在需要补充之前可降至的最低金额。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ;
-            owl:someValuesFrom cmns-dt:ExplicitDate ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
             owl:someValuesFrom fibo-md-der-fut:FuturesTradingAccountHolder ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ;
+            owl:someValuesFrom cmns-dt:ExplicitDate ],
         fibo-fnd-oac-own:Asset ;
     skos:definition "The lowest amount an account can reach before needing to be replenished."@en .
 

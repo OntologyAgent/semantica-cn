@@ -28,14 +28,16 @@
 
 ## 5. 公理约定（Axioms）
 
-- 商业标识代码数据记录（business identifier code data record）：restriction
-- 商业标识代码数据记录（business identifier code data record）：是否自行维护 some xsd:string
-- 商业标识代码数据记录（business identifier code data record）：包含 some 商业标识代码
-- 市场标识代码登记册条目（market identifier code registry entry）：restriction
-- 市场标识代码登记册条目（market identifier code registry entry）：restriction
-- 市场标识代码登记册条目（market identifier code registry entry）：具有市场标识代码状态 市场标识代码状态 =1
-- 市场标识代码登记册条目（market identifier code registry entry）：restriction
-- 市场标识代码登记册条目（market identifier code registry entry）：包含 some 市场标识符
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **商业标识代码数据记录（business identifier code data record）**：**被包含于（isIncludedIn）**的取值固定为 BusinessIdentifierCodeRegistry。
+- **商业标识代码数据记录（business identifier code data record）**：**是否自行维护（isSelfMaintained）**至少有一个取值，类型是**xsd:string（string）**。
+- **商业标识代码数据记录（business identifier code data record）**：**包含（comprises）**至少有一个取值，类型是**商业标识代码（BusinessIdentifierCode）**。
+- **市场标识代码登记册条目（market identifier code registry entry）**：**被包含于（isIncludedIn）**的取值固定为 MarketIdentifierCodeRegistry。
+- **市场标识代码登记册条目（market identifier code registry entry）**：**具有登记状态修订日期（hasRegistrationRevisionDate）**存在取值约束。
+- **市场标识代码登记册条目（market identifier code registry entry）**：**具有市场标识代码状态（hasMarketIdentifierCodeStatus）**恰好有 1 个**市场标识代码状态（MarketIdentifierCodeStatus）**。
+- **市场标识代码登记册条目（market identifier code registry entry）**：**具有初始登记日期（hasInitialRegistrationDate）**存在取值约束。
+- **市场标识代码登记册条目（market identifier code registry entry）**：**包含（comprises）**至少有一个取值，类型是**市场标识符（MarketIdentifier）**。
 
 ## 6. 依赖（owl:imports，20 个）
 

@@ -164,84 +164,86 @@
 
 ## 5. 公理约定（Axioms）
 
-- 账户（account）：由……持有 账户持有人（account holder） ≥0
-- 账户（account）：由……标识 账户标识符（account identifier） ≥0
-- 账户（account）：具有关闭日期（has close date） 关闭日期（close date） ≥0
-- 账户（account）：具有记录 交易记录（transaction record） ≥0
-- 账户（account）：具有开立日期（has open date） 开立日期（open date） =1
-- 账户（account）：具有余额（has balance） some 余额（balance）
-- 账户（account）：由……提供 some 账户提供方（account provider）
-- 作为资产的账户（account as an asset）：是……的资产 some 账户持有人（account holder）
-- 作为资产的账户（account as an asset）：由…扮演（is played by） some 账户（account）
-- 账户持有人（account holder）：持有 some 账户（account）
-- 账户持有人（account holder）：由…扮演（is played by） some（拥有 some 账户（account））
-- 账户持有人（account holder）：由…扮演（is played by） some（是…的参与方（is a party to） some 账户（account））
-- 账户标识符（account identifier）：标识 账户（account） =1
-- 账户所有权（account ownership）：具有自有资产 作为资产的账户（account as an asset） =1
-- 账户所有权（account ownership）：具有所有方 some 账户持有人（account holder）
-- 账户提供方（account provider）：由…扮演（is played by） some（是…的参与方（is a party to） some 账户（account））
-- 对账单（account statement）：具有期末余额（has ending balance） 余额（balance） ≤1
-- 对账单（account statement）：具有期初余额（has starting balance） 余额（balance） ≤1
-- 对账单（account statement）：具有报告期 显式日期区间 ≤1
-- 对账单（account statement）：适用于账户（applies to account） 账户（account） =1
-- 对账单（account statement）：记录交易（records transaction） some 单笔交易（individual transaction）
-- 账户专属服务协议（account-specific service agreement）：具有合同当事方 some 账户持有人（account holder）
-- 账户专属服务协议（account-specific service agreement）：具有合同当事方 some 账户提供方（account provider）
-- 账户专属服务协议（account-specific service agreement）：适用于 some 账户（account）
-- 银行账户标识符（bank account identifier）：标识 活期存款账户（demand deposit account） =1
-- 银行标识符（bank identifier）：标识 金融机构 =1
-- 基本银行账户标识符（basic bank account identifier）：包含 银行账户标识符（bank account identifier） =1
-- 基本银行账户标识符（basic bank account identifier）：包含 银行标识符（bank identifier） =1
-- 经纪账户（brokerage account）：由……提供 some（restriction）
-- 存单（certificate of deposit）：具有利率 利率 =1
-- 存单（certificate of deposit）：具有名义价值 货币数量 =1
-- 存单（certificate of deposit）：具有合同期限 时长 =1
-- 会计科目表（chart of accounts）：刻画 some 分类账户（ledger account）
-- 客户账户（customer account）：例证 some（restriction）
-- 客户账户（customer account）：由……持有 some 客户账户持有人（customer account holder）
-- 客户账户（customer account）：定义于 some 服务协议
-- 客户账户（customer account）：由……标识 some 账户标识符（account identifier）
-- 客户账户（customer account）：由……提供 some（restriction）
-- 客户账户持有人（customer account holder）：restriction
-- 客户账户持有人（customer account holder）：持有 some 客户账户（customer account）
-- 存款账户（deposit account）：由……提供 some 存款性机构
-- 分布式账本（distributed ledger）：使用方法 some 分布式账本技术（distributed ledger technology）
-- 单笔交易（individual transaction）：注册于 only 交易记录（transaction record）
-- 单笔交易（individual transaction）：由……标识 交易标识符（transaction identifier） ≤1
-- 单笔交易（individual transaction）：涉及商户（involves merchant） 商户 ≥0
-- 单笔交易（individual transaction）：由……分类 交易类别（transaction category） ≥0
-- 单笔交易（individual transaction）：由……分类 交易子类别（transaction subcategory） ≥0
-- 单笔交易（individual transaction）：例证 交易事件 ≥0
-- 单笔交易（individual transaction）：restriction
-- 单笔交易（individual transaction）：适用于账户（applies to account） 账户（account） =1
-- 单笔交易（individual transaction）：具有过账日期（has posting date） 过账日期（posting date） =1
-- 单笔交易（individual transaction）：具有交易日期（has transaction date） 交易日期（transaction date） =1
-- 单笔交易（individual transaction）：具有货币数量 货币数量 =1
-- 国际银行账户标识符（international bank account identifier）：包含 基本银行账户标识符（basic bank account identifier） =1
-- 国际银行账户标识符（international bank account identifier）：包含 地理区域标识符 =1
-- 投资账户（investment account）：由……提供 some 金融机构
-- 分类账（ledger）：包含 some 分类账户（ledger account）
-- 分类账户分类器（ledger account classifier）：restriction
-- 分类账户分类器（ledger account classifier）：分类 some 分类账户（ledger account）
-- 贷款或信用账户（loan or credit account） 与 投资或存款账户（investment or deposit account） 互斥（disjointWith）
-- 非交易存款账户（non-transaction deposit account） 与 交易存款账户（transaction deposit account） 互斥（disjointWith）
-- 客户经理（relationship manager）：管理 some 账户（account）
-- 定期存单账户（time certificate of deposit account）：由……例证 some 存单（certificate of deposit）
-- 定期开放存款账户（time deposit open account） 与 定期存单账户（time certificate of deposit account） 互斥（disjointWith）
-- 交易类别（transaction category）：restriction
-- 交易类别（transaction category）：分类 some 单笔交易（individual transaction）
-- 交易标识符（transaction identifier）：标识 单笔交易（individual transaction） =1
-- 交易记录（transaction record）：由……标识 交易记录标识符（transaction record identifier） ≤1
-- 交易记录（transaction record）：具有关闭日期（has close date） 关闭日期（close date） ≥0
-- 交易记录（transaction record）：包含 单笔交易（individual transaction） ≥0
-- 交易记录（transaction record）：具有开立日期（has open date） 开立日期（open date） ≥0
-- 交易记录（transaction record）：restriction
-- 交易记录（transaction record）：适用于账户（applies to account） 账户（account） =1
-- 交易记录（transaction record）：由……管理 账户提供方（account provider） =1
-- 交易记录标识符（transaction record identifier）：标识 交易记录（transaction record） =1
-- 交易记录标识符（transaction record identifier）：restriction
-- 交易子类别（transaction subcategory）：restriction
-- 交易子类别（transaction subcategory）：分类 some 单笔交易（individual transaction）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **账户（account）**：**由……持有（isHeldBy）**可以有 0 个或多个**账户持有人（account holder）**。
+- **账户（account）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**账户标识符（account identifier）**。
+- **账户（account）**：**具有关闭日期（has close date）**可以有 0 个或多个**关闭日期（close date）**。
+- **账户（account）**：**具有记录（hasRecord）**可以有 0 个或多个**交易记录（transaction record）**。
+- **账户（account）**：**具有开立日期（has open date）**恰好有 1 个**开立日期（open date）**。
+- **账户（account）**：**具有余额（has balance）**至少有一个取值，类型是**余额（balance）**。
+- **账户（account）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**账户提供方（account provider）**。
+- **作为资产的账户（account as an asset）**：**是……的资产（isAssetOf）**至少有一个取值，类型是**账户持有人（account holder）**。
+- **作为资产的账户（account as an asset）**：**由…扮演（is played by）**至少有一个取值，类型是**账户（account）**。
+- **账户持有人（account holder）**：**持有（holds）**至少有一个取值，类型是**账户（account）**。
+- **账户持有人（account holder）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**拥有（owns）**至少有一个取值，类型是**账户（account）**。
+- **账户持有人（account holder）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**账户（account）**。
+- **账户标识符（account identifier）**：**标识（identifies）**恰好有 1 个**账户（account）**。
+- **账户所有权（account ownership）**：**具有自有资产（hasOwnedAsset）**恰好有 1 个**作为资产的账户（account as an asset）**。
+- **账户所有权（account ownership）**：**具有所有方（hasOwningParty）**至少有一个取值，类型是**账户持有人（account holder）**。
+- **账户提供方（account provider）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**账户（account）**。
+- **对账单（account statement）**：**具有期末余额（has ending balance）**至多有 1 个**余额（balance）**。
+- **对账单（account statement）**：**具有期初余额（has starting balance）**至多有 1 个**余额（balance）**。
+- **对账单（account statement）**：**具有报告期（hasReportingPeriod）**至多有 1 个**显式日期区间（ExplicitDatePeriod）**。
+- **对账单（account statement）**：**适用于账户（applies to account）**恰好有 1 个**账户（account）**。
+- **对账单（account statement）**：**记录交易（records transaction）**至少有一个取值，类型是**单笔交易（individual transaction）**。
+- **账户专属服务协议（account-specific service agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**账户持有人（account holder）**。
+- **账户专属服务协议（account-specific service agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**账户提供方（account provider）**。
+- **账户专属服务协议（account-specific service agreement）**：**适用于（appliesTo）**至少有一个取值，类型是**账户（account）**。
+- **银行账户标识符（bank account identifier）**：**标识（identifies）**恰好有 1 个**活期存款账户（demand deposit account）**。
+- **银行标识符（bank identifier）**：**标识（identifies）**恰好有 1 个**金融机构（FinancialInstitution）**。
+- **基本银行账户标识符（basic bank account identifier）**：**包含（comprises）**恰好有 1 个**银行账户标识符（bank account identifier）**。
+- **基本银行账户标识符（basic bank account identifier）**：**包含（comprises）**恰好有 1 个**银行标识符（bank identifier）**。
+- **经纪账户（brokerage account）**：**由……提供（isProvidedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **存单（certificate of deposit）**：**具有利率（hasInterestRate）**恰好有 1 个**利率（InterestRate）**。
+- **存单（certificate of deposit）**：**具有名义价值（hasNominalValue）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **存单（certificate of deposit）**：**具有合同期限（hasContractDuration）**恰好有 1 个**时长（Duration）**。
+- **会计科目表（chart of accounts）**：**刻画（characterizes）**至少有一个取值，类型是**分类账户（ledger account）**。
+- **客户账户（customer account）**：**例证（exemplifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **客户账户（customer account）**：**由……持有（isHeldBy）**至少有一个取值，类型是**客户账户持有人（customer account holder）**。
+- **客户账户（customer account）**：**定义于（isDefinedIn）**至少有一个取值，类型是**服务协议（ServiceAgreement）**。
+- **客户账户（customer account）**：**由……标识（isIdentifiedBy）**至少有一个取值，类型是**账户标识符（account identifier）**。
+- **客户账户（customer account）**：**由……提供（isProvidedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **客户账户持有人（customer account holder）**：该属性存在取值约束。
+- **客户账户持有人（customer account holder）**：**持有（holds）**至少有一个取值，类型是**客户账户（customer account）**。
+- **存款账户（deposit account）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**存款性机构（DepositoryInstitution）**。
+- **分布式账本（distributed ledger）**：**使用方法（usesMethod）**至少有一个取值，类型是**分布式账本技术（distributed ledger technology）**。
+- **单笔交易（individual transaction）**：**注册于（isRegisteredIn）**的所有取值只能是**交易记录（transaction record）**。
+- **单笔交易（individual transaction）**：**由……标识（isIdentifiedBy）**至多有 1 个**交易标识符（transaction identifier）**。
+- **单笔交易（individual transaction）**：**涉及商户（involves merchant）**可以有 0 个或多个**商户（Merchant）**。
+- **单笔交易（individual transaction）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**交易类别（transaction category）**。
+- **单笔交易（individual transaction）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**交易子类别（transaction subcategory）**。
+- **单笔交易（individual transaction）**：**例证（exemplifies）**可以有 0 个或多个**交易事件（TransactionEvent）**。
+- **单笔交易（individual transaction）**：**具有交易描述（has transaction description）**存在取值约束。
+- **单笔交易（individual transaction）**：**适用于账户（applies to account）**恰好有 1 个**账户（account）**。
+- **单笔交易（individual transaction）**：**具有过账日期（has posting date）**恰好有 1 个**过账日期（posting date）**。
+- **单笔交易（individual transaction）**：**具有交易日期（has transaction date）**恰好有 1 个**交易日期（transaction date）**。
+- **单笔交易（individual transaction）**：**具有货币数量（hasMonetaryAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **国际银行账户标识符（international bank account identifier）**：**包含（comprises）**恰好有 1 个**基本银行账户标识符（basic bank account identifier）**。
+- **国际银行账户标识符（international bank account identifier）**：**包含（comprises）**恰好有 1 个**地理区域标识符（GeographicRegionIdentifier）**。
+- **投资账户（investment account）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
+- **分类账（ledger）**：**包含（comprises）**至少有一个取值，类型是**分类账户（ledger account）**。
+- **分类账户分类器（ledger account classifier）**：**定义于（isDefinedIn）**的取值固定为 LedgerAccountClassificationScheme。
+- **分类账户分类器（ledger account classifier）**：**分类（classifies）**至少有一个取值，类型是**分类账户（ledger account）**。
+- **贷款或信用账户（loan or credit account）**与**投资或存款账户（investment or deposit account）**互斥：同一个体不能同时属于两者。
+- **非交易存款账户（non-transaction deposit account）**与**交易存款账户（transaction deposit account）**互斥：同一个体不能同时属于两者。
+- **客户经理（relationship manager）**：**管理（manages）**至少有一个取值，类型是**账户（account）**。
+- **定期存单账户（time certificate of deposit account）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**存单（certificate of deposit）**。
+- **定期开放存款账户（time deposit open account）**与**定期存单账户（time certificate of deposit account）**互斥：同一个体不能同时属于两者。
+- **交易类别（transaction category）**：**具有标签（hasTag）**存在取值约束。
+- **交易类别（transaction category）**：**分类（classifies）**至少有一个取值，类型是**单笔交易（individual transaction）**。
+- **交易标识符（transaction identifier）**：**标识（identifies）**恰好有 1 个**单笔交易（individual transaction）**。
+- **交易记录（transaction record）**：**由……标识（isIdentifiedBy）**至多有 1 个**交易记录标识符（transaction record identifier）**。
+- **交易记录（transaction record）**：**具有关闭日期（has close date）**可以有 0 个或多个**关闭日期（close date）**。
+- **交易记录（transaction record）**：**包含（comprises）**可以有 0 个或多个**单笔交易（individual transaction）**。
+- **交易记录（transaction record）**：**具有开立日期（has open date）**可以有 0 个或多个**开立日期（open date）**。
+- **交易记录（transaction record）**：**具有交易记录状态（has transaction record status）**存在取值约束。
+- **交易记录（transaction record）**：**适用于账户（applies to account）**恰好有 1 个**账户（account）**。
+- **交易记录（transaction record）**：**由……管理（isManagedBy）**恰好有 1 个**账户提供方（account provider）**。
+- **交易记录标识符（transaction record identifier）**：**标识（identifies）**恰好有 1 个**交易记录（transaction record）**。
+- **交易记录标识符（transaction record identifier）**：**具有标签（hasTag）**存在取值约束。
+- **交易子类别（transaction subcategory）**：**具有标签（hasTag）**存在取值约束。
+- **交易子类别（transaction subcategory）**：**分类（classifies）**至少有一个取值，类型是**单笔交易（individual transaction）**。
 
 ## 6. 依赖（owl:imports，34 个）
 

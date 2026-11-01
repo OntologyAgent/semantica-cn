@@ -76,52 +76,54 @@
 
 ## 5. 公理约定（Axioms）
 
-- 评估边界（assessment boundary）：适用于情境 管辖权 ≥0
-- 评估边界（assessment boundary）：适用于 设施 ≥0
-- 评估边界（assessment boundary）：涉及 场所 ≥0
-- 评估边界（assessment boundary）：具有空间边界（has spatial boundary） some 地理区域
-- 环境计划（environmental program）：具有成员 环境项目（environmental project） ≥0
-- 环境计划（environmental program）：以……为特征 some 可持续关键绩效指标（sustainability key performance indicator）
-- 环境项目（environmental project）：具有评估边界（has assessment boundary） 评估边界（assessment boundary） ≥0
-- 环境项目（environmental project）：是……的成员 环境计划（environmental program） ≥0
-- 环境项目（environmental project）：具有进度表 some 里程碑进度表
-- 环境项目（environmental project）：以……为特征 some 可持续关键绩效指标（sustainability key performance indicator）
-- 绿色贷款（green loan）：具有里程碑条款 合同里程碑 ≥0
-- 绿色贷款（green loan）：具有进度表 里程碑进度表 ≥0
-- 绿色贷款（green loan）：具有合同要素 some 披露条款
-- 绿色贷款（green loan）：具有合同要素 some 绿色项目募集资金用途条款（green project use of proceeds provision）
-- 绿色项目（green project）：受……管辖 some 绿色项目募集资金用途条款（green project use of proceeds provision）
-- 绿色项目募集资金用途条款（green project use of proceeds provision）：管辖 some 绿色项目（green project）
-- 观测指标值（observed indicator value）：具有量值 some 标量值
-- 观测指标值结构（observed indicator value structure）：具有成员 some 观测指标值（observed indicator value）
-- 观测指标值结构（observed indicator value structure）：具有日期区间 some 计算期间
-- 可持续业务战略（sustainability business strategy）：由……证明 可持续绩效目标（sustainability performance target） ≥0
-- 可持续业务战略（sustainability business strategy）：具有目标 some 可持续业务目标（sustainability business objective）
-- 可持续业务战略（sustainability business strategy）：以……为特征 some 可持续关键绩效指标（sustainability key performance indicator）
-- 可持续关键绩效指标（sustainability key performance indicator）：具有观测值 观测指标值结构（observed indicator value structure） ≥0
-- 可持续关键绩效指标（sustainability key performance indicator）：由……标识 可持续关键绩效指标标识符（sustainability key performance indicator identifier） ≥0
-- 可持续关键绩效指标（sustainability key performance indicator）：具有目标值 可持续绩效目标（sustainability performance target） ≥0
-- 可持续关键绩效指标标识符（sustainability key performance indicator identifier）：标识 some 可持续关键绩效指标（sustainability key performance indicator）
-- 可持续绩效目标（sustainability performance target）：由……标识 可持续绩效目标标识符（sustainability performance target identifier） ≥0
-- 可持续绩效目标（sustainability performance target）：按方法论计算 some xsd:string
-- 可持续绩效目标（sustainability performance target）：具有成员 some 目标指标值（target indicator value）
-- 可持续绩效目标（sustainability performance target）：具有日期区间 some 计算期间
-- 可持续绩效目标标识符（sustainability performance target identifier）：标识 some 可持续绩效目标（sustainability performance target）
-- 可持续挂钩贷款（sustainability-linked loan）：具有里程碑条款 合同里程碑 ≥0
-- 可持续挂钩贷款（sustainability-linked loan）：具有进度表 里程碑进度表 ≥0
-- 可持续挂钩贷款（sustainability-linked loan）：具有合同要素 some 披露条款
-- 可持续挂钩贷款（sustainability-linked loan）：具有战略 some 可持续业务战略（sustainability business strategy）
-- 目标指标值（target indicator value）：具有量值 some 标量值
-- 转型贷款（transition loan）：具有里程碑条款 合同里程碑 ≥0
-- 转型贷款（transition loan）：具有进度表 里程碑进度表 ≥0
-- 转型贷款（transition loan）：具有合同要素 some 披露条款
-- 转型贷款（transition loan）：具有合同要素 some 转型募集资金用途条款（transition use of proceeds provision）
-- 转型贷款（transition loan）：具有战略 some 转型战略（transition strategy）
-- 转型项目（transition project）：受……管辖 some 转型募集资金用途条款（transition use of proceeds provision）
-- 转型战略（transition strategy）：由……证明 some 可持续绩效目标（sustainability performance target）
-- 转型战略（transition strategy）：具有目标 some 可持续业务目标（sustainability business objective）
-- 转型战略（transition strategy）：以……为特征 some 可持续关键绩效指标（sustainability key performance indicator）
-- 转型募集资金用途条款（transition use of proceeds provision）：管辖 some 转型项目（transition project）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **评估边界（assessment boundary）**：**适用于情境（isApplicableIn）**可以有 0 个或多个**管辖权（Jurisdiction）**。
+- **评估边界（assessment boundary）**：**适用于（appliesTo）**可以有 0 个或多个**设施（Facility）**。
+- **评估边界（assessment boundary）**：**涉及（involves）**可以有 0 个或多个**场所（Site）**。
+- **评估边界（assessment boundary）**：**具有空间边界（has spatial boundary）**至少有一个取值，类型是**地理区域（GeographicRegion）**。
+- **环境计划（environmental program）**：**具有成员（hasMember）**可以有 0 个或多个**环境项目（environmental project）**。
+- **环境计划（environmental program）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**可持续关键绩效指标（sustainability key performance indicator）**。
+- **环境项目（environmental project）**：**具有评估边界（has assessment boundary）**可以有 0 个或多个**评估边界（assessment boundary）**。
+- **环境项目（environmental project）**：**是……的成员（isMemberOf）**可以有 0 个或多个**环境计划（environmental program）**。
+- **环境项目（environmental project）**：**具有进度表（hasSchedule）**至少有一个取值，类型是**里程碑进度表（MilestoneSchedule）**。
+- **环境项目（environmental project）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**可持续关键绩效指标（sustainability key performance indicator）**。
+- **绿色贷款（green loan）**：**具有里程碑条款（hasMilestoneProvision）**可以有 0 个或多个**合同里程碑（ContractMilestone）**。
+- **绿色贷款（green loan）**：**具有进度表（hasSchedule）**可以有 0 个或多个**里程碑进度表（MilestoneSchedule）**。
+- **绿色贷款（green loan）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**披露条款（DisclosureProvision）**。
+- **绿色贷款（green loan）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**绿色项目募集资金用途条款（green project use of proceeds provision）**。
+- **绿色项目（green project）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**绿色项目募集资金用途条款（green project use of proceeds provision）**。
+- **绿色项目募集资金用途条款（green project use of proceeds provision）**：**管辖（governs）**至少有一个取值，类型是**绿色项目（green project）**。
+- **观测指标值（observed indicator value）**：**具有量值（hasQuantityValue）**至少有一个取值，类型是**标量值（ScalarQuantityValue）**。
+- **观测指标值结构（observed indicator value structure）**：**具有成员（hasMember）**至少有一个取值，类型是**观测指标值（observed indicator value）**。
+- **观测指标值结构（observed indicator value structure）**：**具有日期区间（hasDatePeriod）**至少有一个取值，类型是**计算期间（CalculationPeriod）**。
+- **可持续业务战略（sustainability business strategy）**：**由……证明（isEvidencedBy）**可以有 0 个或多个**可持续绩效目标（sustainability performance target）**。
+- **可持续业务战略（sustainability business strategy）**：**具有目标（hasObjective）**至少有一个取值，类型是**可持续业务目标（sustainability business objective）**。
+- **可持续业务战略（sustainability business strategy）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**可持续关键绩效指标（sustainability key performance indicator）**。
+- **可持续关键绩效指标（sustainability key performance indicator）**：**具有观测值（hasObservedValue）**可以有 0 个或多个**观测指标值结构（observed indicator value structure）**。
+- **可持续关键绩效指标（sustainability key performance indicator）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**可持续关键绩效指标标识符（sustainability key performance indicator identifier）**。
+- **可持续关键绩效指标（sustainability key performance indicator）**：**具有目标值（hasTargetValue）**可以有 0 个或多个**可持续绩效目标（sustainability performance target）**。
+- **可持续关键绩效指标标识符（sustainability key performance indicator identifier）**：**标识（identifies）**至少有一个取值，类型是**可持续关键绩效指标（sustainability key performance indicator）**。
+- **可持续绩效目标（sustainability performance target）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**可持续绩效目标标识符（sustainability performance target identifier）**。
+- **可持续绩效目标（sustainability performance target）**：**按方法论计算（isCalculatedViaMethodology）**至少有一个取值，类型是**xsd:string（string）**。
+- **可持续绩效目标（sustainability performance target）**：**具有成员（hasMember）**至少有一个取值，类型是**目标指标值（target indicator value）**。
+- **可持续绩效目标（sustainability performance target）**：**具有日期区间（hasDatePeriod）**至少有一个取值，类型是**计算期间（CalculationPeriod）**。
+- **可持续绩效目标标识符（sustainability performance target identifier）**：**标识（identifies）**至少有一个取值，类型是**可持续绩效目标（sustainability performance target）**。
+- **可持续挂钩贷款（sustainability-linked loan）**：**具有里程碑条款（hasMilestoneProvision）**可以有 0 个或多个**合同里程碑（ContractMilestone）**。
+- **可持续挂钩贷款（sustainability-linked loan）**：**具有进度表（hasSchedule）**可以有 0 个或多个**里程碑进度表（MilestoneSchedule）**。
+- **可持续挂钩贷款（sustainability-linked loan）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**披露条款（DisclosureProvision）**。
+- **可持续挂钩贷款（sustainability-linked loan）**：**具有战略（hasStrategy）**至少有一个取值，类型是**可持续业务战略（sustainability business strategy）**。
+- **目标指标值（target indicator value）**：**具有量值（hasQuantityValue）**至少有一个取值，类型是**标量值（ScalarQuantityValue）**。
+- **转型贷款（transition loan）**：**具有里程碑条款（hasMilestoneProvision）**可以有 0 个或多个**合同里程碑（ContractMilestone）**。
+- **转型贷款（transition loan）**：**具有进度表（hasSchedule）**可以有 0 个或多个**里程碑进度表（MilestoneSchedule）**。
+- **转型贷款（transition loan）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**披露条款（DisclosureProvision）**。
+- **转型贷款（transition loan）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**转型募集资金用途条款（transition use of proceeds provision）**。
+- **转型贷款（transition loan）**：**具有战略（hasStrategy）**至少有一个取值，类型是**转型战略（transition strategy）**。
+- **转型项目（transition project）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**转型募集资金用途条款（transition use of proceeds provision）**。
+- **转型战略（transition strategy）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**可持续绩效目标（sustainability performance target）**。
+- **转型战略（transition strategy）**：**具有目标（hasObjective）**至少有一个取值，类型是**可持续业务目标（sustainability business objective）**。
+- **转型战略（transition strategy）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**可持续关键绩效指标（sustainability key performance indicator）**。
+- **转型募集资金用途条款（transition use of proceeds provision）**：**管辖（governs）**至少有一个取值，类型是**转型项目（transition project）**。
 
 ## 6. 依赖（owl:imports，25 个）
 

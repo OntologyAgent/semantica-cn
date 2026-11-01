@@ -51,14 +51,16 @@
 
 ## 5. 公理约定（Axioms）
 
-- 现金结算条款（cash settlement terms）：restriction
-- 现金结算条款（cash settlement terms）：具有价格 证券价格 ≥0
-- 现金结算条款（cash settlement terms）：具有结算金额（has settlement amount） some 货币数量
-- 实物结算条款（physical settlement terms）：restriction
-- 结算惯例（settlement convention）：具有数值 some xsd:positiveInteger
-- 结算事件（settlement event）：具有价格 证券价格 ≥0
-- 结算事件（settlement event）：涉及 价值评估 ≥0
-- 结算事件（settlement event）：例证 结算（settlement） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **现金结算条款（cash settlement terms）**：**具有结算方式（has settlement method）**的取值固定为 DeliveryInCash。
+- **现金结算条款（cash settlement terms）**：**具有价格（hasPrice）**可以有 0 个或多个**证券价格（SecurityPrice）**。
+- **现金结算条款（cash settlement terms）**：**具有结算金额（has settlement amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **实物结算条款（physical settlement terms）**：**具有结算方式（has settlement method）**的取值固定为 PhysicalDeliveryMethod。
+- **结算惯例（settlement convention）**：**具有数值（hasNumericValue）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
+- **结算事件（settlement event）**：**具有价格（hasPrice）**可以有 0 个或多个**证券价格（SecurityPrice）**。
+- **结算事件（settlement event）**：**涉及（involves）**可以有 0 个或多个**价值评估（ValueAssessment）**。
+- **结算事件（settlement event）**：**例证（exemplifies）**恰好有 1 个**结算（settlement）**。
 
 ## 6. 依赖（owl:imports，13 个）
 

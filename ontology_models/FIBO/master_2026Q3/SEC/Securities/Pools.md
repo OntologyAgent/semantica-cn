@@ -47,15 +47,17 @@
 
 ## 5. 公理约定（Axioms）
 
-- 债务池（debt pool）：具有成员 some 债务工具
-- 基金家族（fund family）：由……管理 金融机构 =1
-- 基金家族（fund family）：具有成员 some 管理型投资（managed investment）
-- 工具池（instrument pool）：具有成员 some 金融工具
-- 作为资产的工具池（instrument pool as asset）：是……的资产 some（restriction）
-- 作为资产的工具池（instrument pool as asset）：由…扮演（is played by） some 工具池（instrument pool）
-- 管理型投资（managed investment）：由……管理 some 金融机构
-- 池（pool）：具有成员 some 池成分（pool constituent）
-- 证券池（securities pool）：具有成员 some 证券
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **债务池（debt pool）**：**具有成员（hasMember）**至少有一个取值，类型是**债务工具（DebtInstrument）**。
+- **基金家族（fund family）**：**由……管理（isManagedBy）**恰好有 1 个**金融机构（FinancialInstitution）**。
+- **基金家族（fund family）**：**具有成员（hasMember）**至少有一个取值，类型是**管理型投资（managed investment）**。
+- **工具池（instrument pool）**：**具有成员（hasMember）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
+- **作为资产的工具池（instrument pool as asset）**：**是……的资产（isAssetOf）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **作为资产的工具池（instrument pool as asset）**：**由…扮演（is played by）**至少有一个取值，类型是**工具池（instrument pool）**。
+- **管理型投资（managed investment）**：**由……管理（isManagedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
+- **池（pool）**：**具有成员（hasMember）**至少有一个取值，类型是**池成分（pool constituent）**。
+- **证券池（securities pool）**：**具有成员（hasMember）**至少有一个取值，类型是**证券（Security）**。
 
 ## 6. 依赖（owl:imports，10 个）
 

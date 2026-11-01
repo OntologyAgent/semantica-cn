@@ -83,40 +83,42 @@
 
 ## 5. 公理约定（Axioms）
 
-- 全体借款人月收入（all borrowers' monthly income）：基于 some 借款人月收入（borrower monthly income）
-- 借款人评估（borrower assessment）：包含 收入核实报告（income verification report） ≥0
-- 借款人评估（borrower assessment）：包含 个人信用评级（individual person credit rating） ≥0
-- 借款人评估（borrower assessment）：包含 还款历史 ≥0
-- 借款人评估（borrower assessment）：具有评估日期 some 显式日期
-- 借款人评估（borrower assessment）：关于 some 借款人
-- 借款人评估（borrower assessment）：关于 some 贷款申请（loan application）
-- 借款人月收入（borrower monthly income）：具有参与方角色（has party role） some 借款人
-- 信用风险评估（credit risk assessment）：具有输入 some 信用报告
-- 信用风险评估（credit risk assessment）：具有输入 some 预批准合同（pre-approval contract）
-- 信用风险评估（credit risk assessment）：具有输入 some 预批准请求（pre-approval request）
-- 信用风险评估（credit risk assessment）：具有输入 some 公开记录（public record）
-- 信用风险评估（credit risk assessment）：具有输出 some 核保决定（underwriting decision）
-- 信用风险评估（credit risk assessment）：使用因子（uses factor） some 全体借款人月收入（all borrowers' monthly income）
-- 信用风险评估（credit risk assessment）：使用因子（uses factor） some 借款人月收入（borrower monthly income）
-- 信用风险评估（credit risk assessment）：使用因子（uses factor） some 总债务支出比（total debt expense ratio）
-- 信用风险评估（credit risk assessment）：使用因子（uses factor） some 合并贷款价值比
-- 信用风险评估（credit risk assessment）：适用于 some 贷款
-- 贷款申请（loan application）：包含 合并贷款价值比 ≥0
-- 贷款申请（loan application）：包含 贷款价值比 ≥0
-- 贷款申请（loan application）：具有接收日期 显式日期 ≥0
-- 贷款申请（loan application）：具有申请日期（has application date） 显式日期 =1
-- 贷款申请（loan application）：由……提交 some 请求方
-- 贷款申请（loan application）：已申请预批准（is pre-approval requested） some xsd:boolean
-- 贷款申请（loan application）：包含 some 全体借款人月收入（all borrowers' monthly income）
-- 贷款申请（loan application）：包含 some 借款人月收入（borrower monthly income）
-- 贷款申请（loan application）：包含 some 总债务支出比（total debt expense ratio）
-- 预批准合同（pre-approval contract）：具有利率 some 利率
-- 预批准合同（pre-approval contract）：具有批准金额（has approved amount） some 货币数量
-- 预批准请求（pre-approval request）：具有借款人 some 借款人
-- 预批准请求（pre-approval request）：具有申请金额（has requested amount） some 货币数量
-- 公开记录（public record）：引用 账户 ≥0
-- 公开记录（public record）：由……证明 法律文件 ≥0
-- 公开记录（public record）：由……分类 some 公开记录类别（public record category）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **全体借款人月收入（all borrowers' monthly income）**：**基于（isBasedOn）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
+- **借款人评估（borrower assessment）**：**包含（comprises）**可以有 0 个或多个**收入核实报告（income verification report）**。
+- **借款人评估（borrower assessment）**：**包含（comprises）**可以有 0 个或多个**个人信用评级（individual person credit rating）**。
+- **借款人评估（borrower assessment）**：**包含（comprises）**可以有 0 个或多个**还款历史（PaymentHistory）**。
+- **借款人评估（borrower assessment）**：**具有评估日期（hasDateOfAssessment）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **借款人评估（borrower assessment）**：**关于（isAbout）**至少有一个取值，类型是**借款人（Borrower）**。
+- **借款人评估（borrower assessment）**：**关于（isAbout）**至少有一个取值，类型是**贷款申请（loan application）**。
+- **借款人月收入（borrower monthly income）**：**具有参与方角色（has party role）**至少有一个取值，类型是**借款人（Borrower）**。
+- **信用风险评估（credit risk assessment）**：**具有输入（hasInput）**至少有一个取值，类型是**信用报告（CreditReport）**。
+- **信用风险评估（credit risk assessment）**：**具有输入（hasInput）**至少有一个取值，类型是**预批准合同（pre-approval contract）**。
+- **信用风险评估（credit risk assessment）**：**具有输入（hasInput）**至少有一个取值，类型是**预批准请求（pre-approval request）**。
+- **信用风险评估（credit risk assessment）**：**具有输入（hasInput）**至少有一个取值，类型是**公开记录（public record）**。
+- **信用风险评估（credit risk assessment）**：**具有输出（hasOutput）**至少有一个取值，类型是**核保决定（underwriting decision）**。
+- **信用风险评估（credit risk assessment）**：**使用因子（uses factor）**至少有一个取值，类型是**全体借款人月收入（all borrowers' monthly income）**。
+- **信用风险评估（credit risk assessment）**：**使用因子（uses factor）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
+- **信用风险评估（credit risk assessment）**：**使用因子（uses factor）**至少有一个取值，类型是**总债务支出比（total debt expense ratio）**。
+- **信用风险评估（credit risk assessment）**：**使用因子（uses factor）**至少有一个取值，类型是**合并贷款价值比（CombinedLoanToValueRatio）**。
+- **信用风险评估（credit risk assessment）**：**适用于（appliesTo）**至少有一个取值，类型是**贷款（Loan）**。
+- **贷款申请（loan application）**：**包含（comprises）**可以有 0 个或多个**合并贷款价值比（CombinedLoanToValueRatio）**。
+- **贷款申请（loan application）**：**包含（comprises）**可以有 0 个或多个**贷款价值比（LoanToValueRatio）**。
+- **贷款申请（loan application）**：**具有接收日期（hasDateReceived）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **贷款申请（loan application）**：**具有申请日期（has application date）**恰好有 1 个**显式日期（ExplicitDate）**。
+- **贷款申请（loan application）**：**由……提交（isSubmittedBy）**至少有一个取值，类型是**请求方（Requester）**。
+- **贷款申请（loan application）**：**已申请预批准（is pre-approval requested）**至少有一个取值，类型是**xsd:boolean（boolean）**。
+- **贷款申请（loan application）**：**包含（comprises）**至少有一个取值，类型是**全体借款人月收入（all borrowers' monthly income）**。
+- **贷款申请（loan application）**：**包含（comprises）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
+- **贷款申请（loan application）**：**包含（comprises）**至少有一个取值，类型是**总债务支出比（total debt expense ratio）**。
+- **预批准合同（pre-approval contract）**：**具有利率（hasInterestRate）**至少有一个取值，类型是**利率（InterestRate）**。
+- **预批准合同（pre-approval contract）**：**具有批准金额（has approved amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **预批准请求（pre-approval request）**：**具有借款人（hasBorrower）**至少有一个取值，类型是**借款人（Borrower）**。
+- **预批准请求（pre-approval request）**：**具有申请金额（has requested amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **公开记录（public record）**：**引用（refersTo）**可以有 0 个或多个**账户（Account）**。
+- **公开记录（public record）**：**由……证明（isEvidencedBy）**可以有 0 个或多个**法律文件（LegalDocument）**。
+- **公开记录（public record）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**公开记录类别（public record category）**。
 
 ## 6. 依赖（owl:imports，20 个）
 

@@ -139,12 +139,12 @@ fibo-der-drc-exo:DoubleBarrierOption a owl:Class ;
             owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
             owl:onProperty fibo-der-drc-exo:hasFirstRebateAmount ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-exo:hasSecondBarrierPrice ;
-            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
             owl:onProperty fibo-der-drc-exo:hasSecondRebateAmount ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-exo:hasSecondBarrierPrice ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryPrice ],
         fibo-der-drc-exo:BarrierOption ;
     skos:definition "barrier option applied to currencies or over the counter stocks that works as a binary, or digital option in that it pays out only under defined circumstances, or it is worthless, at expiration"@en ;
     cmns-av:explanatoryNote "Considered an exotic option, a double barrier option is a combination of two single barrier options, with one barrier above and one barrier below the current price of the underlying. It is a bet by the holder that the underlying asset will move significantly, in the case of a knock-in barrier option, or will move by a very small amount, in the case of a knock-out barrier option, over the life of the contract. Traders use these options when they have an opinion on volatility but not on the direction of the underlying asset's next price move. A barrier option is a type of option where the payoff, and the very existence of the option, depends on whether or not the underlying asset reaches a predetermined price."@en .
@@ -264,12 +264,12 @@ fibo-der-drc-exo:ChooserOption a owl:Class ;
         "任选期权（chooser option）"@zh ;
     rdfs:comment "允许持有人（买方）选择按固定价格买入（看涨）或卖出（看跌）指定资产之权利的奇异期权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-exo:hasOptionTypeElectionDate ;
-            owl:someValuesFrom cmns-dt:ExplicitDate ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-der-drc-opt:CallOption fibo-der-drc-opt:PutOption ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-exo:hasOptionTypeElectionDate ;
+            owl:someValuesFrom cmns-dt:ExplicitDate ],
         fibo-der-drc-opt:ExoticOption ;
     skos:definition "exotic option that allows its holder (buyer) to exercise the right to buy (call) or sell (put) specified assets at a fixed price whereby the buyer does not have to decide whether the contract will be a put or a call until an agreed future date, prior to expiration"@en ;
     skos:example "For example, assume a trader wants to have an option position for the updated XYZ Inc. earnings release. They think the stock will have a big move, but they are not sure in which direction. The earnings release is in one month, so the trader decides to buy a chooser option that will expire about three weeks after the earnings release. They believe this should provide enough time for the stock to make a significant move if it is going to make one, and fully digest the earnings release. Therefore, the option they choose will expire in seven to eight weeks. The chooser option allows them to exercise the option as a call if the price of XYZ rises, or as a put if the price falls. At the time of the chooser option purchase, XYZ is trading at $28. The trader chooses an at-the-money strike price of $28 and pays a premium of $2 or $200 for one contract ($2 x 100 shares). The buyer can't exercise the option prior to expiry since it is a European option. At expiry, the trader will determine if they will exercise the option as a call or put. Assume the price of XYZ at the time of expiry is $31. This is higher than the strike price of $28, therefore the trader will exercise the option as a call. Their profit is $1 ($31 - $28 - $2) or $100. If XYZ is trading between $28 and $29.99 the trader will still choose to exercise the option as a call, but they will still be losing money since the profit is not enough to offset their $2 cost. $30 is the breakeven point on the call. If the price of BAC is below $28, the trader will exercise the option as a put. In this case, $26 is the breakeven point ($28 - $2). If the underlying is trading between $28 and $26.01 the trader will lose money since the price didn't fall enough to offset the cost of the option. If the price of BAC falls below $26, say to $24, the trader will make money on the put. Their profit is $2 ($28 - $24 - $2) or $200."@en ;
@@ -293,11 +293,11 @@ fibo-der-drc-exo:FixedLookbackStrikeExpression a owl:Class ;
         "固定回望行权价表达式（fixed lookback strike expression）"@zh ;
     rdfs:comment "规定计算回望期权固定行权价所需参数的现金流表达式。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-utl-alx:hasSubtrahend ;
-            owl:someValuesFrom fibo-der-drc-exo:ObservedBestValue ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-utl-alx:hasMinuend ;
             owl:someValuesFrom fibo-der-drc-opt:StrikePrice ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:hasSubtrahend ;
+            owl:someValuesFrom fibo-der-drc-exo:ObservedBestValue ],
         fibo-der-drc-bsc:CashflowExpression ;
     skos:definition "cashflow expression specifying the arguments required to calculate the fixed price at which the lookback option is to be exercised"@en .
 
@@ -446,19 +446,19 @@ fibo-der-drc-exo:LookbackStrikeTerms a owl:Class ;
         "回望行权条款（lookback strike terms）"@zh ;
     rdfs:comment "基于特定期间（通常截至期权到期）的分析确定标的资产价值的条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-exo:hasLookbackPeriod ;
+            owl:someValuesFrom cmns-dt:DatePeriod ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-ind-ind-ind:PriceStructure ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-der-drc-exo:FloatingLookbackStrikeExpression ;
-            owl:onProperty cmns-qtu:hasExpression ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-der-drc-exo:FixedLookbackStrikeExpression ;
             owl:onProperty cmns-qtu:hasExpression ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-exo:hasLookbackPeriod ;
-            owl:someValuesFrom cmns-dt:DatePeriod ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-drc-exo:FloatingLookbackStrikeExpression ;
+            owl:onProperty cmns-qtu:hasExpression ],
         fibo-der-drc-bsc:DerivativeTerms ;
     skos:definition "terms specifying the value of the underlying asset based on analysis during a specific period, typically ending in the maturity of the option, whereby the payoff is determined by comparing the strike price with the value of the selected price"@en ;
     cmns-av:explanatoryNote "In the case of a fixed strike, the terms depend on whether the option is a call or put. If it is a call, the calculated payout reflects the difference between a running maximum value of the observable during the lookback period, and the pre-agreed strike."@en,
@@ -517,10 +517,6 @@ fibo-der-drc-exo:AsianOption a owl:Class ;
         "亚式期权（Asian option）"@zh ;
     rdfs:comment "行权条款中支付额由标的平均价格（行权价或结算价）决定的期权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-exo:AveragingStrategy ;
-            owl:onProperty cmns-cls:isClassifiedBy ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty fibo-der-drc-exo:usesWeightedAverage ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -529,16 +525,20 @@ fibo-der-drc-exo:AsianOption a owl:Class ;
             owl:onProperty fibo-sec-dbt-ex:hasExerciseDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:Currency ;
-            owl:onProperty fibo-der-drc-exo:usesCurrencyInAveraging ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass cmns-dt:DatePeriod ;
             owl:onProperty fibo-der-drc-exo:hasAsianTailPeriod ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-exo:AveragingStrategy ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onClass fibo-der-drc-exo:AsianOptionClassifier ;
             owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-der-drc-exo:usesCurrencyInAveraging ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-der-drc-opt:ExoticOption ;
     skos:definition "option whose exercise terms involve a payoff determined by the average underlying price (either the strike price or the settlement price) of the underlying asset over a predetermined period"@en ;
@@ -552,14 +552,14 @@ fibo-der-drc-exo:BarrierOption a owl:Class ;
         "障碍期权（barrier option）"@zh ;
     rdfs:comment "最终行权取决于标的工具价格路径的期权，即其支付取决于标的价格是否触及特定水平。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-exo:isAboveStrikePrice ;
+            owl:someValuesFrom xsd:boolean ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-exo:hasMonitoringPeriod ;
             owl:someValuesFrom cmns-dt:DatePeriod ],
         [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-exo:hasMonitoringFrequency ;
             owl:someValuesFrom xsd:positiveInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-exo:isAboveStrikePrice ;
-            owl:someValuesFrom xsd:boolean ],
         fibo-der-drc-opt:ExoticOption ;
     skos:definition "option whose final exercise depends upon the path taken by the price of an underlying instrument, i.e., whose payoff depends on whether or not the underlying asset has reached or exceeded a predetermined price"@en ;
     skos:note "For a knock-out barrier option, the option is cancelled if the underlying price crosses a predetermined barrier level; for a knock-in barrier option, the option becomes available-for-exercise if the underlying price crosses a predetermined barrier level."@en ;

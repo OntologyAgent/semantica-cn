@@ -404,12 +404,12 @@ fibo-fbc-fct-fse:RegisteredInvestmentAdvisor a owl:Class ;
         "注册投资顾问（registered investment advisor）"@zh ;
     rdfs:comment "为高净值个人提供投资建议并管理其投资组合的注册代理人和金融服务提供商。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-cpty:advises ;
+            owl:someValuesFrom fibo-be-oac-cpty:ControlledParty ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredBy ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( cmns-ra:RegistrationAuthority cmns-rga:RegulatoryAgency ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-cpty:advises ;
-            owl:someValuesFrom fibo-be-oac-cpty:ControlledParty ],
         fibo-fbc-pas-fpas:FinancialServiceProvider,
         fibo-fbc-pas-fpas:RegisteredAgent ;
     skos:definition "registered agent and financial service provider that advises high net worth individuals on investments and manages their portfolios" ;
@@ -532,11 +532,11 @@ fibo-fbc-fct-fse:BusinessPartySuffix a owl:Class ;
         "商业方后缀（business party suffix）"@zh ;
     rdfs:comment "为银行电讯目的与机构相关联的两位字符（2 位字母数字）代码。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-col:isIncludedIn ;
-            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCode ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCodeScheme ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:isIncludedIn ;
+            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCode ],
         cmns-cds:CodeElement ;
     skos:definition "two-character (2 alphanumeric) code associated with the organization for the purposes of banking telecommunications" ;
     cmns-av:adaptedFrom "ISO 9362:2014 Banking -- Banking telecommunication messages -- Business identifier code (BIC)" ;
@@ -580,10 +580,6 @@ fibo-fbc-fct-fse:FinancialServiceProviderIdentifier a owl:Class ;
         "金融服务提供商标识符（financial service provider identifier）"@zh ;
     rdfs:comment "基于金融服务提供商所提供职能正式分配给它的标识符，通常在某一司法管辖区内有效。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-rga:Jurisdiction ;
-            owl:onProperty cmns-rga:isGovernedBy ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-fpas:FinancialServiceProvider ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -591,6 +587,10 @@ fibo-fbc-fct-fse:FinancialServiceProviderIdentifier a owl:Class ;
             owl:onClass fibo-fbc-fct-fse:FinancialServiceProviderIdentifierScheme ;
             owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-rga:isGovernedBy ],
         fibo-fnd-pty-pty:PartyRoleIdentifier ;
     skos:definition "identifier that is officially allocated to a financial service provider based on a function that they provide, typically in a jurisdiction over which a regulatory agency has some jurisdiction" .
 
@@ -730,9 +730,8 @@ fibo-fbc-fct-fse:BusinessIdentifierCode a owl:Class ;
         "商业标识代码（business identifier code）"@zh ;
     rdfs:comment "金融和非金融机构的国际标识符，用于促进金融服务信息的自动化处理。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass cmns-org:FormalOrganization ;
-            owl:onProperty cmns-dsg:denotes ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCodeScheme ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-fse:BusinessPartySuffix ;
             owl:onProperty cmns-col:comprises ;
@@ -742,15 +741,16 @@ fibo-fbc-fct-fse:BusinessIdentifierCode a owl:Class ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-col:isMemberOf ;
-            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCodeScheme ],
+            owl:onClass fibo-fbc-fct-fse:BusinessPartyPrefix ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-org:OrganizationSubUnitIdentifier ;
             owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fbc-fct-fse:BusinessPartyPrefix ;
-            owl:onProperty cmns-col:comprises ;
+            owl:onClass cmns-org:FormalOrganization ;
+            owl:onProperty cmns-dsg:denotes ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-cds:CodeElement,
         cmns-cxtid:StructuredIdentifier,
@@ -821,11 +821,11 @@ fibo-fbc-fct-fse:FinancialInstitution a owl:Class ;
         "金融机构（financial institution）"@zh ;
     rdfs:comment "被认定为政府机构或私营实体、从公众和其他机构归集资金的金融服务提供商。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-org:provides ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:FinancialService ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rga:isRegulatedBy ;
             owl:someValuesFrom cmns-rga:RegulatoryAgency ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:provides ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:FinancialService ],
         fibo-fbc-pas-fpas:FinancialServiceProvider ;
     skos:definition "financial service provider identified as either a government agency or privately owned entity that collects funds from the public and from other institutions, and invests those funds in financial assets, such as loans, securities, bank deposits, and income-generating property" ;
     cmns-av:adaptedFrom "Barron's Dictionary of Banking Terms, Sixth Edition, 2012" ;

@@ -58,37 +58,39 @@
 
 ## 5. 公理约定（Axioms）
 
-- 国家证券识别号码（National Securities Identifying Number）：定义于 some 国家证券标识方案（national security identification scheme）
-- 国家证券识别号码（National Securities Identifying Number）：由……注册 some 国家编号机构（national numbering agency）
-- 国家证券识别号码登记册（National Securities Identifying Number registry）：以……为特征 国家证券标识方案（national security identification scheme） =1
-- 国家证券识别号码登记册（National Securities Identifying Number registry）：包含 some 国家编号机构登记册条目（national numbering agency registry entry）
-- 国家证券识别号码登记册（National Securities Identifying Number registry）：由……管理 some 国家编号机构（national numbering agency）
-- 金融工具标识方案（financial instrument identification scheme）：具有成员 some 金融工具标识符
-- 国际证券识别码（international securities identification number）：包含 国家证券识别号码（National Securities Identifying Number） =1
-- 国际证券识别码（international securities identification number）：包含 lcc-cr:Alpha2Code =1
-- 国际证券识别编码方案（international securities identification numbering scheme）：定义 some 国际证券识别码（international securities identification number）
-- 上市证券标识符（listed security identifier）：定义于 some 证券标识方案（security identification scheme）
-- 上市证券标识符（listed security identifier）：标识 some 上市证券
-- 上市证券标识符（listed security identifier）：由……注册 some 交易所
-- 上市证券标识符（listed security identifier）：注册于 some 证券登记册（security registry）
-- 国家编号机构（national numbering agency）：发行 some 国家证券识别号码（National Securities Identifying Number）
-- 国家编号机构（national numbering agency）：具有覆盖区域 some 地缘政治实体
-- 国家编号机构（national numbering agency）：管理 some 国家证券识别号码登记册（National Securities Identifying Number registry）
-- 国家编号机构（national numbering agency）：登记 some 国家证券识别号码（National Securities Identifying Number）
-- 国家编号机构登记册条目（national numbering agency registry entry）：包含 some 国家证券识别号码（National Securities Identifying Number）
-- 国家证券标识方案（national security identification scheme）：适用于 some 地缘政治实体
-- 国家证券标识方案（national security identification scheme）：定义 some 国家证券识别号码（National Securities Identifying Number）
-- 专有证券标识方案（proprietary security identification scheme）：定义 some 专有证券标识符（proprietary security identifier）
-- 专有证券标识符（proprietary security identifier）：定义于 some 专有证券标识方案（proprietary security identification scheme）
-- 证券标识方案（security identification scheme）：定义 some 证券标识符（security identifier）
-- 证券标识符（security identifier）：定义于 some 证券标识方案（security identification scheme）
-- 证券标识符（security identifier）：标识 some 证券
-- 证券登记册（security registry）：以……为特征 证券标识方案（security identification scheme） =1
-- 证券登记册（security registry）：包含 some 证券登记册条目（security registry entry）
-- 证券登记册（security registry）：由……管理 some 注册机构
-- 证券登记册条目（security registry entry）：包含 some 证券标识符（security identifier）
-- 证券登记册条目（security registry entry）：适用于 some 注册证券
-- 行情代码（ticker symbol）：标识 some（restriction）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **国家证券识别号码（National Securities Identifying Number）**：**定义于（isDefinedIn）**至少有一个取值，类型是**国家证券标识方案（national security identification scheme）**。
+- **国家证券识别号码（National Securities Identifying Number）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**国家编号机构（national numbering agency）**。
+- **国家证券识别号码登记册（National Securities Identifying Number registry）**：**以……为特征（isCharacterizedBy）**恰好有 1 个**国家证券标识方案（national security identification scheme）**。
+- **国家证券识别号码登记册（National Securities Identifying Number registry）**：**包含（comprises）**至少有一个取值，类型是**国家编号机构登记册条目（national numbering agency registry entry）**。
+- **国家证券识别号码登记册（National Securities Identifying Number registry）**：**由……管理（isManagedBy）**至少有一个取值，类型是**国家编号机构（national numbering agency）**。
+- **金融工具标识方案（financial instrument identification scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**金融工具标识符（FinancialInstrumentIdentifier）**。
+- **国际证券识别码（international securities identification number）**：**包含（comprises）**恰好有 1 个**国家证券识别号码（National Securities Identifying Number）**。
+- **国际证券识别码（international securities identification number）**：**包含（comprises）**恰好有 1 个**lcc-cr:Alpha2Code（Alpha2Code）**。
+- **国际证券识别编码方案（international securities identification numbering scheme）**：**定义（defines）**至少有一个取值，类型是**国际证券识别码（international securities identification number）**。
+- **上市证券标识符（listed security identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**证券标识方案（security identification scheme）**。
+- **上市证券标识符（listed security identifier）**：**标识（identifies）**至少有一个取值，类型是**上市证券（ListedSecurity）**。
+- **上市证券标识符（listed security identifier）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**交易所（Exchange）**。
+- **上市证券标识符（listed security identifier）**：**注册于（isRegisteredIn）**至少有一个取值，类型是**证券登记册（security registry）**。
+- **国家编号机构（national numbering agency）**：**发行（issues）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
+- **国家编号机构（national numbering agency）**：**具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **国家编号机构（national numbering agency）**：**管理（manages）**至少有一个取值，类型是**国家证券识别号码登记册（National Securities Identifying Number registry）**。
+- **国家编号机构（national numbering agency）**：**登记（registers）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
+- **国家编号机构登记册条目（national numbering agency registry entry）**：**包含（comprises）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
+- **国家证券标识方案（national security identification scheme）**：**适用于（appliesTo）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **国家证券标识方案（national security identification scheme）**：**定义（defines）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
+- **专有证券标识方案（proprietary security identification scheme）**：**定义（defines）**至少有一个取值，类型是**专有证券标识符（proprietary security identifier）**。
+- **专有证券标识符（proprietary security identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**专有证券标识方案（proprietary security identification scheme）**。
+- **证券标识方案（security identification scheme）**：**定义（defines）**至少有一个取值，类型是**证券标识符（security identifier）**。
+- **证券标识符（security identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**证券标识方案（security identification scheme）**。
+- **证券标识符（security identifier）**：**标识（identifies）**至少有一个取值，类型是**证券（Security）**。
+- **证券登记册（security registry）**：**以……为特征（isCharacterizedBy）**恰好有 1 个**证券标识方案（security identification scheme）**。
+- **证券登记册（security registry）**：**包含（comprises）**至少有一个取值，类型是**证券登记册条目（security registry entry）**。
+- **证券登记册（security registry）**：**由……管理（isManagedBy）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
+- **证券登记册条目（security registry entry）**：**包含（comprises）**至少有一个取值，类型是**证券标识符（security identifier）**。
+- **证券登记册条目（security registry entry）**：**适用于（appliesTo）**至少有一个取值，类型是**注册证券（RegisteredSecurity）**。
+- **行情代码（ticker symbol）**：**标识（identifies）**至少有一个取值，该取值满足：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，19 个）
 

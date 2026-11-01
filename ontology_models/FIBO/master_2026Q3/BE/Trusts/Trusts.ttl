@@ -166,10 +166,10 @@ fibo-be-tr-tr:TrustAgreement a owl:Class ;
             owl:someValuesFrom fibo-be-tr-tr:Trustor ],
         [ a owl:Restriction ;
             owl:onProperty cmns-pts:hasPartyRole ;
-            owl:someValuesFrom fibo-be-tr-tr:Trustee ],
+            owl:someValuesFrom fibo-be-tr-tr:TrustBeneficiary ],
         [ a owl:Restriction ;
             owl:onProperty cmns-pts:hasPartyRole ;
-            owl:someValuesFrom fibo-be-tr-tr:TrustBeneficiary ],
+            owl:someValuesFrom fibo-be-tr-tr:Trustee ],
         fibo-be-le-fbo:OrganizationCoveringAgreement ;
     skos:definition "formal agreement that establishes a trust, whereby the trustor(s) gives the trustee(s) the responsibility to hold and manage assets for the beneficiary(ies)" ;
     cmns-av:explanatoryNote "A trust agreement typically states the (1) purpose for which the trust was established and fulfillment of which will terminate the trust, (2) details of the assets placed in the trust, (3) powers and limitations of the trustees, their reporting requirements, and other associated provisions, and (4) may also specify the trustees' compensation, if any. A trust agreement involving real estate requires its exact description and the trustor's express, written consent to create the trust to be valid." ;
@@ -185,7 +185,7 @@ fibo-be-tr-tr:Trustee a owl:Class ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:allValuesFrom fibo-be-tr-tr:Trust ;
-                    owl:onProperty cmns-col:isMemberOf ] ],
+                    owl:onProperty cmns-org:manages ] ],
         [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
@@ -196,7 +196,7 @@ fibo-be-tr-tr:Trustee a owl:Class ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:allValuesFrom fibo-be-tr-tr:Trust ;
-                    owl:onProperty cmns-org:manages ] ],
+                    owl:onProperty cmns-col:isMemberOf ] ],
         cmns-bauth:LegallyDelegatedAuthority,
         cmns-org:OrganizationMember ;
     skos:definition "party that holds and manages assets for the benefit of another" ;
@@ -207,15 +207,15 @@ fibo-be-tr-tr:Trust a owl:Class ;
         "信托（trust）"@zh ;
     rdfs:comment "一种受托关系和法律实体：委托人授予受托人为受益人利益持有并管理财产所有权的权利。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-pts:hasPartyRole ;
-            owl:someValuesFrom fibo-be-tr-tr:Trustor ],
-        [ a owl:Restriction ;
             owl:onClass fibo-be-tr-tr:TrustAgreement ;
             owl:onProperty cmns-rga:isGovernedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty cmns-pts:hasPartyRole ;
             owl:someValuesFrom fibo-be-tr-tr:TrustBeneficiary ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-be-tr-tr:Trustor ],
         [ a owl:Restriction ;
             owl:onProperty cmns-pts:hasPartyRole ;
             owl:someValuesFrom fibo-be-tr-tr:Trustee ],

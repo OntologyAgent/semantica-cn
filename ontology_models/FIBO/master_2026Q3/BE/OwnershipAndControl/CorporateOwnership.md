@@ -50,14 +50,16 @@
 
 ## 5. 公理约定（Axioms）
 
-- 受益所有人（beneficial owner）：由…扮演（is played by） 具有法律行为能力的自然人 =1
-- 受益所有人（beneficial owner）：是……的受益所有人（is beneficial owner of） some 资产
-- 受益所有权（beneficial ownership）：具有自有资产 some 资产
-- 受益所有权（beneficial ownership）：具有所有方 some 受益所有人（beneficial owner）
-- 受益所有权（beneficial ownership）：由……注册 some（restriction）
-- 购入批（purchase lot）：restriction
-- 持股（shareholding）：restriction
-- 税务批（tax lot）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **受益所有人（beneficial owner）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **受益所有人（beneficial owner）**：**是……的受益所有人（is beneficial owner of）**至少有一个取值，类型是**资产（Asset）**。
+- **受益所有权（beneficial ownership）**：**具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**资产（Asset）**。
+- **受益所有权（beneficial ownership）**：**具有所有方（hasOwningParty）**至少有一个取值，类型是**受益所有人（beneficial owner）**。
+- **受益所有权（beneficial ownership）**：**由……注册（isRegisteredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **购入批（purchase lot）**：**由……单位组成（consists of number of units）**存在取值约束。
+- **持股（shareholding）**：**由……单位组成（consists of number of units）**存在取值约束。
+- **税务批（tax lot）**：**由……单位组成（consists of number of units）**存在取值约束。
 
 ## 6. 依赖（owl:imports，11 个）
 

@@ -37,12 +37,14 @@
 
 ## 5. 公理约定（Axioms）
 
-- 市场交易（market transaction）：具有交易对手 some 交易对手方（transaction counterparty）
-- 市场交易（market transaction）：具有主当事方 some 交易委托方（transaction principal）
-- 市场交易（market transaction）：对价（consideration） some 经济资源
-- 市场交易（market transaction）：支付条款（payment terms） some 市场交易支付条款（market transaction payment terms）
-- 市场交易支付条款（market transaction payment terms）：管辖 some 支付
-- 交易委托方（transaction principal）：与……交易 some 交易对手方（transaction counterparty）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **市场交易（market transaction）**：**具有交易对手（hasCounterparty）**至少有一个取值，类型是**交易对手方（transaction counterparty）**。
+- **市场交易（market transaction）**：**具有主当事方（hasPrincipalParty）**至少有一个取值，类型是**交易委托方（transaction principal）**。
+- **市场交易（market transaction）**：**对价（consideration）**至少有一个取值，类型是**经济资源（EconomicResource）**。
+- **市场交易（market transaction）**：**支付条款（payment terms）**至少有一个取值，类型是**市场交易支付条款（market transaction payment terms）**。
+- **市场交易支付条款（market transaction payment terms）**：**管辖（governs）**至少有一个取值，类型是**支付（Payment）**。
+- **交易委托方（transaction principal）**：**与……交易（transactsWith）**至少有一个取值，类型是**交易对手方（transaction counterparty）**。
 
 ## 6. 依赖（owl:imports，6 个）
 

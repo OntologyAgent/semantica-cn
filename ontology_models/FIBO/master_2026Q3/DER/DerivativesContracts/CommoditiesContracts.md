@@ -103,22 +103,24 @@
 
 ## 5. 公理约定（Axioms）
 
-- 基本金属（base metal） 与 贵金属 互斥（disjointWith）
-- 商品篮子（basket of commodities）：具有成员 some 商品篮子成分（commodity basket constituent）
-- 商品篮子成分（commodity basket constituent）：具有某日商品价值（has commodity value as of date） 货币数量 ≥0
-- 商品篮子成分（commodity basket constituent）：涉及 商品 ≥0
-- 商品篮子成分（commodity basket constituent）：具有截止日 显式日期 ≥0
-- 商品篮子成分（commodity basket constituent）：具有量值 标量值 ≥0
-- 商品衍生品（commodity derivative）：具有标的 商品衍生品标的（commodity derivative underlier） ≥0
-- 商品衍生品标的（commodity derivative underlier）：具有某日商品价值（has commodity value as of date） 货币数量 ≥0
-- 商品衍生品标的（commodity derivative underlier）：涉及 商品 ≥0
-- 商品衍生品标的（commodity derivative underlier）：具有截止日 显式日期 ≥0
-- 商品衍生品标的（commodity derivative underlier）：具有量值 标量值 ≥0
-- 商品期货（commodity future） 与 金融期货 互斥（disjointWith）
-- 商品指数（commodity index）：基于 some 商品篮子（basket of commodities）
-- 商品回报腿（commodity return leg）：具有标的 some 商品衍生品标的（commodity derivative underlier）
-- 商品互换（commodity swap）：具有回报腿 some 商品回报腿（commodity return leg）
-- 石油商品（oil commodity）：具有等级（has grade） some 油品等级（oil grade）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **基本金属（base metal）**与**贵金属**互斥：同一个体不能同时属于两者。
+- **商品篮子（basket of commodities）**：**具有成员（hasMember）**至少有一个取值，类型是**商品篮子成分（commodity basket constituent）**。
+- **商品篮子成分（commodity basket constituent）**：**具有某日商品价值（has commodity value as of date）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **商品篮子成分（commodity basket constituent）**：**涉及（involves）**可以有 0 个或多个**商品（Commodity）**。
+- **商品篮子成分（commodity basket constituent）**：**具有截止日（hasAsOfDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **商品篮子成分（commodity basket constituent）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
+- **商品衍生品（commodity derivative）**：**具有标的（hasUnderlier）**可以有 0 个或多个**商品衍生品标的（commodity derivative underlier）**。
+- **商品衍生品标的（commodity derivative underlier）**：**具有某日商品价值（has commodity value as of date）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **商品衍生品标的（commodity derivative underlier）**：**涉及（involves）**可以有 0 个或多个**商品（Commodity）**。
+- **商品衍生品标的（commodity derivative underlier）**：**具有截止日（hasAsOfDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **商品衍生品标的（commodity derivative underlier）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
+- **商品期货（commodity future）**与**金融期货**互斥：同一个体不能同时属于两者。
+- **商品指数（commodity index）**：**基于（isBasedOn）**至少有一个取值，类型是**商品篮子（basket of commodities）**。
+- **商品回报腿（commodity return leg）**：**具有标的（hasUnderlier）**至少有一个取值，类型是**商品衍生品标的（commodity derivative underlier）**。
+- **商品互换（commodity swap）**：**具有回报腿（hasReturnLeg）**至少有一个取值，类型是**商品回报腿（commodity return leg）**。
+- **石油商品（oil commodity）**：**具有等级（has grade）**至少有一个取值，类型是**油品等级（oil grade）**。
 
 ## 6. 依赖（owl:imports，19 个）
 

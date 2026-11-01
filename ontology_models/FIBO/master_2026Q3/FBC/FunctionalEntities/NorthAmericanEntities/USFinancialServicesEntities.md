@@ -184,52 +184,54 @@
 
 ## 5. 公理约定（Axioms）
 
-- 纽约州第十二条投资公司（New York Article XII investment company） 与 投资公司 互斥（disjointWith）
-- 美国银行控股公司（U.S. bank holding company）：具有被投公司 some 美国银行（U.S. bank）
-- 美国信用合作社（U.S. credit union）：由…扮演（is played by） 非营利公司 =1
-- 外国银行机构代理处（agency of a foreign banking organization）：是……的受控方 some 外国银行（foreign bank）
-- 外国银行机构代理处（agency of a foreign banking organization）：是自有资产 some 外国银行（foreign bank）
-- 外国银行机构代理处（agency of a foreign banking organization）：由…扮演（is played by） some 外国银行办事机构（office of a foreign bank）
-- 外国银行机构代理处（agency of a foreign banking organization）：由…扮演（is played by） some（restriction）
-- 协议公司（agreement corporation）：由…扮演（is played by） 公司 =1
-- 银行家银行（bankers' bank）：restriction
-- 受准备金要求约束的银行家银行（bankers' bank subject to reserve requirements）：restriction
-- 不受准备金要求约束的银行家银行（bankers' bank that is not subject to reserve requirements）：restriction
-- 存款性机构分支机构（branch of a depository institution）：是……的部分 some（扮演角色（plays role） some 存款性机构）
-- 外国银行的境内分行（domestic branch of a foreign bank）：restriction
-- 外国银行的境内分行（domestic branch of a foreign bank）：是……的部分 some（扮演角色（plays role） some 外国银行（foreign bank））
-- 境内银行的境内分行（domestic branch of domestic bank）：restriction
-- 境内银行的境内分行（domestic branch of domestic bank）：是……的部分 some（扮演角色（plays role） some 美国银行（U.S. bank））
-- 境内实体（domestic entity）：由…扮演（is played by） some（restriction）
-- 埃奇公司（edge corporation）：由…扮演（is played by） 公司 =1
-- 埃奇公司——境内分行（edge corporation - domestic branch）：restriction
-- 埃奇公司——境内分行（edge corporation - domestic branch）：是……的部分 some（扮演角色（plays role） some 埃奇公司（edge corporation））
-- 外国银行（foreign bank）：具有母国监管机构（has home country supervisor） 监管机构 ≥0
-- 外国银行（foreign bank）：具有母国（has home country） some 国家
-- 外国银行（foreign bank） 与 中央银行 互斥（disjointWith）
-- 外国银行（foreign bank） 与 美国银行（U.S. bank） 互斥（disjointWith）
-- 外国银行机构（foreign banking organization）：具有母国监管机构（has home country supervisor） 监管机构 ≥0
-- 外国银行机构（foreign banking organization）：具有母国（has home country） some 国家
-- 作为银行控股公司的外国银行机构（foreign banking organization as a bank holding company）：由…扮演（is played by） some（restriction）
-- 美国银行的境外分行（foreign branch of US bank）：是……的部分 some（扮演角色（plays role） some 美国银行（U.S. bank））
-- 美国银行的境外分行（foreign branch of US bank） 与 境内银行的境内分行（domestic branch of domestic bank） 互斥（disjointWith）
-- 外国银行的境外分行（foreign branch of foreign bank）：是……的部分 some（扮演角色（plays role） some 外国银行（foreign bank））
-- 外国银行的境外分行（foreign branch of foreign bank） 与 境内银行的境内分行（domestic branch of domestic bank） 互斥（disjointWith）
-- 外国银行的境外分行（foreign branch of foreign bank） 与 美国银行的境外分行（foreign branch of US bank） 互斥（disjointWith）
-- 由美国机构管理的外国银行境外分行（foreign branch of foreign bank managed by US office）：由……管理 some（restriction）
-- 其他境外实体（foreign entity other） 与 境内实体（domestic entity） 互斥（disjointWith）
-- 美国存款机构、埃奇公司或信托公司旗下的国际银行（international bank of US depositary, edge, trust company）：是……的部分 some（扮演角色（plays role） some（restriction））
-- 境内实体的境外非银行子公司（international non-bank subsidiary of a domestic entity） 与 境内实体的境内非银行子公司（domestic non-bank subsidiary of a domestic entity） 互斥（disjointWith）
-- 境内实体的非银行子公司（non-bank subsidiary of a domestic entity）：是……的子公司 some（由…扮演（is played by） some 金融机构）
-- 境内实体的非银行子公司（non-bank subsidiary of a domestic entity） 与 银行 互斥（disjointWith）
-- 外国银行代表处（representative office of a foreign bank） 与 外国银行的境内分行（domestic branch of a foreign bank） 互斥（disjointWith）
-- 储蓄贷款控股公司（savings loan holding company）：具有被投公司 some（restriction）
-- 储蓄贷款控股公司（savings loan holding company） 与 银行控股公司 互斥（disjointWith）
-- 外国银行机构的州分行（state branch of foreign banking organization） 与 外国银行机构的联邦分行（federal branch of foreign banking organization） 互斥（disjointWith）
-- 州储蓄银行（state savings bank） 与 联邦储蓄银行（federal savings bank） 互斥（disjointWith）
-- 境内实体的子公司（subsidiary of a domestic entity）：是……的子公司 some（由…扮演（is played by） some 境内实体（domestic entity））
-- 外国银行机构的未参保联邦分行（uninsured federal branch of foreign banking organization） 与 外国银行机构的参保联邦分行（insured federal branch of foreign banking organization） 互斥（disjointWith）
-- 外国银行机构的未参保州分行（uninsured state branch of foreign banking organization） 与 外国银行机构的参保州分行（insured state branch of foreign banking organization） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **纽约州第十二条投资公司（New York Article XII investment company）**与**投资公司**互斥：同一个体不能同时属于两者。
+- **美国银行控股公司（U.S. bank holding company）**：**具有被投公司（hasPortfolioCompany）**至少有一个取值，类型是**美国银行（U.S. bank）**。
+- **美国信用合作社（U.S. credit union）**：**由…扮演（is played by）**恰好有 1 个**非营利公司（NotForProfitCorporation）**。
+- **外国银行机构代理处（agency of a foreign banking organization）**：**是……的受控方（isControlledPartyOf）**至少有一个取值，类型是**外国银行（foreign bank）**。
+- **外国银行机构代理处（agency of a foreign banking organization）**：**是自有资产（isOwnedAsset）**至少有一个取值，类型是**外国银行（foreign bank）**。
+- **外国银行机构代理处（agency of a foreign banking organization）**：**由…扮演（is played by）**至少有一个取值，类型是**外国银行办事机构（office of a foreign bank）**。
+- **外国银行机构代理处（agency of a foreign banking organization）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**注册于（isDomiciledIn）**的取值固定为 UnitedStatesOfAmerica。
+- **协议公司（agreement corporation）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+- **银行家银行（bankers' bank）**：**是否受准备金要求约束（is subject to reserve requirements）**存在取值约束。
+- **受准备金要求约束的银行家银行（bankers' bank subject to reserve requirements）**：**是否受准备金要求约束（is subject to reserve requirements）**的取值固定为 true。
+- **不受准备金要求约束的银行家银行（bankers' bank that is not subject to reserve requirements）**：**是否受准备金要求约束（is subject to reserve requirements）**的取值固定为 false。
+- **存款性机构分支机构（branch of a depository institution）**：**是……的部分（isPartOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**存款性机构（DepositoryInstitution）**。
+- **外国银行的境内分行（domestic branch of a foreign bank）**：**注册于（isDomiciledIn）**的取值固定为 UnitedStatesOfAmerica。
+- **外国银行的境内分行（domestic branch of a foreign bank）**：**是……的部分（isPartOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**外国银行（foreign bank）**。
+- **境内银行的境内分行（domestic branch of domestic bank）**：**注册于（isDomiciledIn）**的取值固定为 UnitedStatesOfAmerica。
+- **境内银行的境内分行（domestic branch of domestic bank）**：**是……的部分（isPartOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**美国银行（U.S. bank）**。
+- **境内实体（domestic entity）**：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **埃奇公司（edge corporation）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+- **埃奇公司——境内分行（edge corporation - domestic branch）**：**注册于（isDomiciledIn）**的取值固定为 UnitedStatesOfAmerica。
+- **埃奇公司——境内分行（edge corporation - domestic branch）**：**是……的部分（isPartOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**埃奇公司（edge corporation）**。
+- **外国银行（foreign bank）**：**具有母国监管机构（has home country supervisor）**可以有 0 个或多个**监管机构（RegulatoryAgency）**。
+- **外国银行（foreign bank）**：**具有母国（has home country）**至少有一个取值，类型是**国家（Country）**。
+- **外国银行（foreign bank）**与**中央银行**互斥：同一个体不能同时属于两者。
+- **外国银行（foreign bank）**与**美国银行（U.S. bank）**互斥：同一个体不能同时属于两者。
+- **外国银行机构（foreign banking organization）**：**具有母国监管机构（has home country supervisor）**可以有 0 个或多个**监管机构（RegulatoryAgency）**。
+- **外国银行机构（foreign banking organization）**：**具有母国（has home country）**至少有一个取值，类型是**国家（Country）**。
+- **作为银行控股公司的外国银行机构（foreign banking organization as a bank holding company）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**注册于（isDomiciledIn）**的取值固定为 UnitedStatesOfAmerica。
+- **美国银行的境外分行（foreign branch of US bank）**：**是……的部分（isPartOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**美国银行（U.S. bank）**。
+- **美国银行的境外分行（foreign branch of US bank）**与**境内银行的境内分行（domestic branch of domestic bank）**互斥：同一个体不能同时属于两者。
+- **外国银行的境外分行（foreign branch of foreign bank）**：**是……的部分（isPartOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**外国银行（foreign bank）**。
+- **外国银行的境外分行（foreign branch of foreign bank）**与**境内银行的境内分行（domestic branch of domestic bank）**互斥：同一个体不能同时属于两者。
+- **外国银行的境外分行（foreign branch of foreign bank）**与**美国银行的境外分行（foreign branch of US bank）**互斥：同一个体不能同时属于两者。
+- **由美国机构管理的外国银行境外分行（foreign branch of foreign bank managed by US office）**：**由……管理（isManagedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **其他境外实体（foreign entity other）**与**境内实体（domestic entity）**互斥：同一个体不能同时属于两者。
+- **美国存款机构、埃奇公司或信托公司旗下的国际银行（international bank of US depositary, edge, trust company）**：**是……的部分（isPartOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **境内实体的境外非银行子公司（international non-bank subsidiary of a domestic entity）**与**境内实体的境内非银行子公司（domestic non-bank subsidiary of a domestic entity）**互斥：同一个体不能同时属于两者。
+- **境内实体的非银行子公司（non-bank subsidiary of a domestic entity）**：**是……的子公司（isSubsidiaryOf）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
+- **境内实体的非银行子公司（non-bank subsidiary of a domestic entity）**与**银行**互斥：同一个体不能同时属于两者。
+- **外国银行代表处（representative office of a foreign bank）**与**外国银行的境内分行（domestic branch of a foreign bank）**互斥：同一个体不能同时属于两者。
+- **储蓄贷款控股公司（savings loan holding company）**：**具有被投公司（hasPortfolioCompany）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **储蓄贷款控股公司（savings loan holding company）**与**银行控股公司**互斥：同一个体不能同时属于两者。
+- **外国银行机构的州分行（state branch of foreign banking organization）**与**外国银行机构的联邦分行（federal branch of foreign banking organization）**互斥：同一个体不能同时属于两者。
+- **州储蓄银行（state savings bank）**与**联邦储蓄银行（federal savings bank）**互斥：同一个体不能同时属于两者。
+- **境内实体的子公司（subsidiary of a domestic entity）**：**是……的子公司（isSubsidiaryOf）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**境内实体（domestic entity）**。
+- **外国银行机构的未参保联邦分行（uninsured federal branch of foreign banking organization）**与**外国银行机构的参保联邦分行（insured federal branch of foreign banking organization）**互斥：同一个体不能同时属于两者。
+- **外国银行机构的未参保州分行（uninsured state branch of foreign banking organization）**与**外国银行机构的参保州分行（insured state branch of foreign banking organization）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，17 个）
 

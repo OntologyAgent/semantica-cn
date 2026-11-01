@@ -33,7 +33,9 @@
 
 ## 5. 公理约定（Axioms）
 
-- 衍生品信用支持协议（derivative credit support agreement）：从属于 衍生品主协议（derivative master agreement） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **衍生品信用支持协议（derivative credit support agreement）**：**从属于（isSubordinateTo）**恰好有 1 个**衍生品主协议（derivative master agreement）**。
 
 ## 6. 依赖（owl:imports，5 个）
 

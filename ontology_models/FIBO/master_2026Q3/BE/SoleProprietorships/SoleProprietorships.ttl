@@ -54,17 +54,17 @@ fibo-be-sps-sps:SoleProprietor a owl:Class ;
         "独资经营者（sole proprietor）"@zh ;
     rdfs:comment "拥有某企业、享有该企业全部利润、并与该企业被视为单一实体（非法人）的参与方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom [ a owl:Restriction ;
-                    owl:onProperty fibo-fnd-oac-oac:ownsAndControls ;
-                    owl:someValuesFrom fibo-be-sps-sps:SoleProprietorship ] ],
+            owl:onProperty fibo-be-oac-opty:hasInvestmentEntity ;
+            owl:someValuesFrom fibo-be-sps-sps:SoleProprietorship ],
         [ a owl:Restriction ;
             owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-opty:hasInvestmentEntity ;
-            owl:someValuesFrom fibo-be-sps-sps:SoleProprietorship ],
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-fnd-oac-oac:ownsAndControls ;
+                    owl:someValuesFrom fibo-be-sps-sps:SoleProprietorship ] ],
         fibo-be-oac-opty:EntityOwner ;
     skos:definition "party that owns a business, has the rights to all profits from that business and is considered a single entity (unincorporated) together with that business for tax and liability purposes" ;
     cmns-av:explanatoryNote "A sole proprietor has unlimited liability with respect to any business debts." ;

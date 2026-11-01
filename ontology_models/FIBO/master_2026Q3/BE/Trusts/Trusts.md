@@ -53,21 +53,23 @@
 
 ## 5. 公理约定（Axioms）
 
-- 可撤销信托（revocable trust） 与 不可撤销信托（irrevocable trust） 互斥（disjointWith）
-- 信托（trust）：受……管辖 信托协议（trust agreement） =1
-- 信托（trust）：具有参与方角色（has party role） some 信托受益人（trust beneficiary）
-- 信托（trust）：具有参与方角色（has party role） some 受托人（trustee）
-- 信托（trust）：具有参与方角色（has party role） some 委托人（trustor）
-- 信托协议（trust agreement）：具有参与方角色（has party role） some 信托受益人（trust beneficiary）
-- 信托协议（trust agreement）：具有参与方角色（has party role） some 受托人（trustee）
-- 信托协议（trust agreement）：具有参与方角色（has party role） some 委托人（trustor）
-- 信托受益人（trust beneficiary）：由…扮演（is played by） some（是…的参与方（is a party to） only 信托协议（trust agreement））
-- 信托基金经理（trust fund manager）：由…扮演（is played by） some（管理 only 信托（trust））
-- 受托人（trustee）：由…扮演（is played by） some（是……的成员 only 信托（trust））
-- 受托人（trustee）：由…扮演（is played by） some（管理 only 信托（trust））
-- 受托人（trustee）：由…扮演（is played by） some（是…的参与方（is a party to） 信托协议（trust agreement） =1）
-- 委托人（trustor）：由…扮演（is played by） only 参与方（party）
-- 委托人（trustor）：由…扮演（is played by） some（是…的参与方（is a party to） 信托协议（trust agreement） =1）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **可撤销信托（revocable trust）**与**不可撤销信托（irrevocable trust）**互斥：同一个体不能同时属于两者。
+- **信托（trust）**：**受……管辖（isGovernedBy）**恰好有 1 个**信托协议（trust agreement）**。
+- **信托（trust）**：**具有参与方角色（has party role）**至少有一个取值，类型是**信托受益人（trust beneficiary）**。
+- **信托（trust）**：**具有参与方角色（has party role）**至少有一个取值，类型是**受托人（trustee）**。
+- **信托（trust）**：**具有参与方角色（has party role）**至少有一个取值，类型是**委托人（trustor）**。
+- **信托协议（trust agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**信托受益人（trust beneficiary）**。
+- **信托协议（trust agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**受托人（trustee）**。
+- **信托协议（trust agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**委托人（trustor）**。
+- **信托受益人（trust beneficiary）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**的所有取值只能是**信托协议（trust agreement）**。
+- **信托基金经理（trust fund manager）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**管理（manages）**的所有取值只能是**信托（trust）**。
+- **受托人（trustee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**信托（trust）**。
+- **受托人（trustee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**管理（manages）**的所有取值只能是**信托（trust）**。
+- **受托人（trustee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**恰好有 1 个**信托协议（trust agreement）**。
+- **委托人（trustor）**：**由…扮演（is played by）**的所有取值只能是**参与方（party）**。
+- **委托人（trustor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**恰好有 1 个**信托协议（trust agreement）**。
 
 ## 6. 依赖（owl:imports，12 个）
 

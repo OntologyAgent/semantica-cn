@@ -56,17 +56,19 @@
 
 ## 5. 公理约定（Axioms）
 
-- 货币衍生品（currency derivative）：具有汇率报价来源 some（restriction）
-- 货币远期（currency forward）：具有远期汇率（has forward exchange rate） some 汇率
-- 直接货币远期（currency forward outright）：具有部分 some 货币即期合约（currency spot contract）
-- 直接货币远期（currency forward outright）：具有部分 some 货币互换（currency swap）
-- 货币期权（currency option）：具有行权利率 some 汇率
-- 货币期权（currency option）：具有标的 some（由…扮演（is played by） 货币即期买入价 ≥0）
-- 货币即期合约（currency spot contract）：具有即期汇率（has spot exchange rate） some 报价汇率
-- 货币即期远期互换（currency spot forward swap）：具有腿 some 货币即期合约（currency spot contract）
-- 货币互换（currency swap）：具有腿 some 货币远期（currency forward）
-- 货币波动率期权（currency volatility option）：具有标的 some（由…扮演（is played by） some 货币即期波动率）
-- 外汇主协议（foreign exchange master agreement）：具有合同要素 some 外汇结算净额条款（foreign exchange settlement netting provision）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **货币衍生品（currency derivative）**：**具有汇率报价来源（hasExchangeRateQuotationSource）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **货币远期（currency forward）**：**具有远期汇率（has forward exchange rate）**至少有一个取值，类型是**汇率（ExchangeRate）**。
+- **直接货币远期（currency forward outright）**：**具有部分（hasPart）**至少有一个取值，类型是**货币即期合约（currency spot contract）**。
+- **直接货币远期（currency forward outright）**：**具有部分（hasPart）**至少有一个取值，类型是**货币互换（currency swap）**。
+- **货币期权（currency option）**：**具有行权利率（hasStrikeRate）**至少有一个取值，类型是**汇率（ExchangeRate）**。
+- **货币期权（currency option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**货币即期买入价（CurrencySpotBuyRate）**。
+- **货币即期合约（currency spot contract）**：**具有即期汇率（has spot exchange rate）**至少有一个取值，类型是**报价汇率（QuotedExchangeRate）**。
+- **货币即期远期互换（currency spot forward swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**货币即期合约（currency spot contract）**。
+- **货币互换（currency swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**货币远期（currency forward）**。
+- **货币波动率期权（currency volatility option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**货币即期波动率（CurrencySpotVolatility）**。
+- **外汇主协议（foreign exchange master agreement）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**外汇结算净额条款（foreign exchange settlement netting provision）**。
 
 ## 6. 依赖（owl:imports，16 个）
 

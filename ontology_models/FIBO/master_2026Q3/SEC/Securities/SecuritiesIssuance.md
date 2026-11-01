@@ -90,31 +90,33 @@
 
 ## 5. 公理约定（Axioms）
 
-- 转换条款（conversion terms）：规定转换为（specifies conversion into） some 证券
-- 转换条款（conversion terms）：适用于 some 证券
-- 可转换证券（convertible security）：具有合同要素 some 转换条款（conversion terms）
-- 豁免发行（exempt offering）：restriction
-- 金融工具简称（financial instrument short name）：restriction
-- 金融工具简称（financial instrument short name）：restriction
-- 包销发行（firm commitment offering） 与 代销发行（best efforts offering） 互斥（disjointWith）
-- 发行文件（offering document）：是……的证据 证券发行（securities offering） =1
-- 发行文件（offering document）：具有到期日 日期 =1
-- 发行文件（offering document）：具有签发日期 日期 =1
-- 发行文件（offering document）：适用于 some 证券
-- 私募发行（private offering）：由……证明 some 私募配售备忘录（private placement memorandum）
-- 公开发行（public offering）：由……证明 some 招募说明书（prospectus）
-- 证券发行（securities offering）：具有参与方角色（has party role） 第三方代理人 ≥0
-- 证券发行（securities offering）：由……承销（is underwritten by） 证券承销商（security underwriter） ≥0
-- 证券发行（securities offering）：具有要约价格 货币价格 =1
-- 证券发行（securities offering）：具有管辖辖区 some 管辖权
-- 证券发行（securities offering）：由……证明 some 发行文件（offering document）
-- 证券发行（securities offering）：由……发行 some（restriction）
-- 证券发行（securities offering）：适用于 some 证券
-- 证券形式（security form）：例证 some 金融资产
-- 证券形式（security form）：适用于 some 证券
-- 证券承销商（security underwriter）：由…扮演（is played by） some（是…的参与方（is a party to） some 证券发行（securities offering））
-- 证券承销商（security underwriter）：由…扮演（is played by） some（是…的参与方（is a party to） some 证券承销安排（security underwriting arrangement））
-- 证券承销安排（security underwriting arrangement）：具有参与方角色（has party role） some 证券承销商（security underwriter）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **转换条款（conversion terms）**：**规定转换为（specifies conversion into）**至少有一个取值，类型是**证券（Security）**。
+- **转换条款（conversion terms）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+- **可转换证券（convertible security）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**转换条款（conversion terms）**。
+- **豁免发行（exempt offering）**：该属性存在取值约束。
+- **金融工具简称（financial instrument short name）**：**具有工具描述（has instrument description）**存在取值约束。
+- **金融工具简称（financial instrument short name）**：**具有发行人简称（has issuer short name）**存在取值约束。
+- **包销发行（firm commitment offering）**与**代销发行（best efforts offering）**互斥：同一个体不能同时属于两者。
+- **发行文件（offering document）**：**是……的证据（isEvidenceFor）**恰好有 1 个**证券发行（securities offering）**。
+- **发行文件（offering document）**：**具有到期日（hasExpirationDate）**恰好有 1 个**日期（Date）**。
+- **发行文件（offering document）**：**具有签发日期（hasDateOfIssuance）**恰好有 1 个**日期（Date）**。
+- **发行文件（offering document）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+- **私募发行（private offering）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**私募配售备忘录（private placement memorandum）**。
+- **公开发行（public offering）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**招募说明书（prospectus）**。
+- **证券发行（securities offering）**：**具有参与方角色（has party role）**可以有 0 个或多个**第三方代理人（ThirdPartyAgent）**。
+- **证券发行（securities offering）**：**由……承销（is underwritten by）**可以有 0 个或多个**证券承销商（security underwriter）**。
+- **证券发行（securities offering）**：**具有要约价格（hasOfferingPrice）**恰好有 1 个**货币价格（MonetaryPrice）**。
+- **证券发行（securities offering）**：**具有管辖辖区（hasGoverningJurisdiction）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **证券发行（securities offering）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**发行文件（offering document）**。
+- **证券发行（securities offering）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **证券发行（securities offering）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+- **证券形式（security form）**：**例证（exemplifies）**至少有一个取值，类型是**金融资产（FinancialAsset）**。
+- **证券形式（security form）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+- **证券承销商（security underwriter）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**证券发行（securities offering）**。
+- **证券承销商（security underwriter）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**证券承销安排（security underwriting arrangement）**。
+- **证券承销安排（security underwriting arrangement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**证券承销商（security underwriter）**。
 
 ## 6. 依赖（owl:imports，23 个）
 

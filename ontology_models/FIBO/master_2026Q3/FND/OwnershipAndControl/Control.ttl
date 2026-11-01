@@ -186,11 +186,11 @@ fibo-fnd-oac-ctl:ControllingParty a owl:Class ;
         "控制方（controlling party）"@zh ;
     rdfs:comment "在某情形情境中实施某种形式控制的行为体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-ctl:isPartyControlling ;
-            owl:someValuesFrom fibo-fnd-oac-ctl:ControlledThing ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-ctl:isControllingPartyIn ;
             owl:someValuesFrom fibo-fnd-oac-ctl:Control ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:isPartyControlling ;
+            owl:someValuesFrom fibo-fnd-oac-ctl:ControlledThing ],
         cmns-pts:Actor ;
     skos:definition "actor that exercises some form of control in the context of some situation" ;
     skos:editorialNote "At this level of abstraction it is not defined whether the control is some degree of controlling interest, or some level of actual control (asserted or calculated) in some entity." .

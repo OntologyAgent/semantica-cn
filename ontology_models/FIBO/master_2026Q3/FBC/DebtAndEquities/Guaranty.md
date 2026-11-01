@@ -63,22 +63,24 @@
 
 ## 5. 公理约定（Axioms）
 
-- 抵押担保（collateralized guaranty）：以……为抵押 some 抵押品
-- 政府担保（government guaranty）：由……担保（is guaranteed by） some（由…扮演（is played by） some 政体）
-- 担保人（guarantor）：由…扮演（is played by） only 法律主体
-- 担保人（guarantor）：由…扮演（is played by） some（是…的参与方（is a party to） some 合同）
-- 担保（guaranty）：由……担保（is guaranteed by） only 担保人（guarantor）
-- 担保（guaranty）：具有优先级别（has priority level） only 优先级别（priority level）
-- 担保（guaranty）：具有担保金额（has guaranteed amount） only 货币数量
-- 担保（guaranty）：具有到期日 only 日期
-- 担保（guaranty）：在…期间保持（holds during） only 日期区间
-- 保险单（insurance policy）：具有交易对手 some 保单持有人（policyholder）
-- 保险单（insurance policy）：由……发行 some 保险人（insurer）
-- 保险支持担保（insurance-backed guaranty）：由……例证 some 保险单（insurance policy）
-- 共同担保（joint guaranty）：由……担保（is guaranteed by） 担保人（guarantor） ≥2
-- 信用证（letter of credit）：由……发行 some 参与方角色（party role）
-- 信用证（letter of credit）：扮演角色（plays role） some 金融资产
-- 信用证担保（letter of credit guaranty）：由……例证 some 信用证（letter of credit）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **抵押担保（collateralized guaranty）**：**以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**抵押品（Collateral）**。
+- **政府担保（government guaranty）**：**由……担保（is guaranteed by）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**政体（Polity）**。
+- **担保人（guarantor）**：**由…扮演（is played by）**的所有取值只能是**法律主体（LegalPerson）**。
+- **担保人（guarantor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**合同（Contract）**。
+- **担保（guaranty）**：**由……担保（is guaranteed by）**的所有取值只能是**担保人（guarantor）**。
+- **担保（guaranty）**：**具有优先级别（has priority level）**的所有取值只能是**优先级别（priority level）**。
+- **担保（guaranty）**：**具有担保金额（has guaranteed amount）**的所有取值只能是**货币数量（MonetaryAmount）**。
+- **担保（guaranty）**：**具有到期日（hasExpirationDate）**的所有取值只能是**日期（Date）**。
+- **担保（guaranty）**：**在…期间保持（holds during）**的所有取值只能是**日期区间（DatePeriod）**。
+- **保险单（insurance policy）**：**具有交易对手（hasCounterparty）**至少有一个取值，类型是**保单持有人（policyholder）**。
+- **保险单（insurance policy）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**保险人（insurer）**。
+- **保险支持担保（insurance-backed guaranty）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**保险单（insurance policy）**。
+- **共同担保（joint guaranty）**：**由……担保（is guaranteed by）**至少有 2 个**担保人（guarantor）**。
+- **信用证（letter of credit）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**参与方角色（party role）**。
+- **信用证（letter of credit）**：**扮演角色（plays role）**至少有一个取值，类型是**金融资产（FinancialAsset）**。
+- **信用证担保（letter of credit guaranty）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**信用证（letter of credit）**。
 
 ## 6. 依赖（owl:imports，18 个）
 

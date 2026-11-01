@@ -105,36 +105,38 @@
 
 ## 5. 公理约定（Axioms）
 
-- 获取抵押贷款（acquire mortgage）：购买（purchase） some 房地产担保贷款
-- 将抵押贷款加入池中（add mortgage to pool）：加入池中（adds to pool） some 房地产担保贷款
-- 机构抵押贷款池创建流程（agency mortgage pool creation process）：具有结束日期 some 日期
-- 机构抵押贷款池创建流程（agency mortgage pool creation process）：具有起始日期 some 日期
-- 机构抵押贷款池创建流程（agency mortgage pool creation process）：先于 some 过手 MBS 证券化流程（pass through m b s securitization process）
-- 机构抵押贷款池创建流程（agency mortgage pool creation process） 与 非机构池创建流程 互斥（disjointWith）
-- 分类抵押贷款（classify mortgage）：是……的评估（is assessment of） some 房地产担保贷款
-- 定义抵押贷款池（define mortgage pool）：是……的定义（is defining of） some 未发行机构抵押贷款池（not yet issued agency mortgage pool）
-- 识别合格抵押贷款（identify conforming mortgage）：引用 some 房地产担保贷款
-- 确定承销商（identify underwriter）：导致任命（results in appointment of） some 潜在过手发行承销商（potential pass through issuance underwriter）
-- 组建中机构抵押贷款池（in assembly agency mortgage pool）：具有阶段 some 组建中
-- 发行中机构抵押贷款池（in issuance agency mortgage pool）：具有阶段 some 发行中
-- 营销发行（market issue）：具有资源（has resource） some 过手 MBS 招募说明书草案（pass through m b s draft prospectus）
-- 未发行机构抵押贷款池（not yet issued agency mortgage pool）：具有阶段 some 尚未发行
-- 过手 MBS 招募说明书草案（pass through m b s draft prospectus）：先于 some 过手 MBS 最终招募说明书（pass through m b s final prospectus）
-- 过手 MBS 最终条款清单（pass through m b s final termsheet）：具有合同要素 some 债券摊销支付条款
-- 过手 MBS 最终条款清单（pass through m b s final termsheet）：具有合同要素 some 票息支付条款
-- 过手 MBS 证券化流程（pass through m b s securitization process）：具有结束日期 some 日期
-- 过手 MBS 证券化流程（pass through m b s securitization process）：具有起始日期 some 日期
-- 过手 MBS 证券化流程（pass through m b s securitization process） 与 分层 MBS 证券化流程 互斥（disjointWith）
-- 过手发行备忘录（pass through offering memorandum）：包含……的细节 some 过手 MBS 最终条款清单（pass through m b s final termsheet）
-- 池合格标准（pool conformance criteria）：为……定义标准（defines criteria for） some 未发行机构抵押贷款池（not yet issued agency mortgage pool）
-- 潜在机构 MBS 发行人（potential agency m b s issuer）：添加（adds） some 将抵押贷款加入池中（add mortgage to pool）
-- 潜在机构 MBS 发行人（potential agency m b s issuer）：定稿（finalizes） some 定稿池内容（finalize pool content）
-- 潜在机构 MBS 发行人（potential agency m b s issuer）：标识（identifies） some 识别合格抵押贷款（identify conforming mortgage）
-- 潜在机构 MBS 发行人（potential agency m b s issuer）：购入（purchases） some 获取抵押贷款（acquire mortgage）
-- 潜在机构 MBS 发行人（potential agency m b s issuer）：验证（validates） some 验证合格性（validate conformance）
-- 潜在机构 MBS 发行人（potential agency m b s issuer）：评估 some 评估池的发行适用性（assess pool suitablility for issuance）
-- 潜在机构 MBS 发行人（potential agency m b s issuer）：评估 some 分类抵押贷款（classify mortgage）
-- 验证合格性（validate conformance）：引用 some 池合格标准（pool conformance criteria）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **获取抵押贷款（acquire mortgage）**：**购买（purchase）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
+- **将抵押贷款加入池中（add mortgage to pool）**：**加入池中（adds to pool）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
+- **机构抵押贷款池创建流程（agency mortgage pool creation process）**：**具有结束日期（hasEndDate）**至少有一个取值，类型是**日期（Date）**。
+- **机构抵押贷款池创建流程（agency mortgage pool creation process）**：**具有起始日期（hasStartDate）**至少有一个取值，类型是**日期（Date）**。
+- **机构抵押贷款池创建流程（agency mortgage pool creation process）**：**先于（precedes）**至少有一个取值，类型是**过手 MBS 证券化流程（pass through m b s securitization process）**。
+- **机构抵押贷款池创建流程（agency mortgage pool creation process）**与**非机构池创建流程**互斥：同一个体不能同时属于两者。
+- **分类抵押贷款（classify mortgage）**：**是……的评估（is assessment of）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
+- **定义抵押贷款池（define mortgage pool）**：**是……的定义（is defining of）**至少有一个取值，类型是**未发行机构抵押贷款池（not yet issued agency mortgage pool）**。
+- **识别合格抵押贷款（identify conforming mortgage）**：**引用（refersTo）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
+- **确定承销商（identify underwriter）**：**导致任命（results in appointment of）**至少有一个取值，类型是**潜在过手发行承销商（potential pass through issuance underwriter）**。
+- **组建中机构抵押贷款池（in assembly agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**组建中（InAssembly）**。
+- **发行中机构抵押贷款池（in issuance agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**发行中（InIssuance）**。
+- **营销发行（market issue）**：**具有资源（has resource）**至少有一个取值，类型是**过手 MBS 招募说明书草案（pass through m b s draft prospectus）**。
+- **未发行机构抵押贷款池（not yet issued agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**尚未发行（NotYetIssued）**。
+- **过手 MBS 招募说明书草案（pass through m b s draft prospectus）**：**先于（precedes）**至少有一个取值，类型是**过手 MBS 最终招募说明书（pass through m b s final prospectus）**。
+- **过手 MBS 最终条款清单（pass through m b s final termsheet）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**债券摊销支付条款（BondAmortizationPaymentTerms）**。
+- **过手 MBS 最终条款清单（pass through m b s final termsheet）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**票息支付条款（CouponPaymentTerms）**。
+- **过手 MBS 证券化流程（pass through m b s securitization process）**：**具有结束日期（hasEndDate）**至少有一个取值，类型是**日期（Date）**。
+- **过手 MBS 证券化流程（pass through m b s securitization process）**：**具有起始日期（hasStartDate）**至少有一个取值，类型是**日期（Date）**。
+- **过手 MBS 证券化流程（pass through m b s securitization process）**与**分层 MBS 证券化流程**互斥：同一个体不能同时属于两者。
+- **过手发行备忘录（pass through offering memorandum）**：**包含……的细节（includesDetailsAbout）**至少有一个取值，类型是**过手 MBS 最终条款清单（pass through m b s final termsheet）**。
+- **池合格标准（pool conformance criteria）**：**为……定义标准（defines criteria for）**至少有一个取值，类型是**未发行机构抵押贷款池（not yet issued agency mortgage pool）**。
+- **潜在机构 MBS 发行人（potential agency m b s issuer）**：**添加（adds）**至少有一个取值，类型是**将抵押贷款加入池中（add mortgage to pool）**。
+- **潜在机构 MBS 发行人（potential agency m b s issuer）**：**定稿（finalizes）**至少有一个取值，类型是**定稿池内容（finalize pool content）**。
+- **潜在机构 MBS 发行人（potential agency m b s issuer）**：**标识（identifies）**至少有一个取值，类型是**识别合格抵押贷款（identify conforming mortgage）**。
+- **潜在机构 MBS 发行人（potential agency m b s issuer）**：**购入（purchases）**至少有一个取值，类型是**获取抵押贷款（acquire mortgage）**。
+- **潜在机构 MBS 发行人（potential agency m b s issuer）**：**验证（validates）**至少有一个取值，类型是**验证合格性（validate conformance）**。
+- **潜在机构 MBS 发行人（potential agency m b s issuer）**：**评估（evaluates）**至少有一个取值，类型是**评估池的发行适用性（assess pool suitablility for issuance）**。
+- **潜在机构 MBS 发行人（potential agency m b s issuer）**：**评估（evaluates）**至少有一个取值，类型是**分类抵押贷款（classify mortgage）**。
+- **验证合格性（validate conformance）**：**引用（refersTo）**至少有一个取值，类型是**池合格标准（pool conformance criteria）**。
 
 ## 6. 依赖（owl:imports，20 个）
 

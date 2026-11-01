@@ -29,11 +29,11 @@ fibo-loan-ln-reg:BorrowerDisclosureRequirement a owl:Class ;
         "借款人披露要求（borrower disclosure requirement）"@zh ;
     rdfs:comment "要求贷款人向借款人或潜在借款人披露信息的监管要求。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:confers ;
-            owl:someValuesFrom fibo-loan-ln-reg:ProductDisclosureRight ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rga:governs ;
             owl:someValuesFrom fibo-loan-ln-app:BorrowerAssessment ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:confers ;
+            owl:someValuesFrom fibo-loan-ln-reg:ProductDisclosureRight ],
         fibo-loan-ln-reg:DisclosureRequirement .
 
 fibo-loan-ln-reg:LenderRight a owl:Class ;
@@ -244,11 +244,11 @@ fibo-loan-ln-reg:ConsumerCreditRequirement a owl:Class ;
         "消费信贷要求（consumer credit requirement）"@zh ;
     rdfs:comment "对贷款人如何对待贷款申请所设定的要求。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-loan-ln-reg:overseenBy ;
-            owl:someValuesFrom fibo-loan-ln-reg:ConsumerProtectionAgency ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:confers ;
             owl:someValuesFrom fibo-loan-ln-reg:ConsumerRight ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-reg:overseenBy ;
+            owl:someValuesFrom fibo-loan-ln-reg:ConsumerProtectionAgency ],
         fibo-fnd-law-lcap:LegalObligation ;
     skos:definition "Requirement set out on the lender about how they must treat the appliction to a loan"@en ;
     cmns-av:explanatoryNote "e..g being able to see and challenge information about them held by the credit agency or lender. e.g. can't publish opinions only facts, etc."@en .

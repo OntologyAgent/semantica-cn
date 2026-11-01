@@ -57,12 +57,14 @@
 
 ## 5. 公理约定（Axioms）
 
-- 抵押物估值（collateral valuation）：评估 only 抵押品
-- 抵押物估值（collateral valuation）：由……提供 some 估价师
-- 法院判决（court judgment）：具有判决金额（has judgement amount） 货币数量 ≥0
-- 法院判决（court judgment）：由……交付（is delivered by） some 法院
-- 法律程序（legal proceeding）：针对（is against） some 法律主体
-- 法律程序（legal proceeding）：受……管辖 some 管辖权
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **抵押物估值（collateral valuation）**：**评估（evaluates）**的所有取值只能是**抵押品（Collateral）**。
+- **抵押物估值（collateral valuation）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**估价师（Appraiser）**。
+- **法院判决（court judgment）**：**具有判决金额（has judgement amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **法院判决（court judgment）**：**由……交付（is delivered by）**至少有一个取值，类型是**法院（CourtOfLaw）**。
+- **法律程序（legal proceeding）**：**针对（is against）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **法律程序（legal proceeding）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
 
 ## 6. 依赖（owl:imports，15 个）
 

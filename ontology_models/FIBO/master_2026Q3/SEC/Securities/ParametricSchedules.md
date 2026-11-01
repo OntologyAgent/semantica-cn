@@ -54,12 +54,14 @@
 
 ## 5. 公理约定（Axioms）
 
-- 国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule）：restriction
-- 美国短期国库券拍卖日期规则（US Treasury bill auction date rule）：restriction
-- 美国短期国库券日期（US Treasury bill date）：具有营业日惯例 美国短期国库券拍卖日期规则（US Treasury bill auction date rule） =1
-- 结算日期规则返回的日期（date returned by settlement date rule）：定义于 only 结算日期规则（settlement date rule）
-- 交易日期规则返回的日期（date returned by trading date rule）：定义于 only 交易日期规则（trading date rule）
-- 浮动利率票据日期（floating-rate note date）：具有营业日惯例 浮动利率票据日期规则（floating-rate note date rule） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule）**：**具有营业日惯例（hasBusinessDayConvention）**的取值固定为 BusinessDayPreceding。
+- **美国短期国库券拍卖日期规则（US Treasury bill auction date rule）**：**具有营业日惯例（hasBusinessDayConvention）**的取值固定为 BusinessDayFollowing。
+- **美国短期国库券日期（US Treasury bill date）**：**具有营业日惯例（hasBusinessDayConvention）**恰好有 1 个**美国短期国库券拍卖日期规则（US Treasury bill auction date rule）**。
+- **结算日期规则返回的日期（date returned by settlement date rule）**：**定义于（isDefinedIn）**的所有取值只能是**结算日期规则（settlement date rule）**。
+- **交易日期规则返回的日期（date returned by trading date rule）**：**定义于（isDefinedIn）**的所有取值只能是**交易日期规则（trading date rule）**。
+- **浮动利率票据日期（floating-rate note date）**：**具有营业日惯例（hasBusinessDayConvention）**恰好有 1 个**浮动利率票据日期规则（floating-rate note date rule）**。
 
 ## 6. 依赖（owl:imports，8 个）
 

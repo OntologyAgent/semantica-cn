@@ -94,13 +94,13 @@ fibo-fnd-plc-rp:RealPropertyIdentifier a owl:Class ;
         "不动产标识符（real property identifier）"@zh ;
     rdfs:comment "在某管辖区用于标识特定不动产的唯一标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-rp:RealProperty ;
-            owl:onProperty cmns-id:identifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-rga:Jurisdiction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-rp:RealProperty ;
+            owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-cxtid:ContextualIdentifier ;
     skos:definition "unique identifier given to identify a specific real property in some jurisidiction" .
 

@@ -75,35 +75,37 @@
 
 ## 5. 公理约定（Axioms）
 
-- 征信查询（credit inquiry）：涉及当事方（concerns party） some 参与方（party）
-- 征信查询（credit inquiry）：被请求于 some 信用评级机构（credit rating agency）
-- 征信查询（credit inquiry）：由……分类 some 征信查询类型（credit inquiry type）
-- 信用提示信息（credit message）：由……分类 some 信用提示信息类型（credit message type）
-- 信用评级（credit rating）：导出自 信用评级模型（credit rating model） ≥0
-- 信用评级（credit rating）：由……发行 some 信用评级机构（credit rating agency）
-- 信用评级机构（credit rating agency）：发行 some 信用评级（credit rating）
-- 信用评级机构（credit rating agency）：管理 some 信用评级标度（credit rating scale）
-- 信用评级模型（credit rating model）：生产 some 评级得分
-- 信用评级模型（credit rating model）：由……分类 some 信用评分模型类型（credit score model type）
-- 信用评级模型（credit rating model）：具有文本名称 some xsd:string
-- 信用评级标度（credit rating scale）：由……管理 some 信用评级机构（credit rating agency）
-- 信用报告（credit report）：包含 征信查询（credit inquiry） ≥0
-- 信用报告（credit report）：包含 信用提示信息（credit message） ≥0
-- 信用报告（credit report）：包含 信用评级（credit rating） ≥0
-- 信用报告（credit report）：由……生产 信用评级机构（credit rating agency） ≥0
-- 信用报告（credit report）：由……分类 信用报告类别（credit report category） ≥0
-- 信用报告（credit report）：例证 信用报告产品（credit report product） ≥0
-- 信用报告（credit report）：包含 信用交易记录（credit tradeline） ≥0
-- 信用报告（credit report）：由……标识 标识符 ≥0
-- 信用报告（credit report）：具有数据来源 Nc6f4054a40f54fa09f57852e648d8df5 ≥0
-- 信用报告（credit report）：涉及当事方（concerns party） some 参与方（party）
-- 信用报告（credit report）：具有覆盖期间（has coverage period） some 日期区间
-- 信用报告（credit report）：具有截止日 some 日期
-- 信用报告产品（credit report product）：由……生产 some 信用评级机构（credit rating agency）
-- 信用交易记录（credit tradeline）：被包含于 some 信用报告（credit report）
-- 信用交易记录（credit tradeline）：导出自 some 账户
-- 工具信用评级（instrument credit rating）：评定 some 金融工具
-- 机构信用评级（organization credit rating）：评定 some 正式组织
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **征信查询（credit inquiry）**：**涉及当事方（concerns party）**至少有一个取值，类型是**参与方（party）**。
+- **征信查询（credit inquiry）**：**被请求于（isRequestedOf）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
+- **征信查询（credit inquiry）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**征信查询类型（credit inquiry type）**。
+- **信用提示信息（credit message）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**信用提示信息类型（credit message type）**。
+- **信用评级（credit rating）**：**导出自（isDerivedFrom）**可以有 0 个或多个**信用评级模型（credit rating model）**。
+- **信用评级（credit rating）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
+- **信用评级机构（credit rating agency）**：**发行（issues）**至少有一个取值，类型是**信用评级（credit rating）**。
+- **信用评级机构（credit rating agency）**：**管理（manages）**至少有一个取值，类型是**信用评级标度（credit rating scale）**。
+- **信用评级模型（credit rating model）**：**生产（produces）**至少有一个取值，类型是**评级得分（RatingScore）**。
+- **信用评级模型（credit rating model）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**信用评分模型类型（credit score model type）**。
+- **信用评级模型（credit rating model）**：**具有文本名称（hasTextualName）**至少有一个取值，类型是**xsd:string（string）**。
+- **信用评级标度（credit rating scale）**：**由……管理（isManagedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
+- **信用报告（credit report）**：**包含（comprises）**可以有 0 个或多个**征信查询（credit inquiry）**。
+- **信用报告（credit report）**：**包含（comprises）**可以有 0 个或多个**信用提示信息（credit message）**。
+- **信用报告（credit report）**：**包含（comprises）**可以有 0 个或多个**信用评级（credit rating）**。
+- **信用报告（credit report）**：**由……生产（isProducedBy）**可以有 0 个或多个**信用评级机构（credit rating agency）**。
+- **信用报告（credit report）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**信用报告类别（credit report category）**。
+- **信用报告（credit report）**：**例证（exemplifies）**可以有 0 个或多个**信用报告产品（credit report product）**。
+- **信用报告（credit report）**：**包含（comprises）**可以有 0 个或多个**信用交易记录（credit tradeline）**。
+- **信用报告（credit report）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**标识符（Identifier）**。
+- **信用报告（credit report）**：**具有数据来源（hasDataSource）**可以有 0 个或多个**Nfaa38d95c9604b7fab89e1b3930a7157**。
+- **信用报告（credit report）**：**涉及当事方（concerns party）**至少有一个取值，类型是**参与方（party）**。
+- **信用报告（credit report）**：**具有覆盖期间（has coverage period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **信用报告（credit report）**：**具有截止日（hasAsOfDate）**至少有一个取值，类型是**日期（Date）**。
+- **信用报告产品（credit report product）**：**由……生产（isProducedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
+- **信用交易记录（credit tradeline）**：**被包含于（isIncludedIn）**至少有一个取值，类型是**信用报告（credit report）**。
+- **信用交易记录（credit tradeline）**：**导出自（isDerivedFrom）**至少有一个取值，类型是**账户（Account）**。
+- **工具信用评级（instrument credit rating）**：**评定（rates）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
+- **机构信用评级（organization credit rating）**：**评定（rates）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
 
 ## 6. 依赖（owl:imports，20 个）
 

@@ -165,12 +165,12 @@ fibo-sec-sec-cls:FinancialInstrumentClassifier a owl:Class ;
         "金融工具分类器（financial instrument classifier）"@zh ;
     rdfs:comment "基于金融工具类型和特征的分类器。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fbc-fi-fi:FinancialInstrument ],
+        [ a owl:Restriction ;
             owl:onClass fibo-sec-sec-cls:FinancialInstrumentClassificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-fbc-fi-fi:FinancialInstrument ],
         cmns-cls:Classifier ;
     skos:definition "classifier for a financial instrument based on its type and features" ;
     skos:example "Examples include equity instrument, debt instrument, option, future, etc. per the the ISO 10962 CFI (Classification of Financial Instruments) standard, as cash instruments or derivative instruments per the Financial Accounting Standards Board (FASB) and International Accounting Standards Board (IASB) accounting standards, and so forth." .

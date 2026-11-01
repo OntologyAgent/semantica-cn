@@ -41,17 +41,19 @@
 
 ## 5. 公理约定（Axioms）
 
-- 动产（personal property）：由……评估 估价报告 ≥0
-- 动产（personal property） 与 不动产（real property） 互斥（disjointWith）
-- 房产查验（property inspection）：具有输出 房产查验报告（property inspection report） ≥0
-- 房产查验（property inspection）：评估 some 不动产（real property）
-- 房产查验报告（property inspection report）：关于 some 不动产（real property）
-- 不动产（real property）：由……评估 不动产估价（real property appraisal） ≥0
-- 不动产估价（real property appraisal）：具有输入 房产查验报告（property inspection report） ≥0
-- 不动产估价（real property appraisal）：评估 some 不动产（real property）
-- 不动产估价（real property appraisal）：由……提供 some 估价师
-- 不动产标识符（real property identifier）：适用于情境 管辖权 ≥0
-- 不动产标识符（real property identifier）：标识 不动产（real property） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **动产（personal property）**：**由……评估（isEvaluatedBy）**可以有 0 个或多个**估价报告（Appraisal）**。
+- **动产（personal property）**与**不动产（real property）**互斥：同一个体不能同时属于两者。
+- **房产查验（property inspection）**：**具有输出（hasOutput）**可以有 0 个或多个**房产查验报告（property inspection report）**。
+- **房产查验（property inspection）**：**评估（evaluates）**至少有一个取值，类型是**不动产（real property）**。
+- **房产查验报告（property inspection report）**：**关于（isAbout）**至少有一个取值，类型是**不动产（real property）**。
+- **不动产（real property）**：**由……评估（isEvaluatedBy）**可以有 0 个或多个**不动产估价（real property appraisal）**。
+- **不动产估价（real property appraisal）**：**具有输入（hasInput）**可以有 0 个或多个**房产查验报告（property inspection report）**。
+- **不动产估价（real property appraisal）**：**评估（evaluates）**至少有一个取值，类型是**不动产（real property）**。
+- **不动产估价（real property appraisal）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**估价师（Appraiser）**。
+- **不动产标识符（real property identifier）**：**适用于情境（isApplicableIn）**可以有 0 个或多个**管辖权（Jurisdiction）**。
+- **不动产标识符（real property identifier）**：**标识（identifies）**恰好有 1 个**不动产（real property）**。
 
 ## 6. 依赖（owl:imports，17 个）
 

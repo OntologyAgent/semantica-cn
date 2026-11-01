@@ -61,25 +61,27 @@
 
 ## 5. 公理约定（Axioms）
 
-- 信用风险篮子（basket of credit risks）：具有成员 some 信用指数成分（credit index constituent）
-- 股票篮子（basket of equities）：具有成员 some（restriction）
-- 市值加权函数（capitalization-based weighting function）：具有市值（has market capitalization） some 市值（market capitalization）
-- 信用指数（credit index）：基于 some 信用风险篮子（basket of credit risks）
-- 信用指数成分（credit index constituent）：具有货币 some 货币
-- 信用指数成分（credit index constituent）：引用 some 信用事件
-- 股票指数（equity index）：基于 some 股票篮子（basket of equities）
-- 市值（market capitalization）：具有市值金额（has market capitalization value） some 货币数量
-- 市值（market capitalization）：具有流通股数 some xsd:nonNegativeInteger
-- 市值（market capitalization）：适用于 some 股份发行人
-- 市值（market capitalization）：具有观测日期时间 some cmns-dt:CombinedDateTime
-- 市值（market capitalization）：具有自变量 some 每股价格
-- 参考指数（reference index）：具有周期性 only 重复区间
-- 参考指数（reference index）：由……分类 行业部门分类器 ≥0
-- 参考指数（reference index）：由……分类 资产类别 ≥0
-- 参考指数（reference index）：具有发布日期 日期 ≥0
-- 参考指数（reference index）：restriction
-- 参考指数（reference index）：具有报告期 显式日期区间 =1
-- 参考指数（reference index）：基于 some 加权篮子
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **信用风险篮子（basket of credit risks）**：**具有成员（hasMember）**至少有一个取值，类型是**信用指数成分（credit index constituent）**。
+- **股票篮子（basket of equities）**：**具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **市值加权函数（capitalization-based weighting function）**：**具有市值（has market capitalization）**至少有一个取值，类型是**市值（market capitalization）**。
+- **信用指数（credit index）**：**基于（isBasedOn）**至少有一个取值，类型是**信用风险篮子（basket of credit risks）**。
+- **信用指数成分（credit index constituent）**：**具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
+- **信用指数成分（credit index constituent）**：**引用（refersTo）**至少有一个取值，类型是**信用事件（CreditEvent）**。
+- **股票指数（equity index）**：**基于（isBasedOn）**至少有一个取值，类型是**股票篮子（basket of equities）**。
+- **市值（market capitalization）**：**具有市值金额（has market capitalization value）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **市值（market capitalization）**：**具有流通股数（hasSharesOutstanding）**至少有一个取值，类型是**xsd:nonNegativeInteger（nonNegativeInteger）**。
+- **市值（market capitalization）**：**适用于（appliesTo）**至少有一个取值，类型是**股份发行人（ShareIssuer）**。
+- **市值（market capitalization）**：**具有观测日期时间（hasObservedDateTime）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+- **市值（market capitalization）**：**具有自变量（hasArgument）**至少有一个取值，类型是**每股价格（PricePerShare）**。
+- **参考指数（reference index）**：**具有周期性（hasPeriodicity）**的所有取值只能是**重复区间（RecurrenceInterval）**。
+- **参考指数（reference index）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**行业部门分类器（IndustrySectorClassifier）**。
+- **参考指数（reference index）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**资产类别（AssetClass）**。
+- **参考指数（reference index）**：**具有发布日期（hasReleaseDate）**可以有 0 个或多个**日期（Date）**。
+- **参考指数（reference index）**：**具有发布日期时间（hasReleaseDateTime）**存在取值约束。
+- **参考指数（reference index）**：**具有报告期（hasReportingPeriod）**恰好有 1 个**显式日期区间（ExplicitDatePeriod）**。
+- **参考指数（reference index）**：**基于（isBasedOn）**至少有一个取值，类型是**加权篮子（WeightedBasket）**。
 
 ## 6. 依赖（owl:imports，21 个）
 

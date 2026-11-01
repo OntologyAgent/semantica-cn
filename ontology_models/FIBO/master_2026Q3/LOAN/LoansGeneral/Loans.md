@@ -92,45 +92,47 @@
 
 ## 5. 公理约定（Axioms）
 
-- 抵押贷款（collateralized loan）：以……为抵押 some 抵押品
-- 抵押贷款（collateralized loan）：是……的主合同 some 附属协议
-- 合并贷款价值比（combined loan-to-value ratio）：适用于 some 资产
-- 合并贷款价值比（combined loan-to-value ratio）：引用 some 估价报告
-- 合并贷款价值比（combined loan-to-value ratio）：具有自变量 some 评估价值
-- 合并贷款价值比（combined loan-to-value ratio）：具有自变量 some 未偿本金总额（total outstanding principal）
-- 担保贷款（guaranteed loan）：具有担保人 some 担保人
-- 担保贷款（guaranteed loan）：包含 some 担保
-- 贷款（loan）：具有担保人 担保人 ≥0
-- 贷款（loan）：具有总结清费用（has total closing costs） 货币数量 ≥0
-- 贷款（loan）：具有总点数与费用（has total points and fees） 货币数量 ≥0
-- 贷款（loan）：具有第三方 合同第三方 ≥0
-- 贷款（loan）：由……分类 贷款人留置顺位（lender lien position） ≥0
-- 贷款（loan）：具有对应账户 贷款专用客户账户（loan-specific customer account） ≥0
-- 贷款（loan）：由……服务（is performed by） 服务机构（servicer） ≥0
-- 贷款（loan）：具有到期日 显式日期 ≥0
-- 贷款（loan）：restriction
-- 贷款（loan）：restriction
-- 贷款（loan）：具有本金金额（has principal amount） some 货币数量
-- 贷款还款进度表（loan payment schedule）：具有预计付款次数 some xsd:positiveInteger
-- 贷款还款进度表（loan payment schedule）：适用于 some 贷款专用客户账户（loan-specific customer account）
-- 贷款专用客户账户（loan-specific customer account）：具有贷款余额（has loan balance） 余额 ≥0
-- 贷款专用客户账户（loan-specific customer account）：具有支付进度表 贷款还款进度表（loan payment schedule） ≥0
-- 贷款专用客户账户（loan-specific customer account）：具有还款历史（has payment history） 还款历史（payment history） ≥0
-- 贷款专用客户账户（loan-specific customer account）：关联于 some 贷款（loan）
-- 贷款专用客户账户（loan-specific customer account）：由……持有 some 借款人
-- 贷款专用客户账户（loan-specific customer account）：由……提供 some（restriction）
-- 贷款价值比（loan-to-value ratio）：适用于 some 资产
-- 贷款价值比（loan-to-value ratio）：引用 some 估价报告
-- 贷款价值比（loan-to-value ratio）：具有自变量 some 本金
-- 贷款价值比（loan-to-value ratio）：具有自变量 some 评估价值
-- 开放式信贷（open-end credit）：具有信用限额 货币数量 ≥0
-- 开放式信贷（open-end credit） 与 封闭式信贷（closed-end credit） 互斥（disjointWith）
-- 所有权益（ownership interest）：分类 some 所有权
-- 还款历史（payment history）：适用于账户 some 贷款专用客户账户（loan-specific customer account）
-- 还款历史（payment history）：具有单笔付款（has individual payment） some 单笔付款交易（individual payment transaction）
-- 提前还款条款（pre-payment terms）：具有提前还款罚则期限（has pre-payment penalty term） some 显式时长
-- 担保贷款（secured loan）：restriction
-- 信用贷款（unsecured loan） 与 担保贷款（secured loan） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **抵押贷款（collateralized loan）**：**以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**抵押品（Collateral）**。
+- **抵押贷款（collateralized loan）**：**是……的主合同（isPrimaryContractFor）**至少有一个取值，类型是**附属协议（CollateralAgreement）**。
+- **合并贷款价值比（combined loan-to-value ratio）**：**适用于（appliesTo）**至少有一个取值，类型是**资产（Asset）**。
+- **合并贷款价值比（combined loan-to-value ratio）**：**引用（refersTo）**至少有一个取值，类型是**估价报告（Appraisal）**。
+- **合并贷款价值比（combined loan-to-value ratio）**：**具有自变量（hasArgument）**至少有一个取值，类型是**评估价值（AppraisedValue）**。
+- **合并贷款价值比（combined loan-to-value ratio）**：**具有自变量（hasArgument）**至少有一个取值，类型是**未偿本金总额（total outstanding principal）**。
+- **担保贷款（guaranteed loan）**：**具有担保人（hasGuarantor）**至少有一个取值，类型是**担保人（Guarantor）**。
+- **担保贷款（guaranteed loan）**：**包含（comprises）**至少有一个取值，类型是**担保（Guaranty）**。
+- **贷款（loan）**：**具有担保人（hasGuarantor）**可以有 0 个或多个**担保人（Guarantor）**。
+- **贷款（loan）**：**具有总结清费用（has total closing costs）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **贷款（loan）**：**具有总点数与费用（has total points and fees）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **贷款（loan）**：**具有第三方（hasThirdParty）**可以有 0 个或多个**合同第三方（ContractThirdParty）**。
+- **贷款（loan）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**贷款人留置顺位（lender lien position）**。
+- **贷款（loan）**：**具有对应账户（hasCorrespondingAccount）**可以有 0 个或多个**贷款专用客户账户（loan-specific customer account）**。
+- **贷款（loan）**：**由……服务（is performed by）**可以有 0 个或多个**服务机构（servicer）**。
+- **贷款（loan）**：**具有到期日（hasMaturityDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **贷款（loan）**：**具有负摊销（has negative amortization）**存在取值约束。
+- **贷款（loan）**：**仅付息（is interest only）**存在取值约束。
+- **贷款（loan）**：**具有本金金额（has principal amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **贷款还款进度表（loan payment schedule）**：**具有预计付款次数（hasAnticipatedNumberOfPayments）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
+- **贷款还款进度表（loan payment schedule）**：**适用于（appliesTo）**至少有一个取值，类型是**贷款专用客户账户（loan-specific customer account）**。
+- **贷款专用客户账户（loan-specific customer account）**：**具有贷款余额（has loan balance）**可以有 0 个或多个**余额（Balance）**。
+- **贷款专用客户账户（loan-specific customer account）**：**具有支付进度表（hasPaymentSchedule）**可以有 0 个或多个**贷款还款进度表（loan payment schedule）**。
+- **贷款专用客户账户（loan-specific customer account）**：**具有还款历史（has payment history）**可以有 0 个或多个**还款历史（payment history）**。
+- **贷款专用客户账户（loan-specific customer account）**：**关联于（relatesTo）**至少有一个取值，类型是**贷款（loan）**。
+- **贷款专用客户账户（loan-specific customer account）**：**由……持有（isHeldBy）**至少有一个取值，类型是**借款人（Borrower）**。
+- **贷款专用客户账户（loan-specific customer account）**：**由……提供（isProvidedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **贷款价值比（loan-to-value ratio）**：**适用于（appliesTo）**至少有一个取值，类型是**资产（Asset）**。
+- **贷款价值比（loan-to-value ratio）**：**引用（refersTo）**至少有一个取值，类型是**估价报告（Appraisal）**。
+- **贷款价值比（loan-to-value ratio）**：**具有自变量（hasArgument）**至少有一个取值，类型是**本金（Principal）**。
+- **贷款价值比（loan-to-value ratio）**：**具有自变量（hasArgument）**至少有一个取值，类型是**评估价值（AppraisedValue）**。
+- **开放式信贷（open-end credit）**：**具有信用限额（hasCreditLimit）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **开放式信贷（open-end credit）**与**封闭式信贷（closed-end credit）**互斥：同一个体不能同时属于两者。
+- **所有权益（ownership interest）**：**分类（classifies）**至少有一个取值，类型是**所有权（Ownership）**。
+- **还款历史（payment history）**：**适用于账户（appliesToAccount）**至少有一个取值，类型是**贷款专用客户账户（loan-specific customer account）**。
+- **还款历史（payment history）**：**具有单笔付款（has individual payment）**至少有一个取值，类型是**单笔付款交易（individual payment transaction）**。
+- **提前还款条款（pre-payment terms）**：**具有提前还款罚则期限（has pre-payment penalty term）**至少有一个取值，类型是**显式时长（ExplicitDuration）**。
+- **担保贷款（secured loan）**：该属性存在取值约束。
+- **信用贷款（unsecured loan）**与**担保贷款（secured loan）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，25 个）
 

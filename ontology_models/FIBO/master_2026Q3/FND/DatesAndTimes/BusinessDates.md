@@ -38,9 +38,11 @@
 
 ## 5. 公理约定（Axioms）
 
-- 营业日惯例（business day convention）：具有商业中心 商业中心 ≥0
-- 营业重复区间（business recurrence interval）：具有营业重复区间惯例（has business recurrence interval convention） 营业重复区间惯例（business recurrence interval convention） =1
-- 月中日（day of month）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **营业日惯例（business day convention）**：**具有商业中心（hasBusinessCenter）**可以有 0 个或多个**商业中心（BusinessCenter）**。
+- **营业重复区间（business recurrence interval）**：**具有营业重复区间惯例（has business recurrence interval convention）**恰好有 1 个**营业重复区间惯例（business recurrence interval convention）**。
+- **月中日（day of month）**：**具有序数（hasOrdinalNumber）**存在取值约束。
 
 ## 6. 依赖（owl:imports，7 个）
 

@@ -146,11 +146,11 @@ fibo-sec-sec-rst:SecuritiesRegulation a owl:Class ;
         "证券法规（securities regulation）"@zh ;
     rdfs:comment "在法律中成文化、专门针对证券和投资的法规。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
-            owl:someValuesFrom fibo-fnd-law-cor:StatuteLaw ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-sec-sec-rst:SecuritiesRestriction ;
             owl:onProperty cmns-dsg:defines ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
+            owl:someValuesFrom fibo-fnd-law-cor:StatuteLaw ],
         fibo-fnd-law-lcap:Regulation ;
     skos:definition "regulation codified in law specific to securities and investments" .
 

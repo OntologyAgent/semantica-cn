@@ -97,48 +97,50 @@
 
 ## 5. 公理约定（Axioms）
 
-- 亚式期权（Asian option）：由……分类 亚式期权分类器（Asian option classifier） =1
-- 亚式期权（Asian option）：由……分类 平均方法（averaging strategy） =1
-- 亚式期权（Asian option）：平均值计算所用货币（uses currency in averaging） 货币 =1
-- 亚式期权（Asian option）：具有亚式尾部期间（has Asian tail period） 日期区间 =1
-- 亚式期权（Asian option）：具有行权日 显式日期 =1
-- 亚式期权（Asian option）：restriction
-- 亚式期权分类器（Asian option classifier）：分类 some 亚式期权（Asian option）
-- 平均方法（averaging strategy）：分类 some 亚式期权（Asian option）
-- 障碍期权（barrier option）：具有监测频率（has monitoring frequency） some xsd:positiveInteger
-- 障碍期权（barrier option）：具有监测期（has monitoring period） some 日期区间
-- 障碍期权（barrier option）：是否高于行权价（is above strike price） some xsd:boolean
-- 任选期权（chooser option）：具有期权类型选择日（has option type election date） some 显式日期
-- 任选期权（chooser option）：包含 some（restriction）
-- 棘轮期权（cliquet option）：包含 some 远期生效期权（forward start option）
-- 康莫多期权（commodore option）：包含 some 数字期权（digital option）
-- 复合期权（compound option）：包含 some 期权
-- 双重障碍期权（double barrier option）：具有第一返还金额（has first rebate amount） 百分比货币数量 ≥0
-- 双重障碍期权（double barrier option）：具有第二返还金额（has second rebate amount） 百分比货币数量 ≥0
-- 双重障碍期权（double barrier option）：具有第一障碍价格（has first barrier price） some 货币价格
-- 双重障碍期权（double barrier option）：具有第二障碍价格（has second barrier price） some 货币价格
-- 固定回望行权价表达式（fixed lookback strike expression）：具有被减数 some 行权价
-- 固定回望行权价表达式（fixed lookback strike expression）：具有减数 some 观察最优值（observed best value）
-- 浮动回望行权价表达式（floating lookback strike expression）：具有被减数 some 到期预计价值（projected value at maturity）
-- 浮动回望行权价表达式（floating lookback strike expression）：具有减数 some 观察最优值（observed best value）
-- 远期生效期权（forward start option）：包含 some（restriction）
-- 利率上限期权（interest rate cap option） 与 利率下限期权（interest rate floor option） 互斥（disjointWith）
-- 利率下限期权（interest rate floor option） 与 利率上限期权（interest rate cap option） 互斥（disjointWith）
-- 敲入期权（knock-in option）：具有第一返还金额（has first rebate amount） 百分比货币数量 ≥0
-- 敲入期权（knock-in option）：具有第一障碍价格（has first barrier price） some 货币价格
-- 敲出期权（knock-out option）：具有第一返还金额（has first rebate amount） 百分比货币数量 ≥0
-- 敲出期权（knock-out option）：具有第一障碍价格（has first barrier price） some 货币价格
-- 回望期权（lookback option）：具有合同要素 some 回望行权条款（lookback strike terms）
-- 回望行权条款（lookback strike terms）：具有表达式 固定回望行权价表达式（fixed lookback strike expression） ≥0
-- 回望行权条款（lookback strike terms）：具有表达式 浮动回望行权价表达式（floating lookback strike expression） ≥0
-- 回望行权条款（lookback strike terms）：具有回望期（has lookback period） some 日期区间
-- 回望行权条款（lookback strike terms）：具有自变量 some 价格结构
-- 低行权价期权（low exercise price option）：restriction
-- 山岭期权（mountain range option）：具有标的 some（由…扮演（is played by） some 混合篮子）
-- 观察最优值（observed best value）：具有截止日 some 日期
-- 到期预计价值（projected value at maturity）：具有观测日期时间 some cmns-dt:CombinedDateTime
-- 彩虹期权（rainbow option）：具有标的 some（由…扮演（is played by） some 混合篮子）
-- 互换期权（swaption）：具有标的 some（由…扮演（is played by） some 互换）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **亚式期权（Asian option）**：**由……分类（isClassifiedBy）**恰好有 1 个**亚式期权分类器（Asian option classifier）**。
+- **亚式期权（Asian option）**：**由……分类（isClassifiedBy）**恰好有 1 个**平均方法（averaging strategy）**。
+- **亚式期权（Asian option）**：**平均值计算所用货币（uses currency in averaging）**恰好有 1 个**货币（Currency）**。
+- **亚式期权（Asian option）**：**具有亚式尾部期间（has Asian tail period）**恰好有 1 个**日期区间（DatePeriod）**。
+- **亚式期权（Asian option）**：**具有行权日（hasExerciseDate）**恰好有 1 个**显式日期（ExplicitDate）**。
+- **亚式期权（Asian option）**：**是否使用加权平均（uses weighted average）**存在取值约束。
+- **亚式期权分类器（Asian option classifier）**：**分类（classifies）**至少有一个取值，类型是**亚式期权（Asian option）**。
+- **平均方法（averaging strategy）**：**分类（classifies）**至少有一个取值，类型是**亚式期权（Asian option）**。
+- **障碍期权（barrier option）**：**具有监测频率（has monitoring frequency）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
+- **障碍期权（barrier option）**：**具有监测期（has monitoring period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **障碍期权（barrier option）**：**是否高于行权价（is above strike price）**至少有一个取值，类型是**xsd:boolean（boolean）**。
+- **任选期权（chooser option）**：**具有期权类型选择日（has option type election date）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **任选期权（chooser option）**：**包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **棘轮期权（cliquet option）**：**包含（comprises）**至少有一个取值，类型是**远期生效期权（forward start option）**。
+- **康莫多期权（commodore option）**：**包含（comprises）**至少有一个取值，类型是**数字期权（digital option）**。
+- **复合期权（compound option）**：**包含（comprises）**至少有一个取值，类型是**期权（Option）**。
+- **双重障碍期权（double barrier option）**：**具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **双重障碍期权（double barrier option）**：**具有第二返还金额（has second rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **双重障碍期权（double barrier option）**：**具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **双重障碍期权（double barrier option）**：**具有第二障碍价格（has second barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **固定回望行权价表达式（fixed lookback strike expression）**：**具有被减数（hasMinuend）**至少有一个取值，类型是**行权价（StrikePrice）**。
+- **固定回望行权价表达式（fixed lookback strike expression）**：**具有减数（hasSubtrahend）**至少有一个取值，类型是**观察最优值（observed best value）**。
+- **浮动回望行权价表达式（floating lookback strike expression）**：**具有被减数（hasMinuend）**至少有一个取值，类型是**到期预计价值（projected value at maturity）**。
+- **浮动回望行权价表达式（floating lookback strike expression）**：**具有减数（hasSubtrahend）**至少有一个取值，类型是**观察最优值（observed best value）**。
+- **远期生效期权（forward start option）**：**包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **利率上限期权（interest rate cap option）**与**利率下限期权（interest rate floor option）**互斥：同一个体不能同时属于两者。
+- **利率下限期权（interest rate floor option）**与**利率上限期权（interest rate cap option）**互斥：同一个体不能同时属于两者。
+- **敲入期权（knock-in option）**：**具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **敲入期权（knock-in option）**：**具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **敲出期权（knock-out option）**：**具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **敲出期权（knock-out option）**：**具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **回望期权（lookback option）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**回望行权条款（lookback strike terms）**。
+- **回望行权条款（lookback strike terms）**：**具有表达式（hasExpression）**可以有 0 个或多个**固定回望行权价表达式（fixed lookback strike expression）**。
+- **回望行权条款（lookback strike terms）**：**具有表达式（hasExpression）**可以有 0 个或多个**浮动回望行权价表达式（floating lookback strike expression）**。
+- **回望行权条款（lookback strike terms）**：**具有回望期（has lookback period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **回望行权条款（lookback strike terms）**：**具有自变量（hasArgument）**至少有一个取值，类型是**价格结构（PriceStructure）**。
+- **低行权价期权（low exercise price option）**：**具有行权方式（hasExerciseStyle）**的取值固定为 EuropeanExerciseConvention。
+- **山岭期权（mountain range option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
+- **观察最优值（observed best value）**：**具有截止日（hasAsOfDate）**至少有一个取值，类型是**日期（Date）**。
+- **到期预计价值（projected value at maturity）**：**具有观测日期时间（hasObservedDateTime）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+- **彩虹期权（rainbow option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
+- **互换期权（swaption）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**互换（Swap）**。
 
 ## 6. 依赖（owl:imports，21 个）
 

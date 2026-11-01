@@ -113,42 +113,44 @@
 
 ## 5. 公理约定（Axioms）
 
-- 最优买价（best bid）：具有适用期间 some 日期区间
-- 最优卖价（best offer）：具有适用期间 some 日期区间
-- 买卖价差（bid ask spread）：具有自变量 some 买价（bid price）
-- 买卖价差（bid ask spread）：具有自变量 some 卖价（offer price）
-- 买价（bid price） 与 卖价（offer price） 互斥（disjointWith）
-- 净价（clean price） 与 全价（dirty price） 互斥（disjointWith）
-- 证券价格集合（collection of security prices）：具有成员 some 证券价格（security price）
-- 综合市场（composite market）：具有成员 some 交易所
-- 全价（dirty price）：包含 some 应计利息
-- 最高价（high price）：具有适用期间 some 日期区间
-- 最低价（low price）：具有适用期间 some 日期区间
-- 市场价格（market price）：具有定价来源（has pricing source） some（restriction）
-- 中间价（mid price）：具有货币 货币 =1
-- 中间价（mid price）：具有适用期间 some 日期区间
-- 中间价（mid price）：具有自变量 some 买价（bid price）
-- 中间价（mid price）：具有自变量 some 卖价（offer price）
-- 官方收盘价（official closing price）：具有收盘价确定方法（has closing price determination method） some 收盘价确定方法（closing price determination method）
-- 价格分析指标（price analytic）：适用于 some 证券价格集合（collection of security prices）
-- 价格分析指标（price analytic）：具有适用期间 some 日期区间
-- 价格分析指标（price analytic）：引用 some 证券
-- 价格差（price spread）：具有自变量 货币价格 =2
-- 价格差（price spread）：具有适用期间 some 日期区间
-- 收益率（rate of return）：具有适用期间 some 日期区间
-- 收益率（rate of return）：引用 some 证券
-- 证券价格（security price）：具有定价来源（has pricing source） N6142c323344a4b6c89f5617dbe1ae4d8 ≥0
-- 证券价格（security price）：restriction
-- 证券价格（security price）：是……的价格 some 证券
-- 交易日（trading day）：restriction
-- 交易日（trading day）：restriction
-- 交易日（trading day）：restriction
-- 交易时段（trading session）：restriction
-- 交易时段（trading session）：restriction
-- 收益率（yield）：具有货币 货币 =1
-- 收益率（yield）：具有适用期间 some 日期区间
-- 收益率（yield）：引用 some 证券
-- 收益率差（yield spread）：具有自变量 收益率（yield） =2
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **最优买价（best bid）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **最优卖价（best offer）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **买卖价差（bid ask spread）**：**具有自变量（hasArgument）**至少有一个取值，类型是**买价（bid price）**。
+- **买卖价差（bid ask spread）**：**具有自变量（hasArgument）**至少有一个取值，类型是**卖价（offer price）**。
+- **买价（bid price）**与**卖价（offer price）**互斥：同一个体不能同时属于两者。
+- **净价（clean price）**与**全价（dirty price）**互斥：同一个体不能同时属于两者。
+- **证券价格集合（collection of security prices）**：**具有成员（hasMember）**至少有一个取值，类型是**证券价格（security price）**。
+- **综合市场（composite market）**：**具有成员（hasMember）**至少有一个取值，类型是**交易所（Exchange）**。
+- **全价（dirty price）**：**包含（comprises）**至少有一个取值，类型是**应计利息（AccruedInterest）**。
+- **最高价（high price）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **最低价（low price）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **市场价格（market price）**：**具有定价来源（has pricing source）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **中间价（mid price）**：**具有货币（hasCurrency）**恰好有 1 个**货币（Currency）**。
+- **中间价（mid price）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **中间价（mid price）**：**具有自变量（hasArgument）**至少有一个取值，类型是**买价（bid price）**。
+- **中间价（mid price）**：**具有自变量（hasArgument）**至少有一个取值，类型是**卖价（offer price）**。
+- **官方收盘价（official closing price）**：**具有收盘价确定方法（has closing price determination method）**至少有一个取值，类型是**收盘价确定方法（closing price determination method）**。
+- **价格分析指标（price analytic）**：**适用于（appliesTo）**至少有一个取值，类型是**证券价格集合（collection of security prices）**。
+- **价格分析指标（price analytic）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **价格分析指标（price analytic）**：**引用（refersTo）**至少有一个取值，类型是**证券（Security）**。
+- **价格差（price spread）**：**具有自变量（hasArgument）**恰好有 2 个**货币价格（MonetaryPrice）**。
+- **价格差（price spread）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **收益率（rate of return）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **收益率（rate of return）**：**引用（refersTo）**至少有一个取值，类型是**证券（Security）**。
+- **证券价格（security price）**：**具有定价来源（has pricing source）**可以有 0 个或多个**Nc3d79bdc819e4feba51db4fe32722fb7**。
+- **证券价格（security price）**：**具有观测日期时间（hasObservedDateTime）**存在取值约束。
+- **证券价格（security price）**：**是……的价格（isPriceFor）**至少有一个取值，类型是**证券（Security）**。
+- **交易日（trading day）**：**具有时长（hasDuration）**的取值固定为 Day。
+- **交易日（trading day）**：**具有截止日时间（hasClosingDateTime）**存在取值约束。
+- **交易日（trading day）**：**具有开启日时间（hasOpeningDateTime）**存在取值约束。
+- **交易时段（trading session）**：**具有截止日时间（hasClosingDateTime）**存在取值约束。
+- **交易时段（trading session）**：**具有开启日时间（hasOpeningDateTime）**存在取值约束。
+- **收益率（yield）**：**具有货币（hasCurrency）**恰好有 1 个**货币（Currency）**。
+- **收益率（yield）**：**具有适用期间（hasApplicablePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **收益率（yield）**：**引用（refersTo）**至少有一个取值，类型是**证券（Security）**。
+- **收益率差（yield spread）**：**具有自变量（hasArgument）**恰好有 2 个**收益率（yield）**。
 
 ## 6. 依赖（owl:imports，17 个）
 

@@ -31,7 +31,9 @@
 
 ## 5. 公理约定（Axioms）
 
-- 学生贷款（student loan）：具有借款人 some（由…扮演（is played by） some 具有法律行为能力的自然人）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **学生贷款（student loan）**：**具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
 
 ## 6. 依赖（owl:imports，6 个）
 

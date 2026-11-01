@@ -58,12 +58,12 @@ fibo-fnd-arr-lif:LifecycleEventOccurrence a owl:Class ;
         "生命周期事件发生（lifecycle event occurrence）"@zh ;
     rdfs:comment "生命周期某阶段中事件的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleStageOccurrence ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-arr-lif:LifecycleEvent ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleStageOccurrence ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "realization of an event in a stage of a lifecycle" .
 
@@ -72,12 +72,12 @@ fibo-fnd-arr-lif:LifecycleOccurrence a owl:Class ;
         "生命周期发生（lifecycle occurrence）"@zh ;
     rdfs:comment "生命周期的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:hasStage ;
-            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleStageOccurrence ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-arr-lif:Lifecycle ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:hasStage ;
+            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleStageOccurrence ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "realization of a lifecycle" .
 
@@ -133,11 +133,11 @@ fibo-fnd-arr-lif:Lifecycle a owl:Class ;
         "生命周期（lifecycle）"@zh ;
     rdfs:comment "将家族、组织、过程、产品、营销、订单管理、组合管理等系统的循环性质与生物体从摇篮到坟墓的生命阶段（出生、成长、成熟、衰退、死亡）相类比的编排。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
-            owl:someValuesFrom owl:Thing ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-dsg:defines ;
             owl:someValuesFrom fibo-fnd-arr-lif:LifecycleStage ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-lif:isLifecycleOf ;
+            owl:someValuesFrom owl:Thing ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:hasStage ;
             owl:someValuesFrom fibo-fnd-arr-lif:LifecycleStage ],
@@ -150,15 +150,15 @@ fibo-fnd-arr-lif:LifecycleStageOccurrence a owl:Class ;
         "生命周期阶段发生（lifecycle stage occurrence）"@zh ;
     rdfs:comment "给定生命周期中某个时期的实现。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-arr-lif:LifecycleStage ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:isStageOf ;
             owl:someValuesFrom fibo-fnd-arr-lif:LifecycleOccurrence ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fnd-arr-lif:LifecycleEventOccurrence ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-arr-lif:LifecycleStage ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "realization of a phase in a given lifecycle" .
 
@@ -170,11 +170,11 @@ fibo-fnd-arr-lif:LifecycleStage a owl:Class ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:someValuesFrom fibo-fnd-arr-lif:Lifecycle ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleEvent ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-lif:isStageOf ;
             owl:someValuesFrom fibo-fnd-arr-lif:Lifecycle ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fnd-arr-lif:LifecycleEvent ],
         cmns-cls:Classifier ;
     skos:definition "phase in a lifecycle" ;
     skos:example "a research and development phase of a product lifecycle, the introduction phase in a marketing lifecycle, a growth stage in an economic lifecycle, or the origination phase in the lifecycle of a loan" .

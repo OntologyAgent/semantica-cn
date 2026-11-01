@@ -96,29 +96,31 @@
 
 ## 5. 公理约定（Axioms）
 
-- 临时进度表（ad hoc schedule）：具有成员 some 临时进度表条目（ad hoc schedule entry）
-- 存续时间（age）：具有截止日（has as-of date） some 显式日期
-- 推算日期（calculated date） 与 显式日期 互斥（disjointWith）
-- 计算期间（calculation period）：具有时长 计算期间长度（calculation period length） ≤1
-- 按日历指定的区间（calendar-specified interval）：具有历期（has calendar period） 历期（calendar period） =1
-- 按日历指定的区间（calendar-specified interval）：具有时间方向（has time direction） 时间方向（time direction） =1
-- 按日历指定的区间（calendar-specified interval）：restriction
-- 按日历指定的区间（calendar-specified interval） 与 显式重复区间（explicit recurrence interval） 互斥（disjointWith）
-- 带日期集合成分（dated collection constituent）：具有观测日期时间 some cmns-dt:CombinedDateTime
-- 带日期结构化集合（dated structured collection）：具有成员 some 带日期集合成分（dated collection constituent）
-- 显式重复区间（explicit recurrence interval）：restriction
-- 定期进度表（regular schedule）：具有基准日期（has anchor date） 基准日期（anchor date） ≥0
-- 定期进度表（regular schedule）：具有末段短端（has final stub） 进度表短端（schedule stub） ≥0
-- 定期进度表（regular schedule）：具有首段短端（has initial stub） 进度表短端（schedule stub） ≥0
-- 定期进度表（regular schedule）：restriction
-- 定期进度表（regular schedule）：具有重复区间（has recurrence interval） some 重复区间（recurrence interval）
-- 定期进度表（regular schedule）：具有起始日期 some（restriction）
-- 相对日期（relative date）：相对于（is relative to） 日期 =1
-- 相对日期（relative date）：restriction
-- 相对日期（relative date） 与 规则指定日期（specified date） 互斥（disjointWith）
-- 进度表（schedule）：具有整体期间（has overall period） some 日期区间
-- 进度表短端（schedule stub）：具有日期区间 日期区间 =1
-- 规则指定日期（specified date）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **临时进度表（ad hoc schedule）**：**具有成员（hasMember）**至少有一个取值，类型是**临时进度表条目（ad hoc schedule entry）**。
+- **存续时间（age）**：**具有截止日（has as-of date）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **推算日期（calculated date）**与**显式日期**互斥：同一个体不能同时属于两者。
+- **计算期间（calculation period）**：**具有时长（hasDuration）**至多有 1 个**计算期间长度（calculation period length）**。
+- **按日历指定的区间（calendar-specified interval）**：**具有历期（has calendar period）**恰好有 1 个**历期（calendar period）**。
+- **按日历指定的区间（calendar-specified interval）**：**具有时间方向（has time direction）**恰好有 1 个**时间方向（time direction）**。
+- **按日历指定的区间（calendar-specified interval）**：**具有序数（has ordinal number）**存在取值约束。
+- **按日历指定的区间（calendar-specified interval）**与**显式重复区间（explicit recurrence interval）**互斥：同一个体不能同时属于两者。
+- **带日期集合成分（dated collection constituent）**：**具有观测日期时间（hasObservedDateTime）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+- **带日期结构化集合（dated structured collection）**：**具有成员（hasMember）**至少有一个取值，类型是**带日期集合成分（dated collection constituent）**。
+- **显式重复区间（explicit recurrence interval）**：**具有时长值（hasDurationValue）**存在取值约束。
+- **定期进度表（regular schedule）**：**具有基准日期（has anchor date）**可以有 0 个或多个**基准日期（anchor date）**。
+- **定期进度表（regular schedule）**：**具有末段短端（has final stub）**可以有 0 个或多个**进度表短端（schedule stub）**。
+- **定期进度表（regular schedule）**：**具有首段短端（has initial stub）**可以有 0 个或多个**进度表短端（schedule stub）**。
+- **定期进度表（regular schedule）**：**具有计数（has count）**存在取值约束。
+- **定期进度表（regular schedule）**：**具有重复区间（has recurrence interval）**至少有一个取值，类型是**重复区间（recurrence interval）**。
+- **定期进度表（regular schedule）**：**具有起始日期（hasStartDate）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **相对日期（relative date）**：**相对于（is relative to）**恰好有 1 个**日期（Date）**。
+- **相对日期（relative date）**：**具有相对时长（has relative duration）**存在取值约束。
+- **相对日期（relative date）**与**规则指定日期（specified date）**互斥：同一个体不能同时属于两者。
+- **进度表（schedule）**：**具有整体期间（has overall period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **进度表短端（schedule stub）**：**具有日期区间（hasDatePeriod）**恰好有 1 个**日期区间（DatePeriod）**。
+- **规则指定日期（specified date）**：**具有日期规则（has date specification）**存在取值约束。
 
 ## 6. 依赖（owl:imports，4 个）
 

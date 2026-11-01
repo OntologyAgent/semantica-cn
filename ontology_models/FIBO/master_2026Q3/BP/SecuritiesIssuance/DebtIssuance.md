@@ -108,22 +108,24 @@
 
 ## 5. 公理约定（Axioms）
 
-- 资产池创建流程（asset pool creation process）：先于 some 债务证券化流程（debt securitization process）
-- 债券发行计划（bond issuance programme）：包含 some 债券发行（bond offering）
-- 附认股权证债券发行（bond offering with warrant）：适用于 some（restriction）
-- 附认股权证债券发行（bond offering with warrant） 与 中期票据发行（medium term note offering） 互斥（disjointWith）
-- 已完成债务池（completed debts pool）：具有阶段 some 发行中（in issuance）
-- 债务发行流程信息（debt issuance process information）：具有债务发行目的（has debt issuance purpose） some 债务发行目的（debt issuance purpose）
-- 债务发行计划（debt issuance programme）：包含 some 债务发行
-- 债务证券化流程（debt securitization process） 与 债务拍卖流程 互斥（disjointWith）
-- 债务证券化流程（debt securitization process） 与 证券承销发行流程 互斥（disjointWith）
-- 组建中债务池（in assembly debts pool）：具有阶段 some 组建中（in assembly）
-- MTN 注册（m t n registration）：关于 some 中期票据发行计划（medium term note issuance programme）
-- 中期票据发行计划（medium term note issuance programme）：包含 some 中期票据发行（medium term note offering）
-- 未发行债务池（not yet issued debts pool）：具有阶段 some 尚未发行（not yet issued）
-- 池支持证券证券化流程参与者（pool backed security securitization process actor）：评估 some 发行流程活动
-- 零售资产池创建流程（retail asset pool creation process）：由……生产 some 债务池
-- 零售资产池创建流程（retail asset pool creation process）：先于 some 池支持证券证券化流程（pool backed security securitization process）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **资产池创建流程（asset pool creation process）**：**先于（precedes）**至少有一个取值，类型是**债务证券化流程（debt securitization process）**。
+- **债券发行计划（bond issuance programme）**：**包含（comprises）**至少有一个取值，类型是**债券发行（bond offering）**。
+- **附认股权证债券发行（bond offering with warrant）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **附认股权证债券发行（bond offering with warrant）**与**中期票据发行（medium term note offering）**互斥：同一个体不能同时属于两者。
+- **已完成债务池（completed debts pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**发行中（in issuance）**。
+- **债务发行流程信息（debt issuance process information）**：**具有债务发行目的（has debt issuance purpose）**至少有一个取值，类型是**债务发行目的（debt issuance purpose）**。
+- **债务发行计划（debt issuance programme）**：**包含（comprises）**至少有一个取值，类型是**债务发行（DebtOffering）**。
+- **债务证券化流程（debt securitization process）**与**债务拍卖流程**互斥：同一个体不能同时属于两者。
+- **债务证券化流程（debt securitization process）**与**证券承销发行流程**互斥：同一个体不能同时属于两者。
+- **组建中债务池（in assembly debts pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**组建中（in assembly）**。
+- **MTN 注册（m t n registration）**：**关于（isAbout）**至少有一个取值，类型是**中期票据发行计划（medium term note issuance programme）**。
+- **中期票据发行计划（medium term note issuance programme）**：**包含（comprises）**至少有一个取值，类型是**中期票据发行（medium term note offering）**。
+- **未发行债务池（not yet issued debts pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**尚未发行（not yet issued）**。
+- **池支持证券证券化流程参与者（pool backed security securitization process actor）**：**评估（evaluates）**至少有一个取值，类型是**发行流程活动（IssuanceProcessActivity）**。
+- **零售资产池创建流程（retail asset pool creation process）**：**由……生产（isProducedBy）**至少有一个取值，类型是**债务池（DebtPool）**。
+- **零售资产池创建流程（retail asset pool creation process）**：**先于（precedes）**至少有一个取值，类型是**池支持证券证券化流程（pool backed security securitization process）**。
 
 ## 6. 依赖（owl:imports，22 个）
 

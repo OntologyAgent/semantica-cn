@@ -379,12 +379,12 @@ fibo-bp-iss-prc:UnderwriterTakedown a owl:Class ;
         "承销商承销量（underwriter takedown）"@zh ;
     rdfs:comment "承销商经手的证券承销数量信息（将记入 DTC）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:takenDownBy ;
+            owl:someValuesFrom fibo-bp-iss-dbti:MuniIssueUnderwriter ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:integer ;
             owl:onProperty fibo-bp-iss-prc:underwriterTakedownShares ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-prc:takenDownBy ;
-            owl:someValuesFrom fibo-bp-iss-dbti:MuniIssueUnderwriter ],
         fibo-bp-iss-prc:UnderwritingProcessDetails ;
     skos:definition "Infomation on Takedown quantity of the security handled by the underwriter (that will be brought into DTC)."@en ;
     skos:editorialNote "Question: Do securities issued through processes other than the one formally identified as \"Underwriting Process\", have Underwriters? Our research would indicate that agency and non agency MBS issuance processes are not \"Underwriting\" processes as defined for the DTCC Muni unwriting process, but they do have a step which involves identifying and appointing an underwriter, so the issue is underwritten. It may be that these two processes should be defined as types of (variants on) a more general Underwriting Process, which is itself more general than the one captured separately for DTCC Muni Issuance, which is where this term now lives. Modeling Note: Definition is too DTC specific, from DTCC earliy reviews on Muni process. Need to have a global definition and understanding of this term."@en .
@@ -428,14 +428,14 @@ fibo-bp-iss-prc:SecuritiesIssuanceProcess a owl:Class ;
             owl:onProperty fibo-bp-iss-muni:hasIssuanceGuarantor ;
             owl:someValuesFrom fibo-bp-iss-prc:SecurityIssuanceGuarantor ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasPotentialIssuer ;
-            owl:someValuesFrom fibo-bp-iss-prc:PotentialIssuer ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:produces ;
             owl:someValuesFrom fibo-bp-iss-prc:TradedInstrumentIssuanceProcessInformation ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-muni:subscriber.1 ;
-            owl:someValuesFrom fibo-bp-iss-prc:Subscriber ] ;
+            owl:someValuesFrom fibo-bp-iss-prc:Subscriber ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasPotentialIssuer ;
+            owl:someValuesFrom fibo-bp-iss-prc:PotentialIssuer ] ;
     skos:definition "The process by which a financial security is issued."@en .
 
 fibo-bp-iss-prc:SecurityOfferingSaleMethod a owl:Class ;
@@ -447,14 +447,14 @@ fibo-bp-iss-prc:SecurityOfferingSaleMethod a owl:Class ;
 
 fibo-sec-sec-iss:SecuritiesOffering a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-prc:offerIssueSeries ;
-            owl:someValuesFrom xsd:string ],
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:someValuesFrom <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ListedSecurityIdentifier> ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-prc:finalStateDescribedIn ;
             owl:someValuesFrom fibo-bp-iss-doc:FinalProspectus ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-id:isIdentifiedBy ;
-            owl:someValuesFrom <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/ListedSecurityIdentifier> ] .
+            owl:onProperty fibo-bp-iss-prc:offerIssueSeries ;
+            owl:someValuesFrom xsd:string ] .
 
 fibo-bp-iss-prc:OfferingProcess a owl:Class ;
     rdfs:label "offering"@en,
@@ -464,14 +464,14 @@ fibo-bp-iss-prc:OfferingProcess a owl:Class ;
             owl:onProperty fibo-bp-iss-prc:hasSaleMethod ;
             owl:someValuesFrom fibo-bp-iss-prc:SecurityOfferingSaleMethod ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-prc:requiredToMakeEligible ;
-            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-prc:hasDistributionType ;
             owl:someValuesFrom fibo-bp-iss-prc:SecurityOfferingDistributionMethod ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-muni:givesRiseTo ;
             owl:someValuesFrom fibo-bp-iss-prc:IssuedSecurityIssueInformation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-prc:requiredToMakeEligible ;
+            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
         fibo-bp-iss-dbti:IssuanceProcessActivity ;
     skos:definition "The process step of offering a security for issue. This is the making available of a new securities issue through an underwriting."@en ;
     cmns-av:explanatoryNote "It is assumed that this exists for all security types as the precise issuance process is defined among the Offering terms. Terms which only exist for specific types of instrument are given as specialized variants of this class of Thing."@en .
@@ -491,11 +491,11 @@ fibo-bp-iss-prc:IssuedSecurityIssueInformation a owl:Class ;
         "已发行证券发行信息（issued security issue information）"@zh ;
     rdfs:comment "与发行准备/推向市场（即一级市场或 IPO 发行）直至发行完成相关的要素。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-doc:isAbout ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fnd-pas-psch:PaymentSchedule ;
             owl:onProperty fibo-bp-iss-prc:hasPartiallyPaidIssuanceSchedule ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         cmns-doc:Document ;
     skos:definition "FIBIM: \"Elements relating to issue preparation/bringing to market (also known as primary market or Initial Public Offering (IPO) issuance) through to issue date.\""@en,
         "Information about the Issuance of a Security, which is maintained throughout the life of the Security."@en .

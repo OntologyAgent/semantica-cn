@@ -170,11 +170,11 @@ fibo-be-fct-fct:Merchant a owl:Class ;
         "商户（merchant）"@zh ;
     rdfs:comment "为盈利而从事他人所生产货物之购销的参与方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-id:isIdentifiedBy ;
-            owl:someValuesFrom fibo-be-fct-fct:MerchantIdentifier ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:isClassifiedBy ;
             owl:someValuesFrom fibo-be-fct-fct:MerchantCategoryCode ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:someValuesFrom fibo-be-fct-fct:MerchantIdentifier ],
         fibo-be-fct-fct:FunctionalBusinessEntity ;
     skos:definition "party engaged in the purchase and sales of goods produced by others for profit" .
 
@@ -205,19 +205,19 @@ fibo-be-fct-fct:MerchantCategoryCode a owl:Class ;
         "商户类别码（merchant category code）"@zh ;
     rdfs:comment "国际上用于对商户进行分类的代码。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-fct-fct:hasMerchantCategoryDescription ;
-            owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-be-fct-fct:Merchant ],
-        [ a owl:Restriction ;
             owl:onClass fibo-be-fct-fct:MerchantCategoryCodeScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-be-fct-fct:hasMerchantCategoryDescription ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty cmns-dsg:hasTag ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-be-fct-fct:Merchant ],
         fibo-fnd-arr-cls:IndustrySectorClassifier,
         cmns-cds:CodeElement ;
     skos:definition "code used internationally to classify a merchant" ;

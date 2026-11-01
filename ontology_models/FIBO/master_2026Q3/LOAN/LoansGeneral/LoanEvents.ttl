@@ -153,12 +153,12 @@ fibo-loan-ln-ev:CourtJudgment a owl:Class ;
         "法院判决（court judgment）"@zh ;
     rdfs:comment "法院或其他裁判机构解决争议、确定各方权利与义务的决定。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-ev:isDeliveredBy ;
+            owl:someValuesFrom fibo-fnd-law-cor:CourtOfLaw ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-loan-ln-ev:hasJudgementAmount ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-loan-ln-ev:isDeliveredBy ;
-            owl:someValuesFrom fibo-fnd-law-cor:CourtOfLaw ],
         fibo-loan-ln-ev:LegalProceeding ;
     skos:definition "decision by a court or other tribunal that resolves a controversy and determines the rights and obligations of the parties"@en .
 
@@ -173,11 +173,11 @@ fibo-loan-ln-ev:LegalProceeding a owl:Class ;
         "法律程序（legal proceeding）"@zh ;
     rdfs:comment "在法院或机构指示或授权下采取的法律步骤或行动。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rga:isGovernedBy ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-loan-ln-ev:isAgainst ;
             owl:someValuesFrom cmns-org:LegalPerson ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "legal step or action taken at the direction of, or by the authority of, a court or agency"@en .
 

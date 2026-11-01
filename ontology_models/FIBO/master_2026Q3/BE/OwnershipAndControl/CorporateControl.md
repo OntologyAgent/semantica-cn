@@ -65,11 +65,13 @@
 
 ## 5. 公理约定（Axioms）
 
-- 关联方（affiliate）：是……的关联方（is affiliate of） some 关联方（affiliate）
-- 关联关系（affiliation）：具有行为者（has actor） some 控制性关联方（controlling affiliate）
-- 关联关系（affiliation）：具有承受者（has undergoer） some 受控关联方（controlled affiliate）
-- 受控关联方（controlled affiliate）：由…扮演（is played by） only 法律实体
-- 合资伙伴（joint venture partner）：是……的控制方 some 合资企业
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **关联方（affiliate）**：**是……的关联方（is affiliate of）**至少有一个取值，类型是**关联方（affiliate）**。
+- **关联关系（affiliation）**：**具有行为者（has actor）**至少有一个取值，类型是**控制性关联方（controlling affiliate）**。
+- **关联关系（affiliation）**：**具有承受者（has undergoer）**至少有一个取值，类型是**受控关联方（controlled affiliate）**。
+- **受控关联方（controlled affiliate）**：**由…扮演（is played by）**的所有取值只能是**法律实体（LegalEntity）**。
+- **合资伙伴（joint venture partner）**：**是……的控制方（isControllingPartyOf）**至少有一个取值，类型是**合资企业（JointVenture）**。
 
 ## 6. 依赖（owl:imports，10 个）
 

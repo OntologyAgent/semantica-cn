@@ -53,21 +53,23 @@
 
 ## 5. 公理约定（Axioms）
 
-- 报告（report）：由……提交（is submitted by） 提交方（submitter） ≥0
-- 报告（report）：具有报告期 日期区间 ≥0
-- 报告（report）：具有报告日期时间（has report date time） 日期时间 ≥0
-- 报告（report）：具有报告日期（has report date） 显式日期 ≥0
-- 报告（report）：被提交给（is submitted to） 参与方角色（party role） ≥0
-- 报告（report）：被报告给（is reported to） some 参与方角色（party role）
-- 报告（report）：由……提供 some 报告方（reporting party）
-- 报告方（reporting party）：提供 some 报告（report）
-- 请求（request）：具有请求日期时间（has request date time） 日期时间 ≥0
-- 请求（request）：具有请求日期（has request date） 显式日期 ≥0
-- 请求（request）：由……请求（is requested by） some 请求方（requester）
-- 请求（request）：被请求于（is requested of） some 参与方角色（party role）
-- 请求（request）：例证 some 请求活动（request activity）
-- 请求活动（request activity）：请求（requests） some owl:Thing
-- 提交方（submitter）：提交（submits） some 报告（report）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **报告（report）**：**由……提交（is submitted by）**可以有 0 个或多个**提交方（submitter）**。
+- **报告（report）**：**具有报告期（hasReportingPeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
+- **报告（report）**：**具有报告日期时间（has report date time）**可以有 0 个或多个**日期时间（DateTime）**。
+- **报告（report）**：**具有报告日期（has report date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **报告（report）**：**被提交给（is submitted to）**可以有 0 个或多个**参与方角色（party role）**。
+- **报告（report）**：**被报告给（is reported to）**至少有一个取值，类型是**参与方角色（party role）**。
+- **报告（report）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**报告方（reporting party）**。
+- **报告方（reporting party）**：**提供（provides）**至少有一个取值，类型是**报告（report）**。
+- **请求（request）**：**具有请求日期时间（has request date time）**可以有 0 个或多个**日期时间（DateTime）**。
+- **请求（request）**：**具有请求日期（has request date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **请求（request）**：**由……请求（is requested by）**至少有一个取值，类型是**请求方（requester）**。
+- **请求（request）**：**被请求于（is requested of）**至少有一个取值，类型是**参与方角色（party role）**。
+- **请求（request）**：**例证（exemplifies）**至少有一个取值，类型是**请求活动（request activity）**。
+- **请求活动（request activity）**：**请求（requests）**至少有一个取值，类型是**owl:Thing（Thing）**。
+- **提交方（submitter）**：**提交（submits）**至少有一个取值，类型是**报告（report）**。
 
 ## 6. 依赖（owl:imports，9 个）
 

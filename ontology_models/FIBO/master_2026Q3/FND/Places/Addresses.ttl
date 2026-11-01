@@ -302,11 +302,11 @@ fibo-fnd-plc-adr:ConventionalStreetAddress a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange rdfs:Literal ;
-            owl:onProperty fibo-fnd-plc-adr:hasAddressLine2 ],
+            owl:onProperty fibo-fnd-plc-adr:hasAddressLine1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange rdfs:Literal ;
-            owl:onProperty fibo-fnd-plc-adr:hasAddressLine1 ],
+            owl:onProperty fibo-fnd-plc-adr:hasAddressLine2 ],
         fibo-fnd-plc-adr:PhysicalAddress ;
     skos:definition "physical address that identifies a location on a street to which communications may be delivered" ;
     cmns-av:explanatoryNote "Other unconventional addresses may include rural and highway route addresses, general delivery addresses, post office box addresses, private mail center addresses, and so forth." .
@@ -600,13 +600,13 @@ fibo-fnd-plc-adr:SecondaryUnit a owl:Class ;
         "次级单元（secondary unit）"@zh ;
     rdfs:comment "标识给定街道地址处较大结构内的独立单元（如公寓、办公室、机库、泊位、邮箱等）的地址成分。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-plc-adr:SecondaryUnitDesignator ;
-            owl:onProperty cmns-col:comprises ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:SecondaryUnitIndicator ;
             owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-plc-adr:SecondaryUnitDesignator ;
+            owl:onProperty cmns-col:comprises ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-plc-adr:AddressComponent ;
     skos:definition "address component that identifies an individual unit within a larger structure, such as an apartment, office, hangar, slip, mailbox, and so forth, at a given street address" .
 
@@ -637,16 +637,16 @@ fibo-fnd-plc-adr:SupplementalAddressComponent a owl:Class ;
     rdfs:comment "提供对确保通信正确投递重要的附加信息的地址成分。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange rdfs:Literal ;
-            owl:onProperty cmns-dsg:hasTag ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:SupplementalAddressUnit ;
             owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:onClass fibo-fnd-plc-adr:SupplementalAddressDesignator ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty cmns-dsg:hasTag ],
         fibo-fnd-plc-adr:AddressComponent ;
     skos:definition "address component that provides additional information that is important to ensuring proper delivery of communications" ;
     cmns-av:explanatoryNote "Supplemental components include post office box information, rural route and highway contract route information, private mailboxes, and so forth, that are not part of a conventional street address." .
@@ -666,13 +666,13 @@ fibo-fnd-plc-adr:Address a owl:Class ;
         "地址（address）"@zh ;
     rdfs:comment "通信可送达之位置的索引。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass cmns-loc:Location ;
-            owl:onProperty fibo-fnd-arr-id:isIndexTo ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:AddressingScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-loc:Location ;
+            owl:onProperty fibo-fnd-arr-id:isIndexTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-arr-id:Index ;
     skos:definition "index to a location to which communications may be delivered" .
 
@@ -681,20 +681,13 @@ fibo-fnd-plc-adr:StreetAddress a owl:Class ;
         "街道地址（street address）"@zh ;
     rdfs:comment "由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的位置索引。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-plc-adr:hasStreetName ;
-            owl:someValuesFrom fibo-fnd-plc-adr:StreetName ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:SecondaryUnit ;
+            owl:onProperty fibo-fnd-plc-adr:hasSecondaryUnit ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:PredirectionalSymbol ;
             owl:onProperty fibo-fnd-plc-adr:hasPredirectionalSymbol ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-plc-adr:PrimaryAddressNumber ;
-            owl:onProperty fibo-fnd-plc-adr:hasPrimaryAddressNumber ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-plc-adr:SecondaryUnit ;
-            owl:onProperty fibo-fnd-plc-adr:hasSecondaryUnit ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:StreetSuffix ;
@@ -703,6 +696,13 @@ fibo-fnd-plc-adr:StreetAddress a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:PostdirectionalSymbol ;
             owl:onProperty fibo-fnd-plc-adr:hasPostdirectionalSymbol ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-plc-adr:hasStreetName ;
+            owl:someValuesFrom fibo-fnd-plc-adr:StreetName ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:PrimaryAddressNumber ;
+            owl:onProperty fibo-fnd-plc-adr:hasPrimaryAddressNumber ],
         fibo-fnd-plc-adr:AddressComponent ;
     skos:definition "index to a location that consists of a primary address number, predirectional, street name, suffix, postdirectional, and an optional secondary unit" .
 
@@ -718,16 +718,9 @@ fibo-fnd-plc-adr:PhysicalAddress a owl:Class ;
         "物理地址（physical address）"@zh ;
     rdfs:comment "可为任何组织或个人送达通信、送达文书或找到代表的物理地址。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-loc:hasSubdivision ;
-            owl:someValuesFrom cmns-loc:CountrySubdivision ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-loc:Municipality ;
-            owl:onProperty cmns-loc:hasMunicipality ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-loc:PhysicalLocation ;
-            owl:onProperty fibo-fnd-arr-id:isIndexTo ],
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty cmns-loc:hasCityName ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:Postcode ;
@@ -738,12 +731,19 @@ fibo-fnd-plc-adr:PhysicalAddress a owl:Class ;
             owl:onProperty fibo-fnd-plc-adr:hasPostalCode ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-loc:Country ;
-            owl:onProperty cmns-loc:hasCountry ],
+            owl:onClass cmns-loc:Municipality ;
+            owl:onProperty cmns-loc:hasMunicipality ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-loc:hasSubdivision ;
+            owl:someValuesFrom cmns-loc:CountrySubdivision ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-loc:PhysicalLocation ;
+            owl:onProperty fibo-fnd-arr-id:isIndexTo ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange rdfs:Literal ;
-            owl:onProperty cmns-loc:hasCityName ],
+            owl:onClass cmns-loc:Country ;
+            owl:onProperty cmns-loc:hasCountry ],
         fibo-fnd-plc-adr:Address ;
     skos:definition "physical address where communications can be addressed, papers served or representatives located for any kind of organization or person" ;
     skos:scopeNote "An address may be used as an index to the location of a building, apartment, office within an office block, or other structure or parcel of land, often using political boundaries and street names as references, along with other information such as house or building numbers or names. Some addresses also contain secondary elements such as apartment or building numbers, or special codes to aid routing of mail and packages." ;

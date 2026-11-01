@@ -261,11 +261,11 @@ fibo-sec-dbt-syn:SyntheticDebtInstrumentPool a owl:Class ;
         "合成债务工具池（synthetic debt instrument pool）"@zh ;
     rdfs:comment "模拟一篮子债务证券行为的现金流结构，例如用信用衍生品合成的 CDO/债券/ABS 组合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-syn:fundedBy ;
-            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticDebtInstrumentPoolFundingAsset ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-syn:hasUnderlyingContract ;
             owl:someValuesFrom fibo-der-cr-cds:CreditDefaultSwap ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:fundedBy ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticDebtInstrumentPoolFundingAsset ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-syn:makesReferenceTo ;
             owl:someValuesFrom fibo-sec-dbt-syn:SyntheticCDOPortfolio ],

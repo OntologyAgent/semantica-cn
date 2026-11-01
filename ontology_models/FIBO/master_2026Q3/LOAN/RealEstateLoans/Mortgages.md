@@ -54,13 +54,15 @@
 
 ## 5. 公理约定（Axioms）
 
-- 房地产担保贷款（loan secured by real estate）：以……为抵押 some 不动产
-- 房地产担保贷款（loan secured by real estate）：具有合同要素 some 披露条款
-- 房地产担保贷款（loan secured by real estate）：具有合同要素 some 募集资金用途条款
-- 房地产担保贷款（loan secured by real estate）：具有初始放款日（has initial funding date） some 交易日期
-- 房地产担保贷款（loan secured by real estate）：引用 some 担保协议
-- 抵押（mortgage）：以……为抵押 some 不动产
-- 反向抵押贷款（reverse mortgage loan）：具有信用限额 some 货币数量
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **房地产担保贷款（loan secured by real estate）**：**以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**不动产（RealProperty）**。
+- **房地产担保贷款（loan secured by real estate）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**披露条款（DisclosureProvision）**。
+- **房地产担保贷款（loan secured by real estate）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**募集资金用途条款（UseOfProceedsProvision）**。
+- **房地产担保贷款（loan secured by real estate）**：**具有初始放款日（has initial funding date）**至少有一个取值，类型是**交易日期（TransactionDate）**。
+- **房地产担保贷款（loan secured by real estate）**：**引用（refersTo）**至少有一个取值，类型是**担保协议（SecurityAgreement）**。
+- **抵押（mortgage）**：**以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**不动产（RealProperty）**。
+- **反向抵押贷款（reverse mortgage loan）**：**具有信用限额（hasCreditLimit）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
 
 ## 6. 依赖（owl:imports，9 个）
 

@@ -36,16 +36,18 @@
 
 ## 5. 公理约定（Axioms）
 
-- 检查员（examiner）：由…扮演（is played by） 具有法律行为能力的自然人 =1
-- 检查员（examiner）：由……授权 监管机构 =1
-- 检查员（examiner）：由…扮演（is played by） some（具有能力方 some 监管资格（regulatory capacity））
-- 政府颁发的许可证（government-issued license）：由……发行 some 监管机构
-- 法规标识方案（regulation identification scheme）：具有成员 some 法规标识符（regulation identifier）
-- 法规标识符（regulation identifier）：是……的成员 法规标识方案（regulation identification scheme） =1
-- 法规标识符（regulation identifier）：标识 规章 =1
-- 税务机关（tax authority）：发行 税务标识符 ≥0
-- 税务机关（tax authority）：管理 some 税务识别方案
-- 税务机关（tax authority）：具有管辖权 some 管辖权
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **检查员（examiner）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **检查员（examiner）**：**由……授权（isAuthorizedBy）**恰好有 1 个**监管机构（RegulatoryAgency）**。
+- **检查员（examiner）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**监管资格（regulatory capacity）**。
+- **政府颁发的许可证（government-issued license）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+- **法规标识方案（regulation identification scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**法规标识符（regulation identifier）**。
+- **法规标识符（regulation identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**法规标识方案（regulation identification scheme）**。
+- **法规标识符（regulation identifier）**：**标识（identifies）**恰好有 1 个**规章（Regulation）**。
+- **税务机关（tax authority）**：**发行（issues）**可以有 0 个或多个**税务标识符（TaxIdentifier）**。
+- **税务机关（tax authority）**：**管理（manages）**至少有一个取值，类型是**税务识别方案（TaxIdentificationScheme）**。
+- **税务机关（tax authority）**：**具有管辖权（hasJurisdiction）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
 
 ## 6. 依赖（owl:imports，17 个）
 

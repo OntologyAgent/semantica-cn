@@ -275,75 +275,77 @@
 
 ## 5. 公理约定（Axioms）
 
-- 美国国债（U.S. Treasury security）：restriction
-- 摊销债券（amortizing bond）：具有偿还条款 some 债券摊销支付条款（bond amortization payment terms）
-- 摊销债券（amortizing bond） 与 子弹型债券（bullet bond） 互斥（disjointWith）
-- 债券（bond）：restriction
-- 债券（bond）：具有利息支付条款 some 票息支付条款（coupon payment terms）
-- 债券（bond）：具有偿还条款 some 债券本金偿还条款（bond principal repayment terms）
-- 债券摊销支付条款（bond amortization payment terms）：具有进度表 some 摊销计划表
-- 债券摊销支付条款（bond amortization payment terms） 与 债券子弹式本金偿还条款（bond bullet principal repayment terms） 互斥（disjointWith）
-- 债券转换条款（bond conversion terms）：规定转换为 some 上市股份
-- 债券本金偿还条款（bond principal repayment terms）：具有进度表 some 支付进度表
-- 债券本金偿还条款（bond principal repayment terms） 与 赎回特征 互斥（disjointWith）
-- 债券登记机构（bond registrar）：登记 some 债券（bond）
-- 可部分赎回债券（bond with partial call）：具有赎回特征 some 部分赎回特征（partial call feature）
-- 子弹型债券（bullet bond）：具有偿还条款 some 债券子弹式本金偿还条款（bond bullet principal repayment terms）
-- 子弹型债券（bullet bond） 与 摊销债券（amortizing bond） 互斥（disjointWith）
-- 子弹型债券（bullet bond） 与 可赎回债券（callable bond） 互斥（disjointWith）
-- 可赎回债券（callable bond）：restriction
-- 可赎回债券（callable bond）：具有特别赎回条款（has extraordinary redemption provision） 特别赎回条款（extraordinary redemption provision） ≤1
-- 可赎回债券（callable bond）：具有赎回特征 some 赎回特征
-- 可转换债券（convertible bond）：具有合同要素 债券转换条款（bond conversion terms） ≥0
-- 公司债券（corporate bond）：由……发行 some（由…扮演（is played by） some 法律实体）
-- 公司债券（corporate bond） 与 政府债券（government bond） 互斥（disjointWith）
-- 公司债券（corporate bond） 与 市政债券（municipal bond） 互斥（disjointWith）
-- 票息支付条款（coupon payment terms）：具有利率 some 债券票息（bond coupon）
-- 票息支付条款（coupon payment terms）：具有货币 some 货币
-- 票息支付条款（coupon payment terms）：具有进度表 some 利息支付计划表
-- 固定票息债券（fixed coupon bond）：具有利息支付条款 some 固定票息条款（fixed coupon terms）
-- 固定票息债券（fixed coupon bond） 与 浮动票息债券（variable coupon bond） 互斥（disjointWith）
-- 固定票息条款（fixed coupon terms）：具有利率 some 固定利率
-- 固定票息条款（fixed coupon terms） 与 浮动票息条款（variable coupon terms） 互斥（disjointWith）
-- 浮动利率票据（floating rate note）：具有利率 some 参考利率
-- 一般责任市政债券（general obligation municipal bond） 与 收益债券（revenue bond） 互斥（disjointWith）
-- 政府发行债务证券（government issued debt security）：由……发行 some（由…扮演（is played by） some 政体）
-- 指数挂钩债券（index-linked bond）：基于 some（restriction）
-- 通胀挂钩债券（inflation-linked bond）：基于 some 通货膨胀率
-- 上市债券（listed bond） 与 非上市债券（unlisted bond） 互斥（disjointWith）
-- 强制可转换债券（mandatory convertible bond）：具有合同要素 some 债券转换条款（bond conversion terms）
-- 市政证券（municipal security）：具有目标 some 市政债务资金用途（municipal debt funds usage）
-- 市政证券（municipal security）：由……发行 some（由…扮演（is played by） some（restriction））
-- 市政证券（municipal security）：具有资金来源（has funding source） some 市政债务资金来源（municipal debt source of funds）
-- 市政证券（municipal security） 与 主权债务工具（sovereign debt instrument） 互斥（disjointWith）
-- 原始发行折价债券（original issue discount bond）：restriction
-- 原始发行折价债券（original issue discount bond）：具有原始发行折价金额（has original issue discount amount） 货币数量 ≥0
-- 部分赎回特征（partial call feature）：具有部分赎回分配惯例（has partial redemption allocation convention） some 部分赎回分配惯例（partial redemption allocation convention）
-- 部分赎回分配惯例（partial redemption allocation convention）：restriction
-- 利率基准惯例（rate basis convention）：restriction
-- 赎回计划表（redemption schedule）：包含 some 兑付事件
-- 有担保债券（secured bond） 与 无担保债券（unsecured bond） 互斥（disjointWith）
-- 偿债基金摊销条款（sinking fund amortization terms）：restriction
-- 主权债券（sovereign bond） 与 市政债券（municipal bond） 互斥（disjointWith）
-- 主权债务工具（sovereign debt instrument）：由……发行 some（由…扮演（is played by） some 主权国家）
-- 票息递增债券（step up bond）：具有利息支付条款 some 阶梯票息条款（stepped coupon terms）
-- 阶梯票息条款（stepped coupon terms）：具有进度表 some 阶梯计划表
-- 拆息债券（strip bond）：基于 some 债券（bond）
-- 短期国库券（treasury bill）：restriction
-- 短期国库券（treasury bill）：restriction
-- 短期国库券（treasury bill）：具有利率 some 参考利率
-- 浮动票息债券（variable coupon bond）：具有利率 some 债券浮动票息（bond variable coupon）
-- 浮动票息条款（variable coupon terms）：基于 some 市场利率
-- 浮动票息条款（variable coupon terms）：具有表达式 some 可变利息计算公式（variable interest calculation formula）
-- 可变债务本金（variable debt principal）：具有货币数量 some 货币数量
-- 可变利息表达式（variable interest expression）：restriction
-- 可变利息表达式（variable interest expression）：restriction
-- 可变利息表达式（variable interest expression）：具有自变量 完全指数化利率 =1
-- 可变本金债券（variable principal bond）：为……定义条款 some 可变债务本金（variable debt principal）
-- 零息债券（zero coupon bond）：restriction
-- 零息债券（zero coupon bond）：具有原始发行折价金额（has original issue discount amount） 货币数量 ≥0
-- 零息债券（zero coupon bond）：具有利息支付条款 some 零息条款（zero coupon terms）
-- 零息条款（zero coupon terms）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **美国国债（U.S. Treasury security）**：**以……计价（isDenominatedIn）**的取值固定为 USDollar。
+- **摊销债券（amortizing bond）**：**具有偿还条款（hasRepaymentTerms）**至少有一个取值，类型是**债券摊销支付条款（bond amortization payment terms）**。
+- **摊销债券（amortizing bond）**与**子弹型债券（bullet bond）**互斥：同一个体不能同时属于两者。
+- **债券（bond）**：**具有系列（hasSeries）**存在取值约束。
+- **债券（bond）**：**具有利息支付条款（hasInterestPaymentTerms）**至少有一个取值，类型是**票息支付条款（coupon payment terms）**。
+- **债券（bond）**：**具有偿还条款（hasRepaymentTerms）**至少有一个取值，类型是**债券本金偿还条款（bond principal repayment terms）**。
+- **债券摊销支付条款（bond amortization payment terms）**：**具有进度表（hasSchedule）**至少有一个取值，类型是**摊销计划表（AmortizationSchedule）**。
+- **债券摊销支付条款（bond amortization payment terms）**与**债券子弹式本金偿还条款（bond bullet principal repayment terms）**互斥：同一个体不能同时属于两者。
+- **债券转换条款（bond conversion terms）**：**规定转换为（specifiesConversionInto）**至少有一个取值，类型是**上市股份（ListedShare）**。
+- **债券本金偿还条款（bond principal repayment terms）**：**具有进度表（hasSchedule）**至少有一个取值，类型是**支付进度表（PaymentSchedule）**。
+- **债券本金偿还条款（bond principal repayment terms）**与**赎回特征**互斥：同一个体不能同时属于两者。
+- **债券登记机构（bond registrar）**：**登记（registers）**至少有一个取值，类型是**债券（bond）**。
+- **可部分赎回债券（bond with partial call）**：**具有赎回特征（hasCallFeature）**至少有一个取值，类型是**部分赎回特征（partial call feature）**。
+- **子弹型债券（bullet bond）**：**具有偿还条款（hasRepaymentTerms）**至少有一个取值，类型是**债券子弹式本金偿还条款（bond bullet principal repayment terms）**。
+- **子弹型债券（bullet bond）**与**摊销债券（amortizing bond）**互斥：同一个体不能同时属于两者。
+- **子弹型债券（bullet bond）**与**可赎回债券（callable bond）**互斥：同一个体不能同时属于两者。
+- **可赎回债券（callable bond）**：**是否可赎回（isCallable）**的取值固定为 true。
+- **可赎回债券（callable bond）**：**具有特别赎回条款（has extraordinary redemption provision）**至多有 1 个**特别赎回条款（extraordinary redemption provision）**。
+- **可赎回债券（callable bond）**：**具有赎回特征（hasCallFeature）**至少有一个取值，类型是**赎回特征（CallFeature）**。
+- **可转换债券（convertible bond）**：**具有合同要素（hasContractualElement）**可以有 0 个或多个**债券转换条款（bond conversion terms）**。
+- **公司债券（corporate bond）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**法律实体（LegalEntity）**。
+- **公司债券（corporate bond）**与**政府债券（government bond）**互斥：同一个体不能同时属于两者。
+- **公司债券（corporate bond）**与**市政债券（municipal bond）**互斥：同一个体不能同时属于两者。
+- **票息支付条款（coupon payment terms）**：**具有利率（hasInterestRate）**至少有一个取值，类型是**债券票息（bond coupon）**。
+- **票息支付条款（coupon payment terms）**：**具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
+- **票息支付条款（coupon payment terms）**：**具有进度表（hasSchedule）**至少有一个取值，类型是**利息支付计划表（InterestPaymentSchedule）**。
+- **固定票息债券（fixed coupon bond）**：**具有利息支付条款（hasInterestPaymentTerms）**至少有一个取值，类型是**固定票息条款（fixed coupon terms）**。
+- **固定票息债券（fixed coupon bond）**与**浮动票息债券（variable coupon bond）**互斥：同一个体不能同时属于两者。
+- **固定票息条款（fixed coupon terms）**：**具有利率（hasInterestRate）**至少有一个取值，类型是**固定利率（FixedInterestRate）**。
+- **固定票息条款（fixed coupon terms）**与**浮动票息条款（variable coupon terms）**互斥：同一个体不能同时属于两者。
+- **浮动利率票据（floating rate note）**：**具有利率（hasInterestRate）**至少有一个取值，类型是**参考利率（ReferenceInterestRate）**。
+- **一般责任市政债券（general obligation municipal bond）**与**收益债券（revenue bond）**互斥：同一个体不能同时属于两者。
+- **政府发行债务证券（government issued debt security）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**政体（Polity）**。
+- **指数挂钩债券（index-linked bond）**：**基于（isBasedOn）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **通胀挂钩债券（inflation-linked bond）**：**基于（isBasedOn）**至少有一个取值，类型是**通货膨胀率（InflationRate）**。
+- **上市债券（listed bond）**与**非上市债券（unlisted bond）**互斥：同一个体不能同时属于两者。
+- **强制可转换债券（mandatory convertible bond）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**债券转换条款（bond conversion terms）**。
+- **市政证券（municipal security）**：**具有目标（hasObjective）**至少有一个取值，类型是**市政债务资金用途（municipal debt funds usage）**。
+- **市政证券（municipal security）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **市政证券（municipal security）**：**具有资金来源（has funding source）**至少有一个取值，类型是**市政债务资金来源（municipal debt source of funds）**。
+- **市政证券（municipal security）**与**主权债务工具（sovereign debt instrument）**互斥：同一个体不能同时属于两者。
+- **原始发行折价债券（original issue discount bond）**：**具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
+- **原始发行折价债券（original issue discount bond）**：**具有原始发行折价金额（has original issue discount amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **部分赎回特征（partial call feature）**：**具有部分赎回分配惯例（has partial redemption allocation convention）**至少有一个取值，类型是**部分赎回分配惯例（partial redemption allocation convention）**。
+- **部分赎回分配惯例（partial redemption allocation convention）**：**具有比率值（hasRateValue）**存在取值约束。
+- **利率基准惯例（rate basis convention）**：**具有比率值（hasRateValue）**存在取值约束。
+- **赎回计划表（redemption schedule）**：**包含（comprises）**至少有一个取值，类型是**兑付事件（RedemptionEvent）**。
+- **有担保债券（secured bond）**与**无担保债券（unsecured bond）**互斥：同一个体不能同时属于两者。
+- **偿债基金摊销条款（sinking fund amortization terms）**：**是否强制（is mandatory）**存在取值约束。
+- **主权债券（sovereign bond）**与**市政债券（municipal bond）**互斥：同一个体不能同时属于两者。
+- **主权债务工具（sovereign debt instrument）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**主权国家（SovereignState）**。
+- **票息递增债券（step up bond）**：**具有利息支付条款（hasInterestPaymentTerms）**至少有一个取值，类型是**阶梯票息条款（stepped coupon terms）**。
+- **阶梯票息条款（stepped coupon terms）**：**具有进度表（hasSchedule）**至少有一个取值，类型是**阶梯计划表（StepSchedule）**。
+- **拆息债券（strip bond）**：**基于（isBasedOn）**至少有一个取值，类型是**债券（bond）**。
+- **短期国库券（treasury bill）**：**具有发行时相对价格（hasRelativePriceAtIssue）**的取值固定为 AtADiscount。
+- **短期国库券（treasury bill）**：**具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
+- **短期国库券（treasury bill）**：**具有利率（hasInterestRate）**至少有一个取值，类型是**参考利率（ReferenceInterestRate）**。
+- **浮动票息债券（variable coupon bond）**：**具有利率（hasInterestRate）**至少有一个取值，类型是**债券浮动票息（bond variable coupon）**。
+- **浮动票息条款（variable coupon terms）**：**基于（isBasedOn）**至少有一个取值，类型是**市场利率（MarketRate）**。
+- **浮动票息条款（variable coupon terms）**：**具有表达式（hasExpression）**至少有一个取值，类型是**可变利息计算公式（variable interest calculation formula）**。
+- **可变债务本金（variable debt principal）**：**具有货币数量（hasMonetaryAmount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **可变利息表达式（variable interest expression）**：**具有上限（has ceiling）**存在取值约束。
+- **可变利息表达式（variable interest expression）**：**具有下限（has floor）**存在取值约束。
+- **可变利息表达式（variable interest expression）**：**具有自变量（hasArgument）**恰好有 1 个**完全指数化利率（FullyIndexedInterestRate）**。
+- **可变本金债券（variable principal bond）**：**为……定义条款（definesTermsFor）**至少有一个取值，类型是**可变债务本金（variable debt principal）**。
+- **零息债券（zero coupon bond）**：**具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
+- **零息债券（zero coupon bond）**：**具有原始发行折价金额（has original issue discount amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **零息债券（zero coupon bond）**：**具有利息支付条款（hasInterestPaymentTerms）**至少有一个取值，类型是**零息条款（zero coupon terms）**。
+- **零息条款（zero coupon terms）**：**具有利率（hasInterestRate）**的取值固定为 ZeroInterestRate。
 
 ## 6. 依赖（owl:imports，37 个）
 

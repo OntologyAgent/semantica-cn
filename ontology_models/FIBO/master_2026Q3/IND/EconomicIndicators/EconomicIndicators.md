@@ -171,65 +171,67 @@
 
 ## 5. 公理约定（Axioms）
 
-- 平均日收入（average daily earnings）：restriction
-- 平均收入（average earnings）：具有参照期间 显式重复区间 =1
-- 平均时薪（average hourly earnings）：restriction
-- 平均月收入（average monthly earnings）：restriction
-- 平均周收入（average weekly earnings）：restriction
-- 平民劳动力（civilian labor force） 与 非劳动力人口（population not in the labor force） 互斥（disjointWith）
-- 平民劳动力参与率（civilian labor force participation rate）：具有基线总体（has baseline population） some 平民非机构人口（civilian non-institutional population）
-- 平民劳动力参与率（civilian labor force participation rate）：具有比较总体（has comparison population） some 平民劳动力（civilian labor force）
-- 平民非机构个人（civilian non-institutional person） 与 机构内人员（institutional person） 互斥（disjointWith）
-- 平民非机构人口（civilian non-institutional population）：具有成员 some 平民非机构个人（civilian non-institutional person）
-- 联合统计区（combined statistical area）：包含 政府指定统计区（government-specified statistical area） ≥2
-- 消费者价格指数（consumer price index）：具有输入 some 固定篮子（fixed basket）
-- 消费者价格指数（consumer price index）：具有基线总体（has baseline population） some 平民非机构人口（civilian non-institutional population）
-- 消费者价格指数（consumer price index） 与 平民劳动力参与率（civilian labor force participation rate） 互斥（disjointWith）
-- 消费者价格指数（consumer price index） 与 就业人口比（employment-population ratio） 互斥（disjointWith）
-- 消费者价格指数（consumer price index） 与 国内生产总值（gross domestic product） 互斥（disjointWith）
-- 消费者价格指数（consumer price index） 与 通货膨胀率（inflation rate） 互斥（disjointWith）
-- 消费者价格指数（consumer price index） 与 失业率（unemployment rate） 互斥（disjointWith）
-- 经济指标（economic indicator）：经季节调整（is seasonally adjusted） only xsd:boolean
-- 经济指标（economic indicator）：具有序列起点（has series origin） only 日期
-- 经济指标（economic indicator）：具有发布日期 日期 ≥0
-- 经济指标（economic indicator）：restriction
-- 经济指标（economic indicator）：具有报告期 some 显式日期区间
-- 经济指标（economic indicator）：具有覆盖区域 some 政府指定统计区（government-specified statistical area）
-- 因非经济原因兼职就业人口（employed population part-time for non-economic reasons） 与 因经济原因兼职就业人口（employed population part-time for economic reasons） 互斥（disjointWith）
-- 就业人口比（employment-population ratio）：具有基线总体（has baseline population） some 平民非机构人口（civilian non-institutional population）
-- 就业人口比（employment-population ratio）：具有比较总体（has comparison population） some 就业人口（employed population）
-- 企业（enterprise）：restriction
-- 企业（enterprise）：由……分类 some 行业部门分类器
-- 企业（enterprise）：具有成员 some 机构场所（establishment）
-- 企业（enterprise）：适用于 some（restriction）
-- 企业（enterprise）：由…扮演（is played by） some 法律主体
-- 企业总体（enterprise population）：具有成员 some 企业（enterprise）
-- 机构场所（establishment）：是……的组成成分 企业（enterprise） ≥0
-- 机构场所（establishment）：具有地址 物理地址 =1
-- 机构场所就业（establishment employment）：具有基线总体（has baseline population） some 机构场所总体（establishment population）
-- 机构场所总体（establishment population）：具有成员 some 机构场所（establishment）
-- 固定篮子（fixed basket）：具有成员 some 固定篮子成分（fixed basket constituent）
-- 固定篮子成分（fixed basket constituent）：restriction
-- 固定篮子总体（fixed basket population）：具有成员 some（restriction）
-- 政府指定统计区（government-specified statistical area）：受……管辖 some 政府机关
-- 国内生产总值（gross domestic product） 与 失业率（unemployment rate） 互斥（disjointWith）
-- 住户（household）：具有位置 住房单元（housing unit） ≤1
-- 住户（household）：具有成员 some 个人
-- 住房单元（housing unit）：具有地址 only 物理地址
-- 通货膨胀率（inflation rate）：适用于 some 政府指定统计区（government-specified statistical area）
-- 军人（military person） 与 平民（civilian） 互斥（disjointWith）
-- 非劳动力人口（population not in the labor force） 与 平民劳动力（civilian labor force） 互斥（disjointWith）
-- 生产者价格指数（producer price index）：具有输入 some 固定篮子（fixed basket）
-- 生产者价格指数（producer price index）：具有基线总体（has baseline population） some（restriction）
-- 生产者价格指数（producer price index） 与 消费者价格指数（consumer price index） 互斥（disjointWith）
-- 统计信息发布方（statistical information publisher）：由…扮演（is played by） some 正式组织
-- 最终消费者（ultimate consumer）：由…扮演（is played by） some 个人
-- 失业人口（unemployed population）：具有失业时长（has duration of unemployment） some 时长
-- 失业人口（unemployed population） 与 就业人口（employed population） 互斥（disjointWith）
-- 失业率（unemployment rate）：具有基线总体（has baseline population） some 平民劳动力（civilian labor force）
-- 失业率（unemployment rate）：具有比较总体（has comparison population） some 失业人口（unemployed population）
-- 增加值生产者价格指数（value-added producer price index）：具有输入 some 投入生产者价格指数（input producer price index）
-- 增加值生产者价格指数（value-added producer price index）：具有输入 some 产出生产者价格指数（output producer price index）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **平均日收入（average daily earnings）**：**具有参照期间（hasReferencePeriod）**的取值固定为 Daily。
+- **平均收入（average earnings）**：**具有参照期间（hasReferencePeriod）**恰好有 1 个**显式重复区间（ExplicitRecurrenceInterval）**。
+- **平均时薪（average hourly earnings）**：**具有参照期间（hasReferencePeriod）**的取值固定为 Hourly。
+- **平均月收入（average monthly earnings）**：**具有参照期间（hasReferencePeriod）**的取值固定为 Monthly。
+- **平均周收入（average weekly earnings）**：**具有参照期间（hasReferencePeriod）**的取值固定为 Weekly。
+- **平民劳动力（civilian labor force）**与**非劳动力人口（population not in the labor force）**互斥：同一个体不能同时属于两者。
+- **平民劳动力参与率（civilian labor force participation rate）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
+- **平民劳动力参与率（civilian labor force participation rate）**：**具有比较总体（has comparison population）**至少有一个取值，类型是**平民劳动力（civilian labor force）**。
+- **平民非机构个人（civilian non-institutional person）**与**机构内人员（institutional person）**互斥：同一个体不能同时属于两者。
+- **平民非机构人口（civilian non-institutional population）**：**具有成员（hasMember）**至少有一个取值，类型是**平民非机构个人（civilian non-institutional person）**。
+- **联合统计区（combined statistical area）**：**包含（comprises）**至少有 2 个**政府指定统计区（government-specified statistical area）**。
+- **消费者价格指数（consumer price index）**：**具有输入（hasInput）**至少有一个取值，类型是**固定篮子（fixed basket）**。
+- **消费者价格指数（consumer price index）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
+- **消费者价格指数（consumer price index）**与**平民劳动力参与率（civilian labor force participation rate）**互斥：同一个体不能同时属于两者。
+- **消费者价格指数（consumer price index）**与**就业人口比（employment-population ratio）**互斥：同一个体不能同时属于两者。
+- **消费者价格指数（consumer price index）**与**国内生产总值（gross domestic product）**互斥：同一个体不能同时属于两者。
+- **消费者价格指数（consumer price index）**与**通货膨胀率（inflation rate）**互斥：同一个体不能同时属于两者。
+- **消费者价格指数（consumer price index）**与**失业率（unemployment rate）**互斥：同一个体不能同时属于两者。
+- **经济指标（economic indicator）**：**经季节调整（is seasonally adjusted）**的所有取值只能是**xsd:boolean（boolean）**。
+- **经济指标（economic indicator）**：**具有序列起点（has series origin）**的所有取值只能是**日期（Date）**。
+- **经济指标（economic indicator）**：**具有发布日期（hasReleaseDate）**可以有 0 个或多个**日期（Date）**。
+- **经济指标（economic indicator）**：**具有发布日期时间（hasReleaseDateTime）**存在取值约束。
+- **经济指标（economic indicator）**：**具有报告期（hasReportingPeriod）**至少有一个取值，类型是**显式日期区间（ExplicitDatePeriod）**。
+- **经济指标（economic indicator）**：**具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**政府指定统计区（government-specified statistical area）**。
+- **因非经济原因兼职就业人口（employed population part-time for non-economic reasons）**与**因经济原因兼职就业人口（employed population part-time for economic reasons）**互斥：同一个体不能同时属于两者。
+- **就业人口比（employment-population ratio）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
+- **就业人口比（employment-population ratio）**：**具有比较总体（has comparison population）**至少有一个取值，类型是**就业人口（employed population）**。
+- **企业（enterprise）**：该属性存在取值约束。
+- **企业（enterprise）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**行业部门分类器（IndustrySectorClassifier）**。
+- **企业（enterprise）**：**具有成员（hasMember）**至少有一个取值，类型是**机构场所（establishment）**。
+- **企业（enterprise）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **企业（enterprise）**：**由…扮演（is played by）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **企业总体（enterprise population）**：**具有成员（hasMember）**至少有一个取值，类型是**企业（enterprise）**。
+- **机构场所（establishment）**：**是……的组成成分（isConstituentOf）**可以有 0 个或多个**企业（enterprise）**。
+- **机构场所（establishment）**：**具有地址（hasAddress）**恰好有 1 个**物理地址（PhysicalAddress）**。
+- **机构场所就业（establishment employment）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**机构场所总体（establishment population）**。
+- **机构场所总体（establishment population）**：**具有成员（hasMember）**至少有一个取值，类型是**机构场所（establishment）**。
+- **固定篮子（fixed basket）**：**具有成员（hasMember）**至少有一个取值，类型是**固定篮子成分（fixed basket constituent）**。
+- **固定篮子成分（fixed basket constituent）**：该属性存在取值约束。
+- **固定篮子总体（fixed basket population）**：**具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **政府指定统计区（government-specified statistical area）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**政府机关（GovernmentBody）**。
+- **国内生产总值（gross domestic product）**与**失业率（unemployment rate）**互斥：同一个体不能同时属于两者。
+- **住户（household）**：**具有位置（hasLocation）**至多有 1 个**住房单元（housing unit）**。
+- **住户（household）**：**具有成员（hasMember）**至少有一个取值，类型是**个人（Person）**。
+- **住房单元（housing unit）**：**具有地址（hasAddress）**的所有取值只能是**物理地址（PhysicalAddress）**。
+- **通货膨胀率（inflation rate）**：**适用于（appliesTo）**至少有一个取值，类型是**政府指定统计区（government-specified statistical area）**。
+- **军人（military person）**与**平民（civilian）**互斥：同一个体不能同时属于两者。
+- **非劳动力人口（population not in the labor force）**与**平民劳动力（civilian labor force）**互斥：同一个体不能同时属于两者。
+- **生产者价格指数（producer price index）**：**具有输入（hasInput）**至少有一个取值，类型是**固定篮子（fixed basket）**。
+- **生产者价格指数（producer price index）**：**具有基线总体（has baseline population）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **生产者价格指数（producer price index）**与**消费者价格指数（consumer price index）**互斥：同一个体不能同时属于两者。
+- **统计信息发布方（statistical information publisher）**：**由…扮演（is played by）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+- **最终消费者（ultimate consumer）**：**由…扮演（is played by）**至少有一个取值，类型是**个人（Person）**。
+- **失业人口（unemployed population）**：**具有失业时长（has duration of unemployment）**至少有一个取值，类型是**时长（Duration）**。
+- **失业人口（unemployed population）**与**就业人口（employed population）**互斥：同一个体不能同时属于两者。
+- **失业率（unemployment rate）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**平民劳动力（civilian labor force）**。
+- **失业率（unemployment rate）**：**具有比较总体（has comparison population）**至少有一个取值，类型是**失业人口（unemployed population）**。
+- **增加值生产者价格指数（value-added producer price index）**：**具有输入（hasInput）**至少有一个取值，类型是**投入生产者价格指数（input producer price index）**。
+- **增加值生产者价格指数（value-added producer price index）**：**具有输入（hasInput）**至少有一个取值，类型是**产出生产者价格指数（output producer price index）**。
 
 ## 6. 依赖（owl:imports，29 个）
 

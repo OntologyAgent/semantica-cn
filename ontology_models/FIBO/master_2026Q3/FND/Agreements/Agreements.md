@@ -43,16 +43,18 @@
 
 ## 5. 公理约定（Axioms）
 
-- 协议（agreement）：授予 承诺（commitment） ≥0
-- 协议（agreement）：具有参与方角色（has party role） 参与方角色（party role） ≥2
-- 受益方（beneficiary）：由…扮演（is played by） some（是…的参与方（is a party to） 协议（agreement） ≥0）
-- 双边协议（bilateral agreement）：具有参与方角色（has party role） 参与方角色（party role） =2
-- 承诺（commitment）：具有参与方角色（has party role） some 参与方角色（party role）
-- 多边协议（multilateral agreement）：具有参与方角色（has party role） 参与方角色（party role） ≥3
-- 多边协议（multilateral agreement） 与 双边协议（bilateral agreement） 互斥（disjointWith）
-- 权利人（obligee）：由…扮演（is played by） some（是…的参与方（is a party to） 协议（agreement） ≥0）
-- 义务人（obligor）：具有义务（has obligation） some 承诺（commitment）
-- 义务人（obligor）：由…扮演（is played by） some（是…的参与方（is a party to） 协议（agreement） ≥0）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **协议（agreement）**：**授予（confers）**可以有 0 个或多个**承诺（commitment）**。
+- **协议（agreement）**：**具有参与方角色（has party role）**至少有 2 个**参与方角色（party role）**。
+- **受益方（beneficiary）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
+- **双边协议（bilateral agreement）**：**具有参与方角色（has party role）**恰好有 2 个**参与方角色（party role）**。
+- **承诺（commitment）**：**具有参与方角色（has party role）**至少有一个取值，类型是**参与方角色（party role）**。
+- **多边协议（multilateral agreement）**：**具有参与方角色（has party role）**至少有 3 个**参与方角色（party role）**。
+- **多边协议（multilateral agreement）**与**双边协议（bilateral agreement）**互斥：同一个体不能同时属于两者。
+- **权利人（obligee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
+- **义务人（obligor）**：**具有义务（has obligation）**至少有一个取值，类型是**承诺（commitment）**。
+- **义务人（obligor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
 
 ## 6. 依赖（owl:imports，5 个）
 

@@ -50,15 +50,17 @@
 
 ## 5. 公理约定（Axioms）
 
-- 合同限制（contractual restriction）：由……授权要求 only 合同
-- 个人投资者（individual investor）：由…扮演（is played by） only 具有法律行为能力的自然人
-- 机构投资者（institutional investor）：由…扮演（is played by） only 法律实体
-- 机构投资者（institutional investor） 与 个人投资者（individual investor） 互斥（disjointWith）
-- 合格投资者限制（qualified investor restriction）：具有持有期（has holding period） only 日期区间
-- 证券法规（securities regulation）：定义 only 证券限制（securities restriction）
-- 证券法规（securities regulation）：由……授予 some 成文法
-- 证券限制（securities restriction）：适用于 only N17b8b2a9eb584048a2f2c9ab169c58dc
-- 证券限制（securities restriction）：由……授权要求 only N5cb0883e1feb468fac8e7316c7395f89
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **合同限制（contractual restriction）**：**由……授权要求（isMandatedBy）**的所有取值只能是**合同（Contract）**。
+- **个人投资者（individual investor）**：**由…扮演（is played by）**的所有取值只能是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **机构投资者（institutional investor）**：**由…扮演（is played by）**的所有取值只能是**法律实体（LegalEntity）**。
+- **机构投资者（institutional investor）**与**个人投资者（individual investor）**互斥：同一个体不能同时属于两者。
+- **合格投资者限制（qualified investor restriction）**：**具有持有期（has holding period）**的所有取值只能是**日期区间（DatePeriod）**。
+- **证券法规（securities regulation）**：**定义（defines）**的所有取值只能是**证券限制（securities restriction）**。
+- **证券法规（securities regulation）**：**由……授予（isConferredBy）**至少有一个取值，类型是**成文法（StatuteLaw）**。
+- **证券限制（securities restriction）**：**适用于（appliesTo）**的所有取值只能是**Nc51f1f30dc334cebbf7f30376f1056f5**。
+- **证券限制（securities restriction）**：**由……授权要求（isMandatedBy）**的所有取值只能是**N5bd7f5e06d7d409ab3381c615a20282c**。
 
 ## 6. 依赖（owl:imports，16 个）
 

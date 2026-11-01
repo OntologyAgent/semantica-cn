@@ -88,17 +88,19 @@
 
 ## 5. 公理约定（Axioms）
 
-- 交叉违约条款（cross default provision）：具有违约门槛金额（has default threshold amount） 货币数量 ≥0
-- 交叉违约条款（cross default provision）：适用于 some 信贷协议
-- 违约事件（default event）：例证 违反契约承诺 ≥0
-- 主体特定信用事件（entity-specific credit event）：适用于 some 法律主体
-- 未能支付（failure to pay）：具有宽限期（has grace period） 日期区间 ≤1
-- 违约情形下的利息义务（interest obligation in light of default）：具有违约利息复利基础（has default interest compounding basis） 日期区间 ≤1
-- 违约情形下的利息义务（interest obligation in light of default）：restriction
-- 违约情形下的利息义务（interest obligation in light of default）：由……授权要求 some 支付义务
-- 债务特定信用事件（obligation-specific credit event）：具有违约门槛金额（has default threshold amount） 货币数量 ≥0
-- 债务特定信用事件（obligation-specific credit event）：适用于 some 信贷协议
-- 软信用事件（soft credit event） 与 硬信用事件（hard credit event） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **交叉违约条款（cross default provision）**：**具有违约门槛金额（has default threshold amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **交叉违约条款（cross default provision）**：**适用于（appliesTo）**至少有一个取值，类型是**信贷协议（CreditAgreement）**。
+- **违约事件（default event）**：**例证（exemplifies）**可以有 0 个或多个**违反契约承诺（BreachOfCovenant）**。
+- **主体特定信用事件（entity-specific credit event）**：**适用于（appliesTo）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **未能支付（failure to pay）**：**具有宽限期（has grace period）**至多有 1 个**日期区间（DatePeriod）**。
+- **违约情形下的利息义务（interest obligation in light of default）**：**具有违约利息复利基础（has default interest compounding basis）**至多有 1 个**日期区间（DatePeriod）**。
+- **违约情形下的利息义务（interest obligation in light of default）**：**是否适用违约利息（is default interest applicable）**存在取值约束。
+- **违约情形下的利息义务（interest obligation in light of default）**：**由……授权要求（isMandatedBy）**至少有一个取值，类型是**支付义务（PaymentObligation）**。
+- **债务特定信用事件（obligation-specific credit event）**：**具有违约门槛金额（has default threshold amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **债务特定信用事件（obligation-specific credit event）**：**适用于（appliesTo）**至少有一个取值，类型是**信贷协议（CreditAgreement）**。
+- **软信用事件（soft credit event）**与**硬信用事件（hard credit event）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，12 个）
 

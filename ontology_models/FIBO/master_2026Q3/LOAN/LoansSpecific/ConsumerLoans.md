@@ -39,8 +39,10 @@
 
 ## 5. 公理约定（Axioms）
 
-- 消费贷款（consumer loan）：具有借款人 some（restriction）
-- 机动车贷款（motor vehicle loan）：以……为抵押 some 实物抵押品
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **消费贷款（consumer loan）**：**具有借款人（hasBorrower）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **机动车贷款（motor vehicle loan）**：**以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**实物抵押品（PhysicalCollateral）**。
 
 ## 6. 依赖（owl:imports，8 个）
 

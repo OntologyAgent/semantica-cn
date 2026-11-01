@@ -108,6 +108,9 @@ fibo-loan-reln-hmda:HMDA-Report a owl:Class ;
         "HMDA 报告（HMDA report）"@zh ;
     rdfs:comment "为满足《住房抵押贷款披露法》监管报告要求而编制的报告。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:hasNumberOfEntries ;
+            owl:someValuesFrom xsd:positiveInteger ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-rep:isSubmittedTo ;
             owl:someValuesFrom cmns-rga:RegulatoryAgency ],
         [ a owl:Restriction ;
@@ -117,9 +120,6 @@ fibo-loan-reln-hmda:HMDA-Report a owl:Class ;
                     owl:someValuesFrom [ a owl:Class ;
                             owl:intersectionOf ( cmns-org:LegalPerson cmns-org:FormalOrganization ) ] ] ;
             owl:onProperty fibo-fnd-arr-rep:isSubmittedBy ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-utl-alx:hasNumberOfEntries ;
-            owl:someValuesFrom xsd:positiveInteger ],
         fibo-fnd-arr-rep:Report ;
     skos:definition "a report prepared to satisfy HMDA regulatory reporting requirements as described US section 1003.3(c) of the Revised Home Mortgage Disclosure Act of 2015" ;
     skos:editorialNote "The filter class on the hasReportingAgent restriction comes from the hasIdentity restriction on FinancialServiceProvider, which, unfortunately, is a PartyInRole." ;
@@ -195,11 +195,11 @@ fibo-loan-reln-hmda:Race a owl:Class ;
         "种族（race）"@zh ;
     rdfs:comment "基于人的身体特征（如骨骼结构和肤色、发色或瞳色）的类别。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty skos:broaderTransitive ;
-            owl:someValuesFrom fibo-loan-reln-hmda:Race ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom fibo-be-le-lp:LegallyCompetentNaturalPerson ],
+        [ a owl:Restriction ;
+            owl:onProperty skos:broaderTransitive ;
+            owl:someValuesFrom fibo-loan-reln-hmda:Race ],
         cmns-cls:Classifier ;
     skos:definition "a category based on a person's physical characteristics, such as bone structure and skin, hair, or eye color" .
 

@@ -110,45 +110,47 @@
 
 ## 5. 公理约定（Axioms）
 
-- 相关性腿（correlation leg）：是……的腿（is leg of） some 相关性互换（correlation swap）
-- 离散度腿（dispersion leg）：是……的腿（is leg of） some 离散度互换（dispersion swap）
-- 离散度互换（dispersion swap）：具有腿（has leg） 离散度腿（dispersion leg） =1
-- 固定腿（fixed leg）：具有支付进度表 支付进度表 ≥0
-- 固定腿（fixed leg） 与 浮动腿（floating leg） 互斥（disjointWith）
-- 固定支付腿（fixed payment leg）：具有支付进度表 some 支付进度表
-- 浮动腿（floating leg）：具有支付进度表 支付进度表 ≥0
-- 基于业绩的浮动腿（performance-based variable leg）：是……的腿（is leg of） some 统计互换（statistical swap）
-- 利率类腿（rate-based leg）：是……的腿（is leg of） some 利率互换（rates swap）
-- 利率类腿（rate-based leg）：具有标的 some（由…扮演（is played by） some（restriction））
-- 利率互换（rates swap）：具有腿（has leg） 利率类腿（rate-based leg） =2
-- 回报腿（return leg）：是……的腿（is leg of） some 回报互换（return swap）
-- 回报腿（return leg）：具有标的 some（restriction）
-- 回报互换（return swap）：具有融资腿（has funding leg） some 固定支付腿（fixed payment leg）
-- 回报互换（return swap）：具有回报腿（has return leg） some 回报腿（return leg）
-- 统计互换（statistical swap）：具有腿（has leg） 固定腿（fixed leg） ≥0
-- 统计互换（statistical swap）：具有腿（has leg） some 基于业绩的浮动腿（performance-based variable leg）
-- 互换（swap）：由……标识 唯一互换标识符（unique swap identifier） ≥0
-- 互换（swap）：具有合同当事方 some 互换方（swap party）
-- 互换（swap）：具有合同要素 some 互换条款（swap terms）
-- 互换（swap）：交换 some 互换腿（swap leg）
-- 互换确认书（swap confirmation）：取代 only 互换确认书（swap confirmation）
-- 互换确认书（swap confirmation）：具有合同当事方 some 互换方（swap party）
-- 互换腿（swap leg）：restriction
-- 互换腿（swap leg）：具有终止日 日期 ≥0
-- 互换腿（swap leg）：具有买方 互换付款方（swap paying party） =1
-- 互换腿（swap leg）：具有卖方 互换收款方（swap receiving party） =1
-- 互换腿（swap leg）：以……计价 货币 =1
-- 互换腿（swap leg）：具有生效日期 日期 =1
-- 互换腿（swap leg）：是……的腿（is leg of） some 互换（swap）
-- 互换腿事件（swap leg event）：适用于 some 互换腿（swap leg）
-- 互换生命周期事件（swap lifecycle event）：由……标识 互换生命周期事件标识符（swap lifecycle event identifier） =1
-- 互换生命周期事件（swap lifecycle event）：具有互换标识符（has swap identifier） 唯一互换标识符（unique swap identifier） =1
-- 互换生命周期事件（swap lifecycle event）：适用于 some 互换（swap）
-- 互换生命周期事件（swap lifecycle event）：具有参与方角色（has party role） some 互换方（swap party）
-- 互换生命周期事件标识符（swap lifecycle event identifier）：标识 互换生命周期事件（swap lifecycle event） =1
-- 互换方（swap party）：由…扮演（is played by） some（是…的参与方（is a party to） some 互换（swap））
-- 总回报互换（total return swap）：具有回报腿（has return leg） some 总回报腿（total return leg）
-- 唯一互换标识符（unique swap identifier）：标识 互换（swap） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **相关性腿（correlation leg）**：**是……的腿（is leg of）**至少有一个取值，类型是**相关性互换（correlation swap）**。
+- **离散度腿（dispersion leg）**：**是……的腿（is leg of）**至少有一个取值，类型是**离散度互换（dispersion swap）**。
+- **离散度互换（dispersion swap）**：**具有腿（has leg）**恰好有 1 个**离散度腿（dispersion leg）**。
+- **固定腿（fixed leg）**：**具有支付进度表（hasPaymentSchedule）**可以有 0 个或多个**支付进度表（PaymentSchedule）**。
+- **固定腿（fixed leg）**与**浮动腿（floating leg）**互斥：同一个体不能同时属于两者。
+- **固定支付腿（fixed payment leg）**：**具有支付进度表（hasPaymentSchedule）**至少有一个取值，类型是**支付进度表（PaymentSchedule）**。
+- **浮动腿（floating leg）**：**具有支付进度表（hasPaymentSchedule）**可以有 0 个或多个**支付进度表（PaymentSchedule）**。
+- **基于业绩的浮动腿（performance-based variable leg）**：**是……的腿（is leg of）**至少有一个取值，类型是**统计互换（statistical swap）**。
+- **利率类腿（rate-based leg）**：**是……的腿（is leg of）**至少有一个取值，类型是**利率互换（rates swap）**。
+- **利率类腿（rate-based leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **利率互换（rates swap）**：**具有腿（has leg）**恰好有 2 个**利率类腿（rate-based leg）**。
+- **回报腿（return leg）**：**是……的腿（is leg of）**至少有一个取值，类型是**回报互换（return swap）**。
+- **回报腿（return leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **回报互换（return swap）**：**具有融资腿（has funding leg）**至少有一个取值，类型是**固定支付腿（fixed payment leg）**。
+- **回报互换（return swap）**：**具有回报腿（has return leg）**至少有一个取值，类型是**回报腿（return leg）**。
+- **统计互换（statistical swap）**：**具有腿（has leg）**可以有 0 个或多个**固定腿（fixed leg）**。
+- **统计互换（statistical swap）**：**具有腿（has leg）**至少有一个取值，类型是**基于业绩的浮动腿（performance-based variable leg）**。
+- **互换（swap）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**唯一互换标识符（unique swap identifier）**。
+- **互换（swap）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**互换方（swap party）**。
+- **互换（swap）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**互换条款（swap terms）**。
+- **互换（swap）**：**交换（exchanges）**至少有一个取值，类型是**互换腿（swap leg）**。
+- **互换确认书（swap confirmation）**：**取代（supersedes）**的所有取值只能是**互换确认书（swap confirmation）**。
+- **互换确认书（swap confirmation）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**互换方（swap party）**。
+- **互换腿（swap leg）**：该属性存在取值约束。
+- **互换腿（swap leg）**：**具有终止日（hasTerminationDate）**可以有 0 个或多个**日期（Date）**。
+- **互换腿（swap leg）**：**具有买方（hasBuyer）**恰好有 1 个**互换付款方（swap paying party）**。
+- **互换腿（swap leg）**：**具有卖方（hasSeller）**恰好有 1 个**互换收款方（swap receiving party）**。
+- **互换腿（swap leg）**：**以……计价（isDenominatedIn）**恰好有 1 个**货币（Currency）**。
+- **互换腿（swap leg）**：**具有生效日期（hasEffectiveDate）**恰好有 1 个**日期（Date）**。
+- **互换腿（swap leg）**：**是……的腿（is leg of）**至少有一个取值，类型是**互换（swap）**。
+- **互换腿事件（swap leg event）**：**适用于（appliesTo）**至少有一个取值，类型是**互换腿（swap leg）**。
+- **互换生命周期事件（swap lifecycle event）**：**由……标识（isIdentifiedBy）**恰好有 1 个**互换生命周期事件标识符（swap lifecycle event identifier）**。
+- **互换生命周期事件（swap lifecycle event）**：**具有互换标识符（has swap identifier）**恰好有 1 个**唯一互换标识符（unique swap identifier）**。
+- **互换生命周期事件（swap lifecycle event）**：**适用于（appliesTo）**至少有一个取值，类型是**互换（swap）**。
+- **互换生命周期事件（swap lifecycle event）**：**具有参与方角色（has party role）**至少有一个取值，类型是**互换方（swap party）**。
+- **互换生命周期事件标识符（swap lifecycle event identifier）**：**标识（identifies）**恰好有 1 个**互换生命周期事件（swap lifecycle event）**。
+- **互换方（swap party）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**互换（swap）**。
+- **总回报互换（total return swap）**：**具有回报腿（has return leg）**至少有一个取值，类型是**总回报腿（total return leg）**。
+- **唯一互换标识符（unique swap identifier）**：**标识（identifies）**恰好有 1 个**互换（swap）**。
 
 ## 6. 依赖（owl:imports，28 个）
 

@@ -107,27 +107,29 @@
 
 ## 5. 公理约定（Axioms）
 
-- 配售信息（allotment information）：描述……的配售（describes allotment of） some 证券
-- 配售信息（allotment information）：包含 some 认购截止信息（subscription closing information）
-- 公告（announcement）：发行请求方 some 潜在发行人（potential issuer）
-- 发行计划（issuance programme）：包含 some 证券发行
-- 已发行证券发行信息（issued security issue information）：具有分期缴付发行进度表（has partially paid issuance schedule） only 支付进度表
-- 已发行证券发行信息（issued security issue information）：关于 some 证券
-- 发行（offering）：具有分销类型（has distribution type） some 证券发行分销方式（security offering distribution method）
-- 发行（offering）：具有销售方式（has sale method） some 证券发行销售方式（security offering sale method）
-- 发行（offering）：使合格所需（required to make eligible） some 发行文件
-- 发行（offering）：fibo-bp-iss-muni:givesRiseTo some 已发行证券发行信息（issued security issue information）
-- 潜在发行人（potential issuer）：是潜在发行人（is potential issuer） some 证券发行流程（securities issuance process）
-- 证券发行流程（securities issuance process）：具有发行担保人 some 证券发行担保人（security issuance guarantor）
-- 证券发行流程（securities issuance process）：具有潜在发行人 some 潜在发行人（potential issuer）
-- 证券发行流程（securities issuance process）：fibo-bp-iss-muni:subscriber.1 some 认购人（subscriber）
-- 证券发行流程（securities issuance process）：生产 some 交易工具发行流程信息（traded instrument issuance process information）
-- 证券发行担保人（security issuance guarantor）：是发行担保人（is issuance guarantor） some 证券发行流程（securities issuance process）
-- 认购人（subscriber）：认购 some 证券承销发行流程
-- 认购截止信息（subscription closing information）：适用于 some 认购人（subscriber）
-- 交易工具发行流程信息（traded instrument issuance process information）：是……的部分 some 已发行证券发行信息（issued security issue information）
-- 承销商承销量（underwriter takedown）：restriction
-- 承销商承销量（underwriter takedown）：由……承销（taken down by） some 市政债发行承销商
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **配售信息（allotment information）**：**描述……的配售（describes allotment of）**至少有一个取值，类型是**证券（Security）**。
+- **配售信息（allotment information）**：**包含（comprises）**至少有一个取值，类型是**认购截止信息（subscription closing information）**。
+- **公告（announcement）**：**发行请求方（offeringRequestor）**至少有一个取值，类型是**潜在发行人（potential issuer）**。
+- **发行计划（issuance programme）**：**包含（comprises）**至少有一个取值，类型是**证券发行（SecuritiesOffering）**。
+- **已发行证券发行信息（issued security issue information）**：**具有分期缴付发行进度表（has partially paid issuance schedule）**的所有取值只能是**支付进度表（PaymentSchedule）**。
+- **已发行证券发行信息（issued security issue information）**：**关于（isAbout）**至少有一个取值，类型是**证券（Security）**。
+- **发行（offering）**：**具有分销类型（has distribution type）**至少有一个取值，类型是**证券发行分销方式（security offering distribution method）**。
+- **发行（offering）**：**具有销售方式（has sale method）**至少有一个取值，类型是**证券发行销售方式（security offering sale method）**。
+- **发行（offering）**：**使合格所需（required to make eligible）**至少有一个取值，类型是**发行文件（OfferingDocument）**。
+- **发行（offering）**：**fibo-bp-iss-muni:givesRiseTo（givesRiseTo）**至少有一个取值，类型是**已发行证券发行信息（issued security issue information）**。
+- **潜在发行人（potential issuer）**：**是潜在发行人（is potential issuer）**至少有一个取值，类型是**证券发行流程（securities issuance process）**。
+- **证券发行流程（securities issuance process）**：**具有发行担保人（hasIssuanceGuarantor）**至少有一个取值，类型是**证券发行担保人（security issuance guarantor）**。
+- **证券发行流程（securities issuance process）**：**具有潜在发行人（hasPotentialIssuer）**至少有一个取值，类型是**潜在发行人（potential issuer）**。
+- **证券发行流程（securities issuance process）**：**fibo-bp-iss-muni:subscriber.1（subscriber.1）**至少有一个取值，类型是**认购人（subscriber）**。
+- **证券发行流程（securities issuance process）**：**生产（produces）**至少有一个取值，类型是**交易工具发行流程信息（traded instrument issuance process information）**。
+- **证券发行担保人（security issuance guarantor）**：**是发行担保人（is issuance guarantor）**至少有一个取值，类型是**证券发行流程（securities issuance process）**。
+- **认购人（subscriber）**：**认购（subscribesTo）**至少有一个取值，类型是**证券承销发行流程（SecuritiesUnderwritingIssuanceProcess）**。
+- **认购截止信息（subscription closing information）**：**适用于（appliesTo）**至少有一个取值，类型是**认购人（subscriber）**。
+- **交易工具发行流程信息（traded instrument issuance process information）**：**是……的部分（isPartOf）**至少有一个取值，类型是**已发行证券发行信息（issued security issue information）**。
+- **承销商承销量（underwriter takedown）**：**承销商承销股数（underwriter takedown shares）**存在取值约束。
+- **承销商承销量（underwriter takedown）**：**由……承销（taken down by）**至少有一个取值，类型是**市政债发行承销商（MuniIssueUnderwriter）**。
 
 ## 6. 依赖（owl:imports，19 个）
 

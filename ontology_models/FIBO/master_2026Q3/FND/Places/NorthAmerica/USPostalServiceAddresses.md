@@ -76,33 +76,35 @@
 
 ## 5. 公理约定（Axioms）
 
-- 国务院地址（Department of State address）：restriction
-- 国务院地址（Department of State address）：包含 国务院单元成分（Department of State unit component） =1
-- 国务院地址（Department of State address）：包含 信箱（mailbox） =1
-- 国务院地址（Department of State address） 与 常规街道地址 互斥（disjointWith）
-- 国务院单元成分（Department of State unit component）：restriction
-- 波多黎各地址（Puerto Rico address）：包含 城区（urbanization） ≥0
-- 美国邮政地址标识符（U.S. Postal Service address identifier）：包含 投递点编码（delivery point code） =1
-- 美国邮政地址标识符（U.S. Postal Service address identifier）：包含 ZIP+4 编码（ZIP+4 Code） =1
-- 投递地址代码集（delivery address code set）：具有成员 some 美国邮政地址标识符（U.S. Postal Service address identifier）
-- 投递点编码（delivery point code）：是……的成员 投递点代码集（delivery point code set） =1
-- 投递点编码（delivery point code）：restriction
-- 投递点代码集（delivery point code set）：具有成员 some 投递点编码（delivery point code）
-- 存局候领地址（general delivery address）：restriction
-- 存局候领地址（general delivery address） 与 常规街道地址 互斥（disjointWith）
-- 公路合同地址（highway contract address）：包含 公路合同路线（highway contract route） =1
-- 公路合同地址（highway contract address）：包含 信箱（mailbox） =1
-- 公路合同地址（highway contract address） 与 常规街道地址 互斥（disjointWith）
-- 公路合同路线（highway contract route）：restriction
-- 公路合同路线地址（highway contract route address）：restriction
-- 信箱（mailbox）：restriction
-- 海外军事地址（overseas military address）：具有地址行 1 some rdfs:Literal
-- 海外军事地址（overseas military address）：具有城市名称 some（restriction）
-- 海外军事地址（overseas military address） 与 常规街道地址 互斥（disjointWith）
-- 乡村路线地址（rural route address）：包含 信箱（mailbox） =1
-- 乡村路线地址（rural route address）：包含 公路合同路线地址（highway contract route address） =1
-- 乡村路线地址（rural route address） 与 常规街道地址 互斥（disjointWith）
-- 邮区编码方案（zip code scheme）：具有成员 some（restriction）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **国务院地址（Department of State address）**：**具有城市名称（hasCityName）**的取值固定为 DPO。
+- **国务院地址（Department of State address）**：**包含（comprises）**恰好有 1 个**国务院单元成分（Department of State unit component）**。
+- **国务院地址（Department of State address）**：**包含（comprises）**恰好有 1 个**信箱（mailbox）**。
+- **国务院地址（Department of State address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
+- **国务院单元成分（Department of State unit component）**：**包含（comprises）**的取值固定为 Unit。
+- **波多黎各地址（Puerto Rico address）**：**包含（comprises）**可以有 0 个或多个**城区（urbanization）**。
+- **美国邮政地址标识符（U.S. Postal Service address identifier）**：**包含（comprises）**恰好有 1 个**投递点编码（delivery point code）**。
+- **美国邮政地址标识符（U.S. Postal Service address identifier）**：**包含（comprises）**恰好有 1 个**ZIP+4 编码（ZIP+4 Code）**。
+- **投递地址代码集（delivery address code set）**：**具有成员（hasMember）**至少有一个取值，类型是**美国邮政地址标识符（U.S. Postal Service address identifier）**。
+- **投递点编码（delivery point code）**：**是……的成员（isMemberOf）**恰好有 1 个**投递点代码集（delivery point code set）**。
+- **投递点编码（delivery point code）**：**具有标签（hasTag）**存在取值约束。
+- **投递点代码集（delivery point code set）**：**具有成员（hasMember）**至少有一个取值，类型是**投递点编码（delivery point code）**。
+- **存局候领地址（general delivery address）**：**具有地址行 1（hasAddressLine1）**的取值固定为 GENERAL DELIVERY。
+- **存局候领地址（general delivery address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
+- **公路合同地址（highway contract address）**：**包含（comprises）**恰好有 1 个**公路合同路线（highway contract route）**。
+- **公路合同地址（highway contract address）**：**包含（comprises）**恰好有 1 个**信箱（mailbox）**。
+- **公路合同地址（highway contract address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
+- **公路合同路线（highway contract route）**：**包含（comprises）**的取值固定为 HighwayContractRouteDesignator。
+- **公路合同路线地址（highway contract route address）**：**包含（comprises）**的取值固定为 RuralRouteDesignator。
+- **信箱（mailbox）**：**包含（comprises）**的取值固定为 MailboxDesignator。
+- **海外军事地址（overseas military address）**：**具有地址行 1（hasAddressLine1）**至少有一个取值，类型是**rdfs:Literal（Literal）**。
+- **海外军事地址（overseas military address）**：**具有城市名称（hasCityName）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **海外军事地址（overseas military address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
+- **乡村路线地址（rural route address）**：**包含（comprises）**恰好有 1 个**信箱（mailbox）**。
+- **乡村路线地址（rural route address）**：**包含（comprises）**恰好有 1 个**公路合同路线地址（highway contract route address）**。
+- **乡村路线地址（rural route address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
+- **邮区编码方案（zip code scheme）**：**具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，8 个）
 

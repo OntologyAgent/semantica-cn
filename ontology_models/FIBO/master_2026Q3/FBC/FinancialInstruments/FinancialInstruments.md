@@ -99,30 +99,32 @@
 
 ## 5. 公理约定（Axioms）
 
-- 商品工具（commodity instrument）：具有执行日商品价值（has commodity value as of execution date） 货币数量 ≥0
-- 商品工具（commodity instrument）：涉及 商品 ≥0
-- 商品工具（commodity instrument）：具有量值 标量值 ≥0
-- 货币工具（currency instrument）：具有买入货币（has buying currency） 货币 ≥0
-- 货币工具（currency instrument）：具有卖出货币（has selling currency） 货币 ≥0
-- 债务工具（debt instrument）：具有借款人 some 借款人
-- 债务工具（debt instrument）：具有贷款人 some 贷款人
-- 衍生工具（derivative instrument）：具有初始交换日 显式日期 ≥0
-- 衍生工具（derivative instrument） 与 现金类工具（cash instrument） 互斥（disjointWith）
-- 金融工具（financial instrument）：由……标识 金融工具标识符（financial instrument identifier） ≥0
-- 金融工具（financial instrument）：具有名义价值（has nominal value） 货币数量 ≥0
-- 金融工具（financial instrument）：法律登记于（is legally recorded in） 管辖权 ≥0
-- 金融工具（financial instrument）：restriction
-- 金融工具（financial instrument）：以……计价（is denominated in） some 货币
-- 金融工具（financial instrument）：由……发行 some 发行人（issuer）
-- 金融工具标识符（financial instrument identifier）：标识 金融工具（financial instrument） ≥0
-- 发行人（issuer）：发行 some（restriction）
-- 发行人（issuer）：由…扮演（is played by） some（是…的参与方（is a party to） some 金融工具（financial instrument））
-- 可转让证券（negotiable security）：restriction
-- 不可转让证券（non-negotiable security） 与 可转让证券（negotiable security） 互斥（disjointWith）
-- 打包金融产品（packaged financial product）：被包含于 金融产品目录 ≥0
-- 打包金融产品（packaged financial product）：包含 some（restriction）
-- 证券交易（securities transaction）：适用于 some 金融工具（financial instrument）
-- 证券（security）：法律登记于（is legally recorded in） 管辖权 =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **商品工具（commodity instrument）**：**具有执行日商品价值（has commodity value as of execution date）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **商品工具（commodity instrument）**：**涉及（involves）**可以有 0 个或多个**商品（Commodity）**。
+- **商品工具（commodity instrument）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
+- **货币工具（currency instrument）**：**具有买入货币（has buying currency）**可以有 0 个或多个**货币（Currency）**。
+- **货币工具（currency instrument）**：**具有卖出货币（has selling currency）**可以有 0 个或多个**货币（Currency）**。
+- **债务工具（debt instrument）**：**具有借款人（hasBorrower）**至少有一个取值，类型是**借款人（Borrower）**。
+- **债务工具（debt instrument）**：**具有贷款人（hasLender）**至少有一个取值，类型是**贷款人（Lender）**。
+- **衍生工具（derivative instrument）**：**具有初始交换日（hasInitialExchangeDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **衍生工具（derivative instrument）**与**现金类工具（cash instrument）**互斥：同一个体不能同时属于两者。
+- **金融工具（financial instrument）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**金融工具标识符（financial instrument identifier）**。
+- **金融工具（financial instrument）**：**具有名义价值（has nominal value）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **金融工具（financial instrument）**：**法律登记于（is legally recorded in）**可以有 0 个或多个**管辖权（Jurisdiction）**。
+- **金融工具（financial instrument）**：**是否可转让（is negotiable）**存在取值约束。
+- **金融工具（financial instrument）**：**以……计价（is denominated in）**至少有一个取值，类型是**货币（Currency）**。
+- **金融工具（financial instrument）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**发行人（issuer）**。
+- **金融工具标识符（financial instrument identifier）**：**标识（identifies）**可以有 0 个或多个**金融工具（financial instrument）**。
+- **发行人（issuer）**：**发行（issues）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **发行人（issuer）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**金融工具（financial instrument）**。
+- **可转让证券（negotiable security）**：**是否可转让（is negotiable）**的取值固定为 true。
+- **不可转让证券（non-negotiable security）**与**可转让证券（negotiable security）**互斥：同一个体不能同时属于两者。
+- **打包金融产品（packaged financial product）**：**被包含于（isIncludedIn）**可以有 0 个或多个**金融产品目录（FinancialProductCatalog）**。
+- **打包金融产品（packaged financial product）**：**包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **证券交易（securities transaction）**：**适用于（appliesTo）**至少有一个取值，类型是**金融工具（financial instrument）**。
+- **证券（security）**：**法律登记于（is legally recorded in）**恰好有 1 个**管辖权（Jurisdiction）**。
 
 ## 6. 依赖（owl:imports，21 个）
 

@@ -102,60 +102,62 @@
 
 ## 5. 公理约定（Axioms）
 
-- 有组织交易设施（OrganizedTradingFacility）：由……管理 only 金融服务提供商
-- 有组织交易设施（OrganizedTradingFacility）：restriction
-- 有组织交易设施（OrganizedTradingFacility）：受……管辖 some 管辖权
-- 认可市场营运者（RecognizedMarketOperator）：restriction
-- 系统性内部撮合商（SystematicInternaliser）：restriction
-- 另类交易系统（alternative trading system）：restriction
-- 核准发布安排（approved publication arrangement）：restriction
-- 核准报告机制（approved reporting mechanism）：restriction
-- 合并行情带提供商（consolidated tape provider）：restriction
-- 加密资产服务提供商（crypto asset services provider）：restriction
-- 加密资产服务提供商（crypto asset services provider）：由……标识 市场标识符（market identifier） ≥0
-- 加密资产服务提供商（crypto asset services provider）：restriction
-- 加密资产服务提供商（crypto asset services provider）：restriction
-- 加密资产服务提供商（crypto asset services provider）：运营所在国（operates in country） some 国家
-- 加密资产服务提供商（crypto asset services provider）：运营所在城市（operates in municipality） some 市政区
-- 数据报告服务提供商（data reporting services provider）：由……标识 市场标识符（market identifier） ≥0
-- 数据报告服务提供商（data reporting services provider）：restriction
-- 数据报告服务提供商（data reporting services provider）：restriction
-- 数据报告服务提供商（data reporting services provider）：运营所在国（operates in country） some 国家
-- 数据报告服务提供商（data reporting services provider）：运营所在城市（operates in municipality） some 市政区
-- 指定合约市场（designated contract market）：restriction
-- 交易所（exchange）：由……标识 市场标识符（market identifier） ≥0
-- 交易所（exchange）：由……管理 金融服务提供商 ≥0
-- 交易所（exchange）：restriction
-- 交易所（exchange）：restriction
-- 交易所（exchange）：运营所在国（operates in country） some 国家
-- 交易所（exchange）：运营所在城市（operates in municipality） some 市政区
-- 交易所参与者（exchange participant）：由……注册 some 交易所（exchange）
-- 交易所参与者（exchange participant）：由…扮演（is played by） some（是……的成员 some（扮演角色（plays role） some 交易所（exchange）））
-- 交易商间报价系统（interdealer quotation system）：restriction
-- 市场类别分类器（market category classifier）：restriction
-- 市场类别分类器（market category classifier）：分类 some（restriction）
-- 市场标识符（market identifier）：标识 some（restriction）
-- 市场层级分类器（market level classifier）：restriction
-- 市场层级分类器（market level classifier）：分类 some（restriction）
-- 市场板块层级市场（market segment-level market）：restriction
-- 市场板块层级市场（market segment-level market）：是……的部分 some 运营层级市场（operating-level market）
-- 多边交易设施（multilateral trading facility）：restriction
-- 运营层级市场（operating-level market）：restriction
-- 运营层级市场（operating-level market）：由……标识 运营层级市场标识符（operating-level market identifier） ≥0
-- 注册多边交易设施（registered multilateral trading facility）：由……管理 some 金融服务提供商
-- 注册多边交易设施（registered multilateral trading facility）：由……注册 some 注册机构
-- 注册多边交易设施（registered multilateral trading facility）：受……管辖 some 管辖权
-- 受监管交易所（regulated exchange）：restriction
-- 受监管交易所（regulated exchange）：受……管辖 some 管辖权
-- 受监管交易所（regulated exchange）：受……监管 some 监管机构
-- 掉期执行设施（swap execution facility）：restriction
-- 交易报告设施（trade reporting facility）：restriction
-- 交易报告设施（trade reporting facility）：由……标识 市场标识符（market identifier） ≥0
-- 交易报告设施（trade reporting facility）：由……管理 金融服务提供商 ≥0
-- 交易报告设施（trade reporting facility）：restriction
-- 交易报告设施（trade reporting facility）：restriction
-- 交易报告设施（trade reporting facility）：运营所在国（operates in country） some 国家
-- 交易报告设施（trade reporting facility）：运营所在城市（operates in municipality） some 市政区
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **有组织交易设施（OrganizedTradingFacility）**：**由……管理（isManagedBy）**的所有取值只能是**金融服务提供商（FinancialServiceProvider）**。
+- **有组织交易设施（OrganizedTradingFacility）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-OTFS。
+- **有组织交易设施（OrganizedTradingFacility）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **认可市场营运者（RecognizedMarketOperator）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-RMOS。
+- **系统性内部撮合商（SystematicInternaliser）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-SINT。
+- **另类交易系统（alternative trading system）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-ATSS。
+- **核准发布安排（approved publication arrangement）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-APPA。
+- **核准报告机制（approved reporting mechanism）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-ARMS。
+- **合并行情带提供商（consolidated tape provider）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-CTPS。
+- **加密资产服务提供商（crypto asset services provider）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-CASP。
+- **加密资产服务提供商（crypto asset services provider）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
+- **加密资产服务提供商（crypto asset services provider）**：**具有设施缩写（has facility acronym）**存在取值约束。
+- **加密资产服务提供商（crypto asset services provider）**：**具有正式名称（hasFormalName）**存在取值约束。
+- **加密资产服务提供商（crypto asset services provider）**：**运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
+- **加密资产服务提供商（crypto asset services provider）**：**运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
+- **数据报告服务提供商（data reporting services provider）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
+- **数据报告服务提供商（data reporting services provider）**：**具有设施缩写（has facility acronym）**存在取值约束。
+- **数据报告服务提供商（data reporting services provider）**：**具有正式名称（hasFormalName）**存在取值约束。
+- **数据报告服务提供商（data reporting services provider）**：**运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
+- **数据报告服务提供商（data reporting services provider）**：**运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
+- **指定合约市场（designated contract market）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-DCMS。
+- **交易所（exchange）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
+- **交易所（exchange）**：**由……管理（isManagedBy）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
+- **交易所（exchange）**：**具有设施缩写（has facility acronym）**存在取值约束。
+- **交易所（exchange）**：**具有正式名称（hasFormalName）**存在取值约束。
+- **交易所（exchange）**：**运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
+- **交易所（exchange）**：**运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
+- **交易所参与者（exchange participant）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**交易所（exchange）**。
+- **交易所参与者（exchange participant）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**交易所（exchange）**。
+- **交易商间报价系统（interdealer quotation system）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-IDQS。
+- **市场类别分类器（market category classifier）**：**定义于（isDefinedIn）**的取值固定为 ISO10383-ClassificationScheme。
+- **市场类别分类器（market category classifier）**：**分类（classifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **市场标识符（market identifier）**：**标识（identifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **市场层级分类器（market level classifier）**：**定义于（isDefinedIn）**的取值固定为 ISO10383-ClassificationScheme。
+- **市场层级分类器（market level classifier）**：**分类（classifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **市场板块层级市场（market segment-level market）**：**由……分类（isClassifiedBy）**的取值固定为 MarketLevelClassifier-SGMT。
+- **市场板块层级市场（market segment-level market）**：**是……的部分（isPartOf）**至少有一个取值，类型是**运营层级市场（operating-level market）**。
+- **多边交易设施（multilateral trading facility）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-MLTF。
+- **运营层级市场（operating-level market）**：**由……分类（isClassifiedBy）**的取值固定为 MarketLevelClassifier-OPRT。
+- **运营层级市场（operating-level market）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**运营层级市场标识符（operating-level market identifier）**。
+- **注册多边交易设施（registered multilateral trading facility）**：**由……管理（isManagedBy）**至少有一个取值，类型是**金融服务提供商（FinancialServiceProvider）**。
+- **注册多边交易设施（registered multilateral trading facility）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
+- **注册多边交易设施（registered multilateral trading facility）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **受监管交易所（regulated exchange）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-RMKT。
+- **受监管交易所（regulated exchange）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **受监管交易所（regulated exchange）**：**受……监管（isRegulatedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+- **掉期执行设施（swap execution facility）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-SEFS。
+- **交易报告设施（trade reporting facility）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-TRFS。
+- **交易报告设施（trade reporting facility）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
+- **交易报告设施（trade reporting facility）**：**由……管理（isManagedBy）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
+- **交易报告设施（trade reporting facility）**：**具有设施缩写（has facility acronym）**存在取值约束。
+- **交易报告设施（trade reporting facility）**：**具有正式名称（hasFormalName）**存在取值约束。
+- **交易报告设施（trade reporting facility）**：**运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
+- **交易报告设施（trade reporting facility）**：**运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
 
 ## 6. 依赖（owl:imports，18 个）
 

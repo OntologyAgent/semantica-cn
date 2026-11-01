@@ -197,86 +197,88 @@
 
 ## 5. 公理约定（Axioms）
 
-- 计提（accrual）：适用于 利息（interest） ≥0
-- 应计利息（accrued interest）：具有截止日 some 显式日期
-- 摊销（amortization）：是……的摊销（is amortization of） 债务（debt） ≥0
-- 摊销计划表（amortization schedule）：包含 利息支付计划表（interest payment schedule） ≥0
-- 摊销计划表（amortization schedule）：包含 本金支付计划表（principal payment schedule） ≥0
-- 摊销计划表（amortization schedule）：体现（embodies） some 摊销（amortization）
-- 借款人（borrower）：欠付（owes） some 债务（debt）
-- 借款人（borrower）：由…扮演（is played by） some（是…的参与方（is a party to） some 信贷协议（credit agreement））
-- 借款人标识符（borrower identifier）：标识 借款人（borrower） =1
-- 借款人标识符（borrower identifier）：定义于 借款人标识方案（borrower identification scheme） =1
-- 借款能力（borrowing capacity）：由……证明 some 评估报告
-- 借款能力（borrowing capacity）：具有评估日期 some 显式日期
-- 借款能力（borrowing capacity）：适用于 some 法律主体
-- 抵押品（collateral）：是……的抵押担保（is collateralization of） 资产 ≥0
-- 截至日抵押品价值（collateral value as of date）：具有评估日期 some 显式日期
-- 截至日抵押品价值（collateral value as of date）：是……的估计价值 some 抵押品（collateral）
-- 承诺性信贷额度（committed credit facility）：具有成员 承诺性子额度（committed sub-facility） ≥0
-- 承诺性信贷额度（committed credit facility） 与 非承诺性信贷额度（uncommitted credit facility） 互斥（disjointWith）
-- 承诺性子额度（committed sub-facility）：是……的组成成分 some 承诺性信贷额度（committed credit facility）
-- 承诺性子额度（committed sub-facility） 与 非承诺性子额度（uncommitted sub-facility） 互斥（disjointWith）
-- 信贷协议（credit agreement）：以……为抵押（is collateralized by） 抵押品（collateral） ≥0
-- 信贷协议（credit agreement）：具有货币 货币 ≥0
-- 信贷协议（credit agreement）：具有合同要素 募集资金用途条款 ≥0
-- 信贷协议（credit agreement）：具有初始交换日（has initial exchange date） 显式日期 ≥0
-- 信贷协议（credit agreement）：具有到期日（has maturity date） 显式日期 ≥0
-- 信贷协议（credit agreement）：具有合同当事方 some 债权人（creditor）
-- 信贷协议（credit agreement）：具有合同当事方 some 债务人（debtor）
-- 信贷协议（credit agreement）：具有合同要素 some 债务条款（debt terms）
-- 到期偿还型信贷协议（credit agreement repaid at maturity）：具有到期日（has maturity date） some 显式日期
-- 信用增级协议（credit enhancement agreement）：具有受益人 some 信用增级受益人（credit enhancement beneficiary）
-- 信用增级协议（credit enhancement agreement）：由……提供 some 合同主当事方
-- 信用增级受益人（credit enhancement beneficiary）：由…扮演（is played by） some（是…的参与方（is a party to） 信用增级协议（credit enhancement agreement） ≥0）
-- 信贷额度（credit facility）：具有成员 子额度（sub-facility） ≥0
-- 信贷额度（credit facility）：具有合同要素 先决条件 ≥0
-- 信贷额度（credit facility）：具有货币数量 some 货币数量
-- 债权人（creditor）：由…扮演（is played by） only 法律主体
-- 债权人（creditor）：被欠付（is owed） some 债务（debt）
-- 债务（debt）：由……欠付（is owed by） some 债务人（debtor）
-- 债务（debt）：欠付给（is owed to） some 债权人（creditor）
-- 债务人（debtor）：由…扮演（is played by） only 法律主体
-- 债务人（debtor）：欠付（owes） 债务（debt） ≥0
-- 明示合同事件计划表（explicit contract event schedule）：适用于 some 信贷协议（credit agreement）
-- 利息（interest）：具有利率（has interest rate） only 利率
-- 利息（interest）：具有日期区间 only 日期区间
-- 利息（interest）：是……的利息（is interest on） some 债务（debt）
-- 利息计算事件（interest calculation）：具有利率（has interest rate） 利率 =1
-- 利息计算事件（interest calculation）：具有货币数量 货币数量 =1
-- 利息计算计划表（interest calculation schedule）：具有发生事项 some 利息计算事件（interest calculation）
-- 利息支付计划表（interest payment schedule）：具有发生事项 some 利息支付事件（interest payment）
-- 利息支付条款（interest payment terms）：具有计提基础（has accrual basis） 计日惯例（day-count convention） ≥0
-- 利息支付条款（interest payment terms）：具有利率（has interest rate） 利率 ≥0
-- 利息支付条款（interest payment terms）：具有利率上限（has interest rate cap） 利率 ≥0
-- 利息支付条款（interest payment terms）：具有付息日（has interest payment day） 月中日 ≥0
-- 利息支付条款（interest payment terms）：具有复利频率（has compounding frequency） 重复区间 ≥0
-- 利息支付条款（interest payment terms）：具有付息频率（has interest payment frequency） 重复区间 ≥0
-- 利息支付条款（interest payment terms）：具有利息起计日（has initial interest accrual date） 日期 ≥0
-- 利息支付条款（interest payment terms）：具有首次利息支付日（has initial interest payment date） 日期 ≥0
-- 利息支付条款（interest payment terms）：规范……的支付（governs payment of） some 利息（interest）
-- 利率重置计划表（interest rate reset schedule）：具有发生事项 some 利率重置（interest rate reset）
-- 贷款人（lender）：由…扮演（is played by） some（是…的参与方（is a party to） some 信贷协议（credit agreement））
-- 管理利率（managed interest rate）：由……管理 some 金融服务提供商
-- 非实物抵押品（non-physical collateral）：是……的抵押担保（is collateralization of） 金融资产 ≥0
-- 非实物抵押品（non-physical collateral） 与 实物抵押品（physical collateral） 互斥（disjointWith）
-- 实物抵押品（physical collateral）：是……的抵押担保（is collateralization of） 实物资产 ≥0
-- 本金（principal）：restriction
-- 本金（principal）：是……的本金（is principal of） some 债务（debt）
-- 本金支付计划表（principal payment schedule）：具有发生事项 some 本金支付事件（principal payment）
-- 本金偿还条款（principal repayment terms）：具有展期条款 展期条款 ≤1
-- 本金偿还条款（principal repayment terms）：具有本金支付日（has principal payment day） 月中日 ≥0
-- 本金偿还条款（principal repayment terms）：具有本金支付频率（has principal payment frequency） 重复区间 ≥0
-- 本金偿还条款（principal repayment terms）：具有首次本金支付日（has initial principal payment date） 日期 ≥0
-- 本金偿还条款（principal repayment terms）：具有本金偿还日（has principal repayment date） 日期 ≥0
-- 本金偿还条款（principal repayment terms）：规范……的支付（governs payment of） some 本金（principal）
-- 预计合同事件计划表（projected contract event schedule）：适用于 信贷协议（credit agreement） ≥0
-- 预计合同事件计划表（projected contract event schedule）：具有预计付款次数（has anticipated number of payments） some xsd:positiveInteger
-- 利率重置时刻（rate reset time of day）：具有商业中心 商业中心 ≥0
-- 循环信用额度（revolving line of credit）：以……为抵押（is collateralized by） 抵押品（collateral） ≥0
-- 子额度（sub-facility）：是……的组成成分 信贷额度（credit facility） =1
-- 子额度（sub-facility）：具有货币数量 some 货币数量
-- 可变利率（variable interest rate） 与 固定利率（fixed interest rate） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **计提（accrual）**：**适用于（appliesTo）**可以有 0 个或多个**利息（interest）**。
+- **应计利息（accrued interest）**：**具有截止日（hasAsOfDate）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **摊销（amortization）**：**是……的摊销（is amortization of）**可以有 0 个或多个**债务（debt）**。
+- **摊销计划表（amortization schedule）**：**包含（comprises）**可以有 0 个或多个**利息支付计划表（interest payment schedule）**。
+- **摊销计划表（amortization schedule）**：**包含（comprises）**可以有 0 个或多个**本金支付计划表（principal payment schedule）**。
+- **摊销计划表（amortization schedule）**：**体现（embodies）**至少有一个取值，类型是**摊销（amortization）**。
+- **借款人（borrower）**：**欠付（owes）**至少有一个取值，类型是**债务（debt）**。
+- **借款人（borrower）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**信贷协议（credit agreement）**。
+- **借款人标识符（borrower identifier）**：**标识（identifies）**恰好有 1 个**借款人（borrower）**。
+- **借款人标识符（borrower identifier）**：**定义于（isDefinedIn）**恰好有 1 个**借款人标识方案（borrower identification scheme）**。
+- **借款能力（borrowing capacity）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**评估报告（AssessmentReport）**。
+- **借款能力（borrowing capacity）**：**具有评估日期（hasDateOfAssessment）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **借款能力（borrowing capacity）**：**适用于（appliesTo）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **抵押品（collateral）**：**是……的抵押担保（is collateralization of）**可以有 0 个或多个**资产（Asset）**。
+- **截至日抵押品价值（collateral value as of date）**：**具有评估日期（hasDateOfAssessment）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **截至日抵押品价值（collateral value as of date）**：**是……的估计价值（isEstimatedValueOf）**至少有一个取值，类型是**抵押品（collateral）**。
+- **承诺性信贷额度（committed credit facility）**：**具有成员（hasMember）**可以有 0 个或多个**承诺性子额度（committed sub-facility）**。
+- **承诺性信贷额度（committed credit facility）**与**非承诺性信贷额度（uncommitted credit facility）**互斥：同一个体不能同时属于两者。
+- **承诺性子额度（committed sub-facility）**：**是……的组成成分（isConstituentOf）**至少有一个取值，类型是**承诺性信贷额度（committed credit facility）**。
+- **承诺性子额度（committed sub-facility）**与**非承诺性子额度（uncommitted sub-facility）**互斥：同一个体不能同时属于两者。
+- **信贷协议（credit agreement）**：**以……为抵押（is collateralized by）**可以有 0 个或多个**抵押品（collateral）**。
+- **信贷协议（credit agreement）**：**具有货币（hasCurrency）**可以有 0 个或多个**货币（Currency）**。
+- **信贷协议（credit agreement）**：**具有合同要素（hasContractualElement）**可以有 0 个或多个**募集资金用途条款（UseOfProceedsProvision）**。
+- **信贷协议（credit agreement）**：**具有初始交换日（has initial exchange date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **信贷协议（credit agreement）**：**具有到期日（has maturity date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **信贷协议（credit agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**债权人（creditor）**。
+- **信贷协议（credit agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**债务人（debtor）**。
+- **信贷协议（credit agreement）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**债务条款（debt terms）**。
+- **到期偿还型信贷协议（credit agreement repaid at maturity）**：**具有到期日（has maturity date）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **信用增级协议（credit enhancement agreement）**：**具有受益人（hasBeneficiary）**至少有一个取值，类型是**信用增级受益人（credit enhancement beneficiary）**。
+- **信用增级协议（credit enhancement agreement）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**合同主当事方（ContractPrincipal）**。
+- **信用增级受益人（credit enhancement beneficiary）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**信用增级协议（credit enhancement agreement）**。
+- **信贷额度（credit facility）**：**具有成员（hasMember）**可以有 0 个或多个**子额度（sub-facility）**。
+- **信贷额度（credit facility）**：**具有合同要素（hasContractualElement）**可以有 0 个或多个**先决条件（ConditionPrecedent）**。
+- **信贷额度（credit facility）**：**具有货币数量（hasMonetaryAmount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **债权人（creditor）**：**由…扮演（is played by）**的所有取值只能是**法律主体（LegalPerson）**。
+- **债权人（creditor）**：**被欠付（is owed）**至少有一个取值，类型是**债务（debt）**。
+- **债务（debt）**：**由……欠付（is owed by）**至少有一个取值，类型是**债务人（debtor）**。
+- **债务（debt）**：**欠付给（is owed to）**至少有一个取值，类型是**债权人（creditor）**。
+- **债务人（debtor）**：**由…扮演（is played by）**的所有取值只能是**法律主体（LegalPerson）**。
+- **债务人（debtor）**：**欠付（owes）**可以有 0 个或多个**债务（debt）**。
+- **明示合同事件计划表（explicit contract event schedule）**：**适用于（appliesTo）**至少有一个取值，类型是**信贷协议（credit agreement）**。
+- **利息（interest）**：**具有利率（has interest rate）**的所有取值只能是**利率（InterestRate）**。
+- **利息（interest）**：**具有日期区间（hasDatePeriod）**的所有取值只能是**日期区间（DatePeriod）**。
+- **利息（interest）**：**是……的利息（is interest on）**至少有一个取值，类型是**债务（debt）**。
+- **利息计算事件（interest calculation）**：**具有利率（has interest rate）**恰好有 1 个**利率（InterestRate）**。
+- **利息计算事件（interest calculation）**：**具有货币数量（hasMonetaryAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **利息计算计划表（interest calculation schedule）**：**具有发生事项（hasOccurrence）**至少有一个取值，类型是**利息计算事件（interest calculation）**。
+- **利息支付计划表（interest payment schedule）**：**具有发生事项（hasOccurrence）**至少有一个取值，类型是**利息支付事件（interest payment）**。
+- **利息支付条款（interest payment terms）**：**具有计提基础（has accrual basis）**可以有 0 个或多个**计日惯例（day-count convention）**。
+- **利息支付条款（interest payment terms）**：**具有利率（has interest rate）**可以有 0 个或多个**利率（InterestRate）**。
+- **利息支付条款（interest payment terms）**：**具有利率上限（has interest rate cap）**可以有 0 个或多个**利率（InterestRate）**。
+- **利息支付条款（interest payment terms）**：**具有付息日（has interest payment day）**可以有 0 个或多个**月中日（DayOfMonth）**。
+- **利息支付条款（interest payment terms）**：**具有复利频率（has compounding frequency）**可以有 0 个或多个**重复区间（RecurrenceInterval）**。
+- **利息支付条款（interest payment terms）**：**具有付息频率（has interest payment frequency）**可以有 0 个或多个**重复区间（RecurrenceInterval）**。
+- **利息支付条款（interest payment terms）**：**具有利息起计日（has initial interest accrual date）**可以有 0 个或多个**日期（Date）**。
+- **利息支付条款（interest payment terms）**：**具有首次利息支付日（has initial interest payment date）**可以有 0 个或多个**日期（Date）**。
+- **利息支付条款（interest payment terms）**：**规范……的支付（governs payment of）**至少有一个取值，类型是**利息（interest）**。
+- **利率重置计划表（interest rate reset schedule）**：**具有发生事项（hasOccurrence）**至少有一个取值，类型是**利率重置（interest rate reset）**。
+- **贷款人（lender）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**信贷协议（credit agreement）**。
+- **管理利率（managed interest rate）**：**由……管理（isManagedBy）**至少有一个取值，类型是**金融服务提供商（FinancialServiceProvider）**。
+- **非实物抵押品（non-physical collateral）**：**是……的抵押担保（is collateralization of）**可以有 0 个或多个**金融资产（FinancialAsset）**。
+- **非实物抵押品（non-physical collateral）**与**实物抵押品（physical collateral）**互斥：同一个体不能同时属于两者。
+- **实物抵押品（physical collateral）**：**是……的抵押担保（is collateralization of）**可以有 0 个或多个**实物资产（PhysicalAsset）**。
+- **本金（principal）**：该属性存在取值约束。
+- **本金（principal）**：**是……的本金（is principal of）**至少有一个取值，类型是**债务（debt）**。
+- **本金支付计划表（principal payment schedule）**：**具有发生事项（hasOccurrence）**至少有一个取值，类型是**本金支付事件（principal payment）**。
+- **本金偿还条款（principal repayment terms）**：**具有展期条款（hasExtensionProvision）**至多有 1 个**展期条款（ExtensionProvision）**。
+- **本金偿还条款（principal repayment terms）**：**具有本金支付日（has principal payment day）**可以有 0 个或多个**月中日（DayOfMonth）**。
+- **本金偿还条款（principal repayment terms）**：**具有本金支付频率（has principal payment frequency）**可以有 0 个或多个**重复区间（RecurrenceInterval）**。
+- **本金偿还条款（principal repayment terms）**：**具有首次本金支付日（has initial principal payment date）**可以有 0 个或多个**日期（Date）**。
+- **本金偿还条款（principal repayment terms）**：**具有本金偿还日（has principal repayment date）**可以有 0 个或多个**日期（Date）**。
+- **本金偿还条款（principal repayment terms）**：**规范……的支付（governs payment of）**至少有一个取值，类型是**本金（principal）**。
+- **预计合同事件计划表（projected contract event schedule）**：**适用于（appliesTo）**可以有 0 个或多个**信贷协议（credit agreement）**。
+- **预计合同事件计划表（projected contract event schedule）**：**具有预计付款次数（has anticipated number of payments）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
+- **利率重置时刻（rate reset time of day）**：**具有商业中心（hasBusinessCenter）**可以有 0 个或多个**商业中心（BusinessCenter）**。
+- **循环信用额度（revolving line of credit）**：**以……为抵押（is collateralized by）**可以有 0 个或多个**抵押品（collateral）**。
+- **子额度（sub-facility）**：**是……的组成成分（isConstituentOf）**恰好有 1 个**信贷额度（credit facility）**。
+- **子额度（sub-facility）**：**具有货币数量（hasMonetaryAmount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **可变利率（variable interest rate）**与**固定利率（fixed interest rate）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，29 个）
 

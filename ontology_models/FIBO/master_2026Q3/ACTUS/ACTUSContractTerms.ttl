@@ -1788,10 +1788,10 @@ fibo-actus-act:ACTUSBusinessDayConvention a owl:Class ;
     rdfs:comment "ACTUS 支持的一组营业日惯例之一的代码元素。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:hasValue fibo-actus-act:AlgorithmicContractTypesDataDictionary ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
+            owl:onProperty cmns-col:isIncludedIn ],
         [ a owl:Restriction ;
             owl:hasValue fibo-actus-act:AlgorithmicContractTypesDataDictionary ;
-            owl:onProperty cmns-col:isIncludedIn ],
+            owl:onProperty cmns-dsg:isDefinedIn ],
         cmns-cds:CodeElement,
         mvf:VocabularyEntry ;
     skos:definition "code element for one of a set of conventions that ACTUS supports" .
@@ -1814,13 +1814,13 @@ fibo-actus-act:ACTUSContractTermGroup a owl:Class ;
     rdfs:comment "对通常一起使用的一组 ACTUS 字典参数的分类符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:hasValue fibo-actus-act:AlgorithmicContractTypesDataDictionary ;
-            owl:onProperty cmns-col:isIncludedIn ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-actus-act:AlgorithmicContractTypesDataDictionary ;
             owl:onProperty cmns-dsg:isDefinedIn ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom fibo-actus-act:ACTUSContractTerm ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-actus-act:AlgorithmicContractTypesDataDictionary ;
+            owl:onProperty cmns-col:isIncludedIn ],
         cmns-cls:Classifier,
         mvf:VocabularyEntry ;
     skos:definition "classifier for a collection of ACTUS dictionary parameters that tend to be applied together" .
@@ -1850,11 +1850,11 @@ The attribute is highly significant since it determines the direction of all cas
             owl:onProperty cmns-dsg:denotes ;
             owl:someValuesFrom cmns-rlcmp:Role ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-actus-act:ACTUSContractTermGroup-ContractIdentification ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom cmns-rlcmp:Role ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-actus-act:ACTUSContractTermGroup-ContractIdentification ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
         cmns-cls:Classifier,
         cmns-cds:CodeElement,
         mvf:VocabularyEntry ;
@@ -1883,26 +1883,26 @@ fibo-actus-act:ACTUSContractTerm a owl:Class ;
         "ACTUS 合同条款（ACTUS contract term）"@zh ;
     rdfs:comment "表示一个或多个 ACTUS 合同类型之某方面条款的代码。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:characterizes ;
+            owl:someValuesFrom fibo-actus-acv:ACTUSContractType ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-actus-act:AlgorithmicContractTypesDataDictionary ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
             owl:hasValue fibo-actus-act:AlgorithmicContractTypesDataDictionary ;
             owl:onProperty cmns-col:isIncludedIn ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:hasTextualName ;
-            owl:someValuesFrom xsd:string ],
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-actus-act:ACTUSContractTermGroup ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-actus-act:hasParameterName ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cls:isClassifiedBy ;
-            owl:someValuesFrom fibo-actus-act:ACTUSContractTermGroup ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-actus-act:AlgorithmicContractTypesDataDictionary ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:characterizes ;
-            owl:someValuesFrom fibo-actus-acv:ACTUSContractType ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:hasTag ;
+            owl:onProperty cmns-dsg:hasTextualName ;
             owl:someValuesFrom xsd:string ],
         cmns-cds:CodeElement,
         mvf:VocabularyEntry ;

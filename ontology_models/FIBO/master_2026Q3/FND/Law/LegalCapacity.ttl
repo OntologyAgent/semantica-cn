@@ -269,16 +269,16 @@ fibo-fnd-law-lcap:Licensor a owl:Class ;
         "许可方（licensor）"@zh ;
     rdfs:comment "授予许可的参与方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-pts:isAPartyTo ;
+                    owl:someValuesFrom fibo-fnd-law-lcap:License ] ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-law-lcap:licenses ;
             owl:someValuesFrom owl:Thing ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:issues ;
             owl:someValuesFrom fibo-fnd-law-lcap:License ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom [ a owl:Restriction ;
-                    owl:onProperty cmns-pts:isAPartyTo ;
-                    owl:someValuesFrom fibo-fnd-law-lcap:License ] ],
         cmns-pts:PartyRole ;
     skos:definition "a party who grants a license" ;
     cmns-av:adaptedFrom "Barron's Dictionary of Business and Economics Terms, Fifth Edition, 2012" .
@@ -376,11 +376,11 @@ fibo-fnd-law-lcap:ContingentObligation a owl:Class ;
         "或有义务（contingent obligation）"@zh ;
     rdfs:comment "取决于未来事件或某行为之履行的义务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-agr:isObligationOf ;
-            owl:someValuesFrom fibo-fnd-agr-agr:Obligor ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-law-lcap:isImpliedBy ;
             owl:someValuesFrom fibo-fnd-law-lcap:ContingentRight ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-agr:isObligationOf ;
+            owl:someValuesFrom fibo-fnd-agr-agr:Obligor ],
         fibo-fnd-law-lcap:Duty ;
     skos:definition "obligation that depends on a future event or the performance of an action" .
 
@@ -389,11 +389,11 @@ fibo-fnd-law-lcap:ContractualObligation a owl:Class ;
         "合同义务（contractual obligation）"@zh ;
     rdfs:comment "由合同条款产生的具有法律约束力的义务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fnd-law-lcap:ContractualRight ;
             owl:onProperty fibo-fnd-law-lcap:isImpliedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
         fibo-fnd-law-lcap:LegalObligation ;
     skos:definition "legally binding obligation that arises from the terms of a contract" ;
     cmns-av:explanatoryNote "Contractual obligations require a party to perform or refrain from performing specific actions, and failure to meet an obligation can result in legal consequences." .
@@ -403,11 +403,11 @@ fibo-fnd-law-lcap:ContractualRight a owl:Class ;
         "合同权利（contractual right）"@zh ;
     rdfs:comment "在有约束力协议中授予参与方的可法律强制执行的利益或权利。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-law-lcap:implies ;
-            owl:someValuesFrom fibo-fnd-law-lcap:ContractualObligation ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
             owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-law-lcap:implies ;
+            owl:someValuesFrom fibo-fnd-law-lcap:ContractualObligation ],
         fibo-fnd-law-lcap:Right ;
     skos:definition "legally enforceable benefit or entitlement granted to a party within a binding agreement" ;
     cmns-av:explanatoryNote "Contractual rights are established by the terms of a contract, which can be explicit (written) or implied by law, industry standards, or consistent practices." .
@@ -434,16 +434,16 @@ fibo-fnd-law-lcap:LegalObligation a owl:Class ;
         "法律义务（legal obligation）"@zh ;
     rdfs:comment "可由法院强制执行的义务或责任。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fnd-agr-ctr:Contract fibo-fnd-law-cor:StatuteLaw fibo-fnd-law-lcap:Regulation ) ] ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fnd-agr-ctr:Contract fibo-fnd-law-cor:StatuteLaw fibo-fnd-law-lcap:Regulation ) ] ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ;
             owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-agr-ctr:Contract fibo-fnd-law-cor:StatuteLaw fibo-fnd-law-lcap:Regulation ) ] ],
         fibo-fnd-law-lcap:Duty ;
     skos:definition "an obligation or duty that is enforceable by a court" .
 
@@ -452,18 +452,18 @@ fibo-fnd-law-lcap:License a owl:Class ;
         "许可（license）"@zh ;
     rdfs:comment "做某事所需之准许的授予。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-pts:hasPartyRole ;
-            owl:someValuesFrom fibo-fnd-law-lcap:Licensee ],
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom fibo-fnd-law-lcap:Licensor ],
         [ a owl:Restriction ;
             owl:onClass cmns-dt:DatePeriod ;
             owl:onProperty cmns-pts:holdsDuring ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-fnd-law-lcap:Licensee ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:confers ;
             owl:someValuesFrom fibo-fnd-law-lcap:LegalCapacity ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
-            owl:someValuesFrom fibo-fnd-law-lcap:Licensor ],
         cmns-doc:LegalDocument ;
     skos:definition "grant of permission needed to do something" ;
     cmns-av:adaptedFrom "Barron's Dictionary of Business and Economics Terms, Fifth Edition, 2012" ;
@@ -482,13 +482,13 @@ fibo-fnd-law-lcap:LegalConstruct a owl:Class ;
     rdfs:comment "通过法律或合同赋予的事物，如权利。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass [ a owl:Class ;
-                    owl:unionOf ( fibo-fnd-agr-ctr:Contract fibo-fnd-law-cor:Constitution fibo-fnd-law-cor:Law ) ] ;
-            owl:onProperty fibo-fnd-rel-rel:isConferredBy ],
+            owl:onClass cmns-pts:Party ;
+            owl:onProperty fibo-fnd-law-lcap:isConferredOn ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-pts:Party ;
-            owl:onProperty fibo-fnd-law-lcap:isConferredOn ] ;
+            owl:onClass [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-agr-ctr:Contract fibo-fnd-law-cor:Constitution fibo-fnd-law-cor:Law ) ] ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ] ;
     skos:definition "something which is conferred by way of law or contract, such as a right" ;
     skos:editorialNote "Obligations are an aspect of this category of thing, as are rights." .
 

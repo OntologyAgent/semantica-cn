@@ -65,12 +65,12 @@ fibo-be-oac-cown:BeneficialOwnership a owl:Class ;
         "受益所有权（beneficial ownership）"@zh ;
     rdfs:comment "将享有所有权利益（如获得收入）的参与方与名义所有权可能在他人名下之事物相关联的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredBy ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( cmns-ra:RegistrationAuthority cmns-ra:Registrar ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
-            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:hasOwningParty ;
             owl:someValuesFrom fibo-be-oac-cown:BeneficialOwner ],

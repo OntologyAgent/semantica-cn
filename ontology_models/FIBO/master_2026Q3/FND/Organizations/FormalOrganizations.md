@@ -45,15 +45,17 @@
 
 ## 5. 公理约定（Axioms）
 
-- 雇员（employee）：受雇于情境（is employed in） some 雇佣关系（employment）
-- 雇员（employee）：是……的雇员（is employee of） some 雇主（employer）
-- 雇员（employee）：由…扮演（is played by） some 个人
-- 雇主（employer）：具有雇员（has employee） some 雇员（employee）
-- 雇主（employer）：是雇佣方（is employing party） some 雇佣关系（employment）
-- 雇主（employer）：由…扮演（is played by） some 法律主体
-- 雇佣关系（employment）：具有被雇方（has employed party） some 雇员（employee）
-- 雇佣关系（employment）：具有雇佣方（has employing party） some 雇主（employer）
-- 团体（group）：具有成员 only 智能体（agent）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **雇员（employee）**：**受雇于情境（is employed in）**至少有一个取值，类型是**雇佣关系（employment）**。
+- **雇员（employee）**：**是……的雇员（is employee of）**至少有一个取值，类型是**雇主（employer）**。
+- **雇员（employee）**：**由…扮演（is played by）**至少有一个取值，类型是**个人（Person）**。
+- **雇主（employer）**：**具有雇员（has employee）**至少有一个取值，类型是**雇员（employee）**。
+- **雇主（employer）**：**是雇佣方（is employing party）**至少有一个取值，类型是**雇佣关系（employment）**。
+- **雇主（employer）**：**由…扮演（is played by）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **雇佣关系（employment）**：**具有被雇方（has employed party）**至少有一个取值，类型是**雇员（employee）**。
+- **雇佣关系（employment）**：**具有雇佣方（has employing party）**至少有一个取值，类型是**雇主（employer）**。
+- **团体（group）**：**具有成员（hasMember）**的所有取值只能是**智能体（agent）**。
 
 ## 6. 依赖（owl:imports，10 个）
 

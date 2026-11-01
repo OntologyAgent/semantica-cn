@@ -99,17 +99,19 @@
 
 ## 5. 公理约定（Axioms）
 
-- 任命顾问（appoint advisors）：指定 some（restriction）
-- 任命顾问（appoint advisors）：扮演角色（plays role） some 发行人
-- 批准上市（approve for flotation）：由……提供 some 交易所
-- 正式上市交易批准（formal approval for listing and trading）：由……提供 some 交易所
-- IPO 初步招募说明书（i p o preliminary prospectus）：先于 some IPO 完整招募说明书（i p o full prospectus）
-- IPO 流程（i p o process）：具有日期区间 some 日期区间
-- 首次公开发行流程步骤（initial public offering process step）：适用于 some IPO 流程（i p o process）
-- 向监管机构注册（register with regulatory authority）：由……提供 some 交易所
-- 保荐人（sponsor）：可能是（may be） some 公司经纪人（corporate broker）
-- 承销（underwriting）：股票承销商（share underwriter） some 潜在股票承销商（potential share underwriter）
-- 承销（underwriting）：辛迪加成员（syndicate member） some 辛迪加成员（syndicate member）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **任命顾问（appoint advisors）**：**指定（designates）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **任命顾问（appoint advisors）**：**扮演角色（plays role）**至少有一个取值，类型是**发行人（Issuer）**。
+- **批准上市（approve for flotation）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**交易所（Exchange）**。
+- **正式上市交易批准（formal approval for listing and trading）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**交易所（Exchange）**。
+- **IPO 初步招募说明书（i p o preliminary prospectus）**：**先于（precedes）**至少有一个取值，类型是**IPO 完整招募说明书（i p o full prospectus）**。
+- **IPO 流程（i p o process）**：**具有日期区间（hasDatePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **首次公开发行流程步骤（initial public offering process step）**：**适用于（appliesTo）**至少有一个取值，类型是**IPO 流程（i p o process）**。
+- **向监管机构注册（register with regulatory authority）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**交易所（Exchange）**。
+- **保荐人（sponsor）**：**可能是（may be）**至少有一个取值，类型是**公司经纪人（corporate broker）**。
+- **承销（underwriting）**：**股票承销商（share underwriter）**至少有一个取值，类型是**潜在股票承销商（potential share underwriter）**。
+- **承销（underwriting）**：**辛迪加成员（syndicate member）**至少有一个取值，类型是**辛迪加成员（syndicate member）**。
 
 ## 6. 依赖（owl:imports，17 个）
 

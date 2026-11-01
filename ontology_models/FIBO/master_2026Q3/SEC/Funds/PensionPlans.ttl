@@ -411,14 +411,14 @@ fibo-sec-fund-pp:PensionPlan a owl:Class ;
     dcterms:source "Private Pensions - OECD Classification and Glossary, available at https://www.oecd.org/content/dam/oecd/en/publications/reports/2005/03/private-pensions_g1gh562b/9789264017009-en-fr.pdf." ;
     rdfs:comment "具有明确退休目标的具有法律约束力的安排，或为满足税收相关条件或合同条款而设定受益安排的安排。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-sec-fund-pp:isUnprotected ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( fibo-sec-fund-fund:PensionFund fibo-sec-fund-pp:PensionInsuranceContract ) ] ;
             owl:onProperty fibo-sec-fund-pp:isFundedBy ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-sec-fund-pp:isUnprotected ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-fund-pp:PensionAccount ;

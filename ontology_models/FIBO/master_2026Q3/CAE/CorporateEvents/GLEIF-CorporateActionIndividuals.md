@@ -26,8 +26,10 @@
 
 ## 5. 公理约定（Axioms）
 
-- 行动组（action group）：分类 some 行动
-- 行动组（action group）：具有标签 some xsd:string
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **行动组（action group）**：**分类（classifies）**至少有一个取值，类型是**行动（Action）**。
+- **行动组（action group）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
 
 ## 6. 依赖（owl:imports，7 个）
 

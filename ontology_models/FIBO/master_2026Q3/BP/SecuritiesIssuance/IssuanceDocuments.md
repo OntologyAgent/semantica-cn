@@ -38,9 +38,11 @@
 
 ## 5. 公理约定（Axioms）
 
-- 最终招募说明书（final prospectus）：具有合同要素 some 发行文件条款（offering document terms）
-- 最终招募说明书（final prospectus）：后于 some 初步招募说明书（preliminary prospectus）
-- 初步招募说明书（preliminary prospectus）：具有合同要素 some 发行文件条款（offering document terms）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **最终招募说明书（final prospectus）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**发行文件条款（offering document terms）**。
+- **最终招募说明书（final prospectus）**：**后于（succeeds）**至少有一个取值，类型是**初步招募说明书（preliminary prospectus）**。
+- **初步招募说明书（preliminary prospectus）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**发行文件条款（offering document terms）**。
 
 ## 6. 依赖（owl:imports，6 个）
 

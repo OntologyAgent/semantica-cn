@@ -39,13 +39,15 @@
 
 ## 5. 公理约定（Axioms）
 
-- 指数篮子成分（basket of indices constituent）：包含 only N009ed156e86c431d93d06ff4c274e151
-- 指数篮子成分（basket of indices constituent）：具有加入日期 显式日期 ≤1
-- 证券篮子（basket of securities）：具有成员 some 证券篮子成分（securities basket constituent）
-- 市场篮子（market basket）：具有成员 some 指数篮子成分（basket of indices constituent）
-- 混合篮子（mixed basket）：具有成员 some（restriction）
-- 证券篮子成分（securities basket constituent）：包含 only 证券
-- 证券篮子成分（securities basket constituent）：具有加入日期 显式日期 ≤1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **指数篮子成分（basket of indices constituent）**：**包含（comprises）**的所有取值只能是**Nb6e1d3c1313a4d6f9d704058a3b7b1b5**。
+- **指数篮子成分（basket of indices constituent）**：**具有加入日期（hasDateAdded）**至多有 1 个**显式日期（ExplicitDate）**。
+- **证券篮子（basket of securities）**：**具有成员（hasMember）**至少有一个取值，类型是**证券篮子成分（securities basket constituent）**。
+- **市场篮子（market basket）**：**具有成员（hasMember）**至少有一个取值，类型是**指数篮子成分（basket of indices constituent）**。
+- **混合篮子（mixed basket）**：**具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **证券篮子成分（securities basket constituent）**：**包含（comprises）**的所有取值只能是**证券（Security）**。
+- **证券篮子成分（securities basket constituent）**：**具有加入日期（hasDateAdded）**至多有 1 个**显式日期（ExplicitDate）**。
 
 ## 6. 依赖（owl:imports，9 个）
 

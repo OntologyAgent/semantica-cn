@@ -22,8 +22,10 @@
 
 ## 5. 公理约定（Axioms）
 
-- 行业部门分类方案（industry sector classification scheme）：定义 some 行业部门分类器（industry sector classifier）
-- 行业部门分类器（industry sector classifier）：定义于 行业部门分类方案（industry sector classification scheme） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **行业部门分类方案（industry sector classification scheme）**：**定义（defines）**至少有一个取值，类型是**行业部门分类器（industry sector classifier）**。
+- **行业部门分类器（industry sector classifier）**：**定义于（isDefinedIn）**恰好有 1 个**行业部门分类方案（industry sector classification scheme）**。
 
 ## 6. 依赖（owl:imports，5 个）
 

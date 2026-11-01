@@ -37,10 +37,12 @@
 
 ## 5. 公理约定（Axioms）
 
-- 期权每日结算价（option daily settlement price）：具有发布方 some（restriction）
-- 期权理论价值（option theoretical value）：引用 some 定价模型
-- 期权西塔（options theta）：引用 some 期权理论价值（option theoretical value）
-- 期权维加（options vega）：引用 some 期权理论价值（option theoretical value）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **期权每日结算价（option daily settlement price）**：**具有发布方（hasPublisher）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **期权理论价值（option theoretical value）**：**引用（refersTo）**至少有一个取值，类型是**定价模型（PricingModel）**。
+- **期权西塔（options theta）**：**引用（refersTo）**至少有一个取值，类型是**期权理论价值（option theoretical value）**。
+- **期权维加（options vega）**：**引用（refersTo）**至少有一个取值，类型是**期权理论价值（option theoretical value）**。
 
 ## 6. 依赖（owl:imports，10 个）
 

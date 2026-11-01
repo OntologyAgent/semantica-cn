@@ -61,11 +61,11 @@ fibo-be-oac-cctl:Affiliation a owl:Class ;
         "关联关系（affiliation）"@zh ;
     rdfs:comment "受控方在某段时期内与控制方相关联的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-pts:hasUndergoer ;
-            owl:someValuesFrom fibo-be-oac-cctl:ControlledAffiliate ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-pts:hasActor ;
             owl:someValuesFrom fibo-be-oac-cctl:ControllingAffiliate ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasUndergoer ;
+            owl:someValuesFrom fibo-be-oac-cctl:ControlledAffiliate ],
         fibo-fnd-oac-ctl:Control ;
     skos:definition "situation in which a controlled party is affiliated with a controlling party for some period of time" .
 

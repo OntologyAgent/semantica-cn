@@ -167,11 +167,11 @@ fibo-sec-fund-civ:KeyInvestorInformationDocument a owl:Class ;
         "关键投资者信息文件（key investor information document）"@zh ;
     rdfs:comment "为投资者提供关键信息的简短文件，汇总招募说明书内容以便投资者理解（KIID）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-sec-fund-fund:FundUnit ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-be-ge-euj:EuropeanUnionJurisdiction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundUnit ],
         fibo-sec-sec-iss:OfferingDocument ;
     skos:definition "short document that provides critical information for investors, summarizing content derived from a prospectus such that it can be understood by investors without reference to other documents, as required by law in the European Union" ;
     cmns-av:abbreviation "KIID" ;
@@ -1473,15 +1473,15 @@ fibo-sec-fund-civ:FundInvestmentPolicy a owl:Class ;
         "基金投资政策（fund investment policy）"@zh ;
     rdfs:comment "基金为实现既定目标而实施的政策。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:defines ;
+            owl:someValuesFrom fibo-sec-fund-civ:InvestmentRestriction ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-ind-ind-ind:MarketRate ;
             owl:onProperty fibo-sec-fund-civ:stipulatesBenchmark ],
         [ a owl:Restriction ;
             owl:onProperty cmns-rga:governs ;
             owl:someValuesFrom fibo-sec-fund-civ:PortfolioInvestmentStrategy ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:defines ;
-            owl:someValuesFrom fibo-sec-fund-civ:InvestmentRestriction ],
         fibo-fnd-law-lcap:Policy ;
     skos:definition "policy that the fund implements in order to achieve the stated fund objectives"@en ;
     cmns-av:explanatoryNote "EFAMA Note: Model distinguishes between strategy (what you intend to invest in) and portfolio structure (what is held). This semantics matches the EFAMA DD \"Fund Investment Policy\" No stated definition in EFAMA DD (\"Further discussion required\")."@en .
@@ -1554,6 +1554,9 @@ fibo-sec-fund-civ:FundPortfolio a owl:Class ;
         "基金组合（fund portfolio）"@zh ;
     rdfs:comment "包含若干金融工具以及一种或多种货币现金头寸、并归属于某一基金的账户。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
+            owl:someValuesFrom fibo-fbc-pas-caa:Balance ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:hasInvestmentStrategy ;
             owl:someValuesFrom fibo-sec-fund-civ:PortfolioInvestmentStrategy ],
         [ a owl:Restriction ;
@@ -1562,9 +1565,6 @@ fibo-sec-fund-civ:FundPortfolio a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:implementsFundPolicy ;
             owl:someValuesFrom fibo-sec-fund-civ:FundPortfolioInvestmentPolicy ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
-            owl:someValuesFrom fibo-fbc-pas-caa:Balance ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:assessedAgainst ;
             owl:someValuesFrom fibo-sec-fund-civ:PortfolioBenchmark ],
@@ -1597,11 +1597,11 @@ fibo-sec-fund-civ:PortfolioBenchmark a owl:Class ;
         "组合基准（portfolio benchmark）"@zh ;
     rdfs:comment "用于评价组合表现的证券或其他价格基准。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-sec-fund-civ:FundPortfolio ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:definesBenchmark ;
             owl:someValuesFrom fibo-ind-ind-ind:MarketRate ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundPortfolio ],
         cmns-qtu:Measure ;
     skos:definition "Security or other price against which the performance of the portfolio is evaluated."@en .
 
@@ -1689,14 +1689,14 @@ fibo-sec-fund-civ:FundPortfolioInvestmentLimitations a owl:Class ;
 
 fibo-sec-fund-fund:FundUnit a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:hasDetails ;
-            owl:someValuesFrom fibo-sec-fund-civ:NetAssetValueCalculationMethod ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:hasFundProcessingTerms ;
             owl:someValuesFrom fibo-sec-fund-civ:FundRedemptionTerms ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:hasFundProcessingTerms ;
-            owl:someValuesFrom fibo-sec-fund-civ:FundProcessingGeneralTerms ] ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundProcessingGeneralTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasDetails ;
+            owl:someValuesFrom fibo-sec-fund-civ:NetAssetValueCalculationMethod ] ;
     cmns-av:explanatoryNote "If it is a closed fund, you can still trade the units. You trade back with the fund. Not with a counterparty. Therefore this is a tradable contract, though it may not necessarily be a transferable contract."@en .
 
 fibo-sec-fund-civ:FundSubscriptionTerms a owl:Class ;
@@ -1711,41 +1711,32 @@ fibo-sec-fund-civ:FundSubscriptionTerms a owl:Class ;
 
 fibo-sec-sec-pls:CollectiveInvestmentVehicle a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:hasManagementCompany ;
-            owl:someValuesFrom fibo-sec-fund-fund:FundManager ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:supervisedBy ;
-            owl:someValuesFrom fibo-sec-fund-civ:FundSupervisoryAuthority ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:hasTransferAgent ;
-            owl:someValuesFrom fibo-sec-fund-civ:FundTransferAgent ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:hasDataProvider ;
-            owl:someValuesFrom fibo-be-fct-pub:MarketDataProvider ],
+            owl:onProperty fibo-sec-fund-civ:hasSubscriptionTerms ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundSubscriptionTerms ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:distributedBy ;
             owl:someValuesFrom fibo-sec-fund-civ:FundDistributor ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:hasAdditionalInformation ;
-            owl:someValuesFrom fibo-sec-fund-civ:OtherInvestmentFundInformation ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:hasDepository ;
-            owl:someValuesFrom fibo-sec-fund-civ:FundDepositary ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:advisedBy ;
             owl:someValuesFrom fibo-fbc-fct-fse:RegisteredInvestmentAdvisor ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:hasSubscriptionTerms ;
-            owl:someValuesFrom fibo-sec-fund-civ:FundSubscriptionTerms ],
+            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:fundHasRelatedParty ;
-            owl:someValuesFrom fibo-sec-fund-civ:FundsProcessingParty ],
+            owl:onProperty fibo-sec-fund-civ:supervisedBy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundSupervisoryAuthority ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDescribedBy ;
+            owl:someValuesFrom fibo-sec-sec-iss:Prospectus ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:hasAuditor ;
             owl:someValuesFrom fibo-be-oac-exec:ExternalAuditor ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
-            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+            owl:onProperty fibo-sec-fund-civ:hasFundPolicy ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundInvestmentPolicy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasDepository ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundDepositary ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
             owl:someValuesFrom fibo-sec-fund-civ:UnitIssuer ],
@@ -1753,19 +1744,28 @@ fibo-sec-sec-pls:CollectiveInvestmentVehicle a owl:Class ;
             owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
             owl:someValuesFrom fibo-sec-fund-civ:FundUnitDistributionMethod ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:administeredBy ;
-            owl:someValuesFrom fibo-sec-fund-fund:FundAdministrator ],
+            owl:onProperty fibo-fnd-acc-cur:hasCurrency ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
         [ a owl:Restriction ;
             owl:onProperty fibo-sec-fund-civ:hasRelatedFundTerms ;
             owl:someValuesFrom fibo-sec-fund-civ:FundProcessingTerms ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-fund-civ:hasFundPolicy ;
-            owl:someValuesFrom fibo-sec-fund-civ:FundInvestmentPolicy ],
+            owl:onProperty fibo-sec-fund-civ:hasTransferAgent ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundTransferAgent ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
+            owl:onProperty fibo-sec-fund-civ:hasDataProvider ;
+            owl:someValuesFrom fibo-be-fct-pub:MarketDataProvider ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:isDescribedBy ;
-            owl:someValuesFrom fibo-sec-sec-iss:Prospectus ] ;
+            owl:onProperty fibo-sec-fund-civ:hasAdditionalInformation ;
+            owl:someValuesFrom fibo-sec-fund-civ:OtherInvestmentFundInformation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:hasManagementCompany ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundManager ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:administeredBy ;
+            owl:someValuesFrom fibo-sec-fund-fund:FundAdministrator ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-fund-civ:fundHasRelatedParty ;
+            owl:someValuesFrom fibo-sec-fund-civ:FundsProcessingParty ] ;
     cmns-av:explanatoryNote "From EFAMA DD: The word fund can refer to either an investment pool, umbrella or share class, and is commonly refered to as a collective investment vehicle (can have ISIN or not). The meaning here is for the investment pool (of which an Umbrella fund is also one such) and not to the share class."@en .
 

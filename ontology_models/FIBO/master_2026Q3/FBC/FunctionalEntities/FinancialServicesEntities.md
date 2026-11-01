@@ -162,45 +162,47 @@
 
 ## 5. 公理约定（Axioms）
 
-- 银行控股公司（bank holding company）：由…扮演（is played by） 公司 =1
-- 银行产品（banking product）：由……提供 some 存款性机构（depository institution）
-- 银行服务（banking service）：由……提供 some 存款性机构（depository institution）
-- 商业标识代码（business identifier code）：包含 组织子单位标识符 ≥0
-- 商业标识代码（business identifier code）：包含 商业方前缀（business party prefix） =1
-- 商业标识代码（business identifier code）：包含 商业方后缀（business party suffix） =1
-- 商业标识代码（business identifier code）：指代 正式组织 =1
-- 商业标识代码（business identifier code）：包含 lcc-cr:Alpha2Code =1
-- 商业标识代码（business identifier code）：是……的成员 some 商业标识代码方案（business identifier code scheme）
-- 商业标识代码方案（business identifier code scheme）：具有成员 some 商业标识代码（business identifier code）
-- 商业方前缀（business party prefix）：被包含于 商业标识代码（business identifier code） ≤1
-- 商业方前缀（business party prefix）：定义于 some 商业标识代码方案（business identifier code scheme）
-- 商业方后缀（business party suffix）：被包含于 some 商业标识代码（business identifier code）
-- 商业方后缀（business party suffix）：定义于 some 商业标识代码方案（business identifier code scheme）
-- 中央银行（central bank）：由…扮演（is played by） only 部属单位
-- 清算公司（clearing corporation）：由…扮演（is played by） 公司 =1
-- 清算所（clearing house）：提供 some 清算服务（clearing service）
-- 商业银行（commercial bank）：由…扮演（is played by） 公司 =1
-- 契约型储蓄机构（contractual savings institution）：由…扮演（is played by） N198e2cf8ae3c4102b7d3496999f1e58d ≥0
-- 信用合作社（credit union）：由…扮演（is played by） 非营利组织 =1
-- 数据处理服务（data processing service）：由……提供 some 数据处理服务商（data processing servicer）
-- 面额证书公司（face amount certificate company） 与 管理公司（management company） 互斥（disjointWith）
-- 金融机构（financial institution）：提供 some 金融服务
-- 金融机构（financial institution）：受……监管 some 监管机构
-- 金融服务提供商标识符（financial service provider identifier）：受……管辖 管辖权 ≥0
-- 金融服务提供商标识符（financial service provider identifier）：是……的成员 金融服务提供商标识符方案（financial service provider identifier scheme） =1
-- 金融服务提供商标识符（financial service provider identifier）：标识 金融服务提供商 =1
-- 金融服务提供商标识符方案（financial service provider identifier scheme）：具有成员 some 金融服务提供商标识符（financial service provider identifier）
-- 控股公司（holding company）：具有被投公司（has portfolio company） 受控方 ≥0
-- 投资银行（investment bank）：restriction
-- 管理公司（management company） 与 单位投资信托（unit investment trust） 互斥（disjointWith）
-- 货币当局（monetary authority）：监管……的供应（regulates supply of） some 货币
-- 支付服务（payment service）：涉及 some 支付义务
-- 注册投资顾问（registered investment advisor）：提供咨询 some 受控方
-- 注册投资顾问（registered investment advisor）：由……注册 some（restriction）
-- 自律组织（self-regulating organization）：由…扮演（is played by） some 非政府组织
-- 信托公司（trust company）：由…扮演（is played by） 公司 =1
-- 承销商（underwriter）：由…扮演（is played by） some（是…的参与方（is a party to） some 承销安排（underwriting arrangement））
-- 承销安排（underwriting arrangement）：具有参与方角色（has party role） some 承销商（underwriter）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **银行控股公司（bank holding company）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+- **银行产品（banking product）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**存款性机构（depository institution）**。
+- **银行服务（banking service）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**存款性机构（depository institution）**。
+- **商业标识代码（business identifier code）**：**包含（comprises）**可以有 0 个或多个**组织子单位标识符（OrganizationSubUnitIdentifier）**。
+- **商业标识代码（business identifier code）**：**包含（comprises）**恰好有 1 个**商业方前缀（business party prefix）**。
+- **商业标识代码（business identifier code）**：**包含（comprises）**恰好有 1 个**商业方后缀（business party suffix）**。
+- **商业标识代码（business identifier code）**：**指代（denotes）**恰好有 1 个**正式组织（FormalOrganization）**。
+- **商业标识代码（business identifier code）**：**包含（comprises）**恰好有 1 个**lcc-cr:Alpha2Code（Alpha2Code）**。
+- **商业标识代码（business identifier code）**：**是……的成员（isMemberOf）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
+- **商业标识代码方案（business identifier code scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**商业标识代码（business identifier code）**。
+- **商业方前缀（business party prefix）**：**被包含于（isIncludedIn）**至多有 1 个**商业标识代码（business identifier code）**。
+- **商业方前缀（business party prefix）**：**定义于（isDefinedIn）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
+- **商业方后缀（business party suffix）**：**被包含于（isIncludedIn）**至少有一个取值，类型是**商业标识代码（business identifier code）**。
+- **商业方后缀（business party suffix）**：**定义于（isDefinedIn）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
+- **中央银行（central bank）**：**由…扮演（is played by）**的所有取值只能是**部属单位（Instrumentality）**。
+- **清算公司（clearing corporation）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+- **清算所（clearing house）**：**提供（provides）**至少有一个取值，类型是**清算服务（clearing service）**。
+- **商业银行（commercial bank）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+- **契约型储蓄机构（contractual savings institution）**：**由…扮演（is played by）**可以有 0 个或多个**N9ab564a40f2d4d049b15dd42ea95152c**。
+- **信用合作社（credit union）**：**由…扮演（is played by）**恰好有 1 个**非营利组织（NotForProfitOrganization）**。
+- **数据处理服务（data processing service）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**数据处理服务商（data processing servicer）**。
+- **面额证书公司（face amount certificate company）**与**管理公司（management company）**互斥：同一个体不能同时属于两者。
+- **金融机构（financial institution）**：**提供（provides）**至少有一个取值，类型是**金融服务（FinancialService）**。
+- **金融机构（financial institution）**：**受……监管（isRegulatedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+- **金融服务提供商标识符（financial service provider identifier）**：**受……管辖（isGovernedBy）**可以有 0 个或多个**管辖权（Jurisdiction）**。
+- **金融服务提供商标识符（financial service provider identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**金融服务提供商标识符方案（financial service provider identifier scheme）**。
+- **金融服务提供商标识符（financial service provider identifier）**：**标识（identifies）**恰好有 1 个**金融服务提供商（FinancialServiceProvider）**。
+- **金融服务提供商标识符方案（financial service provider identifier scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**金融服务提供商标识符（financial service provider identifier）**。
+- **控股公司（holding company）**：**具有被投公司（has portfolio company）**可以有 0 个或多个**受控方（ControlledParty）**。
+- **投资银行（investment bank）**：该属性存在取值约束。
+- **管理公司（management company）**与**单位投资信托（unit investment trust）**互斥：同一个体不能同时属于两者。
+- **货币当局（monetary authority）**：**监管……的供应（regulates supply of）**至少有一个取值，类型是**货币（Currency）**。
+- **支付服务（payment service）**：**涉及（involves）**至少有一个取值，类型是**支付义务（PaymentObligation）**。
+- **注册投资顾问（registered investment advisor）**：**提供咨询（advises）**至少有一个取值，类型是**受控方（ControlledParty）**。
+- **注册投资顾问（registered investment advisor）**：**由……注册（isRegisteredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **自律组织（self-regulating organization）**：**由…扮演（is played by）**至少有一个取值，类型是**非政府组织（NonGovernmentalOrganization）**。
+- **信托公司（trust company）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+- **承销商（underwriter）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**承销安排（underwriting arrangement）**。
+- **承销安排（underwriting arrangement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**承销商（underwriter）**。
 
 ## 6. 依赖（owl:imports，31 个）
 

@@ -83,27 +83,29 @@
 
 ## 5. 公理约定（Axioms）
 
-- 买方（buyer）：购买（buys） some 产品（product）
-- 客户（client）：由…扮演（is played by） some（是…的参与方（is a party to） some 服务协议（service agreement））
-- 客户标识符（client identifier）：标识 客户（client） =1
-- 定制产品（custom product） 与 现货产品（off-the-shelf product） 互斥（disjointWith）
-- 顾客（customer）：从……购买（buys from） some 供应商（supplier）
-- 顾客标识符（customer identifier）：标识 顾客（customer） =1
-- 货物（good） 与 货币金额 互斥（disjointWith）
-- 货物（good） 与 房地产 互斥（disjointWith）
-- 生产者（producer）：生产 some 货物（good）
-- 产品（product）：restriction
-- 产品标识符（product identifier）：标识 产品（product） =1
-- 销售（sale）：具有价格 some 货币数量
-- 销售（sale）：具有买方（has buyer） some 买方（buyer）
-- 销售（sale）：具有卖方（has seller） some 卖方（seller）
-- 销售（sale）：适用于 some 产品（product）
-- 卖方（seller）：销售（sells） some 产品（product）
-- 服务协议（service agreement）：具有合同当事方 服务提供方 =1
-- 服务协议（service agreement）：管辖 some 服务
-- 供应商（supplier）：供应（supplies） some 产品（product）
-- 交易确认书（transaction confirmation）：是……的证据 交易事件（transaction event） =1
-- 交易事件（transaction event）：由……证明 交易确认书（transaction confirmation） ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **买方（buyer）**：**购买（buys）**至少有一个取值，类型是**产品（product）**。
+- **客户（client）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**服务协议（service agreement）**。
+- **客户标识符（client identifier）**：**标识（identifies）**恰好有 1 个**客户（client）**。
+- **定制产品（custom product）**与**现货产品（off-the-shelf product）**互斥：同一个体不能同时属于两者。
+- **顾客（customer）**：**从……购买（buys from）**至少有一个取值，类型是**供应商（supplier）**。
+- **顾客标识符（customer identifier）**：**标识（identifies）**恰好有 1 个**顾客（customer）**。
+- **货物（good）**与**货币金额**互斥：同一个体不能同时属于两者。
+- **货物（good）**与**房地产**互斥：同一个体不能同时属于两者。
+- **生产者（producer）**：**生产（produces）**至少有一个取值，类型是**货物（good）**。
+- **产品（product）**：该属性存在取值约束。
+- **产品标识符（product identifier）**：**标识（identifies）**恰好有 1 个**产品（product）**。
+- **销售（sale）**：**具有价格（hasPrice）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **销售（sale）**：**具有买方（has buyer）**至少有一个取值，类型是**买方（buyer）**。
+- **销售（sale）**：**具有卖方（has seller）**至少有一个取值，类型是**卖方（seller）**。
+- **销售（sale）**：**适用于（appliesTo）**至少有一个取值，类型是**产品（product）**。
+- **卖方（seller）**：**销售（sells）**至少有一个取值，类型是**产品（product）**。
+- **服务协议（service agreement）**：**具有合同当事方（hasContractParty）**恰好有 1 个**服务提供方（ServiceProvider）**。
+- **服务协议（service agreement）**：**管辖（governs）**至少有一个取值，类型是**服务（Service）**。
+- **供应商（supplier）**：**供应（supplies）**至少有一个取值，类型是**产品（product）**。
+- **交易确认书（transaction confirmation）**：**是……的证据（isEvidenceFor）**恰好有 1 个**交易事件（transaction event）**。
+- **交易事件（transaction event）**：**由……证明（isEvidencedBy）**可以有 0 个或多个**交易确认书（transaction confirmation）**。
 
 ## 6. 依赖（owl:imports，17 个）
 

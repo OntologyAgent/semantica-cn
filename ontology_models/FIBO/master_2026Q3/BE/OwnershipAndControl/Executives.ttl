@@ -137,13 +137,13 @@ fibo-be-oac-exec:BoardCompositionControl a owl:Class ;
         "董事会组成控制（board composition control）"@zh ;
     rdfs:comment "表决权股东、实体所有者或其他参与方（非营利组织情形）任命和/或提名董事会成员的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-ctl:involvesControlledThing ;
-            owl:someValuesFrom fibo-be-oac-exec:BoardMember ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( fibo-be-oac-cctl:SignificantShareholder fibo-be-oac-opty:EntityOwner ) ] ;
             owl:onProperty fibo-fnd-oac-ctl:hasPartyInControl ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-ctl:involvesControlledThing ;
+            owl:someValuesFrom fibo-be-oac-exec:BoardMember ],
         fibo-fnd-oac-ctl:Control ;
     skos:definition "situation in which a voting shareholder, entity owner, or some other party in the case of a not-for-profit organization, appoints and/or nominates someone to the board of directors of an organization for some period of time" .
 
@@ -347,10 +347,6 @@ fibo-be-oac-exec:BoardCapacity a owl:Class ;
         "董事会职权（board capacity）"@zh ;
     rdfs:comment "以受托身份为组织行事的权力，包括但不限于制定和执行公司政策。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-be-le-cb:InstrumentOfIncorporation fibo-be-oac-exec:Bylaws fibo-be-le-cb:BoardAgreement ) ] ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-law-lcap:isConferredOn ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:playsRole ;
@@ -359,6 +355,10 @@ fibo-be-oac-exec:BoardCapacity a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-be-oac-exec:CompanyLaw ;
             owl:onProperty cmns-rga:isGovernedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isConferredBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-le-cb:InstrumentOfIncorporation fibo-be-oac-exec:Bylaws fibo-be-le-cb:BoardAgreement ) ] ],
         fibo-fnd-law-lcap:DelegatedLegalAuthority ;
     skos:definition "authority to act in a fiduciary capacity with respect to the organization, including but not limited to determining and executing corporate policy" .
 
@@ -367,6 +367,11 @@ fibo-be-oac-exec:BoardOfDirectors a owl:Class ;
         "董事会（board of directors）"@zh ;
     rdfs:comment "构成组织治理机构、有权制定组织战略与政策以及选任高管的人员团体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
+                    owl:someValuesFrom fibo-be-oac-exec:BoardCapacity ] ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-be-oac-exec:nominates ;
             owl:someValuesFrom fibo-be-oac-exec:CorporateOfficer ],
         [ a owl:Restriction ;
@@ -376,11 +381,6 @@ fibo-be-oac-exec:BoardOfDirectors a owl:Class ;
                     owl:someValuesFrom [ a owl:Restriction ;
                             owl:onProperty cmns-rlcmp:playsRole ;
                             owl:someValuesFrom fibo-be-oac-exec:BoardMember ] ] ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom [ a owl:Restriction ;
-                    owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
-                    owl:someValuesFrom fibo-be-oac-exec:BoardCapacity ] ],
         fibo-be-oac-cpty:EntityControllingParty ;
     skos:definition "group of people comprising the governing body of an organization that has the authority to set organizational strategy and policies as well as to select and, to some degree manage, leadership" ;
     cmns-av:explanatoryNote "For a public, for profit organization, its members (directors) are elected normally by the subscribers (stockholders) of the firm (generally at an annual general meeting) to govern the firm and look after the subscribers' interests. In the case of a not-for-profit organization, the board ensures the organization is acting in line with its mission. The board has the ultimate decision-making authority and, in general, is empowered to (1) set the company's policy, objectives, and overall direction, (2) adopt bylaws, (3) name members of the advisory, executive, finance, and other committees, (4) hire, monitor, evaluate, and fire the managing director and senior executives, (5) determine and pay the dividend, and (6) issue additional shares. Though all its members might not be engaged in the company's day-to-day operations, the entire board is held liable (under the doctrine of collective responsibility) for the consequences of the firm's policies, actions, and failures to act. Members of the board usually include senior-most executives (called inside directors or executive directors) as well as experts or respected persons chosen from the wider community (called outside directors or non-executive directors)." .

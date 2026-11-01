@@ -160,47 +160,49 @@
 
 ## 5. 公理约定（Axioms）
 
-- 评估池的发行适用性（assess pool suitability for issuance）：是……的评估（is assessment of） some 组建中抵押贷款池（in assembly mortgage pool）
-- 经纪自营商（broker dealer）：承诺（commits to） some 获得投资者承诺（get commitment from investors）
-- 完成交易（close deal）：导致（results in） some 分层 MBS 交易（tranched m b s deal transaction）
-- 完成交易（close deal）：导致发布（results in publication of） some 汇款报告（remittance report）
-- 定义票据参数（define notes parameters）：导致（results in） some 起草分层票据参数（draft tranche notes parameters）
-- 定义池特征（define pool characteristics）：是……的定义（isDefiningOf） some 未发行非机构抵押贷款池（not yet issued non agency mortgage pool）
-- 拟定各分层条款清单（draw up tranche termsheets）：要求（requires） some 非机构抵押贷款池
-- 定稿池内容（finalize pool content）：定稿（finalizes） some 发行中非机构抵押贷款池（in issuance non agency mortgage pool）
-- 定稿招募说明书（finalize prospectus）：导致（results in） some 分档型抵押支持证券交易招募说明书
-- 获得投资者承诺（get commitment from investors）：基于……的承诺（commitment based on） some 分层招募说明书草案（tranched draft prospectus）
-- 获得投资者承诺（get commitment from investors）：具有资源（has resource） some 起草分层票据参数（draft tranche notes parameters）
-- 获得投资者承诺（get commitment from investors）：具有资源（has resource） some 起草分层票据参数（draft tranche notes parameters）
-- 识别合格抵押贷款（identify conforming mortgage）：引用（refers to） some 房地产担保贷款
-- 确定承销商（identify underwriter）：导致 some 潜在分层发行承销商（potential tranched issue underwriter）
-- 组建中抵押贷款池（in assembly mortgage pool）：具有阶段 some 组建中
-- 发行中非机构抵押贷款池（in issuance non agency mortgage pool）：具有阶段 some 发行中
-- 各分层定义（individual tranche definitions）：具有合同要素 some 债券摊销支付条款
-- 各分层定义（individual tranche definitions）：具有合同要素 some 票息支付条款
-- 使证券进入市场（make securities available in market）：是……的发行（is issue of） some 分档型抵押支持证券交易
-- 使证券进入市场（make securities available in market）：要求（requires） some 分档型抵押支持证券交易招募说明书
-- 向主要投资者营销发行（market issue to primary investors）：具有资源（has resource） some 分层发行备忘录（tranched offering memorandum）
-- 非机构池创建结束（non agency pool creation end）：流转（flow） some MBS 证券化开始（m b s securitization start）
-- 未发行非机构抵押贷款池（not yet issued non agency mortgage pool）：具有阶段 some 尚未发行
-- 编号机构（numbering agency）：分配标识符 some 分配主标识符
-- 编号机构（numbering agency）：分配标识符（allocates identifier） some 分配主标识符（allocate primary identifier）
-- 池受托人（pool trustee）：可能成为（may become） some 证券承销商
-- 潜在非机构 MBS 发行人（potential non agency m b s issuer）：评估 some 评估池的发行适用性（assess pool suitability for issuance）
-- 潜在非机构 MBS 发行人（potential non agency m b s issuer）：评估 some 评估评级（assess ratings）
-- 购入抵押贷款入池（purchase mortgage into pool）：添加到（adds to） some 组建中抵押贷款池（in assembly mortgage pool）
-- 购入抵押贷款入池（purchase mortgage into pool）：是……的购买（is purchase of） some 房地产担保贷款
-- 评级机构（ratings agency）：分配评级（allocates ratings） some 分配评级（allocate ratings）
-- 分层票据参数（tranche notes parameters）：最大金额（maximum amount） 货币数量 ≤1
-- 分层票据参数（tranche notes parameters）：关于 some 抵押支持证券分档票据
-- 分层招募说明书草案（tranched draft prospectus）：先于 some 分档型抵押支持证券交易招募说明书
-- 分层 MBS 交易结算（tranched m b s deal settlement）：分解为（decomposes into） some 分层 MBS 一级交易结算流程（tranched m b s primary deal transaction settlement process）
-- 分层 MBS 交易（tranched m b s deal transaction）：具有交易对手（has counterparty） some 主要投资者（primary investor）
-- 分层 MBS 交易（tranched m b s deal transaction）：遵循 some 分层 MBS 一级交易结算流程（tranched m b s primary deal transaction settlement process）
-- 分层 MBS 招募说明书大纲（tranched m b s prospectus outline）：具有内容（has content） some 起草分层条款清单（draft tranche termsheet）
-- 分层发行备忘录（tranched offering memorandum）：可能包含……的细节（may include details about） 起草分层票据参数（draft tranche notes parameters） ≤1
-- 分层发行备忘录（tranched offering memorandum）：包含……的细节（includes details about） some 分层结构与条款清单（tranche structure and termsheet）
-- 分层发行备忘录（tranched offering memorandum）：包含……的细节（includes details about） some 各分层定义（individual tranche definitions）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **评估池的发行适用性（assess pool suitability for issuance）**：**是……的评估（is assessment of）**至少有一个取值，类型是**组建中抵押贷款池（in assembly mortgage pool）**。
+- **经纪自营商（broker dealer）**：**承诺（commits to）**至少有一个取值，类型是**获得投资者承诺（get commitment from investors）**。
+- **完成交易（close deal）**：**导致（results in）**至少有一个取值，类型是**分层 MBS 交易（tranched m b s deal transaction）**。
+- **完成交易（close deal）**：**导致发布（results in publication of）**至少有一个取值，类型是**汇款报告（remittance report）**。
+- **定义票据参数（define notes parameters）**：**导致（results in）**至少有一个取值，类型是**起草分层票据参数（draft tranche notes parameters）**。
+- **定义池特征（define pool characteristics）**：**是……的定义（isDefiningOf）**至少有一个取值，类型是**未发行非机构抵押贷款池（not yet issued non agency mortgage pool）**。
+- **拟定各分层条款清单（draw up tranche termsheets）**：**要求（requires）**至少有一个取值，类型是**非机构抵押贷款池（NonAgencyMortgagePool）**。
+- **定稿池内容（finalize pool content）**：**定稿（finalizes）**至少有一个取值，类型是**发行中非机构抵押贷款池（in issuance non agency mortgage pool）**。
+- **定稿招募说明书（finalize prospectus）**：**导致（results in）**至少有一个取值，类型是**分档型抵押支持证券交易招募说明书（TranchedMBSDealProspectus）**。
+- **获得投资者承诺（get commitment from investors）**：**基于……的承诺（commitment based on）**至少有一个取值，类型是**分层招募说明书草案（tranched draft prospectus）**。
+- **获得投资者承诺（get commitment from investors）**：**具有资源（has resource）**至少有一个取值，类型是**起草分层票据参数（draft tranche notes parameters）**。
+- **获得投资者承诺（get commitment from investors）**：**具有资源（has resource）**至少有一个取值，类型是**起草分层票据参数（draft tranche notes parameters）**。
+- **识别合格抵押贷款（identify conforming mortgage）**：**引用（refers to）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
+- **确定承销商（identify underwriter）**：**导致（resultsIn）**至少有一个取值，类型是**潜在分层发行承销商（potential tranched issue underwriter）**。
+- **组建中抵押贷款池（in assembly mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**组建中（InAssembly）**。
+- **发行中非机构抵押贷款池（in issuance non agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**发行中（InIssuance）**。
+- **各分层定义（individual tranche definitions）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**债券摊销支付条款（BondAmortizationPaymentTerms）**。
+- **各分层定义（individual tranche definitions）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**票息支付条款（CouponPaymentTerms）**。
+- **使证券进入市场（make securities available in market）**：**是……的发行（is issue of）**至少有一个取值，类型是**分档型抵押支持证券交易（TranchedMBSDeal）**。
+- **使证券进入市场（make securities available in market）**：**要求（requires）**至少有一个取值，类型是**分档型抵押支持证券交易招募说明书（TranchedMBSDealProspectus）**。
+- **向主要投资者营销发行（market issue to primary investors）**：**具有资源（has resource）**至少有一个取值，类型是**分层发行备忘录（tranched offering memorandum）**。
+- **非机构池创建结束（non agency pool creation end）**：**流转（flow）**至少有一个取值，类型是**MBS 证券化开始（m b s securitization start）**。
+- **未发行非机构抵押贷款池（not yet issued non agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**尚未发行（NotYetIssued）**。
+- **编号机构（numbering agency）**：**分配标识符（allocatesIdentifier）**至少有一个取值，类型是**分配主标识符（AllocatePrimaryIdentifier）**。
+- **编号机构（numbering agency）**：**分配标识符（allocates identifier）**至少有一个取值，类型是**分配主标识符（allocate primary identifier）**。
+- **池受托人（pool trustee）**：**可能成为（may become）**至少有一个取值，类型是**证券承销商（SecurityUnderwriter）**。
+- **潜在非机构 MBS 发行人（potential non agency m b s issuer）**：**评估（evaluates）**至少有一个取值，类型是**评估池的发行适用性（assess pool suitability for issuance）**。
+- **潜在非机构 MBS 发行人（potential non agency m b s issuer）**：**评估（evaluates）**至少有一个取值，类型是**评估评级（assess ratings）**。
+- **购入抵押贷款入池（purchase mortgage into pool）**：**添加到（adds to）**至少有一个取值，类型是**组建中抵押贷款池（in assembly mortgage pool）**。
+- **购入抵押贷款入池（purchase mortgage into pool）**：**是……的购买（is purchase of）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
+- **评级机构（ratings agency）**：**分配评级（allocates ratings）**至少有一个取值，类型是**分配评级（allocate ratings）**。
+- **分层票据参数（tranche notes parameters）**：**最大金额（maximum amount）**至多有 1 个**货币数量（MonetaryAmount）**。
+- **分层票据参数（tranche notes parameters）**：**关于（isAbout）**至少有一个取值，类型是**抵押支持证券分档票据（MBSTrancheNote）**。
+- **分层招募说明书草案（tranched draft prospectus）**：**先于（precedes）**至少有一个取值，类型是**分档型抵押支持证券交易招募说明书（TranchedMBSDealProspectus）**。
+- **分层 MBS 交易结算（tranched m b s deal settlement）**：**分解为（decomposes into）**至少有一个取值，类型是**分层 MBS 一级交易结算流程（tranched m b s primary deal transaction settlement process）**。
+- **分层 MBS 交易（tranched m b s deal transaction）**：**具有交易对手（has counterparty）**至少有一个取值，类型是**主要投资者（primary investor）**。
+- **分层 MBS 交易（tranched m b s deal transaction）**：**遵循（follows）**至少有一个取值，类型是**分层 MBS 一级交易结算流程（tranched m b s primary deal transaction settlement process）**。
+- **分层 MBS 招募说明书大纲（tranched m b s prospectus outline）**：**具有内容（has content）**至少有一个取值，类型是**起草分层条款清单（draft tranche termsheet）**。
+- **分层发行备忘录（tranched offering memorandum）**：**可能包含……的细节（may include details about）**至多有 1 个**起草分层票据参数（draft tranche notes parameters）**。
+- **分层发行备忘录（tranched offering memorandum）**：**包含……的细节（includes details about）**至少有一个取值，类型是**分层结构与条款清单（tranche structure and termsheet）**。
+- **分层发行备忘录（tranched offering memorandum）**：**包含……的细节（includes details about）**至少有一个取值，类型是**各分层定义（individual tranche definitions）**。
 
 ## 6. 依赖（owl:imports，26 个）
 

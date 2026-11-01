@@ -222,15 +222,15 @@ fibo-fnd-arr-asmt:Appraisal a owl:Class ;
     rdfs:comment "对某事物在某时点市场价值的书面估计，通常由合格估价师提供。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-oac-own:Asset ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-arr-asmt:Appraiser ;
             owl:onProperty fibo-fnd-rel-rel:isGeneratedBy ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-asmt:estimatesValueAt ;
             owl:someValuesFrom fibo-fnd-arr-asmt:AppraisedValue ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-oac-own:Asset ;
-            owl:onProperty fibo-fnd-rel-rel:evaluates ],
         fibo-fnd-arr-asmt:AssessmentReport ;
     skos:definition "written estimate of the market value of something as of some point in time, typically provided by a qualified appraiser" .
 
@@ -249,12 +249,12 @@ fibo-fnd-arr-asmt:AssessmentEvent a owl:Class ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-oc:hasOutput ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Opinion ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-arr-asmt:AssessmentReport ;
             owl:onProperty fibo-fnd-dt-oc:hasOutput ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-dt-oc:hasOutput ;
-            owl:someValuesFrom fibo-fnd-arr-asmt:Opinion ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "event involving the evaluation or estimation of the nature, quality, or ability of someone or something" .
 
@@ -274,11 +274,11 @@ fibo-fnd-arr-asmt:Opinion a owl:Class ;
         "意见（opinion）"@zh ;
     rdfs:comment "对某事物的判断、估价或看法。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isGeneratedBy ;
-            owl:someValuesFrom cmns-pts:AgentRole ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-dt-oc:isOutputFrom ;
-            owl:someValuesFrom fibo-fnd-arr-asmt:AssessmentEvent ] ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:AssessmentEvent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isGeneratedBy ;
+            owl:someValuesFrom cmns-pts:AgentRole ] ;
     skos:definition "judgement, appraisal, or view about something" .
 
 fibo-fnd-arr-asmt:ValuationMethod a owl:Class ;

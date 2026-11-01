@@ -37,11 +37,13 @@
 
 ## 5. 公理约定（Axioms）
 
-- 索引（index）：restriction
-- 索引（index）：定义于 索引方案（indexing scheme） =1
-- 索引方案（indexing scheme）：定义 some 索引（index）
-- 可重分配标识符（reassignable identifier）：restriction
-- 可重分配标识符（reassignable identifier）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **索引（index）**：**是…的索引（is index to）**存在取值约束。
+- **索引（index）**：**定义于（isDefinedIn）**恰好有 1 个**索引方案（indexing scheme）**。
+- **索引方案（indexing scheme）**：**定义（defines）**至少有一个取值，类型是**索引（index）**。
+- **可重分配标识符（reassignable identifier）**：**具有分配终止日期（has assignment termination date）**存在取值约束。
+- **可重分配标识符（reassignable identifier）**：**具有初始分配日期（has initial assignment date）**存在取值约束。
 
 ## 6. 依赖（owl:imports，10 个）
 

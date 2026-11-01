@@ -33,7 +33,9 @@
 
 ## 5. 公理约定（Axioms）
 
-- 网络位置（network location）：由……标识 地址 =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **网络位置（network location）**：**由……标识（isIdentifiedBy）**恰好有 1 个**地址（Address）**。
 
 ## 6. 依赖（owl:imports，6 个）
 

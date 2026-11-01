@@ -271,20 +271,20 @@ fibo-der-drc-comm:CommodityBasketConstituent a owl:Class ;
     rdfs:comment "定制商品篮子的组成部分，其相对于其他篮子成分的重要性为已知。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-pas-pas:Commodity ;
-            owl:onProperty fibo-fnd-rel-rel:involves ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-der-drc-comm:hasCommodityValueAsOfDate ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValue ;
             owl:onProperty cmns-qtu:hasQuantityValue ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:ExplicitDate ;
-            owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ],
+            owl:onClass fibo-fnd-pas-pas:Commodity ;
+            owl:onProperty fibo-fnd-rel-rel:involves ],
         fibo-fbc-pas-fpas:WeightedBasketConstituent ;
     skos:definition "component of a custom commodity basket whose relative importance with respect to other basket constituents is known" .
 

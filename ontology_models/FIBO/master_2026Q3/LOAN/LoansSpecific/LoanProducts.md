@@ -68,16 +68,18 @@
 
 ## 5. 公理约定（Axioms）
 
-- 明细行项（line item）：具有单价（has unit cost） 货币数量 ≥0
-- 明细行项（line item）：restriction
-- 明细行项（line item）：具有成本 some 货币数量
-- 明细行项（line item）：引用 some（restriction）
-- 贷款发售（loan offering）：具有成员 明细行项（line item） ≥0
-- 贷款发售（loan offering）：适用于 some 贷款产品（loan product）
-- 贷款产品（loan product）：引用 抵押品 ≥0
-- 贷款产品（loan product）：具有前提条件（has preconditions） 先决条件 ≥0
-- 贷款产品（loan product）：由……例证 贷款 ≥0
-- 抵押贷款产品（mortgage product）：由……例证 房地产担保贷款 ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **明细行项（line item）**：**具有单价（has unit cost）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **明细行项（line item）**：**具有数值（hasNumericValue）**存在取值约束。
+- **明细行项（line item）**：**具有成本（hasCost）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **明细行项（line item）**：**引用（refersTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **贷款发售（loan offering）**：**具有成员（hasMember）**可以有 0 个或多个**明细行项（line item）**。
+- **贷款发售（loan offering）**：**适用于（appliesTo）**至少有一个取值，类型是**贷款产品（loan product）**。
+- **贷款产品（loan product）**：**引用（refersTo）**可以有 0 个或多个**抵押品（Collateral）**。
+- **贷款产品（loan product）**：**具有前提条件（has preconditions）**可以有 0 个或多个**先决条件（ConditionPrecedent）**。
+- **贷款产品（loan product）**：**由……例证（isExemplifiedBy）**可以有 0 个或多个**贷款（Loan）**。
+- **抵押贷款产品（mortgage product）**：**由……例证（isExemplifiedBy）**可以有 0 个或多个**房地产担保贷款（LoanSecuredByRealEstate）**。
 
 ## 6. 依赖（owl:imports，19 个）
 

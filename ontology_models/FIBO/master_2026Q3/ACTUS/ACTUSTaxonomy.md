@@ -39,13 +39,15 @@
 
 ## 5. 公理约定（Axioms）
 
-- ACTUS 合同类型（ACTUS contract type）：具有覆盖范围描述（has coverage description） only xsd:string
-- ACTUS 合同类型（ACTUS contract type）：restriction
-- ACTUS 合同类型（ACTUS contract type）：restriction
-- 算法合同类别（algorithmic contract category）：restriction
-- 算法合同类别（algorithmic contract category）：restriction
-- 算法合同族（algorithmic contract family）：restriction
-- 算法合同族（algorithmic contract family）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **ACTUS 合同类型（ACTUS contract type）**：**具有覆盖范围描述（has coverage description）**的所有取值只能是**xsd:string（string）**。
+- **ACTUS 合同类型（ACTUS contract type）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+- **ACTUS 合同类型（ACTUS contract type）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+- **算法合同类别（algorithmic contract category）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+- **算法合同类别（algorithmic contract category）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+- **算法合同族（algorithmic contract family）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+- **算法合同族（algorithmic contract family）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
 
 ## 6. 依赖（owl:imports，8 个）
 

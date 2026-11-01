@@ -40,26 +40,28 @@
 
 ## 5. 公理约定（Axioms）
 
-- 商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）：restriction
-- 商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）：restriction
-- 商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）：标识 分类账户 ≥0
-- 商业编号（business number）：restriction
-- 商业编号（business number）：restriction
-- 公司所得税编号（corporation income tax number）：restriction
-- 公司所得税编号（corporation income tax number）：restriction
-- 公司所得税编号（corporation income tax number）：标识 分类账户 ≥0
-- 进出口计划编号（import export program number）：restriction
-- 进出口计划编号（import export program number）：restriction
-- 进出口计划编号（import export program number）：标识 分类账户 ≥0
-- 信息申报计划编号（information return program number）：restriction
-- 信息申报计划编号（information return program number）：restriction
-- 信息申报计划编号（information return program number）：标识 分类账户 ≥0
-- 工资代扣计划编号（payroll deductions program number）：restriction
-- 工资代扣计划编号（payroll deductions program number）：restriction
-- 工资代扣计划编号（payroll deductions program number）：标识 分类账户 ≥0
-- 注册慈善机构计划编号（registered charity program number）：restriction
-- 注册慈善机构计划编号（registered charity program number）：restriction
-- 注册慈善机构计划编号（registered charity program number）：标识 分类账户 ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+- **商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）**：**是……的成员（isMemberOf）**的取值固定为 GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme。
+- **商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **商业编号（business number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+- **商业编号（business number）**：**是……的成员（isMemberOf）**的取值固定为 BusinessNumberRegistrationIdentifierScheme。
+- **公司所得税编号（corporation income tax number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+- **公司所得税编号（corporation income tax number）**：**是……的成员（isMemberOf）**的取值固定为 CorporationIncomeTaxNumberIdentifierScheme。
+- **公司所得税编号（corporation income tax number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **进出口计划编号（import export program number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+- **进出口计划编号（import export program number）**：**是……的成员（isMemberOf）**的取值固定为 ImportExportProgramNumberIdentifierScheme。
+- **进出口计划编号（import export program number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **信息申报计划编号（information return program number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+- **信息申报计划编号（information return program number）**：**是……的成员（isMemberOf）**的取值固定为 InformationReturnsIdentifierScheme。
+- **信息申报计划编号（information return program number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **工资代扣计划编号（payroll deductions program number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+- **工资代扣计划编号（payroll deductions program number）**：**是……的成员（isMemberOf）**的取值固定为 PayrollDeductionsProgramIdentifierRegistrationService。
+- **工资代扣计划编号（payroll deductions program number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **注册慈善机构计划编号（registered charity program number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+- **注册慈善机构计划编号（registered charity program number）**：**是……的成员（isMemberOf）**的取值固定为 RegisteredCharityProgramNumberIdentifierScheme。
+- **注册慈善机构计划编号（registered charity program number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
 
 ## 6. 依赖（owl:imports，27 个）
 

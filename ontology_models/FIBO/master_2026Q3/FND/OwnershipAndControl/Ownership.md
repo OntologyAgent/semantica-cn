@@ -86,31 +86,33 @@
 
 ## 5. 公理约定（Axioms）
 
-- 资产（asset）：具有取得价格（has acquisition price） 价格 ≤1
-- 资产（asset）：restriction
-- 资产（asset）：是……的资产（is asset of） some 所有者（owner）
-- 资产（asset）：是自有资产（is owned asset） some 所有权（ownership）
-- 数字通证标识符（digital token identifier）：是……的成员 数字通证注册方案（digital token registration scheme） =1
-- 数字通证标识符（digital token identifier）：标识 some 数字通证注册簿记录（digital token registry record）
-- 数字通证注册簿（digital token registry）：包含 some 数字通证注册簿记录（digital token registry record）
-- 数字通证注册簿记录（digital token registry record）：包含 some 数字通证标识符（digital token identifier）
-- 数字通证注册簿记录（digital token registry record）：登记 some 数字通证（digital token）
-- 息税折旧摊销前利润（earnings before interest, taxes, depreciation and amortization）：适用于 正式组织 ≥0
-- 金融资产（financial asset）：具有取得价格（has acquisition price） only 货币价格
-- 同质通证（fungible token） 与 非同质通证（non-fungible token） 互斥（disjointWith）
-- 持仓（holding）：restriction
-- 收入（income）：具有日期区间 日期区间 =1
-- 无形资产（intangible asset） 与 有形资产（tangible asset） 互斥（disjointWith）
-- 所有者（owner）：是所有方（is owning party） some 所有权（ownership）
-- 所有者（owner）：拥有资产（owns asset） some 资产（asset）
-- 所有者权益（owners' equity）：适用于 正式组织 ≥0
-- 所有者权益（owners' equity）：具有自变量 some 实收资本（paid-in capital）
-- 所有者权益（owners' equity）：具有自变量 some 留存收益（retained earnings）
-- 所有权（ownership）：具有自有资产（has owned asset） some 资产（asset）
-- 所有权（ownership）：具有所有方（has owning party） some 所有者（owner）
-- 实物资产（physical asset） 与 金融资产（financial asset） 互斥（disjointWith）
-- 组合（portfolio）：是……的成员 组合（portfolio） ≤1
-- 组合（portfolio）：包含 some 持仓（holding）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **资产（asset）**：**具有取得价格（has acquisition price）**至多有 1 个**价格（Price）**。
+- **资产（asset）**：**具有取得日期（hasAcquisitionDate）**存在取值约束。
+- **资产（asset）**：**是……的资产（is asset of）**至少有一个取值，类型是**所有者（owner）**。
+- **资产（asset）**：**是自有资产（is owned asset）**至少有一个取值，类型是**所有权（ownership）**。
+- **数字通证标识符（digital token identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**数字通证注册方案（digital token registration scheme）**。
+- **数字通证标识符（digital token identifier）**：**标识（identifies）**至少有一个取值，类型是**数字通证注册簿记录（digital token registry record）**。
+- **数字通证注册簿（digital token registry）**：**包含（comprises）**至少有一个取值，类型是**数字通证注册簿记录（digital token registry record）**。
+- **数字通证注册簿记录（digital token registry record）**：**包含（comprises）**至少有一个取值，类型是**数字通证标识符（digital token identifier）**。
+- **数字通证注册簿记录（digital token registry record）**：**登记（registers）**至少有一个取值，类型是**数字通证（digital token）**。
+- **息税折旧摊销前利润（earnings before interest, taxes, depreciation and amortization）**：**适用于（appliesTo）**可以有 0 个或多个**正式组织（FormalOrganization）**。
+- **金融资产（financial asset）**：**具有取得价格（has acquisition price）**的所有取值只能是**货币价格（MonetaryPrice）**。
+- **同质通证（fungible token）**与**非同质通证（non-fungible token）**互斥：同一个体不能同时属于两者。
+- **持仓（holding）**：**具有份额权益（hasFractionalInterest）**存在取值约束。
+- **收入（income）**：**具有日期区间（hasDatePeriod）**恰好有 1 个**日期区间（DatePeriod）**。
+- **无形资产（intangible asset）**与**有形资产（tangible asset）**互斥：同一个体不能同时属于两者。
+- **所有者（owner）**：**是所有方（is owning party）**至少有一个取值，类型是**所有权（ownership）**。
+- **所有者（owner）**：**拥有资产（owns asset）**至少有一个取值，类型是**资产（asset）**。
+- **所有者权益（owners' equity）**：**适用于（appliesTo）**可以有 0 个或多个**正式组织（FormalOrganization）**。
+- **所有者权益（owners' equity）**：**具有自变量（hasArgument）**至少有一个取值，类型是**实收资本（paid-in capital）**。
+- **所有者权益（owners' equity）**：**具有自变量（hasArgument）**至少有一个取值，类型是**留存收益（retained earnings）**。
+- **所有权（ownership）**：**具有自有资产（has owned asset）**至少有一个取值，类型是**资产（asset）**。
+- **所有权（ownership）**：**具有所有方（has owning party）**至少有一个取值，类型是**所有者（owner）**。
+- **实物资产（physical asset）**与**金融资产（financial asset）**互斥：同一个体不能同时属于两者。
+- **组合（portfolio）**：**是……的成员（isMemberOf）**至多有 1 个**组合（portfolio）**。
+- **组合（portfolio）**：**包含（comprises）**至少有一个取值，类型是**持仓（holding）**。
 
 ## 6. 依赖（owl:imports，13 个）
 

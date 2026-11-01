@@ -83,19 +83,19 @@ fibo-loan-spc-grn:GreenLoan a owl:Class ;
         "绿色贷款（green loan）"@zh ;
     rdfs:comment "专门用于为绿色项目融资或再融资的信贷协议和/或或有融资安排（如保函额度、担保额度或信用证）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-loan-spc-grn:GreenProjectUseOfProceedsProvision ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-ctr:MilestoneSchedule ;
             owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
-            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
             owl:someValuesFrom fibo-fnd-agr-ctr:DisclosureProvision ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-loan-spc-grn:GreenProjectUseOfProceedsProvision ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
+            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
         fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically ;
     skos:definition "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) made available exclusively to finance, re-finance or guarantee, in whole or in part, new and/or existing eligible green projects that are aligned to the four core components of the Green Loan Principles (GLP)"@en ;
     skos:example "Example categories of eligibility contained in the LMA's Green Loan Principles (GLP) include loans designed to facilitate renewable energy, energy efficiency, climate change adaptation and green buildings that meet regional, national or internationally recognised standards or certifications."@en ;
@@ -107,6 +107,10 @@ fibo-loan-spc-grn:SustainabilityLinkedLoan a owl:Class ;
         "可持续挂钩贷款（sustainability-linked loan）"@zh ;
     rdfs:comment "其经济特征可随借款人可持续绩效目标达成情况而变化的信贷协议和/或或有融资安排。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:MilestoneSchedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
             owl:someValuesFrom fibo-loan-spc-grn:SustainabilityBusinessStrategy ],
         [ a owl:Restriction ;
@@ -116,10 +120,6 @@ fibo-loan-spc-grn:SustainabilityLinkedLoan a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
             owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-agr-ctr:MilestoneSchedule ;
-            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
         fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically,
         fibo-loan-spc-com:CommercialLoan ;
     skos:definition "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) for which the economic characteristics can vary depending on whether the borrower achieves ambitious, material and quantifiable predetermined sustainability performance objectives aligned with Sustainability-Linked Loan Principles (SSLP)"@en ;
@@ -146,18 +146,18 @@ fibo-loan-spc-grn:TransitionLoan a owl:Class ;
             owl:someValuesFrom fibo-fnd-agr-ctr:DisclosureProvision ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-agr-ctr:MilestoneSchedule ;
-            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
-            owl:someValuesFrom fibo-loan-spc-grn:TransitionStrategy ],
+            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
+            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
             owl:someValuesFrom fibo-loan-spc-grn:TransitionUseOfProceedsProvision ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasStrategy ;
+            owl:someValuesFrom fibo-loan-spc-grn:TransitionStrategy ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
-            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
+            owl:onClass fibo-fnd-agr-ctr:MilestoneSchedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
         fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically,
         fibo-loan-spc-com:CommercialLoan ;
     skos:definition "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) designed to help a business or organization shift from carbon-intensive or environmentally harmful practices to more sustainable and environmentally friendly operations"@en ;
@@ -169,12 +169,12 @@ fibo-loan-spc-grn:EnvironmentalProgram a owl:Class ;
         "环境计划（environmental program）"@zh ;
     rdfs:comment "旨在改善环境可持续性、减少生态损害或应对环境挑战的大规模倡议、活动或投资。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isCharacterizedBy ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-loan-spc-grn:EnvironmentalProject ;
             owl:onProperty cmns-col:hasMember ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:isCharacterizedBy ;
-            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
         fibo-fnd-gao-obj:Program ;
     skos:definition "broad scale initiative, activity, or investment aimed at improving environmental sustainability, reducing ecological harm, or addressing environmental challenges" ;
     cmns-av:explanatoryNote "Key characteristics of an environmental or sustainability program include achieving measurable positive environmental outcomes, and aligning with broader sustainability goals, such as those outlined in international frameworks (e.g., the United Nations Sustainable Development Goals (SDGs), Paris Agreement). Large scale environmental programs may consist of a number of projects aimed at addressing specific requirements that support the broader challenges outlined under the program." .
@@ -224,15 +224,15 @@ fibo-loan-spc-grn:SustainabilityBusinessStrategy a owl:Class ;
         "可持续业务战略（sustainability business strategy）"@zh ;
     rdfs:comment "从环境、社会和/或治理（ESG）视角实现可持续相关特定业务目标的战略。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-spc-grn:SustainabilityPerformanceTarget ;
-            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ],
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityBusinessObjective ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cls:isCharacterizedBy ;
             owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
-            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityBusinessObjective ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:SustainabilityPerformanceTarget ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ],
         fibo-fnd-gao-obj:BusinessStrategy ;
     skos:definition "strategy for achieving specific business objectives related to sustainability (from an environmental and/or social and/or governance (ESG) perspective)"@en ;
     cmns-av:adaptedFrom "https://www.lsta.org/content/sustainability-linked-loan-principles-sllp/"@en ;
@@ -290,11 +290,11 @@ fibo-loan-spc-grn:TransitionStrategy a owl:Class ;
             owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
             owl:someValuesFrom fibo-loan-spc-grn:SustainabilityPerformanceTarget ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
-            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityBusinessObjective ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:isCharacterizedBy ;
             owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ;
+            owl:someValuesFrom fibo-loan-spc-grn:SustainabilityBusinessObjective ],
         fibo-fnd-gao-obj:BusinessStrategy ;
     skos:definition "strategy for achieving specific business objectives related to sustainability in the context of long-term decarbonization or sustainability transitions"@en ;
     cmns-av:explanatoryNote "Note that although there are similarities with sustainability business strategies, they are not the same. KPIs and SPTs may, however, be defined similarly for a given project."@en .
@@ -320,20 +320,20 @@ fibo-loan-spc-grn:AssessmentBoundary a owl:Class ;
         "评估边界（assessment boundary）"@zh ;
     rdfs:comment "用于确定环境影响评估、分析或计量之纳入与排除范围的界限与标准。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-loan-spc-grn:hasSpatialBoundary ;
+            owl:someValuesFrom cmns-loc:GeographicRegion ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-sfc:Site ;
             owl:onProperty fibo-fnd-rel-rel:involves ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-rga:Jurisdiction ;
-            owl:onProperty cmns-cxtdsg:isApplicableIn ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-sfc:Facility ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-loan-spc-grn:hasSpatialBoundary ;
-            owl:someValuesFrom cmns-loc:GeographicRegion ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
         cmns-cxtdsg:Context,
         cmns-doc:Specification ;
     skos:definition "defined scope, limits, and criteria used to determine what is included or excluded in an evaluation, analysis, or measurement of environmental impacts, sustainability performance, or related objectives" ;
@@ -393,8 +393,9 @@ fibo-loan-spc-grn:EnvironmentalProject a owl:Class ;
         "环境项目（environmental project）"@zh ;
     rdfs:comment "旨在改善环境可持续性、减少生态损害或应对环境挑战的具体倡议、活动或投资。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-dt-fd:hasSchedule ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:MilestoneSchedule ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:AssessmentBoundary ;
+            owl:onProperty fibo-loan-spc-grn:hasAssessmentBoundary ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cls:isCharacterizedBy ;
             owl:someValuesFrom fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator ],
@@ -403,9 +404,8 @@ fibo-loan-spc-grn:EnvironmentalProject a owl:Class ;
             owl:onClass fibo-loan-spc-grn:EnvironmentalProgram ;
             owl:onProperty cmns-col:isMemberOf ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-spc-grn:AssessmentBoundary ;
-            owl:onProperty fibo-loan-spc-grn:hasAssessmentBoundary ],
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:MilestoneSchedule ],
         fibo-fnd-gao-obj:Project ;
     skos:definition "specific initiative, activity, or investment aimed at improving environmental sustainability, reducing ecological harm, or addressing environmental challenges" ;
     cmns-av:explanatoryNote "Key characteristics of an environmental or sustainability project include achieving measurable positive environmental outcomes, and aligning with broader sustainability goals, such as those outlined in international frameworks (e.g., the United Nations Sustainable Development Goals (SDGs), Paris Agreement).",
@@ -416,18 +416,18 @@ fibo-loan-spc-grn:SustainabilityPerformanceTarget a owl:Class ;
         "可持续绩效目标（sustainability performance target）"@zh ;
     rdfs:comment "用于校准借款人就某关键绩效指标之达成水平的一组定量目标值。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dt:hasDatePeriod ;
-            owl:someValuesFrom fibo-fnd-dt-fd:CalculationPeriod ],
+            owl:onProperty cmns-col:hasMember ;
+            owl:someValuesFrom fibo-loan-spc-grn:TargetIndicatorValue ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-utl-alx:isCalculatedViaMethodology ;
+            owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-loan-spc-grn:SustainabilityPerformanceTargetIdentifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-utl-alx:isCalculatedViaMethodology ;
-            owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:hasMember ;
-            owl:someValuesFrom fibo-loan-spc-grn:TargetIndicatorValue ],
+            owl:onProperty cmns-dt:hasDatePeriod ;
+            owl:someValuesFrom fibo-fnd-dt-fd:CalculationPeriod ],
         fibo-fnd-dt-fd:DatedStructuredCollection ;
     skos:definition "collection of quantitative target values used to calibrate the level of achievement a borrower makes with respect to a key performance indicator, by date, including, but not limited to, the methodology used to calculate its value at any point over the lifetime of a loan"@en ;
     cmns-av:abbreviation "SPT"@en ;
@@ -445,12 +445,12 @@ fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicator a owl:Class ;
             owl:onProperty fibo-fnd-utl-alx:hasObservedValue ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicatorIdentifier ;
-            owl:onProperty cmns-id:isIdentifiedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-loan-spc-grn:SustainabilityPerformanceTarget ;
             owl:onProperty fibo-fnd-utl-alx:hasTargetValue ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-spc-grn:SustainabilityKeyPerformanceIndicatorIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
         fibo-fnd-utl-alx:KeyPerformanceIndicator ;
     skos:definition "measurable performance indicator that is sustainability specific"@en ;
     cmns-av:adaptedFrom "https://www.lsta.org/content/sustainability-linked-loan-principles-sllp/"@en ;

@@ -51,17 +51,19 @@
 
 ## 5. 公理约定（Axioms）
 
-- 计算（calculation）：具有表达式 表达式 ≥0
-- 计算（calculation）：具有量值 标量值 ≥0
-- 计算（calculation）：具有量值区间 标量值区间 ≥0
-- 计算（calculation）：例证 计算事件（calculation event） =1
-- 计算事件（calculation event）：分类 some 计算（calculation）
-- 发生事项（occurrence）：restriction
-- 发生事项（occurrence）：由……分类 发生类别（occurrence kind） ≥0
-- 发生事项（occurrence）：具有位置 位置 ≥0
-- 发生事项（occurrence）：例证 发生类别（occurrence kind） =1
-- 发生类别（occurrence kind）：分类 some 发生事项（occurrence）
-- 基于发生事项的日期（occurrence-based date）：由……触发（is triggered by） 发生类别（occurrence kind） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **计算（calculation）**：**具有表达式（hasExpression）**可以有 0 个或多个**表达式（Expression）**。
+- **计算（calculation）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
+- **计算（calculation）**：**具有量值区间（hasQuantityValueRange）**可以有 0 个或多个**标量值区间（ScalarQuantityValueRange）**。
+- **计算（calculation）**：**例证（exemplifies）**恰好有 1 个**计算事件（calculation event）**。
+- **计算事件（calculation event）**：**分类（classifies）**至少有一个取值，类型是**计算（calculation）**。
+- **发生事项（occurrence）**：该属性存在取值约束。
+- **发生事项（occurrence）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**发生类别（occurrence kind）**。
+- **发生事项（occurrence）**：**具有位置（hasLocation）**可以有 0 个或多个**位置（Location）**。
+- **发生事项（occurrence）**：**例证（exemplifies）**恰好有 1 个**发生类别（occurrence kind）**。
+- **发生类别（occurrence kind）**：**分类（classifies）**至少有一个取值，类型是**发生事项（occurrence）**。
+- **基于发生事项的日期（occurrence-based date）**：**由……触发（is triggered by）**恰好有 1 个**发生类别（occurrence kind）**。
 
 ## 6. 依赖（owl:imports，10 个）
 

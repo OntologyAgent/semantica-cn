@@ -29,11 +29,13 @@
 
 ## 5. 公理约定（Axioms）
 
-- 独资经营者（sole proprietor）：由…扮演（is played by） 具有法律行为能力的自然人 =1
-- 独资经营者（sole proprietor）：具有投资实体 some 独资企业（sole proprietorship）
-- 独资经营者（sole proprietor）：由…扮演（is played by） some（拥有并控制 some 独资企业（sole proprietorship））
-- 独资企业（sole proprietorship）：由…拥有并控制 具有法律行为能力的自然人 =1
-- 独资企业（sole proprietorship）：具有能力方 some 应诉能力
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **独资经营者（sole proprietor）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **独资经营者（sole proprietor）**：**具有投资实体（hasInvestmentEntity）**至少有一个取值，类型是**独资企业（sole proprietorship）**。
+- **独资经营者（sole proprietor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**拥有并控制（ownsAndControls）**至少有一个取值，类型是**独资企业（sole proprietorship）**。
+- **独资企业（sole proprietorship）**：**由…拥有并控制（isOwnedAndControlledBy）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **独资企业（sole proprietorship）**：**具有能力方（hasCapacity）**至少有一个取值，类型是**应诉能力（LiabilityCapacity）**。
 
 ## 6. 依赖（owl:imports，8 个）
 

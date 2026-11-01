@@ -71,22 +71,24 @@
 
 ## 5. 公理约定（Axioms）
 
-- 具有缔约能力的实体（contractually capable entity）：由…扮演（is played by） 法律实体 =1
-- 实体法律形式（entity legal form）：restriction
-- 实体法律形式（entity legal form）：restriction
-- 实体法律形式（entity legal form）：restriction
-- 实体法律形式（entity legal form）：restriction
-- 实体法律形式（entity legal form）：分类 some 法律主体
-- 实体法律形式（entity legal form）：适用于情境 some 管辖权
-- 实体法律形式（entity legal form）：定义于 some 实体法律形式方案（entity legal form scheme）
-- 实体法律形式标识符（entity legal form identifier）：指代 实体法律形式（entity legal form） =1
-- 实体法律形式标识符（entity legal form identifier）：定义于 some 实体法律形式方案（entity legal form scheme）
-- 实体法律形式方案（entity legal form scheme）：定义 some 实体法律形式标识符（entity legal form identifier）
-- 法律实体标识符（legal entity identifier）：标识 法律主体 =1
-- 法律实体标识符（legal entity identifier）：定义于 some 法律实体标识符方案（legal entity identifier scheme）
-- 法律实体标识符方案（legal entity identifier scheme）：定义 some 法律实体标识符（legal entity identifier）
-- 关系记录（relationship record）：受……限定 关系限定符（relationship qualifier） ≥0
-- 关系记录（relationship record）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **具有缔约能力的实体（contractually capable entity）**：**由…扮演（is played by）**恰好有 1 个**法律实体（LegalEntity）**。
+- **实体法律形式（entity legal form）**：**具有法律形式缩写（has legal form abbreviation）**存在取值约束。
+- **实体法律形式（entity legal form）**：**具有转写法律形式缩写（has transliterated legal form abbreviation）**存在取值约束。
+- **实体法律形式（entity legal form）**：**具有转写名称（has transliterated name）**存在取值约束。
+- **实体法律形式（entity legal form）**：**具有文本名称（hasTextualName）**存在取值约束。
+- **实体法律形式（entity legal form）**：**分类（classifies）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **实体法律形式（entity legal form）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **实体法律形式（entity legal form）**：**定义于（isDefinedIn）**至少有一个取值，类型是**实体法律形式方案（entity legal form scheme）**。
+- **实体法律形式标识符（entity legal form identifier）**：**指代（denotes）**恰好有 1 个**实体法律形式（entity legal form）**。
+- **实体法律形式标识符（entity legal form identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**实体法律形式方案（entity legal form scheme）**。
+- **实体法律形式方案（entity legal form scheme）**：**定义（defines）**至少有一个取值，类型是**实体法律形式标识符（entity legal form identifier）**。
+- **法律实体标识符（legal entity identifier）**：**标识（identifies）**恰好有 1 个**法律主体（LegalPerson）**。
+- **法律实体标识符（legal entity identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**法律实体标识符方案（legal entity identifier scheme）**。
+- **法律实体标识符方案（legal entity identifier scheme）**：**定义（defines）**至少有一个取值，类型是**法律实体标识符（legal entity identifier）**。
+- **关系记录（relationship record）**：**受……限定（isQualifiedBy）**可以有 0 个或多个**关系限定符（relationship qualifier）**。
+- **关系记录（relationship record）**：**由……量化（is quantified by）**存在取值约束。
 
 ## 6. 依赖（owl:imports，16 个）
 

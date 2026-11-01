@@ -98,54 +98,56 @@
 
 ## 5. 公理约定（Axioms）
 
-- 卡账户（card account）：关联至账户 客户账户 ≥0
-- 卡账户（card account）：具有主要账户持有人 some 持卡人（cardholder）
-- 卡账户（card account）：例证 some 卡产品（card product）
-- 卡账户（card account）：定义于 some 支付卡协议（payment card agreement）
-- 卡账户（card account）：由……表示 some 支付卡（payment card）
-- 卡账户（card account）：由……标识 some 主卡账户号（primary card account number）
-- 卡产品（card product）：具有信用卡网络（has credit card network） 信用卡网络（credit card network） ≥0
-- 卡产品（card product）：具有行政区划 国家行政区划 ≥0
-- 卡产品（card product）：使用货币（uses currency） 货币 =1
-- 卡产品（card product）：具有国家 国家 =1
-- 卡产品（card product）：由……例证 some 卡账户（card account）
-- 卡验证码或验证值（card verification code or value）：restriction
-- 卡验证码或验证值（card verification code or value）：适用于 some 支付卡（payment card）
-- 持卡人（cardholder）：持有 some 卡账户（card account）
-- 持卡人（cardholder）：由…扮演（is played by） some（拥有 some 卡账户（card account））
-- 持卡人（cardholder）：由…扮演（is played by） some（是…的参与方（is a party to） some 卡账户（card account））
-- 商业信用卡协议（commercial credit card agreement）：具有借款人 some（由…扮演（is played by） some 正式组织）
-- 消费者信用卡协议（consumer credit card agreement）：具有借款人 some 消费者
-- 信用卡（credit card）：是……的证据 信用卡账户（credit card account） =1
-- 信用卡（credit card）：由……分类 some 信用卡产品（credit card product）
-- 信用卡账户（credit card account）：具有付款到期日 some 付款到期日
-- 信用卡账户（credit card account）：例证 some 信用卡产品（credit card product）
-- 信用卡账户（credit card account）：定义于 some 信用卡协议（credit card agreement）
-- 信用卡账户（credit card account）：由……表示 some 信用卡（credit card）
-- 信用卡协议（credit card agreement）：具有借款人 some 持卡人（cardholder）
-- 信用卡协议（credit card agreement）：具有贷款人 some 发卡金融机构（issuing financial institution）
-- 信用卡协议（credit card agreement）：由……证明 some 信用卡（credit card）
-- 信用卡协议（credit card agreement）：适用于 some 信用卡账户（credit card account）
-- 信用卡网络（credit card network）：分类 some 卡产品（card product）
-- 信用卡网络（credit card network）：具有标签 some xsd:string
-- 信用卡产品（credit card product）：具有信用卡网络（has credit card network） 信用卡网络（credit card network） =1
-- 信用卡产品（credit card product）：由……例证 some 信用卡账户（credit card account）
-- 信用卡产品（credit card product）：分类 some 信用卡（credit card）
-- 借记卡（debit card）：是……的证据 借记卡账户（debit card account） =1
-- 借记卡（debit card）：由……分类 some 借记卡产品（debit card product）
-- 借记卡账户（debit card account）：例证 some 借记卡产品（debit card product）
-- 借记卡账户（debit card account）：由……表示 some 借记卡（debit card）
-- 借记卡产品（debit card product）：由……例证 some 借记卡账户（debit card account）
-- 借记卡产品（debit card product）：分类 some 借记卡（debit card）
-- 支付卡（payment card）：具有到期日 卡有效期（card expiration date） =1
-- 支付卡（payment card）：具有卡验证码（has card verification code） 卡验证码或验证值（card verification code or value） =1
-- 支付卡（payment card）：具有主账户号（has primary account number） 主卡账户号（primary card account number） =1
-- 支付卡（payment card）：是……的证据 some 卡账户（card account）
-- 支付卡协议（payment card agreement）：具有合同当事方 some 持卡人（cardholder）
-- 支付卡协议（payment card agreement）：具有合同当事方 some 发卡金融机构（issuing financial institution）
-- 支付卡协议（payment card agreement）：由……证明 some 支付卡（payment card）
-- 支付卡协议（payment card agreement）：适用于 some 卡账户（card account）
-- 主卡账户号（primary card account number）：标识 卡账户（card account） =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **卡账户（card account）**：**关联至账户（isLinkedToAccount）**可以有 0 个或多个**客户账户（CustomerAccount）**。
+- **卡账户（card account）**：**具有主要账户持有人（hasPrimaryAccountHolder）**至少有一个取值，类型是**持卡人（cardholder）**。
+- **卡账户（card account）**：**例证（exemplifies）**至少有一个取值，类型是**卡产品（card product）**。
+- **卡账户（card account）**：**定义于（isDefinedIn）**至少有一个取值，类型是**支付卡协议（payment card agreement）**。
+- **卡账户（card account）**：**由……表示（isSignifiedBy）**至少有一个取值，类型是**支付卡（payment card）**。
+- **卡账户（card account）**：**由……标识（isIdentifiedBy）**至少有一个取值，类型是**主卡账户号（primary card account number）**。
+- **卡产品（card product）**：**具有信用卡网络（has credit card network）**可以有 0 个或多个**信用卡网络（credit card network）**。
+- **卡产品（card product）**：**具有行政区划（hasSubdivision）**可以有 0 个或多个**国家行政区划（CountrySubdivision）**。
+- **卡产品（card product）**：**使用货币（uses currency）**恰好有 1 个**货币（Currency）**。
+- **卡产品（card product）**：**具有国家（hasCountry）**恰好有 1 个**国家（Country）**。
+- **卡产品（card product）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**卡账户（card account）**。
+- **卡验证码或验证值（card verification code or value）**：**具有标签（hasTag）**存在取值约束。
+- **卡验证码或验证值（card verification code or value）**：**适用于（appliesTo）**至少有一个取值，类型是**支付卡（payment card）**。
+- **持卡人（cardholder）**：**持有（holds）**至少有一个取值，类型是**卡账户（card account）**。
+- **持卡人（cardholder）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**拥有（owns）**至少有一个取值，类型是**卡账户（card account）**。
+- **持卡人（cardholder）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**卡账户（card account）**。
+- **商业信用卡协议（commercial credit card agreement）**：**具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+- **消费者信用卡协议（consumer credit card agreement）**：**具有借款人（hasBorrower）**至少有一个取值，类型是**消费者（Consumer）**。
+- **信用卡（credit card）**：**是……的证据（isEvidenceFor）**恰好有 1 个**信用卡账户（credit card account）**。
+- **信用卡（credit card）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**信用卡产品（credit card product）**。
+- **信用卡账户（credit card account）**：**具有付款到期日（hasPaymentDueDate）**至少有一个取值，类型是**付款到期日（PaymentDueDate）**。
+- **信用卡账户（credit card account）**：**例证（exemplifies）**至少有一个取值，类型是**信用卡产品（credit card product）**。
+- **信用卡账户（credit card account）**：**定义于（isDefinedIn）**至少有一个取值，类型是**信用卡协议（credit card agreement）**。
+- **信用卡账户（credit card account）**：**由……表示（isSignifiedBy）**至少有一个取值，类型是**信用卡（credit card）**。
+- **信用卡协议（credit card agreement）**：**具有借款人（hasBorrower）**至少有一个取值，类型是**持卡人（cardholder）**。
+- **信用卡协议（credit card agreement）**：**具有贷款人（hasLender）**至少有一个取值，类型是**发卡金融机构（issuing financial institution）**。
+- **信用卡协议（credit card agreement）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**信用卡（credit card）**。
+- **信用卡协议（credit card agreement）**：**适用于（appliesTo）**至少有一个取值，类型是**信用卡账户（credit card account）**。
+- **信用卡网络（credit card network）**：**分类（classifies）**至少有一个取值，类型是**卡产品（card product）**。
+- **信用卡网络（credit card network）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **信用卡产品（credit card product）**：**具有信用卡网络（has credit card network）**恰好有 1 个**信用卡网络（credit card network）**。
+- **信用卡产品（credit card product）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**信用卡账户（credit card account）**。
+- **信用卡产品（credit card product）**：**分类（classifies）**至少有一个取值，类型是**信用卡（credit card）**。
+- **借记卡（debit card）**：**是……的证据（isEvidenceFor）**恰好有 1 个**借记卡账户（debit card account）**。
+- **借记卡（debit card）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**借记卡产品（debit card product）**。
+- **借记卡账户（debit card account）**：**例证（exemplifies）**至少有一个取值，类型是**借记卡产品（debit card product）**。
+- **借记卡账户（debit card account）**：**由……表示（isSignifiedBy）**至少有一个取值，类型是**借记卡（debit card）**。
+- **借记卡产品（debit card product）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**借记卡账户（debit card account）**。
+- **借记卡产品（debit card product）**：**分类（classifies）**至少有一个取值，类型是**借记卡（debit card）**。
+- **支付卡（payment card）**：**具有到期日（hasExpirationDate）**恰好有 1 个**卡有效期（card expiration date）**。
+- **支付卡（payment card）**：**具有卡验证码（has card verification code）**恰好有 1 个**卡验证码或验证值（card verification code or value）**。
+- **支付卡（payment card）**：**具有主账户号（has primary account number）**恰好有 1 个**主卡账户号（primary card account number）**。
+- **支付卡（payment card）**：**是……的证据（isEvidenceFor）**至少有一个取值，类型是**卡账户（card account）**。
+- **支付卡协议（payment card agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**持卡人（cardholder）**。
+- **支付卡协议（payment card agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**发卡金融机构（issuing financial institution）**。
+- **支付卡协议（payment card agreement）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**支付卡（payment card）**。
+- **支付卡协议（payment card agreement）**：**适用于（appliesTo）**至少有一个取值，类型是**卡账户（card account）**。
+- **主卡账户号（primary card account number）**：**标识（identifies）**恰好有 1 个**卡账户（card account）**。
 
 ## 6. 依赖（owl:imports，23 个）
 

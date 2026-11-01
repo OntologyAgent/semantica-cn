@@ -81,14 +81,14 @@ fibo-fbc-fct-rga:Examiner a owl:Class ;
             owl:onProperty cmns-bauth:isAuthorizedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
                     owl:someValuesFrom fibo-fbc-fct-rga:RegulatoryCapacity ] ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-bauth:ResponsibleParty ;
     skos:definition "party empowered as an official representative by a regulatory agency to investigate and review specified documents for accuracy and truthfulness" ;
     cmns-av:adaptedFrom "Black's Law Dictionary, see http://thelawdictionary.org/examiner/",
@@ -99,15 +99,15 @@ fibo-fbc-fct-rga:TaxAuthority a owl:Class ;
         "税务机关（tax authority）"@zh ;
     rdfs:comment "对任何税种的核定、确定、征收、课征及其他相关事项具有管辖权的监管机构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rga:hasJurisdiction ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-org:manages ;
             owl:someValuesFrom fibo-fnd-pty-pty:TaxIdentificationScheme ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-pty-pty:TaxIdentifier ;
             owl:onProperty fibo-fnd-rel-rel:issues ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:hasJurisdiction ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
         cmns-rga:RegulatoryAgency ;
     skos:definition "regulatory agency that has jurisdiction over the assessment, determination, collection, imposition and other aspects of any tax" ;
     cmns-av:adaptedFrom "https://www.collinsdictionary.com/dictionary/english/tax-authority",

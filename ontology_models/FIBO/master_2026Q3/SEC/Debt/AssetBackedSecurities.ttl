@@ -163,11 +163,11 @@ fibo-sec-dbt-abs:ControlledAmortizationAssetBackedSecurity a owl:Class ;
         "受控摊销资产支持证券（controlled amortization asset-backed security）"@zh ;
     rdfs:comment "基于采用受控摊销结构证券化的债券池的资产支持证券。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
-            owl:someValuesFrom fibo-sec-sec-pls:DebtPool ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-dbti:hasRepaymentTerms ;
             owl:someValuesFrom fibo-sec-dbt-bnd:BondAmortizationPaymentTerms ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-sec-sec-pls:DebtPool ],
         fibo-sec-dbt-pbs:AssetBackedSecurity ;
     skos:definition "asset-backed security based on a pool of bonds securitized using a controlled amortization structure" ;
     cmns-av:adaptedFrom "http://www.investinginbonds.com/learnmore.asp?catid=11&subcatid=57&id=15" ;

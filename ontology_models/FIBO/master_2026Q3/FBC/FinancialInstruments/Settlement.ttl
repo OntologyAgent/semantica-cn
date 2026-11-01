@@ -62,15 +62,15 @@ fibo-fbc-fi-stl:CashSettlementTerms a owl:Class ;
         "现金结算条款（cash settlement terms）"@zh ;
     rdfs:comment "以现金方式结算的合同承诺。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fi-stl:hasSettlementAmount ;
-            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fi-ip:SecurityPrice ;
+            owl:onProperty fibo-fnd-acc-cur:hasPrice ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fi-stl:DeliveryInCash ;
             owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-fi-ip:SecurityPrice ;
-            owl:onProperty fibo-fnd-acc-cur:hasPrice ],
+            owl:onProperty fibo-fbc-fi-stl:hasSettlementAmount ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
         fibo-fbc-pas-fpas:SettlementTerms ;
     skos:definition "contractual commitment to settle in cash" ;
     cmns-av:explanatoryNote "Note that the security price represents a price per share or per lot, whereas the settlement amount represents a total." .
@@ -204,11 +204,11 @@ fibo-fbc-fi-stl:DeliveryMethod a owl:Class,
 
 fibo-fbc-pas-fpas:SettlementTerms a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ;
-            owl:someValuesFrom fibo-fbc-fi-stl:DeliveryMethod ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-fi-stl:Settlement ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ;
+            owl:someValuesFrom fibo-fbc-fi-stl:DeliveryMethod ],
         [ a owl:Restriction ;
             owl:onProperty cmns-doc:specifies ;
             owl:someValuesFrom fibo-fbc-fi-stl:SettlementConvention ] .

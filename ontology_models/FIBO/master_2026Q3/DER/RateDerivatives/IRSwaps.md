@@ -94,34 +94,36 @@
 
 ## 5. 公理约定（Axioms）
 
-- 跨货币利率互换（cross-currency interest rate swap）：规定 货币 =2
-- 固定对固定利率互换（fixed fixed interest rate swap）：交换 固定利率腿（fixed interest rate leg） =2
-- 固定对浮动利率互换（fixed float interest rate swap）：restriction
-- 固定利率腿（fixed interest rate leg） 与 浮动利率腿（floating interest rate leg） 互斥（disjointWith）
-- 浮动对浮动利率互换（float float interest rate swap）：交换 浮动利率腿（floating interest rate leg） =2
-- 浮动利率腿（floating interest rate leg）：具有进度表 利息计算计划表 ≥0
-- 浮动利率腿（floating interest rate leg）：规定 利率重置 ≥0
-- 浮动利率腿（floating interest rate leg）：具有进度表 利率重置计划表 ≥0
-- 浮动利率腿（floating interest rate leg）：规定 利率设定事件 ≥0
-- 通胀腿（inflation leg）：具有标的 some（由…扮演（is played by） some 经济指标）
-- 通胀互换（inflation swap）：关联后备债券 政府债券 ≤1
-- 通胀互换（inflation swap）：具有腿 some 通胀腿（inflation leg）
-- 利率互换（interest rate swap）：交换 利率互换腿（interest rate swap leg） =2
-- 利率互换腿（interest rate swap leg）：具有进度表 名义本金阶梯计划表（notional step schedule） ≥0
-- 利率互换腿（interest rate swap leg）：具有营业重复区间惯例 计日惯例 ≥0
-- 利率互换腿（interest rate swap leg）：规定 利息计算计划表 ≥0
-- 利率互换腿（interest rate swap leg）：具有支付进度表 利息支付计划表 ≥0
-- 利率互换腿（interest rate swap leg）：规定 货币 =1
-- 名义本金阶梯金额（notional step amount）：具有名义金额 some（restriction）
-- 名义本金阶梯变更事件（notional step change event）：规定 some 名义本金阶梯金额（notional step amount）
-- 名义本金阶梯计划表（notional step schedule）：具有重复区间 some 名义本金阶梯周期长度（notional step period length）
-- 名义本金阶梯计划表（notional step schedule）：具有发生事项 some 名义本金阶梯变更事件（notional step change event）
-- 隔夜指数互换（overnight index swap）：具有腿 some 隔夜利率指数腿（overnight rate index leg）
-- 普通利率互换（plain vanilla interest rate swap）：具有名义金额 货币数量 =1
-- 普通利率互换（plain vanilla interest rate swap）：具有腿 some（规定 名义本金阶梯变更事件（notional step change event） ≤0）
-- 普通利率互换（plain vanilla interest rate swap）：具有腿 some（具有进度表 名义本金阶梯计划表（notional step schedule） ≤0）
-- 单货币利率互换（single currency interest rate swap）：规定 货币 =1
-- 零息利率互换（zero coupon interest rate swap）：具有名义金额 货币数量 =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **跨货币利率互换（cross-currency interest rate swap）**：**规定（specifies）**恰好有 2 个**货币（Currency）**。
+- **固定对固定利率互换（fixed fixed interest rate swap）**：**交换（exchanges）**恰好有 2 个**固定利率腿（fixed interest rate leg）**。
+- **固定对浮动利率互换（fixed float interest rate swap）**：该属性存在取值约束。
+- **固定利率腿（fixed interest rate leg）**与**浮动利率腿（floating interest rate leg）**互斥：同一个体不能同时属于两者。
+- **浮动对浮动利率互换（float float interest rate swap）**：**交换（exchanges）**恰好有 2 个**浮动利率腿（floating interest rate leg）**。
+- **浮动利率腿（floating interest rate leg）**：**具有进度表（hasSchedule）**可以有 0 个或多个**利息计算计划表（InterestCalculationSchedule）**。
+- **浮动利率腿（floating interest rate leg）**：**规定（specifies）**可以有 0 个或多个**利率重置（InterestRateReset）**。
+- **浮动利率腿（floating interest rate leg）**：**具有进度表（hasSchedule）**可以有 0 个或多个**利率重置计划表（InterestRateResetSchedule）**。
+- **浮动利率腿（floating interest rate leg）**：**规定（specifies）**可以有 0 个或多个**利率设定事件（InterestRateSettingEvent）**。
+- **通胀腿（inflation leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**经济指标（EconomicIndicator）**。
+- **通胀互换（inflation swap）**：**关联后备债券（isLinkedToFallback）**至多有 1 个**政府债券（GovernmentBond）**。
+- **通胀互换（inflation swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**通胀腿（inflation leg）**。
+- **利率互换（interest rate swap）**：**交换（exchanges）**恰好有 2 个**利率互换腿（interest rate swap leg）**。
+- **利率互换腿（interest rate swap leg）**：**具有进度表（hasSchedule）**可以有 0 个或多个**名义本金阶梯计划表（notional step schedule）**。
+- **利率互换腿（interest rate swap leg）**：**具有营业重复区间惯例（hasBusinessRecurrenceIntervalConvention）**可以有 0 个或多个**计日惯例（DayCountConvention）**。
+- **利率互换腿（interest rate swap leg）**：**规定（specifies）**可以有 0 个或多个**利息计算计划表（InterestCalculationSchedule）**。
+- **利率互换腿（interest rate swap leg）**：**具有支付进度表（hasPaymentSchedule）**可以有 0 个或多个**利息支付计划表（InterestPaymentSchedule）**。
+- **利率互换腿（interest rate swap leg）**：**规定（specifies）**恰好有 1 个**货币（Currency）**。
+- **名义本金阶梯金额（notional step amount）**：**具有名义金额（hasNotionalAmount）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **名义本金阶梯变更事件（notional step change event）**：**规定（specifies）**至少有一个取值，类型是**名义本金阶梯金额（notional step amount）**。
+- **名义本金阶梯计划表（notional step schedule）**：**具有重复区间（hasRecurrenceInterval）**至少有一个取值，类型是**名义本金阶梯周期长度（notional step period length）**。
+- **名义本金阶梯计划表（notional step schedule）**：**具有发生事项（hasOccurrence）**至少有一个取值，类型是**名义本金阶梯变更事件（notional step change event）**。
+- **隔夜指数互换（overnight index swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**隔夜利率指数腿（overnight rate index leg）**。
+- **普通利率互换（plain vanilla interest rate swap）**：**具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **普通利率互换（plain vanilla interest rate swap）**：**具有腿（hasLeg）**至少有一个取值，该取值满足：**规定（specifies）**至多有 0 个**名义本金阶梯变更事件（notional step change event）**。
+- **普通利率互换（plain vanilla interest rate swap）**：**具有腿（hasLeg）**至少有一个取值，该取值满足：**具有进度表（hasSchedule）**至多有 0 个**名义本金阶梯计划表（notional step schedule）**。
+- **单货币利率互换（single currency interest rate swap）**：**规定（specifies）**恰好有 1 个**货币（Currency）**。
+- **零息利率互换（zero coupon interest rate swap）**：**具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
 
 ## 6. 依赖（owl:imports，23 个）
 

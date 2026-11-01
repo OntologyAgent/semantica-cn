@@ -56,7 +56,7 @@
 | 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
 |---|---|---|---|
 | fibo-loan-reln-org:assumes | 承接（assumes） | 将新抵押贷款合同关联到先前就同一物业向不同借款人发放的旧合同；新合同通过法律行为设立。 | — |
-| fibo-loan-reln-org:hasOriginatingServiceProvider | 具有发起服务提供商（has originating service provider） | 将某事物（通常为贷款合同）关联到负责发起该贷款的服务提供商。 | 值域（range）：N33d37b94a58d4994b83eddb4ad9ba3f7；子属性（subPropertyOf）：具有参与方角色（has party role） |
+| fibo-loan-reln-org:hasOriginatingServiceProvider | 具有发起服务提供商（has originating service provider） | 将某事物（通常为贷款合同）关联到负责发起该贷款的服务提供商。 | 值域（range）：Nab1e2b7d9b3c4784b92a99284242cc9d；子属性（subPropertyOf）：具有参与方角色（has party role） |
 | fibo-loan-reln-org:hasOriginatorPerson | 具有发起人（has originator person） | 将某事物（通常为贷款）关联到最初发起或创建它的人。 | 值域（range）：具有法律行为能力的自然人；子属性（subPropertyOf）：具有参与方（has party） |
 | fibo-loan-reln-org:isLienOn | 是……的留置权（is lien on） | 标识留置权所针对的财产。 | — |
 
@@ -69,9 +69,11 @@
 
 ## 5. 公理约定（Axioms）
 
-- 抵押赔偿担保（mortgage indemnity guarantee）：由……担保 some 抵押赔偿担保人（mortgage indemnity guarantor）
-- 抵押赔偿担保（mortgage indemnity guarantee）：由……例证 some 抵押赔偿保险单（mortgage indemnity insurance policy）
-- 抵押赔偿保险单（mortgage indemnity insurance policy）：是……的证据 some 抵押赔偿担保（mortgage indemnity guarantee）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **抵押赔偿担保（mortgage indemnity guarantee）**：**由……担保（isGuaranteedBy）**至少有一个取值，类型是**抵押赔偿担保人（mortgage indemnity guarantor）**。
+- **抵押赔偿担保（mortgage indemnity guarantee）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**抵押赔偿保险单（mortgage indemnity insurance policy）**。
+- **抵押赔偿保险单（mortgage indemnity insurance policy）**：**是……的证据（isEvidenceFor）**至少有一个取值，类型是**抵押赔偿担保（mortgage indemnity guarantee）**。
 
 ## 6. 依赖（owl:imports，26 个）
 

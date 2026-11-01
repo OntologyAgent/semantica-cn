@@ -47,20 +47,22 @@
 
 ## 5. 公理约定（Axioms）
 
-- 美国生产者价格指数（U.S. producer price index）：restriction
-- 美国生产者价格指数（U.S. producer price index）：具有发布方 some 美国统计信息发布方（American statistics publisher）
-- 当前人口调查（current population survey）：规定 some 平民非机构人口
-- 就业形势机构场所调查（employment situation establishment survey）：适用于情境 some 机构场所
-- 就业形势住户调查（employment situation household survey）：适用于情境 some 住户
-- 就业形势调查（employment situation survey）：restriction
-- 城市消费者价格指数（urban consumer price index）：restriction
-- 城市消费者价格指数（urban consumer price index）：具有自变量 城市消费者全域（urban consumers universe） =1
-- 城市消费者价格指数（urban consumer price index）：具有发布方 some 美国统计信息发布方（American statistics publisher）
-- 城市消费者价格指数（urban consumer price index）：适用于 some 城市消费者全域（urban consumers universe）
-- 城市消费者价格指数（urban consumer price index）：具有自变量 some 篮子
-- 城市消费者全域（urban consumers universe）：具有成员 some（扮演角色（plays role） some 最终消费者）
-- 城市消费者全域（urban consumers universe）：适用于情境 some 消费者支出调查（consumer expenditure survey）
-- 城市消费者全域（urban consumers universe）：适用于情境 some 购买点调查（point of purchase survey）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **美国生产者价格指数（U.S. producer price index）**：**由……发布（isPublishedBy）**的取值固定为 BureauOfLaborStatistics。
+- **美国生产者价格指数（U.S. producer price index）**：**具有发布方（hasPublisher）**至少有一个取值，类型是**美国统计信息发布方（American statistics publisher）**。
+- **当前人口调查（current population survey）**：**规定（specifies）**至少有一个取值，类型是**平民非机构人口（CivilianNonInstitutionalPopulation）**。
+- **就业形势机构场所调查（employment situation establishment survey）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**机构场所（Establishment）**。
+- **就业形势住户调查（employment situation household survey）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**住户（Household）**。
+- **就业形势调查（employment situation survey）**：**经季节调整（isSeasonallyAdjusted）**存在取值约束。
+- **城市消费者价格指数（urban consumer price index）**：**由……发布（isPublishedBy）**的取值固定为 BureauOfLaborStatistics。
+- **城市消费者价格指数（urban consumer price index）**：**具有自变量（hasArgument）**恰好有 1 个**城市消费者全域（urban consumers universe）**。
+- **城市消费者价格指数（urban consumer price index）**：**具有发布方（hasPublisher）**至少有一个取值，类型是**美国统计信息发布方（American statistics publisher）**。
+- **城市消费者价格指数（urban consumer price index）**：**适用于（appliesTo）**至少有一个取值，类型是**城市消费者全域（urban consumers universe）**。
+- **城市消费者价格指数（urban consumer price index）**：**具有自变量（hasArgument）**至少有一个取值，类型是**篮子（Basket）**。
+- **城市消费者全域（urban consumers universe）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**最终消费者（UltimateConsumer）**。
+- **城市消费者全域（urban consumers universe）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**消费者支出调查（consumer expenditure survey）**。
+- **城市消费者全域（urban consumers universe）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**购买点调查（point of purchase survey）**。
 
 ## 6. 依赖（owl:imports，16 个）
 

@@ -49,19 +49,21 @@
 
 ## 5. 公理约定（Axioms）
 
-- 汽车资产支持证券（auto asset-backed security）：基于 some 汽车债务池（auto debt pool）
-- 汽车债务池（auto debt pool）：具有部分 some（restriction）
-- 债券池（bond pool）：具有部分 some 债券
-- 受控摊销资产支持证券（controlled amortization asset-backed security）：基于 some 债务池
-- 受控摊销资产支持证券（controlled amortization asset-backed security）：具有偿还条款 some 债券摊销支付条款
-- 信用卡账户池（credit card account pool）：具有部分 some 信用卡账户
-- 信用卡资产支持证券（credit card asset-backed security）：基于 some 信用卡账户池（credit card account pool）
-- 完全摊销资产支持证券（fully amortizing asset-backed security）：基于 some 债务池
-- 完全摊销资产支持证券（fully amortizing asset-backed security） 与 受控摊销资产支持证券（controlled amortization asset-backed security） 互斥（disjointWith）
-- 房屋净值信用额度池（home equity line of credit pool）：具有部分 some 房屋净值信用额度
-- 房屋净值贷款资产支持证券（home equity loan asset-backed security）：基于 some 房屋净值信用额度池（home equity line of credit pool）
-- 学生贷款资产支持证券（student loan asset-backed security）：基于 some 学生贷款池（student loan pool）
-- 学生贷款池（student loan pool）：具有部分 some 学生贷款
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **汽车资产支持证券（auto asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**汽车债务池（auto debt pool）**。
+- **汽车债务池（auto debt pool）**：**具有部分（hasPart）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **债券池（bond pool）**：**具有部分（hasPart）**至少有一个取值，类型是**债券（Bond）**。
+- **受控摊销资产支持证券（controlled amortization asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**债务池（DebtPool）**。
+- **受控摊销资产支持证券（controlled amortization asset-backed security）**：**具有偿还条款（hasRepaymentTerms）**至少有一个取值，类型是**债券摊销支付条款（BondAmortizationPaymentTerms）**。
+- **信用卡账户池（credit card account pool）**：**具有部分（hasPart）**至少有一个取值，类型是**信用卡账户（CreditCardAccount）**。
+- **信用卡资产支持证券（credit card asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**信用卡账户池（credit card account pool）**。
+- **完全摊销资产支持证券（fully amortizing asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**债务池（DebtPool）**。
+- **完全摊销资产支持证券（fully amortizing asset-backed security）**与**受控摊销资产支持证券（controlled amortization asset-backed security）**互斥：同一个体不能同时属于两者。
+- **房屋净值信用额度池（home equity line of credit pool）**：**具有部分（hasPart）**至少有一个取值，类型是**房屋净值信用额度（HomeEquityLineOfCredit）**。
+- **房屋净值贷款资产支持证券（home equity loan asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**房屋净值信用额度池（home equity line of credit pool）**。
+- **学生贷款资产支持证券（student loan asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**学生贷款池（student loan pool）**。
+- **学生贷款池（student loan pool）**：**具有部分（hasPart）**至少有一个取值，类型是**学生贷款（StudentLoan）**。
 
 ## 6. 依赖（owl:imports，20 个）
 

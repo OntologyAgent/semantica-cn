@@ -113,48 +113,50 @@
 
 ## 5. 公理约定（Axioms）
 
-- 地址（address）：定义于 地址编制方案（addressing scheme） ≥0
-- 地址（address）：是…的索引 位置 =1
-- 地址编制方案（addressing scheme）：定义 only 地址（address）
-- 常规街道地址（conventional street address）：具有街道地址（has street address） 街道地址（street address） ≤1
-- 常规街道地址（conventional street address）：restriction
-- 常规街道地址（conventional street address）：restriction
-- 常规街道地址（conventional street address）：restriction
-- 地理方位符号（geographic directional symbol）：具有标签 some xsd:string
-- 物理地址（physical address）：具有具体邮政编码（has individual postcode） 邮政编码（postcode） ≤1
-- 物理地址（physical address）：具有国家 国家 ≤1
-- 物理地址（physical address）：具有市政区 市政区 ≤1
-- 物理地址（physical address）：restriction
-- 物理地址（physical address）：restriction
-- 物理地址（physical address）：是…的索引 物理位置 ≥0
-- 物理地址（physical address）：具有行政区划 some 国家行政区划
-- 物理地址标识符（physical address identifier）：标识 物理地址（physical address） =1
-- 物理地址标识符（physical address identifier）：是……的成员 物理地址编制方案（physical addressing scheme） =1
-- 物理地址编制方案（physical addressing scheme）：restriction
-- 邮政信箱（post office box）：包含 邮政信箱指称符（post office box designator） =1
-- 邮政信箱地址（post office box address）：包含 邮政信箱（post office box） =1
-- 邮政编码（postcode）：标识 邮区（post code area） =1
-- 主门牌号（primary address number）：restriction
-- 区域专用标识符（region-specific identifier）：被……使用 some 地缘政治实体
-- 次级单元（secondary unit）：包含 次级单元指示符（secondary unit indicator） ≥0
-- 次级单元（secondary unit）：包含 次级单元指称符（secondary unit designator） =1
-- 次级单元指称符（secondary unit designator）：restriction
-- 次级单元指示符（secondary unit indicator）：restriction
-- 街道地址（street address）：具有主门牌号（has primary address number） 主门牌号（primary address number） ≤1
-- 街道地址（street address）：具有后置方位符号（has postdirectional symbol） 后置方位符号（postdirectional symbol） ≥0
-- 街道地址（street address）：具有前置方位符号（has predirectional symbol） 前置方位符号（predirectional symbol） ≥0
-- 街道地址（street address）：具有次级单元（has secondary unit） 次级单元（secondary unit） ≥0
-- 街道地址（street address）：具有街道后缀（has street suffix） 街道后缀（street suffix） ≥0
-- 街道地址（street address）：具有街道名称（has street name） some 街道名称（street name）
-- 街道名称（street name）：restriction
-- 建筑名称（structure name）：restriction
-- 补充地址成分（supplemental address component）：包含 补充地址单元（supplemental address unit） ≥0
-- 补充地址成分（supplemental address component）：restriction
-- 补充地址成分（supplemental address component）：包含 补充地址指称符（supplemental address designator） =1
-- 补充地址指称符（supplemental address designator）：分类 some 补充地址成分（supplemental address component）
-- 补充地址单元（supplemental address unit）：restriction
-- 虚拟地址（virtual address）：restriction
-- 虚拟地址（virtual address） 与 物理地址（physical address） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **地址（address）**：**定义于（isDefinedIn）**可以有 0 个或多个**地址编制方案（addressing scheme）**。
+- **地址（address）**：**是…的索引（isIndexTo）**恰好有 1 个**位置（Location）**。
+- **地址编制方案（addressing scheme）**：**定义（defines）**的所有取值只能是**地址（address）**。
+- **常规街道地址（conventional street address）**：**具有街道地址（has street address）**至多有 1 个**街道地址（street address）**。
+- **常规街道地址（conventional street address）**：**具有地址行 1（has address line 1）**存在取值约束。
+- **常规街道地址（conventional street address）**：**具有地址行 2（has address line 2）**存在取值约束。
+- **常规街道地址（conventional street address）**：**具有地址行 3（has address line 3）**存在取值约束。
+- **地理方位符号（geographic directional symbol）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **物理地址（physical address）**：**具有具体邮政编码（has individual postcode）**至多有 1 个**邮政编码（postcode）**。
+- **物理地址（physical address）**：**具有国家（hasCountry）**至多有 1 个**国家（Country）**。
+- **物理地址（physical address）**：**具有市政区（hasMunicipality）**至多有 1 个**市政区（Municipality）**。
+- **物理地址（physical address）**：**具有邮政编码（has postal code）**存在取值约束。
+- **物理地址（physical address）**：**具有城市名称（hasCityName）**存在取值约束。
+- **物理地址（physical address）**：**是…的索引（isIndexTo）**可以有 0 个或多个**物理位置（PhysicalLocation）**。
+- **物理地址（physical address）**：**具有行政区划（hasSubdivision）**至少有一个取值，类型是**国家行政区划（CountrySubdivision）**。
+- **物理地址标识符（physical address identifier）**：**标识（identifies）**恰好有 1 个**物理地址（physical address）**。
+- **物理地址标识符（physical address identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**物理地址编制方案（physical addressing scheme）**。
+- **物理地址编制方案（physical addressing scheme）**：该属性存在取值约束。
+- **邮政信箱（post office box）**：**包含（comprises）**恰好有 1 个**邮政信箱指称符（post office box designator）**。
+- **邮政信箱地址（post office box address）**：**包含（comprises）**恰好有 1 个**邮政信箱（post office box）**。
+- **邮政编码（postcode）**：**标识（identifies）**恰好有 1 个**邮区（post code area）**。
+- **主门牌号（primary address number）**：**具有标签（hasTag）**存在取值约束。
+- **区域专用标识符（region-specific identifier）**：**被……使用（isUsedBy）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **次级单元（secondary unit）**：**包含（comprises）**可以有 0 个或多个**次级单元指示符（secondary unit indicator）**。
+- **次级单元（secondary unit）**：**包含（comprises）**恰好有 1 个**次级单元指称符（secondary unit designator）**。
+- **次级单元指称符（secondary unit designator）**：**需要次级单元范围（requires secondary unit range）**存在取值约束。
+- **次级单元指示符（secondary unit indicator）**：**具有标签（hasTag）**存在取值约束。
+- **街道地址（street address）**：**具有主门牌号（has primary address number）**至多有 1 个**主门牌号（primary address number）**。
+- **街道地址（street address）**：**具有后置方位符号（has postdirectional symbol）**可以有 0 个或多个**后置方位符号（postdirectional symbol）**。
+- **街道地址（street address）**：**具有前置方位符号（has predirectional symbol）**可以有 0 个或多个**前置方位符号（predirectional symbol）**。
+- **街道地址（street address）**：**具有次级单元（has secondary unit）**可以有 0 个或多个**次级单元（secondary unit）**。
+- **街道地址（street address）**：**具有街道后缀（has street suffix）**可以有 0 个或多个**街道后缀（street suffix）**。
+- **街道地址（street address）**：**具有街道名称（has street name）**至少有一个取值，类型是**街道名称（street name）**。
+- **街道名称（street name）**：**具有标签（hasTag）**存在取值约束。
+- **建筑名称（structure name）**：**具有标签（hasTag）**存在取值约束。
+- **补充地址成分（supplemental address component）**：**包含（comprises）**可以有 0 个或多个**补充地址单元（supplemental address unit）**。
+- **补充地址成分（supplemental address component）**：**具有标签（hasTag）**存在取值约束。
+- **补充地址成分（supplemental address component）**：**包含（comprises）**恰好有 1 个**补充地址指称符（supplemental address designator）**。
+- **补充地址指称符（supplemental address designator）**：**分类（classifies）**至少有一个取值，类型是**补充地址成分（supplemental address component）**。
+- **补充地址单元（supplemental address unit）**：**具有标签（hasTag）**存在取值约束。
+- **虚拟地址（virtual address）**：**具有标签（hasTag）**存在取值约束。
+- **虚拟地址（virtual address）**与**物理地址（physical address）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，13 个）
 

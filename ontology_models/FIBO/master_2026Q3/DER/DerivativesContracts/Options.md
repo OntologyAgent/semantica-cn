@@ -115,53 +115,55 @@
 
 ## 5. 公理约定（Axioms）
 
-- 篮子期权（basket option）：具有标的 some（由…扮演（is played by） some 混合篮子）
-- 篮子期权（basket option）：具有价格确定方法 some 价格确定方法
-- 篮子期权（basket option）：具有合同期限 some 显式时长
-- 债券期权（bond option）：具有标的 some（由…扮演（is played by） some 债券）
-- 蝶式策略（butterfly）：具有行权价格（has exercise price） 行权价（strike price） =3
-- 蝶式策略（butterfly）：包含 期权 =4
-- 封顶期权（capped option）：具有上限价格（has cap price） some 货币价格
-- 领口策略（collar）：包含 看涨期权（call option） =1
-- 领口策略（collar）：包含 看跌期权（put option） =1
-- 股票期权（equity option）：restriction
-- 外在价值（extrinsic value） 与 内在价值（intrinsic value） 互斥（disjointWith）
-- 护栏策略（fence）：包含 看涨期权（call option） =1
-- 护栏策略（fence）：包含 看跌期权（put option） =2
-- 利率期权（interest rate option）：具有行权利率（has strike rate） some 利率
-- 利率期权（interest rate option）：具有标的 some（由…扮演（is played by） some 利率基准）
-- 铁蝶式策略（iron butterfly）：包含 看涨期权（call option） =2
-- 铁蝶式策略（iron butterfly）：包含 看跌期权（put option） =2
-- 铁秃鹰策略（iron condor）：包含 看涨期权（call option） =2
-- 铁秃鹰策略（iron condor）：包含 看跌期权（put option） =2
-- 铁秃鹰策略（iron condor）：具有行权价格（has exercise price） 行权价（strike price） =4
-- 长期股票预期证券（long-term equity anticipation security）：具有合同期限 some 时长
-- 价态（moneyness）：分类 some 期权
-- 期权持有人（option holder）：持有 some 期权
-- 期权发行人（option issuer）：由…扮演（is played by） some（是…的参与方（is a party to） some 期权）
-- 期货期权（option on future）：具有标的 some（由…扮演（is played by） some 期货）
-- 期货期权（option on future）：具有行权条款 some 美式行权条款
-- 期权权利金（option premium）：具有表达式 期权权利金公式（option premium formula） ≥0
-- 期权权利金（option premium）：具有货币数量 货币数量 ≥0
-- 期权权利金（option premium）：具有量值 百分比货币数量 ≥0
-- 期权交易策略（option trading strategy）：包含 some 期权
-- 保护性领口策略（protective collar）：包含 备兑看涨期权（covered call） =1
-- 保护性领口策略（protective collar）：包含 保护性看跌期权（protective put） =1
-- 保护性看跌期权（protective put）：具有计算市值（has calculated market value） some 期权权利金（option premium）
-- 风险逆转策略（risk reversal）：包含 看涨期权（call option） =1
-- 风险逆转策略（risk reversal）：包含 看跌期权（put option） =1
-- 标准化期权条款（standardized options terms）：具有发布方 some（restriction）
-- 标准化期权条款（standardized options terms）：具有价格确定方法 some 价格确定方法
-- 标准化期权条款（standardized options terms）：适用于 some 普通期权（vanilla option）
-- 跨式策略（straddle）：包含 看涨期权（call option） =1
-- 跨式策略（straddle）：包含 看跌期权（put option） =1
-- 宽跨式策略（strangle）：包含 看涨期权（call option） =1
-- 宽跨式策略（strangle）：包含 看跌期权（put option） =1
-- 序列期权策略（strip strategy）：包含 看涨期权（call option） =1
-- 序列期权策略（strip strategy）：包含 看跌期权（put option） =2
-- 序列期权策略（strip strategy）：具有进度表 some 进度表
-- 普通期权（vanilla option）：具有价格确定方法 some 价格确定方法
-- 普通期权（vanilla option）：具有合同期限 some 显式时长
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **篮子期权（basket option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
+- **篮子期权（basket option）**：**具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
+- **篮子期权（basket option）**：**具有合同期限（hasContractDuration）**至少有一个取值，类型是**显式时长（ExplicitDuration）**。
+- **债券期权（bond option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
+- **蝶式策略（butterfly）**：**具有行权价格（has exercise price）**恰好有 3 个**行权价（strike price）**。
+- **蝶式策略（butterfly）**：**包含（comprises）**恰好有 4 个**期权（Option）**。
+- **封顶期权（capped option）**：**具有上限价格（has cap price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **领口策略（collar）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **领口策略（collar）**：**包含（comprises）**恰好有 1 个**看跌期权（put option）**。
+- **股票期权（equity option）**：**具有行权方式（has exercise style）**的取值固定为 AmericanExerciseConvention。
+- **外在价值（extrinsic value）**与**内在价值（intrinsic value）**互斥：同一个体不能同时属于两者。
+- **护栏策略（fence）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **护栏策略（fence）**：**包含（comprises）**恰好有 2 个**看跌期权（put option）**。
+- **利率期权（interest rate option）**：**具有行权利率（has strike rate）**至少有一个取值，类型是**利率（InterestRate）**。
+- **利率期权（interest rate option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**利率基准（InterestRateBenchmark）**。
+- **铁蝶式策略（iron butterfly）**：**包含（comprises）**恰好有 2 个**看涨期权（call option）**。
+- **铁蝶式策略（iron butterfly）**：**包含（comprises）**恰好有 2 个**看跌期权（put option）**。
+- **铁秃鹰策略（iron condor）**：**包含（comprises）**恰好有 2 个**看涨期权（call option）**。
+- **铁秃鹰策略（iron condor）**：**包含（comprises）**恰好有 2 个**看跌期权（put option）**。
+- **铁秃鹰策略（iron condor）**：**具有行权价格（has exercise price）**恰好有 4 个**行权价（strike price）**。
+- **长期股票预期证券（long-term equity anticipation security）**：**具有合同期限（hasContractDuration）**至少有一个取值，类型是**时长（Duration）**。
+- **价态（moneyness）**：**分类（classifies）**至少有一个取值，类型是**期权（Option）**。
+- **期权持有人（option holder）**：**持有（holds）**至少有一个取值，类型是**期权（Option）**。
+- **期权发行人（option issuer）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**期权（Option）**。
+- **期货期权（option on future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期货（Future）**。
+- **期货期权（option on future）**：**具有行权条款（hasExerciseTerms）**至少有一个取值，类型是**美式行权条款（AmericanExerciseTerms）**。
+- **期权权利金（option premium）**：**具有表达式（hasExpression）**可以有 0 个或多个**期权权利金公式（option premium formula）**。
+- **期权权利金（option premium）**：**具有货币数量（hasMonetaryAmount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **期权权利金（option premium）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **期权交易策略（option trading strategy）**：**包含（comprises）**至少有一个取值，类型是**期权（Option）**。
+- **保护性领口策略（protective collar）**：**包含（comprises）**恰好有 1 个**备兑看涨期权（covered call）**。
+- **保护性领口策略（protective collar）**：**包含（comprises）**恰好有 1 个**保护性看跌期权（protective put）**。
+- **保护性看跌期权（protective put）**：**具有计算市值（has calculated market value）**至少有一个取值，类型是**期权权利金（option premium）**。
+- **风险逆转策略（risk reversal）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **风险逆转策略（risk reversal）**：**包含（comprises）**恰好有 1 个**看跌期权（put option）**。
+- **标准化期权条款（standardized options terms）**：**具有发布方（hasPublisher）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **标准化期权条款（standardized options terms）**：**具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
+- **标准化期权条款（standardized options terms）**：**适用于（appliesTo）**至少有一个取值，类型是**普通期权（vanilla option）**。
+- **跨式策略（straddle）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **跨式策略（straddle）**：**包含（comprises）**恰好有 1 个**看跌期权（put option）**。
+- **宽跨式策略（strangle）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **宽跨式策略（strangle）**：**包含（comprises）**恰好有 1 个**看跌期权（put option）**。
+- **序列期权策略（strip strategy）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **序列期权策略（strip strategy）**：**包含（comprises）**恰好有 2 个**看跌期权（put option）**。
+- **序列期权策略（strip strategy）**：**具有进度表（hasSchedule）**至少有一个取值，类型是**进度表（Schedule）**。
+- **普通期权（vanilla option）**：**具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
+- **普通期权（vanilla option）**：**具有合同期限（hasContractDuration）**至少有一个取值，类型是**显式时长（ExplicitDuration）**。
 
 ## 6. 依赖（owl:imports，30 个）
 

@@ -76,17 +76,19 @@
 
 ## 5. 公理约定（Axioms）
 
-- 行动（action）：由……分类 some 行动分类符（action classifier）
-- 行动（action）：适用于 some（restriction）
-- 行动分类方案（action classification scheme）：具有成员 only 行动分类符（action classifier）
-- 行动分类方案（action classification scheme）：定义 some 行动分类符（action classifier）
-- 行动分类符（action classifier）：是……的成员 行动分类方案（action classification scheme） =1
-- 行动分类符（action classifier）：定义于 行动分类方案（action classification scheme） =1
-- 行动分类符（action classifier）：分类 some 行动（action）
-- 行动分类符（action classifier）：具有标签 some xsd:string
-- 行动状态（action status）：分类 some 行动（action）
-- 行动状态（action status）：具有标签 some xsd:string
-- 自愿性公司行动（voluntary corporate action） 与 强制性公司行动（mandatory corporate action） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **行动（action）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**行动分类符（action classifier）**。
+- **行动（action）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **行动分类方案（action classification scheme）**：**具有成员（hasMember）**的所有取值只能是**行动分类符（action classifier）**。
+- **行动分类方案（action classification scheme）**：**定义（defines）**至少有一个取值，类型是**行动分类符（action classifier）**。
+- **行动分类符（action classifier）**：**是……的成员（isMemberOf）**恰好有 1 个**行动分类方案（action classification scheme）**。
+- **行动分类符（action classifier）**：**定义于（isDefinedIn）**恰好有 1 个**行动分类方案（action classification scheme）**。
+- **行动分类符（action classifier）**：**分类（classifies）**至少有一个取值，类型是**行动（action）**。
+- **行动分类符（action classifier）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **行动状态（action status）**：**分类（classifies）**至少有一个取值，类型是**行动（action）**。
+- **行动状态（action status）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **自愿性公司行动（voluntary corporate action）**与**强制性公司行动（mandatory corporate action）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，11 个）
 

@@ -54,7 +54,9 @@
 
 ## 5. 公理约定（Axioms）
 
-- 发布者（publisher）：由…扮演（is played by） 参与方（party） ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **发布者（publisher）**：**由…扮演（is played by）**可以有 0 个或多个**参与方（party）**。
 
 ## 6. 依赖（owl:imports，5 个）
 

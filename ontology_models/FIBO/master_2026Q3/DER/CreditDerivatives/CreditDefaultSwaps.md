@@ -86,22 +86,24 @@
 
 ## 5. 公理约定（Axioms）
 
-- 信用违约互换篮子（basket of credit default swaps）：具有成员 some 信用违约互换（credit default swap）
-- 信用违约互换（credit default swap）：具有发生事项 结算拍卖（settlement auction） ≥0
-- 信用违约互换（credit default swap）：具有合约价格（has contract price） some 货币价格
-- 信用违约互换（credit default swap）：具有合同要素 some 信用保护条款（credit protection terms）
-- 信用违约互换（credit default swap）：规定 some 触发事件（triggering event）
-- 信用违约互换指数（credit default swap index）：基于 some 信用违约互换篮子（basket of credit default swaps）
-- 信用事件通知（credit event notice）：关于 some 触发事件（triggering event）
-- 信用事件通知（credit event notice）：由……提供 some 通知方（notifying party）
-- 信用保护条款（credit protection terms）：具有预定终止日（has scheduled termination date） 显式日期 ≥0
-- 信用保护条款（credit protection terms）：restriction
-- 信用保护条款（credit protection terms）：具有买方 some 可交割债务买方（deliverable obligation buyer）
-- 信用保护条款（credit protection terms）：具有卖方 some 可交割债务卖方（deliverable obligation seller）
-- 信用保护条款（credit protection terms）：规定 some 可交割资产（deliverable asset）
-- 信用保护条款（credit protection terms）：规定 some 触发事件（triggering event）
-- 托管代理人（escrow agent）：持有 some 可交割资产（deliverable asset）
-- 通知方（notifying party）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **信用违约互换篮子（basket of credit default swaps）**：**具有成员（hasMember）**至少有一个取值，类型是**信用违约互换（credit default swap）**。
+- **信用违约互换（credit default swap）**：**具有发生事项（hasOccurrence）**可以有 0 个或多个**结算拍卖（settlement auction）**。
+- **信用违约互换（credit default swap）**：**具有合约价格（has contract price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **信用违约互换（credit default swap）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**信用保护条款（credit protection terms）**。
+- **信用违约互换（credit default swap）**：**规定（specifies）**至少有一个取值，类型是**触发事件（triggering event）**。
+- **信用违约互换指数（credit default swap index）**：**基于（isBasedOn）**至少有一个取值，类型是**信用违约互换篮子（basket of credit default swaps）**。
+- **信用事件通知（credit event notice）**：**关于（isAbout）**至少有一个取值，类型是**触发事件（triggering event）**。
+- **信用事件通知（credit event notice）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**通知方（notifying party）**。
+- **信用保护条款（credit protection terms）**：**具有预定终止日（has scheduled termination date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **信用保护条款（credit protection terms）**：**是否允许替换（allows substitution）**存在取值约束。
+- **信用保护条款（credit protection terms）**：**具有买方（hasBuyer）**至少有一个取值，类型是**可交割债务买方（deliverable obligation buyer）**。
+- **信用保护条款（credit protection terms）**：**具有卖方（hasSeller）**至少有一个取值，类型是**可交割债务卖方（deliverable obligation seller）**。
+- **信用保护条款（credit protection terms）**：**规定（specifies）**至少有一个取值，类型是**可交割资产（deliverable asset）**。
+- **信用保护条款（credit protection terms）**：**规定（specifies）**至少有一个取值，类型是**触发事件（triggering event）**。
+- **托管代理人（escrow agent）**：**持有（holds）**至少有一个取值，类型是**可交割资产（deliverable asset）**。
+- **通知方（notifying party）**：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，25 个）
 

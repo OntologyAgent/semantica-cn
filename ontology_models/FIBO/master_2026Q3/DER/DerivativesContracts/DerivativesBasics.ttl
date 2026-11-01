@@ -223,14 +223,14 @@ fibo-der-drc-bsc:UniqueProductIdentifierRegistryEntry a owl:Class ;
         "唯一产品标识符登记册条目（unique product identifier registry entry）"@zh ;
     rdfs:comment "唯一产品标识符（UPI）登记册中的条目。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-der-drc-bsc:UniqueProductIdentifierReferenceDataLibrary ;
-            owl:onProperty cmns-col:isIncludedIn ],
+            owl:allValuesFrom fibo-der-drc-bsc:OverTheCounterDerivativeInstrument ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-der-drc-bsc:UniqueProductIdentifier ],
         [ a owl:Restriction ;
-            owl:allValuesFrom fibo-der-drc-bsc:OverTheCounterDerivativeInstrument ;
-            owl:onProperty cmns-cxtdsg:appliesTo ],
+            owl:hasValue fibo-der-drc-bsc:UniqueProductIdentifierReferenceDataLibrary ;
+            owl:onProperty cmns-col:isIncludedIn ],
         cmns-ra:RegistryEntry ;
     skos:definition "entry in a unique product identifier registry" ;
     cmns-av:explanatoryNote "The Reference Data Library (RDL) is a set of reference data elements, together with their values, which is properly organized and maintained by the UPI service provider. The library associates UPI codes with the values of the reference data elements characterizing the product. Each entry in the library (the registry entry) contains a minimum number of elements as defined in the ISO standard, and may be extended by the service provider." .
@@ -366,12 +366,12 @@ fibo-der-drc-bsc:ObservableValue a owl:Class ;
     rdfs:comment "对某一可辨识且可取得证据的事物之值的规范。"@zh ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/Fair_value> ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-bsc:specifiesValueOf ;
+            owl:someValuesFrom owl:Thing ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:Currency ;
             owl:onProperty fibo-fbc-fi-fi:hasValueExpressedIn ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-bsc:specifiesValueOf ;
-            owl:someValuesFrom owl:Thing ],
         cmns-doc:Specification ;
     skos:definition "specification for the value for something discernible and for which evidence can be obtained" ;
     cmns-av:explanatoryNote "Derivatives, such as certain exotics, can be based on values ascribed to virtually anything, including weather. Typically, however, an observable value refers to something that can be readily observed in the marketplace, such as a quoted rate (e.g., interest rate, exchange rate), index value, commodity price, stock price, economic indicator, or something similar as of some point in time." .
@@ -481,12 +481,12 @@ fibo-der-drc-bsc:UniqueProductIdentifier a owl:Class ;
     dcterms:source "ISO 4914:2021(en), Financial services - Unique product identifier (UPI)" ;
     rdfs:comment "唯一标识应向交易数据库报告的场外衍生品产品的字符序列。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:isRegisteredBy ;
-            owl:someValuesFrom fibo-der-drc-bsc:UniqueProductIdentifierServiceProvider ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-der-drc-bsc:OverTheCounterDerivativeInstrument ;
             owl:onProperty cmns-id:identifies ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom fibo-der-drc-bsc:UniqueProductIdentifierServiceProvider ],
         fibo-fbc-fi-fi:FinancialInstrumentIdentifier,
         cmns-cxtid:StructuredIdentifier ;
     skos:definition "sequence of characters uniquely identifying an OTC derivative product that is reportable to a trade repository" ;
@@ -520,11 +520,11 @@ fibo-der-drc-bsc:ValuationTerms a owl:Class ;
         "估值条款（valuation terms）"@zh ;
     rdfs:comment "标的资产估值特有的合同条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:involves ;
-            owl:someValuesFrom fibo-der-drc-bsc:UnderlyingAssetValuation ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-asmt:hasDateOfAssessment ;
             owl:someValuesFrom cmns-dt:ExplicitDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:involves ;
+            owl:someValuesFrom fibo-der-drc-bsc:UnderlyingAssetValuation ],
         fibo-der-drc-bsc:DerivativeTerms ;
     skos:definition "contract terms specific to valuation of the underlying asset(s)" .
 
@@ -543,13 +543,6 @@ fibo-der-drc-bsc:DerivativeTerms a owl:Class ;
 
 fibo-fbc-fi-fi:DerivativeInstrument a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-qtu:ScalarQuantityValue ;
-            owl:onProperty cmns-qtu:hasQuantityValue ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Underlier ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-der-drc-bsc:hasSettlementTerms ;
             owl:someValuesFrom fibo-fbc-pas-fpas:SettlementTerms ],
         [ a owl:Restriction ;
@@ -557,6 +550,13 @@ fibo-fbc-fi-fi:DerivativeInstrument a owl:Class ;
             owl:someValuesFrom fibo-der-drc-bsc:ValuationTerms ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
-            owl:someValuesFrom cmns-dt:Date ] ;
+            owl:someValuesFrom cmns-dt:Date ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:ScalarQuantityValue ;
+            owl:onProperty cmns-qtu:hasQuantityValue ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Underlier ] ;
     cmns-av:usageNote "Note that the quantity value associated with the derivative represents the quantity of the underlier. The price of the underlier is included in settlement terms." .
 

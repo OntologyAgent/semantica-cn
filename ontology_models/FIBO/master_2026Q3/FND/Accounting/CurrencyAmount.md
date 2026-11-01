@@ -86,32 +86,34 @@
 
 ## 5. 公理约定（Axioms）
 
-- 货币金额（amount of money）：具有货币（has currency） 货币（currency） =1
-- 计算价格（calculated price）：具有表达式 表达式 =1
-- 货币（currency）：restriction
-- 货币（currency）：具有数字代码（has numeric code） some xsd:string
-- 货币（currency）：被……使用 some 地缘政治实体
-- 货币（currency）：具有文本名称 some xsd:string
-- 货币篮子（currency basket）：具有成员 some 货币（currency）
-- 货币标识符（currency identifier）：restriction
-- 货币标识符（currency identifier）：标识 some 货币（currency）
-- 汇率（exchange rate）：具有基准货币（has base currency） 货币（currency） =1
-- 汇率（exchange rate）：具有交易货币（has dealt currency） 货币（currency） =1
-- 汇率（exchange rate）：restriction
-- 资金单位（funds）：具有货币（has currency） 货币（currency） =1
-- 资金单位标识符（funds identifier）：restriction
-- 资金单位标识符（funds identifier）：标识 some 资金单位（funds）
-- 利率（interest rate）：restriction
-- 货币数量（monetary amount）：具有货币（has currency） 货币（currency） =1
-- 货币数量（monetary amount）：restriction
-- 百分比货币数量（percentage monetary amount）：具有货币（has currency） 货币（currency） =1
-- 贵金属（precious metal）：restriction
-- 贵金属（precious metal）：具有文本名称 some xsd:string
-- 贵金属标识符（precious metal identifier）：restriction
-- 贵金属标识符（precious metal identifier）：标识 some 贵金属（precious metal）
-- 记账单位标识符（unit of account identifier）：restriction
-- 记账单位标识符（unit of account identifier）：标识 some 记账单位（unit of account）
-- 单价（unit price）：是……的价格（is price for） some owl:Thing
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **货币金额（amount of money）**：**具有货币（has currency）**恰好有 1 个**货币（currency）**。
+- **计算价格（calculated price）**：**具有表达式（hasExpression）**恰好有 1 个**表达式（Expression）**。
+- **货币（currency）**：**具有辅币单位（has minor unit）**存在取值约束。
+- **货币（currency）**：**具有数字代码（has numeric code）**至少有一个取值，类型是**xsd:string（string）**。
+- **货币（currency）**：**被……使用（isUsedBy）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **货币（currency）**：**具有文本名称（hasTextualName）**至少有一个取值，类型是**xsd:string（string）**。
+- **货币篮子（currency basket）**：**具有成员（hasMember）**至少有一个取值，类型是**货币（currency）**。
+- **货币标识符（currency identifier）**：**具有标签（hasTag）**存在取值约束。
+- **货币标识符（currency identifier）**：**标识（identifies）**至少有一个取值，类型是**货币（currency）**。
+- **汇率（exchange rate）**：**具有基准货币（has base currency）**恰好有 1 个**货币（currency）**。
+- **汇率（exchange rate）**：**具有交易货币（has dealt currency）**恰好有 1 个**货币（currency）**。
+- **汇率（exchange rate）**：**具有比率值（has rate value）**存在取值约束。
+- **资金单位（funds）**：**具有货币（has currency）**恰好有 1 个**货币（currency）**。
+- **资金单位标识符（funds identifier）**：**具有标签（hasTag）**存在取值约束。
+- **资金单位标识符（funds identifier）**：**标识（identifies）**至少有一个取值，类型是**资金单位（funds）**。
+- **利率（interest rate）**：**具有比率值（has rate value）**存在取值约束。
+- **货币数量（monetary amount）**：**具有货币（has currency）**恰好有 1 个**货币（currency）**。
+- **货币数量（monetary amount）**：**具有金额（has amount）**存在取值约束。
+- **百分比货币数量（percentage monetary amount）**：**具有货币（has currency）**恰好有 1 个**货币（currency）**。
+- **贵金属（precious metal）**：**具有数字代码（has numeric code）**存在取值约束。
+- **贵金属（precious metal）**：**具有文本名称（hasTextualName）**至少有一个取值，类型是**xsd:string（string）**。
+- **贵金属标识符（precious metal identifier）**：**具有标签（hasTag）**存在取值约束。
+- **贵金属标识符（precious metal identifier）**：**标识（identifies）**至少有一个取值，类型是**贵金属（precious metal）**。
+- **记账单位标识符（unit of account identifier）**：**具有标签（hasTag）**存在取值约束。
+- **记账单位标识符（unit of account identifier）**：**标识（identifies）**至少有一个取值，类型是**记账单位（unit of account）**。
+- **单价（unit price）**：**是……的价格（is price for）**至少有一个取值，类型是**owl:Thing（Thing）**。
 
 ## 6. 依赖（owl:imports，11 个）
 

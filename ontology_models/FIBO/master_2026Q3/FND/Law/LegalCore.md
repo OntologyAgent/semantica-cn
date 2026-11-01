@@ -32,8 +32,10 @@
 
 ## 5. 公理约定（Axioms）
 
-- 宪章（constitution）：管辖 some 法律（law）
-- 成文法（statute law）：在…中有效（is in force in） some 管辖权
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **宪章（constitution）**：**管辖（governs）**至少有一个取值，类型是**法律（law）**。
+- **成文法（statute law）**：**在…中有效（is in force in）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
 
 ## 6. 依赖（owl:imports，5 个）
 

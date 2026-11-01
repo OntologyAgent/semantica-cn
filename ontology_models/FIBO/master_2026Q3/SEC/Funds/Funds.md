@@ -98,26 +98,28 @@
 
 ## 5. 公理约定（Axioms）
 
-- 封闭式投资（closed-end investment）：restriction
-- 社区投资基金（community investment fund）：具有目标 some 本地投资目标
-- 社区投资基金（community investment fund）：具有覆盖区域 some 地理区域
-- 基金持有（fund holding）：引用 基金单位（fund unit） ≥0
-- 基金持有（fund holding）：restriction
-- 基金中的基金（fund of funds）：具有子基金（has sub-fund） some 集合投资工具
-- 基金头寸（fund position）：具有所有方 基金份额持有人（fund holder） ≥0
-- 基金头寸（fund position）：由……持有 Ne05709bfc9684984bab73796db3c8da6 =1
-- 基金头寸（fund position）：具有自有资产 some 基金持有（fund holding）
-- 基金单位（fund unit）：具有货币 some 货币
-- 基金单位（fund unit）：是……的部分 some 汇集基金
-- 基金法律结构（legal fund structure）：restriction
-- 基金法律结构（legal fund structure）：受……管辖 some 管辖权
-- 不可交易基金单位（non-tradable fund unit） 与 可交易基金单位（tradable fund unit） 互斥（disjointWith）
-- 非营利基金（nonprofit fund）：具有目标 三重底线目标 ≥0
-- 开放式投资（open-end investment）：restriction
-- 开放式投资（open-end investment） 与 封闭式投资（closed-end investment） 互斥（disjointWith）
-- 私募信贷基金（private credit fund） 与 私募股权基金（private equity fund） 互斥（disjointWith）
-- 房地产投资信托（real estate investment trust）：具有法律结构（has legal structure） some 信托
-- 单位信托（unit trust） 与 共同基金（mutual fund） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **封闭式投资（closed-end investment）**：**是否开放式（is open ended）**的取值固定为 false。
+- **社区投资基金（community investment fund）**：**具有目标（hasObjective）**至少有一个取值，类型是**本地投资目标（LocalInvestmentObjective）**。
+- **社区投资基金（community investment fund）**：**具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**地理区域（GeographicRegion）**。
+- **基金持有（fund holding）**：**引用（refersTo）**可以有 0 个或多个**基金单位（fund unit）**。
+- **基金持有（fund holding）**：**由……单位组成（consistsOfNumberOfUnits）**存在取值约束。
+- **基金中的基金（fund of funds）**：**具有子基金（has sub-fund）**至少有一个取值，类型是**集合投资工具（CollectiveInvestmentVehicle）**。
+- **基金头寸（fund position）**：**具有所有方（hasOwningParty）**可以有 0 个或多个**基金份额持有人（fund holder）**。
+- **基金头寸（fund position）**：**由……持有（isHeldBy）**恰好有 1 个**N364c9bfa52ce4f91a231bba9c74b7185**。
+- **基金头寸（fund position）**：**具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**基金持有（fund holding）**。
+- **基金单位（fund unit）**：**具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
+- **基金单位（fund unit）**：**是……的部分（isPartOf）**至少有一个取值，类型是**汇集基金（PooledFund）**。
+- **基金法律结构（legal fund structure）**：该属性存在取值约束。
+- **基金法律结构（legal fund structure）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **不可交易基金单位（non-tradable fund unit）**与**可交易基金单位（tradable fund unit）**互斥：同一个体不能同时属于两者。
+- **非营利基金（nonprofit fund）**：**具有目标（hasObjective）**可以有 0 个或多个**三重底线目标（TripleBottomLineObjective）**。
+- **开放式投资（open-end investment）**：**是否开放式（is open ended）**的取值固定为 true。
+- **开放式投资（open-end investment）**与**封闭式投资（closed-end investment）**互斥：同一个体不能同时属于两者。
+- **私募信贷基金（private credit fund）**与**私募股权基金（private equity fund）**互斥：同一个体不能同时属于两者。
+- **房地产投资信托（real estate investment trust）**：**具有法律结构（has legal structure）**至少有一个取值，类型是**信托（Trust）**。
+- **单位信托（unit trust）**与**共同基金（mutual fund）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，22 个）
 

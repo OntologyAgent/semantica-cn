@@ -120,6 +120,9 @@ fibo-loan-ln-ln:CombinedLoanToValueRatio a owl:Class ;
         "合并贷款价值比（combined loan-to-value ratio）"@zh ;
     rdfs:comment "以资产作担保的全部债务总额与该资产评估价值之比。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-fnd-arr-asmt:Appraisal ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fnd-arr-asmt:AppraisedValue ],
         [ a owl:Restriction ;
@@ -128,9 +131,6 @@ fibo-loan-ln-ln:CombinedLoanToValueRatio a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-loan-ln-ln:TotalOutstandingPrincipal ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-doc:refersTo ;
-            owl:someValuesFrom fibo-fnd-arr-asmt:Appraisal ],
         fibo-fnd-acc-cur:PercentageMonetaryAmount ;
     skos:definition "ratio of the total amount of debt that is secured by the asset(s) and the appraised value of the asset(s) securing the financing" ;
     cmns-av:explanatoryNote "This is particularly important for secondary loans, or for refinancing that combines outstanding loans against a given asset. Lenders use this ratio to evaluate the risk of extending a loan to a borrower(s) in cases where multiple loans are involved." .
@@ -168,8 +168,8 @@ fibo-loan-ln-ln:LoanToValueRatio a owl:Class ;
         "贷款价值比（loan-to-value ratio）"@zh ;
     rdfs:comment "贷款本金与担保融资之资产评估价值之比，以百分比表示。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:hasArgument ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:Principal ],
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
         [ a owl:Restriction ;
             owl:onProperty cmns-doc:refersTo ;
             owl:someValuesFrom fibo-fnd-arr-asmt:Appraisal ],
@@ -177,8 +177,8 @@ fibo-loan-ln-ln:LoanToValueRatio a owl:Class ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fnd-arr-asmt:AppraisedValue ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:Principal ],
         fibo-fnd-acc-cur:PercentageMonetaryAmount ;
     skos:definition "ratio, expressed as a percentage, between the principal amount of the loan and the appraised value of the asset securing the financing" ;
     cmns-av:abbreviation "LTV" .
@@ -249,11 +249,11 @@ fibo-fbc-dae-dbt:PrincipalRepaymentTerms a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-loan-ln-ln:isInitiallyPayable ],
+            owl:onProperty fibo-loan-ln-ln:hasBalloonPayment ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-loan-ln-ln:hasBalloonPayment ] .
+            owl:onProperty fibo-loan-ln-ln:isInitiallyPayable ] .
 
 fibo-fbc-dae-dbt:SecurityAgreement a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -276,11 +276,11 @@ fibo-loan-ln-ln:LoanPaymentSchedule a owl:Class ;
         "贷款还款进度表（loan payment schedule）"@zh ;
     rdfs:comment "与特定贷款账户关联的定期或显式（临时）还款进度表。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-loan-ln-ln:LoanSpecificCustomerAccount ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:hasAnticipatedNumberOfPayments ;
             owl:someValuesFrom xsd:positiveInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-loan-ln-ln:LoanSpecificCustomerAccount ],
         fibo-fnd-pas-psch:PaymentSchedule ;
     skos:definition "regular or explicit (ad hoc) payment schedule associated with a given loan-specific account" ;
     cmns-av:explanatoryNote "Loan payment schedules may or may not be amortization schedules, i.e., they may or may not include principal." .
@@ -416,26 +416,26 @@ fibo-loan-ln-ln:LoanSpecificCustomerAccount a owl:Class ;
     rdfs:comment "借款人持有的、与特定贷款关联的账户。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-ln-ln:LoanPaymentSchedule ;
-            owl:onProperty fibo-fnd-pas-psch:hasPaymentSchedule ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-pas-fpas:relatesTo ;
-            owl:someValuesFrom fibo-loan-ln-ln:Loan ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-org:isProvidedBy ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fbc-dae-dbt:Lender fibo-loan-ln-ln:Servicer ) ] ],
+            owl:onClass fibo-loan-ln-ln:PaymentHistory ;
+            owl:onProperty fibo-loan-ln-ln:hasPaymentHistory ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:Balance ;
             owl:onProperty fibo-loan-ln-ln:hasLoanBalance ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-ln-ln:PaymentHistory ;
-            owl:onProperty fibo-loan-ln-ln:hasPaymentHistory ],
+            owl:onClass fibo-loan-ln-ln:LoanPaymentSchedule ;
+            owl:onProperty fibo-fnd-pas-psch:hasPaymentSchedule ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
             owl:someValuesFrom fibo-fbc-dae-dbt:Borrower ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-dae-dbt:Lender fibo-loan-ln-ln:Servicer ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-fpas:relatesTo ;
+            owl:someValuesFrom fibo-loan-ln-ln:Loan ],
         fibo-fbc-pas-caa:CustomerAccount,
         fibo-fbc-pas-caa:LoanOrCreditAccount ;
     skos:definition "account held by the borrower associated with a specific loan" .
@@ -499,6 +499,29 @@ fibo-loan-ln-ln:Loan a owl:Class ;
     rdfs:comment "一方向另一方（或多方）提供货币或信用、并约定借款将获偿还的债务工具。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-loan-ln-ln:isInterestOnly ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:LenderLienPosition ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-loan-ln-ln:hasTotalPointsAndFees ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-loan-ln-ln:hasNegativeAmortization ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-loan-ln-ln:Servicer ;
+            owl:onProperty fibo-loan-ln-ln:isServicedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-loan-ln-ln:hasPrincipalAmount ;
+            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-loan-ln-ln:hasTotalClosingCosts ],
         [ a owl:Restriction ;
@@ -511,35 +534,12 @@ fibo-loan-ln-ln:Loan a owl:Class ;
             owl:onProperty fibo-fnd-agr-ctr:hasThirdParty ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-ln-ln:LenderLienPosition ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-loan-ln-ln:hasPrincipalAmount ;
-            owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-fbc-dae-dbt:hasMaturityDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-loan-ln-ln:Servicer ;
-            owl:onProperty fibo-loan-ln-ln:isServicedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-loan-ln-ln:hasTotalPointsAndFees ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-loan-ln-ln:LoanSpecificCustomerAccount ;
             owl:onProperty fibo-fbc-pas-caa:hasCorrespondingAccount ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-loan-ln-ln:hasNegativeAmortization ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-loan-ln-ln:isInterestOnly ],
         fibo-fbc-dae-dbt:CreditAgreementRepaidPeriodically,
         fibo-fbc-fi-fi:DebtInstrument ;
     skos:definition "debt instrument whereby one party extends money or credit to another party (or parties) with the understanding that the borrowed money will be repaid according to the terms of the contract" .

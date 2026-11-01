@@ -46,9 +46,11 @@
 
 ## 5. 公理约定（Axioms）
 
-- 融资银团成员（finance syndicate member）：由…扮演（is played by） some（是……的成员 only 融资银团（finance syndicate））
-- 贷款参与票据（loan participation note）：具有行为者（has actor） 牵头安排行（lead arranger） =1
-- 银团贷款（syndicated loan）：具有行为者（has actor） some（restriction）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **融资银团成员（finance syndicate member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**融资银团（finance syndicate）**。
+- **贷款参与票据（loan participation note）**：**具有行为者（has actor）**恰好有 1 个**牵头安排行（lead arranger）**。
+- **银团贷款（syndicated loan）**：**具有行为者（has actor）**至少有一个取值，该取值满足：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，11 个）
 

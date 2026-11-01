@@ -56,20 +56,22 @@
 
 ## 5. 公理约定（Axioms）
 
-- 利率主管机构（interest rate authority）：生产 some 参考利率（reference interest rate）
-- 利率基准（interest rate benchmark）：由……提供 市场数据提供商 ≥0
-- 利率基准（interest rate benchmark）：由……生产 fibo-be-fct-pub:Publisher ≥0
-- 利率基准（interest rate benchmark）：具有利率重置时刻（has rate reset time of day） 日期时间 ≥0
-- 利率基准（interest rate benchmark）：具有期限（has tenor） 时长 ≥0
-- 利率基准（interest rate benchmark）：具有参考货币（has reference currency） 货币 =1
-- 利率基准（interest rate benchmark）：分类 some 参考利率（reference interest rate）
-- 利率基准分类方案（interest rate benchmark classification scheme）：定义 some 利率基准（interest rate benchmark）
-- 隔夜利率（overnight rate）：restriction
-- 参考利率（reference interest rate）：具有期限（has tenor） only 时长
-- 参考利率（reference interest rate）：具有利率重置时刻（has rate reset time of day） 日期时间 ≥0
-- 参考利率（reference interest rate）：具有参考货币（has reference currency） 货币 =1
-- 参考利率（reference interest rate）：具有量类 some 利率基准（interest rate benchmark）
-- 特定提供商利率基准（specific-provider interest rate benchmark）：由……提供 市场数据提供商 =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **利率主管机构（interest rate authority）**：**生产（produces）**至少有一个取值，类型是**参考利率（reference interest rate）**。
+- **利率基准（interest rate benchmark）**：**由……提供（isProvidedBy）**可以有 0 个或多个**市场数据提供商（MarketDataProvider）**。
+- **利率基准（interest rate benchmark）**：**由……生产（isProducedBy）**可以有 0 个或多个**fibo-be-fct-pub:Publisher（Publisher）**。
+- **利率基准（interest rate benchmark）**：**具有利率重置时刻（has rate reset time of day）**可以有 0 个或多个**日期时间（DateTime）**。
+- **利率基准（interest rate benchmark）**：**具有期限（has tenor）**可以有 0 个或多个**时长（Duration）**。
+- **利率基准（interest rate benchmark）**：**具有参考货币（has reference currency）**恰好有 1 个**货币（Currency）**。
+- **利率基准（interest rate benchmark）**：**分类（classifies）**至少有一个取值，类型是**参考利率（reference interest rate）**。
+- **利率基准分类方案（interest rate benchmark classification scheme）**：**定义（defines）**至少有一个取值，类型是**利率基准（interest rate benchmark）**。
+- **隔夜利率（overnight rate）**：**具有期限（has tenor）**的取值固定为 OneDay。
+- **参考利率（reference interest rate）**：**具有期限（has tenor）**的所有取值只能是**时长（Duration）**。
+- **参考利率（reference interest rate）**：**具有利率重置时刻（has rate reset time of day）**可以有 0 个或多个**日期时间（DateTime）**。
+- **参考利率（reference interest rate）**：**具有参考货币（has reference currency）**恰好有 1 个**货币（Currency）**。
+- **参考利率（reference interest rate）**：**具有量类（hasQuantityKind）**至少有一个取值，类型是**利率基准（interest rate benchmark）**。
+- **特定提供商利率基准（specific-provider interest rate benchmark）**：**由……提供（isProvidedBy）**恰好有 1 个**市场数据提供商（MarketDataProvider）**。
 
 ## 6. 依赖（owl:imports，14 个）
 

@@ -17,13 +17,13 @@ fibo-fnd-acc-csf:CashFlowStructure a owl:Class ;
         "现金流结构（cash flow structure）"@zh ;
     rdfs:comment "与一个或多个现金流相关的结构。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-fd:Schedule ;
-            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-csf:TriggeringEvent ;
             owl:onProperty cmns-doc:specifies ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-fd:Schedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-fnd-acc-csf:CashFlow ],
@@ -68,12 +68,12 @@ fibo-fnd-acc-csf:CashFlow a owl:Class ;
             owl:cardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty fibo-fnd-acc-csf:hasSourceOfMoney ],
         [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty fibo-fnd-acc-csf:hasTargetOfMoney ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-acc-csf:hasTargetOfMoney ],
         fibo-fnd-dt-fd:DatedCollectionConstituent ;
     skos:definition "the movement of money from some source to some sink" ;
     cmns-av:explanatoryNote "From the perspective of an individual investor, the transaction date is the day when the investor's order is executed in the market. However, the process doesn't end there. The value date, on the other hand, is when the transaction actually settles, meaning when the buyer receives the securities and the seller gets the money. This lag between the transaction and value dates is known as the settlement period, which can vary depending on the type of security involved.",

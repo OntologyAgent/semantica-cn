@@ -65,19 +65,21 @@
 
 ## 5. 公理约定（Axioms）
 
-- 日均市场利率（daily average market rate）：restriction
-- 日终市场利率（end-of-day market rate）：restriction
-- 市场利率（market rate）：是……的值 限定范围度量 ≥0
-- 市场利率（market rate）：restriction
-- 市场利率（market rate）：restriction
-- 市场利差（market spread）：具有自变量 市场利率（market rate） =2
-- 价格结构（price structure）：具有成员 some 货币价格
-- 价格波动率（price volatility）：具有自变量 some 价格结构（price structure）
-- 报价（quoted price）：restriction
-- 期限结构（term structure）：具有成员 some 市场利率（market rate）
-- 波动率（volatility）：restriction
-- 波动率（volatility）：具有日期区间 some 日期区间
-- 波动率（volatility）：具有自变量 some 带日期结构化集合
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **日均市场利率（daily average market rate）**：**具有报价日期时间（has quotation date and time）**存在取值约束。
+- **日终市场利率（end-of-day market rate）**：**具有报价日期时间（has quotation date and time）**存在取值约束。
+- **市场利率（market rate）**：**是……的值（isValueOf）**可以有 0 个或多个**限定范围度量（ScopedMeasure）**。
+- **市场利率（market rate）**：**具有报价日期时间（has quotation date and time）**存在取值约束。
+- **市场利率（market rate）**：**具有比率值（hasRateValue）**存在取值约束。
+- **市场利差（market spread）**：**具有自变量（hasArgument）**恰好有 2 个**市场利率（market rate）**。
+- **价格结构（price structure）**：**具有成员（hasMember）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **价格波动率（price volatility）**：**具有自变量（hasArgument）**至少有一个取值，类型是**价格结构（price structure）**。
+- **报价（quoted price）**：**具有报价日期时间（has quotation date and time）**存在取值约束。
+- **期限结构（term structure）**：**具有成员（hasMember）**至少有一个取值，类型是**市场利率（market rate）**。
+- **波动率（volatility）**：该属性存在取值约束。
+- **波动率（volatility）**：**具有日期区间（hasDatePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **波动率（volatility）**：**具有自变量（hasArgument）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
 
 ## 6. 依赖（owl:imports，10 个）
 

@@ -98,33 +98,35 @@
 
 ## 5. 公理约定（Axioms）
 
-- 账面储备养老金计划（book reserved pension plan） 与 基金制养老金计划（funded pension plan） 互斥（disjointWith）
-- 账面储备养老金计划（book reserved pension plan） 与 现收现付养老金计划（unfunded pension plan） 互斥（disjointWith）
-- 待遇确定型职业养老金计划（defined benefit occupational pension plan）：由……分类 some 待遇确定型职业养老金计划分类器（defined benefit occupational pension plan classifier）
-- 待遇确定型职业养老金计划（defined benefit occupational pension plan） 与 缴费确定型职业养老金计划（defined contribution occupational pension plan） 互斥（disjointWith）
-- 待遇确定型职业养老金计划分类器（defined benefit occupational pension plan classifier）：分类 some 待遇确定型职业养老金计划（defined benefit occupational pension plan）
-- 基金制养老金计划（funded pension plan） 与 现收现付养老金计划（unfunded pension plan） 互斥（disjointWith）
-- 个人养老基金（individual pension fund） 与 单一雇主养老基金（single employer pension fund） 互斥（disjointWith）
-- 强制性职业养老金计划（mandatory occupational pension plan）：restriction
-- 强制性个人养老金计划（mandatory personal pension plan）：restriction
-- 多雇主养老基金（multi-employer pension fund） 与 个人养老基金（individual pension fund） 互斥（disjointWith）
-- 多雇主养老基金（multi-employer pension fund） 与 关联成员养老基金（related member pension fund） 互斥（disjointWith）
-- 多雇主养老基金（multi-employer pension fund） 与 单一雇主养老基金（single employer pension fund） 互斥（disjointWith）
-- 开放型养老基金（open pension fund） 与 封闭型养老基金（closed pension fund） 互斥（disjointWith）
-- 养老金账户（pension account）：规定于 some 养老金计划（pension plan）
-- 养老金计划（pension plan）：规定 养老金账户（pension account） ≥0
-- 养老金计划（pension plan）：由……提供资金（is funded by） Na71ebe10dae546d28045739e39a2a6b4 ≥0
-- 养老金计划（pension plan）：restriction
-- 个人养老金计划（personal pension plan） 与 职业养老金计划（occupational pension plan） 互斥（disjointWith）
-- 私营养老基金（private pension fund） 与 公共养老基金（public pension fund） 互斥（disjointWith）
-- 私营养老金计划（private pension plan）：restriction
-- 私营养老金计划（private pension plan） 与 公共养老金计划（public pension plan） 互斥（disjointWith）
-- 关联成员养老基金（related member pension fund） 与 个人养老基金（individual pension fund） 互斥（disjointWith）
-- 关联成员养老基金（related member pension fund） 与 单一雇主养老基金（single employer pension fund） 互斥（disjointWith）
-- 自愿性职业养老金计划（voluntary occupational pension plan）：restriction
-- 自愿性职业养老金计划（voluntary occupational pension plan） 与 强制性职业养老金计划（mandatory occupational pension plan） 互斥（disjointWith）
-- 自愿性个人养老金计划（voluntary personal pension plan）：restriction
-- 自愿性个人养老金计划（voluntary personal pension plan） 与 强制性个人养老金计划（mandatory personal pension plan） 互斥（disjointWith）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **账面储备养老金计划（book reserved pension plan）**与**基金制养老金计划（funded pension plan）**互斥：同一个体不能同时属于两者。
+- **账面储备养老金计划（book reserved pension plan）**与**现收现付养老金计划（unfunded pension plan）**互斥：同一个体不能同时属于两者。
+- **待遇确定型职业养老金计划（defined benefit occupational pension plan）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**待遇确定型职业养老金计划分类器（defined benefit occupational pension plan classifier）**。
+- **待遇确定型职业养老金计划（defined benefit occupational pension plan）**与**缴费确定型职业养老金计划（defined contribution occupational pension plan）**互斥：同一个体不能同时属于两者。
+- **待遇确定型职业养老金计划分类器（defined benefit occupational pension plan classifier）**：**分类（classifies）**至少有一个取值，类型是**待遇确定型职业养老金计划（defined benefit occupational pension plan）**。
+- **基金制养老金计划（funded pension plan）**与**现收现付养老金计划（unfunded pension plan）**互斥：同一个体不能同时属于两者。
+- **个人养老基金（individual pension fund）**与**单一雇主养老基金（single employer pension fund）**互斥：同一个体不能同时属于两者。
+- **强制性职业养老金计划（mandatory occupational pension plan）**：**是否强制（is mandatory）**的取值固定为 true。
+- **强制性个人养老金计划（mandatory personal pension plan）**：**是否强制（is mandatory）**的取值固定为 true。
+- **多雇主养老基金（multi-employer pension fund）**与**个人养老基金（individual pension fund）**互斥：同一个体不能同时属于两者。
+- **多雇主养老基金（multi-employer pension fund）**与**关联成员养老基金（related member pension fund）**互斥：同一个体不能同时属于两者。
+- **多雇主养老基金（multi-employer pension fund）**与**单一雇主养老基金（single employer pension fund）**互斥：同一个体不能同时属于两者。
+- **开放型养老基金（open pension fund）**与**封闭型养老基金（closed pension fund）**互斥：同一个体不能同时属于两者。
+- **养老金账户（pension account）**：**规定于（isSpecifiedIn）**至少有一个取值，类型是**养老金计划（pension plan）**。
+- **养老金计划（pension plan）**：**规定（specifies）**可以有 0 个或多个**养老金账户（pension account）**。
+- **养老金计划（pension plan）**：**由……提供资金（is funded by）**可以有 0 个或多个**N813fb8fe741f40c2b44a3c514bab9d5b**。
+- **养老金计划（pension plan）**：**是否无保障（is unprotected）**存在取值约束。
+- **个人养老金计划（personal pension plan）**与**职业养老金计划（occupational pension plan）**互斥：同一个体不能同时属于两者。
+- **私营养老基金（private pension fund）**与**公共养老基金（public pension fund）**互斥：同一个体不能同时属于两者。
+- **私营养老金计划（private pension plan）**：**是否强制（is mandatory）**存在取值约束。
+- **私营养老金计划（private pension plan）**与**公共养老金计划（public pension plan）**互斥：同一个体不能同时属于两者。
+- **关联成员养老基金（related member pension fund）**与**个人养老基金（individual pension fund）**互斥：同一个体不能同时属于两者。
+- **关联成员养老基金（related member pension fund）**与**单一雇主养老基金（single employer pension fund）**互斥：同一个体不能同时属于两者。
+- **自愿性职业养老金计划（voluntary occupational pension plan）**：**是否强制（is mandatory）**的取值固定为 false。
+- **自愿性职业养老金计划（voluntary occupational pension plan）**与**强制性职业养老金计划（mandatory occupational pension plan）**互斥：同一个体不能同时属于两者。
+- **自愿性个人养老金计划（voluntary personal pension plan）**：**是否强制（is mandatory）**的取值固定为 false。
+- **自愿性个人养老金计划（voluntary personal pension plan）**与**强制性个人养老金计划（mandatory personal pension plan）**互斥：同一个体不能同时属于两者。
 
 ## 6. 依赖（owl:imports，12 个）
 

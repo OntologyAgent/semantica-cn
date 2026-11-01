@@ -56,15 +56,17 @@
 
 ## 5. 公理约定（Axioms）
 
-- 离散度互换指数成分腿（dispersion swap index constituents leg）：具有标的 some（由…扮演（is played by） some 股票篮子）
-- 离散度互换指数腿（dispersion swap index leg）：具有标的 some（由…扮演（is played by） some 参考指数）
-- 股息腿（dividend leg）：具有合同要素 特别股息腿条款（special dividend leg terms） ≥0
-- 股息腿（dividend leg）：具有标的 some（由…扮演（is played by） some（restriction））
-- 股息腿（dividend leg）：具有日期区间 some 合资格股息期间（qualifying dividend period）
-- 股息互换（dividend swap）：具有腿 some 股息腿（dividend leg）
-- 股票价格回报互换（equity price return swap）：具有回报腿 some 股票回报腿（equity return leg）
-- 股票回报腿（equity return leg）：具有标的 some（由…扮演（is played by） some（restriction））
-- 股票总回报互换（equity total return swap）：具有回报腿 some（restriction）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **离散度互换指数成分腿（dispersion swap index constituents leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**股票篮子（BasketOfEquities）**。
+- **离散度互换指数腿（dispersion swap index leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**参考指数（ReferenceIndex）**。
+- **股息腿（dividend leg）**：**具有合同要素（hasContractualElement）**可以有 0 个或多个**特别股息腿条款（special dividend leg terms）**。
+- **股息腿（dividend leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **股息腿（dividend leg）**：**具有日期区间（hasDatePeriod）**至少有一个取值，类型是**合资格股息期间（qualifying dividend period）**。
+- **股息互换（dividend swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**股息腿（dividend leg）**。
+- **股票价格回报互换（equity price return swap）**：**具有回报腿（hasReturnLeg）**至少有一个取值，类型是**股票回报腿（equity return leg）**。
+- **股票回报腿（equity return leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **股票总回报互换（equity total return swap）**：**具有回报腿（hasReturnLeg）**至少有一个取值，该取值满足：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，13 个）
 

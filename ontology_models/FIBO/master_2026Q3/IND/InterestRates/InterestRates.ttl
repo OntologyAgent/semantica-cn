@@ -325,14 +325,6 @@ fibo-ind-ir-ir:InterestRateBenchmark a owl:Class ;
             owl:onClass cmns-dt:Duration ;
             owl:onProperty fibo-ind-ir-ir:hasTenor ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-acc-cur:Currency ;
-            owl:onProperty fibo-ind-ir-ir:hasReferenceCurrency ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-be-fct-pub:MarketDataProvider ;
-            owl:onProperty cmns-org:isProvidedBy ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DateTime ;
             owl:onProperty fibo-ind-ir-ir:hasRateResetTimeOfDay ],
@@ -341,8 +333,16 @@ fibo-ind-ir-ir:InterestRateBenchmark a owl:Class ;
             owl:someValuesFrom fibo-ind-ir-ir:ReferenceInterestRate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-fct-pub:MarketDataProvider ;
+            owl:onProperty cmns-org:isProvidedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-be-fct-pub:Publisher ;
             owl:onProperty fibo-fnd-rel-rel:isProducedBy ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-acc-cur:Currency ;
+            owl:onProperty fibo-ind-ir-ir:hasReferenceCurrency ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-qtu:QuantityKind ;
     skos:definition "classifier for regularly updated interest rates that are publicly accessible, typically set by a central bank or group of financial institutions" ;
     cmns-av:explanatoryNote "Benchmark rates, such as EURIBOR, the Fed Funds rate, and many others including those identified as FpML rates, are used as benchmarks for a variety of debt instruments." .
@@ -361,19 +361,19 @@ fibo-ind-ir-ir:ReferenceInterestRate a owl:Class ;
         "参考利率（reference interest rate）"@zh ;
     rdfs:comment "由某银行或银行集团支付或约定的市场利率。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:hasQuantityKind ;
-            owl:someValuesFrom fibo-ind-ir-ir:InterestRateBenchmark ],
+            owl:allValuesFrom cmns-dt:Duration ;
+            owl:onProperty fibo-ind-ir-ir:hasTenor ],
         [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:Currency ;
             owl:onProperty fibo-ind-ir-ir:hasReferenceCurrency ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:allValuesFrom cmns-dt:Duration ;
-            owl:onProperty fibo-ind-ir-ir:hasTenor ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DateTime ;
             owl:onProperty fibo-ind-ir-ir:hasRateResetTimeOfDay ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasQuantityKind ;
+            owl:someValuesFrom fibo-ind-ir-ir:InterestRateBenchmark ],
         fibo-fnd-acc-cur:InterestRate,
         fibo-ind-ind-ind:MarketRate ;
     skos:definition "market rate that is a rate of interest paid by or agreed among some bank or set of banks" ;

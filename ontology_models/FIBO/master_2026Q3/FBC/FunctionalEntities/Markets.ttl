@@ -175,15 +175,15 @@ fibo-fbc-fct-mkt:ExchangeParticipant a owl:Class ;
     rdfs:comment "按照交易所规则可在交易所内或通过交易所交易、其名称列入名册的注册会员。"@zh ;
     rdfs:seeAlso <https://www.lawinsider.com/dictionary/exchange-participant> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:isRegisteredBy ;
-            owl:someValuesFrom fibo-fbc-fct-mkt:Exchange ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-col:isMemberOf ;
                     owl:someValuesFrom [ a owl:Restriction ;
                             owl:onProperty cmns-rlcmp:playsRole ;
                             owl:someValuesFrom fibo-fbc-fct-mkt:Exchange ] ] ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:isRegisteredBy ;
+            owl:someValuesFrom fibo-fbc-fct-mkt:Exchange ],
         fibo-fbc-pas-fpas:RegisteredAgent,
         cmns-org:OrganizationMember ;
     skos:definition "registered agent who, in accordance with the rules of an exchange, may trade on or through the exchange and whose name is entered in a list, register or roll kept by the exchange as an agent who may trade on or through the exchange" .
@@ -271,14 +271,14 @@ fibo-fbc-fct-mkt:OrganizedTradingFacility a owl:Class ;
     rdfs:comment "既非受监管市场（RM）也非多边交易设施（MTF）的多边系统，其中多方第三方就债券、结构化金融产品等的买卖利益进行撮合。"@zh ;
     rdfs:seeAlso <https://www.financierworldwide.com/organised-trading-facilities-how-they-differ-from-mtfs> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rga:isGovernedBy ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-mkt:MarketCategoryClassifier-OTFS ;
             owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-pas-fpas:FinancialServiceProvider ;
             owl:onProperty cmns-org:isManagedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
         fibo-fbc-fct-mkt:AlternativeTradingSystem ;
     skos:definition "multi-lateral system which is not an RM or an MTF and in which multiple third-party buying and selling interests in bonds, structured finance products, emission allowances or derivatives are able to interact in the system in a way that results in a contract in accordance with the provisions of Title II of MiFID II" ;
     cmns-av:abbreviation "OTF" ;
@@ -319,14 +319,14 @@ fibo-fbc-fct-mkt:RegisteredMultilateralTradingFacility a owl:Class ;
         "注册多边交易设施（registered multilateral trading facility）"@zh ;
     rdfs:comment "由投资公司或市场营运者运营、撮合多方第三方金融工具买卖利益的多边系统。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rga:isGovernedBy ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-org:isManagedBy ;
             owl:someValuesFrom fibo-fbc-pas-fpas:FinancialServiceProvider ],
         [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredBy ;
             owl:someValuesFrom cmns-ra:RegistrationAuthority ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rga:isGovernedBy ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
         fibo-fbc-fct-mkt:MultilateralTradingFacility ;
     skos:definition "multilateral system operated by an investment firm or market operator, which brings together multiple third-party buying and selling interests in financial instruments in the system, in accordance with non-discretionary rules, in a way that results in a contract in accordance with the provisions of Title II of the MiFID II" .
 
@@ -557,12 +557,12 @@ fibo-fbc-fct-mkt:MarketLevelClassifier a owl:Class ;
         "市场层级分类器（market level classifier）"@zh ;
     rdfs:comment "指明交易所或数据报告服务提供商属于运营层级还是市场板块层级设施的分类器。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-mkt:ISO10383-ClassificationScheme ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fbc-fct-mkt:CryptoAssetServicesProvider fibo-fbc-fct-mkt:DataReportingServicesProvider fibo-fbc-fct-mkt:Exchange fibo-fbc-fct-mkt:TradeReportingFacility ) ] ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-mkt:ISO10383-ClassificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
         cmns-cls:Classifier ;
     skos:definition "classifier that indicates whether the exchange or data reporting services provider is an operating level or market segment level facility" ;
     cmns-av:adaptedFrom "https://www.iso20022.org/sites/default/files/2021-12/ISO10383_MIC_Release_2_0_Factsheet.pdf" .
@@ -575,23 +575,23 @@ fibo-fbc-fct-mkt:CryptoAssetServicesProvider a owl:Class ;
             owl:hasValue fibo-fbc-fct-mkt:MarketCategoryClassifier-CASP ;
             owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange rdfs:Literal ;
-            owl:onProperty fibo-fbc-fct-mkt:hasFacilityAcronym ],
+            owl:onProperty fibo-fbc-fct-mkt:operatesInCountry ;
+            owl:someValuesFrom cmns-loc:Country ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fct-mkt:operatesInMunicipality ;
+            owl:someValuesFrom cmns-loc:Municipality ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange rdfs:Literal ;
             owl:onProperty fibo-fnd-rel-rel:hasFormalName ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fct-mkt:operatesInCountry ;
-            owl:someValuesFrom cmns-loc:Country ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty fibo-fbc-fct-mkt:hasFacilityAcronym ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-mkt:MarketIdentifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fct-mkt:operatesInMunicipality ;
-            owl:someValuesFrom cmns-loc:Municipality ],
         fibo-fbc-pas-fpas:FinancialServiceProvider ;
     skos:definition "financial services provider that provides services for crypto assets that enable the control of crypto assets, and participate in, or provide, financial services for issuers' offers, or sale, of crypto assets" ;
     cmns-av:abbreviation "CASP" ;
@@ -605,19 +605,8 @@ fibo-fbc-fct-mkt:TradeReportingFacility a owl:Class ;
     rdfs:comment "为在交易所以外达成的交易提供报告机制的设施。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange rdfs:Literal ;
-            owl:onProperty fibo-fnd-rel-rel:hasFormalName ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-fpas:FinancialServiceProvider ;
-            owl:onProperty cmns-org:isManagedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-mkt:MarketIdentifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-mkt:MarketCategoryClassifier-TRFS ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fct-mkt:operatesInCountry ;
             owl:someValuesFrom cmns-loc:Country ],
@@ -626,8 +615,19 @@ fibo-fbc-fct-mkt:TradeReportingFacility a owl:Class ;
             owl:onDataRange rdfs:Literal ;
             owl:onProperty fibo-fbc-fct-mkt:hasFacilityAcronym ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-fpas:FinancialServiceProvider ;
+            owl:onProperty cmns-org:isManagedBy ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fct-mkt:operatesInMunicipality ;
             owl:someValuesFrom cmns-loc:Municipality ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty fibo-fnd-rel-rel:hasFormalName ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-mkt:MarketCategoryClassifier-TRFS ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
         cmns-sfc:Facility ;
     skos:definition "facility that provides a mechanism for the reporting of transactions effected otherwise than on an exchange" ;
     skos:example "In the United States, for example, trades by FINRA members in Nasdaq-listed and other exchange-listed securities, as approved by the Securities and Exchange Commission (SEC), executed otherwise than on an exchange may be reported to a FINRA TRF. While each FINRA TRF is affiliated with a registered national securities exchange, each FINRA TRF is a FINRA facility and is subject to FINRA's registration as a national securities association." ;
@@ -687,23 +687,23 @@ fibo-fbc-fct-mkt:DataReportingServicesProvider a owl:Class ;
         "数据报告服务提供商（data reporting services provider）"@zh ;
     rdfs:comment "报告和/或发布证券交易数据的市场数据提供方和报告方，包括此类交易的法定监管报告。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty fibo-fbc-fct-mkt:hasFacilityAcronym ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fct-mkt:operatesInMunicipality ;
             owl:someValuesFrom cmns-loc:Municipality ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fct-mkt:operatesInCountry ;
-            owl:someValuesFrom cmns-loc:Country ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange rdfs:Literal ;
             owl:onProperty fibo-fnd-rel-rel:hasFormalName ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange rdfs:Literal ;
-            owl:onProperty fibo-fbc-fct-mkt:hasFacilityAcronym ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-mkt:MarketIdentifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fct-mkt:operatesInCountry ;
+            owl:someValuesFrom cmns-loc:Country ],
         fibo-be-fct-pub:MarketDataProvider,
         fibo-fnd-arr-rep:ReportingParty ;
     skos:definition "market data provider and reporting party that reports and/or publishes data on securities transactions, including required regulatory reporting for such transactions, and as such is subject to regulatory supervision" ;
@@ -736,12 +736,12 @@ fibo-fbc-fct-mkt:MarketCategoryClassifier a owl:Class ;
         "市场类别分类器（market category classifier）"@zh ;
     rdfs:comment "表示在可能情况下描绘交易所或数据报告服务提供商性质的受控词汇表。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-mkt:ISO10383-ClassificationScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fbc-fct-mkt:CryptoAssetServicesProvider fibo-fbc-fct-mkt:DataReportingServicesProvider fibo-fbc-fct-mkt:Exchange fibo-fbc-fct-mkt:TradeReportingFacility ) ] ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-mkt:ISO10383-ClassificationScheme ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
         cmns-cls:Classifier ;
     skos:definition "classifier representing the controlled vocabulary that delineates the nature of the exchange or data reporting services provider where possible" ;
     skos:scopeNote "As of October 2022, the controlled vocabulary includes two codes that are not semantically useful, namely 'not specified', or NSPD, and 'other', or OTHR. These are included for the sake of completeness but ignored with respect to how the exchange or market is classified. If something has one of these two codes as a market category, they will be classified either as an operating-level or segment-level marketas appropriate with no other distinction in terms of how they are instantiated." ;
@@ -752,10 +752,6 @@ fibo-fbc-fct-mkt:Exchange a owl:Class ;
         "交易所（exchange）"@zh ;
     rdfs:comment "任何组织、协会或团体，无论是否注册成立，只要构成、维持或提供撮合证券买卖的设施即为交易所。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange rdfs:Literal ;
-            owl:onProperty fibo-fnd-rel-rel:hasFormalName ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fct-mkt:operatesInCountry ;
             owl:someValuesFrom cmns-loc:Country ],
         [ a owl:Restriction ;
@@ -769,6 +765,10 @@ fibo-fbc-fct-mkt:Exchange a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange rdfs:Literal ;
             owl:onProperty fibo-fbc-fct-mkt:hasFacilityAcronym ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange rdfs:Literal ;
+            owl:onProperty fibo-fnd-rel-rel:hasFormalName ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fct-mkt:MarketIdentifier ;

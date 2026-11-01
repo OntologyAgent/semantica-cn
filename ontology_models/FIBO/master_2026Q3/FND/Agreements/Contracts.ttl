@@ -151,11 +151,11 @@ fibo-fnd-agr-ctr:BreachOfCovenant a owl:Class ;
         "违反契约承诺（breach of covenant）"@zh ;
     rdfs:comment "表示在无合法理由的情况下违背合同中所载做或不做某事之承诺的事件分类符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-doc:refersTo ;
             owl:someValuesFrom fibo-fnd-agr-ctr:ContractualCommitment ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Contract ],
         fibo-fnd-dt-oc:OccurrenceKind ;
     skos:definition "classifier of events representing breaking a promise specified in a contract to do or not to do something, without a legitimate excuse"@en ;
     cmns-av:explanatoryNote "In the case of a breach of a covenant or warranty, the contract remains binding and damages only are recoverable for the breach, whereas a breach of contract typically invalidates the entire contract."@en .
@@ -805,22 +805,9 @@ fibo-fnd-agr-ctr:WrittenContract a owl:Class ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty fibo-fnd-agr-ctr:hasExecutionDate ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:ContractDocument ],
-        [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-fnd-agr-ctr:isAssignable ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DateTimeStamp ;
-            owl:onProperty fibo-fnd-agr-ctr:hasEffectiveDateTimeStamp ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:Counterparty ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:ContractPrincipal ],
+            owl:onProperty fibo-fnd-agr-ctr:hasExecutionDateTimeStamp ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
@@ -828,7 +815,20 @@ fibo-fnd-agr-ctr:WrittenContract a owl:Class ;
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DateTimeStamp ;
-            owl:onProperty fibo-fnd-agr-ctr:hasExecutionDateTimeStamp ],
+            owl:onProperty fibo-fnd-agr-ctr:hasEffectiveDateTimeStamp ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-fnd-agr-ctr:isAssignable ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:Counterparty ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:ContractDocument ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:ContractPrincipal ],
         fibo-fnd-agr-ctr:Contract ;
     skos:definition "formal contract that is written and signed by the parties thereto" .
 
@@ -837,12 +837,12 @@ fibo-fnd-agr-ctr:Contract a owl:Class ;
         "合同（contract）"@zh ;
     rdfs:comment "有行为能力的参与方之间自愿、审慎达成的协议，各方同意受法律约束，并为此提供有价值的对价。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-fnd-agr-ctr:ContractualElement ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty fibo-fnd-agr-ctr:hasEffectiveDate ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-fnd-agr-ctr:ContractualElement ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-agr-ctr:ContractParty ;

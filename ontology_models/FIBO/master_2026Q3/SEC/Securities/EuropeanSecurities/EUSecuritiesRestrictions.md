@@ -35,10 +35,12 @@
 
 ## 5. 公理约定（Axioms）
 
-- 巴塞尔 III 指定（Basel III Designation）：restriction
-- 巴塞尔 III 指定（Basel III Designation）：分类 some 证券
-- 受 MiFID 监管证券（MiFID regulated security）：restriction
-- 受 MiFID 监管证券（MiFID regulated security）：restriction
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **巴塞尔 III 指定（Basel III Designation）**：**适用于情境（isApplicableIn）**的取值固定为 GeographicRegion。
+- **巴塞尔 III 指定（Basel III Designation）**：**分类（classifies）**至少有一个取值，类型是**证券（Security）**。
+- **受 MiFID 监管证券（MiFID regulated security）**：**是否须 MiFID 报告（is MiFID reporting required）**的取值固定为 true。
+- **受 MiFID 监管证券（MiFID regulated security）**：**具有流通股数量上限（has upper limit on floating shares）**存在取值约束。
 
 ## 6. 依赖（owl:imports，10 个）
 

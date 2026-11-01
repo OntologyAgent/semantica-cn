@@ -38,12 +38,12 @@ fibo-fnd-dt-fd:RelativeDate a owl:Class ;
 fibo-fnd-dt-fd:ScheduleStub a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-oc:Occurrence ;
-            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ],
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
-            owl:onProperty cmns-col:comprises ] .
+            owl:onClass fibo-fnd-dt-oc:Occurrence ;
+            owl:onProperty fibo-fnd-dt-oc:hasOccurrence ] .
 
 fibo-fnd-dt-fd:SpecifiedDate a owl:Class ;
     owl:disjointWith fibo-fnd-dt-oc:OccurrenceBasedDate .
@@ -116,10 +116,6 @@ fibo-fnd-dt-oc:Calculation a owl:Class ;
         "计算（calculation）"@zh ;
     rdfs:comment "被排定或由某事物触发的某项计算、计算过程或运算的实际执行。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-dt-oc:CalculationEvent ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValueRange ;
             owl:onProperty cmns-qtu:hasQuantityValueRange ],
@@ -131,6 +127,10 @@ fibo-fnd-dt-oc:Calculation a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValue ;
             owl:onProperty cmns-qtu:hasQuantityValue ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-dt-oc:CalculationEvent ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "actual execution of some computation, computational process, or operation that was scheduled or triggered by something" .
 
@@ -210,9 +210,9 @@ fibo-fnd-dt-oc:Occurrence a owl:Class ;
             owl:onClass cmns-loc:Location ;
             owl:onProperty cmns-loc:hasLocation ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Class ;
             owl:unionOf ( [ a owl:Restriction ;
                         owl:onClass cmns-dt:DatePeriod ;
@@ -225,9 +225,9 @@ fibo-fnd-dt-oc:Occurrence a owl:Class ;
                         owl:onProperty fibo-fnd-dt-oc:hasEventDateValue ;
                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ;
+            owl:onProperty cmns-cls:isClassifiedBy ] ;
     skos:definition "happening of an OccurrenceKind, i.e., an event" ;
     cmns-av:explanatoryNote "Each occurrence has a date time stamp, which identifies when the event occurred, and, optionally, a location (possibly virtual), that identifies where the occurrence happened." ;
     cmns-av:synonym "event" ;

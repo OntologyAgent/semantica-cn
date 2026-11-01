@@ -75,33 +75,35 @@
 
 ## 5. 公理约定（Axioms）
 
-- 项目群（Program）：具有愿景（has goal） 愿景（goal） ≥0
-- 项目群（Program）：具有目标（has objective） 目标（objective） ≥0
-- 项目群（Program）：由……标识 项目群标识符（ProgramIdentifier） ≥0
-- 项目群（Program）：具有名称 项目群名称（ProgramName） ≥0
-- 项目群（Program）：具有成员 项目（project） ≥0
-- 项目群（Program）：具有描述 some xsd:string
-- 项目群标识符（ProgramIdentifier）：标识 some 项目群（Program）
-- 项目群名称（ProgramName）：是……的名称 some 项目群（Program）
-- 意向（aim）：由……应对（is addressed by） 途径（approach） ≥0
-- 途径（approach）：应对（addresses） 意向（aim） ≥0
-- 途径（approach）：具有目标（has objective） 目标（objective） ≥0
-- 业务战略（business strategy）：具有目标（has objective） some 业务目标（business objective）
-- 目标（objective）：适用于 愿景（goal） ≥0
-- 目标（objective）：具有日期区间 日期区间 ≥0
-- 项目（project）：restriction
-- 项目（project）：restriction
-- 项目（project）：具有愿景（has goal） 愿景（goal） ≥0
-- 项目（project）：具有目标（has objective） 目标（objective） ≥0
-- 项目（project）：是……的成员 项目群（Program） ≥0
-- 项目（project）：由……标识 项目标识符（project identifier） ≥0
-- 项目（project）：具有名称 项目名称（project name） ≥0
-- 项目（project）：具有描述 some xsd:string
-- 项目标识符（project identifier）：标识 some 项目（project）
-- 项目名称（project name）：是……的名称 some 项目（project）
-- 战略（strategy）：具有愿景（has goal） 愿景（goal） ≥0
-- 研究（study）：具有愿景（has goal） 愿景（goal） ≥0
-- 研究（study）：适用于情境 情境 ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **项目群（Program）**：**具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
+- **项目群（Program）**：**具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
+- **项目群（Program）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**项目群标识符（ProgramIdentifier）**。
+- **项目群（Program）**：**具有名称（hasName）**可以有 0 个或多个**项目群名称（ProgramName）**。
+- **项目群（Program）**：**具有成员（hasMember）**可以有 0 个或多个**项目（project）**。
+- **项目群（Program）**：**具有描述（hasDescription）**至少有一个取值，类型是**xsd:string（string）**。
+- **项目群标识符（ProgramIdentifier）**：**标识（identifies）**至少有一个取值，类型是**项目群（Program）**。
+- **项目群名称（ProgramName）**：**是……的名称（isNameOf）**至少有一个取值，类型是**项目群（Program）**。
+- **意向（aim）**：**由……应对（is addressed by）**可以有 0 个或多个**途径（approach）**。
+- **途径（approach）**：**应对（addresses）**可以有 0 个或多个**意向（aim）**。
+- **途径（approach）**：**具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
+- **业务战略（business strategy）**：**具有目标（has objective）**至少有一个取值，类型是**业务目标（business objective）**。
+- **目标（objective）**：**适用于（appliesTo）**可以有 0 个或多个**愿景（goal）**。
+- **目标（objective）**：**具有日期区间（hasDatePeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
+- **项目（project）**：**具有输入（hasInput）**至少有 0 个取值。
+- **项目（project）**：**具有输出（hasOutput）**至少有 0 个取值。
+- **项目（project）**：**具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
+- **项目（project）**：**具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
+- **项目（project）**：**是……的成员（isMemberOf）**可以有 0 个或多个**项目群（Program）**。
+- **项目（project）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**项目标识符（project identifier）**。
+- **项目（project）**：**具有名称（hasName）**可以有 0 个或多个**项目名称（project name）**。
+- **项目（project）**：**具有描述（hasDescription）**至少有一个取值，类型是**xsd:string（string）**。
+- **项目标识符（project identifier）**：**标识（identifies）**至少有一个取值，类型是**项目（project）**。
+- **项目名称（project name）**：**是……的名称（isNameOf）**至少有一个取值，类型是**项目（project）**。
+- **战略（strategy）**：**具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
+- **研究（study）**：**具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
+- **研究（study）**：**适用于情境（isApplicableIn）**可以有 0 个或多个**情境（Context）**。
 
 ## 6. 依赖（owl:imports，11 个）
 

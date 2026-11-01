@@ -139,13 +139,13 @@ fibo-fbc-pas-caa:AccountSpecificServiceAgreement a owl:Class ;
     rdfs:comment "针对特定账户的服务协议，适用于客户在同一机构持有多个条款各异的账户的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
-            owl:someValuesFrom fibo-fbc-pas-caa:AccountProvider ],
+            owl:someValuesFrom fibo-fbc-pas-caa:AccountHolder ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-pas-caa:Account ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
-            owl:someValuesFrom fibo-fbc-pas-caa:AccountHolder ],
+            owl:someValuesFrom fibo-fbc-pas-caa:AccountProvider ],
         fibo-fnd-pas-pas:ServiceAgreement ;
     skos:definition "service-agreement that is account-specific, applicable in cases where a client might hold multiple accounts with differing terms and conditions" ;
     cmns-av:explanatoryNote "Customers of financial service providers frequently hold multiple accounts - brokerage accounts, checking and savings accounts, trust accounts, and so forth - which may have specific terms and conditions associated with them." .
@@ -213,11 +213,11 @@ fibo-fbc-pas-caa:InternationalBankAccountIdentifier a owl:Class ;
         "国际银行账户标识符（international bank account identifier）"@zh ;
     rdfs:comment "基本银行账户号（BBAN）的扩展版本银行账户标识符，供国际使用（IBAN）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-caa:BasicBankAccountIdentifier ;
+            owl:onClass cmns-loc:GeographicRegionIdentifier ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass cmns-loc:GeographicRegionIdentifier ;
+            owl:onClass fibo-fbc-pas-caa:BasicBankAccountIdentifier ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fbc-pas-caa:BankAccountIdentifier,
@@ -386,11 +386,11 @@ fibo-fbc-pas-caa:BasicBankAccountIdentifier a owl:Class ;
         "基本银行账户标识符（basic bank account identifier）"@zh ;
     rdfs:comment "在特定国家唯一标识某一金融机构中某一账户的标识符，包含银行标识符（BBAN）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-caa:BankIdentifier ;
+            owl:onClass fibo-fbc-pas-caa:BankAccountIdentifier ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-caa:BankAccountIdentifier ;
+            owl:onClass fibo-fbc-pas-caa:BankIdentifier ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fbc-pas-caa:BankAccountIdentifier,
@@ -492,12 +492,12 @@ fibo-fbc-pas-caa:TransactionCategory a owl:Class ;
         "交易类别（transaction category）"@zh ;
     rdfs:comment "单笔交易的高层分类器。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fbc-pas-caa:IndividualTransaction ],
+        [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty cmns-dsg:hasTag ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-fbc-pas-caa:IndividualTransaction ],
         cmns-cls:Classifier,
         cmns-cds:CodeElement ;
     skos:definition "high-level classifier for an individual transaction" ;
@@ -519,12 +519,12 @@ fibo-fbc-pas-caa:TransactionRecordIdentifier a owl:Class ;
         "交易记录标识符（transaction record identifier）"@zh ;
     rdfs:comment "交易记录的唯一标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty cmns-dsg:hasTag ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-caa:TransactionRecord ;
             owl:onProperty cmns-id:identifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty cmns-dsg:hasTag ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-ra:RegisteredIdentifier ;
     skos:definition "unique identifier for record of transactions" .
@@ -627,24 +627,24 @@ fibo-fbc-pas-caa:AccountStatement a owl:Class ;
         "对账单（account statement）"@zh ;
     rdfs:comment "某一给定期间账户活动的定期汇总。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-caa:recordsTransaction ;
+            owl:someValuesFrom fibo-fbc-pas-caa:IndividualTransaction ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-caa:Account ;
+            owl:onProperty fibo-fbc-pas-caa:appliesToAccount ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDatePeriod ;
             owl:onProperty fibo-fnd-arr-doc:hasReportingPeriod ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:Balance ;
-            owl:onProperty fibo-fbc-pas-caa:hasEndingBalance ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-caa:Account ;
-            owl:onProperty fibo-fbc-pas-caa:appliesToAccount ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-pas-caa:recordsTransaction ;
-            owl:someValuesFrom fibo-fbc-pas-caa:IndividualTransaction ],
+            owl:onProperty fibo-fbc-pas-caa:hasStartingBalance ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:Balance ;
-            owl:onProperty fibo-fbc-pas-caa:hasStartingBalance ],
+            owl:onProperty fibo-fbc-pas-caa:hasEndingBalance ],
         cmns-doc:LegalDocument,
         cmns-doc:Record ;
     skos:definition "periodic summary of account activity for a given period of time" ;
@@ -766,11 +766,11 @@ fibo-fbc-pas-caa:CustomerAccountHolder a owl:Class ;
     rdfs:label "customer account holder",
         "客户账户持有人（customer account holder）"@zh ;
     rdfs:comment "拥有客户账户的一方。"@zh ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fnd-pas-pas:Client fibo-fnd-pas-pas:Customer ) ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:holds ;
             owl:someValuesFrom fibo-fbc-pas-caa:CustomerAccount ],
-        [ a owl:Class ;
-            owl:unionOf ( fibo-fnd-pas-pas:Client fibo-fnd-pas-pas:Customer ) ],
         fibo-fbc-pas-caa:AccountHolder ;
     skos:definition "party that owns a customer account" .
 
@@ -815,18 +815,6 @@ fibo-fbc-pas-caa:TransactionRecord a owl:Class ;
         "交易记录（transaction record）"@zh ;
     rdfs:comment "与账户相关联的交易的记录。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:TransactionRecordIdentifier ;
-            owl:onProperty cmns-id:isIdentifiedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:IndividualTransaction ;
-            owl:onProperty cmns-col:comprises ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-caa:Account ;
-            owl:onProperty fibo-fbc-pas-caa:appliesToAccount ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-fbc-pas-caa:hasTransactionRecordStatus ],
@@ -838,6 +826,18 @@ fibo-fbc-pas-caa:TransactionRecord a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:CloseDate ;
             owl:onProperty fibo-fbc-pas-caa:hasCloseDate ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:IndividualTransaction ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-caa:Account ;
+            owl:onProperty fibo-fbc-pas-caa:appliesToAccount ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:TransactionRecordIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-caa:AccountProvider ;
             owl:onProperty cmns-org:isManagedBy ;
@@ -881,13 +881,13 @@ fibo-fbc-pas-caa:AccountHolder a owl:Class ;
         "账户持有人（account holder）"@zh ;
     rdfs:comment "拥有账户的一方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:holds ;
+            owl:someValuesFrom fibo-fbc-pas-caa:Account ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty fibo-fnd-oac-own:owns ;
                     owl:someValuesFrom fibo-fbc-pas-caa:Account ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:holds ;
-            owl:someValuesFrom fibo-fbc-pas-caa:Account ],
         [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
@@ -903,8 +903,12 @@ fibo-fbc-pas-caa:CustomerAccount a owl:Class ;
         "客户账户（customer account）"@zh ;
     rdfs:comment "代表一组已识别、具名的余额和累计总额集合的账户，用于汇总某段期间与客户交易相关的活动。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-id:isIdentifiedBy ;
-            owl:someValuesFrom fibo-fbc-pas-caa:AccountIdentifier ],
+            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
+            owl:someValuesFrom fibo-fbc-pas-caa:CustomerAccountHolder ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-pas-fpas:FinancialProduct fibo-fbc-pas-fpas:FinancialService ) ] ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:someValuesFrom fibo-fnd-pas-pas:ServiceAgreement ],
@@ -913,12 +917,8 @@ fibo-fbc-pas-caa:CustomerAccount a owl:Class ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:intersectionOf ( fibo-fbc-pas-caa:AccountProvider fibo-fbc-pas-fpas:FinancialServiceProvider ) ] ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fbc-pas-fpas:FinancialProduct fibo-fbc-pas-fpas:FinancialService ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
-            owl:someValuesFrom fibo-fbc-pas-caa:CustomerAccountHolder ],
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:someValuesFrom fibo-fbc-pas-caa:AccountIdentifier ],
         fibo-fbc-pas-caa:Account ;
     skos:definition "account that represents an identified, named collection of balances and cumulative totals used to summarize customer transaction-related activity over a designated period of time" ;
     cmns-av:synonym "financial service account" .
@@ -936,48 +936,48 @@ fibo-fbc-pas-caa:IndividualTransaction a owl:Class ;
         "单笔交易（individual transaction）"@zh ;
     rdfs:comment "具有货币影响、并记录在与账户相关联的记录中的事件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fbc-pas-caa:TransactionRecord ;
-            owl:onProperty cmns-ra:isRegisteredIn ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:TransactionIdentifier ;
-            owl:onProperty cmns-id:isIdentifiedBy ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-pas-pas:TransactionEvent ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-caa:TransactionDate ;
-            owl:onProperty fibo-fbc-pas-caa:hasTransactionDate ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:TransactionIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-caa:Account ;
             owl:onProperty fibo-fbc-pas-caa:appliesToAccount ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:TransactionSubcategory ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-fbc-pas-caa:hasTransactionDescription ],
         [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fbc-pas-caa:TransactionRecord ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:TransactionCategory ;
+            owl:onClass fibo-fbc-pas-caa:TransactionSubcategory ;
             owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-be-fct-fct:Merchant ;
             owl:onProperty fibo-fbc-pas-caa:involvesMerchant ],
         [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-caa:PostingDate ;
+            owl:onProperty fibo-fbc-pas-caa:hasPostingDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-pas-caa:TransactionDate ;
+            owl:onProperty fibo-fbc-pas-caa:hasTransactionDate ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fbc-pas-caa:PostingDate ;
-            owl:onProperty fibo-fbc-pas-caa:hasPostingDate ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:TransactionCategory ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
         fibo-fnd-dt-fd:DatedCollectionConstituent,
         fibo-fnd-dt-oc:Occurrence ;
     skos:definition "event that has a monetary impact and is documented in the records associated with an account" .
@@ -987,11 +987,11 @@ fibo-fbc-pas-caa:LedgerAccountClassifier a owl:Class ;
         "分类账户分类器（ledger account classifier）"@zh ;
     rdfs:comment "依照适用法律、监管和报告要求组织实体财务账户的分类器。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-fbc-pas-caa:LedgerAccount ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-pas-caa:LedgerAccountClassificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-fbc-pas-caa:LedgerAccount ],
         cmns-cls:Classifier ;
     skos:definition "classifier used to organize an entity's financial accounts in accordance with applicable legal, regulatory, and reporting requirements" .
 
@@ -1010,30 +1010,30 @@ fibo-fbc-pas-caa:Account a owl:Class ;
     rdfs:comment "与常规交易和服务之业务安排相关记录的容器。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:CloseDate ;
-            owl:onProperty fibo-fbc-pas-caa:hasCloseDate ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-org:isProvidedBy ;
-            owl:someValuesFrom fibo-fbc-pas-caa:AccountProvider ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:AccountHolder ;
             owl:onProperty fibo-fnd-rel-rel:isHeldBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:TransactionRecord ;
-            owl:onProperty fibo-fnd-arr-doc:hasRecord ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-pas-caa:hasBalance ;
-            owl:someValuesFrom fibo-fbc-pas-caa:Balance ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:AccountIdentifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:TransactionRecord ;
+            owl:onProperty fibo-fnd-arr-doc:hasRecord ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fbc-pas-caa:OpenDate ;
             owl:onProperty fibo-fbc-pas-caa:hasOpenDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-pas-caa:hasBalance ;
+            owl:someValuesFrom fibo-fbc-pas-caa:Balance ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-org:isProvidedBy ;
+            owl:someValuesFrom fibo-fbc-pas-caa:AccountProvider ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:CloseDate ;
+            owl:onProperty fibo-fbc-pas-caa:hasCloseDate ],
         fibo-fnd-arr-doc:FinancialRecord ;
     skos:definition "container for records associated with a business arrangement for regular transactions and services" ;
     cmns-av:explanatoryNote "In general, an account is associated with a contractual relationship between a buyer and seller under which payment may be made at a later time. General ledger accounts are an exception to this, however, and typically do not have account holders, including internal account holders. They may, on the other hand, have responsible parties." .

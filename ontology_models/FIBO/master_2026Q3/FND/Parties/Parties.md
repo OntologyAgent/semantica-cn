@@ -32,14 +32,16 @@
 
 ## 5. 公理约定（Axioms）
 
-- 参与方角色识别方案（party role identification scheme）：具有成员 some 参与方角色标识符（party role identifier）
-- 参与方角色标识符（party role identifier）：是……的成员 参与方角色识别方案（party role identification scheme） =1
-- 参与方角色标识符（party role identifier）：定义于 参与方角色识别方案（party role identification scheme） =1
-- 参与方角色标识符（party role identifier）：标识 参与方角色（party role） =1
-- 税务识别方案（tax identification scheme）：适用于情境 some 管辖权
-- 税务标识符（tax identifier）：是……的成员 税务识别方案（tax identification scheme） =1
-- 税务标识符（tax identifier）：标识 参与方（party） =1
-- 税务标识符（tax identifier）：适用于情境 some 管辖权
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **参与方角色识别方案（party role identification scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**参与方角色标识符（party role identifier）**。
+- **参与方角色标识符（party role identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**参与方角色识别方案（party role identification scheme）**。
+- **参与方角色标识符（party role identifier）**：**定义于（isDefinedIn）**恰好有 1 个**参与方角色识别方案（party role identification scheme）**。
+- **参与方角色标识符（party role identifier）**：**标识（identifies）**恰好有 1 个**参与方角色（party role）**。
+- **税务识别方案（tax identification scheme）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **税务标识符（tax identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**税务识别方案（tax identification scheme）**。
+- **税务标识符（tax identifier）**：**标识（identifies）**恰好有 1 个**参与方（party）**。
+- **税务标识符（tax identifier）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
 
 ## 6. 依赖（owl:imports，12 个）
 

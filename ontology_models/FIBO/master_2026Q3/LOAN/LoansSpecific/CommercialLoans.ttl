@@ -47,6 +47,10 @@ fibo-loan-spc-com:CommercialLoan a owl:Class ;
         "商业贷款（commercial loan）"@zh ;
     rdfs:comment "向公司、商业企业、合资企业或其他组织（而非消费者个人）发放的贷款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-gao-obj:BusinessObjective ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:hasBorrower ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:isPlayedBy ;
@@ -55,10 +59,6 @@ fibo-loan-spc-com:CommercialLoan a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-loan-spc-com:hasBusinessPurposeDescription ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-gao-obj:BusinessObjective ;
-            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
         fibo-loan-ln-ln:Loan ;
     skos:definition "loan extended to a corporation, commercial enterprise, joint venture, or other organization as opposed to a consumer"@en ;
     cmns-av:explanatoryNote "Such loans may include those that provide working capital, are used to finance the purchase of equipment and/or materials, for facilities and/or improvement of facilities, and so forth, and are typically secured."@en ;

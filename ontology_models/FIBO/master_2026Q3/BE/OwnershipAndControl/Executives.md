@@ -110,26 +110,28 @@
 
 ## 5. 公理约定（Axioms）
 
-- 获授权个人（authorized individual）：由…扮演（is played by） 具有法律行为能力的自然人 =1
-- 董事会职权（board capacity）：受……管辖 公司法（company law） ≥0
-- 董事会职权（board capacity）：被授予给 some（扮演角色（plays role） some 董事会成员（board member））
-- 董事会职权（board capacity）：由……授予 some（restriction）
-- 董事会组成控制（board composition control）：具有控制中参与方 N283faaf30d834e839847cde8ab9db1fa ≥0
-- 董事会组成控制（board composition control）：涉及受控事物 some 董事会成员（board member）
-- 董事会成员（board member）：由…扮演（is played by） some（是……的成员 some（扮演角色（plays role） some 董事会（board of directors）））
-- 董事会成员（board member）：由…扮演（is played by） some（是…的参与方（is a party to） some 董事会协议）
-- 董事会成员关系（board membership）：具有控制中参与方 some 董事会成员（board member）
-- 董事会成员关系（board membership）：涉及受控事物 some 受控方
-- 董事会（board of directors）：提名（nominates） some 公司高管（corporate officer）
-- 董事会（board of directors）：由…扮演（is played by） some（具有能力方 some 董事会职权（board capacity））
-- 董事会（board of directors）：由…扮演（is played by） some（具有成员 some（扮演角色（plays role） some 董事会成员（board member）））
-- 首席执行官（chief executive officer）：管理 some（restriction）
-- 控制性名义持有人（controlling nominee）：受托控制 some 资产
-- 公司内部章程（corporate bylaws）：具有授权股份数 some xsd:nonNegativeInteger
-- 高管（executive）：由…扮演（is played by） 具有法律行为能力的自然人 =1
-- 内部审计师（internal auditor） 与 外部审计师（external auditor） 互斥（disjointWith）
-- 非执行董事（non-executive board member） 与 执行董事（executive board member） 互斥（disjointWith）
-- 签署人（signatory）：由…扮演（is played by） some（具有能力方 some 签署能力）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **获授权个人（authorized individual）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **董事会职权（board capacity）**：**受……管辖（isGovernedBy）**可以有 0 个或多个**公司法（company law）**。
+- **董事会职权（board capacity）**：**被授予给（isConferredOn）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会成员（board member）**。
+- **董事会职权（board capacity）**：**由……授予（isConferredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **董事会组成控制（board composition control）**：**具有控制中参与方（hasPartyInControl）**可以有 0 个或多个**Ncf29ba97204f49eb8c821d0e5d624666**。
+- **董事会组成控制（board composition control）**：**涉及受控事物（involvesControlledThing）**至少有一个取值，类型是**董事会成员（board member）**。
+- **董事会成员（board member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会（board of directors）**。
+- **董事会成员（board member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**董事会协议（BoardAgreement）**。
+- **董事会成员关系（board membership）**：**具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**董事会成员（board member）**。
+- **董事会成员关系（board membership）**：**涉及受控事物（involvesControlledThing）**至少有一个取值，类型是**受控方（ControlledParty）**。
+- **董事会（board of directors）**：**提名（nominates）**至少有一个取值，类型是**公司高管（corporate officer）**。
+- **董事会（board of directors）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**董事会职权（board capacity）**。
+- **董事会（board of directors）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会成员（board member）**。
+- **首席执行官（chief executive officer）**：**管理（manages）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **控制性名义持有人（controlling nominee）**：**受托控制（hasDelegatedControlOf）**至少有一个取值，类型是**资产（Asset）**。
+- **公司内部章程（corporate bylaws）**：**具有授权股份数（hasSharesAuthorized）**至少有一个取值，类型是**xsd:nonNegativeInteger（nonNegativeInteger）**。
+- **高管（executive）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **内部审计师（internal auditor）**与**外部审计师（external auditor）**互斥：同一个体不能同时属于两者。
+- **非执行董事（non-executive board member）**与**执行董事（executive board member）**互斥：同一个体不能同时属于两者。
+- **签署人（signatory）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**签署能力（SignatoryCapacity）**。
 
 ## 6. 依赖（owl:imports，20 个）
 

@@ -76,11 +76,11 @@ fibo-fnd-txn-mkt:MarketTransaction a owl:Class ;
             owl:onProperty fibo-fnd-txn-mkt:paymentTerms ;
             owl:someValuesFrom fibo-fnd-txn-mkt:MarketTransactionPaymentTerms ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-mkt:consideration ;
-            owl:someValuesFrom fibo-fnd-txn-rea:EconomicResource ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
             owl:someValuesFrom fibo-fnd-txn-mkt:TransactionPrincipal ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-mkt:consideration ;
+            owl:someValuesFrom fibo-fnd-txn-rea:EconomicResource ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
             owl:someValuesFrom fibo-fnd-txn-mkt:TransactionCounterparty ],

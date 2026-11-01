@@ -40,18 +40,20 @@
 
 ## 5. 公理约定（Axioms）
 
-- 银行承兑汇票（bankers' acceptance）：restriction
-- 银行承兑汇票（bankers' acceptance）：restriction
-- 银行承兑汇票（bankers' acceptance）：具有担保人 some 银行
-- 汇票（bill of exchange）：由……发行 金融机构 ≥0
-- 汇票（bill of exchange）：具有参与方角色（has party role） 收款人 ≥0
-- 汇票（bill of exchange）：具有参与方角色（has party role） some 付款人（drawee）
-- 汇票（bill of exchange）：具有参与方角色（has party role） some 出票人（drawer）
-- 商业票据（commercial paper）：restriction
-- 商业票据（commercial paper）：restriction
-- 付款人（drawee）：由…扮演（is played by） some（是…的参与方（is a party to） some 汇票（bill of exchange））
-- 出票人（drawer）：由…扮演（is played by） some（是…的参与方（is a party to） some 汇票（bill of exchange））
-- 回购协议（repurchase agreement）：具有时长 时长 ≤1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **银行承兑汇票（bankers' acceptance）**：**具有发行时相对价格（hasRelativePriceAtIssue）**的取值固定为 AtADiscount。
+- **银行承兑汇票（bankers' acceptance）**：**具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
+- **银行承兑汇票（bankers' acceptance）**：**具有担保人（hasGuarantor）**至少有一个取值，类型是**银行（Bank）**。
+- **汇票（bill of exchange）**：**由……发行（isIssuedBy）**可以有 0 个或多个**金融机构（FinancialInstitution）**。
+- **汇票（bill of exchange）**：**具有参与方角色（has party role）**可以有 0 个或多个**收款人（Payee）**。
+- **汇票（bill of exchange）**：**具有参与方角色（has party role）**至少有一个取值，类型是**付款人（drawee）**。
+- **汇票（bill of exchange）**：**具有参与方角色（has party role）**至少有一个取值，类型是**出票人（drawer）**。
+- **商业票据（commercial paper）**：**具有发行时相对价格（hasRelativePriceAtIssue）**的取值固定为 AtADiscount。
+- **商业票据（commercial paper）**：**具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
+- **付款人（drawee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**汇票（bill of exchange）**。
+- **出票人（drawer）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**汇票（bill of exchange）**。
+- **回购协议（repurchase agreement）**：**具有时长（hasDuration）**至多有 1 个**时长（Duration）**。
 
 ## 6. 依赖（owl:imports，14 个）
 

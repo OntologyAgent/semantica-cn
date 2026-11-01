@@ -58,15 +58,15 @@ fibo-fbc-fct-cajrga:CorporationIncomeTaxNumber a owl:Class ;
         "公司所得税编号（corporation income tax number）"@zh ;
     rdfs:comment "由实体的商业编号、'RC'缩写和用于申报公司所得税的 4 位子账户编号拼接而成。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cajrga:CorporationIncomeTaxNumberIdentifierScheme ;
+            owl:onProperty cmns-col:isMemberOf ],
+        [ a owl:Restriction ;
             owl:hasValue fibo-be-ge-caj:CanadianJurisdiction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:LedgerAccount ;
             owl:onProperty cmns-id:identifies ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-cajrga:CorporationIncomeTaxNumberIdentifierScheme ;
-            owl:onProperty cmns-col:isMemberOf ],
         fibo-fbc-fct-cajrga:BusinessNumber ;
     skos:definition "concatenation of an entity's business number, the 'RC' abbreviation and a 4-digit subaccount number used for reporting corporate income tax" ;
     skos:example "000000000RC0001" ;
@@ -106,12 +106,12 @@ fibo-fbc-fct-cajrga:GoodsServicesTaxHarmonizedSalesTaxRegistrationNumber a owl:C
         "商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）"@zh ;
     rdfs:comment "由实体的商业编号、'RT'缩写和用于申报 GST/HST 的 4 位子账户编号拼接而成。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-cajrga:GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme ;
-            owl:onProperty cmns-col:isMemberOf ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:LedgerAccount ;
             owl:onProperty cmns-id:identifies ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cajrga:GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme ;
+            owl:onProperty cmns-col:isMemberOf ],
         [ a owl:Restriction ;
             owl:hasValue fibo-be-ge-caj:CanadianJurisdiction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
@@ -177,11 +177,11 @@ fibo-fbc-fct-cajrga:InformationReturnsProgramNumber a owl:Class ;
             owl:onClass fibo-fbc-pas-caa:LedgerAccount ;
             owl:onProperty cmns-id:identifies ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-cajrga:InformationReturnsIdentifierScheme ;
-            owl:onProperty cmns-col:isMemberOf ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-be-ge-caj:CanadianJurisdiction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cajrga:InformationReturnsIdentifierScheme ;
+            owl:onProperty cmns-col:isMemberOf ],
         fibo-fbc-fct-cajrga:BusinessNumber ;
     skos:definition "concatenation of an entity's business number, the 'RZ' abbreviation and a 4-digit subaccount number used for information returns" ;
     skos:example "000000000RZ0001" ;
@@ -217,11 +217,11 @@ fibo-fbc-fct-cajrga:PayrollDeductionsProgramNumber a owl:Class ;
         "工资代扣计划编号（payroll deductions program number）"@zh ;
     rdfs:comment "由实体的商业编号、'RP'缩写和用于申报工资代扣的 4 位子账户编号拼接而成。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-cajrga:PayrollDeductionsProgramIdentifierRegistrationService ;
-            owl:onProperty cmns-col:isMemberOf ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-be-ge-caj:CanadianJurisdiction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cajrga:PayrollDeductionsProgramIdentifierRegistrationService ;
+            owl:onProperty cmns-col:isMemberOf ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-caa:LedgerAccount ;
@@ -246,15 +246,15 @@ fibo-fbc-fct-cajrga:RegisteredCharityProgramNumber a owl:Class ;
         "注册慈善机构计划编号（registered charity program number）"@zh ;
     rdfs:comment "由实体的商业编号、'RR'缩写和用于注册慈善机构捐赠申报的 4 位子账户编号拼接而成。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-pas-caa:LedgerAccount ;
-            owl:onProperty cmns-id:identifies ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-be-ge-caj:CanadianJurisdiction ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-cajrga:RegisteredCharityProgramNumberIdentifierScheme ;
             owl:onProperty cmns-col:isMemberOf ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-pas-caa:LedgerAccount ;
+            owl:onProperty cmns-id:identifies ],
         fibo-fbc-fct-cajrga:BusinessNumber ;
     skos:definition "concatenation of an entity's business number, the 'RR' abbreviation and a 4-digit subaccount number used for registered charity contribution" ;
     skos:example "000000000RR0001" ;
@@ -406,11 +406,11 @@ fibo-fbc-fct-cajrga:BusinessNumber a owl:Class ;
         "商业编号（business number）"@zh ;
     rdfs:comment "加拿大法律实体（通常为企业）的标准标识符，是唯一的 9 位数字编号。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-be-ge-caj:CanadianJurisdiction ;
-            owl:onProperty cmns-cxtdsg:isApplicableIn ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-cajrga:BusinessNumberRegistrationIdentifierScheme ;
             owl:onProperty cmns-col:isMemberOf ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-be-ge-caj:CanadianJurisdiction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
         fibo-fnd-pty-pty:TaxIdentifier,
         cmns-org:OrganizationIdentifier ;
     skos:definition "unique, 9-digit number that is the standard identifier for legal entities in Canada which are typically a business" ;

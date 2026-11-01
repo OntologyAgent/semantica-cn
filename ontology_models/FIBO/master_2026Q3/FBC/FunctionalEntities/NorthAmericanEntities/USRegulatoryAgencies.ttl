@@ -121,11 +121,11 @@ fibo-fbc-fct-usjrga:ABAIINRegistryEntry a owl:Class ;
             owl:hasValue fibo-fbc-fct-usjrga:ABAIINRegistry ;
             owl:onProperty cmns-col:isIncludedIn ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-fbc-fct-usjrga:IssuerIdentificationNumber ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-fct-fse:FinancialInstitution ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-fct-usjrga:IssuerIdentificationNumber ],
         cmns-ra:RegistryEntry ;
     skos:definition "an entry in the ABA IIN registry, a repository of financial institution characteristics collected by the ABA for those institutions to which they issue IINs" .
 
@@ -138,11 +138,11 @@ fibo-fbc-fct-usjrga:ABARTNRegistryEntry a owl:Class ;
             owl:hasValue fibo-fbc-fct-usjrga:ABARTNRegistry ;
             owl:onProperty cmns-col:isIncludedIn ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-fbc-fct-usjrga:RoutingTransitNumber ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-fct-fse:FinancialInstitution ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fbc-fct-usjrga:RoutingTransitNumber ],
         cmns-ra:RegistryEntry ;
     skos:definition "an entry in the ABA RTN registry, a repository of financial institution characteristics collected by the ABA Registrar on behalf of the ABA" .
 
@@ -291,11 +291,11 @@ fibo-fbc-fct-usjrga:FDICRegistryEntry a owl:Class ;
     rdfs:comment "联邦存款保险公司（FDIC）机构名录中的条目，是 FDIC 就其承保机构收集的金融机构特征信息库。"@zh ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:FDICInstitutionDirectory ;
-            owl:onProperty cmns-col:isIncludedIn ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-fct-fse:DepositoryInstitution ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:FDICInstitutionDirectory ;
+            owl:onProperty cmns-col:isIncludedIn ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-fct-usjrga:FDICCertificateNumber ],
@@ -510,7 +510,9 @@ fibo-fbc-fct-usjrga:FederalReserveSystemNonMemberInstitution a owl:Class ;
     rdfs:label "Federal Reserve System non-member institution",
         "联邦储备体系非成员机构（Federal Reserve System non-member institution）"@zh ;
     rdfs:comment "不属于联邦储备体系（FRS）成员的存款性机构。"@zh ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fbc-fct-usfse:StateCharteredBank fibo-fbc-fct-usfse:IndustrialBank ) ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:intersectionOf ( [ a owl:Restriction ;
@@ -518,8 +520,6 @@ fibo-fbc-fct-usjrga:FederalReserveSystemNonMemberInstitution a owl:Class ;
                                 owl:onProperty cmns-org:isDomiciledIn ] [ a owl:Restriction ;
                                 owl:hasValue fibo-be-ge-usj:UnitedStatesJurisdiction ;
                                 owl:onProperty fibo-be-le-cb:isIncorporatedIn ] ) ] ],
-        [ a owl:Class ;
-            owl:unionOf ( fibo-fbc-fct-usfse:StateCharteredBank fibo-fbc-fct-usfse:IndustrialBank ) ],
         fibo-fbc-fct-fse:DepositoryInstitution ;
     owl:disjointWith fibo-fbc-fct-usjrga:FederalReserveSystemMember ;
     skos:definition "depository institution that is not member of the Federal Reserve System (FRS)" ;
@@ -591,14 +591,14 @@ fibo-fbc-fct-usjrga:NICRegistryEntry a owl:Class ;
     rdfs:comment "国家信息中心（NIC）信息库中的条目，该信息库由联邦储备收集金融数据和机构特征信息。"@zh ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:NationalInformationCenterRepository ;
-            owl:onProperty cmns-col:isIncludedIn ],
+            owl:allValuesFrom fibo-fbc-pas-fpas:FinancialServiceProvider ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-fct-usjrga:ResearchStatisticsSupervisionDiscountIdentifier ],
         [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fbc-pas-fpas:FinancialServiceProvider ;
-            owl:onProperty cmns-cxtdsg:appliesTo ],
+            owl:hasValue fibo-fbc-fct-usjrga:NationalInformationCenterRepository ;
+            owl:onProperty cmns-col:isIncludedIn ],
         cmns-ra:RegistryEntry ;
     skos:definition "an entry in the the National Information Center (NIC) repository, a repository of financial data and institution characteristics collected by the Federal Reserve System" ;
     cmns-av:adaptedFrom "http://www.ffiec.gov/nicpubweb/nicweb/NicHome.aspx"^^xsd:anyURI .
@@ -932,18 +932,18 @@ fibo-fbc-fct-usjrga:IssuerIdentificationNumber a owl:Class ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/ISO/IEC_7812> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usjrga:ABAIINRegistry ;
             owl:onProperty cmns-ra:isRegisteredIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
+            owl:onProperty cmns-ra:hasRegistrationAuthority ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-fse:FinancialInstitution ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
-            owl:onProperty cmns-ra:hasRegistrationAuthority ],
         fibo-fbc-fct-fse:FinancialServiceProviderIdentifier,
         cmns-ra:RegisteredIdentifier ;
     skos:definition "a numbering system that allows a credit, debit, or other card to be identified as having been issued by a particular financial institution" ;
@@ -1168,11 +1168,11 @@ fibo-fbc-fct-usjrga:FDICCertificateNumber a owl:Class ;
     rdfs:comment "联邦存款保险公司（FDIC）在批准存款性机构参保申请后向其签发的标识符。"@zh ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:FederalDepositInsurerAndRegulator ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usjrga:FDICInstitutionDirectory ;
             owl:onProperty cmns-ra:isRegisteredIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:FederalDepositInsurerAndRegulator ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
         fibo-fbc-fct-fse:FinancialServiceProviderIdentifier,
         cmns-ra:RegisteredIdentifier ;
     skos:definition "identifier issued to a depository institution by the FDIC on approval of that institution's application for insurance" ;
@@ -1420,14 +1420,14 @@ fibo-fbc-fct-usjrga:RoutingTransitNumber a owl:Class ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:seeAlso <http://www.accuity.com/aba-registrar/> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRTNRegistrar ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
+            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
+            owl:onProperty cmns-ra:hasRegistrationAuthority ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usjrga:ABARTNRegistry ;
             owl:onProperty cmns-ra:isRegisteredIn ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
-            owl:onProperty cmns-ra:hasRegistrationAuthority ],
+            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRTNRegistrar ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
         fibo-fbc-fct-fse:FinancialServiceProviderIdentifier,
         cmns-ra:RegisteredIdentifier ;
     skos:definition "unique nine digit identifier, used primarily in the United States, to identify a banking or other financial institution for clearing funds, and, as it appears on a check, denotes the banking institution that holds the account from which funds are to be drawn" ;
@@ -1756,7 +1756,9 @@ fibo-fbc-fct-usjrga:StateGovernmentEntity a owl:Class ;
     rdfs:label "state government entity or agency",
         "州政府实体或机构（state government entity or agency）"@zh ;
     rdfs:comment "州政府机构体系中的独立机构、直属机构或其他永久或半永久性正式组织。"@zh ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-be-ge-ge:Instrumentality fibo-be-ge-ge:RegionalSovereignty fibo-be-ge-ge:GovernmentAgency fibo-be-ge-ge:GovernmentDepartment ) ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-rga:hasJurisdiction ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rga:hasReach ;
@@ -1764,8 +1766,6 @@ fibo-fbc-fct-usjrga:StateGovernmentEntity a owl:Class ;
                             owl:intersectionOf ( cmns-loc:CountrySubdivision [ a owl:Restriction ;
                                         owl:hasValue lcc-3166-1:UnitedStatesOfAmerica ;
                                         owl:onProperty cmns-loc:isSubregionOf ] ) ] ] ],
-        [ a owl:Class ;
-            owl:unionOf ( fibo-be-ge-ge:Instrumentality fibo-be-ge-ge:RegionalSovereignty fibo-be-ge-ge:GovernmentAgency fibo-be-ge-ge:GovernmentDepartment ) ],
         fibo-be-ge-ge:GovernmentBody ;
     skos:definition "formal organization that is an independent agency, instrumentality or other permanent or semi-permanent organization in the machinery of government of any one of the states or territories of the United States" .
 
@@ -1792,12 +1792,12 @@ fibo-fbc-fct-usjrga:FederalReserveDistrictBank a owl:Class ;
     rdfs:comment "对美国特定区域拥有管辖权的联邦储备区成员银行，以储备银行所在城市命名。"@zh ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:FederalReserveRegulatoryAgencyAndCentralBank ;
-            owl:onProperty cmns-col:isPartOf ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-usjrga:FederalReserveDistrict ;
             owl:onProperty cmns-rga:hasJurisdiction ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:FederalReserveRegulatoryAgencyAndCentralBank ;
+            owl:onProperty cmns-col:isPartOf ],
         fibo-fbc-fct-fse:CentralBank,
         fibo-fbc-fct-usjrga:FederalReserveSystemMember ;
     skos:definition "Federal Reserve district and member bank, with jurisdiction over a specific region of the US, named for the city in which the reserve bank is located" ;
@@ -1828,11 +1828,11 @@ fibo-fbc-fct-usjrga:FederalGovernmentEntity a owl:Class ;
     rdfs:label "federal government entity",
         "联邦政府实体（federal government entity）"@zh ;
     rdfs:comment "美国政府机构体系中的独立机构、直属机构或其他永久或半永久性正式组织。"@zh ;
-    rdfs:subClassOf [ a owl:Restriction ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-be-ge-ge:Instrumentality fibo-be-ge-ge:Polity fibo-be-ge-ge:GovernmentAgency fibo-be-ge-ge:GovernmentDepartment ) ],
+        [ a owl:Restriction ;
             owl:hasValue fibo-be-ge-usj:UnitedStatesJurisdiction ;
             owl:onProperty cmns-rga:hasJurisdiction ],
-        [ a owl:Class ;
-            owl:unionOf ( fibo-be-ge-ge:Instrumentality fibo-be-ge-ge:Polity fibo-be-ge-ge:GovernmentAgency fibo-be-ge-ge:GovernmentDepartment ) ],
         fibo-be-ge-ge:GovernmentBody ;
     skos:definition "formal organization that is an independent agency, instrumentality or other permanent or semi-permanent organization in the machinery of government in the United States, authorized by the executive branch or by Congress, that operates at the national (federal) level" .
 

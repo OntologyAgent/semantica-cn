@@ -44,17 +44,19 @@
 
 ## 5. 公理约定（Axioms）
 
-- 美式行权条款（American exercise terms）：restriction
-- 美式行权条款（American exercise terms） 与 百慕大式行权条款（Bermudan exercise terms） 互斥（disjointWith）
-- 美式行权条款（American exercise terms） 与 欧式行权条款（European exercise terms） 互斥（disjointWith）
-- 百慕大式行权条款（Bermudan exercise terms）：restriction
-- 百慕大式行权条款（Bermudan exercise terms）：具有行权日（has exercise date） some 显式日期
-- 百慕大式行权条款（Bermudan exercise terms）：具有行权窗口（has exercise window） some 日期区间
-- 百慕大式行权条款（Bermudan exercise terms） 与 欧式行权条款（European exercise terms） 互斥（disjointWith）
-- 欧式行权条款（European exercise terms）：restriction
-- 欧式行权条款（European exercise terms）：具有行权日（has exercise date） 显式日期 =1
-- 金丝雀式行权条款（canary exercise terms）：restriction
-- 行权条款（exercise terms）：使用 some 行权惯例（exercise convention）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **美式行权条款（American exercise terms）**：**使用（uses）**的取值固定为 AmericanExerciseConvention。
+- **美式行权条款（American exercise terms）**与**百慕大式行权条款（Bermudan exercise terms）**互斥：同一个体不能同时属于两者。
+- **美式行权条款（American exercise terms）**与**欧式行权条款（European exercise terms）**互斥：同一个体不能同时属于两者。
+- **百慕大式行权条款（Bermudan exercise terms）**：**使用（uses）**的取值固定为 BermudanExerciseConvention。
+- **百慕大式行权条款（Bermudan exercise terms）**：**具有行权日（has exercise date）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **百慕大式行权条款（Bermudan exercise terms）**：**具有行权窗口（has exercise window）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **百慕大式行权条款（Bermudan exercise terms）**与**欧式行权条款（European exercise terms）**互斥：同一个体不能同时属于两者。
+- **欧式行权条款（European exercise terms）**：**使用（uses）**的取值固定为 EuropeanExerciseConvention。
+- **欧式行权条款（European exercise terms）**：**具有行权日（has exercise date）**恰好有 1 个**显式日期（ExplicitDate）**。
+- **金丝雀式行权条款（canary exercise terms）**：**使用（uses）**的取值固定为 CanaryExerciseConvention。
+- **行权条款（exercise terms）**：**使用（uses）**至少有一个取值，类型是**行权惯例（exercise convention）**。
 
 ## 6. 依赖（owl:imports，7 个）
 

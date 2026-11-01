@@ -390,10 +390,10 @@ fibo-sec-sec-iss:ConversionTerms a owl:Class ;
         "转换条款（conversion terms）"@zh ;
     rdfs:comment "规定证券何时以及如何转换为另一证券（通常为同一发行人）的合同条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:onProperty fibo-sec-sec-iss:specifiesConversionInto ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-sec-iss:specifiesConversionInto ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         fibo-fbc-fi-fi:RedemptionProvision ;
     skos:definition "contract terms specifying when and how a security may be converted to another security (usually of the same issuer)" .
@@ -465,8 +465,8 @@ fibo-sec-sec-iss:OfferingDocument a owl:Class ;
         "发行文件（offering document）"@zh ;
     rdfs:comment "说明一项投资的目标、风险和条款的法律文件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-sec-sec-iss:SecuritiesOffering ;
-            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
@@ -476,8 +476,8 @@ fibo-sec-sec-iss:OfferingDocument a owl:Class ;
             owl:onProperty cmns-dt:hasDateOfIssuance ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass cmns-dt:Date ;
-            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
+            owl:onClass fibo-sec-sec-iss:SecuritiesOffering ;
+            owl:onProperty fibo-fnd-agr-ctr:isEvidenceFor ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-be-fct-pub:Publication,
         cmns-doc:LegalDocument ;
@@ -490,11 +490,11 @@ fibo-sec-sec-iss:SecurityForm a owl:Class ;
         "证券形式（security form）"@zh ;
     rdfs:comment "证券所有权凭证的性质。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:someValuesFrom fibo-fnd-oac-own:FinancialAsset ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:someValuesFrom fibo-fnd-oac-own:FinancialAsset ],
         fibo-fnd-agr-ctr:ContractDocument ;
     skos:definition "nature of the proof of ownership of a security" ;
     cmns-av:explanatoryNote "Securities are typically issued in one of two forms, registered or bearer. Most securities issued today are in registered form, which enables the issuing firm or registrar to keep records of a security's owner and mail them any dividend, coupon, or other payments. Registered securities may be issued in book entry (digital only) or certificate (physical) form, but most today are entirely digital." .
@@ -504,18 +504,11 @@ fibo-sec-sec-iss:SecuritiesOffering a owl:Class ;
         "证券发行（securities offering）"@zh ;
     rdfs:comment "出售一种或多种证券的发行。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fbc-fi-fi:Issuer fibo-fbc-pas-fpas:Offeror ) ] ],
+            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
+            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasGoverningJurisdiction ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:isEvidencedBy ;
-            owl:someValuesFrom fibo-sec-sec-iss:OfferingDocument ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-pas-fpas:ThirdPartyAgent ;
@@ -528,6 +521,13 @@ fibo-sec-sec-iss:SecuritiesOffering a owl:Class ;
             owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
             owl:onProperty fibo-fbc-pas-fpas:hasOfferingPrice ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fi-fi:Issuer fibo-fbc-pas-fpas:Offeror ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasGoverningJurisdiction ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
         fibo-fbc-pas-fpas:Offering,
         fibo-fnd-agr-agr:Agreement ;
     skos:definition "offering of a security (or securities) for sale" ;
@@ -538,10 +538,10 @@ fibo-sec-sec-iss:SecuritiesOffering a owl:Class ;
 fibo-fbc-fi-fi:Security a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-sec-iss:SecurityForm ;
-            owl:onProperty fibo-sec-sec-iss:isIssuedInForm ],
+            owl:onClass cmns-ra:RegistrationAuthority ;
+            owl:onProperty fibo-sec-sec-iss:isRegisteredWith ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-ra:RegistrationAuthority ;
-            owl:onProperty fibo-sec-sec-iss:isRegisteredWith ] .
+            owl:onClass fibo-sec-sec-iss:SecurityForm ;
+            owl:onProperty fibo-sec-sec-iss:isIssuedInForm ] .
 

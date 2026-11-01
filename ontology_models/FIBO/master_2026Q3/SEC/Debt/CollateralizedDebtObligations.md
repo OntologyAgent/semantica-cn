@@ -240,70 +240,72 @@
 
 ## 5. 公理约定（Axioms）
 
-- 资产支持证券担保债务凭证交易（ABS CDO deal）：包含 some（restriction）
-- 机构抵押担保债券（agency CMO）：具有分档类型（has tranche type） some 分档类型（tranche type）
-- 机构抵押担保债券（agency CMO）：提供提前偿付支持（provides prepayment support） some 机构抵押担保债券（agency CMO）
-- 机构抵押担保债券（agency CMO）：包含 some 机构抵押支持证券池
-- 机构仅付息分档（agency IO tranche） 与 机构仅付本分档（agency PO tranche） 互斥（disjointWith）
-- 机构跳转分档（agency jump tranche）：规定触发（specifies trigger） some 跳转 Z 触发事件（jump Z trigger event）
-- 机构常规跳转 Z 分档（agency regular jump Z）：于……时恢复（reverts on） some 跳转 Z 触发事件解除（jump z trigger event reversal）
-- 套利型担保债务凭证（arbitrage CDO）：具有担保债务凭证发起目标（has CDO origination objective） some 套利型目标（arbitrage CDO objective）
-- 资产负债表型担保债务凭证（balance sheet CDO）：具有担保债务凭证发起目标（has CDO origination objective） some 资产负债表型目标（balance sheet CDO objective）
-- 担保债务凭证交易（CDO deal）：具有成员 some 担保债务凭证组合（CDO portfolio）
-- 担保债务凭证交易（CDO deal）：具有成员 some 夹层担保债务凭证分档（mezzanine CDO tranche）
-- 担保债务凭证交易（CDO deal）：具有成员 some 优先担保债务凭证分档（senior CDO tranche）
-- 担保债务凭证交易（CDO deal）：具有成员 some 次级担保债务凭证权益档（subordinated CDO equity）
-- 担保债务凭证交易（CDO deal）：具有成员 some 超优先担保债务凭证分档（super senior CDO tranche）
-- 担保债务凭证交易（CDO deal）：适用于 some 担保债务凭证（collateralized debt obligation）
-- 担保债务凭证交易（CDO deal）：由……管理 some 担保债务凭证组合管理人（CDO portfolio manager）
-- 担保债务凭证组合（CDO portfolio）：具有成员 some 抵押支持证券工具切片（MBS instrument slice）
-- 担保债务凭证组合（CDO portfolio）：由……管理 some 担保债务凭证组合管理人（CDO portfolio manager）
-- 担保债务凭证组合管理人（CDO portfolio manager）：管理 some 担保债务凭证组合（CDO portfolio）
-- 双层担保债务凭证交易（CDO squared deal）：包含 some 担保债务凭证池（CDO pool）
-- 现金型担保债务凭证（cash CDO）：发行（issues） some 现金型担保债务凭证分档（cash CDO tranche）
-- 现金型担保债务凭证（cash CDO） 与 合成担保债务凭证 互斥（disjointWith）
-- 现金型担保债务凭证分档（cash CDO tranche）：是……的部分 some 债务池
-- 现金型担保债务凭证分档（cash CDO tranche） 与 资产支持证券 互斥（disjointWith）
-- 现金型担保债务凭证分档（cash CDO tranche） 与 合成担保债务凭证分档 互斥（disjointWith）
-- 现金流型担保债务凭证（cashflow CDO）：结构（structure） some 现金流结构（cashflow structure）
-- 现金流型担保债务凭证（cashflow CDO） 与 市值型担保债务凭证（market value CDO） 互斥（disjointWith）
-- 担保债券凭证（collateralized bond obligation）：引用 some 债券池
-- 担保债券凭证（collateralized bond obligation） 与 机构抵押担保债券（agency CMO） 互斥（disjointWith）
-- 担保债券凭证（collateralized bond obligation） 与 担保贷款凭证发行（collateralized loan obligation offering） 互斥（disjointWith）
-- 担保债务凭证（collateralized debt obligation）：次于 担保债务凭证（collateralized debt obligation） ≤1
-- 担保贷款凭证发行（collateralized loan obligation offering）：引用 some 贷款池（loan pool）
-- 担保贷款凭证发行（collateralized loan obligation offering） 与 机构抵押担保债券（agency CMO） 互斥（disjointWith）
-- 浮动分档（floater tranche）：具有重复区间 some 月中日
-- 混合型担保债务凭证（hybrid CDO）：适用于 only N08f036e3f4af4fe3b5a3065f0c3d2461
-- 反向浮动分档（inverse floater tranche） 与 常规浮动分档（regular floater tranche） 互斥（disjointWith）
-- 反向浮动分档（inverse floater tranche） 与 超级浮动分档（super floater tranche） 互斥（disjointWith）
-- 跳转 Z 触发事件解除（jump z trigger event reversal）：规定反向触发（specifies reverse trigger） some 跳转 Z 触发事件（jump Z trigger event）
-- 贷款池（loan pool）：具有成员 some 贷款
-- 抵押支持证券工具切片（MBS instrument slice）：引用 some（restriction）
-- 管理型担保债务凭证（managed CDO）：管理风格（management style） some 管理型管理风格（managed management style）
-- 管理型担保债务凭证（managed CDO）：具有成员 some 抵押支持证券工具切片（MBS instrument slice）
-- 管理型担保债务凭证（managed CDO）：具有成员 some 管理型担保债务凭证组合（managed CDO portfolio）
-- 管理型担保债务凭证（managed CDO） 与 静态担保债务凭证（static CDO） 互斥（disjointWith）
-- 市值型担保债务凭证（market value CDO）：结构（structure） some 市值结构（market value structure）
-- 夹层担保债务凭证分档（mezzanine CDO tranche）：发行时评级（rated at issue） some 分档发行时评级（tranche rating at issue）
-- 夹层抵押支持证券分档（mezzanine MBS tranche）：优先于（senior to） some 次级抵押支持证券分档（subordinated MBS tranche）
-- 非机构跳转分档（non-agency jump tranche）：规定触发（specifies trigger） some 跳转 Z 触发事件（jump Z trigger event）
-- 非机构常规跳转 Z 分档（non-agency regular jump Z tranche）：恢复（reverts） some 跳转 Z 触发事件解除（jump z trigger event reversal）
-- 计划摊销一档（PAC-1 class）：在……之后承担提前偿付（takes prepayment after） only 计划摊销二档（PAC-2 class）
-- 计划摊销二档（PAC-2 class）：在……之后承担提前偿付（takes prepayment after） only 计划摊销三档（PAC-3 class）
-- 计划摊销档债券（planned amortization class bond）：为……提供提前偿付支持（provides prepayment support for） only 计划摊销档债券（planned amortization class bond）
-- 计划摊销档债券（planned amortization class bond）：由……支持（supported by） only 计划摊销档债券（planned amortization class bond）
-- 计划摊销档债券（planned amortization class bond）：规定（specifies） some 计划摊销档摊销计划表（PAC tranche amortization schedule）
-- 常规浮动分档（regular floater tranche） 与 超级浮动分档（super floater tranche） 互斥（disjointWith）
-- 优先担保债务凭证分档（senior CDO tranche）：发行时评级（rated at issue） some 分档发行时评级（tranche rating at issue）
-- 优先抵押支持证券分档（senior MBS tranche）：优先于（senior to） some 夹层抵押支持证券分档（mezzanine MBS tranche）
-- 静态担保债务凭证（static CDO）：管理风格（management style） some 静态管理风格（static management style）
-- 支持分档（support tranche）：由…扮演（is played by） some 计划摊销二档（PAC-2 class）
-- 目标摊销档（TAC tranche）：规定（specifies） some 目标摊销档摊销计划表（TAC tranche amortization schedule）
-- 分档型抵押支持证券交易（tranched MBS deal）：同时是（is also） some 私募品牌抵押支持证券交易
-- 分档型抵押支持证券工具（tranched MBS instrument）：现金流优先顺序（cashflow precedence） only 分档型抵押支持证券工具（tranched MBS instrument）
-- 分档型抵押支持证券工具（tranched MBS instrument）：为……提供信用支持（provides credit support to） only 分档型抵押支持证券工具（tranched MBS instrument）
-- 分档型抵押支持证券工具（tranched MBS instrument）：具有票据 some 抵押支持证券分档票据（MBS tranche note）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **资产支持证券担保债务凭证交易（ABS CDO deal）**：**包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **机构抵押担保债券（agency CMO）**：**具有分档类型（has tranche type）**至少有一个取值，类型是**分档类型（tranche type）**。
+- **机构抵押担保债券（agency CMO）**：**提供提前偿付支持（provides prepayment support）**至少有一个取值，类型是**机构抵押担保债券（agency CMO）**。
+- **机构抵押担保债券（agency CMO）**：**包含（comprises）**至少有一个取值，类型是**机构抵押支持证券池（AgencyMBSPool）**。
+- **机构仅付息分档（agency IO tranche）**与**机构仅付本分档（agency PO tranche）**互斥：同一个体不能同时属于两者。
+- **机构跳转分档（agency jump tranche）**：**规定触发（specifies trigger）**至少有一个取值，类型是**跳转 Z 触发事件（jump Z trigger event）**。
+- **机构常规跳转 Z 分档（agency regular jump Z）**：**于……时恢复（reverts on）**至少有一个取值，类型是**跳转 Z 触发事件解除（jump z trigger event reversal）**。
+- **套利型担保债务凭证（arbitrage CDO）**：**具有担保债务凭证发起目标（has CDO origination objective）**至少有一个取值，类型是**套利型目标（arbitrage CDO objective）**。
+- **资产负债表型担保债务凭证（balance sheet CDO）**：**具有担保债务凭证发起目标（has CDO origination objective）**至少有一个取值，类型是**资产负债表型目标（balance sheet CDO objective）**。
+- **担保债务凭证交易（CDO deal）**：**具有成员（hasMember）**至少有一个取值，类型是**担保债务凭证组合（CDO portfolio）**。
+- **担保债务凭证交易（CDO deal）**：**具有成员（hasMember）**至少有一个取值，类型是**夹层担保债务凭证分档（mezzanine CDO tranche）**。
+- **担保债务凭证交易（CDO deal）**：**具有成员（hasMember）**至少有一个取值，类型是**优先担保债务凭证分档（senior CDO tranche）**。
+- **担保债务凭证交易（CDO deal）**：**具有成员（hasMember）**至少有一个取值，类型是**次级担保债务凭证权益档（subordinated CDO equity）**。
+- **担保债务凭证交易（CDO deal）**：**具有成员（hasMember）**至少有一个取值，类型是**超优先担保债务凭证分档（super senior CDO tranche）**。
+- **担保债务凭证交易（CDO deal）**：**适用于（appliesTo）**至少有一个取值，类型是**担保债务凭证（collateralized debt obligation）**。
+- **担保债务凭证交易（CDO deal）**：**由……管理（isManagedBy）**至少有一个取值，类型是**担保债务凭证组合管理人（CDO portfolio manager）**。
+- **担保债务凭证组合（CDO portfolio）**：**具有成员（hasMember）**至少有一个取值，类型是**抵押支持证券工具切片（MBS instrument slice）**。
+- **担保债务凭证组合（CDO portfolio）**：**由……管理（isManagedBy）**至少有一个取值，类型是**担保债务凭证组合管理人（CDO portfolio manager）**。
+- **担保债务凭证组合管理人（CDO portfolio manager）**：**管理（manages）**至少有一个取值，类型是**担保债务凭证组合（CDO portfolio）**。
+- **双层担保债务凭证交易（CDO squared deal）**：**包含（comprises）**至少有一个取值，类型是**担保债务凭证池（CDO pool）**。
+- **现金型担保债务凭证（cash CDO）**：**发行（issues）**至少有一个取值，类型是**现金型担保债务凭证分档（cash CDO tranche）**。
+- **现金型担保债务凭证（cash CDO）**与**合成担保债务凭证**互斥：同一个体不能同时属于两者。
+- **现金型担保债务凭证分档（cash CDO tranche）**：**是……的部分（isPartOf）**至少有一个取值，类型是**债务池（DebtPool）**。
+- **现金型担保债务凭证分档（cash CDO tranche）**与**资产支持证券**互斥：同一个体不能同时属于两者。
+- **现金型担保债务凭证分档（cash CDO tranche）**与**合成担保债务凭证分档**互斥：同一个体不能同时属于两者。
+- **现金流型担保债务凭证（cashflow CDO）**：**结构（structure）**至少有一个取值，类型是**现金流结构（cashflow structure）**。
+- **现金流型担保债务凭证（cashflow CDO）**与**市值型担保债务凭证（market value CDO）**互斥：同一个体不能同时属于两者。
+- **担保债券凭证（collateralized bond obligation）**：**引用（refersTo）**至少有一个取值，类型是**债券池（BondPool）**。
+- **担保债券凭证（collateralized bond obligation）**与**机构抵押担保债券（agency CMO）**互斥：同一个体不能同时属于两者。
+- **担保债券凭证（collateralized bond obligation）**与**担保贷款凭证发行（collateralized loan obligation offering）**互斥：同一个体不能同时属于两者。
+- **担保债务凭证（collateralized debt obligation）**：**次于（isSubordinatedTo）**至多有 1 个**担保债务凭证（collateralized debt obligation）**。
+- **担保贷款凭证发行（collateralized loan obligation offering）**：**引用（refersTo）**至少有一个取值，类型是**贷款池（loan pool）**。
+- **担保贷款凭证发行（collateralized loan obligation offering）**与**机构抵押担保债券（agency CMO）**互斥：同一个体不能同时属于两者。
+- **浮动分档（floater tranche）**：**具有重复区间（hasRecurrenceInterval）**至少有一个取值，类型是**月中日（DayOfMonth）**。
+- **混合型担保债务凭证（hybrid CDO）**：**适用于（appliesTo）**的所有取值只能是**N668371119ef647f289084d14ba605736**。
+- **反向浮动分档（inverse floater tranche）**与**常规浮动分档（regular floater tranche）**互斥：同一个体不能同时属于两者。
+- **反向浮动分档（inverse floater tranche）**与**超级浮动分档（super floater tranche）**互斥：同一个体不能同时属于两者。
+- **跳转 Z 触发事件解除（jump z trigger event reversal）**：**规定反向触发（specifies reverse trigger）**至少有一个取值，类型是**跳转 Z 触发事件（jump Z trigger event）**。
+- **贷款池（loan pool）**：**具有成员（hasMember）**至少有一个取值，类型是**贷款（Loan）**。
+- **抵押支持证券工具切片（MBS instrument slice）**：**引用（refersTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **管理型担保债务凭证（managed CDO）**：**管理风格（management style）**至少有一个取值，类型是**管理型管理风格（managed management style）**。
+- **管理型担保债务凭证（managed CDO）**：**具有成员（hasMember）**至少有一个取值，类型是**抵押支持证券工具切片（MBS instrument slice）**。
+- **管理型担保债务凭证（managed CDO）**：**具有成员（hasMember）**至少有一个取值，类型是**管理型担保债务凭证组合（managed CDO portfolio）**。
+- **管理型担保债务凭证（managed CDO）**与**静态担保债务凭证（static CDO）**互斥：同一个体不能同时属于两者。
+- **市值型担保债务凭证（market value CDO）**：**结构（structure）**至少有一个取值，类型是**市值结构（market value structure）**。
+- **夹层担保债务凭证分档（mezzanine CDO tranche）**：**发行时评级（rated at issue）**至少有一个取值，类型是**分档发行时评级（tranche rating at issue）**。
+- **夹层抵押支持证券分档（mezzanine MBS tranche）**：**优先于（senior to）**至少有一个取值，类型是**次级抵押支持证券分档（subordinated MBS tranche）**。
+- **非机构跳转分档（non-agency jump tranche）**：**规定触发（specifies trigger）**至少有一个取值，类型是**跳转 Z 触发事件（jump Z trigger event）**。
+- **非机构常规跳转 Z 分档（non-agency regular jump Z tranche）**：**恢复（reverts）**至少有一个取值，类型是**跳转 Z 触发事件解除（jump z trigger event reversal）**。
+- **计划摊销一档（PAC-1 class）**：**在……之后承担提前偿付（takes prepayment after）**的所有取值只能是**计划摊销二档（PAC-2 class）**。
+- **计划摊销二档（PAC-2 class）**：**在……之后承担提前偿付（takes prepayment after）**的所有取值只能是**计划摊销三档（PAC-3 class）**。
+- **计划摊销档债券（planned amortization class bond）**：**为……提供提前偿付支持（provides prepayment support for）**的所有取值只能是**计划摊销档债券（planned amortization class bond）**。
+- **计划摊销档债券（planned amortization class bond）**：**由……支持（supported by）**的所有取值只能是**计划摊销档债券（planned amortization class bond）**。
+- **计划摊销档债券（planned amortization class bond）**：**规定（specifies）**至少有一个取值，类型是**计划摊销档摊销计划表（PAC tranche amortization schedule）**。
+- **常规浮动分档（regular floater tranche）**与**超级浮动分档（super floater tranche）**互斥：同一个体不能同时属于两者。
+- **优先担保债务凭证分档（senior CDO tranche）**：**发行时评级（rated at issue）**至少有一个取值，类型是**分档发行时评级（tranche rating at issue）**。
+- **优先抵押支持证券分档（senior MBS tranche）**：**优先于（senior to）**至少有一个取值，类型是**夹层抵押支持证券分档（mezzanine MBS tranche）**。
+- **静态担保债务凭证（static CDO）**：**管理风格（management style）**至少有一个取值，类型是**静态管理风格（static management style）**。
+- **支持分档（support tranche）**：**由…扮演（is played by）**至少有一个取值，类型是**计划摊销二档（PAC-2 class）**。
+- **目标摊销档（TAC tranche）**：**规定（specifies）**至少有一个取值，类型是**目标摊销档摊销计划表（TAC tranche amortization schedule）**。
+- **分档型抵押支持证券交易（tranched MBS deal）**：**同时是（is also）**至少有一个取值，类型是**私募品牌抵押支持证券交易（PrivateLabelMBSDeal）**。
+- **分档型抵押支持证券工具（tranched MBS instrument）**：**现金流优先顺序（cashflow precedence）**的所有取值只能是**分档型抵押支持证券工具（tranched MBS instrument）**。
+- **分档型抵押支持证券工具（tranched MBS instrument）**：**为……提供信用支持（provides credit support to）**的所有取值只能是**分档型抵押支持证券工具（tranched MBS instrument）**。
+- **分档型抵押支持证券工具（tranched MBS instrument）**：**具有票据（hasNote）**至少有一个取值，类型是**抵押支持证券分档票据（MBS tranche note）**。
 
 ## 6. 依赖（owl:imports，27 个）
 

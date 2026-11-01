@@ -48,27 +48,29 @@
 | 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
 |---|---|---|---|
 | fibo-be-oac-opty:guarantees | 担保（guarantees） | 提供正式的保证或承诺，尤指与产品、服务或交易相关的某些条件将得到满足。 | — |
-| fibo-be-oac-opty:hasDirectOwnership | 具有直接所有权（has direct ownership） | 将正式组织关联到其被另一实体直接拥有的情形。 | 定义域（domain）：Na94fc9576da34375aa2884bfacc319ae；值域（range）：实体所有权（entity ownership）；逆属性（inverseOf）：具有被拥有实体（has owned entity）；子属性（subPropertyOf）：经历（experiences） |
+| fibo-be-oac-opty:hasDirectOwnership | 具有直接所有权（has direct ownership） | 将正式组织关联到其被另一实体直接拥有的情形。 | 定义域（domain）：N92273d45b62a4a799e7e62acce90531a；值域（range）：实体所有权（entity ownership）；逆属性（inverseOf）：具有被拥有实体（has owned entity）；子属性（subPropertyOf）：经历（experiences） |
 | fibo-be-oac-opty:hasDirectOwningEntity | 具有直接拥有实体（has direct owning entity） | 将正式组织关联到直接的法律主体/所有者。 | — |
 | fibo-be-oac-opty:hasInvestmentEntity | 具有投资实体（has investment entity） | 将法律主体关联到其直接拥有的正式组织或子公司，视所有权百分比而定。 | — |
 | fibo-be-oac-opty:hasInvestmentOwnership | 具有投资所有权（has investment ownership） | 将法律主体关联到其拥有正式组织的情境。 | 定义域（domain）：法律主体；值域（range）：实体所有权（entity ownership）；逆属性（inverseOf）：具有拥有实体（has owning entity）；子属性（subPropertyOf）：在…中扮演主动角色（plays active role in） |
-| fibo-be-oac-opty:hasOwnedEntity | 具有被拥有实体（has owned entity） | 标识被法律主体拥有的正式组织，可能包括独资企业。 | 定义域（domain）：实体所有权（entity ownership）；值域（range）：N4feeb6e88b6544fb855524b9dc3122ab；子属性（subPropertyOf）：被…经历（is experienced by） |
+| fibo-be-oac-opty:hasOwnedEntity | 具有被拥有实体（has owned entity） | 标识被法律主体拥有的正式组织，可能包括独资企业。 | 定义域（domain）：实体所有权（entity ownership）；值域（range）：Na328b9c00f67408d878c20bf25483c19；子属性（subPropertyOf）：被…经历（is experienced by） |
 | fibo-be-oac-opty:hasOwningEntity | 具有拥有实体（has owning entity） | 标识拥有正式组织的参与方。 | 定义域（domain）：实体所有权（entity ownership）；值域（range）：法律主体；子属性（subPropertyOf）：具有主动参与方（has active party） |
 
 ## 5. 公理约定（Axioms）
 
-- 章程性所有者（constitutional owner）：持有 some 股东权益
-- 控制性股权（controlling equity）：授予 only 法律控制
-- 实体所有者（entity owner）：持有 some 所有者权益
-- 实体所有权（entity ownership）：受……限定 关系限定符 ≥0
-- 实体所有权（entity ownership）：由……授予 N5dc4f7469e874abc9f1e2b34df7a970d ≥0
-- 实体所有权（entity ownership）：restriction
-- 实体所有权（entity ownership）：由……分类 关系状态 =1
-- 实体所有权（entity ownership）：具有被拥有实体（has owned entity） some（restriction）
-- 实体所有权（entity ownership）：具有拥有实体（has owning entity） some 法律主体
-- 投资权益（investment equity）：由……持有 some 投资者（investor）
-- 投资者（investor）：持有 some 投资权益（investment equity）
-- 投资者合同（investor contract）：为……定义条款 some 投资权益（investment equity）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **章程性所有者（constitutional owner）**：**持有（holds）**至少有一个取值，类型是**股东权益（ShareholdersEquity）**。
+- **控制性股权（controlling equity）**：**授予（confers）**的所有取值只能是**法律控制（DeJureControl）**。
+- **实体所有者（entity owner）**：**持有（holds）**至少有一个取值，类型是**所有者权益（OwnersEquity）**。
+- **实体所有权（entity ownership）**：**受……限定（isQualifiedBy）**可以有 0 个或多个**关系限定符（RelationshipQualifier）**。
+- **实体所有权（entity ownership）**：**由……授予（isConferredBy）**可以有 0 个或多个**Nec3fb060c4154cf38065d1b83625771f**。
+- **实体所有权（entity ownership）**：**具有所有权百分比（hasOwnershipPercentage）**存在取值约束。
+- **实体所有权（entity ownership）**：**由……分类（isClassifiedBy）**恰好有 1 个**关系状态（RelationshipStatus）**。
+- **实体所有权（entity ownership）**：**具有被拥有实体（has owned entity）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **实体所有权（entity ownership）**：**具有拥有实体（has owning entity）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **投资权益（investment equity）**：**由……持有（isHeldBy）**至少有一个取值，类型是**投资者（investor）**。
+- **投资者（investor）**：**持有（holds）**至少有一个取值，类型是**投资权益（investment equity）**。
+- **投资者合同（investor contract）**：**为……定义条款（definesTermsFor）**至少有一个取值，类型是**投资权益（investment equity）**。
 
 ## 6. 依赖（owl:imports，13 个）
 

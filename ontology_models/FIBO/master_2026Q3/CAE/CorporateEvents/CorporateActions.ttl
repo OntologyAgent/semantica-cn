@@ -57,11 +57,11 @@ fibo-cae-ce-act:ActionStatus a owl:Class ;
         "行动状态（action status）"@zh ;
     rdfs:comment "某行动在某时点所处的状态。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:hasTag ;
-            owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom fibo-cae-ce-act:Action ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasTag ;
+            owl:someValuesFrom xsd:string ],
         fibo-fnd-arr-lif:LifecycleStatus ;
     skos:definition "state of some action at some point in time"@en .
 
@@ -263,15 +263,15 @@ fibo-cae-ce-act:ActionClassifier a owl:Class ;
             owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onProperty cmns-cls:classifies ;
+            owl:someValuesFrom fibo-cae-ce-act:Action ],
+        [ a owl:Restriction ;
             owl:onClass fibo-cae-ce-act:ActionClassificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dsg:hasTag ;
             owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cls:classifies ;
-            owl:someValuesFrom fibo-cae-ce-act:Action ],
         fibo-fnd-dt-oc:OccurrenceKind,
         cmns-cls:Classifier ;
     skos:definition "classifier that distinguishes the kinds of actions and events that may be announced, initiated or carried out by an organization that affects a legal entity or the securities it issues, such as income-oriented events"@en ;

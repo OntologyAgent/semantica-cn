@@ -26,7 +26,9 @@
 
 ## 5. 公理约定（Axioms）
 
-- 加拿大信用合作社（Canadian credit union）：由…扮演（is played by） 协会 =1
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **加拿大信用合作社（Canadian credit union）**：**由…扮演（is played by）**恰好有 1 个**协会（Association）**。
 
 ## 6. 依赖（owl:imports，6 个）
 

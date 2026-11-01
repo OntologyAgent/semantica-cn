@@ -31,12 +31,14 @@
 
 ## 5. 公理约定（Axioms）
 
-- 现金流（cash flow）：restriction
-- 现金流（cash flow）：restriction
-- 现金流（cash flow）：具有货币数量 货币数量 =1
-- 现金流结构（cash flow structure）：具有进度表 进度表 ≤1
-- 现金流结构（cash flow structure）：规定 触发事件（triggering event） ≥0
-- 现金流结构（cash flow structure）：具有成员 some 现金流（cash flow）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **现金流（cash flow）**：**具有资金来源（has source of funds）**存在取值约束。
+- **现金流（cash flow）**：**具有资金去向（has target of funds）**存在取值约束。
+- **现金流（cash flow）**：**具有货币数量（hasMonetaryAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **现金流结构（cash flow structure）**：**具有进度表（hasSchedule）**至多有 1 个**进度表（Schedule）**。
+- **现金流结构（cash flow structure）**：**规定（specifies）**可以有 0 个或多个**触发事件（triggering event）**。
+- **现金流结构（cash flow structure）**：**具有成员（hasMember）**至少有一个取值，类型是**现金流（cash flow）**。
 
 ## 6. 依赖（owl:imports，7 个）
 

@@ -41,27 +41,29 @@
 | 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
 |---|---|---|---|
 | fibo-fnd-arr-lif:hasLifecycle | 具有生命周期（has lifecycle） | 将某事物（如产品、交易或相关过程）关联到刻画它的生命周期。 | 值域（range）：生命周期（lifecycle）；子属性（subPropertyOf）：以……为特征 |
-| fibo-fnd-arr-lif:hasStage | 具有阶段（has stage） | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域（range）：Nc7f890261075465691eb53254596a36c；子属性（subPropertyOf）：具有部分 |
+| fibo-fnd-arr-lif:hasStage | 具有阶段（has stage） | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域（range）：Ndbc8defcf36248069a4855ea6e3ec453；子属性（subPropertyOf）：具有部分 |
 | fibo-fnd-arr-lif:isLifecycleOf | 是……的生命周期（is lifecycle of） | 将生命周期关联到它所刻画的事物。 | 定义域（domain）：生命周期（lifecycle）；逆属性（inverseOf）：具有生命周期（has lifecycle）；子属性（subPropertyOf）：刻画 |
-| fibo-fnd-arr-lif:isStageOf | 是……的阶段（is stage of） | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。 | 定义域（domain）：Nbbb3ba651bb342b1a4190bdc33778071；逆属性（inverseOf）：具有阶段（has stage）；子属性（subPropertyOf）：是……的部分 |
+| fibo-fnd-arr-lif:isStageOf | 是……的阶段（is stage of） | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。 | 定义域（domain）：N026ef0d72b0e41018f85bcef5c551190；逆属性（inverseOf）：具有阶段（has stage）；子属性（subPropertyOf）：是……的部分 |
 
 ## 5. 公理约定（Axioms）
 
-- 生命周期（lifecycle）：具有阶段（has stage） some 生命周期阶段（lifecycle stage）
-- 生命周期（lifecycle）：是……的生命周期（is lifecycle of） some owl:Thing
-- 生命周期（lifecycle）：定义 some 生命周期阶段（lifecycle stage）
-- 生命周期事件（lifecycle event）：适用于 some 生命周期阶段（lifecycle stage）
-- 生命周期事件发生（lifecycle event occurrence）：例证 生命周期事件（lifecycle event） =1
-- 生命周期事件发生（lifecycle event occurrence）：适用于 some 生命周期阶段发生（lifecycle stage occurrence）
-- 生命周期发生（lifecycle occurrence）：例证 生命周期（lifecycle） =1
-- 生命周期发生（lifecycle occurrence）：具有阶段（has stage） some 生命周期阶段发生（lifecycle stage occurrence）
-- 生命周期阶段（lifecycle stage）：是……的阶段（is stage of） some 生命周期（lifecycle）
-- 生命周期阶段（lifecycle stage）：包含 some 生命周期事件（lifecycle event）
-- 生命周期阶段（lifecycle stage）：定义于 some 生命周期（lifecycle）
-- 生命周期阶段发生（lifecycle stage occurrence）：例证 生命周期阶段（lifecycle stage） =1
-- 生命周期阶段发生（lifecycle stage occurrence）：是……的阶段（is stage of） some 生命周期发生（lifecycle occurrence）
-- 生命周期阶段发生（lifecycle stage occurrence）：包含 some 生命周期事件发生（lifecycle event occurrence）
-- 生命周期状态（lifecycle status）：具有阶段（has stage） some 生命周期阶段发生（lifecycle stage occurrence）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **生命周期（lifecycle）**：**具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
+- **生命周期（lifecycle）**：**是……的生命周期（is lifecycle of）**至少有一个取值，类型是**owl:Thing（Thing）**。
+- **生命周期（lifecycle）**：**定义（defines）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
+- **生命周期事件（lifecycle event）**：**适用于（appliesTo）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
+- **生命周期事件发生（lifecycle event occurrence）**：**例证（exemplifies）**恰好有 1 个**生命周期事件（lifecycle event）**。
+- **生命周期事件发生（lifecycle event occurrence）**：**适用于（appliesTo）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
+- **生命周期发生（lifecycle occurrence）**：**例证（exemplifies）**恰好有 1 个**生命周期（lifecycle）**。
+- **生命周期发生（lifecycle occurrence）**：**具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
+- **生命周期阶段（lifecycle stage）**：**是……的阶段（is stage of）**至少有一个取值，类型是**生命周期（lifecycle）**。
+- **生命周期阶段（lifecycle stage）**：**包含（comprises）**至少有一个取值，类型是**生命周期事件（lifecycle event）**。
+- **生命周期阶段（lifecycle stage）**：**定义于（isDefinedIn）**至少有一个取值，类型是**生命周期（lifecycle）**。
+- **生命周期阶段发生（lifecycle stage occurrence）**：**例证（exemplifies）**恰好有 1 个**生命周期阶段（lifecycle stage）**。
+- **生命周期阶段发生（lifecycle stage occurrence）**：**是……的阶段（is stage of）**至少有一个取值，类型是**生命周期发生（lifecycle occurrence）**。
+- **生命周期阶段发生（lifecycle stage occurrence）**：**包含（comprises）**至少有一个取值，类型是**生命周期事件发生（lifecycle event occurrence）**。
+- **生命周期状态（lifecycle status）**：**具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
 
 ## 6. 依赖（owl:imports，8 个）
 

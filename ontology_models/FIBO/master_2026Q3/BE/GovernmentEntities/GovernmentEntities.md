@@ -91,38 +91,40 @@
 
 ## 5. 公理约定（Axioms）
 
-- 联邦政府（federal government）：restriction
-- 联邦主权体（federated sovereignty）：restriction
-- 联邦主权体（federated sovereignty）：restriction
-- 政府（government）：具有成员 N5208a413ac0a4e3aacf74b77636bfa8e ≥0
-- 政府（government）：管辖 some 地缘政治实体
-- 政府（government） 与 部属单位（instrumentality） 互斥（disjointWith）
-- 政府机构（government agency）：由……管理 政府任命官员（government appointee） ≥0
-- 政府机构（government agency） 与 政府部门（government department） 互斥（disjointWith）
-- 政府任命官员（government appointee）：由…扮演（is played by） N637d4687be584d58a1792db2cd71b51c ≥0
-- 政府机关（government body）：具有目标 公共宗旨 ≥0
-- 政府部门（government department）：由……管理 政府部长（government minister） ≥0
-- 政府官员（government official）：由…扮演（is played by） 具有法律行为能力的自然人 =1
-- 政府官员（government official）：由…扮演（is played by） some（是……的成员 政府机关（government body） ≥0）
-- 部属单位（instrumentality）：由……授权要求 成文法 ≥0
-- 部属单位（instrumentality）：是……的部属单位（is an instrument of） some 政府（government）
-- 司法分支（judiciary）：具有部分 some 法院
-- 市政实体（municipal entity）：对……拥有主权（has sovereignty over） some 市政区
-- 市政实体（municipal entity）：由……代表（is represented by） some 市政府（municipal government）
-- 市政府（municipal government）：管辖 some 市政区
-- 国家政府（national government）：管辖 some 国家
-- 政体（polity）：对……拥有主权（has sovereignty over） some 地缘政治实体
-- 政体（polity）：由……代表（is represented by） some 政府（government）
-- 地区政府（regional government）：管辖 some 地缘政治实体
-- 地区主权体（regional sovereignty）：对……拥有共享主权（has shared sovereignty over） some 地缘政治实体
-- 地区主权体（regional sovereignty）：由……代表（is represented by） some 地区政府（regional government）
-- 主权国家（sovereign state）：对……拥有完全主权（has full sovereignty over） some 国家
-- 主权国家（sovereign state）：由……代表（is represented by） some 国家政府（national government）
-- 超国家实体（supranational entity）：对……拥有共享主权（has shared sovereignty over） some 国家
-- 超国家实体（supranational entity）：由……代表（is represented by） some 政府机关（government body）
-- 部落实体（tribal entity）：对……拥有共享主权（has shared sovereignty over） some 部落地区（tribal area）
-- 部落实体（tribal entity）：由……代表（is represented by） some 部落政府（tribal government）
-- 部落政府（tribal government）：管辖 some 部落地区（tribal area）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **联邦政府（federal government）**：该属性存在取值约束。
+- **联邦主权体（federated sovereignty）**：该属性存在取值约束。
+- **联邦主权体（federated sovereignty）**：该属性存在取值约束。
+- **政府（government）**：**具有成员（hasMember）**可以有 0 个或多个**N30d850f6e089433fb253eed1b3996b9f**。
+- **政府（government）**：**管辖（governs）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **政府（government）**与**部属单位（instrumentality）**互斥：同一个体不能同时属于两者。
+- **政府机构（government agency）**：**由……管理（isManagedBy）**可以有 0 个或多个**政府任命官员（government appointee）**。
+- **政府机构（government agency）**与**政府部门（government department）**互斥：同一个体不能同时属于两者。
+- **政府任命官员（government appointee）**：**由…扮演（is played by）**可以有 0 个或多个**Nade2278a72a2499b8ae0ea38f21b1519**。
+- **政府机关（government body）**：**具有目标（hasObjective）**可以有 0 个或多个**公共宗旨（PublicPurpose）**。
+- **政府部门（government department）**：**由……管理（isManagedBy）**可以有 0 个或多个**政府部长（government minister）**。
+- **政府官员（government official）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **政府官员（government official）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**可以有 0 个或多个**政府机关（government body）**。
+- **部属单位（instrumentality）**：**由……授权要求（isMandatedBy）**可以有 0 个或多个**成文法（StatuteLaw）**。
+- **部属单位（instrumentality）**：**是……的部属单位（is an instrument of）**至少有一个取值，类型是**政府（government）**。
+- **司法分支（judiciary）**：**具有部分（hasPart）**至少有一个取值，类型是**法院（CourtOfLaw）**。
+- **市政实体（municipal entity）**：**对……拥有主权（has sovereignty over）**至少有一个取值，类型是**市政区（Municipality）**。
+- **市政实体（municipal entity）**：**由……代表（is represented by）**至少有一个取值，类型是**市政府（municipal government）**。
+- **市政府（municipal government）**：**管辖（governs）**至少有一个取值，类型是**市政区（Municipality）**。
+- **国家政府（national government）**：**管辖（governs）**至少有一个取值，类型是**国家（Country）**。
+- **政体（polity）**：**对……拥有主权（has sovereignty over）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **政体（polity）**：**由……代表（is represented by）**至少有一个取值，类型是**政府（government）**。
+- **地区政府（regional government）**：**管辖（governs）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **地区主权体（regional sovereignty）**：**对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **地区主权体（regional sovereignty）**：**由……代表（is represented by）**至少有一个取值，类型是**地区政府（regional government）**。
+- **主权国家（sovereign state）**：**对……拥有完全主权（has full sovereignty over）**至少有一个取值，类型是**国家（Country）**。
+- **主权国家（sovereign state）**：**由……代表（is represented by）**至少有一个取值，类型是**国家政府（national government）**。
+- **超国家实体（supranational entity）**：**对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**国家（Country）**。
+- **超国家实体（supranational entity）**：**由……代表（is represented by）**至少有一个取值，类型是**政府机关（government body）**。
+- **部落实体（tribal entity）**：**对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**部落地区（tribal area）**。
+- **部落实体（tribal entity）**：**由……代表（is represented by）**至少有一个取值，类型是**部落政府（tribal government）**。
+- **部落政府（tribal government）**：**管辖（governs）**至少有一个取值，类型是**部落地区（tribal area）**。
 
 ## 6. 依赖（owl:imports，15 个）
 

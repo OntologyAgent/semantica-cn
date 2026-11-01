@@ -36,16 +36,18 @@
 
 ## 5. 公理约定（Axioms）
 
-- 加拿大消费者价格指数（Canadian consumer price index）：restriction
-- 加拿大消费者价格指数（Canadian consumer price index）：restriction
-- 加拿大消费者价格指数（Canadian consumer price index）：具有自变量 加拿大住户消费者全域（Canadian households consumers universe） =1
-- 加拿大消费者价格指数（Canadian consumer price index）：适用于 some 加拿大住户消费者全域（Canadian households consumers universe）
-- 加拿大消费者价格指数（Canadian consumer price index）：具有自变量 some 固定篮子
-- 加拿大住户消费者全域（Canadian households consumers universe）：具有成员 some（扮演角色（plays role） some 最终消费者）
-- 加拿大住户消费者全域（Canadian households consumers universe）：适用于情境 some 住户
-- 加拿大生产者价格指数（Canadian producer price index）：restriction
-- 加拿大生产者价格指数（Canadian producer price index）：restriction
-- 加拿大生产者价格指数（Canadian producer price index）：适用于 some（restriction）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **加拿大消费者价格指数（Canadian consumer price index）**：**具有发布方（hasPublisher）**的取值固定为 CanadianStatisticsPublisher。
+- **加拿大消费者价格指数（Canadian consumer price index）**：**由……发布（isPublishedBy）**的取值固定为 StatisticsCanada。
+- **加拿大消费者价格指数（Canadian consumer price index）**：**具有自变量（hasArgument）**恰好有 1 个**加拿大住户消费者全域（Canadian households consumers universe）**。
+- **加拿大消费者价格指数（Canadian consumer price index）**：**适用于（appliesTo）**至少有一个取值，类型是**加拿大住户消费者全域（Canadian households consumers universe）**。
+- **加拿大消费者价格指数（Canadian consumer price index）**：**具有自变量（hasArgument）**至少有一个取值，类型是**固定篮子（FixedBasket）**。
+- **加拿大住户消费者全域（Canadian households consumers universe）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**最终消费者（UltimateConsumer）**。
+- **加拿大住户消费者全域（Canadian households consumers universe）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**住户（Household）**。
+- **加拿大生产者价格指数（Canadian producer price index）**：**具有发布方（hasPublisher）**的取值固定为 CanadianStatisticsPublisher。
+- **加拿大生产者价格指数（Canadian producer price index）**：**由……发布（isPublishedBy）**的取值固定为 StatisticsCanada。
+- **加拿大生产者价格指数（Canadian producer price index）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
 
 ## 6. 依赖（owl:imports，13 个）
 

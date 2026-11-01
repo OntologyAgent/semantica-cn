@@ -91,44 +91,46 @@
 
 ## 5. 公理约定（Axioms）
 
-- 合同性经济协议（contractual economic agreement）：具有合同当事方 some 合同性交易当事方（contractual transaction party）
-- 合同性经济协议（contractual economic agreement）：授予 some 合同承诺
-- 合同性交易当事方（contractual transaction party）：由…扮演（is played by） some 法律主体
-- 受覆盖交易（covered transaction）：受……管辖 some 主协议
-- 清偿事件（discharging event）：终止（terminates） some 经济承诺（economic commitment）
-- 清偿事件（discharging event）：触发（triggers） some 分类账条目（ledger entry）
-- 经济协议（economic agreement）：授予 some 经济承诺（economic commitment）
-- 经济协议（economic agreement）：具有参与方角色（has party role） some 交易当事方（transaction party）
-- 经济协议（economic agreement）：管辖 some 经济交易（economic transaction）
-- 经济承诺（economic commitment）：由……授予 some 经济协议（economic agreement）
-- 经济承诺（economic commitment）：由……作出（made by） some 交易当事方（transaction party）
-- 经济合同（economic contract）：具有合同要素 some 经济合同承诺（economic contract commitment）
-- 经济合同（economic contract）：体现（embodies） some 合同性经济协议（contractual economic agreement）
-- 经济合同承诺（economic contract commitment）：列明合同性经济承诺（sets out contractual economic commitment） some 合同承诺
-- 经济资源（economic resource）：定义于……情境（defined in context of） some 经济交易（economic transaction）
-- 经济资源（economic resource）：呈现物质形态（takes material form） some owl:Thing
-- 经济交易（economic transaction）：标的（subject） 经济资源（economic resource） ≥2
-- 经济交易（economic transaction）：在……项下交易（transacted under） some 经济合同承诺（economic contract commitment）
-- 经济交易（economic transaction）：交易体现经济协议（transaction embodies economic agreement） some 经济协议（economic agreement）
-- 分类账条目（ledger entry）：具有过账日期 过账日期 =1
-- 分类账条目（ledger entry）：具有交易日期 交易日期 =1
-- 分类账条目（ledger entry）：具有货币数量 货币数量 =1
-- 分类账条目（ledger entry）：注册于 some 分类账户
-- REA 请求权（r e a claim）：是……中的失衡（is imbalance in） some 法律构造
-- 重估（revaluation）：触发（triggers） some 分类账条目（ledger entry）
-- 交易事件（transaction event）：体现（embodies） some 经济承诺（economic commitment）
-- 交易事件（transaction event）：具有对应项（has corresponding） some 交易事件（transaction event）
-- 交易事件（transaction event）：具有终点（has end） some 清偿事件（discharging event）
-- 交易事件（transaction event）：具有起点（has start） some 交易承担（transaction undertaking）
-- 交易事件侧面（transaction event aspect）：具有对应替代侧面（has corresponding alternative aspect） some 交易事件侧面（transaction event aspect）
-- 交易当事方（transaction party）：与……交易（transacts with） some 交易当事方（transaction party）
-- 交易承担（transaction undertaking）：引起（gives rise to） some 经济承诺（economic commitment）
-- 承担（undertaking）：具有合同当事方 some 合同当事方
-- 承担（undertaking）：赋予（bestows） some 或有权利
-- 承担（undertaking）：引起（gives rise to） some 承诺
-- 承担（undertaking）：作为……的一部分作出（is made as part of） some 协议
-- 承担（undertaking）：承担于（is undertaking to） some 或有义务
-- 承担事件（undertaking event）：触发（triggers） some 分类账条目（ledger entry）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **合同性经济协议（contractual economic agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**合同性交易当事方（contractual transaction party）**。
+- **合同性经济协议（contractual economic agreement）**：**授予（confers）**至少有一个取值，类型是**合同承诺（ContractualCommitment）**。
+- **合同性交易当事方（contractual transaction party）**：**由…扮演（is played by）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **受覆盖交易（covered transaction）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**主协议（MasterAgreement）**。
+- **清偿事件（discharging event）**：**终止（terminates）**至少有一个取值，类型是**经济承诺（economic commitment）**。
+- **清偿事件（discharging event）**：**触发（triggers）**至少有一个取值，类型是**分类账条目（ledger entry）**。
+- **经济协议（economic agreement）**：**授予（confers）**至少有一个取值，类型是**经济承诺（economic commitment）**。
+- **经济协议（economic agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**交易当事方（transaction party）**。
+- **经济协议（economic agreement）**：**管辖（governs）**至少有一个取值，类型是**经济交易（economic transaction）**。
+- **经济承诺（economic commitment）**：**由……授予（isConferredBy）**至少有一个取值，类型是**经济协议（economic agreement）**。
+- **经济承诺（economic commitment）**：**由……作出（made by）**至少有一个取值，类型是**交易当事方（transaction party）**。
+- **经济合同（economic contract）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**经济合同承诺（economic contract commitment）**。
+- **经济合同（economic contract）**：**体现（embodies）**至少有一个取值，类型是**合同性经济协议（contractual economic agreement）**。
+- **经济合同承诺（economic contract commitment）**：**列明合同性经济承诺（sets out contractual economic commitment）**至少有一个取值，类型是**合同承诺（ContractualCommitment）**。
+- **经济资源（economic resource）**：**定义于……情境（defined in context of）**至少有一个取值，类型是**经济交易（economic transaction）**。
+- **经济资源（economic resource）**：**呈现物质形态（takes material form）**至少有一个取值，类型是**owl:Thing（Thing）**。
+- **经济交易（economic transaction）**：**标的（subject）**至少有 2 个**经济资源（economic resource）**。
+- **经济交易（economic transaction）**：**在……项下交易（transacted under）**至少有一个取值，类型是**经济合同承诺（economic contract commitment）**。
+- **经济交易（economic transaction）**：**交易体现经济协议（transaction embodies economic agreement）**至少有一个取值，类型是**经济协议（economic agreement）**。
+- **分类账条目（ledger entry）**：**具有过账日期（hasPostingDate）**恰好有 1 个**过账日期（PostingDate）**。
+- **分类账条目（ledger entry）**：**具有交易日期（hasTransactionDate）**恰好有 1 个**交易日期（TransactionDate）**。
+- **分类账条目（ledger entry）**：**具有货币数量（hasMonetaryAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **分类账条目（ledger entry）**：**注册于（isRegisteredIn）**至少有一个取值，类型是**分类账户（LedgerAccount）**。
+- **REA 请求权（r e a claim）**：**是……中的失衡（is imbalance in）**至少有一个取值，类型是**法律构造（LegalConstruct）**。
+- **重估（revaluation）**：**触发（triggers）**至少有一个取值，类型是**分类账条目（ledger entry）**。
+- **交易事件（transaction event）**：**体现（embodies）**至少有一个取值，类型是**经济承诺（economic commitment）**。
+- **交易事件（transaction event）**：**具有对应项（has corresponding）**至少有一个取值，类型是**交易事件（transaction event）**。
+- **交易事件（transaction event）**：**具有终点（has end）**至少有一个取值，类型是**清偿事件（discharging event）**。
+- **交易事件（transaction event）**：**具有起点（has start）**至少有一个取值，类型是**交易承担（transaction undertaking）**。
+- **交易事件侧面（transaction event aspect）**：**具有对应替代侧面（has corresponding alternative aspect）**至少有一个取值，类型是**交易事件侧面（transaction event aspect）**。
+- **交易当事方（transaction party）**：**与……交易（transacts with）**至少有一个取值，类型是**交易当事方（transaction party）**。
+- **交易承担（transaction undertaking）**：**引起（gives rise to）**至少有一个取值，类型是**经济承诺（economic commitment）**。
+- **承担（undertaking）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**合同当事方（ContractParty）**。
+- **承担（undertaking）**：**赋予（bestows）**至少有一个取值，类型是**或有权利（ContingentRight）**。
+- **承担（undertaking）**：**引起（gives rise to）**至少有一个取值，类型是**承诺（Commitment）**。
+- **承担（undertaking）**：**作为……的一部分作出（is made as part of）**至少有一个取值，类型是**协议（Agreement）**。
+- **承担（undertaking）**：**承担于（is undertaking to）**至少有一个取值，类型是**或有义务（ContingentObligation）**。
+- **承担事件（undertaking event）**：**触发（triggers）**至少有一个取值，类型是**分类账条目（ledger entry）**。
 
 ## 6. 依赖（owl:imports，14 个）
 

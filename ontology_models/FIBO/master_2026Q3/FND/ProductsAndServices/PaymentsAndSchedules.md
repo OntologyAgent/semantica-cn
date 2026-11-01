@@ -45,15 +45,17 @@
 
 ## 5. 公理约定（Axioms）
 
-- 收款人（payee）：由…扮演（is played by） some（是…的参与方（is a party to） some 支付义务（payment obligation））
-- 付款人（payer）：具有义务 only 支付义务（payment obligation）
-- 支付（payment）：具有支付金额（has payment amount） some 货币数量
-- 支付事件（payment event）：涉及 支付（payment） =1
-- 支付事件（payment event）：适用于 支付义务（payment obligation） =1
-- 支付义务（payment obligation）：由……授予 only 合同
-- 支付义务（payment obligation）：属于义务人 some 付款人（payer）
-- 支付义务（payment obligation）：具有参与方角色（has party role） some 收款人（payee）
-- 支付进度表（payment schedule）：具有成员 some 支付（payment）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **收款人（payee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**支付义务（payment obligation）**。
+- **付款人（payer）**：**具有义务（hasObligation）**的所有取值只能是**支付义务（payment obligation）**。
+- **支付（payment）**：**具有支付金额（has payment amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **支付事件（payment event）**：**涉及（involves）**恰好有 1 个**支付（payment）**。
+- **支付事件（payment event）**：**适用于（appliesTo）**恰好有 1 个**支付义务（payment obligation）**。
+- **支付义务（payment obligation）**：**由……授予（isConferredBy）**的所有取值只能是**合同（Contract）**。
+- **支付义务（payment obligation）**：**属于义务人（isObligationOf）**至少有一个取值，类型是**付款人（payer）**。
+- **支付义务（payment obligation）**：**具有参与方角色（has party role）**至少有一个取值，类型是**收款人（payee）**。
+- **支付进度表（payment schedule）**：**具有成员（hasMember）**至少有一个取值，类型是**支付（payment）**。
 
 ## 6. 依赖（owl:imports，14 个）
 

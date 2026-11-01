@@ -153,45 +153,47 @@
 
 ## 5. 公理约定（Axioms）
 
-- 可转让合同（assignable contract）：restriction
-- 双边净额结算条款（bilateral netting provision）：适用于 some 双边合同（bilateral contract）
-- 违约（breach of contract）：适用于 some 合同（contract）
-- 违约（breach of contract）：引用 some 合同承诺（contractual commitment）
-- 违反契约承诺（breach of covenant）：适用于 some 合同（contract）
-- 违反契约承诺（breach of covenant）：引用 some 合同承诺（contractual commitment）
-- 终止净额结算条款（close-out netting provision） 与 结算净额结算条款（settlement netting provision） 互斥（disjointWith）
-- 附属协议（collateral agreement）：从属于（is subordinate to） some 书面合同（written contract）
-- 合同（contract）：具有生效日期（has effective date） 日期 ≥0
-- 合同（contract）：具有合同当事方（has contract party） 合同当事方（contract party） ≥2
-- 合同（contract）：具有合同要素（has contractual element） some 合同要素（contractual element）
-- 合同文件（contract document）：记录 some 合同（contract）
-- 合同里程碑（contract milestone）：分类 里程碑事件（milestone event） ≥0
-- 合同里程碑（contract milestone）：适用于 some 合同（contract）
-- 合同当事方（contract party）：由…扮演（is played by） 法律主体 =1
-- 合同当事方（contract party）：由…扮演（is played by） some（是…的参与方（is a party to） some 合同（contract））
-- 合同承诺（contractual commitment）：具有部分 only 合同承诺（contractual commitment）
-- 合同承诺（contractual commitment）：由……授权要求 some 合同（contract）
-- 合同要素（contractual element）：restriction
-- 提前终止条款（early termination provision）：具有到期日 some 显式日期
-- 展期条款（extension provision）：具有可展期期间（has extendable period） 显式日期区间 ≥0
-- 主协议（master agreement）：管辖 合同（contract） ≥0
-- 里程碑事件（milestone event）：由……分类 some 合同里程碑（contract milestone）
-- 里程碑进度表（milestone schedule）：具有成员 some 里程碑事件（milestone event）
-- 多边净额结算条款（multilateral netting provision）：适用于 some 多边合同（multilateral contract）
-- 多边净额结算条款（multilateral netting provision） 与 双边净额结算条款（bilateral netting provision） 互斥（disjointWith）
-- 不可转让合同（non-transferable contract） 与 可转让合同（transferable contract） 互斥（disjointWith）
-- 结算净额结算条款（settlement netting provision）：restriction
-- 条款清单（term sheet）：具有非约束性条款（has non-binding term） some 非约束性条款（non-binding term）
-- 单务合同（unilateral contract）：授予 only 单方面承诺
-- 口头合同（verbal contract） 与 书面合同（written contract） 互斥（disjointWith）
-- 书面合同（written contract）：具有签署日期（has execution date） 日期 ≥0
-- 书面合同（written contract）：具有签发日期 日期 ≥0
-- 书面合同（written contract）：具有生效日期时间戳（has effective date time stamp） 日期时间戳 ≥0
-- 书面合同（written contract）：具有签署日期时间戳（has execution date time stamp） 日期时间戳 ≥0
-- 书面合同（written contract）：restriction
-- 书面合同（written contract）：具有交易对手（has counterparty） some 交易对手（counterparty）
-- 书面合同（written contract）：具有主当事方（has principal party） some 合同主当事方（contract principal）
-- 书面合同（written contract）：由……证明（is evidenced by） some 合同文件（contract document）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **可转让合同（assignable contract）**：**可让与（is assignable）**的取值固定为 true。
+- **双边净额结算条款（bilateral netting provision）**：**适用于（appliesTo）**至少有一个取值，类型是**双边合同（bilateral contract）**。
+- **违约（breach of contract）**：**适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
+- **违约（breach of contract）**：**引用（refersTo）**至少有一个取值，类型是**合同承诺（contractual commitment）**。
+- **违反契约承诺（breach of covenant）**：**适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
+- **违反契约承诺（breach of covenant）**：**引用（refersTo）**至少有一个取值，类型是**合同承诺（contractual commitment）**。
+- **终止净额结算条款（close-out netting provision）**与**结算净额结算条款（settlement netting provision）**互斥：同一个体不能同时属于两者。
+- **附属协议（collateral agreement）**：**从属于（is subordinate to）**至少有一个取值，类型是**书面合同（written contract）**。
+- **合同（contract）**：**具有生效日期（has effective date）**可以有 0 个或多个**日期（Date）**。
+- **合同（contract）**：**具有合同当事方（has contract party）**至少有 2 个**合同当事方（contract party）**。
+- **合同（contract）**：**具有合同要素（has contractual element）**至少有一个取值，类型是**合同要素（contractual element）**。
+- **合同文件（contract document）**：**记录（records）**至少有一个取值，类型是**合同（contract）**。
+- **合同里程碑（contract milestone）**：**分类（classifies）**可以有 0 个或多个**里程碑事件（milestone event）**。
+- **合同里程碑（contract milestone）**：**适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
+- **合同当事方（contract party）**：**由…扮演（is played by）**恰好有 1 个**法律主体（LegalPerson）**。
+- **合同当事方（contract party）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**合同（contract）**。
+- **合同承诺（contractual commitment）**：**具有部分（hasPart）**的所有取值只能是**合同承诺（contractual commitment）**。
+- **合同承诺（contractual commitment）**：**由……授权要求（isMandatedBy）**至少有一个取值，类型是**合同（contract）**。
+- **合同要素（contractual element）**：**具有法律描述（has legal description）**存在取值约束。
+- **提前终止条款（early termination provision）**：**具有到期日（hasExpirationDate）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **展期条款（extension provision）**：**具有可展期期间（has extendable period）**可以有 0 个或多个**显式日期区间（ExplicitDatePeriod）**。
+- **主协议（master agreement）**：**管辖（governs）**可以有 0 个或多个**合同（contract）**。
+- **里程碑事件（milestone event）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**合同里程碑（contract milestone）**。
+- **里程碑进度表（milestone schedule）**：**具有成员（hasMember）**至少有一个取值，类型是**里程碑事件（milestone event）**。
+- **多边净额结算条款（multilateral netting provision）**：**适用于（appliesTo）**至少有一个取值，类型是**多边合同（multilateral contract）**。
+- **多边净额结算条款（multilateral netting provision）**与**双边净额结算条款（bilateral netting provision）**互斥：同一个体不能同时属于两者。
+- **不可转让合同（non-transferable contract）**与**可转让合同（transferable contract）**互斥：同一个体不能同时属于两者。
+- **结算净额结算条款（settlement netting provision）**：该属性存在取值约束。
+- **条款清单（term sheet）**：**具有非约束性条款（has non-binding term）**至少有一个取值，类型是**非约束性条款（non-binding term）**。
+- **单务合同（unilateral contract）**：**授予（confers）**的所有取值只能是**单方面承诺（UnilateralCommitment）**。
+- **口头合同（verbal contract）**与**书面合同（written contract）**互斥：同一个体不能同时属于两者。
+- **书面合同（written contract）**：**具有签署日期（has execution date）**可以有 0 个或多个**日期（Date）**。
+- **书面合同（written contract）**：**具有签发日期（hasDateOfIssuance）**可以有 0 个或多个**日期（Date）**。
+- **书面合同（written contract）**：**具有生效日期时间戳（has effective date time stamp）**可以有 0 个或多个**日期时间戳（DateTimeStamp）**。
+- **书面合同（written contract）**：**具有签署日期时间戳（has execution date time stamp）**可以有 0 个或多个**日期时间戳（DateTimeStamp）**。
+- **书面合同（written contract）**：**可让与（is assignable）**存在取值约束。
+- **书面合同（written contract）**：**具有交易对手（has counterparty）**至少有一个取值，类型是**交易对手（counterparty）**。
+- **书面合同（written contract）**：**具有主当事方（has principal party）**至少有一个取值，类型是**合同主当事方（contract principal）**。
+- **书面合同（written contract）**：**由……证明（is evidenced by）**至少有一个取值，类型是**合同文件（contract document）**。
 
 ## 6. 依赖（owl:imports，19 个）
 

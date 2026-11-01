@@ -90,13 +90,13 @@ fibo-sec-sec-bsk:BasketOfIndicesConstituent a owl:Class ;
         "指数篮子成分（basket of indices constituent）"@zh ;
     rdfs:comment "指数篮子的单一成分。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:ExplicitDate ;
-            owl:onProperty fibo-fnd-dt-fd:hasDateAdded ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-ind-ei-ei:EconomicIndicator fibo-ind-ind-ind:MarketRate ) ] ;
             owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fnd-dt-fd:hasDateAdded ],
         fibo-fbc-pas-fpas:WeightedBasketConstituent,
         fibo-fnd-dt-fd:DatedCollectionConstituent ;
     skos:definition "single constituent of a basket of indices" .
@@ -106,12 +106,12 @@ fibo-sec-sec-bsk:SecuritiesBasketConstituent a owl:Class ;
         "证券篮子成分（securities basket constituent）"@zh ;
     rdfs:comment "被标识为证券篮子组成部分的证券。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fbc-fi-fi:Security ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-fnd-dt-fd:hasDateAdded ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fbc-fi-fi:Security ;
-            owl:onProperty cmns-col:comprises ],
         fibo-fbc-pas-fpas:WeightedBasketConstituent,
         fibo-fnd-dt-fd:DatedCollectionConstituent ;
     skos:definition "security identified as a component of a basket of securities" .

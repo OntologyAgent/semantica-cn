@@ -150,7 +150,7 @@
 | fibo-md-dbtx-aly:hasDefaultRate | 具有默认利率（has default rate） | 标识默认利率。 | 定义域（domain）：债务池；值域（range）：违约率 |
 | fibo-md-dbtx-aly:hasFactor | 具有因子（has factor） | 标识与另一数或量相乘得到给定数或表达式的数或量。 | 定义域（domain）：债务池；值域（range）：池因子（pool factor） |
 | fibo-md-dbtx-aly:hasMeasure | 具有度量（has measure） | 标识某事物的度量。 | 定义域（domain）：债务池；值域（range）：提前偿付速度 |
-| fibo-md-dbtx-aly:hasOutlookPeriod | 具有展望期（has outlook period） | 标识展望所覆盖的期间。 | 定义域（domain）：债务工具收益率（debt instrument yield）；值域（range）：Nc80849834122487c88d919613d63d495 |
+| fibo-md-dbtx-aly:hasOutlookPeriod | 具有展望期（has outlook period） | 标识展望所覆盖的期间。 | 定义域（domain）：债务工具收益率（debt instrument yield）；值域（range）：Nbc656e8f51a44e1b95cc14ae6be90a6a |
 | fibo-md-dbtx-aly:hasWac | 具有加权平均票息（has wac） | 标识加权平均票息率（WAC）。 | 定义域（domain）：抵押支持证券；值域（range）：加权平均票息 |
 | fibo-md-dbtx-aly:hasYield | 具有收益率（has yield） | 标识某事物的收益率。 | 定义域（domain）：可交易债务工具；值域（range）：债务工具收益率（debt instrument yield） |
 | fibo-md-dbtx-aly:isAggregateOf | 是……的汇总（is aggregate of） | 标识该汇总值所对应的组成部分。 | 定义域（domain）：债务池统计度量；值域（range）：债务池统计度量 |
@@ -171,48 +171,50 @@
 
 ## 5. 公理约定（Axioms）
 
-- 麦考利久期分析（MacCaulays Duration Analytic）：引用 some 内部收益率
-- 债券等价收益率（bond equivalent yield）：基于 some 等价收益率计算法（equivalent yield calculation method）
-- 信用利差（credit spread）：具有自变量 some 参考利率
-- 当期收益率计算法（current yield calculation method）：具有自变量 some 净价
-- 债务凸性分析（debt convexity analytic）：是……的变化率（is rate of change of） some 久期分析（duration analytic）
-- 债务凸性分析（debt convexity analytic）：引用 some 债务工具收益率（debt instrument yield）
-- 债务凸性分析（debt convexity analytic）：具有自变量 some 市场利差
-- 债务工具收益率（debt instrument yield）：按……计算（calculation following） some 收益率计算方法（yield calculation method）
-- 债务工具收益率（debt instrument yield）：具有展望期（has outlook period） some（restriction）
-- 债务工具收益率（debt instrument yield）：具有自变量 some 证券价格
-- 债务价格利差（debt price spread）：适用于 some 证券价格
-- 债务证券做市商（debt securities market maker）：确定债务市场价（determines market price for debt） some 场外债券市场价（o t c bond market price）
-- 平均期限收益率（debt yield to average life）：具有展望期（has outlook period） some 加权平均期限
-- 等价期限收益率（debt yield to equivalent life）：具有展望期（has outlook period） some 等价期限分析（equivalent life analytic）
-- 到期收益率（debt yield to maturity）：具有展望期（has outlook period） some（具有距到期期限 some 显式时长）
-- 至下一赎回日收益率（debt yield to next call）：具有展望期（has outlook period） some 下一赎回（next call）
-- 最差收益率（debt yield to worst）：具有展望期（has outlook period） some 最差赎回（worst call）
-- 久期分析（duration analytic）：引用 some 债务工具收益率（debt instrument yield）
-- 等价期限分析（equivalent life analytic）：基于 some 部分赎回估计模型（partial calls estimation model）
-- 等价期限分析（equivalent life analytic）：引用 some 可部分赎回债券
-- 等价期限分析（equivalent life analytic） 与 加权平均期限 互斥（disjointWith）
-- 交易所交易债券价格（exchange traded bond price） 与 场外债券市场价（o t c bond market price） 互斥（disjointWith）
-- 贷款池提前偿付模型（loan pool prepayment model）：包含 some 贷款提前偿付公式（loan prepayment formula）
-- 修正久期分析（modified duration analytic）：引用 some 麦考利久期分析（MacCaulays Duration Analytic）
-- 修正久期分析（modified duration analytic） 与 麦考利久期分析（MacCaulays Duration Analytic） 互斥（disjointWith）
-- 本地收益率（native yield）：基于 some 本地收益率计算法（native yield calculation method）
-- 本地收益率计算法（native yield calculation method）：是……的默认方法（is default method for） some 可交易债务工具
-- 下一赎回（next call）：具有日期 some 下一赎回日（next call date）
-- 场外债券市场价（o t c bond market price）：具有定价来源 some 债务证券做市商（debt securities market maker）
-- 池清偿速度（pool paydown rate）：restriction
-- 池清偿速度（pool paydown rate）：基于 some 池因子（pool factor）
-- 基点价格值（price value of basis point）：引用 some 债务工具收益率（debt instrument yield）
-- 俄罗斯收益率计算法（russian yield calculation method）：具有公式 some 俄罗斯收益率公式（russian yield formula）
-- 简单收益率计算法（simple yield calculation method）：具有自变量 some 全价
-- 美国公司债收益率计算法（u s corporate bond yield calculation method）：具有公式 some ICMA 收益率公式（i c m a yield formula）
-- 美国国债收益率计算法（u s treasury yield calculation method）：具有公式 some ICMA 收益率公式（i c m a yield formula）
-- 华尔街收益率计算法（wall street yield calculation method）：具有公式 some ICMA 收益率公式（i c m a yield formula）
-- 收益率计算公式（yield calculation formula）：适用于 some 债务工具收益率（debt instrument yield）
-- 收益率计算方法（yield calculation method）：具有复利频率 only 重复区间
-- 收益率计算方法（yield calculation method）：具有自变量 only 变量
-- 收益率计算方法（yield calculation method）：具有公式 some 收益率计算公式（yield calculation formula）
-- 至下一回售日收益率（yield to next put）：具有展望期（has outlook period） some 下一回售（next put）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **麦考利久期分析（MacCaulays Duration Analytic）**：**引用（refersTo）**至少有一个取值，类型是**内部收益率（InternalRateOfReturn）**。
+- **债券等价收益率（bond equivalent yield）**：**基于（isBasedOn）**至少有一个取值，类型是**等价收益率计算法（equivalent yield calculation method）**。
+- **信用利差（credit spread）**：**具有自变量（hasArgument）**至少有一个取值，类型是**参考利率（ReferenceInterestRate）**。
+- **当期收益率计算法（current yield calculation method）**：**具有自变量（hasArgument）**至少有一个取值，类型是**净价（CleanPrice）**。
+- **债务凸性分析（debt convexity analytic）**：**是……的变化率（is rate of change of）**至少有一个取值，类型是**久期分析（duration analytic）**。
+- **债务凸性分析（debt convexity analytic）**：**引用（refersTo）**至少有一个取值，类型是**债务工具收益率（debt instrument yield）**。
+- **债务凸性分析（debt convexity analytic）**：**具有自变量（hasArgument）**至少有一个取值，类型是**市场利差（MarketSpread）**。
+- **债务工具收益率（debt instrument yield）**：**按……计算（calculation following）**至少有一个取值，类型是**收益率计算方法（yield calculation method）**。
+- **债务工具收益率（debt instrument yield）**：**具有展望期（has outlook period）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **债务工具收益率（debt instrument yield）**：**具有自变量（hasArgument）**至少有一个取值，类型是**证券价格（SecurityPrice）**。
+- **债务价格利差（debt price spread）**：**适用于（appliesTo）**至少有一个取值，类型是**证券价格（SecurityPrice）**。
+- **债务证券做市商（debt securities market maker）**：**确定债务市场价（determines market price for debt）**至少有一个取值，类型是**场外债券市场价（o t c bond market price）**。
+- **平均期限收益率（debt yield to average life）**：**具有展望期（has outlook period）**至少有一个取值，类型是**加权平均期限（WeightedAverageLife）**。
+- **等价期限收益率（debt yield to equivalent life）**：**具有展望期（has outlook period）**至少有一个取值，类型是**等价期限分析（equivalent life analytic）**。
+- **到期收益率（debt yield to maturity）**：**具有展望期（has outlook period）**至少有一个取值，该取值满足：**具有距到期期限（hasOriginalTimeToMaturity）**至少有一个取值，类型是**显式时长（ExplicitDuration）**。
+- **至下一赎回日收益率（debt yield to next call）**：**具有展望期（has outlook period）**至少有一个取值，类型是**下一赎回（next call）**。
+- **最差收益率（debt yield to worst）**：**具有展望期（has outlook period）**至少有一个取值，类型是**最差赎回（worst call）**。
+- **久期分析（duration analytic）**：**引用（refersTo）**至少有一个取值，类型是**债务工具收益率（debt instrument yield）**。
+- **等价期限分析（equivalent life analytic）**：**基于（isBasedOn）**至少有一个取值，类型是**部分赎回估计模型（partial calls estimation model）**。
+- **等价期限分析（equivalent life analytic）**：**引用（refersTo）**至少有一个取值，类型是**可部分赎回债券（BondWithPartialCall）**。
+- **等价期限分析（equivalent life analytic）**与**加权平均期限**互斥：同一个体不能同时属于两者。
+- **交易所交易债券价格（exchange traded bond price）**与**场外债券市场价（o t c bond market price）**互斥：同一个体不能同时属于两者。
+- **贷款池提前偿付模型（loan pool prepayment model）**：**包含（comprises）**至少有一个取值，类型是**贷款提前偿付公式（loan prepayment formula）**。
+- **修正久期分析（modified duration analytic）**：**引用（refersTo）**至少有一个取值，类型是**麦考利久期分析（MacCaulays Duration Analytic）**。
+- **修正久期分析（modified duration analytic）**与**麦考利久期分析（MacCaulays Duration Analytic）**互斥：同一个体不能同时属于两者。
+- **本地收益率（native yield）**：**基于（isBasedOn）**至少有一个取值，类型是**本地收益率计算法（native yield calculation method）**。
+- **本地收益率计算法（native yield calculation method）**：**是……的默认方法（is default method for）**至少有一个取值，类型是**可交易债务工具（TradableDebtInstrument）**。
+- **下一赎回（next call）**：**具有日期（hasDate）**至少有一个取值，类型是**下一赎回日（next call date）**。
+- **场外债券市场价（o t c bond market price）**：**具有定价来源（hasPricingSource）**至少有一个取值，类型是**债务证券做市商（debt securities market maker）**。
+- **池清偿速度（pool paydown rate）**：**具有比率值（hasRateValue）**存在取值约束。
+- **池清偿速度（pool paydown rate）**：**基于（isBasedOn）**至少有一个取值，类型是**池因子（pool factor）**。
+- **基点价格值（price value of basis point）**：**引用（refersTo）**至少有一个取值，类型是**债务工具收益率（debt instrument yield）**。
+- **俄罗斯收益率计算法（russian yield calculation method）**：**具有公式（hasFormula）**至少有一个取值，类型是**俄罗斯收益率公式（russian yield formula）**。
+- **简单收益率计算法（simple yield calculation method）**：**具有自变量（hasArgument）**至少有一个取值，类型是**全价（DirtyPrice）**。
+- **美国公司债收益率计算法（u s corporate bond yield calculation method）**：**具有公式（hasFormula）**至少有一个取值，类型是**ICMA 收益率公式（i c m a yield formula）**。
+- **美国国债收益率计算法（u s treasury yield calculation method）**：**具有公式（hasFormula）**至少有一个取值，类型是**ICMA 收益率公式（i c m a yield formula）**。
+- **华尔街收益率计算法（wall street yield calculation method）**：**具有公式（hasFormula）**至少有一个取值，类型是**ICMA 收益率公式（i c m a yield formula）**。
+- **收益率计算公式（yield calculation formula）**：**适用于（appliesTo）**至少有一个取值，类型是**债务工具收益率（debt instrument yield）**。
+- **收益率计算方法（yield calculation method）**：**具有复利频率（hasCompoundingFrequency）**的所有取值只能是**重复区间（RecurrenceInterval）**。
+- **收益率计算方法（yield calculation method）**：**具有自变量（hasArgument）**的所有取值只能是**变量（Variable）**。
+- **收益率计算方法（yield calculation method）**：**具有公式（hasFormula）**至少有一个取值，类型是**收益率计算公式（yield calculation formula）**。
+- **至下一回售日收益率（yield to next put）**：**具有展望期（has outlook period）**至少有一个取值，类型是**下一回售（next put）**。
 
 ## 6. 依赖（owl:imports，21 个）
 

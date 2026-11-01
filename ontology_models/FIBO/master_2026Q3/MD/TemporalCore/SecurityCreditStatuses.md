@@ -40,8 +40,10 @@
 
 ## 5. 公理约定（Axioms）
 
-- 证券现金流状态（security cashflow status） 与 证券信用状态（security credit status） 互斥（disjointWith）
-- 证券信用状态（security credit status）：适用于 some 证券
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **证券现金流状态（security cashflow status）**与**证券信用状态（security credit status）**互斥：同一个体不能同时属于两者。
+- **证券信用状态（security credit status）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
 
 ## 6. 依赖（owl:imports，5 个）
 

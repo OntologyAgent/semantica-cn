@@ -92,7 +92,9 @@
 
 ## 5. 公理约定（Axioms）
 
-- 证券注销（security retirement）：是……的注销（is retirement of） some 证券
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **证券注销（security retirement）**：**是……的注销（is retirement of）**至少有一个取值，类型是**证券（Security）**。
 
 ## 6. 依赖（owl:imports，4 个）
 

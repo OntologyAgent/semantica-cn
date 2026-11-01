@@ -26,9 +26,11 @@
 
 ## 5. 公理约定（Axioms）
 
-- 信贷机构登记册条目（Credit Institution Register entry）：适用于 only 信贷机构
-- 信贷机构登记册条目（Credit Institution Register entry）：restriction
-- 信贷机构登记册条目（Credit Institution Register entry）：包含 some 信贷机构
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **信贷机构登记册条目（Credit Institution Register entry）**：**适用于（appliesTo）**的所有取值只能是**信贷机构（CreditInstitution）**。
+- **信贷机构登记册条目（Credit Institution Register entry）**：**被包含于（isIncludedIn）**的取值固定为 CreditInstitutionRegister。
+- **信贷机构登记册条目（Credit Institution Register entry）**：**包含（comprises）**至少有一个取值，类型是**信贷机构（CreditInstitution）**。
 
 ## 6. 依赖（owl:imports，25 个）
 

@@ -178,12 +178,12 @@ fibo-fnd-oac-own:DigitalTokenIdentifier a owl:Class ;
         "数字通证标识符（digital token identifier）"@zh ;
     rdfs:comment "符合 ISO 24165 的数字通证注册用全球唯一标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-id:identifies ;
-            owl:someValuesFrom fibo-fnd-oac-own:DigitalTokenRegistryRecord ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-oac-own:DigitalTokenRegistrationScheme ;
             owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-id:identifies ;
+            owl:someValuesFrom fibo-fnd-oac-own:DigitalTokenRegistryRecord ],
         cmns-ra:RegisteredIdentifier ;
     skos:definition "globally unique identifier conformant with ISO 24165 for the registration of digital tokens" ;
     cmns-av:abbreviation "DTI" ;
@@ -362,14 +362,14 @@ fibo-fnd-oac-own:OwnersEquity a owl:Class ;
     rdfs:comment "所有者在企业中的份额加上经营利润。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fnd-oac-own:PaidInCapital ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fnd-oac-own:RetainedEarnings ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-org:FormalOrganization ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:hasArgument ;
-            owl:someValuesFrom fibo-fnd-oac-own:PaidInCapital ],
         cmns-qtu:Expression ;
     skos:definition "owners' share in a business plus operating profit" ;
     cmns-av:adaptedFrom "Barron's Dictionary of Banking Terms, Sixth Edition, 2012." ;
@@ -405,11 +405,11 @@ fibo-fnd-oac-own:Ownership a owl:Class ;
         "所有权（ownership）"@zh ;
     rdfs:comment "某参与方（明示或默示）持有某事物法定所有权、并有权转让该所有权和/或占有权的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
-            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:hasOwningParty ;
             owl:someValuesFrom fibo-fnd-oac-own:Owner ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
         cmns-pts:Situation ;
     skos:definition "situation in which some party holds the legal title to something (explicitly or implicitly) and has the right to transfer that title and/or possession" ;
     cmns-av:explanatoryNote "Ownership is the right to possess, use, sell, donate or give as a gift any asset or property belonging to a person known as the 'owner'. An owner can be either a beneficial owner or a legal owner." .
@@ -419,9 +419,6 @@ fibo-fnd-oac-own:Asset a owl:Class ;
         "资产（asset）"@zh ;
     rdfs:comment "具有货币价值、为某参与方所拥有或为其带来利益的事物。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:isAssetOf ;
-            owl:someValuesFrom fibo-fnd-oac-own:Owner ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:isOwnedAsset ;
             owl:someValuesFrom fibo-fnd-oac-own:Ownership ],
         [ a owl:Restriction ;
@@ -432,6 +429,9 @@ fibo-fnd-oac-own:Asset a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:Price ;
             owl:onProperty fibo-fnd-oac-own:hasAcquisitionPrice ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:isAssetOf ;
+            owl:someValuesFrom fibo-fnd-oac-own:Owner ],
         cmns-pts:Undergoer ;
     skos:definition "something of monetary value that is owned or provides benefit to some party" ;
     cmns-av:adaptedFrom "Financial Accounting Standards Board (FASB) Statement of Financial Accounting Concepts No. 6, Elements of Financial Statements, paragraph 25.",

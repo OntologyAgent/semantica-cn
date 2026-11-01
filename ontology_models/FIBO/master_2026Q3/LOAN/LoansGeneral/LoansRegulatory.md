@@ -86,17 +86,19 @@
 
 ## 5. 公理约定（Axioms）
 
-- 借款人数据保护要求（borrower data protection requirement）：管辖 some 消费信贷征信机构（consumer credit reference agency）
-- 借款人披露要求（borrower disclosure requirement）：授予 some 产品知情权（product disclosure right）
-- 借款人披露要求（borrower disclosure requirement）：管辖 some 借款人评估
-- 消费信贷公平对待要求（consumer credit equal treatment requirement）：授予 some 公平对待权（equal treatment right）
-- 消费信贷要求（consumer credit requirement）：授予 some 消费者权利（consumer right）
-- 消费信贷要求（consumer credit requirement）：由……监督（overseen by） some 消费者保护机构（consumer protection agency）
-- 贷款监管要求（loan regulatory requirement）：由……授权要求 some 消费信贷保护法（consumer credit protection law）
-- 贷款监管要求（loan regulatory requirement）：由……管理（administered by） some 监管机构
-- 贷款监管要求（loan regulatory requirement）：监管 some 贷款
-- 产品披露要求（product disclosure requirement）：管辖 some 诚信估价单（good faith estimate）
-- 产品披露要求（product disclosure requirement）：管辖 some 贷款产品说明（loan product representations）
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **借款人数据保护要求（borrower data protection requirement）**：**管辖（governs）**至少有一个取值，类型是**消费信贷征信机构（consumer credit reference agency）**。
+- **借款人披露要求（borrower disclosure requirement）**：**授予（confers）**至少有一个取值，类型是**产品知情权（product disclosure right）**。
+- **借款人披露要求（borrower disclosure requirement）**：**管辖（governs）**至少有一个取值，类型是**借款人评估（BorrowerAssessment）**。
+- **消费信贷公平对待要求（consumer credit equal treatment requirement）**：**授予（confers）**至少有一个取值，类型是**公平对待权（equal treatment right）**。
+- **消费信贷要求（consumer credit requirement）**：**授予（confers）**至少有一个取值，类型是**消费者权利（consumer right）**。
+- **消费信贷要求（consumer credit requirement）**：**由……监督（overseen by）**至少有一个取值，类型是**消费者保护机构（consumer protection agency）**。
+- **贷款监管要求（loan regulatory requirement）**：**由……授权要求（isMandatedBy）**至少有一个取值，类型是**消费信贷保护法（consumer credit protection law）**。
+- **贷款监管要求（loan regulatory requirement）**：**由……管理（administered by）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+- **贷款监管要求（loan regulatory requirement）**：**监管（regulates）**至少有一个取值，类型是**贷款（Loan）**。
+- **产品披露要求（product disclosure requirement）**：**管辖（governs）**至少有一个取值，类型是**诚信估价单（good faith estimate）**。
+- **产品披露要求（product disclosure requirement）**：**管辖（governs）**至少有一个取值，类型是**贷款产品说明（loan product representations）**。
 
 ## 6. 依赖（owl:imports，10 个）
 

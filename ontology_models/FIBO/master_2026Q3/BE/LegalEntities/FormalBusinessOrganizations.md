@@ -48,8 +48,10 @@
 
 ## 5. 公理约定（Axioms）
 
-- 非政府组织（non-governmental organization）：具有目标 公共宗旨 ≥0
-- 非营利组织（not for profit organization）：具有目标 非营利目标 ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **非政府组织（non-governmental organization）**：**具有目标（hasObjective）**可以有 0 个或多个**公共宗旨（PublicPurpose）**。
+- **非营利组织（not for profit organization）**：**具有目标（hasObjective）**可以有 0 个或多个**非营利目标（NotForProfitObjective）**。
 
 ## 6. 依赖（owl:imports，15 个）
 

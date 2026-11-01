@@ -82,25 +82,27 @@
 
 ## 5. 公理约定（Axioms）
 
-- 篮子期货（basket future）：具有标的 some（由…扮演（is played by） some 混合篮子）
-- 债券期货（bond future）：具有标的 some（由…扮演（is played by） some 债券）
-- 债务工具期货（debt instrument future）：具有标的 some（由…扮演（is played by） some 债务工具）
-- 股息期货（dividend future）：具有标的 some（由…扮演（is played by） some 上市股份）
-- 股票远期（equity forward）：具有股息调整期间（has dividend adjustment period） some 股息调整期间（dividend adjustment period）
-- 股票远期（equity forward）：具有调整方法（has method of adjustment） some 远期合约调整方法（forward contract adjustment method）
-- 股票远期（equity forward）：具有标的 some（由…扮演（is played by） some（restriction））
-- 股票远期（equity forward）：具有合同要素 some 结算条款
-- 股票期货（equity future）：具有标的 some（由…扮演（is played by） some 上市股份）
-- 期货的期货（future on future）：具有标的 some（由…扮演（is played by） some 期货）
-- 期权的期货（future on option）：具有标的 some（由…扮演（is played by） some 期权）
-- 互换的期货（future on swap）：具有标的 some（由…扮演（is played by） some 互换）
-- 指数期货（index future）：具有标的 some（由…扮演（is played by） some（restriction））
-- 利率期货（interest rate future）：具有标的 some（由…扮演（is played by） some（restriction））
-- 货币市场期货（money market future）：具有标的 some（由…扮演（is played by） some 货币市场工具）
-- 标准化期货挂牌条款（standardized futures listing terms）：具有发布方 some 指定合约市场
-- 标准化期货挂牌条款（standardized futures listing terms）：适用于 some 挂牌
-- 标准化期货条款（standardized futures terms）：适用于 some 期货
-- 标准化期货条款（standardized futures terms）：规定 some 结算条款
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **篮子期货（basket future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
+- **债券期货（bond future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
+- **债务工具期货（debt instrument future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债务工具（DebtInstrument）**。
+- **股息期货（dividend future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**上市股份（ListedShare）**。
+- **股票远期（equity forward）**：**具有股息调整期间（has dividend adjustment period）**至少有一个取值，类型是**股息调整期间（dividend adjustment period）**。
+- **股票远期（equity forward）**：**具有调整方法（has method of adjustment）**至少有一个取值，类型是**远期合约调整方法（forward contract adjustment method）**。
+- **股票远期（equity forward）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **股票远期（equity forward）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**结算条款（SettlementTerms）**。
+- **股票期货（equity future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**上市股份（ListedShare）**。
+- **期货的期货（future on future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期货（Future）**。
+- **期权的期货（future on option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期权（Option）**。
+- **互换的期货（future on swap）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**互换（Swap）**。
+- **指数期货（index future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **利率期货（interest rate future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **货币市场期货（money market future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**货币市场工具（MoneyMarketInstrument）**。
+- **标准化期货挂牌条款（standardized futures listing terms）**：**具有发布方（hasPublisher）**至少有一个取值，类型是**指定合约市场（DesignatedContractMarket）**。
+- **标准化期货挂牌条款（standardized futures listing terms）**：**适用于（appliesTo）**至少有一个取值，类型是**挂牌（Listing）**。
+- **标准化期货条款（standardized futures terms）**：**适用于（appliesTo）**至少有一个取值，类型是**期货（Future）**。
+- **标准化期货条款（standardized futures terms）**：**规定（specifies）**至少有一个取值，类型是**结算条款（SettlementTerms）**。
 
 ## 6. 依赖（owl:imports，27 个）
 

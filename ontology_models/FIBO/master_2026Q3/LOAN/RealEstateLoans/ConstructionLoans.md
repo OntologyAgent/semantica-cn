@@ -30,14 +30,16 @@
 
 | 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
 |---|---|---|---|
-| fibo-loan-reln-cnst:hasMaximumAllowedBalance | 具有最高允许余额（has maximum allowed balance） | 对具有灵活再提取安排的贷款，任何时点允许未偿的最高余额（低于信用额度）。 | 定义域（domain）：Nfa655d6745684d5dbc89323e7c02b218；值域（range）：货币数量；子属性（subPropertyOf）：具有可用金额 |
-| fibo-loan-reln-cnst:hasMaximumAnticipatedBalance | 具有最高预期余额（has maximum anticipated balance） | 借款人出于规划目的预计可能需要的最高余额（低于信用额度）。 | 定义域（domain）：Ne86c84fc0210432db4b26ba1ad087116；值域（range）：货币数量；子属性（subPropertyOf）：具有可用金额 |
+| fibo-loan-reln-cnst:hasMaximumAllowedBalance | 具有最高允许余额（has maximum allowed balance） | 对具有灵活再提取安排的贷款，任何时点允许未偿的最高余额（低于信用额度）。 | 定义域（domain）：Nc4e07ed8e90d4499b354bac269ee4990；值域（range）：货币数量；子属性（subPropertyOf）：具有可用金额 |
+| fibo-loan-reln-cnst:hasMaximumAnticipatedBalance | 具有最高预期余额（has maximum anticipated balance） | 借款人出于规划目的预计可能需要的最高余额（低于信用额度）。 | 定义域（domain）：N86210715067a40bf946426e949eb7abe；值域（range）：货币数量；子属性（subPropertyOf）：具有可用金额 |
 | fibo-loan-reln-cnst:hasMilestoneMaximumDrawdownAmount | 具有里程碑最高提取额（has milestone maximum drawdown amount） | 里程碑完成后借款人可提取的最高贷款金额。 | 定义域（domain）：合同里程碑；值域（range）：货币数量；子属性（subPropertyOf）：具有可用金额 |
 
 ## 5. 公理约定（Axioms）
 
-- 建设贷款（construction loan）：具有里程碑条款 合同里程碑 ≥0
-- 建设贷款（construction loan）：以……为抵押 不动产 ≥0
+以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+
+- **建设贷款（construction loan）**：**具有里程碑条款（hasMilestoneProvision）**可以有 0 个或多个**合同里程碑（ContractMilestone）**。
+- **建设贷款（construction loan）**：**以……为抵押（isCollateralizedBy）**可以有 0 个或多个**不动产（RealProperty）**。
 
 ## 6. 依赖（owl:imports，9 个）
 

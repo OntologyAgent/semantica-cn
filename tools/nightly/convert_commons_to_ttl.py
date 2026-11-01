@@ -10,7 +10,7 @@ from pathlib import Path
 
 from rdflib import Graph, Namespace, RDF, RDFS, OWL, SKOS, Literal, URIRef
 
-BASE_DIR = Path("ontology_models/Commons/20250801")
+BASE_DIR = Path("ontology_models/OMG Commons/20250801")
 CMNS = "https://www.omg.org/spec/Commons/"
 
 # File-level Chinese labels/comments for every Commons module

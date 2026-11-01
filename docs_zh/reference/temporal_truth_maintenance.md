@@ -2,7 +2,7 @@
 title: "时态真值维护(Temporal Truth Maintenance)"
 description: "在相互独立的有效时间与已知时间图切片上维护派生事实。"
 source: reference/temporal_truth_maintenance.md
-source_version: fc9edbb07b7435da212428345f7d6a4c884e20a0
+source_version: e3158b53094de43b866b2566e680bd95a23285ce
 icon: "clock"
 ---
 
@@ -140,3 +140,7 @@ assert graph["relationships"][0]["valid_until"] == "2026-09-30T00:00:00Z"
 每次图同步都要对提供的托管历史做规范化/校验。切片选择会扫描保留证据与端点生命周期。PR1 执行它既有的更新工作与状态暂存；历史查询则要重新计算一份全新闭包，并捕获全部直接解释。保留历史随证据修订不断增长。本实现不提供存储侧的索引化时态查询，也不承诺亚线性更新成本。
 
 适配器不持久化自己的档案，不把结论写回图，不调度过期任务，不修改 RETE，不支持递归规则，也不更新 RAG 提示词与向量记录。一致性只相对于所提供的证据和固定规则而言；失去支持意味着"当前不可推导"，而不是"为假"。
+
+## 相关链接
+
+- [Grounded Context 组装(Grounded Context Assembly)](./grounded_context.md) — 摘要与引用随证据撤回而撤回，支持双时态历史读取。

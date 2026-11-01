@@ -2,7 +2,7 @@
 title: "上下文模块（Context）"
 description: "智能体上下文图、决策跟踪、因果链、先例搜索、政策执行与多跳 GraphRAG。"
 source: reference/context.md
-source_version: 164a4128875aa1b01ca0dfccadbbff8a07627658
+source_version: 890e1dae13adce7ccb80ce0b1728b1cb93d8d321
 icon: "brain"
 ---
 
@@ -943,7 +943,7 @@ assert store.rows[0]["content"] == "Alice is eligible"  # record untouched
 
 `AgentContext.retrieve`、`AgentContext.query_with_reasoning` 和 `ContextRetriever.query_with_reasoning` 有意**不**接受 `truth_filter`——在这些入口传入会立即抛出 `ValidationError`。请自己用 `ContextRetriever.retrieve(..., truth_filter=...)` 组装出已校验的上下文，再交给模型。
 
-过滤器背后的会话模型见 [真值维护(Truth Maintenance)](./truth_maintenance.md)。
+过滤器背后的会话模型见 [真值维护(Truth Maintenance)](./truth_maintenance.md)。要组装带引用脚注、快照一致性复核与双时态历史读取的模型就绪上下文，见 [Grounded Context 组装(Grounded Context Assembly)](./grounded_context.md)。
 
 
 ## 数据结构

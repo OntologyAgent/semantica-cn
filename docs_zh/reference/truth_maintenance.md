@@ -2,7 +2,7 @@
 title: "真值维护(Truth Maintenance)"
 description: "针对固定非递归规则的、感知来源的逻辑撤回。"
 source: reference/truth_maintenance.md
-source_version: 1d38c6f4f6f6a6df95b8eca49f3c19ac11b44d2c
+source_version: 703278270ac022a330f455a75c30d931515f64e5
 icon: "microchip"
 ---
 
@@ -211,4 +211,5 @@ with TemporaryDirectory() as directory:
 - [时态真值维护(Temporal Truth Maintenance)](./temporal_truth_maintenance.md) — 可选启用的图适配器：提供相互独立的有效时间/已知时间分片，支持事实过期与迟到的更正。
 - [Reasoning](./reasoning.md) — 本会话赖以构建的规则引擎，包括 `Rule` 的表示。
 - [Context](./context.md) — `TruthMaintenanceContextFilter` 消费不可变快照，按激活支持过滤检索到的上下文。
+- [Grounded Context 组装(Grounded Context Assembly)](./grounded_context.md) — 组装与时态真值快照一致的 RAG 上下文，支持双时态历史读取。
 - [Ontology](./ontology.md) — 本体公理与 SHACL 约束。

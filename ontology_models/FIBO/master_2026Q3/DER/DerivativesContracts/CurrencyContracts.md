@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与利率衍生品的差别——标的是两种货币的兑换关系而非利率水平；货币互换与利率互换的差别——货币互换通常涉及本金的期初期末交换。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **货币衍生品（currency derivative）** 继承 **货币工具（CurrencyInstrument）**
+- **货币衍生品（currency derivative）** 继承 **衍生工具（DerivativeInstrument）**
+- **货币远期（currency forward）** 继承 **货币衍生品（currency derivative）**
+- **货币远期（currency forward）** 继承 **远期合约（Forward）**
+- **直接货币远期（currency forward outright）** 继承 **货币远期（currency forward）**
+- **货币期权（currency option）** 继承 **货币衍生品（currency derivative）**
+- **货币期权（currency option）** 继承 **普通期权（VanillaOption）**
+- **货币即期合约（currency spot contract）** 继承 **货币工具（CurrencyInstrument）**
+- **货币即期合约（currency spot contract）** 继承 **即期合约（SpotContract）**
+- **货币即期远期互换（currency spot forward swap）** 继承 **货币互换（currency swap）**
+- **货币互换（currency swap）** 继承 **货币衍生品（currency derivative）**
+- **货币互换（currency swap）** 继承 **互换（Swap）**
+- 其余 3 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -29,48 +45,166 @@
 | 外汇主协议（foreign exchange master agreement） | 旨在反映市场最佳实践、为外汇市场参与者提供标准协议的产品专用主协议。 |
 | 外汇结算净额条款（foreign exchange settlement netting provision） | 外汇合约特有的结算净额条款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 货币衍生品（currency derivative） ⊑ 货币工具
-- 货币衍生品（currency derivative） ⊑ 衍生工具
-- 货币远期（currency forward） ⊑ 货币衍生品（currency derivative）
-- 货币远期（currency forward） ⊑ 远期合约
-- 直接货币远期（currency forward outright） ⊑ 货币远期（currency forward）
-- 货币期权（currency option） ⊑ 货币衍生品（currency derivative）
-- 货币期权（currency option） ⊑ 普通期权
-- 货币即期合约（currency spot contract） ⊑ 货币工具
-- 货币即期合约（currency spot contract） ⊑ 即期合约
-- 货币即期远期互换（currency spot forward swap） ⊑ 货币互换（currency swap）
-- 货币互换（currency swap） ⊑ 货币衍生品（currency derivative）
-- 货币互换（currency swap） ⊑ 互换
-- 货币波动率期权（currency volatility option） ⊑ 货币期权（currency option）
-- 外汇主协议（foreign exchange master agreement） ⊑ 主协议
-- 外汇结算净额条款（foreign exchange settlement netting provision） ⊑ 结算净额结算条款
+### 2.1 货币衍生品（currency derivative）
 
-## 3. 对象属性（Object Property）
+定义：以约定汇率交付并结算一种货币的给定金额、以换取另一货币给定金额的协议。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-der-drc-cur:hasForwardExchangeRate | 具有远期汇率（has forward exchange rate） | 远期合约中规定的两种货币之间的汇率。 | 定义域（domain）：货币远期（currency forward）；值域（range）：汇率；子属性（subPropertyOf）：具有量值 |
-| fibo-der-drc-cur:hasSpotExchangeRate | 具有即期汇率（has spot exchange rate） | 由特定来源在某一日期和时间报出的两种货币之间的汇率，通常用于即期合约。 | 值域（range）：报价汇率；子属性（subPropertyOf）：具有报价汇率 |
+- 父类：**货币工具（CurrencyInstrument）**、**衍生工具（DerivativeInstrument）**
+- 直接子类：**货币远期（currency forward）**、**货币期权（currency option）**、**货币互换（currency swap）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有汇率报价来源（hasExchangeRateQuotationSource）** | — | — |
 
-- **货币衍生品（currency derivative）**：**具有汇率报价来源（hasExchangeRateQuotationSource）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **货币远期（currency forward）**：**具有远期汇率（has forward exchange rate）**至少有一个取值，类型是**汇率（ExchangeRate）**。
-- **直接货币远期（currency forward outright）**：**具有部分（hasPart）**至少有一个取值，类型是**货币即期合约（currency spot contract）**。
-- **直接货币远期（currency forward outright）**：**具有部分（hasPart）**至少有一个取值，类型是**货币互换（currency swap）**。
-- **货币期权（currency option）**：**具有行权利率（hasStrikeRate）**至少有一个取值，类型是**汇率（ExchangeRate）**。
-- **货币期权（currency option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**货币即期买入价（CurrencySpotBuyRate）**。
-- **货币即期合约（currency spot contract）**：**具有即期汇率（has spot exchange rate）**至少有一个取值，类型是**报价汇率（QuotedExchangeRate）**。
-- **货币即期远期互换（currency spot forward swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**货币即期合约（currency spot contract）**。
-- **货币互换（currency swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**货币远期（currency forward）**。
-- **货币波动率期权（currency volatility option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**货币即期波动率（CurrencySpotVolatility）**。
-- **外汇主协议（foreign exchange master agreement）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**外汇结算净额条款（foreign exchange settlement netting provision）**。
+公理：
 
-## 6. 依赖（owl:imports，16 个）
+- **具有汇率报价来源（hasExchangeRateQuotationSource）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+#### 2.1.1 货币远期（currency forward）
+
+定义：在未来约定日期交付并结算一种货币的给定金额、以换取另一货币给定金额的协议。
+
+- 父类：**货币衍生品（currency derivative）**、**远期合约（Forward）**
+- 直接子类：**直接货币远期（currency forward outright）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有远期汇率（has forward exchange rate）** | 远期合约中规定的两种货币之间的汇率。 | 值域：汇率；子属性：具有量值 |
+
+公理：
+
+- **具有远期汇率（has forward exchange rate）**至少有一个取值，类型是**汇率（ExchangeRate）**。
+
+##### 2.1.1.1 直接货币远期（currency forward outright）
+
+定义：外汇市场上的远期合约，锁定实体在未来某日必须买入或卖出某一货币的价格。
+
+- 父类：**货币远期（currency forward）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有部分（hasPart）** | — | — |
+
+公理：
+
+- **具有部分（hasPart）**至少有一个取值，类型是**货币互换（currency swap）**。
+- **具有部分（hasPart）**至少有一个取值，类型是**货币即期合约（currency spot contract）**。
+
+#### 2.1.2 货币期权（currency option）
+
+定义：赋予买方（持有人）在规定期间内按指定汇率买入或卖出货币的权利（而非义务）的期权。
+
+- 父类：**货币衍生品（currency derivative）**、**普通期权（VanillaOption）**
+- 直接子类：**货币波动率期权（currency volatility option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权利率（hasStrikeRate）** | — | — |
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**货币即期买入价（CurrencySpotBuyRate）**。
+- **具有行权利率（hasStrikeRate）**至少有一个取值，类型是**汇率（ExchangeRate）**。
+
+##### 2.1.2.1 货币波动率期权（currency volatility option）
+
+定义：标的资产基于某一外汇汇率波动率的货币期权。
+
+- 父类：**货币期权（currency option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**货币即期波动率（CurrencySpotVolatility）**。
+
+#### 2.1.3 货币互换（currency swap）
+
+定义：双方将一种货币的给定金额交换为另一种货币、用于即期交割或远期交割的外汇协议。
+
+- 父类：**货币衍生品（currency derivative）**、**互换（Swap）**
+- 直接子类：**货币即期远期互换（currency spot forward swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有腿（hasLeg）** | — | — |
+
+公理：
+
+- **具有腿（hasLeg）**至少有一个取值，类型是**货币远期（currency forward）**。
+
+##### 2.1.3.1 货币即期远期互换（currency spot forward swap）
+
+定义：双方按约定固定汇率进行两种货币交换的外汇协议：a）在即期结算日交换；b）在远期日反向交换。
+
+- 父类：**货币互换（currency swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有腿（hasLeg）** | — | — |
+
+公理：
+
+- **具有腿（hasLeg）**至少有一个取值，类型是**货币即期合约（currency spot contract）**。
+
+### 2.2 货币即期合约（currency spot contract）
+
+定义：即时交割的外汇合约。
+
+- 父类：**货币工具（CurrencyInstrument）**、**即期合约（SpotContract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有即期汇率（has spot exchange rate）** | 由特定来源在某一日期和时间报出的两种货币之间的汇率，通常用于即期合约。 | 值域：报价汇率；子属性：具有报价汇率 |
+
+公理：
+
+- **具有即期汇率（has spot exchange rate）**至少有一个取值，类型是**报价汇率（QuotedExchangeRate）**。
+
+### 2.3 外汇主协议（foreign exchange master agreement）
+
+定义：旨在反映市场最佳实践、为外汇市场参与者提供标准协议的产品专用主协议。
+
+- 父类：**主协议（MasterAgreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合同要素（hasContractualElement）** | — | — |
+
+公理：
+
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**外汇结算净额条款（foreign exchange settlement netting provision）**。
+
+### 2.4 外汇结算净额条款（foreign exchange settlement netting provision）
+
+定义：外汇合约特有的结算净额条款。
+
+- 父类：**结算净额结算条款（SettlementNettingProvision）**
+
+## 3. 依赖（owl:imports，16 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -93,7 +227,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CurrencyContracts.rdf`
 - 中文 Turtle：`CurrencyContracts.ttl`

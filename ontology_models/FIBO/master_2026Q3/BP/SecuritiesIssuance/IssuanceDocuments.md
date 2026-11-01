@@ -14,6 +14,17 @@
 
 **与相近概念的差别**：与 FND/Arrangements/Documents 的差别——FND 定义文档的通用概念，本本体专指证券发行场景的具体文书类型及其在流程中的作用。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **最终招募说明书（final prospectus）** 继承 **招募说明书（Prospectus）**
+- **信托契约（indenture）** 继承 **证券发行协议（securities issuance agreement）**
+- **信托契约（indenture）** 继承 **书面合同（WrittenContract）**
+- **发行信托协议（issuance trust agreement）** 继承 **证券发行协议（securities issuance agreement）**
+- **发行信托协议（issuance trust agreement）** 继承 **书面合同（WrittenContract）**
+- **发行文件条款（offering document terms）** 继承 **合同要素（ContractualElement）**
+- **初步招募说明书（preliminary prospectus）** 继承 **招募说明书（Prospectus）**
+- **证券发行协议（securities issuance agreement）** 继承 **发行文件（OfferingDocument）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -25,26 +36,68 @@
 | 初步招募说明书（preliminary prospectus） | 发行营销前确定的招募说明书草案，其中某些条款将在发行后续阶段定稿。 |
 | 证券发行协议（securities issuance agreement） | 就某次拟议证券发行订立的正式协议、契据或合同。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 最终招募说明书（final prospectus） ⊑ 招募说明书
-- 信托契约（indenture） ⊑ 证券发行协议（securities issuance agreement）
-- 信托契约（indenture） ⊑ 书面合同
-- 发行信托协议（issuance trust agreement） ⊑ 证券发行协议（securities issuance agreement）
-- 发行信托协议（issuance trust agreement） ⊑ 书面合同
-- 发行文件条款（offering document terms） ⊑ 合同要素
-- 初步招募说明书（preliminary prospectus） ⊑ 招募说明书
-- 证券发行协议（securities issuance agreement） ⊑ 发行文件
+### 2.1 最终招募说明书（final prospectus）
 
-## 5. 公理约定（Axioms）
+定义：描述发行事项的最终招募说明书，包括发行本身的事实（如截止日期）及已知的相关事实。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**招募说明书（Prospectus）**
 
-- **最终招募说明书（final prospectus）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**发行文件条款（offering document terms）**。
-- **最终招募说明书（final prospectus）**：**后于（succeeds）**至少有一个取值，类型是**初步招募说明书（preliminary prospectus）**。
-- **初步招募说明书（preliminary prospectus）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**发行文件条款（offering document terms）**。
+属性：
 
-## 6. 依赖（owl:imports，6 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合同要素（hasContractualElement）** | — | — |
+| **后于（succeeds）** | — | — |
+
+公理：
+
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**发行文件条款（offering document terms）**。
+- **后于（succeeds）**至少有一个取值，类型是**初步招募说明书（preliminary prospectus）**。
+
+### 2.2 发行文件条款（offering document terms）
+
+定义：发行文件中包含的、在发行时产生法律约束力的条款。
+
+- 父类：**合同要素（ContractualElement）**
+
+### 2.3 初步招募说明书（preliminary prospectus）
+
+定义：发行营销前确定的招募说明书草案，其中某些条款将在发行后续阶段定稿。
+
+- 父类：**招募说明书（Prospectus）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合同要素（hasContractualElement）** | — | — |
+
+公理：
+
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**发行文件条款（offering document terms）**。
+
+### 2.4 证券发行协议（securities issuance agreement）
+
+定义：就某次拟议证券发行订立的正式协议、契据或合同。
+
+- 父类：**发行文件（OfferingDocument）**
+- 直接子类：**信托契约（indenture）**、**发行信托协议（issuance trust agreement）**
+
+#### 2.4.1 信托契约（indenture）
+
+定义：债券与信用债券据以发行的书面合同，又称「信托契据」，载明到期日、利率、赎回条款等。
+
+- 父类：**证券发行协议（securities issuance agreement）**、**书面合同（WrittenContract）**
+
+#### 2.4.2 发行信托协议（issuance trust agreement）
+
+定义：就某次证券发行设立的信托协议。
+
+- 父类：**证券发行协议（securities issuance agreement）**、**书面合同（WrittenContract）**
+
+## 3. 依赖（owl:imports，6 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -57,7 +110,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`IssuanceDocuments.rdf`
 - 中文 Turtle：`IssuanceDocuments.ttl`

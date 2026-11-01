@@ -236,12 +236,12 @@ fibo-fnd-oac-own:Portfolio a owl:Class ;
         "组合（portfolio）"@zh ;
     rdfs:comment "为实现战略目标而作为整体汇集和维护、用于管理目的的持仓集合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-fnd-oac-own:Holding ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-oac-own:Portfolio ;
             owl:onProperty cmns-col:isMemberOf ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-fnd-oac-own:Holding ],
         cmns-col:Collection ;
     skos:definition "collection of holdings assembled and maintained as a unit for management purposes to achieve strategic objectives" ;
     cmns-av:adaptedFrom "http://www.investopedia.com/terms/h/holdings.asp"^^xsd:anyURI,
@@ -293,11 +293,11 @@ fibo-fnd-oac-own:DigitalTokenRegistryRecord a owl:Class ;
         "数字通证注册簿记录（digital token registry record）"@zh ;
     rdfs:comment "包含 ISO 24165-2:2025 为适用数字通证标识符（DTI）类型规定之数据元素的数字通证记录。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-ra:registers ;
-            owl:someValuesFrom fibo-fnd-oac-own:DigitalToken ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fnd-oac-own:DigitalTokenIdentifier ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-ra:registers ;
+            owl:someValuesFrom fibo-fnd-oac-own:DigitalToken ],
         cmns-ra:RegistryEntry ;
     skos:definition "record for a digital token containing the data elements specified in ISO 24165-2:2025 for the applicable digital token identifier (DTI) type" ;
     cmns-av:adaptedFrom "ISO 24165-2:2025, Digital token identifier (DTI), Registration, assignment and structure, Second edition, 2025-6." ;
@@ -361,15 +361,15 @@ fibo-fnd-oac-own:OwnersEquity a owl:Class ;
         "所有者权益（owners' equity）"@zh ;
     rdfs:comment "所有者在企业中的份额加上经营利润。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:hasArgument ;
-            owl:someValuesFrom fibo-fnd-oac-own:PaidInCapital ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-org:FormalOrganization ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
         [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fnd-oac-own:RetainedEarnings ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-org:FormalOrganization ;
-            owl:onProperty cmns-cxtdsg:appliesTo ],
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fnd-oac-own:PaidInCapital ],
         cmns-qtu:Expression ;
     skos:definition "owners' share in a business plus operating profit" ;
     cmns-av:adaptedFrom "Barron's Dictionary of Banking Terms, Sixth Edition, 2012." ;
@@ -392,11 +392,11 @@ fibo-fnd-oac-own:Owner a owl:Class ;
         "所有者（owner）"@zh ;
     rdfs:comment "在法律上被承认对某事物拥有占有权、使用特权以及转让任何相关权利或特权之能力的参与方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:ownsAsset ;
-            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:isOwningParty ;
             owl:someValuesFrom fibo-fnd-oac-own:Ownership ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:ownsAsset ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
         cmns-pts:Actor ;
     skos:definition "party that is legally recognized as having the right to possess, the privilege to use, and ability to transfer any rights or privileges associated with something, as permitted by law" .
 

@@ -133,11 +133,11 @@ fibo-be-ge-ge:MunicipalEntity a owl:Class ;
         "市政实体（municipal entity）"@zh ;
     rdfs:comment "通常代表城市、镇区或其他行政区划的政体，具有法人地位和自治权力或管辖权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
-            owl:someValuesFrom fibo-be-ge-ge:MunicipalGovernment ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-ge-ge:hasSovereigntyOver ;
             owl:someValuesFrom cmns-loc:Municipality ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:MunicipalGovernment ],
         fibo-be-ge-ge:Polity ;
     skos:definition "polity that typically represents a city, township, or other administrative subdivision having corporate status and powers of self-government or jurisdiction" ;
     cmns-av:explanatoryNote "Municipal entity in the sense of a legal entity, that is, what it is that incurs debt for a municipality, as distinct from the Municipal government. A municipal entity has a Government which sets laws applicable within the geographical area corresponding to its jurisdiction." ;
@@ -148,11 +148,11 @@ fibo-be-ge-ge:RegionalSovereignty a owl:Class ;
         "地区主权体（regional sovereignty）"@zh ;
     rdfs:comment "对应行政区划、行政单位、行政实体或国家行政区划的法律主体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
-            owl:someValuesFrom fibo-be-ge-ge:RegionalGovernment ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
             owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
+            owl:someValuesFrom fibo-be-ge-ge:RegionalGovernment ],
         fibo-be-ge-ge:Polity ;
     skos:definition "legal person that corresponds to an administrative division, administrative unit, administrative entity or country subdivision (or, sometimes, geopolitical division or subnational entity), that has the capacity to incur debt, issue contracts, and enter into relations with other similar entities" ;
     skos:example "A country may be divided into provinces, which, in turn, are divided into counties, which, in turn, may be divided in whole or in part into municipalities; and so on." .
@@ -162,11 +162,11 @@ fibo-be-ge-ge:SupranationalEntity a owl:Class ;
         "超国家实体（supranational entity）"@zh ;
     rdfs:comment "依国际法或条约建立、或在国际层面注册成立的政府或非政府实体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
-            owl:someValuesFrom cmns-loc:Country ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
             owl:someValuesFrom fibo-be-ge-ge:GovernmentBody ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasSharedSovereigntyOver ;
+            owl:someValuesFrom cmns-loc:Country ],
         fibo-be-ge-ge:Polity ;
     skos:definition "governmental or non-governmental entity that is established by international law or treaty or incorporated at an international level" ;
     cmns-av:adaptedFrom "ISO 20275:2017, Financial services - Entity legal forms (ELF), First Edition, July 2017.",
@@ -409,11 +409,11 @@ fibo-be-ge-ge:Polity a owl:Class ;
         "政体（polity）"@zh ;
     rdfs:comment "作为超国家实体、王室、国家或下级民政当局（如省、县、市）的法律主体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-ge-ge:hasSovereigntyOver ;
-            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-ge-ge:isRepresentedBy ;
             owl:someValuesFrom fibo-be-ge-ge:Government ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-ge-ge:hasSovereigntyOver ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
         fibo-be-ge-ge:GovernmentBody,
         cmns-org:LegalPerson ;
     skos:definition "legal person that is a supranational entity, crown, state, or subordinate civil authority, such as a province, prefecture, county, municipality, city, or district representing the people of that entity" .
@@ -441,13 +441,13 @@ fibo-be-ge-ge:Government a owl:Class ;
         "政府（government）"@zh ;
     rdfs:comment "控制国家或共同体的体系。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-rga:governs ;
-            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( fibo-be-ge-ge:BranchOfGovernment fibo-be-ge-ge:GovernmentAgency fibo-be-ge-ge:GovernmentDepartment ) ] ;
             owl:onProperty cmns-col:hasMember ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rga:governs ;
+            owl:someValuesFrom cmns-loc:GeopoliticalEntity ],
         fibo-be-fct-fct:FunctionalEntity ;
     owl:disjointWith fibo-be-ge-ge:Instrumentality ;
     skos:definition "system by which a state or community is controlled" ;

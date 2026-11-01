@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：合同≠协议——协议是双方意思一致的安排（未必有法律强制力），合同是有法律约束力的协议；合同≠文档——合同是法律关系本身，合同文本只是它的书面载体（见文档本体）。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **可转让合同（assignable contract）** 继承 **可转让合同（transferable contract）**
+- **双边合同（bilateral contract）** 继承 **双边协议（BilateralAgreement）**
+- **双边合同（bilateral contract）** 继承 **书面合同（written contract）**
+- **双边净额结算条款（bilateral netting provision）** 继承 **净额结算条款（netting provision）**
+- **违约（breach of contract）** 继承 **发生类别（OccurrenceKind）**
+- **违反契约承诺（breach of covenant）** 继承 **发生类别（OccurrenceKind）**
+- **终止净额结算条款（close-out netting provision）** 继承 **净额结算条款（netting provision）**
+- **附属协议（collateral agreement）** 继承 **书面合同（written contract）**
+- **先决条件（condition precedent）** 继承 **合同要素（contractual element）**
+- **合同（contract）** 继承 **协议（Agreement）**
+- **合同文件（contract document）** 继承 **法律文件（LegalDocument）**
+- **合同里程碑（contract milestone）** 继承 **先决条件（condition precedent）**
+- 其余 42 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -62,140 +78,554 @@
 | 保证（warranty） | 作为事实声明的合同要素。 |
 | 书面合同（written contract） | 由各方签署的书面正式合同。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 可转让合同（assignable contract） ⊑ 可转让合同（transferable contract）
-- 双边合同（bilateral contract） ⊑ 双边协议
-- 双边合同（bilateral contract） ⊑ 书面合同（written contract）
-- 双边净额结算条款（bilateral netting provision） ⊑ 净额结算条款（netting provision）
-- 违约（breach of contract） ⊑ 发生类别
-- 违反契约承诺（breach of covenant） ⊑ 发生类别
-- 终止净额结算条款（close-out netting provision） ⊑ 净额结算条款（netting provision）
-- 附属协议（collateral agreement） ⊑ 书面合同（written contract）
-- 先决条件（condition precedent） ⊑ 合同要素（contractual element）
-- 合同（contract） ⊑ 协议
-- 合同文件（contract document） ⊑ 法律文件
-- 合同里程碑（contract milestone） ⊑ 先决条件（condition precedent）
-- 合同里程碑（contract milestone） ⊑ 发生类别
-- 合同当事方（contract party） ⊑ 参与方角色（party role）
-- 合同主当事方（contract principal） ⊑ 合同当事方（contract party）
-- 合同第三方（contract third party） ⊑ 参与方角色（party role）
-- 合同承诺（contractual commitment） ⊑ 合同要素（contractual element）
-- 合同定义（contractual definition） ⊑ 合同要素（contractual element）
-- 合同要素（contractual element） ⊑ 组成成分
-- 交易对手（counterparty） ⊑ 合同当事方（contract party）
-- 披露条款（disclosure provision） ⊑ 合同承诺（contractual commitment）
-- 提前终止条款（early termination provision） ⊑ 终止条款（termination provision）
-- 展期条款（extension provision） ⊑ 合同承诺（contractual commitment）
-- 主协议（master agreement） ⊑ 书面合同（written contract）
-- 里程碑事件（milestone event） ⊑ 发生事项
-- 里程碑进度表（milestone schedule） ⊑ 进度表
-- 多边合同（multilateral contract） ⊑ 多边协议
-- 多边合同（multilateral contract） ⊑ 书面合同（written contract）
-- 多边净额结算条款（multilateral netting provision） ⊑ 净额结算条款（netting provision）
-- 净额结算条款（netting provision） ⊑ 合同承诺（contractual commitment）
-- 非约束性条款（non-binding term） ⊑ 合同要素（contractual element）
-- 不可转让合同（non-transferable contract） ⊑ 书面合同（written contract）
-- 通知条款（notification provision） ⊑ 合同承诺（contractual commitment）
-- 可更新合同（novateable contract） ⊑ 可转让合同（transferable contract）
-- 更新净额结算条款（novation netting provision） ⊑ 净额结算条款（netting provision）
-- 支付净额结算条款（payment netting provision） ⊑ 净额结算条款（netting provision）
-- 陈述（representation） ⊑ 合同承诺（contractual commitment）
-- 结算净额结算条款（settlement netting provision） ⊑ 净额结算条款（netting provision）
-- 条款清单（term sheet） ⊑ 协议
-- 终止条款（termination provision） ⊑ 合同承诺（contractual commitment）
-- 可转让合同（transferable contract） ⊑ 书面合同（written contract）
-- 单务合同（unilateral contract） ⊑ 书面合同（written contract）
-- 募集资金用途条款（use of proceeds provision） ⊑ 合同承诺（contractual commitment）
-- 口头合同（verbal contract） ⊑ 合同（contract）
-- 保证（warranty） ⊑ 合同承诺（contractual commitment）
-- 书面合同（written contract） ⊑ 合同（contract）
+### 2.1 违约（breach of contract）
 
-## 3. 对象属性（Object Property）
+定义：表示在无合法理由的情况下违反合同明示或默示条件（做或不做某事）的事件分类符。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-agr-ctr:definesTermsFor | 为……定义条款（defines terms for） | 将合同关联到该合同为其定义具有法律约束力之条款与条件的事物。 | 定义域（domain）：合同（contract）；子属性（subPropertyOf）：定义 |
-| fibo-fnd-agr-ctr:hasBeneficiary | 具有受益人（has beneficiary） | 按协议规定从某事物获得利益、好处或收益的参与方。 | 值域（range）：受益方；子属性（subPropertyOf）：具有交易对手（has counterparty） |
-| fibo-fnd-agr-ctr:hasContractDuration | 具有合同期限（has contract duration） | 标识合同签署后拟生效的时间期间。 | 定义域（domain）：合同（contract）；值域（range）：时长；子属性（subPropertyOf）：具有期限（has term） |
-| fibo-fnd-agr-ctr:hasContractParty | 具有合同当事方（has contract party） | 标识订立了有约束力协议、接受并承担协议所规定义务、责任与利益的参与方。 | 定义域（domain）：合同（contract）；值域（range）：合同当事方（contract party）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fnd-agr-ctr:hasContractualElement | 具有合同要素（has contractual element） | 标识作为协议组成部分的某事物。 | 定义域（domain）：协议；值域（range）：合同要素（contractual element）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-agr-ctr:hasCounterparty | 具有交易对手（has counterparty） | 标识合同的当事方，通常不是合同主当事方。 | 定义域（domain）：合同（contract）；值域（range）：交易对手（counterparty）；子属性（subPropertyOf）：具有合同当事方（has contract party） |
-| fibo-fnd-agr-ctr:hasEarlyTerminationDate | 具有提前终止日（has early termination date） | 标识早于明示到期日的终止日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有终止日 |
-| fibo-fnd-agr-ctr:hasEffectiveDate | 具有生效日期（has effective date） | 标识合同、关系或政策生效的日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有日期 |
-| fibo-fnd-agr-ctr:hasEffectiveDateTimeStamp | 具有生效日期时间戳（has effective date time stamp） | 标识某事物生效的日期与时间（含时区）。 | 值域（range）：日期时间戳；子属性（subPropertyOf）：具有日期时间戳 |
-| fibo-fnd-agr-ctr:hasExecutionDate | 具有签署日期（has execution date） | 标识合同已由所有必要当事方签署的日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有日期 |
-| fibo-fnd-agr-ctr:hasExecutionDateTimeStamp | 具有签署日期时间戳（has execution date time stamp） | 标识合同已由所有必要当事方签署的日期与时间（含时区）。 | 值域（range）：日期时间戳；子属性（subPropertyOf）：具有日期时间戳 |
-| fibo-fnd-agr-ctr:hasExtendablePeriod | 具有可展期期间（has extendable period） | 标识按合同条款允许展期的时间窗口。 | 定义域（domain）：展期条款（extension provision）；值域（range）：显式日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-fnd-agr-ctr:hasExtensionProvision | 具有展期条款（has extension provision） | 指明允许合同某方面展期的合同条款细节。 | 定义域（domain）：合同（contract）；值域（range）：展期条款（extension provision）；子属性（subPropertyOf）：具有合同要素（has contractual element） |
-| fibo-fnd-agr-ctr:hasGoverningJurisdiction | 具有管辖辖区（has governing jurisdiction） | 标识各方约定的合同管辖辖区。 | 定义域（domain）：合同（contract）；值域（range）：管辖权；子属性（subPropertyOf）：受……管辖 |
-| fibo-fnd-agr-ctr:hasMilestoneProvision | 具有里程碑条款（has milestone provision） | 指协议中包含的与合同存续期内某时点履行情况相关的要求。 | 定义域（domain）：协议；值域（range）：合同里程碑（contract milestone）；子属性（subPropertyOf）：具有合同要素（has contractual element） |
-| fibo-fnd-agr-ctr:hasNonBindingTerm | 具有非约束性条款（has non-binding term） | 指协议中包含的、不被视为具有法律约束力的条款。 | 定义域（domain）：协议；值域（range）：非约束性条款（non-binding term）；子属性（subPropertyOf）：具有合同要素（has contractual element） |
-| fibo-fnd-agr-ctr:hasPrincipalParty | 具有主当事方（has principal party） | 标识合同的主要或主当事方。 | 定义域（domain）：合同（contract）；值域（range）：合同主当事方（contract principal）；子属性（subPropertyOf）：具有合同当事方（has contract party） |
-| fibo-fnd-agr-ctr:hasTerm | 具有期限（has term） | 标识某事物（如合同、投资或要约）持续或拟持续的固定或有限期间。 | 值域（range）：时长；子属性（subPropertyOf）：具有时长 |
-| fibo-fnd-agr-ctr:hasThirdParty | 具有第三方（has third party） | 标识不是合同签署方但在合同界定的整体情境中扮演某种角色的参与方。 | 定义域（domain）：合同（contract）；值域（range）：合同第三方（contract third party）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fnd-agr-ctr:isBeneficiaryOf | 是……的受益人（is beneficiary of） | 指明受益人被列名的协议。 | 定义域（domain）：受益方；值域（range）：协议；子属性（subPropertyOf）：受…影响（is affected by） |
-| fibo-fnd-agr-ctr:isEvidenceFor | 是……的证据（is evidence for） | 佐证。 | 逆属性（inverseOf）：由……证明（is evidenced by） |
-| fibo-fnd-agr-ctr:isEvidencedBy | 由……证明（is evidenced by） | 由……证实。 | 逆属性（inverseOf）：是……的证据（is evidence for） |
-| fibo-fnd-agr-ctr:isPrimaryContractFor | 是……的主合同（is primary contract for） | 标识任何从属协议，如附属协议。 | 定义域（domain）：书面合同（written contract）；值域（range）：书面合同（written contract）；逆属性（inverseOf）：从属于（is subordinate to）；子属性（subPropertyOf）：被……引用 |
-| fibo-fnd-agr-ctr:isQualifiedBy | 受……限定（is qualified by） | 标识对某事物的约束、限制或细化。 | 子属性（subPropertyOf）：以……为特征 |
-| fibo-fnd-agr-ctr:isSubordinateTo | 从属于（is subordinate to） | 标识从属协议（如附属协议）所引用的主合同。 | 定义域（domain）：书面合同（written contract）；值域（range）：书面合同（written contract）；子属性（subPropertyOf）：引用 |
-| fibo-fnd-agr-ctr:qualifies | 限定（qualifies） | 限制、约束或细化。 | 逆属性（inverseOf）：受……限定（is qualified by）；子属性（subPropertyOf）：刻画 |
-| fibo-fnd-agr-ctr:supersedes | 取代（supersedes） | 标识先前签署并被本合同替代的合同。 | 定义域（domain）：合同（contract）；值域（range）：合同（contract） |
+- 父类：**发生类别（OccurrenceKind）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-agr-ctr:hasLegalDescription | 具有法律描述（has legal description） | 提供以法律术语表述的合同条款、条文或其他要素的文本或其摘要。 |
-| fibo-fnd-agr-ctr:isAssignable | 可让与（is assignable） | 表明合同及其项下权利是否可由签署方之一让与给其他参与方。 |
-| fibo-fnd-agr-ctr:isNettingAutomatic | 净额结算是否自动（is netting automatic） | 表明净额结算是否在协议范围内自动进行。 |
+| **适用于（appliesTo）** | — | — |
+| **引用（refersTo）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **引用（refersTo）**至少有一个取值，类型是**合同承诺（contractual commitment）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
 
-- **可转让合同（assignable contract）**：**可让与（is assignable）**的取值固定为 true。
-- **双边净额结算条款（bilateral netting provision）**：**适用于（appliesTo）**至少有一个取值，类型是**双边合同（bilateral contract）**。
-- **违约（breach of contract）**：**适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
-- **违约（breach of contract）**：**引用（refersTo）**至少有一个取值，类型是**合同承诺（contractual commitment）**。
-- **违反契约承诺（breach of covenant）**：**适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
-- **违反契约承诺（breach of covenant）**：**引用（refersTo）**至少有一个取值，类型是**合同承诺（contractual commitment）**。
-- **终止净额结算条款（close-out netting provision）**与**结算净额结算条款（settlement netting provision）**互斥：同一个体不能同时属于两者。
-- **附属协议（collateral agreement）**：**从属于（is subordinate to）**至少有一个取值，类型是**书面合同（written contract）**。
-- **合同（contract）**：**具有生效日期（has effective date）**可以有 0 个或多个**日期（Date）**。
-- **合同（contract）**：**具有合同当事方（has contract party）**至少有 2 个**合同当事方（contract party）**。
-- **合同（contract）**：**具有合同要素（has contractual element）**至少有一个取值，类型是**合同要素（contractual element）**。
-- **合同文件（contract document）**：**记录（records）**至少有一个取值，类型是**合同（contract）**。
-- **合同里程碑（contract milestone）**：**分类（classifies）**可以有 0 个或多个**里程碑事件（milestone event）**。
-- **合同里程碑（contract milestone）**：**适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
-- **合同当事方（contract party）**：**由…扮演（is played by）**恰好有 1 个**法律主体（LegalPerson）**。
-- **合同当事方（contract party）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**合同（contract）**。
-- **合同承诺（contractual commitment）**：**具有部分（hasPart）**的所有取值只能是**合同承诺（contractual commitment）**。
-- **合同承诺（contractual commitment）**：**由……授权要求（isMandatedBy）**至少有一个取值，类型是**合同（contract）**。
-- **合同要素（contractual element）**：**具有法律描述（has legal description）**存在取值约束。
-- **提前终止条款（early termination provision）**：**具有到期日（hasExpirationDate）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
-- **展期条款（extension provision）**：**具有可展期期间（has extendable period）**可以有 0 个或多个**显式日期区间（ExplicitDatePeriod）**。
-- **主协议（master agreement）**：**管辖（governs）**可以有 0 个或多个**合同（contract）**。
-- **里程碑事件（milestone event）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**合同里程碑（contract milestone）**。
-- **里程碑进度表（milestone schedule）**：**具有成员（hasMember）**至少有一个取值，类型是**里程碑事件（milestone event）**。
-- **多边净额结算条款（multilateral netting provision）**：**适用于（appliesTo）**至少有一个取值，类型是**多边合同（multilateral contract）**。
-- **多边净额结算条款（multilateral netting provision）**与**双边净额结算条款（bilateral netting provision）**互斥：同一个体不能同时属于两者。
-- **不可转让合同（non-transferable contract）**与**可转让合同（transferable contract）**互斥：同一个体不能同时属于两者。
-- **结算净额结算条款（settlement netting provision）**：该属性存在取值约束。
-- **条款清单（term sheet）**：**具有非约束性条款（has non-binding term）**至少有一个取值，类型是**非约束性条款（non-binding term）**。
-- **单务合同（unilateral contract）**：**授予（confers）**的所有取值只能是**单方面承诺（UnilateralCommitment）**。
-- **口头合同（verbal contract）**与**书面合同（written contract）**互斥：同一个体不能同时属于两者。
-- **书面合同（written contract）**：**具有签署日期（has execution date）**可以有 0 个或多个**日期（Date）**。
-- **书面合同（written contract）**：**具有签发日期（hasDateOfIssuance）**可以有 0 个或多个**日期（Date）**。
-- **书面合同（written contract）**：**具有生效日期时间戳（has effective date time stamp）**可以有 0 个或多个**日期时间戳（DateTimeStamp）**。
-- **书面合同（written contract）**：**具有签署日期时间戳（has execution date time stamp）**可以有 0 个或多个**日期时间戳（DateTimeStamp）**。
-- **书面合同（written contract）**：**可让与（is assignable）**存在取值约束。
-- **书面合同（written contract）**：**具有交易对手（has counterparty）**至少有一个取值，类型是**交易对手（counterparty）**。
-- **书面合同（written contract）**：**具有主当事方（has principal party）**至少有一个取值，类型是**合同主当事方（contract principal）**。
-- **书面合同（written contract）**：**由……证明（is evidenced by）**至少有一个取值，类型是**合同文件（contract document）**。
+### 2.2 违反契约承诺（breach of covenant）
 
-## 6. 依赖（owl:imports，19 个）
+定义：表示在无合法理由的情况下违背合同中所载做或不做某事之承诺的事件分类符。
+
+- 父类：**发生类别（OccurrenceKind）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **引用（refersTo）**至少有一个取值，类型是**合同承诺（contractual commitment）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
+
+### 2.3 合同（contract）
+
+定义：有行为能力的参与方之间自愿、审慎达成的协议，各方同意受法律约束，并为此提供有价值的对价。
+
+- 父类：**协议（Agreement）**
+- 直接子类：**口头合同（verbal contract）**、**书面合同（written contract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **为……定义条款（defines terms for）** | 将合同关联到该合同为其定义具有法律约束力之条款与条件的事物。 | 子属性：定义 |
+| **具有合同期限（has contract duration）** | 标识合同签署后拟生效的时间期间。 | 值域：时长；子属性：具有期限（has term） |
+| **具有合同当事方（has contract party）** | 标识订立了有约束力协议、接受并承担协议所规定义务、责任与利益的参与方。 | 值域：合同当事方（contract party）；子属性：具有参与方角色（has party role） |
+| **具有合同要素（has contractual element）** | 标识作为协议组成部分的某事物。 | 值域：合同要素（contractual element）；子属性：包含 |
+| **具有交易对手（has counterparty）** | 标识合同的当事方，通常不是合同主当事方。 | 值域：交易对手（counterparty）；子属性：具有合同当事方（has contract party） |
+| **具有生效日期（has effective date）** | 标识合同、关系或政策生效的日期。 | 值域：日期；子属性：具有日期 |
+| **具有展期条款（has extension provision）** | 指明允许合同某方面展期的合同条款细节。 | 值域：展期条款（extension provision）；子属性：具有合同要素（has contractual element） |
+| **具有管辖辖区（has governing jurisdiction）** | 标识各方约定的合同管辖辖区。 | 值域：管辖权；子属性：受……管辖 |
+| **具有主当事方（has principal party）** | 标识合同的主要或主当事方。 | 值域：合同主当事方（contract principal）；子属性：具有合同当事方（has contract party） |
+| **具有第三方（has third party）** | 标识不是合同签署方但在合同界定的整体情境中扮演某种角色的参与方。 | 值域：合同第三方（contract third party）；子属性：具有参与方角色（has party role） |
+| **可让与（is assignable）** | 表明合同及其项下权利是否可由签署方之一让与给其他参与方。 | 值域：xsd:boolean |
+| **取代（supersedes）** | 标识先前签署并被本合同替代的合同。 | 值域：合同（contract） |
+
+公理：
+
+- **具有合同当事方（has contract party）**至少有 2 个**合同当事方（contract party）**。
+- **具有合同要素（has contractual element）**至少有一个取值，类型是**合同要素（contractual element）**。
+- **具有生效日期（has effective date）**可以有 0 个或多个**日期（Date）**。
+
+#### 2.3.1 口头合同（verbal contract）
+
+定义：因某种口头交换而成立的合同。
+
+- 父类：**合同（contract）**
+
+公理：
+
+- 与**书面合同（written contract）**互斥：同一个体不能同时属于两者。
+
+#### 2.3.2 书面合同（written contract）
+
+定义：由各方签署的书面正式合同。
+
+- 父类：**合同（contract）**
+- 直接子类：**双边合同（bilateral contract）**、**附属协议（collateral agreement）**、**主协议（master agreement）**、**多边合同（multilateral contract）**、**不可转让合同（non-transferable contract）**、**可转让合同（transferable contract）**、**单务合同（unilateral contract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有交易对手（has counterparty）** | 标识合同的当事方，通常不是合同主当事方。 | 值域：交易对手（counterparty）；子属性：具有合同当事方（has contract party） |
+| **具有生效日期时间戳（has effective date time stamp）** | 标识某事物生效的日期与时间（含时区）。 | 值域：日期时间戳；子属性：具有日期时间戳 |
+| **具有签署日期（has execution date）** | 标识合同已由所有必要当事方签署的日期。 | 值域：日期；子属性：具有日期 |
+| **具有签署日期时间戳（has execution date time stamp）** | 标识合同已由所有必要当事方签署的日期与时间（含时区）。 | 值域：日期时间戳；子属性：具有日期时间戳 |
+| **具有主当事方（has principal party）** | 标识合同的主要或主当事方。 | 值域：合同主当事方（contract principal）；子属性：具有合同当事方（has contract party） |
+| **可让与（is assignable）** | 表明合同及其项下权利是否可由签署方之一让与给其他参与方。 | 值域：xsd:boolean |
+| **由……证明（is evidenced by）** | 由……证实。 | 逆属性：是……的证据（is evidence for） |
+| **是……的主合同（is primary contract for）** | 标识任何从属协议，如附属协议。 | 值域：书面合同（written contract）；逆属性：从属于（is subordinate to）；子属性：被……引用 |
+| **从属于（is subordinate to）** | 标识从属协议（如附属协议）所引用的主合同。 | 值域：书面合同（written contract）；子属性：引用 |
+| **具有签发日期（hasDateOfIssuance）** | — | — |
+
+公理：
+
+- **具有主当事方（has principal party）**至少有一个取值，类型是**合同主当事方（contract principal）**。
+- **具有交易对手（has counterparty）**至少有一个取值，类型是**交易对手（counterparty）**。
+- **具有生效日期时间戳（has effective date time stamp）**可以有 0 个或多个**日期时间戳（DateTimeStamp）**。
+- **具有签发日期（hasDateOfIssuance）**可以有 0 个或多个**日期（Date）**。
+- **具有签署日期时间戳（has execution date time stamp）**可以有 0 个或多个**日期时间戳（DateTimeStamp）**。
+- **具有签署日期（has execution date）**可以有 0 个或多个**日期（Date）**。
+- **可让与（is assignable）**存在取值约束。
+- **由……证明（is evidenced by）**至少有一个取值，类型是**合同文件（contract document）**。
+
+##### 2.3.2.1 双边合同（bilateral contract）
+
+定义：双方承诺对彼此履行特定行为或义务的合同。
+
+- 父类：**双边协议（BilateralAgreement）**、**书面合同（written contract）**
+
+##### 2.3.2.2 附属协议（collateral agreement）
+
+定义：与另一合同相关、旨在为各参与方提供澄清和额外保护、且独立于主合同的书面合同。
+
+- 父类：**书面合同（written contract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **从属于（is subordinate to）** | 标识从属协议（如附属协议）所引用的主合同。 | 值域：书面合同（written contract）；子属性：引用 |
+
+公理：
+
+- **从属于（is subordinate to）**至少有一个取值，类型是**书面合同（written contract）**。
+
+##### 2.3.2.3 主协议（master agreement）
+
+定义：具名参与方之间的合同，列明适用于双方之间若干账户、交易或其他活动的条款与条件。
+
+- 父类：**书面合同（written contract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **管辖（governs）**可以有 0 个或多个**合同（contract）**。
+
+##### 2.3.2.4 多边合同（multilateral contract）
+
+定义：多方（即两方以上）承诺对彼此履行特定行为或义务的合同。
+
+- 父类：**多边协议（MultilateralAgreement）**、**书面合同（written contract）**
+
+##### 2.3.2.5 不可转让合同（non-transferable contract）
+
+定义：未经事先书面许可，其各项权利与义务不得转让给另一方的合同。
+
+- 父类：**书面合同（written contract）**
+
+公理：
+
+- 与**可转让合同（transferable contract）**互斥：同一个体不能同时属于两者。
+
+##### 2.3.2.6 可转让合同（transferable contract）
+
+定义：一方的权利与义务可转让给另一方的合同。
+
+- 父类：**书面合同（written contract）**
+- 直接子类：**可转让合同（assignable contract）**、**可更新合同（novateable contract）**
+
+###### 2.3.2.6.1 可转让合同（assignable contract）
+
+定义：合同持有人（让与人）可将部分或全部权利与义务转让给另一方（受让人）的合同。
+
+- 父类：**可转让合同（transferable contract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **可让与（is assignable）** | 表明合同及其项下权利是否可由签署方之一让与给其他参与方。 | 值域：xsd:boolean |
+
+公理：
+
+- **可让与（is assignable）**的取值固定为 true。
+
+###### 2.3.2.6.2 可更新合同（novateable contract）
+
+定义：可被另一合同替代的合同；替代时原合同项下生效的权利与义务随之消灭。
+
+- 父类：**可转让合同（transferable contract）**
+
+##### 2.3.2.7 单务合同（unilateral contract）
+
+定义：一方作出只能通过履行行为（而非回以承诺）来接受之要约的合同。
+
+- 父类：**书面合同（written contract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **授予（confers）** | — | — |
+
+公理：
+
+- **授予（confers）**的所有取值只能是**单方面承诺（UnilateralCommitment）**。
+
+### 2.4 合同文件（contract document）
+
+定义：记录某合同正式条款与条件的法律文件。
+
+- 父类：**法律文件（LegalDocument）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **记录（records）** | — | — |
+
+公理：
+
+- **记录（records）**至少有一个取值，类型是**合同（contract）**。
+
+### 2.5 合同当事方（contract party）
+
+定义：订立了有约束力协议、接受并承担协议所规定义务、责任与利益的具有法律行为能力的参与方。
+
+- 父类：**参与方角色（party role）**
+- 直接子类：**合同主当事方（contract principal）**、**交易对手（counterparty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**法律主体（LegalPerson）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**合同（contract）**。
+
+#### 2.5.1 合同主当事方（contract principal）
+
+定义：发起合同并在合同作此区分时被标识为第一当事方的参与方。
+
+- 父类：**合同当事方（contract party）**
+
+#### 2.5.2 交易对手（counterparty）
+
+定义：就某项协议与之谈判的合同当事方。
+
+- 父类：**合同当事方（contract party）**
+
+### 2.6 合同第三方（contract third party）
+
+定义：间接参与协议但不是协议对手方的参与方。
+
+- 父类：**参与方角色（party role）**
+
+### 2.7 合同要素（contractual element）
+
+定义：构成协议不可分割部分的要素，如安排、条款、要求、规则、规范和标准。
+
+- 父类：**组成成分（Constituent）**
+- 直接子类：**先决条件（condition precedent）**、**合同承诺（contractual commitment）**、**合同定义（contractual definition）**、**非约束性条款（non-binding term）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有法律描述（has legal description）** | 提供以法律术语表述的合同条款、条文或其他要素的文本或其摘要。 | 值域：xsd:string；子属性：具有描述 |
+
+公理：
+
+- **具有法律描述（has legal description）**存在取值约束。
+
+#### 2.7.1 先决条件（condition precedent）
+
+定义：规定合同某方面生效前必须满足之条件的约定。
+
+- 父类：**合同要素（contractual element）**
+- 直接子类：**合同里程碑（contract milestone）**
+
+##### 2.7.1.1 合同里程碑（contract milestone）
+
+定义：对与合同履行所要求的指定活动、任务或工作段的状态或完成程度相关的事件（里程碑）或事件集的分类符。
+
+- 父类：**先决条件（condition precedent）**、**发生类别（OccurrenceKind）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **分类（classifies）**可以有 0 个或多个**里程碑事件（milestone event）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**合同（contract）**。
+
+#### 2.7.2 合同承诺（contractual commitment）
+
+定义：规定缔约各方所同意事项（即一方所作履行某行为的许诺或保证）的条款。
+
+- 父类：**合同要素（contractual element）**
+- 直接子类：**披露条款（disclosure provision）**、**展期条款（extension provision）**、**净额结算条款（netting provision）**、**通知条款（notification provision）**、**陈述（representation）**、**终止条款（termination provision）**、**募集资金用途条款（use of proceeds provision）**、**保证（warranty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授权要求（isMandatedBy）** | — | — |
+| **具有部分（hasPart）** | — | — |
+
+公理：
+
+- **具有部分（hasPart）**的所有取值只能是**合同承诺（contractual commitment）**。
+- **由……授权要求（isMandatedBy）**至少有一个取值，类型是**合同（contract）**。
+
+##### 2.7.2.1 披露条款（disclosure provision）
+
+定义：列明一方或双方相互披露特定信息之要求与责任的合同条款。
+
+- 父类：**合同承诺（contractual commitment）**
+
+##### 2.7.2.2 展期条款（extension provision）
+
+定义：规定合同可展期之条件的合同条款。
+
+- 父类：**合同承诺（contractual commitment）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有可展期期间（has extendable period）** | 标识按合同条款允许展期的时间窗口。 | 值域：显式日期区间；子属性：具有日期区间 |
+
+公理：
+
+- **具有可展期期间（has extendable period）**可以有 0 个或多个**显式日期区间（ExplicitDatePeriod）**。
+
+##### 2.7.2.3 净额结算条款（netting provision）
+
+定义：规定通过汇总（合并）两项或多项义务以降低信用、结算及其他风险之方法的合同要素。
+
+- 父类：**合同承诺（contractual commitment）**
+- 直接子类：**双边净额结算条款（bilateral netting provision）**、**终止净额结算条款（close-out netting provision）**、**多边净额结算条款（multilateral netting provision）**、**更新净额结算条款（novation netting provision）**、**支付净额结算条款（payment netting provision）**、**结算净额结算条款（settlement netting provision）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **净额结算是否自动（is netting automatic）** | 表明净额结算是否在协议范围内自动进行。 | 值域：xsd:boolean |
+
+###### 2.7.2.3.1 双边净额结算条款（bilateral netting provision）
+
+定义：两方之间的净额结算条款，相互义务相互抵销以确定单笔净支付额。
+
+- 父类：**净额结算条款（netting provision）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**双边合同（bilateral contract）**。
+
+###### 2.7.2.3.2 终止净额结算条款（close-out netting provision）
+
+定义：可在交易对手违约时触发的净额结算条款，导致双方之间所有未了结交易终止。
+
+- 父类：**净额结算条款（netting provision）**
+
+公理：
+
+- 与**结算净额结算条款（settlement netting provision）**互斥：同一个体不能同时属于两者。
+
+###### 2.7.2.3.3 多边净额结算条款（multilateral netting provision）
+
+定义：触发时由中央清算所或金融机构促成的净额结算条款。
+
+- 父类：**净额结算条款（netting provision）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**多边合同（multilateral contract）**。
+- 与**双边净额结算条款（bilateral netting provision）**互斥：同一个体不能同时属于两者。
+
+###### 2.7.2.3.4 更新净额结算条款（novation netting provision）
+
+定义：规定给定合同被另一合同替代时净额结算应如何处理的合同要素。
+
+- 父类：**净额结算条款（netting provision）**
+
+###### 2.7.2.3.5 支付净额结算条款（payment netting provision）
+
+定义：规定双方之间以单一货币应付的所有款项将如何在每个交易日汇总的净额结算条款。
+
+- 父类：**净额结算条款（netting provision）**
+
+###### 2.7.2.3.6 结算净额结算条款（settlement netting provision）
+
+定义：规定在给定支付日各方将如何汇总其应交付的某货币金额的净额结算条款。
+
+- 父类：**净额结算条款（netting provision）**
+
+公理：
+
+- 该属性存在取值约束。
+
+##### 2.7.2.4 通知条款（notification provision）
+
+定义：表明相关事件发生前须作出通知的条款。
+
+- 父类：**合同承诺（contractual commitment）**
+
+##### 2.7.2.5 陈述（representation）
+
+定义：合同一方在订约前或订约时就某事实、情况所作的声明，属于合同要素。
+
+- 父类：**合同承诺（contractual commitment）**
+
+##### 2.7.2.6 终止条款（termination provision）
+
+定义：规定各方在何种情形下可解除其法律关系并停止履行合同义务的合同要素。
+
+- 父类：**合同承诺（contractual commitment）**
+- 直接子类：**提前终止条款（early termination provision）**
+
+###### 2.7.2.6.1 提前终止条款（early termination provision）
+
+定义：在到期日前因任何原因终止协议的条款。
+
+- 父类：**终止条款（termination provision）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有到期日（hasExpirationDate）** | — | — |
+
+公理：
+
+- **具有到期日（hasExpirationDate）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+
+##### 2.7.2.7 募集资金用途条款（use of proceeds provision）
+
+定义：规定通过融资（如信贷协议、发行、认股权证或其他工具）所获得资金之拟定用途的合同条款。
+
+- 父类：**合同承诺（contractual commitment）**
+
+##### 2.7.2.8 保证（warranty）
+
+定义：作为事实声明的合同要素。
+
+- 父类：**合同承诺（contractual commitment）**
+
+#### 2.7.3 合同定义（contractual definition）
+
+定义：规定法律文件中某术语含义的合同要素，该定义在术语每次出现时可替代该术语。
+
+- 父类：**合同要素（contractual element）**
+
+#### 2.7.4 非约束性条款（non-binding term）
+
+定义：对协议任何一方均不具法律约束力的合同要素。
+
+- 父类：**合同要素（contractual element）**
+
+### 2.8 里程碑事件（milestone event）
+
+定义：与合同履行所要求的指定活动、任务或工作段的状态或完成程度相关的事件。
+
+- 父类：**发生事项（Occurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**合同里程碑（contract milestone）**。
+
+### 2.9 里程碑进度表（milestone schedule）
+
+定义：里程碑事件、观测或其他发生事项及其完成日期和/或时间的进度表。
+
+- 父类：**进度表（Schedule）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**里程碑事件（milestone event）**。
+
+### 2.10 条款清单（term sheet）
+
+定义：列明拟议商业交易可能达成之基本条款与条件的非约束性协议。
+
+- 父类：**协议（Agreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有非约束性条款（has non-binding term）** | 指协议中包含的、不被视为具有法律约束力的条款。 | 值域：非约束性条款（non-binding term）；子属性：具有合同要素（has contractual element） |
+
+公理：
+
+- **具有非约束性条款（has non-binding term）**至少有一个取值，类型是**非约束性条款（non-binding term）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有受益人（has beneficiary）** | 按协议规定从某事物获得利益、好处或收益的参与方。 | 值域：受益方；子属性：具有交易对手（has counterparty） |
+| **具有提前终止日（has early termination date）** | 标识早于明示到期日的终止日期。 | 值域：显式日期；子属性：具有终止日 |
+| **具有里程碑条款（has milestone provision）** | 指协议中包含的与合同存续期内某时点履行情况相关的要求。 | 值域：合同里程碑（contract milestone）；子属性：具有合同要素（has contractual element） |
+| **具有期限（has term）** | 标识某事物（如合同、投资或要约）持续或拟持续的固定或有限期间。 | 值域：时长；子属性：具有时长 |
+| **是……的受益人（is beneficiary of）** | 指明受益人被列名的协议。 | 值域：协议；子属性：受…影响（is affected by） |
+| **是……的证据（is evidence for）** | 佐证。 | 逆属性：由……证明（is evidenced by） |
+| **受……限定（is qualified by）** | 标识对某事物的约束、限制或细化。 | 子属性：以……为特征 |
+| **限定（qualifies）** | 限制、约束或细化。 | 逆属性：受……限定（is qualified by）；子属性：刻画 |
+
+## 4. 依赖（owl:imports，19 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -221,7 +651,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Contracts.rdf`
 - 中文 Turtle：`Contracts.ttl`

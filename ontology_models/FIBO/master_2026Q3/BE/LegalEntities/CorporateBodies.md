@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与法律主体的差别——法律主体包括自然人和法人，法人团体仅指组织型法人；与正式商业组织的差别——法人团体强调法律人格，可以是非营利组织，正式商业组织强调营利目的。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **公益公司（benefit corporation）** 继承 **非营利公司（not-for-profit corporation）**
+- **董事会协议（board agreement）** 继承 **组织基础协议（OrganizationCoveringAgreement）**
+- **共同利益开发公司（common interest development corporation）** 继承 **非营利公司（not-for-profit corporation）**
+- **公司（corporation）** 继承 **法律实体（LegalEntity）**
+- **营利公司（for profit corporation）** 继承 **公司（corporation）**
+- **注册成立担保（incorporation guarantee）** 继承 **宪章（Constitution）**
+- **注册成立文书（instrument of incorporation）** 继承 **宪章（Constitution）**
+- **合股公司（joint stock company）** 继承 **企业实体（BusinessEntity）**
+- **非营利公司（not-for-profit corporation）** 继承 **公司（corporation）**
+- **非营利公司（not-for-profit corporation）** 继承 **非营利组织（NotForProfitOrganization）**
+- **私人持股公司（privately held company）** 继承 **股份公司（stock corporation）**
+- **公众持股公司（publicly held company）** 继承 **股份公司（stock corporation）**
+- 其余 4 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -34,64 +50,209 @@
 | 宗教公司（religious corporation） | 目标特定于某套基本信仰与实践的非营利公司。 |
 | 股份公司（stock corporation） | 拥有股东的公司，每位股东通过股票获得公司部分所有权。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 公益公司（benefit corporation） ⊑ 非营利公司（not-for-profit corporation）
-- 董事会协议（board agreement） ⊑ 组织基础协议
-- 共同利益开发公司（common interest development corporation） ⊑ 非营利公司（not-for-profit corporation）
-- 公司（corporation） ⊑ 法律实体
-- 营利公司（for profit corporation） ⊑ 公司（corporation）
-- 注册成立担保（incorporation guarantee） ⊑ 宪章
-- 注册成立文书（instrument of incorporation） ⊑ 宪章
-- 合股公司（joint stock company） ⊑ 企业实体
-- 非营利公司（not-for-profit corporation） ⊑ 公司（corporation）
-- 非营利公司（not-for-profit corporation） ⊑ 非营利组织
-- 私人持股公司（privately held company） ⊑ 股份公司（stock corporation）
-- 公众持股公司（publicly held company） ⊑ 股份公司（stock corporation）
-- 注册标识符（registration identifier） ⊑ 组织标识符
-- 注册标识符方案（registration identifier scheme） ⊑ 组织标识方案
-- 宗教公司（religious corporation） ⊑ 非营利公司（not-for-profit corporation）
-- 股份公司（stock corporation） ⊑ 公司（corporation）
+### 2.1 董事会协议（board agreement）
 
-## 3. 对象属性（Object Property）
+定义：组织董事会成员之间正式的、具有法律约束力的协议。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-le-cb:hasDateOfIncorporation | 具有注册成立日期（has date of incorporation） | 标识申报文件中所载的正式注册成立日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-be-le-cb:hasDateOfRegistration | 具有登记日期（has date of registration） | 标识公司为监管和/或税务目的在某管辖区登记的日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-be-le-cb:hasIssuedCapital | 具有已发行资本（has issued capital） | 标识股东所持全部股份的总价值。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-be-le-cb:isConstitutedBy | 由……设立（is constituted by） | 实体据以注册成立的文书。 | 定义域（domain）：公司（corporation）；值域（range）：宪章 |
-| fibo-be-le-cb:isIncorporatedIn | 注册成立于（is incorporated in） | 法律实体注册成立所在的法律管辖区。 | 定义域（domain）：公司（corporation）；值域（range）：管辖权；子属性（subPropertyOf）：组建于 |
+- 父类：**组织基础协议（OrganizationCoveringAgreement）**
 
-## 4. 数据属性（Datatype Property）
+### 2.2 公司（corporation）
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+定义：作为法律实体（拟制人）、区别于其所有者、依州或国家法律管辖区设立的正式组织。
+
+- 父类：**法律实体（LegalEntity）**
+- 直接子类：**营利公司（for profit corporation）**、**非营利公司（not-for-profit corporation）**、**股份公司（stock corporation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-be-le-cb:hasSharesAuthorized | 具有授权股份数（has shares authorized） | 标识董事会确定的可发行股份的最大数量。 |
+| **由……设立（is constituted by）** | 实体据以注册成立的文书。 | 值域：宪章 |
+| **注册成立于（is incorporated in）** | 法律实体注册成立所在的法律管辖区。 | 值域：管辖权；子属性：组建于 |
+| **具有法定名称（hasLegalName）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有法定名称（hasLegalName）**至少有一个取值，类型是**xsd:string（string）**。
+- **注册成立于（is incorporated in）**恰好有 1 个**管辖权（Jurisdiction）**。
+- **由……设立（is constituted by）**可以有 0 个或多个**注册成立文书（instrument of incorporation）**。
 
-- **公司（corporation）**：**由……设立（is constituted by）**可以有 0 个或多个**注册成立文书（instrument of incorporation）**。
-- **公司（corporation）**：**注册成立于（is incorporated in）**恰好有 1 个**管辖权（Jurisdiction）**。
-- **公司（corporation）**：**具有法定名称（hasLegalName）**至少有一个取值，类型是**xsd:string（string）**。
-- **营利公司（for profit corporation）**：**具有目标（hasObjective）**可以有 0 个或多个**盈利目标（ProfitObjective）**。
-- **营利公司（for profit corporation）**与**非营利公司（not-for-profit corporation）**互斥：同一个体不能同时属于两者。
-- **注册成立担保（incorporation guarantee）**：**由……提供（isProvidedBy）**存在取值约束。
-- **注册成立担保（incorporation guarantee）**：**具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
-- **注册成立文书（instrument of incorporation）**：**受……管辖（isGovernedBy）**恰好有 1 个**管辖权（Jurisdiction）**。
-- **注册标识符（registration identifier）**：**受……管辖（isGovernedBy）**可以有 0 个或多个**管辖权（Jurisdiction）**。
-- **注册标识符（registration identifier）**：**标识（identifies）**恰好有 1 个**正式组织（FormalOrganization）**。
-- **注册标识符（registration identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**注册标识符方案（registration identifier scheme）**。
-- **注册标识符方案（registration identifier scheme）**：**定义（defines）**至少有一个取值，类型是**注册标识符（registration identifier）**。
-- **宗教公司（religious corporation）**：**具有目标（hasObjective）**至少有一个取值，类型是**宗教目标（ReligiousObjective）**。
-- **股份公司（stock corporation）**：**具有登记日期（has date of registration）**可以有 0 个或多个**显式日期（ExplicitDate）**。
-- **股份公司（stock corporation）**：**具有已发行资本（has issued capital）**恰好有 1 个**货币数量（MonetaryAmount）**。
-- **股份公司（stock corporation）**：**具有注册成立日期（has date of incorporation）**恰好有 1 个**显式日期（ExplicitDate）**。
-- **股份公司（stock corporation）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**董事会协议（board agreement）**。
+#### 2.2.1 营利公司（for profit corporation）
 
-## 6. 依赖（owl:imports，13 个）
+定义：以赚钱为目标的公司，即确保实现财务利益，使业务收入超过支出。
+
+- 父类：**公司（corporation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（hasObjective）** | — | — |
+
+公理：
+
+- **具有目标（hasObjective）**可以有 0 个或多个**盈利目标（ProfitObjective）**。
+- 与**非营利公司（not-for-profit corporation）**互斥：同一个体不能同时属于两者。
+
+#### 2.2.2 非营利公司（not-for-profit corporation）
+
+定义：经辖区监管与税务机关批准、为教育、慈善、社会、宗教、公民或人道目的运营的公司。
+
+- 父类：**公司（corporation）**、**非营利组织（NotForProfitOrganization）**
+- 直接子类：**公益公司（benefit corporation）**、**共同利益开发公司（common interest development corporation）**、**宗教公司（religious corporation）**
+
+##### 2.2.2.1 公益公司（benefit corporation）
+
+定义：依特定州立法设立的非营利公司，通常旨在提供某种社会利益，无最大化股东价值的义务。
+
+- 父类：**非营利公司（not-for-profit corporation）**
+
+##### 2.2.2.2 共同利益开发公司（common interest development corporation）
+
+定义：依特定州立法为业主协会设立的非营利公司型企业实体。
+
+- 父类：**非营利公司（not-for-profit corporation）**
+
+##### 2.2.2.3 宗教公司（religious corporation）
+
+定义：目标特定于某套基本信仰与实践的非营利公司。
+
+- 父类：**非营利公司（not-for-profit corporation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（hasObjective）** | — | — |
+
+公理：
+
+- **具有目标（hasObjective）**至少有一个取值，类型是**宗教目标（ReligiousObjective）**。
+
+#### 2.2.3 股份公司（stock corporation）
+
+定义：拥有股东的公司，每位股东通过股票获得公司部分所有权。
+
+- 父类：**公司（corporation）**
+- 直接子类：**私人持股公司（privately held company）**、**公众持股公司（publicly held company）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有注册成立日期（has date of incorporation）** | 标识申报文件中所载的正式注册成立日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有登记日期（has date of registration）** | 标识公司为监管和/或税务目的在某管辖区登记的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有已发行资本（has issued capital）** | 标识股东所持全部股份的总价值。 | 值域：货币数量；子属性：具有货币数量 |
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **具有已发行资本（has issued capital）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **具有注册成立日期（has date of incorporation）**恰好有 1 个**显式日期（ExplicitDate）**。
+- **具有登记日期（has date of registration）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**董事会协议（board agreement）**。
+
+##### 2.2.3.1 私人持股公司（privately held company）
+
+定义：已发行股份全部由家族或少数投资者团体持有、公众无法购买的公司。
+
+- 父类：**股份公司（stock corporation）**
+
+##### 2.2.3.2 公众持股公司（publicly held company）
+
+定义：股份公开交易并持有的公司。
+
+- 父类：**股份公司（stock corporation）**
+
+### 2.3 注册成立担保（incorporation guarantee）
+
+定义：构成某法律实体注册成立之财务基础一部分的担保。
+
+- 父类：**宪章（Constitution）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有名义金额（hasNotionalAmount）** | — | — |
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **由……提供（isProvidedBy）**存在取值约束。
+
+### 2.4 注册成立文书（instrument of incorporation）
+
+定义：据以设立某法律实体的组织章程大纲及章程细则。
+
+- 父类：**宪章（Constitution）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**恰好有 1 个**管辖权（Jurisdiction）**。
+
+### 2.5 合股公司（joint stock company）
+
+定义：营利性、非法人企业，兼有公司与合伙的特征，所有权权益以股份表示。
+
+- 父类：**企业实体（BusinessEntity）**
+
+### 2.6 注册标识符（registration identifier）
+
+定义：组织注册时（通常在其组建所在管辖区）官方分配的标识符。
+
+- 父类：**组织标识符（OrganizationIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+| **标识（identifies）** | — | — |
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**可以有 0 个或多个**管辖权（Jurisdiction）**。
+- **定义于（isDefinedIn）**至少有一个取值，类型是**注册标识符方案（registration identifier scheme）**。
+- **标识（identifies）**恰好有 1 个**正式组织（FormalOrganization）**。
+
+### 2.7 注册标识符方案（registration identifier scheme）
+
+定义：按签发注册机构规定注册标识符的方案。
+
+- 父类：**组织标识方案（OrganizationIdentificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**注册标识符（registration identifier）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有授权股份数（has shares authorized）** | 标识董事会确定的可发行股份的最大数量。 |
+
+## 4. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -111,7 +272,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`CorporateBodies.rdf`
 - 中文 Turtle：`CorporateBodies.ttl`

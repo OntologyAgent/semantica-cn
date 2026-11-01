@@ -14,6 +14,15 @@
 
 **与相近概念的差别**：行权惯例是「什么时候可以行权」的规则约定，区别于行权行为本身；三种惯例的差别在行权时间窗口的宽窄。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **美式行权条款（American exercise terms）** 继承 **行权条款（exercise terms）**
+- **百慕大式行权条款（Bermudan exercise terms）** 继承 **行权条款（exercise terms）**
+- **欧式行权条款（European exercise terms）** 继承 **行权条款（exercise terms）**
+- **金丝雀式行权条款（canary exercise terms）** 继承 **百慕大式行权条款（Bermudan exercise terms）**
+- **行权惯例（exercise convention）** 继承 **惯例（Convention）**
+- **行权条款（exercise terms）** 继承 **合同承诺（ContractualCommitment）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -25,40 +34,116 @@
 | 行权惯例（exercise convention） | 确定期权持有人或未来持有人何时可以行使期权所规定权利的惯例。 |
 | 行权条款（exercise terms） | 与期权或权益凭证行权相关的条件、惯例和其他规定的合同条款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 美式行权条款（American exercise terms） ⊑ 行权条款（exercise terms）
-- 百慕大式行权条款（Bermudan exercise terms） ⊑ 行权条款（exercise terms）
-- 欧式行权条款（European exercise terms） ⊑ 行权条款（exercise terms）
-- 金丝雀式行权条款（canary exercise terms） ⊑ 百慕大式行权条款（Bermudan exercise terms）
-- 行权惯例（exercise convention） ⊑ 惯例
-- 行权条款（exercise terms） ⊑ 合同承诺
+### 2.1 行权惯例（exercise convention）
 
-## 3. 对象属性（Object Property）
+定义：确定期权持有人或未来持有人何时可以行使期权所规定权利的惯例。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-dbt-ex:hasExerciseDate | 具有行权日（has exercise date） | 指明合约条款规定的期权可行权的日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-sec-dbt-ex:hasExerciseTerms | 具有行权条款（has exercise terms） | 将期权或权益凭证等衍生品与其中规定的行权条款关联起来。 | 定义域（domain）：衍生工具；值域（range）：行权条款（exercise terms）；子属性（subPropertyOf）：具有合同要素 |
-| fibo-sec-dbt-ex:hasExerciseWindow | 具有行权窗口（has exercise window） | 指明合约条款规定的期权可行权的时间段。 | 值域（range）：日期区间 |
+- 父类：**惯例（Convention）**
 
-## 5. 公理约定（Axioms）
+### 2.2 行权条款（exercise terms）
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+定义：与期权或权益凭证行权相关的条件、惯例和其他规定的合同条款。
 
-- **美式行权条款（American exercise terms）**：**使用（uses）**的取值固定为 AmericanExerciseConvention。
-- **美式行权条款（American exercise terms）**与**百慕大式行权条款（Bermudan exercise terms）**互斥：同一个体不能同时属于两者。
-- **美式行权条款（American exercise terms）**与**欧式行权条款（European exercise terms）**互斥：同一个体不能同时属于两者。
-- **百慕大式行权条款（Bermudan exercise terms）**：**使用（uses）**的取值固定为 BermudanExerciseConvention。
-- **百慕大式行权条款（Bermudan exercise terms）**：**具有行权日（has exercise date）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
-- **百慕大式行权条款（Bermudan exercise terms）**：**具有行权窗口（has exercise window）**至少有一个取值，类型是**日期区间（DatePeriod）**。
-- **百慕大式行权条款（Bermudan exercise terms）**与**欧式行权条款（European exercise terms）**互斥：同一个体不能同时属于两者。
-- **欧式行权条款（European exercise terms）**：**使用（uses）**的取值固定为 EuropeanExerciseConvention。
-- **欧式行权条款（European exercise terms）**：**具有行权日（has exercise date）**恰好有 1 个**显式日期（ExplicitDate）**。
-- **金丝雀式行权条款（canary exercise terms）**：**使用（uses）**的取值固定为 CanaryExerciseConvention。
-- **行权条款（exercise terms）**：**使用（uses）**至少有一个取值，类型是**行权惯例（exercise convention）**。
+- 父类：**合同承诺（ContractualCommitment）**
+- 直接子类：**美式行权条款（American exercise terms）**、**百慕大式行权条款（Bermudan exercise terms）**、**欧式行权条款（European exercise terms）**
 
-## 6. 依赖（owl:imports，7 个）
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **使用（uses）** | — | — |
+
+公理：
+
+- **使用（uses）**至少有一个取值，类型是**行权惯例（exercise convention）**。
+
+#### 2.2.1 美式行权条款（American exercise terms）
+
+定义：规定期权可在到期日或之前任何时间行权的行权条款。
+
+- 父类：**行权条款（exercise terms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **使用（uses）** | — | — |
+
+公理：
+
+- **使用（uses）**的取值固定为 AmericanExerciseConvention。
+- 与**百慕大式行权条款（Bermudan exercise terms）**互斥：同一个体不能同时属于两者。
+- 与**欧式行权条款（European exercise terms）**互斥：同一个体不能同时属于两者。
+
+#### 2.2.2 百慕大式行权条款（Bermudan exercise terms）
+
+定义：规定期权仅可在行权窗口内的预定日期（通常每月或每周某一日）行权的行权条款。
+
+- 父类：**行权条款（exercise terms）**
+- 直接子类：**金丝雀式行权条款（canary exercise terms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权日（has exercise date）** | 指明合约条款规定的期权可行权的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有行权窗口（has exercise window）** | 指明合约条款规定的期权可行权的时间段。 | 值域：日期区间 |
+| **使用（uses）** | — | — |
+
+公理：
+
+- **使用（uses）**的取值固定为 BermudanExerciseConvention。
+- **具有行权日（has exercise date）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **具有行权窗口（has exercise window）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- 与**欧式行权条款（European exercise terms）**互斥：同一个体不能同时属于两者。
+
+##### 2.2.2.1 金丝雀式行权条款（canary exercise terms）
+
+定义：规定期权仅可在达到第一个阶梯日之前的预定日期行权、之后不得行权的行权条款。
+
+- 父类：**百慕大式行权条款（Bermudan exercise terms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **使用（uses）** | — | — |
+
+公理：
+
+- **使用（uses）**的取值固定为 CanaryExerciseConvention。
+
+#### 2.2.3 欧式行权条款（European exercise terms）
+
+定义：规定期权仅可在到期日行权的行权条款。
+
+- 父类：**行权条款（exercise terms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权日（has exercise date）** | 指明合约条款规定的期权可行权的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **使用（uses）** | — | — |
+
+公理：
+
+- **使用（uses）**的取值固定为 EuropeanExerciseConvention。
+- **具有行权日（has exercise date）**恰好有 1 个**显式日期（ExplicitDate）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权条款（has exercise terms）** | 将期权或权益凭证等衍生品与其中规定的行权条款关联起来。 | 值域：行权条款（exercise terms）；子属性：具有合同要素 |
+
+## 4. 依赖（owl:imports，7 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -72,7 +157,7 @@
 | `https://www.omg.org/spec/Commons/ContextualDesignators/` | OMG 通用语境指称本体（OMG Commons Contextual Designators） | Commons 库中的语境指称本体，定义「在某个语境下指代某物的名称/符号」，是地址、账户号码等语境相关标识的基础。 |
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`ExerciseConventions.rdf`
 - 中文 Turtle：`ExerciseConventions.ttl`

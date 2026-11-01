@@ -178,17 +178,17 @@ fibo-be-ptr-ptr:Partner a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
-                    owl:onProperty cmns-col:isMemberOf ;
-                    owl:someValuesFrom fibo-be-ptr-ptr:Partnership ] ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-pts:isAPartyTo ;
                     owl:someValuesFrom fibo-be-ptr-ptr:PartnershipAgreement ] ],
         [ a owl:Restriction ;
             owl:onClass cmns-org:LegalPerson ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty cmns-col:isMemberOf ;
+                    owl:someValuesFrom fibo-be-ptr-ptr:Partnership ] ],
         fibo-be-oac-opty:ConstitutionalOwner,
         cmns-org:OrganizationMember ;
     skos:definition "co-owner, member, and agent of a partnership whose participation level, including proportional liabilities and share in the profit / loss of the business is specified in a partnership agreement" .
@@ -221,14 +221,14 @@ fibo-be-ptr-ptr:Partnership a owl:Class ;
         "合伙（partnership）"@zh ;
     rdfs:comment "两个或两个以上法律主体为盈利而作为共同所有人经营业务的联合。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-be-le-lp:ProfitObjective ;
-            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:playsRole ;
                     owl:someValuesFrom fibo-be-ptr-ptr:Partner ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-le-lp:ProfitObjective ;
+            owl:onProperty fibo-fnd-gao-obj:hasObjective ],
         [ a owl:Restriction ;
             owl:onProperty cmns-rga:isGovernedBy ;
             owl:someValuesFrom fibo-be-ptr-ptr:PartnershipAgreement ],

@@ -14,6 +14,19 @@
 
 **与相近概念的差别**：篮子≠池——篮子是参照/交易单位（如指数成分、ETF 申购清单），池是证券化的现金流来源；篮子≠组合（portfolio）——篮子是标准化清单，组合是持有人实际持仓。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **指数篮子成分（basket of indices constituent）** 继承 **加权篮子成分（WeightedBasketConstituent）**
+- **指数篮子成分（basket of indices constituent）** 继承 **带日期集合成分（DatedCollectionConstituent）**
+- **证券篮子（basket of securities）** 继承 **加权篮子（WeightedBasket）**
+- **证券篮子（basket of securities）** 继承 **带日期结构化集合（DatedStructuredCollection）**
+- **市场篮子（market basket）** 继承 **加权篮子（WeightedBasket）**
+- **市场篮子（market basket）** 继承 **带日期结构化集合（DatedStructuredCollection）**
+- **混合篮子（mixed basket）** 继承 **加权篮子（WeightedBasket）**
+- **混合篮子（mixed basket）** 继承 **带日期结构化集合（DatedStructuredCollection）**
+- **证券篮子成分（securities basket constituent）** 继承 **加权篮子成分（WeightedBasketConstituent）**
+- **证券篮子成分（securities basket constituent）** 继承 **带日期集合成分（DatedCollectionConstituent）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -24,32 +37,93 @@
 | 混合篮子（mixed basket） | 成分混合的篮子，同时包含证券和指数。 |
 | 证券篮子成分（securities basket constituent） | 被标识为证券篮子组成部分的证券。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 指数篮子成分（basket of indices constituent） ⊑ 加权篮子成分
-- 指数篮子成分（basket of indices constituent） ⊑ 带日期集合成分
-- 证券篮子（basket of securities） ⊑ 加权篮子
-- 证券篮子（basket of securities） ⊑ 带日期结构化集合
-- 市场篮子（market basket） ⊑ 加权篮子
-- 市场篮子（market basket） ⊑ 带日期结构化集合
-- 混合篮子（mixed basket） ⊑ 加权篮子
-- 混合篮子（mixed basket） ⊑ 带日期结构化集合
-- 证券篮子成分（securities basket constituent） ⊑ 加权篮子成分
-- 证券篮子成分（securities basket constituent） ⊑ 带日期集合成分
+### 2.1 指数篮子成分（basket of indices constituent）
 
-## 5. 公理约定（Axioms）
+定义：指数篮子的单一成分。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**加权篮子成分（WeightedBasketConstituent）**、**带日期集合成分（DatedCollectionConstituent）**
 
-- **指数篮子成分（basket of indices constituent）**：**包含（comprises）**的所有取值只能是**Nb6e1d3c1313a4d6f9d704058a3b7b1b5**。
-- **指数篮子成分（basket of indices constituent）**：**具有加入日期（hasDateAdded）**至多有 1 个**显式日期（ExplicitDate）**。
-- **证券篮子（basket of securities）**：**具有成员（hasMember）**至少有一个取值，类型是**证券篮子成分（securities basket constituent）**。
-- **市场篮子（market basket）**：**具有成员（hasMember）**至少有一个取值，类型是**指数篮子成分（basket of indices constituent）**。
-- **混合篮子（mixed basket）**：**具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **证券篮子成分（securities basket constituent）**：**包含（comprises）**的所有取值只能是**证券（Security）**。
-- **证券篮子成分（securities basket constituent）**：**具有加入日期（hasDateAdded）**至多有 1 个**显式日期（ExplicitDate）**。
+属性：
 
-## 6. 依赖（owl:imports，9 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有加入日期（hasDateAdded）** | — | — |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有加入日期（hasDateAdded）**至多有 1 个**显式日期（ExplicitDate）**。
+- **包含（comprises）**的所有取值只能是**Nc8290ba6d7f541ffa00ab6b70b7ad637**。
+
+### 2.2 证券篮子（basket of securities）
+
+定义：由证券组成的篮子，通常为某一特定资产类别（如股票或债券）。
+
+- 父类：**加权篮子（WeightedBasket）**、**带日期结构化集合（DatedStructuredCollection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**证券篮子成分（securities basket constituent）**。
+
+### 2.3 市场篮子（market basket）
+
+定义：由市场指数组成的篮子。
+
+- 父类：**加权篮子（WeightedBasket）**、**带日期结构化集合（DatedStructuredCollection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**指数篮子成分（basket of indices constituent）**。
+
+### 2.4 混合篮子（mixed basket）
+
+定义：成分混合的篮子，同时包含证券和指数。
+
+- 父类：**加权篮子（WeightedBasket）**、**带日期结构化集合（DatedStructuredCollection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.5 证券篮子成分（securities basket constituent）
+
+定义：被标识为证券篮子组成部分的证券。
+
+- 父类：**加权篮子成分（WeightedBasketConstituent）**、**带日期集合成分（DatedCollectionConstituent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有加入日期（hasDateAdded）** | — | — |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有加入日期（hasDateAdded）**至多有 1 个**显式日期（ExplicitDate）**。
+- **包含（comprises）**的所有取值只能是**证券（Security）**。
+
+## 3. 依赖（owl:imports，9 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -65,7 +139,7 @@
 | `https://www.omg.org/spec/Commons/Collections/` | OMG 通用集合本体（OMG Commons Collections） | Commons 库中的集合本体，定义集合、成员等通用概念。 |
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`Baskets.rdf`
 - 中文 Turtle：`Baskets.ttl`

@@ -8,6 +8,18 @@
 
 定义协议概念以及参与方在协议中所扮演角色的本体。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **协议（agreement）** 继承 **情境（situation）**
+- **受益方（beneficiary）** 继承 **参与方角色（party role）**
+- **双边协议（bilateral agreement）** 继承 **协议（agreement）**
+- **承诺（commitment）** 继承 **情境（situation）**
+- **公开承诺（commitment at large）** 继承 **单方面承诺（unilateral commitment）**
+- **多边协议（multilateral agreement）** 继承 **协议（agreement）**
+- **权利人（obligee）** 继承 **参与方角色（party role）**
+- **义务人（obligor）** 继承 **参与方角色（party role）**
+- **单方面承诺（unilateral commitment）** 继承 **承诺（commitment）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -22,41 +34,151 @@
 | 义务人（obligor） | 根据法律或协议有义务偿还债务、付款、做某事或不做某事的参与方。 |
 | 单方面承诺（unilateral commitment） | 由一方作出、无需另一方作出对等承诺的承诺或义务。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 协议（agreement） ⊑ 情境（situation）
-- 受益方（beneficiary） ⊑ 参与方角色（party role）
-- 双边协议（bilateral agreement） ⊑ 协议（agreement）
-- 承诺（commitment） ⊑ 情境（situation）
-- 公开承诺（commitment at large） ⊑ 单方面承诺（unilateral commitment）
-- 多边协议（multilateral agreement） ⊑ 协议（agreement）
-- 权利人（obligee） ⊑ 参与方角色（party role）
-- 义务人（obligor） ⊑ 参与方角色（party role）
-- 单方面承诺（unilateral commitment） ⊑ 承诺（commitment）
+### 2.1 协议（agreement）
 
-## 3. 对象属性（Object Property）
+定义：两个或多个参与方之间经协商达成的理解，体现各方作出的承诺及其接受。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-agr-agr:hasObligation | 具有义务（has obligation） | 标识某参与方已承担的某项义务。 | 定义域（domain）：义务人（obligor）；逆属性（inverseOf）：属于义务人（is obligation of） |
-| fibo-fnd-agr-agr:isObligationOf | 属于义务人（is obligation of） | 标识承担某项义务的参与方。 | 值域（range）：义务人（obligor）；子属性（subPropertyOf）：具有参与方角色（has party role） |
+- 父类：**情境（situation）**
+- 直接子类：**双边协议（bilateral agreement）**、**多边协议（multilateral agreement）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **授予（confers）** | — | — |
+| **具有参与方角色（has party role）** | — | — |
 
-- **协议（agreement）**：**授予（confers）**可以有 0 个或多个**承诺（commitment）**。
-- **协议（agreement）**：**具有参与方角色（has party role）**至少有 2 个**参与方角色（party role）**。
-- **受益方（beneficiary）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
-- **双边协议（bilateral agreement）**：**具有参与方角色（has party role）**恰好有 2 个**参与方角色（party role）**。
-- **承诺（commitment）**：**具有参与方角色（has party role）**至少有一个取值，类型是**参与方角色（party role）**。
-- **多边协议（multilateral agreement）**：**具有参与方角色（has party role）**至少有 3 个**参与方角色（party role）**。
-- **多边协议（multilateral agreement）**与**双边协议（bilateral agreement）**互斥：同一个体不能同时属于两者。
-- **权利人（obligee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
-- **义务人（obligor）**：**具有义务（has obligation）**至少有一个取值，类型是**承诺（commitment）**。
-- **义务人（obligor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
+公理：
 
-## 6. 依赖（owl:imports，5 个）
+- **具有参与方角色（has party role）**至少有 2 个**参与方角色（party role）**。
+- **授予（confers）**可以有 0 个或多个**承诺（commitment）**。
+
+#### 2.1.1 双边协议（bilateral agreement）
+
+定义：两方承诺相互履行特定义务或责任的协议。
+
+- 父类：**协议（agreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**恰好有 2 个**参与方角色（party role）**。
+
+#### 2.1.2 多边协议（multilateral agreement）
+
+定义：涉及多个参与方的协议。
+
+- 父类：**协议（agreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有 3 个**参与方角色（party role）**。
+- 与**双边协议（bilateral agreement）**互斥：同一个体不能同时属于两者。
+
+### 2.2 受益方（beneficiary）
+
+定义：从某事物中获得某种利益、好处或收益的参与方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
+
+### 2.3 承诺（commitment）
+
+定义：某参与方作出的以某种方式行事或不行事的承诺。
+
+- 父类：**情境（situation）**
+- 直接子类：**单方面承诺（unilateral commitment）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有一个取值，类型是**参与方角色（party role）**。
+
+#### 2.3.1 单方面承诺（unilateral commitment）
+
+定义：由一方作出、无需另一方作出对等承诺的承诺或义务。
+
+- 父类：**承诺（commitment）**
+- 直接子类：**公开承诺（commitment at large）**
+
+##### 2.3.1.1 公开承诺（commitment at large）
+
+定义：某参与方作出、且潜在受益方未直接参与的承诺；可转让证券等的基础。
+
+- 父类：**单方面承诺（unilateral commitment）**
+
+### 2.4 权利人（obligee）
+
+定义：根据法律或协议条款享有某项承诺或义务的参与方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
+
+### 2.5 义务人（obligor）
+
+定义：根据法律或协议有义务偿还债务、付款、做某事或不做某事的参与方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有义务（has obligation）** | 标识某参与方已承担的某项义务。 | 逆属性：属于义务人（is obligation of） |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **具有义务（has obligation）**至少有一个取值，类型是**承诺（commitment）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**可以有 0 个或多个**协议（agreement）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **属于义务人（is obligation of）** | 标识承担某项义务的参与方。 | 值域：义务人（obligor）；子属性：具有参与方角色（has party role） |
+
+## 4. 依赖（owl:imports，5 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -68,7 +190,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Agreements.rdf`
 - 中文 Turtle：`Agreements.ttl`

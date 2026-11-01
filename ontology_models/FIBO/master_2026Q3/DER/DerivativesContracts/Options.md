@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：期权是「权利而非义务」——买方可以不行权，这与期货/远期（双方都有交割义务）是根本差别；与权证的差别——权证由发行人发行、期限更长，期权多在交易所标准化交易。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **篮子期权（basket option）** 继承 **奇异期权（exotic option）**
+- **债券期权（bond option）** 继承 **固定收益期权（fixed income option）**
+- **蝶式策略（butterfly）** 继承 **期权交易策略（option trading strategy）**
+- **看涨期权（call option）** 继承 **期权（Option）**
+- **封顶期权（capped option）** 继承 **普通期权（vanilla option）**
+- **领口策略（collar）** 继承 **期权交易策略（option trading strategy）**
+- **秃鹰价差（condor spread）** 继承 **期权交易策略（option trading strategy）**
+- **备兑看涨期权（covered call）** 继承 **看涨期权（call option）**
+- **股票期权（equity option）** 继承 **普通期权（vanilla option）**
+- **股票期权（equity option）** 继承 **股票衍生品（EquityDerivative）**
+- **奇异期权（exotic option）** 继承 **场外衍生工具（OverTheCounterDerivativeInstrument）**
+- **奇异期权（exotic option）** 继承 **期权（Option）**
+- 其余 27 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -54,118 +70,532 @@
 | 序列期权策略（strip strategy） | 涉及一组带周期性重置日的连续期权的交易策略，各重置区间表现如独立期权。 |
 | 普通期权（vanilla option） | 赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的资产的权利（而非义务）的常见期权。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 篮子期权（basket option） ⊑ 奇异期权（exotic option）
-- 债券期权（bond option） ⊑ 固定收益期权（fixed income option）
-- 蝶式策略（butterfly） ⊑ 期权交易策略（option trading strategy）
-- 看涨期权（call option） ⊑ 期权
-- 封顶期权（capped option） ⊑ 普通期权（vanilla option）
-- 领口策略（collar） ⊑ 期权交易策略（option trading strategy）
-- 秃鹰价差（condor spread） ⊑ 期权交易策略（option trading strategy）
-- 备兑看涨期权（covered call） ⊑ 看涨期权（call option）
-- 股票期权（equity option） ⊑ 普通期权（vanilla option）
-- 股票期权（equity option） ⊑ 股票衍生品
-- 奇异期权（exotic option） ⊑ 场外衍生工具
-- 奇异期权（exotic option） ⊑ 期权
-- 外在价值（extrinsic value） ⊑ 货币数量
-- 护栏策略（fence） ⊑ 期权交易策略（option trading strategy）
-- 固定收益期权（fixed income option） ⊑ 普通期权（vanilla option）
-- 固定收益期权（fixed income option） ⊑ 债务工具衍生品
-- 利率期权（interest rate option） ⊑ 利率衍生品
-- 利率期权（interest rate option） ⊑ 普通期权（vanilla option）
-- 内在价值（intrinsic value） ⊑ 货币数量
-- 铁蝶式策略（iron butterfly） ⊑ 蝶式策略（butterfly）
-- 铁秃鹰策略（iron condor） ⊑ 秃鹰价差（condor spread）
-- 长期股票预期证券（long-term equity anticipation security） ⊑ 股票期权（equity option）
-- 价态（moneyness） ⊑ 分类符
-- 期权持有人（option holder） ⊑ 所有者
-- 期权发行人（option issuer） ⊑ 发行人
-- 期货期权（option on future） ⊑ 普通期权（vanilla option）
-- 期权权利金（option premium） ⊑ 市场价格
-- 期权权利金公式（option premium formula） ⊑ 表达式
-- 期权交易策略（option trading strategy） ⊑ 交易策略
-- 保护性领口策略（protective collar） ⊑ 领口策略（collar）
-- 保护性看跌期权（protective put） ⊑ 看跌期权（put option）
-- 看跌期权（put option） ⊑ 期权
-- 风险逆转策略（risk reversal） ⊑ 期权交易策略（option trading strategy）
-- 标准化期权条款（standardized options terms） ⊑ 标准化条款
-- 跨式策略（straddle） ⊑ 期权交易策略（option trading strategy）
-- 宽跨式策略（strangle） ⊑ 期权交易策略（option trading strategy）
-- 行权价（strike price） ⊑ 货币价格
-- 序列期权策略（strip strategy） ⊑ 期权交易策略（option trading strategy）
-- 普通期权（vanilla option） ⊑ 期权
+### 2.1 看涨期权（call option）
 
-## 3. 对象属性（Object Property）
+定义：赋予买方（持有人）在指定日期或之前按固定价格或公式买入指定资产的权利（而非义务）的期权。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-der-drc-opt:hasCalculatedMarketValue | 具有计算市值（has calculated market value） | 指明截至某一相对日期计算得出、被视为该时期权市场价值的价格。 | 定义域（domain）：期权；值域（range）：期权权利金（option premium）；子属性（subPropertyOf）：具有价格 |
-| fibo-der-drc-opt:hasCapPrice | 具有上限价格（has cap price） | 合约可行权的价格上限。 | 值域（range）：货币价格；子属性（subPropertyOf）：具有货币数量 |
-| fibo-der-drc-opt:hasExerciseDateOffset | 具有行权日偏移（has exercise date offset） | 指明重置日与行权日之间的天数。 | 定义域（domain）：序列期权策略（strip strategy）；值域（range）：时长；子属性（subPropertyOf）：具有时长 |
-| fibo-der-drc-opt:hasExercisePrice | 具有行权价格（has exercise price） | 规定持有人承诺买入或卖出标的资产的预定价格。 | 值域（range）：行权价（strike price）；子属性（subPropertyOf）：具有价格 |
-| fibo-der-drc-opt:hasExerciseSchedule | 具有行权计划表（has exercise schedule） | 将期权与合约中规定的、约束其可行权时间的计划表关联起来。 | 定义域（domain）：期权；值域（range）：进度表；子属性（subPropertyOf）：具有进度表 |
-| fibo-der-drc-opt:hasExerciseStyle | 具有行权方式（has exercise style） | 指明期权规定的行权惯例。 | 定义域（domain）：期权；值域（range）：行权惯例；子属性（subPropertyOf）：由……分类 |
-| fibo-der-drc-opt:hasInterestAccrualDateOffset | 具有起息日偏移（has interest accrual date offset） | 指明每个重置日与下一期间利息开始计提之间的天数。 | 定义域（domain）：序列期权策略（strip strategy）；值域（range）：时长；子属性（subPropertyOf）：具有时长 |
-| fibo-der-drc-opt:hasOptionHolder | 具有期权持有人（has option holder） | 指明期权的所有者。 | 定义域（domain）：期权；值域（range）：期权持有人（option holder）；子属性（subPropertyOf）：具有合同当事方 |
-| fibo-der-drc-opt:hasOptionWriter | 具有期权签发方（has option writer） | 指明期权的发行人。 | 定义域（domain）：期权；值域（range）：期权发行人（option issuer）；子属性（subPropertyOf）：具有合同当事方 |
-| fibo-der-drc-opt:hasSettlementDateOffset | 具有结算日偏移（has settlement date offset） | 指明每个重置日与相应结算日之间的天数。 | 定义域（domain）：序列期权策略（strip strategy）；值域（range）：时长；子属性（subPropertyOf）：具有时长 |
-| fibo-der-drc-opt:hasStrikePercentageAmount | 具有行权百分比（has strike percentage amount） | 指明以标的资产价值百分比表示的行权价格或行权水平。 | 值域（range）：百分比货币数量；子属性（subPropertyOf）：具有价格 |
-| fibo-der-drc-opt:hasStrikeRate | 具有行权利率（has strike rate） | 合约可行权的利率。 | 值域（range）：比率；子属性（subPropertyOf）：具有量值 |
+- 父类：**期权（Option）**
+- 直接子类：**备兑看涨期权（covered call）**
 
-## 5. 公理约定（Axioms）
+#### 2.1.1 备兑看涨期权（covered call）
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+定义：卖方（投资者）持有等量标的证券的看涨期权。
 
-- **篮子期权（basket option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
-- **篮子期权（basket option）**：**具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
-- **篮子期权（basket option）**：**具有合同期限（hasContractDuration）**至少有一个取值，类型是**显式时长（ExplicitDuration）**。
-- **债券期权（bond option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
-- **蝶式策略（butterfly）**：**具有行权价格（has exercise price）**恰好有 3 个**行权价（strike price）**。
-- **蝶式策略（butterfly）**：**包含（comprises）**恰好有 4 个**期权（Option）**。
-- **封顶期权（capped option）**：**具有上限价格（has cap price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
-- **领口策略（collar）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
-- **领口策略（collar）**：**包含（comprises）**恰好有 1 个**看跌期权（put option）**。
-- **股票期权（equity option）**：**具有行权方式（has exercise style）**的取值固定为 AmericanExerciseConvention。
-- **外在价值（extrinsic value）**与**内在价值（intrinsic value）**互斥：同一个体不能同时属于两者。
-- **护栏策略（fence）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
-- **护栏策略（fence）**：**包含（comprises）**恰好有 2 个**看跌期权（put option）**。
-- **利率期权（interest rate option）**：**具有行权利率（has strike rate）**至少有一个取值，类型是**利率（InterestRate）**。
-- **利率期权（interest rate option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**利率基准（InterestRateBenchmark）**。
-- **铁蝶式策略（iron butterfly）**：**包含（comprises）**恰好有 2 个**看涨期权（call option）**。
-- **铁蝶式策略（iron butterfly）**：**包含（comprises）**恰好有 2 个**看跌期权（put option）**。
-- **铁秃鹰策略（iron condor）**：**包含（comprises）**恰好有 2 个**看涨期权（call option）**。
-- **铁秃鹰策略（iron condor）**：**包含（comprises）**恰好有 2 个**看跌期权（put option）**。
-- **铁秃鹰策略（iron condor）**：**具有行权价格（has exercise price）**恰好有 4 个**行权价（strike price）**。
-- **长期股票预期证券（long-term equity anticipation security）**：**具有合同期限（hasContractDuration）**至少有一个取值，类型是**时长（Duration）**。
-- **价态（moneyness）**：**分类（classifies）**至少有一个取值，类型是**期权（Option）**。
-- **期权持有人（option holder）**：**持有（holds）**至少有一个取值，类型是**期权（Option）**。
-- **期权发行人（option issuer）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**期权（Option）**。
-- **期货期权（option on future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期货（Future）**。
-- **期货期权（option on future）**：**具有行权条款（hasExerciseTerms）**至少有一个取值，类型是**美式行权条款（AmericanExerciseTerms）**。
-- **期权权利金（option premium）**：**具有表达式（hasExpression）**可以有 0 个或多个**期权权利金公式（option premium formula）**。
-- **期权权利金（option premium）**：**具有货币数量（hasMonetaryAmount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **期权权利金（option premium）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
-- **期权交易策略（option trading strategy）**：**包含（comprises）**至少有一个取值，类型是**期权（Option）**。
-- **保护性领口策略（protective collar）**：**包含（comprises）**恰好有 1 个**备兑看涨期权（covered call）**。
-- **保护性领口策略（protective collar）**：**包含（comprises）**恰好有 1 个**保护性看跌期权（protective put）**。
-- **保护性看跌期权（protective put）**：**具有计算市值（has calculated market value）**至少有一个取值，类型是**期权权利金（option premium）**。
-- **风险逆转策略（risk reversal）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
-- **风险逆转策略（risk reversal）**：**包含（comprises）**恰好有 1 个**看跌期权（put option）**。
-- **标准化期权条款（standardized options terms）**：**具有发布方（hasPublisher）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **标准化期权条款（standardized options terms）**：**具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
-- **标准化期权条款（standardized options terms）**：**适用于（appliesTo）**至少有一个取值，类型是**普通期权（vanilla option）**。
-- **跨式策略（straddle）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
-- **跨式策略（straddle）**：**包含（comprises）**恰好有 1 个**看跌期权（put option）**。
-- **宽跨式策略（strangle）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
-- **宽跨式策略（strangle）**：**包含（comprises）**恰好有 1 个**看跌期权（put option）**。
-- **序列期权策略（strip strategy）**：**包含（comprises）**恰好有 1 个**看涨期权（call option）**。
-- **序列期权策略（strip strategy）**：**包含（comprises）**恰好有 2 个**看跌期权（put option）**。
-- **序列期权策略（strip strategy）**：**具有进度表（hasSchedule）**至少有一个取值，类型是**进度表（Schedule）**。
-- **普通期权（vanilla option）**：**具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
-- **普通期权（vanilla option）**：**具有合同期限（hasContractDuration）**至少有一个取值，类型是**显式时长（ExplicitDuration）**。
+- 父类：**看涨期权（call option）**
 
-## 6. 依赖（owl:imports，30 个）
+### 2.2 奇异期权（exotic option）
+
+定义：具有非标准支付结构或其他特殊特征的期权。
+
+- 父类：**场外衍生工具（OverTheCounterDerivativeInstrument）**、**期权（Option）**
+- 直接子类：**篮子期权（basket option）**
+
+#### 2.2.1 篮子期权（basket option）
+
+定义：标的资产为一组（篮子）商品、证券、指数或货币的期权。
+
+- 父类：**奇异期权（exotic option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+| **具有价格确定方法（hasPriceDeterminationMethod）** | — | — |
+| **具有合同期限（hasContractDuration）** | — | — |
+
+公理：
+
+- **具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
+- **具有合同期限（hasContractDuration）**至少有一个取值，类型是**显式时长（ExplicitDuration）**。
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
+
+### 2.3 外在价值（extrinsic value）
+
+定义：期权市场价格（即权利金）与其内在价值之间的差额。
+
+- 父类：**货币数量（MonetaryAmount）**
+
+公理：
+
+- 与**内在价值（intrinsic value）**互斥：同一个体不能同时属于两者。
+
+### 2.4 内在价值（intrinsic value）
+
+定义：衡量资产价值的指标，即相对于其当前价格的价值。
+
+- 父类：**货币数量（MonetaryAmount）**
+
+### 2.5 价态（moneyness）
+
+定义：将衍生品的行权价与其标的资产价格相关联的分类器。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**期权（Option）**。
+
+### 2.6 期权持有人（option holder）
+
+定义：拥有期权的一方。
+
+- 父类：**所有者（Owner）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **持有（holds）** | — | — |
+
+公理：
+
+- **持有（holds）**至少有一个取值，类型是**期权（Option）**。
+
+### 2.7 期权发行人（option issuer）
+
+定义：以换取对价为条件授予期权所规定权利的发行人。
+
+- 父类：**发行人（Issuer）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**期权（Option）**。
+
+### 2.8 期权权利金（option premium）
+
+定义：期权合约的当前市场价格。
+
+- 父类：**市场价格（MarketPrice）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有货币数量（hasMonetaryAmount）** | — | — |
+| **具有表达式（hasExpression）** | — | — |
+| **具有量值（hasQuantityValue）** | — | — |
+
+公理：
+
+- **具有表达式（hasExpression）**可以有 0 个或多个**期权权利金公式（option premium formula）**。
+- **具有货币数量（hasMonetaryAmount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **具有量值（hasQuantityValue）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+
+### 2.9 期权权利金公式（option premium formula）
+
+定义：基于每份期权价格或名义本金百分比计算权利金的表达式。
+
+- 父类：**表达式（Expression）**
+
+### 2.10 期权交易策略（option trading strategy）
+
+定义：在同一标的资产上涉及不止一种期权类型、行权价或到期日的交易策略。
+
+- 父类：**交易策略（TradingStrategy）**
+- 直接子类：**蝶式策略（butterfly）**、**领口策略（collar）**、**秃鹰价差（condor spread）**、**护栏策略（fence）**、**风险逆转策略（risk reversal）**、**跨式策略（straddle）**、**宽跨式策略（strangle）**、**序列期权策略（strip strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**期权（Option）**。
+
+#### 2.10.1 蝶式策略（butterfly）
+
+定义：将牛市价差与熊市价差组合、风险固定且盈利封顶的期权策略。
+
+- 父类：**期权交易策略（option trading strategy）**
+- 直接子类：**铁蝶式策略（iron butterfly）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权价格（has exercise price）** | 规定持有人承诺买入或卖出标的资产的预定价格。 | 值域：行权价（strike price）；子属性：具有价格 |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有行权价格（has exercise price）**恰好有 3 个**行权价（strike price）**。
+- **包含（comprises）**恰好有 4 个**期权（Option）**。
+
+##### 2.10.1.1 铁蝶式策略（iron butterfly）
+
+定义：由两个看涨期权、两个看跌期权、三个行权价和同一到期日构成的蝶式策略。
+
+- 父类：**蝶式策略（butterfly）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 2 个**看涨期权（call option）**。
+- **包含（comprises）**恰好有 2 个**看跌期权（put option）**。
+
+#### 2.10.2 领口策略（collar）
+
+定义：买入下档看跌期权并卖出上档看涨期权的期权交易策略，用于防范大额亏损，但也限制了盈利。
+
+- 父类：**期权交易策略（option trading strategy）**
+- 直接子类：**保护性领口策略（protective collar）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **包含（comprises）**恰好有 1 个**看跌期权（put option）**。
+
+##### 2.10.2.1 保护性领口策略（protective collar）
+
+定义：由备兑看涨期权和保护性看跌期权构成的领口策略。
+
+- 父类：**领口策略（collar）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**保护性看跌期权（protective put）**。
+- **包含（comprises）**恰好有 1 个**备兑看涨期权（covered call）**。
+
+#### 2.10.3 秃鹰价差（condor spread）
+
+定义：一种非方向性期权策略，同时限制盈利与亏损，旨在从低波动或高波动中获利。
+
+- 父类：**期权交易策略（option trading strategy）**
+- 直接子类：**铁秃鹰策略（iron condor）**
+
+##### 2.10.3.1 铁秃鹰策略（iron condor）
+
+定义：由两个看跌期权（一多一空）、两个看涨期权（一多一空）和四个行权价构成、到期日相同的秃鹰策略。
+
+- 父类：**秃鹰价差（condor spread）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权价格（has exercise price）** | 规定持有人承诺买入或卖出标的资产的预定价格。 | 值域：行权价（strike price）；子属性：具有价格 |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有行权价格（has exercise price）**恰好有 4 个**行权价（strike price）**。
+- **包含（comprises）**恰好有 2 个**看涨期权（call option）**。
+- **包含（comprises）**恰好有 2 个**看跌期权（put option）**。
+
+#### 2.10.4 护栏策略（fence）
+
+定义：利用期权将金融工具的可能回报限定在一定区间内的期权交易策略。
+
+- 父类：**期权交易策略（option trading strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **包含（comprises）**恰好有 2 个**看跌期权（put option）**。
+
+#### 2.10.5 风险逆转策略（risk reversal）
+
+定义：卖出虚值看跌期权并买入虚值看涨期权、两者到期日相同的期权交易策略。
+
+- 父类：**期权交易策略（option trading strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **包含（comprises）**恰好有 1 个**看跌期权（put option）**。
+
+#### 2.10.6 跨式策略（straddle）
+
+定义：同时买入同一标的证券、相同行权价和到期日的看跌期权与看涨期权的中性期权交易策略。
+
+- 父类：**期权交易策略（option trading strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **包含（comprises）**恰好有 1 个**看跌期权（put option）**。
+
+#### 2.10.7 宽跨式策略（strangle）
+
+定义：投资者同时持有行权价不同但到期日相同的看涨期权与看跌期权的期权交易策略。
+
+- 父类：**期权交易策略（option trading strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **包含（comprises）**恰好有 1 个**看跌期权（put option）**。
+
+#### 2.10.8 序列期权策略（strip strategy）
+
+定义：涉及一组带周期性重置日的连续期权的交易策略，各重置区间表现如独立期权。
+
+- 父类：**期权交易策略（option trading strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权日偏移（has exercise date offset）** | 指明重置日与行权日之间的天数。 | 值域：时长；子属性：具有时长 |
+| **具有起息日偏移（has interest accrual date offset）** | 指明每个重置日与下一期间利息开始计提之间的天数。 | 值域：时长；子属性：具有时长 |
+| **具有结算日偏移（has settlement date offset）** | 指明每个重置日与相应结算日之间的天数。 | 值域：时长；子属性：具有时长 |
+| **具有进度表（hasSchedule）** | — | — |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有进度表（hasSchedule）**至少有一个取值，类型是**进度表（Schedule）**。
+- **包含（comprises）**恰好有 1 个**看涨期权（call option）**。
+- **包含（comprises）**恰好有 2 个**看跌期权（put option）**。
+
+### 2.11 看跌期权（put option）
+
+定义：赋予买方（持有人）在指定日期或之前按固定价格或公式卖出指定资产的权利（而非义务）的期权。
+
+- 父类：**期权（Option）**
+- 直接子类：**保护性看跌期权（protective put）**
+
+#### 2.11.1 保护性看跌期权（protective put）
+
+定义：赋予买方（持有人）按等于或接近当前价格的行权价卖出指定资产的权利（而非义务）的看跌期权。
+
+- 父类：**看跌期权（put option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有计算市值（has calculated market value）** | 指明截至某一相对日期计算得出、被视为该时期权市场价值的价格。 | 值域：期权权利金（option premium）；子属性：具有价格 |
+
+公理：
+
+- **具有计算市值（has calculated market value）**至少有一个取值，类型是**期权权利金（option premium）**。
+
+### 2.12 标准化期权条款（standardized options terms）
+
+定义：由证券或期权交易所、或由期权清算机构制定的标准化合同条款。
+
+- 父类：**标准化条款（StandardizedTerms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发布方（hasPublisher）** | — | — |
+| **具有价格确定方法（hasPriceDeterminationMethod）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
+- **具有发布方（hasPublisher）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **适用于（appliesTo）**至少有一个取值，类型是**普通期权（vanilla option）**。
+
+### 2.13 行权价（strike price）
+
+定义：合约行权时一手标的资产可以买入或卖出的价格。
+
+- 父类：**货币价格（MonetaryPrice）**
+
+### 2.14 普通期权（vanilla option）
+
+定义：赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的资产的权利（而非义务）的常见期权。
+
+- 父类：**期权（Option）**
+- 直接子类：**封顶期权（capped option）**、**股票期权（equity option）**、**固定收益期权（fixed income option）**、**利率期权（interest rate option）**、**期货期权（option on future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有价格确定方法（hasPriceDeterminationMethod）** | — | — |
+| **具有合同期限（hasContractDuration）** | — | — |
+
+公理：
+
+- **具有价格确定方法（hasPriceDeterminationMethod）**至少有一个取值，类型是**价格确定方法（PriceDeterminationMethod）**。
+- **具有合同期限（hasContractDuration）**至少有一个取值，类型是**显式时长（ExplicitDuration）**。
+
+#### 2.14.1 封顶期权（capped option）
+
+定义：设有既定盈利上限或上限价格的期权。
+
+- 父类：**普通期权（vanilla option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有上限价格（has cap price）** | 合约可行权的价格上限。 | 值域：货币价格；子属性：具有货币数量 |
+
+公理：
+
+- **具有上限价格（has cap price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+
+#### 2.14.2 股票期权（equity option）
+
+定义：赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的股票资产的权利（而非义务）的期权。
+
+- 父类：**普通期权（vanilla option）**、**股票衍生品（EquityDerivative）**
+- 直接子类：**长期股票预期证券（long-term equity anticipation security）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权方式（has exercise style）** | 指明期权规定的行权惯例。 | 值域：行权惯例；子属性：由……分类 |
+
+公理：
+
+- **具有行权方式（has exercise style）**的取值固定为 AmericanExerciseConvention。
+
+##### 2.14.2.1 长期股票预期证券（long-term equity anticipation security）
+
+定义：允许持有人买卖股票、到期日长于一年（通常最长三年）的股票期权（LEAPS）。
+
+- 父类：**股票期权（equity option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合同期限（hasContractDuration）** | — | — |
+
+公理：
+
+- **具有合同期限（hasContractDuration）**至少有一个取值，类型是**时长（Duration）**。
+
+#### 2.14.3 固定收益期权（fixed income option）
+
+定义：赋予买方（持有人）买入（通过看涨期权）或卖出（通过看跌期权）标的固定收益资产的权利（而非义务）的期权。
+
+- 父类：**普通期权（vanilla option）**、**债务工具衍生品（DebtInstrumentDerivative）**
+- 直接子类：**债券期权（bond option）**
+
+##### 2.14.3.1 债券期权（bond option）
+
+定义：赋予买方（持有人）按特定价格买入或卖出（视看涨或看跌而定）债券的权利（而非义务）的期权。
+
+- 父类：**固定收益期权（fixed income option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
+
+#### 2.14.4 利率期权（interest rate option）
+
+定义：赋予买方（持有人）在参考利率的市场利率高于约定水平时收取现金付款的权利（而非义务）的期权。
+
+- 父类：**利率衍生品（InterestRateDerivative）**、**普通期权（vanilla option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权利率（has strike rate）** | 合约可行权的利率。 | 值域：比率；子属性：具有量值 |
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**利率基准（InterestRateBenchmark）**。
+- **具有行权利率（has strike rate）**至少有一个取值，类型是**利率（InterestRate）**。
+
+#### 2.14.5 期货期权（option on future）
+
+定义：赋予持有人在期权到期日或之前按指定价格买入或卖出特定期货合约的权利（而非义务）的期权。
+
+- 父类：**普通期权（vanilla option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+| **具有行权条款（hasExerciseTerms）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期货（Future）**。
+- **具有行权条款（hasExerciseTerms）**至少有一个取值，类型是**美式行权条款（AmericanExerciseTerms）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权计划表（has exercise schedule）** | 将期权与合约中规定的、约束其可行权时间的计划表关联起来。 | 值域：进度表；子属性：具有进度表 |
+| **具有期权持有人（has option holder）** | 指明期权的所有者。 | 值域：期权持有人（option holder）；子属性：具有合同当事方 |
+| **具有期权签发方（has option writer）** | 指明期权的发行人。 | 值域：期权发行人（option issuer）；子属性：具有合同当事方 |
+| **具有行权百分比（has strike percentage amount）** | 指明以标的资产价值百分比表示的行权价格或行权水平。 | 值域：百分比货币数量；子属性：具有价格 |
+
+## 4. 依赖（owl:imports，30 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -202,7 +632,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Options.rdf`
 - 中文 Turtle：`Options.ttl`

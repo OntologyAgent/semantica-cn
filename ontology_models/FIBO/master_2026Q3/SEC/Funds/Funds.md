@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：基金≠股票——基金份额代表对组合资产的受益权，股票代表对公司的所有权；开放式与封闭式的差别在份额是否可赎回、是否固定。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **协同社区投资基金（aligned community investment fund）** 继承 **社区投资基金（community investment fund）**
+- **封闭式投资（closed-end investment）** 继承 **管理型投资（ManagedInvestment）**
+- **社区投资基金（community investment fund）** 继承 **私募基金（PrivateFund）**
+- **多元化社区投资基金（diversified community investment fund）** 继承 **社区投资基金（community investment fund）**
+- **交易所交易基金（exchange-traded fund）** 继承 **开放式投资（open-end investment）**
+- **基金管理人（行政）（fund administrator）** 继承 **服务提供方（ServiceProvider）**
+- **基金合同（fund contract）** 继承 **组织基础协议（OrganizationCoveringAgreement）**
+- **基金份额持有人（fund holder）** 继承 **受益所有人（BeneficialOwner）**
+- **基金份额持有人（fund holder）** 继承 **交易对手（Counterparty）**
+- **基金持有（fund holding）** 继承 **金融资产（FinancialAsset）**
+- **基金经理（fund manager）** 继承 **服务提供方（ServiceProvider）**
+- **基金中的基金（fund of funds）** 继承 **管理型投资（ManagedInvestment）**
+- 其余 19 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -47,81 +63,319 @@
 | 单位信托（unit trust） | 投资者持有代表对信托管理资产组合之受益所有权的单位的集合投资工具。 |
 | 单位化基金（unitized fund） | 投资者持有代表对基金标的资产按比例份额之单位的集合投资工具，常用于养老金计划。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 协同社区投资基金（aligned community investment fund） ⊑ 社区投资基金（community investment fund）
-- 封闭式投资（closed-end investment） ⊑ 管理型投资
-- 社区投资基金（community investment fund） ⊑ 私募基金
-- 多元化社区投资基金（diversified community investment fund） ⊑ 社区投资基金（community investment fund）
-- 交易所交易基金（exchange-traded fund） ⊑ 开放式投资（open-end investment）
-- 基金管理人（行政）（fund administrator） ⊑ 服务提供方
-- 基金合同（fund contract） ⊑ 组织基础协议
-- 基金份额持有人（fund holder） ⊑ 受益所有人
-- 基金份额持有人（fund holder） ⊑ 交易对手
-- 基金持有（fund holding） ⊑ 金融资产
-- 基金经理（fund manager） ⊑ 服务提供方
-- 基金中的基金（fund of funds） ⊑ 管理型投资
-- 基金头寸（fund position） ⊑ 头寸
-- 基金单位（fund unit） ⊑ 合同权益
-- 对冲基金（hedge fund） ⊑ 开放式投资（open-end investment）
-- 基金法律结构（legal fund structure） ⊑ 法律构造
-- 共同基金（mutual fund） ⊑ 开放式投资（open-end investment）
-- 不可交易基金单位（non-tradable fund unit） ⊑ 不可转让证券
-- 不可交易基金单位（non-tradable fund unit） ⊑ 基金单位（fund unit）
-- 非营利基金（nonprofit fund） ⊑ 私募基金
-- 开放式投资（open-end investment） ⊑ 管理型投资
-- 养老基金（pension fund） ⊑ 汇集基金
-- 私募信贷基金（private credit fund） ⊑ 私募基金
-- 私募股权基金（private equity fund） ⊑ 私募基金
-- 房地产投资信托（real estate investment trust） ⊑ 管理型投资
-- 主权财富基金（sovereign wealth fund） ⊑ 集合投资工具
-- 可交易基金单位（tradable fund unit） ⊑ 权益工具
-- 可交易基金单位（tradable fund unit） ⊑ 可转让证券
-- 可交易基金单位（tradable fund unit） ⊑ 基金单位（fund unit）
-- 单位信托（unit trust） ⊑ 单位化基金（unitized fund）
-- 单位化基金（unitized fund） ⊑ 集合投资工具
+### 2.1 集合投资工具（CollectiveInvestmentVehicle）
 
-## 3. 对象属性（Object Property）
+定义：由投资者汇聚的资产池，其股本与该工具的资产保持分离。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-fund-fund:hasLegalStructure | 具有法律结构（has legal structure） | 指明基金所采取的法律形式。 | 定义域（domain）：汇集基金；值域（range）：基金法律结构（legal fund structure） |
-| fibo-sec-fund-fund:hasSubFund | 具有子基金（has sub-fund） | 将汇集基金与作为母基金组成部分的子基金关联起来。 | 定义域（domain）：汇集基金；值域（range）：汇集基金；子属性（subPropertyOf）：具有部分 |
-| fibo-sec-fund-fund:isSubFundOf | 是……的子基金（is sub-fund of） | 将汇集基金与其母基金关联起来。 | 定义域（domain）：汇集基金；值域（range）：汇集基金；逆属性（inverseOf）：具有子基金（has sub-fund）；子属性（subPropertyOf）：是……的部分 |
+### 2.2 封闭式投资（closed-end investment）
 
-## 4. 数据属性（Datatype Property）
+定义：由投资公司通过首次公开发行提供固定数量份额的投资基金。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**管理型投资（ManagedInvestment）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-sec-fund-fund:isOpenEnded | 是否开放式（is open ended） | 表明该基金是开放式基金还是封闭式基金。 |
-| fibo-sec-fund-fund:isPrivate | 是否私募（is private） | 表明该基金不向公众发售其证券。 |
+| **是否开放式（is open ended）** | 表明该基金是开放式基金还是封闭式基金。 | 值域：xsd:boolean |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **是否开放式（is open ended）**的取值固定为 false。
 
-- **封闭式投资（closed-end investment）**：**是否开放式（is open ended）**的取值固定为 false。
-- **社区投资基金（community investment fund）**：**具有目标（hasObjective）**至少有一个取值，类型是**本地投资目标（LocalInvestmentObjective）**。
-- **社区投资基金（community investment fund）**：**具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**地理区域（GeographicRegion）**。
-- **基金持有（fund holding）**：**引用（refersTo）**可以有 0 个或多个**基金单位（fund unit）**。
-- **基金持有（fund holding）**：**由……单位组成（consistsOfNumberOfUnits）**存在取值约束。
-- **基金中的基金（fund of funds）**：**具有子基金（has sub-fund）**至少有一个取值，类型是**集合投资工具（CollectiveInvestmentVehicle）**。
-- **基金头寸（fund position）**：**具有所有方（hasOwningParty）**可以有 0 个或多个**基金份额持有人（fund holder）**。
-- **基金头寸（fund position）**：**由……持有（isHeldBy）**恰好有 1 个**N364c9bfa52ce4f91a231bba9c74b7185**。
-- **基金头寸（fund position）**：**具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**基金持有（fund holding）**。
-- **基金单位（fund unit）**：**具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
-- **基金单位（fund unit）**：**是……的部分（isPartOf）**至少有一个取值，类型是**汇集基金（PooledFund）**。
-- **基金法律结构（legal fund structure）**：该属性存在取值约束。
-- **基金法律结构（legal fund structure）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **不可交易基金单位（non-tradable fund unit）**与**可交易基金单位（tradable fund unit）**互斥：同一个体不能同时属于两者。
-- **非营利基金（nonprofit fund）**：**具有目标（hasObjective）**可以有 0 个或多个**三重底线目标（TripleBottomLineObjective）**。
-- **开放式投资（open-end investment）**：**是否开放式（is open ended）**的取值固定为 true。
-- **开放式投资（open-end investment）**与**封闭式投资（closed-end investment）**互斥：同一个体不能同时属于两者。
-- **私募信贷基金（private credit fund）**与**私募股权基金（private equity fund）**互斥：同一个体不能同时属于两者。
-- **房地产投资信托（real estate investment trust）**：**具有法律结构（has legal structure）**至少有一个取值，类型是**信托（Trust）**。
-- **单位信托（unit trust）**与**共同基金（mutual fund）**互斥：同一个体不能同时属于两者。
+### 2.3 社区投资基金（community investment fund）
 
-## 6. 依赖（owl:imports，22 个）
+定义：专业管理的投资基金，具有三个基本特征：资本来源于社区人士（理想情况下为零售/非合格投资者）、投资于本地、并向社区成员开放。
+
+- 父类：**私募基金（PrivateFund）**
+- 直接子类：**协同社区投资基金（aligned community investment fund）**、**多元化社区投资基金（diversified community investment fund）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（hasObjective）** | — | — |
+| **具有覆盖区域（hasCoverageArea）** | — | — |
+
+公理：
+
+- **具有目标（hasObjective）**至少有一个取值，类型是**本地投资目标（LocalInvestmentObjective）**。
+- **具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**地理区域（GeographicRegion）**。
+
+#### 2.3.1 协同社区投资基金（aligned community investment fund）
+
+定义：从社区成员公开募集资本、并将部分资本投资于其客户企业的社区投资基金。
+
+- 父类：**社区投资基金（community investment fund）**
+
+#### 2.3.2 多元化社区投资基金（diversified community investment fund）
+
+定义：主要投资于房地产、但也可投资于任何本地企业或项目的社区投资基金。
+
+- 父类：**社区投资基金（community investment fund）**
+
+### 2.4 基金管理人（行政）（fund administrator）
+
+定义：负责投资基金运营、会计和合规职能的一方所扮演的角色。
+
+- 父类：**服务提供方（ServiceProvider）**
+
+### 2.5 基金合同（fund contract）
+
+定义：在不存在独立组织的情况下体现和定义基金法律形式的合同。
+
+- 父类：**组织基础协议（OrganizationCoveringAgreement）**
+
+### 2.6 基金份额持有人（fund holder）
+
+定义：拥有某基金份额或一定比例、并以出资为对价享有相关权利和承担相关责任的一方。
+
+- 父类：**受益所有人（BeneficialOwner）**、**交易对手（Counterparty）**
+
+### 2.7 基金持有（fund holding）
+
+定义：在基金中的所有权权益，可由赋予财务权利和治理特权的基金单位表示。
+
+- 父类：**金融资产（FinancialAsset）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……单位组成（consistsOfNumberOfUnits）** | — | — |
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **引用（refersTo）**可以有 0 个或多个**基金单位（fund unit）**。
+- **由……单位组成（consistsOfNumberOfUnits）**存在取值约束。
+
+### 2.8 基金经理（fund manager）
+
+定义：负责作出投资决策并管理投资基金组合的一方所扮演的角色。
+
+- 父类：**服务提供方（ServiceProvider）**
+
+### 2.9 基金中的基金（fund of funds）
+
+定义：直接投资于其他投资基金（而非股票、债券等证券）的投资基金。
+
+- 父类：**管理型投资（ManagedInvestment）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有子基金（has sub-fund）** | 将汇集基金与作为母基金组成部分的子基金关联起来。 | 值域：汇集基金；子属性：具有部分 |
+
+公理：
+
+- **具有子基金（has sub-fund）**至少有一个取值，类型是**集合投资工具（CollectiveInvestmentVehicle）**。
+
+### 2.10 基金头寸（fund position）
+
+定义：在某一基金中的头寸，可用基金单位来界定。
+
+- 父类：**头寸（Position）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有自有资产（hasOwnedAsset）** | — | — |
+| **具有所有方（hasOwningParty）** | — | — |
+| **由……持有（isHeldBy）** | — | — |
+
+公理：
+
+- **具有所有方（hasOwningParty）**可以有 0 个或多个**基金份额持有人（fund holder）**。
+- **具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**基金持有（fund holding）**。
+- **由……持有（isHeldBy）**恰好有 1 个**N61a49f08d3274db78d3b54e3714ef931**。
+
+### 2.11 基金单位（fund unit）
+
+定义：汇集基金中受益权益的计量份额，代表对基金资产、收益或权利的按比例请求权。
+
+- 父类：**合同权益（ContractualInterest）**
+- 直接子类：**不可交易基金单位（non-tradable fund unit）**、**可交易基金单位（tradable fund unit）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有货币（hasCurrency）** | — | — |
+| **是……的部分（isPartOf）** | — | — |
+
+公理：
+
+- **具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
+- **是……的部分（isPartOf）**至少有一个取值，类型是**汇集基金（PooledFund）**。
+
+#### 2.11.1 不可交易基金单位（non-tradable fund unit）
+
+定义：代表基金权益、但不能在基金本身之外交易的证券。
+
+- 父类：**不可转让证券（NonNegotiableSecurity）**、**基金单位（fund unit）**
+
+公理：
+
+- 与**可交易基金单位（tradable fund unit）**互斥：同一个体不能同时属于两者。
+
+#### 2.11.2 可交易基金单位（tradable fund unit）
+
+定义：代表基金中可交易权益的证券。
+
+- 父类：**权益工具（EquityInstrument）**、**可转让证券（NegotiableSecurity）**、**基金单位（fund unit）**
+
+### 2.12 基金法律结构（legal fund structure）
+
+定义：基金在某一司法管辖区法律组建形式方面的结构。
+
+- 父类：**法律构造（LegalConstruct）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- 该属性存在取值约束。
+
+### 2.13 非营利基金（nonprofit fund）
+
+定义：旨在支持非营利使命的投资工具，其目标除财务回报外还包括环境责任和/或社会责任。
+
+- 父类：**私募基金（PrivateFund）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（hasObjective）** | — | — |
+
+公理：
+
+- **具有目标（hasObjective）**可以有 0 个或多个**三重底线目标（TripleBottomLineObjective）**。
+
+### 2.14 开放式投资（open-end investment）
+
+定义：通过基金公司直接向投资者出售份额的投资基金。
+
+- 父类：**管理型投资（ManagedInvestment）**
+- 直接子类：**交易所交易基金（exchange-traded fund）**、**对冲基金（hedge fund）**、**共同基金（mutual fund）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是否开放式（is open ended）** | 表明该基金是开放式基金还是封闭式基金。 | 值域：xsd:boolean |
+
+公理：
+
+- **是否开放式（is open ended）**的取值固定为 true。
+- 与**封闭式投资（closed-end investment）**互斥：同一个体不能同时属于两者。
+
+#### 2.14.1 交易所交易基金（exchange-traded fund）
+
+定义：基金份额像股票一样在交易所交易的投资基金（ETF）。
+
+- 父类：**开放式投资（open-end investment）**
+
+#### 2.14.2 对冲基金（hedge fund）
+
+定义：追求绝对回报、通常仅向合格投资者开放的投资基金。
+
+- 父类：**开放式投资（open-end investment）**
+
+#### 2.14.3 共同基金（mutual fund）
+
+定义：为投资股票、债券、货币市场工具等证券而设立的开放式专业管理投资基金。
+
+- 父类：**开放式投资（open-end investment）**
+
+### 2.15 养老基金（pension fund）
+
+定义：独立于计划成员个人账户设立、用于为一个或多个养老金计划提供资金而维持的基金。
+
+- 父类：**汇集基金（PooledFund）**
+
+### 2.16 私募信贷基金（private credit fund）
+
+定义：在传统银行体系之外向企业提供贷款或其他形式信贷的投资工具。
+
+- 父类：**私募基金（PrivateFund）**
+
+公理：
+
+- 与**私募股权基金（private equity fund）**互斥：同一个体不能同时属于两者。
+
+### 2.17 私募股权基金（private equity fund）
+
+定义：按照特定投资策略投资于各类权益（在较小程度上也包括债务）证券的投资基金。
+
+- 父类：**私募基金（PrivateFund）**
+
+### 2.18 房地产投资信托（real estate investment trust）
+
+定义：向公众发售份额/单位并直接投资于房地产的投资基金（REIT）。
+
+- 父类：**管理型投资（ManagedInvestment）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有法律结构（has legal structure）** | 指明基金所采取的法律形式。 | 值域：基金法律结构（legal fund structure） |
+
+公理：
+
+- **具有法律结构（has legal structure）**至少有一个取值，类型是**信托（Trust）**。
+
+### 2.19 主权财富基金（sovereign wealth fund）
+
+定义：由国家储备资金构成的国有投资基金。
+
+- 父类：**集合投资工具（CollectiveInvestmentVehicle）**
+
+### 2.20 单位化基金（unitized fund）
+
+定义：投资者持有代表对基金标的资产按比例份额之单位的集合投资工具，常用于养老金计划。
+
+- 父类：**集合投资工具（CollectiveInvestmentVehicle）**
+- 直接子类：**单位信托（unit trust）**
+
+#### 2.20.1 单位信托（unit trust）
+
+定义：投资者持有代表对信托管理资产组合之受益所有权的单位的集合投资工具。
+
+- 父类：**单位化基金（unitized fund）**
+
+公理：
+
+- 与**共同基金（mutual fund）**互斥：同一个体不能同时属于两者。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的子基金（is sub-fund of）** | 将汇集基金与其母基金关联起来。 | 值域：汇集基金；逆属性：具有子基金（has sub-fund）；子属性：是……的部分 |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **是否私募（is private）** | 表明该基金不向公众发售其证券。 |
+
+## 4. 依赖（owl:imports，22 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -150,7 +404,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Funds.rdf`
 - 中文 Turtle：`Funds.ttl`

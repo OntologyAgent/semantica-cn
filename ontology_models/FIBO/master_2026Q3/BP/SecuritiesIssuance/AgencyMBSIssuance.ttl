@@ -29,13 +29,13 @@ fibo-bp-iss-ambs:AgencyMortgagePoolCreationProcess a owl:Class ;
         "机构抵押贷款池创建流程（agency mortgage pool creation process）"@zh ;
     rdfs:comment "机构发行方为证券化而创建抵押贷款池的过程。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasStartDate ;
+            owl:someValuesFrom cmns-dt:Date ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-dt:precedes ;
             owl:someValuesFrom fibo-bp-iss-ambs:PassThroughMBSSecuritizationProcess ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dt:hasEndDate ;
-            owl:someValuesFrom cmns-dt:Date ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-dt:hasStartDate ;
             owl:someValuesFrom cmns-dt:Date ],
         fibo-bp-iss-dbti:RetailAssetPoolCreationProcess ;
     owl:disjointWith fibo-bp-iss-pmbs:NonAgencyPoolCreationProcess .
@@ -231,10 +231,10 @@ fibo-bp-iss-ambs:PassThroughMBSSecuritizationProcess a owl:Class ;
         "过手 MBS 证券化流程（pass through m b s securitization process）"@zh ;
     rdfs:comment "过手型抵押贷款支持证券的证券化过程。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dt:hasStartDate ;
+            owl:onProperty cmns-dt:hasEndDate ;
             owl:someValuesFrom cmns-dt:Date ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-dt:hasEndDate ;
+            owl:onProperty cmns-dt:hasStartDate ;
             owl:someValuesFrom cmns-dt:Date ],
         fibo-bp-iss-mbs:MBSSecuritizationProcess ;
     owl:disjointWith fibo-bp-iss-pmbs:TranchedMBSSecuritizationProcess .
@@ -418,10 +418,7 @@ fibo-bp-iss-ambs:PotentialAgencyMBSIssuer a owl:Class ;
     rdfs:comment "将成为过手 MBS 发行发行方的实体，是发行中大多数活动的主要行为体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:evaluates ;
-            owl:someValuesFrom fibo-bp-iss-ambs:ClassifyMortgage ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-ambs:purchases ;
-            owl:someValuesFrom fibo-bp-iss-ambs:AcquireMortgage ],
+            owl:someValuesFrom fibo-bp-iss-ambs:AssessPoolSuitablilityForIssuance ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-ambs:validates ;
             owl:someValuesFrom fibo-bp-iss-ambs:ValidateConformance ],
@@ -429,14 +426,17 @@ fibo-bp-iss-ambs:PotentialAgencyMBSIssuer a owl:Class ;
             owl:onProperty fibo-bp-iss-ambs:finalizes ;
             owl:someValuesFrom fibo-bp-iss-ambs:FinalizePoolContent ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-ambs:adds ;
-            owl:someValuesFrom fibo-bp-iss-ambs:AddMortgageToPool ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-ambs:identifies ;
             owl:someValuesFrom fibo-bp-iss-ambs:IdentifyConformingMortgage ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:adds ;
+            owl:someValuesFrom fibo-bp-iss-ambs:AddMortgageToPool ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-ambs:purchases ;
+            owl:someValuesFrom fibo-bp-iss-ambs:AcquireMortgage ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:evaluates ;
-            owl:someValuesFrom fibo-bp-iss-ambs:AssessPoolSuitablilityForIssuance ],
+            owl:someValuesFrom fibo-bp-iss-ambs:ClassifyMortgage ],
         fibo-bp-iss-dbti:PoolBackedSecuritySecuritizationProcessActor ;
     skos:definition "The entity which will become the issuing party for the pass through MBS Issue. This entity is the principal actor in most of the activities involved in the issue. Term origin:MBS PoC Reviews"@en .
 

@@ -152,15 +152,15 @@ fibo-fbc-fct-ireg:MarketIdentifierCodeRegistryEntry a owl:Class ;
             owl:onProperty fibo-fbc-fct-breg:hasInitialRegistrationDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-ireg:MarketIdentifierCodeRegistry ;
+            owl:onProperty cmns-col:isIncludedIn ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-fbc-fct-breg:hasRegistrationRevisionDate ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-fct-mkt:MarketIdentifier ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-ireg:MarketIdentifierCodeRegistry ;
-            owl:onProperty cmns-col:isIncludedIn ],
         cmns-ra:RegistryEntry ;
     skos:definition "entry in a market identifier code registry that conforms to ISO 10383" ;
     cmns-av:abbreviation "MIC registry entry" ;

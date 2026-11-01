@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与指标本体的差别——分析本体提供「度量怎么构成」的通用机制，指标本体（IND）定义「度量什么」的业务指标。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **年化标准差（annualized standard deviation）** 继承 **标准差（standard deviation）**
+- **算术平均值（arithmetic mean）** 继承 **平均值（mean）**
+- **平均绝对偏差（average absolute deviation）** 继承 **离散度（dispersion）**
+- **差（difference）** 继承 **统计度量（statistical measure）**
+- **差（difference）** 继承 **表达式（Expression）**
+- **离散度（dispersion）** 继承 **统计度量（statistical measure）**
+- **离散度（dispersion）** 继承 **表达式（Expression）**
+- **有限总体（finite population）** 继承 **集合（Collection）**
+- **公式（formula）** 继承 **规范（Specification）**
+- **几何平均值（geometric mean）** 继承 **平均值（mean）**
+- **关键绩效指标（key performance indicator）** 继承 **限定度量（qualified measure）**
+- **平均值（mean）** 继承 **统计度量（statistical measure）**
+- 其余 19 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -44,110 +60,418 @@
 | 方差（variance） | 散布的度量，计算为数据集中每个数与均值之平方偏差的平均。 |
 | 加权函数（weighting function） | 确定集合中给定元素相对于整体的相对重要性或影响力的表达式或函数。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 年化标准差（annualized standard deviation） ⊑ 标准差（standard deviation）
-- 算术平均值（arithmetic mean） ⊑ 平均值（mean）
-- 平均绝对偏差（average absolute deviation） ⊑ 离散度（dispersion）
-- 差（difference） ⊑ 统计度量（statistical measure）
-- 差（difference） ⊑ 表达式
-- 离散度（dispersion） ⊑ 统计度量（statistical measure）
-- 离散度（dispersion） ⊑ 表达式
-- 有限总体（finite population） ⊑ 集合
-- 公式（formula） ⊑ 规范
-- 几何平均值（geometric mean） ⊑ 平均值（mean）
-- 关键绩效指标（key performance indicator） ⊑ 限定度量（qualified measure）
-- 平均值（mean） ⊑ 统计度量（statistical measure）
-- 平均值（mean） ⊑ 表达式
-- 中位数（median） ⊑ 统计度量（statistical measure）
-- 中位数（median） ⊑ 表达式
-- 中位绝对偏差（median absolute deviation） ⊑ 离散度（dispersion）
-- 数值指数值（numeric index value） ⊑ 标量值
-- 限定度量（qualified measure） ⊑ 统计度量（statistical measure）
-- 抽样方差（sampling variance） ⊑ 方差（variance）
-- 限定范围度量（scoped measure） ⊑ 限定度量（qualified measure）
-- 标准差（standard deviation） ⊑ 离散度（dispersion）
-- 统计区（statistical area） ⊑ 地理区域
-- 统计区标识符（statistical area identifier） ⊑ 地理区域标识符
-- 统计度量（statistical measure） ⊑ 度量
-- 统计总体（statistical population） ⊑ 有限总体（finite population）
-- 统计总体（statistical population） ⊑ 统计全域（statistical universe）
-- 统计计划（statistical program） ⊑ 项目群
-- 统计全域（statistical universe） ⊑ 集合
-- 方差（variance） ⊑ 离散度（dispersion）
-- 加权函数（weighting function） ⊑ 统计度量（statistical measure）
-- 加权函数（weighting function） ⊑ 表达式
+### 2.1 有限总体（finite population）
 
-## 3. 对象属性（Object Property）
+定义：其单位可以被计数的总体。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-utl-alx:hasFixedComparativeDate | 具有固定比较日期（has fixed comparative date） | 指明限定范围度量据以比较的特定日期，如上一次衰退结束之时。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-fnd-utl-alx:hasFormula | 具有公式（has formula） | 指明以符号简洁表达信息的方式，如数学或化学公式。 | 值域（range）：公式（formula）；子属性（subPropertyOf）：以……为特征 |
-| fibo-fnd-utl-alx:hasMinuend | 具有被减数（has minuend） | 指明被减去某量的量值，即被减损的值。 | 定义域（domain）：差（difference）；子属性（subPropertyOf）：具有自变量 |
-| fibo-fnd-utl-alx:hasObservedValue | 具有观测值（has observed value） | 指明分析所基于的值集合。 | 值域（range）：结构化集合；子属性（subPropertyOf）：具有自变量 |
-| fibo-fnd-utl-alx:hasPeriodicity | 具有周期性（has periodicity） | 指明统计度量所反映的重复区间（月度、季度、年度）。 | 值域（range）：重复区间；子属性（subPropertyOf）：具有重复区间 |
-| fibo-fnd-utl-alx:hasReferencePeriod | 具有参照期间（has reference period） | 指明给定度量所适用的参照（基线）重复区间。 | 值域（range）：重复区间；子属性（subPropertyOf）：具有重复区间 |
-| fibo-fnd-utl-alx:hasRelativeComparativeDate | 具有相对比较日期（has relative comparative date） | 指明限定范围度量的值据以比较的日期（如前一个月、前三个月等）。 | 值域（range）：相对日期；子属性（subPropertyOf）：具有日期 |
-| fibo-fnd-utl-alx:hasRelativeComparativePeriod | 具有相对比较期间（has relative comparative period） | 指明限定范围度量据以比较的期间（通常为前期）。 | 值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-fnd-utl-alx:hasReleaseDate | 具有发布日期（has release date） | 指明某事物发布的日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有日期 |
-| fibo-fnd-utl-alx:hasSubtrahend | 具有减数（has subtrahend） | 指明从某量中减去的量值。 | 定义域（domain）：差（difference）；子属性（subPropertyOf）：具有自变量 |
-| fibo-fnd-utl-alx:hasTargetValue | 具有目标值（has target value） | 指明代表某事物随时间的计划或预计目标的值集合。 | 值域（range）：带日期结构化集合；子属性（subPropertyOf）：具有自变量 |
+- 父类：**集合（Collection）**
+- 直接子类：**统计总体（statistical population）**
 
-## 4. 数据属性（Datatype Property）
+#### 2.1.1 统计总体（statistical population）
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+定义：经时间和区域过滤的统计全域。
+
+- 父类：**有限总体（finite population）**、**统计全域（statistical universe）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-utl-alx:hasMeasurementDateTime | 具有测量日期时间（has measurement date time） | 标识进行测量的日期与时间。 |
-| fibo-fnd-utl-alx:hasMeasurementPeriodInMonths | 具有测量期间月数（has measurement period in months） | 标识度量适用的覆盖期间，以月为单位。 |
-| fibo-fnd-utl-alx:hasNumberOfEntries | 具有条目数（has number of entries） | 标识某文件、表格或其他资源（如报告、表格）中的元素数量。 |
-| fibo-fnd-utl-alx:hasPopulationSize | 具有总体规模（has population size） | 标识给定总体中的元素数量。 |
-| fibo-fnd-utl-alx:hasReleaseDateTime | 具有发布日期时间（has release date and time） | 指明某事物发布的日期与时间。 |
-| fibo-fnd-utl-alx:hasUniverseSize | 具有全域规模（has universe size） | 标识给定全域中的元素数量。 |
-| fibo-fnd-utl-alx:hasWeight | 具有权重（has weight） | 标识为增大或减小某项重要性而赋予的数量。 |
-| fibo-fnd-utl-alx:isCalculatedViaMethodology | 按方法论计算（is calculated via methodology） | 获得结果所用方法的高层描述。 |
-| fibo-fnd-utl-alx:isEstimate | 为估计值（is estimate） | 表明该度量反映的是估计（近似）值还是非估计值。 |
+| **具有总体规模（has population size）** | 标识给定总体中的元素数量。 | 值域：xsd:nonNegativeInteger；子属性：具有集合大小 |
+| **以……为特征（isCharacterizedBy）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **以……为特征（isCharacterizedBy）**至少有一个取值，类型是**显式日期区间（ExplicitDatePeriod）**。
+- **以……为特征（isCharacterizedBy）**至少有一个取值，类型是**统计区（statistical area）**。
+- **具有总体规模（has population size）**的所有取值只能是**xsd:nonNegativeInteger（nonNegativeInteger）**。
 
-- **年化标准差（annualized standard deviation）**：**具有参照期间（has reference period）**恰好有 1 个**显式重复区间（ExplicitRecurrenceInterval）**。
-- **平均绝对偏差（average absolute deviation）**：**具有自变量（hasArgument）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **差（difference）**：**具有被减数（has minuend）**存在取值约束。
-- **差（difference）**：**具有减数（has subtrahend）**存在取值约束。
-- **离散度（dispersion）**：**具有集合大小（hasCollectionSize）**存在取值约束。
-- **离散度（dispersion）**：**具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
-- **离散度（dispersion）**：**适用于（appliesTo）**至少有一个取值，类型是**有限总体（finite population）**。
-- **公式（formula）**：**具有表达式（hasExpression）**至少有一个取值，类型是**表达式（Expression）**。
-- **关键绩效指标（key performance indicator）**：**具有观测值（has observed value）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
-- **关键绩效指标（key performance indicator）**：**具有目标值（has target value）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
-- **平均值（mean）**：**具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
-- **中位数（median）**：**具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
-- **中位绝对偏差（median absolute deviation）**：**具有自变量（hasArgument）**至少有一个取值，类型是**中位数（median）**。
-- **数值指数值（numeric index value）**：**是……的值（isValueOf）**可以有 0 个或多个**限定度量（qualified measure）**。
-- **数值指数值（numeric index value）**：**具有测量日期时间（has measurement date time）**存在取值约束。
-- **限定度量（qualified measure）**：**具有基准日期（hasAnchorDate）**可以有 0 个或多个**基准日期（AnchorDate）**。
-- **限定度量（qualified measure）**：**按方法论计算（is calculated via methodology）**存在取值约束。
-- **限定范围度量（scoped measure）**：**具有周期性（has periodicity）**的所有取值只能是**重复区间（RecurrenceInterval）**。
-- **限定范围度量（scoped measure）**：**适用于（appliesTo）**可以有 0 个或多个**有限总体（finite population）**。
-- **限定范围度量（scoped measure）**：**具有覆盖区域（hasCoverageArea）**可以有 0 个或多个**统计区（statistical area）**。
-- **标准差（standard deviation）**：**具有自变量（hasArgument）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **统计区（statistical area）**：**由……标识（isIdentifiedBy）**至少有一个取值，类型是**统计区标识符（statistical area identifier）**。
-- **统计区标识符（statistical area identifier）**：**标识（identifies）**恰好有 1 个**统计区（statistical area）**。
-- **统计度量（statistical measure）**：**以……为特征（isCharacterizedBy）**可以有 0 个或多个**方面（Aspect）**。
-- **统计度量（statistical measure）**：**为估计值（is estimate）**存在取值约束。
-- **统计总体（statistical population）**：**具有总体规模（has population size）**的所有取值只能是**xsd:nonNegativeInteger（nonNegativeInteger）**。
-- **统计总体（statistical population）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**统计区（statistical area）**。
-- **统计总体（statistical population）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**显式日期区间（ExplicitDatePeriod）**。
-- **统计计划（statistical program）**：**适用于（appliesTo）**至少有一个取值，类型是**统计全域（statistical universe）**。
-- **统计计划（statistical program）**：**具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**统计区（statistical area）**。
-- **统计计划（statistical program）**：**提供（provides）**至少有一个取值，类型是**统计度量（statistical measure）**。
-- **统计全域（statistical universe）**：**具有全域规模（has universe size）**的所有取值只能是**xsd:nonNegativeInteger（nonNegativeInteger）**。
-- **统计全域（statistical universe）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**统计计划（statistical program）**。
-- **方差（variance）**：**具有自变量（hasArgument）**至少有一个取值，类型是**平均值（mean）**。
+### 2.2 公式（formula）
 
-## 6. 依赖（owl:imports，14 个）
+定义：以字母和符号表达、至少包含一个表达式的规则。
+
+- 父类：**规范（Specification）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有表达式（hasExpression）** | — | — |
+
+公理：
+
+- **具有表达式（hasExpression）**至少有一个取值，类型是**表达式（Expression）**。
+
+### 2.3 数值指数值（numeric index value）
+
+定义：某总量相对于其在某日期之值的数值。
+
+- 父类：**标量值（ScalarQuantityValue）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有测量日期时间（has measurement date time）** | 标识进行测量的日期与时间。 | 值域：cmns-dt:CombinedDateTime |
+| **是……的值（isValueOf）** | — | — |
+
+公理：
+
+- **具有测量日期时间（has measurement date time）**存在取值约束。
+- **是……的值（isValueOf）**可以有 0 个或多个**限定度量（qualified measure）**。
+
+### 2.4 统计区（statistical area）
+
+定义：按某地理区域指定计划定义的、用于汇总和呈现统计数据的物理位置。
+
+- 父类：**地理区域（GeographicRegion）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **由……标识（isIdentifiedBy）**至少有一个取值，类型是**统计区标识符（statistical area identifier）**。
+
+### 2.5 统计区标识符（statistical area identifier）
+
+定义：按全国一致的地理区域指定计划定义的物理位置的标识符。
+
+- 父类：**地理区域标识符（GeographicRegionIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**统计区（statistical area）**。
+
+### 2.6 统计度量（statistical measure）
+
+定义：特定组（研究域）内各统计单位的个体定量变量值的汇总（平均值、众数、总计、指数等）。
+
+- 父类：**度量（Measure）**
+- 直接子类：**差（difference）**、**离散度（dispersion）**、**平均值（mean）**、**中位数（median）**、**限定度量（qualified measure）**、**加权函数（weighting function）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **按方法论计算（is calculated via methodology）** | 获得结果所用方法的高层描述。 | — |
+| **为估计值（is estimate）** | 表明该度量反映的是估计（近似）值还是非估计值。 | 值域：xsd:boolean |
+| **以……为特征（isCharacterizedBy）** | — | — |
+
+公理：
+
+- **为估计值（is estimate）**存在取值约束。
+- **以……为特征（isCharacterizedBy）**可以有 0 个或多个**方面（Aspect）**。
+
+#### 2.6.1 差（difference）
+
+定义：数量相减所得的差额；一个值减去另一个值后的余数。
+
+- 父类：**统计度量（statistical measure）**、**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有被减数（has minuend）** | 指明被减去某量的量值，即被减损的值。 | 子属性：具有自变量 |
+| **具有减数（has subtrahend）** | 指明从某量中减去的量值。 | 子属性：具有自变量 |
+
+公理：
+
+- **具有减数（has subtrahend）**存在取值约束。
+- **具有被减数（has minuend）**存在取值约束。
+
+#### 2.6.2 离散度（dispersion）
+
+定义：观测值呈现的散布或变异程度。
+
+- 父类：**统计度量（statistical measure）**、**表达式（Expression）**
+- 直接子类：**平均绝对偏差（average absolute deviation）**、**中位绝对偏差（median absolute deviation）**、**标准差（standard deviation）**、**方差（variance）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有集合大小（hasCollectionSize）** | — | — |
+| **具有观测值（has observed value）** | 指明分析所基于的值集合。 | 值域：结构化集合；子属性：具有自变量 |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
+- **具有集合大小（hasCollectionSize）**存在取值约束。
+- **适用于（appliesTo）**至少有一个取值，类型是**有限总体（finite population）**。
+
+##### 2.6.2.1 平均绝对偏差（average absolute deviation）
+
+定义：各观测值距中心点的绝对偏差的平均值。
+
+- 父类：**离散度（dispersion）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有自变量（hasArgument）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+##### 2.6.2.2 中位绝对偏差（median absolute deviation）
+
+定义：观测值距平均值（可为算术平均值、中位数或众数）的绝对偏差的中位数。
+
+- 父类：**离散度（dispersion）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有自变量（hasArgument）**至少有一个取值，类型是**中位数（median）**。
+
+##### 2.6.2.3 标准差（standard deviation）
+
+定义：方差的平方根，度量数据集围绕均值的散布或离散程度。
+
+- 父类：**离散度（dispersion）**
+- 直接子类：**年化标准差（annualized standard deviation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有自变量（hasArgument）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+###### 2.6.2.3.1 年化标准差（annualized standard deviation）
+
+定义：某度量在特定参照期间上的标准差。
+
+- 父类：**标准差（standard deviation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参照期间（has reference period）** | 指明给定度量所适用的参照（基线）重复区间。 | 值域：重复区间；子属性：具有重复区间 |
+
+公理：
+
+- **具有参照期间（has reference period）**恰好有 1 个**显式重复区间（ExplicitRecurrenceInterval）**。
+
+##### 2.6.2.4 方差（variance）
+
+定义：散布的度量，计算为数据集中每个数与均值之平方偏差的平均。
+
+- 父类：**离散度（dispersion）**
+- 直接子类：**抽样方差（sampling variance）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有自变量（hasArgument）**至少有一个取值，类型是**平均值（mean）**。
+
+###### 2.6.2.4.1 抽样方差（sampling variance）
+
+定义：对同一规模、同一设计的不同可能样本所得某特征估计值之间差异程度的度量。
+
+- 父类：**方差（variance）**
+
+#### 2.6.3 平均值（mean）
+
+定义：最常见的中央趋势度量；一组数值的平均。
+
+- 父类：**统计度量（statistical measure）**、**表达式（Expression）**
+- 直接子类：**算术平均值（arithmetic mean）**、**几何平均值（geometric mean）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有观测值（has observed value）** | 指明分析所基于的值集合。 | 值域：结构化集合；子属性：具有自变量 |
+
+公理：
+
+- **具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
+
+##### 2.6.3.1 算术平均值（arithmetic mean）
+
+定义：一组数值之和除以该组数值的个数。
+
+- 父类：**平均值（mean）**
+
+##### 2.6.3.2 几何平均值（geometric mean）
+
+定义：用一组数值的乘积（而非和）表示其中央趋势或典型值的平均值。
+
+- 父类：**平均值（mean）**
+
+#### 2.6.4 中位数（median）
+
+定义：将数据样本、总体或概率分布的总频数分为两半的变量值。
+
+- 父类：**统计度量（statistical measure）**、**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有观测值（has observed value）** | 指明分析所基于的值集合。 | 值域：结构化集合；子属性：具有自变量 |
+
+公理：
+
+- **具有观测值（has observed value）**至少有一个取值，类型是**结构化集合（StructuredCollection）**。
+
+#### 2.6.5 限定度量（qualified measure）
+
+定义：受特征、量类或单位约束、从而细化其计算方式的统计度量。
+
+- 父类：**统计度量（statistical measure）**
+- 直接子类：**关键绩效指标（key performance indicator）**、**限定范围度量（scoped measure）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有基准日期（hasAnchorDate）** | — | — |
+| **按方法论计算（is calculated via methodology）** | 获得结果所用方法的高层描述。 | — |
+
+公理：
+
+- **具有基准日期（hasAnchorDate）**可以有 0 个或多个**基准日期（AnchorDate）**。
+- **按方法论计算（is calculated via methodology）**存在取值约束。
+
+##### 2.6.5.1 关键绩效指标（key performance indicator）
+
+定义：表明个人或企业在达成目标方面表现如何的可测目标。
+
+- 父类：**限定度量（qualified measure）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有观测值（has observed value）** | 指明分析所基于的值集合。 | 值域：结构化集合；子属性：具有自变量 |
+| **具有目标值（has target value）** | 指明代表某事物随时间的计划或预计目标的值集合。 | 值域：带日期结构化集合；子属性：具有自变量 |
+
+公理：
+
+- **具有目标值（has target value）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
+- **具有观测值（has observed value）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
+
+##### 2.6.5.2 限定范围度量（scoped measure）
+
+定义：受其适用统计总体上的过滤器约束的限定度量。
+
+- 父类：**限定度量（qualified measure）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有周期性（has periodicity）** | 指明统计度量所反映的重复区间（月度、季度、年度）。 | 值域：重复区间；子属性：具有重复区间 |
+| **适用于（appliesTo）** | — | — |
+| **具有覆盖区域（hasCoverageArea）** | — | — |
+
+公理：
+
+- **具有周期性（has periodicity）**的所有取值只能是**重复区间（RecurrenceInterval）**。
+- **具有覆盖区域（hasCoverageArea）**可以有 0 个或多个**统计区（statistical area）**。
+- **适用于（appliesTo）**可以有 0 个或多个**有限总体（finite population）**。
+
+#### 2.6.6 加权函数（weighting function）
+
+定义：确定集合中给定元素相对于整体的相对重要性或影响力的表达式或函数。
+
+- 父类：**统计度量（statistical measure）**、**表达式（Expression）**
+
+### 2.7 统计计划（statistical program）
+
+定义：对涉及一项或多项研究或调查的课题或情形进行详细调查与分析的计划。
+
+- 父类：**项目群（Program）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+| **具有覆盖区域（hasCoverageArea）** | — | — |
+| **提供（provides）** | — | — |
+
+公理：
+
+- **具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**统计区（statistical area）**。
+- **提供（provides）**至少有一个取值，类型是**统计度量（statistical measure）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**统计全域（statistical universe）**。
+
+### 2.8 统计全域（statistical universe）
+
+定义：代表某问题所关注的全部成员（人、资源、产品、服务、事件或实体）之「全域」的集合。
+
+- 父类：**集合（Collection）**
+- 直接子类：**统计总体（statistical population）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有全域规模（has universe size）** | 标识给定全域中的元素数量。 | 值域：xsd:nonNegativeInteger；子属性：具有集合大小 |
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **具有全域规模（has universe size）**的所有取值只能是**xsd:nonNegativeInteger（nonNegativeInteger）**。
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**统计计划（statistical program）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有固定比较日期（has fixed comparative date）** | 指明限定范围度量据以比较的特定日期，如上一次衰退结束之时。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有公式（has formula）** | 指明以符号简洁表达信息的方式，如数学或化学公式。 | 值域：公式（formula）；子属性：以……为特征 |
+| **具有相对比较日期（has relative comparative date）** | 指明限定范围度量的值据以比较的日期（如前一个月、前三个月等）。 | 值域：相对日期；子属性：具有日期 |
+| **具有相对比较期间（has relative comparative period）** | 指明限定范围度量据以比较的期间（通常为前期）。 | 值域：日期区间；子属性：具有日期区间 |
+| **具有发布日期（has release date）** | 指明某事物发布的日期。 | 值域：日期；子属性：具有日期 |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有测量期间月数（has measurement period in months）** | 标识度量适用的覆盖期间，以月为单位。 |
+| **具有条目数（has number of entries）** | 标识某文件、表格或其他资源（如报告、表格）中的元素数量。 |
+| **具有发布日期时间（has release date and time）** | 指明某事物发布的日期与时间。 |
+| **具有权重（has weight）** | 标识为增大或减小某项重要性而赋予的数量。 |
+
+## 4. 依赖（owl:imports，14 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -168,7 +492,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Analytics.rdf`
 - 中文 Turtle：`Analytics.ttl`

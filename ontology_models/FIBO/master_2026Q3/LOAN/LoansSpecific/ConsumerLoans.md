@@ -14,6 +14,19 @@
 
 **与相近概念的差别**：与商业贷款的差别——借款主体是自然人；与抵押贷款的差别——消费贷款多为无抵押信用贷款，金额小、期限短；与学生贷款的差别——用途不限于教育。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **消费贷款（consumer loan）** 继承 **贷款（Loan）**
+- **房屋净值信用额度（home equity line of credit）** 继承 **循环信用额度（RevolvingLineOfCredit）**
+- **房屋净值信用额度（home equity line of credit）** 继承 **担保消费贷款（secured consumer loan）**
+- **房屋净值信用额度（home equity line of credit）** 继承 **房地产担保贷款（LoanSecuredByRealEstate）**
+- **机动车贷款（motor vehicle loan）** 继承 **抵押贷款（CollateralizedLoan）**
+- **机动车贷款（motor vehicle loan）** 继承 **担保消费贷款（secured consumer loan）**
+- **担保消费贷款（secured consumer loan）** 继承 **担保贷款（SecuredLoan）**
+- **担保消费贷款（secured consumer loan）** 继承 **消费贷款（consumer loan）**
+- **信用消费贷款（unsecured consumer loan）** 继承 **信用贷款（UnsecuredLoan）**
+- **信用消费贷款（unsecured consumer loan）** 继承 **消费贷款（consumer loan）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -24,27 +37,61 @@
 | 担保消费贷款（secured consumer loan） | 向个人发放、借款人通过担保协议以某项资产作抵押的消费贷款。 |
 | 信用消费贷款（unsecured consumer loan） | 基于借款人信用历史或声誉向个人发放的消费贷款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 消费贷款（consumer loan） ⊑ 贷款
-- 房屋净值信用额度（home equity line of credit） ⊑ 循环信用额度
-- 房屋净值信用额度（home equity line of credit） ⊑ 担保消费贷款（secured consumer loan）
-- 房屋净值信用额度（home equity line of credit） ⊑ 房地产担保贷款
-- 机动车贷款（motor vehicle loan） ⊑ 抵押贷款
-- 机动车贷款（motor vehicle loan） ⊑ 担保消费贷款（secured consumer loan）
-- 担保消费贷款（secured consumer loan） ⊑ 担保贷款
-- 担保消费贷款（secured consumer loan） ⊑ 消费贷款（consumer loan）
-- 信用消费贷款（unsecured consumer loan） ⊑ 信用贷款
-- 信用消费贷款（unsecured consumer loan） ⊑ 消费贷款（consumer loan）
+### 2.1 消费贷款（consumer loan）
 
-## 5. 公理约定（Axioms）
+定义：向一个或多个个人发放、用于家庭或个人支出的贷款，不含抵押贷款和学生贷款。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**贷款（Loan）**
+- 直接子类：**担保消费贷款（secured consumer loan）**、**信用消费贷款（unsecured consumer loan）**
 
-- **消费贷款（consumer loan）**：**具有借款人（hasBorrower）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **机动车贷款（motor vehicle loan）**：**以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**实物抵押品（PhysicalCollateral）**。
+属性：
 
-## 6. 依赖（owl:imports，8 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有借款人（hasBorrower）** | — | — |
+
+公理：
+
+- **具有借款人（hasBorrower）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+#### 2.1.1 担保消费贷款（secured consumer loan）
+
+定义：向个人发放、借款人通过担保协议以某项资产作抵押的消费贷款。
+
+- 父类：**担保贷款（SecuredLoan）**、**消费贷款（consumer loan）**
+- 直接子类：**房屋净值信用额度（home equity line of credit）**、**机动车贷款（motor vehicle loan）**
+
+##### 2.1.1.1 房屋净值信用额度（home equity line of credit）
+
+定义：以借款人住房或其他财产的净值作担保向房主授予的信用额度。
+
+- 父类：**循环信用额度（RevolvingLineOfCredit）**、**担保消费贷款（secured consumer loan）**、**房地产担保贷款（LoanSecuredByRealEstate）**
+
+##### 2.1.1.2 机动车贷款（motor vehicle loan）
+
+定义：用于购买机动车的抵押单利贷款，通常分三到五年按月偿还。
+
+- 父类：**抵押贷款（CollateralizedLoan）**、**担保消费贷款（secured consumer loan）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **以……为抵押（isCollateralizedBy）** | — | — |
+
+公理：
+
+- **以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**实物抵押品（PhysicalCollateral）**。
+
+#### 2.1.2 信用消费贷款（unsecured consumer loan）
+
+定义：基于借款人信用历史或声誉向个人发放的消费贷款。
+
+- 父类：**信用贷款（UnsecuredLoan）**、**消费贷款（consumer loan）**
+
+## 3. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -59,7 +106,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`ConsumerLoans.rdf`
 - 中文 Turtle：`ConsumerLoans.ttl`

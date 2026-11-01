@@ -57,14 +57,14 @@ fibo-be-sps-sps:SoleProprietor a owl:Class ;
             owl:onProperty fibo-be-oac-opty:hasInvestmentEntity ;
             owl:someValuesFrom fibo-be-sps-sps:SoleProprietorship ],
         [ a owl:Restriction ;
-            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty fibo-fnd-oac-oac:ownsAndControls ;
                     owl:someValuesFrom fibo-be-sps-sps:SoleProprietorship ] ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-be-oac-opty:EntityOwner ;
     skos:definition "party that owns a business, has the rights to all profits from that business and is considered a single entity (unincorporated) together with that business for tax and liability purposes" ;
     cmns-av:explanatoryNote "A sole proprietor has unlimited liability with respect to any business debts." ;
@@ -76,12 +76,12 @@ fibo-be-sps-sps:SoleProprietorship a owl:Class ;
         "独资企业（sole proprietorship）"@zh ;
     rdfs:comment "由单人拥有的非法人企业。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
-            owl:someValuesFrom fibo-fnd-law-lcap:LiabilityCapacity ],
-        [ a owl:Restriction ;
             owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
             owl:onProperty fibo-fnd-oac-oac:isOwnedAndControlledBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-law-lcap:hasCapacity ;
+            owl:someValuesFrom fibo-fnd-law-lcap:LiabilityCapacity ],
         fibo-be-le-lp:BusinessEntity,
         cmns-org:LegalPerson ;
     skos:definition "unincorporated business owned by a single person" .

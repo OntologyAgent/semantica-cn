@@ -14,6 +14,16 @@
 
 **与相近概念的差别**：期权行情比期货多了「行权价×到期日」两个维度，同一标的对应一整个期权链（option chain）而非单一合约。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **德尔塔（delta）** 继承 **期权希腊字母（options greek）**
+- **期权每日结算价（option daily settlement price）** 继承 **收盘价（ClosingPrice）**
+- **期权每日结算价（option daily settlement price）** 继承 **证券价格（SecurityPrice）**
+- **期权理论价值（option theoretical value）** 继承 **货币数量（MonetaryAmount）**
+- **期权希腊字母（options greek）** 继承 **价格分析指标（PriceAnalytic）**
+- **期权西塔（options theta）** 继承 **期权希腊字母（options greek）**
+- **期权维加（options vega）** 继承 **期权希腊字母（options greek）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -25,26 +35,86 @@
 | 期权西塔（options theta） | 期权理论价值对到期时间单位变化之变化率的度量。 |
 | 期权维加（options vega） | 期权理论价值对波动率假设单位变化之变化率的度量。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 德尔塔（delta） ⊑ 期权希腊字母（options greek）
-- 期权每日结算价（option daily settlement price） ⊑ 收盘价
-- 期权每日结算价（option daily settlement price） ⊑ 证券价格
-- 期权理论价值（option theoretical value） ⊑ 货币数量
-- 期权希腊字母（options greek） ⊑ 价格分析指标
-- 期权西塔（options theta） ⊑ 期权希腊字母（options greek）
-- 期权维加（options vega） ⊑ 期权希腊字母（options greek）
+### 2.1 期权每日结算价（option daily settlement price）
 
-## 5. 公理约定（Axioms）
+定义：交易时段结束时的官方价格，由期权清算公司确定，用于计算账户权益变动。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**收盘价（ClosingPrice）**、**证券价格（SecurityPrice）**
 
-- **期权每日结算价（option daily settlement price）**：**具有发布方（hasPublisher）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **期权理论价值（option theoretical value）**：**引用（refersTo）**至少有一个取值，类型是**定价模型（PricingModel）**。
-- **期权西塔（options theta）**：**引用（refersTo）**至少有一个取值，类型是**期权理论价值（option theoretical value）**。
-- **期权维加（options vega）**：**引用（refersTo）**至少有一个取值，类型是**期权理论价值（option theoretical value）**。
+属性：
 
-## 6. 依赖（owl:imports，10 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发布方（hasPublisher）** | — | — |
+
+公理：
+
+- **具有发布方（hasPublisher）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.2 期权理论价值（option theoretical value）
+
+定义：由期权定价模型确定的期权公允价值。
+
+- 父类：**货币数量（MonetaryAmount）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **引用（refersTo）**至少有一个取值，类型是**定价模型（PricingModel）**。
+
+### 2.3 期权希腊字母（options greek）
+
+定义：表示期权价格对其价值所依赖的标的参数变化之敏感度的量。
+
+- 父类：**价格分析指标（PriceAnalytic）**
+- 直接子类：**德尔塔（delta）**、**期权西塔（options theta）**、**期权维加（options vega）**
+
+#### 2.3.1 德尔塔（delta）
+
+定义：期权价值对标的价格的一阶导数（或持仓上的对应值）。
+
+- 父类：**期权希腊字母（options greek）**
+
+#### 2.3.2 期权西塔（options theta）
+
+定义：期权理论价值对到期时间单位变化之变化率的度量。
+
+- 父类：**期权希腊字母（options greek）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **引用（refersTo）**至少有一个取值，类型是**期权理论价值（option theoretical value）**。
+
+#### 2.3.3 期权维加（options vega）
+
+定义：期权理论价值对波动率假设单位变化之变化率的度量。
+
+- 父类：**期权希腊字母（options greek）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **引用（refersTo）**至少有一个取值，类型是**期权理论价值（option theoretical value）**。
+
+## 3. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -61,7 +131,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`ETOptionsTemporal.rdf`
 - 中文 Turtle：`ETOptionsTemporal.ttl`

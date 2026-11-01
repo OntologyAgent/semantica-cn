@@ -112,12 +112,12 @@ fibo-sec-dbt-dbti:NonTradableDebtInstrument a owl:Class ;
             owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtRedemption ;
             owl:someValuesFrom fibo-sec-dbt-dbti:RelativePrice ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtIssue ;
+            owl:someValuesFrom fibo-sec-dbt-dbti:RelativePrice ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fi-fi:RedemptionProvision ;
             owl:onProperty fibo-fbc-fi-fi:hasRedemptionProvision ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-dbti:hasRelativePriceAtIssue ;
-            owl:someValuesFrom fibo-sec-dbt-dbti:RelativePrice ],
         fibo-fbc-fi-fi:DebtInstrument,
         fibo-fnd-agr-ctr:WrittenContract ;
     owl:disjointWith fibo-sec-dbt-dbti:TradableDebtInstrument ;
@@ -436,11 +436,11 @@ fibo-sec-dbt-dbti:PutSchedule a owl:Class ;
     rdfs:comment "规定债务工具回售特征相关事件（即可以何种价格于何日卖出债务工具）的计划表。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-sec-dbt-dbti:PutEvent ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-sec-dbt-dbti:PutPremium fibo-fnd-acc-cur:MonetaryPrice ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-dbt-dbti:PutEvent ],
         fibo-fnd-dt-fd:Schedule ;
     skos:definition "a schedule that defines the events associated with the put feature of a debt instrument, i.e, the dates on which the debt instrument may be sold at what price by the holder" .
 
@@ -582,12 +582,12 @@ fibo-sec-dbt-dbti:PutFeature a owl:Class ;
         "回售特征（put feature）"@zh ;
     rdfs:comment "赋予持有人在到期前卖出指定数量债务工具（即要求赎回）之权利（而非义务）的赎回条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-col:comprises ;
+            owl:someValuesFrom fibo-sec-dbt-dbti:PutSchedule ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-dbt-dbti:PutNotificationProvision ;
             owl:onProperty fibo-sec-dbt-dbti:hasNotificationProvision ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-col:comprises ;
-            owl:someValuesFrom fibo-sec-dbt-dbti:PutSchedule ],
         fibo-fbc-dae-dbt:DebtTerms,
         fibo-fbc-fi-fi:RedemptionProvision ;
     skos:definition "redemption provision giving the holder the right, but not the obligation, to sell a specified amount of the debt instrument (i.e., redeem it), prior to maturity" ;
@@ -600,12 +600,12 @@ fibo-sec-dbt-dbti:TradableDebtInstrument a owl:Class ;
     rdfs:comment "同时属于证券、即可由持有人买卖的债务工具。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-gty:Guarantor ;
-            owl:onProperty fibo-fbc-dae-gty:hasGuarantor ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-dbt-dbti:TradableDebtInstrument ;
             owl:onProperty fibo-sec-dbt-dbti:isSubordinatedTo ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-dae-gty:Guarantor ;
+            owl:onProperty fibo-fbc-dae-gty:hasGuarantor ],
         fibo-fbc-fi-fi:DebtInstrument,
         fibo-fbc-fi-fi:Security ;
     skos:definition "a debt instrument that is also a security, i.e., that can be bought and sold by the holder" ;
@@ -630,6 +630,10 @@ fibo-sec-dbt-dbti:DebtOffering a owl:Class ;
 
 fibo-fbc-fi-fi:DebtInstrument a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-dbt-dbti:DebtOffering ;
+            owl:onProperty fibo-fbc-pas-fpas:hasOffering ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-dbti:hasInterestPaymentTerms ;
             owl:someValuesFrom fibo-fbc-dae-dbt:InterestPaymentTerms ],
         [ a owl:Restriction ;
@@ -641,16 +645,12 @@ fibo-fbc-fi-fi:DebtInstrument a owl:Class ;
             owl:onClass fibo-sec-dbt-dbti:CallFeature ;
             owl:onProperty fibo-sec-dbt-dbti:hasCallFeature ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-dbt-dbti:DebtOffering ;
-            owl:onProperty fibo-fbc-pas-fpas:hasOffering ],
+            owl:onProperty fibo-sec-dbt-dbti:hasRepaymentTerms ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:PrincipalRepaymentTerms ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fi-fi:RedemptionProvision ;
-            owl:onProperty fibo-fbc-fi-fi:hasRedemptionProvision ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-dbti:hasRepaymentTerms ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:PrincipalRepaymentTerms ] .
+            owl:onProperty fibo-fbc-fi-fi:hasRedemptionProvision ] .
 
 [] a owl:AllDifferent ;
     owl:distinctMembers ( fibo-sec-dbt-dbti:AtADiscount fibo-sec-dbt-dbti:AtAPremium fibo-sec-dbt-dbti:ParValue ) .

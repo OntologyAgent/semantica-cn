@@ -225,14 +225,14 @@ fibo-ind-ind-ind:Volatility a owl:Class ;
     rdfs:label "volatility",
         "波动率（volatility）"@zh ;
     rdfs:comment "某随机变量在某段时期内围绕其均值的离散程度的统计度量。"@zh ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dt:hasDatePeriod ;
-            owl:someValuesFrom cmns-dt:DatePeriod ],
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( fibo-fnd-utl-alx:Variance fibo-fnd-utl-alx:StandardDeviation ) ],
         [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fnd-dt-fd:DatedStructuredCollection ],
-        [ a owl:Class ;
-            owl:unionOf ( fibo-fnd-utl-alx:Variance fibo-fnd-utl-alx:StandardDeviation ) ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dt:hasDatePeriod ;
+            owl:someValuesFrom cmns-dt:DatePeriod ],
         fibo-fnd-utl-alx:Dispersion ;
     skos:definition "statistical measure of the dispersion around the average of some random variable over some period of time" .
 

@@ -14,6 +14,12 @@
 
 **与相近概念的差别**：与公司、合伙的根本差别——独资经营没有独立法人资格，业主对企业债务承担无限责任，企业与业主个人在法律上不完全分离。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **独资经营者（sole proprietor）** 继承 **实体所有者（EntityOwner）**
+- **独资企业（sole proprietorship）** 继承 **企业实体（BusinessEntity）**
+- **独资企业（sole proprietorship）** 继承 **法律主体（LegalPerson）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -21,23 +27,46 @@
 | 独资经营者（sole proprietor） | 拥有某企业、享有该企业全部利润、并与该企业被视为单一实体（非法人）的参与方。 |
 | 独资企业（sole proprietorship） | 由单人拥有的非法人企业。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 独资经营者（sole proprietor） ⊑ 实体所有者
-- 独资企业（sole proprietorship） ⊑ 企业实体
-- 独资企业（sole proprietorship） ⊑ 法律主体
+### 2.1 独资经营者（sole proprietor）
 
-## 5. 公理约定（Axioms）
+定义：拥有某企业、享有该企业全部利润、并与该企业被视为单一实体（非法人）的参与方。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**实体所有者（EntityOwner）**
 
-- **独资经营者（sole proprietor）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **独资经营者（sole proprietor）**：**具有投资实体（hasInvestmentEntity）**至少有一个取值，类型是**独资企业（sole proprietorship）**。
-- **独资经营者（sole proprietor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**拥有并控制（ownsAndControls）**至少有一个取值，类型是**独资企业（sole proprietorship）**。
-- **独资企业（sole proprietorship）**：**由…拥有并控制（isOwnedAndControlledBy）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **独资企业（sole proprietorship）**：**具有能力方（hasCapacity）**至少有一个取值，类型是**应诉能力（LiabilityCapacity）**。
+属性：
 
-## 6. 依赖（owl:imports，8 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有投资实体（hasInvestmentEntity）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **具有投资实体（hasInvestmentEntity）**至少有一个取值，类型是**独资企业（sole proprietorship）**。
+- **由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**拥有并控制（ownsAndControls）**至少有一个取值，类型是**独资企业（sole proprietorship）**。
+
+### 2.2 独资企业（sole proprietorship）
+
+定义：由单人拥有的非法人企业。
+
+- 父类：**企业实体（BusinessEntity）**、**法律主体（LegalPerson）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有能力方（hasCapacity）** | — | — |
+| **由…拥有并控制（isOwnedAndControlledBy）** | — | — |
+
+公理：
+
+- **具有能力方（hasCapacity）**至少有一个取值，类型是**应诉能力（LiabilityCapacity）**。
+- **由…拥有并控制（isOwnedAndControlledBy）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+
+## 3. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -52,7 +81,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SoleProprietorships.rdf`
 - 中文 Turtle：`SoleProprietorships.ttl`

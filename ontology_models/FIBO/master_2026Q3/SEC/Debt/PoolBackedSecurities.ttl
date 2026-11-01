@@ -121,14 +121,14 @@ fibo-sec-dbt-pbs:Tranche a owl:Class ;
         "分档（tranche）"@zh ;
     rdfs:comment "证券池（通常为债务工具）的一个部分。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-dbt-pbs:DetachmentPoint ;
-            owl:onProperty fibo-sec-dbt-pbs:hasDetachmentPoint ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-col:isPartOf ;
                     owl:someValuesFrom fibo-sec-sec-pls:InstrumentPool ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-dbt-pbs:DetachmentPoint ;
+            owl:onProperty fibo-sec-dbt-pbs:hasDetachmentPoint ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-dbt-pbs:AttachmentPoint ;
@@ -288,12 +288,12 @@ fibo-sec-dbt-pbs:PoolBackedSecurity a owl:Class ;
         "资产池支持证券（pool-backed security）"@zh ;
     rdfs:comment "现金流来源于标的抵押贷款池或其他应收款池的债务工具。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
-            owl:someValuesFrom fibo-sec-sec-pls:InstrumentPool ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ;
             owl:onProperty cmns-cls:isCharacterizedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
+            owl:someValuesFrom fibo-sec-sec-pls:InstrumentPool ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-dbt:CollateralValueAsOfDate ;
@@ -327,12 +327,12 @@ fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure a owl:Class ;
         "债务池统计度量（debt pool statistical measure）"@zh ;
     rdfs:comment "对一个或多个债务工具可能随时间变化之行为的某方面进行的限定性度量。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-sec-sec-pls:DebtPool ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:DatePeriod ;
             owl:onProperty cmns-cxtdsg:hasApplicablePeriod ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-sec-sec-pls:DebtPool ],
         fibo-fnd-utl-alx:QualifiedMeasure ;
     skos:definition "qualified measure of some aspect of the behavior of one or more debt instrument(s) that may vary over time"@en .
 

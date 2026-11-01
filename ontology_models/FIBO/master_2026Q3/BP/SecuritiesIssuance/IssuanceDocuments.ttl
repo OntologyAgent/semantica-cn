@@ -15,11 +15,11 @@ fibo-bp-iss-doc:FinalProspectus a owl:Class ;
         "最终招募说明书（final prospectus）"@zh ;
     rdfs:comment "描述发行事项的最终招募说明书，包括发行本身的事实（如截止日期）及已知的相关事实。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-bp-iss-doc:OfferingDocumentTerms ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-dt:succeeds ;
             owl:someValuesFrom fibo-bp-iss-doc:PreliminaryProspectus ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-bp-iss-doc:OfferingDocumentTerms ],
         fibo-sec-sec-iss:Prospectus ;
     skos:definition "The final Prospectus for an issue describes the Offer Issue, including facts about the issue itself such as closing dates, and known facts about the securities that will form part of that issue."@en ;
     cmns-av:explanatoryNote "Anticipated facts might include expected issue price, yields, pool parameters as appropriate for the type of instrument being issued. Term origin:SMER"@en .

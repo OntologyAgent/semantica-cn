@@ -631,20 +631,20 @@ fibo-ind-ei-ei:Enterprise a owl:Class ;
         "企业（enterprise）"@zh ;
     rdfs:comment "生产和/或销售货物或服务的功能型企业实体。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fnd-pas-pas:Good cmns-org:Service ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:isPlayedBy ;
-            owl:someValuesFrom cmns-org:LegalPerson ],
-        [ a owl:Class ;
-            owl:unionOf ( fibo-fnd-pas-pas:Producer cmns-org:ServiceProvider ) ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:isClassifiedBy ;
             owl:someValuesFrom fibo-fnd-arr-cls:IndustrySectorClassifier ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom fibo-ind-ei-ei:Establishment ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fnd-pas-pas:Good cmns-org:Service ) ] ],
+        [ a owl:Class ;
+            owl:unionOf ( fibo-fnd-pas-pas:Producer cmns-org:ServiceProvider ) ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:isPlayedBy ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
         fibo-be-fct-fct:FunctionalBusinessEntity,
         fibo-ind-ei-ei:InstitutionalUnit ;
     skos:definition "functional business entity that produces and/or sells goods or services" ;
@@ -727,11 +727,11 @@ fibo-ind-ei-ei:UnemploymentRate a owl:Class ;
     rdfs:comment "表示给定经济体在某指定时期内失业人口与平民劳动力之比的经济指标。"@zh ;
     rdfs:seeAlso <http://www.bls.gov/news.release/pdf/empsit.pdf> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-ind-ei-ei:hasBaselinePopulation ;
-            owl:someValuesFrom fibo-ind-ei-ei:CivilianLaborForce ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-ind-ei-ei:hasComparisonPopulation ;
             owl:someValuesFrom fibo-ind-ei-ei:UnemployedPopulation ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-ind-ei-ei:hasBaselinePopulation ;
+            owl:someValuesFrom fibo-ind-ei-ei:CivilianLaborForce ],
         fibo-ind-ei-ei:EconomicIndicator,
         cmns-qtu:Expression ;
     skos:definition "economic indicator representing the ratio of the unemployed population with respect to the civilian labor force of a given economy for some specified period" ;
@@ -878,25 +878,25 @@ fibo-ind-ei-ei:EconomicIndicator a owl:Class ;
         "经济指标（economic indicator）"@zh ;
     rdfs:comment "在统计区（地区）情境内规律且可比的经济活动统计度量，用于经济绩效分析。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-doc:hasReportingPeriod ;
-            owl:someValuesFrom cmns-dt:ExplicitDatePeriod ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty fibo-fnd-utl-alx:hasReleaseDate ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-loc:hasCoverageArea ;
-            owl:someValuesFrom fibo-ind-ei-ei:GovernmentSpecifiedStatisticalArea ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-dt:CombinedDateTime ;
             owl:onProperty fibo-fnd-utl-alx:hasReleaseDateTime ],
         [ a owl:Restriction ;
-            owl:allValuesFrom cmns-dt:Date ;
-            owl:onProperty fibo-ind-ei-ei:hasSeriesOrigin ],
+            owl:onProperty fibo-fnd-arr-doc:hasReportingPeriod ;
+            owl:someValuesFrom cmns-dt:ExplicitDatePeriod ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:boolean ;
             owl:onProperty fibo-ind-ei-ei:isSeasonallyAdjusted ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-loc:hasCoverageArea ;
+            owl:someValuesFrom fibo-ind-ei-ei:GovernmentSpecifiedStatisticalArea ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-dt:Date ;
+            owl:onProperty fibo-ind-ei-ei:hasSeriesOrigin ],
         fibo-fnd-utl-alx:ScopedMeasure ;
     skos:definition "statistical measure of economic activity that is regular and comparable in the context of a statistical area (region), used for analysis of economic performance and predictions of future performance" ;
     skos:example "Example indicators include the average work week, weekly claims for unemployment insurance, new orders, vendor performance, stock prices, and changes in the money supply." ;

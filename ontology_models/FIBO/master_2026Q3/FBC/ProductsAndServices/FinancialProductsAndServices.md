@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：产品≠金融工具——产品是机构设计的服务组合（如「三年期定额房贷」），工具是据此签订的可交易合约；同一产品可以衍生出无数笔具体合约。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **代理协议（agency agreement）** 继承 **书面合同（WrittenContract）**
+- **法律文书送达代理人（agent for service of process）** 继承 **注册代理人（registered agent）**
+- **篮子（basket）** 继承 **集合（Collection）**
+- **篮子成分（basket constituent）** 继承 **组成成分（Constituent）**
+- **经纪商（broker）** 继承 **合同第三方（ContractThirdParty）**
+- **经纪交易商（broker-dealer）** 继承 **功能实体（FunctionalEntity）**
+- **产品目录（catalog）** 继承 **出版物（Publication）**
+- **合同生命周期（contract lifecycle）** 继承 **生命周期（Lifecycle）**
+- **合同生命周期事件（contract lifecycle event）** 继承 **生命周期事件（LifecycleEvent）**
+- **合同生命周期事件发生（contract lifecycle event occurrence）** 继承 **生命周期事件发生（LifecycleEventOccurrence）**
+- **合同生命周期历程（contract lifecycle occurrence）** 继承 **生命周期发生（LifecycleOccurrence）**
+- **合同生命周期阶段（contract lifecycle stage）** 继承 **生命周期阶段（LifecycleStage）**
+- 其余 52 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -72,208 +88,892 @@
 | 加权篮子（weighted basket） | 各成分彼此之间具有相对重要性的篮子。 |
 | 加权篮子成分（weighted basket constituent） | 其相对于其他篮子成分的重要性为已知的篮子组成部分。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 代理协议（agency agreement） ⊑ 书面合同
-- 法律文书送达代理人（agent for service of process） ⊑ 注册代理人（registered agent）
-- 篮子（basket） ⊑ 集合
-- 篮子成分（basket constituent） ⊑ 组成成分
-- 经纪商（broker） ⊑ 合同第三方
-- 经纪交易商（broker-dealer） ⊑ 功能实体
-- 产品目录（catalog） ⊑ 出版物
-- 合同生命周期（contract lifecycle） ⊑ 生命周期
-- 合同生命周期事件（contract lifecycle event） ⊑ 生命周期事件
-- 合同生命周期事件发生（contract lifecycle event occurrence） ⊑ 生命周期事件发生
-- 合同生命周期历程（contract lifecycle occurrence） ⊑ 生命周期发生
-- 合同生命周期阶段（contract lifecycle stage） ⊑ 生命周期阶段
-- 合同生命周期阶段历程（contract lifecycle stage occurrence） ⊑ 生命周期阶段发生
-- 交易商（dealer） ⊑ 服务提供方
-- 风险暴露（exposure） ⊑ 承受者（undergoer）
-- 风险暴露承担方（exposure bearer） ⊑ 行为者（actor）
-- 风险暴露情形（exposure situation） ⊑ 情境（situation）
-- 金融风险暴露（financial exposure） ⊑ 风险暴露（exposure）
-- 金融中介服务（financial intermediation service） ⊑ 金融服务（financial service）
-- 金融产品（financial product） ⊑ 产品
-- 金融产品目录（financial product catalog） ⊑ 产品目录（catalog）
-- 金融服务（financial service） ⊑ 服务
-- 金融服务提供商（financial service provider） ⊑ 功能型企业实体
-- 金融服务提供商（financial service provider） ⊑ 服务提供方
-- 法定代理人（legal agent） ⊑ 智能体角色（agent role）
-- 持证代理人（licensed agent） ⊑ 法定代理人（legal agent）
-- 持证代理人（licensed agent） ⊑ 被许可方
-- 持证代理人（licensed agent） ⊑ 责任方
-- 受要约人（offeree） ⊑ 参与方角色（party role）
-- 要约人（offeror） ⊑ 参与方角色（party role）
-- 头寸（position） ⊑ 金融风险暴露（financial exposure）
-- 产品生命周期（product lifecycle） ⊑ 生命周期
-- 产品生命周期事件（product lifecycle event） ⊑ 生命周期事件
-- 产品生命周期事件发生（product lifecycle event occurrence） ⊑ 生命周期事件发生
-- 产品生命周期历程（product lifecycle occurrence） ⊑ 生命周期发生
-- 产品生命周期阶段（product lifecycle stage） ⊑ 生命周期阶段
-- 产品生命周期阶段历程（product lifecycle stage occurrence） ⊑ 生命周期阶段发生
-- 注册代理人（registered agent） ⊑ 法定代理人（legal agent）
-- 注册代理人（registered agent） ⊑ 合同当事方
-- 受监管商品（regulated commodity） ⊑ 商品
-- 结算条款（settlement terms） ⊑ 合同承诺
-- 第三方代理人（third-party agent） ⊑ 法定代理人（legal agent）
-- 第三方代理人（third-party agent） ⊑ 被许可方
-- 第三方代理人（third-party agent） ⊑ 服务提供方
-- 交易（trade） ⊑ 情境（situation）
-- 交易标识符（trade identifier） ⊑ 标识符
-- 交易生命周期（trade lifecycle） ⊑ 生命周期
-- 交易生命周期事件（trade lifecycle event） ⊑ 生命周期事件
-- 交易生命周期事件发生（trade lifecycle event occurrence） ⊑ 生命周期事件发生
-- 交易生命周期历程（trade lifecycle occurrence） ⊑ 生命周期发生
-- 交易生命周期阶段（trade lifecycle stage） ⊑ 生命周期阶段
-- 交易生命周期阶段历程（trade lifecycle stage occurrence） ⊑ 生命周期阶段发生
-- 交易员（trader） ⊑ 服务提供方
-- 交易策略（trading strategy） ⊑ 战略
-- 唯一交易标识符（unique transaction identifier） ⊑ 交易标识符（trade identifier）
-- 加权篮子（weighted basket） ⊑ 篮子（basket）
-- 加权篮子（weighted basket） ⊑ 结构化集合
-- 加权篮子成分（weighted basket constituent） ⊑ 篮子成分（basket constituent）
+### 2.1 持仓（Holding）
 
-## 3. 对象属性（Object Property）
+定义：持有的金融资产或头寸。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fbc-pas-fpas:exposesIn | 暴露于（exposes in） | 指明风险暴露发生的情势。 | 定义域（domain）：风险暴露（exposure）；值域（range）：风险暴露情形（exposure situation）；子属性（subPropertyOf）：承受（undergoes） |
-| fibo-fbc-pas-fpas:facilitates | 促进（facilitates） | 在某一事件、任务、对话或其他事物发生的情势中充当促成者。 | 子属性（subPropertyOf）：在…中扮演主动参与方（plays active party in） |
-| fibo-fbc-pas-fpas:hasExposedParty | 具有风险暴露方（has exposed party） | 指明承受影响或风险的一方。 | 定义域（domain）：风险暴露情形（exposure situation）；值域（range）：风险暴露承担方（exposure bearer）；逆属性（inverseOf）：在……中为风险暴露方（is exposed party in）；子属性（subPropertyOf）：具有行为者（has actor） |
-| fibo-fbc-pas-fpas:hasExposureTo | 暴露于……的风险（has exposure to） | 涉及来自……的影响或风险。 | 定义域（domain）：风险暴露情形（exposure situation）；值域（range）：风险暴露（exposure）；逆属性（inverseOf）：暴露于（exposes in）；子属性（subPropertyOf）：具有承受者（has undergoer） |
-| fibo-fbc-pas-fpas:hasGeneratingEntity | 具有生成实体（has generating entity） | 指明生成某事物的法律实体。 | 值域（range）：法律实体；子属性（subPropertyOf）：生成 |
-| fibo-fbc-pas-fpas:hasGeneratingEntityIdentifier | 具有生成实体标识符（has generating entity identifier） | 指明生成唯一交易标识符的实体的标识符。 | 定义域（domain）：唯一交易标识符（unique transaction identifier） |
-| fibo-fbc-pas-fpas:hasOffering | 具有要约（has offering） | 将某事物与买方或卖方（要约人）向另一方（受要约人）提交的、自愿但附条件的承诺关联起来，该承诺一经接受即具约束力。 | 值域（range）：发行（offering）；逆属性（inverseOf）：是……的要约（is offering of） |
-| fibo-fbc-pas-fpas:hasOfferingAmount | 具有要约金额（has offering amount） | 指明基于参考数据、市场利率或其他约定方法确定的、与某要约相关联的名义货币金额。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有名义金额 |
-| fibo-fbc-pas-fpas:hasOfferingPrice | 具有要约价格（has offering price） | 指明与要约相关联的价格，可为明示价格或计算价格。 | 值域（range）：货币价格；子属性（subPropertyOf）：具有价格 |
-| fibo-fbc-pas-fpas:hasLegalAgent | 具有注册代理人（has registered agent） | 标识在特定情况下具有法律、医疗或财务能力代表他人行事的一方。 | 值域（range）：法定代理人（legal agent）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fbc-pas-fpas:hasSelectingParty | 具有挑选方（has selecting party） | 指明负责确定篮子成分的个人或组织。 | 值域（range）：参与方（party）；子属性（subPropertyOf）：具有参与方（has party） |
-| fibo-fbc-pas-fpas:hasSettlementDate | 具有结算日（has settlement date） | 指明已执行订单或交易必须完成结算的日期。 | 值域（range）：推算日期；子属性（subPropertyOf）：具有结束日期 |
-| fibo-fbc-pas-fpas:hasTradeDate | 具有交易日（has trade date） | 指明证券或其他工具交易实际发生的日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有日期 |
-| fibo-fbc-pas-fpas:isEmbodiedIn | 体现于（is embodied in） | 标识某事物在某一情境中的表现形式或有形载体。 | 逆属性（inverseOf）：体现（embodies） |
-| fibo-fbc-pas-fpas:isExposedPartyIn | 在……中为风险暴露方（is exposed party in） | 指明该方承担风险的情势。 | 定义域（domain）：风险暴露承担方（exposure bearer）；值域（range）：风险暴露情形（exposure situation）；子属性（subPropertyOf）：在…中行动（acts in） |
-| fibo-fbc-pas-fpas:isExposedTo | 暴露于（is exposed to） | 承受来自……的影响或风险。 | 定义域（domain）：风险暴露承担方（exposure bearer）；值域（range）：风险暴露（exposure）；逆属性（inverseOf）：是……的风险暴露（is exposure of）；子属性（subPropertyOf）：对…采取行动（acts on） |
-| fibo-fbc-pas-fpas:isExposureOf | 是……的风险暴露（is exposure of） | 是由……承担的影响或风险。 | 定义域（domain）：风险暴露（exposure）；值域（range）：风险暴露承担方（exposure bearer）；子属性（subPropertyOf）：受…影响（is affected by） |
-| fibo-fbc-pas-fpas:isFacilitatedBy | 由……促进（is facilitated by） | 标识在某一情境中促成某一事件、交易、对话或其他事物的人或事物。 | 逆属性（inverseOf）：促进（facilitates）；子属性（subPropertyOf）：具有主动参与方（has active party） |
-| fibo-fbc-pas-fpas:isOfferingOf | 是……的要约（is offering of） | 将要约与作为要约标的的一个或多个事物关联起来。 | 定义域（domain）：发行（offering） |
-| fibo-fbc-pas-fpas:relatesTo | 关联于（relates to） | 与……存在逻辑或因果联系。 | — |
+### 2.2 代理协议（agency agreement）
 
-## 4. 数据属性（Datatype Property）
+定义：指定一方为注册代理人、在某一（通常为法律、财务或医疗）事务中代表另一方行事的协议。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**书面合同（WrittenContract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fbc-pas-fpas:hasNominalNumberOfUnits | 具有名义单位数量（has nominal number of units） | 指明与某要约相关联的基础单位数量。 |
-| fibo-fbc-pas-fpas:hasOfferingUnits | 具有要约单位数量（has offering units） | 指明与某要约相关联的实际单位数量，包括单位数量的任何溢价部分。 |
-| fibo-fbc-pas-fpas:hasSelectionCriteria | 具有挑选标准（has selection criteria） | 描述用于确定集合成员构成的方法或程序。 |
+| **具有合同当事方（hasContractParty）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有合同当事方（hasContractParty）**至少有一个取值，类型是**注册代理人（registered agent）**。
 
-- **代理协议（agency agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**注册代理人（registered agent）**。
-- **篮子（basket）**：**具有挑选方（has selecting party）**可以有 0 个或多个**参与方（party）**。
-- **篮子（basket）**：**具有挑选标准（has selection criteria）**存在取值约束。
-- **篮子（basket）**：**具有成员（hasMember）**至少有一个取值，类型是**篮子成分（basket constituent）**。
-- **经纪商（broker）**：该属性存在取值约束。
-- **经纪交易商（broker-dealer）**：该属性存在取值约束。
-- **产品目录（catalog）**：**由……标识（isIdentifiedBy）**的所有取值只能是**标识符（Identifier）**。
-- **产品目录（catalog）**：**描述（describes）**至少有一个取值，类型是**产品（Product）**。
-- **合同生命周期（contract lifecycle）**：**具有阶段（hasStage）**至少有一个取值，类型是**合同生命周期阶段（contract lifecycle stage）**。
-- **合同生命周期（contract lifecycle）**：**是……的生命周期（isLifecycleOf）**至少有一个取值，类型是**合同（Contract）**。
-- **合同生命周期（contract lifecycle）**：**定义（defines）**至少有一个取值，类型是**合同生命周期阶段（contract lifecycle stage）**。
-- **合同生命周期事件（contract lifecycle event）**：**后于（succeeds）**可以有 0 个或多个**合同生命周期事件（contract lifecycle event）**。
-- **合同生命周期事件（contract lifecycle event）**：**分类（classifies）**可以有 0 个或多个**合同生命周期事件发生（contract lifecycle event occurrence）**。
-- **合同生命周期事件（contract lifecycle event）**：**适用于（appliesTo）**至少有一个取值，类型是**合同生命周期阶段（contract lifecycle stage）**。
-- **合同生命周期事件发生（contract lifecycle event occurrence）**：**例证（exemplifies）**恰好有 1 个**合同生命周期事件（contract lifecycle event）**。
-- **合同生命周期事件发生（contract lifecycle event occurrence）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**合同生命周期事件（contract lifecycle event）**。
-- **合同生命周期事件发生（contract lifecycle event occurrence）**：**适用于（appliesTo）**至少有一个取值，类型是**合同生命周期阶段历程（contract lifecycle stage occurrence）**。
-- **合同生命周期历程（contract lifecycle occurrence）**：**例证（exemplifies）**恰好有 1 个**合同生命周期（contract lifecycle）**。
-- **合同生命周期历程（contract lifecycle occurrence）**：**具有阶段（hasStage）**至少有一个取值，类型是**合同生命周期阶段历程（contract lifecycle stage occurrence）**。
-- **合同生命周期阶段（contract lifecycle stage）**：**后于（succeeds）**可以有 0 个或多个**合同生命周期阶段（contract lifecycle stage）**。
-- **合同生命周期阶段（contract lifecycle stage）**：**是……的阶段（isStageOf）**至少有一个取值，类型是**合同生命周期（contract lifecycle）**。
-- **合同生命周期阶段（contract lifecycle stage）**：**分类（classifies）**至少有一个取值，类型是**合同（Contract）**。
-- **合同生命周期阶段（contract lifecycle stage）**：**包含（comprises）**至少有一个取值，类型是**合同生命周期事件（contract lifecycle event）**。
-- **合同生命周期阶段（contract lifecycle stage）**：**定义于（isDefinedIn）**至少有一个取值，类型是**合同生命周期（contract lifecycle）**。
-- **合同生命周期阶段历程（contract lifecycle stage occurrence）**：**例证（exemplifies）**恰好有 1 个**合同生命周期阶段（contract lifecycle stage）**。
-- **合同生命周期阶段历程（contract lifecycle stage occurrence）**：**是……的阶段（isStageOf）**至少有一个取值，类型是**合同生命周期历程（contract lifecycle occurrence）**。
-- **合同生命周期阶段历程（contract lifecycle stage occurrence）**：**包含（comprises）**至少有一个取值，类型是**合同生命周期事件发生（contract lifecycle event occurrence）**。
-- **交易商（dealer）**：该属性存在取值约束。
-- **风险暴露承担方（exposure bearer）**：**在……中为风险暴露方（is exposed party in）**至少有一个取值，类型是**风险暴露情形（exposure situation）**。
-- **风险暴露承担方（exposure bearer）**：**暴露于（is exposed to）**至少有一个取值，类型是**风险暴露（exposure）**。
-- **风险暴露情形（exposure situation）**：**具有风险暴露方（has exposed party）**至少有一个取值，类型是**风险暴露承担方（exposure bearer）**。
-- **风险暴露情形（exposure situation）**：**暴露于……的风险（has exposure to）**至少有一个取值，类型是**风险暴露（exposure）**。
-- **金融产品（financial product）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**金融服务提供商（financial service provider）**。
-- **金融产品目录（financial product catalog）**：**描述（describes）**至少有一个取值，类型是**金融产品（financial product）**。
-- **金融服务（financial service）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**金融服务提供商（financial service provider）**。
-- **金融服务提供商（financial service provider）**：**由…扮演（is played by）**恰好有 1 个**法律实体（LegalEntity）**。
-- **金融服务提供商（financial service provider）**：**提供（provides）**至少有一个取值，类型是**金融服务（financial service）**。
-- **法定代理人（legal agent）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**受托法律权限（DelegatedLegalAuthority）**。
-- **受要约人（offeree）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**发行（offering）**。
-- **发行（offering）**：**具有参与方角色（has party role）**可以有 0 个或多个**受要约人（offeree）**。
-- **发行（offering）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**要约人（offeror）**。
-- **发行（offering）**：**适用于（appliesTo）**至少有一个取值，类型是**owl:Thing（Thing）**。
-- **发行（offering）**：**具有参与方角色（has party role）**至少有一个取值，类型是**要约人（offeror）**。
-- **要约人（offeror）**：**发行（issues）**至少有一个取值，类型是**发行（offering）**。
-- **要约人（offeror）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**发行（offering）**。
-- **产品生命周期（product lifecycle）**：**具有阶段（hasStage）**至少有一个取值，类型是**产品生命周期阶段（product lifecycle stage）**。
-- **产品生命周期（product lifecycle）**：**是……的生命周期（isLifecycleOf）**至少有一个取值，类型是**产品（Product）**。
-- **产品生命周期（product lifecycle）**：**定义（defines）**至少有一个取值，类型是**产品生命周期阶段（product lifecycle stage）**。
-- **产品生命周期事件（product lifecycle event）**：**后于（succeeds）**可以有 0 个或多个**产品生命周期事件（product lifecycle event）**。
-- **产品生命周期事件（product lifecycle event）**：**分类（classifies）**可以有 0 个或多个**产品生命周期事件发生（product lifecycle event occurrence）**。
-- **产品生命周期事件（product lifecycle event）**：**适用于（appliesTo）**至少有一个取值，类型是**产品生命周期阶段（product lifecycle stage）**。
-- **产品生命周期事件发生（product lifecycle event occurrence）**：**例证（exemplifies）**恰好有 1 个**产品生命周期事件（product lifecycle event）**。
-- **产品生命周期事件发生（product lifecycle event occurrence）**：**适用于（appliesTo）**至少有一个取值，类型是**产品生命周期阶段历程（product lifecycle stage occurrence）**。
-- **产品生命周期历程（product lifecycle occurrence）**：**例证（exemplifies）**恰好有 1 个**产品生命周期（product lifecycle）**。
-- **产品生命周期历程（product lifecycle occurrence）**：**具有阶段（hasStage）**至少有一个取值，类型是**产品生命周期阶段历程（product lifecycle stage occurrence）**。
-- **产品生命周期阶段（product lifecycle stage）**：**后于（succeeds）**可以有 0 个或多个**产品生命周期阶段（product lifecycle stage）**。
-- **产品生命周期阶段（product lifecycle stage）**：**是……的阶段（isStageOf）**至少有一个取值，类型是**产品生命周期（product lifecycle）**。
-- **产品生命周期阶段（product lifecycle stage）**：**分类（classifies）**至少有一个取值，类型是**产品（Product）**。
-- **产品生命周期阶段（product lifecycle stage）**：**包含（comprises）**至少有一个取值，类型是**产品生命周期事件（product lifecycle event）**。
-- **产品生命周期阶段（product lifecycle stage）**：**定义于（isDefinedIn）**至少有一个取值，类型是**产品生命周期（product lifecycle）**。
-- **产品生命周期阶段历程（product lifecycle stage occurrence）**：**例证（exemplifies）**恰好有 1 个**产品生命周期阶段（product lifecycle stage）**。
-- **产品生命周期阶段历程（product lifecycle stage occurrence）**：**是……的阶段（isStageOf）**至少有一个取值，类型是**产品生命周期历程（product lifecycle occurrence）**。
-- **产品生命周期阶段历程（product lifecycle stage occurrence）**：**包含（comprises）**至少有一个取值，类型是**产品生命周期事件发生（product lifecycle event occurrence）**。
-- **注册代理人（registered agent）**：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **受监管商品（regulated commodity）**：**受……监管（isRegulatedBy）**的所有取值只能是**监管机构（RegulatoryAgency）**。
-- **受监管商品（regulated commodity）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **结算条款（settlement terms）**：**具有结算日（has settlement date）**的所有取值只能是**日期（Date）**。
-- **交易（trade）**：**后于（succeeds）**可以有 0 个或多个**交易（trade）**。
-- **交易（trade）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**交易标识符（trade identifier）**。
-- **交易（trade）**：**以……为特征（isCharacterizedBy）**可以有 0 个或多个**交易生命周期（trade lifecycle）**。
-- **交易（trade）**：**由……促进（is facilitated by）**可以有 0 个或多个**交易员（trader）**。
-- **交易（trade）**：**体现于（is embodied in）**至少有一个取值，类型是**合同（Contract）**。
-- **交易（trade）**：**具有买方（hasBuyer）**至少有一个取值，类型是**买方（Buyer）**。
-- **交易（trade）**：**具有卖方（hasSeller）**至少有一个取值，类型是**卖方（Seller）**。
-- **交易（trade）**：**涉及（involves）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **交易标识符（trade identifier）**：**标识（identifies）**至少有一个取值，类型是**交易（trade）**。
-- **交易生命周期（trade lifecycle）**：**具有阶段（hasStage）**至少有一个取值，类型是**交易生命周期阶段（trade lifecycle stage）**。
-- **交易生命周期（trade lifecycle）**：**是……的生命周期（isLifecycleOf）**至少有一个取值，类型是**交易（trade）**。
-- **交易生命周期（trade lifecycle）**：**定义（defines）**至少有一个取值，类型是**交易生命周期阶段（trade lifecycle stage）**。
-- **交易生命周期事件（trade lifecycle event）**：**后于（succeeds）**可以有 0 个或多个**交易生命周期事件（trade lifecycle event）**。
-- **交易生命周期事件（trade lifecycle event）**：**分类（classifies）**可以有 0 个或多个**交易生命周期事件发生（trade lifecycle event occurrence）**。
-- **交易生命周期事件（trade lifecycle event）**：**适用于（appliesTo）**至少有一个取值，类型是**交易生命周期阶段（trade lifecycle stage）**。
-- **交易生命周期事件发生（trade lifecycle event occurrence）**：**后于（succeeds）**可以有 0 个或多个**交易生命周期事件发生（trade lifecycle event occurrence）**。
-- **交易生命周期事件发生（trade lifecycle event occurrence）**：**例证（exemplifies）**恰好有 1 个**交易生命周期事件（trade lifecycle event）**。
-- **交易生命周期事件发生（trade lifecycle event occurrence）**：**适用于（appliesTo）**至少有一个取值，类型是**交易生命周期阶段历程（trade lifecycle stage occurrence）**。
-- **交易生命周期历程（trade lifecycle occurrence）**：**例证（exemplifies）**恰好有 1 个**交易生命周期（trade lifecycle）**。
-- **交易生命周期历程（trade lifecycle occurrence）**：**具有阶段（hasStage）**至少有一个取值，类型是**交易生命周期阶段历程（trade lifecycle stage occurrence）**。
-- **交易生命周期阶段（trade lifecycle stage）**：**后于（succeeds）**可以有 0 个或多个**交易生命周期阶段（trade lifecycle stage）**。
-- **交易生命周期阶段（trade lifecycle stage）**：**是……的阶段（isStageOf）**至少有一个取值，类型是**交易生命周期（trade lifecycle）**。
-- **交易生命周期阶段（trade lifecycle stage）**：**分类（classifies）**至少有一个取值，类型是**交易（trade）**。
-- **交易生命周期阶段（trade lifecycle stage）**：**包含（comprises）**至少有一个取值，类型是**交易生命周期事件（trade lifecycle event）**。
-- **交易生命周期阶段（trade lifecycle stage）**：**定义于（isDefinedIn）**至少有一个取值，类型是**交易生命周期（trade lifecycle）**。
-- **交易生命周期阶段历程（trade lifecycle stage occurrence）**：**后于（succeeds）**可以有 0 个或多个**交易生命周期阶段历程（trade lifecycle stage occurrence）**。
-- **交易生命周期阶段历程（trade lifecycle stage occurrence）**：**例证（exemplifies）**恰好有 1 个**交易生命周期阶段（trade lifecycle stage）**。
-- **交易生命周期阶段历程（trade lifecycle stage occurrence）**：**是……的阶段（isStageOf）**至少有一个取值，类型是**交易生命周期历程（trade lifecycle occurrence）**。
-- **交易生命周期阶段历程（trade lifecycle stage occurrence）**：**包含（comprises）**至少有一个取值，类型是**交易生命周期事件发生（trade lifecycle event occurrence）**。
-- **交易员（trader）**：**促进（facilitates）**至少有一个取值，类型是**交易（trade）**。
-- **交易员（trader）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**缔约能力（ContractualCapability）**。
-- **唯一交易标识符（unique transaction identifier）**：**具有生成实体（has generating entity）**至少有一个取值，类型是**法律实体（LegalEntity）**。
-- **加权篮子（weighted basket）**：**具有成员（hasMember）**至少有一个取值，类型是**加权篮子成分（weighted basket constituent）**。
-- **加权篮子（weighted basket）**：**具有表达式（hasExpression）**至少有一个取值，类型是**加权函数（WeightingFunction）**。
-- **加权篮子成分（weighted basket constituent）**：**具有权重（hasWeight）**存在取值约束。
+### 2.3 篮子（basket）
 
-## 6. 依赖（owl:imports，29 个）
+定义：可在某市场买卖的商品、服务或其他事物（如金融合约）的集合。
+
+- 父类：**集合（Collection）**
+- 直接子类：**加权篮子（weighted basket）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有挑选方（has selecting party）** | 指明负责确定篮子成分的个人或组织。 | 值域：参与方（party）；子属性：具有参与方（has party） |
+| **具有挑选标准（has selection criteria）** | 描述用于确定集合成员构成的方法或程序。 | 子属性：具有文本值 |
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**篮子成分（basket constituent）**。
+- **具有挑选方（has selecting party）**可以有 0 个或多个**参与方（party）**。
+- **具有挑选标准（has selection criteria）**存在取值约束。
+
+#### 2.3.1 加权篮子（weighted basket）
+
+定义：各成分彼此之间具有相对重要性的篮子。
+
+- 父类：**篮子（basket）**、**结构化集合（StructuredCollection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+| **具有表达式（hasExpression）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**加权篮子成分（weighted basket constituent）**。
+- **具有表达式（hasExpression）**至少有一个取值，类型是**加权函数（WeightingFunction）**。
+
+### 2.4 篮子成分（basket constituent）
+
+定义：篮子的组成部分。
+
+- 父类：**组成成分（Constituent）**
+- 直接子类：**加权篮子成分（weighted basket constituent）**
+
+#### 2.4.1 加权篮子成分（weighted basket constituent）
+
+定义：其相对于其他篮子成分的重要性为已知的篮子组成部分。
+
+- 父类：**篮子成分（basket constituent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有权重（hasWeight）** | — | — |
+
+公理：
+
+- **具有权重（hasWeight）**存在取值约束。
+
+### 2.5 经纪商（broker）
+
+定义：在买方与卖方之间充当中介、通常收取佣金的任何一方。
+
+- 父类：**合同第三方（ContractThirdParty）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.6 经纪交易商（broker-dealer）
+
+定义：从事证券买卖业务、视交易情况同时以经纪商和交易商身份运作的任何一方。
+
+- 父类：**功能实体（FunctionalEntity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.7 产品目录（catalog）
+
+定义：列有可供销售产品及其描述、可能还包括价格的出版物。
+
+- 父类：**出版物（Publication）**
+- 直接子类：**金融产品目录（financial product catalog）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **描述（describes）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **描述（describes）**至少有一个取值，类型是**产品（Product）**。
+- **由……标识（isIdentifiedBy）**的所有取值只能是**标识符（Identifier）**。
+
+#### 2.7.1 金融产品目录（financial product catalog）
+
+定义：列有可供销售的金融产品和/或服务及其描述和其他产品详情的目录。
+
+- 父类：**产品目录（catalog）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **描述（describes）** | — | — |
+
+公理：
+
+- **描述（describes）**至少有一个取值，类型是**金融产品（financial product）**。
+
+### 2.8 合同生命周期（contract lifecycle）
+
+定义：协议（包括但不限于信贷协议、金融工具或其他正式合同）从初始阶段到终止的生命周期。
+
+- 父类：**生命周期（Lifecycle）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+| **是……的生命周期（isLifecycleOf）** | — | — |
+| **定义（defines）** | — | — |
+
+公理：
+
+- **具有阶段（hasStage）**至少有一个取值，类型是**合同生命周期阶段（contract lifecycle stage）**。
+- **定义（defines）**至少有一个取值，类型是**合同生命周期阶段（contract lifecycle stage）**。
+- **是……的生命周期（isLifecycleOf）**至少有一个取值，类型是**合同（Contract）**。
+
+### 2.9 合同生命周期事件（contract lifecycle event）
+
+定义：在协议生命周期的一个或多个阶段中发生的事件类别。
+
+- 父类：**生命周期事件（LifecycleEvent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+
+公理：
+
+- **分类（classifies）**可以有 0 个或多个**合同生命周期事件发生（contract lifecycle event occurrence）**。
+- **后于（succeeds）**可以有 0 个或多个**合同生命周期事件（contract lifecycle event）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**合同生命周期阶段（contract lifecycle stage）**。
+
+### 2.10 合同生命周期事件发生（contract lifecycle event occurrence）
+
+定义：特定合同生命周期某一阶段中事件的实际发生。
+
+- 父类：**生命周期事件发生（LifecycleEventOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **例证（exemplifies）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**合同生命周期事件（contract lifecycle event）**。
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**合同生命周期事件（contract lifecycle event）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**合同生命周期阶段历程（contract lifecycle stage occurrence）**。
+
+### 2.11 合同生命周期历程（contract lifecycle occurrence）
+
+定义：某一具体合同生命周期的实现。
+
+- 父类：**生命周期发生（LifecycleOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+| **例证（exemplifies）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**合同生命周期（contract lifecycle）**。
+- **具有阶段（hasStage）**至少有一个取值，类型是**合同生命周期阶段历程（contract lifecycle stage occurrence）**。
+
+### 2.12 合同生命周期阶段（contract lifecycle stage）
+
+定义：协议生命周期中的一个阶段。
+
+- 父类：**生命周期阶段（LifecycleStage）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的阶段（isStageOf）** | — | — |
+| **分类（classifies）** | — | — |
+| **包含（comprises）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**合同（Contract）**。
+- **包含（comprises）**至少有一个取值，类型是**合同生命周期事件（contract lifecycle event）**。
+- **后于（succeeds）**可以有 0 个或多个**合同生命周期阶段（contract lifecycle stage）**。
+- **定义于（isDefinedIn）**至少有一个取值，类型是**合同生命周期（contract lifecycle）**。
+- **是……的阶段（isStageOf）**至少有一个取值，类型是**合同生命周期（contract lifecycle）**。
+
+### 2.13 合同生命周期阶段历程（contract lifecycle stage occurrence）
+
+定义：某一具体合同生命周期历程中某一阶段从开始到结束的实现。
+
+- 父类：**生命周期阶段发生（LifecycleStageOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的阶段（isStageOf）** | — | — |
+| **例证（exemplifies）** | — | — |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**合同生命周期阶段（contract lifecycle stage）**。
+- **包含（comprises）**至少有一个取值，类型是**合同生命周期事件发生（contract lifecycle event occurrence）**。
+- **是……的阶段（isStageOf）**至少有一个取值，类型是**合同生命周期历程（contract lifecycle occurrence）**。
+
+### 2.14 交易商（dealer）
+
+定义：购入商品或服务用于转售、并在交易中以本人身份行事的任何一方。
+
+- 父类：**服务提供方（ServiceProvider）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.15 风险暴露（exposure）
+
+定义：个人或组织失去保护、面临损害、危险、损失风险或不确定性的状态。
+
+- 父类：**承受者（undergoer）**
+- 直接子类：**金融风险暴露（financial exposure）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **暴露于（exposes in）** | 指明风险暴露发生的情势。 | 值域：风险暴露情形（exposure situation）；子属性：承受（undergoes） |
+| **是……的风险暴露（is exposure of）** | 是由……承担的影响或风险。 | 值域：风险暴露承担方（exposure bearer）；子属性：受…影响（is affected by） |
+
+#### 2.15.1 金融风险暴露（financial exposure）
+
+定义：个人或组织在交易中或就某项或某组投资面临损失风险的程度。
+
+- 父类：**风险暴露（exposure）**
+- 直接子类：**头寸（position）**
+
+##### 2.15.1.1 头寸（position）
+
+定义：因持有、借入、卖空或订立合约（如衍生品）而产生的金融风险暴露。
+
+- 父类：**金融风险暴露（financial exposure）**
+
+### 2.16 风险暴露承担方（exposure bearer）
+
+定义：承受源自特定合同、工具或安排的影响或风险的一方。
+
+- 父类：**行为者（actor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **在……中为风险暴露方（is exposed party in）** | 指明该方承担风险的情势。 | 值域：风险暴露情形（exposure situation）；子属性：在…中行动（acts in） |
+| **暴露于（is exposed to）** | 承受来自……的影响或风险。 | 值域：风险暴露（exposure）；逆属性：是……的风险暴露（is exposure of）；子属性：对…采取行动（acts on） |
+
+公理：
+
+- **在……中为风险暴露方（is exposed party in）**至少有一个取值，类型是**风险暴露情形（exposure situation）**。
+- **暴露于（is exposed to）**至少有一个取值，类型是**风险暴露（exposure）**。
+
+### 2.17 风险暴露情形（exposure situation）
+
+定义：某一方承受源自特定合同、工具或安排的影响或风险的情势。
+
+- 父类：**情境（situation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有风险暴露方（has exposed party）** | 指明承受影响或风险的一方。 | 值域：风险暴露承担方（exposure bearer）；逆属性：在……中为风险暴露方（is exposed party in）；子属性：具有行为者（has actor） |
+| **暴露于……的风险（has exposure to）** | 涉及来自……的影响或风险。 | 值域：风险暴露（exposure）；逆属性：暴露于（exposes in）；子属性：具有承受者（has undergoer） |
+
+公理：
+
+- **具有风险暴露方（has exposed party）**至少有一个取值，类型是**风险暴露承担方（exposure bearer）**。
+- **暴露于……的风险（has exposure to）**至少有一个取值，类型是**风险暴露（exposure）**。
+
+### 2.18 金融产品（financial product）
+
+定义：由银行、保险公司、经纪公司、消费金融公司等金融机构向消费者和企业提供的产品。
+
+- 父类：**产品（Product）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**金融服务提供商（financial service provider）**。
+
+### 2.19 金融服务（financial service）
+
+定义：由银行、保险公司、经纪公司、消费金融公司等金融机构向消费者和企业提供的服务。
+
+- 父类：**服务（Service）**
+- 直接子类：**金融中介服务（financial intermediation service）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**金融服务提供商（financial service provider）**。
+
+#### 2.19.1 金融中介服务（financial intermediation service）
+
+定义：由第三方（中介）将贷款人和投资者与需要资金的企业家及其他借款人撮合起来的金融服务。
+
+- 父类：**金融服务（financial service）**
+
+### 2.20 金融服务提供商（financial service provider）
+
+定义：获许可以向消费者和/或企业提供金融服务、或依法设立以提供金融服务的功能实体。
+
+- 父类：**功能型企业实体（FunctionalBusinessEntity）**、**服务提供方（ServiceProvider）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **提供（provides）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **提供（provides）**至少有一个取值，类型是**金融服务（financial service）**。
+- **由…扮演（is played by）**恰好有 1 个**法律实体（LegalEntity）**。
+
+### 2.21 法定代理人（legal agent）
+
+定义：经合法授权代表另一方行事的任何一方。
+
+- 父类：**智能体角色（agent role）**
+- 直接子类：**持证代理人（licensed agent）**、**注册代理人（registered agent）**、**第三方代理人（third-party agent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**受托法律权限（DelegatedLegalAuthority）**。
+
+#### 2.21.1 持证代理人（licensed agent）
+
+定义：经许可执行具有法律约束力职能、并经合法授权代表另一方行事的任何个人。
+
+- 父类：**法定代理人（legal agent）**、**被许可方（Licensee）**、**责任方（ResponsibleParty）**
+
+#### 2.21.2 注册代理人（registered agent）
+
+定义：由某方依据正式代理协议指定、代表其行事的法定代理人。
+
+- 父类：**法定代理人（legal agent）**、**合同当事方（ContractParty）**
+- 直接子类：**法律文书送达代理人（agent for service of process）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+##### 2.21.2.1 法律文书送达代理人（agent for service of process）
+
+定义：由企业实体（如公司）指定、代表该企业接收法律文书的注册代理人（个人或组织）。
+
+- 父类：**注册代理人（registered agent）**
+
+#### 2.21.3 第三方代理人（third-party agent）
+
+定义：经许可执行具有法律约束力职能、并经合法授权代表另一方行事的任何服务提供商。
+
+- 父类：**法定代理人（legal agent）**、**被许可方（Licensee）**、**服务提供方（ServiceProvider）**
+
+### 2.22 受要约人（offeree）
+
+定义：基于要约条款从某方（即要约人）处收到要约的一方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**发行（offering）**。
+
+### 2.23 发行（offering）
+
+定义：将证券提供发行的流程步骤，即通过承销使新证券发行可得。
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的要约（is offering of）** | 将要约与作为要约标的的一个或多个事物关联起来。 | — |
+| **由……发行（isIssuedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**可以有 0 个或多个**受要约人（offeree）**。
+- **具有参与方角色（has party role）**至少有一个取值，类型是**要约人（offeror）**。
+- **由……发行（isIssuedBy）**至少有一个取值，类型是**要约人（offeror）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**owl:Thing（Thing）**。
+
+### 2.24 要约人（offeror）
+
+定义：基于要约条款提议向某方（即受要约人）提供某物的一方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **发行（issues）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **发行（issues）**至少有一个取值，类型是**发行（offering）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**发行（offering）**。
+
+### 2.25 产品生命周期（product lifecycle）
+
+定义：特定于某一产品或产品族的生命周期。
+
+- 父类：**生命周期（Lifecycle）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+| **是……的生命周期（isLifecycleOf）** | — | — |
+| **定义（defines）** | — | — |
+
+公理：
+
+- **具有阶段（hasStage）**至少有一个取值，类型是**产品生命周期阶段（product lifecycle stage）**。
+- **定义（defines）**至少有一个取值，类型是**产品生命周期阶段（product lifecycle stage）**。
+- **是……的生命周期（isLifecycleOf）**至少有一个取值，类型是**产品（Product）**。
+
+### 2.26 产品生命周期事件（product lifecycle event）
+
+定义：在产品生命周期的一个或多个阶段中发生的事件类别。
+
+- 父类：**生命周期事件（LifecycleEvent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+
+公理：
+
+- **分类（classifies）**可以有 0 个或多个**产品生命周期事件发生（product lifecycle event occurrence）**。
+- **后于（succeeds）**可以有 0 个或多个**产品生命周期事件（product lifecycle event）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**产品生命周期阶段（product lifecycle stage）**。
+
+### 2.27 产品生命周期事件发生（product lifecycle event occurrence）
+
+定义：特定产品生命周期某一阶段中事件的实际发生。
+
+- 父类：**生命周期事件发生（LifecycleEventOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **例证（exemplifies）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**产品生命周期事件（product lifecycle event）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**产品生命周期阶段历程（product lifecycle stage occurrence）**。
+
+### 2.28 产品生命周期历程（product lifecycle occurrence）
+
+定义：某一具体产品生命周期的实现。
+
+- 父类：**生命周期发生（LifecycleOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+| **例证（exemplifies）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**产品生命周期（product lifecycle）**。
+- **具有阶段（hasStage）**至少有一个取值，类型是**产品生命周期阶段历程（product lifecycle stage occurrence）**。
+
+### 2.29 产品生命周期阶段（product lifecycle stage）
+
+定义：产品生命周期中的一个阶段。
+
+- 父类：**生命周期阶段（LifecycleStage）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的阶段（isStageOf）** | — | — |
+| **分类（classifies）** | — | — |
+| **包含（comprises）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**产品（Product）**。
+- **包含（comprises）**至少有一个取值，类型是**产品生命周期事件（product lifecycle event）**。
+- **后于（succeeds）**可以有 0 个或多个**产品生命周期阶段（product lifecycle stage）**。
+- **定义于（isDefinedIn）**至少有一个取值，类型是**产品生命周期（product lifecycle）**。
+- **是……的阶段（isStageOf）**至少有一个取值，类型是**产品生命周期（product lifecycle）**。
+
+### 2.30 产品生命周期阶段历程（product lifecycle stage occurrence）
+
+定义：某一给定产品生命周期中特定阶段的实现。
+
+- 父类：**生命周期阶段发生（LifecycleStageOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的阶段（isStageOf）** | — | — |
+| **例证（exemplifies）** | — | — |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**产品生命周期阶段（product lifecycle stage）**。
+- **包含（comprises）**至少有一个取值，类型是**产品生命周期事件发生（product lifecycle event occurrence）**。
+- **是……的阶段（isStageOf）**至少有一个取值，类型是**产品生命周期历程（product lifecycle occurrence）**。
+
+### 2.31 受监管商品（regulated commodity）
+
+定义：处于监管机构（如美国商品期货交易委员会 CFTC）管辖之下的商品。
+
+- 父类：**商品（Commodity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **受……管辖（isGovernedBy）** | — | — |
+| **受……监管（isRegulatedBy）** | — | — |
+
+公理：
+
+- **受……监管（isRegulatedBy）**的所有取值只能是**监管机构（RegulatoryAgency）**。
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+
+### 2.32 结算条款（settlement terms）
+
+定义：规定交易一方或多方结算承诺与机制的合同条款。
+
+- 父类：**合同承诺（ContractualCommitment）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有结算日（has settlement date）** | 指明已执行订单或交易必须完成结算的日期。 | 值域：推算日期；子属性：具有结束日期 |
+
+公理：
+
+- **具有结算日（has settlement date）**的所有取值只能是**日期（Date）**。
+
+### 2.33 交易（trade）
+
+定义：实现参与自愿买卖商品和服务行为的各方之间协议的情势。
+
+- 父类：**情境（situation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **体现于（is embodied in）** | 标识某事物在某一情境中的表现形式或有形载体。 | 逆属性：体现（embodies） |
+| **由……促进（is facilitated by）** | 标识在某一情境中促成某一事件、交易、对话或其他事物的人或事物。 | 逆属性：促进（facilitates）；子属性：具有主动参与方（has active party） |
+| **具有买方（hasBuyer）** | — | — |
+| **具有卖方（hasSeller）** | — | — |
+| **涉及（involves）** | — | — |
+| **以……为特征（isCharacterizedBy）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **以……为特征（isCharacterizedBy）**可以有 0 个或多个**交易生命周期（trade lifecycle）**。
+- **体现于（is embodied in）**至少有一个取值，类型是**合同（Contract）**。
+- **具有买方（hasBuyer）**至少有一个取值，类型是**买方（Buyer）**。
+- **具有卖方（hasSeller）**至少有一个取值，类型是**卖方（Seller）**。
+- **后于（succeeds）**可以有 0 个或多个**交易（trade）**。
+- **涉及（involves）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **由……促进（is facilitated by）**可以有 0 个或多个**交易员（trader）**。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**交易标识符（trade identifier）**。
+
+### 2.34 交易标识符（trade identifier）
+
+定义：在某一情境中标识一笔交易的字符序列。
+
+- 父类：**标识符（Identifier）**
+- 直接子类：**唯一交易标识符（unique transaction identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**至少有一个取值，类型是**交易（trade）**。
+
+#### 2.34.1 唯一交易标识符（unique transaction identifier）
+
+定义：在交易相关各方或团体认为有用并达成一致时唯一标识一笔金融交易的字符序列。
+
+- 父类：**交易标识符（trade identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有生成实体（has generating entity）** | 指明生成某事物的法律实体。 | 值域：法律实体；子属性：生成 |
+| **具有生成实体标识符（has generating entity identifier）** | 指明生成唯一交易标识符的实体的标识符。 | — |
+
+公理：
+
+- **具有生成实体（has generating entity）**至少有一个取值，类型是**法律实体（LegalEntity）**。
+
+### 2.35 交易生命周期（trade lifecycle）
+
+定义：规定交易从发起到结算之演变过程的生命周期。
+
+- 父类：**生命周期（Lifecycle）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+| **是……的生命周期（isLifecycleOf）** | — | — |
+| **定义（defines）** | — | — |
+
+公理：
+
+- **具有阶段（hasStage）**至少有一个取值，类型是**交易生命周期阶段（trade lifecycle stage）**。
+- **定义（defines）**至少有一个取值，类型是**交易生命周期阶段（trade lifecycle stage）**。
+- **是……的生命周期（isLifecycleOf）**至少有一个取值，类型是**交易（trade）**。
+
+### 2.36 交易生命周期事件（trade lifecycle event）
+
+定义：在交易生命周期的一个或多个阶段中发生的事件类别。
+
+- 父类：**生命周期事件（LifecycleEvent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+
+公理：
+
+- **分类（classifies）**可以有 0 个或多个**交易生命周期事件发生（trade lifecycle event occurrence）**。
+- **后于（succeeds）**可以有 0 个或多个**交易生命周期事件（trade lifecycle event）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**交易生命周期阶段（trade lifecycle stage）**。
+
+### 2.37 交易生命周期事件发生（trade lifecycle event occurrence）
+
+定义：特定交易生命周期某一阶段中事件的实现。
+
+- 父类：**生命周期事件发生（LifecycleEventOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **例证（exemplifies）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**交易生命周期事件（trade lifecycle event）**。
+- **后于（succeeds）**可以有 0 个或多个**交易生命周期事件发生（trade lifecycle event occurrence）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**交易生命周期阶段历程（trade lifecycle stage occurrence）**。
+
+### 2.38 交易生命周期历程（trade lifecycle occurrence）
+
+定义：某一具体交易生命周期的实现。
+
+- 父类：**生命周期发生（LifecycleOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+| **例证（exemplifies）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**交易生命周期（trade lifecycle）**。
+- **具有阶段（hasStage）**至少有一个取值，类型是**交易生命周期阶段历程（trade lifecycle stage occurrence）**。
+
+### 2.39 交易生命周期阶段（trade lifecycle stage）
+
+定义：交易生命周期中的一个阶段。
+
+- 父类：**生命周期阶段（LifecycleStage）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的阶段（isStageOf）** | — | — |
+| **分类（classifies）** | — | — |
+| **包含（comprises）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**交易（trade）**。
+- **包含（comprises）**至少有一个取值，类型是**交易生命周期事件（trade lifecycle event）**。
+- **后于（succeeds）**可以有 0 个或多个**交易生命周期阶段（trade lifecycle stage）**。
+- **定义于（isDefinedIn）**至少有一个取值，类型是**交易生命周期（trade lifecycle）**。
+- **是……的阶段（isStageOf）**至少有一个取值，类型是**交易生命周期（trade lifecycle）**。
+
+### 2.40 交易生命周期阶段历程（trade lifecycle stage occurrence）
+
+定义：某一具体交易生命周期中某一阶段的实现。
+
+- 父类：**生命周期阶段发生（LifecycleStageOccurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的阶段（isStageOf）** | — | — |
+| **例证（exemplifies）** | — | — |
+| **包含（comprises）** | — | — |
+| **后于（succeeds）** | — | 子属性：关联于（relates to） |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**交易生命周期阶段（trade lifecycle stage）**。
+- **包含（comprises）**至少有一个取值，类型是**交易生命周期事件发生（trade lifecycle event occurrence）**。
+- **后于（succeeds）**可以有 0 个或多个**交易生命周期阶段历程（trade lifecycle stage occurrence）**。
+- **是……的阶段（isStageOf）**至少有一个取值，类型是**交易生命周期历程（trade lifecycle occurrence）**。
+
+### 2.41 交易员（trader）
+
+定义：代表客户或金融服务提供商在任何金融市场进行金融资产转让的一方。
+
+- 父类：**服务提供方（ServiceProvider）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **促进（facilitates）** | 在某一事件、任务、对话或其他事物发生的情势中充当促成者。 | 子属性：在…中扮演主动参与方（plays active party in） |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **促进（facilitates）**至少有一个取值，类型是**交易（trade）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**缔约能力（ContractualCapability）**。
+
+### 2.42 交易策略（trading strategy）
+
+定义：在证券市场进行买卖所采用的方法。
+
+- 父类：**战略（Strategy）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有要约（has offering）** | 将某事物与买方或卖方（要约人）向另一方（受要约人）提交的、自愿但附条件的承诺关联起来，该承诺一经接受即具约束力。 | 值域：发行（offering）；逆属性：是……的要约（is offering of） |
+| **具有要约金额（has offering amount）** | 指明基于参考数据、市场利率或其他约定方法确定的、与某要约相关联的名义货币金额。 | 值域：货币数量；子属性：具有名义金额 |
+| **具有要约价格（has offering price）** | 指明与要约相关联的价格，可为明示价格或计算价格。 | 值域：货币价格；子属性：具有价格 |
+| **具有注册代理人（has registered agent）** | 标识在特定情况下具有法律、医疗或财务能力代表他人行事的一方。 | 值域：法定代理人（legal agent）；子属性：具有参与方角色（has party role） |
+| **具有交易日（has trade date）** | 指明证券或其他工具交易实际发生的日期。 | 值域：日期；子属性：具有日期 |
+| **关联于（relates to）** | 与……存在逻辑或因果联系。 | — |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有名义单位数量（has nominal number of units）** | 指明与某要约相关联的基础单位数量。 |
+| **具有要约单位数量（has offering units）** | 指明与某要约相关联的实际单位数量，包括单位数量的任何溢价部分。 |
+
+## 4. 依赖（owl:imports，29 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -309,7 +1009,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/Commons/TextDatatype/` | OMG 通用文本数据类型（OMG Commons Text Datatype） | Commons 库中的文本数据类型定义，提供带语言标记的文本等基础数据类型。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`FinancialProductsAndServices.rdf`
 - 中文 Turtle：`FinancialProductsAndServices.ttl`

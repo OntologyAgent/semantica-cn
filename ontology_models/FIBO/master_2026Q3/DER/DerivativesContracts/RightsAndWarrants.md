@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与期权的差别——权证由公司或发行人发行、行权会稀释股本、期限长，期权多为交易所标准化合约、行权不涉及新股发行；配股权则是面向现有股东的短期认购权。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **配股权（allotment right）** 继承 **股票衍生品（EquityDerivative）**
+- **配股权（allotment right）** 继承 **权益凭证（Entitlement）**
+- **配股权公式（allotment right formula）** 继承 **表达式（Expression）**
+- **基于障碍工具的迷你期货凭证（barrier instrument-based mini-future certificate）** 继承 **迷你期货凭证（mini-future certificate）**
+- **标的障碍迷你期货凭证（barrier underlying mini-future certificate）** 继承 **迷你期货凭证（mini-future certificate）**
+- **篮子权证（basket warrant）** 继承 **权证（warrant）**
+- **债券购买权（bond purchase right）** 继承 **购买权（purchase right）**
+- **债券认购权（bond subscription right）** 继承 **认购权（subscription right）**
+- **认购认沽权证（call put warrant）** 继承 **认购权证（call warrant）**
+- **认购认沽权证（call put warrant）** 继承 **认沽权证（put warrant）**
+- **认购权证（call warrant）** 继承 **权证（warrant）**
+- **组合工具购买权（combined instruments purchase right）** 继承 **购买权（purchase right）**
+- 其余 43 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -61,97 +77,454 @@
 | 传统权证（traditional warrant） | 赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）的权证。 |
 | 权证（warrant） | 允许持有人在规定期间内按指定价格购买指定数量金融工具、商品、货币或其他资产的权益凭证。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 配股权（allotment right） ⊑ 股票衍生品
-- 配股权（allotment right） ⊑ 权益凭证
-- 配股权公式（allotment right formula） ⊑ 表达式
-- 基于障碍工具的迷你期货凭证（barrier instrument-based mini-future certificate） ⊑ 迷你期货凭证（mini-future certificate）
-- 标的障碍迷你期货凭证（barrier underlying mini-future certificate） ⊑ 迷你期货凭证（mini-future certificate）
-- 篮子权证（basket warrant） ⊑ 权证（warrant）
-- 债券购买权（bond purchase right） ⊑ 购买权（purchase right）
-- 债券认购权（bond subscription right） ⊑ 认购权（subscription right）
-- 认购认沽权证（call put warrant） ⊑ 认购权证（call warrant）
-- 认购认沽权证（call put warrant） ⊑ 认沽权证（put warrant）
-- 认购权证（call warrant） ⊑ 权证（warrant）
-- 组合工具购买权（combined instruments purchase right） ⊑ 购买权（purchase right）
-- 组合工具认购权（combined instruments subscription right） ⊑ 认购权（subscription right）
-- 商品权证（commodity warrant） ⊑ 商品衍生品
-- 商品权证（commodity warrant） ⊑ 权证（warrant）
-- 普通可转换股购买权（common convertible share purchase right） ⊑ 购买权（purchase right）
-- 普通可转换股认购权（common convertible share subscription right） ⊑ 认购权（subscription right）
-- 普通股购买权（common share purchase right） ⊑ 购买权（purchase right）
-- 普通股认购权（common share subscription right） ⊑ 认购权（subscription right）
-- 恒定杠杆凭证（constant leverage certificate） ⊑ 证券类衍生品
-- 恒定杠杆凭证（constant leverage certificate） ⊑ 权益凭证
-- 恒定杠杆凭证（constant leverage certificate） ⊑ 期权
-- 备兑权证（covered warrant） ⊑ 权证（warrant）
-- 货币权证（currency warrant） ⊑ 货币衍生品
-- 货币权证（currency warrant） ⊑ 权证（warrant）
-- 债务权证（debt warrant） ⊑ 权证（warrant）
-- 债务权证（debt warrant） ⊑ 债务工具衍生品
-- 股权权证（equity warrant） ⊑ 认购权证（call warrant）
-- 股权权证（equity warrant） ⊑ 传统权证（traditional warrant）
-- 股权权证（equity warrant） ⊑ 股票衍生品
-- 交易所交易权证（exchange-traded warrant） ⊑ 公募权证（public warrant）
-- 交易所交易权证（exchange-traded warrant） ⊑ 上市证券
-- 奇异权证（exotic warrant） ⊑ 权证（warrant）
-- 指数权证（index warrant） ⊑ 权证（warrant）
-- 做多迷你期货凭证（long mini-future certificate） ⊑ 迷你期货凭证（mini-future certificate）
-- 迷你期货凭证（mini-future certificate） ⊑ 障碍期权
-- 迷你期货凭证（mini-future certificate） ⊑ 证券类衍生品
-- 迷你期货凭证（mini-future certificate） ⊑ 权益凭证
-- 裸权证（naked warrant） ⊑ 权证（warrant）
-- 永续权证（perpetual warrant） ⊑ 权证（warrant）
-- 优先可转换股购买权（preferred convertible share purchase right） ⊑ 购买权（purchase right）
-- 优先可转换股认购权（preferred convertible share subscription right） ⊑ 认购权（subscription right）
-- 优先股购买权（preferred share purchase right） ⊑ 购买权（purchase right）
-- 优先股认购权（preferred share subscription right） ⊑ 认购权（subscription right）
-- 私募权证（private warrant） ⊑ 权证（warrant）
-- 私募权证（private warrant） ⊑ 不可转让证券
-- 公募权证（public warrant） ⊑ 权证（warrant）
-- 公募权证（public warrant） ⊑ 可转让证券
-- 购买权（purchase right） ⊑ 权益凭证
-- 认沽权证（put warrant） ⊑ 权证（warrant）
-- 做空迷你期货凭证（short mini-future certificate） ⊑ 迷你期货凭证（mini-future certificate）
-- 结构化权证（structured warrant） ⊑ 权证（warrant）
-- 认购权（subscription right） ⊑ 权益凭证
-- 传统权证（traditional warrant） ⊑ 权证（warrant）
-- 权证（warrant） ⊑ 权益凭证
+### 2.1 公司权证（CompanyWarrant）
 
-## 4. 数据属性（Datatype Property）
+定义：由公司自身发行的权证，行权时通常涉及公司发行新股。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+### 2.2 配股权（allotment right）
+
+定义：授予现有证券持有人的特权，使其有权免费获得新证券。
+
+- 父类：**股票衍生品（EquityDerivative）**、**权益凭证（Entitlement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-der-drc-raw:hasConversionRatio | 具有转换比率（has conversion ratio） | 指明为买入或卖出特定数量证券或投资单位所需权证数量的换算系数。 |
-| fibo-der-drc-raw:hasOversubscribeOption | 是否具有超额认购选择权（has oversubscribe option） | 表明在其他权利持有人选择不认购时，该权利凭证持有人是否可以获得相应证券。 |
+| **具有表达式（hasExpression）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有表达式（hasExpression）**至少有一个取值，类型是**配股权公式（allotment right formula）**。
 
-- **配股权（allotment right）**：**具有表达式（hasExpression）**至少有一个取值，类型是**配股权公式（allotment right formula）**。
-- **篮子权证（basket warrant）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**证券篮子（BasketOfSecurities）**。
-- **债券购买权（bond purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
-- **债券认购权（bond subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
-- **普通可转换股购买权（common convertible share purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换普通股（ConvertibleCommonShare）**。
-- **普通可转换股认购权（common convertible share subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换普通股（ConvertibleCommonShare）**。
-- **普通股购买权（common share purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**普通股（CommonShare）**。
-- **普通股认购权（common share subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**普通股（CommonShare）**。
-- **备兑权证（covered warrant）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
-- **股权权证（equity warrant）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**的所有取值只能是**股份公司（StockCorporation）**。
-- **指数权证（index warrant）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**Ne9cd7be6ceb24c12845ab5d64f06ae51**。
-- **裸权证（naked warrant）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
-- **裸权证（naked warrant）**与**备兑权证（covered warrant）**互斥：同一个体不能同时属于两者。
-- **优先可转换股购买权（preferred convertible share purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换优先股（ConvertiblePreferredShare）**。
-- **优先可转换股认购权（preferred convertible share subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换优先股（ConvertiblePreferredShare）**。
-- **优先股购买权（preferred share purchase right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**优先股（PreferredShare）**。
-- **优先股认购权（preferred share subscription right）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**优先股（PreferredShare）**。
-- **传统权证（traditional warrant）**与**备兑权证（covered warrant）**互斥：同一个体不能同时属于两者。
-- **传统权证（traditional warrant）**与**裸权证（naked warrant）**互斥：同一个体不能同时属于两者。
-- **权证（warrant）**：**具有行权条款（hasExerciseTerms）**至少有一个取值，类型是**行权条款（ExerciseTerms）**。
+### 2.3 配股权公式（allotment right formula）
 
-## 6. 依赖（owl:imports，21 个）
+定义：用于计算配股权对应证券数量的规则，通常基于持有人所持该类工具的数量。
+
+- 父类：**表达式（Expression）**
+
+### 2.4 恒定杠杆凭证（constant leverage certificate）
+
+定义：将开放式凭证结构与无固定期限的杠杆期权相结合、使杠杆在无期限条件下可用的权益凭证。
+
+- 父类：**证券类衍生品（SecurityBasedDerivative）**、**权益凭证（Entitlement）**、**期权（Option）**
+
+### 2.5 迷你期货凭证（mini-future certificate）
+
+定义：将开放式凭证结构与无固定期限的杠杆期权相结合、使杠杆在无期限条件下可用的权益凭证。
+
+- 父类：**障碍期权（BarrierOption）**、**证券类衍生品（SecurityBasedDerivative）**、**权益凭证（Entitlement）**
+- 直接子类：**基于障碍工具的迷你期货凭证（barrier instrument-based mini-future certificate）**、**标的障碍迷你期货凭证（barrier underlying mini-future certificate）**、**做多迷你期货凭证（long mini-future certificate）**、**做空迷你期货凭证（short mini-future certificate）**
+
+#### 2.5.1 基于障碍工具的迷你期货凭证（barrier instrument-based mini-future certificate）
+
+定义：在产品存续期内障碍工具交易价格水平被突破时立即到期的迷你期货凭证。
+
+- 父类：**迷你期货凭证（mini-future certificate）**
+
+#### 2.5.2 标的障碍迷你期货凭证（barrier underlying mini-future certificate）
+
+定义：在产品存续期内标的价格突破障碍水平时立即到期的迷你期货凭证。
+
+- 父类：**迷你期货凭证（mini-future certificate）**
+
+#### 2.5.3 做多迷你期货凭证（long mini-future certificate）
+
+定义：通常授予持有人在规定期间内按指定价格购买特定标的资产之权利的迷你期货凭证。
+
+- 父类：**迷你期货凭证（mini-future certificate）**
+
+#### 2.5.4 做空迷你期货凭证（short mini-future certificate）
+
+定义：授予持有人以特定标的资产换取现金之权利的迷你期货凭证。
+
+- 父类：**迷你期货凭证（mini-future certificate）**
+
+### 2.6 购买权（purchase right）
+
+定义：一种反收购安排：赋予潜在被收购方股东以折扣价购买该公司或任何收购该公司者之股份的权利。
+
+- 父类：**权益凭证（Entitlement）**
+- 直接子类：**债券购买权（bond purchase right）**、**组合工具购买权（combined instruments purchase right）**、**普通可转换股购买权（common convertible share purchase right）**、**普通股购买权（common share purchase right）**、**优先可转换股购买权（preferred convertible share purchase right）**、**优先股购买权（preferred share purchase right）**
+
+#### 2.6.1 债券购买权（bond purchase right）
+
+定义：赋予潜在被收购方债券持有人以大幅折价购买该公司或任何收购该公司者之债券的权利的反收购安排。
+
+- 父类：**购买权（purchase right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
+
+#### 2.6.2 组合工具购买权（combined instruments purchase right）
+
+定义：赋予潜在被收购方多种证券持有人购买该公司或任何收购该公司者之证券的权利的反收购安排。
+
+- 父类：**购买权（purchase right）**
+
+#### 2.6.3 普通可转换股购买权（common convertible share purchase right）
+
+定义：赋予潜在被收购方普通可转换股股东购买该公司或任何收购该公司者之普通可转换股的权利的购买权。
+
+- 父类：**购买权（purchase right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换普通股（ConvertibleCommonShare）**。
+
+#### 2.6.4 普通股购买权（common share purchase right）
+
+定义：赋予潜在被收购方普通股股东购买该公司或任何收购该公司者之普通股的权利的购买权。
+
+- 父类：**购买权（purchase right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**普通股（CommonShare）**。
+
+#### 2.6.5 优先可转换股购买权（preferred convertible share purchase right）
+
+定义：赋予潜在被收购方优先可转换股股东购买该公司或任何收购该公司者之优先可转换股的权利的购买权。
+
+- 父类：**购买权（purchase right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换优先股（ConvertiblePreferredShare）**。
+
+#### 2.6.6 优先股购买权（preferred share purchase right）
+
+定义：赋予潜在被收购方优先股股东购买该公司或任何收购该公司者之优先股的权利的购买权。
+
+- 父类：**购买权（purchase right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**优先股（PreferredShare）**。
+
+### 2.7 认购权（subscription right）
+
+定义：授予现有证券持有人的特权，使其有权以通常低于当时市价的价格认购新证券。
+
+- 父类：**权益凭证（Entitlement）**
+- 直接子类：**债券认购权（bond subscription right）**、**组合工具认购权（combined instruments subscription right）**、**普通可转换股认购权（common convertible share subscription right）**、**普通股认购权（common share subscription right）**、**优先可转换股认购权（preferred convertible share subscription right）**、**优先股认购权（preferred share subscription right）**
+
+#### 2.7.1 债券认购权（bond subscription right）
+
+定义：授予现有债券持有人以通常低于当时市价的价格认购新证券的认购权。
+
+- 父类：**认购权（subscription right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
+
+#### 2.7.2 组合工具认购权（combined instruments subscription right）
+
+定义：授予现有多种证券持有人以通常低于当时市价的价格认购新证券的认购权。
+
+- 父类：**认购权（subscription right）**
+
+#### 2.7.3 普通可转换股认购权（common convertible share subscription right）
+
+定义：授予现有普通可转换股股东以通常低于当时市价的价格认购新证券的认购权。
+
+- 父类：**认购权（subscription right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换普通股（ConvertibleCommonShare）**。
+
+#### 2.7.4 普通股认购权（common share subscription right）
+
+定义：授予现有普通股股东以通常低于当时市价的价格认购新证券的认购权。
+
+- 父类：**认购权（subscription right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**普通股（CommonShare）**。
+
+#### 2.7.5 优先可转换股认购权（preferred convertible share subscription right）
+
+定义：授予现有优先可转换股股东以通常低于当时市价的价格认购新证券的认购权。
+
+- 父类：**认购权（subscription right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**可转换优先股（ConvertiblePreferredShare）**。
+
+#### 2.7.6 优先股认购权（preferred share subscription right）
+
+定义：授予现有优先股股东以通常低于当时市价的价格认购新证券的认购权。
+
+- 父类：**认购权（subscription right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**优先股（PreferredShare）**。
+
+### 2.8 权证（warrant）
+
+定义：允许持有人在规定期间内按指定价格购买指定数量金融工具、商品、货币或其他资产的权益凭证。
+
+- 父类：**权益凭证（Entitlement）**
+- 直接子类：**篮子权证（basket warrant）**、**认购权证（call warrant）**、**商品权证（commodity warrant）**、**备兑权证（covered warrant）**、**货币权证（currency warrant）**、**债务权证（debt warrant）**、**奇异权证（exotic warrant）**、**指数权证（index warrant）**、**裸权证（naked warrant）**、**永续权证（perpetual warrant）**、**私募权证（private warrant）**、**公募权证（public warrant）**、**认沽权证（put warrant）**、**结构化权证（structured warrant）**、**传统权证（traditional warrant）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权条款（hasExerciseTerms）** | — | — |
+
+公理：
+
+- **具有行权条款（hasExerciseTerms）**至少有一个取值，类型是**行权条款（ExerciseTerms）**。
+
+#### 2.8.1 篮子权证（basket warrant）
+
+定义：允许持有人在规定期间内按指定价格购买一揽子或一组资产的权证。
+
+- 父类：**权证（warrant）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**证券篮子（BasketOfSecurities）**。
+
+#### 2.8.2 认购权证（call warrant）
+
+定义：赋予买方（持有人）在规定期间内按指定价格购买特定标的资产的权利（而非义务）的权证。
+
+- 父类：**权证（warrant）**
+- 直接子类：**认购认沽权证（call put warrant）**、**股权权证（equity warrant）**
+
+##### 2.8.2.1 认购认沽权证（call put warrant）
+
+定义：未明确认购或认沽特征、或明确同时包含认购和认沽特征的权证。
+
+- 父类：**认购权证（call warrant）**、**认沽权证（put warrant）**
+
+##### 2.8.2.2 股权权证（equity warrant）
+
+定义：允许持有人在规定期间内按指定价格购买指定数量权益工具的权证。
+
+- 父类：**认购权证（call warrant）**、**传统权证（traditional warrant）**、**股票衍生品（EquityDerivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+
+公理：
+
+- **由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**的所有取值只能是**股份公司（StockCorporation）**。
+
+#### 2.8.3 商品权证（commodity warrant）
+
+定义：允许持有人在规定期间内按指定价格购买指定数量商品的权证。
+
+- 父类：**商品衍生品（CommodityDerivative）**、**权证（warrant）**
+
+#### 2.8.4 备兑权证（covered warrant）
+
+定义：赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）的权证，通常由第三方发行。
+
+- 父类：**权证（warrant）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+
+公理：
+
+- **由……发行（isIssuedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
+
+#### 2.8.5 货币权证（currency warrant）
+
+定义：允许持有人在规定期间内按指定汇率购买指定金额某种货币的权证。
+
+- 父类：**货币衍生品（CurrencyDerivative）**、**权证（warrant）**
+
+#### 2.8.6 债务权证（debt warrant）
+
+定义：允许持有人在规定期间内按指定价格购买指定数量债务工具或相关债务指标的权证。
+
+- 父类：**权证（warrant）**、**债务工具衍生品（DebtInstrumentDerivative）**
+
+#### 2.8.7 奇异权证（exotic warrant）
+
+定义：赋予持有人在非标准或复杂条件下买入（有时卖出）标的资产的权利（而非义务）的权证。
+
+- 父类：**权证（warrant）**
+
+#### 2.8.8 指数权证（index warrant）
+
+定义：允许持有人在规定期间内按指定价格购买基于指数表现之指定金额的权证。
+
+- 父类：**权证（warrant）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**N2e54fdeb97694dd6845b071571d16eba**。
+
+#### 2.8.9 裸权证（naked warrant）
+
+定义：赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）、但不伴随标的持有的权证。
+
+- 父类：**权证（warrant）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+
+公理：
+
+- **由……发行（isIssuedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
+- 与**备兑权证（covered warrant）**互斥：同一个体不能同时属于两者。
+
+#### 2.8.10 永续权证（perpetual warrant）
+
+定义：无到期日的权证，赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）。
+
+- 父类：**权证（warrant）**
+
+#### 2.8.11 私募权证（private warrant）
+
+定义：不可交易的权证。
+
+- 父类：**权证（warrant）**、**不可转让证券（NonNegotiableSecurity）**
+
+#### 2.8.12 公募权证（public warrant）
+
+定义：可在场外（OTC）或通过交易所交易的权证。
+
+- 父类：**权证（warrant）**、**可转让证券（NegotiableSecurity）**
+- 直接子类：**交易所交易权证（exchange-traded warrant）**
+
+##### 2.8.12.1 交易所交易权证（exchange-traded warrant）
+
+定义：在证券交易所挂牌的权证。
+
+- 父类：**公募权证（public warrant）**、**上市证券（ListedSecurity）**
+
+#### 2.8.13 认沽权证（put warrant）
+
+定义：赋予买方（持有人）卖出指定资产（即以标的资产换取现金）的权利（而非义务）的权证。
+
+- 父类：**权证（warrant）**
+- 直接子类：**认购认沽权证（call put warrant）**
+
+#### 2.8.14 结构化权证（structured warrant）
+
+定义：在交易所挂牌的权证，为投资者提供不直接购买标的资产即可参与其价格表现的途径。
+
+- 父类：**权证（warrant）**
+
+#### 2.8.15 传统权证（traditional warrant）
+
+定义：赋予持有人按指定价格买入（认购权证）或卖出（认沽权证）标的资产的权利（而非义务）的权证。
+
+- 父类：**权证（warrant）**
+- 直接子类：**股权权证（equity warrant）**
+
+公理：
+
+- 与**备兑权证（covered warrant）**互斥：同一个体不能同时属于两者。
+- 与**裸权证（naked warrant）**互斥：同一个体不能同时属于两者。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有转换比率（has conversion ratio）** | 指明为买入或卖出特定数量证券或投资单位所需权证数量的换算系数。 |
+| **是否具有超额认购选择权（has oversubscribe option）** | 表明在其他权利持有人选择不认购时，该权利凭证持有人是否可以获得相应证券。 |
+
+## 4. 依赖（owl:imports，21 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -179,7 +552,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`RightsAndWarrants.rdf`
 - 中文 Turtle：`RightsAndWarrants.ttl`

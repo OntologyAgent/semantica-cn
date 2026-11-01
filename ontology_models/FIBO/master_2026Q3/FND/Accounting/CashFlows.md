@@ -8,6 +8,12 @@
 
 本本体定义现金流概念，供定义其他 FIBO 本体元素时使用。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **现金流（cash flow）** 继承 **带日期集合成分（DatedCollectionConstituent）**
+- **现金流结构（cash flow structure）** 继承 **带日期结构化集合（DatedStructuredCollection）**
+- **触发事件（triggering event）** 继承 **发生事项（Occurrence）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -16,31 +22,55 @@
 | 现金流结构（cash flow structure） | 与一个或多个现金流相关的结构。 |
 | 触发事件（triggering event） | 与信用违约互换的某些方面相关或触发这些方面的事件。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 现金流（cash flow） ⊑ 带日期集合成分
-- 现金流结构（cash flow structure） ⊑ 带日期结构化集合
-- 触发事件（triggering event） ⊑ 发生事项
+### 2.1 现金流（cash flow）
 
-## 3. 对象属性（Object Property）
+定义：资金从某来源到某去向的流动。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-acc-csf:hasSourceOfMoney | 具有资金来源（has source of funds） | 指某笔资金的来源。 | 子属性（subPropertyOf）：引用 |
-| fibo-fnd-acc-csf:hasTargetOfMoney | 具有资金去向（has target of funds） | 指某笔资金的去向。 | 子属性（subPropertyOf）：引用 |
+- 父类：**带日期集合成分（DatedCollectionConstituent）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有资金来源（has source of funds）** | 指某笔资金的来源。 | 子属性：引用 |
+| **具有资金去向（has target of funds）** | 指某笔资金的去向。 | 子属性：引用 |
+| **具有货币数量（hasMonetaryAmount）** | — | — |
 
-- **现金流（cash flow）**：**具有资金来源（has source of funds）**存在取值约束。
-- **现金流（cash flow）**：**具有资金去向（has target of funds）**存在取值约束。
-- **现金流（cash flow）**：**具有货币数量（hasMonetaryAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
-- **现金流结构（cash flow structure）**：**具有进度表（hasSchedule）**至多有 1 个**进度表（Schedule）**。
-- **现金流结构（cash flow structure）**：**规定（specifies）**可以有 0 个或多个**触发事件（triggering event）**。
-- **现金流结构（cash flow structure）**：**具有成员（hasMember）**至少有一个取值，类型是**现金流（cash flow）**。
+公理：
 
-## 6. 依赖（owl:imports，7 个）
+- **具有货币数量（hasMonetaryAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **具有资金去向（has target of funds）**存在取值约束。
+- **具有资金来源（has source of funds）**存在取值约束。
+
+### 2.2 现金流结构（cash flow structure）
+
+定义：与一个或多个现金流相关的结构。
+
+- 父类：**带日期结构化集合（DatedStructuredCollection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有进度表（hasSchedule）** | — | — |
+| **具有成员（hasMember）** | — | — |
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**现金流（cash flow）**。
+- **具有进度表（hasSchedule）**至多有 1 个**进度表（Schedule）**。
+- **规定（specifies）**可以有 0 个或多个**触发事件（triggering event）**。
+
+### 2.3 触发事件（triggering event）
+
+定义：与信用违约互换的某些方面相关或触发这些方面的事件。
+
+- 父类：**发生事项（Occurrence）**
+
+## 3. 依赖（owl:imports，7 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -54,7 +84,7 @@
 | `https://www.omg.org/spec/Commons/Collections/` | OMG 通用集合本体（OMG Commons Collections） | Commons 库中的集合本体，定义集合、成员等通用概念。 |
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CashFlows.rdf`
 - 中文 Turtle：`CashFlows.ttl`

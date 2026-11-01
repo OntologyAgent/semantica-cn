@@ -14,6 +14,16 @@
 
 **与相近概念的差别**：生命周期≠业务流程——生命周期描述一个对象自身的状态变化（草稿→生效→到期），流程（BP 域）描述多方协作的业务步骤。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **生命周期（lifecycle）** 继承 **编排（Arrangement）**
+- **生命周期事件（lifecycle event）** 继承 **发生类别（OccurrenceKind）**
+- **生命周期事件发生（lifecycle event occurrence）** 继承 **发生事项（Occurrence）**
+- **生命周期发生（lifecycle occurrence）** 继承 **发生事项（Occurrence）**
+- **生命周期阶段（lifecycle stage）** 继承 **分类符（Classifier）**
+- **生命周期阶段发生（lifecycle stage occurrence）** 继承 **发生事项（Occurrence）**
+- **生命周期状态（lifecycle status）** 继承 **分类符（Classifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -26,46 +36,147 @@
 | 生命周期阶段发生（lifecycle stage occurrence） | 给定生命周期中某个时期的实现。 |
 | 生命周期状态（lifecycle status） | 标识某事物在其生命周期特定时点所处位置或状态的分类符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 生命周期（lifecycle） ⊑ 编排
-- 生命周期事件（lifecycle event） ⊑ 发生类别
-- 生命周期事件发生（lifecycle event occurrence） ⊑ 发生事项
-- 生命周期发生（lifecycle occurrence） ⊑ 发生事项
-- 生命周期阶段（lifecycle stage） ⊑ 分类符
-- 生命周期阶段发生（lifecycle stage occurrence） ⊑ 发生事项
-- 生命周期状态（lifecycle status） ⊑ 分类符
+### 2.1 生命周期（lifecycle）
 
-## 3. 对象属性（Object Property）
+定义：将家族、组织、过程、产品、营销、订单管理、组合管理等系统的循环性质与生物体从摇篮到坟墓的生命阶段（出生、成长、成熟、衰退、死亡）相类比的编排。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-arr-lif:hasLifecycle | 具有生命周期（has lifecycle） | 将某事物（如产品、交易或相关过程）关联到刻画它的生命周期。 | 值域（range）：生命周期（lifecycle）；子属性（subPropertyOf）：以……为特征 |
-| fibo-fnd-arr-lif:hasStage | 具有阶段（has stage） | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域（range）：Ndbc8defcf36248069a4855ea6e3ec453；子属性（subPropertyOf）：具有部分 |
-| fibo-fnd-arr-lif:isLifecycleOf | 是……的生命周期（is lifecycle of） | 将生命周期关联到它所刻画的事物。 | 定义域（domain）：生命周期（lifecycle）；逆属性（inverseOf）：具有生命周期（has lifecycle）；子属性（subPropertyOf）：刻画 |
-| fibo-fnd-arr-lif:isStageOf | 是……的阶段（is stage of） | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。 | 定义域（domain）：N026ef0d72b0e41018f85bcef5c551190；逆属性（inverseOf）：具有阶段（has stage）；子属性（subPropertyOf）：是……的部分 |
+- 父类：**编排（Arrangement）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域：Nd94e64aff1fa4d0eb5c580fd7058589e；子属性：具有部分 |
+| **是……的生命周期（is lifecycle of）** | 将生命周期关联到它所刻画的事物。 | 逆属性：具有生命周期（has lifecycle）；子属性：刻画 |
+| **定义（defines）** | — | — |
 
-- **生命周期（lifecycle）**：**具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
-- **生命周期（lifecycle）**：**是……的生命周期（is lifecycle of）**至少有一个取值，类型是**owl:Thing（Thing）**。
-- **生命周期（lifecycle）**：**定义（defines）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
-- **生命周期事件（lifecycle event）**：**适用于（appliesTo）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
-- **生命周期事件发生（lifecycle event occurrence）**：**例证（exemplifies）**恰好有 1 个**生命周期事件（lifecycle event）**。
-- **生命周期事件发生（lifecycle event occurrence）**：**适用于（appliesTo）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
-- **生命周期发生（lifecycle occurrence）**：**例证（exemplifies）**恰好有 1 个**生命周期（lifecycle）**。
-- **生命周期发生（lifecycle occurrence）**：**具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
-- **生命周期阶段（lifecycle stage）**：**是……的阶段（is stage of）**至少有一个取值，类型是**生命周期（lifecycle）**。
-- **生命周期阶段（lifecycle stage）**：**包含（comprises）**至少有一个取值，类型是**生命周期事件（lifecycle event）**。
-- **生命周期阶段（lifecycle stage）**：**定义于（isDefinedIn）**至少有一个取值，类型是**生命周期（lifecycle）**。
-- **生命周期阶段发生（lifecycle stage occurrence）**：**例证（exemplifies）**恰好有 1 个**生命周期阶段（lifecycle stage）**。
-- **生命周期阶段发生（lifecycle stage occurrence）**：**是……的阶段（is stage of）**至少有一个取值，类型是**生命周期发生（lifecycle occurrence）**。
-- **生命周期阶段发生（lifecycle stage occurrence）**：**包含（comprises）**至少有一个取值，类型是**生命周期事件发生（lifecycle event occurrence）**。
-- **生命周期状态（lifecycle status）**：**具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
+公理：
 
-## 6. 依赖（owl:imports，8 个）
+- **具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
+- **定义（defines）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
+- **是……的生命周期（is lifecycle of）**至少有一个取值，类型是**owl:Thing（Thing）**。
+
+### 2.2 生命周期事件（lifecycle event）
+
+定义：在生命周期的一个或多个阶段中发生的一类事件。
+
+- 父类：**发生类别（OccurrenceKind）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**生命周期阶段（lifecycle stage）**。
+
+### 2.3 生命周期事件发生（lifecycle event occurrence）
+
+定义：生命周期某阶段中事件的实现。
+
+- 父类：**发生事项（Occurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **例证（exemplifies）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**生命周期事件（lifecycle event）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
+
+### 2.4 生命周期发生（lifecycle occurrence）
+
+定义：生命周期的实现。
+
+- 父类：**发生事项（Occurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域：Nd94e64aff1fa4d0eb5c580fd7058589e；子属性：具有部分 |
+| **例证（exemplifies）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**生命周期（lifecycle）**。
+- **具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
+
+### 2.5 生命周期阶段（lifecycle stage）
+
+定义：生命周期中的一个时期。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的阶段（is stage of）** | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。 | 逆属性：具有阶段（has stage）；子属性：是……的部分 |
+| **包含（comprises）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**生命周期事件（lifecycle event）**。
+- **定义于（isDefinedIn）**至少有一个取值，类型是**生命周期（lifecycle）**。
+- **是……的阶段（is stage of）**至少有一个取值，类型是**生命周期（lifecycle）**。
+
+### 2.6 生命周期阶段发生（lifecycle stage occurrence）
+
+定义：给定生命周期中某个时期的实现。
+
+- 父类：**发生事项（Occurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的阶段（is stage of）** | 将产品或交易生命周期或过程中的一个阶段关联到它所属的生命周期或过程。 | 逆属性：具有阶段（has stage）；子属性：是……的部分 |
+| **例证（exemplifies）** | — | — |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**生命周期阶段（lifecycle stage）**。
+- **包含（comprises）**至少有一个取值，类型是**生命周期事件发生（lifecycle event occurrence）**。
+- **是……的阶段（is stage of）**至少有一个取值，类型是**生命周期发生（lifecycle occurrence）**。
+
+### 2.7 生命周期状态（lifecycle status）
+
+定义：标识某事物在其生命周期特定时点所处位置或状态的分类符。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（has stage）** | 将某事物（如产品或交易生命周期或相关过程）关联到该生命周期中的一个时期或阶段。 | 值域：Nd94e64aff1fa4d0eb5c580fd7058589e；子属性：具有部分 |
+
+公理：
+
+- **具有阶段（has stage）**至少有一个取值，类型是**生命周期阶段发生（lifecycle stage occurrence）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有生命周期（has lifecycle）** | 将某事物（如产品、交易或相关过程）关联到刻画它的生命周期。 | 值域：生命周期（lifecycle）；子属性：以……为特征 |
+
+## 4. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -80,7 +191,7 @@
 | `https://www.omg.org/spec/Commons/ContextualDesignators/` | OMG 通用语境指称本体（OMG Commons Contextual Designators） | Commons 库中的语境指称本体，定义「在某个语境下指代某物的名称/符号」，是地址、账户号码等语境相关标识的基础。 |
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Lifecycles.rdf`
 - 中文 Turtle：`Lifecycles.ttl`

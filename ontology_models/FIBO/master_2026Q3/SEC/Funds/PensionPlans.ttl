@@ -412,6 +412,10 @@ fibo-sec-fund-pp:PensionPlan a owl:Class ;
     rdfs:comment "具有明确退休目标的具有法律约束力的安排，或为满足税收相关条件或合同条款而设定受益安排的安排。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-fund-pp:PensionAccount ;
+            owl:onProperty cmns-doc:specifies ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( fibo-sec-fund-fund:PensionFund fibo-sec-fund-pp:PensionInsuranceContract ) ] ;
             owl:onProperty fibo-sec-fund-pp:isFundedBy ],
@@ -419,10 +423,6 @@ fibo-sec-fund-pp:PensionPlan a owl:Class ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty fibo-sec-fund-pp:isUnprotected ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-fund-pp:PensionAccount ;
-            owl:onProperty cmns-doc:specifies ],
         fibo-fnd-agr-agr:Agreement,
         fibo-sec-fund-pp:RetirementArrangement ;
     skos:definition "legally binding arrangement having an explicit retirement objective or - in order to satisfy tax related conditions or contract provisions - the benefits can not be paid at all or without a significant penalty unless the beneficiary is older than a legally defined retirement age" ;

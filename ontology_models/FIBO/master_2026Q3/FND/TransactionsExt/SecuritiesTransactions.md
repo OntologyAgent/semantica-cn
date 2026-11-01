@@ -14,6 +14,20 @@
 
 **与相近概念的差别**：交易≠结算——交易是达成买卖，结算是履约交割（见 FBC 结算本体）；与市场交易的差别——增加了证券特有的订单与成交结构。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **金融一级市场交易（financial primary market transaction）** 继承 **市场交易（MarketTransaction）**
+- **金融一级市场交易（financial primary market transaction）** 继承 **合同性交易（ContractualTransaction）**
+- **金融证券二级市场交易（financial securities secondary market transaction）** 继承 **市场交易（MarketTransaction）**
+- **金融证券二级市场交易（financial securities secondary market transaction）** 继承 **合同性交易（ContractualTransaction）**
+- **证券交易合同（securities transaction contract）** 继承 **经济合同（EconomicContract）**
+- **证券交易对手方（securities transaction counterparty）** 继承 **交易对手方（TransactionCounterparty）**
+- **证券交易主当事方（securities transaction principal）** 继承 **交易委托方（TransactionPrincipal）**
+- **预发行交易（when issued transaction）** 继承 **金融证券二级市场交易（financial securities secondary market transaction）**
+- **金融证券二级市场交易（financial securities secondary market transaction）** 通过 **体现（embodies）** 关联 **证券交易合同（securities transaction contract）**
+- **金融一级市场交易（financial primary market transaction）** 通过 **遵循（follows）** 关联 **结算过程（settlement process）**
+- **证券交易合同（securities transaction contract）** 通过 **管辖（governs）** 关联 **金融证券二级市场交易（financial securities secondary market transaction）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -26,44 +40,94 @@
 | 结算过程（settlement process） | 完成交易交收的过程。 |
 | 预发行交易（when issued transaction） | 在证券正式交易之前进行的证券买卖。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 金融一级市场交易（financial primary market transaction） ⊑ 市场交易
-- 金融一级市场交易（financial primary market transaction） ⊑ 合同性交易
-- 金融证券二级市场交易（financial securities secondary market transaction） ⊑ 市场交易
-- 金融证券二级市场交易（financial securities secondary market transaction） ⊑ 合同性交易
-- 证券交易合同（securities transaction contract） ⊑ 经济合同
-- 证券交易对手方（securities transaction counterparty） ⊑ 交易对手方
-- 证券交易主当事方（securities transaction principal） ⊑ 交易委托方
-- 预发行交易（when issued transaction） ⊑ 金融证券二级市场交易（financial securities secondary market transaction）
+### 2.1 金融一级市场交易（financial primary market transaction）
 
-## 3. 对象属性（Object Property）
+定义：在一级市场上进行的金融交易。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-txn-sec:embodies | 体现（embodies） | 是……的表达，赋予……以具体形式。 | 定义域（domain）：金融证券二级市场交易（financial securities secondary market transaction）；值域（range）：证券交易合同（securities transaction contract）；子属性（subPropertyOf）：交易体现经济协议 |
-| fibo-fnd-txn-sec:follows | 遵循（follows） | 按……进行。 | 定义域（domain）：金融一级市场交易（financial primary market transaction）；值域（range）：结算过程（settlement process）；子属性（subPropertyOf）：交易事件遵循业务流程 |
-| fibo-fnd-txn-sec:governs | 管辖（governs） | 对……拥有并行使权力。 | 定义域（domain）：证券交易合同（securities transaction contract）；值域（range）：金融证券二级市场交易（financial securities secondary market transaction）；逆属性（inverseOf）：体现（embodies）；子属性（subPropertyOf）：管辖 |
+- 父类：**市场交易（MarketTransaction）**、**合同性交易（ContractualTransaction）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-txn-sec:offsetForWIIssueDate | 预发行发行日偏移（offset for w i issue date） | 用于由给定预发行（WI）发行日计算实际结算日；若发行日未知，它确定自发行日起算的天数。 |
+| **遵循（follows）** | 按……进行。 | 值域：结算过程（settlement process）；子属性：交易事件遵循业务流程 |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **遵循（follows）**至少有一个取值，类型是**结算过程（settlement process）**。
 
-- **金融一级市场交易（financial primary market transaction）**：**遵循（follows）**至少有一个取值，类型是**结算过程（settlement process）**。
-- **金融证券二级市场交易（financial securities secondary market transaction）**：**具有交易对手（hasCounterparty）**至少有一个取值，类型是**证券交易对手方（securities transaction counterparty）**。
-- **金融证券二级市场交易（financial securities secondary market transaction）**：**具有主当事方（hasPrincipalParty）**至少有一个取值，类型是**证券交易主当事方（securities transaction principal）**。
-- **金融证券二级市场交易（financial securities secondary market transaction）**：**对价（consideration）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **金融证券二级市场交易（financial securities secondary market transaction）**：**标的（subject）**至少有一个取值，类型是**证券（Security）**。
-- **金融证券二级市场交易（financial securities secondary market transaction）**：**体现（embodies）**至少有一个取值，类型是**证券交易合同（securities transaction contract）**。
-- **证券交易合同（securities transaction contract）**：**管辖（governs）**至少有一个取值，类型是**金融证券二级市场交易（financial securities secondary market transaction）**。
+### 2.2 金融证券二级市场交易（financial securities secondary market transaction）
 
-## 6. 依赖（owl:imports，7 个）
+定义：以某种可流通证券换取某种对价的交易。
+
+- 父类：**市场交易（MarketTransaction）**、**合同性交易（ContractualTransaction）**
+- 直接子类：**预发行交易（when issued transaction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有交易对手（hasCounterparty）** | — | — |
+| **具有主当事方（hasPrincipalParty）** | — | — |
+| **对价（consideration）** | — | — |
+| **标的（subject）** | — | — |
+| **体现（embodies）** | 是……的表达，赋予……以具体形式。 | 值域：证券交易合同（securities transaction contract）；子属性：交易体现经济协议 |
+
+公理：
+
+- **体现（embodies）**至少有一个取值，类型是**证券交易合同（securities transaction contract）**。
+- **具有主当事方（hasPrincipalParty）**至少有一个取值，类型是**证券交易主当事方（securities transaction principal）**。
+- **具有交易对手（hasCounterparty）**至少有一个取值，类型是**证券交易对手方（securities transaction counterparty）**。
+- **对价（consideration）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **标的（subject）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.2.1 预发行交易（when issued transaction）
+
+定义：在证券正式交易之前进行的证券买卖。
+
+- 父类：**金融证券二级市场交易（financial securities secondary market transaction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **预发行发行日偏移（offset for w i issue date）** | 用于由给定预发行（WI）发行日计算实际结算日；若发行日未知，它确定自发行日起算的天数。 | 值域：xsd:integer |
+
+### 2.3 证券交易合同（securities transaction contract）
+
+定义：治理二级市场证券交易的合同（书面或默示）。
+
+- 父类：**经济合同（EconomicContract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | 对……拥有并行使权力。 | 值域：金融证券二级市场交易（financial securities secondary market transaction）；逆属性：体现（embodies）；子属性：管辖 |
+
+公理：
+
+- **管辖（governs）**至少有一个取值，类型是**金融证券二级市场交易（financial securities secondary market transaction）**。
+
+### 2.4 证券交易对手方（securities transaction counterparty）
+
+定义：证券交易中的对手方。
+
+- 父类：**交易对手方（TransactionCounterparty）**
+
+### 2.5 证券交易主当事方（securities transaction principal）
+
+定义：证券交易中的主当事方。
+
+- 父类：**交易委托方（TransactionPrincipal）**
+
+### 2.6 结算过程（settlement process）
+
+定义：完成交易交收的过程。
+
+## 3. 依赖（owl:imports，7 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -77,7 +141,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SecuritiesTransactions.rdf`
 - 中文 Turtle：`SecuritiesTransactions.ttl`

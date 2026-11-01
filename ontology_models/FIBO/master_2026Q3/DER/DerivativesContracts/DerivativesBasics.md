@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：衍生品区别于现货工具的关键在于「价值派生自标的资产」——债券、股票是原生工具，衍生品是基于它们的合约；与结构化工具的差别——结构化工具强调多成分组合，衍生品强调价值派生关系。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **现金流表达式（cashflow expression）** 继承 **表达式（Expression）**
+- **现金流公式（cashflow formula）** 继承 **公式（Formula）**
+- **现金流条款（cashflow terms）** 继承 **衍生品条款（derivative terms）**
+- **现金流条款（cashflow terms）** 继承 **债务条款（DebtTerms）**
+- **差价合约（contract for difference）** 继承 **衍生工具（DerivativeInstrument）**
+- **信用衍生品（credit derivative）** 继承 **衍生工具（DerivativeInstrument）**
+- **衍生品结算条款（derivative settlement terms）** 继承 **衍生品条款（derivative terms）**
+- **衍生品结算条款（derivative settlement terms）** 继承 **结算条款（SettlementTerms）**
+- **衍生品条款（derivative terms）** 继承 **合同承诺（ContractualCommitment）**
+- **衍生品清算组织（derivatives clearing organization）** 继承 **清算所（ClearingHouse）**
+- **经济指标型衍生品（economic rate-based derivative）** 继承 **比率类衍生品（rate-based derivative）**
+- **远期利率协议（forward rate agreement）** 继承 **利率衍生品（interest rate derivative）**
+- 其余 21 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -43,87 +59,316 @@
 | 唯一产品标识符服务提供商（unique product identifier service provider） | 由金融监管机构组成的外部机构指定、负责分配 UPI 并运营 UPI 参考数据库的组织。 |
 | 估值条款（valuation terms） | 标的资产估值特有的合同条款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 现金流表达式（cashflow expression） ⊑ 表达式
-- 现金流公式（cashflow formula） ⊑ 公式
-- 现金流条款（cashflow terms） ⊑ 衍生品条款（derivative terms）
-- 现金流条款（cashflow terms） ⊑ 债务条款
-- 差价合约（contract for difference） ⊑ 衍生工具
-- 信用衍生品（credit derivative） ⊑ 衍生工具
-- 衍生品结算条款（derivative settlement terms） ⊑ 衍生品条款（derivative terms）
-- 衍生品结算条款（derivative settlement terms） ⊑ 结算条款
-- 衍生品条款（derivative terms） ⊑ 合同承诺
-- 衍生品清算组织（derivatives clearing organization） ⊑ 清算所
-- 经济指标型衍生品（economic rate-based derivative） ⊑ 比率类衍生品（rate-based derivative）
-- 远期利率协议（forward rate agreement） ⊑ 利率衍生品（interest rate derivative）
-- 利率衍生品（interest rate derivative） ⊑ 比率类衍生品（rate-based derivative）
-- 介绍经纪商（introducing broker） ⊑ 非存款性机构
-- 介绍经纪商（introducing broker） ⊑ 经纪商
-- 可观察值（observable value） ⊑ 规范
-- 场外衍生工具（over-the-counter derivative instrument） ⊑ 场外工具（over-the-counter instrument）
-- 场外衍生工具（over-the-counter derivative instrument） ⊑ 衍生工具
-- 场外工具（over-the-counter instrument） ⊑ 金融工具
-- 参数化现金流条款（parametric cashflow terms） ⊑ 现金流条款（cashflow terms）
-- 付款方（paying party） ⊑ 合同当事方
-- 付款方（paying party） ⊑ 付款人
-- 付款方（paying party） ⊑ 买方
-- 比率类衍生品（rate-based derivative） ⊑ 衍生工具
-- 收款对手方（receiving counterparty） ⊑ 合同当事方
-- 收款对手方（receiving counterparty） ⊑ 收款人
-- 收款对手方（receiving counterparty） ⊑ 卖方
-- 标的资产评估（underlying asset valuation） ⊑ 价值评估
-- 唯一产品标识符（unique product identifier） ⊑ 金融工具标识符
-- 唯一产品标识符（unique product identifier） ⊑ 结构化标识符
-- 唯一产品标识符登记册条目（unique product identifier registry entry） ⊑ 注册簿条目
-- 唯一产品标识符服务提供商（unique product identifier service provider） ⊑ 注册机构
-- 估值条款（valuation terms） ⊑ 衍生品条款（derivative terms）
+### 2.1 现金流表达式（cashflow expression）
 
-## 3. 对象属性（Object Property）
+定义：规定作为现金流公式组成部分的现金流计算的表达式。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-der-drc-bsc:hasAccretingNotionalAmount | 具有递增名义本金（has accreting notional amount） | 表明名义本金在合约存续期内递增。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有名义金额 |
-| fibo-der-drc-bsc:hasAdditionalCosts | 具有附加成本（has additional costs） | 指明交割时必须支付的成本，如前期费用、经纪佣金等。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-der-drc-bsc:hasAmortizingNotionalAmount | 具有递减名义本金（has amortizing notional amount） | 表明名义本金在合约存续期内递减。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有名义金额 |
-| fibo-der-drc-bsc:hasConstantNotionalAmount | 具有固定名义本金（has constant notional amount） | 表明名义本金在合约存续期内保持不变。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有名义金额 |
-| fibo-der-drc-bsc:hasCustomNotionalAmount | 具有定制名义本金（has custom notional amount） | 表明名义本金按名义本金阶梯计划表定制。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有名义金额 |
-| fibo-der-drc-bsc:hasFirstDeliveryDate | 具有首个交割日（has first delivery date） | 规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的首个日期。 | 定义域（domain）：结算条款；值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-der-drc-bsc:hasFirstNoticeDate | 具有首个通知日（has first notice date） | 规定可以发出交割通知的首个日期。 | 定义域（domain）：结算条款；值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-der-drc-bsc:hasLastDeliveryDate | 具有最后交割日（has last delivery date） | 规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的最后日期。 | 定义域（domain）：结算条款；值域（range）：显式日期；子属性（subPropertyOf）：具有结束日期 |
-| fibo-der-drc-bsc:hasLastNoticeDate | 具有最后通知日（has last notice date） | 规定可以发出交割通知的最后日期。 | 定义域（domain）：结算条款；值域（range）：显式日期；子属性（subPropertyOf）：具有结束日期 |
-| fibo-der-drc-bsc:hasSettlementTerms | 具有结算条款（has settlement terms） | 将衍生品与结算过程特有的合同条款关联起来。 | 定义域（domain）：衍生工具；值域（range）：结算条款；子属性（subPropertyOf）：具有合同要素 |
-| fibo-der-drc-bsc:hasTickValue | 具有最小变动价位价值（has tick value） | 指明一个最小变动价位（即合约最小价格变动）的现金价值。 | 定义域（domain）：衍生工具；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-der-drc-bsc:hasUnderlyingAssetPrice | 具有标的资产价格（has underlying asset price） | 规定合约所基于之物的价格。 | 值域（range）：货币价格；子属性（subPropertyOf）：具有价格 |
-| fibo-der-drc-bsc:hasValuationTerms | 具有估值条款（has valuation terms） | 将衍生品与标的资产估值特有的合同条款关联起来。 | 定义域（domain）：衍生工具；值域（range）：估值条款（valuation terms）；子属性（subPropertyOf）：具有合同要素 |
-| fibo-der-drc-bsc:specifiesValueOf | 规定……的价值（specifies value of） | 将衍生品与标的资产估值特有的合同条款关联起来。 | 子属性（subPropertyOf）：适用于 |
+- 父类：**表达式（Expression）**
 
-## 5. 公理约定（Axioms）
+### 2.2 现金流公式（cashflow formula）
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+定义：用于确定衍生工具现金流的公式。
 
-- **现金流公式（cashflow formula）**：**具有表达式（hasExpression）**至少有一个取值，类型是**现金流表达式（cashflow expression）**。
-- **衍生品结算条款（derivative settlement terms）**：**具有附加成本（has additional costs）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **衍生品结算条款（derivative settlement terms）**：**具有标的资产价格（has underlying asset price）**可以有 0 个或多个**货币价格（MonetaryPrice）**。
-- **经济指标型衍生品（economic rate-based derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**经济指标（EconomicIndicator）**。
-- **利率衍生品（interest rate derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**参考利率（ReferenceInterestRate）**。
-- **可观察值（observable value）**：**价值以……表示（hasValueExpressedIn）**可以有 0 个或多个**货币（Currency）**。
-- **可观察值（observable value）**：**规定……的价值（specifies value of）**至少有一个取值，类型是**owl:Thing（Thing）**。
-- **场外工具（over-the-counter instrument）**与**上市证券**互斥：同一个体不能同时属于两者。
-- **参数化现金流条款（parametric cashflow terms）**：**具有公式（hasFormula）**至少有一个取值，类型是**现金流公式（cashflow formula）**。
-- **比率类衍生品（rate-based derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**Nc2574b5cfb324bef8d0acc8afd11a6bb**。
-- **标的资产评估（underlying asset valuation）**：**具有计算代理人（hasCalculationAgent）**可以有 0 个或多个**计算代理人（CalculationAgent）**。
-- **标的资产评估（underlying asset valuation）**：**评估（evaluates）**至少有一个取值，类型是**标的（Underlier）**。
-- **唯一产品标识符（unique product identifier）**：**标识（identifies）**可以有 0 个或多个**场外衍生工具（over-the-counter derivative instrument）**。
-- **唯一产品标识符（unique product identifier）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**唯一产品标识符服务提供商（unique product identifier service provider）**。
-- **唯一产品标识符登记册条目（unique product identifier registry entry）**：**适用于（appliesTo）**的所有取值只能是**场外衍生工具（over-the-counter derivative instrument）**。
-- **唯一产品标识符登记册条目（unique product identifier registry entry）**：**被包含于（isIncludedIn）**的取值固定为 UniqueProductIdentifierReferenceDataLibrary。
-- **唯一产品标识符登记册条目（unique product identifier registry entry）**：**包含（comprises）**至少有一个取值，类型是**唯一产品标识符（unique product identifier）**。
-- **唯一产品标识符服务提供商（unique product identifier service provider）**：**登记（registers）**可以有 0 个或多个**唯一产品标识符（unique product identifier）**。
-- **估值条款（valuation terms）**：**具有评估日期（hasDateOfAssessment）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
-- **估值条款（valuation terms）**：**涉及（involves）**至少有一个取值，类型是**标的资产评估（underlying asset valuation）**。
+- 父类：**公式（Formula）**
 
-## 6. 依赖（owl:imports，33 个）
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有表达式（hasExpression）** | — | — |
+
+公理：
+
+- **具有表达式（hasExpression）**至少有一个取值，类型是**现金流表达式（cashflow expression）**。
+
+### 2.3 差价合约（contract for difference）
+
+定义：现金结算的衍生品：双方同意在合约到期时交换标的当前价值与合约价值之间的差额。
+
+- 父类：**衍生工具（DerivativeInstrument）**
+
+### 2.4 信用衍生品（credit derivative）
+
+定义：一种衍生工具：私人持有、可转让的双边合约，在场外（OTC）由债权/债务关系中的双方交易。
+
+- 父类：**衍生工具（DerivativeInstrument）**
+
+### 2.5 衍生品条款（derivative terms）
+
+定义：衍生品合约特有的合同条款，包括双方之间支付和交付的相关条款。
+
+- 父类：**合同承诺（ContractualCommitment）**
+- 直接子类：**现金流条款（cashflow terms）**、**衍生品结算条款（derivative settlement terms）**、**估值条款（valuation terms）**
+
+#### 2.5.1 现金流条款（cashflow terms）
+
+定义：列明合约一方承诺支付的现金流结构的条款。
+
+- 父类：**衍生品条款（derivative terms）**、**债务条款（DebtTerms）**
+- 直接子类：**参数化现金流条款（parametric cashflow terms）**
+
+##### 2.5.1.1 参数化现金流条款（parametric cashflow terms）
+
+定义：按照数学公式定义的一组现金流的条款。
+
+- 父类：**现金流条款（cashflow terms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有公式（hasFormula）** | — | — |
+
+公理：
+
+- **具有公式（hasFormula）**至少有一个取值，类型是**现金流公式（cashflow formula）**。
+
+#### 2.5.2 衍生品结算条款（derivative settlement terms）
+
+定义：规定结算时应交付何物、何时交付、交付给谁以及在何种条件下交付等细节的结算条款。
+
+- 父类：**衍生品条款（derivative terms）**、**结算条款（SettlementTerms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有附加成本（has additional costs）** | 指明交割时必须支付的成本，如前期费用、经纪佣金等。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有标的资产价格（has underlying asset price）** | 规定合约所基于之物的价格。 | 值域：货币价格；子属性：具有价格 |
+
+公理：
+
+- **具有标的资产价格（has underlying asset price）**可以有 0 个或多个**货币价格（MonetaryPrice）**。
+- **具有附加成本（has additional costs）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+
+#### 2.5.3 估值条款（valuation terms）
+
+定义：标的资产估值特有的合同条款。
+
+- 父类：**衍生品条款（derivative terms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有评估日期（hasDateOfAssessment）** | — | — |
+| **涉及（involves）** | — | — |
+
+公理：
+
+- **具有评估日期（hasDateOfAssessment）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **涉及（involves）**至少有一个取值，类型是**标的资产评估（underlying asset valuation）**。
+
+### 2.6 衍生品清算组织（derivatives clearing organization）
+
+定义：使各方能够以清算组织（DCO）的信用替代交易对手信用的清算所。
+
+- 父类：**清算所（ClearingHouse）**
+
+### 2.7 介绍经纪商（introducing broker）
+
+定义：招揽或接受在交易所交易或受其规则约束的衍生品订单的经纪商。
+
+- 父类：**非存款性机构（NonDepositoryInstitution）**、**经纪商（Broker）**
+
+### 2.8 可观察值（observable value）
+
+定义：对某一可辨识且可取得证据的事物之值的规范。
+
+- 父类：**规范（Specification）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **规定……的价值（specifies value of）** | 将衍生品与标的资产估值特有的合同条款关联起来。 | 子属性：适用于 |
+| **价值以……表示（hasValueExpressedIn）** | — | — |
+
+公理：
+
+- **价值以……表示（hasValueExpressedIn）**可以有 0 个或多个**货币（Currency）**。
+- **规定……的价值（specifies value of）**至少有一个取值，类型是**owl:Thing（Thing）**。
+
+### 2.9 场外工具（over-the-counter instrument）
+
+定义：未在有组织交易所挂牌的金融工具和双边合约。
+
+- 父类：**金融工具（FinancialInstrument）**
+- 直接子类：**场外衍生工具（over-the-counter derivative instrument）**
+
+公理：
+
+- 与**上市证券（ListedSecurity）**互斥：同一个体不能同时属于两者。
+
+#### 2.9.1 场外衍生工具（over-the-counter derivative instrument）
+
+定义：未在有组织交易所挂牌的衍生工具。
+
+- 父类：**场外工具（over-the-counter instrument）**、**衍生工具（DerivativeInstrument）**
+
+### 2.10 付款方（paying party）
+
+定义：负责支付合约所规定交易款项的一方。
+
+- 父类：**合同当事方（ContractParty）**、**付款人（Payer）**、**买方（Buyer）**
+
+### 2.11 比率类衍生品（rate-based derivative）
+
+定义：持有人有权（视工具性质可能无义务）进入标的比率类合约的衍生工具。
+
+- 父类：**衍生工具（DerivativeInstrument）**
+- 直接子类：**经济指标型衍生品（economic rate-based derivative）**、**利率衍生品（interest rate derivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**可以有 0 个或多个**N4f03e4b815d64d60ba857dc7e2014e7b**。
+
+#### 2.11.1 经济指标型衍生品（economic rate-based derivative）
+
+定义：标的为某一经济指标的比率类衍生品。
+
+- 父类：**比率类衍生品（rate-based derivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**经济指标（EconomicIndicator）**。
+
+#### 2.11.2 利率衍生品（interest rate derivative）
+
+定义：标的为利率的比率类衍生品。
+
+- 父类：**比率类衍生品（rate-based derivative）**
+- 直接子类：**远期利率协议（forward rate agreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**参考利率（ReferenceInterestRate）**。
+
+##### 2.11.2.1 远期利率协议（forward rate agreement）
+
+定义：就未来某一日期的名义本金交换利率承诺的协议。
+
+- 父类：**利率衍生品（interest rate derivative）**
+
+### 2.12 收款对手方（receiving counterparty）
+
+定义：收取合约所规定交易款项的一方。
+
+- 父类：**合同当事方（ContractParty）**、**收款人（Payee）**、**卖方（Seller）**
+
+### 2.13 标的资产评估（underlying asset valuation）
+
+定义：对衍生品标的资产进行价值估计的评估活动。
+
+- 父类：**价值评估（ValueAssessment）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有计算代理人（hasCalculationAgent）** | — | — |
+| **评估（evaluates）** | — | — |
+
+公理：
+
+- **具有计算代理人（hasCalculationAgent）**可以有 0 个或多个**计算代理人（CalculationAgent）**。
+- **评估（evaluates）**至少有一个取值，类型是**标的（Underlier）**。
+
+### 2.14 唯一产品标识符（unique product identifier）
+
+定义：唯一标识应向交易数据库报告的场外衍生品产品的字符序列。
+
+- 父类：**金融工具标识符（FinancialInstrumentIdentifier）**、**结构化标识符（StructuredIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+
+公理：
+
+- **标识（identifies）**可以有 0 个或多个**场外衍生工具（over-the-counter derivative instrument）**。
+- **由……注册（isRegisteredBy）**至少有一个取值，类型是**唯一产品标识符服务提供商（unique product identifier service provider）**。
+
+### 2.15 唯一产品标识符登记册条目（unique product identifier registry entry）
+
+定义：唯一产品标识符（UPI）登记册中的条目。
+
+- 父类：**注册簿条目（RegistryEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **被包含于（isIncludedIn）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**唯一产品标识符（unique product identifier）**。
+- **被包含于（isIncludedIn）**的取值固定为 UniqueProductIdentifierReferenceDataLibrary。
+- **适用于（appliesTo）**的所有取值只能是**场外衍生工具（over-the-counter derivative instrument）**。
+
+### 2.16 唯一产品标识符服务提供商（unique product identifier service provider）
+
+定义：由金融监管机构组成的外部机构指定、负责分配 UPI 并运营 UPI 参考数据库的组织。
+
+- 父类：**注册机构（RegistrationAuthority）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **登记（registers）** | — | — |
+
+公理：
+
+- **登记（registers）**可以有 0 个或多个**唯一产品标识符（unique product identifier）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有递增名义本金（has accreting notional amount）** | 表明名义本金在合约存续期内递增。 | 值域：货币数量；子属性：具有名义金额 |
+| **具有递减名义本金（has amortizing notional amount）** | 表明名义本金在合约存续期内递减。 | 值域：货币数量；子属性：具有名义金额 |
+| **具有固定名义本金（has constant notional amount）** | 表明名义本金在合约存续期内保持不变。 | 值域：货币数量；子属性：具有名义金额 |
+| **具有定制名义本金（has custom notional amount）** | 表明名义本金按名义本金阶梯计划表定制。 | 值域：货币数量；子属性：具有名义金额 |
+| **具有首个交割日（has first delivery date）** | 规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的首个日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有首个通知日（has first notice date）** | 规定可以发出交割通知的首个日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有最后交割日（has last delivery date）** | 规定为使合约条款得以履行必须交付标的资产（或其部分）的日期区间中的最后日期。 | 值域：显式日期；子属性：具有结束日期 |
+| **具有最后通知日（has last notice date）** | 规定可以发出交割通知的最后日期。 | 值域：显式日期；子属性：具有结束日期 |
+| **具有结算条款（has settlement terms）** | 将衍生品与结算过程特有的合同条款关联起来。 | 值域：结算条款；子属性：具有合同要素 |
+| **具有最小变动价位价值（has tick value）** | 指明一个最小变动价位（即合约最小价格变动）的现金价值。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有估值条款（has valuation terms）** | 将衍生品与标的资产估值特有的合同条款关联起来。 | 值域：估值条款（valuation terms）；子属性：具有合同要素 |
+
+## 4. 依赖（owl:imports，33 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -163,7 +408,7 @@
 | `https://www.omg.org/spec/Commons/RegistrationAuthorities/` | OMG 通用登记主管机构本体（OMG Commons Registration Authorities） | Commons 库中的登记主管机构本体，定义负责登记注册的主管机构及其登记行为的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`DerivativesBasics.rdf`
 - 中文 Turtle：`DerivativesBasics.ttl`

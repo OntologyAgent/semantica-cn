@@ -14,6 +14,15 @@
 
 **与相近概念的差别**：监管机构≠登记机构——监管负责持续监督合规，登记负责主体注册；监管机构≠政府本身——它是政府设立的专门职能机构。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **检查员（examiner）** 继承 **责任方（ResponsibleParty）**
+- **政府颁发的许可证（government-issued license）** 继承 **许可（License）**
+- **法规标识方案（regulation identification scheme）** 继承 **标识方案（IdentificationScheme）**
+- **法规标识符（regulation identifier）** 继承 **标识符（Identifier）**
+- **监管资格（regulatory capacity）** 继承 **法律行为能力（LegalCapacity）**
+- **税务机关（tax authority）** 继承 **监管机构（RegulatoryAgency）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -25,31 +34,104 @@
 | 监管资格（regulatory capacity） | 自然人凭借某监管机构的某项认证计划、代表其对某行业、组织或产品进行监管的资格。 |
 | 税务机关（tax authority） | 对任何税种的核定、确定、征收、课征及其他相关事项具有管辖权的监管机构。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 检查员（examiner） ⊑ 责任方
-- 政府颁发的许可证（government-issued license） ⊑ 许可
-- 法规标识方案（regulation identification scheme） ⊑ 标识方案
-- 法规标识符（regulation identifier） ⊑ 标识符
-- 监管资格（regulatory capacity） ⊑ 法律行为能力
-- 税务机关（tax authority） ⊑ 监管机构
+### 2.1 检查员（examiner）
 
-## 5. 公理约定（Axioms）
+定义：由监管机构授权作为官方代表、对指定文件的准确性和真实性进行调查和审查的一方。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**责任方（ResponsibleParty）**
 
-- **检查员（examiner）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **检查员（examiner）**：**由……授权（isAuthorizedBy）**恰好有 1 个**监管机构（RegulatoryAgency）**。
-- **检查员（examiner）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**监管资格（regulatory capacity）**。
-- **政府颁发的许可证（government-issued license）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
-- **法规标识方案（regulation identification scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**法规标识符（regulation identifier）**。
-- **法规标识符（regulation identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**法规标识方案（regulation identification scheme）**。
-- **法规标识符（regulation identifier）**：**标识（identifies）**恰好有 1 个**规章（Regulation）**。
-- **税务机关（tax authority）**：**发行（issues）**可以有 0 个或多个**税务标识符（TaxIdentifier）**。
-- **税务机关（tax authority）**：**管理（manages）**至少有一个取值，类型是**税务识别方案（TaxIdentificationScheme）**。
-- **税务机关（tax authority）**：**具有管辖权（hasJurisdiction）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+属性：
 
-## 6. 依赖（owl:imports，17 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授权（isAuthorizedBy）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由……授权（isAuthorizedBy）**恰好有 1 个**监管机构（RegulatoryAgency）**。
+- **由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**监管资格（regulatory capacity）**。
+
+### 2.2 政府颁发的许可证（government-issued license）
+
+定义：合法执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可授予。
+
+- 父类：**许可（License）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+
+公理：
+
+- **由……发行（isIssuedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+
+### 2.3 法规标识方案（regulation identification scheme）
+
+定义：用于组织法规信息并为法规分配标识符的方案。
+
+- 父类：**标识方案（IdentificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**法规标识符（regulation identifier）**。
+
+### 2.4 法规标识符（regulation identifier）
+
+定义：与某一项法规相关联的标识符。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**恰好有 1 个**法规标识方案（regulation identification scheme）**。
+- **标识（identifies）**恰好有 1 个**规章（Regulation）**。
+
+### 2.5 监管资格（regulatory capacity）
+
+定义：自然人凭借某监管机构的某项认证计划、代表其对某行业、组织或产品进行监管的资格。
+
+- 父类：**法律行为能力（LegalCapacity）**
+
+### 2.6 税务机关（tax authority）
+
+定义：对任何税种的核定、确定、征收、课征及其他相关事项具有管辖权的监管机构。
+
+- 父类：**监管机构（RegulatoryAgency）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **发行（issues）** | — | — |
+| **管理（manages）** | — | — |
+| **具有管辖权（hasJurisdiction）** | — | — |
+
+公理：
+
+- **具有管辖权（hasJurisdiction）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **发行（issues）**可以有 0 个或多个**税务标识符（TaxIdentifier）**。
+- **管理（manages）**至少有一个取值，类型是**税务识别方案（TaxIdentificationScheme）**。
+
+## 3. 依赖（owl:imports，17 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -73,7 +155,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`RegulatoryAgencies.rdf`
 - 中文 Turtle：`RegulatoryAgencies.ttl`

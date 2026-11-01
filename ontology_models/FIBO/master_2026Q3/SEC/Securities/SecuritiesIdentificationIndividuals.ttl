@@ -91,6 +91,9 @@ fibo-sec-sec-idind:CUSIPInternationalNumberingSystemNumber a owl:Class ;
         "CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）"@zh ;
     rdfs:comment "9 位字母数字标识符，采用与 CUSIP 相同的 9 位字符，但首位为字母。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fi-fi:Security ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
@@ -103,9 +106,6 @@ fibo-sec-sec-idind:CUSIPInternationalNumberingSystemNumber a owl:Class ;
         [ a owl:Restriction ;
             owl:hasValue fibo-sec-sec-idind:CGSCUSIPAccessRepository ;
             owl:onProperty cmns-ra:isRegisteredIn ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
         fibo-sec-sec-id:ProprietarySecurityIdentifier,
         cmns-ra:RegisteredIdentifier ;
     skos:definition "9-character alphanumeric identifier that employs the same 9 characters as CUSIP, but also contains a letter of the alphabet in the first position signifying the issuer's country or geographic region, issued by CUSIP Global Services" ;
@@ -123,17 +123,17 @@ fibo-sec-sec-idind:CommitteeOnUniformSecuritiesIdentificationProceduresNumber a 
             owl:onProperty cmns-dsg:isDefinedIn ],
         [ a owl:Restriction ;
             owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:CGSCUSIPAccessRepository ;
-            owl:onProperty cmns-ra:isRegisteredIn ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-fi-fi:Security ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CGSCUSIPAccessRepository ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CUSIPGlobalServices ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
         fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber,
         fibo-sec-sec-id:ProprietarySecurityIdentifier,
         cmns-ra:RegisteredIdentifier ;
@@ -167,11 +167,11 @@ fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistryEntry a owl:Class 
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-sec-sec-lst:Listing ) ] ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistry ;
-            owl:onProperty cmns-col:isIncludedIn ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistry ;
+            owl:onProperty cmns-col:isIncludedIn ],
         cmns-ra:RegistryEntry ;
     skos:definition "entry in a Financial Instrument Global Identifier (FIGI) registry" ;
     cmns-av:abbreviation "FIGI registry entry" ;
@@ -188,11 +188,11 @@ fibo-sec-sec-idind:RefinitivInstrumentCode a owl:Class ;
         "路孚特工具代码（Refinitiv instrument code）"@zh ;
     rdfs:comment "由伦敦证券交易所集团（LSEG）旗下路孚特拥有、管理和分发的金融工具和指数专有代码（RIC）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-ind-ir-mdp:LSEGFinancialSolutionsAsMarketDataProvider ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-sec-sec-idind:RefinitivInstrumentCodeScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-ind-ir-mdp:LSEGFinancialSolutionsAsMarketDataProvider ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
         [ a owl:Restriction ;
             owl:hasValue fibo-ind-ir-mdp:LSEGFinancialSolutionsAsMarketDataProvider ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
@@ -215,17 +215,17 @@ fibo-sec-sec-idind:StockExchangeDailyOfficialListCode a owl:Class ;
     rdfs:comment "由伦敦证券交易所签发的七位字符证券标识符，是在英国和爱尔兰发行证券的国家证券识别号码（NSIN）。"@zh ;
     rdfs:seeAlso <https://www.isin.net/sedol/> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:StockExchangeDailyOfficialListScheme ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-cra:LondonStockExchange ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:SEDOLMasterFile ;
-            owl:onProperty cmns-ra:isRegisteredIn ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-cra:LondonStockExchange ;
             owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:StockExchangeDailyOfficialListScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:SEDOLMasterFile ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
         fibo-sec-sec-id:ListedSecurityIdentifier,
         fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber,
         fibo-sec-sec-id:ProprietarySecurityIdentifier ;
@@ -238,13 +238,13 @@ fibo-sec-sec-idind:TelekursId a owl:Class ;
     rdfs:comment "由 SIX 金融信息公司（前身 Telekurs AG）拥有、管理和分发的金融工具标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
         [ a owl:Restriction ;
             owl:hasValue fibo-sec-sec-idind:TelekursSecurityIdentifierScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
-            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+            owl:onProperty cmns-ra:isRegisteredBy ],
         fibo-sec-sec-id:ProprietarySecurityIdentifier ;
     skos:definition "identifier used to identify financial instruments owned, managed, and distributed by SIX Financial Information (formerly Telekurs AG and subsequently SIX Telekurs Ltd.)" ;
     cmns-av:explanatoryNote "The Telekurs Id was phased out in favor of the Valoren (Valor Nummer in Swiss German) in 2013." .
@@ -255,14 +255,14 @@ fibo-sec-sec-idind:Valoren a owl:Class ;
     rdfs:comment "由 SIX 金融信息公司签发、分配给瑞士、列支敦士登和比利时金融工具的识别号码，是当地的国家证券识别号码（NSIN）。"@zh ;
     rdfs:seeAlso <https://www.six-group.com/en/products-services/financial-information.html> ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
             owl:hasValue fibo-sec-sec-idind:ValorenScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-cra:SIXFinancialInformation ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
         fibo-sec-sec-id:ListedSecurityIdentifier,
         fibo-sec-sec-id:NationalSecuritiesIdentifyingNumber,
         fibo-sec-sec-id:ProprietarySecurityIdentifier ;
@@ -296,19 +296,19 @@ fibo-sec-sec-idind:EuroclearClearstreamCommonCode a owl:Class ;
         "欧洲清算-明讯通用代码（Euroclear Clearstream common code）"@zh ;
     rdfs:comment "由 Euroclear 和 Clearstream 在卢森堡联合签发的九位字母数字证券标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:CommonCodeRepository ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:oneOf ( fibo-fbc-fct-cra:Clearstream fibo-fbc-fct-cra:Euroclear ) ] ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:CommonCodeRepository ;
-            owl:onProperty cmns-ra:isRegisteredIn ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:EuroclearClearstreamCommonCodeScheme ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fi-fi:Security ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-sec-sec-idind:EuroclearClearstreamCommonCodeScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:oneOf ( fibo-fbc-fct-cra:Clearstream fibo-fbc-fct-cra:Euroclear ) ] ;
@@ -336,17 +336,17 @@ fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifier a owl:Class ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-sec-sec-lst:Listing ) ] ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierScheme ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
+            owl:hasValue fibo-fbc-fct-cra:BloombergLP ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
         [ a owl:Restriction ;
             owl:hasValue fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierRegistry ;
             owl:onProperty cmns-ra:isRegisteredIn ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-cra:BloombergLP ;
-            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
+            owl:hasValue fibo-sec-sec-idind:FinancialInstrumentGlobalIdentifierScheme ;
+            owl:onProperty cmns-dsg:isDefinedIn ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-cra:BloombergLP ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ],
         cmns-ra:RegisteredIdentifier ;
     skos:definition "financial instrument identifier that is defined as specified in the Object Management Group (OMG) Financial Instrument Global Identifier (FIGI) Specification" ;
     cmns-av:abbreviation "FIGI" ;

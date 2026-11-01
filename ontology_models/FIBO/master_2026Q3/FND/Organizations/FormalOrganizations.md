@@ -14,6 +14,19 @@
 
 **与相近概念的差别**：正式组织≠法人——正式组织是社会学概念（有结构的团体），法人是法律概念（有独立人格）；一个非法人部门也可以是正式组织；组织≠参与方——组织只有进入业务关系才是参与方。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **雇员（employee）** 继承 **组织成员（OrganizationMember）**
+- **雇主（employer）** 继承 **含成员组织（MemberBearingOrganization）**
+- **雇佣关系（employment）** 继承 **成员关系（Membership）**
+- **团体（group）** 继承 **集合（Collection）**
+- **雇佣关系（employment）** 通过 **具有被雇方（has employed party）** 关联 **雇员（employee）**
+- **雇主（employer）** 通过 **具有雇员（has employee）** 关联 **雇员（employee）**
+- **雇佣关系（employment）** 通过 **具有雇佣方（has employing party）** 关联 **雇主（employer）**
+- **雇员（employee）** 通过 **受雇于情境（is employed in）** 关联 **雇佣关系（employment）**
+- **雇员（employee）** 通过 **是……的雇员（is employee of）** 关联 **雇主（employer）**
+- **雇主（employer）** 通过 **是雇佣方（is employing party）** 关联 **雇佣关系（employment）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -23,41 +36,94 @@
 | 雇佣关系（employment） | 表示被雇用状态的情形，即雇主与雇员之间在某段时期内存在的关系。 |
 | 团体（group） | 被视为一个整体的代理（人、组织、软件代理等）集合。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 雇员（employee） ⊑ 组织成员
-- 雇主（employer） ⊑ 含成员组织
-- 雇佣关系（employment） ⊑ 成员关系
-- 团体（group） ⊑ 集合
+### 2.1 雇员（employee）
 
-## 3. 对象属性（Object Property）
+定义：依任何明示或默示、口头或书面的雇佣合同为他人服务的人，雇主有权控制和指导其工作。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-org-fm:employs | 雇用（employs） | 标识被该法律主体雇用的人。 | 定义域（domain）：法律主体；值域（range）：个人；子属性（subPropertyOf）：扮演直接影响…的主动角色（plays active role that directly affects） |
-| fibo-fnd-org-fm:hasEmployedParty | 具有被雇方（has employed party） | 标识雇佣情形中的雇员。 | 定义域（domain）：雇佣关系（employment）；值域（range）：雇员（employee）；逆属性（inverseOf）：受雇于情境（is employed in）；子属性（subPropertyOf）：具有组织成员 |
-| fibo-fnd-org-fm:hasEmployee | 具有雇员（has employee） | 标识被雇主雇用的雇员。 | 定义域（domain）：雇主（employer）；值域（range）：雇员（employee）；逆属性（inverseOf）：是……的雇员（is employee of）；子属性（subPropertyOf）：对…采取行动（acts on） |
-| fibo-fnd-org-fm:hasEmployingParty | 具有雇佣方（has employing party） | 标识雇佣情形中的雇主。 | 定义域（domain）：雇佣关系（employment）；值域（range）：雇主（employer）；逆属性（inverseOf）：是雇佣方（is employing party）；子属性（subPropertyOf）：具有成员关系 |
-| fibo-fnd-org-fm:isEmployedBy | 受雇于（is employed by） | 标识雇用某人的参与方（法律主体或正式组织）。 | 定义域（domain）：个人；值域（range）：法律主体；子属性（subPropertyOf）：直接经历（experiences directly） |
-| fibo-fnd-org-fm:isEmployedIn | 受雇于情境（is employed in） | 标识某人受雇所在的雇佣情境。 | 定义域（domain）：雇员（employee）；值域（range）：雇佣关系（employment）；子属性（subPropertyOf）：是组织成员 |
-| fibo-fnd-org-fm:isEmployeeOf | 是……的雇员（is employee of） | 标识雇员为之工作的正式组织。 | 定义域（domain）：雇员（employee）；值域（range）：雇主（employer）；子属性（subPropertyOf）：受…影响（is affected by） |
-| fibo-fnd-org-fm:isEmployingParty | 是雇佣方（is employing party） | 将处于雇主角色的参与方关联到雇佣情境。 | 定义域（domain）：雇主（employer）；值域（range）：雇佣关系（employment）；子属性（subPropertyOf）：在……中为成员方 |
+- 父类：**组织成员（OrganizationMember）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **受雇于情境（is employed in）** | 标识某人受雇所在的雇佣情境。 | 值域：雇佣关系（employment）；子属性：是组织成员 |
+| **是……的雇员（is employee of）** | 标识雇员为之工作的正式组织。 | 值域：雇主（employer）；子属性：受…影响（is affected by） |
+| **由…扮演（is played by）** | — | — |
 
-- **雇员（employee）**：**受雇于情境（is employed in）**至少有一个取值，类型是**雇佣关系（employment）**。
-- **雇员（employee）**：**是……的雇员（is employee of）**至少有一个取值，类型是**雇主（employer）**。
-- **雇员（employee）**：**由…扮演（is played by）**至少有一个取值，类型是**个人（Person）**。
-- **雇主（employer）**：**具有雇员（has employee）**至少有一个取值，类型是**雇员（employee）**。
-- **雇主（employer）**：**是雇佣方（is employing party）**至少有一个取值，类型是**雇佣关系（employment）**。
-- **雇主（employer）**：**由…扮演（is played by）**至少有一个取值，类型是**法律主体（LegalPerson）**。
-- **雇佣关系（employment）**：**具有被雇方（has employed party）**至少有一个取值，类型是**雇员（employee）**。
-- **雇佣关系（employment）**：**具有雇佣方（has employing party）**至少有一个取值，类型是**雇主（employer）**。
-- **团体（group）**：**具有成员（hasMember）**的所有取值只能是**智能体（agent）**。
+公理：
 
-## 6. 依赖（owl:imports，10 个）
+- **受雇于情境（is employed in）**至少有一个取值，类型是**雇佣关系（employment）**。
+- **是……的雇员（is employee of）**至少有一个取值，类型是**雇主（employer）**。
+- **由…扮演（is played by）**至少有一个取值，类型是**个人（Person）**。
+
+### 2.2 雇主（employer）
+
+定义：以报酬（包括工资或薪金及潜在的其他福利）换取一人或多人工作的参与方。
+
+- 父类：**含成员组织（MemberBearingOrganization）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有雇员（has employee）** | 标识被雇主雇用的雇员。 | 值域：雇员（employee）；逆属性：是……的雇员（is employee of）；子属性：对…采取行动（acts on） |
+| **是雇佣方（is employing party）** | 将处于雇主角色的参与方关联到雇佣情境。 | 值域：雇佣关系（employment）；子属性：在……中为成员方 |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **具有雇员（has employee）**至少有一个取值，类型是**雇员（employee）**。
+- **是雇佣方（is employing party）**至少有一个取值，类型是**雇佣关系（employment）**。
+- **由…扮演（is played by）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+
+### 2.3 雇佣关系（employment）
+
+定义：表示被雇用状态的情形，即雇主与雇员之间在某段时期内存在的关系。
+
+- 父类：**成员关系（Membership）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有被雇方（has employed party）** | 标识雇佣情形中的雇员。 | 值域：雇员（employee）；逆属性：受雇于情境（is employed in）；子属性：具有组织成员 |
+| **具有雇佣方（has employing party）** | 标识雇佣情形中的雇主。 | 值域：雇主（employer）；逆属性：是雇佣方（is employing party）；子属性：具有成员关系 |
+
+公理：
+
+- **具有被雇方（has employed party）**至少有一个取值，类型是**雇员（employee）**。
+- **具有雇佣方（has employing party）**至少有一个取值，类型是**雇主（employer）**。
+
+### 2.4 团体（group）
+
+定义：被视为一个整体的代理（人、组织、软件代理等）集合。
+
+- 父类：**集合（Collection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**的所有取值只能是**智能体（agent）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **雇用（employs）** | 标识被该法律主体雇用的人。 | 值域：个人；子属性：扮演直接影响…的主动角色（plays active role that directly affects） |
+| **受雇于（is employed by）** | 标识雇用某人的参与方（法律主体或正式组织）。 | 值域：法律主体；子属性：直接经历（experiences directly） |
+
+## 4. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -74,7 +140,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/Commons/TextDatatype/` | OMG 通用文本数据类型（OMG Commons Text Datatype） | Commons 库中的文本数据类型定义，提供带语言标记的文本等基础数据类型。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`FormalOrganizations.rdf`
 - 中文 Turtle：`FormalOrganizations.ttl`

@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：ABS 与 MBS 的差别在底层资产——ABS 以非抵押贷款（车贷、信用卡应收）为主，MBS 以住房/商业抵押贷款为主；与 CDO 的差别——CDO 底层是债务工具（债券、贷款份额）。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **汽车资产支持证券（auto asset-backed security）** 继承 **资产支持证券（AssetBackedSecurity）**
+- **汽车债务池（auto debt pool）** 继承 **债务池（DebtPool）**
+- **债券池（bond pool）** 继承 **债务池（DebtPool）**
+- **消费资产支持证券（consumer asset-backed security）** 继承 **资产支持证券（AssetBackedSecurity）**
+- **消费资产支持证券（consumer asset-backed security）** 继承 **结构化金融工具（StructuredFinanceInstrument）**
+- **受控摊销资产支持证券（controlled amortization asset-backed security）** 继承 **资产支持证券（AssetBackedSecurity）**
+- **信用卡账户池（credit card account pool）** 继承 **债务池（DebtPool）**
+- **信用卡资产支持证券（credit card asset-backed security）** 继承 **资产支持证券（AssetBackedSecurity）**
+- **完全摊销资产支持证券（fully amortizing asset-backed security）** 继承 **资产支持证券（AssetBackedSecurity）**
+- **房屋净值信用额度池（home equity line of credit pool）** 继承 **债务池（DebtPool）**
+- **房屋净值贷款资产支持证券（home equity loan asset-backed security）** 继承 **资产支持证券（AssetBackedSecurity）**
+- **学生贷款资产支持证券（student loan asset-backed security）** 继承 **资产支持证券（AssetBackedSecurity）**
+- 其余 1 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -31,41 +47,194 @@
 | 学生贷款资产支持证券（student loan asset-backed security） | 以学生贷款应收款为基础的资产支持证券。 |
 | 学生贷款池（student loan pool） | 由学生贷款组成的债务池。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 汽车资产支持证券（auto asset-backed security） ⊑ 资产支持证券
-- 汽车债务池（auto debt pool） ⊑ 债务池
-- 债券池（bond pool） ⊑ 债务池
-- 消费资产支持证券（consumer asset-backed security） ⊑ 资产支持证券
-- 消费资产支持证券（consumer asset-backed security） ⊑ 结构化金融工具
-- 受控摊销资产支持证券（controlled amortization asset-backed security） ⊑ 资产支持证券
-- 信用卡账户池（credit card account pool） ⊑ 债务池
-- 信用卡资产支持证券（credit card asset-backed security） ⊑ 资产支持证券
-- 完全摊销资产支持证券（fully amortizing asset-backed security） ⊑ 资产支持证券
-- 房屋净值信用额度池（home equity line of credit pool） ⊑ 债务池
-- 房屋净值贷款资产支持证券（home equity loan asset-backed security） ⊑ 资产支持证券
-- 学生贷款资产支持证券（student loan asset-backed security） ⊑ 资产支持证券
-- 学生贷款池（student loan pool） ⊑ 债务池
+### 2.1 汽车资产支持证券（auto asset-backed security）
 
-## 5. 公理约定（Axioms）
+定义：由汽车相关贷款和/或租赁组成的标的资产池支持的资产支持证券。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**资产支持证券（AssetBackedSecurity）**
 
-- **汽车资产支持证券（auto asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**汽车债务池（auto debt pool）**。
-- **汽车债务池（auto debt pool）**：**具有部分（hasPart）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **债券池（bond pool）**：**具有部分（hasPart）**至少有一个取值，类型是**债券（Bond）**。
-- **受控摊销资产支持证券（controlled amortization asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**债务池（DebtPool）**。
-- **受控摊销资产支持证券（controlled amortization asset-backed security）**：**具有偿还条款（hasRepaymentTerms）**至少有一个取值，类型是**债券摊销支付条款（BondAmortizationPaymentTerms）**。
-- **信用卡账户池（credit card account pool）**：**具有部分（hasPart）**至少有一个取值，类型是**信用卡账户（CreditCardAccount）**。
-- **信用卡资产支持证券（credit card asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**信用卡账户池（credit card account pool）**。
-- **完全摊销资产支持证券（fully amortizing asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**债务池（DebtPool）**。
-- **完全摊销资产支持证券（fully amortizing asset-backed security）**与**受控摊销资产支持证券（controlled amortization asset-backed security）**互斥：同一个体不能同时属于两者。
-- **房屋净值信用额度池（home equity line of credit pool）**：**具有部分（hasPart）**至少有一个取值，类型是**房屋净值信用额度（HomeEquityLineOfCredit）**。
-- **房屋净值贷款资产支持证券（home equity loan asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**房屋净值信用额度池（home equity line of credit pool）**。
-- **学生贷款资产支持证券（student loan asset-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**学生贷款池（student loan pool）**。
-- **学生贷款池（student loan pool）**：**具有部分（hasPart）**至少有一个取值，类型是**学生贷款（StudentLoan）**。
+属性：
 
-## 6. 依赖（owl:imports，20 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**汽车债务池（auto debt pool）**。
+
+### 2.2 汽车债务池（auto debt pool）
+
+定义：由机动车相关贷款和/或租赁组成的债务池。
+
+- 父类：**债务池（DebtPool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有部分（hasPart）** | — | — |
+
+公理：
+
+- **具有部分（hasPart）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.3 债券池（bond pool）
+
+定义：由债券组成的债务池。
+
+- 父类：**债务池（DebtPool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有部分（hasPart）** | — | — |
+
+公理：
+
+- **具有部分（hasPart）**至少有一个取值，类型是**债券（Bond）**。
+
+### 2.4 消费资产支持证券（consumer asset-backed security）
+
+定义：以汽车贷款和租赁（汽车 ABS）、信用卡应收账款（信用卡 ABS）或学生贷款等资产池为抵押的结构化金融证券。
+
+- 父类：**资产支持证券（AssetBackedSecurity）**、**结构化金融工具（StructuredFinanceInstrument）**
+
+### 2.5 受控摊销资产支持证券（controlled amortization asset-backed security）
+
+定义：基于采用受控摊销结构证券化的债券池的资产支持证券。
+
+- 父类：**资产支持证券（AssetBackedSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+| **具有偿还条款（hasRepaymentTerms）** | — | — |
+
+公理：
+
+- **具有偿还条款（hasRepaymentTerms）**至少有一个取值，类型是**债券摊销支付条款（BondAmortizationPaymentTerms）**。
+- **基于（isBasedOn）**至少有一个取值，类型是**债务池（DebtPool）**。
+
+### 2.6 信用卡账户池（credit card account pool）
+
+定义：与指定账户相关联的信用卡应收账款池。
+
+- 父类：**债务池（DebtPool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有部分（hasPart）** | — | — |
+
+公理：
+
+- **具有部分（hasPart）**至少有一个取值，类型是**信用卡账户（CreditCardAccount）**。
+
+### 2.7 信用卡资产支持证券（credit card asset-backed security）
+
+定义：以信用卡应收账款为基础的资产支持证券。
+
+- 父类：**资产支持证券（AssetBackedSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**信用卡账户池（credit card account pool）**。
+
+### 2.8 完全摊销资产支持证券（fully amortizing asset-backed security）
+
+定义：基于在证券存续期内向投资者逐步归还本金的债务工具池的资产支持证券。
+
+- 父类：**资产支持证券（AssetBackedSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**债务池（DebtPool）**。
+- 与**受控摊销资产支持证券（controlled amortization asset-backed security）**互斥：同一个体不能同时属于两者。
+
+### 2.9 房屋净值信用额度池（home equity line of credit pool）
+
+定义：由房屋净值贷款组成的债务池。
+
+- 父类：**债务池（DebtPool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有部分（hasPart）** | — | — |
+
+公理：
+
+- **具有部分（hasPart）**至少有一个取值，类型是**房屋净值信用额度（HomeEquityLineOfCredit）**。
+
+### 2.10 房屋净值贷款资产支持证券（home equity loan asset-backed security）
+
+定义：以房屋净值贷款应收款为基础的资产支持证券。
+
+- 父类：**资产支持证券（AssetBackedSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**房屋净值信用额度池（home equity line of credit pool）**。
+
+### 2.11 学生贷款资产支持证券（student loan asset-backed security）
+
+定义：以学生贷款应收款为基础的资产支持证券。
+
+- 父类：**资产支持证券（AssetBackedSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**学生贷款池（student loan pool）**。
+
+### 2.12 学生贷款池（student loan pool）
+
+定义：由学生贷款组成的债务池。
+
+- 父类：**债务池（DebtPool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有部分（hasPart）** | — | — |
+
+公理：
+
+- **具有部分（hasPart）**至少有一个取值，类型是**学生贷款（StudentLoan）**。
+
+## 3. 依赖（owl:imports，20 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -92,7 +261,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/Collections/` | OMG 通用集合本体（OMG Commons Collections） | Commons 库中的集合本体，定义集合、成员等通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`AssetBackedSecurities.rdf`
 - 中文 Turtle：`AssetBackedSecurities.ttl`

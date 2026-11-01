@@ -14,31 +14,39 @@
 
 **与相近概念的差别**：与消费贷款的差别——借款主体是企业而非个人，审批看经营状况而非个人信用；与银团贷款（SEC 分销贷款）的差别——商业贷款通常单一贷款人，银团贷款多家分销。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **商业贷款（commercial loan）** 继承 **贷款（Loan）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 商业贷款（commercial loan） | 向公司、商业企业、合资企业或其他组织（而非消费者个人）发放的贷款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 商业贷款（commercial loan） ⊑ 贷款
+### 2.1 商业贷款（commercial loan）
 
-## 4. 数据属性（Datatype Property）
+定义：向公司、商业企业、合资企业或其他组织（而非消费者个人）发放的贷款。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**贷款（Loan）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-loan-spc-com:hasBusinessPurposeDescription | 具有业务用途描述（has business purpose description） | 从借款人角度对贷款用途的描述。 |
+| **具有借款人（hasBorrower）** | — | — |
+| **具有目标（hasObjective）** | — | — |
+| **具有业务用途描述（has business purpose description）** | 从借款人角度对贷款用途的描述。 | 子属性：具有描述 |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有业务用途描述（has business purpose description）**存在取值约束。
+- **具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**法律实体（LegalEntity）**。
+- **具有目标（hasObjective）**可以有 0 个或多个**业务目标（BusinessObjective）**。
 
-- **商业贷款（commercial loan）**：**具有目标（hasObjective）**可以有 0 个或多个**业务目标（BusinessObjective）**。
-- **商业贷款（commercial loan）**：**具有业务用途描述（has business purpose description）**存在取值约束。
-- **商业贷款（commercial loan）**：**具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**法律实体（LegalEntity）**。
-
-## 6. 依赖（owl:imports，8 个）
+## 3. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -53,7 +61,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CommercialLoans.rdf`
 - 中文 Turtle：`CommercialLoans.ttl`

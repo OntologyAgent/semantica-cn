@@ -14,6 +14,21 @@
 
 **与相近概念的差别**：与利率、信用衍生品的差别在于标的类型——标的是证券的市场价格而非利率或信用事件。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **债务工具篮子（basket of debt instruments）** 继承 **证券篮子（BasketOfSecurities）**
+- **资本化租赁债务篮子（capitalized lease obligation debt basket）** 继承 **债务工具篮子（basket of debt instruments）**
+- **出资债务篮子（contribution debt basket）** 继承 **债务工具篮子（basket of debt instruments）**
+- **信贷额度债务篮子（credit facility debt basket）** 继承 **债务工具篮子（basket of debt instruments）**
+- **债务工具衍生品（debt instrument derivative）** 继承 **证券类衍生品（security-based derivative）**
+- **股票衍生品（equity derivative）** 继承 **证券类衍生品（security-based derivative）**
+- **一般债务篮子（general debt basket）** 继承 **债务工具篮子（basket of debt instruments）**
+- **增量额度债务篮子（incremental facility debt basket）** 继承 **信贷额度债务篮子（credit facility debt basket）**
+- **本地信用额度债务篮子（local lines of credit debt basket）** 继承 **债务工具篮子（basket of debt instruments）**
+- **非担保人债务篮子（non-guarantor debt basket）** 继承 **债务工具篮子（basket of debt instruments）**
+- **比率债务篮子（ratio debt basket）** 继承 **债务工具篮子（basket of debt instruments）**
+- **证券类衍生品（security-based derivative）** 继承 **衍生工具（DerivativeInstrument）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -31,34 +46,154 @@
 | 比率债务篮子（ratio debt basket） | 成分基于以总债务（而非仅有担保债务）计算的杠杆率确定的债务工具篮子。 |
 | 证券类衍生品（security-based derivative） | 标的基于证券（包括证券集合和基于证券的指数）的衍生工具。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 债务工具篮子（basket of debt instruments） ⊑ 证券篮子
-- 资本化租赁债务篮子（capitalized lease obligation debt basket） ⊑ 债务工具篮子（basket of debt instruments）
-- 出资债务篮子（contribution debt basket） ⊑ 债务工具篮子（basket of debt instruments）
-- 信贷额度债务篮子（credit facility debt basket） ⊑ 债务工具篮子（basket of debt instruments）
-- 债务工具衍生品（debt instrument derivative） ⊑ 证券类衍生品（security-based derivative）
-- 股票衍生品（equity derivative） ⊑ 证券类衍生品（security-based derivative）
-- 一般债务篮子（general debt basket） ⊑ 债务工具篮子（basket of debt instruments）
-- 增量额度债务篮子（incremental facility debt basket） ⊑ 信贷额度债务篮子（credit facility debt basket）
-- 本地信用额度债务篮子（local lines of credit debt basket） ⊑ 债务工具篮子（basket of debt instruments）
-- 非担保人债务篮子（non-guarantor debt basket） ⊑ 债务工具篮子（basket of debt instruments）
-- 比率债务篮子（ratio debt basket） ⊑ 债务工具篮子（basket of debt instruments）
-- 证券类衍生品（security-based derivative） ⊑ 衍生工具
+### 2.1 债务工具篮子（basket of debt instruments）
 
-## 5. 公理约定（Axioms）
+定义：成分为债务工具的证券篮子。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**证券篮子（BasketOfSecurities）**
+- 直接子类：**资本化租赁债务篮子（capitalized lease obligation debt basket）**、**出资债务篮子（contribution debt basket）**、**信贷额度债务篮子（credit facility debt basket）**、**一般债务篮子（general debt basket）**、**本地信用额度债务篮子（local lines of credit debt basket）**、**非担保人债务篮子（non-guarantor debt basket）**、**比率债务篮子（ratio debt basket）**
 
-- **债务工具篮子（basket of debt instruments）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**债务工具（DebtInstrument）**。
-- **资本化租赁债务篮子（capitalized lease obligation debt basket）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**租赁（Lease）**。
-- **信贷额度债务篮子（credit facility debt basket）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**信贷额度（CreditFacility）**。
-- **债务工具衍生品（debt instrument derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **股票衍生品（equity derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **本地信用额度债务篮子（local lines of credit debt basket）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**循环信用额度（RevolvingLineOfCredit）**。
-- **证券类衍生品（security-based derivative）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+属性：
 
-## 6. 依赖（owl:imports，14 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**债务工具（DebtInstrument）**。
+
+#### 2.1.1 资本化租赁债务篮子（capitalized lease obligation debt basket）
+
+定义：成分为赋予承租人临时使用资产权利、在会计上视为资产所有权之合同的债务工具篮子。
+
+- 父类：**债务工具篮子（basket of debt instruments）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**租赁（Lease）**。
+
+#### 2.1.2 出资债务篮子（contribution debt basket）
+
+定义：允许公司发生等于（或在美国顶级发起人交易中不超过）某一数额债务的债务工具篮子。
+
+- 父类：**债务工具篮子（basket of debt instruments）**
+
+#### 2.1.3 信贷额度债务篮子（credit facility debt basket）
+
+定义：成分为允许借款人在较长时期内分期提取资金之信贷协议的证券篮子。
+
+- 父类：**债务工具篮子（basket of debt instruments）**
+- 直接子类：**增量额度债务篮子（incremental facility debt basket）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**信贷额度（CreditFacility）**。
+
+##### 2.1.3.1 增量额度债务篮子（incremental facility debt basket）
+
+定义：成分为可扩展额度的信贷额度篮子，允许公司借入额外的定期贷款或循环信用额度。
+
+- 父类：**信贷额度债务篮子（credit facility debt basket）**
+
+#### 2.1.4 一般债务篮子（general debt basket）
+
+定义：为潜在融资提供额外额度、且不要求所得款项用于特定用途的债务工具篮子。
+
+- 父类：**债务工具篮子（basket of debt instruments）**
+
+#### 2.1.5 本地信用额度债务篮子（local lines of credit debt basket）
+
+定义：对跨国经营公司可能有意义的债务工具篮子，通常允许非担保人子公司发生债务。
+
+- 父类：**债务工具篮子（basket of debt instruments）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：**包含（comprises）**的所有取值只能是**循环信用额度（RevolvingLineOfCredit）**。
+
+#### 2.1.6 非担保人债务篮子（non-guarantor debt basket）
+
+定义：包含允许集团内未参与贷款担保的特定子公司发生债务之条款的债务工具篮子。
+
+- 父类：**债务工具篮子（basket of debt instruments）**
+
+#### 2.1.7 比率债务篮子（ratio debt basket）
+
+定义：成分基于以总债务（而非仅有担保债务）计算的杠杆率确定的债务工具篮子。
+
+- 父类：**债务工具篮子（basket of debt instruments）**
+
+### 2.2 证券类衍生品（security-based derivative）
+
+定义：标的基于证券（包括证券集合和基于证券的指数）的衍生工具。
+
+- 父类：**衍生工具（DerivativeInstrument）**
+- 直接子类：**债务工具衍生品（debt instrument derivative）**、**股票衍生品（equity derivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+#### 2.2.1 债务工具衍生品（debt instrument derivative）
+
+定义：标的为债务类可观察量的证券类衍生品。
+
+- 父类：**证券类衍生品（security-based derivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+#### 2.2.2 股票衍生品（equity derivative）
+
+定义：标的基于股票（如个股、股票篮子或指数）或其现金流的证券类衍生品。
+
+- 父类：**证券类衍生品（security-based derivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+## 3. 依赖（owl:imports，14 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -79,7 +214,7 @@
 | `https://www.omg.org/spec/Commons/Collections/` | OMG 通用集合本体（OMG Commons Collections） | Commons 库中的集合本体，定义集合、成员等通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SecurityBasedDerivatives.rdf`
 - 中文 Turtle：`SecurityBasedDerivatives.ttl`

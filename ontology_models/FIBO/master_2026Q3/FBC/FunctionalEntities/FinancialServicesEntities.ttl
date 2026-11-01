@@ -404,12 +404,12 @@ fibo-fbc-fct-fse:RegisteredInvestmentAdvisor a owl:Class ;
         "注册投资顾问（registered investment advisor）"@zh ;
     rdfs:comment "为高净值个人提供投资建议并管理其投资组合的注册代理人和金融服务提供商。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-cpty:advises ;
-            owl:someValuesFrom fibo-be-oac-cpty:ControlledParty ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredBy ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( cmns-ra:RegistrationAuthority cmns-rga:RegulatoryAgency ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-cpty:advises ;
+            owl:someValuesFrom fibo-be-oac-cpty:ControlledParty ],
         fibo-fbc-pas-fpas:FinancialServiceProvider,
         fibo-fbc-pas-fpas:RegisteredAgent ;
     skos:definition "registered agent and financial service provider that advises high net worth individuals on investments and manages their portfolios" ;
@@ -730,18 +730,11 @@ fibo-fbc-fct-fse:BusinessIdentifierCode a owl:Class ;
         "商业标识代码（business identifier code）"@zh ;
     rdfs:comment "金融和非金融机构的国际标识符，用于促进金融服务信息的自动化处理。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-col:isMemberOf ;
-            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCodeScheme ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fbc-fct-fse:BusinessPartySuffix ;
+            owl:onClass fibo-fbc-fct-fse:BusinessPartyPrefix ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass lcc-cr:Alpha2Code ;
-            owl:onProperty cmns-col:comprises ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fbc-fct-fse:BusinessPartyPrefix ;
             owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
@@ -751,6 +744,13 @@ fibo-fbc-fct-fse:BusinessIdentifierCode a owl:Class ;
         [ a owl:Restriction ;
             owl:onClass cmns-org:FormalOrganization ;
             owl:onProperty cmns-dsg:denotes ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:isMemberOf ;
+            owl:someValuesFrom fibo-fbc-fct-fse:BusinessIdentifierCodeScheme ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fbc-fct-fse:BusinessPartySuffix ;
+            owl:onProperty cmns-col:comprises ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-cds:CodeElement,
         cmns-cxtid:StructuredIdentifier,

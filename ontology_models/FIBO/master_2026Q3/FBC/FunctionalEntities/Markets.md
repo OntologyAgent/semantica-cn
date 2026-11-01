@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：市场≠交易所——交易所是有组织的集中市场，市场还包括场外交易网络；市场≠商业中心——商业中心是地理功能概念，市场是交易机制概念。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **有组织交易设施（OrganizedTradingFacility）** 继承 **另类交易系统（alternative trading system）**
+- **认可市场营运者（RecognizedMarketOperator）** 继承 **交易所（exchange）**
+- **系统性内部撮合商（SystematicInternaliser）** 继承 **交易所（exchange）**
+- **另类交易系统（alternative trading system）** 继承 **交易所（exchange）**
+- **核准发布安排（approved publication arrangement）** 继承 **数据报告服务提供商（data reporting services provider）**
+- **核准报告机制（approved reporting mechanism）** 继承 **数据报告服务提供商（data reporting services provider）**
+- **竞价市场（auction market）** 继承 **交易所（exchange）**
+- **合并行情带提供商（consolidated tape provider）** 继承 **数据报告服务提供商（data reporting services provider）**
+- **加密资产服务提供商（crypto asset services provider）** 继承 **金融服务提供商（FinancialServiceProvider）**
+- **暗池（dark pool）** 继承 **另类交易系统（alternative trading system）**
+- **数据报告服务提供商（data reporting services provider）** 继承 **市场数据提供商（MarketDataProvider）**
+- **数据报告服务提供商（data reporting services provider）** 继承 **报告方（ReportingParty）**
+- 其余 21 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -50,116 +66,502 @@
 | 掉期执行设施（swap execution facility） | 使参与者能够执行和交易掉期的交易所。 |
 | 交易报告设施（trade reporting facility） | 为在交易所以外达成的交易提供报告机制的设施。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 有组织交易设施（OrganizedTradingFacility） ⊑ 另类交易系统（alternative trading system）
-- 认可市场营运者（RecognizedMarketOperator） ⊑ 交易所（exchange）
-- 系统性内部撮合商（SystematicInternaliser） ⊑ 交易所（exchange）
-- 另类交易系统（alternative trading system） ⊑ 交易所（exchange）
-- 核准发布安排（approved publication arrangement） ⊑ 数据报告服务提供商（data reporting services provider）
-- 核准报告机制（approved reporting mechanism） ⊑ 数据报告服务提供商（data reporting services provider）
-- 竞价市场（auction market） ⊑ 交易所（exchange）
-- 合并行情带提供商（consolidated tape provider） ⊑ 数据报告服务提供商（data reporting services provider）
-- 加密资产服务提供商（crypto asset services provider） ⊑ 金融服务提供商
-- 暗池（dark pool） ⊑ 另类交易系统（alternative trading system）
-- 数据报告服务提供商（data reporting services provider） ⊑ 市场数据提供商
-- 数据报告服务提供商（data reporting services provider） ⊑ 报告方
-- 指定合约市场（designated contract market） ⊑ 交易所（exchange）
-- 电子通讯网络（electronic communication network） ⊑ 另类交易系统（alternative trading system）
-- 交易所（exchange） ⊑ 设施
-- 交易所参与者（exchange participant） ⊑ 注册代理人
-- 交易所参与者（exchange participant） ⊑ 组织成员
-- 交易商间报价系统（interdealer quotation system） ⊑ 交易所（exchange）
-- 市场类别分类器（market category classifier） ⊑ 分类符
-- 市场标识符（market identifier） ⊑ 标识符
-- 市场标识代码状态（market indicator code status） ⊑ 生命周期阶段
-- 市场层级分类器（market level classifier） ⊑ 分类符
-- 市场板块层级市场（market segment-level market） ⊑ 交易所（exchange）
-- 市场板块层级市场标识符（market segment-level market identifier） ⊑ 市场标识符（market identifier）
-- 多边交易设施（multilateral trading facility） ⊑ 另类交易系统（alternative trading system）
-- 场外设施（off-market facility） ⊑ 交易所（exchange）
-- 运营层级市场（operating-level market） ⊑ 交易所（exchange）
-- 运营层级市场标识符（operating-level market identifier） ⊑ 市场标识符（market identifier）
-- 报价驱动市场（quote-driven market） ⊑ 交易所（exchange）
-- 注册多边交易设施（registered multilateral trading facility） ⊑ 多边交易设施（multilateral trading facility）
-- 受监管交易所（regulated exchange） ⊑ 交易所（exchange）
-- 掉期执行设施（swap execution facility） ⊑ 交易所（exchange）
-- 交易报告设施（trade reporting facility） ⊑ 设施
+### 2.1 加密资产服务提供商（crypto asset services provider）
 
-## 3. 对象属性（Object Property）
+定义：为加密资产提供服务的金融服务提供商，能够控制加密资产并参与或提供相关金融服务。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fbc-fct-mkt:hasMarketIdentifierCodeStatus | 具有市场标识代码状态（has market identifier code status） | 指明特定市场标识代码（MIC）的状态。 | 值域（range）：市场标识代码状态（market indicator code status）；子属性（subPropertyOf）：具有登记状态 |
-| fibo-fbc-fct-mkt:operatesInCountry | 运营所在国（operates in country） | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的 ISO 3166-1 国家。 | 值域（range）：国家；子属性（subPropertyOf）：具有国家 |
-| fibo-fbc-fct-mkt:operatesInMunicipality | 运营所在城市（operates in municipality） | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的城市或商业中心。 | 值域（range）：市政区；子属性（subPropertyOf）：具有市政区 |
+- 父类：**金融服务提供商（FinancialServiceProvider）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fbc-fct-mkt:hasFacilityAcronym | 具有设施缩写（has facility acronym） | 指明该市场的已知缩写。 |
+| **具有设施缩写（has facility acronym）** | 指明该市场的已知缩写。 | 子属性：具有别名 |
+| **运营所在国（operates in country）** | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的 ISO 3166-1 国家。 | 值域：国家；子属性：具有国家 |
+| **运营所在城市（operates in municipality）** | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的城市或商业中心。 | 值域：市政区；子属性：具有市政区 |
+| **具有正式名称（hasFormalName）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有正式名称（hasFormalName）**存在取值约束。
+- **具有设施缩写（has facility acronym）**存在取值约束。
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-CASP。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
+- **运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
+- **运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
 
-- **有组织交易设施（OrganizedTradingFacility）**：**由……管理（isManagedBy）**的所有取值只能是**金融服务提供商（FinancialServiceProvider）**。
-- **有组织交易设施（OrganizedTradingFacility）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-OTFS。
-- **有组织交易设施（OrganizedTradingFacility）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **认可市场营运者（RecognizedMarketOperator）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-RMOS。
-- **系统性内部撮合商（SystematicInternaliser）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-SINT。
-- **另类交易系统（alternative trading system）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-ATSS。
-- **核准发布安排（approved publication arrangement）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-APPA。
-- **核准报告机制（approved reporting mechanism）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-ARMS。
-- **合并行情带提供商（consolidated tape provider）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-CTPS。
-- **加密资产服务提供商（crypto asset services provider）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-CASP。
-- **加密资产服务提供商（crypto asset services provider）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
-- **加密资产服务提供商（crypto asset services provider）**：**具有设施缩写（has facility acronym）**存在取值约束。
-- **加密资产服务提供商（crypto asset services provider）**：**具有正式名称（hasFormalName）**存在取值约束。
-- **加密资产服务提供商（crypto asset services provider）**：**运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
-- **加密资产服务提供商（crypto asset services provider）**：**运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
-- **数据报告服务提供商（data reporting services provider）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
-- **数据报告服务提供商（data reporting services provider）**：**具有设施缩写（has facility acronym）**存在取值约束。
-- **数据报告服务提供商（data reporting services provider）**：**具有正式名称（hasFormalName）**存在取值约束。
-- **数据报告服务提供商（data reporting services provider）**：**运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
-- **数据报告服务提供商（data reporting services provider）**：**运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
-- **指定合约市场（designated contract market）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-DCMS。
-- **交易所（exchange）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
-- **交易所（exchange）**：**由……管理（isManagedBy）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
-- **交易所（exchange）**：**具有设施缩写（has facility acronym）**存在取值约束。
-- **交易所（exchange）**：**具有正式名称（hasFormalName）**存在取值约束。
-- **交易所（exchange）**：**运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
-- **交易所（exchange）**：**运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
-- **交易所参与者（exchange participant）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**交易所（exchange）**。
-- **交易所参与者（exchange participant）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**交易所（exchange）**。
-- **交易商间报价系统（interdealer quotation system）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-IDQS。
-- **市场类别分类器（market category classifier）**：**定义于（isDefinedIn）**的取值固定为 ISO10383-ClassificationScheme。
-- **市场类别分类器（market category classifier）**：**分类（classifies）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **市场标识符（market identifier）**：**标识（identifies）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **市场层级分类器（market level classifier）**：**定义于（isDefinedIn）**的取值固定为 ISO10383-ClassificationScheme。
-- **市场层级分类器（market level classifier）**：**分类（classifies）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **市场板块层级市场（market segment-level market）**：**由……分类（isClassifiedBy）**的取值固定为 MarketLevelClassifier-SGMT。
-- **市场板块层级市场（market segment-level market）**：**是……的部分（isPartOf）**至少有一个取值，类型是**运营层级市场（operating-level market）**。
-- **多边交易设施（multilateral trading facility）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-MLTF。
-- **运营层级市场（operating-level market）**：**由……分类（isClassifiedBy）**的取值固定为 MarketLevelClassifier-OPRT。
-- **运营层级市场（operating-level market）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**运营层级市场标识符（operating-level market identifier）**。
-- **注册多边交易设施（registered multilateral trading facility）**：**由……管理（isManagedBy）**至少有一个取值，类型是**金融服务提供商（FinancialServiceProvider）**。
-- **注册多边交易设施（registered multilateral trading facility）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
-- **注册多边交易设施（registered multilateral trading facility）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **受监管交易所（regulated exchange）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-RMKT。
-- **受监管交易所（regulated exchange）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **受监管交易所（regulated exchange）**：**受……监管（isRegulatedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
-- **掉期执行设施（swap execution facility）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-SEFS。
-- **交易报告设施（trade reporting facility）**：**由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-TRFS。
-- **交易报告设施（trade reporting facility）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
-- **交易报告设施（trade reporting facility）**：**由……管理（isManagedBy）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
-- **交易报告设施（trade reporting facility）**：**具有设施缩写（has facility acronym）**存在取值约束。
-- **交易报告设施（trade reporting facility）**：**具有正式名称（hasFormalName）**存在取值约束。
-- **交易报告设施（trade reporting facility）**：**运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
-- **交易报告设施（trade reporting facility）**：**运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
+### 2.2 数据报告服务提供商（data reporting services provider）
 
-## 6. 依赖（owl:imports，18 个）
+定义：报告和/或发布证券交易数据的市场数据提供方和报告方，包括此类交易的法定监管报告。
+
+- 父类：**市场数据提供商（MarketDataProvider）**、**报告方（ReportingParty）**
+- 直接子类：**核准发布安排（approved publication arrangement）**、**核准报告机制（approved reporting mechanism）**、**合并行情带提供商（consolidated tape provider）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有设施缩写（has facility acronym）** | 指明该市场的已知缩写。 | 子属性：具有别名 |
+| **运营所在国（operates in country）** | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的 ISO 3166-1 国家。 | 值域：国家；子属性：具有国家 |
+| **运营所在城市（operates in municipality）** | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的城市或商业中心。 | 值域：市政区；子属性：具有市政区 |
+| **具有正式名称（hasFormalName）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **具有正式名称（hasFormalName）**存在取值约束。
+- **具有设施缩写（has facility acronym）**存在取值约束。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
+- **运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
+- **运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
+
+#### 2.2.1 核准发布安排（approved publication arrangement）
+
+定义：获授权代表银行、投资公司等发布特定交易报告的数据报告服务提供商。
+
+- 父类：**数据报告服务提供商（data reporting services provider）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-APPA。
+
+#### 2.2.2 核准报告机制（approved reporting mechanism）
+
+定义：获授权向主管当局或欧洲证券及市场管理局（ESMA）报告交易详情的数据报告服务提供商。
+
+- 父类：**数据报告服务提供商（data reporting services provider）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-ARMS。
+
+#### 2.2.3 合并行情带提供商（consolidated tape provider）
+
+定义：获授权从受监管市场收集金融工具交易报告的数据报告服务提供商。
+
+- 父类：**数据报告服务提供商（data reporting services provider）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-CTPS。
+
+### 2.3 交易所（exchange）
+
+定义：任何组织、协会或团体，无论是否注册成立，只要构成、维持或提供撮合证券买卖的设施即为交易所。
+
+- 父类：**设施（Facility）**
+- 直接子类：**认可市场营运者（RecognizedMarketOperator）**、**系统性内部撮合商（SystematicInternaliser）**、**另类交易系统（alternative trading system）**、**竞价市场（auction market）**、**指定合约市场（designated contract market）**、**交易商间报价系统（interdealer quotation system）**、**市场板块层级市场（market segment-level market）**、**场外设施（off-market facility）**、**运营层级市场（operating-level market）**、**报价驱动市场（quote-driven market）**、**受监管交易所（regulated exchange）**、**掉期执行设施（swap execution facility）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有设施缩写（has facility acronym）** | 指明该市场的已知缩写。 | 子属性：具有别名 |
+| **运营所在国（operates in country）** | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的 ISO 3166-1 国家。 | 值域：国家；子属性：具有国家 |
+| **运营所在城市（operates in municipality）** | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的城市或商业中心。 | 值域：市政区；子属性：具有市政区 |
+| **具有正式名称（hasFormalName）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **具有正式名称（hasFormalName）**存在取值约束。
+- **具有设施缩写（has facility acronym）**存在取值约束。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
+- **由……管理（isManagedBy）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
+- **运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
+- **运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
+
+#### 2.3.1 认可市场营运者（RecognizedMarketOperator）
+
+定义：由依特定证券法规注册的营运者运营或维护、撮合证券买卖双方的交易所。
+
+- 父类：**交易所（exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-RMOS。
+
+#### 2.3.2 系统性内部撮合商（SystematicInternaliser）
+
+定义：以有组织、频繁、系统性和实质性的方式，在受监管市场之外通过执行客户订单进行自营交易的投资公司。
+
+- 父类：**交易所（exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-SINT。
+
+#### 2.3.3 另类交易系统（alternative trading system）
+
+定义：监管要求比受监管交易所更为宽松的交易场所。
+
+- 父类：**交易所（exchange）**
+- 直接子类：**有组织交易设施（OrganizedTradingFacility）**、**暗池（dark pool）**、**电子通讯网络（electronic communication network）**、**多边交易设施（multilateral trading facility）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-ATSS。
+
+##### 2.3.3.1 有组织交易设施（OrganizedTradingFacility）
+
+定义：既非受监管市场（RM）也非多边交易设施（MTF）的多边系统，其中多方第三方就债券、结构化金融产品等的买卖利益进行撮合。
+
+- 父类：**另类交易系统（alternative trading system）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+| **由……管理（isManagedBy）** | — | — |
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-OTFS。
+- **由……管理（isManagedBy）**的所有取值只能是**金融服务提供商（FinancialServiceProvider）**。
+
+##### 2.3.3.2 暗池（dark pool）
+
+定义：私人组织的另类交易系统，允许机构投资者在交易完成前不暴露交易意向地进行交易。
+
+- 父类：**另类交易系统（alternative trading system）**
+
+##### 2.3.3.3 电子通讯网络（electronic communication network）
+
+定义：在市场中自动撮合证券买卖订单的另类交易系统。
+
+- 父类：**另类交易系统（alternative trading system）**
+
+##### 2.3.3.4 多边交易设施（multilateral trading facility）
+
+定义：促进多方之间金融工具交换的交易系统。
+
+- 父类：**另类交易系统（alternative trading system）**
+- 直接子类：**注册多边交易设施（registered multilateral trading facility）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-MLTF。
+
+###### 2.3.3.4.1 注册多边交易设施（registered multilateral trading facility）
+
+定义：由投资公司或市场营运者运营、撮合多方第三方金融工具买卖利益的多边系统。
+
+- 父类：**多边交易设施（multilateral trading facility）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……管理（isManagedBy）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **由……注册（isRegisteredBy）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
+- **由……管理（isManagedBy）**至少有一个取值，类型是**金融服务提供商（FinancialServiceProvider）**。
+
+#### 2.3.4 竞价市场（auction market）
+
+定义：买卖双方提交竞争性报价、不涉及双方直接谈判、作为预定拍卖环节一部分的交易所。
+
+- 父类：**交易所（exchange）**
+
+#### 2.3.5 指定合约市场（designated contract market）
+
+定义：可挂牌交易基于任何商品、指数或工具的期货或期权合约的交易所、交易系统或平台。
+
+- 父类：**交易所（exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-DCMS。
+
+#### 2.3.6 交易商间报价系统（interdealer quotation system）
+
+定义：组织和传播经纪商与交易商报价、促进证券电子交易的自动化系统。
+
+- 父类：**交易所（exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-IDQS。
+
+#### 2.3.7 市场板块层级市场（market segment-level market）
+
+定义：交易所/市场/交易报告设施中专营一种或多种特定工具、或受不同监管的部分。
+
+- 父类：**交易所（exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+| **是……的部分（isPartOf）** | — | — |
+
+公理：
+
+- **是……的部分（isPartOf）**至少有一个取值，类型是**运营层级市场（operating-level market）**。
+- **由……分类（isClassifiedBy）**的取值固定为 MarketLevelClassifier-SGMT。
+
+#### 2.3.8 场外设施（off-market facility）
+
+定义：用于报告场外（OTC）及其他不经交易所执行但通过交易所报告的直接交易的设施。
+
+- 父类：**交易所（exchange）**
+
+#### 2.3.9 运营层级市场（operating-level market）
+
+定义：位于特定市场/国家的交易所/市场/交易报告设施。
+
+- 父类：**交易所（exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketLevelClassifier-OPRT。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**运营层级市场标识符（operating-level market identifier）**。
+
+#### 2.3.10 报价驱动市场（quote-driven market）
+
+定义：价格由做市商、交易商或特许交易商的买卖报价决定的交易所。
+
+- 父类：**交易所（exchange）**
+
+#### 2.3.11 受监管交易所（regulated exchange）
+
+定义：由市场营运者运营和/或管理、撮合或促进多方第三方买卖利益汇合的受监管市场。
+
+- 父类：**交易所（exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+| **受……管辖（isGovernedBy）** | — | — |
+| **受……监管（isRegulatedBy）** | — | — |
+
+公理：
+
+- **受……监管（isRegulatedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-RMKT。
+
+#### 2.3.12 掉期执行设施（swap execution facility）
+
+定义：使参与者能够执行和交易掉期的交易所。
+
+- 父类：**交易所（exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-SEFS。
+
+### 2.4 交易所参与者（exchange participant）
+
+定义：按照交易所规则可在交易所内或通过交易所交易、其名称列入名册的注册会员。
+
+- 父类：**注册代理人（RegisteredAgent）**、**组织成员（OrganizationMember）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……注册（isRegisteredBy）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由……注册（isRegisteredBy）**至少有一个取值，类型是**交易所（exchange）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**交易所（exchange）**。
+
+### 2.5 市场类别分类器（market category classifier）
+
+定义：表示在可能情况下描绘交易所或数据报告服务提供商性质的受控词汇表。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **定义于（isDefinedIn）**的取值固定为 ISO10383-ClassificationScheme。
+
+### 2.6 市场标识符（market identifier）
+
+定义：以通用方法标识交易所、交易平台、受监管或非受监管市场以及数据报告服务提供商的标识符。
+
+- 父类：**标识符（Identifier）**
+- 直接子类：**市场板块层级市场标识符（market segment-level market identifier）**、**运营层级市场标识符（operating-level market identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+#### 2.6.1 市场板块层级市场标识符（market segment-level market identifier）
+
+定义：标识交易所/市场/交易报告设施中特定板块的市场标识符。
+
+- 父类：**市场标识符（market identifier）**
+
+#### 2.6.2 运营层级市场标识符（operating-level market identifier）
+
+定义：标识特定市场/国家的交易所/市场/交易报告设施的市场标识符。
+
+- 父类：**市场标识符（market identifier）**
+
+### 2.7 市场标识代码状态（market indicator code status）
+
+定义：表明市场标识代码（MIC）状态的生命周期阶段，由注册机构规定。
+
+- 父类：**生命周期阶段（LifecycleStage）**
+
+### 2.8 市场层级分类器（market level classifier）
+
+定义：指明交易所或数据报告服务提供商属于运营层级还是市场板块层级设施的分类器。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **定义于（isDefinedIn）**的取值固定为 ISO10383-ClassificationScheme。
+
+### 2.9 交易报告设施（trade reporting facility）
+
+定义：为在交易所以外达成的交易提供报告机制的设施。
+
+- 父类：**设施（Facility）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有设施缩写（has facility acronym）** | 指明该市场的已知缩写。 | 子属性：具有别名 |
+| **运营所在国（operates in country）** | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的 ISO 3166-1 国家。 | 值域：国家；子属性：具有国家 |
+| **运营所在城市（operates in municipality）** | 指明交易所、数据报告服务提供商或加密资产服务提供商运营所在的城市或商业中心。 | 值域：市政区；子属性：具有市政区 |
+| **具有正式名称（hasFormalName）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **具有正式名称（hasFormalName）**存在取值约束。
+- **具有设施缩写（has facility acronym）**存在取值约束。
+- **由……分类（isClassifiedBy）**的取值固定为 MarketCategoryClassifier-TRFS。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**市场标识符（market identifier）**。
+- **由……管理（isManagedBy）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
+- **运营所在国（operates in country）**至少有一个取值，类型是**国家（Country）**。
+- **运营所在城市（operates in municipality）**至少有一个取值，类型是**市政区（Municipality）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有市场标识代码状态（has market identifier code status）** | 指明特定市场标识代码（MIC）的状态。 | 值域：市场标识代码状态（market indicator code status）；子属性：具有登记状态 |
+
+## 4. 依赖（owl:imports，18 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -184,7 +586,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/Commons/SitesAndFacilities/` | OMG 通用场所与设施本体（OMG Commons Sites and Facilities） | Commons 库中的场所与设施本体，定义物理场所、设施及其位置的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Markets.rdf`
 - 中文 Turtle：`Markets.ttl`

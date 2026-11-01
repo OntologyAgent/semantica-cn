@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：目标≠约束——目标是追求的方向（收益最大化），约束是必须遵守的限制（投资比例上限）；目标可度量程度各异，本本体不强制量化。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **项目群（Program）** 继承 **情境（situation）**
+- **项目群标识符（ProgramIdentifier）** 继承 **情境化标识符（ContextualIdentifier）**
+- **项目群名称（ProgramName）** 继承 **情境化名称（ContextualName）**
+- **业务目标（business objective）** 继承 **目标（objective）**
+- **业务战略（business strategy）** 继承 **战略（strategy）**
+- **分配策略（distribution strategy）** 继承 **战略（strategy）**
+- **财务目标（financial objective）** 继承 **目标（objective）**
+- **愿景（goal）** 继承 **意向（aim）**
+- **投资目标（investment objective）** 继承 **财务目标（financial objective）**
+- **本地投资目标（local investment objective）** 继承 **投资目标（investment objective）**
+- **方法（method）** 继承 **途径（approach）**
+- **目标（objective）** 继承 **意向（aim）**
+- 其余 7 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -40,72 +56,301 @@
 | 研究（study） | 调查特定关注领域以确定其特性、关系、约束或影响的分析活动。 |
 | 三重底线目标（triple bottom line objective） | 将经济绩效、环境管理和社会责任作为同等成功标准加以整合的财务目标。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 项目群（Program） ⊑ 情境（situation）
-- 项目群标识符（ProgramIdentifier） ⊑ 情境化标识符
-- 项目群名称（ProgramName） ⊑ 情境化名称
-- 业务目标（business objective） ⊑ 目标（objective）
-- 业务战略（business strategy） ⊑ 战略（strategy）
-- 分配策略（distribution strategy） ⊑ 战略（strategy）
-- 财务目标（financial objective） ⊑ 目标（objective）
-- 愿景（goal） ⊑ 意向（aim）
-- 投资目标（investment objective） ⊑ 财务目标（financial objective）
-- 本地投资目标（local investment objective） ⊑ 投资目标（investment objective）
-- 方法（method） ⊑ 途径（approach）
-- 目标（objective） ⊑ 意向（aim）
-- 项目（project） ⊑ 情境（situation）
-- 项目标识符（project identifier） ⊑ 情境化标识符
-- 项目名称（project name） ⊑ 情境化名称
-- 销售策略（sales strategy） ⊑ 业务战略（business strategy）
-- 战略（strategy） ⊑ 途径（approach）
-- 研究（study） ⊑ 情境（situation）
-- 三重底线目标（triple bottom line objective） ⊑ 投资目标（investment objective）
+### 2.1 项目群（Program）
 
-## 3. 对象属性（Object Property）
+定义：为获得单独管理所无法获得的收益而设计的事务状态与协调活动集。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-gao-obj:addresses | 应对（addresses） | 处理、处置或关注。 | 子属性（subPropertyOf）：涉及 |
-| fibo-fnd-gao-obj:hasGoal | 具有愿景（has goal） | 具有长期的期望结果。 | 值域（range）：愿景（goal） |
-| fibo-fnd-gao-obj:hasObjective | 具有目标（has objective） | 旨在一定时间框架内、以可用资源达成。 | 值域（range）：目标（objective） |
-| fibo-fnd-gao-obj:hasStrategy | 具有战略（has strategy） | 应用战略。 | 值域（range）：战略（strategy）；子属性（subPropertyOf）：使用 |
-| fibo-fnd-gao-obj:isAddressedBy | 由……应对（is addressed by） | 标识被……处理的事物，如愿景或目标。 | 逆属性（inverseOf）：应对（addresses） |
-| fibo-fnd-gao-obj:usesMethod | 使用方法（uses method） | 运用方法。 | 值域（range）：方法（method）；子属性（subPropertyOf）：使用 |
+- 父类：**情境（situation）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有愿景（has goal）** | 具有长期的期望结果。 | 值域：愿景（goal） |
+| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。 | 值域：目标（objective） |
+| **具有成员（hasMember）** | — | — |
+| **具有描述（hasDescription）** | — | — |
+| **具有名称（hasName）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
 
-- **项目群（Program）**：**具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
-- **项目群（Program）**：**具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
-- **项目群（Program）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**项目群标识符（ProgramIdentifier）**。
-- **项目群（Program）**：**具有名称（hasName）**可以有 0 个或多个**项目群名称（ProgramName）**。
-- **项目群（Program）**：**具有成员（hasMember）**可以有 0 个或多个**项目（project）**。
-- **项目群（Program）**：**具有描述（hasDescription）**至少有一个取值，类型是**xsd:string（string）**。
-- **项目群标识符（ProgramIdentifier）**：**标识（identifies）**至少有一个取值，类型是**项目群（Program）**。
-- **项目群名称（ProgramName）**：**是……的名称（isNameOf）**至少有一个取值，类型是**项目群（Program）**。
-- **意向（aim）**：**由……应对（is addressed by）**可以有 0 个或多个**途径（approach）**。
-- **途径（approach）**：**应对（addresses）**可以有 0 个或多个**意向（aim）**。
-- **途径（approach）**：**具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
-- **业务战略（business strategy）**：**具有目标（has objective）**至少有一个取值，类型是**业务目标（business objective）**。
-- **目标（objective）**：**适用于（appliesTo）**可以有 0 个或多个**愿景（goal）**。
-- **目标（objective）**：**具有日期区间（hasDatePeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
-- **项目（project）**：**具有输入（hasInput）**至少有 0 个取值。
-- **项目（project）**：**具有输出（hasOutput）**至少有 0 个取值。
-- **项目（project）**：**具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
-- **项目（project）**：**具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
-- **项目（project）**：**是……的成员（isMemberOf）**可以有 0 个或多个**项目群（Program）**。
-- **项目（project）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**项目标识符（project identifier）**。
-- **项目（project）**：**具有名称（hasName）**可以有 0 个或多个**项目名称（project name）**。
-- **项目（project）**：**具有描述（hasDescription）**至少有一个取值，类型是**xsd:string（string）**。
-- **项目标识符（project identifier）**：**标识（identifies）**至少有一个取值，类型是**项目（project）**。
-- **项目名称（project name）**：**是……的名称（isNameOf）**至少有一个取值，类型是**项目（project）**。
-- **战略（strategy）**：**具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
-- **研究（study）**：**具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
-- **研究（study）**：**适用于情境（isApplicableIn）**可以有 0 个或多个**情境（Context）**。
+公理：
 
-## 6. 依赖（owl:imports，11 个）
+- **具有名称（hasName）**可以有 0 个或多个**项目群名称（ProgramName）**。
+- **具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
+- **具有成员（hasMember）**可以有 0 个或多个**项目（project）**。
+- **具有描述（hasDescription）**至少有一个取值，类型是**xsd:string（string）**。
+- **具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**项目群标识符（ProgramIdentifier）**。
+
+### 2.2 项目群标识符（ProgramIdentifier）
+
+定义：在项目群被管理的情境内唯一标识特定项目群的字符序列。
+
+- 父类：**情境化标识符（ContextualIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**至少有一个取值，类型是**项目群（Program）**。
+
+### 2.3 项目群名称（ProgramName）
+
+定义：项目群在其被管理情境内的情境化指称。
+
+- 父类：**情境化名称（ContextualName）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的名称（isNameOf）** | — | — |
+
+公理：
+
+- **是……的名称（isNameOf）**至少有一个取值，类型是**项目群（Program）**。
+
+### 2.4 意向（aim）
+
+定义：指明代理行动所指向的期望方向、状况或情形的意图，不要求精确的范围或可测性。
+
+- 直接子类：**愿景（goal）**、**目标（objective）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……应对（is addressed by）** | 标识被……处理的事物，如愿景或目标。 | 逆属性：应对（addresses） |
+
+公理：
+
+- **由……应对（is addressed by）**可以有 0 个或多个**途径（approach）**。
+
+#### 2.4.1 愿景（goal）
+
+定义：以宽泛范围和抱负性质为特征的意向，常为定性的、长期的，用以达成某种期望状态。
+
+- 父类：**意向（aim）**
+
+#### 2.4.2 目标（objective）
+
+定义：以具体范围和可测标准为特征的意向，常为定量的、短期的，参与方寻求达成它。
+
+- 父类：**意向（aim）**
+- 直接子类：**业务目标（business objective）**、**财务目标（financial objective）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+| **具有日期区间（hasDatePeriod）** | — | — |
+
+公理：
+
+- **具有日期区间（hasDatePeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
+- **适用于（appliesTo）**可以有 0 个或多个**愿景（goal）**。
+
+##### 2.4.2.1 业务目标（business objective）
+
+定义：反映企业在一定时间框架和可用资源内的战略目标与方向的目标。
+
+- 父类：**目标（objective）**
+
+##### 2.4.2.2 财务目标（financial objective）
+
+定义：反映参与方在一定时间框架和可用资源内的战略财务目标与方向的目标。
+
+- 父类：**目标（objective）**
+- 直接子类：**投资目标（investment objective）**
+
+###### 2.4.2.2.1 投资目标（investment objective）
+
+定义：投资者用于判断某项潜在投资是否适合自己或代表他人的财务目标。
+
+- 父类：**财务目标（financial objective）**
+- 直接子类：**本地投资目标（local investment objective）**、**三重底线目标（triple bottom line objective）**
+
+###### 2.4.2.2.1.1 本地投资目标（local investment objective）
+
+定义：旨在支持地理上集中的社区发展需求的财务目标。
+
+- 父类：**投资目标（investment objective）**
+
+###### 2.4.2.2.1.2 三重底线目标（triple bottom line objective）
+
+定义：将经济绩效、环境管理和社会责任作为同等成功标准加以整合的财务目标。
+
+- 父类：**投资目标（investment objective）**
+
+### 2.5 途径（approach）
+
+定义：应对意向或问题的方式，以高层规划和系统化执行为特征，不预设范围或粒度。
+
+- 直接子类：**方法（method）**、**战略（strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **应对（addresses）** | 处理、处置或关注。 | 子属性：涉及 |
+| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。 | 值域：目标（objective） |
+
+公理：
+
+- **具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
+- **应对（addresses）**可以有 0 个或多个**意向（aim）**。
+
+#### 2.5.1 方法（method）
+
+定义：以系统化、可重复的程序和操作上的明确性为特征的途径，由明确的步骤组成。
+
+- 父类：**途径（approach）**
+
+#### 2.5.2 战略（strategy）
+
+定义：指导决策并协调行动与计划以追求某意向的高层途径。
+
+- 父类：**途径（approach）**
+- 直接子类：**业务战略（business strategy）**、**分配策略（distribution strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有愿景（has goal）** | 具有长期的期望结果。 | 值域：愿景（goal） |
+
+公理：
+
+- **具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
+
+##### 2.5.2.1 业务战略（business strategy）
+
+定义：实现特定业务目标、目的、解决方案或结果的战略。
+
+- 父类：**战略（strategy）**
+- 直接子类：**销售策略（sales strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。 | 值域：目标（objective） |
+
+公理：
+
+- **具有目标（has objective）**至少有一个取值，类型是**业务目标（business objective）**。
+
+###### 2.5.2.1.1 销售策略（sales strategy）
+
+定义：销售某事物的策略，包括为销售过程分配资源、降低成本和优化收入。
+
+- 父类：**业务战略（business strategy）**
+
+##### 2.5.2.2 分配策略（distribution strategy）
+
+定义：使产品或服务可获得、或分配资金（如以股息或票息形式）的策略。
+
+- 父类：**战略（strategy）**
+
+### 2.6 项目（project）
+
+定义：为交付有形产出而设计的事务状态及独特而临时的组织。
+
+- 父类：**情境（situation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有输入（hasInput）** | — | — |
+| **具有输出（hasOutput）** | — | — |
+| **具有愿景（has goal）** | 具有长期的期望结果。 | 值域：愿景（goal） |
+| **具有目标（has objective）** | 旨在一定时间框架内、以可用资源达成。 | 值域：目标（objective） |
+| **是……的成员（isMemberOf）** | — | — |
+| **具有描述（hasDescription）** | — | — |
+| **具有名称（hasName）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **具有名称（hasName）**可以有 0 个或多个**项目名称（project name）**。
+- **具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
+- **具有描述（hasDescription）**至少有一个取值，类型是**xsd:string（string）**。
+- **具有目标（has objective）**可以有 0 个或多个**目标（objective）**。
+- **具有输入（hasInput）**至少有 0 个取值。
+- **具有输出（hasOutput）**至少有 0 个取值。
+- **是……的成员（isMemberOf）**可以有 0 个或多个**项目群（Program）**。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**项目标识符（project identifier）**。
+
+### 2.7 项目标识符（project identifier）
+
+定义：在项目或其所属项目群被管理的情境内唯一标识特定项目的字符序列。
+
+- 父类：**情境化标识符（ContextualIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**至少有一个取值，类型是**项目（project）**。
+
+### 2.8 项目名称（project name）
+
+定义：项目的情境化指称。
+
+- 父类：**情境化名称（ContextualName）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的名称（isNameOf）** | — | — |
+
+公理：
+
+- **是……的名称（isNameOf）**至少有一个取值，类型是**项目（project）**。
+
+### 2.9 研究（study）
+
+定义：调查特定关注领域以确定其特性、关系、约束或影响的分析活动。
+
+- 父类：**情境（situation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有愿景（has goal）** | 具有长期的期望结果。 | 值域：愿景（goal） |
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **具有愿景（has goal）**可以有 0 个或多个**愿景（goal）**。
+- **适用于情境（isApplicableIn）**可以有 0 个或多个**情境（Context）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有战略（has strategy）** | 应用战略。 | 值域：战略（strategy）；子属性：使用 |
+| **使用方法（uses method）** | 运用方法。 | 值域：方法（method）；子属性：使用 |
+
+## 4. 依赖（owl:imports，11 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -123,7 +368,7 @@
 | `https://www.omg.org/spec/Commons/Identifiers/` | OMG 通用标识符本体（OMG Commons Identifiers） | Commons 库中的标识符本体，定义标识符及其编码方案的通用概念。 |
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Objectives.rdf`
 - 中文 Turtle：`Objectives.ttl`

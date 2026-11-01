@@ -351,87 +351,156 @@ def generate_markdown(g: Graph, terms: dict[str, dict], trans: dict, rdf_path: P
         "",
     ]
 
+    class_uris = [i["uri"] for i in classes]
+    class_set = set(class_uris)
+    label_of = {i["uri"]: i["label_en"] for i in classes}
+
+    def superclasses_of(uri):
+        return sorted(str(s) for s in g.objects(URIRef(uri), RDFS.subClassOf) if isinstance(s, URIRef))
+
+    local_parents = {u: [s for s in superclasses_of(u) if s in class_set] for u in class_uris}
+    children = {u: [] for u in class_uris}
+    for u, ps in local_parents.items():
+        for p in ps:
+            children[p].append(u)
+
+    restrictions_of = {u: [b for b in g.objects(URIRef(u), RDFS.subClassOf) if isinstance(b, BNode)]
+                       for u in class_uris}
+    props_of = {u: set() for u in class_uris}
+    for u in class_uris:
+        for b in restrictions_of[u]:
+            p = g.value(b, OWL.onProperty)
+            if isinstance(p, URIRef):
+                props_of[u].add(str(p))
+    for info in obj_props + dt_props:
+        uri = info["uri"]
+        dom = g.value(URIRef(uri), RDFS.domain)
+        if dom and str(dom) in class_set:
+            props_of[str(dom)].add(uri)
+
+    # 概述中的类关系概览
+    rel_lines = []
+    for u in sorted(class_uris, key=lambda u: label_of[u]):
+        for s in superclasses_of(u):
+            rel_lines.append(f"- {bold_label(g, trans, URIRef(u))} 继承 {bold_label(g, trans, URIRef(s))}")
+    for info in sorted(obj_props, key=lambda x: x["label_en"]):
+        uri = info["uri"]
+        dom = g.value(URIRef(uri), RDFS.domain)
+        rng = g.value(URIRef(uri), RDFS.range)
+        if dom and rng and str(dom) in class_set and str(rng) in class_set:
+            rel_lines.append(f"- {bold_label(g, trans, dom)} 通过 {bold_label(g, trans, URIRef(uri))} 关联 {bold_label(g, trans, rng)}")
+    if rel_lines:
+        lines += ["本本体中类与类的核心关系如下（完整细节见各类小节）：", ""]
+        lines += rel_lines[:12]
+        if len(rel_lines) > 12:
+            lines.append(f"- 其余 {len(rel_lines) - 12} 条关系从略。")
+        lines.append("")
+
+    def prop_notes(uri):
+        notes = []
+        rng = g.value(URIRef(uri), RDFS.range)
+        inv = g.value(URIRef(uri), OWL.inverseOf)
+        subp = g.value(URIRef(uri), RDFS.subPropertyOf)
+        if rng:
+            notes.append(f"值域：{zh_label(str(rng))}")
+        if inv:
+            notes.append(f"逆属性：{zh_label(str(inv))}")
+        if subp:
+            notes.append(f"子属性：{zh_label(str(subp))}")
+        return notes
+
+    def emit_class(uri, number, level):
+        nonlocal lines
+        lines.append(f"{'#' * level} {number} {zh_label(uri)}")
+        lines.append("")
+        comment = zh_comment(uri)
+        if comment:
+            lines += [f"定义：{comment}", ""]
+        sups = superclasses_of(uri)
+        if sups:
+            lines.append(f"- 父类：{'、'.join(bold_label(g, trans, URIRef(s)) for s in sups)}")
+        kids = sorted(children[uri], key=lambda u: label_of[u])
+        if kids:
+            lines.append(f"- 直接子类：{'、'.join(bold_label(g, trans, URIRef(k)) for k in kids)}")
+        if sups or kids:
+            lines.append("")
+        attached = sorted(props_of[uri], key=lambda p: label_of.get(p, p))
+        if attached:
+            lines += ["属性：", "", "| 属性 | 定义 | 说明 |", "|---|---|---|"]
+            for p in attached:
+                notes = prop_notes(p)
+                lines.append(f"| {bold_label(g, trans, URIRef(p))} | {zh_comment(p) or '—'} | {'；'.join(notes) if notes else '—'} |")
+            lines.append("")
+        ax = sorted(f"- {restriction_zh(g, trans, b)}。" for b in restrictions_of[uri])
+        for dw in g.objects(URIRef(uri), OWL.disjointWith):
+            if isinstance(dw, URIRef):
+                ax.append(f"- 与{bold_label(g, trans, dw)}互斥：同一个体不能同时属于两者。")
+        if ax:
+            lines += ["公理：", ""] + ax + [""]
+
     if classes:
         lines += ["## 2. 类（Class）", "", "| 类（Class） | 定义（Definition） |", "|---|---|"]
         for info in sorted(classes, key=lambda x: x["label_en"]):
             uri = info["uri"]
             lines.append(f"| {zh_label(uri)} | {zh_comment(uri) or '—'} |")
         lines.append("")
+        lines += ["以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。", ""]
+        visited = set()
 
-        lines += ["### 2.1 继承关系（Inheritance）", ""]
-        for info in sorted(classes, key=lambda x: x["label_en"]):
-            uri = info["uri"]
-            for sup in g.objects(URIRef(uri), RDFS.subClassOf):
-                if isinstance(sup, URIRef):
-                    lines.append(f"- {zh_label(uri)} ⊑ {zh_label(str(sup))}")
-        lines.append("")
+        def walk(uri, number, level):
+            if uri in visited:
+                return
+            visited.add(uri)
+            emit_class(uri, number, level)
+            for j, k in enumerate(sorted(children[uri], key=lambda u: label_of[u]), 1):
+                walk(k, f"{number}.{j}", min(level + 1, 6))
 
-    if obj_props:
-        lines += ["## 3. 对象属性（Object Property）", "", "| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |", "|---|---|---|---|"]
-        for info in sorted(obj_props, key=lambda x: x["label_en"]):
-            uri = info["uri"]
-            dom = g.value(URIRef(uri), RDFS.domain)
-            rng = g.value(URIRef(uri), RDFS.range)
-            inv = g.value(URIRef(uri), OWL.inverseOf)
-            subp = g.value(URIRef(uri), RDFS.subPropertyOf)
-            notes = []
-            if dom:
-                notes.append(f"定义域（domain）：{zh_label(str(dom))}")
-            if rng:
-                notes.append(f"值域（range）：{zh_label(str(rng))}")
-            if inv:
-                notes.append(f"逆属性（inverseOf）：{zh_label(str(inv))}")
-            if subp:
-                notes.append(f"子属性（subPropertyOf）：{zh_label(str(subp))}")
-            lines.append(f"| {short_uri(g, URIRef(uri))} | {zh_label(uri)} | {zh_comment(uri) or '—'} | {'；'.join(notes) if notes else '—'} |")
-        lines.append("")
+        roots = sorted([u for u in class_uris if not local_parents[u]], key=lambda u: label_of[u])
+        for i, r in enumerate(roots, 1):
+            walk(r, f"2.{i}", 3)
+        for u in sorted(class_uris, key=lambda u: label_of[u]):
+            if u not in visited:
+                walk(u, f"2.{len(visited) + 1}", 3)
 
-    if dt_props:
-        lines += ["## 4. 数据属性（Datatype Property）", "", "| 属性（Property） | 中文（English） | 定义（Definition） |", "|---|---|---|"]
-        for info in sorted(dt_props, key=lambda x: x["label_en"]):
-            uri = info["uri"]
-            lines.append(f"| {short_uri(g, URIRef(uri))} | {zh_label(uri)} | {zh_comment(uri) or '—'} |")
-        lines.append("")
-
-    # axioms
-    restriction_lines = []
-    for info in sorted(classes, key=lambda x: x["label_en"]):
-        uri = info["uri"]
-        for sco in g.objects(URIRef(uri), RDFS.subClassOf):
-            if isinstance(sco, BNode):
-                restriction_lines.append(f"- **{zh_label(uri)}**：{restriction_zh(g, trans, sco)}。")
-        for dw in g.objects(URIRef(uri), OWL.disjointWith):
-            if isinstance(dw, URIRef):
-                restriction_lines.append(f"- **{zh_label(uri)}**与**{zh_label(str(dw))}**互斥：同一个体不能同时属于两者。")
-    if restriction_lines:
-        lines += [
-            "## 5. 公理约定（Axioms）",
-            "",
-            "以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。",
-            "",
-        ] + restriction_lines + [""]
+    sec = 3
+    attached_all = set().union(*props_of.values()) if class_uris else set()
+    leftover_obj = [i for i in obj_props if i["uri"] not in attached_all]
+    leftover_dt = [i for i in dt_props if i["uri"] not in attached_all]
+    if leftover_obj or leftover_dt:
+        lines += [f"## {sec}. 其他属性", "", "以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：", ""]
+        sec += 1
+        if leftover_obj:
+            lines += ["对象属性（Object Property）：", "", "| 属性 | 定义 | 说明 |", "|---|---|---|"]
+            for info in sorted(leftover_obj, key=lambda x: x["label_en"]):
+                uri = info["uri"]
+                notes = prop_notes(uri)
+                lines.append(f"| **{zh_label(uri)}** | {zh_comment(uri) or '—'} | {'；'.join(notes) if notes else '—'} |")
+            lines.append("")
+        if leftover_dt:
+            lines += ["数据属性（Datatype Property）：", "", "| 属性 | 定义 |", "|---|---|"]
+            for info in sorted(leftover_dt, key=lambda x: x["label_en"]):
+                uri = info["uri"]
+                lines.append(f"| **{zh_label(uri)}** | {zh_comment(uri) or '—'} |")
+            lines.append("")
 
     imports_uris = [str(i) for i in g.objects(ont, OWL.imports)] if ont else []
     if imports_uris:
-        if summaries:
-            lines += [
-                f"## 6. 依赖（owl:imports，{len(imports_uris)} 个）",
-                "",
-                "本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：",
-                "",
-                "| 导入本体 | 中文名称 | 简介 |",
-                "|---|---|---|",
-            ]
-            for u in imports_uris:
-                i = aggregate_module_info(summaries, u, rdf_path)
-                lines.append(f"| `{i['rel']}` | {i['name_zh']} | {i['summary_zh']} |")
-            lines.append("")
-        else:
-            imports = [short_uri(g, URIRef(i)) for i in imports_uris]
-            lines += ["## 6. 依赖", ""] + [f"- {i}" for i in imports] + [""]
+        lines += [
+            f"## {sec}. 依赖（owl:imports，{len(imports_uris)} 个）",
+            "",
+            "本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：",
+            "",
+            "| 导入本体 | 中文名称 | 简介 |",
+            "|---|---|---|",
+        ]
+        for u in imports_uris:
+            i = aggregate_module_info(summaries, u, rdf_path) if summaries else {"rel": u, "name_zh": short_uri(g, URIRef(u)), "summary_zh": ""}
+            lines.append(f"| `{i['rel']}` | {i['name_zh']} | {i['summary_zh']} |")
+        lines.append("")
+        sec += 1
 
     lines += [
-        "## 7. 文件",
+        f"## {sec}. 文件",
         "",
         f"- 官方 RDF/XML：`{rdf_path.name}`",
         f"- 中文 Turtle：`{rdf_path.with_suffix('.ttl').name}`",

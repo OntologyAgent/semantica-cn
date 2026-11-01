@@ -14,6 +14,12 @@
 
 **与相近概念的差别**：受控词汇是「标准取值清单」，区别于定义概念结构的本体——它服务数据对接而非概念推理。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）** 继承 **分类符（Classifier）**
+- **国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）** 继承 **代码元素（CodeElement）**
+- **国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier）** 继承 **国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -21,21 +27,44 @@
 | 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary） | 用于刻画国家信息中心（NIC）所管理金融服务提供商内容之某项特征或方面的受控词汇表。 |
 | 国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier） | 用于描述国家信息中心（NIC）信息库所管理功能实体性质的受控词汇表和代码。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary） ⊑ 分类符
-- 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary） ⊑ 代码元素
-- 国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier） ⊑ 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）
+### 2.1 国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）
 
-## 5. 公理约定（Axioms）
+定义：用于刻画国家信息中心（NIC）所管理金融服务提供商内容之某项特征或方面的受控词汇表。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**分类符（Classifier）**、**代码元素（CodeElement）**
+- 直接子类：**国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier）**
 
-- **国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）**：**是……的成员（isMemberOf）**的取值固定为 NationalInformationCenterClassificationSchemeAndCodeSet。
-- **国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）**：**定义于（isDefinedIn）**的取值固定为 NationalInformationCenterClassificationSchemeAndCodeSet。
-- **国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier）**：**分类（classifies）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
+属性：
 
-## 6. 依赖（owl:imports，11 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 NationalInformationCenterClassificationSchemeAndCodeSet。
+- **是……的成员（isMemberOf）**的取值固定为 NationalInformationCenterClassificationSchemeAndCodeSet。
+
+#### 2.1.1 国家信息中心（NIC）实体类型分类器（National Information Center (NIC) entity type classifier）
+
+定义：用于描述国家信息中心（NIC）信息库所管理功能实体性质的受控词汇表和代码。
+
+- 父类：**国家信息中心（NIC）受控词汇表（National Information Center (NIC) controlled vocabulary）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**可以有 0 个或多个**金融服务提供商（FinancialServiceProvider）**。
+
+## 3. 依赖（owl:imports，11 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -53,7 +82,7 @@
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 | `https://www.omg.org/spec/Commons/TextDatatype/` | OMG 通用文本数据类型（OMG Commons Text Datatype） | Commons 库中的文本数据类型定义，提供带语言标记的文本等基础数据类型。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`USNationalInformationCenterControlledVocabularies.rdf`
 - 中文 Turtle：`USNationalInformationCenterControlledVocabularies.ttl`

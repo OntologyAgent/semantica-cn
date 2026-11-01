@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：控制不等于拥有——通过协议、表决权安排也可以实现控制，控制方未必是多数股东；这正是它与所有权方角色的核心差别。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **合同性控制（contractual control）** 继承 **法律控制（DeJureControl）**
+- **受控方（controlled party）** 继承 **受控事物（ControlledThing）**
+- **控制联盟（controlling alliance）** 继承 **团体（Group）**
+- **法院指定控制（court appointed control）** 继承 **法律控制（DeJureControl）**
+- **事实控制权益方（de facto controlling interest party）** 继承 **控制方（ControllingParty）**
+- **法律控制权益方（de jure controlling interest party）** 继承 **控制方（ControllingParty）**
+- **实体控制方（entity controlling party）** 继承 **控制方（ControllingParty）**
+- **基于影响力的事实控制（influence-based de facto control）** 继承 **事实控制（DeFactoControl）**
+- **基于影响力的事实控制方（influence-based de facto controlling party）** 继承 **事实控制权益方（de facto controlling interest party）**
+- **基于投资的事实控制（investment-based de facto control）** 继承 **事实控制（DeFactoControl）**
+- **基于投资的事实控制权益方（investment-based de facto controlling interest party）** 继承 **事实控制权益方（de facto controlling interest party）**
+- **基于投资的事实控制权益方（investment-based de facto controlling interest party）** 继承 **投资者（Investor）**
+- 其余 5 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -35,57 +51,246 @@
 | 单独控制方（sole controlling party） | 对某法律实体拥有单独控制并指挥其事务的参与方。 |
 | 完全所有者（total owner） | 对某法律实体拥有 100% 所有权的参与方。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 合同性控制（contractual control） ⊑ 法律控制
-- 受控方（controlled party） ⊑ 受控事物
-- 控制联盟（controlling alliance） ⊑ 团体
-- 法院指定控制（court appointed control） ⊑ 法律控制
-- 事实控制权益方（de facto controlling interest party） ⊑ 控制方
-- 法律控制权益方（de jure controlling interest party） ⊑ 控制方
-- 实体控制方（entity controlling party） ⊑ 控制方
-- 基于影响力的事实控制（influence-based de facto control） ⊑ 事实控制
-- 基于影响力的事实控制方（influence-based de facto controlling party） ⊑ 事实控制权益方（de facto controlling interest party）
-- 基于投资的事实控制（investment-based de facto control） ⊑ 事实控制
-- 基于投资的事实控制权益方（investment-based de facto controlling interest party） ⊑ 事实控制权益方（de facto controlling interest party）
-- 基于投资的事实控制权益方（investment-based de facto controlling interest party） ⊑ 投资者
-- 共同控制方（joint controlling party） ⊑ 实体控制方（entity controlling party）
-- 多数控制方（majority controlling party） ⊑ 实体控制方（entity controlling party）
-- 接管人（receiver） ⊑ 法律控制权益方（de jure controlling interest party）
-- 单独控制方（sole controlling party） ⊑ 实体控制方（entity controlling party）
-- 完全所有者（total owner） ⊑ 章程性所有者
+### 2.1 合同性控制（contractual control）
 
-## 3. 对象属性（Object Property）
+定义：通过某合同的条款确立的控制。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-oac-cpty:advises | 提供咨询（advises） | 向……提供建议或指导。 | 定义域（domain）：控制方；值域（range）：受控方（controlled party）；逆属性（inverseOf）：具有顾问（has advisor）；子属性（subPropertyOf）：是控制方 |
-| fibo-be-oac-cpty:isAdvisedBy | 具有顾问（has advisor） | 标识以顾问身份为受控方服务的参与方。 | 定义域（domain）：受控方（controlled party）；值域（range）：控制方；子属性（subPropertyOf）：具有控制方 |
-| fibo-be-oac-cpty:hasControllingOrganizationMember | 具有控制性组织成员（has controlling organization member） | 将受控方关联到该组织的控制性成员。 | 定义域（domain）：受控方（controlled party）；值域（range）：组织成员；逆属性（inverseOf）：是……的控制性成员（is controlling member of）；子属性（subPropertyOf）：具有控制方 |
-| fibo-be-oac-cpty:hasMajorityControllingParty | 具有多数控制方（has majority controlling party） | 标识拥有该实体控股权益（超过 50%）的参与方。 | 定义域（domain）：法律实体；值域（range）：多数控制方（majority controlling party）；子属性（subPropertyOf）：是……的受控方 |
-| fibo-be-oac-cpty:isBasedOnInvestmentEquity | 基于投资权益（is based on investment equity） | 标识基于投资的事实控制，即基于某参与方持有某种投资权益。 | 定义域（domain）：基于投资的事实控制（investment-based de facto control）；值域（range）：投资权益；子属性（subPropertyOf）：由……授予 |
-| fibo-be-oac-cpty:isControllingMemberOf | 是……的控制性成员（is controlling member of） | 标识该成员对其拥有一定程度控制的受控组织。 | 定义域（domain）：组织成员；值域（range）：受控方（controlled party）；子属性（subPropertyOf）：是控制方 |
+- 父类：**法律控制（DeJureControl）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授予（isConferredBy）** | — | — |
 
-- **合同性控制（contractual control）**：**由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
-- **受控方（controlled party）**：**由…扮演（is played by）**恰好有 1 个**参与方（party）**。
-- **法院指定控制（court appointed control）**：**由……授予（isConferredBy）**的所有取值只能是**法院（CourtOfLaw）**。
-- **事实控制权益方（de facto controlling interest party）**：**在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**事实控制（DeFactoControl）**。
-- **法律控制权益方（de jure controlling interest party）**：**在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**法律控制（DeJureControl）**。
-- **实体控制方（entity controlling party）**：**是……的控制方（isControllingPartyOf）**至少有一个取值，类型是**法律实体（LegalEntity）**。
-- **基于影响力的事实控制（influence-based de facto control）**：**具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**基于影响力的事实控制方（influence-based de facto controlling party）**。
-- **基于影响力的事实控制方（influence-based de facto controlling party）**：**在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**基于影响力的事实控制（influence-based de facto control）**。
-- **基于投资的事实控制（investment-based de facto control）**：**由……授予（isConferredBy）**的所有取值只能是**投资权益（InvestmentEquity）**。
-- **基于投资的事实控制（investment-based de facto control）**：**具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**基于投资的事实控制权益方（investment-based de facto controlling interest party）**。
-- **基于投资的事实控制权益方（investment-based de facto controlling interest party）**：**在……中为控制方（isControllingPartyIn）**的所有取值只能是**基于投资的事实控制（investment-based de facto control）**。
-- **共同控制方（joint controlling party）**：**由…扮演（is played by）**的所有取值只能是**控制联盟（controlling alliance）**。
-- **共同控制方（joint controlling party）**与**单独控制方（sole controlling party）**互斥：同一个体不能同时属于两者。
-- **接管人（receiver）**：**在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**法院指定控制（court appointed control）**。
+公理：
 
-## 6. 依赖（owl:imports，11 个）
+- **由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
+
+### 2.2 受控方（controlled party）
+
+定义：在某情形中被某参与方施以某种权力或影响的个人或组织。
+
+- 父类：**受控事物（ControlledThing）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有控制性组织成员（has controlling organization member）** | 将受控方关联到该组织的控制性成员。 | 值域：组织成员；逆属性：是……的控制性成员（is controlling member of）；子属性：具有控制方 |
+| **具有顾问（has advisor）** | 标识以顾问身份为受控方服务的参与方。 | 值域：控制方；子属性：具有控制方 |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**参与方（party）**。
+
+### 2.3 控制联盟（controlling alliance）
+
+定义：为共同对某实体实施控制而结成联盟的团体。
+
+- 父类：**团体（Group）**
+
+### 2.4 法院指定控制（court appointed control）
+
+定义：由法院行为授予的控制，例如在接管情形下。
+
+- 父类：**法律控制（DeJureControl）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授予（isConferredBy）** | — | — |
+
+公理：
+
+- **由……授予（isConferredBy）**的所有取值只能是**法院（CourtOfLaw）**。
+
+### 2.5 事实控制权益方（de facto controlling interest party）
+
+定义：以非明示法律手段对某实体实施某种控制的参与方。
+
+- 父类：**控制方（ControllingParty）**
+- 直接子类：**基于影响力的事实控制方（influence-based de facto controlling party）**、**基于投资的事实控制权益方（investment-based de facto controlling interest party）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **在……中为控制方（isControllingPartyIn）** | — | — |
+
+公理：
+
+- **在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**事实控制（DeFactoControl）**。
+
+#### 2.5.1 基于影响力的事实控制方（influence-based de facto controlling party）
+
+定义：对另一参与方持有基于影响力之控制的参与方。
+
+- 父类：**事实控制权益方（de facto controlling interest party）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **在……中为控制方（isControllingPartyIn）** | — | — |
+
+公理：
+
+- **在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**基于影响力的事实控制（influence-based de facto control）**。
+
+#### 2.5.2 基于投资的事实控制权益方（investment-based de facto controlling interest party）
+
+定义：对另一参与方持有基于投资之控制的参与方。
+
+- 父类：**事实控制权益方（de facto controlling interest party）**、**投资者（Investor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **在……中为控制方（isControllingPartyIn）** | — | — |
+
+公理：
+
+- **在……中为控制方（isControllingPartyIn）**的所有取值只能是**基于投资的事实控制（investment-based de facto control）**。
+
+### 2.6 法律控制权益方（de jure controlling interest party）
+
+定义：具有实施控制之法律权力的参与方。
+
+- 父类：**控制方（ControllingParty）**
+- 直接子类：**接管人（receiver）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **在……中为控制方（isControllingPartyIn）** | — | — |
+
+公理：
+
+- **在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**法律控制（DeJureControl）**。
+
+#### 2.6.1 接管人（receiver）
+
+定义：由法院指定、负责清算不再具有偿付能力之实体事务的参与方。
+
+- 父类：**法律控制权益方（de jure controlling interest party）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **在……中为控制方（isControllingPartyIn）** | — | — |
+
+公理：
+
+- **在……中为控制方（isControllingPartyIn）**至少有一个取值，类型是**法院指定控制（court appointed control）**。
+
+### 2.7 实体控制方（entity controlling party）
+
+定义：有权控制某法律实体的参与方。
+
+- 父类：**控制方（ControllingParty）**
+- 直接子类：**共同控制方（joint controlling party）**、**多数控制方（majority controlling party）**、**单独控制方（sole controlling party）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的控制方（isControllingPartyOf）** | — | — |
+
+公理：
+
+- **是……的控制方（isControllingPartyOf）**至少有一个取值，类型是**法律实体（LegalEntity）**。
+
+#### 2.7.1 共同控制方（joint controlling party）
+
+定义：集体有权控制某企业组织事务的参与方。
+
+- 父类：**实体控制方（entity controlling party）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**的所有取值只能是**控制联盟（controlling alliance）**。
+- 与**单独控制方（sole controlling party）**互斥：同一个体不能同时属于两者。
+
+#### 2.7.2 多数控制方（majority controlling party）
+
+定义：直接或间接拥有指挥或促使指挥某法律实体管理与政策之权力的控制方。
+
+- 父类：**实体控制方（entity controlling party）**
+
+#### 2.7.3 单独控制方（sole controlling party）
+
+定义：对某法律实体拥有单独控制并指挥其事务的参与方。
+
+- 父类：**实体控制方（entity controlling party）**
+
+### 2.8 基于影响力的事实控制（influence-based de facto control）
+
+定义：涉及对某参与方之影响力的非正式控制。
+
+- 父类：**事实控制（DeFactoControl）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有控制中参与方（hasPartyInControl）** | — | — |
+
+公理：
+
+- **具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**基于影响力的事实控制方（influence-based de facto controlling party）**。
+
+### 2.9 基于投资的事实控制（investment-based de facto control）
+
+定义：通过对某实体的投资（而非持有该实体的章程性股权）产生的控制。
+
+- 父类：**事实控制（DeFactoControl）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于投资权益（is based on investment equity）** | 标识基于投资的事实控制，即基于某参与方持有某种投资权益。 | 值域：投资权益；子属性：由……授予 |
+| **具有控制中参与方（hasPartyInControl）** | — | — |
+| **由……授予（isConferredBy）** | — | — |
+
+公理：
+
+- **具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**基于投资的事实控制权益方（investment-based de facto controlling interest party）**。
+- **由……授予（isConferredBy）**的所有取值只能是**投资权益（InvestmentEquity）**。
+
+### 2.10 完全所有者（total owner）
+
+定义：对某法律实体拥有 100% 所有权的参与方。
+
+- 父类：**章程性所有者（ConstitutionalOwner）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **提供咨询（advises）** | 向……提供建议或指导。 | 值域：受控方（controlled party）；逆属性：具有顾问（has advisor）；子属性：是控制方 |
+| **具有多数控制方（has majority controlling party）** | 标识拥有该实体控股权益（超过 50%）的参与方。 | 值域：多数控制方（majority controlling party）；子属性：是……的受控方 |
+| **是……的控制性成员（is controlling member of）** | 标识该成员对其拥有一定程度控制的受控组织。 | 值域：受控方（controlled party）；子属性：是控制方 |
+
+## 4. 依赖（owl:imports，11 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -103,7 +308,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`ControlParties.rdf`
 - 中文 Turtle：`ControlParties.ttl`

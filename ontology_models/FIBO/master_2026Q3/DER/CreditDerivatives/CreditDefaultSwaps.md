@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：CDS 像「债券违约保险」但在法律上是衍生品而非保险——买方无需实际持有参考实体的债务；与担保的差别——担保依附于具体债务合同，CDS 是独立可交易的合约。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **资产支持信用违约互换（asset-backed credit default swap）** 继承 **信用违约互换（credit default swap）**
+- **篮子信用违约互换（basket credit default swap）** 继承 **多名信用违约互换（multi-name credit default swap）**
+- **信用违约互换篮子（basket of credit default swaps）** 继承 **加权篮子（WeightedBasket）**
+- **信用违约互换篮子（basket of credit default swaps）** 继承 **带日期结构化集合（DatedStructuredCollection）**
+- **现金结算方法（cash settlement method）** 继承 **价格确定方法（PriceDeterminationMethod）**
+- **或有信用违约互换（contingent credit default swap）** 继承 **信用违约互换（credit default swap）**
+- **信用违约互换（credit default swap）** 继承 **信用衍生品（CreditDerivative）**
+- **信用违约互换（credit default swap）** 继承 **互换（Swap）**
+- **信用违约互换指数（credit default swap index）** 继承 **参考指数（ReferenceIndex）**
+- **信用事件通知（credit event notice）** 继承 **通知（Notice）**
+- **信用保护条款（credit protection terms）** 继承 **衍生品条款（DerivativeTerms）**
+- **可交割资产（deliverable asset）** 继承 **资产（Asset）**
+- 其余 14 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -40,72 +56,229 @@
 | 单名信用违约互换（single name credit default swap） | 标的风险为单一参考债务或单一参考实体（如公司或主权借款人）的信用违约互换。 |
 | 触发事件（triggering event） | 与信用违约互换的某些方面相关或触发这些方面的事件。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 资产支持信用违约互换（asset-backed credit default swap） ⊑ 信用违约互换（credit default swap）
-- 篮子信用违约互换（basket credit default swap） ⊑ 多名信用违约互换（multi-name credit default swap）
-- 信用违约互换篮子（basket of credit default swaps） ⊑ 加权篮子
-- 信用违约互换篮子（basket of credit default swaps） ⊑ 带日期结构化集合
-- 现金结算方法（cash settlement method） ⊑ 价格确定方法
-- 或有信用违约互换（contingent credit default swap） ⊑ 信用违约互换（credit default swap）
-- 信用违约互换（credit default swap） ⊑ 信用衍生品
-- 信用违约互换（credit default swap） ⊑ 互换
-- 信用违约互换指数（credit default swap index） ⊑ 参考指数
-- 信用事件通知（credit event notice） ⊑ 通知
-- 信用保护条款（credit protection terms） ⊑ 衍生品条款
-- 可交割资产（deliverable asset） ⊑ 资产
-- 可交割债务买方（deliverable obligation buyer） ⊑ 合同当事方
-- 可交割债务买方（deliverable obligation buyer） ⊑ 买方
-- 可交割债务卖方（deliverable obligation seller） ⊑ 合同当事方
-- 可交割债务卖方（deliverable obligation seller） ⊑ 卖方
-- 托管代理人（escrow agent） ⊑ 注册代理人
-- 托管代理人（escrow agent） ⊑ 合同第三方
-- 指数信用违约互换（index credit default swap） ⊑ 多名信用违约互换（multi-name credit default swap）
-- 指数分档信用违约互换（index tranche credit default swap） ⊑ 多名信用违约互换（multi-name credit default swap）
-- 贷款信用违约互换（loan credit default swap） ⊑ 信用违约互换（credit default swap）
-- 多名信用违约互换（multi-name credit default swap） ⊑ 信用违约互换（credit default swap）
-- 通知方（notifying party） ⊑ 参与方角色（party role）
-- 结算拍卖（settlement auction） ⊑ 结算事件
-- 单名信用违约互换（single name credit default swap） ⊑ 信用违约互换（credit default swap）
-- 触发事件（triggering event） ⊑ 发生事项
+### 2.1 信用违约互换篮子（basket of credit default swaps）
 
-## 3. 对象属性（Object Property）
+定义：参考债务为信用违约互换工具的篮子。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-der-cr-cds:hasContractPrice | 具有合约价格（has contract price） | 规定买方购买信用违约互换合约的预定价格。 | 值域（range）：货币价格；子属性（subPropertyOf）：具有价格 |
-| fibo-der-cr-cds:hasMinimumQuotationAmount | 具有最低报价金额（has minimum quotation amount） | 指明报价所针对的参考债务未偿本金余额的最低预期门槛金额。 | 定义域（domain）：现金结算条款；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-der-cr-cds:hasQuotationMethod | 具有报价方法（has quotation method） | 指明在确定参考债务市场价值时向银行和/或交易商请求的报价性质。 | 定义域（domain）：现金结算条款；值域（range）：现金结算方法（cash settlement method）；子属性（subPropertyOf）：具有价格确定方法 |
-| fibo-der-cr-cds:hasScheduledTerminationDate | 具有预定终止日（has scheduled termination date） | 双方约定的信用保护到期日期。 | 定义域（domain）：信用保护条款（credit protection terms）；值域（range）：显式日期；子属性（subPropertyOf）：具有终止日 |
+- 父类：**加权篮子（WeightedBasket）**、**带日期结构化集合（DatedStructuredCollection）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-der-cr-cds:allowsSubstitution | 是否允许替换（allows substitution） | 表明是否可以用其他债务替换指定的可交割债务。 |
+| **具有成员（hasMember）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有成员（hasMember）**至少有一个取值，类型是**信用违约互换（credit default swap）**。
 
-- **信用违约互换篮子（basket of credit default swaps）**：**具有成员（hasMember）**至少有一个取值，类型是**信用违约互换（credit default swap）**。
-- **信用违约互换（credit default swap）**：**具有发生事项（hasOccurrence）**可以有 0 个或多个**结算拍卖（settlement auction）**。
-- **信用违约互换（credit default swap）**：**具有合约价格（has contract price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
-- **信用违约互换（credit default swap）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**信用保护条款（credit protection terms）**。
-- **信用违约互换（credit default swap）**：**规定（specifies）**至少有一个取值，类型是**触发事件（triggering event）**。
-- **信用违约互换指数（credit default swap index）**：**基于（isBasedOn）**至少有一个取值，类型是**信用违约互换篮子（basket of credit default swaps）**。
-- **信用事件通知（credit event notice）**：**关于（isAbout）**至少有一个取值，类型是**触发事件（triggering event）**。
-- **信用事件通知（credit event notice）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**通知方（notifying party）**。
-- **信用保护条款（credit protection terms）**：**具有预定终止日（has scheduled termination date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
-- **信用保护条款（credit protection terms）**：**是否允许替换（allows substitution）**存在取值约束。
-- **信用保护条款（credit protection terms）**：**具有买方（hasBuyer）**至少有一个取值，类型是**可交割债务买方（deliverable obligation buyer）**。
-- **信用保护条款（credit protection terms）**：**具有卖方（hasSeller）**至少有一个取值，类型是**可交割债务卖方（deliverable obligation seller）**。
-- **信用保护条款（credit protection terms）**：**规定（specifies）**至少有一个取值，类型是**可交割资产（deliverable asset）**。
-- **信用保护条款（credit protection terms）**：**规定（specifies）**至少有一个取值，类型是**触发事件（triggering event）**。
-- **托管代理人（escrow agent）**：**持有（holds）**至少有一个取值，类型是**可交割资产（deliverable asset）**。
-- **通知方（notifying party）**：该属性存在取值约束。
+### 2.2 现金结算方法（cash settlement method）
 
-## 6. 依赖（owl:imports，25 个）
+定义：计算或以其他方式确定合约最终参考价格的策略。
+
+- 父类：**价格确定方法（PriceDeterminationMethod）**
+
+### 2.3 信用违约互换（credit default swap）
+
+定义：双边合约：一方（保护卖方）同意在信用事件发生时向另一方（保护买方）支付款项。
+
+- 父类：**信用衍生品（CreditDerivative）**、**互换（Swap）**
+- 直接子类：**资产支持信用违约互换（asset-backed credit default swap）**、**或有信用违约互换（contingent credit default swap）**、**贷款信用违约互换（loan credit default swap）**、**多名信用违约互换（multi-name credit default swap）**、**单名信用违约互换（single name credit default swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合约价格（has contract price）** | 规定买方购买信用违约互换合约的预定价格。 | 值域：货币价格；子属性：具有价格 |
+| **具有合同要素（hasContractualElement）** | — | — |
+| **具有发生事项（hasOccurrence）** | — | — |
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **具有发生事项（hasOccurrence）**可以有 0 个或多个**结算拍卖（settlement auction）**。
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**信用保护条款（credit protection terms）**。
+- **具有合约价格（has contract price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **规定（specifies）**至少有一个取值，类型是**触发事件（triggering event）**。
+
+#### 2.3.1 资产支持信用违约互换（asset-backed credit default swap）
+
+定义：标的参考债务为资产支持证券（而非公司信用）的信用违约互换。
+
+- 父类：**信用违约互换（credit default swap）**
+
+#### 2.3.2 或有信用违约互换（contingent credit default swap）
+
+定义：需要额外触发事件才能生效的信用违约互换。
+
+- 父类：**信用违约互换（credit default swap）**
+
+#### 2.3.3 贷款信用违约互换（loan credit default swap）
+
+定义：标的参考债务严格限于银团担保贷款（而非任何类型公司债务）的信用违约互换。
+
+- 父类：**信用违约互换（credit default swap）**
+
+#### 2.3.4 多名信用违约互换（multi-name credit default swap）
+
+定义：参考不止一个债务或借款人的信用违约互换。
+
+- 父类：**信用违约互换（credit default swap）**
+- 直接子类：**篮子信用违约互换（basket credit default swap）**、**指数信用违约互换（index credit default swap）**、**指数分档信用违约互换（index tranche credit default swap）**
+
+##### 2.3.4.1 篮子信用违约互换（basket credit default swap）
+
+定义：参考一组为特定场外衍生品交易约定的定制化合成资产组合的信用违约互换。
+
+- 父类：**多名信用违约互换（multi-name credit default swap）**
+
+##### 2.3.4.2 指数信用违约互换（index credit default swap）
+
+定义：参考一族标准化信用衍生品指数的信用违约互换，其标的参考实体为一组既定实体篮子。
+
+- 父类：**多名信用违约互换（multi-name credit default swap）**
+
+##### 2.3.4.3 指数分档信用违约互换（index tranche credit default swap）
+
+定义：参考基于信用指数的合成债务抵押债券（CDO）的信用违约互换，每一档参考不同的损失区间。
+
+- 父类：**多名信用违约互换（multi-name credit default swap）**
+
+#### 2.3.5 单名信用违约互换（single name credit default swap）
+
+定义：标的风险为单一参考债务或单一参考实体（如公司或主权借款人）的信用违约互换。
+
+- 父类：**信用违约互换（credit default swap）**
+
+### 2.4 信用违约互换指数（credit default swap index）
+
+定义：标的参考债务为信用违约互换工具的指数。
+
+- 父类：**参考指数（ReferenceIndex）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**信用违约互换篮子（basket of credit default swaps）**。
+
+### 2.5 信用事件通知（credit event notice）
+
+定义：声明触发事件已发生的不可撤销书面或口头通知。
+
+- 父类：**通知（Notice）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **关于（isAbout）** | — | — |
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **关于（isAbout）**至少有一个取值，类型是**触发事件（triggering event）**。
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**通知方（notifying party）**。
+
+### 2.6 信用保护条款（credit protection terms）
+
+定义：规定触发事件及与结算相关条件的法律条款。
+
+- 父类：**衍生品条款（DerivativeTerms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是否允许替换（allows substitution）** | 表明是否可以用其他债务替换指定的可交割债务。 | 值域：xsd:boolean |
+| **具有预定终止日（has scheduled termination date）** | 双方约定的信用保护到期日期。 | 值域：显式日期；子属性：具有终止日 |
+| **具有买方（hasBuyer）** | — | — |
+| **具有卖方（hasSeller）** | — | — |
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **具有买方（hasBuyer）**至少有一个取值，类型是**可交割债务买方（deliverable obligation buyer）**。
+- **具有卖方（hasSeller）**至少有一个取值，类型是**可交割债务卖方（deliverable obligation seller）**。
+- **具有预定终止日（has scheduled termination date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **是否允许替换（allows substitution）**存在取值约束。
+- **规定（specifies）**至少有一个取值，类型是**可交割资产（deliverable asset）**。
+- **规定（specifies）**至少有一个取值，类型是**触发事件（triggering event）**。
+
+### 2.7 可交割资产（deliverable asset）
+
+定义：在信用违约互换结算过程中必须交付的资产。
+
+- 父类：**资产（Asset）**
+
+### 2.8 可交割债务买方（deliverable obligation buyer）
+
+定义：在触发事件发生时（视事件和合约而定）有义务购买可交割债务（资产）的合约方。
+
+- 父类：**合同当事方（ContractParty）**、**买方（Buyer）**
+
+### 2.9 可交割债务卖方（deliverable obligation seller）
+
+定义：在触发事件发生时（视事件和合约而定）有义务出售可交割债务（资产）的合约方。
+
+- 父类：**合同当事方（ContractParty）**、**卖方（Seller）**
+
+### 2.10 托管代理人（escrow agent）
+
+定义：在资产或资金按合约条款从一方正式转移给另一方之前代为持有的第三方。
+
+- 父类：**注册代理人（RegisteredAgent）**、**合同第三方（ContractThirdParty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **持有（holds）** | — | — |
+
+公理：
+
+- **持有（holds）**至少有一个取值，类型是**可交割资产（deliverable asset）**。
+
+### 2.11 通知方（notifying party）
+
+定义：负责发出一份或多份正式通知、表明与给定合约相关的事件已经发生的一方。
+
+- 父类：**参与方角色（party role）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.12 结算拍卖（settlement auction）
+
+定义：针对一组既定可交割债务独立管理的合成拍卖程序，用于确定可用于结算的最终参考价格。
+
+- 父类：**结算事件（SettlementEvent）**
+
+### 2.13 触发事件（triggering event）
+
+定义：与信用违约互换的某些方面相关或触发这些方面的事件。
+
+- 父类：**发生事项（Occurrence）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有最低报价金额（has minimum quotation amount）** | 指明报价所针对的参考债务未偿本金余额的最低预期门槛金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有报价方法（has quotation method）** | 指明在确定参考债务市场价值时向银行和/或交易商请求的报价性质。 | 值域：现金结算方法（cash settlement method）；子属性：具有价格确定方法 |
+
+## 4. 依赖（owl:imports，25 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -137,7 +310,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`CreditDefaultSwaps.rdf`
 - 中文 Turtle：`CreditDefaultSwaps.ttl`

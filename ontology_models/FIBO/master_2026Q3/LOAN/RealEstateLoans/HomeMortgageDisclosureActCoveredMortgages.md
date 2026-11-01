@@ -14,6 +14,18 @@
 
 **与相近概念的差别**：这是「监管标签」类本体——同一笔贷款在业务上是普通抵押贷款，在监管上是否属于 HMDA 覆盖范围决定其报送义务；与贷款监管本体的差别——本本体落到具体法案。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **HMDA 覆盖贷款合同（HMDA covered loan contract）** 继承 **房地产担保贷款（LoanSecuredByRealEstate）**
+- **HMDA 处置（HMDA disposition）** 继承 **分类符（Classifier）**
+- **HMDA 预批准请求（HMDA pre-approval request）** 继承 **预批准请求（PreApprovalRequest）**
+- **HMDA 报告（HMDA report）** 继承 **报告（Report）**
+- **建造类型（construction type）** 继承 **分类符（Classifier）**
+- **族裔（ethnicity）** 继承 **分类符（Classifier）**
+- **提交方式（how submitted）** 继承 **分类符（Classifier）**
+- **种族（race）** 继承 **分类符（Classifier）**
+- **通用贷款标识符（universal loan identifier）** 继承 **金融工具标识符（FinancialInstrumentIdentifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -28,39 +40,131 @@
 | 种族（race） | 基于人的身体特征（如骨骼结构和肤色、发色或瞳色）的类别。 |
 | 通用贷款标识符（universal loan identifier） | 用于无歧义标识以房地产作担保之特定贷款的唯一标识符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- HMDA 覆盖贷款合同（HMDA covered loan contract） ⊑ 房地产担保贷款
-- HMDA 处置（HMDA disposition） ⊑ 分类符
-- HMDA 预批准请求（HMDA pre-approval request） ⊑ 预批准请求
-- HMDA 报告（HMDA report） ⊑ 报告
-- 建造类型（construction type） ⊑ 分类符
-- 族裔（ethnicity） ⊑ 分类符
-- 提交方式（how submitted） ⊑ 分类符
-- 种族（race） ⊑ 分类符
-- 通用贷款标识符（universal loan identifier） ⊑ 金融工具标识符
+### 2.1 HMDA 覆盖贷款合同（HMDA covered loan contract）
 
-## 3. 对象属性（Object Property）
+定义：按美国《住房抵押贷款披露法》修订版第 1003.3(c) 条不属于 HMDA 报告豁免交易的封闭式抵押贷款或开放式信用额度。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-loan-reln-hmda:hasHMDA-DispositionDate | HMDA 处置日期（HMDA disposition date） | 与 HMDA 覆盖贷款之 HMDA 处置关联的日期。 | 子属性（subPropertyOf）：具有日期 |
+- 父类：**房地产担保贷款（LoanSecuredByRealEstate）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
 
-- **HMDA 覆盖贷款合同（HMDA covered loan contract）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**提交方式（how submitted）**。
-- **HMDA 报告（HMDA report）**：**由……提交（isSubmittedBy）**可以有 0 个或多个**Nc70c952496f84a5eaa31a5dc99afa826**。
-- **HMDA 报告（HMDA report）**：**被提交给（isSubmittedTo）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
-- **HMDA 报告（HMDA report）**：**具有条目数（hasNumberOfEntries）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
-- **族裔（ethnicity）**：**分类（classifies）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **种族（race）**：**skos:broaderTransitive（broaderTransitive）**至少有一个取值，类型是**种族（race）**。
-- **种族（race）**：**分类（classifies）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **通用贷款标识符（universal loan identifier）**：**包含（comprises）**恰好有 1 个**法律实体标识符（LegalEntityIdentifier）**。
-- **通用贷款标识符（universal loan identifier）**：**标识（identifies）**恰好有 1 个**房地产担保贷款（LoanSecuredByRealEstate）**。
+公理：
 
-## 6. 依赖（owl:imports，16 个）
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**提交方式（how submitted）**。
+
+### 2.2 HMDA 处置（HMDA disposition）
+
+定义：对 HMDA 覆盖贷款申请所采取行动的类型。
+
+- 父类：**分类符（Classifier）**
+
+### 2.3 HMDA 预批准请求（HMDA pre-approval request）
+
+定义：对不超过一定金额、且受若干非信用条件约束的购房贷款预批准请求。
+
+- 父类：**预批准请求（PreApprovalRequest）**
+
+### 2.4 HMDA 报告（HMDA report）
+
+定义：为满足《住房抵押贷款披露法》监管报告要求而编制的报告。
+
+- 父类：**报告（Report）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……提交（isSubmittedBy）** | — | — |
+| **被提交给（isSubmittedTo）** | — | — |
+| **具有条目数（hasNumberOfEntries）** | — | — |
+
+公理：
+
+- **具有条目数（hasNumberOfEntries）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
+- **由……提交（isSubmittedBy）**可以有 0 个或多个**N6f15fec8205643308d17c3d70b6a16c5**。
+- **被提交给（isSubmittedTo）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+
+### 2.5 建造类型（construction type）
+
+定义：特定种类的建造方式。
+
+- 父类：**分类符（Classifier）**
+
+### 2.6 族裔（ethnicity）
+
+定义：基于文化因素（包括国籍、地域文化、祖籍和语言）的类别。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+
+### 2.7 提交方式（how submitted）
+
+定义：表明申请人或借款人是否直接向报告金融机构提交覆盖贷款申请的类别。
+
+- 父类：**分类符（Classifier）**
+
+### 2.8 种族（race）
+
+定义：基于人的身体特征（如骨骼结构和肤色、发色或瞳色）的类别。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **skos:broaderTransitive（broaderTransitive）** | — | — |
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **skos:broaderTransitive（broaderTransitive）**至少有一个取值，类型是**种族（race）**。
+- **分类（classifies）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+
+### 2.9 通用贷款标识符（universal loan identifier）
+
+定义：用于无歧义标识以房地产作担保之特定贷款的唯一标识符。
+
+- 父类：**金融工具标识符（FinancialInstrumentIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**法律实体标识符（LegalEntityIdentifier）**。
+- **标识（identifies）**恰好有 1 个**房地产担保贷款（LoanSecuredByRealEstate）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **HMDA 处置日期（HMDA disposition date）** | 与 HMDA 覆盖贷款之 HMDA 处置关联的日期。 | 子属性：具有日期 |
+
+## 4. 依赖（owl:imports，16 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -83,7 +187,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`HomeMortgageDisclosureActCoveredMortgages.rdf`
 - 中文 Turtle：`HomeMortgageDisclosureActCoveredMortgages.ttl`

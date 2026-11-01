@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：企业行动是「发生在证券身上的事件」，区别于证券本身；强制性（如并股）与自愿性（如要约）是重要分类轴；与信用事件的差别——信用事件关乎偿付能力，企业行动是公司治理行为。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **行动（action）** 继承 **发生事项（Occurrence）**
+- **行动分类方案（action classification scheme）** 继承 **分类方案（ClassificationScheme）**
+- **行动分类方案（action classification scheme）** 继承 **代码集（CodeSet）**
+- **行动分类符（action classifier）** 继承 **发生类别（OccurrenceKind）**
+- **行动分类符（action classifier）** 继承 **分类符（Classifier）**
+- **行动状态（action status）** 继承 **生命周期状态（LifecycleStatus）**
+- **业务战略分类符（business strategy classifier）** 继承 **行动分类符（action classifier）**
+- **变更行动（change action）** 继承 **强制性公司行动（mandatory corporate action）**
+- **集体诉讼（class action）** 继承 **自愿性公司行动（voluntary corporate action）**
+- **同意征求（consent solicitation）** 继承 **自愿性公司行动（voluntary corporate action）**
+- **公司行动（corporate action）** 继承 **行动（action）**
+- **披露行动（disclosure action）** 继承 **自愿性公司行动（voluntary corporate action）**
+- 其余 15 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -44,53 +60,222 @@
 | 分拆（spin off） | 向母公司股东分配子公司股票、且股东无须交出所持股份的公司行动。 |
 | 自愿性公司行动（voluntary corporate action） | 股东选择参与且必须作出回应、发行人才能处理该行动的事件。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 行动（action） ⊑ 发生事项
-- 行动分类方案（action classification scheme） ⊑ 分类方案
-- 行动分类方案（action classification scheme） ⊑ 代码集
-- 行动分类符（action classifier） ⊑ 发生类别
-- 行动分类符（action classifier） ⊑ 分类符
-- 行动状态（action status） ⊑ 生命周期状态
-- 业务战略分类符（business strategy classifier） ⊑ 行动分类符（action classifier）
-- 变更行动（change action） ⊑ 强制性公司行动（mandatory corporate action）
-- 集体诉讼（class action） ⊑ 自愿性公司行动（voluntary corporate action）
-- 同意征求（consent solicitation） ⊑ 自愿性公司行动（voluntary corporate action）
-- 公司行动（corporate action） ⊑ 行动（action）
-- 披露行动（disclosure action） ⊑ 自愿性公司行动（voluntary corporate action）
-- 剥离（divestiture） ⊑ 强制性公司行动（mandatory corporate action）
-- 收益导向分类符（income-oriented classifier） ⊑ 行动分类符（action classifier）
-- 法律形式变更（legal form change） ⊑ 强制性公司行动（mandatory corporate action）
-- 清算（liquidation） ⊑ 剥离（divestiture）
-- 强制性公司行动（mandatory corporate action） ⊑ 公司行动（corporate action）
-- 带选择的强制性公司行动（mandatory with choice corporate action） ⊑ 强制性公司行动（mandatory corporate action）
-- 市场行动（market action） ⊑ 行动（action）
-- 兼并/收购（merger / acquisition） ⊑ 强制性公司行动（mandatory corporate action）
-- 通知（notification） ⊑ 强制性公司行动（mandatory corporate action）
-- 组织地址变更（organization address change） ⊑ 通知（notification）
-- 组织名称变更（organization name change） ⊑ 通知（notification）
-- 优先发行（priority issue） ⊑ 自愿性公司行动（voluntary corporate action）
-- 监管行动（regulatory action） ⊑ 行动（action）
-- 分拆（spin off） ⊑ 剥离（divestiture）
-- 自愿性公司行动（voluntary corporate action） ⊑ 公司行动（corporate action）
+### 2.1 行动（action）
 
-## 5. 公理约定（Axioms）
+定义：由组织公告、发起或实施的、影响某法律实体或其发行证券、并可能对该实体利益相关方产生重大影响的事件。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**发生事项（Occurrence）**
+- 直接子类：**公司行动（corporate action）**、**市场行动（market action）**、**监管行动（regulatory action）**
 
-- **行动（action）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**行动分类符（action classifier）**。
-- **行动（action）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **行动分类方案（action classification scheme）**：**具有成员（hasMember）**的所有取值只能是**行动分类符（action classifier）**。
-- **行动分类方案（action classification scheme）**：**定义（defines）**至少有一个取值，类型是**行动分类符（action classifier）**。
-- **行动分类符（action classifier）**：**是……的成员（isMemberOf）**恰好有 1 个**行动分类方案（action classification scheme）**。
-- **行动分类符（action classifier）**：**定义于（isDefinedIn）**恰好有 1 个**行动分类方案（action classification scheme）**。
-- **行动分类符（action classifier）**：**分类（classifies）**至少有一个取值，类型是**行动（action）**。
-- **行动分类符（action classifier）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
-- **行动状态（action status）**：**分类（classifies）**至少有一个取值，类型是**行动（action）**。
-- **行动状态（action status）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
-- **自愿性公司行动（voluntary corporate action）**与**强制性公司行动（mandatory corporate action）**互斥：同一个体不能同时属于两者。
+属性：
 
-## 6. 依赖（owl:imports，11 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**行动分类符（action classifier）**。
+- **适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+#### 2.1.1 公司行动（corporate action）
+
+定义：由法律实体实施或与其直接相关、可能影响其发行证券并对其利益相关方（如股东）产生重大影响的行动。
+
+- 父类：**行动（action）**
+- 直接子类：**强制性公司行动（mandatory corporate action）**、**自愿性公司行动（voluntary corporate action）**
+
+##### 2.1.1.1 强制性公司行动（mandatory corporate action）
+
+定义：由公司董事会发起、影响全体股东的行动。
+
+- 父类：**公司行动（corporate action）**
+- 直接子类：**变更行动（change action）**、**剥离（divestiture）**、**法律形式变更（legal form change）**、**带选择的强制性公司行动（mandatory with choice corporate action）**、**兼并/收购（merger / acquisition）**、**通知（notification）**
+
+###### 2.1.1.1.1 变更行动（change action）
+
+定义：传播变更信息的公司行动，变更内容在公司行动细节中进一步说明。
+
+- 父类：**强制性公司行动（mandatory corporate action）**
+
+###### 2.1.1.1.2 剥离（divestiture）
+
+定义：涉及出售子公司业务权益或投资的公司行动。
+
+- 父类：**强制性公司行动（mandatory corporate action）**
+- 直接子类：**清算（liquidation）**、**分拆（spin off）**
+
+###### 2.1.1.1.2.1 清算（liquidation）
+
+定义：与企业结业相关的公司行动，包括但不限于分配现金、资产或两者。
+
+- 父类：**剥离（divestiture）**
+
+###### 2.1.1.1.2.2 分拆（spin off）
+
+定义：向母公司股东分配子公司股票、且股东无须交出所持股份的公司行动。
+
+- 父类：**剥离（divestiture）**
+
+###### 2.1.1.1.3 法律形式变更（legal form change）
+
+定义：表明组织法律形式发生变更的公司行动。
+
+- 父类：**强制性公司行动（mandatory corporate action）**
+
+###### 2.1.1.1.4 带选择的强制性公司行动（mandatory with choice corporate action）
+
+定义：股东可在多个选项中进行选择的强制性公司行动。
+
+- 父类：**强制性公司行动（mandatory corporate action）**
+
+###### 2.1.1.1.5 兼并/收购（merger / acquisition）
+
+定义：涉及法律实体或资产合并的公司行动。
+
+- 父类：**强制性公司行动（mandatory corporate action）**
+
+###### 2.1.1.1.6 通知（notification）
+
+定义：发行人提供信息、对持有人无会计/财务影响的公司行动。
+
+- 父类：**强制性公司行动（mandatory corporate action）**
+- 直接子类：**组织地址变更（organization address change）**、**组织名称变更（organization name change）**
+
+###### 2.1.1.1.6.1 组织地址变更（organization address change）
+
+定义：提供法律实体地址变更详情的信息行动。
+
+- 父类：**通知（notification）**
+
+###### 2.1.1.1.6.2 组织名称变更（organization name change）
+
+定义：提供法律实体名称变更详情的信息行动。
+
+- 父类：**通知（notification）**
+
+##### 2.1.1.2 自愿性公司行动（voluntary corporate action）
+
+定义：股东选择参与且必须作出回应、发行人才能处理该行动的事件。
+
+- 父类：**公司行动（corporate action）**
+- 直接子类：**集体诉讼（class action）**、**同意征求（consent solicitation）**、**披露行动（disclosure action）**、**优先发行（priority issue）**
+
+公理：
+
+- 与**强制性公司行动（mandatory corporate action）**互斥：同一个体不能同时属于两者。
+
+###### 2.1.1.2.1 集体诉讼（class action）
+
+定义：涉及利益相关方就财务损失寻求赔偿之情形的事件（法律行动）。
+
+- 父类：**自愿性公司行动（voluntary corporate action）**
+
+###### 2.1.1.2.2 同意征求（consent solicitation）
+
+定义：旨在不召集会议的情况下取得持有人对发行人或第三方提案之同意的程序。
+
+- 父类：**自愿性公司行动（voluntary corporate action）**
+
+###### 2.1.1.2.3 披露行动（disclosure action）
+
+定义：要求持有人或受益所有人向发行人披露其姓名、所在地及所持任何发行之持仓的公司行动。
+
+- 父类：**自愿性公司行动（voluntary corporate action）**
+
+###### 2.1.1.2.4 优先发行（priority issue）
+
+定义：一种公开要约：由于可用证券数量有限，现有股东享有优先权的公司行动。
+
+- 父类：**自愿性公司行动（voluntary corporate action）**
+
+#### 2.1.2 市场行动（market action）
+
+定义：由市场（如证券交易所）发起的、影响某法律实体或其发行证券、并可能对其利益相关方产生重大影响的行动。
+
+- 父类：**行动（action）**
+
+#### 2.1.3 监管行动（regulatory action）
+
+定义：由监管机构发起的、影响某法律实体或其发行证券、并可能对其利益相关方产生重大影响的行动。
+
+- 父类：**行动（action）**
+
+### 2.2 行动分类方案（action classification scheme）
+
+定义：对组织可能公告、发起或实施的各类行动与事件进行分类的方案。
+
+- 父类：**分类方案（ClassificationScheme）**、**代码集（CodeSet）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+| **定义（defines）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**的所有取值只能是**行动分类符（action classifier）**。
+- **定义（defines）**至少有一个取值，类型是**行动分类符（action classifier）**。
+
+### 2.3 行动分类符（action classifier）
+
+定义：区分组织可能公告、发起或实施的各类行动与事件的分类符。
+
+- 父类：**发生类别（OccurrenceKind）**、**分类符（Classifier）**
+- 直接子类：**业务战略分类符（business strategy classifier）**、**收益导向分类符（income-oriented classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **是……的成员（isMemberOf）** | — | — |
+| **具有标签（hasTag）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **分类（classifies）**至少有一个取值，类型是**行动（action）**。
+- **定义于（isDefinedIn）**恰好有 1 个**行动分类方案（action classification scheme）**。
+- **是……的成员（isMemberOf）**恰好有 1 个**行动分类方案（action classification scheme）**。
+
+#### 2.3.1 业务战略分类符（business strategy classifier）
+
+定义：对涉及改善流动性或通过多元化、合并与分立改变组织整体结构的公司行动进行分类的分类符。
+
+- 父类：**行动分类符（action classifier）**
+
+#### 2.3.2 收益导向分类符（income-oriented classifier）
+
+定义：对影响股东收益的公司行动进行分类的分类符。
+
+- 父类：**行动分类符（action classifier）**
+
+### 2.4 行动状态（action status）
+
+定义：某行动在某时点所处的状态。
+
+- 父类：**生命周期状态（LifecycleStatus）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **分类（classifies）**至少有一个取值，类型是**行动（action）**。
+
+## 3. 依赖（owl:imports，11 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -108,7 +293,7 @@
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CorporateActions.rdf`
 - 中文 Turtle：`CorporateActions.ttl`

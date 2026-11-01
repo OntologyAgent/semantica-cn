@@ -14,6 +14,21 @@
 
 **与相近概念的差别**：与加拿大经济指标本体的差别——发布机构与统计体系不同（美国 BLS/BEA vs 加拿大统计局），同名指标口径也可能不同。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **美国统计信息发布方（American statistics publisher）** 继承 **统计信息发布方（StatisticalInformationPublisher）**
+- **美国生产者价格指数（U.S. producer price index）** 继承 **生产者价格指数（ProducerPriceIndex）**
+- **消费者支出调查（consumer expenditure survey）** 继承 **统计计划（StatisticalProgram）**
+- **当前就业统计（current employment statistics）** 继承 **统计计划（StatisticalProgram）**
+- **当前人口调查（current population survey）** 继承 **统计计划（StatisticalProgram）**
+- **就业形势机构场所调查（employment situation establishment survey）** 继承 **就业形势调查（employment situation survey）**
+- **就业形势住户调查（employment situation household survey）** 继承 **就业形势调查（employment situation survey）**
+- **就业形势调查（employment situation survey）** 继承 **当前就业统计（current employment statistics）**
+- **就业形势调查（employment situation survey）** 继承 **当前人口调查（current population survey）**
+- **购买点调查（point of purchase survey）** 继承 **统计计划（StatisticalProgram）**
+- **城市消费者价格指数（urban consumer price index）** 继承 **消费者价格指数（ConsumerPriceIndex）**
+- **城市消费者全域（urban consumers universe）** 继承 **平民非机构人口（CivilianNonInstitutionalPopulation）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -30,41 +45,160 @@
 | 城市消费者价格指数（urban consumer price index） | 表示城市消费者为一篮子消费货物与服务所付价格之平均变化的经济指标。 |
 | 城市消费者全域（urban consumers universe） | 消费者支出调查的统计全域，由住户中共同作出支出决策的人构成。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 美国统计信息发布方（American statistics publisher） ⊑ 统计信息发布方
-- 美国生产者价格指数（U.S. producer price index） ⊑ 生产者价格指数
-- 消费者支出调查（consumer expenditure survey） ⊑ 统计计划
-- 当前就业统计（current employment statistics） ⊑ 统计计划
-- 当前人口调查（current population survey） ⊑ 统计计划
-- 就业形势机构场所调查（employment situation establishment survey） ⊑ 就业形势调查（employment situation survey）
-- 就业形势住户调查（employment situation household survey） ⊑ 就业形势调查（employment situation survey）
-- 就业形势调查（employment situation survey） ⊑ 当前就业统计（current employment statistics）
-- 就业形势调查（employment situation survey） ⊑ 当前人口调查（current population survey）
-- 购买点调查（point of purchase survey） ⊑ 统计计划
-- 城市消费者价格指数（urban consumer price index） ⊑ 消费者价格指数
-- 城市消费者全域（urban consumers universe） ⊑ 平民非机构人口
+### 2.1 美国统计信息发布方（American statistics publisher）
 
-## 5. 公理约定（Axioms）
+定义：由代表美国联邦政府发布统计信息的政府机构和部门构成的统计信息发布方。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**统计信息发布方（StatisticalInformationPublisher）**
 
-- **美国生产者价格指数（U.S. producer price index）**：**由……发布（isPublishedBy）**的取值固定为 BureauOfLaborStatistics。
-- **美国生产者价格指数（U.S. producer price index）**：**具有发布方（hasPublisher）**至少有一个取值，类型是**美国统计信息发布方（American statistics publisher）**。
-- **当前人口调查（current population survey）**：**规定（specifies）**至少有一个取值，类型是**平民非机构人口（CivilianNonInstitutionalPopulation）**。
-- **就业形势机构场所调查（employment situation establishment survey）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**机构场所（Establishment）**。
-- **就业形势住户调查（employment situation household survey）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**住户（Household）**。
-- **就业形势调查（employment situation survey）**：**经季节调整（isSeasonallyAdjusted）**存在取值约束。
-- **城市消费者价格指数（urban consumer price index）**：**由……发布（isPublishedBy）**的取值固定为 BureauOfLaborStatistics。
-- **城市消费者价格指数（urban consumer price index）**：**具有自变量（hasArgument）**恰好有 1 个**城市消费者全域（urban consumers universe）**。
-- **城市消费者价格指数（urban consumer price index）**：**具有发布方（hasPublisher）**至少有一个取值，类型是**美国统计信息发布方（American statistics publisher）**。
-- **城市消费者价格指数（urban consumer price index）**：**适用于（appliesTo）**至少有一个取值，类型是**城市消费者全域（urban consumers universe）**。
-- **城市消费者价格指数（urban consumer price index）**：**具有自变量（hasArgument）**至少有一个取值，类型是**篮子（Basket）**。
-- **城市消费者全域（urban consumers universe）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**最终消费者（UltimateConsumer）**。
-- **城市消费者全域（urban consumers universe）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**消费者支出调查（consumer expenditure survey）**。
-- **城市消费者全域（urban consumers universe）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**购买点调查（point of purchase survey）**。
+### 2.2 美国生产者价格指数（U.S. producer price index）
 
-## 6. 依赖（owl:imports，16 个）
+定义：表示国内生产者产出所获销售价格随时间变化之度量的经济指标。
+
+- 父类：**生产者价格指数（ProducerPriceIndex）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发布方（hasPublisher）** | — | — |
+| **由……发布（isPublishedBy）** | — | — |
+
+公理：
+
+- **具有发布方（hasPublisher）**至少有一个取值，类型是**美国统计信息发布方（American statistics publisher）**。
+- **由……发布（isPublishedBy）**的取值固定为 BureauOfLaborStatistics。
+
+### 2.3 消费者支出调查（consumer expenditure survey）
+
+定义：定期开展、提供消费者购买习惯信息（含支出、收入数据）的统计计划。
+
+- 父类：**统计计划（StatisticalProgram）**
+
+### 2.4 当前就业统计（current employment statistics）
+
+定义：定期开展、提供与企业和政府机构相关的分析信息、以提供详细行业数据的调查。
+
+- 父类：**统计计划（StatisticalProgram）**
+- 直接子类：**就业形势调查（employment situation survey）**
+
+#### 2.4.1 就业形势调查（employment situation survey）
+
+定义：定期开展、聚焦给定统计区就业特征之分析信息的调查。
+
+- 父类：**当前就业统计（current employment statistics）**、**当前人口调查（current population survey）**
+- 直接子类：**就业形势机构场所调查（employment situation establishment survey）**、**就业形势住户调查（employment situation household survey）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **经季节调整（isSeasonallyAdjusted）** | — | — |
+
+公理：
+
+- **经季节调整（isSeasonallyAdjusted）**存在取值约束。
+
+##### 2.4.1.1 就业形势机构场所调查（employment situation establishment survey）
+
+定义：定期开展、从企业角度调查给定统计区劳动力分析信息的调查。
+
+- 父类：**就业形势调查（employment situation survey）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**机构场所（Establishment）**。
+
+##### 2.4.1.2 就业形势住户调查（employment situation household survey）
+
+定义：定期开展、从住户角度调查给定统计区劳动力分析信息的调查。
+
+- 父类：**就业形势调查（employment situation survey）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**住户（Household）**。
+
+### 2.5 当前人口调查（current population survey）
+
+定义：定期开展、提供给定统计区一般人口之劳动力相关分析信息的调查。
+
+- 父类：**统计计划（StatisticalProgram）**
+- 直接子类：**就业形势调查（employment situation survey）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **规定（specifies）**至少有一个取值，类型是**平民非机构人口（CivilianNonInstitutionalPopulation）**。
+
+### 2.6 购买点调查（point of purchase survey）
+
+定义：定期开展、提供消费者购买各类物品与服务信息的计划。
+
+- 父类：**统计计划（StatisticalProgram）**
+
+### 2.7 城市消费者价格指数（urban consumer price index）
+
+定义：表示城市消费者为一篮子消费货物与服务所付价格之平均变化的经济指标。
+
+- 父类：**消费者价格指数（ConsumerPriceIndex）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发布方（hasPublisher）** | — | — |
+| **由……发布（isPublishedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有发布方（hasPublisher）**至少有一个取值，类型是**美国统计信息发布方（American statistics publisher）**。
+- **具有自变量（hasArgument）**恰好有 1 个**城市消费者全域（urban consumers universe）**。
+- **具有自变量（hasArgument）**至少有一个取值，类型是**篮子（Basket）**。
+- **由……发布（isPublishedBy）**的取值固定为 BureauOfLaborStatistics。
+- **适用于（appliesTo）**至少有一个取值，类型是**城市消费者全域（urban consumers universe）**。
+
+### 2.8 城市消费者全域（urban consumers universe）
+
+定义：消费者支出调查的统计全域，由住户中共同作出支出决策的人构成。
+
+- 父类：**平民非机构人口（CivilianNonInstitutionalPopulation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**最终消费者（UltimateConsumer）**。
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**消费者支出调查（consumer expenditure survey）**。
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**购买点调查（point of purchase survey）**。
+
+## 3. 依赖（owl:imports，16 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -87,7 +221,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/` | LCC ISO 3166-1 国家代码（ISO 3166-1 Country Codes） | LCC 中 ISO 3166-1 标准的国家/地区代码个体集（如 CN、US、MX），供法域与地址建模引用。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`USEconomicIndicators.rdf`
 - 中文 Turtle：`USEconomicIndicators.ttl`

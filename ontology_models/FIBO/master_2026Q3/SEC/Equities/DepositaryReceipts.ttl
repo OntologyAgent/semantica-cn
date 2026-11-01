@@ -240,12 +240,12 @@ fibo-sec-eq-dr:AmericanDepositaryReceipt a owl:Class ;
         "美国存托凭证（American depositary receipt）"@zh ;
     rdfs:comment "代表外国公司证券、使该公司证券得以在美国金融市场交易的存托凭证（ADR）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-be-ge-usj:UnitedStatesJurisdiction ;
-            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-sec-eq-dr:AmericanDepositaryReceiptLevel ;
             owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-be-ge-usj:UnitedStatesJurisdiction ;
+            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ],
         fibo-sec-eq-dr:DepositaryReceipt ;
     skos:definition "depositary receipt that represents securities of a foreign company and allows that company's securities to trade in the U.S. financial markets"@en ;
     skos:example "For example, Accton Technology is traded on the Taiwanese exchange. In order for Accton Technology to be traded in the United States, Citibank, acting as a domestic custodian bank, purchases shares of Accton Technology and creates a security, ISIN US00437R1032, which can be traded on a U.S. exchange, in this case PORTAL. Note that the depositary shares do not have to equal the number of original shares. In the case of Accton Technology, one depositary share is equivalent to two original shares."@en ;
@@ -274,11 +274,11 @@ fibo-sec-eq-dr:AmericanDepositaryReceiptLevel a owl:Class ;
         "美国存托凭证级别（American depositary receipt level）"@zh ;
     rdfs:comment "按外国公司进入美国市场程度对美国存托凭证（ADR）进行分级的分类器。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:isDefinedIn ;
-            owl:someValuesFrom fibo-sec-eq-dr:AmericanDepositaryReceiptLevelScheme ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:classifies ;
             owl:someValuesFrom fibo-sec-eq-dr:AmericanDepositaryReceipt ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:someValuesFrom fibo-sec-eq-dr:AmericanDepositaryReceiptLevelScheme ],
         fibo-sec-sec-cls:FinancialInstrumentClassifier ;
     skos:definition "classifier for American depositary receipts that categorizes ADRs into levels based on the extent to which the foreign company has access to the U.S. market"@en ;
     cmns-av:abbreviation "ADR level"@en .
@@ -298,12 +298,12 @@ fibo-sec-eq-dr:DepositaryReceipt a owl:Class ;
         "存托凭证（depositary receipt）"@zh ;
     rdfs:comment "由信托公司、证券存管机构或银行签发的可转让金融工具，是公开交易证券存托的凭证。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-dr:hasTradedSecurity ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-sec-eq-dr:hasMultiplier ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-dr:hasTradedSecurity ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         fibo-fbc-fi-fi:Security ;
     skos:definition "negotiable financial instrument issued by a trust company, security depositary, or bank that is evidence of the deposit of publicly traded securities and that facilitates the ownership of securities traded in other jurisdictions"@en ;
     cmns-av:abbreviation "DR"@en ;

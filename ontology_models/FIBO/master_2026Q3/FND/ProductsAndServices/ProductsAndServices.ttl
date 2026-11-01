@@ -159,14 +159,14 @@ fibo-fnd-pas-pas:Sale a owl:Class ;
         "销售（sale）"@zh ;
     rdfs:comment "以货物或服务换取货币的交换。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
+            owl:someValuesFrom fibo-fnd-pas-pas:Buyer ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-acc-cur:hasPrice ;
             owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-pas-pas:hasSeller ;
             owl:someValuesFrom fibo-fnd-pas-pas:Seller ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
-            owl:someValuesFrom fibo-fnd-pas-pas:Buyer ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-fnd-pas-pas:Product ],

@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：申请≠合同——申请是借款意向与资料提交，审批通过并签约后才形成贷款合同；与贷款产品的差别——产品是机构的条款模板，申请是客户按模板提出的个案。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **全体借款人月收入（all borrowers' monthly income）** 继承 **货币数量（MonetaryAmount）**
+- **全体借款人月收入（all borrowers' monthly income）** 继承 **收入（Income）**
+- **借款人评估（borrower assessment）** 继承 **评估报告（AssessmentReport）**
+- **借款人月收入（borrower monthly income）** 继承 **货币数量（MonetaryAmount）**
+- **借款人月收入（borrower monthly income）** 继承 **收入（Income）**
+- **信用风险评估（credit risk assessment）** 继承 **评估活动（AssessmentActivity）**
+- **收入核实报告（income verification report）** 继承 **评估报告（AssessmentReport）**
+- **个人信用评级（individual person credit rating）** 继承 **信用评级（CreditRating）**
+- **贷款申请（loan application）** 继承 **文件（Document）**
+- **协议阶段的贷款申请（loan application at agreement stage）** 继承 **贷款申请状态（loan application status）**
+- **放款阶段的贷款申请（loan application at disbursement stage）** 继承 **贷款申请状态（loan application status）**
+- **贷款申请阶段（loan application phase）** 继承 **生命周期阶段（LifecycleStage）**
+- 其余 10 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -38,89 +54,247 @@
 | 核保自动化（underwriting automation） | 表明贷款是人工核保还是通过自动核保系统核保的分类符。 |
 | 核保决定（underwriting decision） | 由人工或自动核保系统确定的贷款批准建议分类符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 全体借款人月收入（all borrowers' monthly income） ⊑ 货币数量
-- 全体借款人月收入（all borrowers' monthly income） ⊑ 收入
-- 借款人评估（borrower assessment） ⊑ 评估报告
-- 借款人月收入（borrower monthly income） ⊑ 货币数量
-- 借款人月收入（borrower monthly income） ⊑ 收入
-- 信用风险评估（credit risk assessment） ⊑ 评估活动
-- 收入核实报告（income verification report） ⊑ 评估报告
-- 个人信用评级（individual person credit rating） ⊑ 信用评级
-- 贷款申请（loan application） ⊑ 文件
-- 协议阶段的贷款申请（loan application at agreement stage） ⊑ 贷款申请状态（loan application status）
-- 放款阶段的贷款申请（loan application at disbursement stage） ⊑ 贷款申请状态（loan application status）
-- 贷款申请阶段（loan application phase） ⊑ 生命周期阶段
-- 贷款申请状态（loan application status） ⊑ 生命周期状态
-- 申请阶段的贷款（loan at application stage） ⊑ 贷款申请状态（loan application status）
-- 预批准合同（pre-approval contract） ⊑ 书面合同
-- 预批准请求（pre-approval request） ⊑ 请求活动
-- 公开记录（public record） ⊑ 记录
-- 公开记录类别（public record category） ⊑ 分类符
-- 总债务支出比（total debt expense ratio） ⊑ 百分比货币数量
-- 核保自动化（underwriting automation） ⊑ 分类符
-- 核保决定（underwriting decision） ⊑ 分类符
+### 2.1 全体借款人月收入（all borrowers' monthly income）
 
-## 3. 对象属性（Object Property）
+定义：贷款全部借款人的月度合格收入总额。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-loan-ln-app:hasApplicationDate | 具有申请日期（has application date） | 申请签署并提交的日期。 | 定义域（domain）：贷款申请（loan application）；值域（range）：显式日期；子属性（subPropertyOf）：具有请求日期 |
-| fibo-loan-ln-app:hasApplicationPhase | 具有申请阶段（has application phase） | 该贷款申请在申请生命周期中所处的阶段。 | 定义域（domain）：贷款申请（loan application）；值域（range）：贷款申请阶段（loan application phase）；子属性（subPropertyOf）：具有阶段 |
-| fibo-loan-ln-app:hasApprovedAmount | 具有批准金额（has approved amount） | 将某事物（如贷款）关联到批准的资金金额。 | 子属性（subPropertyOf）：具有货币数量 |
-| fibo-loan-ln-app:hasGrossIncome | 具有总收入（has gross income） | 标识借款人的个人总收入。 | 定义域（domain）：借款人评估（borrower assessment）；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-loan-ln-app:hasRequestedAmount | 具有申请金额（has requested amount） | 将某事物（如贷款申请）关联到所申请的资金金额。 | 子属性（subPropertyOf）：具有货币数量 |
-| fibo-loan-ln-app:usesFactor | 使用因子（uses factor） | 将（如）风险评估关联到评估中作为因子使用的事物。 | 子属性（subPropertyOf）：基于 |
+- 父类：**货币数量（MonetaryAmount）**、**收入（Income）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-loan-ln-app:hasIntendedLoanPurpose | 具有拟定贷款用途（has intended loan purpose） | 标识贷款资金的拟定用途。 |
-| fibo-loan-ln-app:hasOriginalLoanDebtToIncomeRatio | 具有原始贷款债务收入比（has original loan debt-to-income ratio） | 标识贷款发放时的债务收入比（DTI），按合并收入计。 |
-| fibo-loan-ln-app:isPreApprovalRequested | 已申请预批准（is pre-approval requested） | 表明是否已随贷款申请一并申请预批准。 |
+| **基于（isBasedOn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **基于（isBasedOn）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
 
-- **全体借款人月收入（all borrowers' monthly income）**：**基于（isBasedOn）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
-- **借款人评估（borrower assessment）**：**包含（comprises）**可以有 0 个或多个**收入核实报告（income verification report）**。
-- **借款人评估（borrower assessment）**：**包含（comprises）**可以有 0 个或多个**个人信用评级（individual person credit rating）**。
-- **借款人评估（borrower assessment）**：**包含（comprises）**可以有 0 个或多个**还款历史（PaymentHistory）**。
-- **借款人评估（borrower assessment）**：**具有评估日期（hasDateOfAssessment）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
-- **借款人评估（borrower assessment）**：**关于（isAbout）**至少有一个取值，类型是**借款人（Borrower）**。
-- **借款人评估（borrower assessment）**：**关于（isAbout）**至少有一个取值，类型是**贷款申请（loan application）**。
-- **借款人月收入（borrower monthly income）**：**具有参与方角色（has party role）**至少有一个取值，类型是**借款人（Borrower）**。
-- **信用风险评估（credit risk assessment）**：**具有输入（hasInput）**至少有一个取值，类型是**信用报告（CreditReport）**。
-- **信用风险评估（credit risk assessment）**：**具有输入（hasInput）**至少有一个取值，类型是**预批准合同（pre-approval contract）**。
-- **信用风险评估（credit risk assessment）**：**具有输入（hasInput）**至少有一个取值，类型是**预批准请求（pre-approval request）**。
-- **信用风险评估（credit risk assessment）**：**具有输入（hasInput）**至少有一个取值，类型是**公开记录（public record）**。
-- **信用风险评估（credit risk assessment）**：**具有输出（hasOutput）**至少有一个取值，类型是**核保决定（underwriting decision）**。
-- **信用风险评估（credit risk assessment）**：**使用因子（uses factor）**至少有一个取值，类型是**全体借款人月收入（all borrowers' monthly income）**。
-- **信用风险评估（credit risk assessment）**：**使用因子（uses factor）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
-- **信用风险评估（credit risk assessment）**：**使用因子（uses factor）**至少有一个取值，类型是**总债务支出比（total debt expense ratio）**。
-- **信用风险评估（credit risk assessment）**：**使用因子（uses factor）**至少有一个取值，类型是**合并贷款价值比（CombinedLoanToValueRatio）**。
-- **信用风险评估（credit risk assessment）**：**适用于（appliesTo）**至少有一个取值，类型是**贷款（Loan）**。
-- **贷款申请（loan application）**：**包含（comprises）**可以有 0 个或多个**合并贷款价值比（CombinedLoanToValueRatio）**。
-- **贷款申请（loan application）**：**包含（comprises）**可以有 0 个或多个**贷款价值比（LoanToValueRatio）**。
-- **贷款申请（loan application）**：**具有接收日期（hasDateReceived）**可以有 0 个或多个**显式日期（ExplicitDate）**。
-- **贷款申请（loan application）**：**具有申请日期（has application date）**恰好有 1 个**显式日期（ExplicitDate）**。
-- **贷款申请（loan application）**：**由……提交（isSubmittedBy）**至少有一个取值，类型是**请求方（Requester）**。
-- **贷款申请（loan application）**：**已申请预批准（is pre-approval requested）**至少有一个取值，类型是**xsd:boolean（boolean）**。
-- **贷款申请（loan application）**：**包含（comprises）**至少有一个取值，类型是**全体借款人月收入（all borrowers' monthly income）**。
-- **贷款申请（loan application）**：**包含（comprises）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
-- **贷款申请（loan application）**：**包含（comprises）**至少有一个取值，类型是**总债务支出比（total debt expense ratio）**。
-- **预批准合同（pre-approval contract）**：**具有利率（hasInterestRate）**至少有一个取值，类型是**利率（InterestRate）**。
-- **预批准合同（pre-approval contract）**：**具有批准金额（has approved amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
-- **预批准请求（pre-approval request）**：**具有借款人（hasBorrower）**至少有一个取值，类型是**借款人（Borrower）**。
-- **预批准请求（pre-approval request）**：**具有申请金额（has requested amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
-- **公开记录（public record）**：**引用（refersTo）**可以有 0 个或多个**账户（Account）**。
-- **公开记录（public record）**：**由……证明（isEvidencedBy）**可以有 0 个或多个**法律文件（LegalDocument）**。
-- **公开记录（public record）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**公开记录类别（public record category）**。
+### 2.2 借款人评估（borrower assessment）
 
-## 6. 依赖（owl:imports，20 个）
+定义：详述借款人及其与贷款申请可能相关的信用历史的评估报告。
+
+- 父类：**评估报告（AssessmentReport）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有评估日期（hasDateOfAssessment）** | — | — |
+| **具有总收入（has gross income）** | 标识借款人的个人总收入。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有原始贷款债务收入比（has original loan debt-to-income ratio）** | 标识贷款发放时的债务收入比（DTI），按合并收入计。 | 值域：xsd:decimal |
+| **包含（comprises）** | — | — |
+| **关于（isAbout）** | — | — |
+
+公理：
+
+- **关于（isAbout）**至少有一个取值，类型是**借款人（Borrower）**。
+- **关于（isAbout）**至少有一个取值，类型是**贷款申请（loan application）**。
+- **具有评估日期（hasDateOfAssessment）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **包含（comprises）**可以有 0 个或多个**个人信用评级（individual person credit rating）**。
+- **包含（comprises）**可以有 0 个或多个**收入核实报告（income verification report）**。
+- **包含（comprises）**可以有 0 个或多个**还款历史（PaymentHistory）**。
+
+### 2.3 借款人月收入（borrower monthly income）
+
+定义：潜在借款人的月度合格收入总额。
+
+- 父类：**货币数量（MonetaryAmount）**、**收入（Income）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有一个取值，类型是**借款人（Borrower）**。
+
+### 2.4 信用风险评估（credit risk assessment）
+
+定义：聚焦于确定潜在借款人偿还贷款之可能性的风险评估。
+
+- 父类：**评估活动（AssessmentActivity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有输入（hasInput）** | — | — |
+| **具有输出（hasOutput）** | — | — |
+| **使用因子（uses factor）** | 将（如）风险评估关联到评估中作为因子使用的事物。 | 子属性：基于 |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **使用因子（uses factor）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
+- **使用因子（uses factor）**至少有一个取值，类型是**全体借款人月收入（all borrowers' monthly income）**。
+- **使用因子（uses factor）**至少有一个取值，类型是**合并贷款价值比（CombinedLoanToValueRatio）**。
+- **使用因子（uses factor）**至少有一个取值，类型是**总债务支出比（total debt expense ratio）**。
+- **具有输入（hasInput）**至少有一个取值，类型是**信用报告（CreditReport）**。
+- **具有输入（hasInput）**至少有一个取值，类型是**公开记录（public record）**。
+- **具有输入（hasInput）**至少有一个取值，类型是**预批准合同（pre-approval contract）**。
+- **具有输入（hasInput）**至少有一个取值，类型是**预批准请求（pre-approval request）**。
+- **具有输出（hasOutput）**至少有一个取值，类型是**核保决定（underwriting decision）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**贷款（Loan）**。
+
+### 2.5 收入核实报告（income verification report）
+
+定义：提供核实借款人收入所用方法及支持文件的报告。
+
+- 父类：**评估报告（AssessmentReport）**
+
+### 2.6 个人信用评级（individual person credit rating）
+
+定义：提供对个人信用状况之意见的信用评级。
+
+- 父类：**信用评级（CreditRating）**
+
+### 2.7 贷款申请（loan application）
+
+定义：潜在借款人向潜在贷款人提出的借款请求，包含用于决定是否批准贷款的信息。
+
+- 父类：**文件（Document）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……提交（isSubmittedBy）** | — | — |
+| **具有接收日期（hasDateReceived）** | — | — |
+| **具有申请日期（has application date）** | 申请签署并提交的日期。 | 值域：显式日期；子属性：具有请求日期 |
+| **具有申请阶段（has application phase）** | 该贷款申请在申请生命周期中所处的阶段。 | 值域：贷款申请阶段（loan application phase）；子属性：具有阶段 |
+| **具有拟定贷款用途（has intended loan purpose）** | 标识贷款资金的拟定用途。 | 值域：xsd:string |
+| **已申请预批准（is pre-approval requested）** | 表明是否已随贷款申请一并申请预批准。 | 值域：xsd:boolean |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有接收日期（hasDateReceived）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **具有申请日期（has application date）**恰好有 1 个**显式日期（ExplicitDate）**。
+- **包含（comprises）**可以有 0 个或多个**合并贷款价值比（CombinedLoanToValueRatio）**。
+- **包含（comprises）**可以有 0 个或多个**贷款价值比（LoanToValueRatio）**。
+- **包含（comprises）**至少有一个取值，类型是**借款人月收入（borrower monthly income）**。
+- **包含（comprises）**至少有一个取值，类型是**全体借款人月收入（all borrowers' monthly income）**。
+- **包含（comprises）**至少有一个取值，类型是**总债务支出比（total debt expense ratio）**。
+- **已申请预批准（is pre-approval requested）**至少有一个取值，类型是**xsd:boolean（boolean）**。
+- **由……提交（isSubmittedBy）**至少有一个取值，类型是**请求方（Requester）**。
+
+### 2.8 贷款申请阶段（loan application phase）
+
+定义：贷款申请所处的阶段。
+
+- 父类：**生命周期阶段（LifecycleStage）**
+
+### 2.9 贷款申请状态（loan application status）
+
+定义：贷款申请的状态。
+
+- 父类：**生命周期状态（LifecycleStatus）**
+- 直接子类：**协议阶段的贷款申请（loan application at agreement stage）**、**放款阶段的贷款申请（loan application at disbursement stage）**、**申请阶段的贷款（loan at application stage）**
+
+#### 2.9.1 协议阶段的贷款申请（loan application at agreement stage）
+
+定义：处于协议阶段的贷款申请。
+
+- 父类：**贷款申请状态（loan application status）**
+
+#### 2.9.2 放款阶段的贷款申请（loan application at disbursement stage）
+
+定义：处于放款阶段的贷款申请。
+
+- 父类：**贷款申请状态（loan application status）**
+
+#### 2.9.3 申请阶段的贷款（loan at application stage）
+
+定义：处于申请阶段的贷款。
+
+- 父类：**贷款申请状态（loan application status）**
+
+### 2.10 预批准合同（pre-approval contract）
+
+定义：当特定条件满足（如找到合适房产、信用状况不变）时提供贷款的书面承诺。
+
+- 父类：**书面合同（WrittenContract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有利率（hasInterestRate）** | — | — |
+| **具有批准金额（has approved amount）** | 将某事物（如贷款）关联到批准的资金金额。 | 子属性：具有货币数量 |
+
+公理：
+
+- **具有利率（hasInterestRate）**至少有一个取值，类型是**利率（InterestRate）**。
+- **具有批准金额（has approved amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+
+### 2.11 预批准请求（pre-approval request）
+
+定义：潜在借款人请求贷款人承诺为其预批准不超过指定金额贷款的请求。
+
+- 父类：**请求活动（RequestActivity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有借款人（hasBorrower）** | — | — |
+| **具有申请金额（has requested amount）** | 将某事物（如贷款申请）关联到所申请的资金金额。 | 子属性：具有货币数量 |
+
+公理：
+
+- **具有借款人（hasBorrower）**至少有一个取值，类型是**借款人（Borrower）**。
+- **具有申请金额（has requested amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+
+### 2.12 公开记录（public record）
+
+定义：可从法院或其他政府机构公开获取的、关于某参与方所涉行动的记录。
+
+- 父类：**记录（Record）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……证明（isEvidencedBy）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **引用（refersTo）**可以有 0 个或多个**账户（Account）**。
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**公开记录类别（public record category）**。
+- **由……证明（isEvidencedBy）**可以有 0 个或多个**法律文件（LegalDocument）**。
+
+### 2.13 公开记录类别（public record category）
+
+定义：与贷款申请相关的公开记录分类符，如税务留置、工资扣押、止赎。
+
+- 父类：**分类符（Classifier）**
+
+### 2.14 总债务支出比（total debt expense ratio）
+
+定义：全体借款人全部月度债务偿付（含拟议支出）与其收入之比。
+
+- 父类：**百分比货币数量（PercentageMonetaryAmount）**
+
+### 2.15 核保自动化（underwriting automation）
+
+定义：表明贷款是人工核保还是通过自动核保系统核保的分类符。
+
+- 父类：**分类符（Classifier）**
+
+### 2.16 核保决定（underwriting decision）
+
+定义：由人工或自动核保系统确定的贷款批准建议分类符。
+
+- 父类：**分类符（Classifier）**
+
+## 3. 依赖（owl:imports，20 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -147,7 +321,7 @@
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`LoanApplications.rdf`
 - 中文 Turtle：`LoanApplications.ttl`

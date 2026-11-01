@@ -14,6 +14,14 @@
 
 **与相近概念的差别**：上市≠交易——上市是获得挂牌资格，交易是日常的买卖行为；一只证券可以在多个市场上市（交叉上市）。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **上市证券（listed security）** 继承 **注册证券（registered security）**
+- **挂牌服务（listing service）** 继承 **金融服务（FinancialService）**
+- **注册证券（registered security）** 继承 **证券（Security）**
+- **上市证券（listed security）** 通过 **经由……挂牌（is listed via）** 关联 **挂牌（listing）**
+- **挂牌（listing）** 通过 **挂牌（lists）** 关联 **上市证券（listed security）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -23,56 +31,101 @@
 | 挂牌服务（listing service） | 交易所为促进证券交易提供的服务。 |
 | 注册证券（registered security） | 已在某一注册机构注册的证券。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 上市证券（listed security） ⊑ 注册证券（registered security）
-- 挂牌服务（listing service） ⊑ 金融服务
-- 注册证券（registered security） ⊑ 证券
+### 2.1 挂牌（listing）
 
-## 3. 对象属性（Object Property）
+定义：由交易所管理的证券发行的目录条目，规定该证券在该交易所可供交易的条款。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-sec-lst:hasHomeExchange | 具有主场交易所（has home exchange） | 指明被视为某证券主要市场的交易所，通常（但不一定）位于该证券的发行国。 | 值域（range）：交易所；子属性（subPropertyOf）：由……提供 |
-| fibo-sec-sec-lst:hasLastTradingDateTime | 具有最后交易日期时间（has last trading date and time） | 规定该证券在交易所最后成交的日期和时间。 | 定义域（domain）：挂牌（listing）；值域（range）：日期时间；子属性（subPropertyOf）：具有日期时间 |
-| fibo-sec-sec-lst:hasOriginalPlaceOfListing | 具有原始挂牌地（has original place of listing） | 指明最初为证券挂牌的交易所。 | 值域（range）：交易所 |
-| fibo-sec-sec-lst:hasTickSize | 具有最小报价单位（has tick size） | 规定该证券在某一交易所的最小价格变动单位。 | 定义域（domain）：挂牌（listing）；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-sec-sec-lst:isListedVia | 经由……挂牌（is listed via） | 标识负责该证券挂牌的服务。 | 定义域（domain）：上市证券（listed security）；值域（range）：挂牌（listing）；逆属性（inverseOf）：挂牌（lists） |
-| fibo-sec-sec-lst:isTradedOn | 在……交易（is traded on） | 标识该证券交易的交易场所。 | 定义域（domain）：上市证券（listed security）；值域（range）：交易所；子属性（subPropertyOf）：由……提供 |
-| fibo-sec-sec-lst:lists | 挂牌（lists） | 将某一交易所特定的证券挂牌与其发行关联起来。 | 定义域（domain）：挂牌（listing）；值域（range）：上市证券（listed security） |
+属性：
 
-## 4. 数据属性（Datatype Property）
-
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-sec-sec-lst:hasDelistingDate | 具有退市日期（has delisting date） | 规定交易所为证券设定的退市日期。 |
-| fibo-sec-sec-lst:hasListingDate | 具有上市日期（has listing date） | 指明证券挂牌的日期。 |
-| fibo-sec-sec-lst:isSeasoned | 是否已成熟（is seasoned） | 表明该证券公开交易时间已足够长，其首次公开发行带来的短期成交量波动已消除。 |
+| **具有批量规模（hasLotSize）** | — | — |
+| **具有登记状态（hasRegistrationStatus）** | — | — |
+| **具有货币（hasCurrency）** | — | — |
+| **具有退市日期（has delisting date）** | 规定交易所为证券设定的退市日期。 | 值域：cmns-dt:CombinedDateTime |
+| **具有最后交易日期时间（has last trading date and time）** | 规定该证券在交易所最后成交的日期和时间。 | 值域：日期时间；子属性：具有日期时间 |
+| **具有上市日期（has listing date）** | 指明证券挂牌的日期。 | 值域：cmns-dt:CombinedDateTime |
+| **具有最小报价单位（has tick size）** | 规定该证券在某一交易所的最小价格变动单位。 | 值域：货币数量；子属性：具有货币数量 |
+| **挂牌（lists）** | 将某一交易所特定的证券挂牌与其发行关联起来。 | 值域：上市证券（listed security） |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有上市日期（has listing date）**存在取值约束。
+- **具有批量规模（hasLotSize）**存在取值约束。
+- **具有最后交易日期时间（has last trading date and time）**可以有 0 个或多个**日期时间（DateTime）**。
+- **具有最小报价单位（has tick size）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **具有登记状态（hasRegistrationStatus）**至多有 1 个**登记状态（RegistrationStatus）**。
+- **具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
+- **具有退市日期（has delisting date）**存在取值约束。
+- **挂牌（lists）**恰好有 1 个**证券发行（SecuritiesOffering）**。
 
-- **上市证券（listed security）**：**具有主场交易所（has home exchange）**恰好有 1 个**交易所（Exchange）**。
-- **上市证券（listed security）**：**具有原始挂牌地（has original place of listing）**恰好有 1 个**交易所（Exchange）**。
-- **上市证券（listed security）**：**经由……挂牌（is listed via）**至少有一个取值，类型是**挂牌（listing）**。
-- **挂牌（listing）**：**具有登记状态（hasRegistrationStatus）**至多有 1 个**登记状态（RegistrationStatus）**。
-- **挂牌（listing）**：**具有最小报价单位（has tick size）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **挂牌（listing）**：**具有最后交易日期时间（has last trading date and time）**可以有 0 个或多个**日期时间（DateTime）**。
-- **挂牌（listing）**：**具有批量规模（hasLotSize）**存在取值约束。
-- **挂牌（listing）**：**具有退市日期（has delisting date）**存在取值约束。
-- **挂牌（listing）**：**挂牌（lists）**恰好有 1 个**证券发行（SecuritiesOffering）**。
-- **挂牌（listing）**：**具有上市日期（has listing date）**存在取值约束。
-- **挂牌（listing）**：**具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
-- **挂牌服务（listing service）**：**由……配置提供（isProvisionedBy）**可以有 0 个或多个**交易所（Exchange）**。
-- **挂牌服务（listing service）**：**由……提供（isProvidedBy）**可以有 0 个或多个**交易所（Exchange）**。
-- **挂牌服务（listing service）**：**提供（provides）**可以有 0 个或多个**挂牌（listing）**。
-- **注册证券（registered security）**：**以……形式发行（isIssuedInForm）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **注册证券（registered security）**：**注册于（isRegisteredWith）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
-- **注册证券（registered security）**：**具有注册日期（hasRegistrationDate）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
-- **注册证券（registered security）**与**豁免证券**互斥：同一个体不能同时属于两者。
+### 2.2 挂牌服务（listing service）
 
-## 6. 依赖（owl:imports，15 个）
+定义：交易所为促进证券交易提供的服务。
+
+- 父类：**金融服务（FinancialService）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……配置提供（isProvisionedBy）** | — | — |
+| **由……提供（isProvidedBy）** | — | — |
+| **提供（provides）** | — | — |
+
+公理：
+
+- **提供（provides）**可以有 0 个或多个**挂牌（listing）**。
+- **由……提供（isProvidedBy）**可以有 0 个或多个**交易所（Exchange）**。
+- **由……配置提供（isProvisionedBy）**可以有 0 个或多个**交易所（Exchange）**。
+
+### 2.3 注册证券（registered security）
+
+定义：已在某一注册机构注册的证券。
+
+- 父类：**证券（Security）**
+- 直接子类：**上市证券（listed security）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **以……形式发行（isIssuedInForm）** | — | — |
+| **注册于（isRegisteredWith）** | — | — |
+| **具有注册日期（hasRegistrationDate）** | — | — |
+
+公理：
+
+- **以……形式发行（isIssuedInForm）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **具有注册日期（hasRegistrationDate）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+- **注册于（isRegisteredWith）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
+- 与**豁免证券（ExemptSecurity）**互斥：同一个体不能同时属于两者。
+
+#### 2.3.1 上市证券（listed security）
+
+定义：在至少一个交易所挂牌的注册证券。
+
+- 父类：**注册证券（registered security）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有主场交易所（has home exchange）** | 指明被视为某证券主要市场的交易所，通常（但不一定）位于该证券的发行国。 | 值域：交易所；子属性：由……提供 |
+| **具有原始挂牌地（has original place of listing）** | 指明最初为证券挂牌的交易所。 | 值域：交易所 |
+| **经由……挂牌（is listed via）** | 标识负责该证券挂牌的服务。 | 值域：挂牌（listing）；逆属性：挂牌（lists） |
+| **是否已成熟（is seasoned）** | 表明该证券公开交易时间已足够长，其首次公开发行带来的短期成交量波动已消除。 | 值域：xsd:boolean |
+| **在……交易（is traded on）** | 标识该证券交易的交易场所。 | 值域：交易所；子属性：由……提供 |
+
+公理：
+
+- **具有主场交易所（has home exchange）**恰好有 1 个**交易所（Exchange）**。
+- **具有原始挂牌地（has original place of listing）**恰好有 1 个**交易所（Exchange）**。
+- **经由……挂牌（is listed via）**至少有一个取值，类型是**挂牌（listing）**。
+
+## 3. 依赖（owl:imports，15 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -94,7 +147,7 @@
 | `https://www.omg.org/spec/Commons/RegistrationAuthorities/` | OMG 通用登记主管机构本体（OMG Commons Registration Authorities） | Commons 库中的登记主管机构本体，定义负责登记注册的主管机构及其登记行为的通用概念。 |
 | `https://www.omg.org/spec/Commons/SitesAndFacilities/` | OMG 通用场所与设施本体（OMG Commons Sites and Facilities） | Commons 库中的场所与设施本体，定义物理场所、设施及其位置的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SecuritiesListings.rdf`
 - 中文 Turtle：`SecuritiesListings.ttl`

@@ -14,31 +14,47 @@
 
 **与相近概念的差别**：Rule 144 限制「受限证券」的公开转售（锁定期、数量上限），Reg S 规范境外发行不得回流美国——一个是境内转售规则，一个是境外发行安全港。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **蓝天法（blue sky law）** 继承 **证券法规（SecuritiesRegulation）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 蓝天法（blue sky law） | 美国州级证券法规，旨在保护投资者免受证券欺诈，要求发行人注册并披露详细信息。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 蓝天法（blue sky law） ⊑ 证券法规
+### 2.1 蓝天法（blue sky law）
 
-## 4. 数据属性（Datatype Property）
+定义：美国州级证券法规，旨在保护投资者免受证券欺诈，要求发行人注册并披露详细信息。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**证券法规（SecuritiesRegulation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-sec-sec-usrst:isEmployeeRetirementIncomeSecurityActConformant | 是否符合《雇员退休收入保障法》（is Employee Retirement Income Security Act conformant） | 表明该证券是否符合 1974 年《雇员退休收入保障法》（ERISA）这一规范雇员福利计划的联邦法律。 |
-| fibo-sec-sec-usrst:isFederalDepositInsuranceCorporationInsured | 是否受联邦存款保险公司承保（is Federal Deposit Insurance Corporation insured） | 表明该证券是否在联邦存款保险公司（FDIC）保险覆盖范围内。 |
-| fibo-sec-sec-usrst:isSubjectToFederalReserveBoardRegulationT | 是否受联邦储备委员会 T 条例约束（is subject to Federal Reserve Board Regulation T） | 表明某一现金或保证金账户是否受联邦储备委员会（FRB）保证金要求约束。 |
+| **适用于情境（isApplicableIn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **适用于情境（isApplicableIn）**可以有 0 个或多个**地理区域（GeographicRegion）**。
 
-- **蓝天法（blue sky law）**：**适用于情境（isApplicableIn）**可以有 0 个或多个**地理区域（GeographicRegion）**。
+## 3. 其他属性
 
-## 6. 依赖（owl:imports，11 个）
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **是否符合《雇员退休收入保障法》（is Employee Retirement Income Security Act conformant）** | 表明该证券是否符合 1974 年《雇员退休收入保障法》（ERISA）这一规范雇员福利计划的联邦法律。 |
+| **是否受联邦存款保险公司承保（is Federal Deposit Insurance Corporation insured）** | 表明该证券是否在联邦存款保险公司（FDIC）保险覆盖范围内。 |
+| **是否受联邦储备委员会 T 条例约束（is subject to Federal Reserve Board Regulation T）** | 表明某一现金或保证金账户是否受联邦储备委员会（FRB）保证金要求约束。 |
+
+## 4. 依赖（owl:imports，11 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -56,7 +72,7 @@
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 | `https://www.omg.org/spec/Commons/Locations/` | OMG 通用位置本体（OMG Commons Locations） | Commons 库中的位置本体，定义地理位置、地点的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`USSecuritiesRestrictions.rdf`
 - 中文 Turtle：`USSecuritiesRestrictions.ttl`

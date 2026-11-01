@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：利率≠收益率——利率是合同约定的资金价格，收益率（yield）是投资回报的市场度量；基准利率≠合同利率——合同利率＝基准＋利差。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **基准利率（base rate）** 继承 **参考利率（reference interest rate）**
+- **银行间拆入利率（interbank bid rate）** 继承 **银行间利率（interbank rate）**
+- **银行间中间利率（interbank mid rate）** 继承 **银行间利率（interbank rate）**
+- **银行间拆出利率（interbank offered rate）** 继承 **银行间利率（interbank rate）**
+- **银行间利率（interbank rate）** 继承 **参考利率（reference interest rate）**
+- **利率主管机构（interest rate authority）** 继承 **fibo-be-fct-pub:Publisher（Publisher）**
+- **利率主管机构（interest rate authority）** 继承 **金融服务提供商（FinancialServiceProvider）**
+- **利率基准（interest rate benchmark）** 继承 **量类（QuantityKind）**
+- **利率基准分类方案（interest rate benchmark classification scheme）** 继承 **分类方案（ClassificationScheme）**
+- **隔夜利率（overnight rate）** 继承 **参考利率（reference interest rate）**
+- **参考利率（reference interest rate）** 继承 **利率（InterestRate）**
+- **参考利率（reference interest rate）** 继承 **市场利率（MarketRate）**
+- 其余 1 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -30,50 +46,154 @@
 | 参考利率（reference interest rate） | 由某银行或银行集团支付或约定的市场利率。 |
 | 特定提供商利率基准（specific-provider interest rate benchmark） | 由特定市场数据提供商提供、供参考之用的利率基准。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 基准利率（base rate） ⊑ 参考利率（reference interest rate）
-- 银行间拆入利率（interbank bid rate） ⊑ 银行间利率（interbank rate）
-- 银行间中间利率（interbank mid rate） ⊑ 银行间利率（interbank rate）
-- 银行间拆出利率（interbank offered rate） ⊑ 银行间利率（interbank rate）
-- 银行间利率（interbank rate） ⊑ 参考利率（reference interest rate）
-- 利率主管机构（interest rate authority） ⊑ fibo-be-fct-pub:Publisher
-- 利率主管机构（interest rate authority） ⊑ 金融服务提供商
-- 利率基准（interest rate benchmark） ⊑ 量类
-- 利率基准分类方案（interest rate benchmark classification scheme） ⊑ 分类方案
-- 隔夜利率（overnight rate） ⊑ 参考利率（reference interest rate）
-- 参考利率（reference interest rate） ⊑ 利率
-- 参考利率（reference interest rate） ⊑ 市场利率
-- 特定提供商利率基准（specific-provider interest rate benchmark） ⊑ 利率基准（interest rate benchmark）
+### 2.1 利率主管机构（interest rate authority）
 
-## 3. 对象属性（Object Property）
+定义：负责规定某项基准性利率的金融服务提供商/发布方。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-ind-ir-ir:hasRateResetTimeOfDay | 具有利率重置时刻（has rate reset time of day） | 标识基准利率变动发布的日内时刻，通常每个营业日相同。 | 值域（range）：日期时间；子属性（subPropertyOf）：具有日期时间 |
-| fibo-ind-ir-ir:hasReferenceCurrency | 具有参考货币（has reference currency） | 将某事物关联到其所基于的货币。 | 值域（range）：货币；子属性（subPropertyOf）：具有货币 |
-| fibo-ind-ir-ir:hasTenor | 具有期限（has tenor） | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。 | 值域（range）：时长；子属性（subPropertyOf）：具有时长 |
+- 父类：**fibo-be-fct-pub:Publisher（Publisher）**、**金融服务提供商（FinancialServiceProvider）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **生产（produces）** | — | — |
 
-- **利率主管机构（interest rate authority）**：**生产（produces）**至少有一个取值，类型是**参考利率（reference interest rate）**。
-- **利率基准（interest rate benchmark）**：**由……提供（isProvidedBy）**可以有 0 个或多个**市场数据提供商（MarketDataProvider）**。
-- **利率基准（interest rate benchmark）**：**由……生产（isProducedBy）**可以有 0 个或多个**fibo-be-fct-pub:Publisher（Publisher）**。
-- **利率基准（interest rate benchmark）**：**具有利率重置时刻（has rate reset time of day）**可以有 0 个或多个**日期时间（DateTime）**。
-- **利率基准（interest rate benchmark）**：**具有期限（has tenor）**可以有 0 个或多个**时长（Duration）**。
-- **利率基准（interest rate benchmark）**：**具有参考货币（has reference currency）**恰好有 1 个**货币（Currency）**。
-- **利率基准（interest rate benchmark）**：**分类（classifies）**至少有一个取值，类型是**参考利率（reference interest rate）**。
-- **利率基准分类方案（interest rate benchmark classification scheme）**：**定义（defines）**至少有一个取值，类型是**利率基准（interest rate benchmark）**。
-- **隔夜利率（overnight rate）**：**具有期限（has tenor）**的取值固定为 OneDay。
-- **参考利率（reference interest rate）**：**具有期限（has tenor）**的所有取值只能是**时长（Duration）**。
-- **参考利率（reference interest rate）**：**具有利率重置时刻（has rate reset time of day）**可以有 0 个或多个**日期时间（DateTime）**。
-- **参考利率（reference interest rate）**：**具有参考货币（has reference currency）**恰好有 1 个**货币（Currency）**。
-- **参考利率（reference interest rate）**：**具有量类（hasQuantityKind）**至少有一个取值，类型是**利率基准（interest rate benchmark）**。
-- **特定提供商利率基准（specific-provider interest rate benchmark）**：**由……提供（isProvidedBy）**恰好有 1 个**市场数据提供商（MarketDataProvider）**。
+公理：
 
-## 6. 依赖（owl:imports，14 个）
+- **生产（produces）**至少有一个取值，类型是**参考利率（reference interest rate）**。
+
+### 2.2 利率基准（interest rate benchmark）
+
+定义：对定期更新、公众可获取的利率的分类符，通常由中央银行或金融机构集团设定。
+
+- 父类：**量类（QuantityKind）**
+- 直接子类：**特定提供商利率基准（specific-provider interest rate benchmark）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……生产（isProducedBy）** | — | — |
+| **具有利率重置时刻（has rate reset time of day）** | 标识基准利率变动发布的日内时刻，通常每个营业日相同。 | 值域：日期时间；子属性：具有日期时间 |
+| **具有参考货币（has reference currency）** | 将某事物关联到其所基于的货币。 | 值域：货币；子属性：具有货币 |
+| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。 | 值域：时长；子属性：具有时长 |
+| **分类（classifies）** | — | — |
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **具有利率重置时刻（has rate reset time of day）**可以有 0 个或多个**日期时间（DateTime）**。
+- **具有参考货币（has reference currency）**恰好有 1 个**货币（Currency）**。
+- **具有期限（has tenor）**可以有 0 个或多个**时长（Duration）**。
+- **分类（classifies）**至少有一个取值，类型是**参考利率（reference interest rate）**。
+- **由……提供（isProvidedBy）**可以有 0 个或多个**市场数据提供商（MarketDataProvider）**。
+- **由……生产（isProducedBy）**可以有 0 个或多个**fibo-be-fct-pub:Publisher（Publisher）**。
+
+#### 2.2.1 特定提供商利率基准（specific-provider interest rate benchmark）
+
+定义：由特定市场数据提供商提供、供参考之用的利率基准。
+
+- 父类：**利率基准（interest rate benchmark）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **由……提供（isProvidedBy）**恰好有 1 个**市场数据提供商（MarketDataProvider）**。
+
+### 2.3 利率基准分类方案（interest rate benchmark classification scheme）
+
+定义：对利率基准进行分类的方案，如 FpML 分类方案。
+
+- 父类：**分类方案（ClassificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**利率基准（interest rate benchmark）**。
+
+### 2.4 参考利率（reference interest rate）
+
+定义：由某银行或银行集团支付或约定的市场利率。
+
+- 父类：**利率（InterestRate）**、**市场利率（MarketRate）**
+- 直接子类：**基准利率（base rate）**、**银行间利率（interbank rate）**、**隔夜利率（overnight rate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有利率重置时刻（has rate reset time of day）** | 标识基准利率变动发布的日内时刻，通常每个营业日相同。 | 值域：日期时间；子属性：具有日期时间 |
+| **具有参考货币（has reference currency）** | 将某事物关联到其所基于的货币。 | 值域：货币；子属性：具有货币 |
+| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。 | 值域：时长；子属性：具有时长 |
+| **具有量类（hasQuantityKind）** | — | — |
+
+公理：
+
+- **具有利率重置时刻（has rate reset time of day）**可以有 0 个或多个**日期时间（DateTime）**。
+- **具有参考货币（has reference currency）**恰好有 1 个**货币（Currency）**。
+- **具有期限（has tenor）**的所有取值只能是**时长（Duration）**。
+- **具有量类（hasQuantityKind）**至少有一个取值，类型是**利率基准（interest rate benchmark）**。
+
+#### 2.4.1 基准利率（base rate）
+
+定义：银行据此计算向客户贷款实际利率的基本利率。
+
+- 父类：**参考利率（reference interest rate）**
+
+#### 2.4.2 银行间利率（interbank rate）
+
+定义：银行之间短期贷款所收利率的参考利率。
+
+- 父类：**参考利率（reference interest rate）**
+- 直接子类：**银行间拆入利率（interbank bid rate）**、**银行间中间利率（interbank mid rate）**、**银行间拆出利率（interbank offered rate）**
+
+##### 2.4.2.1 银行间拆入利率（interbank bid rate）
+
+定义：参与银行愿意从其他银行借入存款的银行间利率。
+
+- 父类：**银行间利率（interbank rate）**
+
+##### 2.4.2.2 银行间中间利率（interbank mid rate）
+
+定义：代表拆入与拆出利率中点的银行间利率。
+
+- 父类：**银行间利率（interbank rate）**
+
+##### 2.4.2.3 银行间拆出利率（interbank offered rate）
+
+定义：参与银行贷出资金的银行间利率。
+
+- 父类：**银行间利率（interbank rate）**
+
+#### 2.4.3 隔夜利率（overnight rate）
+
+定义：存款机构向另一存款机构（短期）拆出资金的利率，或中央银行所设的利率。
+
+- 父类：**参考利率（reference interest rate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有期限（has tenor）** | 标识给定利率（如银行间利率、汇率、其他市场利率）的报价期限，或债务工具的剩余期限。 | 值域：时长；子属性：具有时长 |
+
+公理：
+
+- **具有期限（has tenor）**的取值固定为 OneDay。
+
+## 3. 依赖（owl:imports，14 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -94,7 +214,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`InterestRates.rdf`
 - 中文 Turtle：`InterestRates.ttl`

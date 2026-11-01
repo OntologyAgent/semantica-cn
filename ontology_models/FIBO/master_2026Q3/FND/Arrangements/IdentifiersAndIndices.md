@@ -8,6 +8,12 @@
 
 本本体定义表示索引与索引方案以及可复用标识符的抽象概念，供其他本体复用。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **索引（index）** 继承 **参考文献（Reference）**
+- **索引方案（indexing scheme）** 继承 **方案（Scheme）**
+- **可重分配标识符（reassignable identifier）** 继承 **标识符（Identifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -16,36 +22,61 @@
 | 索引方案（indexing scheme） | 对值、数据、信息或知识进行索引的体系。 |
 | 可重分配标识符（reassignable identifier） | 在给定时间段内唯一标识某物、并可在不同时间点重新用于标识其他事物的标识符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 索引（index） ⊑ 参考文献
-- 索引方案（indexing scheme） ⊑ 方案
-- 可重分配标识符（reassignable identifier） ⊑ 标识符
+### 2.1 索引（index）
 
-## 3. 对象属性（Object Property）
+定义：从大量值、数据、信息或知识中派生并指向其中的间接快捷方式。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-arr-id:isIndexTo | 是…的索引（is index to） | 索引所指的对象。 | 定义域（domain）：索引（index）；子属性（subPropertyOf）：引用 |
+- 父类：**参考文献（Reference）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-arr-id:hasAssignmentTerminationDate | 具有分配终止日期（has assignment termination date） | 标识符解除与某资源分配关系的日期。 |
-| fibo-fnd-arr-id:hasInitialAssignmentDate | 具有初始分配日期（has initial assignment date） | 标识符首次分配给某资源的日期。 |
+| **是…的索引（is index to）** | 索引所指的对象。 | 子属性：引用 |
+| **定义于（isDefinedIn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **定义于（isDefinedIn）**恰好有 1 个**索引方案（indexing scheme）**。
+- **是…的索引（is index to）**存在取值约束。
 
-- **索引（index）**：**是…的索引（is index to）**存在取值约束。
-- **索引（index）**：**定义于（isDefinedIn）**恰好有 1 个**索引方案（indexing scheme）**。
-- **索引方案（indexing scheme）**：**定义（defines）**至少有一个取值，类型是**索引（index）**。
-- **可重分配标识符（reassignable identifier）**：**具有分配终止日期（has assignment termination date）**存在取值约束。
-- **可重分配标识符（reassignable identifier）**：**具有初始分配日期（has initial assignment date）**存在取值约束。
+### 2.2 索引方案（indexing scheme）
 
-## 6. 依赖（owl:imports，10 个）
+定义：对值、数据、信息或知识进行索引的体系。
+
+- 父类：**方案（Scheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**索引（index）**。
+
+### 2.3 可重分配标识符（reassignable identifier）
+
+定义：在给定时间段内唯一标识某物、并可在不同时间点重新用于标识其他事物的标识符。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有分配终止日期（has assignment termination date）** | 标识符解除与某资源分配关系的日期。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **具有初始分配日期（has initial assignment date）** | 标识符首次分配给某资源的日期。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+
+公理：
+
+- **具有分配终止日期（has assignment termination date）**存在取值约束。
+- **具有初始分配日期（has initial assignment date）**存在取值约束。
+
+## 3. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -62,7 +93,7 @@
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 | `https://www.omg.org/spec/Commons/Identifiers/` | OMG 通用标识符本体（OMG Commons Identifiers） | Commons 库中的标识符本体，定义标识符及其编码方案的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`IdentifiersAndIndices.rdf`
 - 中文 Turtle：`IdentifiersAndIndices.ttl`

@@ -180,10 +180,10 @@ fibo-loan-ln-reg:ProductDisclosureRequirement a owl:Class ;
     rdfs:comment "规制对产品可作出何种陈述（就其影响消费者而言）的要求。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty cmns-rga:governs ;
-            owl:someValuesFrom fibo-loan-ln-reg:LoanProductRepresentations ],
+            owl:someValuesFrom fibo-loan-ln-reg:GoodFaithEstimate ],
         [ a owl:Restriction ;
             owl:onProperty cmns-rga:governs ;
-            owl:someValuesFrom fibo-loan-ln-reg:GoodFaithEstimate ],
+            owl:someValuesFrom fibo-loan-ln-reg:LoanProductRepresentations ],
         fibo-loan-ln-reg:DisclosureRequirement ;
     skos:definition "A requirement governing what representations can be made about a product, as it affects the consumer."@en ;
     cmns-av:explanatoryNote "There are also rules which encompass limitations on how you might attach loans and liens to principle dwellings, e.g. when or whether you can foreclose on someone's principal dwelling with impunity; what rights the consumer has - this last will be a separate kind of regulation."@en .
@@ -265,14 +265,14 @@ fibo-loan-ln-reg:LoanRegulatoryRequirement a owl:Class ;
         "贷款监管要求（loan regulatory requirement）"@zh ;
     rdfs:comment "由消费信贷法或其他立法在法规中定义的监管要求。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
+            owl:someValuesFrom fibo-loan-ln-reg:ConsumerCreditProtectionLaw ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-rga:regulates ;
             owl:someValuesFrom fibo-loan-ln-ln:Loan ],
         [ a owl:Restriction ;
             owl:onProperty fibo-loan-ln-reg:administeredBy ;
             owl:someValuesFrom cmns-rga:RegulatoryAgency ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
-            owl:someValuesFrom fibo-loan-ln-reg:ConsumerCreditProtectionLaw ],
         fibo-fnd-law-lcap:LegalObligation ;
     skos:definition "A regulatory requirement defined in regulations by a comsumer credit act or other legislation."@en ;
     cmns-av:explanatoryNote "Presence of a loan regulatory requirement associated with a loan indicates that the loan is regulated by the UK Consumer credit act or the equivalent in continental Europe."@en .

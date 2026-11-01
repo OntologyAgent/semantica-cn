@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：评级是第三方机构的主观评估（意见），与客观发生的信用事件相区分；与内部信用评分的差别——本本体侧重公开评级机构给出的等级。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **征信查询（credit inquiry）** 继承 **请求活动（RequestActivity）**
+- **征信查询类型（credit inquiry type）** 继承 **分类符（Classifier）**
+- **信用提示信息（credit message）** 继承 **通知（Notice）**
+- **信用提示信息类型（credit message type）** 继承 **分类符（Classifier）**
+- **信用质量（credit quality）** 继承 **评级得分（RatingScore）**
+- **信用评级（credit rating）** 继承 **评级（Rating）**
+- **信用评级机构（credit rating agency）** 继承 **金融服务提供商（FinancialServiceProvider）**
+- **信用评级机构（credit rating agency）** 继承 **评级机构（RatingAgency）**
+- **信用评级模型（credit rating model）** 继承 **表达式（Expression）**
+- **信用评级标度（credit rating scale）** 继承 **评级标度（RatingScale）**
+- **信用报告（credit report）** 继承 **评级报告（RatingReport）**
+- **信用报告类别（credit report category）** 继承 **分类符（Classifier）**
+- 其余 12 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -39,75 +55,281 @@
 | 机构信用评级（organization credit rating） | 信用评级的一种，提供对某一机构信用状况的意见。 |
 | 短期信用评级（short term credit rating） | 信用评级的一种，提供对个人或机构在一年内发生违约概率的意见。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 征信查询（credit inquiry） ⊑ 请求活动
-- 征信查询类型（credit inquiry type） ⊑ 分类符
-- 信用提示信息（credit message） ⊑ 通知
-- 信用提示信息类型（credit message type） ⊑ 分类符
-- 信用质量（credit quality） ⊑ 评级得分
-- 信用评级（credit rating） ⊑ 评级
-- 信用评级机构（credit rating agency） ⊑ 金融服务提供商
-- 信用评级机构（credit rating agency） ⊑ 评级机构
-- 信用评级模型（credit rating model） ⊑ 表达式
-- 信用评级标度（credit rating scale） ⊑ 评级标度
-- 信用报告（credit report） ⊑ 评级报告
-- 信用报告类别（credit report category） ⊑ 分类符
-- 信用报告产品（credit report product） ⊑ 金融产品
-- 信用报告产品（credit report product） ⊑ 现货产品
-- 信用评分模型类型（credit score model type） ⊑ 分类符
-- 信用交易记录（credit tradeline） ⊑ 报告
-- 信用观察方向（credit watch direction） ⊑ 分类符
-- 信用观察展望（credit watch outlook） ⊑ 评级
-- 工具信用评级（instrument credit rating） ⊑ 投资信用评级（investment credit rating）
-- 投资信用评级（investment credit rating） ⊑ 信用评级（credit rating）
-- 机构信用评级（organization credit rating） ⊑ 信用评级（credit rating）
-- 短期信用评级（short term credit rating） ⊑ 投资信用评级（investment credit rating）
+### 2.1 征信查询（credit inquiry）
 
-## 3. 对象属性（Object Property）
+定义：贷款人向征信机构发出的请求，以获取有关潜在借款人信用状况的信息。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fbc-dae-crt:concernsParty | 涉及当事方（concerns party） | 指明某事物正在或已经为其提出的当事方。 | 子属性（subPropertyOf）：具有参与方（has party） |
-| fibo-fbc-dae-crt:hasCoveragePeriod | 具有覆盖期间（has coverage period） | 将某事物（如信用报告或保险单）与其所覆盖的特定时间段关联起来。 | 值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-fbc-dae-crt:hasWatchDirection | 观察方向（watch direction） | 当投资信用评级处于观察状态时，指明其预计变动的方向。 | 定义域（domain）：投资信用评级（investment credit rating）；值域（range）：信用观察方向（credit watch direction） |
-| fibo-fbc-dae-crt:hasWatchOutlook | 观察展望（watch outlook） | 指明对被评级实体的预期展望。 | 定义域（domain）：投资信用评级（investment credit rating）；值域（range）：信用观察展望（credit watch outlook） |
+- 父类：**请求活动（RequestActivity）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **涉及当事方（concerns party）** | 指明某事物正在或已经为其提出的当事方。 | 子属性：具有参与方（has party） |
+| **被请求于（isRequestedOf）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
 
-- **征信查询（credit inquiry）**：**涉及当事方（concerns party）**至少有一个取值，类型是**参与方（party）**。
-- **征信查询（credit inquiry）**：**被请求于（isRequestedOf）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
-- **征信查询（credit inquiry）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**征信查询类型（credit inquiry type）**。
-- **信用提示信息（credit message）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**信用提示信息类型（credit message type）**。
-- **信用评级（credit rating）**：**导出自（isDerivedFrom）**可以有 0 个或多个**信用评级模型（credit rating model）**。
-- **信用评级（credit rating）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
-- **信用评级机构（credit rating agency）**：**发行（issues）**至少有一个取值，类型是**信用评级（credit rating）**。
-- **信用评级机构（credit rating agency）**：**管理（manages）**至少有一个取值，类型是**信用评级标度（credit rating scale）**。
-- **信用评级模型（credit rating model）**：**生产（produces）**至少有一个取值，类型是**评级得分（RatingScore）**。
-- **信用评级模型（credit rating model）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**信用评分模型类型（credit score model type）**。
-- **信用评级模型（credit rating model）**：**具有文本名称（hasTextualName）**至少有一个取值，类型是**xsd:string（string）**。
-- **信用评级标度（credit rating scale）**：**由……管理（isManagedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
-- **信用报告（credit report）**：**包含（comprises）**可以有 0 个或多个**征信查询（credit inquiry）**。
-- **信用报告（credit report）**：**包含（comprises）**可以有 0 个或多个**信用提示信息（credit message）**。
-- **信用报告（credit report）**：**包含（comprises）**可以有 0 个或多个**信用评级（credit rating）**。
-- **信用报告（credit report）**：**由……生产（isProducedBy）**可以有 0 个或多个**信用评级机构（credit rating agency）**。
-- **信用报告（credit report）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**信用报告类别（credit report category）**。
-- **信用报告（credit report）**：**例证（exemplifies）**可以有 0 个或多个**信用报告产品（credit report product）**。
-- **信用报告（credit report）**：**包含（comprises）**可以有 0 个或多个**信用交易记录（credit tradeline）**。
-- **信用报告（credit report）**：**由……标识（isIdentifiedBy）**可以有 0 个或多个**标识符（Identifier）**。
-- **信用报告（credit report）**：**具有数据来源（hasDataSource）**可以有 0 个或多个**Nfaa38d95c9604b7fab89e1b3930a7157**。
-- **信用报告（credit report）**：**涉及当事方（concerns party）**至少有一个取值，类型是**参与方（party）**。
-- **信用报告（credit report）**：**具有覆盖期间（has coverage period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
-- **信用报告（credit report）**：**具有截止日（hasAsOfDate）**至少有一个取值，类型是**日期（Date）**。
-- **信用报告产品（credit report product）**：**由……生产（isProducedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
-- **信用交易记录（credit tradeline）**：**被包含于（isIncludedIn）**至少有一个取值，类型是**信用报告（credit report）**。
-- **信用交易记录（credit tradeline）**：**导出自（isDerivedFrom）**至少有一个取值，类型是**账户（Account）**。
-- **工具信用评级（instrument credit rating）**：**评定（rates）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
-- **机构信用评级（organization credit rating）**：**评定（rates）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+公理：
 
-## 6. 依赖（owl:imports，20 个）
+- **涉及当事方（concerns party）**至少有一个取值，类型是**参与方（party）**。
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**征信查询类型（credit inquiry type）**。
+- **被请求于（isRequestedOf）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
+
+### 2.2 征信查询类型（credit inquiry type）
+
+定义：分类器，表明征信查询是由借款人直接授权发起，还是通过其他间接方式产生。
+
+- 父类：**分类符（Classifier）**
+
+### 2.3 信用提示信息（credit message）
+
+定义：信用报告上的提示，用于提醒审阅者注意特殊或异常信息。
+
+- 父类：**通知（Notice）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**信用提示信息类型（credit message type）**。
+
+### 2.4 信用提示信息类型（credit message type）
+
+定义：对信用提示信息进行分类的分类器。
+
+- 父类：**分类符（Classifier）**
+
+### 2.5 信用质量（credit quality）
+
+定义：针对借贷市场中的借款人、利率或持仓，就其信用质量进行分类的分类器。
+
+- 父类：**评级得分（RatingScore）**
+
+### 2.6 信用评级（credit rating）
+
+定义：对借款人信用状况的评估，可以是总体评估，也可以针对特定债务或金融义务。
+
+- 父类：**评级（Rating）**
+- 直接子类：**投资信用评级（investment credit rating）**、**机构信用评级（organization credit rating）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **导出自（isDerivedFrom）** | — | — |
+
+公理：
+
+- **导出自（isDerivedFrom）**可以有 0 个或多个**信用评级模型（credit rating model）**。
+- **由……发行（isIssuedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
+
+#### 2.6.1 投资信用评级（investment credit rating）
+
+定义：信用评级的一种，提供对某项投资（包括但不限于工具或机构）信用状况的意见。
+
+- 父类：**信用评级（credit rating）**
+- 直接子类：**工具信用评级（instrument credit rating）**、**短期信用评级（short term credit rating）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **观察方向（watch direction）** | 当投资信用评级处于观察状态时，指明其预计变动的方向。 | 值域：信用观察方向（credit watch direction） |
+| **观察展望（watch outlook）** | 指明对被评级实体的预期展望。 | 值域：信用观察展望（credit watch outlook） |
+
+##### 2.6.1.1 工具信用评级（instrument credit rating）
+
+定义：投资信用评级的一种，提供对某一工具信用状况的意见，通常与其发行人的信用状况相关。
+
+- 父类：**投资信用评级（investment credit rating）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **评定（rates）** | — | — |
+
+公理：
+
+- **评定（rates）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
+
+##### 2.6.1.2 短期信用评级（short term credit rating）
+
+定义：信用评级的一种，提供对个人或机构在一年内发生违约概率的意见。
+
+- 父类：**投资信用评级（investment credit rating）**
+
+#### 2.6.2 机构信用评级（organization credit rating）
+
+定义：信用评级的一种，提供对某一机构信用状况的意见。
+
+- 父类：**信用评级（credit rating）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **评定（rates）** | — | — |
+
+公理：
+
+- **评定（rates）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+
+### 2.7 信用评级机构（credit rating agency）
+
+定义：发布评估报告的评级机构，评估借款人或法律实体的信用状况，可以是总体评估，也可以针对特定债务。
+
+- 父类：**金融服务提供商（FinancialServiceProvider）**、**评级机构（RatingAgency）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **发行（issues）** | — | — |
+| **管理（manages）** | — | — |
+
+公理：
+
+- **发行（issues）**至少有一个取值，类型是**信用评级（credit rating）**。
+- **管理（manages）**至少有一个取值，类型是**信用评级标度（credit rating scale）**。
+
+### 2.8 信用评级模型（credit rating model）
+
+定义：用于计算信用评级的算法。
+
+- 父类：**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **生产（produces）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **具有文本名称（hasTextualName）** | — | — |
+
+公理：
+
+- **具有文本名称（hasTextualName）**至少有一个取值，类型是**xsd:string（string）**。
+- **生产（produces）**至少有一个取值，类型是**评级得分（RatingScore）**。
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**信用评分模型类型（credit score model type）**。
+
+### 2.9 信用评级标度（credit rating scale）
+
+定义：为个人、实体或工具赋予信用评级的标度，包括定义一套代码或数值分数并说明其解读方式。
+
+- 父类：**评级标度（RatingScale）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **由……管理（isManagedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
+
+### 2.10 信用报告（credit report）
+
+定义：描述借款人信用状况及相关信用属性的报告。
+
+- 父类：**评级报告（RatingReport）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **涉及当事方（concerns party）** | 指明某事物正在或已经为其提出的当事方。 | 子属性：具有参与方（has party） |
+| **具有覆盖期间（has coverage period）** | 将某事物（如信用报告或保险单）与其所覆盖的特定时间段关联起来。 | 值域：日期区间；子属性：具有日期区间 |
+| **具有截止日（hasAsOfDate）** | — | — |
+| **例证（exemplifies）** | — | — |
+| **由……生产（isProducedBy）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **包含（comprises）** | — | — |
+| **具有数据来源（hasDataSource）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**可以有 0 个或多个**信用报告产品（credit report product）**。
+- **具有截止日（hasAsOfDate）**至少有一个取值，类型是**日期（Date）**。
+- **具有数据来源（hasDataSource）**可以有 0 个或多个**N6bb6323d11aa450fabd5ccee8763f9bb**。
+- **具有覆盖期间（has coverage period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **包含（comprises）**可以有 0 个或多个**信用交易记录（credit tradeline）**。
+- **包含（comprises）**可以有 0 个或多个**信用提示信息（credit message）**。
+- **包含（comprises）**可以有 0 个或多个**信用评级（credit rating）**。
+- **包含（comprises）**可以有 0 个或多个**征信查询（credit inquiry）**。
+- **涉及当事方（concerns party）**至少有一个取值，类型是**参与方（party）**。
+- **由……分类（isClassifiedBy）**可以有 0 个或多个**信用报告类别（credit report category）**。
+- **由……标识（isIdentifiedBy）**可以有 0 个或多个**标识符（Identifier）**。
+- **由……生产（isProducedBy）**可以有 0 个或多个**信用评级机构（credit rating agency）**。
+
+### 2.11 信用报告类别（credit report category）
+
+定义：信用报告的分类器，同类报告通常可从多家供应商获得。
+
+- 父类：**分类符（Classifier）**
+
+### 2.12 信用报告产品（credit report product）
+
+定义：市场上提供的品牌化信用报告。
+
+- 父类：**金融产品（FinancialProduct）**、**现货产品（OffTheShelfProduct）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……生产（isProducedBy）** | — | — |
+
+公理：
+
+- **由……生产（isProducedBy）**至少有一个取值，类型是**信用评级机构（credit rating agency）**。
+
+### 2.13 信用评分模型类型（credit score model type）
+
+定义：对应于一族具有共同特征的信用评分算法的类型。
+
+- 父类：**分类符（Classifier）**
+
+### 2.14 信用交易记录（credit tradeline）
+
+定义：由信用账户交易历史生成的记录。
+
+- 父类：**报告（Report）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **被包含于（isIncludedIn）** | — | — |
+| **导出自（isDerivedFrom）** | — | — |
+
+公理：
+
+- **导出自（isDerivedFrom）**至少有一个取值，类型是**账户（Account）**。
+- **被包含于（isIncludedIn）**至少有一个取值，类型是**信用报告（credit report）**。
+
+### 2.15 信用观察方向（credit watch direction）
+
+定义：表示投资信用评级被列入观察名单后预计变动的方向。
+
+- 父类：**分类符（Classifier）**
+
+### 2.16 信用观察展望（credit watch outlook）
+
+定义：表示对被评级主体的预期展望。
+
+- 父类：**评级（Rating）**
+
+## 3. 依赖（owl:imports，20 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -134,7 +356,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CreditRatings.rdf`
 - 中文 Turtle：`CreditRatings.ttl`

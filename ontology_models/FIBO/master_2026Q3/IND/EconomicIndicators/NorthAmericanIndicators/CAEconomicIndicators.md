@@ -14,6 +14,15 @@
 
 **与相近概念的差别**：同美国经济指标本体——统计体系与发布机构不同。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **加拿大消费者价格指数（Canadian consumer price index）** 继承 **消费者价格指数（ConsumerPriceIndex）**
+- **加拿大住户消费者全域（Canadian households consumers universe）** 继承 **平民非机构人口（CivilianNonInstitutionalPopulation）**
+- **加拿大生产者价格指数（Canadian producer price index）** 继承 **生产者价格指数（ProducerPriceIndex）**
+- **工业产品部门（industrial products sector）** 继承 **行业部门分类器（IndustrySectorClassifier）**
+- **新建住房部门（new housing sector）** 继承 **行业部门分类器（IndustrySectorClassifier）**
+- **原材料部门（raw materials sector）** 继承 **行业部门分类器（IndustrySectorClassifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -25,31 +34,88 @@
 | 新建住房部门（new housing sector） | 价格指数中用于聚焦承包商新建住宅销售价格的经济部门分类符。 |
 | 原材料部门（raw materials sector） | 与加拿大各行业购入以供进一步加工的原材料相关的价格指数所用的分类符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 加拿大消费者价格指数（Canadian consumer price index） ⊑ 消费者价格指数
-- 加拿大住户消费者全域（Canadian households consumers universe） ⊑ 平民非机构人口
-- 加拿大生产者价格指数（Canadian producer price index） ⊑ 生产者价格指数
-- 工业产品部门（industrial products sector） ⊑ 行业部门分类器
-- 新建住房部门（new housing sector） ⊑ 行业部门分类器
-- 原材料部门（raw materials sector） ⊑ 行业部门分类器
+### 2.1 加拿大消费者价格指数（Canadian consumer price index）
 
-## 5. 公理约定（Axioms）
+定义：表示加拿大私人住户消费的固定篮子消费货物与服务价格随时间变化之度量的经济指标。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**消费者价格指数（ConsumerPriceIndex）**
 
-- **加拿大消费者价格指数（Canadian consumer price index）**：**具有发布方（hasPublisher）**的取值固定为 CanadianStatisticsPublisher。
-- **加拿大消费者价格指数（Canadian consumer price index）**：**由……发布（isPublishedBy）**的取值固定为 StatisticsCanada。
-- **加拿大消费者价格指数（Canadian consumer price index）**：**具有自变量（hasArgument）**恰好有 1 个**加拿大住户消费者全域（Canadian households consumers universe）**。
-- **加拿大消费者价格指数（Canadian consumer price index）**：**适用于（appliesTo）**至少有一个取值，类型是**加拿大住户消费者全域（Canadian households consumers universe）**。
-- **加拿大消费者价格指数（Canadian consumer price index）**：**具有自变量（hasArgument）**至少有一个取值，类型是**固定篮子（FixedBasket）**。
-- **加拿大住户消费者全域（Canadian households consumers universe）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**最终消费者（UltimateConsumer）**。
-- **加拿大住户消费者全域（Canadian households consumers universe）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**住户（Household）**。
-- **加拿大生产者价格指数（Canadian producer price index）**：**具有发布方（hasPublisher）**的取值固定为 CanadianStatisticsPublisher。
-- **加拿大生产者价格指数（Canadian producer price index）**：**由……发布（isPublishedBy）**的取值固定为 StatisticsCanada。
-- **加拿大生产者价格指数（Canadian producer price index）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+属性：
 
-## 6. 依赖（owl:imports，13 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发布方（hasPublisher）** | — | — |
+| **由……发布（isPublishedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有发布方（hasPublisher）**的取值固定为 CanadianStatisticsPublisher。
+- **具有自变量（hasArgument）**恰好有 1 个**加拿大住户消费者全域（Canadian households consumers universe）**。
+- **具有自变量（hasArgument）**至少有一个取值，类型是**固定篮子（FixedBasket）**。
+- **由……发布（isPublishedBy）**的取值固定为 StatisticsCanada。
+- **适用于（appliesTo）**至少有一个取值，类型是**加拿大住户消费者全域（Canadian households consumers universe）**。
+
+### 2.2 加拿大住户消费者全域（Canadian households consumers universe）
+
+定义：由加拿大全部私人住户构成的统计全域，不含军事基地士兵、第一民族保留地居民等。
+
+- 父类：**平民非机构人口（CivilianNonInstitutionalPopulation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**最终消费者（UltimateConsumer）**。
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**住户（Household）**。
+
+### 2.3 加拿大生产者价格指数（Canadian producer price index）
+
+定义：表示国内生产者固定篮子货物与服务价格随时间变化之度量的经济指标。
+
+- 父类：**生产者价格指数（ProducerPriceIndex）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发布方（hasPublisher）** | — | — |
+| **由……发布（isPublishedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有发布方（hasPublisher）**的取值固定为 CanadianStatisticsPublisher。
+- **由……发布（isPublishedBy）**的取值固定为 StatisticsCanada。
+- **适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.4 工业产品部门（industrial products sector）
+
+定义：价格指数中用于聚焦加拿大制造商销售的主要商品的经济部门分类符。
+
+- 父类：**行业部门分类器（IndustrySectorClassifier）**
+
+### 2.5 新建住房部门（new housing sector）
+
+定义：价格指数中用于聚焦承包商新建住宅销售价格的经济部门分类符。
+
+- 父类：**行业部门分类器（IndustrySectorClassifier）**
+
+### 2.6 原材料部门（raw materials sector）
+
+定义：与加拿大各行业购入以供进一步加工的原材料相关的价格指数所用的分类符。
+
+- 父类：**行业部门分类器（IndustrySectorClassifier）**
+
+## 3. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -69,7 +135,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/` | LCC ISO 3166-1 国家代码（ISO 3166-1 Country Codes） | LCC 中 ISO 3166-1 标准的国家/地区代码个体集（如 CN、US、MX），供法域与地址建模引用。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CAEconomicIndicators.rdf`
 - 中文 Turtle：`CAEconomicIndicators.ttl`

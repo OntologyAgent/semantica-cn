@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：发起≠服务（servicing）——发起是贷款诞生环节，服务是放款后的收息管账环节；与贷款申请本体的差别——申请看客户视角，发放看机构操作全流程。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **全国抵押贷款许可系统与登记处标识符（Nationwide Mortgage Licensing System and Registry Identifier）** 继承 **许可标识符（LicenseIdentifier）**
+- **摊销类型（amortization type）** 继承 **分类符（Classifier）**
+- **自动化系统（automated system）** 继承 **编排（Arrangement）**
+- **自动核保系统（automated underwriting system）** 继承 **自动化系统（automated system）**
+- **提现状态（cash-out status）** 继承 **分类符（Classifier）**
+- **收费类别（charge category）** 继承 **分类符（Classifier）**
+- **住宅容量（dwelling capacity）** 继承 **分类符（Classifier）**
+- **政府支持贷款（government-sponsored loan）** 继承 **房地产担保贷款（LoanSecuredByRealEstate）**
+- **活动房屋法律分类（manufactured home legal classification）** 继承 **分类符（Classifier）**
+- **抵押赔偿担保（mortgage indemnity guarantee）** 继承 **保险支持担保（InsuranceBackedGuaranty）**
+- **抵押赔偿担保人（mortgage indemnity guarantor）** 继承 **担保人（Guarantor）**
+- **抵押赔偿担保人（mortgage indemnity guarantor）** 继承 **保险人（Insurer）**
+- 其余 3 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -33,49 +49,136 @@
 | 抵押贷款用途（mortgage loan purpose） | 抵押贷款资金的用途，如购置不动产、住宅建设或贷款再融资。 |
 | 物业用途（property usage） | 表明借款人拟如何使用该物业的类别。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 全国抵押贷款许可系统与登记处标识符（Nationwide Mortgage Licensing System and Registry Identifier） ⊑ 许可标识符
-- 摊销类型（amortization type） ⊑ 分类符
-- 自动化系统（automated system） ⊑ 编排
-- 自动核保系统（automated underwriting system） ⊑ 自动化系统（automated system）
-- 提现状态（cash-out status） ⊑ 分类符
-- 收费类别（charge category） ⊑ 分类符
-- 住宅容量（dwelling capacity） ⊑ 分类符
-- 政府支持贷款（government-sponsored loan） ⊑ 房地产担保贷款
-- 活动房屋法律分类（manufactured home legal classification） ⊑ 分类符
-- 抵押赔偿担保（mortgage indemnity guarantee） ⊑ 保险支持担保
-- 抵押赔偿担保人（mortgage indemnity guarantor） ⊑ 担保人
-- 抵押赔偿担保人（mortgage indemnity guarantor） ⊑ 保险人
-- 抵押赔偿保险单（mortgage indemnity insurance policy） ⊑ 保险单
-- 抵押贷款用途（mortgage loan purpose） ⊑ 分类符
-- 物业用途（property usage） ⊑ 分类符
+### 2.1 全国抵押贷款许可系统与登记处标识符（Nationwide Mortgage Licensing System and Registry Identifier）
 
-## 3. 对象属性（Object Property）
+定义：NMLS 为每个维持登记的公司、分支和个人永久分配的编号。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-loan-reln-org:assumes | 承接（assumes） | 将新抵押贷款合同关联到先前就同一物业向不同借款人发放的旧合同；新合同通过法律行为设立。 | — |
-| fibo-loan-reln-org:hasOriginatingServiceProvider | 具有发起服务提供商（has originating service provider） | 将某事物（通常为贷款合同）关联到负责发起该贷款的服务提供商。 | 值域（range）：Nab1e2b7d9b3c4784b92a99284242cc9d；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-loan-reln-org:hasOriginatorPerson | 具有发起人（has originator person） | 将某事物（通常为贷款）关联到最初发起或创建它的人。 | 值域（range）：具有法律行为能力的自然人；子属性（subPropertyOf）：具有参与方（has party） |
-| fibo-loan-reln-org:isLienOn | 是……的留置权（is lien on） | 标识留置权所针对的财产。 | — |
+- 父类：**许可标识符（LicenseIdentifier）**
 
-## 4. 数据属性（Datatype Property）
+### 2.2 摊销类型（amortization type）
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+定义：摊销算法的分类符。
+
+- 父类：**分类符（Classifier）**
+
+### 2.3 自动化系统（automated system）
+
+定义：减少或消除人工参与即可完成任务的系统。
+
+- 父类：**编排（Arrangement）**
+- 直接子类：**自动核保系统（automated underwriting system）**
+
+#### 2.3.1 自动核保系统（automated underwriting system）
+
+定义：收集批准贷款申请所需信息、支持抵押贷款人对新申请进行分析的软件系统。
+
+- 父类：**自动化系统（automated system）**
+
+### 2.4 提现状态（cash-out status）
+
+定义：表明在以新贷款为现有贷款再融资的发放中向借款人释放资金之程度的分类符。
+
+- 父类：**分类符（Classifier）**
+
+### 2.5 收费类别（charge category）
+
+定义：收费类别，如结清费用、利息、税项及其他服务相关费用。
+
+- 父类：**分类符（Classifier）**
+
+### 2.6 住宅容量（dwelling capacity）
+
+定义：表明某物业拥有多少住宅单元的分类符。
+
+- 父类：**分类符（Classifier）**
+
+### 2.7 政府支持贷款（government-sponsored loan）
+
+定义：由政府支持机构发起或担保的贷款。
+
+- 父类：**房地产担保贷款（LoanSecuredByRealEstate）**
+
+### 2.8 活动房屋法律分类（manufactured home legal classification）
+
+定义：表明覆盖贷款仅以活动房屋作担保、还是连同土地一起作担保的类别。
+
+- 父类：**分类符（Classifier）**
+
+### 2.9 抵押赔偿担保（mortgage indemnity guarantee）
+
+定义：在抵押贷款还款因故中断（如借款人死亡或失业）时保护贷款人的保险型担保。
+
+- 父类：**保险支持担保（InsuranceBackedGuaranty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-loan-reln-org:hasNumberOfAffordableDwellingUnits | 具有可负担住宅单元数（has number of affordable dwelling units） | 将房地产关联到其中按联邦、州或地方可负担住房计划设有收入限制的住宅单元数。 |
-| fibo-loan-reln-org:hasNumberOfDwellingUnits | 具有住宅单元数（has number of dwelling units） | 将房地产关联到其所含的住宅单元数。 |
+| **由……担保（isGuaranteedBy）** | — | — |
+| **由……例证（isExemplifiedBy）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **由……例证（isExemplifiedBy）**至少有一个取值，类型是**抵押赔偿保险单（mortgage indemnity insurance policy）**。
+- **由……担保（isGuaranteedBy）**至少有一个取值，类型是**抵押赔偿担保人（mortgage indemnity guarantor）**。
 
-- **抵押赔偿担保（mortgage indemnity guarantee）**：**由……担保（isGuaranteedBy）**至少有一个取值，类型是**抵押赔偿担保人（mortgage indemnity guarantor）**。
-- **抵押赔偿担保（mortgage indemnity guarantee）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**抵押赔偿保险单（mortgage indemnity insurance policy）**。
-- **抵押赔偿保险单（mortgage indemnity insurance policy）**：**是……的证据（isEvidenceFor）**至少有一个取值，类型是**抵押赔偿担保（mortgage indemnity guarantee）**。
+### 2.10 抵押赔偿担保人（mortgage indemnity guarantor）
 
-## 6. 依赖（owl:imports，26 个）
+定义：以抵押赔偿担保（MIG）形式提供抵押保险的担保人兼保险人。
+
+- 父类：**担保人（Guarantor）**、**保险人（Insurer）**
+
+### 2.11 抵押赔偿保险单（mortgage indemnity insurance policy）
+
+定义：提供抵押赔偿担保的保险单。
+
+- 父类：**保险单（InsurancePolicy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的证据（isEvidenceFor）** | — | — |
+
+公理：
+
+- **是……的证据（isEvidenceFor）**至少有一个取值，类型是**抵押赔偿担保（mortgage indemnity guarantee）**。
+
+### 2.12 抵押贷款用途（mortgage loan purpose）
+
+定义：抵押贷款资金的用途，如购置不动产、住宅建设或贷款再融资。
+
+- 父类：**分类符（Classifier）**
+
+### 2.13 物业用途（property usage）
+
+定义：表明借款人拟如何使用该物业的类别。
+
+- 父类：**分类符（Classifier）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **承接（assumes）** | 将新抵押贷款合同关联到先前就同一物业向不同借款人发放的旧合同；新合同通过法律行为设立。 | — |
+| **具有发起服务提供商（has originating service provider）** | 将某事物（通常为贷款合同）关联到负责发起该贷款的服务提供商。 | 值域：N73192aae0ad345e7b461f86d8d7f3ae7；子属性：具有参与方角色（has party role） |
+| **具有发起人（has originator person）** | 将某事物（通常为贷款）关联到最初发起或创建它的人。 | 值域：具有法律行为能力的自然人；子属性：具有参与方（has party） |
+| **是……的留置权（is lien on）** | 标识留置权所针对的财产。 | — |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有可负担住宅单元数（has number of affordable dwelling units）** | 将房地产关联到其中按联邦、州或地方可负担住房计划设有收入限制的住宅单元数。 |
+| **具有住宅单元数（has number of dwelling units）** | 将房地产关联到其所含的住宅单元数。 |
+
+## 4. 依赖（owl:imports，26 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -108,7 +211,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`MortgageOrigination.rdf`
 - 中文 Turtle：`MortgageOrigination.ttl`

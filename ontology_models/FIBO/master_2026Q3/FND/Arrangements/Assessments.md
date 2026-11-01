@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：评估≠评级——评估是泛指一切判断活动（含一次性的），评级是按标准量表给出的等级化评估；评估结果是意见，不是客观事实。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **估价报告（appraisal）** 继承 **评估报告（assessment report）**
+- **评估价值（appraised value）** 继承 **市场价值（market value）**
+- **估价师（appraiser）** 继承 **参与方角色（party role）**
+- **评估活动（assessment activity）** 继承 **发生类别（OccurrenceKind）**
+- **评估事件（assessment event）** 继承 **发生事项（Occurrence）**
+- **评估报告（assessment report）** 继承 **报告（Report）**
+- **期望价值（expected value）** 继承 **价值（value）**
+- **公允价值（fair value）** 继承 **货币数量（MonetaryAmount）**
+- **公允价值（fair value）** 继承 **定量值（quantitative value）**
+- **市场价值（market value）** 继承 **货币数量（MonetaryAmount）**
+- **市场价值（market value）** 继承 **定量值（quantitative value）**
+- **观测值（observed value）** 继承 **价值（value）**
+- 其余 9 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -37,67 +53,236 @@
 | 价值（value） | 某事物（如产品、服务或资产）对公司、客户或利益相关方的感知价值。 |
 | 价值评估（value assessment） | 估计某事物价值的评估事件。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 估价报告（appraisal） ⊑ 评估报告（assessment report）
-- 评估价值（appraised value） ⊑ 市场价值（market value）
-- 估价师（appraiser） ⊑ 参与方角色（party role）
-- 评估活动（assessment activity） ⊑ 发生类别
-- 评估事件（assessment event） ⊑ 发生事项
-- 评估报告（assessment report） ⊑ 报告
-- 期望价值（expected value） ⊑ 价值（value）
-- 公允价值（fair value） ⊑ 货币数量
-- 公允价值（fair value） ⊑ 定量值（quantitative value）
-- 市场价值（market value） ⊑ 货币数量
-- 市场价值（market value） ⊑ 定量值（quantitative value）
-- 观测值（observed value） ⊑ 价值（value）
-- 现值（present value） ⊑ 定量值（quantitative value）
-- 定性值（qualitative value） ⊑ 价值（value）
-- 定量值（quantitative value） ⊑ 价值（value）
-- 定量值（quantitative value） ⊑ 标量值
-- 参考值（reference value） ⊑ 定量值（quantitative value）
-- 参考值（reference value） ⊑ 参考文献
-- 估值方法（valuation method） ⊑ 战略
-- 价值（value） ⊑ 方面
-- 价值评估（value assessment） ⊑ 评估事件（assessment event）
+### 2.1 估价师（appraiser）
 
-## 3. 对象属性（Object Property）
+定义：评估或估计某人或某事物的性质、质量、能力或价值的参与方。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-arr-asmt:appliesMethodology | 应用方法论（applies methodology） | 标识为确定某事物公允市场价值或现值所用的策略。 | 值域（range）：估值方法（valuation method）；子属性（subPropertyOf）：具有战略 |
-| fibo-fnd-arr-asmt:estimatesValueAt | 估计价值为（estimates value at） | 给出某资产在某时点的近似价值。 | 值域（range）：评估价值（appraised value）；子属性（subPropertyOf）：具有货币数量 |
-| fibo-fnd-arr-asmt:hasAppraiser | 具有估价师（has appraiser） | 将评估或报告关联到实施评估的代理。 | 子属性（subPropertyOf）：由……提供 |
-| fibo-fnd-arr-asmt:hasDateOfAssessment | 具有评估日期（has date of assessment） | 评估过程完成的日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-fnd-arr-asmt:hasEstimatedValue | 具有估计价值（has estimated value） | 将某事物关联到其估计价值。 | 值域（range）：评估价值（appraised value）；子属性（subPropertyOf）：具有货币数量 |
-| fibo-fnd-arr-asmt:isEstimatedValueOf | 是……的估计价值（is estimated value of） | 将评估价值关联到评估日所关注的资产。 | 定义域（domain）：评估价值（appraised value）；逆属性（inverseOf）：具有估计价值（has estimated value）；子属性（subPropertyOf）：是……的值 |
+- 父类：**参与方角色（party role）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **评估（evaluates）** | — | — |
+| **提供（provides）** | — | — |
 
-- **估价报告（appraisal）**：**由……生成（isGeneratedBy）**可以有 0 个或多个**估价师（appraiser）**。
-- **估价报告（appraisal）**：**评估（evaluates）**可以有 0 个或多个**资产（Asset）**。
-- **估价报告（appraisal）**：**估计价值为（estimates value at）**至少有一个取值，类型是**评估价值（appraised value）**。
-- **估价师（appraiser）**：**评估（evaluates）**至少有 0 个取值。
-- **估价师（appraiser）**：**提供（provides）**至少有一个取值，类型是**估价报告（appraisal）**。
-- **评估活动（assessment activity）**：**评估（evaluates）**至少有 0 个取值。
-- **评估活动（assessment activity）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
-- **评估事件（assessment event）**：**评估（evaluates）**至少有 0 个取值。
-- **评估事件（assessment event）**：**具有输出（hasOutput）**可以有 0 个或多个**评估报告（assessment report）**。
-- **评估事件（assessment event）**：**例证（exemplifies）**恰好有 1 个**评估活动（assessment activity）**。
-- **评估事件（assessment event）**：**具有输出（hasOutput）**至少有一个取值，类型是**意见（opinion）**。
-- **评估事件（assessment event）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
-- **评估报告（assessment report）**：**报告关于（reportsOn）**可以有 0 个或多个**意见（opinion）**。
-- **期望价值（expected value）**与**观测值（observed value）**互斥：同一个体不能同时属于两者。
-- **意见（opinion）**：**是……的输出（isOutputFrom）**至少有一个取值，类型是**评估事件（assessment event）**。
-- **意见（opinion）**：**由……生成（isGeneratedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
-- **定性值（qualitative value）**与**定量值（quantitative value）**互斥：同一个体不能同时属于两者。
-- **价值评估（value assessment）**：**具有输出（hasOutput）**可以有 0 个或多个**估价报告（appraisal）**。
-- **价值评估（value assessment）**：**应用方法论（applies methodology）**可以有 0 个或多个**估值方法（valuation method）**。
-- **价值评估（value assessment）**：**具有估价师（has appraiser）**至少有一个取值，类型是**智能体角色（agent role）**。
+公理：
 
-## 6. 依赖（owl:imports，15 个）
+- **提供（provides）**至少有一个取值，类型是**估价报告（appraisal）**。
+- **评估（evaluates）**至少有 0 个取值。
+
+### 2.2 评估活动（assessment activity）
+
+定义：涉及评估或估计某人或某事物的性质、质量、能力或价值的活动。
+
+- 父类：**发生类别（OccurrenceKind）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **评估（evaluates）** | — | — |
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
+- **评估（evaluates）**至少有 0 个取值。
+
+### 2.3 评估事件（assessment event）
+
+定义：涉及评估或估计某人或某事物的性质、质量或能力的事件。
+
+- 父类：**发生事项（Occurrence）**
+- 直接子类：**价值评估（value assessment）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有输出（hasOutput）** | — | — |
+| **评估（evaluates）** | — | — |
+| **例证（exemplifies）** | — | — |
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**评估活动（assessment activity）**。
+- **具有输出（hasOutput）**可以有 0 个或多个**评估报告（assessment report）**。
+- **具有输出（hasOutput）**至少有一个取值，类型是**意见（opinion）**。
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
+- **评估（evaluates）**至少有 0 个取值。
+
+#### 2.3.1 价值评估（value assessment）
+
+定义：估计某事物价值的评估事件。
+
+- 父类：**评估事件（assessment event）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **应用方法论（applies methodology）** | 标识为确定某事物公允市场价值或现值所用的策略。 | 值域：估值方法（valuation method）；子属性：具有战略 |
+| **具有估价师（has appraiser）** | 将评估或报告关联到实施评估的代理。 | 子属性：由……提供 |
+| **具有输出（hasOutput）** | — | — |
+
+公理：
+
+- **具有估价师（has appraiser）**至少有一个取值，类型是**智能体角色（agent role）**。
+- **具有输出（hasOutput）**可以有 0 个或多个**估价报告（appraisal）**。
+- **应用方法论（applies methodology）**可以有 0 个或多个**估值方法（valuation method）**。
+
+### 2.4 评估报告（assessment report）
+
+定义：包含对某事物的意见、判断、估价或看法，以及通常得出该意见所用方法和原始输入的报告。
+
+- 父类：**报告（Report）**
+- 直接子类：**估价报告（appraisal）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **报告关于（reportsOn）** | — | — |
+
+公理：
+
+- **报告关于（reportsOn）**可以有 0 个或多个**意见（opinion）**。
+
+#### 2.4.1 估价报告（appraisal）
+
+定义：对某事物在某时点市场价值的书面估计，通常由合格估价师提供。
+
+- 父类：**评估报告（assessment report）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **估计价值为（estimates value at）** | 给出某资产在某时点的近似价值。 | 值域：评估价值（appraised value）；子属性：具有货币数量 |
+| **评估（evaluates）** | — | — |
+| **由……生成（isGeneratedBy）** | — | — |
+
+公理：
+
+- **估计价值为（estimates value at）**至少有一个取值，类型是**评估价值（appraised value）**。
+- **由……生成（isGeneratedBy）**可以有 0 个或多个**估价师（appraiser）**。
+- **评估（evaluates）**可以有 0 个或多个**资产（Asset）**。
+
+### 2.5 意见（opinion）
+
+定义：对某事物的判断、估价或看法。
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的输出（isOutputFrom）** | — | — |
+| **由……生成（isGeneratedBy）** | — | — |
+
+公理：
+
+- **是……的输出（isOutputFrom）**至少有一个取值，类型是**评估事件（assessment event）**。
+- **由……生成（isGeneratedBy）**至少有一个取值，类型是**智能体角色（agent role）**。
+
+### 2.6 估值方法（valuation method）
+
+定义：用于确定资产当前或预期价值的方法。
+
+- 父类：**战略（Strategy）**
+
+### 2.7 价值（value）
+
+定义：某事物（如产品、服务或资产）对公司、客户或利益相关方的感知价值。
+
+- 父类：**方面（Aspect）**
+- 直接子类：**期望价值（expected value）**、**观测值（observed value）**、**定性值（qualitative value）**、**定量值（quantitative value）**
+
+#### 2.7.1 期望价值（expected value）
+
+定义：基于模型或假设预期的理论价值。
+
+- 父类：**价值（value）**
+
+公理：
+
+- 与**观测值（observed value）**互斥：同一个体不能同时属于两者。
+
+#### 2.7.2 观测值（observed value）
+
+定义：从实验、调查或观测中收集的实际数据点。
+
+- 父类：**价值（value）**
+
+#### 2.7.3 定性值（qualitative value）
+
+定义：精度或准确度低于定量方法所确定值的值，通常以代码而非实际数值表示。
+
+- 父类：**价值（value）**
+
+公理：
+
+- 与**定量值（quantitative value）**互斥：同一个体不能同时属于两者。
+
+#### 2.7.4 定量值（quantitative value）
+
+定义：通过定量方法确定、以适当单位的数值表示的值。
+
+- 父类：**价值（value）**、**标量值（ScalarQuantityValue）**
+- 直接子类：**公允价值（fair value）**、**市场价值（market value）**、**现值（present value）**、**参考值（reference value）**
+
+##### 2.7.4.1 公允价值（fair value）
+
+定义：在计量日市场参与者之间的有序交易中出售资产所能收到或转移负债所须支付的价格。
+
+- 父类：**货币数量（MonetaryAmount）**、**定量值（quantitative value）**
+
+##### 2.7.4.2 市场价值（market value）
+
+定义：资产在市场上可售得的价格。
+
+- 父类：**货币数量（MonetaryAmount）**、**定量值（quantitative value）**
+- 直接子类：**评估价值（appraised value）**
+
+###### 2.7.4.2.1 评估价值（appraised value）
+
+定义：某资产在给定时点的估计价值。
+
+- 父类：**市场价值（market value）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。 | 逆属性：具有估计价值（has estimated value）；子属性：是……的值 |
+
+##### 2.7.4.3 现值（present value）
+
+定义：资产当前的价值，可由参考数据计算并可能基于其预期未来价值。
+
+- 父类：**定量值（quantitative value）**
+
+##### 2.7.4.4 参考值（reference value）
+
+定义：对某可辨识事物、可获得证据支持的值。
+
+- 父类：**定量值（quantitative value）**、**参考文献（Reference）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有评估日期（has date of assessment）** | 评估过程完成的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有估计价值（has estimated value）** | 将某事物关联到其估计价值。 | 值域：评估价值（appraised value）；子属性：具有货币数量 |
+
+## 4. 依赖（owl:imports，15 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -119,7 +304,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Assessments.rdf`
 - 中文 Turtle：`Assessments.ttl`

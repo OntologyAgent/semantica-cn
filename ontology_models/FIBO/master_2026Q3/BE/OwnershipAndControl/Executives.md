@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：高管是组织内的角色（party in role），不是自然人本身——同一个人可以同时是高管、股东和董事；与所有权/控制角色的差别在于高管是经营者而非所有者。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **公司章程（articles of incorporation）** 继承 **注册成立文书（InstrumentOfIncorporation）**
+- **审计师（auditor）** 继承 **被授权方（AuthorizedParty）**
+- **获授权个人（authorized individual）** 继承 **责任方（ResponsibleParty）**
+- **董事会职权（board capacity）** 继承 **受托法律权限（DelegatedLegalAuthority）**
+- **董事会组成控制（board composition control）** 继承 **控制（Control）**
+- **董事会成员（board member）** 继承 **法定受托权限（LegallyDelegatedAuthority）**
+- **董事会成员（board member）** 继承 **责任方（ResponsibleParty）**
+- **董事会成员（board member）** 继承 **组织成员（OrganizationMember）**
+- **董事会成员关系（board membership）** 继承 **控制（Control）**
+- **董事会（board of directors）** 继承 **实体控制方（EntityControllingParty）**
+- **内部章程（bylaws）** 继承 **法律（Law）**
+- **首席执行官（chief executive officer）** 继承 **公司高管（corporate officer）**
+- 其余 21 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -46,94 +62,341 @@
 | 主要负责方（principal party） | 负责组织日常业务运营管理的控制方。 |
 | 签署人（signatory） | 经授权代表自己、他人或组织签署协议的责任方。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 公司章程（articles of incorporation） ⊑ 注册成立文书
-- 审计师（auditor） ⊑ 被授权方
-- 获授权个人（authorized individual） ⊑ 责任方
-- 董事会职权（board capacity） ⊑ 受托法律权限
-- 董事会组成控制（board composition control） ⊑ 控制
-- 董事会成员（board member） ⊑ 法定受托权限
-- 董事会成员（board member） ⊑ 责任方
-- 董事会成员（board member） ⊑ 组织成员
-- 董事会成员关系（board membership） ⊑ 控制
-- 董事会（board of directors） ⊑ 实体控制方
-- 内部章程（bylaws） ⊑ 法律
-- 首席执行官（chief executive officer） ⊑ 公司高管（corporate officer）
-- 首席执行官（chief executive officer） ⊑ 执行董事（executive board member）
-- 首席执行官（chief executive officer） ⊑ 主要负责方（principal party）
-- 首席财务官（chief financial officer） ⊑ 公司高管（corporate officer）
-- 公司法（company law） ⊑ 成文法
-- 公司秘书（company secretary） ⊑ 公司高管（corporate officer）
-- 控制性名义持有人（controlling nominee） ⊑ 法定受托权限
-- 公司内部章程（corporate bylaws） ⊑ 内部章程（bylaws）
-- 公司高管（corporate officer） ⊑ 高管（executive）
-- 公司高管（corporate officer） ⊑ 签署人（signatory）
-- 公司高管（corporate officer） ⊑ 组织成员
-- 高管（executive） ⊑ 法定受托权限
-- 执行董事（executive board member） ⊑ 董事会成员（board member）
-- 执行董事（executive board member） ⊑ 雇员
-- 外部审计师（external auditor） ⊑ 审计师（auditor）
-- 内部审计师（internal auditor） ⊑ 审计师（auditor）
-- 内部审计师（internal auditor） ⊑ 雇员
-- 非执行董事（non-executive board member） ⊑ 董事会成员（board member）
-- 主要负责方（principal party） ⊑ 签署人（signatory）
-- 主要负责方（principal party） ⊑ 组织成员
-- 签署人（signatory） ⊑ 获授权个人（authorized individual）
-- 签署人（signatory） ⊑ 法定受托权限
+### 2.1 授权（Authorization）
 
-## 3. 对象属性（Object Property）
+定义：一方授权他人在特定条件下、特定时期内代表其行事或具备特定能力的情形。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-oac-exec:authorizes | 授权（authorizes） | 认可、使能、赋权或给予许可。 | — |
-| fibo-be-oac-exec:authorizesThrough | 通过……授权（authorizesThrough） | 标识促成授权方为某目的指定被授权方的情形。 | — |
-| fibo-be-oac-exec:delegatesControlTo | 将控制权委托给（delegatesControlTo） | 标识授权方已将某些权限或控制权委托给的参与方。 | — |
-| fibo-be-oac-exec:designatesSignatory | 指定签署人（designates signatory） | 授权签署协议、访问账户和/或执行其他类似任务。 | 值域（range）：签署人（signatory）；子属性（subPropertyOf）：授权 |
-| fibo-be-oac-exec:elects | 选举（elects） | 通过投票选出某人或一群人担任职务或其他职位。 | 定义域（domain）：参与方角色（party role）；值域（range）：参与方角色（party role） |
-| fibo-be-oac-exec:hasCorporateOfficer | 具有公司高管（has corporate officer） | 标识组织的高管。 | 定义域（domain）：受控方；值域（range）：公司高管（corporate officer）；子属性（subPropertyOf）：具有控制方 |
-| fibo-be-oac-exec:hasDirector | 具有董事（has director） | 标识组织董事会的成员。 | 定义域（domain）：受控方；值域（range）：董事会成员（board member）；子属性（subPropertyOf）：具有控制方 |
-| fibo-be-oac-exec:hasPrincipalManagingParty | 具有主要管理方（has principal managing party） | 标识负责组织日常业务运营管理的控制方。 | 定义域（domain）：受控方；值域（range）：主要负责方（principal party）；逆属性（inverseOf）：是……的主要负责方（is principal party of）；子属性（subPropertyOf）：具有控制性组织成员 |
-| fibo-be-oac-exec:hasResponsibility | 具有责任（has responsibility） | 指明独立参与方所负的承诺或义务。 | 定义域（domain）：参与方（party）；值域（range）：责任；子属性（subPropertyOf）：具有能力方 |
-| fibo-be-oac-exec:hasSigningAuthorityFor | 对……具有签署权（has signing authority for） | 标识签署人有权为之签署协议、访问账户并执行相关任务的参与方。 | 定义域（domain）：签署人（signatory）；逆属性（inverseOf）：指定签署人（designates signatory）；子属性（subPropertyOf）：由……授权 |
-| fibo-be-oac-exec:hasVestedInIt | 被授予权力（has vested in it） | 通过委托被赋予权力。 | 定义域（domain）：法定受托权限；值域（range）：受托法律权限 |
-| fibo-be-oac-exec:hasAuthorizedParty | 具有被授权方（hasAuthorizedParty） | 标识在该情形中被认可、使能、赋权或许可行事的参与方（角色）。 | — |
-| fibo-be-oac-exec:hasAuthorizingParty | 具有授权方（hasAuthorizingParty） | 标识在该情形中给予认可、使能、赋权或许可的参与方（角色）。 | — |
-| fibo-be-oac-exec:hasDelegatedControlOf | 受托控制（hasDelegatedControlOf） | 标识通过委托而被控制的某事物或某参与方。 | — |
-| fibo-be-oac-exec:hasResponsibleParty | 具有责任方（hasResponsibleParty） | 标识对某情形或组织负有任务、承诺或义务的参与方。 | — |
-| fibo-be-oac-exec:isDirectorOf | 是……的董事（is director of） | 标识该董事会成员所监督的组织。 | 定义域（domain）：董事会成员（board member）；值域（range）：受控方；逆属性（inverseOf）：具有董事（has director）；子属性（subPropertyOf）：是控制方 |
-| fibo-be-oac-exec:isOfficerOf | 是……的高管（is officer of） | 标识该人对其拥有一定权力并负有管理责任的组织。 | 定义域（domain）：公司高管（corporate officer）；值域（range）：受控方；逆属性（inverseOf）：具有公司高管（has corporate officer）；子属性（subPropertyOf）：是控制方 |
-| fibo-be-oac-exec:isPrincipalPartyOf | 是……的主要负责方（is principal party of） | 标识主要负责方对其拥有一定程度控制的法律实体（受控方）。 | 定义域（domain）：主要负责方（principal party）；值域（range）：受控方；子属性（subPropertyOf）：是……的控制性成员 |
-| fibo-be-oac-exec:isAuthorizedBy | 由……授权（isAuthorizedBy） | 由……认可、使能、赋权或许可。 | — |
-| fibo-be-oac-exec:isAuthorizedThrough | 通过……被授权（isAuthorizedThrough） | 标识促成被授权方为某目的获得认可的情形。 | — |
-| fibo-be-oac-exec:nominates | 提名（nominates） | 任命或提议任命某人担任职务或职位。 | 定义域（domain）：参与方角色（party role）；值域（range）：参与方角色（party role） |
+### 2.2 被授权方（AuthorizedParty）
 
-## 5. 公理约定（Axioms）
+定义：在一定规则下、一定时期内被赋予代表他方行事能力或特定能力的参与方。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+### 2.3 授权方（AuthorizingParty）
 
-- **获授权个人（authorized individual）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **董事会职权（board capacity）**：**受……管辖（isGovernedBy）**可以有 0 个或多个**公司法（company law）**。
-- **董事会职权（board capacity）**：**被授予给（isConferredOn）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会成员（board member）**。
-- **董事会职权（board capacity）**：**由……授予（isConferredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **董事会组成控制（board composition control）**：**具有控制中参与方（hasPartyInControl）**可以有 0 个或多个**Ncf29ba97204f49eb8c821d0e5d624666**。
-- **董事会组成控制（board composition control）**：**涉及受控事物（involvesControlledThing）**至少有一个取值，类型是**董事会成员（board member）**。
-- **董事会成员（board member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会（board of directors）**。
-- **董事会成员（board member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**董事会协议（BoardAgreement）**。
-- **董事会成员关系（board membership）**：**具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**董事会成员（board member）**。
-- **董事会成员关系（board membership）**：**涉及受控事物（involvesControlledThing）**至少有一个取值，类型是**受控方（ControlledParty）**。
-- **董事会（board of directors）**：**提名（nominates）**至少有一个取值，类型是**公司高管（corporate officer）**。
-- **董事会（board of directors）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**董事会职权（board capacity）**。
-- **董事会（board of directors）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会成员（board member）**。
-- **首席执行官（chief executive officer）**：**管理（manages）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **控制性名义持有人（controlling nominee）**：**受托控制（hasDelegatedControlOf）**至少有一个取值，类型是**资产（Asset）**。
-- **公司内部章程（corporate bylaws）**：**具有授权股份数（hasSharesAuthorized）**至少有一个取值，类型是**xsd:nonNegativeInteger（nonNegativeInteger）**。
-- **高管（executive）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **内部审计师（internal auditor）**与**外部审计师（external auditor）**互斥：同一个体不能同时属于两者。
-- **非执行董事（non-executive board member）**与**执行董事（executive board member）**互斥：同一个体不能同时属于两者。
-- **签署人（signatory）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**签署能力（SignatoryCapacity）**。
+定义：将某个角色、权限或控制权委托给他方的参与方。
 
-## 6. 依赖（owl:imports，20 个）
+### 2.4 法定受托权限（LegallyDelegatedAuthority）
+
+定义：被赋予一定法律控制权及相应责任的被授权方。
+
+### 2.5 公司章程（articles of incorporation）
+
+定义：设立新公司、或（修订时）调整公司法律基础的合同，列明公司的基本信息。
+
+- 父类：**注册成立文书（InstrumentOfIncorporation）**
+
+### 2.6 审计师（auditor）
+
+定义：有资格并经授权审查和核实财务记录准确性、确保公司遵守税法的参与方。
+
+- 父类：**被授权方（AuthorizedParty）**
+- 直接子类：**外部审计师（external auditor）**、**内部审计师（internal auditor）**
+
+#### 2.6.1 外部审计师（external auditor）
+
+定义：有资格并经授权检查和报告财务记录准确性、确保公司遵守税法的独立参与方。
+
+- 父类：**审计师（auditor）**
+
+#### 2.6.2 内部审计师（internal auditor）
+
+定义：有资格并经授权审查和核实财务记录准确性、评估内部控制与合规情况的雇员。
+
+- 父类：**审计师（auditor）**、**雇员（Employee）**
+
+公理：
+
+- 与**外部审计师（external auditor）**互斥：同一个体不能同时属于两者。
+
+### 2.7 获授权个人（authorized individual）
+
+定义：在一套规则下被赋予代表另一参与方行事之责任的个人的角色。
+
+- 父类：**责任方（ResponsibleParty）**
+- 直接子类：**签署人（signatory）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+
+#### 2.7.1 签署人（signatory）
+
+定义：经授权代表自己、他人或组织签署协议的责任方。
+
+- 父类：**获授权个人（authorized individual）**、**法定受托权限（LegallyDelegatedAuthority）**
+- 直接子类：**公司高管（corporate officer）**、**主要负责方（principal party）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **对……具有签署权（has signing authority for）** | 标识签署人有权为之签署协议、访问账户并执行相关任务的参与方。 | 逆属性：指定签署人（designates signatory）；子属性：由……授权 |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**签署能力（SignatoryCapacity）**。
+
+##### 2.7.1.1 公司高管（corporate officer）
+
+定义：由董事会或企业主聘用、被赋予特定职责的公司或其他组织的高级管理人员。
+
+- 父类：**高管（executive）**、**签署人（signatory）**、**组织成员（OrganizationMember）**
+- 直接子类：**首席执行官（chief executive officer）**、**首席财务官（chief financial officer）**、**公司秘书（company secretary）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的高管（is officer of）** | 标识该人对其拥有一定权力并负有管理责任的组织。 | 值域：受控方；逆属性：具有公司高管（has corporate officer）；子属性：是控制方 |
+
+###### 2.7.1.1.1 首席执行官（chief executive officer）
+
+定义：负责组织整体运营与绩效的最高公司高管。
+
+- 父类：**公司高管（corporate officer）**、**执行董事（executive board member）**、**主要负责方（principal party）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管理（manages）** | — | — |
+
+公理：
+
+- **管理（manages）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+###### 2.7.1.1.2 首席财务官（chief financial officer）
+
+定义：负责组织或项目财务控制与规划的最高级公司高管。
+
+- 父类：**公司高管（corporate officer）**
+
+###### 2.7.1.1.3 公司秘书（company secretary）
+
+定义：由组织董事任命的公司高管，负责确保遵守与公司治理相关的法律义务。
+
+- 父类：**公司高管（corporate officer）**
+
+##### 2.7.1.2 主要负责方（principal party）
+
+定义：负责组织日常业务运营管理的控制方。
+
+- 父类：**签署人（signatory）**、**组织成员（OrganizationMember）**
+- 直接子类：**首席执行官（chief executive officer）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的主要负责方（is principal party of）** | 标识主要负责方对其拥有一定程度控制的法律实体（受控方）。 | 值域：受控方；子属性：是……的控制性成员 |
+
+### 2.8 董事会职权（board capacity）
+
+定义：以受托身份为组织行事的权力，包括但不限于制定和执行公司政策。
+
+- 父类：**受托法律权限（DelegatedLegalAuthority）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **被授予给（isConferredOn）** | — | — |
+| **由……授予（isConferredBy）** | — | — |
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**可以有 0 个或多个**公司法（company law）**。
+- **由……授予（isConferredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **被授予给（isConferredOn）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会成员（board member）**。
+
+### 2.9 董事会组成控制（board composition control）
+
+定义：表决权股东、实体所有者或其他参与方（非营利组织情形）任命和/或提名董事会成员的情形。
+
+- 父类：**控制（Control）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有控制中参与方（hasPartyInControl）** | — | — |
+| **涉及受控事物（involvesControlledThing）** | — | — |
+
+公理：
+
+- **具有控制中参与方（hasPartyInControl）**可以有 0 个或多个**N13a7592a762946b9b5713f952995ddd8**。
+- **涉及受控事物（involvesControlledThing）**至少有一个取值，类型是**董事会成员（board member）**。
+
+### 2.10 董事会成员（board member）
+
+定义：对组织负有受托责任的参与方，包括但不限于制定和执行公司政策。
+
+- 父类：**法定受托权限（LegallyDelegatedAuthority）**、**责任方（ResponsibleParty）**、**组织成员（OrganizationMember）**
+- 直接子类：**执行董事（executive board member）**、**非执行董事（non-executive board member）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的董事（is director of）** | 标识该董事会成员所监督的组织。 | 值域：受控方；逆属性：具有董事（has director）；子属性：是控制方 |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会（board of directors）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**董事会协议（BoardAgreement）**。
+
+#### 2.10.1 执行董事（executive board member）
+
+定义：同时是该组织雇员的董事会成员。
+
+- 父类：**董事会成员（board member）**、**雇员（Employee）**
+- 直接子类：**首席执行官（chief executive officer）**
+
+#### 2.10.2 非执行董事（non-executive board member）
+
+定义：对组织运营不承担执行职责的董事会成员。
+
+- 父类：**董事会成员（board member）**
+
+公理：
+
+- 与**执行董事（executive board member）**互斥：同一个体不能同时属于两者。
+
+### 2.11 董事会成员关系（board membership）
+
+定义：将董事会个人成员关联到组织的情形。
+
+- 父类：**控制（Control）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有控制中参与方（hasPartyInControl）** | — | — |
+| **涉及受控事物（involvesControlledThing）** | — | — |
+
+公理：
+
+- **具有控制中参与方（hasPartyInControl）**至少有一个取值，类型是**董事会成员（board member）**。
+- **涉及受控事物（involvesControlledThing）**至少有一个取值，类型是**受控方（ControlledParty）**。
+
+### 2.12 董事会（board of directors）
+
+定义：构成组织治理机构、有权制定组织战略与政策以及选任高管的人员团体。
+
+- 父类：**实体控制方（EntityControllingParty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **提名（nominates）** | 任命或提议任命某人担任职务或职位。 | 值域：参与方角色（party role） |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **提名（nominates）**至少有一个取值，类型是**公司高管（corporate officer）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**董事会成员（board member）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**董事会职权（board capacity）**。
+
+### 2.13 内部章程（bylaws）
+
+定义：公司、协会、合伙或任何组织的行为成文规则。
+
+- 父类：**法律（Law）**
+- 直接子类：**公司内部章程（corporate bylaws）**
+
+#### 2.13.1 公司内部章程（corporate bylaws）
+
+定义：由董事会通过的公司行为成文规则。
+
+- 父类：**内部章程（bylaws）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有授权股份数（hasSharesAuthorized）** | — | — |
+
+公理：
+
+- **具有授权股份数（hasSharesAuthorized）**至少有一个取值，类型是**xsd:nonNegativeInteger（nonNegativeInteger）**。
+
+### 2.14 公司法（company law）
+
+定义：据以管理和控制公司的设立、注册或登记成立、治理与解散的立法。
+
+- 父类：**成文法（StatuteLaw）**
+
+### 2.15 控制性名义持有人（controlling nominee）
+
+定义：代表受益所有人持有资产（如股票、债券或财产）法定所有权的参与方。
+
+- 父类：**法定受托权限（LegallyDelegatedAuthority）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **受托控制（hasDelegatedControlOf）** | — | — |
+
+公理：
+
+- **受托控制（hasDelegatedControlOf）**至少有一个取值，类型是**资产（Asset）**。
+
+### 2.16 高管（executive）
+
+定义：被任命并赋予管理组织事务之责任、在指定角色权限内作出决策之权力的人。
+
+- 父类：**法定受托权限（LegallyDelegatedAuthority）**
+- 直接子类：**公司高管（corporate officer）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **授权（authorizes）** | 认可、使能、赋权或给予许可。 | — |
+| **通过……授权（authorizesThrough）** | 标识促成授权方为某目的指定被授权方的情形。 | — |
+| **将控制权委托给（delegatesControlTo）** | 标识授权方已将某些权限或控制权委托给的参与方。 | — |
+| **指定签署人（designates signatory）** | 授权签署协议、访问账户和/或执行其他类似任务。 | 值域：签署人（signatory）；子属性：授权 |
+| **选举（elects）** | 通过投票选出某人或一群人担任职务或其他职位。 | 值域：参与方角色（party role） |
+| **具有公司高管（has corporate officer）** | 标识组织的高管。 | 值域：公司高管（corporate officer）；子属性：具有控制方 |
+| **具有董事（has director）** | 标识组织董事会的成员。 | 值域：董事会成员（board member）；子属性：具有控制方 |
+| **具有主要管理方（has principal managing party）** | 标识负责组织日常业务运营管理的控制方。 | 值域：主要负责方（principal party）；逆属性：是……的主要负责方（is principal party of）；子属性：具有控制性组织成员 |
+| **具有责任（has responsibility）** | 指明独立参与方所负的承诺或义务。 | 值域：责任；子属性：具有能力方 |
+| **被授予权力（has vested in it）** | 通过委托被赋予权力。 | 值域：受托法律权限 |
+| **具有被授权方（hasAuthorizedParty）** | 标识在该情形中被认可、使能、赋权或许可行事的参与方（角色）。 | — |
+| **具有授权方（hasAuthorizingParty）** | 标识在该情形中给予认可、使能、赋权或许可的参与方（角色）。 | — |
+| **受托控制（hasDelegatedControlOf）** | 标识通过委托而被控制的某事物或某参与方。 | — |
+| **具有责任方（hasResponsibleParty）** | 标识对某情形或组织负有任务、承诺或义务的参与方。 | — |
+| **由……授权（isAuthorizedBy）** | 由……认可、使能、赋权或许可。 | — |
+| **通过……被授权（isAuthorizedThrough）** | 标识促成被授权方为某目的获得认可的情形。 | — |
+
+## 4. 依赖（owl:imports，20 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -160,7 +423,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Executives.rdf`
 - 中文 Turtle：`Executives.ttl`

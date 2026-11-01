@@ -14,6 +14,20 @@
 
 **与相近概念的差别**：受益所有人与名义持有人的区分是核心——名义持有人只是登记在册，受益所有人才享有实际经济利益；这套区分直接服务反洗钱与透明度监管。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **章程性所有者（constitutional owner）** 继承 **实体所有者（entity owner）**
+- **控制性股权（controlling equity）** 继承 **股东权益（ShareholdersEquity）**
+- **直接合并（direct consolidation）** 继承 **实体所有权（entity ownership）**
+- **实体所有者（entity owner）** 继承 **所有者（Owner）**
+- **实体所有权（entity ownership）** 继承 **所有权（Ownership）**
+- **外国分支所有权（foreign branch ownership）** 继承 **实体所有权（entity ownership）**
+- **投资权益（investment equity）** 继承 **所有者权益（OwnersEquity）**
+- **投资者（investor）** 继承 **实体所有者（entity owner）**
+- **投资者（investor）** 继承 **合同当事方（ContractParty）**
+- **投资者合同（investor contract）** 继承 **书面合同（WrittenContract）**
+- **最终所有权（ultimate ownership）** 继承 **实体所有权（entity ownership）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -29,50 +43,165 @@
 | 投资者合同（investor contract） | 规定投资者向实体投资之条款、并规定赋予该投资者之权利的合同。 |
 | 最终所有权（ultimate ownership） | 以会计合并为证的、某参与方对另一法律实体的最高层（顶端、末端）祖先级所有权。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 章程性所有者（constitutional owner） ⊑ 实体所有者（entity owner）
-- 控制性股权（controlling equity） ⊑ 股东权益
-- 直接合并（direct consolidation） ⊑ 实体所有权（entity ownership）
-- 实体所有者（entity owner） ⊑ 所有者
-- 实体所有权（entity ownership） ⊑ 所有权
-- 外国分支所有权（foreign branch ownership） ⊑ 实体所有权（entity ownership）
-- 投资权益（investment equity） ⊑ 所有者权益
-- 投资者（investor） ⊑ 实体所有者（entity owner）
-- 投资者（investor） ⊑ 合同当事方
-- 投资者合同（investor contract） ⊑ 书面合同
-- 最终所有权（ultimate ownership） ⊑ 实体所有权（entity ownership）
+### 2.1 控制性股权（controlling equity）
 
-## 3. 对象属性（Object Property）
+定义：依法或在相应股权工具中明示、正式赋予对实体之控制权的股东权益。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-oac-opty:guarantees | 担保（guarantees） | 提供正式的保证或承诺，尤指与产品、服务或交易相关的某些条件将得到满足。 | — |
-| fibo-be-oac-opty:hasDirectOwnership | 具有直接所有权（has direct ownership） | 将正式组织关联到其被另一实体直接拥有的情形。 | 定义域（domain）：N92273d45b62a4a799e7e62acce90531a；值域（range）：实体所有权（entity ownership）；逆属性（inverseOf）：具有被拥有实体（has owned entity）；子属性（subPropertyOf）：经历（experiences） |
-| fibo-be-oac-opty:hasDirectOwningEntity | 具有直接拥有实体（has direct owning entity） | 将正式组织关联到直接的法律主体/所有者。 | — |
-| fibo-be-oac-opty:hasInvestmentEntity | 具有投资实体（has investment entity） | 将法律主体关联到其直接拥有的正式组织或子公司，视所有权百分比而定。 | — |
-| fibo-be-oac-opty:hasInvestmentOwnership | 具有投资所有权（has investment ownership） | 将法律主体关联到其拥有正式组织的情境。 | 定义域（domain）：法律主体；值域（range）：实体所有权（entity ownership）；逆属性（inverseOf）：具有拥有实体（has owning entity）；子属性（subPropertyOf）：在…中扮演主动角色（plays active role in） |
-| fibo-be-oac-opty:hasOwnedEntity | 具有被拥有实体（has owned entity） | 标识被法律主体拥有的正式组织，可能包括独资企业。 | 定义域（domain）：实体所有权（entity ownership）；值域（range）：Na328b9c00f67408d878c20bf25483c19；子属性（subPropertyOf）：被…经历（is experienced by） |
-| fibo-be-oac-opty:hasOwningEntity | 具有拥有实体（has owning entity） | 标识拥有正式组织的参与方。 | 定义域（domain）：实体所有权（entity ownership）；值域（range）：法律主体；子属性（subPropertyOf）：具有主动参与方（has active party） |
+- 父类：**股东权益（ShareholdersEquity）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **授予（confers）** | — | — |
 
-- **章程性所有者（constitutional owner）**：**持有（holds）**至少有一个取值，类型是**股东权益（ShareholdersEquity）**。
-- **控制性股权（controlling equity）**：**授予（confers）**的所有取值只能是**法律控制（DeJureControl）**。
-- **实体所有者（entity owner）**：**持有（holds）**至少有一个取值，类型是**所有者权益（OwnersEquity）**。
-- **实体所有权（entity ownership）**：**受……限定（isQualifiedBy）**可以有 0 个或多个**关系限定符（RelationshipQualifier）**。
-- **实体所有权（entity ownership）**：**由……授予（isConferredBy）**可以有 0 个或多个**Nec3fb060c4154cf38065d1b83625771f**。
-- **实体所有权（entity ownership）**：**具有所有权百分比（hasOwnershipPercentage）**存在取值约束。
-- **实体所有权（entity ownership）**：**由……分类（isClassifiedBy）**恰好有 1 个**关系状态（RelationshipStatus）**。
-- **实体所有权（entity ownership）**：**具有被拥有实体（has owned entity）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **实体所有权（entity ownership）**：**具有拥有实体（has owning entity）**至少有一个取值，类型是**法律主体（LegalPerson）**。
-- **投资权益（investment equity）**：**由……持有（isHeldBy）**至少有一个取值，类型是**投资者（investor）**。
-- **投资者（investor）**：**持有（holds）**至少有一个取值，类型是**投资权益（investment equity）**。
-- **投资者合同（investor contract）**：**为……定义条款（definesTermsFor）**至少有一个取值，类型是**投资权益（investment equity）**。
+公理：
 
-## 6. 依赖（owl:imports，13 个）
+- **授予（confers）**的所有取值只能是**法律控制（DeJureControl）**。
+
+### 2.2 实体所有者（entity owner）
+
+定义：拥有正式企业组织或持有其所有权权益的所有者（个人、群体或其他企业实体）。
+
+- 父类：**所有者（Owner）**
+- 直接子类：**章程性所有者（constitutional owner）**、**投资者（investor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **持有（holds）** | — | — |
+
+公理：
+
+- **持有（holds）**至少有一个取值，类型是**所有者权益（OwnersEquity）**。
+
+#### 2.2.1 章程性所有者（constitutional owner）
+
+定义：以股东权益形式持有该实体股权的实体所有者。
+
+- 父类：**实体所有者（entity owner）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **持有（holds）** | — | — |
+
+公理：
+
+- **持有（holds）**至少有一个取值，类型是**股东权益（ShareholdersEquity）**。
+
+#### 2.2.2 投资者（investor）
+
+定义：通过投资拥有某组织一定份额的参与方。
+
+- 父类：**实体所有者（entity owner）**、**合同当事方（ContractParty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **持有（holds）** | — | — |
+
+公理：
+
+- **持有（holds）**至少有一个取值，类型是**投资权益（investment equity）**。
+
+### 2.3 实体所有权（entity ownership）
+
+定义：某参与方对某非政府正式组织之权益的所有权。
+
+- 父类：**所有权（Ownership）**
+- 直接子类：**直接合并（direct consolidation）**、**外国分支所有权（foreign branch ownership）**、**最终所有权（ultimate ownership）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有所有权百分比（hasOwnershipPercentage）** | — | — |
+| **具有被拥有实体（has owned entity）** | 标识被法律主体拥有的正式组织，可能包括独资企业。 | 值域：Ncefb00438ecc420e8132406b6ddb17f4；子属性：被…经历（is experienced by） |
+| **具有拥有实体（has owning entity）** | 标识拥有正式组织的参与方。 | 值域：法律主体；子属性：具有主动参与方（has active party） |
+| **受……限定（isQualifiedBy）** | — | — |
+| **由……授予（isConferredBy）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **具有所有权百分比（hasOwnershipPercentage）**存在取值约束。
+- **具有拥有实体（has owning entity）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **具有被拥有实体（has owned entity）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **受……限定（isQualifiedBy）**可以有 0 个或多个**关系限定符（RelationshipQualifier）**。
+- **由……分类（isClassifiedBy）**恰好有 1 个**关系状态（RelationshipStatus）**。
+- **由……授予（isConferredBy）**可以有 0 个或多个**N5553f1254f1a46838df6cb5ccddbb9a4**。
+
+#### 2.3.1 直接合并（direct consolidation）
+
+定义：以会计合并方式记录的对实体的直接所有权。
+
+- 父类：**实体所有权（entity ownership）**
+
+#### 2.3.2 外国分支所有权（foreign branch ownership）
+
+定义：某参与方对作为外国关联方且在法律上属于拥有实体一部分的正式组织或组织子单位的所有权。
+
+- 父类：**实体所有权（entity ownership）**
+
+#### 2.3.3 最终所有权（ultimate ownership）
+
+定义：以会计合并为证的、某参与方对另一法律实体的最高层（顶端、末端）祖先级所有权。
+
+- 父类：**实体所有权（entity ownership）**
+
+### 2.4 投资权益（investment equity）
+
+定义：代表对某实体之所有权权益的权益，可能以股东权益形式存在，也可能不是。
+
+- 父类：**所有者权益（OwnersEquity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……持有（isHeldBy）** | — | — |
+
+公理：
+
+- **由……持有（isHeldBy）**至少有一个取值，类型是**投资者（investor）**。
+
+### 2.5 投资者合同（investor contract）
+
+定义：规定投资者向实体投资之条款、并规定赋予该投资者之权利的合同。
+
+- 父类：**书面合同（WrittenContract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **为……定义条款（definesTermsFor）** | — | — |
+
+公理：
+
+- **为……定义条款（definesTermsFor）**至少有一个取值，类型是**投资权益（investment equity）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **担保（guarantees）** | 提供正式的保证或承诺，尤指与产品、服务或交易相关的某些条件将得到满足。 | — |
+| **具有直接所有权（has direct ownership）** | 将正式组织关联到其被另一实体直接拥有的情形。 | 值域：实体所有权（entity ownership）；逆属性：具有被拥有实体（has owned entity）；子属性：经历（experiences） |
+| **具有直接拥有实体（has direct owning entity）** | 将正式组织关联到直接的法律主体/所有者。 | — |
+| **具有投资实体（has investment entity）** | 将法律主体关联到其直接拥有的正式组织或子公司，视所有权百分比而定。 | — |
+| **具有投资所有权（has investment ownership）** | 将法律主体关联到其拥有正式组织的情境。 | 值域：实体所有权（entity ownership）；逆属性：具有拥有实体（has owning entity）；子属性：在…中扮演主动角色（plays active role in） |
+
+## 4. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -92,7 +221,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`OwnershipParties.rdf`
 - 中文 Turtle：`OwnershipParties.ttl`

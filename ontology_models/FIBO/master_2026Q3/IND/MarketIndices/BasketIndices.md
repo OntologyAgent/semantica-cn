@@ -14,6 +14,19 @@
 
 **与相近概念的差别**：指数≠指标——指数是按既定规则对一篮子成分加权计算的合成数值，可投资可复制；指标是单一统计量，不可直接投资。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **信用风险篮子（basket of credit risks）** 继承 **加权篮子（WeightedBasket）**
+- **信用风险篮子（basket of credit risks）** 继承 **带日期结构化集合（DatedStructuredCollection）**
+- **股票篮子（basket of equities）** 继承 **证券篮子（BasketOfSecurities）**
+- **市值加权函数（capitalization-based weighting function）** 继承 **加权函数（WeightingFunction）**
+- **信用指数（credit index）** 继承 **参考指数（reference index）**
+- **信用指数成分（credit index constituent）** 继承 **加权篮子成分（WeightedBasketConstituent）**
+- **信用指数成分（credit index constituent）** 继承 **带日期集合成分（DatedCollectionConstituent）**
+- **股票指数（equity index）** 继承 **参考指数（reference index）**
+- **市值（market capitalization）** 继承 **表达式（Expression）**
+- **参考指数（reference index）** 继承 **限定范围度量（ScopedMeasure）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -27,63 +40,175 @@
 | 市值（market capitalization） | 表示股票市场在特定时点对公司之估值的表达式。 |
 | 参考指数（reference index） | 篮子内容在给定时期内价值变化的度量。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 信用风险篮子（basket of credit risks） ⊑ 加权篮子
-- 信用风险篮子（basket of credit risks） ⊑ 带日期结构化集合
-- 股票篮子（basket of equities） ⊑ 证券篮子
-- 市值加权函数（capitalization-based weighting function） ⊑ 加权函数
-- 信用指数（credit index） ⊑ 参考指数（reference index）
-- 信用指数成分（credit index constituent） ⊑ 加权篮子成分
-- 信用指数成分（credit index constituent） ⊑ 带日期集合成分
-- 股票指数（equity index） ⊑ 参考指数（reference index）
-- 市值（market capitalization） ⊑ 表达式
-- 参考指数（reference index） ⊑ 限定范围度量
+### 2.1 信用风险篮子（basket of credit risks）
 
-## 3. 对象属性（Object Property）
+定义：为风险分析目的而汇集的工具、法律实体或其组合的篮子。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-ind-mkt-bas:hasMarketCapitalization | 具有市值（has market capitalization） | 标识某发行人在某日期的市值。 | 定义域（domain）：股份发行人；值域（range）：市值（market capitalization） |
-| fibo-ind-mkt-bas:hasMarketCapitalizationValue | 具有市值金额（has market capitalization value） | 标识表示某发行人在某日期市值的货币金额。 | 定义域（domain）：市值（market capitalization）；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-ind-mkt-bas:hasOriginalNotionalValue | 具有原始名义价值（has original notional value） | 标识该指数最初构成时所代表的名义金额。 | 定义域（domain）：信用指数（credit index）；值域（range）：货币数量；子属性（subPropertyOf）：具有名义金额 |
-| fibo-ind-mkt-bas:hasPremium | 具有权利金（has premium） | 标识基于该指数的合同应付的权利金。 | 定义域（domain）：信用指数（credit index）；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-ind-mkt-bas:hasUpFrontFee | 具有预付费用（has up front fee） | 指明任何希望在合同开始后参与基于该指数之合同的参与方应付的费用。 | 定义域（domain）：信用指数（credit index）；值域（range）：货币数量 |
+- 父类：**加权篮子（WeightedBasket）**、**带日期结构化集合（DatedStructuredCollection）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-ind-mkt-bas:hasDebtRanking | 具有债务排序（has debt ranking） | 标识该债务工具相对于信用指数整体的排序。 |
-| fibo-ind-mkt-bas:hasIndexName | 具有指数名称（has index name） | 指明该指数的正式名称。 |
-| fibo-ind-mkt-bas:hasIndexValue | 具有指数值（has index value） | 指明给定指数在发布日的值。 |
-| fibo-ind-mkt-bas:hasSpreadRange | 具有利差区间（has spread range） | 指数各成分的信用利差区间。 |
+| **具有成员（hasMember）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有成员（hasMember）**至少有一个取值，类型是**信用指数成分（credit index constituent）**。
 
-- **信用风险篮子（basket of credit risks）**：**具有成员（hasMember）**至少有一个取值，类型是**信用指数成分（credit index constituent）**。
-- **股票篮子（basket of equities）**：**具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **市值加权函数（capitalization-based weighting function）**：**具有市值（has market capitalization）**至少有一个取值，类型是**市值（market capitalization）**。
-- **信用指数（credit index）**：**基于（isBasedOn）**至少有一个取值，类型是**信用风险篮子（basket of credit risks）**。
-- **信用指数成分（credit index constituent）**：**具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
-- **信用指数成分（credit index constituent）**：**引用（refersTo）**至少有一个取值，类型是**信用事件（CreditEvent）**。
-- **股票指数（equity index）**：**基于（isBasedOn）**至少有一个取值，类型是**股票篮子（basket of equities）**。
-- **市值（market capitalization）**：**具有市值金额（has market capitalization value）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
-- **市值（market capitalization）**：**具有流通股数（hasSharesOutstanding）**至少有一个取值，类型是**xsd:nonNegativeInteger（nonNegativeInteger）**。
-- **市值（market capitalization）**：**适用于（appliesTo）**至少有一个取值，类型是**股份发行人（ShareIssuer）**。
-- **市值（market capitalization）**：**具有观测日期时间（hasObservedDateTime）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
-- **市值（market capitalization）**：**具有自变量（hasArgument）**至少有一个取值，类型是**每股价格（PricePerShare）**。
-- **参考指数（reference index）**：**具有周期性（hasPeriodicity）**的所有取值只能是**重复区间（RecurrenceInterval）**。
-- **参考指数（reference index）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**行业部门分类器（IndustrySectorClassifier）**。
-- **参考指数（reference index）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**资产类别（AssetClass）**。
-- **参考指数（reference index）**：**具有发布日期（hasReleaseDate）**可以有 0 个或多个**日期（Date）**。
-- **参考指数（reference index）**：**具有发布日期时间（hasReleaseDateTime）**存在取值约束。
-- **参考指数（reference index）**：**具有报告期（hasReportingPeriod）**恰好有 1 个**显式日期区间（ExplicitDatePeriod）**。
-- **参考指数（reference index）**：**基于（isBasedOn）**至少有一个取值，类型是**加权篮子（WeightedBasket）**。
+### 2.2 股票篮子（basket of equities）
 
-## 6. 依赖（owl:imports，21 个）
+定义：成分为上市股票的证券篮子。
+
+- 父类：**证券篮子（BasketOfSecurities）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.3 市值加权函数（capitalization-based weighting function）
+
+定义：由指数所跟踪公司的相对市值（股价乘以流通股数）导出的加权函数。
+
+- 父类：**加权函数（WeightingFunction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有市值（has market capitalization）** | 标识某发行人在某日期的市值。 | 值域：市值（market capitalization） |
+
+公理：
+
+- **具有市值（has market capitalization）**至少有一个取值，类型是**市值（market capitalization）**。
+
+### 2.4 信用指数成分（credit index constituent）
+
+定义：信用风险篮子的组成成分。
+
+- 父类：**加权篮子成分（WeightedBasketConstituent）**、**带日期集合成分（DatedCollectionConstituent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有货币（hasCurrency）** | — | — |
+| **具有债务排序（has debt ranking）** | 标识该债务工具相对于信用指数整体的排序。 | 值域：xsd:string |
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **具有货币（hasCurrency）**至少有一个取值，类型是**货币（Currency）**。
+- **引用（refersTo）**至少有一个取值，类型是**信用事件（CreditEvent）**。
+
+### 2.5 市值（market capitalization）
+
+定义：表示股票市场在特定时点对公司之估值的表达式。
+
+- 父类：**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有市值金额（has market capitalization value）** | 标识表示某发行人在某日期市值的货币金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有流通股数（hasSharesOutstanding）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **具有观测日期时间（hasObservedDateTime）** | — | — |
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有市值金额（has market capitalization value）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **具有流通股数（hasSharesOutstanding）**至少有一个取值，类型是**xsd:nonNegativeInteger（nonNegativeInteger）**。
+- **具有自变量（hasArgument）**至少有一个取值，类型是**每股价格（PricePerShare）**。
+- **具有观测日期时间（hasObservedDateTime）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**股份发行人（ShareIssuer）**。
+
+### 2.6 参考指数（reference index）
+
+定义：篮子内容在给定时期内价值变化的度量。
+
+- 父类：**限定范围度量（ScopedMeasure）**
+- 直接子类：**信用指数（credit index）**、**股票指数（equity index）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+| **具有报告期（hasReportingPeriod）** | — | — |
+| **具有周期性（hasPeriodicity）** | — | — |
+| **具有发布日期（hasReleaseDate）** | — | — |
+| **具有发布日期时间（hasReleaseDateTime）** | — | — |
+| **具有指数名称（has index name）** | 指明该指数的正式名称。 | 值域：xsd:string；子属性：具有正式名称 |
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **具有发布日期时间（hasReleaseDateTime）**存在取值约束。
+- **具有发布日期（hasReleaseDate）**可以有 0 个或多个**日期（Date）**。
+- **具有周期性（hasPeriodicity）**的所有取值只能是**重复区间（RecurrenceInterval）**。
+- **具有报告期（hasReportingPeriod）**恰好有 1 个**显式日期区间（ExplicitDatePeriod）**。
+- **基于（isBasedOn）**至少有一个取值，类型是**加权篮子（WeightedBasket）**。
+- **由……分类（isClassifiedBy）**可以有 0 个或多个**行业部门分类器（IndustrySectorClassifier）**。
+- **由……分类（isClassifiedBy）**可以有 0 个或多个**资产类别（AssetClass）**。
+
+#### 2.6.1 信用指数（credit index）
+
+定义：以改变标的组合价值的信用事件为函数的参考指数。
+
+- 父类：**参考指数（reference index）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+| **具有原始名义价值（has original notional value）** | 标识该指数最初构成时所代表的名义金额。 | 值域：货币数量；子属性：具有名义金额 |
+| **具有权利金（has premium）** | 标识基于该指数的合同应付的权利金。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有利差区间（has spread range）** | 指数各成分的信用利差区间。 | 值域：xsd:string |
+| **具有预付费用（has up front fee）** | 指明任何希望在合同开始后参与基于该指数之合同的参与方应付的费用。 | 值域：货币数量 |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**信用风险篮子（basket of credit risks）**。
+
+#### 2.6.2 股票指数（equity index）
+
+定义：成分全部为股票工具的基准指数。
+
+- 父类：**参考指数（reference index）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**股票篮子（basket of equities）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有指数值（has index value）** | 指明给定指数在发布日的值。 |
+
+## 4. 依赖（owl:imports，21 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -111,7 +236,7 @@
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`BasketIndices.rdf`
 - 中文 Turtle：`BasketIndices.ttl`

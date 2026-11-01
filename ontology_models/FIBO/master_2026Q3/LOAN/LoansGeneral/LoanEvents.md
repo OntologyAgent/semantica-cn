@@ -14,6 +14,17 @@
 
 **与相近概念的差别**：贷款事件≠贷款状态——事件是时间点上的发生（某月逾期），状态是持续的处境（处于逾期中，见生命周期概念）；违约事件达到严重程度可能构成信用事件（FBC）。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **抵押物估值（collateral valuation）** 继承 **评估活动（AssessmentActivity）**
+- **法院判决（court judgment）** 继承 **法律程序（legal proceeding）**
+- **法律程序（legal proceeding）** 继承 **发生事项（Occurrence）**
+- **贷款违约处置（loan default proceeding）** 继承 **法律程序（legal proceeding）**
+- **贷款全额清偿（loan paid in full）** 继承 **贷款阶段（loan phase）**
+- **贷款阶段（loan phase）** 继承 **生命周期阶段（LifecycleStage）**
+- **提前还款（prepayment）** 继承 **支付（Payment）**
+- **还款阶段（repayment phase）** 继承 **贷款阶段（loan phase）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -27,46 +38,118 @@
 | 提前还款（prepayment） | 在到期前提前偿还贷款。 |
 | 还款阶段（repayment phase） | 贷款处于还款期的阶段。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 抵押物估值（collateral valuation） ⊑ 评估活动
-- 法院判决（court judgment） ⊑ 法律程序（legal proceeding）
-- 法律程序（legal proceeding） ⊑ 发生事项
-- 贷款违约处置（loan default proceeding） ⊑ 法律程序（legal proceeding）
-- 贷款全额清偿（loan paid in full） ⊑ 贷款阶段（loan phase）
-- 贷款阶段（loan phase） ⊑ 生命周期阶段
-- 提前还款（prepayment） ⊑ 支付
-- 还款阶段（repayment phase） ⊑ 贷款阶段（loan phase）
+### 2.1 抵押物估值（collateral valuation）
 
-## 3. 对象属性（Object Property）
+定义：对作为抵押品的不动产进行估值的评估活动。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-loan-ln-ev:hasDisbursementDate | 放款日期（disbursement date） | 贷款资金实际发放的日期。 | 定义域（domain）：贷款；值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-loan-ln-ev:hasDefaultAmount | 具有违约金额（has default amount） | 在扣除出售所得和回收款之前的违约金额。 | 定义域（domain）：贷款违约处置（loan default proceeding）；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-loan-ln-ev:hasJudgementAmount | 具有判决金额（has judgement amount） | 对主要借款人记录且已/未履行（核保时点）的法院判决或等效事项的总金额。 | 定义域（domain）：法院判决（court judgment）；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-loan-ln-ev:isAgainst | 针对（is against） | 标识该程序或行动所针对的对象。 | 定义域（domain）：法律程序（legal proceeding）；值域（range）：法律主体 |
-| fibo-loan-ln-ev:isDeliveredBy | 由……交付（is delivered by） | 标识交付某事物的参与方。 | 定义域（domain）：法院判决（court judgment）；值域（range）：法院 |
+- 父类：**评估活动（AssessmentActivity）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-loan-ln-ev:inDefault | 违约（in default） | 发行人未能支付其合同义务所要求的款项。 |
-| fibo-loan-ln-ev:isDeferred | 已延期（is deferred） | 表明某事项是否已延期。 |
+| **评估（evaluates）** | — | — |
+| **由……提供（isProvidedBy）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**估价师（Appraiser）**。
+- **评估（evaluates）**的所有取值只能是**抵押品（Collateral）**。
 
-- **抵押物估值（collateral valuation）**：**评估（evaluates）**的所有取值只能是**抵押品（Collateral）**。
-- **抵押物估值（collateral valuation）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**估价师（Appraiser）**。
-- **法院判决（court judgment）**：**具有判决金额（has judgement amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **法院判决（court judgment）**：**由……交付（is delivered by）**至少有一个取值，类型是**法院（CourtOfLaw）**。
-- **法律程序（legal proceeding）**：**针对（is against）**至少有一个取值，类型是**法律主体（LegalPerson）**。
-- **法律程序（legal proceeding）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+### 2.2 法律程序（legal proceeding）
 
-## 6. 依赖（owl:imports，15 个）
+定义：在法院或机构指示或授权下采取的法律步骤或行动。
+
+- 父类：**发生事项（Occurrence）**
+- 直接子类：**法院判决（court judgment）**、**贷款违约处置（loan default proceeding）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **针对（is against）** | 标识该程序或行动所针对的对象。 | 值域：法律主体 |
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **针对（is against）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+
+#### 2.2.1 法院判决（court judgment）
+
+定义：法院或其他裁判机构解决争议、确定各方权利与义务的决定。
+
+- 父类：**法律程序（legal proceeding）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有判决金额（has judgement amount）** | 对主要借款人记录且已/未履行（核保时点）的法院判决或等效事项的总金额。 | 值域：货币数量；子属性：具有货币数量 |
+| **由……交付（is delivered by）** | 标识交付某事物的参与方。 | 值域：法院 |
+
+公理：
+
+- **具有判决金额（has judgement amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **由……交付（is delivered by）**至少有一个取值，类型是**法院（CourtOfLaw）**。
+
+#### 2.2.2 贷款违约处置（loan default proceeding）
+
+定义：处理贷款违约的程序，通常属于贷款服务部门的工作。
+
+- 父类：**法律程序（legal proceeding）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有违约金额（has default amount）** | 在扣除出售所得和回收款之前的违约金额。 | 值域：货币数量；子属性：具有货币数量 |
+
+### 2.3 贷款阶段（loan phase）
+
+定义：贷款所处的阶段。
+
+- 父类：**生命周期阶段（LifecycleStage）**
+- 直接子类：**贷款全额清偿（loan paid in full）**、**还款阶段（repayment phase）**
+
+#### 2.3.1 贷款全额清偿（loan paid in full）
+
+定义：贷款本息全部还清的事件。
+
+- 父类：**贷款阶段（loan phase）**
+
+#### 2.3.2 还款阶段（repayment phase）
+
+定义：贷款处于还款期的阶段。
+
+- 父类：**贷款阶段（loan phase）**
+
+### 2.4 提前还款（prepayment）
+
+定义：在到期前提前偿还贷款。
+
+- 父类：**支付（Payment）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **放款日期（disbursement date）** | 贷款资金实际发放的日期。 | 值域：显式日期；子属性：具有显式日期 |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **违约（in default）** | 发行人未能支付其合同义务所要求的款项。 |
+| **已延期（is deferred）** | 表明某事项是否已延期。 |
+
+## 4. 依赖（owl:imports，15 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -88,7 +171,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`LoanEvents.rdf`
 - 中文 Turtle：`LoanEvents.ttl`

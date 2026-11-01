@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：是企业行动的一个子类——专指影响证券本身形态的行动，区别于纯分配类行动（如现金分红不改变证券条款）。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **债券违约事件（bond default event）** 继承 **强制性公司行动（MandatoryCorporateAction）**
+- **债券违约事件（bond default event）** 继承 **债务违约（ObligationDefault）**
+- **红股发行（bonus issue）** 继承 **强制性公司行动（MandatoryCorporateAction）**
+- **红利认股权发行（bonus rights issue）** 继承 **中介证券分配（intermediate securities distribution）**
+- **红股计划分配（bonus share plan distribution）** 继承 **资本分配（capital distribution）**
+- **对中介证券的催缴（call on intermediate securities）** 继承 **带选择的强制性公司行动（MandatoryWithChoiceCorporateAction）**
+- **股份注销（cancellation of shares）** 继承 **公司行动（CorporateAction）**
+- **资本分配（capital distribution）** 继承 **自愿性公司行动（VoluntaryCorporateAction）**
+- **资本利得分配（capital gains distribution）** 继承 **自愿性公司行动（VoluntaryCorporateAction）**
+- **现金股息行动（cash dividend action）** 继承 **强制性公司行动（MandatoryCorporateAction）**
+- **证券交易状态变更事件（change of security trading status event）** 继承 **公司状态变更事件（corporate change of status event）**
+- **最小可交易单位变更（change to smallest negotiable unit）** 继承 **公司行动（CorporateAction）**
+- 其余 43 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -71,92 +87,436 @@
 | 认股权证行权行动（warrant exercise action） | 向持有人提供按预定价格买入（认购权证）或卖出（认沽权证）特定数量股票、现金或商品之选择权的公司行动。 |
 | 无价值证券行动（worthless security action） | 涉及将无价值证券核销的公司行动。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 债券违约事件（bond default event） ⊑ 强制性公司行动
-- 债券违约事件（bond default event） ⊑ 债务违约
-- 红股发行（bonus issue） ⊑ 强制性公司行动
-- 红利认股权发行（bonus rights issue） ⊑ 中介证券分配（intermediate securities distribution）
-- 红股计划分配（bonus share plan distribution） ⊑ 资本分配（capital distribution）
-- 对中介证券的催缴（call on intermediate securities） ⊑ 带选择的强制性公司行动
-- 股份注销（cancellation of shares） ⊑ 公司行动
-- 资本分配（capital distribution） ⊑ 自愿性公司行动
-- 资本利得分配（capital gains distribution） ⊑ 自愿性公司行动
-- 现金股息行动（cash dividend action） ⊑ 强制性公司行动
-- 证券交易状态变更事件（change of security trading status event） ⊑ 公司状态变更事件（corporate change of status event）
-- 最小可交易单位变更（change to smallest negotiable unit） ⊑ 公司行动
-- 转换行动（conversion action） ⊑ 自愿性公司行动
-- 转换暂停行动（conversion suspension action） ⊑ 公司行动
-- 公司行动义务（corporate action obligation） ⊑ 公司行动
-- 公司行动义务（corporate action obligation） ⊑ 责任
-- 公司行动付款义务（corporate action payment obligation） ⊑ 公司行动义务（corporate action obligation）
-- 公司行动证券交付义务（corporate action securities delivery obligation） ⊑ 公司行动义务（corporate action obligation）
-- 公司状态变更事件（corporate change of status event） ⊑ 公司行动
-- 公司状态变更事件（corporate change of status event） ⊑ 生命周期事件
-- 息票剥离（coupon strip） ⊑ 公司行动
-- 减值行动（decrease in value action） ⊑ 强制性公司行动
-- 股息选择权行动（dividend option action） ⊑ 带选择的强制性公司行动
-- 股息再投资行动（dividend reinvestment action） ⊑ 带选择的强制性公司行动
-- 抽签赎回（drawing） ⊑ 强制性公司行动
-- 荷兰式拍卖（dutch auction） ⊑ 自愿性公司行动
-- 交换行动（exchange action） ⊑ 公司行动
-- 正式要约（formal offer） ⊑ 自愿性公司行动
-- 全额提前赎回行动（full call early redemption action） ⊑ 强制性公司行动
-- 付息行动（interest payment action） ⊑ 强制性公司行动
-- 实物付息（interest payment in kind） ⊑ 付息行动（interest payment action）
-- 附本金付息（interest payment with principal） ⊑ 付息行动（interest payment action）
-- 利率调整（interest rate adjustment） ⊑ 强制性公司行动
-- 中介证券分配（intermediate securities distribution） ⊑ 强制性公司行动
-- 退市消息（listing status delisting message） ⊑ 通知
-- 零股要约（odd lot offer） ⊑ 自愿性公司行动
-- 同等权益行动（pari-passu action） ⊑ 强制性公司行动
-- 部分赎回并削减面值行动（partial redemption with reduction of nominal value action） ⊑ 公司行动
-- 部分赎回不削减面值行动（partial redemption without reduction of nominal value action） ⊑ 公司行动
-- 合并后证券交换（post-merger securities exchange） ⊑ 公司行动
-- 回售赎回行动（put redemption action） ⊑ 自愿性公司行动
-- 到期赎回行动（redemption at maturity action） ⊑ 强制性公司行动
-- 重新计值行动（redenomination action） ⊑ 强制性公司行动
-- 回购要约（repurchase offer） ⊑ 自愿性公司行动
-- 并股（reverse stock split） ⊑ 强制性公司行动
-- 权利行权事件（rights exercise event） ⊑ 公司行动
-- 股本溢价股息行动（shares premium dividend action） ⊑ 带选择的强制性公司行动
-- 股票股息行动（stock dividend action） ⊑ 强制性公司行动
-- 拆股（stock split） ⊑ 强制性公司行动
-- 要约收购（tender offer） ⊑ 自愿性公司行动
-- 交易状态活跃消息（trading status active message） ⊑ 交易状态消息（trading status message）
-- 交易状态消息（trading status message） ⊑ 通知
-- 交易状态暂停消息（trading status suspended message） ⊑ 交易状态消息（trading status message）
-- 认股权证行权行动（warrant exercise action） ⊑ 公司行动
-- 无价值证券行动（worthless security action） ⊑ 强制性公司行动
+### 2.1 债券违约事件（bond default event）
 
-## 3. 对象属性（Object Property）
+定义：表明发行人未能履行债券协议中定义为违约事件之义务、且未予补救的公司行动。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-cae-ce-srca:convertsFrom | 转换自（converts from） | 标识转换前的证券。 | 定义域（domain）：公司行动；值域（range）：证券 |
-| fibo-cae-ce-srca:convertsTo | 转换为（converts to） | 标识转换后的证券。 | 定义域（domain）：公司行动；值域（range）：证券 |
+- 父类：**强制性公司行动（MandatoryCorporateAction）**、**债务违约（ObligationDefault）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
 
-- **债券违约事件（bond default event）**：**适用于（appliesTo）**至少有一个取值，类型是**债券（Bond）**。
-- **证券交易状态变更事件（change of security trading status event）**：**适用于（appliesTo）**至少有一个取值，类型是**证券交易状态（SecurityTradingStatus）**。
-- **转换行动（conversion action）**：**转换自（converts from）**至少有一个取值，类型是**证券（Security）**。
-- **转换行动（conversion action）**：**转换为（converts to）**至少有一个取值，类型是**证券（Security）**。
-- **息票剥离（coupon strip）**：**适用于（appliesTo）**至少有一个取值，类型是**债券（Bond）**。
-- **利率调整（interest rate adjustment）**：**适用于（appliesTo）**至少有一个取值，类型是**浮动票息债券（VariableCouponBond）**。
-- **合并后证券交换（post-merger securities exchange）**：**具有货币数量（hasMonetaryAmount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **合并后证券交换（post-merger securities exchange）**：**转换自（converts from）**至少有一个取值，类型是**证券（Security）**。
-- **合并后证券交换（post-merger securities exchange）**：**转换为（converts to）**至少有一个取值，类型是**证券（Security）**。
-- **并股（reverse stock split）**：**适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
-- **并股（reverse stock split）**与**拆股（stock split）**互斥：同一个体不能同时属于两者。
-- **拆股（stock split）**：**适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
-- **要约收购（tender offer）**：**适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
-- **交易状态消息（trading status message）**：**关于（isAbout）**至少有一个取值，类型是**证券交易状态（SecurityTradingStatus）**。
-- **交易状态消息（trading status message）**：**引用（refersTo）**至少有一个取值，类型是**证券（Security）**。
+公理：
 
-## 6. 依赖（owl:imports，13 个）
+- **适用于（appliesTo）**至少有一个取值，类型是**债券（Bond）**。
+
+### 2.2 红股发行（bonus issue）
+
+定义：发行人按持有比例向证券持有人免费赠予额外资产的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.3 对中介证券的催缴（call on intermediate securities）
+
+定义：对未缴款证券或中介证券分配产生的中介证券进行催缴或行权的公司行动。
+
+- 父类：**带选择的强制性公司行动（MandatoryWithChoiceCorporateAction）**
+
+### 2.4 股份注销（cancellation of shares）
+
+定义：股份的注销，仅适用于未公开发行的股份（即库存股）。
+
+- 父类：**公司行动（CorporateAction）**
+
+### 2.5 资本分配（capital distribution）
+
+定义：从发行人资本账户向股东支付现金的公司行动。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+- 直接子类：**红股计划分配（bonus share plan distribution）**
+
+#### 2.5.1 红股计划分配（bonus share plan distribution）
+
+定义：从公司股本溢价储备中发行股份、视为资本分配而非收益发放的事件。
+
+- 父类：**资本分配（capital distribution）**
+
+### 2.6 资本利得分配（capital gains distribution）
+
+定义：将出售公司资产所得利润分配给股东的公司行动。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+
+### 2.7 现金股息行动（cash dividend action）
+
+定义：按持股比例向股东分配现金的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.8 最小可交易单位变更（change to smallest negotiable unit）
+
+定义：修改股份最小可交易单位以获得新的可交易单位（SWIFT：SMAL）。
+
+- 父类：**公司行动（CorporateAction）**
+
+### 2.9 转换行动（conversion action）
+
+定义：将证券（通常为可转换债券或优先股）转换为另一形式证券（通常为普通股）的公司行动。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **转换自（converts from）** | 标识转换前的证券。 | 值域：证券 |
+| **转换为（converts to）** | 标识转换后的证券。 | 值域：证券 |
+
+公理：
+
+- **转换为（converts to）**至少有一个取值，类型是**证券（Security）**。
+- **转换自（converts from）**至少有一个取值，类型是**证券（Security）**。
+
+### 2.10 转换暂停行动（conversion suspension action）
+
+定义：暂停证券转换，通常在会议召开前数周（SWIFT：SCOP）。
+
+- 父类：**公司行动（CorporateAction）**
+
+### 2.11 公司行动义务（corporate action obligation）
+
+定义：与持有某证券相关的义务。
+
+- 父类：**公司行动（CorporateAction）**、**责任（Duty）**
+- 直接子类：**公司行动付款义务（corporate action payment obligation）**、**公司行动证券交付义务（corporate action securities delivery obligation）**
+
+#### 2.11.1 公司行动付款义务（corporate action payment obligation）
+
+定义：公司行动情境中支付款项的义务。
+
+- 父类：**公司行动义务（corporate action obligation）**
+
+#### 2.11.2 公司行动证券交付义务（corporate action securities delivery obligation）
+
+定义：公司行动情境中交付某证券的义务；现金对价与证券对价均可表示为合同义务。
+
+- 父类：**公司行动义务（corporate action obligation）**
+
+### 2.12 公司状态变更事件（corporate change of status event）
+
+定义：某证券状态的某种变更。
+
+- 父类：**公司行动（CorporateAction）**、**生命周期事件（LifecycleEvent）**
+- 直接子类：**证券交易状态变更事件（change of security trading status event）**
+
+#### 2.12.1 证券交易状态变更事件（change of security trading status event）
+
+定义：可交易证券的交易状态发生变化的事件。
+
+- 父类：**公司状态变更事件（corporate change of status event）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**证券交易状态（SecurityTradingStatus）**。
+
+### 2.13 息票剥离（coupon strip）
+
+定义：将未来付息日的利息息票与授予持有人本金权利的证券本金分离的过程。
+
+- 父类：**公司行动（CorporateAction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**债券（Bond）**。
+
+### 2.14 减值行动（decrease in value action）
+
+定义：导致股份面值或基金资产价值减少的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.15 股息选择权行动（dividend option action）
+
+定义：向股东分配股息、股东可选择收取形式的公司行动。
+
+- 父类：**带选择的强制性公司行动（MandatoryWithChoiceCorporateAction）**
+
+### 2.16 股息再投资行动（dividend reinvestment action）
+
+定义：持有人可保留现金或将现金再投资为发行公司额外股票的股息支付行动。
+
+- 父类：**带选择的强制性公司行动（MandatoryWithChoiceCorporateAction）**
+
+### 2.17 抽签赎回（drawing）
+
+定义：在证券预定最终到期日前部分赎回。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.18 荷兰式拍卖（dutch auction）
+
+定义：由希望收购某证券的参与方发起的公司行动。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+
+### 2.19 交换行动（exchange action）
+
+定义：以持仓换取其他证券和/或现金的公司行动。
+
+- 父类：**公司行动（CorporateAction）**
+
+### 2.20 正式要约（formal offer）
+
+定义：向持有人、潜在持有人或其他利益相关方发出的、达成对参与方具有或将具有法律约束力之交易的要约。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+
+### 2.21 全额提前赎回行动（full call early redemption action）
+
+定义：在到期前对某次发行的全部流通证券进行赎回的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.22 付息行动（interest payment action）
+
+定义：向计息资产持有人分配定期利息的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+- 直接子类：**实物付息（interest payment in kind）**、**附本金付息（interest payment with principal）**
+
+#### 2.22.1 实物付息（interest payment in kind）
+
+定义：以现金以外的任何形式向计息资产持有人分配的利息支付（SWIFT：PINK）。
+
+- 父类：**付息行动（interest payment action）**
+
+#### 2.22.2 附本金付息（interest payment with principal）
+
+定义：除利息支付外，同时支付计息资产部分本金的付款（SWIFT：PRII）。
+
+- 父类：**付息行动（interest payment action）**
+
+### 2.23 利率调整（interest rate adjustment）
+
+定义：浮动或可调利率证券票面利率的预定调整。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**浮动票息债券（VariableCouponBond）**。
+
+### 2.24 中介证券分配（intermediate securities distribution）
+
+定义：分配中介证券或赋予持有人参与未来事件之权利的特权的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+- 直接子类：**红利认股权发行（bonus rights issue）**
+
+#### 2.24.1 红利认股权发行（bonus rights issue）
+
+定义：将认股权免费授予相关股份持有人的配股发行。
+
+- 父类：**中介证券分配（intermediate securities distribution）**
+
+### 2.25 退市消息（listing status delisting message）
+
+定义：证券不再符合交易所上市要求、被从正式报价板移除的消息。
+
+- 父类：**通知（Notice）**
+
+### 2.26 零股要约（odd lot offer）
+
+定义：发行人向零股持有人发出的要约：可按市价进行免佣交易、卖出零股或买入凑整。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+
+### 2.27 同等权益行动（pari-passu action）
+
+定义：不同特征的证券在各方面变得完全相同（同等权益）时发生的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.28 部分赎回并削减面值行动（partial redemption with reduction of nominal value action）
+
+定义：在预定最终到期日前部分赎回证券并削减其面值的公司行动。
+
+- 父类：**公司行动（CorporateAction）**
+
+### 2.29 部分赎回不削减面值行动（partial redemption without reduction of nominal value action）
+
+定义：在预定最终到期日前部分赎回证券但不削减面值的公司行动。
+
+- 父类：**公司行动（CorporateAction）**
+
+### 2.30 合并后证券交换（post-merger securities exchange）
+
+定义：因两家或多家公司合并、由发行人发起的流通证券交换（可包括期权）。
+
+- 父类：**公司行动（CorporateAction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **转换自（converts from）** | 标识转换前的证券。 | 值域：证券 |
+| **转换为（converts to）** | 标识转换后的证券。 | 值域：证券 |
+| **具有货币数量（hasMonetaryAmount）** | — | — |
+
+公理：
+
+- **具有货币数量（hasMonetaryAmount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **转换为（converts to）**至少有一个取值，类型是**证券（Security）**。
+- **转换自（converts from）**至少有一个取值，类型是**证券（Security）**。
+
+### 2.31 回售赎回行动（put redemption action）
+
+定义：持有人按发行条款选择提前赎回证券、不削减面值的公司行动。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+
+### 2.32 到期赎回行动（redemption at maturity action）
+
+定义：在最终到期日对某次发行的全部流通证券进行赎回的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.33 重新计值行动（redenomination action）
+
+定义：重新表述证券计值单位（货币和/或面值）的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.34 回购要约（repurchase offer）
+
+定义：发行公司向现有股东发出的回购股权或可转换为股权之其他证券的要约。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+
+### 2.35 并股（reverse stock split）
+
+定义：在不改变股东权益或总市值的情况下减少公司流通股数量的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
+- 与**拆股（stock split）**互斥：同一个体不能同时属于两者。
+
+### 2.36 权利行权事件（rights exercise event）
+
+定义：行使购买股份之权利的事件，属持有人一方的行动。
+
+- 父类：**公司行动（CorporateAction）**
+
+### 2.37 股本溢价股息行动（shares premium dividend action）
+
+定义：从股本溢价储备中向股东支付现金的公司行动。
+
+- 父类：**带选择的强制性公司行动（MandatoryWithChoiceCorporateAction）**
+
+### 2.38 股票股息行动（stock dividend action）
+
+定义：以发行公司股票形式向股东分配股息的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+### 2.39 拆股（stock split）
+
+定义：在不改变股东权益或总市值的情况下增加公司流通股数量的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
+
+### 2.40 要约收购（tender offer）
+
+定义：通常由第三方向股东发出的、请求其出售（投标）或交换所持股票的要约。
+
+- 父类：**自愿性公司行动（VoluntaryCorporateAction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**股份（Share）**。
+
+### 2.41 交易状态消息（trading status message）
+
+定义：关于交易状态的消息。
+
+- 父类：**通知（Notice）**
+- 直接子类：**交易状态活跃消息（trading status active message）**、**交易状态暂停消息（trading status suspended message）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **关于（isAbout）** | — | — |
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **关于（isAbout）**至少有一个取值，类型是**证券交易状态（SecurityTradingStatus）**。
+- **引用（refersTo）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.41.1 交易状态活跃消息（trading status active message）
+
+定义：证券交易已开始、或在暂停后恢复交易的消息。
+
+- 父类：**交易状态消息（trading status message）**
+
+#### 2.41.2 交易状态暂停消息（trading status suspended message）
+
+定义：证券交易已被暂停的消息。
+
+- 父类：**交易状态消息（trading status message）**
+
+### 2.42 认股权证行权行动（warrant exercise action）
+
+定义：向持有人提供按预定价格买入（认购权证）或卖出（认沽权证）特定数量股票、现金或商品之选择权的公司行动。
+
+- 父类：**公司行动（CorporateAction）**
+
+### 2.43 无价值证券行动（worthless security action）
+
+定义：涉及将无价值证券核销的公司行动。
+
+- 父类：**强制性公司行动（MandatoryCorporateAction）**
+
+## 3. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -176,7 +536,7 @@
 | `https://www.omg.org/spec/Commons/ContextualDesignators/` | OMG 通用语境指称本体（OMG Commons Contextual Designators） | Commons 库中的语境指称本体，定义「在某个语境下指代某物的名称/符号」，是地址、账户号码等语境相关标识的基础。 |
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SecurityRelatedCorporateActions.rdf`
 - 中文 Turtle：`SecurityRelatedCorporateActions.ttl`

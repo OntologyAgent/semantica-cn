@@ -183,11 +183,11 @@ fibo-fbc-dae-crt:CreditInquiry a owl:Class ;
             owl:onProperty fibo-fbc-dae-crt:concernsParty ;
             owl:someValuesFrom cmns-pts:Party ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-arr-rep:isRequestedOf ;
-            owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingAgency ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-cls:isClassifiedBy ;
             owl:someValuesFrom fibo-fbc-dae-crt:CreditInquiryType ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-arr-rep:isRequestedOf ;
+            owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingAgency ],
         fibo-fnd-arr-rep:RequestActivity ;
     skos:definition "request from a lender to a credit repository to obtain information regarding a prospective borrower's creditworthiness" .
 
@@ -206,14 +206,14 @@ fibo-fbc-dae-crt:CreditRatingModel a owl:Class ;
         "信用评级模型（credit rating model）"@zh ;
     rdfs:comment "用于计算信用评级的算法。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cls:isClassifiedBy ;
-            owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingModelType ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:produces ;
             owl:someValuesFrom fibo-fnd-arr-rt:RatingScore ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dsg:hasTextualName ;
             owl:someValuesFrom xsd:string ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingModelType ],
         cmns-qtu:Expression ;
     skos:definition "algorithm for computing a credit rating" ;
     cmns-av:usageNote "Use dct:hasVersion to specify a version for the credit score model." .
@@ -241,51 +241,51 @@ fibo-fbc-dae-crt:CreditReport a owl:Class ;
     rdfs:comment "描述借款人信用状况及相关信用属性的报告。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass [ a owl:Restriction ;
-                    owl:onProperty cmns-rlcmp:playsRole ;
-                    owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingAgency ] ;
-            owl:onProperty cmns-doc:hasDataSource ],
+            owl:onClass fibo-fbc-dae-crt:CreditRatingAgency ;
+            owl:onProperty fibo-fnd-rel-rel:isProducedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditMessage ;
+            owl:onClass fibo-fbc-dae-crt:CreditRating ;
             owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-crt:CreditTradeline ;
             owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-crt:hasCoveragePeriod ;
-            owl:someValuesFrom cmns-dt:DatePeriod ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditReportCategory ;
-            owl:onProperty cmns-cls:isClassifiedBy ],
+            owl:onClass fibo-fbc-dae-crt:CreditReportProduct ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-crt:CreditInquiry ;
             owl:onProperty cmns-col:comprises ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditReportProduct ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ],
+            owl:onClass fibo-fbc-dae-crt:CreditMessage ;
+            owl:onProperty cmns-col:comprises ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass [ a owl:Restriction ;
+                    owl:onProperty cmns-rlcmp:playsRole ;
+                    owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingAgency ] ;
+            owl:onProperty cmns-doc:hasDataSource ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ;
             owl:someValuesFrom cmns-dt:Date ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditRatingAgency ;
-            owl:onProperty fibo-fnd-rel-rel:isProducedBy ],
+            owl:onClass fibo-fbc-dae-crt:CreditReportCategory ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-dae-crt:concernsParty ;
+            owl:someValuesFrom cmns-pts:Party ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-id:Identifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-dae-crt:CreditRating ;
-            owl:onProperty cmns-col:comprises ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-dae-crt:concernsParty ;
-            owl:someValuesFrom cmns-pts:Party ],
+            owl:onProperty fibo-fbc-dae-crt:hasCoveragePeriod ;
+            owl:someValuesFrom cmns-dt:DatePeriod ],
         fibo-fnd-arr-rt:RatingReport ;
     skos:definition "report describing the creditworthiness and related credit attributes of a borrower" ;
     cmns-av:explanatoryNote "This is typically provided by a credit rating agency but could be produced by an internal proprietary model as well." .
@@ -313,11 +313,11 @@ fibo-fbc-dae-crt:CreditTradeline a owl:Class ;
         "信用交易记录（credit tradeline）"@zh ;
     rdfs:comment "由信用账户交易历史生成的记录。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-col:isIncludedIn ;
-            owl:someValuesFrom fibo-fbc-dae-crt:CreditReport ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-qtu:isDerivedFrom ;
             owl:someValuesFrom fibo-fbc-pas-caa:Account ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-col:isIncludedIn ;
+            owl:someValuesFrom fibo-fbc-dae-crt:CreditReport ],
         fibo-fnd-arr-rep:Report ;
     skos:definition "report derived from the transaction history of a credit account" ;
     cmns-av:explanatoryNote "A tradeline on a credit report refers to a specific credit account. Tradelines report snapshot details derived from a combination of account features and payment history, and are used by credit reporting agencies as inputs to the analysis process that determines a party's credit rating." .
@@ -368,12 +368,12 @@ fibo-fbc-dae-crt:CreditRating a owl:Class ;
         "信用评级（credit rating）"@zh ;
     rdfs:comment "对借款人信用状况的评估，可以是总体评估，也可以针对特定债务或金融义务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
-            owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingAgency ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-dae-crt:CreditRatingModel ;
             owl:onProperty cmns-qtu:isDerivedFrom ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom fibo-fbc-dae-crt:CreditRatingAgency ],
         fibo-fnd-arr-rt:Rating ;
     skos:definition "assessment of creditworthiness of a borrower generally or with respect to a particular debt or financial obligation"@en ;
     cmns-av:explanatoryNote "Typically, a credit rating is provided as a detailed report based on the financial history of borrowing or lending and creditworthiness of the entity or person derived from income statements, historical records related to borrowing, etc. with an aim to determine their ability to meet debt obligations."@en .

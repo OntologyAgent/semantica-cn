@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：产品≠服务——产品是可交付的标的（可以是一项安排），服务是持续提供的行为；本本体是领域无关的，金融特性在 FBC 层加入。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **买方（buyer）** 继承 **参与方角色（party role）**
+- **客户（client）** 继承 **参与方角色（party role）**
+- **客户标识符（client identifier）** 继承 **参与方角色标识符（PartyRoleIdentifier）**
+- **商品（commodity）** 继承 **货物（good）**
+- **消费者（consumer）** 继承 **参与方角色（party role）**
+- **合同型产品（contractual product）** 继承 **产品（product）**
+- **合同模板型产品（contractual template product）** 继承 **合同型产品（contractual product）**
+- **合同模板型产品（contractual template product）** 继承 **现货产品（off-the-shelf product）**
+- **定制产品（custom product）** 继承 **产品（product）**
+- **顾客（customer）** 继承 **买方（buyer）**
+- **顾客标识符（customer identifier）** 继承 **参与方角色标识符（PartyRoleIdentifier）**
+- **可流通商品（negotiable commodity）** 继承 **商品（commodity）**
+- 其余 16 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -41,73 +57,316 @@
 | 交易确认书（transaction confirmation） | 卖方或服务提供方出具的、复述交易相关细节的书面通信。 |
 | 交易事件（transaction event） | 交易的事件成分。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 买方（buyer） ⊑ 参与方角色（party role）
-- 客户（client） ⊑ 参与方角色（party role）
-- 客户标识符（client identifier） ⊑ 参与方角色标识符
-- 商品（commodity） ⊑ 货物（good）
-- 消费者（consumer） ⊑ 参与方角色（party role）
-- 合同型产品（contractual product） ⊑ 产品（product）
-- 合同模板型产品（contractual template product） ⊑ 合同型产品（contractual product）
-- 合同模板型产品（contractual template product） ⊑ 现货产品（off-the-shelf product）
-- 定制产品（custom product） ⊑ 产品（product）
-- 顾客（customer） ⊑ 买方（buyer）
-- 顾客标识符（customer identifier） ⊑ 参与方角色标识符
-- 可流通商品（negotiable commodity） ⊑ 商品（commodity）
-- 现货产品（off-the-shelf product） ⊑ 产品（product）
-- 生产者（producer） ⊑ 参与方角色（party role）
-- 产品标识符（product identifier） ⊑ 标识符
-- 销售（sale） ⊑ 交易事件（transaction event）
-- 销售（sale） ⊑ 情境（situation）
-- 卖方（seller） ⊑ 参与方角色（party role）
-- 服务协议（service agreement） ⊑ 书面合同
-- 供应商（supplier） ⊑ 参与方角色（party role）
-- 交易确认书（transaction confirmation） ⊑ 法律文件
-- 交易事件（transaction event） ⊑ 发生类别
+### 2.1 买方（buyer）
 
-## 3. 对象属性（Object Property）
+定义：依销售合同以货币或其他对价购买某物的参与方。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-pas-pas:buys | 购买（buys） | 将处于购买者角色的参与方关联到其已购买或计划购买的事物。 | 定义域（domain）：买方（buyer）；值域（range）：产品（product） |
-| fibo-fnd-pas-pas:buysFrom | 从……购买（buys from） | 将处于购买者角色的参与方关联到其已购买或计划购买的对方参与方。 | 定义域（domain）：买方（buyer）；值域（range）：卖方（seller）；子属性（subPropertyOf）：受…影响（is affected by） |
-| fibo-fnd-pas-pas:hasBuyer | 具有买方（has buyer） | 标识销售交易情境中的购买方。 | 值域（range）：买方（buyer）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fnd-pas-pas:hasSeller | 具有卖方（has seller） | 标识销售交易情境中的卖方。 | 值域（range）：卖方（seller）；子属性（subPropertyOf）：具有行为者（has actor） |
-| fibo-fnd-pas-pas:isProvisionedBy | 由……配置提供（is provisioned by） | 标识配置提供服务或设施的服务提供方。 | 值域（range）：服务提供方；逆属性（inverseOf）：配置提供（provisions）；子属性（subPropertyOf）：由……提供 |
-| fibo-fnd-pas-pas:isSuppliedBy | 由……供应（is supplied by） | 标识使产品可获得的参与方（供应商、卖方、分销商等）。 | 定义域（domain）：产品（product）；值域（range）：供应商（supplier）；逆属性（inverseOf）：供应（supplies）；子属性（subPropertyOf）：由……提供 |
-| fibo-fnd-pas-pas:provisions | 配置提供（provisions） | 定制、提供或装备交付服务所需的事物。 | 定义域（domain）：服务提供方；子属性（subPropertyOf）：提供 |
-| fibo-fnd-pas-pas:sells | 销售（sells） | 将处于经纪人、交易商、卖方或经销商角色的参与方关联到其提供出售的事物。 | 定义域（domain）：卖方（seller）；值域（range）：产品（product） |
-| fibo-fnd-pas-pas:sellsTo | 销售给（sells to） | 将处于经纪人、交易商、卖方或经销商角色的参与方关联到买方或潜在买方。 | 定义域（domain）：卖方（seller）；值域（range）：买方（buyer）；逆属性（inverseOf）：从……购买（buys from）；子属性（subPropertyOf）：对…采取行动（acts on） |
-| fibo-fnd-pas-pas:supplies | 供应（supplies） | 将处于装备商、供应商、分销商等角色的参与方关联到其提供的事物。 | 定义域（domain）：供应商（supplier）；值域（range）：产品（product）；子属性（subPropertyOf）：提供 |
+- 父类：**参与方角色（party role）**
+- 直接子类：**顾客（customer）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **购买（buys）** | 将处于购买者角色的参与方关联到其已购买或计划购买的事物。 | 值域：产品（product） |
+| **从……购买（buys from）** | 将处于购买者角色的参与方关联到其已购买或计划购买的对方参与方。 | 值域：卖方（seller）；子属性：受…影响（is affected by） |
 
-- **买方（buyer）**：**购买（buys）**至少有一个取值，类型是**产品（product）**。
-- **客户（client）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**服务协议（service agreement）**。
-- **客户标识符（client identifier）**：**标识（identifies）**恰好有 1 个**客户（client）**。
-- **定制产品（custom product）**与**现货产品（off-the-shelf product）**互斥：同一个体不能同时属于两者。
-- **顾客（customer）**：**从……购买（buys from）**至少有一个取值，类型是**供应商（supplier）**。
-- **顾客标识符（customer identifier）**：**标识（identifies）**恰好有 1 个**顾客（customer）**。
-- **货物（good）**与**货币金额**互斥：同一个体不能同时属于两者。
-- **货物（good）**与**房地产**互斥：同一个体不能同时属于两者。
-- **生产者（producer）**：**生产（produces）**至少有一个取值，类型是**货物（good）**。
-- **产品（product）**：该属性存在取值约束。
-- **产品标识符（product identifier）**：**标识（identifies）**恰好有 1 个**产品（product）**。
-- **销售（sale）**：**具有价格（hasPrice）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
-- **销售（sale）**：**具有买方（has buyer）**至少有一个取值，类型是**买方（buyer）**。
-- **销售（sale）**：**具有卖方（has seller）**至少有一个取值，类型是**卖方（seller）**。
-- **销售（sale）**：**适用于（appliesTo）**至少有一个取值，类型是**产品（product）**。
-- **卖方（seller）**：**销售（sells）**至少有一个取值，类型是**产品（product）**。
-- **服务协议（service agreement）**：**具有合同当事方（hasContractParty）**恰好有 1 个**服务提供方（ServiceProvider）**。
-- **服务协议（service agreement）**：**管辖（governs）**至少有一个取值，类型是**服务（Service）**。
-- **供应商（supplier）**：**供应（supplies）**至少有一个取值，类型是**产品（product）**。
-- **交易确认书（transaction confirmation）**：**是……的证据（isEvidenceFor）**恰好有 1 个**交易事件（transaction event）**。
-- **交易事件（transaction event）**：**由……证明（isEvidencedBy）**可以有 0 个或多个**交易确认书（transaction confirmation）**。
+公理：
 
-## 6. 依赖（owl:imports，17 个）
+- **购买（buys）**至少有一个取值，类型是**产品（product）**。
+
+#### 2.1.1 顾客（customer）
+
+定义：接收或消费产品（货物或服务）、并能在不同产品和供应商之间选择的参与方。
+
+- 父类：**买方（buyer）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **从……购买（buys from）** | 将处于购买者角色的参与方关联到其已购买或计划购买的对方参与方。 | 值域：卖方（seller）；子属性：受…影响（is affected by） |
+
+公理：
+
+- **从……购买（buys from）**至少有一个取值，类型是**供应商（supplier）**。
+
+### 2.2 客户（client）
+
+定义：向另一参与方购买专业服务、或与其存在购买服务之正式关系的参与方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**服务协议（service agreement）**。
+
+### 2.3 客户标识符（client identifier）
+
+定义：在某组织情境内唯一标识客户的字符序列。
+
+- 父类：**参与方角色标识符（PartyRoleIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**客户（client）**。
+
+### 2.4 消费者（consumer）
+
+定义：使用经济货物或服务的参与方，通常用于个人、家庭或住户目的。
+
+- 父类：**参与方角色（party role）**
+
+### 2.5 顾客标识符（customer identifier）
+
+定义：在某组织情境内唯一标识顾客的字符序列。
+
+- 父类：**参与方角色标识符（PartyRoleIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**顾客（customer）**。
+
+### 2.6 货物（good）
+
+定义：可确立所有权、且其所有权可通过交易在参与方之间转移的有形生产物品。
+
+- 直接子类：**商品（commodity）**
+
+公理：
+
+- 与**货币金额（AmountOfMoney）**互斥：同一个体不能同时属于两者。
+- 与**房地产（RealEstate）**互斥：同一个体不能同时属于两者。
+
+#### 2.6.1 商品（commodity）
+
+定义：商业中使用的、可与同类型其他商品互换的物质资源。
+
+- 父类：**货物（good）**
+- 直接子类：**可流通商品（negotiable commodity）**
+
+##### 2.6.1.1 可流通商品（negotiable commodity）
+
+定义：可在某市场买入或卖出的商品。
+
+- 父类：**商品（commodity）**
+
+### 2.7 生产者（producer）
+
+定义：某种产品或其他货物的种植者、制造者、加工者或生产商。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **生产（produces）** | — | — |
+
+公理：
+
+- **生产（produces）**至少有一个取值，类型是**货物（good）**。
+
+### 2.8 产品（product）
+
+定义：商业化分销的货物：(1) 有形财产，(2) 加工、制造或生产过程的产出或结果，或 (3) 服务。
+
+- 直接子类：**合同型产品（contractual product）**、**定制产品（custom product）**、**现货产品（off-the-shelf product）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……供应（is supplied by）** | 标识使产品可获得的参与方（供应商、卖方、分销商等）。 | 值域：供应商（supplier）；逆属性：供应（supplies）；子属性：由……提供 |
+
+公理：
+
+- 该属性存在取值约束。
+
+#### 2.8.1 合同型产品（contractual product）
+
+定义：以协议形式存在的产品。
+
+- 父类：**产品（product）**
+- 直接子类：**合同模板型产品（contractual template product）**
+
+##### 2.8.1.1 合同模板型产品（contractual template product）
+
+定义：通过为模板中定义的参数指定取值而定稿的合同型产品。
+
+- 父类：**合同型产品（contractual product）**、**现货产品（off-the-shelf product）**
+
+#### 2.8.2 定制产品（custom product）
+
+定义：按订单生产、依客户规格委托制作的产品。
+
+- 父类：**产品（product）**
+
+公理：
+
+- 与**现货产品（off-the-shelf product）**互斥：同一个体不能同时属于两者。
+
+#### 2.8.3 现货产品（off-the-shelf product）
+
+定义：可直接从库存现货获得、或可快速按订单配置的产品，非专门设计或定制。
+
+- 父类：**产品（product）**
+- 直接子类：**合同模板型产品（contractual template product）**
+
+### 2.9 产品标识符（product identifier）
+
+定义：在某情境中唯一标识产品的字符序列。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**产品（product）**。
+
+### 2.10 卖方（seller）
+
+定义：向实际或潜在买方作出、要约或订立销售合同的参与方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **销售（sells）** | 将处于经纪人、交易商、卖方或经销商角色的参与方关联到其提供出售的事物。 | 值域：产品（product） |
+| **销售给（sells to）** | 将处于经纪人、交易商、卖方或经销商角色的参与方关联到买方或潜在买方。 | 值域：买方（buyer）；逆属性：从……购买（buys from）；子属性：对…采取行动（acts on） |
+
+公理：
+
+- **销售（sells）**至少有一个取值，类型是**产品（product）**。
+
+### 2.11 服务协议（service agreement）
+
+定义：客户与服务提供方之间的书面合同，服务提供方据此以时间、劳务和/或专业知识的形式提供某项服务。
+
+- 父类：**书面合同（WrittenContract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合同当事方（hasContractParty）** | — | — |
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **具有合同当事方（hasContractParty）**恰好有 1 个**服务提供方（ServiceProvider）**。
+- **管辖（governs）**至少有一个取值，类型是**服务（Service）**。
+
+### 2.12 供应商（supplier）
+
+定义：提供某参与方所需货物或服务的参与方，尤指长期供应者。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **供应（supplies）** | 将处于装备商、供应商、分销商等角色的参与方关联到其提供的事物。 | 值域：产品（product）；子属性：提供 |
+
+公理：
+
+- **供应（supplies）**至少有一个取值，类型是**产品（product）**。
+
+### 2.13 交易确认书（transaction confirmation）
+
+定义：卖方或服务提供方出具的、复述交易相关细节的书面通信。
+
+- 父类：**法律文件（LegalDocument）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的证据（isEvidenceFor）** | — | — |
+
+公理：
+
+- **是……的证据（isEvidenceFor）**恰好有 1 个**交易事件（transaction event）**。
+
+### 2.14 交易事件（transaction event）
+
+定义：交易的事件成分。
+
+- 父类：**发生类别（OccurrenceKind）**
+- 直接子类：**销售（sale）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……证明（isEvidencedBy）** | — | — |
+
+公理：
+
+- **由……证明（isEvidencedBy）**可以有 0 个或多个**交易确认书（transaction confirmation）**。
+
+#### 2.14.1 销售（sale）
+
+定义：以货物或服务换取货币的交换。
+
+- 父类：**交易事件（transaction event）**、**情境（situation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有价格（hasPrice）** | — | — |
+| **具有买方（has buyer）** | 标识销售交易情境中的购买方。 | 值域：买方（buyer）；子属性：具有参与方角色（has party role） |
+| **具有卖方（has seller）** | 标识销售交易情境中的卖方。 | 值域：卖方（seller）；子属性：具有行为者（has actor） |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有买方（has buyer）**至少有一个取值，类型是**买方（buyer）**。
+- **具有价格（hasPrice）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+- **具有卖方（has seller）**至少有一个取值，类型是**卖方（seller）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**产品（product）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……配置提供（is provisioned by）** | 标识配置提供服务或设施的服务提供方。 | 值域：服务提供方；逆属性：配置提供（provisions）；子属性：由……提供 |
+| **配置提供（provisions）** | 定制、提供或装备交付服务所需的事物。 | 子属性：提供 |
+
+## 4. 依赖（owl:imports，17 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -131,7 +390,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/Commons/SitesAndFacilities/` | OMG 通用场所与设施本体（OMG Commons Sites and Facilities） | Commons 库中的场所与设施本体，定义物理场所、设施及其位置的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`ProductsAndServices.rdf`
 - 中文 Turtle：`ProductsAndServices.ttl`

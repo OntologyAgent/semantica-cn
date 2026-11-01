@@ -226,17 +226,16 @@ fibo-be-oac-opty:EntityOwnership a owl:Class ;
         "实体所有权（entity ownership）"@zh ;
     rdfs:comment "某参与方对某非政府正式组织之权益的所有权。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-opty:hasOwnedEntity ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-be-le-fbo:NotForProfitOrganization fibo-be-le-lp:BusinessEntity cmns-org:LegalEntity ) ] ],
+            owl:onProperty fibo-be-oac-opty:hasOwningEntity ;
+            owl:someValuesFrom cmns-org:LegalPerson ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-be-le-lei:RelationshipQualifier ;
             owl:onProperty fibo-fnd-agr-ctr:isQualifiedBy ],
         [ a owl:Restriction ;
-            owl:onClass fibo-be-le-lei:RelationshipStatus ;
-            owl:onProperty cmns-cls:isClassifiedBy ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty fibo-be-oac-opty:hasOwnedEntity ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-be-le-fbo:NotForProfitOrganization fibo-be-le-lp:BusinessEntity cmns-org:LegalEntity ) ] ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass [ a owl:Class ;
@@ -247,8 +246,9 @@ fibo-be-oac-opty:EntityOwnership a owl:Class ;
             owl:onDataRange xsd:decimal ;
             owl:onProperty fibo-be-le-lei:hasOwnershipPercentage ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-opty:hasOwningEntity ;
-            owl:someValuesFrom cmns-org:LegalPerson ],
+            owl:onClass fibo-be-le-lei:RelationshipStatus ;
+            owl:onProperty cmns-cls:isClassifiedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-oac-own:Ownership ;
     skos:definition "ownership by some party of an interest in some non-governmental formal organization" .
 

@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：经济指标≠利率——经济指标描述宏观运行状况（统计口径），利率是资金价格（市场或政策口径）；与指数的差别——经济指标是原始统计量，指数是加工合成量。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **平均日收入（average daily earnings）** 继承 **平均收入（average earnings）**
+- **平均收入（average earnings）** 继承 **经济指标（economic indicator）**
+- **平均收入（average earnings）** 继承 **表达式（Expression）**
+- **平均时薪（average hourly earnings）** 继承 **平均收入（average earnings）**
+- **平均月收入（average monthly earnings）** 继承 **平均收入（average earnings）**
+- **平均周收入（average weekly earnings）** 继承 **平均收入（average earnings）**
+- **基于增加值的资本生产率（capital productivity, based on value added）** 继承 **生产率（productivity）**
+- **基于增加值的资本-劳动多要素生产率（capital-labor multifactor productivity (MFP), based on value added）** 继承 **生产率（productivity）**
+- **资本-劳动-能源-材料多要素生产率（capital-labor-energy-materials multifactor productivity）** 继承 **生产率（productivity）**
+- **平民（civilian）** 继承 **具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**
+- **平民劳动力（civilian labor force）** 继承 **平民非机构人口（civilian non-institutional population）**
+- **平民劳动力参与率（civilian labor force participation rate）** 继承 **经济指标（economic indicator）**
+- 其余 60 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -77,163 +93,730 @@
 | 失业率（unemployment rate） | 表示给定经济体在某指定时期内失业人口与平民劳动力之比的经济指标。 |
 | 增加值生产者价格指数（value-added producer price index） | 表示投入与产出生产者价格指数加权平均的经济指标。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 平均日收入（average daily earnings） ⊑ 平均收入（average earnings）
-- 平均收入（average earnings） ⊑ 经济指标（economic indicator）
-- 平均收入（average earnings） ⊑ 表达式
-- 平均时薪（average hourly earnings） ⊑ 平均收入（average earnings）
-- 平均月收入（average monthly earnings） ⊑ 平均收入（average earnings）
-- 平均周收入（average weekly earnings） ⊑ 平均收入（average earnings）
-- 基于增加值的资本生产率（capital productivity, based on value added） ⊑ 生产率（productivity）
-- 基于增加值的资本-劳动多要素生产率（capital-labor multifactor productivity (MFP), based on value added） ⊑ 生产率（productivity）
-- 资本-劳动-能源-材料多要素生产率（capital-labor-energy-materials multifactor productivity） ⊑ 生产率（productivity）
-- 平民（civilian） ⊑ 具有法律行为能力的自然人
-- 平民劳动力（civilian labor force） ⊑ 平民非机构人口（civilian non-institutional population）
-- 平民劳动力参与率（civilian labor force participation rate） ⊑ 经济指标（economic indicator）
-- 平民劳动力参与率（civilian labor force participation rate） ⊑ 表达式
-- 平民非机构个人（civilian non-institutional person） ⊑ 达到法定工作年龄的人
-- 平民非机构个人（civilian non-institutional person） ⊑ 平民（civilian）
-- 平民非机构人口（civilian non-institutional population） ⊑ 统计全域
-- 联合统计区（combined statistical area） ⊑ 政府指定统计区（government-specified statistical area）
-- 消费者价格指数（consumer price index） ⊑ 经济指标（economic indicator）
-- 消费者价格指数（consumer price index） ⊑ 表达式
-- 气馁劳动者人口（discouraged worker population） ⊑ 边缘附着人口（marginally attached population）
-- 经济指标（economic indicator） ⊑ 限定范围度量
-- 就业人口（employed population） ⊑ 平民劳动力（civilian labor force）
-- 兼职就业人口（employed population part-time） ⊑ 就业人口（employed population）
-- 因经济原因兼职就业人口（employed population part-time for economic reasons） ⊑ 兼职就业人口（employed population part-time）
-- 因经济原因兼职就业人口（employed population part-time for economic reasons） ⊑ 就业不足人口（underemployed population）
-- 因非经济原因兼职就业人口（employed population part-time for non-economic reasons） ⊑ 兼职就业人口（employed population part-time）
-- 暂时不在岗就业人口（employed population temporarily not at work） ⊑ 就业人口（employed population）
-- 就业人口比（employment-population ratio） ⊑ 经济指标（economic indicator）
-- 就业人口比（employment-population ratio） ⊑ 表达式
-- 企业（enterprise） ⊑ 功能型企业实体
-- 企业（enterprise） ⊑ 机构单位（institutional unit）
-- 企业总体（enterprise population） ⊑ 统计全域
-- 机构场所（establishment） ⊑ 机构单位（institutional unit）
-- 机构场所就业（establishment employment） ⊑ 经济指标（economic indicator）
-- 机构场所就业（establishment employment） ⊑ 表达式
-- 机构场所总体（establishment population） ⊑ 企业总体（enterprise population）
-- 固定篮子（fixed basket） ⊑ 篮子
-- 固定篮子（fixed basket） ⊑ 带日期结构化集合
-- 固定篮子成分（fixed basket constituent） ⊑ 篮子成分
-- 固定篮子成分（fixed basket constituent） ⊑ 带日期集合成分
-- 固定篮子总体（fixed basket population） ⊑ 统计全域
-- 政府指定统计区（government-specified statistical area） ⊑ 统计区
-- 国内生产总值（gross domestic product） ⊑ 经济指标（economic indicator）
-- 住户（household） ⊑ 机构单位（institutional unit）
-- 住房单元（housing unit） ⊑ 物理位置
-- 通货膨胀率（inflation rate） ⊑ 经济指标（economic indicator）
-- 投入生产者价格指数（input producer price index） ⊑ 生产者价格指数（producer price index）
-- 机构内人员（institutional person） ⊑ 个人
-- 机构单位（institutional unit） ⊑ 功能实体
-- 机构单位（institutional unit） ⊑ 参与方角色（party role）
-- 基于总产出的劳动生产率（labor productivity, based on gross output） ⊑ 生产率（productivity）
-- 基于增加值的劳动生产率（labor productivity, based on value added） ⊑ 生产率（productivity）
-- 边缘附着人口（marginally attached population） ⊑ 非劳动力人口（population not in the labor force）
-- 大都市统计区（metropolitan statistical area） ⊑ 政府指定统计区（government-specified statistical area）
-- 小都市统计区（micropolitan statistical area） ⊑ 政府指定统计区（government-specified statistical area）
-- 军人（military person） ⊑ 具有法律行为能力的自然人
-- 产出生产者价格指数（output producer price index） ⊑ 生产者价格指数（producer price index）
-- 个人消费支出（personal consumption expenditures） ⊑ 经济指标（economic indicator）
-- 非劳动力人口（population not in the labor force） ⊑ 平民非机构人口（civilian non-institutional population）
-- 生产者价格指数（producer price index） ⊑ 经济指标（economic indicator）
-- 生产者价格指数（producer price index） ⊑ 表达式
-- 生产率（productivity） ⊑ 经济指标（economic indicator）
-- 生产率（productivity） ⊑ 表达式
-- 统计信息发布方（statistical information publisher） ⊑ fibo-be-fct-pub:Publisher
-- 最终消费者（ultimate consumer） ⊑ 消费者
-- 就业不足人口（underemployed population） ⊑ 就业人口（employed population）
-- 职业不匹配就业不足人口（underemployed population with respect to occupation） ⊑ 就业不足人口（underemployed population）
-- 未充分利用人口（underutilized population） ⊑ 平民非机构人口（civilian non-institutional population）
-- 失业人口（unemployed population） ⊑ 平民劳动力（civilian labor force）
-- 失业率（unemployment rate） ⊑ 经济指标（economic indicator）
-- 失业率（unemployment rate） ⊑ 表达式
-- 增加值生产者价格指数（value-added producer price index） ⊑ 生产者价格指数（producer price index）
+### 2.1 平民（civilian）
 
-## 3. 对象属性（Object Property）
+定义：非军队成员（即非现役）的人。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-ind-ei-ei:hasBaselinePopulation | 具有基线总体（has baseline population） | 指明用于比较或分析的起始统计全域或总体。 | 值域（range）：统计全域；子属性（subPropertyOf）：引用 |
-| fibo-ind-ei-ei:hasComparisonPopulation | 具有比较总体（has comparison population） | 指明用于比较或分析的基线统计全域或总体的子集。 | 值域（range）：统计全域；子属性（subPropertyOf）：具有输入 |
-| fibo-ind-ei-ei:hasDurationOfUnemployment | 具有失业时长（has duration of unemployment） | 指明被归类为失业的人持续寻找工作的时间长度，通常以周计。 | 值域（range）：时长；子属性（subPropertyOf）：具有时长 |
-| fibo-ind-ei-ei:hasIndicatorValue | 具有指标值（has indicator value） | 指明给定指标的量值。 | 值域（range）：标量值；子属性（subPropertyOf）：具有量值 |
-| fibo-ind-ei-ei:hasSeriesOrigin | 具有序列起点（has series origin） | 指明给定经济指标时间序列的原始起始日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有起始日期 |
+- 父类：**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**
+- 直接子类：**平民非机构个人（civilian non-institutional person）**
 
-## 4. 数据属性（Datatype Property）
+#### 2.1.1 平民非机构个人（civilian non-institutional person）
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+定义：不住在机构（如惩教所、长期护理医院或疗养院）内、且非现役的法定工作年龄人。
+
+- 父类：**达到法定工作年龄的人（LegalWorkingAgePerson）**、**平民（civilian）**
+
+公理：
+
+- 与**机构内人员（institutional person）**互斥：同一个体不能同时属于两者。
+
+### 2.2 平民非机构人口（civilian non-institutional population）
+
+定义：由居住在给定地区、达到一定年龄、不住在机构内的平民构成的统计全域。
+
+- 父类：**统计全域（StatisticalUniverse）**
+- 直接子类：**平民劳动力（civilian labor force）**、**非劳动力人口（population not in the labor force）**、**未充分利用人口（underutilized population）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-ind-ei-ei:excludesEnergyAndFood | 剔除能源与食品（excludes energy and food） | 表明该指数的计算是否剔除能源与食品价格。 |
-| fibo-ind-ei-ei:isSeasonallyAdjusted | 经季节调整（is seasonally adjusted） | 表明是否应用了某种公开的正式方法对总体或指数值的季节性波动进行补偿。 |
+| **具有成员（hasMember）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有成员（hasMember）**至少有一个取值，类型是**平民非机构个人（civilian non-institutional person）**。
 
-- **平均日收入（average daily earnings）**：**具有参照期间（hasReferencePeriod）**的取值固定为 Daily。
-- **平均收入（average earnings）**：**具有参照期间（hasReferencePeriod）**恰好有 1 个**显式重复区间（ExplicitRecurrenceInterval）**。
-- **平均时薪（average hourly earnings）**：**具有参照期间（hasReferencePeriod）**的取值固定为 Hourly。
-- **平均月收入（average monthly earnings）**：**具有参照期间（hasReferencePeriod）**的取值固定为 Monthly。
-- **平均周收入（average weekly earnings）**：**具有参照期间（hasReferencePeriod）**的取值固定为 Weekly。
-- **平民劳动力（civilian labor force）**与**非劳动力人口（population not in the labor force）**互斥：同一个体不能同时属于两者。
-- **平民劳动力参与率（civilian labor force participation rate）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
-- **平民劳动力参与率（civilian labor force participation rate）**：**具有比较总体（has comparison population）**至少有一个取值，类型是**平民劳动力（civilian labor force）**。
-- **平民非机构个人（civilian non-institutional person）**与**机构内人员（institutional person）**互斥：同一个体不能同时属于两者。
-- **平民非机构人口（civilian non-institutional population）**：**具有成员（hasMember）**至少有一个取值，类型是**平民非机构个人（civilian non-institutional person）**。
-- **联合统计区（combined statistical area）**：**包含（comprises）**至少有 2 个**政府指定统计区（government-specified statistical area）**。
-- **消费者价格指数（consumer price index）**：**具有输入（hasInput）**至少有一个取值，类型是**固定篮子（fixed basket）**。
-- **消费者价格指数（consumer price index）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
-- **消费者价格指数（consumer price index）**与**平民劳动力参与率（civilian labor force participation rate）**互斥：同一个体不能同时属于两者。
-- **消费者价格指数（consumer price index）**与**就业人口比（employment-population ratio）**互斥：同一个体不能同时属于两者。
-- **消费者价格指数（consumer price index）**与**国内生产总值（gross domestic product）**互斥：同一个体不能同时属于两者。
-- **消费者价格指数（consumer price index）**与**通货膨胀率（inflation rate）**互斥：同一个体不能同时属于两者。
-- **消费者价格指数（consumer price index）**与**失业率（unemployment rate）**互斥：同一个体不能同时属于两者。
-- **经济指标（economic indicator）**：**经季节调整（is seasonally adjusted）**的所有取值只能是**xsd:boolean（boolean）**。
-- **经济指标（economic indicator）**：**具有序列起点（has series origin）**的所有取值只能是**日期（Date）**。
-- **经济指标（economic indicator）**：**具有发布日期（hasReleaseDate）**可以有 0 个或多个**日期（Date）**。
-- **经济指标（economic indicator）**：**具有发布日期时间（hasReleaseDateTime）**存在取值约束。
-- **经济指标（economic indicator）**：**具有报告期（hasReportingPeriod）**至少有一个取值，类型是**显式日期区间（ExplicitDatePeriod）**。
-- **经济指标（economic indicator）**：**具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**政府指定统计区（government-specified statistical area）**。
-- **因非经济原因兼职就业人口（employed population part-time for non-economic reasons）**与**因经济原因兼职就业人口（employed population part-time for economic reasons）**互斥：同一个体不能同时属于两者。
-- **就业人口比（employment-population ratio）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
-- **就业人口比（employment-population ratio）**：**具有比较总体（has comparison population）**至少有一个取值，类型是**就业人口（employed population）**。
-- **企业（enterprise）**：该属性存在取值约束。
-- **企业（enterprise）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**行业部门分类器（IndustrySectorClassifier）**。
-- **企业（enterprise）**：**具有成员（hasMember）**至少有一个取值，类型是**机构场所（establishment）**。
-- **企业（enterprise）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **企业（enterprise）**：**由…扮演（is played by）**至少有一个取值，类型是**法律主体（LegalPerson）**。
-- **企业总体（enterprise population）**：**具有成员（hasMember）**至少有一个取值，类型是**企业（enterprise）**。
-- **机构场所（establishment）**：**是……的组成成分（isConstituentOf）**可以有 0 个或多个**企业（enterprise）**。
-- **机构场所（establishment）**：**具有地址（hasAddress）**恰好有 1 个**物理地址（PhysicalAddress）**。
-- **机构场所就业（establishment employment）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**机构场所总体（establishment population）**。
-- **机构场所总体（establishment population）**：**具有成员（hasMember）**至少有一个取值，类型是**机构场所（establishment）**。
-- **固定篮子（fixed basket）**：**具有成员（hasMember）**至少有一个取值，类型是**固定篮子成分（fixed basket constituent）**。
-- **固定篮子成分（fixed basket constituent）**：该属性存在取值约束。
-- **固定篮子总体（fixed basket population）**：**具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **政府指定统计区（government-specified statistical area）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**政府机关（GovernmentBody）**。
-- **国内生产总值（gross domestic product）**与**失业率（unemployment rate）**互斥：同一个体不能同时属于两者。
-- **住户（household）**：**具有位置（hasLocation）**至多有 1 个**住房单元（housing unit）**。
-- **住户（household）**：**具有成员（hasMember）**至少有一个取值，类型是**个人（Person）**。
-- **住房单元（housing unit）**：**具有地址（hasAddress）**的所有取值只能是**物理地址（PhysicalAddress）**。
-- **通货膨胀率（inflation rate）**：**适用于（appliesTo）**至少有一个取值，类型是**政府指定统计区（government-specified statistical area）**。
-- **军人（military person）**与**平民（civilian）**互斥：同一个体不能同时属于两者。
-- **非劳动力人口（population not in the labor force）**与**平民劳动力（civilian labor force）**互斥：同一个体不能同时属于两者。
-- **生产者价格指数（producer price index）**：**具有输入（hasInput）**至少有一个取值，类型是**固定篮子（fixed basket）**。
-- **生产者价格指数（producer price index）**：**具有基线总体（has baseline population）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **生产者价格指数（producer price index）**与**消费者价格指数（consumer price index）**互斥：同一个体不能同时属于两者。
-- **统计信息发布方（statistical information publisher）**：**由…扮演（is played by）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
-- **最终消费者（ultimate consumer）**：**由…扮演（is played by）**至少有一个取值，类型是**个人（Person）**。
-- **失业人口（unemployed population）**：**具有失业时长（has duration of unemployment）**至少有一个取值，类型是**时长（Duration）**。
-- **失业人口（unemployed population）**与**就业人口（employed population）**互斥：同一个体不能同时属于两者。
-- **失业率（unemployment rate）**：**具有基线总体（has baseline population）**至少有一个取值，类型是**平民劳动力（civilian labor force）**。
-- **失业率（unemployment rate）**：**具有比较总体（has comparison population）**至少有一个取值，类型是**失业人口（unemployed population）**。
-- **增加值生产者价格指数（value-added producer price index）**：**具有输入（hasInput）**至少有一个取值，类型是**投入生产者价格指数（input producer price index）**。
-- **增加值生产者价格指数（value-added producer price index）**：**具有输入（hasInput）**至少有一个取值，类型是**产出生产者价格指数（output producer price index）**。
+#### 2.2.1 平民劳动力（civilian labor force）
 
-## 6. 依赖（owl:imports，29 个）
+定义：在给定报告期内被视为劳动力的平民非机构人口子集。
+
+- 父类：**平民非机构人口（civilian non-institutional population）**
+- 直接子类：**就业人口（employed population）**、**失业人口（unemployed population）**
+
+公理：
+
+- 与**非劳动力人口（population not in the labor force）**互斥：同一个体不能同时属于两者。
+
+##### 2.2.1.1 就业人口（employed population）
+
+定义：报告期内被视为就业的平民劳动力子集。
+
+- 父类：**平民劳动力（civilian labor force）**
+- 直接子类：**兼职就业人口（employed population part-time）**、**暂时不在岗就业人口（employed population temporarily not at work）**、**就业不足人口（underemployed population）**
+
+###### 2.2.1.1.1 兼职就业人口（employed population part-time）
+
+定义：按通常工时每周工作少于 30 至 35 小时的就业人口子集。
+
+- 父类：**就业人口（employed population）**
+- 直接子类：**因经济原因兼职就业人口（employed population part-time for economic reasons）**、**因非经济原因兼职就业人口（employed population part-time for non-economic reasons）**
+
+###### 2.2.1.1.1.1 因经济原因兼职就业人口（employed population part-time for economic reasons）
+
+定义：因工作量不足、不利商业条件等经济原因每周工作少于 30 至 35 小时的就业人口子集。
+
+- 父类：**兼职就业人口（employed population part-time）**、**就业不足人口（underemployed population）**
+
+###### 2.2.1.1.1.2 因非经济原因兼职就业人口（employed population part-time for non-economic reasons）
+
+定义：因疾病或其他健康医疗限制等非经济原因每周工作少于 30 至 35 小时的就业人口子集。
+
+- 父类：**兼职就业人口（employed population part-time）**
+
+公理：
+
+- 与**因经济原因兼职就业人口（employed population part-time for economic reasons）**互斥：同一个体不能同时属于两者。
+
+###### 2.2.1.1.2 暂时不在岗就业人口（employed population temporarily not at work）
+
+定义：因各种原因暂时离岗的就业人口子集。
+
+- 父类：**就业人口（employed population）**
+
+###### 2.2.1.1.3 就业不足人口（underemployed population）
+
+定义：就业人口中因经济原因兼职、想要并可从事全职工作但不得不接受兼职的子集。
+
+- 父类：**就业人口（employed population）**
+- 直接子类：**因经济原因兼职就业人口（employed population part-time for economic reasons）**、**职业不匹配就业不足人口（underemployed population with respect to occupation）**
+
+###### 2.2.1.1.3.2 职业不匹配就业不足人口（underemployed population with respect to occupation）
+
+定义：就业不足人口中所从事岗位与其培训和经验不符的子集（不含自愿转行者）。
+
+- 父类：**就业不足人口（underemployed population）**
+
+##### 2.2.1.2 失业人口（unemployed population）
+
+定义：平民劳动力中被认为没有工作、但（除暂时生病外）可以工作、且已作出具体求职努力的子集。
+
+- 父类：**平民劳动力（civilian labor force）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有失业时长（has duration of unemployment）** | 指明被归类为失业的人持续寻找工作的时间长度，通常以周计。 | 值域：时长；子属性：具有时长 |
+
+公理：
+
+- **具有失业时长（has duration of unemployment）**至少有一个取值，类型是**时长（Duration）**。
+- 与**就业人口（employed population）**互斥：同一个体不能同时属于两者。
+
+#### 2.2.2 非劳动力人口（population not in the labor force）
+
+定义：报告期内被报告机构认定为既非就业也非失业的平民非机构人口子集。
+
+- 父类：**平民非机构人口（civilian non-institutional population）**
+- 直接子类：**边缘附着人口（marginally attached population）**
+
+公理：
+
+- 与**平民劳动力（civilian labor force）**互斥：同一个体不能同时属于两者。
+
+##### 2.2.2.1 边缘附着人口（marginally attached population）
+
+定义：当前既不工作也不找工作、但表示想要并可以工作且近期找过工作的人口子集。
+
+- 父类：**非劳动力人口（population not in the labor force）**
+- 直接子类：**气馁劳动者人口（discouraged worker population）**
+
+###### 2.2.2.1.1 气馁劳动者人口（discouraged worker population）
+
+定义：边缘附着人口中因就业市场原因而当前不找工作的子集。
+
+- 父类：**边缘附着人口（marginally attached population）**
+
+#### 2.2.3 未充分利用人口（underutilized population）
+
+定义：平民非机构人口中因经济原因兼职者、边缘附着劳动力及失业者的子集。
+
+- 父类：**平民非机构人口（civilian non-institutional population）**
+
+### 2.3 经济指标（economic indicator）
+
+定义：在统计区（地区）情境内规律且可比的经济活动统计度量，用于经济绩效分析。
+
+- 父类：**限定范围度量（ScopedMeasure）**
+- 直接子类：**平均收入（average earnings）**、**平民劳动力参与率（civilian labor force participation rate）**、**消费者价格指数（consumer price index）**、**就业人口比（employment-population ratio）**、**机构场所就业（establishment employment）**、**国内生产总值（gross domestic product）**、**通货膨胀率（inflation rate）**、**个人消费支出（personal consumption expenditures）**、**生产者价格指数（producer price index）**、**生产率（productivity）**、**失业率（unemployment rate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有报告期（hasReportingPeriod）** | — | — |
+| **具有发布日期（hasReleaseDate）** | — | — |
+| **具有发布日期时间（hasReleaseDateTime）** | — | — |
+| **具有序列起点（has series origin）** | 指明给定经济指标时间序列的原始起始日期。 | 值域：日期；子属性：具有起始日期 |
+| **经季节调整（is seasonally adjusted）** | 表明是否应用了某种公开的正式方法对总体或指数值的季节性波动进行补偿。 | 值域：xsd:boolean |
+| **具有覆盖区域（hasCoverageArea）** | — | — |
+
+公理：
+
+- **具有发布日期时间（hasReleaseDateTime）**存在取值约束。
+- **具有发布日期（hasReleaseDate）**可以有 0 个或多个**日期（Date）**。
+- **具有序列起点（has series origin）**的所有取值只能是**日期（Date）**。
+- **具有报告期（hasReportingPeriod）**至少有一个取值，类型是**显式日期区间（ExplicitDatePeriod）**。
+- **具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**政府指定统计区（government-specified statistical area）**。
+- **经季节调整（is seasonally adjusted）**的所有取值只能是**xsd:boolean（boolean）**。
+
+#### 2.3.1 平均收入（average earnings）
+
+定义：计时或受薪劳动者在给定时期内的平均工资度量。
+
+- 父类：**经济指标（economic indicator）**、**表达式（Expression）**
+- 直接子类：**平均日收入（average daily earnings）**、**平均时薪（average hourly earnings）**、**平均月收入（average monthly earnings）**、**平均周收入（average weekly earnings）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参照期间（hasReferencePeriod）** | — | — |
+
+公理：
+
+- **具有参照期间（hasReferencePeriod）**恰好有 1 个**显式重复区间（ExplicitRecurrenceInterval）**。
+
+##### 2.3.1.1 平均日收入（average daily earnings）
+
+定义：雇员在报告期内的平均日工资度量。
+
+- 父类：**平均收入（average earnings）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参照期间（hasReferencePeriod）** | — | — |
+
+公理：
+
+- **具有参照期间（hasReferencePeriod）**的取值固定为 Daily。
+
+##### 2.3.1.2 平均时薪（average hourly earnings）
+
+定义：雇员在报告期内的平均小时工资度量。
+
+- 父类：**平均收入（average earnings）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参照期间（hasReferencePeriod）** | — | — |
+
+公理：
+
+- **具有参照期间（hasReferencePeriod）**的取值固定为 Hourly。
+
+##### 2.3.1.3 平均月收入（average monthly earnings）
+
+定义：雇员在报告期内的平均月工资度量。
+
+- 父类：**平均收入（average earnings）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参照期间（hasReferencePeriod）** | — | — |
+
+公理：
+
+- **具有参照期间（hasReferencePeriod）**的取值固定为 Monthly。
+
+##### 2.3.1.4 平均周收入（average weekly earnings）
+
+定义：雇员在报告期内的平均周工资度量。
+
+- 父类：**平均收入（average earnings）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参照期间（hasReferencePeriod）** | — | — |
+
+公理：
+
+- **具有参照期间（hasReferencePeriod）**的取值固定为 Weekly。
+
+#### 2.3.2 平民劳动力参与率（civilian labor force participation rate）
+
+定义：表示给定经济体在某指定时期内劳动力参与率的经济指标。
+
+- 父类：**经济指标（economic indicator）**、**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。 | 值域：统计全域；子属性：具有输入 |
+
+公理：
+
+- **具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
+- **具有比较总体（has comparison population）**至少有一个取值，类型是**平民劳动力（civilian labor force）**。
+
+#### 2.3.3 消费者价格指数（consumer price index）
+
+定义：表示家庭消费的消费货物与服务价格随时间变化之度量的经济指标。
+
+- 父类：**经济指标（economic indicator）**、**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有输入（hasInput）** | — | — |
+| **剔除能源与食品（excludes energy and food）** | 表明该指数的计算是否剔除能源与食品价格。 | 值域：xsd:boolean |
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+
+公理：
+
+- **具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
+- **具有输入（hasInput）**至少有一个取值，类型是**固定篮子（fixed basket）**。
+- 与**平民劳动力参与率（civilian labor force participation rate）**互斥：同一个体不能同时属于两者。
+- 与**就业人口比（employment-population ratio）**互斥：同一个体不能同时属于两者。
+- 与**国内生产总值（gross domestic product）**互斥：同一个体不能同时属于两者。
+- 与**通货膨胀率（inflation rate）**互斥：同一个体不能同时属于两者。
+- 与**失业率（unemployment rate）**互斥：同一个体不能同时属于两者。
+
+#### 2.3.4 就业人口比（employment-population ratio）
+
+定义：表示给定经济体在某指定时期内就业人口与平民非机构总人口之比的经济指标。
+
+- 父类：**经济指标（economic indicator）**、**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。 | 值域：统计全域；子属性：具有输入 |
+
+公理：
+
+- **具有基线总体（has baseline population）**至少有一个取值，类型是**平民非机构人口（civilian non-institutional population）**。
+- **具有比较总体（has comparison population）**至少有一个取值，类型是**就业人口（employed population）**。
+
+#### 2.3.5 机构场所就业（establishment employment）
+
+定义：表示在机构场所工作或为其工作的人员总数（含在业业主、活跃业务合伙人和无酬家庭工）的经济指标。
+
+- 父类：**经济指标（economic indicator）**、**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+
+公理：
+
+- **具有基线总体（has baseline population）**至少有一个取值，类型是**机构场所总体（establishment population）**。
+
+#### 2.3.6 国内生产总值（gross domestic product）
+
+定义：表示总体经济活动最广度量的经济指标，计量全部最终货物与服务的不重复总市值。
+
+- 父类：**经济指标（economic indicator）**
+
+公理：
+
+- 与**失业率（unemployment rate）**互斥：同一个体不能同时属于两者。
+
+#### 2.3.7 通货膨胀率（inflation rate）
+
+定义：表示给定统计区在指定时期内货物与服务价格变化的经济指标。
+
+- 父类：**经济指标（economic indicator）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**政府指定统计区（government-specified statistical area）**。
+
+#### 2.3.8 个人消费支出（personal consumption expenditures）
+
+定义：表示「个人」或代表个人购买的货物与服务价值之度量的经济指标。
+
+- 父类：**经济指标（economic indicator）**
+
+#### 2.3.9 生产者价格指数（producer price index）
+
+定义：表示生产者买卖的货物与服务价格随时间变化率之度量的经济指标。
+
+- 父类：**经济指标（economic indicator）**、**表达式（Expression）**
+- 直接子类：**投入生产者价格指数（input producer price index）**、**产出生产者价格指数（output producer price index）**、**增加值生产者价格指数（value-added producer price index）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有输入（hasInput）** | — | — |
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+
+公理：
+
+- **具有基线总体（has baseline population）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **具有输入（hasInput）**至少有一个取值，类型是**固定篮子（fixed basket）**。
+- 与**消费者价格指数（consumer price index）**互斥：同一个体不能同时属于两者。
+
+##### 2.3.9.1 投入生产者价格指数（input producer price index）
+
+定义：表示生产者购买的货物与服务投入价格随时间变化率之度量的经济指标。
+
+- 父类：**生产者价格指数（producer price index）**
+
+##### 2.3.9.2 产出生产者价格指数（output producer price index）
+
+定义：表示产品离开生产者时的销售价格随时间变化率之度量的经济指标。
+
+- 父类：**生产者价格指数（producer price index）**
+
+##### 2.3.9.3 增加值生产者价格指数（value-added producer price index）
+
+定义：表示投入与产出生产者价格指数加权平均的经济指标。
+
+- 父类：**生产者价格指数（producer price index）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有输入（hasInput）** | — | — |
+
+公理：
+
+- **具有输入（hasInput）**至少有一个取值，类型是**产出生产者价格指数（output producer price index）**。
+- **具有输入（hasInput）**至少有一个取值，类型是**投入生产者价格指数（input producer price index）**。
+
+#### 2.3.10 生产率（productivity）
+
+定义：表示产出量度量与投入使用量度量之比的经济指标。
+
+- 父类：**经济指标（economic indicator）**、**表达式（Expression）**
+- 直接子类：**基于增加值的资本生产率（capital productivity, based on value added）**、**基于增加值的资本-劳动多要素生产率（capital-labor multifactor productivity (MFP), based on value added）**、**资本-劳动-能源-材料多要素生产率（capital-labor-energy-materials multifactor productivity）**、**基于总产出的劳动生产率（labor productivity, based on gross output）**、**基于增加值的劳动生产率（labor productivity, based on value added）**
+
+##### 2.3.10.1 基于增加值的资本生产率（capital productivity, based on value added）
+
+定义：增加值数量指数与资本投入数量指数之比。
+
+- 父类：**生产率（productivity）**
+
+##### 2.3.10.2 基于增加值的资本-劳动多要素生产率（capital-labor multifactor productivity (MFP), based on value added）
+
+定义：增加值数量指数与劳动和资本组合投入数量指数之比。
+
+- 父类：**生产率（productivity）**
+
+##### 2.3.10.3 资本-劳动-能源-材料多要素生产率（capital-labor-energy-materials multifactor productivity）
+
+定义：总产出数量指数与组合投入数量指数之比。
+
+- 父类：**生产率（productivity）**
+
+##### 2.3.10.4 基于总产出的劳动生产率（labor productivity, based on gross output）
+
+定义：总产出数量指数与劳动投入数量指数之比。
+
+- 父类：**生产率（productivity）**
+
+##### 2.3.10.5 基于增加值的劳动生产率（labor productivity, based on value added）
+
+定义：增加值数量指数与劳动投入数量指数之比。
+
+- 父类：**生产率（productivity）**
+
+#### 2.3.11 失业率（unemployment rate）
+
+定义：表示给定经济体在某指定时期内失业人口与平民劳动力之比的经济指标。
+
+- 父类：**经济指标（economic indicator）**、**表达式（Expression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有基线总体（has baseline population）** | 指明用于比较或分析的起始统计全域或总体。 | 值域：统计全域；子属性：引用 |
+| **具有比较总体（has comparison population）** | 指明用于比较或分析的基线统计全域或总体的子集。 | 值域：统计全域；子属性：具有输入 |
+
+公理：
+
+- **具有基线总体（has baseline population）**至少有一个取值，类型是**平民劳动力（civilian labor force）**。
+- **具有比较总体（has comparison population）**至少有一个取值，类型是**失业人口（unemployed population）**。
+
+### 2.4 企业总体（enterprise population）
+
+定义：为支持就业和生产者价格等调查而设计的企业统计全域。
+
+- 父类：**统计全域（StatisticalUniverse）**
+- 直接子类：**机构场所总体（establishment population）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**企业（enterprise）**。
+
+#### 2.4.1 机构场所总体（establishment population）
+
+定义：企业总体中聚焦于机构场所的子集。
+
+- 父类：**企业总体（enterprise population）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**机构场所（establishment）**。
+
+### 2.5 固定篮子（fixed basket）
+
+定义：数量与质量在某段时期内保持固定的货物与服务篮子。
+
+- 父类：**篮子（Basket）**、**带日期结构化集合（DatedStructuredCollection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**固定篮子成分（fixed basket constituent）**。
+
+### 2.6 固定篮子成分（fixed basket constituent）
+
+定义：固定篮子的组成成分。
+
+- 父类：**篮子成分（BasketConstituent）**、**带日期集合成分（DatedCollectionConstituent）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.7 固定篮子总体（fixed basket population）
+
+定义：由特定货物和/或服务构成的、为支持价格指数等调查而设计的统计全域。
+
+- 父类：**统计全域（StatisticalUniverse）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.8 政府指定统计区（government-specified statistical area）
+
+定义：由政府机构定义的统计区。
+
+- 父类：**统计区（StatisticalArea）**
+- 直接子类：**联合统计区（combined statistical area）**、**大都市统计区（metropolitan statistical area）**、**小都市统计区（micropolitan statistical area）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**政府机关（GovernmentBody）**。
+
+#### 2.8.1 联合统计区（combined statistical area）
+
+定义：以通勤模式衡量具有经济联系的相邻大都市区和小都市区的组合。
+
+- 父类：**政府指定统计区（government-specified statistical area）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有 2 个**政府指定统计区（government-specified statistical area）**。
+
+#### 2.8.2 大都市统计区（metropolitan statistical area）
+
+定义：拥有至少一个 5 万人以上城市核心区的一个或多个相邻县（或同级单位）及其周边紧密联系地区。
+
+- 父类：**政府指定统计区（government-specified statistical area）**
+
+#### 2.8.3 小都市统计区（micropolitan statistical area）
+
+定义：拥有至少一个 1 万至 5 万人城市核心区的一个或多个相邻县（或同级单位）及其周边地区。
+
+- 父类：**政府指定统计区（government-specified statistical area）**
+
+### 2.9 住房单元（housing unit）
+
+定义：作为独立居住空间占用的房屋、公寓、活动房屋、一组房间或单个房间，或空置但拟供居住者。
+
+- 父类：**物理位置（PhysicalLocation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有地址（hasAddress）** | — | — |
+
+公理：
+
+- **具有地址（hasAddress）**的所有取值只能是**物理地址（PhysicalAddress）**。
+
+### 2.10 机构内人员（institutional person）
+
+定义：因某种原因（如住院、康复或监禁）居住在机构内的人。
+
+- 父类：**个人（Person）**
+
+### 2.11 机构单位（institutional unit）
+
+定义：能够以自身名义拥有资产、承担负债、从事经济活动并与他方交易的参与方。
+
+- 父类：**功能实体（FunctionalEntity）**、**参与方角色（party role）**
+- 直接子类：**企业（enterprise）**、**机构场所（establishment）**、**住户（household）**
+
+#### 2.11.1 企业（enterprise）
+
+定义：生产和/或销售货物或服务的功能型企业实体。
+
+- 父类：**功能型企业实体（FunctionalBusinessEntity）**、**机构单位（institutional unit）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+| **具有成员（hasMember）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**机构场所（establishment）**。
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**行业部门分类器（IndustrySectorClassifier）**。
+- **由…扮演（is played by）**至少有一个取值，类型是**法律主体（LegalPerson）**。
+- **适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+- 该属性存在取值约束。
+
+#### 2.11.2 机构场所（establishment）
+
+定义：从单一物理位置运营的企业（或企业的一部分）。
+
+- 父类：**机构单位（institutional unit）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有地址（hasAddress）** | — | — |
+| **是……的组成成分（isConstituentOf）** | — | — |
+
+公理：
+
+- **具有地址（hasAddress）**恰好有 1 个**物理地址（PhysicalAddress）**。
+- **是……的组成成分（isConstituentOf）**可以有 0 个或多个**企业（enterprise）**。
+
+#### 2.11.3 住户（household）
+
+定义：共同居住于一个住房单元（如房屋或公寓）作为通常居所、并共享部分或全部资源的个人或小群体。
+
+- 父类：**机构单位（institutional unit）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+| **具有位置（hasLocation）** | — | — |
+
+公理：
+
+- **具有位置（hasLocation）**至多有 1 个**住房单元（housing unit）**。
+- **具有成员（hasMember）**至少有一个取值，类型是**个人（Person）**。
+
+### 2.12 军人（military person）
+
+定义：现役军队成员。
+
+- 父类：**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**
+
+公理：
+
+- 与**平民（civilian）**互斥：同一个体不能同时属于两者。
+
+### 2.13 统计信息发布方（statistical information publisher）
+
+定义：打包并提供分析与统计数据的发布方。
+
+- 父类：**fibo-be-fct-pub:Publisher（Publisher）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+
+### 2.14 最终消费者（ultimate consumer）
+
+定义：货物、产品或服务的最终使用者。
+
+- 父类：**消费者（Consumer）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，类型是**个人（Person）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有指标值（has indicator value）** | 指明给定指标的量值。 | 值域：标量值；子属性：具有量值 |
+
+## 4. 依赖（owl:imports，29 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -269,7 +852,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`EconomicIndicators.rdf`
 - 中文 Turtle：`EconomicIndicators.ttl`

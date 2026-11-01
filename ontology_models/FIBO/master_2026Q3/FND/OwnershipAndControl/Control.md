@@ -14,6 +14,21 @@
 
 **与相近概念的差别**：控制≠所有权——51% 股权通常带来控制，但通过协议安排无多数股权也可控制；与管理权的差别——控制是股东层面的支配力，管理是经营层面的执行权。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **控制（control）** 继承 **情境（situation）**
+- **受控事物（controlled thing）** 继承 **承受者（undergoer）**
+- **控制方（controlling party）** 继承 **行为者（actor）**
+- **事实控制（de facto control）** 继承 **控制（control）**
+- **法律控制（de jure control）** 继承 **法律构造（LegalConstruct）**
+- **法律控制（de jure control）** 继承 **控制（control）**
+- **受控事物（controlled thing）** 通过 **具有控制方（has controlling party）** 关联 **控制方（controlling party）**
+- **控制（control）** 通过 **具有控制中参与方（has party in control）** 关联 **控制方（controlling party）**
+- **控制（control）** 通过 **涉及受控事物（involves controlled thing）** 关联 **受控事物（controlled thing）**
+- **受控事物（controlled thing）** 通过 **在……中为受控事物（is controlled thing in）** 关联 **控制（control）**
+- **控制方（controlling party）** 通过 **在……中为控制方（is controlling party in）** 关联 **控制（control）**
+- **控制方（controlling party）** 通过 **是控制方（is party controlling）** 关联 **受控事物（controlled thing）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -24,48 +39,93 @@
 | 事实控制（de facto control） | 非正式存在但被接受的控制，虽未经正式承认。 |
 | 法律控制（de jure control） | 作为法律事项存在的控制，即对某事物的正当合法控制。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 控制（control） ⊑ 情境（situation）
-- 受控事物（controlled thing） ⊑ 承受者（undergoer）
-- 控制方（controlling party） ⊑ 行为者（actor）
-- 事实控制（de facto control） ⊑ 控制（control）
-- 法律控制（de jure control） ⊑ 法律构造
-- 法律控制（de jure control） ⊑ 控制（control）
+### 2.1 控制（control）
 
-## 3. 对象属性（Object Property）
+定义：某参与方有权指挥或强烈影响某事物相关管理与政策方向的情形。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-oac-ctl:hasControllingParty | 具有控制方（has controlling party） | 标识对某事物行使权力或影响力的参与方。 | 定义域（domain）：受控事物（controlled thing）；值域（range）：控制方（controlling party）；子属性（subPropertyOf）：受…影响（is affected by） |
-| fibo-fnd-oac-ctl:hasPartyInControl | 具有控制中参与方（has party in control） | 标识控制情形情境中的行为体。 | 定义域（domain）：控制（control）；值域（range）：控制方（controlling party）；子属性（subPropertyOf）：具有行为者（has actor） |
-| fibo-fnd-oac-ctl:involvesControlledThing | 涉及受控事物（involves controlled thing） | 标识控制情形情境中被控制的某事物。 | 定义域（domain）：控制（control）；值域（range）：受控事物（controlled thing）；子属性（subPropertyOf）：具有承受者（has undergoer） |
-| fibo-fnd-oac-ctl:isControlledPartyOf | 是……的受控方（is controlled party of） | 标识对……具有一定权力或影响力的控制方。 | 值域（range）：控制方（controlling party）；子属性（subPropertyOf）：直接受…影响（is directly affected by） |
-| fibo-fnd-oac-ctl:isControlledThingIn | 在……中为受控事物（is controlled thing in） | 标识某事物被控制的控制情境。 | 定义域（domain）：受控事物（controlled thing）；值域（range）：控制（control）；逆属性（inverseOf）：涉及受控事物（involves controlled thing）；子属性（subPropertyOf）：承受（undergoes） |
-| fibo-fnd-oac-ctl:isControllingPartyIn | 在……中为控制方（is controlling party in） | 标识参与方扮演控制角色的控制情境。 | 定义域（domain）：控制方（controlling party）；值域（range）：控制（control）；逆属性（inverseOf）：具有控制中参与方（has party in control）；子属性（subPropertyOf）：在…中行动（acts in） |
-| fibo-fnd-oac-ctl:isControllingPartyOf | 是……的控制方（is controlling party of） | 标识控制方对其具有一定权力或影响力的事物。 | 定义域（domain）：控制方（controlling party）；子属性（subPropertyOf）：直接影响（directly affects） |
-| fibo-fnd-oac-ctl:isPartyControlling | 是控制方（is party controlling） | 标识控制方对其具有一定权力或影响力的受控事物。 | 定义域（domain）：控制方（controlling party）；值域（range）：受控事物（controlled thing）；逆属性（inverseOf）：具有控制方（has controlling party）；子属性（subPropertyOf）：对…采取行动（acts on） |
+- 父类：**情境（situation）**
+- 直接子类：**事实控制（de facto control）**、**法律控制（de jure control）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-oac-ctl:isInitiallyControlledOn | 首次受控于（is initially controlled on） | 标识某种程度的权力或影响力首次确立的日期或日期时间。 |
+| **具有控制中参与方（has party in control）** | 标识控制情形情境中的行为体。 | 值域：控制方（controlling party）；子属性：具有行为者（has actor） |
+| **涉及受控事物（involves controlled thing）** | 标识控制情形情境中被控制的某事物。 | 值域：受控事物（controlled thing）；子属性：具有承受者（has undergoer） |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有控制中参与方（has party in control）**至少有一个取值，类型是**控制方（controlling party）**。
+- **涉及受控事物（involves controlled thing）**至少有一个取值，类型是**受控事物（controlled thing）**。
 
-- **控制（control）**：**具有控制中参与方（has party in control）**至少有一个取值，类型是**控制方（controlling party）**。
-- **控制（control）**：**涉及受控事物（involves controlled thing）**至少有一个取值，类型是**受控事物（controlled thing）**。
-- **受控事物（controlled thing）**：**首次受控于（is initially controlled on）**存在取值约束。
-- **受控事物（controlled thing）**：**具有控制方（has controlling party）**至少有一个取值，类型是**控制方（controlling party）**。
-- **受控事物（controlled thing）**：**在……中为受控事物（is controlled thing in）**至少有一个取值，类型是**控制（control）**。
-- **控制方（controlling party）**：**在……中为控制方（is controlling party in）**至少有一个取值，类型是**控制（control）**。
-- **控制方（controlling party）**：**是控制方（is party controlling）**至少有一个取值，类型是**受控事物（controlled thing）**。
-- **事实控制（de facto control）**与**法律控制（de jure control）**互斥：同一个体不能同时属于两者。
+#### 2.1.1 事实控制（de facto control）
 
-## 6. 依赖（owl:imports，6 个）
+定义：非正式存在但被接受的控制，虽未经正式承认。
+
+- 父类：**控制（control）**
+
+公理：
+
+- 与**法律控制（de jure control）**互斥：同一个体不能同时属于两者。
+
+#### 2.1.2 法律控制（de jure control）
+
+定义：作为法律事项存在的控制，即对某事物的正当合法控制。
+
+- 父类：**法律构造（LegalConstruct）**、**控制（control）**
+
+### 2.2 受控事物（controlled thing）
+
+定义：在某情形中被某参与方施以某种形式控制的事物。
+
+- 父类：**承受者（undergoer）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有控制方（has controlling party）** | 标识对某事物行使权力或影响力的参与方。 | 值域：控制方（controlling party）；子属性：受…影响（is affected by） |
+| **在……中为受控事物（is controlled thing in）** | 标识某事物被控制的控制情境。 | 值域：控制（control）；逆属性：涉及受控事物（involves controlled thing）；子属性：承受（undergoes） |
+| **首次受控于（is initially controlled on）** | 标识某种程度的权力或影响力首次确立的日期或日期时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+
+公理：
+
+- **具有控制方（has controlling party）**至少有一个取值，类型是**控制方（controlling party）**。
+- **在……中为受控事物（is controlled thing in）**至少有一个取值，类型是**控制（control）**。
+- **首次受控于（is initially controlled on）**存在取值约束。
+
+### 2.3 控制方（controlling party）
+
+定义：在某情形情境中实施某种形式控制的行为体。
+
+- 父类：**行为者（actor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **在……中为控制方（is controlling party in）** | 标识参与方扮演控制角色的控制情境。 | 值域：控制（control）；逆属性：具有控制中参与方（has party in control）；子属性：在…中行动（acts in） |
+| **是……的控制方（is controlling party of）** | 标识控制方对其具有一定权力或影响力的事物。 | 子属性：直接影响（directly affects） |
+| **是控制方（is party controlling）** | 标识控制方对其具有一定权力或影响力的受控事物。 | 值域：受控事物（controlled thing）；逆属性：具有控制方（has controlling party）；子属性：对…采取行动（acts on） |
+
+公理：
+
+- **在……中为控制方（is controlling party in）**至少有一个取值，类型是**控制（control）**。
+- **是控制方（is party controlling）**至少有一个取值，类型是**受控事物（controlled thing）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的受控方（is controlled party of）** | 标识对……具有一定权力或影响力的控制方。 | 值域：控制方（controlling party）；子属性：直接受…影响（is directly affected by） |
+
+## 4. 依赖（owl:imports，6 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -78,7 +138,7 @@
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Control.rdf`
 - 中文 Turtle：`Control.ttl`

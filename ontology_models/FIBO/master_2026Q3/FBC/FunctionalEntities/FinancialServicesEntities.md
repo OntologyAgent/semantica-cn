@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：按「功能」而非「法律形式」分类——同一家公司可以同时是银行和券商（功能叠加）；与 BE 法律实体的差别——法律实体回答「它是什么组织」，本本体回答「它干什么业务」。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **银行（bank）** 继承 **存款性机构（depository institution）**
+- **银行控股公司（bank holding company）** 继承 **控股公司（holding company）**
+- **银行控股公司（bank holding company）** 继承 **金融服务提供商（FinancialServiceProvider）**
+- **银行产品（banking product）** 继承 **金融产品（FinancialProduct）**
+- **银行服务（banking service）** 继承 **金融服务（FinancialService）**
+- **经纪公司（brokerage firm）** 继承 **非存款性机构（non-depository institution）**
+- **经纪公司（brokerage firm）** 继承 **经纪交易商（BrokerDealer）**
+- **商业标识代码（business identifier code）** 继承 **代码元素（CodeElement）**
+- **商业标识代码（business identifier code）** 继承 **结构化标识符（StructuredIdentifier）**
+- **商业标识代码（business identifier code）** 继承 **组织标识符（OrganizationIdentifier）**
+- **商业标识代码方案（business identifier code scheme）** 继承 **代码集（CodeSet）**
+- **商业标识代码方案（business identifier code scheme）** 继承 **组织标识方案（OrganizationIdentificationScheme）**
+- 其余 57 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -77,134 +93,664 @@
 | 单位投资信托（unit investment trust） | 依信托契约、托管或代理合同或类似文件组织、不设董事会的投资公司。 |
 | 财富管理服务（wealth management service） | 为单一客户综合提供财务与投资建议、会计与税务服务、退休规划以及法律或遗产规划的金融服务。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 银行（bank） ⊑ 存款性机构（depository institution）
-- 银行控股公司（bank holding company） ⊑ 控股公司（holding company）
-- 银行控股公司（bank holding company） ⊑ 金融服务提供商
-- 银行产品（banking product） ⊑ 金融产品
-- 银行服务（banking service） ⊑ 金融服务
-- 经纪公司（brokerage firm） ⊑ 非存款性机构（non-depository institution）
-- 经纪公司（brokerage firm） ⊑ 经纪交易商
-- 商业标识代码（business identifier code） ⊑ 代码元素
-- 商业标识代码（business identifier code） ⊑ 结构化标识符
-- 商业标识代码（business identifier code） ⊑ 组织标识符
-- 商业标识代码方案（business identifier code scheme） ⊑ 代码集
-- 商业标识代码方案（business identifier code scheme） ⊑ 组织标识方案
-- 商业方前缀（business party prefix） ⊑ 代码元素
-- 商业方前缀（business party prefix） ⊑ 组织标识符
-- 商业方后缀（business party suffix） ⊑ 代码元素
-- 中央银行（central bank） ⊑ 银行（bank）
-- 中央银行（central bank） ⊑ 货币当局（monetary authority）
-- 中央对手方清算所（central counterparty clearing house） ⊑ 清算所（clearing house）
-- 中央证券存管机构（central securities depository） ⊑ 金融服务提供商
-- 清算银行（clearing bank） ⊑ 清算所（clearing house）
-- 清算银行（clearing bank） ⊑ 商业银行（commercial bank）
-- 清算公司（clearing corporation） ⊑ 清算所（clearing house）
-- 清算所（clearing house） ⊑ 金融服务提供商
-- 清算服务（clearing service） ⊑ 金融服务
-- 商业银行（commercial bank） ⊑ 银行（bank）
-- 商业金融公司（commercial finance company） ⊑ 金融公司（finance company）
-- 商品交易顾问（commodity trading advisor） ⊑ 非存款性机构（non-depository institution）
-- 消费金融公司（consumer finance company） ⊑ 金融公司（finance company）
-- 契约型储蓄机构（contractual savings institution） ⊑ 投资者
-- 契约型储蓄机构（contractual savings institution） ⊑ 非存款性机构（non-depository institution）
-- 信用合作社（credit union） ⊑ 合作社
-- 信用合作社（credit union） ⊑ 存款性机构（depository institution）
-- 数据处理服务（data processing service） ⊑ 金融服务
-- 数据处理服务商（data processing servicer） ⊑ 金融服务提供商
-- 存款性机构（depository institution） ⊑ 金融机构（financial institution）
-- 开发银行（development bank） ⊑ 金融机构（financial institution）
-- 电子资金转账服务（electronic funds transfer service） ⊑ 金融服务
-- 面额证书公司（face amount certificate company） ⊑ 投资公司（investment company）
-- 金融公司（finance company） ⊑ 非存款性机构（non-depository institution）
-- 金融机构（financial institution） ⊑ 金融服务提供商
-- 金融服务提供商标识符（financial service provider identifier） ⊑ 参与方角色标识符
-- 金融服务提供商标识符方案（financial service provider identifier scheme） ⊑ 标识方案
-- 期货佣金商（futures commission merchant） ⊑ 非存款性机构（non-depository institution）
-- 控股公司（holding company） ⊑ 功能型企业实体
-- 保险公司（insurance company） ⊑ 风险汇聚机构（risk pooling institution）
-- 保险服务（insurance service） ⊑ 金融服务
-- 投资银行（investment bank） ⊑ 金融机构（financial institution）
-- 投资公司（investment company） ⊑ 非存款性机构（non-depository institution）
-- 投资服务（investment service） ⊑ 金融服务
-- 管理公司（management company） ⊑ 投资公司（investment company）
-- 商户服务（merchant service） ⊑ 金融服务
-- 货币当局（monetary authority） ⊑ 监管机构
-- 货币服务业务（money services business） ⊑ 非存款性机构（non-depository institution）
-- 抵押贷款公司（mortgage company） ⊑ 金融服务提供商
-- 非存款性机构（non-depository institution） ⊑ 金融机构（financial institution）
-- 支付服务（payment service） ⊑ 商户服务（merchant service）
-- 薪资服务（payroll service） ⊑ 金融服务
-- 主承销商（principal underwriter） ⊑ 承销商（underwriter）
-- 注册投资顾问（registered investment advisor） ⊑ 金融服务提供商
-- 注册投资顾问（registered investment advisor） ⊑ 注册代理人
-- 风险汇聚机构（risk pooling institution） ⊑ 非存款性机构（non-depository institution）
-- 销售金融公司（sales finance company） ⊑ 金融公司（finance company）
-- 储蓄协会（savings association） ⊑ 存款性机构（depository institution）
-- 自律组织（self-regulating organization） ⊑ 监管机构
-- 信托公司（trust company） ⊑ 金融机构（financial institution）
-- 承销商（underwriter） ⊑ 金融服务提供商
-- 承销安排（underwriting arrangement） ⊑ 书面合同
-- 单位投资信托（unit investment trust） ⊑ 投资公司（investment company）
-- 财富管理服务（wealth management service） ⊑ 金融服务
+### 2.1 银行产品（banking product）
 
-## 3. 对象属性（Object Property）
+定义：由存款性机构向消费者和企业提供的产品。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fbc-fct-fse:hasDateEstablished | 具有设立日期（has date established） | 金融服务提供商正式设立的日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-fbc-fct-fse:hasDateEstablishmentTerminated | 具有终止日期（has date establishment terminated） | 实体存续的最后一个完整日。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有到期日 |
-| fibo-fbc-fct-fse:hasDateInsured | 具有投保生效日（has date insured） | 保险开始生效的日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-fbc-fct-fse:hasPortfolioCompany | 具有被投公司（has portfolio company） | 指明风险投资机构、并购基金或控股公司所投资的一方。 | 定义域（domain）：控制方；值域（range）：受控方；逆属性（inverseOf）：是……的被投公司（is portfolio company of）；子属性（subPropertyOf）：是控制方 |
-| fibo-fbc-fct-fse:isPortfolioCompanyOf | 是……的被投公司（is portfolio company of） | 指明作为该方财务投资人（即投资方）的风险投资机构、并购基金或控股公司。 | 定义域（domain）：受控方；值域（range）：控制方；子属性（subPropertyOf）：具有控制方 |
-| fibo-fbc-fct-fse:regulatesSupplyOf | 监管……的供应（regulates supply of） | 将监管机构与其通过规章制度在某市场上控制或监督其供应的事物关联起来。 | 定义域（domain）：监管机构；子属性（subPropertyOf）：管辖 |
+- 父类：**金融产品（FinancialProduct）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……提供（isProvidedBy）** | — | — |
 
-- **银行控股公司（bank holding company）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
-- **银行产品（banking product）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**存款性机构（depository institution）**。
-- **银行服务（banking service）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**存款性机构（depository institution）**。
-- **商业标识代码（business identifier code）**：**包含（comprises）**可以有 0 个或多个**组织子单位标识符（OrganizationSubUnitIdentifier）**。
-- **商业标识代码（business identifier code）**：**包含（comprises）**恰好有 1 个**商业方前缀（business party prefix）**。
-- **商业标识代码（business identifier code）**：**包含（comprises）**恰好有 1 个**商业方后缀（business party suffix）**。
-- **商业标识代码（business identifier code）**：**指代（denotes）**恰好有 1 个**正式组织（FormalOrganization）**。
-- **商业标识代码（business identifier code）**：**包含（comprises）**恰好有 1 个**lcc-cr:Alpha2Code（Alpha2Code）**。
-- **商业标识代码（business identifier code）**：**是……的成员（isMemberOf）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
-- **商业标识代码方案（business identifier code scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**商业标识代码（business identifier code）**。
-- **商业方前缀（business party prefix）**：**被包含于（isIncludedIn）**至多有 1 个**商业标识代码（business identifier code）**。
-- **商业方前缀（business party prefix）**：**定义于（isDefinedIn）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
-- **商业方后缀（business party suffix）**：**被包含于（isIncludedIn）**至少有一个取值，类型是**商业标识代码（business identifier code）**。
-- **商业方后缀（business party suffix）**：**定义于（isDefinedIn）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
-- **中央银行（central bank）**：**由…扮演（is played by）**的所有取值只能是**部属单位（Instrumentality）**。
-- **清算公司（clearing corporation）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
-- **清算所（clearing house）**：**提供（provides）**至少有一个取值，类型是**清算服务（clearing service）**。
-- **商业银行（commercial bank）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
-- **契约型储蓄机构（contractual savings institution）**：**由…扮演（is played by）**可以有 0 个或多个**N9ab564a40f2d4d049b15dd42ea95152c**。
-- **信用合作社（credit union）**：**由…扮演（is played by）**恰好有 1 个**非营利组织（NotForProfitOrganization）**。
-- **数据处理服务（data processing service）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**数据处理服务商（data processing servicer）**。
-- **面额证书公司（face amount certificate company）**与**管理公司（management company）**互斥：同一个体不能同时属于两者。
-- **金融机构（financial institution）**：**提供（provides）**至少有一个取值，类型是**金融服务（FinancialService）**。
-- **金融机构（financial institution）**：**受……监管（isRegulatedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
-- **金融服务提供商标识符（financial service provider identifier）**：**受……管辖（isGovernedBy）**可以有 0 个或多个**管辖权（Jurisdiction）**。
-- **金融服务提供商标识符（financial service provider identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**金融服务提供商标识符方案（financial service provider identifier scheme）**。
-- **金融服务提供商标识符（financial service provider identifier）**：**标识（identifies）**恰好有 1 个**金融服务提供商（FinancialServiceProvider）**。
-- **金融服务提供商标识符方案（financial service provider identifier scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**金融服务提供商标识符（financial service provider identifier）**。
-- **控股公司（holding company）**：**具有被投公司（has portfolio company）**可以有 0 个或多个**受控方（ControlledParty）**。
-- **投资银行（investment bank）**：该属性存在取值约束。
-- **管理公司（management company）**与**单位投资信托（unit investment trust）**互斥：同一个体不能同时属于两者。
-- **货币当局（monetary authority）**：**监管……的供应（regulates supply of）**至少有一个取值，类型是**货币（Currency）**。
-- **支付服务（payment service）**：**涉及（involves）**至少有一个取值，类型是**支付义务（PaymentObligation）**。
-- **注册投资顾问（registered investment advisor）**：**提供咨询（advises）**至少有一个取值，类型是**受控方（ControlledParty）**。
-- **注册投资顾问（registered investment advisor）**：**由……注册（isRegisteredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **自律组织（self-regulating organization）**：**由…扮演（is played by）**至少有一个取值，类型是**非政府组织（NonGovernmentalOrganization）**。
-- **信托公司（trust company）**：**由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
-- **承销商（underwriter）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**承销安排（underwriting arrangement）**。
-- **承销安排（underwriting arrangement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**承销商（underwriter）**。
+公理：
 
-## 6. 依赖（owl:imports，31 个）
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**存款性机构（depository institution）**。
+
+### 2.2 银行服务（banking service）
+
+定义：由存款性机构提供的金融服务。
+
+- 父类：**金融服务（FinancialService）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**存款性机构（depository institution）**。
+
+### 2.3 商业标识代码（business identifier code）
+
+定义：金融和非金融机构的国际标识符，用于促进金融服务信息的自动化处理。
+
+- 父类：**代码元素（CodeElement）**、**结构化标识符（StructuredIdentifier）**、**组织标识符（OrganizationIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **是……的成员（isMemberOf）** | — | — |
+| **指代（denotes）** | — | — |
+
+公理：
+
+- **包含（comprises）**可以有 0 个或多个**组织子单位标识符（OrganizationSubUnitIdentifier）**。
+- **包含（comprises）**恰好有 1 个**lcc-cr:Alpha2Code（Alpha2Code）**。
+- **包含（comprises）**恰好有 1 个**商业方前缀（business party prefix）**。
+- **包含（comprises）**恰好有 1 个**商业方后缀（business party suffix）**。
+- **指代（denotes）**恰好有 1 个**正式组织（FormalOrganization）**。
+- **是……的成员（isMemberOf）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
+
+### 2.4 商业标识代码方案（business identifier code scheme）
+
+定义：规定用于标识金融和非金融机构的唯一商业标识代码（BIC）之构成要素的方案。
+
+- 父类：**代码集（CodeSet）**、**组织标识方案（OrganizationIdentificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**商业标识代码（business identifier code）**。
+
+### 2.5 商业方前缀（business party prefix）
+
+定义：为银行电讯目的与机构相关联的四位字符（4 位字母数字）代码。
+
+- 父类：**代码元素（CodeElement）**、**组织标识符（OrganizationIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **被包含于（isIncludedIn）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
+- **被包含于（isIncludedIn）**至多有 1 个**商业标识代码（business identifier code）**。
+
+### 2.6 商业方后缀（business party suffix）
+
+定义：为银行电讯目的与机构相关联的两位字符（2 位字母数字）代码。
+
+- 父类：**代码元素（CodeElement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **被包含于（isIncludedIn）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**至少有一个取值，类型是**商业标识代码方案（business identifier code scheme）**。
+- **被包含于（isIncludedIn）**至少有一个取值，类型是**商业标识代码（business identifier code）**。
+
+### 2.7 中央证券存管机构（central securities depository）
+
+定义：为金融工具（「证券」，如债券和股票）提供集中存管点的功能实体。
+
+- 父类：**金融服务提供商（FinancialServiceProvider）**
+
+### 2.8 清算所（clearing house）
+
+定义：附属于交易所、提供清算服务（包括金融交易的确认、交割和结算）的金融服务提供商。
+
+- 父类：**金融服务提供商（FinancialServiceProvider）**
+- 直接子类：**中央对手方清算所（central counterparty clearing house）**、**清算银行（clearing bank）**、**清算公司（clearing corporation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **提供（provides）** | — | — |
+
+公理：
+
+- **提供（provides）**至少有一个取值，类型是**清算服务（clearing service）**。
+
+#### 2.8.1 中央对手方清算所（central counterparty clearing house）
+
+定义：帮助促进衍生品和股票市场交易的清算所。
+
+- 父类：**清算所（clearing house）**
+
+#### 2.8.2 清算银行（clearing bank）
+
+定义：为金融交易（如支票清算或促进买卖双方之间交易）的支付和结算提供便利的商业银行。
+
+- 父类：**清算所（clearing house）**、**商业银行（commercial bank）**
+
+#### 2.8.3 清算公司（clearing corporation）
+
+定义：以公司形式组建的清算所。
+
+- 父类：**清算所（clearing house）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+
+### 2.9 清算服务（clearing service）
+
+定义：交易达成后由清算服务提供方代表机构市场参与者提供、完成证券和资金划转的服务。
+
+- 父类：**金融服务（FinancialService）**
+
+### 2.10 数据处理服务（data processing service）
+
+定义：由主要从事托管或数据处理基础设施业务的实体提供的金融服务。
+
+- 父类：**金融服务（FinancialService）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**数据处理服务商（data processing servicer）**。
+
+### 2.11 数据处理服务商（data processing servicer）
+
+定义：主要从事托管或数据处理基础设施业务的金融服务提供商。
+
+- 父类：**金融服务提供商（FinancialServiceProvider）**
+
+### 2.12 电子资金转账服务（electronic funds transfer service）
+
+定义：除纸质票据交易外，通过电子终端、电话、计算机或磁介质发起的资金转账服务。
+
+- 父类：**金融服务（FinancialService）**
+
+### 2.13 金融机构（financial institution）
+
+定义：被认定为政府机构或私营实体、从公众和其他机构归集资金的金融服务提供商。
+
+- 父类：**金融服务提供商（FinancialServiceProvider）**
+- 直接子类：**存款性机构（depository institution）**、**开发银行（development bank）**、**投资银行（investment bank）**、**非存款性机构（non-depository institution）**、**信托公司（trust company）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **提供（provides）** | — | — |
+| **受……监管（isRegulatedBy）** | — | — |
+
+公理：
+
+- **受……监管（isRegulatedBy）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+- **提供（provides）**至少有一个取值，类型是**金融服务（FinancialService）**。
+
+#### 2.13.1 存款性机构（depository institution）
+
+定义：从事从公众或其他机构吸收活期存款业务的任何金融机构。
+
+- 父类：**金融机构（financial institution）**
+- 直接子类：**银行（bank）**、**信用合作社（credit union）**、**储蓄协会（savings association）**
+
+##### 2.13.1.1 银行（bank）
+
+定义：吸收存款、发放贷款、兑付支票并提供相关服务的存款性机构，通常为公司制，服务于个人客户和企业客户。
+
+- 父类：**存款性机构（depository institution）**
+- 直接子类：**中央银行（central bank）**、**商业银行（commercial bank）**
+
+###### 2.13.1.1.1 中央银行（central bank）
+
+定义：作为一个国家（或国家集团）货币当局和主要监管银行的金融机构。
+
+- 父类：**银行（bank）**、**货币当局（monetary authority）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**的所有取值只能是**部属单位（Instrumentality）**。
+
+###### 2.13.1.1.2 商业银行（commercial bank）
+
+定义：从事多种金融服务（如吸收存款和发放贷款）的存款性机构。
+
+- 父类：**银行（bank）**
+- 直接子类：**清算银行（clearing bank）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+
+##### 2.13.1.2 信用合作社（credit union）
+
+定义：为提倡节俭之目的而组织、发放个人贷款并提供其他消费金融服务的非营利性存款机构。
+
+- 父类：**合作社（CooperativeSociety）**、**存款性机构（depository institution）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**非营利组织（NotForProfitOrganization）**。
+
+##### 2.13.1.3 储蓄协会（savings association）
+
+定义：存款性机构，包括：（a）依《联邦存款保险法》第 1464 条特许的任何联邦储蓄银行或协会；（b）其他相关储蓄机构。
+
+- 父类：**存款性机构（depository institution）**
+
+#### 2.13.2 开发银行（development bank）
+
+定义：旨在为生产性投资提供中长期资本（通常附带技术援助）的国家或区域性金融机构。
+
+- 父类：**金融机构（financial institution）**
+
+#### 2.13.3 投资银行（investment bank）
+
+定义：作为承销商或代理人、在证券发行人与投资公众之间充当中介的金融服务提供商。
+
+- 父类：**金融机构（financial institution）**
+
+公理：
+
+- 该属性存在取值约束。
+
+#### 2.13.4 非存款性机构（non-depository institution）
+
+定义：不具备完全银行牌照、通常不受国家或国际银行监管机构监管的金融机构。
+
+- 父类：**金融机构（financial institution）**
+- 直接子类：**经纪公司（brokerage firm）**、**商品交易顾问（commodity trading advisor）**、**契约型储蓄机构（contractual savings institution）**、**金融公司（finance company）**、**期货佣金商（futures commission merchant）**、**投资公司（investment company）**、**货币服务业务（money services business）**、**风险汇聚机构（risk pooling institution）**
+
+##### 2.13.4.1 经纪公司（brokerage firm）
+
+定义：从事证券买卖业务的公司，视交易情况同时以经纪商和交易商身份运作。
+
+- 父类：**非存款性机构（non-depository institution）**、**经纪交易商（BrokerDealer）**
+
+##### 2.13.4.2 商品交易顾问（commodity trading advisor）
+
+定义：直接或间接就买卖期货合约或期权的价值或可行性向他人提供建议的一方。
+
+- 父类：**非存款性机构（non-depository institution）**
+
+##### 2.13.4.3 契约型储蓄机构（contractual savings institution）
+
+定义：以受托（而非本人）方式为个人提供投资集合投资工具机会的金融机构。
+
+- 父类：**投资者（Investor）**、**非存款性机构（non-depository institution）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**可以有 0 个或多个**N7768c4609ab34ab79eb359ed1b4ea327**。
+
+##### 2.13.4.4 金融公司（finance company）
+
+定义：从事放贷业务、资金来源于银行、机构和其他货币市场渠道（而非公众存款）的金融中介。
+
+- 父类：**非存款性机构（non-depository institution）**
+- 直接子类：**商业金融公司（commercial finance company）**、**消费金融公司（consumer finance company）**、**销售金融公司（sales finance company）**
+
+###### 2.13.4.4.1 商业金融公司（commercial finance company）
+
+定义：以应收账款、存货和设备为担保向制造商和批发商发放贷款的金融公司。
+
+- 父类：**金融公司（finance company）**
+
+###### 2.13.4.4.2 消费金融公司（consumer finance company）
+
+定义：依据其经营所在司法管辖区的小额贷款法律向个人发放贷款的金融公司。
+
+- 父类：**金融公司（finance company）**
+
+###### 2.13.4.4.3 销售金融公司（sales finance company）
+
+定义：从汽车及其他消费品和商业商品经销商处购买零售和批发票据的金融公司。
+
+- 父类：**金融公司（finance company）**
+
+##### 2.13.4.5 期货佣金商（futures commission merchant）
+
+定义：从事以下两项业务的一方：（1）招揽或接受期货合约、期货期权、零售场外外汇等的买卖订单；（2）接受资金或其他资产作为保证金。
+
+- 父类：**非存款性机构（non-depository institution）**
+
+##### 2.13.4.6 投资公司（investment company）
+
+定义：主要从事或自称主要从事、或拟主要从事投资、再投资或证券交易业务的任何发行人。
+
+- 父类：**非存款性机构（non-depository institution）**
+- 直接子类：**面额证书公司（face amount certificate company）**、**管理公司（management company）**、**单位投资信托（unit investment trust）**
+
+###### 2.13.4.6.1 面额证书公司（face amount certificate company）
+
+定义：从事或拟从事发行分期型面额证书业务、或已从事该业务的投资公司。
+
+- 父类：**投资公司（investment company）**
+
+公理：
+
+- 与**管理公司（management company）**互斥：同一个体不能同时属于两者。
+
+###### 2.13.4.6.2 管理公司（management company）
+
+定义：除面额证书公司或单位投资信托外，出售并管理证券投资组合的投资公司。
+
+- 父类：**投资公司（investment company）**
+
+公理：
+
+- 与**单位投资信托（unit investment trust）**互斥：同一个体不能同时属于两者。
+
+###### 2.13.4.6.3 单位投资信托（unit investment trust）
+
+定义：依信托契约、托管或代理合同或类似文件组织、不设董事会的投资公司。
+
+- 父类：**投资公司（investment company）**
+
+##### 2.13.4.7 货币服务业务（money services business）
+
+定义：以下列任一身份开展业务的任何人（无论是否经常性地或以有组织的企业形式）：货币交易商或兑换商、支票兑现商、旅行支票或储值产品的发行/销售/赎回商、汇款商等。
+
+- 父类：**非存款性机构（non-depository institution）**
+
+##### 2.13.4.8 风险汇聚机构（risk pooling institution）
+
+定义：在提供某项金融服务的同时分散该服务固有风险、以降低重大损失概率的金融机构。
+
+- 父类：**非存款性机构（non-depository institution）**
+- 直接子类：**保险公司（insurance company）**
+
+###### 2.13.4.8.1 保险公司（insurance company）
+
+定义：主要且占主导地位的业务活动是承保保险或对保险公司承保的风险进行再保险的非存款性机构。
+
+- 父类：**风险汇聚机构（risk pooling institution）**
+
+#### 2.13.5 信托公司（trust company）
+
+定义：以受托人、信托受托机构或信托代理机构身份行事的金融机构。
+
+- 父类：**金融机构（financial institution）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+
+### 2.14 金融服务提供商标识符（financial service provider identifier）
+
+定义：基于金融服务提供商所提供职能正式分配给它的标识符，通常在某一司法管辖区内有效。
+
+- 父类：**参与方角色标识符（PartyRoleIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **标识（identifies）** | — | — |
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **受……管辖（isGovernedBy）**可以有 0 个或多个**管辖权（Jurisdiction）**。
+- **是……的成员（isMemberOf）**恰好有 1 个**金融服务提供商标识符方案（financial service provider identifier scheme）**。
+- **标识（identifies）**恰好有 1 个**金融服务提供商（FinancialServiceProvider）**。
+
+### 2.15 金融服务提供商标识符方案（financial service provider identifier scheme）
+
+定义：依照签发注册机构或监管机构的规定定义金融服务提供商标识符的方案。
+
+- 父类：**标识方案（IdentificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**金融服务提供商标识符（financial service provider identifier）**。
+
+### 2.16 控股公司（holding company）
+
+定义：为持有另一家公司股份而设立的商业实体，通常持有足够的表决权股份以对该公司的政策施加一定程度的控制。
+
+- 父类：**功能型企业实体（FunctionalBusinessEntity）**
+- 直接子类：**银行控股公司（bank holding company）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有被投公司（has portfolio company）** | 指明风险投资机构、并购基金或控股公司所投资的一方。 | 值域：受控方；逆属性：是……的被投公司（is portfolio company of）；子属性：是控制方 |
+
+公理：
+
+- **具有被投公司（has portfolio company）**可以有 0 个或多个**受控方（ControlledParty）**。
+
+#### 2.16.1 银行控股公司（bank holding company）
+
+定义：拥有和/或直接或间接控制一家或多家银行的公司；银行控股公司还可以拥有经纪交易商等非银行子公司。
+
+- 父类：**控股公司（holding company）**、**金融服务提供商（FinancialServiceProvider）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**公司（Corporation）**。
+
+### 2.17 保险服务（insurance service）
+
+定义：保险人承诺就特定潜在未来损失提供补偿、以换取定期付款（保费）的金融服务。
+
+- 父类：**金融服务（FinancialService）**
+
+### 2.18 投资服务（investment service）
+
+定义：旨在协助投资者运用资本创造更多资金的金融服务，可通过产生收入的工具或更具风险导向的工具实现。
+
+- 父类：**金融服务（FinancialService）**
+
+### 2.19 商户服务（merchant service）
+
+定义：金融机构向商户或其他企业提供的金融服务，包括但不限于通过多种支付渠道管理金融交易。
+
+- 父类：**金融服务（FinancialService）**
+- 直接子类：**支付服务（payment service）**
+
+#### 2.19.1 支付服务（payment service）
+
+定义：涉及通过信用卡、借记卡等银行支付方式等多种支付方式接受电子支付的金融服务。
+
+- 父类：**商户服务（merchant service）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **涉及（involves）** | — | — |
+
+公理：
+
+- **涉及（involves）**至少有一个取值，类型是**支付义务（PaymentObligation）**。
+
+### 2.20 货币当局（monetary authority）
+
+定义：控制某一国家或国家集团货币政策、监管和货币供应的监管机构。
+
+- 父类：**监管机构（RegulatoryAgency）**
+- 直接子类：**中央银行（central bank）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **监管……的供应（regulates supply of）** | 将监管机构与其通过规章制度在某市场上控制或监督其供应的事物关联起来。 | 子属性：管辖 |
+
+公理：
+
+- **监管……的供应（regulates supply of）**至少有一个取值，类型是**货币（Currency）**。
+
+### 2.21 抵押贷款公司（mortgage company）
+
+定义：为住宅或商业物业发起和/或提供抵押贷款资金的金融服务提供商。
+
+- 父类：**金融服务提供商（FinancialServiceProvider）**
+
+### 2.22 薪资服务（payroll service）
+
+定义：通常向规模不足以设立内部财务组织的小企业提供的、涉及薪资管理的金融服务。
+
+- 父类：**金融服务（FinancialService）**
+
+### 2.23 注册投资顾问（registered investment advisor）
+
+定义：为高净值个人提供投资建议并管理其投资组合的注册代理人和金融服务提供商。
+
+- 父类：**金融服务提供商（FinancialServiceProvider）**、**注册代理人（RegisteredAgent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **提供咨询（advises）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+
+公理：
+
+- **提供咨询（advises）**至少有一个取值，类型是**受控方（ControlledParty）**。
+- **由……注册（isRegisteredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.24 自律组织（self-regulating organization）
+
+定义：有权在某国对某行业或职业创设并行施一定程度监管权的非政府组织。
+
+- 父类：**监管机构（RegulatoryAgency）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，类型是**非政府组织（NonGovernmentalOrganization）**。
+
+### 2.25 承销商（underwriter）
+
+定义：以佣金、保费、价差或利息等费用为代价，评估并承担他方风险的金融服务提供商。
+
+- 父类：**金融服务提供商（FinancialServiceProvider）**
+- 直接子类：**主承销商（principal underwriter）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**承销安排（underwriting arrangement）**。
+
+#### 2.25.1 主承销商（principal underwriter）
+
+定义：以本人身份从投资公司购入证券、或依合同有权从该公司购入任何证券的承销商。
+
+- 父类：**承销商（underwriter）**
+
+### 2.26 承销安排（underwriting arrangement）
+
+定义：承诺承销商承担风险的双方之间的书面合同。
+
+- 父类：**书面合同（WrittenContract）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有一个取值，类型是**承销商（underwriter）**。
+
+### 2.27 财富管理服务（wealth management service）
+
+定义：为单一客户综合提供财务与投资建议、会计与税务服务、退休规划以及法律或遗产规划的金融服务。
+
+- 父类：**金融服务（FinancialService）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有设立日期（has date established）** | 金融服务提供商正式设立的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有终止日期（has date establishment terminated）** | 实体存续的最后一个完整日。 | 值域：显式日期；子属性：具有到期日 |
+| **具有投保生效日（has date insured）** | 保险开始生效的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **是……的被投公司（is portfolio company of）** | 指明作为该方财务投资人（即投资方）的风险投资机构、并购基金或控股公司。 | 值域：控制方；子属性：具有控制方 |
+
+## 4. 依赖（owl:imports，31 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -242,7 +788,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/LCC/Countries/CountryRepresentation/` | LCC 国家表示本体（LCC Country Representation） | OMG 国家语言代码库（LCC）中的国家表示本体，定义国家、国家标识等概念，是 ISO 3166 各国代码个体的类定义来源。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`FinancialServicesEntities.rdf`
 - 中文 Turtle：`FinancialServicesEntities.ttl`

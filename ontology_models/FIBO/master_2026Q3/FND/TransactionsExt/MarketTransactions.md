@@ -8,6 +8,17 @@
 
 定义各类市场上一般市场交易的概念，为证券市场交易提供概念基础。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **市场交易（market transaction）** 继承 **经济交易（EconomicTransaction）**
+- **市场交易开票条款（market transaction invoicing terms）** 继承 **经济合同承诺（EconomicContractTermsSet）**
+- **市场交易支付条款（market transaction payment terms）** 继承 **经济合同承诺（EconomicContractTermsSet）**
+- **交易对手方（transaction counterparty）** 继承 **交易对手（Counterparty）**
+- **交易对手方（transaction counterparty）** 继承 **交易当事方（TransactionParty）**
+- **交易委托方（transaction principal）** 继承 **合同主当事方（ContractPrincipal）**
+- **交易委托方（transaction principal）** 继承 **交易当事方（TransactionParty）**
+- **市场交易（market transaction）** 通过 **支付条款（payment terms）** 关联 **市场交易支付条款（market transaction payment terms）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -18,35 +29,75 @@
 | 交易对手方（transaction counterparty） | 交易中的对手方。 |
 | 交易委托方（transaction principal） | 交易中的委托方。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 市场交易（market transaction） ⊑ 经济交易
-- 市场交易开票条款（market transaction invoicing terms） ⊑ 经济合同承诺
-- 市场交易支付条款（market transaction payment terms） ⊑ 经济合同承诺
-- 交易对手方（transaction counterparty） ⊑ 交易对手
-- 交易对手方（transaction counterparty） ⊑ 交易当事方
-- 交易委托方（transaction principal） ⊑ 合同主当事方
-- 交易委托方（transaction principal） ⊑ 交易当事方
+### 2.1 市场交易（market transaction）
 
-## 3. 对象属性（Object Property）
+定义：定义以某种对价换取某种可转让物品供应的交易；市场交易有委托方和对手方，不是对称的。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-txn-mkt:consideration | 对价（consideration） | 交易中作为交换提供的对价。 | 定义域（domain）：市场交易（market transaction）；值域（range）：经济资源；子属性（subPropertyOf）：标的 |
-| fibo-fnd-txn-mkt:paymentTerms | 支付条款（payment terms） | 关于付款方式的条款。 | 定义域（domain）：市场交易（market transaction）；值域（range）：市场交易支付条款（market transaction payment terms）；子属性（subPropertyOf）：在……项下交易 |
+- 父类：**经济交易（EconomicTransaction）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有交易对手（hasCounterparty）** | — | — |
+| **具有主当事方（hasPrincipalParty）** | — | — |
+| **对价（consideration）** | 交易中作为交换提供的对价。 | 值域：经济资源；子属性：标的 |
+| **支付条款（payment terms）** | 关于付款方式的条款。 | 值域：市场交易支付条款（market transaction payment terms）；子属性：在……项下交易 |
 
-- **市场交易（market transaction）**：**具有交易对手（hasCounterparty）**至少有一个取值，类型是**交易对手方（transaction counterparty）**。
-- **市场交易（market transaction）**：**具有主当事方（hasPrincipalParty）**至少有一个取值，类型是**交易委托方（transaction principal）**。
-- **市场交易（market transaction）**：**对价（consideration）**至少有一个取值，类型是**经济资源（EconomicResource）**。
-- **市场交易（market transaction）**：**支付条款（payment terms）**至少有一个取值，类型是**市场交易支付条款（market transaction payment terms）**。
-- **市场交易支付条款（market transaction payment terms）**：**管辖（governs）**至少有一个取值，类型是**支付（Payment）**。
-- **交易委托方（transaction principal）**：**与……交易（transactsWith）**至少有一个取值，类型是**交易对手方（transaction counterparty）**。
+公理：
 
-## 6. 依赖（owl:imports，6 个）
+- **具有主当事方（hasPrincipalParty）**至少有一个取值，类型是**交易委托方（transaction principal）**。
+- **具有交易对手（hasCounterparty）**至少有一个取值，类型是**交易对手方（transaction counterparty）**。
+- **对价（consideration）**至少有一个取值，类型是**经济资源（EconomicResource）**。
+- **支付条款（payment terms）**至少有一个取值，类型是**市场交易支付条款（market transaction payment terms）**。
+
+### 2.2 市场交易开票条款（market transaction invoicing terms）
+
+定义：市场交易的开票条款。
+
+- 父类：**经济合同承诺（EconomicContractTermsSet）**
+
+### 2.3 市场交易支付条款（market transaction payment terms）
+
+定义：市场交易的支付条款。
+
+- 父类：**经济合同承诺（EconomicContractTermsSet）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **管辖（governs）**至少有一个取值，类型是**支付（Payment）**。
+
+### 2.4 交易对手方（transaction counterparty）
+
+定义：交易中的对手方。
+
+- 父类：**交易对手（Counterparty）**、**交易当事方（TransactionParty）**
+
+### 2.5 交易委托方（transaction principal）
+
+定义：交易中的委托方。
+
+- 父类：**合同主当事方（ContractPrincipal）**、**交易当事方（TransactionParty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **与……交易（transactsWith）** | — | — |
+
+公理：
+
+- **与……交易（transactsWith）**至少有一个取值，类型是**交易对手方（transaction counterparty）**。
+
+## 3. 依赖（owl:imports，6 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -59,7 +110,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`MarketTransactions.rdf`
 - 中文 Turtle：`MarketTransactions.ttl`

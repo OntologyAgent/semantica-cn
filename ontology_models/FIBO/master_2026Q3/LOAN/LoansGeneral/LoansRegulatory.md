@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与贷款本体的差别——贷款本体建模业务结构，本本体建模监管视角的分类与报送要求；与 HMDA 本体的差别——HMDA 是美国特定法案的具体落地。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **借款人数据保护要求（borrower data protection requirement）** 继承 **数据保护要求（data protection requirement）**
+- **借款人披露要求（borrower disclosure requirement）** 继承 **披露要求（disclosure requirement）**
+- **借款人权利（borrower right）** 继承 **消费者权利（consumer right）**
+- **消费信贷公平对待要求（consumer credit equal treatment requirement）** 继承 **消费信贷要求（consumer credit requirement）**
+- **消费信贷保护法（consumer credit protection law）** 继承 **消费者保护法（consumer protection law）**
+- **消费信贷征信机构（consumer credit reference agency）** 继承 **正式组织（FormalOrganization）**
+- **消费信贷要求（consumer credit requirement）** 继承 **法律义务（LegalObligation）**
+- **消费者保护机构（consumer protection agency）** 继承 **监管机构（RegulatoryAgency）**
+- **消费者保护法（consumer protection law）** 继承 **成文法（StatuteLaw）**
+- **消费者权利（consumer right）** 继承 **法律权利（LegalRight）**
+- **数据保护要求（data protection requirement）** 继承 **法律义务（LegalObligation）**
+- **披露要求（disclosure requirement）** 继承 **消费信贷要求（consumer credit requirement）**
+- 其余 13 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -43,64 +59,234 @@
 | Z 条例（reg z） | 美联储《诚实借贷法》条例，规定披露电子化送达的统一标准。 |
 | 信用记录更正权（right of credit record correction） | 要求更正信用记录的权利。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 借款人数据保护要求（borrower data protection requirement） ⊑ 数据保护要求（data protection requirement）
-- 借款人披露要求（borrower disclosure requirement） ⊑ 披露要求（disclosure requirement）
-- 借款人权利（borrower right） ⊑ 消费者权利（consumer right）
-- 消费信贷公平对待要求（consumer credit equal treatment requirement） ⊑ 消费信贷要求（consumer credit requirement）
-- 消费信贷保护法（consumer credit protection law） ⊑ 消费者保护法（consumer protection law）
-- 消费信贷征信机构（consumer credit reference agency） ⊑ 正式组织
-- 消费信贷要求（consumer credit requirement） ⊑ 法律义务
-- 消费者保护机构（consumer protection agency） ⊑ 监管机构
-- 消费者保护法（consumer protection law） ⊑ 成文法
-- 消费者权利（consumer right） ⊑ 法律权利
-- 数据保护要求（data protection requirement） ⊑ 法律义务
-- 披露要求（disclosure requirement） ⊑ 消费信贷要求（consumer credit requirement）
-- 公平对待权（equal treatment right） ⊑ 借款人权利（borrower right）
-- 诚信估价单（good faith estimate） ⊑ 贷款产品说明（loan product representations）
-- 知情权（information right） ⊑ 借款人权利（borrower right）
-- 贷款人权利（lender right） ⊑ 法律权利
-- 贷款产品说明（loan product representations） ⊑ 陈述
-- 贷款监管要求（loan regulatory requirement） ⊑ 法律义务
-- 产品披露要求（product disclosure requirement） ⊑ 披露要求（disclosure requirement）
-- 产品知情权（product disclosure right） ⊑ 知情权（information right）
-- B 条例（reg b） ⊑ 消费信贷公平对待要求（consumer credit equal treatment requirement）
-- B 条例（reg b） ⊑ 披露要求（disclosure requirement）
-- Z 条例（reg z） ⊑ 产品披露要求（product disclosure requirement）
-- 信用记录更正权（right of credit record correction） ⊑ 征信机构要求（credit reference agency requirements）
+### 2.1 消费信贷征信机构（consumer credit reference agency）
 
-## 3. 对象属性（Object Property）
+定义：收集并提供消费者信用信息的机构，其可披露内容受各辖区法规约束。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-loan-ln-reg:administeredBy | 由……管理（administered by） | 标识负责管理某事物的机构。 | 定义域（domain）：贷款监管要求（loan regulatory requirement）；值域（range）：监管机构 |
-| fibo-loan-ln-reg:overseenBy | 由……监督（overseen by） | 标识负责监督某事物的机构。 | 定义域（domain）：消费信贷要求（consumer credit requirement）；值域（range）：消费者保护机构（consumer protection agency） |
+- 父类：**正式组织（FormalOrganization）**
 
-## 4. 数据属性（Datatype Property）
+### 2.2 消费信贷要求（consumer credit requirement）
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+定义：对贷款人如何对待贷款申请所设定的要求。
+
+- 父类：**法律义务（LegalObligation）**
+- 直接子类：**消费信贷公平对待要求（consumer credit equal treatment requirement）**、**披露要求（disclosure requirement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-loan-ln-reg:requirementActReference | 要求法案引用（requirement act reference） | 该监管要求所依据的法案引用。 |
-| fibo-loan-ln-reg:requirementSectionAndParagraph | 要求条款与段落（requirement section and paragraph） | 该监管要求所在的条款与段落。 |
+| **授予（confers）** | — | — |
+| **由……监督（overseen by）** | 标识负责监督某事物的机构。 | 值域：消费者保护机构（consumer protection agency） |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **授予（confers）**至少有一个取值，类型是**消费者权利（consumer right）**。
+- **由……监督（overseen by）**至少有一个取值，类型是**消费者保护机构（consumer protection agency）**。
 
-- **借款人数据保护要求（borrower data protection requirement）**：**管辖（governs）**至少有一个取值，类型是**消费信贷征信机构（consumer credit reference agency）**。
-- **借款人披露要求（borrower disclosure requirement）**：**授予（confers）**至少有一个取值，类型是**产品知情权（product disclosure right）**。
-- **借款人披露要求（borrower disclosure requirement）**：**管辖（governs）**至少有一个取值，类型是**借款人评估（BorrowerAssessment）**。
-- **消费信贷公平对待要求（consumer credit equal treatment requirement）**：**授予（confers）**至少有一个取值，类型是**公平对待权（equal treatment right）**。
-- **消费信贷要求（consumer credit requirement）**：**授予（confers）**至少有一个取值，类型是**消费者权利（consumer right）**。
-- **消费信贷要求（consumer credit requirement）**：**由……监督（overseen by）**至少有一个取值，类型是**消费者保护机构（consumer protection agency）**。
-- **贷款监管要求（loan regulatory requirement）**：**由……授权要求（isMandatedBy）**至少有一个取值，类型是**消费信贷保护法（consumer credit protection law）**。
-- **贷款监管要求（loan regulatory requirement）**：**由……管理（administered by）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
-- **贷款监管要求（loan regulatory requirement）**：**监管（regulates）**至少有一个取值，类型是**贷款（Loan）**。
-- **产品披露要求（product disclosure requirement）**：**管辖（governs）**至少有一个取值，类型是**诚信估价单（good faith estimate）**。
-- **产品披露要求（product disclosure requirement）**：**管辖（governs）**至少有一个取值，类型是**贷款产品说明（loan product representations）**。
+#### 2.2.1 消费信贷公平对待要求（consumer credit equal treatment requirement）
 
-## 6. 依赖（owl:imports，10 个）
+定义：要求贷款人在信贷业务中公平对待借款人的监管要求。
+
+- 父类：**消费信贷要求（consumer credit requirement）**
+- 直接子类：**B 条例（reg b）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **授予（confers）** | — | — |
+
+公理：
+
+- **授予（confers）**至少有一个取值，类型是**公平对待权（equal treatment right）**。
+
+##### 2.2.1.1 B 条例（reg b）
+
+定义：美国关于《平等信贷机会法》的条例，涉及披露的电子化送达。
+
+- 父类：**消费信贷公平对待要求（consumer credit equal treatment requirement）**、**披露要求（disclosure requirement）**
+
+#### 2.2.2 披露要求（disclosure requirement）
+
+定义：向借款人或潜在借款人披露的要求，包括所持有信息的披露与产品条款的披露两类。
+
+- 父类：**消费信贷要求（consumer credit requirement）**
+- 直接子类：**借款人披露要求（borrower disclosure requirement）**、**产品披露要求（product disclosure requirement）**、**B 条例（reg b）**
+
+##### 2.2.2.1 借款人披露要求（borrower disclosure requirement）
+
+定义：要求贷款人向借款人或潜在借款人披露信息的监管要求。
+
+- 父类：**披露要求（disclosure requirement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **授予（confers）** | — | — |
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **授予（confers）**至少有一个取值，类型是**产品知情权（product disclosure right）**。
+- **管辖（governs）**至少有一个取值，类型是**借款人评估（BorrowerAssessment）**。
+
+##### 2.2.2.2 产品披露要求（product disclosure requirement）
+
+定义：规制对产品可作出何种陈述（就其影响消费者而言）的要求。
+
+- 父类：**披露要求（disclosure requirement）**
+- 直接子类：**Z 条例（reg z）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **管辖（governs）**至少有一个取值，类型是**诚信估价单（good faith estimate）**。
+- **管辖（governs）**至少有一个取值，类型是**贷款产品说明（loan product representations）**。
+
+###### 2.2.2.2.1 Z 条例（reg z）
+
+定义：美联储《诚实借贷法》条例，规定披露电子化送达的统一标准。
+
+- 父类：**产品披露要求（product disclosure requirement）**
+
+### 2.3 消费者保护机构（consumer protection agency）
+
+定义：在某辖区负责消费者保护监管的机构。
+
+- 父类：**监管机构（RegulatoryAgency）**
+
+### 2.4 消费者保护法（consumer protection law）
+
+定义：保护消费者权益的法律。
+
+- 父类：**成文法（StatuteLaw）**
+- 直接子类：**消费信贷保护法（consumer credit protection law）**
+
+#### 2.4.1 消费信贷保护法（consumer credit protection law）
+
+定义：保护消费信贷借款人的法律。
+
+- 父类：**消费者保护法（consumer protection law）**
+
+### 2.5 消费者权利（consumer right）
+
+定义：消费者依法享有的权利。
+
+- 父类：**法律权利（LegalRight）**
+- 直接子类：**借款人权利（borrower right）**
+
+#### 2.5.1 借款人权利（borrower right）
+
+定义：借款人在借贷关系中享有的权利。
+
+- 父类：**消费者权利（consumer right）**
+- 直接子类：**公平对待权（equal treatment right）**、**知情权（information right）**
+
+##### 2.5.1.1 公平对待权（equal treatment right）
+
+定义：在法律下获得公平对待的权利。
+
+- 父类：**借款人权利（borrower right）**
+
+##### 2.5.1.2 知情权（information right）
+
+定义：在某情境中获得某项信息的权利，如购买产品时的充分公平披露权。
+
+- 父类：**借款人权利（borrower right）**
+- 直接子类：**产品知情权（product disclosure right）**
+
+###### 2.5.1.2.1 产品知情权（product disclosure right）
+
+定义：在购买产品时获得产品信息的权利。
+
+- 父类：**知情权（information right）**
+
+### 2.6 征信机构要求（credit reference agency requirements）
+
+定义：除数据保护外、规制征信机构可为与不可为的要求。
+
+- 直接子类：**信用记录更正权（right of credit record correction）**
+
+#### 2.6.1 信用记录更正权（right of credit record correction）
+
+定义：要求更正信用记录的权利。
+
+- 父类：**征信机构要求（credit reference agency requirements）**
+
+### 2.7 数据保护要求（data protection requirement）
+
+定义：规定个人数据如何保存的要求，如欧盟数据保护指令（数据归个人所有）。
+
+- 父类：**法律义务（LegalObligation）**
+- 直接子类：**借款人数据保护要求（borrower data protection requirement）**
+
+#### 2.7.1 借款人数据保护要求（borrower data protection requirement）
+
+定义：关于借款人个人数据如何保存与使用的监管要求。
+
+- 父类：**数据保护要求（data protection requirement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **管辖（governs）**至少有一个取值，类型是**消费信贷征信机构（consumer credit reference agency）**。
+
+### 2.8 贷款人权利（lender right）
+
+定义：保护贷款人免受损失的权利。
+
+- 父类：**法律权利（LegalRight）**
+
+### 2.9 贷款产品说明（loan product representations）
+
+定义：关于贷款产品及其对借款人适当性的陈述。
+
+- 父类：**陈述（Representation）**
+- 直接子类：**诚信估价单（good faith estimate）**
+
+#### 2.9.1 诚信估价单（good faith estimate）
+
+定义：贷款人就贷款结清（提前终止）的成本与影响所作的说明（GFE）。
+
+- 父类：**贷款产品说明（loan product representations）**
+
+### 2.10 贷款监管要求（loan regulatory requirement）
+
+定义：由消费信贷法或其他立法在法规中定义的监管要求。
+
+- 父类：**法律义务（LegalObligation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授权要求（isMandatedBy）** | — | — |
+| **由……管理（administered by）** | 标识负责管理某事物的机构。 | 值域：监管机构 |
+| **要求法案引用（requirement act reference）** | 该监管要求所依据的法案引用。 | 值域：xsd:string |
+| **要求条款与段落（requirement section and paragraph）** | 该监管要求所在的条款与段落。 | 值域：xsd:string |
+| **监管（regulates）** | — | — |
+
+公理：
+
+- **由……授权要求（isMandatedBy）**至少有一个取值，类型是**消费信贷保护法（consumer credit protection law）**。
+- **由……管理（administered by）**至少有一个取值，类型是**监管机构（RegulatoryAgency）**。
+- **监管（regulates）**至少有一个取值，类型是**贷款（Loan）**。
+
+## 3. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -117,7 +303,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`LoansRegulatory.rdf`
 - 中文 Turtle：`LoansRegulatory.ttl`

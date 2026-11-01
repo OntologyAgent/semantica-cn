@@ -14,6 +14,12 @@
 
 **与相近概念的差别**：商业中心≠法域——商业中心是市场功能意义上的地点（如「伦敦市场」），法域是法律效力范围；一个商业中心可能跨多个法域。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **商业中心代码（business center code）** 继承 **地理区域标识符（GeographicRegionIdentifier）**
+- **商业中心代码集（business center code set）** 继承 **代码集（CodeSet）**
+- **营业日调整代码（business day adjustment code）** 继承 **代码元素（CodeElement）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -22,20 +28,47 @@
 | 商业中心代码集（business center code set） | 用于定义城市或商业中心代码集合的编码方案。 |
 | 营业日调整代码（business day adjustment code） | 用于表示当某日恰逢某城市或商业中心的周末或节假日时如何处理之惯例的代码。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 商业中心代码（business center code） ⊑ 地理区域标识符
-- 商业中心代码集（business center code set） ⊑ 代码集
-- 营业日调整代码（business day adjustment code） ⊑ 代码元素
+### 2.1 商业中心代码（business center code）
 
-## 5. 公理约定（Axioms）
+定义：用于表示开展商业活动的都会区域的代码。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**地理区域标识符（GeographicRegionIdentifier）**
 
-- **商业中心代码（business center code）**：**标识（identifies）**至少有一个取值，类型是**商业中心（BusinessCenter）**。
-- **营业日调整代码（business day adjustment code）**：**标识（identifies）**至少有一个取值，类型是**营业日惯例（BusinessDayConvention）**。
+属性：
 
-## 6. 依赖（owl:imports，8 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**至少有一个取值，类型是**商业中心（BusinessCenter）**。
+
+### 2.2 商业中心代码集（business center code set）
+
+定义：用于定义城市或商业中心代码集合的编码方案。
+
+- 父类：**代码集（CodeSet）**
+
+### 2.3 营业日调整代码（business day adjustment code）
+
+定义：用于表示当某日恰逢某城市或商业中心的周末或节假日时如何处理之惯例的代码。
+
+- 父类：**代码元素（CodeElement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**至少有一个取值，类型是**营业日惯例（BusinessDayConvention）**。
+
+## 3. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -50,7 +83,7 @@
 | `https://www.omg.org/spec/Commons/Identifiers/` | OMG 通用标识符本体（OMG Commons Identifiers） | Commons 库中的标识符本体，定义标识符及其编码方案的通用概念。 |
 | `https://www.omg.org/spec/Commons/Locations/` | OMG 通用位置本体（OMG Commons Locations） | Commons 库中的位置本体，定义地理位置、地点的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`BusinessCenters.rdf`
 - 中文 Turtle：`BusinessCenters.ttl`

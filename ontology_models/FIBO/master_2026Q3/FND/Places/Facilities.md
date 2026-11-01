@@ -16,17 +16,32 @@
 | 场所（Site） | 具有特定位置的实体场地。 |
 | 场馆（Venue） | 举办活动或交易的具体场所。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
+### 2.1 设施（Facility）
 
-## 3. 对象属性（Object Property）
+定义：可供使用的建筑、设备或服务。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-plc-fac:isSituatedAt | 位于（isSituatedAt） | 指示某事物所处的位置。 | — |
-| fibo-fnd-plc-fac:situates | 安置（situates） | 标识某事物所处的地点、环境或情境。 | — |
+### 2.2 场所（Site）
 
-## 6. 依赖（owl:imports，8 个）
+定义：具有特定位置的实体场地。
+
+### 2.3 场馆（Venue）
+
+定义：举办活动或交易的具体场所。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **位于（isSituatedAt）** | 指示某事物所处的位置。 | — |
+| **安置（situates）** | 标识某事物所处的地点、环境或情境。 | — |
+
+## 4. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -41,7 +56,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/Commons/SitesAndFacilities/` | OMG 通用场所与设施本体（OMG Commons Sites and Facilities） | Commons 库中的场所与设施本体，定义物理场所、设施及其位置的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Facilities.rdf`
 - 中文 Turtle：`Facilities.ttl`

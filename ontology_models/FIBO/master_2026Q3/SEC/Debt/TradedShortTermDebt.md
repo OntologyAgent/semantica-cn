@@ -14,6 +14,17 @@
 
 **与相近概念的差别**：与债券的差别——期限短、多以贴现方式发行（无票面利率）、信用风险与利率风险都低；货币市场工具是「类现金」资产。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **银行承兑汇票（bankers' acceptance）** 继承 **汇票（bill of exchange）**
+- **汇票（bill of exchange）** 继承 **货币市场工具（money market instrument）**
+- **商业票据（commercial paper）** 继承 **货币市场工具（money market instrument）**
+- **付款人（drawee）** 继承 **付款人（Payer）**
+- **出票人（drawer）** 继承 **权利人（Obligee）**
+- **欧洲美元存款（eurodollar deposit）** 继承 **存单（CertificateOfDeposit）**
+- **货币市场工具（money market instrument）** 继承 **固定收益证券（FixedIncomeSecurity）**
+- **回购协议（repurchase agreement）** 继承 **货币市场工具（money market instrument）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -27,35 +38,129 @@
 | 货币市场工具（money market instrument） | 赋予所有者在指定日期无条件收取既定固定金额之权利的短期债务证券。 |
 | 回购协议（repurchase agreement） | 双方之间的协议：一方按指定价格向另一方出让证券，并承诺在日后按约定价格购回。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 银行承兑汇票（bankers' acceptance） ⊑ 汇票（bill of exchange）
-- 汇票（bill of exchange） ⊑ 货币市场工具（money market instrument）
-- 商业票据（commercial paper） ⊑ 货币市场工具（money market instrument）
-- 付款人（drawee） ⊑ 付款人
-- 出票人（drawer） ⊑ 权利人
-- 欧洲美元存款（eurodollar deposit） ⊑ 存单
-- 货币市场工具（money market instrument） ⊑ 固定收益证券
-- 回购协议（repurchase agreement） ⊑ 货币市场工具（money market instrument）
+### 2.1 付款人（drawee）
 
-## 5. 公理约定（Axioms）
+定义：被要求向收款人支付汇票所载金额的一方。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**付款人（Payer）**
 
-- **银行承兑汇票（bankers' acceptance）**：**具有发行时相对价格（hasRelativePriceAtIssue）**的取值固定为 AtADiscount。
-- **银行承兑汇票（bankers' acceptance）**：**具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
-- **银行承兑汇票（bankers' acceptance）**：**具有担保人（hasGuarantor）**至少有一个取值，类型是**银行（Bank）**。
-- **汇票（bill of exchange）**：**由……发行（isIssuedBy）**可以有 0 个或多个**金融机构（FinancialInstitution）**。
-- **汇票（bill of exchange）**：**具有参与方角色（has party role）**可以有 0 个或多个**收款人（Payee）**。
-- **汇票（bill of exchange）**：**具有参与方角色（has party role）**至少有一个取值，类型是**付款人（drawee）**。
-- **汇票（bill of exchange）**：**具有参与方角色（has party role）**至少有一个取值，类型是**出票人（drawer）**。
-- **商业票据（commercial paper）**：**具有发行时相对价格（hasRelativePriceAtIssue）**的取值固定为 AtADiscount。
-- **商业票据（commercial paper）**：**具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
-- **付款人（drawee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**汇票（bill of exchange）**。
-- **出票人（drawer）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**汇票（bill of exchange）**。
-- **回购协议（repurchase agreement）**：**具有时长（hasDuration）**至多有 1 个**时长（Duration）**。
+属性：
 
-## 6. 依赖（owl:imports，14 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**汇票（bill of exchange）**。
+
+### 2.2 出票人（drawer）
+
+定义：就汇票要求付款人向第三方或自己付款的一方。
+
+- 父类：**权利人（Obligee）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**汇票（bill of exchange）**。
+
+### 2.3 欧洲美元存款（eurodollar deposit）
+
+定义：在联邦储备管辖范围之外以美元发行、存放于美国境外银行的固定利率存单。
+
+- 父类：**存单（CertificateOfDeposit）**
+
+### 2.4 货币市场工具（money market instrument）
+
+定义：赋予所有者在指定日期无条件收取既定固定金额之权利的短期债务证券。
+
+- 父类：**固定收益证券（FixedIncomeSecurity）**
+- 直接子类：**汇票（bill of exchange）**、**商业票据（commercial paper）**、**回购协议（repurchase agreement）**
+
+#### 2.4.1 汇票（bill of exchange）
+
+定义：一种短期可转让金融票据，由一人（货物卖方）向另一人（买方）签发书面付款指令。
+
+- 父类：**货币市场工具（money market instrument）**
+- 直接子类：**银行承兑汇票（bankers' acceptance）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**可以有 0 个或多个**收款人（Payee）**。
+- **具有参与方角色（has party role）**至少有一个取值，类型是**付款人（drawee）**。
+- **具有参与方角色（has party role）**至少有一个取值，类型是**出票人（drawer）**。
+- **由……发行（isIssuedBy）**可以有 0 个或多个**金融机构（FinancialInstitution）**。
+
+##### 2.4.1.1 银行承兑汇票（bankers' acceptance）
+
+定义：由银行担保并兑付的短期债务工具，用作大额交易中相对安全的支付形式。
+
+- 父类：**汇票（bill of exchange）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有担保人（hasGuarantor）** | — | — |
+| **具有发行时相对价格（hasRelativePriceAtIssue）** | — | — |
+| **具有到期时相对价格（hasRelativePriceAtMaturity）** | — | — |
+
+公理：
+
+- **具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
+- **具有发行时相对价格（hasRelativePriceAtIssue）**的取值固定为 AtADiscount。
+- **具有担保人（hasGuarantor）**至少有一个取值，类型是**银行（Bank）**。
+
+#### 2.4.2 商业票据（commercial paper）
+
+定义：通常由银行、公司或外国政府发行、用于筹措资金满足短期债务需要的无担保短期债务工具。
+
+- 父类：**货币市场工具（money market instrument）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发行时相对价格（hasRelativePriceAtIssue）** | — | — |
+| **具有到期时相对价格（hasRelativePriceAtMaturity）** | — | — |
+
+公理：
+
+- **具有到期时相对价格（hasRelativePriceAtMaturity）**的取值固定为 ParValue。
+- **具有发行时相对价格（hasRelativePriceAtIssue）**的取值固定为 AtADiscount。
+
+#### 2.4.3 回购协议（repurchase agreement）
+
+定义：双方之间的协议：一方按指定价格向另一方出让证券，并承诺在日后按约定价格购回。
+
+- 父类：**货币市场工具（money market instrument）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有时长（hasDuration）** | — | — |
+
+公理：
+
+- **具有时长（hasDuration）**至多有 1 个**时长（Duration）**。
+
+## 3. 依赖（owl:imports，14 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -76,7 +181,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`TradedShortTermDebt.rdf`
 - 中文 Turtle：`TradedShortTermDebt.ttl`

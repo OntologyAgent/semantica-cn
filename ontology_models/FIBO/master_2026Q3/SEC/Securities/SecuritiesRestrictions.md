@@ -14,6 +14,19 @@
 
 **与相近概念的差别**：限制≠禁令——限制是条件性的（满足条件即可交易），禁令是完全禁止；限制的来源可以是法律（法定）也可以是合同（约定）。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **合同限制（contractual restriction）** 继承 **合同承诺（ContractualCommitment）**
+- **合同限制（contractual restriction）** 继承 **证券限制（securities restriction）**
+- **个人投资者（individual investor）** 继承 **投资者（Investor）**
+- **机构投资者（institutional investor）** 继承 **投资者（Investor）**
+- **投资者住所地限制（investors' domicile restriction）** 继承 **法律持有限制（legal holding restriction）**
+- **法律持有限制（legal holding restriction）** 继承 **证券限制（securities restriction）**
+- **合格投资者限制（qualified investor restriction）** 继承 **法律持有限制（legal holding restriction）**
+- **证券法规（securities regulation）** 继承 **规章（Regulation）**
+- **证券限制（securities restriction）** 继承 **法律义务（LegalObligation）**
+- **交易限制（trading restriction）** 继承 **证券限制（securities restriction）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -28,41 +41,140 @@
 | 证券限制（securities restriction） | 依法律或合同规定、适用于金融工具或挂牌的法定义务。 |
 | 交易限制（trading restriction） | 以某种方式限制交易的限制，通常概述于条款清单或其他文件中，包括但不限于转让限制。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 合同限制（contractual restriction） ⊑ 合同承诺
-- 合同限制（contractual restriction） ⊑ 证券限制（securities restriction）
-- 个人投资者（individual investor） ⊑ 投资者
-- 机构投资者（institutional investor） ⊑ 投资者
-- 投资者住所地限制（investors' domicile restriction） ⊑ 法律持有限制（legal holding restriction）
-- 法律持有限制（legal holding restriction） ⊑ 证券限制（securities restriction）
-- 合格投资者限制（qualified investor restriction） ⊑ 法律持有限制（legal holding restriction）
-- 证券法规（securities regulation） ⊑ 规章
-- 证券限制（securities restriction） ⊑ 法律义务
-- 交易限制（trading restriction） ⊑ 证券限制（securities restriction）
+### 2.1 个人投资者（individual investor）
 
-## 3. 对象属性（Object Property）
+定义：作为自然人（而非组织）的投资者，从法律角度看可能是也可能不是合格投资者。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-sec-rst:hasHoldingPeriod | 具有持有期（has holding period） | 标识适用于某一金融资产的持有期。 | 值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-sec-sec-rst:hasRestriction | 具有限制（has restriction） | 标识适用于给定金融工具或挂牌的限制。 | 值域（range）：证券限制（securities restriction）；子属性（subPropertyOf）：规定 |
+- 父类：**投资者（Investor）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
 
-- **合同限制（contractual restriction）**：**由……授权要求（isMandatedBy）**的所有取值只能是**合同（Contract）**。
-- **个人投资者（individual investor）**：**由…扮演（is played by）**的所有取值只能是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **机构投资者（institutional investor）**：**由…扮演（is played by）**的所有取值只能是**法律实体（LegalEntity）**。
-- **机构投资者（institutional investor）**与**个人投资者（individual investor）**互斥：同一个体不能同时属于两者。
-- **合格投资者限制（qualified investor restriction）**：**具有持有期（has holding period）**的所有取值只能是**日期区间（DatePeriod）**。
-- **证券法规（securities regulation）**：**定义（defines）**的所有取值只能是**证券限制（securities restriction）**。
-- **证券法规（securities regulation）**：**由……授予（isConferredBy）**至少有一个取值，类型是**成文法（StatuteLaw）**。
-- **证券限制（securities restriction）**：**适用于（appliesTo）**的所有取值只能是**Nc51f1f30dc334cebbf7f30376f1056f5**。
-- **证券限制（securities restriction）**：**由……授权要求（isMandatedBy）**的所有取值只能是**N5bd7f5e06d7d409ab3381c615a20282c**。
+公理：
 
-## 6. 依赖（owl:imports，16 个）
+- **由…扮演（is played by）**的所有取值只能是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+
+### 2.2 机构投资者（institutional investor）
+
+定义：汇集资金购买证券、不动产和其他投资资产或发放贷款的投资者。
+
+- 父类：**投资者（Investor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**的所有取值只能是**法律实体（LegalEntity）**。
+- 与**个人投资者（individual investor）**互斥：同一个体不能同时属于两者。
+
+### 2.3 证券法规（securities regulation）
+
+定义：在法律中成文化、专门针对证券和投资的法规。
+
+- 父类：**规章（Regulation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授予（isConferredBy）** | — | — |
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**的所有取值只能是**证券限制（securities restriction）**。
+- **由……授予（isConferredBy）**至少有一个取值，类型是**成文法（StatuteLaw）**。
+
+### 2.4 证券限制（securities restriction）
+
+定义：依法律或合同规定、适用于金融工具或挂牌的法定义务。
+
+- 父类：**法律义务（LegalObligation）**
+- 直接子类：**合同限制（contractual restriction）**、**法律持有限制（legal holding restriction）**、**交易限制（trading restriction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授权要求（isMandatedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **由……授权要求（isMandatedBy）**的所有取值只能是**N28f6db5cbeb44f8881a5d2412ffa75a8**。
+- **适用于（appliesTo）**的所有取值只能是**Na05719a737b84a47a32bc6bc99d46064**。
+
+#### 2.4.1 合同限制（contractual restriction）
+
+定义：在工具本身条款中规定、对证券持有人或发行人施加限制的合同条款。
+
+- 父类：**合同承诺（ContractualCommitment）**、**证券限制（securities restriction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授权要求（isMandatedBy）** | — | — |
+
+公理：
+
+- **由……授权要求（isMandatedBy）**的所有取值只能是**合同（Contract）**。
+
+#### 2.4.2 法律持有限制（legal holding restriction）
+
+定义：适用于持有证券的证券限制。
+
+- 父类：**证券限制（securities restriction）**
+- 直接子类：**投资者住所地限制（investors' domicile restriction）**、**合格投资者限制（qualified investor restriction）**
+
+##### 2.4.2.1 投资者住所地限制（investors' domicile restriction）
+
+定义：规定证券持有人住所地要求的法律持有限制。
+
+- 父类：**法律持有限制（legal holding restriction）**
+
+##### 2.4.2.2 合格投资者限制（qualified investor restriction）
+
+定义：为特定目的定义合格投资者概念、并规定仅合格投资者可持有该证券的法律持有限制。
+
+- 父类：**法律持有限制（legal holding restriction）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有持有期（has holding period）** | 标识适用于某一金融资产的持有期。 | 值域：日期区间；子属性：具有日期区间 |
+
+公理：
+
+- **具有持有期（has holding period）**的所有取值只能是**日期区间（DatePeriod）**。
+
+#### 2.4.3 交易限制（trading restriction）
+
+定义：以某种方式限制交易的限制，通常概述于条款清单或其他文件中，包括但不限于转让限制。
+
+- 父类：**证券限制（securities restriction）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有限制（has restriction）** | 标识适用于给定金融工具或挂牌的限制。 | 值域：证券限制（securities restriction）；子属性：规定 |
+
+## 4. 依赖（owl:imports，16 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -85,7 +197,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`SecuritiesRestrictions.rdf`
 - 中文 Turtle：`SecuritiesRestrictions.ttl`

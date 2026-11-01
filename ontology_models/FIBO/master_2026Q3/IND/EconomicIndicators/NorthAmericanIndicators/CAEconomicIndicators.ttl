@@ -71,12 +71,12 @@ fibo-ind-ei-caei:CanadianConsumerPriceIndex a owl:Class ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom fibo-ind-ei-caei:CanadianHouseholdsConsumersUniverse ],
         [ a owl:Restriction ;
+            owl:hasValue fibo-ind-ei-caei:CanadianStatisticsPublisher ;
+            owl:onProperty fibo-be-fct-pub:hasPublisher ],
+        [ a owl:Restriction ;
             owl:onClass fibo-ind-ei-caei:CanadianHouseholdsConsumersUniverse ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-ind-ei-caei:CanadianStatisticsPublisher ;
-            owl:onProperty fibo-be-fct-pub:hasPublisher ],
         [ a owl:Restriction ;
             owl:hasValue fibo-ind-ei-caei:StatisticsCanada ;
             owl:onProperty fibo-be-fct-pub:isPublishedBy ],
@@ -94,15 +94,15 @@ fibo-ind-ei-caei:CanadianProducerPriceIndex a owl:Class ;
         "加拿大生产者价格指数（Canadian producer price index）"@zh ;
     rdfs:comment "表示国内生产者固定篮子货物与服务价格随时间变化之度量的经济指标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-ind-ei-caei:CanadianStatisticsPublisher ;
-            owl:onProperty fibo-be-fct-pub:hasPublisher ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-ind-ei-caei:StatisticsCanada ;
             owl:onProperty fibo-be-fct-pub:isPublishedBy ],
         [ a owl:Restriction ;
             owl:onProperty cmns-cxtdsg:appliesTo ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-ind-ei-caei:IndustrialProductsSector fibo-ind-ei-caei:NewHousingSector fibo-ind-ei-caei:RawMaterialsSector ) ] ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-ind-ei-caei:CanadianStatisticsPublisher ;
+            owl:onProperty fibo-be-fct-pub:hasPublisher ],
         fibo-ind-ei-ei:ProducerPriceIndex ;
     skos:definition "an economic indicator representing a measure of the change over time in the prices of a fixed-basket of domestic producer goods and services" ;
     cmns-av:adaptedFrom "http://www23.statcan.gc.ca/imdb-bmdi/pub/indexth-eng.htm"^^xsd:anyURI ;

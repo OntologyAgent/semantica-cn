@@ -62,12 +62,12 @@ fibo-fbc-fi-stl:CashSettlementTerms a owl:Class ;
         "现金结算条款（cash settlement terms）"@zh ;
     rdfs:comment "以现金方式结算的合同承诺。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fi-stl:DeliveryInCash ;
+            owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fbc-fi-ip:SecurityPrice ;
             owl:onProperty fibo-fnd-acc-cur:hasPrice ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fi-stl:DeliveryInCash ;
-            owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-stl:hasSettlementAmount ;
             owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount ],
@@ -104,13 +104,13 @@ fibo-fbc-fi-stl:SettlementEvent a owl:Class ;
         "结算事件（settlement event）"@zh ;
     rdfs:comment "完成交易或其一部分的具体事件，包括但不限于完成账务处理、交换对价等。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fbc-fi-ip:SecurityPrice ;
-            owl:onProperty fibo-fnd-acc-cur:hasPrice ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fi-stl:Settlement ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fbc-fi-ip:SecurityPrice ;
+            owl:onProperty fibo-fnd-acc-cur:hasPrice ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-arr-asmt:ValueAssessment ;
@@ -204,11 +204,11 @@ fibo-fbc-fi-stl:DeliveryMethod a owl:Class,
 
 fibo-fbc-pas-fpas:SettlementTerms a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fbc-fi-stl:Settlement ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-stl:hasDeliveryMethod ;
             owl:someValuesFrom fibo-fbc-fi-stl:DeliveryMethod ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-fi-stl:Settlement ],
         [ a owl:Restriction ;
             owl:onProperty cmns-doc:specifies ;
             owl:someValuesFrom fibo-fbc-fi-stl:SettlementConvention ] .

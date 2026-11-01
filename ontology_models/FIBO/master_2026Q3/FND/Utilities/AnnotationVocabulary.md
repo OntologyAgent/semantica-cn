@@ -8,6 +8,11 @@
 
 本词汇表提供一组用于描述 FIBO 本体元素的元数据标注，扩展了 Commons 标注词汇表、Dublin Core 和 SKOS 中的属性，并针对 FIBO 规范开发流程做了定制。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **成熟度级别（maturity level）** 继承 **分类符（Classifier）**
+- **模块（module）** 继承 **分类符（Classifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -15,12 +20,21 @@
 | 成熟度级别（maturity level） | 用于指示工件在开发生命周期中所处状态的分类器。 |
 | 模块（module） | 基于模型驱动架构方法论的原则对某物进行模块化划分的类别。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 成熟度级别（maturity level） ⊑ 分类符
-- 模块（module） ⊑ 分类符
+### 2.1 成熟度级别（maturity level）
 
-## 6. 依赖（owl:imports，2 个）
+定义：用于指示工件在开发生命周期中所处状态的分类器。
+
+- 父类：**分类符（Classifier）**
+
+### 2.2 模块（module）
+
+定义：基于模型驱动架构方法论的原则对某物进行模块化划分的类别。
+
+- 父类：**分类符（Classifier）**
+
+## 3. 依赖（owl:imports，2 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -29,7 +43,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/Classifiers/` | OMG 通用分类器本体（OMG Commons Classifiers） | OMG 通用本体库（Commons）中的分类器本体，定义分类方案、类别与归类关系的通用概念，FIBO 的分类建模建立在其上。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`AnnotationVocabulary.rdf`
 - 中文 Turtle：`AnnotationVocabulary.ttl`

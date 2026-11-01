@@ -92,12 +92,12 @@ fibo-fnd-gao-obj:Study a owl:Class ;
     rdfs:comment "调查特定关注领域以确定其特性、关系、约束或影响的分析活动。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-cxtdsg:Context ;
-            owl:onProperty cmns-cxtdsg:isApplicableIn ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-gao-obj:Goal ;
             owl:onProperty fibo-fnd-gao-obj:hasGoal ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-cxtdsg:Context ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
         cmns-pts:Situation ;
     skos:definition "analytical activity that investigates a specified area of interest, to determine its characteristics, relationships, constraints, or implications" ;
     cmns-av:explanatoryNote "Studies involve exploration, analysis, sometimes modeling, and sometimes evaluation, but are not necessarily focused on evaluation and may or may not be criteria-based, which distinguishes it from the concept of an assessment. In a business context, a study might map capabilities, analyze value streams, or model information flows. Only some studies produce an assessment (e.g., capability maturity assessment). A clinical research study may observe, test, or model phenomena, and may or may not result in a clinical or risk assessment. A study conducted as part of a project or larger programme may explore feasibility, options, impacts, or requirements."@en .
@@ -254,12 +254,9 @@ fibo-fnd-gao-obj:Program a owl:Class ;
         "项目群（Program）"@zh ;
     rdfs:comment "为获得单独管理所无法获得的收益而设计的事务状态与协调活动集。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:hasDescription ;
-            owl:someValuesFrom xsd:string ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-gao-obj:ProgramName ;
-            owl:onProperty cmns-dsg:hasName ],
+            owl:onClass fibo-fnd-gao-obj:Project ;
+            owl:onProperty cmns-col:hasMember ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-gao-obj:Goal ;
@@ -270,8 +267,11 @@ fibo-fnd-gao-obj:Program a owl:Class ;
             owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-gao-obj:Project ;
-            owl:onProperty cmns-col:hasMember ],
+            owl:onClass fibo-fnd-gao-obj:ProgramName ;
+            owl:onProperty cmns-dsg:hasName ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-dsg:hasDescription ;
+            owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-gao-obj:Objective ;
@@ -285,26 +285,12 @@ fibo-fnd-gao-obj:Project a owl:Class ;
         "项目（project）"@zh ;
     rdfs:comment "为交付有形产出而设计的事务状态及独特而临时的组织。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty fibo-fnd-dt-oc:hasInput ],
-        [ a owl:Restriction ;
-            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty fibo-fnd-dt-oc:hasOutput ],
+            owl:onProperty cmns-dsg:hasDescription ;
+            owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-gao-obj:Program ;
             owl:onProperty cmns-col:isMemberOf ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-gao-obj:ProjectIdentifier ;
-            owl:onProperty cmns-id:isIdentifiedBy ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-gao-obj:Goal ;
-            owl:onProperty fibo-fnd-gao-obj:hasGoal ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-dsg:hasDescription ;
-            owl:someValuesFrom xsd:string ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-gao-obj:ProjectName ;
@@ -313,6 +299,20 @@ fibo-fnd-gao-obj:Project a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-gao-obj:Objective ;
             owl:onProperty fibo-fnd-gao-obj:hasObjective ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-gao-obj:Goal ;
+            owl:onProperty fibo-fnd-gao-obj:hasGoal ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-dt-oc:hasOutput ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-gao-obj:ProjectIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty fibo-fnd-dt-oc:hasInput ],
         cmns-pts:Situation ;
     skos:definition "state of affairs and unique and temporary organization, designed to deliver a tangible output" ;
     cmns-av:adaptedFrom "https://www.prince2.com/usa/blog/project-vs-programme"^^xsd:anyURI ;

@@ -98,10 +98,10 @@ fibo-fbc-fct-usfse:ForeignBankingOrganization a owl:Class ;
 
 fibo-fbc-fct-usfse:ForeignBankingOrganizationAsABankHoldingCompany a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FHF ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FBH ;
             owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FBH ;
+            owl:hasValue fibo-fbc-fct-usnic:NICEntityTypeClassifier-FHF ;
             owl:onProperty cmns-cls:isClassifiedBy ] .
 
 fibo-fbc-fct-usfse:ForeignBranchOfForeignBankManagedByUSOffice a owl:Class ;
@@ -515,10 +515,10 @@ fibo-fbc-fct-usnic:NationalInformationCenterControlledVocabulary a owl:Class ;
     rdfs:isDefinedBy "https://www.ffiec.gov/nicpubweb/Content/DataDownload/NPW%20Data%20Dictionary.pdf"^^xsd:anyURI ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usnic:NationalInformationCenterClassificationSchemeAndCodeSet ;
-            owl:onProperty cmns-dsg:isDefinedIn ],
+            owl:onProperty cmns-col:isMemberOf ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usnic:NationalInformationCenterClassificationSchemeAndCodeSet ;
-            owl:onProperty cmns-col:isMemberOf ],
+            owl:onProperty cmns-dsg:isDefinedIn ],
         cmns-cls:Classifier,
         cmns-cds:CodeElement ;
     skos:definition "controlled vocabulary that characterizes some feature or aspect of content about a financial service provider managed in the National Information Center (NIC) repository" .

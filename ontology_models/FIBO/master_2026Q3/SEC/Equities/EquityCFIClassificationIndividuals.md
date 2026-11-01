@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：CFI 代码是六位字母的分类编码（如 ESVUFR），区别于标识证券个体的 ISIN；与其他 CFI 分类（债务、衍生品）是平行分支。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）** 继承 **普通股（CommonShare）**
+- **增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）** 继承 **增强表决权股（EnhancedVotingShare）**
+- **增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）** 继承 **缴足股（FullyPaidShare）**
+- **增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）** 继承 **受限股份（RestrictedShare）**
+- **增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）** 继承 **注册证券（RegisteredSecurity）**
+- **增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）** 继承 **普通股（CommonShare）**
+- **增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）** 继承 **增强表决权股（EnhancedVotingShare）**
+- **增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）** 继承 **未缴股款股份（NilPaidShare）**
+- **增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）** 继承 **受限股份（RestrictedShare）**
+- **增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）** 继承 **注册证券（RegisteredSecurity）**
+- **增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare）** 继承 **普通股（CommonShare）**
+- **增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare）** 继承 **增强表决权股（EnhancedVotingShare）**
+- 其余 1104 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -239,1295 +255,2129 @@
 | 单一表决权、可赎回、普通收益优先股（PreferredVotingRedeemableNormalIncomeRegisteredShare） | 优先股：每股享有一票表决权；发行人或股东可选择赎回；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。 |
 | 单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare） | 优先股：每股享有一票表决权；发行人或股东可选择赎回；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare） ⊑ 普通股
-- 增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare） ⊑ 缴足股
-- 增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare） ⊑ 受限股份
-- 增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare） ⊑ 注册证券
-- 增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare） ⊑ 普通股
-- 增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare） ⊑ 未缴股款股份
-- 增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare） ⊑ 受限股份
-- 增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare） ⊑ 注册证券
-- 增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 普通股
-- 增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 部分缴足股
-- 增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 受限股份
-- 增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 注册证券
-- 增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 普通股
-- 增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 缴足股
-- 增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 非受限股份
-- 增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 注册证券
-- 增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 普通股
-- 增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 未缴股款股份
-- 增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 非受限股份
-- 增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 注册证券
-- 增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 普通股
-- 增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 部分缴足股
-- 增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 非受限股份
-- 增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 注册证券
-- 无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare） ⊑ 普通股
-- 无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare） ⊑ 缴足股
-- 无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare） ⊑ 无表决权股
-- 无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare） ⊑ 受限股份
-- 无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare） ⊑ 注册证券
-- 无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare） ⊑ 普通股
-- 无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare） ⊑ 未缴股款股份
-- 无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare） ⊑ 无表决权股
-- 无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare） ⊑ 受限股份
-- 无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare） ⊑ 注册证券
-- 无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 普通股
-- 无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 无表决权股
-- 无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 部分缴足股
-- 无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 受限股份
-- 无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 注册证券
-- 无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 普通股
-- 无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 缴足股
-- 无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 无表决权股
-- 无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 非受限股份
-- 无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 注册证券
-- 无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 普通股
-- 无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 未缴股款股份
-- 无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 无表决权股
-- 无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 非受限股份
-- 无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 注册证券
-- 无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 普通股
-- 无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 无表决权股
-- 无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 部分缴足股
-- 无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 非受限股份
-- 无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 注册证券
-- 受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare） ⊑ 普通股
-- 受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare） ⊑ 缴足股
-- 受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare） ⊑ 受限股份
-- 受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare） ⊑ 注册证券
-- 受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare） ⊑ 普通股
-- 受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare） ⊑ 未缴股款股份
-- 受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare） ⊑ 受限股份
-- 受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare） ⊑ 注册证券
-- 受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 普通股
-- 受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 部分缴足股
-- 受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 受限股份
-- 受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare） ⊑ 注册证券
-- 受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 普通股
-- 受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 缴足股
-- 受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 非受限股份
-- 受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 注册证券
-- 受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 普通股
-- 受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 未缴股款股份
-- 受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 非受限股份
-- 受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare） ⊑ 注册证券
-- 受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 普通股
-- 受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 部分缴足股
-- 受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 非受限股份
-- 受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 注册证券
-- 单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare） ⊑ 普通股
-- 单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare） ⊑ 缴足股
-- 单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare） ⊑ 受限股份
-- 单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare） ⊑ 注册证券
-- 单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare） ⊑ 普通股
-- 单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare） ⊑ 未缴股款股份
-- 单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare） ⊑ 受限股份
-- 单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare） ⊑ 注册证券
-- 单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 普通股
-- 单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 部分缴足股
-- 单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 受限股份
-- 单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare） ⊑ 注册证券
-- 单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 普通股
-- 单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 缴足股
-- 单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 非受限股份
-- 单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare） ⊑ 注册证券
-- 单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 普通股
-- 单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 未缴股款股份
-- 单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 非受限股份
-- 单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare） ⊑ 注册证券
-- 单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 普通股
-- 单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 部分缴足股
-- 单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 非受限股份
-- 单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare） ⊑ 注册证券
-- 增强表决权、可交换、可调整收益优先股（PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可交换、可调整收益优先股（PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可交换、可调整收益优先股（PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 增强表决权、可交换、可调整收益优先股（PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可交换、拍卖利率收益优先股（PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可交换、拍卖利率收益优先股（PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可交换、拍卖利率收益优先股（PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 增强表决权、可交换、拍卖利率收益优先股（PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可交换、累积参与优先股（PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可交换、累积参与优先股（PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可交换、累积参与优先股（PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可交换、累积参与优先股（PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可交换、累积参与优先股（PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可交换、累积参与优先股（PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可交换、累积优先股（PreferredEnhancedVotingExchangeableCumulativeRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可交换、累积优先股（PreferredEnhancedVotingExchangeableCumulativeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可交换、累积优先股（PreferredEnhancedVotingExchangeableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可交换、累积优先股（PreferredEnhancedVotingExchangeableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可交换、累积优先股（PreferredEnhancedVotingExchangeableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可交换、累积优先股（PreferredEnhancedVotingExchangeableCumulativeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可交换、固定收益优先股（PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可交换、固定收益优先股（PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可交换、固定收益优先股（PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可交换、固定收益优先股（PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可交换、固定收益优先股（PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可交换、固定收益优先股（PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可交换、普通收益优先股（PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可交换、普通收益优先股（PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可交换、普通收益优先股（PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可交换、普通收益优先股（PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可交换、参与优先股（PreferredEnhancedVotingExchangeableParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可交换、参与优先股（PreferredEnhancedVotingExchangeableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可交换、参与优先股（PreferredEnhancedVotingExchangeableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可交换、参与优先股（PreferredEnhancedVotingExchangeableParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可交换、参与优先股（PreferredEnhancedVotingExchangeableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可交换、参与优先股（PreferredEnhancedVotingExchangeableParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可展期、可调整收益优先股（PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可展期、可调整收益优先股（PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可展期、可调整收益优先股（PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 增强表决权、可展期、可调整收益优先股（PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可展期、拍卖利率收益优先股（PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可展期、拍卖利率收益优先股（PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可展期、拍卖利率收益优先股（PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 增强表决权、可展期、拍卖利率收益优先股（PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可展期、普通收益优先股（PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可展期、普通收益优先股（PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可展期、普通收益优先股（PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可展期、普通收益优先股（PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、永续、可调整收益优先股（PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、永续、可调整收益优先股（PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 永续优先股
-- 增强表决权、永续、可调整收益优先股（PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 增强表决权、永续、可调整收益优先股（PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、永续、拍卖利率收益优先股（PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、永续、拍卖利率收益优先股（PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 永续优先股
-- 增强表决权、永续、拍卖利率收益优先股（PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 增强表决权、永续、拍卖利率收益优先股（PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、永续、累积参与优先股（PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 增强表决权、永续、累积参与优先股（PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、永续、累积参与优先股（PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、永续、累积参与优先股（PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 永续优先股
-- 增强表决权、永续、累积参与优先股（PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、永续、累积参与优先股（PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、永续、累积优先股（PreferredEnhancedVotingPerpetualCumulativeRegisteredShare） ⊑ 累积优先股
-- 增强表决权、永续、累积优先股（PreferredEnhancedVotingPerpetualCumulativeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、永续、累积优先股（PreferredEnhancedVotingPerpetualCumulativeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、永续、累积优先股（PreferredEnhancedVotingPerpetualCumulativeRegisteredShare） ⊑ 永续优先股
-- 增强表决权、永续、累积优先股（PreferredEnhancedVotingPerpetualCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、永续、累积优先股（PreferredEnhancedVotingPerpetualCumulativeRegisteredShare） ⊑ 注册证券
-- 增强表决权、永续、固定收益优先股（PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、永续、固定收益优先股（PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、永续、固定收益优先股（PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、永续、固定收益优先股（PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 永续优先股
-- 增强表决权、永续、固定收益优先股（PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、永续、固定收益优先股（PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、永续、普通收益优先股（PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、永续、普通收益优先股（PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、永续、普通收益优先股（PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare） ⊑ 永续优先股
-- 增强表决权、永续、普通收益优先股（PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、永续、参与优先股（PreferredEnhancedVotingPerpetualParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、永续、参与优先股（PreferredEnhancedVotingPerpetualParticipatingRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、永续、参与优先股（PreferredEnhancedVotingPerpetualParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、永续、参与优先股（PreferredEnhancedVotingPerpetualParticipatingRegisteredShare） ⊑ 永续优先股
-- 增强表决权、永续、参与优先股（PreferredEnhancedVotingPerpetualParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、永续、参与优先股（PreferredEnhancedVotingPerpetualParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可调整收益优先股（PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可调整收益优先股（PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 增强表决权、可赎回、可调整收益优先股（PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 增强表决权、可赎回、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 增强表决权、可赎回、可交换、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 增强表决权、可赎回、可交换、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 增强表决权、可赎回、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 增强表决权、可赎回、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、普通收益优先股（PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、普通收益优先股（PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare） ⊑ 增强表决权股
-- 增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare） ⊑ 参与优先股
-- 增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可交换、可调整收益优先股（PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可交换、可调整收益优先股（PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可交换、可调整收益优先股（PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 无表决权、可交换、可调整收益优先股（PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可交换、拍卖利率收益优先股（PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可交换、拍卖利率收益优先股（PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可交换、拍卖利率收益优先股（PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 无表决权、可交换、拍卖利率收益优先股（PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可交换、累积参与优先股（PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 无表决权、可交换、累积参与优先股（PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可交换、累积参与优先股（PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可交换、累积参与优先股（PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可交换、累积参与优先股（PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可交换、累积参与优先股（PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可交换、累积优先股（PreferredNonVotingExchangeableCumulativeRegisteredShare） ⊑ 累积优先股
-- 无表决权、可交换、累积优先股（PreferredNonVotingExchangeableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可交换、累积优先股（PreferredNonVotingExchangeableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可交换、累积优先股（PreferredNonVotingExchangeableCumulativeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可交换、累积优先股（PreferredNonVotingExchangeableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可交换、累积优先股（PreferredNonVotingExchangeableCumulativeRegisteredShare） ⊑ 注册证券
-- 无表决权、可交换、固定收益优先股（PreferredNonVotingExchangeableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可交换、固定收益优先股（PreferredNonVotingExchangeableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可交换、固定收益优先股（PreferredNonVotingExchangeableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可交换、固定收益优先股（PreferredNonVotingExchangeableFixedIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可交换、固定收益优先股（PreferredNonVotingExchangeableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可交换、固定收益优先股（PreferredNonVotingExchangeableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可交换、普通收益优先股（PreferredNonVotingExchangeableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可交换、普通收益优先股（PreferredNonVotingExchangeableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可交换、普通收益优先股（PreferredNonVotingExchangeableNormalIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可交换、普通收益优先股（PreferredNonVotingExchangeableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可交换、参与优先股（PreferredNonVotingExchangeableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可交换、参与优先股（PreferredNonVotingExchangeableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可交换、参与优先股（PreferredNonVotingExchangeableParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可交换、参与优先股（PreferredNonVotingExchangeableParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可交换、参与优先股（PreferredNonVotingExchangeableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可交换、参与优先股（PreferredNonVotingExchangeableParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可展期、可调整收益优先股（PreferredNonVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可展期、可调整收益优先股（PreferredNonVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可展期、可调整收益优先股（PreferredNonVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 无表决权、可展期、可调整收益优先股（PreferredNonVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可展期、拍卖利率收益优先股（PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可展期、拍卖利率收益优先股（PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可展期、拍卖利率收益优先股（PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 无表决权、可展期、拍卖利率收益优先股（PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可展期、普通收益优先股（PreferredNonVotingExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可展期、普通收益优先股（PreferredNonVotingExtendableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可展期、普通收益优先股（PreferredNonVotingExtendableNormalIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可展期、普通收益优先股（PreferredNonVotingExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、永续、可调整收益优先股（PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、永续、可调整收益优先股（PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 永续优先股
-- 无表决权、永续、可调整收益优先股（PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 无表决权、永续、可调整收益优先股（PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、永续、拍卖利率收益优先股（PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、永续、拍卖利率收益优先股（PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 永续优先股
-- 无表决权、永续、拍卖利率收益优先股（PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 无表决权、永续、拍卖利率收益优先股（PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、永续、累积参与优先股（PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 无表决权、永续、累积参与优先股（PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、永续、累积参与优先股（PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、永续、累积参与优先股（PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 永续优先股
-- 无表决权、永续、累积参与优先股（PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、永续、累积参与优先股（PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、永续、累积优先股（PreferredNonVotingPerpetualCumulativeRegisteredShare） ⊑ 累积优先股
-- 无表决权、永续、累积优先股（PreferredNonVotingPerpetualCumulativeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、永续、累积优先股（PreferredNonVotingPerpetualCumulativeRegisteredShare） ⊑ 无表决权股
-- 无表决权、永续、累积优先股（PreferredNonVotingPerpetualCumulativeRegisteredShare） ⊑ 永续优先股
-- 无表决权、永续、累积优先股（PreferredNonVotingPerpetualCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、永续、累积优先股（PreferredNonVotingPerpetualCumulativeRegisteredShare） ⊑ 注册证券
-- 无表决权、永续、固定收益优先股（PreferredNonVotingPerpetualFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、永续、固定收益优先股（PreferredNonVotingPerpetualFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、永续、固定收益优先股（PreferredNonVotingPerpetualFixedIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、永续、固定收益优先股（PreferredNonVotingPerpetualFixedIncomeRegisteredShare） ⊑ 永续优先股
-- 无表决权、永续、固定收益优先股（PreferredNonVotingPerpetualFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、永续、固定收益优先股（PreferredNonVotingPerpetualFixedIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、永续、普通收益优先股（PreferredNonVotingPerpetualNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、永续、普通收益优先股（PreferredNonVotingPerpetualNormalIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、永续、普通收益优先股（PreferredNonVotingPerpetualNormalIncomeRegisteredShare） ⊑ 永续优先股
-- 无表决权、永续、普通收益优先股（PreferredNonVotingPerpetualNormalIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、永续、参与优先股（PreferredNonVotingPerpetualParticipatingRegisteredShare） ⊑ 非累积优先股
-- 无表决权、永续、参与优先股（PreferredNonVotingPerpetualParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、永续、参与优先股（PreferredNonVotingPerpetualParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、永续、参与优先股（PreferredNonVotingPerpetualParticipatingRegisteredShare） ⊑ 永续优先股
-- 无表决权、永续、参与优先股（PreferredNonVotingPerpetualParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、永续、参与优先股（PreferredNonVotingPerpetualParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可调整收益优先股（PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可调整收益优先股（PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 无表决权、可赎回、可调整收益优先股（PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、拍卖利率收益优先股（PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、拍卖利率收益优先股（PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 无表决权、可赎回、拍卖利率收益优先股（PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare） ⊑ 累积优先股
-- 无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、可调整收益优先股（PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、可调整收益优先股（PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、可调整收益优先股（PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 无表决权、可赎回、可交换、可调整收益优先股（PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 无表决权、可赎回、可交换、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 累积优先股
-- 无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、普通收益优先股（PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、普通收益优先股（PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、普通收益优先股（PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可展期、可调整收益优先股（PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可展期、可调整收益优先股（PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可展期、可调整收益优先股（PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 无表决权、可赎回、可展期、可调整收益优先股（PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 无表决权、可赎回、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可展期、普通收益优先股（PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可展期、普通收益优先股（PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可展期、普通收益优先股（PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、普通收益优先股（PreferredNonVotingRedeemableNormalIncomeRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、普通收益优先股（PreferredNonVotingRedeemableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare） ⊑ 无表决权股
-- 无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare） ⊑ 参与优先股
-- 无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可交换、可调整收益优先股（PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可交换、可调整收益优先股（PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 受限表决权、可交换、可调整收益优先股（PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可交换、可调整收益优先股（PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可交换、拍卖利率收益优先股（PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可交换、拍卖利率收益优先股（PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 受限表决权、可交换、拍卖利率收益优先股（PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可交换、拍卖利率收益优先股（PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可交换、累积参与优先股（PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可交换、累积参与优先股（PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可交换、累积参与优先股（PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可交换、累积参与优先股（PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可交换、累积参与优先股（PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可交换、累积参与优先股（PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可交换、累积优先股（PreferredRestrictedVotingExchangeableCumulativeRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可交换、累积优先股（PreferredRestrictedVotingExchangeableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可交换、累积优先股（PreferredRestrictedVotingExchangeableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可交换、累积优先股（PreferredRestrictedVotingExchangeableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可交换、累积优先股（PreferredRestrictedVotingExchangeableCumulativeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可交换、累积优先股（PreferredRestrictedVotingExchangeableCumulativeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可交换、固定收益优先股（PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可交换、固定收益优先股（PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可交换、固定收益优先股（PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可交换、固定收益优先股（PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可交换、固定收益优先股（PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可交换、固定收益优先股（PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可交换、普通收益优先股（PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可交换、普通收益优先股（PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可交换、普通收益优先股（PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可交换、普通收益优先股（PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可交换、参与优先股（PreferredRestrictedVotingExchangeableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可交换、参与优先股（PreferredRestrictedVotingExchangeableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可交换、参与优先股（PreferredRestrictedVotingExchangeableParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可交换、参与优先股（PreferredRestrictedVotingExchangeableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可交换、参与优先股（PreferredRestrictedVotingExchangeableParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可交换、参与优先股（PreferredRestrictedVotingExchangeableParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可展期、可调整收益优先股（PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可展期、可调整收益优先股（PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 受限表决权、可展期、可调整收益优先股（PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可展期、可调整收益优先股（PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可展期、拍卖利率收益优先股（PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可展期、拍卖利率收益优先股（PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 受限表决权、可展期、拍卖利率收益优先股（PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可展期、拍卖利率收益优先股（PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可展期、普通收益优先股（PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可展期、普通收益优先股（PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可展期、普通收益优先股（PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可展期、普通收益优先股（PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、永续、可调整收益优先股（PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 永续优先股
-- 受限表决权、永续、可调整收益优先股（PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 受限表决权、永续、可调整收益优先股（PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、永续、可调整收益优先股（PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、永续、拍卖利率收益优先股（PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 永续优先股
-- 受限表决权、永续、拍卖利率收益优先股（PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 受限表决权、永续、拍卖利率收益优先股（PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、永续、拍卖利率收益优先股（PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、永续、累积参与优先股（PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 受限表决权、永续、累积参与优先股（PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、永续、累积参与优先股（PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 永续优先股
-- 受限表决权、永续、累积参与优先股（PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、永续、累积参与优先股（PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、永续、累积参与优先股（PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、永续、累积优先股（PreferredRestrictedVotingPerpetualCumulativeRegisteredShare） ⊑ 累积优先股
-- 受限表决权、永续、累积优先股（PreferredRestrictedVotingPerpetualCumulativeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、永续、累积优先股（PreferredRestrictedVotingPerpetualCumulativeRegisteredShare） ⊑ 永续优先股
-- 受限表决权、永续、累积优先股（PreferredRestrictedVotingPerpetualCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、永续、累积优先股（PreferredRestrictedVotingPerpetualCumulativeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、永续、累积优先股（PreferredRestrictedVotingPerpetualCumulativeRegisteredShare） ⊑ 注册证券
-- 受限表决权、永续、固定收益优先股（PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、永续、固定收益优先股（PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、永续、固定收益优先股（PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 永续优先股
-- 受限表决权、永续、固定收益优先股（PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、永续、固定收益优先股（PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、永续、固定收益优先股（PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、永续、普通收益优先股（PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、永续、普通收益优先股（PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare） ⊑ 永续优先股
-- 受限表决权、永续、普通收益优先股（PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、永续、普通收益优先股（PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、永续、参与优先股（PreferredRestrictedVotingPerpetualParticipatingRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、永续、参与优先股（PreferredRestrictedVotingPerpetualParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、永续、参与优先股（PreferredRestrictedVotingPerpetualParticipatingRegisteredShare） ⊑ 永续优先股
-- 受限表决权、永续、参与优先股（PreferredRestrictedVotingPerpetualParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、永续、参与优先股（PreferredRestrictedVotingPerpetualParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、永续、参与优先股（PreferredRestrictedVotingPerpetualParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可调整收益优先股（PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 受限表决权、可赎回、可调整收益优先股（PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可调整收益优先股（PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 受限表决权、可赎回、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 受限表决权、可赎回、可交换、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 受限表决权、可赎回、可交换、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 受限表决权、可赎回、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 受限表决权、可赎回、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、普通收益优先股（PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、普通收益优先股（PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare） ⊑ 参与优先股
-- 受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare） ⊑ 受限表决权股
-- 受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可交换、可调整收益优先股（PreferredVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可交换、可调整收益优先股（PreferredVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 单一表决权、可交换、可调整收益优先股（PreferredVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可交换、可调整收益优先股（PreferredVotingExchangeableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可交换、拍卖利率收益优先股（PreferredVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可交换、拍卖利率收益优先股（PreferredVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 单一表决权、可交换、拍卖利率收益优先股（PreferredVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可交换、拍卖利率收益优先股（PreferredVotingExchangeableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可交换、累积参与优先股（PreferredVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可交换、累积参与优先股（PreferredVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可交换、累积参与优先股（PreferredVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可交换、累积参与优先股（PreferredVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可交换、累积参与优先股（PreferredVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可交换、累积参与优先股（PreferredVotingExchangeableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可交换、累积优先股（PreferredVotingExchangeableCumulativeRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可交换、累积优先股（PreferredVotingExchangeableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可交换、累积优先股（PreferredVotingExchangeableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可交换、累积优先股（PreferredVotingExchangeableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可交换、累积优先股（PreferredVotingExchangeableCumulativeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可交换、累积优先股（PreferredVotingExchangeableCumulativeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可交换、固定收益优先股（PreferredVotingExchangeableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可交换、固定收益优先股（PreferredVotingExchangeableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可交换、固定收益优先股（PreferredVotingExchangeableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可交换、固定收益优先股（PreferredVotingExchangeableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可交换、固定收益优先股（PreferredVotingExchangeableFixedIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可交换、固定收益优先股（PreferredVotingExchangeableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可交换、普通收益优先股（PreferredVotingExchangeableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可交换、普通收益优先股（PreferredVotingExchangeableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可交换、普通收益优先股（PreferredVotingExchangeableNormalIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可交换、普通收益优先股（PreferredVotingExchangeableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可交换、参与优先股（PreferredVotingExchangeableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可交换、参与优先股（PreferredVotingExchangeableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可交换、参与优先股（PreferredVotingExchangeableParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可交换、参与优先股（PreferredVotingExchangeableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可交换、参与优先股（PreferredVotingExchangeableParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可交换、参与优先股（PreferredVotingExchangeableParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可展期、可调整收益优先股（PreferredVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可展期、可调整收益优先股（PreferredVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 单一表决权、可展期、可调整收益优先股（PreferredVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可展期、可调整收益优先股（PreferredVotingExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可展期、拍卖利率收益优先股（PreferredVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可展期、拍卖利率收益优先股（PreferredVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 单一表决权、可展期、拍卖利率收益优先股（PreferredVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可展期、拍卖利率收益优先股（PreferredVotingExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可展期、普通收益优先股（PreferredVotingExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可展期、普通收益优先股（PreferredVotingExtendableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可展期、普通收益优先股（PreferredVotingExtendableNormalIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可展期、普通收益优先股（PreferredVotingExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、永续、可调整收益优先股（PreferredVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 永续优先股
-- 单一表决权、永续、可调整收益优先股（PreferredVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 单一表决权、永续、可调整收益优先股（PreferredVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、永续、可调整收益优先股（PreferredVotingPerpetualAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、永续、拍卖利率收益优先股（PreferredVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 永续优先股
-- 单一表决权、永续、拍卖利率收益优先股（PreferredVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 单一表决权、永续、拍卖利率收益优先股（PreferredVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、永续、拍卖利率收益优先股（PreferredVotingPerpetualAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、永续、累积参与优先股（PreferredVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 单一表决权、永续、累积参与优先股（PreferredVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、永续、累积参与优先股（PreferredVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 永续优先股
-- 单一表决权、永续、累积参与优先股（PreferredVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、永续、累积参与优先股（PreferredVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、永续、累积参与优先股（PreferredVotingPerpetualCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、永续、累积优先股（PreferredVotingPerpetualCumulativeRegisteredShare） ⊑ 累积优先股
-- 单一表决权、永续、累积优先股（PreferredVotingPerpetualCumulativeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、永续、累积优先股（PreferredVotingPerpetualCumulativeRegisteredShare） ⊑ 永续优先股
-- 单一表决权、永续、累积优先股（PreferredVotingPerpetualCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、永续、累积优先股（PreferredVotingPerpetualCumulativeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、永续、累积优先股（PreferredVotingPerpetualCumulativeRegisteredShare） ⊑ 注册证券
-- 单一表决权、永续、固定收益优先股（PreferredVotingPerpetualFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、永续、固定收益优先股（PreferredVotingPerpetualFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、永续、固定收益优先股（PreferredVotingPerpetualFixedIncomeRegisteredShare） ⊑ 永续优先股
-- 单一表决权、永续、固定收益优先股（PreferredVotingPerpetualFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、永续、固定收益优先股（PreferredVotingPerpetualFixedIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、永续、固定收益优先股（PreferredVotingPerpetualFixedIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、永续、普通收益优先股（PreferredVotingPerpetualNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、永续、普通收益优先股（PreferredVotingPerpetualNormalIncomeRegisteredShare） ⊑ 永续优先股
-- 单一表决权、永续、普通收益优先股（PreferredVotingPerpetualNormalIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、永续、普通收益优先股（PreferredVotingPerpetualNormalIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、永续、参与优先股（PreferredVotingPerpetualParticipatingRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、永续、参与优先股（PreferredVotingPerpetualParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、永续、参与优先股（PreferredVotingPerpetualParticipatingRegisteredShare） ⊑ 永续优先股
-- 单一表决权、永续、参与优先股（PreferredVotingPerpetualParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、永续、参与优先股（PreferredVotingPerpetualParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、永续、参与优先股（PreferredVotingPerpetualParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可调整收益优先股（PreferredVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 单一表决权、可赎回、可调整收益优先股（PreferredVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可调整收益优先股（PreferredVotingRedeemableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、拍卖利率收益优先股（PreferredVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 单一表决权、可赎回、拍卖利率收益优先股（PreferredVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、拍卖利率收益优先股（PreferredVotingRedeemableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、可调整收益优先股（PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、可调整收益优先股（PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 单一表决权、可赎回、可交换、可调整收益优先股（PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、可调整收益优先股（PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 单一表决权、可赎回、可交换、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、普通收益优先股（PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、普通收益优先股（PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、普通收益优先股（PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 可交换优先股
-- 单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可展期、可调整收益优先股（PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可展期、可调整收益优先股（PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 可调整利率股息优先股
-- 单一表决权、可赎回、可展期、可调整收益优先股（PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可展期、可调整收益优先股（PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 拍卖利率股息优先股
-- 单一表决权、可赎回、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 累积优先股
-- 单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可展期、普通收益优先股（PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可展期、普通收益优先股（PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可展期、普通收益优先股（PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 可展期优先股
-- 单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare） ⊑ 非参与优先股
-- 单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、普通收益优先股（PreferredVotingRedeemableNormalIncomeRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、普通收益优先股（PreferredVotingRedeemableNormalIncomeRegisteredShare） ⊑ 注册证券
-- 单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare） ⊑ 非累积优先股
-- 单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare） ⊑ 参与优先股
-- 单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare） ⊑ 固定利率股息优先股
-- 单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare） ⊑ 单一表决权股
-- 单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare） ⊑ 注册证券
+### 2.1 增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）
 
-## 5. 公理约定（Axioms）
+定义：普通股：每股享有多于一票表决权；出售/转让受限；股款已缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**普通股（CommonShare）**、**增强表决权股（EnhancedVotingShare）**、**缴足股（FullyPaidShare）**、**受限股份（RestrictedShare）**、**注册证券（RegisteredSecurity）**
 
-- **增强表决权、转让受限、缴足普通股（CommonEnhancedVotingRestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESETFR。
-- **增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESETOR。
-- **增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESETPR。
-- **增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESEUFR。
-- **增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESEUOR。
-- **增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESEUPR。
-- **无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNTFR。
-- **无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNTOR。
-- **无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNTPR。
-- **无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNUFR。
-- **无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNUOR。
-- **无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESNUPR。
-- **受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRTFR。
-- **受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRTOR。
-- **受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRTPR。
-- **受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRUFR。
-- **受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRUOR。
-- **受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESRUPR。
-- **单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVTFR。
-- **单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVTOR。
-- **单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVTPR。
-- **单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVUFR。
-- **单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVUOR。
-- **单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare）**：**由……分类（isClassifiedBy）**的取值固定为 ESVUPR。
-- **增强表决权、可展期、可调整收益优先股（PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可展期、拍卖利率收益优先股（PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可展期、普通收益优先股（PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可调整收益优先股（PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、普通收益优先股（PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可展期、可调整收益优先股（PreferredNonVotingExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可展期、拍卖利率收益优先股（PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可展期、普通收益优先股（PreferredNonVotingExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可调整收益优先股（PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、拍卖利率收益优先股（PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、可调整收益优先股（PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、普通收益优先股（PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可展期、可调整收益优先股（PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可展期、普通收益优先股（PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、普通收益优先股（PreferredNonVotingRedeemableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可展期、可调整收益优先股（PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可展期、拍卖利率收益优先股（PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可展期、普通收益优先股（PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可调整收益优先股（PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、普通收益优先股（PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可展期、可调整收益优先股（PreferredVotingExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可展期、拍卖利率收益优先股（PreferredVotingExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可展期、普通收益优先股（PreferredVotingExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可调整收益优先股（PreferredVotingRedeemableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、拍卖利率收益优先股（PreferredVotingRedeemableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、可调整收益优先股（PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、普通收益优先股（PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可展期、可调整收益优先股（PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可展期、普通收益优先股（PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、普通收益优先股（PreferredVotingRedeemableNormalIncomeRegisteredShare）**：该属性存在取值约束。
-- **单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare）**：该属性存在取值约束。
+属性：
 
-## 6. 依赖（owl:imports，9 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESETFR。
+
+### 2.2 增强表决权、转让受限、未缴普通股（CommonEnhancedVotingRestrictedNilPaidRegisteredShare）
+
+定义：普通股：每股享有多于一票表决权；出售/转让受限；股款未缴，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**增强表决权股（EnhancedVotingShare）**、**未缴股款股份（NilPaidShare）**、**受限股份（RestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESETOR。
+
+### 2.3 增强表决权、转让受限、部分缴足普通股（CommonEnhancedVotingRestrictedPartlyPaidRegisteredShare）
+
+定义：普通股：每股享有多于一票表决权；出售/转让受限；股款部分缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**增强表决权股（EnhancedVotingShare）**、**部分缴足股（PartiallyPaidShare）**、**受限股份（RestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESETPR。
+
+### 2.4 增强表决权、转让不受限、缴足普通股（CommonEnhancedVotingUnrestrictedFullyPaidRegisteredShare）
+
+定义：普通股：每股享有多于一票表决权；出售/转让不受限；股款已缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**增强表决权股（EnhancedVotingShare）**、**缴足股（FullyPaidShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESEUFR。
+
+### 2.5 增强表决权、转让不受限、未缴普通股（CommonEnhancedVotingUnrestrictedNilPaidRegisteredShare）
+
+定义：普通股：每股享有多于一票表决权；出售/转让不受限；股款未缴，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**增强表决权股（EnhancedVotingShare）**、**未缴股款股份（NilPaidShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESEUOR。
+
+### 2.6 增强表决权、转让不受限、部分缴足普通股（CommonEnhancedVotingUnrestrictedPartlyPaidRegisteredShare）
+
+定义：普通股：每股享有多于一票表决权；出售/转让不受限；股款部分缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**增强表决权股（EnhancedVotingShare）**、**部分缴足股（PartiallyPaidShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESEUPR。
+
+### 2.7 无表决权、转让受限、缴足普通股（CommonNonVotingRestrictedFullyPaidRegisteredShare）
+
+定义：普通股：每股不享有表决权；出售/转让受限；股款已缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**缴足股（FullyPaidShare）**、**无表决权股（NonVotingShare）**、**受限股份（RestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESNTFR。
+
+### 2.8 无表决权、转让受限、未缴普通股（CommonNonVotingRestrictedNilPaidRegisteredShare）
+
+定义：普通股：每股不享有表决权；出售/转让受限；股款未缴，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**未缴股款股份（NilPaidShare）**、**无表决权股（NonVotingShare）**、**受限股份（RestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESNTOR。
+
+### 2.9 无表决权、转让受限、部分缴足普通股（CommonNonVotingRestrictedPartlyPaidRegisteredShare）
+
+定义：普通股：每股不享有表决权；出售/转让受限；股款部分缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**无表决权股（NonVotingShare）**、**部分缴足股（PartiallyPaidShare）**、**受限股份（RestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESNTPR。
+
+### 2.10 无表决权、转让不受限、缴足普通股（CommonNonVotingUnrestrictedFullyPaidRegisteredShare）
+
+定义：普通股：每股不享有表决权；出售/转让不受限；股款已缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**缴足股（FullyPaidShare）**、**无表决权股（NonVotingShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESNUFR。
+
+### 2.11 无表决权、转让不受限、未缴普通股（CommonNonVotingUnrestrictedNilPaidRegisteredShare）
+
+定义：普通股：每股不享有表决权；出售/转让不受限；股款未缴，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**未缴股款股份（NilPaidShare）**、**无表决权股（NonVotingShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESNUOR。
+
+### 2.12 无表决权、转让不受限、部分缴足普通股（CommonNonVotingUnrestrictedPartlyPaidRegisteredShare）
+
+定义：普通股：每股不享有表决权；出售/转让不受限；股款部分缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**无表决权股（NonVotingShare）**、**部分缴足股（PartiallyPaidShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESNUPR。
+
+### 2.13 受限表决权、转让受限、缴足普通股（CommonRestrictedVotingRestrictedFullyPaidRegisteredShare）
+
+定义：普通股：每股享有不足一票表决权；出售/转让受限；股款已缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**缴足股（FullyPaidShare）**、**受限股份（RestrictedShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESRTFR。
+
+### 2.14 受限表决权、转让受限、未缴普通股（CommonRestrictedVotingRestrictedNilPaidRegisteredShare）
+
+定义：普通股：每股享有不足一票表决权；出售/转让受限；股款未缴，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**未缴股款股份（NilPaidShare）**、**受限股份（RestrictedShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESRTOR。
+
+### 2.15 受限表决权、转让受限、部分缴足普通股（CommonRestrictedVotingRestrictedPartlyPaidRegisteredShare）
+
+定义：普通股：每股享有不足一票表决权；出售/转让受限；股款部分缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**部分缴足股（PartiallyPaidShare）**、**受限股份（RestrictedShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESRTPR。
+
+### 2.16 受限表决权、转让不受限、缴足普通股（CommonRestrictedVotingUnrestrictedFullyPaidRegisteredShare）
+
+定义：普通股：每股享有不足一票表决权；出售/转让不受限；股款已缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**缴足股（FullyPaidShare）**、**受限表决权股（RestrictedVotingShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESRUFR。
+
+### 2.17 受限表决权、转让不受限、未缴普通股（CommonRestrictedVotingUnrestrictedNilPaidRegisteredShare）
+
+定义：普通股：每股享有不足一票表决权；出售/转让不受限；股款未缴，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**未缴股款股份（NilPaidShare）**、**受限表决权股（RestrictedVotingShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESRUOR。
+
+### 2.18 受限表决权、转让不受限、部分缴足普通股（CommonRestrictedVotingUnrestrictedPartlyPaidRegisteredShare）
+
+定义：普通股：每股享有不足一票表决权；出售/转让不受限；股款部分缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**部分缴足股（PartiallyPaidShare）**、**受限表决权股（RestrictedVotingShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESRUPR。
+
+### 2.19 单一表决权、转让受限、缴足普通股（CommonVotingRestrictedFullyPaidRegisteredShare）
+
+定义：普通股：每股享有一票表决权；出售/转让受限；股款已缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**缴足股（FullyPaidShare）**、**受限股份（RestrictedShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESVTFR。
+
+### 2.20 单一表决权、转让受限、未缴普通股（CommonVotingRestrictedNilPaidRegisteredShare）
+
+定义：普通股：每股享有一票表决权；出售/转让受限；股款未缴，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**未缴股款股份（NilPaidShare）**、**受限股份（RestrictedShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESVTOR。
+
+### 2.21 单一表决权、转让受限、部分缴足普通股（CommonVotingRestrictedPartlyPaidRegisteredShare）
+
+定义：普通股：每股享有一票表决权；出售/转让受限；股款部分缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**部分缴足股（PartiallyPaidShare）**、**受限股份（RestrictedShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESVTPR。
+
+### 2.22 单一表决权、转让不受限、缴足普通股（CommonVotingUnrestrictedFullyPaidRegisteredShare）
+
+定义：普通股：每股享有一票表决权；出售/转让不受限；股款已缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**缴足股（FullyPaidShare）**、**单一表决权股（SingleVotingShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESVUFR。
+
+### 2.23 单一表决权、转让不受限、未缴普通股（CommonVotingUnrestrictedNilPaidRegisteredShare）
+
+定义：普通股：每股享有一票表决权；出售/转让不受限；股款未缴，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**未缴股款股份（NilPaidShare）**、**单一表决权股（SingleVotingShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESVUOR。
+
+### 2.24 单一表决权、转让不受限、部分缴足普通股（CommonVotingUnrestrictedPartlyPaidRegisteredShare）
+
+定义：普通股：每股享有一票表决权；出售/转让不受限；股款部分缴足，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**普通股（CommonShare）**、**部分缴足股（PartiallyPaidShare）**、**单一表决权股（SingleVotingShare）**、**非受限股份（UnrestrictedShare）**、**注册证券（RegisteredSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 ESVUPR。
+
+### 2.25 增强表决权、可交换、可调整收益优先股（PreferredEnhancedVotingExchangeableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；可交换为另一发行人的证券；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.26 增强表决权、可交换、拍卖利率收益优先股（PreferredEnhancedVotingExchangeableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；可交换为另一发行人的证券；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.27 增强表决权、可交换、累积参与优先股（PreferredEnhancedVotingExchangeableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；可交换为另一发行人的证券；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.28 增强表决权、可交换、累积优先股（PreferredEnhancedVotingExchangeableCumulativeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；可交换为另一发行人的证券；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.29 增强表决权、可交换、固定收益优先股（PreferredEnhancedVotingExchangeableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；可交换为另一发行人的证券；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.30 增强表决权、可交换、普通收益优先股（PreferredEnhancedVotingExchangeableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；可交换为另一发行人的证券；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.31 增强表决权、可交换、参与优先股（PreferredEnhancedVotingExchangeableParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；可交换为另一发行人的证券；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.32 增强表决权、可展期、可调整收益优先股（PreferredEnhancedVotingExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.33 增强表决权、可展期、拍卖利率收益优先股（PreferredEnhancedVotingExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.34 增强表决权、可展期、累积参与优先股（PreferredEnhancedVotingExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.35 增强表决权、可展期、累积优先股（PreferredEnhancedVotingExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.36 增强表决权、可展期、固定收益优先股（PreferredEnhancedVotingExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.37 增强表决权、可展期、普通收益优先股（PreferredEnhancedVotingExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.38 增强表决权、可展期、参与优先股（PreferredEnhancedVotingExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.39 增强表决权、永续、可调整收益优先股（PreferredEnhancedVotingPerpetualAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；无固定到期日；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**永续优先股（PerpetualPreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.40 增强表决权、永续、拍卖利率收益优先股（PreferredEnhancedVotingPerpetualAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；无固定到期日；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**永续优先股（PerpetualPreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.41 增强表决权、永续、累积参与优先股（PreferredEnhancedVotingPerpetualCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；无固定到期日；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.42 增强表决权、永续、累积优先股（PreferredEnhancedVotingPerpetualCumulativeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；无固定到期日；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.43 增强表决权、永续、固定收益优先股（PreferredEnhancedVotingPerpetualFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；无固定到期日；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.44 增强表决权、永续、普通收益优先股（PreferredEnhancedVotingPerpetualNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；无固定到期日；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**非累积优先股（NonCumulativePreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.45 增强表决权、永续、参与优先股（PreferredEnhancedVotingPerpetualParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；无固定到期日；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.46 增强表决权、可赎回、可调整收益优先股（PreferredEnhancedVotingRedeemableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.47 增强表决权、可赎回、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.48 增强表决权、可赎回、累积参与优先股（PreferredEnhancedVotingRedeemableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.49 增强表决权、可赎回、累积优先股（PreferredEnhancedVotingRedeemableCumulativeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.50 增强表决权、可赎回、可交换、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.51 增强表决权、可赎回、可交换、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.52 增强表决权、可赎回、可交换、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.53 增强表决权、可赎回、可交换、累积优先股（PreferredEnhancedVotingRedeemableExchangeableCumulativeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.54 增强表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.55 增强表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.56 增强表决权、可赎回、可交换、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.57 增强表决权、可赎回、可交换、可展期、累积优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.58 增强表决权、可赎回、可交换、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.59 增强表决权、可赎回、可交换、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.60 增强表决权、可赎回、可交换、可展期、参与优先股（PreferredEnhancedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.61 增强表决权、可赎回、可交换、固定收益优先股（PreferredEnhancedVotingRedeemableExchangeableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.62 增强表决权、可赎回、可交换、普通收益优先股（PreferredEnhancedVotingRedeemableExchangeableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.63 增强表决权、可赎回、可交换、参与优先股（PreferredEnhancedVotingRedeemableExchangeableParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.64 增强表决权、可赎回、可展期、可调整收益优先股（PreferredEnhancedVotingRedeemableExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.65 增强表决权、可赎回、可展期、拍卖利率收益优先股（PreferredEnhancedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.66 增强表决权、可赎回、可展期、累积参与优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.67 增强表决权、可赎回、可展期、累积优先股（PreferredEnhancedVotingRedeemableExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.68 增强表决权、可赎回、可展期、固定收益优先股（PreferredEnhancedVotingRedeemableExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.69 增强表决权、可赎回、可展期、普通收益优先股（PreferredEnhancedVotingRedeemableExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.70 增强表决权、可赎回、可展期、参与优先股（PreferredEnhancedVotingRedeemableExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.71 增强表决权、可赎回、固定收益优先股（PreferredEnhancedVotingRedeemableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.72 增强表决权、可赎回、普通收益优先股（PreferredEnhancedVotingRedeemableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.73 增强表决权、可赎回、参与优先股（PreferredEnhancedVotingRedeemableParticipatingRegisteredShare）
+
+定义：优先股：每股享有多于一票表决权；发行人或股东可选择赎回；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**增强表决权股（EnhancedVotingShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.74 无表决权、可交换、可调整收益优先股（PreferredNonVotingExchangeableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；可交换为另一发行人的证券；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**无表决权股（NonVotingShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.75 无表决权、可交换、拍卖利率收益优先股（PreferredNonVotingExchangeableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；可交换为另一发行人的证券；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**无表决权股（NonVotingShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.76 无表决权、可交换、累积参与优先股（PreferredNonVotingExchangeableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；可交换为另一发行人的证券；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.77 无表决权、可交换、累积优先股（PreferredNonVotingExchangeableCumulativeRegisteredShare）
+
+定义：优先股：每股不享有表决权；可交换为另一发行人的证券；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.78 无表决权、可交换、固定收益优先股（PreferredNonVotingExchangeableFixedIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；可交换为另一发行人的证券；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.79 无表决权、可交换、普通收益优先股（PreferredNonVotingExchangeableNormalIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；可交换为另一发行人的证券；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.80 无表决权、可交换、参与优先股（PreferredNonVotingExchangeableParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；可交换为另一发行人的证券；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.81 无表决权、可展期、可调整收益优先股（PreferredNonVotingExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.82 无表决权、可展期、拍卖利率收益优先股（PreferredNonVotingExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.83 无表决权、可展期、累积参与优先股（PreferredNonVotingExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.84 无表决权、可展期、累积优先股（PreferredNonVotingExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股不享有表决权；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.85 无表决权、可展期、固定收益优先股（PreferredNonVotingExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.86 无表决权、可展期、普通收益优先股（PreferredNonVotingExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.87 无表决权、可展期、参与优先股（PreferredNonVotingExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.88 无表决权、永续、可调整收益优先股（PreferredNonVotingPerpetualAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；无固定到期日；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**无表决权股（NonVotingShare）**、**永续优先股（PerpetualPreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.89 无表决权、永续、拍卖利率收益优先股（PreferredNonVotingPerpetualAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；无固定到期日；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**无表决权股（NonVotingShare）**、**永续优先股（PerpetualPreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.90 无表决权、永续、累积参与优先股（PreferredNonVotingPerpetualCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；无固定到期日；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.91 无表决权、永续、累积优先股（PreferredNonVotingPerpetualCumulativeRegisteredShare）
+
+定义：优先股：每股不享有表决权；无固定到期日；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.92 无表决权、永续、固定收益优先股（PreferredNonVotingPerpetualFixedIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；无固定到期日；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.93 无表决权、永续、普通收益优先股（PreferredNonVotingPerpetualNormalIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；无固定到期日；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**永续优先股（PerpetualPreferredShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.94 无表决权、永续、参与优先股（PreferredNonVotingPerpetualParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；无固定到期日；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+### 2.95 无表决权、可赎回、可调整收益优先股（PreferredNonVotingRedeemableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**无表决权股（NonVotingShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.96 无表决权、可赎回、拍卖利率收益优先股（PreferredNonVotingRedeemableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**无表决权股（NonVotingShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.97 无表决权、可赎回、累积参与优先股（PreferredNonVotingRedeemableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.98 无表决权、可赎回、累积优先股（PreferredNonVotingRedeemableCumulativeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.99 无表决权、可赎回、可交换、可调整收益优先股（PreferredNonVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**无表决权股（NonVotingShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.100 无表决权、可赎回、可交换、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**无表决权股（NonVotingShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.101 无表决权、可赎回、可交换、累积参与优先股（PreferredNonVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.102 无表决权、可赎回、可交换、累积优先股（PreferredNonVotingRedeemableExchangeableCumulativeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.103 无表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.104 无表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.105 无表决权、可赎回、可交换、可展期、累积参与优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.106 无表决权、可赎回、可交换、可展期、累积优先股（PreferredNonVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.107 无表决权、可赎回、可交换、可展期、固定收益优先股（PreferredNonVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.108 无表决权、可赎回、可交换、可展期、普通收益优先股（PreferredNonVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.109 无表决权、可赎回、可交换、可展期、参与优先股（PreferredNonVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.110 无表决权、可赎回、可交换、固定收益优先股（PreferredNonVotingRedeemableExchangeableFixedIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.111 无表决权、可赎回、可交换、普通收益优先股（PreferredNonVotingRedeemableExchangeableNormalIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**无表决权股（NonVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.112 无表决权、可赎回、可交换、参与优先股（PreferredNonVotingRedeemableExchangeableParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.113 无表决权、可赎回、可展期、可调整收益优先股（PreferredNonVotingRedeemableExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.114 无表决权、可赎回、可展期、拍卖利率收益优先股（PreferredNonVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.115 无表决权、可赎回、可展期、累积参与优先股（PreferredNonVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.116 无表决权、可赎回、可展期、累积优先股（PreferredNonVotingRedeemableExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.117 无表决权、可赎回、可展期、固定收益优先股（PreferredNonVotingRedeemableExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.118 无表决权、可赎回、可展期、普通收益优先股（PreferredNonVotingRedeemableExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**无表决权股（NonVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.119 无表决权、可赎回、可展期、参与优先股（PreferredNonVotingRedeemableExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.120 无表决权、可赎回、固定收益优先股（PreferredNonVotingRedeemableFixedIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**无表决权股（NonVotingShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.121 无表决权、可赎回、普通收益优先股（PreferredNonVotingRedeemableNormalIncomeRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**无表决权股（NonVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.122 无表决权、可赎回、参与优先股（PreferredNonVotingRedeemableParticipatingRegisteredShare）
+
+定义：优先股：每股不享有表决权；发行人或股东可选择赎回；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**无表决权股（NonVotingShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.123 受限表决权、可交换、可调整收益优先股（PreferredRestrictedVotingExchangeableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；可交换为另一发行人的证券；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.124 受限表决权、可交换、拍卖利率收益优先股（PreferredRestrictedVotingExchangeableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；可交换为另一发行人的证券；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.125 受限表决权、可交换、累积参与优先股（PreferredRestrictedVotingExchangeableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；可交换为另一发行人的证券；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.126 受限表决权、可交换、累积优先股（PreferredRestrictedVotingExchangeableCumulativeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；可交换为另一发行人的证券；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.127 受限表决权、可交换、固定收益优先股（PreferredRestrictedVotingExchangeableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；可交换为另一发行人的证券；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.128 受限表决权、可交换、普通收益优先股（PreferredRestrictedVotingExchangeableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；可交换为另一发行人的证券；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.129 受限表决权、可交换、参与优先股（PreferredRestrictedVotingExchangeableParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；可交换为另一发行人的证券；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.130 受限表决权、可展期、可调整收益优先股（PreferredRestrictedVotingExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.131 受限表决权、可展期、拍卖利率收益优先股（PreferredRestrictedVotingExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.132 受限表决权、可展期、累积参与优先股（PreferredRestrictedVotingExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.133 受限表决权、可展期、累积优先股（PreferredRestrictedVotingExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.134 受限表决权、可展期、固定收益优先股（PreferredRestrictedVotingExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.135 受限表决权、可展期、普通收益优先股（PreferredRestrictedVotingExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.136 受限表决权、可展期、参与优先股（PreferredRestrictedVotingExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.137 受限表决权、永续、可调整收益优先股（PreferredRestrictedVotingPerpetualAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；无固定到期日；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**永续优先股（PerpetualPreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.138 受限表决权、永续、拍卖利率收益优先股（PreferredRestrictedVotingPerpetualAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；无固定到期日；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**永续优先股（PerpetualPreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.139 受限表决权、永续、累积参与优先股（PreferredRestrictedVotingPerpetualCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；无固定到期日；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.140 受限表决权、永续、累积优先股（PreferredRestrictedVotingPerpetualCumulativeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；无固定到期日；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.141 受限表决权、永续、固定收益优先股（PreferredRestrictedVotingPerpetualFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；无固定到期日；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.142 受限表决权、永续、普通收益优先股（PreferredRestrictedVotingPerpetualNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；无固定到期日；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.143 受限表决权、永续、参与优先股（PreferredRestrictedVotingPerpetualParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；无固定到期日；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.144 受限表决权、可赎回、可调整收益优先股（PreferredRestrictedVotingRedeemableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.145 受限表决权、可赎回、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.146 受限表决权、可赎回、累积参与优先股（PreferredRestrictedVotingRedeemableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.147 受限表决权、可赎回、累积优先股（PreferredRestrictedVotingRedeemableCumulativeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.148 受限表决权、可赎回、可交换、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.149 受限表决权、可赎回、可交换、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.150 受限表决权、可赎回、可交换、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.151 受限表决权、可赎回、可交换、累积优先股（PreferredRestrictedVotingRedeemableExchangeableCumulativeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.152 受限表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.153 受限表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.154 受限表决权、可赎回、可交换、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.155 受限表决权、可赎回、可交换、可展期、累积优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.156 受限表决权、可赎回、可交换、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.157 受限表决权、可赎回、可交换、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.158 受限表决权、可赎回、可交换、可展期、参与优先股（PreferredRestrictedVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.159 受限表决权、可赎回、可交换、固定收益优先股（PreferredRestrictedVotingRedeemableExchangeableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.160 受限表决权、可赎回、可交换、普通收益优先股（PreferredRestrictedVotingRedeemableExchangeableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.161 受限表决权、可赎回、可交换、参与优先股（PreferredRestrictedVotingRedeemableExchangeableParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.162 受限表决权、可赎回、可展期、可调整收益优先股（PreferredRestrictedVotingRedeemableExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.163 受限表决权、可赎回、可展期、拍卖利率收益优先股（PreferredRestrictedVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.164 受限表决权、可赎回、可展期、累积参与优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.165 受限表决权、可赎回、可展期、累积优先股（PreferredRestrictedVotingRedeemableExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.166 受限表决权、可赎回、可展期、固定收益优先股（PreferredRestrictedVotingRedeemableExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.167 受限表决权、可赎回、可展期、普通收益优先股（PreferredRestrictedVotingRedeemableExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.168 受限表决权、可赎回、可展期、参与优先股（PreferredRestrictedVotingRedeemableExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.169 受限表决权、可赎回、固定收益优先股（PreferredRestrictedVotingRedeemableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.170 受限表决权、可赎回、普通收益优先股（PreferredRestrictedVotingRedeemableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.171 受限表决权、可赎回、参与优先股（PreferredRestrictedVotingRedeemableParticipatingRegisteredShare）
+
+定义：优先股：每股享有不足一票表决权；发行人或股东可选择赎回；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**受限表决权股（RestrictedVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.172 单一表决权、可交换、可调整收益优先股（PreferredVotingExchangeableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；可交换为另一发行人的证券；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.173 单一表决权、可交换、拍卖利率收益优先股（PreferredVotingExchangeableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；可交换为另一发行人的证券；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.174 单一表决权、可交换、累积参与优先股（PreferredVotingExchangeableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；可交换为另一发行人的证券；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.175 单一表决权、可交换、累积优先股（PreferredVotingExchangeableCumulativeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；可交换为另一发行人的证券；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.176 单一表决权、可交换、固定收益优先股（PreferredVotingExchangeableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；可交换为另一发行人的证券；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.177 单一表决权、可交换、普通收益优先股（PreferredVotingExchangeableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；可交换为另一发行人的证券；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.178 单一表决权、可交换、参与优先股（PreferredVotingExchangeableParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；可交换为另一发行人的证券；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.179 单一表决权、可展期、可调整收益优先股（PreferredVotingExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.180 单一表决权、可展期、拍卖利率收益优先股（PreferredVotingExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.181 单一表决权、可展期、累积参与优先股（PreferredVotingExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.182 单一表决权、可展期、累积优先股（PreferredVotingExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.183 单一表决权、可展期、固定收益优先股（PreferredVotingExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.184 单一表决权、可展期、普通收益优先股（PreferredVotingExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.185 单一表决权、可展期、参与优先股（PreferredVotingExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.186 单一表决权、永续、可调整收益优先股（PreferredVotingPerpetualAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；无固定到期日；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**永续优先股（PerpetualPreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.187 单一表决权、永续、拍卖利率收益优先股（PreferredVotingPerpetualAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；无固定到期日；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**永续优先股（PerpetualPreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.188 单一表决权、永续、累积参与优先股（PreferredVotingPerpetualCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；无固定到期日；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.189 单一表决权、永续、累积优先股（PreferredVotingPerpetualCumulativeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；无固定到期日；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.190 单一表决权、永续、固定收益优先股（PreferredVotingPerpetualFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；无固定到期日；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.191 单一表决权、永续、普通收益优先股（PreferredVotingPerpetualNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；无固定到期日；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.192 单一表决权、永续、参与优先股（PreferredVotingPerpetualParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；无固定到期日；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**永续优先股（PerpetualPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+### 2.193 单一表决权、可赎回、可调整收益优先股（PreferredVotingRedeemableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.194 单一表决权、可赎回、拍卖利率收益优先股（PreferredVotingRedeemableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.195 单一表决权、可赎回、累积参与优先股（PreferredVotingRedeemableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.196 单一表决权、可赎回、累积优先股（PreferredVotingRedeemableCumulativeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.197 单一表决权、可赎回、可交换、可调整收益优先股（PreferredVotingRedeemableExchangeableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.198 单一表决权、可赎回、可交换、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.199 单一表决权、可赎回、可交换、累积参与优先股（PreferredVotingRedeemableExchangeableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.200 单一表决权、可赎回、可交换、累积优先股（PreferredVotingRedeemableExchangeableCumulativeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.201 单一表决权、可赎回、可交换、可展期、可调整收益优先股（PreferredVotingRedeemableExchangeableExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.202 单一表决权、可赎回、可交换、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExchangeableExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.203 单一表决权、可赎回、可交换、可展期、累积参与优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.204 单一表决权、可赎回、可交换、可展期、累积优先股（PreferredVotingRedeemableExchangeableExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.205 单一表决权、可赎回、可交换、可展期、固定收益优先股（PreferredVotingRedeemableExchangeableExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.206 单一表决权、可赎回、可交换、可展期、普通收益优先股（PreferredVotingRedeemableExchangeableExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.207 单一表决权、可赎回、可交换、可展期、参与优先股（PreferredVotingRedeemableExchangeableExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.208 单一表决权、可赎回、可交换、固定收益优先股（PreferredVotingRedeemableExchangeableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.209 单一表决权、可赎回、可交换、普通收益优先股（PreferredVotingRedeemableExchangeableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.210 单一表决权、可赎回、可交换、参与优先股（PreferredVotingRedeemableExchangeableParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；可交换为另一发行人的证券；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可交换优先股（ExchangeablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.211 单一表决权、可赎回、可展期、可调整收益优先股（PreferredVotingRedeemableExtendableAdjustableIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；股息率按基准定期调整，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**可调整利率股息优先股（PreferredShareWithAdjustableRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.212 单一表决权、可赎回、可展期、拍卖利率收益优先股（PreferredVotingRedeemableExtendableAuctionRateIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；股息率通过拍卖定期重置，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**拍卖利率股息优先股（PreferredShareWithAuctionRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.213 单一表决权、可赎回、可展期、累积参与优先股（PreferredVotingRedeemableExtendableCumulativeParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；未付股息累积递延，并可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.214 单一表决权、可赎回、可展期、累积优先股（PreferredVotingRedeemableExtendableCumulativeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；未付股息累积递延至日后支付，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**累积优先股（CumulativePreferredShare）**、**可展期优先股（ExtendablePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.215 单一表决权、可赎回、可展期、固定收益优先股（PreferredVotingRedeemableExtendableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.216 单一表决权、可赎回、可展期、普通收益优先股（PreferredVotingRedeemableExtendableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.217 单一表决权、可赎回、可展期、参与优先股（PreferredVotingRedeemableExtendableParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；到期日可由发行人和/或股东选择延长；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**可展期优先股（ExtendablePreferredShare）**、**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.218 单一表决权、可赎回、固定收益优先股（PreferredVotingRedeemableFixedIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；按约定利率提供定期固定收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**非参与优先股（NonParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.219 单一表决权、可赎回、普通收益优先股（PreferredVotingRedeemableNormalIncomeRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；提供与普通股股东相同的股息，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.220 单一表决权、可赎回、参与优先股（PreferredVotingRedeemableParticipatingRegisteredShare）
+
+定义：优先股：每股享有一票表决权；发行人或股东可选择赎回；除约定股息外可与普通股股东分享额外收益，记名股份。属 ISO 10962（CFI）股票分类中的组合类别个体。
+
+- 父类：**非累积优先股（NonCumulativePreferredShare）**、**参与优先股（ParticipatingPreferredShare）**、**固定利率股息优先股（PreferredShareWithFixedRateDividend）**、**单一表决权股（SingleVotingShare）**、**注册证券（RegisteredSecurity）**
+
+公理：
+
+- 该属性存在取值约束。
+
+## 3. 依赖（owl:imports，9 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -1543,7 +2393,7 @@
 | `https://www.omg.org/spec/Commons/Collections/` | OMG 通用集合本体（OMG Commons Collections） | Commons 库中的集合本体，定义集合、成员等通用概念。 |
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`EquityCFIClassificationIndividuals.rdf`
 - 中文 Turtle：`EquityCFIClassificationIndividuals.ttl`

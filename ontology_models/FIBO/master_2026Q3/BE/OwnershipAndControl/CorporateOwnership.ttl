@@ -65,15 +65,15 @@ fibo-be-oac-cown:BeneficialOwnership a owl:Class ;
         "受益所有权（beneficial ownership）"@zh ;
     rdfs:comment "将享有所有权利益（如获得收入）的参与方与名义所有权可能在他人名下之事物相关联的情形。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:hasOwningParty ;
+            owl:someValuesFrom fibo-be-oac-cown:BeneficialOwner ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
             owl:someValuesFrom fibo-fnd-oac-own:Asset ],
         [ a owl:Restriction ;
             owl:onProperty cmns-ra:isRegisteredBy ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( cmns-ra:RegistrationAuthority cmns-ra:Registrar ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:hasOwningParty ;
-            owl:someValuesFrom fibo-be-oac-cown:BeneficialOwner ],
         fibo-fnd-oac-own:Ownership ;
     skos:definition "situation linking party that enjoys the benefits of ownership (such as receipt of income) of something even though its ownership (title) may be in the name of another party (called a nominee or registered owner) to the asset that they own" ;
     cmns-av:explanatoryNote "Beneficial ownership may be shared among a group of individuals. If a beneficial owner acquires a position of more than 5 percent in the United States, it must file Schedule 13D or 13G under Section 12 of the Securities Exchange Act of 1934." .
@@ -153,12 +153,12 @@ fibo-be-oac-cown:BeneficialOwner a owl:Class ;
         "受益所有人（beneficial owner）"@zh ;
     rdfs:comment "即使某物的所有权（名义）可能登记在他人名下，仍享有其所有权利益（如获得收入）的参与方。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-be-oac-cown:isBeneficialOwnerOf ;
-            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
-        [ a owl:Restriction ;
             owl:onClass fibo-be-le-lp:LegallyCompetentNaturalPerson ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-oac-cown:isBeneficialOwnerOf ;
+            owl:someValuesFrom fibo-fnd-oac-own:Asset ],
         fibo-fnd-oac-own:Owner ;
     skos:definition "party that enjoys the benefits of ownership (such as receipt of income) of something even though its ownership (title) may be in the name of another party (called a nominee or registered owner)" ;
     cmns-av:adaptedFrom "https://en.wikipedia.org/wiki/Beneficial_ownership#Financial_Action_Task_Force_on_Money_Laundering_(FATF)"^^xsd:anyURI,

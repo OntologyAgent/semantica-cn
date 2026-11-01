@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：参数化计划表≠静态付款表——它是由规则生成的「模板」，代入参数即可展开成具体日期金额序列，这是结构化产品条款机器可读化的关键。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **国际货币市场（IMM）澳元（AUD）交易日期规则（International Money Market (IMM) Australian Dollar (AUD) trading date rule）** 继承 **交易日期规则（trading date rule）**
+- **国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule）** 继承 **交易日期规则（trading date rule）**
+- **国际货币市场（IMM）新西兰元（NZD）交易日期规则（International Money Market (IMM) New Zealand Dollar (NZD) trading date rule）** 继承 **交易日期规则（trading date rule）**
+- **国际货币市场（IMM）结算日期规则（International Money Market (IMM) settlement date rule）** 继承 **结算日期规则（settlement date rule）**
+- **美国短期国库券拍卖日期规则（US Treasury bill auction date rule）** 继承 **拍卖日期规则（auction date rule）**
+- **美国短期国库券日期（US Treasury bill date）** 继承 **推算日期（CalculatedDate）**
+- **拍卖日期规则（auction date rule）** 继承 **营业重复区间惯例（BusinessRecurrenceIntervalConvention）**
+- **结算日期规则返回的日期（date returned by settlement date rule）** 继承 **推算日期（CalculatedDate）**
+- **交易日期规则返回的日期（date returned by trading date rule）** 继承 **推算日期（CalculatedDate）**
+- **浮动利率票据日期（floating-rate note date）** 继承 **推算日期（CalculatedDate）**
+- **浮动利率票据日期规则（floating-rate note date rule）** 继承 **营业重复区间惯例（BusinessRecurrenceIntervalConvention）**
+- **计划计算期结束事件（scheduled calculation period end event）** 继承 **发生类别（OccurrenceKind）**
+- 其余 3 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -34,36 +50,162 @@
 | 结算日期规则（settlement date rule） | 参照某一司法管辖区或由某交易所等交易场所设定的、用于确定结算日期的惯例。 |
 | 交易日期规则（trading date rule） | 参照某交易场所或交易所发布的交易日历确定的、用于确定交易日期的惯例。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 国际货币市场（IMM）澳元（AUD）交易日期规则（International Money Market (IMM) Australian Dollar (AUD) trading date rule） ⊑ 交易日期规则（trading date rule）
-- 国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule） ⊑ 交易日期规则（trading date rule）
-- 国际货币市场（IMM）新西兰元（NZD）交易日期规则（International Money Market (IMM) New Zealand Dollar (NZD) trading date rule） ⊑ 交易日期规则（trading date rule）
-- 国际货币市场（IMM）结算日期规则（International Money Market (IMM) settlement date rule） ⊑ 结算日期规则（settlement date rule）
-- 美国短期国库券拍卖日期规则（US Treasury bill auction date rule） ⊑ 拍卖日期规则（auction date rule）
-- 美国短期国库券日期（US Treasury bill date） ⊑ 推算日期
-- 拍卖日期规则（auction date rule） ⊑ 营业重复区间惯例
-- 结算日期规则返回的日期（date returned by settlement date rule） ⊑ 推算日期
-- 交易日期规则返回的日期（date returned by trading date rule） ⊑ 推算日期
-- 浮动利率票据日期（floating-rate note date） ⊑ 推算日期
-- 浮动利率票据日期规则（floating-rate note date rule） ⊑ 营业重复区间惯例
-- 计划计算期结束事件（scheduled calculation period end event） ⊑ 发生类别
-- 计划计算期开始事件（scheduled calculation period start event） ⊑ 发生类别
-- 结算日期规则（settlement date rule） ⊑ 营业重复区间惯例
-- 交易日期规则（trading date rule） ⊑ 营业重复区间惯例
+### 2.1 美国短期国库券日期（US Treasury bill date）
 
-## 5. 公理约定（Axioms）
+定义：美国 13 周和 26 周短期国库券的拍卖日期。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**推算日期（CalculatedDate）**
 
-- **国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule）**：**具有营业日惯例（hasBusinessDayConvention）**的取值固定为 BusinessDayPreceding。
-- **美国短期国库券拍卖日期规则（US Treasury bill auction date rule）**：**具有营业日惯例（hasBusinessDayConvention）**的取值固定为 BusinessDayFollowing。
-- **美国短期国库券日期（US Treasury bill date）**：**具有营业日惯例（hasBusinessDayConvention）**恰好有 1 个**美国短期国库券拍卖日期规则（US Treasury bill auction date rule）**。
-- **结算日期规则返回的日期（date returned by settlement date rule）**：**定义于（isDefinedIn）**的所有取值只能是**结算日期规则（settlement date rule）**。
-- **交易日期规则返回的日期（date returned by trading date rule）**：**定义于（isDefinedIn）**的所有取值只能是**交易日期规则（trading date rule）**。
-- **浮动利率票据日期（floating-rate note date）**：**具有营业日惯例（hasBusinessDayConvention）**恰好有 1 个**浮动利率票据日期规则（floating-rate note date rule）**。
+属性：
 
-## 6. 依赖（owl:imports，8 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有营业日惯例（hasBusinessDayConvention）** | — | — |
+
+公理：
+
+- **具有营业日惯例（hasBusinessDayConvention）**恰好有 1 个**美国短期国库券拍卖日期规则（US Treasury bill auction date rule）**。
+
+### 2.2 拍卖日期规则（auction date rule）
+
+定义：用于确定某一拍卖事件日期的已发布规则，属于业务重复区间惯例。
+
+- 父类：**营业重复区间惯例（BusinessRecurrenceIntervalConvention）**
+- 直接子类：**美国短期国库券拍卖日期规则（US Treasury bill auction date rule）**
+
+#### 2.2.1 美国短期国库券拍卖日期规则（US Treasury bill auction date rule）
+
+定义：用于设定美国短期国库券拍卖日期的规则。
+
+- 父类：**拍卖日期规则（auction date rule）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有营业日惯例（hasBusinessDayConvention）** | — | — |
+
+公理：
+
+- **具有营业日惯例（hasBusinessDayConvention）**的取值固定为 BusinessDayFollowing。
+
+### 2.3 结算日期规则返回的日期（date returned by settlement date rule）
+
+定义：通过结算规则确定的计算日期。
+
+- 父类：**推算日期（CalculatedDate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的所有取值只能是**结算日期规则（settlement date rule）**。
+
+### 2.4 交易日期规则返回的日期（date returned by trading date rule）
+
+定义：通过交易规则确定的计算日期。
+
+- 父类：**推算日期（CalculatedDate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的所有取值只能是**交易日期规则（trading date rule）**。
+
+### 2.5 浮动利率票据日期（floating-rate note date）
+
+定义：与浮动利率票据（亦称浮息票据或 FRN，一种可变利率债务工具）相关联的计算日期。
+
+- 父类：**推算日期（CalculatedDate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有营业日惯例（hasBusinessDayConvention）** | — | — |
+
+公理：
+
+- **具有营业日惯例（hasBusinessDayConvention）**恰好有 1 个**浮动利率票据日期规则（floating-rate note date rule）**。
+
+### 2.6 浮动利率票据日期规则（floating-rate note date rule）
+
+定义：适用于浮动利率票据工具的营业日调整规则。
+
+- 父类：**营业重复区间惯例（BusinessRecurrenceIntervalConvention）**
+
+### 2.7 计划计算期结束事件（scheduled calculation period end event）
+
+定义：某一特定计算期的结束日期。
+
+- 父类：**发生类别（OccurrenceKind）**
+
+### 2.8 计划计算期开始事件（scheduled calculation period start event）
+
+定义：某一特定计算期的开始日期。
+
+- 父类：**发生类别（OccurrenceKind）**
+
+### 2.9 结算日期规则（settlement date rule）
+
+定义：参照某一司法管辖区或由某交易所等交易场所设定的、用于确定结算日期的惯例。
+
+- 父类：**营业重复区间惯例（BusinessRecurrenceIntervalConvention）**
+- 直接子类：**国际货币市场（IMM）结算日期规则（International Money Market (IMM) settlement date rule）**
+
+#### 2.9.1 国际货币市场（IMM）结算日期规则（International Money Market (IMM) settlement date rule）
+
+定义：国际货币市场（IMM）结算日期日历中定义的结算日期规则。
+
+- 父类：**结算日期规则（settlement date rule）**
+
+### 2.10 交易日期规则（trading date rule）
+
+定义：参照某交易场所或交易所发布的交易日历确定的、用于确定交易日期的惯例。
+
+- 父类：**营业重复区间惯例（BusinessRecurrenceIntervalConvention）**
+- 直接子类：**国际货币市场（IMM）澳元（AUD）交易日期规则（International Money Market (IMM) Australian Dollar (AUD) trading date rule）**、**国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule）**、**国际货币市场（IMM）新西兰元（NZD）交易日期规则（International Money Market (IMM) New Zealand Dollar (NZD) trading date rule）**
+
+#### 2.10.1 国际货币市场（IMM）澳元（AUD）交易日期规则（International Money Market (IMM) Australian Dollar (AUD) trading date rule）
+
+定义：定义为澳大利亚证券交易所（ASX）90 天银行承兑期货和期权产品最后一个交易日（悉尼时间）的交易日期规则。
+
+- 父类：**交易日期规则（trading date rule）**
+
+#### 2.10.2 国际货币市场（IMM）加元（CAD）交易日期规则（International Money Market (IMM) Canadian Dollar (CAD) trading date rule）
+
+定义：定义为加拿大衍生品交易所（蒙特利尔交易所）三个月银行承兑汇票产品最后一个交易日/到期日的交易日期规则。
+
+- 父类：**交易日期规则（trading date rule）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有营业日惯例（hasBusinessDayConvention）** | — | — |
+
+公理：
+
+- **具有营业日惯例（hasBusinessDayConvention）**的取值固定为 BusinessDayPreceding。
+
+#### 2.10.3 国际货币市场（IMM）新西兰元（NZD）交易日期规则（International Money Market (IMM) New Zealand Dollar (NZD) trading date rule）
+
+定义：定义为澳大利亚证券交易所（ASX）新西兰 90 天银行承兑期货和期权产品最后一个交易日的交易日期规则。
+
+- 父类：**交易日期规则（trading date rule）**
+
+## 3. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -78,7 +220,7 @@
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`ParametricSchedules.rdf`
 - 中文 Turtle：`ParametricSchedules.ttl`

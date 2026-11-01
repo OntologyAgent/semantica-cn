@@ -190,10 +190,10 @@ fibo-fnd-pty-pty:TaxIdentifier a owl:Class ;
 cmns-org:LegalEntity a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-be-le-fbo:OrganizationCoveringAgreement ;
-            owl:onProperty cmns-rga:isGovernedBy ],
+            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassifier ;
+            owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassifier ;
-            owl:onProperty cmns-cls:isClassifiedBy ] .
+            owl:onClass fibo-be-le-fbo:OrganizationCoveringAgreement ;
+            owl:onProperty cmns-rga:isGovernedBy ] .
 

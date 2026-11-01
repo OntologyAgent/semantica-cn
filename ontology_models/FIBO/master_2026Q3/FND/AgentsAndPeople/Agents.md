@@ -14,10 +14,13 @@
 |---|---|
 | 自动化系统（automated system） | 自动执行任务的系统。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
+### 2.1 自动化系统（automated system）
 
-## 6. 依赖（owl:imports，2 个）
+定义：自动执行任务的系统。
+
+## 3. 依赖（owl:imports，2 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -26,7 +29,7 @@
 | `FND/Utilities/AnnotationVocabulary.rdf` | FIBO 标注词汇表（FIBO Annotation Vocabulary） | 定义 FIBO 专用的标注属性（如释义来源、成熟度等级），用于本体自身的元数据标注。 |
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`Agents.rdf`
 - 中文 Turtle：`Agents.ttl`

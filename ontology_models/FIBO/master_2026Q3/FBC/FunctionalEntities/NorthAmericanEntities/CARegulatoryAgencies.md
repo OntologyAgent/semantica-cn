@@ -14,6 +14,18 @@
 
 **与相近概念的差别**：与美国监管机构本体的差别——加拿大银行监管集中在联邦层面（OSFI），证券监管分散在各省，没有全国统一的证监会。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）** 继承 **增值税识别号（ValueAddedTaxIdentificationNumber）**
+- **商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）** 继承 **商业编号（business number）**
+- **商业编号（business number）** 继承 **税务标识符（TaxIdentifier）**
+- **商业编号（business number）** 继承 **组织标识符（OrganizationIdentifier）**
+- **公司所得税编号（corporation income tax number）** 继承 **商业编号（business number）**
+- **进出口计划编号（import export program number）** 继承 **商业编号（business number）**
+- **信息申报计划编号（information return program number）** 继承 **商业编号（business number）**
+- **工资代扣计划编号（payroll deductions program number）** 继承 **商业编号（business number）**
+- **注册慈善机构计划编号（registered charity program number）** 继承 **商业编号（business number）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -26,44 +38,148 @@
 | 工资代扣计划编号（payroll deductions program number） | 由实体的商业编号、'RP'缩写和用于申报工资代扣的 4 位子账户编号拼接而成。 |
 | 注册慈善机构计划编号（registered charity program number） | 由实体的商业编号、'RR'缩写和用于注册慈善机构捐赠申报的 4 位子账户编号拼接而成。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number） ⊑ 增值税识别号
-- 商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number） ⊑ 商业编号（business number）
-- 商业编号（business number） ⊑ 税务标识符
-- 商业编号（business number） ⊑ 组织标识符
-- 公司所得税编号（corporation income tax number） ⊑ 商业编号（business number）
-- 进出口计划编号（import export program number） ⊑ 商业编号（business number）
-- 信息申报计划编号（information return program number） ⊑ 商业编号（business number）
-- 工资代扣计划编号（payroll deductions program number） ⊑ 商业编号（business number）
-- 注册慈善机构计划编号（registered charity program number） ⊑ 商业编号（business number）
+### 2.1 商业编号（business number）
 
-## 5. 公理约定（Axioms）
+定义：加拿大法律实体（通常为企业）的标准标识符，是唯一的 9 位数字编号。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**税务标识符（TaxIdentifier）**、**组织标识符（OrganizationIdentifier）**
+- 直接子类：**商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）**、**公司所得税编号（corporation income tax number）**、**进出口计划编号（import export program number）**、**信息申报计划编号（information return program number）**、**工资代扣计划编号（payroll deductions program number）**、**注册慈善机构计划编号（registered charity program number）**
 
-- **商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
-- **商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）**：**是……的成员（isMemberOf）**的取值固定为 GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme。
-- **商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
-- **商业编号（business number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
-- **商业编号（business number）**：**是……的成员（isMemberOf）**的取值固定为 BusinessNumberRegistrationIdentifierScheme。
-- **公司所得税编号（corporation income tax number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
-- **公司所得税编号（corporation income tax number）**：**是……的成员（isMemberOf）**的取值固定为 CorporationIncomeTaxNumberIdentifierScheme。
-- **公司所得税编号（corporation income tax number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
-- **进出口计划编号（import export program number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
-- **进出口计划编号（import export program number）**：**是……的成员（isMemberOf）**的取值固定为 ImportExportProgramNumberIdentifierScheme。
-- **进出口计划编号（import export program number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
-- **信息申报计划编号（information return program number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
-- **信息申报计划编号（information return program number）**：**是……的成员（isMemberOf）**的取值固定为 InformationReturnsIdentifierScheme。
-- **信息申报计划编号（information return program number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
-- **工资代扣计划编号（payroll deductions program number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
-- **工资代扣计划编号（payroll deductions program number）**：**是……的成员（isMemberOf）**的取值固定为 PayrollDeductionsProgramIdentifierRegistrationService。
-- **工资代扣计划编号（payroll deductions program number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
-- **注册慈善机构计划编号（registered charity program number）**：**适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
-- **注册慈善机构计划编号（registered charity program number）**：**是……的成员（isMemberOf）**的取值固定为 RegisteredCharityProgramNumberIdentifierScheme。
-- **注册慈善机构计划编号（registered charity program number）**：**标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+属性：
 
-## 6. 依赖（owl:imports，27 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**的取值固定为 BusinessNumberRegistrationIdentifierScheme。
+- **适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+
+#### 2.1.1 商品及服务税/统一销售税登记编号（Goods and Services Tax / Harmonized Sales Tax registration number）
+
+定义：由实体的商业编号、'RT'缩写和用于申报 GST/HST 的 4 位子账户编号拼接而成。
+
+- 父类：**增值税识别号（ValueAddedTaxIdentificationNumber）**、**商业编号（business number）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**的取值固定为 GoodsServicesTaxHarmonizedSalesTaxRegistrationIdentifierScheme。
+- **标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+
+#### 2.1.2 公司所得税编号（corporation income tax number）
+
+定义：由实体的商业编号、'RC'缩写和用于申报公司所得税的 4 位子账户编号拼接而成。
+
+- 父类：**商业编号（business number）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**的取值固定为 CorporationIncomeTaxNumberIdentifierScheme。
+- **标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+
+#### 2.1.3 进出口计划编号（import export program number）
+
+定义：由实体的商业编号、'RM'缩写和用于海关及进出口申报的 4 位子账户编号拼接而成。
+
+- 父类：**商业编号（business number）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**的取值固定为 ImportExportProgramNumberIdentifierScheme。
+- **标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+
+#### 2.1.4 信息申报计划编号（information return program number）
+
+定义：由实体的商业编号、'RZ'缩写和用于信息申报的 4 位子账户编号拼接而成。
+
+- 父类：**商业编号（business number）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**的取值固定为 InformationReturnsIdentifierScheme。
+- **标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+
+#### 2.1.5 工资代扣计划编号（payroll deductions program number）
+
+定义：由实体的商业编号、'RP'缩写和用于申报工资代扣的 4 位子账户编号拼接而成。
+
+- 父类：**商业编号（business number）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**的取值固定为 PayrollDeductionsProgramIdentifierRegistrationService。
+- **标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+
+#### 2.1.6 注册慈善机构计划编号（registered charity program number）
+
+定义：由实体的商业编号、'RR'缩写和用于注册慈善机构捐赠申报的 4 位子账户编号拼接而成。
+
+- 父类：**商业编号（business number）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**的取值固定为 RegisteredCharityProgramNumberIdentifierScheme。
+- **标识（identifies）**可以有 0 个或多个**分类账户（LedgerAccount）**。
+- **适用于情境（isApplicableIn）**的取值固定为 CanadianJurisdiction。
+
+## 3. 依赖（owl:imports，27 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -97,7 +213,7 @@
 | `https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/` | LCC ISO 3166-1 国家代码（ISO 3166-1 Country Codes） | LCC 中 ISO 3166-1 标准的国家/地区代码个体集（如 CN、US、MX），供法域与地址建模引用。 |
 | `https://www.omg.org/spec/LCC/Countries/Regions/ISO3166-2-SubdivisionCodes-CA/` | LCC ISO 3166-2 子分区代码·CA（ISO 3166-2 Subdivision Codes for 加拿大） | LCC 中 ISO 3166-2 标准下加拿大的省/州级行政区代码个体集。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CARegulatoryAgencies.rdf`
 - 中文 Turtle：`CARegulatoryAgencies.ttl`

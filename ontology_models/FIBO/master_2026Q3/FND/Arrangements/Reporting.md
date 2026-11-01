@@ -14,6 +14,15 @@
 
 **与相近概念的差别**：报告≠文档——报告是「报送行为及其产物」的整体，文档只是载体；报告通常有法定格式与期限要求。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **报告（report）** 继承 **文件（Document）**
+- **报告方（reporting party）** 继承 **参与方角色（party role）**
+- **请求（request）** 继承 **发生事项（Occurrence）**
+- **请求活动（request activity）** 继承 **发生类别（OccurrenceKind）**
+- **请求方（requester）** 继承 **参与方角色（party role）**
+- **提交方（submitter）** 继承 **参与方角色（party role）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -25,53 +34,116 @@
 | 请求方（requester） | 索要某事物的参与方。 |
 | 提交方（submitter） | 呈交某事物（如监管报告）的参与方。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 报告（report） ⊑ 文件
-- 报告方（reporting party） ⊑ 参与方角色（party role）
-- 请求（request） ⊑ 发生事项
-- 请求活动（request activity） ⊑ 发生类别
-- 请求方（requester） ⊑ 参与方角色（party role）
-- 提交方（submitter） ⊑ 参与方角色（party role）
+### 2.1 报告（report）
 
-## 3. 对象属性（Object Property）
+定义：对某事物提供结构化描述的文件，按临时、定期、循环、常规或要求的方式编制。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-arr-rep:hasReportDate | 具有报告日期（has report date） | 报告发布的日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有签发日期 |
-| fibo-fnd-arr-rep:hasReportDateTime | 具有报告日期时间（has report date time） | 报告发布的日期与时间。 | 值域（range）：日期时间；子属性（subPropertyOf）：具有日期时间 |
-| fibo-fnd-arr-rep:hasRequestDate | 具有请求日期（has request date） | 提出请求的日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-fnd-arr-rep:hasRequestDateTime | 具有请求日期时间（has request date time） | 提出请求的日期与时间。 | 值域（range）：日期时间；子属性（subPropertyOf）：具有日期时间 |
-| fibo-fnd-arr-rep:isReportedTo | 被报告给（is reported to） | 标识某事物被报告给的参与方。 | 值域（range）：参与方角色（party role）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fnd-arr-rep:isRequestedBy | 由……请求（is requested by） | 标识索要某事物的参与方。 | 值域（range）：请求方（requester）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fnd-arr-rep:isRequestedOf | 被请求于（is requested of） | 标识被索要某事物的参与方。 | 值域（range）：参与方角色（party role）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fnd-arr-rep:isSubmittedBy | 由……提交（is submitted by） | 标识提交某事物的参与方。 | 值域（range）：提交方（submitter）；逆属性（inverseOf）：提交（submits）；子属性（subPropertyOf）：由……提供 |
-| fibo-fnd-arr-rep:isSubmittedTo | 被提交给（is submitted to） | 标识某事物被提交给的参与方。 | 值域（range）：参与方角色（party role）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fnd-arr-rep:reportsOn | 报告关于（reports on） | 标识报告的主题、观测、评估、焦点或其他话题。 | 定义域（domain）：报告（report）；子属性（subPropertyOf）：关于 |
-| fibo-fnd-arr-rep:requests | 请求（requests） | 索要某事物。 | 子属性（subPropertyOf）：关于 |
-| fibo-fnd-arr-rep:submits | 提交（submits） | 呈交某事物（提案、申请、报告或其他文件）以供考虑或审查。 | 定义域（domain）：提交方（submitter）；子属性（subPropertyOf）：提供 |
+- 父类：**文件（Document）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有报告期（hasReportingPeriod）** | — | — |
+| **具有报告日期（has report date）** | 报告发布的日期。 | 值域：显式日期；子属性：具有签发日期 |
+| **具有报告日期时间（has report date time）** | 报告发布的日期与时间。 | 值域：日期时间；子属性：具有日期时间 |
+| **被报告给（is reported to）** | 标识某事物被报告给的参与方。 | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
+| **由……提交（is submitted by）** | 标识提交某事物的参与方。 | 值域：提交方（submitter）；逆属性：提交（submits）；子属性：由……提供 |
+| **被提交给（is submitted to）** | 标识某事物被提交给的参与方。 | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
+| **报告关于（reports on）** | 标识报告的主题、观测、评估、焦点或其他话题。 | 子属性：关于 |
+| **由……提供（isProvidedBy）** | — | — |
 
-- **报告（report）**：**由……提交（is submitted by）**可以有 0 个或多个**提交方（submitter）**。
-- **报告（report）**：**具有报告期（hasReportingPeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
-- **报告（report）**：**具有报告日期时间（has report date time）**可以有 0 个或多个**日期时间（DateTime）**。
-- **报告（report）**：**具有报告日期（has report date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
-- **报告（report）**：**被提交给（is submitted to）**可以有 0 个或多个**参与方角色（party role）**。
-- **报告（report）**：**被报告给（is reported to）**至少有一个取值，类型是**参与方角色（party role）**。
-- **报告（report）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**报告方（reporting party）**。
-- **报告方（reporting party）**：**提供（provides）**至少有一个取值，类型是**报告（report）**。
-- **请求（request）**：**具有请求日期时间（has request date time）**可以有 0 个或多个**日期时间（DateTime）**。
-- **请求（request）**：**具有请求日期（has request date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
-- **请求（request）**：**由……请求（is requested by）**至少有一个取值，类型是**请求方（requester）**。
-- **请求（request）**：**被请求于（is requested of）**至少有一个取值，类型是**参与方角色（party role）**。
-- **请求（request）**：**例证（exemplifies）**至少有一个取值，类型是**请求活动（request activity）**。
-- **请求活动（request activity）**：**请求（requests）**至少有一个取值，类型是**owl:Thing（Thing）**。
-- **提交方（submitter）**：**提交（submits）**至少有一个取值，类型是**报告（report）**。
+公理：
 
-## 6. 依赖（owl:imports，9 个）
+- **具有报告日期时间（has report date time）**可以有 0 个或多个**日期时间（DateTime）**。
+- **具有报告日期（has report date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **具有报告期（hasReportingPeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
+- **由……提交（is submitted by）**可以有 0 个或多个**提交方（submitter）**。
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**报告方（reporting party）**。
+- **被报告给（is reported to）**至少有一个取值，类型是**参与方角色（party role）**。
+- **被提交给（is submitted to）**可以有 0 个或多个**参与方角色（party role）**。
+
+### 2.2 报告方（reporting party）
+
+定义：提供报告的参与方，通常是应某项合同、法律、监管或其他业务要求。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **提供（provides）** | — | — |
+
+公理：
+
+- **提供（provides）**至少有一个取值，类型是**报告（report）**。
+
+### 2.3 请求（request）
+
+定义：某参与方在某时点向另一参与方索要某事物的事件。
+
+- 父类：**发生事项（Occurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有请求日期（has request date）** | 提出请求的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **具有请求日期时间（has request date time）** | 提出请求的日期与时间。 | 值域：日期时间；子属性：具有日期时间 |
+| **由……请求（is requested by）** | 标识索要某事物的参与方。 | 值域：请求方（requester）；子属性：具有参与方角色（has party role） |
+| **被请求于（is requested of）** | 标识被索要某事物的参与方。 | 值域：参与方角色（party role）；子属性：具有参与方角色（has party role） |
+| **例证（exemplifies）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**至少有一个取值，类型是**请求活动（request activity）**。
+- **具有请求日期时间（has request date time）**可以有 0 个或多个**日期时间（DateTime）**。
+- **具有请求日期（has request date）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **由……请求（is requested by）**至少有一个取值，类型是**请求方（requester）**。
+- **被请求于（is requested of）**至少有一个取值，类型是**参与方角色（party role）**。
+
+### 2.4 请求活动（request activity）
+
+定义：某参与方向另一参与方索要某事物或请求其做某事的活动。
+
+- 父类：**发生类别（OccurrenceKind）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **请求（requests）** | 索要某事物。 | 子属性：关于 |
+
+公理：
+
+- **请求（requests）**至少有一个取值，类型是**owl:Thing（Thing）**。
+
+### 2.5 请求方（requester）
+
+定义：索要某事物的参与方。
+
+- 父类：**参与方角色（party role）**
+
+### 2.6 提交方（submitter）
+
+定义：呈交某事物（如监管报告）的参与方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **提交（submits）** | 呈交某事物（提案、申请、报告或其他文件）以供考虑或审查。 | 子属性：提供 |
+
+公理：
+
+- **提交（submits）**至少有一个取值，类型是**报告（report）**。
+
+## 3. 依赖（owl:imports，9 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -87,7 +159,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`Reporting.rdf`
 - 中文 Turtle：`Reporting.ttl`

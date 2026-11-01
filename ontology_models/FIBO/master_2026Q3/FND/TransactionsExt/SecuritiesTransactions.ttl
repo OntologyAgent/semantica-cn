@@ -122,21 +122,21 @@ fibo-fnd-txn-sec:FinancialSecuritiesSecondaryMarketTransaction a owl:Class ;
         "金融证券二级市场交易（financial securities secondary market transaction）"@zh ;
     rdfs:comment "以某种可流通证券换取某种对价的交易。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-rea:subject ;
+            owl:someValuesFrom <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Security> ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
             owl:someValuesFrom fibo-fnd-txn-sec:SecuritiesTransactionCounterparty ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-sec:embodies ;
-            owl:someValuesFrom fibo-fnd-txn-sec:SecuritiesTransactionContract ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
-            owl:someValuesFrom fibo-fnd-txn-sec:SecuritiesTransactionPrincipal ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-txn-mkt:consideration ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fnd-acc-cur:AmountOfMoney <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Security> ) ] ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-txn-rea:subject ;
-            owl:someValuesFrom <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/Security> ],
+            owl:onProperty fibo-fnd-agr-ctr:hasPrincipalParty ;
+            owl:someValuesFrom fibo-fnd-txn-sec:SecuritiesTransactionPrincipal ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-txn-sec:embodies ;
+            owl:someValuesFrom fibo-fnd-txn-sec:SecuritiesTransactionContract ],
         fibo-fnd-txn-mkt:MarketTransaction,
         fibo-fnd-txn-rea:ContractualTransaction ;
     skos:definition "A Transaction in which some negotiable security is provided in exchange for some Consideration."@en .

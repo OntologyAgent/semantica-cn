@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与金融标的衍生品的差别——商品合约常涉及实物交割、仓储与品质规格，这是金融合约没有的问题。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **农业资源（agricultural resource）** 继承 **可流通商品（NegotiableCommodity）**
+- **基本金属（base metal）** 继承 **金属（metal）**
+- **商品篮子（basket of commodities）** 继承 **加权篮子（WeightedBasket）**
+- **金银条块（bullion）** 继承 **贵金属（PreciousMetal）**
+- **商品篮子成分（commodity basket constituent）** 继承 **加权篮子成分（WeightedBasketConstituent）**
+- **商品衍生品（commodity derivative）** 继承 **商品工具（CommodityInstrument）**
+- **商品衍生品（commodity derivative）** 继承 **衍生工具（DerivativeInstrument）**
+- **商品衍生品标的（commodity derivative underlier）** 继承 **标的（Underlier）**
+- **商品远期（commodity forward）** 继承 **商品衍生品（commodity derivative）**
+- **商品远期（commodity forward）** 继承 **远期合约（Forward）**
+- **商品期货（commodity future）** 继承 **商品衍生品（commodity derivative）**
+- **商品期货（commodity future）** 继承 **期货（Future）**
+- 其余 29 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -51,78 +67,307 @@
 | 服务资源（service resource） | 涉及运输、通信和贸易等服务的可转让商品。 |
 | 天气衍生品（weather derivative） | 主要名义标的基于天气相关事物（例如某地平均温度）的衍生工具。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 农业资源（agricultural resource） ⊑ 可流通商品
-- 基本金属（base metal） ⊑ 金属（metal）
-- 商品篮子（basket of commodities） ⊑ 加权篮子
-- 金银条块（bullion） ⊑ 贵金属
-- 商品篮子成分（commodity basket constituent） ⊑ 加权篮子成分
-- 商品衍生品（commodity derivative） ⊑ 商品工具
-- 商品衍生品（commodity derivative） ⊑ 衍生工具
-- 商品衍生品标的（commodity derivative underlier） ⊑ 标的
-- 商品远期（commodity forward） ⊑ 商品衍生品（commodity derivative）
-- 商品远期（commodity forward） ⊑ 远期合约
-- 商品期货（commodity future） ⊑ 商品衍生品（commodity derivative）
-- 商品期货（commodity future） ⊑ 期货
-- 商品指数（commodity index） ⊑ 参考指数
-- 商品期权（commodity option） ⊑ 商品衍生品（commodity derivative）
-- 商品期权（commodity option） ⊑ 普通期权
-- 商品回报腿（commodity return leg） ⊑ 回报腿
-- 商品即期合约（commodity spot contract） ⊑ 商品工具
-- 商品即期合约（commodity spot contract） ⊑ 即期合约
-- 商品互换（commodity swap） ⊑ 商品衍生品（commodity derivative）
-- 商品互换（commodity swap） ⊑ 回报互换
-- 能源资源（energy resource） ⊑ 可流通商品
-- 能源输电权（energy transmission rights） ⊑ 能源资源（energy resource）
-- 环境资源（environmental resource） ⊑ 可流通商品
-- 开采资源（extraction resource） ⊑ 可流通商品
-- 化肥资源（fertilizer resource） ⊑ 可流通商品
-- 运费资源（freight resource） ⊑ 可流通商品
-- 天然气商品（gas commodity） ⊑ 能源资源（energy resource）
-- 天然气商品（gas commodity） ⊑ 开采资源（extraction resource）
-- 发电资源（generated resource） ⊑ 可流通商品
-- 谷物商品（grain commodity） ⊑ 农业资源（agricultural resource）
-- 工业资源（industrial resource） ⊑ 可流通商品
-- 肉类商品（meat commodity） ⊑ 农业资源（agricultural resource）
-- 金属（metal） ⊑ 开采资源（extraction resource）
-- 石油商品（oil commodity） ⊑ 发电资源（generated resource）
-- 油品等级（oil grade） ⊑ 分类符
-- 纸类资源（paper resource） ⊑ 可流通商品
-- 聚丙烯资源（polypropylene resource） ⊑ 可流通商品
-- 服务资源（service resource） ⊑ 可流通商品
-- 天气衍生品（weather derivative） ⊑ 商品衍生品（commodity derivative）
-- 天气衍生品（weather derivative） ⊑ 衍生工具
+### 2.1 农业资源（agricultural resource）
 
-## 3. 对象属性（Object Property）
+定义：通过农业过程获得的可转让商品，包括林业、渔业、畜牧、谷物、乳制品、玉米、可可、大豆、糖等。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-der-drc-comm:hasCommodityValueAsOfDate | 具有某日商品价值（has commodity value as of date） | 指明某一商品在指定日期的单位价值。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-der-drc-comm:hasGrade | 具有等级（has grade） | 石油的等级，例如布伦特原油（Brent Crude）。 | 定义域（domain）：石油商品（oil commodity）；值域（range）：油品等级（oil grade） |
+- 父类：**可流通商品（NegotiableCommodity）**
+- 直接子类：**谷物商品（grain commodity）**、**肉类商品（meat commodity）**
 
-## 5. 公理约定（Axioms）
+#### 2.1.1 谷物商品（grain commodity）
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+定义：属于食用植物（尤其是禾谷类植物）细小坚硬种子的农业资源，如小麦、玉米、黑麦、燕麦、大米和小米。
 
-- **基本金属（base metal）**与**贵金属**互斥：同一个体不能同时属于两者。
-- **商品篮子（basket of commodities）**：**具有成员（hasMember）**至少有一个取值，类型是**商品篮子成分（commodity basket constituent）**。
-- **商品篮子成分（commodity basket constituent）**：**具有某日商品价值（has commodity value as of date）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **商品篮子成分（commodity basket constituent）**：**涉及（involves）**可以有 0 个或多个**商品（Commodity）**。
-- **商品篮子成分（commodity basket constituent）**：**具有截止日（hasAsOfDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
-- **商品篮子成分（commodity basket constituent）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
-- **商品衍生品（commodity derivative）**：**具有标的（hasUnderlier）**可以有 0 个或多个**商品衍生品标的（commodity derivative underlier）**。
-- **商品衍生品标的（commodity derivative underlier）**：**具有某日商品价值（has commodity value as of date）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **商品衍生品标的（commodity derivative underlier）**：**涉及（involves）**可以有 0 个或多个**商品（Commodity）**。
-- **商品衍生品标的（commodity derivative underlier）**：**具有截止日（hasAsOfDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
-- **商品衍生品标的（commodity derivative underlier）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
-- **商品期货（commodity future）**与**金融期货**互斥：同一个体不能同时属于两者。
-- **商品指数（commodity index）**：**基于（isBasedOn）**至少有一个取值，类型是**商品篮子（basket of commodities）**。
-- **商品回报腿（commodity return leg）**：**具有标的（hasUnderlier）**至少有一个取值，类型是**商品衍生品标的（commodity derivative underlier）**。
-- **商品互换（commodity swap）**：**具有回报腿（hasReturnLeg）**至少有一个取值，类型是**商品回报腿（commodity return leg）**。
-- **石油商品（oil commodity）**：**具有等级（has grade）**至少有一个取值，类型是**油品等级（oil grade）**。
+- 父类：**农业资源（agricultural resource）**
 
-## 6. 依赖（owl:imports，19 个）
+#### 2.1.2 肉类商品（meat commodity）
+
+定义：源自动物（尤其是哺乳动物）肉体的农业资源，如猪腩肉。
+
+- 父类：**农业资源（agricultural resource）**
+
+### 2.2 商品篮子（basket of commodities）
+
+定义：成分由一种或多种可转让商品组成的定制篮子。
+
+- 父类：**加权篮子（WeightedBasket）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**商品篮子成分（commodity basket constituent）**。
+
+### 2.3 金银条块（bullion）
+
+定义：经官方认定纯度至少达 99.5% 的实物贵金属。
+
+- 父类：**贵金属（PreciousMetal）**
+
+### 2.4 商品篮子成分（commodity basket constituent）
+
+定义：定制商品篮子的组成部分，其相对于其他篮子成分的重要性为已知。
+
+- 父类：**加权篮子成分（WeightedBasketConstituent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有某日商品价值（has commodity value as of date）** | 指明某一商品在指定日期的单位价值。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有截止日（hasAsOfDate）** | — | — |
+| **涉及（involves）** | — | — |
+| **具有量值（hasQuantityValue）** | — | — |
+
+公理：
+
+- **具有截止日（hasAsOfDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **具有某日商品价值（has commodity value as of date）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
+- **涉及（involves）**可以有 0 个或多个**商品（Commodity）**。
+
+### 2.5 商品衍生品（commodity derivative）
+
+定义：主要标的为实物商品、商品价格、相关指数或与实物商品相关之任何其他方面的衍生工具。
+
+- 父类：**商品工具（CommodityInstrument）**、**衍生工具（DerivativeInstrument）**
+- 直接子类：**商品远期（commodity forward）**、**商品期货（commodity future）**、**商品期权（commodity option）**、**商品互换（commodity swap）**、**天气衍生品（weather derivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**可以有 0 个或多个**商品衍生品标的（commodity derivative underlier）**。
+
+#### 2.5.1 商品远期（commodity forward）
+
+定义：买方和卖方约定在未来指定日期交付指定质量和数量货物的远期合约。
+
+- 父类：**商品衍生品（commodity derivative）**、**远期合约（Forward）**
+
+#### 2.5.2 商品期货（commodity future）
+
+定义：在未来特定日期按特定价格买入或卖出预定数量商品的期货合约。
+
+- 父类：**商品衍生品（commodity derivative）**、**期货（Future）**
+
+公理：
+
+- 与**金融期货（FinancialFuture）**互斥：同一个体不能同时属于两者。
+
+#### 2.5.3 商品期权（commodity option）
+
+定义：期权买方有权在到期日或之前按固定价格或公式买入或卖出指定商品或商品相关指数的期权。
+
+- 父类：**商品衍生品（commodity derivative）**、**普通期权（VanillaOption）**
+
+#### 2.5.4 商品互换（commodity swap）
+
+定义：一种商品衍生品：包括但不限于任何主要名义标的为实物商品或商品价格的互换。
+
+- 父类：**商品衍生品（commodity derivative）**、**回报互换（ReturnSwap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有回报腿（hasReturnLeg）** | — | — |
+
+公理：
+
+- **具有回报腿（hasReturnLeg）**至少有一个取值，类型是**商品回报腿（commodity return leg）**。
+
+#### 2.5.5 天气衍生品（weather derivative）
+
+定义：主要名义标的基于天气相关事物（例如某地平均温度）的衍生工具。
+
+- 父类：**商品衍生品（commodity derivative）**、**衍生工具（DerivativeInstrument）**
+
+### 2.6 商品衍生品标的（commodity derivative underlier）
+
+定义：商品衍生品的标的，包括但不限于可转让商品本身。
+
+- 父类：**标的（Underlier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有某日商品价值（has commodity value as of date）** | 指明某一商品在指定日期的单位价值。 | 值域：货币数量；子属性：具有货币数量 |
+| **具有截止日（hasAsOfDate）** | — | — |
+| **涉及（involves）** | — | — |
+| **具有量值（hasQuantityValue）** | — | — |
+
+公理：
+
+- **具有截止日（hasAsOfDate）**可以有 0 个或多个**显式日期（ExplicitDate）**。
+- **具有某日商品价值（has commodity value as of date）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
+- **涉及（involves）**可以有 0 个或多个**商品（Commodity）**。
+
+### 2.7 商品指数（commodity index）
+
+定义：追踪一篮子商品以衡量其价格和投资回报表现的投资工具。
+
+- 父类：**参考指数（ReferenceIndex）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+
+公理：
+
+- **基于（isBasedOn）**至少有一个取值，类型是**商品篮子（basket of commodities）**。
+
+### 2.8 商品回报腿（commodity return leg）
+
+定义：商品回报互换中回报基于实物商品、商品价格、价格行为或与商品相关之任何其他方面的一腿。
+
+- 父类：**回报腿（ReturnLeg）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，类型是**商品衍生品标的（commodity derivative underlier）**。
+
+### 2.9 商品即期合约（commodity spot contract）
+
+定义：结算时涉及商品资产实物交割的合约。
+
+- 父类：**商品工具（CommodityInstrument）**、**即期合约（SpotContract）**
+
+### 2.10 能源资源（energy resource）
+
+定义：属于能源相关产品或其衍生品的可转让商品，包括电力、可再生能源等。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+- 直接子类：**能源输电权（energy transmission rights）**、**天然气商品（gas commodity）**
+
+#### 2.10.1 能源输电权（energy transmission rights）
+
+定义：在配电网络中输送电力的权利。
+
+- 父类：**能源资源（energy resource）**
+
+#### 2.10.2 天然气商品（gas commodity）
+
+定义：属于天然气的开采资源。
+
+- 父类：**能源资源（energy resource）**、**开采资源（extraction resource）**
+
+### 2.11 环境资源（environmental resource）
+
+定义：包括抵消信用额在内的可转让商品。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+
+### 2.12 开采资源（extraction resource）
+
+定义：通过从自然环境中开采获得的矿产资源类可转让商品。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+- 直接子类：**天然气商品（gas commodity）**、**金属（metal）**
+
+#### 2.12.2 金属（metal）
+
+定义：新鲜制备、抛光或断裂时呈现光泽外观、且导电导热性能较好的材料。
+
+- 父类：**开采资源（extraction resource）**
+- 直接子类：**基本金属（base metal）**
+
+##### 2.12.2.1 基本金属（base metal）
+
+定义：暴露于空气或湿气中时相对较快失去光泽、氧化或腐蚀、并广泛用于商业和工业的普通金属。
+
+- 父类：**金属（metal）**
+
+公理：
+
+- 与**贵金属（PreciousMetal）**互斥：同一个体不能同时属于两者。
+
+### 2.13 化肥资源（fertilizer resource）
+
+定义：包括氨、磷酸二铵（DAP）、钾肥、硫磺、尿素、尿素硝酸铵（UAN）在内的可转让商品。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+
+### 2.14 运费资源（freight resource）
+
+定义：属于运费指数航线的可转让商品。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+
+### 2.15 发电资源（generated resource）
+
+定义：通过某种生产过程获得的可转让商品，包括电力、可再生能源或任何通过公用事业网络输送的电力/能源。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+- 直接子类：**石油商品（oil commodity）**
+
+#### 2.15.1 石油商品（oil commodity）
+
+定义：从石油提炼的粘稠液体类发电资源，用于燃料、润滑剂及多种产品的制造。
+
+- 父类：**发电资源（generated resource）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有等级（has grade）** | 石油的等级，例如布伦特原油（Brent Crude）。 | 值域：油品等级（oil grade） |
+
+公理：
+
+- **具有等级（has grade）**至少有一个取值，类型是**油品等级（oil grade）**。
+
+### 2.16 工业资源（industrial resource）
+
+定义：通过工业过程（包括建筑和制造）获得的可转让商品。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+
+### 2.17 油品等级（oil grade）
+
+定义：衡量石油在使用过程中粘度的指标。
+
+- 父类：**分类符（Classifier）**
+
+### 2.18 纸类资源（paper resource）
+
+定义：属于纸制品的可转让商品，包括箱板纸、新闻纸、纸浆、回收纸等。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+
+### 2.19 聚丙烯资源（polypropylene resource）
+
+定义：包括塑料在内的可转让商品。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+
+### 2.20 服务资源（service resource）
+
+定义：涉及运输、通信和贸易等服务的可转让商品。
+
+- 父类：**可流通商品（NegotiableCommodity）**
+
+## 3. 依赖（owl:imports，19 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -148,7 +393,7 @@
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CommoditiesContracts.rdf`
 - 中文 Turtle：`CommoditiesContracts.ttl`

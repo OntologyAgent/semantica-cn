@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：信托是财产委托管理关系而非经营组织——受托人持有并管理财产，受益人享有利益；与基金的差别——基金可以采用信托结构设立，但基金强调集合投资功能，信托强调财产隔离与受托责任。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **不可撤销信托（irrevocable trust）** 继承 **信托（trust）**
+- **生前信托（living trust）** 继承 **信托（trust）**
+- **可撤销信托（revocable trust）** 继承 **信托（trust）**
+- **遗嘱信托（testamentary trust）** 继承 **不可撤销信托（irrevocable trust）**
+- **信托（trust）** 继承 **企业实体（BusinessEntity）**
+- **信托（trust）** 继承 **法律实体（LegalEntity）**
+- **信托协议（trust agreement）** 继承 **组织基础协议（OrganizationCoveringAgreement）**
+- **信托受益人（trust beneficiary）** 继承 **受益方（Beneficiary）**
+- **信托基金经理（trust fund manager）** 继承 **法定受托权限（LegallyDelegatedAuthority）**
+- **受托人（trustee）** 继承 **法定受托权限（LegallyDelegatedAuthority）**
+- **受托人（trustee）** 继承 **组织成员（OrganizationMember）**
+- **委托人（trustor）** 继承 **组织成员（OrganizationMember）**
+- 其余 2 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -29,49 +45,146 @@
 | 受托人（trustee） | 为他人利益持有并管理资产的参与方。 |
 | 委托人（trustor） | 设立信托、并将财产置于一名或多名受托人的保护与管理之下以为至少一名受益人谋利的参与方。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 不可撤销信托（irrevocable trust） ⊑ 信托（trust）
-- 生前信托（living trust） ⊑ 信托（trust）
-- 可撤销信托（revocable trust） ⊑ 信托（trust）
-- 遗嘱信托（testamentary trust） ⊑ 不可撤销信托（irrevocable trust）
-- 信托（trust） ⊑ 企业实体
-- 信托（trust） ⊑ 法律实体
-- 信托协议（trust agreement） ⊑ 组织基础协议
-- 信托受益人（trust beneficiary） ⊑ 受益方
-- 信托基金经理（trust fund manager） ⊑ 法定受托权限
-- 受托人（trustee） ⊑ 法定受托权限
-- 受托人（trustee） ⊑ 组织成员
-- 委托人（trustor） ⊑ 组织成员
+### 2.1 信托（trust）
 
-## 3. 对象属性（Object Property）
+定义：一种受托关系和法律实体：委托人授予受托人为受益人利益持有并管理财产所有权的权利。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-tr-tr:hasTrustee | 具有受托人（has trustee） | 将信托关联到具名受托人。 | 定义域（domain）：信托（trust）；值域（range）：受托人（trustee）；逆属性（inverseOf）：是……的受托人（is trustee of）；子属性（subPropertyOf）：受…影响（is affected by） |
-| fibo-be-tr-tr:isTrusteeOf | 是……的受托人（is trustee of） | 标识受托人对其拥有一定程度控制的信托。 | 定义域（domain）：受托人（trustee）；值域（range）：信托（trust）；子属性（subPropertyOf）：对…采取行动（acts on） |
+- 父类：**企业实体（BusinessEntity）**、**法律实体（LegalEntity）**
+- 直接子类：**不可撤销信托（irrevocable trust）**、**生前信托（living trust）**、**可撤销信托（revocable trust）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有受托人（has trustee）** | 将信托关联到具名受托人。 | 值域：受托人（trustee）；逆属性：是……的受托人（is trustee of）；子属性：受…影响（is affected by） |
+| **具有参与方角色（has party role）** | — | — |
+| **受……管辖（isGovernedBy）** | — | — |
 
-- **可撤销信托（revocable trust）**与**不可撤销信托（irrevocable trust）**互斥：同一个体不能同时属于两者。
-- **信托（trust）**：**受……管辖（isGovernedBy）**恰好有 1 个**信托协议（trust agreement）**。
-- **信托（trust）**：**具有参与方角色（has party role）**至少有一个取值，类型是**信托受益人（trust beneficiary）**。
-- **信托（trust）**：**具有参与方角色（has party role）**至少有一个取值，类型是**受托人（trustee）**。
-- **信托（trust）**：**具有参与方角色（has party role）**至少有一个取值，类型是**委托人（trustor）**。
-- **信托协议（trust agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**信托受益人（trust beneficiary）**。
-- **信托协议（trust agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**受托人（trustee）**。
-- **信托协议（trust agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**委托人（trustor）**。
-- **信托受益人（trust beneficiary）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**的所有取值只能是**信托协议（trust agreement）**。
-- **信托基金经理（trust fund manager）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**管理（manages）**的所有取值只能是**信托（trust）**。
-- **受托人（trustee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**信托（trust）**。
-- **受托人（trustee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**管理（manages）**的所有取值只能是**信托（trust）**。
-- **受托人（trustee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**恰好有 1 个**信托协议（trust agreement）**。
-- **委托人（trustor）**：**由…扮演（is played by）**的所有取值只能是**参与方（party）**。
-- **委托人（trustor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**恰好有 1 个**信托协议（trust agreement）**。
+公理：
 
-## 6. 依赖（owl:imports，12 个）
+- **具有参与方角色（has party role）**至少有一个取值，类型是**信托受益人（trust beneficiary）**。
+- **具有参与方角色（has party role）**至少有一个取值，类型是**受托人（trustee）**。
+- **具有参与方角色（has party role）**至少有一个取值，类型是**委托人（trustor）**。
+- **受……管辖（isGovernedBy）**恰好有 1 个**信托协议（trust agreement）**。
+
+#### 2.1.1 不可撤销信托（irrevocable trust）
+
+定义：除特定法律情形外不得修改、修订或终止的信托，通常须经授予人同意。
+
+- 父类：**信托（trust）**
+- 直接子类：**遗嘱信托（testamentary trust）**
+
+##### 2.1.1.1 遗嘱信托（testamentary trust）
+
+定义：按照遗嘱中的指示设立的信托。
+
+- 父类：**不可撤销信托（irrevocable trust）**
+
+#### 2.1.2 生前信托（living trust）
+
+定义：在个人生前设立的信托，由指定受托人负责为该个人利益管理其资产。
+
+- 父类：**信托（trust）**
+
+#### 2.1.3 可撤销信托（revocable trust）
+
+定义：信托财产的法定所有权转移给受托人、但委托人保留全部撤销、修改或修订权力的信托。
+
+- 父类：**信托（trust）**
+
+公理：
+
+- 与**不可撤销信托（irrevocable trust）**互斥：同一个体不能同时属于两者。
+
+### 2.2 信托协议（trust agreement）
+
+定义：设立信托的正式协议，委托人据此将持有和管理资产的责任赋予受托人，以为受益人谋利。
+
+- 父类：**组织基础协议（OrganizationCoveringAgreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有一个取值，类型是**信托受益人（trust beneficiary）**。
+- **具有参与方角色（has party role）**至少有一个取值，类型是**受托人（trustee）**。
+- **具有参与方角色（has party role）**至少有一个取值，类型是**委托人（trustor）**。
+
+### 2.3 信托受益人（trust beneficiary）
+
+定义：年金、转让（如信用证）、合同、保险单、判决、承诺、信托、遗嘱等为其利益而设的参与方。
+
+- 父类：**受益方（Beneficiary）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**的所有取值只能是**信托协议（trust agreement）**。
+
+### 2.4 信托基金经理（trust fund manager）
+
+定义：获授权代表受托人管理信托资产的参与方。
+
+- 父类：**法定受托权限（LegallyDelegatedAuthority）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**管理（manages）**的所有取值只能是**信托（trust）**。
+
+### 2.5 受托人（trustee）
+
+定义：为他人利益持有并管理资产的参与方。
+
+- 父类：**法定受托权限（LegallyDelegatedAuthority）**、**组织成员（OrganizationMember）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的受托人（is trustee of）** | 标识受托人对其拥有一定程度控制的信托。 | 值域：信托（trust）；子属性：对…采取行动（acts on） |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**信托（trust）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**恰好有 1 个**信托协议（trust agreement）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**管理（manages）**的所有取值只能是**信托（trust）**。
+
+### 2.6 委托人（trustor）
+
+定义：设立信托、并将财产置于一名或多名受托人的保护与管理之下以为至少一名受益人谋利的参与方。
+
+- 父类：**组织成员（OrganizationMember）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**的所有取值只能是**参与方（party）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**恰好有 1 个**信托协议（trust agreement）**。
+
+## 3. 依赖（owl:imports，12 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -90,7 +203,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`Trusts.rdf`
 - 中文 Turtle：`Trusts.ttl`

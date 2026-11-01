@@ -275,16 +275,16 @@ fibo-der-drc-comm:CommodityBasketConstituent a owl:Class ;
             owl:onProperty fibo-der-drc-comm:hasCommodityValueAsOfDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-pas-pas:Commodity ;
+            owl:onProperty fibo-fnd-rel-rel:involves ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
             owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValue ;
             owl:onProperty cmns-qtu:hasQuantityValue ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-pas-pas:Commodity ;
-            owl:onProperty fibo-fnd-rel-rel:involves ],
         fibo-fbc-pas-fpas:WeightedBasketConstituent ;
     skos:definition "component of a custom commodity basket whose relative importance with respect to other basket constituents is known" .
 
@@ -339,20 +339,20 @@ fibo-der-drc-comm:CommodityDerivativeUnderlier a owl:Class ;
     rdfs:comment "商品衍生品的标的，包括但不限于可转让商品本身。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:ExplicitDate ;
-            owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValue ;
             owl:onProperty cmns-qtu:hasQuantityValue ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-der-drc-comm:hasCommodityValueAsOfDate ],
+            owl:onClass cmns-dt:ExplicitDate ;
+            owl:onProperty fibo-fnd-dt-fd:hasAsOfDate ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-pas-pas:Commodity ;
             owl:onProperty fibo-fnd-rel-rel:involves ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-der-drc-comm:hasCommodityValueAsOfDate ],
         fibo-fbc-fi-fi:Underlier ;
     skos:definition "underlier of a commodity derivative, including, but not limited to, the negotiable commodity itself"@en ;
     cmns-av:explanatoryNote "The underlying of a commodity swap may include a physical commodity, or the price, or behavior of the price, or any other aspect of a physical commodity."@en .

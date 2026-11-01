@@ -14,6 +14,11 @@
 
 **与相近概念的差别**：与各国登记/监管机构本体的差别——收录范围是跨国与超国家机构，不是某国国内机构。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **商业标识代码数据记录（business identifier code data record）** 继承 **商业登记册条目（BusinessRegistryEntry）**
+- **市场标识代码登记册条目（market identifier code registry entry）** 继承 **注册簿条目（RegistryEntry）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -21,25 +26,53 @@
 | 商业标识代码数据记录（business identifier code data record） | 符合 ISO 9362 的登记册条目，用于管理 BIC 代码及相关注册信息。 |
 | 市场标识代码登记册条目（market identifier code registry entry） | 符合 ISO 10383 的市场标识代码（MIC）登记册条目。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 商业标识代码数据记录（business identifier code data record） ⊑ 商业登记册条目
-- 市场标识代码登记册条目（market identifier code registry entry） ⊑ 注册簿条目
+### 2.1 商业标识代码数据记录（business identifier code data record）
 
-## 5. 公理约定（Axioms）
+定义：符合 ISO 9362 的登记册条目，用于管理 BIC 代码及相关注册信息。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**商业登记册条目（BusinessRegistryEntry）**
 
-- **商业标识代码数据记录（business identifier code data record）**：**被包含于（isIncludedIn）**的取值固定为 BusinessIdentifierCodeRegistry。
-- **商业标识代码数据记录（business identifier code data record）**：**是否自行维护（isSelfMaintained）**至少有一个取值，类型是**xsd:string（string）**。
-- **商业标识代码数据记录（business identifier code data record）**：**包含（comprises）**至少有一个取值，类型是**商业标识代码（BusinessIdentifierCode）**。
-- **市场标识代码登记册条目（market identifier code registry entry）**：**被包含于（isIncludedIn）**的取值固定为 MarketIdentifierCodeRegistry。
-- **市场标识代码登记册条目（market identifier code registry entry）**：**具有登记状态修订日期（hasRegistrationRevisionDate）**存在取值约束。
-- **市场标识代码登记册条目（market identifier code registry entry）**：**具有市场标识代码状态（hasMarketIdentifierCodeStatus）**恰好有 1 个**市场标识代码状态（MarketIdentifierCodeStatus）**。
-- **市场标识代码登记册条目（market identifier code registry entry）**：**具有初始登记日期（hasInitialRegistrationDate）**存在取值约束。
-- **市场标识代码登记册条目（market identifier code registry entry）**：**包含（comprises）**至少有一个取值，类型是**市场标识符（MarketIdentifier）**。
+属性：
 
-## 6. 依赖（owl:imports，20 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是否自行维护（isSelfMaintained）** | — | — |
+| **包含（comprises）** | — | — |
+| **被包含于（isIncludedIn）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**商业标识代码（BusinessIdentifierCode）**。
+- **是否自行维护（isSelfMaintained）**至少有一个取值，类型是**xsd:string（string）**。
+- **被包含于（isIncludedIn）**的取值固定为 BusinessIdentifierCodeRegistry。
+
+### 2.2 市场标识代码登记册条目（market identifier code registry entry）
+
+定义：符合 ISO 10383 的市场标识代码（MIC）登记册条目。
+
+- 父类：**注册簿条目（RegistryEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有初始登记日期（hasInitialRegistrationDate）** | — | — |
+| **具有登记状态修订日期（hasRegistrationRevisionDate）** | — | — |
+| **具有市场标识代码状态（hasMarketIdentifierCodeStatus）** | — | — |
+| **包含（comprises）** | — | — |
+| **被包含于（isIncludedIn）** | — | — |
+
+公理：
+
+- **具有初始登记日期（hasInitialRegistrationDate）**存在取值约束。
+- **具有市场标识代码状态（hasMarketIdentifierCodeStatus）**恰好有 1 个**市场标识代码状态（MarketIdentifierCodeStatus）**。
+- **具有登记状态修订日期（hasRegistrationRevisionDate）**存在取值约束。
+- **包含（comprises）**至少有一个取值，类型是**市场标识符（MarketIdentifier）**。
+- **被包含于（isIncludedIn）**的取值固定为 MarketIdentifierCodeRegistry。
+
+## 3. 依赖（owl:imports，20 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -66,7 +99,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/` | LCC ISO 3166-1 国家代码（ISO 3166-1 Country Codes） | LCC 中 ISO 3166-1 标准的国家/地区代码个体集（如 CN、US、MX），供法域与地址建模引用。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`InternationalRegistriesAndAuthorities.rdf`
 - 中文 Turtle：`InternationalRegistriesAndAuthorities.ttl`

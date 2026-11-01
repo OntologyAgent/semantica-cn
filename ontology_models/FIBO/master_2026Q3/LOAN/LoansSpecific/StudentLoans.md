@@ -14,6 +14,13 @@
 
 **与相近概念的差别**：与普通消费贷款的差别——有入学宽限期、还款常与毕业挂钩，且在美国多有政府担保背景；与绿色贷款一样，「学生」是用途与政策属性而非结构属性。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **私人学生贷款（private student loan）** 继承 **受监管学生贷款（regulated student loan）**
+- **私人学生贷款（private student loan）** 继承 **学生贷款（student loan）**
+- **受监管学生贷款（regulated student loan）** 继承 **学生贷款（student loan）**
+- **学生贷款（student loan）** 继承 **贷款（Loan）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -22,20 +29,39 @@
 | 受监管学生贷款（regulated student loan） | 贷款人为政府机构或部属单位、和/或因税务规定而获特殊对待的学生贷款。 |
 | 学生贷款（student loan） | 为教育目的提供的贷款，允许学生及其父母/监护人为上大学借款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 私人学生贷款（private student loan） ⊑ 受监管学生贷款（regulated student loan）
-- 私人学生贷款（private student loan） ⊑ 学生贷款（student loan）
-- 受监管学生贷款（regulated student loan） ⊑ 学生贷款（student loan）
-- 学生贷款（student loan） ⊑ 贷款
+### 2.1 学生贷款（student loan）
 
-## 5. 公理约定（Axioms）
+定义：为教育目的提供的贷款，允许学生及其父母/监护人为上大学借款。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**贷款（Loan）**
+- 直接子类：**私人学生贷款（private student loan）**、**受监管学生贷款（regulated student loan）**
 
-- **学生贷款（student loan）**：**具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+属性：
 
-## 6. 依赖（owl:imports，6 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有借款人（hasBorrower）** | — | — |
+
+公理：
+
+- **具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+
+#### 2.1.1 私人学生贷款（private student loan）
+
+定义：不属于政府支持/监管贷款的学生贷款。
+
+- 父类：**受监管学生贷款（regulated student loan）**、**学生贷款（student loan）**
+
+#### 2.1.2 受监管学生贷款（regulated student loan）
+
+定义：贷款人为政府机构或部属单位、和/或因税务规定而获特殊对待的学生贷款。
+
+- 父类：**学生贷款（student loan）**
+- 直接子类：**私人学生贷款（private student loan）**
+
+## 3. 依赖（owl:imports，6 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -48,7 +74,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`StudentLoans.rdf`
 - 中文 Turtle：`StudentLoans.ttl`

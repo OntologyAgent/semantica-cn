@@ -8,27 +8,39 @@
 
 本本体定义用于在其他 FIBO 本体元素中表示文档的抽象概念。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **财务记录（financial record）** 继承 **集合（Collection）**
+- **财务记录（financial record）** 继承 **记录（Record）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 财务记录（financial record） | 财务信息的记录。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 财务记录（financial record） ⊑ 集合
-- 财务记录（financial record） ⊑ 记录
+### 2.1 财务记录（financial record）
 
-## 3. 对象属性（Object Property）
+定义：财务信息的记录。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-arr-doc:hasExpirationDate | 具有到期日（has expiration date） | 将某事物（通常是协议、合同、文档或易腐物品）与其到期日关联起来。 | 值域（range）：日期；子属性（subPropertyOf）：具有结束日期 |
-| fibo-fnd-arr-doc:hasRecord | 具有记录（has record） | 将某事物关联到与其相关的记录。 | 值域（range）：记录；子属性（subPropertyOf）：包含 |
-| fibo-fnd-arr-doc:hasReportingPeriod | 具有报告期（has reporting period） | 指定报告或其他内容（如市场利率、经济指标）适用的报告期。 | 值域（range）：显式日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-fnd-arr-doc:hasTerminationDate | 具有终止日（has termination date） | 将某事物（通常是协议、合同、文档或流程）与其计划或实际终止日期关联起来。 | 值域（range）：日期；子属性（subPropertyOf）：具有结束日期 |
+- 父类：**集合（Collection）**、**记录（Record）**
 
-## 6. 依赖（owl:imports，5 个）
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有到期日（has expiration date）** | 将某事物（通常是协议、合同、文档或易腐物品）与其到期日关联起来。 | 值域：日期；子属性：具有结束日期 |
+| **具有记录（has record）** | 将某事物关联到与其相关的记录。 | 值域：记录；子属性：包含 |
+| **具有报告期（has reporting period）** | 指定报告或其他内容（如市场利率、经济指标）适用的报告期。 | 值域：显式日期区间；子属性：具有日期区间 |
+| **具有终止日（has termination date）** | 将某事物（通常是协议、合同、文档或流程）与其计划或实际终止日期关联起来。 | 值域：日期；子属性：具有结束日期 |
+
+## 4. 依赖（owl:imports，5 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -40,7 +52,7 @@
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Documents.rdf`
 - 中文 Turtle：`Documents.ttl`

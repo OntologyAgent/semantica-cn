@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：存托凭证≠股票本身——它是存托银行发行的「代表凭证」，底层股票由银行托管在境外；持有人享有经济权益但表决权行使受存托协议约束。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **美国存托凭证（American depositary receipt）** 继承 **存托凭证（depositary receipt）**
+- **美国存托凭证级别（American depositary receipt level）** 继承 **金融工具分类器（FinancialInstrumentClassifier）**
+- **美国存托凭证级别方案（American depositary receipt level scheme）** 继承 **金融工具分类方案（FinancialInstrumentClassificationScheme）**
+- **中国存托凭证（Chinese depositary receipt）** 继承 **全球存托凭证（global depositary receipt）**
+- **欧洲存托凭证（European depositary receipt）** 继承 **全球存托凭证（global depositary receipt）**
+- **香港存托凭证（Hong Kong depositary receipt）** 继承 **全球存托凭证（global depositary receipt）**
+- **印度存托凭证（Indian depositary receipt）** 继承 **全球存托凭证（global depositary receipt）**
+- **日本存托凭证（Japanese depositary receipt）** 继承 **全球存托凭证（global depositary receipt）**
+- **卢森堡存托凭证（Luxembourg depositary receipt）** 继承 **全球存托凭证（global depositary receipt）**
+- **存托凭证（depositary receipt）** 继承 **证券（Security）**
+- **全球存托凭证（global depositary receipt）** 继承 **存托凭证（depositary receipt）**
+- **离岸存托凭证（offshore depositary receipt）** 继承 **有保荐存托凭证（sponsored depositary receipt）**
+- 其余 5 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -35,64 +51,258 @@
 | 有保荐存托凭证（sponsored depositary receipt） | 与外国公司合作发行、使其能够直接进入国际资本市场的存托凭证。 |
 | 无保荐存托凭证（unsponsored depositary receipt） | 未经该公司合作而设立的存托凭证。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 美国存托凭证（American depositary receipt） ⊑ 存托凭证（depositary receipt）
-- 美国存托凭证级别（American depositary receipt level） ⊑ 金融工具分类器
-- 美国存托凭证级别方案（American depositary receipt level scheme） ⊑ 金融工具分类方案
-- 中国存托凭证（Chinese depositary receipt） ⊑ 全球存托凭证（global depositary receipt）
-- 欧洲存托凭证（European depositary receipt） ⊑ 全球存托凭证（global depositary receipt）
-- 香港存托凭证（Hong Kong depositary receipt） ⊑ 全球存托凭证（global depositary receipt）
-- 印度存托凭证（Indian depositary receipt） ⊑ 全球存托凭证（global depositary receipt）
-- 日本存托凭证（Japanese depositary receipt） ⊑ 全球存托凭证（global depositary receipt）
-- 卢森堡存托凭证（Luxembourg depositary receipt） ⊑ 全球存托凭证（global depositary receipt）
-- 存托凭证（depositary receipt） ⊑ 证券
-- 全球存托凭证（global depositary receipt） ⊑ 存托凭证（depositary receipt）
-- 离岸存托凭证（offshore depositary receipt） ⊑ 有保荐存托凭证（sponsored depositary receipt）
-- 参与票据（participatory note） ⊑ 可交易债务工具
-- 参与票据（participatory note） ⊑ 存托凭证（depositary receipt）
-- 私募存托凭证（privately placed depositary receipt） ⊑ 有保荐存托凭证（sponsored depositary receipt）
-- 有保荐存托凭证（sponsored depositary receipt） ⊑ 美国存托凭证（American depositary receipt）
-- 无保荐存托凭证（unsponsored depositary receipt） ⊑ 美国存托凭证（American depositary receipt）
+### 2.1 美国存托凭证级别（American depositary receipt level）
 
-## 3. 对象属性（Object Property）
+定义：按外国公司进入美国市场程度对美国存托凭证（ADR）进行分级的分类器。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-eq-dr:hasTradedSecurity | 具有所代表证券（has traded security） | 将存托凭证与其所代表的工具关联起来。 | 定义域（domain）：存托凭证（depositary receipt）；值域（range）：证券；子属性（subPropertyOf）：指代 |
-| fibo-sec-eq-dr:hasTradedShare | 具有所代表股份（has traded share） | 将存托凭证与其所代表的工具（股票或交易所交易基金）关联起来。 | 定义域（domain）：存托凭证（depositary receipt）；值域（range）：股份；子属性（subPropertyOf）：具有所代表证券（has traded security） |
+- 父类：**金融工具分类器（FinancialInstrumentClassifier）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-sec-eq-dr:hasMultiplier | 具有乘数（has multiplier） | 指明单张存托凭证所代表的标的股份数量（可为多股或零碎股）。 |
-| fibo-sec-eq-dr:hasNumberOfDepositaryReceiptsIssued | 具有存托凭证发行数量（has number of depositary receipts issued） | 指明向公众发行的凭证数量。 |
+| **分类（classifies）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **分类（classifies）**至少有一个取值，类型是**美国存托凭证（American depositary receipt）**。
+- **定义于（isDefinedIn）**至少有一个取值，类型是**美国存托凭证级别方案（American depositary receipt level scheme）**。
 
-- **美国存托凭证（American depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 UnitedStatesJurisdiction。
-- **美国存托凭证（American depositary receipt）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**美国存托凭证级别（American depositary receipt level）**。
-- **美国存托凭证级别（American depositary receipt level）**：**分类（classifies）**至少有一个取值，类型是**美国存托凭证（American depositary receipt）**。
-- **美国存托凭证级别（American depositary receipt level）**：**定义于（isDefinedIn）**至少有一个取值，类型是**美国存托凭证级别方案（American depositary receipt level scheme）**。
-- **美国存托凭证级别方案（American depositary receipt level scheme）**：**定义（defines）**至少有一个取值，类型是**美国存托凭证级别（American depositary receipt level）**。
-- **中国存托凭证（Chinese depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfTheRepublicOfChina。
-- **欧洲存托凭证（European depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 EuropeanUnionJurisdiction。
-- **香港存托凭证（Hong Kong depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfHongKong。
-- **印度存托凭证（Indian depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfIndia。
-- **日本存托凭证（Japanese depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfJapan。
-- **卢森堡存托凭证（Luxembourg depositary receipt）**：**法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfLuxembourg。
-- **存托凭证（depositary receipt）**：**具有乘数（has multiplier）**存在取值约束。
-- **存托凭证（depositary receipt）**：**具有所代表证券（has traded security）**至少有一个取值，类型是**证券（Security）**。
-- **离岸存托凭证（offshore depositary receipt）**：**具有限制（hasRestriction）**的取值固定为 RegulationS。
-- **参与票据（participatory note）**：**具有所代表证券（has traded security）**至少有一个取值，类型是**可交易债务工具（TradableDebtInstrument）**。
-- **私募存托凭证（privately placed depositary receipt）**：**具有限制（hasRestriction）**的取值固定为 Rule144A。
-- **无保荐存托凭证（unsponsored depositary receipt）**：**由……分类（isClassifiedBy）**的取值固定为 LevelIAmericanDepositaryReceipt。
-- **无保荐存托凭证（unsponsored depositary receipt）**与**有保荐存托凭证（sponsored depositary receipt）**互斥：同一个体不能同时属于两者。
+### 2.2 美国存托凭证级别方案（American depositary receipt level scheme）
 
-## 6. 依赖（owl:imports，15 个）
+定义：按外国公司进入美国市场程度对美国存托凭证（ADR）进行分级的方案。
+
+- 父类：**金融工具分类方案（FinancialInstrumentClassificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**美国存托凭证级别（American depositary receipt level）**。
+
+### 2.3 存托凭证（depositary receipt）
+
+定义：由信托公司、证券存管机构或银行签发的可转让金融工具，是公开交易证券存托的凭证。
+
+- 父类：**证券（Security）**
+- 直接子类：**美国存托凭证（American depositary receipt）**、**全球存托凭证（global depositary receipt）**、**参与票据（participatory note）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有乘数（has multiplier）** | 指明单张存托凭证所代表的标的股份数量（可为多股或零碎股）。 | 值域：xsd:decimal |
+| **具有存托凭证发行数量（has number of depositary receipts issued）** | 指明向公众发行的凭证数量。 | 值域：xsd:positiveInteger |
+| **具有所代表证券（has traded security）** | 将存托凭证与其所代表的工具关联起来。 | 值域：证券；子属性：指代 |
+| **具有所代表股份（has traded share）** | 将存托凭证与其所代表的工具（股票或交易所交易基金）关联起来。 | 值域：股份；子属性：具有所代表证券（has traded security） |
+
+公理：
+
+- **具有乘数（has multiplier）**存在取值约束。
+- **具有所代表证券（has traded security）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.3.1 美国存托凭证（American depositary receipt）
+
+定义：代表外国公司证券、使该公司证券得以在美国金融市场交易的存托凭证（ADR）。
+
+- 父类：**存托凭证（depositary receipt）**
+- 直接子类：**有保荐存托凭证（sponsored depositary receipt）**、**无保荐存托凭证（unsponsored depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **法律登记于（isLegallyRecordedIn）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **法律登记于（isLegallyRecordedIn）**的取值固定为 UnitedStatesJurisdiction。
+- **由……分类（isClassifiedBy）**可以有 0 个或多个**美国存托凭证级别（American depositary receipt level）**。
+
+##### 2.3.1.1 有保荐存托凭证（sponsored depositary receipt）
+
+定义：与外国公司合作发行、使其能够直接进入国际资本市场的存托凭证。
+
+- 父类：**美国存托凭证（American depositary receipt）**
+- 直接子类：**离岸存托凭证（offshore depositary receipt）**、**私募存托凭证（privately placed depositary receipt）**
+
+###### 2.3.1.1.1 离岸存托凭证（offshore depositary receipt）
+
+定义：依美国证券交易委员会（SEC）S 条例发行的存托凭证。
+
+- 父类：**有保荐存托凭证（sponsored depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有限制（hasRestriction）** | — | — |
+
+公理：
+
+- **具有限制（hasRestriction）**的取值固定为 RegulationS。
+
+###### 2.3.1.1.2 私募存托凭证（privately placed depositary receipt）
+
+定义：代表依美国证券交易委员会（SEC）144A 规则私募配售之股份的存托凭证。
+
+- 父类：**有保荐存托凭证（sponsored depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有限制（hasRestriction）** | — | — |
+
+公理：
+
+- **具有限制（hasRestriction）**的取值固定为 Rule144A。
+
+##### 2.3.1.2 无保荐存托凭证（unsponsored depositary receipt）
+
+定义：未经该公司合作而设立的存托凭证。
+
+- 父类：**美国存托凭证（American depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**的取值固定为 LevelIAmericanDepositaryReceipt。
+- 与**有保荐存托凭证（sponsored depositary receipt）**互斥：同一个体不能同时属于两者。
+
+#### 2.3.2 全球存托凭证（global depositary receipt）
+
+定义：由购入外国公司证券的存托银行签发凭证、在本地交易所创设证券的存托凭证（GDR）。
+
+- 父类：**存托凭证（depositary receipt）**
+- 直接子类：**中国存托凭证（Chinese depositary receipt）**、**欧洲存托凭证（European depositary receipt）**、**香港存托凭证（Hong Kong depositary receipt）**、**印度存托凭证（Indian depositary receipt）**、**日本存托凭证（Japanese depositary receipt）**、**卢森堡存托凭证（Luxembourg depositary receipt）**
+
+##### 2.3.2.1 中国存托凭证（Chinese depositary receipt）
+
+定义：代表非中国公司证券所有权、在中国境内公开交易所交易的全球存托凭证（CDR）。
+
+- 父类：**全球存托凭证（global depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **法律登记于（isLegallyRecordedIn）** | — | — |
+
+公理：
+
+- **法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfTheRepublicOfChina。
+
+##### 2.3.2.2 欧洲存托凭证（European depositary receipt）
+
+定义：代表非欧洲公司证券所有权、在欧洲金融市场交易的全球存托凭证（EDR）。
+
+- 父类：**全球存托凭证（global depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **法律登记于（isLegallyRecordedIn）** | — | — |
+
+公理：
+
+- **法律登记于（isLegallyRecordedIn）**的取值固定为 EuropeanUnionJurisdiction。
+
+##### 2.3.2.3 香港存托凭证（Hong Kong depositary receipt）
+
+定义：代表购买或拥有存放于香港存托银行之外国资产的全球存托凭证（HDR）。
+
+- 父类：**全球存托凭证（global depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **法律登记于（isLegallyRecordedIn）** | — | — |
+
+公理：
+
+- **法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfHongKong。
+
+##### 2.3.2.4 印度存托凭证（Indian depositary receipt）
+
+定义：代表购买或拥有存放于印度账户（由境内托管人管理）之外国资产的全球存托凭证（IDR）。
+
+- 父类：**全球存托凭证（global depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **法律登记于（isLegallyRecordedIn）** | — | — |
+
+公理：
+
+- **法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfIndia。
+
+##### 2.3.2.5 日本存托凭证（Japanese depositary receipt）
+
+定义：代表购买或拥有存放于日本信托银行之外国资产的全球存托凭证（JDR）。
+
+- 父类：**全球存托凭证（global depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **法律登记于（isLegallyRecordedIn）** | — | — |
+
+公理：
+
+- **法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfJapan。
+
+##### 2.3.2.6 卢森堡存托凭证（Luxembourg depositary receipt）
+
+定义：代表购买或拥有存放于卢森堡账户之外国资产的全球存托凭证。
+
+- 父类：**全球存托凭证（global depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **法律登记于（isLegallyRecordedIn）** | — | — |
+
+公理：
+
+- **法律登记于（isLegallyRecordedIn）**的取值固定为 JurisdictionOfLuxembourg。
+
+#### 2.3.3 参与票据（participatory note）
+
+定义：便于持有在其他司法管辖区交易之证券的可交易债务工具。
+
+- 父类：**可交易债务工具（TradableDebtInstrument）**、**存托凭证（depositary receipt）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有所代表证券（has traded security）** | 将存托凭证与其所代表的工具关联起来。 | 值域：证券；子属性：指代 |
+
+公理：
+
+- **具有所代表证券（has traded security）**至少有一个取值，类型是**可交易债务工具（TradableDebtInstrument）**。
+
+## 3. 依赖（owl:imports，15 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -114,7 +324,7 @@
 | `https://www.omg.org/spec/Commons/Classifiers/` | OMG 通用分类器本体（OMG Commons Classifiers） | OMG 通用本体库（Commons）中的分类器本体，定义分类方案、类别与归类关系的通用概念，FIBO 的分类建模建立在其上。 |
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`DepositaryReceipts.rdf`
 - 中文 Turtle：`DepositaryReceipts.ttl`

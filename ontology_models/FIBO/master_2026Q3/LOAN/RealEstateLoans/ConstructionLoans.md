@@ -14,34 +14,51 @@
 
 **与相近概念的差别**：与普通抵押贷款的差别——放款方式不同（按进度分批而非一次性），风险形态不同（建设风险＋市场风险），期限短。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **建设贷款（construction loan）** 继承 **信贷额度（CreditFacility）**
+- **建设贷款（construction loan）** 继承 **主协议（MasterAgreement）**
+- **建设贷款（construction loan）** 继承 **抵押贷款（CollateralizedLoan）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 建设贷款（construction loan） | 覆盖建设与开发成本、以所融资房产之抵押作担保的贷款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 建设贷款（construction loan） ⊑ 信贷额度
-- 建设贷款（construction loan） ⊑ 主协议
-- 建设贷款（construction loan） ⊑ 抵押贷款
+### 2.1 建设贷款（construction loan）
 
-## 3. 对象属性（Object Property）
+定义：覆盖建设与开发成本、以所融资房产之抵押作担保的贷款。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-loan-reln-cnst:hasMaximumAllowedBalance | 具有最高允许余额（has maximum allowed balance） | 对具有灵活再提取安排的贷款，任何时点允许未偿的最高余额（低于信用额度）。 | 定义域（domain）：Nc4e07ed8e90d4499b354bac269ee4990；值域（range）：货币数量；子属性（subPropertyOf）：具有可用金额 |
-| fibo-loan-reln-cnst:hasMaximumAnticipatedBalance | 具有最高预期余额（has maximum anticipated balance） | 借款人出于规划目的预计可能需要的最高余额（低于信用额度）。 | 定义域（domain）：N86210715067a40bf946426e949eb7abe；值域（range）：货币数量；子属性（subPropertyOf）：具有可用金额 |
-| fibo-loan-reln-cnst:hasMilestoneMaximumDrawdownAmount | 具有里程碑最高提取额（has milestone maximum drawdown amount） | 里程碑完成后借款人可提取的最高贷款金额。 | 定义域（domain）：合同里程碑；值域（range）：货币数量；子属性（subPropertyOf）：具有可用金额 |
+- 父类：**信贷额度（CreditFacility）**、**主协议（MasterAgreement）**、**抵押贷款（CollateralizedLoan）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **以……为抵押（isCollateralizedBy）** | — | — |
+| **具有里程碑条款（hasMilestoneProvision）** | — | — |
 
-- **建设贷款（construction loan）**：**具有里程碑条款（hasMilestoneProvision）**可以有 0 个或多个**合同里程碑（ContractMilestone）**。
-- **建设贷款（construction loan）**：**以……为抵押（isCollateralizedBy）**可以有 0 个或多个**不动产（RealProperty）**。
+公理：
 
-## 6. 依赖（owl:imports，9 个）
+- **以……为抵押（isCollateralizedBy）**可以有 0 个或多个**不动产（RealProperty）**。
+- **具有里程碑条款（hasMilestoneProvision）**可以有 0 个或多个**合同里程碑（ContractMilestone）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有最高允许余额（has maximum allowed balance）** | 对具有灵活再提取安排的贷款，任何时点允许未偿的最高余额（低于信用额度）。 | 值域：货币数量；子属性：具有可用金额 |
+| **具有最高预期余额（has maximum anticipated balance）** | 借款人出于规划目的预计可能需要的最高余额（低于信用额度）。 | 值域：货币数量；子属性：具有可用金额 |
+| **具有里程碑最高提取额（has milestone maximum drawdown amount）** | 里程碑完成后借款人可提取的最高贷款金额。 | 值域：货币数量；子属性：具有可用金额 |
+
+## 4. 依赖（owl:imports，9 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -57,7 +74,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/Classifiers/` | OMG 通用分类器本体（OMG Commons Classifiers） | OMG 通用本体库（Commons）中的分类器本体，定义分类方案、类别与归类关系的通用概念，FIBO 的分类建模建立在其上。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`ConstructionLoans.rdf`
 - 中文 Turtle：`ConstructionLoans.ttl`

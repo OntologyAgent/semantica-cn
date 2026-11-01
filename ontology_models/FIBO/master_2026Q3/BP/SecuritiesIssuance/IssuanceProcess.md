@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与 SEC/Securities/SecuritiesIssuance 的差别——SEC 本体建模发行的「结果与条款」（发行了什么、条件如何），本本体建模发行的「过程」（怎么走流程）；一静一动，互相引用。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **配售信息（allotment information）** 继承 **交易工具发行流程信息（traded instrument issuance process information）**
+- **公告（announcement）** 继承 **发行流程活动（IssuanceProcessActivity）**
+- **竞争性销售方式（competitive sale method）** 继承 **证券发行销售方式（security offering sale method）**
+- **发行流程活动（issuance process activity）** 继承 **发生类别（OccurrenceKind）**
+- **发行认购信息（issue subscription information）** 继承 **交易工具发行流程信息（traded instrument issuance process information）**
+- **已发行证券发行信息（issued security issue information）** 继承 **文件（Document）**
+- **协议销售方式（negotiated sale method）** 继承 **证券发行销售方式（security offering sale method）**
+- **发行（offering）** 继承 **发行流程活动（IssuanceProcessActivity）**
+- **潜在发行人（potential issuer）** 继承 **证券发行流程参与者（securities issuance process actor）**
+- **潜在承销商（potential underwriter）** 继承 **证券发行流程参与者（securities issuance process actor）**
+- **主标识符签发方（primary identifier issuer）** 继承 **合同第三方（ContractThirdParty）**
+- **一级证券发行分销（primary security offering distribution）** 继承 **证券发行分销方式（security offering distribution method）**
+- 其余 14 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -44,94 +60,333 @@
 | 承销商承销量（underwriter takedown） | 承销商经手的证券承销数量信息（将记入 DTC）。 |
 | 承销流程细节（underwriting process details） | 本次发行承销特有的信息。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 配售信息（allotment information） ⊑ 交易工具发行流程信息（traded instrument issuance process information）
-- 公告（announcement） ⊑ 发行流程活动
-- 竞争性销售方式（competitive sale method） ⊑ 证券发行销售方式（security offering sale method）
-- 发行流程活动（issuance process activity） ⊑ 发生类别
-- 发行认购信息（issue subscription information） ⊑ 交易工具发行流程信息（traded instrument issuance process information）
-- 已发行证券发行信息（issued security issue information） ⊑ 文件
-- 协议销售方式（negotiated sale method） ⊑ 证券发行销售方式（security offering sale method）
-- 发行（offering） ⊑ 发行流程活动
-- 潜在发行人（potential issuer） ⊑ 证券发行流程参与者（securities issuance process actor）
-- 潜在承销商（potential underwriter） ⊑ 证券发行流程参与者（securities issuance process actor）
-- 主标识符签发方（primary identifier issuer） ⊑ 合同第三方
-- 一级证券发行分销（primary security offering distribution） ⊑ 证券发行分销方式（security offering distribution method）
-- 注册信息（registration information） ⊑ 交易工具发行流程信息（traded instrument issuance process information）
-- 二级证券发行分销（secondary security offering distribution） ⊑ 证券发行分销方式（security offering distribution method）
-- 证券发行流程参与者（securities issuance process actor） ⊑ 智能体角色（agent role）
-- 证券发行担保人（security issuance guarantor） ⊑ 证券发行流程参与者（securities issuance process actor）
-- 证券发行分销方式（security offering distribution method） ⊑ 分配策略
-- 证券发行销售方式（security offering sale method） ⊑ 销售策略
-- 认购人（subscriber） ⊑ 智能体角色（agent role）
-- 认购截止信息（subscription closing information） ⊑ 交易工具发行流程信息（traded instrument issuance process information）
-- 交易工具发行流程信息（traded instrument issuance process information） ⊑ 文件
-- 承销商承销量（underwriter takedown） ⊑ 承销流程细节（underwriting process details）
-- 承销流程细节（underwriting process details） ⊑ 交易工具发行流程信息（traded instrument issuance process information）
+### 2.1 公告（announcement）
 
-## 3. 对象属性（Object Property）
+定义：关于发行的公告。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-bp-iss-prc:actualClosingDate | 实际截止日（actual closing date） | 证券承销商完成收尾的日期。 | 定义域（domain）：已发行证券发行信息（issued security issue information）；值域（range）：日期 |
-| fibo-bp-iss-prc:announcementDate | 公告日期（announcement date） | 发行人公告的证券拟发行并随后实际发行的日期时间。 | 定义域（domain）：已发行证券发行信息（issued security issue information）；值域（range）：日期 |
-| fibo-bp-iss-prc:describesAllotmentOf | 描述……的配售（describes allotment of） | 描述某证券的配售情况。 | 定义域（domain）：配售信息（allotment information）；值域（range）：证券；子属性（subPropertyOf）：关于 |
-| fibo-bp-iss-prc:expectedClosingDate | 预期截止日（expected closing date） | 预期向承销商划转头寸的日期，由承销商在公告中提供。 | 定义域（domain）：发行（offering）；值域（range）：日期 |
-| fibo-bp-iss-prc:finalStateDescribedIn | 最终状态描述于（final state described in） | 标识描述某过程最终状态的文件。 | 定义域（domain）：证券发行；值域（range）：最终招募说明书 |
-| fibo-bp-iss-prc:firstTradeDate | 首个交易日（first trade date） | 该证券在二级市场上首次交易的日期。 | 定义域（domain）：已发行证券发行信息（issued security issue information）；值域（range）：日期 |
-| fibo-bp-iss-prc:firstTradeDateAndTime | 首次交易日期时间（first trade date and time） | 该证券可执行首笔交易的日期时间，均以东部时区为准。 | 定义域（domain）：发行（offering）；值域（range）：日期时间 |
-| fibo-bp-iss-prc:firstTradeSettlementDate | 首次交易结算日（first trade settlement date） | 发行人与承销商就债券进行资金交收的日期。 | 定义域（domain）：已发行证券发行信息（issued security issue information）；值域（range）：日期 |
-| fibo-bp-iss-prc:formalAwardDateAndTime | 正式授标日期时间（formal award date and time） | 发行人正式接受竞标（竞争性发行）或签署债券购买协议（协议发行）的日期时间。 | 定义域（domain）：发行（offering）；值域（range）：日期时间 |
-| fibo-bp-iss-prc:hasDistributionType | 具有分销类型（has distribution type） | 标识证券发行的分销类型。 | — |
-| fibo-bp-iss-prc:hasPartiallyPaidIssuanceSchedule | 具有分期缴付发行进度表（has partially paid issuance schedule） | 分期缴付发行：分期付款及日期的进度表。 | 定义域（domain）：已发行证券发行信息（issued security issue information）；值域（range）：支付进度表 |
-| fibo-bp-iss-prc:hasSaleMethod | 具有销售方式（has sale method） | 标识证券的销售方式。 | 定义域（domain）：发行（offering）；值域（range）：证券发行销售方式（security offering sale method） |
-| fibo-bp-iss-prc:isIssuanceGuarantor | 是发行担保人（is issuance guarantor） | 标识为发行提供担保的参与方。 | 定义域（domain）：证券发行担保人（security issuance guarantor）；值域（range）：证券发行流程（securities issuance process） |
-| fibo-bp-iss-prc:isPotentialIssuer | 是潜在发行人（is potential issuer） | 标识潜在的发行参与方。 | 定义域（domain）：潜在发行人（potential issuer）；值域（range）：证券发行流程（securities issuance process） |
-| fibo-bp-iss-prc:requiredToMakeEligible | 使合格所需（required to make eligible） | 使证券达到合格条件所要求的事项。 | 定义域（domain）：发行（offering）；值域（range）：发行文件 |
-| fibo-bp-iss-prc:subscriptionPeriod | 认购期间（subscription period） | 证券可被认购的期间。 | 定义域（domain）：发行认购信息（issue subscription information）；值域（range）：日期区间 |
-| fibo-bp-iss-prc:takenDownBy | 由……承销（taken down by） | 标识承销该证券的承销商。 | 定义域（domain）：承销商承销量（underwriter takedown）；值域（range）：市政债发行承销商 |
+- 父类：**发行流程活动（IssuanceProcessActivity）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-bp-iss-prc:issueNominalNumberOfUnits | 发行名义单位数（issue nominal number of units） | 发行证券的原始总数量。 |
-| fibo-bp-iss-prc:issueOfferingUnits | 发行发售单位数（issue offering units） | 股票或公司债券发行中发售的全部证券数量。 |
-| fibo-bp-iss-prc:minimumIssueSubscription | 最低发行认购额（minimum issue subscription） | 证券转让或所有权变更所需的最低或增量面额。 |
-| fibo-bp-iss-prc:overAlloted | 超额配售（over alloted） | 认购人是否被超额配售了所请求的单位数。 |
-| fibo-bp-iss-prc:offerIssueSeries | 系列（series） | 一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。 |
-| fibo-bp-iss-prc:series | 系列（series） | 一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。 |
-| fibo-bp-iss-prc:subscriptionAmount | 认购数量（subscription amount） | 单个认购人获配的发行单位数。 |
-| fibo-bp-iss-prc:underwriterTakedownShares | 承销商承销股数（underwriter takedown shares） | 承销商经手的证券承销数量（将记入 DTC）。 |
+| **发行请求方（offeringRequestor）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **发行请求方（offeringRequestor）**至少有一个取值，类型是**潜在发行人（potential issuer）**。
 
-- **配售信息（allotment information）**：**描述……的配售（describes allotment of）**至少有一个取值，类型是**证券（Security）**。
-- **配售信息（allotment information）**：**包含（comprises）**至少有一个取值，类型是**认购截止信息（subscription closing information）**。
-- **公告（announcement）**：**发行请求方（offeringRequestor）**至少有一个取值，类型是**潜在发行人（potential issuer）**。
-- **发行计划（issuance programme）**：**包含（comprises）**至少有一个取值，类型是**证券发行（SecuritiesOffering）**。
-- **已发行证券发行信息（issued security issue information）**：**具有分期缴付发行进度表（has partially paid issuance schedule）**的所有取值只能是**支付进度表（PaymentSchedule）**。
-- **已发行证券发行信息（issued security issue information）**：**关于（isAbout）**至少有一个取值，类型是**证券（Security）**。
-- **发行（offering）**：**具有分销类型（has distribution type）**至少有一个取值，类型是**证券发行分销方式（security offering distribution method）**。
-- **发行（offering）**：**具有销售方式（has sale method）**至少有一个取值，类型是**证券发行销售方式（security offering sale method）**。
-- **发行（offering）**：**使合格所需（required to make eligible）**至少有一个取值，类型是**发行文件（OfferingDocument）**。
-- **发行（offering）**：**fibo-bp-iss-muni:givesRiseTo（givesRiseTo）**至少有一个取值，类型是**已发行证券发行信息（issued security issue information）**。
-- **潜在发行人（potential issuer）**：**是潜在发行人（is potential issuer）**至少有一个取值，类型是**证券发行流程（securities issuance process）**。
-- **证券发行流程（securities issuance process）**：**具有发行担保人（hasIssuanceGuarantor）**至少有一个取值，类型是**证券发行担保人（security issuance guarantor）**。
-- **证券发行流程（securities issuance process）**：**具有潜在发行人（hasPotentialIssuer）**至少有一个取值，类型是**潜在发行人（potential issuer）**。
-- **证券发行流程（securities issuance process）**：**fibo-bp-iss-muni:subscriber.1（subscriber.1）**至少有一个取值，类型是**认购人（subscriber）**。
-- **证券发行流程（securities issuance process）**：**生产（produces）**至少有一个取值，类型是**交易工具发行流程信息（traded instrument issuance process information）**。
-- **证券发行担保人（security issuance guarantor）**：**是发行担保人（is issuance guarantor）**至少有一个取值，类型是**证券发行流程（securities issuance process）**。
-- **认购人（subscriber）**：**认购（subscribesTo）**至少有一个取值，类型是**证券承销发行流程（SecuritiesUnderwritingIssuanceProcess）**。
-- **认购截止信息（subscription closing information）**：**适用于（appliesTo）**至少有一个取值，类型是**认购人（subscriber）**。
-- **交易工具发行流程信息（traded instrument issuance process information）**：**是……的部分（isPartOf）**至少有一个取值，类型是**已发行证券发行信息（issued security issue information）**。
-- **承销商承销量（underwriter takedown）**：**承销商承销股数（underwriter takedown shares）**存在取值约束。
-- **承销商承销量（underwriter takedown）**：**由……承销（taken down by）**至少有一个取值，类型是**市政债发行承销商（MuniIssueUnderwriter）**。
+### 2.2 发行流程活动（issuance process activity）
 
-## 6. 依赖（owl:imports，19 个）
+定义：证券发行流程中的一项活动。
+
+- 父类：**发生类别（OccurrenceKind）**
+
+### 2.3 发行计划（issuance programme）
+
+定义：一段时间内的一系列发行。
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**证券发行（SecuritiesOffering）**。
+
+### 2.4 已发行证券发行信息（issued security issue information）
+
+定义：与发行准备/推向市场（即一级市场或 IPO 发行）直至发行完成相关的要素。
+
+- 父类：**文件（Document）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **实际截止日（actual closing date）** | 证券承销商完成收尾的日期。 | 值域：日期 |
+| **公告日期（announcement date）** | 发行人公告的证券拟发行并随后实际发行的日期时间。 | 值域：日期 |
+| **首个交易日（first trade date）** | 该证券在二级市场上首次交易的日期。 | 值域：日期 |
+| **首次交易结算日（first trade settlement date）** | 发行人与承销商就债券进行资金交收的日期。 | 值域：日期 |
+| **具有分期缴付发行进度表（has partially paid issuance schedule）** | 分期缴付发行：分期付款及日期的进度表。 | 值域：支付进度表 |
+| **发行名义单位数（issue nominal number of units）** | 发行证券的原始总数量。 | 值域：xsd:integer |
+| **系列（series）** | 一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。 | 值域：xsd:string |
+| **关于（isAbout）** | — | — |
+
+公理：
+
+- **关于（isAbout）**至少有一个取值，类型是**证券（Security）**。
+- **具有分期缴付发行进度表（has partially paid issuance schedule）**的所有取值只能是**支付进度表（PaymentSchedule）**。
+
+### 2.5 发行（offering）
+
+定义：将证券提供发行的流程步骤，即通过承销使新证券发行可得。
+
+- 父类：**发行流程活动（IssuanceProcessActivity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **预期截止日（expected closing date）** | 预期向承销商划转头寸的日期，由承销商在公告中提供。 | 值域：日期 |
+| **首次交易日期时间（first trade date and time）** | 该证券可执行首笔交易的日期时间，均以东部时区为准。 | 值域：日期时间 |
+| **正式授标日期时间（formal award date and time）** | 发行人正式接受竞标（竞争性发行）或签署债券购买协议（协议发行）的日期时间。 | 值域：日期时间 |
+| **具有分销类型（has distribution type）** | 标识证券发行的分销类型。 | — |
+| **具有销售方式（has sale method）** | 标识证券的销售方式。 | 值域：证券发行销售方式（security offering sale method） |
+| **使合格所需（required to make eligible）** | 使证券达到合格条件所要求的事项。 | 值域：发行文件 |
+| **fibo-bp-iss-muni:givesRiseTo（givesRiseTo）** | — | — |
+
+公理：
+
+- **fibo-bp-iss-muni:givesRiseTo（givesRiseTo）**至少有一个取值，类型是**已发行证券发行信息（issued security issue information）**。
+- **使合格所需（required to make eligible）**至少有一个取值，类型是**发行文件（OfferingDocument）**。
+- **具有分销类型（has distribution type）**至少有一个取值，类型是**证券发行分销方式（security offering distribution method）**。
+- **具有销售方式（has sale method）**至少有一个取值，类型是**证券发行销售方式（security offering sale method）**。
+
+### 2.6 主标识符签发方（primary identifier issuer）
+
+定义：正式向证券签发主要证券标识符的参与方。
+
+- 父类：**合同第三方（ContractThirdParty）**
+
+### 2.7 证券发行流程（securities issuance process）
+
+定义：金融证券发行的过程。
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发行担保人（hasIssuanceGuarantor）** | — | — |
+| **具有潜在发行人（hasPotentialIssuer）** | — | — |
+| **fibo-bp-iss-muni:subscriber.1（subscriber.1）** | — | — |
+| **生产（produces）** | — | — |
+
+公理：
+
+- **fibo-bp-iss-muni:subscriber.1（subscriber.1）**至少有一个取值，类型是**认购人（subscriber）**。
+- **具有发行担保人（hasIssuanceGuarantor）**至少有一个取值，类型是**证券发行担保人（security issuance guarantor）**。
+- **具有潜在发行人（hasPotentialIssuer）**至少有一个取值，类型是**潜在发行人（potential issuer）**。
+- **生产（produces）**至少有一个取值，类型是**交易工具发行流程信息（traded instrument issuance process information）**。
+
+### 2.8 证券发行流程参与者（securities issuance process actor）
+
+定义：证券发行流程中的参与者。
+
+- 父类：**智能体角色（agent role）**
+- 直接子类：**潜在发行人（potential issuer）**、**潜在承销商（potential underwriter）**、**证券发行担保人（security issuance guarantor）**
+
+#### 2.8.1 潜在发行人（potential issuer）
+
+定义：将成为发行人的实体。
+
+- 父类：**证券发行流程参与者（securities issuance process actor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是潜在发行人（is potential issuer）** | 标识潜在的发行参与方。 | 值域：证券发行流程（securities issuance process） |
+
+公理：
+
+- **是潜在发行人（is potential issuer）**至少有一个取值，类型是**证券发行流程（securities issuance process）**。
+
+#### 2.8.2 潜在承销商（potential underwriter）
+
+定义：将成为本次发行承销商的实体。
+
+- 父类：**证券发行流程参与者（securities issuance process actor）**
+
+#### 2.8.3 证券发行担保人（security issuance guarantor）
+
+定义：为证券发行提供担保的参与方。
+
+- 父类：**证券发行流程参与者（securities issuance process actor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是发行担保人（is issuance guarantor）** | 标识为发行提供担保的参与方。 | 值域：证券发行流程（securities issuance process） |
+
+公理：
+
+- **是发行担保人（is issuance guarantor）**至少有一个取值，类型是**证券发行流程（securities issuance process）**。
+
+### 2.9 证券发行分销方式（security offering distribution method）
+
+定义：证券发行的分销类型。
+
+- 父类：**分配策略（DistributionStrategy）**
+- 直接子类：**一级证券发行分销（primary security offering distribution）**、**二级证券发行分销（secondary security offering distribution）**
+
+#### 2.9.1 一级证券发行分销（primary security offering distribution）
+
+定义：公司证券的原始销售，销售收入直接归公司所有。
+
+- 父类：**证券发行分销方式（security offering distribution method）**
+
+#### 2.9.2 二级证券发行分销（secondary security offering distribution）
+
+定义：对先前已发行证券的发行分销。
+
+- 父类：**证券发行分销方式（security offering distribution method）**
+
+### 2.10 证券发行销售方式（security offering sale method）
+
+定义：新证券发行的销售方式。
+
+- 父类：**销售策略（SalesStrategy）**
+- 直接子类：**竞争性销售方式（competitive sale method）**、**协议销售方式（negotiated sale method）**
+
+#### 2.10.1 竞争性销售方式（competitive sale method）
+
+定义：通过竞标方式销售新发行证券的方式。
+
+- 父类：**证券发行销售方式（security offering sale method）**
+
+#### 2.10.2 协议销售方式（negotiated sale method）
+
+定义：通过与承销商协商方式销售新发行证券的方式。
+
+- 父类：**证券发行销售方式（security offering sale method）**
+
+### 2.11 认购人（subscriber）
+
+定义：认购发行证券的参与方。
+
+- 父类：**智能体角色（agent role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **认购（subscribesTo）** | — | — |
+
+公理：
+
+- **认购（subscribesTo）**至少有一个取值，类型是**证券承销发行流程（SecuritiesUnderwritingIssuanceProcess）**。
+
+### 2.12 交易工具发行流程信息（traded instrument issuance process information）
+
+定义：由发行流程产生的、关于一次证券发行的信息。注意：一个发行流程（发行）可对应多次发行。
+
+- 父类：**文件（Document）**
+- 直接子类：**配售信息（allotment information）**、**发行认购信息（issue subscription information）**、**注册信息（registration information）**、**认购截止信息（subscription closing information）**、**承销流程细节（underwriting process details）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的部分（isPartOf）** | — | — |
+
+公理：
+
+- **是……的部分（isPartOf）**至少有一个取值，类型是**已发行证券发行信息（issued security issue information）**。
+
+#### 2.12.1 配售信息（allotment information）
+
+定义：关于向不同认购人配售发行数量的信息，关联单笔工具配售与认购。
+
+- 父类：**交易工具发行流程信息（traded instrument issuance process information）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **描述……的配售（describes allotment of）** | 描述某证券的配售情况。 | 值域：证券；子属性：关于 |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**认购截止信息（subscription closing information）**。
+- **描述……的配售（describes allotment of）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.12.2 发行认购信息（issue subscription information）
+
+定义：与本次发行认购相关的信息。
+
+- 父类：**交易工具发行流程信息（traded instrument issuance process information）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **最低发行认购额（minimum issue subscription）** | 证券转让或所有权变更所需的最低或增量面额。 | 值域：xsd:decimal |
+| **认购期间（subscription period）** | 证券可被认购的期间。 | 值域：日期区间 |
+
+#### 2.12.3 注册信息（registration information）
+
+定义：与注册制证券的注册相关的信息。
+
+- 父类：**交易工具发行流程信息（traded instrument issuance process information）**
+
+#### 2.12.4 认购截止信息（subscription closing information）
+
+定义：与认购截止相关的信息。
+
+- 父类：**交易工具发行流程信息（traded instrument issuance process information）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **超额配售（over alloted）** | 认购人是否被超额配售了所请求的单位数。 | 值域：xsd:boolean |
+| **认购数量（subscription amount）** | 单个认购人获配的发行单位数。 | 值域：xsd:integer |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**认购人（subscriber）**。
+
+#### 2.12.5 承销流程细节（underwriting process details）
+
+定义：本次发行承销特有的信息。
+
+- 父类：**交易工具发行流程信息（traded instrument issuance process information）**
+- 直接子类：**承销商承销量（underwriter takedown）**
+
+##### 2.12.5.1 承销商承销量（underwriter takedown）
+
+定义：承销商经手的证券承销数量信息（将记入 DTC）。
+
+- 父类：**承销流程细节（underwriting process details）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……承销（taken down by）** | 标识承销该证券的承销商。 | 值域：市政债发行承销商 |
+| **承销商承销股数（underwriter takedown shares）** | 承销商经手的证券承销数量（将记入 DTC）。 | 值域：xsd:integer |
+
+公理：
+
+- **承销商承销股数（underwriter takedown shares）**存在取值约束。
+- **由……承销（taken down by）**至少有一个取值，类型是**市政债发行承销商（MuniIssueUnderwriter）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **最终状态描述于（final state described in）** | 标识描述某过程最终状态的文件。 | 值域：最终招募说明书 |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **发行发售单位数（issue offering units）** | 股票或公司债券发行中发售的全部证券数量。 |
+| **系列（series）** | 一次发行中具有相同预期截止日、唯一标识的证券集合；或单个交易金融证券的系列标识。 |
+
+## 4. 依赖（owl:imports，19 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -157,7 +412,7 @@
 | `https://www.omg.org/spec/Commons/Identifiers/` | OMG 通用标识符本体（OMG Commons Identifiers） | Commons 库中的标识符本体，定义标识符及其编码方案的通用概念。 |
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`IssuanceProcess.rdf`
 - 中文 Turtle：`IssuanceProcess.ttl`

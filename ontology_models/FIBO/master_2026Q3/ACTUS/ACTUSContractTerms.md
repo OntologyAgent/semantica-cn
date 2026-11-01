@@ -14,6 +14,20 @@
 
 **与相近概念的差别**：FND/Agreements/Contracts 建模的是通用合同结构（当事方、条款、义务），而本本体建模的是让合约现金流可以被算法精确计算的参数集——一个面向法律语义，一个面向计算。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **ACTUS 营业日惯例（ACTUS business day convention）** 继承 **代码元素（CodeElement）**
+- **ACTUS 营业日惯例（ACTUS business day convention）** 继承 **mvf:VocabularyEntry（VocabularyEntry）**
+- **ACTUS 日历代码（ACTUS calendar code）** 继承 **代码元素（CodeElement）**
+- **ACTUS 日历代码（ACTUS calendar code）** 继承 **mvf:VocabularyEntry（VocabularyEntry）**
+- **ACTUS 合同角色分类符（ACTUS contract role classifier）** 继承 **分类符（Classifier）**
+- **ACTUS 合同角色分类符（ACTUS contract role classifier）** 继承 **代码元素（CodeElement）**
+- **ACTUS 合同角色分类符（ACTUS contract role classifier）** 继承 **mvf:VocabularyEntry（VocabularyEntry）**
+- **ACTUS 合同条款（ACTUS contract term）** 继承 **代码元素（CodeElement）**
+- **ACTUS 合同条款（ACTUS contract term）** 继承 **mvf:VocabularyEntry（VocabularyEntry）**
+- **ACTUS 字典术语组（ACTUS dictionary term group）** 继承 **分类符（Classifier）**
+- **ACTUS 字典术语组（ACTUS dictionary term group）** 继承 **mvf:VocabularyEntry（VocabularyEntry）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -24,51 +38,124 @@
 | ACTUS 合同条款（ACTUS contract term） | 表示一个或多个 ACTUS 合同类型之某方面条款的代码。 |
 | ACTUS 字典术语组（ACTUS dictionary term group） | 对通常一起使用的一组 ACTUS 字典参数的分类符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- ACTUS 营业日惯例（ACTUS business day convention） ⊑ 代码元素
-- ACTUS 营业日惯例（ACTUS business day convention） ⊑ mvf:VocabularyEntry
-- ACTUS 日历代码（ACTUS calendar code） ⊑ 代码元素
-- ACTUS 日历代码（ACTUS calendar code） ⊑ mvf:VocabularyEntry
-- ACTUS 合同角色分类符（ACTUS contract role classifier） ⊑ 分类符
-- ACTUS 合同角色分类符（ACTUS contract role classifier） ⊑ 代码元素
-- ACTUS 合同角色分类符（ACTUS contract role classifier） ⊑ mvf:VocabularyEntry
-- ACTUS 合同条款（ACTUS contract term） ⊑ 代码元素
-- ACTUS 合同条款（ACTUS contract term） ⊑ mvf:VocabularyEntry
-- ACTUS 字典术语组（ACTUS dictionary term group） ⊑ 分类符
-- ACTUS 字典术语组（ACTUS dictionary term group） ⊑ mvf:VocabularyEntry
+### 2.1 ACTUS 营业日惯例（ACTUS business day convention）
 
-## 4. 数据属性（Datatype Property）
+定义：ACTUS 支持的一组营业日惯例之一的代码元素。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**代码元素（CodeElement）**、**mvf:VocabularyEntry（VocabularyEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-actus-act:hasOptionSequenceNumber | 具有选项序号（has option sequence number） | 指明可选元素在枚举列表中的出现次序。 |
-| fibo-actus-act:hasParameterMapping | 具有参数映射（has parameter mapping） | 将 ACTUS 数据字典中定义的定量或定性参数映射到其他事物（如 FIBO 中规定的属性）。 |
-| fibo-actus-act:hasParameterName | 具有参数名（has parameter name） | 将名称与 ACTUS 数据字典中定义的定量或定性因子关联，该因子用作一个或多个合同类型分类的条件。 |
+| **被包含于（isIncludedIn）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
 
-- **ACTUS 营业日惯例（ACTUS business day convention）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
-- **ACTUS 营业日惯例（ACTUS business day convention）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
-- **ACTUS 日历代码（ACTUS calendar code）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
-- **ACTUS 日历代码（ACTUS calendar code）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
-- **ACTUS 合同角色分类符（ACTUS contract role classifier）**：**由……分类（isClassifiedBy）**的取值固定为 ACTUSContractTermGroup-ContractIdentification。
-- **ACTUS 合同角色分类符（ACTUS contract role classifier）**：**分类（classifies）**至少有一个取值，类型是**角色（role）**。
-- **ACTUS 合同角色分类符（ACTUS contract role classifier）**：**指代（denotes）**至少有一个取值，类型是**角色（role）**。
-- **ACTUS 合同条款（ACTUS contract term）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
-- **ACTUS 合同条款（ACTUS contract term）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
-- **ACTUS 合同条款（ACTUS contract term）**：**具有参数名（has parameter name）**存在取值约束。
-- **ACTUS 合同条款（ACTUS contract term）**：**刻画（characterizes）**至少有一个取值，类型是**ACTUS 合同类型（ACTUSContractType）**。
-- **ACTUS 合同条款（ACTUS contract term）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**ACTUS 字典术语组（ACTUS dictionary term group）**。
-- **ACTUS 合同条款（ACTUS contract term）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
-- **ACTUS 合同条款（ACTUS contract term）**：**具有文本名称（hasTextualName）**至少有一个取值，类型是**xsd:string（string）**。
-- **ACTUS 字典术语组（ACTUS dictionary term group）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
-- **ACTUS 字典术语组（ACTUS dictionary term group）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
-- **ACTUS 字典术语组（ACTUS dictionary term group）**：**分类（classifies）**至少有一个取值，类型是**ACTUS 合同条款（ACTUS contract term）**。
+### 2.2 ACTUS 日历代码（ACTUS calendar code）
 
-## 6. 依赖（owl:imports，13 个）
+定义：适用于特定合同的日历代码。
+
+- 父类：**代码元素（CodeElement）**、**mvf:VocabularyEntry（VocabularyEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **被包含于（isIncludedIn）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+
+### 2.3 ACTUS 合同角色分类符（ACTUS contract role classifier）
+
+定义：对合同当事方在处理合同时所涉各类角色的分类符。
+
+- 父类：**分类符（Classifier）**、**代码元素（CodeElement）**、**mvf:VocabularyEntry（VocabularyEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **指代（denotes）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**角色（role）**。
+- **指代（denotes）**至少有一个取值，类型是**角色（role）**。
+- **由……分类（isClassifiedBy）**的取值固定为 ACTUSContractTermGroup-ContractIdentification。
+
+### 2.4 ACTUS 合同条款（ACTUS contract term）
+
+定义：表示一个或多个 ACTUS 合同类型之某方面条款的代码。
+
+- 父类：**代码元素（CodeElement）**、**mvf:VocabularyEntry（VocabularyEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参数名（has parameter name）** | 将名称与 ACTUS 数据字典中定义的定量或定性因子关联，该因子用作一个或多个合同类型分类的条件。 | 子属性：具有文本值 |
+| **刻画（characterizes）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **被包含于（isIncludedIn）** | — | — |
+| **具有标签（hasTag）** | — | — |
+| **具有文本名称（hasTextualName）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **具有参数名（has parameter name）**存在取值约束。
+- **具有文本名称（hasTextualName）**至少有一个取值，类型是**xsd:string（string）**。
+- **具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **刻画（characterizes）**至少有一个取值，类型是**ACTUS 合同类型（ACTUSContractType）**。
+- **定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**ACTUS 字典术语组（ACTUS dictionary term group）**。
+- **被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+
+### 2.5 ACTUS 字典术语组（ACTUS dictionary term group）
+
+定义：对通常一起使用的一组 ACTUS 字典参数的分类符。
+
+- 父类：**分类符（Classifier）**、**mvf:VocabularyEntry（VocabularyEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **被包含于（isIncludedIn）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**ACTUS 合同条款（ACTUS contract term）**。
+- **定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+- **被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesDataDictionary。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有选项序号（has option sequence number）** | 指明可选元素在枚举列表中的出现次序。 |
+| **具有参数映射（has parameter mapping）** | 将 ACTUS 数据字典中定义的定量或定性参数映射到其他事物（如 FIBO 中规定的属性）。 |
+
+## 4. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -88,7 +175,7 @@
 | `https://www.omg.org/spec/Commons/TextDatatype/` | OMG 通用文本数据类型（OMG Commons Text Datatype） | Commons 库中的文本数据类型定义，提供带语言标记的文本等基础数据类型。 |
 | `https://www.omg.org/spec/MVF/MultipleVocabularyFacility/` | OMG 多词汇设施（OMG Multiple Vocabulary Facility，MVF） | OMG 的多词汇设施规范本体，提供词汇表与概念映射的元模型，供 ACTUS 等外部词汇与 FIBO 概念对接使用。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`ACTUSContractTerms.rdf`
 - 中文 Turtle：`ACTUSContractTerms.ttl`

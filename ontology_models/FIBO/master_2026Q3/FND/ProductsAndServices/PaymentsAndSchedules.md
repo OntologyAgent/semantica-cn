@@ -14,6 +14,17 @@
 
 **与相近概念的差别**：计划表≠实际付款——计划表是约定的付款安排（应付），付款是实际发生的资金转移（实付）；逾期分析就是两者对照。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **收款人（payee）** 继承 **权利人（Obligee）**
+- **付款人（payer）** 继承 **义务人（Obligor）**
+- **支付（payment）** 继承 **发生事项（Occurrence）**
+- **支付事件（payment event）** 继承 **交易事件（TransactionEvent）**
+- **支付义务（payment obligation）** 继承 **承诺（Commitment）**
+- **支付义务（payment obligation）** 继承 **责任（Duty）**
+- **支付进度表（payment schedule）** 继承 **进度表（Schedule）**
+- **支付（payment）** 通过 **履行义务（fulfills obligation）** 关联 **支付义务（payment obligation）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -25,39 +36,122 @@
 | 支付义务（payment obligation） | 按合同所载条款支付一定金额的可法律强制执行的责任。 |
 | 支付进度表（payment schedule） | 为履行义务而交付货币的进度表。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 收款人（payee） ⊑ 权利人
-- 付款人（payer） ⊑ 义务人
-- 支付（payment） ⊑ 发生事项
-- 支付事件（payment event） ⊑ 交易事件
-- 支付义务（payment obligation） ⊑ 承诺
-- 支付义务（payment obligation） ⊑ 责任
-- 支付进度表（payment schedule） ⊑ 进度表
+### 2.1 收款人（payee）
 
-## 3. 对象属性（Object Property）
+定义：债务应支付给的一方，或汇票、本票、支票的指定受款人，或收到或将收到付款的一方。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-pas-psch:fulfillsObligation | 履行义务（fulfills obligation） | 满足某项请求权、债务或其他义务的支付要求。 | 定义域（domain）：支付（payment）；值域（range）：支付义务（payment obligation） |
-| fibo-fnd-pas-psch:hasPaymentAmount | 具有支付金额（has payment amount） | 指明支付所涉及的货币金额。 | 定义域（domain）：支付（payment）；值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-fnd-pas-psch:hasPaymentSchedule | 具有支付进度表（has payment schedule） | 指明履行义务的进度表。 | 值域（range）：支付进度表（payment schedule）；子属性（subPropertyOf）：具有进度表 |
+- 父类：**权利人（Obligee）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
 
-- **收款人（payee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**支付义务（payment obligation）**。
-- **付款人（payer）**：**具有义务（hasObligation）**的所有取值只能是**支付义务（payment obligation）**。
-- **支付（payment）**：**具有支付金额（has payment amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
-- **支付事件（payment event）**：**涉及（involves）**恰好有 1 个**支付（payment）**。
-- **支付事件（payment event）**：**适用于（appliesTo）**恰好有 1 个**支付义务（payment obligation）**。
-- **支付义务（payment obligation）**：**由……授予（isConferredBy）**的所有取值只能是**合同（Contract）**。
-- **支付义务（payment obligation）**：**属于义务人（isObligationOf）**至少有一个取值，类型是**付款人（payer）**。
-- **支付义务（payment obligation）**：**具有参与方角色（has party role）**至少有一个取值，类型是**收款人（payee）**。
-- **支付进度表（payment schedule）**：**具有成员（hasMember）**至少有一个取值，类型是**支付（payment）**。
+公理：
 
-## 6. 依赖（owl:imports，14 个）
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**支付义务（payment obligation）**。
+
+### 2.2 付款人（payer）
+
+定义：支付账单或费用、或为部分或全部履行义务而向收款人付款的一方。
+
+- 父类：**义务人（Obligor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有义务（hasObligation）** | — | — |
+
+公理：
+
+- **具有义务（hasObligation）**的所有取值只能是**支付义务（payment obligation）**。
+
+### 2.3 支付（payment）
+
+定义：为履行义务（如清偿请求权或债务）而交付货币。
+
+- 父类：**发生事项（Occurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **履行义务（fulfills obligation）** | 满足某项请求权、债务或其他义务的支付要求。 | 值域：支付义务（payment obligation） |
+| **具有支付金额（has payment amount）** | 指明支付所涉及的货币金额。 | 值域：货币数量；子属性：具有货币数量 |
+
+公理：
+
+- **具有支付金额（has payment amount）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+
+### 2.4 支付事件（payment event）
+
+定义：涉及为履行义务而交付货币的事件。
+
+- 父类：**交易事件（TransactionEvent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **涉及（involves）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **涉及（involves）**恰好有 1 个**支付（payment）**。
+- **适用于（appliesTo）**恰好有 1 个**支付义务（payment obligation）**。
+
+### 2.5 支付义务（payment obligation）
+
+定义：按合同所载条款支付一定金额的可法律强制执行的责任。
+
+- 父类：**承诺（Commitment）**、**责任（Duty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **属于义务人（isObligationOf）** | — | — |
+| **由……授予（isConferredBy）** | — | — |
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有一个取值，类型是**收款人（payee）**。
+- **属于义务人（isObligationOf）**至少有一个取值，类型是**付款人（payer）**。
+- **由……授予（isConferredBy）**的所有取值只能是**合同（Contract）**。
+
+### 2.6 支付进度表（payment schedule）
+
+定义：为履行义务而交付货币的进度表。
+
+- 父类：**进度表（Schedule）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**支付（payment）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有支付进度表（has payment schedule）** | 指明履行义务的进度表。 | 值域：支付进度表（payment schedule）；子属性：具有进度表 |
+
+## 4. 依赖（owl:imports，14 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -78,7 +172,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`PaymentsAndSchedules.rdf`
 - 中文 Turtle：`PaymentsAndSchedules.ttl`

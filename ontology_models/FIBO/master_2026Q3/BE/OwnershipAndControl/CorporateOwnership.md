@@ -14,6 +14,16 @@
 
 **与相近概念的差别**：受益所有权不等于名义持有——登记在册的股东可能只是代持人，真正享有经济利益的是受益所有人，这是反洗钱监管关注的重点。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **受益所有人（beneficial owner）** 继承 **所有者（Owner）**
+- **受益所有权（beneficial ownership）** 继承 **所有权（Ownership）**
+- **购入批（purchase lot）** 继承 **金融资产（FinancialAsset）**
+- **股东（shareholder）** 继承 **章程性所有者（ConstitutionalOwner）**
+- **股东（shareholder）** 继承 **交易对手（Counterparty）**
+- **持股（shareholding）** 继承 **金融资产（FinancialAsset）**
+- **税务批（tax lot）** 继承 **金融资产（FinancialAsset）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -25,43 +35,111 @@
 | 持股（shareholding） | 以赋予财务权利和治理特权的股份所代表的对公司股权的所有权权益。 |
 | 税务批（tax lot） | 为税务申报目的具有独立成本基础的一批证券或其他金融资产。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 受益所有人（beneficial owner） ⊑ 所有者
-- 受益所有权（beneficial ownership） ⊑ 所有权
-- 购入批（purchase lot） ⊑ 金融资产
-- 股东（shareholder） ⊑ 章程性所有者
-- 股东（shareholder） ⊑ 交易对手
-- 持股（shareholding） ⊑ 金融资产
-- 税务批（tax lot） ⊑ 金融资产
+### 2.1 受益所有人（beneficial owner）
 
-## 3. 对象属性（Object Property）
+定义：即使某物的所有权（名义）可能登记在他人名下，仍享有其所有权利益（如获得收入）的参与方。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-oac-cown:hasBeneficialOwner | 具有受益所有人（has beneficial owner） | 标识在受益所有权情形中保留其所拥资产之权利的参与方。 | 定义域（domain）：资产；值域（range）：受益所有人（beneficial owner）；子属性（subPropertyOf）：是……的资产 |
-| fibo-be-oac-cown:isBeneficialOwnerOf | 是……的受益所有人（is beneficial owner of） | 标识受益所有人在受益所有权情形中持有权利（通常为表决权、管理权等）的资产。 | 定义域（domain）：受益所有人（beneficial owner）；值域（range）：资产；逆属性（inverseOf）：具有受益所有人（has beneficial owner）；子属性（subPropertyOf）：拥有资产 |
+- 父类：**所有者（Owner）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-be-oac-cown:consistsOfNumberOfUnits | 由……单位组成（consists of number of units） | 标识……的单位数量。 |
+| **是……的受益所有人（is beneficial owner of）** | 标识受益所有人在受益所有权情形中持有权利（通常为表决权、管理权等）的资产。 | 值域：资产；逆属性：具有受益所有人（has beneficial owner）；子属性：拥有资产 |
+| **由…扮演（is played by）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **是……的受益所有人（is beneficial owner of）**至少有一个取值，类型是**资产（Asset）**。
+- **由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
 
-- **受益所有人（beneficial owner）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **受益所有人（beneficial owner）**：**是……的受益所有人（is beneficial owner of）**至少有一个取值，类型是**资产（Asset）**。
-- **受益所有权（beneficial ownership）**：**具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**资产（Asset）**。
-- **受益所有权（beneficial ownership）**：**具有所有方（hasOwningParty）**至少有一个取值，类型是**受益所有人（beneficial owner）**。
-- **受益所有权（beneficial ownership）**：**由……注册（isRegisteredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **购入批（purchase lot）**：**由……单位组成（consists of number of units）**存在取值约束。
-- **持股（shareholding）**：**由……单位组成（consists of number of units）**存在取值约束。
-- **税务批（tax lot）**：**由……单位组成（consists of number of units）**存在取值约束。
+### 2.2 受益所有权（beneficial ownership）
 
-## 6. 依赖（owl:imports，11 个）
+定义：将享有所有权利益（如获得收入）的参与方与名义所有权可能在他人名下之事物相关联的情形。
+
+- 父类：**所有权（Ownership）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有自有资产（hasOwnedAsset）** | — | — |
+| **具有所有方（hasOwningParty）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+
+公理：
+
+- **具有所有方（hasOwningParty）**至少有一个取值，类型是**受益所有人（beneficial owner）**。
+- **具有自有资产（hasOwnedAsset）**至少有一个取值，类型是**资产（Asset）**。
+- **由……注册（isRegisteredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.3 购入批（purchase lot）
+
+定义：在给定日期以特定价格一次性买入的一批证券或其他金融资产。
+
+- 父类：**金融资产（FinancialAsset）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……单位组成（consists of number of units）** | 标识……的单位数量。 | 值域：xsd:decimal；子属性：具有金额 |
+
+公理：
+
+- **由……单位组成（consists of number of units）**存在取值约束。
+
+### 2.4 股东（shareholder）
+
+定义：拥有某资产股份、并以投资换取相应权利与责任的参与方。
+
+- 父类：**章程性所有者（ConstitutionalOwner）**、**交易对手（Counterparty）**
+
+### 2.5 持股（shareholding）
+
+定义：以赋予财务权利和治理特权的股份所代表的对公司股权的所有权权益。
+
+- 父类：**金融资产（FinancialAsset）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……单位组成（consists of number of units）** | 标识……的单位数量。 | 值域：xsd:decimal；子属性：具有金额 |
+
+公理：
+
+- **由……单位组成（consists of number of units）**存在取值约束。
+
+### 2.6 税务批（tax lot）
+
+定义：为税务申报目的具有独立成本基础的一批证券或其他金融资产。
+
+- 父类：**金融资产（FinancialAsset）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……单位组成（consists of number of units）** | 标识……的单位数量。 | 值域：xsd:decimal；子属性：具有金额 |
+
+公理：
+
+- **由……单位组成（consists of number of units）**存在取值约束。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有受益所有人（has beneficial owner）** | 标识在受益所有权情形中保留其所拥资产之权利的参与方。 | 值域：受益所有人（beneficial owner）；子属性：是……的资产 |
+
+## 4. 依赖（owl:imports，11 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -79,7 +157,7 @@
 | `https://www.omg.org/spec/Commons/RegistrationAuthorities/` | OMG 通用登记主管机构本体（OMG Commons Registration Authorities） | Commons 库中的登记主管机构本体，定义负责登记注册的主管机构及其登记行为的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`CorporateOwnership.rdf`
 - 中文 Turtle：`CorporateOwnership.ttl`

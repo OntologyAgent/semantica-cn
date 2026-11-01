@@ -116,11 +116,11 @@ fibo-fbc-dae-gty:InsurancePolicy a owl:Class ;
         "保险单（insurance policy）"@zh ;
     rdfs:comment "一种合同：（1）使赔偿责任保障生效；（2）作为保险协议的法律凭证；（3）列明保险的确切条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
-            owl:someValuesFrom fibo-fbc-dae-gty:Insurer ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasCounterparty ;
             owl:someValuesFrom fibo-fbc-dae-gty:Policyholder ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
+            owl:someValuesFrom fibo-fbc-dae-gty:Insurer ],
         fibo-fnd-agr-ctr:WrittenContract ;
     skos:definition "contract that (1) puts an indemnity cover into effect, (2) serves as a legal evidence of the insurance agreement, (3) sets out the exact terms on which the indemnity cover has been provided, and (4) states associated information such as the (a) specific risks and perils covered, (b) duration of coverage, (c) amount of premium, (d) mode of premium payment, and (e) deductibles, if any" ;
     cmns-av:synonym "insurance contract" .
@@ -279,20 +279,20 @@ fibo-fbc-dae-gty:Guaranty a owl:Class ;
     rdfs:comment "一种承诺：当承担首要责任的一方未能履约时，由担保方正式保证相关事项得到履行。"@zh ;
     rdfs:isDefinedBy fibo-fbc-dae-gty: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fbc-dae-gty:PriorityLevel ;
-            owl:onProperty fibo-fbc-dae-gty:hasPriorityLevel ],
+            owl:allValuesFrom cmns-dt:Date ;
+            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fbc-dae-gty:hasGuaranteedAmount ],
         [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fbc-dae-gty:Guarantor ;
-            owl:onProperty fibo-fbc-dae-gty:isGuaranteedBy ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cmns-dt:Date ;
-            owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ],
+            owl:allValuesFrom fibo-fbc-dae-gty:PriorityLevel ;
+            owl:onProperty fibo-fbc-dae-gty:hasPriorityLevel ],
         [ a owl:Restriction ;
             owl:allValuesFrom cmns-dt:DatePeriod ;
             owl:onProperty cmns-pts:holdsDuring ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fbc-dae-gty:Guarantor ;
+            owl:onProperty fibo-fbc-dae-gty:isGuaranteedBy ],
         fibo-fnd-agr-agr:Commitment ;
     skos:definition "commitment whereby something is formally assured if a party with primary liability fails to perform" ;
     cmns-av:adaptedFrom "Barron's Dictionary of Business and Economics Terms, Fifth Edition, 2012" ;

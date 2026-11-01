@@ -26,24 +26,55 @@
 | 注册标识符方案（RegistrationIdentifierScheme） | 按签发注册机构规定注册标识符的方案。 |
 | 宗教公司（ReligiousCorporation） | 目标特定于某套基本信仰与实践的非营利公司。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
+### 2.1 董事会协议（BoardAgreement）
 
-## 3. 对象属性（Object Property）
+定义：组织董事会成员之间正式的、具有法律约束力的协议。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-corp-corp:hasDateOfIncorporation | 具有注册成立日期（hasDateOfIncorporation） | 标识申报文件中所载的正式注册成立日期。 | — |
-| fibo-be-corp-corp:hasDateOfRegistration | 具有登记日期（hasDateOfRegistration） | 标识公司为监管和/或税务目的在某管辖区登记的日期。 | — |
-| fibo-be-corp-corp:hasIssuedCapital | 具有已发行资本（hasIssuedCapital） | 标识股东所持全部股份的总价值。 | — |
+### 2.2 合股公司（JointStockCompany）
 
-## 4. 数据属性（Datatype Property）
+定义：营利性、非法人企业，兼有公司与合伙的特征，所有权权益以股份表示。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+### 2.3 私人持股公司（PrivatelyHeldCompany）
+
+定义：已发行股份全部由家族或少数投资者团体持有、公众无法购买的公司。
+
+### 2.4 公众持股公司（PubliclyHeldCompany）
+
+定义：股份公开交易并持有的公司。
+
+### 2.5 注册标识符（RegistrationIdentifier）
+
+定义：组织注册时（通常在其组建所在管辖区）官方分配的标识符。
+
+### 2.6 注册标识符方案（RegistrationIdentifierScheme）
+
+定义：按签发注册机构规定注册标识符的方案。
+
+### 2.7 宗教公司（ReligiousCorporation）
+
+定义：目标特定于某套基本信仰与实践的非营利公司。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-be-corp-corp:hasSharesAuthorized | 具有授权股份数（hasSharesAuthorized） | 标识董事会确定的可发行股份的最大数量。 |
+| **具有注册成立日期（hasDateOfIncorporation）** | 标识申报文件中所载的正式注册成立日期。 | — |
+| **具有登记日期（hasDateOfRegistration）** | 标识公司为监管和/或税务目的在某管辖区登记的日期。 | — |
+| **具有已发行资本（hasIssuedCapital）** | 标识股东所持全部股份的总价值。 | — |
 
-## 6. 依赖（owl:imports，12 个）
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有授权股份数（hasSharesAuthorized）** | 标识董事会确定的可发行股份的最大数量。 |
+
+## 4. 依赖（owl:imports，12 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -62,7 +93,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Corporations.rdf`
 - 中文 Turtle：`Corporations.ttl`

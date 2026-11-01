@@ -108,10 +108,10 @@ fibo-cae-ce-srca:ConversionAction a owl:Class ;
         "转换行动（conversion action）"@zh ;
     rdfs:comment "将证券（通常为可转换债券或优先股）转换为另一形式证券（通常为普通股）的公司行动。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-cae-ce-srca:convertsTo ;
+            owl:onProperty fibo-cae-ce-srca:convertsFrom ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-cae-ce-srca:convertsFrom ;
+            owl:onProperty fibo-cae-ce-srca:convertsTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         fibo-cae-ce-act:VoluntaryCorporateAction ;
     skos:definition "corporate action involving conversion of securities (generally convertible bonds or preferred shares) into another form of securities (usually common shares) at a pre-stated price/ratio"@en .
@@ -265,15 +265,15 @@ fibo-cae-ce-srca:PostMergerSecuritiesExchange a owl:Class ;
         "合并后证券交换（post-merger securities exchange）"@zh ;
     rdfs:comment "因两家或多家公司合并、由发行人发起的流通证券交换（可包括期权）。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-cae-ce-srca:convertsFrom ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
         [ a owl:Restriction ;
             owl:onProperty fibo-cae-ce-srca:convertsTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-fnd-acc-cur:hasMonetaryAmount ],
         fibo-cae-ce-act:CorporateAction ;
     skos:definition "corporate action that involves the exchange of outstanding securities, initiated by the issuer which may include options, as the result of two or more companies combining assets, that is, an external, third party company"@en ;
     cmns-av:explanatoryNote "This is an action as a result of the merger, not the merger itself, and may be mandatory or voluntary. Cash payments may accompany share exchange."@en .
@@ -491,11 +491,11 @@ fibo-cae-ce-srca:TradingStatusMessage a owl:Class ;
         "交易状态消息（trading status message）"@zh ;
     rdfs:comment "关于交易状态的消息。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-doc:isAbout ;
-            owl:someValuesFrom fibo-md-temx-trs:SecurityTradingStatus ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-doc:refersTo ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:isAbout ;
+            owl:someValuesFrom fibo-md-temx-trs:SecurityTradingStatus ],
         cmns-doc:Notice ;
     skos:definition "A message about trading status."@en ;
     cmns-av:explanatoryNote "There are a number of such messages. Events v Status: See e.g. Active: this relates to one state OR two transitions (transition from pre-issuance to Trading, or from Suspended to Trading)."@en .

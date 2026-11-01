@@ -21,16 +21,27 @@
 | 投资组合（Portfolio） | 由投资者或机构持有的一组金融资产。 |
 | 投资组合持仓（PortfolioHolding） | 投资组合中持有的某一项资产。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
+### 2.1 投资组合（Portfolio）
 
-## 3. 对象属性（Object Property）
+定义：由投资者或机构持有的一组金融资产。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-sec-ast:hasAcquisitionPrice | 具有取得价格（hasAcquisitionPrice） | 指明取得某一持仓时的价格。 | — |
+### 2.2 投资组合持仓（PortfolioHolding）
 
-## 6. 依赖（owl:imports，3 个）
+定义：投资组合中持有的某一项资产。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有取得价格（hasAcquisitionPrice）** | 指明取得某一持仓时的价格。 | — |
+
+## 4. 依赖（owl:imports，3 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -40,7 +51,7 @@
 | `FND/Utilities/AnnotationVocabulary.rdf` | FIBO 标注词汇表（FIBO Annotation Vocabulary） | 定义 FIBO 专用的标注属性（如释义来源、成熟度等级），用于本体自身的元数据标注。 |
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`SecurityAssets.rdf`
 - 中文 Turtle：`SecurityAssets.ttl`

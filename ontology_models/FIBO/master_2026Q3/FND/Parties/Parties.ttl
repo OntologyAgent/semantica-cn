@@ -81,12 +81,12 @@ fibo-fnd-pty-pty:TaxIdentifier a owl:Class ;
         "税务标识符（tax identifier）"@zh ;
     rdfs:comment "分配给纳税人的标识符，使政府组织能够向其征收强制性财政收费和其他税费，以资助政府支出和各项公共开支。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom cmns-rga:Jurisdiction ],
+        [ a owl:Restriction ;
             owl:onClass cmns-pts:Party ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:isApplicableIn ;
-            owl:someValuesFrom cmns-rga:Jurisdiction ],
         [ a owl:Restriction ;
             owl:onClass fibo-fnd-pty-pty:TaxIdentificationScheme ;
             owl:onProperty cmns-col:isMemberOf ;
@@ -114,16 +114,16 @@ fibo-fnd-pty-pty:PartyRoleIdentifier a owl:Class ;
         "参与方角色标识符（party role identifier）"@zh ;
     rdfs:comment "基于参与方在某种情境中所扮演的特定角色，能够唯一标识该参与方的字符序列。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass cmns-pts:PartyRole ;
-            owl:onProperty cmns-id:identifies ;
+            owl:onClass fibo-fnd-pty-pty:PartyRoleIdentificationScheme ;
+            owl:onProperty cmns-col:isMemberOf ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onClass fibo-fnd-pty-pty:PartyRoleIdentificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass fibo-fnd-pty-pty:PartyRoleIdentificationScheme ;
-            owl:onProperty cmns-col:isMemberOf ;
+            owl:onClass cmns-pts:PartyRole ;
+            owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-id:Identifier ;
     skos:definition "sequence of characters, capable of uniquely identifying a party based on a specific role that they play in some context" .
@@ -162,11 +162,11 @@ cmns-pts:Party a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
-            owl:onProperty fibo-fnd-pty-pty:hasMailingAddress ],
+            owl:onProperty fibo-fnd-plc-adr:hasAddress ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-adr:PhysicalAddress ;
-            owl:onProperty fibo-fnd-plc-adr:hasAddress ] ;
+            owl:onProperty fibo-fnd-pty-pty:hasMailingAddress ] ;
     owl:disjointWith cmns-rlcmp:Role ;
     cmns-av:synonym "independent party" .
 

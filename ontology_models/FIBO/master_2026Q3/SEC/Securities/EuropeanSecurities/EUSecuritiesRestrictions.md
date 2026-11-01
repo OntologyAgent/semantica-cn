@@ -14,6 +14,11 @@
 
 **与相近概念的差别**：与美国限制的差别——欧盟以指令/条例统一成员国规则（如 Prospectus Regulation），美国以联邦证券法＋SEC 规则为主，限制结构与豁免条件不同。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **巴塞尔 III 指定（Basel III Designation）** 继承 **金融工具分类器（FinancialInstrumentClassifier）**
+- **受 MiFID 监管证券（MiFID regulated security）** 继承 **证券（Security）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -21,28 +26,45 @@
 | 巴塞尔 III 指定（Basel III Designation） | 由巴塞尔银行监管委员会（BCBS）定义的欧盟范围内的证券指定，基于证券质量进行分类。 |
 | 受 MiFID 监管证券（MiFID regulated security） | 须按金融工具市场指令（MiFID）进行报告的证券。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 巴塞尔 III 指定（Basel III Designation） ⊑ 金融工具分类器
-- 受 MiFID 监管证券（MiFID regulated security） ⊑ 证券
+### 2.1 巴塞尔 III 指定（Basel III Designation）
 
-## 4. 数据属性（Datatype Property）
+定义：由巴塞尔银行监管委员会（BCBS）定义的欧盟范围内的证券指定，基于证券质量进行分类。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**金融工具分类器（FinancialInstrumentClassifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-sec-sec-eurst:hasUpperLimitOnFloatingShares | 具有流通股数量上限（has upper limit on floating shares） | 指明应报告的自由流通股数量上限（如适用）。 |
-| fibo-sec-sec-eurst:isMiFIDReportingRequired | 是否须 MiFID 报告（is MiFID reporting required） | 表明该证券是否须按金融工具市场指令（MiFID）进行报告。 |
+| **分类（classifies）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **分类（classifies）**至少有一个取值，类型是**证券（Security）**。
+- **适用于情境（isApplicableIn）**的取值固定为 GeographicRegion。
 
-- **巴塞尔 III 指定（Basel III Designation）**：**适用于情境（isApplicableIn）**的取值固定为 GeographicRegion。
-- **巴塞尔 III 指定（Basel III Designation）**：**分类（classifies）**至少有一个取值，类型是**证券（Security）**。
-- **受 MiFID 监管证券（MiFID regulated security）**：**是否须 MiFID 报告（is MiFID reporting required）**的取值固定为 true。
-- **受 MiFID 监管证券（MiFID regulated security）**：**具有流通股数量上限（has upper limit on floating shares）**存在取值约束。
+### 2.2 受 MiFID 监管证券（MiFID regulated security）
 
-## 6. 依赖（owl:imports，10 个）
+定义：须按金融工具市场指令（MiFID）进行报告的证券。
+
+- 父类：**证券（Security）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有流通股数量上限（has upper limit on floating shares）** | 指明应报告的自由流通股数量上限（如适用）。 | 值域：xsd:decimal；子属性：具有金额 |
+| **是否须 MiFID 报告（is MiFID reporting required）** | 表明该证券是否须按金融工具市场指令（MiFID）进行报告。 | 值域：xsd:boolean |
+
+公理：
+
+- **具有流通股数量上限（has upper limit on floating shares）**存在取值约束。
+- **是否须 MiFID 报告（is MiFID reporting required）**的取值固定为 true。
+
+## 3. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -59,7 +81,7 @@
 | `https://www.omg.org/spec/Commons/ContextualDesignators/` | OMG 通用语境指称本体（OMG Commons Contextual Designators） | Commons 库中的语境指称本体，定义「在某个语境下指代某物的名称/符号」，是地址、账户号码等语境相关标识的基础。 |
 | `https://www.omg.org/spec/Commons/Locations/` | OMG 通用位置本体（OMG Commons Locations） | Commons 库中的位置本体，定义地理位置、地点的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`EUSecuritiesRestrictions.rdf`
 - 中文 Turtle：`EUSecuritiesRestrictions.ttl`

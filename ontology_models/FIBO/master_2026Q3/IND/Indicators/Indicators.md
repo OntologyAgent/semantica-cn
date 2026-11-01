@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：指标≠指数——指标是单一的经济量度（如 CPI），指数是按规则加权合成的一篮子数值（如标普 500）；与分析本体的差别——分析本体提供度量机制，本本体定义业务指标。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **日均市场利率（daily average market rate）** 继承 **市场利率（market rate）**
+- **日终市场利率（end-of-day market rate）** 继承 **市场利率（market rate）**
+- **历史价格波动率（historical price volatility）** 继承 **历史波动率（historical volatility）**
+- **历史价格波动率（historical price volatility）** 继承 **价格波动率（price volatility）**
+- **历史波动率（historical volatility）** 继承 **波动率（volatility）**
+- **隐含价格波动率（implied price volatility）** 继承 **隐含波动率（implied volatility）**
+- **隐含价格波动率（implied price volatility）** 继承 **价格波动率（price volatility）**
+- **隐含波动率（implied volatility）** 继承 **波动率（volatility）**
+- **市场利率（market rate）** 继承 **比率（Ratio）**
+- **市场利差（market spread）** 继承 **限定范围度量（ScopedMeasure）**
+- **价格结构（price structure）** 继承 **带日期结构化集合（DatedStructuredCollection）**
+- **价格波动率（price volatility）** 继承 **波动率（volatility）**
+- 其余 3 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -32,56 +48,200 @@
 | 期限结构（term structure） | 利率（如不同到期期限的债券收益率）的结构化集合，可据以构造收益率曲线。 |
 | 波动率（volatility） | 某随机变量在某段时期内围绕其均值的离散程度的统计度量。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 日均市场利率（daily average market rate） ⊑ 市场利率（market rate）
-- 日终市场利率（end-of-day market rate） ⊑ 市场利率（market rate）
-- 历史价格波动率（historical price volatility） ⊑ 历史波动率（historical volatility）
-- 历史价格波动率（historical price volatility） ⊑ 价格波动率（price volatility）
-- 历史波动率（historical volatility） ⊑ 波动率（volatility）
-- 隐含价格波动率（implied price volatility） ⊑ 隐含波动率（implied volatility）
-- 隐含价格波动率（implied price volatility） ⊑ 价格波动率（price volatility）
-- 隐含波动率（implied volatility） ⊑ 波动率（volatility）
-- 市场利率（market rate） ⊑ 比率
-- 市场利差（market spread） ⊑ 限定范围度量
-- 价格结构（price structure） ⊑ 带日期结构化集合
-- 价格波动率（price volatility） ⊑ 波动率（volatility）
-- 报价（quoted price） ⊑ 货币价格
-- 期限结构（term structure） ⊑ 带日期结构化集合
-- 波动率（volatility） ⊑ 离散度
+### 2.1 市场利率（market rate）
 
-## 3. 对象属性（Object Property）
+定义：市场上对一组工具确立的利率值，或描述某行业和/或政治区域经济气候的利率值（如 SOFR）。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-ind-ind-ind:hasQuotationDate | 具有报价日期（has quotation date） | 标识给定市场利率或指标的报价日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有日期 |
-| fibo-ind-ind-ind:isVolatilityOf | 是……的波动率（is volatility of） | 标识波动率度量所适用并计量的对象。 | 定义域（domain）：波动率（volatility）；子属性（subPropertyOf）：适用于 |
+- 父类：**比率（Ratio）**
+- 直接子类：**日均市场利率（daily average market rate）**、**日终市场利率（end-of-day market rate）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-ind-ind-ind:hasQuotationDateTime | 具有报价日期时间（has quotation date and time） | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 |
+| **具有比率值（hasRateValue）** | — | — |
+| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+| **是……的值（isValueOf）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有报价日期时间（has quotation date and time）**存在取值约束。
+- **具有比率值（hasRateValue）**存在取值约束。
+- **是……的值（isValueOf）**可以有 0 个或多个**限定范围度量（ScopedMeasure）**。
 
-- **日均市场利率（daily average market rate）**：**具有报价日期时间（has quotation date and time）**存在取值约束。
-- **日终市场利率（end-of-day market rate）**：**具有报价日期时间（has quotation date and time）**存在取值约束。
-- **市场利率（market rate）**：**是……的值（isValueOf）**可以有 0 个或多个**限定范围度量（ScopedMeasure）**。
-- **市场利率（market rate）**：**具有报价日期时间（has quotation date and time）**存在取值约束。
-- **市场利率（market rate）**：**具有比率值（hasRateValue）**存在取值约束。
-- **市场利差（market spread）**：**具有自变量（hasArgument）**恰好有 2 个**市场利率（market rate）**。
-- **价格结构（price structure）**：**具有成员（hasMember）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
-- **价格波动率（price volatility）**：**具有自变量（hasArgument）**至少有一个取值，类型是**价格结构（price structure）**。
-- **报价（quoted price）**：**具有报价日期时间（has quotation date and time）**存在取值约束。
-- **期限结构（term structure）**：**具有成员（hasMember）**至少有一个取值，类型是**市场利率（market rate）**。
-- **波动率（volatility）**：该属性存在取值约束。
-- **波动率（volatility）**：**具有日期区间（hasDatePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
-- **波动率（volatility）**：**具有自变量（hasArgument）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
+#### 2.1.1 日均市场利率（daily average market rate）
 
-## 6. 依赖（owl:imports，10 个）
+定义：给定利率的总体水平，按所选观测值（特定参考利率、汇率、借贷利率等）之和平均计算。
+
+- 父类：**市场利率（market rate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+
+公理：
+
+- **具有报价日期时间（has quotation date and time）**存在取值约束。
+
+#### 2.1.2 日终市场利率（end-of-day market rate）
+
+定义：特定日期营业日结束时给定市场利率的值。
+
+- 父类：**市场利率（market rate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+
+公理：
+
+- **具有报价日期时间（has quotation date and time）**存在取值约束。
+
+### 2.2 市场利差（market spread）
+
+定义：提供两个市场利率之差（利差）的统计度量。
+
+- 父类：**限定范围度量（ScopedMeasure）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有自变量（hasArgument）**恰好有 2 个**市场利率（market rate）**。
+
+### 2.3 价格结构（price structure）
+
+定义：价格（如某指数或证券的市场价格）的结构化集合，可据以进行波动率或其他分析。
+
+- 父类：**带日期结构化集合（DatedStructuredCollection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+
+### 2.4 报价（quoted price）
+
+定义：某发布方在给定日期报出的货币价格。
+
+- 父类：**货币价格（MonetaryPrice）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有报价日期时间（has quotation date and time）** | 标识给定市场利率、利率、指标或其他报价信息的报价日期及可能的时间。 | 值域：cmns-dt:CombinedDateTime；子属性：具有观测日期时间 |
+
+公理：
+
+- **具有报价日期时间（has quotation date and time）**存在取值约束。
+
+### 2.5 期限结构（term structure）
+
+定义：利率（如不同到期期限的债券收益率）的结构化集合，可据以构造收益率曲线。
+
+- 父类：**带日期结构化集合（DatedStructuredCollection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**市场利率（market rate）**。
+
+### 2.6 波动率（volatility）
+
+定义：某随机变量在某段时期内围绕其均值的离散程度的统计度量。
+
+- 父类：**离散度（Dispersion）**
+- 直接子类：**历史波动率（historical volatility）**、**隐含波动率（implied volatility）**、**价格波动率（price volatility）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的波动率（is volatility of）** | 标识波动率度量所适用并计量的对象。 | 子属性：适用于 |
+| **具有日期区间（hasDatePeriod）** | — | — |
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有日期区间（hasDatePeriod）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **具有自变量（hasArgument）**至少有一个取值，类型是**带日期结构化集合（DatedStructuredCollection）**。
+- 该属性存在取值约束。
+
+#### 2.6.1 历史波动率（historical volatility）
+
+定义：使用此前某段时期内价格、利率及其他测算之实际值的波动率度量。
+
+- 父类：**波动率（volatility）**
+- 直接子类：**历史价格波动率（historical price volatility）**
+
+##### 2.6.1.1 历史价格波动率（historical price volatility）
+
+定义：标的证券与指数过去价格交易区间的历史波动率度量。
+
+- 父类：**历史波动率（historical volatility）**、**价格波动率（price volatility）**
+
+#### 2.6.2 隐含波动率（implied volatility）
+
+定义：用于计算概率的前瞻性波动率度量。
+
+- 父类：**波动率（volatility）**
+- 直接子类：**隐含价格波动率（implied price volatility）**
+
+##### 2.6.2.1 隐含价格波动率（implied price volatility）
+
+定义：表示标的股票或指数在特定时间框架内预期波动的波动率度量。
+
+- 父类：**隐含波动率（implied volatility）**、**价格波动率（price volatility）**
+
+#### 2.6.3 价格波动率（price volatility）
+
+定义：给定证券或市场指数定价变化率的统计度量。
+
+- 父类：**波动率（volatility）**
+- 直接子类：**历史价格波动率（historical price volatility）**、**隐含价格波动率（implied price volatility）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有自变量（hasArgument）** | — | — |
+
+公理：
+
+- **具有自变量（hasArgument）**至少有一个取值，类型是**价格结构（price structure）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有报价日期（has quotation date）** | 标识给定市场利率或指标的报价日期。 | 值域：日期；子属性：具有日期 |
+
+## 4. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -98,7 +258,7 @@
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Indicators.rdf`
 - 中文 Turtle：`Indicators.ttl`

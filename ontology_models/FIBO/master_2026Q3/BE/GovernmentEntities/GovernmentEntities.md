@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：政体、政府、法域三者常被混用但含义不同——国家是政体，国务院/政府内阁是政府，「适用中国法律」指的是法域；与 FND/Law/LegalCore 的法域概念衔接并落到具体国家。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **政府部门分支（branch of government）** 继承 **政府机关（government body）**
+- **权力下放政府（devolved government）** 继承 **政府（government）**
+- **行政分支（executive branch）** 继承 **政府部门分支（branch of government）**
+- **联邦政府（federal government）** 继承 **国家政府（national government）**
+- **联邦主权体（federated sovereignty）** 继承 **主权国家（sovereign state）**
+- **政府（government）** 继承 **功能实体（FunctionalEntity）**
+- **政府机构（government agency）** 继承 **政府机关（government body）**
+- **政府任命官员（government appointee）** 继承 **政府官员（government official）**
+- **政府任命官员（government appointee）** 继承 **高管（Executive）**
+- **政府机关（government body）** 继承 **正式组织（FormalOrganization）**
+- **政府部门（government department）** 继承 **政府机关（government body）**
+- **政府部长（government minister）** 继承 **政府官员（government official）**
+- 其余 19 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -45,88 +61,390 @@
 | 部落实体（tribal entity） | 代表主权部落（原住民）政府基本单位的法律实体。 |
 | 部落政府（tribal government） | 代表原住民群体、对该群体拥有合法治理权（包括立法权）的政府。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 政府部门分支（branch of government） ⊑ 政府机关（government body）
-- 权力下放政府（devolved government） ⊑ 政府（government）
-- 行政分支（executive branch） ⊑ 政府部门分支（branch of government）
-- 联邦政府（federal government） ⊑ 国家政府（national government）
-- 联邦主权体（federated sovereignty） ⊑ 主权国家（sovereign state）
-- 政府（government） ⊑ 功能实体
-- 政府机构（government agency） ⊑ 政府机关（government body）
-- 政府任命官员（government appointee） ⊑ 政府官员（government official）
-- 政府任命官员（government appointee） ⊑ 高管
-- 政府机关（government body） ⊑ 正式组织
-- 政府部门（government department） ⊑ 政府机关（government body）
-- 政府部长（government minister） ⊑ 政府官员（government official）
-- 政府部长（government minister） ⊑ 高管
-- 政府官员（government official） ⊑ 责任方
-- 部属单位（instrumentality） ⊑ 政府机关（government body）
-- 部属单位（instrumentality） ⊑ 法律实体
-- 司法分支（judiciary） ⊑ 政府部门分支（branch of government）
-- 立法机关（legislature） ⊑ 政府部门分支（branch of government）
-- 市政实体（municipal entity） ⊑ 政体（polity）
-- 市政府（municipal government） ⊑ 政府（government）
-- 国家政府（national government） ⊑ 政府（government）
-- 政体（polity） ⊑ 政府机关（government body）
-- 政体（polity） ⊑ 法律主体
-- 地区政府（regional government） ⊑ 政府（government）
-- 地区主权体（regional sovereignty） ⊑ 政体（polity）
-- 主权国家（sovereign state） ⊑ 政体（polity）
-- 超国家实体（supranational entity） ⊑ 政体（polity）
-- 部落地区（tribal area） ⊑ 地缘政治实体
-- 部落实体（tribal entity） ⊑ 政体（polity）
-- 部落政府（tribal government） ⊑ 政府（government）
+### 2.1 政府（government）
 
-## 3. 对象属性（Object Property）
+定义：控制国家或共同体的体系。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-ge-ge:hasFullSovereigntyOver | 对……拥有完全主权（has full sovereignty over） | 将政体关联到其拥有绝对、最高且不受他者约束之统治权的地缘政治实体。 | 子属性（subPropertyOf）：对……拥有主权（has sovereignty over） |
-| fibo-be-ge-ge:hasSharedSovereigntyOver | 对……拥有共享主权（has shared sovereignty over） | 将政体关联到其与他者共享统治权的地缘政治实体。 | 子属性（subPropertyOf）：对……拥有主权（has sovereignty over） |
-| fibo-be-ge-ge:hasSovereigntyOver | 对……拥有主权（has sovereignty over） | 将政体关联到其行使政治统治权的地缘政治实体。 | 定义域（domain）：政体（polity）；值域（range）：地缘政治实体；子属性（subPropertyOf）：管辖 |
-| fibo-be-ge-ge:isInstrumentOf | 是……的部属单位（is an instrument of） | 将某政府的部属单位关联到它所支持的政府。 | 定义域（domain）：部属单位（instrumentality）；值域（range）：政府（government） |
-| fibo-be-ge-ge:isElectedBy | 由……选举产生（is elected by） | 标识通过投票选出任职的官员或政府。 | 逆属性（inverseOf）：选举 |
-| fibo-be-ge-ge:isRepresentedBy | 由……代表（is represented by） | 将治理体系关联到其选出的代表。 | — |
+- 父类：**功能实体（FunctionalEntity）**
+- 直接子类：**权力下放政府（devolved government）**、**市政府（municipal government）**、**国家政府（national government）**、**地区政府（regional government）**、**部落政府（tribal government）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+| **管辖（governs）** | — | — |
 
-- **联邦政府（federal government）**：该属性存在取值约束。
-- **联邦主权体（federated sovereignty）**：该属性存在取值约束。
-- **联邦主权体（federated sovereignty）**：该属性存在取值约束。
-- **政府（government）**：**具有成员（hasMember）**可以有 0 个或多个**N30d850f6e089433fb253eed1b3996b9f**。
-- **政府（government）**：**管辖（governs）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
-- **政府（government）**与**部属单位（instrumentality）**互斥：同一个体不能同时属于两者。
-- **政府机构（government agency）**：**由……管理（isManagedBy）**可以有 0 个或多个**政府任命官员（government appointee）**。
-- **政府机构（government agency）**与**政府部门（government department）**互斥：同一个体不能同时属于两者。
-- **政府任命官员（government appointee）**：**由…扮演（is played by）**可以有 0 个或多个**Nade2278a72a2499b8ae0ea38f21b1519**。
-- **政府机关（government body）**：**具有目标（hasObjective）**可以有 0 个或多个**公共宗旨（PublicPurpose）**。
-- **政府部门（government department）**：**由……管理（isManagedBy）**可以有 0 个或多个**政府部长（government minister）**。
-- **政府官员（government official）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **政府官员（government official）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**可以有 0 个或多个**政府机关（government body）**。
-- **部属单位（instrumentality）**：**由……授权要求（isMandatedBy）**可以有 0 个或多个**成文法（StatuteLaw）**。
-- **部属单位（instrumentality）**：**是……的部属单位（is an instrument of）**至少有一个取值，类型是**政府（government）**。
-- **司法分支（judiciary）**：**具有部分（hasPart）**至少有一个取值，类型是**法院（CourtOfLaw）**。
-- **市政实体（municipal entity）**：**对……拥有主权（has sovereignty over）**至少有一个取值，类型是**市政区（Municipality）**。
-- **市政实体（municipal entity）**：**由……代表（is represented by）**至少有一个取值，类型是**市政府（municipal government）**。
-- **市政府（municipal government）**：**管辖（governs）**至少有一个取值，类型是**市政区（Municipality）**。
-- **国家政府（national government）**：**管辖（governs）**至少有一个取值，类型是**国家（Country）**。
-- **政体（polity）**：**对……拥有主权（has sovereignty over）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
-- **政体（polity）**：**由……代表（is represented by）**至少有一个取值，类型是**政府（government）**。
-- **地区政府（regional government）**：**管辖（governs）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
-- **地区主权体（regional sovereignty）**：**对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
-- **地区主权体（regional sovereignty）**：**由……代表（is represented by）**至少有一个取值，类型是**地区政府（regional government）**。
-- **主权国家（sovereign state）**：**对……拥有完全主权（has full sovereignty over）**至少有一个取值，类型是**国家（Country）**。
-- **主权国家（sovereign state）**：**由……代表（is represented by）**至少有一个取值，类型是**国家政府（national government）**。
-- **超国家实体（supranational entity）**：**对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**国家（Country）**。
-- **超国家实体（supranational entity）**：**由……代表（is represented by）**至少有一个取值，类型是**政府机关（government body）**。
-- **部落实体（tribal entity）**：**对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**部落地区（tribal area）**。
-- **部落实体（tribal entity）**：**由……代表（is represented by）**至少有一个取值，类型是**部落政府（tribal government）**。
-- **部落政府（tribal government）**：**管辖（governs）**至少有一个取值，类型是**部落地区（tribal area）**。
+公理：
 
-## 6. 依赖（owl:imports，15 个）
+- **具有成员（hasMember）**可以有 0 个或多个**Ndc4c4b373a4c44afb0d95645ffd0654b**。
+- **管辖（governs）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- 与**部属单位（instrumentality）**互斥：同一个体不能同时属于两者。
+
+#### 2.1.1 权力下放政府（devolved government）
+
+定义：治理次国家领土的政府及政客，其权力可能是临时的、可撤销的，最终归属于中央政府。
+
+- 父类：**政府（government）**
+
+#### 2.1.2 市政府（municipal government）
+
+定义：城市、镇区或其他行政区划的地区政府。
+
+- 父类：**政府（government）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **管辖（governs）**至少有一个取值，类型是**市政区（Municipality）**。
+
+#### 2.1.3 国家政府（national government）
+
+定义：治理整个国家（相对于地方政府）的政府及政客。
+
+- 父类：**政府（government）**
+- 直接子类：**联邦政府（federal government）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **管辖（governs）**至少有一个取值，类型是**国家（Country）**。
+
+##### 2.1.3.1 联邦政府（federal government）
+
+定义：在中央政府之下联合的各州，中央政府有别于各成员州各自的政府。
+
+- 父类：**国家政府（national government）**
+
+公理：
+
+- 该属性存在取值约束。
+
+#### 2.1.4 地区政府（regional government）
+
+定义：地理区域（如县、小城镇或类似社区）的行政机构。
+
+- 父类：**政府（government）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **管辖（governs）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+
+#### 2.1.5 部落政府（tribal government）
+
+定义：代表原住民群体、对该群体拥有合法治理权（包括立法权）的政府。
+
+- 父类：**政府（government）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **管辖（governs）**至少有一个取值，类型是**部落地区（tribal area）**。
+
+### 2.2 政府机关（government body）
+
+定义：作为超国家、国家、联邦、州或地方政府之机构、部属单位或其他机关的正式组织。
+
+- 父类：**正式组织（FormalOrganization）**
+- 直接子类：**政府部门分支（branch of government）**、**政府机构（government agency）**、**政府部门（government department）**、**部属单位（instrumentality）**、**政体（polity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（hasObjective）** | — | — |
+
+公理：
+
+- **具有目标（hasObjective）**可以有 0 个或多个**公共宗旨（PublicPurpose）**。
+
+#### 2.2.1 政府部门分支（branch of government）
+
+定义：国家政府的分支，拥有相互独立、互不冲突的权力与职责范围。
+
+- 父类：**政府机关（government body）**
+- 直接子类：**行政分支（executive branch）**、**司法分支（judiciary）**、**立法机关（legislature）**
+
+##### 2.2.1.1 行政分支（executive branch）
+
+定义：经授权负责政府日常行政管理的政府部门分支。
+
+- 父类：**政府部门分支（branch of government）**
+
+##### 2.2.1.2 司法分支（judiciary）
+
+定义：由法院系统构成的政府部门分支，以超国家、国家、联邦或地区当局之名解释和适用法律。
+
+- 父类：**政府部门分支（branch of government）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有部分（hasPart）** | — | — |
+
+公理：
+
+- **具有部分（hasPart）**至少有一个取值，类型是**法院（CourtOfLaw）**。
+
+##### 2.2.1.3 立法机关（legislature）
+
+定义：政治单位（通常为国家政府）的立法机构，有权制定、修改和废止公共政策。
+
+- 父类：**政府部门分支（branch of government）**
+
+#### 2.2.2 政府机构（government agency）
+
+定义：政府机器中负责某领域监督与行政的永久或半永久组织，常为受任命的委员会。
+
+- 父类：**政府机关（government body）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **由……管理（isManagedBy）**可以有 0 个或多个**政府任命官员（government appointee）**。
+- 与**政府部门（government department）**互斥：同一个体不能同时属于两者。
+
+#### 2.2.3 政府部门（government department）
+
+定义：负责政府公共行政某个领域的专门组织。
+
+- 父类：**政府机关（government body）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **由……管理（isManagedBy）**可以有 0 个或多个**政府部长（government minister）**。
+
+#### 2.2.4 部属单位（instrumentality）
+
+定义：服务公共目的、与政府关系密切但不是政府机构的组织。
+
+- 父类：**政府机关（government body）**、**法律实体（LegalEntity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的部属单位（is an instrument of）** | 将某政府的部属单位关联到它所支持的政府。 | 值域：政府（government） |
+| **由……授权要求（isMandatedBy）** | — | — |
+
+公理：
+
+- **是……的部属单位（is an instrument of）**至少有一个取值，类型是**政府（government）**。
+- **由……授权要求（isMandatedBy）**可以有 0 个或多个**成文法（StatuteLaw）**。
+
+#### 2.2.5 政体（polity）
+
+定义：作为超国家实体、王室、国家或下级民政当局（如省、县、市）的法律主体。
+
+- 父类：**政府机关（government body）**、**法律主体（LegalPerson）**
+- 直接子类：**市政实体（municipal entity）**、**地区主权体（regional sovereignty）**、**主权国家（sovereign state）**、**超国家实体（supranational entity）**、**部落实体（tribal entity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **对……拥有主权（has sovereignty over）** | 将政体关联到其行使政治统治权的地缘政治实体。 | 值域：地缘政治实体；子属性：管辖 |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+
+公理：
+
+- **对……拥有主权（has sovereignty over）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **由……代表（is represented by）**至少有一个取值，类型是**政府（government）**。
+
+##### 2.2.5.1 市政实体（municipal entity）
+
+定义：通常代表城市、镇区或其他行政区划的政体，具有法人地位和自治权力或管辖权。
+
+- 父类：**政体（polity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **对……拥有主权（has sovereignty over）** | 将政体关联到其行使政治统治权的地缘政治实体。 | 值域：地缘政治实体；子属性：管辖 |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+
+公理：
+
+- **对……拥有主权（has sovereignty over）**至少有一个取值，类型是**市政区（Municipality）**。
+- **由……代表（is represented by）**至少有一个取值，类型是**市政府（municipal government）**。
+
+##### 2.2.5.2 地区主权体（regional sovereignty）
+
+定义：对应行政区划、行政单位、行政实体或国家行政区划的法律主体。
+
+- 父类：**政体（polity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。 | 子属性：对……拥有主权（has sovereignty over） |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+
+公理：
+
+- **对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **由……代表（is represented by）**至少有一个取值，类型是**地区政府（regional government）**。
+
+##### 2.2.5.3 主权国家（sovereign state）
+
+定义：由对一个地理区域拥有主权的单一中央政府所代表的非物理法人实体。
+
+- 父类：**政体（polity）**
+- 直接子类：**联邦主权体（federated sovereignty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **对……拥有完全主权（has full sovereignty over）** | 将政体关联到其拥有绝对、最高且不受他者约束之统治权的地缘政治实体。 | 子属性：对……拥有主权（has sovereignty over） |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+
+公理：
+
+- **对……拥有完全主权（has full sovereignty over）**至少有一个取值，类型是**国家（Country）**。
+- **由……代表（is represented by）**至少有一个取值，类型是**国家政府（national government）**。
+
+###### 2.2.5.3.1 联邦主权体（federated sovereignty）
+
+定义：以中央（联邦）政府之下若干部分自治的州或地区的联合为特征的政体。
+
+- 父类：**主权国家（sovereign state）**
+
+公理：
+
+- 该属性存在取值约束。
+- 该属性存在取值约束。
+
+##### 2.2.5.4 超国家实体（supranational entity）
+
+定义：依国际法或条约建立、或在国际层面注册成立的政府或非政府实体。
+
+- 父类：**政体（polity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。 | 子属性：对……拥有主权（has sovereignty over） |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+
+公理：
+
+- **对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**国家（Country）**。
+- **由……代表（is represented by）**至少有一个取值，类型是**政府机关（government body）**。
+
+##### 2.2.5.5 部落实体（tribal entity）
+
+定义：代表主权部落（原住民）政府基本单位的法律实体。
+
+- 父类：**政体（polity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **对……拥有共享主权（has shared sovereignty over）** | 将政体关联到其与他者共享统治权的地缘政治实体。 | 子属性：对……拥有主权（has sovereignty over） |
+| **由……代表（is represented by）** | 将治理体系关联到其选出的代表。 | — |
+
+公理：
+
+- **对……拥有共享主权（has shared sovereignty over）**至少有一个取值，类型是**部落地区（tribal area）**。
+- **由……代表（is represented by）**至少有一个取值，类型是**部落政府（tribal government）**。
+
+### 2.3 政府官员（government official）
+
+定义：经选举或任命管理政府某方面事务的人。
+
+- 父类：**责任方（ResponsibleParty）**
+- 直接子类：**政府任命官员（government appointee）**、**政府部长（government minister）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**可以有 0 个或多个**政府机关（government body）**。
+
+#### 2.3.1 政府任命官员（government appointee）
+
+定义：由政府法令指定领导或以某种身份参与政府机构的个人。
+
+- 父类：**政府官员（government official）**、**高管（Executive）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**可以有 0 个或多个**Na00164ab765a4eaabd377c3fb4c7bd99**。
+
+#### 2.3.2 政府部长（government minister）
+
+定义：被任命或当选担任政府高级职务的行政官员。
+
+- 父类：**政府官员（government official）**、**高管（Executive）**
+
+### 2.4 部落地区（tribal area）
+
+定义：由原住民群体而非主权国家或地区政府实体管辖的地理区域的指称。
+
+- 父类：**地缘政治实体（GeopoliticalEntity）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……选举产生（is elected by）** | 标识通过投票选出任职的官员或政府。 | 逆属性：选举 |
+
+## 4. 依赖（owl:imports，15 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -148,7 +466,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`GovernmentEntities.rdf`
 - 中文 Turtle：`GovernmentEntities.ttl`

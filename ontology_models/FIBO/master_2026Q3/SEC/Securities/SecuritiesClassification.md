@@ -14,6 +14,18 @@
 
 **与相近概念的差别**：分类≠识别——分类回答「它属于哪一类」（CFI 第六位字母），识别回答「它是哪一个」（ISIN）；与本体类的差别——本体类是逻辑定义，分类方案是行业惯例体系。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **全球行业分类标准分类器（Global Industry Classification Standards classifier）** 继承 **行业部门分类器（IndustrySectorClassifier）**
+- **全球行业分类标准分类器（Global Industry Classification Standards classifier）** 继承 **代码元素（CodeElement）**
+- **资产类别（asset class）** 继承 **金融工具分类器（financial instrument classifier）**
+- **金融工具分类代码方案（classification of financial instruments code scheme）** 继承 **金融工具分类方案（financial instrument classification scheme）**
+- **金融工具分类代码（financial instrument classification code）** 继承 **金融工具分类器（financial instrument classifier）**
+- **金融工具分类方案（financial instrument classification scheme）** 继承 **分类方案（ClassificationScheme）**
+- **金融工具分类器（financial instrument classifier）** 继承 **分类符（Classifier）**
+- **行业分类基准分类器（industry classification benchmark classifier）** 继承 **行业部门分类器（IndustrySectorClassifier）**
+- **行业分类基准分类器（industry classification benchmark classifier）** 继承 **代码元素（CodeElement）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -26,33 +38,127 @@
 | 金融工具分类器（financial instrument classifier） | 基于金融工具类型和特征的分类器。 |
 | 行业分类基准分类器（industry classification benchmark classifier） | 基于机构主要收入来源的标准化机构分类（ICB）。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 全球行业分类标准分类器（Global Industry Classification Standards classifier） ⊑ 行业部门分类器
-- 全球行业分类标准分类器（Global Industry Classification Standards classifier） ⊑ 代码元素
-- 资产类别（asset class） ⊑ 金融工具分类器（financial instrument classifier）
-- 金融工具分类代码方案（classification of financial instruments code scheme） ⊑ 金融工具分类方案（financial instrument classification scheme）
-- 金融工具分类代码（financial instrument classification code） ⊑ 金融工具分类器（financial instrument classifier）
-- 金融工具分类方案（financial instrument classification scheme） ⊑ 分类方案
-- 金融工具分类器（financial instrument classifier） ⊑ 分类符
-- 行业分类基准分类器（industry classification benchmark classifier） ⊑ 行业部门分类器
-- 行业分类基准分类器（industry classification benchmark classifier） ⊑ 代码元素
+### 2.1 全球行业分类标准分类器（Global Industry Classification Standards classifier）
 
-## 5. 公理约定（Axioms）
+定义：基于机构主要业务活动的四级标准化机构分类（GICS）。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**行业部门分类器（IndustrySectorClassifier）**、**代码元素（CodeElement）**
 
-- **全球行业分类标准分类器（Global Industry Classification Standards classifier）**：**定义于（isDefinedIn）**的取值固定为 GlobalIndustryClassificationStandardsScheme。
-- **资产类别（asset class）**：**分类（classifies）**至少有一个取值，类型是**证券（Security）**。
-- **金融工具分类代码方案（classification of financial instruments code scheme）**：**定义（defines）**至少有一个取值，类型是**金融工具分类代码（financial instrument classification code）**。
-- **金融工具分类代码（financial instrument classification code）**：**定义于（isDefinedIn）**恰好有 1 个**金融工具分类代码方案（classification of financial instruments code scheme）**。
-- **金融工具分类代码（financial instrument classification code）**：**具有标签（hasTag）**存在取值约束。
-- **金融工具分类方案（financial instrument classification scheme）**：**定义（defines）**的所有取值只能是**金融工具分类器（financial instrument classifier）**。
-- **金融工具分类器（financial instrument classifier）**：**定义于（isDefinedIn）**恰好有 1 个**金融工具分类方案（financial instrument classification scheme）**。
-- **金融工具分类器（financial instrument classifier）**：**分类（classifies）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
-- **行业分类基准分类器（industry classification benchmark classifier）**：**定义于（isDefinedIn）**的取值固定为 IndustryClassificationBenchmarkScheme。
+属性：
 
-## 6. 依赖（owl:imports，7 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 GlobalIndustryClassificationStandardsScheme。
+
+### 2.2 金融工具分类方案（financial instrument classification scheme）
+
+定义：定义一组金融工具分类器的分类方案。
+
+- 父类：**分类方案（ClassificationScheme）**
+- 直接子类：**金融工具分类代码方案（classification of financial instruments code scheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**的所有取值只能是**金融工具分类器（financial instrument classifier）**。
+
+#### 2.2.1 金融工具分类代码方案（classification of financial instruments code scheme）
+
+定义：金融工具代码集的分类方案，可供全球所有参与方用于直通式处理。
+
+- 父类：**金融工具分类方案（financial instrument classification scheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**金融工具分类代码（financial instrument classification code）**。
+
+### 2.3 金融工具分类器（financial instrument classifier）
+
+定义：基于金融工具类型和特征的分类器。
+
+- 父类：**分类符（Classifier）**
+- 直接子类：**资产类别（asset class）**、**金融工具分类代码（financial instrument classification code）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
+- **定义于（isDefinedIn）**恰好有 1 个**金融工具分类方案（financial instrument classification scheme）**。
+
+#### 2.3.1 资产类别（asset class）
+
+定义：金融工具分类器：表现相似特征、在市场中行为相似并受相似法规约束的一组证券。
+
+- 父类：**金融工具分类器（financial instrument classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.3.2 金融工具分类代码（financial instrument classification code）
+
+定义：ISO 10962 金融工具分类（CFI）代码方案中定义的金融工具分类器和代码。
+
+- 父类：**金融工具分类器（financial instrument classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+- **定义于（isDefinedIn）**恰好有 1 个**金融工具分类代码方案（classification of financial instruments code scheme）**。
+
+### 2.4 行业分类基准分类器（industry classification benchmark classifier）
+
+定义：基于机构主要收入来源的标准化机构分类（ICB）。
+
+- 父类：**行业部门分类器（IndustrySectorClassifier）**、**代码元素（CodeElement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 IndustryClassificationBenchmarkScheme。
+
+## 3. 依赖（owl:imports，7 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -66,7 +172,7 @@
 | `https://www.omg.org/spec/Commons/CodesAndCodeSets/` | OMG 通用代码与代码集本体（OMG Commons Codes and Code Sets） | Commons 库中的代码本体，定义代码、代码集及其维护方的通用概念，是 ISO 4217、ISO 3166 等编码体系建模的基础。 |
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SecuritiesClassification.rdf`
 - 中文 Turtle：`SecuritiesClassification.ttl`

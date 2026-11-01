@@ -70,12 +70,12 @@ fibo-loan-reln-cnst:ConstructionLoan a owl:Class ;
     rdfs:comment "覆盖建设与开发成本、以所融资房产之抵押作担保的贷款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
-            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-rp:RealProperty ;
             owl:onProperty fibo-fbc-dae-dbt:isCollateralizedBy ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-agr-ctr:ContractMilestone ;
+            owl:onProperty fibo-fnd-agr-ctr:hasMilestoneProvision ],
         fibo-fbc-dae-dbt:CreditFacility,
         fibo-fnd-agr-ctr:MasterAgreement,
         fibo-loan-ln-ln:CollateralizedLoan ;

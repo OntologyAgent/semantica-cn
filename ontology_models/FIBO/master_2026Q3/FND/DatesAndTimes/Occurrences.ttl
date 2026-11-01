@@ -117,16 +117,16 @@ fibo-fnd-dt-oc:Calculation a owl:Class ;
     rdfs:comment "被排定或由某事物触发的某项计算、计算过程或运算的实际执行。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-qtu:ScalarQuantityValue ;
+            owl:onProperty cmns-qtu:hasQuantityValue ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValueRange ;
             owl:onProperty cmns-qtu:hasQuantityValueRange ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:Expression ;
             owl:onProperty cmns-qtu:hasExpression ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-qtu:ScalarQuantityValue ;
-            owl:onProperty cmns-qtu:hasQuantityValue ],
         [ a owl:Restriction ;
             owl:onClass fibo-fnd-dt-oc:CalculationEvent ;
             owl:onProperty fibo-fnd-rel-rel:exemplifies ;
@@ -209,10 +209,6 @@ fibo-fnd-dt-oc:Occurrence a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-loc:Location ;
             owl:onProperty cmns-loc:hasLocation ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
-            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Class ;
             owl:unionOf ( [ a owl:Restriction ;
                         owl:onClass cmns-dt:DatePeriod ;
@@ -224,6 +220,10 @@ fibo-fnd-dt-oc:Occurrence a owl:Class ;
                         owl:onDataRange cmns-dt:CombinedDateTime ;
                         owl:onProperty fibo-fnd-dt-oc:hasEventDateValue ;
                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;
+            owl:onProperty fibo-fnd-rel-rel:exemplifies ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-oc:OccurrenceKind ;

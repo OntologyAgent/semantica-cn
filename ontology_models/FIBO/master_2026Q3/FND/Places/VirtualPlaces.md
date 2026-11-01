@@ -8,6 +8,13 @@
 
 本本体为描述虚拟位置概念提供脚手架。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **电子邮件地址（electronic mail address）** 继承 **虚拟地址（VirtualAddress）**
+- **网络位置（network location）** 继承 **虚拟位置（VirtualLocation）**
+- **概念性地点（notional place）** 继承 **位置（Location）**
+- **电话号码（telephone number）** 继承 **虚拟地址（VirtualAddress）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -17,27 +24,54 @@
 | 概念性地点（notional place） | 一种抽象地点，是“国内”“欧元区”等众多常见概念之一。 |
 | 电话号码（telephone number） | 可分配给固定电话用户台、无线电子电话设备或其他通过公共交换电话网传输数据的设备的虚拟地址。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 电子邮件地址（electronic mail address） ⊑ 虚拟地址
-- 网络位置（network location） ⊑ 虚拟位置
-- 概念性地点（notional place） ⊑ 位置
-- 电话号码（telephone number） ⊑ 虚拟地址
+### 2.1 电子邮件地址（electronic mail address）
 
-## 3. 对象属性（Object Property）
+定义：定义电子邮件消息可投递到的电子消息端点的虚拟地址，通常通过基于简单邮件传输协议（SMTP）的通信系统投递。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-plc-vrt:hasElectronicMailAddress | 具有电子邮件地址（has electronic mail address） | 指定某实体可被定位、联系或接收信件的电子消息端点。 | 值域（range）：电子邮件地址（electronic mail address）；子属性（subPropertyOf）：具有地址 |
-| fibo-fnd-plc-vrt:hasTelephoneNumber | 具有电话号码（has telephone number） | 指示由数字和符号序列组成的虚拟地址，可分配给固定电话用户台或无线电子电话设备等。 | 值域（range）：电话号码（telephone number）；子属性（subPropertyOf）：具有地址 |
+- 父类：**虚拟地址（VirtualAddress）**
 
-## 5. 公理约定（Axioms）
+### 2.2 网络位置（network location）
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+定义：可由网络地址（节点或接口的标识符）标识的虚拟位置。
 
-- **网络位置（network location）**：**由……标识（isIdentifiedBy）**恰好有 1 个**地址（Address）**。
+- 父类：**虚拟位置（VirtualLocation）**
 
-## 6. 依赖（owl:imports，6 个）
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **由……标识（isIdentifiedBy）**恰好有 1 个**地址（Address）**。
+
+### 2.3 概念性地点（notional place）
+
+定义：一种抽象地点，是“国内”“欧元区”等众多常见概念之一。
+
+- 父类：**位置（Location）**
+
+### 2.4 电话号码（telephone number）
+
+定义：可分配给固定电话用户台、无线电子电话设备或其他通过公共交换电话网传输数据的设备的虚拟地址。
+
+- 父类：**虚拟地址（VirtualAddress）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有电子邮件地址（has electronic mail address）** | 指定某实体可被定位、联系或接收信件的电子消息端点。 | 值域：电子邮件地址（electronic mail address）；子属性：具有地址 |
+| **具有电话号码（has telephone number）** | 指示由数字和符号序列组成的虚拟地址，可分配给固定电话用户台或无线电子电话设备等。 | 值域：电话号码（telephone number）；子属性：具有地址 |
+
+## 4. 依赖（owl:imports，6 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -50,7 +84,7 @@
 | `https://www.omg.org/spec/Commons/Locations/` | OMG 通用位置本体（OMG Commons Locations） | Commons 库中的位置本体，定义地理位置、地点的通用概念。 |
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`VirtualPlaces.rdf`
 - 中文 Turtle：`VirtualPlaces.ttl`

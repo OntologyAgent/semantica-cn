@@ -99,11 +99,11 @@ fibo-ind-ei-usei:USProducerPriceIndex a owl:Class ;
         "美国生产者价格指数（U.S. producer price index）"@zh ;
     rdfs:comment "表示国内生产者产出所获销售价格随时间变化之度量的经济指标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-ind-ei-usei:BureauOfLaborStatistics ;
-            owl:onProperty fibo-be-fct-pub:isPublishedBy ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-fct-pub:hasPublisher ;
             owl:someValuesFrom fibo-ind-ei-usei:AmericanStatisticsPublisher ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-ind-ei-usei:BureauOfLaborStatistics ;
+            owl:onProperty fibo-be-fct-pub:isPublishedBy ],
         fibo-ind-ei-ei:ProducerPriceIndex ;
     skos:definition "an economic indicator representing a measure of the change over time in the selling prices received by domestic producers for their output" ;
     cmns-av:adaptedFrom "http://www.bls.gov/ppi/"^^xsd:anyURI .
@@ -113,21 +113,21 @@ fibo-ind-ei-usei:UrbanConsumerPriceIndex a owl:Class ;
         "城市消费者价格指数（urban consumer price index）"@zh ;
     rdfs:comment "表示城市消费者为一篮子消费货物与服务所付价格之平均变化的经济指标。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:hasArgument ;
-            owl:someValuesFrom fibo-fbc-pas-fpas:Basket ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-be-fct-pub:hasPublisher ;
             owl:someValuesFrom fibo-ind-ei-usei:AmericanStatisticsPublisher ],
         [ a owl:Restriction ;
             owl:hasValue fibo-ind-ei-usei:BureauOfLaborStatistics ;
             owl:onProperty fibo-be-fct-pub:isPublishedBy ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-ind-ei-usei:UrbanConsumersUniverse ],
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-fbc-pas-fpas:Basket ],
         [ a owl:Restriction ;
             owl:onClass fibo-ind-ei-usei:UrbanConsumersUniverse ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-ind-ei-usei:UrbanConsumersUniverse ],
         fibo-ind-ei-ei:ConsumerPriceIndex ;
     skos:definition "an economic indicator representing a measure of the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services" ;
     cmns-av:abbreviation "CPI-U" ;
@@ -219,13 +219,13 @@ fibo-ind-ei-usei:UrbanConsumersUniverse a owl:Class ;
             owl:onProperty cmns-cxtdsg:isApplicableIn ;
             owl:someValuesFrom fibo-ind-ei-usei:PointOfPurchaseSurvey ],
         [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ;
+            owl:someValuesFrom fibo-ind-ei-usei:ConsumerExpenditureSurvey ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-col:hasMember ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:playsRole ;
                     owl:someValuesFrom fibo-ind-ei-ei:UltimateConsumer ] ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:isApplicableIn ;
-            owl:someValuesFrom fibo-ind-ei-usei:ConsumerExpenditureSurvey ],
         fibo-ind-ei-ei:CivilianNonInstitutionalPopulation ;
     skos:definition "a statistical universe for consumer expenditure surveys consisting of people within a household that make joint expenditure decisions" ;
     cmns-av:adaptedFrom "U.S. Bureau of Labor Statistics, http://www.bls.gov/cpi/" ;

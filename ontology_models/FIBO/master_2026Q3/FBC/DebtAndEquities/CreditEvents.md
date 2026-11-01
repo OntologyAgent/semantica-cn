@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：信用事件≠企业行动——信用事件关乎偿付能力恶化，企业行动（分红、拆股）是正常公司治理行为；信用事件≠信用评级下调——评级是第三方评估，事件是客观发生的法律事实。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **破产（bankruptcy）** 继承 **主体特定信用事件（entity-specific credit event）**
+- **信用事件（credit event）** 继承 **发生事项（Occurrence）**
+- **交叉违约条款（cross default provision）** 继承 **先决条件（ConditionPrecedent）**
+- **违约事件（default event）** 继承 **债务特定信用事件（obligation-specific credit event）**
+- **困境级评级下调（distressed ratings downgrade）** 继承 **评级下调（downgrade）**
+- **评级下调（downgrade）** 继承 **信用事件（credit event）**
+- **主体特定信用事件（entity-specific credit event）** 继承 **信用事件（credit event）**
+- **未能支付（failure to pay）** 继承 **违约事件（default event）**
+- **未能支付利息（failure to pay interest）** 继承 **未能支付（failure to pay）**
+- **未能支付本金（failure to pay principal）** 继承 **未能支付（failure to pay）**
+- **申请破产（filing for bankruptcy）** 继承 **主体特定信用事件（entity-specific credit event）**
+- **硬信用事件（hard credit event）** 继承 **违约事件（default event）**
+- 其余 13 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -42,67 +58,241 @@
 | 软信用事件（soft credit event） | 可修复（可补救）的违约事件。 |
 | 减记（write-down） | 债务特定信用事件：债务的账面价值（如未偿本金余额）被调减。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 破产（bankruptcy） ⊑ 主体特定信用事件（entity-specific credit event）
-- 信用事件（credit event） ⊑ 发生事项
-- 交叉违约条款（cross default provision） ⊑ 先决条件
-- 违约事件（default event） ⊑ 债务特定信用事件（obligation-specific credit event）
-- 困境级评级下调（distressed ratings downgrade） ⊑ 评级下调（downgrade）
-- 评级下调（downgrade） ⊑ 信用事件（credit event）
-- 主体特定信用事件（entity-specific credit event） ⊑ 信用事件（credit event）
-- 未能支付（failure to pay） ⊑ 违约事件（default event）
-- 未能支付利息（failure to pay interest） ⊑ 未能支付（failure to pay）
-- 未能支付本金（failure to pay principal） ⊑ 未能支付（failure to pay）
-- 申请破产（filing for bankruptcy） ⊑ 主体特定信用事件（entity-specific credit event）
-- 硬信用事件（hard credit event） ⊑ 违约事件（default event）
-- 分期违约（installment default） ⊑ 违约事件（default event）
-- 违约情形下的利息义务（interest obligation in light of default） ⊑ 或有义务
-- 违约情形下的利息义务（interest obligation in light of default） ⊑ 合同义务
-- 到期延展（maturity extension） ⊑ 债务特定信用事件（obligation-specific credit event）
-- 延期偿付（moratorium） ⊑ 主体特定信用事件（entity-specific credit event）
-- 债务加速到期（obligation acceleration） ⊑ 债务特定信用事件（obligation-specific credit event）
-- 债务违约（obligation default） ⊑ 违约事件（default event）
-- 债务违约（obligation default） ⊑ 债务特定信用事件（obligation-specific credit event）
-- 债务重组（obligation restructuring） ⊑ 债务特定信用事件（obligation-specific credit event）
-- 债务特定信用事件（obligation-specific credit event） ⊑ 信用事件（credit event）
-- 拒绝履行（repudiation） ⊑ 债务特定信用事件（obligation-specific credit event）
-- 软信用事件（soft credit event） ⊑ 违约事件（default event）
-- 减记（write-down） ⊑ 债务特定信用事件（obligation-specific credit event）
+### 2.1 信用事件（credit event）
 
-## 3. 对象属性（Object Property）
+定义：表明信用状况突然变化的事件，例如破产或违反债券契约、贷款协议，使人对相关方履行当前或未来义务的能力产生怀疑。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fbc-dae-cre:hasDefaultInterestCompoundingBasis | 具有违约利息复利基础（has default interest compounding basis） | 指明违约利息的计算基础，以时间周期表示。 | 定义域（domain）：违约情形下的利息义务（interest obligation in light of default）；值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-fbc-dae-cre:hasDefaultThresholdAmount | 具有违约门槛金额（has default threshold amount） | 规定触发未能支付、拒绝履行/延期偿付或重组事件的金额门槛。 | 值域（range）：货币数量；子属性（subPropertyOf）：具有货币数量 |
-| fibo-fbc-dae-cre:hasGracePeriod | 具有宽限期（has grace period） | 付款到期日之后的窗口期，在此期间内一方须履行其义务，否则发生未能支付信用事件。 | 值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
+- 父类：**发生事项（Occurrence）**
+- 直接子类：**评级下调（downgrade）**、**主体特定信用事件（entity-specific credit event）**、**债务特定信用事件（obligation-specific credit event）**
 
-## 4. 数据属性（Datatype Property）
+#### 2.1.1 评级下调（downgrade）
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+定义：当某一方或某项债务的信用评级被降低时触发的信用事件。
+
+- 父类：**信用事件（credit event）**
+- 直接子类：**困境级评级下调（distressed ratings downgrade）**
+
+##### 2.1.1.1 困境级评级下调（distressed ratings downgrade）
+
+定义：当某项债务的信用评级被下调至困境债务水平时触发的信用事件。
+
+- 父类：**评级下调（downgrade）**
+
+#### 2.1.2 主体特定信用事件（entity-specific credit event）
+
+定义：适用于某一特定法律主体的信用事件。
+
+- 父类：**信用事件（credit event）**
+- 直接子类：**破产（bankruptcy）**、**申请破产（filing for bankruptcy）**、**延期偿付（moratorium）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fbc-dae-cre:involvesMultipleEvents | 涉及多个事件（involves multiple events） | 表明该重组跨越不止一个信用事件。 |
-| fibo-fbc-dae-cre:isDefaultInterestApplicable | 是否适用违约利息（is default interest applicable） | 表明在法律及适用协议允许的范围内，支付义务违约方是否须支付违约利息。 |
-| fibo-fbc-dae-cre:isGracePeriodExtendable | 宽限期是否可延长（is grace period extendable） | 表明宽限期是否可以延长，可能因司法管辖区而异。 |
+| **适用于（appliesTo）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **适用于（appliesTo）**至少有一个取值，类型是**法律主体（LegalPerson）**。
 
-- **交叉违约条款（cross default provision）**：**具有违约门槛金额（has default threshold amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **交叉违约条款（cross default provision）**：**适用于（appliesTo）**至少有一个取值，类型是**信贷协议（CreditAgreement）**。
-- **违约事件（default event）**：**例证（exemplifies）**可以有 0 个或多个**违反契约承诺（BreachOfCovenant）**。
-- **主体特定信用事件（entity-specific credit event）**：**适用于（appliesTo）**至少有一个取值，类型是**法律主体（LegalPerson）**。
-- **未能支付（failure to pay）**：**具有宽限期（has grace period）**至多有 1 个**日期区间（DatePeriod）**。
-- **违约情形下的利息义务（interest obligation in light of default）**：**具有违约利息复利基础（has default interest compounding basis）**至多有 1 个**日期区间（DatePeriod）**。
-- **违约情形下的利息义务（interest obligation in light of default）**：**是否适用违约利息（is default interest applicable）**存在取值约束。
-- **违约情形下的利息义务（interest obligation in light of default）**：**由……授权要求（isMandatedBy）**至少有一个取值，类型是**支付义务（PaymentObligation）**。
-- **债务特定信用事件（obligation-specific credit event）**：**具有违约门槛金额（has default threshold amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
-- **债务特定信用事件（obligation-specific credit event）**：**适用于（appliesTo）**至少有一个取值，类型是**信贷协议（CreditAgreement）**。
-- **软信用事件（soft credit event）**与**硬信用事件（hard credit event）**互斥：同一个体不能同时属于两者。
+##### 2.1.2.1 破产（bankruptcy）
 
-## 6. 依赖（owl:imports，12 个）
+定义：信用事件的一种，指一方的状态或状况发生变化、陷入资不抵债（无力清偿）的情形。
+
+- 父类：**主体特定信用事件（entity-specific credit event）**
+
+##### 2.1.2.2 申请破产（filing for bankruptcy）
+
+定义：向法院提出请求、要求被认定为破产的信用事件。
+
+- 父类：**主体特定信用事件（entity-specific credit event）**
+
+##### 2.1.2.3 延期偿付（moratorium）
+
+定义：主体特定信用事件：在相关问题解决之前暂时中止付款。
+
+- 父类：**主体特定信用事件（entity-specific credit event）**
+
+#### 2.1.3 债务特定信用事件（obligation-specific credit event）
+
+定义：与某一具体信贷协议或债务工具（参考债务）相关的信用事件。
+
+- 父类：**信用事件（credit event）**
+- 直接子类：**违约事件（default event）**、**到期延展（maturity extension）**、**债务加速到期（obligation acceleration）**、**债务违约（obligation default）**、**债务重组（obligation restructuring）**、**拒绝履行（repudiation）**、**减记（write-down）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有违约门槛金额（has default threshold amount）** | 规定触发未能支付、拒绝履行/延期偿付或重组事件的金额门槛。 | 值域：货币数量；子属性：具有货币数量 |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有违约门槛金额（has default threshold amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**信贷协议（CreditAgreement）**。
+
+##### 2.1.3.1 违约事件（default event）
+
+定义：信用事件的一种，表示未能履行合同义务，例如未能偿还贷款或证券的利息或本金等债务。
+
+- 父类：**债务特定信用事件（obligation-specific credit event）**
+- 直接子类：**未能支付（failure to pay）**、**硬信用事件（hard credit event）**、**分期违约（installment default）**、**债务违约（obligation default）**、**软信用事件（soft credit event）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **例证（exemplifies）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**可以有 0 个或多个**违反契约承诺（BreachOfCovenant）**。
+
+###### 2.1.3.1.1 未能支付（failure to pay）
+
+定义：在任何适用的宽限期之后仍未履行支付义务而触发的违约事件。
+
+- 父类：**违约事件（default event）**
+- 直接子类：**未能支付利息（failure to pay interest）**、**未能支付本金（failure to pay principal）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有宽限期（has grace period）** | 付款到期日之后的窗口期，在此期间内一方须履行其义务，否则发生未能支付信用事件。 | 值域：日期区间；子属性：具有日期区间 |
+
+公理：
+
+- **具有宽限期（has grace period）**至多有 1 个**日期区间（DatePeriod）**。
+
+###### 2.1.3.1.1.1 未能支付利息（failure to pay interest）
+
+定义：违约事件的一种：预期利息支付完全未付，或实付金额低于应付金额。
+
+- 父类：**未能支付（failure to pay）**
+
+###### 2.1.3.1.1.2 未能支付本金（failure to pay principal）
+
+定义：违约事件的一种：预期本金支付完全未付，或实付金额低于应付金额。
+
+- 父类：**未能支付（failure to pay）**
+
+###### 2.1.3.1.2 硬信用事件（hard credit event）
+
+定义：不可修复（无法补救）的违约事件。
+
+- 父类：**违约事件（default event）**
+
+###### 2.1.3.1.3 分期违约（installment default）
+
+定义：违约事件的一种：未按协议条款如期支付多期分期款项，或未支付受益人要求的催缴款项。
+
+- 父类：**违约事件（default event）**
+
+###### 2.1.3.1.4 债务违约（obligation default）
+
+定义：因某项特定债务违约而触发的信用事件。
+
+- 父类：**违约事件（default event）**、**债务特定信用事件（obligation-specific credit event）**
+
+###### 2.1.3.1.5 软信用事件（soft credit event）
+
+定义：可修复（可补救）的违约事件。
+
+- 父类：**违约事件（default event）**
+
+公理：
+
+- 与**硬信用事件（hard credit event）**互斥：同一个体不能同时属于两者。
+
+##### 2.1.3.2 到期延展（maturity extension）
+
+定义：将付款延长至债务原定到期日之后的信用事件。
+
+- 父类：**债务特定信用事件（obligation-specific credit event）**
+
+##### 2.1.3.3 债务加速到期（obligation acceleration）
+
+定义：因参考债务发生违约或违反契约条款，导致一笔或多笔参考债务立即到期应付的信用事件。
+
+- 父类：**债务特定信用事件（obligation-specific credit event）**
+
+##### 2.1.3.5 债务重组（obligation restructuring）
+
+定义：对债务产生重大影响的信用事件，例如降息、削减本金、利息或本金延期支付、偿付顺序变更等。
+
+- 父类：**债务特定信用事件（obligation-specific credit event）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **涉及多个事件（involves multiple events）** | 表明该重组跨越不止一个信用事件。 | 值域：xsd:boolean |
+
+##### 2.1.3.6 拒绝履行（repudiation）
+
+定义：拒绝履行合同条款的信用事件。
+
+- 父类：**债务特定信用事件（obligation-specific credit event）**
+
+##### 2.1.3.7 减记（write-down）
+
+定义：债务特定信用事件：债务的账面价值（如未偿本金余额）被调减。
+
+- 父类：**债务特定信用事件（obligation-specific credit event）**
+
+### 2.2 交叉违约条款（cross default provision）
+
+定义：合同条款：当借款人在另一相关债务上违约时，触发本合同项下的违约。
+
+- 父类：**先决条件（ConditionPrecedent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有违约门槛金额（has default threshold amount）** | 规定触发未能支付、拒绝履行/延期偿付或重组事件的金额门槛。 | 值域：货币数量；子属性：具有货币数量 |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有违约门槛金额（has default threshold amount）**可以有 0 个或多个**货币数量（MonetaryAmount）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**信贷协议（CreditAgreement）**。
+
+### 2.3 违约情形下的利息义务（interest obligation in light of default）
+
+定义：就任何支付义务的违约行为所产生的利息方面的义务。
+
+- 父类：**或有义务（ContingentObligation）**、**合同义务（ContractualObligation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有违约利息复利基础（has default interest compounding basis）** | 指明违约利息的计算基础，以时间周期表示。 | 值域：日期区间；子属性：具有日期区间 |
+| **是否适用违约利息（is default interest applicable）** | 表明在法律及适用协议允许的范围内，支付义务违约方是否须支付违约利息。 | 值域：xsd:boolean |
+| **由……授权要求（isMandatedBy）** | — | — |
+
+公理：
+
+- **具有违约利息复利基础（has default interest compounding basis）**至多有 1 个**日期区间（DatePeriod）**。
+- **是否适用违约利息（is default interest applicable）**存在取值约束。
+- **由……授权要求（isMandatedBy）**至少有一个取值，类型是**支付义务（PaymentObligation）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **宽限期是否可延长（is grace period extendable）** | 表明宽限期是否可以延长，可能因司法管辖区而异。 |
+
+## 4. 依赖（owl:imports，12 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -121,7 +311,7 @@
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`CreditEvents.rdf`
 - 中文 Turtle：`CreditEvents.ttl`

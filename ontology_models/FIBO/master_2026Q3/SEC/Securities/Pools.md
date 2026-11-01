@@ -14,6 +14,20 @@
 
 **与相近概念的差别**：池≠篮子——池是证券化的底层资产组合（产生现金流），篮子是为交易或定价组合的一组证券（参照物）；池的资产通常是贷款而非证券。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **集合投资工具（collective investment vehicle）** 继承 **汇集基金（pooled fund）**
+- **债务池（debt pool）** 继承 **工具池（instrument pool）**
+- **基金家族（fund family）** 继承 **集合（Collection）**
+- **工具池（instrument pool）** 继承 **池（pool）**
+- **作为资产的工具池（instrument pool as asset）** 继承 **金融资产（FinancialAsset）**
+- **管理型投资（managed investment）** 继承 **集合投资工具（collective investment vehicle）**
+- **池（pool）** 继承 **集合（Collection）**
+- **池成分（pool constituent）** 继承 **组成成分（Constituent）**
+- **汇集基金（pooled fund）** 继承 **池（pool）**
+- **私募基金（private fund）** 继承 **管理型投资（managed investment）**
+- **证券池（securities pool）** 继承 **工具池（instrument pool）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -31,35 +45,158 @@
 | 私募基金（private fund） | 不得向公众发售证券的管理型投资。 |
 | 证券池（securities pool） | 为基于这些证券发行票据而组织的证券池。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 集合投资工具（collective investment vehicle） ⊑ 汇集基金（pooled fund）
-- 债务池（debt pool） ⊑ 工具池（instrument pool）
-- 基金家族（fund family） ⊑ 集合
-- 工具池（instrument pool） ⊑ 池（pool）
-- 作为资产的工具池（instrument pool as asset） ⊑ 金融资产
-- 管理型投资（managed investment） ⊑ 集合投资工具（collective investment vehicle）
-- 池（pool） ⊑ 集合
-- 池成分（pool constituent） ⊑ 组成成分
-- 汇集基金（pooled fund） ⊑ 池（pool）
-- 私募基金（private fund） ⊑ 管理型投资（managed investment）
-- 证券池（securities pool） ⊑ 工具池（instrument pool）
+### 2.1 证券池成分（SecuritiesPoolConstituent）
 
-## 5. 公理约定（Axioms）
+定义：证券池的组成部分。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+### 2.2 基金家族（fund family）
 
-- **债务池（debt pool）**：**具有成员（hasMember）**至少有一个取值，类型是**债务工具（DebtInstrument）**。
-- **基金家族（fund family）**：**由……管理（isManagedBy）**恰好有 1 个**金融机构（FinancialInstitution）**。
-- **基金家族（fund family）**：**具有成员（hasMember）**至少有一个取值，类型是**管理型投资（managed investment）**。
-- **工具池（instrument pool）**：**具有成员（hasMember）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
-- **作为资产的工具池（instrument pool as asset）**：**是……的资产（isAssetOf）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **作为资产的工具池（instrument pool as asset）**：**由…扮演（is played by）**至少有一个取值，类型是**工具池（instrument pool）**。
-- **管理型投资（managed investment）**：**由……管理（isManagedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
-- **池（pool）**：**具有成员（hasMember）**至少有一个取值，类型是**池成分（pool constituent）**。
-- **证券池（securities pool）**：**具有成员（hasMember）**至少有一个取值，类型是**证券（Security）**。
+定义：由单一投资机构管理的集合投资产品的集合。
 
-## 6. 依赖（owl:imports，10 个）
+- 父类：**集合（Collection）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**管理型投资（managed investment）**。
+- **由……管理（isManagedBy）**恰好有 1 个**金融机构（FinancialInstitution）**。
+
+### 2.3 作为资产的工具池（instrument pool as asset）
+
+定义：以工具池形式存在的金融资产。
+
+- 父类：**金融资产（FinancialAsset）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的资产（isAssetOf）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **是……的资产（isAssetOf）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **由…扮演（is played by）**至少有一个取值，类型是**工具池（instrument pool）**。
+
+### 2.4 池（pool）
+
+定义：为共同目的或利益而组合的资源。
+
+- 父类：**集合（Collection）**
+- 直接子类：**工具池（instrument pool）**、**汇集基金（pooled fund）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**池成分（pool constituent）**。
+
+#### 2.4.1 工具池（instrument pool）
+
+定义：由可纳入同一投资工具的金融工具组成的池。
+
+- 父类：**池（pool）**
+- 直接子类：**债务池（debt pool）**、**证券池（securities pool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**金融工具（FinancialInstrument）**。
+
+##### 2.4.1.1 债务池（debt pool）
+
+定义：由债务工具（如债券、贷款或抵押贷款）组成的池。
+
+- 父类：**工具池（instrument pool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**债务工具（DebtInstrument）**。
+
+##### 2.4.1.2 证券池（securities pool）
+
+定义：为基于这些证券发行票据而组织的证券池。
+
+- 父类：**工具池（instrument pool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.4.2 汇集基金（pooled fund）
+
+定义：由为共同投资目的而组合和管理的资产构成的基金。
+
+- 父类：**池（pool）**
+- 直接子类：**集合投资工具（collective investment vehicle）**
+
+##### 2.4.2.1 集合投资工具（collective investment vehicle）
+
+定义：由投资者汇聚的资产池，其股本与该工具的资产保持分离。
+
+- 父类：**汇集基金（pooled fund）**
+- 直接子类：**管理型投资（managed investment）**
+
+###### 2.4.2.1.1 管理型投资（managed investment）
+
+定义：由专业投资管理人控制的投资池，管理人将该池投资于符合既定目标的各类金融工具和资产。
+
+- 父类：**集合投资工具（collective investment vehicle）**
+- 直接子类：**私募基金（private fund）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **由……管理（isManagedBy）**至少有一个取值，类型是**金融机构（FinancialInstitution）**。
+
+###### 2.4.2.1.1.1 私募基金（private fund）
+
+定义：不得向公众发售证券的管理型投资。
+
+- 父类：**管理型投资（managed investment）**
+
+### 2.5 池成分（pool constituent）
+
+定义：池的组成部分。
+
+- 父类：**组成成分（Constituent）**
+
+## 3. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -76,7 +213,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`Pools.rdf`
 - 中文 Turtle：`Pools.ttl`

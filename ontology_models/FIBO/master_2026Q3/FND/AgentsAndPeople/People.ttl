@@ -321,8 +321,8 @@ fibo-fnd-aap-ppl:PersonName a owl:Class ;
     rdfs:comment "某人在某情境中为人所知的指称。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange cmns-txt:Text ;
-            owl:onProperty fibo-fnd-aap-ppl:hasNamePrefix ],
+            owl:onClass fibo-fnd-aap-ppl:Person ;
+            owl:onProperty cmns-dsg:isNameOf ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-txt:Text ;
@@ -330,15 +330,15 @@ fibo-fnd-aap-ppl:PersonName a owl:Class ;
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-txt:Text ;
-            owl:onProperty fibo-fnd-aap-ppl:hasNameSuffix ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-aap-ppl:Person ;
-            owl:onProperty cmns-dsg:isNameOf ],
+            owl:onProperty fibo-fnd-aap-ppl:hasNamePrefix ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange cmns-txt:Text ;
             owl:onProperty fibo-fnd-aap-ppl:hasSurname ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange cmns-txt:Text ;
+            owl:onProperty fibo-fnd-aap-ppl:hasNameSuffix ],
         cmns-cxtdsg:ContextualName ;
     skos:definition "designation by which someone is known in some context" .
 
@@ -507,12 +507,12 @@ fibo-fnd-aap-ppl:DeathCertificateIdentifier a owl:Class ;
         "死亡证明标识符（death certificate identifier）"@zh ;
     rdfs:comment "与记录个人死亡的生命统计记录关联的标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-aap-ppl:DeathCertificate ;
-            owl:onProperty cmns-id:identifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-aap-ppl:DeathCertificateIdentificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-aap-ppl:DeathCertificate ;
+            owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-id:Identifier ;
     skos:definition "identifier associated with a vital record documenting the death of an individual" ;
@@ -523,12 +523,12 @@ fibo-fnd-aap-ppl:DriversLicenseIdentifier a owl:Class ;
         "驾驶证标识符（driver's license identifier）"@zh ;
     rdfs:comment "与机动车驾驶执照或非驾驶身份卡关联的标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-aap-ppl:DriversLicense ;
-            owl:onProperty cmns-id:identifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-aap-ppl:DriversLicenseIdentificationScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-aap-ppl:DriversLicense ;
+            owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-id:Identifier ;
     skos:definition "identifier associated with a drivers' or operating license for operating a motor vehicle or non-driver identification card" ;
@@ -556,12 +556,12 @@ fibo-fnd-aap-ppl:NationalIdentificationNumber a owl:Class ;
         "国家身份号码（national identification number）"@zh ;
     rdfs:comment "出现在由国家或管辖区签发的身份证件上的号码或文字。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-aap-ppl:Person ;
-            owl:onProperty cmns-id:identifies ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-aap-ppl:NationalIdentificationNumberScheme ;
             owl:onProperty cmns-dsg:isDefinedIn ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-aap-ppl:Person ;
+            owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         cmns-id:Identifier ;
     skos:definition "number or text which appears on an identity document issued by a country or jurisdiction" ;
@@ -633,12 +633,12 @@ fibo-fnd-aap-ppl:IdentityDocument a owl:Class ;
             owl:onProperty fibo-fnd-arr-doc:hasExpirationDate ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onClass cmns-dt:Date ;
-            owl:onProperty cmns-dt:hasDateOfIssuance ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass cmns-id:Identifier ;
             owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass cmns-dt:Date ;
+            owl:onProperty cmns-dt:hasDateOfIssuance ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onProperty cmns-id:identifies ;
@@ -662,12 +662,8 @@ fibo-fnd-aap-ppl:Person a owl:Class ;
         "个人（person）"@zh ;
     rdfs:comment "具有自我意识的个体人类。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-fd:Age ;
-            owl:onProperty fibo-fnd-dt-fd:hasAge ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fnd-aap-ppl:DateOfBirth ;
-            owl:onProperty fibo-fnd-aap-ppl:hasDateOfBirth ;
+            owl:onClass fibo-fnd-aap-ppl:PlaceOfBirth ;
+            owl:onProperty fibo-fnd-aap-ppl:hasPlaceOfBirth ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
@@ -678,17 +674,21 @@ fibo-fnd-aap-ppl:Person a owl:Class ;
             owl:onClass fibo-fnd-aap-ppl:PersonName ;
             owl:onProperty cmns-dsg:hasName ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-plc-adr:ConventionalStreetAddress ;
-            owl:onProperty fibo-fnd-aap-ppl:hasResidence ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-fnd-aap-ppl:PlaceOfBirth ;
-            owl:onProperty fibo-fnd-aap-ppl:hasPlaceOfBirth ;
+            owl:onClass fibo-fnd-aap-ppl:DateOfBirth ;
+            owl:onProperty fibo-fnd-aap-ppl:hasDateOfBirth ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-fd:Age ;
+            owl:onProperty fibo-fnd-dt-fd:hasAge ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-fnd-aap-ppl:hasGender ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-plc-adr:ConventionalStreetAddress ;
+            owl:onProperty fibo-fnd-aap-ppl:hasResidence ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-loc:Country ;

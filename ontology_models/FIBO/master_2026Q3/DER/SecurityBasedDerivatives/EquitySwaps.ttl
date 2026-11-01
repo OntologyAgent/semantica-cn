@@ -155,15 +155,15 @@ fibo-der-sbd-eqs:DividendLeg a owl:Class ;
         "股息腿（dividend leg）"@zh ;
     rdfs:comment "股息互换的浮动腿。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-der-sbd-eqs:SpecialDividendLegTerms ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-fi-fi:hasUnderlier ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:isPlayedBy ;
                     owl:someValuesFrom [ a owl:Class ;
                             owl:unionOf ( fibo-ind-mkt-bas:BasketOfEquities fibo-fbc-fi-fi:EquityInstrument fibo-ind-mkt-bas:EquityIndex ) ] ] ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-der-sbd-eqs:SpecialDividendLegTerms ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ],
         [ a owl:Restriction ;
             owl:onProperty cmns-dt:hasDatePeriod ;
             owl:someValuesFrom fibo-der-sbd-eqs:QualifyingDividendPeriod ],

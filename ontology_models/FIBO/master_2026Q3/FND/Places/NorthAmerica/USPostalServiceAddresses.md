@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与通用地址本体的差别——固化了美国特有的结构（州、ZIP 码格式），便于与美国数据对接。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **国务院地址（Department of State address）** 继承 **物理地址（PhysicalAddress）**
+- **国务院单元成分（Department of State unit component）** 继承 **补充地址成分（SupplementalAddressComponent）**
+- **波多黎各地址（Puerto Rico address）** 继承 **常规街道地址（ConventionalStreetAddress）**
+- **美国邮政地址标识符（U.S. Postal Service address identifier）** 继承 **物理地址标识符（PhysicalAddressIdentifier）**
+- **ZIP+4 编码（ZIP+4 Code）** 继承 **邮政编码（Postcode）**
+- **邮区编码（Zip Code）** 继承 **邮政编码（Postcode）**
+- **完整地址（complete address）** 继承 **标准化地址（standardized address）**
+- **投递地址代码集（delivery address code set）** 继承 **代码集（CodeSet）**
+- **投递地址代码集（delivery address code set）** 继承 **标识方案（IdentificationScheme）**
+- **投递点编码（delivery point code）** 继承 **代码元素（CodeElement）**
+- **投递点代码集（delivery point code set）** 继承 **代码集（CodeSet）**
+- **存局候领地址（general delivery address）** 继承 **物理地址（PhysicalAddress）**
+- 其余 12 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -41,72 +57,317 @@
 | 城区（urbanization） | 较大地理区域中的片区、分区或开发区。 |
 | 邮区编码方案（zip code scheme） | 美国用于便利邮件投递的体系，由直接印在地址后的五位或九位区域改进计划（ZIP）编码构成。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 国务院地址（Department of State address） ⊑ 物理地址
-- 国务院单元成分（Department of State unit component） ⊑ 补充地址成分
-- 波多黎各地址（Puerto Rico address） ⊑ 常规街道地址
-- 美国邮政地址标识符（U.S. Postal Service address identifier） ⊑ 物理地址标识符
-- ZIP+4 编码（ZIP+4 Code） ⊑ 邮政编码
-- 邮区编码（Zip Code） ⊑ 邮政编码
-- 完整地址（complete address） ⊑ 标准化地址（standardized address）
-- 投递地址代码集（delivery address code set） ⊑ 代码集
-- 投递地址代码集（delivery address code set） ⊑ 标识方案
-- 投递点编码（delivery point code） ⊑ 代码元素
-- 投递点代码集（delivery point code set） ⊑ 代码集
-- 存局候领地址（general delivery address） ⊑ 物理地址
-- 公路合同地址（highway contract address） ⊑ 物理地址
-- 公路合同路线（highway contract route） ⊑ 补充地址成分
-- 公路合同路线地址（highway contract route address） ⊑ 补充地址成分
-- 国际地址（international address） ⊑ 物理地址
-- 信箱（mailbox） ⊑ 补充地址成分
-- 海外军事地址（overseas military address） ⊑ 物理地址
-- 私人信箱地址（private mail box address） ⊑ 常规街道地址
-- 乡村路线地址（rural route address） ⊑ 物理地址
-- 标准化地址（standardized address） ⊑ 物理地址
-- 城区（urbanization） ⊑ 国家行政区划
-- 邮区编码方案（zip code scheme） ⊑ 代码集
-- 邮区编码方案（zip code scheme） ⊑ 标识方案
+### 2.1 国务院地址（Department of State address）
 
-## 3. 对象属性（Object Property）
+定义：投递地址行以「UNIT」加单元标识符、再加「BOX」加信箱号代替街道地址的投递地址。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-plc-uspsa:hasUrbanization | 具有城区（has urbanization） | 标识与投递地址相关的地理区域内的片区、分区或开发区。 | 值域（range）：城区（urbanization）；子属性（subPropertyOf）：包含 |
+- 父类：**物理地址（PhysicalAddress）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **具有城市名称（hasCityName）** | — | — |
 
-- **国务院地址（Department of State address）**：**具有城市名称（hasCityName）**的取值固定为 DPO。
-- **国务院地址（Department of State address）**：**包含（comprises）**恰好有 1 个**国务院单元成分（Department of State unit component）**。
-- **国务院地址（Department of State address）**：**包含（comprises）**恰好有 1 个**信箱（mailbox）**。
-- **国务院地址（Department of State address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
-- **国务院单元成分（Department of State unit component）**：**包含（comprises）**的取值固定为 Unit。
-- **波多黎各地址（Puerto Rico address）**：**包含（comprises）**可以有 0 个或多个**城区（urbanization）**。
-- **美国邮政地址标识符（U.S. Postal Service address identifier）**：**包含（comprises）**恰好有 1 个**投递点编码（delivery point code）**。
-- **美国邮政地址标识符（U.S. Postal Service address identifier）**：**包含（comprises）**恰好有 1 个**ZIP+4 编码（ZIP+4 Code）**。
-- **投递地址代码集（delivery address code set）**：**具有成员（hasMember）**至少有一个取值，类型是**美国邮政地址标识符（U.S. Postal Service address identifier）**。
-- **投递点编码（delivery point code）**：**是……的成员（isMemberOf）**恰好有 1 个**投递点代码集（delivery point code set）**。
-- **投递点编码（delivery point code）**：**具有标签（hasTag）**存在取值约束。
-- **投递点代码集（delivery point code set）**：**具有成员（hasMember）**至少有一个取值，类型是**投递点编码（delivery point code）**。
-- **存局候领地址（general delivery address）**：**具有地址行 1（hasAddressLine1）**的取值固定为 GENERAL DELIVERY。
-- **存局候领地址（general delivery address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
-- **公路合同地址（highway contract address）**：**包含（comprises）**恰好有 1 个**公路合同路线（highway contract route）**。
-- **公路合同地址（highway contract address）**：**包含（comprises）**恰好有 1 个**信箱（mailbox）**。
-- **公路合同地址（highway contract address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
-- **公路合同路线（highway contract route）**：**包含（comprises）**的取值固定为 HighwayContractRouteDesignator。
-- **公路合同路线地址（highway contract route address）**：**包含（comprises）**的取值固定为 RuralRouteDesignator。
-- **信箱（mailbox）**：**包含（comprises）**的取值固定为 MailboxDesignator。
-- **海外军事地址（overseas military address）**：**具有地址行 1（hasAddressLine1）**至少有一个取值，类型是**rdfs:Literal（Literal）**。
-- **海外军事地址（overseas military address）**：**具有城市名称（hasCityName）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **海外军事地址（overseas military address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
-- **乡村路线地址（rural route address）**：**包含（comprises）**恰好有 1 个**信箱（mailbox）**。
-- **乡村路线地址（rural route address）**：**包含（comprises）**恰好有 1 个**公路合同路线地址（highway contract route address）**。
-- **乡村路线地址（rural route address）**与**常规街道地址**互斥：同一个体不能同时属于两者。
-- **邮区编码方案（zip code scheme）**：**具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
+公理：
 
-## 6. 依赖（owl:imports，8 个）
+- **具有城市名称（hasCityName）**的取值固定为 DPO。
+- **包含（comprises）**恰好有 1 个**信箱（mailbox）**。
+- **包含（comprises）**恰好有 1 个**国务院单元成分（Department of State unit component）**。
+- 与**常规街道地址（ConventionalStreetAddress）**互斥：同一个体不能同时属于两者。
+
+### 2.2 国务院单元成分（Department of State unit component）
+
+定义：国务院地址中包含「UNIT」加单元标识符的成分。
+
+- 父类：**补充地址成分（SupplementalAddressComponent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**的取值固定为 Unit。
+
+### 2.3 波多黎各地址（Puerto Rico address）
+
+定义：波多黎各投递点的投递地址，可含以缩写「URB」加城区名的补充地址行。
+
+- 父类：**常规街道地址（ConventionalStreetAddress）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**可以有 0 个或多个**城区（urbanization）**。
+
+### 2.4 美国邮政地址标识符（U.S. Postal Service address identifier）
+
+定义：与 ZIP+4 编码组合后，投递点编码为 USPS 服务的每个可投递地址提供唯一标识符。
+
+- 父类：**物理地址标识符（PhysicalAddressIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**ZIP+4 编码（ZIP+4 Code）**。
+- **包含（comprises）**恰好有 1 个**投递点编码（delivery point code）**。
+
+### 2.5 ZIP+4 编码（ZIP+4 Code）
+
+定义：由五位数字、连字符和四位数字组成的九位号码，USPS 以其商标 ZIP+4 称之。
+
+- 父类：**邮政编码（Postcode）**
+
+### 2.6 邮区编码（Zip Code）
+
+定义：分配给投递地址、指明州和邮局或邮区的五位编码。
+
+- 父类：**邮政编码（Postcode）**
+
+### 2.7 投递地址代码集（delivery address code set）
+
+定义：按美国邮政署 28 号出版物、替代特定投递点细节的数字代码体系。
+
+- 父类：**代码集（CodeSet）**、**标识方案（IdentificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**美国邮政地址标识符（U.S. Postal Service address identifier）**。
+
+### 2.8 投递点编码（delivery point code）
+
+定义：分配给投递点的 00 至 99 之间的特定数字组。
+
+- 父类：**代码元素（CodeElement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+- **是……的成员（isMemberOf）**恰好有 1 个**投递点代码集（delivery point code set）**。
+
+### 2.9 投递点代码集（delivery point code set）
+
+定义：按美国邮政署 28 号出版物、替代特定投递点细节的数字代码体系。
+
+- 父类：**代码集（CodeSet）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**投递点编码（delivery point code）**。
+
+### 2.10 存局候领地址（general delivery address）
+
+定义：以「GENERAL DELIVERY」字样（最好大写、完整拼写不缩写）代替街道地址的投递地址。
+
+- 父类：**物理地址（PhysicalAddress）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有地址行 1（hasAddressLine1）** | — | — |
+
+公理：
+
+- **具有地址行 1（hasAddressLine1）**的取值固定为 GENERAL DELIVERY。
+- 与**常规街道地址（ConventionalStreetAddress）**互斥：同一个体不能同时属于两者。
+
+### 2.11 公路合同地址（highway contract address）
+
+定义：投递地址行以缩写「HC」加路线标识符、再加「BOX」加信箱号代替街道地址的投递地址。
+
+- 父类：**物理地址（PhysicalAddress）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**信箱（mailbox）**。
+- **包含（comprises）**恰好有 1 个**公路合同路线（highway contract route）**。
+- 与**常规街道地址（ConventionalStreetAddress）**互斥：同一个体不能同时属于两者。
+
+### 2.12 公路合同路线（highway contract route）
+
+定义：与某地址关联的公路合同路线。
+
+- 父类：**补充地址成分（SupplementalAddressComponent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**的取值固定为 HighwayContractRouteDesignator。
+
+### 2.13 公路合同路线地址（highway contract route address）
+
+定义：乡村地区城市或镇区界限之外、与某地址关联的邮路。
+
+- 父类：**补充地址成分（SupplementalAddressComponent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**的取值固定为 RuralRouteDesignator。
+
+### 2.14 国际地址（international address）
+
+定义：明确包含国家的物理地址。
+
+- 父类：**物理地址（PhysicalAddress）**
+
+### 2.15 信箱（mailbox）
+
+定义：与某地址关联的、非美国邮政局信箱的信箱。
+
+- 父类：**补充地址成分（SupplementalAddressComponent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**的取值固定为 MailboxDesignator。
+
+### 2.16 海外军事地址（overseas military address）
+
+定义：投递地址行使用部队或指挥单位缩写（如 CMR、PSC、UNIT 或 HC）加单元编号的投递地址。
+
+- 父类：**物理地址（PhysicalAddress）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有地址行 1（hasAddressLine1）** | — | — |
+| **具有城市名称（hasCityName）** | — | — |
+
+公理：
+
+- **具有地址行 1（hasAddressLine1）**至少有一个取值，类型是**rdfs:Literal（Literal）**。
+- **具有城市名称（hasCityName）**至少有一个取值，该取值满足：该属性存在取值约束。
+- 与**常规街道地址（ConventionalStreetAddress）**互斥：同一个体不能同时属于两者。
+
+### 2.17 私人信箱地址（private mail box address）
+
+定义：由商业邮件接收公司提供的投递地址，含以缩写「PMB」开头的补充地址行。
+
+- 父类：**常规街道地址（ConventionalStreetAddress）**
+
+### 2.18 乡村路线地址（rural route address）
+
+定义：投递地址行以缩写「RR」加路线标识符、再加「BOX」加信箱号代替街道地址的投递地址。
+
+- 父类：**物理地址（PhysicalAddress）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**信箱（mailbox）**。
+- **包含（comprises）**恰好有 1 个**公路合同路线地址（highway contract route address）**。
+- 与**常规街道地址（ConventionalStreetAddress）**互斥：同一个体不能同时属于两者。
+
+### 2.19 标准化地址（standardized address）
+
+定义：按邮政标准缩写完整拼写的投递地址。
+
+- 父类：**物理地址（PhysicalAddress）**
+- 直接子类：**完整地址（complete address）**
+
+#### 2.19.1 完整地址（complete address）
+
+定义：具备全部必要地址元素、可与美国邮政 ZIP+4 及城市州文件精确匹配以获得投递点编码的投递地址。
+
+- 父类：**标准化地址（standardized address）**
+
+### 2.20 城区（urbanization）
+
+定义：较大地理区域中的片区、分区或开发区。
+
+- 父类：**国家行政区划（CountrySubdivision）**
+
+### 2.21 邮区编码方案（zip code scheme）
+
+定义：美国用于便利邮件投递的体系，由直接印在地址后的五位或九位区域改进计划（ZIP）编码构成。
+
+- 父类：**代码集（CodeSet）**、**标识方案（IdentificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有城区（has urbanization）** | 标识与投递地址相关的地理区域内的片区、分区或开发区。 | 值域：城区（urbanization）；子属性：包含 |
+
+## 4. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -121,7 +382,7 @@
 | `https://www.omg.org/spec/Commons/Identifiers/` | OMG 通用标识符本体（OMG Commons Identifiers） | Commons 库中的标识符本体，定义标识符及其编码方案的通用概念。 |
 | `https://www.omg.org/spec/Commons/Locations/` | OMG 通用位置本体（OMG Commons Locations） | Commons 库中的位置本体，定义地理位置、地点的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`USPostalServiceAddresses.rdf`
 - 中文 Turtle：`USPostalServiceAddresses.ttl`

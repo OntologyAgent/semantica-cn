@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：登记机构≠监管机构——登记机构负责「记录主体存在」（发照注册），监管机构负责「监督行为合规」；与 LEI 登记的差别——LEI 是身份编码登记，商业登记是法人设立登记。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **北美行业分类体系代码（North American Industry Classification System code）** 继承 **行业部门分类器（IndustrySectorClassifier）**
+- **北美行业分类体系代码（North American Industry Classification System code）** 继承 **代码元素（CodeElement）**
+- **北美行业分类体系方案（North American Industry Classification System scheme）** 继承 **行业部门分类方案（IndustrySectorClassificationScheme）**
+- **北美行业分类体系方案（North American Industry Classification System scheme）** 继承 **代码集（CodeSet）**
+- **商业登记册标识符（business register identifier）** 继承 **标识符（Identifier）**
+- **商业登记主管机构（business registration authority）** 继承 **注册员（Registrar）**
+- **商业登记主管机构（business registration authority）** 继承 **注册机构（RegistrationAuthority）**
+- **商业登记册（business registry）** 继承 **注册簿（Registry）**
+- **商业登记册条目（business registry entry）** 继承 **注册簿条目（RegistryEntry）**
+- **实体终止原因（entity expiration reason）** 继承 **代码元素（CodeElement）**
+- **实体法律形式登记册（entity legal form registry）** 继承 **注册簿（Registry）**
+- **实体法律形式登记册条目（entity legal form registry entry）** 继承 **注册簿条目（RegistryEntry）**
+- 其余 12 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -37,100 +53,338 @@
 | 标准行业分类代码（standard industrial classification code） | 代表某一行业的标准行业分类（SIC）代码。 |
 | 标准行业分类方案（standard industrial classification scheme） | 定义标准行业分类（SIC）代码表的方案。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 北美行业分类体系代码（North American Industry Classification System code） ⊑ 行业部门分类器
-- 北美行业分类体系代码（North American Industry Classification System code） ⊑ 代码元素
-- 北美行业分类体系方案（North American Industry Classification System scheme） ⊑ 行业部门分类方案
-- 北美行业分类体系方案（North American Industry Classification System scheme） ⊑ 代码集
-- 商业登记册标识符（business register identifier） ⊑ 标识符
-- 商业登记主管机构（business registration authority） ⊑ 注册员
-- 商业登记主管机构（business registration authority） ⊑ 注册机构
-- 商业登记册（business registry） ⊑ 注册簿
-- 商业登记册条目（business registry entry） ⊑ 注册簿条目
-- 实体终止原因（entity expiration reason） ⊑ 代码元素
-- 实体法律形式登记册（entity legal form registry） ⊑ 注册簿
-- 实体法律形式登记册条目（entity legal form registry entry） ⊑ 注册簿条目
-- 实体状态（entity status） ⊑ 生命周期阶段
-- 实体核验级别（entity validation level） ⊑ 代码元素
-- 法人识别编码登记册（legal entity identifier registry） ⊑ 商业登记册（business registry）
-- 法人识别编码登记册条目（legal entity identifier registry entry） ⊑ 商业登记册条目（business registry entry）
-- 本地运营单位（local operating unit） ⊑ 注册员
-- 登记主管机构代码（registration authority code） ⊑ 代码元素
-- 登记主管机构代码（registration authority code） ⊑ 注册标识符
-- 登记状态（registration status） ⊑ 生命周期阶段
-- 标准行业分类代码（standard industrial classification code） ⊑ 行业部门分类器
-- 标准行业分类代码（standard industrial classification code） ⊑ 代码元素
-- 标准行业分类方案（standard industrial classification scheme） ⊑ 行业部门分类方案
-- 标准行业分类方案（standard industrial classification scheme） ⊑ 代码集
+### 2.1 北美行业分类体系代码（North American Industry Classification System code）
 
-## 3. 对象属性（Object Property）
+定义：代表某一行业的北美行业分类体系（NAICS）代码。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fbc-fct-breg:hasEntityExpirationReason | 具有实体终止原因（has entity expiration reason） | 指明实体终止存在的原因（如解散、与其他实体合并等）。 | 值域（range）：实体终止原因（entity expiration reason）；子属性（subPropertyOf）：由……表示 |
-| fibo-fbc-fct-breg:hasEntityStatus | 具有实体状态（has entity status） | 指明实体的状态（如存续、注销）。 | 值域（range）：实体状态（entity status）；子属性（subPropertyOf）：具有阶段 |
-| fibo-fbc-fct-breg:hasManagingLocalOperatingUnit | 具有管理本地运营单位（has managing local operating unit） | 将法人识别记录与注册相关法人识别编码的本地运营单位标识符关联起来。 | — |
-| fibo-fbc-fct-breg:hasRegistrationStatus | 具有登记状态（has registration status） | 指明特定登记（如标识符或许可证的登记）的状态。 | 值域（range）：登记状态（registration status）；子属性（subPropertyOf）：具有阶段 |
-| fibo-fbc-fct-breg:hasValidationAuthority | 具有核验机构（has validation authority） | 标识法律实体的商业登记主管机构，本地运营单位（LOU）以其作为核验依据。 | 值域（range）：商业登记主管机构（business registration authority）；子属性（subPropertyOf）：具有参与方角色（has party role） |
-| fibo-fbc-fct-breg:hasValidationLevel | 具有核验级别（has validation level） | 指明注册机构对法律实体执行的核验级别。 | 值域（range）：实体核验级别（entity validation level） |
+- 父类：**行业部门分类器（IndustrySectorClassifier）**、**代码元素（CodeElement）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fbc-fct-breg:hasAlternativeLanguageLegalName | 具有替代语言法定名称（has alternative language legal name） | 表示实体在其注册司法管辖区所使用的替代语言的注册法定名称。 |
-| fibo-fbc-fct-breg:hasAutomaticallyTransliteratedLegalName | 具有自动转写法定名称（has automatically transliterated legal name） | 表示实体法定名称的自动生成的 ASCII 转写形式。 |
-| fibo-fbc-fct-breg:hasEntityExpirationDate | 具有实体终止日期（has entity expiration date） | 指明实体终止存在的日期。 |
-| fibo-fbc-fct-breg:hasExpiryDate | 具有到期日（has expiry date） | 指明某事物终止存在的日期。 |
-| fibo-fbc-fct-breg:hasInitialRegistrationDate | 具有初始登记日期（has initial registration date） | 指明标识符或其他登记项目创建和/或首次登记的日期。 |
-| fibo-fbc-fct-breg:hasPreferredTransliteratedLegalName | 具有首选转写法定名称（has preferred transliterated legal name） | 表示实体法定名称的首选 ASCII 转写形式。 |
-| fibo-fbc-fct-breg:hasPriorLegalName | 具有曾用法定名称（has prior legal name） | 表示实体此前使用过的主要法定名称。 |
-| fibo-fbc-fct-breg:hasRegistrationRevisionDate | 具有登记状态修订日期（has registration status revision date） | 指明登记册中特定登记状态被修订的日期。 |
-| fibo-fbc-fct-breg:hasRegistryName | 具有登记册名称（has registry name） | 表示登记册的名称，例如登记法律实体商业登记标识符的商业登记册。 |
-| fibo-fbc-fct-breg:hasRenewalDate | 具有续展日期（has renewal date） | 指明登记册中特定登记须续展或更新的日期。 |
-| fibo-fbc-fct-breg:hasTradingOrOperationalName | 具有经营名称（has trading or operational name） | 表示实体当前使用的「以……名义经营」「品牌名」等名称，该名称是对法定名称的补充而非替代。 |
-| fibo-fbc-fct-breg:hasTransliteratedLegalName | 具有转写法定名称（has transliterated legal name） | 表示实体法定名称的可选 ASCII 转写（即拉丁化/罗马化）形式。 |
-| fibo-fbc-fct-breg:hasValidationDate | 具有核验日期（has validation date） | 指明登记册中特定登记最近一次被审核和核验的日期。 |
-| fibo-fbc-fct-breg:isSelfMaintained | 是否自行维护（is self-maintained） | 表明实体信息是由内部维护还是由第三方维护。 |
+| **分类（classifies）** | — | — |
+| **具有标签（hasTag）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有标签（hasTag）**存在取值约束。
+- **分类（classifies）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+- **定义于（isDefinedIn）**恰好有 1 个**北美行业分类体系方案（North American Industry Classification System scheme）**。
 
-- **北美行业分类体系代码（North American Industry Classification System code）**：**定义于（isDefinedIn）**恰好有 1 个**北美行业分类体系方案（North American Industry Classification System scheme）**。
-- **北美行业分类体系代码（North American Industry Classification System code）**：**具有标签（hasTag）**存在取值约束。
-- **北美行业分类体系代码（North American Industry Classification System code）**：**分类（classifies）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
-- **北美行业分类体系方案（North American Industry Classification System scheme）**：**定义（defines）**至少有一个取值，类型是**北美行业分类体系代码（North American Industry Classification System code）**。
-- **商业登记册标识符（business register identifier）**：**标识（identifies）**恰好有 1 个**商业登记册（business registry）**。
-- **商业登记册标识符（business register identifier）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**商业登记主管机构（business registration authority）**。
-- **商业登记主管机构（business registration authority）**：**管理（manages）**至少有一个取值，类型是**商业登记册（business registry）**。
-- **商业登记主管机构（business registration authority）**：**登记（registers）**至少有一个取值，类型是**注册标识符（RegistrationIdentifier）**。
-- **商业登记册（business registry）**：**具有登记册名称（has registry name）**存在取值约束。
-- **商业登记册（business registry）**：**由……管理（isManagedBy）**恰好有 1 个**商业登记主管机构（business registration authority）**。
-- **商业登记册（business registry）**：**包含（comprises）**至少有一个取值，类型是**商业登记册条目（business registry entry）**。
-- **商业登记册条目（business registry entry）**：**具有登记状态（has registration status）**至多有 1 个**登记状态（registration status）**。
-- **商业登记册条目（business registry entry）**：**包含（comprises）**至少有一个取值，类型是**注册标识符（RegistrationIdentifier）**。
-- **商业登记册条目（business registry entry）**：**具有注册日期（hasRegistrationDate）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
-- **实体终止原因（entity expiration reason）**：**具有标签（hasTag）**存在取值约束。
-- **实体法律形式登记册（entity legal form registry）**：**包含（comprises）**至少有一个取值，类型是**实体法律形式登记册条目（entity legal form registry entry）**。
-- **实体法律形式登记册条目（entity legal form registry entry）**：**包含（comprises）**至少有一个取值，类型是**实体法律形式标识符（EntityLegalFormIdentifier）**。
-- **实体核验级别（entity validation level）**：**具有标签（hasTag）**存在取值约束。
-- **法人识别编码登记册（legal entity identifier registry）**：**包含（comprises）**至少有一个取值，类型是**法人识别编码登记册条目（legal entity identifier registry entry）**。
-- **法人识别编码登记册条目（legal entity identifier registry entry）**：**具有管理本地运营单位（has managing local operating unit）**的所有取值只能是**法律实体标识符（LegalEntityIdentifier）**。
-- **法人识别编码登记册条目（legal entity identifier registry entry）**：**具有核验机构（has validation authority）**可以有 0 个或多个**商业登记主管机构（business registration authority）**。
-- **法人识别编码登记册条目（legal entity identifier registry entry）**：**具有登记状态（has registration status）**至少有一个取值，类型是**登记状态（registration status）**。
-- **法人识别编码登记册条目（legal entity identifier registry entry）**：**具有核验级别（has validation level）**至少有一个取值，类型是**实体核验级别（entity validation level）**。
-- **法人识别编码登记册条目（legal entity identifier registry entry）**：**包含（comprises）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
-- **本地运营单位（local operating unit）**：**发行（issues）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
-- **本地运营单位（local operating unit）**：**登记（registers）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
-- **登记主管机构代码（registration authority code）**：**标识（identifies）**恰好有 1 个**商业登记册（business registry）**。
-- **标准行业分类代码（standard industrial classification code）**：**定义于（isDefinedIn）**恰好有 1 个**标准行业分类方案（standard industrial classification scheme）**。
-- **标准行业分类代码（standard industrial classification code）**：**具有标签（hasTag）**存在取值约束。
-- **标准行业分类代码（standard industrial classification code）**：**分类（classifies）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
-- **标准行业分类方案（standard industrial classification scheme）**：**定义（defines）**至少有一个取值，类型是**标准行业分类代码（standard industrial classification code）**。
+### 2.2 北美行业分类体系方案（North American Industry Classification System scheme）
 
-## 6. 依赖（owl:imports，20 个）
+定义：定义北美行业分类体系（NAICS）代码的方案。
+
+- 父类：**行业部门分类方案（IndustrySectorClassificationScheme）**、**代码集（CodeSet）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**北美行业分类体系代码（North American Industry Classification System code）**。
+
+### 2.3 商业登记册标识符（business register identifier）
+
+定义：唯一标识商业登记册的标识符，例如由全球法人识别编码基金会（GLEIF）登记册标识的登记册。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**商业登记册（business registry）**。
+- **由……注册（isRegisteredBy）**至少有一个取值，类型是**商业登记主管机构（business registration authority）**。
+
+### 2.4 商业登记主管机构（business registration authority）
+
+定义：负责维护商业实体登记册的登记主管机构。
+
+- 父类：**注册员（Registrar）**、**注册机构（RegistrationAuthority）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **管理（manages）** | — | — |
+| **登记（registers）** | — | — |
+
+公理：
+
+- **登记（registers）**至少有一个取值，类型是**注册标识符（RegistrationIdentifier）**。
+- **管理（manages）**至少有一个取值，类型是**商业登记册（business registry）**。
+
+### 2.5 商业登记册（business registry）
+
+定义：用于登记和维护商业实体信息的登记册。
+
+- 父类：**注册簿（Registry）**
+- 直接子类：**法人识别编码登记册（legal entity identifier registry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有登记册名称（has registry name）** | 表示登记册的名称，例如登记法律实体商业登记标识符的商业登记册。 | 子属性：具有文本名称 |
+| **包含（comprises）** | — | — |
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **具有登记册名称（has registry name）**存在取值约束。
+- **包含（comprises）**至少有一个取值，类型是**商业登记册条目（business registry entry）**。
+- **由……管理（isManagedBy）**恰好有 1 个**商业登记主管机构（business registration authority）**。
+
+#### 2.5.1 法人识别编码登记册（legal entity identifier registry）
+
+定义：为特定司法管辖区登记和维护商业实体信息的登记册。
+
+- 父类：**商业登记册（business registry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**法人识别编码登记册条目（legal entity identifier registry entry）**。
+
+### 2.6 商业登记册条目（business registry entry）
+
+定义：商业登记册中的一条记录。
+
+- 父类：**注册簿条目（RegistryEntry）**
+- 直接子类：**法人识别编码登记册条目（legal entity identifier registry entry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有登记状态（has registration status）** | 指明特定登记（如标识符或许可证的登记）的状态。 | 值域：登记状态（registration status）；子属性：具有阶段 |
+| **包含（comprises）** | — | — |
+| **具有注册日期（hasRegistrationDate）** | — | — |
+
+公理：
+
+- **具有注册日期（hasRegistrationDate）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+- **具有登记状态（has registration status）**至多有 1 个**登记状态（registration status）**。
+- **包含（comprises）**至少有一个取值，类型是**注册标识符（RegistrationIdentifier）**。
+
+#### 2.6.1 法人识别编码登记册条目（legal entity identifier registry entry）
+
+定义：符合 ISO 17442 及全球法人识别编码基金会（GLEIF）通用数据格式（CDF）的登记册记录。
+
+- 父类：**商业登记册条目（business registry entry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有管理本地运营单位（has managing local operating unit）** | 将法人识别记录与注册相关法人识别编码的本地运营单位标识符关联起来。 | — |
+| **具有登记状态（has registration status）** | 指明特定登记（如标识符或许可证的登记）的状态。 | 值域：登记状态（registration status）；子属性：具有阶段 |
+| **具有核验机构（has validation authority）** | 标识法律实体的商业登记主管机构，本地运营单位（LOU）以其作为核验依据。 | 值域：商业登记主管机构（business registration authority）；子属性：具有参与方角色（has party role） |
+| **具有核验级别（has validation level）** | 指明注册机构对法律实体执行的核验级别。 | 值域：实体核验级别（entity validation level） |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有核验机构（has validation authority）**可以有 0 个或多个**商业登记主管机构（business registration authority）**。
+- **具有核验级别（has validation level）**至少有一个取值，类型是**实体核验级别（entity validation level）**。
+- **具有登记状态（has registration status）**至少有一个取值，类型是**登记状态（registration status）**。
+- **具有管理本地运营单位（has managing local operating unit）**的所有取值只能是**法律实体标识符（LegalEntityIdentifier）**。
+- **包含（comprises）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
+
+### 2.7 实体终止原因（entity expiration reason）
+
+定义：表示法律实体终止存在和/或终止运营原因的代码。
+
+- 父类：**代码元素（CodeElement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+
+### 2.8 实体法律形式登记册（entity legal form registry）
+
+定义：按照特定司法管辖区规定，登记和维护商业实体有效法律形式信息的登记册。
+
+- 父类：**注册簿（Registry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**实体法律形式登记册条目（entity legal form registry entry）**。
+
+### 2.9 实体法律形式登记册条目（entity legal form registry entry）
+
+定义：符合 ISO 20275 标准的实体法律形式登记册记录。
+
+- 父类：**注册簿条目（RegistryEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**实体法律形式标识符（EntityLegalFormIdentifier）**。
+
+### 2.10 实体状态（entity status）
+
+定义：表明实体运营和/或法律状态的生命周期阶段。
+
+- 父类：**生命周期阶段（LifecycleStage）**
+
+### 2.11 实体核验级别（entity validation level）
+
+定义：表示全球法人识别编码基金会（GLEIF）或本地运营单位（LOU）对注册人提供的参考数据所执行核验级别的代码。
+
+- 父类：**代码元素（CodeElement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+
+### 2.12 本地运营单位（local operating unit）
+
+定义：经全球法人识别编码基金会授权、可签发法人识别编码（LEI）的注册机构。
+
+- 父类：**注册员（Registrar）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **发行（issues）** | — | — |
+| **登记（registers）** | — | — |
+
+公理：
+
+- **发行（issues）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
+- **登记（registers）**至少有一个取值，类型是**法律实体标识符（LegalEntityIdentifier）**。
+
+### 2.13 登记主管机构代码（registration authority code）
+
+定义：唯一标识商业登记册、并与登记主管机构和司法管辖区相关联的标识符，由全球法人识别编码基金会签发。
+
+- 父类：**代码元素（CodeElement）**、**注册标识符（RegisteredIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**商业登记册（business registry）**。
+
+### 2.14 登记状态（registration status）
+
+定义：表明某事物（如企业或法律实体）特定登记状态的生命周期阶段，由登记主管机构规定。
+
+- 父类：**生命周期阶段（LifecycleStage）**
+
+### 2.15 标准行业分类代码（standard industrial classification code）
+
+定义：代表某一行业的标准行业分类（SIC）代码。
+
+- 父类：**行业部门分类器（IndustrySectorClassifier）**、**代码元素（CodeElement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **具有标签（hasTag）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+- **分类（classifies）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+- **定义于（isDefinedIn）**恰好有 1 个**标准行业分类方案（standard industrial classification scheme）**。
+
+### 2.16 标准行业分类方案（standard industrial classification scheme）
+
+定义：定义标准行业分类（SIC）代码表的方案。
+
+- 父类：**行业部门分类方案（IndustrySectorClassificationScheme）**、**代码集（CodeSet）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**标准行业分类代码（standard industrial classification code）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有实体终止原因（has entity expiration reason）** | 指明实体终止存在的原因（如解散、与其他实体合并等）。 | 值域：实体终止原因（entity expiration reason）；子属性：由……表示 |
+| **具有实体状态（has entity status）** | 指明实体的状态（如存续、注销）。 | 值域：实体状态（entity status）；子属性：具有阶段 |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有替代语言法定名称（has alternative language legal name）** | 表示实体在其注册司法管辖区所使用的替代语言的注册法定名称。 |
+| **具有自动转写法定名称（has automatically transliterated legal name）** | 表示实体法定名称的自动生成的 ASCII 转写形式。 |
+| **具有实体终止日期（has entity expiration date）** | 指明实体终止存在的日期。 |
+| **具有到期日（has expiry date）** | 指明某事物终止存在的日期。 |
+| **具有初始登记日期（has initial registration date）** | 指明标识符或其他登记项目创建和/或首次登记的日期。 |
+| **具有首选转写法定名称（has preferred transliterated legal name）** | 表示实体法定名称的首选 ASCII 转写形式。 |
+| **具有曾用法定名称（has prior legal name）** | 表示实体此前使用过的主要法定名称。 |
+| **具有登记状态修订日期（has registration status revision date）** | 指明登记册中特定登记状态被修订的日期。 |
+| **具有续展日期（has renewal date）** | 指明登记册中特定登记须续展或更新的日期。 |
+| **具有经营名称（has trading or operational name）** | 表示实体当前使用的「以……名义经营」「品牌名」等名称，该名称是对法定名称的补充而非替代。 |
+| **具有转写法定名称（has transliterated legal name）** | 表示实体法定名称的可选 ASCII 转写（即拉丁化/罗马化）形式。 |
+| **具有核验日期（has validation date）** | 指明登记册中特定登记最近一次被审核和核验的日期。 |
+| **是否自行维护（is self-maintained）** | 表明实体信息是由内部维护还是由第三方维护。 |
+
+## 4. 依赖（owl:imports，20 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -157,7 +411,7 @@
 | `https://www.omg.org/spec/Commons/RegistrationAuthorities/` | OMG 通用登记主管机构本体（OMG Commons Registration Authorities） | Commons 库中的登记主管机构本体，定义负责登记注册的主管机构及其登记行为的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`BusinessRegistries.rdf`
 - 中文 Turtle：`BusinessRegistries.ttl`

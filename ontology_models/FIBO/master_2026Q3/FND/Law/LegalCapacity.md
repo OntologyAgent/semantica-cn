@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：法律能力≠权利——能力是「有没有资格做」（如未成年人缔约能力受限），权利是「可以做什么」；签章权是组织授予个人的代表资格。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **请求权（claim）** 继承 **法律构造（legal construct）**
+- **或有义务（contingent obligation）** 继承 **责任（duty）**
+- **或有权利（contingent right）** 继承 **权利（right）**
+- **缔约能力（contractual capability）** 继承 **法律行为能力（legal capacity）**
+- **合同权益（contractual interest）** 继承 **合同权利（contractual right）**
+- **合同义务（contractual obligation）** 继承 **法律义务（legal obligation）**
+- **合同期权（contractual option）** 继承 **合同权利（contractual right）**
+- **合同权利（contractual right）** 继承 **权利（right）**
+- **受托法律权限（delegated legal authority）** 继承 **法律行为能力（legal capacity）**
+- **交付义务（delivery obligation）** 继承 **或有义务（contingent obligation）**
+- **交付义务（delivery obligation）** 继承 **法律义务（legal obligation）**
+- **责任（duty）** 继承 **法律构造（legal construct）**
+- 其余 15 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -46,93 +62,368 @@
 | 权利（right） | 实施（或不实施）特定行为、或处于（或不处于）特定状态的资格；或要求他人实施特定行为的资格。 |
 | 签署能力（signatory capacity） | 自然人代表某组织或法律主体签署协议的能力。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 请求权（claim） ⊑ 法律构造（legal construct）
-- 或有义务（contingent obligation） ⊑ 责任（duty）
-- 或有权利（contingent right） ⊑ 权利（right）
-- 缔约能力（contractual capability） ⊑ 法律行为能力（legal capacity）
-- 合同权益（contractual interest） ⊑ 合同权利（contractual right）
-- 合同义务（contractual obligation） ⊑ 法律义务（legal obligation）
-- 合同期权（contractual option） ⊑ 合同权利（contractual right）
-- 合同权利（contractual right） ⊑ 权利（right）
-- 受托法律权限（delegated legal authority） ⊑ 法律行为能力（legal capacity）
-- 交付义务（delivery obligation） ⊑ 或有义务（contingent obligation）
-- 交付义务（delivery obligation） ⊑ 法律义务（legal obligation）
-- 责任（duty） ⊑ 法律构造（legal construct）
-- 法律行为能力（legal capacity） ⊑ 法律构造（legal construct）
-- 法律义务（legal obligation） ⊑ 责任（duty）
-- 法律权利（legal right） ⊑ 权利（right）
-- 应诉能力（liability capacity） ⊑ 法律行为能力（legal capacity）
-- 许可（license） ⊑ 法律文件
-- 许可标识符（license identifier） ⊑ 标识符
-- 被许可方（licensee） ⊑ 参与方角色（party role）
-- 许可方（licensor） ⊑ 参与方角色（party role）
-- 诉讼能力（litigation capacity） ⊑ 法律行为能力（legal capacity）
-- 通知义务（notification obligation） ⊑ 或有义务（contingent obligation）
-- 通知义务（notification obligation） ⊑ 法律义务（legal obligation）
-- 规章（regulation） ⊑ 法律构造（legal construct）
-- 报告政策（reporting policy） ⊑ 政策（policy）
-- 权利（right） ⊑ 法律构造（legal construct）
-- 签署能力（signatory capacity） ⊑ 法律行为能力（legal capacity）
+### 2.1 法律构造（legal construct）
 
-## 3. 对象属性（Object Property）
+定义：通过法律或合同赋予的事物，如权利。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-law-lcap:hasCapacity | 具有能力方（has capacity） | 标识具有实施特定行为的能力和余力、或具有特定权利或义务的个人或组织。 | 定义域（domain）：参与方（party）；值域（range）：法律行为能力（legal capacity）；逆属性（inverseOf）：是……的能力（is capacity of） |
-| fibo-fnd-law-lcap:implements | 实施（implements） | 执行或付诸实施，履行。 | 子属性（subPropertyOf）：涉及 |
-| fibo-fnd-law-lcap:implies | 蕴含（implies） | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。 | 子属性（subPropertyOf）：涉及 |
-| fibo-fnd-law-lcap:isCapacityOf | 是……的能力（is capacity of） | 标识被赋予某项法律行为能力的个人或组织。 | 定义域（domain）：法律行为能力（legal capacity）；值域（range）：参与方（party）；子属性（subPropertyOf）：被授予给（is conferred on） |
-| fibo-fnd-law-lcap:isConferredOn | 被授予给（is conferred on） | 标识被授予某项利益或权利的参与方。 | 值域（range）：参与方（party） |
-| fibo-fnd-law-lcap:isImplementedBy | 由……实施（is implemented by） | 标识由……执行、纳入或付诸实施的事物。 | 逆属性（inverseOf）：实施（implements） |
-| fibo-fnd-law-lcap:isImpliedBy | 由……蕴含（is implied by） | 标识由另一事物强烈暗示的事物，如基于某组观测、事实或事件的逻辑推论。 | 逆属性（inverseOf）：蕴含（implies） |
-| fibo-fnd-law-lcap:isLicensedBy | 由……许可（is licensed by） | 标识向另一方签发特定许可的参与方。 | 值域（range）：参与方角色（party role）；逆属性（inverseOf）：签发许可（licenses）；子属性（subPropertyOf）：受……管辖 |
-| fibo-fnd-law-lcap:isPredicatedOn | 以……为前提（is predicated on） | 取决于……中所述的假定或要求。 | 定义域（domain）：先决条件；值域（range）：N56133744374c486ea451c8326d43d3b4；子属性（subPropertyOf）：规定于 |
-| fibo-fnd-law-lcap:licenses | 签发许可（licenses） | 签发展为执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可。 | 定义域（domain）：参与方角色（party role）；子属性（subPropertyOf）：管辖 |
+- 直接子类：**请求权（claim）**、**责任（duty）**、**法律行为能力（legal capacity）**、**规章（regulation）**、**权利（right）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-law-lcap:hasFractionalInterest | 具有份额权益（has fractional interest） | 对……具有按比例的、非排他的权利。 |
+| **被授予给（is conferred on）** | 标识被授予某项利益或权利的参与方。 | 值域：参与方（party） |
+| **由……授予（isConferredBy）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **由……授予（isConferredBy）**可以有 0 个或多个**N4b49daef4e40423784f83fb113f9b684**。
+- **被授予给（is conferred on）**可以有 0 个或多个**参与方（party）**。
 
-- **或有义务（contingent obligation）**：**属于义务人（isObligationOf）**至少有一个取值，类型是**义务人（Obligor）**。
-- **或有义务（contingent obligation）**：**由……蕴含（is implied by）**至少有一个取值，类型是**或有权利（contingent right）**。
-- **或有权利（contingent right）**：**蕴含（implies）**至少有一个取值，类型是**或有义务（contingent obligation）**。
-- **或有权利（contingent right）**：**被授予给（is conferred on）**至少有一个取值，类型是**参与方（party）**。
-- **合同权益（contractual interest）**：**具有份额权益（has fractional interest）**存在取值约束。
-- **合同义务（contractual obligation）**：**由……蕴含（is implied by）**的所有取值只能是**合同权利（contractual right）**。
-- **合同义务（contractual obligation）**：**由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
-- **合同权利（contractual right）**：**蕴含（implies）**至少有一个取值，类型是**合同义务（contractual obligation）**。
-- **合同权利（contractual right）**：**由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
-- **法律构造（legal construct）**：**被授予给（is conferred on）**可以有 0 个或多个**参与方（party）**。
-- **法律构造（legal construct）**：**由……授予（isConferredBy）**可以有 0 个或多个**N00feea27f027426295a9ff8b14f188c5**。
-- **法律义务（legal obligation）**：**由……授予（isConferredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **法律义务（legal obligation）**：**由……授权要求（isMandatedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **法律义务（legal obligation）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **法律权利（legal right）**：**蕴含（implies）**至少有一个取值，类型是**法律义务（legal obligation）**。
-- **法律权利（legal right）**：**由……授予（isConferredBy）**至少有一个取值，类型是**成文法（StatuteLaw）**。
-- **法律权利（legal right）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **许可（license）**：**在…期间保持（holds during）**恰好有 1 个**日期区间（DatePeriod）**。
-- **许可（license）**：**授予（confers）**至少有一个取值，类型是**法律行为能力（legal capacity）**。
-- **许可（license）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**许可方（licensor）**。
-- **许可（license）**：**具有参与方角色（has party role）**至少有一个取值，类型是**被许可方（licensee）**。
-- **许可标识符（license identifier）**：**标识（identifies）**恰好有 1 个**许可（license）**。
-- **被许可方（licensee）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**许可（license）**。
-- **许可方（licensor）**：**签发许可（licenses）**至少有一个取值，类型是**owl:Thing（Thing）**。
-- **许可方（licensor）**：**发行（issues）**至少有一个取值，类型是**许可（license）**。
-- **许可方（licensor）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**许可（license）**。
-- **政策（policy）**：**实施（implements）**可以有 0 个或多个**Nfdaa754de07d4daa80e9c82a095db72e**。
-- **政策（policy）**：**管辖（governs）**至少有一个取值，类型是**战略（Strategy）**。
-- **规章（regulation）**：**由……授予（isConferredBy）**至少有一个取值，类型是**法律（Law）**。
-- **规章（regulation）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+#### 2.1.1 请求权（claim）
 
-## 6. 依赖（owl:imports，16 个）
+定义：一方基于共同产生可法律强制执行的权利或司法行动的事实，向另一方提出的要求或主张。
+
+- 父类：**法律构造（legal construct）**
+
+#### 2.1.2 责任（duty）
+
+定义：存在并加于某个人的某项义务。
+
+- 父类：**法律构造（legal construct）**
+- 直接子类：**或有义务（contingent obligation）**、**法律义务（legal obligation）**
+
+##### 2.1.2.1 或有义务（contingent obligation）
+
+定义：取决于未来事件或某行为之履行的义务。
+
+- 父类：**责任（duty）**
+- 直接子类：**交付义务（delivery obligation）**、**通知义务（notification obligation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **属于义务人（isObligationOf）** | — | — |
+| **由……蕴含（is implied by）** | 标识由另一事物强烈暗示的事物，如基于某组观测、事实或事件的逻辑推论。 | 逆属性：蕴含（implies） |
+
+公理：
+
+- **属于义务人（isObligationOf）**至少有一个取值，类型是**义务人（Obligor）**。
+- **由……蕴含（is implied by）**至少有一个取值，类型是**或有权利（contingent right）**。
+
+###### 2.1.2.1.1 交付义务（delivery obligation）
+
+定义：为清偿请求权或债务而交付某物的义务。
+
+- 父类：**或有义务（contingent obligation）**、**法律义务（legal obligation）**
+
+###### 2.1.2.1.2 通知义务（notification obligation）
+
+定义：按协议约定，一方就特定事件、行为或变更正式告知另一方（或多方）的要求。
+
+- 父类：**或有义务（contingent obligation）**、**法律义务（legal obligation）**
+
+##### 2.1.2.2 法律义务（legal obligation）
+
+定义：可由法院强制执行的义务或责任。
+
+- 父类：**责任（duty）**
+- 直接子类：**合同义务（contractual obligation）**、**交付义务（delivery obligation）**、**通知义务（notification obligation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授予（isConferredBy）** | — | — |
+| **由……授权要求（isMandatedBy）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **由……授予（isConferredBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **由……授权要求（isMandatedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+
+###### 2.1.2.2.1 合同义务（contractual obligation）
+
+定义：由合同条款产生的具有法律约束力的义务。
+
+- 父类：**法律义务（legal obligation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……蕴含（is implied by）** | 标识由另一事物强烈暗示的事物，如基于某组观测、事实或事件的逻辑推论。 | 逆属性：蕴含（implies） |
+| **由……授予（isConferredBy）** | — | — |
+
+公理：
+
+- **由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
+- **由……蕴含（is implied by）**的所有取值只能是**合同权利（contractual right）**。
+
+#### 2.1.3 法律行为能力（legal capacity）
+
+定义：实施特定行为或享有特定权利的能力，以及为此所需的资源。
+
+- 父类：**法律构造（legal construct）**
+- 直接子类：**缔约能力（contractual capability）**、**受托法律权限（delegated legal authority）**、**应诉能力（liability capacity）**、**诉讼能力（litigation capacity）**、**签署能力（signatory capacity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的能力（is capacity of）** | 标识被赋予某项法律行为能力的个人或组织。 | 值域：参与方（party）；子属性：被授予给（is conferred on） |
+
+##### 2.1.3.1 缔约能力（contractual capability）
+
+定义：订立具有法律约束力合同的能力。
+
+- 父类：**法律行为能力（legal capacity）**
+
+##### 2.1.3.2 受托法律权限（delegated legal authority）
+
+定义：特定职务、职能或职位所固有的制度化法定权力，旨在使其持有者能够成功履行职责。
+
+- 父类：**法律行为能力（legal capacity）**
+
+##### 2.1.3.3 应诉能力（liability capacity）
+
+定义：在法律上被起诉的能力。
+
+- 父类：**法律行为能力（legal capacity）**
+
+##### 2.1.3.4 诉讼能力（litigation capacity）
+
+定义：在法律上提起并推进诉讼的法律行为能力。
+
+- 父类：**法律行为能力（legal capacity）**
+
+##### 2.1.3.5 签署能力（signatory capacity）
+
+定义：自然人代表某组织或法律主体签署协议的能力。
+
+- 父类：**法律行为能力（legal capacity）**
+
+#### 2.1.4 规章（regulation）
+
+定义：用于实施法律的规则。
+
+- 父类：**法律构造（legal construct）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……授予（isConferredBy）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **由……授予（isConferredBy）**至少有一个取值，类型是**法律（Law）**。
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+
+#### 2.1.5 权利（right）
+
+定义：实施（或不实施）特定行为、或处于（或不处于）特定状态的资格；或要求他人实施特定行为的资格。
+
+- 父类：**法律构造（legal construct）**
+- 直接子类：**或有权利（contingent right）**、**合同权利（contractual right）**、**法律权利（legal right）**
+
+##### 2.1.5.1 或有权利（contingent right）
+
+定义：取决于未来事件或某行为之履行的权利。
+
+- 父类：**权利（right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。 | 子属性：涉及 |
+| **被授予给（is conferred on）** | 标识被授予某项利益或权利的参与方。 | 值域：参与方（party） |
+
+公理：
+
+- **蕴含（implies）**至少有一个取值，类型是**或有义务（contingent obligation）**。
+- **被授予给（is conferred on）**至少有一个取值，类型是**参与方（party）**。
+
+##### 2.1.5.2 合同权利（contractual right）
+
+定义：在有约束力协议中授予参与方的可法律强制执行的利益或权利。
+
+- 父类：**权利（right）**
+- 直接子类：**合同权益（contractual interest）**、**合同期权（contractual option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。 | 子属性：涉及 |
+| **由……授予（isConferredBy）** | — | — |
+
+公理：
+
+- **由……授予（isConferredBy）**至少有一个取值，类型是**合同（Contract）**。
+- **蕴含（implies）**至少有一个取值，类型是**合同义务（contractual obligation）**。
+
+###### 2.1.5.2.1 合同权益（contractual interest）
+
+定义：由合同、协议或工具产生的可法律强制执行的利益或权利，实体在其中持有特定的权利或义务。
+
+- 父类：**合同权利（contractual right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有份额权益（has fractional interest）** | 对……具有按比例的、非排他的权利。 | 值域：xsd:decimal；子属性：具有数值 |
+
+公理：
+
+- **具有份额权益（has fractional interest）**存在取值约束。
+
+###### 2.1.5.2.2 合同期权（contractual option）
+
+定义：可在未来某时点行使的合同权利，如展期合同的选择权或其他可用但非强制的权利。
+
+- 父类：**合同权利（contractual right）**
+
+##### 2.1.5.3 法律权利（legal right）
+
+定义：政府、合同或法律提供或保护的个人权利、特权或利益，使个人或实体有资格获得某物。
+
+- 父类：**权利（right）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **蕴含（implies）** | 基于某组观测、事实或事件，强烈暗示或作为逻辑推论包含。 | 子属性：涉及 |
+| **由……授予（isConferredBy）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **由……授予（isConferredBy）**至少有一个取值，类型是**成文法（StatuteLaw）**。
+- **蕴含（implies）**至少有一个取值，类型是**法律义务（legal obligation）**。
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+
+### 2.2 许可（license）
+
+定义：做某事所需之准许的授予。
+
+- 父类：**法律文件（LegalDocument）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **授予（confers）** | — | — |
+| **由……发行（isIssuedBy）** | — | — |
+| **具有参与方角色（has party role）** | — | — |
+| **在…期间保持（holds during）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有一个取值，类型是**被许可方（licensee）**。
+- **在…期间保持（holds during）**恰好有 1 个**日期区间（DatePeriod）**。
+- **授予（confers）**至少有一个取值，类型是**法律行为能力（legal capacity）**。
+- **由……发行（isIssuedBy）**至少有一个取值，类型是**许可方（licensor）**。
+
+### 2.3 许可标识符（license identifier）
+
+定义：与许可关联的标识符。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**许可（license）**。
+
+### 2.4 被许可方（licensee）
+
+定义：被授予许可的参与方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**许可（license）**。
+
+### 2.5 许可方（licensor）
+
+定义：授予许可的参与方。
+
+- 父类：**参与方角色（party role）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **签发许可（licenses）** | 签发展为执行某项任务、提供某项服务、行使某项特权或从事某行业所需的许可。 | 子属性：管辖 |
+| **发行（issues）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **发行（issues）**至少有一个取值，类型是**许可（license）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**许可（license）**。
+- **签发许可（licenses）**至少有一个取值，类型是**owl:Thing（Thing）**。
+
+### 2.6 政策（policy）
+
+定义：组织为指导特定情形下的决策而采纳并实施的原则、规则和指南体系。
+
+- 直接子类：**报告政策（reporting policy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **实施（implements）** | 执行或付诸实施，履行。 | 子属性：涉及 |
+| **管辖（governs）** | — | — |
+
+公理：
+
+- **实施（implements）**可以有 0 个或多个**N53faf6cb6dd3424ba878053e2358f74a**。
+- **管辖（governs）**至少有一个取值，类型是**战略（Strategy）**。
+
+#### 2.6.1 报告政策（reporting policy）
+
+定义：就报告某方面规定原则、规则和/或指南的政策。
+
+- 父类：**政策（policy）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有能力方（has capacity）** | 标识具有实施特定行为的能力和余力、或具有特定权利或义务的个人或组织。 | 值域：法律行为能力（legal capacity）；逆属性：是……的能力（is capacity of） |
+| **由……实施（is implemented by）** | 标识由……执行、纳入或付诸实施的事物。 | 逆属性：实施（implements） |
+| **由……许可（is licensed by）** | 标识向另一方签发特定许可的参与方。 | 值域：参与方角色（party role）；逆属性：签发许可（licenses）；子属性：受……管辖 |
+| **以……为前提（is predicated on）** | 取决于……中所述的假定或要求。 | 值域：N7354b4e1d83640a2bb9818014f5ededd；子属性：规定于 |
+
+## 4. 依赖（owl:imports，16 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -155,7 +446,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`LegalCapacity.rdf`
 - 中文 Turtle：`LegalCapacity.ttl`

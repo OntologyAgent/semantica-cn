@@ -14,6 +14,20 @@
 
 **与相近概念的差别**：抵押≠担保——抵押是以特定财产作偿（物的担保），担保是第三人信用承诺；抵押贷款≠按揭产品的差别——按揭是抵押贷款在住房场景的具体产品形态。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **封闭式抵押贷款（closed-end mortgage loan）** 继承 **封闭式信贷（ClosedEndCredit）**
+- **封闭式抵押贷款（closed-end mortgage loan）** 继承 **房地产担保贷款（loan secured by real estate）**
+- **封闭式反向抵押贷款（closed-end reverse mortgage）** 继承 **封闭式抵押贷款（closed-end mortgage loan）**
+- **封闭式反向抵押贷款（closed-end reverse mortgage）** 继承 **反向抵押贷款（reverse mortgage loan）**
+- **房地产担保贷款（loan secured by real estate）** 继承 **抵押贷款（CollateralizedLoan）**
+- **抵押（mortgage）** 继承 **担保协议（SecurityAgreement）**
+- **开放式抵押贷款（open-end mortgage loan）** 继承 **开放式信贷（OpenEndCredit）**
+- **开放式抵押贷款（open-end mortgage loan）** 继承 **房地产担保贷款（loan secured by real estate）**
+- **开放式反向抵押贷款（open-end reverse mortgage）** 继承 **开放式抵押贷款（open-end mortgage loan）**
+- **开放式反向抵押贷款（open-end reverse mortgage）** 继承 **反向抵押贷款（reverse mortgage loan）**
+- **反向抵押贷款（reverse mortgage loan）** 继承 **房地产担保贷款（loan secured by real estate）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -26,45 +40,93 @@
 | 开放式反向抵押贷款（open-end reverse mortgage） | 结构类似房屋净值信用额度的反向抵押贷款，结清后借款人可获得额外资金。 |
 | 反向抵押贷款（reverse mortgage loan） | 以房地产作担保、按抵押物现有净值设定本金限额并向借款人支付资金的贷款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 封闭式抵押贷款（closed-end mortgage loan） ⊑ 封闭式信贷
-- 封闭式抵押贷款（closed-end mortgage loan） ⊑ 房地产担保贷款（loan secured by real estate）
-- 封闭式反向抵押贷款（closed-end reverse mortgage） ⊑ 封闭式抵押贷款（closed-end mortgage loan）
-- 封闭式反向抵押贷款（closed-end reverse mortgage） ⊑ 反向抵押贷款（reverse mortgage loan）
-- 房地产担保贷款（loan secured by real estate） ⊑ 抵押贷款
-- 抵押（mortgage） ⊑ 担保协议
-- 开放式抵押贷款（open-end mortgage loan） ⊑ 开放式信贷
-- 开放式抵押贷款（open-end mortgage loan） ⊑ 房地产担保贷款（loan secured by real estate）
-- 开放式反向抵押贷款（open-end reverse mortgage） ⊑ 开放式抵押贷款（open-end mortgage loan）
-- 开放式反向抵押贷款（open-end reverse mortgage） ⊑ 反向抵押贷款（reverse mortgage loan）
-- 反向抵押贷款（reverse mortgage loan） ⊑ 房地产担保贷款（loan secured by real estate）
+### 2.1 房地产担保贷款（loan secured by real estate）
 
-## 3. 对象属性（Object Property）
+定义：发放时全部或主要由不动产留置权作担保、且该留置权为授信核心的贷款。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-loan-reln-mtg:hasInitialFundingDate | 具有初始放款日（has initial funding date） | 将抵押贷款关联到合同成立、正式产生其义务的日期。 | 子属性（subPropertyOf）：具有生效日期 |
+- 父类：**抵押贷款（CollateralizedLoan）**
+- 直接子类：**封闭式抵押贷款（closed-end mortgage loan）**、**开放式抵押贷款（open-end mortgage loan）**、**反向抵押贷款（reverse mortgage loan）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-loan-reln-mtg:isARMConvertible | 可转可调整利率（is ARM convertible） | 表明该贷款是否可转换为可调整利率抵押贷款合同（ARM）。 |
+| **以……为抵押（isCollateralizedBy）** | — | — |
+| **具有合同要素（hasContractualElement）** | — | — |
+| **具有初始放款日（has initial funding date）** | 将抵押贷款关联到合同成立、正式产生其义务的日期。 | 子属性：具有生效日期 |
+| **可转可调整利率（is ARM convertible）** | 表明该贷款是否可转换为可调整利率抵押贷款合同（ARM）。 | 值域：xsd:boolean |
+| **引用（refersTo）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**不动产（RealProperty）**。
+- **具有初始放款日（has initial funding date）**至少有一个取值，类型是**交易日期（TransactionDate）**。
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**募集资金用途条款（UseOfProceedsProvision）**。
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**披露条款（DisclosureProvision）**。
+- **引用（refersTo）**至少有一个取值，类型是**担保协议（SecurityAgreement）**。
 
-- **房地产担保贷款（loan secured by real estate）**：**以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**不动产（RealProperty）**。
-- **房地产担保贷款（loan secured by real estate）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**披露条款（DisclosureProvision）**。
-- **房地产担保贷款（loan secured by real estate）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**募集资金用途条款（UseOfProceedsProvision）**。
-- **房地产担保贷款（loan secured by real estate）**：**具有初始放款日（has initial funding date）**至少有一个取值，类型是**交易日期（TransactionDate）**。
-- **房地产担保贷款（loan secured by real estate）**：**引用（refersTo）**至少有一个取值，类型是**担保协议（SecurityAgreement）**。
-- **抵押（mortgage）**：**以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**不动产（RealProperty）**。
-- **反向抵押贷款（reverse mortgage loan）**：**具有信用限额（hasCreditLimit）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+#### 2.1.1 封闭式抵押贷款（closed-end mortgage loan）
 
-## 6. 依赖（owl:imports，9 个）
+定义：以房地产作担保、借款人日后不得再提取额外资金的贷款。
+
+- 父类：**封闭式信贷（ClosedEndCredit）**、**房地产担保贷款（loan secured by real estate）**
+- 直接子类：**封闭式反向抵押贷款（closed-end reverse mortgage）**
+
+##### 2.1.1.1 封闭式反向抵押贷款（closed-end reverse mortgage）
+
+定义：在结清时向借款人一次性支付、借款人日后不得再提取额外资金的反向抵押贷款。
+
+- 父类：**封闭式抵押贷款（closed-end mortgage loan）**、**反向抵押贷款（reverse mortgage loan）**
+
+#### 2.1.2 开放式抵押贷款（open-end mortgage loan）
+
+定义：以房地产作担保、约定经借贷双方同意可增加未偿贷款金额的贷款。
+
+- 父类：**开放式信贷（OpenEndCredit）**、**房地产担保贷款（loan secured by real estate）**
+- 直接子类：**开放式反向抵押贷款（open-end reverse mortgage）**
+
+##### 2.1.2.1 开放式反向抵押贷款（open-end reverse mortgage）
+
+定义：结构类似房屋净值信用额度的反向抵押贷款，结清后借款人可获得额外资金。
+
+- 父类：**开放式抵押贷款（open-end mortgage loan）**、**反向抵押贷款（reverse mortgage loan）**
+
+#### 2.1.3 反向抵押贷款（reverse mortgage loan）
+
+定义：以房地产作担保、按抵押物现有净值设定本金限额并向借款人支付资金的贷款。
+
+- 父类：**房地产担保贷款（loan secured by real estate）**
+- 直接子类：**封闭式反向抵押贷款（closed-end reverse mortgage）**、**开放式反向抵押贷款（open-end reverse mortgage）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有信用限额（hasCreditLimit）** | — | — |
+
+公理：
+
+- **具有信用限额（hasCreditLimit）**至少有一个取值，类型是**货币数量（MonetaryAmount）**。
+
+### 2.2 抵押（mortgage）
+
+定义：向非该不动产所有人的参与方授予的不动产财产权益，由注册机构登记。
+
+- 父类：**担保协议（SecurityAgreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **以……为抵押（isCollateralizedBy）** | — | — |
+
+公理：
+
+- **以……为抵押（isCollateralizedBy）**至少有一个取值，类型是**不动产（RealProperty）**。
+
+## 3. 依赖（owl:imports，9 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -80,7 +142,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`Mortgages.rdf`
 - 中文 Turtle：`Mortgages.ttl`

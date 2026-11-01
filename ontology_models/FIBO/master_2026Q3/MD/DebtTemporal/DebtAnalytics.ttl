@@ -438,14 +438,14 @@ fibo-md-dbtx-aly:DebtConvexityAnalytic a owl:Class ;
         "债务凸性分析（debt convexity analytic）"@zh ;
     rdfs:comment "证券价格对其收益率的二阶导数除以证券价格；当价格上升幅度大于收益率下降所暗示的幅度时呈正凸性。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-qtu:hasArgument ;
-            owl:someValuesFrom fibo-ind-ind-ind:MarketSpread ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-md-dbtx-aly:isRateOfChangeOf ;
             owl:someValuesFrom fibo-md-dbtx-aly:DurationAnalytic ],
         [ a owl:Restriction ;
             owl:onProperty cmns-doc:refersTo ;
             owl:someValuesFrom fibo-md-dbtx-aly:DebtInstrumentYield ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-qtu:hasArgument ;
+            owl:someValuesFrom fibo-ind-ind-ind:MarketSpread ],
         fibo-fnd-dt-fd:DatedCollectionConstituent ;
     skos:definition "The second derivative of a security's price with respect to its yield, divided by the security's price. A security exhibits positive convexity when its price rises more for a downward move in its yield than its price declines for an equal upward move in its yield. Further notes: A measure of the change in price for a given change in Modified Duration. This always (necessarily) refers to Modified Duration. This is used as another risk measurement. Numerator is always (a) duration - either MacCaulays or Modified. Always rate of change of (one of the) Duration against some other parameter. The other paramater can be characterised as a Yield (it may be the Price, but that has a relationship to the Yield in any case). REVIEW: Inconsistency in the above - is it always necessarily Modified Duration that is referred to, or \"any\" Duration measure (Macaulays and.or Modified)? notes 9 Dec A measure of the sensitivity of the price with reference to interest rates. This is normally determined with reference to maturity, but since there are different maturity dates, this figure gives an estimate of the equitvalent if you had a homogenous portfolio, i.e. this is an estimate based on a pure equivalent, homogenous portfolio. Convexity of instrument versus portfolio. Sees instrument in terms of the set of cashflows. The term Convexity can be applied either to a bond or to a portfolio. More notes: When you get Convexit in MD, it will tell you what Duration it is refrfering to, along with Redemption Date (logically). Also if there is Option Adjusted Yield, there is a third set of analytics. What are they? i.e. OA Convexity, Duration Yield and the rest. Conclusions: Agreed to revisit this in OTC."@en .
 
@@ -641,11 +641,11 @@ fibo-md-dbtx-aly:EquivalentLifeAnalytic a owl:Class ;
         "等价期限分析（equivalent life analytic）"@zh ;
     rdfs:comment "等价期限的分析度量。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty cmns-doc:refersTo ;
-            owl:someValuesFrom fibo-sec-dbt-bnd:BondWithPartialCall ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:isBasedOn ;
             owl:someValuesFrom fibo-md-dbtx-aly:PartialCallsEstimationModel ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-doc:refersTo ;
+            owl:someValuesFrom fibo-sec-dbt-bnd:BondWithPartialCall ],
         fibo-md-dbtx-aly:LifeAnalytic ;
     owl:disjointWith fibo-sec-dbt-pbs:WeightedAverageLife .
 
@@ -732,14 +732,14 @@ fibo-md-dbtx-aly:PoolFactor a owl:Class ;
 
 fibo-sec-sec-pls:DebtPool a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-md-dbtx-aly:hasDefaultRate ;
-            owl:someValuesFrom fibo-sec-dbt-pbs:DefaultRate ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-md-dbtx-aly:hasAnalytic ;
             owl:someValuesFrom fibo-sec-dbt-pbs:DebtPoolStatisticalMeasure ],
         [ a owl:Restriction ;
             owl:onProperty fibo-md-dbtx-aly:hasMeasure ;
             owl:someValuesFrom fibo-sec-dbt-pbs:PrepaymentSpeed ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:hasDefaultRate ;
+            owl:someValuesFrom fibo-sec-dbt-pbs:DefaultRate ],
         [ a owl:Restriction ;
             owl:onProperty fibo-md-dbtx-aly:hasFactor ;
             owl:someValuesFrom fibo-md-dbtx-aly:PoolFactor ] .
@@ -776,14 +776,14 @@ fibo-md-dbtx-aly:YieldCalculationMethod a owl:Class ;
         "收益率计算方法（yield calculation method）"@zh ;
     rdfs:comment "计算收益率的方法，包括计算公式及特定的天数计算惯例与复利方式。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom cmns-qtu:Variable ;
-            owl:onProperty cmns-qtu:hasArgument ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-utl-alx:hasFormula ;
             owl:someValuesFrom fibo-md-dbtx-aly:YieldCalculationFormula ],
         [ a owl:Restriction ;
             owl:allValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ;
             owl:onProperty fibo-fbc-dae-dbt:hasCompoundingFrequency ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cmns-qtu:Variable ;
+            owl:onProperty cmns-qtu:hasArgument ],
         fibo-fnd-utl-alx:Formula ;
     skos:definition "The method by which the yield is calculated. This includes a formula for calculation and a specific day count convention and compounding. You would apply this calculation method on top of the underlying terms and conditions, do for example the holiday calenders and so on, are used in these formulae. For final cash flow: Japanese yield will round down accrued interest. Add: The actual underlying math. Wall Street uses the same ICMA formula."@en ;
     skos:editorialNote "Initial reviewer notes 18 Nov: this uses the combination of the day count and the compounding gives you the name of the yield calculation method. Names are associated with algorithms. What yield you use to determining the present value. These are typically defined in a prospectus (for exchange traded) or Info Memorandum if it's traded in an OTC market. where it also defines the method itself. Action: look at some prospecti or get this from a vendor. Additional features 25 nov: Question - maybe Holiday calendar? Also date roll rules and roll back rules. These all apply. YC feeds in to Yield itself."@en .
@@ -793,9 +793,6 @@ fibo-md-dbtx-aly:DebtInstrumentYield a owl:Class ;
         "债务工具收益率（debt instrument yield）"@zh ;
     rdfs:comment "按所述价格计算的债务工具回报。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-md-dbtx-aly:calculationFollowing ;
-            owl:someValuesFrom fibo-md-dbtx-aly:YieldCalculationMethod ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-md-dbtx-aly:hasOutlookPeriod ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-md-dbtx-aly:LifeAnalytic [ a owl:Restriction ;
@@ -804,6 +801,9 @@ fibo-md-dbtx-aly:DebtInstrumentYield a owl:Class ;
         [ a owl:Restriction ;
             owl:onProperty cmns-qtu:hasArgument ;
             owl:someValuesFrom fibo-fbc-fi-ip:SecurityPrice ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-md-dbtx-aly:calculationFollowing ;
+            owl:someValuesFrom fibo-md-dbtx-aly:YieldCalculationMethod ],
         fibo-fbc-fi-ip:Yield ;
     skos:definition "The return on the debt instrument at the stated price."@en ;
     cmns-av:explanatoryNote "Yield has a relationship to the price."@en .

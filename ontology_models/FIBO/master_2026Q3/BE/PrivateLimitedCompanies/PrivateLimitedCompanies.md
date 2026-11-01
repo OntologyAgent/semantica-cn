@@ -14,6 +14,21 @@
 
 **与相近概念的差别**：与公众公司的差别——不能向公众募股、股份转让通常受限；与合伙的差别——股东承担有限责任且公司具有独立法人资格。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **有限责任公司（limited liability company）** 继承 **有限责任私人公司（private company with limited liability）**
+- **有限责任公司成员（limited liability company member）** 继承 **法律控制权益方（DeJureControllingInterestParty）**
+- **有限责任公司成员（limited liability company member）** 继承 **实体控制方（EntityControllingParty）**
+- **有限责任公司成员（limited liability company member）** 继承 **实体所有者（EntityOwner）**
+- **有限责任公司成员（limited liability company member）** 继承 **组织成员（OrganizationMember）**
+- **按公司纳税的有限责任公司（limited liability company taxed as a corporation）** 继承 **有限责任公司（limited liability company）**
+- **经理管理的有限责任公司（manager-managed limited liability company）** 继承 **有限责任公司（limited liability company）**
+- **管理成员（managing member）** 继承 **主要负责方（PrincipalParty）**
+- **管理成员（managing member）** 继承 **有限责任公司成员（limited liability company member）**
+- **有限责任私人公司（private company with limited liability）** 继承 **企业实体（BusinessEntity）**
+- **有限责任私人公司（private company with limited liability）** 继承 **法律实体（LegalEntity）**
+- **私人有限公司（private limited company）** 继承 **有限责任私人公司（private company with limited liability）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -26,40 +41,98 @@
 | 有限责任私人公司（private company with limited liability） | 兼具公司与合伙或独资（视所有者数量而定）特征的混合型企业实体。 |
 | 私人有限公司（private limited company） | 股东责任以其最初投入资本为限的私人有限公司。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 有限责任公司（limited liability company） ⊑ 有限责任私人公司（private company with limited liability）
-- 有限责任公司成员（limited liability company member） ⊑ 法律控制权益方
-- 有限责任公司成员（limited liability company member） ⊑ 实体控制方
-- 有限责任公司成员（limited liability company member） ⊑ 实体所有者
-- 有限责任公司成员（limited liability company member） ⊑ 组织成员
-- 按公司纳税的有限责任公司（limited liability company taxed as a corporation） ⊑ 有限责任公司（limited liability company）
-- 经理管理的有限责任公司（manager-managed limited liability company） ⊑ 有限责任公司（limited liability company）
-- 管理成员（managing member） ⊑ 主要负责方
-- 管理成员（managing member） ⊑ 有限责任公司成员（limited liability company member）
-- 有限责任私人公司（private company with limited liability） ⊑ 企业实体
-- 有限责任私人公司（private company with limited liability） ⊑ 法律实体
-- 私人有限公司（private limited company） ⊑ 有限责任私人公司（private company with limited liability）
+### 2.1 有限责任公司成员（limited liability company member）
 
-## 3. 对象属性（Object Property）
+定义：有限责任公司权益的所有者。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-plc-plc:hasManagingMember | 具有管理成员（has managing member） | 标识在有限责任公司中处于控制角色、负责日常业务运营的管理成员。 | 值域（range）：管理成员（managing member）；子属性（subPropertyOf）：具有控制性组织成员 |
-| fibo-be-plc-plc:isManagingMemberOf | 是……的管理成员（is managing member of） | 标识该管理成员所经营的受控有限责任公司。 | 定义域（domain）：管理成员（managing member）；逆属性（inverseOf）：具有管理成员（has managing member）；子属性（subPropertyOf）：是……的控制性成员 |
+- 父类：**法律控制权益方（DeJureControllingInterestParty）**、**实体控制方（EntityControllingParty）**、**实体所有者（EntityOwner）**、**组织成员（OrganizationMember）**
+- 直接子类：**管理成员（managing member）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的控制性成员（isControllingMemberOf）** | — | — |
+| **由…扮演（is played by）** | — | — |
 
-- **有限责任公司（limited liability company）**：**扮演角色（plays role）**可以有 0 个或多个**Nbdf3046d09a74971928215afa9803c0e**。
-- **有限责任公司（limited liability company）**：**扮演角色（plays role）**至少有一个取值，该取值满足：**具有控制性组织成员（hasControllingOrganizationMember）**至少有一个取值，类型是**有限责任公司成员（limited liability company member）**。
-- **有限责任公司成员（limited liability company member）**：**是……的控制性成员（isControllingMemberOf）**可以有 0 个或多个**N34d57239ab9b4a3da8f9c12c1d77dd2b**。
-- **有限责任公司成员（limited liability company member）**：**由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
-- **有限责任公司成员（limited liability company member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，类型是**有限责任公司（limited liability company）**。
-- **管理成员（managing member）**：**是……的管理成员（is managing member of）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**有限责任公司（limited liability company）**。
+公理：
 
-## 6. 依赖（owl:imports，9 个）
+- **是……的控制性成员（isControllingMemberOf）**可以有 0 个或多个**N43a433e467774735addc9a43e9912fbe**。
+- **由…扮演（is played by）**恰好有 1 个**具有法律行为能力的自然人（LegallyCompetentNaturalPerson）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，类型是**有限责任公司（limited liability company）**。
+
+#### 2.1.1 管理成员（managing member）
+
+定义：同时经营日常业务的有限责任公司权益所有者。
+
+- 父类：**主要负责方（PrincipalParty）**、**有限责任公司成员（limited liability company member）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的管理成员（is managing member of）** | 标识该管理成员所经营的受控有限责任公司。 | 逆属性：具有管理成员（has managing member）；子属性：是……的控制性成员 |
+
+公理：
+
+- **是……的管理成员（is managing member of）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**有限责任公司（limited liability company）**。
+
+### 2.2 有限责任私人公司（private company with limited liability）
+
+定义：兼具公司与合伙或独资（视所有者数量而定）特征的混合型企业实体。
+
+- 父类：**企业实体（BusinessEntity）**、**法律实体（LegalEntity）**
+- 直接子类：**有限责任公司（limited liability company）**、**私人有限公司（private limited company）**
+
+#### 2.2.1 有限责任公司（limited liability company）
+
+定义：将独资或合伙的穿透征税与公司的有限责任相结合的私人有限公司。
+
+- 父类：**有限责任私人公司（private company with limited liability）**
+- 直接子类：**按公司纳税的有限责任公司（limited liability company taxed as a corporation）**、**经理管理的有限责任公司（manager-managed limited liability company）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **扮演角色（plays role）** | — | — |
+
+公理：
+
+- **扮演角色（plays role）**可以有 0 个或多个**N0580115fc5484ea598f16325d6a468f5**。
+- **扮演角色（plays role）**至少有一个取值，该取值满足：**具有控制性组织成员（hasControllingOrganizationMember）**至少有一个取值，类型是**有限责任公司成员（limited liability company member）**。
+
+##### 2.2.1.1 按公司纳税的有限责任公司（limited liability company taxed as a corporation）
+
+定义：已选择公司纳税身份的有限责任公司。
+
+- 父类：**有限责任公司（limited liability company）**
+
+##### 2.2.1.2 经理管理的有限责任公司（manager-managed limited liability company）
+
+定义：成员任命一名或多名经理处理日常运营与行政职责的有限责任公司。
+
+- 父类：**有限责任公司（limited liability company）**
+
+#### 2.2.2 私人有限公司（private limited company）
+
+定义：股东责任以其最初投入资本为限的私人有限公司。
+
+- 父类：**有限责任私人公司（private company with limited liability）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有管理成员（has managing member）** | 标识在有限责任公司中处于控制角色、负责日常业务运营的管理成员。 | 值域：管理成员（managing member）；子属性：具有控制性组织成员 |
+
+## 4. 依赖（owl:imports，9 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -75,7 +148,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`PrivateLimitedCompanies.rdf`
 - 中文 Turtle：`PrivateLimitedCompanies.ttl`

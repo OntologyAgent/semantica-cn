@@ -27,10 +27,41 @@
 | 比率类衍生工具（RateBasedDerivativeInstrument） | 标的为某一比率类可观察量的衍生工具。 |
 | 比率类可观察量（RateBasedObservable） | 可在市场上观察到的比率类数值，是比率类衍生品的定价基础。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
+### 2.1 经济指标类衍生工具（EconomicRateBasedDerivativeInstrument）
 
-## 6. 依赖（owl:imports，4 个）
+定义：标的为某一经济指标类比率的衍生工具。
+
+### 2.2 经济指标可观察量（EconomicRateObservable）
+
+定义：可在市场上观察到的经济指标类比率，如物价指数、汇率等。
+
+### 2.3 外汇汇率可观察量（ForeignExchangeRateObservable）
+
+定义：可在市场上观察到的外汇汇率。
+
+### 2.4 远期利率协议（ForwardRateAgreement）
+
+定义：就未来某一日期名义本金的利率承诺进行交换的协议。
+
+### 2.5 利率衍生工具（InterestRateDerivativeInstrument）
+
+定义：标的为利率的衍生工具。
+
+### 2.6 利率可观察量（InterestRateObservable）
+
+定义：可在市场上观察到的利率。
+
+### 2.7 比率类衍生工具（RateBasedDerivativeInstrument）
+
+定义：标的为某一比率类可观察量的衍生工具。
+
+### 2.8 比率类可观察量（RateBasedObservable）
+
+定义：可在市场上观察到的比率类数值，是比率类衍生品的定价基础。
+
+## 3. 依赖（owl:imports，4 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -41,7 +72,7 @@
 | `FND/Utilities/AnnotationVocabulary.rdf` | FIBO 标注词汇表（FIBO Annotation Vocabulary） | 定义 FIBO 专用的标注属性（如释义来源、成熟度等级），用于本体自身的元数据标注。 |
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`RateDerivatives.rdf`
 - 中文 Turtle：`RateDerivatives.ttl`

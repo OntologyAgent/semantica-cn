@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：卡账户≠普通消费贷款——信用卡是循环授信（随借随还、额度循环），消费贷款是一次放款分期偿还；卡账户同时兼具支付工具与信贷工具双重属性。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **卡账户（card account）** 继承 **客户账户（CustomerAccount）**
+- **卡认证值（card authentication value）** 继承 **磁条验证码或验证值（magnetic stripe verification code or value）**
+- **卡认证值 2（card authentication value 2）** 继承 **三位验证码或验证值（three-digit verification code or value）**
+- **卡有效期（card expiration date）** 继承 **显式日期（ExplicitDate）**
+- **卡识别码（card identification number）** 继承 **三位验证码或验证值（three-digit verification code or value）**
+- **卡产品（card product）** 继承 **金融产品（FinancialProduct）**
+- **卡安全码（card security code）** 继承 **磁条验证码或验证值（magnetic stripe verification code or value）**
+- **卡验证码（card validation code）** 继承 **磁条验证码或验证值（magnetic stripe verification code or value）**
+- **卡验证码 2（card validation code 2）** 继承 **三位验证码或验证值（three-digit verification code or value）**
+- **卡验证码或验证值（card verification code or value）** 继承 **代码元素（CodeElement）**
+- **卡验证值（card verification value）** 继承 **磁条验证码或验证值（magnetic stripe verification code or value）**
+- **卡验证值 2（card verification value 2）** 继承 **三位验证码或验证值（three-digit verification code or value）**
+- 其余 25 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -49,107 +65,427 @@
 | 智能卡（smart card） | 内嵌集成电路的支付卡。 |
 | 三位验证码或验证值（three-digit verification code or value） | 印在卡背面签名栏区域最右三位数字的卡验证码。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 卡账户（card account） ⊑ 客户账户
-- 卡认证值（card authentication value） ⊑ 磁条验证码或验证值（magnetic stripe verification code or value）
-- 卡认证值 2（card authentication value 2） ⊑ 三位验证码或验证值（three-digit verification code or value）
-- 卡有效期（card expiration date） ⊑ 显式日期
-- 卡识别码（card identification number） ⊑ 三位验证码或验证值（three-digit verification code or value）
-- 卡产品（card product） ⊑ 金融产品
-- 卡安全码（card security code） ⊑ 磁条验证码或验证值（magnetic stripe verification code or value）
-- 卡验证码（card validation code） ⊑ 磁条验证码或验证值（magnetic stripe verification code or value）
-- 卡验证码 2（card validation code 2） ⊑ 三位验证码或验证值（three-digit verification code or value）
-- 卡验证码或验证值（card verification code or value） ⊑ 代码元素
-- 卡验证值（card verification value） ⊑ 磁条验证码或验证值（magnetic stripe verification code or value）
-- 卡验证值 2（card verification value 2） ⊑ 三位验证码或验证值（three-digit verification code or value）
-- 持卡人（cardholder） ⊑ 客户账户持有人
-- 商业信用卡协议（commercial credit card agreement） ⊑ 信用卡协议（credit card agreement）
-- 消费者信用卡协议（consumer credit card agreement） ⊑ 信用卡协议（credit card agreement）
-- 消费者信用卡协议（consumer credit card agreement） ⊑ 信用消费贷款
-- 信用卡（credit card） ⊑ 支付卡（payment card）
-- 信用卡账户（credit card account） ⊑ 贷款或信用账户
-- 信用卡账户（credit card account） ⊑ 卡账户（card account）
-- 信用卡协议（credit card agreement） ⊑ 承诺性信贷额度
-- 信用卡协议（credit card agreement） ⊑ 支付卡协议（payment card agreement）
-- 信用卡网络（credit card network） ⊑ 分类符
-- 信用卡产品（credit card product） ⊑ 卡产品（card product）
-- 借记卡（debit card） ⊑ 支付卡（payment card）
-- 借记卡账户（debit card account） ⊑ 卡账户（card account）
-- 借记卡产品（debit card product） ⊑ 卡产品（card product）
-- 发卡金融机构（issuing financial institution） ⊑ 发行人
-- 发卡金融机构（issuing financial institution） ⊑ 金融服务提供商
-- 磁条验证码或验证值（magnetic stripe verification code or value） ⊑ 卡验证码或验证值（card verification code or value）
-- 支付卡（payment card） ⊑ 法律文件
-- 支付卡协议（payment card agreement） ⊑ 信贷协议
-- 支付卡协议（payment card agreement） ⊑ 账户专属服务协议
-- 主卡账户号（primary card account number） ⊑ 账户标识符
-- 智能卡（smart card） ⊑ 支付卡（payment card）
-- 三位验证码或验证值（three-digit verification code or value） ⊑ 卡验证码或验证值（card verification code or value）
+### 2.1 卡账户（card account）
 
-## 3. 对象属性（Object Property）
+定义：条款与条件由以支付卡为载体的卡协议定义的账户。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-loan-spc-crd:hasCardVerificationCode | 具有卡验证码（has card verification code） | 将信用卡关联到 (1) 磁条数据或 (2) 用于保护数据完整性并限制篡改的印刷安全特征。 | 定义域（domain）：支付卡（payment card）；值域（range）：卡验证码或验证值（card verification code or value） |
-| fibo-loan-spc-crd:hasCreditCardNetwork | 具有信用卡网络（has credit card network） | 标识信用卡产品的底层网络。 | 值域（range）：信用卡网络（credit card network）；子属性（subPropertyOf）：由……分类 |
-| fibo-loan-spc-crd:hasPrimaryAccountNumber | 具有主账户号（has primary account number） | 指明卡面上显示的账户号。 | 定义域（domain）：支付卡（payment card）；值域（range）：主卡账户号（primary card account number） |
-| fibo-loan-spc-crd:usesCurrency | 使用货币（uses currency） | 标识信用卡产品所定义的货币。 | 值域（range）：货币；子属性（subPropertyOf）：使用 |
+- 父类：**客户账户（CustomerAccount）**
+- 直接子类：**信用卡账户（credit card account）**、**借记卡账户（debit card account）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有主要账户持有人（hasPrimaryAccountHolder）** | — | — |
+| **关联至账户（isLinkedToAccount）** | — | — |
+| **例证（exemplifies）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **由……表示（isSignifiedBy）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
 
-- **卡账户（card account）**：**关联至账户（isLinkedToAccount）**可以有 0 个或多个**客户账户（CustomerAccount）**。
-- **卡账户（card account）**：**具有主要账户持有人（hasPrimaryAccountHolder）**至少有一个取值，类型是**持卡人（cardholder）**。
-- **卡账户（card account）**：**例证（exemplifies）**至少有一个取值，类型是**卡产品（card product）**。
-- **卡账户（card account）**：**定义于（isDefinedIn）**至少有一个取值，类型是**支付卡协议（payment card agreement）**。
-- **卡账户（card account）**：**由……表示（isSignifiedBy）**至少有一个取值，类型是**支付卡（payment card）**。
-- **卡账户（card account）**：**由……标识（isIdentifiedBy）**至少有一个取值，类型是**主卡账户号（primary card account number）**。
-- **卡产品（card product）**：**具有信用卡网络（has credit card network）**可以有 0 个或多个**信用卡网络（credit card network）**。
-- **卡产品（card product）**：**具有行政区划（hasSubdivision）**可以有 0 个或多个**国家行政区划（CountrySubdivision）**。
-- **卡产品（card product）**：**使用货币（uses currency）**恰好有 1 个**货币（Currency）**。
-- **卡产品（card product）**：**具有国家（hasCountry）**恰好有 1 个**国家（Country）**。
-- **卡产品（card product）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**卡账户（card account）**。
-- **卡验证码或验证值（card verification code or value）**：**具有标签（hasTag）**存在取值约束。
-- **卡验证码或验证值（card verification code or value）**：**适用于（appliesTo）**至少有一个取值，类型是**支付卡（payment card）**。
-- **持卡人（cardholder）**：**持有（holds）**至少有一个取值，类型是**卡账户（card account）**。
-- **持卡人（cardholder）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**拥有（owns）**至少有一个取值，类型是**卡账户（card account）**。
-- **持卡人（cardholder）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**卡账户（card account）**。
-- **商业信用卡协议（commercial credit card agreement）**：**具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
-- **消费者信用卡协议（consumer credit card agreement）**：**具有借款人（hasBorrower）**至少有一个取值，类型是**消费者（Consumer）**。
-- **信用卡（credit card）**：**是……的证据（isEvidenceFor）**恰好有 1 个**信用卡账户（credit card account）**。
-- **信用卡（credit card）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**信用卡产品（credit card product）**。
-- **信用卡账户（credit card account）**：**具有付款到期日（hasPaymentDueDate）**至少有一个取值，类型是**付款到期日（PaymentDueDate）**。
-- **信用卡账户（credit card account）**：**例证（exemplifies）**至少有一个取值，类型是**信用卡产品（credit card product）**。
-- **信用卡账户（credit card account）**：**定义于（isDefinedIn）**至少有一个取值，类型是**信用卡协议（credit card agreement）**。
-- **信用卡账户（credit card account）**：**由……表示（isSignifiedBy）**至少有一个取值，类型是**信用卡（credit card）**。
-- **信用卡协议（credit card agreement）**：**具有借款人（hasBorrower）**至少有一个取值，类型是**持卡人（cardholder）**。
-- **信用卡协议（credit card agreement）**：**具有贷款人（hasLender）**至少有一个取值，类型是**发卡金融机构（issuing financial institution）**。
-- **信用卡协议（credit card agreement）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**信用卡（credit card）**。
-- **信用卡协议（credit card agreement）**：**适用于（appliesTo）**至少有一个取值，类型是**信用卡账户（credit card account）**。
-- **信用卡网络（credit card network）**：**分类（classifies）**至少有一个取值，类型是**卡产品（card product）**。
-- **信用卡网络（credit card network）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
-- **信用卡产品（credit card product）**：**具有信用卡网络（has credit card network）**恰好有 1 个**信用卡网络（credit card network）**。
-- **信用卡产品（credit card product）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**信用卡账户（credit card account）**。
-- **信用卡产品（credit card product）**：**分类（classifies）**至少有一个取值，类型是**信用卡（credit card）**。
-- **借记卡（debit card）**：**是……的证据（isEvidenceFor）**恰好有 1 个**借记卡账户（debit card account）**。
-- **借记卡（debit card）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**借记卡产品（debit card product）**。
-- **借记卡账户（debit card account）**：**例证（exemplifies）**至少有一个取值，类型是**借记卡产品（debit card product）**。
-- **借记卡账户（debit card account）**：**由……表示（isSignifiedBy）**至少有一个取值，类型是**借记卡（debit card）**。
-- **借记卡产品（debit card product）**：**由……例证（isExemplifiedBy）**至少有一个取值，类型是**借记卡账户（debit card account）**。
-- **借记卡产品（debit card product）**：**分类（classifies）**至少有一个取值，类型是**借记卡（debit card）**。
-- **支付卡（payment card）**：**具有到期日（hasExpirationDate）**恰好有 1 个**卡有效期（card expiration date）**。
-- **支付卡（payment card）**：**具有卡验证码（has card verification code）**恰好有 1 个**卡验证码或验证值（card verification code or value）**。
-- **支付卡（payment card）**：**具有主账户号（has primary account number）**恰好有 1 个**主卡账户号（primary card account number）**。
-- **支付卡（payment card）**：**是……的证据（isEvidenceFor）**至少有一个取值，类型是**卡账户（card account）**。
-- **支付卡协议（payment card agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**持卡人（cardholder）**。
-- **支付卡协议（payment card agreement）**：**具有合同当事方（hasContractParty）**至少有一个取值，类型是**发卡金融机构（issuing financial institution）**。
-- **支付卡协议（payment card agreement）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**支付卡（payment card）**。
-- **支付卡协议（payment card agreement）**：**适用于（appliesTo）**至少有一个取值，类型是**卡账户（card account）**。
-- **主卡账户号（primary card account number）**：**标识（identifies）**恰好有 1 个**卡账户（card account）**。
+公理：
 
-## 6. 依赖（owl:imports，23 个）
+- **例证（exemplifies）**至少有一个取值，类型是**卡产品（card product）**。
+- **关联至账户（isLinkedToAccount）**可以有 0 个或多个**客户账户（CustomerAccount）**。
+- **具有主要账户持有人（hasPrimaryAccountHolder）**至少有一个取值，类型是**持卡人（cardholder）**。
+- **定义于（isDefinedIn）**至少有一个取值，类型是**支付卡协议（payment card agreement）**。
+- **由……标识（isIdentifiedBy）**至少有一个取值，类型是**主卡账户号（primary card account number）**。
+- **由……表示（isSignifiedBy）**至少有一个取值，类型是**支付卡（payment card）**。
+
+#### 2.1.1 信用卡账户（credit card account）
+
+定义：条款与条件由以信用卡为载体的信用卡协议定义的卡账户。
+
+- 父类：**贷款或信用账户（LoanOrCreditAccount）**、**卡账户（card account）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有付款到期日（hasPaymentDueDate）** | — | — |
+| **例证（exemplifies）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **由……表示（isSignifiedBy）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**至少有一个取值，类型是**信用卡产品（credit card product）**。
+- **具有付款到期日（hasPaymentDueDate）**至少有一个取值，类型是**付款到期日（PaymentDueDate）**。
+- **定义于（isDefinedIn）**至少有一个取值，类型是**信用卡协议（credit card agreement）**。
+- **由……表示（isSignifiedBy）**至少有一个取值，类型是**信用卡（credit card）**。
+
+#### 2.1.2 借记卡账户（debit card account）
+
+定义：以一张或多张借记卡为载体的卡账户。
+
+- 父类：**卡账户（card account）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **例证（exemplifies）** | — | — |
+| **由……表示（isSignifiedBy）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**至少有一个取值，类型是**借记卡产品（debit card product）**。
+- **由……表示（isSignifiedBy）**至少有一个取值，类型是**借记卡（debit card）**。
+
+### 2.2 卡有效期（card expiration date）
+
+定义：给定支付卡的到期日期。
+
+- 父类：**显式日期（ExplicitDate）**
+
+### 2.3 卡产品（card product）
+
+定义：涉及发行信用卡、借记卡或其他支付卡的金融产品。
+
+- 父类：**金融产品（FinancialProduct）**
+- 直接子类：**信用卡产品（credit card product）**、**借记卡产品（debit card product）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……例证（isExemplifiedBy）** | — | — |
+| **具有信用卡网络（has credit card network）** | 标识信用卡产品的底层网络。 | 值域：信用卡网络（credit card network）；子属性：由……分类 |
+| **使用货币（uses currency）** | 标识信用卡产品所定义的货币。 | 值域：货币；子属性：使用 |
+| **具有国家（hasCountry）** | — | — |
+| **具有行政区划（hasSubdivision）** | — | — |
+
+公理：
+
+- **使用货币（uses currency）**恰好有 1 个**货币（Currency）**。
+- **具有信用卡网络（has credit card network）**可以有 0 个或多个**信用卡网络（credit card network）**。
+- **具有国家（hasCountry）**恰好有 1 个**国家（Country）**。
+- **具有行政区划（hasSubdivision）**可以有 0 个或多个**国家行政区划（CountrySubdivision）**。
+- **由……例证（isExemplifiedBy）**至少有一个取值，类型是**卡账户（card account）**。
+
+#### 2.3.1 信用卡产品（credit card product）
+
+定义：允许持卡人凭信用购买货物或服务的卡产品。
+
+- 父类：**卡产品（card product）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……例证（isExemplifiedBy）** | — | — |
+| **具有信用卡网络（has credit card network）** | 标识信用卡产品的底层网络。 | 值域：信用卡网络（credit card network）；子属性：由……分类 |
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **具有信用卡网络（has credit card network）**恰好有 1 个**信用卡网络（credit card network）**。
+- **分类（classifies）**至少有一个取值，类型是**信用卡（credit card）**。
+- **由……例证（isExemplifiedBy）**至少有一个取值，类型是**信用卡账户（credit card account）**。
+
+#### 2.3.2 借记卡产品（debit card product）
+
+定义：通常由存款机构提供、允许持卡人在消费时向另一账户电子转账的卡产品。
+
+- 父类：**卡产品（card product）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……例证（isExemplifiedBy）** | — | — |
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**借记卡（debit card）**。
+- **由……例证（isExemplifiedBy）**至少有一个取值，类型是**借记卡账户（debit card account）**。
+
+### 2.4 卡验证码或验证值（card verification code or value）
+
+定义：指 (1) 磁条数据或 (2) 印刷安全特征的代码，用于保护数据完整性并限制篡改。
+
+- 父类：**代码元素（CodeElement）**
+- 直接子类：**磁条验证码或验证值（magnetic stripe verification code or value）**、**三位验证码或验证值（three-digit verification code or value）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+- **适用于（appliesTo）**至少有一个取值，类型是**支付卡（payment card）**。
+
+#### 2.4.1 磁条验证码或验证值（magnetic stripe verification code or value）
+
+定义：卡磁条上的验证码，采用安全加密过程保护磁条数据完整性并可揭示篡改。
+
+- 父类：**卡验证码或验证值（card verification code or value）**
+- 直接子类：**卡认证值（card authentication value）**、**卡安全码（card security code）**、**卡验证码（card validation code）**、**卡验证值（card verification value）**
+
+##### 2.4.1.1 卡认证值（card authentication value）
+
+定义：专用于 JCB 支付卡的卡验证值。
+
+- 父类：**磁条验证码或验证值（magnetic stripe verification code or value）**
+
+##### 2.4.1.2 卡安全码（card security code）
+
+定义：专用于美国运通支付卡的卡验证值。
+
+- 父类：**磁条验证码或验证值（magnetic stripe verification code or value）**
+
+##### 2.4.1.3 卡验证码（card validation code）
+
+定义：专用于万事达支付卡的卡验证码。
+
+- 父类：**磁条验证码或验证值（magnetic stripe verification code or value）**
+
+##### 2.4.1.4 卡验证值（card verification value）
+
+定义：专用于 Visa 和 Discover 支付卡的卡验证值。
+
+- 父类：**磁条验证码或验证值（magnetic stripe verification code or value）**
+
+#### 2.4.2 三位验证码或验证值（three-digit verification code or value）
+
+定义：印在卡背面签名栏区域最右三位数字的卡验证码。
+
+- 父类：**卡验证码或验证值（card verification code or value）**
+- 直接子类：**卡认证值 2（card authentication value 2）**、**卡识别码（card identification number）**、**卡验证码 2（card validation code 2）**、**卡验证值 2（card verification value 2）**
+
+##### 2.4.2.1 卡认证值 2（card authentication value 2）
+
+定义：专用于 JCB 支付卡的卡验证值。
+
+- 父类：**三位验证码或验证值（three-digit verification code or value）**
+
+##### 2.4.2.2 卡识别码（card identification number）
+
+定义：专用于美国运通和 Discover 支付卡的卡验证值。
+
+- 父类：**三位验证码或验证值（three-digit verification code or value）**
+
+##### 2.4.2.3 卡验证码 2（card validation code 2）
+
+定义：专用于万事达支付卡的卡验证值。
+
+- 父类：**三位验证码或验证值（three-digit verification code or value）**
+
+##### 2.4.2.4 卡验证值 2（card verification value 2）
+
+定义：专用于 Visa 支付卡的卡验证值。
+
+- 父类：**三位验证码或验证值（three-digit verification code or value）**
+
+### 2.5 持卡人（cardholder）
+
+定义：获发支付卡的账户持有人。
+
+- 父类：**客户账户持有人（CustomerAccountHolder）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **持有（holds）** | — | — |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **持有（holds）**至少有一个取值，类型是**卡账户（card account）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**拥有（owns）**至少有一个取值，类型是**卡账户（card account）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**卡账户（card account）**。
+
+### 2.6 信用卡网络（credit card network）
+
+定义：对授权、处理信用卡交易并设定其条款、以及在购物者、商户与机构之间划转支付的网络的分类符。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **分类（classifies）**至少有一个取值，类型是**卡产品（card product）**。
+
+### 2.7 发卡金融机构（issuing financial institution）
+
+定义：发行支付卡、或履行/促成/支持发卡服务的发行人及金融服务提供商。
+
+- 父类：**发行人（Issuer）**、**金融服务提供商（FinancialServiceProvider）**
+
+### 2.8 支付卡（payment card）
+
+定义：由金融服务提供商发行的法律凭证，使持卡人能够动用其指定银行账户中的资金或获得信用。
+
+- 父类：**法律文件（LegalDocument）**
+- 直接子类：**信用卡（credit card）**、**借记卡（debit card）**、**智能卡（smart card）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的证据（isEvidenceFor）** | — | — |
+| **具有到期日（hasExpirationDate）** | — | — |
+| **具有卡验证码（has card verification code）** | 将信用卡关联到 (1) 磁条数据或 (2) 用于保护数据完整性并限制篡改的印刷安全特征。 | 值域：卡验证码或验证值（card verification code or value） |
+| **具有主账户号（has primary account number）** | 指明卡面上显示的账户号。 | 值域：主卡账户号（primary card account number） |
+
+公理：
+
+- **具有主账户号（has primary account number）**恰好有 1 个**主卡账户号（primary card account number）**。
+- **具有到期日（hasExpirationDate）**恰好有 1 个**卡有效期（card expiration date）**。
+- **具有卡验证码（has card verification code）**恰好有 1 个**卡验证码或验证值（card verification code or value）**。
+- **是……的证据（isEvidenceFor）**至少有一个取值，类型是**卡账户（card account）**。
+
+#### 2.8.1 信用卡（credit card）
+
+定义：由金融服务提供商发行、使持卡人能够借入资金的卡。
+
+- 父类：**支付卡（payment card）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的证据（isEvidenceFor）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **是……的证据（isEvidenceFor）**恰好有 1 个**信用卡账户（credit card account）**。
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**信用卡产品（credit card product）**。
+
+#### 2.8.2 借记卡（debit card）
+
+定义：由金融服务提供商发行、使持卡人能够动用活期存款账户资金的支付卡。
+
+- 父类：**支付卡（payment card）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的证据（isEvidenceFor）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+
+公理：
+
+- **是……的证据（isEvidenceFor）**恰好有 1 个**借记卡账户（debit card account）**。
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**借记卡产品（debit card product）**。
+
+#### 2.8.3 智能卡（smart card）
+
+定义：内嵌集成电路的支付卡。
+
+- 父类：**支付卡（payment card）**
+
+### 2.9 支付卡协议（payment card agreement）
+
+定义：规定发行人向持卡人提供支付卡之条款与条件的账户专用信贷协议。
+
+- 父类：**信贷协议（CreditAgreement）**、**账户专属服务协议（AccountSpecificServiceAgreement）**
+- 直接子类：**信用卡协议（credit card agreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合同当事方（hasContractParty）** | — | — |
+| **由……证明（isEvidencedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有合同当事方（hasContractParty）**至少有一个取值，类型是**发卡金融机构（issuing financial institution）**。
+- **具有合同当事方（hasContractParty）**至少有一个取值，类型是**持卡人（cardholder）**。
+- **由……证明（isEvidencedBy）**至少有一个取值，类型是**支付卡（payment card）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**卡账户（card account）**。
+
+#### 2.9.1 信用卡协议（credit card agreement）
+
+定义：规定发行人向持卡人提供信用卡之条款与条件的账户专用信贷安排。
+
+- 父类：**承诺性信贷额度（CommittedCreditFacility）**、**支付卡协议（payment card agreement）**
+- 直接子类：**商业信用卡协议（commercial credit card agreement）**、**消费者信用卡协议（consumer credit card agreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有借款人（hasBorrower）** | — | — |
+| **具有贷款人（hasLender）** | — | — |
+| **由……证明（isEvidencedBy）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有借款人（hasBorrower）**至少有一个取值，类型是**持卡人（cardholder）**。
+- **具有贷款人（hasLender）**至少有一个取值，类型是**发卡金融机构（issuing financial institution）**。
+- **由……证明（isEvidencedBy）**至少有一个取值，类型是**信用卡（credit card）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**信用卡账户（credit card account）**。
+
+##### 2.9.1.1 商业信用卡协议（commercial credit card agreement）
+
+定义：向正式组织（如小企业、中型企业、政府机构）发行或与其联名发行的信用卡的协议。
+
+- 父类：**信用卡协议（credit card agreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有借款人（hasBorrower）** | — | — |
+
+公理：
+
+- **具有借款人（hasBorrower）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**正式组织（FormalOrganization）**。
+
+##### 2.9.1.2 消费者信用卡协议（consumer credit card agreement）
+
+定义：为家庭、家属或其他个人支出而发行、由借款人使用信用卡支取的信用卡协议。
+
+- 父类：**信用卡协议（credit card agreement）**、**信用消费贷款（UnsecuredConsumerLoan）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有借款人（hasBorrower）** | — | — |
+
+公理：
+
+- **具有借款人（hasBorrower）**至少有一个取值，类型是**消费者（Consumer）**。
+
+### 2.10 主卡账户号（primary card account number）
+
+定义：压印在银行卡或支付卡上、并编码于磁条中的 14 或 16 位复合标识符。
+
+- 父类：**账户标识符（AccountIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**卡账户（card account）**。
+
+## 3. 依赖（owl:imports，23 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -179,7 +515,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CardAccounts.rdf`
 - 中文 Turtle：`CardAccounts.ttl`

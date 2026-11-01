@@ -14,6 +14,14 @@
 
 **与相近概念的差别**：事件≠状态——事件是时间点上的发生（违约了），状态是持续的处境（处于违约中）；与流程的差别——流程是一系列预定步骤，事件是单次发生。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **计算（calculation）** 继承 **发生事项（occurrence）**
+- **计算事件（calculation event）** 继承 **发生类别（occurrence kind）**
+- **发生类别（occurrence kind）** 继承 **分类符（Classifier）**
+- **基于发生事项的日期（occurrence-based date）** 继承 **推算日期（CalculatedDate）**
+- **基于发生事项的日期（occurrence-based date）** 通过 **由……触发（is triggered by）** 关联 **发生类别（occurrence kind）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -24,48 +32,122 @@
 | 发生类别（occurrence kind） | 指明发生事项（事件）一般性质的分类符。 |
 | 基于发生事项的日期（occurrence-based date） | 相对于某发生类别的发生而定义的推算日期。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 计算（calculation） ⊑ 发生事项（occurrence）
-- 计算事件（calculation event） ⊑ 发生类别（occurrence kind）
-- 发生类别（occurrence kind） ⊑ 分类符
-- 基于发生事项的日期（occurrence-based date） ⊑ 推算日期
+### 2.1 发生事项（occurrence）
 
-## 3. 对象属性（Object Property）
+定义：某种发生类别的发生，即事件。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-dt-oc:hasEventDate | 具有事件日期（has event date） | 标识与事件（发生事项）关联的日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有日期 |
-| fibo-fnd-dt-oc:hasInput | 具有输入（has input） | 将某事物（如发生事项）关联到用作某活动或过程输入的事物。 | 逆属性（inverseOf）：是……的输入（is input to） |
-| fibo-fnd-dt-oc:hasOccurrence | 具有发生事项（has occurrence） | 标识给定发生类别的事件，通常指其在进度表中的发生。 | 值域（range）：发生事项（occurrence） |
-| fibo-fnd-dt-oc:hasOutput | 具有输出（has output） | 将某事物（如发生事项）关联到作为某活动或过程结果的事物。 | 逆属性（inverseOf）：是……的输出（is output from） |
-| fibo-fnd-dt-oc:isInputTo | 是……的输入（is input to） | 标识某活动、过程、系统、报告、分析等的前提条件、要求或其他投入（如数据）。 | — |
-| fibo-fnd-dt-oc:isOutputFrom | 是……的输出（is output from） | 标识某活动、过程、系统、报告、分析等的后置条件或其他产物。 | — |
-| fibo-fnd-dt-oc:isTriggeredBy | 由……触发（is triggered by） | 由……激活或发起。 | 定义域（domain）：基于发生事项的日期（occurrence-based date）；值域（range）：发生类别（occurrence kind） |
+- 直接子类：**计算（calculation）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-dt-oc:hasEventDateValue | 具有事件日期值（has event date value） | 标识与事件（发生事项）关联的日期或日期时间值。 |
+| **例证（exemplifies）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
+| **具有位置（hasLocation）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **例证（exemplifies）**恰好有 1 个**发生类别（occurrence kind）**。
+- **具有位置（hasLocation）**可以有 0 个或多个**位置（Location）**。
+- **由……分类（isClassifiedBy）**可以有 0 个或多个**发生类别（occurrence kind）**。
+- 该属性存在取值约束。
 
-- **计算（calculation）**：**具有表达式（hasExpression）**可以有 0 个或多个**表达式（Expression）**。
-- **计算（calculation）**：**具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
-- **计算（calculation）**：**具有量值区间（hasQuantityValueRange）**可以有 0 个或多个**标量值区间（ScalarQuantityValueRange）**。
-- **计算（calculation）**：**例证（exemplifies）**恰好有 1 个**计算事件（calculation event）**。
-- **计算事件（calculation event）**：**分类（classifies）**至少有一个取值，类型是**计算（calculation）**。
-- **发生事项（occurrence）**：该属性存在取值约束。
-- **发生事项（occurrence）**：**由……分类（isClassifiedBy）**可以有 0 个或多个**发生类别（occurrence kind）**。
-- **发生事项（occurrence）**：**具有位置（hasLocation）**可以有 0 个或多个**位置（Location）**。
-- **发生事项（occurrence）**：**例证（exemplifies）**恰好有 1 个**发生类别（occurrence kind）**。
-- **发生类别（occurrence kind）**：**分类（classifies）**至少有一个取值，类型是**发生事项（occurrence）**。
-- **基于发生事项的日期（occurrence-based date）**：**由……触发（is triggered by）**恰好有 1 个**发生类别（occurrence kind）**。
+#### 2.1.1 计算（calculation）
 
-## 6. 依赖（owl:imports，10 个）
+定义：被排定或由某事物触发的某项计算、计算过程或运算的实际执行。
+
+- 父类：**发生事项（occurrence）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **例证（exemplifies）** | — | — |
+| **具有表达式（hasExpression）** | — | — |
+| **具有量值（hasQuantityValue）** | — | — |
+| **具有量值区间（hasQuantityValueRange）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**恰好有 1 个**计算事件（calculation event）**。
+- **具有表达式（hasExpression）**可以有 0 个或多个**表达式（Expression）**。
+- **具有量值区间（hasQuantityValueRange）**可以有 0 个或多个**标量值区间（ScalarQuantityValueRange）**。
+- **具有量值（hasQuantityValue）**可以有 0 个或多个**标量值（ScalarQuantityValue）**。
+
+### 2.2 发生类别（occurrence kind）
+
+定义：指明发生事项（事件）一般性质的分类符。
+
+- 父类：**分类符（Classifier）**
+- 直接子类：**计算事件（calculation event）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**发生事项（occurrence）**。
+
+#### 2.2.1 计算事件（calculation event）
+
+定义：被排定或由某事物（如相关金融事件）触发、从而导致执行计算的一类事件。
+
+- 父类：**发生类别（occurrence kind）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**计算（calculation）**。
+
+### 2.3 基于发生事项的日期（occurrence-based date）
+
+定义：相对于某发生类别的发生而定义的推算日期。
+
+- 父类：**推算日期（CalculatedDate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……触发（is triggered by）** | 由……激活或发起。 | 值域：发生类别（occurrence kind） |
+
+公理：
+
+- **由……触发（is triggered by）**恰好有 1 个**发生类别（occurrence kind）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有事件日期（has event date）** | 标识与事件（发生事项）关联的日期。 | 值域：日期；子属性：具有日期 |
+| **具有输入（has input）** | 将某事物（如发生事项）关联到用作某活动或过程输入的事物。 | 逆属性：是……的输入（is input to） |
+| **具有发生事项（has occurrence）** | 标识给定发生类别的事件，通常指其在进度表中的发生。 | 值域：发生事项（occurrence） |
+| **具有输出（has output）** | 将某事物（如发生事项）关联到作为某活动或过程结果的事物。 | 逆属性：是……的输出（is output from） |
+| **是……的输入（is input to）** | 标识某活动、过程、系统、报告、分析等的前提条件、要求或其他投入（如数据）。 | — |
+| **是……的输出（is output from）** | 标识某活动、过程、系统、报告、分析等的后置条件或其他产物。 | — |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有事件日期值（has event date value）** | 标识与事件（发生事项）关联的日期或日期时间值。 |
+
+## 4. 依赖（owl:imports，10 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -82,7 +164,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Occurrences.rdf`
 - 中文 Turtle：`Occurrences.ttl`

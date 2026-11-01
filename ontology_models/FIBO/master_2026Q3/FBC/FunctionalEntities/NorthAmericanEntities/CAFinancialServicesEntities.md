@@ -14,23 +14,35 @@
 
 **与相近概念的差别**：与美国体系的差别——加拿大金融业由联邦特许银行主导、省级监管证券，机构类型体系比美国简单集中。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **加拿大信用合作社（Canadian credit union）** 继承 **信用合作社（CreditUnion）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 加拿大信用合作社（Canadian credit union） | 非营利性金融机构，通常由公司雇员、工会或宗教团体成员组成，以合作互助协会形式运营。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 加拿大信用合作社（Canadian credit union） ⊑ 信用合作社
+### 2.1 加拿大信用合作社（Canadian credit union）
 
-## 5. 公理约定（Axioms）
+定义：非营利性金融机构，通常由公司雇员、工会或宗教团体成员组成，以合作互助协会形式运营。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**信用合作社（CreditUnion）**
 
-- **加拿大信用合作社（Canadian credit union）**：**由…扮演（is played by）**恰好有 1 个**协会（Association）**。
+属性：
 
-## 6. 依赖（owl:imports，6 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**恰好有 1 个**协会（Association）**。
+
+## 3. 依赖（owl:imports，6 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -43,7 +55,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`CAFinancialServicesEntities.rdf`
 - 中文 Turtle：`CAFinancialServicesEntities.ttl`

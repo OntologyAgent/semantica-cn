@@ -153,17 +153,17 @@ fibo-sec-eq-eq:EquityPosition a owl:Class ;
         "股票头寸（equity position）"@zh ;
     rdfs:comment "在权益工具中的头寸。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-be-oac-cown:Shareholder ;
-            owl:onProperty fibo-fnd-oac-own:hasOwningParty ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
-            owl:someValuesFrom fibo-be-oac-cown:Shareholding ],
-        [ a owl:Restriction ;
             owl:onClass [ a owl:Class ;
                     owl:unionOf ( fibo-be-oac-cown:Shareholder fibo-sec-eq-eq:Custodian ) ] ;
             owl:onProperty fibo-fnd-rel-rel:isHeldBy ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-oac-own:hasOwnedAsset ;
+            owl:someValuesFrom fibo-be-oac-cown:Shareholding ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-be-oac-cown:Shareholder ;
+            owl:onProperty fibo-fnd-oac-own:hasOwningParty ],
         fibo-fbc-pas-fpas:Position ;
     skos:definition "position in an equity instrument"@en .
 
@@ -575,11 +575,11 @@ fibo-sec-eq-eq:EquityConversionTerms a owl:Class ;
         "股权转换条款（equity conversion terms）"@zh ;
     rdfs:comment "规定股份转换为其他证券之细节的转换条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-eq:specifiesConversionDate ;
-            owl:someValuesFrom cmns-dt:Date ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-sec-iss:specifiesConversionInto ;
             owl:someValuesFrom fibo-fbc-fi-fi:Security ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:specifiesConversionDate ;
+            owl:someValuesFrom cmns-dt:Date ],
         fibo-sec-sec-iss:ConversionTerms ;
     skos:definition "conversion terms specifying the details regarding conversion of shares into other securities" .
 
@@ -959,12 +959,12 @@ fibo-sec-eq-eq:Dividend a owl:Class ;
             owl:onProperty fibo-sec-eq-eq:hasDistributionMethod ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-eq-eq:DividendSchedule ;
-            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fnd-pas-psch:hasPaymentAmount ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-sec-eq-eq:DividendSchedule ;
+            owl:onProperty fibo-fnd-dt-fd:hasSchedule ],
         fibo-fnd-agr-agr:Commitment ;
     skos:definition "announced commitment to make a specific distribution of a portion of earnings to shareholders, prorated by class of security" ;
     cmns-av:explanatoryNote "The amount and timing of payment is set by the board of directors, typically quarterly. Dividends may be paid in the form of money, shares, scrip, or on rare occasion, property." .
@@ -984,16 +984,8 @@ fibo-sec-eq-eq:EquityRedemptionProvision a owl:Class ;
     rdfs:comment "规定发行人或股东可赎回股份之条件的赎回条款。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-sec-eq-eq:isRedeemableAtShareholderOption ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
-            owl:onProperty fibo-sec-eq-eq:hasMinimumRedemptionPrice ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-sec-eq-eq:hasExtendableRedemptionDate ],
+            owl:onProperty fibo-sec-eq-eq:hasRedemptionPremium ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:ExplicitDate ;
@@ -1001,11 +993,19 @@ fibo-sec-eq-eq:EquityRedemptionProvision a owl:Class ;
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-sec-eq-eq:hasExtendableRedemptionDate ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
             owl:onProperty fibo-sec-eq-eq:isRedeemableAtIssuerOption ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryPrice ;
-            owl:onProperty fibo-sec-eq-eq:hasRedemptionPremium ],
+            owl:onProperty fibo-sec-eq-eq:hasMinimumRedemptionPrice ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-sec-eq-eq:isRedeemableAtShareholderOption ],
         fibo-fbc-fi-fi:RedemptionProvision ;
     skos:definition "redemption provision that specifies the conditions under which the issuer or shareholder may redeem the shares"@en .
 
@@ -1015,12 +1015,12 @@ fibo-sec-eq-eq:PreferredDividend a owl:Class ;
     rdfs:comment "向股东分配部分收益的承诺，类似于股息，但通常金额和支付计划固定。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:Duration ;
-            owl:onProperty fibo-sec-eq-eq:hasDividendGracePeriod ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:PercentageMonetaryAmount ;
             owl:onProperty fibo-sec-eq-eq:hasFixedDividendRate ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:Duration ;
+            owl:onProperty fibo-sec-eq-eq:hasDividendGracePeriod ],
         fibo-sec-eq-eq:Dividend ;
     skos:definition "commitment to distribute a portion of earnings to shareholders, similar to a dividend but often with a fixed payment amount and schedule" .
 
@@ -1052,16 +1052,13 @@ fibo-sec-eq-eq:Share a owl:Class ;
             owl:onDataRange xsd:nonNegativeInteger ;
             owl:onProperty fibo-sec-eq-eq:hasAvailableShares ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-eq:confersOwnershipOf ;
-            owl:someValuesFrom fibo-fnd-oac-own:ShareholdersEquity ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty fibo-sec-eq-eq:hasFloatingStock ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:nonNegativeInteger ;
             owl:onProperty fibo-sec-eq-eq:hasSharesIssued ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:nonNegativeInteger ;
-            owl:onProperty fibo-sec-eq-eq:hasFloatingStock ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:nonNegativeInteger ;
@@ -1071,22 +1068,25 @@ fibo-sec-eq-eq:Share a owl:Class ;
             owl:onDataRange xsd:nonNegativeInteger ;
             owl:onProperty fibo-sec-eq-eq:hasSharesOutstanding ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty fibo-sec-eq-eq:hasShareClass ],
+            owl:onProperty fibo-sec-eq-eq:confersOwnershipOf ;
+            owl:someValuesFrom fibo-fnd-oac-own:ShareholdersEquity ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-be-le-cb:hasSharesAuthorized ;
+            owl:someValuesFrom xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ;
+            owl:someValuesFrom xsd:decimal ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty fibo-sec-eq-eq:hasVotingRestriction ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-sec-eq-eq:confersNumberOfVotesPerShare ;
-            owl:someValuesFrom xsd:decimal ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-eq-eq:hasSharePaymentStatus ;
             owl:someValuesFrom fibo-sec-eq-eq:SharePaymentStatus ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-be-le-cb:hasSharesAuthorized ;
-            owl:someValuesFrom xsd:nonNegativeInteger ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-sec-eq-eq:hasShareClass ],
         fibo-fbc-fi-fi:EquityInstrument ;
     skos:definition "financial instrument that signifies a unit of equity ownership in a corporation, or a unit of ownership in a mutual fund, or interest in a general or limited partnership, or a unit of ownership in a structured product, such as a real estate investment trust"@en .
 

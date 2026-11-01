@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与公司的差别——普通合伙人承担无限连带责任，且合伙在多数法域不具有完全独立的法人资格；与信托的差别——合伙是共同经营关系，信托是财产委托关系。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **普通合伙人（general partner）** 继承 **法律控制权益方（DeJureControllingInterestParty）**
+- **普通合伙人（general partner）** 继承 **合伙人（partner）**
+- **普通合伙（general partnership）** 继承 **合伙（partnership）**
+- **有限责任有限合伙（limited liability limited partnership）** 继承 **有限合伙（limited partnership）**
+- **有限责任合伙（limited liability partnership）** 继承 **合伙（partnership）**
+- **有限合伙人（limited partner）** 继承 **合伙人（partner）**
+- **有限合伙（limited partnership）** 继承 **合伙（partnership）**
+- **合伙人（partner）** 继承 **章程性所有者（ConstitutionalOwner）**
+- **合伙人（partner）** 继承 **组织成员（OrganizationMember）**
+- **合伙（partnership）** 继承 **企业实体（BusinessEntity）**
+- **合伙（partnership）** 继承 **法律实体（LegalEntity）**
+- **合伙协议（partnership agreement）** 继承 **组织基础协议（OrganizationCoveringAgreement）**
+- 其余 4 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -28,51 +44,160 @@
 | 合伙（partnership） | 两个或两个以上法律主体为盈利而作为共同所有人经营业务的联合。 |
 | 合伙协议（partnership agreement） | 合伙人之间确立合伙关系条款与条件的合同。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 普通合伙人（general partner） ⊑ 法律控制权益方
-- 普通合伙人（general partner） ⊑ 合伙人（partner）
-- 普通合伙（general partnership） ⊑ 合伙（partnership）
-- 有限责任有限合伙（limited liability limited partnership） ⊑ 有限合伙（limited partnership）
-- 有限责任合伙（limited liability partnership） ⊑ 合伙（partnership）
-- 有限合伙人（limited partner） ⊑ 合伙人（partner）
-- 有限合伙（limited partnership） ⊑ 合伙（partnership）
-- 合伙人（partner） ⊑ 章程性所有者
-- 合伙人（partner） ⊑ 组织成员
-- 合伙（partnership） ⊑ 企业实体
-- 合伙（partnership） ⊑ 法律实体
-- 合伙协议（partnership agreement） ⊑ 组织基础协议
+### 2.1 合伙人（partner）
 
-## 3. 对象属性（Object Property）
+定义：合伙的共同所有人、成员和代理，其参与程度（包括按比例承担的责任和盈亏份额）由合伙协议确定。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-ptr-ptr:hasGeneralPartner | 具有普通合伙人（has general partner） | 标识对合伙拥有一定程度控制的行为体。 | 定义域（domain）：合伙（partnership）；值域（range）：普通合伙人（general partner）；子属性（subPropertyOf）：受…影响（is affected by） |
-| fibo-be-ptr-ptr:hasLimitedPartner | 具有有限合伙人（has limited partner） | 标识对合伙可能拥有一定程度影响力的行为体。 | 定义域（domain）：合伙（partnership）；值域（range）：有限合伙人（limited partner）；子属性（subPropertyOf）：受…影响（is affected by） |
-| fibo-be-ptr-ptr:isGeneralPartnerOf | 是……的普通合伙人（is general partner of） | 标识该普通合伙人所管理的组织。 | 定义域（domain）：普通合伙人（general partner）；值域（range）：合伙（partnership）；逆属性（inverseOf）：具有普通合伙人（has general partner）；子属性（subPropertyOf）：对…采取行动（acts on） |
-| fibo-be-ptr-ptr:isLimitedPartnerOf | 是……的有限合伙人（is limited partner of） | 标识该有限合伙人所参与的组织。 | 定义域（domain）：有限合伙人（limited partner）；值域（range）：合伙（partnership）；逆属性（inverseOf）：具有有限合伙人（has limited partner）；子属性（subPropertyOf）：对…采取行动（acts on） |
+- 父类：**章程性所有者（ConstitutionalOwner）**、**组织成员（OrganizationMember）**
+- 直接子类：**普通合伙人（general partner）**、**有限合伙人（limited partner）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
 
-- **普通合伙人（general partner）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**应诉能力（LiabilityCapacity）**。
-- **普通合伙（general partnership）**：**具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
-- **普通合伙（general partnership）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有 2 个**普通合伙人（general partner）**。
-- **有限责任合伙（limited liability partnership）**：**具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
-- **有限责任合伙（limited liability partnership）**与**有限合伙（limited partnership）**互斥：同一个体不能同时属于两者。
-- **有限合伙人（limited partner）**与**普通合伙人（general partner）**互斥：同一个体不能同时属于两者。
-- **有限合伙（limited partnership）**：**具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
-- **有限合伙（limited partnership）**：**具有有限合伙人（has limited partner）**至少有一个取值，类型是**有限合伙人（limited partner）**。
-- **合伙人（partner）**：**由…扮演（is played by）**恰好有 1 个**法律主体（LegalPerson）**。
-- **合伙人（partner）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，类型是**合伙（partnership）**。
-- **合伙人（partner）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**合伙协议（partnership agreement）**。
-- **合伙（partnership）**：**具有目标（hasObjective）**可以有 0 个或多个**盈利目标（ProfitObjective）**。
-- **合伙（partnership）**：**具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**合伙人（partner）**。
-- **合伙（partnership）**：**受……管辖（isGovernedBy）**至少有一个取值，类型是**合伙协议（partnership agreement）**。
-- **合伙协议（partnership agreement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**合伙人（partner）**。
+公理：
 
-## 6. 依赖（owl:imports，13 个）
+- **由…扮演（is played by）**恰好有 1 个**法律主体（LegalPerson）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**至少有一个取值，类型是**合伙（partnership）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**合伙协议（partnership agreement）**。
+
+#### 2.1.1 普通合伙人（general partner）
+
+定义：负责合伙日常运营管理的合伙人兼共同所有人，可能对合伙债务承担连带责任。
+
+- 父类：**法律控制权益方（DeJureControllingInterestParty）**、**合伙人（partner）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的普通合伙人（is general partner of）** | 标识该普通合伙人所管理的组织。 | 值域：合伙（partnership）；逆属性：具有普通合伙人（has general partner）；子属性：对…采取行动（acts on） |
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**具有能力方（hasCapacity）**至少有一个取值，类型是**应诉能力（LiabilityCapacity）**。
+
+#### 2.1.2 有限合伙人（limited partner）
+
+定义：责任以其出资或担保额为限、不参与合伙日常运营的合伙人。
+
+- 父类：**合伙人（partner）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的有限合伙人（is limited partner of）** | 标识该有限合伙人所参与的组织。 | 值域：合伙（partnership）；逆属性：具有有限合伙人（has limited partner）；子属性：对…采取行动（acts on） |
+
+公理：
+
+- 与**普通合伙人（general partner）**互斥：同一个体不能同时属于两者。
+
+### 2.2 合伙（partnership）
+
+定义：两个或两个以上法律主体为盈利而作为共同所有人经营业务的联合。
+
+- 父类：**企业实体（BusinessEntity）**、**法律实体（LegalEntity）**
+- 直接子类：**普通合伙（general partnership）**、**有限责任合伙（limited liability partnership）**、**有限合伙（limited partnership）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。 | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
+| **具有有限合伙人（has limited partner）** | 标识对合伙可能拥有一定程度影响力的行为体。 | 值域：有限合伙人（limited partner）；子属性：受…影响（is affected by） |
+| **具有目标（hasObjective）** | — | — |
+| **具有成员（hasMember）** | — | — |
+| **受……管辖（isGovernedBy）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有一个取值，类型是**合伙人（partner）**。
+- **具有目标（hasObjective）**可以有 0 个或多个**盈利目标（ProfitObjective）**。
+- **受……管辖（isGovernedBy）**至少有一个取值，类型是**合伙协议（partnership agreement）**。
+
+#### 2.2.1 普通合伙（general partnership）
+
+定义：至少有两名普通合伙人、同意共享企业全部资产、利润以及财务与法律责任的合伙。
+
+- 父类：**合伙（partnership）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。 | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，该取值满足：**扮演角色（plays role）**至少有 2 个**普通合伙人（general partner）**。
+- **具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
+
+#### 2.2.2 有限责任合伙（limited liability partnership）
+
+定义：设有普通合伙人、但为各合伙人提供针对特定合伙债务之个人责任保护的合伙。
+
+- 父类：**合伙（partnership）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。 | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
+
+公理：
+
+- **具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
+- 与**有限合伙（limited partnership）**互斥：同一个体不能同时属于两者。
+
+#### 2.2.3 有限合伙（limited partnership）
+
+定义：至少有一名普通合伙人和一名有限合伙人的合伙。
+
+- 父类：**合伙（partnership）**
+- 直接子类：**有限责任有限合伙（limited liability limited partnership）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有普通合伙人（has general partner）** | 标识对合伙拥有一定程度控制的行为体。 | 值域：普通合伙人（general partner）；子属性：受…影响（is affected by） |
+| **具有有限合伙人（has limited partner）** | 标识对合伙可能拥有一定程度影响力的行为体。 | 值域：有限合伙人（limited partner）；子属性：受…影响（is affected by） |
+
+公理：
+
+- **具有普通合伙人（has general partner）**至少有一个取值，类型是**普通合伙人（general partner）**。
+- **具有有限合伙人（has limited partner）**至少有一个取值，类型是**有限合伙人（limited partner）**。
+
+##### 2.2.3.1 有限责任有限合伙（limited liability limited partnership）
+
+定义：由一名或多名对实体债务承担责任的普通合伙人与一名或多名受保护的有限合伙人组成的有限合伙。
+
+- 父类：**有限合伙（limited partnership）**
+
+### 2.3 合伙协议（partnership agreement）
+
+定义：合伙人之间确立合伙关系条款与条件的合同。
+
+- 父类：**组织基础协议（OrganizationCoveringAgreement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有一个取值，类型是**合伙人（partner）**。
+
+## 3. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -92,7 +217,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`Partnerships.rdf`
 - 中文 Turtle：`Partnerships.ttl`

@@ -225,12 +225,12 @@ fibo-bp-iss-ipo:AppointAdvisors a owl:Class ;
         "任命顾问（appoint advisors）"@zh ;
     rdfs:comment "任命发行相关顾问。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-rlcmp:playsRole ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Issuer ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-org:designates ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-bp-iss-ipo:CorporateBroker fibo-bp-iss-ipo:Sponsor fibo-bp-iss-ipo:ReportingAccountant cmns-ra:RegistrationAuthority ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-rlcmp:playsRole ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Issuer ],
         fibo-bp-iss-ipo:InitialPublicOfferingProcessStep .
 
 fibo-bp-iss-ipo:IPOFullProspectus a owl:Class ;

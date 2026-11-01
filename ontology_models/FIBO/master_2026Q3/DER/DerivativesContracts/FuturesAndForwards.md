@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：期货与远期的核心差别——期货在交易所标准化交易、每日盯市结算，远期是场外定制、到期一次结算；与期权的差别——双方都有交割义务而非单方权利。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **篮子期货（basket future）** 继承 **金融期货（financial future）**
+- **债券期货（bond future）** 继承 **债务工具期货（debt instrument future）**
+- **货币期货（currency future）** 继承 **金融期货（financial future）**
+- **债务工具期货（debt instrument future）** 继承 **金融期货（financial future）**
+- **债务工具期货（debt instrument future）** 继承 **债务工具衍生品（DebtInstrumentDerivative）**
+- **股息调整期间（dividend adjustment period）** 继承 **日期区间（DatePeriod）**
+- **股息期货（dividend future）** 继承 **金融期货（financial future）**
+- **股息期货（dividend future）** 继承 **股票衍生品（EquityDerivative）**
+- **股票远期（equity forward）** 继承 **远期合约（forward）**
+- **股票期货（equity future）** 继承 **金融期货（financial future）**
+- **股票期货（equity future）** 继承 **股票衍生品（EquityDerivative）**
+- **金融期货（financial future）** 继承 **期货（Future）**
+- 其余 15 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -38,73 +54,278 @@
 | 标准化期货挂牌条款（standardized futures listing terms） | 由衍生品交易所制定、适用于该交易所任何期货合约挂牌的合同条款。 |
 | 标准化期货条款（standardized futures terms） | 由衍生品交易所制定、适用于该交易所交易的任何期货合约的合同条款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 篮子期货（basket future） ⊑ 金融期货（financial future）
-- 债券期货（bond future） ⊑ 债务工具期货（debt instrument future）
-- 货币期货（currency future） ⊑ 金融期货（financial future）
-- 债务工具期货（debt instrument future） ⊑ 金融期货（financial future）
-- 债务工具期货（debt instrument future） ⊑ 债务工具衍生品
-- 股息调整期间（dividend adjustment period） ⊑ 日期区间
-- 股息期货（dividend future） ⊑ 金融期货（financial future）
-- 股息期货（dividend future） ⊑ 股票衍生品
-- 股票远期（equity forward） ⊑ 远期合约（forward）
-- 股票期货（equity future） ⊑ 金融期货（financial future）
-- 股票期货（equity future） ⊑ 股票衍生品
-- 金融期货（financial future） ⊑ 期货
-- 远期合约（forward） ⊑ 场外衍生工具
-- 远期合约（forward） ⊑ 衍生工具
-- 远期合约调整方法（forward contract adjustment method） ⊑ 战略
-- 期货的期货（future on future） ⊑ 金融期货（financial future）
-- 期权的期货（future on option） ⊑ 金融期货（financial future）
-- 互换的期货（future on swap） ⊑ 金融期货（financial future）
-- 指数期货（index future） ⊑ 金融期货（financial future）
-- 利率期货（interest rate future） ⊑ 金融期货（financial future）
-- 货币市场期货（money market future） ⊑ 债务工具期货（debt instrument future）
-- 标准化期货挂牌条款（standardized futures listing terms） ⊑ 衍生品条款
-- 标准化期货挂牌条款（standardized futures listing terms） ⊑ 标准化条款
-- 标准化期货条款（standardized futures terms） ⊑ 衍生品条款
-- 标准化期货条款（standardized futures terms） ⊑ 标准化条款
+### 2.1 股息调整期间（dividend adjustment period）
 
-## 3. 对象属性（Object Property）
+定义：用于计算预期股息与该期间实际派发股息之间差额（如有）的日期区间。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-der-drc-ff:hasDividendAdjustmentPeriod | 具有股息调整期间（has dividend adjustment period） | 指明至少一个用于计算预期股息与实际派发股息之间偏差的日期区间。 | 定义域（domain）：股票远期（equity forward）；值域（range）：股息调整期间（dividend adjustment period）；子属性（subPropertyOf）：具有日期区间 |
-| fibo-der-drc-ff:hasMethodOfAdjustment | 具有调整方法（has method of adjustment） | 指明基于合约生命周期内发生的事件处理合约变更的方法。 | 定义域（domain）：股票远期（equity forward）；值域（range）：远期合约调整方法（forward contract adjustment method）；子属性（subPropertyOf）：具有战略 |
+- 父类：**日期区间（DatePeriod）**
 
-## 4. 数据属性（Datatype Property）
+### 2.2 金融期货（financial future）
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+定义：以商品以外的资产为标的的期货合约。
+
+- 父类：**期货（Future）**
+- 直接子类：**篮子期货（basket future）**、**货币期货（currency future）**、**债务工具期货（debt instrument future）**、**股息期货（dividend future）**、**股票期货（equity future）**、**期货的期货（future on future）**、**期权的期货（future on option）**、**互换的期货（future on swap）**、**指数期货（index future）**、**利率期货（interest rate future）**
+
+#### 2.2.1 篮子期货（basket future）
+
+定义：标的资产为一篮子证券和/或指数的期货合约。
+
+- 父类：**金融期货（financial future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-der-drc-ff:hasConversionFactor | 具有转换因子（has conversion factor） | 指明使交割债券/票据（1 美元面值）产生固定收益率的价格。转换因子用于计算最终交割价格。 |
-| fibo-der-drc-ff:hasMultiple | 具有乘数（has multiple） | 指明用于确定期货合约相对于标的指数价格之关系的乘数。 |
+| **具有标的（hasUnderlier）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
 
-- **篮子期货（basket future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
-- **债券期货（bond future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
-- **债务工具期货（debt instrument future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债务工具（DebtInstrument）**。
-- **股息期货（dividend future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**上市股份（ListedShare）**。
-- **股票远期（equity forward）**：**具有股息调整期间（has dividend adjustment period）**至少有一个取值，类型是**股息调整期间（dividend adjustment period）**。
-- **股票远期（equity forward）**：**具有调整方法（has method of adjustment）**至少有一个取值，类型是**远期合约调整方法（forward contract adjustment method）**。
-- **股票远期（equity forward）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **股票远期（equity forward）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**结算条款（SettlementTerms）**。
-- **股票期货（equity future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**上市股份（ListedShare）**。
-- **期货的期货（future on future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期货（Future）**。
-- **期权的期货（future on option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期权（Option）**。
-- **互换的期货（future on swap）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**互换（Swap）**。
-- **指数期货（index future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **利率期货（interest rate future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **货币市场期货（money market future）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**货币市场工具（MoneyMarketInstrument）**。
-- **标准化期货挂牌条款（standardized futures listing terms）**：**具有发布方（hasPublisher）**至少有一个取值，类型是**指定合约市场（DesignatedContractMarket）**。
-- **标准化期货挂牌条款（standardized futures listing terms）**：**适用于（appliesTo）**至少有一个取值，类型是**挂牌（Listing）**。
-- **标准化期货条款（standardized futures terms）**：**适用于（appliesTo）**至少有一个取值，类型是**期货（Future）**。
-- **标准化期货条款（standardized futures terms）**：**规定（specifies）**至少有一个取值，类型是**结算条款（SettlementTerms）**。
+#### 2.2.2 货币期货（currency future）
 
-## 6. 依赖（owl:imports，27 个）
+定义：标的资产为基于约定汇率在未来某时以一种货币兑换另一种货币之协议的期货合约。
+
+- 父类：**金融期货（financial future）**
+
+#### 2.2.3 债务工具期货（debt instrument future）
+
+定义：标的资产为至少一种债务工具的期货合约。
+
+- 父类：**金融期货（financial future）**、**债务工具衍生品（DebtInstrumentDerivative）**
+- 直接子类：**债券期货（bond future）**、**货币市场期货（money market future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债务工具（DebtInstrument）**。
+
+##### 2.2.3.1 债券期货（bond future）
+
+定义：标的资产为至少一只债券的期货合约。
+
+- 父类：**债务工具期货（debt instrument future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有转换因子（has conversion factor）** | 指明使交割债券/票据（1 美元面值）产生固定收益率的价格。转换因子用于计算最终交割价格。 | 值域：xsd:decimal；子属性：具有数值 |
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**债券（Bond）**。
+
+##### 2.2.3.2 货币市场期货（money market future）
+
+定义：以货币市场工具为标的资产的期货合约。
+
+- 父类：**债务工具期货（debt instrument future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**货币市场工具（MoneyMarketInstrument）**。
+
+#### 2.2.4 股息期货（dividend future）
+
+定义：标的资产为至少一笔股票股息的期货合约。
+
+- 父类：**金融期货（financial future）**、**股票衍生品（EquityDerivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**上市股份（ListedShare）**。
+
+#### 2.2.5 股票期货（equity future）
+
+定义：标的资产为至少一种权益证券（具体为公开发行交易的股票）的期货合约。
+
+- 父类：**金融期货（financial future）**、**股票衍生品（EquityDerivative）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**上市股份（ListedShare）**。
+
+#### 2.2.6 期货的期货（future on future）
+
+定义：标的资产为至少一份（其他）期货合约的期货合约。
+
+- 父类：**金融期货（financial future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期货（Future）**。
+
+#### 2.2.7 期权的期货（future on option）
+
+定义：标的资产为至少一份期权合约的期货合约。
+
+- 父类：**金融期货（financial future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**期权（Option）**。
+
+#### 2.2.8 互换的期货（future on swap）
+
+定义：标的资产为至少一份互换合约的期货合约。
+
+- 父类：**金融期货（financial future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**互换（Swap）**。
+
+#### 2.2.9 指数期货（index future）
+
+定义：标的资产为至少一个参考指数或经济指标的期货合约。
+
+- 父类：**金融期货（financial future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有乘数（has multiple）** | 指明用于确定期货合约相对于标的指数价格之关系的乘数。 | 值域：xsd:decimal；子属性：具有数值 |
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+#### 2.2.10 利率期货（interest rate future）
+
+定义：以附息工具为标的资产的期货合约。
+
+- 父类：**金融期货（financial future）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.3 远期合约（forward）
+
+定义：双方私下协商、按合约规定价格在未来指定日期买入标的的衍生工具。
+
+- 父类：**场外衍生工具（OverTheCounterDerivativeInstrument）**、**衍生工具（DerivativeInstrument）**
+- 直接子类：**股票远期（equity forward）**
+
+#### 2.3.1 股票远期（equity forward）
+
+定义：按约定在未来买卖标的股票、股票指数、股票篮子、股票期货合约或股票期权的远期合约。
+
+- 父类：**远期合约（forward）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有股息调整期间（has dividend adjustment period）** | 指明至少一个用于计算预期股息与实际派发股息之间偏差的日期区间。 | 值域：股息调整期间（dividend adjustment period）；子属性：具有日期区间 |
+| **具有调整方法（has method of adjustment）** | 指明基于合约生命周期内发生的事件处理合约变更的方法。 | 值域：远期合约调整方法（forward contract adjustment method）；子属性：具有战略 |
+| **具有标的（hasUnderlier）** | — | — |
+| **具有合同要素（hasContractualElement）** | — | — |
+
+公理：
+
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**结算条款（SettlementTerms）**。
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **具有股息调整期间（has dividend adjustment period）**至少有一个取值，类型是**股息调整期间（dividend adjustment period）**。
+- **具有调整方法（has method of adjustment）**至少有一个取值，类型是**远期合约调整方法（forward contract adjustment method）**。
+
+### 2.4 远期合约调整方法（forward contract adjustment method）
+
+定义：在发生一项或多项异常事件时对合约进行调整的方法。
+
+- 父类：**战略（Strategy）**
+
+### 2.5 标准化期货挂牌条款（standardized futures listing terms）
+
+定义：由衍生品交易所制定、适用于该交易所任何期货合约挂牌的合同条款。
+
+- 父类：**衍生品条款（DerivativeTerms）**、**标准化条款（StandardizedTerms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有发布方（hasPublisher）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **具有发布方（hasPublisher）**至少有一个取值，类型是**指定合约市场（DesignatedContractMarket）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**挂牌（Listing）**。
+
+### 2.6 标准化期货条款（standardized futures terms）
+
+定义：由衍生品交易所制定、适用于该交易所交易的任何期货合约的合同条款。
+
+- 父类：**衍生品条款（DerivativeTerms）**、**标准化条款（StandardizedTerms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **规定（specifies）**至少有一个取值，类型是**结算条款（SettlementTerms）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**期货（Future）**。
+
+## 3. 依赖（owl:imports，27 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -138,7 +359,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`FuturesAndForwards.rdf`
 - 中文 Turtle：`FuturesAndForwards.ttl`

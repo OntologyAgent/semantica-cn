@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与利率互换的差别——一条腿的现金流来自股权收益而非利率；与直接持股的差别——获得股权经济收益但不拥有股票、没有表决权。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **离散度互换指数成分腿（dispersion swap index constituents leg）** 继承 **离散度腿（DispersionLeg）**
+- **离散度互换指数腿（dispersion swap index leg）** 继承 **离散度腿（DispersionLeg）**
+- **股息腿（dividend leg）** 继承 **简单回报腿（SimpleReturnLeg）**
+- **股息互换（dividend swap）** 继承 **股票互换（equity swap）**
+- **股票相关性互换（equity correlation swap）** 继承 **相关性互换（CorrelationSwap）**
+- **股票相关性互换（equity correlation swap）** 继承 **股票互换（equity swap）**
+- **股票价格回报互换（equity price return swap）** 继承 **回报互换（ReturnSwap）**
+- **股票价格回报互换（equity price return swap）** 继承 **股票互换（equity swap）**
+- **股票回报腿（equity return leg）** 继承 **回报腿（ReturnLeg）**
+- **股票互换（equity swap）** 继承 **互换（Swap）**
+- **股票互换（equity swap）** 继承 **股票衍生品（EquityDerivative）**
+- **股票总回报互换（equity total return swap）** 继承 **总回报互换（TotalReturnSwap）**
+- 其余 7 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -32,43 +48,162 @@
 | 合资格股息期间（qualifying dividend period） | 计算互换条款所指相关发行人支付的全部合资格股息之和的日期区间。 |
 | 特别股息腿条款（special dividend leg terms） | 在适用特别股息和纪念股息时启用的条款。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 离散度互换指数成分腿（dispersion swap index constituents leg） ⊑ 离散度腿
-- 离散度互换指数腿（dispersion swap index leg） ⊑ 离散度腿
-- 股息腿（dividend leg） ⊑ 简单回报腿
-- 股息互换（dividend swap） ⊑ 股票互换（equity swap）
-- 股票相关性互换（equity correlation swap） ⊑ 相关性互换
-- 股票相关性互换（equity correlation swap） ⊑ 股票互换（equity swap）
-- 股票价格回报互换（equity price return swap） ⊑ 回报互换
-- 股票价格回报互换（equity price return swap） ⊑ 股票互换（equity swap）
-- 股票回报腿（equity return leg） ⊑ 回报腿
-- 股票互换（equity swap） ⊑ 互换
-- 股票互换（equity swap） ⊑ 股票衍生品
-- 股票总回报互换（equity total return swap） ⊑ 总回报互换
-- 股票总回报互换（equity total return swap） ⊑ 股票互换（equity swap）
-- 股票方差互换（equity variance swap） ⊑ 离散度互换
-- 股票方差互换（equity variance swap） ⊑ 股票互换（equity swap）
-- 股票波动率互换（equity volatility swap） ⊑ 离散度互换
-- 股票波动率互换（equity volatility swap） ⊑ 股票互换（equity swap）
-- 合资格股息期间（qualifying dividend period） ⊑ 显式日期区间
-- 特别股息腿条款（special dividend leg terms） ⊑ 现金流条款
+### 2.1 离散度互换指数成分腿（dispersion swap index constituents leg）
 
-## 5. 公理约定（Axioms）
+定义：标的为给定股票指数一组成分股的离散度腿。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**离散度腿（DispersionLeg）**
 
-- **离散度互换指数成分腿（dispersion swap index constituents leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**股票篮子（BasketOfEquities）**。
-- **离散度互换指数腿（dispersion swap index leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**参考指数（ReferenceIndex）**。
-- **股息腿（dividend leg）**：**具有合同要素（hasContractualElement）**可以有 0 个或多个**特别股息腿条款（special dividend leg terms）**。
-- **股息腿（dividend leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **股息腿（dividend leg）**：**具有日期区间（hasDatePeriod）**至少有一个取值，类型是**合资格股息期间（qualifying dividend period）**。
-- **股息互换（dividend swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**股息腿（dividend leg）**。
-- **股票价格回报互换（equity price return swap）**：**具有回报腿（hasReturnLeg）**至少有一个取值，类型是**股票回报腿（equity return leg）**。
-- **股票回报腿（equity return leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **股票总回报互换（equity total return swap）**：**具有回报腿（hasReturnLeg）**至少有一个取值，该取值满足：该属性存在取值约束。
+属性：
 
-## 6. 依赖（owl:imports，13 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**股票篮子（BasketOfEquities）**。
+
+### 2.2 离散度互换指数腿（dispersion swap index leg）
+
+定义：标的为某一股票指数的离散度腿。
+
+- 父类：**离散度腿（DispersionLeg）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**参考指数（ReferenceIndex）**。
+
+### 2.3 股息腿（dividend leg）
+
+定义：股息互换的浮动腿。
+
+- 父类：**简单回报腿（SimpleReturnLeg）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+| **具有合同要素（hasContractualElement）** | — | — |
+| **具有日期区间（hasDatePeriod）** | — | — |
+
+公理：
+
+- **具有合同要素（hasContractualElement）**可以有 0 个或多个**特别股息腿条款（special dividend leg terms）**。
+- **具有日期区间（hasDatePeriod）**至少有一个取值，类型是**合资格股息期间（qualifying dividend period）**。
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.4 股票回报腿（equity return leg）
+
+定义：收益基于股票的回报腿。
+
+- 父类：**回报腿（ReturnLeg）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.5 股票互换（equity swap）
+
+定义：支付与标的股票（如个股、股票篮子或指数）价值变动或其现金流挂钩的互换。
+
+- 父类：**互换（Swap）**、**股票衍生品（EquityDerivative）**
+- 直接子类：**股息互换（dividend swap）**、**股票相关性互换（equity correlation swap）**、**股票价格回报互换（equity price return swap）**、**股票总回报互换（equity total return swap）**、**股票方差互换（equity variance swap）**、**股票波动率互换（equity volatility swap）**
+
+#### 2.5.1 股息互换（dividend swap）
+
+定义：至少一腿的标的为股息流的股票互换。
+
+- 父类：**股票互换（equity swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有腿（hasLeg）** | — | — |
+
+公理：
+
+- **具有腿（hasLeg）**至少有一个取值，类型是**股息腿（dividend leg）**。
+
+#### 2.5.2 股票相关性互换（equity correlation swap）
+
+定义：用于对冲一组标的产品价格观察平均相关性相关风险的相关性互换。
+
+- 父类：**相关性互换（CorrelationSwap）**、**股票互换（equity swap）**
+
+#### 2.5.3 股票价格回报互换（equity price return swap）
+
+定义：回报腿标的基于股票的回报互换。
+
+- 父类：**回报互换（ReturnSwap）**、**股票互换（equity swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有回报腿（hasReturnLeg）** | — | — |
+
+公理：
+
+- **具有回报腿（hasReturnLeg）**至少有一个取值，类型是**股票回报腿（equity return leg）**。
+
+#### 2.5.4 股票总回报互换（equity total return swap）
+
+定义：回报腿标的基于股票的总回报互换。
+
+- 父类：**总回报互换（TotalReturnSwap）**、**股票互换（equity swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有回报腿（hasReturnLeg）** | — | — |
+
+公理：
+
+- **具有回报腿（hasReturnLeg）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+#### 2.5.5 股票方差互换（equity variance swap）
+
+定义：双方约定按特定标的股票（或指数）价格变动的已实现方差与约定方差之间的差额进行支付的离散度互换。
+
+- 父类：**离散度互换（DispersionSwap）**、**股票互换（equity swap）**
+
+#### 2.5.6 股票波动率互换（equity volatility swap）
+
+定义：以其标的股票价格变动之波动率为标的的远期合约型离散度互换。
+
+- 父类：**离散度互换（DispersionSwap）**、**股票互换（equity swap）**
+
+### 2.6 合资格股息期间（qualifying dividend period）
+
+定义：计算互换条款所指相关发行人支付的全部合资格股息之和的日期区间。
+
+- 父类：**显式日期区间（ExplicitDatePeriod）**
+
+### 2.7 特别股息腿条款（special dividend leg terms）
+
+定义：在适用特别股息和纪念股息时启用的条款。
+
+- 父类：**现金流条款（CashflowTerms）**
+
+## 3. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -88,7 +223,7 @@
 | `https://www.omg.org/spec/Commons/DatesAndTimes/` | OMG 通用日期与时间本体（OMG Commons Dates and Times） | Commons 库中的日期时间本体，定义日期、期间、时间点等通用时间概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`EquitySwaps.rdf`
 - 中文 Turtle：`EquitySwaps.ttl`

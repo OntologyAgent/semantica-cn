@@ -14,6 +14,13 @@
 
 **与相近概念的差别**：信用状态≠信用评级——评级是机构给出的等级意见，信用状态是综合的信用处境（含违约事实）；与信用事件的差别——事件是时点发生，状态是期间持续。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **信用正常（credit o k）** 继承 **证券信用状态（security credit status）**
+- **违约（in default）** 继承 **证券信用状态（security credit status）**
+- **证券现金流状态（security cashflow status）** 继承 **生命周期状态（LifecycleStatus）**
+- **证券信用状态（security credit status）** 继承 **生命周期状态（LifecycleStatus）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -23,29 +30,56 @@
 | 证券现金流状态（security cashflow status） | 证券应付给持有人的现金流的状态。 |
 | 证券信用状态（security credit status） | 证券在信用方面的状态。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 信用正常（credit o k） ⊑ 证券信用状态（security credit status）
-- 违约（in default） ⊑ 证券信用状态（security credit status）
-- 证券现金流状态（security cashflow status） ⊑ 生命周期状态
-- 证券信用状态（security credit status） ⊑ 生命周期状态
+### 2.1 证券现金流状态（security cashflow status）
 
-## 4. 数据属性（Datatype Property）
+定义：证券应付给持有人的现金流的状态。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**生命周期状态（LifecycleStatus）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-md-temx-crs:acceleratedPrincipalPaymentsExpected | 预期加速本金偿付（accelerated principal payments expected） | 是否预期加速偿付本金。 |
-| fibo-md-temx-crs:interestPaymentsExpected | 预期付息（interest payments expected） | 是否预期支付利息。 |
-| fibo-md-temx-crs:principalPaymentsExpected | 预期本金偿付（principal payments expected） | 是否预期偿付本金。 |
+| **预期加速本金偿付（accelerated principal payments expected）** | 是否预期加速偿付本金。 | 值域：xsd:boolean |
+| **预期付息（interest payments expected）** | 是否预期支付利息。 | 值域：xsd:boolean |
+| **预期本金偿付（principal payments expected）** | 是否预期偿付本金。 | 值域：xsd:boolean |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 与**证券信用状态（security credit status）**互斥：同一个体不能同时属于两者。
 
-- **证券现金流状态（security cashflow status）**与**证券信用状态（security credit status）**互斥：同一个体不能同时属于两者。
-- **证券信用状态（security credit status）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+### 2.2 证券信用状态（security credit status）
 
-## 6. 依赖（owl:imports，5 个）
+定义：证券在信用方面的状态。
+
+- 父类：**生命周期状态（LifecycleStatus）**
+- 直接子类：**信用正常（credit o k）**、**违约（in default）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.2.1 信用正常（credit o k）
+
+定义：未违约。
+
+- 父类：**证券信用状态（security credit status）**
+
+#### 2.2.2 违约（in default）
+
+定义：发行人未能支付其合同义务所要求的款项。
+
+- 父类：**证券信用状态（security credit status）**
+
+## 3. 依赖（owl:imports，5 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -57,7 +91,7 @@
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 | `https://www.omg.org/spec/Commons/ContextualDesignators/` | OMG 通用语境指称本体（OMG Commons Contextual Designators） | Commons 库中的语境指称本体，定义「在某个语境下指代某物的名称/符号」，是地址、账户号码等语境相关标识的基础。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SecurityCreditStatuses.rdf`
 - 中文 Turtle：`SecurityCreditStatuses.ttl`

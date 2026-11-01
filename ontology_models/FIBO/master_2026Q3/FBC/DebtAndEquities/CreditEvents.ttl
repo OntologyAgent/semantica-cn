@@ -253,6 +253,10 @@ fibo-fbc-dae-cre:InterestObligationInLightOfDefault a owl:Class ;
         "违约情形下的利息义务（interest obligation in light of default）"@zh ;
     rdfs:comment "就任何支付义务的违约行为所产生的利息方面的义务。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-dt:DatePeriod ;
+            owl:onProperty fibo-fbc-dae-cre:hasDefaultInterestCompoundingBasis ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isMandatedBy ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fbc-dae-dbt:CreditAgreement fibo-fnd-pas-psch:PaymentObligation ) ],
@@ -261,10 +265,6 @@ fibo-fbc-dae-cre:InterestObligationInLightOfDefault a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty fibo-fbc-dae-cre:isDefaultInterestApplicable ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-dt:DatePeriod ;
-            owl:onProperty fibo-fbc-dae-cre:hasDefaultInterestCompoundingBasis ],
         fibo-fnd-law-lcap:ContingentObligation,
         fibo-fnd-law-lcap:ContractualObligation ;
     skos:definition "obligation in respect of default(s) in the performance of any payment obligation"@en ;
@@ -312,12 +312,12 @@ fibo-fbc-dae-cre:ObligationSpecificCreditEvent a owl:Class ;
         "债务特定信用事件（obligation-specific credit event）"@zh ;
     rdfs:comment "与某一具体信贷协议或债务工具（参考债务）相关的信用事件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreement ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fbc-dae-cre:hasDefaultThresholdAmount ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-fbc-dae-dbt:CreditAgreement ],
         fibo-fbc-dae-cre:CreditEvent ;
     skos:definition "credit event that relates to an individual credit agreement or debt instrument (reference obligation)"@en .
 

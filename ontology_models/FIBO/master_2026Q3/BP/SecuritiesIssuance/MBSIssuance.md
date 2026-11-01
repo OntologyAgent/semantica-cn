@@ -14,6 +14,11 @@
 
 **与相近概念的差别**：与普通债务发行的差别——MBS 发行多了「资产池」环节，现金流来自底层贷款而非发行人经营；机构与私人品牌两类子流程的差别在发行主体与担保机制。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **MBS 证券化流程（m b s securitization process）** 继承 **池支持证券证券化流程（PoolBackedSecuritySecuritizationProcess）**
+- **招募说明书部分（prospectus part）** 继承 **合同要素（ContractualElement）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -21,18 +26,31 @@
 | MBS 证券化流程（m b s securitization process） | 抵押贷款支持证券的证券化过程。 |
 | 招募说明书部分（prospectus part） | 证券发行招募说明书的一个部分或章节。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- MBS 证券化流程（m b s securitization process） ⊑ 池支持证券证券化流程
-- 招募说明书部分（prospectus part） ⊑ 合同要素
+### 2.1 MBS 证券化流程（m b s securitization process）
 
-## 3. 对象属性（Object Property）
+定义：抵押贷款支持证券的证券化过程。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-bp-iss-mbs:includesDetailsAbout | 包含……的细节（includes details about） | 标识某文件所包含细节所关涉的对象。 | — |
+- 父类：**池支持证券证券化流程（PoolBackedSecuritySecuritizationProcess）**
 
-## 6. 依赖（owl:imports，5 个）
+### 2.2 招募说明书部分（prospectus part）
+
+定义：证券发行招募说明书的一个部分或章节。
+
+- 父类：**合同要素（ContractualElement）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含……的细节（includes details about）** | 标识某文件所包含细节所关涉的对象。 | — |
+
+## 4. 依赖（owl:imports，5 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -44,7 +62,7 @@
 | `FND/Utilities/AnnotationVocabulary.rdf` | FIBO 标注词汇表（FIBO Annotation Vocabulary） | 定义 FIBO 专用的标注属性（如释义来源、成熟度等级），用于本体自身的元数据标注。 |
 | `https://www.omg.org/spec/Commons/AnnotationVocabulary/` | OMG 通用标注词汇表（OMG Commons Annotation Vocabulary） | OMG 通用本体库（Commons）中的标注词汇表，提供概念映射等标注属性，FIBO 用它标注术语与外部标准的对应关系。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`MBSIssuance.rdf`
 - 中文 Turtle：`MBSIssuance.ttl`

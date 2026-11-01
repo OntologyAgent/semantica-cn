@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：发行≠上市——发行是把证券卖给投资者（一级市场），上市是让证券能在交易所挂牌（二级市场准入）；一次发行可以不上市，上市必须先发行。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **代销发行（best efforts offering）** 继承 **证券发行（securities offering）**
+- **转换条款（conversion terms）** 继承 **赎回条款（RedemptionProvision）**
+- **可转换证券（convertible security）** 继承 **证券（Security）**
+- **豁免发行人（exempt issuer）** 继承 **发行人（Issuer）**
+- **豁免发行（exempt offering）** 继承 **公开发行（public offering）**
+- **豁免交易（exempt transaction）** 继承 **证券交易（SecuritiesTransaction）**
+- **金融工具简称（financial instrument short name）** 继承 **标识符（Identifier）**
+- **包销发行（firm commitment offering）** 继承 **证券发行（securities offering）**
+- **发行文件（offering document）** 继承 **出版物（Publication）**
+- **发行文件（offering document）** 继承 **法律文件（LegalDocument）**
+- **发行说明书（offering statement）** 继承 **发行文件（offering document）**
+- **私募发行（private offering）** 继承 **证券发行（securities offering）**
+- 其余 10 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -37,88 +53,279 @@
 | 证券承销商（security underwriter） | 从发行人处购入证券以图分销、或为发行人销售证券、或参与证券分销的一方。 |
 | 证券承销安排（security underwriting arrangement） | 机构（通常为投资银行）与证券发行人之间的承销协议，承诺承销商承担分销风险。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 代销发行（best efforts offering） ⊑ 证券发行（securities offering）
-- 转换条款（conversion terms） ⊑ 赎回条款
-- 可转换证券（convertible security） ⊑ 证券
-- 豁免发行人（exempt issuer） ⊑ 发行人
-- 豁免发行（exempt offering） ⊑ 公开发行（public offering）
-- 豁免交易（exempt transaction） ⊑ 证券交易
-- 金融工具简称（financial instrument short name） ⊑ 标识符
-- 包销发行（firm commitment offering） ⊑ 证券发行（securities offering）
-- 发行文件（offering document） ⊑ 出版物
-- 发行文件（offering document） ⊑ 法律文件
-- 发行说明书（offering statement） ⊑ 发行文件（offering document）
-- 私募发行（private offering） ⊑ 证券发行（securities offering）
-- 私募配售备忘录（private placement memorandum） ⊑ 发行文件（offering document）
-- 招募说明书（prospectus） ⊑ 发行文件（offering document）
-- 公开发行（public offering） ⊑ 证券发行（securities offering）
-- 证券发行（securities offering） ⊑ fibo-fbc-pas-fpas:Offering
-- 证券发行（securities offering） ⊑ 协议
-- 证券形式（security form） ⊑ 合同文件
-- 证券承销商（security underwriter） ⊑ 承销商
-- 证券承销商（security underwriter） ⊑ 第三方代理人
-- 证券承销商（security underwriter） ⊑ 合同第三方
-- 证券承销安排（security underwriting arrangement） ⊑ 承销安排
+### 2.1 转换条款（conversion terms）
 
-## 3. 对象属性（Object Property）
+定义：规定证券何时以及如何转换为另一证券（通常为同一发行人）的合同条款。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-sec-iss:hasActualClosingDate | 具有实际截止日（has actual closing date） | 指明发行或交易正式截止的日期，与预定截止日相区别。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有日期 |
-| fibo-sec-sec-iss:hasAnnouncementDate | 具有公告日（has announcement date） | 指明公众首次获得新证券发行信息的日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有日期 |
-| fibo-sec-sec-iss:hasFinancialInstrumentShortName | 具有金融工具简称（has financial instrument short name） | 将证券与其符合 ISO 18774 的简称（含发行人简称、工具特征缩写等）关联起来。 | 定义域（domain）：金融工具；值域（range）：金融工具简称（financial instrument short name）；子属性（subPropertyOf）：由……标识 |
-| fibo-sec-sec-iss:hasFirstTradeDate | 具有首个交易日（has first trade date） | 指明新发行证券开始交易的日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有日期 |
-| fibo-sec-sec-iss:hasFirstTradeSettlementDate | 具有首次交易结算日（has first trade settlement date） | 指明新发行证券首笔交易结算的日期。 | 值域（range）：日期 |
-| fibo-sec-sec-iss:hasSubscriptionPeriod | 具有认购期（has subscription period） | 指明投资者可承诺购买待发行股份（或单位）的时间段。 | 值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-sec-sec-iss:isIssuedInForm | 以……形式发行（is issued in form） | 指明证券发行的形式，通常为记名形式。 | 定义域（domain）：证券；值域（range）：证券形式（security form）；子属性（subPropertyOf）：由……证明 |
-| fibo-sec-sec-iss:isRegisteredWith | 注册于（is registered） | 指明某一证券的注册机构，即以所有人名义登记于发行人或其登记机构名册。 | 定义域（domain）：证券；值域（range）：注册机构；子属性（subPropertyOf）：由……注册 |
-| fibo-sec-sec-iss:isUnderwrittenBy | 由……承销（is underwritten by） | 将发行与参与募集资金或分销发行标的工具的承销商关联起来。 | 定义域（domain）：证券发行（securities offering）；值域（range）：承销商 |
-| fibo-sec-sec-iss:specifiesConversionInto | 规定转换为（specifies conversion into） | 规定按协议条款将替换可转换证券的证券。 | 定义域（domain）：转换条款（conversion terms）；值域（range）：证券 |
-| fibo-sec-sec-iss:underwrites | 承销（underwrites） | 对发行进行承销。 | 定义域（domain）：承销商；值域（range）：证券发行（securities offering）；逆属性（inverseOf）：由……承销（is underwritten by） |
+- 父类：**赎回条款（RedemptionProvision）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-sec-sec-iss:hasInstrumentDescription | 具有工具描述（has instrument description） | 将金融工具或 FISN 与符合 ISO 18774 的工具描述（即特征属性集合）关联起来。 |
-| fibo-sec-sec-iss:hasIssuerShortName | 具有发行人简称（has issuer short name） | 将证券发行人或 FISN 与符合 ISO 18774 的发行人简称（官方发行人名称的缩写，有长度上限）关联起来。 |
-| fibo-sec-sec-iss:hasSeries | 具有系列（has series） | 指明工具分多个系列（亦称分档）发行时发行人所标识的系列。 |
-| fibo-sec-sec-iss:hasSubscriptionAmount | 具有认购数量（has subscription amount） | 指明认购的股份或单位数量。 |
-| fibo-sec-sec-iss:isOverAllotted | 是否超额认购（is over-allotted） | 表明认购是否超额。 |
+| **规定转换为（specifies conversion into）** | 规定按协议条款将替换可转换证券的证券。 | 值域：证券 |
+| **适用于（appliesTo）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **规定转换为（specifies conversion into）**至少有一个取值，类型是**证券（Security）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
 
-- **转换条款（conversion terms）**：**规定转换为（specifies conversion into）**至少有一个取值，类型是**证券（Security）**。
-- **转换条款（conversion terms）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
-- **可转换证券（convertible security）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**转换条款（conversion terms）**。
-- **豁免发行（exempt offering）**：该属性存在取值约束。
-- **金融工具简称（financial instrument short name）**：**具有工具描述（has instrument description）**存在取值约束。
-- **金融工具简称（financial instrument short name）**：**具有发行人简称（has issuer short name）**存在取值约束。
-- **包销发行（firm commitment offering）**与**代销发行（best efforts offering）**互斥：同一个体不能同时属于两者。
-- **发行文件（offering document）**：**是……的证据（isEvidenceFor）**恰好有 1 个**证券发行（securities offering）**。
-- **发行文件（offering document）**：**具有到期日（hasExpirationDate）**恰好有 1 个**日期（Date）**。
-- **发行文件（offering document）**：**具有签发日期（hasDateOfIssuance）**恰好有 1 个**日期（Date）**。
-- **发行文件（offering document）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
-- **私募发行（private offering）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**私募配售备忘录（private placement memorandum）**。
-- **公开发行（public offering）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**招募说明书（prospectus）**。
-- **证券发行（securities offering）**：**具有参与方角色（has party role）**可以有 0 个或多个**第三方代理人（ThirdPartyAgent）**。
-- **证券发行（securities offering）**：**由……承销（is underwritten by）**可以有 0 个或多个**证券承销商（security underwriter）**。
-- **证券发行（securities offering）**：**具有要约价格（hasOfferingPrice）**恰好有 1 个**货币价格（MonetaryPrice）**。
-- **证券发行（securities offering）**：**具有管辖辖区（hasGoverningJurisdiction）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **证券发行（securities offering）**：**由……证明（isEvidencedBy）**至少有一个取值，类型是**发行文件（offering document）**。
-- **证券发行（securities offering）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **证券发行（securities offering）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
-- **证券形式（security form）**：**例证（exemplifies）**至少有一个取值，类型是**金融资产（FinancialAsset）**。
-- **证券形式（security form）**：**适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
-- **证券承销商（security underwriter）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**证券发行（securities offering）**。
-- **证券承销商（security underwriter）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**证券承销安排（security underwriting arrangement）**。
-- **证券承销安排（security underwriting arrangement）**：**具有参与方角色（has party role）**至少有一个取值，类型是**证券承销商（security underwriter）**。
+### 2.2 可转换证券（convertible security）
 
-## 6. 依赖（owl:imports，23 个）
+定义：可转换为另一证券的证券。
+
+- 父类：**证券（Security）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合同要素（hasContractualElement）** | — | — |
+
+公理：
+
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**转换条款（conversion terms）**。
+
+### 2.3 豁免发行人（exempt issuer）
+
+定义：所发行证券免于某些监管报告要求的发行人。
+
+- 父类：**发行人（Issuer）**
+
+### 2.4 豁免交易（exempt transaction）
+
+定义：无须向监管机构办理注册的证券交易。
+
+- 父类：**证券交易（SecuritiesTransaction）**
+
+### 2.5 金融工具简称（financial instrument short name）
+
+定义：按 ISO 18774 规定结构定义的金融工具缩写名称（FISN）。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有工具描述（has instrument description）** | 将金融工具或 FISN 与符合 ISO 18774 的工具描述（即特征属性集合）关联起来。 | 值域：xsd:string |
+| **具有发行人简称（has issuer short name）** | 将证券发行人或 FISN 与符合 ISO 18774 的发行人简称（官方发行人名称的缩写，有长度上限）关联起来。 | 值域：xsd:string；子属性：具有正式名称 |
+
+公理：
+
+- **具有发行人简称（has issuer short name）**存在取值约束。
+- **具有工具描述（has instrument description）**存在取值约束。
+
+### 2.6 发行文件（offering document）
+
+定义：说明一项投资的目标、风险和条款的法律文件。
+
+- 父类：**出版物（Publication）**、**法律文件（LegalDocument）**
+- 直接子类：**发行说明书（offering statement）**、**私募配售备忘录（private placement memorandum）**、**招募说明书（prospectus）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的证据（isEvidenceFor）** | — | — |
+| **具有到期日（hasExpirationDate）** | — | — |
+| **适用于（appliesTo）** | — | — |
+| **具有签发日期（hasDateOfIssuance）** | — | — |
+
+公理：
+
+- **具有到期日（hasExpirationDate）**恰好有 1 个**日期（Date）**。
+- **具有签发日期（hasDateOfIssuance）**恰好有 1 个**日期（Date）**。
+- **是……的证据（isEvidenceFor）**恰好有 1 个**证券发行（securities offering）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.6.1 发行说明书（offering statement）
+
+定义：符合 1933 年《证券法》A 条例《发行说明书》要求的发行备忘录。
+
+- 父类：**发行文件（offering document）**
+
+#### 2.6.2 私募配售备忘录（private placement memorandum）
+
+定义：说明私募配售所涉投资目标、风险和条款的法律文件。
+
+- 父类：**发行文件（offering document）**
+
+#### 2.6.3 招募说明书（prospectus）
+
+定义：为出售证券而出具的正式书面发行文件，提供投资者作出知情投资决策所需的事实。
+
+- 父类：**发行文件（offering document）**
+
+### 2.7 证券发行（securities offering）
+
+定义：出售一种或多种证券的发行。
+
+- 父类：**fibo-fbc-pas-fpas:Offering（Offering）**、**协议（Agreement）**
+- 直接子类：**代销发行（best efforts offering）**、**包销发行（firm commitment offering）**、**私募发行（private offering）**、**公开发行（public offering）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有要约价格（hasOfferingPrice）** | — | — |
+| **具有管辖辖区（hasGoverningJurisdiction）** | — | — |
+| **由……证明（isEvidencedBy）** | — | — |
+| **由……发行（isIssuedBy）** | — | — |
+| **由……承销（is underwritten by）** | 将发行与参与募集资金或分销发行标的工具的承销商关联起来。 | 值域：承销商 |
+| **适用于（appliesTo）** | — | — |
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**可以有 0 个或多个**第三方代理人（ThirdPartyAgent）**。
+- **具有管辖辖区（hasGoverningJurisdiction）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **具有要约价格（hasOfferingPrice）**恰好有 1 个**货币价格（MonetaryPrice）**。
+- **由……发行（isIssuedBy）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **由……承销（is underwritten by）**可以有 0 个或多个**证券承销商（security underwriter）**。
+- **由……证明（isEvidencedBy）**至少有一个取值，类型是**发行文件（offering document）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.7.1 代销发行（best efforts offering）
+
+定义：投资银行承诺尽力出售所发行证券、但不承担承销商全部风险的证券发行。
+
+- 父类：**证券发行（securities offering）**
+
+#### 2.7.2 包销发行（firm commitment offering）
+
+定义：承销商以自己名义全额购入证券的证券发行。
+
+- 父类：**证券发行（securities offering）**
+
+公理：
+
+- 与**代销发行（best efforts offering）**互斥：同一个体不能同时属于两者。
+
+#### 2.7.3 私募发行（private offering）
+
+定义：私下向有限数量的合格潜在投资者发售证券的发行。
+
+- 父类：**证券发行（securities offering）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……证明（isEvidencedBy）** | — | — |
+
+公理：
+
+- **由……证明（isEvidencedBy）**至少有一个取值，类型是**私募配售备忘录（private placement memorandum）**。
+
+#### 2.7.4 公开发行（public offering）
+
+定义：在遵守相关监管机构注册要求后向投资公众出售证券的发行。
+
+- 父类：**证券发行（securities offering）**
+- 直接子类：**豁免发行（exempt offering）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……证明（isEvidencedBy）** | — | — |
+
+公理：
+
+- **由……证明（isEvidencedBy）**至少有一个取值，类型是**招募说明书（prospectus）**。
+
+##### 2.7.4.1 豁免发行（exempt offering）
+
+定义：涉及免于某些监管报告要求之证券的公开发行。
+
+- 父类：**公开发行（public offering）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.8 证券形式（security form）
+
+定义：证券所有权凭证的性质。
+
+- 父类：**合同文件（ContractDocument）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **例证（exemplifies）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **例证（exemplifies）**至少有一个取值，类型是**金融资产（FinancialAsset）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**证券（Security）**。
+
+### 2.9 证券承销商（security underwriter）
+
+定义：从发行人处购入证券以图分销、或为发行人销售证券、或参与证券分销的一方。
+
+- 父类：**承销商（Underwriter）**、**第三方代理人（ThirdPartyAgent）**、**合同第三方（ContractThirdParty）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**证券发行（securities offering）**。
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是…的参与方（is a party to）**至少有一个取值，类型是**证券承销安排（security underwriting arrangement）**。
+
+### 2.10 证券承销安排（security underwriting arrangement）
+
+定义：机构（通常为投资银行）与证券发行人之间的承销协议，承诺承销商承担分销风险。
+
+- 父类：**承销安排（UnderwritingArrangement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有参与方角色（has party role）** | — | — |
+
+公理：
+
+- **具有参与方角色（has party role）**至少有一个取值，类型是**证券承销商（security underwriter）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有实际截止日（has actual closing date）** | 指明发行或交易正式截止的日期，与预定截止日相区别。 | 值域：显式日期；子属性：具有日期 |
+| **具有公告日（has announcement date）** | 指明公众首次获得新证券发行信息的日期。 | 值域：日期；子属性：具有日期 |
+| **具有金融工具简称（has financial instrument short name）** | 将证券与其符合 ISO 18774 的简称（含发行人简称、工具特征缩写等）关联起来。 | 值域：金融工具简称（financial instrument short name）；子属性：由……标识 |
+| **具有首个交易日（has first trade date）** | 指明新发行证券开始交易的日期。 | 值域：显式日期；子属性：具有日期 |
+| **具有首次交易结算日（has first trade settlement date）** | 指明新发行证券首笔交易结算的日期。 | 值域：日期 |
+| **具有认购期（has subscription period）** | 指明投资者可承诺购买待发行股份（或单位）的时间段。 | 值域：日期区间；子属性：具有日期区间 |
+| **以……形式发行（is issued in form）** | 指明证券发行的形式，通常为记名形式。 | 值域：证券形式（security form）；子属性：由……证明 |
+| **注册于（is registered）** | 指明某一证券的注册机构，即以所有人名义登记于发行人或其登记机构名册。 | 值域：注册机构；子属性：由……注册 |
+| **承销（underwrites）** | 对发行进行承销。 | 值域：证券发行（securities offering）；逆属性：由……承销（is underwritten by） |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有系列（has series）** | 指明工具分多个系列（亦称分档）发行时发行人所标识的系列。 |
+| **具有认购数量（has subscription amount）** | 指明认购的股份或单位数量。 |
+| **是否超额认购（is over-allotted）** | 表明认购是否超额。 |
+
+## 4. 依赖（owl:imports，23 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -148,7 +355,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`SecuritiesIssuance.rdf`
 - 中文 Turtle：`SecuritiesIssuance.ttl`

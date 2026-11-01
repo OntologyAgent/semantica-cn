@@ -579,11 +579,11 @@ fibo-bp-iss-muni:AnnounceSecuritiesIssue a owl:Class ;
         "公告证券发行（announce securities issue）"@zh ;
     rdfs:comment "对证券发行进行公告。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:announcesIssueOf ;
-            owl:someValuesFrom fibo-fbc-fi-fi:Security ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-dbti:announces ;
-            owl:someValuesFrom fibo-sec-sec-iss:SecuritiesOffering ] .
+            owl:someValuesFrom fibo-sec-sec-iss:SecuritiesOffering ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:announcesIssueOf ;
+            owl:someValuesFrom fibo-fbc-fi-fi:Security ] .
 
 fibo-bp-iss-muni:IssuanceClosing a owl:Class ;
     rdfs:label "issuance closing"@en,
@@ -785,47 +785,47 @@ fibo-bp-iss-muni:SecuritiesUnderwritingIssuanceProcess a owl:Class ;
         "证券承销发行流程（securities underwriting issuance process）"@zh ;
     rdfs:comment "由承销辛迪加将债务工具承销并推向市场的过程。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasTrustee ;
-            owl:someValuesFrom fibo-bp-iss-muni:Trustee ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasRemarketingAgent ;
-            owl:someValuesFrom fibo-bp-iss-muni:RemarketingAgent ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasPayingAgent ;
-            owl:someValuesFrom fibo-bp-iss-muni:PayingAgent ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:produces ;
-            owl:someValuesFrom fibo-bp-iss-prc:UnderwritingProcessDetails ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasFinancialAdvisor ;
-            owl:someValuesFrom fibo-bp-iss-muni:IssuanceFinancialAdvisor ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:requestedBy ;
-            owl:someValuesFrom fibo-bp-iss-muni:UnderwritingIssuanceRequestor ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasServicer ;
-            owl:someValuesFrom fibo-bp-iss-muni:Servicer ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasAgent ;
-            owl:someValuesFrom fibo-bp-iss-muni:IssuanceAgent ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasTransferAgent ;
-            owl:someValuesFrom fibo-bp-iss-muni:TransferAgent ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:underwrittenBy ;
-            owl:someValuesFrom fibo-bp-iss-muni:PotentialMuniUnderwriter ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasObligor ;
-            owl:someValuesFrom fibo-bp-iss-muni:Obligor ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasSubscriber ;
-            owl:someValuesFrom fibo-bp-iss-prc:Subscriber ],
+            owl:onProperty fibo-bp-iss-muni:hasPrinter ;
+            owl:someValuesFrom fibo-bp-iss-muni:IssuancePrinter ],
         [ a owl:Restriction ;
             owl:onProperty fibo-bp-iss-muni:hasIssuerCounsel ;
             owl:someValuesFrom fibo-bp-iss-muni:IssuerCounsel ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-bp-iss-muni:hasPrinter ;
-            owl:someValuesFrom fibo-bp-iss-muni:IssuancePrinter ],
+            owl:onProperty fibo-bp-iss-muni:hasObligor ;
+            owl:someValuesFrom fibo-bp-iss-muni:Obligor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasRemarketingAgent ;
+            owl:someValuesFrom fibo-bp-iss-muni:RemarketingAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasAgent ;
+            owl:someValuesFrom fibo-bp-iss-muni:IssuanceAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasTrustee ;
+            owl:someValuesFrom fibo-bp-iss-muni:Trustee ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasFinancialAdvisor ;
+            owl:someValuesFrom fibo-bp-iss-muni:IssuanceFinancialAdvisor ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasServicer ;
+            owl:someValuesFrom fibo-bp-iss-muni:Servicer ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:produces ;
+            owl:someValuesFrom fibo-bp-iss-prc:UnderwritingProcessDetails ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasTransferAgent ;
+            owl:someValuesFrom fibo-bp-iss-muni:TransferAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasSubscriber ;
+            owl:someValuesFrom fibo-bp-iss-prc:Subscriber ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:underwrittenBy ;
+            owl:someValuesFrom fibo-bp-iss-muni:PotentialMuniUnderwriter ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:hasPayingAgent ;
+            owl:someValuesFrom fibo-bp-iss-muni:PayingAgent ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-bp-iss-muni:requestedBy ;
+            owl:someValuesFrom fibo-bp-iss-muni:UnderwritingIssuanceRequestor ],
         fibo-bp-iss-prc:SecuritiesIssuanceProcess ;
     skos:definition "The process by which debt instruments are offered to the market by a syndicate of underwriters who underwrite the issue."@en .
 

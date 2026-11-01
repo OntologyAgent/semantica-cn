@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：法律主体不等于自然人——自然人在 FND/AgentsAndPeople/People 建模；法律主体是法律拟制的「人」，包括自然人和法人两类。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **特殊目的载体（SpecialPurposeVehicle）** 继承 **法律实体（LegalEntity）**
+- **企业实体（business entity）** 继承 **正式组织（FormalOrganization）**
+- **营业执照（business license）** 继承 **许可（License）**
+- **特许法律主体（chartered legal person）** 继承 **法律实体（LegalEntity）**
+- **具有法律行为能力的自然人（legally competent natural person）** 继承 **个人（Person）**
+- **具有法律行为能力的自然人（legally competent natural person）** 继承 **法律主体（LegalPerson）**
+- **非营利目标（not for profit objective）** 继承 **目标（Objective）**
+- **授权委托书（power of attorney）** 继承 **法律行为能力（LegalCapacity）**
+- **盈利目标（profit objective）** 继承 **业务目标（BusinessObjective）**
+- **公共宗旨（public purpose）** 继承 **目标（Objective）**
+- **宗教目标（religious objective）** 继承 **非营利目标（not for profit objective）**
+- **法定机构（statutory body）** 继承 **法律实体（LegalEntity）**
+- 其余 1 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -31,43 +47,136 @@
 | 法定机构（statutory body） | 由政府设立、在某活动领域内审查证据并作出裁决的法律实体。 |
 | 可变利益实体（variable interest entity） | 股东通过私人合同有权获得某具名公司一定比例利润的法律实体。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 特殊目的载体（SpecialPurposeVehicle） ⊑ 法律实体
-- 企业实体（business entity） ⊑ 正式组织
-- 营业执照（business license） ⊑ 许可
-- 特许法律主体（chartered legal person） ⊑ 法律实体
-- 具有法律行为能力的自然人（legally competent natural person） ⊑ 个人
-- 具有法律行为能力的自然人（legally competent natural person） ⊑ 法律主体
-- 非营利目标（not for profit objective） ⊑ 目标
-- 授权委托书（power of attorney） ⊑ 法律行为能力
-- 盈利目标（profit objective） ⊑ 业务目标
-- 公共宗旨（public purpose） ⊑ 目标
-- 宗教目标（religious objective） ⊑ 非营利目标（not for profit objective）
-- 法定机构（statutory body） ⊑ 法律实体
-- 可变利益实体（variable interest entity） ⊑ 法律实体
+### 2.1 特殊目的载体（SpecialPurposeVehicle）
 
-## 3. 对象属性（Object Property）
+定义：为实现狭窄、特定且常为临时性目标而设立的法律实体。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-le-lp:hasIntendedLiquidationDate | 具有预定清算日期（has intended liquidation date） | 将协议、合同或法律实体关联到其预定出售的日期。 | 值域（range）：日期；子属性（subPropertyOf）：具有终止日 |
+- 父类：**法律实体（LegalEntity）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有预定清算日期（has intended liquidation date）** | 将协议、合同或法律实体关联到其预定出售的日期。 | 值域：日期；子属性：具有终止日 |
 
-- **特殊目的载体（SpecialPurposeVehicle）**：**具有预定清算日期（has intended liquidation date）**可以有 0 个或多个**日期（Date）**。
-- **企业实体（business entity）**：**具有目标（hasObjective）**可以有 0 个或多个**业务目标（BusinessObjective）**。
-- **企业实体（business entity）**：**持有（holds）**可以有 0 个或多个**许可（License）**。
-- **营业执照（business license）**：**适用于（appliesTo）**恰好有 1 个**企业实体（business entity）**。
-- **营业执照（business license）**：**获承认于（isRecognizedIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **具有法律行为能力的自然人（legally competent natural person）**与**无行为能力成年人**互斥：同一个体不能同时属于两者。
-- **非营利目标（not for profit objective）**与**盈利目标（profit objective）**互斥：同一个体不能同时属于两者。
-- **授权委托书（power of attorney）**：**具有生效日期（hasEffectiveDate）**可以有 0 个或多个**日期（Date）**。
-- **授权委托书（power of attorney）**：**被授予给（isConferredOn）**至少有一个取值，类型是**具有法律行为能力的自然人（legally competent natural person）**。
+公理：
 
-## 6. 依赖（owl:imports，15 个）
+- **具有预定清算日期（has intended liquidation date）**可以有 0 个或多个**日期（Date）**。
+
+### 2.2 企业实体（business entity）
+
+定义：按商法设立和管理、以从事商业活动的实体。
+
+- 父类：**正式组织（FormalOrganization）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（hasObjective）** | — | — |
+| **持有（holds）** | — | — |
+
+公理：
+
+- **具有目标（hasObjective）**可以有 0 个或多个**业务目标（BusinessObjective）**。
+- **持有（holds）**可以有 0 个或多个**许可（License）**。
+
+### 2.3 营业执照（business license）
+
+定义：允许持有人在某管辖区内、在某段时期内经营业务或从事特定职业的许可。
+
+- 父类：**许可（License）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+| **获承认于（isRecognizedIn）** | — | — |
+
+公理：
+
+- **获承认于（isRecognizedIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+- **适用于（appliesTo）**恰好有 1 个**企业实体（business entity）**。
+
+### 2.4 特许法律主体（chartered legal person）
+
+定义：由皇家特许状或法令设立的法律主体。
+
+- 父类：**法律实体（LegalEntity）**
+
+### 2.5 具有法律行为能力的自然人（legally competent natural person）
+
+定义：在相关情形下被认为有能力订立合同、开展业务或参与其他通常产生法律义务之活动的人。
+
+- 父类：**个人（Person）**、**法律主体（LegalPerson）**
+
+公理：
+
+- 与**无行为能力成年人（IncapacitatedAdult）**互斥：同一个体不能同时属于两者。
+
+### 2.6 非营利目标（not for profit objective）
+
+定义：反映组织慈善、教育、宗教、人道、公共服务或其他非营利宗旨的目标。
+
+- 父类：**目标（Objective）**
+- 直接子类：**宗教目标（religious objective）**
+
+公理：
+
+- 与**盈利目标（profit objective）**互斥：同一个体不能同时属于两者。
+
+#### 2.6.1 宗教目标（religious objective）
+
+定义：反映组织宗教宗旨的非营利目标。
+
+- 父类：**非营利目标（not for profit objective）**
+
+### 2.7 授权委托书（power of attorney）
+
+定义：一方（委托人）授予另一方（代理人）代表委托人实施特定行为的法律授权。
+
+- 父类：**法律行为能力（LegalCapacity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有生效日期（hasEffectiveDate）** | — | — |
+| **被授予给（isConferredOn）** | — | — |
+
+公理：
+
+- **具有生效日期（hasEffectiveDate）**可以有 0 个或多个**日期（Date）**。
+- **被授予给（isConferredOn）**至少有一个取值，类型是**具有法律行为能力的自然人（legally competent natural person）**。
+
+### 2.8 盈利目标（profit objective）
+
+定义：反映对财务利益之追求的目标，该利益在业务收入超过支出时得以实现。
+
+- 父类：**业务目标（BusinessObjective）**
+
+### 2.9 公共宗旨（public purpose）
+
+定义：反映普遍认为为全民共享、旨在惠及全体公众之价值观的目标。
+
+- 父类：**目标（Objective）**
+
+### 2.10 法定机构（statutory body）
+
+定义：由政府设立、在某活动领域内审查证据并作出裁决的法律实体。
+
+- 父类：**法律实体（LegalEntity）**
+
+### 2.11 可变利益实体（variable interest entity）
+
+定义：股东通过私人合同有权获得某具名公司一定比例利润的法律实体。
+
+- 父类：**法律实体（LegalEntity）**
+
+## 3. 依赖（owl:imports，15 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -89,7 +198,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`LegalPersons.rdf`
 - 中文 Turtle：`LegalPersons.ttl`

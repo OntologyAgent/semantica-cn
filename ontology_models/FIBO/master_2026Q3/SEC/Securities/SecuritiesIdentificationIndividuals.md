@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：标识方案≠标识符——方案是编码体系本身（如 ISIN 这套规则），标识符是按方案分配的具体代码（如 US0378331005）；与股票 CFI 分类个体的差别——CFI 用于分类，标识方案用于唯一识别。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）** 继承 **专有证券标识符（ProprietarySecurityIdentifier）**
+- **CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）** 继承 **注册标识符（RegisteredIdentifier）**
+- **统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）** 继承 **国家证券识别号码（NationalSecuritiesIdentifyingNumber）**
+- **统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）** 继承 **专有证券标识符（ProprietarySecurityIdentifier）**
+- **统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）** 继承 **注册标识符（RegisteredIdentifier）**
+- **欧洲清算-明讯通用代码（Euroclear Clearstream common code）** 继承 **专有证券标识符（ProprietarySecurityIdentifier）**
+- **欧洲清算-明讯通用代码（Euroclear Clearstream common code）** 继承 **注册标识符（RegisteredIdentifier）**
+- **金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry）** 继承 **注册簿条目（RegistryEntry）**
+- **路孚特工具代码（Refinitiv instrument code）** 继承 **专有证券标识符（ProprietarySecurityIdentifier）**
+- **证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）** 继承 **上市证券标识符（ListedSecurityIdentifier）**
+- **证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）** 继承 **国家证券识别号码（NationalSecuritiesIdentifyingNumber）**
+- **证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）** 继承 **专有证券标识符（ProprietarySecurityIdentifier）**
+- 其余 6 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -29,72 +45,227 @@
 | 通用代码登记册条目（common code registry entry） | 通用代码登记册中的条目。 |
 | 金融工具全球标识符（financial instrument global identifier） | 按对象管理组织（OMG）金融工具全球标识符（FIGI）规范定义的金融工具标识符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number） ⊑ 专有证券标识符
-- CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number） ⊑ 注册标识符
-- 统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number） ⊑ 国家证券识别号码
-- 统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number） ⊑ 专有证券标识符
-- 统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number） ⊑ 注册标识符
-- 欧洲清算-明讯通用代码（Euroclear Clearstream common code） ⊑ 专有证券标识符
-- 欧洲清算-明讯通用代码（Euroclear Clearstream common code） ⊑ 注册标识符
-- 金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry） ⊑ 注册簿条目
-- 路孚特工具代码（Refinitiv instrument code） ⊑ 专有证券标识符
-- 证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code） ⊑ 上市证券标识符
-- 证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code） ⊑ 国家证券识别号码
-- 证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code） ⊑ 专有证券标识符
-- 德励财富标识符（Telekurs Id） ⊑ 专有证券标识符
-- 瓦洛伦编号（Valoren） ⊑ 上市证券标识符
-- 瓦洛伦编号（Valoren） ⊑ 国家证券识别号码
-- 瓦洛伦编号（Valoren） ⊑ 专有证券标识符
-- 通用代码登记册条目（common code registry entry） ⊑ 注册簿条目
-- 金融工具全球标识符（financial instrument global identifier） ⊑ 注册标识符
+### 2.1 CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）
 
-## 5. 公理约定（Axioms）
+定义：9 位字母数字标识符，采用与 CUSIP 相同的 9 位字符，但首位为字母。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**专有证券标识符（ProprietarySecurityIdentifier）**、**注册标识符（RegisteredIdentifier）**
 
-- **CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）**：**注册于（isRegisteredIn）**的取值固定为 CGSCUSIPAccessRepository。
-- **CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）**：**由……发行（isIssuedBy）**的取值固定为 CUSIPGlobalServices。
-- **CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）**：**由……注册（isRegisteredBy）**的取值固定为 CUSIPGlobalServices。
-- **CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）**：**定义于（isDefinedIn）**的取值固定为 CUSIPInternationalNumberingSystemScheme。
-- **CUSIP 国际编号体系号码（CUSIP International Numbering System (CINS) number）**：**标识（identifies）**恰好有 1 个**证券（Security）**。
-- **统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）**：**注册于（isRegisteredIn）**的取值固定为 CGSCUSIPAccessRepository。
-- **统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）**：**由……发行（isIssuedBy）**的取值固定为 CUSIPGlobalServices。
-- **统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）**：**由……注册（isRegisteredBy）**的取值固定为 CUSIPGlobalServices。
-- **统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）**：**定义于（isDefinedIn）**的取值固定为 CommitteeOnUniformSecuritiesIdentificationProceduresScheme。
-- **统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）**：**标识（identifies）**恰好有 1 个**证券（Security）**。
-- **欧洲清算-明讯通用代码（Euroclear Clearstream common code）**：**由……注册（isRegisteredBy）**的所有取值只能是**Ne528dab6aa964c168feaae001942c123**。
-- **欧洲清算-明讯通用代码（Euroclear Clearstream common code）**：**由……发行（isIssuedBy）**的所有取值只能是**Ncd1535dfaf6b410ca0b7b715c5a5c4ef**。
-- **欧洲清算-明讯通用代码（Euroclear Clearstream common code）**：**注册于（isRegisteredIn）**的取值固定为 CommonCodeRepository。
-- **欧洲清算-明讯通用代码（Euroclear Clearstream common code）**：**定义于（isDefinedIn）**的取值固定为 EuroclearClearstreamCommonCodeScheme。
-- **欧洲清算-明讯通用代码（Euroclear Clearstream common code）**：**标识（identifies）**恰好有 1 个**证券（Security）**。
-- **金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry）**：**被包含于（isIncludedIn）**的取值固定为 FinancialInstrumentGlobalIdentifierRegistry。
-- **金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry）**：**包含（comprises）**至少有一个取值，类型是**金融工具全球标识符（financial instrument global identifier）**。
-- **金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **路孚特工具代码（Refinitiv instrument code）**：**由……发行（isIssuedBy）**的取值固定为 LSEGFinancialSolutionsAsMarketDataProvider。
-- **路孚特工具代码（Refinitiv instrument code）**：**由……注册（isRegisteredBy）**的取值固定为 LSEGFinancialSolutionsAsMarketDataProvider。
-- **路孚特工具代码（Refinitiv instrument code）**：**定义于（isDefinedIn）**的取值固定为 RefinitivInstrumentCodeScheme。
-- **证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）**：**由……发行（isIssuedBy）**的取值固定为 LondonStockExchange。
-- **证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）**：**由……注册（isRegisteredBy）**的取值固定为 LondonStockExchange。
-- **证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）**：**注册于（isRegisteredIn）**的取值固定为 SEDOLMasterFile。
-- **证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）**：**定义于（isDefinedIn）**的取值固定为 StockExchangeDailyOfficialListScheme。
-- **德励财富标识符（Telekurs Id）**：**由……发行（isIssuedBy）**的取值固定为 SIXFinancialInformation。
-- **德励财富标识符（Telekurs Id）**：**由……注册（isRegisteredBy）**的取值固定为 SIXFinancialInformation。
-- **德励财富标识符（Telekurs Id）**：**定义于（isDefinedIn）**的取值固定为 TelekursSecurityIdentifierScheme。
-- **瓦洛伦编号（Valoren）**：**由……发行（isIssuedBy）**的取值固定为 SIXFinancialInformation。
-- **瓦洛伦编号（Valoren）**：**由……注册（isRegisteredBy）**的取值固定为 SIXFinancialInformation。
-- **瓦洛伦编号（Valoren）**：**定义于（isDefinedIn）**的取值固定为 ValorenScheme。
-- **通用代码登记册条目（common code registry entry）**：**适用于（appliesTo）**的所有取值只能是**证券（Security）**。
-- **通用代码登记册条目（common code registry entry）**：**被包含于（isIncludedIn）**的取值固定为 CommonCodeRepository。
-- **通用代码登记册条目（common code registry entry）**：**包含（comprises）**至少有一个取值，类型是**欧洲清算-明讯通用代码（Euroclear Clearstream common code）**。
-- **金融工具全球标识符（financial instrument global identifier）**：**由……发行（isIssuedBy）**的取值固定为 BloombergLP。
-- **金融工具全球标识符（financial instrument global identifier）**：**由……注册（isRegisteredBy）**的取值固定为 BloombergLP。
-- **金融工具全球标识符（financial instrument global identifier）**：**注册于（isRegisteredIn）**的取值固定为 FinancialInstrumentGlobalIdentifierRegistry。
-- **金融工具全球标识符（financial instrument global identifier）**：**定义于（isDefinedIn）**的取值固定为 FinancialInstrumentGlobalIdentifierScheme。
-- **金融工具全球标识符（financial instrument global identifier）**：**标识（identifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+属性：
 
-## 6. 依赖（owl:imports，20 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **标识（identifies）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+| **注册于（isRegisteredIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 CUSIPInternationalNumberingSystemScheme。
+- **标识（identifies）**恰好有 1 个**证券（Security）**。
+- **注册于（isRegisteredIn）**的取值固定为 CGSCUSIPAccessRepository。
+- **由……发行（isIssuedBy）**的取值固定为 CUSIPGlobalServices。
+- **由……注册（isRegisteredBy）**的取值固定为 CUSIPGlobalServices。
+
+### 2.2 统一证券识别程序委员会号码（Committee on Uniform Securities Identification Procedures (CUSIP) number）
+
+定义：用于标识所有北美股票和记名债券的九位字母数字编号，以促进清算和结算。
+
+- 父类：**国家证券识别号码（NationalSecuritiesIdentifyingNumber）**、**专有证券标识符（ProprietarySecurityIdentifier）**、**注册标识符（RegisteredIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **标识（identifies）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+| **注册于（isRegisteredIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 CommitteeOnUniformSecuritiesIdentificationProceduresScheme。
+- **标识（identifies）**恰好有 1 个**证券（Security）**。
+- **注册于（isRegisteredIn）**的取值固定为 CGSCUSIPAccessRepository。
+- **由……发行（isIssuedBy）**的取值固定为 CUSIPGlobalServices。
+- **由……注册（isRegisteredBy）**的取值固定为 CUSIPGlobalServices。
+
+### 2.3 欧洲清算-明讯通用代码（Euroclear Clearstream common code）
+
+定义：由 Euroclear 和 Clearstream 在卢森堡联合签发的九位字母数字证券标识符。
+
+- 父类：**专有证券标识符（ProprietarySecurityIdentifier）**、**注册标识符（RegisteredIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **标识（identifies）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+| **注册于（isRegisteredIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 EuroclearClearstreamCommonCodeScheme。
+- **标识（identifies）**恰好有 1 个**证券（Security）**。
+- **注册于（isRegisteredIn）**的取值固定为 CommonCodeRepository。
+- **由……发行（isIssuedBy）**的所有取值只能是**N9d0096662e1d46ee85ed5a3c2ce4ba91**。
+- **由……注册（isRegisteredBy）**的所有取值只能是**Nd2b39955284f4ca9930cee4c8d55a2f2**。
+
+### 2.4 金融工具全球标识符（FIGI）登记册条目（Financial Instrument Global Identifier (FIGI) registry entry）
+
+定义：金融工具全球标识符（FIGI）登记册中的条目。
+
+- 父类：**注册簿条目（RegistryEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **被包含于（isIncludedIn）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**金融工具全球标识符（financial instrument global identifier）**。
+- **被包含于（isIncludedIn）**的取值固定为 FinancialInstrumentGlobalIdentifierRegistry。
+- **适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.5 路孚特工具代码（Refinitiv instrument code）
+
+定义：由伦敦证券交易所集团（LSEG）旗下路孚特拥有、管理和分发的金融工具和指数专有代码（RIC）。
+
+- 父类：**专有证券标识符（ProprietarySecurityIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 RefinitivInstrumentCodeScheme。
+- **由……发行（isIssuedBy）**的取值固定为 LSEGFinancialSolutionsAsMarketDataProvider。
+- **由……注册（isRegisteredBy）**的取值固定为 LSEGFinancialSolutionsAsMarketDataProvider。
+
+### 2.6 证券交易所每日官方清单代码（Stock Exchange Daily Official List (SEDOL) code）
+
+定义：由伦敦证券交易所签发的七位字符证券标识符，是在英国和爱尔兰发行证券的国家证券识别号码（NSIN）。
+
+- 父类：**上市证券标识符（ListedSecurityIdentifier）**、**国家证券识别号码（NationalSecuritiesIdentifyingNumber）**、**专有证券标识符（ProprietarySecurityIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+| **注册于（isRegisteredIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 StockExchangeDailyOfficialListScheme。
+- **注册于（isRegisteredIn）**的取值固定为 SEDOLMasterFile。
+- **由……发行（isIssuedBy）**的取值固定为 LondonStockExchange。
+- **由……注册（isRegisteredBy）**的取值固定为 LondonStockExchange。
+
+### 2.7 德励财富标识符（Telekurs Id）
+
+定义：由 SIX 金融信息公司（前身 Telekurs AG）拥有、管理和分发的金融工具标识符。
+
+- 父类：**专有证券标识符（ProprietarySecurityIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 TelekursSecurityIdentifierScheme。
+- **由……发行（isIssuedBy）**的取值固定为 SIXFinancialInformation。
+- **由……注册（isRegisteredBy）**的取值固定为 SIXFinancialInformation。
+
+### 2.8 瓦洛伦编号（Valoren）
+
+定义：由 SIX 金融信息公司签发、分配给瑞士、列支敦士登和比利时金融工具的识别号码，是当地的国家证券识别号码（NSIN）。
+
+- 父类：**上市证券标识符（ListedSecurityIdentifier）**、**国家证券识别号码（NationalSecuritiesIdentifyingNumber）**、**专有证券标识符（ProprietarySecurityIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 ValorenScheme。
+- **由……发行（isIssuedBy）**的取值固定为 SIXFinancialInformation。
+- **由……注册（isRegisteredBy）**的取值固定为 SIXFinancialInformation。
+
+### 2.9 通用代码登记册条目（common code registry entry）
+
+定义：通用代码登记册中的条目。
+
+- 父类：**注册簿条目（RegistryEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **被包含于（isIncludedIn）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**欧洲清算-明讯通用代码（Euroclear Clearstream common code）**。
+- **被包含于（isIncludedIn）**的取值固定为 CommonCodeRepository。
+- **适用于（appliesTo）**的所有取值只能是**证券（Security）**。
+
+### 2.10 金融工具全球标识符（financial instrument global identifier）
+
+定义：按对象管理组织（OMG）金融工具全球标识符（FIGI）规范定义的金融工具标识符。
+
+- 父类：**注册标识符（RegisteredIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **标识（identifies）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+| **注册于（isRegisteredIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 FinancialInstrumentGlobalIdentifierScheme。
+- **标识（identifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+- **注册于（isRegisteredIn）**的取值固定为 FinancialInstrumentGlobalIdentifierRegistry。
+- **由……发行（isIssuedBy）**的取值固定为 BloombergLP。
+- **由……注册（isRegisteredBy）**的取值固定为 BloombergLP。
+
+## 3. 依赖（owl:imports，20 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -121,7 +292,7 @@
 | `https://www.omg.org/spec/Commons/RegistrationAuthorities/` | OMG 通用登记主管机构本体（OMG Commons Registration Authorities） | Commons 库中的登记主管机构本体，定义负责登记注册的主管机构及其登记行为的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SecuritiesIdentificationIndividuals.rdf`
 - 中文 Turtle：`SecuritiesIdentificationIndividuals.ttl`

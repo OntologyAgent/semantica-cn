@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与 IPO 发行的差别——债务发行以利率定价和承销团簿记为中心，IPO 以股权估值和路演为中心；与 MBS 发行的差别——普通债务发行没有资产池组建环节。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **ABS 证券化流程（a b s securitization process）** 继承 **池支持证券证券化流程（pool backed security securitization process）**
+- **提前再融资（advance refunding）** 继承 **再融资目的（refunding purpose）**
+- **债券发行计划（bond issuance programme）** 继承 **债务发行计划（debt issuance programme）**
+- **债券发行（bond offering）** 继承 **债务发行（DebtOffering）**
+- **附认股权证债券发行（bond offering with warrant）** 继承 **债券发行（bond offering）**
+- **CDO 证券化流程（c d o securitization process）** 继承 **债务证券化流程（debt securitization process）**
+- **已完成债务池（completed debts pool）** 继承 **债务池（DebtPool）**
+- **信用卡池创建流程（credit card pool creation process）** 继承 **零售资产池创建流程（retail asset pool creation process）**
+- **债务工具池创建流程（debt instrument pool creation process）** 继承 **资产池创建流程（asset pool creation process）**
+- **债务发行流程信息（debt issuance process information）** 继承 **交易工具发行流程信息（TradedInstrumentIssuanceProcessInformation）**
+- **债务发行计划（debt issuance programme）** 继承 **发行计划（IssuanceProgramme）**
+- **债务发行目的（debt issuance purpose）** 继承 **目标（Objective）**
+- 其余 22 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -54,80 +70,376 @@
 | 证券化流程参与者（securitization process actor） | 证券化流程中的参与者。 |
 | 承销商承销量（债务）（underwriter takedown for debt） | 承销商经手的债务证券承销数量信息（将记入 DTC）。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- ABS 证券化流程（a b s securitization process） ⊑ 池支持证券证券化流程（pool backed security securitization process）
-- 提前再融资（advance refunding） ⊑ 再融资目的（refunding purpose）
-- 债券发行计划（bond issuance programme） ⊑ 债务发行计划（debt issuance programme）
-- 债券发行（bond offering） ⊑ 债务发行
-- 附认股权证债券发行（bond offering with warrant） ⊑ 债券发行（bond offering）
-- CDO 证券化流程（c d o securitization process） ⊑ 债务证券化流程（debt securitization process）
-- 已完成债务池（completed debts pool） ⊑ 债务池
-- 信用卡池创建流程（credit card pool creation process） ⊑ 零售资产池创建流程（retail asset pool creation process）
-- 债务工具池创建流程（debt instrument pool creation process） ⊑ 资产池创建流程（asset pool creation process）
-- 债务发行流程信息（debt issuance process information） ⊑ 交易工具发行流程信息
-- 债务发行计划（debt issuance programme） ⊑ 发行计划
-- 债务发行目的（debt issuance purpose） ⊑ 目标
-- 债务证券化流程（debt securitization process） ⊑ 证券发行流程
-- 房屋净值信用额度池创建流程（home equity line of credit pool creation process） ⊑ 零售资产池创建流程（retail asset pool creation process）
-- 组建中（in assembly） ⊑ 池生命周期状态选择
-- 组建中债务池（in assembly debts pool） ⊑ 债务池
-- 发行中（in issuance） ⊑ 池生命周期状态选择
-- 发布日期（issued） ⊑ 池生命周期状态选择
-- 贷款池创建流程（loan pool creation process） ⊑ 零售资产池创建流程（retail asset pool creation process）
-- MTN 注册（m t n registration） ⊑ 注册
-- 中期票据发行计划（medium term note issuance programme） ⊑ 债券发行计划（bond issuance programme）
-- 中期票据发行（medium term note offering） ⊑ 债券发行（bond offering）
-- 市政债发行承销商（muni issue underwriter） ⊑ 证券承销商
-- 新增资金目的（new money purpose） ⊑ 债务发行目的（debt issuance purpose）
-- 尚未发行（not yet issued） ⊑ 池生命周期状态选择
-- 未发行债务池（not yet issued debts pool） ⊑ 债务池
-- 池支持证券证券化流程（pool backed security securitization process） ⊑ 债务证券化流程（debt securitization process）
-- 池支持证券证券化流程参与者（pool backed security securitization process actor） ⊑ 证券化流程参与者（securitization process actor）
-- 再融资目的（refunding purpose） ⊑ 债务发行目的（debt issuance purpose）
-- 再营销目的（remarketing purpose） ⊑ 债务发行目的（debt issuance purpose）
-- 零售资产池创建流程（retail asset pool creation process） ⊑ 资产池创建流程（asset pool creation process）
-- 证券化流程参与者（securitization process actor） ⊑ 证券发行流程参与者
-- 承销商承销量（债务）（underwriter takedown for debt） ⊑ 承销商承销量
+### 2.1 资产池创建流程（asset pool creation process）
 
-## 3. 对象属性（Object Property）
+定义：创建资产池的过程，资产池随后可作为证券发行的基础资产。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-bp-iss-dbti:announces | 公告（announces） | 该公告所涉及的一只或多只证券的发行。 | — |
-| fibo-bp-iss-dbti:hasDebtIssuancePurpose | 具有债务发行目的（has debt issuance purpose） | 标识债务证券发行的目的。 | 定义域（domain）：债务发行流程信息（debt issuance process information）；值域（range）：债务发行目的（debt issuance purpose） |
-| fibo-bp-iss-dbti:hasOriginalIssueDiscount | 具有原始发行折让（has original issue discount） | 债券或其他债务工具发行时相对于面值的折让。 | 定义域（domain）：债券发行（bond offering）；值域（range）：百分比 |
-| fibo-bp-iss-dbti:resultsIn | 导致（results in） | 产生某个结果。 | 值域（range）：潜在分层发行承销商 |
-| fibo-bp-iss-dbti:underwriterTakedownAmount | 承销商承销金额（underwriter takedown amount） | 承销商经手的证券承销金额（将记入 DTC）。 | 定义域（domain）：承销商承销量（债务）（underwriter takedown for debt）；值域（range）：货币数量 |
+- 直接子类：**债务工具池创建流程（debt instrument pool creation process）**、**零售资产池创建流程（retail asset pool creation process）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-bp-iss-dbti:isBankQualified | 银行合格（is bank qualified） | 发行人在合理预期其在该发行日历年内的发行不超过规定额度时，给予公共目的债券发行的指定。 |
+| **先于（precedes）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **先于（precedes）**至少有一个取值，类型是**债务证券化流程（debt securitization process）**。
 
-- **资产池创建流程（asset pool creation process）**：**先于（precedes）**至少有一个取值，类型是**债务证券化流程（debt securitization process）**。
-- **债券发行计划（bond issuance programme）**：**包含（comprises）**至少有一个取值，类型是**债券发行（bond offering）**。
-- **附认股权证债券发行（bond offering with warrant）**：**适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **附认股权证债券发行（bond offering with warrant）**与**中期票据发行（medium term note offering）**互斥：同一个体不能同时属于两者。
-- **已完成债务池（completed debts pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**发行中（in issuance）**。
-- **债务发行流程信息（debt issuance process information）**：**具有债务发行目的（has debt issuance purpose）**至少有一个取值，类型是**债务发行目的（debt issuance purpose）**。
-- **债务发行计划（debt issuance programme）**：**包含（comprises）**至少有一个取值，类型是**债务发行（DebtOffering）**。
-- **债务证券化流程（debt securitization process）**与**债务拍卖流程**互斥：同一个体不能同时属于两者。
-- **债务证券化流程（debt securitization process）**与**证券承销发行流程**互斥：同一个体不能同时属于两者。
-- **组建中债务池（in assembly debts pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**组建中（in assembly）**。
-- **MTN 注册（m t n registration）**：**关于（isAbout）**至少有一个取值，类型是**中期票据发行计划（medium term note issuance programme）**。
-- **中期票据发行计划（medium term note issuance programme）**：**包含（comprises）**至少有一个取值，类型是**中期票据发行（medium term note offering）**。
-- **未发行债务池（not yet issued debts pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**尚未发行（not yet issued）**。
-- **池支持证券证券化流程参与者（pool backed security securitization process actor）**：**评估（evaluates）**至少有一个取值，类型是**发行流程活动（IssuanceProcessActivity）**。
-- **零售资产池创建流程（retail asset pool creation process）**：**由……生产（isProducedBy）**至少有一个取值，类型是**债务池（DebtPool）**。
-- **零售资产池创建流程（retail asset pool creation process）**：**先于（precedes）**至少有一个取值，类型是**池支持证券证券化流程（pool backed security securitization process）**。
+#### 2.1.1 债务工具池创建流程（debt instrument pool creation process）
 
-## 6. 依赖（owl:imports，22 个）
+定义：创建债务工具池的过程。
+
+- 父类：**资产池创建流程（asset pool creation process）**
+
+#### 2.1.2 零售资产池创建流程（retail asset pool creation process）
+
+定义：创建资产池的过程，资产池随后可用作以其为基础资产之证券的发行。
+
+- 父类：**资产池创建流程（asset pool creation process）**
+- 直接子类：**信用卡池创建流程（credit card pool creation process）**、**房屋净值信用额度池创建流程（home equity line of credit pool creation process）**、**贷款池创建流程（loan pool creation process）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……生产（isProducedBy）** | — | — |
+| **先于（precedes）** | — | — |
+
+公理：
+
+- **先于（precedes）**至少有一个取值，类型是**池支持证券证券化流程（pool backed security securitization process）**。
+- **由……生产（isProducedBy）**至少有一个取值，类型是**债务池（DebtPool）**。
+
+##### 2.1.2.1 信用卡池创建流程（credit card pool creation process）
+
+定义：创建信用卡应收款资产池的过程。
+
+- 父类：**零售资产池创建流程（retail asset pool creation process）**
+
+##### 2.1.2.2 房屋净值信用额度池创建流程（home equity line of credit pool creation process）
+
+定义：创建房屋净值信用额度（HELOC）资产池的过程。
+
+- 父类：**零售资产池创建流程（retail asset pool creation process）**
+
+##### 2.1.2.3 贷款池创建流程（loan pool creation process）
+
+定义：创建贷款资产池的过程。
+
+- 父类：**零售资产池创建流程（retail asset pool creation process）**
+
+### 2.2 债券发行（bond offering）
+
+定义：作为发行计划全部或一部分的一只或多只债券的债务发行。
+
+- 父类：**债务发行（DebtOffering）**
+- 直接子类：**附认股权证债券发行（bond offering with warrant）**、**中期票据发行（medium term note offering）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有原始发行折让（has original issue discount）** | 债券或其他债务工具发行时相对于面值的折让。 | 值域：百分比 |
+| **银行合格（is bank qualified）** | 发行人在合理预期其在该发行日历年内的发行不超过规定额度时，给予公共目的债券发行的指定。 | 值域：xsd:boolean |
+
+#### 2.2.1 附认股权证债券发行（bond offering with warrant）
+
+定义：发行中附带回股权证的债券发行（ISO 10962 CFI：与一份或多份认股权证一起发行的债券）。
+
+- 父类：**债券发行（bond offering）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **适用于（appliesTo）**至少有一个取值，该取值满足：该属性存在取值约束。
+- 与**中期票据发行（medium term note offering）**互斥：同一个体不能同时属于两者。
+
+#### 2.2.2 中期票据发行（medium term note offering）
+
+定义：中期票据的单次发行。
+
+- 父类：**债券发行（bond offering）**
+
+### 2.3 已完成债务池（completed debts pool）
+
+定义：内容已定稿、可用于发行的债务池。
+
+- 父类：**债务池（DebtPool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+
+公理：
+
+- **具有阶段（hasStage）**至少有一个取值，类型是**发行中（in issuance）**。
+
+### 2.4 债务发行流程信息（debt issuance process information）
+
+定义：债务证券发行特有的信息。
+
+- 父类：**交易工具发行流程信息（TradedInstrumentIssuanceProcessInformation）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有债务发行目的（has debt issuance purpose）** | 标识债务证券发行的目的。 | 值域：债务发行目的（debt issuance purpose） |
+
+公理：
+
+- **具有债务发行目的（has debt issuance purpose）**至少有一个取值，类型是**债务发行目的（debt issuance purpose）**。
+
+### 2.5 债务发行计划（debt issuance programme）
+
+定义：一段时间内的一系列债务证券发行。
+
+- 父类：**发行计划（IssuanceProgramme）**
+- 直接子类：**债券发行计划（bond issuance programme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**债务发行（DebtOffering）**。
+
+#### 2.5.1 债券发行计划（bond issuance programme）
+
+定义：一种债务发行计划，实体可不时按基础招募说明书载明的条款发行债券。
+
+- 父类：**债务发行计划（debt issuance programme）**
+- 直接子类：**中期票据发行计划（medium term note issuance programme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**债券发行（bond offering）**。
+
+##### 2.5.1.1 中期票据发行计划（medium term note issuance programme）
+
+定义：一系列中期票据发行的计划；在其余条款向相关机构注册后再确定到期日的一组发行。
+
+- 父类：**债券发行计划（bond issuance programme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**中期票据发行（medium term note offering）**。
+
+### 2.6 债务发行目的（debt issuance purpose）
+
+定义：债务证券发行的目的；在某些情形下也规定须遵循的流程。
+
+- 父类：**目标（Objective）**
+- 直接子类：**新增资金目的（new money purpose）**、**再融资目的（refunding purpose）**、**再营销目的（remarketing purpose）**
+
+#### 2.6.1 新增资金目的（new money purpose）
+
+定义：为新项目或新用途筹集资金而发行证券。
+
+- 父类：**债务发行目的（debt issuance purpose）**
+
+#### 2.6.2 再融资目的（refunding purpose）
+
+定义：发行人通过发行新债券对存量债券进行再融资的程序。
+
+- 父类：**债务发行目的（debt issuance purpose）**
+- 直接子类：**提前再融资（advance refunding）**
+
+##### 2.6.2.1 提前再融资（advance refunding）
+
+定义：以低于存量债券利率发行新债券进行再融资的债券发行。
+
+- 父类：**再融资目的（refunding purpose）**
+
+#### 2.6.3 再营销目的（remarketing purpose）
+
+定义：将原持有人回售的证券重新向公众销售的过程。
+
+- 父类：**债务发行目的（debt issuance purpose）**
+
+### 2.7 债务证券化流程（debt securitization process）
+
+定义：将债务资产打包证券化的过程。
+
+- 父类：**证券发行流程（SecuritiesIssuanceProcess）**
+- 直接子类：**CDO 证券化流程（c d o securitization process）**、**池支持证券证券化流程（pool backed security securitization process）**
+
+公理：
+
+- 与**债务拍卖流程（DebtAuctionProcess）**互斥：同一个体不能同时属于两者。
+- 与**证券承销发行流程（SecuritiesUnderwritingIssuanceProcess）**互斥：同一个体不能同时属于两者。
+
+#### 2.7.1 CDO 证券化流程（c d o securitization process）
+
+定义：债务担保凭证的证券化过程。
+
+- 父类：**债务证券化流程（debt securitization process）**
+
+#### 2.7.2 池支持证券证券化流程（pool backed security securitization process）
+
+定义：以资产池为基础发行证券的证券化过程。
+
+- 父类：**债务证券化流程（debt securitization process）**
+- 直接子类：**ABS 证券化流程（a b s securitization process）**
+
+##### 2.7.2.1 ABS 证券化流程（a b s securitization process）
+
+定义：资产支持证券的证券化过程。
+
+- 父类：**池支持证券证券化流程（pool backed security securitization process）**
+
+### 2.8 组建中（in assembly）
+
+定义：池或发行处于组建阶段的状态。
+
+- 父类：**池生命周期状态选择（PoolLifecycleStateSelection）**
+
+### 2.9 组建中债务池（in assembly debts pool）
+
+定义：尚在组建、内容未定的债务池。
+
+- 父类：**债务池（DebtPool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+
+公理：
+
+- **具有阶段（hasStage）**至少有一个取值，类型是**组建中（in assembly）**。
+
+### 2.10 发行中（in issuance）
+
+定义：池或证券处于发行阶段的状态。
+
+- 父类：**池生命周期状态选择（PoolLifecycleStateSelection）**
+
+### 2.11 发行流程活动（issuance process activity）
+
+定义：证券发行流程中的一项活动。
+
+### 2.12 发布日期（issued）
+
+- 父类：**池生命周期状态选择（PoolLifecycleStateSelection）**
+
+### 2.13 MTN 注册（m t n registration）
+
+定义：中期票据发行计划在相关机构的注册。
+
+- 父类：**注册（Registration）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **关于（isAbout）** | — | — |
+
+公理：
+
+- **关于（isAbout）**至少有一个取值，类型是**中期票据发行计划（medium term note issuance programme）**。
+
+### 2.14 市政债发行承销商（muni issue underwriter）
+
+定义：同意买入投资者未认购之全部债券的参与方。
+
+- 父类：**证券承销商（SecurityUnderwriter）**
+
+### 2.15 尚未发行（not yet issued）
+
+定义：池或证券尚未进入发行阶段的状态。
+
+- 父类：**池生命周期状态选择（PoolLifecycleStateSelection）**
+
+### 2.16 未发行债务池（not yet issued debts pool）
+
+定义：已组建但尚未发行的债务池。
+
+- 父类：**债务池（DebtPool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+
+公理：
+
+- **具有阶段（hasStage）**至少有一个取值，类型是**尚未发行（not yet issued）**。
+
+### 2.17 证券化流程参与者（securitization process actor）
+
+定义：证券化流程中的参与者。
+
+- 父类：**证券发行流程参与者（SecuritiesIssuanceProcessActor）**
+- 直接子类：**池支持证券证券化流程参与者（pool backed security securitization process actor）**
+
+#### 2.17.1 池支持证券证券化流程参与者（pool backed security securitization process actor）
+
+定义：池支持证券证券化流程中的参与者。
+
+- 父类：**证券化流程参与者（securitization process actor）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **评估（evaluates）** | — | — |
+
+公理：
+
+- **评估（evaluates）**至少有一个取值，类型是**发行流程活动（IssuanceProcessActivity）**。
+
+### 2.18 承销商承销量（债务）（underwriter takedown for debt）
+
+定义：承销商经手的债务证券承销数量信息（将记入 DTC）。
+
+- 父类：**承销商承销量（UnderwriterTakedown）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **承销商承销金额（underwriter takedown amount）** | 承销商经手的证券承销金额（将记入 DTC）。 | 值域：货币数量 |
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **公告（announces）** | 该公告所涉及的一只或多只证券的发行。 | — |
+| **导致（results in）** | 产生某个结果。 | 值域：潜在分层发行承销商 |
+
+## 4. 依赖（owl:imports，22 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -156,7 +468,7 @@
 | `https://www.omg.org/spec/Commons/Documents/` | OMG 通用文档本体（OMG Commons Documents） | Commons 库中的文档本体，定义文档及其组成部分的通用概念。 |
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`DebtIssuance.rdf`
 - 中文 Turtle：`DebtIssuance.ttl`

@@ -121,11 +121,11 @@ fibo-fbc-fct-usjrga:ABAIINRegistryEntry a owl:Class ;
             owl:hasValue fibo-fbc-fct-usjrga:ABAIINRegistry ;
             owl:onProperty cmns-col:isIncludedIn ],
         [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fbc-fct-fse:FinancialInstitution ;
-            owl:onProperty cmns-cxtdsg:appliesTo ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-fct-usjrga:IssuerIdentificationNumber ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fbc-fct-fse:FinancialInstitution ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
         cmns-ra:RegistryEntry ;
     skos:definition "an entry in the ABA IIN registry, a repository of financial institution characteristics collected by the ABA for those institutions to which they issue IINs" .
 
@@ -135,14 +135,14 @@ fibo-fbc-fct-usjrga:ABARTNRegistryEntry a owl:Class ;
     rdfs:comment "美国银行家协会（ABA）路由号码（RTN）登记册中的条目，是 ABA 注册机构代表 ABA 收集的金融机构特征信息库。"@zh ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:ABARTNRegistry ;
-            owl:onProperty cmns-col:isIncludedIn ],
-        [ a owl:Restriction ;
             owl:allValuesFrom fibo-fbc-fct-fse:FinancialInstitution ;
             owl:onProperty cmns-cxtdsg:appliesTo ],
         [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-fct-usjrga:RoutingTransitNumber ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:ABARTNRegistry ;
+            owl:onProperty cmns-col:isIncludedIn ],
         cmns-ra:RegistryEntry ;
     skos:definition "an entry in the ABA RTN registry, a repository of financial institution characteristics collected by the ABA Registrar on behalf of the ABA" .
 
@@ -591,11 +591,11 @@ fibo-fbc-fct-usjrga:NICRegistryEntry a owl:Class ;
     rdfs:comment "国家信息中心（NIC）信息库中的条目，该信息库由联邦储备收集金融数据和机构特征信息。"@zh ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom fibo-fbc-pas-fpas:FinancialServiceProvider ;
-            owl:onProperty cmns-cxtdsg:appliesTo ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-col:comprises ;
             owl:someValuesFrom fibo-fbc-fct-usjrga:ResearchStatisticsSupervisionDiscountIdentifier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-fbc-pas-fpas:FinancialServiceProvider ;
+            owl:onProperty cmns-cxtdsg:appliesTo ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usjrga:NationalInformationCenterRepository ;
             owl:onProperty cmns-col:isIncludedIn ],
@@ -932,18 +932,18 @@ fibo-fbc-fct-usjrga:IssuerIdentificationNumber a owl:Class ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:seeAlso <https://en.wikipedia.org/wiki/ISO/IEC_7812> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:ABAIINRegistry ;
-            owl:onProperty cmns-ra:isRegisteredIn ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
             owl:onProperty cmns-ra:hasRegistrationAuthority ],
         [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
-            owl:onProperty cmns-ra:isRegisteredBy ],
+            owl:hasValue fibo-fbc-fct-usjrga:ABAIINRegistry ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
         [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-fse:FinancialInstitution ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
+            owl:onProperty cmns-ra:isRegisteredBy ],
         fibo-fbc-fct-fse:FinancialServiceProviderIdentifier,
         cmns-ra:RegisteredIdentifier ;
     skos:definition "a numbering system that allows a credit, debit, or other card to be identified as having been issued by a particular financial institution" ;
@@ -1168,11 +1168,11 @@ fibo-fbc-fct-usjrga:FDICCertificateNumber a owl:Class ;
     rdfs:comment "联邦存款保险公司（FDIC）在批准存款性机构参保申请后向其签发的标识符。"@zh ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:FDICInstitutionDirectory ;
-            owl:onProperty cmns-ra:isRegisteredIn ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usjrga:FederalDepositInsurerAndRegulator ;
             owl:onProperty cmns-ra:isRegisteredBy ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:FDICInstitutionDirectory ;
+            owl:onProperty cmns-ra:isRegisteredIn ],
         fibo-fbc-fct-fse:FinancialServiceProviderIdentifier,
         cmns-ra:RegisteredIdentifier ;
     skos:definition "identifier issued to a depository institution by the FDIC on approval of that institution's application for insurance" ;
@@ -1420,11 +1420,11 @@ fibo-fbc-fct-usjrga:RoutingTransitNumber a owl:Class ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:seeAlso <http://www.accuity.com/aba-registrar/> ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
-            owl:onProperty cmns-ra:hasRegistrationAuthority ],
-        [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usjrga:ABARTNRegistry ;
             owl:onProperty cmns-ra:isRegisteredIn ],
+        [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRegistrationAuthority ;
+            owl:onProperty cmns-ra:hasRegistrationAuthority ],
         [ a owl:Restriction ;
             owl:hasValue fibo-fbc-fct-usjrga:AmericanBankersAssociationRTNRegistrar ;
             owl:onProperty cmns-ra:isRegisteredBy ],
@@ -1792,12 +1792,12 @@ fibo-fbc-fct-usjrga:FederalReserveDistrictBank a owl:Class ;
     rdfs:comment "对美国特定区域拥有管辖权的联邦储备区成员银行，以储备银行所在城市命名。"@zh ;
     rdfs:isDefinedBy fibo-fbc-fct-usjrga: ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:hasValue fibo-fbc-fct-usjrga:FederalReserveRegulatoryAgencyAndCentralBank ;
+            owl:onProperty cmns-col:isPartOf ],
+        [ a owl:Restriction ;
             owl:onClass fibo-fbc-fct-usjrga:FederalReserveDistrict ;
             owl:onProperty cmns-rga:hasJurisdiction ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:hasValue fibo-fbc-fct-usjrga:FederalReserveRegulatoryAgencyAndCentralBank ;
-            owl:onProperty cmns-col:isPartOf ],
         fibo-fbc-fct-fse:CentralBank,
         fibo-fbc-fct-usjrga:FederalReserveSystemMember ;
     skos:definition "Federal Reserve district and member bank, with jurisdiction over a specific region of the US, named for the city in which the reserve bank is located" ;

@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与 ABS 的差别在底层资产是抵押贷款；机构 MBS 有政府担保、私人品牌 MBS 靠结构增信——提前还款风险（prepayment）是 MBS 特有的核心风险。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **房地美金牌池（FHLMC Gold pool）** 继承 **机构抵押贷款池（agency mortgage pool）**
+- **房地美池（FHLMC pool）** 继承 **机构抵押贷款池（agency mortgage pool）**
+- **房利美池（FNMA pool）** 继承 **机构抵押贷款池（agency mortgage pool）**
+- **吉利美白金池（GNMA Platinum pool）** 继承 **机构抵押贷款池（agency mortgage pool）**
+- **吉利美二号池（GNMA-II pool）** 继承 **机构抵押贷款池（agency mortgage pool）**
+- **吉利美一号池（GNMA-I pool）** 继承 **机构抵押贷款池（agency mortgage pool）**
+- **小企业管理局池（SBA pool）** 继承 **抵押贷款池（mortgage pool）**
+- **机构抵押支持证券交易（agency MBS deal）** 继承 **债务发行（DebtOffering）**
+- **机构抵押支持证券发行人（agency MBS issuer）** 继承 **政府抵押贷款机构（government mortgage agency）**
+- **机构抵押支持证券发行人（agency MBS issuer）** 继承 **抵押支持证券发行人（MBS issuer）**
+- **机构抵押支持证券池（agency MBS pool）** 继承 **抵押支持证券池（MBS pool）**
+- **机构抵押贷款池（agency mortgage pool）** 继承 **抵押贷款池（mortgage pool）**
+- 其余 22 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -52,79 +68,348 @@
 | 住宅抵押支持证券（residential MBS） | 由住宅抵押贷款池支持的信托凭证（债券）。 |
 | 专业抵押贷款发行人（specialist mortgage issuer） | 专门从事面向公众发行抵押贷款业务的商业组织。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 房地美金牌池（FHLMC Gold pool） ⊑ 机构抵押贷款池（agency mortgage pool）
-- 房地美池（FHLMC pool） ⊑ 机构抵押贷款池（agency mortgage pool）
-- 房利美池（FNMA pool） ⊑ 机构抵押贷款池（agency mortgage pool）
-- 吉利美白金池（GNMA Platinum pool） ⊑ 机构抵押贷款池（agency mortgage pool）
-- 吉利美二号池（GNMA-II pool） ⊑ 机构抵押贷款池（agency mortgage pool）
-- 吉利美一号池（GNMA-I pool） ⊑ 机构抵押贷款池（agency mortgage pool）
-- 小企业管理局池（SBA pool） ⊑ 抵押贷款池（mortgage pool）
-- 机构抵押支持证券交易（agency MBS deal） ⊑ 债务发行
-- 机构抵押支持证券发行人（agency MBS issuer） ⊑ 政府抵押贷款机构（government mortgage agency）
-- 机构抵押支持证券发行人（agency MBS issuer） ⊑ 抵押支持证券发行人（MBS issuer）
-- 机构抵押支持证券池（agency MBS pool） ⊑ 抵押支持证券池（MBS pool）
-- 机构抵押贷款池（agency mortgage pool） ⊑ 抵押贷款池（mortgage pool）
-- 商业抵押支持证券（commercial MBS） ⊑ 抵押支持证券（mortgage-backed security）
-- 政府抵押贷款机构（government mortgage agency） ⊑ 功能实体
-- 已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool） ⊑ 机构抵押贷款池（agency mortgage pool）
-- 已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool） ⊑ 非机构抵押贷款池（non-agency mortgage pool）
-- 抵押支持证券发行人（MBS issuer） ⊑ 发行人
-- 抵押支持证券池（MBS pool） ⊑ 债务池
-- 抵押贷款池（mortgage pool） ⊑ 债务池
-- 抵押支持证券（mortgage-backed security） ⊑ 资产池支持证券
-- 抵押支持证券发行招募说明书（mortgage-backed security offering prospectus） ⊑ 招募说明书
-- 非机构抵押支持证券发行人（non-agency MBS issuer） ⊑ 抵押支持证券发行人（MBS issuer）
-- 非机构抵押贷款池（non-agency mortgage pool） ⊑ 抵押贷款池（mortgage pool）
-- 过手型抵押支持证券交易（pass-through MBS deal） ⊑ 债务发行
-- 过手型抵押支持证券交易招募说明书（pass-through MBS deal prospectus） ⊑ 抵押支持证券发行招募说明书（mortgage-backed security offering prospectus）
-- 过手型抵押支持证券工具（pass-through MBS instrument） ⊑ 抵押支持证券（mortgage-backed security）
-- 过手型抵押支持证券工具票据（pass-through MBS instrument note） ⊑ 本票
-- 过手型抵押支持证券发行承销商（pass-through MBS issue underwriter） ⊑ 证券承销商
-- 过手池（pass-through pool） ⊑ 抵押贷款池（mortgage pool）
-- 私募品牌抵押支持证券交易（private label MBS deal） ⊑ 债务发行
-- 房地产抵押贷款投资管道（real estate mortgage investment conduit） ⊑ 特殊目的载体
-- 住宅抵押支持证券（residential MBS） ⊑ 抵押支持证券（mortgage-backed security）
-- 专业抵押贷款发行人（specialist mortgage issuer） ⊑ 功能型企业实体
+### 2.1 机构抵押支持证券交易（agency MBS deal）
 
-## 3. 对象属性（Object Property）
+定义：由政府机构持有的抵押贷款池支持的证券的一次发行。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-dbt-mbs:denomination.1 | 票面金额（denomination） | 票据计价的货币金额，例如 500 美元面额的票据。 | 定义域（domain）：过手型抵押支持证券工具票据（pass-through MBS instrument note）；值域（range）：货币数量 |
-| fibo-sec-dbt-mbs:hasNote | 具有票据（has note） | 将分档或发行与其中的单张票据关联起来。 | 定义域（domain）：抵押支持证券（mortgage-backed security）；值域（range）：本票；子属性（subPropertyOf）：具有部分 |
-| fibo-sec-dbt-mbs:isAlso | 同时是（is also） | 表明某分档同时属于另一类型。 | 定义域（domain）：过手型抵押支持证券交易（pass-through MBS deal）；值域（range）：机构抵押支持证券交易（agency MBS deal） |
-| fibo-sec-dbt-mbs:isSliceOf | 是……的切片（is slice of） | 表明某一持有是某一分档的切片。 | 定义域（domain）：本票；值域（range）：抵押支持证券（mortgage-backed security）；逆属性（inverseOf）：具有票据（has note）；子属性（subPropertyOf）：是……的部分 |
-| fibo-sec-dbt-mbs:responsibleFor | 负责（responsible for） | 表明某一方对某一发行、池或工具负有责任。 | 定义域（domain）：付款代理（paying agent）；值域（range）：支付 |
+- 父类：**债务发行（DebtOffering）**
 
-## 4. 数据属性（Datatype Property）
+公理：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 与**私募品牌抵押支持证券交易（private label MBS deal）**互斥：同一个体不能同时属于两者。
+
+### 2.2 政府抵押贷款机构（government mortgage agency）
+
+定义：由政府为发行抵押贷款（证券）之目的而设立的机构。
+
+- 父类：**功能实体（FunctionalEntity）**
+- 直接子类：**机构抵押支持证券发行人（agency MBS issuer）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-sec-dbt-mbs:prime | 是否优质（prime） | 表明该抵押贷款池是否被标识为优质（Prime）贷款池。 |
+| **由…扮演（is played by）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **由…扮演（is played by）**至少有一个取值，类型是**法律实体（LegalEntity）**。
 
-- **机构抵押支持证券交易（agency MBS deal）**与**私募品牌抵押支持证券交易（private label MBS deal）**互斥：同一个体不能同时属于两者。
-- **机构抵押贷款池（agency mortgage pool）**与**非机构抵押贷款池（non-agency mortgage pool）**互斥：同一个体不能同时属于两者。
-- **商业抵押支持证券（commercial MBS）**与**住宅抵押支持证券（residential MBS）**互斥：同一个体不能同时属于两者。
-- **政府抵押贷款机构（government mortgage agency）**：**由…扮演（is played by）**至少有一个取值，类型是**法律实体（LegalEntity）**。
-- **已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**fibo-bp-iss-dbti:Issued（Issued）**。
-- **已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool）**：**具有阶段（hasStage）**至少有一个取值，类型是**fibo-bp-iss-dbti:Issued（Issued）**。
-- **抵押支持证券发行人（MBS issuer）**：该属性存在取值约束。
-- **抵押贷款池（mortgage pool）**：**具有成员（hasMember）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
-- **抵押支持证券（mortgage-backed security）**：**由……发行（isIssuedBy）**至少有一个取值，类型是**抵押支持证券发行人（MBS issuer）**。
-- **抵押支持证券（mortgage-backed security）**：**以……为特征（isCharacterizedBy）**至少有一个取值，类型是**加权平均剩余期限（WeightedAverageRemainingTerm）**。
-- **非机构抵押支持证券发行人（non-agency MBS issuer）**：该属性存在取值约束。
-- **过手型抵押支持证券交易（pass-through MBS deal）**：**同时是（is also）**至少有一个取值，类型是**机构抵押支持证券交易（agency MBS deal）**。
-- **过手型抵押支持证券工具（pass-through MBS instrument）**：**具有票据（has note）**至少有一个取值，类型是**过手型抵押支持证券工具票据（pass-through MBS instrument note）**。
-- **付款代理（paying agent）**：**负责（responsible for）**至少有一个取值，类型是**支付（Payment）**。
-- **房地产抵押贷款投资管道（real estate mortgage investment conduit）**：**拥有（owns）**可以有 0 个或多个**抵押贷款池（mortgage pool）**。
+#### 2.2.1 机构抵押支持证券发行人（agency MBS issuer）
 
-## 6. 依赖（owl:imports，26 个）
+定义：过手型 MBS 的发行人为机构发行人，即专门为发行此类工具而设立的某种机构。
+
+- 父类：**政府抵押贷款机构（government mortgage agency）**、**抵押支持证券发行人（MBS issuer）**
+
+### 2.3 抵押支持证券发行人（MBS issuer）
+
+定义：抵押支持证券的发行人。
+
+- 父类：**发行人（Issuer）**
+- 直接子类：**机构抵押支持证券发行人（agency MBS issuer）**、**非机构抵押支持证券发行人（non-agency MBS issuer）**
+
+公理：
+
+- 该属性存在取值约束。
+
+#### 2.3.2 非机构抵押支持证券发行人（non-agency MBS issuer）
+
+定义：MBS 证券的非机构发行人，其身份可以是银行或专业（非机构）抵押贷款公司。
+
+- 父类：**抵押支持证券发行人（MBS issuer）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.4 抵押支持证券池（MBS pool）
+
+定义：由一组 MBS 工具组成的池投资。
+
+- 父类：**债务池（DebtPool）**
+- 直接子类：**机构抵押支持证券池（agency MBS pool）**
+
+#### 2.4.1 机构抵押支持证券池（agency MBS pool）
+
+定义：由一组机构 MBS 工具组成的池投资。
+
+- 父类：**抵押支持证券池（MBS pool）**
+
+### 2.5 抵押贷款池（mortgage pool）
+
+定义：由信托持有、作为发行抵押支持证券之抵押品的贷款池。
+
+- 父类：**债务池（DebtPool）**
+- 直接子类：**小企业管理局池（SBA pool）**、**机构抵押贷款池（agency mortgage pool）**、**非机构抵押贷款池（non-agency mortgage pool）**、**过手池（pass-through pool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**房地产担保贷款（LoanSecuredByRealEstate）**。
+
+#### 2.5.1 小企业管理局池（SBA pool）
+
+定义：由美国小企业管理局（SBA）担保贷款组成的池。
+
+- 父类：**抵押贷款池（mortgage pool）**
+
+#### 2.5.2 机构抵押贷款池（agency mortgage pool）
+
+定义：由机构抵押贷款组成的池。
+
+- 父类：**抵押贷款池（mortgage pool）**
+- 直接子类：**房地美金牌池（FHLMC Gold pool）**、**房地美池（FHLMC pool）**、**房利美池（FNMA pool）**、**吉利美白金池（GNMA Platinum pool）**、**吉利美二号池（GNMA-II pool）**、**吉利美一号池（GNMA-I pool）**、**已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool）**
+
+公理：
+
+- 与**非机构抵押贷款池（non-agency mortgage pool）**互斥：同一个体不能同时属于两者。
+
+##### 2.5.2.1 房地美金牌池（FHLMC Gold pool）
+
+定义：联邦住房贷款抵押公司（FHLMC，房地美）金牌计划的抵押贷款池。
+
+- 父类：**机构抵押贷款池（agency mortgage pool）**
+
+##### 2.5.2.2 房地美池（FHLMC pool）
+
+定义：联邦住房贷款抵押公司（FHLMC，房地美）的抵押贷款池。
+
+- 父类：**机构抵押贷款池（agency mortgage pool）**
+
+##### 2.5.2.3 房利美池（FNMA pool）
+
+定义：联邦国民抵押贷款协会（FNMA，房利美）的抵押贷款池。
+
+- 父类：**机构抵押贷款池（agency mortgage pool）**
+
+##### 2.5.2.4 吉利美白金池（GNMA Platinum pool）
+
+定义：政府国民抵押贷款协会（GNMA，吉利美）白金计划的抵押贷款池。
+
+- 父类：**机构抵押贷款池（agency mortgage pool）**
+
+##### 2.5.2.5 吉利美二号池（GNMA-II pool）
+
+定义：政府国民抵押贷款协会（GNMA，吉利美）二号计划的抵押贷款池。
+
+- 父类：**机构抵押贷款池（agency mortgage pool）**
+
+##### 2.5.2.6 吉利美一号池（GNMA-I pool）
+
+定义：政府国民抵押贷款协会（GNMA，吉利美）一号计划的抵押贷款池。
+
+- 父类：**机构抵押贷款池（agency mortgage pool）**
+
+##### 2.5.2.7 已发行并证券化的机构抵押贷款池（issued and securitized agency mortgage pool）
+
+定义：已作为机构抵押支持证券一部分证券化的机构抵押贷款池。
+
+- 父类：**机构抵押贷款池（agency mortgage pool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+
+公理：
+
+- **具有阶段（hasStage）**至少有一个取值，类型是**fibo-bp-iss-dbti:Issued（Issued）**。
+
+#### 2.5.3 非机构抵押贷款池（non-agency mortgage pool）
+
+定义：由非机构抵押贷款组成的池。
+
+- 父类：**抵押贷款池（mortgage pool）**
+- 直接子类：**已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool）**
+
+##### 2.5.3.1 已发行并证券化的非机构抵押贷款池（issued and securitized non-agency mortgage pool）
+
+定义：已作为分档型抵押支持证券一部分证券化的非机构抵押贷款池。
+
+- 父类：**非机构抵押贷款池（non-agency mortgage pool）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有阶段（hasStage）** | — | — |
+
+公理：
+
+- **具有阶段（hasStage）**至少有一个取值，类型是**fibo-bp-iss-dbti:Issued（Issued）**。
+
+#### 2.5.4 过手池（pass-through pool）
+
+定义：现金流直接过手给投资者的抵押贷款池。
+
+- 父类：**抵押贷款池（mortgage pool）**
+
+### 2.6 抵押支持证券（mortgage-backed security）
+
+定义：代表对抵押贷款池（最常见为住宅房产抵押贷款）现金流请求权的债务凭证。
+
+- 父类：**资产池支持证券（PoolBackedSecurity）**
+- 直接子类：**商业抵押支持证券（commercial MBS）**、**过手型抵押支持证券工具（pass-through MBS instrument）**、**住宅抵押支持证券（residential MBS）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+| **具有票据（has note）** | 将分档或发行与其中的单张票据关联起来。 | 值域：本票；子属性：具有部分 |
+| **以……为特征（isCharacterizedBy）** | — | — |
+
+公理：
+
+- **以……为特征（isCharacterizedBy）**至少有一个取值，类型是**加权平均剩余期限（WeightedAverageRemainingTerm）**。
+- **由……发行（isIssuedBy）**至少有一个取值，类型是**抵押支持证券发行人（MBS issuer）**。
+
+#### 2.6.1 商业抵押支持证券（commercial MBS）
+
+定义：由商业房地产抵押贷款池支持的抵押支持证券。
+
+- 父类：**抵押支持证券（mortgage-backed security）**
+
+公理：
+
+- 与**住宅抵押支持证券（residential MBS）**互斥：同一个体不能同时属于两者。
+
+#### 2.6.2 过手型抵押支持证券工具（pass-through MBS instrument）
+
+定义：标的资产池现金流通过赎回付款方式过手给投资者的证券。
+
+- 父类：**抵押支持证券（mortgage-backed security）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有票据（has note）** | 将分档或发行与其中的单张票据关联起来。 | 值域：本票；子属性：具有部分 |
+
+公理：
+
+- **具有票据（has note）**至少有一个取值，类型是**过手型抵押支持证券工具票据（pass-through MBS instrument note）**。
+
+#### 2.6.3 住宅抵押支持证券（residential MBS）
+
+定义：由住宅抵押贷款池支持的信托凭证（债券）。
+
+- 父类：**抵押支持证券（mortgage-backed security）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是否优质（prime）** | 表明该抵押贷款池是否被标识为优质（Prime）贷款池。 | 值域：xsd:boolean |
+
+### 2.7 抵押支持证券发行招募说明书（mortgage-backed security offering prospectus）
+
+定义：描述抵押支持证券发行条款及所含各工具的招募说明书。
+
+- 父类：**招募说明书（Prospectus）**
+- 直接子类：**过手型抵押支持证券交易招募说明书（pass-through MBS deal prospectus）**
+
+#### 2.7.1 过手型抵押支持证券交易招募说明书（pass-through MBS deal prospectus）
+
+定义：机构过手型抵押支持证券发行的书面招募说明书。
+
+- 父类：**抵押支持证券发行招募说明书（mortgage-backed security offering prospectus）**
+
+### 2.8 过手型抵押支持证券交易（pass-through MBS deal）
+
+定义：池中付款直接过手给投资者的抵押支持证券工具的一次发行。
+
+- 父类：**债务发行（DebtOffering）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **同时是（is also）** | 表明某分档同时属于另一类型。 | 值域：机构抵押支持证券交易（agency MBS deal） |
+
+公理：
+
+- **同时是（is also）**至少有一个取值，类型是**机构抵押支持证券交易（agency MBS deal）**。
+
+### 2.9 过手型抵押支持证券工具票据（pass-through MBS instrument note）
+
+定义：过手型工具中的单张票据。
+
+- 父类：**本票（PromissoryNote）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **票面金额（denomination）** | 票据计价的货币金额，例如 500 美元面额的票据。 | 值域：货币数量 |
+
+### 2.10 过手型抵押支持证券发行承销商（pass-through MBS issue underwriter）
+
+定义：同意买入投资者未认购之任何凭证的一方。
+
+- 父类：**证券承销商（SecurityUnderwriter）**
+
+### 2.11 付款代理（paying agent）
+
+定义：代表发行人向证券持有人付款的代理机构。
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **负责（responsible for）** | 表明某一方对某一发行、池或工具负有责任。 | 值域：支付 |
+
+公理：
+
+- **负责（responsible for）**至少有一个取值，类型是**支付（Payment）**。
+
+### 2.12 私募品牌抵押支持证券交易（private label MBS deal）
+
+定义：由私人机构（而非政府机构）发行的抵押支持证券的一次发行。
+
+- 父类：**债务发行（DebtOffering）**
+
+### 2.13 房地产抵押贷款投资管道（real estate mortgage investment conduit）
+
+定义：将抵押贷款汇聚成池并发行抵押支持证券的特殊目的载体（REMIC）。
+
+- 父类：**特殊目的载体（SpecialPurposeVehicle）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **拥有（owns）** | — | — |
+
+公理：
+
+- **拥有（owns）**可以有 0 个或多个**抵押贷款池（mortgage pool）**。
+
+### 2.14 专业抵押贷款发行人（specialist mortgage issuer）
+
+定义：专门从事面向公众发行抵押贷款业务的商业组织。
+
+- 父类：**功能型企业实体（FunctionalBusinessEntity）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的切片（is slice of）** | 表明某一持有是某一分档的切片。 | 值域：抵押支持证券（mortgage-backed security）；逆属性：具有票据（has note）；子属性：是……的部分 |
+
+## 4. 依赖（owl:imports，26 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -157,7 +442,7 @@
 | `https://www.omg.org/spec/Commons/Organizations/` | OMG 通用组织本体（OMG Commons Organizations） | Commons 库中的组织本体，定义组织、组织成员与组织结构的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`MortgageBackedSecurities.rdf`
 - 中文 Turtle：`MortgageBackedSecurities.ttl`

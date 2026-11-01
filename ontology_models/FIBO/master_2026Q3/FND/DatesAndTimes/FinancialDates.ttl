@@ -116,12 +116,12 @@ fibo-fnd-dt-fd:CalendarSpecifiedInterval a owl:Class ;
         "按日历指定的区间（calendar-specified interval）"@zh ;
     rdfs:comment "定义为某历期（如日历月）第 n 天并带有时间方向（自起点向前或自终点向后）的重复区间。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-fnd-dt-fd:CalendarPeriod ;
-            owl:onProperty fibo-fnd-dt-fd:hasCalendarPeriod ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-dt-fd:TimeDirection ;
             owl:onProperty fibo-fnd-dt-fd:hasTimeDirection ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-fnd-dt-fd:CalendarPeriod ;
+            owl:onProperty fibo-fnd-dt-fd:hasCalendarPeriod ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
             owl:onDataRange xsd:integer ;
@@ -183,12 +183,12 @@ fibo-fnd-dt-fd:RelativeDate a owl:Class ;
         "相对日期（relative date）"@zh ;
     rdfs:comment "在另一日期之前或之后某时长的推算日期。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty fibo-fnd-dt-fd:hasRelativeDuration ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty fibo-fnd-dt-fd:isRelativeTo ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-fnd-dt-fd:hasRelativeDuration ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-dt-fd:CalculatedDate ;
     owl:disjointWith fibo-fnd-dt-fd:SpecifiedDate ;
@@ -322,6 +322,13 @@ fibo-fnd-dt-fd:RegularSchedule a owl:Class ;
             owl:onProperty fibo-fnd-dt-fd:hasCount ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass fibo-fnd-dt-fd:ScheduleStub ;
+            owl:onProperty fibo-fnd-dt-fd:hasInitialStub ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-dt-fd:hasRecurrenceInterval ;
+            owl:someValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ],
+        [ a owl:Restriction ;
             owl:onProperty cmns-dt:hasStartDate ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:unionOf ( fibo-fnd-dt-fd:CalculatedDate cmns-dt:ExplicitDate ) ] ],
@@ -333,13 +340,6 @@ fibo-fnd-dt-fd:RegularSchedule a owl:Class ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-dt-fd:ScheduleStub ;
             owl:onProperty fibo-fnd-dt-fd:hasFinalStub ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-dt-fd:hasRecurrenceInterval ;
-            owl:someValuesFrom fibo-fnd-dt-fd:RecurrenceInterval ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-dt-fd:ScheduleStub ;
-            owl:onProperty fibo-fnd-dt-fd:hasInitialStub ],
         fibo-fnd-dt-fd:Schedule,
         cmns-col:StructuredCollection ;
     skos:definition "schedule whose time intervals recur regularly" ;

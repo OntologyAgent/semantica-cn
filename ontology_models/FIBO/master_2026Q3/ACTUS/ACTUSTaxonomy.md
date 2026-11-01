@@ -14,6 +14,15 @@
 
 **与相近概念的差别**：与 ACTUS 合约条款本体分工不同——后者定义条款参数的结构，本本体只提供合约类型的枚举清单；与 FIBO 自身的贷款、债券分类是两套并存的标准，通过映射本体衔接。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **ACTUS 合同类型（ACTUS contract type）** 继承 **分类符（Classifier）**
+- **ACTUS 合同类型（ACTUS contract type）** 继承 **mvf:VocabularyEntry（VocabularyEntry）**
+- **算法合同类别（algorithmic contract category）** 继承 **分类符（Classifier）**
+- **算法合同类别（algorithmic contract category）** 继承 **mvf:VocabularyEntry（VocabularyEntry）**
+- **算法合同族（algorithmic contract family）** 继承 **分类符（Classifier）**
+- **算法合同族（algorithmic contract family）** 继承 **mvf:VocabularyEntry（VocabularyEntry）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -22,34 +31,65 @@
 | 算法合同类别（algorithmic contract category） | 在 ACTUS 现金流族内、对一组信贷协议、金融工具或相关合同所产生现金流的分类符。 |
 | 算法合同族（algorithmic contract family） | 基于共同特征对合同类型集合（如信贷协议、金融工具或相关合同）的分类符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- ACTUS 合同类型（ACTUS contract type） ⊑ 分类符
-- ACTUS 合同类型（ACTUS contract type） ⊑ mvf:VocabularyEntry
-- 算法合同类别（algorithmic contract category） ⊑ 分类符
-- 算法合同类别（algorithmic contract category） ⊑ mvf:VocabularyEntry
-- 算法合同族（algorithmic contract family） ⊑ 分类符
-- 算法合同族（algorithmic contract family） ⊑ mvf:VocabularyEntry
+### 2.1 ACTUS 合同类型（ACTUS contract type）
 
-## 4. 数据属性（Datatype Property）
+定义：对算法能力的分类符，即据以基于条款生成信贷协议、金融工具或相关合同现金流的规则。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**分类符（Classifier）**、**mvf:VocabularyEntry（VocabularyEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-actus-acv:hasCoverageDescription | 具有覆盖范围描述（has coverage description） | 描述该分类符所适用的合同范围。 |
+| **具有覆盖范围描述（has coverage description）** | 描述该分类符所适用的合同范围。 | 子属性：具有描述 |
+| **被包含于（isIncludedIn）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有覆盖范围描述（has coverage description）**的所有取值只能是**xsd:string（string）**。
+- **定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+- **被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
 
-- **ACTUS 合同类型（ACTUS contract type）**：**具有覆盖范围描述（has coverage description）**的所有取值只能是**xsd:string（string）**。
-- **ACTUS 合同类型（ACTUS contract type）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
-- **ACTUS 合同类型（ACTUS contract type）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
-- **算法合同类别（algorithmic contract category）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
-- **算法合同类别（algorithmic contract category）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
-- **算法合同族（algorithmic contract family）**：**被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
-- **算法合同族（algorithmic contract family）**：**定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+### 2.2 算法合同类别（algorithmic contract category）
 
-## 6. 依赖（owl:imports，8 个）
+定义：在 ACTUS 现金流族内、对一组信贷协议、金融工具或相关合同所产生现金流的分类符。
+
+- 父类：**分类符（Classifier）**、**mvf:VocabularyEntry（VocabularyEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **被包含于（isIncludedIn）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+- **被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+
+### 2.3 算法合同族（algorithmic contract family）
+
+定义：基于共同特征对合同类型集合（如信贷协议、金融工具或相关合同）的分类符。
+
+- 父类：**分类符（Classifier）**、**mvf:VocabularyEntry（VocabularyEntry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **被包含于（isIncludedIn）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+- **被包含于（isIncludedIn）**的取值固定为 AlgorithmicContractTypesClassificationScheme。
+
+## 3. 依赖（owl:imports，8 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -64,7 +104,7 @@
 | `https://www.omg.org/spec/Commons/TextDatatype/` | OMG 通用文本数据类型（OMG Commons Text Datatype） | Commons 库中的文本数据类型定义，提供带语言标记的文本等基础数据类型。 |
 | `https://www.omg.org/spec/MVF/MultipleVocabularyFacility/` | OMG 多词汇设施（OMG Multiple Vocabulary Facility，MVF） | OMG 的多词汇设施规范本体，提供词汇表与概念映射的元模型，供 ACTUS 等外部词汇与 FIBO 概念对接使用。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`ACTUSTaxonomy.rdf`
 - 中文 Turtle：`ACTUSTaxonomy.ttl`

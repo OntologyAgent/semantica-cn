@@ -79,12 +79,12 @@ fibo-fnd-plc-rp:PropertyInspection a owl:Class ;
         "房产查验（property inspection）"@zh ;
     rdfs:comment "涉及分析不动产一个或多个方面的事件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:evaluates ;
-            owl:someValuesFrom fibo-fnd-plc-rp:RealProperty ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-plc-rp:PropertyInspectionReport ;
             owl:onProperty fibo-fnd-dt-oc:hasOutput ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:evaluates ;
+            owl:someValuesFrom fibo-fnd-plc-rp:RealProperty ],
         fibo-fnd-arr-asmt:AssessmentEvent ;
     skos:definition "event that involves analyzing one or more aspects of a real property" ;
     cmns-av:explanatoryNote "The concept of a property inspection is separate from conducting an overarching appraisal. Examples are termite inspections, construction inspections, evaluation for completion of some milestone, improvement, correction, etc." .
@@ -94,13 +94,13 @@ fibo-fnd-plc-rp:RealPropertyIdentifier a owl:Class ;
         "不动产标识符（real property identifier）"@zh ;
     rdfs:comment "在某管辖区用于标识特定不动产的唯一标识符。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-rga:Jurisdiction ;
-            owl:onProperty cmns-cxtdsg:isApplicableIn ],
-        [ a owl:Restriction ;
             owl:onClass fibo-fnd-plc-rp:RealProperty ;
             owl:onProperty cmns-id:identifies ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty cmns-cxtdsg:isApplicableIn ],
         cmns-cxtid:ContextualIdentifier ;
     skos:definition "unique identifier given to identify a specific real property in some jurisidiction" .
 

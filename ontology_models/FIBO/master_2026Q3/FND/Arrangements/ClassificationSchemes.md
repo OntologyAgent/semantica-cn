@@ -8,6 +8,11 @@
 
 本本体定义表示行业分类方案的抽象概念。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **行业部门分类方案（industry sector classification scheme）** 继承 **分类方案（ClassificationScheme）**
+- **行业部门分类器（industry sector classifier）** 继承 **分类符（Classifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -15,19 +20,41 @@
 | 行业部门分类方案（industry sector classification scheme） | 按行业部门为组织分配分类器的系统。 |
 | 行业部门分类器（industry sector classifier） | 按照某种行业划分方案，对组织或代表该组织权益的证券所作的标准化分类或划分。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 行业部门分类方案（industry sector classification scheme） ⊑ 分类方案
-- 行业部门分类器（industry sector classifier） ⊑ 分类符
+### 2.1 行业部门分类方案（industry sector classification scheme）
 
-## 5. 公理约定（Axioms）
+定义：按行业部门为组织分配分类器的系统。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**分类方案（ClassificationScheme）**
 
-- **行业部门分类方案（industry sector classification scheme）**：**定义（defines）**至少有一个取值，类型是**行业部门分类器（industry sector classifier）**。
-- **行业部门分类器（industry sector classifier）**：**定义于（isDefinedIn）**恰好有 1 个**行业部门分类方案（industry sector classification scheme）**。
+属性：
 
-## 6. 依赖（owl:imports，5 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**行业部门分类器（industry sector classifier）**。
+
+### 2.2 行业部门分类器（industry sector classifier）
+
+定义：按照某种行业划分方案，对组织或代表该组织权益的证券所作的标准化分类或划分。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**恰好有 1 个**行业部门分类方案（industry sector classification scheme）**。
+
+## 3. 依赖（owl:imports，5 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -39,7 +66,7 @@
 | `https://www.omg.org/spec/Commons/Classifiers/` | OMG 通用分类器本体（OMG Commons Classifiers） | OMG 通用本体库（Commons）中的分类器本体，定义分类方案、类别与归类关系的通用概念，FIBO 的分类建模建立在其上。 |
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`ClassificationSchemes.rdf`
 - 中文 Turtle：`ClassificationSchemes.ttl`

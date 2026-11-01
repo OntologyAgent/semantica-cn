@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：证券标识≠ LEI——证券标识符标识「发行的证券」，LEI 标识「发行实体」；同一家公司有多只证券（多个 ISIN）但只有一个 LEI。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **国家证券识别号码（National Securities Identifying Number）** 继承 **证券标识符（security identifier）**
+- **国家证券识别号码登记册（National Securities Identifying Number registry）** 继承 **证券登记册（security registry）**
+- **金融工具标识方案（financial instrument identification scheme）** 继承 **标识方案（IdentificationScheme）**
+- **国际证券识别码（international securities identification number）** 继承 **证券标识符（security identifier）**
+- **国际证券识别码（international securities identification number）** 继承 **结构化标识符（StructuredIdentifier）**
+- **国际证券识别编码方案（international securities identification numbering scheme）** 继承 **证券标识方案（security identification scheme）**
+- **上市证券标识符（listed security identifier）** 继承 **证券标识符（security identifier）**
+- **国家编号机构（national numbering agency）** 继承 **注册机构（RegistrationAuthority）**
+- **国家编号机构登记册条目（national numbering agency registry entry）** 继承 **证券登记册条目（security registry entry）**
+- **国家证券标识方案（national security identification scheme）** 继承 **证券标识方案（security identification scheme）**
+- **专有证券标识方案（proprietary security identification scheme）** 继承 **证券标识方案（security identification scheme）**
+- **专有证券标识符（proprietary security identifier）** 继承 **证券标识符（security identifier）**
+- 其余 6 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -35,64 +51,299 @@
 | 证券登记册条目（security registry entry） | 证券登记册中某一证券的记录。 |
 | 行情代码（ticker symbol） | 在某一交易所内对特定金融工具或挂牌唯一的、可重新分配的短字符串标识符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 国家证券识别号码（National Securities Identifying Number） ⊑ 证券标识符（security identifier）
-- 国家证券识别号码登记册（National Securities Identifying Number registry） ⊑ 证券登记册（security registry）
-- 金融工具标识方案（financial instrument identification scheme） ⊑ 标识方案
-- 国际证券识别码（international securities identification number） ⊑ 证券标识符（security identifier）
-- 国际证券识别码（international securities identification number） ⊑ 结构化标识符
-- 国际证券识别编码方案（international securities identification numbering scheme） ⊑ 证券标识方案（security identification scheme）
-- 上市证券标识符（listed security identifier） ⊑ 证券标识符（security identifier）
-- 国家编号机构（national numbering agency） ⊑ 注册机构
-- 国家编号机构登记册条目（national numbering agency registry entry） ⊑ 证券登记册条目（security registry entry）
-- 国家证券标识方案（national security identification scheme） ⊑ 证券标识方案（security identification scheme）
-- 专有证券标识方案（proprietary security identification scheme） ⊑ 证券标识方案（security identification scheme）
-- 专有证券标识符（proprietary security identifier） ⊑ 证券标识符（security identifier）
-- 证券标识方案（security identification scheme） ⊑ 金融工具标识方案（financial instrument identification scheme）
-- 证券标识方案（security identification scheme） ⊑ 注册方案
-- 证券标识符（security identifier） ⊑ 金融工具标识符
-- 证券登记册（security registry） ⊑ 注册簿
-- 证券登记册条目（security registry entry） ⊑ 注册簿条目
-- 行情代码（ticker symbol） ⊑ 可重分配标识符
+### 2.1 金融工具标识方案（financial instrument identification scheme）
 
-## 5. 公理约定（Axioms）
+定义：对某一特定金融工具标识符集的结构和应用的正式定义。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**标识方案（IdentificationScheme）**
+- 直接子类：**证券标识方案（security identification scheme）**
 
-- **国家证券识别号码（National Securities Identifying Number）**：**定义于（isDefinedIn）**至少有一个取值，类型是**国家证券标识方案（national security identification scheme）**。
-- **国家证券识别号码（National Securities Identifying Number）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**国家编号机构（national numbering agency）**。
-- **国家证券识别号码登记册（National Securities Identifying Number registry）**：**以……为特征（isCharacterizedBy）**恰好有 1 个**国家证券标识方案（national security identification scheme）**。
-- **国家证券识别号码登记册（National Securities Identifying Number registry）**：**包含（comprises）**至少有一个取值，类型是**国家编号机构登记册条目（national numbering agency registry entry）**。
-- **国家证券识别号码登记册（National Securities Identifying Number registry）**：**由……管理（isManagedBy）**至少有一个取值，类型是**国家编号机构（national numbering agency）**。
-- **金融工具标识方案（financial instrument identification scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**金融工具标识符（FinancialInstrumentIdentifier）**。
-- **国际证券识别码（international securities identification number）**：**包含（comprises）**恰好有 1 个**国家证券识别号码（National Securities Identifying Number）**。
-- **国际证券识别码（international securities identification number）**：**包含（comprises）**恰好有 1 个**lcc-cr:Alpha2Code（Alpha2Code）**。
-- **国际证券识别编码方案（international securities identification numbering scheme）**：**定义（defines）**至少有一个取值，类型是**国际证券识别码（international securities identification number）**。
-- **上市证券标识符（listed security identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**证券标识方案（security identification scheme）**。
-- **上市证券标识符（listed security identifier）**：**标识（identifies）**至少有一个取值，类型是**上市证券（ListedSecurity）**。
-- **上市证券标识符（listed security identifier）**：**由……注册（isRegisteredBy）**至少有一个取值，类型是**交易所（Exchange）**。
-- **上市证券标识符（listed security identifier）**：**注册于（isRegisteredIn）**至少有一个取值，类型是**证券登记册（security registry）**。
-- **国家编号机构（national numbering agency）**：**发行（issues）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
-- **国家编号机构（national numbering agency）**：**具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
-- **国家编号机构（national numbering agency）**：**管理（manages）**至少有一个取值，类型是**国家证券识别号码登记册（National Securities Identifying Number registry）**。
-- **国家编号机构（national numbering agency）**：**登记（registers）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
-- **国家编号机构登记册条目（national numbering agency registry entry）**：**包含（comprises）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
-- **国家证券标识方案（national security identification scheme）**：**适用于（appliesTo）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
-- **国家证券标识方案（national security identification scheme）**：**定义（defines）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
-- **专有证券标识方案（proprietary security identification scheme）**：**定义（defines）**至少有一个取值，类型是**专有证券标识符（proprietary security identifier）**。
-- **专有证券标识符（proprietary security identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**专有证券标识方案（proprietary security identification scheme）**。
-- **证券标识方案（security identification scheme）**：**定义（defines）**至少有一个取值，类型是**证券标识符（security identifier）**。
-- **证券标识符（security identifier）**：**定义于（isDefinedIn）**至少有一个取值，类型是**证券标识方案（security identification scheme）**。
-- **证券标识符（security identifier）**：**标识（identifies）**至少有一个取值，类型是**证券（Security）**。
-- **证券登记册（security registry）**：**以……为特征（isCharacterizedBy）**恰好有 1 个**证券标识方案（security identification scheme）**。
-- **证券登记册（security registry）**：**包含（comprises）**至少有一个取值，类型是**证券登记册条目（security registry entry）**。
-- **证券登记册（security registry）**：**由……管理（isManagedBy）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
-- **证券登记册条目（security registry entry）**：**包含（comprises）**至少有一个取值，类型是**证券标识符（security identifier）**。
-- **证券登记册条目（security registry entry）**：**适用于（appliesTo）**至少有一个取值，类型是**注册证券（RegisteredSecurity）**。
-- **行情代码（ticker symbol）**：**标识（identifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+属性：
 
-## 6. 依赖（owl:imports，19 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**金融工具标识符（FinancialInstrumentIdentifier）**。
+
+#### 2.1.1 证券标识方案（security identification scheme）
+
+定义：对某一特定证券标识符集的结构和应用的正式定义。
+
+- 父类：**金融工具标识方案（financial instrument identification scheme）**、**注册方案（RegistrationScheme）**
+- 直接子类：**国际证券识别编码方案（international securities identification numbering scheme）**、**国家证券标识方案（national security identification scheme）**、**专有证券标识方案（proprietary security identification scheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**证券标识符（security identifier）**。
+
+##### 2.1.1.1 国际证券识别编码方案（international securities identification numbering scheme）
+
+定义：按 ISO 6166 定义的国际证券识别码（ISIN）结构和应用的正式定义。
+
+- 父类：**证券标识方案（security identification scheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**国际证券识别码（international securities identification number）**。
+
+##### 2.1.1.2 国家证券标识方案（national security identification scheme）
+
+定义：规定国家证券识别号码（NSIN）格式和结构、由国家层面代表相关机构发布的证券标识方案。
+
+- 父类：**证券标识方案（security identification scheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+
+##### 2.1.1.3 专有证券标识方案（proprietary security identification scheme）
+
+定义：由商业机构发布的证券标识方案。
+
+- 父类：**证券标识方案（security identification scheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**专有证券标识符（proprietary security identifier）**。
+
+### 2.2 国家编号机构（national numbering agency）
+
+定义：负责按照 ISO 6166 标准发行和管理国家证券识别号码的注册机构。
+
+- 父类：**注册机构（RegistrationAuthority）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **发行（issues）** | — | — |
+| **具有覆盖区域（hasCoverageArea）** | — | — |
+| **管理（manages）** | — | — |
+| **登记（registers）** | — | — |
+
+公理：
+
+- **具有覆盖区域（hasCoverageArea）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+- **发行（issues）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
+- **登记（registers）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
+- **管理（manages）**至少有一个取值，类型是**国家证券识别号码登记册（National Securities Identifying Number registry）**。
+
+### 2.3 证券标识符（security identifier）
+
+定义：任何用于标识证券的公开可用标识符。
+
+- 父类：**金融工具标识符（FinancialInstrumentIdentifier）**
+- 直接子类：**国家证券识别号码（National Securities Identifying Number）**、**国际证券识别码（international securities identification number）**、**上市证券标识符（listed security identifier）**、**专有证券标识符（proprietary security identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**至少有一个取值，类型是**证券标识方案（security identification scheme）**。
+- **标识（identifies）**至少有一个取值，类型是**证券（Security）**。
+
+#### 2.3.1 国家证券识别号码（National Securities Identifying Number）
+
+定义：由国家编号机构按 ISO 6166 标准分配的、用于标识可互换证券的通用九位字母数字代码（NSIN）。
+
+- 父类：**证券标识符（security identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**至少有一个取值，类型是**国家证券标识方案（national security identification scheme）**。
+- **由……注册（isRegisteredBy）**至少有一个取值，类型是**国家编号机构（national numbering agency）**。
+
+#### 2.3.2 国际证券识别码（international securities identification number）
+
+定义：按 ISO 6166《证券及相关金融工具——国际证券识别编码》规定定义的证券标识符（ISIN）。
+
+- 父类：**证券标识符（security identifier）**、**结构化标识符（StructuredIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**lcc-cr:Alpha2Code（Alpha2Code）**。
+- **包含（comprises）**恰好有 1 个**国家证券识别号码（National Securities Identifying Number）**。
+
+#### 2.3.3 上市证券标识符（listed security identifier）
+
+定义：在公共领域发布、并在上市文件及其他相关出版物中引用的证券标识符。
+
+- 父类：**证券标识符（security identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+| **标识（identifies）** | — | — |
+| **由……注册（isRegisteredBy）** | — | — |
+| **注册于（isRegisteredIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**至少有一个取值，类型是**证券标识方案（security identification scheme）**。
+- **标识（identifies）**至少有一个取值，类型是**上市证券（ListedSecurity）**。
+- **注册于（isRegisteredIn）**至少有一个取值，类型是**证券登记册（security registry）**。
+- **由……注册（isRegisteredBy）**至少有一个取值，类型是**交易所（Exchange）**。
+
+#### 2.3.4 专有证券标识符（proprietary security identifier）
+
+定义：由商业机构提供的标识符。
+
+- 父类：**证券标识符（security identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**至少有一个取值，类型是**专有证券标识方案（proprietary security identification scheme）**。
+
+### 2.4 证券登记册（security registry）
+
+定义：用于管理证券标识符及相关信息的登记册。
+
+- 父类：**注册簿（Registry）**
+- 直接子类：**国家证券识别号码登记册（National Securities Identifying Number registry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **以……为特征（isCharacterizedBy）** | — | — |
+| **包含（comprises）** | — | — |
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **以……为特征（isCharacterizedBy）**恰好有 1 个**证券标识方案（security identification scheme）**。
+- **包含（comprises）**至少有一个取值，类型是**证券登记册条目（security registry entry）**。
+- **由……管理（isManagedBy）**至少有一个取值，类型是**注册机构（RegistrationAuthority）**。
+
+#### 2.4.1 国家证券识别号码登记册（National Securities Identifying Number registry）
+
+定义：国家编号机构用于管理其登记的金融工具标识符及相关信息的登记册。
+
+- 父类：**证券登记册（security registry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **以……为特征（isCharacterizedBy）** | — | — |
+| **包含（comprises）** | — | — |
+| **由……管理（isManagedBy）** | — | — |
+
+公理：
+
+- **以……为特征（isCharacterizedBy）**恰好有 1 个**国家证券标识方案（national security identification scheme）**。
+- **包含（comprises）**至少有一个取值，类型是**国家编号机构登记册条目（national numbering agency registry entry）**。
+- **由……管理（isManagedBy）**至少有一个取值，类型是**国家编号机构（national numbering agency）**。
+
+### 2.5 证券登记册条目（security registry entry）
+
+定义：证券登记册中某一证券的记录。
+
+- 父类：**注册簿条目（RegistryEntry）**
+- 直接子类：**国家编号机构登记册条目（national numbering agency registry entry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**证券标识符（security identifier）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**注册证券（RegisteredSecurity）**。
+
+#### 2.5.1 国家编号机构登记册条目（national numbering agency registry entry）
+
+定义：国家证券识别号码登记册中的条目。
+
+- 父类：**证券登记册条目（security registry entry）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**国家证券识别号码（National Securities Identifying Number）**。
+
+### 2.6 行情代码（ticker symbol）
+
+定义：在某一交易所内对特定金融工具或挂牌唯一的、可重新分配的短字符串标识符。
+
+- 父类：**可重分配标识符（ReassignableIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+## 3. 依赖（owl:imports，19 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -118,7 +369,7 @@
 | `https://www.omg.org/spec/Commons/RegistrationAuthorities/` | OMG 通用登记主管机构本体（OMG Commons Registration Authorities） | Commons 库中的登记主管机构本体，定义负责登记注册的主管机构及其登记行为的通用概念。 |
 | `https://www.omg.org/spec/LCC/Countries/CountryRepresentation/` | LCC 国家表示本体（LCC Country Representation） | OMG 国家语言代码库（LCC）中的国家表示本体，定义国家、国家标识等概念，是 ISO 3166 各国代码个体的类定义来源。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`SecuritiesIdentification.rdf`
 - 中文 Turtle：`SecuritiesIdentification.ttl`

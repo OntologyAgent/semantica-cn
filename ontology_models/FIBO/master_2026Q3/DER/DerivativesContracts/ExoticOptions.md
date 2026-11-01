@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与普通（香草，vanilla）期权的差别——行权条件依赖路径、障碍触发或平均价格等复杂机制，定价与风险特征完全不同。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **亚式期权（Asian option）** 继承 **奇异期权（ExoticOption）**
+- **亚式期权分类器（Asian option classifier）** 继承 **金融工具分类器（FinancialInstrumentClassifier）**
+- **平均方法（averaging strategy）** 继承 **战略（Strategy）**
+- **障碍期权（barrier option）** 继承 **奇异期权（ExoticOption）**
+- **任选期权（chooser option）** 继承 **奇异期权（ExoticOption）**
+- **棘轮期权（cliquet option）** 继承 **奇异期权（ExoticOption）**
+- **康莫多期权（commodore option）** 继承 **奇异期权（ExoticOption）**
+- **复合期权（compound option）** 继承 **奇异期权（ExoticOption）**
+- **数字期权（digital option）** 继承 **障碍期权（barrier option）**
+- **双重障碍期权（double barrier option）** 继承 **障碍期权（barrier option）**
+- **固定回望行权价表达式（fixed lookback strike expression）** 继承 **现金流表达式（CashflowExpression）**
+- **浮动回望行权价表达式（floating lookback strike expression）** 继承 **现金流表达式（CashflowExpression）**
+- 其余 14 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -44,105 +60,422 @@
 | 彩虹期权（rainbow option） | 与两种或更多标的资产的表现挂钩的奇异期权。 |
 | 互换期权（swaption） | 赋予持有人在未来某时进入互换交易的权利（而非义务）的场外期权。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 亚式期权（Asian option） ⊑ 奇异期权
-- 亚式期权分类器（Asian option classifier） ⊑ 金融工具分类器
-- 平均方法（averaging strategy） ⊑ 战略
-- 障碍期权（barrier option） ⊑ 奇异期权
-- 任选期权（chooser option） ⊑ 奇异期权
-- 棘轮期权（cliquet option） ⊑ 奇异期权
-- 康莫多期权（commodore option） ⊑ 奇异期权
-- 复合期权（compound option） ⊑ 奇异期权
-- 数字期权（digital option） ⊑ 障碍期权（barrier option）
-- 双重障碍期权（double barrier option） ⊑ 障碍期权（barrier option）
-- 固定回望行权价表达式（fixed lookback strike expression） ⊑ 现金流表达式
-- 浮动回望行权价表达式（floating lookback strike expression） ⊑ 现金流表达式
-- 远期生效期权（forward start option） ⊑ 奇异期权
-- 利率上限期权（interest rate cap option） ⊑ 利率期权
-- 利率下限期权（interest rate floor option） ⊑ 利率期权
-- 敲入期权（knock-in option） ⊑ 障碍期权（barrier option）
-- 敲出期权（knock-out option） ⊑ 障碍期权（barrier option）
-- 回望期权（lookback option） ⊑ 奇异期权
-- 回望行权条款（lookback strike terms） ⊑ 衍生品条款
-- 低行权价期权（low exercise price option） ⊑ 看涨期权
-- 低行权价期权（low exercise price option） ⊑ 奇异期权
-- 山岭期权（mountain range option） ⊑ 奇异期权
-- 观察最优值（observed best value） ⊑ 市场价格
-- 到期预计价值（projected value at maturity） ⊑ 计算价格
-- 彩虹期权（rainbow option） ⊑ 奇异期权
-- 互换期权（swaption） ⊑ 奇异期权
+### 2.1 亚式期权（Asian option）
 
-## 3. 对象属性（Object Property）
+定义：行权条款中支付额由标的平均价格（行权价或结算价）决定的期权。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-der-drc-exo:hasAsianTailPeriod | 具有亚式尾部期间（has Asian tail period） | 标的合约价格平均值计算生效的时间窗口。 | 定义域（domain）：亚式期权（Asian option）；值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-der-drc-exo:hasFirstBarrierPrice | 具有第一障碍价格（has first barrier price） | 激活或使期权失效的价格（或水平）。 | 值域（range）：货币价格；子属性（subPropertyOf）：具有价格 |
-| fibo-der-drc-exo:hasFirstRebateAmount | 具有第一返还金额（has first rebate amount） | 指明持有人为期权支付的权利金百分比。 | 值域（range）：百分比货币数量；子属性（subPropertyOf）：具有价格 |
-| fibo-der-drc-exo:hasLookbackPeriod | 具有回望期（has lookback period） | 回望生效的时间窗口。 | 定义域（domain）：回望行权条款（lookback strike terms）；值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-der-drc-exo:hasMonitoringPeriod | 具有监测期（has monitoring period） | 对定价进行监测的时间窗口。 | 定义域（domain）：障碍期权（barrier option）；值域（range）：日期区间；子属性（subPropertyOf）：具有日期区间 |
-| fibo-der-drc-exo:hasOptionTypeElectionDate | 具有期权类型选择日（has option type election date） | 指明任选期权合约持有人选择看涨或看跌的日期。 | 定义域（domain）：任选期权（chooser option）；值域（range）：显式日期；子属性（subPropertyOf）：具有显式日期 |
-| fibo-der-drc-exo:hasSecondBarrierPrice | 具有第二障碍价格（has second barrier price） | 双重障碍期权中第二重障碍激活或失效的价格（或水平）。 | 值域（range）：货币价格；子属性（subPropertyOf）：具有价格 |
-| fibo-der-drc-exo:hasSecondRebateAmount | 具有第二返还金额（has second rebate amount） | 指明双重障碍期权中持有人支付的权利金百分比。 | 值域（range）：百分比货币数量；子属性（subPropertyOf）：具有价格 |
-| fibo-der-drc-exo:usesCurrencyInAveraging | 平均值计算所用货币（uses currency in averaging） | 指明平均值计算所使用的货币。 | 值域（range）：货币；子属性（subPropertyOf）：具有货币 |
+- 父类：**奇异期权（ExoticOption）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-der-drc-exo:hasMonitoringFrequency | 具有监测频率（has monitoring frequency） | 检查资产价格是否突破障碍的频率（以天计）。 |
-| fibo-der-drc-exo:isAboveStrikePrice | 是否高于行权价（is above strike price） | 表明标的价格高于（或低于）行权价（门槛）时是否触发障碍。 |
-| fibo-der-drc-exo:usesWeightedAverage | 是否使用加权平均（uses weighted average） | 表明是否使用加权平均来计算平均利率或行权价。 |
+| **具有亚式尾部期间（has Asian tail period）** | 标的合约价格平均值计算生效的时间窗口。 | 值域：日期区间；子属性：具有日期区间 |
+| **平均值计算所用货币（uses currency in averaging）** | 指明平均值计算所使用的货币。 | 值域：货币；子属性：具有货币 |
+| **是否使用加权平均（uses weighted average）** | 表明是否使用加权平均来计算平均利率或行权价。 | 值域：xsd:boolean |
+| **具有行权日（hasExerciseDate）** | — | — |
+| **由……分类（isClassifiedBy）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有亚式尾部期间（has Asian tail period）**恰好有 1 个**日期区间（DatePeriod）**。
+- **具有行权日（hasExerciseDate）**恰好有 1 个**显式日期（ExplicitDate）**。
+- **平均值计算所用货币（uses currency in averaging）**恰好有 1 个**货币（Currency）**。
+- **是否使用加权平均（uses weighted average）**存在取值约束。
+- **由……分类（isClassifiedBy）**恰好有 1 个**亚式期权分类器（Asian option classifier）**。
+- **由……分类（isClassifiedBy）**恰好有 1 个**平均方法（averaging strategy）**。
 
-- **亚式期权（Asian option）**：**由……分类（isClassifiedBy）**恰好有 1 个**亚式期权分类器（Asian option classifier）**。
-- **亚式期权（Asian option）**：**由……分类（isClassifiedBy）**恰好有 1 个**平均方法（averaging strategy）**。
-- **亚式期权（Asian option）**：**平均值计算所用货币（uses currency in averaging）**恰好有 1 个**货币（Currency）**。
-- **亚式期权（Asian option）**：**具有亚式尾部期间（has Asian tail period）**恰好有 1 个**日期区间（DatePeriod）**。
-- **亚式期权（Asian option）**：**具有行权日（hasExerciseDate）**恰好有 1 个**显式日期（ExplicitDate）**。
-- **亚式期权（Asian option）**：**是否使用加权平均（uses weighted average）**存在取值约束。
-- **亚式期权分类器（Asian option classifier）**：**分类（classifies）**至少有一个取值，类型是**亚式期权（Asian option）**。
-- **平均方法（averaging strategy）**：**分类（classifies）**至少有一个取值，类型是**亚式期权（Asian option）**。
-- **障碍期权（barrier option）**：**具有监测频率（has monitoring frequency）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
-- **障碍期权（barrier option）**：**具有监测期（has monitoring period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
-- **障碍期权（barrier option）**：**是否高于行权价（is above strike price）**至少有一个取值，类型是**xsd:boolean（boolean）**。
-- **任选期权（chooser option）**：**具有期权类型选择日（has option type election date）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
-- **任选期权（chooser option）**：**包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **棘轮期权（cliquet option）**：**包含（comprises）**至少有一个取值，类型是**远期生效期权（forward start option）**。
-- **康莫多期权（commodore option）**：**包含（comprises）**至少有一个取值，类型是**数字期权（digital option）**。
-- **复合期权（compound option）**：**包含（comprises）**至少有一个取值，类型是**期权（Option）**。
-- **双重障碍期权（double barrier option）**：**具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
-- **双重障碍期权（double barrier option）**：**具有第二返还金额（has second rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
-- **双重障碍期权（double barrier option）**：**具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
-- **双重障碍期权（double barrier option）**：**具有第二障碍价格（has second barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
-- **固定回望行权价表达式（fixed lookback strike expression）**：**具有被减数（hasMinuend）**至少有一个取值，类型是**行权价（StrikePrice）**。
-- **固定回望行权价表达式（fixed lookback strike expression）**：**具有减数（hasSubtrahend）**至少有一个取值，类型是**观察最优值（observed best value）**。
-- **浮动回望行权价表达式（floating lookback strike expression）**：**具有被减数（hasMinuend）**至少有一个取值，类型是**到期预计价值（projected value at maturity）**。
-- **浮动回望行权价表达式（floating lookback strike expression）**：**具有减数（hasSubtrahend）**至少有一个取值，类型是**观察最优值（observed best value）**。
-- **远期生效期权（forward start option）**：**包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **利率上限期权（interest rate cap option）**与**利率下限期权（interest rate floor option）**互斥：同一个体不能同时属于两者。
-- **利率下限期权（interest rate floor option）**与**利率上限期权（interest rate cap option）**互斥：同一个体不能同时属于两者。
-- **敲入期权（knock-in option）**：**具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
-- **敲入期权（knock-in option）**：**具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
-- **敲出期权（knock-out option）**：**具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
-- **敲出期权（knock-out option）**：**具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
-- **回望期权（lookback option）**：**具有合同要素（hasContractualElement）**至少有一个取值，类型是**回望行权条款（lookback strike terms）**。
-- **回望行权条款（lookback strike terms）**：**具有表达式（hasExpression）**可以有 0 个或多个**固定回望行权价表达式（fixed lookback strike expression）**。
-- **回望行权条款（lookback strike terms）**：**具有表达式（hasExpression）**可以有 0 个或多个**浮动回望行权价表达式（floating lookback strike expression）**。
-- **回望行权条款（lookback strike terms）**：**具有回望期（has lookback period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
-- **回望行权条款（lookback strike terms）**：**具有自变量（hasArgument）**至少有一个取值，类型是**价格结构（PriceStructure）**。
-- **低行权价期权（low exercise price option）**：**具有行权方式（hasExerciseStyle）**的取值固定为 EuropeanExerciseConvention。
-- **山岭期权（mountain range option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
-- **观察最优值（observed best value）**：**具有截止日（hasAsOfDate）**至少有一个取值，类型是**日期（Date）**。
-- **到期预计价值（projected value at maturity）**：**具有观测日期时间（hasObservedDateTime）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
-- **彩虹期权（rainbow option）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
-- **互换期权（swaption）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**互换（Swap）**。
+### 2.2 亚式期权分类器（Asian option classifier）
 
-## 6. 依赖（owl:imports，21 个）
+定义：按基于利率还是基于价格对亚式期权进行分类的金融工具分类器。
+
+- 父类：**金融工具分类器（FinancialInstrumentClassifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**亚式期权（Asian option）**。
+
+### 2.3 平均方法（averaging strategy）
+
+定义：用于计算亚式期权平均利率或平均价格的方法。
+
+- 父类：**战略（Strategy）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**亚式期权（Asian option）**。
+
+### 2.4 障碍期权（barrier option）
+
+定义：最终行权取决于标的工具价格路径的期权，即其支付取决于标的价格是否触及特定水平。
+
+- 父类：**奇异期权（ExoticOption）**
+- 直接子类：**数字期权（digital option）**、**双重障碍期权（double barrier option）**、**敲入期权（knock-in option）**、**敲出期权（knock-out option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有监测频率（has monitoring frequency）** | 检查资产价格是否突破障碍的频率（以天计）。 | 值域：xsd:positiveInteger |
+| **具有监测期（has monitoring period）** | 对定价进行监测的时间窗口。 | 值域：日期区间；子属性：具有日期区间 |
+| **是否高于行权价（is above strike price）** | 表明标的价格高于（或低于）行权价（门槛）时是否触发障碍。 | 值域：xsd:boolean |
+
+公理：
+
+- **具有监测期（has monitoring period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **具有监测频率（has monitoring frequency）**至少有一个取值，类型是**xsd:positiveInteger（positiveInteger）**。
+- **是否高于行权价（is above strike price）**至少有一个取值，类型是**xsd:boolean（boolean）**。
+
+#### 2.4.1 数字期权（digital option）
+
+定义：在期权处于实值且支付条件满足时支付预定金额的奇异期权。
+
+- 父类：**障碍期权（barrier option）**
+
+#### 2.4.2 双重障碍期权（double barrier option）
+
+定义：应用于货币或场外股票的障碍期权，其运作方式类似二元（数字）期权，仅在规定情形下支付。
+
+- 父类：**障碍期权（barrier option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。 | 值域：货币价格；子属性：具有价格 |
+| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。 | 值域：百分比货币数量；子属性：具有价格 |
+| **具有第二障碍价格（has second barrier price）** | 双重障碍期权中第二重障碍激活或失效的价格（或水平）。 | 值域：货币价格；子属性：具有价格 |
+| **具有第二返还金额（has second rebate amount）** | 指明双重障碍期权中持有人支付的权利金百分比。 | 值域：百分比货币数量；子属性：具有价格 |
+
+公理：
+
+- **具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+- **具有第二返还金额（has second rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **具有第二障碍价格（has second barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+
+#### 2.4.3 敲入期权（knock-in option）
+
+定义：在达到特定价格门槛之前不被触发的障碍期权。
+
+- 父类：**障碍期权（barrier option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。 | 值域：货币价格；子属性：具有价格 |
+| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。 | 值域：百分比货币数量；子属性：具有价格 |
+
+公理：
+
+- **具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+
+#### 2.4.4 敲出期权（knock-out option）
+
+定义：内建机制使期权在标的资产达到指定价格水平时作废失效的障碍期权。
+
+- 父类：**障碍期权（barrier option）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有第一障碍价格（has first barrier price）** | 激活或使期权失效的价格（或水平）。 | 值域：货币价格；子属性：具有价格 |
+| **具有第一返还金额（has first rebate amount）** | 指明持有人为期权支付的权利金百分比。 | 值域：百分比货币数量；子属性：具有价格 |
+
+公理：
+
+- **具有第一返还金额（has first rebate amount）**可以有 0 个或多个**百分比货币数量（PercentageMonetaryAmount）**。
+- **具有第一障碍价格（has first barrier price）**至少有一个取值，类型是**货币价格（MonetaryPrice）**。
+
+### 2.5 任选期权（chooser option）
+
+定义：允许持有人（买方）选择按固定价格买入（看涨）或卖出（看跌）指定资产之权利的奇异期权。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有期权类型选择日（has option type election date）** | 指明任选期权合约持有人选择看涨或看跌的日期。 | 值域：显式日期；子属性：具有显式日期 |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有期权类型选择日（has option type election date）**至少有一个取值，类型是**显式日期（ExplicitDate）**。
+- **包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.6 棘轮期权（cliquet option）
+
+定义：由一系列平值（ATM）期权（看跌或看涨）构成的奇异期权，前一期权到期时后一期权生效。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**远期生效期权（forward start option）**。
+
+### 2.7 康莫多期权（commodore option）
+
+定义：由若干数字障碍期权构成的奇异期权，当标的或标的篮子达到预定水平时支付票息。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**数字期权（digital option）**。
+
+### 2.8 复合期权（compound option）
+
+定义：标的资产为另一期权的奇异期权。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**期权（Option）**。
+
+### 2.9 固定回望行权价表达式（fixed lookback strike expression）
+
+定义：规定计算回望期权固定行权价所需参数的现金流表达式。
+
+- 父类：**现金流表达式（CashflowExpression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有被减数（hasMinuend）** | — | — |
+| **具有减数（hasSubtrahend）** | — | — |
+
+公理：
+
+- **具有减数（hasSubtrahend）**至少有一个取值，类型是**观察最优值（observed best value）**。
+- **具有被减数（hasMinuend）**至少有一个取值，类型是**行权价（StrikePrice）**。
+
+### 2.10 浮动回望行权价表达式（floating lookback strike expression）
+
+定义：规定计算回望期权可行权最优预计价格所需参数的现金流表达式。
+
+- 父类：**现金流表达式（CashflowExpression）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有被减数（hasMinuend）** | — | — |
+| **具有减数（hasSubtrahend）** | — | — |
+
+公理：
+
+- **具有减数（hasSubtrahend）**至少有一个取值，类型是**观察最优值（observed best value）**。
+- **具有被减数（hasMinuend）**至少有一个取值，类型是**到期预计价值（projected value at maturity）**。
+
+### 2.11 远期生效期权（forward start option）
+
+定义：就已定到期日、标的资产和其他参数完全确定、在购买时付款、但在未来某时生效的奇异期权。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.12 利率上限期权（interest rate cap option）
+
+定义：买方在每个利率超过约定行权价的期间结束时收到付款的利率衍生品。
+
+- 父类：**利率期权（InterestRateOption）**
+
+公理：
+
+- 与**利率下限期权（interest rate floor option）**互斥：同一个体不能同时属于两者。
+
+### 2.13 利率下限期权（interest rate floor option）
+
+定义：买方在每个利率低于约定行权价的期间结束时收到付款的利率衍生品。
+
+- 父类：**利率期权（InterestRateOption）**
+
+公理：
+
+- 与**利率上限期权（interest rate cap option）**互斥：同一个体不能同时属于两者。
+
+### 2.14 回望期权（lookback option）
+
+定义：最大限度降低市场进入时点不确定性的奇异期权，持有人在确定行权时可利用历史价格信息。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有合同要素（hasContractualElement）** | — | — |
+
+公理：
+
+- **具有合同要素（hasContractualElement）**至少有一个取值，类型是**回望行权条款（lookback strike terms）**。
+
+### 2.15 回望行权条款（lookback strike terms）
+
+定义：基于特定期间（通常截至期权到期）的分析确定标的资产价值的条款。
+
+- 父类：**衍生品条款（DerivativeTerms）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有回望期（has lookback period）** | 回望生效的时间窗口。 | 值域：日期区间；子属性：具有日期区间 |
+| **具有自变量（hasArgument）** | — | — |
+| **具有表达式（hasExpression）** | — | — |
+
+公理：
+
+- **具有回望期（has lookback period）**至少有一个取值，类型是**日期区间（DatePeriod）**。
+- **具有自变量（hasArgument）**至少有一个取值，类型是**价格结构（PriceStructure）**。
+- **具有表达式（hasExpression）**可以有 0 个或多个**固定回望行权价表达式（fixed lookback strike expression）**。
+- **具有表达式（hasExpression）**可以有 0 个或多个**浮动回望行权价表达式（floating lookback strike expression）**。
+
+### 2.16 低行权价期权（low exercise price option）
+
+定义：行权价为一分钱的欧式看涨期权，其表现类似于期货合约。
+
+- 父类：**看涨期权（CallOption）**、**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行权方式（hasExerciseStyle）** | — | — |
+
+公理：
+
+- **具有行权方式（hasExerciseStyle）**的取值固定为 EuropeanExerciseConvention。
+
+### 2.17 山岭期权（mountain range option）
+
+定义：基于多种标的证券的奇异期权。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
+
+### 2.18 观察最优值（observed best value）
+
+定义：回望期内某一日期观察到的、从期权视角被视为最优的标的资产价值。
+
+- 父类：**市场价格（MarketPrice）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有截止日（hasAsOfDate）** | — | — |
+
+公理：
+
+- **具有截止日（hasAsOfDate）**至少有一个取值，类型是**日期（Date）**。
+
+### 2.19 到期预计价值（projected value at maturity）
+
+定义：在回望期内某一日期计算得出的标的资产到期预期价值。
+
+- 父类：**计算价格（CalculatedPrice）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有观测日期时间（hasObservedDateTime）** | — | — |
+
+公理：
+
+- **具有观测日期时间（hasObservedDateTime）**至少有一个取值，类型是**cmns-dt:CombinedDateTime（CombinedDateTime）**。
+
+### 2.20 彩虹期权（rainbow option）
+
+定义：与两种或更多标的资产的表现挂钩的奇异期权。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**混合篮子（MixedBasket）**。
+
+### 2.21 互换期权（swaption）
+
+定义：赋予持有人在未来某时进入互换交易的权利（而非义务）的场外期权。
+
+- 父类：**奇异期权（ExoticOption）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标的（hasUnderlier）** | — | — |
+
+公理：
+
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**互换（Swap）**。
+
+## 3. 依赖（owl:imports，21 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -170,7 +503,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`ExoticOptions.rdf`
 - 中文 Turtle：`ExoticOptions.ttl`

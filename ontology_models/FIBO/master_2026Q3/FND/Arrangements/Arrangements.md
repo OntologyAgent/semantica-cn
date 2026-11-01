@@ -8,29 +8,45 @@
 
 本本体定义抽象结构概念，扩展 Commons 的安排（arrangement）概念以表示各种方案（scheme）。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **方案（scheme）** 继承 **编排（Arrangement）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 方案（scheme） | 用于组织信息的结构或方式，如蓝图、模式、编号系统、组织结构、度量系统、计划、分类法或组织信息的语言。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 方案（scheme） ⊑ 编排
+### 2.1 方案（scheme）
 
-## 4. 数据属性（Datatype Property）
+定义：用于组织信息的结构或方式，如蓝图、模式、编号系统、组织结构、度量系统、计划、分类法或组织信息的语言。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**编排（Arrangement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-arr-arr:hasCollectionSize | 具有集合大小（has collection size） | 指示给定集合中元素的数量。 |
+| **定义（defines）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **定义（defines）**至少有 0 个取值。
 
-- **方案（scheme）**：**定义（defines）**至少有 0 个取值。
+## 3. 其他属性
 
-## 6. 依赖（owl:imports，5 个）
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有集合大小（has collection size）** | 指示给定集合中元素的数量。 |
+
+## 4. 依赖（owl:imports，5 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -42,7 +58,7 @@
 | `https://www.omg.org/spec/Commons/Collections/` | OMG 通用集合本体（OMG Commons Collections） | Commons 库中的集合本体，定义集合、成员等通用概念。 |
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Arrangements.rdf`
 - 中文 Turtle：`Arrangements.ttl`

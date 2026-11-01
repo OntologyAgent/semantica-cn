@@ -14,25 +14,39 @@
 
 **与相近概念的差别**：与美国监管机构本体的差别——欧盟是「超国家机构＋成员国机构」双层监管，美国是「联邦＋州」双层，机构设置逻辑不同。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **信贷机构登记册条目（Credit Institution Register entry）** 继承 **注册簿条目（RegistryEntry）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 信贷机构登记册条目（Credit Institution Register entry） | 信贷机构登记册中的条目；该登记册是由欧洲银行管理局（EBA）依据各国主管机构提供的信息汇集的信贷机构信息库。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 信贷机构登记册条目（Credit Institution Register entry） ⊑ 注册簿条目
+### 2.1 信贷机构登记册条目（Credit Institution Register entry）
 
-## 5. 公理约定（Axioms）
+定义：信贷机构登记册中的条目；该登记册是由欧洲银行管理局（EBA）依据各国主管机构提供的信息汇集的信贷机构信息库。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**注册簿条目（RegistryEntry）**
 
-- **信贷机构登记册条目（Credit Institution Register entry）**：**适用于（appliesTo）**的所有取值只能是**信贷机构（CreditInstitution）**。
-- **信贷机构登记册条目（Credit Institution Register entry）**：**被包含于（isIncludedIn）**的取值固定为 CreditInstitutionRegister。
-- **信贷机构登记册条目（Credit Institution Register entry）**：**包含（comprises）**至少有一个取值，类型是**信贷机构（CreditInstitution）**。
+属性：
 
-## 6. 依赖（owl:imports，25 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **被包含于（isIncludedIn）** | — | — |
+| **适用于（appliesTo）** | — | — |
+
+公理：
+
+- **包含（comprises）**至少有一个取值，类型是**信贷机构（CreditInstitution）**。
+- **被包含于（isIncludedIn）**的取值固定为 CreditInstitutionRegister。
+- **适用于（appliesTo）**的所有取值只能是**信贷机构（CreditInstitution）**。
+
+## 3. 依赖（owl:imports，25 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -64,7 +78,7 @@
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 | `https://www.omg.org/spec/LCC/Countries/ISO3166-1-CountryCodes/` | LCC ISO 3166-1 国家代码（ISO 3166-1 Country Codes） | LCC 中 ISO 3166-1 标准的国家/地区代码个体集（如 CN、US、MX），供法域与地址建模引用。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`EURegulatoryAgencies.rdf`
 - 中文 Turtle：`EURegulatoryAgencies.ttl`

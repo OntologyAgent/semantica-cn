@@ -14,6 +14,21 @@
 
 **与相近概念的差别**：与法律主体（Legal Person）的差别在于划分维度不同：法律主体按法律人格划分，功能实体按商业功能划分；同一家银行既是法律主体，也是功能实体。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **协会（association）** 继承 **非营利组织（NotForProfitOrganization）**
+- **合作社（cooperative society）** 继承 **功能型企业实体（functional business entity）**
+- **家族办公室（family office）** 继承 **功能型企业实体（functional business entity）**
+- **功能型企业实体（functional business entity）** 继承 **功能实体（functional entity）**
+- **功能实体（functional entity）** 继承 **功能角色（functional role）**
+- **商户（merchant）** 继承 **功能型企业实体（functional business entity）**
+- **商户类别码（merchant category code）** 继承 **行业部门分类器（IndustrySectorClassifier）**
+- **商户类别码（merchant category code）** 继承 **代码元素（CodeElement）**
+- **商户类别码方案（merchant category code scheme）** 继承 **行业部门分类方案（IndustrySectorClassificationScheme）**
+- **商户标识符（merchant identifier）** 继承 **标识符（Identifier）**
+- **辛迪加（syndicate）** 继承 **组织（Organization）**
+- **辛迪加成员（syndicate member）** 继承 **组织成员（OrganizationMember）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -30,46 +45,175 @@
 | 辛迪加（syndicate） | 为完成特定业务而组成的临时性自组织联盟，由个人、公司或其他实体构成。 |
 | 辛迪加成员（syndicate member） | 作为联盟成员、为大型交易汇集资源并分担风险的个人或组织所扮演的角色。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 协会（association） ⊑ 非营利组织
-- 合作社（cooperative society） ⊑ 功能型企业实体（functional business entity）
-- 家族办公室（family office） ⊑ 功能型企业实体（functional business entity）
-- 功能型企业实体（functional business entity） ⊑ 功能实体（functional entity）
-- 功能实体（functional entity） ⊑ 功能角色（functional role）
-- 商户（merchant） ⊑ 功能型企业实体（functional business entity）
-- 商户类别码（merchant category code） ⊑ 行业部门分类器
-- 商户类别码（merchant category code） ⊑ 代码元素
-- 商户类别码方案（merchant category code scheme） ⊑ 行业部门分类方案
-- 商户标识符（merchant identifier） ⊑ 标识符
-- 辛迪加（syndicate） ⊑ 组织
-- 辛迪加成员（syndicate member） ⊑ 组织成员
+### 2.1 协会（association）
 
-## 4. 数据属性（Datatype Property）
+定义：由其成员拥有并代表成员行事的非营利组织。
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+- 父类：**非营利组织（NotForProfitOrganization）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-be-fct-fct:hasMerchantCategoryDescription | 具有商户类别描述（has merchant category description） | 提供该代码所适用行业的文本描述。 |
+| **扮演角色（plays role）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **扮演角色（plays role）**可以有 0 个或多个**合作社（cooperative society）**。
 
-- **协会（association）**：**扮演角色（plays role）**可以有 0 个或多个**合作社（cooperative society）**。
-- **功能型企业实体（functional business entity）**：**由…扮演（is played by）**可以有 0 个或多个**正式组织（FormalOrganization）**。
-- **功能实体（functional entity）**：**由…扮演（is played by）**可以有 0 个或多个**参与方（party）**。
-- **商户（merchant）**：**由……分类（isClassifiedBy）**至少有一个取值，类型是**商户类别码（merchant category code）**。
-- **商户（merchant）**：**由……标识（isIdentifiedBy）**至少有一个取值，类型是**商户标识符（merchant identifier）**。
-- **商户类别码（merchant category code）**：**定义于（isDefinedIn）**恰好有 1 个**商户类别码方案（merchant category code scheme）**。
-- **商户类别码（merchant category code）**：**具有标签（hasTag）**存在取值约束。
-- **商户类别码（merchant category code）**：**具有商户类别描述（has merchant category description）**至少有一个取值，类型是**xsd:string（string）**。
-- **商户类别码（merchant category code）**：**分类（classifies）**至少有一个取值，类型是**商户（merchant）**。
-- **商户类别码方案（merchant category code scheme）**：**定义（defines）**至少有一个取值，类型是**商户类别码（merchant category code）**。
-- **商户标识符（merchant identifier）**：**标识（identifies）**恰好有 1 个**商户（merchant）**。
-- **辛迪加（syndicate）**：**具有成员（hasMember）**至少有一个取值，类型是**参与方（party）**。
-- **辛迪加成员（syndicate member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**辛迪加（syndicate）**。
+### 2.2 功能实体（functional entity）
 
-## 6. 依赖（owl:imports，13 个）
+定义：按其所履行职能定义的参与方。
+
+- 父类：**功能角色（functional role）**
+- 直接子类：**功能型企业实体（functional business entity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**可以有 0 个或多个**参与方（party）**。
+
+#### 2.2.1 功能型企业实体（functional business entity）
+
+定义：按其所从事商业活动的性质定义的功能实体。
+
+- 父类：**功能实体（functional entity）**
+- 直接子类：**合作社（cooperative society）**、**家族办公室（family office）**、**商户（merchant）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**可以有 0 个或多个**正式组织（FormalOrganization）**。
+
+##### 2.2.1.1 合作社（cooperative society）
+
+定义：由使用其服务的人拥有并为其利益运营的组织。
+
+- 父类：**功能型企业实体（functional business entity）**
+
+##### 2.2.1.2 家族办公室（family office）
+
+定义：承担一个家族事务日常行政与管理的组织。
+
+- 父类：**功能型企业实体（functional business entity）**
+
+##### 2.2.1.3 商户（merchant）
+
+定义：为盈利而从事他人所生产货物之购销的参与方。
+
+- 父类：**功能型企业实体（functional business entity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……分类（isClassifiedBy）** | — | — |
+| **由……标识（isIdentifiedBy）** | — | — |
+
+公理：
+
+- **由……分类（isClassifiedBy）**至少有一个取值，类型是**商户类别码（merchant category code）**。
+- **由……标识（isIdentifiedBy）**至少有一个取值，类型是**商户标识符（merchant identifier）**。
+
+### 2.3 商户类别码（merchant category code）
+
+定义：国际上用于对商户进行分类的代码。
+
+- 父类：**行业部门分类器（IndustrySectorClassifier）**、**代码元素（CodeElement）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有商户类别描述（has merchant category description）** | 提供该代码所适用行业的文本描述。 | 值域：xsd:string |
+| **分类（classifies）** | — | — |
+| **具有标签（hasTag）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+
+公理：
+
+- **具有商户类别描述（has merchant category description）**至少有一个取值，类型是**xsd:string（string）**。
+- **具有标签（hasTag）**存在取值约束。
+- **分类（classifies）**至少有一个取值，类型是**商户（merchant）**。
+- **定义于（isDefinedIn）**恰好有 1 个**商户类别码方案（merchant category code scheme）**。
+
+### 2.4 商户类别码方案（merchant category code scheme）
+
+定义：定义一组用于商户服务分类之代码的方案。
+
+- 父类：**行业部门分类方案（IndustrySectorClassificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**至少有一个取值，类型是**商户类别码（merchant category code）**。
+
+### 2.5 商户标识符（merchant identifier）
+
+定义：商户的唯一标识符，例如用于交易交换目的。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**商户（merchant）**。
+
+### 2.6 辛迪加（syndicate）
+
+定义：为完成特定业务而组成的临时性自组织联盟，由个人、公司或其他实体构成。
+
+- 父类：**组织（Organization）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
+
+公理：
+
+- **具有成员（hasMember）**至少有一个取值，类型是**参与方（party）**。
+
+### 2.7 辛迪加成员（syndicate member）
+
+定义：作为联盟成员、为大型交易汇集资源并分担风险的个人或组织所扮演的角色。
+
+- 父类：**组织成员（OrganizationMember）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**辛迪加（syndicate）**。
+
+## 3. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -89,7 +233,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`FunctionalEntities.rdf`
 - 中文 Turtle：`FunctionalEntities.ttl`

@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：与货币互换的差别——利率互换是同一货币内的固定换浮动，不交换本金；与债券的差别——IRS 只是现金流交换合约，不代表债权债务关系本身。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **跨货币利率互换（cross-currency interest rate swap）** 继承 **利率互换（interest rate swap）**
+- **固定对固定利率互换（fixed fixed interest rate swap）** 继承 **利率互换（interest rate swap）**
+- **跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap）** 继承 **跨货币利率互换（cross-currency interest rate swap）**
+- **跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap）** 继承 **固定对浮动利率互换（fixed float interest rate swap）**
+- **固定对浮动利率互换（fixed float interest rate swap）** 继承 **利率互换（interest rate swap）**
+- **单货币固定对浮动利率互换（fixed float single currency interest rate swap）** 继承 **固定对浮动利率互换（fixed float interest rate swap）**
+- **固定利率腿（fixed interest rate leg）** 继承 **固定腿（FixedLeg）**
+- **固定利率腿（fixed interest rate leg）** 继承 **利率互换腿（interest rate swap leg）**
+- **跨货币浮动对浮动利率互换（float float cross-currency interest rate swap）** 继承 **浮动对浮动利率互换（float float interest rate swap）**
+- **浮动对浮动利率互换（float float interest rate swap）** 继承 **基差互换（BasisSwap）**
+- **浮动对浮动利率互换（float float interest rate swap）** 继承 **利率互换（interest rate swap）**
+- **单货币浮动对浮动利率互换（float float single currency interest rate swap）** 继承 **浮动对浮动利率互换（float float interest rate swap）**
+- 其余 19 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -42,90 +58,350 @@
 | 单货币利率互换（single currency interest rate swap） | 两笔利息支付流使用同一货币的利率互换。 |
 | 零息利率互换（zero coupon interest rate swap） | 固定利率现金流复利累积并在到期日一次性支付（而非定期支付）的利率互换。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 跨货币利率互换（cross-currency interest rate swap） ⊑ 利率互换（interest rate swap）
-- 固定对固定利率互换（fixed fixed interest rate swap） ⊑ 利率互换（interest rate swap）
-- 跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap） ⊑ 跨货币利率互换（cross-currency interest rate swap）
-- 跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap） ⊑ 固定对浮动利率互换（fixed float interest rate swap）
-- 固定对浮动利率互换（fixed float interest rate swap） ⊑ 利率互换（interest rate swap）
-- 单货币固定对浮动利率互换（fixed float single currency interest rate swap） ⊑ 固定对浮动利率互换（fixed float interest rate swap）
-- 固定利率腿（fixed interest rate leg） ⊑ 固定腿
-- 固定利率腿（fixed interest rate leg） ⊑ 利率互换腿（interest rate swap leg）
-- 跨货币浮动对浮动利率互换（float float cross-currency interest rate swap） ⊑ 浮动对浮动利率互换（float float interest rate swap）
-- 浮动对浮动利率互换（float float interest rate swap） ⊑ 基差互换
-- 浮动对浮动利率互换（float float interest rate swap） ⊑ 利率互换（interest rate swap）
-- 单货币浮动对浮动利率互换（float float single currency interest rate swap） ⊑ 浮动对浮动利率互换（float float interest rate swap）
-- 浮动利率腿（floating interest rate leg） ⊑ 浮动腿
-- 浮动利率腿（floating interest rate leg） ⊑ 利率互换腿（interest rate swap leg）
-- 通胀腿（inflation leg） ⊑ 浮动腿
-- 通胀互换（inflation swap） ⊑ 比率类衍生品
-- 通胀互换（inflation swap） ⊑ 利率互换
-- 利率互换（interest rate swap） ⊑ 利率衍生品
-- 利率互换（interest rate swap） ⊑ 利率互换
-- 利率互换腿（interest rate swap leg） ⊑ 利率类腿
-- 名义本金阶梯金额（notional step amount） ⊑ 标量值
-- 名义本金阶梯变更事件（notional step change event） ⊑ 合同生命周期事件发生
-- 名义本金阶梯变更事件（notional step change event） ⊑ 阶梯事件
-- 名义本金阶梯周期长度（notional step period length） ⊑ 重复区间
-- 名义本金阶梯计划表（notional step schedule） ⊑ 预计合同事件计划表
-- 名义本金阶梯计划表（notional step schedule） ⊑ 阶梯计划表
-- 隔夜指数互换（overnight index swap） ⊑ 利率互换（interest rate swap）
-- 隔夜利率指数腿（overnight rate index leg） ⊑ 浮动利率腿（floating interest rate leg）
-- 普通利率互换（plain vanilla interest rate swap） ⊑ 单货币固定对浮动利率互换（fixed float single currency interest rate swap）
-- 单货币利率互换（single currency interest rate swap） ⊑ 利率互换（interest rate swap）
-- 零息利率互换（zero coupon interest rate swap） ⊑ 利率互换（interest rate swap）
+### 2.1 通胀腿（inflation leg）
 
-## 3. 对象属性（Object Property）
+定义：与通胀指数（如消费者价格指数 CPI）挂钩的通胀互换浮动利率腿。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-der-rtd-irswp:hasFirstNotionalStepDate | 具有首个名义本金阶梯日（has first notional step date） | 指明名义本金阶梯计划表中的首个日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有起始日期 |
-| fibo-der-rtd-irswp:hasFloatingRateCap | 具有浮动利率上限（has floating rate cap） | 指明浮动利率债务利率的可选上限。 | 值域（range）：浮动利率；子属性（subPropertyOf）：具有利率 |
-| fibo-der-rtd-irswp:hasFloatingRateFloor | 具有浮动利率下限（has floating rate floor） | 指明浮动利率债务利率的可选下限。 | 值域（range）：浮动利率；子属性（subPropertyOf）：具有利率 |
-| fibo-der-rtd-irswp:hasLastNotionalStepDate | 具有最后名义本金阶梯日（has last notional step date） | 指明名义本金阶梯计划表中的最后日期。 | 值域（range）：显式日期；子属性（subPropertyOf）：具有结束日期 |
+- 父类：**浮动腿（FloatingLeg）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-der-rtd-irswp:hasFloatingRateSpread | 具有浮动利率利差（has floating rate spread） | 规定可用于调整浮动利率的可选利差。 |
-| fibo-der-rtd-irswp:hasRateMultiplier | 具有利率乘数（has rate multiplier） | 指明在加入浮动利率利差之前应用于票息的乘数。 |
+| **具有标的（hasUnderlier）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**经济指标（EconomicIndicator）**。
 
-- **跨货币利率互换（cross-currency interest rate swap）**：**规定（specifies）**恰好有 2 个**货币（Currency）**。
-- **固定对固定利率互换（fixed fixed interest rate swap）**：**交换（exchanges）**恰好有 2 个**固定利率腿（fixed interest rate leg）**。
-- **固定对浮动利率互换（fixed float interest rate swap）**：该属性存在取值约束。
-- **固定利率腿（fixed interest rate leg）**与**浮动利率腿（floating interest rate leg）**互斥：同一个体不能同时属于两者。
-- **浮动对浮动利率互换（float float interest rate swap）**：**交换（exchanges）**恰好有 2 个**浮动利率腿（floating interest rate leg）**。
-- **浮动利率腿（floating interest rate leg）**：**具有进度表（hasSchedule）**可以有 0 个或多个**利息计算计划表（InterestCalculationSchedule）**。
-- **浮动利率腿（floating interest rate leg）**：**规定（specifies）**可以有 0 个或多个**利率重置（InterestRateReset）**。
-- **浮动利率腿（floating interest rate leg）**：**具有进度表（hasSchedule）**可以有 0 个或多个**利率重置计划表（InterestRateResetSchedule）**。
-- **浮动利率腿（floating interest rate leg）**：**规定（specifies）**可以有 0 个或多个**利率设定事件（InterestRateSettingEvent）**。
-- **通胀腿（inflation leg）**：**具有标的（hasUnderlier）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**经济指标（EconomicIndicator）**。
-- **通胀互换（inflation swap）**：**关联后备债券（isLinkedToFallback）**至多有 1 个**政府债券（GovernmentBond）**。
-- **通胀互换（inflation swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**通胀腿（inflation leg）**。
-- **利率互换（interest rate swap）**：**交换（exchanges）**恰好有 2 个**利率互换腿（interest rate swap leg）**。
-- **利率互换腿（interest rate swap leg）**：**具有进度表（hasSchedule）**可以有 0 个或多个**名义本金阶梯计划表（notional step schedule）**。
-- **利率互换腿（interest rate swap leg）**：**具有营业重复区间惯例（hasBusinessRecurrenceIntervalConvention）**可以有 0 个或多个**计日惯例（DayCountConvention）**。
-- **利率互换腿（interest rate swap leg）**：**规定（specifies）**可以有 0 个或多个**利息计算计划表（InterestCalculationSchedule）**。
-- **利率互换腿（interest rate swap leg）**：**具有支付进度表（hasPaymentSchedule）**可以有 0 个或多个**利息支付计划表（InterestPaymentSchedule）**。
-- **利率互换腿（interest rate swap leg）**：**规定（specifies）**恰好有 1 个**货币（Currency）**。
-- **名义本金阶梯金额（notional step amount）**：**具有名义金额（hasNotionalAmount）**至少有一个取值，该取值满足：该属性存在取值约束。
-- **名义本金阶梯变更事件（notional step change event）**：**规定（specifies）**至少有一个取值，类型是**名义本金阶梯金额（notional step amount）**。
-- **名义本金阶梯计划表（notional step schedule）**：**具有重复区间（hasRecurrenceInterval）**至少有一个取值，类型是**名义本金阶梯周期长度（notional step period length）**。
-- **名义本金阶梯计划表（notional step schedule）**：**具有发生事项（hasOccurrence）**至少有一个取值，类型是**名义本金阶梯变更事件（notional step change event）**。
-- **隔夜指数互换（overnight index swap）**：**具有腿（hasLeg）**至少有一个取值，类型是**隔夜利率指数腿（overnight rate index leg）**。
-- **普通利率互换（plain vanilla interest rate swap）**：**具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
-- **普通利率互换（plain vanilla interest rate swap）**：**具有腿（hasLeg）**至少有一个取值，该取值满足：**规定（specifies）**至多有 0 个**名义本金阶梯变更事件（notional step change event）**。
-- **普通利率互换（plain vanilla interest rate swap）**：**具有腿（hasLeg）**至少有一个取值，该取值满足：**具有进度表（hasSchedule）**至多有 0 个**名义本金阶梯计划表（notional step schedule）**。
-- **单货币利率互换（single currency interest rate swap）**：**规定（specifies）**恰好有 1 个**货币（Currency）**。
-- **零息利率互换（zero coupon interest rate swap）**：**具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+### 2.2 通胀互换（inflation swap）
 
-## 6. 依赖（owl:imports，23 个）
+定义：一方按通胀率指数计算付款、另一方按另一通胀率或其他方式计算付款的利率互换。
+
+- 父类：**比率类衍生品（RateBasedDerivative）**、**利率互换（RatesSwap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有腿（hasLeg）** | — | — |
+| **关联后备债券（isLinkedToFallback）** | — | — |
+
+公理：
+
+- **关联后备债券（isLinkedToFallback）**至多有 1 个**政府债券（GovernmentBond）**。
+- **具有腿（hasLeg）**至少有一个取值，类型是**通胀腿（inflation leg）**。
+
+### 2.3 利率互换（interest rate swap）
+
+定义：至少一腿的参考标的为利率的互换。
+
+- 父类：**利率衍生品（InterestRateDerivative）**、**利率互换（RatesSwap）**
+- 直接子类：**跨货币利率互换（cross-currency interest rate swap）**、**固定对固定利率互换（fixed fixed interest rate swap）**、**固定对浮动利率互换（fixed float interest rate swap）**、**浮动对浮动利率互换（float float interest rate swap）**、**隔夜指数互换（overnight index swap）**、**单货币利率互换（single currency interest rate swap）**、**零息利率互换（zero coupon interest rate swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **交换（exchanges）** | — | — |
+
+公理：
+
+- **交换（exchanges）**恰好有 2 个**利率互换腿（interest rate swap leg）**。
+
+#### 2.3.1 跨货币利率互换（cross-currency interest rate swap）
+
+定义：两笔利息支付流使用不同货币的利率互换。
+
+- 父类：**利率互换（interest rate swap）**
+- 直接子类：**跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **规定（specifies）**恰好有 2 个**货币（Currency）**。
+
+##### 2.3.1.1 跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap）
+
+定义：以名义本金的固定利息支付交换浮动利息支付、且两笔支付流使用不同货币的利率互换。
+
+- 父类：**跨货币利率互换（cross-currency interest rate swap）**、**固定对浮动利率互换（fixed float interest rate swap）**
+
+#### 2.3.2 固定对固定利率互换（fixed fixed interest rate swap）
+
+定义：双方均支付通过互换安排之外无法获得的固定利率的利率互换。
+
+- 父类：**利率互换（interest rate swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **交换（exchanges）** | — | — |
+
+公理：
+
+- **交换（exchanges）**恰好有 2 个**固定利率腿（fixed interest rate leg）**。
+
+#### 2.3.3 固定对浮动利率互换（fixed float interest rate swap）
+
+定义：以名义本金的固定利息支付交换浮动利息支付的利率互换。
+
+- 父类：**利率互换（interest rate swap）**
+- 直接子类：**跨货币固定对浮动利率互换（fixed float cross-currency interest rate swap）**、**单货币固定对浮动利率互换（fixed float single currency interest rate swap）**
+
+公理：
+
+- 该属性存在取值约束。
+
+##### 2.3.3.2 单货币固定对浮动利率互换（fixed float single currency interest rate swap）
+
+定义：以名义本金的固定利息支付交换浮动利息支付、且两笔支付流使用同一货币的利率互换。
+
+- 父类：**固定对浮动利率互换（fixed float interest rate swap）**
+- 直接子类：**普通利率互换（plain vanilla interest rate swap）**
+
+###### 2.3.3.2.1 普通利率互换（plain vanilla interest rate swap）
+
+定义：利息支付净额结算、名义本金不变、不内嵌任何期权或其他复杂结构的单货币固定对浮动利率互换。
+
+- 父类：**单货币固定对浮动利率互换（fixed float single currency interest rate swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有腿（hasLeg）** | — | — |
+| **具有名义金额（hasNotionalAmount）** | — | — |
+
+公理：
+
+- **具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+- **具有腿（hasLeg）**至少有一个取值，该取值满足：**具有进度表（hasSchedule）**至多有 0 个**名义本金阶梯计划表（notional step schedule）**。
+- **具有腿（hasLeg）**至少有一个取值，该取值满足：**规定（specifies）**至多有 0 个**名义本金阶梯变更事件（notional step change event）**。
+
+#### 2.3.4 浮动对浮动利率互换（float float interest rate swap）
+
+定义：交换基于两种不同浮动利率之现金流的利率互换。
+
+- 父类：**基差互换（BasisSwap）**、**利率互换（interest rate swap）**
+- 直接子类：**跨货币浮动对浮动利率互换（float float cross-currency interest rate swap）**、**单货币浮动对浮动利率互换（float float single currency interest rate swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **交换（exchanges）** | — | — |
+
+公理：
+
+- **交换（exchanges）**恰好有 2 个**浮动利率腿（floating interest rate leg）**。
+
+##### 2.3.4.1 跨货币浮动对浮动利率互换（float float cross-currency interest rate swap）
+
+定义：交换基于两种不同货币不同利率之现金流的利率互换。
+
+- 父类：**浮动对浮动利率互换（float float interest rate swap）**
+
+##### 2.3.4.2 单货币浮动对浮动利率互换（float float single currency interest rate swap）
+
+定义：交换基于同一货币两种不同浮动利率之现金流的利率互换。
+
+- 父类：**浮动对浮动利率互换（float float interest rate swap）**
+
+#### 2.3.5 隔夜指数互换（overnight index swap）
+
+定义：一腿的定期付款基于隔夜利率指数乘以与另一腿相同名义本金的互换。
+
+- 父类：**利率互换（interest rate swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有腿（hasLeg）** | — | — |
+
+公理：
+
+- **具有腿（hasLeg）**至少有一个取值，类型是**隔夜利率指数腿（overnight rate index leg）**。
+
+#### 2.3.6 单货币利率互换（single currency interest rate swap）
+
+定义：两笔利息支付流使用同一货币的利率互换。
+
+- 父类：**利率互换（interest rate swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **规定（specifies）**恰好有 1 个**货币（Currency）**。
+
+#### 2.3.7 零息利率互换（zero coupon interest rate swap）
+
+定义：固定利率现金流复利累积并在到期日一次性支付（而非定期支付）的利率互换。
+
+- 父类：**利率互换（interest rate swap）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有名义金额（hasNotionalAmount）** | — | — |
+
+公理：
+
+- **具有名义金额（hasNotionalAmount）**恰好有 1 个**货币数量（MonetaryAmount）**。
+
+### 2.4 利率互换腿（interest rate swap leg）
+
+定义：具有利率支付流的互换腿，包括该支付流的参数化表示和现金流表示。
+
+- 父类：**利率类腿（RateBasedLeg）**
+- 直接子类：**固定利率腿（fixed interest rate leg）**、**浮动利率腿（floating interest rate leg）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有营业重复区间惯例（hasBusinessRecurrenceIntervalConvention）** | — | — |
+| **具有进度表（hasSchedule）** | — | — |
+| **具有支付进度表（hasPaymentSchedule）** | — | — |
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **具有支付进度表（hasPaymentSchedule）**可以有 0 个或多个**利息支付计划表（InterestPaymentSchedule）**。
+- **具有营业重复区间惯例（hasBusinessRecurrenceIntervalConvention）**可以有 0 个或多个**计日惯例（DayCountConvention）**。
+- **具有进度表（hasSchedule）**可以有 0 个或多个**名义本金阶梯计划表（notional step schedule）**。
+- **规定（specifies）**可以有 0 个或多个**利息计算计划表（InterestCalculationSchedule）**。
+- **规定（specifies）**恰好有 1 个**货币（Currency）**。
+
+#### 2.4.1 固定利率腿（fixed interest rate leg）
+
+定义：规定固定利息金额及该利息支付条款的固定腿。
+
+- 父类：**固定腿（FixedLeg）**、**利率互换腿（interest rate swap leg）**
+
+公理：
+
+- 与**浮动利率腿（floating interest rate leg）**互斥：同一个体不能同时属于两者。
+
+#### 2.4.2 浮动利率腿（floating interest rate leg）
+
+定义：就某一名义本金支付可变利息、并与某一基础利率参考挂钩的浮动腿。
+
+- 父类：**浮动腿（FloatingLeg）**、**利率互换腿（interest rate swap leg）**
+- 直接子类：**隔夜利率指数腿（overnight rate index leg）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有进度表（hasSchedule）** | — | — |
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **具有进度表（hasSchedule）**可以有 0 个或多个**利息计算计划表（InterestCalculationSchedule）**。
+- **具有进度表（hasSchedule）**可以有 0 个或多个**利率重置计划表（InterestRateResetSchedule）**。
+- **规定（specifies）**可以有 0 个或多个**利率设定事件（InterestRateSettingEvent）**。
+- **规定（specifies）**可以有 0 个或多个**利率重置（InterestRateReset）**。
+
+##### 2.4.2.1 隔夜利率指数腿（overnight rate index leg）
+
+定义：定期付款基于隔夜利率指数乘以相同名义本金的浮动腿。
+
+- 父类：**浮动利率腿（floating interest rate leg）**
+
+### 2.5 名义本金阶梯金额（notional step amount）
+
+定义：在每个阶梯日从名义本金中减去（或增加）的金额。
+
+- 父类：**标量值（ScalarQuantityValue）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有名义金额（hasNotionalAmount）** | — | — |
+
+公理：
+
+- **具有名义金额（hasNotionalAmount）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.6 名义本金阶梯变更事件（notional step change event）
+
+定义：某一互换腿名义本金发生阶梯式变更的事件。
+
+- 父类：**合同生命周期事件发生（ContractLifecycleEventOccurrence）**、**阶梯事件（StepEvent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **规定（specifies）** | — | — |
+
+公理：
+
+- **规定（specifies）**至少有一个取值，类型是**名义本金阶梯金额（notional step amount）**。
+
+### 2.7 名义本金阶梯周期长度（notional step period length）
+
+定义：表示阶梯变更发生频率的重复区间，为计算计划表中计算周期的整数倍。
+
+- 父类：**重复区间（RecurrenceInterval）**
+
+### 2.8 名义本金阶梯计划表（notional step schedule）
+
+定义：计息名义本金变更的计划表，由规则的阶梯事件序列构成。
+
+- 父类：**预计合同事件计划表（ProjectedContractEventSchedule）**、**阶梯计划表（StepSchedule）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有重复区间（hasRecurrenceInterval）** | — | — |
+| **具有发生事项（hasOccurrence）** | — | — |
+
+公理：
+
+- **具有发生事项（hasOccurrence）**至少有一个取值，类型是**名义本金阶梯变更事件（notional step change event）**。
+- **具有重复区间（hasRecurrenceInterval）**至少有一个取值，类型是**名义本金阶梯周期长度（notional step period length）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有首个名义本金阶梯日（has first notional step date）** | 指明名义本金阶梯计划表中的首个日期。 | 值域：显式日期；子属性：具有起始日期 |
+| **具有浮动利率上限（has floating rate cap）** | 指明浮动利率债务利率的可选上限。 | 值域：浮动利率；子属性：具有利率 |
+| **具有浮动利率下限（has floating rate floor）** | 指明浮动利率债务利率的可选下限。 | 值域：浮动利率；子属性：具有利率 |
+| **具有最后名义本金阶梯日（has last notional step date）** | 指明名义本金阶梯计划表中的最后日期。 | 值域：显式日期；子属性：具有结束日期 |
+
+数据属性（Datatype Property）：
+
+| 属性 | 定义 |
+|---|---|
+| **具有浮动利率利差（has floating rate spread）** | 规定可用于调整浮动利率的可选利差。 |
+| **具有利率乘数（has rate multiplier）** | 指明在加入浮动利率利差之前应用于票息的乘数。 |
+
+## 4. 依赖（owl:imports，23 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -155,7 +431,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`IRSwaps.rdf`
 - 中文 Turtle：`IRSwaps.ttl`

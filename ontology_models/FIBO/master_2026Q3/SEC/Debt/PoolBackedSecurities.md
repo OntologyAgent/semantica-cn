@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：池支持证券≠普通债券——偿付来源是资产池现金流而非发行人信用；分层机制使不同档（tranche）承担不同风险，这是普通债券没有的结构。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **绝对提前偿付率（absolute prepayment rate）** 继承 **债务池统计度量（debt pool statistical measure）**
+- **资产支持证券（asset-backed security）** 继承 **资产池支持证券（pool-backed security）**
+- **附着点（attachment point）** 继承 **百分比货币数量（PercentageMonetaryAmount）**
+- **债务池统计度量（debt pool statistical measure）** 继承 **限定度量（QualifiedMeasure）**
+- **违约率（default rate）** 继承 **债务池统计度量（debt pool statistical measure）**
+- **违约率（default rate）** 继承 **比率（Ratio）**
+- **脱离点（detachment point）** 继承 **百分比货币数量（PercentageMonetaryAmount）**
+- **资产池支持证券（pool-backed security）** 继承 **可交易债务工具（TradableDebtInstrument）**
+- **提前偿付速度（prepayment speed）** 继承 **债务池统计度量（debt pool statistical measure）**
+- **保本票据（principal protected note）** 继承 **结构化金融工具（structured finance instrument）**
+- **单月清偿率（single monthly mortality）** 继承 **债务池统计度量（debt pool statistical measure）**
+- **单月清偿率（single monthly mortality）** 继承 **百分比（Percentage）**
+- 其余 13 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -37,69 +53,208 @@
 | 加权平均到期期限（weighted average maturity） | 抵押支持证券（MBS）中抵押贷款到期时间的加权平均值。 |
 | 加权平均剩余期限（weighted average remaining term） | 资产支持证券（ABS）或抵押支持证券（MBS）组合的加权平均到期时间。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 绝对提前偿付率（absolute prepayment rate） ⊑ 债务池统计度量（debt pool statistical measure）
-- 资产支持证券（asset-backed security） ⊑ 资产池支持证券（pool-backed security）
-- 附着点（attachment point） ⊑ 百分比货币数量
-- 债务池统计度量（debt pool statistical measure） ⊑ 限定度量
-- 违约率（default rate） ⊑ 债务池统计度量（debt pool statistical measure）
-- 违约率（default rate） ⊑ 比率
-- 脱离点（detachment point） ⊑ 百分比货币数量
-- 资产池支持证券（pool-backed security） ⊑ 可交易债务工具
-- 提前偿付速度（prepayment speed） ⊑ 债务池统计度量（debt pool statistical measure）
-- 保本票据（principal protected note） ⊑ 结构化金融工具（structured finance instrument）
-- 单月清偿率（single monthly mortality） ⊑ 债务池统计度量（debt pool statistical measure）
-- 单月清偿率（single monthly mortality） ⊑ 百分比
-- 结构化金融工具（structured finance instrument） ⊑ 资产池支持证券（pool-backed security）
-- 无本金保护结构化金融产品（structured finance without principal protection） ⊑ 结构化金融工具（structured finance instrument）
-- 分档（tranche） ⊑ 结构化金融工具（structured finance instrument）
-- 加权平均票息（weighted average coupon） ⊑ 算术平均值
-- 加权平均票息（weighted average coupon） ⊑ 债务池统计度量（debt pool statistical measure）
-- 加权平均期限（weighted average life） ⊑ 算术平均值
-- 加权平均期限（weighted average life） ⊑ 债务池统计度量（debt pool statistical measure）
-- 加权平均贷款账龄（weighted average loan age） ⊑ 算术平均值
-- 加权平均贷款账龄（weighted average loan age） ⊑ 债务池统计度量（debt pool statistical measure）
-- 加权平均到期期限（weighted average maturity） ⊑ 算术平均值
-- 加权平均到期期限（weighted average maturity） ⊑ 债务池统计度量（debt pool statistical measure）
-- 加权平均剩余期限（weighted average remaining term） ⊑ 算术平均值
-- 加权平均剩余期限（weighted average remaining term） ⊑ 债务池统计度量（debt pool statistical measure）
+### 2.1 附着点（attachment point）
 
-## 3. 对象属性（Object Property）
+定义：分档的下边界，以发行时或某一时点抵押品总池价值的百分比表示。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-sec-dbt-pbs:hasAttachmentPoint | 具有附着点（has attachment point） | 指明标的抵押品总价值的下限（以发行时或某一时点计），达到该点时该分档开始承担损失。 | 值域（range）：附着点（attachment point）；子属性（subPropertyOf）：具有量值 |
-| fibo-sec-dbt-pbs:hasDetachmentPoint | 具有脱离点（has detachment point） | 指明标的抵押品总价值的上限（以发行时或某一时点计），达到该点时该分档不再承担损失。 | 值域（range）：脱离点（detachment point）；子属性（subPropertyOf）：具有量值 |
-| fibo-sec-dbt-pbs:hasEstimatedTotalCollateralValueAtIssuance | 是……的估计价值（is estimated value of） | 将评估价值关联到评估日所关注的资产。 | 值域（range）：截至日抵押品价值；子属性（subPropertyOf）：是……的估计价值 |
+- 父类：**百分比货币数量（PercentageMonetaryAmount）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-sec-dbt-pbs:isPassThrough | 是否过手（is pass through） | 表明标的资产池的现金流是否通过赎回付款方式过手给投资者。 |
+| **是……的估计价值（isEstimatedValueOf）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **是……的估计价值（isEstimatedValueOf）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
 
-- **附着点（attachment point）**：**是……的估计价值（isEstimatedValueOf）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
-- **债务池统计度量（debt pool statistical measure）**：**具有适用期间（hasApplicablePeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
-- **债务池统计度量（debt pool statistical measure）**：**适用于（appliesTo）**至少有一个取值，类型是**债务池（DebtPool）**。
-- **脱离点（detachment point）**：**是……的估计价值（isEstimatedValueOf）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
-- **资产池支持证券（pool-backed security）**：**是……的估计价值（is estimated value of）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
-- **资产池支持证券（pool-backed security）**：**以……为特征（isCharacterizedBy）**可以有 0 个或多个**债务池统计度量（debt pool statistical measure）**。
-- **资产池支持证券（pool-backed security）**：**是否过手（is pass through）**存在取值约束。
-- **资产池支持证券（pool-backed security）**：**基于（isBasedOn）**至少有一个取值，类型是**工具池（InstrumentPool）**。
-- **结构化金融工具（structured finance instrument）**：**由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**特殊目的载体（SpecialPurposeVehicle）**。
-- **无本金保护结构化金融产品（structured finance without principal protection）**与**保本票据（principal protected note）**互斥：同一个体不能同时属于两者。
-- **分档（tranche）**：**是……的估计价值（is estimated value of）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
-- **分档（tranche）**：**具有附着点（has attachment point）**可以有 0 个或多个**附着点（attachment point）**。
-- **分档（tranche）**：**具有脱离点（has detachment point）**可以有 0 个或多个**脱离点（detachment point）**。
-- **分档（tranche）**：**包含（comprises）**至少有一个取值，该取值满足：**是……的部分（isPartOf）**至少有一个取值，类型是**工具池（InstrumentPool）**。
-- **加权平均期限（weighted average life）**：**引用（refersTo）**可以有 0 个或多个**提前偿付速度（prepayment speed）**。
+### 2.2 债务池统计度量（debt pool statistical measure）
 
-## 6. 依赖（owl:imports，17 个）
+定义：对一个或多个债务工具可能随时间变化之行为的某方面进行的限定性度量。
+
+- 父类：**限定度量（QualifiedMeasure）**
+- 直接子类：**绝对提前偿付率（absolute prepayment rate）**、**违约率（default rate）**、**提前偿付速度（prepayment speed）**、**单月清偿率（single monthly mortality）**、**加权平均票息（weighted average coupon）**、**加权平均期限（weighted average life）**、**加权平均贷款账龄（weighted average loan age）**、**加权平均到期期限（weighted average maturity）**、**加权平均剩余期限（weighted average remaining term）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于（appliesTo）** | — | — |
+| **具有适用期间（hasApplicablePeriod）** | — | — |
+
+公理：
+
+- **具有适用期间（hasApplicablePeriod）**可以有 0 个或多个**日期区间（DatePeriod）**。
+- **适用于（appliesTo）**至少有一个取值，类型是**债务池（DebtPool）**。
+
+#### 2.2.1 绝对提前偿付率（absolute prepayment rate）
+
+定义：以原始资产池余额百分比表示的月度贷款提前偿付率。
+
+- 父类：**债务池统计度量（debt pool statistical measure）**
+
+#### 2.2.2 违约率（default rate）
+
+定义：对池中债务工具持有人违约比率的限定性度量。
+
+- 父类：**债务池统计度量（debt pool statistical measure）**、**比率（Ratio）**
+
+#### 2.2.3 提前偿付速度（prepayment speed）
+
+定义：对债务或部分债务提前清偿比率的估计。
+
+- 父类：**债务池统计度量（debt pool statistical measure）**
+
+#### 2.2.4 单月清偿率（single monthly mortality）
+
+定义：对抵押支持证券（MBS）池中每月将提前清偿之抵押贷款百分比的估计。
+
+- 父类：**债务池统计度量（debt pool statistical measure）**、**百分比（Percentage）**
+
+#### 2.2.5 加权平均票息（weighted average coupon）
+
+定义：抵押支持证券（MBS）标的抵押贷款池按余额加权的平均总利率。
+
+- 父类：**算术平均值（ArithmeticMean）**、**债务池统计度量（debt pool statistical measure）**
+
+#### 2.2.6 加权平均期限（weighted average life）
+
+定义：本金偿还时间的加权平均值，按收取全部未来现金流的时间加权计算。
+
+- 父类：**算术平均值（ArithmeticMean）**、**债务池统计度量（debt pool statistical measure）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **引用（refersTo）** | — | — |
+
+公理：
+
+- **引用（refersTo）**可以有 0 个或多个**提前偿付速度（prepayment speed）**。
+
+#### 2.2.7 加权平均贷款账龄（weighted average loan age）
+
+定义：衡量抵押转手证券或集合证券中各笔贷款账龄的金额加权平均值。
+
+- 父类：**算术平均值（ArithmeticMean）**、**债务池统计度量（debt pool statistical measure）**
+
+#### 2.2.8 加权平均到期期限（weighted average maturity）
+
+定义：抵押支持证券（MBS）中抵押贷款到期时间的加权平均值。
+
+- 父类：**算术平均值（ArithmeticMean）**、**债务池统计度量（debt pool statistical measure）**
+
+#### 2.2.9 加权平均剩余期限（weighted average remaining term）
+
+定义：资产支持证券（ABS）或抵押支持证券（MBS）组合的加权平均到期时间。
+
+- 父类：**算术平均值（ArithmeticMean）**、**债务池统计度量（debt pool statistical measure）**
+
+### 2.3 脱离点（detachment point）
+
+定义：分档的上边界，以发行时或某一时点抵押品总池价值的百分比表示。
+
+- 父类：**百分比货币数量（PercentageMonetaryAmount）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的估计价值（isEstimatedValueOf）** | — | — |
+
+公理：
+
+- **是……的估计价值（isEstimatedValueOf）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
+
+### 2.4 资产池支持证券（pool-backed security）
+
+定义：现金流来源于标的抵押贷款池或其他应收款池的债务工具。
+
+- 父类：**可交易债务工具（TradableDebtInstrument）**
+- 直接子类：**资产支持证券（asset-backed security）**、**结构化金融工具（structured finance instrument）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **基于（isBasedOn）** | — | — |
+| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。 | 值域：截至日抵押品价值；子属性：是……的估计价值 |
+| **是否过手（is pass through）** | 表明标的资产池的现金流是否通过赎回付款方式过手给投资者。 | 值域：xsd:boolean |
+| **以……为特征（isCharacterizedBy）** | — | — |
+
+公理：
+
+- **以……为特征（isCharacterizedBy）**可以有 0 个或多个**债务池统计度量（debt pool statistical measure）**。
+- **基于（isBasedOn）**至少有一个取值，类型是**工具池（InstrumentPool）**。
+- **是……的估计价值（is estimated value of）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
+- **是否过手（is pass through）**存在取值约束。
+
+#### 2.4.1 资产支持证券（asset-backed security）
+
+定义：由房地产贷款或抵押贷款以外应收款支持的债务工具。
+
+- 父类：**资产池支持证券（pool-backed security）**
+
+#### 2.4.2 结构化金融工具（structured finance instrument）
+
+定义：通过特定结构将资产池风险与发起机构风险相隔离的资产池支持证券。
+
+- 父类：**资产池支持证券（pool-backed security）**
+- 直接子类：**保本票据（principal protected note）**、**无本金保护结构化金融产品（structured finance without principal protection）**、**分档（tranche）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……发行（isIssuedBy）** | — | — |
+
+公理：
+
+- **由……发行（isIssuedBy）**至少有一个取值，该取值满足：**由…扮演（is played by）**至少有一个取值，类型是**特殊目的载体（SpecialPurposeVehicle）**。
+
+##### 2.4.2.1 保本票据（principal protected note）
+
+定义：通过多种方式和不对称支付结构为投资者提供选定标的资产风险敞口的结构化金融产品。
+
+- 父类：**结构化金融工具（structured finance instrument）**
+
+##### 2.4.2.2 无本金保护结构化金融产品（structured finance without principal protection）
+
+定义：与标的资产挂钩、提供稳定收入流的短期票据类结构化金融产品。
+
+- 父类：**结构化金融工具（structured finance instrument）**
+
+公理：
+
+- 与**保本票据（principal protected note）**互斥：同一个体不能同时属于两者。
+
+##### 2.4.2.3 分档（tranche）
+
+定义：证券池（通常为债务工具）的一个部分。
+
+- 父类：**结构化金融工具（structured finance instrument）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有附着点（has attachment point）** | 指明标的抵押品总价值的下限（以发行时或某一时点计），达到该点时该分档开始承担损失。 | 值域：附着点（attachment point）；子属性：具有量值 |
+| **具有脱离点（has detachment point）** | 指明标的抵押品总价值的上限（以发行时或某一时点计），达到该点时该分档不再承担损失。 | 值域：脱离点（detachment point）；子属性：具有量值 |
+| **是……的估计价值（is estimated value of）** | 将评估价值关联到评估日所关注的资产。 | 值域：截至日抵押品价值；子属性：是……的估计价值 |
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **具有脱离点（has detachment point）**可以有 0 个或多个**脱离点（detachment point）**。
+- **具有附着点（has attachment point）**可以有 0 个或多个**附着点（attachment point）**。
+- **包含（comprises）**至少有一个取值，该取值满足：**是……的部分（isPartOf）**至少有一个取值，类型是**工具池（InstrumentPool）**。
+- **是……的估计价值（is estimated value of）**可以有 0 个或多个**截至日抵押品价值（CollateralValueAsOfDate）**。
+
+## 3. 依赖（owl:imports，17 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -123,7 +278,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`PoolBackedSecurities.rdf`
 - 中文 Turtle：`PoolBackedSecurities.ttl`

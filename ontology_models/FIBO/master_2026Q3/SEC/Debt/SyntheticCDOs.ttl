@@ -100,11 +100,11 @@ fibo-sec-dbt-syn:ArbitrageSyntheticCDO a owl:Class ;
         "套利型合成担保债务凭证（arbitrage synthetic CDO）"@zh ;
     rdfs:comment "出于监管或实务考量而构造的合成 CDO，使银行在保留债务所有权的同时实现风险转移等目的。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-sec-dbt-syn:issues ;
-            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticCDOTranche ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-sec-dbt-syn:assetsManagedBy ;
             owl:someValuesFrom fibo-sec-dbt-cdo:CDOPortfolioManager ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-sec-dbt-syn:issues ;
+            owl:someValuesFrom fibo-sec-dbt-syn:SyntheticCDOTranche ],
         fibo-sec-dbt-cdo:ArbitrageCDO,
         fibo-sec-dbt-syn:SyntheticCDO ;
     owl:disjointWith fibo-sec-dbt-syn:SyntheticBalanceSheetCDO ;

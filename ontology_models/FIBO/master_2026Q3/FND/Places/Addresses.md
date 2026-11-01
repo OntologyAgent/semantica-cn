@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：地址≠地点——地点是空间位置本身，地址是指代地点的文字结构；与虚拟地点的差别——一个物理、一个电子。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **地址（address）** 继承 **索引（Index）**
+- **地址成分（address component）** 继承 **方面（Aspect）**
+- **地址编制方案（addressing scheme）** 继承 **索引方案（IndexingScheme）**
+- **常规街道地址（conventional street address）** 继承 **物理地址（physical address）**
+- **地理方位符号（geographic directional symbol）** 继承 **代码元素（CodeElement）**
+- **物理地址（physical address）** 继承 **地址（address）**
+- **物理地址标识符（physical address identifier）** 继承 **代码元素（CodeElement）**
+- **物理地址标识符（physical address identifier）** 继承 **标识符（Identifier）**
+- **物理地址编制方案（physical addressing scheme）** 继承 **地址编制方案（addressing scheme）**
+- **邮区（post code area）** 继承 **地理区域（GeographicRegion）**
+- **邮政信箱（post office box）** 继承 **补充地址成分（supplemental address component）**
+- **邮政信箱地址（post office box address）** 继承 **物理地址（physical address）**
+- 其余 30 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -47,118 +63,452 @@
 | 补充地址单元（supplemental address unit） | 包含与特定地址关联的特定路线、信箱、公寓或其他指示符或单元的地址成分。 |
 | 虚拟地址（virtual address） | 标识虚拟（即非物理）位置的地址。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 地址（address） ⊑ 索引
-- 地址成分（address component） ⊑ 方面
-- 地址编制方案（addressing scheme） ⊑ 索引方案
-- 常规街道地址（conventional street address） ⊑ 物理地址（physical address）
-- 地理方位符号（geographic directional symbol） ⊑ 代码元素
-- 物理地址（physical address） ⊑ 地址（address）
-- 物理地址标识符（physical address identifier） ⊑ 代码元素
-- 物理地址标识符（physical address identifier） ⊑ 标识符
-- 物理地址编制方案（physical addressing scheme） ⊑ 地址编制方案（addressing scheme）
-- 邮区（post code area） ⊑ 地理区域
-- 邮政信箱（post office box） ⊑ 补充地址成分（supplemental address component）
-- 邮政信箱地址（post office box address） ⊑ 物理地址（physical address）
-- 邮政信箱指称符（post office box designator） ⊑ 补充地址指称符（supplemental address designator）
-- 邮政编码（postcode） ⊑ 代码元素
-- 邮政编码（postcode） ⊑ 地理区域标识符
-- 后置方位符号（postdirectional symbol） ⊑ 地理方位符号（geographic directional symbol）
-- 前置方位符号（predirectional symbol） ⊑ 地理方位符号（geographic directional symbol）
-- 主门牌号（primary address number） ⊑ 地址成分（address component）
-- 区域专用标识符（region-specific identifier） ⊑ 地理区域标识符
-- 次级单元（secondary unit） ⊑ 地址成分（address component）
-- 次级单元指称符（secondary unit designator） ⊑ 分类符
-- 次级单元指示符（secondary unit indicator） ⊑ 地址成分（address component）
-- 街道地址（street address） ⊑ 地址成分（address component）
-- 街道名称（street name） ⊑ 地址成分（address component）
-- 街道名称（street name） ⊑ 名称
-- 街道后缀（street suffix） ⊑ 地址成分（address component）
-- 街道后缀（street suffix） ⊑ 分类符
-- 建筑名称（structure name） ⊑ 地址成分（address component）
-- 建筑名称（structure name） ⊑ 名称
-- 补充地址成分（supplemental address component） ⊑ 地址成分（address component）
-- 补充地址指称符（supplemental address designator） ⊑ 分类符
-- 补充地址单元（supplemental address unit） ⊑ 地址成分（address component）
-- 虚拟地址（virtual address） ⊑ 地址（address）
+### 2.1 地址（address）
 
-## 3. 对象属性（Object Property）
+定义：通信可送达之位置的索引。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-plc-adr:hasAddress | 具有地址（has address） | 标识可据以定位或联系某事物（如网络地址情形）或某实体、或可接收函件的方式。 | 值域（range）：地址（address）；子属性（subPropertyOf）：以……为特征 |
-| fibo-fnd-plc-adr:hasIndividualPostcode | 具有具体邮政编码（has individual postcode） | 标识当地邮政部门规定的投递地址的本地或国际邮政编码元素。 | 定义域（domain）：物理地址（physical address）；值域（range）：邮政编码（postcode）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasPostdirectionalSymbol | 具有后置方位符号（has postdirectional symbol） | 指明街道地址中位于街道名称和街道后缀之后的地理方位符号。 | 定义域（domain）：街道地址（street address）；值域（range）：后置方位符号（postdirectional symbol）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasPredirectionalSymbol | 具有前置方位符号（has predirectional symbol） | 指明街道地址中位于主门牌号之后、街道名称之前的地理方位符号。 | 定义域（domain）：街道地址（street address）；值域（range）：前置方位符号（predirectional symbol）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasPrimaryAddressNumber | 具有主门牌号（has primary address number） | 指明相对于给定街道的位置。 | 定义域（domain）：街道地址（street address）；值域（range）：主门牌号（primary address number）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasSecondaryUnit | 具有次级单元（has secondary unit） | 指明给定街道地址处较大结构内的独立单元，如公寓、办公室、机库、泊位、邮箱等。 | 定义域（domain）：街道地址（street address）；值域（range）：次级单元（secondary unit）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasStreetAddress | 具有街道地址（has street address） | 标识由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的完整地址成分。 | 定义域（domain）：常规街道地址（conventional street address）；值域（range）：街道地址（street address）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasStreetName | 具有街道名称（has street name） | 指明某情境中街道的标识符（如 Baker、First、Main）。 | 定义域（domain）：街道地址（street address）；值域（range）：街道名称（street name）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasStreetSuffix | 具有街道后缀（has street suffix） | 指明街道或其他投递位置的附加限定符。 | 定义域（domain）：街道地址（street address）；值域（range）：街道后缀（street suffix）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasStructureName | 具有建筑名称（has structure name） | 指明楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的标识符。 | 定义域（domain）：物理地址（physical address）；值域（range）：建筑名称（structure name）；子属性（subPropertyOf）：包含 |
-| fibo-fnd-plc-adr:hasTransliteratedAddress | 具有转写地址（has transliterated address） | 标识注册实体的转写（即拉丁化或罗马化 ASCII）地址。 | 值域（range）：地址（address）；子属性（subPropertyOf）：具有地址（has address） |
+- 父类：**索引（Index）**
+- 直接子类：**物理地址（physical address）**、**虚拟地址（virtual address）**
 
-## 4. 数据属性（Datatype Property）
+属性：
 
-| 属性（Property） | 中文（English） | 定义（Definition） |
+| 属性 | 定义 | 说明 |
 |---|---|---|
-| fibo-fnd-plc-adr:hasAddressLine1 | 具有地址行 1（has address line 1） | 街道地址的第一行。 |
-| fibo-fnd-plc-adr:hasAddressLine2 | 具有地址行 2（has address line 2） | 街道地址的第二行。 |
-| fibo-fnd-plc-adr:hasAddressLine3 | 具有地址行 3（has address line 3） | 街道地址的第三行。 |
-| fibo-fnd-plc-adr:hasAttentionLine | 具有收件人行（has attention line） | 可选的自由文本地址行，标明预期收件人。 |
-| fibo-fnd-plc-adr:hasMailRouting | 具有邮件路由（has mail routing） | 可选的自由文本地址行，含明确的路由信息（该元素的存在表明此地址为路由/「转交」地址）。 |
-| fibo-fnd-plc-adr:hasPostalCode | 具有邮政编码（has postal code） | 当地邮政部门规定的此地址的邮政编码。 |
-| fibo-fnd-plc-adr:requiresSecondaryUnitRange | 需要次级单元范围（requires secondary unit range） | 若为真，表明需要附加限定符（如公寓号）才能完整描述投递点。 |
+| **是…的索引（isIndexTo）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
 
-## 5. 公理约定（Axioms）
+公理：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- **定义于（isDefinedIn）**可以有 0 个或多个**地址编制方案（addressing scheme）**。
+- **是…的索引（isIndexTo）**恰好有 1 个**位置（Location）**。
 
-- **地址（address）**：**定义于（isDefinedIn）**可以有 0 个或多个**地址编制方案（addressing scheme）**。
-- **地址（address）**：**是…的索引（isIndexTo）**恰好有 1 个**位置（Location）**。
-- **地址编制方案（addressing scheme）**：**定义（defines）**的所有取值只能是**地址（address）**。
-- **常规街道地址（conventional street address）**：**具有街道地址（has street address）**至多有 1 个**街道地址（street address）**。
-- **常规街道地址（conventional street address）**：**具有地址行 1（has address line 1）**存在取值约束。
-- **常规街道地址（conventional street address）**：**具有地址行 2（has address line 2）**存在取值约束。
-- **常规街道地址（conventional street address）**：**具有地址行 3（has address line 3）**存在取值约束。
-- **地理方位符号（geographic directional symbol）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
-- **物理地址（physical address）**：**具有具体邮政编码（has individual postcode）**至多有 1 个**邮政编码（postcode）**。
-- **物理地址（physical address）**：**具有国家（hasCountry）**至多有 1 个**国家（Country）**。
-- **物理地址（physical address）**：**具有市政区（hasMunicipality）**至多有 1 个**市政区（Municipality）**。
-- **物理地址（physical address）**：**具有邮政编码（has postal code）**存在取值约束。
-- **物理地址（physical address）**：**具有城市名称（hasCityName）**存在取值约束。
-- **物理地址（physical address）**：**是…的索引（isIndexTo）**可以有 0 个或多个**物理位置（PhysicalLocation）**。
-- **物理地址（physical address）**：**具有行政区划（hasSubdivision）**至少有一个取值，类型是**国家行政区划（CountrySubdivision）**。
-- **物理地址标识符（physical address identifier）**：**标识（identifies）**恰好有 1 个**物理地址（physical address）**。
-- **物理地址标识符（physical address identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**物理地址编制方案（physical addressing scheme）**。
-- **物理地址编制方案（physical addressing scheme）**：该属性存在取值约束。
-- **邮政信箱（post office box）**：**包含（comprises）**恰好有 1 个**邮政信箱指称符（post office box designator）**。
-- **邮政信箱地址（post office box address）**：**包含（comprises）**恰好有 1 个**邮政信箱（post office box）**。
-- **邮政编码（postcode）**：**标识（identifies）**恰好有 1 个**邮区（post code area）**。
-- **主门牌号（primary address number）**：**具有标签（hasTag）**存在取值约束。
-- **区域专用标识符（region-specific identifier）**：**被……使用（isUsedBy）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
-- **次级单元（secondary unit）**：**包含（comprises）**可以有 0 个或多个**次级单元指示符（secondary unit indicator）**。
-- **次级单元（secondary unit）**：**包含（comprises）**恰好有 1 个**次级单元指称符（secondary unit designator）**。
-- **次级单元指称符（secondary unit designator）**：**需要次级单元范围（requires secondary unit range）**存在取值约束。
-- **次级单元指示符（secondary unit indicator）**：**具有标签（hasTag）**存在取值约束。
-- **街道地址（street address）**：**具有主门牌号（has primary address number）**至多有 1 个**主门牌号（primary address number）**。
-- **街道地址（street address）**：**具有后置方位符号（has postdirectional symbol）**可以有 0 个或多个**后置方位符号（postdirectional symbol）**。
-- **街道地址（street address）**：**具有前置方位符号（has predirectional symbol）**可以有 0 个或多个**前置方位符号（predirectional symbol）**。
-- **街道地址（street address）**：**具有次级单元（has secondary unit）**可以有 0 个或多个**次级单元（secondary unit）**。
-- **街道地址（street address）**：**具有街道后缀（has street suffix）**可以有 0 个或多个**街道后缀（street suffix）**。
-- **街道地址（street address）**：**具有街道名称（has street name）**至少有一个取值，类型是**街道名称（street name）**。
-- **街道名称（street name）**：**具有标签（hasTag）**存在取值约束。
-- **建筑名称（structure name）**：**具有标签（hasTag）**存在取值约束。
-- **补充地址成分（supplemental address component）**：**包含（comprises）**可以有 0 个或多个**补充地址单元（supplemental address unit）**。
-- **补充地址成分（supplemental address component）**：**具有标签（hasTag）**存在取值约束。
-- **补充地址成分（supplemental address component）**：**包含（comprises）**恰好有 1 个**补充地址指称符（supplemental address designator）**。
-- **补充地址指称符（supplemental address designator）**：**分类（classifies）**至少有一个取值，类型是**补充地址成分（supplemental address component）**。
-- **补充地址单元（supplemental address unit）**：**具有标签（hasTag）**存在取值约束。
-- **虚拟地址（virtual address）**：**具有标签（hasTag）**存在取值约束。
-- **虚拟地址（virtual address）**与**物理地址（physical address）**互斥：同一个体不能同时属于两者。
+#### 2.1.1 物理地址（physical address）
 
-## 6. 依赖（owl:imports，13 个）
+定义：可为任何组织或个人送达通信、送达文书或找到代表的物理地址。
+
+- 父类：**地址（address）**
+- 直接子类：**常规街道地址（conventional street address）**、**邮政信箱地址（post office box address）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是…的索引（isIndexTo）** | — | — |
+| **具有地址行 1（has address line 1）** | 街道地址的第一行。 | 子属性：具有文本值 |
+| **具有地址行 2（has address line 2）** | 街道地址的第二行。 | 子属性：具有文本值 |
+| **具有地址行 3（has address line 3）** | 街道地址的第三行。 | 子属性：具有文本值 |
+| **具有收件人行（has attention line）** | 可选的自由文本地址行，标明预期收件人。 | 子属性：具有文本值 |
+| **具有具体邮政编码（has individual postcode）** | 标识当地邮政部门规定的投递地址的本地或国际邮政编码元素。 | 值域：邮政编码（postcode）；子属性：包含 |
+| **具有邮件路由（has mail routing）** | 可选的自由文本地址行，含明确的路由信息（该元素的存在表明此地址为路由/「转交」地址）。 | 子属性：具有文本值 |
+| **具有邮政编码（has postal code）** | 当地邮政部门规定的此地址的邮政编码。 | 子属性：具有文本值 |
+| **具有建筑名称（has structure name）** | 指明楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的标识符。 | 值域：建筑名称（structure name）；子属性：包含 |
+| **具有城市名称（hasCityName）** | — | — |
+| **具有国家（hasCountry）** | — | — |
+| **具有市政区（hasMunicipality）** | — | — |
+| **具有行政区划（hasSubdivision）** | — | — |
+
+公理：
+
+- **具有具体邮政编码（has individual postcode）**至多有 1 个**邮政编码（postcode）**。
+- **具有国家（hasCountry）**至多有 1 个**国家（Country）**。
+- **具有城市名称（hasCityName）**存在取值约束。
+- **具有市政区（hasMunicipality）**至多有 1 个**市政区（Municipality）**。
+- **具有行政区划（hasSubdivision）**至少有一个取值，类型是**国家行政区划（CountrySubdivision）**。
+- **具有邮政编码（has postal code）**存在取值约束。
+- **是…的索引（isIndexTo）**可以有 0 个或多个**物理位置（PhysicalLocation）**。
+
+##### 2.1.1.1 常规街道地址（conventional street address）
+
+定义：标识通信可送达之街道位置的物理地址。
+
+- 父类：**物理地址（physical address）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有地址行 1（has address line 1）** | 街道地址的第一行。 | 子属性：具有文本值 |
+| **具有地址行 2（has address line 2）** | 街道地址的第二行。 | 子属性：具有文本值 |
+| **具有地址行 3（has address line 3）** | 街道地址的第三行。 | 子属性：具有文本值 |
+| **具有街道地址（has street address）** | 标识由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的完整地址成分。 | 值域：街道地址（street address）；子属性：包含 |
+
+公理：
+
+- **具有地址行 1（has address line 1）**存在取值约束。
+- **具有地址行 2（has address line 2）**存在取值约束。
+- **具有地址行 3（has address line 3）**存在取值约束。
+- **具有街道地址（has street address）**至多有 1 个**街道地址（street address）**。
+
+##### 2.1.1.2 邮政信箱地址（post office box address）
+
+定义：用于将通信投递到当地邮局（或该管辖区等同机构）指定信箱的物理地址。
+
+- 父类：**物理地址（physical address）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**邮政信箱（post office box）**。
+
+#### 2.1.2 虚拟地址（virtual address）
+
+定义：标识虚拟（即非物理）位置的地址。
+
+- 父类：**地址（address）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+- 与**物理地址（physical address）**互斥：同一个体不能同时属于两者。
+
+### 2.2 地址成分（address component）
+
+定义：地址的某个方面。
+
+- 父类：**方面（Aspect）**
+- 直接子类：**主门牌号（primary address number）**、**次级单元（secondary unit）**、**次级单元指示符（secondary unit indicator）**、**街道地址（street address）**、**街道名称（street name）**、**街道后缀（street suffix）**、**建筑名称（structure name）**、**补充地址成分（supplemental address component）**、**补充地址单元（supplemental address unit）**
+
+#### 2.2.1 主门牌号（primary address number）
+
+定义：相对于给定街道标识位置的地址成分。
+
+- 父类：**地址成分（address component）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+
+#### 2.2.2 次级单元（secondary unit）
+
+定义：标识给定街道地址处较大结构内的独立单元（如公寓、办公室、机库、泊位、邮箱等）的地址成分。
+
+- 父类：**地址成分（address component）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**可以有 0 个或多个**次级单元指示符（secondary unit indicator）**。
+- **包含（comprises）**恰好有 1 个**次级单元指称符（secondary unit designator）**。
+
+#### 2.2.3 次级单元指示符（secondary unit indicator）
+
+定义：指向特定街道地址处次级单元（如楼栋或公寓）内具体单元的索引。
+
+- 父类：**地址成分（address component）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+
+#### 2.2.4 街道地址（street address）
+
+定义：由主门牌号、前置方位、街道名称、后缀、后置方位和可选次级单元组成的位置索引。
+
+- 父类：**地址成分（address component）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有后置方位符号（has postdirectional symbol）** | 指明街道地址中位于街道名称和街道后缀之后的地理方位符号。 | 值域：后置方位符号（postdirectional symbol）；子属性：包含 |
+| **具有前置方位符号（has predirectional symbol）** | 指明街道地址中位于主门牌号之后、街道名称之前的地理方位符号。 | 值域：前置方位符号（predirectional symbol）；子属性：包含 |
+| **具有主门牌号（has primary address number）** | 指明相对于给定街道的位置。 | 值域：主门牌号（primary address number）；子属性：包含 |
+| **具有次级单元（has secondary unit）** | 指明给定街道地址处较大结构内的独立单元，如公寓、办公室、机库、泊位、邮箱等。 | 值域：次级单元（secondary unit）；子属性：包含 |
+| **具有街道名称（has street name）** | 指明某情境中街道的标识符（如 Baker、First、Main）。 | 值域：街道名称（street name）；子属性：包含 |
+| **具有街道后缀（has street suffix）** | 指明街道或其他投递位置的附加限定符。 | 值域：街道后缀（street suffix）；子属性：包含 |
+
+公理：
+
+- **具有主门牌号（has primary address number）**至多有 1 个**主门牌号（primary address number）**。
+- **具有前置方位符号（has predirectional symbol）**可以有 0 个或多个**前置方位符号（predirectional symbol）**。
+- **具有后置方位符号（has postdirectional symbol）**可以有 0 个或多个**后置方位符号（postdirectional symbol）**。
+- **具有次级单元（has secondary unit）**可以有 0 个或多个**次级单元（secondary unit）**。
+- **具有街道名称（has street name）**至少有一个取值，类型是**街道名称（street name）**。
+- **具有街道后缀（has street suffix）**可以有 0 个或多个**街道后缀（street suffix）**。
+
+#### 2.2.5 街道名称（street name）
+
+定义：某情境（如城市、市政区、地理区域）中街道的标识符。
+
+- 父类：**地址成分（address component）**、**名称（Name）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+
+#### 2.2.6 街道后缀（street suffix）
+
+定义：街道或其他投递位置（如沿水道住所）的分类符。
+
+- 父类：**地址成分（address component）**、**分类符（Classifier）**
+
+#### 2.2.7 建筑名称（structure name）
+
+定义：楼宇、住宅、办公综合楼、购物中心或其他建筑或建筑群的名称。
+
+- 父类：**地址成分（address component）**、**名称（Name）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+
+#### 2.2.8 补充地址成分（supplemental address component）
+
+定义：提供对确保通信正确投递重要的附加信息的地址成分。
+
+- 父类：**地址成分（address component）**
+- 直接子类：**邮政信箱（post office box）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+- **包含（comprises）**可以有 0 个或多个**补充地址单元（supplemental address unit）**。
+- **包含（comprises）**恰好有 1 个**补充地址指称符（supplemental address designator）**。
+
+##### 2.2.8.1 邮政信箱（post office box）
+
+定义：与某地址关联的邮政信箱。
+
+- 父类：**补充地址成分（supplemental address component）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **包含（comprises）** | — | — |
+
+公理：
+
+- **包含（comprises）**恰好有 1 个**邮政信箱指称符（post office box designator）**。
+
+#### 2.2.9 补充地址单元（supplemental address unit）
+
+定义：包含与特定地址关联的特定路线、信箱、公寓或其他指示符或单元的地址成分。
+
+- 父类：**地址成分（address component）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**存在取值约束。
+
+### 2.3 地址编制方案（addressing scheme）
+
+定义：为对象分配地址的体系。
+
+- 父类：**索引方案（IndexingScheme）**
+- 直接子类：**物理地址编制方案（physical addressing scheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **定义（defines）** | — | — |
+
+公理：
+
+- **定义（defines）**的所有取值只能是**地址（address）**。
+
+#### 2.3.1 物理地址编制方案（physical addressing scheme）
+
+定义：按国家特定标准指明物理地址的方案。
+
+- 父类：**地址编制方案（addressing scheme）**
+
+公理：
+
+- 该属性存在取值约束。
+
+### 2.4 地理方位符号（geographic directional symbol）
+
+定义：为邮政投递提供方位信息的代码元素。
+
+- 父类：**代码元素（CodeElement）**
+- 直接子类：**后置方位符号（postdirectional symbol）**、**前置方位符号（predirectional symbol）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+
+#### 2.4.1 后置方位符号（postdirectional symbol）
+
+定义：街道地址中位于街道名称和街道后缀之后的地理方位符号。
+
+- 父类：**地理方位符号（geographic directional symbol）**
+
+#### 2.4.2 前置方位符号（predirectional symbol）
+
+定义：街道地址中位于主门牌号之后、街道名称之前的地理方位符号。
+
+- 父类：**地理方位符号（geographic directional symbol）**
+
+### 2.5 物理地址标识符（physical address identifier）
+
+定义：物理地址的唯一标识符。
+
+- 父类：**代码元素（CodeElement）**、**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**恰好有 1 个**物理地址编制方案（physical addressing scheme）**。
+- **标识（identifies）**恰好有 1 个**物理地址（physical address）**。
+
+### 2.6 邮区（post code area）
+
+定义：由某邮政编码唯一标识的物理区域。
+
+- 父类：**地理区域（GeographicRegion）**
+
+### 2.7 邮政编码（postcode）
+
+定义：用于辅助邮件分拣的字符序列。
+
+- 父类：**代码元素（CodeElement）**、**地理区域标识符（GeographicRegionIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**邮区（post code area）**。
+
+### 2.8 区域专用标识符（region-specific identifier）
+
+定义：由国家或其他区域内部使用的地理区域或行政区划标识符。
+
+- 父类：**地理区域标识符（GeographicRegionIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **被……使用（isUsedBy）** | — | — |
+
+公理：
+
+- **被……使用（isUsedBy）**至少有一个取值，类型是**地缘政治实体（GeopoliticalEntity）**。
+
+### 2.9 次级单元指称符（secondary unit designator）
+
+定义：较大设施内较小结构或组成部分（如公寓、办公室、邮件站等类似指称）的分类符。
+
+- 父类：**分类符（Classifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **需要次级单元范围（requires secondary unit range）** | 若为真，表明需要附加限定符（如公寓号）才能完整描述投递点。 | 值域：xsd:boolean；子属性：具有文本值 |
+
+公理：
+
+- **需要次级单元范围（requires secondary unit range）**存在取值约束。
+
+### 2.10 补充地址指称符（supplemental address designator）
+
+定义：补充地址信息（如公路合同路线、乡村路线、建筑综合体、购物中心、公寓综合体）的分类符。
+
+- 父类：**分类符（Classifier）**
+- 直接子类：**邮政信箱指称符（post office box designator）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+
+公理：
+
+- **分类（classifies）**至少有一个取值，类型是**补充地址成分（supplemental address component）**。
+
+#### 2.10.1 邮政信箱指称符（post office box designator）
+
+定义：与标识符一起用于邮政信箱的指称符。
+
+- 父类：**补充地址指称符（supplemental address designator）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有地址（has address）** | 标识可据以定位或联系某事物（如网络地址情形）或某实体、或可接收函件的方式。 | 值域：地址（address）；子属性：以……为特征 |
+| **具有转写地址（has transliterated address）** | 标识注册实体的转写（即拉丁化或罗马化 ASCII）地址。 | 值域：地址（address）；子属性：具有地址（has address） |
+
+## 4. 依赖（owl:imports，13 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -178,7 +528,7 @@
 | `https://www.omg.org/spec/Commons/SitesAndFacilities/` | OMG 通用场所与设施本体（OMG Commons Sites and Facilities） | Commons 库中的场所与设施本体，定义物理场所、设施及其位置的通用概念。 |
 | `https://www.omg.org/spec/Commons/TextDatatype/` | OMG 通用文本数据类型（OMG Commons Text Datatype） | Commons 库中的文本数据类型定义，提供带语言标记的文本等基础数据类型。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Addresses.rdf`
 - 中文 Turtle：`Addresses.ttl`

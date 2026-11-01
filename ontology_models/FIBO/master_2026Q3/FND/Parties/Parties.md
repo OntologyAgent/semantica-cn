@@ -8,6 +8,13 @@
 
 本本体扩展 Commons 参与方与情境本体，增加参与方角色的标识符和通用的税务标识符。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **参与方角色识别方案（party role identification scheme）** 继承 **标识方案（IdentificationScheme）**
+- **参与方角色标识符（party role identifier）** 继承 **标识符（Identifier）**
+- **税务识别方案（tax identification scheme）** 继承 **标识方案（IdentificationScheme）**
+- **税务标识符（tax identifier）** 继承 **标识符（Identifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -17,33 +24,91 @@
 | 税务识别方案（tax identification scheme） | 在某司法辖区用于识别纳税人的识别方案。 |
 | 税务标识符（tax identifier） | 分配给纳税人的标识符，使政府组织能够向其征收强制性财政收费和其他税费，以资助政府支出和各项公共开支。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 参与方角色识别方案（party role identification scheme） ⊑ 标识方案
-- 参与方角色标识符（party role identifier） ⊑ 标识符
-- 税务识别方案（tax identification scheme） ⊑ 标识方案
-- 税务标识符（tax identifier） ⊑ 标识符
+### 2.1 参与方角色识别方案（party role identification scheme）
 
-## 3. 对象属性（Object Property）
+定义：为参与方所扮演角色分配标识符的系统。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-fnd-pty-pty:hasMailingAddress | 具有邮寄地址（has mailing address） | 标识独立参与方可以接收信件和包裹等通信的实体地址。 | 定义域（domain）：参与方（party）；值域（range）：物理地址；子属性（subPropertyOf）：具有地址 |
+- 父类：**标识方案（IdentificationScheme）**
 
-## 5. 公理约定（Axioms）
+属性：
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有成员（hasMember）** | — | — |
 
-- **参与方角色识别方案（party role identification scheme）**：**具有成员（hasMember）**至少有一个取值，类型是**参与方角色标识符（party role identifier）**。
-- **参与方角色标识符（party role identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**参与方角色识别方案（party role identification scheme）**。
-- **参与方角色标识符（party role identifier）**：**定义于（isDefinedIn）**恰好有 1 个**参与方角色识别方案（party role identification scheme）**。
-- **参与方角色标识符（party role identifier）**：**标识（identifies）**恰好有 1 个**参与方角色（party role）**。
-- **税务识别方案（tax identification scheme）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
-- **税务标识符（tax identifier）**：**是……的成员（isMemberOf）**恰好有 1 个**税务识别方案（tax identification scheme）**。
-- **税务标识符（tax identifier）**：**标识（identifies）**恰好有 1 个**参与方（party）**。
-- **税务标识符（tax identifier）**：**适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+公理：
 
-## 6. 依赖（owl:imports，12 个）
+- **具有成员（hasMember）**至少有一个取值，类型是**参与方角色标识符（party role identifier）**。
+
+### 2.2 参与方角色标识符（party role identifier）
+
+定义：基于参与方在某种情境中所扮演的特定角色，能够唯一标识该参与方的字符序列。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **定义于（isDefinedIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **定义于（isDefinedIn）**恰好有 1 个**参与方角色识别方案（party role identification scheme）**。
+- **是……的成员（isMemberOf）**恰好有 1 个**参与方角色识别方案（party role identification scheme）**。
+- **标识（identifies）**恰好有 1 个**参与方角色（party role）**。
+
+### 2.3 税务识别方案（tax identification scheme）
+
+定义：在某司法辖区用于识别纳税人的识别方案。
+
+- 父类：**标识方案（IdentificationScheme）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于情境（isApplicableIn）** | — | — |
+
+公理：
+
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+
+### 2.4 税务标识符（tax identifier）
+
+定义：分配给纳税人的标识符，使政府组织能够向其征收强制性财政收费和其他税费，以资助政府支出和各项公共开支。
+
+- 父类：**标识符（Identifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **是……的成员（isMemberOf）** | — | — |
+| **适用于情境（isApplicableIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **是……的成员（isMemberOf）**恰好有 1 个**税务识别方案（tax identification scheme）**。
+- **标识（identifies）**恰好有 1 个**参与方（party）**。
+- **适用于情境（isApplicableIn）**至少有一个取值，类型是**管辖权（Jurisdiction）**。
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有邮寄地址（has mailing address）** | 标识独立参与方可以接收信件和包裹等通信的实体地址。 | 值域：物理地址；子属性：具有地址 |
+
+## 4. 依赖（owl:imports，12 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -62,7 +127,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`Parties.rdf`
 - 中文 Turtle：`Parties.ttl`

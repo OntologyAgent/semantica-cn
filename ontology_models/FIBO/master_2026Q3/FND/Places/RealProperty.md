@@ -14,6 +14,17 @@
 
 **与相近概念的差别**：不动产≠房产本身——不动产强调「土地＋附着物＋权利束」的法律概念；与动产的差别——能否移动、登记制度不同。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **动产（personal property）** 继承 **资产（Asset）**
+- **房产查验（property inspection）** 继承 **评估事件（AssessmentEvent）**
+- **房产查验报告（property inspection report）** 继承 **评估报告（AssessmentReport）**
+- **房地产（real estate）** 继承 **资产（Asset）**
+- **不动产（real property）** 继承 **实物资产（PhysicalAsset）**
+- **不动产（real property）** 继承 **房地产（real estate）**
+- **不动产估价（real property appraisal）** 继承 **估价报告（Appraisal）**
+- **不动产标识符（real property identifier）** 继承 **情境化标识符（ContextualIdentifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -28,34 +39,129 @@
 | 不动产估价（real property appraisal） | 估计某不动产价值金额的价值评估。 |
 | 不动产标识符（real property identifier） | 在某管辖区用于标识特定不动产的唯一标识符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 动产（personal property） ⊑ 资产
-- 房产查验（property inspection） ⊑ 评估事件
-- 房产查验报告（property inspection report） ⊑ 评估报告
-- 房地产（real estate） ⊑ 资产
-- 不动产（real property） ⊑ 实物资产
-- 不动产（real property） ⊑ 房地产（real estate）
-- 不动产估价（real property appraisal） ⊑ 估价报告
-- 不动产标识符（real property identifier） ⊑ 情境化标识符
+### 2.1 地块标识符（TractIdentifier）
 
-## 5. 公理约定（Axioms）
+定义：在某管辖区签发使用的地块唯一标识符。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+### 2.2 地块（TractOfLand）
 
-- **动产（personal property）**：**由……评估（isEvaluatedBy）**可以有 0 个或多个**估价报告（Appraisal）**。
-- **动产（personal property）**与**不动产（real property）**互斥：同一个体不能同时属于两者。
-- **房产查验（property inspection）**：**具有输出（hasOutput）**可以有 0 个或多个**房产查验报告（property inspection report）**。
-- **房产查验（property inspection）**：**评估（evaluates）**至少有一个取值，类型是**不动产（real property）**。
-- **房产查验报告（property inspection report）**：**关于（isAbout）**至少有一个取值，类型是**不动产（real property）**。
-- **不动产（real property）**：**由……评估（isEvaluatedBy）**可以有 0 个或多个**不动产估价（real property appraisal）**。
-- **不动产估价（real property appraisal）**：**具有输入（hasInput）**可以有 0 个或多个**房产查验报告（property inspection report）**。
-- **不动产估价（real property appraisal）**：**评估（evaluates）**至少有一个取值，类型是**不动产（real property）**。
-- **不动产估价（real property appraisal）**：**由……提供（isProvidedBy）**至少有一个取值，类型是**估价师（Appraiser）**。
-- **不动产标识符（real property identifier）**：**适用于情境（isApplicableIn）**可以有 0 个或多个**管辖权（Jurisdiction）**。
-- **不动产标识符（real property identifier）**：**标识（identifies）**恰好有 1 个**不动产（real property）**。
+定义：地球表面较大区域内一块连续的土地，通常按契约、勘测或法律文件所述边界界定。
 
-## 6. 依赖（owl:imports，17 个）
+### 2.3 动产（personal property）
+
+定义：不附着于土地的可移动物品或财物类资产。
+
+- 父类：**资产（Asset）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……评估（isEvaluatedBy）** | — | — |
+
+公理：
+
+- **由……评估（isEvaluatedBy）**可以有 0 个或多个**估价报告（Appraisal）**。
+- 与**不动产（real property）**互斥：同一个体不能同时属于两者。
+
+### 2.4 房产查验（property inspection）
+
+定义：涉及分析不动产一个或多个方面的事件。
+
+- 父类：**评估事件（AssessmentEvent）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有输出（hasOutput）** | — | — |
+| **评估（evaluates）** | — | — |
+
+公理：
+
+- **具有输出（hasOutput）**可以有 0 个或多个**房产查验报告（property inspection report）**。
+- **评估（evaluates）**至少有一个取值，类型是**不动产（real property）**。
+
+### 2.5 房产查验报告（property inspection report）
+
+定义：涵盖房产查验结果的报告。
+
+- 父类：**评估报告（AssessmentReport）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **关于（isAbout）** | — | — |
+
+公理：
+
+- **关于（isAbout）**至少有一个取值，类型是**不动产（real property）**。
+
+### 2.6 房地产（real estate）
+
+定义：不动产、不动产抵押权益（包括土地租赁权及其上建筑物的抵押权益）以及相关股份。
+
+- 父类：**资产（Asset）**
+- 直接子类：**不动产（real property）**
+
+#### 2.6.1 不动产（real property）
+
+定义：定义为土地连同永久附着于该土地的任何构筑物（如房屋、树木、围栏和改良物）的实物资产。
+
+- 父类：**实物资产（PhysicalAsset）**、**房地产（real estate）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由……评估（isEvaluatedBy）** | — | — |
+
+公理：
+
+- **由……评估（isEvaluatedBy）**可以有 0 个或多个**不动产估价（real property appraisal）**。
+
+### 2.7 不动产估价（real property appraisal）
+
+定义：估计某不动产价值金额的价值评估。
+
+- 父类：**估价报告（Appraisal）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有输入（hasInput）** | — | — |
+| **评估（evaluates）** | — | — |
+| **由……提供（isProvidedBy）** | — | — |
+
+公理：
+
+- **具有输入（hasInput）**可以有 0 个或多个**房产查验报告（property inspection report）**。
+- **由……提供（isProvidedBy）**至少有一个取值，类型是**估价师（Appraiser）**。
+- **评估（evaluates）**至少有一个取值，类型是**不动产（real property）**。
+
+### 2.8 不动产标识符（real property identifier）
+
+定义：在某管辖区用于标识特定不动产的唯一标识符。
+
+- 父类：**情境化标识符（ContextualIdentifier）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **适用于情境（isApplicableIn）** | — | — |
+| **标识（identifies）** | — | — |
+
+公理：
+
+- **标识（identifies）**恰好有 1 个**不动产（real property）**。
+- **适用于情境（isApplicableIn）**可以有 0 个或多个**管辖权（Jurisdiction）**。
+
+## 3. 依赖（owl:imports，17 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -79,7 +185,7 @@
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 | `https://www.omg.org/spec/Commons/SitesAndFacilities/` | OMG 通用场所与设施本体（OMG Commons Sites and Facilities） | Commons 库中的场所与设施本体，定义物理场所、设施及其位置的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`RealProperty.rdf`
 - 中文 Turtle：`RealProperty.ttl`

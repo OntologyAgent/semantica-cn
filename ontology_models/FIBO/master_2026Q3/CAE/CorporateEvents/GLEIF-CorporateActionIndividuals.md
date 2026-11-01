@@ -14,24 +14,37 @@
 
 **与相近概念的差别**：与 ISO 15022 企业行动个体本体的差别——代码来源标准不同：GLEIF 代码服务于 LEI 体系，ISO 15022 代码服务于证券报文，两者覆盖面与粒度不同。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **行动组（action group）** 继承 **分类符（Classifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
 |---|---|
 | 行动组（action group） | 按 GLEIF 特定分组对公司行动进行区分的分类符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 行动组（action group） ⊑ 分类符
+### 2.1 行动组（action group）
 
-## 5. 公理约定（Axioms）
+定义：按 GLEIF 特定分组对公司行动进行区分的分类符。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**分类符（Classifier）**
 
-- **行动组（action group）**：**分类（classifies）**至少有一个取值，类型是**行动（Action）**。
-- **行动组（action group）**：**具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+属性：
 
-## 6. 依赖（owl:imports，7 个）
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **分类（classifies）** | — | — |
+| **具有标签（hasTag）** | — | — |
+
+公理：
+
+- **具有标签（hasTag）**至少有一个取值，类型是**xsd:string（string）**。
+- **分类（classifies）**至少有一个取值，类型是**行动（Action）**。
+
+## 3. 依赖（owl:imports，7 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -45,7 +58,7 @@
 | `https://www.omg.org/spec/Commons/Classifiers/` | OMG 通用分类器本体（OMG Commons Classifiers） | OMG 通用本体库（Commons）中的分类器本体，定义分类方案、类别与归类关系的通用概念，FIBO 的分类建模建立在其上。 |
 | `https://www.omg.org/spec/Commons/Designators/` | OMG 通用指称符本体（OMG Commons Designators） | Commons 库中的指称符本体，定义名称、标识符等「指代某物的符号」的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`GLEIF-CorporateActionIndividuals.rdf`
 - 中文 Turtle：`GLEIF-CorporateActionIndividuals.ttl`

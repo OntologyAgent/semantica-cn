@@ -108,16 +108,16 @@ fibo-fbc-fi-fi:CommodityInstrument a owl:Class ;
     rdfs:comment "代表大宗商品（如原材料和初级农产品）所有权权益的金融工具。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
-            owl:onProperty fibo-fbc-fi-fi:hasCommodityValueAsOfExecutionDate ],
+            owl:onClass fibo-fnd-pas-pas:Commodity ;
+            owl:onProperty fibo-fnd-rel-rel:involves ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-qtu:ScalarQuantityValue ;
             owl:onProperty cmns-qtu:hasQuantityValue ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-pas-pas:Commodity ;
-            owl:onProperty fibo-fnd-rel-rel:involves ],
+            owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
+            owl:onProperty fibo-fbc-fi-fi:hasCommodityValueAsOfExecutionDate ],
         fibo-fbc-fi-fi:FinancialInstrument ;
     skos:definition "financial instrument representing an ownership interest in bulk goods, such as raw materials and primary agricultural products" ;
     cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of Financial Instruments (CFI code), Fourth edition, 2019-10." ;
@@ -479,14 +479,14 @@ fibo-fbc-fi-fi:Issuer a owl:Class ;
         "发行人（issuer）"@zh ;
     rdfs:comment "以某种明确且通常正式的方式发行（或拟发行）一种或多种金融工具的一方所扮演的角色。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-rel-rel:issues ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-fbc-dae-dbt:CreditAgreement ) ] ],
-        [ a owl:Restriction ;
             owl:onProperty cmns-rlcmp:isPlayedBy ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-pts:isAPartyTo ;
                     owl:someValuesFrom fibo-fbc-fi-fi:FinancialInstrument ] ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-rel-rel:issues ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:unionOf ( fibo-fbc-fi-fi:FinancialInstrument fibo-fbc-dae-dbt:CreditAgreement ) ] ],
         fibo-fnd-agr-ctr:ContractPrincipal ;
     skos:definition "role of a party that makes (or proposes to make) one or more financial instruments available in some well-defined, typically formal way" ;
     cmns-av:adaptedFrom "Securities Exchange Act of 1934, as amended 12 August 2012" ;
@@ -518,23 +518,23 @@ fibo-fbc-fi-fi:FinancialInstrument a owl:Class ;
             owl:onClass fibo-fbc-fi-fi:FinancialInstrumentIdentifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
         [ a owl:Restriction ;
+            owl:onProperty fibo-fbc-fi-fi:isDenominatedIn ;
+            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
             owl:onProperty fibo-fbc-fi-fi:hasNominalValue ],
         [ a owl:Restriction ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty fibo-fbc-fi-fi:isNegotiable ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-fbc-fi-fi:isDenominatedIn ;
-            owl:someValuesFrom fibo-fnd-acc-cur:Currency ],
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onClass cmns-rga:Jurisdiction ;
+            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ],
         [ a owl:Restriction ;
             owl:onProperty fibo-fnd-rel-rel:isIssuedBy ;
             owl:someValuesFrom fibo-fbc-fi-fi:Issuer ],
         [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass cmns-rga:Jurisdiction ;
-            owl:onProperty fibo-fbc-fi-fi:isLegallyRecordedIn ],
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty fibo-fbc-fi-fi:isNegotiable ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-agr-ctr:WrittenContract ;
     skos:definition "written contract that gives rise to both a financial asset of one entity and a financial liability of another entity" ;
     skos:example "Examples of financial instruments include: cash, evidence of an ownership interest in an entity, or a contractual right to receive (or deliver) cash, or another financial instrument." ;

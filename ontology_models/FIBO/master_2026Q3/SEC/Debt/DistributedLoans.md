@@ -14,6 +14,22 @@
 
 **与相近概念的差别**：分销贷款≠普通贷款——普通贷款是双边关系不可流通，分销贷款被切成份额在机构间转让；与债券的差别——仍是贷款法律形式，不是证券（多数法域）。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **代理行（administrative agent）** 继承 **辛迪加成员（SyndicateMember）**
+- **簿记行（bookrunner）** 继承 **金融机构（FinancialInstitution）**
+- **文件代理行（documentation agent）** 继承 **辛迪加成员（SyndicateMember）**
+- **融资银团（finance syndicate）** 继承 **辛迪加（Syndicate）**
+- **融资银团成员（finance syndicate member）** 继承 **辛迪加成员（SyndicateMember）**
+- **融资银团成员（finance syndicate member）** 继承 **金融服务提供商（FinancialServiceProvider）**
+- **牵头安排行（lead arranger）** 继承 **金融机构（FinancialInstitution）**
+- **贷款参与票据（loan participation note）** 继承 **信贷额度（CreditFacility）**
+- **贷款参与票据（loan participation note）** 继承 **商业贷款（CommercialLoan）**
+- **贷款参与票据（loan participation note）** 继承 **固定收益证券（FixedIncomeSecurity）**
+- **银团贷款（syndicated loan）** 继承 **信贷额度（CreditFacility）**
+- **银团贷款（syndicated loan）** 继承 **商业贷款（CommercialLoan）**
+- 其余 1 条关系从略。
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -28,31 +44,93 @@
 | 银团贷款（syndicated loan） | 由一组称为银团的贷款人集体向单一借款人提供大额贷款的信贷协议。 |
 | 银团代理行（syndication agent） | 被指定协助构建、安排和管理贷款银团组建过程的金融机构（通常是商业银行或投资银行）。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 代理行（administrative agent） ⊑ 辛迪加成员
-- 簿记行（bookrunner） ⊑ 金融机构
-- 文件代理行（documentation agent） ⊑ 辛迪加成员
-- 融资银团（finance syndicate） ⊑ 辛迪加
-- 融资银团成员（finance syndicate member） ⊑ 辛迪加成员
-- 融资银团成员（finance syndicate member） ⊑ 金融服务提供商
-- 牵头安排行（lead arranger） ⊑ 金融机构
-- 贷款参与票据（loan participation note） ⊑ 信贷额度
-- 贷款参与票据（loan participation note） ⊑ 商业贷款
-- 贷款参与票据（loan participation note） ⊑ 固定收益证券
-- 银团贷款（syndicated loan） ⊑ 信贷额度
-- 银团贷款（syndicated loan） ⊑ 商业贷款
-- 银团代理行（syndication agent） ⊑ 金融机构
+### 2.1 代理行（administrative agent）
 
-## 5. 公理约定（Axioms）
+定义：金融机构（通常是银团中的主要贷款人之一）被指定在借款人与银团成员之间充当中介的角色。
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+- 父类：**辛迪加成员（SyndicateMember）**
 
-- **融资银团成员（finance syndicate member）**：**由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**融资银团（finance syndicate）**。
-- **贷款参与票据（loan participation note）**：**具有行为者（has actor）**恰好有 1 个**牵头安排行（lead arranger）**。
-- **银团贷款（syndicated loan）**：**具有行为者（has actor）**至少有一个取值，该取值满足：该属性存在取值约束。
+### 2.2 簿记行（bookrunner）
 
-## 6. 依赖（owl:imports，11 个）
+定义：负责协调贷款安排、结构设计和营销的金融机构（通常是商业银行或投资银行）。
+
+- 父类：**金融机构（FinancialInstitution）**
+
+### 2.3 文件代理行（documentation agent）
+
+定义：被指定负责贷款文件起草、谈判和定稿的金融机构。
+
+- 父类：**辛迪加成员（SyndicateMember）**
+
+### 2.4 融资银团（finance syndicate）
+
+定义：集体同意向单一借款人提供大额贷款的一组金融机构或贷款人。
+
+- 父类：**辛迪加（Syndicate）**
+
+### 2.5 融资银团成员（finance syndicate member）
+
+定义：为银团贷款或贷款参与票据出资的金融服务提供商类型的银团成员。
+
+- 父类：**辛迪加成员（SyndicateMember）**、**金融服务提供商（FinancialServiceProvider）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **由…扮演（is played by）** | — | — |
+
+公理：
+
+- **由…扮演（is played by）**至少有一个取值，该取值满足：**是……的成员（isMemberOf）**的所有取值只能是**融资银团（finance syndicate）**。
+
+### 2.6 牵头安排行（lead arranger）
+
+定义：代表借款人主导贷款结构设计和银团组建过程的金融机构。
+
+- 父类：**金融机构（FinancialInstitution）**
+
+### 2.7 贷款参与票据（loan participation note）
+
+定义：可在多个贷款人之间分销的信贷额度和固定收益证券。
+
+- 父类：**信贷额度（CreditFacility）**、**商业贷款（CommercialLoan）**、**固定收益证券（FixedIncomeSecurity）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行为者（has actor）** | — | — |
+
+公理：
+
+- **具有行为者（has actor）**恰好有 1 个**牵头安排行（lead arranger）**。
+
+### 2.8 银团贷款（syndicated loan）
+
+定义：由一组称为银团的贷款人集体向单一借款人提供大额贷款的信贷协议。
+
+- 父类：**信贷额度（CreditFacility）**、**商业贷款（CommercialLoan）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有行为者（has actor）** | — | — |
+
+公理：
+
+- **具有行为者（has actor）**至少有一个取值，该取值满足：该属性存在取值约束。
+
+### 2.9 银团代理行（syndication agent）
+
+定义：被指定协助构建、安排和管理贷款银团组建过程的金融机构（通常是商业银行或投资银行）。
+
+- 父类：**金融机构（FinancialInstitution）**
+
+## 3. 依赖（owl:imports，11 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -70,7 +148,7 @@
 | `https://www.omg.org/spec/Commons/PartiesAndSituations/` | OMG 通用参与方与情境本体（OMG Commons Parties and Situations） | Commons 库中的参与方本体，定义独立主体、参与方及其角色扮演的通用概念，是 FIBO 参与方模型的上游。 |
 | `https://www.omg.org/spec/Commons/RolesAndCompositions/` | OMG 通用角色与构成本体（OMG Commons Roles and Compositions） | Commons 库中的角色本体，定义角色及整体—部分构成关系的通用概念。 |
 
-## 7. 文件
+## 4. 文件
 
 - 官方 RDF/XML：`DistributedLoans.rdf`
 - 中文 Turtle：`DistributedLoans.ttl`

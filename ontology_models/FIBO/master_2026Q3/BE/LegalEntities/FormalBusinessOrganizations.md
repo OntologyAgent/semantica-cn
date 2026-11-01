@@ -14,6 +14,17 @@
 
 **与相近概念的差别**：与法人团体的差别——法人团体强调独立法律人格，正式商业组织强调商业经营目的；一个非营利法人团体是前者但不是后者。
 
+本本体中类与类的核心关系如下（完整细节见各类小节）：
+
+- **分支机构（branch）** 继承 **组织子单位（OrganizationalSubUnit）**
+- **事业部（division）** 继承 **组织子单位（OrganizationalSubUnit）**
+- **合资企业（joint venture）** 继承 **法律实体（LegalEntity）**
+- **非政府组织（non-governmental organization）** 继承 **非营利组织（not for profit organization）**
+- **非营利组织（not for profit organization）** 继承 **正式组织（FormalOrganization）**
+- **组织基础协议（organization covering agreement）** 继承 **书面合同（WrittenContract）**
+- **增值税识别号（value-added tax identification number）** 继承 **税务标识符（TaxIdentifier）**
+- **增值税识别号（value-added tax identification number）** 继承 **组织标识符（OrganizationIdentifier）**
+
 ## 2. 类（Class）
 
 | 类（Class） | 定义（Definition） |
@@ -26,34 +37,85 @@
 | 组织基础协议（organization covering agreement） | 正式组织各主事人之间的合同，规定主事人之间以及主事人与实体之间的关系。 |
 | 增值税识别号（value-added tax identification number） | 为按增量征收的消费税识别应税人（企业）或非应税法律实体的税务标识符。 |
 
-### 2.1 继承关系（Inheritance）
+以下按类逐个展开：每个类给出继承关系、相关属性与公理约定；子类在父类之下降一级编号。
 
-- 分支机构（branch） ⊑ 组织子单位
-- 事业部（division） ⊑ 组织子单位
-- 合资企业（joint venture） ⊑ 法律实体
-- 非政府组织（non-governmental organization） ⊑ 非营利组织（not for profit organization）
-- 非营利组织（not for profit organization） ⊑ 正式组织
-- 组织基础协议（organization covering agreement） ⊑ 书面合同
-- 增值税识别号（value-added tax identification number） ⊑ 税务标识符
-- 增值税识别号（value-added tax identification number） ⊑ 组织标识符
+### 2.1 分支机构（branch）
 
-## 3. 对象属性（Object Property）
+定义：较大组织的组成部分，可能不与其同地办公。
 
-| 属性（Property） | 中文（English） | 定义（Definition） | 说明 |
-|---|---|---|---|
-| fibo-be-le-fbo:hasEquity | 具有权益（has equity） | 标识与实体关联的所有者权益。 | 定义域（domain）：法律实体；值域（range）：所有者权益；子属性（subPropertyOf）：具有表达式 |
-| fibo-be-le-fbo:hasHeadquartersAddress | 具有总部地址（has headquarters address） | 标识组织可送达通信的主要地址。 | 值域（range）：物理地址；子属性（subPropertyOf）：具有经营地址（has operating address） |
-| fibo-be-le-fbo:hasOperatingAddress | 具有经营地址（has operating address） | 标识组织开展经营活动的地址。 | 定义域（domain）：组织；值域（range）：物理地址；子属性（subPropertyOf）：具有地址 |
-| fibo-be-le-fbo:hasRegisteredAddress | 具有注册地址（has registered address） | 标识在某政府机关正式登记、可送达法律文书的地址。 | 定义域（domain）：参与方（party）；值域（range）：常规街道地址；子属性（subPropertyOf）：具有地址 |
+- 父类：**组织子单位（OrganizationalSubUnit）**
 
-## 5. 公理约定（Axioms）
+### 2.2 事业部（division）
 
-以下公理是对类的实例的硬性约束。每条读作：「某类的实例，必须满足某条件」。
+定义：组织的组成部分，如一条业务线，可能有单独的会计与报告要求。
 
-- **非政府组织（non-governmental organization）**：**具有目标（hasObjective）**可以有 0 个或多个**公共宗旨（PublicPurpose）**。
-- **非营利组织（not for profit organization）**：**具有目标（hasObjective）**可以有 0 个或多个**非营利目标（NotForProfitObjective）**。
+- 父类：**组织子单位（OrganizationalSubUnit）**
 
-## 6. 依赖（owl:imports，15 个）
+### 2.3 合资企业（joint venture）
+
+定义：各方为完成特定任务而汇集资源、但此外各自保持独立的法律实体。
+
+- 父类：**法律实体（LegalEntity）**
+
+### 2.4 非营利组织（not for profit organization）
+
+定义：将盈余收入用于进一步实现其宗旨、而非分配给组织所有者的组织。
+
+- 父类：**正式组织（FormalOrganization）**
+- 直接子类：**非政府组织（non-governmental organization）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（hasObjective）** | — | — |
+
+公理：
+
+- **具有目标（hasObjective）**可以有 0 个或多个**非营利目标（NotForProfitObjective）**。
+
+#### 2.4.1 非政府组织（non-governmental organization）
+
+定义：独立于政府运作的非营利组织。
+
+- 父类：**非营利组织（not for profit organization）**
+
+属性：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有目标（hasObjective）** | — | — |
+
+公理：
+
+- **具有目标（hasObjective）**可以有 0 个或多个**公共宗旨（PublicPurpose）**。
+
+### 2.5 组织基础协议（organization covering agreement）
+
+定义：正式组织各主事人之间的合同，规定主事人之间以及主事人与实体之间的关系。
+
+- 父类：**书面合同（WrittenContract）**
+
+### 2.6 增值税识别号（value-added tax identification number）
+
+定义：为按增量征收的消费税识别应税人（企业）或非应税法律实体的税务标识符。
+
+- 父类：**税务标识符（TaxIdentifier）**、**组织标识符（OrganizationIdentifier）**
+
+## 3. 其他属性
+
+以下属性未绑定到本体的具体类（定义域在外部本体或未声明）：
+
+对象属性（Object Property）：
+
+| 属性 | 定义 | 说明 |
+|---|---|---|
+| **具有权益（has equity）** | 标识与实体关联的所有者权益。 | 值域：所有者权益；子属性：具有表达式 |
+| **具有总部地址（has headquarters address）** | 标识组织可送达通信的主要地址。 | 值域：物理地址；子属性：具有经营地址（has operating address） |
+| **具有经营地址（has operating address）** | 标识组织开展经营活动的地址。 | 值域：物理地址；子属性：具有地址 |
+| **具有注册地址（has registered address）** | 标识在某政府机关正式登记、可送达法律文书的地址。 | 值域：常规街道地址；子属性：具有地址 |
+
+## 4. 依赖（owl:imports，15 个）
 
 本本体通过 `owl:imports` 引入以下本体，各项的中文名称与简介如下：
 
@@ -75,7 +137,7 @@
 | `https://www.omg.org/spec/Commons/QuantitiesAndUnits/` | OMG 通用量与单位本体（OMG Commons Quantities and Units） | Commons 库中的量与单位本体，定义数量、度量单位、量纲的通用概念，支撑金额、比率等数值表达。 |
 | `https://www.omg.org/spec/Commons/RegulatoryAgencies/` | OMG 通用监管机构本体（OMG Commons Regulatory Agencies） | Commons 库中的监管机构本体，定义监管机构及其监管职权的通用概念。 |
 
-## 7. 文件
+## 5. 文件
 
 - 官方 RDF/XML：`FormalBusinessOrganizations.rdf`
 - 中文 Turtle：`FormalBusinessOrganizations.ttl`

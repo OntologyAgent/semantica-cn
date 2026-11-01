@@ -280,11 +280,11 @@ fibo-der-drc-swp:SwapConfirmation a owl:Class ;
         "互换确认书（swap confirmation）"@zh ;
     rdfs:comment "将双方整体交易中与生命周期事件相关的具体条款和条件成文化的正式确认书。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom fibo-der-drc-swp:SwapConfirmation ;
-            owl:onProperty fibo-fnd-agr-ctr:supersedes ],
-        [ a owl:Restriction ;
             owl:onProperty fibo-fnd-agr-ctr:hasContractParty ;
             owl:someValuesFrom fibo-der-drc-swp:SwapParty ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom fibo-der-drc-swp:SwapConfirmation ;
+            owl:onProperty fibo-fnd-agr-ctr:supersedes ],
         fibo-der-drc-swp:SwapLifecycleEvent,
         fibo-fnd-pas-pas:TransactionConfirmation ;
     skos:definition "formal confirmation that codifies the terms and conditions specific to a lifecycle event with respect to the overall transaction between the parties" .
@@ -427,19 +427,19 @@ fibo-der-drc-swp:SwapLifecycleEvent a owl:Class ;
         "互换生命周期事件（swap lifecycle event）"@zh ;
     rdfs:comment "互换生命周期内发生的事件，整体事件集包括发行人、前台、中台、后台各自特有的事件。"@zh ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-swp:SwapLifecycleEventIdentifier ;
-            owl:onProperty cmns-id:isIdentifiedBy ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+            owl:onProperty cmns-cxtdsg:appliesTo ;
+            owl:someValuesFrom fibo-der-drc-swp:Swap ],
+        [ a owl:Restriction ;
+            owl:onProperty cmns-pts:hasPartyRole ;
+            owl:someValuesFrom fibo-der-drc-swp:SwapParty ],
         [ a owl:Restriction ;
             owl:onClass fibo-der-drc-swp:UniqueSwapIdentifier ;
             owl:onProperty fibo-der-drc-swp:hasSwapIdentifier ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:onProperty cmns-pts:hasPartyRole ;
-            owl:someValuesFrom fibo-der-drc-swp:SwapParty ],
-        [ a owl:Restriction ;
-            owl:onProperty cmns-cxtdsg:appliesTo ;
-            owl:someValuesFrom fibo-der-drc-swp:Swap ],
+            owl:onClass fibo-der-drc-swp:SwapLifecycleEventIdentifier ;
+            owl:onProperty cmns-id:isIdentifiedBy ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-fnd-arr-lif:LifecycleEvent ;
     skos:definition "event that occurs during the lifecycle of a swap, where the overall set of events includes those specific to the issuer, front office, middle office, and/or back office processes" .
 
@@ -527,9 +527,20 @@ fibo-der-drc-swp:SwapLeg a owl:Class ;
             owl:onProperty fibo-fbc-fi-fi:isDenominatedIn ;
             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:SwapPayingParty ;
+            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass cmns-dt:Date ;
             owl:onProperty fibo-fnd-arr-doc:hasTerminationDate ],
+        [ a owl:Restriction ;
+            owl:onClass fibo-der-drc-swp:SwapReceivingParty ;
+            owl:onProperty fibo-fnd-pas-pas:hasSeller ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-der-drc-swp:isLegOf ;
+            owl:someValuesFrom fibo-der-drc-swp:Swap ],
         [ a owl:Class ;
             owl:unionOf ( [ a owl:Restriction ;
                         owl:onClass fibo-fnd-acc-cur:MonetaryAmount ;
@@ -538,17 +549,6 @@ fibo-der-drc-swp:SwapLeg a owl:Class ;
                         owl:onClass cmns-qtu:ScalarQuantityValue ;
                         owl:onProperty cmns-qtu:hasQuantityValue ;
                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ] ) ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-swp:SwapPayingParty ;
-            owl:onProperty fibo-fnd-pas-pas:hasBuyer ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
-        [ a owl:Restriction ;
-            owl:onProperty fibo-der-drc-swp:isLegOf ;
-            owl:someValuesFrom fibo-der-drc-swp:Swap ],
-        [ a owl:Restriction ;
-            owl:onClass fibo-der-drc-swp:SwapReceivingParty ;
-            owl:onProperty fibo-fnd-pas-pas:hasSeller ;
-            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         fibo-der-drc-bsc:CashflowTerms,
         fibo-der-drc-swp:SwapTerms ;
     skos:definition "terms defining and the commitment to fulfill cashflow requirements (e.g., interest payments, coupon payments, etc.) for a component of a swap" ;
@@ -569,12 +569,12 @@ fibo-der-drc-swp:Swap a owl:Class ;
             owl:onProperty fibo-fnd-rel-rel:exchanges ;
             owl:someValuesFrom fibo-der-drc-swp:SwapLeg ],
         [ a owl:Restriction ;
-            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
-            owl:someValuesFrom fibo-der-drc-swp:SwapTerms ],
-        [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
             owl:onClass fibo-der-drc-swp:UniqueSwapIdentifier ;
             owl:onProperty cmns-id:isIdentifiedBy ],
+        [ a owl:Restriction ;
+            owl:onProperty fibo-fnd-agr-ctr:hasContractualElement ;
+            owl:someValuesFrom fibo-der-drc-swp:SwapTerms ],
         fibo-fbc-fi-fi:DerivativeInstrument ;
     skos:definition "derivative instrument whereby counterparties agree to exchange periodic streams of cash flows or liabilities from two different financial instruments with each other" ;
     cmns-av:adaptedFrom "ISO 10962, Securities and related financial instruments - Classification of financial instruments (CFI) code, Fifth edition, 2021-06-15" ;

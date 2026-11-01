@@ -96,11 +96,11 @@ fibo-sec-sec-cls:IndustryClassificationBenchmarkClassifier a owl:Class ;
 fibo-fbc-fi-fi:FinancialInstrument a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-sec-sec-cls:FinancialInstrumentClassifier ;
+            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassifier ;
             owl:onProperty cmns-cls:isClassifiedBy ],
         [ a owl:Restriction ;
             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onClass fibo-fnd-arr-cls:IndustrySectorClassifier ;
+            owl:onClass fibo-sec-sec-cls:FinancialInstrumentClassifier ;
             owl:onProperty cmns-cls:isClassifiedBy ] .
 
 fibo-sec-sec-cls:FinancialInstrumentClassificationCode a owl:Class ;

@@ -51,14 +51,14 @@ fibo-loan-spc-com:CommercialLoan a owl:Class ;
             owl:onClass fibo-fnd-gao-obj:BusinessObjective ;
             owl:onProperty fibo-fnd-gao-obj:hasObjective ],
         [ a owl:Restriction ;
+            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty fibo-loan-spc-com:hasBusinessPurposeDescription ],
+        [ a owl:Restriction ;
             owl:onProperty fibo-fbc-dae-dbt:hasBorrower ;
             owl:someValuesFrom [ a owl:Restriction ;
                     owl:onProperty cmns-rlcmp:isPlayedBy ;
                     owl:someValuesFrom cmns-org:LegalEntity ] ],
-        [ a owl:Restriction ;
-            owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty fibo-loan-spc-com:hasBusinessPurposeDescription ],
         fibo-loan-ln-ln:Loan ;
     skos:definition "loan extended to a corporation, commercial enterprise, joint venture, or other organization as opposed to a consumer"@en ;
     cmns-av:explanatoryNote "Such loans may include those that provide working capital, are used to finance the purchase of equipment and/or materials, for facilities and/or improvement of facilities, and so forth, and are typically secured."@en ;

@@ -2,7 +2,7 @@
 title: "溯源模块（Provenance）"
 description: "W3C PROV-O 血缘追踪、来源归属、防篡改校验和与跨模块审计轨迹。"
 source: reference/provenance.md
-source_version: ade9182cd9be125d89c595603dd61f68e4db6e63
+source_version: 3354a2f60bf849780654753d0ba927734a70b2cc
 icon: "link"
 ---
 
@@ -88,6 +88,16 @@ icon: "link"
 ## ProvenanceManager
 
 **`ProvenanceManager`** 是所有血缘数据的中央追踪器。每次调用 `track_entity`、`track_relationship` 或 `track_chunk` 都会自动计算并存储**SHA-256 校验和**用于防篡改。
+
+`track_entity()` 保持尽力而为的默认语义：新建写入失败返回 `None`，更新失败返回前一条目的副本。调用方需要可靠的失败信号时传 `raise_on_error=True`：
+
+```python
+entry = manager.track_entity("entity_1", source="document_1", raise_on_error=True)
+```
+
+回滚之后，原始的追踪或事务异常继续向上传播。该模式还能检出"元数据完全相同的失败重试"——默认语义下这种重试的返回值看起来像成功。使用内部共享事务（`_conn`）时失败必然传播，成功返回则把条目暂存到事务提交为止；异常诊断与脱敏后的公开错误串保持分离，诊断处理器自身失败不会替换原始追踪异常。
+
+覆写 `track_entity()` 的 `ProvenanceManager` 子类必须尊重 `raise_on_error=True`，才能可靠检出同输入的失败重试。带显式旧签名的覆写必须先接受这个新关键字才能被 `apply()` 使用——即使存储完全健康。否则，required 模式会抛以 `TypeError` 为缘由的 `ProvenanceRecordingError`，尽力而为模式会报告 `provenance_recorded=False`、`provenance_error="TypeError"`。只接受关键字而不尊重它，对可靠追踪并不足够。`apply()` 仍会把缺失条目或元数据不匹配作为针对旧覆写的第二道兼容守卫拒之门外——仅元数据匹配并不能证明存储已持久化该条目。
 
 ### 构造参数
 

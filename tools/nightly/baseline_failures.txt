@@ -13,3 +13,8 @@ tests/parse/test_image_parser.py::TestImageParserLimits::test_opening_leaves_glo
 # comparisons on the in-memory backend; not merge-related (the day's merge
 # only touched columnar export).
 tests/semantic_extract/test_cache_backends.py::test_zero_ttl_expires_immediately_on_both_backends
+# 2026-11-13: sentence-transformers default-model flake. Fails only in
+# occasional full-suite runs (model-loading global state suspected);
+# passes 3x standalone and the follow-up gate run was green. The day's
+# merge only touched security-scan configs and dependency pins.
+tests/test_embedding_providers.py::TestEmbeddingProviders::test_sentence_transformers_default

@@ -2,7 +2,7 @@
 title: "MCP 服务器（MCP Server）"
 description: "模型上下文协议(MCP)服务器：把 Semantica 的全部能力暴露给 Claude Desktop、VS Code、Cursor 及任何支持 MCP 的工具。"
 source: reference/mcp_server.md
-source_version: 4cb9d73a9f9cfe4f42b95d79b2f2dd6bbcacc6bf
+source_version: 66e6638d4452492272586f33eb8785167db290cf
 icon: "plug"
 ---
 
@@ -45,7 +45,7 @@ python -m semantica.mcp_server
 - **15 个 MCP 工具** — 抽取实体、抽取关系、记录决策、查询决策、查找先例、追溯因果链、添加实体、添加关系、运行分析、总结图、运行推理、导出图、查询活动图、更新节点、归档节点。
 - **3 个可读资源** — 实时图 JSON（`semantica://graph/summary`）、决策列表和 schema/版本信息：任何 MCP 客户端都可读取。
 - **零基础设施** — 经 stdio 运行：无需服务器、无需端口、无需 Docker。在任何 MCP 客户端里一个配置块即可启用。
-- **持久化图** — 把 `SEMANTICA_KG_PATH` 指向已保存的图文件，服务器每次启动自动重新加载。
+- **持久化图** — 把 `SEMANTICA_KG_PATH` 指向已保存的图文件，服务器首次使用时自动加载。
 - **决策智能** — 记录决策、经混合相似度搜索查找先例、跨智能体运行追溯因果链。
 - **REST 替代方案** — 更偏好程序化访问的话，[Explorer](./explorer.md) 模块提供完整的 HTTP API 和浏览器面板。
 
@@ -148,12 +148,21 @@ MCP 服务器包含在基础安装中：无需任何 extra。
 
 | 变量 | 默认值 | 说明 |
 | :-------- | :------- | :----------- |
-| `SEMANTICA_KG_PATH` | *（无：内存图）* | 启动时加载的持久化图文件路径 |
+| `SEMANTICA_KG_PATH` | *（无：内存图）* | 首次使用时加载的持久化图文件路径 |
+| `SEMANTICA_KG_AUTO_RELOAD` | `false` | 设为 `true` 时，在下一次图操作前重新加载已变更的图文件修订 |
 | `SEMANTICA_LOG_LEVEL` | `WARNING` | 日志详细程度：`DEBUG`、`INFO`、`WARNING` |
 
 <Warning>
   **不设置 `SEMANTICA_KG_PATH`，图就从空开始。** MCP 服务器在首次使用时创建全新的内存 `ContextGraph`。把 `SEMANTICA_KG_PATH` 指向之前保存的图文件，即可跨服务器重启恢复状态。不设置的话，进程退出时全部数据丢失。
 </Warning>
+
+### 选择加入的文件刷新
+
+当 `SEMANTICA_KG_PATH` 是权威图文件时，设 `SEMANTICA_KG_AUTO_RELOAD=true`。两个 MCP 入口都会在图操作前检查文件修订：文件未变则复用缓存的图；文件已变则加载全新的图。来源缺失、非法或正在变化时拒绝该操作，修复后自动恢复。初始缺失或空的目的文件仍可以空图启动。默认行为保持仅首次加载。
+
+保存变更前，auto-reload 会先确认文件仍是加载时的修订；已有更新的发布则拒绝保存。修订检查或保存失败都会使缓存失效，于是下一次操作重新加载文件并丢弃未保存的变更。保存成功则直接更新缓存的修订，不额外做快照或校验读。审计回调保持其原生行为，外部审计效果无法撤销。
+
+原子发布请用 `ContextGraph.save_to_file()`。修订检查不是跨进程锁：写入方必须在"检查到保存"的窗口内自行协调。重新加载会替换图实例及其未持久化状态，保留的 Python 引用不是活视图。向量库缓存行为不变。
 
 <Tip>
   **排障时开启 DEBUG 日志。** 在 MCP 客户端的 `env` 块里设 `SEMANTICA_LOG_LEVEL=DEBUG`，或直接运行 `python -m semantica.mcp_server` 查看 stderr 输出。

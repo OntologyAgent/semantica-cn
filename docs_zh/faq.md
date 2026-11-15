@@ -2,7 +2,7 @@
 title: 常见问题
 description: Semantica 常见问题：安装、功能、集成与故障排查。
 source: faq.md
-source_version: 3ce3a71f37abd9b0a9f76ac4f698afec08180f76
+source_version: ef2fa361683dbe3bf739004a90c6159e64da82df
 icon: "circle-question"
 ---
 
@@ -15,7 +15,7 @@ icon: "circle-question"
 | 问题 | 回答 |
 | :-------- | :------ |
 | 许可证？ | MIT：永久免费，没有付费墙功能 |
-| Python 版本？ | 3.11–3.13（3.10 支持止于 0.8.0） |
+| Python 版本？ | 3.11.5–3.13（3.10 支持止于 0.8.0） |
 | 需要 API key 吗？ | 可选：模式抽取无需任何 key |
 | 兼容 LangChain / LlamaIndex 吗？ | 兼容：Semantica 是叠加层，不是替代品 |
 | 生产可用吗？ | 可以：1000+ 项测试，每个版本都随附安全修复（见 [CHANGELOG](https://github.com/semantica-agi/semantica/blob/main/CHANGELOG.md)） |
@@ -101,9 +101,9 @@ pip install semantica
 
 <Accordion title="需要什么 Python 版本？" icon="python">
 
-Python **3.11 或更高**（支持 3.11–3.13）。
+Python **3.11.5 或更高**（支持 3.11.5–3.13）。
 
-Python 3.10 的支持止于 **0.8.0**：3.10 于 2026 年 10 月到达生命周期终点，而修复了 12.x 系列未涵盖的安全通告的 Pillow 13 要求 3.11。在 Python 3.10 上，`pip install semantica` 会安装最后一个支持它的版本（0.7.x），该版本不再更新。要持续获得修复，请升级到 Python 3.11 或更新版本。
+Python 3.10 的支持止于 **0.8.0**：3.10 于 2026 年 10 月到达生命周期终点，而修复了 12.x 系列未涵盖的安全通告的 Pillow 13 要求 3.11。在 Python 3.10 上，`pip install semantica` 会安装最后一个支持它的版本（0.7.x），该版本不再更新。要持续获得修复，请升级到 Python 3.11.5 或更新版本。
 
 </Accordion>
 
@@ -123,7 +123,7 @@ pip install --upgrade semantica
 
 | 要求 | 最低 | 推荐 |
 | :----------- | :------- | :----------- |
-| Python | 3.11 | 3.11–3.13 |
+| Python | 3.11.5 | 3.11.5–3.13 |
 | 内存 | 4 GB | 16 GB+ |
 | 存储 | 2 GB | 20 GB+ |
 | GPU | 可选 | 嵌入和 ML 模型用 CUDA |

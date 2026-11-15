@@ -2,7 +2,7 @@
 title: "Explorer 模块（Explorer）"
 description: "交互式 FastAPI 面板：知识图谱探索、本体管理与图分析。"
 source: reference/explorer.md
-source_version: e1197e29e1cf63372ee878ce86dcc8056b7ec7ec
+source_version: 66ea08f11b4edeea375241559cb0b0bf94c3d890
 icon: "map"
 ---
 
@@ -78,8 +78,12 @@ semantica-explorer --graph my_graph.json
   </Step>
   <Step title="不重启就导入新数据">
     ```bash
-    # Import a JSON or CSV file into the running session
-    curl -X POST http://localhost:8000/api/import \
+    # Add a JSON or CSV file to the running session (existing nodes are kept)
+    curl -X POST "http://localhost:8000/api/import?mode=add" \
+      -F "file=@updated_graph.json"
+
+    # Make the session match the file: nodes/edges no longer in it are removed
+    curl -X POST "http://localhost:8000/api/import?mode=replace" \
       -F "file=@updated_graph.json"
     ```
   </Step>
@@ -307,7 +311,7 @@ ALLOWED_ORIGINS="http://myapp.example.com" \
     | :-------- | :------ | :----------- |
     | `/api/export` | `POST` | 把图导出为 JSON 或 CSV：body：`{format, node_ids}` |
     | `/api/export/distance-enriched` | `POST` | 把两两距离导出为 CSV 或 JSONL |
-    | `/api/import` | `POST` | 从 `.json` 或 `.csv` 文件导入节点/边（最大 50 MB） |
+    | `/api/import` | `POST` | 从 `.json` 或 `.csv` 文件导入节点/边（最大 50 MB）。`?mode=add`（默认）只增不删；`?mode=replace` 按文件重建图并报告 `nodes_removed`/`edges_removed` |
 
   </Accordion>
   <Accordion title="健康与信息">

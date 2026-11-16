@@ -2,7 +2,7 @@
 title: 推理与规则
 description: 在知识图谱上应用前向链、后向链、Datalog、SPARQL、RETE、时态区间与大语言模型推理——推导新事实、检查约束并解释推理过程。
 source: guides/reasoning.md
-source_version: f715be19a86132dcc0b7f0bb98bc5abe4020a7f6
+source_version: c6f49c549340202ca294ee9a4926ae8156ee53c2
 ---
 
 Semantica 的推理层把领域逻辑编码成规则，应用到你的知识图谱(Knowledge Graph)上，推导出任何单篇文档都没有明说的结论。八种互补的推理模式——从符号规则的前向链(Forward Chaining)，到递归的 Datalog，再到由大语言模型(LLM)支撑的自由问答——让你为每个推理问题选对工具，而不必切换框架。
@@ -297,7 +297,7 @@ expanded = sparql.expand_query(query)
 print(expanded)
 ```
 
-`execute_query()` 尚未实现：目前不存在三元组库(Triplet Store)执行路径，所以它会抛出 `NotImplementedError`，而不是返回一个容易被调用方误读为"无匹配"的空结果集。在执行能力落地之前，请把扩展后的查询直接对着你的 RDF 库运行（例如用 `rdflib`）。
+`execute_query()` 对着真实后端运行，因此 reasoner 上需要 `triplet_store`（`SPARQLReasoner(triplet_store=store)`）。没有它时会抛 `ProcessingError`，而不是返回一个容易被调用方误读为"无匹配"的空结果集（issue #1083）。要完全不依赖存储，就像上文那样用 `expand_query()`，把扩展后的查询文本放到你自己的 RDF 库上运行，例如用 `rdflib`。
 
 运行前先检查扩展后的查询：
 

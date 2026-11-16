@@ -2,7 +2,7 @@
 title: "推理模块（Reasoning）"
 description: "前向链接、Rete、演绎、溯因、SPARQL、Datalog 与时态推理，附可解释的推理路径。"
 source: reference/reasoning.md
-source_version: 88832e0e9559289dcba12154d851aad64b4954da
+source_version: b588c000709713f26a0aca15f173c2bac1a351de
 icon: "microchip"
 ---
 
@@ -248,8 +248,10 @@ engine.reset()
 
 ```python
 from semantica.reasoning import SPARQLReasoner
+from semantica.triplet_store import TripletStore
 
-reasoner = SPARQLReasoner()
+store = TripletStore(backend="jena", endpoint="http://localhost:3030/ds")
+reasoner = SPARQLReasoner(triplet_store=store)
 
 # Add an inference rule (IF-THEN string form)
 reasoner.add_inference_rule("IF is_a(?x, Manager) THEN has_authority(?x)")
@@ -284,7 +286,7 @@ SPARQLReasoner(
 ```
 
 <Note>
-  未配置 `triplet_store` 时，`execute_query()` 返回空的 bindings。要对着真实后端执行查询，须经 `triplet_store=` 关键字参数传入 `TripletStore` 实例。
+  缺 `triplet_store` 时 `execute_query()` 拒绝运行并抛 `ProcessingError`；它不返回空 bindings——空结果集会被读成"无匹配"。要对着真实后端执行查询，须经 `triplet_store=` 关键字参数传入 `TripletStore` 实例。`expand_query()` 与 `add_inference_rule()` 无需存储。
 </Note>
 
 

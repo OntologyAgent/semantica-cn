@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 # docs and CLI entry points written for upstream keep working unchanged.
 name = "semantica-cn"
 version = "0.8.0"
-description = "Community Chinese fork (semantica-cn) of Semantica — Graph-Native Infrastructure for Context and Accountable AI Systems: context graphs, decision intelligence, full provenance tracking, and explainable reasoning engines — every AI decision traceable, every output auditable."
+description = "Community Chinese fork (semantica-cn) of Semantica — Graph-Native Semantic Infrastructure for Enterprise AI: context graphs, decision intelligence, full provenance tracking, and explainable reasoning engines — every AI decision traceable, every output auditable."
 readme = "README.md"
 license = { text = "MIT" }
 

@@ -16,7 +16,7 @@
   </a>
 </div>
 
-### Graph-Native Infrastructure for Context and Accountable AI Systems
+### Graph-Native Semantic Infrastructure for Enterprise AI 
 
 #### *Developer-first, knowledge infrastructure for AI, alternative to expensive enterprise platforms.*
 

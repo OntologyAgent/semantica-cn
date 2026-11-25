@@ -2,7 +2,7 @@
 title: "LLM 模块（LLMs）"
 description: "生成式大语言模型(LLM)提供商，外加 TypeSafe Jev 类型化决策。"
 source: reference/llms.md
-source_version: b6c0e226d079309d0714b9a83a036936888479e8
+source_version: 7ac1070bf2e9fc4e65315c6e5cd056b5505b07af
 icon: "microchip"
 ---
 
@@ -382,7 +382,7 @@ import os
 from semantica.llms import OpenAI
 
 llm = OpenAI(
-    model="gpt-4o",                     # recommended; implementation default: gpt-3.5-turbo
+    model="gpt-4o",                     # recommended; implementation default: gpt-4o-mini
     api_key=os.getenv("OPENAI_API_KEY"),
     temperature=0.0,
 )
@@ -547,7 +547,7 @@ trip = TripletExtractor(**llm_config)
 | 提供商 | 默认模型 | 说明 |
 | :---------- | :--------------- | :------- |
 | `Groq` | `llama-3.1-8b-instant` | 实现默认值；示例用 `llama-3.3-70b-versatile` 做展示 |
-| `OpenAI` | `gpt-3.5-turbo` | 实现默认值；示例用 `gpt-4o` 做展示 |
+| `OpenAI` | `gpt-4o-mini` | 实现默认值；示例用 `gpt-4o` 做展示 |
 | `HuggingFaceLLM` | `gpt2` | 轻量、兼容性广 |
 | `Jev` / `AsyncJev` | `jev-latest` | 抢先体验别名；生产环境对可复现性有要求时，请显式传入具体模型 |
 

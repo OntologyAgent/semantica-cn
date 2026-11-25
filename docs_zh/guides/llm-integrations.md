@@ -2,7 +2,7 @@
 title: 大语言模型(LLM)集成
 description: 通过统一生成接口将 Semantica 连接到各生成式 LLM 提供商，并提供 TypeSafe Jev 的类型化决策接口。
 source: guides/llm-integrations.md
-source_version: 96c57e116665d198c68e4d2d70f1adbf6f2e2441
+source_version: abd08340bcf370fdd38a0fc12bdc4defb0be35fe
 ---
 
 Semantica 提供统一的生成接口——无论是 Groq、OpenAI、Anthropic Claude、HuggingFace、Novita AI，还是经 LiteLLM 接入的另外 100 多家大语言模型(LLM)提供商，用的都是同一套 `.generate()`、`.generate_structured()` 和 `.generate_typed()` 方法。此外，它还为 TypeSafe Jev 单独提供了一套决策专用接口——Jev 返回的是类型化的 Choice、Noul 与 Score 结果，并非文本生成。
@@ -243,7 +243,7 @@ risk_data = oai.generate_structured(
 # {"counterparties": [{"name": "Counterparty A", "exposure_eur": 45000000}, ...]}
 ```
 
-默认模型 `gpt-3.5-turbo` 做分类和轻量抽取够用了。复杂的多步监管推理或文档理解，换 `gpt-4o`。
+默认模型 `gpt-4o-mini` 做分类和轻量抽取够用了。复杂的多步监管推理或文档理解，换 `gpt-4o`。
 
 ## Anthropic — 复杂推理与结构化抽取
 

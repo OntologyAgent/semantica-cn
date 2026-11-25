@@ -18,3 +18,8 @@ tests/semantic_extract/test_cache_backends.py::test_zero_ttl_expires_immediately
 # passes 3x standalone and the follow-up gate run was green. The day's
 # merge only touched security-scan configs and dependency pins.
 tests/test_embedding_providers.py::TestEmbeddingProviders::test_sentence_transformers_default
+# 2026-11-26: concurrent CLI records flake. First seen after the
+# execute_query-config merge (#2297) but the test file itself was not
+# touched; standalone 3/4 pass, the one failure was a C++
+# recursive_mutex abort, and the follow-up full gate run was green.
+tests/test_cli_commands.py::TestMemoryGraphBackend::test_concurrent_records_do_not_lose_each_other

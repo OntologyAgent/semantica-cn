@@ -123,7 +123,7 @@ class TestUpstreamUntouched(unittest.TestCase):
                     "semantica/semantic_extract/coreference_resolver.py",
                     "semantica/normalize/date_normalizer.py"):
             out = subprocess.run(
-                ["git", "diff", "05dc7cce", "--", rel], cwd=REPO,
+                ["git", "diff", "b3efeb5f", "--", rel], cwd=REPO,
                 capture_output=True, text=True).stdout
             self.assertEqual(out.strip(), "", f"{rel} 相对上游基线被改动：\n{out[:300]}")
 

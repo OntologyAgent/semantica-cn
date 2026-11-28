@@ -2,7 +2,7 @@
 title: 大语言模型(LLM)集成
 description: 通过统一生成接口将 Semantica 连接到各生成式 LLM 提供商，并提供 TypeSafe Jev 的类型化决策接口。
 source: guides/llm-integrations.md
-source_version: 298b44a68d0e06299cd180df58a33e7aecf7af2b
+source_version: a7ff010441bd799ee93f8624df2ab874b4723e1f
 ---
 
 Semantica 提供统一的生成接口——无论是 Groq、OpenAI、Anthropic Claude、HuggingFace、Novita AI，还是经 LiteLLM 接入的另外 100 多家大语言模型(LLM)提供商，用的都是同一套 `.generate()`、`.generate_structured()` 和 `.generate_typed()` 方法。此外，它还为 TypeSafe Jev 单独提供了一套决策专用接口——Jev 返回的是类型化的 Choice、Noul 与 Score 结果，并非文本生成。
@@ -389,8 +389,8 @@ llm = LiteLLM(model="azure/gpt-4o", api_key="YOUR_AZURE_KEY")
 # AWS Bedrock — existing cloud agreement, no new vendor
 llm = LiteLLM(model="bedrock/anthropic.claude-sonnet-4-5-20250929-v1:0")
 
-# Google Vertex AI
-llm = LiteLLM(model="vertex_ai/gemini-1.5-pro")
+# Google Vertex AI — set VERTEXAI_LOCATION to a supported location such as global
+llm = LiteLLM(model="vertex_ai/gemini-3.8-flash")
 
 # Ollama — fully local, no network calls
 llm = LiteLLM(model="ollama/llama3.2")
